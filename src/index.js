@@ -43,6 +43,6 @@ for(let i = 0; i < PluginConfig.length; i++) {
   wrappedPlugins[plugin.className] = cls;
 }
 
-export {wrappedPlugins};
+export default wrappedPlugins;
 
 window.Native = wrappedPlugins;
