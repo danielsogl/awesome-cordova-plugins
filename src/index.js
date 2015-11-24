@@ -6,6 +6,18 @@ let wrappedPlugins = {}
 
 let promised;
 
+function newPluginClass(config) {
+  let obj = {
+    installed: () => {
+      return config.pluginRef && window.hasOwnProperty(config.pluginRef);
+    }
+  }
+
+  obj.pluginCheck = config.pluginCheck || function() { return false; };
+
+  return obj;
+}
+
 // Go through each registered plugin
 for(let plugin of PluginConfig) {
   console.log('Plugin', plugin.className, plugin);
@@ -22,18 +34,6 @@ for(let plugin of PluginConfig) {
 
   // Save the plugin object
   wrappedPlugins[plugin.className] = cls;
-}
-
-function newPluginClass(config) {
-  let obj = {
-    installed: () => {
-      return obj.pluginCheck();
-    }
-  }
-
-  obj.pluginCheck = config.pluginCheck || function() { return false; };
-
-  return obj;
 }
 
 export {wrappedPlugins};
