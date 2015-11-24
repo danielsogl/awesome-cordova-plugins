@@ -1,3 +1,6 @@
+import {Promise} from 'es6-promise';
+
+
 const promisifyCordova = (pluginObj, pluginName, methodName) => {
   return (...args) => {
     return new Promise((resolve, reject) => {
