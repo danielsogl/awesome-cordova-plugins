@@ -2,34 +2,24 @@ import {Plugins} from './plugins';
 import {PluginConfig} from './plugin-config'
 import {promisifyCordova} from './cordova';
 
-class IonicNative {
-  constructor() {
-    let pluginData, promised;
-    for(let plugin in PluginConfig) {
+let Wrapped = {
+}
 
-      pluginData = PluginConfig[plugin];
-      console.log('Plugin', plugin, pluginData);
+let promised;
+for(let plugin of PluginConfig) {
+  console.log('Plugin', plugin.name, plugin);
 
-      promised = pluginData.promise;
+  Wrapped[plugin.className] = {};
 
-      for(let method of promised) {
+  promised = plugin.promise;
 
-
-        let p = promisifyCordova(plugin, method)
-        p().then((resp) => {
-          console.log('Thing');
-        })
-      }
-
-    }
+  for(let method of promised) {
+    let p = promisifyCordova(plugin.id, method)
+    Wrapped[plugin.className][method] = p;
   }
 
 }
 
+export {Wrapped};
 
-let Native = new IonicNative;
-
-export default Native;
-
-// Because require isn't exporting properly, who the fuck knows
-window.IonicNative = Native
+window.Native = Wrapped;

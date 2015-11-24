@@ -1,7 +1,8 @@
-export var PluginConfig = {
-  "camera": {
-    'name': 'Camera',
+export var PluginConfig = [
+  {
+    'id': 'camera',
+    'className': 'Camera',
     'plugin': 'cordova-plugin-camera',
-    "promise": ["takePicture"],
+    'promise': ['takePicture'],
   }
-}
+]
