@@ -1,5 +1,5 @@
 {
-  "name": "ionic-native",
+  "name": "cordova-wrap",
   "version": "1.0.0",
   "description": "Native plugins to replace ngCordova",
   "main": "dist/cordova-wrap.js",
