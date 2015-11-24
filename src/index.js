@@ -1,6 +1,8 @@
 import {PluginConfig} from './plugin-config'
 import {promisifyCordova} from './cordova';
 
+import {get} from './util';
+
 let wrappedPlugins = {}
 
 let promised;
@@ -8,7 +10,7 @@ let promised;
 function newPluginClass(config) {
   let obj = {
     installed: () => {
-      return config.pluginRef && window.hasOwnProperty(config.pluginRef);
+      return config.pluginRef && get(window, config.pluginRef);
     },
 
     plugin: config.plugin
