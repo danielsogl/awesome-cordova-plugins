@@ -1,4 +1,3 @@
-import {Plugins} from './plugins';
 import {PluginConfig} from './plugin-config'
 import {promisifyCordova} from './cordova';
 
@@ -10,10 +9,10 @@ function newPluginClass(config) {
   let obj = {
     installed: () => {
       return config.pluginRef && window.hasOwnProperty(config.pluginRef);
-    }
-  }
+    },
 
-  obj.pluginCheck = config.pluginCheck || function() { return false; };
+    plugin: config.plugin
+  };
 
   return obj;
 }
@@ -28,7 +27,7 @@ for(let plugin of PluginConfig) {
   promised = plugin.promise || [];
 
   for(let method of promised) {
-    let p = promisifyCordova(plugin.id, method)
+    let p = promisifyCordova(cls, plugin.id, method)
     cls[method] = p;
   }
 

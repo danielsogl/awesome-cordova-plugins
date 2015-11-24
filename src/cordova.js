@@ -1,4 +1,4 @@
-const promisifyCordova = (pluginName, methodName) => {
+const promisifyCordova = (pluginObj, pluginName, methodName) => {
   return (...args) => {
     return new Promise((resolve, reject) => {
       if(!window.cordova) {
@@ -6,6 +6,11 @@ const promisifyCordova = (pluginName, methodName) => {
         reject({
           error: 'cordova_not_available'
         });
+        return;
+      }
+
+      if(!pluginOjb.installed()) {
+        console.warn('Cordova: tried calling', '"' + pluginName + '.' + methodName + '"', 'but the ' + pluginObj.plugin + ' plugin is not installed.');
         return;
       }
       cordova.exec(resolve, reject, pluginName, methodName, args);
