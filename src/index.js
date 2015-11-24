@@ -2,24 +2,40 @@ import {Plugins} from './plugins';
 import {PluginConfig} from './plugin-config'
 import {promisifyCordova} from './cordova';
 
-let Wrapped = {
-}
+let wrappedPlugins = {}
 
 let promised;
+
+// Go through each registered plugin
 for(let plugin of PluginConfig) {
-  console.log('Plugin', plugin.name, plugin);
+  console.log('Plugin', plugin.className, plugin);
 
-  Wrapped[plugin.className] = {};
+  // Create the wrapped class
+  let cls = newPluginClass(plugin);
 
-  promised = plugin.promise;
+  promised = plugin.promise || [];
 
   for(let method of promised) {
     let p = promisifyCordova(plugin.id, method)
-    Wrapped[plugin.className][method] = p;
+    cls[method] = p;
   }
 
+  // Save the plugin object
+  wrappedPlugins[plugin.className] = cls;
 }
 
-export {Wrapped};
+function newPluginClass(config) {
+  let obj = {
+    installed: () => {
+      return obj.pluginCheck();
+    }
+  }
 
-window.Native = Wrapped;
+  obj.pluginCheck = config.pluginCheck || function() { return false; };
+
+  return obj;
+}
+
+export {wrappedPlugins};
+
+window.Native = wrappedPlugins;
