@@ -12,6 +12,7 @@ document.addEventListener('deviceready', function() {
     alert('No cam');
     console.log('Camera not installed');
   }
+  /*
   Native.Camera.takePicture().then(function(resp) {
     console.log('Got picture');
   }, function(err) {
@@ -23,10 +24,13 @@ document.addEventListener('deviceready', function() {
   } else {
     console.log('AppLinks not installed');
   }
+  */
 
   if(Native.StatusBar.installed()) {
     console.log('StatusBar installed');
-    Native.StatusBar.styleBlackTranslucent();
+    Native.StatusBar.hide().catch(function(err) {
+      console.error('unable to set statusbar', err);
+    });
   } else {
     alert('No statusbar');
     console.log('StatusBar not installed');
