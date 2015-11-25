@@ -1162,7 +1162,6 @@ function get(obj, path) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Native = undefined;
 
 var _pluginConfig = require('./plugin-config');
 
@@ -1210,9 +1209,7 @@ for (var i = 0; i < _pluginConfig.PluginConfig.length; i++) {
   wrappedPlugins[plugin.className] = cls;
 }
 
-var Native = wrappedPlugins;
-
-exports.Native = Native;
+exports.default = wrappedPlugins;
 
 window.Native = wrappedPlugins;
 

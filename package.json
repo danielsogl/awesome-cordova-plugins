@@ -1,7 +1,7 @@
 {
   "name": "cordova-wrap",
-  "version": "1.0.3",
-  "description": "Native plugins to replace ngCordova",
+  "version": "1.0.4",
+  "description": "Native plugins for Cordova and Ionic with ES6+, Promise and Observable support",
   "main": "dist/cordova-wrap.js",
   "directories": {
     "test": "test"
