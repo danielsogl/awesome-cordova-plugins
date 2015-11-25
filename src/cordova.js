@@ -14,6 +14,9 @@ const promisifyCordova = (pluginObj, pluginName, methodName) => {
 
       if(!pluginObj.installed()) {
         console.warn('Cordova: tried calling', '"' + pluginName + '.' + methodName + '"', 'but the ' + pluginObj.plugin + ' plugin is not installed.');
+        reject({
+          error: 'plugin_not_installed'
+        });
         return;
       }
       console.log('Cordova: exec(' + pluginName + ', ' + methodName +')');
