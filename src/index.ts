@@ -1,3 +1,5 @@
+interface Window { Native: any }
+
 import {PluginConfig} from './plugin-config'
 import {promisifyCordova} from './cordova';
 
@@ -45,4 +47,4 @@ for(let i = 0; i < PluginConfig.length; i++) {
 
 export default wrappedPlugins;
 
-window.Native = wrappedPlugins;
+window['Native'] = wrappedPlugins;
