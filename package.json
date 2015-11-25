@@ -26,7 +26,8 @@
     "babel-preset-stage-0": "^6.1.18"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist && tsc"
   },
   "repository": {
     "type": "git",
@@ -37,5 +38,6 @@
   "bugs": {
     "url": "https://github.com/driftyco/ionic-native/issues"
   },
-  "homepage": "https://github.com/driftyco/ionic-native"
+  "homepage": "https://github.com/driftyco/ionic-native",
+  "typings": "./dist/index.d.ts"
 }

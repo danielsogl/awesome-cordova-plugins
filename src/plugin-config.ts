@@ -1,4 +1,13 @@
-export var PluginConfig = [
+export interface CordovaPlugin {
+  id: string,
+  className: string;
+  plugin: string;
+  pluginRef: string;
+  promise?: any //should really be Promise
+}
+
+
+export var PluginConfig:CordovaPlugin[] = [
   {
     id: 'device',
     className: 'Device',
