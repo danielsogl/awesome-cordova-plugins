@@ -49,4 +49,10 @@ export var PluginConfig:CordovaPlugin[] = [
     pluginRef: 'CameraRoll',
     promise: ['saveToCameraRoll', 'getPhotos']
   },
+  {
+    id: 'contacts',
+    className: 'Contacts',
+    plugin: 'cordova-plugin-contacts',
+    pluginRef: 'navigator.contacts',
+  },
 ]

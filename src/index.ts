@@ -5,6 +5,9 @@ import {promisifyCordova} from './cordova';
 
 import {get} from './util';
 
+export * from './plugins/camera';
+
+/*
 let wrappedPlugins = {}
 
 let promised;
@@ -46,5 +49,6 @@ for(let i = 0; i < PluginConfig.length; i++) {
 }
 
 export default wrappedPlugins;
+*/
 
-window['Native'] = wrappedPlugins;
+//window['Native'] = wrappedPlugins;

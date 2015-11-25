@@ -1,2 +1,1 @@
-declare let wrappedPlugins: {};
-export default wrappedPlugins;
+export * from './plugins/camera';

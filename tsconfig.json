@@ -8,10 +8,20 @@
         "sourceMap": false,
         "declaration": true
     },
-    "files": [
-      "src/index.ts"
+    "filesGlob": [
+        "src/**/*.ts"
     ],
     "exclude": [
         "node_modules"
-    ]
+    ],
+    "files": [
+        "src/cordova.ts",
+        "src/index.ts",
+        "src/plugin-config.ts",
+        "src/plugins/camera.ts",
+        "src/util.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
 }
