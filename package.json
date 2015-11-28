@@ -1,5 +1,5 @@
 {
-  "name": "cordova-wrap",
+  "name": "ionic-native",
   "version": "1.0.7",
   "description": "Native plugins for Cordova and Ionic with ES6+, Promise and Observable support",
   "main": "dist/index.js",
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/driftyco/cordova-wrap.git"
+    "url": "https://github.com/driftyco/ionic-native.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/driftyco/cordova-wrap/issues"
+    "url": "https://github.com/driftyco/ionic-native/issues"
   },
   "homepage": "https://github.com/driftyco/ionic-native",
   "typings": "./dist/index.d.ts"
