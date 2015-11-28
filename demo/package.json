@@ -17,5 +17,11 @@
     "ionic-native": "^1.0.7"
   },
   "name": "demo",
-  "description": "demo: An Ionic project"
+  "description": "demo: An Ionic project",
+  "cordovaPlugins": [
+    "cordova-plugin-x-toast"
+  ],
+  "cordovaPlatforms": [
+    "ios"
+  ]
 }
