@@ -20,6 +20,7 @@
         "src/plugin-config.ts",
         "src/plugins/camera.ts",
         "src/plugins/statusbar.ts",
+        "src/plugins/toast.ts",
         "src/util.ts"
     ],
     "atom": {

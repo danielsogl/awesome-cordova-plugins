@@ -3,6 +3,7 @@ function __export(m) {
 }
 __export(require('./plugins/camera'));
 __export(require('./plugins/statusbar'));
+__export(require('./plugins/toast'));
 /*
 let wrappedPlugins = {}
 

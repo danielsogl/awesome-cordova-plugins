@@ -19,6 +19,9 @@ export class Plugin {
 
   doMethod(method) {
     console.log('Doing method', method, 'on Plugin', this.plugin);
+
+    // TODO: Pass args
+    this.plugin[method].apply(this.plugin);
   }
 
 }
