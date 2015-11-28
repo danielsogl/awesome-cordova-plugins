@@ -1,0 +1,13 @@
+<ion-navbar *navbar>
+  <ion-title>
+    {{plugin.name}}
+  </ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ng-for="#method of methods" (click)="doMethod(method)">
+      {{method}}()
+    </ion-item>
+  </ion-list>
+</ion-content>

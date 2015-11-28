@@ -19,6 +19,7 @@
         "src/index.ts",
         "src/plugin-config.ts",
         "src/plugins/camera.ts",
+        "src/plugins/statusbar.ts",
         "src/util.ts"
     ],
     "atom": {

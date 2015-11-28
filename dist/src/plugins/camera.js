@@ -1,9 +1,8 @@
 var util_1 = require('../util');
 var PLUGIN_REF = 'navigator.camera';
-var Camera = (function () {
-    function Camera() {
-    }
-    Camera.getPicture = util_1.promisify(PLUGIN_REF, 'getPicture', 0, 1);
-    return Camera;
-})();
-exports.Camera = Camera;
+exports.Camera = {
+    name: 'Camera',
+    plugin: 'cordova-plugin-camera',
+    getPicture: util_1.promisify(PLUGIN_REF, 'getPicture', 0, 1),
+    cleanup: util_1.promisify(PLUGIN_REF, 'cleanup', 0, 1)
+};

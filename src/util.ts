@@ -20,3 +20,19 @@ export const promisify = (pluginRef, methodName, successIndex, errorIndex) => {
     })
   }
 }
+
+export const wrap = (pluginRef, methodName, successIndex=null, errorIndex=null) => {
+  return (...args) => {
+    return new Promise((resolve, reject) => {
+
+      if(successIndex) {
+        args[successIndex] = resolve;
+      }
+      if(errorIndex) {
+        args[errorIndex] = reject;
+      }
+
+      get(window, pluginRef)[methodName].apply(this, args);
+    })
+  }
+}

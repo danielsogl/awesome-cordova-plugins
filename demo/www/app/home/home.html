@@ -1,0 +1,13 @@
+<ion-navbar *navbar>
+  <ion-title>
+    Ionic Native
+  </ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ng-for="#plugin of plugins" (click)="choosePlugin(plugin)">
+      {{plugin.name}}
+    </ion-item>
+  </ion-list>
+</ion-content>

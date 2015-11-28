@@ -1,0 +1,24 @@
+// To customize the look and feel of Ionic, you can override
+// the Sass variables found in Ionic's source scss files.
+
+// App Color Variables
+// ---------------------------------
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (primary: #387ef5, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222222);
+
+// Ionic Sass
+// ---------------------------------
+@import "ionic";
+
+// App Sass
+// ---------------------------------
+// It is recommended to do all of your imports in your files to let webpack build them
+// in a module like manner.
+// For example - instead of adding the @imports here, create a sass file 
+// in ./tabs/tabs.scss - then @import your variables there, along with any custom styles.
+// Webpack only rebuilds that specific sass file on changes, 
+// and not the entire bundle, making rebuild times much faster for sass changes

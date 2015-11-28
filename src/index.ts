@@ -1,11 +1,5 @@
-interface Window { Native: any }
-
-import {PluginConfig} from './plugin-config'
-import {promisifyCordova} from './cordova';
-
-import {get} from './util';
-
 export * from './plugins/camera';
+export * from './plugins/statusbar';
 
 /*
 let wrappedPlugins = {}

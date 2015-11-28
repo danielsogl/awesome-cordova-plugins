@@ -1,3 +1,6 @@
-export declare class Camera {
-    static getPicture: (...args: any[]) => any;
-}
+export declare var Camera: {
+    name: string;
+    plugin: string;
+    getPicture: (...args: any[]) => any;
+    cleanup: (...args: any[]) => any;
+};
