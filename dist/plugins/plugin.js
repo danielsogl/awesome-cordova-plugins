@@ -6,8 +6,13 @@ exports.wrap = function (pluginObj, methodName, opts) {
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i - 0] = arguments[_i];
         }
-        console.log('Trying', pluginObj.name, methodName, args);
         return new Promise(function (resolve, reject) {
+            if (!window.cordova) {
+                console.warn('Native: tried calling ' + pluginObj.name + '.' + methodName + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
+                reject({
+                    error: 'cordova_not_available'
+                });
+            }
             if (typeof opts.successIndex !== 'undefined') {
                 args[opts.successIndex] = resolve;
             }

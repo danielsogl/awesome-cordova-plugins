@@ -29,7 +29,8 @@ var Toast = (function () {
         plugin_1.Plugin({
             name: 'Toast',
             plugin: 'cordova-plugin-x-toast',
-            pluginRef: 'plugins.toast'
+            pluginRef: 'plugins.toast',
+            repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin'
         }), 
         __metadata('design:paramtypes', [])
     ], Toast);

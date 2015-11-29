@@ -1,6 +1,6 @@
 import {Page, NavController} from 'ionic/ionic'
 
-import {Camera, StatusBar, Toast} from 'ionic-native';
+import {ActionSheet, Camera, StatusBar, Toast} from 'ionic-native';
 
 import {Plugin} from '../plugin/plugin';
 
@@ -12,6 +12,7 @@ export class HomePage {
     this.nav = nav;
 
     this.plugins = [
+      ActionSheet,
       Camera,
       StatusBar,
       Toast

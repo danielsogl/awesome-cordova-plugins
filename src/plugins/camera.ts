@@ -1,7 +1,5 @@
 import {Plugin, Cordova} from './plugin';
 
-let PLUGIN_REF = 'navigator.camera';
-
 @Plugin({
   name: 'Camera',
   plugin: 'cordova-plugin-camera',

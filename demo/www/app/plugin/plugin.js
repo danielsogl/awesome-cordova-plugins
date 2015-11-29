@@ -1,9 +1,21 @@
 import {Page, NavParams} from 'ionic/ionic';
 
-import {Camera, StatusBar, Toast} from 'ionic-native';
+import {Camera, StatusBar, Toast, ActionSheet} from 'ionic-native';
 
 // To specify arguments for any plugin calls
 var demoArgs = {};
+demoArgs[ActionSheet] = {
+  show: {
+    'title': 'What do you want with this image?',
+    'buttonLabels': ['Share via Facebook', 'Share via Twitter'],
+    'androidEnableCancelButton' : true, // default false
+    'winphoneEnableCancelButton' : true, // default false
+    'addCancelButtonWithLabel': 'Cancel',
+    'addDestructiveButtonWithLabel' : 'Delete it',
+    'position': [20, 40] // for iPad pass in the [x, y] position of the popover
+  }
+}
+
 demoArgs[Toast] = {
   showWithOptions: [
     {

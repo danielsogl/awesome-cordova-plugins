@@ -5,8 +5,14 @@ declare var Promise;
 
 export const wrap = function(pluginObj,  methodName, opts: any = {}) {
   return (...args) => {
-    console.log('Trying', pluginObj.name, methodName, args);
     return new Promise((resolve, reject) => {
+
+      if(!window.cordova) {
+        console.warn('Native: tried calling ' + pluginObj.name + '.' + methodName + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
+        reject({
+          error: 'cordova_not_available'
+        })
+      }
 
       if(typeof opts.successIndex !== 'undefined') {
         args[opts.successIndex] = resolve;

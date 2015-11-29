@@ -7,7 +7,6 @@ if (typeof __decorate !== "function") __decorate = function (decorators, target,
     }
 };
 var plugin_1 = require('./plugin');
-var PLUGIN_REF = 'navigator.camera';
 var Camera = (function () {
     function Camera() {
     }

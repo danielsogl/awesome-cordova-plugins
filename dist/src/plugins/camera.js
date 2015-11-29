@@ -8,7 +8,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var plugin_1 = require('./plugin');
-var PLUGIN_REF = 'navigator.camera';
 var Camera = (function () {
     function Camera() {
     }

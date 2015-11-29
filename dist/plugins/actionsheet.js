@@ -7,29 +7,29 @@ if (typeof __decorate !== "function") __decorate = function (decorators, target,
     }
 };
 var plugin_1 = require('./plugin');
-var Toast = (function () {
-    function Toast() {
+var ActionSheet = (function () {
+    function ActionSheet() {
     }
-    __decorate([
-        plugin_1.Cordova({
-            successIndex: 0,
-            errIndex: 1
-        })
-    ], Toast, "hide");
     __decorate([
         plugin_1.Cordova({
             successIndex: 1,
             errIndex: 2
         })
-    ], Toast, "showWithOptions");
-    Toast = __decorate([
-        plugin_1.Plugin({
-            name: 'Toast',
-            plugin: 'cordova-plugin-x-toast',
-            pluginRef: 'plugins.toast',
-            repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin'
+    ], ActionSheet, "show");
+    __decorate([
+        plugin_1.Cordova({
+            successIndex: 1,
+            errIndex: 2
         })
-    ], Toast);
-    return Toast;
+    ], ActionSheet, "hide");
+    ActionSheet = __decorate([
+        plugin_1.Plugin({
+            name: 'ActionSheet',
+            plugin: 'cordova-plugin-actionsheet',
+            pluginRef: 'plugins.actionsheet',
+            repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet'
+        })
+    ], ActionSheet);
+    return ActionSheet;
 })();
-exports.Toast = Toast;
+exports.ActionSheet = ActionSheet;

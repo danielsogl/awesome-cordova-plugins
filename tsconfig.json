@@ -15,9 +15,9 @@
         "node_modules"
     ],
     "files": [
-        "src/cordova.ts",
         "src/index.ts",
         "src/plugin-config.ts",
+        "src/plugins/actionsheet.ts",
         "src/plugins/camera.ts",
         "src/plugins/plugin.ts",
         "src/plugins/statusbar.ts",
