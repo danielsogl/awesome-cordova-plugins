@@ -59,12 +59,18 @@ export class Plugin {
       addPixelsY: -40  // added a negative value to move it up a bit (default 0)
     });
     console.log('Doing method', method, 'on Plugin', this.plugin, 'args:', args);
-    // TODO: Pass args
-    this.plugin[method].apply(this.plugin, args).then(() => {
-      console.log('Success', arguments);
-    }, (err) => {
-      console.error('Error', err);
-    });
+
+    let v = this.plugin[method].apply(this.plugin, args);
+
+    if(v && v.then) {
+      v.then(() => {
+        console.log('Success', arguments);
+      }, (err) => {
+        console.error('Error', err);
+      });
+    } else {
+      console.log('Response: ', v);
+    }
   }
 
 }

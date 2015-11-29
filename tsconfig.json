@@ -19,6 +19,7 @@
         "src/plugin-config.ts",
         "src/plugins/actionsheet.ts",
         "src/plugins/camera.ts",
+        "src/plugins/device.ts",
         "src/plugins/plugin.ts",
         "src/plugins/statusbar.ts",
         "src/plugins/toast.ts",

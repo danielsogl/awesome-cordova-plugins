@@ -3,15 +3,40 @@ import {get} from '../util';
 declare var window;
 declare var Promise;
 
+
+export const getPlugin = function(pluginRef: string): any {
+  return get(window, pluginRef);
+}
+export const isInstalled = function(pluginRef: string): boolean {
+  return !!getPlugin(pluginRef);
+}
+export const pluginWarn = function(pluginName: string, method: string, plugin: string) {
+  if(method) {
+    console.warn('Native: tried calling ' + pluginName + '.' + method +
+      ', but the ' + pluginName + ' plugin is not installed. Install the ' +
+      plugin + ' plugin');
+  } else {
+    console.warn('Native: tried accessing the ' + pluginName + ' plugin but it\'s not installed. Install the ' + plugin + ' plugin');
+  }
+}
+export const cordovaWarn = function(pluginName: string, method: string) {
+  if(method) {
+    console.warn('Native: tried calling ' + pluginName + '.' + method + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
+  } else {
+    console.warn('Native: tried accessing the ' + pluginName + ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
+  }
+}
+
 export const wrap = function(pluginObj,  methodName, opts: any = {}) {
   return (...args) => {
     return new Promise((resolve, reject) => {
 
       if(!window.cordova) {
-        console.warn('Native: tried calling ' + pluginObj.name + '.' + methodName + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
+        cordovaWarn(pluginObj.name, methodName);
         reject({
           error: 'cordova_not_available'
         })
+        return;
       }
 
       if(typeof opts.successIndex !== 'undefined') {
@@ -21,10 +46,10 @@ export const wrap = function(pluginObj,  methodName, opts: any = {}) {
         args[opts.errorIndex] = reject;
       }
 
-      let pluginInstance = get(window, pluginObj.pluginRef);
+      let pluginInstance = getPlugin(pluginObj.pluginRef);
 
       if(!pluginInstance) {
-        console.warn('Native: tried calling ' + pluginObj.name + '.' + methodName + ', but the ' + pluginObj.name + ' plugin is not installed. Install the ' + pluginObj.plugin + ' plugin');
+        pluginWarn(pluginObj.name, methodName, pluginObj.name);
         reject({
           error: 'plugin_not_installed'
         });
@@ -36,15 +61,6 @@ export const wrap = function(pluginObj,  methodName, opts: any = {}) {
   }
 }
 
-class PluginDecotor {
-  cls: any;
-  config: any;
-
-  constructor(cls, config) {
-    this.cls = cls;
-    this.config = config;
-  }
-}
 export function Plugin(config) {
   return function(cls) {
 
@@ -62,7 +78,27 @@ export function Cordova(opts:any = {}) {
     if(opts.promise) {
       console.log('TODO: Promise');
     }
-
     obj[methodName] = wrap(obj, methodName, opts).bind(obj);
   }
+}
+
+export function RequiresPlugin(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
+  let originalMethod = descriptor.value;
+
+  descriptor.value = function(...args: any[]) {
+    console.log('Calling', this);
+    if(!window.cordova) {
+      cordovaWarn(this.name, null);
+      return;
+    }
+
+    let pluginInstance = getPlugin(this.pluginRef);
+    if(!pluginInstance) {
+      pluginWarn(this.name, null, this.name);
+      return;
+    }
+    originalMethod.apply(this, args);
+  }
+
+  return descriptor;
 }

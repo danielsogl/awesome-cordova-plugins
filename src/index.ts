@@ -2,11 +2,16 @@ const DEVICE_READY_TIMEOUT = 2000;
 
 export * from './plugins/actionsheet';
 export * from './plugins/camera';
+export * from './plugins/device';
 export * from './plugins/statusbar';
 export * from './plugins/toast';
 
-declare var window;
 
+// To help developers using cordova, we listen for the device ready event and
+// log an error if it didn't fire in a reasonable amount of time. Generally,
+// when this happens, developers should remove and reinstall plugins, since
+// an inconsistent plugin is often the culprit.
+declare var window;
 
 let didFireReady = false;
 window.addEventListener('deviceready', function() {

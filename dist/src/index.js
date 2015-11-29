@@ -4,6 +4,7 @@ function __export(m) {
 var DEVICE_READY_TIMEOUT = 2000;
 __export(require('./plugins/actionsheet'));
 __export(require('./plugins/camera'));
+__export(require('./plugins/device'));
 __export(require('./plugins/statusbar'));
 __export(require('./plugins/toast'));
 var didFireReady = false;
