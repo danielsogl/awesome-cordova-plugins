@@ -1,6 +1,4 @@
-export declare var Toast: {
-    name: string;
-    plugin: string;
-    showWithOptions: (...args: any[]) => any;
-    hide: (...args: any[]) => any;
-};
+export declare class Toast {
+    static hide: any;
+    static showWithOptions: any;
+}

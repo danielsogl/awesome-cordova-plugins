@@ -1,13 +1,11 @@
-export declare var StatusBar: {
-    name: string;
-    plugin: string;
-    overlaysWebView: (...args: any[]) => any;
-    styleDefault: (...args: any[]) => any;
-    styleLightContent: (...args: any[]) => any;
-    styleBlackTranslucent: (...args: any[]) => any;
-    styleBlackOpaque: (...args: any[]) => any;
-    backgroundColorByName: (...args: any[]) => any;
-    backgroundColorByHexString: (...args: any[]) => any;
-    hide: (...args: any[]) => any;
-    show: (...args: any[]) => any;
-};
+export declare class StatusBar {
+    static overlaysWebView: any;
+    static styleDefault: any;
+    static styleLightContent: any;
+    static styleBlackTranslucent: any;
+    static styleBlackOpaque: any;
+    static backgroundColorByName: any;
+    static backgroundColorByHexString: any;
+    static hide: any;
+    static show: any;
+}

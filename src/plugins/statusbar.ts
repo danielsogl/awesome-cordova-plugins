@@ -1,20 +1,27 @@
-import {wrap} from '../util';
+import {Plugin, Cordova} from './plugin';
 
-let PLUGIN_REF = 'StatusBar';
-
-export var StatusBar = {
-  // Metadata
+@Plugin({
   name: 'StatusBar',
   plugin: 'cordova-plugin-statusbar',
-
-  // Methods
-  overlaysWebView: wrap(PLUGIN_REF, 'overlaysWebView'),
-  styleDefault: wrap(PLUGIN_REF, 'styleDefault'),
-  styleLightContent: wrap(PLUGIN_REF, 'styleLightContent'),
-  styleBlackTranslucent: wrap(PLUGIN_REF, 'styleBlackTranslucent'),
-  styleBlackOpaque: wrap(PLUGIN_REF, 'styleBlackOpaque'),
-  backgroundColorByName: wrap(PLUGIN_REF, 'backgroundColorByName'),
-  backgroundColorByHexString: wrap(PLUGIN_REF, 'backgroundColorByHexString'),
-  hide: wrap(PLUGIN_REF, 'hide'),
-  show: wrap(PLUGIN_REF, 'show')
+  pluginRef: 'StatusBar'
+})
+export class StatusBar {
+  @Cordova()
+  static overlaysWebView;
+  @Cordova()
+  static styleDefault;
+  @Cordova()
+  static styleLightContent;
+  @Cordova()
+  static styleBlackTranslucent;
+  @Cordova()
+  static styleBlackOpaque;
+  @Cordova()
+  static backgroundColorByName;
+  @Cordova()
+  static backgroundColorByHexString;
+  @Cordova()
+  static hide;
+  @Cordova()
+  static show;
 }

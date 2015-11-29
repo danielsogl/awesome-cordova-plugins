@@ -1,13 +1,22 @@
-import {promisify} from '../util';
+import {Plugin, Cordova} from './plugin';
 
 let PLUGIN_REF = 'navigator.camera';
 
-export var Camera = {
-  // Metadata
+@Plugin({
   name: 'Camera',
   plugin: 'cordova-plugin-camera',
+  pluginRef: 'navigator.camera'
+})
+export class Camera {
+  @Cordova({
+    successIndex: 0,
+    errIndex: 1
+  })
+  static getPicture;
 
-  // Methods
-  getPicture: promisify(PLUGIN_REF, 'getPicture', 0, 1),
-  cleanup: promisify(PLUGIN_REF, 'cleanup', 0, 1)
+  @Cordova({
+    successIndex: 0,
+    errIndex: 1
+  })
+  static cleanup;
 }

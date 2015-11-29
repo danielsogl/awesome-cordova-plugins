@@ -33,7 +33,6 @@ export class Plugin {
   }
 
   doMethod(method) {
-
     let pluginMethodArgEntry = demoArgs[this.plugin];
 
     let args = [];
@@ -41,9 +40,19 @@ export class Plugin {
       args = pluginMethodArgEntry[method] || [];
     }
 
+    Toast.showWithOptions({
+      message: 'Doing ' + this.plugin.name + '.' + method + '()',
+      duration: "short",
+      position: "bottom",
+      addPixelsY: -40  // added a negative value to move it up a bit (default 0)
+    });
     console.log('Doing method', method, 'on Plugin', this.plugin, 'args:', args);
     // TODO: Pass args
-    this.plugin[method].apply(this.plugin, args);
+    this.plugin[method].apply(this.plugin, args).then(() => {
+      console.log('Success', arguments);
+    }, (err) => {
+      console.error('Error', err);
+    });
   }
 
 }

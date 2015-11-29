@@ -1,8 +1,39 @@
-var util_1 = require('../util');
-var PLUGIN_REF = 'navigator.camera';
-exports.Camera = {
-    name: 'Camera',
-    plugin: 'cordova-plugin-camera',
-    getPicture: util_1.promisify(PLUGIN_REF, 'getPicture', 0, 1),
-    cleanup: util_1.promisify(PLUGIN_REF, 'cleanup', 0, 1)
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var plugin_1 = require('./plugin');
+var PLUGIN_REF = 'navigator.camera';
+var Camera = (function () {
+    function Camera() {
+    }
+    __decorate([
+        plugin_1.Cordova({
+            successIndex: 0,
+            errIndex: 1
+        }), 
+        __metadata('design:type', Object)
+    ], Camera, "getPicture", void 0);
+    __decorate([
+        plugin_1.Cordova({
+            successIndex: 0,
+            errIndex: 1
+        }), 
+        __metadata('design:type', Object)
+    ], Camera, "cleanup", void 0);
+    Camera = __decorate([
+        plugin_1.Plugin({
+            name: 'Camera',
+            plugin: 'cordova-plugin-camera',
+            pluginRef: 'navigator.camera'
+        }), 
+        __metadata('design:paramtypes', [])
+    ], Camera);
+    return Camera;
+})();
+exports.Camera = Camera;

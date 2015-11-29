@@ -1,13 +1,20 @@
-import {wrap, promisify} from '../util';
+import {Plugin, Cordova} from './plugin';
 
-let PLUGIN_REF = 'plugins.toast'
-
-export var Toast = {
-  // Metadata
+@Plugin({
   name: 'Toast',
   plugin: 'cordova-plugin-x-toast',
+  pluginRef: 'plugins.toast'
+})
+export class Toast {
+  @Cordova({
+    successIndex: 0,
+    errIndex: 1
+  })
+  static hide;
 
-  // Methods
-  showWithOptions: wrap(PLUGIN_REF, 'showWithOptions', 1, 2),
-  hide: promisify(PLUGIN_REF, 'hide', 0, 1),
+  @Cordova({
+    successIndex: 0,
+    errIndex: 1
+  })
+  static showWithOptions;
 }
