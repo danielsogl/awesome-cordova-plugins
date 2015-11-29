@@ -20,8 +20,8 @@ var Toast = (function () {
     ], Toast, "hide", void 0);
     __decorate([
         plugin_1.Cordova({
-            successIndex: 0,
-            errIndex: 1
+            successIndex: 1,
+            errIndex: 2
         }), 
         __metadata('design:type', Object)
     ], Toast, "showWithOptions", void 0);

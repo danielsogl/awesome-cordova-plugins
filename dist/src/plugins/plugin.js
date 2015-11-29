@@ -48,7 +48,7 @@ function Cordova(opts) {
         if (opts.promise) {
             console.log('TODO: Promise');
         }
-        obj[methodName] = exports.wrap(obj, methodName, opts);
+        obj[methodName] = exports.wrap(obj, methodName, opts).bind(obj);
     };
 }
 exports.Cordova = Cordova;

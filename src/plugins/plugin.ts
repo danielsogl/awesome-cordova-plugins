@@ -57,6 +57,6 @@ export function Cordova(opts:any = {}) {
       console.log('TODO: Promise');
     }
 
-    obj[methodName] = wrap(obj, methodName, opts);
+    obj[methodName] = wrap(obj, methodName, opts).bind(obj);
   }
 }
