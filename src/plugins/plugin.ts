@@ -32,10 +32,12 @@ export const cordovaWarn = function(pluginName: string, method: string) {
 function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:any={}, resolve:any, reject:any) {
   if(!window.cordova) {
     cordovaWarn(pluginObj.name, methodName);
+    /*
     reject({
       error: 'cordova_not_available'
     })
     return;
+    */
   }
 
   // Try to figure out where the success/error callbacks need to be bound
@@ -43,8 +45,9 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
 
   // If the plugin method expects myMethod(success, err, options)
   if(opts.callbackOrder == 'reverse') {
-    args[0] = resolve;
-    args[1] = reject;
+    // Get those arguments in the order [reject, resolve, ...restOfArgs]
+    args.unshift(reject);
+    args.unshift(resolve);
   } else if(typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
     // If we've specified a success/error index
     args.splice(opts.successIndex, 0, resolve);
@@ -68,7 +71,8 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
 
   console.log('Cordova calling', pluginObj.name, methodName, args);
 
-  return get(window, pluginObj.pluginRef)[methodName].apply(pluginObj, args);
+  // TODO: Illegal invocation needs window context
+  return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
 }
 
 function wrapPromise(pluginObj:any, methodName:string, args:any[], opts:any={}) {
@@ -78,8 +82,12 @@ function wrapPromise(pluginObj:any, methodName:string, args:any[], opts:any={}) 
 }
 
 function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any = {}) {
-  return Observable.create((observer) => {
-    let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.onNext, observer.onError);
+  return new Observable(observer => {
+    console.log('Calling inside observable', observer);
+    let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, (d) => {
+      console.log('WATCH RESP', d);
+      observer.next(d)
+    }, observer.error);
 
     return () => {
       return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, pluginResult);

@@ -28,17 +28,14 @@ function callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject) {
     if (opts === void 0) { opts = {}; }
     if (!window.cordova) {
         exports.cordovaWarn(pluginObj.name, methodName);
-        reject({
-            error: 'cordova_not_available'
-        });
-        return;
     }
     // Try to figure out where the success/error callbacks need to be bound
     // to our promise resolve/reject handlers.
     // If the plugin method expects myMethod(success, err, options)
     if (opts.callbackOrder == 'reverse') {
-        args[0] = resolve;
-        args[1] = reject;
+        // Get those arguments in the order [reject, resolve, ...restOfArgs]
+        args.unshift(reject);
+        args.unshift(resolve);
     }
     else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
         // If we've specified a success/error index
@@ -60,7 +57,8 @@ function callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject) {
         return;
     }
     console.log('Cordova calling', pluginObj.name, methodName, args);
-    return util_1.get(window, pluginObj.pluginRef)[methodName].apply(pluginObj, args);
+    // TODO: Illegal invocation needs window context
+    return util_1.get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
 }
 function wrapPromise(pluginObj, methodName, args, opts) {
     if (opts === void 0) { opts = {}; }
@@ -70,8 +68,12 @@ function wrapPromise(pluginObj, methodName, args, opts) {
 }
 function wrapObservable(pluginObj, methodName, args, opts) {
     if (opts === void 0) { opts = {}; }
-    return Rx_1.Observable.create(function (observer) {
-        var pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.onNext, observer.onError);
+    return new Rx_1.Observable(function (observer) {
+        console.log('Calling inside observable', observer);
+        var pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, function (d) {
+            console.log('WATCH RESP', d);
+            observer.next(d);
+        }, observer.error);
         return function () {
             return util_1.get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, pluginResult);
         };

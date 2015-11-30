@@ -16,8 +16,11 @@ export * from './plugins/toast';
 // an inconsistent plugin is often the culprit.
 declare var window;
 
+let before = +new Date;
+
 let didFireReady = false;
-window.addEventListener('deviceready', function() {
+document.addEventListener('deviceready', function() {
+  console.log('DEVICE READY FIRED AFTER', (+new Date - before), 'ms')
   didFireReady = true;
 })
 

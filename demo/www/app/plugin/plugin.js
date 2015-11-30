@@ -69,6 +69,15 @@ export class Plugin {
       });
     } else {
       console.log('Response: ', v);
+
+      if(v.subscribe) {
+        console.log('Observable response, subscribing...');
+        v.subscribe((val) => {
+          console.log('Observable val', val);
+        }, (err) => {
+          console.log('ERROR: Observable', err);
+        });
+      }
     }
   }
 

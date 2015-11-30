@@ -7,32 +7,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     }
 };
 var plugin_1 = require('./plugin');
-var Device = (function () {
-    function Device() {
+var Geolocation = (function () {
+    function Geolocation() {
     }
-    Device.getCurrentPosition = function (options) { };
+    Geolocation.getCurrentPosition = function (options) { };
     ;
-    Device.watchPosition = function (options) { };
+    Geolocation.watchPosition = function (options) { };
     ;
-    Object.defineProperty(Device, "getCurrentPosition",
+    Object.defineProperty(Geolocation, "getCurrentPosition",
         __decorate([
             plugin_1.Cordova()
-        ], Device, "getCurrentPosition", Object.getOwnPropertyDescriptor(Device, "getCurrentPosition")));
-    Object.defineProperty(Device, "watchPosition",
+        ], Geolocation, "getCurrentPosition", Object.getOwnPropertyDescriptor(Geolocation, "getCurrentPosition")));
+    Object.defineProperty(Geolocation, "watchPosition",
         __decorate([
             plugin_1.Cordova({
+                callbackOrder: 'reverse',
                 observable: true,
                 clearFunction: 'clearWatch()'
             })
-        ], Device, "watchPosition", Object.getOwnPropertyDescriptor(Device, "watchPosition")));
-    Device = __decorate([
+        ], Geolocation, "watchPosition", Object.getOwnPropertyDescriptor(Geolocation, "watchPosition")));
+    Geolocation = __decorate([
         plugin_1.Plugin({
             name: 'Geolocation',
             plugin: 'cordova-plugin-geolocation',
             pluginRef: 'navigator.geolocation'
         })
-    ], Device);
-    return Device;
+    ], Geolocation);
+    return Geolocation;
 })();
-exports.Device = Device;
+exports.Geolocation = Geolocation;
 //# sourceMappingURL=geolocation.js.map

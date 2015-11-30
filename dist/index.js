@@ -10,8 +10,10 @@ __export(require('./plugins/device'));
 __export(require('./plugins/geolocation'));
 __export(require('./plugins/statusbar'));
 __export(require('./plugins/toast'));
+var before = +new Date;
 var didFireReady = false;
-window.addEventListener('deviceready', function () {
+document.addEventListener('deviceready', function () {
+    console.log('DEVICE READY FIRED AFTER', (+new Date - before), 'ms');
     didFireReady = true;
 });
 setTimeout(function () {

@@ -9,12 +9,13 @@ declare var window;
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation'
 })
-export class Device {
+export class Geolocation {
   @Cordova()
   static getCurrentPosition(options:any){};
 
 
   @Cordova({
+    callbackOrder: 'reverse',
     observable: true,
     clearFunction: 'clearWatch()'
   })
