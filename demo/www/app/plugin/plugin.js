@@ -6,13 +6,10 @@ import {Camera, StatusBar, Toast, ActionSheet} from 'ionic-native';
 var demoArgs = {};
 demoArgs[ActionSheet] = {
   show: {
-    'title': 'What do you want with this image?',
-    'buttonLabels': ['Share via Facebook', 'Share via Twitter'],
+    'buttonLabels': ['Log out'],
     'androidEnableCancelButton' : true, // default false
     'winphoneEnableCancelButton' : true, // default false
-    'addCancelButtonWithLabel': 'Cancel',
-    'addDestructiveButtonWithLabel' : 'Delete it',
-    'position': [20, 40] // for iPad pass in the [x, y] position of the popover
+    'addCancelButtonWithLabel': 'Cancel'
   }
 }
 
@@ -50,6 +47,8 @@ export class Plugin {
     let args = [];
     if(pluginMethodArgEntry) {
       args = pluginMethodArgEntry[method] || [];
+
+      console.log('Found some default args', args);
     }
 
     Toast.showWithOptions({

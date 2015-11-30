@@ -7,10 +7,7 @@ import {Plugin, Cordova} from './plugin';
   pluginRepo: 'https://github.com/don/cordova-plugin-ble-central'
 })
 export class BLE {
-  @Cordova({
-    successIndex: 2,
-    errIndex: 3
-  })
+  @Cordova()
   static scan(services:any[], seconds:number) {}
 
   @Cordova()
