@@ -25,12 +25,9 @@ exports.cordovaWarn = function (pluginName, method) {
     }
 };
 function callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject) {
-    if (opts === void 0) { opts = {}; }
-    if (!window.cordova) {
-        exports.cordovaWarn(pluginObj.name, methodName);
-    }
     // Try to figure out where the success/error callbacks need to be bound
     // to our promise resolve/reject handlers.
+    if (opts === void 0) { opts = {}; }
     // If the plugin method expects myMethod(success, err, options)
     if (opts.callbackOrder == 'reverse') {
         // Get those arguments in the order [reject, resolve, ...restOfArgs]
@@ -50,6 +47,14 @@ function callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject) {
     }
     var pluginInstance = exports.getPlugin(pluginObj.pluginRef);
     if (!pluginInstance) {
+        // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
+        if (!window.cordova) {
+            exports.cordovaWarn(pluginObj.name, methodName);
+            reject({
+                error: 'cordova_not_available'
+            });
+            return;
+        }
         exports.pluginWarn(pluginObj.name, methodName, pluginObj.name);
         reject({
             error: 'plugin_not_installed'
@@ -69,13 +74,15 @@ function wrapPromise(pluginObj, methodName, args, opts) {
 function wrapObservable(pluginObj, methodName, args, opts) {
     if (opts === void 0) { opts = {}; }
     return new Rx_1.Observable(function (observer) {
-        console.log('Calling inside observable', observer);
-        var pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, function (d) {
-            console.log('WATCH RESP', d);
-            observer.next(d);
-        }, observer.error);
+        var pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
         return function () {
-            return util_1.get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, pluginResult);
+            try {
+                return util_1.get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, pluginResult);
+            }
+            catch (e) {
+                console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
+                console.log(e);
+            }
         };
     });
 }
@@ -87,7 +94,6 @@ exports.wrap = function (pluginObj, methodName, opts) {
             args[_i - 0] = arguments[_i];
         }
         if (opts.observable) {
-            console.log("Wrapping observable");
             return wrapObservable(pluginObj, methodName, args, opts);
         }
         else {

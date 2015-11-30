@@ -30,16 +30,6 @@ export const cordovaWarn = function(pluginName: string, method: string) {
 }
 
 function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:any={}, resolve:any, reject:any) {
-  if(!window.cordova) {
-    cordovaWarn(pluginObj.name, methodName);
-    /*
-    reject({
-      error: 'cordova_not_available'
-    })
-    return;
-    */
-  }
-
   // Try to figure out where the success/error callbacks need to be bound
   // to our promise resolve/reject handlers.
 
@@ -62,6 +52,15 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
   let pluginInstance = getPlugin(pluginObj.pluginRef);
 
   if(!pluginInstance) {
+    // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
+    if(!window.cordova) {
+      cordovaWarn(pluginObj.name, methodName);
+      reject({
+        error: 'cordova_not_available'
+      })
+      return;
+    }
+
     pluginWarn(pluginObj.name, methodName, pluginObj.name);
     reject({
       error: 'plugin_not_installed'
@@ -83,14 +82,15 @@ function wrapPromise(pluginObj:any, methodName:string, args:any[], opts:any={}) 
 
 function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any = {}) {
   return new Observable(observer => {
-    console.log('Calling inside observable', observer);
-    let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, (d) => {
-      console.log('WATCH RESP', d);
-      observer.next(d)
-    }, observer.error);
+    let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
 
     return () => {
-      return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, pluginResult);
+      try {
+        return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, pluginResult);
+      } catch(e) {
+        console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
+        console.log(e);
+      }
     }
   });
 }
@@ -99,7 +99,6 @@ export const wrap = function(pluginObj:any,  methodName:string, opts:any = {}) {
   return (...args) => {
 
     if(opts.observable) {
-      console.log("Wrapping observable");
       return wrapObservable(pluginObj, methodName, args, opts);
     } else {
       return wrapPromise(pluginObj, methodName, args, opts);
