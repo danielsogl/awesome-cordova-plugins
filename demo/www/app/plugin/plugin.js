@@ -46,7 +46,7 @@ export class Plugin {
 
     let args = [];
     if(pluginMethodArgEntry) {
-      args = pluginMethodArgEntry[method] || [];
+      args = [pluginMethodArgEntry[method]] || [];
 
       console.log('Found some default args', args);
     }
