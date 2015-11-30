@@ -45,8 +45,8 @@ exports.wrap = function (pluginObj, methodName, opts) {
                 args[1] = reject;
             }
             else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
-                args[opts.successIndex] = resolve;
-                args[opts.errorIndex] = reject;
+                args.splice(opts.successIndex, resolve);
+                args.splice(opts.errorIndex, reject);
             }
             else {
                 args.push(resolve);

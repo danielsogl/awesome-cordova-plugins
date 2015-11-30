@@ -49,8 +49,8 @@ exports.wrap = function (pluginObj, methodName, opts) {
             }
             else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
                 // If we've specified a success/error index
-                args[opts.successIndex] = resolve;
-                args[opts.errorIndex] = reject;
+                args.splice(opts.successIndex, resolve);
+                args.splice(opts.errorIndex, reject);
             }
             else {
                 // Otherwise, let's tack them on to the end of the argument list

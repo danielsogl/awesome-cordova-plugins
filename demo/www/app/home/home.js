@@ -2,7 +2,9 @@ import {Page, NavController} from 'ionic/ionic'
 
 import {
   ActionSheet,
+  BLE,
   Camera,
+  Contacts,
   Device,
   StatusBar,
   Toast
@@ -19,7 +21,9 @@ export class HomePage {
 
     this.plugins = [
       ActionSheet,
+      BLE,
       Camera,
+      Contacts,
       Device,
       StatusBar,
       Toast

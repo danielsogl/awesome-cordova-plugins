@@ -6,8 +6,8 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ng-for="#plugin of plugins" (click)="choosePlugin(plugin)">
+    <button ion-item *ng-for="#plugin of plugins" (click)="choosePlugin(plugin)">
       {{plugin.name}}
-    </ion-item>
+    </button>
   </ion-list>
 </ion-content>
