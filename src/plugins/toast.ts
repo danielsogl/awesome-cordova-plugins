@@ -7,17 +7,9 @@ import {Plugin, Cordova} from './plugin';
   repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin'
 })
 export class Toast {
-  @Cordova({
-    successIndex: 0,
-    errIndex: 1
-  })
+  @Cordova()
   static hide(){};
 
-  @Cordova({
-    successIndex: 1,
-    errIndex: 2
-  })
-  static showWithOptions(options:any){
-    console.log('Show with options');
-  };
+  @Cordova()
+  static showWithOptions(options:any){};
 }

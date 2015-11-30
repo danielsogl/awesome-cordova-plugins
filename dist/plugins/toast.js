@@ -1,4 +1,4 @@
-if (typeof __decorate !== "function") __decorate = function (decorators, target, key, desc) {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
     switch (arguments.length) {
         case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
@@ -12,23 +12,15 @@ var Toast = (function () {
     }
     Toast.hide = function () { };
     ;
-    Toast.showWithOptions = function (options) {
-        console.log('Show with options');
-    };
+    Toast.showWithOptions = function (options) { };
     ;
     Object.defineProperty(Toast, "hide",
         __decorate([
-            plugin_1.Cordova({
-                successIndex: 0,
-                errIndex: 1
-            })
+            plugin_1.Cordova()
         ], Toast, "hide", Object.getOwnPropertyDescriptor(Toast, "hide")));
     Object.defineProperty(Toast, "showWithOptions",
         __decorate([
-            plugin_1.Cordova({
-                successIndex: 1,
-                errIndex: 2
-            })
+            plugin_1.Cordova()
         ], Toast, "showWithOptions", Object.getOwnPropertyDescriptor(Toast, "showWithOptions")));
     Toast = __decorate([
         plugin_1.Plugin({

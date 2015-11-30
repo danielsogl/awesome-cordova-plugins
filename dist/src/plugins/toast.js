@@ -13,24 +13,16 @@ var Toast = (function () {
     }
     Toast.hide = function () { };
     ;
-    Toast.showWithOptions = function (options) {
-        console.log('Show with options');
-    };
+    Toast.showWithOptions = function (options) { };
     ;
     __decorate([
-        plugin_1.Cordova({
-            successIndex: 0,
-            errIndex: 1
-        }), 
+        plugin_1.Cordova(), 
         __metadata('design:type', Function), 
         __metadata('design:paramtypes', []), 
         __metadata('design:returntype', void 0)
     ], Toast, "hide", null);
     __decorate([
-        plugin_1.Cordova({
-            successIndex: 1,
-            errIndex: 2
-        }), 
+        plugin_1.Cordova(), 
         __metadata('design:type', Function), 
         __metadata('design:paramtypes', [Object]), 
         __metadata('design:returntype', void 0)

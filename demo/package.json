@@ -19,7 +19,13 @@
   "name": "demo",
   "description": "demo: An Ionic project",
   "cordovaPlugins": [
-    "cordova-plugin-x-toast"
+    "cordova-plugin-x-toast",
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
     "ios"
