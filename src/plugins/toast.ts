@@ -11,11 +11,11 @@ export class Toast {
     successIndex: 0,
     errIndex: 1
   })
-  static hide;
+  static hide(){};
 
   @Cordova({
     successIndex: 1,
     errIndex: 2
   })
-  static showWithOptions;
+  static showWithOptions(options:any){};
 }

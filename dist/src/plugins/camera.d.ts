@@ -1,4 +1,4 @@
 export declare class Camera {
-    static getPicture: any;
-    static cleanup: any;
+    static getPicture(options: any): void;
+    static cleanup(): void;
 }

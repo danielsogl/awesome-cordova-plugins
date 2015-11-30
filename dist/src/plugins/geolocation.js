@@ -8,35 +8,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var plugin_1 = require('./plugin');
-var Camera = (function () {
-    function Camera() {
+var Device = (function () {
+    function Device() {
     }
-    Camera.getPicture = function (options) { };
+    Device.getCurrentPosition = function (options) { };
     ;
-    Camera.cleanup = function () { };
-    ;
-    __decorate([
-        plugin_1.Cordova({
-            callbackOrder: 'reverse'
-        }), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', [Object]), 
-        __metadata('design:returntype', void 0)
-    ], Camera, "getPicture", null);
     __decorate([
         plugin_1.Cordova(), 
         __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
+        __metadata('design:paramtypes', [Object]), 
         __metadata('design:returntype', void 0)
-    ], Camera, "cleanup", null);
-    Camera = __decorate([
+    ], Device, "getCurrentPosition", null);
+    Device = __decorate([
         plugin_1.Plugin({
-            name: 'Camera',
-            plugin: 'cordova-plugin-camera',
-            pluginRef: 'navigator.camera'
+            name: 'Geolocation',
+            plugin: 'cordova-plugin-geolocation',
+            pluginRef: 'navigator.geolocation'
         }), 
         __metadata('design:paramtypes', [])
-    ], Camera);
-    return Camera;
+    ], Device);
+    return Device;
 })();
-exports.Camera = Camera;
+exports.Device = Device;

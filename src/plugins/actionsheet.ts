@@ -7,15 +7,9 @@ import {Plugin, Cordova} from './plugin';
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet'
 })
 export class ActionSheet {
-  @Cordova({
-    successIndex: 1,
-    errIndex: 2
-  })
-  static show;
+  @Cordova()
+  static show(options:any){};
 
-  @Cordova({
-    successIndex: 1,
-    errIndex: 2
-  })
-  static hide;
+  @Cordova()
+  static hide(options:any){};
 }

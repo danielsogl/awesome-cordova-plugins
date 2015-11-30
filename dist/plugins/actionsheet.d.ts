@@ -1,4 +1,4 @@
 export declare class ActionSheet {
-    static show: any;
-    static hide: any;
+    static show(options: any): void;
+    static hide(options: any): void;
 }

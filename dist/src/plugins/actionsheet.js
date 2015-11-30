@@ -8,35 +8,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var plugin_1 = require('./plugin');
-var Camera = (function () {
-    function Camera() {
+var ActionSheet = (function () {
+    function ActionSheet() {
     }
-    Camera.getPicture = function (options) { };
+    ActionSheet.show = function (options) { };
     ;
-    Camera.cleanup = function () { };
+    ActionSheet.hide = function (options) { };
     ;
-    __decorate([
-        plugin_1.Cordova({
-            callbackOrder: 'reverse'
-        }), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', [Object]), 
-        __metadata('design:returntype', void 0)
-    ], Camera, "getPicture", null);
     __decorate([
         plugin_1.Cordova(), 
         __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
+        __metadata('design:paramtypes', [Object]), 
         __metadata('design:returntype', void 0)
-    ], Camera, "cleanup", null);
-    Camera = __decorate([
+    ], ActionSheet, "show", null);
+    __decorate([
+        plugin_1.Cordova(), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [Object]), 
+        __metadata('design:returntype', void 0)
+    ], ActionSheet, "hide", null);
+    ActionSheet = __decorate([
         plugin_1.Plugin({
-            name: 'Camera',
-            plugin: 'cordova-plugin-camera',
-            pluginRef: 'navigator.camera'
+            name: 'ActionSheet',
+            plugin: 'cordova-plugin-actionsheet',
+            pluginRef: 'plugins.actionsheet',
+            repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet'
         }), 
         __metadata('design:paramtypes', [])
-    ], Camera);
-    return Camera;
+    ], ActionSheet);
+    return ActionSheet;
 })();
-exports.Camera = Camera;
+exports.ActionSheet = ActionSheet;

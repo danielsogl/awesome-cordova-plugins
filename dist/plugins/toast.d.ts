@@ -1,4 +1,4 @@
 export declare class Toast {
-    static hide: any;
-    static showWithOptions: any;
+    static hide(): void;
+    static showWithOptions(options: any): void;
 }

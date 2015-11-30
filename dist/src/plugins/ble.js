@@ -8,89 +8,84 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var plugin_1 = require('./plugin');
-var StatusBar = (function () {
-    function StatusBar() {
+var BLE = (function () {
+    function BLE() {
     }
-    StatusBar.overlaysWebView = function (doOverlay) { };
+    BLE.scan = function (services, seconds) { };
+    BLE.startScan = function (services) { };
     ;
-    StatusBar.styleDefault = function () { };
+    BLE.stopScan = function () { };
     ;
-    StatusBar.styleLightContent = function () { };
+    BLE.connect = function (deviceId) { };
     ;
-    StatusBar.styleBlackTranslucent = function () { };
+    BLE.disconnect = function (deviceId) { };
     ;
-    StatusBar.styleBlackOpaque = function () { };
+    BLE.read = function (deviceId, serviceUUID, characteristicUUID) { };
     ;
-    StatusBar.backgroundColorByName = function (colorName) { };
+    BLE.write = function (deviceId, serviceUUID, characteristicUUID, value) { };
     ;
-    StatusBar.backgroundColorByHexString = function (hexString) { };
+    BLE.writeWithoutResponse = function (deviceId, serviceUUID, characteristicUUID, value) { };
     ;
-    StatusBar.hide = function () { };
-    ;
-    StatusBar.show = function () { };
-    ;
+    __decorate([
+        plugin_1.Cordova({
+            successIndex: 2,
+            errIndex: 3
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [Array, Number]), 
+        __metadata('design:returntype', void 0)
+    ], BLE, "scan", null);
     __decorate([
         plugin_1.Cordova(), 
         __metadata('design:type', Function), 
-        __metadata('design:paramtypes', [Boolean]), 
+        __metadata('design:paramtypes', [Array]), 
         __metadata('design:returntype', void 0)
-    ], StatusBar, "overlaysWebView", null);
-    __decorate([
-        plugin_1.Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], StatusBar, "styleDefault", null);
-    __decorate([
-        plugin_1.Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], StatusBar, "styleLightContent", null);
+    ], BLE, "startScan", null);
     __decorate([
         plugin_1.Cordova(), 
         __metadata('design:type', Function), 
         __metadata('design:paramtypes', []), 
         __metadata('design:returntype', void 0)
-    ], StatusBar, "styleBlackTranslucent", null);
-    __decorate([
-        plugin_1.Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], StatusBar, "styleBlackOpaque", null);
+    ], BLE, "stopScan", null);
     __decorate([
         plugin_1.Cordova(), 
         __metadata('design:type', Function), 
         __metadata('design:paramtypes', [String]), 
         __metadata('design:returntype', void 0)
-    ], StatusBar, "backgroundColorByName", null);
+    ], BLE, "connect", null);
     __decorate([
         plugin_1.Cordova(), 
         __metadata('design:type', Function), 
         __metadata('design:paramtypes', [String]), 
         __metadata('design:returntype', void 0)
-    ], StatusBar, "backgroundColorByHexString", null);
+    ], BLE, "disconnect", null);
     __decorate([
         plugin_1.Cordova(), 
         __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
+        __metadata('design:paramtypes', [String, String, String]), 
         __metadata('design:returntype', void 0)
-    ], StatusBar, "hide", null);
+    ], BLE, "read", null);
     __decorate([
         plugin_1.Cordova(), 
         __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
+        __metadata('design:paramtypes', [String, String, String, ArrayBuffer]), 
         __metadata('design:returntype', void 0)
-    ], StatusBar, "show", null);
-    StatusBar = __decorate([
+    ], BLE, "write", null);
+    __decorate([
+        plugin_1.Cordova(), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [String, String, String, ArrayBuffer]), 
+        __metadata('design:returntype', void 0)
+    ], BLE, "writeWithoutResponse", null);
+    BLE = __decorate([
         plugin_1.Plugin({
-            name: 'StatusBar',
-            plugin: 'cordova-plugin-statusbar',
-            pluginRef: 'StatusBar'
+            name: 'BluetoothLowEnergy',
+            plugin: 'cordova-plugin-ble-central',
+            pluginRef: 'ble',
+            pluginRepo: 'https://github.com/don/cordova-plugin-ble-central'
         }), 
         __metadata('design:paramtypes', [])
-    ], StatusBar);
-    return StatusBar;
+    ], BLE);
+    return BLE;
 })();
-exports.StatusBar = StatusBar;
+exports.BLE = BLE;

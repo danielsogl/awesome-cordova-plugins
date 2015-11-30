@@ -10,18 +10,24 @@ var plugin_1 = require('./plugin');
 var Toast = (function () {
     function Toast() {
     }
-    __decorate([
-        plugin_1.Cordova({
-            successIndex: 0,
-            errIndex: 1
-        })
-    ], Toast, "hide");
-    __decorate([
-        plugin_1.Cordova({
-            successIndex: 1,
-            errIndex: 2
-        })
-    ], Toast, "showWithOptions");
+    Toast.hide = function () { };
+    ;
+    Toast.showWithOptions = function (options) { };
+    ;
+    Object.defineProperty(Toast, "hide",
+        __decorate([
+            plugin_1.Cordova({
+                successIndex: 0,
+                errIndex: 1
+            })
+        ], Toast, "hide", Object.getOwnPropertyDescriptor(Toast, "hide")));
+    Object.defineProperty(Toast, "showWithOptions",
+        __decorate([
+            plugin_1.Cordova({
+                successIndex: 1,
+                errIndex: 2
+            })
+        ], Toast, "showWithOptions", Object.getOwnPropertyDescriptor(Toast, "showWithOptions")));
     Toast = __decorate([
         plugin_1.Plugin({
             name: 'Toast',

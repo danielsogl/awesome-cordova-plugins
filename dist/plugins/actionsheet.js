@@ -10,18 +10,18 @@ var plugin_1 = require('./plugin');
 var ActionSheet = (function () {
     function ActionSheet() {
     }
-    __decorate([
-        plugin_1.Cordova({
-            successIndex: 1,
-            errIndex: 2
-        })
-    ], ActionSheet, "show");
-    __decorate([
-        plugin_1.Cordova({
-            successIndex: 1,
-            errIndex: 2
-        })
-    ], ActionSheet, "hide");
+    ActionSheet.show = function (options) { };
+    ;
+    ActionSheet.hide = function (options) { };
+    ;
+    Object.defineProperty(ActionSheet, "show",
+        __decorate([
+            plugin_1.Cordova()
+        ], ActionSheet, "show", Object.getOwnPropertyDescriptor(ActionSheet, "show")));
+    Object.defineProperty(ActionSheet, "hide",
+        __decorate([
+            plugin_1.Cordova()
+        ], ActionSheet, "hide", Object.getOwnPropertyDescriptor(ActionSheet, "hide")));
     ActionSheet = __decorate([
         plugin_1.Plugin({
             name: 'ActionSheet',

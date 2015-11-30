@@ -11,20 +11,28 @@ var plugin_1 = require('./plugin');
 var Toast = (function () {
     function Toast() {
     }
+    Toast.hide = function () { };
+    ;
+    Toast.showWithOptions = function (options) { };
+    ;
     __decorate([
         plugin_1.Cordova({
             successIndex: 0,
             errIndex: 1
         }), 
-        __metadata('design:type', Object)
-    ], Toast, "hide", void 0);
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], Toast, "hide", null);
     __decorate([
         plugin_1.Cordova({
             successIndex: 1,
             errIndex: 2
         }), 
-        __metadata('design:type', Object)
-    ], Toast, "showWithOptions", void 0);
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [Object]), 
+        __metadata('design:returntype', void 0)
+    ], Toast, "showWithOptions", null);
     Toast = __decorate([
         plugin_1.Plugin({
             name: 'Toast',

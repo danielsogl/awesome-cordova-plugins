@@ -10,18 +10,21 @@ var plugin_1 = require('./plugin');
 var Camera = (function () {
     function Camera() {
     }
-    __decorate([
-        plugin_1.Cordova({
-            successIndex: 0,
-            errIndex: 1
-        })
-    ], Camera, "getPicture");
-    __decorate([
-        plugin_1.Cordova({
-            successIndex: 0,
-            errIndex: 1
-        })
-    ], Camera, "cleanup");
+    Camera.getPicture = function (options) { };
+    ;
+    Camera.cleanup = function () { };
+    ;
+    Object.defineProperty(Camera, "getPicture",
+        __decorate([
+            plugin_1.Cordova({
+                // Not sure why this plugin has the success/err come first...
+                callbackOrder: 'reverse'
+            })
+        ], Camera, "getPicture", Object.getOwnPropertyDescriptor(Camera, "getPicture")));
+    Object.defineProperty(Camera, "cleanup",
+        __decorate([
+            plugin_1.Cordova()
+        ], Camera, "cleanup", Object.getOwnPropertyDescriptor(Camera, "cleanup")));
     Camera = __decorate([
         plugin_1.Plugin({
             name: 'Camera',

@@ -7,14 +7,11 @@ import {Plugin, Cordova} from './plugin';
 })
 export class Camera {
   @Cordova({
-    successIndex: 0,
-    errIndex: 1
+    // Not sure why this plugin has the success/err come first...
+    callbackOrder: 'reverse'
   })
-  static getPicture;
+  static getPicture(options:any){};
 
-  @Cordova({
-    successIndex: 0,
-    errIndex: 1
-  })
-  static cleanup;
+  @Cordova()
+  static cleanup(){};
 }

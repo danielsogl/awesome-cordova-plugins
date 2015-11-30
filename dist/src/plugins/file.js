@@ -8,35 +8,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var plugin_1 = require('./plugin');
-var Camera = (function () {
-    function Camera() {
+var File = (function () {
+    function File() {
     }
-    Camera.getPicture = function (options) { };
-    ;
-    Camera.cleanup = function () { };
-    ;
-    __decorate([
-        plugin_1.Cordova({
-            callbackOrder: 'reverse'
-        }), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', [Object]), 
-        __metadata('design:returntype', void 0)
-    ], Camera, "getPicture", null);
-    __decorate([
-        plugin_1.Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], Camera, "cleanup", null);
-    Camera = __decorate([
+    File = __decorate([
         plugin_1.Plugin({
-            name: 'Camera',
-            plugin: 'cordova-plugin-camera',
-            pluginRef: 'navigator.camera'
+            name: 'File',
+            plugin: 'cordova-plugin-file',
+            pluginRef: 'cordova.file'
         }), 
         __metadata('design:paramtypes', [])
-    ], Camera);
-    return Camera;
+    ], File);
+    return File;
 })();
-exports.Camera = Camera;
+exports.File = File;

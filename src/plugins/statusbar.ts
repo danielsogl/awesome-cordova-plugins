@@ -7,21 +7,21 @@ import {Plugin, Cordova} from './plugin';
 })
 export class StatusBar {
   @Cordova()
-  static overlaysWebView;
+  static overlaysWebView(doOverlay:boolean){};
   @Cordova()
-  static styleDefault;
+  static styleDefault(){};
   @Cordova()
-  static styleLightContent;
+  static styleLightContent(){};
   @Cordova()
-  static styleBlackTranslucent;
+  static styleBlackTranslucent(){};
   @Cordova()
-  static styleBlackOpaque;
+  static styleBlackOpaque(){};
   @Cordova()
-  static backgroundColorByName;
+  static backgroundColorByName(colorName:string){};
   @Cordova()
-  static backgroundColorByHexString;
+  static backgroundColorByHexString(hexString:string){};
   @Cordova()
-  static hide;
+  static hide(){};
   @Cordova()
-  static show;
+  static show(){};
 }

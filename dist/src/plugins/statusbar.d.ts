@@ -1,11 +1,11 @@
 export declare class StatusBar {
-    static overlaysWebView: any;
-    static styleDefault: any;
-    static styleLightContent: any;
-    static styleBlackTranslucent: any;
-    static styleBlackOpaque: any;
-    static backgroundColorByName: any;
-    static backgroundColorByHexString: any;
-    static hide: any;
-    static show: any;
+    static overlaysWebView(doOverlay: boolean): void;
+    static styleDefault(): void;
+    static styleLightContent(): void;
+    static styleBlackTranslucent(): void;
+    static styleBlackOpaque(): void;
+    static backgroundColorByName(colorName: string): void;
+    static backgroundColorByHexString(hexString: string): void;
+    static hide(): void;
+    static show(): void;
 }

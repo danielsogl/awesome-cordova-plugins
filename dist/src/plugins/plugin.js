@@ -38,11 +38,17 @@ exports.wrap = function (pluginObj, methodName, opts) {
                 });
                 return;
             }
-            if (typeof opts.successIndex !== 'undefined') {
-                args[opts.successIndex] = resolve;
+            if (opts.callbackOrder == 'reverse') {
+                args[0] = resolve;
+                args[1] = reject;
             }
-            if (typeof opts.errorIndex !== 'undefined') {
+            else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
+                args[opts.successIndex] = resolve;
                 args[opts.errorIndex] = reject;
+            }
+            else {
+                args.push(resolve);
+                args.push(reject);
             }
             var pluginInstance = exports.getPlugin(pluginObj.pluginRef);
             if (!pluginInstance) {
@@ -67,11 +73,17 @@ function Plugin(config) {
 exports.Plugin = Plugin;
 function Cordova(opts) {
     if (opts === void 0) { opts = {}; }
-    return function (obj, methodName) {
-        if (opts.promise) {
-            console.log('TODO: Promise');
-        }
-        obj[methodName] = exports.wrap(obj, methodName, opts).bind(obj);
+    return function (target, methodName, descriptor) {
+        var originalMethod = descriptor.value;
+        return {
+            value: function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i - 0] = arguments[_i];
+                }
+                return exports.wrap(this, methodName, opts)();
+            }
+        };
     };
 }
 exports.Cordova = Cordova;
