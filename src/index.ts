@@ -1,9 +1,9 @@
 const DEVICE_READY_TIMEOUT = 2000;
 
-//export * from './plugins/actionsheet';
-//export * from './plugins/camera';
-//export * from './plugins/device';
-//export * from './plugins/statusbar';
+export * from './plugins/actionsheet';
+export * from './plugins/camera';
+export * from './plugins/device';
+export * from './plugins/statusbar';
 export * from './plugins/toast';
 
 
