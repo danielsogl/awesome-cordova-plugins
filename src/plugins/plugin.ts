@@ -3,6 +3,8 @@ import {get} from '../util';
 declare var window;
 declare var Promise;
 
+import {Observable} from '@reactivex/rxjs/dist/cjs/Rx';
+
 
 export const getPlugin = function(pluginRef: string): any {
   return get(window, pluginRef);
@@ -27,52 +29,73 @@ export const cordovaWarn = function(pluginName: string, method: string) {
   }
 }
 
-export const wrap = function(pluginObj,  methodName, opts: any = {}) {
-  console.log('Wrap', pluginObj.name, methodName);
-  return (...args) => {
-    console.log('Wrap CALLED', pluginObj.name, methodName, args);
-    return new Promise((resolve, reject) => {
-
-      if(!window.cordova) {
-        cordovaWarn(pluginObj.name, methodName);
-        reject({
-          error: 'cordova_not_available'
-        })
-        return;
-      }
-
-      // Try to figure out where the success/error callbacks need to be bound
-      // to our promise resolve/reject handlers.
-
-      // If the plugin method expects myMethod(success, err, options)
-      if(opts.callbackOrder == 'reverse') {
-        args[0] = resolve;
-        args[1] = reject;
-      } else if(typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
-        // If we've specified a success/error index
-        args.splice(opts.successIndex, resolve);
-        args.splice(opts.errorIndex, reject);
-      } else {
-        // Otherwise, let's tack them on to the end of the argument list
-        // which is 90% of cases
-        args.push(resolve);
-        args.push(reject);
-      }
-
-      let pluginInstance = getPlugin(pluginObj.pluginRef);
-
-      if(!pluginInstance) {
-        pluginWarn(pluginObj.name, methodName, pluginObj.name);
-        reject({
-          error: 'plugin_not_installed'
-        });
-        return;
-      }
-
-      console.log('Cordova calling', pluginObj.name, methodName, args);
-
-      get(window, pluginObj.pluginRef)[methodName].apply(pluginObj, args);
+function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:any={}, resolve:any, reject:any) {
+  if(!window.cordova) {
+    cordovaWarn(pluginObj.name, methodName);
+    reject({
+      error: 'cordova_not_available'
     })
+    return;
+  }
+
+  // Try to figure out where the success/error callbacks need to be bound
+  // to our promise resolve/reject handlers.
+
+  // If the plugin method expects myMethod(success, err, options)
+  if(opts.callbackOrder == 'reverse') {
+    args[0] = resolve;
+    args[1] = reject;
+  } else if(typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
+    // If we've specified a success/error index
+    args.splice(opts.successIndex, 0, resolve);
+    args.splice(opts.errorIndex, 0, reject);
+  } else {
+    // Otherwise, let's tack them on to the end of the argument list
+    // which is 90% of cases
+    args.push(resolve);
+    args.push(reject);
+  }
+
+  let pluginInstance = getPlugin(pluginObj.pluginRef);
+
+  if(!pluginInstance) {
+    pluginWarn(pluginObj.name, methodName, pluginObj.name);
+    reject({
+      error: 'plugin_not_installed'
+    });
+    return;
+  }
+
+  console.log('Cordova calling', pluginObj.name, methodName, args);
+
+  return get(window, pluginObj.pluginRef)[methodName].apply(pluginObj, args);
+}
+
+function wrapPromise(pluginObj:any, methodName:string, args:any[], opts:any={}) {
+  return new Promise((resolve, reject) => {
+    callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
+  })
+}
+
+function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any = {}) {
+  return Observable.create((observer) => {
+    let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.onNext, observer.onError);
+
+    return () => {
+      return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, pluginResult);
+    }
+  });
+}
+
+export const wrap = function(pluginObj:any,  methodName:string, opts:any = {}) {
+  return (...args) => {
+
+    if(opts.observable) {
+      console.log("Wrapping observable");
+      return wrapObservable(pluginObj, methodName, args, opts);
+    } else {
+      return wrapPromise(pluginObj, methodName, args, opts);
+    }
   }
 }
 

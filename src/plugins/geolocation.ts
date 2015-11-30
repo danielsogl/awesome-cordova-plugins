@@ -1,5 +1,7 @@
 import {Plugin, Cordova} from './plugin';
 
+declare var Promise;
+
 declare var window;
 
 @Plugin({
@@ -12,7 +14,9 @@ export class Device {
   static getCurrentPosition(options:any){};
 
 
-  // Do this with observables
-  // @Cordova()
-  // static watchPosition;
+  @Cordova({
+    observable: true,
+    clearFunction: 'clearWatch()'
+  })
+  static watchPosition(options:any){};
 }

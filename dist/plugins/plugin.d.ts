@@ -2,7 +2,7 @@ export declare const getPlugin: (pluginRef: string) => any;
 export declare const isInstalled: (pluginRef: string) => boolean;
 export declare const pluginWarn: (pluginName: string, method: string, plugin: string) => void;
 export declare const cordovaWarn: (pluginName: string, method: string) => void;
-export declare const wrap: (pluginObj: any, methodName: any, opts?: any) => (...args: any[]) => any;
+export declare const wrap: (pluginObj: any, methodName: string, opts?: any) => (...args: any[]) => any;
 /**
  * Class decorator specifying Plugin metadata. Required for all plugins.
  */

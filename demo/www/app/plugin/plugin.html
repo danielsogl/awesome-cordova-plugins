@@ -6,8 +6,8 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ng-for="#method of methods" (click)="doMethod(method)">
+    <button ion-item *ng-for="#method of methods" (click)="doMethod(method)">
       {{method}}()
-    </ion-item>
+    </button>
   </ion-list>
 </ion-content>

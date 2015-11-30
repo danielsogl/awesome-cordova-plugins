@@ -7,24 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     }
 };
 var plugin_1 = require('./plugin');
-var Device = (function () {
-    function Device() {
+var File = (function () {
+    function File() {
     }
-    Device.getDevice = function () {
-        return window.device;
-    };
-    Object.defineProperty(Device, "getDevice",
-        __decorate([
-            plugin_1.RequiresPlugin
-        ], Device, "getDevice", Object.getOwnPropertyDescriptor(Device, "getDevice")));
-    Device = __decorate([
+    File = __decorate([
         plugin_1.Plugin({
-            name: 'Device',
-            plugin: 'cordova-plugin-device',
-            pluginRef: 'device'
+            name: 'File',
+            plugin: 'cordova-plugin-file',
+            pluginRef: 'cordova.file'
         })
-    ], Device);
-    return Device;
+    ], File);
+    return File;
 })();
-exports.Device = Device;
-//# sourceMappingURL=device.js.map
+exports.File = File;
+//# sourceMappingURL=file.js.map

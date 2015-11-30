@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --experimentalDecorators"
+    "build": "tsc -w --module commonjs --sourcemap --outDir dist/ --experimentalDecorators -d node_modules/@reactivex/rxjs/typings/es6-shim/es6-shim.d.ts src/index.ts --target ES5"
   },
   "repository": {
     "type": "git",

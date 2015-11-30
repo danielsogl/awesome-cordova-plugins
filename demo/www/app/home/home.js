@@ -6,6 +6,7 @@ import {
   Camera,
   Contacts,
   Device,
+  Geolocation,
   StatusBar,
   Toast
 } from 'ionic-native';
@@ -25,6 +26,7 @@ export class HomePage {
       Camera,
       Contacts,
       Device,
+      Geolocation,
       StatusBar,
       Toast
     ];

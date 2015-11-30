@@ -5,15 +5,26 @@
         "noImplicitAny": false,
         "outDir": "dist",
         "rootDir": ".",
-        "sourceMap": false,
+        "sourceMap": true,
         "declaration": true
     },
     "exclude": [
         "node_modules"
     ],
+    "filesGlob": [
+        "src/**/*.ts"
+    ],
     "files": [
         "src/index.ts",
-        "src/plugin-config.ts",
+        "src/plugins/actionsheet.ts",
+        "src/plugins/ble.ts",
+        "src/plugins/camera.ts",
+        "src/plugins/contacts.ts",
+        "src/plugins/device.ts",
+        "src/plugins/file.ts",
+        "src/plugins/geolocation.ts",
+        "src/plugins/plugin.ts",
+        "src/plugins/statusbar.ts",
         "src/plugins/toast.ts",
         "src/util.ts"
     ],
