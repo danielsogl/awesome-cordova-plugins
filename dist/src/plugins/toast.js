@@ -13,7 +13,9 @@ var Toast = (function () {
     }
     Toast.hide = function () { };
     ;
-    Toast.showWithOptions = function (options) { };
+    Toast.showWithOptions = function (options) {
+        console.log('Show with options');
+    };
     ;
     __decorate([
         plugin_1.Cordova({

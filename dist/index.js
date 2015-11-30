@@ -2,10 +2,10 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 var DEVICE_READY_TIMEOUT = 2000;
-__export(require('./plugins/actionsheet'));
-__export(require('./plugins/camera'));
-__export(require('./plugins/device'));
-__export(require('./plugins/statusbar'));
+//export * from './plugins/actionsheet';
+//export * from './plugins/camera';
+//export * from './plugins/device';
+//export * from './plugins/statusbar';
 __export(require('./plugins/toast'));
 var didFireReady = false;
 window.addEventListener('deviceready', function () {

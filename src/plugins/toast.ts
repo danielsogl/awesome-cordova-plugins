@@ -17,5 +17,7 @@ export class Toast {
     successIndex: 1,
     errIndex: 2
   })
-  static showWithOptions(options:any){};
+  static showWithOptions(options:any){
+    console.log('Show with options');
+  };
 }

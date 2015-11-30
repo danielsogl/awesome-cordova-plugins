@@ -23,7 +23,9 @@ export class HomePage {
       Device,
       StatusBar,
       Toast
-    ];
+    ].filter((p) => {
+      return !!p;
+    });
     console.log('PLUGINS', this.plugins);
   }
 

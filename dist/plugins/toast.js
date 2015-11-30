@@ -12,7 +12,9 @@ var Toast = (function () {
     }
     Toast.hide = function () { };
     ;
-    Toast.showWithOptions = function (options) { };
+    Toast.showWithOptions = function (options) {
+        console.log('Show with options');
+    };
     ;
     Object.defineProperty(Toast, "hide",
         __decorate([

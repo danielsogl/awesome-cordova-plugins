@@ -25,11 +25,13 @@ exports.cordovaWarn = function (pluginName, method) {
 };
 exports.wrap = function (pluginObj, methodName, opts) {
     if (opts === void 0) { opts = {}; }
+    console.log('Wrap', pluginObj.name, methodName);
     return function () {
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i - 0] = arguments[_i];
         }
+        console.log('Wrap CALLED', pluginObj.name, methodName, args);
         return new Promise(function (resolve, reject) {
             if (!window.cordova) {
                 exports.cordovaWarn(pluginObj.name, methodName);
@@ -58,6 +60,7 @@ exports.wrap = function (pluginObj, methodName, opts) {
                 });
                 return;
             }
+            console.log('Cordova calling', pluginObj.name, methodName, args);
             util_1.get(window, pluginObj.pluginRef)[methodName].apply(pluginObj, args);
         });
     };
@@ -81,7 +84,7 @@ function Cordova(opts) {
                 for (var _i = 0; _i < arguments.length; _i++) {
                     args[_i - 0] = arguments[_i];
                 }
-                return exports.wrap(this, methodName, opts)();
+                return exports.wrap(this, methodName, opts).apply(this, args);
             }
         };
     };

@@ -28,7 +28,9 @@ export const cordovaWarn = function(pluginName: string, method: string) {
 }
 
 export const wrap = function(pluginObj,  methodName, opts: any = {}) {
+  console.log('Wrap', pluginObj.name, methodName);
   return (...args) => {
+    console.log('Wrap CALLED', pluginObj.name, methodName, args);
     return new Promise((resolve, reject) => {
 
       if(!window.cordova) {
@@ -67,6 +69,8 @@ export const wrap = function(pluginObj,  methodName, opts: any = {}) {
         return;
       }
 
+      console.log('Cordova calling', pluginObj.name, methodName, args);
+
       get(window, pluginObj.pluginRef)[methodName].apply(pluginObj, args);
     })
   }
@@ -97,7 +101,7 @@ export function Cordova(opts:any = {}) {
 
     return {
       value: function(...args: any[]) {
-        return wrap(this, methodName, opts)();
+        return wrap(this, methodName, opts).apply(this, args);
       }
     }
   }
