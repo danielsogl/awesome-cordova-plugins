@@ -134,7 +134,9 @@ export class Plugin {
 
     this.content.value = this.content.items.join();
 
-    this.textArea.scrollTop = this.textArea.scrollHeight;
+    setTimeout(() => {
+      this.textArea.scrollTop = this.textArea.scrollHeight;
+    })
   }
 
   doMethod(method) {
