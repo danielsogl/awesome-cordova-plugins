@@ -65,9 +65,27 @@ function callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject) {
     // TODO: Illegal invocation needs window context
     return util_1.get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
 }
+function getPromise(cb) {
+    if (window.Promise) {
+        console.log('Native promises available...');
+        return new Promise(function (resolve, reject) {
+            cb(resolve, reject);
+        });
+    }
+    else if (window.angular) {
+        var $q_1 = window.angular.injector(['ng']).get('$q');
+        console.log('Loaded $q', $q_1);
+        return $q_1(function (resolve, reject) {
+            cb(resolve, reject);
+        });
+    }
+    else {
+        console.error('No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular 1/2 or on a recent browser.');
+    }
+}
 function wrapPromise(pluginObj, methodName, args, opts) {
     if (opts === void 0) { opts = {}; }
-    return new Promise(function (resolve, reject) {
+    return getPromise(function (resolve, reject) {
         callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
     });
 }
@@ -110,6 +128,9 @@ function Plugin(config) {
         for (var k in config) {
             cls[k] = config[k];
         }
+        cls['installed'] = function () {
+            return !!exports.getPlugin(config.pluginRef);
+        };
         return cls;
     };
 }

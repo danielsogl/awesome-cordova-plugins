@@ -16,6 +16,7 @@
     ],
     "files": [
         "src/index.ts",
+        "src/ng1.ts",
         "src/plugins/actionsheet.ts",
         "src/plugins/ble.ts",
         "src/plugins/calendar.ts",

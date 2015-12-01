@@ -1,8 +1,10 @@
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
+    switch (arguments.length) {
+        case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
+        case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
+        case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
+    }
 };
 var plugin_1 = require('./plugin');
 var ActionSheet = (function () {
@@ -12,12 +14,14 @@ var ActionSheet = (function () {
     ;
     ActionSheet.hide = function (options) { };
     ;
-    __decorate([
-        plugin_1.Cordova()
-    ], ActionSheet, "show", null);
-    __decorate([
-        plugin_1.Cordova()
-    ], ActionSheet, "hide", null);
+    Object.defineProperty(ActionSheet, "show",
+        __decorate([
+            plugin_1.Cordova()
+        ], ActionSheet, "show", Object.getOwnPropertyDescriptor(ActionSheet, "show")));
+    Object.defineProperty(ActionSheet, "hide",
+        __decorate([
+            plugin_1.Cordova()
+        ], ActionSheet, "hide", Object.getOwnPropertyDescriptor(ActionSheet, "hide")));
     ActionSheet = __decorate([
         plugin_1.Plugin({
             name: 'ActionSheet',

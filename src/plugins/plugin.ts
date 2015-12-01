@@ -1,7 +1,10 @@
 import {get} from '../util';
 
+import {publishAngular1Service} from '../ng1';
+
 declare var window;
 declare var Promise;
+declare var $q;
 
 import {Observable} from '@reactivex/rxjs/dist/cjs/Rx';
 
@@ -74,8 +77,25 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
   return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
 }
 
+function getPromise(cb) {
+  if(window.Promise) {
+    console.log('Native promises available...');
+    return new Promise((resolve, reject) => {
+      cb(resolve, reject);
+    })
+  } else if(window.angular) {
+    let $q = window.angular.injector(['ng']).get('$q');
+    console.log('Loaded $q', $q);
+    return $q((resolve, reject) => {
+      cb(resolve, reject);
+    });
+  } else {
+    console.error('No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular 1/2 or on a recent browser.');
+  }
+}
+
 function wrapPromise(pluginObj:any, methodName:string, args:any[], opts:any={}) {
-  return new Promise((resolve, reject) => {
+  return getPromise((resolve, reject) => {
     callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
   })
 }
@@ -115,6 +135,10 @@ export function Plugin(config) {
     // Add these fields to the class
     for(let k in config) {
       cls[k] = config[k];
+    }
+
+    cls['installed'] = function() {
+      return !!getPlugin(config.pluginRef);
     }
 
     return cls;

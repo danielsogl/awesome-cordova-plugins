@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -w --module commonjs --sourcemap --outDir dist/ --experimentalDecorators -d node_modules/@reactivex/rxjs/typings/es6-shim/es6-shim.d.ts src/index.ts --target ES5"
+    "build": "tsc --module commonjs --sourcemap --outDir dist/ --experimentalDecorators -d node_modules/@reactivex/rxjs/typings/es6-shim/es6-shim.d.ts src/index.ts --target ES5",
+    "build_bundle": "npm run-script build && browserify dist/index.js > dist/ionic.native.js"
   },
   "repository": {
     "type": "git",

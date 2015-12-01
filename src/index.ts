@@ -1,4 +1,8 @@
+import {initAngular1} from './ng1';
+initAngular1();
+
 const DEVICE_READY_TIMEOUT = 2000;
+
 
 export * from './plugins/actionsheet';
 export * from './plugins/ble';
@@ -12,12 +16,35 @@ export * from './plugins/statusbar';
 export * from './plugins/toast';
 
 
+declare var window;
+
+import {ActionSheet} from './plugins/actionsheet';
+import {BLE} from './plugins/ble';
+import {Camera} from './plugins/camera';
+import {Calendar} from './plugins/calendar';
+import {Device} from './plugins/device';
+import {Facebook} from './plugins/facebook';
+import {Geolocation} from './plugins/geolocation';
+import {StatusBar} from './plugins/statusbar';
+import {Toast} from './plugins/toast';
+
+// Window export to use outside of a module loading system
+window['IonicNative'] = {
+  ActionSheet: ActionSheet,
+  BLE: BLE,
+  Camera: Camera,
+  Calendar: Calendar,
+  Device: Device,
+  Facebook: Facebook,
+  Geolocation: Geolocation,
+  StatusBar: StatusBar,
+  Toast: Toast
+}
+
 // To help developers using cordova, we listen for the device ready event and
 // log an error if it didn't fire in a reasonable amount of time. Generally,
 // when this happens, developers should remove and reinstall plugins, since
 // an inconsistent plugin is often the culprit.
-declare var window;
-
 let before = +new Date;
 
 let didFireReady = false;
