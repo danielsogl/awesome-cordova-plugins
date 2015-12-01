@@ -21,6 +21,7 @@
         "src/plugins/camera.ts",
         "src/plugins/contacts.ts",
         "src/plugins/device.ts",
+        "src/plugins/facebook.ts",
         "src/plugins/file.ts",
         "src/plugins/geolocation.ts",
         "src/plugins/plugin.ts",

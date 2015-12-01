@@ -6,6 +6,7 @@ import {
   Camera,
   Contacts,
   Device,
+  Facebook,
   Geolocation,
   StatusBar,
   Toast
@@ -26,6 +27,7 @@ export class HomePage {
       Camera,
       Contacts,
       Device,
+      Facebook,
       Geolocation,
       StatusBar,
       Toast

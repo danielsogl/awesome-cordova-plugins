@@ -7,6 +7,7 @@ __export(require('./plugins/ble'));
 __export(require('./plugins/camera'));
 __export(require('./plugins/contacts'));
 __export(require('./plugins/device'));
+__export(require('./plugins/facebook'));
 __export(require('./plugins/geolocation'));
 __export(require('./plugins/statusbar'));
 __export(require('./plugins/toast'));

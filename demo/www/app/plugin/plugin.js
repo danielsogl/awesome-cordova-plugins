@@ -2,76 +2,9 @@ import {ElementRef} from 'angular2/angular2';
 
 import {Page, NavParams} from 'ionic/ionic';
 
-import {Camera, StatusBar, Toast, ActionSheet} from 'ionic-native';
+import {Camera, StatusBar, Toast, ActionSheet, Facebook} from 'ionic-native';
 
-function safeJSONStringify (input, maxDepth)
-{
-
-  var output,
-  refs = [],
-  refsPaths = [];
-
-  maxDepth = maxDepth || 5;
-
-  function recursion (input, path, depth)
-  {
-    var output = {},
-    pPath,
-    refIdx;
-
-    path  = path  || "";
-    depth = depth || 0;
-    depth++;
-
-    if (maxDepth && depth > maxDepth)
-    {
-      return "{depth over " + maxDepth + "}";
-    }
-
-    for (var p in input)
-    {
-      pPath = (path ? (path+".") : "") + p;
-      if (typeof input[p] === "function")
-      {
-        //output[p] = "{function}";
-      }
-      else if (typeof input[p] === "object")
-      {
-        /*
-        refIdx = refs.indexOf(input[p]);
-
-        if (-1 !== refIdx)
-        {
-          output[p] = recursion(input[p])"{reference to " + refsPaths[refIdx]  + "}";
-        }
-        else
-        {
-        */
-          refs.push(input[p]);
-          refsPaths.push(pPath);
-          output[p] = recursion(input[p], pPath, depth);
-        //}
-      }
-      else
-      {
-        output[p] = input[p];
-      }
-    }
-
-    return output;
-  }
-
-  if (typeof input === "object")
-  {
-    output = recursion(input);
-  }
-  else
-  {
-    output = input;
-  }
-
-  return JSON.stringify(output);
-}
+import {safeJSONStringify} from '../util';
 
 // To specify arguments for any plugin calls
 var demoArgs = {};
@@ -94,6 +27,28 @@ demoArgs[Toast] = {
     }
   ]
 }
+
+demoArgs[Facebook] = {
+  login: [
+    ["public_profile"]
+  ]
+};
+
+var demoCode = {};
+
+demoCode[Facebook] = function() {
+  Facebook.login(["public_profile"]).then((userData) => {
+    console.log("Facebook UserInfo: ", userData);
+    this.output('Facebook UserInfo: ', userData);
+    Facebook.getAccessToken().then((token) => {
+      this.output('Facebook Token: ', token);
+      console.log("Token: " + token);
+    });
+  }, (err) => {
+    console.error(err);
+  });
+}
+
 
 @Page({
   templateUrl: 'app/plugin/plugin.html',
@@ -141,11 +96,11 @@ export class Plugin {
 
   doMethod(method) {
     let pluginMethodArgEntry = demoArgs[this.plugin];
+    let pluginCodeEntry = demoCode[this.plugin];
 
     let args = [];
     if(pluginMethodArgEntry) {
       args = [pluginMethodArgEntry[method]] || [];
-
       console.log('Found some default args', args);
     }
 
@@ -156,6 +111,12 @@ export class Plugin {
       addPixelsY: -40  // added a negative value to move it up a bit (default 0)
     });
     console.log('Doing method', method, 'on Plugin', this.plugin, 'args:', args);
+
+    // Run the custom code
+    if(pluginCodeEntry) {
+      pluginCodeEntry.apply(this);
+      return;
+    }
 
     let v = this.plugin[method].apply(this.plugin, args);
 
