@@ -5,6 +5,7 @@ var DEVICE_READY_TIMEOUT = 2000;
 __export(require('./plugins/actionsheet'));
 __export(require('./plugins/ble'));
 __export(require('./plugins/camera'));
+__export(require('./plugins/calendar'));
 __export(require('./plugins/contacts'));
 __export(require('./plugins/device'));
 __export(require('./plugins/facebook'));

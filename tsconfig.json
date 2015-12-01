@@ -18,6 +18,7 @@
         "src/index.ts",
         "src/plugins/actionsheet.ts",
         "src/plugins/ble.ts",
+        "src/plugins/calendar.ts",
         "src/plugins/camera.ts",
         "src/plugins/contacts.ts",
         "src/plugins/device.ts",

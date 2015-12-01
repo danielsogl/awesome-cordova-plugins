@@ -2,6 +2,8 @@ import {App, Platform} from 'ionic/ionic';
 import {HomePage} from './home/home';
 import './app.scss';
 
+import {StatusBar} from 'ionic-native';
+
 @App({
   template: `
     <ion-nav [root]="root"></ion-nav>
@@ -19,6 +21,7 @@ export class MyApp {
   initializeApp() {
     this.platform.ready().then(() => {
       console.log('Platform ready');
+      StatusBar.styleDefault();
     });
   }
 }

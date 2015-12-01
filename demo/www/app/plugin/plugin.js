@@ -2,7 +2,7 @@ import {ElementRef} from 'angular2/angular2';
 
 import {Page, NavParams} from 'ionic/ionic';
 
-import {Camera, StatusBar, Toast, ActionSheet, Facebook} from 'ionic-native';
+import {Camera, Calendar, StatusBar, Toast, ActionSheet, Facebook} from 'ionic-native';
 
 import {safeJSONStringify} from '../util';
 
@@ -36,17 +36,27 @@ demoArgs[Facebook] = {
 
 var demoCode = {};
 
-demoCode[Facebook] = function() {
-  Facebook.login(["public_profile"]).then((userData) => {
-    console.log("Facebook UserInfo: ", userData);
-    this.output('Facebook UserInfo: ', userData);
-    Facebook.getAccessToken().then((token) => {
-      this.output('Facebook Token: ', token);
-      console.log("Token: " + token);
+demoCode[Calendar] = {
+  createEventInteractively: function() {
+    Calendar.createEventInteractively("Grab Coffee", "Johnson Public House", new Date(), new Date()).then((event) => {
+      console.log("Created event", event);
+      this.output('Created event', event);
+    })
+  }
+};
+demoCode[Facebook] = {
+  login: function() {
+    Facebook.login(["public_profile"]).then((userData) => {
+      console.log("Facebook UserInfo: ", userData);
+      this.output('Facebook UserInfo: ', userData);
+      Facebook.getAccessToken().then((token) => {
+        this.output('Facebook Token: ', token);
+        console.log("Token: " + token);
+      });
+    }, (err) => {
+      console.error(err);
     });
-  }, (err) => {
-    console.error(err);
-  });
+  }
 }
 
 
@@ -96,7 +106,7 @@ export class Plugin {
 
   doMethod(method) {
     let pluginMethodArgEntry = demoArgs[this.plugin];
-    let pluginCodeEntry = demoCode[this.plugin];
+    let pluginCodeEntry = demoCode[this.plugin] && demoCode[this.plugin][method];
 
     let args = [];
     if(pluginMethodArgEntry) {

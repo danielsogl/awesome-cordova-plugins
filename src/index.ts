@@ -3,6 +3,7 @@ const DEVICE_READY_TIMEOUT = 2000;
 export * from './plugins/actionsheet';
 export * from './plugins/ble';
 export * from './plugins/camera';
+export * from './plugins/calendar';
 export * from './plugins/contacts';
 export * from './plugins/device';
 export * from './plugins/facebook';

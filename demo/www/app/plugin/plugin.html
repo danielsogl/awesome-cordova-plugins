@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-input fixed-label>
-    <textarea [(ng-model)]="content.value" style="height: 150px; font-size: 11px"></textarea>
+    <textarea [(ng-model)]="content.value" style="height: 150px; font-size: 11px" placeholder="Plugin output will go here as you test methods..."></textarea>
   </ion-input>
   <ion-list>
     <button ion-item *ng-for="#method of methods" (click)="doMethod(method)">
