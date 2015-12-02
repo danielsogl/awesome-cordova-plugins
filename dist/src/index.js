@@ -23,6 +23,8 @@ var statusbar_1 = require('./plugins/statusbar');
 exports.StatusBar = statusbar_1.StatusBar;
 var toast_1 = require('./plugins/toast');
 exports.Toast = toast_1.Toast;
+var touchid_1 = require('./plugins/touchid');
+exports.TouchID = touchid_1.TouchID;
 window['IonicNative'] = {
     ActionSheet: actionsheet_1.ActionSheet,
     BLE: ble_1.BLE,
@@ -34,7 +36,8 @@ window['IonicNative'] = {
     Geolocation: geolocation_1.Geolocation,
     Push: push_1.Push,
     StatusBar: statusbar_1.StatusBar,
-    Toast: toast_1.Toast
+    Toast: toast_1.Toast,
+    TouchID: touchid_1.TouchID
 };
 var before = +new Date;
 var didFireReady = false;

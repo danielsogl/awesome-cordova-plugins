@@ -17,6 +17,7 @@ import {Geolocation} from './plugins/geolocation';
 import {Push} from './plugins/push';
 import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
+import {TouchID} from './plugins/touchid';
 
 export {
   ActionSheet,
@@ -29,7 +30,8 @@ export {
   Geolocation,
   Push,
   StatusBar,
-  Toast
+  Toast,
+  TouchID
 }
 
 // Window export to use outside of a module loading system
@@ -44,7 +46,8 @@ window['IonicNative'] = {
   Geolocation: Geolocation,
   Push: Push,
   StatusBar: StatusBar,
-  Toast: Toast
+  Toast: Toast,
+  TouchID: TouchID
 }
 
 // To help developers using cordova, we listen for the device ready event and

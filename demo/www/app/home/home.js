@@ -11,7 +11,8 @@ import {
   Geolocation,
   Push,
   StatusBar,
-  Toast
+  Toast,
+  TouchID
 } from 'ionic-native';
 
 import {Plugin} from '../plugin/plugin';
@@ -34,7 +35,8 @@ export class HomePage {
       Geolocation,
       Push,
       StatusBar,
-      Toast
+      Toast,
+      TouchID
     ];
     console.log('PLUGINS', this.plugins);
   }
