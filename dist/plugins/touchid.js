@@ -11,13 +11,20 @@ var TouchID = (function () {
     TouchID.prototype.isAvailable = function () { };
     ;
     TouchID.verifyFingerprint = function (message) { };
-    ;
+    TouchID.verifyFingerprintWithCustomPasswordFallback = function (message) { };
+    TouchID.verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel = function (message, enterPasswordLabel) { };
     __decorate([
         plugin_1.Cordova()
     ], TouchID.prototype, "isAvailable", null);
     __decorate([
         plugin_1.Cordova()
     ], TouchID, "verifyFingerprint", null);
+    __decorate([
+        plugin_1.Cordova()
+    ], TouchID, "verifyFingerprintWithCustomPasswordFallback", null);
+    __decorate([
+        plugin_1.Cordova()
+    ], TouchID, "verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel", null);
     TouchID = __decorate([
         plugin_1.Plugin({
             name: 'TouchID',

@@ -14,7 +14,8 @@ var TouchID = (function () {
     TouchID.prototype.isAvailable = function () { };
     ;
     TouchID.verifyFingerprint = function (message) { };
-    ;
+    TouchID.verifyFingerprintWithCustomPasswordFallback = function (message) { };
+    TouchID.verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel = function (message, enterPasswordLabel) { };
     __decorate([
         plugin_1.Cordova(), 
         __metadata('design:type', Function), 
@@ -27,6 +28,18 @@ var TouchID = (function () {
         __metadata('design:paramtypes', [String]), 
         __metadata('design:returntype', void 0)
     ], TouchID, "verifyFingerprint", null);
+    __decorate([
+        plugin_1.Cordova(), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [String]), 
+        __metadata('design:returntype', void 0)
+    ], TouchID, "verifyFingerprintWithCustomPasswordFallback", null);
+    __decorate([
+        plugin_1.Cordova(), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [String, String]), 
+        __metadata('design:returntype', void 0)
+    ], TouchID, "verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel", null);
     TouchID = __decorate([
         plugin_1.Plugin({
             name: 'TouchID',

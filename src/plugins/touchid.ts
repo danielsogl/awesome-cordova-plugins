@@ -11,5 +11,11 @@ export class TouchID {
   isAvailable() {};
 
   @Cordova()
-  static verifyFingerprint(message:string) {};
+  static verifyFingerprint(message:string) {}
+
+  @Cordova()
+  static verifyFingerprintWithCustomPasswordFallback(message:string) {}
+
+  @Cordova()
+  static verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message:string, enterPasswordLabel:string) {}
 }
