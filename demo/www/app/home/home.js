@@ -9,6 +9,7 @@ import {
   Device,
   Facebook,
   Geolocation,
+  Push,
   StatusBar,
   Toast
 } from 'ionic-native';
@@ -31,6 +32,7 @@ export class HomePage {
       Device,
       Facebook,
       Geolocation,
+      Push,
       StatusBar,
       Toast
     ];

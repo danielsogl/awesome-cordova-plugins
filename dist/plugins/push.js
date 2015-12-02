@@ -5,28 +5,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var plugin_1 = require('./plugin');
-var Toast = (function () {
-    function Toast() {
+var Push = (function () {
+    function Push() {
     }
-    Toast.hide = function () { };
-    ;
-    Toast.showWithOptions = function (options) { };
+    Push.init = function (options) { };
     ;
     __decorate([
         plugin_1.Cordova()
-    ], Toast, "hide", null);
-    __decorate([
-        plugin_1.Cordova()
-    ], Toast, "showWithOptions", null);
-    Toast = __decorate([
+    ], Push, "init", null);
+    Push = __decorate([
         plugin_1.Plugin({
-            name: 'Toast',
-            plugin: 'cordova-plugin-x-toast',
-            pluginRef: 'plugins.toast',
-            repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin'
+            name: 'Push',
+            plugin: 'phonegap-plugin-push',
+            pluginRef: 'PushNotification'
         })
-    ], Toast);
-    return Toast;
+    ], Push);
+    return Push;
 })();
-exports.Toast = Toast;
-//# sourceMappingURL=toast.js.map
+exports.Push = Push;
+//# sourceMappingURL=push.js.map

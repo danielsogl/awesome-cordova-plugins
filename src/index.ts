@@ -4,29 +4,33 @@ initAngular1();
 const DEVICE_READY_TIMEOUT = 2000;
 
 
-export * from './plugins/actionsheet';
-export * from './plugins/ble';
-export * from './plugins/camera';
-export * from './plugins/calendar';
-export * from './plugins/contacts';
-export * from './plugins/device';
-export * from './plugins/facebook';
-export * from './plugins/geolocation';
-export * from './plugins/statusbar';
-export * from './plugins/toast';
-
-
 declare var window;
 
 import {ActionSheet} from './plugins/actionsheet';
 import {BLE} from './plugins/ble';
 import {Camera} from './plugins/camera';
 import {Calendar} from './plugins/calendar';
+import {Contacts} from './plugins/contacts';
 import {Device} from './plugins/device';
 import {Facebook} from './plugins/facebook';
 import {Geolocation} from './plugins/geolocation';
+import {Push} from './plugins/push';
 import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
+
+export {
+  ActionSheet,
+  BLE,
+  Camera,
+  Calendar,
+  Contacts,
+  Device,
+  Facebook,
+  Geolocation,
+  Push,
+  StatusBar,
+  Toast
+}
 
 // Window export to use outside of a module loading system
 window['IonicNative'] = {
@@ -34,9 +38,11 @@ window['IonicNative'] = {
   BLE: BLE,
   Camera: Camera,
   Calendar: Calendar,
+  Contacts: Contacts,
   Device: Device,
   Facebook: Facebook,
   Geolocation: Geolocation,
+  Push: Push,
   StatusBar: StatusBar,
   Toast: Toast
 }

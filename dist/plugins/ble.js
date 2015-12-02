@@ -1,10 +1,8 @@
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-        case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
-        case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
-        case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
-    }
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var plugin_1 = require('./plugin');
 var BLE = (function () {
@@ -25,38 +23,30 @@ var BLE = (function () {
     ;
     BLE.writeWithoutResponse = function (deviceId, serviceUUID, characteristicUUID, value) { };
     ;
-    Object.defineProperty(BLE, "scan",
-        __decorate([
-            plugin_1.Cordova()
-        ], BLE, "scan", Object.getOwnPropertyDescriptor(BLE, "scan")));
-    Object.defineProperty(BLE, "startScan",
-        __decorate([
-            plugin_1.Cordova()
-        ], BLE, "startScan", Object.getOwnPropertyDescriptor(BLE, "startScan")));
-    Object.defineProperty(BLE, "stopScan",
-        __decorate([
-            plugin_1.Cordova()
-        ], BLE, "stopScan", Object.getOwnPropertyDescriptor(BLE, "stopScan")));
-    Object.defineProperty(BLE, "connect",
-        __decorate([
-            plugin_1.Cordova()
-        ], BLE, "connect", Object.getOwnPropertyDescriptor(BLE, "connect")));
-    Object.defineProperty(BLE, "disconnect",
-        __decorate([
-            plugin_1.Cordova()
-        ], BLE, "disconnect", Object.getOwnPropertyDescriptor(BLE, "disconnect")));
-    Object.defineProperty(BLE, "read",
-        __decorate([
-            plugin_1.Cordova()
-        ], BLE, "read", Object.getOwnPropertyDescriptor(BLE, "read")));
-    Object.defineProperty(BLE, "write",
-        __decorate([
-            plugin_1.Cordova()
-        ], BLE, "write", Object.getOwnPropertyDescriptor(BLE, "write")));
-    Object.defineProperty(BLE, "writeWithoutResponse",
-        __decorate([
-            plugin_1.Cordova()
-        ], BLE, "writeWithoutResponse", Object.getOwnPropertyDescriptor(BLE, "writeWithoutResponse")));
+    __decorate([
+        plugin_1.Cordova()
+    ], BLE, "scan", null);
+    __decorate([
+        plugin_1.Cordova()
+    ], BLE, "startScan", null);
+    __decorate([
+        plugin_1.Cordova()
+    ], BLE, "stopScan", null);
+    __decorate([
+        plugin_1.Cordova()
+    ], BLE, "connect", null);
+    __decorate([
+        plugin_1.Cordova()
+    ], BLE, "disconnect", null);
+    __decorate([
+        plugin_1.Cordova()
+    ], BLE, "read", null);
+    __decorate([
+        plugin_1.Cordova()
+    ], BLE, "write", null);
+    __decorate([
+        plugin_1.Cordova()
+    ], BLE, "writeWithoutResponse", null);
     BLE = __decorate([
         plugin_1.Plugin({
             name: 'BluetoothLowEnergy',

@@ -2,7 +2,7 @@ import {ElementRef} from 'angular2/angular2';
 
 import {Page, NavParams} from 'ionic/ionic';
 
-import {Camera, Calendar, StatusBar, Toast, ActionSheet, Facebook} from 'ionic-native';
+import {Camera, Calendar, StatusBar, Toast, ActionSheet, Facebook, Push} from 'ionic-native';
 
 import {safeJSONStringify} from '../util';
 
@@ -33,6 +33,20 @@ demoArgs[Facebook] = {
     ["public_profile"]
   ]
 };
+
+demoArgs[Push] = {
+  init: [{
+    android: {
+        senderID: "12345679"
+    },
+    ios: {
+        alert: "true",
+        badge: true,
+        sound: 'false'
+    },
+    windows: {}
+  }]
+}
 
 var demoCode = {};
 

@@ -1,38 +1,40 @@
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
 var ng1_1 = require('./ng1');
 ng1_1.initAngular1();
 var DEVICE_READY_TIMEOUT = 2000;
-__export(require('./plugins/actionsheet'));
-__export(require('./plugins/ble'));
-__export(require('./plugins/camera'));
-__export(require('./plugins/calendar'));
-__export(require('./plugins/contacts'));
-__export(require('./plugins/device'));
-__export(require('./plugins/facebook'));
-__export(require('./plugins/geolocation'));
-__export(require('./plugins/statusbar'));
-__export(require('./plugins/toast'));
-var actionsheet_2 = require('./plugins/actionsheet');
-var ble_2 = require('./plugins/ble');
-var camera_2 = require('./plugins/camera');
-var calendar_2 = require('./plugins/calendar');
-var device_2 = require('./plugins/device');
-var facebook_2 = require('./plugins/facebook');
-var geolocation_2 = require('./plugins/geolocation');
-var statusbar_2 = require('./plugins/statusbar');
-var toast_2 = require('./plugins/toast');
+var actionsheet_1 = require('./plugins/actionsheet');
+exports.ActionSheet = actionsheet_1.ActionSheet;
+var ble_1 = require('./plugins/ble');
+exports.BLE = ble_1.BLE;
+var camera_1 = require('./plugins/camera');
+exports.Camera = camera_1.Camera;
+var calendar_1 = require('./plugins/calendar');
+exports.Calendar = calendar_1.Calendar;
+var contacts_1 = require('./plugins/contacts');
+exports.Contacts = contacts_1.Contacts;
+var device_1 = require('./plugins/device');
+exports.Device = device_1.Device;
+var facebook_1 = require('./plugins/facebook');
+exports.Facebook = facebook_1.Facebook;
+var geolocation_1 = require('./plugins/geolocation');
+exports.Geolocation = geolocation_1.Geolocation;
+var push_1 = require('./plugins/push');
+exports.Push = push_1.Push;
+var statusbar_1 = require('./plugins/statusbar');
+exports.StatusBar = statusbar_1.StatusBar;
+var toast_1 = require('./plugins/toast');
+exports.Toast = toast_1.Toast;
 window['IonicNative'] = {
-    ActionSheet: actionsheet_2.ActionSheet,
-    BLE: ble_2.BLE,
-    Camera: camera_2.Camera,
-    Calendar: calendar_2.Calendar,
-    Device: device_2.Device,
-    Facebook: facebook_2.Facebook,
-    Geolocation: geolocation_2.Geolocation,
-    StatusBar: statusbar_2.StatusBar,
-    Toast: toast_2.Toast
+    ActionSheet: actionsheet_1.ActionSheet,
+    BLE: ble_1.BLE,
+    Camera: camera_1.Camera,
+    Calendar: calendar_1.Calendar,
+    Contacts: contacts_1.Contacts,
+    Device: device_1.Device,
+    Facebook: facebook_1.Facebook,
+    Geolocation: geolocation_1.Geolocation,
+    Push: push_1.Push,
+    StatusBar: statusbar_1.StatusBar,
+    Toast: toast_1.Toast
 };
 var before = +new Date;
 var didFireReady = false;
