@@ -14,7 +14,9 @@ function init {
 }
 
 function run {
-  ../git/clone.sh --repository="driftyco/ionic-site" \
+  ls -al
+  cd ./scripts
+  ./git/clone.sh --repository="driftyco/ionic-site" \
     --directory="$SITE_DIR" \
     --branch="master"
   cd ..
