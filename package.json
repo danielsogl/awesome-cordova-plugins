@@ -9,6 +9,21 @@
   "dependencies": {
     "@reactivex/rxjs": "^5.0.0-alpha.7"
   },
+  "devDependencies": {
+    "canonical-path": "0.0.2",
+    "cpr": "^1.0.0",
+    "dgeni": "^0.4.2",
+    "dgeni-packages": "^0.10.18",
+    "glob": "^6.0.4",
+    "gulp": "~3.9.0",
+    "lodash": "3.10.1",
+    "minimist": "^1.1.3",
+    "mkdirp": "^0.5.1",
+    "node-html-encoder": "0.0.2",
+    "q": "1.4.1",
+    "semver": "^5.0.1",
+    "typescript": "^1.7.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --module commonjs --sourcemap --outDir dist/ --experimentalDecorators -d node_modules/@reactivex/rxjs/typings/es6-shim/es6-shim.d.ts src/index.ts --target ES5",

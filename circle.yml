@@ -1,0 +1,9 @@
+test:
+  override:
+    - echo "Skipping tests for now"
+
+deployment:
+  staging:
+    branch: master
+    commands:
+      - ./scripts/docs/update_docs.sh

@@ -4,6 +4,24 @@ declare var Promise;
 
 declare var window;
 
+
+/**
+ * Get geolocation data.
+ *
+ * @usage
+ * ```js
+ * Geolocation.getCurrentPosition().then((resp) => {
+ *  //resp.coords.latitude
+ *  //resp.coords.longitude
+ * })
+ *
+ * let watch = Geolocation.watchPosition();
+ * watch.source.subscribe((data) => {
+ *  //data.coords.latitude
+ *  //data.coords.longitude
+ * })
+ * ```
+ */
 @Plugin({
   name: 'Geolocation',
   plugin: 'cordova-plugin-geolocation',
