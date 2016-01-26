@@ -35,6 +35,8 @@ function run {
     ls
     echo "-- No changes detected in docs for $VERSION_NAME; docs not updated."
   else
+    git config --global user.email "hi@ionicframework.com"
+    git config --global user.name "Ionitron"
     git add -A
     git commit -am "docs: update for $VERSION"
     git push origin master
