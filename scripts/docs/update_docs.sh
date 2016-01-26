@@ -38,7 +38,7 @@ function run {
     git config --global user.email "hi@ionicframework.com"
     git config --global user.name "Ionitron"
     git add -A
-    git commit -am "docs: update for $VERSION"
+    git commit -am "Automated build of platform docs v$VERSION"
     git push origin master
 
     echo "-- Updated docs for $VERSION_NAME succesfully!"
