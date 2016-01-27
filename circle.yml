@@ -1,7 +1,8 @@
 machine:
   node:
     version: 4.1.0
-
+  ruby:
+    version: 2.1.2
 test:
   override:
     - echo "Skipping tests for now"
