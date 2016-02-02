@@ -1,4 +1,5 @@
 import { ActionSheet } from './plugins/actionsheet';
+import { BarcodeScanner } from './plugins/barcodescanner';
 import { BLE } from './plugins/ble';
 import { Camera } from './plugins/camera';
 import { Calendar } from './plugins/calendar';
@@ -10,4 +11,4 @@ import { Push } from './plugins/push';
 import { StatusBar } from './plugins/statusbar';
 import { Toast } from './plugins/toast';
 import { TouchID } from './plugins/touchid';
-export { ActionSheet, BLE, Camera, Calendar, Contacts, Device, Facebook, Geolocation, Push, StatusBar, Toast, TouchID };
+export { ActionSheet, BarcodeScanner, BLE, Camera, Calendar, Contacts, Device, Facebook, Geolocation, Push, StatusBar, Toast, TouchID };

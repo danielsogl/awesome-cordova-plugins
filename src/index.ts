@@ -7,6 +7,7 @@ const DEVICE_READY_TIMEOUT = 2000;
 declare var window;
 
 import {ActionSheet} from './plugins/actionsheet';
+import {BarcodeScanner} from './plugins/barcodescanner';
 import {BLE} from './plugins/ble';
 import {Camera} from './plugins/camera';
 import {Calendar} from './plugins/calendar';
@@ -21,6 +22,7 @@ import {TouchID} from './plugins/touchid';
 
 export {
   ActionSheet,
+  BarcodeScanner,
   BLE,
   Camera,
   Calendar,
@@ -37,6 +39,7 @@ export {
 // Window export to use outside of a module loading system
 window['IonicNative'] = {
   ActionSheet: ActionSheet,
+  BarcodeScanner,
   BLE: BLE,
   Camera: Camera,
   Calendar: Calendar,

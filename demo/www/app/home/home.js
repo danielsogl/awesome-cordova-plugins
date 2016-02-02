@@ -2,6 +2,7 @@ import {Page, NavController} from 'ionic/ionic'
 
 import {
   ActionSheet,
+  BarcodeScanner,
   BLE,
   Camera,
   Calendar,
@@ -26,6 +27,7 @@ export class HomePage {
 
     this.plugins = [
       ActionSheet,
+      BarcodeScanner,
       BLE,
       Camera,
       Calendar,

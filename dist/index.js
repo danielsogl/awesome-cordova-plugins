@@ -3,6 +3,8 @@ ng1_1.initAngular1();
 var DEVICE_READY_TIMEOUT = 2000;
 var actionsheet_1 = require('./plugins/actionsheet');
 exports.ActionSheet = actionsheet_1.ActionSheet;
+var barcodescanner_1 = require('./plugins/barcodescanner');
+exports.BarcodeScanner = barcodescanner_1.BarcodeScanner;
 var ble_1 = require('./plugins/ble');
 exports.BLE = ble_1.BLE;
 var camera_1 = require('./plugins/camera');
@@ -28,6 +30,7 @@ exports.TouchID = touchid_1.TouchID;
 // Window export to use outside of a module loading system
 window['IonicNative'] = {
     ActionSheet: actionsheet_1.ActionSheet,
+    BarcodeScanner: barcodescanner_1.BarcodeScanner,
     BLE: ble_1.BLE,
     Camera: camera_1.Camera,
     Calendar: calendar_1.Calendar,

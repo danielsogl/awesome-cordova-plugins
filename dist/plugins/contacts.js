@@ -5,6 +5,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var plugin_1 = require('./plugin');
+/**
+ * Access and manage Contacts on the device.
+ *
+ * Requires plugin: `cordova-plugin-contacts`
+ * For full info, please see the [Cordova Contacts Docs](https://github.com/apache/cordova-plugin-contacts)
+ *
+ * @usage
+ *
+ * ```js
+ * Contacts.save({
+ *   displayName: "Mr. Ionitron"
+ * }).then((contact) => {}, (err) => {})
+ * ```
+ *
+ * See the `save()` docs for a full list of fields.
+ *
+ */
 var Contacts = (function () {
     function Contacts() {
     }
