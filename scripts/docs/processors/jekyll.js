@@ -22,10 +22,10 @@ module.exports = function jekyll(renderDocsProcessor) {
       });
 
       docs.push({
-        docType: 'platform_menu-menu',
-        id: 'platform_menu-menu',
-        template: 'platform_menu.template.html',
-        outputPath: '_includes/v2_fluid/platform_menu.html'
+        docType: 'native_menu-menu',
+        id: 'native_menu-menu',
+        template: 'native_menu.template.html',
+        outputPath: '_includes/v2_fluid/native_menu.html'
       });
 
       // returning docs will replace docs object in the next process
