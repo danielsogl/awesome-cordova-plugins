@@ -1,5 +1,5 @@
 var util_1 = require('../util');
-var Rx_1 = require('@reactivex/rxjs/dist/cjs/Rx');
+var Observable_1 = require('rxjs/Observable');
 exports.getPlugin = function (pluginRef) {
     return util_1.get(window, pluginRef);
 };
@@ -91,7 +91,7 @@ function wrapPromise(pluginObj, methodName, args, opts) {
 }
 function wrapObservable(pluginObj, methodName, args, opts) {
     if (opts === void 0) { opts = {}; }
-    return new Rx_1.Observable(function (observer) {
+    return new Observable_1.Observable(function (observer) {
         var pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
         return function () {
             try {

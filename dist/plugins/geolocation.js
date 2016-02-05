@@ -5,6 +5,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var plugin_1 = require('./plugin');
+/**
+ * Get geolocation data.
+ *
+ * @usage
+ * ```js
+ * Geolocation.getCurrentPosition().then((resp) => {
+ *  //resp.coords.latitude
+ *  //resp.coords.longitude
+ * })
+ *
+ * let watch = Geolocation.watchPosition();
+ * watch.source.subscribe((data) => {
+ *  //data.coords.latitude
+ *  //data.coords.longitude
+ * })
+ * ```
+ */
 var Geolocation = (function () {
     function Geolocation() {
     }
