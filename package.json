@@ -39,5 +39,8 @@
     "url": "https://github.com/driftyco/ionic-native/issues"
   },
   "homepage": "https://github.com/driftyco/ionic-native",
-  "typings": "./dist/index.d.ts"
+  "typings": "./dist/index.d.ts",
+  "devDependencies": {
+    "browserify": "^13.0.0"
+  }
 }
