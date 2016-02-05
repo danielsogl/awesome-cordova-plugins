@@ -6,7 +6,7 @@ declare var window;
 declare var Promise;
 declare var $q;
 
-import {Observable} from '@reactivex/rxjs/dist/cjs/Rx';
+import {Observable} from 'rxjs/Observable';
 
 
 export const getPlugin = function(pluginRef: string): any {
