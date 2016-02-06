@@ -5,13 +5,16 @@
         "noImplicitAny": false,
         "rootDir": ".",
         "sourceMap": true,
-        "declaration": true
+        "declaration": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
     },
     "exclude": [
         "node_modules"
     ],
     "files": [
-        "src/index.ts"
+        "src/index.ts",
+        "typings/es6-shim/es6-shim.d.ts"
     ],
     "compileOnSave": false,
     "buildOnSave": false,
