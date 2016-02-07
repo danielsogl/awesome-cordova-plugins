@@ -30,7 +30,7 @@ function callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject) {
     if (opts === void 0) { opts = {}; }
     // If the plugin method expects myMethod(success, err, options)
     if (opts.callbackOrder == 'reverse') {
-        // Get those arguments in the order [reject, resolve, ...restOfArgs]
+        // Get those arguments in the order [resolve, reject, ...restOfArgs]
         args.unshift(reject);
         args.unshift(resolve);
     }

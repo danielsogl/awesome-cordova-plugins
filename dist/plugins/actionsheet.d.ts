@@ -1,3 +1,6 @@
+/**
+ * The ActionSheet plugin shows a native list of options the user can choose from.
+ */
 export declare class ActionSheet {
     /**
      * Show the ActionSheet.
@@ -11,8 +14,8 @@ export declare class ActionSheet {
      *   addCancelButtonWithLabel: string
      *   addDestructiveButtonWithLabel: string
      *   position: [x, y] (iPad pass in [x, y] coords of popover)
-     * @returns {Promise} returns a promise that resolves with a number indicating
-     *   which button was pressed (1 for first, 2 for second).
+     * @returns {Promise} returns a promise that resolves with the index of the
+     *   button pressed (1 based, so 1, 2, 3, etc.)
      */
     static show(options?: {
         buttonLabels: string[];
@@ -26,7 +29,6 @@ export declare class ActionSheet {
     }): Promise<any>;
     /**
      * Hide the ActionSheet.
-     * @param {options}
      */
-    static hide(options: any): Promise<any>;
+    static hide(): Promise<any>;
 }

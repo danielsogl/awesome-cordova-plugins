@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var plugin_1 = require('./plugin');
+/**
+ * The ActionSheet plugin shows a native list of options the user can choose from.
+ */
 var ActionSheet = (function () {
     function ActionSheet() {
     }
@@ -20,25 +23,28 @@ var ActionSheet = (function () {
      *   addCancelButtonWithLabel: string
      *   addDestructiveButtonWithLabel: string
      *   position: [x, y] (iPad pass in [x, y] coords of popover)
-     * @returns {Promise} returns a promise that resolves with a number indicating
-     *   which button was pressed (1 for first, 2 for second).
+     * @returns {Promise} returns a promise that resolves with the index of the
+     *   button pressed (1 based, so 1, 2, 3, etc.)
      */
     ActionSheet.show = function (options) {
-        // This returned Promise is replaced by one from the @Cordova decorator,
-        // but since there's no way for TypeScript to know the return type from a
-        // decorator we provide it. See https://github.com/Microsoft/TypeScript/issues/4881.
-        return new Promise(function (s, e) { });
+        // This Promise is replaced by one from the @Cordova decorator that wraps
+        // the plugin's callbacks. We provide a dummy one here so TypeScript
+        // knows that the correct return type is Promise, because there's no way
+        // for it to know the return type from a decorator.
+        // See https://github.com/Microsoft/TypeScript/issues/4881
+        return new Promise(function (res, rej) { });
     };
     ;
     /**
      * Hide the ActionSheet.
-     * @param {options}
      */
-    ActionSheet.hide = function (options) {
-        // This returned Promise is replaced by one from the @Cordova decorator,
-        // but since there's no way for TypeScript to know the return type from a
-        // decorator we provide it. See https://github.com/Microsoft/TypeScript/issues/4881.
-        return new Promise(function (s, e) { });
+    ActionSheet.hide = function () {
+        // This Promise is replaced by one from the @Cordova decorator that wraps
+        // the plugin's callbacks. We provide a dummy one here so TypeScript
+        // knows that the correct return type is Promise, because there's no way
+        // for it to know the return type from a decorator.
+        // See https://github.com/Microsoft/TypeScript/issues/4881
+        return new Promise(function (res, rej) { });
     };
     ;
     __decorate([
