@@ -23,13 +23,29 @@ var plugin_1 = require('./plugin');
 var Camera = (function () {
     function Camera() {
     }
-    Camera.getPicture = function (options) { };
+    /**
+     * Take a picture or video, or load one from the library.
+     * @param {CameraOptions} options
+     * @return Returns a Promise that resolves with Base64 encoding of the image data, or the image file URI, depending on cameraOptions, otherwise rejects with an error.
+     */
+    Camera.getPicture = function (options) {
+        // This Promise is replaced by one from the @Cordova decorator that wraps
+        // the plugin's callbacks. We provide a dummy one here so TypeScript
+        // knows that the correct return type is Promise, because there's no way
+        // for it to know the return type from a decorator.
+        // See https://github.com/Microsoft/TypeScript/issues/4881
+        return new Promise(function (res, rej) { });
+    };
     ;
+    /**
+     * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
+     * Applies only when the value of Camera.sourceType equals Camera.PictureSourceType.CAMERA and the Camera.destinationType equals Camera.DestinationType.FILE_URI.
+     * @return Returns a Promise
+     */
     Camera.cleanup = function () { };
     ;
     __decorate([
         plugin_1.Cordova({
-            // Not sure why this plugin has the success/err come first...
             callbackOrder: 'reverse'
         })
     ], Camera, "getPicture", null);
