@@ -109,7 +109,7 @@ function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any =
         if (opts.clearWithArgs){
           return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, args);
         }
-        return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, pluginResult);
+        return get(window, pluginObj.pluginRef)[opts.clearFunction].call(pluginObj, pluginResult);
       } catch(e) {
         console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
         console.log(e);
