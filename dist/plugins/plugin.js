@@ -95,6 +95,9 @@ function wrapObservable(pluginObj, methodName, args, opts) {
         var pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
         return function () {
             try {
+                if (opts.clearWithArgs) {
+                    return util_1.get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, args);
+                }
                 return util_1.get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, pluginResult);
             }
             catch (e) {
