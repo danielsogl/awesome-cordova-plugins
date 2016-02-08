@@ -16,7 +16,7 @@ var plugin_1 = require('./plugin');
  * })
  *
  * let watch = Geolocation.watchPosition();
- * watch.source.subscribe((data) => {
+ * watch.subscribe((data) => {
  *  //data.coords.latitude
  *  //data.coords.longitude
  * })
@@ -36,7 +36,7 @@ var Geolocation = (function () {
         plugin_1.Cordova({
             callbackOrder: 'reverse',
             observable: true,
-            clearFunction: 'clearWatch()'
+            clearFunction: 'clearWatch'
         })
     ], Geolocation, "watchPosition", null);
     Geolocation = __decorate([

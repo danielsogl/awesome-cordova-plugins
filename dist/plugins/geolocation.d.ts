@@ -9,7 +9,7 @@
  * })
  *
  * let watch = Geolocation.watchPosition();
- * watch.source.subscribe((data) => {
+ * watch.subscribe((data) => {
  *  //data.coords.latitude
  *  //data.coords.longitude
  * })

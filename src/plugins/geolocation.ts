@@ -16,7 +16,7 @@ declare var window;
  * })
  *
  * let watch = Geolocation.watchPosition();
- * watch.source.subscribe((data) => {
+ * watch.subscribe((data) => {
  *  //data.coords.latitude
  *  //data.coords.longitude
  * })
@@ -35,7 +35,7 @@ export class Geolocation {
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
-    clearFunction: 'clearWatch()'
+    clearFunction: 'clearWatch'
   })
   static watchPosition(options:any){};
 }
