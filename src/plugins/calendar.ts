@@ -96,6 +96,9 @@ export class Calendar {
    * }
    * ```
    */
+  @Cordova({
+    sync: true
+  })
   static getCalendarOptions(): CalendarOptions {
     return {
       firstReminderMinutes: 60,
