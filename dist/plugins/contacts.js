@@ -9,7 +9,7 @@ var plugin_1 = require('./plugin');
  * Access and manage Contacts on the device.
  *
  * Requires plugin: `cordova-plugin-contacts`
- * For full info, please see the [Cordova Contacts Docs](https://github.com/apache/cordova-plugin-contacts)
+ * For full info, please see the [Cordova Contacts plugin docs](https://github.com/apache/cordova-plugin-contacts)
  *
  * @usage
  *
@@ -25,16 +25,48 @@ var plugin_1 = require('./plugin');
 var Contacts = (function () {
     function Contacts() {
     }
-    Contacts.create = function (fields, options) { };
+    /**
+     * Create a new Contact object.
+     *
+     * @param options {Object} Object whose properties the created Contact should have.
+     * @return {Contact} Returns the created contact
+     */
+    Contacts.create = function (options) {
+        return new Contact();
+    };
     ;
-    Contacts.find = function (fields, options) { };
+    /**
+     * Search for contacts in the Contacts list.
+     *
+     * Example: Contacts.find(['*'], { filter: 'Max' }) // will search for a displayName of 'Max'
+     *
+     * @param fields {string[]}  Contact fields to be used as a search qualifier.
+     *  A zero-length contactFields parameter is invalid and results in ContactError.INVALID_ARGUMENT_ERROR.
+     *  A contactFields value of "*" searches all contact fields.
+     *
+     * @param options {Object} the options to query with:
+     *   filter: The search string used to find navigator.contacts. (string) (Default: "")
+     *   multiple: Determines if the find operation returns multiple navigator.contacts. (Boolean) (Default: false)
+     *   desiredFields: Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields. (DOMString[]) [Optional]
+     *   hasPhoneNumber(Android only): Filters the search to only return contacts with a phone number informed. (Boolean) (Default: false)
+     *
+     * @return Returns a Promise that resolves with the search results (an array of Contact objects)
+     */
+    Contacts.find = function (fields, options) {
+        return new Promise(function (res, rej) { });
+    };
     ;
-    Contacts.pickContact = function () { };
+    /**
+     * Select a single Contact.
+     * @return Returns a Promise that resolves with the selected Contact
+     */
+    Contacts.pickContact = function () {
+        return new Promise(function (res, rej) { });
+    };
     ;
     __decorate([
         plugin_1.Cordova({
-            successIndex: 1,
-            errorIndex: 2
+            sync: true
         })
     ], Contacts, "create", null);
     __decorate([
