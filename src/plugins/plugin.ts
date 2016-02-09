@@ -32,12 +32,12 @@ export const cordovaWarn = function(pluginName: string, method: string) {
   }
 }
 
-function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:any={}, resolve:any, reject:any) {
+function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:any={}, resolve?: Function, reject?: Function) {
   // Try to figure out where the success/error callbacks need to be bound
   // to our promise resolve/reject handlers.
 
   // If the plugin method expects myMethod(success, err, options)
-  if(opts.callbackOrder == 'reverse') {
+  if (opts.callbackOrder == 'reverse') {
     // Get those arguments in the order [resolve, reject, ...restOfArgs]
     args.unshift(reject);
     args.unshift(resolve);
@@ -121,7 +121,9 @@ function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any =
 export const wrap = function(pluginObj:any,  methodName:string, opts:any = {}) {
   return (...args) => {
 
-    if(opts.observable) {
+    if (opts.sync){
+      return callCordovaPlugin(pluginObj, methodName, args, opts);
+    } else if (opts.observable) {
       return wrapObservable(pluginObj, methodName, args, opts);
     } else {
       return wrapPromise(pluginObj, methodName, args, opts);
@@ -136,7 +138,7 @@ export function Plugin(config) {
   return function(cls) {
 
     // Add these fields to the class
-    for(let k in config) {
+    for (let k in config) {
       cls[k] = config[k];
     }
 
