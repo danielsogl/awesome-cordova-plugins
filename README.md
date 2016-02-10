@@ -5,6 +5,8 @@ pretty much do any native function you need from your [Ionic](http://ionicframew
 
 # Credits
 
+Tim Lancina - [@timlancina](http://twitter.com/timlancina)
+
 Max Lynch - [@maxlynch](http://twitter.com/maxlynch)
 
 Rob Wormald - [@robwormald](https://twitter.com/robwormald)
