@@ -4,7 +4,9 @@ var _ = require('lodash');
 var ts = require('typescript');
 
 module.exports = function readTypeScriptModules(tsParser, modules, getFileInfo,
-                                                getExportDocType, getContent, createDocMessage, log) {
+                                                getDirectiveInfo,
+                                                getExportDocType, getContent,
+                                                createDocMessage, log) {
 
   return {
     $runAfter: ['files-read'],
@@ -132,8 +134,12 @@ module.exports = function readTypeScriptModules(tsParser, modules, getFileInfo,
               if (a.name < b.name) return -1;
               return 0;
             });
+            exportDoc.statics.sort(function(a, b) {
+              if (a.name > b.name) return 1;
+              if (a.name < b.name) return -1;
+              return 0;
+            });
           }
-
         });
       });
     }
@@ -212,7 +218,8 @@ module.exports = function readTypeScriptModules(tsParser, modules, getFileInfo,
       moduleDoc: moduleDoc,
       content: getContent(exportSymbol),
       fileInfo: getFileInfo(exportSymbol, basePath),
-      location: getLocation(exportSymbol)
+      location: getLocation(exportSymbol),
+      directiveInfo: getDirectiveInfo(exportSymbol)
     };
 
     if (exportDoc.docType === 'var' || exportDoc.docType === 'const' || exportDoc.docType === 'let') {

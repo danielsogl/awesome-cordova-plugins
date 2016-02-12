@@ -57,7 +57,7 @@ module.exports = function createCompilerHost(log) {
       getNewLine: function() {
         return ts.sys.newLine;
       },
-      fileExists: function (fileName) {
+      fileExists: function(fileName) {
         var text, resolvedPath, resolvedPathWithExt;
 
         // Strip off the extension and resolve relative to the baseDir

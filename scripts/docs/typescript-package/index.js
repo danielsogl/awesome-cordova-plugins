@@ -12,6 +12,7 @@ module.exports = new Package('typescript-parsing', [basePackage])
 .factory(require('./services/tsParser/getFileInfo'))
 .factory(require('./services/tsParser/getExportDocType'))
 .factory(require('./services/tsParser/getContent'))
+.factory(require('./services/tsParser/getDirectiveInfo'))
 
 .factory(require('./services/convertPrivateClassesToInterfaces'))
 
