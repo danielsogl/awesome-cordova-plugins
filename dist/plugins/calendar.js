@@ -348,6 +348,11 @@ var Calendar = (function () {
         plugin_1.Cordova()
     ], Calendar, "deleteCalendar", null);
     __decorate([
+        plugin_1.Cordova({
+            sync: true
+        })
+    ], Calendar, "getCalendarOptions", null);
+    __decorate([
         plugin_1.Cordova()
     ], Calendar, "createEvent", null);
     __decorate([
