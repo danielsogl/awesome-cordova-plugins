@@ -64,9 +64,7 @@ var Calendar = (function () {
     /**
      * Returns the default calendar options.
      *
-     * @return Returns an object with the default calendar options
-     * ```
-     * {
+     * @return Returns an object with the default calendar options:
      *   firstReminderMinutes: 60,
      *   secondReminderMinutes: null,
      *   recurrence: null, // options are: 'daily', 'weekly', 'monthly', 'yearly'
@@ -75,8 +73,6 @@ var Calendar = (function () {
      *   calendarName: null,
      *   calendarId: null,
      *   url: null
-     * }
-     * ```
      */
     Calendar.getCalendarOptions = function () {
         return {

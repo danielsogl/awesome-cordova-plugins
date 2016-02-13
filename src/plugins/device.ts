@@ -12,7 +12,6 @@ declare var window;
  * // Device sits below
  * ```
  */
-
 @Plugin({
   name: 'Device',
   plugin: 'cordova-plugin-device',

@@ -58,9 +58,7 @@ export declare class Calendar {
     /**
      * Returns the default calendar options.
      *
-     * @return Returns an object with the default calendar options
-     * ```
-     * {
+     * @return Returns an object with the default calendar options:
      *   firstReminderMinutes: 60,
      *   secondReminderMinutes: null,
      *   recurrence: null, // options are: 'daily', 'weekly', 'monthly', 'yearly'
@@ -69,8 +67,6 @@ export declare class Calendar {
      *   calendarName: null,
      *   calendarId: null,
      *   url: null
-     * }
-     * ```
      */
     static getCalendarOptions(): CalendarOptions;
     /**

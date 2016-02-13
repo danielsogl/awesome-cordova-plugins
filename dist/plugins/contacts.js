@@ -53,6 +53,11 @@ var Contacts = (function () {
      * @return Returns a Promise that resolves with the search results (an array of Contact objects)
      */
     Contacts.find = function (fields, options) {
+        // This Promise is replaced by one from the @Cordova decorator that wraps
+        // the plugin's callbacks. We provide a dummy one here so TypeScript
+        // knows that the correct return type is Promise, because there's no way
+        // for it to know the return type from a decorator.
+        // See https://github.com/Microsoft/TypeScript/issues/4881
         return new Promise(function (res, rej) { });
     };
     ;
@@ -61,6 +66,11 @@ var Contacts = (function () {
      * @return Returns a Promise that resolves with the selected Contact
      */
     Contacts.pickContact = function () {
+        // This Promise is replaced by one from the @Cordova decorator that wraps
+        // the plugin's callbacks. We provide a dummy one here so TypeScript
+        // knows that the correct return type is Promise, because there's no way
+        // for it to know the return type from a decorator.
+        // See https://github.com/Microsoft/TypeScript/issues/4881
         return new Promise(function (res, rej) { });
     };
     ;
