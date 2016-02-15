@@ -24,6 +24,7 @@ var BarcodeScanner = (function () {
     }
     /**
      * Open the barcode scanner.
+     * @return Returns a Promise that resolves with scanner data, or rejects with an error.
      */
     BarcodeScanner.scan = function () {
         // This Promise is replaced by one from the @Cordova decorator that wraps

@@ -15,6 +15,7 @@
 export declare class BarcodeScanner {
     /**
      * Open the barcode scanner.
+     * @return Returns a Promise that resolves with scanner data, or rejects with an error.
      */
     static scan(): Promise<any>;
 }
