@@ -19,6 +19,7 @@ import {Push} from './plugins/push';
 import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
+import {DatePicker} from './plugins/datepicker';
 
 export {
   ActionSheet,
@@ -33,7 +34,8 @@ export {
   Push,
   StatusBar,
   Toast,
-  TouchID
+  TouchID,
+  DatePicker
 }
 
 // Window export to use outside of a module loading system
@@ -50,7 +52,8 @@ window['IonicNative'] = {
   Push: Push,
   StatusBar: StatusBar,
   Toast: Toast,
-  TouchID: TouchID
+  TouchID: TouchID,
+  DatePicker: DatePicker
 }
 
 // To help developers using cordova, we listen for the device ready event and
