@@ -8,12 +8,7 @@ var plugin_1 = require('./plugin');
 /**
  * Manage the appearance of the native status bar.
  *
- * @usage
- * ```js
- * StatusBar.hide(); // Hide the bar
- *
- * StatusBar.setStyle(StatusBar.LIGHT_CONTENT) // Good for dark backgrounds
- * ```
+ * Requires Cordova plugin: `cordova-plugin-statusbar`. For more info, please see the [StatusBar plugin docs](https://github.com/apache/cordova-plugin-statusbar).
  */
 var StatusBar = (function () {
     function StatusBar() {
@@ -22,16 +17,28 @@ var StatusBar = (function () {
      * Set whether the status bar overlays the main app view. The default
      * is true.
      *
-     * @param doesOverlay whether the status bar overlays the main app view.
+     * @param {boolean} doesOverlay  Whether the status bar overlays the main app view.
      */
-    StatusBar.overlaysWebView = function (doOverlay) { };
+    StatusBar.overlaysWebView = function (doesOverlay) { };
     ;
+    /**
+     * Use the default statusbar (dark text, for light backgrounds).
+     */
     StatusBar.styleDefault = function () { };
     ;
+    /**
+     * Use the lightContent statusbar (light text, for dark backgrounds).
+     */
     StatusBar.styleLightContent = function () { };
     ;
+    /**
+     * Use the blackTranslucent statusbar (light text, for dark backgrounds).
+     */
     StatusBar.styleBlackTranslucent = function () { };
     ;
+    /**
+     * Use the blackOpaque statusbar (light text, for dark backgrounds).
+     */
     StatusBar.styleBlackOpaque = function () { };
     ;
     /**
@@ -40,7 +47,7 @@ var StatusBar = (function () {
      *
      * iOS note: you must call StatusBar.setOverlay(false) to enable color changing.
      *
-     * @param name the name of the color (from above)
+     * @param {string} colorName  The name of the color (from above)
      */
     StatusBar.backgroundColorByName = function (colorName) { };
     ;
@@ -49,21 +56,12 @@ var StatusBar = (function () {
      *
      * iOS note: you must call StatusBar.setOverlay(false) to enable color changing.
      *
-     * @param hex the hex value of the color.
+     * @param {string} hexString  The hex value of the color.
      */
     StatusBar.backgroundColorByHexString = function (hexString) { };
     ;
     /**
      * Hide the StatusBar
-     *
-     * Options:
-     *
-     * StatusBar.DEFAULT
-     * StatusBar.LIGHT_CONTENT
-     * StatusBar.BLACK_TRANSLUCENT
-     * StatusBar.BLACK_OPAQUE
-     *
-     * @param style the style from above
      */
     StatusBar.hide = function () { };
     ;
@@ -72,33 +70,60 @@ var StatusBar = (function () {
     */
     StatusBar.show = function () { };
     ;
+    /**
+     * Whether the StatusBar is currently visible or not.
+     */
+    StatusBar.isVisible = function () {
+        return window.StatusBar.isVisible;
+    };
     __decorate([
-        plugin_1.Cordova()
+        plugin_1.Cordova({
+            sync: true
+        })
     ], StatusBar, "overlaysWebView", null);
     __decorate([
-        plugin_1.Cordova()
+        plugin_1.Cordova({
+            sync: true
+        })
     ], StatusBar, "styleDefault", null);
     __decorate([
-        plugin_1.Cordova()
+        plugin_1.Cordova({
+            sync: true
+        })
     ], StatusBar, "styleLightContent", null);
     __decorate([
-        plugin_1.Cordova()
+        plugin_1.Cordova({
+            sync: true
+        })
     ], StatusBar, "styleBlackTranslucent", null);
     __decorate([
-        plugin_1.Cordova()
+        plugin_1.Cordova({
+            sync: true
+        })
     ], StatusBar, "styleBlackOpaque", null);
     __decorate([
-        plugin_1.Cordova()
+        plugin_1.Cordova({
+            sync: true
+        })
     ], StatusBar, "backgroundColorByName", null);
     __decorate([
-        plugin_1.Cordova()
+        plugin_1.Cordova({
+            sync: true
+        })
     ], StatusBar, "backgroundColorByHexString", null);
     __decorate([
-        plugin_1.Cordova()
+        plugin_1.Cordova({
+            sync: true
+        })
     ], StatusBar, "hide", null);
     __decorate([
-        plugin_1.Cordova()
+        plugin_1.Cordova({
+            sync: true
+        })
     ], StatusBar, "show", null);
+    __decorate([
+        plugin_1.RequiresPlugin
+    ], StatusBar, "isVisible", null);
     StatusBar = __decorate([
         plugin_1.Plugin({
             name: 'StatusBar',

@@ -1,15 +1,11 @@
-import {Plugin, Cordova} from './plugin';
+import {Plugin, Cordova, RequiresPlugin} from './plugin';
 
+declare var window;
 
 /**
  * Manage the appearance of the native status bar.
  *
- * @usage
- * ```js
- * StatusBar.hide(); // Hide the bar
- *
- * StatusBar.setStyle(StatusBar.LIGHT_CONTENT) // Good for dark backgrounds
- * ```
+ * Requires Cordova plugin: `cordova-plugin-statusbar`. For more info, please see the [StatusBar plugin docs](https://github.com/apache/cordova-plugin-statusbar).
  */
 @Plugin({
   name: 'StatusBar',
@@ -21,21 +17,43 @@ export class StatusBar {
    * Set whether the status bar overlays the main app view. The default
    * is true.
    *
-   * @param doesOverlay whether the status bar overlays the main app view.
+   * @param {boolean} doesOverlay  Whether the status bar overlays the main app view.
    */
-  @Cordova()
-  static overlaysWebView(doOverlay:boolean){};
+  @Cordova({
+    sync: true
+  })
+  static overlaysWebView(doesOverlay: boolean){};
 
-  @Cordova()
+  /**
+   * Use the default statusbar (dark text, for light backgrounds).
+   */
+  @Cordova({
+    sync: true
+  })
   static styleDefault(){};
 
-  @Cordova()
+  /**
+   * Use the lightContent statusbar (light text, for dark backgrounds).
+   */
+  @Cordova({
+    sync: true
+  })
   static styleLightContent(){};
 
-  @Cordova()
+  /**
+   * Use the blackTranslucent statusbar (light text, for dark backgrounds).
+   */
+  @Cordova({
+    sync: true
+  })
   static styleBlackTranslucent(){};
-  
-  @Cordova()
+
+  /**
+   * Use the blackOpaque statusbar (light text, for dark backgrounds).
+   */
+  @Cordova({
+    sync: true
+  })
   static styleBlackOpaque(){};
 
   /**
@@ -44,39 +62,46 @@ export class StatusBar {
    *
    * iOS note: you must call StatusBar.setOverlay(false) to enable color changing.
    *
-   * @param name the name of the color (from above)
+   * @param {string} colorName  The name of the color (from above)
    */
-  @Cordova()
-  static backgroundColorByName(colorName:string){};
+  @Cordova({
+    sync: true
+  })
+  static backgroundColorByName(colorName: string){};
 
   /**
    * Set the status bar to a specific hex color (CSS shorthand supported!).
    *
    * iOS note: you must call StatusBar.setOverlay(false) to enable color changing.
    *
-   * @param hex the hex value of the color.
+   * @param {string} hexString  The hex value of the color.
    */
-  @Cordova()
-  static backgroundColorByHexString(hexString:string){};
+  @Cordova({
+    sync: true
+  })
+  static backgroundColorByHexString(hexString: string){};
 
   /**
    * Hide the StatusBar
-   *
-   * Options:
-   *
-   * StatusBar.DEFAULT
-   * StatusBar.LIGHT_CONTENT
-   * StatusBar.BLACK_TRANSLUCENT
-   * StatusBar.BLACK_OPAQUE
-   *
-   * @param style the style from above
    */
-  @Cordova()
+  @Cordova({
+    sync: true
+  })
   static hide(){};
 
   /**
   * Show the StatusBar
   */
-  @Cordova()
+  @Cordova({
+    sync: true
+  })
   static show(){};
+
+  /**
+   * Whether the StatusBar is currently visible or not.
+   */
+  @RequiresPlugin
+  static isVisible() {
+    return window.StatusBar.isVisible;
+  }
 }

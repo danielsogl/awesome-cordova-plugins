@@ -1,24 +1,31 @@
 /**
  * Manage the appearance of the native status bar.
  *
- * @usage
- * ```js
- * StatusBar.hide(); // Hide the bar
- *
- * StatusBar.setStyle(StatusBar.LIGHT_CONTENT) // Good for dark backgrounds
- * ```
+ * Requires Cordova plugin: `cordova-plugin-statusbar`. For more info, please see the [StatusBar plugin docs](https://github.com/apache/cordova-plugin-statusbar).
  */
 export declare class StatusBar {
     /**
      * Set whether the status bar overlays the main app view. The default
      * is true.
      *
-     * @param doesOverlay whether the status bar overlays the main app view.
+     * @param {boolean} doesOverlay  Whether the status bar overlays the main app view.
      */
-    static overlaysWebView(doOverlay: boolean): void;
+    static overlaysWebView(doesOverlay: boolean): void;
+    /**
+     * Use the default statusbar (dark text, for light backgrounds).
+     */
     static styleDefault(): void;
+    /**
+     * Use the lightContent statusbar (light text, for dark backgrounds).
+     */
     static styleLightContent(): void;
+    /**
+     * Use the blackTranslucent statusbar (light text, for dark backgrounds).
+     */
     static styleBlackTranslucent(): void;
+    /**
+     * Use the blackOpaque statusbar (light text, for dark backgrounds).
+     */
     static styleBlackOpaque(): void;
     /**
      * Set the status bar to a specific named color. Valid options:
@@ -26,7 +33,7 @@ export declare class StatusBar {
      *
      * iOS note: you must call StatusBar.setOverlay(false) to enable color changing.
      *
-     * @param name the name of the color (from above)
+     * @param {string} colorName  The name of the color (from above)
      */
     static backgroundColorByName(colorName: string): void;
     /**
@@ -34,24 +41,19 @@ export declare class StatusBar {
      *
      * iOS note: you must call StatusBar.setOverlay(false) to enable color changing.
      *
-     * @param hex the hex value of the color.
+     * @param {string} hexString  The hex value of the color.
      */
     static backgroundColorByHexString(hexString: string): void;
     /**
      * Hide the StatusBar
-     *
-     * Options:
-     *
-     * StatusBar.DEFAULT
-     * StatusBar.LIGHT_CONTENT
-     * StatusBar.BLACK_TRANSLUCENT
-     * StatusBar.BLACK_OPAQUE
-     *
-     * @param style the style from above
      */
     static hide(): void;
     /**
     * Show the StatusBar
     */
     static show(): void;
+    /**
+     * Whether the StatusBar is currently visible or not.
+     */
+    static isVisible(): any;
 }
