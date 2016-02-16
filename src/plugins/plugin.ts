@@ -184,7 +184,7 @@ export function RequiresPlugin(target: Function, key: string, descriptor: TypedP
       pluginWarn(this.name, null, this.name);
       return;
     }
-    originalMethod.apply(this, args);
+    return originalMethod.apply(this, args);
   }
 
   return descriptor;

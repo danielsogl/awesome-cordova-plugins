@@ -181,7 +181,7 @@ function RequiresPlugin(target, key, descriptor) {
             exports.pluginWarn(this.name, null, this.name);
             return;
         }
-        originalMethod.apply(this, args);
+        return originalMethod.apply(this, args);
     };
     return descriptor;
 }
