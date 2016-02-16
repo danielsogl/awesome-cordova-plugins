@@ -20,7 +20,7 @@ var Push = (function () {
      * Initialize the plugin on the native side.
      *
      * ```
-     * var push = PushNotification.init({
+     * var push = Push.init({
      *    android: {
      *        senderID: "12345679"
      *    },

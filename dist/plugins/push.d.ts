@@ -106,7 +106,7 @@ export interface PushNotification {
      * @param errorHandler
      * @param count
      */
-    setApplicationIconBadgeNumber(successHandler: () => any, errorHandler: () => any, count: number): void;
+    setApplicationIconBadgeNumber(successHandler: () => any, errorHandler: () => any, count?: number): void;
     /**
      * Get the current badge count visible when the app is not running
      * successHandler gets called with an integer which is the current badge count
@@ -225,7 +225,7 @@ export declare class Push {
      * Initialize the plugin on the native side.
      *
      * ```
-     * var push = PushNotification.init({
+     * var push = Push.init({
      *    android: {
      *        senderID: "12345679"
      *    },

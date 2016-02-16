@@ -107,7 +107,6 @@ export interface PushNotification {
 	 */
 	unregister(successHandler: () => any, errorHandler?: () => any): void
 
-	/*TODO according to js source code, "errorHandler" is optional, but is "count" also optional? I can't read objetive-C code (can anyone at all? I wonder...)*/
 	/**
 	 * Set the badge count visible when the app is not running
 	 *
@@ -118,7 +117,7 @@ export interface PushNotification {
 	 * @param errorHandler
 	 * @param count
 	 */
-	setApplicationIconBadgeNumber(successHandler: () => any, errorHandler: () => any, count: number): void
+	setApplicationIconBadgeNumber(successHandler: () => any, errorHandler: () => any, count?: number): void
 	/**
 	 * Get the current badge count visible when the app is not running
 	 * successHandler gets called with an integer which is the current badge count
