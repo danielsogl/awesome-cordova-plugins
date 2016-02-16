@@ -11,7 +11,6 @@ var plugin_1 = require('./plugin');
  * @usage
  * ```js
  * let info = Device.getDevice();
- * // Device sits below
  * ```
  */
 var Device = (function () {
@@ -19,7 +18,7 @@ var Device = (function () {
     }
     /**
      * Returns the whole device object.
-     * @see https://github.com/apache/cordova-plugin-device
+     *
      * @returns {Object} The device object.
      */
     Device.getDevice = function () {
