@@ -20,8 +20,8 @@ import {Plugin, Cordova} from './plugin';
  */
 @Plugin({
   name: 'DatePicker',
-  plugin: '',
-  pluginRef: ''
+  plugin: 'cordova-plugin-datepicker',
+  pluginRef: 'plugins.datePicker'
 })
 export class DatePicker {
 
@@ -30,6 +30,7 @@ export class DatePicker {
    * @param options
    * @returns {Promise<Date>} Returns a promise that resolves with the picked date and/or time, or rejects with an error.
    */
+  @Cordova
   static show(options? : {
     mode : string,
     date : string,
