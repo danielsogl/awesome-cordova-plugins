@@ -18,7 +18,7 @@ import {Plugin, Cordova} from './plugin';
  * ```
  */
 @Plugin({
-  name: 'AppRate',
+  name: 'AppVersion',
   plugin: 'cordova-plugin-appversion',
   pluginRef: 'cordova.getAppVersion'
 })
