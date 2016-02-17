@@ -36,7 +36,7 @@ export class Clipboard {
    * @param text
    * @returns {Promise<T>}
    */
-  @Cordova
+  @Cordova()
   static copy(text : string) : Promise<any> {
     return new Promise((res, resj) => {});
   }
@@ -45,7 +45,7 @@ export class Clipboard {
    * Pastes the text stored in clipboard
    * @returns {Promise<T>}
    */
-  @Cordova
+  @Cordova()
   static paste() : Promise<any> {
     return new Promise((res, rej) => {});
   }
