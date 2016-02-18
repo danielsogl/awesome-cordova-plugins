@@ -13,6 +13,7 @@
     "browserify": "^13.0.0",
     "canonical-path": "0.0.2",
     "cpr": "^1.0.0",
+    "cz-conventional-changelog": "^1.1.5",
     "dgeni": "^0.4.2",
     "dgeni-packages": "^0.10.18",
     "glob": "^6.0.4",
@@ -40,5 +41,10 @@
     "url": "https://github.com/driftyco/ionic-native/issues"
   },
   "homepage": "https://github.com/driftyco/ionic-native",
-  "typings": "./dist/index.d.ts"
+  "typings": "./dist/index.d.ts",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
