@@ -116,11 +116,24 @@ Improve this doc
 
 
 <!-- description -->
-<h2>Description</h2>
 <@ block description @>
 <$ doc.description | marked $>
 <@ endblock @>
 
+<@- if doc.decorators @>
+<@ for prop in doc.decorators[0].argumentInfo @>
+<pre>
+<code>
+$ ionic plugin add <$ prop.plugin $>
+</code>
+</pre>
+<p>
+<a href="<$ prop.repo $>">
+Repo: <$ prop.repo $>
+</a>
+</p>
+<@ endfor @>
+<@ endif -@>
 
 <@- if doc.directiveInfo @>
 <h2><$ doc.directiveInfo.type $></h2>
