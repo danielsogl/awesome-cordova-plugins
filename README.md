@@ -1,7 +1,31 @@
 # Ionic Native
 
-Ionic Native comes with a curated set of Native Cordova plugins that you can use to
-pretty much do any native function you need from your [Ionic](http://ionicframework.com/), Cordova, or Web View mobile apps.
+Ionic Native is a curated set of wrappers for Cordova plugins that make adding any native functionality you need to your [Ionic](http://ionicframework.com/), Cordova, or Web View mobile app easy.
+
+### Promises and Observables
+
+Ionic Native wraps plugin callbacks in a Promise or [Observable](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754), providing a common interface for all plugins and ensuring that native events trigger change detection in Angular 2.
+
+```
+import {Geolocation} from 'ionic-native';
+
+Geolocation.getCurrentPosition().then(pos => { 
+  console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
+});
+
+let watch = Geolocation.watchPosition();
+watch.subscribe(pos => {
+  console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
+});
+
+// to stop watching
+watch.unsubscribe();
+```
+
+### Runtime Diagnostics
+
+Spent way too long diagnosing an issue only to realize a plugin wasn't firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.
+
 
 # Credits
 
