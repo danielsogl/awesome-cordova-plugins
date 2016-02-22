@@ -1,13 +1,15 @@
 import {Plugin, Cordova} from './plugin';
 
 /**
+ * @name ActionSheet
+ * @description
  * The ActionSheet plugin shows a native list of options the user can choose from.
  *
  * Requires Cordova plugin: `cordova-plugin-actionsheet`. For more info, please see the [ActionSheet plugin docs](https://github.com/phonegap/phonegap-plugin-barcodescanner).
  *
  * @usage
  *
- * ```
+ * ```ts
  * import {ActionSheet} from 'ionic-native';
  *
  * let buttonLabels = ['Share via Facebook', 'Share via Twitter'];
@@ -33,14 +35,14 @@ export class ActionSheet {
   /**
    * Show the ActionSheet.
    * @param {options} options
-   *   `buttonLabels`: string[]  
-   *   `title`: string  
-   *   `androidTheme` (Android only): number 1-5  
-   *   `androidEnableCancelButton` (Android only): boolean, default false  
-   *   `winphoneEnableCancelButton` (WP only): boolean, default false  
-   *   `addCancelButtonWithLabel`: string  
-   *   `addDestructiveButtonWithLabel`: string  
-   *   `position`: [x, y] (iPad pass in [x, y] coords of popover)  
+   *   `buttonLabels`: string[]
+   *   `title`: string
+   *   `androidTheme` (Android only): number 1-5
+   *   `androidEnableCancelButton` (Android only): boolean, default false
+   *   `winphoneEnableCancelButton` (WP only): boolean, default false
+   *   `addCancelButtonWithLabel`: string
+   *   `addDestructiveButtonWithLabel`: string
+   *   `position`: [x, y] (iPad pass in [x, y] coords of popover)
    * @returns {Promise} Returns a Promise that resolves with the index of the
    *   button pressed (1 based, so 1, 2, 3, etc.)
    */

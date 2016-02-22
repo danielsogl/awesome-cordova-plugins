@@ -1,6 +1,8 @@
 import {Plugin, Cordova} from './plugin';
 
 /**
+ * @name Facebook
+ * @description
  * Use the Facebook Connect plugin to obtain access to the native FB application on iOS and Android.
  *
  * Requires Cordova plugin: `cordova-plugin-facebook4`. For more info, please see the [Facebook Connect](https://github.com/jeduan/cordova-plugin-facebook4).
@@ -70,7 +72,8 @@ import {Plugin, Cordova} from './plugin';
 @Plugin({
   name: 'Facebook',
   plugin: 'cordova-plugin-facebook4',
-  pluginRef: 'facebookConnectPlugin'
+  pluginRef: 'facebookConnectPlugin',
+  repo: 'https://github.com/jeduan/cordova-plugin-facebook4'
 })
 export class Facebook {
 
@@ -82,7 +85,7 @@ export class Facebook {
   /**
    * Login to Facebook to authenticate this app.
    *
-   * ```
+   * ```ts
    * {
    *   status: "connected",
    *   authResponse: {

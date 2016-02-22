@@ -93,10 +93,15 @@ export interface GeolocationOptions {
 
 
 /**
- * Get geolocation data.
+ * @name Geolocation
+ * @description
+ * This plugin provides information about the device's location, such as latitude and longitude. Common sources of location information include Global Positioning System (GPS) and location inferred from network signals such as IP address, RFID, WiFi and Bluetooth MAC addresses, and GSM/CDMA cell IDs.
+ *
+ *  This API is based on the W3C Geolocation API Specification, and only executes on devices that don't already provide an implementation.
  *
  * @usage
- * ```js
+ *
+ * ```ts
  * Geolocation.getCurrentPosition().then((resp) => {
  *  //resp.coords.latitude
  *  //resp.coords.longitude
@@ -135,7 +140,7 @@ export class Geolocation {
    * Watch the current device's position.  Clear the watch by unsubscribing from
    * Observable changes.
    *
-   * ```
+   * ```ts
    * var subscription = Geolocation.watchPosition().subscribe(position => {
    *   console.log(position.coords.longitude + ' ' + position.coords.latitude);
    * });

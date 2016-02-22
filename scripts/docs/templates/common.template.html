@@ -114,12 +114,7 @@ Improve this doc
 
 <@ endblock @>
 
-
-<!-- description -->
-<@ block description @>
-<$ doc.description | marked $>
-<@ endblock @>
-
+<!-- decorators -->
 <@- if doc.decorators @>
 <@ for prop in doc.decorators[0].argumentInfo @>
 <pre>
@@ -134,6 +129,12 @@ Repo: <$ prop.repo $>
 </p>
 <@ endfor @>
 <@ endif -@>
+
+<!-- description -->
+<@ block description @>
+<$ doc.description | marked $>
+<@ endblock @>
+
 
 <@- if doc.directiveInfo @>
 <h2><$ doc.directiveInfo.type $></h2>

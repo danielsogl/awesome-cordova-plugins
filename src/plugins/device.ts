@@ -27,6 +27,8 @@ export interface Device {
 }
 
 /**
+ * @name Device
+ * @description
  * Access information about the underlying device and platform.
  *
  * @usage
@@ -37,7 +39,8 @@ export interface Device {
 @Plugin({
   name: 'Device',
   plugin: 'cordova-plugin-device',
-  pluginRef: 'device'
+  pluginRef: 'device',
+  repo: 'https://github.com/apache/cordova-plugin-device'
 })
 export class Device {
 

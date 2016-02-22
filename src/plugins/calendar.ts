@@ -17,6 +17,8 @@ export interface Calendar {
 }
 
 /**
+ * @name Calendar
+ * @description
  * This plugin allows you to add events to the Calendar of the mobile device.
  *
  * Requires Cordova plugin: `cordova-plugin-calendar`. For more info, please see the [Calendar plugin docs](https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin).
@@ -25,7 +27,8 @@ export interface Calendar {
 @Plugin({
   name: 'Calendar',
   plugin: 'cordova-plugin-calendar',
-  pluginRef: 'plugins.calendar'
+  pluginRef: 'plugins.calendar',
+  repo: 'https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin'
 })
 export class Calendar {
   /**

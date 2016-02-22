@@ -85,6 +85,8 @@ export interface CameraPopoverOptions {
 }
 
 /**
+ * @name Camera
+ * @description
  * Take a photo or capture video.
  *
  * Requires Cordova plugin: `cordova-plugin-camera`. For more info, please see the [Cordova Camera Plugin Docs](https://github.com/apache/cordova-plugin-camera).
@@ -102,7 +104,8 @@ export interface CameraPopoverOptions {
 @Plugin({
   name: 'Camera',
   plugin: 'cordova-plugin-camera',
-  pluginRef: 'navigator.camera'
+  pluginRef: 'navigator.camera',
+  repo: 'https://github.com/apache/cordova-plugin-camera'
 })
 export class Camera {
   /**

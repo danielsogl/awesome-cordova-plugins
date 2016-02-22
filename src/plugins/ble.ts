@@ -2,6 +2,8 @@ import {Plugin, Cordova} from './plugin';
 import {Observable} from 'rxjs/Observable';
 
 /**
+ * @name BLE
+ * @description
  * This plugin enables communication between a phone and Bluetooth Low Energy (BLE) peripherals.
  *
  * The plugin provides a simple JavaScript API for iOS and Android.
@@ -16,10 +18,13 @@ import {Observable} from 'rxjs/Observable';
  *
  * Simultaneous connections to multiple peripherals are supported.
  *
+ * @usage
+ *
  * ## Peripheral Data
  *
  * Peripheral Data is passed to the success callback when scanning and connecting. Limited data is passed when scanning.
- * ```
+ *
+ * ```ts
  *   {
  *       "name": "Battery Demo",
  *       "id": "20:FF:D0:FF:D1:C0",
@@ -28,7 +33,8 @@ import {Observable} from 'rxjs/Observable';
  *   }
  * ```
  * After connecting, the peripheral object also includes service, characteristic and descriptor information.
- * ```
+ *
+ * ```ts
  *   {
  *       "name": "Battery Demo",
  *       "id": "20:FF:D0:FF:D1:C0",
@@ -86,7 +92,8 @@ import {Observable} from 'rxjs/Observable';
  * The advertising information for both Android and iOS appears to be a combination of advertising data and scan response data.
  *
  * ### Android
- * ```
+ *
+ * ```ts
  *   {
  *       "name": "demo",
  *       "id": "00:1A:7D:DA:71:13",
@@ -100,7 +107,8 @@ import {Observable} from 'rxjs/Observable';
  * ### iOS
  *
  * Note that iOS uses the string value of the constants for the [Advertisement Data Retrieval Keys](https://developer.apple.com/library/ios/documentation/CoreBluetooth/Reference/CBCentralManagerDelegate_Protocol/index.html#//apple_ref/doc/constant_group/Advertisement_Data_Retrieval_Keys). This will likely change in the future.
- * ```
+ *
+ * ```ts
  *   {
  *       "name": "demo",
  *       "id": "D8479A4F-7517-BCD3-91B5-3302B2F81802",
@@ -128,7 +136,8 @@ import {Observable} from 'rxjs/Observable';
  * This plugin uses typed Arrays or ArrayBuffers for sending and receiving data.
  *
  * This means that you need convert your data to ArrayBuffers before sending and from ArrayBuffers when receiving.
- * ```
+ *
+ * ```ts
  *   // ASCII only
  *   function stringToBytes(string) {
  *      var array = new Uint8Array(string.length);
@@ -154,7 +163,7 @@ import {Observable} from 'rxjs/Observable';
   name: 'BLE',
   plugin: 'cordova-plugin-ble-central',
   pluginRef: 'ble',
-  pluginRepo: 'https://github.com/don/cordova-plugin-ble-central'
+  repo: 'https://github.com/don/cordova-plugin-ble-central'
 })
 export class BLE {
   /**
@@ -369,7 +378,7 @@ export class BLE {
    *   console.log(String.fromCharCode.apply(null, new Uint8Array(buffer));
    * });
    * ```
-   * 
+   *
    * @param {string} device_id  UUID or MAC address of the peripheral
    * @param {string} service_uuid  UUID of the BLE service
    * @param {string} characteristic_uuid  UUID of the BLE characteristic

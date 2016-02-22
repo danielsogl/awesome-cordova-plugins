@@ -3,6 +3,7 @@ import {Plugin, Cordova, RequiresPlugin} from './plugin';
 declare var window;
 
 /**
+ *
  * Manage the appearance of the native status bar.
  *
  * Requires Cordova plugin: `cordova-plugin-statusbar`. For more info, please see the [StatusBar plugin docs](https://github.com/apache/cordova-plugin-statusbar).
@@ -10,7 +11,8 @@ declare var window;
 @Plugin({
   name: 'StatusBar',
   plugin: 'cordova-plugin-statusbar',
-  pluginRef: 'StatusBar'
+  pluginRef: 'StatusBar',
+  repo: 'https://github.com/apache/cordova-plugin-statusbar'
 })
 export class StatusBar {
   /**
