@@ -27,6 +27,9 @@ watch.unsubscribe();
 Spent way too long diagnosing an issue only to realize a plugin wasn't firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.
 
 
+## Plugin Missing?
+Let us know or submit a PR! Take a look at [the Developer Guide](https://github.com/driftyco/ionic-native/blob/master/DEVELOPER.md) for more on how to contribute. :heart:
+
 # Credits
 
 Tim Lancina - [@timlancina](http://twitter.com/timlancina)
