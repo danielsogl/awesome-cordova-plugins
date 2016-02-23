@@ -117,14 +117,10 @@ Improve this doc
 <!-- decorators -->
 <@- if doc.decorators @>
 <@ for prop in doc.decorators[0].argumentInfo @>
-<pre>
-<code>
-$ ionic plugin add <$ prop.plugin $>
-</code>
-</pre>
-<p>
+<pre><code>$ ionic plugin add <$ prop.plugin $></code></pre>
+<p>Repo:
 <a href="<$ prop.repo $>">
-Repo: <$ prop.repo $>
+<$ prop.repo $>
 </a>
 </p>
 <@ endfor @>
