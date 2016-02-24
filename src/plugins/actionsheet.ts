@@ -33,16 +33,20 @@ import {Plugin, Cordova} from './plugin';
 export class ActionSheet {
 
   /**
-   * Show the ActionSheet.
-   * @param {options} options
-   *   `buttonLabels`: string[]
-   *   `title`: string
-   *   `androidTheme` (Android only): number 1-5
-   *   `androidEnableCancelButton` (Android only): boolean, default false
-   *   `winphoneEnableCancelButton` (WP only): boolean, default false
-   *   `addCancelButtonWithLabel`: string
-   *   `addDestructiveButtonWithLabel`: string
-   *   `position`: [x, y] (iPad pass in [x, y] coords of popover)
+   * Show the ActionSheet. The ActionSheet's options is an object with the following propterties.
+   *
+   * | Option                        | Type      | Description                                  |
+   * |-------------------------------|-----------|----------------------------------------------|
+   * | title                         |`string`   | The title for the actionsheet                |
+   * | buttonLabels                  |`string[]` | the labels for the buttons. Uses the index x |
+   * | androidTheme                  |`number`   | Theme to bue used on Android                 |
+   * | androidEnableCancelButton     |`boolean`  | Enable a cancel on Android                   |
+   * | winphoneEnableCancelButton    |`boolean`  | Enable a cancel on Android                   |
+   * | addCancelButtonWithLabel      |`string`   | Add a cancle button with text                |
+   * | addDestructiveButtonWithLabel |`string`   | Add a destructive button with text           |
+   * | position                      |`number[]` | On an iPad, set the X,Y position             |
+   *
+   * @param {options} Options See table above 
    * @returns {Promise} Returns a Promise that resolves with the index of the
    *   button pressed (1 based, so 1, 2, 3, etc.)
    */
