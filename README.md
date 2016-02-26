@@ -30,6 +30,14 @@ Spent way too long diagnosing an issue only to realize a plugin wasn't firing or
 ## Plugin Missing?
 Let us know or submit a PR! Take a look at [the Developer Guide](https://github.com/driftyco/ionic-native/blob/master/DEVELOPER.md) for more on how to contribute. :heart:
 
+
+## Installation Guide
+
+Run following commmand to install ionic-native on your ionic2 project. 
+```
+npm install ionic-native --save
+```
+
 # Credits
 
 Tim Lancina - [@timlancina](http://twitter.com/timlancina)
