@@ -127,7 +127,7 @@ export class Geolocation {
    * @return Returns a Promise that resolves with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or rejects with an error.
    */
   @Cordova()
-  static getCurrentPosition(options: GeolocationOptions){
+  static getCurrentPosition(options?: GeolocationOptions){
     // This Promise is replaced by one from the @Cordova decorator that wraps
     // the plugin's callbacks. We provide a dummy one here so TypeScript
     // knows that the correct return type is Promise, because there's no way
@@ -157,7 +157,7 @@ export class Geolocation {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchPosition(options: GeolocationOptions){
+  static watchPosition(options?: GeolocationOptions){
     // This Observable is replaced by one from the @Cordova decorator that wraps
     // the plugin's callbacks. We provide a dummy one here so TypeScript
     // knows that the correct return type is Observable, because there's no way
