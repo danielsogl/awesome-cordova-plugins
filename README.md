@@ -26,17 +26,17 @@ watch.unsubscribe();
 
 Spent way too long diagnosing an issue only to realize a plugin wasn't firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.
 
+## Installation
+
+Run following commmand to install ionic-native in your project. 
+```
+npm install ionic-native --save
+```
+
 
 ## Plugin Missing?
 Let us know or submit a PR! Take a look at [the Developer Guide](https://github.com/driftyco/ionic-native/blob/master/DEVELOPER.md) for more on how to contribute. :heart:
 
-
-## Installation Guide
-
-Run following commmand to install ionic-native on your ionic2 project. 
-```
-npm install ionic-native --save
-```
 
 # Credits
 
