@@ -4,9 +4,10 @@ import {Plugin, Cordova} from './plugin';
  * Clipboard management plugin for Cordova that supports iOS, Android, and Windows Phone 8.
  *
  * Requires Cordova plugin: https://github.com/VersoSolutions/CordovaClipboard
+ * For more info, please see the [Clipboard plugin docs](https://github.com/VersoSolutions/CordovaClipboard.git).
  *
  * ```
- * ionic plugin add https://github.com/VersoSolutions/CordovaClipboard.git
+ * cordova plugin add https://github.com/VersoSolutions/CordovaClipboard.git
  * ```
  *
  * @usage
@@ -25,7 +26,7 @@ import {Plugin, Cordova} from './plugin';
  * ```
  */
 @Plugin({
-  plugin: 'com.verso.cordova.clipboard',
+  plugin: 'https://github.com/VersoSolutions/CordovaClipboard.git',
   pluginRef: 'cordova.plugins.clipboard'
 })
 export class Clipboard {

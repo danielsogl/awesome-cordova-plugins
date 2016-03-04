@@ -29,7 +29,7 @@ export class DatePicker {
    * @param options
    * @returns {Promise<Date>} Returns a promise that resolves with the picked date and/or time, or rejects with an error.
    */
-  @Cordova
+  @Cordova()
   static show(options? : {
     mode : string,
     date : string,

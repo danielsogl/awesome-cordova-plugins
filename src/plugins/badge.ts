@@ -3,17 +3,17 @@ import {Plugin, Cordova} from './plugin';
 /**
  * The essential purpose of badge numbers is to enable an application to inform its users that it has something for them — for example, unread messages — when the application isn’t running in the foreground.
  *
- * Requires Cordova plugin: cordova-plugin-badge. For more info, please see the [cordova-plugin-badge docs](https://github.com/katzer/cordova-plugin-badge).
+ * Requires Cordova plugin: cordova-plugin-badge. For more info, please see the [Badge plugin docs](https://github.com/katzer/cordova-plugin-badge).
  *
  * ```
- * ionic plugin add https://github.com/katzer/cordova-plugin-badge.git
- * ````
+ * cordova plugin add cordova-plugin-badge
+ * ```
  *
  * @usage
  * ```js
- * Badge.setBadge(10);
- * Badge.increaseBadge();
- * Badge.clearBadge();
+ * Badge.set(10);
+ * Badge.increase();
+ * Badge.clear();
  * ```
  */
 @Plugin({
@@ -23,45 +23,101 @@ import {Plugin, Cordova} from './plugin';
 export class Badge {
 
   /**
-   * Determine permission to set badge notifications
+   * Clear the badge of the app icon.
    */
   @Cordova()
-  static hasPermission () : boolean {
-    return;
+  static clear() {
+    // This Promise is replaced by one from the @Cordova decorator that wraps
+    // the plugin's callbacks. We provide a dummy one here so TypeScript
+    // knows that the correct return type is Promise, because there's no way
+    // for it to know the return type from a decorator.
+    // See https://github.com/Microsoft/TypeScript/issues/4881
+    return new Promise<boolean>((res, rej) => {});
+  }
+
+  /**
+   * Set the badge of the app icon.
+   * @param {number} number  The new badge number.
+   * @returns {Promise}
+   */
+  @Cordova()
+  static set(number: number) {
+    // This Promise is replaced by one from the @Cordova decorator that wraps
+    // the plugin's callbacks. We provide a dummy one here so TypeScript
+    // knows that the correct return type is Promise, because there's no way
+    // for it to know the return type from a decorator.
+    // See https://github.com/Microsoft/TypeScript/issues/4881
+    return new Promise<any>((res, rej) => {});
+  }
+
+  /**
+   * Get the badge of the app icon.
+   * @returns {Promise}
+   */
+  @Cordova()
+  static get() {
+    // This Promise is replaced by one from the @Cordova decorator that wraps
+    // the plugin's callbacks. We provide a dummy one here so TypeScript
+    // knows that the correct return type is Promise, because there's no way
+    // for it to know the return type from a decorator.
+    // See https://github.com/Microsoft/TypeScript/issues/4881
+    return new Promise<any>((res, rej) => {});
+  }
+
+  /**
+   * Increase the badge number.
+   * @param {number} count  Count to add to the current badge number
+   * @returns {Promise}
+   */
+  @Cordova()
+  static increase(number: number) {
+    // This Promise is replaced by one from the @Cordova decorator that wraps
+    // the plugin's callbacks. We provide a dummy one here so TypeScript
+    // knows that the correct return type is Promise, because there's no way
+    // for it to know the return type from a decorator.
+    // See https://github.com/Microsoft/TypeScript/issues/4881
+    return new Promise<any>((res, rej) => {});
+  }
+
+  /**
+   * Decrease the badge number.
+   * @param {number} count  Count to subtract from the current badge number
+   * @returns {Promise}
+   */
+  @Cordova()
+  static decrease(number: number) {
+    // This Promise is replaced by one from the @Cordova decorator that wraps
+    // the plugin's callbacks. We provide a dummy one here so TypeScript
+    // knows that the correct return type is Promise, because there's no way
+    // for it to know the return type from a decorator.
+    // See https://github.com/Microsoft/TypeScript/issues/4881
+    return new Promise<any>((res, rej) => {});
+  }
+
+  /**
+   * Determine if the app has permission to show badges.
+   */
+  @Cordova()
+  static hasPermission() {
+    // This Promise is replaced by one from the @Cordova decorator that wraps
+    // the plugin's callbacks. We provide a dummy one here so TypeScript
+    // knows that the correct return type is Promise, because there's no way
+    // for it to know the return type from a decorator.
+    // See https://github.com/Microsoft/TypeScript/issues/4881
+    return new Promise<boolean>((res, rej) => {});
   }
 
   /**
    * Register permission to set badge notifications
-   * @returns {Promise<T>}
+   * @returns {Promise}
    */
   @Cordova()
-  static registerPermission () : Promise<any> {
-    return new Promise((res,rej) => {});
+  static registerPermission() {
+    // This Promise is replaced by one from the @Cordova decorator that wraps
+    // the plugin's callbacks. We provide a dummy one here so TypeScript
+    // knows that the correct return type is Promise, because there's no way
+    // for it to know the return type from a decorator.
+    // See https://github.com/Microsoft/TypeScript/issues/4881
+    return new Promise<any>((res, rej) => {});
   }
-
-  /**
-   * Sets the badge number
-   * @param number
-   */
-  @Cordova()
-  static setBadge (number : number) : void {}
-
-  /**
-   * Clears the badge number
-   */
-  @Cordova()
-  static clearBadge () : void {}
-
-  /**
-   * Increases the badge number
-   */
-  @Cordova()
-  static increaseBadge () : void {}
-
-  /**
-   * Decreases the badge number
-   */
-  @Cordova()
-  static decreaseBadge () : void {}
-
 }

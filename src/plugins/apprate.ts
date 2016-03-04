@@ -5,10 +5,10 @@ declare var window;
 /**
  * The AppRate plugin makes it easy to prompt the user to rate your app, either now, later, or never.
  *
- * Requires Cordova plugin: cordova-plugin-apprate. For more info, please see the [cordova-plugin-apprate docs](https://github.com/pushandplay/cordova-plugin-apprate).
+ * Requires Cordova plugin: cordova-plugin-apprate. For more info, please see the [AppRate plugin docs](https://github.com/pushandplay/cordova-plugin-apprate).
  *
  * ```
- * ionic plugin add https://github.com/pushandplay/cordova-plugin-apprate.git
+ * cordova plugin add https://github.com/pushandplay/cordova-plugin-apprate.git
  * ````
  *
  * @usage
@@ -17,11 +17,11 @@ declare var window;
  * AppRate.preferences.storeAppURL.android = 'market://details?id=<package_name>';
  * AppRate.preferences.storeAppURL.blackberry = 'appworld://content/[App Id]/';
  * AppRate.preferences.storeAppURL.windows8 = 'ms-windows-store:Review?name=<the Package Family Name of the application>';
- * AppRate.prompt();
+ * AppRate.promptForRating();
  * ```
  */
 @Plugin({
-  plugin: 'cordova-plugin-apprate',
+  plugin: 'https://github.com/pushandplay/cordova-plugin-apprate.git',
   pluginRef: 'AppRate'
 })
 export class AppRate {
@@ -45,14 +45,16 @@ export class AppRate {
    * @type {{}}
    */
   @CordovaProperty
-  static get preferences(){
+  static get preferences() {
     return window.AppRate.preferences;
   }
 
   /**
    * Prompts the user for rating
+   *
+   * @param {boolean} immediately  Show the rating prompt immediately.
    */
   @Cordova()
-  static prompt () : void {};
+  static promptForRating(immediately: boolean) : void {};
 
 }
