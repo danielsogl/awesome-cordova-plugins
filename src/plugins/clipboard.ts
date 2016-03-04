@@ -7,7 +7,7 @@ import {Plugin, Cordova} from './plugin';
  *
  * ```
  * ionic plugin add https://github.com/VersoSolutions/CordovaClipboard.git
- * ````
+ * ```
  *
  * @usage
  * ```js

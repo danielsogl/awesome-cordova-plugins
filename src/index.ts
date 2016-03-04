@@ -11,6 +11,7 @@ import {BarcodeScanner} from './plugins/barcodescanner';
 import {BLE} from './plugins/ble';
 import {Camera} from './plugins/camera';
 import {Calendar} from './plugins/calendar';
+import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
 import {Device} from './plugins/device';
 import {Facebook} from './plugins/facebook';
@@ -26,6 +27,7 @@ export {
   BLE,
   Camera,
   Calendar,
+  Clipboard,
   Contacts,
   Device,
   Facebook,
