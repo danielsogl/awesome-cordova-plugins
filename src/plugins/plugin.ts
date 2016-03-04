@@ -72,7 +72,7 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
     return;
   }
 
-  console.log('Cordova calling', pluginObj.name, methodName, args);
+  // console.log('Cordova calling', pluginObj.name, methodName, args);
 
   // TODO: Illegal invocation needs window context
   return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
@@ -80,13 +80,13 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
 
 function getPromise(cb) {
   if(window.Promise) {
-    console.log('Native promises available...');
+    // console.log('Native promises available...');
     return new Promise((resolve, reject) => {
       cb(resolve, reject);
     })
   } else if(window.angular) {
     let $q = window.angular.injector(['ng']).get('$q');
-    console.log('Loaded $q', $q);
+    // console.log('Loaded $q', $q);
     return $q((resolve, reject) => {
       cb(resolve, reject);
     });
@@ -113,7 +113,7 @@ function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any =
         return get(window, pluginObj.pluginRef)[opts.clearFunction].call(pluginObj, pluginResult);
       } catch(e) {
         console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
-        console.log(e);
+        console.error(e);
       }
     }
   });
@@ -174,7 +174,7 @@ export function RequiresPlugin(target: Function, key: string, descriptor: TypedP
   let originalMethod = descriptor.value;
 
   descriptor.value = function(...args: any[]) {
-    console.log('Calling', this);
+    // console.log('Calling', this);
     if(!window.cordova) {
       cordovaWarn(this.name, null);
       return;
