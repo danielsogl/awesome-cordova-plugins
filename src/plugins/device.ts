@@ -1,4 +1,4 @@
-import {Plugin, RequiresPlugin} from './plugin';
+import {Plugin, CordovaProperty} from './plugin';
 
 declare var window: {
   device: Device
@@ -49,8 +49,8 @@ export class Device {
  *
  * @returns {Object} The device object.
  */
-  @RequiresPlugin
-  static getDevice() {
+  @CordovaProperty
+  static get device() {
     return window.device;
   }
 }

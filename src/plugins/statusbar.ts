@@ -1,4 +1,4 @@
-import {Plugin, Cordova, RequiresPlugin} from './plugin';
+import {Plugin, Cordova, CordovaProperty} from './plugin';
 
 declare var window;
 
@@ -102,8 +102,8 @@ export class StatusBar {
   /**
    * Whether the StatusBar is currently visible or not.
    */
-  @RequiresPlugin
-  static isVisible() {
+  @CordovaProperty
+  static get isVisible() {
     return window.StatusBar.isVisible;
   }
 }

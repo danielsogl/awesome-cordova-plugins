@@ -170,20 +170,20 @@ export function Cordova(opts:any = {}) {
 /**
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
-export function RequiresPlugin(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  let originalMethod = descriptor.value;
+export function CordovaProperty(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
+  let originalMethod = descriptor.get;
 
-  descriptor.value = function(...args: any[]) {
+  descriptor.get = function(...args: any[]) {
     // console.log('Calling', this);
     if(!window.cordova) {
       cordovaWarn(this.name, null);
-      return;
+      return {};
     }
 
     let pluginInstance = getPlugin(this.pluginRef);
     if(!pluginInstance) {
       pluginWarn(this, key);
-      return;
+      return {};
     }
     return originalMethod.apply(this, args);
   }

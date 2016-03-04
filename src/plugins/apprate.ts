@@ -1,4 +1,6 @@
-import {Plugin, Cordova} from './plugin';
+import {Plugin, Cordova, CordovaProperty} from './plugin';
+
+declare var window;
 
 /**
  * The AppRate plugin makes it easy to prompt the user to rate your app, either now, later, or never.
@@ -43,8 +45,10 @@ export class AppRate {
    * customLocale {Object} null - custom locale object
    * @type {{}}
    */
-  @Cordova()
-  static preferences = {};
+  @CordovaProperty
+  static get preferences(){
+    return window.AppRate.preferences;
+  }
 
   /**
    * Prompts the user for rating
