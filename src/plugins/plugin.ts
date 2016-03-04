@@ -15,14 +15,15 @@ export const getPlugin = function(pluginRef: string): any {
 export const isInstalled = function(pluginRef: string): boolean {
   return !!getPlugin(pluginRef);
 }
-export const pluginWarn = function(pluginName: string, method: string, plugin: string) {
+export const pluginWarn = function(pluginObj: any, method: string) {
+  var pluginName = pluginObj.name;
+  var plugin = pluginObj.plugin;
   if(method) {
-    console.warn('Native: tried calling ' + pluginName + '.' + method +
-      ', but the ' + pluginName + ' plugin is not installed. Install the ' +
-      plugin + ' plugin');
+    console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
   } else {
-    console.warn('Native: tried accessing the ' + pluginName + ' plugin but it\'s not installed. Install the ' + plugin + ' plugin');
+    console.warn('Native: tried accessing the ' + pluginName + ' plugin but it\'s not installed.');
   }
+  console.warn('Install the ' + pluginName + ' plugin: \'cordova plugin add ' + plugin + '\'');
 }
 export const cordovaWarn = function(pluginName: string, method: string) {
   if(method) {
@@ -64,7 +65,7 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
       return;
     }
 
-    pluginWarn(pluginObj.name, methodName, pluginObj.name);
+    pluginWarn(pluginObj, methodName);
     reject({
       error: 'plugin_not_installed'
     });
@@ -181,7 +182,7 @@ export function RequiresPlugin(target: Function, key: string, descriptor: TypedP
 
     let pluginInstance = getPlugin(this.pluginRef);
     if(!pluginInstance) {
-      pluginWarn(this.name, null, this.name);
+      pluginWarn(this, key);
       return;
     }
     return originalMethod.apply(this, args);
