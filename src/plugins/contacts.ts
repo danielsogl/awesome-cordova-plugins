@@ -207,7 +207,6 @@ declare var Contact: {
  *
  */
 @Plugin({
-  name: 'Contacts',
   plugin: 'cordova-plugin-contacts',
   pluginRef: 'navigator.contacts',
   repo: 'https://github.com/apache/cordova-plugin-contacts'

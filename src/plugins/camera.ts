@@ -102,7 +102,6 @@ export interface CameraPopoverOptions {
  * ```
  */
 @Plugin({
-  name: 'Camera',
   plugin: 'cordova-plugin-camera',
   pluginRef: 'navigator.camera',
   repo: 'https://github.com/apache/cordova-plugin-camera'

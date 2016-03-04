@@ -25,7 +25,6 @@ import {Plugin, Cordova} from './plugin';
  * ```
  */
 @Plugin({
-  name: 'Clipboard',
   plugin: 'com.verso.cordova.clipboard',
   pluginRef: 'cordova.plugins.clipboard'
 })

@@ -9,7 +9,6 @@ Let's take a look at the existing plugin wrapper for Geolocation to see what goe
 
 ```
 @Plugin({
-  name: 'Geolocation',
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation'
 })
@@ -49,7 +48,6 @@ For example, the `@Plugin` decorator adds information about the plugin to our Ge
 
 ```
 @Plugin({
-  name: 'Geolocation',
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation'
 })
@@ -58,9 +56,7 @@ export class Geolocation {
 }
 ```
 
-Here, `name` refers to the name of the plugin, which is used by Ionic Native for logging messages.
-
-`plugin` is the name of the plugin package on npm and used when calling `cordova plugin add`, also used for logging purposes.
+Here, `plugin` is the name of the plugin package on npm and used when calling `cordova plugin add`.
 
 `pluginRef` refers to the where on `window` the underlying Cordova plugin is normally exposed.  For example, in the case of the Cordova Geolocation plugin, normally you would make calls like `window.navigator.geolocation.getCurrentPosition({}, success, error)`, so the `pluginRef` in this case is `navigator.geolocation`.
 

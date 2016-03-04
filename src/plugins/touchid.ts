@@ -22,7 +22,6 @@ import {Plugin, Cordova} from './plugin';
  *
  */
 @Plugin({
-  name: 'TouchID',
   plugin: 'cordova-plugin-touch-id',
   pluginRef: 'plugins.touchid',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-touch-id'

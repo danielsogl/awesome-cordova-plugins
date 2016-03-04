@@ -13,7 +13,6 @@ export interface ToastOptions {
  * Requires Cordova plugin: `cordova-plugin-x-toast`. For more info, please see the [Toast plugin docs](https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin).
  */
 @Plugin({
-  name: 'Toast',
   plugin: 'cordova-plugin-x-toast',
   pluginRef: 'plugins.toast',
   repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin'

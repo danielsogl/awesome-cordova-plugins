@@ -19,7 +19,6 @@ import {Plugin, Cordova} from './plugin';
  *
  */
 @Plugin({
-  name: 'DatePicker',
   plugin: 'cordova-plugin-datepicker',
   pluginRef: 'plugins.datePicker'
 })

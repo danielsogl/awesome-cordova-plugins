@@ -21,7 +21,6 @@ declare var window;
  * ```
  */
 @Plugin({
-  name: 'AppRate',
   plugin: 'cordova-plugin-apprate',
   pluginRef: 'AppRate'
 })

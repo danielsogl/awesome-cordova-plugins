@@ -18,7 +18,6 @@ import {Plugin, Cordova} from './plugin';
  * ```
  */
 @Plugin({
-  name: 'AppVersion',
   plugin: 'cordova-plugin-appversion',
   pluginRef: 'cordova.getAppVersion'
 })

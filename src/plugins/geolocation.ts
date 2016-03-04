@@ -115,7 +115,6 @@ export interface GeolocationOptions {
  * ```
  */
 @Plugin({
-  name: 'Geolocation',
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation'
 })
