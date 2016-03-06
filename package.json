@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "rxjs": "5.0.0-beta.0"
   },
