@@ -5,7 +5,7 @@ import {Plugin, Cordova} from './plugin';
  *
  * Platforms supported: iOS, Android, Windows
  *
- * Requires cordova-plugin-datepicker by VitaliiBlagodir that can be [found here](https://github.com/VitaliiBlagodir/cordova-plugin-datepicker).
+ * Requires Cordova plugin: `cordova-plugin-datepicker`. For more info, please see the [Datepicker plugin docs](https://github.com/VitaliiBlagodir/cordova-plugin-datepicker).
  *
  * Install the plugin by running the following command:
  * ```shell
@@ -30,30 +30,30 @@ export class DatePicker {
    * @returns {Promise<Date>} Returns a promise that resolves with the picked date and/or time, or rejects with an error.
    */
   @Cordova()
-  static show(options? : {
-    mode : string,
-    date : string,
-    minDate : string,
-    maxDate : string,
-    titleText : string,
-    okText : string,
-    cancelText : string,
-    todayText : string,
-    nowText : string,
-    is24Hour : boolean,
-    androidTheme : number,
-    allowOldDate: boolean,
-    allowFutureDates : boolean,
-    doneButtonLabel : string,
-    doneButtonColor : string,
-    cancelButtonLabel : string,
-    cancelButtonColor : string,
-    x : string,
-    y : string,
-    minuteInterval : number,
-    popoverArrowDirection : string,
-    locale : string
-  }) : Promise<Date> {
+  static show(options?: {
+    mode?: string,
+    date?: string,
+    minDate?: string,
+    maxDate?: string,
+    titleText?: string,
+    okText?: string,
+    cancelText?: string,
+    todayText?: string,
+    nowText?: string,
+    is24Hour?: boolean,
+    androidTheme?: number,
+    allowOldDate?: boolean,
+    allowFutureDates?: boolean,
+    doneButtonLabel?: string,
+    doneButtonColor?: string,
+    cancelButtonLabel?: string,
+    cancelButtonColor?: string,
+    x?: string,
+    y?: string,
+    minuteInterval?: number,
+    popoverArrowDirection?: string,
+    locale?: string
+  }): Promise<Date> {
     return new Promise<Date>((res, rej) => {});
   }
 
