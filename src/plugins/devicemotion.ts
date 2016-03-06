@@ -70,8 +70,7 @@ export class DeviceMotion {
    * @returns {Observable<accelerationData>}
    */
   @Cordova({
-    successIndex: 0,
-    errorIndex: 1
+    callbackOrder: 'reverse'
   })
   static watchAcceleration (options? : accelerometerOptions) : Promise<accelerationData> {
     // This Promise is replaced by one from the @Cordova decorator that wraps
