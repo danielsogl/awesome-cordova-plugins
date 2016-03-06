@@ -32,9 +32,9 @@ export class DatePicker {
   @Cordova()
   static show(options?: {
     mode?: string,
-    date?: string,
-    minDate?: string,
-    maxDate?: string,
+    date?: Date,
+    minDate?: Date,
+    maxDate?: Date,
     titleText?: string,
     okText?: string,
     cancelText?: string,
@@ -48,8 +48,8 @@ export class DatePicker {
     doneButtonColor?: string,
     cancelButtonLabel?: string,
     cancelButtonColor?: string,
-    x?: string,
-    y?: string,
+    x?: number,
+    y?: number,
     minuteInterval?: number,
     popoverArrowDirection?: string,
     locale?: string
