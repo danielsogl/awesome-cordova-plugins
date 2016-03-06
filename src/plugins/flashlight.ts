@@ -85,6 +85,9 @@ export class Flashlight {
   @Cordova({
     sync: true
   })
-  static isSwitchedOn() {}
+  static isSwitchedOn() : boolean {
+    // DUMMY BOOLEAN, @Cordova decorator will replace value.
+    return true;
+  }
 
 }
