@@ -3,7 +3,7 @@ import {Plugin, Cordova} from './plugin';
 /**
  * Reads the version of your app from the target build settings.
  *
- * Requires Cordova plugin: `cordova-plugin-app-version`. For more info, please see the [Cordova App Version docs](ttps://github.com/whiteoctober/cordova-plugin-app-version).
+ * Requires Cordova plugin: `cordova-plugin-app-version`. For more info, please see the [Cordova App Version docs](https://github.com/whiteoctober/cordova-plugin-app-version).
  *
  * ```
  * cordova plugin add cordova-plugin-app-version
