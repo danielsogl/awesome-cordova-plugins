@@ -14,14 +14,6 @@ export interface promptCallback {
 
 }
 
-export interface confirmCallback {
-
-  /**
-   * The index of the pressed button. (Number) Note that the index uses one-based indexing, so the value is 1, 2, 3, etc.
-   */
-  buttonIndex : number,
-
-}
 
 /**
  * @name Dialogs
