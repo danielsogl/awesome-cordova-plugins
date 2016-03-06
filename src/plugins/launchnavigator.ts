@@ -56,9 +56,11 @@ export interface launchNavigatorOptions {
  *
  * @usage
  * ```js
- * Badge.set(10);
- * Badge.increase();
- * Badge.clear();
+ * LaunchNavigator.navigate("Toronto, ON", "London, ON")
+ *   .then(
+ *     success => console.log("Launched navigator"),
+ *     error => console.log("Error launching navigator", error)
+ *   );
  * ```
  */
 @Plugin({
