@@ -11,10 +11,10 @@ import {Observable} from 'rxjs/Observable';
 
 export const getPlugin = function(pluginRef: string): any {
   return get(window, pluginRef);
-}
+};
 export const isInstalled = function(pluginRef: string): boolean {
   return !!getPlugin(pluginRef);
-}
+};
 export const pluginWarn = function(pluginObj: any, method: string) {
   var pluginName = pluginObj.name;
   var plugin = pluginObj.plugin;
@@ -24,14 +24,14 @@ export const pluginWarn = function(pluginObj: any, method: string) {
     console.warn('Native: tried accessing the ' + pluginName + ' plugin but it\'s not installed.');
   }
   console.warn('Install the ' + pluginName + ' plugin: \'cordova plugin add ' + plugin + '\'');
-}
+};
 export const cordovaWarn = function(pluginName: string, method: string) {
   if(method) {
     console.warn('Native: tried calling ' + pluginName + '.' + method + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
   } else {
     console.warn('Native: tried accessing the ' + pluginName + ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
   }
-}
+};
 
 function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:any={}, resolve?: Function, reject?: Function) {
   // Try to figure out where the success/error callbacks need to be bound
@@ -61,7 +61,7 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
       cordovaWarn(pluginObj.name, methodName);
       reject && reject({
         error: 'cordova_not_available'
-      })
+      });
       return;
     }
 
@@ -130,7 +130,7 @@ export const wrap = function(pluginObj:any,  methodName:string, opts:any = {}) {
       return wrapPromise(pluginObj, methodName, args, opts);
     }
   }
-}
+};
 
 /**
  * Class decorator specifying Plugin metadata. Required for all plugins.
@@ -145,7 +145,7 @@ export function Plugin(config) {
 
     cls['installed'] = function() {
       return !!getPlugin(config.pluginRef);
-    }
+    };
 
     return cls;
   }
@@ -186,7 +186,7 @@ export function CordovaProperty(target: Function, key: string, descriptor: Typed
       return {};
     }
     return originalMethod.apply(this, args);
-  }
+  };
 
   return descriptor;
 }
