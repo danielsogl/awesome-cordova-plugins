@@ -5,16 +5,14 @@ export interface datePickerOptions {
    * Platforms: iOS, Android, Windows
    * The mode of the date picker
    * Values: date | time | datetime
-   * Default: date
    */
-  mode?: string,
+  mode: string,
 
   /**
    * Platforms: iOS, Android, Windows
    * Selected date
-   * Default: new Date()
    */
-  date?: Date,
+  date: Date,
 
   /**
    * Platforms: iOS, Android, Windows
@@ -79,7 +77,13 @@ export interface datePickerOptions {
  *
  * @usage
  * ```js
- * DatePicker.show();
+ * DatePicker.show({
+ *   date: new Date(),
+ *   mode: 'date'
+ * }).then(
+ *   date => console.log("Got date: ", date),
+ *   err => console.log("Error occurred while getting date:", err)
+ * );
  * ```
  *
  */
@@ -95,7 +99,7 @@ export class DatePicker {
    * @returns {Promise<Date>} Returns a promise that resolves with the picked date and/or time, or rejects with an error.
    */
   @Cordova()
-  static show(options?: datePickerOptions): Promise<Date> {
+  static show(options: datePickerOptions): Promise<Date> {
     // This Promise is replaced by one from the @Cordova decorator that wraps
     // the plugin's callbacks. We provide a dummy one here so TypeScript
     // knows that the correct return type is Promise, because there's no way
