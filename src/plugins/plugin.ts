@@ -59,14 +59,14 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
     // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
     if(!window.cordova) {
       cordovaWarn(pluginObj.name, methodName);
-      reject({
+      reject && reject({
         error: 'cordova_not_available'
       })
       return;
     }
 
     pluginWarn(pluginObj, methodName);
-    reject({
+    reject && reject({
       error: 'plugin_not_installed'
     });
     return;
