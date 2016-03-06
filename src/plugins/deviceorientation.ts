@@ -75,8 +75,7 @@ export class DeviceOrientation {
    * @returns {Promise<CompassHeading>}
    */
   @Cordova({
-    successIndex: 0,
-    errorIndex: 1
+    callbackOrder: 'reverse'
   })
   static watchHeading(options? : CompassOptions) : Promise<CompassHeading> {
     // This Promise is replaced by one from the @Cordova decorator that wraps
