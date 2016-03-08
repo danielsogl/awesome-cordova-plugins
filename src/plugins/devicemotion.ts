@@ -1,4 +1,5 @@
 import {Plugin, Cordova} from './plugin';
+import {Observable} from "rxjs/Observable";
 
 export interface accelerationData {
 
@@ -36,12 +37,27 @@ export interface accelerometerOptions {
 /**
  * Requires Cordova plugin: `cordova-plugin-device-motion`. For more info, please see the [Device Motion docs](https://github.com/apache/cordova-plugin-device-motion).
  *
- * ```
+ * ```shell
  * cordova plugin add https://github.com/apache/cordova-plugin-device-motion.git
  * ````
  *
  * @usage
- * ```js
+ * ```ts
+ *
+ * // Get the device current acceleration
+ * DeviceMotion.getCurrentAcceleration().then(
+ *   acceleration => console.log(acceleration),
+ *   error => console.log(error)
+ * );
+ *
+ * // Watch device acceleration
+ * var subscription = DeviceMotion.watchPosition().subscribe(acceleration => {
+ *   console.log(acceleration);
+ * });
+ *
+ * // Stop watch
+ * subscription.unsubscribe();
+ *
  * ```
  */
 @Plugin({
@@ -52,6 +68,7 @@ export class DeviceMotion {
 
   /**
    * Get the current acceleration along the x, y, and z axes.
+   *
    * @returns {Promise<any>} Returns object with x, y, z, and timestamp properties
    */
   @Cordova()
@@ -65,29 +82,31 @@ export class DeviceMotion {
   }
 
   /**
+   * Watch the device acceleration. Clear the watch by unsubscribing from the observable.
    *
+   * ```ts
+   * // Watch device acceleration
+   * var subscription = DeviceMotion.watchPosition().subscribe(acceleration => {
+   *   console.log(acceleration);
+   * });
+   *
+   * // Stop watch
+   * subscription.unsubscribe();
+   * ```
    * @param options
    * @returns {Observable<accelerationData>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
+    observable: true,
+    clearFunction: 'clearWatch'
   })
-  static watchAcceleration (options? : accelerometerOptions) : Promise<accelerationData> {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
+  static watchAcceleration (options? : accelerometerOptions) : Observable<accelerationData> {
+    // This Observable is replaced by one from the @Cordova decorator that wraps
     // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
+    // knows that the correct return type is PrObservableomise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<accelerationData>((res, rej) => {});
+    return new Observable<accelerationData>(observer => {});
   }
-
-  /**
-   * Stop watching the Acceleration referenced by the watchID parameter.
-   * @param watchID The ID returned by watchAcceleration method
-   */
-  @Cordova({
-    sync: true
-  })
-  static clearWatch(watchID : any) : void {}
-
 }
