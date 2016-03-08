@@ -1,4 +1,5 @@
 import {Plugin, Cordova} from './plugin';
+import {Observable} from "rxjs/Observable";
 
 export interface CompassHeading {
 
@@ -70,29 +71,24 @@ export class DeviceOrientation {
   }
 
   /**
-   * Gets the device's current heading at a regular interval
+   * Get the device current heading at a regular interval
+   *
+   * Stop the watch by unsubscribing from the observable
    * @param options
-   * @returns {Promise<CompassHeading>}
+   * @returns {Observable<CompassHeading>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
+    observable: true,
+    cancelFunction: 'clearWatch'
   })
-  static watchHeading(options? : CompassOptions) : Promise<CompassHeading> {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
+  static watchHeading(options? : CompassOptions) : Observable<CompassHeading> {
+    // This Observable is replaced by one from the @Cordova decorator that wraps
     // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
+    // knows that the correct return type is Observable, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<CompassHeading>((res, rej) => {});
+    return new Observable<CompassHeading>(observer => {});
   }
-
-  /**
-   * Stop watching the compass referenced by the watch ID parameter.
-   * @param watchID
-   */
-  @Cordova({
-    sync: true
-  })
-  static clearWatch(watchID) : void {}
 
 }
