@@ -47,7 +47,20 @@ export interface CompassOptions {
  * ````
  *
  * @usage
- * ```js
+ * ```ts
+ * // Get the device current compass heading
+ * DeviceOrientation.getCurrentHeading().then(
+ *   data => console.log(data),
+ *   error => console.log(error)
+ * );
+ *
+ * // Watch the device compass heading change
+ * var subscription = DeviceOrientation.watchHeading().subscribe(
+ *   data => console.log(data)
+ * );
+ *
+ * // Stop watching heading change
+ * subscription.unsubscribe();
  * ```
  */
 @Plugin({
