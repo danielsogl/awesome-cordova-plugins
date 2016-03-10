@@ -1,39 +1,18 @@
-
-console.log(window.IonicNative);
-
-if(IonicNative.Camera.installed()) {
-  console.log('Camera installed');
-} else {
-  console.log('Camera not installed');
-}
-
-if(IonicNative.Geolocation.installed()) {
-  console.log('Geolocation installed');
-  IonicNative.Geolocation.getCurrentPosition().then(function(pos) {
-    console.log('POSITION', pos);
+describe("IonicNative", function() {
+  it('should be loaded', function(){
+    console.log("Checking if Ionic Native is defined.");
+    expect(window.IonicNative).not.toBe('undefined');
   })
-} else {
-  console.log('Geolocation not installed');
-}
-/*
-Native.Camera.takePicture().then(function(resp) {
-  console.log('Got picture');
-}, function(err) {
-  console.log('ERROR');
 });
 
-if(Native.AppLinks.installed()) {
-  console.log('AppLinks installed');
-} else {
-  console.log('AppLinks not installed');
-}
-*/
+var IonicNative = window.IonicNative;
 
-if(IonicNative.StatusBar.installed()) {
-  console.log('StatusBar installed');
-  IonicNative.StatusBar.hide().catch(function(err) {
-    console.error('unable to set statusbar', err);
+describe("Geolocation", function() {
+
+  it('should get the current location', function(){
+
+    console.log("Getting current location");
+    expect(IonicNative.Geolocation.getCurrentPosition()).toBe('undefined');
   });
-} else {
-  console.log('StatusBar not installed');
-}
+
+});
