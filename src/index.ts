@@ -66,7 +66,7 @@ window['IonicNative'] = {
   StatusBar: StatusBar,
   Toast: Toast,
   TouchID: TouchID
-}
+};
 
 // To help developers using cordova, we listen for the device ready event and
 // log an error if it didn't fire in a reasonable amount of time. Generally,
@@ -76,9 +76,9 @@ let before = +new Date;
 
 let didFireReady = false;
 document.addEventListener('deviceready', function() {
-  console.log('DEVICE READY FIRED AFTER', (+new Date - before), 'ms')
+  console.log('DEVICE READY FIRED AFTER', (+new Date - before), 'ms');
   didFireReady = true;
-})
+});
 
 setTimeout(function() {
   if(!didFireReady && window.cordova) {
