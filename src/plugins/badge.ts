@@ -26,14 +26,7 @@ export class Badge {
    * Clear the badge of the app icon.
    */
   @Cordova()
-  static clear() {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
-  }
+  static clear(): Promise<boolean> { return }
 
   /**
    * Set the badge of the app icon.
@@ -41,28 +34,14 @@ export class Badge {
    * @returns {Promise}
    */
   @Cordova()
-  static set(number: number) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static set(number: number): Promise<any> { return }
 
   /**
    * Get the badge of the app icon.
    * @returns {Promise}
    */
   @Cordova()
-  static get() {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static get(): Promise<any> { return }
 
   /**
    * Increase the badge number.
@@ -70,14 +49,7 @@ export class Badge {
    * @returns {Promise}
    */
   @Cordova()
-  static increase(number: number) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static increase(number: number): Promise<any> { return }
 
   /**
    * Decrease the badge number.
@@ -85,39 +57,18 @@ export class Badge {
    * @returns {Promise}
    */
   @Cordova()
-  static decrease(number: number) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static decrease(number: number): Promise<any> { return }
 
   /**
    * Determine if the app has permission to show badges.
    */
   @Cordova()
-  static hasPermission() {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
-  }
+  static hasPermission(): Promise<any> { return }
 
   /**
    * Register permission to set badge notifications
    * @returns {Promise}
    */
   @Cordova()
-  static registerPermission() {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static registerPermission(): Promise<any> { return }
 }

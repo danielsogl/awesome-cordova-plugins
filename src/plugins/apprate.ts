@@ -45,9 +45,7 @@ export class AppRate {
    * @type {{}}
    */
   @CordovaProperty
-  static get preferences() {
-    return window.AppRate.preferences;
-  }
+  static get preferences() { return window.AppRate.preferences; }
 
   /**
    * Prompts the user for rating
@@ -55,6 +53,6 @@ export class AppRate {
    * @param {boolean} immediately  Show the rating prompt immediately.
    */
   @Cordova()
-  static promptForRating(immediately: boolean) : void {};
+  static promptForRating(immediately: boolean): void {};
 
 }
