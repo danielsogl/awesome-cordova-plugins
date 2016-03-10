@@ -31,9 +31,9 @@ export class BatteryStatus {
 
   /**
    * Watch the change in battery level
-   * @returns {Observable} Returns an observable that pushes the new battery level
+   * @returns {Observable} Returns an observable that pushes a status object
    */
-  static onChange () : Observable<any> {
+  static onChange () : Observable<StatusObject> {
     return new Observable(observer => {
       let callback = (status : any) => observer.next(status);
       window.addEventListener("batterystatus", callback, false);
@@ -41,4 +41,16 @@ export class BatteryStatus {
     });
   }
 
+}
+
+interface StatusObject {
+  /**
+   * The battery charge percentage
+   */
+  level : number,
+
+  /**
+   * A boolean that indicates whether the device is plugged in
+   */
+  isPlugged : boolean
 }
