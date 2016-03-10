@@ -15,7 +15,7 @@ import {Observable} from "rxjs/Observable";
  * // watch change in battery status
  * let subscription = BatteryStatus.onChange().subscribe(
  *  status => {
- *    console.log(status);
+ *    console.log(status.level, status.isPlugged);
  *  }
  * );
  *
@@ -34,10 +34,35 @@ export class BatteryStatus {
    * @returns {Observable} Returns an observable that pushes a status object
    */
   static onChange () : Observable<StatusObject> {
+    return BatteryStatus.getObservable("batterylevel");
+  }
+
+  /**
+   * Watch when the battery level goes low
+   * @returns {Observable<StatusObject>} Returns an observable that pushes a status object
+   */
+  static onLow () : Observable<StatusObject> {
+    return BatteryStatus.getObservable("batterylow");
+  }
+
+  /**
+   * Watch when the battery level goes to critial
+   * @returns {Observable<StatusObject>} Returns an observable that pushes a status object
+   */
+  static onCritical () : Observable<StatusObject> {
+    return BatteryStatus.getObservable("batterycritical");
+  }
+
+  /**
+   * Wrap the event with an observable
+   * @param event
+   * @returns {Observable}
+   */
+  static getObservable (event : string) : Observable<StatusObject> {
     return new Observable(observer => {
       let callback = (status : any) => observer.next(status);
-      window.addEventListener("batterystatus", callback, false);
-      return () => window.removeEventListener("batterystatus", callback, false);
+      window.addEventListener(event, callback, false);
+      return () => window.removeEventListener(event, callback, false);
     });
   }
 
