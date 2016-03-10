@@ -51,13 +51,10 @@ export class SMS {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static send(number : any, message : string, options? : smsOptions) : Promise<any> {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static send(
+    number: string | string[],
+    message: string,
+    options?: smsOptions
+  ): Promise<any> { return }
 
 }

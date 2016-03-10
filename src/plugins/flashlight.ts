@@ -22,60 +22,28 @@ export class Flashlight {
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean stating if the flash light is available.
    */
   @Cordova()
-  static available() : Promise<boolean>{
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-
-    return new Promise<boolean>((res,rej)=>{});
-  }
+  static available(): Promise<boolean> { return }
 
   /**
    * Switches the flashlight on
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static switchOn() : Promise<boolean>{
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-
-    return new Promise<boolean>((res,rej)=>{});
-  }
+  static switchOn(): Promise<boolean> { return }
 
   /**
    * Switches the flash light off
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static switchOff() : Promise<boolean>{
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-
-    return new Promise<boolean>((res,rej)=>{});
-  }
+  static switchOff(): Promise<boolean> { return }
 
   /**
    * Toggles the flashlight
    * @returns {Promise<any>}
    */
   @Cordova()
-  static toggle() : Promise<any> {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-
-    return new Promise<any>((res,rej)=>{});
-  }
+  static toggle(): Promise<any> { return }
 
 
   /**
@@ -85,9 +53,6 @@ export class Flashlight {
   @Cordova({
     sync: true
   })
-  static isSwitchedOn() : boolean {
-    // DUMMY BOOLEAN, @Cordova decorator will replace value.
-    return true;
-  }
+  static isSwitchedOn(): boolean { return }
 
 }

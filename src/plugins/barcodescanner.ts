@@ -28,14 +28,7 @@ export class BarcodeScanner {
    * @return Returns a Promise that resolves with scanner data, or rejects with an error.
    */
   @Cordova()
-  static scan(){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  };
+  static scan(): Promise<any> { return }
 
   // Not well supported
   // @Cordova()

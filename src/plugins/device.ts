@@ -50,7 +50,5 @@ export class Device {
  * @returns {Object} The device object.
  */
   @CordovaProperty
-  static get device() {
-    return window.device;
-  }
+  static get device() { return window.device; }
 }

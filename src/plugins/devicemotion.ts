@@ -72,14 +72,7 @@ export class DeviceMotion {
    * @returns {Promise<any>} Returns object with x, y, z, and timestamp properties
    */
   @Cordova()
-  static getCurrentAcceleration () : Promise<accelerationData> {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<accelerationData>((res, rej) => {});
-  }
+  static getCurrentAcceleration(): Promise<accelerationData> { return }
 
   /**
    * Watch the device acceleration. Clear the watch by unsubscribing from the observable.
@@ -101,12 +94,5 @@ export class DeviceMotion {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchAcceleration (options? : accelerometerOptions) : Observable<accelerationData> {
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is PrObservableomise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<accelerationData>(observer => {});
-  }
+  static watchAcceleration (options?: accelerometerOptions): Observable<accelerationData> { return }
 }

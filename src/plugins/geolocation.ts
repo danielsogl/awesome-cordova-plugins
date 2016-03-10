@@ -128,14 +128,7 @@ export class Geolocation {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getCurrentPosition(options?: GeolocationOptions){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<Geoposition>((res, rej) => {});
-  }
+  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
 
   /**
    * Watch the current device's position.  Clear the watch by unsubscribing from
@@ -158,12 +151,5 @@ export class Geolocation {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchPosition(options?: GeolocationOptions){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<Geoposition>(observer => {});
-  };
+  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return }
 }

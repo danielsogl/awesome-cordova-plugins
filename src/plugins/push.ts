@@ -285,21 +285,13 @@ export class Push {
   @Cordova({
     sync: true
   })
-  static init(options: PushOptions){
-    return new PushNotification();
-  }
+  static init(options: PushOptions): PushNotification { return }
 
   /**
    * Check whether the push notification permission has been granted.
    * @return {Promise} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
    */
   @Cordova()
-  static hasPermission(){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<{ isEnabled: boolean }>((res, rej) => {});
-  }
+  static hasPermission(): Promise<{ isEnabled: boolean }> { return }
+  
 }

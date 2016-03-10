@@ -31,28 +31,18 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static show(message: string, duration: string, position: string){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  }
+  static show(
+    message: string,
+    duration: string,
+    position: string
+  ): Observable<any> { return }
 
   /**
    * Manually hide any currently visible toast.
    * @return {Promise} Returns a Promise that resolves on success.
    */
   @Cordova()
-  static hide(){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static hide(): Promise<any>{ return }
 
   /**
    * Show a native toast with the given options.
@@ -69,14 +59,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showWithOptions(options: ToastOptions){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  }
+  static showWithOptions(options: ToastOptions): Observable<any> { return }
 
   /**
    * Shorthand for `show(message, 'short', 'top')`.
@@ -86,14 +69,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showShortTop(message: string){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  }
+  static showShortTop(message: string): Observable<any> { return }
 
   /**
    * Shorthand for `show(message, 'short', 'center')`.
@@ -103,14 +79,8 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showShortCenter(message: string){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  }
+  static showShortCenter(message: string): Observable<any> { return }
+
 
   /**
    * Shorthand for `show(message, 'short', 'bottom')`.
@@ -120,14 +90,8 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showShortBottom(message: string){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  }
+  static showShortBottom(message: string): Observable<any> { return }
+
 
   /**
    * Shorthand for `show(message, 'long', 'top')`.
@@ -137,14 +101,8 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showLongTop(message: string){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  }
+  static showLongTop(message: string): Observable<any> { return }
+
 
   /**
    * Shorthand for `show(message, 'long', 'center')`.
@@ -154,14 +112,8 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showLongCenter(message: string){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  }
+  static showLongCenter(message: string): Observable<any> { return }
+
 
   /**
    * Shorthand for `show(message, 'long', 'bottom')`.
@@ -171,12 +123,6 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showLongBottom(message: string){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  }
+  static showLongBottom(message: string): Observable<any> { return }
+
 }

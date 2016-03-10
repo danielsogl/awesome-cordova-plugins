@@ -74,14 +74,7 @@ export class DeviceOrientation {
    * @returns {Promise<CompassHeading>}
    */
   @Cordova()
-  static getCurrentHeading() : Promise<CompassHeading> {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<CompassHeading>((res, rej) => {});
-  }
+  static getCurrentHeading(): Promise<CompassHeading> { return }
 
   /**
    * Get the device current heading at a regular interval
@@ -95,13 +88,6 @@ export class DeviceOrientation {
     observable: true,
     cancelFunction: 'clearWatch'
   })
-  static watchHeading(options? : CompassOptions) : Observable<CompassHeading> {
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<CompassHeading>(observer => {});
-  }
+  static watchHeading(options?: CompassOptions): Observable<CompassHeading> { return }
 
 }

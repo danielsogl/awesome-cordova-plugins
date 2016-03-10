@@ -42,14 +42,11 @@ export class Dialogs {
     successIndex: 1,
     errorIndex: 4
   })
-  static alert(message, title : string = 'Alert', buttonName : string = 'OK') : Promise<any>{
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static alert(
+    message,
+    title: string = 'Alert',
+    buttonName: string = 'OK'
+  ): Promise<any>{ return }
 
   /**
    * Displays a customizable confirmation dialog box.
@@ -62,14 +59,11 @@ export class Dialogs {
     successIndex: 1,
     errorIndex: 4
   })
-  static confirm(message, title : string = 'Confirm', buttonLabels : Array<string> = ['OK', 'Cancel']) : Promise<number>{
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<number>((res, rej) => {});
-  }
+  static confirm(
+    message,
+    title: string = 'Confirm',
+    buttonLabels: Array<string> = ['OK', 'Cancel']
+  ): Promise<number>{ return }
 
   /**
    * Displays a native dialog box that is more customizable than the browser's prompt function.
@@ -83,14 +77,12 @@ export class Dialogs {
     successIndex: 1,
     errorIndex: 5
   })
-  static prompt(message, title : string = 'Prompt', buttonLabels : Array<string> = ['OK', 'Cancel'], defaultText : string = '') : Promise<any>{
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static prompt(
+    message?: string,
+    title: string = 'Prompt',
+    buttonLabels: Array<string> = ['OK', 'Cancel'],
+    defaultText: string = ''
+  ): Promise<any>{ return }
 
 
   /**
@@ -100,6 +92,6 @@ export class Dialogs {
   @Cordova({
     sync: true
   })
-  static beep(times : number) : void {}
+  static beep(times: number): void {}
 
 }

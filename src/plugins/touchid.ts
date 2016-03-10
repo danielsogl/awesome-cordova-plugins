@@ -34,14 +34,7 @@ export class TouchID {
    * @return {Promise} Returns a Promise that resolves if yes, rejects if no.
    */
   @Cordova()
-  isAvailable() {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  };
+  isAvailable(): Promise<any>{ return }
 
   /**
    * Show TouchID dialog and wait for a fingerprint scan. If user taps 'Enter Password' button, brings up standard system passcode screen.
@@ -50,14 +43,7 @@ export class TouchID {
    * @return {Promise} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
-  static verifyFingerprint(message: string) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static verifyFingerprint(message: string): Promise<any>{ return }
 
   /**
    * Show TouchID dialog and wait for a fingerprint scan. If user taps 'Enter Password' button, rejects with code '-3' (see above).
@@ -66,14 +52,7 @@ export class TouchID {
    * @return {Promise} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
-  static verifyFingerprintWithCustomPasswordFallback(message: string) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static verifyFingerprintWithCustomPasswordFallback(message: string): Promise<any> { return }
 
   /**
    * Show TouchID dialog with custom 'Enter Password' message and wait for a fingerprint scan. If user taps 'Enter Password' button, rejects with code '-3' (see above).
@@ -83,12 +62,5 @@ export class TouchID {
    * @return {Promise} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
-  static verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string): Promise<any> { return }
 }
