@@ -2,7 +2,7 @@ import {Plugin} from './plugin';
 import {Observable} from "rxjs/Observable";
 
 /**
- *
+ * @name Battery Status
  *
  * Requires Cordova plugin: cordova-plugin-batterystatus. For more info, please see the [BatteryStatus plugin docs](https://github.com/apache/cordova-plugin-battery-status).
  *
@@ -12,12 +12,15 @@ import {Observable} from "rxjs/Observable";
  *
  * @usage
  * ```js
- *
- * BatteryStatus.onChange().subscribe(
+ * // watch change in battery status
+ * let subscription = BatteryStatus.onChange().subscribe(
  *  status => {
- *
+ *    console.log(status);
  *  }
  * );
+ *
+ * // stop watch
+ * subscription.unsubscribe();
  *
  * ```
  */
@@ -27,7 +30,7 @@ import {Observable} from "rxjs/Observable";
 export class BatteryStatus {
 
   /**
-   * Watches the change in battery level
+   * Watch the change in battery level
    * @returns {Observable} Returns an observable that pushes the new battery level
    */
   static onChange () : Observable<any> {
