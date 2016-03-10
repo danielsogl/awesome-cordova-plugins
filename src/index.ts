@@ -46,6 +46,8 @@ export {
   TouchID
 }
 
+export * from './plugins/plugin';
+
 // Window export to use outside of a module loading system
 window['IonicNative'] = {
   ActionSheet: ActionSheet,
