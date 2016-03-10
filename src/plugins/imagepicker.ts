@@ -37,7 +37,7 @@ export interface ImagePickerOptions {
  */
 @Plugin({
   plugin: 'cordova-plugin-image-picker',
-  pluginRef: 'navigator.imagepicker',
+  pluginRef: 'window.imagePicker',
   repo: 'https://github.com/wymsee/cordova-imagePicker'
 })
 export class ImagePicker {
