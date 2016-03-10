@@ -125,7 +125,9 @@ export class Geolocation {
    * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
    * @return Returns a Promise that resolves with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
   static getCurrentPosition(options?: GeolocationOptions){
     // This Promise is replaced by one from the @Cordova decorator that wraps
     // the plugin's callbacks. We provide a dummy one here so TypeScript
