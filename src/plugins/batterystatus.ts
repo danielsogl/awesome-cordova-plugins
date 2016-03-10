@@ -34,7 +34,7 @@ export class BatteryStatus {
    * @returns {Observable} Returns an observable that pushes a status object
    */
   static onChange () : Observable<StatusObject> {
-    return BatteryStatus.getObservable("batterylevel");
+    return getEventObservable("batterylevel");
   }
 
   /**
@@ -42,7 +42,7 @@ export class BatteryStatus {
    * @returns {Observable<StatusObject>} Returns an observable that pushes a status object
    */
   static onLow () : Observable<StatusObject> {
-    return BatteryStatus.getObservable("batterylow");
+    return getEventObservable("batterylow");
   }
 
   /**
@@ -50,20 +50,7 @@ export class BatteryStatus {
    * @returns {Observable<StatusObject>} Returns an observable that pushes a status object
    */
   static onCritical () : Observable<StatusObject> {
-    return BatteryStatus.getObservable("batterycritical");
-  }
-
-  /**
-   * Wrap the event with an observable
-   * @param event
-   * @returns {Observable}
-   */
-  static getObservable (event : string) : Observable<StatusObject> {
-    return new Observable(observer => {
-      let callback = (status : any) => observer.next(status);
-      window.addEventListener(event, callback, false);
-      return () => window.removeEventListener(event, callback, false);
-    });
+    return getEventObservable("batterycritical");
   }
 
 }
@@ -78,4 +65,17 @@ interface StatusObject {
    * A boolean that indicates whether the device is plugged in
    */
   isPlugged : boolean
+}
+
+/**
+ * Wrap the event with an observable
+ * @param event
+ * @returns {Observable}
+ */
+function getEventObservable (event : string) : Observable<StatusObject> {
+  return new Observable(observer => {
+    let callback = (status : any) => observer.next(status);
+    window.addEventListener(event, callback, false);
+    return () => window.removeEventListener(event, callback, false);
+  });
 }
