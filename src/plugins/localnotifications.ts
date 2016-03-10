@@ -42,15 +42,149 @@ import {Plugin, Cordova} from './plugin';
 })
 export class LocalNotifications {
 
+  /**
+   * Schedules a single or multiple notifications
+   * @param options
+   */
   @Cordova({
     sync: true
   })
-  static schedule(options? : ScheduleOptions) : void {}
+  static schedule(options? : Notification) : void {}
+
+  /**
+   * Updates a previously scheduled notification. Must include the id in the options parameter.
+   * @param options
+   */
+  @Cordova({
+    sync: true
+  })
+  static update(options? : Notification) : void {}
+
+  /**
+   * Clears single or multiple notifications
+   * @param notificationId A single notification id, or an array of notification ids.
+   */
+  @Cordova()
+  static clear(notificationId : any) : Promise<any> {return}
+
+  /**
+   * Clears all notifications
+   */
+  @Cordova({
+    successIndex: 0,
+    errorIndex: 2
+  })
+  static clearAll() : Promise<any> {return}
+
+  /**
+   * Cancels single or multiple notifications
+   * @param notificationId A single notification id, or an array of notification ids.
+   */
+  @Cordova()
+  static cancel(notificationId : any) : Promise<any> {return}
+
+  /**
+   * Cancels all notifications
+   */
+  @Cordova({
+    successIndex: 0,
+    errorIndex: 2
+  })
+  static cancelAll() : Promise<any> {return}
+
+  /**
+   * Checks presence of a notification
+   * @param notificationId
+   */
+  @Cordova()
+  static isPresent (notificationId : number) : Promise<boolean> {return}
+
+  /**
+   * Checks is a notification is scheduled
+   * @param notificationId
+   */
+  @Cordova()
+  static isScheduled (notificationId : number) : Promise<boolean> {return}
+
+  /**
+   * Checks if a notification is triggered
+   * @param notificationId
+   */
+  @Cordova()
+  static isTriggered (notificationId : number) : Promise<boolean> {return}
+
+  /**
+   * Get all the notification ids
+   */
+  @Cordova()
+  static getAllIds () : Promise<Array<number>> {return}
+
+  /**
+   * Get the ids of triggered notifications
+   */
+  @Cordova()
+  static getTriggeredIds () : Promise<Array<number>> {return}
+
+  /**
+   * Get the ids of scheduled notifications
+   */
+  @Cordova()
+  static getScheduledIds () : Promise<Array<number>> {return}
+
+  /**
+   * Get a notification object
+   * @param notificationId The id of the notification to get
+   */
+  @Cordova()
+  static get (notificationId : any) : Promise <Notification> {return}
+
+  /**
+   * Get a scheduled notification object
+   * @param notificationId The id of the notification to get
+   */
+  @Cordova()
+  static getScheduled (notificationId : any) : Promise <Notification> {return}
+
+  /**
+   * Get a triggered notification object
+   * @param notificationId The id of the notification to get
+   */
+  @Cordova()
+  static getTriggered (notificationId : any) : Promise <Notification> {return}
+
+  /**
+   * Get all notification objects
+   */
+  @Cordova()
+  static getAll() : Promise<Array<Notification>> {return}
+
+  /**
+   * Get all scheduled notification objects
+   */
+  @Cordova()
+  static getAllScheduled() : Promise<Array<Notification>> {return}
+
+  /**
+   * Get all triggered notification objects
+   */
+  @Cordova()
+  static getAllTriggered() : Promise<Array<Notification>> {return}
+
+
+  /**
+   * Sets a callback for a specific event
+   * @param eventName The name of the event. Available events: schedule, trigger, click, update, clear, clearall, cancel, cancelall
+   * @param callback Call back function. All events return notification and state parameter. clear and clearall return state parameter only.
+   */
+  @Cordova({
+    sync: true
+  })
+  static on(eventName : string, callback : any) : void {}
 
 
 }
 
-interface ScheduleOptions {
+interface Notification {
 
   /**
    * A unique identifier required to clear, cancel, update or retrieve the local notification in the future
@@ -131,6 +265,4 @@ interface ScheduleOptions {
    * Default: FFFFFF
    */
   led : string
-
-
 }
