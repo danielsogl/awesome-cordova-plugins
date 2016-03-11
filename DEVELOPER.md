@@ -64,7 +64,7 @@ Let's take a look at `getCurrentPosition` first.
 
 ```
   @Cordova()
-  static getCurrentPosition(options: GeolocationOptions): Promise<Geoposition> { return }
+  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
 ```
 
 It's just a stub. The `return` is only there to keep the TypeScript type-checker from complaining since we indicate the `getCurrentPosition` returns a `Promise<Geoposition>`.
@@ -81,7 +81,7 @@ Next, let's look at the `watchPosition` method.
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchPosition(options: GeolocationOptions): Observable<Geoposition> { return }
+  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return }
 ```
 
 The `@Cordova` decorator has a few more options now.
