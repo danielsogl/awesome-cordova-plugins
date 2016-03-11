@@ -5,6 +5,7 @@ machine:
     version: 2.1.2
 test:
   override:
+    - npm run build_bundle
     - node test.js
 
 deployment:
