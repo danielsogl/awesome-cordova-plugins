@@ -15,6 +15,7 @@
   "devDependencies": {
     "browserify": "^13.0.0",
     "canonical-path": "0.0.2",
+    "cordova-plugin-actionsheet": "^2.2.2",
     "cpr": "^1.0.0",
     "cz-conventional-changelog": "^1.1.5",
     "dgeni": "^0.4.2",
@@ -35,7 +36,8 @@
     "q": "1.4.1",
     "semver": "^5.0.1",
     "systemjs": "^0.19.24",
-    "typescript": "^1.7.5"
+    "typescript": "^1.7.5",
+    "xml2js": "^0.4.16"
   },
   "scripts": {
     "test": "npm run build_bundle && karma start karma.conf.js",
