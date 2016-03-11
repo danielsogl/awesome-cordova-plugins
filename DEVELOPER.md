@@ -67,11 +67,11 @@ Let's take a look at `getCurrentPosition` first.
   static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
 ```
 
-It's just a stub. The `return` is only there to keep the TypeScript type-checker from complaining since we indicate the `getCurrentPosition` returns a `Promise<Geoposition>`.
+It's just a stub. The `return` is only there to keep the TypeScript type-checker from complaining since we indicate that `getCurrentPosition` returns a `Promise<Geoposition>`.
 
 By default, the `@Cordova` decorator wraps the plugin callbacks in a Promise that resolves when the success callback is called and rejects when the error callback is called.  It also ensures that Cordova and the underlying plugin are available, and prints helpful diagnostics if they aren't.
 
-You'll also notice that it is a static method. That's because the plugin class is just a utility class to call the underlying Cordova plugin methods, it's not an instance and has no state.
+You'll also notice that `getCurrentPosition` is a static method. That's because the plugin class is just a utility class to call the underlying Cordova plugin methods, it's not an instance and has no state.
 
 Next, let's look at the `watchPosition` method.
 
