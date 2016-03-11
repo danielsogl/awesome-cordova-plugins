@@ -50,22 +50,26 @@ fs.readdir('dist/plugins', function(err, files){
 
                         parser.parseString(data, function (err, result) {
 
-                            let pathToJS = (result['plugin'].hasOwnProperty('js-module')) ? pluginPath + result["plugin"]["js-module"][0]['$']['src'] : pluginPath + result['plugin']['platform'][0]['js-module'][0]['$']['src'];
-
                             try {
-                                // Plugin uses module.exports, just use the exported methods to create mocks
+                                let pathToJS = (result['plugin'].hasOwnProperty('js-module')) ? pluginPath + result["plugin"]["js-module"][0]['$']['src'] : pluginPath + result['plugin']['platform'][0]['js-module'][0]['$']['src'];
 
-                                let pluginJS = require(pathToJS);
-                                console.log('########## ' + obj.plugin + ' uses module.exports');
+                                try {
+                                    // Plugin uses module.exports, just use the exported methods to create mocks
 
-                            }catch(e){
-                                // Plugin calls cordova method, need to search for methods
+                                    let pluginJS = require(pathToJS);
+                                    console.log('########## ' + obj.plugin + ' uses module.exports');
 
-                                fs.readFile(pathToJS, function(err, data){
+                                }catch(e){
+                                    // Plugin calls cordova method, need to search for methods
 
-                                    //console.log(data);
+                                    fs.readFile(pathToJS, function(err, data){
 
-                                });
+                                        //console.log(data);
+
+                                    });
+                                }
+                            } catch (e) {
+                                console.log("Error getting path to JS", result);
                             }
                         })
                     });
