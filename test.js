@@ -29,15 +29,18 @@ fs.readdir('dist/plugins', function(err, files){
                 // TODO report the error during the tests somehow
                 else {
                     let pluginPath = "./node_modules/" + obj.plugin + '/';
+                    fs.exists(pluginPath, function(exists){
+                        if(exists) console.log("Plugin already installed at " + pluginPath);
+                        else {
+                            console.log("Plugin not installed, going to install it now");
+                            exec('npm install ' + obj.plugin, function(error, stdout, stderr){
+                                if(error) console.warn(error);
+                                if(stderr) console.warn(stderr);
+                                if(stdout) console.log(stdout);
+                            });
+                        }
+                    });
 
-                    if(fs.lstatSync(pluginPath).isDirectory()) console.log("Plugin already installed at " + pluginPath);
-                    else {
-                        exec('npm install ' + obj.plugin, function(error, stdout, stderr){
-                            if(error) console.warn(error);
-                            if(stderr) console.warn(stderr);
-                            if(stdout) console.log(stdout);
-                        });
-                    }
                     // TODO perhaps let everything wait till exec() is done ... to make sure that we have the files needed in node_modules
 
 
