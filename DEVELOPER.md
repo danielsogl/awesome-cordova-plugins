@@ -15,18 +15,14 @@ Let's take a look at the existing plugin wrapper for Geolocation to see what goe
 export class Geolocation {
 
   @Cordova()
-  static getCurrentPosition(options: GeolocationOptions){
-    return new Promise<Geoposition>((res, rej) => {});
-  }
+  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
 
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchPosition(options: GeolocationOptions){
-    return new Observable<Geoposition>(observer => {});
-  }
+  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return }
 }
 ```
 
@@ -68,10 +64,10 @@ Let's take a look at `getCurrentPosition` first.
 
 ```
   @Cordova()
-  static getCurrentPosition(options: GeolocationOptions){
-    return new Promise<Geoposition>((res, rej) => {});
-  }
+  static getCurrentPosition(options: GeolocationOptions): Promise<Geoposition> { return }
 ```
+
+It's just a stub. The `return` is only there to keep the TypeScript type-checker from complaining since we indicate the `getCurrentPosition` returns a `Promise<Geoposition>`.
 
 By default, the `@Cordova` decorator wraps the plugin callbacks in a Promise that resolves when the success callback is called and rejects when the error callback is called.  It also ensures that Cordova and the underlying plugin are available, and prints helpful diagnostics if they aren't.
 
@@ -85,9 +81,7 @@ Next, let's look at the `watchPosition` method.
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchPosition(options: GeolocationOptions){
-    return new Observable<Geoposition>(observer => {});
-  }
+  static watchPosition(options: GeolocationOptions): Observable<Geoposition> { return }
 ```
 
 The `@Cordova` decorator has a few more options now.
