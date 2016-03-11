@@ -27,7 +27,7 @@ export interface ImagePickerOptions {
  *
  * @usage
  * ```js
- * ImagePiker.getPictures(options).then((results) => {
+ * ImagePicker.getPictures(options).then((results) => {
  *   for (var i = 0; i < results.length; i++) {
  *       console.log('Image URI: ' + results[i]);
  *   }
