@@ -1,6 +1,4 @@
 'use strict';
-console.log("I'm alive");
-
 var exec = require('child_process').exec;
 var fs = require('fs');
 var xml2js = require('xml2js');
@@ -8,10 +6,8 @@ var plugin, property;
 
 // Read the compiled plugin files
 fs.readdir('dist/plugins', function(err, files){
-var found = false;
     // Loop through all compiled files
     files.forEach(function(file){
-//if(found) return;
         // Look for compiled JS files only
         if(/^((.*).js)$/.test(file)) {
 
@@ -28,59 +24,50 @@ var found = false;
             }
 
             function processPlugin(obj) {
-                found = true;
                 // Ignore if it's a URL
                 if (/^(https:\/\/(.*))$/.test(obj.plugin)) console.log("Found a url!", obj.plugin);
                 // TODO report the error during the tests somehow
                 else {
                     let pluginPath = "./node_modules/" + obj.plugin + '/';
+
+                    if(fs.lstatSync(pluginPath).isDirectory()) console.log("Plugin already installed at " + pluginPath);
+                    else {
+                        exec('npm install ' + obj.plugin, function(error, stdout, stderr){
+                            if(error) console.warn(error);
+                            if(stderr) console.warn(stderr);
+                            if(stdout) console.log(stdout);
+                        });
+                    }
+                    // TODO perhaps let everything wait till exec() is done ... to make sure that we have the files needed in node_modules
+
+
+
                     fs.readFile(pluginPath + 'plugin.xml', function (err, data) {
                         var parser = new xml2js.Parser();
 
                         parser.parseString(data, function (err, result) {
 
+                            let pathToJS = (result['plugin'].hasOwnProperty('js-module')) ? pluginPath + result["plugin"]["js-module"][0]['$']['src'] : pluginPath + result['plugin']['platform'][0]['js-module'][0]['$']['src'];
+
                             try {
+                                // Plugin uses module.exports, just use the exported methods to create mocks
 
-                                let pathToJS = pluginPath + result["plugin"]["js-module"][0]['$']['src'];
+                                let pluginJS = require(pathToJS);
+                                console.log('########## ' + obj.plugin + ' uses module.exports');
 
-                                //console.log(pathToJS);
+                            }catch(e){
+                                // Plugin calls cordova method, need to search for methods
 
-                                try {
-                                    // Plugin uses module.exports
-                                    let pluginJS = require(pathToJS);
-                                    console.log('########## ' + obj.plugin + ' uses module.exports');
+                                fs.readFile(pathToJS, function(err, data){
 
-                                }catch(e){
-                                    // Plugin calls cordova.addConstructor
+                                    //console.log(data);
 
-                                    fs.readFile(pathToJS, function(err, data){
-
-                                        //console.log(data);
-
-                                    });
-
-                                }
-
-                            }catch (e){
-                                console.log("@@ IM STILL HERE", obj.plugin, e);
+                                });
                             }
-
                         })
-
-
                     });
-
                 }
-
-                //exec('npm install ' + obj.plugin, function(error, stdout, stderr){
-                //    if(error) console.warn(error);
-                //    if(stderr) console.warn(stderr);
-                //    if(stdout) console.log(stdout);
-                //});
-
             }
         }
-
-
     })
 });

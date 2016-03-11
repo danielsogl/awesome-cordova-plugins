@@ -5,7 +5,7 @@ machine:
     version: 2.1.2
 test:
   override:
-    - echo "Skipping tests for now"
+    - node test.js
 
 deployment:
   staging:
