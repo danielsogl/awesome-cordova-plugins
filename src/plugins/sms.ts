@@ -27,20 +27,21 @@ export interface smsOptionsAndroid {
  * Requires Cordova plugin: cordova-plugin-sms. For more info, please see the [SMS plugin docs](https://github.com/cordova-sms/cordova-sms-plugin).
  *
  * ```shell
- * cordova plugin add https://github.com/cordova-sms/cordova-sms-plugin.git
+ * cordova plugin add cordova-sms-plugin
  * ```
  *
  * @usage
  * ```ts
  *
  * // Send a text message using default options
- * SMS.send('6476245170','Hello world!');
+ * SMS.send('416123456','Hello world!');
  *
  * ```
  */
 @Plugin({
-  plugin: 'https://github.com/cordova-sms/cordova-sms-plugin.git',
-  pluginRef: 'sms'
+  plugin: 'cordova-sms-plugin',
+  pluginRef: 'sms',
+  repo: 'https://github.com/cordova-sms/cordova-sms-plugin.git'
 })
 export class SMS {
 
