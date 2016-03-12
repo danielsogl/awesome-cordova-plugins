@@ -5,7 +5,8 @@ machine:
     version: 2.1.2
 test:
   override:
-    - echo "Skipping tests for now"
+    - npm run build_bundle
+    - node test.js
 
 deployment:
   staging:
