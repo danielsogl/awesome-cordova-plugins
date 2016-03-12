@@ -2,7 +2,7 @@
 var exec = require('child_process').execSync;
 var fs = require('fs');
 var xml2js = require('xml2js');
-var plugin, property, functions = [];
+var plugin, property, functions = [], pluginCount = 0, completedPluginsCount = 0, window = {};
 
 // Read the compiled plugin files
 fs.readdir('dist/plugins', function(err, files){
@@ -31,6 +31,7 @@ function installPlugin(pluginObject) {
     if (/^(https:\/\/(.*))$/.test(pluginObject.plugin)) console.log("Found a url!", pluginObject.plugin);
     // TODO report the error during the tests somehow
     else {
+        pluginCount++;
         let pluginPath = "./node_modules/" + pluginObject.plugin + '/';
         fs.exists(pluginPath, function(exists){
             if(exists) processPlugin(pluginPath, pluginObject);
@@ -60,11 +61,17 @@ function processPlugin(pluginPath, pluginObject){
                             functions.push(pluginObject.pluginRef + '.' + property);
                         }
 
+                        completedPluginsCount++;
+                        finalize();
+
                     }catch(e){
                         // Plugin calls cordova method, need to search for methods
                         //console.log(pluginObject.plugin + ' uses cordova methods');
-                        fs.readFile(pathToJS, function(err, data){
+                        fs.readFile(pathToJS,'utf-8', function(err, data){
                             //console.log(data);
+                            // TODO Extract the functions out of the JS file
+                            completedPluginsCount++;
+                            finalize();
                         });
                     }
                 } catch (e) {
@@ -75,4 +82,42 @@ function processPlugin(pluginPath, pluginObject){
     } catch (e){
         console.log("Error reading plugin.xml", e);
     }
+}
+
+function finalize() {
+
+    if(pluginCount !== completedPluginsCount) return;
+
+    functions.forEach(function(f) {
+        f = f.split('.');
+        if(!window.hasOwnProperty(f[0])){
+            window[f[0]] = {}
+        }
+
+        // TODO research a better way to do this
+        switch(f.length){
+            case 1 :
+                window[f[0]] = function(){};
+                break;
+
+            case 2 :
+                window[f[0]][f[1]] = function(){};
+                break;
+
+            case 3 :
+                window[f[0]][f[1]] = {};
+                window[f[0]][f[1]][f[2]] = function(){};
+                break;
+
+            case 4 :
+                window[f[0]][f[1]] = {};
+                window[f[0]][f[1]][f[2]] = {};
+                window[f[0]][f[1]][f[2]][f[3]] = function(){};
+                break;
+        }
+    });
+
+
+    // TODO write a JavaScript file with the window object in it
+
 }
