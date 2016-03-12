@@ -190,7 +190,7 @@ export class LocalNotifications {
 
 }
 
-interface Notification {
+export interface Notification {
 
   /**
    * A unique identifier required to clear, cancel, update or retrieve the local notification in the future

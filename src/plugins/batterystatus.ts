@@ -55,7 +55,7 @@ export class BatteryStatus {
 
 }
 
-interface StatusObject {
+export interface StatusObject {
   /**
    * The battery charge percentage
    */
