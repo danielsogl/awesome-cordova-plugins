@@ -18,16 +18,22 @@ export interface promptCallback {
 /**
  * @name Dialogs
  * @description
+ * This plugin gives you ability to access and customize the device native dialogs.
  *
  * Requires Cordova plugin: `cordova-plugin-dialogs`. For more info, please see the [Dialogs plugin docs](https://github.com/apache/cordova-plugin-dialogs).
+ *
+ * ```shell
+ * cordova plugin add cordova-plugin-dialogs
+ * ```
  *
  * @usage
  * ```js
  * ```
  */
 @Plugin({
-  plugin: 'https://github.com/apache/cordova-plugin-dialogs.git',
-  pluginRef: 'navigator.notification'
+  plugin: 'cordova-plugin-dialogs',
+  pluginRef: 'navigator.notification',
+  repo: 'https://github.com/apache/cordova-plugin-dialogs.git'
 })
 export class Dialogs {
 

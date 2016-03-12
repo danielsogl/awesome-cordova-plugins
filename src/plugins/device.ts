@@ -31,6 +31,10 @@ export interface Device {
  * @description
  * Access information about the underlying device and platform.
  *
+ * ```shell
+ * cordova plugin add cordova-plugin-device
+ * ```
+ *
  * @usage
  * ```js
  * let info = Device.getDevice();

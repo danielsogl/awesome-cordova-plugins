@@ -64,6 +64,8 @@ export interface datePickerOptions {
 }
 
 /**
+ * @name DatePicker
+ * @description
  * The DatePicker plugin allows the user to fetch date or time using native dialogs.
  *
  * Platforms supported: iOS, Android, Windows
@@ -72,7 +74,7 @@ export interface datePickerOptions {
  *
  * Install the plugin by running the following command:
  * ```shell
- * cordova plugin add https://github.com/VitaliiBlagodir/cordova-plugin-datepicker.git
+ * cordova plugin add cordova-plugin-datepicker
  * ```
  *
  * @usage
@@ -88,7 +90,7 @@ export interface datePickerOptions {
  *
  */
 @Plugin({
-  plugin: 'https://github.com/VitaliiBlagodir/cordova-plugin-datepicker.git',
+  plugin: 'cordova-plugin-datepicker',
   pluginRef: 'datePicker'
 })
 export class DatePicker {

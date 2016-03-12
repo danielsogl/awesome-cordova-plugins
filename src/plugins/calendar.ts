@@ -23,6 +23,11 @@ export interface Calendar {
  *
  * Requires Cordova plugin: `cordova-plugin-calendar`. For more info, please see the [Calendar plugin docs](https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin).
  *
+ * ```shell
+ * cordova plugin add cordova-plugin-calendar
+ * ```
+ *
+ *
  */
 @Plugin({
   plugin: 'cordova-plugin-calendar',

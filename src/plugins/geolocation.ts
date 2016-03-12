@@ -99,6 +99,10 @@ export interface GeolocationOptions {
  *
  *  This API is based on the W3C Geolocation API Specification, and only executes on devices that don't already provide an implementation.
  *
+ * ```shell
+ * cordova plugin add cordova-plugin-geolocation
+ * ```
+ *
  * @usage
  *
  * ```ts

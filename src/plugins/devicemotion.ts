@@ -35,10 +35,12 @@ export interface accelerometerOptions {
 }
 
 /**
+ * @name DeviceMotion
+ * @description
  * Requires Cordova plugin: `cordova-plugin-device-motion`. For more info, please see the [Device Motion docs](https://github.com/apache/cordova-plugin-device-motion).
  *
  * ```shell
- * cordova plugin add https://github.com/apache/cordova-plugin-device-motion.git
+ * cordova plugin add cordova-plugin-device-motion
  * ````
  *
  * @usage
@@ -61,8 +63,9 @@ export interface accelerometerOptions {
  * ```
  */
 @Plugin({
-  plugin: 'https://github.com/apache/cordova-plugin-device-motion.git',
-  pluginRef: 'navigator.accelerometer'
+  plugin: 'cordova-plugin-device-motion',
+  pluginRef: 'navigator.accelerometer',
+  repo: 'https://github.com/apache/cordova-plugin-device-motion'
 })
 export class DeviceMotion {
 

@@ -47,11 +47,12 @@ export interface launchNavigatorOptions {
 }
 
 /**
- *
+ * @name LaunchNavigator
+ * @description
  * Requires Cordova plugin: uk.co.workingedge.phonegap.plugin.launchnavigator. For more info, please see the [LaunchNavigator plugin docs](https://github.com/dpa99c/phonegap-launch-navigator).
  *
- * ```
- * cordova plugin add https://github.com/dpa99c/phonegap-launch-navigator.git
+ * ```shell
+ * cordova plugin add uk.co.workingedge.phonegap.plugin.launchnavigator
  * ```
  *
  * @usage
@@ -64,8 +65,9 @@ export interface launchNavigatorOptions {
  * ```
  */
 @Plugin({
-  plugin: 'https://github.com/dpa99c/phonegap-launch-navigator.git',
-  pluginRef: 'launchnavigator'
+  plugin: 'uk.co.workingedge.phonegap.plugin.launchnavigator',
+  pluginRef: 'launchnavigator',
+  repo: 'https://github.com/dpa99c/phonegap-launch-navigator.git'
 })
 export class LaunchNavigator {
 

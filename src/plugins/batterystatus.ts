@@ -3,10 +3,10 @@ import {Observable} from "rxjs/Observable";
 
 /**
  * @name Battery Status
- *
+ * @description
  * Requires Cordova plugin: cordova-plugin-batterystatus. For more info, please see the [BatteryStatus plugin docs](https://github.com/apache/cordova-plugin-battery-status).
  *
- * ```
+ * ```shell
  * cordova plugin add cordova-plugin-batterystatus
  * ```
  *

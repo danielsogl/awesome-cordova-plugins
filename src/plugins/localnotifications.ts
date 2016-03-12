@@ -1,8 +1,14 @@
 import {Plugin, Cordova} from './plugin';
 /**
  * @name Local Notifications
+ * @description
+ * This plugin allows you to display local notifications on the device
  *
- * Usage:
+ * ```shell
+ * cordova plugin add cordova-plugin-local-notifications
+ * ```
+ *
+ * @usage
  * ```ts
  * // Schedule a single notification
  * LocalNotifications.schedule({

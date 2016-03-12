@@ -7,6 +7,10 @@ import {Plugin, Cordova} from './plugin';
  *
  * Requires Cordova plugin: `phonegap-plugin-barcodescanner`. For more info, please see the [BarcodeScanner plugin docs](https://github.com/phonegap/phonegap-plugin-barcodescanner).
  *
+ * ```shell
+ * cordova plugin add phonegap-plugin-barcodescanner
+ * ```
+ *
  * @usage
  * ```js
  * BarcodeScanner.scan().then((barcodeData) => {

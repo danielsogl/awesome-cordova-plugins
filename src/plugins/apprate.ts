@@ -3,12 +3,14 @@ import {Plugin, Cordova, CordovaProperty} from './plugin';
 declare var window;
 
 /**
+ * @name AppRate
+ * @description
  * The AppRate plugin makes it easy to prompt the user to rate your app, either now, later, or never.
  *
  * Requires Cordova plugin: cordova-plugin-apprate. For more info, please see the [AppRate plugin docs](https://github.com/pushandplay/cordova-plugin-apprate).
  *
- * ```
- * cordova plugin add https://github.com/pushandplay/cordova-plugin-apprate.git
+ * ```shell
+ * cordova plugin add cordova-plugin-apprate
  * ````
  *
  * @usage
@@ -21,8 +23,9 @@ declare var window;
  * ```
  */
 @Plugin({
-  plugin: 'https://github.com/pushandplay/cordova-plugin-apprate.git',
-  pluginRef: 'AppRate'
+  plugin: 'cordova-plugin-apprate',
+  pluginRef: 'AppRate',
+  repo: 'https://github.com/pushandplay/cordova-plugin-apprate'
 })
 export class AppRate {
 

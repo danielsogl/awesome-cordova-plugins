@@ -1,12 +1,14 @@
 import {Plugin, Cordova} from './plugin';
 
 /**
+ * @name Clipboard
+ * @description
  * Clipboard management plugin for Cordova that supports iOS, Android, and Windows Phone 8.
  *
  * Requires Cordova plugin: https://github.com/VersoSolutions/CordovaClipboard
  * For more info, please see the [Clipboard plugin docs](https://github.com/VersoSolutions/CordovaClipboard.git).
  *
- * ```
+ * ```shell
  * cordova plugin add https://github.com/VersoSolutions/CordovaClipboard.git
  * ```
  *

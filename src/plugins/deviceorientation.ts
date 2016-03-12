@@ -40,10 +40,12 @@ export interface CompassOptions {
 }
 
 /**
+ * @name DeviceOrientation
+ * @description
  * Requires Cordova plugin: `cordova-plugin-device-orientation`. For more info, please see the [Device Orientation docs](https://github.com/apache/cordova-plugin-device-orientation).
  *
- * ```
- * cordova plugin add https://github.com/apache/cordova-plugin-device-orientation.git
+ * ```shell
+ * cordova plugin add cordova-plugin-device-orientation
  * ````
  *
  * @usage
@@ -64,8 +66,9 @@ export interface CompassOptions {
  * ```
  */
 @Plugin({
-  plugin: 'https://github.com/apache/cordova-plugin-device-orientation',
-  pluginRef: 'navigator.compass'
+  plugin: 'cordova-plugin-device-orientation',
+  pluginRef: 'navigator.compass',
+  repo: 'https://github.com/apache/cordova-plugin-device-orientation'
 })
 export class DeviceOrientation {
 
