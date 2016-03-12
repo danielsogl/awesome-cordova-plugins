@@ -22,10 +22,6 @@ export interface promptCallback {
  *
  * Requires Cordova plugin: `cordova-plugin-dialogs`. For more info, please see the [Dialogs plugin docs](https://github.com/apache/cordova-plugin-dialogs).
  *
- * ```shell
- * cordova plugin add cordova-plugin-dialogs
- * ```
- *
  * @usage
  * ```js
  * ```

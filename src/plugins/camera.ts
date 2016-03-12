@@ -91,10 +91,6 @@ export interface CameraPopoverOptions {
  *
  * Requires Cordova plugin: `cordova-plugin-camera`. For more info, please see the [Cordova Camera Plugin Docs](https://github.com/apache/cordova-plugin-camera).
  *
- * ```shell
- * cordova plugin add cordova-plugin-camera
- * ```
- *
  * @usage
  * ```js
  * Camera.getPicture(options).then((imageData) => {

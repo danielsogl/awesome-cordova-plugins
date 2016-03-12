@@ -14,10 +14,6 @@ export interface ToastOptions {
  *
  * Requires Cordova plugin: `cordova-plugin-x-toast`. For more info, please see the [Toast plugin docs](https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin).
  *
- * ```shell
- * cordova plugin add cordova-plugin-x-toast
- * ```
- *
  * @usage
  * ```ts
  * Toast.show("I'm a toast", 5000, "center").subscribe(

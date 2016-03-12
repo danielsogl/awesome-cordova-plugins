@@ -7,10 +7,6 @@ import {Plugin, Cordova} from './plugin';
  *
  * Requires Cordova plugin: cordova-plugin-appavailability. For more info, please see the [AppAvailability plugin docs](https://github.com/ohh2ahh/AppAvailability).
  *
- * ```
- * cordova plugin add cordova-plugin-appavailability
- * ```
- *
  * @usage
  * ```js
  * var app;

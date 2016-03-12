@@ -8,10 +8,6 @@ import {Plugin, Cordova} from './plugin';
  * Requires Cordova plugin: https://github.com/VersoSolutions/CordovaClipboard
  * For more info, please see the [Clipboard plugin docs](https://github.com/VersoSolutions/CordovaClipboard.git).
  *
- * ```shell
- * cordova plugin add https://github.com/VersoSolutions/CordovaClipboard.git
- * ```
- *
  * @usage
  * ```js
  * Clipboard.copy("Hello world");

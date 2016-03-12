@@ -25,10 +25,6 @@ export interface ImagePickerOptions {
  * Requires Cordova plugin: `cordova-plugin-image-picker`.
  * For more info, please see the https://github.com/wymsee/cordova-imagePicker
  *
- * ```shell
- * cordova plugin add cordova-plugin-image-picker
- * ```
- *
  * @usage
  * ```js
  * ImagePicker.getPictures(options).then((results) => {

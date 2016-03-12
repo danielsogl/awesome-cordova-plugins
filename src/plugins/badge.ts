@@ -7,10 +7,6 @@ import {Plugin, Cordova} from './plugin';
  *
  * Requires Cordova plugin: cordova-plugin-badge. For more info, please see the [Badge plugin docs](https://github.com/katzer/cordova-plugin-badge).
  *
- * ```shell
- * cordova plugin add cordova-plugin-badge
- * ```
- *
  * @usage
  * ```js
  * Badge.set(10);

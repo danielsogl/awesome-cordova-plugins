@@ -7,10 +7,6 @@ import {Plugin, Cordova} from './plugin';
  *
  * Requires Cordova plugin: `cordova-plugin-app-version`. For more info, please see the [Cordova App Version docs](https://github.com/whiteoctober/cordova-plugin-app-version).
  *
- * ```shell
- * cordova plugin add cordova-plugin-app-version
- * ````
- *
  * @usage
  * ```js
  *  AppVersion.getAppName();

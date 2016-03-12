@@ -26,10 +26,6 @@ export interface smsOptionsAndroid {
  *
  * Requires Cordova plugin: cordova-plugin-sms. For more info, please see the [SMS plugin docs](https://github.com/cordova-sms/cordova-sms-plugin).
  *
- * ```shell
- * cordova plugin add cordova-sms-plugin
- * ```
- *
  * @usage
  * ```ts
  *

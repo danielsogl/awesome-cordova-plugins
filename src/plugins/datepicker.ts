@@ -72,11 +72,6 @@ export interface datePickerOptions {
  *
  * Requires Cordova plugin: `cordova-plugin-datepicker`. For more info, please see the [DatePicker plugin docs](https://github.com/VitaliiBlagodir/cordova-plugin-datepicker).
  *
- * Install the plugin by running the following command:
- * ```shell
- * cordova plugin add cordova-plugin-datepicker
- * ```
- *
  * @usage
  * ```js
  * DatePicker.show({

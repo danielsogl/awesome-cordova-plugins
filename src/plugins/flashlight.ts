@@ -6,10 +6,6 @@ import {Plugin, Cordova} from './plugin';
  *
  * Requires Cordova plugin: `cordova-plugin-flashlight`. For more info, please see the [Flashlight plugin docs](https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin).
  *
- * ```shell
- * cordova plugin add cordova-plugin-flashlight
- * ```
- *
  * @usage
  * ```js
  * ```
