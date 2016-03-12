@@ -1,8 +1,8 @@
 'use strict';
-var exec = require('child_process').exec;
+var exec = require('child_process').execSync;
 var fs = require('fs');
 var xml2js = require('xml2js');
-var plugin, property;
+var plugin, property, functions = [];
 
 // Read the compiled plugin files
 fs.readdir('dist/plugins', function(err, files){
@@ -14,67 +14,65 @@ fs.readdir('dist/plugins', function(err, files){
             plugin = require('./dist/plugins/' + file);
 
             if (plugin.hasOwnProperty('plugin')) {
-                processPlugin(plugin);
+                installPlugin(plugin);
             } else {
                 for (property in plugin) {
                     if (plugin[property].hasOwnProperty('plugin')) {
-                        processPlugin(plugin[property]);
+                        installPlugin(plugin[property]);
                     }
-                }
-            }
-
-            function processPlugin(obj) {
-                // Ignore if it's a URL
-                if (/^(https:\/\/(.*))$/.test(obj.plugin)) console.log("Found a url!", obj.plugin);
-                // TODO report the error during the tests somehow
-                else {
-                    let pluginPath = "./node_modules/" + obj.plugin + '/';
-                    fs.exists(pluginPath, function(exists){
-                        if(exists) console.log("Plugin already installed at " + pluginPath);
-                        else {
-                            console.log("Plugin not installed, going to install it now");
-                            exec('npm install ' + obj.plugin, function(error, stdout, stderr){
-                                if(error) console.warn(error);
-                                if(stderr) console.warn(stderr);
-                                if(stdout) console.log(stdout);
-                            });
-                        }
-                    });
-
-                    // TODO perhaps let everything wait till exec() is done ... to make sure that we have the files needed in node_modules
-
-
-
-                    fs.readFile(pluginPath + 'plugin.xml', function (err, data) {
-                        var parser = new xml2js.Parser();
-
-                        parser.parseString(data, function (err, result) {
-
-                            try {
-                                let pathToJS = (result['plugin'].hasOwnProperty('js-module')) ? pluginPath + result["plugin"]["js-module"][0]['$']['src'] : pluginPath + result['plugin']['platform'][0]['js-module'][0]['$']['src'];
-
-                                try {
-                                    // Plugin uses module.exports, just use the exported methods to create mocks
-
-                                    let pluginJS = require(pathToJS);
-                                    console.log('########## ' + obj.plugin + ' uses module.exports');
-
-                                }catch(e){
-                                    // Plugin calls cordova method, need to search for methods
-
-                                    fs.readFile(pathToJS, function(err, data){
-
-                                        //console.log(data);
-
-                                    });
-                                }
-                            } catch (e) {
-                                console.log("Error getting path to JS", result);
-                            }
-                        })
-                    });
                 }
             }
         }
     })
 });
+
+function installPlugin(pluginObject) {
+    // Ignore if it's a URL
+    if (/^(https:\/\/(.*))$/.test(pluginObject.plugin)) console.log("Found a url!", pluginObject.plugin);
+    // TODO report the error during the tests somehow
+    else {
+        let pluginPath = "./node_modules/" + pluginObject.plugin + '/';
+        fs.exists(pluginPath, function(exists){
+            if(exists) processPlugin(pluginPath, pluginObject);
+            else {
+                //console.log("Plugin not installed, going to install it now");
+                console.log(exec('npm install ' + pluginObject.plugin).toString());
+            }
+        });
+    }
+}
+
+function processPlugin(pluginPath, pluginObject){
+    try {
+        fs.readFile(pluginPath + 'plugin.xml', function (err, data) {
+            var parser = new xml2js.Parser();
+            parser.parseString(data, function (err, result) {
+                try {
+                    let pathToJS = (result['plugin'].hasOwnProperty('js-module')) ? pluginPath + result["plugin"]["js-module"][0]['$']['src'] : pluginPath + result['plugin']['platform'][0]['js-module'][0]['$']['src'];
+
+                    try {
+                        // Plugin uses module.exports, just use the exported methods to create mocks
+
+                        let pluginJS = require(pathToJS);
+                        //console.log(pluginObject.plugin + ' uses module.exports');
+
+                        for(let property in pluginJS) {
+                            functions.push(pluginObject.pluginRef + '.' + property);
+                        }
+
+                    }catch(e){
+                        // Plugin calls cordova method, need to search for methods
+                        //console.log(pluginObject.plugin + ' uses cordova methods');
+                        fs.readFile(pathToJS, function(err, data){
+                            //console.log(data);
+                        });
+                    }
+                } catch (e) {
+                    console.log("Error getting path to JS", result);
+                }
+            })
+        });
+    } catch (e){
+        console.log("Error reading plugin.xml", e);
+    }
+}
