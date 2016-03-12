@@ -8,13 +8,29 @@ declare var $q;
 
 import {Observable} from 'rxjs/Observable';
 
-
+/**
+ * @private
+ * @param pluginRef
+ * @returns {null|*}
+ */
 export const getPlugin = function(pluginRef: string): any {
   return get(window, pluginRef);
 };
+
+/**
+ * @private
+ * @param pluginRef
+ * @returns {boolean}
+ */
 export const isInstalled = function(pluginRef: string): boolean {
   return !!getPlugin(pluginRef);
 };
+
+/**
+ * @private
+ * @param pluginObj
+ * @param method
+ */
 export const pluginWarn = function(pluginObj: any, method: string) {
   var pluginName = pluginObj.name;
   var plugin = pluginObj.plugin;
@@ -25,6 +41,12 @@ export const pluginWarn = function(pluginObj: any, method: string) {
   }
   console.warn('Install the ' + pluginName + ' plugin: \'cordova plugin add ' + plugin + '\'');
 };
+
+/**
+ * @private
+ * @param pluginName
+ * @param method
+ */
 export const cordovaWarn = function(pluginName: string, method: string) {
   if(method) {
     console.warn('Native: tried calling ' + pluginName + '.' + method + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
@@ -119,6 +141,13 @@ function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any =
   });
 }
 
+/**
+ * @private
+ * @param pluginObj
+ * @param methodName
+ * @param opts
+ * @returns {function(...[any]): (undefined|*|Observable|*|*)}
+ */
 export const wrap = function(pluginObj:any,  methodName:string, opts:any = {}) {
   return (...args) => {
 
@@ -133,6 +162,8 @@ export const wrap = function(pluginObj:any,  methodName:string, opts:any = {}) {
 };
 
 /**
+ * @private
+ *
  * Class decorator specifying Plugin metadata. Required for all plugins.
  *
  * @usage
@@ -166,6 +197,8 @@ export function Plugin(config) {
 }
 
 /**
+ * @private
+ *
  * Wrap a stub function in a call to a Cordova plugin, checking if both Cordova
  * and the required plugin are installed.
  */
@@ -182,6 +215,9 @@ export function Cordova(opts:any = {}) {
 }
 
 /**
+ * @private
+ *
+ *
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
 export function CordovaProperty(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
