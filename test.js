@@ -3,7 +3,7 @@ var exec = require('child_process').execSync;
 var fs = require('fs');
 var xml2js = require('xml2js');
 var plugin, property, functions = [], pluginCount = 0, completedPluginsCount = 0, window = {};
-
+var stop = false;
 // Read the compiled plugin files
 fs.readdir('dist/plugins', function(err, files){
     // Loop through all compiled files
@@ -44,6 +44,7 @@ function installPlugin(pluginObject) {
 }
 
 function processPlugin(pluginPath, pluginObject){
+    if(pluginObject.name != 'Badge') return;
     try {
         fs.readFile(pluginPath + 'plugin.xml', function (err, data) {
             var parser = new xml2js.Parser();
@@ -53,6 +54,7 @@ function processPlugin(pluginPath, pluginObject){
 
                     try {
                         // Plugin uses module.exports, just use the exported methods to create mocks
+                        if(stop) return;
 
                         let pluginJS = require(pathToJS);
                         //console.log(pluginObject.plugin + ' uses module.exports');
@@ -63,15 +65,44 @@ function processPlugin(pluginPath, pluginObject){
 
                         completedPluginsCount++;
                         finalize();
-
                     }catch(e){
-                        // Plugin calls cordova method, need to search for methods
-                        //console.log(pluginObject.plugin + ' uses cordova methods');
+                        // Plugin needs cleaning
                         fs.readFile(pathToJS,'utf-8', function(err, data){
-                            //console.log(data);
-                            // TODO Extract the functions out of the JS file
-                            completedPluginsCount++;
-                            finalize();
+                            let requirePattern = /(var(\s[a-zA-Z]*\s*=\srequire\W{2}(.*)\W{2}(.*))+;)/gm;
+                            let requireCheck = data.match(requirePattern);
+                            if(!requireCheck) {
+                                console.log("Plugin isn't importing anything.");
+                            }else{
+                                console.log("Plugin is using import");
+                                // remove all imports
+                                requireCheck.forEach(function(str){
+                                    data = data.replace(str, '');
+                                    // Clean all functions used by imported modules
+                                    str.match(/([a-zA-Z]+)(?=\s+=)/gm).forEach(function(aVar){
+                                        let regex = new RegExp('^('+aVar+'(\\W[a-zA-Z]+)+\\((.*\\s*\\n*\\t*)*\\);)', "gm");
+                                        data = data.replace(regex, '');
+                                    });
+                                });
+                            }
+
+                            let cordovaPattern = /cordova.[a-zA-Z]*\W(.*)\W;\n/g;
+                            let cordovaCheck = data.match(cordovaPattern);
+                            if(!cordovaCheck){
+                                console.log("Plugin isn't using cordova methods");
+                            }else{
+                                console.log("Plugin is using cordova methods");
+                                console.dir(cordovaCheck);
+                                // remove all cordova calls
+                                cordovaCheck.forEach(function(str) {
+                                    console.log("Removing method call: " + str);
+                                   data = data.replace(str, '');
+                                });
+                            }
+
+                            console.log("Writing file ...");
+                            //fs.writeFileSync('./file.js', data, 'utf8');
+                            var x = require('./file.js');
+                            console.log(x);
                         });
                     }
                 } catch (e) {
@@ -87,6 +118,8 @@ function processPlugin(pluginPath, pluginObject){
 function finalize() {
 
     if(pluginCount !== completedPluginsCount) return;
+
+    let jsfile = "var window = {};";
 
     functions.forEach(function(f) {
         f = f.split('.');
