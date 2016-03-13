@@ -1,5 +1,8 @@
 import {Plugin, Cordova} from './plugin';
 
+/**
+ * Options for sending an SMS
+ */
 export interface smsOptions {
 
   /**
@@ -43,12 +46,10 @@ export class SMS {
 
   /**
    * Sends sms to a number
-   * @param number [string or array of strings] Phone number
-   * @param message [string] Message
-   * @param options [object] Options
-   * @param options.replaceLineBreaks [boolean]  Set to true to replace \n by a new line. Default: false
-   * @param options.android.intent [string] Set to "INTENT" to send SMS with the native android SMS messaging. Leaving it empty will send the SMS without opening any app.
-   * @returns {Promise<any>}
+   * @param number {string|Array<string>} Phone number
+   * @param message {string} Message
+   * @param options {smsOptions} Options
+   * @returns {Promise<any>} Resolves promise when the SMS has been sent
    */
   @Cordova()
   static send(
