@@ -67,7 +67,7 @@ export class Globalization {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getDateNames(options:{type,item}) : Promise<{value:Array<string>}> {return}
+  static getDateNames(options:{type:string,item:string}) : Promise<{value:Array<string>}> {return}
 
   /**
    * Check if day light saving is active
@@ -117,6 +117,6 @@ export class Globalization {
    * @param currencyCode
    */
   @Cordova()
-  static getCurrencyPattern(currencyCode:string) : Promise<{pattern, code, fraction, rounding, decimal, grouping}> {return}
+  static getCurrencyPattern(currencyCode:string) : Promise<{pattern:string, code:string, fraction:number, rounding:number, decimal:number, grouping:string}> {return}
 
 }
