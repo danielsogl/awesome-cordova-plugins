@@ -36,6 +36,7 @@ import {Plugin, Cordova} from './plugin';
  *    led: "FF0000",
  *    sound: null
  * });
+ * ```
  *
  */
 @Plugin({
