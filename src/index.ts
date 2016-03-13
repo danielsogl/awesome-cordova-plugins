@@ -11,6 +11,7 @@ import {AppRate} from './plugins/apprate';
 import {AppVersion} from './plugins/appversion';
 import {Badge} from './plugins/badge';
 import {BarcodeScanner} from './plugins/barcodescanner';
+import {Base64ToGallery} from './plugins/base64togallery';
 import {BatteryStatus} from './plugins/batterystatus';
 import {BLE} from './plugins/ble';
 import {Calendar} from './plugins/calendar';
@@ -18,6 +19,7 @@ import {Camera} from './plugins/camera';
 import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
 import {DatePicker} from './plugins/datepicker';
+import {DBMeter} from './plugins/dbmeter';
 import {Device} from './plugins/device';
 import {DeviceMotion} from './plugins/devicemotion';
 import {DeviceOrientation} from './plugins/deviceorientation';
@@ -28,10 +30,12 @@ import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
 import {ImagePicker} from './plugins/imagepicker';
+import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
 import {Push} from './plugins/push';
 import {SMS} from './plugins/sms';
+import {Splashscreen} from './plugins/splashscreen';
 import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
@@ -43,6 +47,7 @@ export {
   AppVersion,
   Badge,
   BarcodeScanner,
+  Base64ToGallery,
   BatteryStatus,
   BLE,
   Calendar,
@@ -50,6 +55,7 @@ export {
   Clipboard,
   Contacts,
   DatePicker,
+  DBMeter,
   Device,
   DeviceMotion,
   DeviceOrientation,
@@ -60,10 +66,12 @@ export {
   Geolocation,
   Globalization,
   ImagePicker,
+  Keyboard,
   LaunchNavigator,
   LocalNotifications,
   Push,
   SMS,
+  Splashscreen,
   StatusBar,
   Toast,
   TouchID
@@ -79,6 +87,7 @@ window['IonicNative'] = {
   AppVersion: AppVersion,
   Badge: Badge,
   BarcodeScanner: BarcodeScanner,
+  Base64ToGallery: Base64ToGallery,
   BatteryStatus: BatteryStatus,
   BLE: BLE,
   Calendar: Calendar,
@@ -86,6 +95,7 @@ window['IonicNative'] = {
   Clipboard: Clipboard,
   Contacts: Contacts,
   DatePicker: DatePicker,
+  DBMeter: DBMeter,
   Device: Device,
   DeviceMotion: DeviceMotion,
   DeviceOrientation: DeviceOrientation,
@@ -96,10 +106,12 @@ window['IonicNative'] = {
   Geolocation: Geolocation,
   Globalization: Globalization,
   ImagePicker: ImagePicker,
+  Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
   Push: Push,
   SMS: SMS,
+  Splashscreen: Splashscreen,
   StatusBar: StatusBar,
   Toast: Toast,
   TouchID: TouchID
