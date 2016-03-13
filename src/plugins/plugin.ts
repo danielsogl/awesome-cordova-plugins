@@ -142,6 +142,19 @@ function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any =
 }
 
 /**
+ * Wrap the event with an observable
+ * @param event
+ * @returns {Observable}
+ */
+function wrapEventObservable (event : string) : Observable<any> {
+  return new Observable(observer => {
+    let callback = (status : any) => observer.next(status);
+    window.addEventListener(event, callback, false);
+    return () => window.removeEventListener(event, callback, false);
+  });
+}
+
+/**
  * @private
  * @param pluginObj
  * @param methodName
@@ -151,13 +164,17 @@ function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any =
 export const wrap = function(pluginObj:any,  methodName:string, opts:any = {}) {
   return (...args) => {
 
-    if (opts.sync){
+    if (opts.sync)
       return callCordovaPlugin(pluginObj, methodName, args, opts);
-    } else if (opts.observable) {
+
+    else if (opts.observable)
       return wrapObservable(pluginObj, methodName, args, opts);
-    } else {
+
+    else if (opts.eventObservable && opts.event)
+      return wrapEventObservable(opts.event);
+
+    else
       return wrapPromise(pluginObj, methodName, args, opts);
-    }
   }
 };
 

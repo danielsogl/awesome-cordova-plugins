@@ -1,0 +1,40 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'build_bundle' ]
+2 info using npm@2.14.12
+3 info using node@v4.2.4
+4 verbose run-script [ 'prebuild_bundle', 'build_bundle', 'postbuild_bundle' ]
+5 info prebuild_bundle ionic-native@1.0.12
+6 info build_bundle ionic-native@1.0.12
+7 verbose unsafe-perm in lifecycle true
+8 info ionic-native@1.0.12 Failed to exec build_bundle script
+9 verbose stack Error: ionic-native@1.0.12 build_bundle: `npm run-script build && browserify dist/index.js > dist/ionic.native.js`
+9 verbose stack Exit status 1
+9 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:214:16)
+9 verbose stack     at emitTwo (events.js:87:13)
+9 verbose stack     at EventEmitter.emit (events.js:172:7)
+9 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+9 verbose stack     at emitTwo (events.js:87:13)
+9 verbose stack     at ChildProcess.emit (events.js:172:7)
+9 verbose stack     at maybeClose (internal/child_process.js:818:16)
+9 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+10 verbose pkgid ionic-native@1.0.12
+11 verbose cwd C:\Users\Ibrahim\WebstormProjects\ionic-native
+12 error Windows_NT 10.0.10586
+13 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "build_bundle"
+14 error node v4.2.4
+15 error npm  v2.14.12
+16 error code ELIFECYCLE
+17 error ionic-native@1.0.12 build_bundle: `npm run-script build && browserify dist/index.js > dist/ionic.native.js`
+17 error Exit status 1
+18 error Failed at the ionic-native@1.0.12 build_bundle script 'npm run-script build && browserify dist/index.js > dist/ionic.native.js'.
+18 error This is most likely a problem with the ionic-native package,
+18 error not with npm itself.
+18 error Tell the author that this fails on your system:
+18 error     npm run-script build && browserify dist/index.js > dist/ionic.native.js
+18 error You can get their info via:
+18 error     npm owner ls ionic-native
+18 error There is likely additional logging output above.
+19 verbose exit [ 1, true ]
