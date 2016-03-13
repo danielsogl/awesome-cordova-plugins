@@ -26,6 +26,7 @@ import {Facebook} from './plugins/facebook';
 //import {File} from './plugins/file';
 import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
+import {Globalization} from './plugins/globalization';
 import {ImagePicker} from './plugins/imagepicker';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
@@ -57,6 +58,7 @@ export {
   //File,
   Flashlight,
   Geolocation,
+  Globalization,
   ImagePicker,
   LaunchNavigator,
   LocalNotifications,
@@ -92,6 +94,7 @@ window['IonicNative'] = {
   //File: File,
   Flashlight: Flashlight,
   Geolocation: Geolocation,
+  Globalization: Globalization,
   ImagePicker: ImagePicker,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
