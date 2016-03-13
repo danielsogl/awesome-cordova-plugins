@@ -21,7 +21,8 @@ import {Observable} from "rxjs/Observable";
  * ```
  */
 @Plugin({
-  plugin: 'cordova-plugin-batterystatus'
+  plugin: 'cordova-plugin-batterystatus',
+  repo: 'https://github.com/apache/cordova-plugin-battery-status'
 })
 export class BatteryStatus {
 

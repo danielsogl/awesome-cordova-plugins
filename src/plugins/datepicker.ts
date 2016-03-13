@@ -86,7 +86,8 @@ export interface datePickerOptions {
  */
 @Plugin({
   plugin: 'cordova-plugin-datepicker',
-  pluginRef: 'datePicker'
+  pluginRef: 'datePicker',
+  repo: 'https://github.com/VitaliiBlagodir/cordova-plugin-datepicker'
 })
 export class DatePicker {
 
