@@ -3,7 +3,7 @@ import {Plugin, Cordova, CordovaProperty} from './plugin';
 declare var window;
 
 /**
- * @name AppRate
+ * @name App Rate
  * @description
  * The AppRate plugin makes it easy to prompt the user to rate your app, either now, later, or never.
  *

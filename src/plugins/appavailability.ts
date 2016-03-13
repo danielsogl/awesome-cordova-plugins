@@ -1,7 +1,7 @@
 import {Plugin, Cordova} from './plugin';
 
 /**
- * @name AppAvailability
+ * @name App Availability
  * @description
  * This plugin allows you to check if an app is installed on the user's device. It requires an URI Scheme (e.g. twitter://) on iOS or a Package Name (e.g com.twitter.android) on Android.
  *

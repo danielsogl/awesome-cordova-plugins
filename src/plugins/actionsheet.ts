@@ -1,7 +1,7 @@
 import {Plugin, Cordova} from './plugin';
 
 /**
- * @name ActionSheet
+ * @name Action Sheet
  * @description
  * The ActionSheet plugin shows a native list of options the user can choose from.
  *

@@ -1,7 +1,7 @@
 import {Plugin, Cordova} from './plugin';
 
 /**
- * @name BarcodeScanner
+ * @name Barcode Scanner
  * @description
  * The Barcode Scanner Plugin opens a camera view and automatically scans a barcode, returning the data back to you.
  *

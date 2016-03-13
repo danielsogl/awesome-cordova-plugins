@@ -64,7 +64,7 @@ export interface datePickerOptions {
 }
 
 /**
- * @name DatePicker
+ * @name Date Picker
  * @description
  * The DatePicker plugin allows the user to fetch date or time using native dialogs.
  *

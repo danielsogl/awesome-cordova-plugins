@@ -18,7 +18,7 @@ export interface ImagePickerOptions {
 }
 
 /**
- * @name imagePicker
+ * @name Image Picker
  * @description
  * Cordova Plugin For Multiple Image Selection
  *

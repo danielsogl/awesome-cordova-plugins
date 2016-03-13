@@ -1,7 +1,7 @@
 import {Plugin, Cordova} from './plugin';
 
 /**
- * @name AppVersion
+ * @name App Version
  * @description
  * Reads the version of your app from the target build settings.
  *
