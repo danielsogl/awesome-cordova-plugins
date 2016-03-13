@@ -29,6 +29,7 @@ import {Facebook} from './plugins/facebook';
 import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
+import {Hotspot} from  './plugins/hotspot';
 import {ImagePicker} from './plugins/imagepicker';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
@@ -39,6 +40,7 @@ import {Splashscreen} from './plugins/splashscreen';
 import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
+import {Vibration} from './plugins/vibration';
 
 export {
   ActionSheet,
@@ -65,6 +67,7 @@ export {
   Flashlight,
   Geolocation,
   Globalization,
+  Hotspot,
   ImagePicker,
   Keyboard,
   LaunchNavigator,
@@ -74,7 +77,8 @@ export {
   Splashscreen,
   StatusBar,
   Toast,
-  TouchID
+  TouchID,
+  Vibration
 }
 
 export * from './plugins/plugin';
@@ -105,6 +109,7 @@ window['IonicNative'] = {
   Flashlight: Flashlight,
   Geolocation: Geolocation,
   Globalization: Globalization,
+  Hotspot: Hotspot,
   ImagePicker: ImagePicker,
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
@@ -114,7 +119,8 @@ window['IonicNative'] = {
   Splashscreen: Splashscreen,
   StatusBar: StatusBar,
   Toast: Toast,
-  TouchID: TouchID
+  TouchID: TouchID,
+  Vibration: Vibration
 };
 
 // To help developers using cordova, we listen for the device ready event and
