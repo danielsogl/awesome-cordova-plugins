@@ -1,10 +1,30 @@
 import {Plugin, Cordova} from './plugin'
-// TODO docs
+import {Observable} from "rxjs/Observable";
 /**
  * @name DB Meter
- * @description
+ * @description This plugin defines a global DBMeter object, which permits to get the decibel values from the microphone.
  * @platforms Android, iOS
  * @usage
+ * ```ts
+ * // Start listening
+ * let subscription = DBMeter.start().subscribe(
+ *   data => console.log(data)
+ * );
+ *
+ * // Check if we are listening
+ * DBMeter.isListening().then(
+ *   (isListening : boolean) => console.log(isListening)
+ * );
+ *
+ * // Stop listening
+ * subscription.unsubscribe();
+ *
+ * // Delete DBMeter instance from memory
+ * DBMeter.delete().then(
+ *   () => console.log("Deleted DB Meter instance"),
+ *   error => console.log("Error occurred while deleting DB Meter instance")
+ * );
+ * ```
  */
 @Plugin({
   plugin: 'cordova-plugin-dbmeter',
@@ -13,17 +33,34 @@ import {Plugin, Cordova} from './plugin'
 })
 export class DBMeter {
 
+  /**
+   * Starts listening
+   * @return {Observable<string>} Returns an observable. Subscribe to start listening. Unsubscribe to stop listening.
+   */
+  @Cordova({
+    observable: true,
+    clearFunction: 'stop'
+  })
+  static start () : Observable<any> {return}
 
-  // TODO use observable instead
-  @Cordova()
-  static start () : Promise<any> {return}
-
+  /**
+   * Stops listening
+   * @private
+   */
   @Cordova()
   static stop () : Promise<any> {return}
 
+  /**
+   * Check if the DB Meter is listening
+   * @return {Promise<boolean>} Returns a promise that resolves with a boolean that tells us whether the DB meter is listening
+   */
   @Cordova()
   static isListening() : Promise<boolean> {return}
 
+  /**
+   * Delete the DB Meter instance
+   * @return {Promise<any>} Returns a promise that will resolve if the instance has been deleted, and rejects if errors occur.
+   */
   @Cordova()
   static delete() : Promise<any> {return}
 
