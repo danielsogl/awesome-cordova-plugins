@@ -35,16 +35,6 @@ export class Keyboard {
   })
   static show() : void {}
 
-  @Cordova({
-    sync: true
-  })
-  static close() : void {}
+  // TODO add event listener
 
-  //static onKeyboardShow() : Observable<any> {
-  //  return new Observable(
-  //    observer => {
-  //
-  //    }
-  //  );
-  //}
 }
