@@ -232,7 +232,7 @@ export interface AndroidPushOptions {
    * If the array contains one or more strings each string will be used to
    * subscribe to a GcmPubSub topic.
    */
-  topics: string[];
+  topics?: string[];
 }
 
 export interface PushOptions {
