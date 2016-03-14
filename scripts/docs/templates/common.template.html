@@ -123,6 +123,19 @@ docType: "<$ doc.docType $>"
     <$ prop.repo $>
   </a>
 </p>
+
+<@ if prop.platforms @>
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
+<@ block platforms @>
+<ul>
+  <@- for platform in prop.platforms @>
+  <li><$ platform $></li>
+  <@ endfor -@>
+</ul>
+<@ endblock @>
+<@ endif @>
+
 <@ endfor @>
 <@ endif -@>
 
@@ -136,14 +149,6 @@ docType: "<$ doc.docType $>"
 <h2><$ doc.directiveInfo.type $></h2>
 <h3><$ doc.directiveInfo.properties[0].name $>: <code><$ doc.directiveInfo.properties[0].values $></code></h3>
 <@ endif -@>
-
-<!-- @platforms tag -->
-<@ if doc.platforms @>
-<h2>Supported platforms</h2>
-<@ block platforms @>
-<$ doc.platforms $>
-<@ endblock @>
-<@ endif @>
 
 <!-- @usage tag -->
 <@ if doc.usage @>
@@ -202,10 +207,18 @@ docType: "<$ doc.docType $>"
 <div id="<$ method.name $>"></div>
 <h3><$ functionSyntax(method) $></h3>
 
-<@ if method.platforms @>
-<h4>Platforms: <small><$ method.platforms $></small></h4>
-
+<@- if method.decorators @>
+<@ for prop in method.decorators[0].argumentInfo @>
+<@ if prop.platforms @>
+<h4>Platforms:</h4>
+<ul>
+<@- for platform in prop.platforms @>
+<li><$ platform $></li>
+<@ endfor -@>
+</ul>
 <@ endif @>
+<@ endfor @>
+<@ endif -@>
 
 <$ method.description $>
 
