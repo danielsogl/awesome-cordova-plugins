@@ -69,7 +69,7 @@ export interface GeolocationOptions {
    * retrieve the real current position. If set to Infinity the device must
    * return a cached position regardless of its age. Default: 0.
    */
-  maximumAge: number;
+  maximumAge?: number;
 
   /**
    * Is a positive long value representing the maximum length of time
@@ -77,7 +77,7 @@ export interface GeolocationOptions {
    * position. The default value is Infinity, meaning that getCurrentPosition()
    * won't return until the position is available.
    */
-  timeout: number;
+  timeout?: number;
 
   /**
    * Indicates the application would like to receive the best possible results.
@@ -88,7 +88,7 @@ export interface GeolocationOptions {
    * responding more quickly and/or using less power. Default: false.
    * @type {boolean}
    */
-  enableHighAccuracy: boolean;
+  enableHighAccuracy?: boolean;
 }
 
 
