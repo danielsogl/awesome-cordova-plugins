@@ -8,9 +8,9 @@ export interface smsOptions {
   /**
    * Set to true to replace \n by a new line. Default: false
    */
-  replaceLineBreaks : boolean,
+  replaceLineBreaks? : boolean,
 
-  android : smsOptionsAndroid
+  android? : smsOptionsAndroid
 
 }
 
@@ -19,7 +19,7 @@ export interface smsOptionsAndroid {
   /**
    * Set to "INTENT" to send SMS with the native android SMS messaging. Leaving it empty will send the SMS without opening any app.
    */
-  intent : string
+  intent? : string
 
 }
 

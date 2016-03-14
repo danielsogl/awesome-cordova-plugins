@@ -20,47 +20,47 @@ export interface datePickerOptions {
    * Type: Date | empty String
    * Default: empty String
    */
-  minDate: Date,
+  minDate?: Date,
 
   /**
-   * Platforms: iOS, Android, Windows
+   * Platforms?: iOS, Android, Windows
    * Maximum date
-   * Type: Date | empty String
-   * Default: empty String
+   * Type?: Date | empty String
+   * Default?: empty String
    */
-  maxDate: Date,
+  maxDate?: Date,
 
   /**
-   * Platforms: Android
+   * Platforms?: Android
    * Label for the dialog title. If empty, uses android default (Set date/Set time).
-   * Type: String
-   * Default: empty String
+   * Type?: String
+   * Default?: empty String
    */
-  titleText: string,
+  titleText?: string,
 
   /**
-   * Platforms: Android
+   * Platforms?: Android
    * Label of BUTTON_POSITIVE (done button) on Android
    */
-  okText: string,
+  okText?: string,
 
   // TODO complete documentation here, and copy params & docs to main plugin docs
-  cancelText: string,
-  todayText: string,
-  nowText: string,
-  is24Hour: boolean,
-  androidTheme: number,
-  allowOldDate: boolean,
-  allowFutureDates: boolean,
-  doneButtonLabel: string,
-  doneButtonColor: string,
-  cancelButtonLabel: string,
-  cancelButtonColor: string,
-  x: number,
-  y: number,
-  minuteInterval: number,
-  popoverArrowDirection: string,
-  locale: string
+  cancelText?: string,
+  todayText?: string,
+  nowText?: string,
+  is24Hour?: boolean,
+  androidTheme?: number,
+  allowOldDate?: boolean,
+  allowFutureDates?: boolean,
+  doneButtonLabel?: string,
+  doneButtonColor?: string,
+  cancelButtonLabel?: string,
+  cancelButtonColor?: string,
+  x?: number,
+  y?: number,
+  minuteInterval?: number,
+  popoverArrowDirection?: string,
+  locale?: string
 }
 
 /**
