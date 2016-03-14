@@ -12,65 +12,65 @@ docType: "<$ doc.docType $>"
 ---
 
 <@ macro paramList(paramData) -@>
-  <@- if paramData -@><span class="params">(
+<@- if paramData -@><span class="params">(
     <@- for param in paramData -@>
       <span class="param"><$ param | escape $><@ if not loop.last @>, <@ endif @></span>
     <@- endfor @>)</span>
-  <@- endif @>
+<@- endif @>
 <@- endmacro -@>
 
 <@ macro githubViewLink(doc) -@>
-  <a href="https://github.com/<$ versionInfo.gitRepoInfo.owner $>/<$ versionInfo.gitRepoInfo.repo $>/tree/master/<$ doc.fileInfo.relativePath $>#L<$ doc.location.start.line+1 $>-L<$ doc.location.end.line+1 $>"><$ doc.fileInfo.relativePath $> (line <$ doc.location.start.line+1 $>)</a>
+<a href="https://github.com/<$ versionInfo.gitRepoInfo.owner $>/<$ versionInfo.gitRepoInfo.repo $>/tree/master/<$ doc.fileInfo.relativePath $>#L<$ doc.location.start.line+1 $>-L<$ doc.location.end.line+1 $>"><$ doc.fileInfo.relativePath $> (line <$ doc.location.start.line+1 $>)</a>
 <@- endmacro -@>
 
 <@ macro paramTable(params, isDirective) -@>
 <table class="table param-table" style="margin:0;">
   <thead>
-    <tr>
-      <th><@ if isDirective @>Attr<@ else @>Param<@ endif @></th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
+  <tr>
+    <th><@ if isDirective @>Attr<@ else @>Param<@ endif @></th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
   </thead>
   <tbody>
-    <@ for param in params @>
-    <tr>
-      <td>
-        <$ param.name $>
-        <@ if param.alias @>| <$ param.alias $><@ endif @>
-        <@ if param.type.optional @><div><em>(optional)</em></div><@ endif @>
-      </td>
-      <td>
-        <$ typeList(param.typeList) $>
-      </td>
-      <td>
-        <$ param.description | marked $>
-        <@ if param.default @><p><em>(default: <$ param.default $>)</em></p><@ endif @>
-      </td>
-    </tr>
-    <@ endfor @>
+  <@ for param in params @>
+  <tr>
+    <td>
+      <$ param.name $>
+      <@ if param.alias @>| <$ param.alias $><@ endif @>
+      <@ if param.type.optional @><div><em>(optional)</em></div><@ endif @>
+    </td>
+    <td>
+      <$ typeList(param.typeList) $>
+    </td>
+    <td>
+      <$ param.description | marked $>
+      <@ if param.default @><p><em>(default: <$ param.default $>)</em></p><@ endif @>
+    </td>
+  </tr>
+  <@ endfor @>
   </tbody>
 </table>
 <@- endmacro -@>
 
 
 <@- macro functionSyntax(fn) @>
-  <@- set sep = joiner(',&nbsp;') -@>
-  <code><$ fn.name $>(<@- for param in fn.params @><$ sep() $>
+<@- set sep = joiner(',&nbsp;') -@>
+<code><$ fn.name $>(<@- for param in fn.params @><$ sep() $>
   <@- if param.type.optional @>[<@ endif -@>
   <$ param.name $>
   <@- if param.type.optional @>]<@ endif -@>
   <@ endfor @>)</code>
-  <@ if fn.alias @><small>(alias: <$ fn.alias $>)</small><@ endif @>
+<@ if fn.alias @><small>(alias: <$ fn.alias $>)</small><@ endif @>
 <@ endmacro -@>
 
 <@ macro typeList(types) -@>
-  <@ set separator = joiner("|") @>
-  <@ for type in types @><$ separator() $><$ type | code $><@ endfor @>
+<@ set separator = joiner("|") @>
+<@ for type in types @><$ separator() $><$ type | code $><@ endfor @>
 <@- endmacro -@>
 
 <@- macro typeInfo(fn) -@>
-  <$ typeList(fn.typeList) $> <$ fn.description $>
+<$ typeList(fn.typeList) $> <$ fn.description $>
 <@- endmacro -@>
 
 <@ block body @>
@@ -82,30 +82,30 @@ docType: "<$ doc.docType $>"
 
 <h1 class="api-title">
 
-<@ if doc.docType == "directive" @>
-<$ doc.name | dashCase $>
-<@ else @>
-<$ doc.name $>
-<@ endif @>
+  <@ if doc.docType == "directive" @>
+  <$ doc.name | dashCase $>
+  <@ else @>
+  <$ doc.name $>
+  <@ endif @>
 
-<@ if doc.parent @>
-<br />
-<small>
-Child of <$ doc.parent $>
-</small>
-<@ endif @>
+  <@ if doc.parent @>
+  <br />
+  <small>
+    Child of <$ doc.parent $>
+  </small>
+  <@ endif @>
 
-<@ if doc.delegate @>
-<br/>
-<small>
-Delegate: <$ doc.delegate $>
-</small>
-<@ endif @>
+  <@ if doc.delegate @>
+  <br/>
+  <small>
+    Delegate: <$ doc.delegate $>
+  </small>
+  <@ endif @>
 
 </h1>
 
 <a class="improve-v2-docs" href='http://github.com/driftyco/ionic-native/edit/master/<$ doc.fileInfo.relativePath $>#L<$ doc.location.start.line $>'>
-Improve this doc
+  Improve this doc
 </a>
 
 <@ if doc.codepen @>
@@ -119,10 +119,23 @@ Improve this doc
 <@ for prop in doc.decorators[0].argumentInfo @>
 <pre><code>$ cordova plugin add <$ prop.plugin $></code></pre>
 <p>Repo:
-<a href="<$ prop.repo $>">
-<$ prop.repo $>
-</a>
+  <a href="<$ prop.repo $>">
+    <$ prop.repo $>
+  </a>
 </p>
+
+<@ if prop.platforms @>
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
+<@ block platforms @>
+<ul>
+  <@- for platform in prop.platforms @>
+  <li><$ platform $></li>
+  <@ endfor -@>
+</ul>
+<@ endblock @>
+<@ endif @>
+
 <@ endfor @>
 <@ endif -@>
 
@@ -149,42 +162,42 @@ Improve this doc
 <@ if doc.properties @>
 <h2>Attributes:</h2>
 <table class="table" style="margin:0;">
-<thead>
-<tr>
-<th>Attribute</th>
+  <thead>
+  <tr>
+    <th>Attribute</th>
 
-<@ set hasTypes = false @>
-<@ for prop in doc.properties @>
-<@ if prop.type @>
-<@ set hasTypes = true @>
-<@ endif @>
-<@ endfor @>
-<@ if hasTypes @>
-<th>Type</th>
-<@ endif @>
+    <@ set hasTypes = false @>
+    <@ for prop in doc.properties @>
+    <@ if prop.type @>
+    <@ set hasTypes = true @>
+    <@ endif @>
+    <@ endfor @>
+    <@ if hasTypes @>
+    <th>Type</th>
+    <@ endif @>
 
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<@ for prop in doc.properties @>
-<tr>
-<td>
-<$ prop.name $>
-</td>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <@ for prop in doc.properties @>
+  <tr>
+    <td>
+      <$ prop.name $>
+    </td>
 
-<@ if hasTypes @>
-<td>
-<$ prop.type.name $>
-</td>
-<@ endif @>
+    <@ if hasTypes @>
+    <td>
+      <$ prop.type.name $>
+    </td>
+    <@ endif @>
 
-<td>
-<$ prop.description $>
-</td>
-</tr>
-<@ endfor @>
-</tbody>
+    <td>
+      <$ prop.description $>
+    </td>
+  </tr>
+  <@ endfor @>
+  </tbody>
 </table>
 <@ endif @>
 
@@ -194,6 +207,19 @@ Improve this doc
 <div id="<$ method.name $>"></div>
 <h3><$ functionSyntax(method) $></h3>
 
+<@- if method.decorators @>
+<@ for prop in method.decorators[0].argumentInfo @>
+<@ if prop.platforms @>
+<h4>Platforms:</h4>
+<ul>
+<@- for platform in prop.platforms @>
+<li><$ platform $></li>
+<@ endfor -@>
+</ul>
+<@ endif @>
+<@ endfor @>
+<@ endif -@>
+
 <$ method.description $>
 
 <@ if method.params @>
@@ -202,14 +228,14 @@ Improve this doc
 
 <@ if method.this @>
 <h4> Method's `this`
-<$ method.this $>
+  <$ method.this $>
 </h4>
 <@ endif @>
 
 <@ if method.returns @>
 <div class="return-value" markdown="1">
-<i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> <$ typeInfo(method.returns) $>
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <$ typeInfo(method.returns) $>
 </div>
 <@ endif @>
 <@ endif @>
@@ -225,7 +251,7 @@ Improve this doc
 <div id="<$ method.name $>"></div>
 
 <h3>
-<$ functionSyntax(method) $>
+  <$ functionSyntax(method) $>
 </h3>
 
 <$ method.description $>
@@ -236,14 +262,14 @@ Improve this doc
 
 <@ if method.this @>
 <h4> Method's `this`
-<$ method.this $>
+  <$ method.this $>
 </h4>
 <@ endif @>
 
 <@ if method.returns @>
 <div class="return-value" markdown="1">
-<i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> <$ typeInfo(method.returns) $>
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <$ typeInfo(method.returns) $>
 </div>
 <@ endif @>
 
