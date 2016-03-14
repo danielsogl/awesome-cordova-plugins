@@ -26,7 +26,8 @@ import {Plugin, Cordova} from './plugin';
 @Plugin({
   plugin: 'cordova-plugin-actionsheet',
   pluginRef: 'plugins.actionsheet',
-  repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet'
+  repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet',
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class ActionSheet {
 

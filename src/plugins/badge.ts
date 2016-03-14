@@ -17,7 +17,8 @@ import {Plugin, Cordova} from './plugin';
 @Plugin({
   plugin: 'cordova-plugin-badge',
   pluginRef: 'cordova.plugins.notification.badge',
-  repo: 'https://github.com/katzer/cordova-plugin-badge'
+  repo: 'https://github.com/katzer/cordova-plugin-badge',
+  platforms: ['Android', 'iOS', 'Browser', 'Windows', 'Amazon FireOS', 'Windows Phone 8']
 })
 export class Badge {
 

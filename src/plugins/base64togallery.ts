@@ -14,7 +14,8 @@ import {Plugin, Cordova} from './plugin'
 @Plugin({
   plugin: 'cordova-base64-to-gallery',
   pluginRef: 'cordova',
-  repo: 'https://github.com/Nexxa/cordova-base64-to-gallery'
+  repo: 'https://github.com/Nexxa/cordova-base64-to-gallery',
+  platforms: ['Android' ,'iOS', 'Windows Phone 8']
 })
 export class Base64ToGallery {
 

@@ -40,7 +40,8 @@ export interface smsOptionsAndroid {
 @Plugin({
   plugin: 'cordova-sms-plugin',
   pluginRef: 'sms',
-  repo: 'https://github.com/cordova-sms/cordova-sms-plugin'
+  repo: 'https://github.com/cordova-sms/cordova-sms-plugin',
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class SMS {
 

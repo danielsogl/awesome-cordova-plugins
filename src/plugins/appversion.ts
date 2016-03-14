@@ -18,7 +18,8 @@ import {Plugin, Cordova} from './plugin';
 @Plugin({
   plugin: 'cordova-plugin-app-version',
   pluginRef: 'cordova.getAppVersion',
-  repo: 'https://github.com/whiteoctober/cordova-plugin-app-version'
+  repo: 'https://github.com/whiteoctober/cordova-plugin-app-version',
+  platforms: ['Android', 'iOS']
 })
 export class AppVersion {
   /**
