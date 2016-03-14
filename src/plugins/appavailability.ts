@@ -27,7 +27,8 @@ import {Plugin, Cordova} from './plugin';
 @Plugin({
   plugin: 'cordova-plugin-appavailability',
   pluginRef: 'appAvailability',
-  repo: 'https://github.com/ohh2ahh/AppAvailability'
+  repo: 'https://github.com/ohh2ahh/AppAvailability',
+  platforms: ['Android','iOS']
 })
 export class AppAvailability {
 

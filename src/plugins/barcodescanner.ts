@@ -19,7 +19,8 @@ import {Plugin, Cordova} from './plugin';
 @Plugin({
   plugin: 'phonegap-plugin-barcodescanner',
   pluginRef: 'cordova.plugins.barcodeScanner',
-  repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner'
+  repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner',
+  pltaforms: ['Android','iOS','Windows Phone 8','Windows 10','Windows 8','BlackBerry 10', 'Browser']
 })
 export class BarcodeScanner {
 

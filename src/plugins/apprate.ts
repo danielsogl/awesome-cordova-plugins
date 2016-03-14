@@ -21,7 +21,8 @@ declare var window;
 @Plugin({
   plugin: 'cordova-plugin-apprate',
   pluginRef: 'AppRate',
-  repo: 'https://github.com/pushandplay/cordova-plugin-apprate'
+  repo: 'https://github.com/pushandplay/cordova-plugin-apprate',
+  platforms: ['Android','iOS']
 })
 export class AppRate {
 

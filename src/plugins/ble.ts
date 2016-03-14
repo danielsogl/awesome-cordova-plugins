@@ -162,7 +162,8 @@ import {Observable} from 'rxjs/Observable';
 @Plugin({
   plugin: 'cordova-plugin-ble-central',
   pluginRef: 'ble',
-  repo: 'https://github.com/don/cordova-plugin-ble-central'
+  repo: 'https://github.com/don/cordova-plugin-ble-central',
+  platforms: ['iOS','Android']
 })
 export class BLE {
   /**
