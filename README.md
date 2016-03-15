@@ -46,6 +46,8 @@ Let us know or submit a PR! Take a look at [the Developer Guide](https://github.
 
 # Credits
 
+Ibrahim Hadeed - [@ihadeed](http://github.com/ihadeed)
+
 Tim Lancina - [@timlancina](http://twitter.com/timlancina)
 
 Max Lynch - [@maxlynch](http://twitter.com/maxlynch)
