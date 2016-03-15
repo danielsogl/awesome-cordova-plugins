@@ -8,29 +8,52 @@ declare var $q;
 
 import {Observable} from 'rxjs/Observable';
 
-
+/**
+ * @private
+ * @param pluginRef
+ * @returns {null|*}
+ */
 export const getPlugin = function(pluginRef: string): any {
   return get(window, pluginRef);
-}
+};
+
+/**
+ * @private
+ * @param pluginRef
+ * @returns {boolean}
+ */
 export const isInstalled = function(pluginRef: string): boolean {
   return !!getPlugin(pluginRef);
-}
-export const pluginWarn = function(pluginName: string, method: string, plugin: string) {
+};
+
+/**
+ * @private
+ * @param pluginObj
+ * @param method
+ */
+export const pluginWarn = function(pluginObj: any, method: string) {
+  var pluginName = pluginObj.name;
+  var plugin = pluginObj.plugin;
   if(method) {
-    console.warn('Native: tried calling ' + pluginName + '.' + method +
-      ', but the ' + pluginName + ' plugin is not installed. Install the ' +
-      plugin + ' plugin');
+    console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
   } else {
-    console.warn('Native: tried accessing the ' + pluginName + ' plugin but it\'s not installed. Install the ' + plugin + ' plugin');
+    console.warn('Native: tried accessing the ' + pluginName + ' plugin but it\'s not installed.');
   }
-}
+  console.warn('Install the ' + pluginName + ' plugin: \'cordova plugin add ' + plugin + '\'');
+};
+
+/**
+ * @private
+ * @param pluginName
+ * @param method
+ */
 export const cordovaWarn = function(pluginName: string, method: string) {
   if(method) {
     console.warn('Native: tried calling ' + pluginName + '.' + method + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
   } else {
     console.warn('Native: tried accessing the ' + pluginName + ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
   }
-}
+};
 
 function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:any={}, resolve?: Function, reject?: Function) {
   // Try to figure out where the success/error callbacks need to be bound
@@ -58,20 +81,20 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
     // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
     if(!window.cordova) {
       cordovaWarn(pluginObj.name, methodName);
-      reject({
+      reject && reject({
         error: 'cordova_not_available'
-      })
+      });
       return;
     }
 
-    pluginWarn(pluginObj.name, methodName, pluginObj.name);
-    reject({
+    pluginWarn(pluginObj, methodName);
+    reject && reject({
       error: 'plugin_not_installed'
     });
     return;
   }
 
-  console.log('Cordova calling', pluginObj.name, methodName, args);
+  // console.log('Cordova calling', pluginObj.name, methodName, args);
 
   // TODO: Illegal invocation needs window context
   return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
@@ -79,13 +102,13 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
 
 function getPromise(cb) {
   if(window.Promise) {
-    console.log('Native promises available...');
+    // console.log('Native promises available...');
     return new Promise((resolve, reject) => {
       cb(resolve, reject);
     })
   } else if(window.angular) {
     let $q = window.angular.injector(['ng']).get('$q');
-    console.log('Loaded $q', $q);
+    // console.log('Loaded $q', $q);
     return $q((resolve, reject) => {
       cb(resolve, reject);
     });
@@ -112,27 +135,67 @@ function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any =
         return get(window, pluginObj.pluginRef)[opts.clearFunction].call(pluginObj, pluginResult);
       } catch(e) {
         console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
-        console.log(e);
+        console.error(e);
       }
     }
   });
 }
 
-export const wrap = function(pluginObj:any,  methodName:string, opts:any = {}) {
-  return (...args) => {
-
-    if (opts.sync){
-      return callCordovaPlugin(pluginObj, methodName, args, opts);
-    } else if (opts.observable) {
-      return wrapObservable(pluginObj, methodName, args, opts);
-    } else {
-      return wrapPromise(pluginObj, methodName, args, opts);
-    }
-  }
+/**
+ * Wrap the event with an observable
+ * @param event
+ * @returns {Observable}
+ */
+function wrapEventObservable (event : string) : Observable<any> {
+  return new Observable(observer => {
+    let callback = (status : any) => observer.next(status);
+    window.addEventListener(event, callback, false);
+    return () => window.removeEventListener(event, callback, false);
+  });
 }
 
 /**
+ * @private
+ * @param pluginObj
+ * @param methodName
+ * @param opts
+ * @returns {function(...[any]): (undefined|*|Observable|*|*)}
+ */
+export const wrap = function(pluginObj:any,  methodName:string, opts:any = {}) {
+  return (...args) => {
+
+    if (opts.sync)
+      return callCordovaPlugin(pluginObj, methodName, args, opts);
+
+    else if (opts.observable)
+      return wrapObservable(pluginObj, methodName, args, opts);
+
+    else if (opts.eventObservable && opts.event)
+      return wrapEventObservable(opts.event);
+
+    else
+      return wrapPromise(pluginObj, methodName, args, opts);
+  }
+};
+
+/**
+ * @private
+ *
  * Class decorator specifying Plugin metadata. Required for all plugins.
+ *
+ * @usage
+ * ```ts
+ * @Plugin({
+ *  name: 'MyPlugin',
+ *  plugin: 'cordova-plugin-myplugin',
+ *  pluginRef: 'window.myplugin'
+ *  })
+ *  export class MyPlugin {
+ *
+ *    // Plugin wrappers, properties, and functions go here ...
+ *
+ *  }
+ * ```
  */
 export function Plugin(config) {
   return function(cls) {
@@ -144,13 +207,15 @@ export function Plugin(config) {
 
     cls['installed'] = function() {
       return !!getPlugin(config.pluginRef);
-    }
+    };
 
     return cls;
   }
 }
 
 /**
+ * @private
+ *
  * Wrap a stub function in a call to a Cordova plugin, checking if both Cordova
  * and the required plugin are installed.
  */
@@ -167,25 +232,28 @@ export function Cordova(opts:any = {}) {
 }
 
 /**
+ * @private
+ *
+ *
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
-export function RequiresPlugin(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  let originalMethod = descriptor.value;
+export function CordovaProperty(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
+  let originalMethod = descriptor.get;
 
-  descriptor.value = function(...args: any[]) {
-    console.log('Calling', this);
+  descriptor.get = function(...args: any[]) {
+    // console.log('Calling', this);
     if(!window.cordova) {
       cordovaWarn(this.name, null);
-      return;
+      return {};
     }
 
     let pluginInstance = getPlugin(this.pluginRef);
     if(!pluginInstance) {
-      pluginWarn(this.name, null, this.name);
-      return;
+      pluginWarn(this, key);
+      return {};
     }
     return originalMethod.apply(this, args);
-  }
+  };
 
   return descriptor;
 }

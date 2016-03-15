@@ -11,7 +11,8 @@ general:
       
 test:
   override:
-    - echo "Skipping tests for now"
+    - echo "No tests are written at the moment. But we will attempt to build the library with the latest changes."
+    - npm run build_bundle
 
 deployment:
   staging:

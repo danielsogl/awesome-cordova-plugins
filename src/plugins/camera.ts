@@ -102,10 +102,10 @@ export interface CameraPopoverOptions {
  * ```
  */
 @Plugin({
-  name: 'Camera',
   plugin: 'cordova-plugin-camera',
   pluginRef: 'navigator.camera',
-  repo: 'https://github.com/apache/cordova-plugin-camera'
+  repo: 'https://github.com/apache/cordova-plugin-camera',
+  platforms: ['Android','BlackBerry','Browser','Firefox','FireOS','iOS','Windows','Windows Phone 8','Ubuntu']
 })
 export class Camera {
   /**
@@ -116,21 +116,16 @@ export class Camera {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getPicture(options: CameraOptions){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  };
+  static getPicture(options: CameraOptions): Promise<any> { return }
 
   /**
    * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
    * Applies only when the value of Camera.sourceType equals Camera.PictureSourceType.CAMERA and the Camera.destinationType equals Camera.DestinationType.FILE_URI.
    * @return Returns a Promise
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['iOS']
+  })
   static cleanup(){};
 }
 

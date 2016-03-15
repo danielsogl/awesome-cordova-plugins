@@ -69,7 +69,7 @@ export interface GeolocationOptions {
    * retrieve the real current position. If set to Infinity the device must
    * return a cached position regardless of its age. Default: 0.
    */
-  maximumAge: number;
+  maximumAge?: number;
 
   /**
    * Is a positive long value representing the maximum length of time
@@ -77,7 +77,7 @@ export interface GeolocationOptions {
    * position. The default value is Infinity, meaning that getCurrentPosition()
    * won't return until the position is available.
    */
-  timeout: number;
+  timeout?: number;
 
   /**
    * Indicates the application would like to receive the best possible results.
@@ -88,7 +88,7 @@ export interface GeolocationOptions {
    * responding more quickly and/or using less power. Default: false.
    * @type {boolean}
    */
-  enableHighAccuracy: boolean;
+  enableHighAccuracy?: boolean;
 }
 
 
@@ -115,9 +115,9 @@ export interface GeolocationOptions {
  * ```
  */
 @Plugin({
-  name: 'Geolocation',
   plugin: 'cordova-plugin-geolocation',
-  pluginRef: 'navigator.geolocation'
+  pluginRef: 'navigator.geolocation',
+  repo: 'https://github.com/apache/cordova-plugin-geolocation'
 })
 export class Geolocation {
   /**
@@ -126,15 +126,10 @@ export class Geolocation {
    * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
    * @return Returns a Promise that resolves with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or rejects with an error.
    */
-  @Cordova()
-  static getCurrentPosition(options: GeolocationOptions){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<Geoposition>((res, rej) => {});
-  }
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
 
   /**
    * Watch the current device's position.  Clear the watch by unsubscribing from
@@ -157,12 +152,5 @@ export class Geolocation {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchPosition(options: GeolocationOptions){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<Geoposition>(observer => {});
-  };
+  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return }
 }

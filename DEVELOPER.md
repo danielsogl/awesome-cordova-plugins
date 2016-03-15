@@ -9,25 +9,20 @@ Let's take a look at the existing plugin wrapper for Geolocation to see what goe
 
 ```
 @Plugin({
-  name: 'Geolocation',
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation'
 })
 export class Geolocation {
 
   @Cordova()
-  static getCurrentPosition(options: GeolocationOptions){
-    return new Promise<Geoposition>((res, rej) => {});
-  }
+  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
 
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchPosition(options: GeolocationOptions){
-    return new Observable<Geoposition>(observer => {});
-  }
+  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return }
 }
 ```
 
@@ -49,7 +44,6 @@ For example, the `@Plugin` decorator adds information about the plugin to our Ge
 
 ```
 @Plugin({
-  name: 'Geolocation',
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation'
 })
@@ -58,9 +52,7 @@ export class Geolocation {
 }
 ```
 
-Here, `name` refers to the name of the plugin, which is used by Ionic Native for logging messages.
-
-`plugin` is the name of the plugin package on npm and used when calling `cordova plugin add`, also used for logging purposes.
+Here, `plugin` is the name of the plugin package on npm and used when calling `cordova plugin add`.
 
 `pluginRef` refers to the where on `window` the underlying Cordova plugin is normally exposed.  For example, in the case of the Cordova Geolocation plugin, normally you would make calls like `window.navigator.geolocation.getCurrentPosition({}, success, error)`, so the `pluginRef` in this case is `navigator.geolocation`.
 
@@ -72,14 +64,14 @@ Let's take a look at `getCurrentPosition` first.
 
 ```
   @Cordova()
-  static getCurrentPosition(options: GeolocationOptions){
-    return new Promise<Geoposition>((res, rej) => {});
-  }
+  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
 ```
+
+It's just a stub. The `return` is only there to keep the TypeScript type-checker from complaining since we indicate that `getCurrentPosition` returns a `Promise<Geoposition>`.
 
 By default, the `@Cordova` decorator wraps the plugin callbacks in a Promise that resolves when the success callback is called and rejects when the error callback is called.  It also ensures that Cordova and the underlying plugin are available, and prints helpful diagnostics if they aren't.
 
-You'll also notice that it is a static method. That's because the plugin class is just a utility class to call the underlying Cordova plugin methods, it's not an instance and has no state.
+You'll also notice that `getCurrentPosition` is a static method. That's because the plugin class is just a utility class to call the underlying Cordova plugin methods, it's not an instance and has no state.
 
 Next, let's look at the `watchPosition` method.
 
@@ -89,9 +81,7 @@ Next, let's look at the `watchPosition` method.
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchPosition(options: GeolocationOptions){
-    return new Observable<Geoposition>(observer => {});
-  }
+  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return }
 ```
 
 The `@Cordova` decorator has a few more options now.

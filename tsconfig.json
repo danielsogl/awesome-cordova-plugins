@@ -9,16 +9,15 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true
     },
-    "exclude": [
-        "node_modules"
+    "filesGlob": [
+        "**/*.ts"
     ],
-    "files": [
-        "src/index.ts",
-        "typings/es6-shim/es6-shim.d.ts"
+    "exclude": [
+      "node_modules"
     ],
     "compileOnSave": false,
     "buildOnSave": false,
     "atom": {
-        "rewriteTsconfig": true
+        "rewriteTsconfig": false
     }
 }

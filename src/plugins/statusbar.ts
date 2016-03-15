@@ -1,15 +1,23 @@
-import {Plugin, Cordova, RequiresPlugin} from './plugin';
+import {Plugin, Cordova, CordovaProperty} from './plugin';
 
 declare var window;
 
 /**
- *
+ * @name StatusBar
+ * @description
  * Manage the appearance of the native status bar.
  *
  * Requires Cordova plugin: `cordova-plugin-statusbar`. For more info, please see the [StatusBar plugin docs](https://github.com/apache/cordova-plugin-statusbar).
+ *
+ * @usage
+ * ```ts
+ * StatuBar.overlaysWebView(true);
+ *
+ * StatusBar.
+ * ```
+ *
  */
 @Plugin({
-  name: 'StatusBar',
   plugin: 'cordova-plugin-statusbar',
   pluginRef: 'StatusBar',
   repo: 'https://github.com/apache/cordova-plugin-statusbar'
@@ -102,8 +110,6 @@ export class StatusBar {
   /**
    * Whether the StatusBar is currently visible or not.
    */
-  @RequiresPlugin
-  static isVisible() {
-    return window.StatusBar.isVisible;
-  }
+  @CordovaProperty
+  static get isVisible() { return window.StatusBar.isVisible; }
 }

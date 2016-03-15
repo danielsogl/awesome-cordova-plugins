@@ -3,55 +3,125 @@ initAngular1();
 
 const DEVICE_READY_TIMEOUT = 2000;
 
-
 declare var window;
 
 import {ActionSheet} from './plugins/actionsheet';
+import {AppAvailability} from './plugins/appavailability';
+import {AppRate} from './plugins/apprate';
+import {AppVersion} from './plugins/appversion';
+import {Badge} from './plugins/badge';
 import {BarcodeScanner} from './plugins/barcodescanner';
+import {Base64ToGallery} from './plugins/base64togallery';
+import {BatteryStatus} from './plugins/batterystatus';
 import {BLE} from './plugins/ble';
-import {Camera} from './plugins/camera';
 import {Calendar} from './plugins/calendar';
+import {Camera} from './plugins/camera';
+import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
+import {DatePicker} from './plugins/datepicker';
+import {DBMeter} from './plugins/dbmeter';
 import {Device} from './plugins/device';
+import {DeviceMotion} from './plugins/devicemotion';
+import {DeviceOrientation} from './plugins/deviceorientation';
+import {Dialogs} from './plugins/dialogs';
 import {Facebook} from './plugins/facebook';
+//import {File} from './plugins/file';
+import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
+import {Globalization} from './plugins/globalization';
+import {Hotspot} from  './plugins/hotspot';
+import {ImagePicker} from './plugins/imagepicker';
+import {Keyboard} from './plugins/keyboard';
+import {LaunchNavigator} from './plugins/launchnavigator';
+import {LocalNotifications} from './plugins/localnotifications';
 import {Push} from './plugins/push';
+import {SMS} from './plugins/sms';
+import {Splashscreen} from './plugins/splashscreen';
 import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
+import {Vibration} from './plugins/vibration';
 
 export {
   ActionSheet,
+  AppAvailability,
+  AppRate,
+  AppVersion,
+  Badge,
   BarcodeScanner,
+  Base64ToGallery,
+  BatteryStatus,
   BLE,
-  Camera,
   Calendar,
+  Camera,
+  Clipboard,
   Contacts,
+  DatePicker,
+  DBMeter,
   Device,
+  DeviceMotion,
+  DeviceOrientation,
+  Dialogs,
   Facebook,
+  //File,
+  Flashlight,
   Geolocation,
+  Globalization,
+  Hotspot,
+  ImagePicker,
+  Keyboard,
+  LaunchNavigator,
+  LocalNotifications,
   Push,
+  SMS,
+  Splashscreen,
   StatusBar,
   Toast,
-  TouchID
+  TouchID,
+  Vibration
 }
+
+export * from './plugins/plugin';
 
 // Window export to use outside of a module loading system
 window['IonicNative'] = {
   ActionSheet: ActionSheet,
-  BarcodeScanner,
+  AppAvailability: AppAvailability,
+  AppRate: AppRate,
+  AppVersion: AppVersion,
+  Badge: Badge,
+  BarcodeScanner: BarcodeScanner,
+  Base64ToGallery: Base64ToGallery,
+  BatteryStatus: BatteryStatus,
   BLE: BLE,
-  Camera: Camera,
   Calendar: Calendar,
+  Camera: Camera,
+  Clipboard: Clipboard,
   Contacts: Contacts,
+  DatePicker: DatePicker,
+  DBMeter: DBMeter,
   Device: Device,
+  DeviceMotion: DeviceMotion,
+  DeviceOrientation: DeviceOrientation,
+  Dialogs: Dialogs,
   Facebook: Facebook,
+  //File: File,
+  Flashlight: Flashlight,
   Geolocation: Geolocation,
+  Globalization: Globalization,
+  Hotspot: Hotspot,
+  ImagePicker: ImagePicker,
+  Keyboard: Keyboard,
+  LaunchNavigator: LaunchNavigator,
+  LocalNotifications: LocalNotifications,
   Push: Push,
+  SMS: SMS,
+  Splashscreen: Splashscreen,
   StatusBar: StatusBar,
   Toast: Toast,
-  TouchID: TouchID
-}
+  TouchID: TouchID,
+  Vibration: Vibration
+};
 
 // To help developers using cordova, we listen for the device ready event and
 // log an error if it didn't fire in a reasonable amount of time. Generally,
@@ -61,9 +131,9 @@ let before = +new Date;
 
 let didFireReady = false;
 document.addEventListener('deviceready', function() {
-  console.log('DEVICE READY FIRED AFTER', (+new Date - before), 'ms')
+  console.log('DEVICE READY FIRED AFTER', (+new Date - before), 'ms');
   didFireReady = true;
-})
+});
 
 setTimeout(function() {
   if(!didFireReady && window.cordova) {

@@ -160,10 +160,10 @@ import {Observable} from 'rxjs/Observable';
  *
  */
 @Plugin({
-  name: 'BLE',
   plugin: 'cordova-plugin-ble-central',
   pluginRef: 'ble',
-  repo: 'https://github.com/don/cordova-plugin-ble-central'
+  repo: 'https://github.com/don/cordova-plugin-ble-central',
+  platforms: ['iOS','Android']
 })
 export class BLE {
   /**
@@ -182,14 +182,7 @@ export class BLE {
   @Cordova({
     observable: true
   })
-  static scan(services:string[], seconds:number) {
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  }
+  static scan(services: string[], seconds: number): Observable<any> { return }
 
   /**
    * Scan and discover BLE peripherals until `stopScan` is called.
@@ -212,14 +205,7 @@ export class BLE {
     clearFunction: 'stopScan',
     clearWithArgs: true
   })
-  static startScan(services:string[]){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  };
+  static startScan(services: string[]): Observable<any> { return }
 
   /**
    * Stop a scan started by `startScan`.
@@ -236,14 +222,7 @@ export class BLE {
    * @return returns a Promise.
    */
   @Cordova()
-  static stopScan(){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  };
+  static stopScan(): Promise<any> { return }
 
   /**
    * Connect to a peripheral.
@@ -264,14 +243,7 @@ export class BLE {
     clearFunction: 'disconnect',
     clearWithArgs: true
   })
-  static connect(deviceId:string){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  };
+  static connect(deviceId: string): Observable<any> { return }
 
   /**
    * Disconnect from a peripheral.
@@ -285,14 +257,7 @@ export class BLE {
    * @return Returns a Promise
    */
   @Cordova()
-  static disconnect(deviceId:string) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  };
+  static disconnect(deviceId: string): Promise<any> { return }
 
   /**
    * Read the value of a characteristic.
@@ -303,14 +268,11 @@ export class BLE {
    * @return Returns a Promise
    */
   @Cordova()
-  static read(deviceId:string, serviceUUID:string, characteristicUUID:string){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  };
+  static read(
+    deviceId: string,
+    serviceUUID: string,
+    characteristicUUID: string
+  ): Promise<any> { return };
 
   /**
    * Write the value of a characteristic.
@@ -341,14 +303,12 @@ export class BLE {
    * @return Returns a Promise
    */
   @Cordova()
-  static write(deviceId:string, serviceUUID:string, characteristicUUID:string, value:ArrayBuffer){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  };
+  static write(
+    deviceId: string,
+    serviceUUID: string,
+    characteristicUUID: string,
+    value: ArrayBuffer
+  ): Promise<any> { return }
 
   /**
    * Write the value of a characteristic without waiting for confirmation from the peripheral.
@@ -360,14 +320,12 @@ export class BLE {
    * @return Returns a Promise
    */
   @Cordova()
-  static writeWithoutResponse(deviceId:string, serviceUUID:string, characteristicUUID:string, value:ArrayBuffer){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  };
+  static writeWithoutResponse(
+    deviceId: string,
+    serviceUUID: string,
+    characteristicUUID: string,
+    value: ArrayBuffer
+  ): Promise<any> { return }
 
   /**
    * Register to be notified when the value of a characteristic changes.
@@ -389,14 +347,11 @@ export class BLE {
     clearFunction: 'stopNotification',
     clearWithArgs: true
   })
-  static startNotification(deviceId:string, serviceUUID:string, characteristicUUID:string){
-    // This Observable is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Observable, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Observable<any>(observer => {});
-  };
+  static startNotification(
+    deviceId: string,
+    serviceUUID: string,
+    characteristicUUID: string
+  ): Observable<any> { return }
 
   /**
    * Stop being notified when the value of a characteristic changes.
@@ -407,14 +362,11 @@ export class BLE {
    * @return Returns a Promise.
    */
   @Cordova()
-  static stopNotification(deviceId:string, serviceUUID:string, characteristicUUID:string){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  };
+  static stopNotification(
+    deviceId: string,
+    serviceUUID: string,
+    characteristicUUID: string
+  ): Promise<any> { return }
 
   /**
    * Report the connection status.
@@ -430,14 +382,7 @@ export class BLE {
    * @return Returns a Promise.
    */
   @Cordova()
-  static isConnected(deviceId:string){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static isConnected(deviceId: string): Promise<any> { return }
 
   /**
    * Report if bluetooth is enabled.
@@ -452,14 +397,7 @@ export class BLE {
    * @return Returns a Promise.
    */
   @Cordova()
-  static isEnabled(){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static isEnabled(): Promise<any> { return }
 
   /**
    * Open System Bluetooth settings (Android only).
@@ -467,14 +405,7 @@ export class BLE {
    * @return Returns a Promise.
    */
   @Cordova()
-  static showBluetoothSettings(){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static showBluetoothSettings(): Promise<any> { return }
 
   /**
    * Enable Bluetooth on the device (Android only).
@@ -482,12 +413,5 @@ export class BLE {
    * @return Returns a Promise.
    */
   @Cordova()
-  static enable(){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static enable(): Promise<any> { return }
 }

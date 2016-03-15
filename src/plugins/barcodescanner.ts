@@ -1,7 +1,7 @@
 import {Plugin, Cordova} from './plugin';
 
 /**
- * @name BarcodeScanner
+ * @name Barcode Scanner
  * @description
  * The Barcode Scanner Plugin opens a camera view and automatically scans a barcode, returning the data back to you.
  *
@@ -17,10 +17,10 @@ import {Plugin, Cordova} from './plugin';
  * ```
  */
 @Plugin({
-  name: 'BarcodeScanner',
   plugin: 'phonegap-plugin-barcodescanner',
   pluginRef: 'cordova.plugins.barcodeScanner',
-  repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner'
+  repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner',
+  pltaforms: ['Android','iOS','Windows Phone 8','Windows 10','Windows 8','BlackBerry 10', 'Browser']
 })
 export class BarcodeScanner {
 
@@ -29,14 +29,7 @@ export class BarcodeScanner {
    * @return Returns a Promise that resolves with scanner data, or rejects with an error.
    */
   @Cordova()
-  static scan(){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  };
+  static scan(): Promise<any> { return }
 
   // Not well supported
   // @Cordova()

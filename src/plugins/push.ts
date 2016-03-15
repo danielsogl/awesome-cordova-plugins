@@ -232,7 +232,7 @@ export interface AndroidPushOptions {
    * If the array contains one or more strings each string will be used to
    * subscribe to a GcmPubSub topic.
    */
-  topics: string[];
+  topics?: string[];
 }
 
 export interface PushOptions {
@@ -252,11 +252,9 @@ declare var PushNotification: {
  *
  * Requires Cordova plugin: `phonegap-plugin-push`. For more info, please see the [Push plugin docs](https://github.com/phonegap/phonegap-plugin-push).
  *
- *
  * For TypeScript users, see the [Push plugin docs about using TypeScript for custom notifications](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/TYPESCRIPT.md).
  */
 @Plugin({
-  name: 'Push',
   plugin: 'phonegap-plugin-push',
   pluginRef: 'PushNotification',
   repo: 'https://github.com/phonegap/phonegap-plugin-push'
@@ -286,21 +284,13 @@ export class Push {
   @Cordova({
     sync: true
   })
-  static init(options: PushOptions){
-    return new PushNotification();
-  }
+  static init(options: PushOptions): PushNotification { return }
 
   /**
    * Check whether the push notification permission has been granted.
    * @return {Promise} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
    */
   @Cordova()
-  static hasPermission(){
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<{ isEnabled: boolean }>((res, rej) => {});
-  }
+  static hasPermission(): Promise<{ isEnabled: boolean }> { return }
+  
 }

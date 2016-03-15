@@ -23,12 +23,14 @@ export interface Calendar {
  *
  * Requires Cordova plugin: `cordova-plugin-calendar`. For more info, please see the [Calendar plugin docs](https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin).
  *
+ * @usage
+ * 
  */
 @Plugin({
-  name: 'Calendar',
   plugin: 'cordova-plugin-calendar',
   pluginRef: 'plugins.calendar',
-  repo: 'https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin'
+  repo: 'https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin',
+  platforms: ['Android','iOS']
 })
 export class Calendar {
   /**
@@ -49,14 +51,9 @@ export class Calendar {
    * @return Returns a Promise
    */
   @Cordova()
-  static createCalendar(nameOrOptions: string | { calendarName: string, calendarColor: string }) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static createCalendar(
+    nameOrOptions: string | { calendarName: string, calendarColor: string }
+  ): Promise<any> { return }
 
   /**
    * Delete a calendar. (iOS only)
@@ -73,14 +70,7 @@ export class Calendar {
    * @return Returns a Promise
    */
   @Cordova()
-  static deleteCalendar(name: string) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static deleteCalendar(name: string): Promise<any> { return }
 
   /**
    * Returns the default calendar options.
@@ -128,14 +118,7 @@ export class Calendar {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-  ) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  ): Promise<any> { return }
 
   /**
    * Silently create an event with additional options.
@@ -156,14 +139,7 @@ export class Calendar {
     startDate?: Date,
     endDate?: Date,
     options?: CalendarOptions
-  ) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  ): Promise<any> { return }
 
   /**
    * Interactively create an event.
@@ -182,14 +158,7 @@ export class Calendar {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-  ) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  ): Promise<any> { return }
 
   /**
    * Interactively create an event with additional options.
@@ -210,14 +179,7 @@ export class Calendar {
     startDate?: Date,
     endDate?: Date,
     options?: CalendarOptions
-  ) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  ): Promise<any> { return }
 
   // deprecated
   // @Cordova()
@@ -247,14 +209,7 @@ export class Calendar {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-  ) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  ): Promise<any> { return }
 
   /**
    * Find an event with additional options.
@@ -275,14 +230,7 @@ export class Calendar {
     startDate?: Date,
     endDate?: Date,
     options?: CalendarOptions
-  ) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  ): Promise<any> { return }
 
   /**
    * Find a list of events within the specified date range. (Android only)
@@ -292,37 +240,21 @@ export class Calendar {
    * @return Returns a Promise that resolves with the list of events, or rejects with an error.
    */
   @Cordova()
-  static listEventsInRange(startDate: Date, endDate: Date) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static listEventsInRange(startDate: Date, endDate: Date): Promise<any> { return }
 
   /**
    * Get a list of all calendars.
    * @return A Promise that resolves with the list of calendars, or rejects with an error.
    */
   @Cordova()
-  static listCalendars(){
-    return new Promise<any>((res, rej) => {});
-  }
+  static listCalendars(){ return }
 
   /**
    * Get a list of all future events in the specified calendar. (iOS only)
    * @return Returns a Promise that resolves with the list of events, or rejects with an error.
    */
   @Cordova()
-  static findAllEventsInNamedCalendar(calendarName: string) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static findAllEventsInNamedCalendar(calendarName: string): Promise<any> { return }
 
   /**
    * Modify an event. (iOS only)
@@ -351,14 +283,7 @@ export class Calendar {
     newNotes?: string,
     newStartDate?: Date,
     newEndDate?: Date
-  ) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  ): Promise<any> { return }
 
   /**
    * Modify an event with additional options. (iOS only)
@@ -389,14 +314,7 @@ export class Calendar {
      newStartDate?: Date,
      newEndDate?: Date,
      options?: CalendarOptions
-   ) {
-     // This Promise is replaced by one from the @Cordova decorator that wraps
-     // the plugin's callbacks. We provide a dummy one here so TypeScript
-     // knows that the correct return type is Promise, because there's no way
-     // for it to know the return type from a decorator.
-     // See https://github.com/Microsoft/TypeScript/issues/4881
-     return new Promise<any>((res, rej) => {});
-   }
+   ) { return  }
 
    /**
     * Delete an event.
@@ -415,14 +333,7 @@ export class Calendar {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-  ) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  ): Promise<any> { return }
 
   /**
    * Delete an event from the specified Calendar. (iOS only)
@@ -443,26 +354,12 @@ export class Calendar {
    startDate?: Date,
    endDate?: Date,
    calendarName?: string
- ) {
-   // This Promise is replaced by one from the @Cordova decorator that wraps
-   // the plugin's callbacks. We provide a dummy one here so TypeScript
-   // knows that the correct return type is Promise, because there's no way
-   // for it to know the return type from a decorator.
-   // See https://github.com/Microsoft/TypeScript/issues/4881
-   return new Promise<any>((res, rej) => {});
- }
+ ): Promise<any> { return }
 
   /**
    * Open the calendar at the specified date.
    * @return {Date} date
    */
   @Cordova()
-  static openCalendar(date: Date) {
-    // This Promise is replaced by one from the @Cordova decorator that wraps
-    // the plugin's callbacks. We provide a dummy one here so TypeScript
-    // knows that the correct return type is Promise, because there's no way
-    // for it to know the return type from a decorator.
-    // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<any>((res, rej) => {});
-  }
+  static openCalendar(date: Date): Promise<any> { return }
 }
