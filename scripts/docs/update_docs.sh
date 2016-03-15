@@ -14,12 +14,11 @@ function init {
 }
 
 function run {
-  ls -al
-  cd ./scripts
-  ./git/clone.sh --repository="driftyco/ionic-site" \
-    --directory="$SITE_DIR" \
-    --branch="master"
-  cd ..
+
+  cd $SITE_DIR
+  git reset --hard
+  git pull origin master
+
   VERSION=$(readJsonProp "package.json" "version")
 
   # process new docs
@@ -45,4 +44,4 @@ function run {
   fi
 }
 
-source $(dirname $0)/../utils.sh.inc
+source $(dirname $0)/../utils.inc.sh

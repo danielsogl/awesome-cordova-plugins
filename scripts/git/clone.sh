@@ -23,4 +23,4 @@ function run {
   cd ../
 }
 
-source $(dirname $0)/../utils.sh.inc
+source $(dirname $0)/../utils.inc.sh
