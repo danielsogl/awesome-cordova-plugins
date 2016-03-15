@@ -15,14 +15,10 @@ function init {
 
 function run {
 
-  cd $SITE_DIR
-  git reset --hard
-  git pull origin master
-
   VERSION=$(readJsonProp "package.json" "version")
 
   # process new docs
-  gulp docs
+  ./node_modules/.bin/gulp docs
 
   # CD in to the site dir to commit updated docs
   cd $SITE_DIR
