@@ -50,7 +50,7 @@ export class AppRate {
   /**
    * Prompts the user for rating
    *
-   * @param {boolean} immediately  Show the rating prompt immediately.
+   * @param {boolean} immediately  Show the rating prompt immediately
    */
   @Cordova()
   static promptForRating(immediately: boolean): void {};
