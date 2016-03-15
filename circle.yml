@@ -3,6 +3,12 @@ machine:
     version: 4.1.0
   ruby:
     version: 2.1.2
+
+general:
+  branches:
+    only:
+      - master # ignore PRs and branches
+      
 test:
   override:
     - echo "Skipping tests for now"

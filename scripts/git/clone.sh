@@ -13,7 +13,7 @@ function run {
 
   echo "-- Cloning $REPOSITORY#$BRANCH to $DIRECTORY..."
 
-  ARGS="--branch=${BRANCH:-master}"
+  ARGS="--branch=${BRANCH:-master} --depth=3"
   if [[ "$DEPTH" != "" ]]; then
     ARGS="$ARGS --depth=$DEPTH"
   fi
