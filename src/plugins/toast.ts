@@ -34,7 +34,7 @@ export class Toast {
    * Show a native toast for the given duration at the specified position.
    *
    * @param {string} message  The message to display.
-   * @param {string} duration  Duration to show the toast, either 'short' or 'long'.
+   * @param {string} duration  Duration to show the toast, either 'short', 'long' or any number of milliseconds: '1500'.
    * @param {string} position  Where to position the toast, either 'top', 'center', or 'bottom'.
    * @return {Observable}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
@@ -60,7 +60,7 @@ export class Toast {
    *
    * @param {Object} options  Options for showing a toast. Available options:
    *   message  The message to display.
-   *   duration  Duration to show the toast, either 'short' or 'long'.
+   *   duration  Duration to show the toast, either 'short', 'long' or any number of milliseconds: '1500'.
    *   position  Where to position the toast, either 'top', 'center', or 'bottom'.
    *   addPixelsY  Offset in pixels to move the toast up or down from its specified position.
    *
