@@ -15,6 +15,7 @@
   "devDependencies": {
     "browserify": "^13.0.0",
     "canonical-path": "0.0.2",
+    "conventional-changelog": "^1.1.0",
     "cpr": "^1.0.0",
     "cz-conventional-changelog": "^1.1.5",
     "dgeni": "^0.4.2",
