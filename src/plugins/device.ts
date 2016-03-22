@@ -33,7 +33,7 @@ export interface Device {
  *
  * @usage
  * ```js
- * let info = Device.getDevice();
+ * console.log('Device UUID is: ' + Device.device.uuid);
  * ```
  */
 @Plugin({
