@@ -1,4 +1,4 @@
-import {Plugin} from './plugin';
+import {Plugin, Cordova} from './plugin';
 import {Observable} from "rxjs/Observable";
 
 /**
@@ -35,25 +35,31 @@ export class BatteryStatus {
    * Watch the change in battery level
    * @returns {Observable} Returns an observable that pushes a status object
    */
-  static onChange () : Observable<StatusObject> {
-    return getEventObservable("batterylevel");
-  }
+  @Cordova({
+    eventObservable: true,
+    event: 'batterylevel'
+  })
+  static onChange () : Observable<StatusObject> {return}
 
   /**
    * Watch when the battery level goes low
    * @returns {Observable<StatusObject>} Returns an observable that pushes a status object
    */
-  static onLow () : Observable<StatusObject> {
-    return getEventObservable("batterylow");
-  }
+  @Cordova({
+    eventObservable: true,
+    event: 'batterylow'
+  })
+  static onLow () : Observable<StatusObject> {return}
 
   /**
    * Watch when the battery level goes to critial
    * @returns {Observable<StatusObject>} Returns an observable that pushes a status object
    */
-  static onCritical () : Observable<StatusObject> {
-    return getEventObservable("batterycritical");
-  }
+  @Cordova({
+    eventObservable: true,
+    event: 'batterycritical'
+  })
+  static onCritical () : Observable<StatusObject> {return}
 
 }
 
@@ -67,17 +73,4 @@ export interface StatusObject {
    * A boolean that indicates whether the device is plugged in
    */
   isPlugged : boolean
-}
-
-/**
- * Wrap the event with an observable
- * @param event
- * @returns {Observable}
- */
-function getEventObservable (event : string) : Observable<StatusObject> {
-  return new Observable(observer => {
-    let callback = (status : any) => observer.next(status);
-    window.addEventListener(event, callback, false);
-    return () => window.removeEventListener(event, callback, false);
-  });
 }
