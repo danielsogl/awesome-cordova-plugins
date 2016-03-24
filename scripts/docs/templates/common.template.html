@@ -210,12 +210,10 @@ docType: "<$ doc.docType $>"
 <@- if method.decorators @>
 <@ for prop in method.decorators[0].argumentInfo @>
 <@ if prop.platforms @>
-<h4>Platforms:</h4>
-<ul>
+<b>Platforms:</b>
 <@- for platform in prop.platforms @>
-<li><$ platform $></li>
+<code><$ platform $></code>&nbsp;
 <@ endfor -@>
-</ul>
 <@ endif @>
 <@ endfor @>
 <@ endif -@>
