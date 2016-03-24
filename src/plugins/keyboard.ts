@@ -23,10 +23,12 @@ export class Keyboard {
    * Hide the keyboard accessory bar with the next, previous and done buttons.
    * @param hide {boolean}
    */
-  @Cordova({
-    sync: true
-  })
-  static hideKeyboardAccessoryBar(hide : boolean) : void {}
+  //@Cordova({
+  //  sync: true
+  //})
+  static hideKeyboardAccessoryBar(hide : boolean) : void {
+    console.log("hideKeyboardAccessoryBar method has been removed temporarily.")
+  }
 
   /**
    * Close the keyboard if open
