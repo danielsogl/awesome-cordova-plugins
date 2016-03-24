@@ -31,23 +31,33 @@ export class Keyboard {
   }
 
   /**
+   * Force keyboard to be shown.
+   * @platforms ['Android','BlackBerry 10','Windows']
+   */
+  @Cordova({
+    sync: true
+  })
+  static show() : void {}
+
+  /**
    * Close the keyboard if open
+   * @platforms ['iOS','Android','BlackBerry 10','Windows']
    */
   @Cordova({
     sync: true
   })
   static close() : void {}
 
+  /**
+   * Prevents the native UIScrollView from moving when an input is focused.
+   * @platforms ['iOS','Windows']
+   * @param disable
+   */
   @Cordova({
     sync: true
   })
   static disableScroll(disable : boolean) : void {}
 
-  @Cordova({
-    sync: true
-  })
-  static show() : void {}
 
-  // TODO add event listener
 
 }
