@@ -38,6 +38,10 @@ export class Calendar {
    *
    * @usage
    * ```
+   * import {Calendar} from 'ionic-native';
+   *
+   *
+   *
    * Calendar.createCalendar('MyCalendar').then(
    *   (msg) => { console.log(msg); },
    *   (err) => { console.log(err); }

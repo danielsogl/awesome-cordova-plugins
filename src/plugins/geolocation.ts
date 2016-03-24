@@ -102,6 +102,10 @@ export interface GeolocationOptions {
  * @usage
  *
  * ```ts
+ * import {Geolocation} from 'ionic-native';
+ *
+ *
+ *
  * Geolocation.getCurrentPosition().then((resp) => {
  *  //resp.coords.latitude
  *  //resp.coords.longitude

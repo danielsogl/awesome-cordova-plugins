@@ -1,6 +1,17 @@
 import {Cordova, Plugin} from './plugin'
 import {Observable} from "rxjs/Observable";
 
+/**
+ * @name Keyboard
+ * @description
+ * @usage
+ * ```js
+ * import {Keyboard} from 'ionic-native';
+ *
+ *
+ *
+ * ```
+ */
 @Plugin({
   plugin: 'ionic-plugin-keyboard',
   pluginRef: 'cordova.plugins.Keyboard',

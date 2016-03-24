@@ -198,6 +198,10 @@ declare var Contact: {
  * @usage
  *
  * ```js
+ * import {Contacts} from 'ionic-native';
+ *
+ *
+ *
  * Contacts.save({
  *   displayName: "Mr. Ionitron"
  * }).then((contact) => {}, (err) => {})

@@ -6,6 +6,10 @@ import {Observable} from "rxjs/Observable";
  * @platforms Android, iOS
  * @usage
  * ```ts
+ * import {DBMeter} from 'ionic-native';
+ *
+ *
+ *
  * // Start listening
  * let subscription = DBMeter.start().subscribe(
  *   data => console.log(data)

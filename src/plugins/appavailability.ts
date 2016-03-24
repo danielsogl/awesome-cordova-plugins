@@ -9,6 +9,9 @@ import {Plugin, Cordova} from './plugin';
  *
  * @usage
  * ```js
+ * import {AppAvailability} from 'ionic-native';
+ *
+ *
  * var app;
  *
  * if(device.platform === 'iOS') {

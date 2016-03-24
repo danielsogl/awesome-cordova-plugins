@@ -41,6 +41,9 @@ export interface accelerometerOptions {
  *
  * @usage
  * ```ts
+ * import {DeviceMotion} from 'ionic-native';
+ *
+ *
  *
  * // Get the device current acceleration
  * DeviceMotion.getCurrentAcceleration().then(

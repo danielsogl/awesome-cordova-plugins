@@ -46,6 +46,10 @@ export interface CompassOptions {
  *
  * @usage
  * ```ts
+ * import {DeviceOrientation} from 'ionic-native';
+ *
+ *
+ *
  * // Get the device current compass heading
  * DeviceOrientation.getCurrentHeading().then(
  *   data => console.log(data),

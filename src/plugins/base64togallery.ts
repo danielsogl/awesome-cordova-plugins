@@ -5,6 +5,9 @@ import {Plugin, Cordova} from './plugin'
  * @platforms Android, iOS, Windows Phone
  * @usage
  * ```ts
+ * import {Base64ToGallery} from 'ionic-native';
+ *
+ *
  * Base64ToGallery.base64ToGallery(base64Data, 'img_').then(
  *   res => console.log("Saved image to gallery ", res),
  *   err => console.log("Error saving image to gallery ", err)

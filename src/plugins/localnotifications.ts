@@ -6,6 +6,10 @@ import {Plugin, Cordova} from './plugin';
  *
  * @usage
  * ```ts
+ * import {LocalNotifications} from 'ionic-native';
+ *
+ *
+ *
  * // Schedule a single notification
  * LocalNotifications.schedule({
  *   id: 1,

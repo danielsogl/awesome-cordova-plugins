@@ -19,7 +19,13 @@ import {Plugin, Cordova} from './plugin';
  *  -  `-4` - The scan was cancelled by the system (Home button for example)
  *  -  `-6` - TouchID is not Available
  *  -  `-8` - TouchID is locked out from too many tries
+ * @usage
+ * ```js
+ * import {TouchID} from 'ionic-native';
  *
+ *
+ *
+ * ```
  */
 @Plugin({
   plugin: 'cordova-plugin-touch-id',

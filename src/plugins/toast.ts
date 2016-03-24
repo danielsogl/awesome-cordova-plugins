@@ -17,7 +17,9 @@ export interface ToastOptions {
  * @usage
  * ```ts
  * import {Toast} from 'ionic-native';
- * 
+ *
+ *
+ *
  * Toast.show("I'm a toast", 5000, "center").subscribe(
  *   toast => {
  *     console.log(toast);

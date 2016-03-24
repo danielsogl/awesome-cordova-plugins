@@ -53,6 +53,10 @@ export interface launchNavigatorOptions {
  *
  * @usage
  * ```js
+ * import {LaunchNavigator} from 'ionic-native';
+ *
+ *
+ *
  * LaunchNavigator.navigate("Toronto, ON", "London, ON")
  *   .then(
  *     success => console.log("Launched navigator"),
