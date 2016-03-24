@@ -68,6 +68,14 @@ import {Plugin, Cordova} from './plugin';
  *
  * For tracking events, see `logEvent` and `logPurchase`.
  *
+ * @usage
+ * ```js
+ * import {Facebook} from 'ionic-native';
+ *
+ *
+ *
+ * ```
+ *
  */
 @Plugin({
   plugin: 'cordova-plugin-facebook4',

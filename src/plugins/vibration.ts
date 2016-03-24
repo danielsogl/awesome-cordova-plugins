@@ -4,6 +4,10 @@ import {Plugin, Cordova} from './plugin'
  * @description Vibrates the device
  * @usage
  * ```ts
+ * import {Vibration} from 'ionic-native';
+ *
+ *
+ *
  * // Vibrate the device for a second
  * Vibration.vibrate(1000);
  *

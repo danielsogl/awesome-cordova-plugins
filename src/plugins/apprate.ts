@@ -11,6 +11,9 @@ declare var window;
  *
  * @usage
  * ```js
+ * import {AppRate} from 'ionic-native';
+ *
+ *
  * AppRate.preferences.storeAppURL.ios = '<my_app_id>';
  * AppRate.preferences.storeAppURL.android = 'market://details?id=<package_name>';
  * AppRate.preferences.storeAppURL.blackberry = 'appworld://content/[App Id]/';

@@ -74,6 +74,10 @@ export interface datePickerOptions {
  *
  * @usage
  * ```js
+ * import {DatePicker} from 'ionic-native';
+ *
+ *
+ *
  * DatePicker.show({
  *   date: new Date(),
  *   mode: 'date'

@@ -9,6 +9,9 @@ import {Plugin, Cordova} from './plugin';
  *
  * @usage
  * ```js
+ * import {Badge} from 'ionic-native';
+ *
+ *
  * Badge.set(10);
  * Badge.increase();
  * Badge.clear();

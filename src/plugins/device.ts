@@ -33,6 +33,10 @@ export interface Device {
  *
  * @usage
  * ```js
+ * import {Device} from 'ionic-native';
+ *
+ *
+ *
  * console.log('Device UUID is: ' + Device.device.uuid);
  * ```
  */

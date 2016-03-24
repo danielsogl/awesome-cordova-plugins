@@ -10,6 +10,10 @@ import {Plugin, Cordova} from './plugin';
  *
  * @usage
  * ```js
+ * import {Clipboard} from 'ionic-native';
+ *
+ *
+ *
  * Clipboard.copy("Hello world");
  *
  * Clipboard.paste().then(

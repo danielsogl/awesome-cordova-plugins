@@ -5,6 +5,12 @@ import {Plugin, Cordova} from './plugin'
  * @description
  * @platforms Android
  * @usage
+ * ```js
+ * import {Hotspot} from 'ionic-native';
+ *
+ *
+ *
+ * ```
  */
 @Plugin({
   plugin: 'cordova-plugin-hotspot',

@@ -9,6 +9,9 @@ import {Plugin, Cordova} from './plugin';
  *
  * @usage
  * ```js
+ * import {AppVersion} from 'ionic-native';
+ *
+ *
  *  AppVersion.getAppName();
  *  AppVersion.getPackageName();
  *  AppVersion.getVersionCode();

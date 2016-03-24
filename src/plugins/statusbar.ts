@@ -3,7 +3,7 @@ import {Plugin, Cordova, CordovaProperty} from './plugin';
 declare var window;
 
 /**
- * @name StatusBar
+ * @name Status Bar
  * @description
  * Manage the appearance of the native status bar.
  *
@@ -11,6 +11,10 @@ declare var window;
  *
  * @usage
  * ```ts
+ * import {StatusBar} from 'ionic-native';
+ *
+ *
+ *
  * StatuBar.overlaysWebView(true);
  *
  * StatusBar.

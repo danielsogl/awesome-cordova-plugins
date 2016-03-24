@@ -31,6 +31,9 @@ export interface smsOptionsAndroid {
  *
  * @usage
  * ```ts
+ * import {SMS} from 'ionic-native';
+ *
+ *
  *
  * // Send a text message using default options
  * SMS.send('416123456','Hello world!');
