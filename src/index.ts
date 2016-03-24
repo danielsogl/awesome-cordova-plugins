@@ -36,6 +36,7 @@ import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
 import {Push} from './plugins/push';
 import {SMS} from './plugins/sms';
+import {SpinnerDialog} from './plugins/spinnerdialog';
 import {Splashscreen} from './plugins/splashscreen';
 import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
@@ -74,6 +75,7 @@ export {
   LocalNotifications,
   Push,
   SMS,
+  SpinnerDialog,
   Splashscreen,
   StatusBar,
   Toast,
@@ -116,6 +118,7 @@ window['IonicNative'] = {
   LocalNotifications: LocalNotifications,
   Push: Push,
   SMS: SMS,
+  SpinnerDialog: SpinnerDialog,
   Splashscreen: Splashscreen,
   StatusBar: StatusBar,
   Toast: Toast,
