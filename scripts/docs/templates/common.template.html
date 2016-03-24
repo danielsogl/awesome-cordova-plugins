@@ -124,6 +124,17 @@ docType: "<$ doc.docType $>"
   </a>
 </p>
 
+<!-- description -->
+<@ block description @>
+<$ doc.description | marked $>
+<@ endblock @>
+
+
+<@- if doc.directiveInfo @>
+<h2><$ doc.directiveInfo.type $></h2>
+<h3><$ doc.directiveInfo.properties[0].name $>: <code><$ doc.directiveInfo.properties[0].values $></code></h3>
+<@ endif -@>
+
 <@ if prop.platforms @>
 <!-- @platforms tag -->
 <h2>Supported platforms</h2>
@@ -134,20 +145,9 @@ docType: "<$ doc.docType $>"
   <@ endfor -@>
 </ul>
 <@ endblock @>
+<!-- @platforms tag end -->
 <@ endif @>
-
 <@ endfor @>
-<@ endif -@>
-
-<!-- description -->
-<@ block description @>
-<$ doc.description | marked $>
-<@ endblock @>
-
-
-<@- if doc.directiveInfo @>
-<h2><$ doc.directiveInfo.type $></h2>
-<h3><$ doc.directiveInfo.properties[0].name $>: <code><$ doc.directiveInfo.properties[0].values $></code></h3>
 <@ endif -@>
 
 <!-- @usage tag -->
