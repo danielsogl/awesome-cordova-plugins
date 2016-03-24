@@ -58,6 +58,24 @@ export class Keyboard {
   })
   static disableScroll(disable : boolean) : void {}
 
+  /**
+   * Creates an observable that notifies you when the keyboard is shown. Unsubscribe to observable to cancel event watch.
+   * @platforms ['iOS','Android','BlackBerry 10','Windows']
+   */
+  @Cordova({
+    eventObservable: true,
+    event: 'native.keyboardshow'
+  })
+  static onKeybardShow() : Observable<any> {return}
 
+  /**
+   * Creates an observable that notifies you when the keyboard is hidden. Unsubscribe to observable to cancel event watch.
+   * @platforms ['iOS','Android','BlackBerry 10','Windows']
+   */
+  @Cordova({
+    eventObservable: true,
+    event: 'native.keyboardhide'
+  })
+  static onKeybardHide() : Observable<any> {return}
 
 }
