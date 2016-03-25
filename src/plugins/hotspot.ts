@@ -3,7 +3,6 @@ import {Plugin, Cordova} from './plugin'
 /**
  * @name Hotspot
  * @description
- * @platforms Android
  * @usage
  * ```js
  * import {Hotspot} from 'ionic-native';
@@ -15,7 +14,8 @@ import {Plugin, Cordova} from './plugin'
 @Plugin({
   plugin: 'cordova-plugin-hotspot',
   pluginRef: 'cordova.plugins.hotspot',
-  repo: 'https://github.com/hypery2k/cordova-hotspot-plugin'
+  repo: 'https://github.com/hypery2k/cordova-hotspot-plugin',
+  platforms: ['Android']
 })
 export class Hotspot {
 

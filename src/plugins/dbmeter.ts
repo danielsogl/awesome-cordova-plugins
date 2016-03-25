@@ -3,7 +3,6 @@ import {Observable} from "rxjs/Observable";
 /**
  * @name DB Meter
  * @description This plugin defines a global DBMeter object, which permits to get the decibel values from the microphone.
- * @platforms Android, iOS
  * @usage
  * ```ts
  * import {DBMeter} from 'ionic-native';
@@ -33,7 +32,8 @@ import {Observable} from "rxjs/Observable";
 @Plugin({
   plugin: 'cordova-plugin-dbmeter',
   pluginRef: 'DBMeter',
-  repo: 'https://github.com/akofman/cordova-plugin-dbmeter'
+  repo: 'https://github.com/akofman/cordova-plugin-dbmeter',
+  platforms: ['iOS','Android']
 })
 export class DBMeter {
 

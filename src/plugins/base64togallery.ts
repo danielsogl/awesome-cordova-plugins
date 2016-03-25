@@ -2,7 +2,6 @@ import {Plugin, Cordova} from './plugin'
 /**
  * @name Base64 To Gallery
  * @description This plugin allows you to save base64 data as a png image into the device
- * @platforms Android, iOS, Windows Phone
  * @usage
  * ```ts
  * import {Base64ToGallery} from 'ionic-native';
@@ -23,7 +22,7 @@ import {Plugin, Cordova} from './plugin'
 export class Base64ToGallery {
 
   /**
-   *
+   * Converts a base64 string to an image file in the device gallery
    * @param data
    * @param prefix
    */
