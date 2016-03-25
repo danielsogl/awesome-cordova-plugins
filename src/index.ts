@@ -31,6 +31,7 @@ import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
 import {Hotspot} from  './plugins/hotspot';
 import {ImagePicker} from './plugins/imagepicker';
+import {InAppBrowser} from './plugins/inappbrowser';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
@@ -42,7 +43,6 @@ import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
 import {Vibration} from './plugins/vibration';
-import {InAppBrowser} from './plugins/inappbrowser';
 
 export {
   ActionSheet,
@@ -71,6 +71,7 @@ export {
   Globalization,
   Hotspot,
   ImagePicker,
+  InAppBrowser,
   Keyboard,
   LaunchNavigator,
   LocalNotifications,
@@ -81,8 +82,7 @@ export {
   StatusBar,
   Toast,
   TouchID,
-  Vibration,
-  InAppBrowser
+  Vibration
 }
 
 export * from './plugins/plugin';
@@ -115,6 +115,7 @@ window['IonicNative'] = {
   Globalization: Globalization,
   Hotspot: Hotspot,
   ImagePicker: ImagePicker,
+  InAppBrowser: InAppBrowser,
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
@@ -125,8 +126,7 @@ window['IonicNative'] = {
   StatusBar: StatusBar,
   Toast: Toast,
   TouchID: TouchID,
-  Vibration: Vibration,
-  InAppBrowser: InAppBrowser
+  Vibration: Vibration
 };
 
 // To help developers using cordova, we listen for the device ready event and
