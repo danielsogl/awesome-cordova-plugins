@@ -2,10 +2,37 @@ import {Plugin, Cordova} from './plugin';
 import {Observable} from 'rxjs/Observable';
 
 export interface ToastOptions {
+  /**
+   * Message to display
+   */
   message?: string;
+  /**
+   * Duration in ms to show
+   */
   duration?: string;
+  /**
+   * Position
+   */
   position?: string;
+  /**
+   * Add negative value to move it up a bit
+   */
   addPixelsY?: number;
+  /**
+   * Pass JSON object to be sent back in success callback
+   */
+  data?: any;
+  /**
+   * Styling
+   */
+  styling? : {
+    opacity? : number;
+    backgroundColor? : string;
+    textColor? : string;
+    cornerRadius? : number;
+    horizontalPadding? : number;
+    verticalPadding? : number;
+  };
 }
 /**
  * @name Toast
