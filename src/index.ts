@@ -25,7 +25,7 @@ import {DeviceMotion} from './plugins/devicemotion';
 import {DeviceOrientation} from './plugins/deviceorientation';
 import {Dialogs} from './plugins/dialogs';
 import {Facebook} from './plugins/facebook';
-//import {File} from './plugins/file';
+import {File} from './plugins/file';
 import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
@@ -66,7 +66,7 @@ export {
   DeviceOrientation,
   Dialogs,
   Facebook,
-  //File,
+  File,
   Flashlight,
   Geolocation,
   Globalization,
@@ -111,7 +111,7 @@ window['IonicNative'] = {
   DeviceOrientation: DeviceOrientation,
   Dialogs: Dialogs,
   Facebook: Facebook,
-  //File: File,
+  File: File,
   Flashlight: Flashlight,
   Geolocation: Geolocation,
   Globalization: Globalization,
