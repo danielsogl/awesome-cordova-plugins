@@ -141,7 +141,7 @@ export interface iOSPushOptions {
    * Maps to the project number in the Google Developer Console. Setting this
    * uses GCM for notifications instead of native.
    */
-  senderID: string;
+  senderID?: string;
 
   /**
    * Whether to use prod or sandbox GCM setting.
