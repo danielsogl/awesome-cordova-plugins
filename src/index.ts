@@ -35,7 +35,7 @@ import {InAppBrowser} from './plugins/inappbrowser';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
-import {Network, Connection} from './plugins/network';
+import {Network} from './plugins/network';
 import {Push} from './plugins/push';
 import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
@@ -59,7 +59,6 @@ export {
   Calendar,
   Camera,
   Clipboard,
-  Connection,
   Contacts,
   DatePicker,
   DBMeter,
@@ -106,7 +105,6 @@ window['IonicNative'] = {
   Calendar: Calendar,
   Camera: Camera,
   Clipboard: Clipboard,
-  Connection: Connection,
   Contacts: Contacts,
   DatePicker: DatePicker,
   DBMeter: DBMeter,
