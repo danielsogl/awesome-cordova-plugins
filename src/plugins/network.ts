@@ -51,7 +51,6 @@ export class Network {
    */
   @CordovaProperty
   static get connection() : Connection { return navigator.connection.type; }
- //  static get preferences() { return window.AppRate.preferences; }
 
   /**
    * Watch the network for a disconnect (i.e. network goes offline)
