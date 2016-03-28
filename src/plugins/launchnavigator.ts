@@ -84,7 +84,7 @@ export class LaunchNavigator {
   })
   static navigate(
     destination: any,
-    start?: any = null,
+    start: any = null,
     options?: launchNavigatorOptions
   ): Promise<any> { return }
 
