@@ -29,6 +29,7 @@ import {File} from './plugins/file';
 import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
+import {GoogleMaps} from './plugins/googlemaps';
 import {Hotspot} from  './plugins/hotspot';
 import {ImagePicker} from './plugins/imagepicker';
 import {InAppBrowser} from './plugins/inappbrowser';
@@ -41,6 +42,7 @@ import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
 import {SpinnerDialog} from './plugins/spinnerdialog';
 import {Splashscreen} from './plugins/splashscreen';
+import {SQLite} from './plugins/sqlite';
 import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
@@ -72,6 +74,7 @@ export {
   Flashlight,
   Geolocation,
   Globalization,
+  GoogleMaps,
   Hotspot,
   ImagePicker,
   InAppBrowser,
@@ -84,6 +87,7 @@ export {
   SocialSharing,
   SpinnerDialog,
   Splashscreen,
+    SQLite,
   StatusBar,
   Toast,
   TouchID,
@@ -119,6 +123,7 @@ window['IonicNative'] = {
   Flashlight: Flashlight,
   Geolocation: Geolocation,
   Globalization: Globalization,
+    GoogleMaps : GoogleMaps,
   Hotspot: Hotspot,
   ImagePicker: ImagePicker,
   InAppBrowser: InAppBrowser,
@@ -131,6 +136,7 @@ window['IonicNative'] = {
   SocialSharing: SocialSharing,
   SpinnerDialog: SpinnerDialog,
   Splashscreen: Splashscreen,
+    SQLite: SQLite,
   StatusBar: StatusBar,
   Toast: Toast,
   TouchID: TouchID,
