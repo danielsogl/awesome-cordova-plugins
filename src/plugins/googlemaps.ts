@@ -15,7 +15,7 @@ export class GoogleMaps {
 
     private _objectInstance : any;
 
-    constructor (elementId : string, public niggasIn = "paris") {
+    constructor (elementId : string) {
         this._objectInstance = {};//plugin.google.maps.Map.getMap(document.getElementById(elementId));
     }
 
