@@ -7,6 +7,7 @@ declare var Promise;
 declare var $q;
 
 import {Observable} from 'rxjs/Observable';
+import sys = ts.sys;
 
 /**
  * @private
@@ -150,30 +151,31 @@ function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any =
 }
 
 function callInstance(pluginObj:any, methodName : string, args:any[], opts:any = {}, resolve? : Function, reject? : Function){
-    console.log("C", methodName);
+  if(!systemCheck(getPlugin(pluginObj), pluginObj, methodName, resolve, reject)) return;
     args = setIndex(args);
-    console.log("D", methodName, pluginObj, pluginObj._objectInstance);
-
     return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
 }
 
 function wrapInstance (pluginObj:any, methodName:string, args:any[], opts:any = {}){
-
     if (opts.sync) {
         return callInstance(pluginObj, methodName, args, opts);
     } else if (opts.observable) {
-        //console.log("It's an observable");
         return new Observable(observer => {
-            //args = setIndex(args);
-            callInstance(pluginObj, methodName,args, opts, observer.next.bind(observer), observer.error.bind(observer));
-            return () => {
-                console.log("Observer cancelled.");
+            let pluginResult = callInstance(pluginObj, methodName,args, opts, observer.next.bind(observer), observer.error.bind(observer));
+          return () => {
+            try {
+              if (opts.clearWithArgs){
+                return pluginObj._objectInstance[opts.clearFunction].apply(pluginObj._objectInstance, args);
+              }
+              return pluginObj._objectInstance[opts.clearFunction].call(pluginObj, pluginResult);
+            } catch(e) {
+              console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
+              console.error(e);
             }
+          }
         });
     } else {
-        console.log("B", methodName);
         return getPromise((resolve, reject) => {
-            //args = setIndex(args);
             callInstance(pluginObj, methodName, args, opts, resolve, reject);
         });
     }
@@ -202,9 +204,7 @@ function wrapEventObservable (event : string) : Observable<any> {
 export const wrap = function(pluginObj:any,  methodName:string, opts:any = {}) {
   return (...args) => {
 
-      if(opts.instanceMethod) {
-          return wrapInstance(pluginObj, methodName, args, opts);
-      } else if (opts.sync)
+   if (opts.sync)
       return callCordovaPlugin(pluginObj, methodName, args, opts);
 
     else if (opts.observable)
@@ -271,16 +271,16 @@ export function Cordova(opts:any = {}) {
   }
 }
 
-
-
+/**
+ * @private
+ *
+ * Wrap an instance method
+ */
 export function CordovaInstance(opts:any = {}) {
-    return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
-        //let originalMethod = descriptor.value;
-        opts['instanceMethod'] = true;
+    return (target: Object, methodName: string) => {
         return {
             value: function(...args: any[]) {
-                console.log("A", methodName);
-                return wrap(this, methodName, opts).apply(this, args);
+                return wrapInstance(this, methodName, opts).apply(this, args);
             }
         }
     }
