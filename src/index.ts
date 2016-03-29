@@ -23,6 +23,7 @@ import {DBMeter} from './plugins/dbmeter';
 import {Device} from './plugins/device';
 import {DeviceMotion} from './plugins/devicemotion';
 import {DeviceOrientation} from './plugins/deviceorientation';
+import {Diagnostic} from './plugins/diagnostic';
 import {Dialogs} from './plugins/dialogs';
 import {Facebook} from './plugins/facebook';
 import {File} from './plugins/file';
@@ -67,6 +68,7 @@ export {
   DeviceMotion,
   DeviceOrientation,
   Dialogs,
+  Diagnostic,
   Facebook,
   File,
   Flashlight,
@@ -114,6 +116,7 @@ window['IonicNative'] = {
   DeviceMotion: DeviceMotion,
   DeviceOrientation: DeviceOrientation,
   Dialogs: Dialogs,
+  Diagnostic: Diagnostic,
   Facebook: Facebook,
   File: File,
   Flashlight: Flashlight,
