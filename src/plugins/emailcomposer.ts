@@ -46,18 +46,27 @@ export interface email {
  */
 @Plugin({
   plugin: 'cordova-plugin-email-composer',
-  pluginRef: 'emailComposer',
+  pluginRef: 'cordova.plugins.email',
   repo: 'https://github.com/katzer/cordova-plugin-email-composer.git',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class EmailComposer {
+  
+  @Cordova()
+  static isAvailable() : Promise<boolean> {return}
 
+  @Cordova()
+  static addAlias(app: String, schema: any) : Promise<any> {return}
+  
   /**
    * Opens Email Composer with email contents
    * @param email {email} Email
    * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
    */
-  @Cordova()
-  static open(email: email): Promise<any> { return }
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 3
+  })
+  static open(email: email, scope : any) : Promise<any> {return}
 
 }
