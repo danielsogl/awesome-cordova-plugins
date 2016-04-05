@@ -25,6 +25,7 @@ import {DeviceMotion} from './plugins/devicemotion';
 import {DeviceOrientation} from './plugins/deviceorientation';
 import {Diagnostic} from './plugins/diagnostic';
 import {Dialogs} from './plugins/dialogs';
+import {EmailComposer} from './plugins/emailcomposer';
 import {Facebook} from './plugins/facebook';
 import {File} from './plugins/file';
 import {Flashlight} from './plugins/flashlight';
@@ -69,6 +70,7 @@ export {
   DeviceOrientation,
   Dialogs,
   Diagnostic,
+  EmailComposer,
   Facebook,
   File,
   Flashlight,
@@ -117,6 +119,7 @@ window['IonicNative'] = {
   DeviceOrientation: DeviceOrientation,
   Dialogs: Dialogs,
   Diagnostic: Diagnostic,
+  EmailComposer: EmailComposer,
   Facebook: Facebook,
   File: File,
   Flashlight: Flashlight,
