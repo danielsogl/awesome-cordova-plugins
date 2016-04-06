@@ -4,6 +4,7 @@ import {Plugin, Cordova} from './plugin';
  * Email object for Opening Email Composer
  */
 export interface email {
+  app?: string,
   to: string | Array<string>,
   cc: string | Array<string>,
   bcc: string | Array<string>,
@@ -52,11 +53,14 @@ export interface email {
 })
 export class EmailComposer {
   
-  @Cordova()
-  static isAvailable() : Promise<boolean> {return}
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 3
+  })
+  static isAvailable(app: string, scope: any) : Promise<boolean> {return}
 
   @Cordova()
-  static addAlias(app: String, schema: any) : Promise<any> {return}
+  static addAlias(alias: string, packageName: string): void {}
   
   /**
    * Opens Email Composer with email contents
@@ -67,6 +71,6 @@ export class EmailComposer {
     successIndex: 1,
     errorIndex: 3
   })
-  static open(email: email, scope : any) : Promise<any> {return}
+  static open(email: email, scope: any) : Promise<any> {return}
 
 }
