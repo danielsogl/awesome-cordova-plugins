@@ -24,7 +24,7 @@ import {Plugin, Cordova} from './plugin'
  */
 @Plugin({
   plugin: 'cordova-plugin-vibration',
-  pluginRef: 'navigator.vibrate',
+  pluginRef: 'navigator',
   repo: 'https://github.com/apache/cordova-plugin-vibration'
 })
 export class Vibration {
