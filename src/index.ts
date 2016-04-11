@@ -46,6 +46,7 @@ import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
 import {Vibration} from './plugins/vibration';
+import {WebIntent} from './plugins/webintent';
 
 export {
   ActionSheet,
@@ -89,7 +90,8 @@ export {
   StatusBar,
   Toast,
   TouchID,
-  Vibration
+  Vibration,
+  WebIntent
 }
 
 export * from './plugins/plugin';
@@ -137,7 +139,8 @@ window['IonicNative'] = {
   StatusBar: StatusBar,
   Toast: Toast,
   TouchID: TouchID,
-  Vibration: Vibration
+  Vibration: Vibration,
+  WebIntent: WebIntent
 };
 
 // To help developers using cordova, we listen for the device ready event and
