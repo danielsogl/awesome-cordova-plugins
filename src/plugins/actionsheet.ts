@@ -38,10 +38,10 @@ export class ActionSheet {
    * |-------------------------------|-----------|----------------------------------------------|
    * | title                         |`string`   | The title for the actionsheet                |
    * | buttonLabels                  |`string[]` | the labels for the buttons. Uses the index x |
-   * | androidTheme                  |`number`   | Theme to bue used on Android                 |
+   * | androidTheme                  |`number`   | Theme to be used on Android                  |
    * | androidEnableCancelButton     |`boolean`  | Enable a cancel on Android                   |
-   * | winphoneEnableCancelButton    |`boolean`  | Enable a cancel on Android                   |
-   * | addCancelButtonWithLabel      |`string`   | Add a cancle button with text                |
+   * | winphoneEnableCancelButton    |`boolean`  | Enable a cancel on Windows Phone             |
+   * | addCancelButtonWithLabel      |`string`   | Add a cancel button with text                |
    * | addDestructiveButtonWithLabel |`string`   | Add a destructive button with text           |
    * | position                      |`number[]` | On an iPad, set the X,Y position             |
    *
