@@ -31,6 +31,7 @@ import {File} from './plugins/file';
 import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
+import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
 import {ImagePicker} from './plugins/imagepicker';
 import {InAppBrowser} from './plugins/inappbrowser';
@@ -77,6 +78,7 @@ export {
   Flashlight,
   Geolocation,
   Globalization,
+  GoogleAnalytics,
   Hotspot,
   ImagePicker,
   InAppBrowser,
@@ -127,6 +129,7 @@ window['IonicNative'] = {
   Flashlight: Flashlight,
   Geolocation: Geolocation,
   Globalization: Globalization,
+  GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
   ImagePicker: ImagePicker,
   InAppBrowser: InAppBrowser,
