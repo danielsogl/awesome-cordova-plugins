@@ -37,7 +37,7 @@ export class BatteryStatus {
    */
   @Cordova({
     eventObservable: true,
-    event: 'batterylevel'
+    event: 'batterystatus'
   })
   static onChange () : Observable<StatusObject> {return}
 
