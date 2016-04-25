@@ -57,7 +57,7 @@ export class LocalNotifications {
   @Cordova({
     sync: true
   })
-  static schedule(options? : Notification) : void {}
+  static schedule(options? : Notification|Array<Notification>) : void {}
 
   /**
    * Updates a previously scheduled notification. Must include the id in the options parameter.
