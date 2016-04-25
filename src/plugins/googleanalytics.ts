@@ -98,7 +98,7 @@ export class GoogleAnalytics {
      * @param {string}  value
      */
     @Cordova()
-    static addCustomDimension(key: string, value: string): Promise<any> { return }
+    static addCustomDimension(key: number, value: string): Promise<any> { return }
     
     /**
      * Set a UserId
