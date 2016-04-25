@@ -35,8 +35,8 @@ import {Plugin, Cordova} from './plugin';
  *
  * // Schedule delayed notification
  * LocalNotifications.schedule({
- *   t ext: "Delayed Notification",
- *    at: new Date(new Date() + 3600),
+ *    text: "Delayed Notification",
+ *    at: new Date(new Date().getTime() + 3600),
  *    led: "FF0000",
  *    sound: null
  * });
@@ -57,7 +57,7 @@ export class LocalNotifications {
   @Cordova({
     sync: true
   })
-  static schedule(options? : Notification) : void {}
+  static schedule(options? : Notification|Array<Notification>) : void {}
 
   /**
    * Updates a previously scheduled notification. Must include the id in the options parameter.

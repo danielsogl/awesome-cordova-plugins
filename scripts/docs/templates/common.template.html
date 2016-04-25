@@ -116,8 +116,9 @@ docType: "<$ doc.docType $>"
 
 <!-- decorators -->
 <@- if doc.decorators @>
+
 <@ for prop in doc.decorators[0].argumentInfo @>
-<pre><code>$ cordova plugin add <$ prop.plugin $></code></pre>
+<pre><code>$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif -@></code></pre>
 <p>Repo:
   <a href="<$ prop.repo $>">
     <$ prop.repo $>
