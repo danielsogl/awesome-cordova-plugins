@@ -7,7 +7,6 @@ declare var Promise;
 declare var $q;
 
 import {Observable} from 'rxjs/Observable';
-import sys = ts.sys;
 
 /**
  * @private
