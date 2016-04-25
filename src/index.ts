@@ -25,11 +25,13 @@ import {DeviceMotion} from './plugins/devicemotion';
 import {DeviceOrientation} from './plugins/deviceorientation';
 import {Diagnostic} from './plugins/diagnostic';
 import {Dialogs} from './plugins/dialogs';
+import {EmailComposer} from './plugins/emailcomposer';
 import {Facebook} from './plugins/facebook';
 import {File} from './plugins/file';
 import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
+import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
 import {ImagePicker} from './plugins/imagepicker';
 import {InAppBrowser} from './plugins/inappbrowser';
@@ -46,6 +48,7 @@ import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
 import {Vibration} from './plugins/vibration';
+import {WebIntent} from './plugins/webintent';
 
 export {
   ActionSheet,
@@ -69,11 +72,13 @@ export {
   DeviceOrientation,
   Dialogs,
   Diagnostic,
+  EmailComposer,
   Facebook,
   File,
   Flashlight,
   Geolocation,
   Globalization,
+  GoogleAnalytics,
   Hotspot,
   ImagePicker,
   InAppBrowser,
@@ -89,7 +94,8 @@ export {
   StatusBar,
   Toast,
   TouchID,
-  Vibration
+  Vibration,
+  WebIntent
 }
 
 export * from './plugins/plugin';
@@ -117,11 +123,13 @@ window['IonicNative'] = {
   DeviceOrientation: DeviceOrientation,
   Dialogs: Dialogs,
   Diagnostic: Diagnostic,
+  EmailComposer: EmailComposer,
   Facebook: Facebook,
   File: File,
   Flashlight: Flashlight,
   Geolocation: Geolocation,
   Globalization: Globalization,
+  GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
   ImagePicker: ImagePicker,
   InAppBrowser: InAppBrowser,
@@ -137,7 +145,8 @@ window['IonicNative'] = {
   StatusBar: StatusBar,
   Toast: Toast,
   TouchID: TouchID,
-  Vibration: Vibration
+  Vibration: Vibration,
+  WebIntent: WebIntent
 };
 
 // To help developers using cordova, we listen for the device ready event and

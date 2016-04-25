@@ -52,7 +52,7 @@ export interface accelerometerOptions {
  * );
  *
  * // Watch device acceleration
- * var subscription = DeviceMotion.watchPosition().subscribe(acceleration => {
+ * var subscription = DeviceMotion.watchAcceleration().subscribe(acceleration => {
  *   console.log(acceleration);
  * });
  *
