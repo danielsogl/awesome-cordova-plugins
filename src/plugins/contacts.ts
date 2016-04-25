@@ -185,7 +185,7 @@ declare var ContactFindOptions: {
 
 declare var Contact: {
   new(): Contact
-}
+};
 
 /**
  * @name Contacts
@@ -202,12 +202,11 @@ declare var Contact: {
  *
  *
  *
- * Contacts.save({
+ * Contacts.create({
  *   displayName: "Mr. Ionitron"
  * }).then((contact) => {}, (err) => {})
  * ```
  *
- * See the `save()` docs for a full list of fields.
  *
  */
 @Plugin({
