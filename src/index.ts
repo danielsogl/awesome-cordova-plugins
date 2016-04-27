@@ -39,7 +39,7 @@ import {InAppBrowser} from './plugins/inappbrowser';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
-import {Media} from './plugins/media';
+import {MediaPlugin} from './plugins/media';
 import {Network, Connection} from './plugins/network';
 import {Push} from './plugins/push';
 import {SMS} from './plugins/sms';
@@ -89,7 +89,7 @@ export {
   Keyboard,
   LaunchNavigator,
   LocalNotifications,
-  Media,
+  MediaPlugin,
   Network,
   Push,
   SMS,
@@ -143,7 +143,7 @@ window['IonicNative'] = {
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
-  Media: Media,
+  MediaPlugin: MediaPlugin,
   Network: Network,
   Push: Push,
   SMS: SMS,

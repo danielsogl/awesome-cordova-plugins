@@ -1,7 +1,7 @@
 import {CordovaInstance, Plugin} from './plugin';
-
+declare var Media:any;
 /**
- * @name Media
+ * @name MediaPlugin
  * @description
  * @usage
  */
@@ -10,7 +10,7 @@ import {CordovaInstance, Plugin} from './plugin';
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media'
 })
-export class Media {
+export class MediaPlugin {
 
   // Constants
 
