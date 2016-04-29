@@ -2,7 +2,8 @@ import {Cordova, Plugin} from './plugin';
 @Plugin({
   plugin: 'https://github.com/loicknuchel/cordova-device-accounts.git',
   pluginRef: 'plugins.DeviceAccounts',
-  repo: 'https://github.com/loicknuchel/cordova-device-accounts'
+  repo: 'https://github.com/loicknuchel/cordova-device-accounts',
+  platforms: ['Android']
 })
 export class DeviceAccounts {
 
