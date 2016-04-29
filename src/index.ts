@@ -14,6 +14,7 @@ import {BarcodeScanner} from './plugins/barcodescanner';
 import {Base64ToGallery} from './plugins/base64togallery';
 import {BatteryStatus} from './plugins/batterystatus';
 import {BLE} from './plugins/ble';
+import {BluetoothSerial} from './plugins/bluetoothserial';
 import {Calendar} from './plugins/calendar';
 import {Camera} from './plugins/camera';
 import {Clipboard} from './plugins/clipboard';
@@ -61,6 +62,7 @@ export {
   Base64ToGallery,
   BatteryStatus,
   BLE,
+  BluetoothSerial,
   Calendar,
   Camera,
   Clipboard,
@@ -113,6 +115,7 @@ window['IonicNative'] = {
   Base64ToGallery: Base64ToGallery,
   BatteryStatus: BatteryStatus,
   BLE: BLE,
+  BluetoothSerial: BluetoothSerial,
   Calendar: Calendar,
   Camera: Camera,
   Clipboard: Clipboard,
