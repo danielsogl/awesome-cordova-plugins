@@ -21,6 +21,7 @@ import {Contacts} from './plugins/contacts';
 import {DatePicker} from './plugins/datepicker';
 import {DBMeter} from './plugins/dbmeter';
 import {Device} from './plugins/device';
+import {DeviceAccounts} from './plugins/deviceaccounts';
 import {DeviceMotion} from './plugins/devicemotion';
 import {DeviceOrientation} from './plugins/deviceorientation';
 import {Diagnostic} from './plugins/diagnostic';
@@ -66,6 +67,7 @@ export {
   DatePicker,
   DBMeter,
   Device,
+  DeviceAccounts,
   DeviceMotion,
   DeviceOrientation,
   Dialogs,
@@ -115,6 +117,7 @@ window['IonicNative'] = {
   DatePicker: DatePicker,
   DBMeter: DBMeter,
   Device: Device,
+  DeviceAccounts: DeviceAccounts,
   DeviceMotion: DeviceMotion,
   DeviceOrientation: DeviceOrientation,
   Dialogs: Dialogs,
