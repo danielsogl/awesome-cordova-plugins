@@ -19,7 +19,7 @@ export class Screenshot {
     successIndex: 1,
     errorIndex: 0
   })
-  static save (format: string, quality: number, filename: string) : Promise<any> {return}
+  static save (format?: string, quality?: number, filename?: string) : Promise<any> {return}
 
 /**
  *  Takes screenshot and returns the image as an URI
@@ -32,5 +32,5 @@ export class Screenshot {
     successIndex: 1,
     errorIndex: 0
   })
-  static URI (quality: number)  : Promise<any> {return}
+  static URI (quality?: number)  : Promise<any> {return}
 }
