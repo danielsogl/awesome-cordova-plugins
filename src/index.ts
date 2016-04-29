@@ -6,6 +6,7 @@ const DEVICE_READY_TIMEOUT = 2000;
 declare var window;
 
 import {ActionSheet} from './plugins/actionsheet';
+import {AdMob} from './plugins/admob';
 import {AppAvailability} from './plugins/appavailability';
 import {AppRate} from './plugins/apprate';
 import {AppVersion} from './plugins/appversion';
@@ -54,6 +55,7 @@ import {WebIntent} from './plugins/webintent';
 
 export {
   ActionSheet,
+  AdMob,
   AppAvailability,
   AppRate,
   AppVersion,
@@ -107,6 +109,7 @@ export * from './plugins/plugin';
 // Window export to use outside of a module loading system
 window['IonicNative'] = {
   ActionSheet: ActionSheet,
+  AdMob: AdMob,
   AppAvailability: AppAvailability,
   AppRate: AppRate,
   AppVersion: AppVersion,
