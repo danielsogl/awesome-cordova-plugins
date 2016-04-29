@@ -9,7 +9,7 @@ import {Observable} from "rxjs/Observable";
 @Plugin({
   repo: 'https://github.com/don/BluetoothSerial',
   plugin: 'cordova-plugin-bluetooth-serial',
-  pluginRef: '',
+  pluginRef: 'bluetoothSerial',
   platforms: ['Android','iOS','Windows Phone','Browser']
 })
 export class BluetoothSerial {
