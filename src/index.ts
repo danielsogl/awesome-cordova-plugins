@@ -38,6 +38,7 @@ import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
 import {Network, Connection} from './plugins/network';
 import {Push} from './plugins/push';
+import {Screenshot} from './plugins/screenshot';
 import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
 import {SpinnerDialog} from './plugins/spinnerdialog';
@@ -82,6 +83,7 @@ export {
   LocalNotifications,
   Network,
   Push,
+  Screenshot,
   SMS,
   SocialSharing,
   SpinnerDialog,
@@ -130,6 +132,7 @@ window['IonicNative'] = {
   LocalNotifications: LocalNotifications,
   Network: Network,
   Push: Push,
+  Screenshot: Screenshot,
   SMS: SMS,
   SocialSharing: SocialSharing,
   SpinnerDialog: SpinnerDialog,
