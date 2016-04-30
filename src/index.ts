@@ -34,6 +34,7 @@ import {File} from './plugins/file';
 import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
+import {GoogleMaps} from './plugins/googlemaps';
 import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
 import {ImagePicker} from './plugins/imagepicker';
@@ -41,6 +42,7 @@ import {InAppBrowser} from './plugins/inappbrowser';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
+import {MediaPlugin} from './plugins/media';
 import {Network, Connection} from './plugins/network';
 import {Push} from './plugins/push';
 import {Screenshot} from './plugins/screenshot';
@@ -48,6 +50,7 @@ import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
 import {SpinnerDialog} from './plugins/spinnerdialog';
 import {Splashscreen} from './plugins/splashscreen';
+import {SQLite} from './plugins/sqlite';
 import {StatusBar} from './plugins/statusbar';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
@@ -85,6 +88,7 @@ export {
   Flashlight,
   Geolocation,
   Globalization,
+  GoogleMaps,
   GoogleAnalytics,
   Hotspot,
   ImagePicker,
@@ -92,6 +96,7 @@ export {
   Keyboard,
   LaunchNavigator,
   LocalNotifications,
+  MediaPlugin,
   Network,
   Push,
   Screenshot,
@@ -99,6 +104,7 @@ export {
   SocialSharing,
   SpinnerDialog,
   Splashscreen,
+    SQLite,
   StatusBar,
   Toast,
   TouchID,
@@ -140,6 +146,7 @@ window['IonicNative'] = {
   Flashlight: Flashlight,
   Geolocation: Geolocation,
   Globalization: Globalization,
+    GoogleMaps : GoogleMaps,
   GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
   ImagePicker: ImagePicker,
@@ -147,6 +154,7 @@ window['IonicNative'] = {
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
+  MediaPlugin: MediaPlugin,
   Network: Network,
   Push: Push,
   Screenshot: Screenshot,
@@ -154,6 +162,7 @@ window['IonicNative'] = {
   SocialSharing: SocialSharing,
   SpinnerDialog: SpinnerDialog,
   Splashscreen: Splashscreen,
+    SQLite: SQLite,
   StatusBar: StatusBar,
   Toast: Toast,
   TouchID: TouchID,

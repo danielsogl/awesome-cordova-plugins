@@ -54,26 +54,31 @@ export const cordovaWarn = function(pluginName: string, method: string) {
     console.warn('Native: tried accessing the ' + pluginName + ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
   }
 };
+function setIndex (args:any[], opts:any={}, resolve? : Function, reject?: Function) : any {
+    // If the plugin method expects myMethod(success, err, options)
+    if (opts.callbackOrder == 'reverse') {
+        // Get those arguments in the order [resolve, reject, ...restOfArgs]
+        args.unshift(reject);
+        args.unshift(resolve);
+    } else if(typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
+        // If we've specified a success/error index
+        args.splice(opts.successIndex, 0, resolve);
+        args.splice(opts.errorIndex, 0, reject);
+    } else {
+        // Otherwise, let's tack them on to the end of the argument list
+        // which is 90% of cases
+        args.push(resolve);
+        args.push(reject);
+    }
+
+    return args;
+}
 
 function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:any={}, resolve?: Function, reject?: Function) {
   // Try to figure out where the success/error callbacks need to be bound
   // to our promise resolve/reject handlers.
 
-  // If the plugin method expects myMethod(success, err, options)
-  if (opts.callbackOrder == 'reverse') {
-    // Get those arguments in the order [resolve, reject, ...restOfArgs]
-    args.unshift(reject);
-    args.unshift(resolve);
-  } else if(typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
-    // If we've specified a success/error index
-    args.splice(opts.successIndex, 0, resolve);
-    args.splice(opts.errorIndex, 0, reject);
-  } else {
-    // Otherwise, let's tack them on to the end of the argument list
-    // which is 90% of cases
-    args.push(resolve);
-    args.push(reject);
-  }
+    args = setIndex (args, opts, resolve, reject);
 
   let pluginInstance = getPlugin(pluginObj.pluginRef);
 
@@ -91,8 +96,6 @@ function callCordovaPlugin(pluginObj:any, methodName:string, args:any[], opts:an
       error: 'plugin_not_installed'
     };
   }
-
-  // console.log('Cordova calling', pluginObj.name, methodName, args);
 
   // TODO: Illegal invocation needs window context
   return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
@@ -152,6 +155,38 @@ function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any =
   });
 }
 
+function callInstance(pluginObj:any, methodName : string, args:any[], opts:any = {}, resolve? : Function, reject? : Function){
+    args = setIndex(args, opts, resolve, reject);
+    return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
+}
+
+function wrapInstance (pluginObj:any, methodName:string, args:any[], opts:any = {}){
+  return (...args) => {
+    if (opts.sync) {
+      return callInstance(pluginObj, methodName, args, opts);
+    } else if (opts.observable) {
+      return new Observable(observer => {
+        let pluginResult = callInstance(pluginObj, methodName,args, opts, observer.next.bind(observer), observer.error.bind(observer));
+        return () => {
+          try {
+            if (opts.clearWithArgs){
+              return pluginObj._objectInstance[opts.clearFunction].apply(pluginObj._objectInstance, args);
+            }
+            return pluginObj._objectInstance[opts.clearFunction].call(pluginObj, pluginResult);
+          } catch(e) {
+            console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
+            console.error(e);
+          }
+        }
+      });
+    } else {
+      return getPromise((resolve, reject) => {
+        callInstance(pluginObj, methodName, args, opts, resolve, reject);
+      });
+    }
+  }
+}
+
 /**
  * Wrap the event with an observable
  * @param event
@@ -175,7 +210,7 @@ function wrapEventObservable (event : string) : Observable<any> {
 export const wrap = function(pluginObj:any,  methodName:string, opts:any = {}) {
   return (...args) => {
 
-    if (opts.sync)
+   if (opts.sync)
       return callCordovaPlugin(pluginObj, methodName, args, opts);
 
     else if (opts.observable)
@@ -245,6 +280,21 @@ export function Cordova(opts:any = {}) {
 /**
  * @private
  *
+ * Wrap an instance method
+ */
+export function CordovaInstance(opts:any = {}) {
+    return (target: Object, methodName: string) => {
+        return {
+            value: function(...args: any[]) {
+                return wrapInstance(this, methodName, opts).apply(this, args);
+            }
+        }
+    }
+}
+
+/**
+ * @private
+ *
  *
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
@@ -252,7 +302,6 @@ export function CordovaProperty(target: Function, key: string, descriptor: Typed
   let originalMethod = descriptor.get;
 
   descriptor.get = function(...args: any[]) {
-    // console.log('Calling', this);
     if(!window.cordova) {
       cordovaWarn(this.name, null);
       return {};
