@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import {Plugin, Cordova, InstanceProperty, CordovaInstance} from './plugin';
 
 export interface ContactProperties {
     /** A globally unique identifier. */
@@ -58,52 +58,60 @@ export class Contact {
 
     private _objectInstance: any;
 
-    get id(): string {
-        return this._objectInstance.id;
-    }
-    set id(val: string) {
-        this._objectInstance.id = val;
-    }
-    get displayName(): string {
-        return this._objectInstance.displayName;
-    }
-    set displayName(val: string){
-        this._objectInstance.displayName = val;
-    }
-    get name(): ContactName {
-        return this._objectInstance.name;
-    }
-    set name(val: ContactName){
-        this._objectInstance.name = val;
-    }
-    get nickname(): string {
-        return this._objectInstance.nickname;
-    }
-    set nickname(val: string){
-        this._objectInstance.nickname = val;
-    }
-    get phoneNumbers(): ContactField[] {
-        return this._objectInstance.phoneNumbers;
-    }
-    set phoneNumbers(val: ContactField[]){
-        this._objectInstance.phoneNumbers = val;
-    }
-    get emails(): ContactField[] {
-        return this._objectInstance.emails;
-    }
-    set emails(val: ContactField[]){
-        this._objectInstance.emails = val;
-    }
-    get addresses(): ContactAddress[] {
-        return this._objectInstance.addresses;
-    }
-    set addresses(val: ContactAddress[]){
-        this._objectInstance.addresses = val;
-    }
+    @InstanceProperty
+    get id() {return; }
+
+    @InstanceProperty
+    get displayName() {return; }
+
+    @InstanceProperty
+    get nickname() {return; }
+
+    @InstanceProperty
+    get phoneNumbers() {return; }
+
+    @InstanceProperty
+    get emails() {return; }
+
+    @InstanceProperty
+    get addresses() {return; }
+
+    @InstanceProperty
+    get ims() {return; }
+
+    @InstanceProperty
+    get organizations() {return; }
+
+    @InstanceProperty
+    get birthday() {return; }
+
+    @InstanceProperty
+    get note() {return; }
+
+    @InstanceProperty
+    get photos() {return; }
+
+    @InstanceProperty
+    get categories() {return; }
+
+    @InstanceProperty
+    get urls() {return; }
+
 
     constructor () {
-        // creat eobj
+        this._objectInstance = navigator.contacts.create();
     }
+
+    clone(): Contact {
+        // TODO manually clone the object
+        return;
+    }
+
+    @CordovaInstance()
+    remove(): Promise<any> {return; }
+
+    @CordovaInstance()
+    save(): Promise<any> {return; }
 
 }
 
