@@ -9,7 +9,9 @@ declare var plugin : any;
  * @name Google Maps
  */
 @Plugin({
-    pluginRef: 'plugin.google.maps'
+    pluginRef: 'plugin.google.maps',
+    plugin: 'cordova-plugin-googlemaps',
+    repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps'
 })
 export class GoogleMaps {
 
