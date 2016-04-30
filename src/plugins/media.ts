@@ -4,6 +4,37 @@ declare var Media:any;
  * @name MediaPlugin
  * @description
  * @usage
+ * ```ts
+ * import {MediaPlugin} from 'ionic-native';
+ *
+ *
+ * ...
+ *
+ *
+ * // Playing a file
+ * var file = new MediaPlugin("path/to/file.mp3");
+ *
+ * // play the file
+ * file.play();
+ *
+ * // skip to 10 seconds
+ * file.seekTo(10000);
+ *
+ * // stop plying the file
+ * file.stop();
+ *
+ *
+ * ...
+ *
+ * // Recording to a file
+ * var newFile = new MediaPlugin("path/to/file.mp3");
+ * newFile.startRecord();
+ *
+ * newFile.stopRecord();
+ *
+ *
+ *
+ * ```
  */
 @Plugin({
   repo: 'https://github.com/apache/cordova-plugin-media',
@@ -13,7 +44,6 @@ declare var Media:any;
 export class MediaPlugin {
 
   // Constants
-
   static MEDIA_NONE : number = 0;
   static MEDIA_STARTING : number = 1;
   static MEDIA_RUNNING : number = 2;
@@ -21,11 +51,9 @@ export class MediaPlugin {
   static MEDIA_STOPPED : number = 4;
 
   // Properties
-
   private _objectInstance : any;
 
   // Methods
-
   /**
    * Open a media file
    * @param src {string} A URI containing the audio content.
