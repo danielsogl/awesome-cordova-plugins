@@ -32,7 +32,7 @@ declare var navigator: any;
  *     if (Network.connection === Connection.WIFI) {
  *       console.log('we got a wifi connection, woohoo!');
  *     }
- *   });
+ *   }, 3000);
  * });
  *
  * // stop connect watch
