@@ -1,5 +1,5 @@
 import {Plugin, Cordova} from './plugin';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 
 /**
  * @name Bluetooth Serial
@@ -10,7 +10,7 @@ import {Observable} from "rxjs/Observable";
   repo: 'https://github.com/don/BluetoothSerial',
   plugin: 'cordova-plugin-bluetooth-serial',
   pluginRef: 'bluetoothSerial',
-  platforms: ['Android','iOS','Windows Phone','Browser']
+  platforms: ['Android', 'iOS', 'Windows Phone', 'Browser']
 })
 export class BluetoothSerial {
 
@@ -19,9 +19,9 @@ export class BluetoothSerial {
    * @param macAddress_or_uuid Identifier of the remote device
    */
   @Cordova({
-    platforms: ['Android','iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static connect (macAddress_or_uuid : string) : Promise<any> {return}
+  static connect (macAddress_or_uuid: string): Promise<any> {return; }
 
   /**
    * Connect insecurely to a Bluetooth device
@@ -30,15 +30,15 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android']
   })
-  static connectInsecure (macAddress : string) : Promise<any> {return}
+  static connectInsecure (macAddress: string): Promise<any> {return; }
 
   /**
    * Disconnect
    */
   @Cordova({
-    platforms: ['Android','iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static disconnect () : Promise<any> {return}
+  static disconnect (): Promise<any> {return; }
 
   /**
    * Writes data to the serial port
@@ -64,110 +64,110 @@ export class BluetoothSerial {
    * ```
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static write (data : any) : Promise<any> {return}
+  static write (data: any): Promise<any> {return; }
 
   /**
    * Gets the number of bytes of data available
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
-  })  static available () : Promise<any> {return}
+    platforms: ['Android', 'iOS', 'Windows Phone']
+  })  static available (): Promise<any> {return; }
 
   /**
    * Reads data from the buffer
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static read () : Promise<any> {return}
+  static read (): Promise<any> {return; }
 
   /**
    * Reads data from the buffer until it reaches a delimiter
    * @param delimiter
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static readUntil (delimiter : string) : Promise<any> {return}
+  static readUntil (delimiter: string): Promise<any> {return; }
 
   /**
    * Subscribe to be notified when data is received
    * @param delimiter
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone'],
+    platforms: ['Android', 'iOS', 'Windows Phone'],
     observable: true,
     clearFunction: 'unsubscribe'
   })
-  static subscribe (delimiter : string) : Observable<any> {return}
+  static subscribe (delimiter: string): Observable<any> {return; }
 
   /**
    * Subscribe to be notified when data is received
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone'],
+    platforms: ['Android', 'iOS', 'Windows Phone'],
     observable: true,
     clearFunction: 'unsubscribeRawData'
   })
-  static subscribeRawData () : Observable<any> {return}
+  static subscribeRawData (): Observable<any> {return; }
 
   /**
    * Clears data in buffer
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static clear () : Promise<any> {return}
+  static clear (): Promise<any> {return; }
 
   /**
    * Lists bonded devices
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static list () : Promise<any> {return}
+  static list (): Promise<any> {return; }
 
   /**
    * Reports if bluetooth is enabled
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static isEnabled () : Promise<any> {return}
+  static isEnabled (): Promise<any> {return; }
 
   /**
    * Reports the connection status
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static isConnected () : Promise<any> {return}
+  static isConnected (): Promise<any> {return; }
 
   /**
    * Reads the RSSI from the connected peripheral
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static readRSSI () : Promise<any> {return}
+  static readRSSI (): Promise<any> {return; }
 
   /**
    * Show the Bluetooth settings on the device
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static showBluetoothSettings () : Promise<any> {return}
+  static showBluetoothSettings (): Promise<any> {return; }
 
   /**
    * Enable Bluetooth on the device
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static enable () : Promise<any> {return}
+  static enable (): Promise<any> {return; }
 
   /**
    * Discover unpaired devices
@@ -187,19 +187,19 @@ export class BluetoothSerial {
    * ```
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static discoverUnpaired () : Promise<any> {return}
+  static discoverUnpaired (): Promise<any> {return; }
 
   /**
    * Subscribe to be notified on Bluetooth device discovery. Discovery process must be initiated with the `discoverUnpaired` function.
    */
   @Cordova({
-    platforms: ['Android', 'iOS','Windows Phone'],
+    platforms: ['Android', 'iOS', 'Windows Phone'],
     observable: true,
     clearFunction: 'clearDeviceDiscoveredListener'
   })
-  static setDeviceDiscoveredListener () : Observable<any> {return}
+  static setDeviceDiscoveredListener (): Observable<any> {return; }
 
   /**
    * Sets the human readable device name that is broadcasted to other devices
@@ -209,7 +209,7 @@ export class BluetoothSerial {
     platforms: ['Android'],
     sync: true
   })
-  static setName (newName : string) : void {}
+  static setName (newName: string): void {}
 
   /**
    * Makes the device discoverable by other devices
@@ -219,7 +219,7 @@ export class BluetoothSerial {
     platforms: ['Android'],
     sync: true
   })
-  static setDiscoverable (discoverableDuration : number) : void {}
+  static setDiscoverable (discoverableDuration: number): void {}
 
 
 

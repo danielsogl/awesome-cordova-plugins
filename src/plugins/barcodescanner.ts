@@ -23,7 +23,7 @@ import {Plugin, Cordova} from './plugin';
   plugin: 'phonegap-plugin-barcodescanner',
   pluginRef: 'cordova.plugins.barcodeScanner',
   repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner',
-  platforms: ['Android','iOS','Windows Phone 8','Windows 10','Windows 8','BlackBerry 10', 'Browser']
+  platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows 10', 'Windows 8', 'BlackBerry 10', 'Browser']
 })
 export class BarcodeScanner {
 
@@ -32,7 +32,7 @@ export class BarcodeScanner {
    * @return Returns a Promise that resolves with scanner data, or rejects with an error.
    */
   @Cordova()
-  static scan(): Promise<any> { return }
+  static scan(): Promise<any> { return; }
 
   // Not well supported
   // @Cordova()

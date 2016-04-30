@@ -36,7 +36,7 @@ export class StatusBar {
   @Cordova({
     sync: true
   })
-  static overlaysWebView(doesOverlay: boolean){};
+  static overlaysWebView(doesOverlay: boolean) {};
 
   /**
    * Use the default statusbar (dark text, for light backgrounds).
@@ -44,7 +44,7 @@ export class StatusBar {
   @Cordova({
     sync: true
   })
-  static styleDefault(){};
+  static styleDefault() {};
 
   /**
    * Use the lightContent statusbar (light text, for dark backgrounds).
@@ -52,7 +52,7 @@ export class StatusBar {
   @Cordova({
     sync: true
   })
-  static styleLightContent(){};
+  static styleLightContent() {};
 
   /**
    * Use the blackTranslucent statusbar (light text, for dark backgrounds).
@@ -60,7 +60,7 @@ export class StatusBar {
   @Cordova({
     sync: true
   })
-  static styleBlackTranslucent(){};
+  static styleBlackTranslucent() {};
 
   /**
    * Use the blackOpaque statusbar (light text, for dark backgrounds).
@@ -68,7 +68,7 @@ export class StatusBar {
   @Cordova({
     sync: true
   })
-  static styleBlackOpaque(){};
+  static styleBlackOpaque() {};
 
   /**
    * Set the status bar to a specific named color. Valid options:
@@ -81,7 +81,7 @@ export class StatusBar {
   @Cordova({
     sync: true
   })
-  static backgroundColorByName(colorName: string){};
+  static backgroundColorByName(colorName: string) {};
 
   /**
    * Set the status bar to a specific hex color (CSS shorthand supported!).
@@ -93,7 +93,7 @@ export class StatusBar {
   @Cordova({
     sync: true
   })
-  static backgroundColorByHexString(hexString: string){};
+  static backgroundColorByHexString(hexString: string) {};
 
   /**
    * Hide the StatusBar
@@ -101,7 +101,7 @@ export class StatusBar {
   @Cordova({
     sync: true
   })
-  static hide(){};
+  static hide() {};
 
   /**
   * Show the StatusBar
@@ -109,7 +109,7 @@ export class StatusBar {
   @Cordova({
     sync: true
   })
-  static show(){};
+  static show() {};
 
   /**
    * Whether the StatusBar is currently visible or not.

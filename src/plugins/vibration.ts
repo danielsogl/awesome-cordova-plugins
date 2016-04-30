@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin'
+import {Plugin, Cordova} from './plugin';
 /**
  * @name Vibration
  * @description Vibrates the device
@@ -36,6 +36,6 @@ export class Vibration {
   @Cordova({
     sync: true
   })
-  static vibrate(time : any) {}
+  static vibrate(time: any) {}
 
 }

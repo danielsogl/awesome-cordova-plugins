@@ -59,12 +59,12 @@ export class ActionSheet {
     addCancelButtonWithLabel?: string,
     addDestructiveButtonWithLabel?: string,
     position?: number[]
-  }): Promise<any> { return }
+  }): Promise<any> { return; }
 
 
   /**
    * Hide the ActionSheet.
    */
   @Cordova()
-  static hide(): Promise<any> { return }
+  static hide(): Promise<any> { return; }
 }

@@ -1,10 +1,10 @@
-import {Cordova, Plugin} from "./plugin";
-import {Observable} from "rxjs/Observable";
-import {CordovaInstance} from "./plugin";
+import {Cordova, Plugin} from './plugin';
+import {Observable} from 'rxjs/Observable';
+import {CordovaInstance} from './plugin';
 /**
  * Created by Ibrahim on 3/29/2016.
  */
-declare var plugin : any;
+declare var plugin: any;
 /**
  * @name Google Maps
  */
@@ -15,9 +15,9 @@ declare var plugin : any;
 })
 export class GoogleMaps {
 
-    private _objectInstance : any;
+    private _objectInstance: any;
 
-    constructor (elementId : string) {
+    constructor (elementId: string) {
         this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId));
     }
 
@@ -25,13 +25,13 @@ export class GoogleMaps {
         eventObservable: true,
         event: 'plugin.google.maps.event.MAP_READY'
     })
-    static onInit () : Observable<GoogleMaps> {return}
+    static onInit (): Observable<GoogleMaps> {return; }
 
     @CordovaInstance({
         sync: true
     })
-    setDebuggable (isDebuggable : boolean) : void {}
+    setDebuggable (isDebuggable: boolean): void {}
 
-    setClickable (isClickable : boolean) : void {}
+    setClickable (isClickable: boolean): void {}
 
 }

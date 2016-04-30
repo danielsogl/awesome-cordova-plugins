@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin'
+import {Plugin, Cordova} from './plugin';
 /**
  * @name Base64 To Gallery
  * @description This plugin allows you to save base64 data as a png image into the device
@@ -17,7 +17,7 @@ import {Plugin, Cordova} from './plugin'
   plugin: 'cordova-base64-to-gallery',
   pluginRef: 'cordova',
   repo: 'https://github.com/Nexxa/cordova-base64-to-gallery',
-  platforms: ['Android' ,'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class Base64ToGallery {
 
@@ -27,8 +27,8 @@ export class Base64ToGallery {
    * @param prefix
    */
   @Cordova()
-  base64ToGallery(data : string , prefix? : string ) : Promise<any> {
-    return
+  base64ToGallery(data: string , prefix?: string ): Promise<any> {
+    return;
   }
 
 }

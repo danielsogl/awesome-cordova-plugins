@@ -1,18 +1,18 @@
 import {Plugin, Cordova} from './plugin';
 
-export interface datePickerOptions {
+export interface DatePickerOptions {
   /**
    * Platforms: iOS, Android, Windows
    * The mode of the date picker
    * Values: date | time | datetime
    */
-  mode: string,
+  mode: string;
 
   /**
    * Platforms: iOS, Android, Windows
    * Selected date
    */
-  date: Date,
+  date: Date;
 
   /**
    * Platforms: iOS, Android, Windows
@@ -20,7 +20,7 @@ export interface datePickerOptions {
    * Type: Date | empty String
    * Default: empty String
    */
-  minDate?: Date,
+  minDate?: Date;
 
   /**
    * Platforms?: iOS, Android, Windows
@@ -28,7 +28,7 @@ export interface datePickerOptions {
    * Type?: Date | empty String
    * Default?: empty String
    */
-  maxDate?: Date,
+  maxDate?: Date;
 
   /**
    * Platforms?: Android
@@ -36,31 +36,31 @@ export interface datePickerOptions {
    * Type?: String
    * Default?: empty String
    */
-  titleText?: string,
+  titleText?: string;
 
   /**
    * Platforms?: Android
    * Label of BUTTON_POSITIVE (done button) on Android
    */
-  okText?: string,
+  okText?: string;
 
   // TODO complete documentation here, and copy params & docs to main plugin docs
-  cancelText?: string,
-  todayText?: string,
-  nowText?: string,
-  is24Hour?: boolean,
-  androidTheme?: number,
-  allowOldDate?: boolean,
-  allowFutureDates?: boolean,
-  doneButtonLabel?: string,
-  doneButtonColor?: string,
-  cancelButtonLabel?: string,
-  cancelButtonColor?: string,
-  x?: number,
-  y?: number,
-  minuteInterval?: number,
-  popoverArrowDirection?: string,
-  locale?: string
+  cancelText?: string;
+  todayText?: string;
+  nowText?: string;
+  is24Hour?: boolean;
+  androidTheme?: number;
+  allowOldDate?: boolean;
+  allowFutureDates?: boolean;
+  doneButtonLabel?: string;
+  doneButtonColor?: string;
+  cancelButtonLabel?: string;
+  cancelButtonColor?: string;
+  x?: number;
+  y?: number;
+  minuteInterval?: number;
+  popoverArrowDirection?: string;
+  locale?: string;
 }
 
 /**
@@ -101,6 +101,6 @@ export class DatePicker {
    * @returns {Promise<Date>} Returns a promise that resolves with the picked date and/or time, or rejects with an error.
    */
   @Cordova()
-  static show(options: datePickerOptions): Promise<Date> { return }
+  static show(options: DatePickerOptions): Promise<Date> { return; }
 
 }

@@ -163,7 +163,7 @@ import {Observable} from 'rxjs/Observable';
   plugin: 'cordova-plugin-ble-central',
   pluginRef: 'ble',
   repo: 'https://github.com/don/cordova-plugin-ble-central',
-  platforms: ['iOS','Android']
+  platforms: ['iOS', 'Android']
 })
 export class BLE {
   /**
@@ -182,7 +182,7 @@ export class BLE {
   @Cordova({
     observable: true
   })
-  static scan(services: string[], seconds: number): Observable<any> { return }
+  static scan(services: string[], seconds: number): Observable<any> { return; }
 
   /**
    * Scan and discover BLE peripherals until `stopScan` is called.
@@ -205,7 +205,7 @@ export class BLE {
     clearFunction: 'stopScan',
     clearWithArgs: true
   })
-  static startScan(services: string[]): Observable<any> { return }
+  static startScan(services: string[]): Observable<any> { return; }
 
   /**
    * Stop a scan started by `startScan`.
@@ -222,7 +222,7 @@ export class BLE {
    * @return returns a Promise.
    */
   @Cordova()
-  static stopScan(): Promise<any> { return }
+  static stopScan(): Promise<any> { return; }
 
   /**
    * Connect to a peripheral.
@@ -243,7 +243,7 @@ export class BLE {
     clearFunction: 'disconnect',
     clearWithArgs: true
   })
-  static connect(deviceId: string): Observable<any> { return }
+  static connect(deviceId: string): Observable<any> { return; }
 
   /**
    * Disconnect from a peripheral.
@@ -257,14 +257,14 @@ export class BLE {
    * @return Returns a Promise
    */
   @Cordova()
-  static disconnect(deviceId: string): Promise<any> { return }
+  static disconnect(deviceId: string): Promise<any> { return; }
 
   /**
    * Read the value of a characteristic.
    *
-   * @param {string} device_id  UUID or MAC address of the peripheral
-   * @param {string} service_uuid  UUID of the BLE service
-   * @param {string} characteristic_uuid  UUID of the BLE characteristic
+   * @param {string} deviceId  UUID or MAC address of the peripheral
+   * @param {string} serviceUUID  UUID of the BLE service
+   * @param {string} characteristicUUID  UUID of the BLE characteristic
    * @return Returns a Promise
    */
   @Cordova()
@@ -272,7 +272,7 @@ export class BLE {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-  ): Promise<any> { return };
+  ): Promise<any> { return; };
 
   /**
    * Write the value of a characteristic.
@@ -296,9 +296,9 @@ export class BLE {
    * BLE.write(device_id, SERVICE, CHARACTERISTIC, data.buffer);
    *
    * ```
-   * @param {string} device_id  UUID or MAC address of the peripheral
-   * @param {string} service_uuid  UUID of the BLE service
-   * @param {string} characteristic_uuid  UUID of the BLE characteristic
+   * @param {string} deviceId  UUID or MAC address of the peripheral
+   * @param {string} serviceUUID  UUID of the BLE service
+   * @param {string} characteristicUUID  UUID of the BLE characteristic
    * @param {ArrayBuffer} value  Data to write to the characteristic, as an ArrayBuffer.
    * @return Returns a Promise
    */
@@ -308,14 +308,14 @@ export class BLE {
     serviceUUID: string,
     characteristicUUID: string,
     value: ArrayBuffer
-  ): Promise<any> { return }
+  ): Promise<any> { return; }
 
   /**
    * Write the value of a characteristic without waiting for confirmation from the peripheral.
    *
-   * @param {string} device_id  UUID or MAC address of the peripheral
-   * @param {string} service_uuid  UUID of the BLE service
-   * @param {string} characteristic_uuid  UUID of the BLE characteristic
+   * @param {string} deviceId  UUID or MAC address of the peripheral
+   * @param {string} serviceUUID  UUID of the BLE service
+   * @param {string} characteristicUUID  UUID of the BLE characteristic
    * @param {ArrayBuffer} value  Data to write to the characteristic, as an ArrayBuffer.
    * @return Returns a Promise
    */
@@ -325,7 +325,7 @@ export class BLE {
     serviceUUID: string,
     characteristicUUID: string,
     value: ArrayBuffer
-  ): Promise<any> { return }
+  ): Promise<any> { return; }
 
   /**
    * Register to be notified when the value of a characteristic changes.
@@ -337,9 +337,9 @@ export class BLE {
    * });
    * ```
    *
-   * @param {string} device_id  UUID or MAC address of the peripheral
-   * @param {string} service_uuid  UUID of the BLE service
-   * @param {string} characteristic_uuid  UUID of the BLE characteristic
+   * @param {string} deviceId  UUID or MAC address of the peripheral
+   * @param {string} serviceUUID  UUID of the BLE service
+   * @param {string} characteristicUUID  UUID of the BLE characteristic
    * @return Returns an Observable that notifies of characteristic changes.
    */
   @Cordova({
@@ -351,14 +351,14 @@ export class BLE {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-  ): Observable<any> { return }
+  ): Observable<any> { return; }
 
   /**
    * Stop being notified when the value of a characteristic changes.
    *
-   * @param {string} device_id  UUID or MAC address of the peripheral
-   * @param {string} service_uuid  UUID of the BLE service
-   * @param {string} characteristic_uuid  UUID of the BLE characteristic
+   * @param {string} deviceId  UUID or MAC address of the peripheral
+   * @param {string} serviceUUID  UUID of the BLE service
+   * @param {string} characteristicUUID  UUID of the BLE characteristic
    * @return Returns a Promise.
    */
   @Cordova()
@@ -366,7 +366,7 @@ export class BLE {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-  ): Promise<any> { return }
+  ): Promise<any> { return; }
 
   /**
    * Report the connection status.
@@ -378,11 +378,11 @@ export class BLE {
    *   () => { console.log('not connected'); }
    * );
    * ```
-   * @param {string} device_id  UUID or MAC address of the peripheral
+   * @param {string} deviceId  UUID or MAC address of the peripheral
    * @return Returns a Promise.
    */
   @Cordova()
-  static isConnected(deviceId: string): Promise<any> { return }
+  static isConnected(deviceId: string): Promise<any> { return; }
 
   /**
    * Report if bluetooth is enabled.
@@ -397,7 +397,7 @@ export class BLE {
    * @return Returns a Promise.
    */
   @Cordova()
-  static isEnabled(): Promise<any> { return }
+  static isEnabled(): Promise<any> { return; }
 
   /**
    * Open System Bluetooth settings (Android only).
@@ -405,7 +405,7 @@ export class BLE {
    * @return Returns a Promise.
    */
   @Cordova()
-  static showBluetoothSettings(): Promise<any> { return }
+  static showBluetoothSettings(): Promise<any> { return; }
 
   /**
    * Enable Bluetooth on the device (Android only).
@@ -413,5 +413,5 @@ export class BLE {
    * @return Returns a Promise.
    */
   @Cordova()
-  static enable(): Promise<any> { return }
+  static enable(): Promise<any> { return; }
 }

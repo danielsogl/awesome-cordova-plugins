@@ -1,27 +1,27 @@
 import {Plugin, Cordova} from './plugin';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 
 export interface CompassHeading {
 
   /**
    * The heading in degrees from 0-359.99 at a single moment in time. (Number)
    */
-  magneticHeading : number,
+  magneticHeading: number;
 
   /**
    * The heading relative to the geographic North Pole in degrees 0-359.99 at a single moment in time. A negative value indicates that the true heading can't be determined. (Number)
    */
-  trueHeading : number,
+  trueHeading: number;
 
   /**
    * The deviation in degrees between the reported heading and the true heading. (Number)
    */
-  headingAccuracy : number,
+  headingAccuracy: number;
 
   /**
    * The time at which this heading was determined. (DOMTimeStamp)
    */
-  timestamp : any
+  timestamp: any;
 
 }
 
@@ -30,12 +30,12 @@ export interface CompassOptions {
   /**
    * How often to retrieve the compass heading in milliseconds. (Number) (Default: 100)
    */
-  frequency? : number,
+  frequency?: number;
 
   /**
    * The change in degrees required to initiate a watchHeading success callback. When this value is set, frequency is ignored. (Number)
    */
-  filter? : number
+  filter?: number;
 
 }
 
@@ -77,7 +77,7 @@ export class DeviceOrientation {
    * @returns {Promise<CompassHeading>}
    */
   @Cordova()
-  static getCurrentHeading(): Promise<CompassHeading> { return }
+  static getCurrentHeading(): Promise<CompassHeading> { return; }
 
   /**
    * Get the device current heading at a regular interval
@@ -91,6 +91,6 @@ export class DeviceOrientation {
     observable: true,
     cancelFunction: 'clearWatch'
   })
-  static watchHeading(options?: CompassOptions): Observable<CompassHeading> { return }
+  static watchHeading(options?: CompassOptions): Observable<CompassHeading> { return; }
 
 }

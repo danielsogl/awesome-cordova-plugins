@@ -111,7 +111,7 @@ export class Facebook {
    * @return Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
    */
   @Cordova()
-  static login(permissions: string[]): Promise<any> { return }
+  static login(permissions: string[]): Promise<any> { return; }
 
   /**
    * Logout of Facebook.
@@ -120,7 +120,7 @@ export class Facebook {
    * @return Returns a Promise that resolves on a successful logout, and rejects if logout fails.
    */
   @Cordova()
-  static logout(): Promise<any> { return }
+  static logout(): Promise<any> { return; }
 
   /**
    * Determine if a user is logged in to Facebook and has authenticated your app.  There are three possible states for a user:
@@ -149,7 +149,7 @@ export class Facebook {
    * @return Returns a Promise that resolves with a status, or rejects with an error
    */
   @Cordova()
-  static getLoginStatus(): Promise<any> { return }
+  static getLoginStatus(): Promise<any> { return; }
 
   /**
    * Get a Facebook access token for using Facebook services.
@@ -157,7 +157,7 @@ export class Facebook {
    * @return Returns a Promise that resolves with an access token, or rejects with an error
    */
   @Cordova()
-  static getAccessToken(): Promise<string> { return }
+  static getAccessToken(): Promise<string> { return; }
 
   /**
    * Show one of various Facebook dialogs. Example of options for a Share dialog:
@@ -177,7 +177,7 @@ export class Facebook {
    * @return Returns a Promise that resolves with success data, or rejects with an error
    */
   @Cordova()
-  static showDialog(options: any): Promise<any> { return }
+  static showDialog(options: any): Promise<any> { return; }
 
   /**
    * Make a call to Facebook Graph API. Can take additional permissions beyond those granted on login.
@@ -193,7 +193,7 @@ export class Facebook {
    * @return Returns a Promise that resolves with the result of the request, or rejects with an error
    */
   @Cordova()
-  static api(requestPath: string, permissions: string[]): Promise<any> { return }
+  static api(requestPath: string, permissions: string[]): Promise<any> { return; }
 
   /**
    * Log an event.  For more information see the Events section above.
@@ -208,7 +208,7 @@ export class Facebook {
     name: string,
     params?: Object,
     valueToSum?: number
-  ): Promise<any> { return }
+  ): Promise<any> { return; }
 
   /**
    * Log a purchase. For more information see the Events section above.
@@ -218,7 +218,7 @@ export class Facebook {
    * @return Returns a Promise
    */
   @Cordova()
-  static logPurchase(value: number, currency: string): Promise<any> { return }
+  static logPurchase(value: number, currency: string): Promise<any> { return; }
 
   /**
    * Open App Invite dialog. Does not require login.
@@ -239,5 +239,5 @@ export class Facebook {
   static appInvite(options: {
     url: string,
     picture: string
-  }): Promise<any> { return }
+  }): Promise<any> { return; }
 }

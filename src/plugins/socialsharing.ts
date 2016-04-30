@@ -16,7 +16,7 @@ import {Plugin, Cordova} from './plugin';
   plugin: 'cordova-plugin-x-socialsharing',
   pluginRef: 'window.plugins.socialsharing',
   repo: 'https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin',
-  platforms: ['iOS','Android','Windows Phone']
+  platforms: ['iOS', 'Android', 'Windows Phone']
 })
 export class SocialSharing {
 
@@ -31,16 +31,16 @@ export class SocialSharing {
   @Cordova({
     sync: true
   })
-  static share (message? : string, subject? : string, file? : string|Array<string>, url? : string) : void {}
+  static share (message?: string, subject?: string, file?: string|Array<string>, url?: string): void {}
 
   /**
    * Checks if you can share via a specific app.
    * @param appName App name or package name. Examples: instagram or com.apple.social.facebook
    */
   @Cordova({
-    platforms: ['iOS','Android']
+    platforms: ['iOS', 'Android']
   })
-  static canShareVia (appName : string) : Promise<any> {return}
+  static canShareVia (appName: string): Promise<any> {return; }
 
   /**
    * Shares directly to Twitter
@@ -50,9 +50,9 @@ export class SocialSharing {
    */
   @Cordova({
     sync: true,
-    platforms: ['iOS','Android']
+    platforms: ['iOS', 'Android']
   })
-  static shareViaTwitter (message : string, image? : string, url? : string) : void {}
+  static shareViaTwitter (message: string, image?: string, url?: string): void {}
 
   /**
    * Shares directly to Facebook
@@ -61,9 +61,9 @@ export class SocialSharing {
    * @param url {string}
    */
   @Cordova({
-    platforms: ['iOS','Android']
+    platforms: ['iOS', 'Android']
   })
-  static shareViaFacebook (message : string, image? : string, url? : string) : Promise<any> {return}
+  static shareViaFacebook (message: string, image?: string, url?: string): Promise<any> {return; }
 
 
   /**
@@ -74,9 +74,9 @@ export class SocialSharing {
    * @param pasteMessageHint {string}
    */
   @Cordova({
-    platforms: ['iOS','Android']
+    platforms: ['iOS', 'Android']
   })
-  static shareViaFacebookWithPasteMessageHint (message : string, image? : string, url? : string, pasteMessageHint?:string) : Promise<any> {return}
+  static shareViaFacebookWithPasteMessageHint (message: string, image?: string, url?: string, pasteMessageHint?: string): Promise<any> {return; }
 
   /**
    * Shares directly to Instagram
@@ -84,9 +84,9 @@ export class SocialSharing {
    * @param image {string}
    */
   @Cordova({
-    platforms: ['iOS','Android']
+    platforms: ['iOS', 'Android']
   })
-  static shareViaInstagram (message : string, image : string) : Promise<any> {return}
+  static shareViaInstagram (message: string, image: string): Promise<any> {return; }
 
   /**
    * Shares directly to WhatsApp
@@ -95,9 +95,9 @@ export class SocialSharing {
    * @param url {string}
    */
   @Cordova({
-    platforms: ['iOS','Android']
+    platforms: ['iOS', 'Android']
   })
-  static shareViaWhatsApp (message : string, image? : string, url? : string) : Promise<any> {return}
+  static shareViaWhatsApp (message: string, image?: string, url?: string): Promise<any> {return; }
 
   /**
    * Shares directly to a WhatsApp Contact
@@ -107,19 +107,19 @@ export class SocialSharing {
    * @param url {string} Link to send
    */
   @Cordova({
-    platforms: ['iOS','Android']
+    platforms: ['iOS', 'Android']
   })
-  static shareViaWhatsAppToReceiver (receiver:string, message : string, image? : string, url? : string) : Promise<any> {return}
+  static shareViaWhatsAppToReceiver (receiver: string, message: string, image?: string, url?: string): Promise<any> {return; }
 
   /**
    * Share via SMS
    * @param messge {string} message to send
-   * @param number {string} Number or multiple numbers seperated by commas
+   * @param phoneNumber {string} Number or multiple numbers seperated by commas
    */
   @Cordova({
-    platforms: ['iOS','Android']
+    platforms: ['iOS', 'Android']
   })
-  static shareViaSMS(messge : string, number : string) : Promise<any> {return}
+  static shareViaSMS(messge: string, phoneNumber: string): Promise<any> {return; }
 
   /**
    * Share via Email
@@ -131,9 +131,9 @@ export class SocialSharing {
    * @param files {string|Array<string>} URL or local path to file(s) to attach
    */
   @Cordova({
-    platforms: ['iOS','Android']
+    platforms: ['iOS', 'Android']
   })
-  static shareViaEmail(message:string, subject:string, to:Array<string>, cc:Array<string>, bcc:Array<string>, files:string|Array<string>) : Promise<any> {return}
+  static shareViaEmail(message: string, subject: string, to: Array<string>, cc: Array<string>, bcc: Array<string>, files: string|Array<string>): Promise<any> {return; }
 
 
 }

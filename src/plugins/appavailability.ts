@@ -31,7 +31,7 @@ import {Plugin, Cordova} from './plugin';
   plugin: 'cordova-plugin-appavailability',
   pluginRef: 'appAvailability',
   repo: 'https://github.com/ohh2ahh/AppAvailability',
-  platforms: ['Android','iOS']
+  platforms: ['Android', 'iOS']
 })
 export class AppAvailability {
 
@@ -41,6 +41,6 @@ export class AppAvailability {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static check(app: string): Promise<boolean> { return }
+  static check(app: string): Promise<boolean> { return; }
 
 }

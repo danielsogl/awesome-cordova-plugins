@@ -30,27 +30,27 @@ export class AppVersion {
    * @returns {Promise}
    */
   @Cordova()
-  static getAppName(): Promise<any> { return }
+  static getAppName(): Promise<any> { return; }
 
   /**
    * Returns the package name of the app
    * @returns {Promise}
    */
   @Cordova()
-  static getPackageName(): Promise<any> { return }
+  static getPackageName(): Promise<any> { return; }
 
   /**
    * Returns the build identifier of the app
    * @returns {Promise}
    */
   @Cordova()
-  static getVersionCode(): Promise<any> { return }
+  static getVersionCode(): Promise<any> { return; }
 
   /**
    * Returns the version of the app
    * @returns {Promise}
    */
   @Cordova()
-  static getVersionNumber(): Promise<any> { return }
+  static getVersionNumber(): Promise<any> { return; }
 
 }

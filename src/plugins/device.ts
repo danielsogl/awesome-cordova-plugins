@@ -18,12 +18,12 @@ export interface Device {
   uuid: string;
   /** Get the operating system version. */
   version: string;
-	/** Get the device's manufacturer. */
-	manufacturer: string;
-	/** Whether the device is running on a simulator. */
-	isVirtual: boolean;
-	/** Get the device hardware serial number. */
-	serial: string;
+  /** Get the device's manufacturer. */
+  manufacturer: string;
+  /** Whether the device is running on a simulator. */
+  isVirtual: boolean;
+  /** Get the device hardware serial number. */
+  serial: string;
 }
 
 /**
@@ -47,11 +47,11 @@ export interface Device {
 })
 export class Device {
 
-/**
- * Returns the whole device object.
- *
- * @returns {Object} The device object.
- */
+  /**
+   * Returns the whole device object.
+   *
+   * @returns {Object} The device object.
+   */
   @CordovaProperty
   static get device() { return window.device; }
 }
