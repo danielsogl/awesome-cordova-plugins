@@ -9,19 +9,19 @@ general:
     only:
       - master # ignore PRs and branches
 
-dependencies:
-  pre:
-    - ./scripts/docs/prepare.sh
-  cache_directories:
-    - "~/ionic-site" # cache ionic-site
+#dependencies:
+#  pre:
+#    - ./scripts/docs/prepare.sh
+#  cache_directories:
+#    - "~/ionic-site" # cache ionic-site
 
 test:
   override:
     - echo "No tests are written at the moment. But we will attempt to build the library with the latest changes."
     - npm run build_bundle
 
-deployment:
-  staging:
-    branch: master
-    commands:
-      - ./scripts/docs/update_docs.sh
+#deployment:
+#  staging:
+#    branch: master
+#    commands:
+#      - ./scripts/docs/update_docs.sh

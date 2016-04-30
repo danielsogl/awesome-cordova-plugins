@@ -126,14 +126,27 @@ function getPromise(cb) {
 }
 
 function wrapPromise(pluginObj:any, methodName:string, args:any[], opts:any={}) {
-  return getPromise((resolve, reject) => {
-    callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
-  })
+  let pluginResult, rej;
+  const p = getPromise((resolve, reject) => {
+    pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
+    rej = reject;
+  });
+  // Angular throws an error on unhandled rejection, but in this case we have already printed
+  // a warning that Cordova is undefined or the plugin is uninstalled, so there is no reason
+  // to error
+  if (pluginResult && pluginResult.error) {
+    p.catch(() => {});
+    rej(pluginResult.error);
+  }
+  return p;
 }
 
 function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any = {}) {
   return new Observable(observer => {
     let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+    if (pluginResult && pluginResult.error) {
+      observer.error(pluginResult.error);
+    }
 
     return () => {
       try {

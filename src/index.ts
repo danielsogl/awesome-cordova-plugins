@@ -6,6 +6,7 @@ const DEVICE_READY_TIMEOUT = 2000;
 declare var window;
 
 import {ActionSheet} from './plugins/actionsheet';
+import {AdMob} from './plugins/admob';
 import {AppAvailability} from './plugins/appavailability';
 import {AppRate} from './plugins/apprate';
 import {AppVersion} from './plugins/appversion';
@@ -14,6 +15,7 @@ import {BarcodeScanner} from './plugins/barcodescanner';
 import {Base64ToGallery} from './plugins/base64togallery';
 import {BatteryStatus} from './plugins/batterystatus';
 import {BLE} from './plugins/ble';
+import {BluetoothSerial} from './plugins/bluetoothserial';
 import {Calendar} from './plugins/calendar';
 import {Camera} from './plugins/camera';
 import {Clipboard} from './plugins/clipboard';
@@ -21,6 +23,7 @@ import {Contacts} from './plugins/contacts';
 import {DatePicker} from './plugins/datepicker';
 import {DBMeter} from './plugins/dbmeter';
 import {Device} from './plugins/device';
+import {DeviceAccounts} from './plugins/deviceaccounts';
 import {DeviceMotion} from './plugins/devicemotion';
 import {DeviceOrientation} from './plugins/deviceorientation';
 import {Diagnostic} from './plugins/diagnostic';
@@ -42,6 +45,7 @@ import {LocalNotifications} from './plugins/localnotifications';
 import {MediaPlugin} from './plugins/media';
 import {Network, Connection} from './plugins/network';
 import {Push} from './plugins/push';
+import {Screenshot} from './plugins/screenshot';
 import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
 import {SpinnerDialog} from './plugins/spinnerdialog';
@@ -55,6 +59,7 @@ import {WebIntent} from './plugins/webintent';
 
 export {
   ActionSheet,
+  AdMob,
   AppAvailability,
   AppRate,
   AppVersion,
@@ -63,6 +68,7 @@ export {
   Base64ToGallery,
   BatteryStatus,
   BLE,
+  BluetoothSerial,
   Calendar,
   Camera,
   Clipboard,
@@ -71,6 +77,7 @@ export {
   DatePicker,
   DBMeter,
   Device,
+  DeviceAccounts,
   DeviceMotion,
   DeviceOrientation,
   Dialogs,
@@ -92,6 +99,7 @@ export {
   MediaPlugin,
   Network,
   Push,
+  Screenshot,
   SMS,
   SocialSharing,
   SpinnerDialog,
@@ -109,6 +117,7 @@ export * from './plugins/plugin';
 // Window export to use outside of a module loading system
 window['IonicNative'] = {
   ActionSheet: ActionSheet,
+  AdMob: AdMob,
   AppAvailability: AppAvailability,
   AppRate: AppRate,
   AppVersion: AppVersion,
@@ -117,6 +126,7 @@ window['IonicNative'] = {
   Base64ToGallery: Base64ToGallery,
   BatteryStatus: BatteryStatus,
   BLE: BLE,
+  BluetoothSerial: BluetoothSerial,
   Calendar: Calendar,
   Camera: Camera,
   Clipboard: Clipboard,
@@ -125,6 +135,7 @@ window['IonicNative'] = {
   DatePicker: DatePicker,
   DBMeter: DBMeter,
   Device: Device,
+  DeviceAccounts: DeviceAccounts,
   DeviceMotion: DeviceMotion,
   DeviceOrientation: DeviceOrientation,
   Dialogs: Dialogs,
@@ -146,6 +157,7 @@ window['IonicNative'] = {
   MediaPlugin: MediaPlugin,
   Network: Network,
   Push: Push,
+  Screenshot: Screenshot,
   SMS: SMS,
   SocialSharing: SocialSharing,
   SpinnerDialog: SpinnerDialog,
