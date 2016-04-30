@@ -31,27 +31,80 @@ export interface ContactProperties {
     urls?: ContactField[];
 }
 
-export interface Contact extends ContactProperties {
-    /**
-     * Returns a new Contact object that is a deep copy of the calling object, with the id property set to null
-     */
-    clone(): Contact;
-    /**
-     * Removes the contact from the device contacts database, otherwise executes an error callback with a ContactError object.
-     * @param onSuccess Success callback function invoked on success operation.
-     * @param onError Error callback function, invoked when an error occurs.
-     */
-    remove(
-        onSuccess?: () => void,
-        onError?: (error: Error) => void): void;
-    /**
-     * Saves a new contact to the device contacts database, or updates an existing contact if a contact with the same id already exists.
-     * @param onSuccess Success callback function invoked on success operation with che Contact object.
-     * @param onError Error callback function, invoked when an error occurs.
-     */
-    save(
-        onSuccess?: (contact: Contact) => void,
-        onError?: (error: Error) => void): void;
+// export interface Contact extends ContactProperties {
+//    /**
+//     * Returns a new Contact object that is a deep copy of the calling object, with the id property set to null
+//     */
+//    clone(): Contact;
+//    /**
+//     * Removes the contact from the device contacts database, otherwise executes an error callback with a ContactError object.
+//     * @param onSuccess Success callback function invoked on success operation.
+//     * @param onError Error callback function, invoked when an error occurs.
+//     */
+//    remove(
+//        onSuccess?: () => void,
+//        onError?: (error: Error) => void): void;
+//    /**
+//     * Saves a new contact to the device contacts database, or updates an existing contact if a contact with the same id already exists.
+//     * @param onSuccess Success callback function invoked on success operation with che Contact object.
+//     * @param onError Error callback function, invoked when an error occurs.
+//     */
+//    save(
+//        onSuccess?: (contact: Contact) => void,
+//        onError?: (error: Error) => void): void;
+// }
+
+export class Contact {
+
+    private _objectInstance: any;
+
+    get id(): string {
+        return this._objectInstance.id;
+    }
+    set id(val: string) {
+        this._objectInstance.id = val;
+    }
+    get displayName(): string {
+        return this._objectInstance.displayName;
+    }
+    set displayName(val: string){
+        this._objectInstance.displayName = val;
+    }
+    get name(): ContactName {
+        return this._objectInstance.name;
+    }
+    set name(val: ContactName){
+        this._objectInstance.name = val;
+    }
+    get nickname(): string {
+        return this._objectInstance.nickname;
+    }
+    set nickname(val: string){
+        this._objectInstance.nickname = val;
+    }
+    get phoneNumbers(): ContactField[] {
+        return this._objectInstance.phoneNumbers;
+    }
+    set phoneNumbers(val: ContactField[]){
+        this._objectInstance.phoneNumbers = val;
+    }
+    get emails(): ContactField[] {
+        return this._objectInstance.emails;
+    }
+    set emails(val: ContactField[]){
+        this._objectInstance.emails = val;
+    }
+    get addresses(): ContactAddress[] {
+        return this._objectInstance.addresses;
+    }
+    set addresses(val: ContactAddress[]){
+        this._objectInstance.addresses = val;
+    }
+
+    constructor () {
+        // creat eobj
+    }
+
 }
 
 interface ContactError {
@@ -87,15 +140,30 @@ export interface ContactName {
     honorificSuffix?: string;
 }
 
-declare var ContactName: {
-    /** Constructor for ContactName object */
-    new(formatted?: string,
-        familyName?: string,
-        givenName?: string,
-        middleName?: string,
-        honorificPrefix?: string,
-        honorificSuffix?: string): ContactName
-};
+// declare var ContactName: {
+//    /** Constructor for ContactName object */
+//    new(formatted?: string,
+//        familyName?: string,
+//        givenName?: string,
+//        middleName?: string,
+//        honorificPrefix?: string,
+//        honorificSuffix?: string): ContactName
+// };
+
+export class ContactName {
+    private _objectInstance: any;
+
+    constructor() { }
+
+    public set givenName(val: string) {
+        this._objectInstance.givenName = val;
+    }
+    public set familyName(val: string) {
+        this._objectInstance.familyName = val;
+    }
+    public get givenName(): string {return this._objectInstance.givenName; }
+    public get familyName(): string {return this._objectInstance.familyName; }
+}
 
 export interface ContactField {
     /** A string that indicates what type of field this is, home for example. */
@@ -183,9 +251,28 @@ declare var ContactFindOptions: {
         desiredFields?: string[]): ContactFindOptions
 };
 
-declare var Contact: {
-  new(): Contact
-};
+export class ContactFindOptions {
+    private _objectInstance: any;
+    public set filter(val: string) {
+        this._objectInstance.filter = val;
+    }
+
+    public set multiple(val: boolean) {
+        this._objectInstance.multiple = val;
+    }
+
+    public set desiredFields(val) {
+        this._objectInstance.desiredFields = val;
+    }
+
+    public set hasPhoneNumber(val: boolean) {
+        this._objectInstance.hasPhoneNumber = val;
+    }
+}
+
+// declare var Contact: {
+//  new(): Contact
+// };
 
 /**
  * @name Contacts
@@ -215,17 +302,28 @@ declare var Contact: {
   repo: 'https://github.com/apache/cordova-plugin-contacts'
 })
 export class Contacts {
+
+    private _objectInstance: any;
+
+    public set displayName(val: string) {
+        this._objectInstance.displayName = val;
+    }
+
+    public set nickname(val: boolean) {
+        this._objectInstance.nickname = val;
+    }
+
+    get displayName() {return this._objectInstance.displayName; }
+    get nickname() {return this._objectInstance.nickname; }
+
   /**
    * Create a new Contact object.
    *
    * @param options {Object} Object whose properties the created Contact should have.
    * @return {Contact} Returns the created contact
    */
-  @Cordova({
-    sync: true
-  })
-  static create(options: ContactProperties) {
-    return new Contact();
+  constructor (options?: ContactProperties) {
+      this._objectInstance = navigator.contacts(options);
   };
 
   /**
