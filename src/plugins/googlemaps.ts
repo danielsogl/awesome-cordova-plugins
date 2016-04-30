@@ -16,7 +16,7 @@ export class GoogleMaps {
     private _objectInstance : any;
 
     constructor (elementId : string) {
-        this._objectInstance = {};//plugin.google.maps.Map.getMap(document.getElementById(elementId));
+        this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId));
     }
 
     @Cordova({

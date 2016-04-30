@@ -4,7 +4,9 @@ declare var sqlitePlugin;
  * @name SQLite
  */
 @Plugin({
-    pluginRef: 'sqlitePlugin'
+    pluginRef: 'sqlitePlugin',
+    plugin: 'cordova-sqlite-storage',
+    repo: 'https://github.com/litehelpers/Cordova-sqlite-storage'
 })
 export class SQLite {
 
@@ -88,7 +90,6 @@ export class SQLite {
         sync: true
     })
     finish () : void {}
-
 
 
     @CordovaInstance({
