@@ -18,7 +18,7 @@ import {Plugin, Cordova} from './plugin';
   plugin: 'cordova-plugin-spinner-dialog',
   pluginRef: 'window.plugins.spinnerDialog',
   repo: 'https://github.com/Paldom/SpinnerDialog',
-  platforms: ['Android','iOS','Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class SpinnerDialog {
 
@@ -33,7 +33,7 @@ export class SpinnerDialog {
   @Cordova({
     sync: true
   })
-  static show(title? : string, message? : string, cancelCallback? : any, iOSOptions? : SpinnerDialogIOSOptions) : void {}
+  static show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void {}
 
   /**
    * Hides the spinner dialog if visible
@@ -41,13 +41,13 @@ export class SpinnerDialog {
   @Cordova({
     sync: true
   })
-  static hide() : void {}
+  static hide(): void {}
 
 }
 
 export interface SpinnerDialogIOSOptions {
-  overlayOpacity? : number,
-  textColorRed? : number,
-  textColorGreen? : number,
-  textColorBlue? : number
+  overlayOpacity?: number;
+  textColorRed?: number;
+  textColorGreen?: number;
+  textColorBlue?: number;
 }

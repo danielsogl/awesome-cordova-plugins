@@ -224,7 +224,7 @@ export class Contacts {
   @Cordova({
     sync: true
   })
-  static create(options: ContactProperties){
+  static create(options: ContactProperties) {
     return new Contact();
   };
 
@@ -249,7 +249,7 @@ export class Contacts {
     successIndex: 1,
     errorIndex: 2
   })
-  static find(fields: string[], options?: any): Promise<any> { return }
+  static find(fields: string[], options?: any): Promise<any> { return; }
 
 
   /**
@@ -257,5 +257,5 @@ export class Contacts {
    * @return Returns a Promise that resolves with the selected Contact
    */
   @Cordova()
-  static pickContact(): Promise<any> { return }
+  static pickContact(): Promise<any> { return; }
 }

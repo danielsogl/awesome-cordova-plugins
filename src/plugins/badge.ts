@@ -29,49 +29,49 @@ export class Badge {
    * Clear the badge of the app icon.
    */
   @Cordova()
-  static clear(): Promise<boolean> { return }
+  static clear(): Promise<boolean> { return; }
 
   /**
    * Set the badge of the app icon.
-   * @param {number} number  The new badge number.
+   * @param {number} badgeNumber  The new badge number.
    * @returns {Promise}
    */
   @Cordova()
-  static set(number: number): Promise<any> { return }
+  static set(badgeNumber: number): Promise<any> { return; }
 
   /**
    * Get the badge of the app icon.
    * @returns {Promise}
    */
   @Cordova()
-  static get(): Promise<any> { return }
+  static get(): Promise<any> { return; }
 
   /**
    * Increase the badge number.
-   * @param {number} count  Count to add to the current badge number
+   * @param {number} increaseBy  Count to add to the current badge number
    * @returns {Promise}
    */
   @Cordova()
-  static increase(number: number): Promise<any> { return }
+  static increase(increaseBy: number): Promise<any> { return; }
 
   /**
    * Decrease the badge number.
-   * @param {number} count  Count to subtract from the current badge number
+   * @param {number} decreaseBy  Count to subtract from the current badge number
    * @returns {Promise}
    */
   @Cordova()
-  static decrease(number: number): Promise<any> { return }
+  static decrease(decreaseBy: number): Promise<any> { return; }
 
   /**
    * Determine if the app has permission to show badges.
    */
   @Cordova()
-  static hasPermission(): Promise<any> { return }
+  static hasPermission(): Promise<any> { return; }
 
   /**
    * Register permission to set badge notifications
    * @returns {Promise}
    */
   @Cordova()
-  static registerPermission(): Promise<any> { return }
+  static registerPermission(): Promise<any> { return; }
 }

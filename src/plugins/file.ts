@@ -45,7 +45,7 @@ export class File {
    */
   static checkDir(path: string, dir: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(dir))) {
       rejectFn('directory cannot start with \/');
@@ -84,13 +84,13 @@ export class File {
    */
   static createDir(path: string, dirName: string, replace: boolean): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(dirName))) {
       rejectFn('directory cannot start with \/');
     }
 
-    replace = replace ? false : true;
+    replace = !replace;
 
     var options = {
       create: true,
@@ -126,7 +126,7 @@ export class File {
    */
   static removeDir(path: string, dirName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(dirName))) {
       rejectFn('directory cannot start with \/');
@@ -137,7 +137,7 @@ export class File {
         fileSystem.getDirectory(dirName, {create: false}, function (dirEntry) {
           dirEntry.remove(function () {
             resolveFn({success: true, fileRemoved: dirEntry});
-          }, function (error) {
+          }, function (error: any) {
             error.message = File.cordovaFileError[error.code];
             rejectFn(error);
           });
@@ -168,7 +168,7 @@ export class File {
    */
   static moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
     newDirName = newDirName || dirName;
 
@@ -212,7 +212,7 @@ export class File {
    */
   static copyDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
     newDirName = newDirName || dirName;
 
@@ -260,7 +260,7 @@ export class File {
    */
   static listDir(path: string, dirName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(dirName))) {
       rejectFn('directory cannot start with \/');
@@ -305,7 +305,7 @@ export class File {
    */
   static removeRecursively(path: string, dirName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(dirName))) {
       rejectFn('directory cannot start with \/');
@@ -345,7 +345,7 @@ export class File {
    */
   static checkFile(path: string, file: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(file))) {
       rejectFn('file cannot start with \/');
@@ -384,14 +384,14 @@ export class File {
    */
   static createFile(path: string, fileName: string, replace: boolean): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
 
     if ((/^\//.test(fileName))) {
       rejectFn('file-name cannot start with \/');
     }
 
-    replace = replace ? false : true;
+    replace = !replace;
 
     var options = {
       create: true,
@@ -427,7 +427,7 @@ export class File {
    */
   static removeFile(path: string, fileName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(fileName))) {
       rejectFn('file-name cannot start with \/');
@@ -438,7 +438,7 @@ export class File {
         fileSystem.getFile(fileName, {create: false}, function (fileEntry) {
           fileEntry.remove(function () {
             resolveFn({success: true, fileRemoved: fileEntry});
-          }, function (error) {
+          }, function (error: any) {
             error.message = File.cordovaFileError[error.code];
             rejectFn(error);
           });
@@ -481,9 +481,9 @@ export class File {
    */
   static moveFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
-    newFileName = newFileName || fileName
+    newFileName = newFileName || fileName;
 
     if ((/^\//.test(newFileName))) {
       rejectFn('file-name cannot start with \/');
@@ -525,9 +525,9 @@ export class File {
    */
   static copyFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; })
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
-    newFileName = newFileName || fileName
+    newFileName = newFileName || fileName;
 
     if ((/^\//.test(newFileName))) {
       rejectFn('file-name cannot start with \/');

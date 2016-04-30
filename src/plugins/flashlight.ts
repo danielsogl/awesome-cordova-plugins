@@ -27,28 +27,28 @@ export class Flashlight {
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean stating if the flash light is available.
    */
   @Cordova()
-  static available(): Promise<boolean> { return }
+  static available(): Promise<boolean> { return; }
 
   /**
    * Switches the flashlight on
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static switchOn(): Promise<boolean> { return }
+  static switchOn(): Promise<boolean> { return; }
 
   /**
    * Switches the flash light off
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static switchOff(): Promise<boolean> { return }
+  static switchOff(): Promise<boolean> { return; }
 
   /**
    * Toggles the flashlight
    * @returns {Promise<any>}
    */
   @Cordova()
-  static toggle(): Promise<any> { return }
+  static toggle(): Promise<any> { return; }
 
 
   /**
@@ -58,6 +58,6 @@ export class Flashlight {
   @Cordova({
     sync: true
   })
-  static isSwitchedOn(): boolean { return }
+  static isSwitchedOn(): boolean { return; }
 
 }

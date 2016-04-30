@@ -1,7 +1,7 @@
 import {Plugin, Cordova, CordovaProperty} from './plugin';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 
-declare var navigator;
+declare var navigator: any;
 
 /**
  * @name Network
@@ -52,37 +52,37 @@ export class Network {
    * Return the network connection type
    */
   @CordovaProperty
-  static get connection() : Connection { return navigator.connection.type; }
+  static get connection(): Connection { return navigator.connection.type; }
 
   /**
-   * Watch the network for a disconnect (i.e. network goes offline)
+   * Get notified when the device goes offline
    * @returns {Observable<any>} Returns an observable.
    */
   @Cordova({
     eventObservable: true,
     event: 'offline'
   })
-  static onDisconnect() : Observable<any> { return }
+  static onDisconnect(): Observable<any> { return; }
 
   /**
-   * Watch the network for a connection (i.e. network goes online)
+   * Get notified when the device goes online
    * @returns {Observable<any>} Returns an observable.
    */
   @Cordova({
     eventObservable: true,
     event: 'online'
   })
-  static onConnect() : Observable<any> { return; }
+  static onConnect(): Observable<any> { return; }
 
 }
 
 export class Connection {
-  static get UNKNOWN()  { return "unknown"; }
-  static get ETHERNET() { return "ethernet"; }
-  static get WIFI()     { return "wifi"; }
-  static get CELL_2G()  { return "2g"; }
-  static get CELL_3G()  { return "3g"; }
-  static get CELL_4G()  { return "4g"; }
-  static get CELL()     { return "cellular"; }
-  static get NONE()     { return "none"; }
+  static get UNKNOWN()  { return 'unknown'; }
+  static get ETHERNET() { return 'ethernet'; }
+  static get WIFI()     { return 'wifi'; }
+  static get CELL_2G()  { return '2g'; }
+  static get CELL_3G()  { return '3g'; }
+  static get CELL_4G()  { return '4g'; }
+  static get CELL()     { return 'cellular'; }
+  static get NONE()     { return 'none'; }
 }

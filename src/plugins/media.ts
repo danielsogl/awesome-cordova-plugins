@@ -1,5 +1,5 @@
 import {CordovaInstance, Plugin} from './plugin';
-declare var Media:any;
+declare var Media: any;
 /**
  * @name MediaPlugin
  * @description
@@ -44,21 +44,21 @@ declare var Media:any;
 export class MediaPlugin {
 
   // Constants
-  static MEDIA_NONE : number = 0;
-  static MEDIA_STARTING : number = 1;
-  static MEDIA_RUNNING : number = 2;
-  static MEDIA_PAUSED : number = 3;
-  static MEDIA_STOPPED : number = 4;
+  static MEDIA_NONE: number = 0;
+  static MEDIA_STARTING: number = 1;
+  static MEDIA_RUNNING: number = 2;
+  static MEDIA_PAUSED: number = 3;
+  static MEDIA_STOPPED: number = 4;
 
   // Properties
-  private _objectInstance : any;
+  private _objectInstance: any;
 
   // Methods
   /**
    * Open a media file
    * @param src {string} A URI containing the audio content.
    */
-  constructor (src : string) {
+  constructor (src: string) {
     // TODO handle success, error, and status
     this._objectInstance = new Media(src);
   }
@@ -67,13 +67,13 @@ export class MediaPlugin {
    * Returns the current amplitude of the current recording.
    */
   @CordovaInstance()
-  getCurrentAmplitude () : Promise<any> {return}
+  getCurrentAmplitude (): Promise<any> {return; }
 
   /**
    * Returns the current position within an audio file. Also updates the Media object's position parameter.
    */
   @CordovaInstance()
-  getCurrentPosition () : Promise<any> {return}
+  getCurrentPosition (): Promise<any> {return; }
 
   /**
    * Returns the duration of an audio file in seconds. If the duration is unknown, it returns a value of -1.
@@ -81,7 +81,7 @@ export class MediaPlugin {
   @CordovaInstance({
     sync: true
   })
-  getDuration () : number {return}
+  getDuration (): number {return; }
 
   /**
    * Starts or resumes playing an audio file.
@@ -89,10 +89,10 @@ export class MediaPlugin {
   @CordovaInstance({
     sync: true
   })
-  play (iosOptions? : {
-    numberOfLoops? : number,
-    playAudioWhenScreenIsLocked? : boolean
-  }) : void {}
+  play (iosOptions?: {
+    numberOfLoops?: number,
+    playAudioWhenScreenIsLocked?: boolean
+  }): void {}
 
   /**
    * Pauses playing an audio file.
@@ -100,7 +100,7 @@ export class MediaPlugin {
   @CordovaInstance({
     sync: true
   })
-  pause () : void {}
+  pause (): void {}
 
   /**
    * Releases the underlying operating system's audio resources. This is particularly important for Android, since there are a finite amount of OpenCore instances for media playback. Applications should call the release function for any Media resource that is no longer needed.
@@ -108,7 +108,7 @@ export class MediaPlugin {
   @CordovaInstance({
     sync: true
   })
-  release () : void {}
+  release (): void {}
 
   /**
    * Sets the current position within an audio file.
@@ -117,7 +117,7 @@ export class MediaPlugin {
   @CordovaInstance({
     sync: true
   })
-  seekTo (milliseconds : number) : void {}
+  seekTo (milliseconds: number): void {}
 
   /**
    * Set the volume for an audio file.
@@ -126,7 +126,7 @@ export class MediaPlugin {
   @CordovaInstance({
     sync: true
   })
-  setVolume (volume : number) : void {}
+  setVolume (volume: number): void {}
 
   /**
    * Starts recording an audio file.
@@ -134,7 +134,7 @@ export class MediaPlugin {
   @CordovaInstance({
     sync: true
   })
-  startRecord () : void {}
+  startRecord (): void {}
 
 
   /**
@@ -143,7 +143,7 @@ export class MediaPlugin {
   @CordovaInstance({
     sync: true
   })
-  stopRecord () : void {}
+  stopRecord (): void {}
 
 
   /**
@@ -152,17 +152,17 @@ export class MediaPlugin {
   @CordovaInstance({
     sync: true
   })
-  stop () : void {}
+  stop (): void {}
 
 
 
 }
 
 export class MediaError {
-  static get MEDIA_ERR_ABORTED () {return 1;}
-  static get MEDIA_ERR_NETWORK () {return 2;}
-  static get MEDIA_ERR_DECODE () {return 3;}
-  static get MEDIA_ERR_NONE_SUPPORTED () {return 4;}
-  code : number;
-  message : string;
+  static get MEDIA_ERR_ABORTED () {return 1; }
+  static get MEDIA_ERR_NETWORK () {return 2; }
+  static get MEDIA_ERR_DECODE () {return 3; }
+  static get MEDIA_ERR_NONE_SUPPORTED () {return 4; }
+  code: number;
+  message: string;
 }

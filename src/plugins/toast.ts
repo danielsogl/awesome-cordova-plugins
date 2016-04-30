@@ -25,13 +25,13 @@ export interface ToastOptions {
   /**
    * Styling
    */
-  styling? : {
-    opacity? : number;
-    backgroundColor? : string;
-    textColor? : string;
-    cornerRadius? : number;
-    horizontalPadding? : number;
-    verticalPadding? : number;
+  styling?: {
+    opacity?: number;
+    backgroundColor?: string;
+    textColor?: string;
+    cornerRadius?: number;
+    horizontalPadding?: number;
+    verticalPadding?: number;
   };
 }
 /**
@@ -77,14 +77,14 @@ export class Toast {
     message: string,
     duration: string,
     position: string
-  ): Observable<any> { return }
+  ): Observable<any> { return; }
 
   /**
    * Manually hide any currently visible toast.
    * @return {Promise} Returns a Promise that resolves on success.
    */
   @Cordova()
-  static hide(): Promise<any>{ return }
+  static hide(): Promise<any> { return; }
 
   /**
    * Show a native toast with the given options.
@@ -101,7 +101,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showWithOptions(options: ToastOptions): Observable<any> { return }
+  static showWithOptions(options: ToastOptions): Observable<any> { return; }
 
   /**
    * Shorthand for `show(message, 'short', 'top')`.
@@ -111,7 +111,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showShortTop(message: string): Observable<any> { return }
+  static showShortTop(message: string): Observable<any> { return; }
 
   /**
    * Shorthand for `show(message, 'short', 'center')`.
@@ -121,7 +121,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showShortCenter(message: string): Observable<any> { return }
+  static showShortCenter(message: string): Observable<any> { return; }
 
 
   /**
@@ -132,7 +132,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showShortBottom(message: string): Observable<any> { return }
+  static showShortBottom(message: string): Observable<any> { return; }
 
 
   /**
@@ -143,7 +143,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showLongTop(message: string): Observable<any> { return }
+  static showLongTop(message: string): Observable<any> { return; }
 
 
   /**
@@ -154,7 +154,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showLongCenter(message: string): Observable<any> { return }
+  static showLongCenter(message: string): Observable<any> { return; }
 
 
   /**
@@ -165,6 +165,6 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showLongBottom(message: string): Observable<any> { return }
+  static showLongBottom(message: string): Observable<any> { return; }
 
 }

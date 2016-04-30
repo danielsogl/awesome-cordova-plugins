@@ -133,7 +133,7 @@ export class Geolocation {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
+  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return; }
 
   /**
    * Watch the current device's position.  Clear the watch by unsubscribing from
@@ -156,5 +156,5 @@ export class Geolocation {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return }
+  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return; }
 }

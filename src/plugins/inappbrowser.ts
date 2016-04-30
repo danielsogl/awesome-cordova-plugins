@@ -81,5 +81,5 @@ export class InAppBrowser {
   @Cordova({
     sync: true
   })
-  static open(url: string, target?: string, options?: string): InAppBrowserRef { return }
+  static open(url: string, target?: string, options?: string): InAppBrowserRef { return; }
 }

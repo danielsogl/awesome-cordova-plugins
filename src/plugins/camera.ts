@@ -82,7 +82,7 @@ export interface CameraPopoverOptions {
      *      ARROW_RIGHT : 8,
      *      ARROW_ANY : 15
      */
-    arrowDir : number;
+    arrowDir: number;
 }
 
 /**
@@ -108,7 +108,7 @@ export interface CameraPopoverOptions {
   plugin: 'cordova-plugin-camera',
   pluginRef: 'navigator.camera',
   repo: 'https://github.com/apache/cordova-plugin-camera',
-  platforms: ['Android','BlackBerry','Browser','Firefox','FireOS','iOS','Windows','Windows Phone 8','Ubuntu']
+  platforms: ['Android', 'BlackBerry', 'Browser', 'Firefox', 'FireOS', 'iOS', 'Windows', 'Windows Phone 8', 'Ubuntu']
 })
 export class Camera {
   /**
@@ -119,7 +119,7 @@ export class Camera {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getPicture(options: CameraOptions): Promise<any> { return }
+  static getPicture(options: CameraOptions): Promise<any> { return; }
 
   /**
    * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
@@ -129,7 +129,7 @@ export class Camera {
   @Cordova({
     platforms: ['iOS']
   })
-  static cleanup(){};
+  static cleanup() { };
 
   /**
    * @enum {number}

@@ -1,16 +1,16 @@
 import {Plugin, Cordova} from './plugin';
 
-export interface promptCallback {
+export interface PromptCallback {
 
   /**
    * The index of the pressed button. (Number) Note that the index uses one-based indexing, so the value is 1, 2, 3, etc.
    */
-  buttonIndex : number,
+  buttonIndex: number;
 
   /**
    * The text entered in the prompt dialog box. (String)
    */
-  input1 : string
+  input1: string;
 
 }
 
@@ -53,7 +53,7 @@ export class Dialogs {
     message,
     title: string = 'Alert',
     buttonName: string = 'OK'
-  ): Promise<any>{ return }
+  ): Promise<any> {return; }
 
   /**
    * Displays a customizable confirmation dialog box.
@@ -70,7 +70,7 @@ export class Dialogs {
     message,
     title: string = 'Confirm',
     buttonLabels: Array<string> = ['OK', 'Cancel']
-  ): Promise<number>{ return }
+  ): Promise<number> { return; }
 
   /**
    * Displays a native dialog box that is more customizable than the browser's prompt function.
@@ -89,7 +89,7 @@ export class Dialogs {
     title: string = 'Prompt',
     buttonLabels: Array<string> = ['OK', 'Cancel'],
     defaultText: string = ''
-  ): Promise<any>{ return }
+  ): Promise<any> { return; }
 
 
   /**

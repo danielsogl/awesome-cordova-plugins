@@ -5,15 +5,15 @@ declare var cordova;
 /**
  * Email object for Opening Email Composer
  */
-export interface email {
-  app?: string,
-  to: string | Array<string>,
-  cc: string | Array<string>,
-  bcc: string | Array<string>,
-  attachments: Array<any>,
-  subject: string,
-  body: string,
-  isHtml: boolean
+export interface Email {
+  app?: string;
+  to: string | Array<string>;
+  cc: string | Array<string>;
+  bcc: string | Array<string>;
+  attachments: Array<any>;
+  subject: string;
+  body: string;
+  isHtml: boolean;
 }
 
 /**
@@ -26,7 +26,7 @@ export interface email {
  * ```ts
  * import {EmailComposer} from 'ionic-native';
  *
- * 
+ *
  * EmailComposer.isAvailable().then((available) =>{
  *  if(available) {
  *    //Now we know we can send
@@ -60,15 +60,15 @@ export interface email {
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class EmailComposer {
-  
-   /**
+
+  /**
    * Verifies if sending emails is supported on the device.
-   * 
+   *
    * @param app {string?} An optional app id or uri scheme. Defaults to mailto.
    * @param scope {any?} An optional scope for the promise
    * @returns {Promise<boolean>} Resolves promise with boolean whether EmailComposer is available
    */
-  static isAvailable (app? : string, scope? : any) : Promise<boolean> {
+  static isAvailable (app?: string, scope?: any): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       cordova.plugins.email.isAvailable(app, resolve, scope);
     });
@@ -81,12 +81,12 @@ export class EmailComposer {
    * @param packageName {string} The package name
    */
   @Cordova()
-  static addAlias(alias : string, packageName : string): void {}
-  
+  static addAlias(alias: string, packageName: string): void {}
+
   /**
    * Displays the email composer pre-filled with data.
-   * 
-   * @param email {email} Email
+   *
+   * @param email {Email} Email
    * @param scope {any?} An optional scope for the promise
    * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
    */
@@ -94,6 +94,6 @@ export class EmailComposer {
     successIndex: 1,
     errorIndex: 3
   })
-  static open(email : email, scope? : any) : Promise<any> {return}
+  static open(email: Email, scope?: any): Promise<any> {return; }
 
 }

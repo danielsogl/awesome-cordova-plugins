@@ -3,23 +3,23 @@ import {Plugin, Cordova} from './plugin';
 /**
  * Options for sending an SMS
  */
-export interface smsOptions {
+export interface SmsOptions {
 
   /**
    * Set to true to replace \n by a new line. Default: false
    */
-  replaceLineBreaks? : boolean,
+  replaceLineBreaks?: boolean;
 
-  android? : smsOptionsAndroid
+  android?: SmsOptionsAndroid;
 
 }
 
-export interface smsOptionsAndroid {
+export interface SmsOptionsAndroid {
 
   /**
    * Set to "INTENT" to send SMS with the native android SMS messaging. Leaving it empty will send the SMS without opening any app.
    */
-  intent? : string
+  intent?: string;
 
 }
 
@@ -50,16 +50,16 @@ export class SMS {
 
   /**
    * Sends sms to a number
-   * @param number {string|Array<string>} Phone number
+   * @param phoneNumber {string|Array<string>} Phone number
    * @param message {string} Message
-   * @param options {smsOptions} Options
+   * @param options {SmsOptions} Options
    * @returns {Promise<any>} Resolves promise when the SMS has been sent
    */
   @Cordova()
   static send(
-    number: string | string[],
+    phoneNumber: string | string[],
     message: string,
-    options?: smsOptions
-  ): Promise<any> { return }
+    options?: SmsOptions
+  ): Promise<any> { return; }
 
 }

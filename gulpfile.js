@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var minimist = require('minimist');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
+var tslint = require('gulp-tslint');
 
 var flagConfig = {
   string: ['port', 'version', 'ngVersion', 'animations'],
@@ -22,4 +23,10 @@ gulp.task("minify:dist", function(){
     suffix: '.min'
   }))
   .pipe(gulp.dest('./dist'));
+});
+
+gulp.task("tslint", function(){
+  gulp.src("src/**/*.ts")
+  .pipe(tslint())
+  .pipe(tslint.report('verbose'));
 });
