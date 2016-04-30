@@ -1,3 +1,43 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/driftyco/ionic-native/compare/v1.1.0...v1.2.0) (2016-04-30)
+
+
+### Bug Fixes
+
+* **BluetoohSerial:** add missing plugin reference ([317437b](https://github.com/driftyco/ionic-native/commit/317437b))
+* **GoogleAnalytics:** addCustomDimension() key param is number ([3865ea4](https://github.com/driftyco/ionic-native/commit/3865ea4)), closes [#131](https://github.com/driftyco/ionic-native/issues/131)
+* **keyboard:** remove hideKeyboardAccessoryBar method for now ([292c80c](https://github.com/driftyco/ionic-native/commit/292c80c))
+* **launchnavigator:** bug fix ([4ead1ae](https://github.com/driftyco/ionic-native/commit/4ead1ae))
+* **launchnavigator:** start parameter is optional ([5e7378a](https://github.com/driftyco/ionic-native/commit/5e7378a))
+* **localnotifications:** options can be an array ([e10d744](https://github.com/driftyco/ionic-native/commit/e10d744))
+* **plugin:** handle rejection when Cordova is undefined ([db07768](https://github.com/driftyco/ionic-native/commit/db07768))
+* **plugin:** remove unecessary code ([4070991](https://github.com/driftyco/ionic-native/commit/4070991))
+* **push plugin:** senderId is optional in iosPushOptions ([48bf837](https://github.com/driftyco/ionic-native/commit/48bf837))
+* **spinnerdialog:** fix functionality ([66f0e03](https://github.com/driftyco/ionic-native/commit/66f0e03))
+* **vibration:** fix plugin reference ([beeb075](https://github.com/driftyco/ionic-native/commit/beeb075)), closes [#106](https://github.com/driftyco/ionic-native/issues/106)
+
+### Features
+
+* **camera:** add camera constants ([ce02d82](https://github.com/driftyco/ionic-native/commit/ce02d82)), closes [#129](https://github.com/driftyco/ionic-native/issues/129)
+* **ionicnative:** add instance wrapper ([0ec737a](https://github.com/driftyco/ionic-native/commit/0ec737a))
+* **keyboard:** add event listeners for keyboard show/hide events ([c947437](https://github.com/driftyco/ionic-native/commit/c947437))
+* **media:** add media plugin ([1105b57](https://github.com/driftyco/ionic-native/commit/1105b57)), closes [#88](https://github.com/driftyco/ionic-native/issues/88)
+* **plugin:** add admob pro plugin ([d9b847b](https://github.com/driftyco/ionic-native/commit/d9b847b)), closes [#146](https://github.com/driftyco/ionic-native/issues/146)
+* **plugin:** add Bluetooth Serial plugin ([837fb95](https://github.com/driftyco/ionic-native/commit/837fb95)), closes [#136](https://github.com/driftyco/ionic-native/issues/136)
+* **plugin:** add email composer plugin ([804c9ee](https://github.com/driftyco/ionic-native/commit/804c9ee))
+* **plugin:** add InAppBrowser plugin ([b8d2cfd](https://github.com/driftyco/ionic-native/commit/b8d2cfd))
+* **plugin:** add social sharing plugin ([efc8231](https://github.com/driftyco/ionic-native/commit/efc8231))
+* **plugin:** add spinner dialog plugin ([812653c](https://github.com/driftyco/ionic-native/commit/812653c))
+* **plugin:** add web intent plugin ([e2fc9a0](https://github.com/driftyco/ionic-native/commit/e2fc9a0))
+* **toast:** add new features to toast plugin ([ed7e783](https://github.com/driftyco/ionic-native/commit/ed7e783))
+* **webintent:** add plugin to index ([f357b56](https://github.com/driftyco/ionic-native/commit/f357b56))
+
+### Performance Improvements
+
+* **ionicnative:** instance wrapper cleanup and optimization ([5a8d48e](https://github.com/driftyco/ionic-native/commit/5a8d48e))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/driftyco/ionic-native/compare/v1.0.9...v1.1.0) (2016-03-17)
 
