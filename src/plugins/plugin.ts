@@ -156,9 +156,7 @@ function wrapObservable(pluginObj:any, methodName:string, args:any[], opts:any =
 }
 
 function callInstance(pluginObj:any, methodName : string, args:any[], opts:any = {}, resolve? : Function, reject? : Function){
-  //if(!systemCheck(null, pluginObj, methodName, resolve, reject)) return;
     args = setIndex(args, opts, resolve, reject);
-     console.log("!====!", pluginObj, methodName, args);
     return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
 }
 
@@ -286,10 +284,8 @@ export function Cordova(opts:any = {}) {
  */
 export function CordovaInstance(opts:any = {}) {
     return (target: Object, methodName: string) => {
-      console.log("P-A", target, methodName, opts);
         return {
             value: function(...args: any[]) {
-              console.log("P-B", ...args);
                 return wrapInstance(this, methodName, opts).apply(this, args);
             }
         }
@@ -306,7 +302,6 @@ export function CordovaProperty(target: Function, key: string, descriptor: Typed
   let originalMethod = descriptor.get;
 
   descriptor.get = function(...args: any[]) {
-    // console.log('Calling', this);
     if(!window.cordova) {
       cordovaWarn(this.name, null);
       return {};
