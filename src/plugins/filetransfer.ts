@@ -179,10 +179,18 @@ export class Transfer {
   }
 
   /**
+   * Registers a listener that gets called whenever a new chunk of data is transferred.
+   * @param {function} Listener that takes a progress event.
+   */
+  onProgress(listener: (event: ProgressEvent) => any): void {
+    this.ft.onprocess = listener;
+  }
+
+  /**
    * Aborts an in-progress transfer. The onerror callback is passed a FileTransferError
    * object which has an error code of FileTransferError.ABORT_ERR.
    */
-  abort() {
+  abort(): void {
      return this.ft.abort();
   }
 
