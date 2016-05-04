@@ -14,7 +14,10 @@ function init {
 }
 
 function run {
-
+  # no need to run on PRs
+  if [ -z $CI_PULL_REQUEST ] then
+    exit 0
+  fi
   if [ ! -d "$SITE_DIR" ]; then
     echo "checking out"
     cd ./scripts
