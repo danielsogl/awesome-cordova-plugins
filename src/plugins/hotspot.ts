@@ -44,16 +44,16 @@ export class Hotspot {
   static getAllHotspotDevices(): Promise<any> {return; }
 
   @Cordova()
-  static connectToHotspot(ssid, password): Promise<any> {return; }
+  static connectToHotspot(ssid: string, password: string): Promise<any> {return; }
 
   @Cordova()
-  static connectToWifiAuthEncrypt(ssid, password, authentication, encryption): Promise<any> {return; }
+  static connectToWifiAuthEncrypt(ssid: string, password: string, authentication, encryption): Promise<any> {return; }
 
   @Cordova()
-  static addWifiNetwork(ssid, mode, password): Promise<any> {return; }
+  static addWifiNetwork(ssid: string, mode, password): Promise<any> {return; }
 
   @Cordova()
-  static removeWifiNetwork(ssid): Promise<any> {return; }
+  static removeWifiNetwork(ssid: string): Promise<any> {return; }
 
   @Cordova()
   static isConnectedToInternet(): Promise<any> {return; }
@@ -77,7 +77,7 @@ export class Hotspot {
   static scanWifiByLevel(): Promise<any> {return; }
 
   @Cordova()
-  static startPeriodicallyScan(interval, duration): Promise<any> {return; }
+  static startPeriodicallyScan(interval: number, duration: number): Promise<any> {return; }
 
   @Cordova()
   static stopPeriodicallyScan(): Promise<any> {return; }
@@ -89,16 +89,16 @@ export class Hotspot {
   static getConnectionInfo(): Promise<any> {return; }
 
   @Cordova()
-  static pingHost(ip): Promise<any> {return; }
+  static pingHost(ip: string): Promise<any> {return; }
 
   @Cordova()
-  static getMacAddressOfHost(ip): Promise<any> {return; }
+  static getMacAddressOfHost(ip: string): Promise<any> {return; }
 
   @Cordova()
-  static isDnsLive(ip): Promise<any> {return; }
+  static isDnsLive(ip: string): Promise<any> {return; }
 
   @Cordova()
-  static isPortLife(ip): Promise<any> {return; }
+  static isPortLife(ip: string): Promise<any> {return; }
 
   @Cordova()
   static isRooted(): Promise<any> {return; }
