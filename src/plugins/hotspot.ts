@@ -1,5 +1,10 @@
 import {Plugin, Cordova} from './plugin';
 
+import {Network} from './network.model';
+import {NetworkConfig} from './network-config.model';
+import {ConnectionInfo} from './connection-info.model';
+import {HotspotDevice} from './hotspot-device.model';
+
 /**
  * @name Hotspot
  * @description
@@ -23,58 +28,139 @@ export class Hotspot {
   static isAvailable(): Promise<boolean> {return; }
 
   @Cordova()
-  static toggleWifi(): Promise<any> {return; }
+  static toggleWifi(): Promise<boolean> {return; }
+
+  /**
+   * Configures and starts hotspot with SSID and Password
+   *
+   * @param {string}    SSID        - SSID of your new Access Point
+   * @param {string}    mode        - encryption mode (Open, WEP, WPA, WPA_PSK)
+   * @param {string}    password    - password for your new Access Point
+   *
+   * @return {Promise<void>}        - Promise to call once hotspot is started, or reject upon failure
+   */
+  @Cordova()
+  static createHotspot(ssid: string, mode: string, password: string): Promise<void> {return; }
+
+  /**
+   * Turns on Access Point
+   *
+   * @return {Promise<boolean>} - true if AP is started
+   */
+  @Cordova()
+  static startHotspot(): Promise<boolean> {return; }
+
+  /**
+   * Configures hotspot with SSID and Password
+   *
+   * @param {string}    SSID        - SSID of your new Access Point
+   * @param {string}    mode        - encryption mode (Open, WEP, WPA, WPA_PSK)
+   * @param {string}    password    - password for your new Access Point
+   *
+   * @return {Promise<void>}        - Promise to call when hotspot is configured, or reject upon failure
+   */
+  @Cordova()
+  static configureHotspot(ssid: string, mode: string, password: string): Promise<void> {return; }
+
+  /**
+   * Turns off Access Point
+   *
+   * @return {Promise<boolean>} - Promise to turn off the hotspot, true on success, false on failure
+   */
+  @Cordova()
+  static stopHotspot(): Promise<boolean> {return; }
+
+  /**
+   * Checks if hotspot is enabled
+   *
+   * @return {Promise<void>}    - Promise that hotspot is enabled, rejected if it is not enabled
+   */
+  @Cordova()
+  static isHotspotEnabled(): Promise<void> {return; }
 
   @Cordova()
-  static createHotspot(ssid: string, mode: string, password: string): Promise<any> {return; }
+  static getAllHotspotDevices(): Promise<Array<HotspotDevice>> {return; }
+
+  /**
+   * Connect to a WiFi network
+   *
+   * @param {string}    ssid
+   *      SSID to connect
+   * @param {string}    password
+   *      password to use
+   *
+   * @return {Promise<void>}
+   *      Promise that connection to the WiFi network was successfull, rejected if unsuccessful
+   */
+  @Cordova()
+  static connectToHotspot(ssid: string, password: string): Promise<void> {return; }
+
+   /**
+    * Connect to a WiFi network
+    *
+    * @param {string}   ssid
+    *      SSID to connect
+    * @param {string}   password
+    *      Password to use
+    * @param {string}   authentication
+    *      Authentication modes to use (LEAP, SHARED, OPEN)
+    * @param {string[]} encryption
+    *      Encryption modes to use (CCMP, TKIP, WEP104, WEP40)
+    *
+    * @return {Promise<void>}
+    *      Promise that connection to the WiFi network was successfull, rejected if unsuccessful
+    */
+  @Cordova()
+  static connectToWifiAuthEncrypt(ssid: string, password: string, authentication: string, encryption: Array<string>): Promise<void> {return; }
+
+  /**
+   * Add a WiFi network
+   *
+   * @param {string}    ssid
+   *      SSID of network
+   * @param {string}    mode
+   *      Authentication mode of (Open, WEP, WPA, WPA_PSK)
+   * @param {string}    password
+   *      Password for network
+   *
+   * @return {Promise<void>}
+   *      Promise that adding the WiFi network was successfull, rejected if unsuccessful
+   */
+  @Cordova()
+  static addWifiNetwork(ssid: string, mode: string, password: string): Promise<void> {return; }
+
+  /**
+   * Remove a WiFi network
+   *
+   * @param {string}    ssid
+   *      SSID of network
+   *
+   * @return {Promise<void>}
+   *      Promise that removing the WiFi network was successfull, rejected if unsuccessful
+   */
+  @Cordova()
+  static removeWifiNetwork(ssid: string): Promise<void> {return; }
 
   @Cordova()
-  static startHotspot(): Promise<any> {return; }
+  static isConnectedToInternet(): Promise<boolean> {return; }
 
   @Cordova()
-  static configureHotspot(ssid: string, mode: string, password: string): Promise<any> {return; }
+  static isConnectedToInternetViaWifi(): Promise<boolean> {return; }
 
   @Cordova()
-  static stopHotspot(): Promise<any> {return; }
+  static isWifiOn(): Promise<boolean> {return; }
 
   @Cordova()
-  static isHotspotEnabled(): Promise<any> {return; }
+  static isWifiSupported(): Promise<boolean> {return; }
 
   @Cordova()
-  static getAllHotspotDevices(): Promise<any> {return; }
+  static isWifiDirectSupported(): Promise<boolean> {return; }
 
   @Cordova()
-  static connectToHotspot(ssid: string, password: string): Promise<any> {return; }
+  static scanWifi(): Promise<Array<Network>> {return; }
 
   @Cordova()
-  static connectToWifiAuthEncrypt(ssid: string, password: string, authentication, encryption): Promise<any> {return; }
-
-  @Cordova()
-  static addWifiNetwork(ssid: string, mode, password): Promise<any> {return; }
-
-  @Cordova()
-  static removeWifiNetwork(ssid: string): Promise<any> {return; }
-
-  @Cordova()
-  static isConnectedToInternet(): Promise<any> {return; }
-
-  @Cordova()
-  static isConnectedToInternetViaWifi(): Promise<any> {return; }
-
-  @Cordova()
-  static isWifiOn(): Promise<any> {return; }
-
-  @Cordova()
-  static isWifiSupported(): Promise<any> {return; }
-
-  @Cordova()
-  static isWifiDirectSupported(): Promise<any> {return; }
-
-  @Cordova()
-  static scanWifi(): Promise<any> {return; }
-
-  @Cordova()
-  static scanWifiByLevel(): Promise<any> {return; }
+  static scanWifiByLevel(): Promise<Array<Network>> {return; }
 
   @Cordova()
   static startPeriodicallyScan(interval: number, duration: number): Promise<any> {return; }
@@ -83,24 +169,50 @@ export class Hotspot {
   static stopPeriodicallyScan(): Promise<any> {return; }
 
   @Cordova()
-  static getNetConfig(): Promise<any> {return; }
+  static getNetConfig(): Promise<NetworkConfig> {return; }
 
   @Cordova()
-  static getConnectionInfo(): Promise<any> {return; }
+  static getConnectionInfo(): Promise<ConnectionInfo> {return; }
 
   @Cordova()
-  static pingHost(ip: string): Promise<any> {return; }
+  static pingHost(ip: string): Promise<string> {return; }
 
+  /**
+   * Gets MAC Address associated with IP Address from ARP File
+   *
+   * @param {string}        ip  - IP Address that you want the MAC Address of
+   *
+   * @return {Promise<string>}  - A Promise for the MAC Address
+   */
   @Cordova()
-  static getMacAddressOfHost(ip: string): Promise<any> {return; }
+  static getMacAddressOfHost(ip: string): Promise<string> {return; }
 
+  /**
+   * Checks if IP is live using DNS
+   *
+   * @param {string}        ip  - IP Address you want to test
+   *
+   * @return {Promise<boolean>} - A Promise for whether the IP Address is reachable
+   */
   @Cordova()
-  static isDnsLive(ip: string): Promise<any> {return; }
+  static isDnsLive(ip: string): Promise<boolean> {return; }
 
+  /**
+   * Checks if IP is live using socket And PORT
+   *
+   * @param {string}        ip  - IP Address you want to test
+   *
+   * @return {Promise<boolean>} - A Promise for whether the IP Address is reachable
+   */
   @Cordova()
-  static isPortLife(ip: string): Promise<any> {return; }
+  static isPortLife(ip: string): Promise<boolean> {return; }
 
+  /**
+   * Checks if device is rooted
+   *
+   * @return {Promise<boolean>} - A Promise for whether the device is rooted
+   */
   @Cordova()
-  static isRooted(): Promise<any> {return; }
+  static isRooted(): Promise<boolean> {return; }
 
 }
