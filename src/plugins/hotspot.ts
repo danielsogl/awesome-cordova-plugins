@@ -10,9 +10,13 @@ import {HotspotDevice} from './hotspot-device.model';
  * @description
  * @usage
  * ```js
- * import {Hotspot} from 'ionic-native';
+ * import {Hotspot, Network} from 'ionic-native';
  *
- *
+ * ...
+ *     Hotspot.scanWifi().then((networks: Array<Network>) => {
+ *         console.log(networks);
+ *     });
+ * ...
  *
  * ```
  */

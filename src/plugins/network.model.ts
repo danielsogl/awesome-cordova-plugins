@@ -1,3 +1,8 @@
+/**
+ * @name Network
+ * @description
+ *      Based on [ScanResult](http://developer.android.com/reference/android/net/wifi/ScanResult.html)
+ */
 export class Network {
     /**
      * @property {string}       SSID

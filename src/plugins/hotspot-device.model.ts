@@ -1,3 +1,6 @@
+/**
+ * @name HotspotDevice
+ */
 export class HotspotDevice {
     /**
      * @property {string}   ip

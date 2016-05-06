@@ -1,3 +1,6 @@
+/**
+ * @name ConnectionInfo
+ */
 export class NetworkConfig {
     /**
      * @property {string}   deviceIPAddress - Device IP Address

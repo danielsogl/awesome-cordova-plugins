@@ -1,3 +1,6 @@
+/**
+ * @name ConnectionInfo
+ */
 export class ConnectionInfo {
     /**
      * @property {string}   SSID
