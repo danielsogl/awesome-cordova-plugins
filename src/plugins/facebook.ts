@@ -20,7 +20,7 @@ import {Plugin, Cordova} from './plugin';
  * Then type in the following command in your Terminal, where APP_ID and APP_NAME are the values from the Facebook Developer portal.
  *
  * ```bash
- *  cordova plugin add cordova-plugin-facebook4 --save --variable APP_ID="123456789" --variable APP_NAME="myApplication"
+ *  ionic plugin add cordova-plugin-facebook4 --save --variable APP_ID="123456789" --variable APP_NAME="myApplication"
  * ```
  *
  * After, you'll need to add the native platforms you'll be using to your app in the Facebook Developer portal under your app's Settings:
