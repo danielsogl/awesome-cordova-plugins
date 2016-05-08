@@ -155,7 +155,7 @@ export class Transfer {
         resolve(result);
       }, (err: FileTransferError) => {
         reject(err);
-      });
+      }, options, trustAllHosts);
     });
   }
 
