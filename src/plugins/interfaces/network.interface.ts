@@ -3,7 +3,7 @@
  * @description
  *      Based on [ScanResult](http://developer.android.com/reference/android/net/wifi/ScanResult.html)
  */
-export class Network {
+export interface Network {
     /**
      * @property {string}       SSID
      *      Human readable network name

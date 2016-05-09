@@ -1,7 +1,7 @@
 /**
  * @name ConnectionInfo
  */
-export class NetworkConfig {
+export interface NetworkConfig {
     /**
      * @property {string}   deviceIPAddress - Device IP Address
      */

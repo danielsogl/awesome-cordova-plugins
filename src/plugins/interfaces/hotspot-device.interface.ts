@@ -1,7 +1,7 @@
 /**
  * @name HotspotDevice
  */
-export class HotspotDevice {
+export interface HotspotDevice {
     /**
      * @property {string}   ip
      *      Hotspot IP Address

@@ -1,7 +1,7 @@
 /**
  * @name ConnectionInfo
  */
-export class ConnectionInfo {
+export interface ConnectionInfo {
     /**
      * @property {string}   SSID
      *      The service set identifier (SSID) of the current 802.11 network.
