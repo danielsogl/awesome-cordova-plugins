@@ -97,7 +97,7 @@ export class Hotspot {
    *      Promise that connection to the WiFi network was successfull, rejected if unsuccessful
    */
   @Cordova()
-  static connectToHotspot(ssid: string, password: string): Promise<void> {return; }
+  static connectToWifi(ssid: string, password: string): Promise<void> {return; }
 
    /**
     * Connect to a WiFi network
@@ -167,10 +167,10 @@ export class Hotspot {
   static scanWifiByLevel(): Promise<Array<Network>> {return; }
 
   @Cordova()
-  static startPeriodicallyScan(interval: number, duration: number): Promise<any> {return; }
+  static startWifiPeriodicallyScan(interval: number, duration: number): Promise<any> {return; }
 
   @Cordova()
-  static stopPeriodicallyScan(): Promise<any> {return; }
+  static stopWifiPeriodicallyScan(): Promise<any> {return; }
 
   @Cordova()
   static getNetConfig(): Promise<NetworkConfig> {return; }
@@ -209,7 +209,7 @@ export class Hotspot {
    * @return {Promise<boolean>} - A Promise for whether the IP Address is reachable
    */
   @Cordova()
-  static isPortLife(ip: string): Promise<boolean> {return; }
+  static isPortLive(ip: string): Promise<boolean> {return; }
 
   /**
    * Checks if device is rooted
