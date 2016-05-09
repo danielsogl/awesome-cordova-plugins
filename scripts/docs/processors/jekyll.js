@@ -17,8 +17,9 @@ module.exports = function jekyll(renderDocsProcessor) {
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
       });
       docs.forEach(function(doc, i) {
-        docs[i].URL = doc.outputPath.replace('docs/v2//','docs/v2/')
-                                    .replace('/index.md','');
+        doc.outputPath = doc.outputPath.toLowerCase().replace(' ', '-');
+        docs[i].URL = doc.outputPath.replace('docs/v2//', 'docs/v2/')
+                                    .replace('/index.md', '');
       });
 
       docs.push({
