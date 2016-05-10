@@ -118,7 +118,7 @@ export class File {
   }
 
   /**
-   * Remove a directory at a given path
+   * Remove a directory at a given path.
    *
    * @param {string} path The path to the directory
    * @param {string} dirName The directory name
@@ -158,7 +158,7 @@ export class File {
   }
 
   /**
-   * Move a directory to a given path
+   * Move a directory to a given path.
    *
    * @param {string} path The source path to the directory
    * @param {string} dirName The source directory name
@@ -252,7 +252,7 @@ export class File {
   }
 
   /**
-   * List files and directory from a given path
+   * List files and directory from a given path.
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} dirName Name of directory
