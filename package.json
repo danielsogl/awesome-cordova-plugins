@@ -1,6 +1,6 @@
 {
   "name": "ionic-native",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "main": "dist/index.js",
   "directories": {
