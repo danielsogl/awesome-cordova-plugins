@@ -11,6 +11,7 @@ import {AppAvailability} from './plugins/appavailability';
 import {AppRate} from './plugins/apprate';
 import {AppVersion} from './plugins/appversion';
 import {Badge} from './plugins/badge';
+import {BackgroundGeolocation} from './plugins/background-geolocation';
 import {BarcodeScanner} from './plugins/barcodescanner';
 import {Base64ToGallery} from './plugins/base64togallery';
 import {BatteryStatus} from './plugins/batterystatus';

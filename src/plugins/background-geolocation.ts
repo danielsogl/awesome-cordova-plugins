@@ -67,7 +67,7 @@ export interface Location {
   timestamp: number;
 }
 
-export interface BGeoOptions {
+export interface Config {
 
   /**
    * Desired accuracy in meters. Possible values [0, 10, 100, 1000]. The lower
@@ -169,44 +169,44 @@ export interface BGeoOptions {
  * // When device is ready :
  * platform.ready().then(() => {
  *
- *     // BackgroundGeoLocation is highly configurable. See platform specific configuration options
+ *     // BackgroundGeolocation is highly configurable. See platform specific configuration options
  *     BackgroundGeolocation.configure(
  *         (location) => {
- *             console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
+ *             console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
  *             /*
  *             IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
  *             and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
  *             IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
  *             */
- *             backgroundGeoLocation.finish();
+ *             BackgroundGeolocation.finish();
  *         },
  *         (error) => {
- *             console.log('BackgroundGeoLocation error');
+ *             console.log('BackgroundGeolocation error');
  *         },
  *         {
  *             desiredAccuracy: 10,
  *             stationaryRadius: 20,
  *             distanceFilter: 30,
- *             debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
- *             stopOnTerminate: false, // <-- enable this to clear background location settings when the app terminates
+ *             debug: true, //  enable this hear sounds for background-geolocation life-cycle.
+ *             stopOnTerminate: false, // enable this to clear background location settings when the app terminates
  *         }
  *     );
  *
  *     // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
- *     BackgroundGeoLocation.start();
+ *     BackgroundGeolocation.start();
  * }
  *
  * // If you wish to turn OFF background-tracking, call the #stop method.
- * BackgroundGeoLocation.stop();
+ * BackgroundGeolocation.stop();
  *
  * ```
  */
 @Plugin({
   plugin: 'cordova-plugin-mauron85-background-geolocation',
-  pluginRef: 'plugins.backgroundGeoLocation', // ????? see line 213 at https://github.com/mauron85/cordova-plugin-background-geolocation/blob/master/www/backgroundGeoLocation.js
+  pluginRef: 'plugins.backgroundGeolocation', // ????? see line 213 at https://github.com/mauron85/cordova-plugin-background-geolocation/blob/master/www/backgroundGeoLocation.js
   repo: 'https://github.com/mauron85/cordova-plugin-background-geolocation'
 })
-export class BackgroundGeoLocation {
+export class BackgroundGeolocation {
 
   /**
    * Configure the plugin.
@@ -218,10 +218,68 @@ export class BackgroundGeoLocation {
    *
    * Options a json object of type BGeoOptions
    */
-  @Cordova({
-    callbackOrder: 'reverse'
-  })
+// NOT SURE ABOUT THE TYPE OF RETURNED OBJECT
+// https://github.com/mauron85/cordova-plugin-background-geolocation/blob/master/src/android/BackgroundGeolocationPlugin.java
+  @Cordova()
   static configure(options: BGeoOptions): Promise<Location> { return; }
+
+
+  /**
+   * Turn ON the background-geolocation system.  
+   * The user will be tracked whenever they suspend the app.
+   */
+  @Cordova()   
+  static start(): boolean { return; }
+
+
+  /**
+   * Turn OFF background-tracking
+   */
+  @Cordova()   
+  static stop(): boolean { return; }
+
+  /**
+   * Inform the native plugin that you're finished, the background-task may be completed
+   */
+  @Cordova()   
+  static finish(): boolean { return; }
+
+
+  /**
+   * Force the plugin to enter "moving" or "stationary" state
+   */
+  @Cordova()   
+  static changePace(isMoving: boolean): boolean { return; }
+
+
+  /**
+   * Setup configuration
+   */
+  @Cordova()   
+  static setConfig(options: Config): boolean { return; }
+
+//  /**
+//   * Returns current stationaryLocation if available. null if not
+//   */
+//  @Cordova()   
+//  static getStationaryLocation(): boolean { return; }
+
+  /**
+   * Add a stationary-region listener. Whenever the devices enters "stationary-mode", 
+   * your #success callback will be executed with #location param containing #radius of region
+   */
+  @Cordova()   
+  static setConfig(options: Config): boolean { return; }
+
+
+
+
+
+
+
+  
+
+
 
 //  /**
 //   * Get the device's current position.
