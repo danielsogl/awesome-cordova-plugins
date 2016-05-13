@@ -50,11 +50,11 @@ export class File {
     if ((/^\//.test(dir))) {
       rejectFn('directory cannot start with \/');
     }
-    
-    if (!(/\/$/.test(noSlash))) {
-      path += "/";
+
+    if (!(/\/$/.test(dir))) {
+      path += '/';
     }
-    
+
     try {
       var directory = path + dir;
 
@@ -355,10 +355,10 @@ export class File {
       rejectFn('file cannot start with \/');
     }
 
-    if (!(/\/$/.test(noSlash))) {
-      path += "/";
+    if (!(/\/$/.test(file))) {
+      path += '/';
     }
-    
+
     try {
       var directory = path + file;
 
@@ -499,7 +499,7 @@ export class File {
               } else {
                 rejectFn({code: null, message: 'READER_ONLOADEND_ERR'});
               }
-            }
+            };
 
             reader.readAsText(file);
           }, function (error) {
