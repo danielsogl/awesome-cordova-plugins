@@ -50,7 +50,11 @@ export class File {
     if ((/^\//.test(dir))) {
       rejectFn('directory cannot start with \/');
     }
-
+    
+    if (!(/\/$/.test(noSlash))) {
+      path += "/";
+    }
+    
     try {
       var directory = path + dir;
 
@@ -351,6 +355,10 @@ export class File {
       rejectFn('file cannot start with \/');
     }
 
+    if (!(/\/$/.test(noSlash))) {
+      path += "/";
+    }
+    
     try {
       var directory = path + file;
 
