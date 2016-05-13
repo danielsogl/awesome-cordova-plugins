@@ -16,29 +16,27 @@ export class BluetoothSerial {
 
   /**
    * Connect to a Bluetooth device
+   * Returns an Observable. Subscribe to connect, unsubscribe to disconnect.
    * @param macAddress_or_uuid Identifier of the remote device
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone']
+    platforms: ['Android', 'iOS', 'Windows Phone'],
+    observable: true,
+    clearFunction: 'disconnect'
   })
-  static connect (macAddress_or_uuid: string): Promise<any> {return; }
+  static connect (macAddress_or_uuid: string): Observable<any> {return; }
 
   /**
    * Connect insecurely to a Bluetooth device
+   * Returns an Observable. Subscribe to connect, unsubscribe to disconnect.
    * @param macAddress Identifier of the remote device
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
+    observable: true,
+    clearFunction: 'disconnect'
   })
-  static connectInsecure (macAddress: string): Promise<any> {return; }
-
-  /**
-   * Disconnect
-   */
-  @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone']
-  })
-  static disconnect (): Promise<any> {return; }
+  static connectInsecure (macAddress: string): Observable<any> {return; }
 
   /**
    * Writes data to the serial port
