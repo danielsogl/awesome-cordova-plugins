@@ -1,5 +1,4 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import {Plugin, CordovaInstance} from './plugin';
 
 declare var FileTransfer;
 
@@ -134,10 +133,10 @@ export class Transfer {
   public static ABORT_ERR: number = 4;
   public static NOT_MODIFIED_ERR: number = 4;
 
-  ft: any;
+  private _objectInstance: any;
 
   constructor() {
-    this.ft = new FileTransfer();
+    this._objectInstance = new FileTransfer();
   }
 
   /**
@@ -149,14 +148,12 @@ export class Transfer {
    * @param {boolean} trustAllHosts: Optional parameter, defaults to false. If set to true, it accepts all security certificates. This is useful since Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS.
    * @return Returns a Promise that resolves to a FileUploadResult and rejects with FileTransferError.
    */
+  @CordovaInstance({
+    successIndex: 2,
+    errorIndex: 3
+  })
   upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult> {
-    return new Promise((resolve, reject) => {
-      this.ft.upload(fileUrl, url, (result: FileUploadResult) => {
-        resolve(result);
-      }, (err: FileTransferError) => {
-        reject(err);
-      }, options, trustAllHosts);
-    });
+    return;
   }
 
   /**
@@ -168,30 +165,30 @@ export class Transfer {
    * @param {object} Optional parameters, currently only supports headers (such as Authorization (Basic Authentication), etc).
    * @return Returns a Promise that resolves to a FileEntry object.
    */
+  @CordovaInstance({
+    successIndex: 2,
+    errorIndex: 3
+  })
   download(source: string, target: string, trustAllHosts?: boolean, options?: { [s: string]: any; }): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.ft.download(source, target, (result: any) => {
-        resolve(result);
-      }, (err: FileTransferError) => {
-        reject(err);
-      }, trustAllHosts, options);
-    })
+    return;
   }
 
   /**
    * Registers a listener that gets called whenever a new chunk of data is transferred.
    * @param {function} Listener that takes a progress event.
    */
+
   onProgress(listener: (event: ProgressEvent) => any): void {
-    this.ft.onprocess = listener;
+    this._objectInstance.onprogress = listener;
   }
 
   /**
    * Aborts an in-progress transfer. The onerror callback is passed a FileTransferError
    * object which has an error code of FileTransferError.ABORT_ERR.
    */
-  abort(): void {
-     return this.ft.abort();
-  }
+  @CordovaInstance({
+    sync: true
+  })
+  abort(): void {}
 
 }
