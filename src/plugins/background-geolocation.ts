@@ -217,9 +217,9 @@ export class BackgroundGeolocation {
    *
    * Options a json object of type Config
    */
-// NOT SURE ABOUT THE TYPE OF RETURNED OBJECT
-// https://github.com/mauron85/cordova-plugin-background-geolocation/blob/master/src/android/BackgroundGeolocationPlugin.java
-  @Cordova()
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
   static configure(options: Config): Promise<Location> { return; }
 
 
@@ -228,35 +228,39 @@ export class BackgroundGeolocation {
    * The user will be tracked whenever they suspend the app.
    */
   @Cordova()
-  static start(): boolean { return; }
+  static start() { }
 
 
   /**
    * Turn OFF background-tracking
    */
   @Cordova()
-  static stop(): boolean { return; }
+  static stop(): Promise<any> { return; }
 
 
   /**
    * Inform the native plugin that you're finished, the background-task may be completed
+   * Method implemented for IOS
    */
   @Cordova()
-  static finish(): boolean { return; }
+  static finish() { }
 
 
   /**
    * Force the plugin to enter "moving" or "stationary" state
+   * Used
    */
   @Cordova()
-  static changePace(isMoving: boolean): boolean { return; }
+  static changePace(isMoving: boolean) { }
 
 
   /**
    * Setup configuration
    */
-  @Cordova()
-  static setConfig(options: Config): boolean { return; }
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  static setConfig(options: Config): Promise<any> { return; }
 
 //  /**
 //   * Returns current stationaryLocation if available. null if not
@@ -273,16 +277,16 @@ export class BackgroundGeolocation {
 
   /**
    * Check if location is enabled on the device
-   * @returns {Promise<int>} Returns a promise with int argument that takes values 0, 1 (true).
+   * @returns {Promise<number>} Returns a promise with int argument that takes values 0, 1 (true).
    */
   @Cordova()
-  static isLocationEnabled(): Promise<int> { return; }
+  static isLocationEnabled(): Promise<number> { return; }
 
   /**
    * Display device location settings
    */
   @Cordova()
-  static showLocationSettings(): boolean { return; }
+  static showLocationSettings() { }
 
 //  /**
 //   *
@@ -316,10 +320,10 @@ export class BackgroundGeolocation {
 //  static deleteAllLocations(): boolean { return; }
 
 
-//  /**
-//   *
-//   */
-//  @Cordova()
-//  static apply(): boolean { return; }
+  /**
+   *
+   */
+  @Cordova()
+  static apply(destination: Config, source: Config): Config { return; }
 
 }
