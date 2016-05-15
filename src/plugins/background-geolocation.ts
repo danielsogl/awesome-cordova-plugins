@@ -173,11 +173,10 @@ export interface Config {
  *     BackgroundGeolocation.configure(
  *         (location) => {
  *             console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
- *             /*
- *             IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
- *             and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
- *             IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
- *             */
+ *
+ *             // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
+ *             // and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
+ *             // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
  *             BackgroundGeolocation.finish();
  *         },
  *         (error) => {
@@ -203,7 +202,7 @@ export interface Config {
  */
 @Plugin({
   plugin: 'cordova-plugin-mauron85-background-geolocation',
-  pluginRef: 'plugins.backgroundGeolocation', // ????? see line 213 at https://github.com/mauron85/cordova-plugin-background-geolocation/blob/master/www/backgroundGeoLocation.js
+  pluginRef: 'plugins.backgroundGeoLocation', // ????? see line 213 at https://github.com/mauron85/cordova-plugin-background-geolocation/blob/master/www/backgroundGeoLocation.js
   repo: 'https://github.com/mauron85/cordova-plugin-background-geolocation'
 })
 export class BackgroundGeolocation {
@@ -216,102 +215,111 @@ export class BackgroundGeolocation {
    *
    * Fail callback to be executed every time a geolocation error occurs.
    *
-   * Options a json object of type BGeoOptions
+   * Options a json object of type Config
    */
 // NOT SURE ABOUT THE TYPE OF RETURNED OBJECT
 // https://github.com/mauron85/cordova-plugin-background-geolocation/blob/master/src/android/BackgroundGeolocationPlugin.java
   @Cordova()
-  static configure(options: BGeoOptions): Promise<Location> { return; }
+  static configure(options: Config): Promise<Location> { return; }
 
 
   /**
-   * Turn ON the background-geolocation system.  
+   * Turn ON the background-geolocation system.
    * The user will be tracked whenever they suspend the app.
    */
-  @Cordova()   
+  @Cordova()
   static start(): boolean { return; }
 
 
   /**
    * Turn OFF background-tracking
    */
-  @Cordova()   
+  @Cordova()
   static stop(): boolean { return; }
+
 
   /**
    * Inform the native plugin that you're finished, the background-task may be completed
    */
-  @Cordova()   
+  @Cordova()
   static finish(): boolean { return; }
 
 
   /**
    * Force the plugin to enter "moving" or "stationary" state
    */
-  @Cordova()   
+  @Cordova()
   static changePace(isMoving: boolean): boolean { return; }
 
 
   /**
    * Setup configuration
    */
-  @Cordova()   
+  @Cordova()
   static setConfig(options: Config): boolean { return; }
 
 //  /**
 //   * Returns current stationaryLocation if available. null if not
 //   */
-//  @Cordova()   
+//  @Cordova()
 //  static getStationaryLocation(): boolean { return; }
 
+//  /**
+//   * Add a stationary-region listener. Whenever the devices enters "stationary-mode",
+//   * your #success callback will be executed with #location param containing #radius of region
+//   */
+//  @Cordova()
+//  static onStationary(options: Config): boolean { return; }
+
   /**
-   * Add a stationary-region listener. Whenever the devices enters "stationary-mode", 
-   * your #success callback will be executed with #location param containing #radius of region
+   * Check if location is enabled on the device
+   * @returns {Promise<int>} Returns a promise with int argument that takes values 0, 1 (true).
    */
-  @Cordova()   
-  static setConfig(options: Config): boolean { return; }
+  @Cordova()
+  static isLocationEnabled(): Promise<int> { return; }
 
+  /**
+   * Display device location settings
+   */
+  @Cordova()
+  static showLocationSettings(): boolean { return; }
 
+//  /**
+//   *
+//   */
+//  @Cordova()
+//  static watchLocationMode(): boolean { return; }
 
+//  /**
+//   *
+//   */
+//  @Cordova()
+//  static stopWatchingLocationMode(): boolean { return; }
 
-
-
-
-  
-
+//  /**
+//   *
+//   */
+//  @Cordova()
+//  static getLocations(): boolean { return; }
 
 
 //  /**
-//   * Get the device's current position.
 //   *
-//   * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
-//   * @return Returns a Promise that resolves with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or rejects with an error.
 //   */
-//  @Cordova({
-//    callbackOrder: 'reverse'
-//  })
-//  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return; }
-//
+//  @Cordova()
+//  static deleteLocation(): boolean { return; }
+
 //  /**
-//   * Watch the current device's position.  Clear the watch by unsubscribing from
-//   * Observable changes.
 //   *
-//   * ```ts
-//   * var subscription = Geolocation.watchPosition().subscribe(position => {
-//   *   console.log(position.coords.longitude + ' ' + position.coords.latitude);
-//   * });
-//   *
-//   * // To stop notifications
-//   * subscription.unsubscribe();
-//   * ```
-//   *
-//   * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
-//   * @return Returns an Observable that notifies with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or errors.
 //   */
-//  @Cordova({
-//    callbackOrder: 'reverse',
-//    observable: true,
-//    clearFunction: 'clearWatch'
-//  })
-//  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return; }
+//  @Cordova()
+//  static deleteAllLocations(): boolean { return; }
+
+
+//  /**
+//   *
+//   */
+//  @Cordova()
+//  static apply(): boolean { return; }
+
 }
