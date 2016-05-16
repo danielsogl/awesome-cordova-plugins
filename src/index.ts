@@ -39,6 +39,7 @@ import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
 import {ImagePicker} from './plugins/imagepicker';
 import {InAppBrowser} from './plugins/inappbrowser';
+import {Insomnia} from './plugins/insomnia';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
@@ -93,6 +94,7 @@ export {
   Hotspot,
   ImagePicker,
   InAppBrowser,
+  Insomnia,
   Keyboard,
   LaunchNavigator,
   LocalNotifications,
@@ -104,7 +106,7 @@ export {
   SocialSharing,
   SpinnerDialog,
   Splashscreen,
-    SQLite,
+  SQLite,
   StatusBar,
   Toast,
   TouchID,
@@ -146,7 +148,7 @@ window['IonicNative'] = {
   Flashlight: Flashlight,
   Geolocation: Geolocation,
   Globalization: Globalization,
-    GoogleMaps : GoogleMaps,
+  GoogleMaps : GoogleMaps,
   GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
   ImagePicker: ImagePicker,
@@ -162,7 +164,7 @@ window['IonicNative'] = {
   SocialSharing: SocialSharing,
   SpinnerDialog: SpinnerDialog,
   Splashscreen: Splashscreen,
-    SQLite: SQLite,
+  SQLite: SQLite,
   StatusBar: StatusBar,
   Toast: Toast,
   TouchID: TouchID,
