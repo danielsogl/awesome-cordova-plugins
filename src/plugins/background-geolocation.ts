@@ -228,7 +228,7 @@ export class BackgroundGeolocation {
    * The user will be tracked whenever they suspend the app.
    */
   @Cordova()
-  static start() { }
+  static start(): Promise<any> { return; }
 
 
   /**
@@ -240,7 +240,7 @@ export class BackgroundGeolocation {
 
   /**
    * Inform the native plugin that you're finished, the background-task may be completed
-   * Method implemented for IOS
+   * NOTE: IOS, WP only
    */
   @Cordova()
   static finish() { }
@@ -248,7 +248,7 @@ export class BackgroundGeolocation {
 
   /**
    * Force the plugin to enter "moving" or "stationary" state
-   * Used
+   * NOTE: IOS, WP only
    */
   @Cordova()
   static changePace(isMoving: boolean) { }
@@ -262,22 +262,25 @@ export class BackgroundGeolocation {
   })
   static setConfig(options: Config): Promise<any> { return; }
 
-//  /**
-//   * Returns current stationaryLocation if available. null if not
-//   */
-//  @Cordova()
-//  static getStationaryLocation(): boolean { return; }
+  /**
+   * Returns current stationaryLocation if available. null if not
+   * NOTE: IOS, WP only
+   */
+  @Cordova()
+  static getStationaryLocation(): Promise<Location> { return; }
 
-//  /**
-//   * Add a stationary-region listener. Whenever the devices enters "stationary-mode",
-//   * your #success callback will be executed with #location param containing #radius of region
-//   */
-//  @Cordova()
-//  static onStationary(options: Config): boolean { return; }
+  /**
+   * Add a stationary-region listener. Whenever the devices enters "stationary-mode",
+   * your #success callback will be executed with #location param containing #radius of region
+   * NOTE: IOS, WP only
+   */
+  @Cordova()
+  static onStationary(): Promise<any> { return; }
 
   /**
    * Check if location is enabled on the device
    * @returns {Promise<number>} Returns a promise with int argument that takes values 0, 1 (true).
+   * NOTE: ANDROID only
    */
   @Cordova()
   static isLocationEnabled(): Promise<number> { return; }
@@ -288,42 +291,46 @@ export class BackgroundGeolocation {
   @Cordova()
   static showLocationSettings() { }
 
-//  /**
-//   *
-//   */
-//  @Cordova()
-//  static watchLocationMode(): boolean { return; }
-
-//  /**
-//   *
-//   */
-//  @Cordova()
-//  static stopWatchingLocationMode(): boolean { return; }
-
-//  /**
-//   *
-//   */
-//  @Cordova()
-//  static getLocations(): boolean { return; }
-
-
-//  /**
-//   *
-//   */
-//  @Cordova()
-//  static deleteLocation(): boolean { return; }
-
-//  /**
-//   *
-//   */
-//  @Cordova()
-//  static deleteAllLocations(): boolean { return; }
-
-
   /**
-   *
+   * Method can be used to detect user changes in location services settings.
+   * If user enable or disable location services then success callback will be executed.
+   * In case or error (SettingNotFoundException) fail callback will be executed.
+   * NOTE: ANDROID only
    */
   @Cordova()
-  static apply(destination: Config, source: Config): Config { return; }
+  static watchLocationMode(): Promise<boolean> { return; }
+
+  /**
+   * Stop watching for location mode changes.
+   * NOTE: ANDROID only
+   */
+  @Cordova()
+  static stopWatchingLocationMode() { }
+
+  /**
+   * Method will return all stored locations.
+   * Locations are stored when:
+   *  - config.stopOnTerminate is false and main activity was killed
+   *    by the system
+   *  or
+   *  - option.debug is true
+   * NOTE: ANDROID only
+   */
+  @Cordova()
+  static getLocations(): Promise<any> { return; }
+
+  /**
+   * Delete stored location by given locationId.
+   * NOTE: ANDROID only
+   */
+  @Cordova()
+  static deleteLocation(locationId: number): Promise<any> { return; }
+
+  /**
+   * Delete all stored locations.
+   * NOTE: ANDROID only
+   */
+  @Cordova()
+  static deleteAllLocations(): Promise<any> { return; }
 
 }
