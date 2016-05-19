@@ -11,6 +11,7 @@ import {AppAvailability} from './plugins/appavailability';
 import {AppRate} from './plugins/apprate';
 import {AppVersion} from './plugins/appversion';
 import {Badge} from './plugins/badge';
+import {BackgroundGeolocation} from './plugins/background-geolocation';
 import {BarcodeScanner} from './plugins/barcodescanner';
 import {Base64ToGallery} from './plugins/base64togallery';
 import {BatteryStatus} from './plugins/batterystatus';
@@ -65,6 +66,7 @@ export {
   AppRate,
   AppVersion,
   Badge,
+  BackgroundGeolocation,
   BarcodeScanner,
   Base64ToGallery,
   BatteryStatus,
@@ -124,6 +126,7 @@ window['IonicNative'] = {
   AppRate: AppRate,
   AppVersion: AppVersion,
   Badge: Badge,
+  BackgroundGeolocation: BackgroundGeolocation,
   BarcodeScanner: BarcodeScanner,
   Base64ToGallery: Base64ToGallery,
   BatteryStatus: BatteryStatus,
