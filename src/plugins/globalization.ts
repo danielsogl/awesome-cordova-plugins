@@ -107,7 +107,7 @@ export class Globalization {
     successIndex:  1,
     errorIndex:  2
   })
-  static stringToNumber(stringToConvert: string, options: {type: string}): Promise<{value}> {return; }
+  static stringToNumber(stringToConvert: string, options: {type: string}): Promise<{value:number|string}> {return; }
 
   /**
    *
