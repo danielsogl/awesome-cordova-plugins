@@ -64,13 +64,13 @@ export class EmailComposer {
   /**
    * Verifies if sending emails is supported on the device.
    *
-   * @param app {string?} An optional app id or uri scheme. Defaults to mailto.
-   * @param scope {any?} An optional scope for the promise
-   * @returns {Promise<boolean>} Resolves promise with boolean whether EmailComposer is available
+   * @param app {string?} An optional app id or uri scheme.
+   * @returns {Promise<boolean>} Resolves if available, rejects if not available
    */
-  static isAvailable (app?: string, scope?: any): Promise<boolean> {
+  static isAvailable (app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
-      cordova.plugins.email.isAvailable(app, resolve, scope);
+      if (app) cordova.plugins.email.isAvailable(app, (isAvailable) => { if (isAvailable) resolve(); else reject(); });
+      else cordova.plugins.email.isAvailable((isAvailable) => { if (isAvailable) resolve(); else reject(); });
     });
   }
 
