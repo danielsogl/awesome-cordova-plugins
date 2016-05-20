@@ -49,7 +49,7 @@ export interface Email {
  * };
  *
  * // Send a text message using default options
- * EmailComposer.send(email);
+ * EmailComposer.open(email);
  *
  * ```
  */
