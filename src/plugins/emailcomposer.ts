@@ -1,5 +1,5 @@
 import {Plugin, Cordova} from './plugin';
-import {Email} from './types/email.type.ts';
+import {Email} from './types/email.type';
 declare var cordova;
 
 /**
