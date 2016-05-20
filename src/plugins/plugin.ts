@@ -160,7 +160,7 @@ function callInstance(pluginObj: any, methodName: string, args: any[], opts: any
   return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
 }
 
-function wrapInstance (pluginObj: any, methodName: string, args: any[], opts: any = {}) {
+function wrapInstance (pluginObj: any, methodName: string, opts: any = {}) {
   return (...args) => {
     if (opts.sync) {
       return callInstance(pluginObj, methodName, args, opts);

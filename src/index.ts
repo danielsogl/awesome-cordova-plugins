@@ -32,6 +32,7 @@ import {Dialogs} from './plugins/dialogs';
 import {EmailComposer} from './plugins/emailcomposer';
 import {Facebook} from './plugins/facebook';
 import {File} from './plugins/file';
+import {Transfer} from './plugins/filetransfer';
 import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
@@ -112,6 +113,7 @@ export {
   StatusBar,
   Toast,
   TouchID,
+  Transfer,
   Vibration,
   WebIntent
 }
@@ -171,6 +173,7 @@ window['IonicNative'] = {
   StatusBar: StatusBar,
   Toast: Toast,
   TouchID: TouchID,
+  Transfer: Transfer,
   Vibration: Vibration,
   WebIntent: WebIntent
 };
