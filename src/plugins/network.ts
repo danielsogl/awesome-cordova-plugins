@@ -1,5 +1,5 @@
 import {Plugin, Cordova, CordovaProperty} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs/Rx';
 
 declare var navigator: any;
 
@@ -25,7 +25,7 @@ declare var navigator: any;
  * let connectSubscription = Network.onConnect().subscribe(() => {
  *   console.log('network connected!'); *
  *   // We just got a connection but we need to wait briefly
- *    // before we determine the connection type.  Might need to wait 
+ * // before we determine the connection type.  Might need to wait 
  *   // prior to doing any api requests as well.
  *   setTimeout(() => {
  *     console.log(Network.connection);

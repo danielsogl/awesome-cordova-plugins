@@ -1,5 +1,5 @@
 import {Cordova, Plugin} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs/Rx';
 import {CordovaInstance} from './plugin';
 /**
  * Created by Ibrahim on 3/29/2016.

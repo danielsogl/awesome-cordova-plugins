@@ -1,5 +1,5 @@
 import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs/Rx';
 
 /**
  * @name AdMob
