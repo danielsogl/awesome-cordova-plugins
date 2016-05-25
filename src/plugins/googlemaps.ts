@@ -11,7 +11,6 @@
 import {Cordova, Plugin} from './plugin';
 import {Observable} from 'rxjs/Rx';
 import {CordovaInstance} from './plugin';
-import {InstanceProperty} from "../../dist/plugins/plugin";
 /**
  * Created by Ibrahim on 3/29/2016.
  */
@@ -236,20 +235,15 @@ export class GoogleMaps {
     })
     setAllGesturesEnabled (enabled: boolean): void { }
 
-    addMarker (options: any): GoogleMapsMarker {
-        if (!options) {
-            console.warn('Google Maps Plugin: No options provided.');
-            return;
-        }
-
-        let objectInstance = this._objectInstance.addMarker(options);
+    addMarker (options: GoogleMapsMarkerOptions): GoogleMapsMarker {
+        let objectInstance: any = this._objectInstance.addMarker(options);
         return new GoogleMapsMarker(objectInstance);
     }
 
-    @CordovaInstance({
-        sync: true
-    })
-    addCircle (options: any): void { }
+    addCircle (options: GoogleMapsCircleOptions): GoogleMapsCircle {
+        let objectInstance: any = this._objectInstance.addCircle(options);
+        return new GoogleMapsCircle(objectInstance);
+    }
 
     @CordovaInstance({
         sync: true
@@ -360,19 +354,21 @@ export interface VisibleRegion {
     southwest: any;
 }
 
+export interface GoogleMapsMarkerOptions {
+    icon: any;
+    title: string;
+    snippet: string;
+    position: GoogleMapsLatLng;
+    infoWindowAnchor: number[];
+    draggable: boolean;
+    flat: boolean;
+    rotation: number;
+    visible: boolean;
+    styles: any;
+    animation: string;
+    zIndex: number;
+}
 export class GoogleMapsMarker {
-    @InstanceProperty icon: any;
-    @InstanceProperty title: string;
-    @InstanceProperty snippet: string;
-    @InstanceProperty position: GoogleMapsLatLng;
-    @InstanceProperty infoWindowAnchor: number[];
-    @InstanceProperty draggable: boolean;
-    @InstanceProperty flat: boolean;
-    @InstanceProperty rotation: number;
-    @InstanceProperty visible: boolean;
-    @InstanceProperty styles: any;
-    @InstanceProperty animation: string;
-    @InstanceProperty zIndex: number;
 
     constructor (private _objectInstance: any) { }
 
@@ -512,15 +508,17 @@ export interface GoogleMapsMarkerIcon {
     }
 }
 
+export interface GoogleMapsCircleOptions {
+    center: GoogleMapsLatLng;
+    visible: boolean;
+    radius: number;
+    strokeColor: string;
+    strokeWidth: number;
+    fillColor: string;
+    visible: boolean;
+    zIndex: number;
+}
 export class GoogleMapsCircle {
-    @InstanceProperty center: GoogleMapsLatLng;
-    @InstanceProperty visible: boolean;
-    @InstanceProperty radius: number;
-    @InstanceProperty strokeColor: string;
-    @InstanceProperty strokeWidth: number;
-    @InstanceProperty fillColor: string;
-    @InstanceProperty visible: boolean;
-    @InstanceProperty zIndex: number;
 
     constructor(private _objectInstnace: any) { }
 
