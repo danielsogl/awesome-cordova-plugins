@@ -140,24 +140,22 @@ export class GoogleMaps {
     animateCamera (options: AnimateCameraOptions): void {return; }
 
     /**
-     *
+     * Get the position of the camera
      */
     @CordovaInstance()
     getCameraPosition (): Promise<CameraPosition> {return; }
 
     /**
-     *
+     * Get the location of the user
      */
     @CordovaInstance()
     getMyLocation (): Promise<MyLocation> {return; }
 
     /**
-     *
+     * Get the visible region
      */
     @CordovaInstance()
     getVisibleRegion (): Promise<VisibleRegion> {return; }
-
-
 
 }
 
