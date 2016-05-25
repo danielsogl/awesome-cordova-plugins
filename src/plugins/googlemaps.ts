@@ -1,3 +1,7 @@
+// Notes:
+// - The way I'm listening to events might not work. Might need to switch
+// - I'm assuming that the sub objects do need a constructor, so I'm using the constructor for other purposes
+
 import {Cordova, Plugin} from './plugin';
 import {Observable} from 'rxjs/Rx';
 import {CordovaInstance} from './plugin';
@@ -353,7 +357,7 @@ export interface VisibleRegion {
     plugin: 'cordova-plugin-googlemaps',
     repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps'
 })
-export interface GoogleMapsMarker {
+export class GoogleMapsMarker {
     icon: any;
     title: string;
     snippet: string;
@@ -367,13 +371,133 @@ export interface GoogleMapsMarker {
     animation: string;
     zIndex: number;
 
-    getPosition()
-    showInfoWindow(): void;
-    hideInfoWindow(): void;
-    get(message: string): void;
-    setIcon(icon: GoogleMapsMarkerIcon): void;
-    remove(): void;
-    setDraggable(draggable: boolean): void;
+    constructor (private _objectInstance: any) { }
+
+    @CordovaInstance()
+    getPosition (): Promise<Position> {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    isVisible (): boolean {return;}
+
+    @CordovaInstance()
+    setVisible (visible: boolean): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    getHashCode (): string {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    remove(): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setOpacity (alpha: number): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    getOpacity(): number {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setZIndex(): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setIconAnchor(x: number, y: number): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setInfoWindowAnchor(x: number, y:number): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setDraggable(draggable: boolean): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    isDraggable(): boolean {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setFlat(flat: boolean): void {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setIcon(icon: GoogleMapsMarkerIcon): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setTitle(title: string): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    getTitle(): string {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setSnippet(snippet: string): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    getSnippet(): string {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setRotation(rotation: number): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    getRotation(): number {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    showInfoWindow(): number {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    hideInfoWindow(): number {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setPosition(latLng: GoogleMapsLatLng): void { }
+
+    @CordovaInstance()
+    getPosition(): Promise<GoogleMapsLatLng> {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    getMap(): GoogleMaps {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setAnimation(animation: string): void { }
+
+
 
 }
 
