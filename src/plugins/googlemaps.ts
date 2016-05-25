@@ -35,16 +35,16 @@ declare var plugin: any;
     plugin: 'cordova-plugin-googlemaps',
     repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps'
 })
-export class GoogleMaps {
+export class GoogleMap {
 
     private _objectInstance: any;
 
     /**
      * Checks if a map object has been created.
-     * @return {Promise<GoogleMaps>} returns a promise that resolves with the Map object (if it exists).
+     * @return {Promise<GoogleMap>} returns a promise that resolves with the Map object (if it exists).
      */
     @Cordova()
-    static isAvailable (): Promise<GoogleMaps> {return; }
+    static isAvailable (): Promise<GoogleMap> {return; }
 
     constructor (elementId: string) {
         this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId));
@@ -103,7 +103,7 @@ export class GoogleMaps {
         eventObservable: true,
         event: 'plugin.google.maps.event.MAP_READY'
     })
-    static onMapReady (): Observable<GoogleMaps> {return; }
+    static onMapReady (): Observable<GoogleMap> {return; }
 
     /**
      * Get notified via an Observable when the map is loaded. (Event: MAP_LOADED)
@@ -113,7 +113,7 @@ export class GoogleMaps {
         event: 'plugin.google.maps.event.MAP_LOADED',
         platforms: ['Android']
     })
-    static onMapLoaded (): Observable<GoogleMaps> {return; }
+    static onMapLoaded (): Observable<GoogleMap> {return; }
 
     /**
      * Get notified via an Observable when the map will move. (Event: MAP_WILL_MOVE)
@@ -323,7 +323,6 @@ export interface AnimateCameraOptions {
     bearing: number;
     duration: number;
 }
-
 export interface CameraPosition {
     target: {
         lat: string;
@@ -333,7 +332,6 @@ export interface CameraPosition {
     tilt: number;
     bearing: number;
 }
-
 export interface MyLocation {
     latLng: {
         lat: string;
@@ -343,7 +341,6 @@ export interface MyLocation {
     time: string;
     bearing: number;
 }
-
 export interface VisibleRegion {
     northeast: any;
     southwest: any;
@@ -362,6 +359,13 @@ export interface GoogleMapsMarkerOptions {
     styles: any;
     animation: string;
     zIndex: number;
+}
+export interface GoogleMapsMarkerIcon {
+    url: string;
+    size: {
+        width: number;
+        height: number;
+    }
 }
 export class GoogleMapsMarker {
 
@@ -481,7 +485,7 @@ export class GoogleMapsMarker {
     @CordovaInstance({
         sync: true
     })
-    getMap(): GoogleMaps {return; }
+    getMap(): GoogleMap {return; }
 
     @CordovaInstance({
         sync: true
@@ -490,14 +494,6 @@ export class GoogleMapsMarker {
 
 
 
-}
-
-export interface GoogleMapsMarkerIcon {
-    url: string;
-    size: {
-        width: number;
-        height: number;
-    }
 }
 
 export interface GoogleMapsCircleOptions {
@@ -518,14 +514,14 @@ export class GoogleMapsCircle {
     })
     getCenter(): GoogleMapsLatLng {return; }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     getRadius(): number {return; }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     getStrokeColor(): string {return; }
 
     @CordovaInstance({
@@ -533,63 +529,120 @@ export class GoogleMapsCircle {
     })
     getVisible(): boolean {return; }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     getZIndex(): number {return; }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     remove(): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setCenter(latLng: GoogleMapsLatLng): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setFillColor(fillColor: string): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setStrokeColor(strokeColor: string): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setStrokeWidth(strokeWidth: number): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setVisible(visible: boolean): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setZIndex(zIndex: number): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setRadius(radius: number): void { }
 
-@CordovaInstance({
-    sync: true
-})
-    getMap(): GoogleMaps {return; }
+    @CordovaInstance({
+        sync: true
+    })
+    getMap(): GoogleMap {return; }
 
 
 
 }
 
+export interface GoogleMapsPolylineOptions {
+    points: Array<GoogleMapsLatLng>;
+    visible: boolean;
+    googledesic: boolean;
+    color: string;
+    width: number;
+    visible: boolean;
+    zIndex: number;
+}
+export class GoogleMapsPolyline {
+    constructor (private _objectInstance: any) { }
+
+    // TODO add event listeners
+
+    @CordovaInstance({sync: true})
+    getPoints(): Array<GoogleMapsLatLng> {return; }
+
+    @CordovaInstance({sync: true})
+    getCOlor(): string {return; }
+
+    @CordovaInstance({sync: true})
+    getWidth(): number {return; }
+
+    @CordovaInstance({sync: true})
+    getGeodesic(): boolean {return; }
+
+    @CordovaInstance({sync: true})
+    getZIndex(): number {return; }
+
+    @CordovaInstance({sync: true})
+    remove(): void { }
+
+    @CordovaInstance({sync: true})
+    setPoints(points: Array<GoogleMapsLatLng>): void { }
+
+    @CordovaInstance({sync: true})
+    setColor(color: string): void { }
+
+    @CordovaInstance({sync: true})
+    setWidth(width: number): void { }
+
+    @CordovaInstance({sync: true})
+    setVisible(visible: boolean): void { }
+
+    @CordovaInstance({sync: true})
+    setZIndex(zIndex: number): void { }
+
+    @CordovaInstance({sync: true})
+    setGeoDesic(geoDesic: boolean): void { }
+
+    @CordovaInstance({sync: true})
+    getMap(): GoogleMap {return; }
+
+}
+
 export class GoogleMapsLatLng {
+    private _objectInstance: any;
+
     constructor (public lat: string, public lng: string) {
-        return plugin.google.maps.LatLng(lat, lng);
+        this._objectInstance = plugin.google.maps.LatLng(lat, lng);
     }
 
     @CordovaInstance({
@@ -607,5 +660,3 @@ export class GoogleMapsLatLng {
     })
     toUrlValue (precision?: number): string {return; }
 }
-
-
