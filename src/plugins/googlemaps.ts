@@ -210,103 +210,103 @@ export class GoogleMaps {
     })
     setIndoorEnabled (enabled: boolean): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setTrafficEnabled (enabled: boolean): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setCompassEnabled (enabled: boolean): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setAllGesturesEnabled (enabled: boolean): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     addMarker (options: any): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     addCircle (options: any): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     addPolygon (options: any): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     addPolyline (options: any): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     addTileOverlay (options: any): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     addGroundOverlay (options: any): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setDiv (domNode: HTMLElement): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setVisible (visible: boolean): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setOptions (options: any): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setBackgroundColor (backgroundColor: string): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     setPadding (top?: number, right?: number, bottom?: number, left?: number): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     clear (): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     refreshLayout (): void { }
 
-@CordovaInstance()
+    @CordovaInstance()
     fromLatLngToPoint (latLng: GoogleMapsLatLng, point: any): Promise<any> {return; }
 
-@CordovaInstance()
+    @CordovaInstance()
     fromPointToLatLng (point: any, latLng: GoogleMapsLatLng): Promise<GoogleMapsLatLng> {return; }
 
-@CordovaInstance()
+    @CordovaInstance()
     toDataURL (): Promise<any> {return; }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     remove (): void { }
 
-@CordovaInstance({
-    sync: true
-})
+    @CordovaInstance({
+        sync: true
+    })
     panBy (): void { }
 
 }
