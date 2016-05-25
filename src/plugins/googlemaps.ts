@@ -5,6 +5,7 @@
 import {Cordova, Plugin} from './plugin';
 import {Observable} from 'rxjs/Rx';
 import {CordovaInstance} from './plugin';
+import {InstanceProperty} from "../../dist/plugins/plugin";
 /**
  * Created by Ibrahim on 3/29/2016.
  */
@@ -354,23 +355,23 @@ export interface VisibleRegion {
 }
 
 export class GoogleMapsMarker {
-    icon: any;
-    title: string;
-    snippet: string;
-    position: GoogleMapsLatLng;
-    infoWindowAnchor: number[];
-    draggable: boolean;
-    flat: boolean;
-    rotation: number;
-    visible: boolean;
-    styles: any;
-    animation: string;
-    zIndex: number;
+    @InstanceProperty icon: any;
+    @InstanceProperty title: string;
+    @InstanceProperty snippet: string;
+    @InstanceProperty position: GoogleMapsLatLng;
+    @InstanceProperty infoWindowAnchor: number[];
+    @InstanceProperty draggable: boolean;
+    @InstanceProperty flat: boolean;
+    @InstanceProperty rotation: number;
+    @InstanceProperty visible: boolean;
+    @InstanceProperty styles: any;
+    @InstanceProperty animation: string;
+    @InstanceProperty zIndex: number;
 
     constructor (private _objectInstance: any) { }
 
     @CordovaInstance()
-    getPosition (): Promise<Position> {return; }
+    getPosition (): Promise<GoogleMapsLatLng> {return; }
 
     @CordovaInstance({
         sync: true
@@ -503,6 +504,92 @@ export interface GoogleMapsMarkerIcon {
         width: number;
         height: number;
     }
+}
+
+export class GoogleMapsCircle {
+    @InstanceProperty center: GoogleMapsLatLng;
+    @InstanceProperty visible: boolean;
+    @InstanceProperty radius: number;
+    @InstanceProperty strokeColor: string;
+    @InstanceProperty strokeWidth: number;
+    @InstanceProperty fillColor: string;
+    @InstanceProperty visible: boolean;
+    @InstanceProperty zIndex: number;
+
+    constructor(private _objectInstnace: any) { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    getCenter(): GoogleMapsLatLng {return; }
+
+@CordovaInstance({
+    sync: true
+})
+    getRadius(): number {return; }
+
+@CordovaInstance({
+    sync: true
+})
+    getStrokeColor(): string {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    getVisible(): boolean {return; }
+
+@CordovaInstance({
+    sync: true
+})
+    getZIndex(): number {return; }
+
+@CordovaInstance({
+    sync: true
+})
+    remove(): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setCenter(latLng: GoogleMapsLatLng): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setFillColor(fillColor: string): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setStrokeColor(strokeColor: string): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setStrokeWidth(strokeWidth: number): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setVisible(visible: boolean): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setZIndex(zIndex: number): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setRadius(radius: number): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    getMap(): GoogleMaps {return; }
+
+
+
 }
 
 export class GoogleMapsLatLng {
