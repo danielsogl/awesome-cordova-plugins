@@ -344,13 +344,54 @@ export interface VisibleRegion {
     southwest: any;
 }
 
+/**
+ * @private
+ * Marker object
+ */
+@Plugin({
+    pluginRef: 'plugin.google.maps.Marker',
+    plugin: 'cordova-plugin-googlemaps',
+    repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps'
+})
+export interface GoogleMapsMarker {
+    icon: any;
+    title: string;
+    snippet: string;
+    position: GoogleMapsLatLng;
+    infoWindowAnchor: number[];
+    draggable: boolean;
+    flat: boolean;
+    rotation: number;
+    visible: boolean;
+    styles: any;
+    animation: string;
+    zIndex: number;
+
+    getPosition()
+    showInfoWindow(): void;
+    hideInfoWindow(): void;
+    get(message: string): void;
+    setIcon(icon: GoogleMapsMarkerIcon): void;
+    remove(): void;
+    setDraggable(draggable: boolean): void;
+
+}
+
+export interface GoogleMapsMarkerIcon {
+    url: string;
+    size: {
+        width: number;
+        height: number;
+    }
+}
+
 
 /**
  * @private
  Google Maps LatLng
  **/
 @Plugin({
-    pluginRef: 'plugin.google.maps.Map',
+    pluginRef: 'plugin.google.maps.LatLng',
     plugin: 'cordova-plugin-googlemaps',
     repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps'
 })
