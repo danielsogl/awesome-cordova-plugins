@@ -144,11 +144,6 @@ export class GoogleMaps {
     })
     setClickable (isClickable: boolean): void {}
 
-    @CordovaInstance({
-        sync: true
-    })
-    animateCamera (options: AnimateCameraOptions): void {return; }
-
     /**
      * Get the position of the camera
      */
@@ -372,9 +367,6 @@ export class GoogleMapsMarker {
 
     constructor (private _objectInstance: any) { }
 
-    @CordovaInstance()
-    getPosition (): Promise<GoogleMapsLatLng> {return; }
-
     @CordovaInstance({
         sync: true
     })
@@ -510,7 +502,6 @@ export interface GoogleMapsMarkerIcon {
 
 export interface GoogleMapsCircleOptions {
     center: GoogleMapsLatLng;
-    visible: boolean;
     radius: number;
     strokeColor: string;
     strokeWidth: number;
