@@ -178,7 +178,7 @@ export class GoogleMaps {
     @CordovaInstance({
         sync: true
     })
-    setZoome (zoomLevel: number): void { }
+    setZoom (zoomLevel: number): void { }
 
     @CordovaInstance({
         sync: true
