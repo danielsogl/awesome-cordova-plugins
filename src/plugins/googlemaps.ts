@@ -1,6 +1,12 @@
-// Notes:
-// - The way I'm listening to events might not work. Might need to switch
-// - I'm assuming that the sub objects do need a constructor, so I'm using the constructor for other purposes
+/**
+ * ----- IMPORTANT NOTES -----
+ *
+ * - The current event listeners might not work. They might need an alternative implementation.
+ * - Constructors of the "sub-objects" are not meant to be used. They are for ionic-native developer only.
+ * - The plugin isn't fully tested and documented yet. Use at your own risk, and don't hesitate to ask questions.
+ *
+ * ---------------------------
+ */
 
 import {Cordova, Plugin} from './plugin';
 import {Observable} from 'rxjs/Rx';
