@@ -7,6 +7,18 @@ import {CordovaInstance} from './plugin';
 declare var plugin: any;
 /**
  * @name Google Maps
+ * @description This plugin uses the native Google Maps SDK
+ * @usage
+ * ```
+ * import {GoogleMaps} from 'ionic-native';
+ *
+ * ...
+ *
+ * // somewhere in your component
+ * let map = new GoogleMaps('elementID');
+ *
+ * map.onInit().subscribe(() => console.log("Map is ready!"));
+ * ```
  */
 @Plugin({
     pluginRef: 'plugin.google.maps',
