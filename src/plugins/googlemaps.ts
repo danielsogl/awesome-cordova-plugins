@@ -229,10 +229,15 @@ export class GoogleMaps {
     })
     setAllGesturesEnabled (enabled: boolean): void { }
 
-    @CordovaInstance({
-        sync: true
-    })
-    addMarker (options: any): void { }
+    addMarker (options: any): GoogleMapsMarker {
+        if (!options) {
+            console.warn('Google Maps Plugin: No options provided.');
+            return;
+        }
+
+        let objectInstance = this._objectInstance.addMarker(options);
+        return new GoogleMapsMarker(objectInstance);
+    }
 
     @CordovaInstance({
         sync: true
@@ -348,15 +353,6 @@ export interface VisibleRegion {
     southwest: any;
 }
 
-/**
- * @private
- * Marker object
- */
-@Plugin({
-    pluginRef: 'plugin.google.maps.Marker',
-    plugin: 'cordova-plugin-googlemaps',
-    repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps'
-})
 export class GoogleMapsMarker {
     icon: any;
     title: string;
@@ -509,16 +505,6 @@ export interface GoogleMapsMarkerIcon {
     }
 }
 
-
-/**
- * @private
- Google Maps LatLng
- **/
-@Plugin({
-    pluginRef: 'plugin.google.maps.LatLng',
-    plugin: 'cordova-plugin-googlemaps',
-    repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps'
-})
 export class GoogleMapsLatLng {
     constructor (public lat: string, public lng: string) {
         return plugin.google.maps.LatLng(lat, lng);
