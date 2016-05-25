@@ -47,7 +47,7 @@ export class GoogleMaps {
         eventObservable: true,
         event: 'plugin.google.maps.event.MAP_CLICK'
     })
-    static onMapClick (): Observable<GoogleMaps> {return; }
+    static onMapClick (): Observable<GoogleMapsLatLng> {return; }
 
     /**
      * Get notified via an Observable when the user long-clicks on the map. (Event: MAP_LONG_CLICK)
@@ -56,7 +56,7 @@ export class GoogleMaps {
         eventObservable: true,
         event: 'plugin.google.maps.event.MAP_LONG_CLICK'
     })
-    static onMapLongClick (): Observable<GoogleMaps> {return; }
+    static onMapLongClick (): Observable<GoogleMapsLatLng> {return; }
 
     /**
      * Get notified via an Observable when the user clicks the `My Location` button. (Event: MY_LOCATION_BUTTON_CLICK)
@@ -65,7 +65,7 @@ export class GoogleMaps {
         eventObservable: true,
         event: 'plugin.google.maps.event.MY_LOCATION_BUTTON_CLICK'
     })
-    static onMyLocationButtonClick (): Observable<GoogleMaps> {return; }
+    static onMyLocationButtonClick (): Observable<any> {return; }
 
     /**
      * Get notified via an Observable when the user changes the view. (Event: CAMERA_CHANGE)
@@ -74,7 +74,7 @@ export class GoogleMaps {
         eventObservable: true,
         event: 'plugin.google.maps.event.CAMERA_CHANGE'
     })
-    static onCameraChange (): Observable<GoogleMaps> {return; }
+    static onCameraChange (): Observable<any> {return; }
 
     /**
      * Get notified via an Observable when the view is on idle. (Event: CAMERA_IDLE)
@@ -84,7 +84,7 @@ export class GoogleMaps {
         event: 'plugin.google.maps.event.CAMERA_IDLE',
         platforms: ['iOS']
     })
-    static onCameraIdle (): Observable<GoogleMaps> {return; }
+    static onCameraIdle (): Observable<any> {return; }
 
     /**
      * Get notified via an Observable when the map is ready. (Event: MAP_READY)
@@ -113,7 +113,7 @@ export class GoogleMaps {
         event: 'plugin.google.maps.event.MAP_WILL_MOVE',
         platforms: ['iOS']
     })
-    static onMapWillMove (): Observable<GoogleMaps> {return; }
+    static onMapWillMove (): Observable<any> {return; }
 
     /**
      * Get notified via an Observable when the user closes the map. (Event: MAP_CLOSE)
@@ -122,7 +122,7 @@ export class GoogleMaps {
         eventObservable: true,
         event: 'plugin.google.maps.event.MAP_CLOSE'
     })
-    static onMapClose (): Observable<GoogleMaps> {return; }
+    static onMapClose (): Observable<any> {return; }
 
     @CordovaInstance({
         sync: true
@@ -156,6 +156,158 @@ export class GoogleMaps {
      */
     @CordovaInstance()
     getVisibleRegion (): Promise<VisibleRegion> {return; }
+
+    @CordovaInstance({
+        sync: true
+    })
+    showDialog (): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    closeDialog (): void { }
+
+    @CordovaInstance()
+    getLicenseInfo (): Promise<string> {return ;}
+
+    @CordovaInstance({
+        sync: true
+    })
+    setCenter (latLng: GoogleMapsLatLng): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setZoome (zoomLevel: number): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setMapTypeId (typeId: string): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setTilt (tiltLevel: number): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    animateCamera (cameraPosition: CameraPosition): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    moveCamera (cameraPosition: CameraPosition): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setMyLocationEnabled (enabled: boolean): void { }
+
+    @CordovaInstance({
+        sync: true
+    })
+    setIndoorEnabled (enabled: boolean): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setTrafficEnabled (enabled: boolean): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setCompassEnabled (enabled: boolean): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setAllGesturesEnabled (enabled: boolean): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    addMarker (options: any): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    addCircle (options: any): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    addPolygon (options: any): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    addPolyline (options: any): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    addTileOverlay (options: any): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    addGroundOverlay (options: any): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setDiv (domNode: HTMLElement): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setVisible (visible: boolean): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setOptions (options: any): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setBackgroundColor (backgroundColor: string): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    setPadding (top?: number, right?: number, bottom?: number, left?: number): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    clear (): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    refreshLayout (): void { }
+
+@CordovaInstance()
+    fromLatLngToPoint (latLng: GoogleMapsLatLng, point: any): Promise<any> {return; }
+
+@CordovaInstance()
+    fromPointToLatLng (point: any, latLng: GoogleMapsLatLng): Promise<GoogleMapsLatLng> {return; }
+
+@CordovaInstance()
+    toDataURL (): Promise<any> {return; }
+
+@CordovaInstance({
+    sync: true
+})
+    remove (): void { }
+
+@CordovaInstance({
+    sync: true
+})
+    panBy (): void { }
 
 }
 
@@ -222,3 +374,5 @@ export class GoogleMapsLatLng {
     })
     toUrlValue (precision?: number): string {return; }
 }
+
+
