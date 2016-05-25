@@ -271,7 +271,7 @@ export class Calendar {
    * @return A Promise that resolves with the list of calendars, or rejects with an error.
    */
   @Cordova()
-  static listCalendars() { return; }
+  static listCalendars(): Promise<any> { return; }
 
   /**
    * Get a list of all future events in the specified calendar. (iOS only)
