@@ -589,7 +589,6 @@ export interface GoogleMapsPolylineOptions {
     googledesic: boolean;
     color: string;
     width: number;
-    visible: boolean;
     zIndex: number;
 }
 export class GoogleMapsPolyline {
