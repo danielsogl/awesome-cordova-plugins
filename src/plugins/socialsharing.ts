@@ -8,8 +8,31 @@ import {Plugin, Cordova} from './plugin';
  * ```js
  * import {SocialSharing} from 'ionic-native';
  *
+ * @Page(
+ *  ...
+ *  providers: [SocialSharing]
+ * )
+ * 
  * ...
- * // TODO add usage info
+ * 
+ * onShareContent() {
+ * 
+ *  let content = {
+ *		message: 'Sharing from Ionic using SocialSharing plugin!',
+ *		subject: null,
+ *		file: null,
+ *		url: null
+ *	};
+ * 
+ *  SocialSharing.share(content,
+ *			success => {
+ *				console.log('Success sharing content.');
+ *			},
+ *			error => {
+ *				console.log('Error while sharing content.');
+ *			});
+ * }
+ * 
  * ```
  */
 @Plugin({
