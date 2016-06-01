@@ -36,7 +36,7 @@ import {Transfer} from './plugins/filetransfer';
 import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
-import {GoogleMaps} from './plugins/googlemaps';
+import {GoogleMap} from './plugins/googlemaps';
 import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
 import {ImagePicker} from './plugins/imagepicker';
@@ -59,7 +59,7 @@ import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
 import {Vibration} from './plugins/vibration';
 import {WebIntent} from './plugins/webintent';
-
+export * from './plugins/googlemaps';
 export {
   ActionSheet,
   AdMob,
@@ -92,7 +92,6 @@ export {
   Flashlight,
   Geolocation,
   Globalization,
-  GoogleMaps,
   GoogleAnalytics,
   Hotspot,
   ImagePicker,
@@ -153,7 +152,7 @@ window['IonicNative'] = {
   Flashlight: Flashlight,
   Geolocation: Geolocation,
   Globalization: Globalization,
-  GoogleMaps : GoogleMaps,
+  GoogleMap : GoogleMap,
   GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
   ImagePicker: ImagePicker,
