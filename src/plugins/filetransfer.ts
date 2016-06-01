@@ -31,7 +31,7 @@ export interface FileUploadOptions {
   /**
    * A set of optional key/value pairs to pass in the HTTP request.
    */
-  params?: { [s: string]: any; }
+  params?: { [s: string]: any; };
 
   /**
    * Whether to upload the data in chunked streaming mode.
@@ -44,7 +44,7 @@ export interface FileUploadOptions {
    * than one value. On iOS, FireOS, and Android, if a header named
    * Content-Type is present, multipart form data will NOT be used.
    */
-  headers?: { [s: string]: any; }
+  headers?: { [s: string]: any; };
 }
 
 export interface FileUploadResult {
@@ -67,7 +67,7 @@ export interface FileUploadResult {
   /**
    * The HTTP response headers by the server.
    */
-  headers: { [s: string]: any; }
+  headers: { [s: string]: any; };
 }
 
 export interface FileTransferError {

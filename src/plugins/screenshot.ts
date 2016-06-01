@@ -21,9 +21,9 @@ export class Screenshot {
       (resolve, reject) => {
         navigator.screenshot.save(
           (error, result) => {
-            if(error){
+            if (error) {
               reject(error);
-            }else{
+            }else {
               resolve(result);
             }
           },
@@ -46,9 +46,9 @@ export class Screenshot {
       (resolve, reject) => {
         navigator.screenshot.URI(
           (error, result) => {
-            if(error){
+            if (error) {
               reject(error);
-            }else{
+            }else {
               resolve(result);
             }
           },

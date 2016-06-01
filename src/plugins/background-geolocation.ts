@@ -19,7 +19,7 @@ export interface Location {
   /**
    * true if location recorded as part of debug
    */
-  debug: boolean
+  debug: boolean;
 
   /**
    * UTC time of this fix, in milliseconds since January 1, 1970.
