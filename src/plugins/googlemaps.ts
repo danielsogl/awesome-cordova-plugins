@@ -36,8 +36,18 @@ declare var plugin: any;
     repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps'
 })
 export class GoogleMap {
-
-    private _objectInstance: any;
+    static event: any = {
+      MAP_READY: plugin.google.maps.event.MAP_READY,
+        MAP_CLICK: plugin.google.maps.event.MAP_CLICK,
+        MAP_LONG_CLICK: plugin.google.maps.event.MAP_LONG_CLICK,
+        MY_LOCATION_BUTTON_CLICK: plugin.google.maps.event.MY_LOCATION_BUTTON_CLICK,
+        CAMERA_CHANGE: plugin.google.maps.event.CAMERA_CHANGE,
+        CAMERA_IDLE: plugin.google.maps.event.CAMERA_IDLE,
+        MAP_LOADED: plugin.google.maps.event.MAP_LOADED,
+        MAP_WILL_MOVE: plugin.google.maps.event.MAP_WILL_MOVE,
+        MAP_CLOSE: plugin.google.maps.event.MAP_CLOSE
+    };
+    _objectInstance: any;
 
     /**
      * Checks if a map object has been created.
@@ -50,32 +60,21 @@ export class GoogleMap {
         this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId));
     }
 
-    /**
-     * Get notified via an Observable when the user clicks on the map. (Event: MAP_CLICK)
-     */
-    @Cordova({
-        eventObservable: true,
-        event: 'plugin.google.maps.event.MAP_CLICK'
-    })
-    static onMapClick (): Observable<GoogleMapsLatLng> {return; }
+    on(event: any): Observable<any>{
+        return new Observable(
+            (observer) => {
+                this._objectInstance.on(event, observer.next);
+                return () => this._objectInstance.off(event);
+            }
+        );
+    }
 
-    /**
-     * Get notified via an Observable when the user long-clicks on the map. (Event: MAP_LONG_CLICK)
-     */
-    @Cordova({
-        eventObservable: true,
-        event: 'plugin.google.maps.event.MAP_LONG_CLICK'
-    })
-    static onMapLongClick (): Observable<GoogleMapsLatLng> {return; }
+    one(event: any): Promise<any>{
+        return new Promise<any>(
+            resolve => this._objectInstance.one(event, resolve)
+        );
+    }
 
-    /**
-     * Get notified via an Observable when the user clicks the `My Location` button. (Event: MY_LOCATION_BUTTON_CLICK)
-     */
-    @Cordova({
-        eventObservable: true,
-        event: 'plugin.google.maps.event.MY_LOCATION_BUTTON_CLICK'
-    })
-    static onMyLocationButtonClick (): Observable<any> {return; }
 
     /**
      * Get notified via an Observable when the user changes the view. (Event: CAMERA_CHANGE)
@@ -230,9 +229,15 @@ export class GoogleMap {
     })
     setAllGesturesEnabled (enabled: boolean): void { }
 
-    addMarker (options: GoogleMapsMarkerOptions): GoogleMapsMarker {
-        let objectInstance: any = this._objectInstance.addMarker(options);
-        return new GoogleMapsMarker(objectInstance);
+    addMarker (options: GoogleMapsMarkerOptions): Promise<GoogleMapsMarker> {
+        return new Promise<GoogleMapsMarker>(
+            (resolve, reject) => {
+                this._objectInstance.addMarker(options, (marker: any) => {
+                    if(marker) resolve(new GoogleMapsMarker(marker));
+                    else reject();
+                });
+            }
+        );
     }
 
     addCircle (options: GoogleMapsCircleOptions): GoogleMapsCircle {
@@ -317,54 +322,54 @@ export class GoogleMap {
 }
 
 export interface AnimateCameraOptions {
-    target: string;
-    tilt: number;
-    zoom: number;
-    bearing: number;
-    duration: number;
+    target?: string;
+    tilt?: number;
+    zoom?: number;
+    bearing?: number;
+    duration?: number;
 }
 export interface CameraPosition {
-    target: {
-        lat: string;
-        lng: string;
+    target?: {
+        lat?: string;
+        lng?: string;
     };
-    zoom: number;
-    tilt: number;
-    bearing: number;
+    zoom?: number;
+    tilt?: number;
+    bearing?: number;
 }
 export interface MyLocation {
-    latLng: {
-        lat: string;
-        lng: string;
+    latLng?: {
+        lat?: string;
+        lng?: string;
     };
-    speed: number;
-    time: string;
-    bearing: number;
+    speed?: number;
+    time?: string;
+    bearing?: number;
 }
 export interface VisibleRegion {
-    northeast: any;
-    southwest: any;
+    northeast?: any;
+    southwest?: any;
 }
 
 export interface GoogleMapsMarkerOptions {
-    icon: any;
-    title: string;
-    snippet: string;
-    position: GoogleMapsLatLng;
-    infoWindowAnchor: number[];
-    draggable: boolean;
-    flat: boolean;
-    rotation: number;
-    visible: boolean;
-    styles: any;
-    animation: string;
-    zIndex: number;
+    icon?: any;
+    title?: string;
+    snippet?: string;
+    position?: GoogleMapsLatLng;
+    infoWindowAnchor?: number[];
+    draggable?: boolean;
+    flat?: boolean;
+    rotation?: number;
+    visible?: boolean;
+    styles?: any;
+    animation?: string;
+    zIndex?: number;
 }
 export interface GoogleMapsMarkerIcon {
-    url: string;
-    size: {
-        width: number;
-        height: number;
+    url?: string;
+    size?: {
+        width?: number;
+        height?: number;
     }
 }
 export class GoogleMapsMarker {
@@ -497,13 +502,13 @@ export class GoogleMapsMarker {
 }
 
 export interface GoogleMapsCircleOptions {
-    center: GoogleMapsLatLng;
-    radius: number;
-    strokeColor: string;
-    strokeWidth: number;
-    fillColor: string;
-    visible: boolean;
-    zIndex: number;
+    center?: GoogleMapsLatLng;
+    radius?: number;
+    strokeColor?: string;
+    strokeWidth?: number;
+    fillColor?: string;
+    visible?: boolean;
+    zIndex?: number;
 }
 export class GoogleMapsCircle {
 
@@ -584,12 +589,12 @@ export class GoogleMapsCircle {
 }
 
 export interface GoogleMapsPolylineOptions {
-    points: Array<GoogleMapsLatLng>;
-    visible: boolean;
-    googledesic: boolean;
-    color: string;
-    width: number;
-    zIndex: number;
+    points?: Array<GoogleMapsLatLng>;
+    visible?: boolean;
+    googledesic?: boolean;
+    color?: string;
+    width?: number;
+    zIndex?: number;
 }
 export class GoogleMapsPolyline {
     constructor (private _objectInstance: any) { }
@@ -641,7 +646,7 @@ export class GoogleMapsLatLng {
     private _objectInstance: any;
 
     constructor (public lat: string, public lng: string) {
-        this._objectInstance = plugin.google.maps.LatLng(lat, lng);
+        this._objectInstance = new plugin.google.maps.LatLng(lat, lng);
     }
 
     @CordovaInstance({
