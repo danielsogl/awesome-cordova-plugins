@@ -53,13 +53,15 @@ export class GoogleMap {
      * @return {Promise<GoogleMap>} returns a promise that resolves with the Map object (if it exists).
      */
     @Cordova()
-    static isAvailable (): Promise<GoogleMap> {return; }
+    static isAvailable(): Promise<GoogleMap> {
+        return;
+    }
 
-    constructor (elementId: string) {
+    constructor(elementId: string) {
         this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId));
     }
 
-    on(event: any): Observable<any>{
+    on(event: any): Observable<any> {
         return new Observable(
             (observer) => {
                 this._objectInstance.on(event, observer.next);
@@ -68,7 +70,7 @@ export class GoogleMap {
         );
     }
 
-    one(event: any): Promise<any>{
+    one(event: any): Promise<any> {
         return new Promise<any>(
             resolve => this._objectInstance.one(event, resolve)
         );
@@ -78,229 +80,267 @@ export class GoogleMap {
     @CordovaInstance({
         sync: true
     })
-    setDebuggable (isDebuggable: boolean): void {}
+    setDebuggable(isDebuggable: boolean): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setClickable (isClickable: boolean): void {}
+    setClickable(isClickable: boolean): void {
+    }
 
     /**
      * Get the position of the camera
      */
     @CordovaInstance()
-    getCameraPosition (): Promise<CameraPosition> {return; }
+    getCameraPosition(): Promise<CameraPosition> {
+        return;
+    }
 
     /**
      * Get the location of the user
      */
     @CordovaInstance()
-    getMyLocation (): Promise<MyLocation> {return; }
+    getMyLocation(): Promise<MyLocation> {
+        return;
+    }
 
     /**
      * Get the visible region
      */
     @CordovaInstance()
-    getVisibleRegion (): Promise<VisibleRegion> {return; }
+    getVisibleRegion(): Promise<VisibleRegion> {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    showDialog (): void { }
+    showDialog(): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    closeDialog (): void { }
+    closeDialog(): void {
+    }
 
     @CordovaInstance()
-    getLicenseInfo (): Promise<string> {return ;}
+    getLicenseInfo(): Promise<string> {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setCenter (latLng: GoogleMapsLatLng): void { }
+    setCenter(latLng: GoogleMapsLatLng): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setZoom (zoomLevel: number): void { }
+    setZoom(zoomLevel: number): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setMapTypeId (typeId: string): void { }
+    setMapTypeId(typeId: string): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setTilt (tiltLevel: number): void { }
+    setTilt(tiltLevel: number): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    animateCamera (cameraPosition: CameraPosition): void { }
+    animateCamera(cameraPosition: CameraPosition): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    moveCamera (cameraPosition: CameraPosition): void { }
+    moveCamera(cameraPosition: CameraPosition): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setMyLocationEnabled (enabled: boolean): void { }
+    setMyLocationEnabled(enabled: boolean): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setIndoorEnabled (enabled: boolean): void { }
+    setIndoorEnabled(enabled: boolean): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setTrafficEnabled (enabled: boolean): void { }
+    setTrafficEnabled(enabled: boolean): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setCompassEnabled (enabled: boolean): void { }
+    setCompassEnabled(enabled: boolean): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setAllGesturesEnabled (enabled: boolean): void { }
+    setAllGesturesEnabled(enabled: boolean): void {
+    }
 
-    addMarker (options: GoogleMapsMarkerOptions): Promise<GoogleMapsMarker> {
+    addMarker(options: GoogleMapsMarkerOptions): Promise<GoogleMapsMarker> {
         return new Promise<GoogleMapsMarker>(
             (resolve, reject) => {
                 this._objectInstance.addMarker(options, (marker: any) => {
-                    if(marker) resolve(new GoogleMapsMarker(marker));
+                    if (marker) resolve(new GoogleMapsMarker(marker));
                     else reject();
                 });
             }
         );
     }
 
-    addCircle (options: GoogleMapsCircleOptions): Promise<GoogleMapsCircle> {
+    addCircle(options: GoogleMapsCircleOptions): Promise<GoogleMapsCircle> {
         return new Promise<GoogleMapsCircle>(
             (resolve, reject) => {
                 this._objectInstance.addCircle(options, (circle: any) => {
-                    if(circle) resolve(new GoogleMapsCircle(circle));
+                    if (circle) resolve(new GoogleMapsCircle(circle));
                     else reject();
                 });
             }
         );
     }
 
-    addPolygon (options: GoogleMapsPolygonOptions): Promise<GoogleMapsPolygon> {
+    addPolygon(options: GoogleMapsPolygonOptions): Promise<GoogleMapsPolygon> {
         return new Promise<GoogleMapsPolygon>(
             (resolve, reject) => {
                 this._objectInstance.addPolygon(options, (polygon: any) => {
-                   if(polygon) resolve(new GoogleMapsPolygon(polygon));
+                    if (polygon) resolve(new GoogleMapsPolygon(polygon));
                     else reject();
                 });
             }
         );
     }
 
-    addPolyline (options: GoogleMapsPolylineOptions): Promise<GoogleMapsPolyline> {
+    addPolyline(options: GoogleMapsPolylineOptions): Promise<GoogleMapsPolyline> {
         return new Promise<GoogleMapsPolyline>(
             (resolve, reject) => {
                 this._objectInstance.addPolyline(options, (polyline: any) => {
-                    if(polyline) resolve(new GoogleMapsPolyline(polyline));
+                    if (polyline) resolve(new GoogleMapsPolyline(polyline));
                     else reject();
                 });
             }
         );
     }
 
-    addTileOverlay (options: GoogleMapsTileOverlayOptions): Promise<GoogleMapsTileOverlay> {
+    addTileOverlay(options: GoogleMapsTileOverlayOptions): Promise<GoogleMapsTileOverlay> {
         return new Promise<GoogleMapsTileOverlay>(
             (resolve, reject) => {
                 this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
-                    if(tileOverlay) resolve(new GoogleMapsTileOverlay(tileOverlay));
+                    if (tileOverlay) resolve(new GoogleMapsTileOverlay(tileOverlay));
                     else reject();
                 });
             }
-        )
+        );
     }
 
-    addGroundOverlay (options: GoogleMapsGroundOverlayOptions): Promise<GoogleMapsGroundOverlay> {
+    addGroundOverlay(options: GoogleMapsGroundOverlayOptions): Promise<GoogleMapsGroundOverlay> {
         return new Promise<GoogleMapsGroundOverlay>(
             (resolve, reject) => {
                 this._objectInstance.addTileOverlay(options, (groundOverlay: any) => {
-                    if(groundOverlay) resolve(new GoogleMapsGroundOverlay(groundOverlay));
+                    if (groundOverlay) resolve(new GoogleMapsGroundOverlay(groundOverlay));
                     else reject();
                 });
             }
-        )
+        );
     }
 
-    addKmlOverlay (options: GoogleMapsKmlOverlayOptions): Promise<GoogleMapsKmlOverlay> {
+    addKmlOverlay(options: GoogleMapsKmlOverlayOptions): Promise<GoogleMapsKmlOverlay> {
         return new Promise<GoogleMapsKmlOverlay>(
             (resolve, reject) => {
                 this._objectInstance.addTileOverlay(options, (kmlOverlay: any) => {
-                    if(kmlOverlay) resolve(new GoogleMapsKmlOverlay(kmlOverlay));
+                    if (kmlOverlay) resolve(new GoogleMapsKmlOverlay(kmlOverlay));
                     else reject();
                 });
             }
-        )
+        );
     }
 
     @CordovaInstance({
         sync: true
     })
-    setDiv (domNode: HTMLElement): void { }
+    setDiv(domNode: HTMLElement): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setVisible (visible: boolean): void { }
+    setVisible(visible: boolean): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setOptions (options: any): void { }
+    setOptions(options: any): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setBackgroundColor (backgroundColor: string): void { }
+    setBackgroundColor(backgroundColor: string): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setPadding (top?: number, right?: number, bottom?: number, left?: number): void { }
+    setPadding(top?: number, right?: number, bottom?: number, left?: number): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    clear (): void { }
+    clear(): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    refreshLayout (): void { }
+    refreshLayout(): void {
+    }
 
     @CordovaInstance()
-    fromLatLngToPoint (latLng: GoogleMapsLatLng, point: any): Promise<any> {return; }
+    fromLatLngToPoint(latLng: GoogleMapsLatLng, point: any): Promise<any> {
+        return;
+    }
 
     @CordovaInstance()
-    fromPointToLatLng (point: any, latLng: GoogleMapsLatLng): Promise<GoogleMapsLatLng> {return; }
+    fromPointToLatLng(point: any, latLng: GoogleMapsLatLng): Promise<GoogleMapsLatLng> {
+        return;
+    }
 
     @CordovaInstance()
-    toDataURL (): Promise<any> {return; }
+    toDataURL(): Promise<any> {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    remove (): void { }
+    remove(): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    panBy (): void { }
+    panBy(): void {
+    }
 
 }
 export interface AnimateCameraOptions {
@@ -351,17 +391,18 @@ export interface GoogleMapsMarkerIcon {
     size?: {
         width?: number;
         height?: number;
-    }
+    };
 }
 export class GoogleMapsMarker {
 
-    constructor (private _objectInstance: any) { }
+    constructor(private _objectInstance: any) {
+    }
 
     addEventListener(event: any): Observable<any> {
         return new Observable(
             (observer) => {
                 this._objectInstance.addEventListener(event, observer.next);
-                return () => this._objectInstance.removeEventListener(event, observer.next)
+                return () => this._objectInstance.removeEventListener(event, observer.next);
             }
         );
     }
@@ -369,124 +410,160 @@ export class GoogleMapsMarker {
     @CordovaInstance({
         sync: true
     })
-    isVisible (): boolean {return;}
+    isVisible(): boolean {
+        return;
+    }
 
     @CordovaInstance()
-    setVisible (visible: boolean): void { }
+    setVisible(visible: boolean): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    getHashCode (): string {return; }
+    getHashCode(): string {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    remove(): void { }
+    remove(): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setOpacity (alpha: number): void { }
+    setOpacity(alpha: number): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    getOpacity(): number {return; }
+    getOpacity(): number {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setZIndex(): void { }
+    setZIndex(): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setIconAnchor(x: number, y: number): void { }
+    setIconAnchor(x: number, y: number): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setInfoWindowAnchor(x: number, y:number): void { }
+    setInfoWindowAnchor(x: number, y: number): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setDraggable(draggable: boolean): void { }
+    setDraggable(draggable: boolean): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    isDraggable(): boolean {return; }
+    isDraggable(): boolean {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setFlat(flat: boolean): void {return; }
+    setFlat(flat: boolean): void {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setIcon(icon: GoogleMapsMarkerIcon): void { }
+    setIcon(icon: GoogleMapsMarkerIcon): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setTitle(title: string): void { }
+    setTitle(title: string): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    getTitle(): string {return; }
+    getTitle(): string {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setSnippet(snippet: string): void { }
+    setSnippet(snippet: string): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    getSnippet(): string {return; }
+    getSnippet(): string {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setRotation(rotation: number): void { }
+    setRotation(rotation: number): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    getRotation(): number {return; }
+    getRotation(): number {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    showInfoWindow(): number {return; }
+    showInfoWindow(): number {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    hideInfoWindow(): number {return; }
+    hideInfoWindow(): number {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setPosition(latLng: GoogleMapsLatLng): void { }
+    setPosition(latLng: GoogleMapsLatLng): void {
+    }
 
     @CordovaInstance()
-    getPosition(): Promise<GoogleMapsLatLng> {return; }
+    getPosition(): Promise<GoogleMapsLatLng> {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    getMap(): GoogleMap {return; }
+    getMap(): GoogleMap {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setAnimation(animation: string): void { }
-
+    setAnimation(animation: string): void {
+    }
 
 
 }
@@ -501,13 +578,14 @@ export interface GoogleMapsCircleOptions {
 }
 export class GoogleMapsCircle {
 
-    constructor(private _objectInstance: any) { }
+    constructor(private _objectInstance: any) {
+    }
 
     addEventListener(event: any): Observable<any> {
         return new Observable(
             (observer) => {
                 this._objectInstance.addEventListener(event, observer.next);
-                return () => this._objectInstance.removeEventListener(event, observer.next)
+                return () => this._objectInstance.removeEventListener(event, observer.next);
             }
         );
     }
@@ -515,73 +593,92 @@ export class GoogleMapsCircle {
     @CordovaInstance({
         sync: true
     })
-    getCenter(): GoogleMapsLatLng {return; }
+    getCenter(): GoogleMapsLatLng {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    getRadius(): number {return; }
+    getRadius(): number {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    getStrokeColor(): string {return; }
+    getStrokeColor(): string {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    getVisible(): boolean {return; }
+    getVisible(): boolean {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    getZIndex(): number {return; }
+    getZIndex(): number {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    remove(): void { }
+    remove(): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setCenter(latLng: GoogleMapsLatLng): void { }
+    setCenter(latLng: GoogleMapsLatLng): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setFillColor(fillColor: string): void { }
+    setFillColor(fillColor: string): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setStrokeColor(strokeColor: string): void { }
+    setStrokeColor(strokeColor: string): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setStrokeWidth(strokeWidth: number): void { }
+    setStrokeWidth(strokeWidth: number): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setVisible(visible: boolean): void { }
+    setVisible(visible: boolean): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setZIndex(zIndex: number): void { }
+    setZIndex(zIndex: number): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    setRadius(radius: number): void { }
+    setRadius(radius: number): void {
+    }
 
     @CordovaInstance({
         sync: true
     })
-    getMap(): GoogleMap {return; }
-
+    getMap(): GoogleMap {
+        return;
+    }
 
 
 }
@@ -594,55 +691,75 @@ export interface GoogleMapsPolylineOptions {
     zIndex?: number;
 }
 export class GoogleMapsPolyline {
-    constructor (private _objectInstance: any) { }
+    constructor(private _objectInstance: any) {
+    }
 
     addEventListener(event: any): Observable<any> {
         return new Observable(
             (observer) => {
                 this._objectInstance.addEventListener(event, observer.next);
-                return () => this._objectInstance.removeEventListener(event, observer.next)
+                return () => this._objectInstance.removeEventListener(event, observer.next);
             }
         );
     }
 
     @CordovaInstance({sync: true})
-    getPoints(): Array<GoogleMapsLatLng> {return; }
+    getPoints(): Array<GoogleMapsLatLng> {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    getCOlor(): string {return; }
+    getCOlor(): string {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    getWidth(): number {return; }
+    getWidth(): number {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    getGeodesic(): boolean {return; }
+    getGeodesic(): boolean {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    getZIndex(): number {return; }
+    getZIndex(): number {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    remove(): void { }
+    remove(): void {
+    }
 
     @CordovaInstance({sync: true})
-    setPoints(points: Array<GoogleMapsLatLng>): void { }
+    setPoints(points: Array<GoogleMapsLatLng>): void {
+    }
 
     @CordovaInstance({sync: true})
-    setColor(color: string): void { }
+    setColor(color: string): void {
+    }
 
     @CordovaInstance({sync: true})
-    setWidth(width: number): void { }
+    setWidth(width: number): void {
+    }
 
     @CordovaInstance({sync: true})
-    setVisible(visible: boolean): void { }
+    setVisible(visible: boolean): void {
+    }
 
     @CordovaInstance({sync: true})
-    setZIndex(zIndex: number): void { }
+    setZIndex(zIndex: number): void {
+    }
 
     @CordovaInstance({sync: true})
-    setGeoDesic(geoDesic: boolean): void { }
+    setGeoDesic(geoDesic: boolean): void {
+    }
 
     @CordovaInstance({sync: true})
-    getMap(): GoogleMap {return; }
+    getMap(): GoogleMap {
+        return;
+    }
 
 }
 export interface GoogleMapsPolygonOptions {
@@ -653,65 +770,88 @@ export interface GoogleMapsPolygonOptions {
     fillColor?: string;
     visible?: boolean;
     zIndex?: number;
-    addHole?: Array<GoogleMapsLatLng>
+    addHole?: Array<GoogleMapsLatLng>;
 }
 export class GoogleMapsPolygon {
 
-    constructor(private _objectInstance: any) { }
+    constructor(private _objectInstance: any) {
+    }
 
     addEventListener(event: any): Observable<any> {
         return new Observable(
             (observer) => {
                 this._objectInstance.addEventListener(event, observer.next);
-                return () => this._objectInstance.removeEventListener(event, observer.next)
+                return () => this._objectInstance.removeEventListener(event, observer.next);
             }
         );
     }
 
     @CordovaInstance({sync: true})
-    getPoints(): Array<GoogleMapsLatLng> { return; }
+    getPoints(): Array<GoogleMapsLatLng> {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    getStrokeColor(): string {return; }
+    getStrokeColor(): string {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    getFillColor(): string {return; }
+    getFillColor(): string {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    getStrokeWidth(): number {return; }
+    getStrokeWidth(): number {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    getGeodesic(): boolean {return; }
+    getGeodesic(): boolean {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    getVisible(): boolean {return; }
+    getVisible(): boolean {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    getZIndex(): boolean {return; }
+    getZIndex(): boolean {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    remove(): void { }
+    remove(): void {
+    }
 
     @CordovaInstance({sync: true})
-    setPoints(points: Array<GoogleMapsLatLng>): void { }
+    setPoints(points: Array<GoogleMapsLatLng>): void {
+    }
 
     @CordovaInstance({sync: true})
-    setStrokeColor(strokeColor: string): void { }
+    setStrokeColor(strokeColor: string): void {
+    }
 
     @CordovaInstance({sync: true})
-    setFillColor(fillColor: string): void { }
+    setFillColor(fillColor: string): void {
+    }
 
     @CordovaInstance({sync: true})
-    setStrokeWidth(strokeWidth: number): void { }
+    setStrokeWidth(strokeWidth: number): void {
+    }
 
     @CordovaInstance({sync: true})
-    setVisible(visible: boolean): void { }
+    setVisible(visible: boolean): void {
+    }
 
     @CordovaInstance({sync: true})
-    setZIndex(zIndex: number): void { }
+    setZIndex(zIndex: number): void {
+    }
 
     @CordovaInstance({sync: true})
-    setGeodesic(geodesic: boolean): void { }
+    setGeodesic(geodesic: boolean): void {
+    }
 }
 export interface GoogleMapsTileOverlayOptions {
     titleUrilFormat?: string;
@@ -722,37 +862,52 @@ export interface GoogleMapsTileOverlayOptions {
 }
 export class GoogleMapsTileOverlay {
 
-    constructor(private _objectInstance: any) { }
+    constructor(private _objectInstance: any) {
+    }
 
     @CordovaInstance({sync: true})
-    getVisible(): boolean {return; }
+    getVisible(): boolean {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    setVisible(visible: boolean): void { }
+    setVisible(visible: boolean): void {
+    }
 
     @CordovaInstance({sync: true})
-    getFadeIn(): boolean {return; }
+    getFadeIn(): boolean {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    setFadeIn(fadeIn: boolean): void { }
+    setFadeIn(fadeIn: boolean): void {
+    }
 
     @CordovaInstance({sync: true})
-    getZIndex(): number {return; }
+    getZIndex(): number {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    setZIndex(zIndex: number): void { }
+    setZIndex(zIndex: number): void {
+    }
 
     @CordovaInstance({sync: true})
-    getOpacity(): number {return; }
+    getOpacity(): number {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    setOpacity(opacity: number): void { }
+    setOpacity(opacity: number): void {
+    }
 
     @CordovaInstance({sync: true})
-    clearTileCache(): void { }
+    clearTileCache(): void {
+    }
 
     @CordovaInstance({sync: true})
-    remove(): void { }
+    remove(): void {
+    }
 
 }
 export interface GoogleMapsGroundOverlayOptions {
@@ -765,31 +920,43 @@ export interface GoogleMapsGroundOverlayOptions {
 }
 export class GoogleMapsGroundOverlay {
 
-    constructor(private _objectInstance: any) { }
+    constructor(private _objectInstance: any) {
+    }
 
     @CordovaInstance({sync: true})
-    setBearing(bearing: number): void { }
+    setBearing(bearing: number): void {
+    }
 
     @CordovaInstance({sync: true})
-    getBearing(): number {return; }
+    getBearing(): number {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    setOpacity(opacity: number): void { }
+    setOpacity(opacity: number): void {
+    }
 
     @CordovaInstance({sync: true})
-    getOpacity(): number {return; }
+    getOpacity(): number {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    setVisible(visible: boolean): void { }
+    setVisible(visible: boolean): void {
+    }
 
     @CordovaInstance({sync: true})
-    getVisible(): boolean {return; }
+    getVisible(): boolean {
+        return;
+    }
 
     @CordovaInstance({sync: true})
-    setImage(image: string): void { };
+    setImage(image: string): void {
+    };
 
     @CordovaInstance({sync: true})
-    remove(): void { }
+    remove(): void {
+    }
 
 }
 export interface GoogleMapsKmlOverlayOptions {
@@ -799,33 +966,43 @@ export interface GoogleMapsKmlOverlayOptions {
 }
 export class GoogleMapsKmlOverlay {
 
-    constructor(private _objectInstance: any) { }
+    constructor(private _objectInstance: any) {
+    }
 
     @CordovaInstance({sync: true})
-    remove(): void { }
+    remove(): void {
+    }
 
     @CordovaInstance({sync: true})
-    getOverlays(): Array<GoogleMapsPolyline|GoogleMapsPolygon|GoogleMapsMarker> {return; }
+    getOverlays(): Array<GoogleMapsPolyline|GoogleMapsPolygon|GoogleMapsMarker> {
+        return;
+    }
 }
 export class GoogleMapsLatLng {
     private _objectInstance: any;
 
-    constructor (public lat: string, public lng: string) {
+    constructor(public lat: string, public lng: string) {
         this._objectInstance = new plugin.google.maps.LatLng(lat, lng);
     }
 
     @CordovaInstance({
         sync: true
     })
-    equals (other: GoogleMapsLatLng): boolean {return; }
+    equals(other: GoogleMapsLatLng): boolean {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    toString (): string {return; }
+    toString(): string {
+        return;
+    }
 
     @CordovaInstance({
         sync: true
     })
-    toUrlValue (precision?: number): string {return; }
+    toUrlValue(precision?: number): string {
+        return;
+    }
 }
