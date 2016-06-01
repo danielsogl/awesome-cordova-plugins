@@ -59,7 +59,7 @@ import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
 import {Vibration} from './plugins/vibration';
 import {WebIntent} from './plugins/webintent';
-
+export * from './plugins/googlemaps';
 export {
   ActionSheet,
   AdMob,
@@ -92,7 +92,6 @@ export {
   Flashlight,
   Geolocation,
   Globalization,
-  GoogleMap,
   GoogleAnalytics,
   Hotspot,
   ImagePicker,
