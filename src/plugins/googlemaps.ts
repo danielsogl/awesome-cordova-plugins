@@ -1,13 +1,3 @@
-/**
- * ----- IMPORTANT NOTES -----
- *
- * - The current event listeners might not work. They might need an alternative implementation.
- * - Constructors of the "sub-objects" are not meant to be used. They are for ionic-native developer only.
- * - The plugin isn't fully tested and documented yet. Use at your own risk, and don't hesitate to ask questions.
- *
- * ---------------------------
- */
-
 import {Cordova, Plugin} from './plugin';
 import {Observable} from 'rxjs/Rx';
 import {CordovaInstance} from './plugin';
@@ -15,7 +5,6 @@ import {CordovaInstance} from './plugin';
  * Created by Ibrahim on 3/29/2016.
  */
 declare var plugin: any;
-
 /**
  * You can listen to these events where appropriate
  */
@@ -36,7 +25,6 @@ export const GoogleMapsEvent = {
     MARKER_DRAG_END: plugin.google.maps.event.MARKER_DRAG_END,
     OVERLAY_CLICK: plugin.google.maps.event.OVERLAY_CLICK
 };
-
 /**
  * @name Google Maps
  * @description This plugin uses the native Google Maps SDK
@@ -231,7 +219,7 @@ export class GoogleMap {
         return new Promise<GoogleMapsTileOverlay>(
             (resolve, reject) => {
                 this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
-                    if(tileOverlay) resolve(new GoogleMapsPolyline(tileOverlay));
+                    if(tileOverlay) resolve(new GoogleMapsTileOverlay(tileOverlay));
                     else reject();
                 });
             }
@@ -242,7 +230,7 @@ export class GoogleMap {
         return new Promise<GoogleMapsGroundOverlay>(
             (resolve, reject) => {
                 this._objectInstance.addTileOverlay(options, (groundOverlay: any) => {
-                    if(groundOverlay) resolve(new GoogleMapsPolyline(groundOverlay));
+                    if(groundOverlay) resolve(new GoogleMapsGroundOverlay(groundOverlay));
                     else reject();
                 });
             }
@@ -253,7 +241,7 @@ export class GoogleMap {
         return new Promise<GoogleMapsKmlOverlay>(
             (resolve, reject) => {
                 this._objectInstance.addTileOverlay(options, (kmlOverlay: any) => {
-                    if(kmlOverlay) resolve(new GoogleMapsPolyline(kmlOverlay));
+                    if(kmlOverlay) resolve(new GoogleMapsKmlOverlay(kmlOverlay));
                     else reject();
                 });
             }
@@ -315,7 +303,6 @@ export class GoogleMap {
     panBy (): void { }
 
 }
-
 export interface AnimateCameraOptions {
     target?: string;
     tilt?: number;
@@ -345,7 +332,6 @@ export interface VisibleRegion {
     northeast?: any;
     southwest?: any;
 }
-
 export interface GoogleMapsMarkerOptions {
     icon?: any;
     title?: string;
@@ -504,7 +490,6 @@ export class GoogleMapsMarker {
 
 
 }
-
 export interface GoogleMapsCircleOptions {
     center?: GoogleMapsLatLng;
     radius?: number;
@@ -600,7 +585,6 @@ export class GoogleMapsCircle {
 
 
 }
-
 export interface GoogleMapsPolylineOptions {
     points?: Array<GoogleMapsLatLng>;
     visible?: boolean;
@@ -661,7 +645,6 @@ export class GoogleMapsPolyline {
     getMap(): GoogleMap {return; }
 
 }
-
 export interface GoogleMapsPolygonOptions {
     points?: Array<GoogleMapsLatLng>;
     geodesic?: boolean;
@@ -730,7 +713,6 @@ export class GoogleMapsPolygon {
     @CordovaInstance({sync: true})
     setGeodesic(geodesic: boolean): void { }
 }
-
 export interface GoogleMapsTileOverlayOptions {
     titleUrilFormat?: string;
     visible?: boolean;
@@ -738,7 +720,6 @@ export interface GoogleMapsTileOverlayOptions {
     tileSize?: number;
     opacity?: number;
 }
-
 export class GoogleMapsTileOverlay {
 
     constructor(private _objectInstance: any) { }
@@ -774,9 +755,6 @@ export class GoogleMapsTileOverlay {
     remove(): void { }
 
 }
-
-
-
 export interface GoogleMapsGroundOverlayOptions {
     url?: string;
     bounds?: Array<GoogleMapsLatLng>;
@@ -785,7 +763,6 @@ export interface GoogleMapsGroundOverlayOptions {
     bearing?: number;
     zIndex?: number;
 }
-
 export class GoogleMapsGroundOverlay {
 
     constructor(private _objectInstance: any) { }
@@ -815,15 +792,11 @@ export class GoogleMapsGroundOverlay {
     remove(): void { }
 
 }
-
-
-
 export interface GoogleMapsKmlOverlayOptions {
     url?: string;
     preserveViewport?: boolean;
     animation?: boolean;
 }
-
 export class GoogleMapsKmlOverlay {
 
     constructor(private _objectInstance: any) { }
@@ -834,9 +807,6 @@ export class GoogleMapsKmlOverlay {
     @CordovaInstance({sync: true})
     getOverlays(): Array<GoogleMapsPolyline|GoogleMapsPolygon|GoogleMapsMarker> {return; }
 }
-
-
-
 export class GoogleMapsLatLng {
     private _objectInstance: any;
 
