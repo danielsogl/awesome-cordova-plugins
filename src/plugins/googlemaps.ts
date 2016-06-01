@@ -9,21 +9,29 @@ declare var plugin: any;
  * You can listen to these events where appropriate
  */
 export const GoogleMapsEvent = {
-    MAP_READY: plugin.google.maps.event.MAP_READY,
-    MAP_CLICK: plugin.google.maps.event.MAP_CLICK,
-    MAP_LONG_CLICK: plugin.google.maps.event.MAP_LONG_CLICK,
-    MY_LOCATION_BUTTON_CLICK: plugin.google.maps.event.MY_LOCATION_BUTTON_CLICK,
-    CAMERA_CHANGE: plugin.google.maps.event.CAMERA_CHANGE,
-    CAMERA_IDLE: plugin.google.maps.event.CAMERA_IDLE,
-    MAP_LOADED: plugin.google.maps.event.MAP_LOADED,
-    MAP_WILL_MOVE: plugin.google.maps.event.MAP_WILL_MOVE,
-    MAP_CLOSE: plugin.google.maps.event.MAP_CLOSE,
-    MARKER_CLICK: plugin.google.maps.event.MARKER_CLICK,
-    INFO_CLICK: plugin.google.maps.event.INFO_CLICK,
-    MARKER_DRAG: plugin.google.maps.event.MARKER_DRAG,
-    MARKER_DRAG_START: plugin.google.maps.event.MARKER_DRAG_START,
-    MARKER_DRAG_END: plugin.google.maps.event.MARKER_DRAG_END,
-    OVERLAY_CLICK: plugin.google.maps.event.OVERLAY_CLICK
+    MAP_CLICK: 'click',
+    MAP_LONG_CLICK: 'long_click',
+    MY_LOCATION_CHANGE: 'my_location_change',
+    MY_LOCATION_BUTTON_CLICK: 'my_location_button_click',
+    INDOOR_BUILDING_FOCUSED: 'indoor_building_focused',
+    INDOOR_LEVEL_ACTIVATED: 'indoor_level_activated',
+    CAMERA_CHANGE: 'camera_change',
+    CAMERA_IDLE: 'camera_idle',
+    MAP_READY: 'map_ready',
+    MAP_LOADED: 'map_loaded',
+    MAP_WILL_MOVE: 'will_move',
+    MAP_CLOSE: 'map_close',
+    MARKER_CLICK: 'click',
+    OVERLAY_CLICK: 'overlay_click',
+    INFO_CLICK: 'info_click',
+    MARKER_DRAG: 'drag',
+    MARKER_DRAG_START: 'drag_start',
+    MARKER_DRAG_END: 'drag_end'
+};
+
+export const GoogleMapsAnimation = {
+    BOUNCE: 'BOUNCE',
+    DROP: 'DROP'
 };
 /**
  * @name Google Maps
