@@ -15,19 +15,40 @@ import {CordovaInstance} from './plugin';
  * Created by Ibrahim on 3/29/2016.
  */
 declare var plugin: any;
+
+/**
+ * You can listen to these events where appropriate
+ */
+export const GoogleMapsEvent = {
+    MAP_READY: plugin.google.maps.event.MAP_READY,
+    MAP_CLICK: plugin.google.maps.event.MAP_CLICK,
+    MAP_LONG_CLICK: plugin.google.maps.event.MAP_LONG_CLICK,
+    MY_LOCATION_BUTTON_CLICK: plugin.google.maps.event.MY_LOCATION_BUTTON_CLICK,
+    CAMERA_CHANGE: plugin.google.maps.event.CAMERA_CHANGE,
+    CAMERA_IDLE: plugin.google.maps.event.CAMERA_IDLE,
+    MAP_LOADED: plugin.google.maps.event.MAP_LOADED,
+    MAP_WILL_MOVE: plugin.google.maps.event.MAP_WILL_MOVE,
+    MAP_CLOSE: plugin.google.maps.event.MAP_CLOSE,
+    MARKER_CLICK: plugin.google.maps.event.MARKER_CLICK,
+    INFO_CLICK: plugin.google.maps.event.INFO_CLICK,
+    MARKER_DRAG: plugin.google.maps.event.MARKER_DRAG,
+    MARKER_DRAG_START: plugin.google.maps.event.MARKER_DRAG_START,
+    MARKER_DRAG_END: plugin.google.maps.event.MARKER_DRAG_END
+};
+
 /**
  * @name Google Maps
  * @description This plugin uses the native Google Maps SDK
  * @usage
  * ```
- * import {GoogleMaps} from 'ionic-native';
+ * import {GoogleMaps, GoogleMapsEvent} from 'ionic-native';
  *
  * ...
  *
  * // somewhere in your component
  * let map = new GoogleMaps('elementID');
  *
- * map.onInit().subscribe(() => console.log("Map is ready!"));
+ * map.on(GoogleMapsEvent.MAP_READY).subscribe(() => console.log("Map is ready!"));
  * ```
  */
 @Plugin({
@@ -36,17 +57,6 @@ declare var plugin: any;
     repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps'
 })
 export class GoogleMap {
-    static event: any = {
-      MAP_READY: plugin.google.maps.event.MAP_READY,
-        MAP_CLICK: plugin.google.maps.event.MAP_CLICK,
-        MAP_LONG_CLICK: plugin.google.maps.event.MAP_LONG_CLICK,
-        MY_LOCATION_BUTTON_CLICK: plugin.google.maps.event.MY_LOCATION_BUTTON_CLICK,
-        CAMERA_CHANGE: plugin.google.maps.event.CAMERA_CHANGE,
-        CAMERA_IDLE: plugin.google.maps.event.CAMERA_IDLE,
-        MAP_LOADED: plugin.google.maps.event.MAP_LOADED,
-        MAP_WILL_MOVE: plugin.google.maps.event.MAP_WILL_MOVE,
-        MAP_CLOSE: plugin.google.maps.event.MAP_CLOSE
-    };
     _objectInstance: any;
 
     /**
@@ -75,63 +85,6 @@ export class GoogleMap {
         );
     }
 
-
-    /**
-     * Get notified via an Observable when the user changes the view. (Event: CAMERA_CHANGE)
-     */
-    @Cordova({
-        eventObservable: true,
-        event: 'plugin.google.maps.event.CAMERA_CHANGE'
-    })
-    static onCameraChange (): Observable<any> {return; }
-
-    /**
-     * Get notified via an Observable when the view is on idle. (Event: CAMERA_IDLE)
-     */
-    @Cordova({
-        eventObservable: true,
-        event: 'plugin.google.maps.event.CAMERA_IDLE',
-        platforms: ['iOS']
-    })
-    static onCameraIdle (): Observable<any> {return; }
-
-    /**
-     * Get notified via an Observable when the map is ready. (Event: MAP_READY)
-     */
-    @Cordova({
-        eventObservable: true,
-        event: 'plugin.google.maps.event.MAP_READY'
-    })
-    static onMapReady (): Observable<GoogleMap> {return; }
-
-    /**
-     * Get notified via an Observable when the map is loaded. (Event: MAP_LOADED)
-     */
-    @Cordova({
-        eventObservable: true,
-        event: 'plugin.google.maps.event.MAP_LOADED',
-        platforms: ['Android']
-    })
-    static onMapLoaded (): Observable<GoogleMap> {return; }
-
-    /**
-     * Get notified via an Observable when the map will move. (Event: MAP_WILL_MOVE)
-     */
-    @Cordova({
-        eventObservable: true,
-        event: 'plugin.google.maps.event.MAP_WILL_MOVE',
-        platforms: ['iOS']
-    })
-    static onMapWillMove (): Observable<any> {return; }
-
-    /**
-     * Get notified via an Observable when the user closes the map. (Event: MAP_CLOSE)
-     */
-    @Cordova({
-        eventObservable: true,
-        event: 'plugin.google.maps.event.MAP_CLOSE'
-    })
-    static onMapClose (): Observable<any> {return; }
 
     @CordovaInstance({
         sync: true
@@ -240,29 +193,23 @@ export class GoogleMap {
         );
     }
 
-    addCircle (options: GoogleMapsCircleOptions): GoogleMapsCircle {
-        let objectInstance: any = this._objectInstance.addCircle(options);
-        return new GoogleMapsCircle(objectInstance);
+    addCircle (options: GoogleMapsCircleOptions): Promise<GoogleMapsCircle> {
+        return new Promise<GoogleMapsCircle>(
+            (resolve, reject) => {
+                this._objectInstance.addCircle(options, (circle: any) => {
+                   if(circle) resolve(new GoogleMapsCircle(circle));
+                    else reject();
+                });
+            }
+        );
     }
 
-    @CordovaInstance({
-        sync: true
-    })
     addPolygon (options: any): void { }
 
-    @CordovaInstance({
-        sync: true
-    })
     addPolyline (options: any): void { }
 
-    @CordovaInstance({
-        sync: true
-    })
     addTileOverlay (options: any): void { }
 
-    @CordovaInstance({
-        sync: true
-    })
     addGroundOverlay (options: any): void { }
 
     @CordovaInstance({
@@ -375,6 +322,15 @@ export interface GoogleMapsMarkerIcon {
 export class GoogleMapsMarker {
 
     constructor (private _objectInstance: any) { }
+
+    addEventListener(event: any): Observable<any> {
+        return new Observable(
+            (observer) => {
+                this._objectInstance.addEventListener(event, observer.next);
+                return () => this._objectInstance.removeEventListener(event, observer.next)
+            }
+        );
+    }
 
     @CordovaInstance({
         sync: true
@@ -512,7 +468,16 @@ export interface GoogleMapsCircleOptions {
 }
 export class GoogleMapsCircle {
 
-    constructor(private _objectInstnace: any) { }
+    constructor(private _objectInstance: any) { }
+
+    addEventListener(event: any): Observable<any> {
+        return new Observable(
+            (observer) => {
+                this._objectInstance.addEventListener(event, observer.next);
+                return () => this._objectInstance.removeEventListener(event, observer.next)
+            }
+        );
+    }
 
     @CordovaInstance({
         sync: true
