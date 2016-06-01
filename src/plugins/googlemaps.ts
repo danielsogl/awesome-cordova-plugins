@@ -33,7 +33,8 @@ export const GoogleMapsEvent = {
     INFO_CLICK: plugin.google.maps.event.INFO_CLICK,
     MARKER_DRAG: plugin.google.maps.event.MARKER_DRAG,
     MARKER_DRAG_START: plugin.google.maps.event.MARKER_DRAG_START,
-    MARKER_DRAG_END: plugin.google.maps.event.MARKER_DRAG_END
+    MARKER_DRAG_END: plugin.google.maps.event.MARKER_DRAG_END,
+    OVERLAY_CLICK: plugin.google.maps.event.OVERLAY_CLICK
 };
 
 /**
@@ -197,20 +198,67 @@ export class GoogleMap {
         return new Promise<GoogleMapsCircle>(
             (resolve, reject) => {
                 this._objectInstance.addCircle(options, (circle: any) => {
-                   if(circle) resolve(new GoogleMapsCircle(circle));
+                    if(circle) resolve(new GoogleMapsCircle(circle));
                     else reject();
                 });
             }
         );
     }
 
-    addPolygon (options: any): void { }
+    addPolygon (options: GoogleMapsPolygonOptions): Promise<GoogleMapsPolygon> {
+        return new Promise<GoogleMapsPolygon>(
+            (resolve, reject) => {
+                this._objectInstance.addPolygon(options, (polygon: any) => {
+                   if(polygon) resolve(new GoogleMapsPolygon(polygon));
+                    else reject();
+                });
+            }
+        );
+    }
 
-    addPolyline (options: any): void { }
+    addPolyline (options: GoogleMapsPolylineOptions): Promise<GoogleMapsPolyline> {
+        return new Promise<GoogleMapsPolyline>(
+            (resolve, reject) => {
+                this._objectInstance.addPolyline(options, (polyline: any) => {
+                    if(polyline) resolve(new GoogleMapsPolyline(polyline));
+                    else reject();
+                });
+            }
+        );
+    }
 
-    addTileOverlay (options: any): void { }
+    addTileOverlay (options: GoogleMapsTileOverlayOptions): Promise<GoogleMapsTileOverlay> {
+        return new Promise<GoogleMapsTileOverlay>(
+            (resolve, reject) => {
+                this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
+                    if(tileOverlay) resolve(new GoogleMapsPolyline(tileOverlay));
+                    else reject();
+                });
+            }
+        )
+    }
 
-    addGroundOverlay (options: any): void { }
+    addGroundOverlay (options: GoogleMapsGroundOverlayOptions): Promise<GoogleMapsGroundOverlay> {
+        return new Promise<GoogleMapsGroundOverlay>(
+            (resolve, reject) => {
+                this._objectInstance.addTileOverlay(options, (groundOverlay: any) => {
+                    if(groundOverlay) resolve(new GoogleMapsPolyline(groundOverlay));
+                    else reject();
+                });
+            }
+        )
+    }
+
+    addKmlOverlay (options: GoogleMapsKmlOverlayOptions): Promise<GoogleMapsKmlOverlay> {
+        return new Promise<GoogleMapsKmlOverlay>(
+            (resolve, reject) => {
+                this._objectInstance.addTileOverlay(options, (kmlOverlay: any) => {
+                    if(kmlOverlay) resolve(new GoogleMapsPolyline(kmlOverlay));
+                    else reject();
+                });
+            }
+        )
+    }
 
     @CordovaInstance({
         sync: true
@@ -564,7 +612,14 @@ export interface GoogleMapsPolylineOptions {
 export class GoogleMapsPolyline {
     constructor (private _objectInstance: any) { }
 
-    // TODO add event listeners
+    addEventListener(event: any): Observable<any> {
+        return new Observable(
+            (observer) => {
+                this._objectInstance.addEventListener(event, observer.next);
+                return () => this._objectInstance.removeEventListener(event, observer.next)
+            }
+        );
+    }
 
     @CordovaInstance({sync: true})
     getPoints(): Array<GoogleMapsLatLng> {return; }
@@ -606,6 +661,181 @@ export class GoogleMapsPolyline {
     getMap(): GoogleMap {return; }
 
 }
+
+export interface GoogleMapsPolygonOptions {
+    points?: Array<GoogleMapsLatLng>;
+    geodesic?: boolean;
+    strokeColor?: string;
+    strokeWidth?: number;
+    fillColor?: string;
+    visible?: boolean;
+    zIndex?: number;
+    addHole?: Array<GoogleMapsLatLng>
+}
+export class GoogleMapsPolygon {
+
+    constructor(private _objectInstance: any) { }
+
+    addEventListener(event: any): Observable<any> {
+        return new Observable(
+            (observer) => {
+                this._objectInstance.addEventListener(event, observer.next);
+                return () => this._objectInstance.removeEventListener(event, observer.next)
+            }
+        );
+    }
+
+    @CordovaInstance({sync: true})
+    getPoints(): Array<GoogleMapsLatLng> { return; }
+
+    @CordovaInstance({sync: true})
+    getStrokeColor(): string {return; }
+
+    @CordovaInstance({sync: true})
+    getFillColor(): string {return; }
+
+    @CordovaInstance({sync: true})
+    getStrokeWidth(): number {return; }
+
+    @CordovaInstance({sync: true})
+    getGeodesic(): boolean {return; }
+
+    @CordovaInstance({sync: true})
+    getVisible(): boolean {return; }
+
+    @CordovaInstance({sync: true})
+    getZIndex(): boolean {return; }
+
+    @CordovaInstance({sync: true})
+    remove(): void { }
+
+    @CordovaInstance({sync: true})
+    setPoints(points: Array<GoogleMapsLatLng>): void { }
+
+    @CordovaInstance({sync: true})
+    setStrokeColor(strokeColor: string): void { }
+
+    @CordovaInstance({sync: true})
+    setFillColor(fillColor: string): void { }
+
+    @CordovaInstance({sync: true})
+    setStrokeWidth(strokeWidth: number): void { }
+
+    @CordovaInstance({sync: true})
+    setVisible(visible: boolean): void { }
+
+    @CordovaInstance({sync: true})
+    setZIndex(zIndex: number): void { }
+
+    @CordovaInstance({sync: true})
+    setGeodesic(geodesic: boolean): void { }
+}
+
+export interface GoogleMapsTileOverlayOptions {
+    titleUrilFormat?: string;
+    visible?: boolean;
+    zIndex?: number;
+    tileSize?: number;
+    opacity?: number;
+}
+
+export class GoogleMapsTileOverlay {
+
+    constructor(private _objectInstance: any) { }
+
+    @CordovaInstance({sync: true})
+    getVisible(): boolean {return; }
+
+    @CordovaInstance({sync: true})
+    setVisible(visible: boolean): void { }
+
+    @CordovaInstance({sync: true})
+    getFadeIn(): boolean {return; }
+
+    @CordovaInstance({sync: true})
+    setFadeIn(fadeIn: boolean): void { }
+
+    @CordovaInstance({sync: true})
+    getZIndex(): number {return; }
+
+    @CordovaInstance({sync: true})
+    setZIndex(zIndex: number): void { }
+
+    @CordovaInstance({sync: true})
+    getOpacity(): number {return; }
+
+    @CordovaInstance({sync: true})
+    setOpacity(opacity: number): void { }
+
+    @CordovaInstance({sync: true})
+    clearTileCache(): void { }
+
+    @CordovaInstance({sync: true})
+    remove(): void { }
+
+}
+
+
+
+export interface GoogleMapsGroundOverlayOptions {
+    url?: string;
+    bounds?: Array<GoogleMapsLatLng>;
+    visible?: boolean;
+    opacity?: number;
+    bearing?: number;
+    zIndex?: number;
+}
+
+export class GoogleMapsGroundOverlay {
+
+    constructor(private _objectInstance: any) { }
+
+    @CordovaInstance({sync: true})
+    setBearing(bearing: number): void { }
+
+    @CordovaInstance({sync: true})
+    getBearing(): number {return; }
+
+    @CordovaInstance({sync: true})
+    setOpacity(opacity: number): void { }
+
+    @CordovaInstance({sync: true})
+    getOpacity(): number {return; }
+
+    @CordovaInstance({sync: true})
+    setVisible(visible: boolean): void { }
+
+    @CordovaInstance({sync: true})
+    getVisible(): boolean {return; }
+
+    @CordovaInstance({sync: true})
+    setImage(image: string): void { };
+
+    @CordovaInstance({sync: true})
+    remove(): void { }
+
+}
+
+
+
+export interface GoogleMapsKmlOverlayOptions {
+    url?: string;
+    preserveViewport?: boolean;
+    animation?: boolean;
+}
+
+export class GoogleMapsKmlOverlay {
+
+    constructor(private _objectInstance: any) { }
+
+    @CordovaInstance({sync: true})
+    remove(): void { }
+
+    @CordovaInstance({sync: true})
+    getOverlays(): Array<GoogleMapsPolyline|GoogleMapsPolygon|GoogleMapsMarker> {return; }
+}
+
+
 
 export class GoogleMapsLatLng {
     private _objectInstance: any;
