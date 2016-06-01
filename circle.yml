@@ -4,10 +4,10 @@ machine:
   ruby:
     version: 2.1.2
 
-#general:
-#  branches:
-#    only:
-#      - master # ignore PRs and branches
+general:
+  branches:
+    only:
+      - master # ignore PRs and branches
 
 dependencies:
  pre:
