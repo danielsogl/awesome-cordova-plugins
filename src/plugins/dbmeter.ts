@@ -1,5 +1,5 @@
 import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
 /**
  * @name DB Meter
  * @description This plugin defines a global DBMeter object, which permits to get the decibel values from the microphone.
