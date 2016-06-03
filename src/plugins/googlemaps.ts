@@ -72,7 +72,8 @@ export class GoogleMap {
     on(event: any): Observable<any> {
         return new Observable(
             (observer) => {
-                this._objectInstance.on(event, observer.next);
+                let cb = data => observer.next(data);
+                this._objectInstance.on(event, cb);
                 return () => this._objectInstance.off(event);
             }
         );
@@ -409,8 +410,11 @@ export class GoogleMapsMarker {
     addEventListener(event: any): Observable<any> {
         return new Observable(
             (observer) => {
-                this._objectInstance.addEventListener(event, observer.next);
-                return () => this._objectInstance.removeEventListener(event, observer.next);
+                let cb = (data: any) => {
+                    observer.next(data);
+                };
+                this._objectInstance.addEventListener(event, cb);
+                return () => this._objectInstance.removeEventListener(event, cb);
             }
         );
     }
