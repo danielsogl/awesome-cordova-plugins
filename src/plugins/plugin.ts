@@ -6,7 +6,7 @@ declare var window;
 declare var Promise;
 declare var $q;
 
-import {Observable} from 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
 
 /**
  * @private

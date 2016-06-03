@@ -1,5 +1,5 @@
 import {Cordova, Plugin} from './plugin';
-import {Observable} from 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
 
 /**
  * @name Keyboard
