@@ -165,7 +165,7 @@ export class GoogleMap {
     @CordovaInstance({
         sync: true
     })
-    animateCamera(cameraPosition: CameraPosition): void {
+    animateCamera(animateCameraOptions: AnimateCameraOptions): void {
     }
 
     @CordovaInstance({
