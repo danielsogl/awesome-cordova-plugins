@@ -352,26 +352,20 @@ export class GoogleMap {
 
 }
 export interface AnimateCameraOptions {
-    target?: string;
+    target?: GoogleMapsLatLng;
     tilt?: number;
     zoom?: number;
     bearing?: number;
     duration?: number;
 }
 export interface CameraPosition {
-    target?: {
-        lat?: string;
-        lng?: string;
-    };
+    target?: GoogleMapsLatLng;
     zoom?: number;
     tilt?: number;
     bearing?: number;
 }
 export interface MyLocation {
-    latLng?: {
-        lat?: string;
-        lng?: string;
-    };
+    latLng?: GoogleMapsLatLng;
     speed?: number;
     time?: string;
     bearing?: number;
