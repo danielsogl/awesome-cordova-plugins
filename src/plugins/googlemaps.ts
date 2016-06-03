@@ -989,7 +989,7 @@ export class GoogleMapsKmlOverlay {
 export class GoogleMapsLatLng {
     private _objectInstance: any;
 
-    constructor(public lat: string, public lng: string) {
+    constructor(public lat: number, public lng: number) {
         this._objectInstance = new plugin.google.maps.LatLng(lat, lng);
     }
 
