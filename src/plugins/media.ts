@@ -1,4 +1,5 @@
 import {CordovaInstance, Plugin} from './plugin';
+import {Observable} from 'rxjs/Rx';
 declare var Media: any;
 /**
  * @name MediaPlugin
@@ -13,6 +14,13 @@ declare var Media: any;
  *
  * // Playing a file
  * var file = new MediaPlugin("path/to/file.mp3");
+ *
+ * // Catch the Success & Error Output
+ * file.init.then(() => {
+ *   console.log("Playback Finished");
+ * }, (err) => {
+ *   console.log("somthing went wrong! error code: "+err.code+" message: "+err.message);
+ * });
  *
  * // play the file
  * file.play();
@@ -52,6 +60,8 @@ export class MediaPlugin {
 
   // Properties
   private _objectInstance: any;
+  status: Observable<any>;
+  init: Promise<any>;
 
   // Methods
   /**
@@ -59,8 +69,10 @@ export class MediaPlugin {
    * @param src {string} A URI containing the audio content.
    */
   constructor (src: string) {
-    // TODO handle success, error, and status
-    this._objectInstance = new Media(src);
+    let res, rej, next;
+    this.init = new Promise<any>((resolve, reject) => {res = resolve; rej = reject;});
+    this.status = new Observable((observer) => {next = observer.next;});
+    this._objectInstance = new Media(src, res, rej, next);
   }
 
   /**
