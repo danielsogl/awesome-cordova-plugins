@@ -38,12 +38,12 @@ export const GoogleMapsAnimation = {
  * @description This plugin uses the native Google Maps SDK
  * @usage
  * ```
- * import {GoogleMaps, GoogleMapsEvent} from 'ionic-native';
+ * import {GoogleMap, GoogleMapsEvent} from 'ionic-native';
  *
  * ...
  *
  * // somewhere in your component
- * let map = new GoogleMaps('elementID');
+ * let map = new GoogleMap('elementID');
  *
  * map.on(GoogleMapsEvent.MAP_READY).subscribe(() => console.log("Map is ready!"));
  * ```
@@ -165,7 +165,7 @@ export class GoogleMap {
     @CordovaInstance({
         sync: true
     })
-    animateCamera(cameraPosition: CameraPosition): void {
+    animateCamera(animateCameraOptions: AnimateCameraOptions): void {
     }
 
     @CordovaInstance({
@@ -352,26 +352,20 @@ export class GoogleMap {
 
 }
 export interface AnimateCameraOptions {
-    target?: string;
+    target?: GoogleMapsLatLng;
     tilt?: number;
     zoom?: number;
     bearing?: number;
     duration?: number;
 }
 export interface CameraPosition {
-    target?: {
-        lat?: string;
-        lng?: string;
-    };
+    target?: GoogleMapsLatLng;
     zoom?: number;
     tilt?: number;
     bearing?: number;
 }
 export interface MyLocation {
-    latLng?: {
-        lat?: string;
-        lng?: string;
-    };
+    latLng?: GoogleMapsLatLng;
     speed?: number;
     time?: string;
     bearing?: number;
@@ -989,7 +983,7 @@ export class GoogleMapsKmlOverlay {
 export class GoogleMapsLatLng {
     private _objectInstance: any;
 
-    constructor(public lat: string, public lng: string) {
+    constructor(public lat: number, public lng: number) {
         this._objectInstance = new plugin.google.maps.LatLng(lat, lng);
     }
 
