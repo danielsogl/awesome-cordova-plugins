@@ -704,8 +704,9 @@ export class GoogleMapsPolyline {
     addEventListener(event: any): Observable<any> {
         return new Observable(
             (observer) => {
-                this._objectInstance.addEventListener(event, observer.next);
-                return () => this._objectInstance.removeEventListener(event, observer.next);
+                let cb = data => observer.next(data);
+                this._objectInstance.addEventListener(event, cb);
+                return () => this._objectInstance.removeEventListener(event, cb);
             }
         );
     }
@@ -787,8 +788,9 @@ export class GoogleMapsPolygon {
     addEventListener(event: any): Observable<any> {
         return new Observable(
             (observer) => {
-                this._objectInstance.addEventListener(event, observer.next);
-                return () => this._objectInstance.removeEventListener(event, observer.next);
+                let cb = data => observer.next(data);
+                this._objectInstance.addEventListener(event, cb);
+                return () => this._objectInstance.removeEventListener(event, cb);
             }
         );
     }
