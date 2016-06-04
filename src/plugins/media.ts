@@ -1,5 +1,5 @@
 import {CordovaInstance, Plugin} from './plugin';
-import {Observable} from 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
 declare var Media: any;
 /**
  * @name MediaPlugin
@@ -71,7 +71,9 @@ export class MediaPlugin {
   constructor (src: string) {
     let res, rej, next;
     this.init = new Promise<any>((resolve, reject) => {res = resolve; rej = reject;});
-    this.status = new Observable((observer) => {next = observer.next;});
+    this.status = new Observable((observer) => {
+        next = data => observer.next(data);
+    });
     this._objectInstance = new Media(src, res, rej, next);
   }
 
