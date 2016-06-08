@@ -69,6 +69,7 @@ export {
   AppVersion,
   Badge,
   BackgroundGeolocation,
+  BackgroundMode,
   BarcodeScanner,
   Base64ToGallery,
   BatteryStatus,
