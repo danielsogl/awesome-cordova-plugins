@@ -3,25 +3,8 @@ import {Plugin, Cordova} from './plugin';
 /**
 * @name Background Mode
 * @description
-* The ActionSheet plugin shows a native list of options the user can choose from.
-*
-* Requires Cordova plugin: `cordova-plugin-actionsheet`. For more info, please see the [ActionSheet plugin docs](https://github.com/EddyVerbruggen/cordova-plugin-actionsheet).
-*
-* @usage
-* ```ts
-* import {ActionSheet} from 'ionic-native';
-*
-* let buttonLabels = ['Share via Facebook', 'Share via Twitter'];
-* ActionSheet.show({
-*   'title': 'What do you want with this image?',
-*   'buttonLabels': buttonLabels,
-*   'addCancelButtonWithLabel': 'Cancel',
-*   'addDestructiveButtonWithLabel' : 'Delete'
-* }).then(buttonIndex => {
-*   console.log('Button pressed: ' + buttonLabels[buttonIndex - 1]);
-* });
-* ```
-*
+* Cordova plugin to prevent the app from going to sleep while in background.
+* For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode#android-customization
 */
 @Plugin({
   plugin: 'cordova-plugin-background-mode',
@@ -30,27 +13,49 @@ import {Plugin, Cordova} from './plugin';
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class BackgroundMode {
+  /**
+  * Enable the background mode.
+  * Once called, prevents the app from being puased while in background.
+  */
   @Cordova({
     sync: true
   })
   static enable(): void{}
 
+    /**
+    * Disable the background mode.
+    * Once the background mode has been disabled, the app will be paused when in background.
+    */
   @Cordova()
   static disable(): void{}
 
+  /**
+  * Checks if background mode is enabled or not.
+  */
   @Cordova()
   static isEnabled(): Promise<boolean> {return; }
-
+  /**
+  * Can be used to get the information if the background mode is active.
+  */
   @Cordova()
   static isActive(): Promise<boolean> {return; }
 
+  /**
+  * Override the default title, ticker and text.
+  * Available only for Android platform.
+  */
   @Cordova()
   static setDefaults(options?:Defaults):void{}
 
+  /**
+  * Modify the displayed information.
+  * Available only for Android platform.
+  */
   @Cordova()
-  static configure(options?:Configure):void{}
+  static update(options?:Configure):void{}
   /**
   * Sets a callback for a specific event
+  * Can be used to get notified or run function when the background mode has been activated, deactivated or failed.
   * @param eventName The name of the event. Available events: activate, deactivate, failure
   */
   @Cordova({
@@ -59,7 +64,7 @@ export class BackgroundMode {
   static on(eventName: string, callback: any): void {}
 }
 /**
-*Configurations avaialable only on Android
+*Default configurations avaialable only on Android
 */
 export interface Defaults{
   /**
@@ -78,7 +83,9 @@ export interface Defaults{
   text?: String;
 
 }
-
+/**
+* Configurations items that can be updated.
+*/
 export interface Configure{
   /**
   *Title of the background task
