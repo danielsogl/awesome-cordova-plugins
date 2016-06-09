@@ -998,11 +998,8 @@ export class GoogleMapsLatLng {
         this._objectInstance = new plugin.google.maps.LatLng(lat, lng);
     }
 
-    @CordovaInstance({
-        sync: true
-    })
     equals(other: GoogleMapsLatLng): boolean {
-        return;
+        return this.lat === other.lat && this.lng === other.lng;
     }
 
     @CordovaInstance({
@@ -1012,10 +1009,9 @@ export class GoogleMapsLatLng {
         return;
     }
 
-    @CordovaInstance({
-        sync: true
-    })
     toUrlValue(precision?: number): string {
-        return;
+        precision = precision || 6;
+
+        return this.lat.toFixed(precision) + ',' + this.lng.toFixed(precision);
     }
 }
