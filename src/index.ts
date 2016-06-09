@@ -38,6 +38,7 @@ import {Transfer} from './plugins/filetransfer';
 import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
+import {GooglePlus} from './plugins/google-plus';
 import {GoogleMap} from './plugins/googlemaps';
 import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
@@ -97,6 +98,7 @@ export {
   Flashlight,
   Geolocation,
   Globalization,
+  GooglePlus,
   GoogleAnalytics,
   Hotspot,
   ImagePicker,
@@ -159,6 +161,7 @@ window['IonicNative'] = {
   Flashlight: Flashlight,
   Geolocation: Geolocation,
   Globalization: Globalization,
+  GooglePlus: GooglePlus,
   GoogleMap : GoogleMap,
   GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
