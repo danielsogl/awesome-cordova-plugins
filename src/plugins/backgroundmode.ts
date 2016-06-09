@@ -7,8 +7,8 @@ import {Plugin, Cordova} from './plugin';
 * For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode#android-customization
 */
 @Plugin({
-  plugin: 'cordova-plugin-background-mode',
-  pluginRef: 'cordova.plugin.background-mode',
+  plugin: 'de.appplant.cordova.plugin.background-mode',
+  pluginRef: 'cordova.plugins.backgroundMode',
   repo: 'https://github.com/katzer/cordova-plugin-background-mode',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
