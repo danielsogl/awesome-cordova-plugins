@@ -4,7 +4,12 @@ import {Plugin, Cordova} from './plugin';
 * @name Background Mode
 * @description
 * Cordova plugin to prevent the app from going to sleep while in background.
-* For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode#android-customization
+*  Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode#android-customization
+*@usage
+* ```js
+* import {BackgroundMode} from 'ionic-native';
+*
+* BackgroundMode.enable();
 */
 @Plugin({
   plugin: 'de.appplant.cordova.plugin.background-mode',
@@ -44,14 +49,18 @@ export class BackgroundMode {
   * Override the default title, ticker and text.
   * Available only for Android platform.
   */
-  @Cordova()
-  static setDefaults(options?:Defaults):void{}
+  @Cordova({
+    platforms: ['Android']
+  })
+  static setDefaults(options?:Configure):void{}
 
   /**
   * Modify the displayed information.
   * Available only for Android platform.
   */
-  @Cordova()
+  @Cordova({
+    platforms: ['Android']
+  })
   static update(options?:Configure):void{}
   /**
   * Sets a callback for a specific event
@@ -63,26 +72,7 @@ export class BackgroundMode {
   })
   static on(eventName: string, callback: any): void {}
 }
-/**
-*Default configurations avaialable only on Android
-*/
-export interface Defaults{
-  /**
-  *Title of the background task
-  */
-  title?: String;
 
-  /**
-  *The text that scrolls itself on statusbar
-  */
-  ticker?: String;
-
-  /**
-  *Description of background task
-  */
-  text?: String;
-
-}
 /**
 * Configurations items that can be updated.
 */
@@ -106,5 +96,10 @@ export interface Configure{
   *Boolean, if true plugin will not display a notification. Default is false.
   */
   silent?:boolean;
+
+  /**
+  *Boolean. By default the app will come to foreground when taping on the notification. If false, plugin wont come to foreground when tapped.
+  */
+  resume?:boolean;
 
 }
