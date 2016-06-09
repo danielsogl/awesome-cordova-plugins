@@ -89,7 +89,7 @@ export class DeviceOrientation {
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
-    cancelFunction: 'clearWatch'
+    clearFunction: 'clearWatch'
   })
   static watchHeading(options?: CompassOptions): Observable<CompassHeading> { return; }
 
