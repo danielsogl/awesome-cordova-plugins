@@ -20,19 +20,19 @@ import {Plugin, Cordova} from './plugin';
 export class BackgroundMode {
   /**
   * Enable the background mode.
-  * Once called, prevents the app from being puased while in background.
+  * Once called, prevents the app from being paused while in background.
   */
   @Cordova({
     sync: true
   })
-  static enable(): void{}
+  static enable(): void {}
 
     /**
     * Disable the background mode.
     * Once the background mode has been disabled, the app will be paused when in background.
     */
   @Cordova()
-  static disable(): void{}
+  static disable(): void {}
 
   /**
   * Checks if background mode is enabled or not.
@@ -52,7 +52,7 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static setDefaults(options?:Configure):void{}
+  static setDefaults(options?: Configure): void {}
 
   /**
   * Modify the displayed information.
@@ -61,7 +61,7 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static update(options?:Configure):void{}
+  static update(options?: Configure): void {}
   /**
   * Sets a callback for a specific event
   * Can be used to get notified or run function when the background mode has been activated, deactivated or failed.
@@ -76,7 +76,7 @@ export class BackgroundMode {
 /**
 * Configurations items that can be updated.
 */
-export interface Configure{
+export interface Configure {
   /**
   *Title of the background task
   */
@@ -95,11 +95,11 @@ export interface Configure{
   /**
   *Boolean, if true plugin will not display a notification. Default is false.
   */
-  silent?:boolean;
+  silent?: boolean;
 
   /**
   *Boolean. By default the app will come to foreground when taping on the notification. If false, plugin wont come to foreground when tapped.
   */
-  resume?:boolean;
+  resume?: boolean;
 
 }
