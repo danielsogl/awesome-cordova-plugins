@@ -85,10 +85,15 @@ import {Plugin, Cordova} from './plugin';
 })
 export class Facebook {
 
-  // @Cordova()
-  // static browserInit(appId: number){
-  //   return new Promise<any>((res, rej) => {});
-  // }
+    /**
+     * Browser wrapper
+     * @param appId
+     * @param version
+     */
+   @Cordova()
+   static browserInit(appId: number, version?: string): Promise<any> {
+     return;
+   }
 
   /**
    * Login to Facebook to authenticate this app.
