@@ -1,5 +1,4 @@
 import {initAngular1} from './ng1';
-initAngular1();
 
 const DEVICE_READY_TIMEOUT = 2000;
 
@@ -187,6 +186,8 @@ window['IonicNative'] = {
   Vibration: Vibration,
   WebIntent: WebIntent
 };
+
+initAngular1(window['IonicNative']);
 
 // To help developers using cordova, we listen for the device ready event and
 // log an error if it didn't fire in a reasonable amount of time. Generally,
