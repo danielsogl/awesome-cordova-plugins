@@ -65,8 +65,12 @@ export class GoogleMap {
         return;
     }
 
-    constructor(elementId: string) {
-        this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId));
+    constructor(elementId: string, options?: any) {
+        if (options) {
+            this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId), options);
+        } else {
+            this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId));
+        }
     }
 
     on(event: any): Observable<any> {
