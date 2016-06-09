@@ -20,6 +20,7 @@ import {BLE} from './plugins/ble';
 import {BluetoothSerial} from './plugins/bluetoothserial';
 import {Calendar} from './plugins/calendar';
 import {Camera} from './plugins/camera';
+import {CardIO} from './plugins/card-io';
 import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
 import {DatePicker} from './plugins/datepicker';
@@ -49,6 +50,7 @@ import {LocalNotifications} from './plugins/localnotifications';
 import {MediaPlugin} from './plugins/media';
 import {Network, Connection} from './plugins/network';
 import {Push} from './plugins/push';
+import {SafariViewController} from './plugins/safari-view-controller';
 import {Screenshot} from './plugins/screenshot';
 import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
@@ -77,6 +79,7 @@ export {
   BluetoothSerial,
   Calendar,
   Camera,
+  CardIO,
   Clipboard,
   Connection,
   Contacts,
@@ -105,6 +108,7 @@ export {
   MediaPlugin,
   Network,
   Push,
+  SafariViewController,
   Screenshot,
   SMS,
   SocialSharing,
@@ -137,6 +141,7 @@ window['IonicNative'] = {
   BluetoothSerial: BluetoothSerial,
   Calendar: Calendar,
   Camera: Camera,
+  CardIO: CardIO,
   Clipboard: Clipboard,
   Connection: Connection,
   Contacts: Contacts,
@@ -165,6 +170,7 @@ window['IonicNative'] = {
   MediaPlugin: MediaPlugin,
   Network: Network,
   Push: Push,
+  SafariViewController: SafariViewController,
   Screenshot: Screenshot,
   SMS: SMS,
   SocialSharing: SocialSharing,
