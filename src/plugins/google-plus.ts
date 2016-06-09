@@ -12,7 +12,7 @@ import {Plugin, Cordova} from './plugin';
     plugin: 'cordova-plugin-googleplus',
     pluginRef: 'window.plugins.googleplus',
     repo: 'https://github.com/EddyVerbruggen/cordova-plugin-googleplus',
-    platforms: ['Web','Android','iOS'],
+    platforms: ['Web', 'Android', 'iOS'],
     install: 'ionic plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=myreversedclientid'
 })
 export class GooglePlus {
