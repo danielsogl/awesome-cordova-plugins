@@ -66,6 +66,7 @@ import {Vibration} from './plugins/vibration';
 import {WebIntent} from './plugins/webintent';
 export * from './plugins/googlemaps';
 export * from './plugins/3dtouch';
+export * from './plugins/contacts';
 export {
   ActionSheet,
   AdMob,

@@ -1,5 +1,6 @@
 import {Plugin, Cordova, InstanceProperty, CordovaInstance} from './plugin';
-declare var window: any;
+declare var window: any,
+    navigator: any;
 export interface IContactProperties {
     /** A globally unique identifier. */
     id?: string;
@@ -30,75 +31,43 @@ export interface IContactProperties {
     /** An array of web pages associated with the contact. */
     urls?: IContactField[];
 }
-
 export class Contact {
-
     private _objectInstance: any;
-
-    @InstanceProperty
-    get id() {return; }
-
-    @InstanceProperty
-    get displayName() {return; }
-
-    @InstanceProperty
-    get nickname() {return; }
-
-    @InstanceProperty
-    get phoneNumbers() {return; }
-
-    @InstanceProperty
-    get emails() {return; }
-
-    @InstanceProperty
-    get addresses() {return; }
-
-    @InstanceProperty
-    get ims() {return; }
-
-    @InstanceProperty
-    get organizations() {return; }
-
-    @InstanceProperty
-    get birthday() {return; }
-
-    @InstanceProperty
-    get note() {return; }
-
-    @InstanceProperty
-    get photos() {return; }
-
-    @InstanceProperty
-    get categories() {return; }
-
-    @InstanceProperty
-    get urls() {return; }
-
-
+    @InstanceProperty get id() {return; }
+    @InstanceProperty get displayName() {return; }
+    @InstanceProperty get nickname() {return; }
+    @InstanceProperty get phoneNumbers() {return; }
+    @InstanceProperty get emails() {return; }
+    @InstanceProperty get addresses() {return; }
+    @InstanceProperty get ims() {return; }
+    @InstanceProperty get organizations() {return; }
+    @InstanceProperty get birthday() {return; }
+    @InstanceProperty get note() {return; }
+    @InstanceProperty get photos() {return; }
+    @InstanceProperty get categories() {return; }
+    @InstanceProperty get urls() {return; }
     constructor () {
         this._objectInstance = navigator.contacts.create();
     }
-
     clone(): Contact {
-        // TODO manually clone the object
-        return;
+        let newContact = new Contact();
+        for (let prop in this) {
+            if (prop === 'id') return;
+            newContact[prop] = this[prop];
+        }
+        return newContact;
     }
-
     @CordovaInstance()
     remove(): Promise<any> {return; }
-
     @CordovaInstance()
     save(): Promise<any> {return; }
-
 }
-
 interface IContactError {
     /** Error code */
     code: number;
     /** Error message */
     message: string;
 }
-
 declare var ContactError: {
     new(code: number): IContactError;
     UNKNOWN_ERROR: number;
@@ -109,7 +78,6 @@ declare var ContactError: {
     NOT_SUPPORTED_ERROR: number;
     PERMISSION_DENIED_ERROR: number
 };
-
 export interface IContactName {
     /** The complete name of the contact. */
     formatted?: string;
@@ -124,26 +92,17 @@ export interface IContactName {
     /** The contact's suffix (example Esq.). */
     honorificSuffix?: string;
 }
-
 export class ContactName implements IContactName {
     private _objectInstance: any;
-
     constructor(formatted?: string, familyName?: string, givenName?: string, middleName?: string, honorificPrefix?: string, honorificSuffix?: string) {
         this._objectInstance = new window.ContactName(formatted, familyName, givenName, middleName, honorificPrefix, honorificSuffix);
     }
-
-    @InstanceProperty
-    get formatted(): string {return; }
-    @InstanceProperty
-    get familyName(): string {return; }
-    @InstanceProperty
-    get givenName(): string {return; }
-    @InstanceProperty
-    get middleName(): string {return; }
-    @InstanceProperty
-    get honorificPrefix(): string {return; }
-    @InstanceProperty
-    get honorificSuffix(): string {return; }
+    @InstanceProperty get formatted(): string {return; }
+    @InstanceProperty get familyName(): string {return; }
+    @InstanceProperty get givenName(): string {return; }
+    @InstanceProperty get middleName(): string {return; }
+    @InstanceProperty get honorificPrefix(): string {return; }
+    @InstanceProperty get honorificSuffix(): string {return; }
 }
 
 export interface IContactField {
@@ -160,12 +119,9 @@ export class ContactField implements IContactField {
     constructor(type?: string, value?: string, pref?: boolean) {
         this._objectInstance = new window.ContactField(type, value, pref);
     }
-    @InstanceProperty
-    get type(): string {return; }
-    @InstanceProperty
-    get value(): string {return; }
-    @InstanceProperty
-    get pref(): boolean {return; }
+    @InstanceProperty get type(): string {return; }
+    @InstanceProperty get value(): string {return; }
+    @InstanceProperty get pref(): boolean {return; }
 }
 
 export interface IContactAddress {
@@ -189,7 +145,6 @@ export interface IContactAddress {
 
 export class ContactAddress implements IContactAddress {
     private _objectInstance: any;
-
     constructor (pref?: boolean,
                  type?: string,
                  formatted?: string,
@@ -200,30 +155,14 @@ export class ContactAddress implements IContactAddress {
                  country?: string) {
         this._objectInstance = new window.ContactAddress(pref, type, formatted, streetAddress, locality, region, postalCode, country);
     }
-
-    @InstanceProperty
-    get pref(): boolean {return; }
-
-    @InstanceProperty
-    get type(): string {return; }
-
-    @InstanceProperty
-    get formatted(): string {return; }
-
-    @InstanceProperty
-    get streetAddress(): string {return; }
-
-    @InstanceProperty
-    get locality(): string {return; }
-
-    @InstanceProperty
-    get region(): string {return; }
-
-    @InstanceProperty
-    get postalCode(): string {return; }
-
-    @InstanceProperty
-    get country(): string {return; }
+    @InstanceProperty get pref(): boolean {return; }
+    @InstanceProperty get type(): string {return; }
+    @InstanceProperty get formatted(): string {return; }
+    @InstanceProperty get streetAddress(): string {return; }
+    @InstanceProperty get locality(): string {return; }
+    @InstanceProperty get region(): string {return; }
+    @InstanceProperty get postalCode(): string {return; }
+    @InstanceProperty get country(): string {return; }
 }
 
 export interface IContactOrganization {
@@ -244,24 +183,15 @@ export class ContactOrganization implements IContactOrganization {
     constructor () {
         this._objectInstance = new window.ContactOrganization();
     }
-    @InstanceProperty
-    get pref(): boolean {return; }
-
-    @InstanceProperty
-    get type(): string {return; }
-
-    @InstanceProperty
-    get name(): string {return; }
-
-    @InstanceProperty
-    get department(): string {return; }
-
-    @InstanceProperty
-    get title(): string {return; }
+    @InstanceProperty get pref(): boolean {return; }
+    @InstanceProperty get type(): string {return; }
+    @InstanceProperty get name(): string {return; }
+    @InstanceProperty get department(): string {return; }
+    @InstanceProperty get title(): string {return; }
 }
 
 /** Search options to filter navigator.contacts.  */
-interface IContactFindOptions {
+export interface IContactFindOptions {
     /** The search string used to find navigator.contacts. */
     filter?: string;
     /** Determines if the find operation returns multiple navigator.contacts. */
@@ -275,37 +205,29 @@ export class ContactFindOptions implements IContactFindOptions {
     constructor () {
         this._objectInstance = new window.ContactFindOptions();
     }
-    @InstanceProperty
-    public get filter(): string {return; }
-
-    @InstanceProperty
-    public get multiple(): boolean {return; }
-
-    @InstanceProperty
-    public get desiredFields(): any {return; }
-
-    @InstanceProperty
-    public get hasPhoneNumber(): boolean {return; }
+    @InstanceProperty get filter(): string {return; }
+    @InstanceProperty get multiple(): boolean {return; }
+    @InstanceProperty get desiredFields(): any {return; }
+    @InstanceProperty get hasPhoneNumber(): boolean {return; }
 }
-
 /**
  * @name Contacts
  * @description
  * Access and manage Contacts on the device.
  *
- * Requires plugin: `cordova-plugin-contacts`
- * For full info, please see the [Cordova Contacts plugin docs](https://github.com/apache/cordova-plugin-contacts)
- *
  * @usage
  *
  * ```js
- * import {Contacts} from 'ionic-native';
+ * import {Contact} from 'ionic-native';
  *
  *
  *
- * Contacts.create({
- *   displayName: "Mr. Ionitron"
- * }).then((contact) => {}, (err) => {})
+ * let contact = new Contact();
+ * contact.displayName = "Mr. Ionitron";
+ * contact.save().then(
+ *   () => console.log("Contact saved!", contact),
+ *   (error: any) => console.error("Error saving contact.", error)
+ * );
  * ```
  *
  *
@@ -316,13 +238,9 @@ export class ContactFindOptions implements IContactFindOptions {
   repo: 'https://github.com/apache/cordova-plugin-contacts'
 })
 export class Contacts {
-
     static create(): Contact {
         return new Contact();
     }
-
-    // TODO add fieldType options
-
   /**
    * Search for contacts in the Contacts list.
    *
@@ -345,12 +263,10 @@ export class Contacts {
     errorIndex: 2
   })
   static find(fields: string[], options?: any): Promise<any> { return; }
-
-
   /**
    * Select a single Contact.
    * @return Returns a Promise that resolves with the selected Contact
    */
   @Cordova()
-  static pickContact(): Promise<any> { return; }
+  static pickContact(): Promise<any> {return; }
 }
