@@ -33,19 +33,19 @@ export interface IContactProperties {
 }
 export class Contact {
     private _objectInstance: any;
-    @InstanceProperty get id() {return; }
-    @InstanceProperty get displayName() {return; }
-    @InstanceProperty get nickname() {return; }
-    @InstanceProperty get phoneNumbers() {return; }
-    @InstanceProperty get emails() {return; }
-    @InstanceProperty get addresses() {return; }
-    @InstanceProperty get ims() {return; }
-    @InstanceProperty get organizations() {return; }
-    @InstanceProperty get birthday() {return; }
-    @InstanceProperty get note() {return; }
-    @InstanceProperty get photos() {return; }
-    @InstanceProperty get categories() {return; }
-    @InstanceProperty get urls() {return; }
+    @InstanceProperty get id(): string {return; }
+    @InstanceProperty get displayName(): string {return; }
+    @InstanceProperty get nickname(): ContactName {return; }
+    @InstanceProperty get phoneNumbers(): string {return; }
+    @InstanceProperty get emails(): IContactField[] {return; }
+    @InstanceProperty get addresses(): ContactAddress[] {return; }
+    @InstanceProperty get ims(): IContactField[] {return; }
+    @InstanceProperty get organizations(): ContactOrganization[] {return; }
+    @InstanceProperty get birthday(): Date {return; }
+    @InstanceProperty get note(): string {return; }
+    @InstanceProperty get photos(): IContactField[] {return; }
+    @InstanceProperty get categories(): IContactField[] {return; }
+    @InstanceProperty get urls(): IContactField[] {return; }
     constructor () {
         this._objectInstance = navigator.contacts.create();
     }
