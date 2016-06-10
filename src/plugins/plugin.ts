@@ -1,7 +1,5 @@
 import {get} from '../util';
 
-import {publishAngular1Service} from '../ng1';
-
 declare var window;
 declare var Promise;
 declare var $q;

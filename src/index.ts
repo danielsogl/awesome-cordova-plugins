@@ -1,5 +1,4 @@
 import {initAngular1} from './ng1';
-initAngular1();
 
 const DEVICE_READY_TIMEOUT = 2000;
 
@@ -25,6 +24,7 @@ import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
 import {DatePicker} from './plugins/datepicker';
 import {DBMeter} from './plugins/dbmeter';
+import {Deeplinks} from './plugins/deeplinks';
 import {Device} from './plugins/device';
 import {DeviceAccounts} from './plugins/deviceaccounts';
 import {DeviceMotion} from './plugins/devicemotion';
@@ -86,6 +86,7 @@ export {
   Contacts,
   DatePicker,
   DBMeter,
+  Deeplinks,
   Device,
   DeviceAccounts,
   DeviceMotion,
@@ -149,6 +150,7 @@ window['IonicNative'] = {
   Contacts: Contacts,
   DatePicker: DatePicker,
   DBMeter: DBMeter,
+  Deeplinks: Deeplinks,
   Device: Device,
   DeviceAccounts: DeviceAccounts,
   DeviceMotion: DeviceMotion,
@@ -187,6 +189,8 @@ window['IonicNative'] = {
   Vibration: Vibration,
   WebIntent: WebIntent
 };
+
+initAngular1(window['IonicNative']);
 
 // To help developers using cordova, we listen for the device ready event and
 // log an error if it didn't fire in a reasonable amount of time. Generally,

@@ -15,7 +15,7 @@ import {Plugin, Cordova} from './plugin';
  *       if(available){
  *
  *         SafariViewController.show({
- *           utl: 'http://ionic.io',
+ *           url: 'http://ionic.io',
  *           hidden: false,
  *           animated: false,
  *           transition: 'curl',

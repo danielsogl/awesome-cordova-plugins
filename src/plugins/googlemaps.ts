@@ -2,10 +2,12 @@ import {Cordova, Plugin} from './plugin';
 import {Observable} from 'rxjs/Observable';
 import {CordovaInstance} from './plugin';
 /**
+ * @private
  * Created by Ibrahim on 3/29/2016.
  */
 declare var plugin: any;
 /**
+ * @private
  * You can listen to these events where appropriate
  */
 export const GoogleMapsEvent = {
@@ -29,10 +31,14 @@ export const GoogleMapsEvent = {
     MARKER_DRAG_END: 'drag_end'
 };
 
+/**
+ * @private
+ */
 export const GoogleMapsAnimation = {
     BOUNCE: 'BOUNCE',
     DROP: 'DROP'
 };
+
 /**
  * @name Google Maps
  * @description This plugin uses the native Google Maps SDK
@@ -352,6 +358,10 @@ export class GoogleMap {
     }
 
 }
+
+/**
+ * @private
+ */
 export interface AnimateCameraOptions {
     target?: GoogleMapsLatLng;
     tilt?: number;
@@ -359,22 +369,38 @@ export interface AnimateCameraOptions {
     bearing?: number;
     duration?: number;
 }
+
+/**
+ * @private
+ */
 export interface CameraPosition {
     target?: GoogleMapsLatLng;
     zoom?: number;
     tilt?: number;
     bearing?: number;
 }
+
+/**
+ * @private
+ */
 export interface MyLocation {
     latLng?: GoogleMapsLatLng;
     speed?: number;
     time?: string;
     bearing?: number;
 }
+
+/**
+ * @private
+ */
 export interface VisibleRegion {
     northeast?: any;
     southwest?: any;
 }
+
+/**
+ * @private
+ */
 export interface GoogleMapsMarkerOptions {
     icon?: any;
     title?: string;
@@ -389,6 +415,10 @@ export interface GoogleMapsMarkerOptions {
     animation?: string;
     zIndex?: number;
 }
+
+/**
+ * @private
+ */
 export interface GoogleMapsMarkerIcon {
     url?: string;
     size?: {
@@ -396,6 +426,10 @@ export interface GoogleMapsMarkerIcon {
         height?: number;
     };
 }
+
+/**
+ * @private
+ */
 export class GoogleMapsMarker {
 
     constructor(private _objectInstance: any) {
@@ -573,6 +607,10 @@ export class GoogleMapsMarker {
 
 
 }
+
+/**
+ * @private
+ */
 export interface GoogleMapsCircleOptions {
     center?: GoogleMapsLatLng;
     radius?: number;
@@ -582,6 +620,10 @@ export interface GoogleMapsCircleOptions {
     visible?: boolean;
     zIndex?: number;
 }
+
+/**
+ * @private
+ */
 export class GoogleMapsCircle {
 
     constructor(private _objectInstance: any) {
@@ -689,6 +731,10 @@ export class GoogleMapsCircle {
 
 
 }
+
+/**
+ * @private
+ */
 export interface GoogleMapsPolylineOptions {
     points?: Array<GoogleMapsLatLng>;
     visible?: boolean;
@@ -697,6 +743,10 @@ export interface GoogleMapsPolylineOptions {
     width?: number;
     zIndex?: number;
 }
+
+/**
+ * @private
+ */
 export class GoogleMapsPolyline {
     constructor(private _objectInstance: any) {
     }
@@ -770,6 +820,10 @@ export class GoogleMapsPolyline {
     }
 
 }
+
+/**
+ * @private
+ */
 export interface GoogleMapsPolygonOptions {
     points?: Array<GoogleMapsLatLng>;
     geodesic?: boolean;
@@ -780,6 +834,10 @@ export interface GoogleMapsPolygonOptions {
     zIndex?: number;
     addHole?: Array<GoogleMapsLatLng>;
 }
+
+/**
+ * @private
+ */
 export class GoogleMapsPolygon {
 
     constructor(private _objectInstance: any) {
@@ -862,6 +920,10 @@ export class GoogleMapsPolygon {
     setGeodesic(geodesic: boolean): void {
     }
 }
+
+/**
+ * @private
+ */
 export interface GoogleMapsTileOverlayOptions {
     titleUrilFormat?: string;
     visible?: boolean;
@@ -869,6 +931,10 @@ export interface GoogleMapsTileOverlayOptions {
     tileSize?: number;
     opacity?: number;
 }
+
+/**
+ * @private
+ */
 export class GoogleMapsTileOverlay {
 
     constructor(private _objectInstance: any) {
@@ -919,6 +985,10 @@ export class GoogleMapsTileOverlay {
     }
 
 }
+
+/**
+ * @private
+ */
 export interface GoogleMapsGroundOverlayOptions {
     url?: string;
     bounds?: Array<GoogleMapsLatLng>;
@@ -927,6 +997,10 @@ export interface GoogleMapsGroundOverlayOptions {
     bearing?: number;
     zIndex?: number;
 }
+
+/**
+ * @private
+ */
 export class GoogleMapsGroundOverlay {
 
     constructor(private _objectInstance: any) {
@@ -968,11 +1042,19 @@ export class GoogleMapsGroundOverlay {
     }
 
 }
+
+/**
+ * @private
+ */
 export interface GoogleMapsKmlOverlayOptions {
     url?: string;
     preserveViewport?: boolean;
     animation?: boolean;
 }
+
+/**
+ * @private
+ */
 export class GoogleMapsKmlOverlay {
 
     constructor(private _objectInstance: any) {
@@ -987,6 +1069,10 @@ export class GoogleMapsKmlOverlay {
         return;
     }
 }
+
+/**
+ * @private
+ */
 export class GoogleMapsLatLng {
     private _objectInstance: any;
 
