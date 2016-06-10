@@ -9,7 +9,7 @@ export interface ToastOptions {
   /**
    * Duration in ms to show
    */
-  duration?: string;
+  duration?: number;
   /**
    * Position
    */

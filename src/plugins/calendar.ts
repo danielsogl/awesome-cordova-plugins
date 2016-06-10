@@ -33,6 +33,26 @@ export interface Calendar {
   platforms: ['Android', 'iOS']
 })
 export class Calendar {
+
+  /**
+   * This function checks if we have permission to read/write from/to the calendar.
+   * The promise will resolve with `true` when:
+   * - You're running on iOS, or
+   * - You're targetting API level lower than 23, or
+   * - You're using Android < 6, or
+   * - You've already granted permission
+   *
+   * If this returns false, you should call `requestReadWritePermissions` function
+   */
+  @Cordova()
+  static hasReadWritePermissions(): Promise<boolean> { return; }
+
+  /**
+   * Requests read/write permissions
+   */
+  @Cordova({sync: true})
+  static requestReadWritePermissions(): void {}
+
   /**
    * Create a calendar. (iOS only)
    *
@@ -251,7 +271,7 @@ export class Calendar {
    * @return A Promise that resolves with the list of calendars, or rejects with an error.
    */
   @Cordova()
-  static listCalendars() { return; }
+  static listCalendars(): Promise<any> { return; }
 
   /**
    * Get a list of all future events in the specified calendar. (iOS only)

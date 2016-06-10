@@ -1,5 +1,4 @@
 import {initAngular1} from './ng1';
-initAngular1();
 
 const DEVICE_READY_TIMEOUT = 2000;
 
@@ -11,6 +10,8 @@ import {AppAvailability} from './plugins/appavailability';
 import {AppRate} from './plugins/apprate';
 import {AppVersion} from './plugins/appversion';
 import {Badge} from './plugins/badge';
+import {BackgroundGeolocation} from './plugins/background-geolocation';
+import {BackgroundMode} from './plugins/backgroundmode';
 import {BarcodeScanner} from './plugins/barcodescanner';
 import {Base64ToGallery} from './plugins/base64togallery';
 import {BatteryStatus} from './plugins/batterystatus';
@@ -18,10 +19,12 @@ import {BLE} from './plugins/ble';
 import {BluetoothSerial} from './plugins/bluetoothserial';
 import {Calendar} from './plugins/calendar';
 import {Camera} from './plugins/camera';
+import {CardIO} from './plugins/card-io';
 import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
 import {DatePicker} from './plugins/datepicker';
 import {DBMeter} from './plugins/dbmeter';
+import {Deeplinks} from './plugins/deeplinks';
 import {Device} from './plugins/device';
 import {DeviceAccounts} from './plugins/deviceaccounts';
 import {DeviceMotion} from './plugins/devicemotion';
@@ -31,20 +34,24 @@ import {Dialogs} from './plugins/dialogs';
 import {EmailComposer} from './plugins/emailcomposer';
 import {Facebook} from './plugins/facebook';
 import {File} from './plugins/file';
+import {Transfer} from './plugins/filetransfer';
 import {Flashlight} from './plugins/flashlight';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
-import {GoogleMaps} from './plugins/googlemaps';
+import {GooglePlus} from './plugins/google-plus';
+import {GoogleMap} from './plugins/googlemaps';
 import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
 import {ImagePicker} from './plugins/imagepicker';
 import {InAppBrowser} from './plugins/inappbrowser';
+import {Insomnia} from './plugins/insomnia';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
 import {MediaPlugin} from './plugins/media';
 import {Network, Connection} from './plugins/network';
 import {Push} from './plugins/push';
+import {SafariViewController} from './plugins/safari-view-controller';
 import {Screenshot} from './plugins/screenshot';
 import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
@@ -52,11 +59,13 @@ import {SpinnerDialog} from './plugins/spinnerdialog';
 import {Splashscreen} from './plugins/splashscreen';
 import {SQLite} from './plugins/sqlite';
 import {StatusBar} from './plugins/statusbar';
+import {ThreeDeeTouch} from './plugins/3dtouch';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
 import {Vibration} from './plugins/vibration';
 import {WebIntent} from './plugins/webintent';
-
+export * from './plugins/googlemaps';
+export * from './plugins/3dtouch';
 export {
   ActionSheet,
   AdMob,
@@ -64,6 +73,8 @@ export {
   AppRate,
   AppVersion,
   Badge,
+  BackgroundGeolocation,
+  BackgroundMode,
   BarcodeScanner,
   Base64ToGallery,
   BatteryStatus,
@@ -71,11 +82,13 @@ export {
   BluetoothSerial,
   Calendar,
   Camera,
+  CardIO,
   Clipboard,
   Connection,
   Contacts,
   DatePicker,
   DBMeter,
+  Deeplinks,
   Device,
   DeviceAccounts,
   DeviceMotion,
@@ -88,26 +101,29 @@ export {
   Flashlight,
   Geolocation,
   Globalization,
-  GoogleMaps,
+  GooglePlus,
   GoogleAnalytics,
   Hotspot,
   ImagePicker,
   InAppBrowser,
+  Insomnia,
   Keyboard,
   LaunchNavigator,
   LocalNotifications,
   MediaPlugin,
   Network,
   Push,
+  SafariViewController,
   Screenshot,
   SMS,
   SocialSharing,
   SpinnerDialog,
   Splashscreen,
-    SQLite,
+  SQLite,
   StatusBar,
   Toast,
   TouchID,
+  Transfer,
   Vibration,
   WebIntent
 }
@@ -122,6 +138,7 @@ window['IonicNative'] = {
   AppRate: AppRate,
   AppVersion: AppVersion,
   Badge: Badge,
+  BackgroundGeolocation: BackgroundGeolocation,
   BarcodeScanner: BarcodeScanner,
   Base64ToGallery: Base64ToGallery,
   BatteryStatus: BatteryStatus,
@@ -129,11 +146,13 @@ window['IonicNative'] = {
   BluetoothSerial: BluetoothSerial,
   Calendar: Calendar,
   Camera: Camera,
+  CardIO: CardIO,
   Clipboard: Clipboard,
   Connection: Connection,
   Contacts: Contacts,
   DatePicker: DatePicker,
   DBMeter: DBMeter,
+  Deeplinks: Deeplinks,
   Device: Device,
   DeviceAccounts: DeviceAccounts,
   DeviceMotion: DeviceMotion,
@@ -146,7 +165,8 @@ window['IonicNative'] = {
   Flashlight: Flashlight,
   Geolocation: Geolocation,
   Globalization: Globalization,
-    GoogleMaps : GoogleMaps,
+  GooglePlus: GooglePlus,
+  GoogleMap : GoogleMap,
   GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
   ImagePicker: ImagePicker,
@@ -157,18 +177,23 @@ window['IonicNative'] = {
   MediaPlugin: MediaPlugin,
   Network: Network,
   Push: Push,
+  SafariViewController: SafariViewController,
   Screenshot: Screenshot,
   SMS: SMS,
   SocialSharing: SocialSharing,
   SpinnerDialog: SpinnerDialog,
   Splashscreen: Splashscreen,
-    SQLite: SQLite,
+  SQLite: SQLite,
   StatusBar: StatusBar,
+  ThreeDeeTouch: ThreeDeeTouch,
   Toast: Toast,
   TouchID: TouchID,
+  Transfer: Transfer,
   Vibration: Vibration,
   WebIntent: WebIntent
 };
+
+initAngular1(window['IonicNative']);
 
 // To help developers using cordova, we listen for the device ready event and
 // log an error if it didn't fire in a reasonable amount of time. Generally,

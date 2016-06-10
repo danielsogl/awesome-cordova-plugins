@@ -1,7 +1,5 @@
 import {get} from '../util';
 
-import {publishAngular1Service} from '../ng1';
-
 declare var window;
 declare var Promise;
 declare var $q;
@@ -160,7 +158,7 @@ function callInstance(pluginObj: any, methodName: string, args: any[], opts: any
   return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
 }
 
-function wrapInstance (pluginObj: any, methodName: string, args: any[], opts: any = {}) {
+function wrapInstance (pluginObj: any, methodName: string, opts: any = {}) {
   return (...args) => {
     if (opts.sync) {
       return callInstance(pluginObj, methodName, args, opts);

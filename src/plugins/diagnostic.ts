@@ -2,7 +2,8 @@ import {Plugin, Cordova} from './plugin';
 
 @Plugin({
   plugin: 'cordova.plugins.diagnostic',
-  pluginRef: 'cordova.plugins.diagnostic'
+  pluginRef: 'cordova.plugins.diagnostic',
+  repo: 'https://github.com/floatinghotpot/cordova-plugin-admob'
 })
 export class Diagnostic {
   /**
@@ -20,7 +21,7 @@ export class Diagnostic {
 
   /**
    * Checks if Wifi is connected/enabled. On iOS this returns true if the device is connected to a network by WiFi. On Android and Windows 10 Mobile this returns true if the WiFi setting is set to enabled.
-   * On Android this requires permission <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+   * On Android this requires permission. `<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />`
    */
   @Cordova()
   static isWifiEnabled() {

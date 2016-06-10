@@ -92,6 +92,10 @@ The `@Cordova` decorator has a few more options now.
 
 `clearFunction` is used in conjunction with the `observable` option and indicates the function to be called when the Observable is disposed.
 
+### Testing your changes
+
+You need to run `npm run build_bundle` in the `ionic-native` project, this will create a `dist` directory. Then, you must go to your ionic application folder and replace your current `node_modules/ionic-native/dist/` with the newly generated one.
+
 ### 'Wrapping' Up
 
 That's it! The only thing left to do is rigorously document the plugin and it's usage.  Take a look at some of the other plugins for good documentation styles.

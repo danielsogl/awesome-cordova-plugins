@@ -1,24 +1,28 @@
 declare var window;
 
 /**
- * Initialize the ngCordova Angular module if we're running in ng1
+ * Initialize the ionic.native Angular module if we're running in ng1.
+ * This iterates through the list of registered plugins and dynamically
+ * creates Angular 1 services of the form $cordovaSERVICE, ex: $cordovStatusBar.
  */
-export function initAngular1() {
+export function initAngular1(plugins) {
   if (window.angular) {
-    window.angular.module('ngCordova', []);
-  }
-}
+    window.angular.module('ionic.native', []);
 
-/**
- * Publish a new Angular 1 service for this plugin.
- */
-export function publishAngular1Service(config: any, cls: any) {
-  let serviceName = '$cordova' + cls.name;
-  console.log('Registering Angular1 service', serviceName);
-  window.angular.module('ngCordova').service(serviceName, [function() {
-    let funcs = {};
-    for (var k in cls) {
+    for (var name in plugins) {
+      let serviceName = '$cordova' + name;
+      let cls = plugins[name];
+
+      (function(serviceName, cls, name) {
+        window.angular.module('ionic.native').service(serviceName, [function() {
+          let funcs = {};
+          for (var k in cls) {
+            funcs[k] = cls[k];
+          }
+          funcs['name'] = name;
+          return funcs;
+        }]);
+      })(serviceName, cls, name);
     }
-    return funcs;
-  }]);
+  }
 }

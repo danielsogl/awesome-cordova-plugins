@@ -51,6 +51,10 @@ export class File {
       rejectFn('directory cannot start with \/');
     }
 
+    if (!(/\/$/.test(dir))) {
+      path += '/';
+    }
+
     try {
       var directory = path + dir;
 
@@ -118,7 +122,7 @@ export class File {
   }
 
   /**
-   * Remove a directory at a given path
+   * Remove a directory at a given path.
    *
    * @param {string} path The path to the directory
    * @param {string} dirName The directory name
@@ -158,7 +162,7 @@ export class File {
   }
 
   /**
-   * Move a directory to a given path
+   * Move a directory to a given path.
    *
    * @param {string} path The source path to the directory
    * @param {string} dirName The source directory name
@@ -252,7 +256,7 @@ export class File {
   }
 
   /**
-   * List files and directory from a given path
+   * List files and directory from a given path.
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} dirName Name of directory
@@ -349,6 +353,10 @@ export class File {
 
     if ((/^\//.test(file))) {
       rejectFn('file cannot start with \/');
+    }
+
+    if (!(/\/$/.test(file))) {
+      path += '/';
     }
 
     try {
@@ -462,7 +470,57 @@ export class File {
 
   // static writeExistingFile(path: string, fileName: string, text: string): Promise<any> { return }
 
-  // static readAsText(path: string, file: string): Promise<any> { return }
+  /**
+   * Read a file as string.
+   *
+   * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
+   * @param {string} fileName Name of file to move
+   * @return Returns a Promise that resolves or rejects with an error.
+   */
+  static readAsText(path: string, fileName: string): Promise<any> {
+    let resolveFn, rejectFn;
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+
+    if ((/^\//.test(fileName))) {
+      rejectFn('file-name cannot start with \/');
+    }
+
+    try {
+      window.resolveLocalFileSystemURL(path, function (fileSystem) {
+        fileSystem.getFile(fileName, {create: false}, function (fileEntry) {
+          fileEntry.file(function (file) {
+            var reader = new FileReader();
+
+            reader.onloadend = function(e) {
+              if (this.result !== undefined && this.result !== null) {
+                resolveFn(this.result);
+              } else if (this.error !== undefined && this.error !== null) {
+                rejectFn(this.error);
+              } else {
+                rejectFn({code: null, message: 'READER_ONLOADEND_ERR'});
+              }
+            };
+
+            reader.readAsText(file);
+          }, function (error) {
+            error.message = File.cordovaFileError[error.code];
+            rejectFn(error);
+          });
+        }, function (err) {
+          err.message = File.cordovaFileError[err.code];
+          rejectFn(err);
+        });
+      }, function (er) {
+        er.message = File.cordovaFileError[er.code];
+        rejectFn(er);
+      });
+    } catch (e) {
+      e.message = File.cordovaFileError[e.code];
+      rejectFn(e);
+    }
+
+    return promise;
+  }
 
   // static readAsDataURL(path: string, file: string): Promise<any> { return }
 

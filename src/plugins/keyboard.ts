@@ -37,7 +37,7 @@ export class Keyboard {
   static show(): void {}
 
   /**
-   * Close the keyboard if open
+   * Close the keyboard if open.
    */
   @Cordova({
     sync: true,

@@ -1,20 +1,6 @@
 import {Plugin, Cordova} from './plugin';
-
+import {Email} from './types/email.type';
 declare var cordova;
-
-/**
- * Email object for Opening Email Composer
- */
-export interface Email {
-  app?: string;
-  to: string | Array<string>;
-  cc: string | Array<string>;
-  bcc: string | Array<string>;
-  attachments: Array<any>;
-  subject: string;
-  body: string;
-  isHtml: boolean;
-}
 
 /**
  * @name Email Composer
@@ -49,7 +35,7 @@ export interface Email {
  * };
  *
  * // Send a text message using default options
- * EmailComposer.send(email);
+ * EmailComposer.open(email);
  *
  * ```
  */
@@ -64,13 +50,13 @@ export class EmailComposer {
   /**
    * Verifies if sending emails is supported on the device.
    *
-   * @param app {string?} An optional app id or uri scheme. Defaults to mailto.
-   * @param scope {any?} An optional scope for the promise
-   * @returns {Promise<boolean>} Resolves promise with boolean whether EmailComposer is available
+   * @param app {string?} An optional app id or uri scheme.
+   * @returns {Promise<boolean>} Resolves if available, rejects if not available
    */
-  static isAvailable (app?: string, scope?: any): Promise<boolean> {
+  static isAvailable (app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
-      cordova.plugins.email.isAvailable(app, resolve, scope);
+      if (app) cordova.plugins.email.isAvailable(app, (isAvailable) => { if (isAvailable) resolve(); else reject(); });
+      else cordova.plugins.email.isAvailable((isAvailable) => { if (isAvailable) resolve(); else reject(); });
     });
   }
 

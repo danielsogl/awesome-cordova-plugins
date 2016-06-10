@@ -18,7 +18,7 @@ function run {
   if [ ! -d "$SITE_DIR" ]; then
     echo "checking out"
     cd ./scripts
-    ./git/clone.sh --repository="driftyco/ionic-site" \
+    ./git/clone.sh --repository="ionic-site" \
       --directory="$SITE_DIR" \
       --branch="master"
     ls -al $SITE_DIR

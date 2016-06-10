@@ -32,7 +32,7 @@ export class BarcodeScanner {
    * @return Returns a Promise that resolves with scanner data, or rejects with an error.
    */
   @Cordova()
-  static scan(): Promise<any> { return; }
+  static scan(options?: any): Promise<any> { return; }
 
   // Not well supported
   // @Cordova()
