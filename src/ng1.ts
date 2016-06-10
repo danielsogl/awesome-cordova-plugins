@@ -21,7 +21,7 @@ export function initAngular1(plugins) {
           }
           funcs['name'] = name;
           return funcs;
-        }])
+        }]);
       })(serviceName, cls, name);
     }
   }
