@@ -87,7 +87,7 @@ export class MediaPlugin {
    */
   constructor (src: string) {
     let res, rej, next;
-    this.init = new Promise<any>((resolve, reject) => {res = resolve; rej = reject;});
+    this.init = new Promise<any>((resolve, reject) => {res = resolve; rej = reject; });
     this.status = new Observable((observer) => {
         next = data => observer.next(data);
     });
