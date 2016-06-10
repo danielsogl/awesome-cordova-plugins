@@ -59,11 +59,13 @@ import {SpinnerDialog} from './plugins/spinnerdialog';
 import {Splashscreen} from './plugins/splashscreen';
 import {SQLite} from './plugins/sqlite';
 import {StatusBar} from './plugins/statusbar';
+import {ThreeDeeTouch} from './plugins/3dtouch';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
 import {Vibration} from './plugins/vibration';
 import {WebIntent} from './plugins/webintent';
 export * from './plugins/googlemaps';
+export * from './plugins/3dtouch';
 export {
   ActionSheet,
   AdMob,
@@ -183,6 +185,7 @@ window['IonicNative'] = {
   Splashscreen: Splashscreen,
   SQLite: SQLite,
   StatusBar: StatusBar,
+  ThreeDeeTouch: ThreeDeeTouch,
   Toast: Toast,
   TouchID: TouchID,
   Transfer: Transfer,
