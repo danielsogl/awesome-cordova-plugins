@@ -328,7 +328,7 @@ export function InstanceProperty(target: Function, key: string, descriptor: Type
     return this._objectInstance[key];
   };
 
-  descriptor.get = function(...args: any[]) {
+  descriptor.set = function(...args: any[]) {
     return this._objectInstance[key] = args[0];
   };
 
