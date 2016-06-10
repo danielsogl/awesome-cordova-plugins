@@ -1,4 +1,5 @@
 import {CordovaInstance, Plugin} from './plugin';
+import {Observable} from 'rxjs/Observable';
 declare var Media: any;
 /**
  * @name MediaPlugin
@@ -8,23 +9,47 @@ declare var Media: any;
  * import {MediaPlugin} from 'ionic-native';
  *
  *
- * ...
  *
- *
- * // Playing a file
+ * // Create a MediaPlugin instance.  Expects path to file or url as argument
  * var file = new MediaPlugin("path/to/file.mp3");
+ *
+ * // Catch the Success & Error Output
+ * // Platform Quirks
+ * // iOS calls success on completion of playback only
+ * // Android calls success on completion of playback AND on release()
+ * file.init.then(() => {
+ *   console.log("Playback Finished");
+ * }, (err) => {
+ *   console.log("somthing went wrong! error code: "+err.code+" message: "+err.message);
+ * });
  *
  * // play the file
  * file.play();
  *
- * // skip to 10 seconds
+ * // pause the file
+ * file.pause();
+ *
+ * // get current playback position
+ * file.getCurrentPosition().then((position) => {
+ *   console.log(position);
+ * });
+ *
+ * // get file duration
+ * file.getDuration().then((duration) => {
+ *   console.log(position);
+ * });
+ *
+ * // skip to 10 seconds (expects int value in ms)
  * file.seekTo(10000);
  *
- * // stop plying the file
+ * // stop playing the file
  * file.stop();
  *
- *
- * ...
+ * // release the native audio resource
+ * // Platform Quirks:
+ * // iOS simply create a new instance and the old one will be overwritten
+ * // Android you must call release() to destroy instances of media when you are done
+ * file.release();
  *
  * // Recording to a file
  * var newFile = new MediaPlugin("path/to/file.mp3");
@@ -52,6 +77,8 @@ export class MediaPlugin {
 
   // Properties
   private _objectInstance: any;
+  status: Observable<any>;
+  init: Promise<any>;
 
   // Methods
   /**
@@ -59,8 +86,12 @@ export class MediaPlugin {
    * @param src {string} A URI containing the audio content.
    */
   constructor (src: string) {
-    // TODO handle success, error, and status
-    this._objectInstance = new Media(src);
+    let res, rej, next;
+    this.init = new Promise<any>((resolve, reject) => {res = resolve; rej = reject;});
+    this.status = new Observable((observer) => {
+        next = data => observer.next(data);
+    });
+    this._objectInstance = new Media(src, res, rej, next);
   }
 
   /**
