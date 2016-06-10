@@ -325,13 +325,13 @@ export function CordovaProperty(target: Function, key: string, descriptor: Typed
  * @param descriptor
  * @constructor
  */
-export function InstanceProperty(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
+export function InstanceProperty(target: any, key: string, descriptor: TypedPropertyDescriptor<any>) {
   descriptor.get = function() {
     return this._objectInstance[key];
   };
 
   descriptor.set = function(...args: any[]) {
-    return this._objectInstance[key] = args[0];
+    this._objectInstance[key] = args[0];
   };
 
   return descriptor;
