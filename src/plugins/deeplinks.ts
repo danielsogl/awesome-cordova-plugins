@@ -5,14 +5,19 @@ export interface DeeplinkMatch {
   /**
    * The route info for the matched route
    */
-  routeInfo: any;
+  $route: any;
 
   /**
-   * The arguments passed to the route through GET params along with
+   * Any arguments passed either through route parameters or GET parameters
+   */
+  $args: any;
+
+  /**
+   * The deeplink object processed from the plugin, along with any
    * any internal native data available as "extras" at the time
    * the route was matched (for example, Facebook sometimes adds extra data)
    */
-   args: any;
+   $link: any;
 }
 
 /**
