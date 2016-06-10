@@ -1,11 +1,5 @@
 import {Plugin, Cordova, InstanceProperty, CordovaInstance} from './plugin';
-declare var window: any = {
-    ContactAddress: (...args) => {},
-    ContactOrganization: (...args) => {},
-    ContactName: (...args) => {},
-    ContactField: (...args) => {},
-    ContactFindOptions: (...args) => {}
-};
+declare var window: any;
 export interface IContactProperties {
     /** A globally unique identifier. */
     id?: string;
@@ -37,7 +31,7 @@ export interface IContactProperties {
     urls?: IContactField[];
 }
 
-export class Contact implements IContactProperties {
+export class Contact {
 
     private _objectInstance: any;
 
