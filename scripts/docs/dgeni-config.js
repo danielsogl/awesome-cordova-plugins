@@ -22,6 +22,7 @@ module.exports = function(currentVersion) {
 .processor(require('./processors/jekyll'))
 .processor(require('./processors/remove-private-members'))
 .processor(require('./processors/hide-private-api'))
+.processor(require('./processors/collect-inputs-outputs'))
 
 // for debugging docs
 // .processor(function test(){
