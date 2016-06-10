@@ -96,6 +96,10 @@ The `@Cordova` decorator has a few more options now.
 
 You need to run `npm run build_bundle` in the `ionic-native` project, this will create a `dist` directory. Then, you must go to your ionic application folder and replace your current `node_modules/ionic-native/dist/` with the newly generated one.
 
+### Cleaning the code
+
+You need to run `gulp tslint` to analyze the code and ensure it's consitency with the repository style. Fix any errors before submitting a PR.
+
 ### 'Wrapping' Up
 
 That's it! The only thing left to do is rigorously document the plugin and it's usage.  Take a look at some of the other plugins for good documentation styles.
