@@ -17,27 +17,14 @@ export const getPlugin = function(pluginRef: string): any {
 
 /**
  * @private
- * @param pluginRef
- * @returns {boolean}
- */
-export const isInstalled = function(pluginRef: string): boolean {
-  return !!getPlugin(pluginRef);
-};
-
-/**
- * @private
  * @param pluginObj
  * @param method
  */
 export const pluginWarn = function(pluginObj: any, method: string) {
-  var pluginName = pluginObj.name;
-  var plugin = pluginObj.plugin;
-  if (method) {
-    console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
-  } else {
-    console.warn('Native: tried accessing the ' + pluginName + ' plugin but it\'s not installed.');
-  }
-  console.warn('Install the ' + pluginName + ' plugin: \'cordova plugin add ' + plugin + '\'');
+  let pluginName = pluginObj.name, plugin = pluginObj.plugin;
+  if (method) console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
+  else console.warn('Native: tried accessing the ' + pluginName + ' plugin but it\'s not installed.');
+  console.warn('Install the ' + pluginName + ' plugin: \'ionic plugin add ' + plugin + '\'');
 };
 
 /**
@@ -46,11 +33,8 @@ export const pluginWarn = function(pluginObj: any, method: string) {
  * @param method
  */
 export const cordovaWarn = function(pluginName: string, method: string) {
-  if (method) {
-    console.warn('Native: tried calling ' + pluginName + '.' + method + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
-  } else {
-    console.warn('Native: tried accessing the ' + pluginName + ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
-  }
+  if (method) console.warn('Native: tried calling ' + pluginName + '.' + method + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
+  else console.warn('Native: tried accessing the ' + pluginName + ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
 };
 function setIndex (args: any[], opts: any= {}, resolve?: Function, reject?: Function): any {
   // If the plugin method expects myMethod(success, err, options)
@@ -68,14 +52,12 @@ function setIndex (args: any[], opts: any= {}, resolve?: Function, reject?: Func
     args.push(resolve);
     args.push(reject);
   }
-
   return args;
 }
 
 function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts: any= {}, resolve?: Function, reject?: Function) {
   // Try to figure out where the success/error callbacks need to be bound
   // to our promise resolve/reject handlers.
-
   args = setIndex (args, opts, resolve, reject);
 
   let pluginInstance = getPlugin(pluginObj.pluginRef);
@@ -101,13 +83,11 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 
 function getPromise(cb) {
   if (window.Promise) {
-    // console.log('Native promises available...');
     return new Promise((resolve, reject) => {
       cb(resolve, reject);
     });
   } else if (window.angular) {
     let $q = window.angular.injector(['ng']).get('$q');
-    // console.log('Loaded $q', $q);
     return $q((resolve, reject) => {
       cb(resolve, reject);
     });
@@ -138,7 +118,6 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
     if (pluginResult && pluginResult.error) {
       observer.error(pluginResult.error);
     }
-
     return () => {
       try {
         if (opts.clearFunction) {
@@ -267,8 +246,6 @@ export function Plugin(config) {
  */
 export function Cordova(opts: any = {}) {
   return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
-    let originalMethod = descriptor.value;
-
     return {
       value: function(...args: any[]) {
         return wrap(this, methodName, opts).apply(this, args);
