@@ -31,11 +31,4 @@ export class Brightness {
     */
     @Cordova()
     static setKeepScreenOn(value: boolean): void { }
-
-
-    /**
-     * Hide the ActionSheet.
-     */
-    @Cordova()
-    static hide(): Promise<any> { return; }
 }
