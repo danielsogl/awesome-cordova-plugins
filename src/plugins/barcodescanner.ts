@@ -27,6 +27,12 @@ import {Plugin, Cordova} from './plugin';
 })
 export class BarcodeScanner {
 
+  static Encode: any = {
+    TEXT_TYPE: 'TEXT_TYPE',
+    EMAIL_TYPE: 'EMAIL_TYPE',
+    PHONE_TYPE: 'PHONE_TYPE',
+    SMS_TYPE: 'SMS_TYPE'
+  };
   /**
    * Open the barcode scanner.
    * @return Returns a Promise that resolves with scanner data, or rejects with an error.
@@ -34,7 +40,13 @@ export class BarcodeScanner {
   @Cordova()
   static scan(options?: any): Promise<any> { return; }
 
-  // Not well supported
-  // @Cordova()
-  // static encode(type, data){};
+  /**
+   * Encodes data into a barcode.
+   * NOTE: not well supported on Android
+   * @param type
+   * @param data
+   */
+  @Cordova()
+  static encode(type: string, data: any): Promise<any> {return; }
+
 }
