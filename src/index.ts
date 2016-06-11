@@ -42,6 +42,7 @@ import {GooglePlus} from './plugins/google-plus';
 import {GoogleMap} from './plugins/googlemaps';
 import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
+import {Httpd} from './plugins/httpd';
 import {ImagePicker} from './plugins/imagepicker';
 import {InAppBrowser} from './plugins/inappbrowser';
 import {Insomnia} from './plugins/insomnia';
@@ -66,6 +67,7 @@ import {Vibration} from './plugins/vibration';
 import {WebIntent} from './plugins/webintent';
 export * from './plugins/googlemaps';
 export * from './plugins/3dtouch';
+export * from './plugins/httpd';
 export {
   ActionSheet,
   AdMob,
@@ -169,6 +171,7 @@ window['IonicNative'] = {
   GoogleMap : GoogleMap,
   GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
+  Httpd: Httpd,
   ImagePicker: ImagePicker,
   InAppBrowser: InAppBrowser,
   Keyboard: Keyboard,
