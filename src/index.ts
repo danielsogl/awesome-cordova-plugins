@@ -68,6 +68,7 @@ import {WebIntent} from './plugins/webintent';
 export * from './plugins/googlemaps';
 export * from './plugins/3dtouch';
 export * from './plugins/httpd';
+export * from './plugins/contacts';
 export {
   ActionSheet,
   AdMob,

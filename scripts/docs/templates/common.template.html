@@ -55,13 +55,13 @@ docType: "<$ doc.docType $>"
 
 
 <@- macro functionSyntax(fn) @>
-<@- set sep = joiner(',&nbsp;') -@>
-<code><$ fn.name $>(<@- for param in fn.params @><$ sep() $>
+  <@- set sep = joiner(',&nbsp;') -@>
+  <code><$ fn.name $><@- if not fn.isProperty @>(<@ endif -@><@- for param in fn.params @><$ sep() $>
   <@- if param.type.optional @>[<@ endif -@>
   <$ param.name $>
   <@- if param.type.optional @>]<@ endif -@>
-  <@ endfor @>)</code>
-<@ if fn.alias @><small>(alias: <$ fn.alias $>)</small><@ endif @>
+  <@ endfor @><@- if not fn.isProperty @>)<@ endif -@></code>
+  <@ if fn.alias @><small>(alias: <$ fn.alias $>)</small><@ endif @>
 <@ endmacro -@>
 
 <@ macro typeList(types) -@>
@@ -203,7 +203,7 @@ docType: "<$ doc.docType $>"
 <@ endif @>
 
 <@- if doc.statics.length -@>
-<h2>Static Methods</h2>
+<h2>Static Members</h2>
 <@- for method in doc.statics @><@ if not method.internal @>
 <div id="<$ method.name $>"></div>
 <h3><$ functionSyntax(method) $></h3>
@@ -244,7 +244,7 @@ docType: "<$ doc.docType $>"
 <!-- methods on the class -->
 <@- if doc.members and doc.members.length @>
 
-<h2>Instance Methods</h2>
+<h2>Instance Members</h2>
 <@- for method in doc.members @>
 
 <div id="<$ method.name $>"></div>

@@ -23,8 +23,7 @@ Geolocation.getCurrentPosition().then(pos => {
   console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
 });
 
-let watch = Geolocation.watchPosition();
-watch.subscribe(pos => {
+let watch = Geolocation.watchPosition().subscribe(pos => {
   console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
 });
 

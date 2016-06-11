@@ -141,10 +141,12 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
 
     return () => {
       try {
-        if (opts.clearWithArgs) {
-          return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, args);
+        if (opts.clearFunction) {
+          if (opts.clearWithArgs) {
+            return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, args);
+          }
+          return get(window, pluginObj.pluginRef)[opts.clearFunction].call(pluginObj, pluginResult);
         }
-        return get(window, pluginObj.pluginRef)[opts.clearFunction].call(pluginObj, pluginResult);
       } catch (e) {
         console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
         console.error(e);
@@ -323,13 +325,13 @@ export function CordovaProperty(target: Function, key: string, descriptor: Typed
  * @param descriptor
  * @constructor
  */
-export function InstanceProperty(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
+export function InstanceProperty(target: any, key: string, descriptor: TypedPropertyDescriptor<any>) {
   descriptor.get = function() {
     return this._objectInstance[key];
   };
 
   descriptor.set = function(...args: any[]) {
-    return this._objectInstance[key] = args[0];
+    this._objectInstance[key] = args[0];
   };
 
   return descriptor;
