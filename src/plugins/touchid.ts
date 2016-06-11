@@ -23,14 +23,27 @@ import {Plugin, Cordova} from './plugin';
  * ```js
  * import {TouchID} from 'ionic-native';
  *
+ * ...
  *
+ * TouchID.isAvailable()
+ *   .then(
+ *     res => console.log("TouchID is available!"),
+ *     err => console.error("TouchID isn't available", err)
+ *   );
+ *
+ * TouchID.verifyFingerprint('Scan your fingerprint please')
+ *   .then(
+ *     res => console.log("Ok", res),
+ *     err => console.error("Error", err)
+ *   );
  *
  * ```
  */
 @Plugin({
   plugin: 'cordova-plugin-touch-id',
   pluginRef: 'plugins.touchid',
-  repo: 'https://github.com/EddyVerbruggen/cordova-plugin-touch-id'
+  repo: 'https://github.com/EddyVerbruggen/cordova-plugin-touch-id',
+  platforms: ['iOS']
 })
 export class TouchID {
 
