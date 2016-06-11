@@ -65,10 +65,30 @@ import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
 import {Vibration} from './plugins/vibration';
 import {WebIntent} from './plugins/webintent';
-export * from './plugins/googlemaps';
 export * from './plugins/3dtouch';
-export * from './plugins/httpd';
+export * from './plugins/background-geolocation';
+export * from './plugins/backgroundmode';
+export * from './plugins/batterystatus';
+export * from './plugins/calendar';
+export * from './plugins/camera';
+export * from './plugins/card-io';
 export * from './plugins/contacts';
+export * from './plugins/datepicker';
+export * from './plugins/device';
+export * from './plugins/devicemotion';
+export * from './plugins/deviceorientation';
+export * from './plugins/googlemaps';
+export * from './plugins/httpd';
+export * from './plugins/imagepicker';
+export * from './plugins/inappbrowser';
+export * from './plugins/launchnavigator';
+export * from './plugins/localnotifications';
+export * from './plugins/media';
+export * from './plugins/push';
+export * from './plugins/safari-view-controller';
+export * from './plugins/sms';
+export * from './plugins/spinnerdialog';
+export * from './plugins/toast';
 export {
   ActionSheet,
   AdMob,
@@ -76,26 +96,16 @@ export {
   AppRate,
   AppVersion,
   Badge,
-  BackgroundGeolocation,
-  BackgroundMode,
   BarcodeScanner,
   Base64ToGallery,
   BatteryStatus,
   BLE,
   BluetoothSerial,
-  Calendar,
-  Camera,
-  CardIO,
   Clipboard,
   Connection,
-  Contacts,
-  DatePicker,
   DBMeter,
   Deeplinks,
-  Device,
   DeviceAccounts,
-  DeviceMotion,
-  DeviceOrientation,
   Dialogs,
   Diagnostic,
   EmailComposer,
@@ -107,24 +117,14 @@ export {
   GooglePlus,
   GoogleAnalytics,
   Hotspot,
-  ImagePicker,
-  InAppBrowser,
   Insomnia,
   Keyboard,
-  LaunchNavigator,
-  LocalNotifications,
-  MediaPlugin,
   Network,
-  Push,
-  SafariViewController,
   Screenshot,
-  SMS,
   SocialSharing,
-  SpinnerDialog,
   Splashscreen,
   SQLite,
   StatusBar,
-  Toast,
   TouchID,
   Transfer,
   Vibration,
