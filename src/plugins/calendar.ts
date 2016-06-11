@@ -43,15 +43,45 @@ export class Calendar {
    * - You've already granted permission
    *
    * If this returns false, you should call `requestReadWritePermissions` function
+   * @returns {Promise<boolean>}
    */
   @Cordova()
-  static hasReadWritePermissions(): Promise<boolean> { return; }
+  static hasReadWritePermission(): Promise<boolean> { return; }
+
+    /**
+     * Check if we have read permission
+     * @returns {Promise<boolean>}
+     */
+    @Cordova()
+    static hasReadPermission(): Promise<boolean> {return; }
+
+    /**
+     * Check if we have write permission
+     * @returns {Promise<boolean>}
+     */
+    @Cordova()
+    static hasWritePermission(): Promise<boolean> {return; }
+
+    /**
+     * Request write permission
+     * @returns {Promise<any>}
+     */
+    @Cordova()
+    static requestWritePermission(): Promise<any> {return; }
+
+    /**
+     * Request read permission
+     * @returns {Promise<any>}
+     */
+    @Cordova()
+    static requestReadPermission(): Promise<any> {return; }
 
   /**
    * Requests read/write permissions
+   * @returns {Promise<any>}
    */
-  @Cordova({sync: true})
-  static requestReadWritePermissions(): void {}
+  @Cordova()
+  static requestReadWritePermission(): Promise<any> {return; }
 
   /**
    * Create a calendar. (iOS only)
