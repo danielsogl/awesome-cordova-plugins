@@ -1,7 +1,7 @@
 import {Plugin, Cordova} from './plugin';
 import {Observable} from 'rxjs/Observable';
 
-declare var window;
+declare var navigator: any;
 
 export interface Coordinates {
   /**
@@ -151,10 +151,13 @@ export class Geolocation {
    * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
    * @return Returns an Observable that notifies with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or errors.
    */
-  @Cordova({
-    callbackOrder: 'reverse',
-    observable: true,
-    clearFunction: 'clearWatch'
-  })
-  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return; }
+  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> {
+    return new Observable<Geoposition>(
+      (observer: any) => {
+        let cb = (data: Geoposition) => observer.next(data);
+        let watchId = navigator.geolocation.watchPosition(cb, options);
+        return () => navigator.geolocation.clearWatch(watchId);
+      }
+    );
+  }
 }
