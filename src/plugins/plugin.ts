@@ -306,8 +306,8 @@ export function CordovaProperty(target: Function, key: string, descriptor: Typed
       cordovaWarn(this.name, null);
       return {};
     }
-
-    let pluginInstance = getPlugin(this.pluginRef);
+    let pluginObj: any = this;
+    let pluginInstance = getPlugin(pluginObj.pluginRef);
     if (!pluginInstance) {
       pluginWarn(this, key);
       return { };
