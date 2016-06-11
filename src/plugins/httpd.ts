@@ -4,10 +4,11 @@ import {Observable} from 'rxjs/Observable';
  * @name Httpd
  * @description
  * Embedded httpd for Cordova apps. Light weight HTTP server.
+ * @usage
  */
 @Plugin({
     plugin: 'https://github.com/floatinghotpot/cordova-httpd.git',
-    pluginRef: 'CorHttpd',
+    pluginRef: 'cordova.plugins.CorHttpd',
     repo: 'https://github.com/floatinghotpot/cordova-httpd',
     platforms: ['iOS', 'Android']
 })
@@ -43,15 +44,18 @@ export class Httpd {
  */
 export interface HttpdOptions {
     /**
-     * The public root directory for your web server.
+     * The public root directory for your web server. This path is relative to your app's www directory.
+     * Default is current directory.
      */
-    www_root: string;
+    www_root?: string;
     /**
      * The port number to use.
+     * Default is 8888
      */
-    port: number;
+    port?: number;
     /**
-     * Setting this option to false will allow remote access to your web server (over any IP)
+     * Setting this option to false will allow remote access to your web server (over any IP).
+     * Default is false.
      */
-    localhost_only: boolean;
+    localhost_only?: boolean;
 }
