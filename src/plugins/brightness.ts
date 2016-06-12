@@ -1,5 +1,21 @@
 import {Plugin, Cordova} from './plugin';
 
+/**
+ * @name Brightness
+ * @description
+ * The Brightness plugin let you control the display brightness of your device.
+ *
+ * Requires Cordova plugin: `cordova-plugin-brightness`. For more info, please see the [Brightness plugin docs](https://github.com/mgcrea/cordova-plugin-brightness).
+ *
+ * @usage
+ * ```ts
+ * import {Brightness} from 'ionic-native';
+ *
+ * let brightnessValue: number = 0.8;
+ * Brightness.setBrightness(brightnessValue);
+ * ```
+ *
+ */
 @Plugin({
     plugin: 'cordova-plugin-brightness',
     pluginRef: 'plugins.brightness',
