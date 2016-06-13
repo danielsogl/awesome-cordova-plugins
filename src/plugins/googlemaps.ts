@@ -64,10 +64,10 @@ export class GoogleMap {
 
     /**
      * Checks if a map object has been created.
-     * @return {Promise<GoogleMap>} returns a promise that resolves with the Map object (if it exists).
+     * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the plugin is available.
      */
     @Cordova()
-    static isAvailable(): Promise<GoogleMap> {
+    static isAvailable(): Promise<boolean> {
         return;
     }
 
