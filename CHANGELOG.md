@@ -2,7 +2,7 @@
 # [1.3.0](https://github.com/driftyco/ionic-native/compare/v1.2.4...v1.3.0) (2016-06-13)
 
 ### Breaking Changes
-* **calendar** plugin has been fully rewritten
+* **contacts** plugin has been fully rewritten
 
 ### Bug Fixes
 
