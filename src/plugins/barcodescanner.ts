@@ -37,7 +37,9 @@ export class BarcodeScanner {
    * Open the barcode scanner.
    * @return Returns a Promise that resolves with scanner data, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
   static scan(options?: any): Promise<any> { return; }
 
   /**
