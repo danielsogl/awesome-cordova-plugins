@@ -3,9 +3,6 @@
   "version": "1.2.4",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "main": "dist/index.js",
-  "directories": {
-    "test": "test"
-  },
   "files": [
     "dist"
   ],
@@ -44,7 +41,6 @@
     "type": "git",
     "url": "https://github.com/driftyco/ionic-native.git"
   },
-  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/driftyco/ionic-native/issues"
