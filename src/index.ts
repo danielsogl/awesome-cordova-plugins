@@ -52,6 +52,7 @@ import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
 import {MediaPlugin} from './plugins/media';
 import {Network, Connection} from './plugins/network';
+import {Printer} from './plugins/printer';
 import {Push} from './plugins/push';
 import {SafariViewController} from './plugins/safari-view-controller';
 import {Screenshot} from './plugins/screenshot';
@@ -85,6 +86,7 @@ export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
 export * from './plugins/media';
+export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
 export * from './plugins/sms';
@@ -122,6 +124,7 @@ export {
   Insomnia,
   Keyboard,
   Network,
+  Printer,
   Screenshot,
   SocialSharing,
   Splashscreen,
@@ -183,6 +186,7 @@ window['IonicNative'] = {
   LocalNotifications: LocalNotifications,
   MediaPlugin: MediaPlugin,
   Network: Network,
+  Printer: Printer,
   Push: Push,
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
