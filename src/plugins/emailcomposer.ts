@@ -1,12 +1,12 @@
 import {Plugin, Cordova} from './plugin';
-import {Email} from './types/email.type';
-declare var cordova;
-
+declare var cordova: any;
 /**
  * @name Email Composer
  * @description
  *
  * Requires Cordova plugin: cordova-plugin-email-composer. For more info, please see the [Email Composer plugin docs](https://github.com/katzer/cordova-plugin-email-composer).
+ *
+ * DISCLAIMER: This plugin is experiencing issues with the latest versions of Cordova. Use at your own risk. Functionality is not guaranteed. Please stay tuned for a more stable version.
  *
  * @usage
  * ```ts
@@ -82,4 +82,14 @@ export class EmailComposer {
   })
   static open(email: Email, scope?: any): Promise<any> {return; }
 
+}
+export interface Email {
+  app?: string;
+  to?: string | Array<string>;
+  cc?: string | Array<string>;
+  bcc?: string | Array<string>;
+  attachments?: Array<any>;
+  subject?: string;
+  body?: string;
+  isHtml?: boolean;
 }

@@ -34,6 +34,15 @@ export class SocialSharing {
   static share (message?: string, subject?: string, file?: string|Array<string>, url?: string): void {}
 
   /**
+   * Shares using the share sheet with additional options and returns a result object or an error message (requires plugin version 5.1.0+)
+   * @param options {object} The options object with the message, subject, files, url and chooserTitle properties.
+   */
+  @Cordova({
+    platforms: ['iOS', 'Android']
+  })
+  static shareWithOptions (options: { message?: string, subject?: string, file?: string|Array<string>, url?: string, chooserTitle?: string }): Promise<any> {return; }
+
+  /**
    * Checks if you can share via a specific app.
    * @param appName App name or package name. Examples: instagram or com.apple.social.facebook
    */

@@ -3,13 +3,15 @@ import {Observable} from 'rxjs/Observable';
 
 /**
  * @name AdMob
- * @description
+ * @description Plugin for Google Ads, including AdMob / DFP (doubleclick for publisher) and mediations to other Ad networks.
  * @usage
+ * Please refer the the plugin's original repository for detailed usage.
  */
 @Plugin({
   plugin: 'cordova-plugin-admobpro',
   pluginRef: 'AdMob',
-  repo: 'https://github.com/floatinghotspot/cordova-admob-pro'
+  repo: 'https://github.com/floatinghotpot/cordova-admob-pro',
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class AdMob {
 

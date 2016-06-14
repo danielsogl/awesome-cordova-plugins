@@ -202,8 +202,9 @@ export interface Config {
  */
 @Plugin({
   plugin: 'cordova-plugin-mauron85-background-geolocation',
-  pluginRef: 'plugins.backgroundGeoLocation', // ????? see line 213 at https://github.com/mauron85/cordova-plugin-background-geolocation/blob/master/www/backgroundGeoLocation.js
-  repo: 'https://github.com/mauron85/cordova-plugin-background-geolocation'
+  pluginRef: 'plugins.backgroundGeoLocation',
+  repo: 'https://github.com/mauron85/cordova-plugin-background-geolocation',
+  platforms: ['iOS', 'Android', 'Windows Phone 8']
 })
 export class BackgroundGeolocation {
 

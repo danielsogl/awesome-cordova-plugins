@@ -27,7 +27,7 @@ export class Base64ToGallery {
    * @param prefix
    */
   @Cordova()
-  base64ToGallery(data: string , prefix?: string ): Promise<any> {
+  static base64ToGallery(data: string , prefix?: string ): Promise<any> {
     return;
   }
 

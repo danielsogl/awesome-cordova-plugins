@@ -1,5 +1,51 @@
-<a name="1.2.0"></a>
-# [1.2.0](https://github.com/driftyco/ionic-native/compare/v1.1.0...v1.2.0) (2016-04-30)
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/driftyco/ionic-native/compare/v1.2.4...v1.3.0) (2016-06-13)
+
+### Breaking Changes
+* **calendar** plugin has been fully rewritten
+
+### Bug Fixes
+
+* **barcodescanner:** add missing options param ([4fdcbb5](https://github.com/driftyco/ionic-native/commit/4fdcbb5)), closes [#180](https://github.com/driftyco/ionic-native/issues/180)
+* **base64togallery:** method is now static ([be7b9e2](https://github.com/driftyco/ionic-native/commit/be7b9e2)), closes [#212](https://github.com/driftyco/ionic-native/issues/212)
+* **batterystatus:** correct plugin name on npm ([66b7fa6](https://github.com/driftyco/ionic-native/commit/66b7fa6))
+* **calendar:** fix some functionality and add missing ones ([a15fb01](https://github.com/driftyco/ionic-native/commit/a15fb01)), closes [#184](https://github.com/driftyco/ionic-native/issues/184)
+* **deeplinks:** new result type ([11226d7](https://github.com/driftyco/ionic-native/commit/11226d7))
+* **deviceorientation:** cancelFunction renamed to clearFunction ([8dee02e](https://github.com/driftyco/ionic-native/commit/8dee02e))
+* **geolocation:** fix watchPosition() ([4a8650e](https://github.com/driftyco/ionic-native/commit/4a8650e)), closes [#164](https://github.com/driftyco/ionic-native/issues/164)
+* **googlemaps:** isAvailable() returns boolean, not an instance of GoogleMap ([a53ae8f](https://github.com/driftyco/ionic-native/commit/a53ae8f))
+
+### Features
+
+* **angular1:** Support Angular 1 ([af8fbde](https://github.com/driftyco/ionic-native/commit/af8fbde))
+* **barcodescanner:** add encode function ([e73f57f](https://github.com/driftyco/ionic-native/commit/e73f57f)), closes [#115](https://github.com/driftyco/ionic-native/issues/115)
+* **deeplinks:** Add Ionic Deeplinks Plugin ([c93cbed](https://github.com/driftyco/ionic-native/commit/c93cbed))
+* **brightntess:** Add brightness plugin
+
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/driftyco/ionic-native/compare/v1.2.1...v1.2.2) (2016-05-20)
+
+
+### Bug Fixes
+
+* **Bluetooth:** make connect function an observable to maintain full functionality ([58e3f0b](https://github.com/driftyco/ionic-native/commit/58e3f0b)), closes [#154](https://github.com/driftyco/ionic-native/issues/154)
+* **calendar:** add new permissions functions for Android 6 (M) devices ([ddbd64d](https://github.com/driftyco/ionic-native/commit/ddbd64d)), closes [#156](https://github.com/driftyco/ionic-native/issues/156)
+* **emailcomposer:** fix isAvailable function ([2a568d2](https://github.com/driftyco/ionic-native/commit/2a568d2)), closes [#168](https://github.com/driftyco/ionic-native/issues/168)
+
+
+
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/driftyco/ionic-native/compare/v1.2.0...v1.2.1) (2016-05-11)
+
+
+### Bug Fixes
+
+* **contacts:** plugin rewrite ([aada893](https://github.com/driftyco/ionic-native/commit/aada893))
+
+### Features
+
+* **plugin:** add wrapper for instance properties ([28d7d5c](https://github.com/driftyco/ionic-native/commit/28d7d5c))
+
 
 
 ### Bug Fixes

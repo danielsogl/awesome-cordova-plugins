@@ -13,18 +13,19 @@ declare var window;
  * ```ts
  * import {StatusBar} from 'ionic-native';
  *
+ * ...
  *
+ * StatuBar.overlaysWebView(true); // let status var overlay webview
  *
- * StatuBar.overlaysWebView(true);
- *
- * StatusBar.
+ * StatusBar.backgroundColorByHexString('#ffffff'); // set status bar to white
  * ```
  *
  */
 @Plugin({
   plugin: 'cordova-plugin-statusbar',
   pluginRef: 'StatusBar',
-  repo: 'https://github.com/apache/cordova-plugin-statusbar'
+  repo: 'https://github.com/apache/cordova-plugin-statusbar',
+  platforms: ['iOS', 'Android', 'Windows Phone 8', 'Windows 8', 'Windows 10']
 })
 export class StatusBar {
   /**

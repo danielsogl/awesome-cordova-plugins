@@ -1,9 +1,16 @@
 import {Cordova, CordovaProperty, Plugin} from './plugin';
 declare var window;
+/**
+ * @name WebIntent
+ * @description
+ * @usage
+ * For usage information please refer to the plugin's Github repo.
+ */
 @Plugin({
   plugin: 'https://github.com/Initsogar/cordova-webintent.git',
   pluginRef: 'window.plugins.webintent',
-  repo: 'https://github.com/Initsogar/cordova-webintent.git'
+  repo: 'https://github.com/Initsogar/cordova-webintent.git',
+  platforms: ['Android']
 })
 export class WebIntent {
 

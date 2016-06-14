@@ -57,7 +57,8 @@ export interface ToastOptions {
 @Plugin({
   plugin: 'cordova-plugin-x-toast',
   pluginRef: 'plugins.toast',
-  repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin'
+  repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin',
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class Toast {
 
