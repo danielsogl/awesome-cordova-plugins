@@ -23,6 +23,7 @@ import {Camera} from './plugins/camera';
 import {CardIO} from './plugins/card-io';
 import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
+import {Crop} from './plugins/crop';
 import {DatePicker} from './plugins/datepicker';
 import {DBMeter} from './plugins/dbmeter';
 import {Deeplinks} from './plugins/deeplinks';
@@ -105,6 +106,7 @@ export {
   BluetoothSerial,
   Clipboard,
   Connection,
+  Crop,
   DBMeter,
   Deeplinks,
   DeviceAccounts,
@@ -156,6 +158,7 @@ window['IonicNative'] = {
   Clipboard: Clipboard,
   Connection: Connection,
   Contacts: Contacts,
+  Crop: Crop,
   DatePicker: DatePicker,
   DBMeter: DBMeter,
   Deeplinks: Deeplinks,
