@@ -52,13 +52,7 @@ export class Printer {
      * Checks whether to device is capable of printing.
      */
     @Cordova()
-    static isAvailable(): Promise<boolean> {
-        return new Promise((resolve, reject) => {
-            cordova.printer.isAvailable().then((result) => {
-                resolve(result);
-            });
-        });
-    }
+    static isAvailable(): Promise<boolean> { return; }
 
     /**
      * Sends content to the printer.
@@ -66,11 +60,5 @@ export class Printer {
      * @param {options} The options to pass to the printer
      */
     @Cordova()
-    static print(content: string | HTMLElement, options?: PrintOptions): Promise<any> {
-        return new Promise((resolve, reject) => {
-            cordova.printer.print(content, options).then(() => {
-                resolve();
-            });
-        });
-    }
+    static print(content: string | HTMLElement, options?: PrintOptions): Promise<any> { return; }
 }

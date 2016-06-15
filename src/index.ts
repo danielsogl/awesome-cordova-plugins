@@ -124,7 +124,6 @@ export {
   Insomnia,
   Keyboard,
   Network,
-  Printer,
   Screenshot,
   SocialSharing,
   Splashscreen,
