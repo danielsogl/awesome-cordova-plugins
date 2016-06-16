@@ -47,7 +47,7 @@ export interface ToastOptions {
  *
  *
  *
- * Toast.show("I'm a toast", 5000, "center").subscribe(
+ * Toast.show("I'm a toast", "5000", "center").subscribe(
  *   toast => {
  *     console.log(toast);
  *   }
