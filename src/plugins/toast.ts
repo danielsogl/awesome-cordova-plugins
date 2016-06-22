@@ -1,5 +1,5 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 export interface ToastOptions {
   /**
@@ -34,6 +34,7 @@ export interface ToastOptions {
     verticalPadding?: number;
   };
 }
+
 /**
  * @name Toast
  * @description
@@ -78,7 +79,7 @@ export class Toast {
     message: string,
     duration: string,
     position: string
-  ): Observable<any> { return; }
+    ): Observable<any> { return; }
 
   /**
    * Manually hide any currently visible toast.

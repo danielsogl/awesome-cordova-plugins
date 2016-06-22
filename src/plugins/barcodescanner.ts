@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
  * @name Barcode Scanner
@@ -37,9 +37,7 @@ export class BarcodeScanner {
    * Open the barcode scanner.
    * @return Returns a Promise that resolves with scanner data, or rejects with an error.
    */
-  @Cordova({
-    callbackOrder: 'reverse'
-  })
+  @Cordova({ callbackOrder: 'reverse' })
   static scan(options?: any): Promise<any> { return; }
 
   /**
@@ -49,6 +47,6 @@ export class BarcodeScanner {
    * @param data
    */
   @Cordova()
-  static encode(type: string, data: any): Promise<any> {return; }
+  static encode(type: string, data: any): Promise<any> { return; }
 
 }

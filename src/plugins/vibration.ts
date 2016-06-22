@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 /**
  * @name Vibration
  * @description Vibrates the device
@@ -34,9 +35,7 @@ export class Vibration {
    * Vibrates the device for given amount of time.
    * @param time {number|Array<number>} Milliseconds to vibrate the device. If passed an array of numbers, it will define a vibration pattern. Pass 0 to stop any vibration immediately.
    */
-  @Cordova({
-    sync: true
-  })
-  static vibrate(time: number|Array<number>) {}
+  @Cordova({ sync: true })
+  static vibrate(time: number | Array<number>) { }
 
 }

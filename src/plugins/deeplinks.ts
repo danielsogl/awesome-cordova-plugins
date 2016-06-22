@@ -1,5 +1,5 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 export interface DeeplinkMatch {
   /**
@@ -17,7 +17,7 @@ export interface DeeplinkMatch {
    * any internal native data available as "extras" at the time
    * the route was matched (for example, Facebook sometimes adds extra data)
    */
-   $link: any;
+  $link: any;
 }
 
 /**
@@ -49,10 +49,8 @@ export class Deeplinks {
    * @returns {Promise} Returns a Promise that resolves when a deeplink comes through, and
    * is rejected if a deeplink comes through that does not match a given path.
    */
-  @Cordova({
-    observable: true
-  })
-  static route(paths): Observable<DeeplinkMatch> {return; }
+  @Cordova({ observable: true })
+  static route(paths): Observable<DeeplinkMatch> { return; }
 
   /**
    *
@@ -72,8 +70,6 @@ export class Deeplinks {
    * @returns {Promise} Returns a Promise that resolves when a deeplink comes through, and
    * is rejected if a deeplink comes through that does not match a given path.
    */
-  @Cordova({
-    observable: true
-  })
-  static routeWithNavController(navController, paths): Observable<DeeplinkMatch> {return; }
+  @Cordova({ observable: true })
+  static routeWithNavController(navController, paths): Observable<DeeplinkMatch> { return; }
 }

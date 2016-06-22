@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
  * @name Splashscreen
@@ -24,17 +24,13 @@ export class Splashscreen {
   /**
    * Shows the splashscreen
    */
-  @Cordova({
-    sync: true
-  })
-  static show(): void {}
+  @Cordova({ sync: true })
+  static show(): void { }
 
   /**
    * Hides the splashscreen
    */
-  @Cordova({
-    sync: true
-  })
-  static hide(): void {}
+  @Cordova({ sync: true })
+  static hide(): void { }
 
 }

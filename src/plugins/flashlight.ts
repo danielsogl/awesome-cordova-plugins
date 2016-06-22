@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
  * @name Flashlight
@@ -55,9 +55,7 @@ export class Flashlight {
    * Checks if the flashlight is turned on.
    * Returns a boolean
    */
-  @Cordova({
-    sync: true
-  })
+  @Cordova({ sync: true })
   static isSwitchedOn(): boolean { return; }
 
 }

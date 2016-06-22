@@ -1,4 +1,4 @@
-import {Plugin, CordovaProperty} from './plugin';
+import { Plugin, CordovaProperty } from './plugin';
 
 declare var window: {
   device: Device

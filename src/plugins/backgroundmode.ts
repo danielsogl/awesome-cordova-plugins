@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
 * @name Background Mode
@@ -22,55 +22,47 @@ export class BackgroundMode {
   * Enable the background mode.
   * Once called, prevents the app from being paused while in background.
   */
-  @Cordova({
-    sync: true
-  })
-  static enable(): void {}
+  @Cordova({ sync: true })
+  static enable(): void { }
 
-    /**
-    * Disable the background mode.
-    * Once the background mode has been disabled, the app will be paused when in background.
-    */
+  /**
+  * Disable the background mode.
+  * Once the background mode has been disabled, the app will be paused when in background.
+  */
   @Cordova()
-  static disable(): void {}
+  static disable(): void { }
 
   /**
   * Checks if background mode is enabled or not.
   */
   @Cordova()
-  static isEnabled(): Promise<boolean> {return; }
+  static isEnabled(): Promise<boolean> { return; }
   /**
   * Can be used to get the information if the background mode is active.
   */
   @Cordova()
-  static isActive(): Promise<boolean> {return; }
+  static isActive(): Promise<boolean> { return; }
 
   /**
   * Override the default title, ticker and text.
   * Available only for Android platform.
   */
-  @Cordova({
-    platforms: ['Android']
-  })
-  static setDefaults(options?: Configure): void {}
+  @Cordova({ platforms: ['Android'] })
+  static setDefaults(options?: Configure): void { }
 
   /**
   * Modify the displayed information.
   * Available only for Android platform.
   */
-  @Cordova({
-    platforms: ['Android']
-  })
-  static update(options?: Configure): void {}
+  @Cordova({ platforms: ['Android'] })
+  static update(options?: Configure): void { }
   /**
   * Sets a callback for a specific event
   * Can be used to get notified or run function when the background mode has been activated, deactivated or failed.
   * @param eventName The name of the event. Available events: activate, deactivate, failure
   */
-  @Cordova({
-    sync: true
-  })
-  static on(eventName: string, callback: any): void {}
+  @Cordova({ sync: true })
+  static on(eventName: string, callback: any): void { }
 }
 
 /**

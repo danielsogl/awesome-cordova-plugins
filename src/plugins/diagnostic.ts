@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 @Plugin({
   plugin: 'cordova.plugins.diagnostic',
@@ -16,7 +17,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
+    return new Promise<boolean>((res, rej) => { });
   }
 
   /**
@@ -30,7 +31,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
+    return new Promise<boolean>((res, rej) => { });
   }
 
   /*
@@ -44,7 +45,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
+    return new Promise<boolean>((res, rej) => { });
   }
 
   /*
@@ -58,7 +59,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
+    return new Promise<boolean>((res, rej) => { });
   }
 
   /*
@@ -74,7 +75,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<string>((res, rej) => {});
+    return new Promise<string>((res, rej) => { });
   }
 
   /*
@@ -88,7 +89,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
+    return new Promise<boolean>((res, rej) => { });
   }
 
 
@@ -103,7 +104,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
+    return new Promise<boolean>((res, rej) => { });
   }
 
   /*
@@ -117,7 +118,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
+    return new Promise<boolean>((res, rej) => { });
   }
   /*
    * Checks if location mode is set to return high-accuracy locations from GPS hardware.
@@ -132,7 +133,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
+    return new Promise<boolean>((res, rej) => { });
   }
 
   /*
@@ -148,7 +149,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
+    return new Promise<boolean>((res, rej) => { });
   }
 
   /**
@@ -164,7 +165,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
+    return new Promise<boolean>((res, rej) => { });
   }
 
 
@@ -181,7 +182,7 @@ export class Diagnostic {
     // knows that the correct return type is Promise, because there's no way
     // for it to know the return type from a decorator.
     // See https://github.com/Microsoft/TypeScript/issues/4881
-    return new Promise<boolean>((res, rej) => {});
+    return new Promise<boolean>((res, rej) => { });
   }
 
 

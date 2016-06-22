@@ -1,8 +1,7 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 declare var window;
-
 
 export interface Location {
 
@@ -177,7 +176,7 @@ export interface Config {
  *             debug: true, //  enable this hear sounds for background-geolocation life-cycle.
  *             stopOnTerminate: false, // enable this to clear background location settings when the app terminates
  *     };
- * 
+ *
  *     BackgroundGeolocation.configure(config)
  *        .then((location) => {
  *             console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
@@ -218,9 +217,7 @@ export class BackgroundGeolocation {
    *
    * Options a json object of type Config
    */
-  @Cordova({
-    callbackOrder: 'reverse'
-  })
+  @Cordova({ callbackOrder: 'reverse' })
   static configure(options: Config): Promise<Location> { return; }
 
 
@@ -258,9 +255,7 @@ export class BackgroundGeolocation {
   /**
    * Setup configuration
    */
-  @Cordova({
-    callbackOrder: 'reverse'
-  })
+  @Cordova({ callbackOrder: 'reverse' })
   static setConfig(options: Config): Promise<any> { return; }
 
   /**

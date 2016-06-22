@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 export type EventResponse = RegistrationEventResponse | NotificationEventResponse | Error;
 
@@ -242,7 +242,7 @@ export interface PushOptions {
 }
 
 declare var PushNotification: {
-  new(): PushNotification
+  new (): PushNotification
 };
 
 /**
@@ -289,9 +289,7 @@ export class Push {
    * @param {PushOptions} options  The Push [options](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/API.md#parameters).
    * @return {PushNotification}  Returns a new [PushNotification](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/API.md#pushonevent-callback) object.
    */
-  @Cordova({
-    sync: true
-  })
+  @Cordova({ sync: true })
   static init(options: PushOptions): PushNotification { return; }
 
   /**
