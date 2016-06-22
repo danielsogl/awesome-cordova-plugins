@@ -1060,12 +1060,47 @@ export class GoogleMapsKmlOverlay {
     constructor(private _objectInstance: any) {
     }
 
-    @CordovaInstance({sync: true})
+    @CordovaInstance({ sync: true })
     remove(): void {
     }
 
-    @CordovaInstance({sync: true})
-    getOverlays(): Array<GoogleMapsPolyline|GoogleMapsPolygon|GoogleMapsMarker> {
+    @CordovaInstance({ sync: true })
+    getOverlays(): Array<GoogleMapsPolyline | GoogleMapsPolygon | GoogleMapsMarker> {
+        return;
+    }
+}
+
+/**
+ * @private
+ */
+export class GoogleMapsLatLngBounds {
+    private _objectInstance: any;
+
+    constructor(public southwest: GoogleMapsLatLng, public northeast: GoogleMapsLatLng) {
+        this._objectInstance = new plugin.google.maps.LatLngBounds([southwest, northeast]);
+    }
+
+    @CordovaInstance({ sync: true })
+    toString(): string {
+        return;
+    }
+
+    @CordovaInstance({ sync: true })
+    toUrlValue(precision?: number): string {
+        return;
+    }
+
+    @CordovaInstance({ sync: true })
+    extend(LatLng: GoogleMapsLatLng): void {
+    }
+
+    @CordovaInstance({ sync: true })
+    contains(LatLng: GoogleMapsLatLng): boolean {
+        return;
+    }
+
+    @CordovaInstance({ sync: true })
+    getCenter(): GoogleMapsLatLng {
         return;
     }
 }
@@ -1084,9 +1119,7 @@ export class GoogleMapsLatLng {
         return this.lat === other.lat && this.lng === other.lng;
     }
 
-    @CordovaInstance({
-        sync: true
-    })
+    @CordovaInstance({ sync: true })
     toString(): string {
         return;
     }
