@@ -8,8 +8,9 @@ import {Plugin, Cordova} from './plugin';
 *@usage
 * ```js
 * import {BackgroundMode} from 'ionic-native';
-*
+* 
 * BackgroundMode.enable();
+* ```
 */
 @Plugin({
   plugin: 'de.appplant.cordova.plugin.background-mode',
