@@ -36,11 +36,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tslint": "./node_modules/.bin/gulp tslint",
-    "browserify": "./node_modules/.bin/browserify dist/index.js > dist/ionic.native.js",
-    "minify:dist": "./node_modules/.bin/gulp minify:dist",
-    "build": "npm run tslint && ./node_modules/.bin/tsc",
-    "build_bundle": "npm run build && npm run browserify && npm run minify:dist",
-    "prepublish": "npm run build_bundle && npm run changelog",
+    "watch": "./node_modules/.bin/tsc -w",
+    "build": "npm run tslint && npm run build:js && npm run build:bundle && npm run build:minify",
+    "build:js": "./node_modules/.bin/tsc",
+    "build:bundle": "./node_modules/.bin/browserify dist/index.js > dist/ionic.native.js",
+    "build:minify": "./node_modules/.bin/gulp minify:dist",
     "changelog": "./node_modules/.bin/conventional-changelog -i CHANGELOG.md -s -p angular -v",
     "github-release": "./node_modules/.bin/conventional-github-releaser -p angular"
   },
