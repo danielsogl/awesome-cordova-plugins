@@ -67,13 +67,13 @@ export class SQLite {
      * });
      * ```
      */
-    openDatabase (config: any) : Promise<any> {
+    openDatabase (config: any): Promise<any> {
       return new Promise((resolve, reject) => {
           sqlitePlugin.openDatabase(config, db => {
               this._objectInstance = db;
               resolve(db);
           }, error => {
-              console.warn(error)
+              console.warn(error);
               reject(error);
           });
       });
