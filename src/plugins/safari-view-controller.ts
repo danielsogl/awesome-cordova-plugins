@@ -59,7 +59,7 @@ export class SafariViewController {
     @Cordova({
         callbackOrder: 'reverse'
     })
-    static show(options?: SafariViewControllerOptions): void {}
+    static show(options?: SafariViewControllerOptions): Promise<any> {return; }
 
     /**
      * Hides Safari View Controller
