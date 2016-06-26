@@ -1,5 +1,6 @@
 import {Plugin, Cordova} from './plugin';
 import {Observable} from 'rxjs/Observable';
+declare var window: any;
 /**
  * @name 3DTouch
  * @description
@@ -85,7 +86,15 @@ export class ThreeDeeTouch {
     @Cordova({
         observable: true
     })
-    static onHomeIconPressed(): Observable<any> {return; }
+    static onHomeIconPressed(): Observable<any> {
+      return new Observable(observer => {
+        if (window.ThreeDeeTouch && window.ThreeDeeTouch.onHomeIconPressed) window.ThreeDeeTouch.onHomeIconPressed = observer.next.bind(observer);
+        else {
+          observer.error('3dTouch plugin is not available.');
+          observer.complete();
+        }
+      });
+    }
 
     /**
      * UIWebView and WKWebView (the webviews powering Cordova apps) don't allow the fancy new link preview feature of iOS9.
