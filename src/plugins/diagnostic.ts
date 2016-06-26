@@ -3,7 +3,7 @@ import {Plugin, Cordova} from './plugin';
 @Plugin({
   plugin: 'cordova.plugins.diagnostic',
   pluginRef: 'cordova.plugins.diagnostic',
-  repo: 'https://github.com/floatinghotpot/cordova-plugin-admob'
+  repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin'
 })
 export class Diagnostic {
   /**
