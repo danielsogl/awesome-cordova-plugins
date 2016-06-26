@@ -41,7 +41,7 @@
     "build:js": "./node_modules/.bin/tsc",
     "build:bundle": "./node_modules/.bin/browserify dist/index.js > dist/ionic.native.js",
     "build:minify": "./node_modules/.bin/gulp minify:dist",
-    "changelog": "./node_modules/.bin/conventional-changelog -i CHANGELOG.md -s -p angular -v",
+    "changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "github-release": "./node_modules/.bin/conventional-github-releaser -p angular"
   },
   "repository": {
