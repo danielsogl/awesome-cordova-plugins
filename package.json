@@ -38,7 +38,7 @@
     "tslint": "./node_modules/.bin/gulp tslint",
     "browserify": "./node_modules/.bin/browserify dist/index.js > dist/ionic.native.js",
     "minify:dist": "./node_modules/.bin/gulp minify:dist",
-    "build": "npm run tslint && ./node_modules/.bin/tsc --module commonjs --sourcemap --outDir dist/ --experimentalDecorators -d typings/es6-shim/es6-shim.d.ts src/index.ts --target ES5",
+    "build": "npm run tslint && ./node_modules/.bin/tsc",
     "build_bundle": "npm run build && npm run browserify && npm run minify:dist",
     "prepublish": "npm run build_bundle && npm run changelog",
     "changelog": "./node_modules/.bin/conventional-changelog -i CHANGELOG.md -s -p angular -v",
