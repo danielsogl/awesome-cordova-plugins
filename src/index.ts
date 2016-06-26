@@ -45,7 +45,7 @@ import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
 import {Httpd} from './plugins/httpd';
 import {ImagePicker} from './plugins/imagepicker';
-import {InAppBrowser} from './plugins/inappbrowser';
+import {InAppBrowser, InAppBrowserRef, InAppBrowserEvent} from './plugins/inappbrowser';
 import {Insomnia} from './plugins/insomnia';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
@@ -81,7 +81,6 @@ export * from './plugins/deviceorientation';
 export * from './plugins/googlemaps';
 export * from './plugins/httpd';
 export * from './plugins/imagepicker';
-export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
 export * from './plugins/media';
@@ -119,6 +118,9 @@ export {
   GooglePlus,
   GoogleAnalytics,
   Hotspot,
+  InAppBrowser, 
+  InAppBrowserRef, 
+  InAppBrowserEvent,
   Insomnia,
   Keyboard,
   Network,
