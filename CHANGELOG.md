@@ -1,3 +1,13 @@
+<a name="1.3.2"></a>
+## [1.3.2](https://github.com/driftyco/ionic-native/compare/v1.3.1...v1.3.2) (2016-06-27)
+
+
+### Bug Fixes
+
+* **build:** disable emitDecoratorMetadata option in tsconfig ([a5f3d7a](https://github.com/driftyco/ionic-native/commit/a5f3d7a)), closes [#251](https://github.com/driftyco/ionic-native/issues/251)
+
+
+
 <a name="1.3.1"></a>
 ## [1.3.1](https://github.com/driftyco/ionic-native/compare/v1.2.4...v1.3.1) (2016-06-26)
 
