@@ -127,31 +127,24 @@ export class SQLite {
   @CordovaInstance({ sync: true })
   handleStatementSuccess(handler, response): void { }
 
-
   @CordovaInstance({ sync: true })
   handleStatementFailure(handler, response): void { }
-
 
   @CordovaInstance({ sync: true })
   run(): void { }
 
-
   @CordovaInstance({ sync: true })
   abort(txFailure): void { }
-
 
   @CordovaInstance({ sync: true })
   finish(): void { }
 
-
   @CordovaInstance({ sync: true })
   abortFromQ(sqlerror): void { }
-
 
   @Cordova()
   static echoTest(): Promise<any> { return; }
 
   @Cordova()
   static deleteDatabase(first): Promise<any> { return; }
-
 }
