@@ -14,7 +14,7 @@ import {Plugin, Cordova} from './plugin';
 @Plugin({
   plugin:  'cordova-plugin-globalization',
   pluginRef:  'navigator.globalization',
-  repo:  'https: //github.com/apache/cordova-plugin-globalization'
+  repo:  'https://github.com/apache/cordova-plugin-globalization'
 })
 export class Globalization {
 
