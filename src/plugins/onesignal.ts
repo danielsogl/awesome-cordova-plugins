@@ -34,17 +34,6 @@ export class OneSignal {
     /**
      * Only required method you need to call to setup OneSignal to receive push notifications. Call this from the `deviceready` event.
      *
-     * | Option                        | Type      | Description                                  |
-     * |-------------------------------|-----------|----------------------------------------------|
-     * | title                         |`string`   | The title for the actionsheet                |
-     * | buttonLabels                  |`string[]` | the labels for the buttons. Uses the index x |
-     * | androidTheme                  |`number`   | Theme to be used on Android                  |
-     * | androidEnableCancelButton     |`boolean`  | Enable a cancel on Android                   |
-     * | winphoneEnableCancelButton    |`boolean`  | Enable a cancel on Windows Phone             |
-     * | addCancelButtonWithLabel      |`string`   | Add a cancel button with text                |
-     * | addDestructiveButtonWithLabel |`string`   | Add a destructive button with text           |
-     * | position                      |`number[]` | On an iPad, set the X,Y position             |
-     *
      * @param {appId} Your AppId from your OneSignal app
      * @param {options} The Google Project Number (which you can get from the Google Developer Potal) and the autoRegister option.
      * @returns {Promise} Returns a Promise that resolves when remote notification was recieved.
