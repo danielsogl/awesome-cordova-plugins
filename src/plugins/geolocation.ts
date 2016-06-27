@@ -1,5 +1,5 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 declare var navigator: any;
 
@@ -130,9 +130,7 @@ export class Geolocation {
    * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
    * @return Returns a Promise that resolves with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or rejects with an error.
    */
-  @Cordova({
-    callbackOrder: 'reverse'
-  })
+  @Cordova({ callbackOrder: 'reverse' })
   static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return; }
 
   /**

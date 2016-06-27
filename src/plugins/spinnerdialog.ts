@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
  * @name Spinner Dialog
@@ -30,18 +30,14 @@ export class SpinnerDialog {
    * @param cancelCallback {boolean|function} Set to false to set spinner not cancelable. Or provide a function to call when the user cancels the spinner.
    * @param iOSOptions {object} Options for iOS only
    */
-  @Cordova({
-    sync: true
-  })
-  static show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void {}
+  @Cordova({ sync: true })
+  static show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void { }
 
   /**
    * Hides the spinner dialog if visible
    */
-  @Cordova({
-    sync: true
-  })
-  static hide(): void {}
+  @Cordova({ sync: true })
+  static hide(): void { }
 
 }
 

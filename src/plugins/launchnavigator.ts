@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 export interface LaunchNavigatorOptions {
 
@@ -86,6 +86,6 @@ export class LaunchNavigator {
     destination: any,
     start: any = null,
     options?: LaunchNavigatorOptions
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
 }

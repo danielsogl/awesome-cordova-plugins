@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 declare var window;
 
@@ -45,7 +45,7 @@ export class File {
    */
   static checkDir(path: string, dir: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(dir))) {
       rejectFn('directory cannot start with \/');
@@ -58,13 +58,13 @@ export class File {
     try {
       var directory = path + dir;
 
-      window.resolveLocalFileSystemURL(directory, function (fileSystem) {
+      window.resolveLocalFileSystemURL(directory, function(fileSystem) {
         if (fileSystem.isDirectory === true) {
           resolveFn(fileSystem);
         } else {
-          rejectFn({code: 13, message: 'input is not a directory'});
+          rejectFn({ code: 13, message: 'input is not a directory' });
         }
-      }, function (error) {
+      }, function(error) {
         error.message = File.cordovaFileError[error.code];
         rejectFn(error);
       });
@@ -88,7 +88,7 @@ export class File {
    */
   static createDir(path: string, dirName: string, replace: boolean): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(dirName))) {
       rejectFn('directory cannot start with \/');
@@ -102,14 +102,14 @@ export class File {
     };
 
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getDirectory(dirName, options, function (result) {
+      window.resolveLocalFileSystemURL(path, function(fileSystem) {
+        fileSystem.getDirectory(dirName, options, function(result) {
           resolveFn(result);
-        }, function (error) {
+        }, function(error) {
           error.message = File.cordovaFileError[error.code];
           rejectFn(error);
         });
-      }, function (err) {
+      }, function(err) {
         err.message = File.cordovaFileError[err.code];
         rejectFn(err);
       });
@@ -130,26 +130,26 @@ export class File {
    */
   static removeDir(path: string, dirName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(dirName))) {
       rejectFn('directory cannot start with \/');
     }
 
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getDirectory(dirName, {create: false}, function (dirEntry) {
-          dirEntry.remove(function () {
-            resolveFn({success: true, fileRemoved: dirEntry});
-          }, function (error: any) {
+      window.resolveLocalFileSystemURL(path, function(fileSystem) {
+        fileSystem.getDirectory(dirName, { create: false }, function(dirEntry) {
+          dirEntry.remove(function() {
+            resolveFn({ success: true, fileRemoved: dirEntry });
+          }, function(error: any) {
             error.message = File.cordovaFileError[error.code];
             rejectFn(error);
           });
-        }, function (err) {
+        }, function(err) {
           err.message = File.cordovaFileError[err.code];
           rejectFn(err);
         });
-      }, function (er) {
+      }, function(er) {
         er.message = File.cordovaFileError[er.code];
         rejectFn(er);
       });
@@ -172,7 +172,7 @@ export class File {
    */
   static moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     newDirName = newDirName || dirName;
 
@@ -181,21 +181,21 @@ export class File {
     }
 
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getDirectory(dirName, {create: false}, function (dirEntry) {
-          window.resolveLocalFileSystemURL(newPath, function (newDirEntry) {
-            dirEntry.moveTo(newDirEntry, newDirName, function (result) {
+      window.resolveLocalFileSystemURL(path, function(fileSystem) {
+        fileSystem.getDirectory(dirName, { create: false }, function(dirEntry) {
+          window.resolveLocalFileSystemURL(newPath, function(newDirEntry) {
+            dirEntry.moveTo(newDirEntry, newDirName, function(result) {
               resolveFn(result);
-            }, function (error) {
+            }, function(error) {
               rejectFn(error);
             });
-          }, function (erro) {
+          }, function(erro) {
             rejectFn(erro);
           });
-        }, function (err) {
+        }, function(err) {
           rejectFn(err);
         });
-      }, function (er) {
+      }, function(er) {
         rejectFn(er);
       });
     } catch (e) {
@@ -216,7 +216,7 @@ export class File {
    */
   static copyDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     newDirName = newDirName || dirName;
 
@@ -225,25 +225,25 @@ export class File {
     }
 
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getDirectory(dirName, {create: false, exclusive: false}, function (dirEntry) {
+      window.resolveLocalFileSystemURL(path, function(fileSystem) {
+        fileSystem.getDirectory(dirName, { create: false, exclusive: false }, function(dirEntry) {
 
-          window.resolveLocalFileSystemURL(newPath, function (newDirEntry) {
-            dirEntry.copyTo(newDirEntry, newDirName, function (result) {
+          window.resolveLocalFileSystemURL(newPath, function(newDirEntry) {
+            dirEntry.copyTo(newDirEntry, newDirName, function(result) {
               resolveFn(result);
-            }, function (error) {
+            }, function(error) {
               error.message = File.cordovaFileError[error.code];
               rejectFn(error);
             });
-          }, function (erro) {
+          }, function(erro) {
             erro.message = File.cordovaFileError[erro.code];
             rejectFn(erro);
           });
-        }, function (err) {
+        }, function(err) {
           err.message = File.cordovaFileError[err.code];
           rejectFn(err);
         });
-      }, function (er) {
+      }, function(er) {
         er.message = File.cordovaFileError[er.code];
         rejectFn(er);
       });
@@ -264,7 +264,7 @@ export class File {
    */
   static listDir(path: string, dirName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(dirName))) {
       rejectFn('directory cannot start with \/');
@@ -276,19 +276,19 @@ export class File {
     };
 
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getDirectory(dirName, options, function (parent) {
+      window.resolveLocalFileSystemURL(path, function(fileSystem) {
+        fileSystem.getDirectory(dirName, options, function(parent) {
           var reader = parent.createReader();
-          reader.readEntries(function (entries) {
+          reader.readEntries(function(entries) {
             resolveFn(entries);
-          }, function () {
+          }, function() {
             rejectFn('DIR_READ_ERROR : ' + path + dirName);
           });
-        }, function (error) {
+        }, function(error) {
           error.message = File.cordovaFileError[error.code];
           rejectFn(error);
         });
-      }, function (err) {
+      }, function(err) {
         err.message = File.cordovaFileError[err.code];
         rejectFn(err);
       });
@@ -309,26 +309,26 @@ export class File {
    */
   static removeRecursively(path: string, dirName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(dirName))) {
       rejectFn('directory cannot start with \/');
     }
 
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getDirectory(dirName, {create: false}, function (dirEntry) {
-          dirEntry.removeRecursively(function () {
-            resolveFn({success: true, fileRemoved: dirEntry});
-          }, function (error) {
+      window.resolveLocalFileSystemURL(path, function(fileSystem) {
+        fileSystem.getDirectory(dirName, { create: false }, function(dirEntry) {
+          dirEntry.removeRecursively(function() {
+            resolveFn({ success: true, fileRemoved: dirEntry });
+          }, function(error) {
             error.message = File.cordovaFileError[error.code];
             rejectFn(error);
           });
-        }, function (err) {
+        }, function(err) {
           err.message = File.cordovaFileError[err.code];
           rejectFn(err);
         });
-      }, function (er) {
+      }, function(er) {
         er.message = File.cordovaFileError[er.code];
         rejectFn(er);
       });
@@ -349,7 +349,7 @@ export class File {
    */
   static checkFile(path: string, file: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(file))) {
       rejectFn('file cannot start with \/');
@@ -362,13 +362,13 @@ export class File {
     try {
       var directory = path + file;
 
-      window.resolveLocalFileSystemURL(directory, function (fileSystem) {
+      window.resolveLocalFileSystemURL(directory, function(fileSystem) {
         if (fileSystem.isFile === true) {
           resolveFn(fileSystem);
         } else {
-          rejectFn({code: 13, message: 'input is not a file'});
+          rejectFn({ code: 13, message: 'input is not a file' });
         }
-      }, function (error) {
+      }, function(error) {
         error.message = File.cordovaFileError[error.code];
         rejectFn(error);
       });
@@ -392,7 +392,7 @@ export class File {
    */
   static createFile(path: string, fileName: string, replace: boolean): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
 
     if ((/^\//.test(fileName))) {
@@ -407,14 +407,14 @@ export class File {
     };
 
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getFile(fileName, options, function (result) {
+      window.resolveLocalFileSystemURL(path, function(fileSystem) {
+        fileSystem.getFile(fileName, options, function(result) {
           resolveFn(result);
-        }, function (error) {
+        }, function(error) {
           error.message = File.cordovaFileError[error.code];
           rejectFn(error);
         });
-      }, function (err) {
+      }, function(err) {
         err.message = File.cordovaFileError[err.code];
         rejectFn(err);
       });
@@ -435,26 +435,26 @@ export class File {
    */
   static removeFile(path: string, fileName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(fileName))) {
       rejectFn('file-name cannot start with \/');
     }
 
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getFile(fileName, {create: false}, function (fileEntry) {
-          fileEntry.remove(function () {
-            resolveFn({success: true, fileRemoved: fileEntry});
-          }, function (error: any) {
+      window.resolveLocalFileSystemURL(path, function(fileSystem) {
+        fileSystem.getFile(fileName, { create: false }, function(fileEntry) {
+          fileEntry.remove(function() {
+            resolveFn({ success: true, fileRemoved: fileEntry });
+          }, function(error: any) {
             error.message = File.cordovaFileError[error.code];
             rejectFn(error);
           });
-        }, function (err) {
+        }, function(err) {
           err.message = File.cordovaFileError[err.code];
           rejectFn(err);
         });
-      }, function (er) {
+      }, function(er) {
         er.message = File.cordovaFileError[er.code];
         rejectFn(er);
       });
@@ -479,16 +479,16 @@ export class File {
    */
   static readAsText(path: string, fileName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     if ((/^\//.test(fileName))) {
       rejectFn('file-name cannot start with \/');
     }
 
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getFile(fileName, {create: false}, function (fileEntry) {
-          fileEntry.file(function (file) {
+      window.resolveLocalFileSystemURL(path, function(fileSystem) {
+        fileSystem.getFile(fileName, { create: false }, function(fileEntry) {
+          fileEntry.file(function(file) {
             var reader = new FileReader();
 
             reader.onloadend = function(e) {
@@ -497,20 +497,20 @@ export class File {
               } else if (this.error !== undefined && this.error !== null) {
                 rejectFn(this.error);
               } else {
-                rejectFn({code: null, message: 'READER_ONLOADEND_ERR'});
+                rejectFn({ code: null, message: 'READER_ONLOADEND_ERR' });
               }
             };
 
             reader.readAsText(file);
-          }, function (error) {
+          }, function(error) {
             error.message = File.cordovaFileError[error.code];
             rejectFn(error);
           });
-        }, function (err) {
+        }, function(err) {
           err.message = File.cordovaFileError[err.code];
           rejectFn(err);
         });
-      }, function (er) {
+      }, function(er) {
         er.message = File.cordovaFileError[er.code];
         rejectFn(er);
       });
@@ -539,7 +539,7 @@ export class File {
    */
   static moveFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     newFileName = newFileName || fileName;
 
@@ -548,21 +548,21 @@ export class File {
     }
 
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getFile(fileName, {create: false}, function (fileEntry) {
-          window.resolveLocalFileSystemURL(newPath, function (newFileEntry) {
-            fileEntry.moveTo(newFileEntry, newFileName, function (result) {
+      window.resolveLocalFileSystemURL(path, function(fileSystem) {
+        fileSystem.getFile(fileName, { create: false }, function(fileEntry) {
+          window.resolveLocalFileSystemURL(newPath, function(newFileEntry) {
+            fileEntry.moveTo(newFileEntry, newFileName, function(result) {
               resolveFn(result);
-            }, function (error) {
+            }, function(error) {
               rejectFn(error);
             });
-          }, function (err) {
+          }, function(err) {
             rejectFn(err);
           });
-        }, function (err) {
+        }, function(err) {
           rejectFn(err);
         });
-      }, function (er) {
+      }, function(er) {
         rejectFn(er);
       });
     } catch (e) {
@@ -583,7 +583,7 @@ export class File {
    */
   static copyFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<any> {
     let resolveFn, rejectFn;
-    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+    let promise = new Promise((resolve, reject) => { resolveFn = resolve; rejectFn = reject; });
 
     newFileName = newFileName || fileName;
 
@@ -592,25 +592,25 @@ export class File {
     }
 
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getFile(fileName, {create: false, exclusive: false}, function (fileEntry) {
+      window.resolveLocalFileSystemURL(path, function(fileSystem) {
+        fileSystem.getFile(fileName, { create: false, exclusive: false }, function(fileEntry) {
 
-          window.resolveLocalFileSystemURL(newPath, function (newFileEntry) {
-            fileEntry.copyTo(newFileEntry, newFileName, function (result) {
+          window.resolveLocalFileSystemURL(newPath, function(newFileEntry) {
+            fileEntry.copyTo(newFileEntry, newFileName, function(result) {
               resolveFn(result);
-            }, function (error) {
+            }, function(error) {
               error.message = File.cordovaFileError[error.code];
               rejectFn(error);
             });
-          }, function (erro) {
+          }, function(erro) {
             erro.message = File.cordovaFileError[erro.code];
             rejectFn(erro);
           });
-        }, function (err) {
+        }, function(err) {
           err.message = File.cordovaFileError[err.code];
           rejectFn(err);
         });
-      }, function (er) {
+      }, function(er) {
         er.message = File.cordovaFileError[er.code];
         rejectFn(er);
       });

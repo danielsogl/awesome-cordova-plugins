@@ -1,4 +1,4 @@
-import {Plugin, Cordova, CordovaProperty} from './plugin';
+import { Cordova, CordovaProperty, Plugin } from './plugin';
 
 declare var window;
 
@@ -34,42 +34,32 @@ export class StatusBar {
    *
    * @param {boolean} doesOverlay  Whether the status bar overlays the main app view.
    */
-  @Cordova({
-    sync: true
-  })
-  static overlaysWebView(doesOverlay: boolean) {};
+  @Cordova({ sync: true })
+  static overlaysWebView(doesOverlay: boolean) { };
 
   /**
    * Use the default statusbar (dark text, for light backgrounds).
    */
-  @Cordova({
-    sync: true
-  })
-  static styleDefault() {};
+  @Cordova({ sync: true })
+  static styleDefault() { };
 
   /**
    * Use the lightContent statusbar (light text, for dark backgrounds).
    */
-  @Cordova({
-    sync: true
-  })
-  static styleLightContent() {};
+  @Cordova({ sync: true })
+  static styleLightContent() { };
 
   /**
    * Use the blackTranslucent statusbar (light text, for dark backgrounds).
    */
-  @Cordova({
-    sync: true
-  })
-  static styleBlackTranslucent() {};
+  @Cordova({ sync: true })
+  static styleBlackTranslucent() { };
 
   /**
    * Use the blackOpaque statusbar (light text, for dark backgrounds).
    */
-  @Cordova({
-    sync: true
-  })
-  static styleBlackOpaque() {};
+  @Cordova({ sync: true })
+  static styleBlackOpaque() { };
 
   /**
    * Set the status bar to a specific named color. Valid options:
@@ -79,10 +69,8 @@ export class StatusBar {
    *
    * @param {string} colorName  The name of the color (from above)
    */
-  @Cordova({
-    sync: true
-  })
-  static backgroundColorByName(colorName: string) {};
+  @Cordova({ sync: true })
+  static backgroundColorByName(colorName: string) { };
 
   /**
    * Set the status bar to a specific hex color (CSS shorthand supported!).
@@ -91,26 +79,20 @@ export class StatusBar {
    *
    * @param {string} hexString  The hex value of the color.
    */
-  @Cordova({
-    sync: true
-  })
-  static backgroundColorByHexString(hexString: string) {};
+  @Cordova({ sync: true })
+  static backgroundColorByHexString(hexString: string) { };
 
   /**
    * Hide the StatusBar
    */
-  @Cordova({
-    sync: true
-  })
-  static hide() {};
+  @Cordova({ sync: true })
+  static hide() { };
 
   /**
   * Show the StatusBar
   */
-  @Cordova({
-    sync: true
-  })
-  static show() {};
+  @Cordova({ sync: true })
+  static show() { };
 
   /**
    * Whether the StatusBar is currently visible or not.
