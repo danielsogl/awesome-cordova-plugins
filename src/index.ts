@@ -44,6 +44,7 @@ import {GoogleMap} from './plugins/googlemaps';
 import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
 import {Httpd} from './plugins/httpd';
+import {IBeacon} from './plugins/ibeacon';
 import {ImagePicker} from './plugins/imagepicker';
 import {InAppBrowser} from './plugins/inappbrowser';
 import {Insomnia} from './plugins/insomnia';
@@ -81,6 +82,7 @@ export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
 export * from './plugins/googlemaps';
 export * from './plugins/httpd';
+export * from './plugins/ibeacon';
 export * from './plugins/imagepicker';
 export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
@@ -121,9 +123,11 @@ export {
   GooglePlus,
   GoogleAnalytics,
   Hotspot,
+  IBeacon,
   Insomnia,
   Keyboard,
   Network,
+  Push,
   Screenshot,
   SocialSharing,
   Splashscreen,
@@ -178,6 +182,7 @@ window['IonicNative'] = {
   GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
   Httpd: Httpd,
+  IBeacon: IBeacon,
   ImagePicker: ImagePicker,
   InAppBrowser: InAppBrowser,
   Keyboard: Keyboard,
@@ -186,7 +191,6 @@ window['IonicNative'] = {
   MediaPlugin: MediaPlugin,
   Network: Network,
   Printer: Printer,
-  Push: Push,
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
   SMS: SMS,
