@@ -83,9 +83,6 @@ export class ThreeDeeTouch {
      * When a home icon is pressed, your app launches and this JS callback is invoked.
      * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
      */
-    @Cordova({
-        observable: true
-    })
     static onHomeIconPressed(): Observable<any> {
       return new Observable(observer => {
         if (window.ThreeDeeTouch && window.ThreeDeeTouch.onHomeIconPressed) window.ThreeDeeTouch.onHomeIconPressed = observer.next.bind(observer);
