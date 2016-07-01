@@ -70,5 +70,5 @@ export class ActionSheet {
    * @returns {Promise} Returns a Promise that resolves when the actionsheet is closed
    */
   @Cordova()
-  static hide(): Promise<any> { return; }
+  static hide(options?: any): Promise<any> { return; }
 }
