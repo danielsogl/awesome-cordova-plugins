@@ -276,6 +276,13 @@ docType: "<$ doc.docType $>"
 
 <@- endif -@>
 
+<@ block advanced @>
+<@- if doc.advanced -@>
+<h2><a class="anchor" name="advanced" href="#advanced"></a>Advanced</h2>
+<$ doc.advanced | marked $>
+<@- endif -@>
+<@ endblock @>
+
 <!-- related link -->
 <@- if doc.see @>
 
