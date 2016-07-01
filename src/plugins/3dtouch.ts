@@ -7,8 +7,10 @@ declare var window: any;
  * @usage
  * Please do refer to the original plugin's repo for detailed usage. The usage example here might not be sufficient.
  * ```
- * import {ThreeDeeTouch, ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch} from 'ionic-native';
+ * import {ThreeDeeTouch} from 'ionic-native';
  *
+ * // import for type completion on variables
+ * import {ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch} from 'ionic-native';
  * ...
  *
  * ThreeDeeTouch.isAvailable().then(isAvailable => console.log("3D Touch available? " + isAvailable)):
@@ -48,6 +50,15 @@ declare var window: any;
  *   }
  * ];
  * ThreeDeeTouch.configureQuickActions(actions);
+ *
+ * ThreeDeeTouchForceTouch.onHomeIconPressed().subscribe(
+ *  (payload) => {
+ *    // returns an object that is the button you presed
+ *    console.log(`Pressed the ${payload.title} button`)
+ *    console.log(payload.type)
+ *
+ *  }
+ * )
  * ```
  */
 @Plugin({
@@ -74,6 +85,13 @@ export class ThreeDeeTouch {
     })
     static watchForceTouches(): Observable<ThreeDeeTouchForceTouch> {return; }
 
+    /**
+     * setup the 3D-touch actions, takes an array of objects with the following
+     * @param {string} type (optional) A type that can be used `onHomeIconPressed` callback
+     * @param {string} title Title for your action
+     * @param {string} subtitle (optional) A short description for your action
+     * @param {string} iconType (optional) Choose between Prohibit, Contact, Home, MarkLocation, Favorite, Love, Cloud, Invitation, Confirmation, Mail, Message, Date, Time, CapturePhoto, CaptureVideo, Task, TaskCompleted, Alarm, Bookmark, Shuffle, Audio, Update
+     */
     @Cordova({
         sync: true
     })
@@ -94,6 +112,7 @@ export class ThreeDeeTouch {
     }
 
     /**
+     * Enable Link Preview.
      * UIWebView and WKWebView (the webviews powering Cordova apps) don't allow the fancy new link preview feature of iOS9.
      */
     @Cordova({
