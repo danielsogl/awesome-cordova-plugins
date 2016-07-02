@@ -36,7 +36,6 @@ export class OneSignal {
      *
      * @param {appId} Your AppId from your OneSignal app
      * @param {options} The Google Project Number (which you can get from the Google Developer Potal) and the autoRegister option.
-     * @param {object} This should be a callback function
      * @returns {Promise} Returns a Promise that resolves when remote notification was recieved.
      */
     @Cordova()
@@ -44,14 +43,14 @@ export class OneSignal {
         options: {
             googleProjectNumber: string,
             autoRegister: boolean
-        }, object?: any): void { }
+        }): Promise<any> { return; }
 
 
     /**
      * Call this when you would like to prompt an iOS user to accept push notifications with the default system prompt. 
      * Only use if you passed false to autoRegister when calling init.
      */
-    @Cordova()
+    @Cordova({ sync: true })
     static registerForPushNotifications(): void { }
 
 
@@ -62,7 +61,7 @@ export class OneSignal {
      * @param {key} Key of your choosing to create or update.
      * @param {value} Value to set on the key. NOTE: Passing in a blank String deletes the key, you can also call deleteTag.
      */
-    @Cordova()
+    @Cordova({ sync: true })
     static sendTag(key: string, value: string): void { }
 
     /**
@@ -71,7 +70,7 @@ export class OneSignal {
    * 
    * @param {json} Pass a json object with key/value pairs like: {key: "value", key2: "value2"}
    */
-    @Cordova()
+    @Cordova({ sync: true })
     static sendTags(json: any): void { }
 
     /**
@@ -87,7 +86,7 @@ export class OneSignal {
     * 
     * @param {key} Key to remove.
     */
-    @Cordova()
+    @Cordova({ sync: true })
     static deleteTag(key: string): void { }
 
     /**
@@ -95,7 +94,7 @@ export class OneSignal {
     * 
     * @param {keys} Keys to remove.
     */
-    @Cordova()
+    @Cordova({ sync: true })
     static deleteTags(keys: string[]): void { }
 
     /**
@@ -117,7 +116,7 @@ export class OneSignal {
     * 
     * @param {enable} false to disable vibrate, true to re-enable it.
     */
-    @Cordova()
+    @Cordova({ sync: true })
     static enableVibrate(enable: boolean): void { }
 
     /**
@@ -129,7 +128,7 @@ export class OneSignal {
     * 
     * @param {enable} false to disable sound, true to re-enable it.
     */
-    @Cordova()
+    @Cordova({ sync: true })
     static enableSound(enable: boolean): void { }
 
     /**
@@ -141,7 +140,7 @@ export class OneSignal {
     * 
     * @param {enable} enable
     */
-    @Cordova()
+    @Cordova({ sync: true })
     static enableNotificationsWhenActive(enable: boolean): void { }
 
     /**
@@ -151,7 +150,7 @@ export class OneSignal {
     * 
     * @param {enable} enable
     */
-    @Cordova()
+    @Cordova({ sync: true })
     static enableInAppAlertNotification(enable: boolean): void { }
 
     /**
@@ -160,7 +159,7 @@ export class OneSignal {
     * 
     * @param {enable} enable
     */
-    @Cordova()
+    @Cordova({ sync: true })
     static setSubscription(enable: boolean): void { }
 
    /**
@@ -235,7 +234,7 @@ export class OneSignal {
     /**
     * Prompts the user for location permission to allow geotagging based on the "Location radius" filter on the OneSignal dashboard.
     */
-    @Cordova()
+    @Cordova({ sync: true })
     static promptLocation(): void { }
 
     /**
@@ -246,7 +245,7 @@ export class OneSignal {
     * 
     * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
     */
-    @Cordova()
+    @Cordova({ sync: true })
     static setLogLevel(logLevel: {
         logLevel: number,
         visualLevel: number
