@@ -238,7 +238,7 @@ export class GoogleMap {
   addGroundOverlay(options: GoogleMapsGroundOverlayOptions): Promise<GoogleMapsGroundOverlay> {
     return new Promise<GoogleMapsGroundOverlay>(
       (resolve, reject) => {
-        this._objectInstance.addTileOverlay(options, (groundOverlay: any) => {
+        this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
           if (groundOverlay) resolve(new GoogleMapsGroundOverlay(groundOverlay));
           else reject();
         });
@@ -249,7 +249,7 @@ export class GoogleMap {
   addKmlOverlay(options: GoogleMapsKmlOverlayOptions): Promise<GoogleMapsKmlOverlay> {
     return new Promise<GoogleMapsKmlOverlay>(
       (resolve, reject) => {
-        this._objectInstance.addTileOverlay(options, (kmlOverlay: any) => {
+        this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
           if (kmlOverlay) resolve(new GoogleMapsKmlOverlay(kmlOverlay));
           else reject();
         });
