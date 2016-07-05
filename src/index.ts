@@ -123,7 +123,6 @@ export {
   GooglePlus,
   GoogleAnalytics,
   Hotspot,
-  IBeacon,
   Insomnia,
   Keyboard,
   Network,
