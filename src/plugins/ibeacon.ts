@@ -1,48 +1,213 @@
 import {Plugin, Cordova} from './plugin';
 import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
 
 declare var cordova: any;
 
 export interface Beacon {
+  /**
+   * The physical device's identifer.
+   */
   uuid: string;
-  major: string;
-  minor: string;
+
+  /**
+   * The beacon's major identifier number.
+   */
+  major: number;
+
+  /**
+   * The beacon's major identifier number.
+   */
+  minor: number;
+
+  /**
+   * The proximity of the beacon relative to the phone.
+   * 
+   * Possible options are:
+   * ProximityImmediate
+   * ProximityNear
+   * ProximityFar
+   * ProximityUnknown
+   */
   proximity: string;
+
+  /**
+   * 
+   */
   tx: number;
+
+  /**
+   * The strength of the bluetooth signal.
+   */
   rssi: number;
+
+  /**
+   * The accuracy of the ranging.
+   */
   accuracy: number;
+
 }
 export interface BeaconRegion {
+  /**
+   * A unique indentifier for this region.
+   */
   identifer: string;
+
+  /**
+   * The identifer this region will "watch" for. This is 
+   */
   uuid: string;
+
+  /**
+   * The beacon's major identifier number. Optional, of nothing is supplied
+   * the plugin will treat it as a wildcard.
+   */
   major?: number;
+
+  /**
+   * The beacon's major identifier number. Optional, of nothing is supplied
+   * the plugin will treat it as a wildcard.
+   */
   minor?: number;
+
+  /**
+   * If set to true the device will scan for beacons and determine region state anytime
+   * the device's screen is turned on or off. Useful for debugging.
+   */
   notifyEntryStateOnDisplay?: boolean;
 }
 export interface CircularRegion {
+  /**
+   * A unique indentifier for this region.
+   */
   identifier: string;
+
+  /**
+   * The latitude of this region.
+   */
   latitude: number;
+
+  /**
+   * The longitude of this region.
+   */
   longitude: number;
+
+  /**
+   * The radius of the geofence for this region.
+   */
   radius: number;
 }
 export type Region = BeaconRegion | CircularRegion;
+
 export interface PluginResult {
+
+  /**
+   * The name of the delegate function that produced the PluginResult object.
+   */
   eventType: string;
-  region: BeaconRegion;
+
+  /**
+   * The region that triggered the event.
+   */
+  region: Region;
+
+  /**
+   * An array of beacon objects
+   */
   beacons: Beacon[];
+
+  /**
+   * The status of the location permission for iOS.
+   */
   authorizationStatus: string;
+
+  /**
+   * The state of the phone in relation to the region. Inside/outside for example.
+   */
   state: string;
 }
 export interface Delegate {
+  /**
+   * An observable that publishes information about the location permission authorization status.
+   * 
+   * @return Returns a string.
+   */
   didChangeAuthorizationStatus(): Observable<string>;
+
+  /**
+   * An Observable that publishes event data to it's subscribers
+   * when the native layer is able to determine the device's state.
+   * 
+   * This event is called when the phone begins starts monitoring,
+   * when requestStateForRegion is called, etc.
+   * 
+   * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
+   */
   didDetermineStateForRegion(): Observable<PluginResult>;
+
+  /**
+   * An Observable that publishes event data to it's subscribers
+   * when the phone enters a region that it was asked to monitor.
+   * 
+   * If the user has given the app Always-Location permission, this function
+   *  will be called even when the app is not running on iOS.
+   * The app will run silently in the background for a small amount of time.
+   * 
+   * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
+   */
   didEnterRegion(): Observable<PluginResult>;
+
+  /**
+   * An Observable that publishes event data to it's subscribers 
+   * when the phone exits a region that it was asked to monitor.
+   * 
+   * If the user has given the app Always-Location permission, this function
+   *  will be called even when the app is not running on iOS.
+   * The app will run silently in the background for a small amount of time.
+   * 
+   * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
+   */
   didExitRegion(): Observable<PluginResult>;
+
+  /**
+   * An Observable that publishes event data to it's subscribers
+   *  each time that the device ranges beacons. Modern Android and iOS devices range 
+   * aproximately once per second.
+   * 
+   * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
+   */
   didRangeBeaconsInRegion(): Observable<PluginResult>;
+
+  /**
+   * An Observable that publishes event data to it's subscribers
+   *  when the device begins monitoring a region.
+   * 
+   * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
+   */
   didStartMonitoringForRegion(): Observable<PluginResult>;
+
+  /**
+   * An Observable that publishes event data to it's subscribers
+   *  when the device fails to monitor a region.
+   * 
+   * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
+   */
   monitoringDidFailForRegionWithError(): Observable<PluginResult>;
+
+  /**
+   * An Observable that publishes event data to it's subscribers
+   *  when the device begins advertising as an iBeacon.
+   * 
+   * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
+   */
   peripheralManagerDidStartAdvertising(): Observable<PluginResult>;
+
+  /**
+   * An Observable that publishes event data to it's subscribers 
+   * when the state of the peripheral manager's state updates.
+   * 
+   * 
+   * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
+   */
   peripheralManagerDidUpdateState(): Observable<PluginResult>;
 }
 
@@ -82,12 +247,12 @@ export interface Delegate {
  *     }
  *   );
  * 
- * let beaconRegion = IBeacon.BeaconRegion('deskBeacon','F7826DA6-4FA2-4E98-8024-BC5B71E0893E');
+ * let beaconRegion = IBeacon.BeaconRegion('deskBeacon','F7826DA6-ASDF-ASDF-8024-BC5B71E0893E');
  * 
  * IBeacon.startMonitoringForRegion(beaconRegion)
  *   .then(
- *     result => console.log('monitoring result: ', result),
- *     error => console.error('monitoring error: ', error)
+ *     () => console.log('Native layer recieved the request to monitoring'),
+ *     error => console.error('Native layer failed to begin monitoring: ', error)
  *   );
  * ```
  */
@@ -103,18 +268,6 @@ export class IBeacon {
   /**
    * Instances of this class are delegates between the {@link LocationManager} and
    * the code that consumes the messages generated on in the native layer.
-   * 
-   * @example 
-   * 
-   * var delegate = new cordova.plugins.LocationManager.Delegate();
-   *
-   * delegate.didDetermineStateForRegion = function(region) {
-   *      console.log('didDetermineState:forRegion: ' + JSON.stringify(region));
-   * };
-   *
-   * delegate.didStartMonitoringForRegion = function (region) {
-   *      console.log('didStartMonitoringForRegion: ' + JSON.stringify(region));
-   * }
    * 
    * @returns {Delegate} An instance of the type {@type Delegate}.
    */
@@ -540,7 +693,5 @@ export class IBeacon {
    */
   @Cordova({sync: true})
   static appendToDeviceLog(message: string): Promise<void> { return; }
-
-
 
 }
