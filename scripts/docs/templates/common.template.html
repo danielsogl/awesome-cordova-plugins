@@ -211,10 +211,12 @@ docType: "<$ doc.docType $>"
 <@- if method.decorators @>
 <@ for prop in method.decorators[0].argumentInfo @>
 <@ if prop.platforms @>
+<p>
 <b>Platforms:</b>
 <@- for platform in prop.platforms @>
 <code><$ platform $></code>&nbsp;
 <@ endfor -@>
+</p>
 <@ endif @>
 <@ endfor @>
 <@ endif -@>
