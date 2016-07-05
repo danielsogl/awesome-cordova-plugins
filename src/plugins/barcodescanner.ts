@@ -27,6 +27,9 @@ import {Plugin, Cordova} from './plugin';
 })
 export class BarcodeScanner {
 
+  /**
+   * @private
+   */
   static Encode: any = {
     TEXT_TYPE: 'TEXT_TYPE',
     EMAIL_TYPE: 'EMAIL_TYPE',
