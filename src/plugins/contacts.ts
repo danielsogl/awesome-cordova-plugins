@@ -31,6 +31,11 @@ export interface IContactProperties {
     /** An array of web pages associated with the contact. */
     urls?: IContactField[];
 }
+
+
+/**
+ * @private
+ */
 export class Contact {
     private _objectInstance: any;
     @InstanceProperty get id(): string {return; }
@@ -92,6 +97,10 @@ export interface IContactName {
     /** The contact's suffix (example Esq.). */
     honorificSuffix?: string;
 }
+
+/**
+ * @private
+ */
 export class ContactName implements IContactName {
     private _objectInstance: any;
     constructor(formatted?: string, familyName?: string, givenName?: string, middleName?: string, honorificPrefix?: string, honorificSuffix?: string) {
@@ -114,6 +123,9 @@ export interface IContactField {
     pref: boolean;
 }
 
+/**
+ * @private
+ */
 export class ContactField implements IContactField {
     private _objectInstance: any;
     constructor(type?: string, value?: string, pref?: boolean) {
@@ -143,6 +155,9 @@ export interface IContactAddress {
     country?: string;
 }
 
+/**
+ * @private
+ */
 export class ContactAddress implements IContactAddress {
     private _objectInstance: any;
     constructor (pref?: boolean,
@@ -178,6 +193,9 @@ export interface IContactOrganization {
     title?: string;
 }
 
+/**
+ * @private
+ */
 export class ContactOrganization implements IContactOrganization {
     private _objectInstance: any;
     constructor () {
@@ -200,6 +218,9 @@ export interface IContactFindOptions {
     desiredFields?: string[];
 }
 
+/**
+ * @private
+ */
 export class ContactFindOptions implements IContactFindOptions {
     private _objectInstance: any;
     constructor () {
@@ -210,6 +231,7 @@ export class ContactFindOptions implements IContactFindOptions {
     @InstanceProperty get desiredFields(): any {return; }
     @InstanceProperty get hasPhoneNumber(): boolean {return; }
 }
+
 /**
  * @name Contacts
  * @description
