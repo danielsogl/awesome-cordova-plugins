@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 export interface DatePickerOptions {
   /**
@@ -102,5 +102,4 @@ export class DatePicker {
    */
   @Cordova()
   static show(options: DatePickerOptions): Promise<Date> { return; }
-
 }
