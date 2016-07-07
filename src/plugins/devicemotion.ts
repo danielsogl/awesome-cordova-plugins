@@ -2,7 +2,7 @@ import {Plugin, Cordova} from './plugin';
 import {Observable} from 'rxjs/Observable';
 
 export interface AccelerationData {
-
+p
   /**
    * Amount of acceleration on the x-axis. (in m/s^2)
    */
@@ -83,7 +83,7 @@ export class DeviceMotion {
    *
    * ```ts
    * // Watch device acceleration
-   * var subscription = DeviceMotion.watchPosition().subscribe(acceleration => {
+   * var subscription = DeviceMotion.watchAcceleration().subscribe(acceleration => {
    *   console.log(acceleration);
    * });
    *
