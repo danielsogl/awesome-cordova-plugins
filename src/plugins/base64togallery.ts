@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 /**
  * @name Base64 To Gallery
  * @description This plugin allows you to save base64 data as a png image into the device
@@ -28,7 +28,7 @@ export class Base64ToGallery {
    * @returns {Promise} returns a promise that resolves when the image is saved.
    */
   @Cordova()
-  static base64ToGallery(data: string , prefix?: string ): Promise<any> {
+  static base64ToGallery(data: string, prefix?: string): Promise<any> {
     return;
   }
 
