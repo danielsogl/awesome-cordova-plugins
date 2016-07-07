@@ -1,10 +1,13 @@
 import { Cordova, CordovaInstance, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
+
+
 /**
  * @private
  * Created by Ibrahim on 3/29/2016.
  */
 declare var plugin: any;
+
 /**
  * @private
  * You can listen to these events where appropriate
