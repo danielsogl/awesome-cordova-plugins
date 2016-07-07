@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
  * @name Barcode Scanner
@@ -52,6 +52,6 @@ export class BarcodeScanner {
    * @param data
    */
   @Cordova()
-  static encode(type: string, data: any): Promise<any> {return; }
+  static encode(type: string, data: any): Promise<any> { return; }
 
 }
