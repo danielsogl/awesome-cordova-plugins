@@ -5,7 +5,7 @@ declare var cordova: any;
 
 export interface Beacon {
   /**
-   * The physical device's identifer.
+   * The physical device's identifier.
    */
   uuid: string;
 
@@ -28,15 +28,16 @@ export interface Beacon {
    * ProximityFar
    * ProximityUnknown
    */
-  proximity: string;
+  proximity: 'ProximityImmediate' | 'ProximityNear' | 'ProximityFar' | 'ProximityUnknown';
 
   /**
-   * 
+   * Transmission Power of the beacon. A constant emitted by the beacon which indicates what's the expected RSSI at a distance of 1 meter to the beacon.
    */
   tx: number;
 
   /**
-   * The strength of the bluetooth signal.
+   * Received Signal Strength Indicator. The strength of the beacon's signal when it reaches the device.
+   *  RSSI ranges from aprox -26 (a few inches) to -100 (40-50 m distance).
    */
   rssi: number;
 
@@ -48,12 +49,12 @@ export interface Beacon {
 }
 export interface BeaconRegion {
   /**
-   * A unique indentifier for this region.
+   * A unique identifier for this region.
    */
-  identifer: string;
+  identifier: string;
 
   /**
-   * The identifer this region will "watch" for. This is 
+   * The the beacon identifier the device will "watch" for. Many beacons can share the same uuid.
    */
   uuid: string;
 
@@ -77,7 +78,7 @@ export interface BeaconRegion {
 }
 export interface CircularRegion {
   /**
-   * A unique indentifier for this region.
+   * A unique identifier for this region.
    */
   identifier: string;
 
@@ -123,7 +124,7 @@ export interface PluginResult {
   /**
    * The state of the phone in relation to the region. Inside/outside for example.
    */
-  state: string;
+  state: 'CLRegionStateInside' | 'CLRegionStateOutside';
 }
 export interface Delegate {
   /**
