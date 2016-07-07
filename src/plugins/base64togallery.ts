@@ -24,7 +24,7 @@ export class Base64ToGallery {
   /**
    * Converts a base64 string to an image file in the device gallery
    * @param {string} data The actual base64 string that you want to save
-   * @param {sstring} prefix Prefix the file with a string. Default is 'img_'. Optional.
+   * @param {string} prefix Prefix the file with a string. Default is 'img_'. Optional.
    * @returns {Promise} returns a promise that resolves when the image is saved.
    */
   @Cordova()
