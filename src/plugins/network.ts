@@ -76,6 +76,10 @@ export class Network {
 
 }
 
+
+/**
+ * @private
+ */
 export class Connection {
   static get UNKNOWN()  { return 'unknown'; }
   static get ETHERNET() { return 'ethernet'; }
