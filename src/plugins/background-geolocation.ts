@@ -177,7 +177,7 @@ export interface Config {
  *             debug: true, //  enable this hear sounds for background-geolocation life-cycle.
  *             stopOnTerminate: false, // enable this to clear background location settings when the app terminates
  *     };
- * 
+ *
  *     BackgroundGeolocation.configure(config)
  *        .then((location) => {
  *             console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
@@ -202,7 +202,7 @@ export interface Config {
  */
 @Plugin({
   plugin: 'cordova-plugin-mauron85-background-geolocation',
-  pluginRef: 'plugins.backgroundGeoLocation',
+  pluginRef: 'plugins.backgroundGeolocation',
   repo: 'https://github.com/mauron85/cordova-plugin-background-geolocation',
   platforms: ['iOS', 'Android', 'Windows Phone 8']
 })
