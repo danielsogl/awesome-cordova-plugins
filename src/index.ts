@@ -81,6 +81,7 @@ export * from './plugins/datepicker';
 export * from './plugins/device';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
+export * from './plugins/filetransfer';
 export * from './plugins/googlemaps';
 export * from './plugins/httpd';
 export * from './plugins/ibeacon';
