@@ -28,10 +28,8 @@ export class SocialSharing {
    * @param file {string|Array<string>} URL(s) to file(s) or image(s), local path(s) to file(s) or image(s), or base64 data of an image. Only the first file/image will be used on Windows Phone.
    * @param url {string} A URL to share
    */
-  @Cordova({
-    sync: true
-  })
-  static share (message?: string, subject?: string, file?: string|Array<string>, url?: string): void {}
+  @Cordova()
+  static share (message?: string, subject?: string, file?: string|Array<string>, url?: string): Promise<any> {return; }
 
   /**
    * Shares using the share sheet with additional options and returns a result object or an error message (requires plugin version 5.1.0+)
@@ -58,10 +56,9 @@ export class SocialSharing {
    * @param url
    */
   @Cordova({
-    sync: true,
     platforms: ['iOS', 'Android']
   })
-  static shareViaTwitter (message: string, image?: string, url?: string): void {}
+  static shareViaTwitter (message: string, image?: string, url?: string): Promise<any> {return; }
 
   /**
    * Shares directly to Facebook
