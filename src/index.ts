@@ -51,7 +51,7 @@ import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
 import {MediaPlugin} from './plugins/media';
-import {Network, Connection} from './plugins/network';
+import {Network} from './plugins/network';
 import {OneSignal} from './plugins/onesignal';
 import {Printer} from './plugins/printer';
 import {Push} from './plugins/push';
@@ -107,7 +107,6 @@ export {
   BLE,
   BluetoothSerial,
   Clipboard,
-  Connection,
   DBMeter,
   Deeplinks,
   DeviceAccounts,
@@ -158,7 +157,6 @@ window['IonicNative'] = {
   Camera: Camera,
   CardIO: CardIO,
   Clipboard: Clipboard,
-  Connection: Connection,
   Contacts: Contacts,
   DatePicker: DatePicker,
   DBMeter: DBMeter,
