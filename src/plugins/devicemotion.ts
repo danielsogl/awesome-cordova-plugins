@@ -70,7 +70,6 @@ export class DeviceMotion {
 
   /**
    * Get the current acceleration along the x, y, and z axes.
-   *
    * @returns {Promise<any>} Returns object with x, y, z, and timestamp properties
    */
   @Cordova()
@@ -80,18 +79,8 @@ export class DeviceMotion {
 
   /**
    * Watch the device acceleration. Clear the watch by unsubscribing from the observable.
-   *
-   * ```ts
-   * // Watch device acceleration
-   * var subscription = DeviceMotion.watchPosition().subscribe(acceleration => {
-   *   console.log(acceleration);
-   * });
-   *
-   * // Stop watch
-   * subscription.unsubscribe();
-   * ```
-   * @param options
-   * @returns {Observable<AccelerationData>}
+   * @param {AccelerometerOptions} options list of options for the accelerometer.
+   * @returns {Observable<AccelerationData>} Observable returns an observable that you can subscribe to
    */
   @Cordova({
     callbackOrder: 'reverse',

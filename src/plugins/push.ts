@@ -186,6 +186,29 @@ export interface IOSPushOptions {
    * **Note**: only usable in conjunction with `senderID`.
    */
   topics?: string[];
+
+  /**
+   * The data required in order to enable Action Buttons for iOS.
+   * Action Buttons on iOS - https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/PAYLOAD.md#action-buttons-1
+   */
+  categories?: CategoryArray;
+}
+
+export interface CategoryArray {
+  [name: string]: CategoryAction;
+}
+
+export interface CategoryAction {
+  yes?: CategoryActionData;
+  no?: CategoryActionData;
+  maybe?: CategoryActionData;
+}
+
+export interface CategoryActionData {
+  callback: string;
+  title: string;
+  foreground: boolean;
+  destructive: boolean;
 }
 
 export interface AndroidPushOptions {

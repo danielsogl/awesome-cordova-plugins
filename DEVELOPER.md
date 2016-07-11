@@ -94,11 +94,11 @@ The `@Cordova` decorator has a few more options now.
 
 ### Testing your changes
 
-You need to run `npm run build_bundle` in the `ionic-native` project, this will create a `dist` directory. Then, you must go to your ionic application folder and replace your current `node_modules/ionic-native/dist/` with the newly generated one.
+You need to run `npm run build` in the `ionic-native` project, this will create a `dist` directory. Then, you must go to your ionic application folder and replace your current `node_modules/ionic-native/dist/` with the newly generated one.
 
 ### Cleaning the code
 
-You need to run `gulp tslint` to analyze the code and ensure it's consitency with the repository style. Fix any errors before submitting a PR.
+You need to run `npm run tslint` to analyze the code and ensure it's consistency with the repository style. Fix any errors before submitting a PR.
 
 ### 'Wrapping' Up
 

@@ -5,6 +5,24 @@ import {Observable} from 'rxjs/Observable';
  * @name Bluetooth Serial
  * @description This plugin enables serial communication over Bluetooth. It was written for communicating between Android or iOS and an Arduino.
  * @usage
+ * ```ts
+ * // Write a string
+ * Bluetooth.write("hello world").then(success, failure);
+ *
+ * // Array of int or bytes
+ * Bluetooth.write([186, 220, 222]).then(success, failure);
+ *
+ * // Typed Array
+ * var data = new Uint8Array(4);
+ * data[0] = 0x41;
+ * data[1] = 0x42;
+ * data[2] = 0x43;
+ * data[3] = 0x44;
+ * Bluetooth.write(data).then(success, failure);
+ *
+ * // Array Buffer
+ * Bluetooth.write(data.buffer).then(success, failure);
+ * ```
  */
 @Plugin({
   repo: 'https://github.com/don/BluetoothSerial',
@@ -16,8 +34,8 @@ export class BluetoothSerial {
 
   /**
    * Connect to a Bluetooth device
-   * Returns an Observable. Subscribe to connect, unsubscribe to disconnect.
-   * @param macAddress_or_uuid Identifier of the remote device
+   * @param {string} macAddress_or_uuid Identifier of the remote device
+   * @returns {Observable} Subscribe to connect, unsubscribe to disconnect.
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone'],
@@ -28,8 +46,8 @@ export class BluetoothSerial {
 
   /**
    * Connect insecurely to a Bluetooth device
-   * Returns an Observable. Subscribe to connect, unsubscribe to disconnect.
-   * @param macAddress Identifier of the remote device
+   * @param {string} macAddress Identifier of the remote device
+   * @returns {Observable} Subscribe to connect, unsubscribe to disconnect.
    */
   @Cordova({
     platforms: ['Android'],
@@ -40,26 +58,8 @@ export class BluetoothSerial {
 
   /**
    * Writes data to the serial port
-   * @param data ArrayBuffer of data
-   * @usage
-   * ```ts
-   * // Write a string
-   * Bluetooth.write("hello world").then(success, failure);
-   *
-   * // Array of int or bytes
-   * Bluetooth.write([186, 220, 222]).then(success, failure);
-   *
-   * // Typed Array
-   * var data = new Uint8Array(4);
-   * data[0] = 0x41;
-   * data[1] = 0x42;
-   * data[2] = 0x43;
-   * data[3] = 0x44;
-   * Bluetooth.write(data).then(success, failure);
-   *
-   * // Array Buffer
-   * Bluetooth.write(data.buffer).then(success, failure);
-   * ```
+   * @param {any} data ArrayBuffer of data
+   * @returns {Promise} returns a promise when data has been written
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -68,6 +68,7 @@ export class BluetoothSerial {
 
   /**
    * Gets the number of bytes of data available
+   * @returns {Promise} returns a promise that contains the available bytes
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -75,6 +76,7 @@ export class BluetoothSerial {
 
   /**
    * Reads data from the buffer
+   * @returns {Promise} returns a promise with data from the buffer
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -83,7 +85,8 @@ export class BluetoothSerial {
 
   /**
    * Reads data from the buffer until it reaches a delimiter
-   * @param delimiter
+   * @param {string} delimiter string that you want to search until
+   * @returns {Promise} returns a promise
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -92,7 +95,8 @@ export class BluetoothSerial {
 
   /**
    * Subscribe to be notified when data is received
-   * @param delimiter
+   * @param {string} delimiter the string you want to watch for
+   * @returns {Observable} returns an observable.
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone'],
@@ -103,6 +107,7 @@ export class BluetoothSerial {
 
   /**
    * Subscribe to be notified when data is received
+   * @returns {Observable} returns an observable
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone'],
@@ -113,6 +118,7 @@ export class BluetoothSerial {
 
   /**
    * Clears data in buffer
+   * @returns {Promise} returns a promise when completed
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -121,6 +127,7 @@ export class BluetoothSerial {
 
   /**
    * Lists bonded devices
+   * @returns {Promise} returns a promise
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -129,6 +136,7 @@ export class BluetoothSerial {
 
   /**
    * Reports if bluetooth is enabled
+   * @returns {Promise} returns a promise
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -137,6 +145,7 @@ export class BluetoothSerial {
 
   /**
    * Reports the connection status
+   * @returns {Promise} returns a promise
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -145,6 +154,7 @@ export class BluetoothSerial {
 
   /**
    * Reads the RSSI from the connected peripheral
+   * @returns {Promise} returns a promise
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -153,6 +163,7 @@ export class BluetoothSerial {
 
   /**
    * Show the Bluetooth settings on the device
+   * @returns {Promise} returns a promise
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -161,6 +172,7 @@ export class BluetoothSerial {
 
   /**
    * Enable Bluetooth on the device
+   * @returns {Promise} returns a promise
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -169,20 +181,7 @@ export class BluetoothSerial {
 
   /**
    * Discover unpaired devices
-   * @usage
-   * ```ts
-   * [{
-   *    "class": 276,
-   *    "id": "10:BF:48:CB:00:00",
-   *    "address": "10:BF:48:CB:00:00",
-   *    "name": "Nexus 7"
-   * }, {
-   *    "class": 7936,
-   *    "id": "00:06:66:4D:00:00",
-   *    "address": "00:06:66:4D:00:00",
-   *    "name": "RN42"
-   * }]
-   * ```
+   * @returns {Promise} returns a promise
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
@@ -191,6 +190,7 @@ export class BluetoothSerial {
 
   /**
    * Subscribe to be notified on Bluetooth device discovery. Discovery process must be initiated with the `discoverUnpaired` function.
+   * @returns {Observable} Returns an observable
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone'],
@@ -201,7 +201,7 @@ export class BluetoothSerial {
 
   /**
    * Sets the human readable device name that is broadcasted to other devices
-   * @param newName Desired name of device
+   * @param {string} newName Desired name of device
    */
   @Cordova({
     platforms: ['Android'],
@@ -211,14 +211,11 @@ export class BluetoothSerial {
 
   /**
    * Makes the device discoverable by other devices
-   * @param discoverableDuration Desired number of seconds device should be discoverable for
+   * @param {number} discoverableDuration Desired number of seconds device should be discoverable for
    */
   @Cordova({
     platforms: ['Android'],
     sync: true
   })
   static setDiscoverable (discoverableDuration: number): void {}
-
-
-
 }

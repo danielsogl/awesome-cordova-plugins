@@ -34,7 +34,7 @@ export interface DeeplinkMatch {
 @Plugin({
   plugin: 'ionic-plugin-deeplinks',
   pluginRef: 'IonicDeeplink',
-  repo: 'https://github.com/driftyo/ionic-plugin-deeplinks',
+  repo: 'https://github.com/driftyco/ionic-plugin-deeplinks',
   platforms: ['iOS', 'Android']
 })
 export class Deeplinks {

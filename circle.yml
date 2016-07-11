@@ -18,7 +18,7 @@ dependencies:
 test:
   override:
     - echo "No tests are written at the moment. But we will attempt to build the library with the latest changes."
-    - npm run build_bundle
+    - npm run build
 
 deployment:
  staging:

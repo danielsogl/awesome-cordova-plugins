@@ -27,6 +27,9 @@ import {Plugin, Cordova} from './plugin';
 })
 export class BarcodeScanner {
 
+  /**
+   * @private
+   */
   static Encode: any = {
     TEXT_TYPE: 'TEXT_TYPE',
     EMAIL_TYPE: 'EMAIL_TYPE',
@@ -37,7 +40,9 @@ export class BarcodeScanner {
    * Open the barcode scanner.
    * @return Returns a Promise that resolves with scanner data, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
   static scan(options?: any): Promise<any> { return; }
 
   /**

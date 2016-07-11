@@ -44,6 +44,7 @@ import {GoogleMap} from './plugins/googlemaps';
 import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
 import {Httpd} from './plugins/httpd';
+import {IBeacon} from './plugins/ibeacon';
 import {ImagePicker} from './plugins/imagepicker';
 import {InAppBrowser} from './plugins/inappbrowser';
 import {Insomnia} from './plugins/insomnia';
@@ -51,7 +52,9 @@ import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
 import {MediaPlugin} from './plugins/media';
-import {Network, Connection} from './plugins/network';
+import {Network} from './plugins/network';
+import {OneSignal} from './plugins/onesignal';
+import {Printer} from './plugins/printer';
 import {Push} from './plugins/push';
 import {SafariViewController} from './plugins/safari-view-controller';
 import {Screenshot} from './plugins/screenshot';
@@ -78,13 +81,16 @@ export * from './plugins/datepicker';
 export * from './plugins/device';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
+export * from './plugins/filetransfer';
 export * from './plugins/googlemaps';
 export * from './plugins/httpd';
+export * from './plugins/ibeacon';
 export * from './plugins/imagepicker';
 export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
 export * from './plugins/media';
+export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
 export * from './plugins/sms';
@@ -104,7 +110,6 @@ export {
   BLE,
   BluetoothSerial,
   Clipboard,
-  Connection,
   DBMeter,
   Deeplinks,
   DeviceAccounts,
@@ -122,6 +127,7 @@ export {
   Insomnia,
   Keyboard,
   Network,
+  OneSignal,
   Screenshot,
   SocialSharing,
   Splashscreen,
@@ -144,6 +150,7 @@ window['IonicNative'] = {
   AppVersion: AppVersion,
   Badge: Badge,
   BackgroundGeolocation: BackgroundGeolocation,
+  BackgroundMode: BackgroundMode,
   BarcodeScanner: BarcodeScanner,
   Base64ToGallery: Base64ToGallery,
   BatteryStatus: BatteryStatus,
@@ -154,7 +161,6 @@ window['IonicNative'] = {
   Camera: Camera,
   CardIO: CardIO,
   Clipboard: Clipboard,
-  Connection: Connection,
   Contacts: Contacts,
   DatePicker: DatePicker,
   DBMeter: DBMeter,
@@ -176,6 +182,7 @@ window['IonicNative'] = {
   GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
   Httpd: Httpd,
+  IBeacon: IBeacon,
   ImagePicker: ImagePicker,
   InAppBrowser: InAppBrowser,
   Keyboard: Keyboard,
@@ -183,7 +190,9 @@ window['IonicNative'] = {
   LocalNotifications: LocalNotifications,
   MediaPlugin: MediaPlugin,
   Network: Network,
+  Printer: Printer,
   Push: Push,
+  OneSignal: OneSignal,
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
   SMS: SMS,

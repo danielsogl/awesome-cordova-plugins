@@ -1,23 +1,14 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "noImplicitAny": false,
-        "rootDir": ".",
-        "sourceMap": true,
-        "declaration": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
-    },
-    "filesGlob": [
-        "**/*.ts"
-    ],
-    "exclude": [
-      "node_modules"
-    ],
-    "compileOnSave": false,
-    "buildOnSave": false,
-    "atom": {
-        "rewriteTsconfig": false
-    }
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES5",
+    "sourceMap": true,
+    "declaration": true,
+    "experimentalDecorators": true,
+    "outDir": "dist"
+  },
+  "files": [
+    "typings/es6-shim/es6-shim.d.ts",
+    "src/index.ts"
+  ]
 }
