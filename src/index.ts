@@ -150,6 +150,7 @@ window['IonicNative'] = {
   AppVersion: AppVersion,
   Badge: Badge,
   BackgroundGeolocation: BackgroundGeolocation,
+  BackgroundMode: BackgroundMode,
   BarcodeScanner: BarcodeScanner,
   Base64ToGallery: Base64ToGallery,
   BatteryStatus: BatteryStatus,
