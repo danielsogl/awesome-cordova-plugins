@@ -1,40 +1,5 @@
-import {Plugin, Cordova} from "./plugin";
-
-interface Window {
-  /**
-   * Requests a filesystem in which to store application data.
-   * @param type              Whether the filesystem requested should be persistent, as defined above. Use one of TEMPORARY or PERSISTENT.
-   * @param size              This is an indicator of how much storage space, in bytes, the application expects to need.
-   * @param successCallback   The callback that is called when the user agent provides a filesystem.
-   * @param errorCallback     A callback that is called when errors happen, or when the request to obtain the filesystem is denied.
-   */
-  requestFileSystem(type: number,
-                    size: number,
-                    successCallback: (fileSystem: FileSystem) => void,
-                    errorCallback?: (fileError: FileError) => void): void;
-  /**
-   * Look up file system Entry referred to by local URL.
-   * @param string url       URL referring to a local file or directory
-   * @param successCallback  invoked with Entry object corresponding to URL
-   * @param errorCallback    invoked if error occurs retrieving file system entry
-   */
-  resolveLocalFileSystemURL(url: string,
-                            successCallback: (entry: Entry) => void,
-                            errorCallback?: (error: FileError) => void): void;
-  /**
-   * Look up file system Entry referred to by local URI.
-   * @param string uri       URI referring to a local file or directory
-   * @param successCallback  invoked with Entry object corresponding to URI
-   * @param errorCallback    invoked if error occurs retrieving file system entry
-   */
-  resolveLocalFileSystemURI(uri: string,
-                            successCallback: (entry: Entry) => void,
-                            errorCallback?: (error: FileError) => void): void;
-  TEMPORARY: number;
-  PERSISTENT: number;
-}
-
-declare var window:Window;
+import {Plugin, Cordova} from './plugin';
+declare var window: any;
 
 /** This interface represents a file system. */
 export interface FileSystem {
@@ -399,10 +364,10 @@ export interface Cordova {
     documentsDirectory: string;
     /* BlackBerry10: Files globally available to all apps */
     sharedDirectory: string
-  }
+  };
 }
 
-export declare var cordova:Cordova;
+export declare var cordova: Cordova;
 
 /**
  * @name File
@@ -433,14 +398,13 @@ export class File {
     10: 'QUOTA_EXCEEDED_ERR',
     11: 'TYPE_MISMATCH_ERR',
     12: 'PATH_EXISTS_ERR',
-    // extensions
     13: 'WRONG_ENTRY_TYPE',
     14: 'DIR_READ_ERR',
   };
 
   @Cordova()
   static getFreeDiskSpace(): Promise<number> {
-    return
+    return;
   }
 
   /**
@@ -542,7 +506,7 @@ export class File {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getDirectory(fse, dirName, {create: false})
+        return this.getDirectory(fse, dirName, {create: false});
       })
       .then((srcde) => {
         return this.resolveDirectoryUrl(newPath)
@@ -570,7 +534,7 @@ export class File {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getDirectory(fse, dirName, {create: false})
+        return this.getDirectory(fse, dirName, {create: false});
       })
       .then((srcde) => {
         return this.resolveDirectoryUrl(newPath)
@@ -794,7 +758,7 @@ export class File {
           };
 
           reader.readAsText(fe);
-        })
+        });
       });
   }
 
@@ -823,7 +787,7 @@ export class File {
           };
 
           reader.readAsDataURL(fe);
-        })
+        });
       });
   }
 
@@ -852,7 +816,7 @@ export class File {
           };
 
           reader.readAsBinaryString(fe);
-        })
+        });
       });
   }
 
@@ -881,7 +845,7 @@ export class File {
           };
 
           reader.readAsArrayBuffer(fe);
-        })
+        });
       });
   }
 
@@ -905,7 +869,7 @@ export class File {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getFile(fse, fileName, {create: false})
+        return this.getFile(fse, fileName, {create: false});
       })
       .then((srcfe) => {
         return this.resolveDirectoryUrl(newPath)
@@ -935,7 +899,7 @@ export class File {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getFile(fse, fileName, {create: false})
+        return this.getFile(fse, fileName, {create: false});
       })
       .then((srcfe) => {
         return this.resolveDirectoryUrl(newPath)
@@ -1058,7 +1022,7 @@ export class File {
         File.fillErrorMessage(err);
         reject(err);
       });
-    })
+    });
   }
 
   private static rimraf(de: DirectoryEntry): Promise<RemoveResult> {
@@ -1079,8 +1043,8 @@ export class File {
       }, (err) => {
         File.fillErrorMessage(err);
         reject(err);
-      })
-    })
+      });
+    });
   }
 
   private static write(writer: FileWriter, gu: string | Blob): Promise<void> {
