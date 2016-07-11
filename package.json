@@ -1,6 +1,6 @@
 {
   "name": "ionic-native",
-  "version": "1.3.0",
+  "version": "1.3.3",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "main": "dist/index.js",
   "files": [
@@ -10,18 +10,19 @@
     "rxjs": "^5.0.0-beta.6"
   },
   "devDependencies": {
-    "browserify": "^13.0.0",
+    "browserify": "^13.0.1",
     "canonical-path": "0.0.2",
-    "conventional-changelog": "^1.1.0",
+    "conventional-changelog-cli": "^1.2.0",
+    "conventional-github-releaser": "^1.1.3",
     "cpr": "^1.0.0",
-    "cz-conventional-changelog": "^1.1.5",
+    "cz-conventional-changelog": "^1.1.6",
     "dgeni": "^0.4.2",
     "dgeni-packages": "^0.10.18",
     "glob": "^6.0.4",
-    "gulp": "~3.9.0",
+    "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-tslint": "^5.0.0",
-    "gulp-uglify": "^1.5.3",
+    "gulp-uglify": "^1.5.4",
     "lodash": "3.10.1",
     "minimist": "^1.1.3",
     "mkdirp": "^0.5.1",
@@ -34,8 +35,13 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --module commonjs --sourcemap --outDir dist/ --experimentalDecorators -d typings/es6-shim/es6-shim.d.ts src/index.ts --target ES5",
-    "build_bundle": "npm run-script build && browserify dist/index.js > dist/ionic.native.js && gulp minify:dist"
+    "tslint": "./node_modules/.bin/gulp tslint",
+    "watch": "./node_modules/.bin/tsc -w",
+    "build": "npm run tslint && npm run build:js && npm run build:bundle && npm run build:minify",
+    "build:js": "./node_modules/.bin/tsc",
+    "build:bundle": "./node_modules/.bin/browserify dist/index.js > dist/ionic.native.js",
+    "build:minify": "./node_modules/.bin/gulp minify:dist",
+    "changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "repository": {
     "type": "git",

@@ -1,13 +1,16 @@
 import {Plugin, Cordova} from './plugin';
 import {Observable} from 'rxjs/Observable';
+declare var window: any;
 /**
  * @name 3DTouch
  * @description
  * @usage
  * Please do refer to the original plugin's repo for detailed usage. The usage example here might not be sufficient.
  * ```
- * import {ThreeDeeTouch, ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch} from 'ionic-native';
+ * import {ThreeDeeTouch} from 'ionic-native';
  *
+ * // import for type completion on variables
+ * import {ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch} from 'ionic-native';
  * ...
  *
  * ThreeDeeTouch.isAvailable().then(isAvailable => console.log("3D Touch available? " + isAvailable)):
@@ -47,6 +50,15 @@ import {Observable} from 'rxjs/Observable';
  *   }
  * ];
  * ThreeDeeTouch.configureQuickActions(actions);
+ *
+ * ThreeDeeTouchForceTouch.onHomeIconPressed().subscribe(
+ *  (payload) => {
+ *    // returns an object that is the button you presed
+ *    console.log(`Pressed the ${payload.title} button`)
+ *    console.log(payload.type)
+ *
+ *  }
+ * )
  * ```
  */
 @Plugin({
@@ -73,6 +85,13 @@ export class ThreeDeeTouch {
     })
     static watchForceTouches(): Observable<ThreeDeeTouchForceTouch> {return; }
 
+    /**
+     * setup the 3D-touch actions, takes an array of objects with the following
+     * @param {string} type (optional) A type that can be used `onHomeIconPressed` callback
+     * @param {string} title Title for your action
+     * @param {string} subtitle (optional) A short description for your action
+     * @param {string} iconType (optional) Choose between Prohibit, Contact, Home, MarkLocation, Favorite, Love, Cloud, Invitation, Confirmation, Mail, Message, Date, Time, CapturePhoto, CaptureVideo, Task, TaskCompleted, Alarm, Bookmark, Shuffle, Audio, Update
+     */
     @Cordova({
         sync: true
     })
@@ -82,12 +101,18 @@ export class ThreeDeeTouch {
      * When a home icon is pressed, your app launches and this JS callback is invoked.
      * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
      */
-    @Cordova({
-        observable: true
-    })
-    static onHomeIconPressed(): Observable<any> {return; }
+    static onHomeIconPressed(): Observable<any> {
+      return new Observable(observer => {
+        if (window.ThreeDeeTouch && window.ThreeDeeTouch.onHomeIconPressed) window.ThreeDeeTouch.onHomeIconPressed = observer.next.bind(observer);
+        else {
+          observer.error('3dTouch plugin is not available.');
+          observer.complete();
+        }
+      });
+    }
 
     /**
+     * Enable Link Preview.
      * UIWebView and WKWebView (the webviews powering Cordova apps) don't allow the fancy new link preview feature of iOS9.
      */
     @Cordova({

@@ -104,7 +104,7 @@ docType: "<$ doc.docType $>"
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
   Improve this doc
 </a>
 
@@ -211,10 +211,12 @@ docType: "<$ doc.docType $>"
 <@- if method.decorators @>
 <@ for prop in method.decorators[0].argumentInfo @>
 <@ if prop.platforms @>
+<p>
 <b>Platforms:</b>
 <@- for platform in prop.platforms @>
 <code><$ platform $></code>&nbsp;
 <@ endfor -@>
+</p>
 <@ endif @>
 <@ endfor @>
 <@ endif -@>
@@ -275,6 +277,13 @@ docType: "<$ doc.docType $>"
 <@ endfor -@>
 
 <@- endif -@>
+
+<@ block advanced @>
+<@- if doc.advanced -@>
+<h2><a class="anchor" name="advanced" href="#advanced"></a>Advanced</h2>
+<$ doc.advanced | marked $>
+<@- endif -@>
+<@ endblock @>
 
 <!-- related link -->
 <@- if doc.see @>

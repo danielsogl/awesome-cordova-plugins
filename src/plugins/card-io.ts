@@ -41,7 +41,7 @@ export class CardIO {
 
     /**
      * Scan a credit card with card.io.
-     * @param options
+     * @param {CardIOOptions} options Options for configuring the plugin
      */
     @Cordova()
     static scan(options?: CardIOOptions): Promise<any> {return; }

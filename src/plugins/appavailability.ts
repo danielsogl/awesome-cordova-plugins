@@ -37,7 +37,7 @@ export class AppAvailability {
 
   /**
    * Checks if an app is available on device
-   * @param app Package name on android, or URI scheme on iOS
+   * @param {string} app Package name on android, or URI scheme on iOS
    * @returns {Promise<boolean>}
    */
   @Cordova()

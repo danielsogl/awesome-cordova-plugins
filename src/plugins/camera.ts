@@ -95,7 +95,7 @@ export interface CameraPopoverOptions {
  * @usage
  * ```js
  * import {Camera} from 'ionic-native';
- * 
+ *
  * Camera.getPicture(options).then((imageData) => {
  *  // imageData is either a base64 encoded string or a file URI
  *  // If it's base64:
@@ -113,8 +113,8 @@ export interface CameraPopoverOptions {
 export class Camera {
   /**
    * Take a picture or video, or load one from the library.
-   * @param {CameraOptions} options
-   * @return Returns a Promise that resolves with Base64 encoding of the image data, or the image file URI, depending on cameraOptions, otherwise rejects with an error.
+   * @param {CameraOptions} options Options that you want to pass to the camera. Encoding type, quality, etc.
+   * @return {Promise} Returns a Promise that resolves with Base64 encoding of the image data, or the image file URI, depending on cameraOptions, otherwise rejects with an error.
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -132,6 +132,7 @@ export class Camera {
   static cleanup() { };
 
   /**
+   * @private
    * @enum {number}
    */
   static DestinationType = {
@@ -144,6 +145,7 @@ export class Camera {
   };
 
   /**
+   * @private
    * @enum {number}
    */
   static EncodingType = {
@@ -153,6 +155,7 @@ export class Camera {
     PNG: 1
   };
   /**
+   * @private
    * @enum {number}
    */
   static MediaType = {
@@ -165,6 +168,7 @@ export class Camera {
   };
 
   /**
+   * @private
    * @enum {number}
    */
   static PictureSourceType = {
@@ -177,6 +181,7 @@ export class Camera {
   };
 
   /**
+   * @private
    * Matches iOS UIPopoverArrowDirection constants to specify arrow location on popover.
    * @enum {number}
    */
@@ -189,6 +194,7 @@ export class Camera {
   };
 
   /**
+   * @private
    * @enum {number}
    */
   static Direction = {

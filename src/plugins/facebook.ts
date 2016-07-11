@@ -87,8 +87,8 @@ export class Facebook {
 
     /**
      * Browser wrapper
-     * @param appId
-     * @param version
+     * @param {number} appId Your Facebook AppID from their dashboard
+     * @param {string} version The version of API you may want to use. Optional
      */
    @Cordova()
    static browserInit(appId: number, version?: string): Promise<any> {

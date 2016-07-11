@@ -22,6 +22,21 @@ import {Plugin, Cordova} from './plugin';
  * });
  * ```
  *
+ * @advanced
+ * ActionSheet options
+ *
+ * | Option                        | Type      | Description                                  |
+ * |-------------------------------|-----------|----------------------------------------------|
+ * | title                         |`string`   | The title for the actionsheet                |
+ * | buttonLabels                  |`string[]` | the labels for the buttons. Uses the index x |
+ * | androidTheme                  |`number`   | Theme to be used on Android                  |
+ * | androidEnableCancelButton     |`boolean`  | Enable a cancel on Android                   |
+ * | winphoneEnableCancelButton    |`boolean`  | Enable a cancel on Windows Phone             |
+ * | addCancelButtonWithLabel      |`string`   | Add a cancel button with text                |
+ * | addDestructiveButtonWithLabel |`string`   | Add a destructive button with text           |
+ * | position                      |`number[]` | On an iPad, set the X,Y position             |
+ *
+ *
  */
 @Plugin({
   plugin: 'cordova-plugin-actionsheet',
@@ -32,20 +47,8 @@ import {Plugin, Cordova} from './plugin';
 export class ActionSheet {
 
   /**
-   * Show the ActionSheet. The ActionSheet's options is an object with the following propterties.
-   *
-   * | Option                        | Type      | Description                                  |
-   * |-------------------------------|-----------|----------------------------------------------|
-   * | title                         |`string`   | The title for the actionsheet                |
-   * | buttonLabels                  |`string[]` | the labels for the buttons. Uses the index x |
-   * | androidTheme                  |`number`   | Theme to be used on Android                  |
-   * | androidEnableCancelButton     |`boolean`  | Enable a cancel on Android                   |
-   * | winphoneEnableCancelButton    |`boolean`  | Enable a cancel on Windows Phone             |
-   * | addCancelButtonWithLabel      |`string`   | Add a cancel button with text                |
-   * | addDestructiveButtonWithLabel |`string`   | Add a destructive button with text           |
-   * | position                      |`number[]` | On an iPad, set the X,Y position             |
-   *
-   * @param {options} Options See table above
+   * Show a native ActionSheet component. See below for options.
+   * @param {options} Options See table below
    * @returns {Promise} Returns a Promise that resolves with the index of the
    *   button pressed (1 based, so 1, 2, 3, etc.)
    */
@@ -63,8 +66,9 @@ export class ActionSheet {
 
 
   /**
-   * Hide the ActionSheet.
+   * Progamtically hide the native ActionSheet
+   * @returns {Promise} Returns a Promise that resolves when the actionsheet is closed
    */
   @Cordova()
-  static hide(): Promise<any> { return; }
+  static hide(options?: any): Promise<any> { return; }
 }

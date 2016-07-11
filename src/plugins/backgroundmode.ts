@@ -10,9 +10,23 @@ import {Plugin, Cordova} from './plugin';
 * import {BackgroundMode} from 'ionic-native';
 *
 * BackgroundMode.enable();
+* ```
+*
+* @advanced
+*
+* Configuration options
+*
+* | Property | Type      | Description                                                                  |
+* |----------|-----------|------------------------------------------------------------------------------|
+* | title    | `string`  | Title of the background task. Optional                                       |
+* | ticker   | `string`  | The text that scrolls itself on the statusbar. Optional                      |
+* | text     | `string`  | Description of the background task. Optional                                 |
+* | silent   | `boolean` | If the plugin will display a notification or not. Default is false. Optional |
+* | resume   | `boolean` | Bring the app into the foreground if the notification is tapped. Optional    |
+*
 */
 @Plugin({
-  plugin: 'de.appplant.cordova.plugin.background-mode',
+  plugin: 'cordova-plugin-background-mode',
   pluginRef: 'cordova.plugins.backgroundMode',
   repo: 'https://github.com/katzer/cordova-plugin-background-mode',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
@@ -36,11 +50,14 @@ export class BackgroundMode {
 
   /**
   * Checks if background mode is enabled or not.
+  * @returns {boolean} returns a true of false if the background mode is enabled.
   */
   @Cordova()
   static isEnabled(): Promise<boolean> {return; }
+
   /**
   * Can be used to get the information if the background mode is active.
+  * @returns {boolean} returns tru or flase if the background mode is active.
   */
   @Cordova()
   static isActive(): Promise<boolean> {return; }
@@ -48,6 +65,7 @@ export class BackgroundMode {
   /**
   * Override the default title, ticker and text.
   * Available only for Android platform.
+  * @param {Configure} options List of option to configure. See table below
   */
   @Cordova({
     platforms: ['Android']
@@ -57,11 +75,13 @@ export class BackgroundMode {
   /**
   * Modify the displayed information.
   * Available only for Android platform.
+  * @param {Configure} options Any options you want to update. See table below.
   */
   @Cordova({
     platforms: ['Android']
   })
   static update(options?: Configure): void {}
+
   /**
   * Sets a callback for a specific event
   * Can be used to get notified or run function when the background mode has been activated, deactivated or failed.
