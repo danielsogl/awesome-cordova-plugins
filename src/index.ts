@@ -51,6 +51,7 @@ import {Insomnia} from './plugins/insomnia';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
+import {MediaCapture} from './plugins/media-capture';
 import {MediaPlugin} from './plugins/media';
 import {Network} from './plugins/network';
 import {OneSignal} from './plugins/onesignal';
@@ -90,6 +91,7 @@ export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
 export * from './plugins/media';
+export * from './plugins/media-capture';
 export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
@@ -188,6 +190,7 @@ window['IonicNative'] = {
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
+  MediaCapture: MediaCapture,
   MediaPlugin: MediaPlugin,
   Network: Network,
   Printer: Printer,
