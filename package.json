@@ -29,8 +29,7 @@
     "node-html-encoder": "0.0.2",
     "q": "1.4.1",
     "semver": "^5.0.1",
-    "tslint": "^3.8.1",
-    "tslint-eslint-rules": "^1.3.0",
+    "tslint-ionic-rules": "^0.0.3",
     "typescript": "^1.8.10"
   },
   "scripts": {
