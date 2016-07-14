@@ -53,7 +53,7 @@ export class TouchID {
    * @return {Promise} Returns a Promise that resolves if yes, rejects if no.
    */
   @Cordova()
-  isAvailable(): Promise<any> { return; }
+  static isAvailable(): Promise<any> { return; }
 
   /**
    * Show TouchID dialog and wait for a fingerprint scan. If user taps 'Enter Password' button, brings up standard system passcode screen.
