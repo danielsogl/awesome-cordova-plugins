@@ -372,8 +372,8 @@ export class IBeacon {
    * 
    * @return Returns the BeaconRegion that was created
    */
-  static BeaconRegion(identifer: string, uuid: string, minor?: number, major?: number, notifyEntryStateOnDisplay?: boolean): BeaconRegion {
-    return new cordova.plugins.locationManager.BeaconRegion(identifer, uuid, minor, major, notifyEntryStateOnDisplay);
+  static BeaconRegion(identifer: string, uuid: string, major?: number, minor?: number, notifyEntryStateOnDisplay?: boolean): BeaconRegion {
+    return new cordova.plugins.locationManager.BeaconRegion(identifer, uuid, major, minor, notifyEntryStateOnDisplay);
   }
 
   /**
