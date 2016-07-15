@@ -112,6 +112,16 @@ function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any=
   return p;
 }
 
+function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts: any= {}) {
+  return getPromise((resolve, reject) => {
+    let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts);
+    if (pluginResult && pluginResult.error) {
+      reject(pluginResult.error);
+    }
+    pluginResult.then(resolve).catch(reject);
+  });
+}
+
 function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
   return new Observable(observer => {
     let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
@@ -199,6 +209,9 @@ export const wrap = function(pluginObj: any,  methodName: string, opts: any = {}
 
     else if (opts.eventObservable && opts.event)
       return wrapEventObservable(opts.event);
+
+    else if (opts.otherPromise)
+      return wrapOtherPromise(pluginObj, methodName, args, opts);
 
     else
       return wrapPromise(pluginObj, methodName, args, opts);
