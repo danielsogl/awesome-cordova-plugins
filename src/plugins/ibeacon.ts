@@ -125,6 +125,11 @@ export interface PluginResult {
    * The state of the phone in relation to the region. Inside/outside for example.
    */
   state: 'CLRegionStateInside' | 'CLRegionStateOutside';
+
+  /**
+   * Error message, used only with monitoringDidFailForRegionWithError delegate.
+   */
+  error: string;
 }
 export interface Delegate {
   /**
