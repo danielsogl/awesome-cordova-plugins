@@ -47,6 +47,7 @@ import {Httpd} from './plugins/httpd';
 import {IBeacon} from './plugins/ibeacon';
 import {ImagePicker} from './plugins/imagepicker';
 import {InAppBrowser} from './plugins/inappbrowser';
+import {InAppPurchase} from './plugins/inapppurchase';
 import {Insomnia} from './plugins/insomnia';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
@@ -125,6 +126,7 @@ export {
   GooglePlus,
   GoogleAnalytics,
   Hotspot,
+  InAppPurchase,
   Insomnia,
   Keyboard,
   Network,
@@ -187,6 +189,7 @@ window['IonicNative'] = {
   IBeacon: IBeacon,
   ImagePicker: ImagePicker,
   InAppBrowser: InAppBrowser,
+  InAppPurchase: InAppPurchase,
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
