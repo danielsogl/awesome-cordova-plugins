@@ -54,6 +54,7 @@ import {LocalNotifications} from './plugins/localnotifications';
 import {MediaPlugin} from './plugins/media';
 import {Network} from './plugins/network';
 import {OneSignal} from './plugins/onesignal';
+import {PinDialog} from './plugins/pin-dialog';
 import {Printer} from './plugins/printer';
 import {Push} from './plugins/push';
 import {SafariViewController} from './plugins/safari-view-controller';
@@ -128,6 +129,7 @@ export {
   Keyboard,
   Network,
   OneSignal,
+  PinDialog,
   Screenshot,
   SocialSharing,
   Splashscreen,
@@ -193,6 +195,7 @@ window['IonicNative'] = {
   Printer: Printer,
   Push: Push,
   OneSignal: OneSignal,
+  PinDialog: PinDialog,
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
   SMS: SMS,
