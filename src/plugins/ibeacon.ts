@@ -65,7 +65,7 @@ export interface BeaconRegion {
   major?: number;
 
   /**
-   * The beacon's major identifier number. Optional, of nothing is supplied
+   * The beacon's minor identifier number. Optional, of nothing is supplied
    * the plugin will treat it as a wildcard.
    */
   minor?: number;
