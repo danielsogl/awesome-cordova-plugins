@@ -65,7 +65,7 @@ export interface BeaconRegion {
   major?: number;
 
   /**
-   * The beacon's major identifier number. Optional, of nothing is supplied
+   * The beacon's minor identifier number. Optional, of nothing is supplied
    * the plugin will treat it as a wildcard.
    */
   minor?: number;
@@ -125,6 +125,11 @@ export interface PluginResult {
    * The state of the phone in relation to the region. Inside/outside for example.
    */
   state: 'CLRegionStateInside' | 'CLRegionStateOutside';
+
+  /**
+   * Error message, used only with monitoringDidFailForRegionWithError delegate.
+   */
+  error: string;
 }
 export interface Delegate {
   /**
@@ -372,8 +377,8 @@ export class IBeacon {
    * 
    * @return Returns the BeaconRegion that was created
    */
-  static BeaconRegion(identifer: string, uuid: string, minor?: number, major?: number, notifyEntryStateOnDisplay?: boolean): BeaconRegion {
-    return new cordova.plugins.locationManager.BeaconRegion(identifer, uuid, minor, major, notifyEntryStateOnDisplay);
+  static BeaconRegion(identifer: string, uuid: string, major?: number, minor?: number, notifyEntryStateOnDisplay?: boolean): BeaconRegion {
+    return new cordova.plugins.locationManager.BeaconRegion(identifer, uuid, major, minor, notifyEntryStateOnDisplay);
   }
 
   /**
