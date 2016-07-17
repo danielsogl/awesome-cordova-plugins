@@ -20,6 +20,7 @@ import {BLE} from './plugins/ble';
 import {BluetoothSerial} from './plugins/bluetoothserial';
 import {Calendar} from './plugins/calendar';
 import {Camera} from './plugins/camera';
+import {CameraPreview} from './plugins/camera-preview';
 import {CardIO} from './plugins/card-io';
 import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
@@ -44,19 +45,24 @@ import {GoogleMap} from './plugins/googlemaps';
 import {GoogleAnalytics} from './plugins/googleanalytics';
 import {Hotspot} from  './plugins/hotspot';
 import {Httpd} from './plugins/httpd';
+import {IBeacon} from './plugins/ibeacon';
 import {ImagePicker} from './plugins/imagepicker';
 import {InAppBrowser} from './plugins/inappbrowser';
 import {Insomnia} from './plugins/insomnia';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
+import {MediaCapture} from './plugins/media-capture';
+import {NativeStorage} from './plugins/nativestorage';
 import {MediaPlugin} from './plugins/media';
-import {Network, Connection} from './plugins/network';
+import {Network} from './plugins/network';
 import {OneSignal} from './plugins/onesignal';
+import {PinDialog} from './plugins/pin-dialog';
 import {Printer} from './plugins/printer';
 import {Push} from './plugins/push';
 import {SafariViewController} from './plugins/safari-view-controller';
 import {Screenshot} from './plugins/screenshot';
+import {Sim} from './plugins/sim';
 import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
 import {SpinnerDialog} from './plugins/spinnerdialog';
@@ -80,13 +86,16 @@ export * from './plugins/datepicker';
 export * from './plugins/device';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
+export * from './plugins/filetransfer';
 export * from './plugins/googlemaps';
 export * from './plugins/httpd';
+export * from './plugins/ibeacon';
 export * from './plugins/imagepicker';
 export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
 export * from './plugins/media';
+export * from './plugins/media-capture';
 export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
@@ -106,8 +115,8 @@ export {
   Brightness,
   BLE,
   BluetoothSerial,
+  CameraPreview,
   Clipboard,
-  Connection,
   DBMeter,
   Deeplinks,
   DeviceAccounts,
@@ -124,10 +133,13 @@ export {
   Hotspot,
   Insomnia,
   Keyboard,
+  NativeStorage,
   Network,
   OneSignal,
+  PinDialog,
   Screenshot,
   SocialSharing,
+  Sim,
   Splashscreen,
   SQLite,
   StatusBar,
@@ -148,6 +160,7 @@ window['IonicNative'] = {
   AppVersion: AppVersion,
   Badge: Badge,
   BackgroundGeolocation: BackgroundGeolocation,
+  BackgroundMode: BackgroundMode,
   BarcodeScanner: BarcodeScanner,
   Base64ToGallery: Base64ToGallery,
   BatteryStatus: BatteryStatus,
@@ -156,9 +169,9 @@ window['IonicNative'] = {
   BluetoothSerial: BluetoothSerial,
   Calendar: Calendar,
   Camera: Camera,
+  CameraPreview: CameraPreview,
   CardIO: CardIO,
   Clipboard: Clipboard,
-  Connection: Connection,
   Contacts: Contacts,
   DatePicker: DatePicker,
   DBMeter: DBMeter,
@@ -180,18 +193,23 @@ window['IonicNative'] = {
   GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
   Httpd: Httpd,
+  IBeacon: IBeacon,
   ImagePicker: ImagePicker,
   InAppBrowser: InAppBrowser,
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
+  MediaCapture: MediaCapture,
   MediaPlugin: MediaPlugin,
+  NativeStorage: NativeStorage,
   Network: Network,
   Printer: Printer,
   Push: Push,
   OneSignal: OneSignal,
+  PinDialog: PinDialog,
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
+  Sim: Sim,
   SMS: SMS,
   SocialSharing: SocialSharing,
   SpinnerDialog: SpinnerDialog,

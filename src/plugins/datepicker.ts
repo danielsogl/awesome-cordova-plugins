@@ -77,7 +77,6 @@ export interface DatePickerOptions {
  * import {DatePicker} from 'ionic-native';
  *
  *
- *
  * DatePicker.show({
  *   date: new Date(),
  *   mode: 'date'
@@ -97,9 +96,10 @@ export class DatePicker {
 
   /**
    * Shows the date and/or time picker dialog(s)
-   * @param options
+   * @param {DatePickerOptions} options Options for the date picker.
    * @returns {Promise<Date>} Returns a promise that resolves with the picked date and/or time, or rejects with an error.
    */
   @Cordova()
   static show(options: DatePickerOptions): Promise<Date> { return; }
+
 }

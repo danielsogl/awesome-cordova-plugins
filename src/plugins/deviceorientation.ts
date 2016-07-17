@@ -84,8 +84,8 @@ export class DeviceOrientation {
    * Get the device current heading at a regular interval
    *
    * Stop the watch by unsubscribing from the observable
-   * @param options
-   * @returns {Observable<CompassHeading>}
+   * @param {CompassOptions} options Options for compass. Frequency and Filter. Optional
+   * @returns {Observable<CompassHeading>} Returns an observable that contains the compass heading
    */
   @Cordova({
     callbackOrder: 'reverse',

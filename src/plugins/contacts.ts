@@ -283,9 +283,6 @@ export class Contacts {
 
   /**
    * Search for contacts in the Contacts list.
-   *
-   * Example: Contacts.find(['*'], { filter: 'Max' }) // will search for a displayName of 'Max'
-   *
    * @param fields {string[]}  Contact fields to be used as a search qualifier.
    *  A zero-length contactFields parameter is invalid and results in ContactError.INVALID_ARGUMENT_ERROR.
    *  A contactFields value of "*" searches all contact fields.

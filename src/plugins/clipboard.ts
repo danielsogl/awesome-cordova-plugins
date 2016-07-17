@@ -19,12 +19,12 @@ import { Cordova, Plugin } from './plugin';
  *
  * Clipboard.paste().then(
  *    (resolve : string) => {
-  *     alert(resolve);
-*     },
+ *     alert(resolve);
+ *     },
  *     (reject : string) => {
  *     alert("Error: " + reject);
  *     }
-*     );
+ *     );
  * );
  * ```
  */
@@ -38,15 +38,15 @@ export class Clipboard {
 
   /**
    * Copies the given text
-   * @param text
-   * @returns {Promise<T>}
+   * @param {string} text Text that gets copied on the system clipboard
+   * @returns {Promise<T>} Returns a promise after the text has been copied
    */
   @Cordova()
   static copy(text: string): Promise<any> { return; }
 
   /**
    * Pastes the text stored in clipboard
-   * @returns {Promise<T>}
+   * @returns {Promise<T>} Returns a promise after the text has been pasted
    */
   @Cordova()
   static paste(): Promise<any> { return; }

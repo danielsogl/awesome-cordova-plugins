@@ -1,3 +1,76 @@
+<a name="1.3.6"></a>
+## [1.3.6](https://github.com/driftyco/ionic-native/compare/v1.3.5...v1.3.6) (2016-07-17)
+
+
+### Bug Fixes
+
+* **googlemaps:** able to pass array of LatLng to GoogleMapsLatLngBounds constructor ([de14b0e](https://github.com/driftyco/ionic-native/commit/de14b0e)), closes [#298](https://github.com/driftyco/ionic-native/issues/298)
+* **launch-navigator:** fix the navigate function wrapper to match latest plugin API ([6f625f9](https://github.com/driftyco/ionic-native/commit/6f625f9))
+
+
+### Features
+
+* **camera-preview:** add wrapper for camera-preview ([#301](https://github.com/driftyco/ionic-native/issues/301)) ([3a1a3ce](https://github.com/driftyco/ionic-native/commit/3a1a3ce))
+* **launch-navigator:** add new methods and constants to match latest plugin API ([29de6b3](https://github.com/driftyco/ionic-native/commit/29de6b3))
+
+
+
+<a name="1.3.5"></a>
+## [1.3.5](https://github.com/driftyco/ionic-native/compare/v1.3.4...v1.3.5) (2016-07-17)
+
+
+### Bug Fixes
+
+* **ibeacon:** minor fixes ([b5a2ffc](https://github.com/driftyco/ionic-native/commit/b5a2ffc))
+* **safari-view-controller:** fix wrappers ([b4b3ec0](https://github.com/driftyco/ionic-native/commit/b4b3ec0))
+
+
+### Features
+
+* **googlemaps:** add Geocoder class ([#292](https://github.com/driftyco/ionic-native/issues/292)) ([2996da6](https://github.com/driftyco/ionic-native/commit/2996da6)), closes [#280](https://github.com/driftyco/ionic-native/issues/280)
+* **media-capture:** add media capture plugin ([#293](https://github.com/driftyco/ionic-native/issues/293)) ([daa6d4c](https://github.com/driftyco/ionic-native/commit/daa6d4c)), closes [#272](https://github.com/driftyco/ionic-native/issues/272)
+* **nativestorage:** add NativeStorage plugin wrapper ([af5d4ad](https://github.com/driftyco/ionic-native/commit/af5d4ad))
+* **pin-dialog:** add pin dialog plugin ([#291](https://github.com/driftyco/ionic-native/issues/291)) ([2fe37c4](https://github.com/driftyco/ionic-native/commit/2fe37c4))
+
+
+
+<a name="1.3.4"></a>
+## [1.3.4](https://github.com/driftyco/ionic-native/compare/v1.3.3...v1.3.4) (2016-07-14)
+
+
+### Bug Fixes
+
+* **touchid:** make isAvailable static ([c23f5e9](https://github.com/driftyco/ionic-native/commit/c23f5e9))
+
+
+### Reverts
+
+* **changelog:** old changelog ([0cb79d1](https://github.com/driftyco/ionic-native/commit/0cb79d1))
+
+
+
+<a name="1.3.3"></a>
+## [1.3.3](https://github.com/driftyco/ionic-native/compare/v1.3.2...v1.3.3) (2016-07-11)
+
+
+### Bug Fixes
+
+* remove unnecessary decorator ([#257](https://github.com/driftyco/ionic-native/issues/257)) ([25fab64](https://github.com/driftyco/ionic-native/commit/25fab64))
+* **actionsheet:** add missing optional parameter for hide function ([#262](https://github.com/driftyco/ionic-native/issues/262)) ([644e999](https://github.com/driftyco/ionic-native/commit/644e999))
+* **background-geolocation:** fix pluginref again ([b8a5133](https://github.com/driftyco/ionic-native/commit/b8a5133))
+* **geolocation:** fix plugin reference ([4f0cd24](https://github.com/driftyco/ionic-native/commit/4f0cd24)), closes [#258](https://github.com/driftyco/ionic-native/issues/258)
+* **googlemaps:** use correct methods for addGroundOverlay and addKmlOverlay ([#268](https://github.com/driftyco/ionic-native/issues/268)) ([b8be1de](https://github.com/driftyco/ionic-native/commit/b8be1de))
+* **socialsharing:** all methods return Promises now ([e150224](https://github.com/driftyco/ionic-native/commit/e150224)), closes [#275](https://github.com/driftyco/ionic-native/issues/275)
+
+
+### Features
+
+* **ibeacon:** add iBeacon plugin support ([#270](https://github.com/driftyco/ionic-native/issues/270)) ([dd97df1](https://github.com/driftyco/ionic-native/commit/dd97df1))
+* **onesignal:** added wrapper for the Cordova OneSignal Plugin ([#252](https://github.com/driftyco/ionic-native/issues/252)) ([ba20dbe](https://github.com/driftyco/ionic-native/commit/ba20dbe))
+* **push:** added support for Action Buttons on iOS with categories ([#273](https://github.com/driftyco/ionic-native/issues/273)) ([592feb4](https://github.com/driftyco/ionic-native/commit/592feb4))
+
+
+
 <a name="1.3.2"></a>
 ## [1.3.2](https://github.com/driftyco/ionic-native/compare/v1.3.1...v1.3.2) (2016-06-27)
 

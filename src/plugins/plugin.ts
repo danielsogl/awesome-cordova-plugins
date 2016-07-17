@@ -142,6 +142,7 @@ function callInstance(pluginObj: any, methodName: string, args: any[], opts: any
 function wrapInstance (pluginObj: any, methodName: string, opts: any = {}) {
   return (...args) => {
     if (opts.sync) {
+      // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
       return callInstance(pluginObj, methodName, args, opts);
     } else if (opts.observable) {
       return new Observable(observer => {
@@ -173,9 +174,8 @@ function wrapInstance (pluginObj: any, methodName: string, opts: any = {}) {
  */
 function wrapEventObservable (event: string): Observable<any> {
   return new Observable(observer => {
-    let callback = (status: any) => observer.next(status);
-    window.addEventListener(event, callback, false);
-    return () => window.removeEventListener(event, callback, false);
+    window.addEventListener(event, observer.next.bind(observer), false);
+    return () => window.removeEventListener(event, observer.next.bind(observer), false);
   });
 }
 
@@ -190,6 +190,7 @@ export const wrap = function(pluginObj: any,  methodName: string, opts: any = {}
   return (...args) => {
 
     if (opts.sync)
+      // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
       return callCordovaPlugin(pluginObj, methodName, args, opts);
 
     else if (opts.observable)
