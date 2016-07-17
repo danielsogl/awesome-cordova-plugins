@@ -41,7 +41,7 @@ import {Plugin, Cordova} from './plugin';
 @Plugin({
     plugin: 'cordova-plugin-safariviewcontroller',
     pluginRef: 'SafariViewController',
-    platforms: ['iOS'],
+    platforms: ['iOS', 'Android'],
     repo: 'https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller'
 })
 export class SafariViewController {
@@ -56,17 +56,13 @@ export class SafariViewController {
      * Shows Safari View Controller
      * @param options
      */
-    @Cordova({
-        callbackOrder: 'reverse'
-    })
+    @Cordova()
     static show(options?: SafariViewControllerOptions): Promise<any> {return; }
 
     /**
      * Hides Safari View Controller
      */
-    @Cordova({
-        sync: true
-    })
+    @Cordova()
     static hide(): void {}
 
     /**
