@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name Social Sharing
@@ -20,7 +21,6 @@ import {Plugin, Cordova} from './plugin';
 })
 export class SocialSharing {
 
-
   /**
    * Shares using the share sheet
    * @param message {string} The message you would like to share.
@@ -29,7 +29,7 @@ export class SocialSharing {
    * @param url {string} A URL to share
    */
   @Cordova()
-  static share (message?: string, subject?: string, file?: string|Array<string>, url?: string): Promise<any> {return; }
+  static share(message?: string, subject?: string, file?: string | Array<string>, url?: string): Promise<any> { return; }
 
   /**
    * Shares using the share sheet with additional options and returns a result object or an error message (requires plugin version 5.1.0+)
@@ -38,7 +38,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareWithOptions (options: { message?: string, subject?: string, file?: string|Array<string>, url?: string, chooserTitle?: string }): Promise<any> {return; }
+  static shareWithOptions(options: { message?: string, subject?: string, file?: string | Array<string>, url?: string, chooserTitle?: string }): Promise<any> { return; }
 
   /**
    * Checks if you can share via a specific app.
@@ -47,7 +47,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static canShareVia (appName: string): Promise<any> {return; }
+  static canShareVia(appName: string): Promise<any> { return; }
 
   /**
    * Shares directly to Twitter
@@ -58,7 +58,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareViaTwitter (message: string, image?: string, url?: string): Promise<any> {return; }
+  static shareViaTwitter(message: string, image?: string, url?: string): Promise<any> { return; }
 
   /**
    * Shares directly to Facebook
@@ -69,7 +69,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareViaFacebook (message: string, image?: string, url?: string): Promise<any> {return; }
+  static shareViaFacebook(message: string, image?: string, url?: string): Promise<any> { return; }
 
 
   /**
@@ -82,7 +82,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareViaFacebookWithPasteMessageHint (message: string, image?: string, url?: string, pasteMessageHint?: string): Promise<any> {return; }
+  static shareViaFacebookWithPasteMessageHint(message: string, image?: string, url?: string, pasteMessageHint?: string): Promise<any> { return; }
 
   /**
    * Shares directly to Instagram
@@ -92,7 +92,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareViaInstagram (message: string, image: string): Promise<any> {return; }
+  static shareViaInstagram(message: string, image: string): Promise<any> { return; }
 
   /**
    * Shares directly to WhatsApp
@@ -103,7 +103,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareViaWhatsApp (message: string, image?: string, url?: string): Promise<any> {return; }
+  static shareViaWhatsApp(message: string, image?: string, url?: string): Promise<any> { return; }
 
   /**
    * Shares directly to a WhatsApp Contact
@@ -115,7 +115,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareViaWhatsAppToReceiver (receiver: string, message: string, image?: string, url?: string): Promise<any> {return; }
+  static shareViaWhatsAppToReceiver(receiver: string, message: string, image?: string, url?: string): Promise<any> { return; }
 
   /**
    * Share via SMS
@@ -125,7 +125,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareViaSMS(messge: string, phoneNumber: string): Promise<any> {return; }
+  static shareViaSMS(messge: string, phoneNumber: string): Promise<any> { return; }
 
   /**
    * Share via Email
@@ -139,7 +139,6 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareViaEmail(message: string, subject: string, to: Array<string>, cc: Array<string>, bcc: Array<string>, files: string|Array<string>): Promise<any> {return; }
-
+  static shareViaEmail(message: string, subject: string, to: Array<string>, cc: Array<string>, bcc: Array<string>, files: string | Array<string>): Promise<any> { return; }
 
 }
