@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name Spinner Dialog
@@ -21,7 +22,6 @@ import {Plugin, Cordova} from './plugin';
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class SpinnerDialog {
-
 
   /**
    * Shows the spinner dialog
