@@ -51,6 +51,10 @@ export interface LaunchNavigatorOptions {
    * text to display for the cancel button in the native picker which enables user to select which navigation app to launch. Defaults to "Cancel" if not specified.
    */
   appSelectionCancelButton?: string;
+
+  successCallback?: Function;
+
+  errorCallback?: Function;
 }
 
 /**
@@ -60,7 +64,7 @@ export interface LaunchNavigatorOptions {
  *
  * @usage
  * Please refer to the plugin's repo for detailed usage. This docs page only explains the Native wrapper.
- * 
+ *
  * ```js
  * import {LaunchNavigator, LaunchNavigatorOptions} from 'ionic-native';
  *
