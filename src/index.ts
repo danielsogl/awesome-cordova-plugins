@@ -20,6 +20,7 @@ import {BLE} from './plugins/ble';
 import {BluetoothSerial} from './plugins/bluetoothserial';
 import {Calendar} from './plugins/calendar';
 import {Camera} from './plugins/camera';
+import {CameraPreview} from './plugins/camera-preview';
 import {CardIO} from './plugins/card-io';
 import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
@@ -51,6 +52,8 @@ import {Insomnia} from './plugins/insomnia';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
+import {MediaCapture} from './plugins/media-capture';
+import {NativeStorage} from './plugins/nativestorage';
 import {MediaPlugin} from './plugins/media';
 import {Network} from './plugins/network';
 import {OneSignal} from './plugins/onesignal';
@@ -91,6 +94,7 @@ export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
 export * from './plugins/media';
+export * from './plugins/media-capture';
 export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
@@ -110,6 +114,7 @@ export {
   Brightness,
   BLE,
   BluetoothSerial,
+  CameraPreview,
   Clipboard,
   DBMeter,
   Deeplinks,
@@ -127,6 +132,7 @@ export {
   Hotspot,
   Insomnia,
   Keyboard,
+  NativeStorage,
   Network,
   OneSignal,
   PinDialog,
@@ -161,6 +167,7 @@ window['IonicNative'] = {
   BluetoothSerial: BluetoothSerial,
   Calendar: Calendar,
   Camera: Camera,
+  CameraPreview: CameraPreview,
   CardIO: CardIO,
   Clipboard: Clipboard,
   Contacts: Contacts,
@@ -190,7 +197,9 @@ window['IonicNative'] = {
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
+  MediaCapture: MediaCapture,
   MediaPlugin: MediaPlugin,
+  NativeStorage: NativeStorage,
   Network: Network,
   Printer: Printer,
   Push: Push,

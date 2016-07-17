@@ -951,8 +951,9 @@ export class GoogleMapsKmlOverlay {
 export class GoogleMapsLatLngBounds {
   private _objectInstance: any;
 
-  constructor(public southwest: GoogleMapsLatLng, public northeast: GoogleMapsLatLng) {
-    this._objectInstance = new plugin.google.maps.LatLngBounds([southwest, northeast]);
+  constructor(public southwestOrArrayOfLatLng: GoogleMapsLatLng|GoogleMapsLatLng[], public northeast?: GoogleMapsLatLng) {
+    let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
+    this._objectInstance = new plugin.google.maps.LatLngBounds(args);
   }
 
   @CordovaInstance({ sync: true })
@@ -1003,5 +1004,40 @@ export class GoogleMapsLatLng {
     precision = precision || 6;
 
     return this.lat.toFixed(precision) + ',' + this.lng.toFixed(precision);
+  }
+}
+/**
+ * @private
+ */
+export interface GeocoderRequest {
+  address?: string;
+  position?: {lat: number; lng: number};
+}
+/**
+ * @private
+ */
+export interface GeocoderResult {
+  position?: {lat: number; lng: number};
+  subThoroughfare?: string;
+  thoroughfare?: string;
+  locality?: string;
+  adminArea?: string;
+  postalCode?: string;
+  country?: string;
+}
+/**
+ * @private
+ */
+export class Geocoder {
+  /**
+   * Converts position to address and vice versa
+   * @param {GeocoderRequest} request Request object with either an address or a position
+   * @returns {Promise<GeocoderResult[]>}
+   */
+  static geocode(request: GeocoderRequest): Promise<GeocoderResult[]> {
+    return new Promise<GeocoderResult[]>((resolve, reject) => {
+      if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) reject({error: 'plugin_not_installed'});
+      else plugin.google.maps.Geocoder.geocode(request, resolve);
+    });
   }
 }
