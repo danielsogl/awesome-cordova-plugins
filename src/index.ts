@@ -52,6 +52,7 @@ import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
 import {MediaCapture} from './plugins/media-capture';
+import {NativeStorage} from './plugins/nativestorage';
 import {MediaPlugin} from './plugins/media';
 import {Network} from './plugins/network';
 import {OneSignal} from './plugins/onesignal';
@@ -129,6 +130,7 @@ export {
   Hotspot,
   Insomnia,
   Keyboard,
+  NativeStorage,
   Network,
   OneSignal,
   PinDialog,
@@ -194,6 +196,7 @@ window['IonicNative'] = {
   LocalNotifications: LocalNotifications,
   MediaCapture: MediaCapture,
   MediaPlugin: MediaPlugin,
+  NativeStorage: NativeStorage,
   Network: Network,
   Printer: Printer,
   Push: Push,
