@@ -389,7 +389,7 @@ export class GoogleMapsMarker {
     return new Observable(
       (observer) => {
         this._objectInstance.addEventListener(event, observer.next.bind);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind);
       }
     );
   }
@@ -534,7 +534,7 @@ export class GoogleMapsCircle {
     return new Observable(
       (observer) => {
         this._objectInstance.addEventListener(event, observer.next.bind);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind);
       }
     );
   }
@@ -625,7 +625,7 @@ export class GoogleMapsPolyline {
     return new Observable(
       (observer) => {
         this._objectInstance.addEventListener(event, observer.next.bind);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind);
       }
     );
   }
@@ -716,7 +716,7 @@ export class GoogleMapsPolygon {
     return new Observable(
       (observer) => {
         this._objectInstance.addEventListener(event, observer.next.bind);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind);
       }
     );
   }
