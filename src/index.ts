@@ -20,6 +20,7 @@ import {BLE} from './plugins/ble';
 import {BluetoothSerial} from './plugins/bluetoothserial';
 import {Calendar} from './plugins/calendar';
 import {Camera} from './plugins/camera';
+import {CameraPreview} from './plugins/camera-preview';
 import {CardIO} from './plugins/card-io';
 import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
@@ -113,6 +114,7 @@ export {
   Brightness,
   BLE,
   BluetoothSerial,
+  CameraPreview,
   Clipboard,
   DBMeter,
   Deeplinks,
@@ -165,6 +167,7 @@ window['IonicNative'] = {
   BluetoothSerial: BluetoothSerial,
   Calendar: Calendar,
   Camera: Camera,
+  CameraPreview: CameraPreview,
   CardIO: CardIO,
   Clipboard: Clipboard,
   Contacts: Contacts,
