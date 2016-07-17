@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 export type EventResponse = RegistrationEventResponse | NotificationEventResponse | Error;
 
@@ -265,7 +266,7 @@ export interface PushOptions {
 }
 
 declare var PushNotification: {
-  new(): PushNotification
+  new (): PushNotification
 };
 
 /**
