@@ -1,5 +1,6 @@
 import {Plugin, Cordova, CordovaProperty} from './plugin';
 import {Observable} from 'rxjs/Rx';
+declare var navigator: any;
 /**
  * @name Media Capture
  * @description
@@ -8,7 +9,7 @@ import {Observable} from 'rxjs/Rx';
  * import {MediaCapture} from 'ionic-native';
  *
  * ...
- * 
+ *
  * let options: CaptureImageOptions = { limit: 3 };
  * MediaCapture.captureImage(options)
  *   .then(
