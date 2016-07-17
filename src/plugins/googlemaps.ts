@@ -77,7 +77,7 @@ export class GoogleMap {
   on(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        this._objectInstance.on(event, observer.next.bind);
+        this._objectInstance.on(event, observer.next.bind(observer));
         return () => this._objectInstance.off(event);
       }
     );
@@ -388,8 +388,8 @@ export class GoogleMapsMarker {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        this._objectInstance.addEventListener(event, observer.next.bind);
-        return () => this._objectInstance.removeEventListener(event, observer.next.bind);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -533,8 +533,8 @@ export class GoogleMapsCircle {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        this._objectInstance.addEventListener(event, observer.next.bind);
-        return () => this._objectInstance.removeEventListener(event, observer.next.bind);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -624,8 +624,8 @@ export class GoogleMapsPolyline {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        this._objectInstance.addEventListener(event, observer.next.bind);
-        return () => this._objectInstance.removeEventListener(event, observer.next.bind);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -715,8 +715,8 @@ export class GoogleMapsPolygon {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        this._objectInstance.addEventListener(event, observer.next.bind);
-        return () => this._objectInstance.removeEventListener(event, observer.next.bind);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }

@@ -154,8 +154,7 @@ export class Geolocation {
   static watchPosition(options?: GeolocationOptions): Observable<Geoposition> {
     return new Observable<Geoposition>(
       (observer: any) => {
-        let cb = (data: Geoposition) => observer.next(data);
-        let watchId = navigator.geolocation.watchPosition(cb, options);
+        let watchId = navigator.geolocation.watchPosition(observer.next.bind(observer), options);
         return () => navigator.geolocation.clearWatch(watchId);
       }
     );

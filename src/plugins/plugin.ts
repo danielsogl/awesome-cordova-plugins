@@ -174,9 +174,8 @@ function wrapInstance (pluginObj: any, methodName: string, opts: any = {}) {
  */
 function wrapEventObservable (event: string): Observable<any> {
   return new Observable(observer => {
-    let callback = (status: any) => observer.next(status);
-    window.addEventListener(event, callback, false);
-    return () => window.removeEventListener(event, callback, false);
+    window.addEventListener(event, observer.next.bind(observer), false);
+    return () => window.removeEventListener(event, observer.next.bind(observer), false);
   });
 }
 
