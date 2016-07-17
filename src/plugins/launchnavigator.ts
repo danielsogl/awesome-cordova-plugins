@@ -44,6 +44,11 @@ export interface LaunchNavigatorOptions {
    */
   navigationMode?: string;
 
+  /**
+   * Start point of the navigation
+   */
+  start?: string|number[];
+
 }
 
 /**
@@ -73,18 +78,16 @@ export class LaunchNavigator {
 
   /**
    * Launches navigator app
-   * @param destination Location name or coordinates
-   * @param start Location name or coordinates
-   * @param options
+   * @param destination {string|number[]} Location name or coordinates
+   * @param options {LaunchNavigatorOptions}
    * @returns {Promise<any>}
    */
   @Cordova({
-    successIndex: 2,
-    errorIndex: 3
+    successIndex: 1,
+    errorIndex: 2
   })
   static navigate(
-    destination: any,
-    start: any = null,
+    destination: string|number[],
     options?: LaunchNavigatorOptions
   ): Promise<any> { return; }
 
