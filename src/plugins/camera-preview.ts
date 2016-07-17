@@ -1,5 +1,5 @@
 import {Plugin, Cordova} from './plugin';
-
+import {Observable} from 'rxjs/Observable';
 
 export interface CameraPreviewOptions {
     x: number;
@@ -8,9 +8,8 @@ export interface CameraPreviewOptions {
     height: number;
     /**
      * Choose the camera to use (front- or back-facing).
-     * Defined in cordova.plugins.camerapreview.Direction. 
-     *      FRONT: "front"
-     *      BACK: "back"
+     *  'front' for front camera
+     *  'rear' for rear camera
      */
     camera: string;
     /** Take photo on tap */
@@ -48,55 +47,83 @@ export class CameraPreview {
    * Starts the camera preview instance.
    * @param {CameraPreviewOptions} options for the preview
    */
-  @Cordova()
-  static startCamera(options: CameraPreviewOptions) {};
+  @Cordova({
+    sync: true
+  })
+  static startCamera(options: CameraPreviewOptions): void {};
 
   /**
    * Stops the camera preview instance.
    */
-  @Cordova()
-  static stopCamera() {};
+  @Cordova({
+    sync: true
+  })
+  static stopCamera(): void {};
 
   /**
    * Take the picture, the parameter size is optional
    */
-  @Cordova()
-  static takePicture(size: CameraPreviewSize) {};
+  @Cordova({
+    sync: true
+  })
+  static takePicture(size: CameraPreviewSize): void {};
 
   /**
    * Register a callback function that receives the original picture and the image captured from the preview box.
    */
-  @Cordova()
-  static setOnPictureTakenHandler(callback: (result: any) => void) {};
+  @Cordova({
+    observable: true
+  })
+  static setOnPictureTakenHandler(): Observable<any> { return; };
 
   /**
    * Switch from the rear camera and front camera, if available.
    */
-  @Cordova()
-  static switchCamera() {};
+  @Cordova({
+    sync: true
+  })
+  static switchCamera(): void {};
 
   /**
    * Show the camera preview box.
    */
-  @Cordova()
-  static show() {};
+  @Cordova({
+    sync: true
+  })
+  static show(): void {};
 
   /**
    * Hide the camera preview box.
    */
-  @Cordova()
-  static hide() {};
+  @Cordova({
+    sync: true
+  })
+  static hide(): void {};
+
+  /**
+   * Set the default mode for the Flash.
+   */
+  @Cordova({
+    sync: true
+  })
+  static setFlashMode(mode: number): void {};
+
+  /**
+   * Set camera color effect.
+   */
+  @Cordova({
+    sync: true
+  })
+  static setColorEffect(effect: string): void {};
 
   /**
    * @private
-   * @enum {string}
+   * @enum {number}
    */
-  static Direction = {
-    /** Use the back-facing camera */
-    BACK: 'rear',
-    /** Use the front-facing camera */
-    FRONT: 'front'
+  static FlashMode = {
+    OFF: 0,
+    ON: 1,
+    AUTO: 2
   };
+
 }
-
-
