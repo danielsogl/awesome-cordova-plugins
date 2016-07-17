@@ -1,0 +1,35 @@
+import {Plugin, Cordova} from './plugin';
+
+/**
+ * @name Sim
+ * @description
+ * Gets info from the Sim card like the carrier name, mcc, mnc and country code and other system dependent info.
+ *
+ * Requires Cordova plugin: `cordova-plugin-sim`. For more info, please see the [Cordova Sim docs](https://github.com/pbakondy/cordova-plugin-sim).
+ *
+ * @usage
+ * ```js
+ * import {Sim} from 'ionic-native';
+ *
+ *
+ * Sim.getSimInfo().then(
+ *   (info) => console.log('Sim info:', info),
+ *   (err) => console.log('Unable to get sim info:', err)
+ * );
+ * ```
+ */
+@Plugin({
+  plugin: 'cordova-plugin-sim',
+  pluginRef: 'window.plugins.sim',
+  repo: 'https://github.com/pbakondy/cordova-plugin-sim',
+  platforms: ['Android', 'iOS', 'Windows Phone']
+})
+export class Sim {
+  /**
+   * Returns info from the SIM card.
+   * @returns {Promise}
+   */
+  @Cordova()
+  static getSimInfo(): Promise<any> { return; }
+
+}
