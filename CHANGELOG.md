@@ -1,3 +1,20 @@
+<a name="1.3.6"></a>
+## [1.3.6](https://github.com/driftyco/ionic-native/compare/v1.3.5...v1.3.6) (2016-07-17)
+
+
+### Bug Fixes
+
+* **googlemaps:** able to pass array of LatLng to GoogleMapsLatLngBounds constructor ([de14b0e](https://github.com/driftyco/ionic-native/commit/de14b0e)), closes [#298](https://github.com/driftyco/ionic-native/issues/298)
+* **launch-navigator:** fix the navigate function wrapper to match latest plugin API ([6f625f9](https://github.com/driftyco/ionic-native/commit/6f625f9))
+
+
+### Features
+
+* **camera-preview:** add wrapper for camera-preview ([#301](https://github.com/driftyco/ionic-native/issues/301)) ([3a1a3ce](https://github.com/driftyco/ionic-native/commit/3a1a3ce))
+* **launch-navigator:** add new methods and constants to match latest plugin API ([29de6b3](https://github.com/driftyco/ionic-native/commit/29de6b3))
+
+
+
 <a name="1.3.5"></a>
 ## [1.3.5](https://github.com/driftyco/ionic-native/compare/v1.3.4...v1.3.5) (2016-07-17)
 
