@@ -1,6 +1,24 @@
 import {Plugin, Cordova} from './plugin';
 /**
  * @name Native Storage
+ * @description
+ * 
+ * @usage
+ * ```typescript
+ * import {NativeStorage} from 'ionic-native';
+ *
+ * NativeStorage.setItem('myitem', {property: 'value', anotherProperty: 'anotherValue'})
+ *   .then(
+ *     () => console.log('Stored item!'),
+ *     error => console.error('Error storing item', error)
+ *   );
+ *
+ * NativeStorage.getItem('myitem')
+ *   .then(
+ *     data => console.log(data),
+ *     error => console.error(error)
+ *   );
+ * ```
  */
 @Plugin({
   plugin: 'cordova-plugin-nativestorage',
