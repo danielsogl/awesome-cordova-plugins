@@ -36,7 +36,12 @@ export class InAppBrowser {
    *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
    */
   constructor(url: string, target?: string, options?: string) {
-    cordova && cordova.InAppBrowser && (this._objectInstance = cordova.InAppBrowser.open(url, target, options));
+    try {
+      this._objectInstance = cordova.InAppBrowser.open(url, target, options);
+    } catch (e) {
+      window.open(url);
+      console.warn('Native: InAppBrowser is not installed or you are running on a browser. Falling back to window.open, all instance methods will NOT work.');
+    }
   }
 
   /**
