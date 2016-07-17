@@ -951,8 +951,9 @@ export class GoogleMapsKmlOverlay {
 export class GoogleMapsLatLngBounds {
   private _objectInstance: any;
 
-  constructor(public southwest: GoogleMapsLatLng, public northeast: GoogleMapsLatLng) {
-    this._objectInstance = new plugin.google.maps.LatLngBounds([southwest, northeast]);
+  constructor(public southwestOrArrayOfLatLng: GoogleMapsLatLng|GoogleMapsLatLng[], public northeast?: GoogleMapsLatLng) {
+    let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
+    this._objectInstance = new plugin.google.maps.LatLngBounds(args);
   }
 
   @CordovaInstance({ sync: true })
