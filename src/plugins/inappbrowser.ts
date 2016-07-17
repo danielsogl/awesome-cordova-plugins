@@ -22,7 +22,7 @@ export interface InAppBrowserEvent extends Event {
 export class InAppBrowser {
 
   static open(url: string, target?: string, options?: string): void {
-    console.warn('Native: Your current usage of the InAppBrowser plugin is depreciated as of ionic-native@1.3.5. Please check the Ionic Native docs for the latest usage details.');
+    console.warn('Native: Your current usage of the InAppBrowser plugin is depreciated as of ionic-native@1.3.7. Please check the Ionic Native docs for the latest usage details.');
   }
 
   private _objectInstance: any;
