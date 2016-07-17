@@ -77,8 +77,7 @@ export class GoogleMap {
   on(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.on(event, cb);
+        this._objectInstance.on(event, observer.next.bind);
         return () => this._objectInstance.off(event);
       }
     );
@@ -389,10 +388,7 @@ export class GoogleMapsMarker {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = (data: any) => {
-          observer.next(data);
-        };
-        this._objectInstance.addEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind);
         return () => this._objectInstance.removeEventListener(event, cb);
       }
     );
@@ -537,8 +533,7 @@ export class GoogleMapsCircle {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind);
         return () => this._objectInstance.removeEventListener(event, cb);
       }
     );
@@ -629,8 +624,7 @@ export class GoogleMapsPolyline {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind);
         return () => this._objectInstance.removeEventListener(event, cb);
       }
     );
@@ -721,8 +715,7 @@ export class GoogleMapsPolygon {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind);
         return () => this._objectInstance.removeEventListener(event, cb);
       }
     );
