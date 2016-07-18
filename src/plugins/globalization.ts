@@ -40,7 +40,7 @@ export class Globalization {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex 2
+    errorIndex: 2
   })
   static dateToString(date: Date, options: { formatLength: string, selector: string }): Promise<{ value: string }> { return; }
 
