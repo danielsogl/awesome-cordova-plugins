@@ -123,7 +123,7 @@ export class SQLite {
   executeSql(statement: string, params: any): Promise<any> { return; }
 
   @CordovaInstance()
-  addSatement(sql, values): Promise<any> { return; }
+  addStatement(sql, values): Promise<any> { return; }
 
   @CordovaInstance()
   sqlBatch(sqlStatements: any): Promise<any> { return; }
