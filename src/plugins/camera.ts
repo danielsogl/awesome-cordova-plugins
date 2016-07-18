@@ -132,10 +132,10 @@ export class Camera {
   static cleanup() { };
 
   /**
-   * @private
+   * @public
    * @enum {number}
    */
-  static DestinationType = {
+  public static DestinationType = {
     /** Return base64 encoded string. DATA_URL can be very memory intensive and cause app crashes or out of memory errors. Use FILE_URI or NATIVE_URI if possible */
     DATA_URL: 0,
     /** Return file uri (content://media/external/images/media/2 for Android) */
@@ -145,20 +145,20 @@ export class Camera {
   };
 
   /**
-   * @private
+   * @public
    * @enum {number}
    */
-  static EncodingType = {
+  public static EncodingType = {
     /** Return JPEG encoded image */
     JPEG: 0,
     /** Return PNG encoded image */
     PNG: 1
   };
   /**
-   * @private
+   * @public
    * @enum {number}
    */
-  static MediaType = {
+  public static MediaType = {
     /** Allow selection of still pictures only. DEFAULT. Will return format specified via DestinationType */
     PICTURE: 0,
     /** Allow selection of video only, ONLY RETURNS URL */
@@ -168,10 +168,10 @@ export class Camera {
   };
 
   /**
-   * @private
+   * @public
    * @enum {number}
    */
-  static PictureSourceType = {
+  public static PictureSourceType = {
     /** Choose image from picture library (same as SAVEDPHOTOALBUM for Android) */
     PHOTOLIBRARY: 0,
     /** Take picture from camera */
@@ -181,11 +181,11 @@ export class Camera {
   };
 
   /**
-   * @private
+   * @public
    * Matches iOS UIPopoverArrowDirection constants to specify arrow location on popover.
    * @enum {number}
    */
-  static PopoverArrowDirection = {
+  public static PopoverArrowDirection = {
     ARROW_UP: 1,
     ARROW_DOWN: 2,
     ARROW_LEFT: 4,
@@ -194,10 +194,10 @@ export class Camera {
   };
 
   /**
-   * @private
+   * @public
    * @enum {number}
    */
-  static Direction = {
+  public static Direction = {
     /** Use the back-facing camera */
     BACK: 0,
     /** Use the front-facing camera */
@@ -205,5 +205,3 @@ export class Camera {
   };
 
 }
-
-
