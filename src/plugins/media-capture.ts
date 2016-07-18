@@ -1,6 +1,9 @@
-import {Plugin, Cordova, CordovaProperty} from './plugin';
-import {Observable} from 'rxjs/Rx';
+import { Cordova, CordovaProperty, Plugin } from './plugin';
+import { Observable } from 'rxjs/Rx';
+
+
 declare var navigator: any;
+
 /**
  * @name Media Capture
  * @description
@@ -59,7 +62,7 @@ export class MediaCapture {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static captureAudio(options?: CaptureAudioOptions): Promise<MediaFile[]|CaptureError> {return; }
+  static captureAudio(options?: CaptureAudioOptions): Promise<MediaFile[] | CaptureError> { return; }
 
   /**
    * Start the camera application and return information about captured image files.
@@ -68,7 +71,7 @@ export class MediaCapture {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static captureImage(options?: CaptureImageOptions): Promise<MediaFile[]|CaptureError> {return; }
+  static captureImage(options?: CaptureImageOptions): Promise<MediaFile[] | CaptureError> { return; }
 
   /**
    * Start the video recorder application and return information about captured video clip files.
@@ -77,7 +80,7 @@ export class MediaCapture {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static captureVideo(options?: CaptureVideoOptions): Promise<MediaFile[]|CaptureError> {return; }
+  static captureVideo(options?: CaptureVideoOptions): Promise<MediaFile[] | CaptureError> { return; }
 
   /**
    * is fired if the capture call is successful
@@ -86,7 +89,7 @@ export class MediaCapture {
     eventObservable: true,
     event: 'pendingcaptureresult'
   })
-  static onPendingCaptureResult(): Observable<MediaFile[]> {return; }
+  static onPendingCaptureResult(): Observable<MediaFile[]> { return; }
 
   /**
    * is fired if the capture call is unsuccessful
@@ -95,7 +98,7 @@ export class MediaCapture {
     eventObservable: true,
     event: 'pendingcaptureerror'
   })
-  static onPendingCaptureError(): Observable<CaptureError> {return; }
+  static onPendingCaptureError(): Observable<CaptureError> { return; }
 
 }
 /**

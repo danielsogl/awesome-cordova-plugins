@@ -1,8 +1,10 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
+
 /**
  * @name Native Storage
  * @description
- * 
+ *
  * @usage
  * ```typescript
  * import {NativeStorage} from 'ionic-native';
@@ -53,4 +55,5 @@ export class NativeStorage {
    */
   @Cordova()
   static clear(): Promise<any> {return; }
+
 }
