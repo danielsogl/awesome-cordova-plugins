@@ -112,26 +112,6 @@ export interface CameraPopoverOptions {
 })
 export class Camera {
   /**
-   * Take a picture or video, or load one from the library.
-   * @param {CameraOptions} options Options that you want to pass to the camera. Encoding type, quality, etc.
-   * @return {Promise} Returns a Promise that resolves with Base64 encoding of the image data, or the image file URI, depending on cameraOptions, otherwise rejects with an error.
-   */
-  @Cordova({
-    callbackOrder: 'reverse'
-  })
-  static getPicture(options: CameraOptions): Promise<any> { return; }
-
-  /**
-   * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
-   * Applies only when the value of Camera.sourceType equals Camera.PictureSourceType.CAMERA and the Camera.destinationType equals Camera.DestinationType.FILE_URI.
-   * @return Returns a Promise
-   */
-  @Cordova({
-    platforms: ['iOS']
-  })
-  static cleanup() { };
-
-  /**
    * @public
    * @enum {number}
    */
@@ -203,5 +183,25 @@ export class Camera {
     /** Use the front-facing camera */
     FRONT: 1
   };
+
+  /**
+   * Take a picture or video, or load one from the library.
+   * @param {CameraOptions} options Options that you want to pass to the camera. Encoding type, quality, etc.
+   * @return {Promise} Returns a Promise that resolves with Base64 encoding of the image data, or the image file URI, depending on cameraOptions, otherwise rejects with an error.
+   */
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  static getPicture(options: CameraOptions): Promise<any> { return; }
+
+  /**
+   * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
+   * Applies only when the value of Camera.sourceType equals Camera.PictureSourceType.CAMERA and the Camera.destinationType equals Camera.DestinationType.FILE_URI.
+   * @return Returns a Promise
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  static cleanup() { };
 
 }
