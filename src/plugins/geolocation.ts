@@ -1,5 +1,6 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
+
 
 declare var navigator: any;
 
@@ -154,8 +155,7 @@ export class Geolocation {
   static watchPosition(options?: GeolocationOptions): Observable<Geoposition> {
     return new Observable<Geoposition>(
       (observer: any) => {
-        let cb = (data: Geoposition) => observer.next(data);
-        let watchId = navigator.geolocation.watchPosition(cb, options);
+        let watchId = navigator.geolocation.watchPosition(observer.next.bind(observer), observer.error.bind(observer), options);
         return () => navigator.geolocation.clearWatch(watchId);
       }
     );

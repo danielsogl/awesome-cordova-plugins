@@ -1,3 +1,19 @@
+<a name="1.3.7"></a>
+## [1.3.7](https://github.com/driftyco/ionic-native/compare/v1.3.6...v1.3.7) (2016-07-18)
+
+
+### Bug Fixes
+
+* **contacts:** missing name property, types ([#320](https://github.com/driftyco/ionic-native/issues/320)) ([074d166](https://github.com/driftyco/ionic-native/commit/074d166))
+* **geolocation:** handle errors on watchPosition ([1b161d8](https://github.com/driftyco/ionic-native/commit/1b161d8)), closes [#322](https://github.com/driftyco/ionic-native/issues/322)
+
+
+### Features
+
+* **sim:** Add sim plugin ([#317](https://github.com/driftyco/ionic-native/issues/317)) ([4f85110](https://github.com/driftyco/ionic-native/commit/4f85110))
+
+
+
 <a name="1.3.6"></a>
 ## [1.3.6](https://github.com/driftyco/ionic-native/compare/v1.3.5...v1.3.6) (2016-07-17)
 

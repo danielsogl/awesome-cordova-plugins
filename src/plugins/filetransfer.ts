@@ -1,4 +1,5 @@
-import {Plugin, CordovaInstance} from './plugin';
+import { CordovaInstance, Plugin } from './plugin';
+
 
 declare var FileTransfer;
 
@@ -189,6 +190,6 @@ export class Transfer {
   @CordovaInstance({
     sync: true
   })
-  abort(): void {}
+  abort(): void { }
 
 }

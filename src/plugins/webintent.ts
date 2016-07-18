@@ -1,5 +1,8 @@
-import {Cordova, CordovaProperty, Plugin} from './plugin';
+import { Cordova, CordovaProperty, Plugin } from './plugin';
+
+
 declare var window;
+
 /**
  * @name WebIntent
  * @description
@@ -15,31 +18,31 @@ declare var window;
 export class WebIntent {
 
   @CordovaProperty
-  static get ACTION_VIEW () {
+  static get ACTION_VIEW() {
     return window.plugins.webintent.ACTION_VIEW;
   }
 
   @CordovaProperty
-  static get EXTRA_TEXT () {
+  static get EXTRA_TEXT() {
     return window.plugins.webintent.EXTRA_TEXT;
   }
 
   @Cordova()
-  static startActivity (options: {action: any, url: string}): Promise<any> {return; }
+  static startActivity(options: { action: any, url: string }): Promise<any> { return; }
 
   @Cordova()
-  static hasExtra (extra: any): Promise<any> {return; }
+  static hasExtra(extra: any): Promise<any> { return; }
 
   @Cordova()
-  static getExtra (extra: any): Promise<any> {return; }
+  static getExtra(extra: any): Promise<any> { return; }
 
   @Cordova()
-  static getUri (): Promise<string> {return; };
+  static getUri(): Promise<string> { return; };
 
   @Cordova()
-  static onNewIntent(): Promise<string> {return; };
+  static onNewIntent(): Promise<string> { return; };
 
   @Cordova()
-  static sendBroadcast(options: {action: string, extras?: {option: boolean}}): Promise<any> {return; }
+  static sendBroadcast(options: { action: string, extras?: { option: boolean } }): Promise<any> { return; }
 
 }

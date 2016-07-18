@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name Flashlight
@@ -20,7 +21,6 @@ import {Plugin, Cordova} from './plugin';
   repo: 'https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git'
 })
 export class Flashlight {
-
 
   /**
    * Checks if the flashlight is available

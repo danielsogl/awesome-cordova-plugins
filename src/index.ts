@@ -62,6 +62,7 @@ import {Printer} from './plugins/printer';
 import {Push} from './plugins/push';
 import {SafariViewController} from './plugins/safari-view-controller';
 import {Screenshot} from './plugins/screenshot';
+import {Sim} from './plugins/sim';
 import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
 import {SpinnerDialog} from './plugins/spinnerdialog';
@@ -138,6 +139,7 @@ export {
   PinDialog,
   Screenshot,
   SocialSharing,
+  Sim,
   Splashscreen,
   SQLite,
   StatusBar,
@@ -207,6 +209,7 @@ window['IonicNative'] = {
   PinDialog: PinDialog,
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
+  Sim: Sim,
   SMS: SMS,
   SocialSharing: SocialSharing,
   SpinnerDialog: SpinnerDialog,

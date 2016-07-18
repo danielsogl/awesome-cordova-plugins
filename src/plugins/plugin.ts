@@ -1,4 +1,4 @@
-import {get} from '../util';
+import { get } from '../util';
 
 declare var window;
 declare var Promise;
@@ -36,7 +36,7 @@ export const cordovaWarn = function(pluginName: string, method: string) {
   if (method) console.warn('Native: tried calling ' + pluginName + '.' + method + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
   else console.warn('Native: tried accessing the ' + pluginName + ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
 };
-function setIndex (args: any[], opts: any= {}, resolve?: Function, reject?: Function): any {
+function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Function): any {
   // If the plugin method expects myMethod(success, err, options)
   if (opts.callbackOrder === 'reverse') {
     // Get those arguments in the order [resolve, reject, ...restOfArgs]
@@ -55,10 +55,10 @@ function setIndex (args: any[], opts: any= {}, resolve?: Function, reject?: Func
   return args;
 }
 
-function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts: any= {}, resolve?: Function, reject?: Function) {
+function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts: any = {}, resolve?: Function, reject?: Function) {
   // Try to figure out where the success/error callbacks need to be bound
   // to our promise resolve/reject handlers.
-  args = setIndex (args, opts, resolve, reject);
+  args = setIndex(args, opts, resolve, reject);
 
   let pluginInstance = getPlugin(pluginObj.pluginRef);
 
@@ -96,7 +96,7 @@ function getPromise(cb) {
   }
 }
 
-function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any= {}) {
+function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
   let pluginResult, rej;
   const p = getPromise((resolve, reject) => {
     pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
@@ -106,7 +106,7 @@ function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any=
   // a warning that Cordova is undefined or the plugin is uninstalled, so there is no reason
   // to error
   if (pluginResult && pluginResult.error) {
-    p.catch(() => {});
+    p.catch(() => { });
     rej(pluginResult.error);
   }
   return p;
@@ -139,7 +139,7 @@ function callInstance(pluginObj: any, methodName: string, args: any[], opts: any
   return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
 }
 
-function wrapInstance (pluginObj: any, methodName: string, opts: any = {}) {
+function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
   return (...args) => {
     if (opts.sync) {
       // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
@@ -172,11 +172,10 @@ function wrapInstance (pluginObj: any, methodName: string, opts: any = {}) {
  * @param event
  * @returns {Observable}
  */
-function wrapEventObservable (event: string): Observable<any> {
+function wrapEventObservable(event: string): Observable<any> {
   return new Observable(observer => {
-    let callback = (status: any) => observer.next(status);
-    window.addEventListener(event, callback, false);
-    return () => window.removeEventListener(event, callback, false);
+    window.addEventListener(event, observer.next.bind(observer), false);
+    return () => window.removeEventListener(event, observer.next.bind(observer), false);
   });
 }
 
@@ -187,7 +186,7 @@ function wrapEventObservable (event: string): Observable<any> {
  * @param opts
  * @returns {function(...[any]): (undefined|*|Observable|*|*)}
  */
-export const wrap = function(pluginObj: any,  methodName: string, opts: any = {}) {
+export const wrap = function(pluginObj: any, methodName: string, opts: any = {}) {
   return (...args) => {
 
     if (opts.sync)
@@ -289,7 +288,7 @@ export function CordovaProperty(target: Function, key: string, descriptor: Typed
     let pluginInstance = getPlugin(pluginObj.pluginRef);
     if (!pluginInstance) {
       pluginWarn(this, key);
-      return { };
+      return {};
     }
     return originalMethod.apply(this, args);
   };

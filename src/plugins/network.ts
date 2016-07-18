@@ -1,5 +1,6 @@
-import {Plugin, Cordova, CordovaProperty} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, CordovaProperty, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
+
 
 declare var navigator: any;
 

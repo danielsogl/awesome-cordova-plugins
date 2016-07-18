@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
  * @name Facebook
@@ -85,15 +85,15 @@ import {Plugin, Cordova} from './plugin';
 })
 export class Facebook {
 
-    /**
-     * Browser wrapper
-     * @param {number} appId Your Facebook AppID from their dashboard
-     * @param {string} version The version of API you may want to use. Optional
-     */
-   @Cordova()
-   static browserInit(appId: number, version?: string): Promise<any> {
-     return;
-   }
+  /**
+   * Browser wrapper
+   * @param {number} appId Your Facebook AppID from their dashboard
+   * @param {string} version The version of API you may want to use. Optional
+   */
+  @Cordova()
+  static browserInit(appId: number, version?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Login to Facebook to authenticate this app.
@@ -213,7 +213,7 @@ export class Facebook {
     name: string,
     params?: Object,
     valueToSum?: number
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Log a purchase. For more information see the Events section above.

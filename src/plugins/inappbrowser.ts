@@ -1,5 +1,5 @@
-import {Plugin, Cordova, CordovaInstance} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Plugin, CordovaInstance } from './plugin';
+import { Observable } from 'rxjs/Observable';
 declare var cordova: any;
 
 export interface InAppBrowserEvent extends Event {
@@ -13,7 +13,6 @@ export interface InAppBrowserEvent extends Event {
   message: string;
 }
 
-
 @Plugin({
   plugin: 'cordova-plugin-inappbrowser',
   pluginRef: 'cordova.InAppBrowser',
@@ -22,7 +21,7 @@ export interface InAppBrowserEvent extends Event {
 export class InAppBrowser {
 
   static open(url: string, target?: string, options?: string): void {
-    console.warn('Native: Your current usage of the InAppBrowser plugin is depreciated as of ionic-native@1.3.7. Please check the Ionic Native docs for the latest usage details.');
+    console.warn('Native: Your current usage of the InAppBrowser plugin is depreciated as of ionic-native@1.3.8. Please check the Ionic Native docs for the latest usage details.');
   }
 
   private _objectInstance: any;

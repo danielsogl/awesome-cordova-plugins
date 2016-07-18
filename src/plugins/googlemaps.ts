@@ -1,10 +1,13 @@
 import { Cordova, CordovaInstance, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
+
+
 /**
  * @private
  * Created by Ibrahim on 3/29/2016.
  */
 declare var plugin: any;
+
 /**
  * @private
  * You can listen to these events where appropriate
@@ -77,8 +80,7 @@ export class GoogleMap {
   on(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.on(event, cb);
+        this._objectInstance.on(event, observer.next.bind(observer));
         return () => this._objectInstance.off(event);
       }
     );
@@ -389,11 +391,8 @@ export class GoogleMapsMarker {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = (data: any) => {
-          observer.next(data);
-        };
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -537,9 +536,8 @@ export class GoogleMapsCircle {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -629,9 +627,8 @@ export class GoogleMapsPolyline {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -721,9 +718,8 @@ export class GoogleMapsPolygon {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -951,7 +947,7 @@ export class GoogleMapsKmlOverlay {
 export class GoogleMapsLatLngBounds {
   private _objectInstance: any;
 
-  constructor(public southwestOrArrayOfLatLng: GoogleMapsLatLng|GoogleMapsLatLng[], public northeast?: GoogleMapsLatLng) {
+  constructor(public southwestOrArrayOfLatLng: GoogleMapsLatLng | GoogleMapsLatLng[], public northeast?: GoogleMapsLatLng) {
     let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
     this._objectInstance = new plugin.google.maps.LatLngBounds(args);
   }
@@ -1011,13 +1007,13 @@ export class GoogleMapsLatLng {
  */
 export interface GeocoderRequest {
   address?: string;
-  position?: {lat: number; lng: number};
+  position?: { lat: number; lng: number };
 }
 /**
  * @private
  */
 export interface GeocoderResult {
-  position?: {lat: number; lng: number};
+  position?: { lat: number; lng: number };
   subThoroughfare?: string;
   thoroughfare?: string;
   locality?: string;
@@ -1036,7 +1032,7 @@ export class Geocoder {
    */
   static geocode(request: GeocoderRequest): Promise<GeocoderResult[]> {
     return new Promise<GeocoderResult[]>((resolve, reject) => {
-      if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) reject({error: 'plugin_not_installed'});
+      if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) reject({ error: 'plugin_not_installed' });
       else plugin.google.maps.Geocoder.geocode(request, resolve);
     });
   }

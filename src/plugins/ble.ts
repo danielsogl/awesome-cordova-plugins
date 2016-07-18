@@ -1,5 +1,5 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * @name BLE
@@ -272,7 +272,7 @@ export class BLE {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-  ): Promise<any> { return; };
+    ): Promise<any> { return; };
 
   /**
    * Write the value of a characteristic.
@@ -308,7 +308,7 @@ export class BLE {
     serviceUUID: string,
     characteristicUUID: string,
     value: ArrayBuffer
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Write the value of a characteristic without waiting for confirmation from the peripheral.
@@ -325,7 +325,7 @@ export class BLE {
     serviceUUID: string,
     characteristicUUID: string,
     value: ArrayBuffer
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Register to be notified when the value of a characteristic changes.
@@ -351,7 +351,7 @@ export class BLE {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-  ): Observable<any> { return; }
+    ): Observable<any> { return; }
 
   /**
    * Stop being notified when the value of a characteristic changes.
@@ -366,7 +366,7 @@ export class BLE {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Report the connection status.
