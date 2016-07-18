@@ -36,9 +36,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tslint": "./node_modules/.bin/gulp tslint",
+    "lint": "./node_modules/.bin/gulp lint",
     "watch": "./node_modules/.bin/tsc -w",
-    "build": "npm run tslint && npm run build:js && npm run build:bundle && npm run build:minify",
+    "build": "npm run lint && npm run build:js && npm run build:bundle && npm run build:minify",
     "build:js": "./node_modules/.bin/tsc",
     "build:bundle": "./node_modules/.bin/browserify dist/index.js > dist/ionic.native.js",
     "build:minify": "./node_modules/.bin/gulp minify:dist",
