@@ -171,7 +171,7 @@ export class Transfer {
    * @param {string} fileUrl  Filesystem URL representing the file on the device or a data URI. For backwards compatibility, this can also be the full path of the file on the device.
    * @param {string} url  URL of the server to receive the file, as encoded by encodeURI().
    * @param {FileUploadOptions} options  Optional parameters.
-   * @param {boolean} trustAllHosts Optional parameter, defaults to false. If set to true, it accepts all security certificates. This is useful since Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS.
+   * @param {boolean} trustAllHosts  Optional parameter, defaults to false. If set to true, it accepts all security certificates. This is useful since Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS.
    * @return Returns a Promise that resolves to a FileUploadResult and rejects with FileTransferError.
    */
   @CordovaInstance({
