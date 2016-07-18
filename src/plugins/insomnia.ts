@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name Insomnia
@@ -44,4 +45,5 @@ export class Insomnia {
    */
   @Cordova()
   static allowSleepAgain(): Promise<any> { return; }
+
 }

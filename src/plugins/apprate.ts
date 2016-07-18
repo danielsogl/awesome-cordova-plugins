@@ -1,4 +1,5 @@
-import {Plugin, Cordova, CordovaProperty} from './plugin';
+import { Cordova, CordovaProperty, Plugin } from './plugin';
+
 
 declare var window;
 
@@ -62,6 +63,6 @@ export class AppRate {
    * @param {boolean} immediately  Show the rating prompt immediately.
    */
   @Cordova()
-  static promptForRating(immediately: boolean): void {};
+  static promptForRating(immediately: boolean): void { };
 
 }

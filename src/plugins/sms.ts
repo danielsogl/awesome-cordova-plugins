@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * Options for sending an SMS
@@ -60,6 +61,6 @@ export class SMS {
     phoneNumber: string | string[],
     message: string,
     options?: SmsOptions
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
 }

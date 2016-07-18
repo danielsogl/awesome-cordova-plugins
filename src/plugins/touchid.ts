@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name TouchID
@@ -82,4 +83,5 @@ export class TouchID {
    */
   @Cordova()
   static verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string): Promise<any> { return; }
+
 }

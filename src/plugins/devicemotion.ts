@@ -1,5 +1,6 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
+
 
 export interface AccelerationData {
 
@@ -73,9 +74,7 @@ export class DeviceMotion {
    * @returns {Promise<any>} Returns object with x, y, z, and timestamp properties
    */
   @Cordova()
-  static getCurrentAcceleration(): Promise<AccelerationData> {
-    return;
-  }
+  static getCurrentAcceleration(): Promise<AccelerationData> { return; }
 
   /**
    * Watch the device acceleration. Clear the watch by unsubscribing from the observable.
@@ -87,7 +86,5 @@ export class DeviceMotion {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchAcceleration(options?: AccelerometerOptions): Observable<AccelerationData> {
-    return;
-  }
+  static watchAcceleration(options?: AccelerometerOptions): Observable<AccelerationData> { return; }
 }

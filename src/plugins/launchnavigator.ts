@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 export interface LaunchNavigatorOptions {
 
@@ -15,7 +16,7 @@ export interface LaunchNavigatorOptions {
   /**
    * Start point of the navigation
    */
-  start?: string|number[];
+  start?: string | number[];
 
   /**
    * nickname to display in app for start . e.g. "My House".
@@ -98,52 +99,52 @@ export class LaunchNavigator {
     errorIndex: 2
   })
   static navigate(
-    destination: string|number[],
+    destination: string | number[],
     options?: LaunchNavigatorOptions
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Determines if the given app is installed and available on the current device.
    * @param app {string}
    */
   @Cordova()
-  static isAppAvailable(app: string): Promise<any> {return; }
+  static isAppAvailable(app: string): Promise<any> { return; }
 
   /**
    * Returns a list indicating which apps are installed and available on the current device.
    */
   @Cordova()
-  static availableApps(): Promise<string[]> {return; }
+  static availableApps(): Promise<string[]> { return; }
 
   /**
    * Returns the display name of the specified app.
    * @param app {string}
    */
-  @Cordova({sync: true})
-  static getAppDisplayName(app: string): string {return; }
+  @Cordova({ sync: true })
+  static getAppDisplayName(app: string): string { return; }
 
   /**
    * Returns list of supported apps on a given platform.
    * @param platform {string}
    */
-  @Cordova({sync: true})
-  static getAppsForPlatform(platform: string): string[] {return; }
+  @Cordova({ sync: true })
+  static getAppsForPlatform(platform: string): string[] { return; }
 
   /**
    * Indicates if an app on a given platform supports specification of transport mode.
    * @param app {string} specified as a string, you can use one of the constants, e.g `LaunchNavigator.APP.GOOGLE_MAPS`
    * @param platform {string}
    */
-  @Cordova({sync: true})
-  static supportsTransportMode(app: string, platform: string): boolean {return; }
+  @Cordova({ sync: true })
+  static supportsTransportMode(app: string, platform: string): boolean { return; }
 
   /**
    * Returns the list of transport modes supported by an app on a given platform.
    * @param app {string}
    * @param platform {string}
    */
-  @Cordova({sync: true})
-  static getTransportModes(app: string, platform: string): string[] {return; }
+  @Cordova({ sync: true })
+  static getTransportModes(app: string, platform: string): string[] { return; }
 
   /**
    * Indicates if an app on a given platform supports specification of launch mode.
@@ -151,25 +152,25 @@ export class LaunchNavigator {
    * @param app {string}
    * @param platform {string}
    */
-  @Cordova({sync: true})
-  static supportsLaunchMode(app: string, platform: string): boolean {return; }
+  @Cordova({ sync: true })
+  static supportsLaunchMode(app: string, platform: string): boolean { return; }
 
   /**
    * Indicates if an app on a given platform supports specification of start location.
    * @param app {string}
    * @param platform {string}
    */
-  @Cordova({sync: true})
-  static supportsStart(app: string, platform: string): boolean {return; }
+  @Cordova({ sync: true })
+  static supportsStart(app: string, platform: string): boolean { return; }
 
-  @Cordova({sync: true})
-  static supportsStartName(app: string, platform: string): boolean {return; }
+  @Cordova({ sync: true })
+  static supportsStartName(app: string, platform: string): boolean { return; }
 
-  @Cordova({sync: true})
-  static supportsDestName(app: string, platform: string): boolean {return; }
+  @Cordova({ sync: true })
+  static supportsDestName(app: string, platform: string): boolean { return; }
 
-  @Cordova({sync: true})
-  static userSelect(destination: string|number[], options: LaunchNavigatorOptions): void { }
+  @Cordova({ sync: true })
+  static userSelect(destination: string | number[], options: LaunchNavigatorOptions): void { }
 
   static APP: any = {
     USER_SELECT: 'user_select',
