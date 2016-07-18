@@ -112,7 +112,7 @@ export interface CameraPopoverOptions {
 })
 export class Camera {
   /**
-   * @public
+   * @private
    * @enum {number}
    */
   public static DestinationType = {
@@ -125,7 +125,7 @@ export class Camera {
   };
 
   /**
-   * @public
+   * @private
    * @enum {number}
    */
   public static EncodingType = {
@@ -135,7 +135,7 @@ export class Camera {
     PNG: 1
   };
   /**
-   * @public
+   * @private
    * @enum {number}
    */
   public static MediaType = {
@@ -148,7 +148,7 @@ export class Camera {
   };
 
   /**
-   * @public
+   * @private
    * @enum {number}
    */
   public static PictureSourceType = {
@@ -161,7 +161,7 @@ export class Camera {
   };
 
   /**
-   * @public
+   * @private
    * Matches iOS UIPopoverArrowDirection constants to specify arrow location on popover.
    * @enum {number}
    */
@@ -174,7 +174,7 @@ export class Camera {
   };
 
   /**
-   * @public
+   * @private
    * @enum {number}
    */
   public static Direction = {
