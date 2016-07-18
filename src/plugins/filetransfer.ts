@@ -131,6 +131,7 @@ export interface FileTransferError {
  * Abort active transfer:
  * ```ts
  * fileTransfer.abort();
+ * ```
  *
  */
 @Plugin({
