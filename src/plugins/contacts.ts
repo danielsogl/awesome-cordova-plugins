@@ -7,7 +7,7 @@ export interface IContactProperties {
     /** The name of this Contact, suitable for display to end users. */
     displayName?: string;
     /** An object containing all components of a persons name. */
-    name?: ContactName;
+    name?: IContactName;
     /** A casual name by which to address the contact. */
     nickname?: string;
     /** An array of all the contact's phone numbers. */
@@ -15,11 +15,11 @@ export interface IContactProperties {
     /** An array of all the contact's email addresses. */
     emails?: IContactField[];
     /** An array of all the contact's addresses. */
-    addresses?: ContactAddress[];
+    addresses?: IContactAddress[];
     /** An array of all the contact's IM addresses. */
     ims?: IContactField[];
     /** An array of all the contact's organizations. */
-    organizations?: ContactOrganization[];
+    organizations?: IContactOrganization[];
     /** The birthday of the contact. */
     birthday?: Date;
     /** A note about the contact. */
@@ -36,16 +36,17 @@ export interface IContactProperties {
 /**
  * @private
  */
-export class Contact {
+export class Contact implements IContactProperties {
     private _objectInstance: any;
     @InstanceProperty get id(): string {return; }
     @InstanceProperty get displayName(): string {return; }
-    @InstanceProperty get nickname(): ContactName {return; }
-    @InstanceProperty get phoneNumbers(): string {return; }
+    @InstanceProperty get name(): IContactName {return; }
+    @InstanceProperty get nickname(): string {return; }
+    @InstanceProperty get phoneNumbers(): IContactField[] {return; }
     @InstanceProperty get emails(): IContactField[] {return; }
-    @InstanceProperty get addresses(): ContactAddress[] {return; }
+    @InstanceProperty get addresses(): IContactAddress[] {return; }
     @InstanceProperty get ims(): IContactField[] {return; }
-    @InstanceProperty get organizations(): ContactOrganization[] {return; }
+    @InstanceProperty get organizations(): IContactOrganization[] {return; }
     @InstanceProperty get birthday(): Date {return; }
     @InstanceProperty get note(): string {return; }
     @InstanceProperty get photos(): IContactField[] {return; }
