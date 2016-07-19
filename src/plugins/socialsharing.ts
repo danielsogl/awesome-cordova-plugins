@@ -25,7 +25,7 @@ import {Plugin, Cordova} from './plugin';
  */
 @Plugin({
   plugin: 'cordova-plugin-x-socialsharing',
-  pluginRef: 'window.plugins.socialsharing',
+  pluginRef: 'plugins.socialsharing',
   repo: 'https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin',
   platforms: ['iOS', 'Android', 'Windows Phone']
 })
