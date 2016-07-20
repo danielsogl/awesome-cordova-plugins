@@ -1,3 +1,22 @@
+<a name="1.3.8"></a>
+## [1.3.8](https://github.com/driftyco/ionic-native/compare/v1.3.7...v1.3.8) (2016-07-20)
+
+
+### Bug Fixes
+
+* **base64togallery:** update plugin wrapper to match latest version ([d4bee49](https://github.com/driftyco/ionic-native/commit/d4bee49)), closes [#335](https://github.com/driftyco/ionic-native/issues/335)
+* **sqlite:** fix method attribute typo ([#324](https://github.com/driftyco/ionic-native/issues/324)) ([006bc70](https://github.com/driftyco/ionic-native/commit/006bc70)), closes [#324](https://github.com/driftyco/ionic-native/issues/324)
+
+
+### Features
+
+* **facebook:** add FacebookLoginResponse interface ([8b27bed](https://github.com/driftyco/ionic-native/commit/8b27bed))
+* **otherPromise:** can work better with plugins that return promises ([#304](https://github.com/driftyco/ionic-native/issues/304)) ([0aee6c8](https://github.com/driftyco/ionic-native/commit/0aee6c8))
+* **social-sharing:** add canShareViaEmail ([#333](https://github.com/driftyco/ionic-native/issues/333)) ([5807dd7](https://github.com/driftyco/ionic-native/commit/5807dd7))
+* **twitter-connect:** add twitter connect plugin ([979838f](https://github.com/driftyco/ionic-native/commit/979838f)), closes [#308](https://github.com/driftyco/ionic-native/issues/308)
+
+
+
 <a name="1.3.7"></a>
 ## [1.3.7](https://github.com/driftyco/ionic-native/compare/v1.3.6...v1.3.7) (2016-07-18)
 
