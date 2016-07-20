@@ -1,30 +1,31 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
+
 
 export interface CameraPreviewOptions {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-    /**
-     * Choose the camera to use (front- or back-facing).
-     *  'front' for front camera
-     *  'rear' for rear camera
-     */
-    camera: string;
-    /** Take photo on tap */
-    tapPhoto: boolean;
-    /** */
-    previewDrag: boolean;
-    /**  */
-    toBack: boolean;
-    /** Alpha use when toBack is set to true */
-    alpha: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  /**
+   * Choose the camera to use (front- or back-facing).
+   *  'front' for front camera
+   *  'rear' for rear camera
+   */
+  camera: string;
+  /** Take photo on tap */
+  tapPhoto: boolean;
+  /** */
+  previewDrag: boolean;
+  /**  */
+  toBack: boolean;
+  /** Alpha use when toBack is set to true */
+  alpha: number;
 }
 
 export interface CameraPreviewSize {
-    maxWidth: number;
-    maxHeight: number;
+  maxWidth: number;
+  maxHeight: number;
 }
 
 /**
@@ -50,7 +51,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static startCamera(options: CameraPreviewOptions): void {};
+  static startCamera(options: CameraPreviewOptions): void { };
 
   /**
    * Stops the camera preview instance.
@@ -58,7 +59,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static stopCamera(): void {};
+  static stopCamera(): void { };
 
   /**
    * Take the picture, the parameter size is optional
@@ -66,7 +67,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static takePicture(size: CameraPreviewSize): void {};
+  static takePicture(size: CameraPreviewSize): void { };
 
   /**
    * Register a callback function that receives the original picture and the image captured from the preview box.
@@ -82,7 +83,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static switchCamera(): void {};
+  static switchCamera(): void { };
 
   /**
    * Show the camera preview box.
@@ -90,7 +91,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static show(): void {};
+  static show(): void { };
 
   /**
    * Hide the camera preview box.
@@ -98,7 +99,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static hide(): void {};
+  static hide(): voi { };
 
   /**
    * Set the default mode for the Flash.
@@ -106,7 +107,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static setFlashMode(mode: number): void {};
+  static setFlashMode(mode: number): void { };
 
   /**
    * Set camera color effect.
@@ -114,7 +115,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static setColorEffect(effect: string): void {};
+  static setColorEffect(effect: string): void { };
 
   /**
    * @private

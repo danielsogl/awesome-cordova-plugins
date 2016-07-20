@@ -32,4 +32,5 @@ export class DeviceAccounts {
    */
   @Cordova()
   static getEmail(): Promise<any> { return; }
+
 }

@@ -27,8 +27,8 @@ export interface DeeplinkMatch {
  * and Universal App Links.
  *
  * @usage
- * ```ts
- * import {IonicDeeplinks} from 'ionic-native';
+ * ```typescript
+ * import { IonicDeeplinks } from 'ionic-native';
  *
  * ```
  */
@@ -77,4 +77,5 @@ export class Deeplinks {
     observable: true
   })
   static routeWithNavController(navController, paths): Observable<DeeplinkMatch> { return; }
+
 }

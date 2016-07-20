@@ -10,13 +10,13 @@ declare var window: any;
  * @usage
  * Please do refer to the original plugin's repo for detailed usage. The usage example here might not be sufficient.
  * ```
- * import {ThreeDeeTouch} from 'ionic-native';
+ * import { ThreeDeeTouch } from 'ionic-native';
  *
  * // import for type completion on variables
- * import {ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch} from 'ionic-native';
+ * import { ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch } from 'ionic-native';
  * ...
  *
- * ThreeDeeTouch.isAvailable().then(isAvailable => console.log("3D Touch available? " + isAvailable)):
+ * ThreeDeeTouch.isAvailable().then(isAvailable => console.log("3D Touch available? " + isAvailable));
  *
  * ThreeDeeTouch.watchForceTouches()
  *   .subscribe(
@@ -57,7 +57,7 @@ declare var window: any;
  * ThreeDeeTouchForceTouch.onHomeIconPressed().subscribe(
  *  (payload) => {
  *    // returns an object that is the button you presed
- *    console.log(`Pressed the ${payload.title} button`)
+ *    console.log('Pressed the ${payload.title} button')
  *    console.log(payload.type)
  *
  *  }
@@ -130,13 +130,16 @@ export class ThreeDeeTouch {
     sync: true
   })
   static disableLinkPreview(): void { }
+
 }
+
 export interface ThreeDeeTouchQuickAction {
   type?: string;
   title: string;
   subtitle?: string;
   iconType?: string;
 }
+
 export interface ThreeDeeTouchForceTouch {
   force: number;
   timestamp: number;

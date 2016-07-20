@@ -6,8 +6,8 @@ import { Cordova, Plugin } from './plugin';
 * Cordova plugin to prevent the app from going to sleep while in background.
 *  Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode#android-customization
 *@usage
-* ```js
-* import {BackgroundMode} from 'ionic-native';
+* ```typescript
+* import { BackgroundMode } from 'ionic-native';
 *
 * BackgroundMode.enable();
 * ```
@@ -91,6 +91,7 @@ export class BackgroundMode {
     sync: true
   })
   static on(eventName: string, callback: any): void { }
+
 }
 
 /**

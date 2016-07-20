@@ -66,18 +66,18 @@ export interface LaunchNavigatorOptions {
  * @usage
  * Please refer to the plugin's repo for detailed usage. This docs page only explains the Native wrapper.
  *
- * ```js
- * import {LaunchNavigator, LaunchNavigatorOptions} from 'ionic-native';
+ * ```typescript
+ * import { LaunchNavigator, LaunchNavigatorOptions } from 'ionic-native';
  *
  * let options: LaunchNavigatorOptions = {
  *   start: 'London, ON',
  *   app: LaunchNavigator.APPS.UBER
  * };
  *
- * LaunchNavigator.navigate("Toronto, ON", options)
+ * LaunchNavigator.navigate('Toronto, ON', options)
  *   .then(
- *     success => console.log("Launched navigator"),
- *     error => console.log("Error launching navigator", error)
+ *     success => console.log('Launched navigator'),
+ *     error => console.log('Error launching navigator', error)
  *   );
  * ```
  */

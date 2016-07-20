@@ -1,12 +1,13 @@
 import { Cordova, Plugin } from './plugin';
 
+
 /**
  * @name Social Sharing
  * @description
  * Share text, files, images, and links via social networks, sms, and email.
  * @usage
- * ```ts
- * import {SocialSharing} from 'ionic-native';
+ * ```typescript
+ * import { SocialSharing } from 'ionic-native';
  *
  * // Check if sharing via email is supported
  * SocialSharing.canShareViaEmail().then(() => {

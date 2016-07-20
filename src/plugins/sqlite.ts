@@ -11,7 +11,7 @@ declare var sqlitePlugin;
  *
  * @usage
  *
- * ```ts
+ * ```typescript
  * import { SQLite } from 'ionic-native';
  *
  * let db = new SQLite();
@@ -22,10 +22,10 @@ declare var sqlitePlugin;
  *   db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {
  *
  *   }, (err) => {
- *     console.error('Unable to execute sql', err);
- *   })
+ *     console.error('Unable to execute sql: ', err);
+ *   });
  * }, (err) => {
- *   console.error('Unable to open database', err);
+ *   console.error('Unable to open database: ', err);
  * });
  * ```
  *
@@ -52,7 +52,7 @@ export class SQLite {
    * @param config the config for opening the database.
    * @usage
    *
-   * ```ts
+   * ```typescript
    * import { SQLite } from 'ionic-native';
    *
    * let db = new SQLite();
@@ -112,7 +112,7 @@ export class SQLite {
    *
    * @usage
    *
-   * ```ts
+   * ```typescript
    * db.executeSql('SELECT FROM puppies WHERE type = ?', ['cavalier']).then((resultSet) => {
    *   // Access the items through resultSet.rows
    *   // resultSet.rows.item(i)
