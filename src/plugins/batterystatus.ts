@@ -8,13 +8,12 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```js
- * import {BatteryStatus} from 'ionic-native';
- *
+ * import { BatteryStatus } from 'ionic-native';
  *
  *
  * // watch change in battery status
  * let subscription = BatteryStatus.onChange().subscribe(
- *  status => {
+ *  (status: StatusObject) => {
  *    console.log(status.level, status.isPlugged);
  *  }
  * );

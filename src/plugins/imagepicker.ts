@@ -28,7 +28,7 @@ export interface ImagePickerOptions {
  *
  * @usage
  * ```js
- * import {ImagePicker} from 'ionic-native';
+ * import { ImagePicker } from 'ionic-native';
  *
  *
  *
@@ -36,8 +36,7 @@ export interface ImagePickerOptions {
  *   for (var i = 0; i < results.length; i++) {
  *       console.log('Image URI: ' + results[i]);
  *   }
- * }, (err) => {
- * });
+ * }, (err) => { });
  * ```
  */
 @Plugin({

@@ -46,14 +46,14 @@ export const GoogleMapsAnimation = {
  * @description This plugin uses the native Google Maps SDK
  * @usage
  * ```
- * import {GoogleMap, GoogleMapsEvent} from 'ionic-native';
+ * import { GoogleMap, GoogleMapsEvent } from 'ionic-native';
  *
  * ...
  *
  * // somewhere in your component
  * let map = new GoogleMap('elementID');
  *
- * map.on(GoogleMapsEvent.MAP_READY).subscribe(() => console.log("Map is ready!"));
+ * map.on(GoogleMapsEvent.MAP_READY).subscribe(() => console.log('Map is ready!'));
  * ```
  */
 @Plugin({

@@ -11,14 +11,15 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```ts
- * import {OneSignal} from 'ionic-native';
+ * import { OneSignal } from 'ionic-native';
  *
  * let notificationOpenedCallback(jsonData: any) {
  *   console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
  * };
- * OneSignal.init("b2f7f966-d8cc-11e4-bed1-df8f05be55ba",
- *                                {googleProjectNumber: "703322744261"},
- *                                notificationOpenedCallback);
+ *
+ * OneSignal.init('b2f7f966-d8cc-11e4-bed1-df8f05be55ba',
+ *                        {googleProjectNumber: '703322744261'},
+ *                        notificationOpenedCallback);
  *
  * OneSignal.enableInAppAlertNotification(true);
  * ```

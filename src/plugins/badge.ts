@@ -9,7 +9,7 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```js
- * import {Badge} from 'ionic-native';
+ * import { Badge } from 'ionic-native';
  *
  *
  * Badge.set(10);
@@ -74,4 +74,5 @@ export class Badge {
    */
   @Cordova()
   static registerPermission(): Promise<any> { return; }
+
 }

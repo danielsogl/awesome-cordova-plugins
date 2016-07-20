@@ -22,22 +22,20 @@ import { Cordova, Plugin } from './plugin';
  *  -  `-8` - TouchID is locked out from too many tries
  * @usage
  * ```js
- * import {TouchID} from 'ionic-native';
+ * import { TouchID } from 'ionic-native';
  *
- * ...
  *
  * TouchID.isAvailable()
  *   .then(
- *     res => console.log("TouchID is available!"),
- *     err => console.error("TouchID isn't available", err)
+ *     res => console.log('TouchID is available!'),
+ *     err => console.error('TouchID isn't available', err)
  *   );
  *
  * TouchID.verifyFingerprint('Scan your fingerprint please')
  *   .then(
- *     res => console.log("Ok", res),
- *     err => console.error("Error", err)
+ *     res => console.log('Ok', res),
+ *     err => console.error('Error', err)
  *   );
- *
  * ```
  */
 @Plugin({

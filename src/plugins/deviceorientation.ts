@@ -47,19 +47,18 @@ export interface CompassOptions {
  *
  * @usage
  * ```ts
- * import {DeviceOrientation} from 'ionic-native';
- *
+ * import { DeviceOrientation } from 'ionic-native';
  *
  *
  * // Get the device current compass heading
  * DeviceOrientation.getCurrentHeading().then(
- *   data => console.log(data),
- *   error => console.log(error)
+ *   (data: CompassHeading) => console.log(data),
+ *   (error: any) => console.log(error)
  * );
  *
  * // Watch the device compass heading change
  * var subscription = DeviceOrientation.watchHeading().subscribe(
- *   data => console.log(data)
+ *   (data: CompassHeading) => console.log(data)
  * );
  *
  * // Stop watching heading change

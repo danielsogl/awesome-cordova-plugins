@@ -7,8 +7,7 @@ import { Observable } from 'rxjs/Observable';
  * @description This plugin defines a global DBMeter object, which permits to get the decibel values from the microphone.
  * @usage
  * ```ts
- * import {DBMeter} from 'ionic-native';
- *
+ * import { DBMeter } from 'ionic-native';
  *
  *
  * // Start listening
@@ -18,7 +17,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * // Check if we are listening
  * DBMeter.isListening().then(
- *   (isListening : boolean) => console.log(isListening)
+ *   (isListening: boolean) => console.log(isListening)
  * );
  *
  * // Stop listening
@@ -26,8 +25,8 @@ import { Observable } from 'rxjs/Observable';
  *
  * // Delete DBMeter instance from memory
  * DBMeter.delete().then(
- *   () => console.log("Deleted DB Meter instance"),
- *   error => console.log("Error occurred while deleting DB Meter instance")
+ *   () => console.log('Deleted DB Meter instance'),
+ *   error => console.log('Error occurred while deleting DB Meter instance')
  * );
  * ```
  */

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
  * @description
  * @usage
  * ```js
- * import {Keyboard} from 'ionic-native';
+ * import { Keyboard } from 'ionic-native';
  *
  *
  *

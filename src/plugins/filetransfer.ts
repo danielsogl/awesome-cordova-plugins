@@ -112,24 +112,20 @@ export interface FileTransferError {
  * This plugin allows you to upload and download files.
  *
  * @usage
- *
- * Create instance:
  * ```ts
+ * import { Transfer } from 'ionic-native';
+ *
+ *
+ * // Create instance:
  * const fileTransfer = new Transfer();
- * ```
  *
- * Upload a file:
- * ```ts
+ * // Upload a file:
  * fileTransfer.upload(..).then(..).catch(..);
- * ```
  *
- * Download a file:
- * ```ts
+ * // Download a file:
  * fileTransfer.download(..).then(..).catch(..);
- * ```
  *
- * Abort active transfer:
- * ```ts
+ * // Abort active transfer:
  * fileTransfer.abort();
  * ```
  *

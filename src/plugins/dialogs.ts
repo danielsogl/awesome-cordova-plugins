@@ -24,7 +24,7 @@ export interface PromptCallback {
  *
  * @usage
  * ```js
- * import {Dialogs} from 'ionic-native';
+ * import { Dialogs } from 'ionic-native';
  *
  *
  *

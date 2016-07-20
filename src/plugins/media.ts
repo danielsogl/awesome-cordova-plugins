@@ -9,21 +9,21 @@ declare var Media: any;
  * @description
  * @usage
  * ```ts
- * import {MediaPlugin} from 'ionic-native';
+ * import { MediaPlugin } from 'ionic-native';
  *
  *
  *
  * // Create a MediaPlugin instance.  Expects path to file or url as argument
- * var file = new MediaPlugin("path/to/file.mp3");
+ * var file = new MediaPlugin('path/to/file.mp3');
  *
  * // Catch the Success & Error Output
  * // Platform Quirks
  * // iOS calls success on completion of playback only
  * // Android calls success on completion of playback AND on release()
  * file.init.then(() => {
- *   console.log("Playback Finished");
+ *   console.log('Playback Finished');
  * }, (err) => {
- *   console.log("somthing went wrong! error code: "+err.code+" message: "+err.message);
+ *   console.log('somthing went wrong! error code: ' + err.code + ' message: ' + err.message);
  * });
  *
  * // play the file
@@ -55,7 +55,7 @@ declare var Media: any;
  * file.release();
  *
  * // Recording to a file
- * var newFile = new MediaPlugin("path/to/file.mp3");
+ * var newFile = new MediaPlugin('path/to/file.mp3');
  * newFile.startRecord();
  *
  * newFile.stopRecord();

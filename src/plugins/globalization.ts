@@ -5,8 +5,7 @@ import { Cordova, Plugin } from './plugin';
  * @description
  * @usage
  * ```js
- * import {Globalization} from 'ionic-native';
- *
+ * import { Globalization } from 'ionic-native';
  *
  *
  * ```

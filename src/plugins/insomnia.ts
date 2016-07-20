@@ -8,7 +8,8 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```js
- * import {Insomnia} from 'ionic-native';
+ * import { Insomnia } from 'ionic-native';
+ *
  *
  * Insomnia.keepAwake()
  *   .then(

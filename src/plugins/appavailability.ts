@@ -9,21 +9,21 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```js
- * import {AppAvailability} from 'ionic-native';
+ * import { AppAvailability } from 'ionic-native';
  *
  *
- * var app;
+ * let app;
  *
- * if(device.platform === 'iOS') {
+ * if (device.platform === 'iOS') {
  *   app = 'twitter://';
- * }else if(device.platform === 'Android'){
+ * } else if (device.platform === 'Android') {
  *   app = 'com.twitter.android';
  * }
  *
  * AppAvailability.check(app)
  *   .then(
- *     yes => console.log(app + " is available"),
- *     no => console.log(app + " is NOT available")
+ *     (yes: string) => console.log(app + ' is available'),
+ *     (no: string) => console.log(app + ' is NOT available')
  *   );
  * ```
  */

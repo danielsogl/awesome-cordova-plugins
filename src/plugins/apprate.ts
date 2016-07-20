@@ -12,7 +12,7 @@ declare var window;
  *
  * @usage
  * ```js
- * import {AppRate} from 'ionic-native';
+ * import { AppRate } from 'ionic-native';
  *
  *
  * AppRate.preferences.storeAppURL.ios = '<my_app_id>';

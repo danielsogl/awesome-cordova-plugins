@@ -5,13 +5,12 @@ import { Cordova, Plugin } from './plugin';
  * @description
  * @usage
  * ```js
- * import {Hotspot, Network} from 'ionic-native';
+ * import { Hotspot, Network } from 'ionic-native';
  *
- * ...
- *     Hotspot.scanWifi().then((networks: Array<Network>) => {
- *         console.log(networks);
- *     });
- * ...
+ *
+ * Hotspot.scanWifi().then((networks: Array<Network>) => {
+ *     console.log(networks);
+ * });
  *
  * ```
  */

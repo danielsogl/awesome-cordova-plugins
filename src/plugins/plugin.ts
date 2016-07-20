@@ -1,10 +1,10 @@
 import { get } from '../util';
+import { Observable } from 'rxjs/Observable';
 
 declare var window;
 declare var Promise;
 declare var $q;
 
-import {Observable} from 'rxjs/Observable';
 
 /**
  * @private

@@ -65,19 +65,19 @@ export interface PushNotification {
    * @param event
    * @param callback
    */
-  on(event: "registration", callback: (response: RegistrationEventResponse) => any): void;
+  on(event: 'registration', callback: (response: RegistrationEventResponse) => any): void;
   /**
    * The event notification will be triggered each time a push notification is received by a 3rd party push service on the device.
    * @param event
    * @param callback
    */
-  on(event: "notification", callback: (response: NotificationEventResponse) => any): void;
+  on(event: 'notification', callback: (response: NotificationEventResponse) => any): void;
   /**
    * The event error will trigger when an internal error occurs and the cache is aborted.
    * @param event
    * @param callback
    */
-  on(event: "error", callback: (response: Error) => any): void;
+  on(event: 'error', callback: (response: Error) => any): void;
   /**
    *
    * @param event Name of the event to listen to. See below(above) for all the event names.
@@ -87,9 +87,9 @@ export interface PushNotification {
    */
   on(event: string, callback: (response: EventResponse) => any): void;
 
-  off(event: "registration", callback: (response: RegistrationEventResponse) => any): void;
-  off(event: "notification", callback: (response: NotificationEventResponse) => any): void;
-  off(event: "error", callback: (response: Error) => any): void;
+  off(event: 'registration', callback: (response: RegistrationEventResponse) => any): void;
+  off(event: 'notification', callback: (response: NotificationEventResponse) => any): void;
+  off(event: 'error', callback: (response: Error) => any): void;
   /**
    * As stated in the example, you will have to store your event handler if you are planning to remove it.
    * @param event Name of the event type. The possible event names are the same as for the push.on function.
@@ -280,10 +280,7 @@ declare var PushNotification: {
  *
  * @usage
  * ```js
- * import {Push} from 'ionic-native';
- *
- *
- *
+ * import { Push } from 'ionic-native';
  * ```
  */
 @Plugin({
@@ -299,10 +296,10 @@ export class Push {
    * ```
    * var push = Push.init({
    *    android: {
-   *        senderID: "12345679"
+   *        senderID: '12345679'
    *    },
    *    ios: {
-   *        alert: "true",
+   *        alert: 'true',
    *        badge: true,
    *        sound: 'false'
    *    },

@@ -11,18 +11,17 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```js
- * import {Clipboard} from 'ionic-native';
+ * import { Clipboard } from 'ionic-native';
  *
  *
- *
- * Clipboard.copy("Hello world");
+ * Clipboard.copy('Hello world');
  *
  * Clipboard.paste().then(
- *    (resolve : string) => {
+ *    (resolve: string) => {
  *     alert(resolve);
  *     },
- *     (reject : string) => {
- *     alert("Error: " + reject);
+ *     (reject: string) => {
+ *     alert('Error: ' + reject);
  *     }
  *     );
  * );

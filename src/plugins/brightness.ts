@@ -9,7 +9,8 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```ts
- * import {Brightness} from 'ionic-native';
+ * import { Brightness } from 'ionic-native';
+ *
  *
  * let brightnessValue: number = 0.8;
  * Brightness.setBrightness(brightnessValue);
@@ -47,4 +48,5 @@ export class Brightness {
   */
   @Cordova()
   static setKeepScreenOn(value: boolean): void { }
+
 }

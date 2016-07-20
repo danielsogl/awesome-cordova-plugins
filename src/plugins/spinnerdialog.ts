@@ -6,8 +6,7 @@ import { Cordova, Plugin } from './plugin';
  * @description
  * @usage
  * ```js
- * import {SpinnerDialog} from 'ionic-native';
- *
+ * import { SpinnerDialog } from 'ionic-native';
  *
  *
  * SpinnerDialog.show();

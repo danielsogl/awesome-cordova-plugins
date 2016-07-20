@@ -34,8 +34,7 @@ export interface Device {
  *
  * @usage
  * ```js
- * import {Device} from 'ionic-native';
- *
+ * import { Device } from 'ionic-native';
  *
  *
  * console.log('Device UUID is: ' + Device.device.uuid);
@@ -55,4 +54,5 @@ export class Device {
    */
   @CordovaProperty
   static get device() { return window.device; }
+
 }

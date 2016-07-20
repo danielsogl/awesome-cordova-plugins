@@ -10,12 +10,12 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```js
- * import {Sim} from 'ionic-native';
+ * import { Sim } from 'ionic-native';
  *
  *
  * Sim.getSimInfo().then(
- *   (info) => console.log('Sim info:', info),
- *   (err) => console.log('Unable to get sim info:', err)
+ *   (info) => console.log('Sim info: ', info),
+ *   (err) => console.log('Unable to get sim info: ', err)
  * );
  * ```
  */

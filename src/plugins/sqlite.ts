@@ -22,10 +22,10 @@ declare var sqlitePlugin;
  *   db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {
  *
  *   }, (err) => {
- *     console.error('Unable to execute sql', err);
- *   })
+ *     console.error('Unable to execute sql: ', err);
+ *   });
  * }, (err) => {
- *   console.error('Unable to open database', err);
+ *   console.error('Unable to open database: ', err);
  * });
  * ```
  *

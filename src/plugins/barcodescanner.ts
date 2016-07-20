@@ -9,7 +9,7 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```js
- * import {BarcodeScanner} from 'ionic-native';
+ * import { BarcodeScanner } from 'ionic-native';
  *
  *
  * BarcodeScanner.scan().then((barcodeData) => {

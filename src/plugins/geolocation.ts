@@ -103,19 +103,18 @@ export interface GeolocationOptions {
  * @usage
  *
  * ```ts
- * import {Geolocation} from 'ionic-native';
- *
+ * import { Geolocation } from 'ionic-native';
  *
  *
  * Geolocation.getCurrentPosition().then((resp) => {
- *  //resp.coords.latitude
- *  //resp.coords.longitude
+ *  // resp.coords.latitude
+ *  // resp.coords.longitude
  * })
  *
  * let watch = Geolocation.watchPosition();
  * watch.subscribe((data) => {
- *  //data.coords.latitude
- *  //data.coords.longitude
+ *  // data.coords.latitude
+ *  // data.coords.longitude
  * })
  * ```
  */

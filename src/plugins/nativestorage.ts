@@ -6,8 +6,8 @@ import { Cordova, Plugin } from './plugin';
  * @description
  *
  * @usage
- * ```typescript
- * import {NativeStorage} from 'ionic-native';
+ * ```ts
+ * import { NativeStorage } from 'ionic-native';
  *
  * NativeStorage.setItem('myitem', {property: 'value', anotherProperty: 'anotherValue'})
  *   .then(

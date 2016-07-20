@@ -12,9 +12,8 @@ declare var window;
  *
  * @usage
  * ```ts
- * import {StatusBar} from 'ionic-native';
+ * import { StatusBar } from 'ionic-native';
  *
- * ...
  *
  * StatuBar.overlaysWebView(true); // let status var overlay webview
  *

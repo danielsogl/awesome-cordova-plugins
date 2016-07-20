@@ -13,10 +13,10 @@ declare var cordova: any;
  *
  * @usage
  * ```ts
- * import {EmailComposer} from 'ionic-native';
+ * import { EmailComposer } from 'ionic-native';
  *
  *
- * EmailComposer.isAvailable().then((available) =>{
+ * EmailComposer.isAvailable().then((available: boolean) =>{
  *  if(available) {
  *    //Now we know we can send
  *  }

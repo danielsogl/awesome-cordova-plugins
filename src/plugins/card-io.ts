@@ -1,13 +1,13 @@
 import { Cordova, Plugin } from './plugin';
 
+
 /**
  * @name CardIO
  * @description
  * @usage
  * ```
- * import {CardIO} from 'ionic-native';
+ * import { CardIO } from 'ionic-native';
  *
- * ...
  *
  * CardIO.canScan()
  *   .then(
@@ -51,6 +51,7 @@ export class CardIO {
    */
   @Cordova()
   static version(): Promise<string> { return; }
+
 }
 
 export interface CardIOOptions {

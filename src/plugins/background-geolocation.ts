@@ -163,8 +163,7 @@ export interface Config {
  * @usage
  *
  * ```ts
- * import {BackgroundGeolocation} from 'ionic-native';
- *
+ * import { BackgroundGeolocation } from 'ionic-native';
  *
  *
  * // When device is ready :

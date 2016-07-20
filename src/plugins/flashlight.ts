@@ -9,7 +9,7 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```js
- * import {Flashlight} from 'ionic-native';
+ * import { Flashlight } from 'ionic-native';
  *
  *
  *

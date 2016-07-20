@@ -9,7 +9,7 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```js
- * import {AppVersion} from 'ionic-native';
+ * import { AppVersion } from 'ionic-native';
  *
  *
  *  AppVersion.getAppName();

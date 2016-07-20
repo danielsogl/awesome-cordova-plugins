@@ -70,7 +70,7 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```js
- * import {Facebook} from 'ionic-native';
+ * import { Facebook } from 'ionic-native';
  *
  *
  *
@@ -245,7 +245,9 @@ export class Facebook {
     url: string,
     picture: string
   }): Promise<any> { return; }
+
 }
+
 export interface FacebookLoginResponse {
   status: string;
   authResponse: {
