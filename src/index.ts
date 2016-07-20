@@ -72,6 +72,7 @@ import {StatusBar} from './plugins/statusbar';
 import {ThreeDeeTouch} from './plugins/3dtouch';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
+import {TwitterConnect} from './plugins/twitter-connect';
 import {Vibration} from './plugins/vibration';
 import {WebIntent} from './plugins/webintent';
 export * from './plugins/3dtouch';
@@ -145,6 +146,7 @@ export {
   StatusBar,
   TouchID,
   Transfer,
+  TwitterConnect,
   Vibration,
   WebIntent
 }
@@ -220,6 +222,7 @@ window['IonicNative'] = {
   Toast: Toast,
   TouchID: TouchID,
   Transfer: Transfer,
+  TwitterConnect: TwitterConnect,
   Vibration: Vibration,
   WebIntent: WebIntent
 };
