@@ -162,7 +162,7 @@ export interface Config {
  *
  * @usage
  *
- * ```ts
+ * ```typescript
  * import { BackgroundGeolocation } from 'ionic-native';
  *
  *

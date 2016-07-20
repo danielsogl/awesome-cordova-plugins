@@ -257,7 +257,7 @@ export class ContactFindOptions implements IContactFindOptions {
  *
  * @usage
  *
- * ```js
+ * ```typescript
  * import { Contact } from 'ionic-native';
  *
  *

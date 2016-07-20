@@ -7,7 +7,7 @@ import { Cordova, Plugin } from './plugin';
  * Prevent the screen of the mobile device from falling asleep.
  *
  * @usage
- * ```js
+ * ```typescript
  * import { Insomnia } from 'ionic-native';
  *
  *

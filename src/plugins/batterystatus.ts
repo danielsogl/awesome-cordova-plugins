@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
  * Requires Cordova plugin: cordova-plugin-batterystatus. For more info, please see the [BatteryStatus plugin docs](https://github.com/apache/cordova-plugin-battery-status).
  *
  * @usage
- * ```js
+ * ```typescript
  * import { BatteryStatus } from 'ionic-native';
  *
  *

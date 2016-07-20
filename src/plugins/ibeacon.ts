@@ -231,7 +231,7 @@ export interface Delegate {
  *
  * @usage
  *
- * ```ts
+ * ```typescript
  * import { IBeacon } from 'ionic-native';
  *
  *

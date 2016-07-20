@@ -69,7 +69,7 @@ import { Cordova, Plugin } from './plugin';
  * For tracking events, see `logEvent` and `logPurchase`.
  *
  * @usage
- * ```js
+ * ```typescript
  * import { Facebook } from 'ionic-native';
  *
  *
@@ -98,7 +98,7 @@ export class Facebook {
   /**
    * Login to Facebook to authenticate this app.
    *
-   * ```ts
+   * ```typescript
    * {
    *   status: "connected",
    *   authResponse: {

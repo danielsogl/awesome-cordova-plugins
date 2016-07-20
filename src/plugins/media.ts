@@ -8,7 +8,7 @@ declare var Media: any;
  * @name MediaPlugin
  * @description
  * @usage
- * ```ts
+ * ```typescript
  * import { MediaPlugin } from 'ionic-native';
  *
  *

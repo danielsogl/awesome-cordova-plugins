@@ -5,7 +5,7 @@ import { Cordova, Plugin } from './plugin';
  * @name Splashscreen
  * @description This plugin displays and hides a splash screen during application launch. The methods below allows showing and hiding the splashscreen after the app has loaded.
  * @usage
- * ```ts
+ * ```typescript
  * import { Splashscreen } from 'ionic-native';
  *
  *

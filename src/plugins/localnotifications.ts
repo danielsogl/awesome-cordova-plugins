@@ -7,7 +7,7 @@ import { Cordova, Plugin } from './plugin';
  * This plugin allows you to display local notifications on the device
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { LocalNotifications } from 'ionic-native';
  *
  *

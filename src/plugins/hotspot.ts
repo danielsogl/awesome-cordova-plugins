@@ -4,7 +4,7 @@ import { Cordova, Plugin } from './plugin';
  * @name Hotspot
  * @description
  * @usage
- * ```js
+ * ```typescript
  * import { Hotspot, Network } from 'ionic-native';
  *
  *

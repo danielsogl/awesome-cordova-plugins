@@ -112,7 +112,7 @@ export interface FileTransferError {
  * This plugin allows you to upload and download files.
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { Transfer } from 'ionic-native';
  *
  *

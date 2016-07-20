@@ -27,7 +27,7 @@ export interface ImagePickerOptions {
  * For more info, please see the https://github.com/wymsee/cordova-imagePicker
  *
  * @usage
- * ```js
+ * ```typescript
  * import { ImagePicker } from 'ionic-native';
  *
  *

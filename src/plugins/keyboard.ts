@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
  * @name Keyboard
  * @description
  * @usage
- * ```js
+ * ```typescript
  * import { Keyboard } from 'ionic-native';
  *
  *

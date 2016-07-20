@@ -5,7 +5,7 @@ import { Cordova, Plugin } from './plugin';
  * @name Vibration
  * @description Vibrates the device
  * @usage
- * ```ts
+ * ```typescript
  * import { Vibration } from 'ionic-native';
  *
  *

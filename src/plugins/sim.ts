@@ -9,7 +9,7 @@ import { Cordova, Plugin } from './plugin';
  * Requires Cordova plugin: `cordova-plugin-sim`. For more info, please see the [Cordova Sim docs](https://github.com/pbakondy/cordova-plugin-sim).
  *
  * @usage
- * ```js
+ * ```typescript
  * import { Sim } from 'ionic-native';
  *
  *

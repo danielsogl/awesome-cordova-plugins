@@ -46,7 +46,7 @@ export interface CompassOptions {
  * Requires Cordova plugin: `cordova-plugin-device-orientation`. For more info, please see the [Device Orientation docs](https://github.com/apache/cordova-plugin-device-orientation).
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { DeviceOrientation } from 'ionic-native';
  *
  *

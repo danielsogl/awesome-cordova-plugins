@@ -8,7 +8,7 @@ import { Cordova, Plugin } from './plugin';
  * Requires Cordova plugin: cordova-plugin-badge. For more info, please see the [Badge plugin docs](https://github.com/katzer/cordova-plugin-badge).
  *
  * @usage
- * ```js
+ * ```typescript
  * import { Badge } from 'ionic-native';
  *
  *

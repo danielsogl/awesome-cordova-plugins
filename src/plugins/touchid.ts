@@ -21,7 +21,7 @@ import { Cordova, Plugin } from './plugin';
  *  -  `-6` - TouchID is not Available
  *  -  `-8` - TouchID is locked out from too many tries
  * @usage
- * ```js
+ * ```typescript
  * import { TouchID } from 'ionic-native';
  *
  *

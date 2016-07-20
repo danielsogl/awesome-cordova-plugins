@@ -93,7 +93,7 @@ export interface CameraPopoverOptions {
  * Requires {@link module:driftyco/ionic-native} and the Cordova plugin: `cordova-plugin-camera`. For more info, please see the [Cordova Camera Plugin Docs](https://github.com/apache/cordova-plugin-camera).
  *
  * @usage
- * ```js
+ * ```typescript
  * import { Camera } from 'ionic-native';
  *
  *

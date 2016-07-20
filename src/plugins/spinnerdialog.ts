@@ -5,7 +5,7 @@ import { Cordova, Plugin } from './plugin';
  * @name Spinner Dialog
  * @description
  * @usage
- * ```js
+ * ```typescript
  * import { SpinnerDialog } from 'ionic-native';
  *
  *

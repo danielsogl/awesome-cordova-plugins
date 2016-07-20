@@ -230,7 +230,7 @@ export const wrap = function(pluginObj: any, methodName: string, opts: any = {})
  * Class decorator specifying Plugin metadata. Required for all plugins.
  *
  * @usage
- * ```ts
+ * ```typescript
  * @Plugin({
  *  name: 'MyPlugin',
  *  plugin: 'cordova-plugin-myplugin',

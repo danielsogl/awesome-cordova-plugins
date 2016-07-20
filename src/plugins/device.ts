@@ -33,7 +33,7 @@ export interface Device {
  * Access information about the underlying device and platform.
  *
  * @usage
- * ```js
+ * ```typescript
  * import { Device } from 'ionic-native';
  *
  *

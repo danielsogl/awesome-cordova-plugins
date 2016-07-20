@@ -27,7 +27,7 @@ export interface DeeplinkMatch {
  * and Universal App Links.
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { IonicDeeplinks } from 'ionic-native';
  *
  * ```

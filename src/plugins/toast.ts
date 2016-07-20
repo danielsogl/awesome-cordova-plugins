@@ -43,7 +43,7 @@ export interface ToastOptions {
  * Requires Cordova plugin: `cordova-plugin-x-toast`. For more info, please see the [Toast plugin docs](https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin).
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { Toast } from 'ionic-native';
  *
  *

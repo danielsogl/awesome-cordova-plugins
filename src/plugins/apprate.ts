@@ -11,7 +11,7 @@ declare var window;
  * Requires Cordova plugin: cordova-plugin-apprate. For more info, please see the [AppRate plugin docs](https://github.com/pushandplay/cordova-plugin-apprate).
  *
  * @usage
- * ```js
+ * ```typescript
  * import { AppRate } from 'ionic-native';
  *
  *

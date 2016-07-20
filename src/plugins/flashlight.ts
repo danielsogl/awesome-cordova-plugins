@@ -8,7 +8,7 @@ import { Cordova, Plugin } from './plugin';
  * Requires Cordova plugin: `cordova-plugin-flashlight`. For more info, please see the [Flashlight plugin docs](https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin).
  *
  * @usage
- * ```js
+ * ```typescript
  * import { Flashlight } from 'ionic-native';
  *
  *

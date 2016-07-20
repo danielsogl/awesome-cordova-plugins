@@ -31,7 +31,7 @@ export interface SmsOptionsAndroid {
  * Requires Cordova plugin: cordova-plugin-sms. For more info, please see the [SMS plugin docs](https://github.com/cordova-sms/cordova-sms-plugin).
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { SMS } from 'ionic-native';
  *
  *

@@ -10,7 +10,7 @@ import { Cordova, Plugin } from './plugin';
  * For more info, please see the [Clipboard plugin docs](https://github.com/VersoSolutions/CordovaClipboard.git).
  *
  * @usage
- * ```js
+ * ```typescript
  * import { Clipboard } from 'ionic-native';
  *
  *

@@ -5,7 +5,7 @@ import { Cordova, Plugin } from './plugin';
  * @name Google Plus
  * @description
  * @usage
- * ```js
+ * ```typescript
  * import { GooglePlus } from 'ionic-native';
  *
  *

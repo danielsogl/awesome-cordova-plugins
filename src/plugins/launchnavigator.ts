@@ -66,7 +66,7 @@ export interface LaunchNavigatorOptions {
  * @usage
  * Please refer to the plugin's repo for detailed usage. This docs page only explains the Native wrapper.
  *
- * ```js
+ * ```typescript
  * import { LaunchNavigator, LaunchNavigatorOptions } from 'ionic-native';
  *
  * let options: LaunchNavigatorOptions = {

@@ -279,7 +279,7 @@ declare var PushNotification: {
  * For TypeScript users, see the [Push plugin docs about using TypeScript for custom notifications](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/TYPESCRIPT.md).
  *
  * @usage
- * ```js
+ * ```typescript
  * import { Push } from 'ionic-native';
  * ```
  */

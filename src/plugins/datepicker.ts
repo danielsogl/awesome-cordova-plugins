@@ -74,7 +74,7 @@ export interface DatePickerOptions {
  * Requires Cordova plugin: `cordova-plugin-datepicker`. For more info, please see the [DatePicker plugin docs](https://github.com/VitaliiBlagodir/cordova-plugin-datepicker).
  *
  * @usage
- * ```js
+ * ```typescript
  * import { DatePicker } from 'ionic-native';
  *
  *

@@ -8,7 +8,7 @@ import { Cordova, Plugin } from './plugin';
  * Requires Cordova plugin: `cordova-plugin-brightness`. For more info, please see the [Brightness plugin docs](https://github.com/mgcrea/cordova-plugin-brightness).
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { Brightness } from 'ionic-native';
  *
  *

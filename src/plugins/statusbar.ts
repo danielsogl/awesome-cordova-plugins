@@ -11,7 +11,7 @@ declare var window;
  * Requires Cordova plugin: `cordova-plugin-statusbar`. For more info, please see the [StatusBar plugin docs](https://github.com/apache/cordova-plugin-statusbar).
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { StatusBar } from 'ionic-native';
  *
  *

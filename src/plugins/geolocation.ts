@@ -102,7 +102,7 @@ export interface GeolocationOptions {
  *
  * @usage
  *
- * ```ts
+ * ```typescript
  * import { Geolocation } from 'ionic-native';
  *
  *
@@ -139,7 +139,7 @@ export class Geolocation {
    * Watch the current device's position.  Clear the watch by unsubscribing from
    * Observable changes.
    *
-   * ```ts
+   * ```typescript
    * var subscription = Geolocation.watchPosition().subscribe(position => {
    *   console.log(position.coords.longitude + ' ' + position.coords.latitude);
    * });

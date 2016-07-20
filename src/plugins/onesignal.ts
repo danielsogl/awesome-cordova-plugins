@@ -10,7 +10,7 @@ import { Cordova, Plugin } from './plugin';
  * Requires Cordova plugin: `onesignal-cordova-plugin`. For more info, please see the [OneSignal Cordova Docs](https://documentation.onesignal.com/docs/phonegap-sdk-installation).
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { OneSignal } from 'ionic-native';
  *
  * let notificationOpenedCallback(jsonData: any) {

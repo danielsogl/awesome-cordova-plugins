@@ -10,7 +10,7 @@ declare var navigator: any;
  * Requires Cordova plugin: cordova-plugin-network-information. For more info, please see the [Network plugin docs](https://github.com/apache/cordova-plugin-network-information).
  *
  * @usage
- * ```js
+ * ```typescript
  * import { Network } from 'ionic-native';
  *
  * // watch network for a disconnect

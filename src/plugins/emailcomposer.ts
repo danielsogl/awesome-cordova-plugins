@@ -12,7 +12,7 @@ declare var cordova: any;
  * DISCLAIMER: This plugin is experiencing issues with the latest versions of Cordova. Use at your own risk. Functionality is not guaranteed. Please stay tuned for a more stable version.
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { EmailComposer } from 'ionic-native';
  *
  *

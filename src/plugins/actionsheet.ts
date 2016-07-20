@@ -9,7 +9,7 @@ import { Cordova, Plugin } from './plugin';
  * Requires Cordova plugin: `cordova-plugin-actionsheet`. For more info, please see the [ActionSheet plugin docs](https://github.com/EddyVerbruggen/cordova-plugin-actionsheet).
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { ActionSheet } from 'ionic-native';
  *
  *

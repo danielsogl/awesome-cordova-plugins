@@ -11,7 +11,7 @@ declare var sqlitePlugin;
  *
  * @usage
  *
- * ```ts
+ * ```typescript
  * import { SQLite } from 'ionic-native';
  *
  * let db = new SQLite();
@@ -52,7 +52,7 @@ export class SQLite {
    * @param config the config for opening the database.
    * @usage
    *
-   * ```ts
+   * ```typescript
    * import { SQLite } from 'ionic-native';
    *
    * let db = new SQLite();
@@ -112,7 +112,7 @@ export class SQLite {
    *
    * @usage
    *
-   * ```ts
+   * ```typescript
    * db.executeSql('SELECT FROM puppies WHERE type = ?', ['cavalier']).then((resultSet) => {
    *   // Access the items through resultSet.rows
    *   // resultSet.rows.item(i)

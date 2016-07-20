@@ -8,7 +8,7 @@ import { Cordova, Plugin } from './plugin';
  * Requires Cordova plugin: `cordova-plugin-app-version`. For more info, please see the [Cordova App Version docs](https://github.com/whiteoctober/cordova-plugin-app-version).
  *
  * @usage
- * ```js
+ * ```typescript
  * import { AppVersion } from 'ionic-native';
  *
  *
