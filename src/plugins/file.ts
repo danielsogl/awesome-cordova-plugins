@@ -363,9 +363,9 @@ export class File {
     try {
       var directory = path + file;
 
-      window.resolveLocalFileSystemURL(directory, function (fileSystem) {
-        if (fileSystem.isFile === true) {
-          resolveFn(fileSystem);
+      window.resolveLocalFileSystemURL(directory, function (fileEntry) {
+        if (fileEntry.isFile === true) {
+          resolveFn(fileEntry);
         } else {
           rejectFn({code: 13, message: 'input is not a file'});
         }
