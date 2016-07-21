@@ -99,7 +99,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static hide(): voi { };
+  static hide(): void { };
 
   /**
    * Set the default mode for the Flash.
