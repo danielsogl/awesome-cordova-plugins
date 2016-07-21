@@ -474,21 +474,17 @@ export class File {
   /**
    * Read a file as string.
    *
-   * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
-   * @param {string} fileName Name of file to move
+   * @param {string} uri Base FileSystem. Please refer to the iOS and Android filesystems above
    * @return Returns a Promise that resolves or rejects with an error.
    */
-  static readAsText(path: string, fileName: string): Promise<any> {
+  static readAsText(file_uri: string): Promise<any> {
     let resolveFn, rejectFn;
     let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
 
-    if ((/^\//.test(fileName))) {
-      rejectFn('file-name cannot start with \/');
-    }
-
     try {
-      window.resolveLocalFileSystemURL(path, function (fileSystem) {
-        fileSystem.getFile(fileName, {create: false}, function (fileEntry) {
+
+      window.resolveLocalFileSystemURL(file_uri, function (fileEntry) {
+        
           fileEntry.file(function (file) {
             var reader = new FileReader();
 
@@ -503,10 +499,52 @@ export class File {
             };
 
             reader.readAsText(file);
-          }, function (error) {
-            error.message = File.cordovaFileError[error.code];
-            rejectFn(error);
-          });
+          
+        }, function (err) {
+          err.message = File.cordovaFileError[err.code];
+          rejectFn(err);
+        });
+      }, function (er) {
+        er.message = File.cordovaFileError[er.code];
+        rejectFn(er);
+      });
+    } catch (e) {
+      e.message = File.cordovaFileError[e.code];
+      rejectFn(e);
+    }
+
+    return promise;
+  }
+
+  /**
+   * Read a file as string.
+   *
+   * @param {string} uri Base FileSystem. Please refer to the iOS and Android filesystems above
+   * @return Returns a Promise that resolves or rejects with an error.
+   */
+  static readAsDataURL(file_uri: string): Promise<any> {
+    let resolveFn, rejectFn;
+    let promise = new Promise((resolve, reject) => {resolveFn = resolve; rejectFn = reject; });
+
+    try {
+
+      window.resolveLocalFileSystemURL(file_uri, function (fileEntry) {
+        
+          fileEntry.file(function (file) {
+            var reader = new FileReader();
+
+            reader.onloadend = function(e) {
+              if (this.result !== undefined && this.result !== null) {
+                resolveFn(this.result);
+              } else if (this.error !== undefined && this.error !== null) {
+                rejectFn(this.error);
+              } else {
+                rejectFn({code: null, message: 'READER_ONLOADEND_ERR'});
+              }
+            };
+
+            reader.readAsDataURL(file);
+          
         }, function (err) {
           err.message = File.cordovaFileError[err.code];
           rejectFn(err);
