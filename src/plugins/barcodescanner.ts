@@ -8,8 +8,8 @@ import { Cordova, Plugin } from './plugin';
  * Requires Cordova plugin: `phonegap-plugin-barcodescanner`. For more info, please see the [BarcodeScanner plugin docs](https://github.com/phonegap/phonegap-plugin-barcodescanner).
  *
  * @usage
- * ```js
- * import {BarcodeScanner} from 'ionic-native';
+ * ```typescript
+ * import { BarcodeScanner } from 'ionic-native';
  *
  *
  * BarcodeScanner.scan().then((barcodeData) => {

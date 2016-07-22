@@ -6,13 +6,12 @@ import { Cordova, Plugin } from './plugin';
  * @description
  * @usage
  * ```
- * import {SafariViewController} from 'ionic-native';
+ * import { SafariViewController } from 'ionic-native';
  *
- * ...
  *
  * SafariViewController.isAvailable()
  *   .then(
- *     (available) => {
+ *     (available: boolean) => {
  *       if(available){
  *
  *         SafariViewController.show({
@@ -25,9 +24,9 @@ import { Cordova, Plugin } from './plugin';
  *         })
  *         .then(
  *           (result: any) => {
- *             if(result.event === 'opened') console.log("Opened");
- *             else if(result.event === 'loaded') console.log("Loaded");
- *             else if(result.event === 'closed') console.log("Closed");
+ *             if(result.event === 'opened') console.log('Opened');
+ *             else if(result.event === 'loaded') console.log('Loaded');
+ *             else if(result.event === 'closed') console.log('Closed');
  *           },
  *           (error: any) => console.error(error)
  *         );

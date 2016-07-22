@@ -4,14 +4,13 @@ import { Cordova, Plugin } from './plugin';
  * @name Hotspot
  * @description
  * @usage
- * ```js
- * import {Hotspot, Network} from 'ionic-native';
+ * ```typescript
+ * import { Hotspot, Network } from 'ionic-native';
  *
- * ...
- *     Hotspot.scanWifi().then((networks: Array<Network>) => {
- *         console.log(networks);
- *     });
- * ...
+ *
+ * Hotspot.scanWifi().then((networks: Array<Network>) => {
+ *     console.log(networks);
+ * });
  *
  * ```
  */

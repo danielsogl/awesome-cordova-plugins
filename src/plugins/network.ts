@@ -10,12 +10,12 @@ declare var navigator: any;
  * Requires Cordova plugin: cordova-plugin-network-information. For more info, please see the [Network plugin docs](https://github.com/apache/cordova-plugin-network-information).
  *
  * @usage
- * ```js
- * import {Network} from 'ionic-native';
+ * ```typescript
+ * import { Network } from 'ionic-native';
  *
  * // watch network for a disconnect
  * let disconnectSubscription = Network.onDisconnect().subscribe(() => {
- *   console.log('network was disconnected :-( ')
+ *   console.log('network was disconnected :-(');
  * });
  *
  * // stop disconnect watch
@@ -24,9 +24,9 @@ declare var navigator: any;
  *
  * // watch network for a connection
  * let connectSubscription = Network.onConnect().subscribe(() => {
- *   console.log('network connected!'); *
+ *   console.log('network connected!'); 
  *   // We just got a connection but we need to wait briefly
- * // before we determine the connection type.  Might need to wait 
+ *    // before we determine the connection type.  Might need to wait 
  *   // prior to doing any api requests as well.
  *   setTimeout(() => {
  *     if (Network.connection === 'wifi') {

@@ -9,13 +9,13 @@ import { Cordova, Plugin } from './plugin';
  * Requires Cordova plugin: `cordova-plugin-sim`. For more info, please see the [Cordova Sim docs](https://github.com/pbakondy/cordova-plugin-sim).
  *
  * @usage
- * ```js
- * import {Sim} from 'ionic-native';
+ * ```typescript
+ * import { Sim } from 'ionic-native';
  *
  *
  * Sim.getSimInfo().then(
- *   (info) => console.log('Sim info:', info),
- *   (err) => console.log('Unable to get sim info:', err)
+ *   (info) => console.log('Sim info: ', info),
+ *   (err) => console.log('Unable to get sim info: ', err)
  * );
  * ```
  */

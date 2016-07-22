@@ -417,4 +417,5 @@ export class Calendar {
    */
   @Cordova()
   static openCalendar(date: Date): Promise<any> { return; }
+
 }

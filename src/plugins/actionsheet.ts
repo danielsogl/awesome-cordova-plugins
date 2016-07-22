@@ -9,8 +9,9 @@ import { Cordova, Plugin } from './plugin';
  * Requires Cordova plugin: `cordova-plugin-actionsheet`. For more info, please see the [ActionSheet plugin docs](https://github.com/EddyVerbruggen/cordova-plugin-actionsheet).
  *
  * @usage
- * ```ts
- * import {ActionSheet} from 'ionic-native';
+ * ```typescript
+ * import { ActionSheet } from 'ionic-native';
+ *
  *
  * let buttonLabels = ['Share via Facebook', 'Share via Twitter'];
  * ActionSheet.show({
@@ -18,7 +19,7 @@ import { Cordova, Plugin } from './plugin';
  *   'buttonLabels': buttonLabels,
  *   'addCancelButtonWithLabel': 'Cancel',
  *   'addDestructiveButtonWithLabel' : 'Delete'
- * }).then(buttonIndex => {
+ * }).then((buttonIndex: number) => {
  *   console.log('Button pressed: ' + buttonLabels[buttonIndex - 1]);
  * });
  * ```
@@ -72,4 +73,5 @@ export class ActionSheet {
    */
   @Cordova()
   static hide(options?: any): Promise<any> { return; }
+
 }

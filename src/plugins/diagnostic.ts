@@ -95,4 +95,5 @@ export class Diagnostic {
    */
   @Cordova()
   static isRegisteredForRemoteNotifications(): Promise<any> { return; }
+
 }

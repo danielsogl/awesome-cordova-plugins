@@ -231,8 +231,8 @@ export interface Delegate {
  *
  * @usage
  *
- * ```ts
- * import {IBeacon} from 'ionic-native';
+ * ```typescript
+ * import { IBeacon } from 'ionic-native';
  *
  *
  * // Request permission to use location on iOS
@@ -243,13 +243,13 @@ export interface Delegate {
  * // Subscribe to some of the delegate's event handlers
  * delegate.didRangeBeaconsInRegion()
  *   .subscribe(
- *     data => {console.log('didRangeBeaconsInRegion: ', data)},
- *     error => console.error
+ *     data => console.log('didRangeBeaconsInRegion: ', data),
+ *     error => console.error();
  *   );
  * delegate.didStartMonitoringForRegion()
  *   .subscribe(
- *     data => {console.log('didStartMonitoringForRegion: ', data)},
- *     error => console.error
+ *     data => console.log('didStartMonitoringForRegion: ', data),
+ *     error => console.error();
  *   );
  * delegate.didEnterRegion()
  *   .subscribe(
