@@ -29,7 +29,7 @@ declare var cordova: any;
  * 
  * secureStorage.set('myitem', 'myvalue')
  *  .then(
- *    data => console.log( data),
+ *    data => console.log(data),
  *    error => console.log(error)
  * );
  * 
@@ -48,9 +48,7 @@ declare var cordova: any;
 })
 export class SecureStorage {
 
-  // Properties
   private _objectInstance: any;
-  init: Promise<any>;
 
   constructor()  {}
 
