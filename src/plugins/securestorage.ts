@@ -14,7 +14,12 @@ declare var cordova: any;
  * ```typescript
  * import { SecureStorage } from 'ionic-native';
  *
- * let secureStorage = SecureStorage.init('my_app_name');
+ * let secureStorage: SecureStorage = new SecureStorage();
+ * secureStorage.create('my_store_name')
+ *  .then(
+ *    () => console.log('Success'), 
+ *    error => console.log(error);
+ * );
  * 
  * secureStorage.get('myitem')
  *  .then(
@@ -47,14 +52,16 @@ export class SecureStorage {
   private _objectInstance: any;
   init: Promise<any>;
 
+  constructor()  {}
+
   /**
    * Creates a namespaced storage. 
-   * @param storage {string}
+   * @param store {string}
    */
-  constructor(storage: string) {
-    let res, rej
-    this.init = new Promise<any>((resolve, reject) => { res = resolve; rej = reject; });
-    this._objectInstance = new cordova.plugins.SecureStorage(res, rej, storage);
+  create(store: string): Promise<any> {
+    return new Promise((res, rej) => {
+      this._objectInstance = new cordova.plugins.SecureStorage(res, rej, store);
+    });
   }
 
   /**
