@@ -33,13 +33,13 @@ export interface CameraPreviewSize {
  * @description
  * Showing camera preview in HTML
  *
- * Requires {@link module:driftyco/ionic-native} and the Cordova plugin: `cordova-plugin-camera-preview`. For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/westonganger/cordova-plugin-camera-preview).
+ * Requires {@link module:driftyco/ionic-native} and the Cordova plugin: `cordova-plugin-camera-preview`. For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview).
  *
  */
 @Plugin({
   plugin: 'cordova-plugin-camera-preview',
   pluginRef: 'cordova.plugins.camerapreview',
-  repo: 'https://github.com/westonganger/cordova-plugin-camera-preview',
+  repo: 'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
   platforms: ['Android', 'iOS']
 })
 export class CameraPreview {
@@ -104,10 +104,10 @@ export class CameraPreview {
   /**
    * Set the default mode for the Flash.
    */
-  @Cordova({
-    sync: true
-  })
-  static setFlashMode(mode: number): void { };
+  // @Cordova({
+  //   sync: true
+  // })
+  // static setFlashMode(mode: number): void { };
 
   /**
    * Set camera color effect.
