@@ -127,6 +127,27 @@ export interface FileTransferError {
  *
  * // Abort active transfer:
  * fileTransfer.abort();
+ *
+ * E.g
+ *
+ * upload(){
+ *   const fileTransfer = new Transfer();
+ *   var options: any;
+ *
+ *   options = {
+ *      fileKey: 'file',
+ *      fileName: 'name.jpg',
+ *      headers: {}
+ *      ..... 
+ *   }
+ *   fileTransfer.upload("<file path>", "<api endpoint>", options)
+ *    .then((data) => {
+ *      // success
+ *    }, (err) => {
+ *      // error
+ *    })
+ * }
+ *
  * ```
  *
  */
