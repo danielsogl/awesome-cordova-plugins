@@ -1,3 +1,19 @@
+<a name="1.3.9"></a>
+## [1.3.9](https://github.com/driftyco/ionic-native/compare/v1.3.8...v1.3.9) (2016-07-23)
+
+
+### Bug Fixes
+
+* **file:** readAsText() and adds readAsDataURL() in File plugin ([#346](https://github.com/driftyco/ionic-native/issues/346)) ([77d31cd](https://github.com/driftyco/ionic-native/commit/77d31cd))
+
+
+### Features
+
+* **android-fingerprint-auth:** add wrapper for plugin ([df326f7](https://github.com/driftyco/ionic-native/commit/df326f7)), closes [#334](https://github.com/driftyco/ionic-native/issues/334)
+* **secure-storage:** Add Secure Storage Wrapper ([#347](https://github.com/driftyco/ionic-native/issues/347)) ([075842d](https://github.com/driftyco/ionic-native/commit/075842d))
+
+
+
 <a name="1.3.8"></a>
 ## [1.3.8](https://github.com/driftyco/ionic-native/compare/v1.3.7...v1.3.8) (2016-07-20)
 
