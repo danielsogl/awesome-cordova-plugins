@@ -6,6 +6,7 @@ declare var window;
 
 import {ActionSheet} from './plugins/actionsheet';
 import {AdMob} from './plugins/admob';
+import { AndroidFingerprintAuth } from './plugins/android-fingerprint-auth';
 import {AppAvailability} from './plugins/appavailability';
 import {AppRate} from './plugins/apprate';
 import {AppVersion} from './plugins/appversion';
@@ -109,6 +110,7 @@ export * from './plugins/twitter-connect';
 export {
   ActionSheet,
   AdMob,
+  AndroidFingerprintAuth,
   AppAvailability,
   AppRate,
   AppVersion,
@@ -159,6 +161,7 @@ export * from './plugins/plugin';
 window['IonicNative'] = {
   ActionSheet: ActionSheet,
   AdMob: AdMob,
+  AndroidFingerprintAuth: AndroidFingerprintAuth,
   AppAvailability: AppAvailability,
   AppRate: AppRate,
   AppVersion: AppVersion,
