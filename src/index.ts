@@ -88,6 +88,7 @@ export * from './plugins/datepicker';
 export * from './plugins/device';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
+export * from './plugins/facebook';
 export * from './plugins/filetransfer';
 export * from './plugins/googlemaps';
 export * from './plugins/httpd';
@@ -104,6 +105,7 @@ export * from './plugins/safari-view-controller';
 export * from './plugins/sms';
 export * from './plugins/spinnerdialog';
 export * from './plugins/toast';
+export * from './plugins/twitter-connect';
 export {
   ActionSheet,
   AdMob,
@@ -125,7 +127,6 @@ export {
   Dialogs,
   Diagnostic,
   EmailComposer,
-  Facebook,
   File,
   Flashlight,
   Geolocation,
@@ -148,7 +149,6 @@ export {
   StatusBar,
   TouchID,
   Transfer,
-  TwitterConnect,
   Vibration,
   WebIntent
 }
