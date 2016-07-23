@@ -1,7 +1,5 @@
 import { CordovaInstance, Plugin } from './plugin';
-
 declare var cordova: any;
-
 /**
  * @name Secure Storage
  * @description
@@ -10,29 +8,29 @@ declare var cordova: any;
  * Requires Cordova plugin: `cordova-plugin-secure-storage`. For more info, please see the [Cordova Secure Storage docs](https://github.com/Crypho/cordova-plugin-secure-storage).
  *
  * @usage
- * 
+ *
  * ```typescript
  * import { SecureStorage } from 'ionic-native';
  *
  * let secureStorage: SecureStorage = new SecureStorage();
  * secureStorage.create('my_store_name')
  *  .then(
- *    () => console.log('Success'), 
+ *    () => console.log('Storage is ready!'),
  *    error => console.log(error);
  * );
- * 
+ *
  * secureStorage.get('myitem')
  *  .then(
  *    data => console.log(data),
  *    error => console.log(error)
  * );
- * 
+ *
  * secureStorage.set('myitem', 'myvalue')
  *  .then(
  *    data => console.log(data),
  *    error => console.log(error)
  * );
- * 
+ *
  * secureStorage.remove('myitem')
  * .then(
  *    data => console.log(data),
@@ -50,10 +48,10 @@ export class SecureStorage {
 
   private _objectInstance: any;
 
-  constructor()  {}
+  constructor() {}
 
   /**
-   * Creates a namespaced storage. 
+   * Creates a namespaced storage.
    * @param store {string}
    */
   create(store: string): Promise<any> {
