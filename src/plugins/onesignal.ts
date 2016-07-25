@@ -28,8 +28,7 @@ import { Cordova, Plugin } from './plugin';
 @Plugin({
   plugin: 'onesignal-cordova-plugin',
   pluginRef: 'plugins.OneSignal',
-  repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK'
 })
 export class OneSignal {
 
