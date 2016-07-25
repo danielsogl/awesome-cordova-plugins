@@ -19,7 +19,7 @@ import { Cordova, Plugin } from './plugin';
  */
 @Plugin({
   plugin: 'cordova-plugin-brightness',
-  pluginRef: 'plugins.brightness',
+  pluginRef: 'cordova.plugins.brightness',
   repo: 'https://github.com/mgcrea/cordova-plugin-brightness',
   platforms: ['Android', 'iOS']
 })
