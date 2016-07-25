@@ -1,10 +1,13 @@
 import { Cordova, CordovaInstance, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
+
+
 /**
  * @private
  * Created by Ibrahim on 3/29/2016.
  */
 declare var plugin: any;
+
 /**
  * @private
  * You can listen to these events where appropriate
@@ -43,14 +46,14 @@ export const GoogleMapsAnimation = {
  * @description This plugin uses the native Google Maps SDK
  * @usage
  * ```
- * import {GoogleMap, GoogleMapsEvent} from 'ionic-native';
+ * import { GoogleMap, GoogleMapsEvent } from 'ionic-native';
  *
  * ...
  *
  * // somewhere in your component
  * let map = new GoogleMap('elementID');
  *
- * map.on(GoogleMapsEvent.MAP_READY).subscribe(() => console.log("Map is ready!"));
+ * map.on(GoogleMapsEvent.MAP_READY).subscribe(() => console.log('Map is ready!'));
  * ```
  */
 @Plugin({
@@ -77,8 +80,7 @@ export class GoogleMap {
   on(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.on(event, cb);
+        this._objectInstance.on(event, observer.next.bind(observer));
         return () => this._objectInstance.off(event);
       }
     );
@@ -238,7 +240,7 @@ export class GoogleMap {
   addGroundOverlay(options: GoogleMapsGroundOverlayOptions): Promise<GoogleMapsGroundOverlay> {
     return new Promise<GoogleMapsGroundOverlay>(
       (resolve, reject) => {
-        this._objectInstance.addTileOverlay(options, (groundOverlay: any) => {
+        this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
           if (groundOverlay) resolve(new GoogleMapsGroundOverlay(groundOverlay));
           else reject();
         });
@@ -249,7 +251,7 @@ export class GoogleMap {
   addKmlOverlay(options: GoogleMapsKmlOverlayOptions): Promise<GoogleMapsKmlOverlay> {
     return new Promise<GoogleMapsKmlOverlay>(
       (resolve, reject) => {
-        this._objectInstance.addTileOverlay(options, (kmlOverlay: any) => {
+        this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
           if (kmlOverlay) resolve(new GoogleMapsKmlOverlay(kmlOverlay));
           else reject();
         });
@@ -389,11 +391,8 @@ export class GoogleMapsMarker {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = (data: any) => {
-          observer.next(data);
-        };
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -537,9 +536,8 @@ export class GoogleMapsCircle {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -629,9 +627,8 @@ export class GoogleMapsPolyline {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -721,9 +718,8 @@ export class GoogleMapsPolygon {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -951,8 +947,9 @@ export class GoogleMapsKmlOverlay {
 export class GoogleMapsLatLngBounds {
   private _objectInstance: any;
 
-  constructor(public southwest: GoogleMapsLatLng, public northeast: GoogleMapsLatLng) {
-    this._objectInstance = new plugin.google.maps.LatLngBounds([southwest, northeast]);
+  constructor(public southwestOrArrayOfLatLng: GoogleMapsLatLng | GoogleMapsLatLng[], public northeast?: GoogleMapsLatLng) {
+    let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
+    this._objectInstance = new plugin.google.maps.LatLngBounds(args);
   }
 
   @CordovaInstance({ sync: true })
@@ -1003,5 +1000,40 @@ export class GoogleMapsLatLng {
     precision = precision || 6;
 
     return this.lat.toFixed(precision) + ',' + this.lng.toFixed(precision);
+  }
+}
+/**
+ * @private
+ */
+export interface GeocoderRequest {
+  address?: string;
+  position?: { lat: number; lng: number };
+}
+/**
+ * @private
+ */
+export interface GeocoderResult {
+  position?: { lat: number; lng: number };
+  subThoroughfare?: string;
+  thoroughfare?: string;
+  locality?: string;
+  adminArea?: string;
+  postalCode?: string;
+  country?: string;
+}
+/**
+ * @private
+ */
+export class Geocoder {
+  /**
+   * Converts position to address and vice versa
+   * @param {GeocoderRequest} request Request object with either an address or a position
+   * @returns {Promise<GeocoderResult[]>}
+   */
+  static geocode(request: GeocoderRequest): Promise<GeocoderResult[]> {
+    return new Promise<GeocoderResult[]>((resolve, reject) => {
+      if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) reject({ error: 'plugin_not_installed' });
+      else plugin.google.maps.Geocoder.geocode(request, resolve);
+    });
   }
 }

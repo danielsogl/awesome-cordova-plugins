@@ -1,5 +1,6 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
+
 
 declare var navigator: any;
 
@@ -101,20 +102,19 @@ export interface GeolocationOptions {
  *
  * @usage
  *
- * ```ts
- * import {Geolocation} from 'ionic-native';
- *
+ * ```typescript
+ * import { Geolocation } from 'ionic-native';
  *
  *
  * Geolocation.getCurrentPosition().then((resp) => {
- *  //resp.coords.latitude
- *  //resp.coords.longitude
+ *  // resp.coords.latitude
+ *  // resp.coords.longitude
  * })
  *
  * let watch = Geolocation.watchPosition();
  * watch.subscribe((data) => {
- *  //data.coords.latitude
- *  //data.coords.longitude
+ *  // data.coords.latitude
+ *  // data.coords.longitude
  * })
  * ```
  */
@@ -139,7 +139,7 @@ export class Geolocation {
    * Watch the current device's position.  Clear the watch by unsubscribing from
    * Observable changes.
    *
-   * ```ts
+   * ```typescript
    * var subscription = Geolocation.watchPosition().subscribe(position => {
    *   console.log(position.coords.longitude + ' ' + position.coords.latitude);
    * });
@@ -154,8 +154,7 @@ export class Geolocation {
   static watchPosition(options?: GeolocationOptions): Observable<Geoposition> {
     return new Observable<Geoposition>(
       (observer: any) => {
-        let cb = (data: Geoposition) => observer.next(data);
-        let watchId = navigator.geolocation.watchPosition(cb, options);
+        let watchId = navigator.geolocation.watchPosition(observer.next.bind(observer), observer.error.bind(observer), options);
         return () => navigator.geolocation.clearWatch(watchId);
       }
     );

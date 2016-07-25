@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
  * @name Badge
@@ -8,8 +8,8 @@ import {Plugin, Cordova} from './plugin';
  * Requires Cordova plugin: cordova-plugin-badge. For more info, please see the [Badge plugin docs](https://github.com/katzer/cordova-plugin-badge).
  *
  * @usage
- * ```js
- * import {Badge} from 'ionic-native';
+ * ```typescript
+ * import { Badge } from 'ionic-native';
  *
  *
  * Badge.set(10);
@@ -74,4 +74,5 @@ export class Badge {
    */
   @Cordova()
   static registerPermission(): Promise<any> { return; }
+
 }

@@ -1,17 +1,16 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
  * @name Hotspot
  * @description
  * @usage
- * ```js
- * import {Hotspot, Network} from 'ionic-native';
+ * ```typescript
+ * import { Hotspot, Network } from 'ionic-native';
  *
- * ...
- *     Hotspot.scanWifi().then((networks: Array<Network>) => {
- *         console.log(networks);
- *     });
- * ...
+ *
+ * Hotspot.scanWifi().then((networks: Array<Network>) => {
+ *     console.log(networks);
+ * });
  *
  * ```
  */
@@ -24,10 +23,10 @@ import {Plugin, Cordova} from './plugin';
 export class Hotspot {
 
   @Cordova()
-  static isAvailable(): Promise<boolean> {return; }
+  static isAvailable(): Promise<boolean> { return; }
 
   @Cordova()
-  static toggleWifi(): Promise<boolean> {return; }
+  static toggleWifi(): Promise<boolean> { return; }
 
   /**
    * Configures and starts hotspot with SSID and Password
@@ -39,7 +38,7 @@ export class Hotspot {
    * @return {Promise<void>}        - Promise to call once hotspot is started, or reject upon failure
    */
   @Cordova()
-  static createHotspot(ssid: string, mode: string, password: string): Promise<void> {return; }
+  static createHotspot(ssid: string, mode: string, password: string): Promise<void> { return; }
 
   /**
    * Turns on Access Point
@@ -47,7 +46,7 @@ export class Hotspot {
    * @return {Promise<boolean>} - true if AP is started
    */
   @Cordova()
-  static startHotspot(): Promise<boolean> {return; }
+  static startHotspot(): Promise<boolean> { return; }
 
   /**
    * Configures hotspot with SSID and Password
@@ -59,7 +58,7 @@ export class Hotspot {
    * @return {Promise<void>}        - Promise to call when hotspot is configured, or reject upon failure
    */
   @Cordova()
-  static configureHotspot(ssid: string, mode: string, password: string): Promise<void> {return; }
+  static configureHotspot(ssid: string, mode: string, password: string): Promise<void> { return; }
 
   /**
    * Turns off Access Point
@@ -67,7 +66,7 @@ export class Hotspot {
    * @return {Promise<boolean>} - Promise to turn off the hotspot, true on success, false on failure
    */
   @Cordova()
-  static stopHotspot(): Promise<boolean> {return; }
+  static stopHotspot(): Promise<boolean> { return; }
 
   /**
    * Checks if hotspot is enabled
@@ -75,10 +74,10 @@ export class Hotspot {
    * @return {Promise<void>}    - Promise that hotspot is enabled, rejected if it is not enabled
    */
   @Cordova()
-  static isHotspotEnabled(): Promise<void> {return; }
+  static isHotspotEnabled(): Promise<void> { return; }
 
   @Cordova()
-  static getAllHotspotDevices(): Promise<Array<HotspotDevice>> {return; }
+  static getAllHotspotDevices(): Promise<Array<HotspotDevice>> { return; }
 
   /**
    * Connect to a WiFi network
@@ -92,25 +91,25 @@ export class Hotspot {
    *      Promise that connection to the WiFi network was successfull, rejected if unsuccessful
    */
   @Cordova()
-  static connectToWifi(ssid: string, password: string): Promise<void> {return; }
+  static connectToWifi(ssid: string, password: string): Promise<void> { return; }
 
-   /**
-    * Connect to a WiFi network
-    *
-    * @param {string}   ssid
-    *      SSID to connect
-    * @param {string}   password
-    *      Password to use
-    * @param {string}   authentication
-    *      Authentication modes to use (LEAP, SHARED, OPEN)
-    * @param {string[]} encryption
-    *      Encryption modes to use (CCMP, TKIP, WEP104, WEP40)
-    *
-    * @return {Promise<void>}
-    *      Promise that connection to the WiFi network was successfull, rejected if unsuccessful
-    */
+  /**
+   * Connect to a WiFi network
+   *
+   * @param {string}   ssid
+   *      SSID to connect
+   * @param {string}   password
+   *      Password to use
+   * @param {string}   authentication
+   *      Authentication modes to use (LEAP, SHARED, OPEN)
+   * @param {string[]} encryption
+   *      Encryption modes to use (CCMP, TKIP, WEP104, WEP40)
+   *
+   * @return {Promise<void>}
+   *      Promise that connection to the WiFi network was successfull, rejected if unsuccessful
+   */
   @Cordova()
-  static connectToWifiAuthEncrypt(ssid: string, password: string, authentication: string, encryption: Array<string>): Promise<void> {return; }
+  static connectToWifiAuthEncrypt(ssid: string, password: string, authentication: string, encryption: Array<string>): Promise<void> { return; }
 
   /**
    * Add a WiFi network
@@ -126,7 +125,7 @@ export class Hotspot {
    *      Promise that adding the WiFi network was successfull, rejected if unsuccessful
    */
   @Cordova()
-  static addWifiNetwork(ssid: string, mode: string, password: string): Promise<void> {return; }
+  static addWifiNetwork(ssid: string, mode: string, password: string): Promise<void> { return; }
 
   /**
    * Remove a WiFi network
@@ -138,43 +137,43 @@ export class Hotspot {
    *      Promise that removing the WiFi network was successfull, rejected if unsuccessful
    */
   @Cordova()
-  static removeWifiNetwork(ssid: string): Promise<void> {return; }
+  static removeWifiNetwork(ssid: string): Promise<void> { return; }
 
   @Cordova()
-  static isConnectedToInternet(): Promise<boolean> {return; }
+  static isConnectedToInternet(): Promise<boolean> { return; }
 
   @Cordova()
-  static isConnectedToInternetViaWifi(): Promise<boolean> {return; }
+  static isConnectedToInternetViaWifi(): Promise<boolean> { return; }
 
   @Cordova()
-  static isWifiOn(): Promise<boolean> {return; }
+  static isWifiOn(): Promise<boolean> { return; }
 
   @Cordova()
-  static isWifiSupported(): Promise<boolean> {return; }
+  static isWifiSupported(): Promise<boolean> { return; }
 
   @Cordova()
-  static isWifiDirectSupported(): Promise<boolean> {return; }
+  static isWifiDirectSupported(): Promise<boolean> { return; }
 
   @Cordova()
-  static scanWifi(): Promise<Array<Network>> {return; }
+  static scanWifi(): Promise<Array<Network>> { return; }
 
   @Cordova()
-  static scanWifiByLevel(): Promise<Array<Network>> {return; }
+  static scanWifiByLevel(): Promise<Array<Network>> { return; }
 
   @Cordova()
-  static startWifiPeriodicallyScan(interval: number, duration: number): Promise<any> {return; }
+  static startWifiPeriodicallyScan(interval: number, duration: number): Promise<any> { return; }
 
   @Cordova()
-  static stopWifiPeriodicallyScan(): Promise<any> {return; }
+  static stopWifiPeriodicallyScan(): Promise<any> { return; }
 
   @Cordova()
-  static getNetConfig(): Promise<NetworkConfig> {return; }
+  static getNetConfig(): Promise<NetworkConfig> { return; }
 
   @Cordova()
-  static getConnectionInfo(): Promise<ConnectionInfo> {return; }
+  static getConnectionInfo(): Promise<ConnectionInfo> { return; }
 
   @Cordova()
-  static pingHost(ip: string): Promise<string> {return; }
+  static pingHost(ip: string): Promise<string> { return; }
 
   /**
    * Gets MAC Address associated with IP Address from ARP File
@@ -184,7 +183,7 @@ export class Hotspot {
    * @return {Promise<string>}  - A Promise for the MAC Address
    */
   @Cordova()
-  static getMacAddressOfHost(ip: string): Promise<string> {return; }
+  static getMacAddressOfHost(ip: string): Promise<string> { return; }
 
   /**
    * Checks if IP is live using DNS
@@ -194,7 +193,7 @@ export class Hotspot {
    * @return {Promise<boolean>} - A Promise for whether the IP Address is reachable
    */
   @Cordova()
-  static isDnsLive(ip: string): Promise<boolean> {return; }
+  static isDnsLive(ip: string): Promise<boolean> { return; }
 
   /**
    * Checks if IP is live using socket And PORT
@@ -204,7 +203,7 @@ export class Hotspot {
    * @return {Promise<boolean>} - A Promise for whether the IP Address is reachable
    */
   @Cordova()
-  static isPortLive(ip: string): Promise<boolean> {return; }
+  static isPortLive(ip: string): Promise<boolean> { return; }
 
   /**
    * Checks if device is rooted
@@ -212,7 +211,7 @@ export class Hotspot {
    * @return {Promise<boolean>} - A Promise for whether the device is rooted
    */
   @Cordova()
-  static isRooted(): Promise<boolean> {return; }
+  static isRooted(): Promise<boolean> { return; }
 
 }
 

@@ -1,5 +1,6 @@
-import {Plugin, Cordova, CordovaProperty} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, CordovaProperty, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
+
 
 declare var navigator: any;
 
@@ -9,12 +10,12 @@ declare var navigator: any;
  * Requires Cordova plugin: cordova-plugin-network-information. For more info, please see the [Network plugin docs](https://github.com/apache/cordova-plugin-network-information).
  *
  * @usage
- * ```js
- * import {Network, Connection} from 'ionic-native';
+ * ```typescript
+ * import { Network } from 'ionic-native';
  *
  * // watch network for a disconnect
  * let disconnectSubscription = Network.onDisconnect().subscribe(() => {
- *   console.log('network was disconnected :-( ')
+ *   console.log('network was disconnected :-(');
  * });
  *
  * // stop disconnect watch
@@ -23,13 +24,12 @@ declare var navigator: any;
  *
  * // watch network for a connection
  * let connectSubscription = Network.onConnect().subscribe(() => {
- *   console.log('network connected!'); *
+ *   console.log('network connected!'); 
  *   // We just got a connection but we need to wait briefly
- * // before we determine the connection type.  Might need to wait 
+ *    // before we determine the connection type.  Might need to wait 
  *   // prior to doing any api requests as well.
  *   setTimeout(() => {
- *     console.log(Network.connection);
- *     if (Network.connection === Connection.WIFI) {
+ *     if (Network.connection === 'wifi') {
  *       console.log('we got a wifi connection, woohoo!');
  *     }
  *   }, 3000);
@@ -39,6 +39,8 @@ declare var navigator: any;
  * connectSubscription.unsubscribe();
  *
  * ```
+ * @advanced
+ * The `connection` property will return one of the following connection types: `unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
  */
 @Plugin({
   plugin: 'cordova-plugin-network-information',
@@ -52,7 +54,7 @@ export class Network {
    * Return the network connection type
    */
   @CordovaProperty
-  static get connection(): Connection { return navigator.connection.type; }
+  static get connection(): String { return navigator.connection.type; }
 
   /**
    * Get notified when the device goes offline
@@ -74,15 +76,4 @@ export class Network {
   })
   static onConnect(): Observable<any> { return; }
 
-}
-
-export class Connection {
-  static get UNKNOWN()  { return 'unknown'; }
-  static get ETHERNET() { return 'ethernet'; }
-  static get WIFI()     { return 'wifi'; }
-  static get CELL_2G()  { return '2g'; }
-  static get CELL_3G()  { return '3g'; }
-  static get CELL_4G()  { return '4g'; }
-  static get CELL()     { return 'cellular'; }
-  static get NONE()     { return 'none'; }
 }

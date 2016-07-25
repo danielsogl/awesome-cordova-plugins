@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 export interface InAppBrowserEvent extends Event {
   /** the eventname, either loadstart, loadstop, loaderror, or exit. */
@@ -54,14 +55,14 @@ export interface InAppBrowserRef {
    *                  For multi-line scripts, this is the return value of the last statement,
    *                  or the last expression evaluated.
    */
-  executeScript(script: {file?: string, code?: string}, callback?: (result?: any) => void);
+  executeScript(script: { file?: string, code?: string }, callback?: (result?: any) => void);
 
   /**
    * Injects CSS into the InAppBrowser window.
    * @param css       Details of the script to run, specifying either a file or code key.
    * @param callback  The function that executes after the CSS is injected.
    */
-  insertCSS(css: {file?: string, code?: string}, callback?: () => void);
+  insertCSS(css: { file?: string, code?: string }, callback?: () => void);
 }
 
 @Plugin({
@@ -82,4 +83,5 @@ export class InAppBrowser {
     sync: true
   })
   static open(url: string, target?: string, options?: string): InAppBrowserRef { return; }
+
 }

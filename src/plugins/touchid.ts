@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name TouchID
@@ -20,23 +21,21 @@ import {Plugin, Cordova} from './plugin';
  *  -  `-6` - TouchID is not Available
  *  -  `-8` - TouchID is locked out from too many tries
  * @usage
- * ```js
- * import {TouchID} from 'ionic-native';
+ * ```typescript
+ * import { TouchID } from 'ionic-native';
  *
- * ...
  *
  * TouchID.isAvailable()
  *   .then(
- *     res => console.log("TouchID is available!"),
- *     err => console.error("TouchID isn't available", err)
+ *     res => console.log('TouchID is available!'),
+ *     err => console.error('TouchID isn't available', err)
  *   );
  *
  * TouchID.verifyFingerprint('Scan your fingerprint please')
  *   .then(
- *     res => console.log("Ok", res),
- *     err => console.error("Error", err)
+ *     res => console.log('Ok', res),
+ *     err => console.error('Error', err)
  *   );
- *
  * ```
  */
 @Plugin({
@@ -53,7 +52,7 @@ export class TouchID {
    * @return {Promise} Returns a Promise that resolves if yes, rejects if no.
    */
   @Cordova()
-  isAvailable(): Promise<any> { return; }
+  static isAvailable(): Promise<any> { return; }
 
   /**
    * Show TouchID dialog and wait for a fingerprint scan. If user taps 'Enter Password' button, brings up standard system passcode screen.
@@ -82,4 +81,5 @@ export class TouchID {
    */
   @Cordova()
   static verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string): Promise<any> { return; }
+
 }
