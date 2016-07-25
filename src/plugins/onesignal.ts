@@ -1,4 +1,5 @@
 import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 
 /**
@@ -37,14 +38,14 @@ export class OneSignal {
    *
    * @param {appId} Your AppId from your OneSignal app
    * @param {options} The Google Project Number (which you can get from the Google Developer Potal) and the autoRegister option.
-   * @param {notificationOpenedCallback} Callback on notification reveive. Handle your notification action here.
+   * @returns {Observable} when a notification is received. Handle your notification action here.
    */
-  @Cordova({ sync: true })
+  @Cordova({ observable: true })
   static init(appId: string,
     options: {
       googleProjectNumber: string,
       autoRegister: boolean
-    }, notificationOpenedCallback?:any): void { }
+    }): Observable<any> { return; }
 
 
   /**
