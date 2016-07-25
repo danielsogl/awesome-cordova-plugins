@@ -38,14 +38,14 @@ export class OneSignal {
    *
    * @param {appId} Your AppId from your OneSignal app
    * @param {options} The Google Project Number (which you can get from the Google Developer Potal) and the autoRegister option.
-   * @returns {Promise} Returns a Promise that resolves when remote notification was recieved.
+   * @param {notificationOpenedCallback} Callback on notification reveive. Handle your notification action here.
    */
-  @Cordova()
+  @Cordova({ sync: true })
   static init(appId: string,
     options: {
       googleProjectNumber: string,
       autoRegister: boolean
-    }): Promise<any> { return; }
+    }, notificationOpenedCallback?:any): void { }
 
 
   /**
