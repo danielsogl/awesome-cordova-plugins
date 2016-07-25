@@ -1,4 +1,5 @@
 import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 
 /**
@@ -28,8 +29,7 @@ import { Cordova, Plugin } from './plugin';
 @Plugin({
   plugin: 'onesignal-cordova-plugin',
   pluginRef: 'plugins.OneSignal',
-  repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK'
 })
 export class OneSignal {
 
@@ -38,14 +38,14 @@ export class OneSignal {
    *
    * @param {appId} Your AppId from your OneSignal app
    * @param {options} The Google Project Number (which you can get from the Google Developer Potal) and the autoRegister option.
-   * @returns {Promise} Returns a Promise that resolves when remote notification was recieved.
+   * @returns {Observable} when a notification is received. Handle your notification action here.
    */
-  @Cordova()
+  @Cordova({ observable: true })
   static init(appId: string,
     options: {
       googleProjectNumber: string,
       autoRegister: boolean
-    }): Promise<any> { return; }
+    }): Observable<any> { return; }
 
 
   /**
