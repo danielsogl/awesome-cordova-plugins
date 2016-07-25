@@ -1,6 +1,6 @@
 {
   "name": "ionic-native",
-  "version": "1.3.2",
+  "version": "1.3.9",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "main": "dist/index.js",
   "files": [
@@ -23,6 +23,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-tslint": "^5.0.0",
     "gulp-uglify": "^1.5.4",
+    "ionic-gulp-tslint": "^1.0.0",
     "lodash": "3.10.1",
     "minimist": "^1.1.3",
     "mkdirp": "^0.5.1",
@@ -30,14 +31,14 @@
     "q": "1.4.1",
     "semver": "^5.0.1",
     "tslint": "^3.8.1",
-    "tslint-eslint-rules": "^1.3.0",
+    "tslint-ionic-rules": "0.0.3",
     "typescript": "^1.8.10"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tslint": "./node_modules/.bin/gulp tslint",
+    "lint": "./node_modules/.bin/gulp lint",
     "watch": "./node_modules/.bin/tsc -w",
-    "build": "npm run tslint && npm run build:js && npm run build:bundle && npm run build:minify",
+    "build": "npm run lint && npm run build:js && npm run build:bundle && npm run build:minify",
     "build:js": "./node_modules/.bin/tsc",
     "build:bundle": "./node_modules/.bin/browserify dist/index.js > dist/ionic.native.js",
     "build:minify": "./node_modules/.bin/gulp minify:dist",

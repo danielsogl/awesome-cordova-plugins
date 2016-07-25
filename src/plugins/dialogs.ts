@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 export interface PromptCallback {
 
@@ -11,7 +12,6 @@ export interface PromptCallback {
    * The text entered in the prompt dialog box. (String)
    */
   input1: string;
-
 }
 
 
@@ -23,8 +23,8 @@ export interface PromptCallback {
  * Requires Cordova plugin: `cordova-plugin-dialogs`. For more info, please see the [Dialogs plugin docs](https://github.com/apache/cordova-plugin-dialogs).
  *
  * @usage
- * ```js
- * import {Dialogs} from 'ionic-native';
+ * ```typescript
+ * import { Dialogs } from 'ionic-native';
  *
  *
  *
@@ -40,9 +40,9 @@ export class Dialogs {
 
   /**
    * Shows a custom alert or dialog box.
-   * @param message Dialog message. (String)
-   * @param title Dialog title. (String) (Optional, defaults to Alert)
-   * @param buttonName Button name. (String) (Optional, defaults to OK)
+   * @param {string} message Dialog message.
+   * @param {string} title Dialog title. (Optional, defaults to Alert)
+   * @param {string} buttonName Button name. (Optional, defaults to OK)
    * @returns {Promise<any>} Returns a blank promise once the user has dismissed the alert.
    */
   @Cordova({
@@ -53,13 +53,13 @@ export class Dialogs {
     message,
     title: string = 'Alert',
     buttonName: string = 'OK'
-  ): Promise<any> {return; }
+    ): Promise<any> { return; }
 
   /**
    * Displays a customizable confirmation dialog box.
-   * @param message Dialog message. (String)
-   * @param title Dialog title. (String) (Optional, defaults to Confirm)
-   * @param buttonLabels Array of strings specifying button labels. (Array) (Optional, defaults to [OK,Cancel])
+   * @param {string} message Dialog message.
+   * @param {string} title Dialog title. (Optional, defaults to Confirm)
+   * @param {Array<string>} buttonLabels Array of strings specifying button labels. (Optional, defaults to [OK,Cancel])
    * @returns {Promise<number>} Returns a promise that resolves the button index that was clicked. Note that the index use one-based indexing.
    */
   @Cordova({
@@ -70,14 +70,14 @@ export class Dialogs {
     message,
     title: string = 'Confirm',
     buttonLabels: Array<string> = ['OK', 'Cancel']
-  ): Promise<number> { return; }
+    ): Promise<number> { return; }
 
   /**
    * Displays a native dialog box that is more customizable than the browser's prompt function.
-   * @param message Dialog message. (String)
-   * @param title Dialog title (String) (Optional, defaults to Prompt)
-   * @param buttonLabels  Array of strings specifying button labels (Array) (Optional, defaults to ["OK","Cancel"])
-   * @param defaultText Default textbox input value (String) (Optional, Default: empty string)
+   * @param {string} message Dialog message.
+   * @param {string} title Dialog title. (Optional, defaults to Prompt)
+   * @param {Array<string>} buttonLabels  Array of strings specifying button labels. (Optional, defaults to ["OK","Cancel"])
+   * @param {string} defaultText Default textbox input value.  (Optional, Default: empty string)
    * @returns {Promise<any>} Returns a promise that resolves an object with the button index clicked and the text entered
    */
   @Cordova({
@@ -89,16 +89,16 @@ export class Dialogs {
     title: string = 'Prompt',
     buttonLabels: Array<string> = ['OK', 'Cancel'],
     defaultText: string = ''
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
 
   /**
    * The device plays a beep sound.
-   * @param times The number of times to repeat the beep. (Number)
+   * @param {numbers} times The number of times to repeat the beep.
    */
   @Cordova({
     sync: true
   })
-  static beep(times: number): void {}
+  static beep(times: number): void { }
 
 }

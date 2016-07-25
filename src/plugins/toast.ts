@@ -1,5 +1,6 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
+
 
 export interface ToastOptions {
   /**
@@ -42,12 +43,11 @@ export interface ToastOptions {
  * Requires Cordova plugin: `cordova-plugin-x-toast`. For more info, please see the [Toast plugin docs](https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin).
  *
  * @usage
- * ```ts
- * import {Toast} from 'ionic-native';
+ * ```typescript
+ * import { Toast } from 'ionic-native';
  *
  *
- *
- * Toast.show("I'm a toast", "5000", "center").subscribe(
+ * Toast.show("I'm a toast", '5000', 'center').subscribe(
  *   toast => {
  *     console.log(toast);
  *   }

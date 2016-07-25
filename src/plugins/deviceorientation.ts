@@ -1,5 +1,6 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
+
 
 export interface CompassHeading {
 
@@ -45,20 +46,19 @@ export interface CompassOptions {
  * Requires Cordova plugin: `cordova-plugin-device-orientation`. For more info, please see the [Device Orientation docs](https://github.com/apache/cordova-plugin-device-orientation).
  *
  * @usage
- * ```ts
- * import {DeviceOrientation} from 'ionic-native';
- *
+ * ```typescript
+ * import { DeviceOrientation } from 'ionic-native';
  *
  *
  * // Get the device current compass heading
  * DeviceOrientation.getCurrentHeading().then(
- *   data => console.log(data),
- *   error => console.log(error)
+ *   (data: CompassHeading) => console.log(data),
+ *   (error: any) => console.log(error)
  * );
  *
  * // Watch the device compass heading change
  * var subscription = DeviceOrientation.watchHeading().subscribe(
- *   data => console.log(data)
+ *   (data: CompassHeading) => console.log(data)
  * );
  *
  * // Stop watching heading change
@@ -83,8 +83,8 @@ export class DeviceOrientation {
    * Get the device current heading at a regular interval
    *
    * Stop the watch by unsubscribing from the observable
-   * @param options
-   * @returns {Observable<CompassHeading>}
+   * @param {CompassOptions} options Options for compass. Frequency and Filter. Optional
+   * @returns {Observable<CompassHeading>} Returns an observable that contains the compass heading
    */
   @Cordova({
     callbackOrder: 'reverse',

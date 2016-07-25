@@ -1,5 +1,8 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
+
 declare var cordova: any;
+
 /**
  * @name Email Composer
  * @description
@@ -9,11 +12,11 @@ declare var cordova: any;
  * DISCLAIMER: This plugin is experiencing issues with the latest versions of Cordova. Use at your own risk. Functionality is not guaranteed. Please stay tuned for a more stable version.
  *
  * @usage
- * ```ts
- * import {EmailComposer} from 'ionic-native';
+ * ```typescript
+ * import { EmailComposer } from 'ionic-native';
  *
  *
- * EmailComposer.isAvailable().then((available) =>{
+ * EmailComposer.isAvailable().then((available: boolean) =>{
  *  if(available) {
  *    //Now we know we can send
  *  }
@@ -53,7 +56,7 @@ export class EmailComposer {
    * @param app {string?} An optional app id or uri scheme.
    * @returns {Promise<boolean>} Resolves if available, rejects if not available
    */
-  static isAvailable (app?: string): Promise<any> {
+  static isAvailable(app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
       if (app) cordova.plugins.email.isAvailable(app, (isAvailable) => { if (isAvailable) resolve(); else reject(); });
       else cordova.plugins.email.isAvailable((isAvailable) => { if (isAvailable) resolve(); else reject(); });
@@ -67,7 +70,7 @@ export class EmailComposer {
    * @param packageName {string} The package name
    */
   @Cordova()
-  static addAlias(alias: string, packageName: string): void {}
+  static addAlias(alias: string, packageName: string): void { }
 
   /**
    * Displays the email composer pre-filled with data.
@@ -80,9 +83,10 @@ export class EmailComposer {
     successIndex: 1,
     errorIndex: 3
   })
-  static open(email: Email, scope?: any): Promise<any> {return; }
+  static open(email: Email, scope?: any): Promise<any> { return; }
 
 }
+
 export interface Email {
   app?: string;
   to?: string | Array<string>;

@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 export interface CalendarOptions {
   firstReminderMinutes?: number;
@@ -24,7 +25,7 @@ export interface Calendar {
  * Requires Cordova plugin: `cordova-plugin-calendar`. For more info, please see the [Calendar plugin docs](https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin).
  *
  * @usage
- * 
+ *
  */
 @Plugin({
   plugin: 'cordova-plugin-calendar',
@@ -48,40 +49,40 @@ export class Calendar {
   @Cordova()
   static hasReadWritePermission(): Promise<boolean> { return; }
 
-    /**
-     * Check if we have read permission
-     * @returns {Promise<boolean>}
-     */
-    @Cordova()
-    static hasReadPermission(): Promise<boolean> {return; }
+  /**
+   * Check if we have read permission
+   * @returns {Promise<boolean>}
+   */
+  @Cordova()
+  static hasReadPermission(): Promise<boolean> { return; }
 
-    /**
-     * Check if we have write permission
-     * @returns {Promise<boolean>}
-     */
-    @Cordova()
-    static hasWritePermission(): Promise<boolean> {return; }
+  /**
+   * Check if we have write permission
+   * @returns {Promise<boolean>}
+   */
+  @Cordova()
+  static hasWritePermission(): Promise<boolean> { return; }
 
-    /**
-     * Request write permission
-     * @returns {Promise<any>}
-     */
-    @Cordova()
-    static requestWritePermission(): Promise<any> {return; }
+  /**
+   * Request write permission
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  static requestWritePermission(): Promise<any> { return; }
 
-    /**
-     * Request read permission
-     * @returns {Promise<any>}
-     */
-    @Cordova()
-    static requestReadPermission(): Promise<any> {return; }
+  /**
+   * Request read permission
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  static requestReadPermission(): Promise<any> { return; }
 
   /**
    * Requests read/write permissions
    * @returns {Promise<any>}
    */
   @Cordova()
-  static requestReadWritePermission(): Promise<any> {return; }
+  static requestReadWritePermission(): Promise<any> { return; }
 
   /**
    * Create a calendar. (iOS only)
@@ -107,7 +108,7 @@ export class Calendar {
   @Cordova()
   static createCalendar(
     nameOrOptions: string | { calendarName: string, calendarColor: string }
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Delete a calendar. (iOS only)
@@ -172,7 +173,7 @@ export class Calendar {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Silently create an event with additional options.
@@ -193,7 +194,7 @@ export class Calendar {
     startDate?: Date,
     endDate?: Date,
     options?: CalendarOptions
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Interactively create an event.
@@ -212,7 +213,7 @@ export class Calendar {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Interactively create an event with additional options.
@@ -233,7 +234,7 @@ export class Calendar {
     startDate?: Date,
     endDate?: Date,
     options?: CalendarOptions
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   // deprecated
   // @Cordova()
@@ -263,7 +264,7 @@ export class Calendar {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Find an event with additional options.
@@ -284,7 +285,7 @@ export class Calendar {
     startDate?: Date,
     endDate?: Date,
     options?: CalendarOptions
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Find a list of events within the specified date range. (Android only)
@@ -337,7 +338,7 @@ export class Calendar {
     newNotes?: string,
     newStartDate?: Date,
     newEndDate?: Date
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Modify an event with additional options. (iOS only)
@@ -355,31 +356,31 @@ export class Calendar {
    * @param {CalendarOptions} [options]  Additional options, see `getCalendarOptions`
    * @return Returns a Promise
    */
-   @Cordova()
-   static modifyEventWithOptions(
-     title?: string,
-     location?: string,
-     notes?: string,
-     startDate?: Date,
-     endDate?: Date,
-     newTitle?: string,
-     newLocation?: string,
-     newNotes?: string,
-     newStartDate?: Date,
-     newEndDate?: Date,
-     options?: CalendarOptions
-   ) { return; }
+  @Cordova()
+  static modifyEventWithOptions(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date,
+    newTitle?: string,
+    newLocation?: string,
+    newNotes?: string,
+    newStartDate?: Date,
+    newEndDate?: Date,
+    options?: CalendarOptions
+    ) { return; }
 
-   /**
-    * Delete an event.
-    *
-    * @param {string} [title]  The event title
-    * @param {string} [location]  The event location
-    * @param {string} [notes]  The event notes
-    * @param {Date} [startDate]  The event start date
-    * @param {Date} [endDate]  The event end date
-    * @return Returns a Promise
-    */
+  /**
+   * Delete an event.
+   *
+   * @param {string} [title]  The event title
+   * @param {string} [location]  The event location
+   * @param {string} [notes]  The event notes
+   * @param {Date} [startDate]  The event start date
+   * @param {Date} [endDate]  The event end date
+   * @return Returns a Promise
+   */
   @Cordova()
   static deleteEvent(
     title?: string,
@@ -387,7 +388,7 @@ export class Calendar {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Delete an event from the specified Calendar. (iOS only)
@@ -400,15 +401,15 @@ export class Calendar {
    * @param {string} calendarName
    * @return Returns a Promise
    */
- @Cordova()
- static deleteEventFromNamedCalendar(
-   title?: string,
-   location?: string,
-   notes?: string,
-   startDate?: Date,
-   endDate?: Date,
-   calendarName?: string
- ): Promise<any> { return; }
+  @Cordova()
+  static deleteEventFromNamedCalendar(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date,
+    calendarName?: string
+    ): Promise<any> { return; }
 
   /**
    * Open the calendar at the specified date.
@@ -416,4 +417,5 @@ export class Calendar {
    */
   @Cordova()
   static openCalendar(date: Date): Promise<any> { return; }
+
 }

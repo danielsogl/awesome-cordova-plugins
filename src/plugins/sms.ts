@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * Options for sending an SMS
@@ -30,14 +31,12 @@ export interface SmsOptionsAndroid {
  * Requires Cordova plugin: cordova-plugin-sms. For more info, please see the [SMS plugin docs](https://github.com/cordova-sms/cordova-sms-plugin).
  *
  * @usage
- * ```ts
- * import {SMS} from 'ionic-native';
- *
+ * ```typescript
+ * import { SMS } from 'ionic-native';
  *
  *
  * // Send a text message using default options
- * SMS.send('416123456','Hello world!');
- *
+ * SMS.send('416123456', 'Hello world!');
  * ```
  */
 @Plugin({
@@ -60,6 +59,6 @@ export class SMS {
     phoneNumber: string | string[],
     message: string,
     options?: SmsOptions
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
 }

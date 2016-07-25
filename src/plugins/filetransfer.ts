@@ -1,4 +1,5 @@
-import {Plugin, CordovaInstance} from './plugin';
+import { CordovaInstance, Plugin } from './plugin';
+
 
 declare var FileTransfer;
 
@@ -106,19 +107,49 @@ export interface FileTransferError {
 
 /**
  * @name Transfer
- * @description This plugin allows you to upload and download files.
- * Example:
- * Create instance:
+ *
+ * @description
+ * This plugin allows you to upload and download files.
+ *
+ * @usage
+ * ```typescript
+ * import { Transfer } from 'ionic-native';
+ *
+ *
+ * // Create instance:
  * const fileTransfer = new Transfer();
  *
- * Upload a file:
+ * // Upload a file:
  * fileTransfer.upload(..).then(..).catch(..);
  *
- * Download a file:
+ * // Download a file:
  * fileTransfer.download(..).then(..).catch(..);
  *
- * Abort active transfer:
+ * // Abort active transfer:
  * fileTransfer.abort();
+ *
+ * E.g
+ *
+ * upload(){
+ *   const fileTransfer = new Transfer();
+ *   var options: any;
+ *
+ *   options = {
+ *      fileKey: 'file',
+ *      fileName: 'name.jpg',
+ *      headers: {}
+ *      ..... 
+ *   }
+ *   fileTransfer.upload("<file path>", "<api endpoint>", options)
+ *    .then((data) => {
+ *      // success
+ *    }, (err) => {
+ *      // error
+ *    })
+ * }
+ *
+ * ```
+ *
  */
 @Plugin({
   plugin: 'cordova-plugin-file-transfer',
@@ -127,11 +158,23 @@ export interface FileTransferError {
 })
 export class Transfer {
 
-  public static FILE_NOT_FOUND_ERR: number = 1;
-  public static INVALID_URL_ERR: number = 2;
-  public static CONNECTION_ERR: number = 3;
-  public static ABORT_ERR: number = 4;
-  public static NOT_MODIFIED_ERR: number = 4;
+  /**
+   * Error code rejected from upload with FileTransferError
+   * Defined in FileTransferError.
+   *      FILE_NOT_FOUND_ERR: 1   Return when file was not found
+   *      INVALID_URL_ERR: 2,     Return when url was invalid
+   *      CONNECTION_ERR: 3,      Return on connection error
+   *      ABORT_ERR: 4,           Return on aborting
+   *      NOT_MODIFIED_ERR: 5     Return on "304 Not Modified" HTTP response
+   * @enum {number}
+   */
+  public static FileTransferErrorCode = {
+    FILE_NOT_FOUND_ERR: 1,
+    INVALID_URL_ERR: 2,
+    CONNECTION_ERR: 3,
+    ABORT_ERR: 4,
+    NOT_MODIFIED_ERR: 5
+  };
 
   private _objectInstance: any;
 
@@ -145,7 +188,7 @@ export class Transfer {
    * @param {string} fileUrl  Filesystem URL representing the file on the device or a data URI. For backwards compatibility, this can also be the full path of the file on the device.
    * @param {string} url  URL of the server to receive the file, as encoded by encodeURI().
    * @param {FileUploadOptions} options  Optional parameters.
-   * @param {boolean} trustAllHosts: Optional parameter, defaults to false. If set to true, it accepts all security certificates. This is useful since Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS.
+   * @param {boolean} trustAllHosts  Optional parameter, defaults to false. If set to true, it accepts all security certificates. This is useful since Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS.
    * @return Returns a Promise that resolves to a FileUploadResult and rejects with FileTransferError.
    */
   @CordovaInstance({
@@ -189,6 +232,6 @@ export class Transfer {
   @CordovaInstance({
     sync: true
   })
-  abort(): void {}
+  abort(): void { }
 
 }

@@ -1,12 +1,12 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name Spinner Dialog
  * @description
  * @usage
- * ```js
- * import {SpinnerDialog} from 'ionic-native';
- *
+ * ```typescript
+ * import { SpinnerDialog } from 'ionic-native';
  *
  *
  * SpinnerDialog.show();
@@ -22,12 +22,11 @@ import {Plugin, Cordova} from './plugin';
 })
 export class SpinnerDialog {
 
-
   /**
    * Shows the spinner dialog
    * @param title {string} Spinner title (shows on Android only)
    * @param message {string} Spinner message
-   * @param cancelCallback {boolean|function} Set to false to set spinner not cancelable. Or provide a function to call when the user cancels the spinner.
+   * @param cancelCallback {boolean|function} Set to true to set spinner not cancelable. Or provide a function to call when the user cancels the spinner.
    * @param iOSOptions {object} Options for iOS only
    */
   @Cordova({
