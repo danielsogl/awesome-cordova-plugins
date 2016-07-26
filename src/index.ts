@@ -48,6 +48,7 @@ import {Hotspot} from  './plugins/hotspot';
 import {Httpd} from './plugins/httpd';
 import {IBeacon} from './plugins/ibeacon';
 import {ImagePicker} from './plugins/imagepicker';
+import {ImageResizer} from './plugins/imageresizer';
 import {InAppBrowser} from './plugins/inappbrowser';
 import {Insomnia} from './plugins/insomnia';
 import {Keyboard} from './plugins/keyboard';
@@ -95,6 +96,7 @@ export * from './plugins/googlemaps';
 export * from './plugins/httpd';
 export * from './plugins/ibeacon';
 export * from './plugins/imagepicker';
+export * from './plugins/imageresizer';
 export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
@@ -202,6 +204,7 @@ window['IonicNative'] = {
   Httpd: Httpd,
   IBeacon: IBeacon,
   ImagePicker: ImagePicker,
+  ImageResizer: ImageResizer,
   InAppBrowser: InAppBrowser,
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
