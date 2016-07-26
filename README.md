@@ -35,6 +35,8 @@ watch.unsubscribe();
 
 Spent way too long diagnosing an issue only to realize a plugin wasn't firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.
 
+![img](http://ionic-io-assets.s3.amazonaws.com/ionic-native-console.png)
+
 ## Installation
 
 Run following commmand to install ionic-native in your project. 
