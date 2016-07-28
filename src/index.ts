@@ -40,6 +40,7 @@ import {Facebook} from './plugins/facebook';
 import {File} from './plugins/file';
 import {Transfer} from './plugins/filetransfer';
 import {Flashlight} from './plugins/flashlight';
+import {FullScreenImage} from './plugins/full-screen-image';
 import {Geolocation} from './plugins/geolocation';
 import {Globalization} from './plugins/globalization';
 import {GooglePlus} from './plugins/google-plus';
@@ -135,6 +136,7 @@ export {
   EmailComposer,
   File,
   Flashlight,
+  FullScreenImage,
   Geolocation,
   Globalization,
   GooglePlus,
@@ -198,6 +200,7 @@ window['IonicNative'] = {
   Facebook: Facebook,
   File: File,
   Flashlight: Flashlight,
+  FullScreenImage: FullScreenImage,
   Geolocation: Geolocation,
   Globalization: Globalization,
   GooglePlus: GooglePlus,
