@@ -23,7 +23,7 @@ export interface ImageResizerOptions {
     folderName?: string;
 
     /**
-     * 
+     *
      * Quality given as Number for the quality of the new image
      * (Android and iOS only)
      */
@@ -40,16 +40,16 @@ export interface ImageResizerOptions {
  * @name ImageResizer
  * @description
  * Cordova Plugin For Image Resize
- * 
+ *
  * Requires plugin `info.protonet.imageresizer` - use the Ionic CLI and type in the following command:
  * `ionic plugin add https://github.com/protonet/cordova-plugin-image-resizer.git`
- * 
+ *
  * For more info, please see the https://github.com/protonet/cordova-plugin-image-resizer
- * 
+ *
  * @usage
  * ```typescript
  * import { ImageResizer, ImageResizerOptions } from 'ionic-native';
- * 
+ *
  * let options = {
  *  uri: uri,
  *  folderName: 'Protonet',
@@ -57,7 +57,7 @@ export interface ImageResizerOptions {
  *  width: 1280,
  *  height: 1280
  * } as ImageResizerOptions;
- * 
+ *
  * ImageResizer
  * .resize(options)
  * .then(
@@ -68,10 +68,10 @@ export interface ImageResizerOptions {
  */
 @Plugin({
   plugin: 'https://github.com/protonet/cordova-plugin-image-resizer.git',
-  pluginRef: 'window.ImageResizer',
+  pluginRef: 'ImageResizer',
   repo: 'https://github.com/protonet/cordova-plugin-image-resizer'
 })
-export class ImageResizer { 
+export class ImageResizer {
   @Cordova()
   static resize(options: ImageResizerOptions): Promise<any> { return; }
 }
