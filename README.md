@@ -33,7 +33,7 @@ watch.unsubscribe();
 
 ### Angular 1
 
-Ionic Native works as a stand-in for [ngCordova](http://ngcordova.com/). In many cases, the usage is identical, but we import `ionic.native` instead of `ngCorodva` as our module.
+Ionic Native works as a stand-in for [ngCordova](http://ngcordova.com/). In many cases, the usage is identical, but we import `ionic.native` instead of `ngCordova` as our module.
 
 As a rule of thumb: take the ES6 class name of the plugin and add `$cordova` to get the service name. For example, `Geolocation` would be `$cordovaGeolocation`, and `Camera` will be `$cordovaCamera`:
 
