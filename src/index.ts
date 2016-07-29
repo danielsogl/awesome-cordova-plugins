@@ -60,6 +60,7 @@ import {NativeStorage} from './plugins/nativestorage';
 import {MediaPlugin} from './plugins/media';
 import {Network} from './plugins/network';
 import {OneSignal} from './plugins/onesignal';
+import {ScreenOrientation} from './plugins/screen-orientation';
 import {PinDialog} from './plugins/pin-dialog';
 import {Printer} from './plugins/printer';
 import {Push} from './plugins/push';
@@ -145,6 +146,7 @@ export {
   NativeStorage,
   Network,
   OneSignal,
+  ScreenOrientation,
   PinDialog,
   Screenshot,
   SecureStorage,
@@ -219,6 +221,7 @@ window['IonicNative'] = {
   Printer: Printer,
   Push: Push,
   OneSignal: OneSignal,
+  ScreenOrientation: ScreenOrientation,
   PinDialog: PinDialog,
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
