@@ -31,9 +31,29 @@ let watch = Geolocation.watchPosition().subscribe(pos => {
 watch.unsubscribe();
 ```
 
+### Angular 1
+
+Ionic Native works as a stand-in for [ngCordova](http://ngcordova.com/). In many cases, the usage is identical, but we import `ionic.native` instead of `ngCordova` as our module.
+
+As a rule of thumb: take the ES6 class name of the plugin and add `$cordova` to get the service name. For example, `Geolocation` would be `$cordovaGeolocation`, and `Camera` will be `$cordovaCamera`:
+
+```javascript
+angular.module('myApp', ['ionic', 'ionic.native'])
+
+.controller('MyCtrl', function($scope, $cordovaCamera) {
+  $scope.takePicture = function() {
+    $cordovaCamera.getPicture(opts).then(function(p) {
+    }, function(err) {
+    });
+  };
+});
+```
+
 ### Runtime Diagnostics
 
 Spent way too long diagnosing an issue only to realize a plugin wasn't firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.
+
+![img](http://ionic-io-assets.s3.amazonaws.com/ionic-native-console.png)
 
 ## Installation
 

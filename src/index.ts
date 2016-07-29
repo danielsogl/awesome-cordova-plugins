@@ -25,6 +25,7 @@ import {CameraPreview} from './plugins/camera-preview';
 import {CardIO} from './plugins/card-io';
 import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
+import {Crop} from './plugins/crop';
 import {DatePicker} from './plugins/datepicker';
 import {DBMeter} from './plugins/dbmeter';
 import {Deeplinks} from './plugins/deeplinks';
@@ -48,6 +49,7 @@ import {Hotspot} from  './plugins/hotspot';
 import {Httpd} from './plugins/httpd';
 import {IBeacon} from './plugins/ibeacon';
 import {ImagePicker} from './plugins/imagepicker';
+import {ImageResizer} from './plugins/imageresizer';
 import {InAppBrowser} from './plugins/inappbrowser';
 import {Insomnia} from './plugins/insomnia';
 import {Keyboard} from './plugins/keyboard';
@@ -95,6 +97,7 @@ export * from './plugins/googlemaps';
 export * from './plugins/httpd';
 export * from './plugins/ibeacon';
 export * from './plugins/imagepicker';
+export * from './plugins/imageresizer';
 export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
@@ -123,6 +126,7 @@ export {
   BluetoothSerial,
   CameraPreview,
   Clipboard,
+  Crop,
   DBMeter,
   Deeplinks,
   DeviceAccounts,
@@ -180,6 +184,7 @@ window['IonicNative'] = {
   CardIO: CardIO,
   Clipboard: Clipboard,
   Contacts: Contacts,
+  Crop: Crop,
   DatePicker: DatePicker,
   DBMeter: DBMeter,
   Deeplinks: Deeplinks,
@@ -202,6 +207,7 @@ window['IonicNative'] = {
   Httpd: Httpd,
   IBeacon: IBeacon,
   ImagePicker: ImagePicker,
+  ImageResizer: ImageResizer,
   InAppBrowser: InAppBrowser,
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
