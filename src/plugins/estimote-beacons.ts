@@ -332,7 +332,8 @@ export class EstimoteBeacons {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'stopRangingBeaconsInRegion'
+    clearFunction: 'stopRangingBeaconsInRegion',
+    clearWithArgs: true
   })
   static startRangingBeaconsInRegion(region: BeaconRegion): Observable<any> { return; }
 
@@ -364,7 +365,8 @@ export class EstimoteBeacons {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'stopRangingSecureBeaconsInRegion'
+    clearFunction: 'stopRangingSecureBeaconsInRegion',
+    clearWithArgs: true
   })
   static startRangingSecureBeaconsInRegion(region: BeaconRegion): Observable<any> { return; }
 
@@ -396,6 +398,7 @@ export class EstimoteBeacons {
   @Cordova({
     observable: true,
     clearFunction: 'stopMonitoringForRegion',
+    clearWithArgs: true,
     successIndex: 1,
     errorIndex: 2
   })
@@ -426,6 +429,7 @@ export class EstimoteBeacons {
   @Cordova({
     observable: true,
     clearFunction: 'stopSecureMonitoringForRegion',
+    clearWithArgs: true,
     successIndex: 1,
     errorIndex: 2
   })
