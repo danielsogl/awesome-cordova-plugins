@@ -11,7 +11,7 @@ import { Plugin, Cordova } from './plugin';
   plugin: 'twitter-connect-plugin',
   pluginRef: 'TwitterConnect',
   repo: '',
-  install: 'ionic plugin add twitter-connect-plugin --variable FABRIC_KEY=<Fabric API Key>'
+  install: 'ionic plugin add twitter-connect-plugin --variable FABRIC_KEY=fabric_API_key'
 })
 export class TwitterConnect {
   /**
