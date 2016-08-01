@@ -89,7 +89,7 @@ export interface Config {
    * When enabled, the plugin will emit sounds for life-cycle events of
    * background-geolocation! See debugging sounds table.
    */
-  debug: boolean;
+  debug?: boolean;
 
   /**
    * The minimum distance (measured in meters) a device must move horizontally
@@ -100,7 +100,9 @@ export interface Config {
   /**
    * IOS, ANDROID ONLY
    * Enable this in order to force a stop() when the application terminated
-   * (e.g. on iOS, double-tap home button, swipe away the app).
+   * (e.g. on iOS, double-tap home button, swipe away the app).o
+   *
+   * Defaults to true
    */
   stopOnTerminate?: boolean;
 
@@ -111,7 +113,7 @@ export interface Config {
    * and the MS doc (http://msdn.microsoft.com/en-us/library/windows/apps/windows.devices.geolocation.geolocator.reportinterval)
    * for more information
    */
-  locationTimeout?: number;
+  interval?: number;
 
   /**
    * ANDROID ONLY
@@ -142,7 +144,7 @@ export interface Config {
    * ANDROID ONLY
    * Set location service provider @see wiki (https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-providers)
    */
-  locationService?: number;
+  locationProvider?: number;
 
   /**
    * IOS ONLY
@@ -219,9 +221,9 @@ export class BackgroundGeolocation {
    * Options a json object of type Config
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    sync: true
   })
-  static configure(options: Config): Promise<Location> { return; }
+  static configure(callback: Function, errorCallback: Function, options: Config): void { return; }
 
 
   /**
