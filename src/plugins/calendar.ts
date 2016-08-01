@@ -1,6 +1,9 @@
 import { Cordova, Plugin } from './plugin';
 
 
+/**
+ * @private
+ */
 export interface CalendarOptions {
   firstReminderMinutes?: number;
   secondReminderMinutes?: number;
@@ -12,11 +15,6 @@ export interface CalendarOptions {
   url?: string;
 }
 
-export interface Calendar {
-  id: number;
-  name: string;
-}
-
 /**
  * @name Calendar
  * @description
@@ -24,7 +22,18 @@ export interface Calendar {
  *
  * Requires Cordova plugin: `cordova-plugin-calendar`. For more info, please see the [Calendar plugin docs](https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin).
  *
+ *
  * @usage
+ * ```
+ * import {Calendar} from 'ionic-native';
+ *
+ *
+ *
+ * Calendar.createCalendar('MyCalendar').then(
+ *   (msg) => { console.log(msg); },
+ *   (err) => { console.log(err); }
+ * );
+ * ```
  *
  */
 @Plugin({
@@ -87,23 +96,8 @@ export class Calendar {
   /**
    * Create a calendar. (iOS only)
    *
-   * @usage
-   * ```
-   * import {Calendar} from 'ionic-native';
-   *
-   *
-   *
-   * Calendar.createCalendar('MyCalendar').then(
-   *   (msg) => { console.log(msg); },
-   *   (err) => { console.log(err); }
-   * );
-   * ```
-   *
-   * @param {string | Object} nameOrOptions  either a string name or a options object.
-   * options:
-   *   calendarName: string  the name of the calendar
-   *   calendarColor: string  the hex color of the calendar
-   * @return Returns a Promise
+   * @param {string | Object} nameOrOptions  either a string name or a options object. If string, provide the calendar name. IF an object, provide a calendar name as a string and a calendar color in hex format as a string
+   * @return {Promise} Returns a Promise
    */
   @Cordova()
   static createCalendar(
@@ -112,15 +106,6 @@ export class Calendar {
 
   /**
    * Delete a calendar. (iOS only)
-   *
-   * @usage
-   * ```
-   * Calendar.deleteCalendar('MyCalendar').then(
-   *   (msg) => { console.log(msg); },
-   *   (err) => { console.log(err); }
-   * );
-   * ```
-   *
    * @param {string} name  Name of the calendar to delete.
    * @return Returns a Promise
    */
@@ -158,7 +143,6 @@ export class Calendar {
 
   /**
    * Silently create an event.
-   *
    * @param {string} [title]  The event title
    * @param {string} [location]  The event location
    * @param {string} [notes]  The event notes
@@ -268,7 +252,6 @@ export class Calendar {
 
   /**
    * Find an event with additional options.
-   *
    * @param {string} [title]  The event title
    * @param {string} [location]  The event location
    * @param {string} [notes]  The event notes
@@ -413,7 +396,8 @@ export class Calendar {
 
   /**
    * Open the calendar at the specified date.
-   * @return {Date} date
+   * @param {Date} date The date you want to open the calendar on
+   * @return {Promise<any>} Promise returns a promise
    */
   @Cordova()
   static openCalendar(date: Date): Promise<any> { return; }
