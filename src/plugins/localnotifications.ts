@@ -15,7 +15,7 @@ import { Cordova, Plugin } from './plugin';
  * LocalNotifications.schedule({
  *   id: 1,
  *   text: 'Single Notification',
- *   sound: isAndroid? 'file://sound.mp3': 'file://beep.caf'
+ *   sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
  *   data: { secret: key }
  * });
  *
