@@ -1,0 +1,303 @@
+---
+layout: "v2_fluid/docs_base"
+version: "<$ version.current.name $>"
+versionHref: "<$ version.current.href $>"
+path: "<$ doc.path $>"
+category: native
+id: "<$ doc.name|lower|replace(' ','-') $>"
+title: "<@ if doc.docType == "directive" @><$ doc.name | dashCase $><@ else @><$ doc.name $><@ endif @>"
+header_sub_title: "<$ doc.docType | capital $> in module <$ doc.module $>"
+doc: "<$ doc.name $>"
+docType: "<$ doc.docType $>"
+---
+
+<@ macro paramList(paramData) -@>
+<@- if paramData -@><span class="params">(
+    <@- for param in paramData -@>
+      <span class="param"><$ param | escape $><@ if not loop.last @>, <@ endif @></span>
+    <@- endfor @>)</span>
+<@- endif @>
+<@- endmacro -@>
+
+<@ macro githubViewLink(doc) -@>
+<a href="https://github.com/<$ versionInfo.gitRepoInfo.owner $>/<$ versionInfo.gitRepoInfo.repo $>/tree/master/<$ doc.fileInfo.relativePath $>#L<$ doc.location.start.line+1 $>-L<$ doc.location.end.line+1 $>"><$ doc.fileInfo.relativePath $> (line <$ doc.location.start.line+1 $>)</a>
+<@- endmacro -@>
+
+<@ macro paramTable(params, isDirective) -@>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th><@ if isDirective @>Attr<@ else @>Param<@ endif @></th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <@ for param in params @>
+  <tr>
+    <td>
+      <$ param.name $>
+      <@ if param.alias @>| <$ param.alias $><@ endif @>
+      <@ if param.type.optional @><div><em>(optional)</em></div><@ endif @>
+    </td>
+    <td>
+      <$ typeList(param.typeList) $>
+    </td>
+    <td>
+      <$ param.description | marked $>
+      <@ if param.default @><p><em>(default: <$ param.default $>)</em></p><@ endif @>
+    </td>
+  </tr>
+  <@ endfor @>
+  </tbody>
+</table>
+<@- endmacro -@>
+
+
+<@- macro functionSyntax(fn) @>
+  <@- set sep = joiner(',&nbsp;') -@>
+  <code><$ fn.name $><@- if not fn.isProperty @>(<@ endif -@><@- for param in fn.params @><$ sep() $>
+  <@- if param.type.optional @>[<@ endif -@>
+  <$ param.name $>
+  <@- if param.type.optional @>]<@ endif -@>
+  <@ endfor @><@- if not fn.isProperty @>)<@ endif -@></code>
+  <@ if fn.alias @><small>(alias: <$ fn.alias $>)</small><@ endif @>
+<@ endmacro -@>
+
+<@ macro typeList(types) -@>
+<@ set separator = joiner("|") @>
+<@ for type in types @><$ separator() $><$ type | code $><@ endfor @>
+<@- endmacro -@>
+
+<@- macro typeInfo(fn) -@>
+<$ typeList(fn.typeList) $> <$ fn.description $>
+<@- endmacro -@>
+
+<@ block body @>
+
+
+<@ block content @>
+
+<@ block header @>
+
+<h1 class="api-title">
+
+  <@ if doc.docType == "directive" @>
+  <$ doc.name | dashCase $>
+  <@ else @>
+  <$ doc.name $>
+  <@ endif @>
+
+  <@ if doc.parent @>
+  <br />
+  <small>
+    Child of <$ doc.parent $>
+  </small>
+  <@ endif @>
+
+  <@ if doc.delegate @>
+  <br/>
+  <small>
+    Delegate: <$ doc.delegate $>
+  </small>
+  <@ endif @>
+
+</h1>
+
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
+  Improve this doc
+</a>
+
+<@ if doc.codepen @>
+{% include codepen.html id="<$ doc.codepen $>" %}
+<@ endif @>
+
+<@ endblock @>
+
+<!-- decorators -->
+<@- if doc.decorators @>
+
+<@ for prop in doc.decorators[0].argumentInfo @>
+<pre><code>$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif -@></code></pre>
+<p>Repo:
+  <a href="<$ prop.repo $>">
+    <$ prop.repo $>
+  </a>
+</p>
+
+<!-- description -->
+<@ block description @>
+<$ doc.description | marked $>
+<@ endblock @>
+
+
+<@- if doc.directiveInfo @>
+<h2><$ doc.directiveInfo.type $></h2>
+<h3><$ doc.directiveInfo.properties[0].name $>: <code><$ doc.directiveInfo.properties[0].values $></code></h3>
+<@ endif -@>
+
+<@ if prop.platforms @>
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
+<@ block platforms @>
+<ul>
+  <@- for platform in prop.platforms @>
+  <li><$ platform $></li>
+  <@ endfor -@>
+</ul>
+<@ endblock @>
+<!-- @platforms tag end -->
+<@ endif @>
+<@ endfor @>
+<@ endif -@>
+
+<!-- @usage tag -->
+<@ if doc.usage @>
+<h2>Usage</h2>
+<@ block usage @>
+<$ doc.usage | marked $>
+<@ endblock @>
+<@ endif @>
+
+<!-- @property tags -->
+<@ if doc.properties @>
+<h2>Attributes:</h2>
+<table class="table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Attribute</th>
+
+    <@ set hasTypes = false @>
+    <@ for prop in doc.properties @>
+    <@ if prop.type @>
+    <@ set hasTypes = true @>
+    <@ endif @>
+    <@ endfor @>
+    <@ if hasTypes @>
+    <th>Type</th>
+    <@ endif @>
+
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <@ for prop in doc.properties @>
+  <tr>
+    <td>
+      <$ prop.name $>
+    </td>
+
+    <@ if hasTypes @>
+    <td>
+      <$ prop.type.name $>
+    </td>
+    <@ endif @>
+
+    <td>
+      <$ prop.description $>
+    </td>
+  </tr>
+  <@ endfor @>
+  </tbody>
+</table>
+<@ endif @>
+
+<@- if doc.statics.length -@>
+<h2>Static Members</h2>
+<@- for method in doc.statics @><@ if not method.internal @>
+<div id="<$ method.name $>"></div>
+<h3><$ functionSyntax(method) $></h3>
+
+<@- if method.decorators @>
+<@ for prop in method.decorators[0].argumentInfo @>
+<@ if prop.platforms @>
+<p>
+<b>Platforms:</b>
+<@- for platform in prop.platforms @>
+<code><$ platform $></code>&nbsp;
+<@ endfor -@>
+</p>
+<@ endif @>
+<@ endfor @>
+<@ endif -@>
+
+<$ method.description $>
+
+<@ if method.params @>
+<$ paramTable(method.params) $>
+<@ endif @>
+
+<@ if method.this @>
+<h4> Method's `this`
+  <$ method.this $>
+</h4>
+<@ endif @>
+
+<@ if method.returns @>
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <$ typeInfo(method.returns) $>
+</div>
+<@ endif @>
+<@ endif @>
+<@ endfor -@>
+<@ endif @>
+
+<!-- methods on the class -->
+<@- if doc.members and doc.members.length @>
+
+<h2>Instance Members</h2>
+<@- for method in doc.members @>
+
+<div id="<$ method.name $>"></div>
+
+<h3>
+  <$ functionSyntax(method) $>
+</h3>
+
+<$ method.description $>
+
+<@ if method.params @>
+<$ paramTable(method.params) $>
+<@ endif @>
+
+<@ if method.this @>
+<h4> Method's `this`
+  <$ method.this $>
+</h4>
+<@ endif @>
+
+<@ if method.returns @>
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <$ typeInfo(method.returns) $>
+</div>
+<@ endif @>
+
+<@ endfor -@>
+
+<@- endif -@>
+
+<@ block advanced @>
+<@- if doc.advanced -@>
+<h2><a class="anchor" name="advanced" href="#advanced"></a>Advanced</h2>
+<$ doc.advanced | marked $>
+<@- endif -@>
+<@ endblock @>
+
+<!-- related link -->
+<@- if doc.see @>
+
+<h2>Related</h2>
+<@ for s in doc.see @>
+<$ s | safe $>
+<@- endfor -@>
+
+<@- endif -@>
+
+
+<!-- end content block -->
+<@ endblock @>
+
+<!-- end body block -->
+<@ endblock @>

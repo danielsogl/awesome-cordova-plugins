@@ -1,39 +1,14 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "noImplicitAny": false,
-        "outDir": "dist",
-        "rootDir": ".",
-        "sourceMap": true,
-        "declaration": true
-    },
-    "exclude": [
-        "node_modules"
-    ],
-    "filesGlob": [
-        "src/**/*.ts"
-    ],
-    "files": [
-        "src/index.ts",
-        "src/ng1.ts",
-        "src/plugins/actionsheet.ts",
-        "src/plugins/ble.ts",
-        "src/plugins/calendar.ts",
-        "src/plugins/camera.ts",
-        "src/plugins/contacts.ts",
-        "src/plugins/device.ts",
-        "src/plugins/facebook.ts",
-        "src/plugins/file.ts",
-        "src/plugins/geolocation.ts",
-        "src/plugins/plugin.ts",
-        "src/plugins/push.ts",
-        "src/plugins/statusbar.ts",
-        "src/plugins/toast.ts",
-        "src/plugins/touchid.ts",
-        "src/util.ts"
-    ],
-    "atom": {
-        "rewriteTsconfig": true
-    }
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES5",
+    "sourceMap": true,
+    "declaration": true,
+    "experimentalDecorators": true,
+    "outDir": "dist"
+  },
+  "files": [
+    "typings/es6-shim/es6-shim.d.ts",
+    "src/index.ts"
+  ]
 }

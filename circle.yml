@@ -1,0 +1,27 @@
+machine:
+  node:
+    version: 4.1.0
+  ruby:
+    version: 2.1.2
+
+general:
+  branches:
+    only:
+      - master # ignore PRs and branches
+
+dependencies:
+ pre:
+   - ./scripts/docs/prepare.sh
+ cache_directories:
+   - "~/ionic-site" # cache ionic-site
+
+test:
+  override:
+    - echo "No tests are written at the moment. But we will attempt to build the library with the latest changes."
+    - npm run build
+
+deployment:
+ staging:
+   branch: master
+   commands:
+     - ./scripts/docs/update_docs.sh
