@@ -18,7 +18,7 @@ import { Cordova, Plugin } from './plugin';
  * TouchID.isAvailable()
  *   .then(
  *     res => console.log('TouchID is available!'),
- *     err => console.error('TouchID is n0t available', err)
+ *     err => console.error('TouchID is not available', err)
  *   );
  * ```
  * ### Invoke Touch ID w/ Custom Message

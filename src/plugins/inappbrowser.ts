@@ -71,6 +71,9 @@ export interface InAppBrowserRef {
 })
 export class InAppBrowser {
 
+
+
+
   /**
    * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.
    * @param  url     The URL to load.
@@ -79,6 +82,21 @@ export class InAppBrowser {
    *                 The options string must not contain any blank space, and each feature's
    *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
    */
+   
+   /**
+ * @name InAppBrowser
+ * @description
+ * @usage
+ * ```typescript
+ * import { InAppBrowser } from 'ionic-native';
+ *
+ * 
+ * 
+ *  InAppBrowser.open(url, target, options);
+ *  
+ *
+ * ```
+ */
   @Cordova({
     sync: true
   })

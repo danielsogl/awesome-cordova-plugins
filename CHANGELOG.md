@@ -1,3 +1,22 @@
+<a name="1.3.10"></a>
+## [1.3.10](https://github.com/driftyco/ionic-native/compare/v1.3.9...v1.3.10) (2016-08-01)
+
+
+### Bug Fixes
+
+* **brightness:** use correct pluginRef ([e20c411](https://github.com/driftyco/ionic-native/commit/e20c411))
+* **diagnostics:** Corrects isEnabled functions to isAvailable ([#373](https://github.com/driftyco/ionic-native/issues/373)) ([ccf7fb5](https://github.com/driftyco/ionic-native/commit/ccf7fb5))
+* **ng1:** use $q  promises instead of the native Promise ([#378](https://github.com/driftyco/ionic-native/issues/378)) ([817a434](https://github.com/driftyco/ionic-native/commit/817a434))
+* **one-signal:** return Observable instead of promise ([#352](https://github.com/driftyco/ionic-native/issues/352)) ([08fe04e](https://github.com/driftyco/ionic-native/commit/08fe04e))
+
+
+### Features
+
+* **crop:** add crop plugin ([#284](https://github.com/driftyco/ionic-native/issues/284)) ([41c9adf](https://github.com/driftyco/ionic-native/commit/41c9adf))
+* **screen-orientation:** Added Screen Orientation Plugin [#342](https://github.com/driftyco/ionic-native/issues/342) ([#366](https://github.com/driftyco/ionic-native/issues/366)) ([bd9366b](https://github.com/driftyco/ionic-native/commit/bd9366b)), closes [#342](https://github.com/driftyco/ionic-native/issues/342)
+
+
+
 <a name="1.3.9"></a>
 ## [1.3.9](https://github.com/driftyco/ionic-native/compare/v1.3.8...v1.3.9) (2016-07-23)
 

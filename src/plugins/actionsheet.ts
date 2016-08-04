@@ -20,7 +20,7 @@ import { Cordova, Plugin } from './plugin';
  *   'addCancelButtonWithLabel': 'Cancel',
  *   'addDestructiveButtonWithLabel' : 'Delete'
  * }).then((buttonIndex: number) => {
- *   console.log('Button pressed: ' + buttonLabels[buttonIndex - 1]);
+ *   console.log('Button pressed: ' + buttonIndex);
  * });
  * ```
  *

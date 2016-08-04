@@ -47,7 +47,8 @@ export interface CompassOptions {
  *
  * @usage
  * ```typescript
- * import { DeviceOrientation } from 'ionic-native';
+ * // CompassHeading is an interface for compass
+ * import { DeviceOrientation, CompassHeading } from 'ionic-native';
  *
  *
  * // Get the device current compass heading
