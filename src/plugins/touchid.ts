@@ -21,16 +21,21 @@ import { Cordova, Plugin } from './plugin';
  *  -  `-6` - TouchID is not Available
  *  -  `-8` - TouchID is locked out from too many tries
  * @usage
+ * ### Import Touch ID Plugin into Project
  * ```typescript
  * import { TouchID } from 'ionic-native';
- *
- *
+ * ```
+ * ### Check for Touch ID Availability
+ * ```typescript
  * TouchID.isAvailable()
  *   .then(
  *     res => console.log('TouchID is available!'),
- *     err => console.error('TouchID isn't available', err)
+ *     err => console.error('TouchID is n0t available', err)
  *   );
+ * ```
+ * ### Invoke Touch ID w/ Custom Message
  *
+ * ```typescript
  * TouchID.verifyFingerprint('Scan your fingerprint please')
  *   .then(
  *     res => console.log('Ok', res),
@@ -47,7 +52,7 @@ import { Cordova, Plugin } from './plugin';
 export class TouchID {
 
   /**
-   * Whether TouchID is available or not.
+   * Checks Whether TouchID is available or not.
    *
    * @return {Promise} Returns a Promise that resolves if yes, rejects if no.
    */
