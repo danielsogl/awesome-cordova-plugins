@@ -28,7 +28,7 @@ import { Cordova, Plugin } from './plugin';
  * TouchID.isAvailable()
  *   .then(
  *     res => console.log('TouchID is available!'),
- *     err => console.error('TouchID isn't available', err)
+ *     err => console.error("TouchID isn't available", err)
  *   );
  *
  * TouchID.verifyFingerprint('Scan your fingerprint please')

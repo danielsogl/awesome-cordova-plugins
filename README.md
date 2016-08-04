@@ -19,7 +19,7 @@ Ionic Native wraps plugin callbacks in a Promise or [Observable](https://gist.gi
 ```
 import { Geolocation } from 'ionic-native';
 
-Geolocation.getCurrentPosition().then(pos => { 
+Geolocation.getCurrentPosition().then(pos => {
   console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
 });
 
@@ -49,6 +49,23 @@ angular.module('myApp', ['ionic', 'ionic.native'])
 });
 ```
 
+For services that return observables, the Angular 1 digest cycle must be done manually (currently):
+
+```javascript
+angular.module('myApp', ['ionic', 'ionic.native'])
+
+.controller('MyCtrl', function($scope, $cordovaGeolocation) {
+  $scope.takePicture = function() {
+    $cordovaGeolocation.watchPosition(opts).subscribe(function(p) {
+      $scope.$apply(function() {
+        $scope.position = p.coords;
+      });
+    }, function(err) {
+    });
+  };
+});
+```
+
 ### Runtime Diagnostics
 
 Spent way too long diagnosing an issue only to realize a plugin wasn't firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.
@@ -57,7 +74,7 @@ Spent way too long diagnosing an issue only to realize a plugin wasn't firing or
 
 ## Installation
 
-Run following commmand to install ionic-native in your project. 
+Run following commmand to install ionic-native in your project.
 ```
 npm install ionic-native --save
 ```

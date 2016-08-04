@@ -89,7 +89,7 @@ export interface Config {
    * When enabled, the plugin will emit sounds for life-cycle events of
    * background-geolocation! See debugging sounds table.
    */
-  debug: boolean;
+  debug?: boolean;
 
   /**
    * The minimum distance (measured in meters) a device must move horizontally
@@ -100,7 +100,9 @@ export interface Config {
   /**
    * IOS, ANDROID ONLY
    * Enable this in order to force a stop() when the application terminated
-   * (e.g. on iOS, double-tap home button, swipe away the app).
+   * (e.g. on iOS, double-tap home button, swipe away the app).o
+   *
+   * Defaults to true
    */
   stopOnTerminate?: boolean;
 
@@ -111,7 +113,7 @@ export interface Config {
    * and the MS doc (http://msdn.microsoft.com/en-us/library/windows/apps/windows.devices.geolocation.geolocator.reportinterval)
    * for more information
    */
-  locationTimeout?: number;
+  interval?: number;
 
   /**
    * ANDROID ONLY
@@ -142,7 +144,7 @@ export interface Config {
    * ANDROID ONLY
    * Set location service provider @see wiki (https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-providers)
    */
-  locationService?: number;
+  locationProvider?: number;
 
   /**
    * IOS ONLY
@@ -178,18 +180,19 @@ export interface Config {
  *             stopOnTerminate: false, // enable this to clear background location settings when the app terminates
  *     };
  *
- *     BackgroundGeolocation.configure(config)
- *        .then((location) => {
- *             console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
- *
- *             // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
- *             // and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
- *             // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
- *             BackgroundGeolocation.finish(); // FOR IOS ONLY
- *         })
- *        .catch((error) => {
- *             console.log('BackgroundGeolocation error');
- *         });
+ *     BackgroundGeolocation.configure((location) => {
+         console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
+
+          // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
+          // and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
+          // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
+          BackgroundGeolocation.finish(); // FOR IOS ONLY
+
+ *      }, (error) => {
+ *        console.log('BackgroundGeolocation error');
+ *      }, {
+ *       //options
+ *     });
  *
  *     // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
  *     BackgroundGeolocation.start();
@@ -219,9 +222,9 @@ export class BackgroundGeolocation {
    * Options a json object of type Config
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    sync: true
   })
-  static configure(options: Config): Promise<Location> { return; }
+  static configure(callback: Function, errorCallback: Function, options: Config): void { return; }
 
 
   /**

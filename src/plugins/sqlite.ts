@@ -15,7 +15,7 @@ declare var sqlitePlugin;
  * import { SQLite } from 'ionic-native';
  *
  * let db = new SQLite();
- * db.openDatabse({
+ * db.openDatabase({
  *   name: 'data.db',
  *   location: 'default' // the location field is required
  * }).then(() => {
