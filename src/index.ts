@@ -79,6 +79,7 @@ import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
 import {TwitterConnect} from './plugins/twitter-connect';
 import {Vibration} from './plugins/vibration';
+import {VideoPlayer} from './plugins/video-player';
 import {WebIntent} from './plugins/webintent';
 export * from './plugins/3dtouch';
 export * from './plugins/background-geolocation';
@@ -111,6 +112,7 @@ export * from './plugins/sms';
 export * from './plugins/spinnerdialog';
 export * from './plugins/toast';
 export * from './plugins/twitter-connect';
+export * from './plugins/video-player';
 export {
   ActionSheet,
   AdMob,
@@ -238,6 +240,7 @@ window['IonicNative'] = {
   TouchID: TouchID,
   Transfer: Transfer,
   TwitterConnect: TwitterConnect,
+  VideoPlayer: VideoPlayer,
   Vibration: Vibration,
   WebIntent: WebIntent
 };
