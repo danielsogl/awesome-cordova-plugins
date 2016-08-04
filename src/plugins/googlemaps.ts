@@ -97,7 +97,7 @@ export class GoogleMap {
   /** 
    * Listen to a map event only once.
    * 
-   * @return{Promise<any>}
+   * @return {Promise<any>}
    */
   one(event: any): Promise<any> {
     return new Promise<any>(
