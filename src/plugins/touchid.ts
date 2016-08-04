@@ -8,18 +8,6 @@ import { Cordova, Plugin } from './plugin';
  *
  * Requires Cordova plugin: `cordova-plugin-touch-id`. For more info, please see the [TouchID plugin docs](https://github.com/EddyVerbruggen/cordova-plugin-touch-id).
  *
- * ### Error Codes
- *
- * The plugin will reject for various reasons. Your app will most likely need to respond to the cases differently.
- *
- * Here is a list of some of the error codes:
- *
- *  -  `-1` - Fingerprint scan failed more than 3 times
- *  -  `-2` or `-128` - User tapped the 'Cancel' button
- *  -  `-3` - User tapped the 'Enter Passcode' or 'Enter Password' button
- *  -  `-4` - The scan was cancelled by the system (Home button for example)
- *  -  `-6` - TouchID is not Available
- *  -  `-8` - TouchID is locked out from too many tries
  * @usage
  * ### Import Touch ID Plugin into Project
  * ```typescript
@@ -42,6 +30,19 @@ import { Cordova, Plugin } from './plugin';
  *     err => console.error('Error', err)
  *   );
  * ```
+ *
+ * ### Error Codes
+ *
+ * The plugin will reject for various reasons. Your app will most likely need to respond to the cases differently.
+ *
+ * Here is a list of some of the error codes:
+ *
+ *  -  `-1` - Fingerprint scan failed more than 3 times
+ *  -  `-2` or `-128` - User tapped the 'Cancel' button
+ *  -  `-3` - User tapped the 'Enter Passcode' or 'Enter Password' button
+ *  -  `-4` - The scan was cancelled by the system (Home button for example)
+ *  -  `-6` - TouchID is not Available
+ *  -  `-8` - TouchID is locked out from too many tries
  */
 @Plugin({
   plugin: 'cordova-plugin-touch-id',
