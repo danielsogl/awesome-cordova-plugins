@@ -2,8 +2,7 @@
   "name": "ionic-native",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "main": [
-    "ionic.native.js",
-    "ionic.native.min.js"
+    "ionic.native.js"
   ],
   "authors": [
     "Max Lynch <max@ionic.io>"
