@@ -95,6 +95,7 @@ export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
 export * from './plugins/facebook';
 export * from './plugins/filetransfer';
+export * from './plugins/geolocation';
 export * from './plugins/googlemaps';
 export * from './plugins/httpd';
 export * from './plugins/ibeacon';
@@ -138,7 +139,6 @@ export {
   EmailComposer,
   File,
   Flashlight,
-  Geolocation,
   Globalization,
   GooglePlus,
   GoogleAnalytics,
