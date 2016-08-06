@@ -419,7 +419,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the request and started to send events.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static onDomDelegateReady(): Promise<void> { return; }
 
   /**
@@ -427,7 +427,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with a {Boolean}
    * indicating whether bluetooth is active.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static isBluetoothEnabled(): Promise<boolean> { return; }
 
   /**
@@ -436,7 +436,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved when Bluetooth
    * could be enabled. If not, the promise will be rejected with an error.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static enableBluetooth(): Promise<void> { return; }
 
   /**
@@ -445,7 +445,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved when Bluetooth
    * could be enabled. If not, the promise will be rejected with an error.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static disableBluetooth(): Promise<void> { return; }
 
   /**
@@ -465,7 +465,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the monitoring request.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static startMonitoringForRegion(region: BeaconRegion): Promise<string> { return; }
 
   /**
@@ -482,7 +482,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static stopMonitoringForRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
@@ -498,7 +498,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static requestStateForRegion(region: Region): Promise<void> { return; }
 
 
@@ -516,7 +516,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the monitoring request.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static startRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
@@ -533,7 +533,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static stopRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
@@ -542,7 +542,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with the
    * requested authorization status.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static getAuthorizationStatus(): Promise<any> { return; }
 
   /**
@@ -554,7 +554,7 @@ export class IBeacon {
    * If you are using this plugin on Android devices only, you will never have to use this, nor {@code requestAlwaysAuthorization}
    * @returns Returns a promise that is resolved when the request dialog is shown.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static requestWhenInUseAuthorization(): Promise<void> { return; }
 
 
@@ -564,7 +564,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved when the native layer
    * shows the request dialog.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static requestAlwaysAuthorization(): Promise<void> { return; }
 
   /**
@@ -572,7 +572,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with an {Array}
    * of {Region} instances that are being monitored by the native layer.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static getMonitoredRegions(): Promise<Region[]> { return; }
 
   /**
@@ -580,7 +580,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with an {Array}
    * of {Region} instances that are being ranged by the native layer.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static getRangedRegions(): Promise<Region[]> { return; }
 
   /**
@@ -588,7 +588,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with a {Boolean}
    * indicating whether ranging is available or not.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static isRangingAvailable(): Promise<boolean> { return; }
 
   /**
@@ -600,7 +600,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with a {Boolean}
    * indicating whether the region type is supported or not.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static isMonitoringAvailableForClass(region: Region): Promise<boolean> { return; }
 
   /**
@@ -620,7 +620,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the advertising request.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static startAdvertising(region: Region, measuredPower: number): Promise<void> { return; }
 
   /**
@@ -631,7 +631,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop advertising.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static stopAdvertising(region: Region): Promise<void> { return; }
 
   /**
@@ -639,7 +639,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with a {Boolean}
    * indicating whether advertising is available or not.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static isAdvertisingAvailable(): Promise<boolean> { return; }
 
   /**
@@ -647,7 +647,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with a {Boolean}
    * indicating whether advertising is active.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static isAdvertising(): Promise<boolean> { return; }
 
   /**
@@ -657,7 +657,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved as soon as the
    * native layer has set the logging level accordingly.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static disableDebugLogs(): Promise<void> { return; }
 
   /**
@@ -668,7 +668,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved as soon as the
    * native layer has set the flag to enabled.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static enableDebugNotifications(): Promise<void> { return; }
 
   /**
@@ -678,7 +678,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved as soon as the
    * native layer has set the flag to disabled.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static disableDebugNotifications(): Promise<void> { return; }
 
   /**
@@ -688,7 +688,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved as soon as the
    * native layer has set the logging level accordingly.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static enableDebugLogs(): Promise<void> { return; }
 
   /**
@@ -701,7 +701,7 @@ export class IBeacon {
    * message received by the native layer for appending. The returned message
    * is expected to be equivalent to the one provided in the original call.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static appendToDeviceLog(message: string): Promise<void> { return; }
 
 }
