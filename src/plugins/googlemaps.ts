@@ -129,7 +129,7 @@ export class GoogleMap {
    * @return {Promise<MyLocation>}
    */
   @CordovaInstance()
-  getMyLocation(): Promise<MyLocation> {
+  getMyLocation(options?:MyLocationOptions): Promise<MyLocation> {
     return;
   }
 
@@ -359,6 +359,13 @@ export interface MyLocation {
   speed?: number;
   time?: string;
   bearing?: number;
+}
+
+/**
+ * @private
+ */
+export interface MyLocationOptions {
+  enableHighAccuracy?: boolean;
 }
 
 /**
