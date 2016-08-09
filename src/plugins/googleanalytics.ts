@@ -31,10 +31,11 @@ export class GoogleAnalytics {
    * Track a screen
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/screens
    *
-   * @param {string}  title   Screen title
+   * @param {string}  title         Screen title
+   * @param {string}  campaignUrl   Campaign url for measuring referrals
    */
   @Cordova()
-  static trackView(title: string): Promise<any> { return; }
+  static trackView(title: string, campaignUrl?: string): Promise<any> { return; }
 
   /**
    * Track an event
