@@ -14,11 +14,11 @@ declare var window;
  * ```typescript
  * import { AppRate } from 'ionic-native';
  *
+ *  AppRate.preferences.storeAppURL = {
+ *    ios: '<my_app_id>',
+ *    android: 'market://details?id=<package_name>',
+ *  };
  *
- * AppRate.preferences.storeAppURL.ios = '<my_app_id>';
- * AppRate.preferences.storeAppURL.android = 'market://details?id=<package_name>';
- * AppRate.preferences.storeAppURL.blackberry = 'appworld://content/[App Id]/';
- * AppRate.preferences.storeAppURL.windows8 = 'ms-windows-store:Review?name=<the Package Family Name of the application>';
  * AppRate.promptForRating();
  * ```
  *

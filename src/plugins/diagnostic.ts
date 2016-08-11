@@ -1,6 +1,15 @@
 import { Cordova, Plugin } from './plugin';
 
-
+/**
+ * @name Diagnostic
+ * @description
+ * Checks whether device hardware features are enabled or available to the app, e.g. camera, GPS, wifi
+ *
+ * @usage
+ * ```typescript
+ * import { Diagnostic } from 'ionic-native';
+ * ```
+ */
 @Plugin({
   plugin: 'cordova.plugins.diagnostic',
   pluginRef: 'cordova.plugins.diagnostic',
@@ -11,28 +20,28 @@ export class Diagnostic {
    * Checks if app is able to access device location.
    */
   @Cordova()
-  static isLocationEnabled(): Promise<any> { return; }
+  static isLocationAvailable(): Promise<any> { return; }
 
   /**
    * Checks if Wifi is connected/enabled. On iOS this returns true if the device is connected to a network by WiFi. On Android and Windows 10 Mobile this returns true if the WiFi setting is set to enabled.
    * On Android this requires permission. `<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />`
    */
   @Cordova()
-  static isWifiEnabled(): Promise<any> { return; }
+  static isWifiAvailable(): Promise<any> { return; }
 
   /**
    * Checks if the device has a camera. On Android this returns true if the device has a camera. On iOS this returns true if both the device has a camera AND the application is authorized to use it. On Windows 10 Mobile this returns true if both the device has a rear-facing camera AND the
    * application is authorized to use it.
    */
   @Cordova()
-  static isCameraEnabled(): Promise<any> { return; }
+  static isCameraAvailable(): Promise<any> { return; }
 
   /**
    * Checks if the device has Bluetooth capabilities and if so that Bluetooth is switched on (same on Android, iOS and Windows 10 Mobile)
    * On Android this requires permission <uses-permission android:name="android.permission.BLUETOOTH" />
    */
   @Cordova()
-  static isBluetoothEnabled(): Promise<any> { return; }
+  static isBluetoothAvailable(): Promise<any> { return; }
 
   /**
    * Returns the location authorization status for the application.

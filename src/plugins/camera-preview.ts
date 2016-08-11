@@ -33,7 +33,7 @@ export interface CameraPreviewSize {
  * @description
  * Showing camera preview in HTML
  *
- * Requires {@link module:driftyco/ionic-native} and the Cordova plugin: `cordova-plugin-camera-preview`. For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview).
+ * For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview).
  *
  */
 @Plugin({

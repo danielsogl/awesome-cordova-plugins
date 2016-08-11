@@ -2,8 +2,8 @@ import { Cordova, Plugin } from './plugin';
 
 
 /**
- * @name Native Storage
- * @description
+ * @name NativeStorage
+ * @description Native storage of variables in Android and iOS
  *
  * @usage
  * ```typescript
@@ -30,7 +30,7 @@ import { Cordova, Plugin } from './plugin';
 export class NativeStorage {
   /**
    * Stores a value
-   * @param reference
+   * @param reference {string}
    * @param value
    */
   @Cordova()
@@ -38,14 +38,14 @@ export class NativeStorage {
 
   /**
    * Gets a stored item
-   * @param reference
+   * @param reference {string}
    */
   @Cordova()
   static getItem(reference: string): Promise<any> {return; }
 
   /**
    * Removes a single stored item
-   * @param reference
+   * @param reference {string}
    */
   @Cordova()
   static remove(reference: string): Promise<any> {return; }

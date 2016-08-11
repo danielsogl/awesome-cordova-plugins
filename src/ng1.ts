@@ -15,11 +15,8 @@ export function initAngular1(plugins) {
 
       (function(serviceName, cls, name) {
         window.angular.module('ionic.native').service(serviceName, [function() {
-          let funcs = {};
-          for (var k in cls) {
-            funcs[k] = cls[k];
-          }
-          funcs['name'] = name;
+          var funcs = window.angular.copy(cls);
+          funcs.prototype['name'] = name;
           return funcs;
         }]);
       })(serviceName, cls, name);

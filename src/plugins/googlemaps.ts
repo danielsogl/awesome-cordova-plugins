@@ -51,7 +51,9 @@ export const GoogleMapsAnimation = {
  * ...
  *
  * // somewhere in your component
- * let map = new GoogleMap('elementID');
+ * let map = new GoogleMap('elementID', {
+ *  // Map Options: https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapOptions
+ });
  *
  * map.on(GoogleMapsEvent.MAP_READY).subscribe(() => console.log('Map is ready!'));
  * ```
@@ -65,8 +67,9 @@ export class GoogleMap {
   _objectInstance: any;
 
   /**
-   * Checks if a map object has been created.
-   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the plugin is available.
+   * Checks if a map object has been created and is available.
+   * 
+   * @return {Promise<boolean>}
    */
   @Cordova()
   static isAvailable(): Promise<boolean> {
@@ -76,7 +79,12 @@ export class GoogleMap {
   constructor(elementId: string, options?: any) {
     this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId), options);
   }
-
+  
+  /**
+   * Listen to a map event.
+   * 
+   * @return {Observable<any>}
+   */
   on(event: any): Observable<any> {
     return new Observable(
       (observer) => {
@@ -85,13 +93,17 @@ export class GoogleMap {
       }
     );
   }
-
+  
+  /** 
+   * Listen to a map event only once.
+   * 
+   * @return {Promise<any>}
+   */
   one(event: any): Promise<any> {
     return new Promise<any>(
       resolve => this._objectInstance.one(event, resolve)
     );
   }
-
 
   @CordovaInstance({ sync: true })
   setDebuggable(isDebuggable: boolean): void {
@@ -102,7 +114,9 @@ export class GoogleMap {
   }
 
   /**
-   * Get the position of the camera
+   * Get the position of the camera.
+   * 
+   * @return {Promise<CameraPosition>}
    */
   @CordovaInstance()
   getCameraPosition(): Promise<CameraPosition> {
@@ -110,15 +124,19 @@ export class GoogleMap {
   }
 
   /**
-   * Get the location of the user
+   * Get the location of the user.
+   * 
+   * @return {Promise<MyLocation>}
    */
   @CordovaInstance()
-  getMyLocation(): Promise<MyLocation> {
+  getMyLocation(options?:MyLocationOptions): Promise<MyLocation> {
     return;
   }
 
   /**
-   * Get the visible region
+   * Get the visible region.
+   * 
+   * @return {Promise<VisibleRegion>}
    */
   @CordovaInstance()
   getVisibleRegion(): Promise<VisibleRegion> {
@@ -341,6 +359,13 @@ export interface MyLocation {
   speed?: number;
   time?: string;
   bearing?: number;
+}
+
+/**
+ * @private
+ */
+export interface MyLocationOptions {
+  enableHighAccuracy?: boolean;
 }
 
 /**
