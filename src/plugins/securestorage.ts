@@ -16,7 +16,7 @@ declare var cordova: any;
  * secureStorage.create('my_store_name')
  *  .then(
  *    () => console.log('Storage is ready!'),
- *    error => console.log(error);
+ *    error => console.log(error)
  * );
  *
  * secureStorage.get('myitem')

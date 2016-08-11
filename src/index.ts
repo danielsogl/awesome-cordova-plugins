@@ -60,6 +60,7 @@ import {NativeStorage} from './plugins/nativestorage';
 import {MediaPlugin} from './plugins/media';
 import {Network} from './plugins/network';
 import {OneSignal} from './plugins/onesignal';
+import { PhotoViewer } from './plugins/photo-viewer';
 import {ScreenOrientation} from './plugins/screen-orientation';
 import {PinDialog} from './plugins/pin-dialog';
 import {Printer} from './plugins/printer';
@@ -79,6 +80,7 @@ import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
 import {TwitterConnect} from './plugins/twitter-connect';
 import {Vibration} from './plugins/vibration';
+import {VideoPlayer} from './plugins/video-player';
 import {WebIntent} from './plugins/webintent';
 export * from './plugins/3dtouch';
 export * from './plugins/background-geolocation';
@@ -92,8 +94,9 @@ export * from './plugins/datepicker';
 export * from './plugins/device';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
-export * from './plugins/facebook';
+export * from './plugins/file';
 export * from './plugins/filetransfer';
+export * from './plugins/geolocation';
 export * from './plugins/googlemaps';
 export * from './plugins/httpd';
 export * from './plugins/ibeacon';
@@ -111,6 +114,7 @@ export * from './plugins/sms';
 export * from './plugins/spinnerdialog';
 export * from './plugins/toast';
 export * from './plugins/twitter-connect';
+export * from './plugins/video-player';
 export {
   ActionSheet,
   AdMob,
@@ -134,9 +138,8 @@ export {
   Dialogs,
   Diagnostic,
   EmailComposer,
-  File,
+  Facebook,
   Flashlight,
-  Geolocation,
   Globalization,
   GooglePlus,
   GoogleAnalytics,
@@ -146,6 +149,7 @@ export {
   NativeStorage,
   Network,
   OneSignal,
+  PhotoViewer,
   ScreenOrientation,
   PinDialog,
   Screenshot,
@@ -221,6 +225,7 @@ window['IonicNative'] = {
   Printer: Printer,
   Push: Push,
   OneSignal: OneSignal,
+  PhotoViewer: PhotoViewer,
   ScreenOrientation: ScreenOrientation,
   PinDialog: PinDialog,
   SafariViewController: SafariViewController,
@@ -238,6 +243,7 @@ window['IonicNative'] = {
   TouchID: TouchID,
   Transfer: Transfer,
   TwitterConnect: TwitterConnect,
+  VideoPlayer: VideoPlayer,
   Vibration: Vibration,
   WebIntent: WebIntent
 };

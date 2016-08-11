@@ -7,6 +7,20 @@ import { Observable } from 'rxjs/Observable';
  * @description
  * Embedded httpd for Cordova apps. Light weight HTTP server.
  * @usage
+ * ```typescript
+ * import {Httpd, HttpdOptions} from 'ionic-native';
+ *
+ * let options: HttpdOptions = {
+ *      www_root: 'httpd_root', // relative path to app's www directory
+ *      port: 80,
+ *      localhost_only: false
+ *  };
+ *
+ * Httpd.startServer(options).subscribe((data) => {
+ *  console.log('Server is live');
+ * });
+ *
+ * ```
  */
 @Plugin({
   plugin: 'https://github.com/floatinghotpot/cordova-httpd.git',
@@ -25,7 +39,7 @@ export class Httpd {
     observable: true,
     clearFunction: 'stopServer'
   })
-  static startServer(options: any): Observable<string> { return; }
+  static startServer(options?: any): Observable<string> { return; }
 
   /**
    * Gets the URL of the running server

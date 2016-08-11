@@ -53,7 +53,7 @@ export class Flashlight {
 
   /**
    * Checks if the flashlight is turned on.
-   * Returns a boolean
+   * @returns {boolean}
    */
   @Cordova({
     sync: true

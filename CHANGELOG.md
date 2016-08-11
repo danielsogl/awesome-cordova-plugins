@@ -1,3 +1,28 @@
+<a name="1.3.11"></a>
+## [1.3.11](https://github.com/driftyco/ionic-native/compare/v1.3.10...v1.3.11) (2016-08-11)
+
+
+### Bug Fixes
+
+* **backgroundGeolocation:** update config and move to sync. Fixes [#331](https://github.com/driftyco/ionic-native/issues/331) ([4e20681](https://github.com/driftyco/ionic-native/commit/4e20681)), closes [#331](https://github.com/driftyco/ionic-native/issues/331)
+* **camera:** camera options should be optional. Fixes [#413](https://github.com/driftyco/ionic-native/issues/413) ([#417](https://github.com/driftyco/ionic-native/issues/417)) ([c60c3b7](https://github.com/driftyco/ionic-native/commit/c60c3b7)), closes [#413](https://github.com/driftyco/ionic-native/issues/413) [#417](https://github.com/driftyco/ionic-native/issues/417)
+* **index:** export Geolocation interfaces. ([#404](https://github.com/driftyco/ionic-native/issues/404)) ([0c486b0](https://github.com/driftyco/ionic-native/commit/0c486b0))
+* **ng1:** Copy object properly. Fixes [#357](https://github.com/driftyco/ionic-native/issues/357) ([9ca38cd](https://github.com/driftyco/ionic-native/commit/9ca38cd)), closes [#357](https://github.com/driftyco/ionic-native/issues/357)
+
+
+### Features
+
+* **file:** alternate file implementation ([#283](https://github.com/driftyco/ionic-native/issues/283)) ([6ed32ef](https://github.com/driftyco/ionic-native/commit/6ed32ef))
+* **GoogleAnalytics:** Add campaign measurement tracking ([#405](https://github.com/driftyco/ionic-native/issues/405)) ([cf3f0f6](https://github.com/driftyco/ionic-native/commit/cf3f0f6))
+* **GoogleMaps:** Allow specify enableHighAccuracy option that attempt to get your location with highest accuracy ([#410](https://github.com/driftyco/ionic-native/issues/410)) ([43e8a6d](https://github.com/driftyco/ionic-native/commit/43e8a6d))
+* **ibeacon:** using option otherPromise instead of sync ([#388](https://github.com/driftyco/ionic-native/issues/388)) ([306cb5d](https://github.com/driftyco/ionic-native/commit/306cb5d))
+* **inappbrowser:** implement instance based wrapper ([#305](https://github.com/driftyco/ionic-native/issues/305)) ([4b8ab4a](https://github.com/driftyco/ionic-native/commit/4b8ab4a))
+* **keyboard:** enable hideKeyboardAccessoryBar function ([#398](https://github.com/driftyco/ionic-native/issues/398)) ([7a84262](https://github.com/driftyco/ionic-native/commit/7a84262)), closes [#394](https://github.com/driftyco/ionic-native/issues/394)
+* **photo-viewer:** add wrapper for plugin ([#359](https://github.com/driftyco/ionic-native/issues/359)) ([154c029](https://github.com/driftyco/ionic-native/commit/154c029))
+* **video-player:** Added video player plugin ([#391](https://github.com/driftyco/ionic-native/issues/391)) ([cabeeb8](https://github.com/driftyco/ionic-native/commit/cabeeb8)), closes [#342](https://github.com/driftyco/ionic-native/issues/342)
+
+
+
 <a name="1.3.10"></a>
 ## [1.3.10](https://github.com/driftyco/ionic-native/compare/v1.3.9...v1.3.10) (2016-08-01)
 

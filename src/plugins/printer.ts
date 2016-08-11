@@ -40,8 +40,26 @@ export interface PrintOptions {
    */
   bounds?: number[] | any;
 }
-
-
+/**
+ * @name Printer
+ * @description Prints documents or HTML rendered content
+ * @usage
+ * ```typescript
+ * import {Printer, PrintOptions} from 'ionic-native';
+ *
+ * Printer.isAvailable().then(onSuccess, onError);
+ *
+ * let options: PrintOptions = {
+ *      name: 'MyDocument',
+ *      printerId: 'printer007',
+ *      duplex: true,
+ *      landscape: true,
+ *      grayscale: true
+ *    };
+ *
+ * Printer.print(content, options).then(onSuccess, onError);
+ * ```
+ */
 @Plugin({
   plugin: 'de.appplant.cordova.plugin.printer',
   pluginRef: 'cordova.plugins.printer',
