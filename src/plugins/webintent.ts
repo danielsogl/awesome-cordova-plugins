@@ -8,6 +8,13 @@ declare var window;
  * @description
  * @usage
  * For usage information please refer to the plugin's Github repo.
+ *
+ * ```typescript
+ * import {WebIntent} from 'ionic-native';
+ *
+ * WebIntent.startActivity(options).then(onSuccess, onError);
+ *
+ * ```
  */
 @Plugin({
   plugin: 'https://github.com/Initsogar/cordova-webintent.git',
