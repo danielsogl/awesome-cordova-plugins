@@ -37,6 +37,7 @@ import {Diagnostic} from './plugins/diagnostic';
 import {Dialogs} from './plugins/dialogs';
 import {EmailComposer} from './plugins/emailcomposer';
 import {Facebook} from './plugins/facebook';
+import {Geofence} from './plugins/geofence';
 import {File} from './plugins/file';
 import {Transfer} from './plugins/filetransfer';
 import {Flashlight} from './plugins/flashlight';
@@ -140,6 +141,7 @@ export {
   EmailComposer,
   Facebook,
   Flashlight,
+  Geofence,
   Globalization,
   GooglePlus,
   GoogleAnalytics,
@@ -204,6 +206,7 @@ window['IonicNative'] = {
   Facebook: Facebook,
   File: File,
   Flashlight: Flashlight,
+  Geofence: Geofence,
   Geolocation: Geolocation,
   Globalization: Globalization,
   GooglePlus: GooglePlus,
