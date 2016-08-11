@@ -93,11 +93,7 @@ export * from './plugins/datepicker';
 export * from './plugins/device';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
-<<<<<<< HEAD
 export * from './plugins/file';
-=======
-export * from './plugins/facebook';
->>>>>>> master
 export * from './plugins/filetransfer';
 export * from './plugins/geolocation';
 export * from './plugins/googlemaps';
@@ -141,11 +137,7 @@ export {
   Dialogs,
   Diagnostic,
   EmailComposer,
-<<<<<<< HEAD
   Facebook,
-=======
-  File,
->>>>>>> master
   Flashlight,
   Globalization,
   GooglePlus,
