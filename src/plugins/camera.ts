@@ -188,13 +188,13 @@ export class Camera {
 
   /**
    * Take a picture or video, or load one from the library.
-   * @param {CameraOptions} options Options that you want to pass to the camera. Encoding type, quality, etc.
+   * @param {CameraOptions?} options Options that you want to pass to the camera. Encoding type, quality, etc. Optional
    * @return {Promise} Returns a Promise that resolves with Base64 encoding of the image data, or the image file URI, depending on cameraOptions, otherwise rejects with an error.
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getPicture(options: CameraOptions): Promise<any> { return; }
+  static getPicture(options?: CameraOptions): Promise<any> { return; }
 
   /**
    * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
