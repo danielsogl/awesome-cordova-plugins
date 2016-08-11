@@ -2,7 +2,20 @@ import { Cordova, Plugin } from './plugin';
 
 
 declare var navigator: any;
-
+/**
+ * @name Screenshot
+ * @description Captures a screen shot
+ * @usage
+ * ```typescript
+ * import {Screenshot} from 'ionic-native';
+ *
+ * // Take a screenshot and save to file
+ * Screneshot.save('jpg', 80, 'myscreenshot.jpg').then(onSuccess, onError);
+ *
+ * // Take a screenshot and get temporary file URI
+ * Screneshot.URI(80).then(onSuccess, onError);
+ * ```
+ */
 @Plugin({
   plugin: 'https://github.com/gitawego/cordova-screenshot.git',
   pluginRef: 'navigator.screenshot',

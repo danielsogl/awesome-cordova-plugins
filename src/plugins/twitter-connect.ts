@@ -6,11 +6,30 @@ import { Plugin, Cordova } from './plugin';
  * @description
  * Plugin to use Twitter Single Sign On
  * Uses Twitter's Fabric SDK
+ * ```typescript
+ * import {TwitterConnect} from 'ionic-native';
+ *
+ * function onSuccess(response) {
+ *   console.log(response);
+ *
+ *   // Will console log something like:
+ *   // {
+ *   //   userName: 'myuser',
+ *   //   userId: '12358102',
+ *   //   secret: 'tokenSecret'
+ *   //   token: 'accessTokenHere'
+ *   // }
+ * }
+ *
+ * TwitterConnect.login().then(onSuccess, onError);
+ *
+ * TwitterConnect.logout().then(onLogoutSuccess, onLogoutError);
+ * ```
  */
 @Plugin({
   plugin: 'twitter-connect-plugin',
   pluginRef: 'TwitterConnect',
-  repo: '',
+  repo: 'https://github.com/ManifestWebDesign/twitter-connect-plugin',
   install: 'ionic plugin add twitter-connect-plugin --variable FABRIC_KEY=fabric_API_key'
 })
 export class TwitterConnect {
