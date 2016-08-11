@@ -1,17 +1,17 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name SafariViewController
  * @description
  * @usage
  * ```
- * import {SafariViewController} from 'ionic-native';
+ * import { SafariViewController } from 'ionic-native';
  *
- * ...
  *
  * SafariViewController.isAvailable()
  *   .then(
- *     (available) => {
+ *     (available: boolean) => {
  *       if(available){
  *
  *         SafariViewController.show({
@@ -24,9 +24,9 @@ import {Plugin, Cordova} from './plugin';
  *         })
  *         .then(
  *           (result: any) => {
- *             if(result.event === 'opened') console.log("Opened");
- *             else if(result.event === 'loaded') console.log("Loaded");
- *             else if(result.event === 'closed') console.log("Closed");
+ *             if(result.event === 'opened') console.log('Opened');
+ *             else if(result.event === 'loaded') console.log('Loaded');
+ *             else if(result.event === 'closed') console.log('Closed');
  *           },
  *           (error: any) => console.error(error)
  *         );
@@ -39,63 +39,60 @@ import {Plugin, Cordova} from './plugin';
  * ```
  */
 @Plugin({
-    plugin: 'cordova-plugin-safariviewcontroller',
-    pluginRef: 'SafariViewController',
-    platforms: ['iOS'],
-    repo: 'https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller'
+  plugin: 'cordova-plugin-safariviewcontroller',
+  pluginRef: 'SafariViewController',
+  platforms: ['iOS', 'Android'],
+  repo: 'https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller'
 })
 export class SafariViewController {
 
-    /**
-     * Checks if SafariViewController is available
-     */
-    @Cordova()
-    static isAvailable(): Promise<boolean> {return; }
+  /**
+   * Checks if SafariViewController is available
+   */
+  @Cordova()
+  static isAvailable(): Promise<boolean> { return; }
 
-    /**
-     * Shows Safari View Controller
-     * @param options
-     */
-    @Cordova({
-        callbackOrder: 'reverse'
-    })
-    static show(options?: SafariViewControllerOptions): Promise<any> {return; }
+  /**
+   * Shows Safari View Controller
+   * @param options
+   */
+  @Cordova()
+  static show(options?: SafariViewControllerOptions): Promise<any> { return; }
 
-    /**
-     * Hides Safari View Controller
-     */
-    @Cordova({
-        sync: true
-    })
-    static hide(): void {}
+  /**
+   * Hides Safari View Controller
+   */
+  @Cordova()
+  static hide(): void { }
 
-    /**
-     * Tries to connect to the  Chrome's custom tabs service. you must call this method before calling any of the other methods listed below.
-     */
-    @Cordova()
-    static connectToService(): Promise<any> {return; }
+  /**
+   * Tries to connect to the  Chrome's custom tabs service. you must call this method before calling any of the other methods listed below.
+   */
+  @Cordova()
+  static connectToService(): Promise<any> { return; }
 
-    /**
-     * Call this method whenever there's a chance the user will open an external url.
-     */
-    @Cordova()
-    static warmUp(): Promise<any> {return; }
+  /**
+   * Call this method whenever there's a chance the user will open an external url.
+   */
+  @Cordova()
+  static warmUp(): Promise<any> { return; }
 
-    /**
-     * For even better performance optimization, call this methods if there's more than a 50% chance the user will open a certain URL.
-     * @param url
-     */
-    @Cordova()
-    static mayLaunchUrl(url: string): Promise<any> {return; }
+  /**
+   * For even better performance optimization, call this methods if there's more than a 50% chance the user will open a certain URL.
+   * @param url
+   */
+  @Cordova()
+  static mayLaunchUrl(url: string): Promise<any> { return; }
+
 }
 
 export interface SafariViewControllerOptions {
-    url?: string;
-    hidden?: boolean;
-    toolbarColor?: string;
-    animated?: boolean;
-    showDefaultShareMenuItem?: boolean;
-    enterReaderModeIfAvailable?: boolean;
-    tintColor?: string;
-    transition?: string;
+  url?: string;
+  hidden?: boolean;
+  toolbarColor?: string;
+  animated?: boolean;
+  showDefaultShareMenuItem?: boolean;
+  enterReaderModeIfAvailable?: boolean;
+  tintColor?: string;
+  transition?: string;
 }

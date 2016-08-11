@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name Clipboard
@@ -9,19 +10,18 @@ import {Plugin, Cordova} from './plugin';
  * For more info, please see the [Clipboard plugin docs](https://github.com/VersoSolutions/CordovaClipboard.git).
  *
  * @usage
- * ```js
- * import {Clipboard} from 'ionic-native';
+ * ```typescript
+ * import { Clipboard } from 'ionic-native';
  *
  *
- *
- * Clipboard.copy("Hello world");
+ * Clipboard.copy('Hello world');
  *
  * Clipboard.paste().then(
- *    (resolve : string) => {
+ *    (resolve: string) => {
  *     alert(resolve);
  *     },
- *     (reject : string) => {
- *     alert("Error: " + reject);
+ *     (reject: string) => {
+ *     alert('Error: ' + reject);
  *     }
  *     );
  * );

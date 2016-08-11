@@ -336,8 +336,6 @@ declare var FileError: {
   PATH_EXISTS_ERR: number;
 };
 
-
-
 /**
  * @name File
  * @description
@@ -895,8 +893,7 @@ export class File {
           File.fillErrorMessage(err);
           reject(err);
         });
-      }
-      catch (xc) {
+      } catch (xc) {
         File.fillErrorMessage(xc);
         reject(xc);
       }
@@ -925,8 +922,7 @@ export class File {
           File.fillErrorMessage(err);
           reject(err);
         });
-      }
-      catch (xc) {
+      } catch (xc) {
         File.fillErrorMessage(xc);
         reject(xc);
       }
@@ -942,8 +938,7 @@ export class File {
           File.fillErrorMessage(err);
           reject(err);
         });
-      }
-      catch (xc) {
+      } catch (xc) {
         File.fillErrorMessage(xc);
         reject(xc);
       }

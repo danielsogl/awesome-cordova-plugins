@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
 * @name Background Mode
@@ -6,8 +6,8 @@ import {Plugin, Cordova} from './plugin';
 * Cordova plugin to prevent the app from going to sleep while in background.
 *  Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode#android-customization
 *@usage
-* ```js
-* import {BackgroundMode} from 'ionic-native';
+* ```typescript
+* import { BackgroundMode } from 'ionic-native';
 *
 * BackgroundMode.enable();
 * ```
@@ -39,28 +39,28 @@ export class BackgroundMode {
   @Cordova({
     sync: true
   })
-  static enable(): void {}
+  static enable(): void { }
 
-    /**
-    * Disable the background mode.
-    * Once the background mode has been disabled, the app will be paused when in background.
-    */
+  /**
+  * Disable the background mode.
+  * Once the background mode has been disabled, the app will be paused when in background.
+  */
   @Cordova()
-  static disable(): void {}
+  static disable(): void { }
 
   /**
   * Checks if background mode is enabled or not.
   * @returns {boolean} returns a true of false if the background mode is enabled.
   */
   @Cordova()
-  static isEnabled(): Promise<boolean> {return; }
+  static isEnabled(): Promise<boolean> { return; }
 
   /**
   * Can be used to get the information if the background mode is active.
   * @returns {boolean} returns tru or flase if the background mode is active.
   */
   @Cordova()
-  static isActive(): Promise<boolean> {return; }
+  static isActive(): Promise<boolean> { return; }
 
   /**
   * Override the default title, ticker and text.
@@ -70,7 +70,7 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static setDefaults(options?: Configure): void {}
+  static setDefaults(options?: Configure): void { }
 
   /**
   * Modify the displayed information.
@@ -80,7 +80,7 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static update(options?: Configure): void {}
+  static update(options?: Configure): void { }
 
   /**
   * Sets a callback for a specific event
@@ -90,7 +90,8 @@ export class BackgroundMode {
   @Cordova({
     sync: true
   })
-  static on(eventName: string, callback: any): void {}
+  static on(eventName: string, callback: any): void { }
+
 }
 
 /**

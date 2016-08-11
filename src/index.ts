@@ -6,6 +6,7 @@ declare var window;
 
 import {ActionSheet} from './plugins/actionsheet';
 import {AdMob} from './plugins/admob';
+import { AndroidFingerprintAuth } from './plugins/android-fingerprint-auth';
 import {AppAvailability} from './plugins/appavailability';
 import {AppRate} from './plugins/apprate';
 import {AppVersion} from './plugins/appversion';
@@ -20,9 +21,11 @@ import {BLE} from './plugins/ble';
 import {BluetoothSerial} from './plugins/bluetoothserial';
 import {Calendar} from './plugins/calendar';
 import {Camera} from './plugins/camera';
+import {CameraPreview} from './plugins/camera-preview';
 import {CardIO} from './plugins/card-io';
 import {Clipboard} from './plugins/clipboard';
 import {Contacts} from './plugins/contacts';
+import {Crop} from './plugins/crop';
 import {DatePicker} from './plugins/datepicker';
 import {DBMeter} from './plugins/dbmeter';
 import {Deeplinks} from './plugins/deeplinks';
@@ -46,18 +49,25 @@ import {Hotspot} from  './plugins/hotspot';
 import {Httpd} from './plugins/httpd';
 import {IBeacon} from './plugins/ibeacon';
 import {ImagePicker} from './plugins/imagepicker';
+import {ImageResizer} from './plugins/imageresizer';
 import {InAppBrowser} from './plugins/inappbrowser';
 import {Insomnia} from './plugins/insomnia';
 import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
+import {MediaCapture} from './plugins/media-capture';
+import {NativeStorage} from './plugins/nativestorage';
 import {MediaPlugin} from './plugins/media';
 import {Network} from './plugins/network';
 import {OneSignal} from './plugins/onesignal';
+import {ScreenOrientation} from './plugins/screen-orientation';
+import {PinDialog} from './plugins/pin-dialog';
 import {Printer} from './plugins/printer';
 import {Push} from './plugins/push';
 import {SafariViewController} from './plugins/safari-view-controller';
 import {Screenshot} from './plugins/screenshot';
+import {SecureStorage} from './plugins/securestorage';
+import {Sim} from './plugins/sim';
 import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
 import {SpinnerDialog} from './plugins/spinnerdialog';
@@ -67,7 +77,9 @@ import {StatusBar} from './plugins/statusbar';
 import {ThreeDeeTouch} from './plugins/3dtouch';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
+import {TwitterConnect} from './plugins/twitter-connect';
 import {Vibration} from './plugins/vibration';
+import {VideoPlayer} from './plugins/video-player';
 import {WebIntent} from './plugins/webintent';
 export * from './plugins/3dtouch';
 export * from './plugins/background-geolocation';
@@ -81,25 +93,35 @@ export * from './plugins/datepicker';
 export * from './plugins/device';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
+<<<<<<< HEAD
 export * from './plugins/file';
+=======
+export * from './plugins/facebook';
+>>>>>>> master
 export * from './plugins/filetransfer';
+export * from './plugins/geolocation';
 export * from './plugins/googlemaps';
 export * from './plugins/httpd';
 export * from './plugins/ibeacon';
 export * from './plugins/imagepicker';
+export * from './plugins/imageresizer';
 export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
 export * from './plugins/media';
+export * from './plugins/media-capture';
 export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
 export * from './plugins/sms';
 export * from './plugins/spinnerdialog';
 export * from './plugins/toast';
+export * from './plugins/twitter-connect';
+export * from './plugins/video-player';
 export {
   ActionSheet,
   AdMob,
+  AndroidFingerprintAuth,
   AppAvailability,
   AppRate,
   AppVersion,
@@ -110,26 +132,36 @@ export {
   Brightness,
   BLE,
   BluetoothSerial,
+  CameraPreview,
   Clipboard,
+  Crop,
   DBMeter,
   Deeplinks,
   DeviceAccounts,
   Dialogs,
   Diagnostic,
   EmailComposer,
+<<<<<<< HEAD
   Facebook,
+=======
+  File,
+>>>>>>> master
   Flashlight,
-  Geolocation,
   Globalization,
   GooglePlus,
   GoogleAnalytics,
   Hotspot,
   Insomnia,
   Keyboard,
+  NativeStorage,
   Network,
   OneSignal,
+  ScreenOrientation,
+  PinDialog,
   Screenshot,
+  SecureStorage,
   SocialSharing,
+  Sim,
   Splashscreen,
   SQLite,
   StatusBar,
@@ -145,6 +177,7 @@ export * from './plugins/plugin';
 window['IonicNative'] = {
   ActionSheet: ActionSheet,
   AdMob: AdMob,
+  AndroidFingerprintAuth: AndroidFingerprintAuth,
   AppAvailability: AppAvailability,
   AppRate: AppRate,
   AppVersion: AppVersion,
@@ -159,9 +192,11 @@ window['IonicNative'] = {
   BluetoothSerial: BluetoothSerial,
   Calendar: Calendar,
   Camera: Camera,
+  CameraPreview: CameraPreview,
   CardIO: CardIO,
   Clipboard: Clipboard,
   Contacts: Contacts,
+  Crop: Crop,
   DatePicker: DatePicker,
   DBMeter: DBMeter,
   Deeplinks: Deeplinks,
@@ -184,17 +219,24 @@ window['IonicNative'] = {
   Httpd: Httpd,
   IBeacon: IBeacon,
   ImagePicker: ImagePicker,
+  ImageResizer: ImageResizer,
   InAppBrowser: InAppBrowser,
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
+  MediaCapture: MediaCapture,
   MediaPlugin: MediaPlugin,
+  NativeStorage: NativeStorage,
   Network: Network,
   Printer: Printer,
   Push: Push,
   OneSignal: OneSignal,
+  ScreenOrientation: ScreenOrientation,
+  PinDialog: PinDialog,
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
+  SecureStorage: SecureStorage,
+  Sim: Sim,
   SMS: SMS,
   SocialSharing: SocialSharing,
   SpinnerDialog: SpinnerDialog,
@@ -205,6 +247,8 @@ window['IonicNative'] = {
   Toast: Toast,
   TouchID: TouchID,
   Transfer: Transfer,
+  TwitterConnect: TwitterConnect,
+  VideoPlayer: VideoPlayer,
   Vibration: Vibration,
   WebIntent: WebIntent
 };

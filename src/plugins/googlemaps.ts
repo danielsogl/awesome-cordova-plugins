@@ -1,10 +1,13 @@
 import { Cordova, CordovaInstance, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
+
+
 /**
  * @private
  * Created by Ibrahim on 3/29/2016.
  */
 declare var plugin: any;
+
 /**
  * @private
  * You can listen to these events where appropriate
@@ -43,14 +46,16 @@ export const GoogleMapsAnimation = {
  * @description This plugin uses the native Google Maps SDK
  * @usage
  * ```
- * import {GoogleMap, GoogleMapsEvent} from 'ionic-native';
+ * import { GoogleMap, GoogleMapsEvent } from 'ionic-native';
  *
  * ...
  *
  * // somewhere in your component
- * let map = new GoogleMap('elementID');
+ * let map = new GoogleMap('elementID', {
+ *  // Map Options: https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapOptions
+ });
  *
- * map.on(GoogleMapsEvent.MAP_READY).subscribe(() => console.log("Map is ready!"));
+ * map.on(GoogleMapsEvent.MAP_READY).subscribe(() => console.log('Map is ready!'));
  * ```
  */
 @Plugin({
@@ -62,8 +67,9 @@ export class GoogleMap {
   _objectInstance: any;
 
   /**
-   * Checks if a map object has been created.
-   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the plugin is available.
+   * Checks if a map object has been created and is available.
+   * 
+   * @return {Promise<boolean>}
    */
   @Cordova()
   static isAvailable(): Promise<boolean> {
@@ -73,23 +79,31 @@ export class GoogleMap {
   constructor(elementId: string, options?: any) {
     this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId), options);
   }
-
+  
+  /**
+   * Listen to a map event.
+   * 
+   * @return {Observable<any>}
+   */
   on(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.on(event, cb);
+        this._objectInstance.on(event, observer.next.bind(observer));
         return () => this._objectInstance.off(event);
       }
     );
   }
-
+  
+  /** 
+   * Listen to a map event only once.
+   * 
+   * @return {Promise<any>}
+   */
   one(event: any): Promise<any> {
     return new Promise<any>(
       resolve => this._objectInstance.one(event, resolve)
     );
   }
-
 
   @CordovaInstance({ sync: true })
   setDebuggable(isDebuggable: boolean): void {
@@ -100,7 +114,9 @@ export class GoogleMap {
   }
 
   /**
-   * Get the position of the camera
+   * Get the position of the camera.
+   * 
+   * @return {Promise<CameraPosition>}
    */
   @CordovaInstance()
   getCameraPosition(): Promise<CameraPosition> {
@@ -108,15 +124,19 @@ export class GoogleMap {
   }
 
   /**
-   * Get the location of the user
+   * Get the location of the user.
+   * 
+   * @return {Promise<MyLocation>}
    */
   @CordovaInstance()
-  getMyLocation(): Promise<MyLocation> {
+  getMyLocation(options?:MyLocationOptions): Promise<MyLocation> {
     return;
   }
 
   /**
-   * Get the visible region
+   * Get the visible region.
+   * 
+   * @return {Promise<VisibleRegion>}
    */
   @CordovaInstance()
   getVisibleRegion(): Promise<VisibleRegion> {
@@ -344,6 +364,13 @@ export interface MyLocation {
 /**
  * @private
  */
+export interface MyLocationOptions {
+  enableHighAccuracy?: boolean;
+}
+
+/**
+ * @private
+ */
 export interface VisibleRegion {
   northeast?: any;
   southwest?: any;
@@ -389,11 +416,8 @@ export class GoogleMapsMarker {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = (data: any) => {
-          observer.next(data);
-        };
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -537,9 +561,8 @@ export class GoogleMapsCircle {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -629,9 +652,8 @@ export class GoogleMapsPolyline {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -721,9 +743,8 @@ export class GoogleMapsPolygon {
   addEventListener(event: any): Observable<any> {
     return new Observable(
       (observer) => {
-        let cb = data => observer.next(data);
-        this._objectInstance.addEventListener(event, cb);
-        return () => this._objectInstance.removeEventListener(event, cb);
+        this._objectInstance.addEventListener(event, observer.next.bind(observer));
+        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
       }
     );
   }
@@ -951,8 +972,9 @@ export class GoogleMapsKmlOverlay {
 export class GoogleMapsLatLngBounds {
   private _objectInstance: any;
 
-  constructor(public southwest: GoogleMapsLatLng, public northeast: GoogleMapsLatLng) {
-    this._objectInstance = new plugin.google.maps.LatLngBounds([southwest, northeast]);
+  constructor(public southwestOrArrayOfLatLng: GoogleMapsLatLng | GoogleMapsLatLng[], public northeast?: GoogleMapsLatLng) {
+    let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
+    this._objectInstance = new plugin.google.maps.LatLngBounds(args);
   }
 
   @CordovaInstance({ sync: true })
@@ -1003,5 +1025,40 @@ export class GoogleMapsLatLng {
     precision = precision || 6;
 
     return this.lat.toFixed(precision) + ',' + this.lng.toFixed(precision);
+  }
+}
+/**
+ * @private
+ */
+export interface GeocoderRequest {
+  address?: string;
+  position?: { lat: number; lng: number };
+}
+/**
+ * @private
+ */
+export interface GeocoderResult {
+  position?: { lat: number; lng: number };
+  subThoroughfare?: string;
+  thoroughfare?: string;
+  locality?: string;
+  adminArea?: string;
+  postalCode?: string;
+  country?: string;
+}
+/**
+ * @private
+ */
+export class Geocoder {
+  /**
+   * Converts position to address and vice versa
+   * @param {GeocoderRequest} request Request object with either an address or a position
+   * @returns {Promise<GeocoderResult[]>}
+   */
+  static geocode(request: GeocoderRequest): Promise<GeocoderResult[]> {
+    return new Promise<GeocoderResult[]>((resolve, reject) => {
+      if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) reject({ error: 'plugin_not_installed' });
+      else plugin.google.maps.Geocoder.geocode(request, resolve);
+    });
   }
 }
