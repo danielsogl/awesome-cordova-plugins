@@ -9,9 +9,8 @@ declare var navigator: any;
  * @description
  * @usage
  * ```typescript
- * import {MediaCapture} from 'ionic-native';
+ * import { MediaCapture } from 'ionic-native';
  *
- * ...
  *
  * let options: CaptureImageOptions = { limit: 3 };
  * MediaCapture.captureImage(options)

@@ -5,12 +5,12 @@ import { Cordova, Plugin } from './plugin';
  * @name Vibration
  * @description Vibrates the device
  * @usage
- * ```ts
- * import {Vibration} from 'ionic-native';
- *
+ * ```typescript
+ * import { Vibration } from 'ionic-native';
  *
  *
  * // Vibrate the device for a second
+ * // Duration is ignored on iOS. 
  * Vibration.vibrate(1000);
  *
  * // Vibrate 2 seconds

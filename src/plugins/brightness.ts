@@ -8,8 +8,9 @@ import { Cordova, Plugin } from './plugin';
  * Requires Cordova plugin: `cordova-plugin-brightness`. For more info, please see the [Brightness plugin docs](https://github.com/mgcrea/cordova-plugin-brightness).
  *
  * @usage
- * ```ts
- * import {Brightness} from 'ionic-native';
+ * ```typescript
+ * import { Brightness } from 'ionic-native';
+ *
  *
  * let brightnessValue: number = 0.8;
  * Brightness.setBrightness(brightnessValue);
@@ -18,7 +19,7 @@ import { Cordova, Plugin } from './plugin';
  */
 @Plugin({
   plugin: 'cordova-plugin-brightness',
-  pluginRef: 'plugins.brightness',
+  pluginRef: 'cordova.plugins.brightness',
   repo: 'https://github.com/mgcrea/cordova-plugin-brightness',
   platforms: ['Android', 'iOS']
 })
@@ -47,4 +48,5 @@ export class Brightness {
   */
   @Cordova()
   static setKeepScreenOn(value: boolean): void { }
+
 }

@@ -7,16 +7,15 @@ import { Cordova, Plugin } from './plugin';
  * This plugin allows you to display local notifications on the device
  *
  * @usage
- * ```ts
- * import {LocalNotifications} from 'ionic-native';
- *
+ * ```typescript
+ * import { LocalNotifications } from 'ionic-native';
  *
  *
  * // Schedule a single notification
  * LocalNotifications.schedule({
  *   id: 1,
- *   text: "Single Notification",
- *   sound: isAndroid? 'file://sound.mp3': 'file://beep.caf'
+ *   text: 'Single Notification',
+ *   sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
  *   data: { secret: key }
  * });
  *
@@ -24,22 +23,22 @@ import { Cordova, Plugin } from './plugin';
  * // Schedule multiple notifications
  * LocalNotifications.schedule([{
  *    id: 1,
- *    text: "Multi Notification 1",
+ *    text: 'Multi Notification 1',
  *    sound: isAndroid ? 'file://sound.mp3': 'file://beep.caf',
  *    data: { secret:key }
  *   },{
  *    id: 2,
- *    title: "Local Notification Example",
- *    text: "Multi Notification 2",
- *    icon: "http://example.com/icon.png"
+ *    title: 'Local Notification Example',
+ *    text: 'Multi Notification 2',
+ *    icon: 'http://example.com/icon.png'
  * }]);
  *
  *
  * // Schedule delayed notification
  * LocalNotifications.schedule({
- *    text: "Delayed Notification",
+ *    text: 'Delayed Notification',
  *    at: new Date(new Date().getTime() + 3600),
- *    led: "FF0000",
+ *    led: 'FF0000',
  *    sound: null
  * });
  * ```

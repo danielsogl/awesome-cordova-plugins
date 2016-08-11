@@ -33,9 +33,8 @@ export interface Device {
  * Access information about the underlying device and platform.
  *
  * @usage
- * ```js
- * import {Device} from 'ionic-native';
- *
+ * ```typescript
+ * import { Device } from 'ionic-native';
  *
  *
  * console.log('Device UUID is: ' + Device.device.uuid);
@@ -55,4 +54,5 @@ export class Device {
    */
   @CordovaProperty
   static get device() { return window.device; }
+
 }

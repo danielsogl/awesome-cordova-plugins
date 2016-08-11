@@ -12,7 +12,23 @@ export interface InAppBrowserEvent extends Event {
   /** the error message, only in the case of loaderror. */
   message: string;
 }
-
+/**
+ * @name InAppBrowser
+ * @description Launches in app Browser
+ * @usage
+ * ```typescript
+ * import {InAppBrowser} from 'ionic-native';
+ *
+ *
+ * ...
+ *
+ *
+ * let browser = new InAppBrowser('https://ionic.io', '_system');
+ * browser.executeScript(...);
+ * browser.insertCSS(...);
+ * browser.close();
+ * ```
+ */
 @Plugin({
   plugin: 'cordova-plugin-inappbrowser',
   pluginRef: 'cordova.InAppBrowser',
@@ -69,6 +85,9 @@ export class InAppBrowser {
    */
   @CordovaInstance()
   insertCss(css: {file?: string, code?: string}): Promise<any> {return; }
+
+
+
 
   /**
    * A method that allows you to listen to events happening in the browser.

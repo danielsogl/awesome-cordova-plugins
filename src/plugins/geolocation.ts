@@ -102,20 +102,19 @@ export interface GeolocationOptions {
  *
  * @usage
  *
- * ```ts
- * import {Geolocation} from 'ionic-native';
- *
+ * ```typescript
+ * import { Geolocation } from 'ionic-native';
  *
  *
  * Geolocation.getCurrentPosition().then((resp) => {
- *  //resp.coords.latitude
- *  //resp.coords.longitude
+ *  // resp.coords.latitude
+ *  // resp.coords.longitude
  * })
  *
  * let watch = Geolocation.watchPosition();
  * watch.subscribe((data) => {
- *  //data.coords.latitude
- *  //data.coords.longitude
+ *  // data.coords.latitude
+ *  // data.coords.longitude
  * })
  * ```
  */
@@ -140,7 +139,7 @@ export class Geolocation {
    * Watch the current device's position.  Clear the watch by unsubscribing from
    * Observable changes.
    *
-   * ```ts
+   * ```typescript
    * var subscription = Geolocation.watchPosition().subscribe(position => {
    *   console.log(position.coords.longitude + ' ' + position.coords.latitude);
    * });

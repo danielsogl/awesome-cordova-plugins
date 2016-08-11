@@ -23,8 +23,8 @@ export interface PromptCallback {
  * Requires Cordova plugin: `cordova-plugin-dialogs`. For more info, please see the [Dialogs plugin docs](https://github.com/apache/cordova-plugin-dialogs).
  *
  * @usage
- * ```js
- * import {Dialogs} from 'ionic-native';
+ * ```typescript
+ * import { Dialogs } from 'ionic-native';
  *
  *
  *

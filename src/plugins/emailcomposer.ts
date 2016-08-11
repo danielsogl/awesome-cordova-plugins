@@ -12,11 +12,11 @@ declare var cordova: any;
  * DISCLAIMER: This plugin is experiencing issues with the latest versions of Cordova. Use at your own risk. Functionality is not guaranteed. Please stay tuned for a more stable version.
  *
  * @usage
- * ```ts
- * import {EmailComposer} from 'ionic-native';
+ * ```typescript
+ * import { EmailComposer } from 'ionic-native';
  *
  *
- * EmailComposer.isAvailable().then((available) =>{
+ * EmailComposer.isAvailable().then((available: boolean) =>{
  *  if(available) {
  *    //Now we know we can send
  *  }

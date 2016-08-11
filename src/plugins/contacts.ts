@@ -1,4 +1,4 @@
-import { Cordova, CordovaInstance, Plugin, InstanceProperty } from './plugin';
+import { Cordova, CordovaInstance, InstanceProperty, Plugin } from './plugin';
 
 
 declare var window: any,
@@ -257,16 +257,15 @@ export class ContactFindOptions implements IContactFindOptions {
  *
  * @usage
  *
- * ```js
- * import {Contact} from 'ionic-native';
- *
+ * ```typescript
+ * import { Contact } from 'ionic-native';
  *
  *
  * let contact = new Contact();
- * contact.displayName = "Mr. Ionitron";
+ * contact.displayName = 'Mr. Ionitron';
  * contact.save().then(
- *   () => console.log("Contact saved!", contact),
- *   (error: any) => console.error("Error saving contact.", error)
+ *   () => console.log('Contact saved!', contact),
+ *   (error: any) => console.error('Error saving contact.', error)
  * );
  * ```
  *
@@ -308,4 +307,5 @@ export class Contacts {
    */
   @Cordova()
   static pickContact(): Promise<any> { return; }
+
 }

@@ -46,20 +46,20 @@ export interface CompassOptions {
  * Requires Cordova plugin: `cordova-plugin-device-orientation`. For more info, please see the [Device Orientation docs](https://github.com/apache/cordova-plugin-device-orientation).
  *
  * @usage
- * ```ts
- * import {DeviceOrientation} from 'ionic-native';
- *
+ * ```typescript
+ * // CompassHeading is an interface for compass
+ * import { DeviceOrientation, CompassHeading } from 'ionic-native';
  *
  *
  * // Get the device current compass heading
  * DeviceOrientation.getCurrentHeading().then(
- *   data => console.log(data),
- *   error => console.log(error)
+ *   (data: CompassHeading) => console.log(data),
+ *   (error: any) => console.log(error)
  * );
  *
  * // Watch the device compass heading change
  * var subscription = DeviceOrientation.watchHeading().subscribe(
- *   data => console.log(data)
+ *   (data: CompassHeading) => console.log(data)
  * );
  *
  * // Stop watching heading change

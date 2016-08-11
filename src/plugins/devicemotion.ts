@@ -41,19 +41,18 @@ export interface AccelerometerOptions {
  * Requires Cordova plugin: `cordova-plugin-device-motion`. For more info, please see the [Device Motion docs](https://github.com/apache/cordova-plugin-device-motion).
  *
  * @usage
- * ```ts
- * import {DeviceMotion} from 'ionic-native';
- *
+ * ```typescript
+ * import { DeviceMotion } from 'ionic-native';
  *
  *
  * // Get the device current acceleration
  * DeviceMotion.getCurrentAcceleration().then(
- *   acceleration => console.log(acceleration),
- *   error => console.log(error)
+ *   (acceleration: AccelerationData) => console.log(acceleration),
+ *   (error: any) => console.log(error)
  * );
  *
  * // Watch device acceleration
- * var subscription = DeviceMotion.watchAcceleration().subscribe(acceleration => {
+ * var subscription = DeviceMotion.watchAcceleration().subscribe((acceleration: AccelerationData) => {
  *   console.log(acceleration);
  * });
  *
@@ -87,4 +86,5 @@ export class DeviceMotion {
     clearFunction: 'clearWatch'
   })
   static watchAcceleration(options?: AccelerometerOptions): Observable<AccelerationData> { return; }
+
 }

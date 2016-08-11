@@ -69,8 +69,8 @@ import { Cordova, Plugin } from './plugin';
  * For tracking events, see `logEvent` and `logPurchase`.
  *
  * @usage
- * ```js
- * import {Facebook} from 'ionic-native';
+ * ```typescript
+ * import { Facebook } from 'ionic-native';
  *
  *
  *
@@ -98,7 +98,7 @@ export class Facebook {
   /**
    * Login to Facebook to authenticate this app.
    *
-   * ```ts
+   * ```typescript
    * {
    *   status: "connected",
    *   authResponse: {
@@ -113,10 +113,10 @@ export class Facebook {
    * ```
    *
    * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) this app has upon logging in.
-   * @return Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
+   * @return {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
    */
   @Cordova()
-  static login(permissions: string[]): Promise<any> { return; }
+  static login(permissions: string[]): Promise<FacebookLoginResponse> { return; }
 
   /**
    * Logout of Facebook.
@@ -245,4 +245,17 @@ export class Facebook {
     url: string,
     picture: string
   }): Promise<any> { return; }
+
+}
+
+export interface FacebookLoginResponse {
+  status: string;
+  authResponse: {
+    session_key: boolean;
+    accessToken: string;
+    expiresIn: number;
+    sig: string;
+    secret: string;
+    userID: string;
+  };
 }

@@ -5,12 +5,15 @@ import { Observable } from 'rxjs/Observable';
  * @name Bluetooth Serial
  * @description This plugin enables serial communication over Bluetooth. It was written for communicating between Android or iOS and an Arduino.
  * @usage
- * ```ts
+ * ```typescript
+ * import { BluetoothSerial } from 'ionic-native';
+ *
+ *
  * // Write a string
- * Bluetooth.write("hello world").then(success, failure);
+ * BluetoothSerial.write("hello world").then(success, failure);
  *
  * // Array of int or bytes
- * Bluetooth.write([186, 220, 222]).then(success, failure);
+ * BluetoothSerial.write([186, 220, 222]).then(success, failure);
  *
  * // Typed Array
  * var data = new Uint8Array(4);
@@ -18,10 +21,10 @@ import { Observable } from 'rxjs/Observable';
  * data[1] = 0x42;
  * data[2] = 0x43;
  * data[3] = 0x44;
- * Bluetooth.write(data).then(success, failure);
+ * BluetoothSerial.write(data).then(success, failure);
  *
  * // Array Buffer
- * Bluetooth.write(data.buffer).then(success, failure);
+ * BluetoothSerial.write(data.buffer).then(success, failure);
  * ```
  */
 @Plugin({
@@ -218,4 +221,5 @@ export class BluetoothSerial {
     sync: true
   })
   static setDiscoverable(discoverableDuration: number): void { }
+
 }
