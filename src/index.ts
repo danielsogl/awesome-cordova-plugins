@@ -82,6 +82,7 @@ import {TwitterConnect} from './plugins/twitter-connect';
 import {Vibration} from './plugins/vibration';
 import {VideoPlayer} from './plugins/video-player';
 import {WebIntent} from './plugins/webintent';
+import {CodePush} from './plugins/code-push';
 export * from './plugins/3dtouch';
 export * from './plugins/background-geolocation';
 export * from './plugins/backgroundmode';
@@ -115,54 +116,56 @@ export * from './plugins/spinnerdialog';
 export * from './plugins/toast';
 export * from './plugins/twitter-connect';
 export * from './plugins/video-player';
+export * from './plugins/code-push';
 export {
-  ActionSheet,
-  AdMob,
-  AndroidFingerprintAuth,
-  AppAvailability,
-  AppRate,
-  AppVersion,
-  Badge,
-  BarcodeScanner,
-  Base64ToGallery,
-  BatteryStatus,
-  Brightness,
-  BLE,
-  BluetoothSerial,
-  CameraPreview,
-  Clipboard,
-  Crop,
-  DBMeter,
-  Deeplinks,
-  DeviceAccounts,
-  Dialogs,
-  Diagnostic,
-  EmailComposer,
-  Facebook,
-  Flashlight,
-  Globalization,
-  GooglePlus,
-  GoogleAnalytics,
-  Hotspot,
-  Insomnia,
-  Keyboard,
-  NativeStorage,
-  Network,
-  OneSignal,
-  PhotoViewer,
-  ScreenOrientation,
-  PinDialog,
-  Screenshot,
-  SecureStorage,
-  SocialSharing,
-  Sim,
-  Splashscreen,
-  SQLite,
-  StatusBar,
-  TouchID,
-  Transfer,
-  Vibration,
-  WebIntent
+ActionSheet,
+AdMob,
+AndroidFingerprintAuth,
+AppAvailability,
+AppRate,
+AppVersion,
+Badge,
+BarcodeScanner,
+Base64ToGallery,
+BatteryStatus,
+Brightness,
+BLE,
+BluetoothSerial,
+CameraPreview,
+Clipboard,
+Crop,
+DBMeter,
+Deeplinks,
+DeviceAccounts,
+Dialogs,
+Diagnostic,
+EmailComposer,
+Facebook,
+Flashlight,
+Globalization,
+GooglePlus,
+GoogleAnalytics,
+Hotspot,
+Insomnia,
+Keyboard,
+NativeStorage,
+Network,
+OneSignal,
+PhotoViewer,
+ScreenOrientation,
+PinDialog,
+Screenshot,
+SecureStorage,
+SocialSharing,
+Sim,
+Splashscreen,
+SQLite,
+StatusBar,
+TouchID,
+Transfer,
+Vibration,
+WebIntent,
+CodePush
 }
 
 export * from './plugins/plugin';
@@ -207,7 +210,7 @@ window['IonicNative'] = {
   Geolocation: Geolocation,
   Globalization: Globalization,
   GooglePlus: GooglePlus,
-  GoogleMap : GoogleMap,
+  GoogleMap: GoogleMap,
   GoogleAnalytics: GoogleAnalytics,
   Hotspot: Hotspot,
   Httpd: Httpd,
@@ -245,7 +248,8 @@ window['IonicNative'] = {
   TwitterConnect: TwitterConnect,
   VideoPlayer: VideoPlayer,
   Vibration: Vibration,
-  WebIntent: WebIntent
+  WebIntent: WebIntent,
+  CodePush: CodePush
 };
 
 initAngular1(window['IonicNative']);
