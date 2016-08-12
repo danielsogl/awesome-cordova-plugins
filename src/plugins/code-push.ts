@@ -422,7 +422,8 @@ export class CodePush {
    * @param packageSuccess Callback invoked with the currently deployed package information.
    * @param packageError Optional callback invoked in case of an error.
    */
-  static getCurrentPackage(packageSuccess: SuccessCallback<ILocalPackage>, packageError?: ErrorCallback) {
+  @Cordova()
+  static getCurrentPackage(): Promise<ILocalPackage> {
     return;
   }
 
@@ -430,7 +431,8 @@ export class CodePush {
    * Gets the pending package information, if any. A pending package is one that has been installed but the application still runs the old code.
    * This happends only after a package has been installed using ON_NEXT_RESTART or ON_NEXT_RESUME mode, but the application was not restarted/resumed yet.
    */
-  static getPendingPackage(packageSuccess: SuccessCallback<ILocalPackage>, packageError?: ErrorCallback) {
+  @Cordova()
+  static getPendingPackage(): Promise<ILocalPackage> {
     return;
   }
 
@@ -443,7 +445,10 @@ export class CodePush {
    * @param queryError Optional callback invoked in case of an error.
    * @param deploymentKey Optional deployment key that overrides the config.xml setting.
    */
-  static checkForUpdate(querySuccess: SuccessCallback<IRemotePackage>, queryError?: ErrorCallback, deploymentKey?: string) {
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  static checkForUpdate(deploymentKey?: string): Promise<IRemotePackage> {
     return;
   }
 
@@ -455,7 +460,8 @@ export class CodePush {
    * @param notifySucceeded Optional callback invoked if the plugin was successfully notified.
    * @param notifyFailed Optional callback invoked in case of an error during notifying the plugin.
    */
-  static notifyApplicationReady(notifySucceeded?: SuccessCallback<void>, notifyFailed?: ErrorCallback) {
+  @Cordova()
+  static notifyApplicationReady(): Promise<void> {
     return;
   }
 
@@ -463,7 +469,8 @@ export class CodePush {
    * Reloads the application. If there is a pending update package installed using ON_NEXT_RESTART or ON_NEXT_RESUME modes, the update
    * will be immediately visible to the user. Otherwise, calling this function will simply reload the current version of the application.
    */
-  static restartApplication(installSuccess: SuccessCallback<void>, errorCallback?: ErrorCallback) {
+  @Cordova()
+  static restartApplication(): Promise<void> {
     return;
   }
 
