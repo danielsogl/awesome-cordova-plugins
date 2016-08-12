@@ -64,6 +64,12 @@ import { Cordova, Plugin } from './plugin';
  *   - title: Notification title
  *   - text: Notification body
  *   - openAppOnClick: Boolean. Whether to open the app when the notification is tapped by the user
+ *
+ * ### Troubleshooting ###
+ * #### I get compile errors when I run `ionic build ios` or `ionic run ios`. ####
+ * This could be caused by the Cordova project directory in `/platforms/ios` not being named correctly. 
+ * Try running `ionic platform rm <platform>` then run `ionic platform add <platform>` to recreate the
+ * platform directories.
  */
 @Plugin({
   plugin: 'cordova-plugin-geofence',
@@ -80,7 +86,7 @@ export class Geofence {
    * @return {Promise<any>}
    */
   @Cordova()
-  static initialize(): Promise<any> { return };
+  static initialize(): Promise<void> { return };
   
   /**
    * Adds a new geofence or array of geofences. For geofence object, see above.
@@ -88,7 +94,7 @@ export class Geofence {
    * @return {Promise<any>}
    */
   @Cordova()
-  static addOrUpdate(geofences: Object | Array<Object>): Promise<any> { return };
+  static addOrUpdate(geofences: Object | Array<Object>): Promise<void> { return };
   
   /**
    * Removes a geofence or array of geofences. `geofenceID` corresponds to one or more IDs specified when the 
@@ -97,7 +103,7 @@ export class Geofence {
    * @return {Promise<any>}
    */
   @Cordova()
-  static remove(geofenceId: string | Array<string>, onSuccess, onError): Promise<any> { return };
+  static remove(geofenceId: string | Array<string>, onSuccess, onError): Promise<void> { return };
   
   /**
    * Removes all geofences.
@@ -105,7 +111,7 @@ export class Geofence {
    * @return {Promise<any>}
    */
   @Cordova()
-  static removeAll(): Promise<any> { return };
+  static removeAll(): Promise<void> { return };
   
   /**
    * Returns an array of geofences currently being monitored.
@@ -113,22 +119,24 @@ export class Geofence {
    * @return {Promise<Array<string>>}
    */
   @Cordova()
-  static getWatched(): Promise<any> { return };
+  static getWatched(): Promise<string> { return };
 
   /**
-   * Called when a geofence is crossed in the direction specified by `TransitType`.
+   * Called when a geofence is crossed in the direction specified by `TransitType`. 
+   * Commenting out. Not yet implemented in plugin.
    *
    * @return {Promise<any>}
    */
-  @Cordova()
-  static onTrasitionReceived(geofences: string | Array<string>): Promise<any> { return };
+  // @Cordova()
+  // static onTrasitionReceived(): Promise<Object> { return };
 
   /**
    * Called when the user clicks a geofence notification. iOS and Android only.
+   * Commenting out. Not yet implemented in plugin.
    *
    * @return {Promise<Object>}
    */
-  @Cordova()
-  static onNotificationClicked(): Promise<Object> { return };
+  // @Cordova()
+  // static onNotificationClicked(): Promise<Object> { return };
 
 }
