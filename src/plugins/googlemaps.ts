@@ -68,7 +68,7 @@ export class GoogleMap {
 
   /**
    * Checks if a map object has been created and is available.
-   * 
+   *
    * @return {Promise<boolean>}
    */
   @Cordova()
@@ -79,10 +79,10 @@ export class GoogleMap {
   constructor(elementId: string, options?: any) {
     this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId), options);
   }
-  
+
   /**
    * Listen to a map event.
-   * 
+   *
    * @return {Observable<any>}
    */
   on(event: any): Observable<any> {
@@ -93,10 +93,10 @@ export class GoogleMap {
       }
     );
   }
-  
-  /** 
+
+  /**
    * Listen to a map event only once.
-   * 
+   *
    * @return {Promise<any>}
    */
   one(event: any): Promise<any> {
@@ -115,7 +115,7 @@ export class GoogleMap {
 
   /**
    * Get the position of the camera.
-   * 
+   *
    * @return {Promise<CameraPosition>}
    */
   @CordovaInstance()
@@ -125,17 +125,17 @@ export class GoogleMap {
 
   /**
    * Get the location of the user.
-   * 
+   *
    * @return {Promise<MyLocation>}
    */
   @CordovaInstance()
-  getMyLocation(options?:MyLocationOptions): Promise<MyLocation> {
+  getMyLocation(options?: MyLocationOptions): Promise<MyLocation> {
     return;
   }
 
   /**
    * Get the visible region.
-   * 
+   *
    * @return {Promise<VisibleRegion>}
    */
   @CordovaInstance()
@@ -1038,13 +1038,24 @@ export interface GeocoderRequest {
  * @private
  */
 export interface GeocoderResult {
+  adminArea?: string;
+  country?: string;
+  countryCode?: string;
+  extra?: {
+    featureName?: string;
+    lines?: Array<string>;
+    permises?: string;
+    phone?: string;
+    url?: string
+  },
+  locale?: string;
+  locality?: string;
   position?: { lat: number; lng: number };
+  postalCode?: string;
+  subAdminArea?: string;
+  subLocality?: string;
   subThoroughfare?: string;
   thoroughfare?: string;
-  locality?: string;
-  adminArea?: string;
-  postalCode?: string;
-  country?: string;
 }
 /**
  * @private
@@ -1057,8 +1068,11 @@ export class Geocoder {
    */
   static geocode(request: GeocoderRequest): Promise<GeocoderResult[]> {
     return new Promise<GeocoderResult[]>((resolve, reject) => {
-      if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) reject({ error: 'plugin_not_installed' });
-      else plugin.google.maps.Geocoder.geocode(request, resolve);
+      if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) {
+        reject({ error: 'plugin_not_installed' });
+      } else {
+        plugin.google.maps.Geocoder.geocode(request, resolve);
+      }
     });
   }
 }
