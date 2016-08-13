@@ -1,3 +1,13 @@
+<a name="1.3.13"></a>
+## [1.3.13](https://github.com/driftyco/ionic-native/compare/v1.3.12...v1.3.13) (2016-08-13)
+
+
+### Bug Fixes
+
+* **inappbrowser:** fix event listener ([4b08d85](https://github.com/driftyco/ionic-native/commit/4b08d85))
+
+
+
 <a name="1.3.12"></a>
 ## [1.3.12](https://github.com/driftyco/ionic-native/compare/v1.3.10...v1.3.12) (2016-08-13)
 
