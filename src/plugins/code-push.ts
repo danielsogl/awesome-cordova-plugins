@@ -496,7 +496,17 @@ export class CodePush {
    *
    */
   static sync(syncCallback?: SuccessCallback<SyncStatus>, syncOptions?: SyncOptions, downloadProgress?: SuccessCallback<DownloadProgress>) {
-    return;
+    // there are 2 call backs and they get fired mutiple times
+    // observables are good candidates but do not know how to configure
+    // them so simply wrapping the native method call with some sanity checks
+    // on the plugin installation
+
+    if (window['codePush']) {
+      window['codePush'].sync(syncCallback, syncOptions, downloadProgress);
+    } else {
+      const pluginName = 'cordova-plugin-code-push';
+      console.warn('Install the ' + pluginName + ' plugin: \'ionic plugin add ' + pluginName + '\'');
+    }
   }
 
 }
