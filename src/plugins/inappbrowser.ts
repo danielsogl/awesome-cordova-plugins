@@ -96,7 +96,7 @@ export class InAppBrowser {
    */
   on(event: string): Observable<InAppBrowserEvent> {
     return new Observable<InAppBrowserEvent>((observer) => {
-      this._objectInstance.addEventListener(event, observer.next.bind);
+      this._objectInstance.addEventListener(event, observer.next.bind(observer));
       return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
     });
   }
