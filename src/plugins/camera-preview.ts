@@ -9,29 +9,6 @@ export interface Rect {
   height: number;
 }
 
-export interface CameraPreviewOptions {
-  
-  /**
-   * Choose the camera to use (front- or back-facing).
-   *  'front' for front camera
-   *  'rear' for rear camera
-   */
-  camera: string;
-  /** Take photo on tap */
-  tapPhoto: boolean;
-  /** */
-  previewDrag: boolean;
-  /**  */
-  toBack: boolean;
-  /** Alpha use when toBack is set to true */
-  alpha: number;
-}
-
-export interface CameraPreviewSize {
-  maxWidth: number;
-  maxHeight: number;
-}
-
 /**
  * @name CameraPreview
  * @description
