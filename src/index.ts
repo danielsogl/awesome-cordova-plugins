@@ -84,6 +84,7 @@ import {TwitterConnect} from './plugins/twitter-connect';
 import {Vibration} from './plugins/vibration';
 import {VideoPlayer} from './plugins/video-player';
 import {WebIntent} from './plugins/webintent';
+import {Zip} from './plugins/zip';
 export * from './plugins/3dtouch';
 export * from './plugins/background-geolocation';
 export * from './plugins/backgroundmode';
@@ -166,7 +167,8 @@ export {
   TouchID,
   Transfer,
   Vibration,
-  WebIntent
+  WebIntent,
+  Zip
 }
 
 export * from './plugins/plugin';
@@ -251,7 +253,8 @@ window['IonicNative'] = {
   TwitterConnect: TwitterConnect,
   VideoPlayer: VideoPlayer,
   Vibration: Vibration,
-  WebIntent: WebIntent
+  WebIntent: WebIntent,
+  Zip: Zip
 };
 
 initAngular1(window['IonicNative']);
