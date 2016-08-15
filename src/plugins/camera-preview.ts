@@ -9,7 +9,7 @@ export interface Rect {
   height: number;
 }
 
-export interface CameraPreviewSize {
+export interface Size {
   maxWidth: number;
   maxHeight: number;
 }
@@ -60,7 +60,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static takePicture(size: CameraPreviewSize): void { };
+  static takePicture(size: Size): void { };
 
   /**
    * Register a callback function that receives the original picture and the image captured from the preview box.
@@ -68,7 +68,7 @@ export class CameraPreview {
   @Cordova({
     observable: true
   })
-  static setOnPictureTakenHandler(): Observable<any> { return; };
+  static setOnPictureTakenHandler(callback: Function): Observable<any> { return; };
 
   /**
    * Switch from the rear camera and front camera, if available.
