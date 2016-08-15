@@ -80,6 +80,7 @@ import {StatusBar} from './plugins/statusbar';
 import {ThreeDeeTouch} from './plugins/3dtouch';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
+import {TTS} from './plugins/tts';
 import {TwitterConnect} from './plugins/twitter-connect';
 import {Vibration} from './plugins/vibration';
 import {VideoPlayer} from './plugins/video-player';
