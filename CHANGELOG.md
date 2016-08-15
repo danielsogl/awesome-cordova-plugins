@@ -1,3 +1,14 @@
+<a name="1.3.15"></a>
+## [1.3.15](https://github.com/driftyco/ionic-native/compare/v1.3.14...v1.3.15) (2016-08-15)
+
+
+### Features
+
+* **google-analytics:** add missing functions ([689bfd9](https://github.com/driftyco/ionic-native/commit/689bfd9))
+* **TTS:** add tts plugin ([#431](https://github.com/driftyco/ionic-native/issues/431)) ([dcf3ab2](https://github.com/driftyco/ionic-native/commit/dcf3ab2)), closes [#311](https://github.com/driftyco/ionic-native/issues/311)
+
+
+
 <a name="1.3.14"></a>
 ## [1.3.14](https://github.com/driftyco/ionic-native/compare/v1.3.13...v1.3.14) (2016-08-15)
 
