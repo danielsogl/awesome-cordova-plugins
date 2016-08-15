@@ -68,6 +68,7 @@ import {Push} from './plugins/push';
 import {SafariViewController} from './plugins/safari-view-controller';
 import {Screenshot} from './plugins/screenshot';
 import {SecureStorage} from './plugins/securestorage';
+import {Shake} from './plugins/shake';
 import {Sim} from './plugins/sim';
 import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
@@ -154,6 +155,7 @@ export {
   PinDialog,
   Screenshot,
   SecureStorage,
+  Shake,
   SocialSharing,
   Sim,
   Splashscreen,
@@ -231,6 +233,7 @@ window['IonicNative'] = {
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
   SecureStorage: SecureStorage,
+  Shake: Shake,
   Sim: Sim,
   SMS: SMS,
   SocialSharing: SocialSharing,
