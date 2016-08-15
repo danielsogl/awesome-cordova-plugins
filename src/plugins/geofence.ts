@@ -1,5 +1,5 @@
 import { Cordova, Plugin } from './plugin';
-
+import { Observable } from 'rxjs/Observable';
 /**
  * @name Geofence
  * @description Monitors circular geofences around latitude/longitude coordinates, and sends a notification to the user when the boundary of a geofence is crossed. Notifications can be sent when the user enters and/or exits a geofence.
@@ -80,6 +80,14 @@ import { Cordova, Plugin } from './plugin';
 
 export class Geofence {
 
+  public static TransitionType = {
+    ENTER: 1,
+    EXIT: 2,
+    BOTH: 3
+  };
+
+  public static onTrasitionReceived: Function;
+
   /**
    * Initializes the plugin. User will be prompted to allow the app to use location and notifications.
    *
@@ -103,7 +111,7 @@ export class Geofence {
    * @return {Promise<any>}
    */
   @Cordova()
-  static remove(geofenceId: string | Array<string>, onSuccess, onError): Promise<void> { return };
+  static remove(geofenceId: string | Array<string>): Promise<void> { return };
   
   /**
    * Removes all geofences.
@@ -128,7 +136,7 @@ export class Geofence {
    * @return {Promise<any>}
    */
   // @Cordova()
-  // static onTrasitionReceived(): Promise<Object> { return };
+  // static onTrasitionReceived(): void { return };
 
   /**
    * Called when the user clicks a geofence notification. iOS and Android only.
@@ -137,6 +145,6 @@ export class Geofence {
    * @return {Promise<Object>}
    */
   // @Cordova()
-  // static onNotificationClicked(): Promise<Object> { return };
+  // static onNotificationClicked(): void { return };
 
 }
