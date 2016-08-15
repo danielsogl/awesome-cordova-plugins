@@ -5,6 +5,16 @@ This is a short guide on creating new plugin wrappers for Ionic Native.
 
 ## Creating Plugin Wrappers
 
+First, let's start by creating a new plugin wrapper from template.
+ 
+```
+// Call this command, and replace PluginName with the name of the plugin you wish to add
+// Make sure to capitalize the first letter, or use CamelCase if necessary.
+ 
+gulp plugin:create -n PluginName
+```
+
+
 Let's take a look at the existing plugin wrapper for Geolocation to see what goes into an Ionic Native plugin (comments have been removed for clarity):
 
 ```
