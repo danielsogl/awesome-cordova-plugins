@@ -2,11 +2,15 @@ import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
 
-export interface CameraPreviewOptions {
+export interface rect {
   x: number;
   y: number;
   width: number;
   height: number;
+}
+
+export interface CameraPreviewOptions {
+  
   /**
    * Choose the camera to use (front- or back-facing).
    *  'front' for front camera
