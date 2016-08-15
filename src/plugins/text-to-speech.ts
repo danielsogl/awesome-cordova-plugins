@@ -26,10 +26,10 @@ export interface TTSOptions {
  */
 @Plugin({
   plugin: 'cordova-plugin-tts',
-  pluginRef: 'TTS',
+  pluginRef: 'window.TTS',
   repo: 'https://github.com/vilic/cordova-plugin-tts'
 })
-export class TTS {
+export class TextToSpeech {
 
   /**
    * This function speaks

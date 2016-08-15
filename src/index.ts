@@ -80,7 +80,7 @@ import {StatusBar} from './plugins/statusbar';
 import {ThreeDeeTouch} from './plugins/3dtouch';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
-import {TTS} from './plugins/tts';
+import {TextToSpeech} from './plugins/text-to-speech';
 import {TwitterConnect} from './plugins/twitter-connect';
 import {Vibration} from './plugins/vibration';
 import {VideoPlayer} from './plugins/video-player';
@@ -167,6 +167,7 @@ export {
   StatusBar,
   TouchID,
   Transfer,
+  TextToSpeech,
   Vibration,
   WebIntent,
   Zip
@@ -251,6 +252,7 @@ window['IonicNative'] = {
   Toast: Toast,
   TouchID: TouchID,
   Transfer: Transfer,
+  TextToSpeech: TextToSpeech,
   TwitterConnect: TwitterConnect,
   VideoPlayer: VideoPlayer,
   Vibration: Vibration,
