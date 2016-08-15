@@ -2,7 +2,7 @@ import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
 
-export interface rect {
+export interface Rect {
   x: number;
   y: number;
   width: number;
@@ -55,7 +55,9 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static startCamera(options: CameraPreviewOptions): void { };
+  static startCamera(rect: Rect, defaultCamera: string, tapEnabled: boolean, dragEnabled: boolean, toBack: boolean): void { 
+
+  };
 
   /**
    * Stops the camera preview instance.
