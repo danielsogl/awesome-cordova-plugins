@@ -1,5 +1,6 @@
-import { Cordova, Plugin } from './plugin';
-
+import {Cordova, Plugin, CordovaInstance} from './plugin';
+import {Observable} from 'rxjs/Rx';
+declare var window: any;
 
 export type EventResponse = RegistrationEventResponse | NotificationEventResponse | Error;
 
@@ -57,84 +58,6 @@ export interface NotificationEventAdditionalData {
   collapse_key?: string;
   from?: string;
   notId?: string;
-}
-
-export interface PushNotification {
-  /**
-   * The event registration will be triggered on each successful registration with the 3rd party push service.
-   * @param event
-   * @param callback
-   */
-  on(event: 'registration', callback: (response: RegistrationEventResponse) => any): void;
-  /**
-   * The event notification will be triggered each time a push notification is received by a 3rd party push service on the device.
-   * @param event
-   * @param callback
-   */
-  on(event: 'notification', callback: (response: NotificationEventResponse) => any): void;
-  /**
-   * The event error will trigger when an internal error occurs and the cache is aborted.
-   * @param event
-   * @param callback
-   */
-  on(event: 'error', callback: (response: Error) => any): void;
-  /**
-   *
-   * @param event Name of the event to listen to. See below(above) for all the event names.
-   * @param callback is called when the event is triggered.
-   * @param event
-   * @param callback
-   */
-  on(event: string, callback: (response: EventResponse) => any): void;
-
-  off(event: 'registration', callback: (response: RegistrationEventResponse) => any): void;
-  off(event: 'notification', callback: (response: NotificationEventResponse) => any): void;
-  off(event: 'error', callback: (response: Error) => any): void;
-  /**
-   * As stated in the example, you will have to store your event handler if you are planning to remove it.
-   * @param event Name of the event type. The possible event names are the same as for the push.on function.
-   * @param callback handle to the function to get removed.
-   * @param event
-   * @param callback
-   */
-  off(event: string, callback: (response: EventResponse) => any): void;
-
-  /**
-   * The unregister method is used when the application no longer wants to receive push notifications.
-   * Beware that this cleans up all event handlers previously registered,
-   * so you will need to re-register them if you want them to function again without an application reload.
-   * @param successHandler
-   * @param errorHandler
-   */
-  unregister(successHandler: () => any, errorHandler?: () => any): void;
-
-  /**
-   * Set the badge count visible when the app is not running
-   *
-   * The count is an integer indicating what number should show up in the badge.
-   * Passing 0 will clear the badge.
-   * Each notification event contains a data.count value which can be used to set the badge to correct number.
-   * @param successHandler
-   * @param errorHandler
-   * @param count
-   */
-  setApplicationIconBadgeNumber(successHandler: () => any, errorHandler: () => any, count?: number): void;
-  /**
-   * Get the current badge count visible when the app is not running
-   * successHandler gets called with an integer which is the current badge count
-   * @param successHandler
-   * @param errorHandler
-   */
-  getApplicationIconBadgeNumber(successHandler: (count: number) => any, errorHandler: () => any): void;
-
-  /**
-   * iOS only
-   * Tells the OS that you are done processing a background push notification.
-   * successHandler gets called when background push processing is successfully completed.
-   * @param successHandler
-   * @param errorHandler
-   */
-  finish(successHandler: () => any, errorHandler: () => any): void;
 }
 
 export interface IOSPushOptions {
@@ -265,9 +188,7 @@ export interface PushOptions {
   windows?: {};
 }
 
-declare var PushNotification: {
-  new (): PushNotification
-};
+export type PushEvents = 'registeration' | 'error' | 'notification';
 
 /**
  * @name Push
@@ -281,6 +202,12 @@ declare var PushNotification: {
  * @usage
  * ```typescript
  * import { Push } from 'ionic-native';
+ *
+ * // create new instance of Push
+ * let push: Push = new Push(options);
+ * // OR
+ * let push: Push = Push.init(options);
+ *
  * ```
  */
 @Plugin({
@@ -289,6 +216,13 @@ declare var PushNotification: {
   repo: 'https://github.com/phonegap/phonegap-plugin-push'
 })
 export class Push {
+
+  private _objectInstance: any;
+
+  constructor(options: PushOptions) {
+    if (!window.PushNotification) return console.warn('Native: PushNotification is not installed, or you are not running on a device.');
+    this._objectInstance = window.PushNotification.init(options);
+  }
 
   /**
    * Initialize the plugin on the native side.
@@ -308,12 +242,9 @@ export class Push {
    * ```
    *
    * @param {PushOptions} options  The Push [options](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/API.md#parameters).
-   * @return {PushNotification}  Returns a new [PushNotification](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/API.md#pushonevent-callback) object.
+   * @return {Push}  Returns a new Push object.
    */
-  @Cordova({
-    sync: true
-  })
-  static init(options: PushOptions): PushNotification { return; }
+  static init(options: PushOptions): Push { return new Push(options); }
 
   /**
    * Check whether the push notification permission has been granted.
@@ -321,5 +252,69 @@ export class Push {
    */
   @Cordova()
   static hasPermission(): Promise<{ isEnabled: boolean }> { return; }
+
+  /**
+   * Adds an event listener
+   * @param event
+   */
+  @CordovaInstance({
+    observable: true,
+    clearFunction: 'off',
+    clearWithArgs: true
+  })
+  on(event: string): Observable<any> {
+    return;
+  }
+
+  /**
+   * The unregister method is used when the application no longer wants to receive push notifications.
+   * Beware that this cleans up all event handlers previously registered,
+   * so you will need to re-register them if you want them to function again without an application reload.
+   */
+  @CordovaInstance()
+  unregister(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Set the badge count visible when the app is not running
+   *
+   * The count is an integer indicating what number should show up in the badge.
+   * Passing 0 will clear the badge.
+   * Each notification event contains a data.count value which can be used to set the badge to correct number.
+   * @param count
+   */
+  @CordovaInstance({
+    callbackOrder: 'reverse'
+  })
+  setApplicationIconBadgeNumber(count?: number): Promise<any> {
+    return;
+  };
+  /**
+   * Get the current badge count visible when the app is not running
+   * successHandler gets called with an integer which is the current badge count
+   */
+  @CordovaInstance()
+  getApplicationIconBadgeNumber(): Promise<number> {
+    return;
+  }
+
+  /**
+   * iOS only
+   * Tells the OS that you are done processing a background push notification.
+   * successHandler gets called when background push processing is successfully completed.
+   */
+  @CordovaInstance()
+  finish(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Tells the OS to clear all notifications from the Notification Center
+   */
+  @CordovaInstance()
+  clearAllNotifications(): Promise<any> {
+    return;
+  }
 
 }
