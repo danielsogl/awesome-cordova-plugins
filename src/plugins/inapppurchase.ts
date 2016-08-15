@@ -6,8 +6,6 @@ import {Plugin, Cordova} from './plugin';
  * @description
  * A lightweight Cordova plugin for in app purchases on iOS/Android.
  *
- * For more info, please see the [InAppPurchase plugin docs](https://github.com/AlexDisler/cordova-plugin-inapppurchase).
- *
  * @usage
  * ```ts
  * import {InAppPurchase} from 'ionic-native';
@@ -55,7 +53,8 @@ import {Plugin, Cordova} from './plugin';
 @Plugin({
   plugin: 'cordova-plugin-inapppurchase',
   pluginRef: 'inAppPurchase',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
+  repo: 'https://github.com/AlexDisler/cordova-plugin-inapppurchase'
 })
 export class InAppPurchase {
 
@@ -64,15 +63,19 @@ export class InAppPurchase {
    * @param {array<string>} productId an array of product ids.
    * @returns {Promise} Returns a Promise that resolves with an array of objects.
    */
-  @Cordova()
-  static getProducts(productId: array<string>): Promise<any> { return; }
+  @Cordova({
+    otherPromise: true
+  })
+  static getProducts(productId: string[]): Promise<any> { return; }
 
   /**
    * Buy a product that matches the productId.
    * @param {string} productId A string that matches the product you want to buy.
    * @returns {Promise} Returns a Promise that resolves with the transaction details.
    */
-  @Cordova()
+  @Cordova({
+    otherPromise: true
+  })
   static buy(productId: string): Promise<{transactionId: string, receipt: string, signature: string, productType: string}> { return; }
 
   /**
@@ -80,7 +83,9 @@ export class InAppPurchase {
    * @param {string} productId A string that matches the product you want to subscribe to.
    * @returns {Promise} Returns a Promise that resolves with the transaction details.
    */
-  @Cordova()
+  @Cordova({
+    otherPromise: true
+  })
   static subscribe(productId: string): Promise<{transactionId: string, receipt: string, signature: string, productType: string}> { return; }
 
   /**
@@ -89,21 +94,28 @@ export class InAppPurchase {
    * @param {string} receipt
    * @param {string} signature
    */
-  @Cordova()
-  static consume(productType: string, receipt: string, signature: string): void { }
+  @Cordova({
+    otherPromise: true
+  })
+  static consume(productType: string, receipt: string, signature: string): Promise<any> { return; }
 
   /**
    * Restore all purchases from the store
    * @returns {Promise} Returns a promise with an array of purchases.
    */
-  @Cordova()
+  @Cordova({
+    otherPromise: true
+  })
   static restorePurchases(): Promise<any> { return; }
 
   /**
    * Get the receipt.
    * @returns {Promise<string>} Returns a promise that contains the string for the receipt
    */
-  @Cordova()
+  @Cordova({
+    otherPromise: true,
+    platforms: ['iOS']
+  })
   static getReceipt(): Promise<string> { return; }
 
 }
