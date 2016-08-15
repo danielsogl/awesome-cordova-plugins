@@ -32,7 +32,12 @@ export class CameraPreview {
 
   /**
    * Starts the camera preview instance.
-   * @param {CameraPreviewOptions} options for the preview
+   * @param {Rect} position and size of the preview window - {x: number, y: number, width: number, height: number}
+   * @param {string} which camera to use - 'front' | 'back'
+   * @param {boolean} enable tap to take picture
+   * @param {boolean} enable preview box drag across the screen
+   * @param {boolean} send preview box to the back of the webview
+   * @param {number} alpha of the preview box
    */
   @Cordova({
     sync: true
