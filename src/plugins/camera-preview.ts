@@ -56,6 +56,7 @@ export class CameraPreview {
 
   /**
    * Take the picture, the parameter size is optional
+   * @param {Size} optional - size of the picture to take
    */
   @Cordova({
     sync: true
