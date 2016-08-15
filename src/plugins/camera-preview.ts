@@ -69,7 +69,7 @@ export class CameraPreview {
   @Cordova({
     observable: true
   })
-  static setOnPictureTakenHandler(callback: Function): Observable<any> { return; };
+  static setOnPictureTakenHandler(): Observable<any> { return; };
 
   /**
    * Switch from the rear camera and front camera, if available.
