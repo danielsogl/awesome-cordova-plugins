@@ -9,6 +9,11 @@ export interface Rect {
   height: number;
 }
 
+export interface CameraPreviewSize {
+  maxWidth: number;
+  maxHeight: number;
+}
+
 /**
  * @name CameraPreview
  * @description
