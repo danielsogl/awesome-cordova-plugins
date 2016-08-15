@@ -83,8 +83,15 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
     };
   }
 
-  // TODO: Illegal invocation needs window context
-  return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
+  if (resolve) {
+    // if we are working with an observable or a promise, let's wait for onDeviceReady since this is an async call
+    document.addEventListener('ondeviceready', () => {
+      get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
+    });
+  } else {
+    // TODO: Illegal invocation needs window context
+    return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
+  }
 }
 
 function getPromise(cb) {
