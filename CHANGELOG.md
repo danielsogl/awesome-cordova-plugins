@@ -1,3 +1,13 @@
+<a name="1.3.16"></a>
+## [1.3.16](https://github.com/driftyco/ionic-native/compare/v1.3.15...v1.3.16) (2016-08-15)
+
+
+### Bug Fixes
+
+* **photo-viewer:** method is static ([8bc499f](https://github.com/driftyco/ionic-native/commit/8bc499f))
+
+
+
 <a name="1.3.15"></a>
 ## [1.3.15](https://github.com/driftyco/ionic-native/compare/v1.3.14...v1.3.15) (2016-08-15)
 
