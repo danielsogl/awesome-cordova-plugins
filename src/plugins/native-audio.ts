@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Plugin, Cordova } from './plugin';
 /**
  * @name NativeAudio
  * @description Native Audio Playback
