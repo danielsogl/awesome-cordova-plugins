@@ -102,6 +102,39 @@ The `@Cordova` decorator has a few more options now.
 
 `clearFunction` is used in conjunction with the `observable` option and indicates the function to be called when the Observable is disposed.
 
+### Updating index.ts
+
+For new plugins, you will need to update `/src/plugin.ts` to properly export your plugin and make it available for use. To do this, add the following 
+
+1. Import the plugin class into `index.ts`:
+
+`import {PluginClassName} from ./plugins/filename`
+
+No need to put the `.ts` extension on the filename.
+
+2. Add the plugin class name to the list in the `export` object:
+
+```
+export {
+  ActionSheet,
+  AdMob,
+  AndroidFingerprintAuth,
+  YourPluginClassName,
+  ...
+}
+```
+
+3. Add the plugin class name to the `window['IonicNative']` object:
+
+```
+window['IonicNative'] = {
+  ActionSheet: ActionSheet,
+  AdMob: AdMob,
+  AndroidFingerprintAuth: AndroidFingerprintAuth,
+  YourPluginClassName: YourPluginClassName,
+  ...
+```
+
 ### Testing your changes
 
 You need to run `npm run build` in the `ionic-native` project, this will create a `dist` directory. Then, you must go to your ionic application folder and replace your current `node_modules/ionic-native/dist/` with the newly generated one.
