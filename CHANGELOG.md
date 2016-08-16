@@ -1,11 +1,60 @@
-<a name="1.3.11"></a>
-## [1.3.11](https://github.com/driftyco/ionic-native/compare/v1.3.10...v1.3.11) (2016-08-11)
+<a name="1.3.16"></a>
+## [1.3.16](https://github.com/driftyco/ionic-native/compare/v1.3.15...v1.3.16) (2016-08-15)
+
+
+### Bug Fixes
+
+* **photo-viewer:** method is static ([8bc499f](https://github.com/driftyco/ionic-native/commit/8bc499f))
+
+
+
+<a name="1.3.15"></a>
+## [1.3.15](https://github.com/driftyco/ionic-native/compare/v1.3.14...v1.3.15) (2016-08-15)
+
+
+### Features
+
+* **google-analytics:** add missing functions ([689bfd9](https://github.com/driftyco/ionic-native/commit/689bfd9))
+* **TTS:** add tts plugin ([#431](https://github.com/driftyco/ionic-native/issues/431)) ([dcf3ab2](https://github.com/driftyco/ionic-native/commit/dcf3ab2)), closes [#311](https://github.com/driftyco/ionic-native/issues/311)
+
+
+
+<a name="1.3.14"></a>
+## [1.3.14](https://github.com/driftyco/ionic-native/compare/v1.3.13...v1.3.14) (2016-08-15)
+
+
+### Bug Fixes
+
+* **datepicker:** date now accepts Date, string, or number ([#428](https://github.com/driftyco/ionic-native/issues/428)) ([aaddd9e](https://github.com/driftyco/ionic-native/commit/aaddd9e)), closes [#354](https://github.com/driftyco/ionic-native/issues/354)
+
+
+### Features
+
+* **native-audio:** Add native audio plugin ([#427](https://github.com/driftyco/ionic-native/issues/427)) ([8cd6686](https://github.com/driftyco/ionic-native/commit/8cd6686)), closes [#315](https://github.com/driftyco/ionic-native/issues/315)
+* **shake:** add Shake plugin ([#426](https://github.com/driftyco/ionic-native/issues/426)) ([203d4c7](https://github.com/driftyco/ionic-native/commit/203d4c7)), closes [#313](https://github.com/driftyco/ionic-native/issues/313)
+* **zip:** add zip plugin ([#430](https://github.com/driftyco/ionic-native/issues/430)) ([e34f94e](https://github.com/driftyco/ionic-native/commit/e34f94e)), closes [#421](https://github.com/driftyco/ionic-native/issues/421)
+
+
+
+<a name="1.3.13"></a>
+## [1.3.13](https://github.com/driftyco/ionic-native/compare/v1.3.12...v1.3.13) (2016-08-13)
+
+
+### Bug Fixes
+
+* **inappbrowser:** fix event listener ([4b08d85](https://github.com/driftyco/ionic-native/commit/4b08d85))
+
+
+
+<a name="1.3.12"></a>
+## [1.3.12](https://github.com/driftyco/ionic-native/compare/v1.3.10...v1.3.12) (2016-08-13)
 
 
 ### Bug Fixes
 
 * **backgroundGeolocation:** update config and move to sync. Fixes [#331](https://github.com/driftyco/ionic-native/issues/331) ([4e20681](https://github.com/driftyco/ionic-native/commit/4e20681)), closes [#331](https://github.com/driftyco/ionic-native/issues/331)
 * **camera:** camera options should be optional. Fixes [#413](https://github.com/driftyco/ionic-native/issues/413) ([#417](https://github.com/driftyco/ionic-native/issues/417)) ([c60c3b7](https://github.com/driftyco/ionic-native/commit/c60c3b7)), closes [#413](https://github.com/driftyco/ionic-native/issues/413) [#417](https://github.com/driftyco/ionic-native/issues/417)
+* **inappbrowser:** fix event listener ([618d866](https://github.com/driftyco/ionic-native/commit/618d866))
 * **index:** export Geolocation interfaces. ([#404](https://github.com/driftyco/ionic-native/issues/404)) ([0c486b0](https://github.com/driftyco/ionic-native/commit/0c486b0))
 * **ng1:** Copy object properly. Fixes [#357](https://github.com/driftyco/ionic-native/issues/357) ([9ca38cd](https://github.com/driftyco/ionic-native/commit/9ca38cd)), closes [#357](https://github.com/driftyco/ionic-native/issues/357)
 

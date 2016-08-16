@@ -13,7 +13,7 @@ export interface DatePickerOptions {
    * Platforms: iOS, Android, Windows
    * Selected date
    */
-  date: Date;
+  date: Date | string | number;
 
   /**
    * Platforms: iOS, Android, Windows
@@ -21,7 +21,7 @@ export interface DatePickerOptions {
    * Type: Date | empty String
    * Default: empty String
    */
-  minDate?: Date;
+  minDate?: Date | string | number;
 
   /**
    * Platforms?: iOS, Android, Windows
@@ -29,7 +29,7 @@ export interface DatePickerOptions {
    * Type?: Date | empty String
    * Default?: empty String
    */
-  maxDate?: Date;
+  maxDate?: Date | string | number;
 
   /**
    * Platforms?: Android

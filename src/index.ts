@@ -57,6 +57,7 @@ import {Keyboard} from './plugins/keyboard';
 import {LaunchNavigator} from './plugins/launchnavigator';
 import {LocalNotifications} from './plugins/localnotifications';
 import {MediaCapture} from './plugins/media-capture';
+import {NativeAudio} from './plugins/native-audio';
 import {NativeStorage} from './plugins/nativestorage';
 import {MediaPlugin} from './plugins/media';
 import {Network} from './plugins/network';
@@ -69,6 +70,7 @@ import {Push} from './plugins/push';
 import {SafariViewController} from './plugins/safari-view-controller';
 import {Screenshot} from './plugins/screenshot';
 import {SecureStorage} from './plugins/securestorage';
+import {Shake} from './plugins/shake';
 import {Sim} from './plugins/sim';
 import {SMS} from './plugins/sms';
 import {SocialSharing} from './plugins/socialsharing';
@@ -79,10 +81,12 @@ import {StatusBar} from './plugins/statusbar';
 import {ThreeDeeTouch} from './plugins/3dtouch';
 import {Toast} from './plugins/toast';
 import {TouchID} from './plugins/touchid';
+import {TextToSpeech} from './plugins/text-to-speech';
 import {TwitterConnect} from './plugins/twitter-connect';
 import {Vibration} from './plugins/vibration';
 import {VideoPlayer} from './plugins/video-player';
 import {WebIntent} from './plugins/webintent';
+import {Zip} from './plugins/zip';
 export * from './plugins/3dtouch';
 export * from './plugins/background-geolocation';
 export * from './plugins/backgroundmode';
@@ -148,6 +152,7 @@ export {
   Hotspot,
   Insomnia,
   Keyboard,
+  NativeAudio,
   NativeStorage,
   Network,
   OneSignal,
@@ -156,6 +161,7 @@ export {
   PinDialog,
   Screenshot,
   SecureStorage,
+  Shake,
   SocialSharing,
   Sim,
   Splashscreen,
@@ -163,8 +169,10 @@ export {
   StatusBar,
   TouchID,
   Transfer,
+  TextToSpeech,
   Vibration,
-  WebIntent
+  WebIntent,
+  Zip
 }
 
 export * from './plugins/plugin';
@@ -223,6 +231,7 @@ window['IonicNative'] = {
   LocalNotifications: LocalNotifications,
   MediaCapture: MediaCapture,
   MediaPlugin: MediaPlugin,
+  NativeAudio: NativeAudio,
   NativeStorage: NativeStorage,
   Network: Network,
   Printer: Printer,
@@ -234,6 +243,7 @@ window['IonicNative'] = {
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
   SecureStorage: SecureStorage,
+  Shake: Shake,
   Sim: Sim,
   SMS: SMS,
   SocialSharing: SocialSharing,
@@ -245,10 +255,12 @@ window['IonicNative'] = {
   Toast: Toast,
   TouchID: TouchID,
   Transfer: Transfer,
+  TextToSpeech: TextToSpeech,
   TwitterConnect: TwitterConnect,
   VideoPlayer: VideoPlayer,
   Vibration: Vibration,
-  WebIntent: WebIntent
+  WebIntent: WebIntent,
+  Zip: Zip
 };
 
 initAngular1(window['IonicNative']);
