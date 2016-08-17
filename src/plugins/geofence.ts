@@ -71,6 +71,8 @@ import { Observable } from 'rxjs/Observable';
  * Try running `ionic platform rm <platform>` then run `ionic platform add <platform>` to recreate the
  * platform directories.
  */
+declare var window: any;
+
 @Plugin({
   plugin: 'cordova-plugin-geofence',
   pluginRef: 'geofence',
@@ -135,8 +137,16 @@ export class Geofence {
    *
    * @return {Promise<any>}
    */
-  // @Cordova()
-  // static onTrasitionReceived(): void { return };
+  @Cordova()
+  static onTransitionReceived(): Observable<any> {
+
+    return new Observable<any>((observer) => {
+      window.geofence.onTransitionReceived = observer.next.bind(observer);
+      return null;
+      // undefined can be replaced with ()=>{} .. whichever works better
+    });
+
+  }
 
   /**
    * Called when the user clicks a geofence notification. iOS and Android only.
@@ -144,7 +154,15 @@ export class Geofence {
    *
    * @return {Promise<Object>}
    */
-  // @Cordova()
-  // static onNotificationClicked(): void { return };
+  @Cordova()
+  static onNotificationClicked(): Observable<any> {
+
+  return new Observable<any>((observer) => {
+    window.geofence.onNotificationClicked = observer.next.bind(observer);
+      return () => window.geofence.onNotificationClicked = () => {}
+      // undefined can be replaced with ()=>{} .. whichever works better
+    });
+
+  }
 
 }

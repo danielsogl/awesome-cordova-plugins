@@ -102,6 +102,58 @@ The `@Cordova` decorator has a few more options now.
 
 `clearFunction` is used in conjunction with the `observable` option and indicates the function to be called when the Observable is disposed.
 
+### Updating index.ts
+
+For new plugins, you will need to update `/src/index.ts` to properly export your plugin and make it available for use.
+
+1. Import the plugin class into `index.ts`:
+
+`import {PluginClassName} from ./plugins/filenameForPlugin`
+
+No need to put the `.ts` extension on the filename.
+
+2. Add the plugin class name to the list in the `export` object:
+
+```
+export {
+  ActionSheet,
+  AdMob,
+  AndroidFingerprintAuth,
+  YourPluginClassName,
+  ...
+}
+```
+
+3. Add the plugin class name to the `window['IonicNative']` object:
+
+```
+window['IonicNative'] = {
+  ActionSheet: ActionSheet,
+  AdMob: AdMob,
+  AndroidFingerprintAuth: AndroidFingerprintAuth,
+  YourPluginClassName: YourPluginClassName,
+  ...
+```
+
+4. If your plugin exports any other objects outside of the plugin class, add an export statement for the file:
+
+`export * from './plugins/filenameForPlugin';`
+
+No need to put the `.ts` extension on the filename.
+
+For example, `googlemaps.ts` exports a const outside of the plugin's main `GoogleMap` class:
+
+```
+export const GoogleMapsAnimation = {
+  BOUNCE: 'BOUNCE',
+  DROP: 'DROP'
+};
+```
+
+To properly export `GoogleMapsAnimation`, `index.ts` is updated with:
+
+`export * from './plugins/googlemaps';`
+
 ### Testing your changes
 
 You need to run `npm run build` in the `ionic-native` project, this will create a `dist` directory. Then, you must go to your ionic application folder and replace your current `node_modules/ionic-native/dist/` with the newly generated one.
@@ -113,3 +165,32 @@ You need to run `npm run lint` to analyze the code and ensure it's consistency w
 ### 'Wrapping' Up
 
 That's it! The only thing left to do is rigorously document the plugin and it's usage.  Take a look at some of the other plugins for good documentation styles.
+
+## Commit Message Format
+
+We have very precise rules over how our git commit messages can be formatted. This leads to more readable messages that are easy to follow when looking through the project history. But also, we use the git commit messages to generate the our change log. (Ok you got us, it's basically Angular's commit message format).
+
+`type(scope): subject`
+
+#### Type
+Must be one of the following:
+
+* **fix**: A bug fix
+* **feat**: A new feature
+* **docs**: Documentation only changes
+* **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+* **refactor**: A code change that neither fixes a bug nor adds a feature
+* **perf**: A code change that improves performance
+* **test**: Adding missing tests
+* **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
+
+#### Scope
+The scope could be anything specifying place of the commit change. For example, the name of the plugin being changed
+
+#### Subject
+The subject contains succinct description of the change:
+
+* use the imperative, present tense: "change" not "changed" nor "changes"
+* do not capitalize first letter
+* do not place a period (.) at the end
+* entire length of the commit message must not go over 50 characters
