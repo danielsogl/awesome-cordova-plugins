@@ -2,14 +2,14 @@ import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
 
-export interface Rect {
+export interface CameraPreviewRect {
   x: number;
   y: number;
   width: number;
   height: number;
 }
 
-export interface Size {
+export interface CameraPreviewSize {
   maxWidth: number;
   maxHeight: number;
 }
@@ -32,7 +32,7 @@ export class CameraPreview {
 
   /**
    * Starts the camera preview instance.
-   * @param {Rect} position and size of the preview window - {x: number, y: number, width: number, height: number}
+   * @param {CameraPreviewRect} position and size of the preview window - {x: number, y: number, width: number, height: number}
    * @param {string} which camera to use - 'front' | 'back'
    * @param {boolean} enable tap to take picture
    * @param {boolean} enable preview box drag across the screen
@@ -42,7 +42,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static startCamera(rect: Rect, defaultCamera: string, tapEnabled: boolean, dragEnabled: boolean, toBack: boolean, alpha: number): void { 
+  static startCamera(rect: CameraPreviewRect, defaultCamera: string, tapEnabled: boolean, dragEnabled: boolean, toBack: boolean, alpha: number): void { 
 
   };
 
@@ -56,12 +56,12 @@ export class CameraPreview {
 
   /**
    * Take the picture, the parameter size is optional
-   * @param {Size} optional - size of the picture to take
+   * @param {CameraPreviewSize} optional - size of the picture to take
    */
   @Cordova({
     sync: true
   })
-  static takePicture(size: Size): void { };
+  static takePicture(size: CameraPreviewSize): void { };
 
   /**
    * Register a callback function that receives the original picture and the image captured from the preview box.
