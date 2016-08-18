@@ -52,6 +52,7 @@ import { ImagePicker } from './plugins/imagepicker';
 import { ImageResizer } from './plugins/imageresizer';
 import { InAppBrowser } from './plugins/inappbrowser';
 import { Insomnia } from './plugins/insomnia';
+import { Instagram } from './plugins/instagram';
 import { Keyboard } from './plugins/keyboard';
 import { LaunchNavigator } from './plugins/launchnavigator';
 import { LocalNotifications } from './plugins/localnotifications';
@@ -149,6 +150,7 @@ export {
   GoogleAnalytics,
   Hotspot,
   Insomnia,
+  Instagram,
   Keyboard,
   NativeAudio,
   NativeStorage,
@@ -223,6 +225,7 @@ window['IonicNative'] = {
   ImagePicker: ImagePicker,
   ImageResizer: ImageResizer,
   InAppBrowser: InAppBrowser,
+  Instagram: Instagram,
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
