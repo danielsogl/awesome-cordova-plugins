@@ -470,10 +470,10 @@ export class File {
    * @param {string} dirName The source directory name
    * @param {string} newPath The destionation path to the directory
    * @param {string} newDirName The destination directory name
-   * @return {Promise<DirectoryEntry|FileError>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
+   * @return {Promise<DirectoryEntry|Entry|FileError>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
    */
 
-  static moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry|FileError> {
+  static moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry|Entry|FileError> {
     newDirName = newDirName || dirName;
 
     if ((/^\//.test(newDirName))) {
