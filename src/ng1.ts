@@ -7,7 +7,9 @@ declare var window;
  */
 export function initAngular1(plugins) {
   if (window.angular) {
-    window.angular.module('ionic.native', []);
+    window.angular.module('ionic.native', []).run($q => {
+      window['IonicNative'].$q = $q;
+    });
 
     for (var name in plugins) {
       let serviceName = '$cordova' + name;

@@ -3,7 +3,6 @@ import { Observable } from 'rxjs/Observable';
 
 declare var window;
 declare var Promise;
-declare var $q;
 
 
 /**
@@ -94,9 +93,8 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 }
 
 function getPromise(cb) {
-  if (window.angular) {
-    let $q = window.angular.injector(['ng']).get('$q');
-    return $q((resolve, reject) => {
+  if (window['IonicNative'].$q) {
+    return window['IonicNative'].$q((resolve, reject) => {
       cb(resolve, reject);
     });
   } else if (window.Promise) {
