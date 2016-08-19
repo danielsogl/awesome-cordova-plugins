@@ -48,6 +48,14 @@ function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Func
     // Get those arguments in the order [resolve, reject, ...restOfArgs]
     args.unshift(reject);
     args.unshift(resolve);
+  } else if (opts.callbackStyle === 'node') {
+    args.push((err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
   } else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
     // If we've specified a success/error index
     args.splice(opts.successIndex, 0, resolve);
