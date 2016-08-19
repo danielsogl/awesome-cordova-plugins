@@ -33,7 +33,7 @@
     "q": "1.4.1",
     "semver": "^5.0.1",
     "tslint": "^3.8.1",
-    "tslint-ionic-rules": "0.0.3",
+    "tslint-ionic-rules": "0.0.5",
     "typescript": "^1.8.10"
   },
   "scripts": {
