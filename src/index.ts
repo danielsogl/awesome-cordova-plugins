@@ -83,6 +83,7 @@ import { TouchID } from './plugins/touchid';
 import { TextToSpeech } from './plugins/text-to-speech';
 import { TwitterConnect } from './plugins/twitter-connect';
 import { Vibration } from './plugins/vibration';
+import { VideoEditor } from './plugins/video-editor';
 import { VideoPlayer } from './plugins/video-player';
 import { WebIntent } from './plugins/webintent';
 import { Zip } from './plugins/zip';
@@ -118,6 +119,7 @@ export * from './plugins/sms';
 export * from './plugins/spinnerdialog';
 export * from './plugins/toast';
 export * from './plugins/twitter-connect';
+export * from './plugins/video-editor';
 export * from './plugins/video-player';
 export {
   ActionSheet,
@@ -254,6 +256,7 @@ window['IonicNative'] = {
   Transfer: Transfer,
   TextToSpeech: TextToSpeech,
   TwitterConnect: TwitterConnect,
+  VideoEditor: VideoEditor,
   VideoPlayer: VideoPlayer,
   Vibration: Vibration,
   WebIntent: WebIntent,
