@@ -87,7 +87,7 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
     // if we are working with an observable or a promise, let's wait for deviceready since this is an async call
     document.addEventListener('deviceready', () => {
       get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
-    });
+    }, false);
   } else {
     // TODO: Illegal invocation needs window context
     return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
