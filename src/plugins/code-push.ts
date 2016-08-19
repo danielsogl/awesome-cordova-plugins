@@ -1,4 +1,5 @@
 import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 // below are taken from
 // https://raw.githubusercontent.com/Microsoft/cordova-plugin-code-push/master/typings/codePush.d.ts
@@ -405,6 +406,12 @@ export interface DownloadProgress {
  * ```typescript
  * import { CodePush } from 'ionic-native';
  *
+ * // note - mostly error & completed methods of observable will not fire
+ * // as syncStatus will contain the current state of the update
+ * CodePush.sync().subscribe((syncStatus) => console.log(syncStatus));
+ *
+ * const downloadProgress = (progress) => { console.log(`Downloaded ${progress.receivedBytes} of ${progress.totalBytes}`); }
+ * CodePush.sync({}, downloadProgress).subscribe((syncStatus) => console.log(syncStatus));
  *
  * ```
  */
@@ -490,23 +497,17 @@ export class CodePush {
    * - If an error occurs during checking for update, downloading or installing it, the syncCallback will be invoked with the SyncStatus.ERROR.
    *
    * @param syncCallback Optional callback to be called with the status of the sync operation.
-   *                     The callback will be called only once, and the possible statuses are defined by the SyncStatus enum.
    * @param syncOptions Optional SyncOptions parameter configuring the behavior of the sync operation.
    * @param downloadProgress Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
    *
    */
-  static sync(syncCallback?: SuccessCallback<SyncStatus>, syncOptions?: SyncOptions, downloadProgress?: SuccessCallback<DownloadProgress>) {
-    // there are 2 call backs and they get fired mutiple times
-    // observables are good candidates but do not know how to configure
-    // them so simply wrapping the native method call with some sanity checks
-    // on the plugin installation
-
-    if (window['codePush']) {
-      window['codePush'].sync(syncCallback, syncOptions, downloadProgress);
-    } else {
-      const pluginName = 'cordova-plugin-code-push';
-      console.warn('Install the ' + pluginName + ' plugin: \'ionic plugin add ' + pluginName + '\'');
-    }
+  @Cordova({
+    observable: true,
+    successIndex: 0,
+    errorIndex: 3 // we don't need this, so we set it to a value higher than # of args
+  })
+  static sync(syncOptions?: SyncOptions, downloadProgress?: SuccessCallback<DownloadProgress>): Observable<SyncStatus> {
+    return;
   }
 
 }
