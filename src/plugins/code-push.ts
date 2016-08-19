@@ -413,6 +413,8 @@ export interface DownloadProgress {
  * const downloadProgress = (progress) => { console.log(`Downloaded ${progress.receivedBytes} of ${progress.totalBytes}`); }
  * CodePush.sync({}, downloadProgress).subscribe((syncStatus) => console.log(syncStatus));
  *
+ * See https://github.com/ksachdeva/ionic2-code-push-example for more detailed example
+ *
  * ```
  */
 @Plugin({
