@@ -669,7 +669,7 @@ export class File {
       return Promise.reject(err);
     }
 
-    let opts: WriteOptions;
+    let opts: WriteOptions = {};
     if (replaceOrOptions) {
       if (typeof(replaceOrOptions) === 'boolean') {
         opts.replace = <boolean>replaceOrOptions;
