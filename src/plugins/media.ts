@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 declare var Media: any;
 
-export interface MediaError {  
+export interface MediaError {
   code: number;
   message: string;
 }
@@ -83,12 +83,12 @@ export class MediaPlugin {
   static MEDIA_PAUSED: number = 3;
   static MEDIA_STOPPED: number = 4;
 
-  //error codes
+  // error codes
   static MEDIA_ERR_ABORTED: number = 1;
-  static MEDIA_ERR_NETWORK: number = 2; 
+  static MEDIA_ERR_NETWORK: number = 2;
   static MEDIA_ERR_DECODE: number = 3;
   static MEDIA_ERR_NONE_SUPPORTED: number = 4;
-  
+
   // Properties
   private _objectInstance: any;
   status: Observable<any>;

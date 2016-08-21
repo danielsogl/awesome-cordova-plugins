@@ -92,7 +92,7 @@ export interface CreateThumbnailOptions {
 export interface GetVideoInfoOptions {
 
   /** The path to the video on the device. */
-  fileUri: string
+  fileUri: string;
 
 }
 

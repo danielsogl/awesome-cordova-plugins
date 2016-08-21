@@ -1,4 +1,4 @@
-import { Cordova, Plugin } from './plugin';
+import { Plugin } from './plugin';
 
 
 declare var navigator: any;

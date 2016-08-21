@@ -1,6 +1,4 @@
 import { Cordova, Plugin } from './plugin';
-import { Observable } from 'rxjs/Observable';
-
 
 declare var window;
 
