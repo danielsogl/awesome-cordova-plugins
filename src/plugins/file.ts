@@ -676,10 +676,6 @@ export class File {
       }
     }
 
-    let cflags: Flags = {
-      create: true
-    };
-
     return File.resolveDirectoryUrl(path)
       .then((fse) => {
         return File.getFile(fse, fileName, opts);

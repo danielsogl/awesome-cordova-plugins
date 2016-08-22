@@ -29,7 +29,7 @@ export class Instagram {
   @Cordova({
     callbackStyle: 'node'
   })
-  static isInstalled(): Promise<boolean|string> {return;}
+  static isInstalled(): Promise<boolean|string> { return; }
 
   /**
    * Share an image on Instagram
@@ -42,7 +42,7 @@ export class Instagram {
   @Cordova({
     callbackStyle: 'node'
   })
-  static share(canvasIdOrDataUrl: string, caption?: string): Promise<any> {return;}
+  static share(canvasIdOrDataUrl: string, caption?: string): Promise<any> { return; }
 
   /**
    * Share a library asset or video
@@ -52,6 +52,6 @@ export class Instagram {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static shareAsset(assetLocalIdentifier: string): Promise<any> {return;}
+  static shareAsset(assetLocalIdentifier: string): Promise<any> { return; }
 
 }
