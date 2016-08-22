@@ -14,13 +14,11 @@ import { Observable } from 'rxjs/Observable';
  * ```typescript
  * import { OneSignal } from 'ionic-native';
  *
- * let notificationOpenedCallback(jsonData: any) {
- *   console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
- * };
- *
  * OneSignal.init('b2f7f966-d8cc-11e4-bed1-df8f05be55ba',
- *                        {googleProjectNumber: '703322744261'},
- *                        notificationOpenedCallback);
+ *                        {googleProjectNumber: '703322744261'})
+ *  .subscribe(jsonData => {
+ *    console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+ *  });
  *
  * OneSignal.enableInAppAlertNotification(true);
  * ```
