@@ -17,59 +17,59 @@ import { Observable } from 'rxjs/Observable';
 export class EstimoteBeacons {
 
   /** Proximity value */
-  public static ProximityUnknown = 0;
+  static ProximityUnknown = 0;
 
   /** Proximity value */
-  public static ProximityImmediate = 1;
+  static ProximityImmediate = 1;
 
   /** Proximity value */
-  public static ProximityNear = 2;
+  static ProximityNear = 2;
 
   /** Proximity value */
-  public static ProximityFar = 3;
+  static ProximityFar = 3;
 
   /** Beacon colour */
-  public static BeaconColorUnknown = 0;
+  static BeaconColorUnknown = 0;
 
   /** Beacon colour */
-  public static BeaconColorMintCocktail = 1;
+  static BeaconColorMintCocktail = 1;
 
   /** Beacon colour */
-  public static BeaconColorIcyMarshmallow = 2;
+  static BeaconColorIcyMarshmallow = 2;
 
   /** Beacon colour */
-  public static BeaconColorBlueberryPie = 3;
+  static BeaconColorBlueberryPie = 3;
   /**
    * Beacon colour.
    */
-  public static BeaconColorSweetBeetroot = 4;
+  static BeaconColorSweetBeetroot = 4;
 
   /** Beacon colour */
-  public static BeaconColorCandyFloss = 5;
+  static BeaconColorCandyFloss = 5;
 
   /** Beacon colour */
-  public static BeaconColorLemonTart = 6;
+  static BeaconColorLemonTart = 6;
 
   /** Beacon colour */
-  public static BeaconColorVanillaJello = 7;
+  static BeaconColorVanillaJello = 7;
 
   /** Beacon colour */
-  public static BeaconColorLiquoriceSwirl = 8;
+  static BeaconColorLiquoriceSwirl = 8;
 
   /** Beacon colour */
-  public static BeaconColorWhite = 9;
+  static BeaconColorWhite = 9;
 
   /** Beacon colour */
-  public static BeaconColorTransparent = 10;
+  static BeaconColorTransparent = 10;
 
   /** Region state */
-  public static RegionStateUnknown = 'unknown';
+  static RegionStateUnknown = 'unknown';
 
   /** Region state */
-  public static RegionStateOutside = 'outside';
+  static RegionStateOutside = 'outside';
 
   /** Region state */
-  public static RegionStateInside = 'inside';
+  static RegionStateInside = 'inside';
 
   /**
    * Ask the user for permission to use location services
@@ -228,53 +228,6 @@ export class EstimoteBeacons {
    */
   @Cordova()
   static setupAppIDAndAppToken(appID: string, appToken: string): Promise<any> { return; }
-
-  /**
-   * Beacon region object.
-   * @typedef {Object} BeaconRegion
-   * @property {string} identifier Region identifier
-   * (id set by the application, not related actual beacons).
-   * @property {string} uuid The UUID of the region.
-   * @property {number} major The UUID major value of the region.
-   * @property {number} major The UUID minor value of the region.
-   */
-
-  /**
-   * Beacon info object. Consists of a region and an array of beacons.
-   * @typedef {Object} BeaconInfo
-   * @property {BeaconRegion} region Beacon region. Not available when scanning on iOS.
-   * @property {Beacon[]} beacons Array of {@link Beacon} objects.
-   */
-
-  /**
-   * Beacon object. Different properties are available depending on
-   * platform (iOS/Android) and whether scanning (iOS) or ranging (iOS/Android).
-   * @typedef {Object} Beacon
-   * @property {number} major Major value of the beacon (ranging/scanning iOS/Android).
-   * @property {number} color One of the estimote.beacons.BeaconColor* values (ranging/scanning iOS/Android).
-   * @property {number} rssi - The Received Signal Strength Indication (ranging/scanning, iOS/Android).
-   * @property {string} proximityUUID - UUID of the beacon (ranging iOS/Android)
-   * @property {number} proximity One of estimote.beacons.Proximity* values (ranging iOS).
-   * @property {string} macAddress (scanning iOS, ranging Android).
-   * @property {number} measuredPower (scanning iOS, ranging Android).
-   * @property {string} name The name advertised by the beacon (ranging Android).
-   * @property {number} distance Estimated distance from the beacon in meters (ranging iOS).
-   */
-
-  /**
-   * Region state object. This object is given as a result when
-   * monitoring for beacons.
-   * @typedef {Object} RegionState
-   * @property {string} identifier Region identifier
-   * (id set by the application, not related actual beacons).
-   * @property {string} uuid The UUID of the region.
-   * @property {number} major The UUID major value of the region.
-   * @property {number} major The UUID minor value of the region.
-   * @property {string} state One of
-   * {@link estimote.beacons.RegionStateInside},
-   * {@link estimote.beacons.RegionStateOutside},
-   * {@link estimote.beacons.RegionStateUnknown}.
-   */
 
   /**
    * Start scanning for all nearby beacons using CoreBluetooth (no region object is used).
