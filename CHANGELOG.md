@@ -1,3 +1,23 @@
+<a name="1.3.17"></a>
+## [1.3.17](https://github.com/driftyco/ionic-native/compare/v1.3.16...v1.3.17) (2016-08-23)
+
+
+### Bug Fixes
+
+* add the reject function at the expected errorIndex position in the args array ([#436](https://github.com/driftyco/ionic-native/issues/436)) ([4e87ac7](https://github.com/driftyco/ionic-native/commit/4e87ac7))
+* **camera-preview:** changes implementation to match Cordova plugin ([#441](https://github.com/driftyco/ionic-native/issues/441)) ([55ba65a](https://github.com/driftyco/ionic-native/commit/55ba65a))
+* **file:** fixes exclusive option ([#459](https://github.com/driftyco/ionic-native/issues/459)) ([14e41a3](https://github.com/driftyco/ionic-native/commit/14e41a3)), closes [#459](https://github.com/driftyco/ionic-native/issues/459)
+* **file:** initialize writeFile options ([#468](https://github.com/driftyco/ionic-native/issues/468)) ([16628a4](https://github.com/driftyco/ionic-native/commit/16628a4))
+* **nativeaudio:** fix plugin reference ([2510c5f](https://github.com/driftyco/ionic-native/commit/2510c5f))
+
+
+### Features
+
+* **instagram:** add instagram sharing plugin ([#453](https://github.com/driftyco/ionic-native/issues/453)) ([f3e698f](https://github.com/driftyco/ionic-native/commit/f3e698f)), closes [#307](https://github.com/driftyco/ionic-native/issues/307)
+* **VideoEditor:** add video editor plugin. ([#457](https://github.com/driftyco/ionic-native/issues/457)) ([7a53013](https://github.com/driftyco/ionic-native/commit/7a53013)), closes [#316](https://github.com/driftyco/ionic-native/issues/316)
+
+
+
 <a name="1.3.16"></a>
 ## [1.3.16](https://github.com/driftyco/ionic-native/compare/v1.3.15...v1.3.16) (2016-08-15)
 
