@@ -117,6 +117,7 @@ export class Diagnostic {
    * 
    * Notes for Android:
    *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return TRUE as permissions are already granted at installation time.
+   * 
    * Notes for iOS:
    *   - This relates to Calendar Events (not Calendar Reminders)
    */
@@ -128,6 +129,7 @@ export class Diagnostic {
    * 
    * Notes for Android:
    *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return `GRANTED` status as permissions are already granted at installation time.
+   * 
    * Notes for iOS:
    *   - This relates to Calendar Events (not Calendar Reminders)
    * 
@@ -141,6 +143,7 @@ export class Diagnostic {
    * Notes for iOS:
    *   - Should only be called if authorization status is NOT_DETERMINED. Calling it when in any other state will have no effect and just return the current authorization status.
    *   - This relates to Calendar Events (not Calendar Reminders)
+   * 
    * Notes for Android:
    *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will have no effect as the permissions are already granted at installation time.
    *   - This requests permission for `READ_CALENDAR` run-time permission
