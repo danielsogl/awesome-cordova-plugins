@@ -132,7 +132,6 @@ export class Diagnostic {
    * 
    * Notes for iOS:
    *   - This relates to Calendar Events (not Calendar Reminders)
-   * 
    */
   @Cordova()
   static getCalendarAuthorizationStatus(): Promise<any> { return; }
@@ -148,7 +147,6 @@ export class Diagnostic {
    *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will have no effect as the permissions are already granted at installation time.
    *   - This requests permission for `READ_CALENDAR` run-time permission
    *   - Required permissions must be added to `AndroidManifest.xml` as appropriate - see Android permissions: `READ_CALENDAR`, `WRITE_CALENDAR`
-   * 
    */
   @Cordova()
   static requestCalendarAuthorization(): Promise<any> { return; }
