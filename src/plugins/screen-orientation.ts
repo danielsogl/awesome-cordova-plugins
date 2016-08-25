@@ -23,7 +23,9 @@ declare var window;
  * ```
  *
  * @advanced
+ * 
  * Accepted orientation values:
+ * 
  * | Value                         | Description                                                                  |
  * |-------------------------------|------------------------------------------------------------------------------|
  * | portrait-primary              | The orientation is in the primary portrait mode.                             |
@@ -45,7 +47,7 @@ export class ScreenOrientation {
   /**
    * Lock the orientation to the passed value.
    * See below for accepted values
-   * @param {orientation} The orientation which should be locked. Accepted values see table above.
+   * @param {orientation} The orientation which should be locked. Accepted values see table below.
    */
   @Cordova({ sync: true })
   static lockOrientation(orientation: string): void { }
