@@ -53,6 +53,7 @@ import { ImageResizer } from './plugins/imageresizer';
 import { InAppBrowser } from './plugins/inappbrowser';
 import { Insomnia } from './plugins/insomnia';
 import { Instagram } from './plugins/instagram';
+import { IsDebug } from './plugins/is-debug';
 import { Keyboard } from './plugins/keyboard';
 import { LaunchNavigator } from './plugins/launchnavigator';
 import { LocalNotifications } from './plugins/localnotifications';
@@ -228,6 +229,7 @@ window['IonicNative'] = {
   ImageResizer: ImageResizer,
   InAppBrowser: InAppBrowser,
   Instagram: Instagram,
+  IsDebug: IsDebug,
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
