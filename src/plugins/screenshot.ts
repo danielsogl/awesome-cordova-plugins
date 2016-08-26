@@ -10,10 +10,10 @@ declare var navigator: any;
  * import {Screenshot} from 'ionic-native';
  *
  * // Take a screenshot and save to file
- * Screneshot.save('jpg', 80, 'myscreenshot.jpg').then(onSuccess, onError);
+ * Screenshot.save('jpg', 80, 'myscreenshot.jpg').then(onSuccess, onError);
  *
  * // Take a screenshot and get temporary file URI
- * Screneshot.URI(80).then(onSuccess, onError);
+ * Screenshot.URI(80).then(onSuccess, onError);
  * ```
  */
 @Plugin({
