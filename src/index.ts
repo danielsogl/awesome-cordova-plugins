@@ -102,6 +102,7 @@ export * from './plugins/datepicker';
 export * from './plugins/device';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
+export * from './plugins/facebook';
 export * from './plugins/file';
 export * from './plugins/filetransfer';
 export * from './plugins/geolocation';
@@ -147,7 +148,6 @@ export {
   Dialogs,
   Diagnostic,
   EmailComposer,
-  Facebook,
   EstimoteBeacons,
   File,
   Flashlight,
