@@ -41,7 +41,7 @@ import { Facebook } from './plugins/facebook';
 import { File } from './plugins/file';
 import { Transfer } from './plugins/filetransfer';
 import { Flashlight } from './plugins/flashlight';
-import {Geofence} from './plugins/geofence';
+import { Geofence } from './plugins/geofence';
 import { Geolocation } from './plugins/geolocation';
 import { Globalization } from './plugins/globalization';
 import { GooglePlus } from './plugins/google-plus';
@@ -53,6 +53,7 @@ import { IBeacon } from './plugins/ibeacon';
 import { ImagePicker } from './plugins/imagepicker';
 import { ImageResizer } from './plugins/imageresizer';
 import { InAppBrowser } from './plugins/inappbrowser';
+import { InAppPurchase } from './plugins/inapppurchase';
 import { Insomnia } from './plugins/insomnia';
 import { Instagram } from './plugins/instagram';
 import { IsDebug } from './plugins/is-debug';
@@ -65,7 +66,6 @@ import { NativeStorage } from './plugins/nativestorage';
 import { MediaPlugin } from './plugins/media';
 import { Network } from './plugins/network';
 import { OneSignal } from './plugins/onesignal';
-
 import { PhotoViewer } from './plugins/photo-viewer';
 import { ScreenOrientation } from './plugins/screen-orientation';
 import { PinDialog } from './plugins/pin-dialog';
@@ -158,6 +158,7 @@ export {
   GooglePlus,
   GoogleAnalytics,
   Hotspot,
+  InAppPurchase,
   Insomnia,
   Instagram,
   Keyboard,
@@ -236,6 +237,7 @@ window['IonicNative'] = {
   ImagePicker: ImagePicker,
   ImageResizer: ImageResizer,
   InAppBrowser: InAppBrowser,
+  InAppPurchase: InAppPurchase,
   Instagram: Instagram,
   IsDebug: IsDebug,
   Keyboard: Keyboard,
