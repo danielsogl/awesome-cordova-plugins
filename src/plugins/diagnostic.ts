@@ -1,4 +1,4 @@
-import {Cordova, Plugin, CordovaProperty} from './plugin';
+import {Cordova, Plugin} from './plugin';
 
 /**
  * @name Diagnostic

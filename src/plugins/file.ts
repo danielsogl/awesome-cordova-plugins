@@ -756,7 +756,7 @@ export class File {
             reader.readAsText(file);
           }, error => {
             reject(error);
-          })
+          });
 
         });
       });
@@ -800,7 +800,7 @@ export class File {
             reader.readAsDataURL(file);
           }, error => {
             reject(error);
-          })
+          });
         });
       });
   }
@@ -840,7 +840,7 @@ export class File {
             reader.readAsBinaryString(file);
           }, error => {
             reject(error);
-          })
+          });
 
         });
       });
@@ -881,7 +881,7 @@ export class File {
             reader.readAsArrayBuffer(file);
           }, error => {
             reject(error);
-          })
+          });
 
         });
       });
