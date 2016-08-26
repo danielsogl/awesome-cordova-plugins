@@ -21,10 +21,6 @@ namespace Http {
   }
 }
 
-interface Window {
-  codePush: CodePushCordovaPlugin;
-}
-
 /**
  * Defines a package. All fields are non-nullable, except when retrieving the currently running package on the first run of the app,
  * in which case only the appVersion is compulsory.
@@ -101,17 +97,21 @@ export interface ILocalPackage extends IPackage {
  * Decomposed static side of RemotePackage.
  * For Class Decomposition guidelines see http://www.typescriptlang.org/Handbook#writing-dts-files-guidelines-and-specifics
  */
+/* tslint:disable */
 interface RemotePackage_Static {
   new (): IRemotePackage;
 }
+/* tslint:enable */
 
 /**
  * Decomposed static side of LocalPackage.
  * For Class Decomposition guidelines see http://www.typescriptlang.org/Handbook#writing-dts-files-guidelines-and-specifics
  */
+/* tslint:disable */
 interface LocalPackage_Static {
   new (): ILocalPackage;
 }
+/* tslint:enable */
 
 declare var RemotePackage: RemotePackage_Static;
 declare var LocalPackage: LocalPackage_Static;
@@ -401,7 +401,10 @@ export interface DownloadProgress {
 
 /**
  * @name CodePush
- * @description
+ * CodePush plugin for Cordova by Microsoft that supports iOS and Android.
+ *
+ * For more info, please see https://github.com/ksachdeva/ionic2-code-push-example
+ *
  * @usage
  * ```typescript
  * import { CodePush } from 'ionic-native';
@@ -412,8 +415,6 @@ export interface DownloadProgress {
  *
  * const downloadProgress = (progress) => { console.log(`Downloaded ${progress.receivedBytes} of ${progress.totalBytes}`); }
  * CodePush.sync({}, downloadProgress).subscribe((syncStatus) => console.log(syncStatus));
- *
- * See https://github.com/ksachdeva/ionic2-code-push-example for more detailed example
  *
  * ```
  */
