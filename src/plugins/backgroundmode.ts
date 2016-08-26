@@ -85,7 +85,7 @@ export class BackgroundMode {
   /**
   * Sets a callback for a specific event
   * Can be used to get notified or run function when the background mode has been activated, deactivated or failed.
-  * @param eventName The name of the event. Available events: activate, deactivate, failure
+  * @param {string} eventName The name of the event. Available events: activate, deactivate, failure
   */
   @Cordova({
     sync: true

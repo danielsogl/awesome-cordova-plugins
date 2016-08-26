@@ -106,8 +106,9 @@ export class ThreeDeeTouch {
    */
   static onHomeIconPressed(): Observable<any> {
     return new Observable(observer => {
-      if (window.ThreeDeeTouch && window.ThreeDeeTouch.onHomeIconPressed) window.ThreeDeeTouch.onHomeIconPressed = observer.next.bind(observer);
-      else {
+      if (window.ThreeDeeTouch && window.ThreeDeeTouch.onHomeIconPressed) {
+        window.ThreeDeeTouch.onHomeIconPressed = observer.next.bind(observer);
+      } else {
         observer.error('3dTouch plugin is not available.');
         observer.complete();
       }

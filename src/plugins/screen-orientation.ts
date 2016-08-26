@@ -22,6 +22,19 @@ declare var window;
  * ScreenOrientation.unlockOrientation();
  * ```
  *
+ * @advanced
+ * 
+ * Accepted orientation values:
+ * 
+ * | Value                         | Description                                                                  |
+ * |-------------------------------|------------------------------------------------------------------------------|
+ * | portrait-primary              | The orientation is in the primary portrait mode.                             |
+ * | portrait-secondary            | The orientation is in the secondary portrait mode.                           |
+ * | landscape-primary             | The orientation is in the primary landscape mode.                            |
+ * | landscape-secondary           | The orientation is in the secondary landscape mode.                          |
+ * | portrait                      | The orientation is either portrait-primary or portrait-secondary (sensor).   |
+ * | landscape                     | The orientation is either landscape-primary or landscape-secondary (sensor). |
+ * 
  */
 @Plugin({
   plugin: 'cordova-plugin-screen-orientation',
@@ -33,18 +46,8 @@ export class ScreenOrientation {
 
   /**
    * Lock the orientation to the passed value.
-   * 
-   * Accepted orientation values:
-   * | Value                         | Description                                                                  |
-   * |-------------------------------|------------------------------------------------------------------------------|
-   * | portrait-primary              | The orientation is in the primary portrait mode.                             |
-   * | portrait-secondary            | The orientation is in the secondary portrait mode.                           |
-   * | landscape-primary             | The orientation is in the primary landscape mode.                            |
-   * | landscape-secondary           | The orientation is in the secondary landscape mode.                          |
-   * | portrait                      | The orientation is either portrait-primary or portrait-secondary (sensor).   |
-   * | landscape                     | The orientation is either landscape-primary or landscape-secondary (sensor). |
-   *
-   * @param {orientation} The orientation which should be locked. Accepted values see table above.
+   * See below for accepted values
+   * @param {orientation} The orientation which should be locked. Accepted values see table below.
    */
   @Cordova({ sync: true })
   static lockOrientation(orientation: string): void { }

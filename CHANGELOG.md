@@ -1,3 +1,61 @@
+<a name="1.3.17"></a>
+## [1.3.17](https://github.com/driftyco/ionic-native/compare/v1.3.16...v1.3.17) (2016-08-23)
+
+
+### Bug Fixes
+
+* add the reject function at the expected errorIndex position in the args array ([#436](https://github.com/driftyco/ionic-native/issues/436)) ([4e87ac7](https://github.com/driftyco/ionic-native/commit/4e87ac7))
+* **camera-preview:** changes implementation to match Cordova plugin ([#441](https://github.com/driftyco/ionic-native/issues/441)) ([55ba65a](https://github.com/driftyco/ionic-native/commit/55ba65a))
+* **file:** fixes exclusive option ([#459](https://github.com/driftyco/ionic-native/issues/459)) ([14e41a3](https://github.com/driftyco/ionic-native/commit/14e41a3)), closes [#459](https://github.com/driftyco/ionic-native/issues/459)
+* **file:** initialize writeFile options ([#468](https://github.com/driftyco/ionic-native/issues/468)) ([16628a4](https://github.com/driftyco/ionic-native/commit/16628a4))
+* **nativeaudio:** fix plugin reference ([2510c5f](https://github.com/driftyco/ionic-native/commit/2510c5f))
+
+
+### Features
+
+* **instagram:** add instagram sharing plugin ([#453](https://github.com/driftyco/ionic-native/issues/453)) ([f3e698f](https://github.com/driftyco/ionic-native/commit/f3e698f)), closes [#307](https://github.com/driftyco/ionic-native/issues/307)
+* **VideoEditor:** add video editor plugin. ([#457](https://github.com/driftyco/ionic-native/issues/457)) ([7a53013](https://github.com/driftyco/ionic-native/commit/7a53013)), closes [#316](https://github.com/driftyco/ionic-native/issues/316)
+
+
+
+<a name="1.3.16"></a>
+## [1.3.16](https://github.com/driftyco/ionic-native/compare/v1.3.15...v1.3.16) (2016-08-15)
+
+
+### Bug Fixes
+
+* **photo-viewer:** method is static ([8bc499f](https://github.com/driftyco/ionic-native/commit/8bc499f))
+
+
+
+<a name="1.3.15"></a>
+## [1.3.15](https://github.com/driftyco/ionic-native/compare/v1.3.14...v1.3.15) (2016-08-15)
+
+
+### Features
+
+* **google-analytics:** add missing functions ([689bfd9](https://github.com/driftyco/ionic-native/commit/689bfd9))
+* **TTS:** add tts plugin ([#431](https://github.com/driftyco/ionic-native/issues/431)) ([dcf3ab2](https://github.com/driftyco/ionic-native/commit/dcf3ab2)), closes [#311](https://github.com/driftyco/ionic-native/issues/311)
+
+
+
+<a name="1.3.14"></a>
+## [1.3.14](https://github.com/driftyco/ionic-native/compare/v1.3.13...v1.3.14) (2016-08-15)
+
+
+### Bug Fixes
+
+* **datepicker:** date now accepts Date, string, or number ([#428](https://github.com/driftyco/ionic-native/issues/428)) ([aaddd9e](https://github.com/driftyco/ionic-native/commit/aaddd9e)), closes [#354](https://github.com/driftyco/ionic-native/issues/354)
+
+
+### Features
+
+* **native-audio:** Add native audio plugin ([#427](https://github.com/driftyco/ionic-native/issues/427)) ([8cd6686](https://github.com/driftyco/ionic-native/commit/8cd6686)), closes [#315](https://github.com/driftyco/ionic-native/issues/315)
+* **shake:** add Shake plugin ([#426](https://github.com/driftyco/ionic-native/issues/426)) ([203d4c7](https://github.com/driftyco/ionic-native/commit/203d4c7)), closes [#313](https://github.com/driftyco/ionic-native/issues/313)
+* **zip:** add zip plugin ([#430](https://github.com/driftyco/ionic-native/issues/430)) ([e34f94e](https://github.com/driftyco/ionic-native/commit/e34f94e)), closes [#421](https://github.com/driftyco/ionic-native/issues/421)
+
+
+
 <a name="1.3.13"></a>
 ## [1.3.13](https://github.com/driftyco/ionic-native/compare/v1.3.12...v1.3.13) (2016-08-13)
 
