@@ -300,10 +300,10 @@ export interface FileReader {
   onabort: (evt: ProgressEvent) => void;
 
   abort(): void;
-  readAsText(fe: FileEntry, encoding?: string): void;
-  readAsDataURL(fe: FileEntry): void;
-  readAsBinaryString(fe: FileEntry): void;
-  readAsArrayBuffer(fe: FileEntry): void;
+  readAsText(fe: File, encoding?: string): void;
+  readAsDataURL(fe: File): void;
+  readAsBinaryString(fe: File): void;
+  readAsArrayBuffer(fe: File): void;
 }
 
 declare var FileReader: {
@@ -752,8 +752,12 @@ export class File {
               reject({code: null, message: 'READER_ONLOADEND_ERR'});
             }
           };
+          fe.file(file => {
+            reader.readAsText(file);
+          }, error => {
+            reject(error);
+          })
 
-          reader.readAsText(fe);
         });
       });
   }
@@ -790,7 +794,13 @@ export class File {
             }
           };
 
-          reader.readAsDataURL(fe);
+
+
+          fe.file(file => {
+            reader.readAsDataURL(file);
+          }, error => {
+            reject(error);
+          })
         });
       });
   }
@@ -826,7 +836,12 @@ export class File {
             }
           };
 
-          reader.readAsBinaryString(fe);
+          fe.file(file => {
+            reader.readAsBinaryString(file);
+          }, error => {
+            reject(error);
+          })
+
         });
       });
   }
@@ -862,7 +877,12 @@ export class File {
             }
           };
 
-          reader.readAsArrayBuffer(fe);
+          fe.file(file => {
+            reader.readAsArrayBuffer(file);
+          }, error => {
+            reject(error);
+          })
+
         });
       });
   }
