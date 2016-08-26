@@ -37,10 +37,12 @@ import { DeviceOrientation } from './plugins/deviceorientation';
 import { Diagnostic } from './plugins/diagnostic';
 import { Dialogs } from './plugins/dialogs';
 import { EmailComposer } from './plugins/emailcomposer';
+import { EstimoteBeacons } from './plugins/estimote-beacons';
 import { Facebook } from './plugins/facebook';
 import { File } from './plugins/file';
 import { Transfer } from './plugins/filetransfer';
 import { Flashlight } from './plugins/flashlight';
+import { Geofence } from './plugins/geofence';
 import { Geolocation } from './plugins/geolocation';
 import { Globalization } from './plugins/globalization';
 import { GooglePlus } from './plugins/google-plus';
@@ -52,8 +54,10 @@ import { IBeacon } from './plugins/ibeacon';
 import { ImagePicker } from './plugins/imagepicker';
 import { ImageResizer } from './plugins/imageresizer';
 import { InAppBrowser } from './plugins/inappbrowser';
+import { InAppPurchase } from './plugins/inapppurchase';
 import { Insomnia } from './plugins/insomnia';
 import { Instagram } from './plugins/instagram';
+import { IsDebug } from './plugins/is-debug';
 import { Keyboard } from './plugins/keyboard';
 import { LaunchNavigator } from './plugins/launchnavigator';
 import { LocalNotifications } from './plugins/localnotifications';
@@ -102,6 +106,7 @@ export * from './plugins/datepicker';
 export * from './plugins/device';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
+export * from './plugins/facebook';
 export * from './plugins/file';
 export * from './plugins/filetransfer';
 export * from './plugins/geolocation';
@@ -125,6 +130,7 @@ export * from './plugins/twitter-connect';
 export * from './plugins/video-editor';
 export * from './plugins/video-player';
 export {
+<<<<<<< HEAD
 ActionSheet,
 AdMob,
 AndroidFingerprintAuth,
@@ -178,6 +184,63 @@ TextToSpeech,
 Vibration,
 WebIntent,
 Zip
+=======
+  ActionSheet,
+  AdMob,
+  AndroidFingerprintAuth,
+  AppAvailability,
+  AppRate,
+  AppVersion,
+  Badge,
+  BarcodeScanner,
+  Base64ToGallery,
+  BatteryStatus,
+  Brightness,
+  BLE,
+  BluetoothSerial,
+  CameraPreview,
+  Clipboard,
+  Crop,
+  DBMeter,
+  Deeplinks,
+  DeviceAccounts,
+  Dialogs,
+  Diagnostic,
+  EmailComposer,
+  EstimoteBeacons,
+  File,
+  Flashlight,
+  Geofence,
+  Globalization,
+  GooglePlus,
+  GoogleAnalytics,
+  Hotspot,
+  InAppPurchase,
+  Insomnia,
+  Instagram,
+  Keyboard,
+  NativeAudio,
+  NativeStorage,
+  Network,
+  OneSignal,
+  PhotoViewer,
+  ScreenOrientation,
+  PinDialog,
+  Screenshot,
+  SecureStorage,
+  Shake,
+  SocialSharing,
+  Sim,
+  Splashscreen,
+  SQLite,
+  StatusBar,
+  TouchID,
+  Transfer,
+  TextToSpeech,
+  Vibration,
+  WebIntent,
+  Zip
+>>>>>>> driftyco/master
 }
 
 export * from './plugins/plugin';
@@ -217,9 +280,11 @@ window['IonicNative'] = {
   Dialogs: Dialogs,
   Diagnostic: Diagnostic,
   EmailComposer: EmailComposer,
+  EstimoteBeacons: EstimoteBeacons,
   Facebook: Facebook,
   File: File,
   Flashlight: Flashlight,
+  Geofence: Geofence,
   Geolocation: Geolocation,
   Globalization: Globalization,
   GooglePlus: GooglePlus,
@@ -231,7 +296,9 @@ window['IonicNative'] = {
   ImagePicker: ImagePicker,
   ImageResizer: ImageResizer,
   InAppBrowser: InAppBrowser,
+  InAppPurchase: InAppPurchase,
   Instagram: Instagram,
+  IsDebug: IsDebug,
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,

@@ -204,8 +204,11 @@ export class GoogleMap {
     return new Promise<GoogleMapsMarker>(
       (resolve, reject) => {
         this._objectInstance.addMarker(options, (marker: any) => {
-          if (marker) resolve(new GoogleMapsMarker(marker));
-          else reject();
+          if (marker) {
+            resolve(new GoogleMapsMarker(marker));
+          } else {
+            reject();
+          }
         });
       }
     );
@@ -215,8 +218,11 @@ export class GoogleMap {
     return new Promise<GoogleMapsCircle>(
       (resolve, reject) => {
         this._objectInstance.addCircle(options, (circle: any) => {
-          if (circle) resolve(new GoogleMapsCircle(circle));
-          else reject();
+          if (circle) {
+            resolve(new GoogleMapsCircle(circle));
+          } else {
+            reject();
+          }
         });
       }
     );
@@ -226,8 +232,11 @@ export class GoogleMap {
     return new Promise<GoogleMapsPolygon>(
       (resolve, reject) => {
         this._objectInstance.addPolygon(options, (polygon: any) => {
-          if (polygon) resolve(new GoogleMapsPolygon(polygon));
-          else reject();
+          if (polygon) {
+            resolve(new GoogleMapsPolygon(polygon));
+          } else {
+            reject();
+          }
         });
       }
     );
@@ -237,8 +246,11 @@ export class GoogleMap {
     return new Promise<GoogleMapsPolyline>(
       (resolve, reject) => {
         this._objectInstance.addPolyline(options, (polyline: any) => {
-          if (polyline) resolve(new GoogleMapsPolyline(polyline));
-          else reject();
+          if (polyline) {
+            resolve(new GoogleMapsPolyline(polyline));
+          } else {
+            reject();
+          }
         });
       }
     );
@@ -248,8 +260,11 @@ export class GoogleMap {
     return new Promise<GoogleMapsTileOverlay>(
       (resolve, reject) => {
         this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
-          if (tileOverlay) resolve(new GoogleMapsTileOverlay(tileOverlay));
-          else reject();
+          if (tileOverlay) {
+            resolve(new GoogleMapsTileOverlay(tileOverlay));
+          } else {
+            reject();
+          }
         });
       }
     );
@@ -259,8 +274,11 @@ export class GoogleMap {
     return new Promise<GoogleMapsGroundOverlay>(
       (resolve, reject) => {
         this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
-          if (groundOverlay) resolve(new GoogleMapsGroundOverlay(groundOverlay));
-          else reject();
+          if (groundOverlay) {
+            resolve(new GoogleMapsGroundOverlay(groundOverlay));
+          } else {
+            reject();
+          }
         });
       }
     );
@@ -270,8 +288,11 @@ export class GoogleMap {
     return new Promise<GoogleMapsKmlOverlay>(
       (resolve, reject) => {
         this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
-          if (kmlOverlay) resolve(new GoogleMapsKmlOverlay(kmlOverlay));
-          else reject();
+          if (kmlOverlay) {
+            resolve(new GoogleMapsKmlOverlay(kmlOverlay));
+          } else {
+            reject();
+          }
         });
       }
     );
@@ -1047,7 +1068,7 @@ export interface GeocoderResult {
     permises?: string;
     phone?: string;
     url?: string
-  },
+  };
   locale?: string;
   locality?: string;
   position?: { lat: number; lng: number };

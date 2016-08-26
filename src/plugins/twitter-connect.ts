@@ -51,7 +51,7 @@ export class TwitterConnect {
    * @return {Promise<any>} returns a promise that resolves if user profile is successfully retrieved and rejects if request fails
    */
   @Cordova()
-  static showUser(): Promise<any> {return; }  
+  static showUser(): Promise<any> {return; }
 }
 export interface TwitterConnectResponse {
   /**

@@ -42,7 +42,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static startCamera(rect: CameraPreviewRect, defaultCamera: string, tapEnabled: boolean, dragEnabled: boolean, toBack: boolean, alpha: number): void { 
+  static startCamera(rect: CameraPreviewRect, defaultCamera: string, tapEnabled: boolean, dragEnabled: boolean, toBack: boolean, alpha: number): void {
 
   };
 

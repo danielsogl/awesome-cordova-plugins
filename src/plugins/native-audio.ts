@@ -22,7 +22,7 @@ import { Plugin, Cordova } from './plugin';
  */
 @Plugin({
   plugin: 'cordova-plugin-nativeaudio',
-  pluginRef: 'NativeAudio',
+  pluginRef: 'plugins.NativeAudio',
   repo: 'https://github.com/floatinghotpot/cordova-plugin-nativeaudio'
 })
 export class NativeAudio {

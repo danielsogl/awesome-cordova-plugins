@@ -4,6 +4,11 @@ import { Observable } from 'rxjs/Observable';
 
 declare var Media: any;
 
+export interface MediaError {
+  code: number;
+  message: string;
+}
+
 /**
  * @name MediaPlugin
  * @description
@@ -77,6 +82,12 @@ export class MediaPlugin {
   static MEDIA_RUNNING: number = 2;
   static MEDIA_PAUSED: number = 3;
   static MEDIA_STOPPED: number = 4;
+
+  // error codes
+  static MEDIA_ERR_ABORTED: number = 1;
+  static MEDIA_ERR_NETWORK: number = 2;
+  static MEDIA_ERR_DECODE: number = 3;
+  static MEDIA_ERR_NONE_SUPPORTED: number = 4;
 
   // Properties
   private _objectInstance: any;
@@ -188,13 +199,4 @@ export class MediaPlugin {
   })
   stop(): void { }
 
-}
-
-export class MediaError {
-  static get MEDIA_ERR_ABORTED() { return 1; }
-  static get MEDIA_ERR_NETWORK() { return 2; }
-  static get MEDIA_ERR_DECODE() { return 3; }
-  static get MEDIA_ERR_NONE_SUPPORTED() { return 4; }
-  code: number;
-  message: string;
 }
