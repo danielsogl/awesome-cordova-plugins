@@ -20,7 +20,7 @@ import { Observable } from 'rxjs/Observable';
  *       )
  *   })
  * }
- *  
+ *
  * private addGeofence() {
  *   //options describing geofence
  *   let fence = {
@@ -36,13 +36,13 @@ import { Observable } from 'rxjs/Observable';
  *         openAppOnClick: true //open app when notification is tapped
  *     }
  *   }
- *   
+ *
  *   Geofence.addOrUpdate(fence).then(
  *      () => console.log('Geofence added'),
  *      (err) => console.log('Geofence failed to add')
- *    ); 
+ *    );
  * }
- * 
+ *
  * ```
  * ### Transition Types ###
  * Transition type specifies whether the geofence should trigger when the user enters and/or leaves the geofence.
@@ -67,7 +67,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * ### Troubleshooting ###
  * #### I get compile errors when I run `ionic build ios` or `ionic run ios`. ####
- * This could be caused by the Cordova project directory in `/platforms/ios` not being named correctly. 
+ * This could be caused by the Cordova project directory in `/platforms/ios` not being named correctly.
  * Try running `ionic platform rm <platform>` then run `ionic platform add <platform>` to recreate the
  * platform directories.
  */
@@ -97,7 +97,7 @@ export class Geofence {
    */
   @Cordova()
   static initialize(): Promise<void> { return };
-  
+
   /**
    * Adds a new geofence or array of geofences. For geofence object, see above.
    *
@@ -105,16 +105,16 @@ export class Geofence {
    */
   @Cordova()
   static addOrUpdate(geofences: Object | Array<Object>): Promise<void> { return };
-  
+
   /**
-   * Removes a geofence or array of geofences. `geofenceID` corresponds to one or more IDs specified when the 
+   * Removes a geofence or array of geofences. `geofenceID` corresponds to one or more IDs specified when the
    * geofence was created.
    *
    * @return {Promise<any>}
    */
   @Cordova()
   static remove(geofenceId: string | Array<string>): Promise<void> { return };
-  
+
   /**
    * Removes all geofences.
    *
@@ -122,7 +122,7 @@ export class Geofence {
    */
   @Cordova()
   static removeAll(): Promise<void> { return };
-  
+
   /**
    * Returns an array of geofences currently being monitored.
    *
@@ -132,18 +132,16 @@ export class Geofence {
   static getWatched(): Promise<string> { return };
 
   /**
-   * Called when a geofence is crossed in the direction specified by `TransitType`. 
+   * Called when a geofence is crossed in the direction specified by `TransitType`.
    * Commenting out. Not yet implemented in plugin.
    *
    * @return {Promise<any>}
    */
-  @Cordova()
   static onTransitionReceived(): Observable<any> {
 
     return new Observable<any>((observer) => {
-      window.geofence.onTransitionReceived = observer.next.bind(observer);
-      return null;
-      // undefined can be replaced with ()=>{} .. whichever works better
+      window && window.geofence && (window.geofence.onTransitionReceived = observer.next.bind(observer));
+      return () => window.geofence.onTransitionReceived = () => {};
     });
 
   }
@@ -154,13 +152,11 @@ export class Geofence {
    *
    * @return {Promise<Object>}
    */
-  @Cordova()
   static onNotificationClicked(): Observable<any> {
 
-  return new Observable<any>((observer) => {
-    window.geofence.onNotificationClicked = observer.next.bind(observer);
-      return () => window.geofence.onNotificationClicked = () => {}
-      // undefined can be replaced with ()=>{} .. whichever works better
+    return new Observable<any>((observer) => {
+      window && window.geofence && (window.geofence.onNotificationClicked = observer.next.bind(observer));
+        return () => window.geofence.onNotificationClicked = () => {};
     });
 
   }
