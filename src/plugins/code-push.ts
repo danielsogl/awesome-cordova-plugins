@@ -401,6 +401,7 @@ export interface DownloadProgress {
 
 /**
  * @name CodePush
+ * @description
  * CodePush plugin for Cordova by Microsoft that supports iOS and Android.
  *
  * For more info, please see https://github.com/ksachdeva/ionic2-code-push-example
