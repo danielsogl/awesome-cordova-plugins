@@ -96,7 +96,7 @@ export class Geofence {
    * @return {Promise<any>}
    */
   @Cordova()
-  static initialize(): Promise<void> { return };
+  static initialize(): Promise<void> { return; };
 
   /**
    * Adds a new geofence or array of geofences. For geofence object, see above.
@@ -104,7 +104,7 @@ export class Geofence {
    * @return {Promise<any>}
    */
   @Cordova()
-  static addOrUpdate(geofences: Object | Array<Object>): Promise<void> { return };
+  static addOrUpdate(geofences: Object | Array<Object>): Promise<void> { return; };
 
   /**
    * Removes a geofence or array of geofences. `geofenceID` corresponds to one or more IDs specified when the
@@ -113,7 +113,7 @@ export class Geofence {
    * @return {Promise<any>}
    */
   @Cordova()
-  static remove(geofenceId: string | Array<string>): Promise<void> { return };
+  static remove(geofenceId: string | Array<string>): Promise<void> { return; };
 
   /**
    * Removes all geofences.
@@ -121,7 +121,7 @@ export class Geofence {
    * @return {Promise<any>}
    */
   @Cordova()
-  static removeAll(): Promise<void> { return };
+  static removeAll(): Promise<void> { return; };
 
   /**
    * Returns an array of geofences currently being monitored.
@@ -129,7 +129,7 @@ export class Geofence {
    * @return {Promise<Array<string>>}
    */
   @Cordova()
-  static getWatched(): Promise<string> { return };
+  static getWatched(): Promise<string> { return; };
 
   /**
    * Called when a geofence is crossed in the direction specified by `TransitType`.

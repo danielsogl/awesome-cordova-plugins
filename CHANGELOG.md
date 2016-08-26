@@ -1,3 +1,21 @@
+<a name="1.3.18"></a>
+## [1.3.18](https://github.com/driftyco/ionic-native/compare/v1.3.17...v1.3.18) (2016-08-26)
+
+
+### Bug Fixes
+
+* **facebook:** export interfaces ([c4110ee](https://github.com/driftyco/ionic-native/commit/c4110ee))
+* **geofence:** fix event listeners ([efa222f](https://github.com/driftyco/ionic-native/commit/efa222f))
+
+
+### Features
+
+* **diagnostic:** add full plugin functionality ([#424](https://github.com/driftyco/ionic-native/issues/424)) ([47a9b34](https://github.com/driftyco/ionic-native/commit/47a9b34)), closes [#224](https://github.com/driftyco/ionic-native/issues/224)
+* **geofence:** Adds geofence plugin ([#442](https://github.com/driftyco/ionic-native/issues/442)) ([a438967](https://github.com/driftyco/ionic-native/commit/a438967))
+* **IsDebug:** add the IsDebug plugin ([#475](https://github.com/driftyco/ionic-native/issues/475)) ([dd39ba8](https://github.com/driftyco/ionic-native/commit/dd39ba8))
+
+
+
 <a name="1.3.17"></a>
 ## [1.3.17](https://github.com/driftyco/ionic-native/compare/v1.3.16...v1.3.17) (2016-08-23)
 
@@ -192,6 +210,7 @@
 ### Features
 
 * **googlemaps:** add Geocoder class ([#292](https://github.com/driftyco/ionic-native/issues/292)) ([2996da6](https://github.com/driftyco/ionic-native/commit/2996da6)), closes [#280](https://github.com/driftyco/ionic-native/issues/280)
+* **inAppPurchase:** add inAppPurchase ([f1988f6](https://github.com/driftyco/ionic-native/commit/f1988f6))
 * **media-capture:** add media capture plugin ([#293](https://github.com/driftyco/ionic-native/issues/293)) ([daa6d4c](https://github.com/driftyco/ionic-native/commit/daa6d4c)), closes [#272](https://github.com/driftyco/ionic-native/issues/272)
 * **nativestorage:** add NativeStorage plugin wrapper ([af5d4ad](https://github.com/driftyco/ionic-native/commit/af5d4ad))
 * **pin-dialog:** add pin dialog plugin ([#291](https://github.com/driftyco/ionic-native/issues/291)) ([2fe37c4](https://github.com/driftyco/ionic-native/commit/2fe37c4))
