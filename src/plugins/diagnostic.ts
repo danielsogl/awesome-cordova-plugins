@@ -8,6 +8,24 @@ import {Cordova, Plugin, CordovaProperty} from './plugin';
  * @usage
  * ```typescript
  * import { Diagnostic } from 'ionic-native';
+ *
+ * let successCallback = (isAvailable) => { console.log('Is available? ' + isAvailable); };
+ * let errorCallback = (e) => console.error(e);
+ *
+ * Diagnostic.isCameraAvailable().then(successCallback).catch(errorCallback);
+ *
+ * Diagnostic.isBluetoothAvailable().then(successCallback, errorCallback);
+ *
+ *
+ * Diagnostic.getBluetoothState()
+ *   .then((state) => {
+ *     if(state == Diagnostic.bluetoothStates.POWERED_ON){
+ *       // do something
+ *     } else {
+ *       // do something else
+ *     }
+ *   }).catch(e => console.error(e));
+ *
  * ```
  */
 @Plugin({
@@ -16,6 +34,73 @@ import {Cordova, Plugin, CordovaProperty} from './plugin';
   repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin'
 })
 export class Diagnostic {
+
+  static permission = {
+    'READ_CALENDAR': 'READ_CALENDAR',
+    'WRITE_CALENDAR': 'WRITE_CALENDAR',
+    'CAMERA': 'CAMERA',
+    'READ_CONTACTS': 'READ_CONTACTS',
+    'WRITE_CONTACTS': 'WRITE_CONTACTS',
+    'GET_ACCOUNTS': 'GET_ACCOUNTS',
+    'ACCESS_FINE_LOCATION': 'ACCESS_FINE_LOCATION',
+    'ACCESS_COARSE_LOCATION': 'ACCESS_COARSE_LOCATION',
+    'RECORD_AUDIO': 'RECORD_AUDIO',
+    'READ_PHONE_STATE': 'READ_PHONE_STATE',
+    'CALL_PHONE': 'CALL_PHONE',
+    'ADD_VOICEMAIL': 'ADD_VOICEMAIL',
+    'USE_SIP': 'USE_SIP',
+    'PROCESS_OUTGOING_CALLS': 'PROCESS_OUTGOING_CALLS',
+    'READ_CALL_LOG': 'READ_CALL_LOG',
+    'WRITE_CALL_LOG': 'WRITE_CALL_LOG',
+    'SEND_SMS': 'SEND_SMS',
+    'RECEIVE_SMS': 'RECEIVE_SMS',
+    'READ_SMS': 'READ_SMS',
+    'RECEIVE_WAP_PUSH': 'RECEIVE_WAP_PUSH',
+    'RECEIVE_MMS': 'RECEIVE_MMS',
+    'WRITE_EXTERNAL_STORAGE': 'WRITE_EXTERNAL_STORAGE',
+    'READ_EXTERNAL_STORAGE': 'READ_EXTERNAL_STORAGE',
+    'BODY_SENSORS': 'BODY_SENSORS'
+  };
+
+  static permissionStatus = {
+    'NOT_REQUESTED': 'not_determined',
+    'DENIED': 'denied',
+    'RESTRICTED': 'restricted',
+    'GRANTED': 'authorized',
+    'GRANTED_WHEN_IN_USE': 'authorized_when_in_use'
+  };
+
+  static locationAuthorizationMode = {
+    'ALWAYS': 'always',
+    'WHEN_IN_USE': 'when_in_use'
+  };
+
+  static permissionGroups = {
+    'GRANTED': 'GRANTED',
+    'DENIED': 'DENIED',
+    'NOT_REQUESTED': 'NOT_REQUESTED',
+    'DENIED_ALWAYS': 'DENIED_ALWAYS'
+  };
+
+  static locationMode = {
+    'HIGH_ACCURACY': 'high_accuracy',
+    'DEVICE_ONLY': 'device_only',
+    'BATTERY_SAVING': 'battery_saving',
+    'LOCATION_OFF': 'location_off'
+  };
+
+  static bluetoothState = {
+    'UNKNOWN': 'unknown',
+    'RESETTING': 'resetting', // iOS
+    'UNSUPPORTED': 'unsupported', // iOS
+    'UNAUTHORIZED': 'unauthorized', // iOS
+    'POWERED_OFF': 'powered_off',
+    'POWERED_ON': 'powered_on',
+    'POWERING_OFF': 'powering_off',
+    'POWERING_ON': 'powering_on'
+  };
+
+
   /**
    * Checks if app is able to access device location.
    */
@@ -180,10 +265,10 @@ export class Diagnostic {
 
   /**
    * Checks if the application is authorized to use the calendar.
-   * 
+   *
    * Notes for Android:
    *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return TRUE as permissions are already granted at installation time.
-   * 
+   *
    * Notes for iOS:
    *   - This relates to Calendar Events (not Calendar Reminders)
    */
@@ -192,29 +277,29 @@ export class Diagnostic {
 
   /**
    * Returns the calendar authorization status for the application.
-   * 
+   *
    * Notes for Android:
    *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return `GRANTED` status as permissions are already granted at installation time.
-   * 
+   *
    * Notes for iOS:
    *   - This relates to Calendar Events (not Calendar Reminders)
-   * 
+   *
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static getCalendarAuthorizationStatus(): Promise<any> { return; }
 
   /**
    * Requests calendar authorization for the application.
-   * 
+   *
    * Notes for iOS:
    *   - Should only be called if authorization status is NOT_DETERMINED. Calling it when in any other state will have no effect and just return the current authorization status.
    *   - This relates to Calendar Events (not Calendar Reminders)
-   * 
+   *
    * Notes for Android:
    *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will have no effect as the permissions are already granted at installation time.
    *   - This requests permission for `READ_CALENDAR` run-time permission
    *   - Required permissions must be added to `AndroidManifest.xml` as appropriate - see Android permissions: `READ_CALENDAR`, `WRITE_CALENDAR`
-   * 
+   *
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static requestCalendarAuthorization(): Promise<any> { return; }
