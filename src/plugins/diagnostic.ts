@@ -103,6 +103,7 @@ export class Diagnostic {
 
   /**
    * Checks if app is able to access device location.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static isLocationAvailable(): Promise<any> { return; }
@@ -110,6 +111,7 @@ export class Diagnostic {
   /**
    * Checks if Wifi is connected/enabled. On iOS this returns true if the device is connected to a network by WiFi. On Android and Windows 10 Mobile this returns true if the WiFi setting is set to enabled.
    * On Android this requires permission. `<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />`
+   * @returns {Promise<any>}
    */
   @Cordova()
   static isWifiAvailable(): Promise<any> { return; }
@@ -117,6 +119,7 @@ export class Diagnostic {
   /**
    * Checks if the device has a camera. On Android this returns true if the device has a camera. On iOS this returns true if both the device has a camera AND the application is authorized to use it. On Windows 10 Mobile this returns true if both the device has a rear-facing camera AND the
    * application is authorized to use it.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static isCameraAvailable(): Promise<any> { return; }
@@ -124,6 +127,7 @@ export class Diagnostic {
   /**
    * Checks if the device has Bluetooth capabilities and if so that Bluetooth is switched on (same on Android, iOS and Windows 10 Mobile)
    * On Android this requires permission <uses-permission android:name="android.permission.BLUETOOTH" />
+   * @returns {Promise<any>}
    */
   @Cordova()
   static isBluetoothAvailable(): Promise<any> { return; }
@@ -154,6 +158,7 @@ export class Diagnostic {
 
   /**
    * Returns true if the WiFi setting is set to enabled, and is the same as `isWifiAvailable()`
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['Android', 'Windows 10']})
   static isWifiEnabled(): Promise<boolean> { return; }
@@ -176,6 +181,7 @@ export class Diagnostic {
 
   /**
    * Returns true if the device setting for location is on. On Android this returns true if Location Mode is switched on. On iOS this returns true if Location Services is switched on.
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static isLocationEnabled(): Promise<boolean> {return; }
@@ -183,12 +189,14 @@ export class Diagnostic {
   /**
    * Checks if the application is authorized to use location.
    * Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static isLocationAuthorized(): Promise<any> { return; }
 
   /**
    * Returns the location authorization status for the application.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static getLocationAuthorizationStatus(): Promise<any> {return; }
@@ -198,12 +206,14 @@ export class Diagnostic {
    * Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
    *
    * mode - (iOS-only / optional) location authorization mode: "always" or "when_in_use". If not specified, defaults to "when_in_use".
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static requestLocationAuthorization(mode?: string): Promise<any> { return; }
 
   /**
    * Checks if camera hardware is present on device.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static isCameraPresent(): Promise<any> { return; }
@@ -211,54 +221,63 @@ export class Diagnostic {
   /**
    * Checks if the application is authorized to use the camera.
    * Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return TRUE as permissions are already granted at installation time.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static isCameraAuthorized(): Promise<any> { return; }
 
   /**
    * Returns the camera authorization status for the application.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static getCameraAuthorizationStatus(): Promise<any> { return; }
 
   /**
    * Requests camera authorization for the application.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static requestCameraAuthorization(): Promise<any> { return; }
 
   /**
    * Checks if the application is authorized to use the microphone.
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static isMicrophoneAuthorized(): Promise<boolean> { return; }
 
   /**
    * Returns the microphone authorization status for the application.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static getMicrophoneAuthorizationStatus(): Promise<any> { return; }
 
   /**
    * Requests microphone authorization for the application.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static requestMicrophoneAuthorization(): Promise<any> { return; }
 
   /**
    * Checks if the application is authorized to use contacts (address book).
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static isContactsAuthorized(): Promise<boolean> { return; }
 
   /**
    * Returns the contacts authorization status for the application.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static getContactsAuthroizationStatus(): Promise<any> { return; }
 
   /**
    * Requests contacts authorization for the application.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static requestContactsAuthorization(): Promise<any> { return; }
@@ -271,6 +290,7 @@ export class Diagnostic {
    *
    * Notes for iOS:
    *   - This relates to Calendar Events (not Calendar Reminders)
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static isCalendarAuthorized(): Promise<boolean> { return; }
@@ -284,6 +304,7 @@ export class Diagnostic {
    * Notes for iOS:
    *   - This relates to Calendar Events (not Calendar Reminders)
    *
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static getCalendarAuthorizationStatus(): Promise<any> { return; }
@@ -300,6 +321,7 @@ export class Diagnostic {
    *   - This requests permission for `READ_CALENDAR` run-time permission
    *   - Required permissions must be added to `AndroidManifest.xml` as appropriate - see Android permissions: `READ_CALENDAR`, `WRITE_CALENDAR`
    *
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static requestCalendarAuthorization(): Promise<any> { return; }
@@ -308,12 +330,14 @@ export class Diagnostic {
    * Opens settings page for this app.
    * On Android, this opens the "App Info" page in the Settings app.
    * On iOS, this opens the app settings page in the Settings app. This works only on iOS 8+ - iOS 7 and below will invoke the errorCallback.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static switchToSettings(): Promise<any> {return; }
 
   /**
    * Returns the state of Bluetooth on the device.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android', 'iOS']})
   static getBluetoothState(): Promise<any> {return; }
@@ -333,7 +357,9 @@ export class Diagnostic {
   static registerLocationStateChangeHandler(handler: Function): void { }
 
   /**
-   * Checks if high-accuracy locations are available to the app from GPS hardware. Returns true if Location mode is enabled and is set to "Device only" or "High accuracy" AND if the app is authorised to use location.
+   * Checks if high-accuracy locations are available to the app from GPS hardware.
+   * Returns true if Location mode is enabled and is set to "Device only" or "High accuracy" AND if the app is authorised to use location.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android']})
   static isGpsLocationAvailable(): Promise<boolean> {return; }
@@ -348,7 +374,9 @@ export class Diagnostic {
   static isGpsLocationEnabled(): Promise<any> { return; }
 
   /**
-   * Checks if low-accuracy locations are available to the app from network triangulation/WiFi access points. Returns true if Location mode is enabled and is set to "Battery saving" or "High accuracy" AND if the app is authorised to use location.
+   * Checks if low-accuracy locations are available to the app from network triangulation/WiFi access points.
+   * Returns true if Location mode is enabled and is set to "Battery saving" or "High accuracy" AND if the app is authorised to use location.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android']})
   static isNetworkLocationAvailable(): Promise<any> {return; }
@@ -358,12 +386,14 @@ export class Diagnostic {
    * Returns true if Location mode is enabled and is set to either:
    *   - Battery saving = network triangulation and Wifi network IDs (low accuracy)
    *   - High accuracy = GPS hardware, network triangulation and Wifi network IDs (high and low accuracy)
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android']})
   static isNetworkLocationEnabled(): Promise<any> { return; }
 
   /**
    * Returns the current location mode setting for the device.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android']})
   static getLocationMode(): Promise<any> {return; }
@@ -372,6 +402,7 @@ export class Diagnostic {
    * Returns the current authorisation status for a given permission.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
    * @param permission
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android'], callbackOrder: 'reverse'})
   static getPermissionAuthorizationStatus(permission: any): Promise<any> {return; }
@@ -380,6 +411,7 @@ export class Diagnostic {
    * Returns the current authorisation status for multiple permissions.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
    * @param permissions
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android'], callbackOrder: 'reverse'})
   static getPermissionsAuthorizationStatus(permissions: any[]): Promise<any> {return; }
@@ -388,6 +420,7 @@ export class Diagnostic {
    * Requests app to be granted authorisation for a runtime permission.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will have no effect as the permissions are already granted at installation time.
    * @param permission
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android'], callbackOrder: 'reverse'})
   static requestRuntimePermission(permission: any): Promise<any> {return; }
@@ -396,6 +429,7 @@ export class Diagnostic {
    * Requests app to be granted authorisation for multiple runtime permissions.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
    * @param permissions
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['Android'], callbackOrder: 'reverse'})
   static requestRuntimePermissions(permissions: any[]): Promise<any> {return; }
@@ -403,54 +437,65 @@ export class Diagnostic {
   /**
    * Checks if the device setting for Bluetooth is switched on.
    * This requires `BLUETOOTH` permission on Android
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['Android']})
   static isBluetoothEnabled(): Promise<boolean> {return; }
 
   /**
    * Checks if the device has Bluetooth capabilities.
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['Android']})
   static hasBluetoothSupport(): Promise<boolean> {return; }
 
   /**
    * Checks if the device has Bluetooth Low Energy (LE) capabilities.
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['Android']})
   static hasBluetoothLESupport(): Promise<boolean> {return; }
 
   /**
    * Checks if the device supports Bluetooth Low Energy (LE) Peripheral mode.
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['Android']})
   static hasBluetoothLEPeripheralSupport(): Promise<boolean> {return; }
 
   /**
    * Checks if the application is authorized to use the Camera Roll in Photos app.
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['iOS']})
   static isCameraRollAuthorized(): Promise<boolean> {return; }
 
   /**
    * Returns the authorization status for the application to use the Camera Roll in Photos app.
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['iOS']})
   static getCameraRollAuthorizationStatus(): Promise<boolean> {return; }
 
   /**
-   * Requests camera roll authorization for the application. Should only be called if authorization status is NOT_REQUESTED. Calling it when in any other state will have no effect.
+   * Requests camera roll authorization for the application.
+   * Should only be called if authorization status is NOT_REQUESTED.
+   * Calling it when in any other state will have no effect.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS']})
   static requestCameraRollAuthorization(): Promise<any> {return; }
 
   /**
    * Checks if remote (push) notifications are enabled.
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['iOS']})
   static isRemoteNotificationsEnabled(): Promise<boolean> {return; }
 
   /**
    * Indicates if the app is registered for remote (push) notifications on the device.
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['iOS']})
   static isRegisteredForRemoteNotifications(): Promise<boolean> {return; }
@@ -458,36 +503,42 @@ export class Diagnostic {
   /**
    * Indicates the current setting of notification types for the app in the Settings app.
    * Note: on iOS 8+, if "Allow Notifications" switch is OFF, all types will be returned as disabled.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS']})
   static getRemoteNotificationTypes(): Promise<any> {return; }
 
   /**
    * Checks if the application is authorized to use reminders.
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['iOS']})
   static isRemindersAuthorized(): Promise<boolean> {return; }
 
   /**
    * Returns the reminders authorization status for the application.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS']})
   static getRemindersAuthorizationStatus(): Promise<any> {return; }
 
   /**
    * Requests reminders authorization for the application.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS']})
   static requestRemindersAuthorization(): Promise<any> {return; }
 
   /**
    * Checks if the application is authorized for background refresh.
+   * @returns {Promise<boolean>}
    */
   @Cordova({platforms: ['iOS']})
   static isBackgroundRefreshAuthorized(): Promise<boolean> {return; }
 
   /**
    * Returns the background refresh authorization status for the application.
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS']})
   static getBackgroundRefreshStatus(): Promise<any> {return; }
