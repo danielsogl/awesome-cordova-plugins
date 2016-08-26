@@ -133,7 +133,6 @@ export class Geofence {
 
   /**
    * Called when a geofence is crossed in the direction specified by `TransitType`.
-   * Commenting out. Not yet implemented in plugin.
    *
    * @return {Promise<any>}
    */
@@ -147,8 +146,7 @@ export class Geofence {
   }
 
   /**
-   * Called when the user clicks a geofence notification. iOS and Android only.
-   * Commenting out. Not yet implemented in plugin.
+   * Called when the user clicks a geofence notification. iOS and Android only.   
    *
    * @return {Promise<Object>}
    */
