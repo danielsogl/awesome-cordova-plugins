@@ -756,9 +756,9 @@ export class File {
               reject({code: null, message: 'READER_ONLOADEND_ERR'});
             }
           };
-          fe.file(function(file) {
+          fe.file(file => {
             reader.readAsText(file);
-          }, function (error){
+          }, error => {
             reject(error);
           })
 
@@ -800,9 +800,9 @@ export class File {
 
 
 
-          fe.file(function(file) {
+          fe.file(file => {
             reader.readAsDataURL(file);
-          }, function (error) {
+          }, error => {
             reject(error);
           })
         });
@@ -840,9 +840,9 @@ export class File {
             }
           };
 
-          fe.file(function(file) {
+          fe.file(file => {
             reader.readAsBinaryString(file);
-          }, function (error) {
+          }, error => {
             reject(error);
           })
 
@@ -881,9 +881,9 @@ export class File {
             }
           };
 
-          fe.file(function(file) {
+          fe.file(file => {
             reader.readAsArrayBuffer(file);
-          }, function (error) {
+          }, error => {
             reject(error);
           })
 
