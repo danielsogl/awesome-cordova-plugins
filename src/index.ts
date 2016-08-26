@@ -36,6 +36,7 @@ import { DeviceOrientation } from './plugins/deviceorientation';
 import { Diagnostic } from './plugins/diagnostic';
 import { Dialogs } from './plugins/dialogs';
 import { EmailComposer } from './plugins/emailcomposer';
+import { EstimoteBeacons } from './plugins/estimote-beacons';
 import { Facebook } from './plugins/facebook';
 import { File } from './plugins/file';
 import { Transfer } from './plugins/filetransfer';
@@ -147,6 +148,8 @@ export {
   Diagnostic,
   EmailComposer,
   Facebook,
+  EstimoteBeacons,
+  File,
   Flashlight,
   Globalization,
   GooglePlus,
@@ -214,6 +217,7 @@ window['IonicNative'] = {
   Dialogs: Dialogs,
   Diagnostic: Diagnostic,
   EmailComposer: EmailComposer,
+  EstimoteBeacons: EstimoteBeacons,
   Facebook: Facebook,
   File: File,
   Flashlight: Flashlight,
