@@ -1,5 +1,6 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
+
 
 export interface DeeplinkMatch {
   /**
@@ -17,7 +18,7 @@ export interface DeeplinkMatch {
    * any internal native data available as "extras" at the time
    * the route was matched (for example, Facebook sometimes adds extra data)
    */
-   $link: any;
+  $link: any;
 }
 
 /**
@@ -26,8 +27,8 @@ export interface DeeplinkMatch {
  * and Universal App Links.
  *
  * @usage
- * ```ts
- * import {IonicDeeplinks} from 'ionic-native';
+ * ```typescript
+ * import { IonicDeeplinks } from 'ionic-native';
  *
  * ```
  */
@@ -52,7 +53,7 @@ export class Deeplinks {
   @Cordova({
     observable: true
   })
-  static route(paths): Observable<DeeplinkMatch> {return; }
+  static route(paths): Observable<DeeplinkMatch> { return; }
 
   /**
    *
@@ -75,5 +76,6 @@ export class Deeplinks {
   @Cordova({
     observable: true
   })
-  static routeWithNavController(navController, paths): Observable<DeeplinkMatch> {return; }
+  static routeWithNavController(navController, paths): Observable<DeeplinkMatch> { return; }
+
 }

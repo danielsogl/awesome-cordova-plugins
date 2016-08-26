@@ -1,5 +1,5 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * @name BLE
@@ -24,7 +24,7 @@ import {Observable} from 'rxjs/Observable';
  *
  * Peripheral Data is passed to the success callback when scanning and connecting. Limited data is passed when scanning.
  *
- * ```ts
+ * ```typescript
  *   {
  *       "name": "Battery Demo",
  *       "id": "20:FF:D0:FF:D1:C0",
@@ -34,7 +34,7 @@ import {Observable} from 'rxjs/Observable';
  * ```
  * After connecting, the peripheral object also includes service, characteristic and descriptor information.
  *
- * ```ts
+ * ```typescript
  *   {
  *       "name": "Battery Demo",
  *       "id": "20:FF:D0:FF:D1:C0",
@@ -93,7 +93,7 @@ import {Observable} from 'rxjs/Observable';
  *
  * ### Android
  *
- * ```ts
+ * ```typescript
  *   {
  *       "name": "demo",
  *       "id": "00:1A:7D:DA:71:13",
@@ -108,7 +108,7 @@ import {Observable} from 'rxjs/Observable';
  *
  * Note that iOS uses the string value of the constants for the [Advertisement Data Retrieval Keys](https://developer.apple.com/library/ios/documentation/CoreBluetooth/Reference/CBCentralManagerDelegate_Protocol/index.html#//apple_ref/doc/constant_group/Advertisement_Data_Retrieval_Keys). This will likely change in the future.
  *
- * ```ts
+ * ```typescript
  *   {
  *       "name": "demo",
  *       "id": "D8479A4F-7517-BCD3-91B5-3302B2F81802",
@@ -137,7 +137,7 @@ import {Observable} from 'rxjs/Observable';
  *
  * This means that you need convert your data to ArrayBuffers before sending and from ArrayBuffers when receiving.
  *
- * ```ts
+ * ```typescript
  *   // ASCII only
  *   function stringToBytes(string) {
  *      var array = new Uint8Array(string.length);
@@ -272,7 +272,7 @@ export class BLE {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-  ): Promise<any> { return; };
+    ): Promise<any> { return; };
 
   /**
    * Write the value of a characteristic.
@@ -308,7 +308,7 @@ export class BLE {
     serviceUUID: string,
     characteristicUUID: string,
     value: ArrayBuffer
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Write the value of a characteristic without waiting for confirmation from the peripheral.
@@ -325,7 +325,7 @@ export class BLE {
     serviceUUID: string,
     characteristicUUID: string,
     value: ArrayBuffer
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Register to be notified when the value of a characteristic changes.
@@ -351,7 +351,7 @@ export class BLE {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-  ): Observable<any> { return; }
+    ): Observable<any> { return; }
 
   /**
    * Stop being notified when the value of a characteristic changes.
@@ -366,7 +366,7 @@ export class BLE {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Report the connection status.

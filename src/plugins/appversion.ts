@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
  * @name App Version
@@ -8,8 +8,8 @@ import {Plugin, Cordova} from './plugin';
  * Requires Cordova plugin: `cordova-plugin-app-version`. For more info, please see the [Cordova App Version docs](https://github.com/whiteoctober/cordova-plugin-app-version).
  *
  * @usage
- * ```js
- * import {AppVersion} from 'ionic-native';
+ * ```typescript
+ * import { AppVersion } from 'ionic-native';
  *
  *
  *  AppVersion.getAppName();

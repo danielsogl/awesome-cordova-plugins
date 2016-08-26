@@ -1,3 +1,203 @@
+<a name="1.3.17"></a>
+## [1.3.17](https://github.com/driftyco/ionic-native/compare/v1.3.16...v1.3.17) (2016-08-23)
+
+
+### Bug Fixes
+
+* add the reject function at the expected errorIndex position in the args array ([#436](https://github.com/driftyco/ionic-native/issues/436)) ([4e87ac7](https://github.com/driftyco/ionic-native/commit/4e87ac7))
+* **camera-preview:** changes implementation to match Cordova plugin ([#441](https://github.com/driftyco/ionic-native/issues/441)) ([55ba65a](https://github.com/driftyco/ionic-native/commit/55ba65a))
+* **file:** fixes exclusive option ([#459](https://github.com/driftyco/ionic-native/issues/459)) ([14e41a3](https://github.com/driftyco/ionic-native/commit/14e41a3)), closes [#459](https://github.com/driftyco/ionic-native/issues/459)
+* **file:** initialize writeFile options ([#468](https://github.com/driftyco/ionic-native/issues/468)) ([16628a4](https://github.com/driftyco/ionic-native/commit/16628a4))
+* **nativeaudio:** fix plugin reference ([2510c5f](https://github.com/driftyco/ionic-native/commit/2510c5f))
+
+
+### Features
+
+* **instagram:** add instagram sharing plugin ([#453](https://github.com/driftyco/ionic-native/issues/453)) ([f3e698f](https://github.com/driftyco/ionic-native/commit/f3e698f)), closes [#307](https://github.com/driftyco/ionic-native/issues/307)
+* **VideoEditor:** add video editor plugin. ([#457](https://github.com/driftyco/ionic-native/issues/457)) ([7a53013](https://github.com/driftyco/ionic-native/commit/7a53013)), closes [#316](https://github.com/driftyco/ionic-native/issues/316)
+
+
+
+<a name="1.3.16"></a>
+## [1.3.16](https://github.com/driftyco/ionic-native/compare/v1.3.15...v1.3.16) (2016-08-15)
+
+
+### Bug Fixes
+
+* **photo-viewer:** method is static ([8bc499f](https://github.com/driftyco/ionic-native/commit/8bc499f))
+
+
+
+<a name="1.3.15"></a>
+## [1.3.15](https://github.com/driftyco/ionic-native/compare/v1.3.14...v1.3.15) (2016-08-15)
+
+
+### Features
+
+* **google-analytics:** add missing functions ([689bfd9](https://github.com/driftyco/ionic-native/commit/689bfd9))
+* **TTS:** add tts plugin ([#431](https://github.com/driftyco/ionic-native/issues/431)) ([dcf3ab2](https://github.com/driftyco/ionic-native/commit/dcf3ab2)), closes [#311](https://github.com/driftyco/ionic-native/issues/311)
+
+
+
+<a name="1.3.14"></a>
+## [1.3.14](https://github.com/driftyco/ionic-native/compare/v1.3.13...v1.3.14) (2016-08-15)
+
+
+### Bug Fixes
+
+* **datepicker:** date now accepts Date, string, or number ([#428](https://github.com/driftyco/ionic-native/issues/428)) ([aaddd9e](https://github.com/driftyco/ionic-native/commit/aaddd9e)), closes [#354](https://github.com/driftyco/ionic-native/issues/354)
+
+
+### Features
+
+* **native-audio:** Add native audio plugin ([#427](https://github.com/driftyco/ionic-native/issues/427)) ([8cd6686](https://github.com/driftyco/ionic-native/commit/8cd6686)), closes [#315](https://github.com/driftyco/ionic-native/issues/315)
+* **shake:** add Shake plugin ([#426](https://github.com/driftyco/ionic-native/issues/426)) ([203d4c7](https://github.com/driftyco/ionic-native/commit/203d4c7)), closes [#313](https://github.com/driftyco/ionic-native/issues/313)
+* **zip:** add zip plugin ([#430](https://github.com/driftyco/ionic-native/issues/430)) ([e34f94e](https://github.com/driftyco/ionic-native/commit/e34f94e)), closes [#421](https://github.com/driftyco/ionic-native/issues/421)
+
+
+
+<a name="1.3.13"></a>
+## [1.3.13](https://github.com/driftyco/ionic-native/compare/v1.3.12...v1.3.13) (2016-08-13)
+
+
+### Bug Fixes
+
+* **inappbrowser:** fix event listener ([4b08d85](https://github.com/driftyco/ionic-native/commit/4b08d85))
+
+
+
+<a name="1.3.12"></a>
+## [1.3.12](https://github.com/driftyco/ionic-native/compare/v1.3.10...v1.3.12) (2016-08-13)
+
+
+### Bug Fixes
+
+* **backgroundGeolocation:** update config and move to sync. Fixes [#331](https://github.com/driftyco/ionic-native/issues/331) ([4e20681](https://github.com/driftyco/ionic-native/commit/4e20681)), closes [#331](https://github.com/driftyco/ionic-native/issues/331)
+* **camera:** camera options should be optional. Fixes [#413](https://github.com/driftyco/ionic-native/issues/413) ([#417](https://github.com/driftyco/ionic-native/issues/417)) ([c60c3b7](https://github.com/driftyco/ionic-native/commit/c60c3b7)), closes [#413](https://github.com/driftyco/ionic-native/issues/413) [#417](https://github.com/driftyco/ionic-native/issues/417)
+* **inappbrowser:** fix event listener ([618d866](https://github.com/driftyco/ionic-native/commit/618d866))
+* **index:** export Geolocation interfaces. ([#404](https://github.com/driftyco/ionic-native/issues/404)) ([0c486b0](https://github.com/driftyco/ionic-native/commit/0c486b0))
+* **ng1:** Copy object properly. Fixes [#357](https://github.com/driftyco/ionic-native/issues/357) ([9ca38cd](https://github.com/driftyco/ionic-native/commit/9ca38cd)), closes [#357](https://github.com/driftyco/ionic-native/issues/357)
+
+
+### Features
+
+* **file:** alternate file implementation ([#283](https://github.com/driftyco/ionic-native/issues/283)) ([6ed32ef](https://github.com/driftyco/ionic-native/commit/6ed32ef))
+* **GoogleAnalytics:** Add campaign measurement tracking ([#405](https://github.com/driftyco/ionic-native/issues/405)) ([cf3f0f6](https://github.com/driftyco/ionic-native/commit/cf3f0f6))
+* **GoogleMaps:** Allow specify enableHighAccuracy option that attempt to get your location with highest accuracy ([#410](https://github.com/driftyco/ionic-native/issues/410)) ([43e8a6d](https://github.com/driftyco/ionic-native/commit/43e8a6d))
+* **ibeacon:** using option otherPromise instead of sync ([#388](https://github.com/driftyco/ionic-native/issues/388)) ([306cb5d](https://github.com/driftyco/ionic-native/commit/306cb5d))
+* **inappbrowser:** implement instance based wrapper ([#305](https://github.com/driftyco/ionic-native/issues/305)) ([4b8ab4a](https://github.com/driftyco/ionic-native/commit/4b8ab4a))
+* **keyboard:** enable hideKeyboardAccessoryBar function ([#398](https://github.com/driftyco/ionic-native/issues/398)) ([7a84262](https://github.com/driftyco/ionic-native/commit/7a84262)), closes [#394](https://github.com/driftyco/ionic-native/issues/394)
+* **photo-viewer:** add wrapper for plugin ([#359](https://github.com/driftyco/ionic-native/issues/359)) ([154c029](https://github.com/driftyco/ionic-native/commit/154c029))
+* **video-player:** Added video player plugin ([#391](https://github.com/driftyco/ionic-native/issues/391)) ([cabeeb8](https://github.com/driftyco/ionic-native/commit/cabeeb8)), closes [#342](https://github.com/driftyco/ionic-native/issues/342)
+
+
+
+<a name="1.3.10"></a>
+## [1.3.10](https://github.com/driftyco/ionic-native/compare/v1.3.9...v1.3.10) (2016-08-01)
+
+
+### Bug Fixes
+
+* **brightness:** use correct pluginRef ([e20c411](https://github.com/driftyco/ionic-native/commit/e20c411))
+* **diagnostics:** Corrects isEnabled functions to isAvailable ([#373](https://github.com/driftyco/ionic-native/issues/373)) ([ccf7fb5](https://github.com/driftyco/ionic-native/commit/ccf7fb5))
+* **ng1:** use $q  promises instead of the native Promise ([#378](https://github.com/driftyco/ionic-native/issues/378)) ([817a434](https://github.com/driftyco/ionic-native/commit/817a434))
+* **one-signal:** return Observable instead of promise ([#352](https://github.com/driftyco/ionic-native/issues/352)) ([08fe04e](https://github.com/driftyco/ionic-native/commit/08fe04e))
+
+
+### Features
+
+* **crop:** add crop plugin ([#284](https://github.com/driftyco/ionic-native/issues/284)) ([41c9adf](https://github.com/driftyco/ionic-native/commit/41c9adf))
+* **screen-orientation:** Added Screen Orientation Plugin [#342](https://github.com/driftyco/ionic-native/issues/342) ([#366](https://github.com/driftyco/ionic-native/issues/366)) ([bd9366b](https://github.com/driftyco/ionic-native/commit/bd9366b)), closes [#342](https://github.com/driftyco/ionic-native/issues/342)
+
+
+
+<a name="1.3.9"></a>
+## [1.3.9](https://github.com/driftyco/ionic-native/compare/v1.3.8...v1.3.9) (2016-07-23)
+
+
+### Bug Fixes
+
+* **file:** readAsText() and adds readAsDataURL() in File plugin ([#346](https://github.com/driftyco/ionic-native/issues/346)) ([77d31cd](https://github.com/driftyco/ionic-native/commit/77d31cd))
+
+
+### Features
+
+* **android-fingerprint-auth:** add wrapper for plugin ([df326f7](https://github.com/driftyco/ionic-native/commit/df326f7)), closes [#334](https://github.com/driftyco/ionic-native/issues/334)
+* **secure-storage:** Add Secure Storage Wrapper ([#347](https://github.com/driftyco/ionic-native/issues/347)) ([075842d](https://github.com/driftyco/ionic-native/commit/075842d))
+
+
+
+<a name="1.3.8"></a>
+## [1.3.8](https://github.com/driftyco/ionic-native/compare/v1.3.7...v1.3.8) (2016-07-20)
+
+
+### Bug Fixes
+
+* **base64togallery:** update plugin wrapper to match latest version ([d4bee49](https://github.com/driftyco/ionic-native/commit/d4bee49)), closes [#335](https://github.com/driftyco/ionic-native/issues/335)
+* **sqlite:** fix method attribute typo ([#324](https://github.com/driftyco/ionic-native/issues/324)) ([006bc70](https://github.com/driftyco/ionic-native/commit/006bc70)), closes [#324](https://github.com/driftyco/ionic-native/issues/324)
+
+
+### Features
+
+* **facebook:** add FacebookLoginResponse interface ([8b27bed](https://github.com/driftyco/ionic-native/commit/8b27bed))
+* **otherPromise:** can work better with plugins that return promises ([#304](https://github.com/driftyco/ionic-native/issues/304)) ([0aee6c8](https://github.com/driftyco/ionic-native/commit/0aee6c8))
+* **social-sharing:** add canShareViaEmail ([#333](https://github.com/driftyco/ionic-native/issues/333)) ([5807dd7](https://github.com/driftyco/ionic-native/commit/5807dd7))
+* **twitter-connect:** add twitter connect plugin ([979838f](https://github.com/driftyco/ionic-native/commit/979838f)), closes [#308](https://github.com/driftyco/ionic-native/issues/308)
+
+
+
+<a name="1.3.7"></a>
+## [1.3.7](https://github.com/driftyco/ionic-native/compare/v1.3.6...v1.3.7) (2016-07-18)
+
+
+### Bug Fixes
+
+* **contacts:** missing name property, types ([#320](https://github.com/driftyco/ionic-native/issues/320)) ([074d166](https://github.com/driftyco/ionic-native/commit/074d166))
+* **geolocation:** handle errors on watchPosition ([1b161d8](https://github.com/driftyco/ionic-native/commit/1b161d8)), closes [#322](https://github.com/driftyco/ionic-native/issues/322)
+
+
+### Features
+
+* **sim:** Add sim plugin ([#317](https://github.com/driftyco/ionic-native/issues/317)) ([4f85110](https://github.com/driftyco/ionic-native/commit/4f85110))
+
+
+
+<a name="1.3.6"></a>
+## [1.3.6](https://github.com/driftyco/ionic-native/compare/v1.3.5...v1.3.6) (2016-07-17)
+
+
+### Bug Fixes
+
+* **googlemaps:** able to pass array of LatLng to GoogleMapsLatLngBounds constructor ([de14b0e](https://github.com/driftyco/ionic-native/commit/de14b0e)), closes [#298](https://github.com/driftyco/ionic-native/issues/298)
+* **launch-navigator:** fix the navigate function wrapper to match latest plugin API ([6f625f9](https://github.com/driftyco/ionic-native/commit/6f625f9))
+
+
+### Features
+
+* **camera-preview:** add wrapper for camera-preview ([#301](https://github.com/driftyco/ionic-native/issues/301)) ([3a1a3ce](https://github.com/driftyco/ionic-native/commit/3a1a3ce))
+* **launch-navigator:** add new methods and constants to match latest plugin API ([29de6b3](https://github.com/driftyco/ionic-native/commit/29de6b3))
+
+
+
+<a name="1.3.5"></a>
+## [1.3.5](https://github.com/driftyco/ionic-native/compare/v1.3.4...v1.3.5) (2016-07-17)
+
+
+### Bug Fixes
+
+* **ibeacon:** minor fixes ([b5a2ffc](https://github.com/driftyco/ionic-native/commit/b5a2ffc))
+* **safari-view-controller:** fix wrappers ([b4b3ec0](https://github.com/driftyco/ionic-native/commit/b4b3ec0))
+
+
+### Features
+
+* **googlemaps:** add Geocoder class ([#292](https://github.com/driftyco/ionic-native/issues/292)) ([2996da6](https://github.com/driftyco/ionic-native/commit/2996da6)), closes [#280](https://github.com/driftyco/ionic-native/issues/280)
+* **media-capture:** add media capture plugin ([#293](https://github.com/driftyco/ionic-native/issues/293)) ([daa6d4c](https://github.com/driftyco/ionic-native/commit/daa6d4c)), closes [#272](https://github.com/driftyco/ionic-native/issues/272)
+* **nativestorage:** add NativeStorage plugin wrapper ([af5d4ad](https://github.com/driftyco/ionic-native/commit/af5d4ad))
+* **pin-dialog:** add pin dialog plugin ([#291](https://github.com/driftyco/ionic-native/issues/291)) ([2fe37c4](https://github.com/driftyco/ionic-native/commit/2fe37c4))
+
+
+
 <a name="1.3.4"></a>
 ## [1.3.4](https://github.com/driftyco/ionic-native/compare/v1.3.3...v1.3.4) (2016-07-14)
 
@@ -46,28 +246,12 @@
 
 
 <a name="1.3.1"></a>
-## [1.3.1](https://github.com/driftyco/ionic-native/compare/v1.3.0...v1.3.1) (2016-06-26)
+## [1.3.1](https://github.com/driftyco/ionic-native/compare/v1.2.4...v1.3.1) (2016-06-26)
 
 
 ### Bug Fixes
 
 * **3dtouch:** fix implementation for onHomeIconPressed function ([d2b2be6](https://github.com/driftyco/ionic-native/commit/d2b2be6)), closes [#232](https://github.com/driftyco/ionic-native/issues/232)
-* **sqlite:** resolve race condition, add comments ([#235](https://github.com/driftyco/ionic-native/issues/235)) ([f1c8ce3](https://github.com/driftyco/ionic-native/commit/f1c8ce3)), closes [#235](https://github.com/driftyco/ionic-native/issues/235)
-
-
-### Features
-
-* **googlemaps:** add GoogleMapsLatLngBounds class ([17da427](https://github.com/driftyco/ionic-native/commit/17da427))
-* **printer:** add printer plugin ([#225](https://github.com/driftyco/ionic-native/issues/225)) ([48ffcae](https://github.com/driftyco/ionic-native/commit/48ffcae))
-
-
-
-<a name="1.3.0"></a>
-# [1.3.0](https://github.com/driftyco/ionic-native/compare/v1.2.3...v1.3.0) (2016-06-13)
-
-
-### Bug Fixes
-
 * **barcodescanner:** add missing options param ([4fdcbb5](https://github.com/driftyco/ionic-native/commit/4fdcbb5)), closes [#180](https://github.com/driftyco/ionic-native/issues/180)
 * **base64togallery:** method is now static ([be7b9e2](https://github.com/driftyco/ionic-native/commit/be7b9e2)), closes [#212](https://github.com/driftyco/ionic-native/issues/212)
 * **batterystatus:** correct plugin name on npm ([66b7fa6](https://github.com/driftyco/ionic-native/commit/66b7fa6))
@@ -76,6 +260,7 @@
 * **deviceorientation:** cancelFunction renamed to clearFunction ([8dee02e](https://github.com/driftyco/ionic-native/commit/8dee02e))
 * **geolocation:** fix watchPosition() ([4a8650e](https://github.com/driftyco/ionic-native/commit/4a8650e)), closes [#164](https://github.com/driftyco/ionic-native/issues/164)
 * **googlemaps:** isAvailable() returns boolean, not an instance of GoogleMap ([a53ae8f](https://github.com/driftyco/ionic-native/commit/a53ae8f))
+* **sqlite:** resolve race condition, add comments ([#235](https://github.com/driftyco/ionic-native/issues/235)) ([f1c8ce3](https://github.com/driftyco/ionic-native/commit/f1c8ce3)), closes [#235](https://github.com/driftyco/ionic-native/issues/235)
 
 
 ### Features
@@ -83,6 +268,13 @@
 * **angular1:** Support Angular 1 ([af8fbde](https://github.com/driftyco/ionic-native/commit/af8fbde))
 * **barcodescanner:** add encode function ([e73f57f](https://github.com/driftyco/ionic-native/commit/e73f57f)), closes [#115](https://github.com/driftyco/ionic-native/issues/115)
 * **deeplinks:** Add Ionic Deeplinks Plugin ([c93cbed](https://github.com/driftyco/ionic-native/commit/c93cbed))
+* **googlemaps:** add GoogleMapsLatLngBounds class ([17da427](https://github.com/driftyco/ionic-native/commit/17da427))
+* **printer:** add printer plugin ([#225](https://github.com/driftyco/ionic-native/issues/225)) ([48ffcae](https://github.com/driftyco/ionic-native/commit/48ffcae))
+
+
+
+<a name="1.2.4"></a>
+## [1.2.4](https://github.com/driftyco/ionic-native/compare/v1.2.3...v1.2.4) (2016-06-01)
 
 
 

@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 export interface PromptCallback {
 
@@ -11,7 +12,6 @@ export interface PromptCallback {
    * The text entered in the prompt dialog box. (String)
    */
   input1: string;
-
 }
 
 
@@ -23,8 +23,8 @@ export interface PromptCallback {
  * Requires Cordova plugin: `cordova-plugin-dialogs`. For more info, please see the [Dialogs plugin docs](https://github.com/apache/cordova-plugin-dialogs).
  *
  * @usage
- * ```js
- * import {Dialogs} from 'ionic-native';
+ * ```typescript
+ * import { Dialogs } from 'ionic-native';
  *
  *
  *
@@ -53,7 +53,7 @@ export class Dialogs {
     message,
     title: string = 'Alert',
     buttonName: string = 'OK'
-  ): Promise<any> {return; }
+    ): Promise<any> { return; }
 
   /**
    * Displays a customizable confirmation dialog box.
@@ -70,7 +70,7 @@ export class Dialogs {
     message,
     title: string = 'Confirm',
     buttonLabels: Array<string> = ['OK', 'Cancel']
-  ): Promise<number> { return; }
+    ): Promise<number> { return; }
 
   /**
    * Displays a native dialog box that is more customizable than the browser's prompt function.
@@ -89,7 +89,7 @@ export class Dialogs {
     title: string = 'Prompt',
     buttonLabels: Array<string> = ['OK', 'Cancel'],
     defaultText: string = ''
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
 
   /**
@@ -99,6 +99,6 @@ export class Dialogs {
   @Cordova({
     sync: true
   })
-  static beep(times: number): void {}
+  static beep(times: number): void { }
 
 }

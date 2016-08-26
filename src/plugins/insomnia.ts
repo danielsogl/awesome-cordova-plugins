@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name Insomnia
@@ -6,8 +7,9 @@ import {Plugin, Cordova} from './plugin';
  * Prevent the screen of the mobile device from falling asleep.
  *
  * @usage
- * ```js
- * import {Insomnia} from 'ionic-native';
+ * ```typescript
+ * import { Insomnia } from 'ionic-native';
+ *
  *
  * Insomnia.keepAwake()
  *   .then(
@@ -44,4 +46,5 @@ export class Insomnia {
    */
   @Cordova()
   static allowSleepAgain(): Promise<any> { return; }
+
 }

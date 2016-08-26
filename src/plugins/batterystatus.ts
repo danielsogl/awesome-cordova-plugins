@@ -1,5 +1,5 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * @name Battery Status
@@ -7,14 +7,13 @@ import {Observable} from 'rxjs/Observable';
  * Requires Cordova plugin: cordova-plugin-batterystatus. For more info, please see the [BatteryStatus plugin docs](https://github.com/apache/cordova-plugin-battery-status).
  *
  * @usage
- * ```js
- * import {BatteryStatus} from 'ionic-native';
- *
+ * ```typescript
+ * import { BatteryStatus } from 'ionic-native';
  *
  *
  * // watch change in battery status
  * let subscription = BatteryStatus.onChange().subscribe(
- *  status => {
+ *  (status: StatusObject) => {
  *    console.log(status.level, status.isPlugged);
  *  }
  * );
@@ -39,7 +38,7 @@ export class BatteryStatus {
     eventObservable: true,
     event: 'batterystatus'
   })
-  static onChange (): Observable<StatusObject> {return; }
+  static onChange(): Observable<StatusObject> { return; }
 
   /**
    * Watch when the battery level goes low
@@ -49,7 +48,7 @@ export class BatteryStatus {
     eventObservable: true,
     event: 'batterylow'
   })
-  static onLow (): Observable<StatusObject> {return; }
+  static onLow(): Observable<StatusObject> { return; }
 
   /**
    * Watch when the battery level goes to critial
@@ -59,7 +58,7 @@ export class BatteryStatus {
     eventObservable: true,
     event: 'batterycritical'
   })
-  static onCritical (): Observable<StatusObject> {return; }
+  static onCritical(): Observable<StatusObject> { return; }
 
 }
 

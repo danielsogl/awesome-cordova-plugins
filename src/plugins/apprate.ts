@@ -1,4 +1,5 @@
-import {Plugin, Cordova, CordovaProperty} from './plugin';
+import { Cordova, CordovaProperty, Plugin } from './plugin';
+
 
 declare var window;
 
@@ -10,14 +11,14 @@ declare var window;
  * Requires Cordova plugin: cordova-plugin-apprate. For more info, please see the [AppRate plugin docs](https://github.com/pushandplay/cordova-plugin-apprate).
  *
  * @usage
- * ```js
- * import {AppRate} from 'ionic-native';
+ * ```typescript
+ * import { AppRate } from 'ionic-native';
  *
+ *  AppRate.preferences.storeAppURL = {
+ *    ios: '<my_app_id>',
+ *    android: 'market://details?id=<package_name>',
+ *  };
  *
- * AppRate.preferences.storeAppURL.ios = '<my_app_id>';
- * AppRate.preferences.storeAppURL.android = 'market://details?id=<package_name>';
- * AppRate.preferences.storeAppURL.blackberry = 'appworld://content/[App Id]/';
- * AppRate.preferences.storeAppURL.windows8 = 'ms-windows-store:Review?name=<the Package Family Name of the application>';
  * AppRate.promptForRating();
  * ```
  *
@@ -62,6 +63,6 @@ export class AppRate {
    * @param {boolean} immediately  Show the rating prompt immediately.
    */
   @Cordova()
-  static promptForRating(immediately: boolean): void {};
+  static promptForRating(immediately: boolean): void { };
 
 }

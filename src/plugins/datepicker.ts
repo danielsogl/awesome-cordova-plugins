@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 export interface DatePickerOptions {
   /**
@@ -12,7 +13,7 @@ export interface DatePickerOptions {
    * Platforms: iOS, Android, Windows
    * Selected date
    */
-  date: Date;
+  date: Date | string | number;
 
   /**
    * Platforms: iOS, Android, Windows
@@ -20,7 +21,7 @@ export interface DatePickerOptions {
    * Type: Date | empty String
    * Default: empty String
    */
-  minDate?: Date;
+  minDate?: Date | string | number;
 
   /**
    * Platforms?: iOS, Android, Windows
@@ -28,7 +29,7 @@ export interface DatePickerOptions {
    * Type?: Date | empty String
    * Default?: empty String
    */
-  maxDate?: Date;
+  maxDate?: Date | string | number;
 
   /**
    * Platforms?: Android
@@ -73,16 +74,16 @@ export interface DatePickerOptions {
  * Requires Cordova plugin: `cordova-plugin-datepicker`. For more info, please see the [DatePicker plugin docs](https://github.com/VitaliiBlagodir/cordova-plugin-datepicker).
  *
  * @usage
- * ```js
- * import {DatePicker} from 'ionic-native';
+ * ```typescript
+ * import { DatePicker } from 'ionic-native';
  *
  *
  * DatePicker.show({
  *   date: new Date(),
  *   mode: 'date'
  * }).then(
- *   date => console.log("Got date: ", date),
- *   err => console.log("Error occurred while getting date:", err)
+ *   date => console.log('Got date: ', date),
+ *   err => console.log('Error occurred while getting date: ', err)
  * );
  * ```
  *

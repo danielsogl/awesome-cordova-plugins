@@ -1,5 +1,6 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
+
 
 declare var cordova: any;
 
@@ -21,7 +22,7 @@ export interface Beacon {
 
   /**
    * The proximity of the beacon relative to the phone.
-   * 
+   *
    * Possible options are:
    * ProximityImmediate
    * ProximityNear
@@ -47,6 +48,7 @@ export interface Beacon {
   accuracy: number;
 
 }
+
 export interface BeaconRegion {
   /**
    * A unique identifier for this region.
@@ -65,7 +67,7 @@ export interface BeaconRegion {
   major?: number;
 
   /**
-   * The beacon's major identifier number. Optional, of nothing is supplied
+   * The beacon's minor identifier number. Optional, of nothing is supplied
    * the plugin will treat it as a wildcard.
    */
   minor?: number;
@@ -76,6 +78,7 @@ export interface BeaconRegion {
    */
   notifyEntryStateOnDisplay?: boolean;
 }
+
 export interface CircularRegion {
   /**
    * A unique identifier for this region.
@@ -97,6 +100,7 @@ export interface CircularRegion {
    */
   radius: number;
 }
+
 export type Region = BeaconRegion | CircularRegion;
 
 export interface PluginResult {
@@ -125,11 +129,17 @@ export interface PluginResult {
    * The state of the phone in relation to the region. Inside/outside for example.
    */
   state: 'CLRegionStateInside' | 'CLRegionStateOutside';
+
+  /**
+   * Error message, used only with monitoringDidFailForRegionWithError delegate.
+   */
+  error: string;
 }
+
 export interface Delegate {
   /**
    * An observable that publishes information about the location permission authorization status.
-   * 
+   *
    * @return Returns a string.
    */
   didChangeAuthorizationStatus(): Observable<string>;
@@ -137,10 +147,10 @@ export interface Delegate {
   /**
    * An Observable that publishes event data to it's subscribers
    * when the native layer is able to determine the device's state.
-   * 
+   *
    * This event is called when the phone begins starts monitoring,
    * when requestStateForRegion is called, etc.
-   * 
+   *
    * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
    */
   didDetermineStateForRegion(): Observable<PluginResult>;
@@ -148,32 +158,32 @@ export interface Delegate {
   /**
    * An Observable that publishes event data to it's subscribers
    * when the phone enters a region that it was asked to monitor.
-   * 
+   *
    * If the user has given the app Always-Location permission, this function
    *  will be called even when the app is not running on iOS.
    * The app will run silently in the background for a small amount of time.
-   * 
+   *
    * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
    */
   didEnterRegion(): Observable<PluginResult>;
 
   /**
-   * An Observable that publishes event data to it's subscribers 
+   * An Observable that publishes event data to it's subscribers
    * when the phone exits a region that it was asked to monitor.
-   * 
+   *
    * If the user has given the app Always-Location permission, this function
    *  will be called even when the app is not running on iOS.
    * The app will run silently in the background for a small amount of time.
-   * 
+   *
    * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
    */
   didExitRegion(): Observable<PluginResult>;
 
   /**
    * An Observable that publishes event data to it's subscribers
-   *  each time that the device ranges beacons. Modern Android and iOS devices range 
+   *  each time that the device ranges beacons. Modern Android and iOS devices range
    * aproximately once per second.
-   * 
+   *
    * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
    */
   didRangeBeaconsInRegion(): Observable<PluginResult>;
@@ -181,7 +191,7 @@ export interface Delegate {
   /**
    * An Observable that publishes event data to it's subscribers
    *  when the device begins monitoring a region.
-   * 
+   *
    * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
    */
   didStartMonitoringForRegion(): Observable<PluginResult>;
@@ -189,7 +199,7 @@ export interface Delegate {
   /**
    * An Observable that publishes event data to it's subscribers
    *  when the device fails to monitor a region.
-   * 
+   *
    * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
    */
   monitoringDidFailForRegionWithError(): Observable<PluginResult>;
@@ -197,16 +207,16 @@ export interface Delegate {
   /**
    * An Observable that publishes event data to it's subscribers
    *  when the device begins advertising as an iBeacon.
-   * 
+   *
    * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
    */
   peripheralManagerDidStartAdvertising(): Observable<PluginResult>;
 
   /**
-   * An Observable that publishes event data to it's subscribers 
+   * An Observable that publishes event data to it's subscribers
    * when the state of the peripheral manager's state updates.
-   * 
-   * 
+   *
+   *
    * @return {PluginResult} Returns a PluginResult object with information about the event, region, and beacon(s).
    */
   peripheralManagerDidUpdateState(): Observable<PluginResult>;
@@ -221,25 +231,25 @@ export interface Delegate {
  *
  * @usage
  *
- * ```ts
- * import {IBeacon} from 'ionic-native';
+ * ```typescript
+ * import { IBeacon } from 'ionic-native';
  *
  *
  * // Request permission to use location on iOS
  * IBeacon.requestAlwaysAuthorization();
  * // create a new delegate and register it with the native layer
  * let delegate = IBeacon.Delegate();
- * 
+ *
  * // Subscribe to some of the delegate's event handlers
  * delegate.didRangeBeaconsInRegion()
  *   .subscribe(
- *     data => {console.log('didRangeBeaconsInRegion: ', data)},
- *     error => console.error
+ *     data => console.log('didRangeBeaconsInRegion: ', data),
+ *     error => console.error();
  *   );
  * delegate.didStartMonitoringForRegion()
  *   .subscribe(
- *     data => {console.log('didStartMonitoringForRegion: ', data)},
- *     error => console.error
+ *     data => console.log('didStartMonitoringForRegion: ', data),
+ *     error => console.error();
  *   );
  * delegate.didEnterRegion()
  *   .subscribe(
@@ -247,9 +257,9 @@ export interface Delegate {
  *       console.log('didEnterRegion: ', data);
  *     }
  *   );
- * 
+ *
  * let beaconRegion = IBeacon.BeaconRegion('deskBeacon','F7826DA6-ASDF-ASDF-8024-BC5B71E0893E');
- * 
+ *
  * IBeacon.startMonitoringForRegion(beaconRegion)
  *   .then(
  *     () => console.log('Native layer recieved the request to monitoring'),
@@ -258,18 +268,17 @@ export interface Delegate {
  * ```
  */
 @Plugin({
-    plugin: 'cordova-plugin-ibeacon',
-    pluginRef: 'cordova.plugins.locationManager',
-    repo: 'https://github.com/petermetz/cordova-plugin-ibeacon',
-    platforms: ['Android', 'iOS']
+  plugin: 'cordova-plugin-ibeacon',
+  pluginRef: 'cordova.plugins.locationManager',
+  repo: 'https://github.com/petermetz/cordova-plugin-ibeacon',
+  platforms: ['Android', 'iOS']
 })
 export class IBeacon {
-
 
   /**
    * Instances of this class are delegates between the {@link LocationManager} and
    * the code that consumes the messages generated on in the native layer.
-   * 
+   *
    * @returns {Delegate} An instance of the type {@type Delegate}.
    */
   static Delegate(): Delegate {
@@ -362,18 +371,18 @@ export class IBeacon {
 
   /**
    * Creates a new BeaconRegion
-   * 
+   *
    * @param {String} identifier @see {CLRegion}
-   * @param {String} uuid The proximity ID of the beacon being targeted. 
+   * @param {String} uuid The proximity ID of the beacon being targeted.
    * This value must not be blank nor invalid as a UUID.
    * @param {Number} major The major value that you use to identify one or more beacons.
    * @param {Number} minor The minor value that you use to identify a specific beacon.
    * @param {BOOL} notifyEntryStateOnDisplay
-   * 
+   *
    * @return Returns the BeaconRegion that was created
    */
-  static BeaconRegion(identifer: string, uuid: string, minor?: number, major?: number, notifyEntryStateOnDisplay?: boolean): BeaconRegion {
-    return new cordova.plugins.locationManager.BeaconRegion(identifer, uuid, minor, major, notifyEntryStateOnDisplay);
+  static BeaconRegion(identifer: string, uuid: string, major?: number, minor?: number, notifyEntryStateOnDisplay?: boolean): BeaconRegion {
+    return new cordova.plugins.locationManager.BeaconRegion(identifer, uuid, major, minor, notifyEntryStateOnDisplay);
   }
 
   /**
@@ -384,7 +393,7 @@ export class IBeacon {
 
   /**
    * @param {Delegate} delegate An instance of a delegate to register with the native layer.
-   * 
+   *
    * @return Returns the Delegate
    */
   @Cordova()
@@ -394,15 +403,15 @@ export class IBeacon {
    * Signals the native layer that the client side is ready to consume messages.
    * Readiness here means that it has a {Delegate} set by the consumer javascript
    * code.
-   * 
+   *
    * The {LocationManager.setDelegate()} will implicitly call this method as well,
    * therefore the only case when you have to call this manually is if you don't
    * wish to specify a {Delegate} of yours.
-   * 
+   *
    * The purpose of this signaling mechanism is to make the events work when the
    * app is being woken up by the Operating System to give it a chance to handle
    * region monitoring events for example.
-   * 
+   *
    * If you don't set a {Delegate} and don't call this method manually, an error
    * message get emitted in the native runtime and the DOM as well after a certain
    * period of time.
@@ -410,7 +419,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the request and started to send events.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static onDomDelegateReady(): Promise<void> { return; }
 
   /**
@@ -418,7 +427,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with a {Boolean}
    * indicating whether bluetooth is active.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static isBluetoothEnabled(): Promise<boolean> { return; }
 
   /**
@@ -427,7 +436,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved when Bluetooth
    * could be enabled. If not, the promise will be rejected with an error.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static enableBluetooth(): Promise<void> { return; }
 
   /**
@@ -436,15 +445,15 @@ export class IBeacon {
    * @returns Returns a promise which is resolved when Bluetooth
    * could be enabled. If not, the promise will be rejected with an error.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static disableBluetooth(): Promise<void> { return; }
 
   /**
    * Start monitoring the specified region.
    *
-   * If a region of the same type with the same identifier is already being 
+   * If a region of the same type with the same identifier is already being
    * monitored for this application,
-   * it will be removed from monitoring. For circular regions, the region 
+   * it will be removed from monitoring. For circular regions, the region
    * monitoring service will prioritize
    * regions by their size, favoring smaller regions over larger regions.
    *
@@ -452,44 +461,44 @@ export class IBeacon {
    *
    * @param {Region} region An instance of {Region} which will be monitored
    * by the operating system.
-   * 
+   *
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the monitoring request.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static startMonitoringForRegion(region: BeaconRegion): Promise<string> { return; }
 
   /**
-   * Stop monitoring the specified region.  It is valid to call 
-   * stopMonitoringForRegion: for a region that was registered for monitoring 
-   * with a different location manager object, during this or previous 
+   * Stop monitoring the specified region.  It is valid to call
+   * stopMonitoringForRegion: for a region that was registered for monitoring
+   * with a different location manager object, during this or previous
    * launches of your application.
    *
    * This is done asynchronously and may not be immediately reflected in monitoredRegions.
    *
    * @param {Region} region An instance of {Region} which will be monitored
    * by the operating system.
-   * 
+   *
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static stopMonitoringForRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
    * Request state the for specified region. When result is ready
-   * didDetermineStateForRegion is triggered. This can be any region, 
-   * also those which is not currently monitored. 
+   * didDetermineStateForRegion is triggered. This can be any region,
+   * also those which is not currently monitored.
    *
    * This is done asynchronously and may not be immediately reflected in monitoredRegions.
    *
    * @param {Region} region An instance of {Region} which will be monitored
    * by the operating system.
-   * 
+   *
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static requestStateForRegion(region: Region): Promise<void> { return; }
 
 
@@ -507,7 +516,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the monitoring request.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static startRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
@@ -524,16 +533,16 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static stopRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
    * Queries the native layer to determine the current authorization in effect.
-   * 
-   * @returns Returns a promise which is resolved with the 
+   *
+   * @returns Returns a promise which is resolved with the
    * requested authorization status.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static getAuthorizationStatus(): Promise<any> { return; }
 
   /**
@@ -545,7 +554,7 @@ export class IBeacon {
    * If you are using this plugin on Android devices only, you will never have to use this, nor {@code requestAlwaysAuthorization}
    * @returns Returns a promise that is resolved when the request dialog is shown.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static requestWhenInUseAuthorization(): Promise<void> { return; }
 
 
@@ -555,23 +564,23 @@ export class IBeacon {
    * @returns Returns a promise which is resolved when the native layer
    * shows the request dialog.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static requestAlwaysAuthorization(): Promise<void> { return; }
 
-  /** 
-   * 
+  /**
+   *
    * @returns Returns a promise which is resolved with an {Array}
    * of {Region} instances that are being monitored by the native layer.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static getMonitoredRegions(): Promise<Region[]> { return; }
 
-  /** 
-   * 
+  /**
+   *
    * @returns Returns a promise which is resolved with an {Array}
    * of {Region} instances that are being ranged by the native layer.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static getRangedRegions(): Promise<Region[]> { return; }
 
   /**
@@ -579,7 +588,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with a {Boolean}
    * indicating whether ranging is available or not.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static isRangingAvailable(): Promise<boolean> { return; }
 
   /**
@@ -591,7 +600,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with a {Boolean}
    * indicating whether the region type is supported or not.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static isMonitoringAvailableForClass(region: Region): Promise<boolean> { return; }
 
   /**
@@ -611,7 +620,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the advertising request.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static startAdvertising(region: Region, measuredPower: number): Promise<void> { return; }
 
   /**
@@ -622,7 +631,7 @@ export class IBeacon {
    * @return Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop advertising.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static stopAdvertising(region: Region): Promise<void> { return; }
 
   /**
@@ -630,7 +639,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with a {Boolean}
    * indicating whether advertising is available or not.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static isAdvertisingAvailable(): Promise<boolean> { return; }
 
   /**
@@ -638,17 +647,17 @@ export class IBeacon {
    * @returns Returns a promise which is resolved with a {Boolean}
    * indicating whether advertising is active.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static isAdvertising(): Promise<boolean> { return; }
 
   /**
    * Disables debug logging in the native layer. Use this method if you want
    * to prevent this plugin from writing to the device logs.
-   * 
+   *
    * @returns Returns a promise which is resolved as soon as the
    * native layer has set the logging level accordingly.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static disableDebugLogs(): Promise<void> { return; }
 
   /**
@@ -659,7 +668,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved as soon as the
    * native layer has set the flag to enabled.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static enableDebugNotifications(): Promise<void> { return; }
 
   /**
@@ -669,7 +678,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved as soon as the
    * native layer has set the flag to disabled.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static disableDebugNotifications(): Promise<void> { return; }
 
   /**
@@ -679,7 +688,7 @@ export class IBeacon {
    * @returns Returns a promise which is resolved as soon as the
    * native layer has set the logging level accordingly.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static enableDebugLogs(): Promise<void> { return; }
 
   /**
@@ -692,7 +701,7 @@ export class IBeacon {
    * message received by the native layer for appending. The returned message
    * is expected to be equivalent to the one provided in the original call.
    */
-  @Cordova({sync: true})
+  @Cordova({otherPromise: true})
   static appendToDeviceLog(message: string): Promise<void> { return; }
 
 }

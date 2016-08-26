@@ -2,7 +2,9 @@ var gulp = require('gulp');
 var minimist = require('minimist');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
-var tslint = require('gulp-tslint');
+var tslint = require('ionic-gulp-tslint');
+var decamelize = require('decamelize');
+var replace = require('gulp-replace');
 
 var flagConfig = {
   string: ['port', 'version', 'ngVersion', 'animations'],
@@ -25,8 +27,17 @@ gulp.task("minify:dist", function(){
   .pipe(gulp.dest('./dist'));
 });
 
-gulp.task("tslint", function(){
-  gulp.src("src/**/*.ts")
-  .pipe(tslint())
-  .pipe(tslint.report('verbose'));
+gulp.task('lint', function() {
+  tslint({src: 'src/**/*.ts'});
+});
+
+gulp.task('plugin:create', function(){
+  if(flags.n && flags.n !== ''){
+    return gulp.src('./TEMPLATE')
+      .pipe(replace('PluginName', flags.n))
+      .pipe(rename(decamelize(flags.n, '-') + '.ts'))
+      .pipe(gulp.dest('./src/plugins/'));
+  } else {
+    console.log("Usage is: gulp plugin:create -n PluginName");
+  }
 });

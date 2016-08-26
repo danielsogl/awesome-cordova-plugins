@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name Flashlight
@@ -7,8 +8,8 @@ import {Plugin, Cordova} from './plugin';
  * Requires Cordova plugin: `cordova-plugin-flashlight`. For more info, please see the [Flashlight plugin docs](https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin).
  *
  * @usage
- * ```js
- * import {Flashlight} from 'ionic-native';
+ * ```typescript
+ * import { Flashlight } from 'ionic-native';
  *
  *
  *
@@ -20,7 +21,6 @@ import {Plugin, Cordova} from './plugin';
   repo: 'https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git'
 })
 export class Flashlight {
-
 
   /**
    * Checks if the flashlight is available
@@ -53,7 +53,7 @@ export class Flashlight {
 
   /**
    * Checks if the flashlight is turned on.
-   * Returns a boolean
+   * @returns {boolean}
    */
   @Cordova({
     sync: true
