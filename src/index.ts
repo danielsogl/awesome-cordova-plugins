@@ -20,6 +20,7 @@ import { Brightness } from './plugins/brightness';
 import { BLE } from './plugins/ble';
 import { BluetoothSerial } from './plugins/bluetoothserial';
 import { Calendar } from './plugins/calendar';
+import { CallNumber } from './plugins/call-number';
 import { Camera } from './plugins/camera';
 import { CameraPreview } from './plugins/camera-preview';
 import { CardIO } from './plugins/card-io';
@@ -63,14 +64,18 @@ import { LaunchNavigator } from './plugins/launchnavigator';
 import { LocalNotifications } from './plugins/localnotifications';
 import { MediaCapture } from './plugins/media-capture';
 import { NativeAudio } from './plugins/native-audio';
+import { NativePageTransitions } from './plugins/native-page-transitions';
 import { NativeStorage } from './plugins/nativestorage';
+import { Market } from './plugins/market';
 import { MediaPlugin } from './plugins/media';
 import { Mixpanel } from './plugins/mixpanel';
 import { Network } from './plugins/network';
+import { NFC } from './plugins/nfc';
 import { OneSignal } from './plugins/onesignal';
 import { PhotoViewer } from './plugins/photo-viewer';
 import { ScreenOrientation } from './plugins/screen-orientation';
 import { PinDialog } from './plugins/pin-dialog';
+import { PowerManagement } from './plugins/power-management';
 import { Printer } from './plugins/printer';
 import { Push } from './plugins/push';
 import { SafariViewController } from './plugins/safari-view-controller';
@@ -84,6 +89,7 @@ import { SpinnerDialog } from './plugins/spinnerdialog';
 import { Splashscreen } from './plugins/splashscreen';
 import { SQLite } from './plugins/sqlite';
 import { StatusBar } from './plugins/statusbar';
+import { StreamingMedia } from './plugins/streaming-media';
 import { ThreeDeeTouch } from './plugins/3dtouch';
 import { Toast } from './plugins/toast';
 import { TouchID } from './plugins/touchid';
@@ -119,14 +125,17 @@ export * from './plugins/imageresizer';
 export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
+export * from './plugins/nfc';
 export * from './plugins/media';
 export * from './plugins/media-capture';
 export * from './plugins/mixpanel';
+export * from './plugins/native-page-transitions';
 export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
 export * from './plugins/sms';
 export * from './plugins/spinnerdialog';
+export * from './plugins/streaming-media';
 export * from './plugins/toast';
 export * from './plugins/twitter-connect';
 export * from './plugins/video-editor';
@@ -145,6 +154,7 @@ BatteryStatus,
 Brightness,
 BLE,
 BluetoothSerial,
+CallNumber,
 CameraPreview,
 Clipboard,
 CodePush,
@@ -170,10 +180,12 @@ Keyboard,
 NativeAudio,
 NativeStorage,
 Network,
+Market,
 OneSignal,
 PhotoViewer,
 ScreenOrientation,
 PinDialog,
+PowerManagement,
 Screenshot,
 SecureStorage,
 Shake,
@@ -210,6 +222,7 @@ window['IonicNative'] = {
   BLE: BLE,
   BluetoothSerial: BluetoothSerial,
   Calendar: Calendar,
+  CallNumber: CallNumber,
   Camera: Camera,
   CameraPreview: CameraPreview,
   CardIO: CardIO,
@@ -249,18 +262,22 @@ window['IonicNative'] = {
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
+  Market: Market,
   MediaCapture: MediaCapture,
   MediaPlugin: MediaPlugin,
   Mixpanel: Mixpanel,
   NativeAudio: NativeAudio,
+  NativePageTransitions: NativePageTransitions,
   NativeStorage: NativeStorage,
   Network: Network,
+  NFC: NFC,
   Printer: Printer,
   Push: Push,
   OneSignal: OneSignal,
   PhotoViewer: PhotoViewer,
   ScreenOrientation: ScreenOrientation,
   PinDialog: PinDialog,
+  PowerManagement: PowerManagement,
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
   SecureStorage: SecureStorage,
@@ -272,6 +289,7 @@ window['IonicNative'] = {
   Splashscreen: Splashscreen,
   SQLite: SQLite,
   StatusBar: StatusBar,
+  StreamingMedia: StreamingMedia,
   ThreeDeeTouch: ThreeDeeTouch,
   Toast: Toast,
   TouchID: TouchID,
