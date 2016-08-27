@@ -69,6 +69,7 @@ import { Network } from './plugins/network';
 import { OneSignal } from './plugins/onesignal';
 import { PhotoViewer } from './plugins/photo-viewer';
 import { ScreenOrientation } from './plugins/screen-orientation';
+import { PayPal } from './plugins/pay-pal';
 import { PinDialog } from './plugins/pin-dialog';
 import { Printer } from './plugins/printer';
 import { Push } from './plugins/push';
@@ -120,6 +121,7 @@ export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
 export * from './plugins/media';
 export * from './plugins/media-capture';
+export * from './plugins/pay-pal';
 export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
@@ -252,6 +254,7 @@ window['IonicNative'] = {
   NativeAudio: NativeAudio,
   NativeStorage: NativeStorage,
   Network: Network,
+  PayPal: PayPal,
   Printer: Printer,
   Push: Push,
   OneSignal: OneSignal,
