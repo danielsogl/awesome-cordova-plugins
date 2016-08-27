@@ -66,6 +66,7 @@ import { NativeAudio } from './plugins/native-audio';
 import { NativeStorage } from './plugins/nativestorage';
 import { MediaPlugin } from './plugins/media';
 import { Network } from './plugins/network';
+import { NFC } from './plugins/nfc';
 import { OneSignal } from './plugins/onesignal';
 import { PhotoViewer } from './plugins/photo-viewer';
 import { ScreenOrientation } from './plugins/screen-orientation';
@@ -118,6 +119,7 @@ export * from './plugins/imageresizer';
 export * from './plugins/inappbrowser';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
+export * from './plugins/nfc';
 export * from './plugins/media';
 export * from './plugins/media-capture';
 export * from './plugins/printer';
@@ -252,6 +254,7 @@ window['IonicNative'] = {
   NativeAudio: NativeAudio,
   NativeStorage: NativeStorage,
   Network: Network,
+  NFC: NFC,
   Printer: Printer,
   Push: Push,
   OneSignal: OneSignal,
