@@ -6,9 +6,9 @@ import {Plugin, Cordova} from './plugin';
  *
  * @usage
  * ```
- * import {StreamingMedia} from 'ionic-native';
+ * import {StreamingMedia, StreamingVideoOptions} from 'ionic-native';
  *
- * let options: VideoOptions = {
+ * let options: StreamingVideoOptions = {
  *   successCallback: () => { console.log('Video played') },
  *   errorCallback: (e) => { console.log('Error streaming') },
  *   orientation: 'landscape'
@@ -28,18 +28,18 @@ export class StreamingMedia {
   /**
    * Streams a video
    * @param videoUrl {string} The URL of the video
-   * @param options {VideoOptions} Options
+   * @param options {StreamingVideoOptions} Options
    */
   @Cordova({sync: true})
-  static playVideo(videoUrl: string, options?: VideoOptions): void { }
+  static playVideo(videoUrl: string, options?: StreamingVideoOptions): void { }
 
   /**
    * Streams an audio
    * @param audioUrl {string} The URL of the audio stream
-   * @param options {AudioOptions} Options
+   * @param options {StreamingAudioOptions} Options
    */
   @Cordova({sync: true})
-  static playAudio(audioUrl: string, options?: AudioOptions): void { }
+  static playAudio(audioUrl: string, options?: StreamingAudioOptions): void { }
 
   /**
    * Stops streaming audio
@@ -61,13 +61,13 @@ export class StreamingMedia {
 
 }
 
-export interface VideoOptions {
+export interface StreamingVideoOptions {
   successCallback?: Function;
   errorCallback?: Function;
   orientation?: string;
 }
 
-export interface AudioOptions {
+export interface StreamingAudioOptions {
   bgColor?: string;
   bgImage?: string;
   bgImageScale?: string;
