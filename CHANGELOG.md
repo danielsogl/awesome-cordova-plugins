@@ -1,3 +1,25 @@
+<a name="1.3.19"></a>
+## [1.3.19](https://github.com/driftyco/ionic-native/compare/v1.3.18...v1.3.19) (2016-08-27)
+
+
+### Bug Fixes
+
+* **mixpanel:** implement CordovaProperty correctly ([dd0c9ba](https://github.com/driftyco/ionic-native/commit/dd0c9ba))
+
+
+### Features
+
+* **call-number:** add support for CallNumber plugin ([#487](https://github.com/driftyco/ionic-native/issues/487)) ([759f8ef](https://github.com/driftyco/ionic-native/commit/759f8ef))
+* **market:** add Market plugin support ([#490](https://github.com/driftyco/ionic-native/issues/490)) ([9bcc4ed](https://github.com/driftyco/ionic-native/commit/9bcc4ed))
+* **mixpanel:** add mixpanel support ([#492](https://github.com/driftyco/ionic-native/issues/492)) ([cf8e342](https://github.com/driftyco/ionic-native/commit/cf8e342))
+* **native-page-transitions:** add support for Native Page Transitions plugin ([#488](https://github.com/driftyco/ionic-native/issues/488)) ([00d87db](https://github.com/driftyco/ionic-native/commit/00d87db))
+* **nfc:** add nfc support ([#493](https://github.com/driftyco/ionic-native/issues/493)) ([76aa8a6](https://github.com/driftyco/ionic-native/commit/76aa8a6))
+* **paypal:** add PayPal support ([#491](https://github.com/driftyco/ionic-native/issues/491)) ([9fe5c19](https://github.com/driftyco/ionic-native/commit/9fe5c19))
+* **power-management:** add power management support ([#489](https://github.com/driftyco/ionic-native/issues/489)) ([cd82a53](https://github.com/driftyco/ionic-native/commit/cd82a53))
+* **streaming-media:** add streaming media support ([#486](https://github.com/driftyco/ionic-native/issues/486)) ([841b242](https://github.com/driftyco/ionic-native/commit/841b242))
+
+
+
 <a name="1.3.18"></a>
 ## [1.3.18](https://github.com/driftyco/ionic-native/compare/v1.3.17...v1.3.18) (2016-08-26)
 
