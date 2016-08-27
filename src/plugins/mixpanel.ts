@@ -1,4 +1,5 @@
 import {Plugin, Cordova, CordovaProperty} from './plugin';
+declare var mixpanel: any;
 /**
  * @name Mixpanel
  * @description
@@ -93,7 +94,7 @@ export class Mixpanel {
    * @returns {MixpanelPeople}
    */
   @CordovaProperty
-  static people: MixpanelPeople;
+  static get people(): MixpanelPeople {return mixpanel.people; };
 
 }
 export declare class MixpanelPeople {
