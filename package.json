@@ -1,6 +1,6 @@
 {
   "name": "ionic-native",
-  "version": "1.3.13",
+  "version": "1.3.18",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "main": "dist/index.js",
   "files": [
@@ -33,7 +33,7 @@
     "q": "1.4.1",
     "semver": "^5.0.1",
     "tslint": "^3.8.1",
-    "tslint-ionic-rules": "0.0.3",
+    "tslint-ionic-rules": "0.0.5",
     "typescript": "^1.8.10"
   },
   "scripts": {

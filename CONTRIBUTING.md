@@ -10,7 +10,7 @@ Take a look at our [Developer Guide](https://github.com/driftyco/ionic-native/bl
 #### There are no rules, but here are a few things to consider:
 ###### Before you submit an issue:
 * Do a quick search to see if there are similar issues
-* Check that you are using the latest version of `ionic-native`
+* **Check that you are using the latest version of** `ionic-native`
 
 ###### Still having problems? submit an issue with the following details:
 * Short description of the issue

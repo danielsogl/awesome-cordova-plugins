@@ -1,6 +1,4 @@
 import { Cordova, Plugin } from './plugin';
-import { Observable } from 'rxjs/Observable';
-
 
 declare var window;
 
@@ -190,13 +188,11 @@ export interface Config {
 
  *      }, (error) => {
  *        console.log('BackgroundGeolocation error');
- *      }, {
- *       //options
- *     });
+ *      }, config);
  *
  *     // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
  *     BackgroundGeolocation.start();
- * }
+ * })
  *
  * // If you wish to turn OFF background-tracking, call the #stop method.
  * BackgroundGeolocation.stop();
@@ -213,13 +209,14 @@ export class BackgroundGeolocation {
 
   /**
    * Configure the plugin.
-   * Success callback will be called with one argument - Location object, which tries to mimic w3c Coordinates interface.
+   * 
+   * @param {Function} Success callback will be called when background location is determined.
+   * @param {Function} Fail callback to be executed every time a geolocation error occurs.
+   * @param {Object} An object of type Config
+   * 
+   * @return Location object, which tries to mimic w3c Coordinates interface.
    * See http://dev.w3.org/geo/api/spec-source.html#coordinates_interface
    * Callback to be executed every time a geolocation is recorded in the background.
-   *
-   * Fail callback to be executed every time a geolocation error occurs.
-   *
-   * Options a json object of type Config
    */
   @Cordova({
     sync: true

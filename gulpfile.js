@@ -27,7 +27,9 @@ gulp.task("minify:dist", function(){
   .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('lint', tslint);
+gulp.task('lint', function() {
+  tslint({src: 'src/**/*.ts'});
+});
 
 gulp.task('plugin:create', function(){
   if(flags.n && flags.n !== ''){

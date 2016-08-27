@@ -1,5 +1,5 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Plugin, Cordova } from './plugin';
+import { Observable } from 'rxjs/Observable';
 /**
  * @name Shake
  * @description Handles shake gesture

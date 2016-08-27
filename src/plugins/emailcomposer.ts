@@ -59,8 +59,23 @@ export class EmailComposer {
    */
   static isAvailable(app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
-      if (app) cordova.plugins.email.isAvailable(app, (isAvailable) => { if (isAvailable) resolve(); else reject(); });
-      else cordova.plugins.email.isAvailable((isAvailable) => { if (isAvailable) resolve(); else reject(); });
+      if (app) {
+        cordova.plugins.email.isAvailable(app, (isAvailable) => {
+          if (isAvailable) {
+            resolve();
+          } else {
+            reject();
+          }
+        });
+      } else {
+        cordova.plugins.email.isAvailable((isAvailable) => {
+          if (isAvailable) {
+            resolve();
+          } else {
+            reject();
+          }
+        });
+      }
     });
   }
 
