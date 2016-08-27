@@ -81,7 +81,7 @@ import { Cordova, Plugin } from './plugin';
   plugin: 'cordova-plugin-facebook4',
   pluginRef: 'facebookConnectPlugin',
   repo: 'https://github.com/jeduan/cordova-plugin-facebook4',
-  install: 'cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"'
+  install: 'ionic plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"'
 })
 export class Facebook {
 
