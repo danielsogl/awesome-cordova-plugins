@@ -73,6 +73,7 @@ import { NFC } from './plugins/nfc';
 import { OneSignal } from './plugins/onesignal';
 import { PhotoViewer } from './plugins/photo-viewer';
 import { ScreenOrientation } from './plugins/screen-orientation';
+import { PayPal } from './plugins/pay-pal';
 import { PinDialog } from './plugins/pin-dialog';
 import { PowerManagement } from './plugins/power-management';
 import { Printer } from './plugins/printer';
@@ -127,6 +128,7 @@ export * from './plugins/localnotifications';
 export * from './plugins/nfc';
 export * from './plugins/media';
 export * from './plugins/media-capture';
+export * from './plugins/pay-pal';
 export * from './plugins/native-page-transitions';
 export * from './plugins/printer';
 export * from './plugins/push';
@@ -267,6 +269,7 @@ window['IonicNative'] = {
   NativePageTransitions: NativePageTransitions,
   NativeStorage: NativeStorage,
   Network: Network,
+  PayPal: PayPal,
   NFC: NFC,
   Printer: Printer,
   Push: Push,
