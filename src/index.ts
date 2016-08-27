@@ -83,6 +83,7 @@ import { SpinnerDialog } from './plugins/spinnerdialog';
 import { Splashscreen } from './plugins/splashscreen';
 import { SQLite } from './plugins/sqlite';
 import { StatusBar } from './plugins/statusbar';
+import { StreamingMedia } from './plugins/streaming-media';
 import { ThreeDeeTouch } from './plugins/3dtouch';
 import { Toast } from './plugins/toast';
 import { TouchID } from './plugins/touchid';
@@ -125,6 +126,7 @@ export * from './plugins/push';
 export * from './plugins/safari-view-controller';
 export * from './plugins/sms';
 export * from './plugins/spinnerdialog';
+export * from './plugins/streaming-media';
 export * from './plugins/toast';
 export * from './plugins/twitter-connect';
 export * from './plugins/video-editor';
@@ -269,6 +271,7 @@ window['IonicNative'] = {
   Splashscreen: Splashscreen,
   SQLite: SQLite,
   StatusBar: StatusBar,
+  StreamingMedia: StreamingMedia,
   ThreeDeeTouch: ThreeDeeTouch,
   Toast: Toast,
   TouchID: TouchID,
