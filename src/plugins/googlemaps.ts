@@ -355,7 +355,7 @@ export class GoogleMap {
  * @private
  */
 export interface AnimateCameraOptions {
-  target?: GoogleMapsLatLng;
+  target?: GoogleMapsLatLng | Array<GoogleMapsMarker> | GoogleMapsLatLngBounds;
   tilt?: number;
   zoom?: number;
   bearing?: number;
