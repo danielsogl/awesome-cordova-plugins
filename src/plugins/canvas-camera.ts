@@ -42,10 +42,6 @@ export class CanvasCamera {
     BACK : 0,
     FRONT : 1
   };
-  static CameraPosition = {
-    BACK : 1,
-    FRONT : 2
-  };
   static FlashMode = {
     OFF : 0,
     ON : 1,
