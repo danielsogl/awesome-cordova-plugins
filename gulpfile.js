@@ -34,7 +34,7 @@ gulp.task('lint', function() {
 gulp.task('plugin:create', function(){
   if(flags.n && flags.n !== ''){
     var src = flags.m?'./TEMPLATE-MIN':'./TEMPLATE';
-    return gulp.src()
+    return gulp.src(src)
       .pipe(replace('PluginName', flags.n))
       .pipe(rename(decamelize(flags.n, '-') + '.ts'))
       .pipe(gulp.dest('./src/plugins/'));
