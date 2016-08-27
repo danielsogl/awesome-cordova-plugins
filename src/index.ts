@@ -65,6 +65,7 @@ import { MediaCapture } from './plugins/media-capture';
 import { NativeAudio } from './plugins/native-audio';
 import { NativeStorage } from './plugins/nativestorage';
 import { MediaPlugin } from './plugins/media';
+import { Mixpanel } from './plugins/mixpanel';
 import { Network } from './plugins/network';
 import { OneSignal } from './plugins/onesignal';
 import { PhotoViewer } from './plugins/photo-viewer';
@@ -120,6 +121,7 @@ export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
 export * from './plugins/media';
 export * from './plugins/media-capture';
+export * from './plugins/mixpanel';
 export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
@@ -249,6 +251,7 @@ window['IonicNative'] = {
   LocalNotifications: LocalNotifications,
   MediaCapture: MediaCapture,
   MediaPlugin: MediaPlugin,
+  Mixpanel: Mixpanel,
   NativeAudio: NativeAudio,
   NativeStorage: NativeStorage,
   Network: Network,
