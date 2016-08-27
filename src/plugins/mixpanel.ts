@@ -97,6 +97,9 @@ export class Mixpanel {
   static get people(): MixpanelPeople {return mixpanel.people; };
 
 }
+/**
+ * @private
+ */
 export declare class MixpanelPeople {
   static identify(distinctId: string, onSuccess?: Function, onFail?: Function): void;
   static increment(peopleProperties: any, onSuccess?: Function, onFail?: Function): void;

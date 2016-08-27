@@ -152,10 +152,12 @@ export class NFC {
   static enabled(): Promise<any> {return; }
 
 }
-
+/**
+ * @private
+ */
 export declare class Ndef {
-  uriRecord(uri: string): any;
-  textRecord(text: string): any;
-  mimeMediaRecord(mimeType: string, payload: string): any;
-  androidApplicationRecord(packageName: string): any;
+  static uriRecord(uri: string): any;
+  static textRecord(text: string): any;
+  static mimeMediaRecord(mimeType: string, payload: string): any;
+  static androidApplicationRecord(packageName: string): any;
 }

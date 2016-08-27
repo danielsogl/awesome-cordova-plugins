@@ -84,7 +84,9 @@ export interface PayPalEnvironment {
   PayPalEnvironmentProduction: string;
   PayPalEnvironmentSandbox: string;
 }
-
+/**
+ * @private
+ */
 export declare class PayPalPayment {
   /**
    * Convenience constructor.
@@ -154,7 +156,9 @@ export interface PayPalConfigurationOptions {
   sandboxUserPAssword?: string;
   sandboxUserPin?: string;
 }
-
+/**
+ * @private
+ */
 export declare class PayPalConfiguration {
   /**
    * You use a PayPalConfiguration object to configure many aspects of how the SDK behaves.
@@ -162,7 +166,9 @@ export declare class PayPalConfiguration {
    */
   new(options: PayPalConfigurationOptions);
 }
-
+/**
+ * @private
+ */
 export declare class PayPalShippingAddress {
   /**
    * See the documentation of the individual properties for more detail.
