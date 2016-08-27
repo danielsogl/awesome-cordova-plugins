@@ -21,6 +21,7 @@ import { BLE } from './plugins/ble';
 import { BluetoothSerial } from './plugins/bluetoothserial';
 import { Calendar } from './plugins/calendar';
 import { CallNumber } from './plugins/call-number';
+import { CanvasCamera } from './plugins/canvas-camera';
 import { Camera } from './plugins/camera';
 import { CameraPreview } from './plugins/camera-preview';
 import { CardIO } from './plugins/card-io';
@@ -157,6 +158,7 @@ Brightness,
 BLE,
 BluetoothSerial,
 CallNumber,
+CanvasCamera,
 CameraPreview,
 Clipboard,
 CodePush,
@@ -225,6 +227,7 @@ window['IonicNative'] = {
   BluetoothSerial: BluetoothSerial,
   Calendar: Calendar,
   CallNumber: CallNumber,
+  CanvasCamera: CanvasCamera,
   Camera: Camera,
   CameraPreview: CameraPreview,
   CardIO: CardIO,
