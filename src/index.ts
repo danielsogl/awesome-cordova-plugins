@@ -70,6 +70,7 @@ import { OneSignal } from './plugins/onesignal';
 import { PhotoViewer } from './plugins/photo-viewer';
 import { ScreenOrientation } from './plugins/screen-orientation';
 import { PinDialog } from './plugins/pin-dialog';
+import { PowerManagement } from './plugins/power-management';
 import { Printer } from './plugins/printer';
 import { Push } from './plugins/push';
 import { SafariViewController } from './plugins/safari-view-controller';
@@ -172,6 +173,7 @@ OneSignal,
 PhotoViewer,
 ScreenOrientation,
 PinDialog,
+PowerManagement,
 Screenshot,
 SecureStorage,
 Shake,
@@ -258,6 +260,7 @@ window['IonicNative'] = {
   PhotoViewer: PhotoViewer,
   ScreenOrientation: ScreenOrientation,
   PinDialog: PinDialog,
+  PowerManagement: PowerManagement,
   SafariViewController: SafariViewController,
   Screenshot: Screenshot,
   SecureStorage: SecureStorage,
