@@ -63,6 +63,7 @@ import { LaunchNavigator } from './plugins/launchnavigator';
 import { LocalNotifications } from './plugins/localnotifications';
 import { MediaCapture } from './plugins/media-capture';
 import { NativeAudio } from './plugins/native-audio';
+import { NativePageTransitions } from './plugins/native-page-transitions';
 import { NativeStorage } from './plugins/nativestorage';
 import { MediaPlugin } from './plugins/media';
 import { Network } from './plugins/network';
@@ -120,6 +121,7 @@ export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
 export * from './plugins/media';
 export * from './plugins/media-capture';
+export * from './plugins/native-page-transitions';
 export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
@@ -250,6 +252,7 @@ window['IonicNative'] = {
   MediaCapture: MediaCapture,
   MediaPlugin: MediaPlugin,
   NativeAudio: NativeAudio,
+  NativePageTransitions: NativePageTransitions,
   NativeStorage: NativeStorage,
   Network: Network,
   Printer: Printer,
