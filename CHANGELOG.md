@@ -1,3 +1,22 @@
+<a name="1.3.20"></a>
+## [1.3.20](https://github.com/driftyco/ionic-native/compare/v1.3.19...v1.3.20) (2016-08-27)
+
+
+### Bug Fixes
+
+* **GoogleMaps:** Fixes [#452](https://github.com/driftyco/ionic-native/issues/452) ([#498](https://github.com/driftyco/ionic-native/issues/498)) ([f6d5ac4](https://github.com/driftyco/ionic-native/commit/f6d5ac4))
+
+
+### Features
+
+* **canvas-camera:** add CanvasCamera support ([ad57733](https://github.com/driftyco/ionic-native/commit/ad57733))
+* **file-chooser:** add file chooser plugin support ([#495](https://github.com/driftyco/ionic-native/issues/495)) ([94a7dae](https://github.com/driftyco/ionic-native/commit/94a7dae))
+* **file-opener:** add file opener support ([#497](https://github.com/driftyco/ionic-native/issues/497)) ([21d8122](https://github.com/driftyco/ionic-native/commit/21d8122)), closes [#295](https://github.com/driftyco/ionic-native/issues/295)
+* **music-controls:** add music controls plugin support ([#494](https://github.com/driftyco/ionic-native/issues/494)) ([4e9bc95](https://github.com/driftyco/ionic-native/commit/4e9bc95))
+* **youtube:** add Youtube video player plugin support ([#496](https://github.com/driftyco/ionic-native/issues/496)) ([0cf7d6a](https://github.com/driftyco/ionic-native/commit/0cf7d6a))
+
+
+
 <a name="1.3.19"></a>
 ## [1.3.19](https://github.com/driftyco/ionic-native/compare/v1.3.18...v1.3.19) (2016-08-27)
 
