@@ -70,6 +70,7 @@ import { NativeStorage } from './plugins/nativestorage';
 import { Market } from './plugins/market';
 import { MediaPlugin } from './plugins/media';
 import { Mixpanel } from './plugins/mixpanel';
+import { MusicControls } from './plugins/music-controls';
 import { Network } from './plugins/network';
 import { NFC } from './plugins/nfc';
 import { OneSignal } from './plugins/onesignal';
@@ -181,6 +182,7 @@ InAppPurchase,
 Insomnia,
 Instagram,
 Keyboard,
+MusicControls,
 NativeAudio,
 NativeStorage,
 Network,
@@ -271,6 +273,7 @@ window['IonicNative'] = {
   MediaCapture: MediaCapture,
   MediaPlugin: MediaPlugin,
   Mixpanel: Mixpanel,
+  MusicControls: MusicControls,
   NativeAudio: NativeAudio,
   NativePageTransitions: NativePageTransitions,
   NativeStorage: NativeStorage,
