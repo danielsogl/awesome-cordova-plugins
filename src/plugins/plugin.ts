@@ -56,6 +56,11 @@ function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Func
         resolve(result);
       }
     });
+  } else if (opts.callbackStyle === 'object' && opts.successName && opts.errorName) {
+    let obj: any = {};
+    obj[opts.successName] = resolve;
+    obj[opts.errorName] = reject;
+    args.push(obj);
   } else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
     // If we've specified a success/error index
     args.splice(opts.successIndex, 0, resolve);

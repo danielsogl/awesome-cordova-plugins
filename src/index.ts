@@ -43,6 +43,7 @@ import { EstimoteBeacons } from './plugins/estimote-beacons';
 import { Facebook } from './plugins/facebook';
 import { File } from './plugins/file';
 import { FileChooser } from './plugins/file-chooser';
+import { FileOpener } from './plugins/file-opener';
 import { Transfer } from './plugins/filetransfer';
 import { Flashlight } from './plugins/flashlight';
 import { Geofence } from './plugins/geofence';
@@ -175,6 +176,7 @@ EmailComposer,
 EstimoteBeacons,
 File,
 FileChooser,
+FileOpener,
 Flashlight,
 Geofence,
 Globalization,
@@ -255,6 +257,7 @@ window['IonicNative'] = {
   Facebook: Facebook,
   File: File,
   FileChooser: FileChooser,
+  FileOpener: FileOpener,
   Flashlight: Flashlight,
   Geofence: Geofence,
   Geolocation: Geolocation,
