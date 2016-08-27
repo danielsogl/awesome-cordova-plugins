@@ -64,6 +64,7 @@ import { LocalNotifications } from './plugins/localnotifications';
 import { MediaCapture } from './plugins/media-capture';
 import { NativeAudio } from './plugins/native-audio';
 import { NativeStorage } from './plugins/nativestorage';
+import { Market } from './plugins/market';
 import { MediaPlugin } from './plugins/media';
 import { Network } from './plugins/network';
 import { OneSignal } from './plugins/onesignal';
@@ -168,6 +169,7 @@ Keyboard,
 NativeAudio,
 NativeStorage,
 Network,
+Market,
 OneSignal,
 PhotoViewer,
 ScreenOrientation,
@@ -247,6 +249,7 @@ window['IonicNative'] = {
   Keyboard: Keyboard,
   LaunchNavigator: LaunchNavigator,
   LocalNotifications: LocalNotifications,
+  Market: Market,
   MediaCapture: MediaCapture,
   MediaPlugin: MediaPlugin,
   NativeAudio: NativeAudio,
