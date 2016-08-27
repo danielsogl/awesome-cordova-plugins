@@ -101,6 +101,7 @@ import { Vibration } from './plugins/vibration';
 import { VideoEditor } from './plugins/video-editor';
 import { VideoPlayer } from './plugins/video-player';
 import { WebIntent } from './plugins/webintent';
+import { YoutubeVideoPlayer } from './plugins/youtube-video-player';
 import { Zip } from './plugins/zip';
 export * from './plugins/3dtouch';
 export * from './plugins/background-geolocation';
@@ -203,6 +204,7 @@ Transfer,
 TextToSpeech,
 Vibration,
 WebIntent,
+YoutubeVideoPlayer,
 Zip
 }
 
@@ -306,6 +308,7 @@ window['IonicNative'] = {
   VideoPlayer: VideoPlayer,
   Vibration: Vibration,
   WebIntent: WebIntent,
+  YoutubeVideoPlayer: YoutubeVideoPlayer,
   Zip: Zip
 };
 
