@@ -80,7 +80,7 @@ export class Mixpanel {
    * @param eventProperties
    */
   @Cordova()
-  static track(eventName: string, eventProperties: any): Promise<any> {return; }
+  static track(eventName: string, eventProperties?: any): Promise<any> {return; }
 
   /**
    *
