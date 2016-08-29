@@ -1,5 +1,8 @@
-import {Plugin, Cordova, CordovaProperty} from './plugin';
+import { Cordova, CordovaProperty, Plugin } from './plugin';
+
 declare var mixpanel: any;
+
+
 /**
  * @name Mixpanel
  * @description
@@ -28,20 +31,20 @@ export class Mixpanel {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static alias(aliasId: string, originalId: string): Promise<any> {return; }
+  static alias(aliasId: string, originalId: string): Promise<any> { return; }
 
   /**
    *
    * @returns {Promise<any>}
    */
   @Cordova()
-  static distinctId(): Promise<any> {return; }
+  static distinctId(): Promise<any> { return; }
 
   /**
    *
    */
   @Cordova()
-  static flush(): Promise<any> {return; }
+  static flush(): Promise<any> { return; }
 
   /**
    *
@@ -49,7 +52,7 @@ export class Mixpanel {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static identify(distinctId): Promise<any> {return; }
+  static identify(distinctId): Promise<any> { return; }
 
   /**
    *
@@ -57,7 +60,7 @@ export class Mixpanel {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static init(token: string): Promise<any> {return; }
+  static init(token: string): Promise<any> { return; }
 
   /**
    *
@@ -65,14 +68,14 @@ export class Mixpanel {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static registerSuperProperties(superProperties: any): Promise<any> {return; }
+  static registerSuperProperties(superProperties: any): Promise<any> { return; }
 
   /**
    *
    * @returns {Promise<any>}
    */
   @Cordova()
-  static reset(): Promise<any> {return; }
+  static reset(): Promise<any> { return; }
 
   /**
    *
@@ -80,21 +83,21 @@ export class Mixpanel {
    * @param eventProperties
    */
   @Cordova()
-  static track(eventName: string, eventProperties: any): Promise<any> {return; }
+  static track(eventName: string, eventProperties?: any): Promise<any> { return; }
 
   /**
    *
    * @returns {Promise<any>}
    */
   @Cordova()
-  static showSurvey(): Promise<any> {return; }
+  static showSurvey(): Promise<any> { return; }
 
   /**
    *
    * @returns {MixpanelPeople}
    */
   @CordovaProperty
-  static get people(): MixpanelPeople {return mixpanel.people; };
+  static get people(): MixpanelPeople { return mixpanel.people; };
 
 }
 /**
