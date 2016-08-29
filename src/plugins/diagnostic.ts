@@ -63,24 +63,29 @@ export class Diagnostic {
   };
 
   static permissionStatus = {
-    GRANTED: 'authorized',
-    GRANTED_WHEN_IN_USE: 'authorized_when_in_use', // iOS
-    RESTRICTED: 'restricted', // iOS
-    DENIED: 'denied',
-    DENIED_ALWAYS: 'denied_always', // android
+    GRANTED: 'GRANTED',
+    GRANTED_WHEN_IN_USE: 'GRANTED_WHEN_IN_USE', // iOS
+    RESTRICTED: 'RESTRICTED', // iOS
+    DENIED: 'DENIED',
+    DENIED_ALWAYS: 'NOT_REQUESTED', // android
     NOT_REQUESTED: 'not_determined'
   };
 
   static locationAuthorizationMode = {
-    ALWAYS: 'always',
-    WHEN_IN_USE: 'when_in_use'
+    ALWAYS: 'ALWAYS',
+    WHEN_IN_USE: 'WHEN_IN_USE'
   };
 
   static permissionGroups = {
-    GRANTED: 'GRANTED',
-    DENIED: 'DENIED',
-    NOT_REQUESTED: 'NOT_REQUESTED',
-    DENIED_ALWAYS: 'DENIED_ALWAYS'
+    CALENDAR: ['READ_CALENDAR', 'WRITE_CALENDAR'],
+    CAMERA: ['CAMERA'],
+    CONTACTS: ['READ_CONTACTS', 'WRITE_CONTACTS', 'GET_ACCOUNTS'],
+    LOCATION: ['ACCESS_FINE_LOCATION', 'ACCESS_COARSE_LOCATION'],
+    MICROPHONE: ['RECORD_AUDIO'],
+    PHONE: ['READ_PHONE_STATE', 'CALL_PHONE', 'ADD_VOICEMAIL', 'USE_SIP', 'PROCESS_OUTGOING_CALLS', 'READ_CALL_LOG', 'WRITE_CALL_LOG'],
+    SENSEORS: ['BODY_SENSORS'],
+    SMS: ['SEND_SMS', 'RECEIVE_SMS', 'READ_SMS', 'RECEIVE_WAP_PUSH', 'RECEIVE_MMS'],
+    STORAGE: ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']
   };
 
   static locationMode = {
