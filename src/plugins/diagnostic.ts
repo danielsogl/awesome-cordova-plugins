@@ -67,8 +67,8 @@ export class Diagnostic {
     GRANTED_WHEN_IN_USE: 'GRANTED_WHEN_IN_USE', // iOS
     RESTRICTED: 'RESTRICTED', // iOS
     DENIED: 'DENIED',
-    DENIED_ALWAYS: 'NOT_REQUESTED', // android
-    NOT_REQUESTED: 'not_determined'
+    DENIED_ALWAYS: 'DENIED_ALWAYS', // android
+    NOT_REQUESTED: 'NOT_REQUESTED'
   };
 
   static locationAuthorizationMode = {
