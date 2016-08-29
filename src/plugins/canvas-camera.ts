@@ -25,44 +25,46 @@ import {Plugin, Cordova} from './plugin';
   repo: 'https://github.com/donaldp24/CanvasCameraPlugin'
 })
 export class CanvasCamera {
+
   static DestinationType = {
     DATA_URL: 0,
     FILE_URI: 1
   };
+
   static PictureSourceType = {
-    PHOTOLIBRARY : 0,
-    CAMERA : 1,
-    SAVEDPHOTOALBUM : 2
+    PHOTOLIBRARY: 0,
+    CAMERA: 1,
+    SAVEDPHOTOALBUM: 2
   };
+
   static EncodingType = {
-    JPEG : 0,
-    PNG : 1
+    JPEG: 0,
+    PNG: 1
   };
+
   static CameraPosition = {
-    BACK : 0,
-    FRONT : 1
+    BACK: 1,
+    FRONT: 2
   };
-  static CameraPosition = {
-    BACK : 1,
-    FRONT : 2
-  };
+
   static FlashMode = {
-    OFF : 0,
-    ON : 1,
-    AUTO : 2
+    OFF: 0,
+    ON: 1,
+    AUTO: 2
   };
+
   /**
    * Initialize the Camera
    * @param htmlElement {HTMLElement} The HTML Element to preview the camera in
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   static initialize(htmlElement: HTMLElement): void { }
 
   /**
    * Start capture video as images from camera to preview camera on web page.
    * @param options
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   static start(options?: {
     quality?: number;
     sourceType?: number;
@@ -80,19 +82,19 @@ export class CanvasCamera {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static takePicture(): Promise<any> {return; }
+  static takePicture(): Promise<any> { return; }
 
   /**
    * Sets the flash mode
    * @param flashMode {number} Flash mode, use CanvasCamera.FlashMode constant to set
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   static setFlashMode(flashMode: number): void { }
 
   /**
    * Set camera position
    * @param cameraPosition {number} Camera Position, use CanvasCamera.CameraPosition constant
    */
-  @Cordova({sync: true})
-  static setCameraPosition(cameraPosition: number): void {}
+  @Cordova({ sync: true })
+  static setCameraPosition(cameraPosition: number): void { }
 }
