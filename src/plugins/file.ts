@@ -950,11 +950,16 @@ export class File {
   // these private methods help avoid cascading error handling
   // in the public ones, primarily simply wrapping callback
   // operations to return Promises that can then be chained.
-
+  /**
+   * @private
+   */
   private static fillErrorMessage(err: FileError): void {
     err.message = File.cordovaFileError[err.code];
   }
 
+  /**
+   * @private
+   */
   private static resolveLocalFilesystemUrl(furl: string): Promise<Entry> {
     return new Promise((resolve, reject) => {
       try {
@@ -971,6 +976,9 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static resolveDirectoryUrl(durl: string): Promise<DirectoryEntry> {
     return File.resolveLocalFilesystemUrl(durl)
       .then((de) => {
@@ -984,6 +992,9 @@ export class File {
       });
   }
 
+  /**
+   * @private
+   */
   private static getDirectory(fse: DirectoryEntry, dn: string, flags: Flags): Promise<DirectoryEntry> {
     return new Promise((resolve, reject) => {
       try {
@@ -1000,6 +1011,9 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static getFile(fse: DirectoryEntry, fn: string, flags: Flags): Promise<FileEntry> {
     return new Promise((resolve, reject) => {
       try {
@@ -1016,6 +1030,9 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static remove(fe: Entry): Promise<RemoveResult> {
     return new Promise((resolve, reject) => {
       fe.remove(() => {
@@ -1027,6 +1044,9 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static move(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
     return new Promise((resolve, reject) => {
       srce.moveTo(destdir, newName, (deste) => {
@@ -1038,6 +1058,9 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static copy(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
     return new Promise((resolve, reject) => {
       srce.copyTo(destdir, newName, (deste) => {
@@ -1049,6 +1072,9 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static readEntries(dr: DirectoryReader): Promise<Entry[]> {
     return new Promise((resolve, reject) => {
       dr.readEntries((entries) => {
@@ -1060,6 +1086,9 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static rimraf(de: DirectoryEntry): Promise<RemoveResult> {
     return new Promise((resolve, reject) => {
       de.removeRecursively(() => {
@@ -1071,6 +1100,9 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static createWriter(fe: FileEntry): Promise<FileWriter> {
     return new Promise((resolve, reject) => {
       fe.createWriter((writer) => {
@@ -1082,6 +1114,9 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static write(writer: FileWriter, gu: string | Blob): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       writer.onwriteend = (evt) => {
