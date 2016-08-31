@@ -1,5 +1,6 @@
 import { Plugin, CordovaInstance } from './plugin';
 import { Observable } from 'rxjs/Observable';
+
 declare var cordova: any;
 
 export interface InAppBrowserEvent extends Event {
