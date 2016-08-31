@@ -277,6 +277,10 @@ export class ContactFindOptions implements IContactFindOptions {
   repo: 'https://github.com/apache/cordova-plugin-contacts'
 })
 export class Contacts {
+  /**
+   * Create a single contact.
+   * @return Returns a object Contact
+   */
   static create(): Contact {
     return new Contact();
   }
