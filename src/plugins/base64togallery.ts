@@ -27,7 +27,10 @@ export class Base64ToGallery {
    * @param {any} options (optional) An object with properties: prefix: string, mediaScanner: boolean. Prefix will be prepended to the filename. If true, mediaScanner runs Media Scanner on Android and saves to Camera Roll on iOS; if false, saves to Library folder on iOS.  
    * @returns {Promise} returns a promise that resolves when the image is saved.
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 2,
+    errorIndex: 3
+  })
   static base64ToGallery(data: string, options?: {prefix?: string; mediaScanner?: boolean}): Promise<any> {
     return;
   }
