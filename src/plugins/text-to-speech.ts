@@ -10,15 +10,15 @@ export interface TTSOptions {
 }
 
 /**
- * @name TTS
+ * @name TextToSpeech
  * @description
  * Text to Speech plugin
  *
  * @usage
  * ```
- * import {TTS} from 'ionic-native';
+ * import {TextToSpeech} from 'ionic-native';
  *
- * TTS.speak('Hello World')
+ * TextToSpeech.speak('Hello World')
  *   .then(() => console.log('Success'))
  *   .catch((reason: any) => console.log(reason));
  *
