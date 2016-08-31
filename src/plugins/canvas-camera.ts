@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Plugin, Cordova } from './plugin';
 /**
  * @name CanvasCamera
  * @description
@@ -76,7 +76,7 @@ export class CanvasCamera {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static takePicture(): Promise<any> {return; }
+  static takePicture(): Promise<any> { return; }
 
   /**
    * Sets the flash mode
