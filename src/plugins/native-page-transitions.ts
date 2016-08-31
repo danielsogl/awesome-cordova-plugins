@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Plugin, Cordova } from './plugin';
 /**
  * @name NativePageTransitions
  * @description
@@ -38,21 +38,21 @@ export class NativePageTransitions {
    * @param options {TransitionOptions} Options for the transition
    */
   @Cordova()
-  static slide(options: TransitionOptions): Promise<any> {return; }
+  static slide(options: TransitionOptions): Promise<any> { return; }
 
   /**
    * Perform a flip animation
    * @param options {TransitionOptions} Options for the transition
    */
   @Cordova()
-  static flip(options: TransitionOptions): Promise<any> {return; }
+  static flip(options: TransitionOptions): Promise<any> { return; }
 
   /**
    * Perform a fade animation
    * @param options {TransitionOptions} Options for the transition
    */
   @Cordova({platforms: ['iOS', 'Android']})
-  static fade(options: TransitionOptions): Promise<any> {return; }
+  static fade(options: TransitionOptions): Promise<any> { return; }
 
 
   /**
@@ -60,7 +60,7 @@ export class NativePageTransitions {
    * @param options {TransitionOptions} Options for the transition
    */
   @Cordova({platforms: ['iOS', 'Android']})
-  static drawer(options: TransitionOptions): Promise<any> {return; }
+  static drawer(options: TransitionOptions): Promise<any> { return; }
 
 
 
@@ -69,7 +69,7 @@ export class NativePageTransitions {
    * @param options {TransitionOptions} Options for the transition
    */
   @Cordova({platforms: ['iOS']})
-  static curl(options: TransitionOptions): Promise<any> {return; }
+  static curl(options: TransitionOptions): Promise<any> { return; }
 
 }
 
