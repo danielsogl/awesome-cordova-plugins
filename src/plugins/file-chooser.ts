@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Plugin, Cordova } from './plugin';
 /**
  * @name FileChooser
  * @description
@@ -26,5 +26,5 @@ export class FileChooser {
    * Open a file
    */
   @Cordova()
-  static open(): Promise<string> {return; }
+  static open(): Promise<string> { return; }
 }
