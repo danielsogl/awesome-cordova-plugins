@@ -1,4 +1,4 @@
-import {Cordova, Plugin} from './plugin';
+import { Cordova, Plugin } from './plugin';
 /**
  * @name Crop
  * @description Crops images
@@ -30,5 +30,5 @@ export class Crop {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static crop(pathToImage: string, options?: {quality: number}): Promise<string> {return; }
+  static crop(pathToImage: string, options?: {quality: number}): Promise<string> { return; }
 }

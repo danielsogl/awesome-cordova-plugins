@@ -1,4 +1,5 @@
 import { CordovaInstance, Plugin } from './plugin';
+
 declare var cordova: any;
 /**
  * @name Secure Storage
