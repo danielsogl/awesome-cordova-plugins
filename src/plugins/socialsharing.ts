@@ -52,7 +52,7 @@ export class SocialSharing {
 
   /**
    * Checks if you can share via a specific app.
-   * @param appName App name or package name. Examples: instagram or com.apple.social.facebook
+   * @param appName {string} App name or package name. Examples: instagram or com.apple.social.facebook
    */
   @Cordova({
     platforms: ['iOS', 'Android']
