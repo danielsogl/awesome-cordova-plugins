@@ -1,11 +1,11 @@
-import {Plugin} from './plugin';
+import { Plugin } from './plugin';
 /**
  * @name PluginName
  * @description
  *
  * @usage
  * ```
- * import {PluginName} from 'ionic-native';
+ * import { PluginName } from 'ionic-native';
  *
  *
  * ```
