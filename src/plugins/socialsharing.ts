@@ -55,6 +55,8 @@ export class SocialSharing {
    * @param appName {string} App name or package name. Examples: instagram or com.apple.social.facebook
    */
   @Cordova({
+    successIndex: 5,
+    errorIndex: 6
     platforms: ['iOS', 'Android']
   })
   static canShareVia(appName: string): Promise<any> { return; }
@@ -66,6 +68,8 @@ export class SocialSharing {
    * @param url {string}
    */
   @Cordova({
+    successIndex: 3,
+    errorIndex: 4
     platforms: ['iOS', 'Android']
   })
   static shareViaTwitter(message: string, image?: string, url?: string): Promise<any> { return; }
@@ -77,6 +81,8 @@ export class SocialSharing {
    * @param url {string}
    */
   @Cordova({
+    successIndex: 3,
+    errorIndex: 4
     platforms: ['iOS', 'Android']
   })
   static shareViaFacebook(message: string, image?: string, url?: string): Promise<any> { return; }
@@ -90,6 +96,8 @@ export class SocialSharing {
    * @param pasteMessageHint {string}
    */
   @Cordova({
+    successIndex: 4,
+    errorIndex: 5
     platforms: ['iOS', 'Android']
   })
   static shareViaFacebookWithPasteMessageHint(message: string, image?: string, url?: string, pasteMessageHint?: string): Promise<any> { return; }
@@ -111,6 +119,8 @@ export class SocialSharing {
    * @param url {string}
    */
   @Cordova({
+    successIndex: 3,
+    errorIndex: 4
     platforms: ['iOS', 'Android']
   })
   static shareViaWhatsApp(message: string, image?: string, url?: string): Promise<any> { return; }
@@ -123,6 +133,8 @@ export class SocialSharing {
    * @param url {string} Link to send
    */
   @Cordova({
+    successIndex: 4,
+    errorIndex: 5
     platforms: ['iOS', 'Android']
   })
   static shareViaWhatsAppToReceiver(receiver: string, message: string, image?: string, url?: string): Promise<any> { return; }
@@ -168,6 +180,8 @@ export class SocialSharing {
    * @param url {string}
    */
   @Cordova({
+    successIndex: 5,
+    errorIndex: 6
     platforms: ['iOS', 'Android']
   })
   static shareVia(appName: string, message: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
