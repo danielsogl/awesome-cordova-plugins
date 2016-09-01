@@ -61,9 +61,9 @@ export class SocialSharing {
 
   /**
    * Shares directly to Twitter
-   * @param message
-   * @param image
-   * @param url
+   * @param message {string}
+   * @param image {string}
+   * @param url {string}
    */
   @Cordova({
     platforms: ['iOS', 'Android']
