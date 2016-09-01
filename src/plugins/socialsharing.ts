@@ -159,4 +159,16 @@ export class SocialSharing {
   })
   static shareViaEmail(message: string, subject: string, to: string[], cc: string[] = [], bcc: string[] = [], files: string|string[] = []): Promise<any> { return; }
 
+  /**
+   * Share via Target (instagram, whatsapp, twitter ...)
+   * @param via {string}
+   * @param message {string}
+   * @param subject {string}
+   * @param image {string}
+   * @param url {string}
+   */
+  @Cordova({
+    platforms: ['iOS', 'Android']
+  })
+  static shareVia(via: string, message: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
 }
