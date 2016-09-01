@@ -108,7 +108,7 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 
 function getPromise(cb) {
   if (window.angular) {
-    let $q = window.angular.injector(['ng']).get('$q');
+    let $q = window.angular.element(document.body).injector().get('$q');
     return $q((resolve, reject) => {
       cb(resolve, reject);
     });
