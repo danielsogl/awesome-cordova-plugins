@@ -53,13 +53,17 @@ export class SocialSharing {
   /**
    * Checks if you can share via a specific app.
    * @param appName {string} App name or package name. Examples: instagram or com.apple.social.facebook
+   * @param message {string}
+   * @param subject {string}
+   * @param image {string}
+   * @param url {string}
    */
   @Cordova({
     successIndex: 5,
     errorIndex: 6
     platforms: ['iOS', 'Android']
   })
-  static canShareVia(appName: string): Promise<any> { return; }
+  static canShareVia(appName: string, message?: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
 
   /**
    * Shares directly to Twitter
