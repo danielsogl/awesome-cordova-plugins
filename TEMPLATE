@@ -20,7 +20,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```
- * import {PluginName} from 'ionic-native';
+ * import { PluginName } from 'ionic-native';
  *
  * PluginName.functionName('Hello', 123)
  *   .then((something: any) => doSomething(something))

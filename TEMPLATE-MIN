@@ -5,7 +5,7 @@ import { Plugin } from './plugin';
  *
  * @usage
  * ```
- * import {PluginName} from 'ionic-native';
+ * import { PluginName } from 'ionic-native';
  *
  *
  * ```
