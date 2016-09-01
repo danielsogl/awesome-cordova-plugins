@@ -160,8 +160,8 @@ export class SocialSharing {
   static shareViaEmail(message: string, subject: string, to: string[], cc: string[] = [], bcc: string[] = [], files: string|string[] = []): Promise<any> { return; }
 
   /**
-   * Share via Target (instagram, whatsapp, twitter ...)
-   * @param via {string}
+   * Share via AppName
+   * @param appName {string} App name or package name. Examples: instagram or com.apple.social.facebook
    * @param message {string}
    * @param subject {string}
    * @param image {string}
@@ -170,5 +170,5 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareVia(via: string, message: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
+  static shareVia(appName: string, message: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
 }
