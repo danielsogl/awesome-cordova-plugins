@@ -1119,6 +1119,10 @@ export class File {
    * @private
    */
   private static write(writer: FileWriter, gu: string | Blob): Promise<void> {
+    if (gu instanceof Blob) {
+      return this.writeFileInChunks(writer, gu);
+    }
+
     return new Promise<void>((resolve, reject) => {
       writer.onwriteend = (evt) => {
         if (writer.error) {
@@ -1128,6 +1132,34 @@ export class File {
         }
       };
       writer.write(gu);
+    });
+  }
+
+  /**
+   * @private
+   */
+  private static writeFileInChunks(writer: FileWriter, file: Blob) {
+    const BLOCK_SIZE = 1024 * 1024;
+    let writtenSize = 0;
+
+    function writeNextChunk() {
+      const size = Math.min(BLOCK_SIZE, file.size - writtenSize);
+      const chunk = file.slice(writtenSize, writtenSize + size);
+
+      writtenSize += size;
+      writer.write(chunk);
+    }
+
+    return new Promise((resolve, reject) => {
+      writer.onerror = reject;
+      writer.onwrite = () => {
+        if (writtenSize < file.size) {
+          writeNextChunk();
+        } else {
+          resolve();
+        }
+      };
+      writeNextChunk();
     });
   }
 }
