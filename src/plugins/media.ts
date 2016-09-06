@@ -77,16 +77,43 @@ export interface MediaError {
 export class MediaPlugin {
 
   // Constants
+  /**
+   * @private
+   */
   static MEDIA_NONE: number = 0;
+  /**
+   * @private
+   */
   static MEDIA_STARTING: number = 1;
+  /**
+   * @private
+   */
   static MEDIA_RUNNING: number = 2;
+  /**
+   * @private
+   */
   static MEDIA_PAUSED: number = 3;
+  /**
+   * @private
+   */
   static MEDIA_STOPPED: number = 4;
 
   // error codes
+  /**
+   * @private
+   */
   static MEDIA_ERR_ABORTED: number = 1;
+  /**
+   * @private
+   */
   static MEDIA_ERR_NETWORK: number = 2;
+  /**
+   * @private
+   */
   static MEDIA_ERR_DECODE: number = 3;
+  /**
+   * @private
+   */
   static MEDIA_ERR_NONE_SUPPORTED: number = 4;
 
   // Properties
@@ -109,19 +136,22 @@ export class MediaPlugin {
   }
 
   /**
-   * Returns the current amplitude of the current recording.
+   * Get the current amplitude of the current recording.
+   * @returns {Promise} Returns a promise with the amplitude of the current recording
    */
   @CordovaInstance()
   getCurrentAmplitude(): Promise<any> { return; }
 
   /**
-   * Returns the current position within an audio file. Also updates the Media object's position parameter.
+   * Get the current position within an audio file. Also updates the Media object's position parameter.
+   * @returns {Promise} Returns a promise with the position of the current recording
    */
   @CordovaInstance()
   getCurrentPosition(): Promise<any> { return; }
 
   /**
-   * Returns the duration of an audio file in seconds. If the duration is unknown, it returns a value of -1.
+   * Get the duration of an audio file in seconds. If the duration is unknown, it returns a value of -1.
+   * @returns {Promise} Returns a promise with the duration of the current recording
    */
   @CordovaInstance({
     sync: true
@@ -157,7 +187,7 @@ export class MediaPlugin {
 
   /**
    * Sets the current position within an audio file.
-   * @param milliseconds
+   * @param {number} milliseconds The time position you want to set for the current audio file
    */
   @CordovaInstance({
     sync: true
