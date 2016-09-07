@@ -105,17 +105,30 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 }
 
 function getPromise(cb) {
+
+  const tryNativePromise = () => {
+    if (window.Promise) {
+      return new Promise((resolve, reject) => {
+        cb(resolve, reject);
+      });
+    } else {
+      console.error('No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular 1/2 or on a recent browser.');
+    }
+  };
+
   if (window.angular) {
-    let $q = window.angular.element(document.body).injector().get('$q');
-    return $q((resolve, reject) => {
-      cb(resolve, reject);
-    });
-  } else if (window.Promise) {
-    return new Promise((resolve, reject) => {
-      cb(resolve, reject);
-    });
+    let injector = window.angular.element(document.querySelector('[ng-app]') || document.body).injector();
+    if (injector) {
+      let $q = injector.get('$q');
+      return $q((resolve, reject) => {
+        cb(resolve, reject);
+      });
+    } else {
+      console.warn('Angular 1 was detected but $q couldn\'t be retrieved. This is usually when the app is not bootstrapped on the html or body tag. Falling back to native promises which won\'t trigger an automatic digest when promises resolve.');
+      return tryNativePromise();
+    }
   } else {
-    console.error('No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular 1/2 or on a recent browser.');
+    return tryNativePromise();
   }
 }
 
