@@ -63,7 +63,7 @@ export class SocialSharing {
    */
   @Cordova({
     successIndex: 5,
-    errorIndex: 6
+    errorIndex: 6,
     platforms: ['iOS', 'Android']
   })
   static canShareVia(appName: string, message?: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
@@ -77,7 +77,7 @@ export class SocialSharing {
    */
   @Cordova({
     successIndex: 3,
-    errorIndex: 4
+    errorIndex: 4,
     platforms: ['iOS', 'Android']
   })
   static shareViaTwitter(message: string, image?: string, url?: string): Promise<any> { return; }
@@ -91,7 +91,7 @@ export class SocialSharing {
    */
   @Cordova({
     successIndex: 3,
-    errorIndex: 4
+    errorIndex: 4,
     platforms: ['iOS', 'Android']
   })
   static shareViaFacebook(message: string, image?: string, url?: string): Promise<any> { return; }
@@ -107,7 +107,7 @@ export class SocialSharing {
    */
   @Cordova({
     successIndex: 4,
-    errorIndex: 5
+    errorIndex: 5,
     platforms: ['iOS', 'Android']
   })
   static shareViaFacebookWithPasteMessageHint(message: string, image?: string, url?: string, pasteMessageHint?: string): Promise<any> { return; }
@@ -132,7 +132,7 @@ export class SocialSharing {
    */
   @Cordova({
     successIndex: 3,
-    errorIndex: 4
+    errorIndex: 4,
     platforms: ['iOS', 'Android']
   })
   static shareViaWhatsApp(message: string, image?: string, url?: string): Promise<any> { return; }
@@ -147,7 +147,7 @@ export class SocialSharing {
    */
   @Cordova({
     successIndex: 4,
-    errorIndex: 5
+    errorIndex: 5,
     platforms: ['iOS', 'Android']
   })
   static shareViaWhatsAppToReceiver(receiver: string, message: string, image?: string, url?: string): Promise<any> { return; }
@@ -177,15 +177,17 @@ export class SocialSharing {
    * @param message {string}
    * @param subject {string}
    * @param to {string[]}
-   * @param cc {string[]}
-   * @param bcc {string[]}
-   * @param files {string|string[]} URL or local path to file(s) to attach
+   * @param cc {string[]} Optional
+   * @param bcc {string[]} Optional
+   * @param files {string|string[]} Optional URL or local path to file(s) to attach
    * @returns {Promise}
    */
   @Cordova({
-    platforms: ['iOS', 'Android']
+    platforms: ['iOS', 'Android'],
+    successIndex: 6,
+    errorIndex: 7
   })
-  static shareViaEmail(message: string, subject: string, to: string[], cc: string[] = [], bcc: string[] = [], files: string|string[] = []): Promise<any> { return; }
+  static shareViaEmail(message: string, subject: string, to: string[], cc?: string[], bcc?: string[], files?: string|string[]): Promise<any> { return; }
 
   /**
    * Share via AppName
@@ -198,7 +200,7 @@ export class SocialSharing {
    */
   @Cordova({
     successIndex: 5,
-    errorIndex: 6
+    errorIndex: 6,
     platforms: ['iOS', 'Android']
   })
   static shareVia(appName: string, message: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
