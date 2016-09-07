@@ -430,7 +430,7 @@ export class File {
       create: true
     };
 
-    if (replace) {
+    if (!replace) {
       options.exclusive = true;
     }
 
