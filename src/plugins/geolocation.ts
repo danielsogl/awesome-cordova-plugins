@@ -67,7 +67,7 @@ export interface PositionError {
    * A code that indicates the error that occurred
    */
   code: number;
-  
+
   /**
    * A message that can describe the error that occurred
    */
