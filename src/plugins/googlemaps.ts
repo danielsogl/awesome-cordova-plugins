@@ -173,13 +173,11 @@ export class GoogleMap {
   setTilt(tiltLevel: number): void {
   }
 
-  @CordovaInstance({ sync: true })
-  animateCamera(animateCameraOptions: AnimateCameraOptions): void {
-  }
+  @CordovaInstance()
+  animateCamera(animateCameraOptions: AnimateCameraOptions): Promise<any> { return; }
 
-  @CordovaInstance({ sync: true })
-  moveCamera(cameraPosition: CameraPosition): void {
-  }
+  @CordovaInstance()
+  moveCamera(cameraPosition: CameraPosition): Promise<any> { return; }
 
   @CordovaInstance({ sync: true })
   setMyLocationEnabled(enabled: boolean): void {
