@@ -127,12 +127,11 @@ export class MediaPlugin {
    * @param src {string} A URI containing the audio content.
    */
   constructor(src: string) {
-    let res, rej, next;
-    this.init = new Promise<any>((resolve, reject) => { res = resolve; rej = reject; });
-    this.status = new Observable((observer) => {
-      next = data => observer.next(data);
+    this.init = new Promise<any>((resolve, reject) => {
+      this.status = new Observable((observer) => {
+        this._objectInstance = new Media(src, resolve, reject, observer.next.bind(observer));
+      });
     });
-    this._objectInstance = new Media(src, res, rej, next);
   }
 
   /**
