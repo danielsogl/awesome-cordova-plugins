@@ -107,8 +107,9 @@ export class GoogleMap {
     return;
   }
 
-  constructor(elementId: string, options?: any) {
-    this._objectInstance = plugin.google.maps.Map.getMap(document.getElementById(elementId), options);
+  constructor(element: string|HTMLElement, options?: any) {
+    if (typeof element === 'string') element = document.getElementById(<string>element);
+    this._objectInstance = plugin.google.maps.Map.getMap(element, options);
   }
 
   /**
