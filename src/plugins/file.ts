@@ -658,12 +658,12 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName path relative to base path
-   * @param {string} text content to write
+   * @param {string | Blob} text content or blob to write
    * @param {boolean | WriteOptions} replaceOrOptions replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
   static writeFile(path: string, fileName: string,
-                   text: string, replaceOrOptions: boolean | WriteOptions): Promise<void> {
+                   text: string | Blob, replaceOrOptions: boolean | WriteOptions): Promise<void> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -701,10 +701,10 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName path relative to base path
-   * @param {string} text content to write
+   * @param {string | Blob} text content or blob to write
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
-  static writeExistingFile(path: string, fileName: string, text: string): Promise<void> {
+  static writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
