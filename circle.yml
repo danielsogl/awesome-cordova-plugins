@@ -17,7 +17,7 @@ dependencies:
 
 test:
   override:
-    - echo "No tests are written at the moment. But we will attempt to build the library with the latest changes."
+    - npm test
     - npm run build
 
 deployment:
