@@ -1,3 +1,34 @@
+<a name="1.3.21"></a>
+## [1.3.21](https://github.com/driftyco/ionic-native/compare/v1.3.20...v1.3.21) (2016-09-07)
+
+
+### Bug Fixes
+
+* **base64togallery:** fixes callbacks ([#513](https://github.com/driftyco/ionic-native/issues/513)) ([1db1374](https://github.com/driftyco/ionic-native/commit/1db1374))
+* **diagnostic:** Add DENIED_ALWAYS to permissionStatus, also some code formatting ([9d573a9](https://github.com/driftyco/ionic-native/commit/9d573a9))
+* **diagnostic:** Fix diagnostic objects ([cb176aa](https://github.com/driftyco/ionic-native/commit/cb176aa))
+* **diagnostic:** Fix permissionStatus object ([8f3d36f](https://github.com/driftyco/ionic-native/commit/8f3d36f))
+* **diagnostic:** Fix typo ([f93f958](https://github.com/driftyco/ionic-native/commit/f93f958))
+* **file:** set exclusive to true when replace is false ([7910493](https://github.com/driftyco/ionic-native/commit/7910493)), closes [#516](https://github.com/driftyco/ionic-native/issues/516)
+* **geolocation:** retain Observable even during an error condition ([#532](https://github.com/driftyco/ionic-native/issues/532)) ([26dead9](https://github.com/driftyco/ionic-native/commit/26dead9))
+* **googlemaps:** moveCamera and animateCamera now return a Promise ([d03d70f](https://github.com/driftyco/ionic-native/commit/d03d70f)), closes [#511](https://github.com/driftyco/ionic-native/issues/511)
+* **install-instructions:** This fixes install instructions for deeplinks, facebook and googlemaps ([#499](https://github.com/driftyco/ionic-native/issues/499)) ([877ac27](https://github.com/driftyco/ionic-native/commit/877ac27))
+* **media:** nest the constructor logic ([a566240](https://github.com/driftyco/ionic-native/commit/a566240))
+* **mixpanel:** Make eventProperties optional ([#501](https://github.com/driftyco/ionic-native/issues/501)) ([51364f8](https://github.com/driftyco/ionic-native/commit/51364f8))
+* **ng1:** grab injector from app. [#451](https://github.com/driftyco/ionic-native/issues/451) ([2dc68a4](https://github.com/driftyco/ionic-native/commit/2dc68a4))
+* remove CanvasCamera plugin ([c75f898](https://github.com/driftyco/ionic-native/commit/c75f898))
+* **social-sharing:** shareViaEmail now resolves/rejects when not providing optional args ([c76de34](https://github.com/driftyco/ionic-native/commit/c76de34))
+* **social-sharing:** various fixes ([#520](https://github.com/driftyco/ionic-native/issues/520)) ([4f97164](https://github.com/driftyco/ionic-native/commit/4f97164))
+
+
+### Features
+
+* **file:** adds chunked blob writing ([#529](https://github.com/driftyco/ionic-native/issues/529)) ([bbbd0d5](https://github.com/driftyco/ionic-native/commit/bbbd0d5))
+* **file:** allows writeFile and writeExistingFile to accept Blob ([#527](https://github.com/driftyco/ionic-native/issues/527)) ([393e9d0](https://github.com/driftyco/ionic-native/commit/393e9d0))
+* **googlemaps:** can pass HTMLElement to constructor ([dff034a](https://github.com/driftyco/ionic-native/commit/dff034a))
+
+
+
 <a name="1.3.20"></a>
 ## [1.3.20](https://github.com/driftyco/ionic-native/compare/v1.3.19...v1.3.20) (2016-08-27)
 
