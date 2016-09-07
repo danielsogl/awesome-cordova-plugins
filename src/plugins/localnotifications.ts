@@ -72,12 +72,14 @@ export class LocalNotifications {
   /**
    * Clears single or multiple notifications
    * @param notificationId A single notification id, or an array of notification ids.
+   * @returns {Promise} Returns a promise when the notification had been cleared
    */
   @Cordova()
   static clear(notificationId: any): Promise<any> { return; }
 
   /**
    * Clears all notifications
+   * @returns {Promise} Returns a promise when all notifications have cleared
    */
   @Cordova({
     successIndex: 0,
@@ -88,12 +90,14 @@ export class LocalNotifications {
   /**
    * Cancels single or multiple notifications
    * @param notificationId A single notification id, or an array of notification ids.
+   * @returns {Promise} Returns a promise when the notification is canceled
    */
   @Cordova()
   static cancel(notificationId: any): Promise<any> { return; }
 
   /**
    * Cancels all notifications
+   * @returns {Promise} Returns a promise when all notifications are canceled
    */
   @Cordova({
     successIndex: 0,
@@ -104,6 +108,7 @@ export class LocalNotifications {
   /**
    * Checks presence of a notification
    * @param notificationId
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static isPresent(notificationId: number): Promise<boolean> { return; }
@@ -111,6 +116,7 @@ export class LocalNotifications {
   /**
    * Checks is a notification is scheduled
    * @param notificationId
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static isScheduled(notificationId: number): Promise<boolean> { return; }
@@ -118,24 +124,28 @@ export class LocalNotifications {
   /**
    * Checks if a notification is triggered
    * @param notificationId
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static isTriggered(notificationId: number): Promise<boolean> { return; }
 
   /**
    * Get all the notification ids
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static getAllIds(): Promise<Array<number>> { return; }
 
   /**
    * Get the ids of triggered notifications
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static getTriggeredIds(): Promise<Array<number>> { return; }
 
   /**
    * Get the ids of scheduled notifications
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static getScheduledIds(): Promise<Array<number>> { return; }
@@ -143,6 +153,7 @@ export class LocalNotifications {
   /**
    * Get a notification object
    * @param notificationId The id of the notification to get
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static get(notificationId: any): Promise<Notification> { return; }
@@ -150,6 +161,7 @@ export class LocalNotifications {
   /**
    * Get a scheduled notification object
    * @param notificationId The id of the notification to get
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static getScheduled(notificationId: any): Promise<Notification> { return; }
@@ -157,24 +169,28 @@ export class LocalNotifications {
   /**
    * Get a triggered notification object
    * @param notificationId The id of the notification to get
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static getTriggered(notificationId: any): Promise<Notification> { return; }
 
   /**
    * Get all notification objects
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static getAll(): Promise<Array<Notification>> { return; }
 
   /**
    * Get all scheduled notification objects
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static getAllScheduled(): Promise<Array<Notification>> { return; }
 
   /**
    * Get all triggered notification objects
+   * @returns {Promise} Returns a promise
    */
   @Cordova()
   static getAllTriggered(): Promise<Array<Notification>> { return; }
