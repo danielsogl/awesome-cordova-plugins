@@ -743,7 +743,7 @@ export class File {
       })
       .then((fe) => {
         let reader = new FileReader();
-        return new Promise((resolve, reject) => {
+        return new Promise<any>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
               resolve(reader.result);
@@ -784,7 +784,7 @@ export class File {
       })
       .then((fe) => {
         let reader = new FileReader();
-        return new Promise((resolve, reject) => {
+        return new Promise<any>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
               resolve(reader.result);
@@ -826,7 +826,7 @@ export class File {
       })
       .then((fe) => {
         let reader = new FileReader();
-        return new Promise((resolve, reject) => {
+        return new Promise<any>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
               resolve(reader.result);
@@ -867,7 +867,7 @@ export class File {
       })
       .then((fe) => {
         let reader = new FileReader();
-        return new Promise((resolve, reject) => {
+        return new Promise<any>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
               resolve(reader.result);
@@ -962,7 +962,7 @@ export class File {
    * @private
    */
   private static resolveLocalFilesystemUrl(furl: string): Promise<Entry> {
-    return new Promise((resolve, reject) => {
+    return new Promise<Entry>((resolve, reject) => {
       try {
         window.resolveLocalFileSystemURL(furl, (entry) => {
           resolve(entry);
@@ -997,7 +997,7 @@ export class File {
    * @private
    */
   private static getDirectory(fse: DirectoryEntry, dn: string, flags: Flags): Promise<DirectoryEntry> {
-    return new Promise((resolve, reject) => {
+    return new Promise<DirectoryEntry>((resolve, reject) => {
       try {
         fse.getDirectory(dn, flags, (de) => {
           resolve(de);
@@ -1016,7 +1016,7 @@ export class File {
    * @private
    */
   private static getFile(fse: DirectoryEntry, fn: string, flags: Flags): Promise<FileEntry> {
-    return new Promise((resolve, reject) => {
+    return new Promise<FileEntry>((resolve, reject) => {
       try {
         fse.getFile(fn, flags, (fe) => {
           resolve(fe);
@@ -1035,7 +1035,7 @@ export class File {
    * @private
    */
   private static remove(fe: Entry): Promise<RemoveResult> {
-    return new Promise((resolve, reject) => {
+    return new Promise<RemoveResult>((resolve, reject) => {
       fe.remove(() => {
         resolve({success: true, fileRemoved: fe});
       }, (err) => {
@@ -1049,7 +1049,7 @@ export class File {
    * @private
    */
   private static move(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
-    return new Promise((resolve, reject) => {
+    return new Promise<Entry>((resolve, reject) => {
       srce.moveTo(destdir, newName, (deste) => {
         resolve(deste);
       }, (err) => {
@@ -1063,7 +1063,7 @@ export class File {
    * @private
    */
   private static copy(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
-    return new Promise((resolve, reject) => {
+    return new Promise<Entry>((resolve, reject) => {
       srce.copyTo(destdir, newName, (deste) => {
         resolve(deste);
       }, (err) => {
@@ -1077,7 +1077,7 @@ export class File {
    * @private
    */
   private static readEntries(dr: DirectoryReader): Promise<Entry[]> {
-    return new Promise((resolve, reject) => {
+    return new Promise<Entry[]>((resolve, reject) => {
       dr.readEntries((entries) => {
         resolve(entries);
       }, (err) => {
@@ -1091,7 +1091,7 @@ export class File {
    * @private
    */
   private static rimraf(de: DirectoryEntry): Promise<RemoveResult> {
-    return new Promise((resolve, reject) => {
+    return new Promise<RemoveResult>((resolve, reject) => {
       de.removeRecursively(() => {
         resolve({success: true, fileRemoved: de});
       }, (err) => {
@@ -1105,7 +1105,7 @@ export class File {
    * @private
    */
   private static createWriter(fe: FileEntry): Promise<FileWriter> {
-    return new Promise((resolve, reject) => {
+    return new Promise<FileWriter>((resolve, reject) => {
       fe.createWriter((writer) => {
         resolve(writer);
       }, (err) => {
@@ -1118,7 +1118,7 @@ export class File {
   /**
    * @private
    */
-  private static write(writer: FileWriter, gu: string | Blob): Promise<void> {
+  private static write(writer: FileWriter, gu: string | Blob): Promise<any> {
     if (gu instanceof Blob) {
       return this.writeFileInChunks(writer, gu);
     }
@@ -1150,7 +1150,7 @@ export class File {
       writer.write(chunk);
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       writer.onerror = reject;
       writer.onwrite = () => {
         if (writtenSize < file.size) {
