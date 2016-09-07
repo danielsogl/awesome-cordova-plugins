@@ -62,6 +62,18 @@ export interface Geoposition {
   timestamp: number;
 }
 
+export interface PositionError {
+  /**
+   * A code that indicates the error that occurred
+   */
+  code: number;
+  
+  /**
+   * A message that can describe the error that occurred
+   */
+   message: string;
+}
+
 export interface GeolocationOptions {
   /**
    * Is a positive long value indicating the maximum age in milliseconds of a
@@ -140,7 +152,9 @@ export class Geolocation {
    * Observable changes.
    *
    * ```typescript
-   * var subscription = Geolocation.watchPosition().subscribe(position => {
+   * var subscription = Geolocation.watchPosition()
+   *                               .filter((p) => p.code === undefined) //Filter Out Errors
+   *                               .subscribe(position => {
    *   console.log(position.coords.longitude + ' ' + position.coords.latitude);
    * });
    *
@@ -151,10 +165,10 @@ export class Geolocation {
    * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
    * @return Returns an Observable that notifies with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or errors.
    */
-  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> {
+  static watchPosition(options?: GeolocationOptions): Observable<Geoposition | PositionError> {
     return new Observable<Geoposition>(
       (observer: any) => {
-        let watchId = navigator.geolocation.watchPosition(observer.next.bind(observer), observer.error.bind(observer), options);
+        let watchId = navigator.geolocation.watchPosition(observer.next.bind(observer), observer.next.bind(observer), options);
         return () => navigator.geolocation.clearWatch(watchId);
       }
     );
