@@ -168,7 +168,8 @@ export interface Config {
  *
  * // When device is ready :
  * platform.ready().then(() => {
- *
+ *     // IMPORTANT: BackgroundGeolocation must be called within app.ts and or before Geolocation. Otherwise the platform will not ask you for background tracking permission. 
+ * 
  *     // BackgroundGeolocation is highly configurable. See platform specific configuration options
  *     let config = {
  *             desiredAccuracy: 10,
