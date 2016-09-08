@@ -3,11 +3,12 @@
   "version": "1.3.20",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "main": "dist/index.js",
+  "module": "dist/esm/index.js",
   "files": [
     "dist"
   ],
   "dependencies": {
-    "rxjs": "^5.0.0-beta.6"
+    "@reactivex/rxjs": "^5.0.0-beta.11"
   },
   "devDependencies": {
     "browserify": "^13.0.1",
@@ -34,7 +35,7 @@
     "semver": "^5.0.1",
     "tslint": "^3.8.1",
     "tslint-ionic-rules": "0.0.5",
-    "typescript": "^1.8.10"
+    "typescript": "^2.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -42,6 +43,7 @@
     "watch": "./node_modules/.bin/tsc -w",
     "build": "npm run lint && npm run build:js && npm run build:bundle && npm run build:minify",
     "build:js": "./node_modules/.bin/tsc",
+    "build:esm": "./node_modules/.bin/tsc -p ./tsconfig-esm.json",
     "build:bundle": "./node_modules/.bin/browserify dist/index.js > dist/ionic.native.js",
     "build:minify": "./node_modules/.bin/gulp minify:dist",
     "changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
