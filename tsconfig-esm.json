@@ -5,11 +5,11 @@
     "sourceMap": true,
     "declaration": true,
     "experimentalDecorators": true,
-    "outDir": "dist/esm"
+    "outDir": "dist/esm",
+    "moduleResolution": "node"
   },
   "files": [
     "typings/es6-shim/es6-shim.d.ts",
-    "node_modules/@reactivex/rxjs/dist/es6/Rx.d.ts",
     "src/index.ts"
   ]
 }
