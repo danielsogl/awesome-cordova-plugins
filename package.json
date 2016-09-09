@@ -41,7 +41,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/gulp lint",
     "watch": "./node_modules/.bin/tsc -w",
-    "build": "npm run lint && npm run build:js && npm run build:bundle && npm run build:minify",
+    "build": "npm run lint && npm run build:js && npm run build:esm && npm run build:bundle && npm run build:minify",
     "build:js": "./node_modules/.bin/tsc",
     "build:esm": "./node_modules/.bin/tsc -p ./tsconfig-esm.json",
     "build:bundle": "./node_modules/.bin/browserify dist/index.js > dist/ionic.native.js",
