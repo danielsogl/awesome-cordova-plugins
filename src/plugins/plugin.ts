@@ -1,5 +1,5 @@
 import { get } from '../util';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from '@reactivex/rxjs';
 
 declare var window;
 declare var Promise;
