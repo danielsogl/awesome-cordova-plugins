@@ -195,6 +195,20 @@ export class LocalNotifications {
   @Cordova()
   static getAllTriggered(): Promise<Array<Notification>> { return; }
 
+  /**
+   * Register permission to show notifications if not already granted.
+   * @returns {Promise} Returns a promise
+   */
+  @Cordova()
+  static registerPermission(): Promise<boolean> { return; }
+
+  /**
+   * Informs if the app has the permission to show notifications.
+   * @returns {Promise} Returns a promise
+   */
+  @Cordova()
+  static hasPermission(): Promise<boolean> { return; }
+
 
   /**
    * Sets a callback for a specific event
