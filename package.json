@@ -2,7 +2,8 @@
   "name": "ionic-native",
   "version": "1.3.21",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
-  "main": "dist/index.js",
+  "main": "dist/es5/index.js",
+  "typings": "dist/es5/index.d.ts",
   "module": "dist/esm/index.js",
   "files": [
     "dist"
@@ -54,7 +55,7 @@
     "build": "npm run lint && npm run build:js && npm run build:esm && npm run build:bundle && npm run build:minify",
     "build:js": "tsc",
     "build:esm": "tsc -p tsconfig-esm.json",
-    "build:bundle": "browserify dist/index.js > dist/ionic.native.js",
+    "build:bundle": "browserify dist/es5/index.js > dist/ionic.native.js",
     "build:minify": "gulp minify:dist",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "plugin:create": "gulp plugin:create"
@@ -68,7 +69,6 @@
     "url": "https://github.com/driftyco/ionic-native/issues"
   },
   "homepage": "https://github.com/driftyco/ionic-native",
-  "typings": "./dist/index.d.ts",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

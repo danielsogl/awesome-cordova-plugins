@@ -5,7 +5,7 @@
     "sourceMap": true,
     "declaration": true,
     "experimentalDecorators": true,
-    "outDir": "dist",
+    "outDir": "dist/es5",
     "moduleResolution": "node"
   },
   "files": [
