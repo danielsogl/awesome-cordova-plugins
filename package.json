@@ -53,7 +53,7 @@
     "lint": "gulp lint",
     "watch": "tsc -w",
     "build": "npm run lint && npm run build:js && npm run build:esm && npm run build:bundle && npm run build:minify",
-    "build:js": "tsc",
+    "build:js": "tsc -p tsconfig-es5.json",
     "build:esm": "tsc -p tsconfig-esm.json",
     "build:bundle": "browserify dist/es5/index.js > dist/ionic.native.js",
     "build:minify": "gulp minify:dist",
