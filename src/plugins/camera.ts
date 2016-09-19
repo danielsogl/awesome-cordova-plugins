@@ -204,6 +204,6 @@ export class Camera {
   @Cordova({
     platforms: ['iOS']
   })
-  static cleanup() { };
+  static cleanup(): Promise<any> { return; };
 
 }
