@@ -24,13 +24,13 @@ import { Plugin, Cordova } from './plugin';
 export class CallNumber {
   /**
    * Calls a phone number
-   * @param numberToCall {number} The phone number to call
+   * @param numberToCall {string} The phone number to call as a string
    * @param bypassAppChooser {boolean} Set to true to bypass the app chooser and go directly to dialer
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static callNumber(numberToCall: number, bypassAppChooser: boolean): Promise<any> {
+  static callNumber(numberToCall: string, bypassAppChooser: boolean): Promise<any> {
     return;
   }
 }
