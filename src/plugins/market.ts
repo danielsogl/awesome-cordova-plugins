@@ -13,7 +13,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  plugin: '',
+  plugin: 'cordova-plugin-market',
   pluginRef: 'plugins.market',
   repo: 'https://github.com/xmartlabs/cordova-plugin-market'
 })
