@@ -188,7 +188,7 @@ export interface PushOptions {
   windows?: {};
 }
 
-export type PushEvents = 'registeration' | 'error' | 'notification';
+export type PushEvents = 'registration' | 'error' | 'notification';
 
 /**
  * @name Push
