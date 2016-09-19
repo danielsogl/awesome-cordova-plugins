@@ -288,10 +288,16 @@ export class BackgroundGeolocation {
   static isLocationEnabled(): Promise<number> { return; }
 
   /**
+   * Display app settings to change permissions
+   */
+  @Cordova({ sync: true })
+  static showAppSettings(): void { }
+
+  /**
    * Display device location settings
    */
-  @Cordova()
-  static showLocationSettings() { }
+  @Cordova({ sync: true })
+  static showLocationSettings(): void  { }
 
   /**
    * Method can be used to detect user changes in location services settings.
