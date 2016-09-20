@@ -285,9 +285,9 @@ export class BackgroundGeolocation {
    *
    * @enum {number} 
    */
-  static LocationProvider: {
-    ANDROID_DISTANCE_FILTER_PROVIDER: number,
-    ANDROID_ACTIVITY_PROVIDER: number
+  static LocationProvider: any = {
+    ANDROID_DISTANCE_FILTER_PROVIDER: 0,
+    ANDROID_ACTIVITY_PROVIDER: 1
   };
 
   /**
@@ -303,11 +303,11 @@ export class BackgroundGeolocation {
    *
    * enum {number} 
    */
-  static Accuracy: {
-    HIGH: number,
-    MEDIUM: number,
-    LOW: number,
-    PASSIVE: number
+  static Accuracy: any = {
+    HIGH: 0,
+    MEDIUM: 10,
+    LOW: 100,
+    PASSIVE: 1000
   };
 
   /** 
@@ -319,9 +319,9 @@ export class BackgroundGeolocation {
    *
    * @enum {number} 
    */
-  static Mode: {
-    BACKGROUND: number,
-    FOREGROUND: number
+  static Mode: any = {
+    BACKGROUND: 0,
+    FOREGROUND: 1
   };
 
   /**
