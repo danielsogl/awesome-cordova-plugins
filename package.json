@@ -1,6 +1,6 @@
 {
   "name": "ionic-native",
-  "version": "1.3.23",
+  "version": "1.3.24",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "main": "dist/es5/index.js",
   "typings": "dist/es5/index.d.ts",
@@ -57,7 +57,7 @@
     "build:esm": "tsc -p tsconfig-esm.json",
     "build:bundle": "browserify dist/es5/index.js > dist/ionic.native.js",
     "build:minify": "gulp minify:dist",
-    "publish": "npm run build && npm publish && bash ./scripts/bower.sh",
+    "shipit": "npm run build && npm publish && bash ./scripts/bower.sh",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "plugin:create": "gulp plugin:create"
   },
