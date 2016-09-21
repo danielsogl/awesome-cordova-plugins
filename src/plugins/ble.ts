@@ -1,5 +1,5 @@
 import { Cordova, Plugin } from './plugin';
-import { Observable } from '@reactivex/rxjs';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * @name BLE

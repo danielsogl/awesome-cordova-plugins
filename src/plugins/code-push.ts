@@ -1,5 +1,5 @@
 import { Cordova, Plugin } from './plugin';
-import { Observable } from '@reactivex/rxjs';
+import { Observable } from 'rxjs/Observable';
 
 // below are taken from
 // https://raw.githubusercontent.com/Microsoft/cordova-plugin-code-push/master/typings/codePush.d.ts

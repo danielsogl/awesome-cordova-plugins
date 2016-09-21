@@ -1,5 +1,5 @@
 import { CordovaInstance, Plugin } from './plugin';
-import { Observable } from '@reactivex/rxjs';
+import { Observable } from 'rxjs/Observable';
 
 
 declare var Media: any;

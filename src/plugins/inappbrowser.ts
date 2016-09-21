@@ -1,5 +1,5 @@
 import { Plugin, CordovaInstance } from './plugin';
-import { Observable } from '@reactivex/rxjs';
+import { Observable } from 'rxjs/Observable';
 
 declare var cordova: any;
 

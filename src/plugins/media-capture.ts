@@ -1,5 +1,5 @@
 import { Cordova, CordovaProperty, Plugin } from './plugin';
-import { Observable } from '@reactivex/rxjs';
+import { Observable } from 'rxjs/Observable';
 
 
 declare var navigator: any;

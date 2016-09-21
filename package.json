@@ -1,6 +1,6 @@
 {
   "name": "ionic-native",
-  "version": "1.3.21",
+  "version": "1.3.22",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "main": "dist/es5/index.js",
   "typings": "dist/es5/index.d.ts",
@@ -9,7 +9,7 @@
     "dist"
   ],
   "dependencies": {
-    "@reactivex/rxjs": "^5.0.0-beta.11"
+    "rxjs": "^5.0.0-beta.12"
   },
   "devDependencies": {
     "browserify": "^13.0.1",
