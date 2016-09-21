@@ -57,6 +57,7 @@
     "build:esm": "tsc -p tsconfig-esm.json",
     "build:bundle": "browserify dist/es5/index.js > dist/ionic.native.js",
     "build:minify": "gulp minify:dist",
+    "publish": "npm run build && npm publish && bash ./scripts/bower.sh",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "plugin:create": "gulp plugin:create"
   },
