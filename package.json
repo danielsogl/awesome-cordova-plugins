@@ -1,11 +1,10 @@
 {
   "name": "ionic-native",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "main": "dist/es5/index.js",
   "typings": "dist/es5/index.d.ts",
   "module": "dist/esm/index.js",
-  "typings": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -70,7 +69,6 @@
     "url": "https://github.com/driftyco/ionic-native/issues"
   },
   "homepage": "https://github.com/driftyco/ionic-native",
-  "typings": "./dist/index.d.ts",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
