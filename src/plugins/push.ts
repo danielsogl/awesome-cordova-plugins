@@ -55,6 +55,7 @@ export interface NotificationEventAdditionalData {
    */
   foreground?: boolean;
   collapse_key?: string;
+  coldstart?: boolean;
   from?: string;
   notId?: string;
 }
