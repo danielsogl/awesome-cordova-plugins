@@ -35,7 +35,7 @@ export class WebIntent {
   }
 
   @Cordova()
-  static startActivity(options: { action: any, url: string }): Promise<any> { return; }
+  static startActivity(options: { action: any, url: string, type?: string }): Promise<any> { return; }
 
   @Cordova()
   static hasExtra(extra: any): Promise<any> { return; }
