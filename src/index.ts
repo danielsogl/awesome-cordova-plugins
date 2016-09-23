@@ -207,6 +207,7 @@ TouchID,
 // Transfer,
 TextToSpeech,
 Vibration,
+VideoPlayer,
 WebIntent,
 YoutubeVideoPlayer,
 Zip
