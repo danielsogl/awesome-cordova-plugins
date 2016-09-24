@@ -43,7 +43,7 @@
     "tsify": "~1.0.4",
     "tslint": "^3.8.1",
     "tslint-ionic-rules": "0.0.5",
-    "typescript": "^1.8.10",
+    "typescript": "^2.0.1",
     "watchify": "~3.7.0"
   },
   "scripts": {
