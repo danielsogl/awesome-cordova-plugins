@@ -44,10 +44,10 @@ declare var cordova: any;
  * ```
  */
 @Plugin({
-  plugin: 'cordova-plugin-email-composer',
+  plugin: 'cordova-plugin-email',
   pluginRef: 'cordova.plugins.email',
-  repo: 'https://github.com/katzer/cordova-plugin-email-composer.git',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  repo: 'https://github.com/hypery2k/cordova-email-plugin',
+  platforms: ['Android', 'iOS']
 })
 export class EmailComposer {
 
