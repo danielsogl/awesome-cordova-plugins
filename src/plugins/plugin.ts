@@ -231,6 +231,47 @@ function wrapEventObservable(event: string): Observable<any> {
 }
 
 /**
+ * Certain plugins expect the user to override methods in the plugin. For example,
+ * window.cordova.plugins.backgroundMode.onactivate = function() { ... }.
+ *
+ * Unfortunately, this is brittle and would be better wrapped as an Observable. overrideFunction
+ * does just this.
+ */
+function overrideFunction(pluginObj: any, methodName: string, args: any[], opts: any = {}): Observable<any> {
+  return new Observable(observer => {
+
+    let pluginInstance = getPlugin(pluginObj.pluginRef);
+
+    if (!pluginInstance) {
+      // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
+      if (!window.cordova) {
+        cordovaWarn(pluginObj.name, methodName);
+        observer.error({
+          error: 'cordova_not_available'
+        });
+      }
+
+      pluginWarn(pluginObj, methodName);
+      observer.error({
+        error: 'plugin_not_installed'
+      });
+      return;
+    }
+
+    let method = pluginInstance[methodName];
+    if (!method) {
+      observer.error({
+        error: 'no_such_method'
+      });
+      observer.complete();
+      return;
+    }
+    pluginInstance[methodName] = observer.next.bind(observer);
+  });
+}
+
+
+/**
  * @private
  * @param pluginObj
  * @param methodName
@@ -363,4 +404,20 @@ export function InstanceProperty(target: any, key: string, descriptor: TypedProp
   };
 
   return descriptor;
+}
+
+/**
+ * @private
+ *
+ * Wrap a stub function in a call to a Cordova plugin, checking if both Cordova
+ * and the required plugin are installed.
+ */
+export function CordovaFunctionOverride(opts: any = {}) {
+  return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
+    return {
+      value: function(...args: any[]) {
+        return overrideFunction(this, methodName, opts);
+      }
+    };
+  };
 }

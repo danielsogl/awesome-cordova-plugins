@@ -1,4 +1,6 @@
-import { Cordova, Plugin } from './plugin';
+import { Cordova, CordovaFunctionOverride, Plugin } from './plugin';
+
+import { Observable } from 'rxjs/Observable';
 
 /**
 * @name Background Mode
@@ -80,17 +82,25 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static update(options?: Configure): void { }
+  static configure(options?: Configure): void { }
 
   /**
-  * Sets a callback for a specific event
-  * Can be used to get notified or run function when the background mode has been activated, deactivated or failed.
-  * @param {string} eventName The name of the event. Available events: activate, deactivate, failure
+  * Called when background mode is activated.
   */
-  @Cordova({
-    sync: true
-  })
-  static on(eventName: string, callback: any): void { }
+  @CordovaFunctionOverride()
+  static onactivate(): Observable<any> { return; };
+
+  /**
+  * Called when background mode is deactivated.
+  */
+  @CordovaFunctionOverride()
+  static ondeactivate(): Observable<any> { return; };
+
+  /**
+  * Called when background mode fails
+  */
+  @CordovaFunctionOverride()
+  static onfailure(): Observable<any> { return; };
 
 }
 
