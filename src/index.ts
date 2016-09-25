@@ -94,6 +94,7 @@ import { Splashscreen } from './plugins/splashscreen';
 import { SQLite } from './plugins/sqlite';
 import { StatusBar } from './plugins/statusbar';
 import { StreamingMedia } from './plugins/streaming-media';
+import { Taptic } from './plugins/taptic';
 import { ThreeDeeTouch } from './plugins/3dtouch';
 import { Toast } from './plugins/toast';
 import { TouchID } from './plugins/touchid';
@@ -142,6 +143,7 @@ export * from './plugins/safari-view-controller';
 export * from './plugins/sms';
 export * from './plugins/spinnerdialog';
 export * from './plugins/streaming-media';
+export * from './plugins/taptic';
 export * from './plugins/toast';
 export * from './plugins/twitter-connect';
 export * from './plugins/video-editor';
@@ -203,6 +205,7 @@ Sim,
 Splashscreen,
 SQLite,
 StatusBar,
+Taptic,
 TouchID,
 Transfer,
 TextToSpeech,
@@ -305,6 +308,7 @@ window['IonicNative'] = {
   SQLite,
   StatusBar,
   StreamingMedia,
+  Taptic,
   ThreeDeeTouch,
   Toast,
   TouchID,
