@@ -2,7 +2,7 @@
 [![npm](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/ionic-native)
 
 [![NPM](https://nodei.co/npm/ionic-native.png?stars&downloads)](https://nodei.co/npm/ionic-native/)
-[![NPM](https://nodei.co/npm-dl/ionic-native.png?months=6)](https://nodei.co/npm/ionic-native/)
+[![NPM](https://nodei.co/npm-dl/ionic-native.png?months=6&height=2)](https://nodei.co/npm/ionic-native/)
 
 # Ionic Native
 
