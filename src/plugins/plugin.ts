@@ -18,7 +18,7 @@ export const getPlugin = function(pluginRef: string): any {
  * @param pluginObj
  * @param method
  */
-export const pluginWarn = function(pluginObj: any, method: string) {
+export const pluginWarn = function(pluginObj: any, method?: string) {
   let pluginName = pluginObj.name, plugin = pluginObj.plugin;
   if (method) {
     console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
@@ -322,12 +322,22 @@ export function Plugin(config) {
       cls[k] = config[k];
     }
 
-    cls['installed'] = function() {
+    cls['installed'] = function(printWarning?: boolean) {
       return !!getPlugin(config.pluginRef);
     };
 
     cls['getPlugin'] = function() {
       return getPlugin(config.pluginRef);
+    };
+
+    cls['checkInstall'] = function() {
+      let pluginInstance = getPlugin(config.pluginRef);
+
+      if (!pluginInstance) {
+        pluginWarn(cls);
+        return false;
+      }
+      return true;
     };
 
     return cls;
