@@ -211,6 +211,7 @@ export class BLE {
    * Scans for BLE devices. This function operates similarly to the `startScan` function, but allows you to specify extra options (like allowing duplicate device reports).
    * @param {string[]} services  List of service UUIDs to discover, or `[]` to find all devices
    * @param options {any}
+   * @return Returns an Observable that notifies of each peripheral discovered.
    */
   @Cordova({
     observable: true,
