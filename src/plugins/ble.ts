@@ -208,6 +208,18 @@ export class BLE {
   static startScan(services: string[]): Observable<any> { return; }
 
   /**
+   * Scans for BLE devices. This function operates similarly to the `startScan` function, but allows you to specify extra options (like allowing duplicate device reports).
+   * @param {string[]} services  List of service UUIDs to discover, or `[]` to find all devices
+   * @param options {any}
+   */
+  @Cordova({
+    observable: true,
+    clearFunction: 'stopScan',
+    clearWithArgs: true
+  })
+  static startScanWithOptions(services: string[], options: {reportDuplicates?: boolean} | any): Observable<any> { return; }
+
+  /**
    * Stop a scan started by `startScan`.
    *
    * @usage
