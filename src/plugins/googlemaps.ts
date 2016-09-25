@@ -872,7 +872,7 @@ export class GoogleMapsPolygon {
  * @private
  */
 export interface GoogleMapsTileOverlayOptions {
-  titleUrilFormat?: string;
+  tileUrlFormat?: string;
   visible?: boolean;
   zIndex?: number;
   tileSize?: number;
