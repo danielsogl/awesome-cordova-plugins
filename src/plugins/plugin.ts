@@ -326,6 +326,10 @@ export function Plugin(config) {
       return !!getPlugin(config.pluginRef);
     };
 
+    cls['getPlugin'] = function() {
+      return getPlugin(config.pluginRef);
+    };
+
     return cls;
   };
 }
