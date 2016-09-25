@@ -98,6 +98,7 @@ import { ThreeDeeTouch } from './plugins/3dtouch';
 import { Toast } from './plugins/toast';
 import { TouchID } from './plugins/touchid';
 import { TextToSpeech } from './plugins/text-to-speech';
+import {ThemableBrowser} from './plugins/themable-browser';
 import { TwitterConnect } from './plugins/twitter-connect';
 import { Vibration } from './plugins/vibration';
 import { VideoEditor } from './plugins/video-editor';
@@ -142,6 +143,7 @@ export * from './plugins/safari-view-controller';
 export * from './plugins/sms';
 export * from './plugins/spinnerdialog';
 export * from './plugins/streaming-media';
+export * from './plugins/themable-browser';
 export * from './plugins/toast';
 export * from './plugins/twitter-connect';
 export * from './plugins/video-editor';
@@ -311,6 +313,7 @@ window['IonicNative'] = {
   TouchID,
   Transfer,
   TextToSpeech,
+  ThemableBrowser,
   TwitterConnect,
   VideoEditor,
   VideoPlayer,
