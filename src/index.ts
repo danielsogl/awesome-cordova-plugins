@@ -64,6 +64,7 @@ import { IsDebug } from './plugins/is-debug';
 import { Keyboard } from './plugins/keyboard';
 import { LaunchNavigator } from './plugins/launchnavigator';
 import { LocalNotifications } from './plugins/localnotifications';
+import { LocationAccuracy } from './plugins/location-accuracy';
 import { MediaCapture } from './plugins/media-capture';
 import { NativeAudio } from './plugins/native-audio';
 import { NativePageTransitions } from './plugins/native-page-transitions';
@@ -98,7 +99,7 @@ import { ThreeDeeTouch } from './plugins/3dtouch';
 import { Toast } from './plugins/toast';
 import { TouchID } from './plugins/touchid';
 import { TextToSpeech } from './plugins/text-to-speech';
-import {ThemableBrowser} from './plugins/themable-browser';
+import { ThemableBrowser } from './plugins/themable-browser';
 import { TwitterConnect } from './plugins/twitter-connect';
 import { Vibration } from './plugins/vibration';
 import { VideoEditor } from './plugins/video-editor';
@@ -188,6 +189,7 @@ Insomnia,
 Instagram,
 IsDebug,
 Keyboard,
+LocationAccuracy,
 MusicControls,
 NativeAudio,
 NativeStorage,
@@ -278,6 +280,7 @@ window['IonicNative'] = {
   Keyboard,
   LaunchNavigator,
   LocalNotifications,
+  LocationAccuracy,
   Market,
   MediaCapture,
   MediaPlugin,
