@@ -358,7 +358,7 @@ export interface AnimateCameraOptions {
  * @private
  */
 export interface CameraPosition {
-  target?: GoogleMapsLatLng | GoogleMapsLatLngBounds;
+  target?: GoogleMapsLatLng | GoogleMapsLatLngBounds | GoogleMapsLatLng[];
   zoom?: number;
   tilt?: number;
   bearing?: number;
