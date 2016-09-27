@@ -5,6 +5,7 @@ import { Cordova, Plugin } from './plugin';
  * @private
  */
 export interface CalendarOptions {
+  id?: string;
   firstReminderMinutes?: number;
   secondReminderMinutes?: number;
   recurrence?: string; // options are: 'daily', 'weekly', 'monthly', 'yearly'
@@ -351,8 +352,9 @@ export class Calendar {
     newNotes?: string,
     newStartDate?: Date,
     newEndDate?: Date,
-    options?: CalendarOptions
-    ) { return; }
+    filterOptions?: CalendarOptions,
+    newOptions?: CalendarOptions
+    ): Promise<any> { return; }
 
   /**
    * Delete an event.
