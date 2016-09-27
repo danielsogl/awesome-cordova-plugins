@@ -87,6 +87,33 @@ export const GoogleMapsAnimation = {
  *     marker.showInfoWindow();
  *   });
  * ```
+ * @interfaces
+ * AnimateCameraOptions
+ * CameraPosition
+ * MyLocation
+ * MyLocationOptions
+ * VisibleRegion
+ * GoogleMApsMarkerOptions
+ * GoogleMapsMarkerIcon
+ * GoogleMapsCircleOptions
+ * GoogleMapsPolylineOptions
+ * GoogleMapsPolygonOptions
+ * GoogleMapsTileOverlayOptions
+ * GoogleMapsGroundOverlayOptions
+ * GoogleMapsKmlOverlayOptions
+ * GeocoderRequest
+ * GeocoderResult
+ * @classes
+ * GoogleMapsMarker
+ * GoogleMapsCircle
+ * GoogleMapsPolyline
+ * GoogleMapsPolygon
+ * GoogleMapsTileOverlay
+ * GoogleMapsGroundOverlay
+ * GoogleMapsKmlOverlay
+ * GoogleMapsLatLngBounds
+ * GoogleMapsLatLng
+ * Geocoder
  */
 @Plugin({
   pluginRef: 'plugin.google.maps.Map',

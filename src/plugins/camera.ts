@@ -105,6 +105,9 @@ export interface CameraPopoverOptions {
  *  // Handle error
  * });
  * ```
+ * @interfaces
+ * CameraOptions
+ * CameraPopoverOptions
  */
 @Plugin({
   plugin: 'cordova-plugin-camera',
