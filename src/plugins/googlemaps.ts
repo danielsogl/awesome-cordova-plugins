@@ -731,7 +731,7 @@ export class GoogleMapsPolygon {
  * @private
  */
 export interface GoogleMapsTileOverlayOptions {
-  titleUrlFormat?: string;
+  tileUrlFormat?: string;
   visible?: boolean;
   zIndex?: number;
   tileSize?: number;
