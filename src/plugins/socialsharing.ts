@@ -50,7 +50,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareWithOptions(options: { message?: string, subject?: string, file?: string|string[], url?: string, chooserTitle?: string }): Promise<any> { return; }
+  static shareWithOptions(options: { message?: string, subject?: string, files?: string|string[], url?: string, chooserTitle?: string }): Promise<any> { return; }
 
   /**
    * Checks if you can share via a specific app.
