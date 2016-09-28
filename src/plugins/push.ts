@@ -134,8 +134,9 @@ export interface PushNotification {
    * successHandler gets called when background push processing is successfully completed.
    * @param successHandler
    * @param errorHandler
+   * @param id
    */
-  finish(successHandler: () => any, errorHandler: () => any): void;
+  finish(successHandler: () => any, errorHandler: () => any, id?: string): void;
 }
 
 export interface IOSPushOptions {
