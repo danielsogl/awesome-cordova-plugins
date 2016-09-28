@@ -900,6 +900,7 @@ export class GoogleMapsLatLng {
  */
 export interface GeocoderRequest {
   address?: string;
+  bounds?: GoogleMapsLatLng[];
   position?: { lat: number; lng: number };
 }
 /**
