@@ -17,8 +17,8 @@ import { Plugin, Cordova } from './plugin';
  */
 @Plugin({
   plugin: 'cordova-plugin-powermanagement-orig',
-  pluginRef: 'https://github.com/Viras-/cordova-plugin-powermanagement',
-  repo: 'powerManagement'
+  pluginRef: 'powerManagement',
+  repo: 'https://github.com/Viras-/cordova-plugin-powermanagement'
 })
 export class PowerManagement {
   /**
