@@ -94,6 +94,7 @@ import { SpinnerDialog } from './plugins/spinnerdialog';
 import { Splashscreen } from './plugins/splashscreen';
 import { SQLite } from './plugins/sqlite';
 import { StatusBar } from './plugins/statusbar';
+import { Stepcounter } from './plugins/stepcounter';
 import { StreamingMedia } from './plugins/streaming-media';
 import { ThreeDeeTouch } from './plugins/3dtouch';
 import { Toast } from './plugins/toast';
@@ -208,6 +209,7 @@ Sim,
 Splashscreen,
 SQLite,
 StatusBar,
+Stepcounter,
 TouchID,
 Transfer,
 TextToSpeech,
@@ -310,6 +312,7 @@ window['IonicNative'] = {
   Splashscreen,
   SQLite,
   StatusBar,
+  Stepcounter,
   StreamingMedia,
   ThreeDeeTouch,
   Toast,
