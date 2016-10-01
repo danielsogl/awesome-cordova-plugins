@@ -1,6 +1,4 @@
-import { CordovaInstance, Plugin } from './plugin';
-import { Observable } from 'rxjs/Observable';
-
+import {CordovaInstance, Plugin, getPlugin, pluginWarn} from './plugin';
 
 declare var Media: any;
 
@@ -69,11 +67,12 @@ export interface MediaError {
  *
  * ```
  */
-@Plugin({
+let pluginMeta = {
   repo: 'https://github.com/apache/cordova-plugin-media',
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media'
-})
+};
+@Plugin(pluginMeta)
 export class MediaPlugin {
 
   // Constants
@@ -127,9 +126,13 @@ export class MediaPlugin {
    * @param onStatusUpdate {Function} A callback function to be invoked when the status of the file changes
    */
   constructor(src: string, onStatusUpdate?: Function) {
-    this.init = new Promise<any>((resolve, reject) => {
-      this._objectInstance = new Media(src, resolve, reject, onStatusUpdate);
-    });
+    if (!!getPlugin('Media')) {
+      this.init = new Promise<any>((resolve, reject) => {
+        this._objectInstance = new Media(src, resolve, reject, onStatusUpdate);
+      });
+    } else {
+      pluginWarn(pluginMeta);
+    }
   }
 
   /**
