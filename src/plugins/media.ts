@@ -118,19 +118,17 @@ export class MediaPlugin {
 
   // Properties
   private _objectInstance: any;
-  status: Observable<any>;
   init: Promise<any>;
 
   // Methods
   /**
    * Open a media file
    * @param src {string} A URI containing the audio content.
+   * @param onStatusUpdate {Function} A callback function to be invoked when the status of the file changes
    */
-  constructor(src: string) {
+  constructor(src: string, onStatusUpdate?: Function) {
     this.init = new Promise<any>((resolve, reject) => {
-      this.status = new Observable((observer) => {
-        this._objectInstance = new Media(src, resolve, reject, observer.next.bind(observer));
-      });
+      this._objectInstance = new Media(src, resolve, reject, onStatusUpdate);
     });
   }
 
