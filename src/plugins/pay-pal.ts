@@ -16,6 +16,9 @@ import { Plugin, Cordova } from './plugin';
  *   .catch(onError);
  *
  * ```
+ * @interfaces
+ * PayPalEnvironment
+ * @classes
  */
 @Plugin({
   plugin: 'com.paypal.cordova.mobilesdk',
@@ -84,60 +87,105 @@ export interface PayPalEnvironment {
   PayPalEnvironmentProduction: string;
   PayPalEnvironmentSandbox: string;
 }
-/**
- * @private
- */
-export declare class PayPalPayment {
+export declare var PayPalPayment: {
   /**
    * Convenience constructor.
    * Returns a PayPalPayment with the specified amount, currency code, and short description.
    * @param {String} amount: The amount of the payment.
    * @param {String} currencyCode: The ISO 4217 currency for the payment.
-   * @param {String} shortDescription: A short descripton of the payment.
+   * @param {String} shortDescription: A short description of the payment.
    * @param {String} intent: "Sale" for an immediate payment.
    */
-  new(amount: string, currencyCode: string, shortDescription: string, intent: string);
-
+  new(amount: string, currencyCode: string, shortDescription: string, intent: string): PayPalPayment;
+};
+/**
+ * @private
+ */
+export interface PayPalPayment {
   /**
-   * Optional invoice number, for your tracking purposes. (up to 256 characters)
-   * @param {String} invoiceNumber: The invoice number for the payment.
+   * The amount of the payment.
    */
-  invoiceNumber(invoiceNumber: string): void;
-
+  amount: string;
   /**
-   * Optional text, for your tracking purposes. (up to 256 characters)
-   * @param {String} custom: The custom text for the payment.
+   * The ISO 4217 currency for the payment.
    */
-  custom(custom: string): void;
-
+  currencyCode: string;
   /**
-   * Optional text which will appear on the customer's credit card statement. (up to 22 characters)
-   * @param {String} softDescriptor: credit card text for payment
+   * A short description of the payment.
    */
-  softDescriptor(softDescriptor: string): void;
-
+  shortDescription: string;
+  /**
+   * "Sale" for an immediate payment.
+   */
+  intent: string;
   /**
    * Optional Build Notation code ("BN code"), obtained from partnerprogram@paypal.com,
    * for your tracking purposes.
-   * @param {String} bnCode: bnCode for payment
    */
-  bnCode(bnCode: string): void;
+  bnCode: string;
+  /**
+   * Optional invoice number, for your tracking purposes. (up to 256 characters)
+   */
+  invoiceNumber: string;
 
   /**
-   * Optional array of PayPalItem objects. @see PayPalItem
-   * @note If you provide one or more items, be sure that the various prices correctly
-   * sum to the payment `amount` or to `paymentDetails.subtotal`.
-   * @param items {Array<PayPalItem>} Optional
+   * Optional text, for your tracking purposes. (up to 256 characters)
    */
-  items(items?: any): void;
+  custom: string;
+
+  /**
+   * Optional text which will appear on the customer's credit card statement. (up to 22 characters)
+   */
+  softDescriptor: string;
+
+  /**
+   * Optional array of PayPalItem objects.
+   */
+  items: string;
 
   /**
    * Optional customer shipping address, if your app wishes to provide this to the SDK.
-   * @note make sure to set `payPalShippingAddressOption` in PayPalConfiguration to 1 or 3.
-   * @param {PayPalShippingAddress} shippingAddress: PayPalShippingAddress object
    */
-  shippingAddress(shippingAddress: PayPalShippingAddress): void;
+  shippingAddress: string;
 }
+
+export interface PayPalItem {
+  name: string;
+  quantity: number;
+  price: string;
+  currency: string;
+  sku: string;
+}
+
+export declare var PayPalItem: {
+  /**
+   * The PayPalItem class defines an optional itemization for a payment.
+   * @see https://developer.paypal.com/docs/api/#item-object for more details.
+   * @param {String} name: Name of the item. 127 characters max
+   * @param {Number} quantity: Number of units. 10 characters max.
+   * @param {String} price: Unit price for this item 10 characters max.
+   * May be negative for "coupon" etc
+   * @param {String} currency: ISO standard currency code.
+   * @param {String} sku: The stock keeping unit for this item. 50 characters max (optional)
+   */
+  new(name: string, quantity: number, price: string, currency: string, sku: string): PayPalItem;
+};
+
+export interface PayPalPaymentDetails {
+  subtotal: string;
+  shipping: string;
+  tax: string;
+}
+
+export declare var PayPalPaymentDetails: {
+  /**
+   * The PayPalPaymentDetails class defines optional amount details.
+   * @param {String} subtotal: Sub-total (amount) of items being paid for. 10 characters max with support for 2 decimal places.
+   * @param {String} shipping: Amount charged for shipping. 10 characters max with support for 2 decimal places.
+   * @param {String} tax: Amount charged for tax. 10 characters max with support for 2 decimal places.
+   */
+  new(subtotal: string, shipping: string, tax: string): PayPalPaymentDetails;
+};
 
 export interface PayPalConfigurationOptions {
   defaultUserEmail?: string;
@@ -159,17 +207,20 @@ export interface PayPalConfigurationOptions {
 /**
  * @private
  */
-export declare class PayPalConfiguration {
+export declare var PayPalConfiguration: {
   /**
    * You use a PayPalConfiguration object to configure many aspects of how the SDK behaves.
    * see defaults for options available
    */
-  new(options: PayPalConfigurationOptions);
+  new(options: PayPalConfigurationOptions): PayPalConfiguration;
+};
+export interface PayPalConfiguration {
+
 }
 /**
  * @private
  */
-export declare class PayPalShippingAddress {
+export declare var PayPalShippingAddress: {
   /**
    * See the documentation of the individual properties for more detail.
    * @param {String} recipientName: Name of the recipient at this address. 50 characters max.
@@ -180,5 +231,14 @@ export declare class PayPalShippingAddress {
    * @param {String} postalCode: ZIP code or equivalent is usually required for countries that have them. 20 characters max. Required in certain countries.
    * @param {String} countryCode: 2-letter country code. 2 characters max.
    */
-  new(recipientName: string, line1: string, line2: string, city: string, state: string, postalCode: string, countryCode: string);
+  new(recipientName: string, line1: string, line2: string, city: string, state: string, postalCode: string, countryCode: string): PayPalShippingAddress;
+};
+export interface PayPalShippingAddress {
+  recipientName: string;
+  line1: string;
+  line2: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  countryCode: string;
 }
