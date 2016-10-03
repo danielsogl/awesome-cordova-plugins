@@ -60,7 +60,7 @@ export const GoogleMapsAnimation = {
  * let map = new GoogleMap(mapElement);
  *
  * // listen to MAP_READY event
- * map.one(GoogleMapsEvent.MAP_READY).subscribe(() => console.log('Map is ready!'));
+ * map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
  *
  *
  * // create LatLng object
