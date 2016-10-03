@@ -18,7 +18,12 @@ import { Plugin, Cordova } from './plugin';
  * ```
  * @interfaces
  * PayPalEnvironment
- * @classes
+ * PayPalPayment
+ * PayPAlItem
+ * PayPalPaymentDetails
+ * PayPalConfiguration
+ * PayPalConfigurationOptions
+ * PayPalShippingAddress
  */
 @Plugin({
   plugin: 'com.paypal.cordova.mobilesdk',
