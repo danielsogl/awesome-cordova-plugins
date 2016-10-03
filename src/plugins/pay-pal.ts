@@ -323,9 +323,7 @@ export declare var PayPalConfiguration: {
    */
   new(options: PayPalConfigurationOptions): PayPalConfiguration;
 };
-/**
- * @private
- */
+
 export interface PayPalConfiguration {
   defaultUserEmail: string;
   defaultUserPhoneCountryCode: string;
@@ -359,9 +357,7 @@ export declare var PayPalShippingAddress: {
    */
   new(recipientName: string, line1: string, line2: string, city: string, state: string, postalCode: string, countryCode: string): PayPalShippingAddress;
 };
-/**
- * @private
- */
+
 export interface PayPalShippingAddress {
   /**
    * Name of the recipient at this address. 50 characters max.
