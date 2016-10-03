@@ -12,7 +12,7 @@ import {Plugin, Cordova} from './plugin';
  *
  *   if(canRequest) {
  *     // the accuracy option will be ignored by iOS
- *     LocationAccuracy.request(LocaitonAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+ *     LocationAccuracy.request(LocationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
  *       () => console.log('Request successful'),
  *       error => console.log('Error requesting location permissions', error)
  *     );
