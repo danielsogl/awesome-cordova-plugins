@@ -1,3 +1,33 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/driftyco/ionic-native/compare/v2.0.3...v2.1.0) (2016-10-03)
+
+
+### Bug Fixes
+
+* **calendar:** fixed modifyEventWithOptions and related interface ([80ff2f3](https://github.com/driftyco/ionic-native/commit/80ff2f3))
+* **googlemaps:** CameraPosition target can now be GoogleMapsLatLng[] ([#587](https://github.com/driftyco/ionic-native/issues/587)) ([8d21f5f](https://github.com/driftyco/ionic-native/commit/8d21f5f))
+* **googlemaps:** typo in GoogleMapsTileOverlayOptions ([#589](https://github.com/driftyco/ionic-native/issues/589)) ([be2c198](https://github.com/driftyco/ionic-native/commit/be2c198))
+* **isdebug:** export IsDebug class ([#578](https://github.com/driftyco/ionic-native/issues/578)) ([c573332](https://github.com/driftyco/ionic-native/commit/c573332))
+* **media:** add status as a parmeter instead of property of instance ([58a99a1](https://github.com/driftyco/ionic-native/commit/58a99a1))
+* **paypal:** fix typings, add PayPalItem and PayPalPaymentDetails ([5d13ba0](https://github.com/driftyco/ionic-native/commit/5d13ba0))
+* **power-management:** fix repo and pluginref ([#603](https://github.com/driftyco/ionic-native/issues/603)) ([d6060a9](https://github.com/driftyco/ionic-native/commit/d6060a9))
+* **push:** Add support for passing notification id into finish ([#600](https://github.com/driftyco/ionic-native/issues/600)) ([16f05c3](https://github.com/driftyco/ionic-native/commit/16f05c3))
+* **social-sharing:** shareWithOptions method signature ([#598](https://github.com/driftyco/ionic-native/issues/598)) ([2ed84b1](https://github.com/driftyco/ionic-native/commit/2ed84b1)), closes [/github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/blob/master/src/android/nl/xservices/plugins/SocialSharing.java#L209](https://github.com//github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/blob/master/src/android/nl/xservices/plugins/SocialSharing.java/issues/L209)
+
+
+### Features
+
+* **ble:** add startScanWithOptions ([79f0a3f](https://github.com/driftyco/ionic-native/commit/79f0a3f)), closes [#539](https://github.com/driftyco/ionic-native/issues/539)
+* **googlemaps:** support bounds in Geocoder ([#599](https://github.com/driftyco/ionic-native/issues/599)) ([66e9e46](https://github.com/driftyco/ionic-native/commit/66e9e46))
+* **location-accuracy:** add location accuracy plugin ([#583](https://github.com/driftyco/ionic-native/issues/583)) ([60b7c74](https://github.com/driftyco/ionic-native/commit/60b7c74)), closes [#484](https://github.com/driftyco/ionic-native/issues/484)
+* **plugin:** add getPlugin to plugin interface. Fixes [#582](https://github.com/driftyco/ionic-native/issues/582) ([d45a2b5](https://github.com/driftyco/ionic-native/commit/d45a2b5))
+* **plugin:** checkInstall w/ warning msg ([47112c7](https://github.com/driftyco/ionic-native/commit/47112c7))
+* **stepcounter:** add stepcounter plugin ([#607](https://github.com/driftyco/ionic-native/issues/607)) ([a99b753](https://github.com/driftyco/ionic-native/commit/a99b753))
+* **themable-browser:** add ThemableBrowser plugin ([b9151bc](https://github.com/driftyco/ionic-native/commit/b9151bc)), closes [#549](https://github.com/driftyco/ionic-native/issues/549)
+* **themable-browser:** add ThemableBrowser plugin ([972d63b](https://github.com/driftyco/ionic-native/commit/972d63b)), closes [#549](https://github.com/driftyco/ionic-native/issues/549)
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/driftyco/ionic-native/compare/v1.3.21...v2.0.3) (2016-09-24)
 
