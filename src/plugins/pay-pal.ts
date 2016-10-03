@@ -21,7 +21,6 @@ import { Plugin, Cordova } from './plugin';
  * PayPalPayment
  * PayPAlItem
  * PayPalPaymentDetails
- * PayPalConfiguration
  * PayPalConfigurationOptions
  * PayPalShippingAddress
  */
@@ -155,10 +154,25 @@ export interface PayPalPayment {
 }
 
 export interface PayPalItem {
+  /**
+   * Name of the item. 127 characters max
+   */
   name: string;
+  /**
+   * Number of units. 10 characters max.
+   */
   quantity: number;
+  /**
+   * Unit price for this item 10 characters max.
+   */
   price: string;
+  /**
+   * ISO standard currency code.
+   */
   currency: string;
+  /**
+   * The stock keeping unit for this item. 50 characters max (optional)
+   */
   sku: string;
 }
 
