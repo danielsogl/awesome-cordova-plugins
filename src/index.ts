@@ -107,6 +107,7 @@ import { VideoEditor } from './plugins/video-editor';
 import { VideoPlayer } from './plugins/video-player';
 import { WebIntent } from './plugins/webintent';
 import { YoutubeVideoPlayer } from './plugins/youtube-video-player';
+import { ZBar } from './plugins/z-bar';
 import { Zip } from './plugins/zip';
 export * from './plugins/3dtouch';
 export * from './plugins/actionsheet';
@@ -212,6 +213,7 @@ export * from './plugins/video-editor';
 export * from './plugins/video-player';
 export * from './plugins/webintent';
 export * from './plugins/youtube-video-player';
+export * from './plugins/z-bar';
 export * from './plugins/zip';
 
 // Window export to use outside of a module loading system
@@ -319,6 +321,7 @@ window['IonicNative'] = {
   Vibration,
   WebIntent,
   YoutubeVideoPlayer,
+  ZBar,
   Zip
 };
 
