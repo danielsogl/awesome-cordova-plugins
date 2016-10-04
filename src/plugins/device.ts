@@ -1,11 +1,12 @@
 import { CordovaProperty, Plugin } from './plugin';
 
 
-declare var window: {
-  device: Device
-};
+declare var window: any;
 
-export interface Device {
+/**
+ * @private
+ */
+export interface IDevice {
   /** Get the version of Cordova running on the device. */
   cordova: string;
   /**
@@ -53,6 +54,6 @@ export class Device {
    * @returns {Object} The device object.
    */
   @CordovaProperty
-  static get device() { return window.device; }
+  static device: IDevice;
 
 }

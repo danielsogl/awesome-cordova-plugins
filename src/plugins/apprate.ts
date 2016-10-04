@@ -56,7 +56,7 @@ export class AppRate {
    * See table below for options
    */
   @CordovaProperty
-  static get preferences() { return window.AppRate.preferences; }
+  static preferences;
 
   /**
    * Prompts the user for rating

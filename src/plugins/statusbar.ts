@@ -116,6 +116,6 @@ export class StatusBar {
    * Whether the StatusBar is currently visible or not.
    */
   @CordovaProperty
-  static get isVisible() { return window.StatusBar.isVisible; }
+  static isVisible: boolean;
 
 }

@@ -32,27 +32,21 @@ export class MediaCapture {
    * @returns {ConfigurationData[]}
    */
   @CordovaProperty
-  static get supportedImageModes(): ConfigurationData[] {
-    return <ConfigurationData[]>navigator.device.capture.supportedImageModes;
-  }
+  static supportedImageModes: ConfigurationData[];
 
   /**
    * The recording image sizes and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
   @CordovaProperty
-  static get supportedAudioModes(): ConfigurationData[] {
-    return <ConfigurationData[]>navigator.device.capture.supportedAudioModes;
-  }
+  static supportedAudioModes: ConfigurationData[];
 
   /**
    * The recording video resolutions and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
   @CordovaProperty
-  static get supportedVideoModes(): ConfigurationData[] {
-    return <ConfigurationData[]>navigator.device.capture.supportedVideoModes;
-  }
+  static supportedVideoModes: ConfigurationData[];
 
   /**
    * Start the audio recorder application and return information about captured audio clip files.

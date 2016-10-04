@@ -381,24 +381,38 @@ export function CordovaInstance(opts: any = {}) {
  *
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
-export function CordovaProperty(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  let originalMethod = descriptor.get;
+export function CordovaProperty(target: Function, key: string) {
+  if (delete(this[key])){
 
-  descriptor.get = function(...args: any[]) {
-    if (!window.cordova) {
-      cordovaWarn(this.name, null);
-      return {};
-    }
-    let pluginObj: any = this;
-    let pluginInstance = getPlugin(pluginObj.pluginRef);
-    if (!pluginInstance) {
-      pluginWarn(this, key);
-      return {};
-    }
-    return originalMethod.apply(this, args);
-  };
+    let exists: Function = function(): boolean {
+      if(!window.cordova) {
+        cordovaWarn(this.name, null);
+        return false;
+      }
+      let pluginInstance = getPlugin(this.pluginRef);
+      if (!pluginInstance) {
+        pluginWarn(this, key);
+        return false;
+      }
+      return true;
+    };
 
-  return descriptor;
+    Object.defineProperty(target, key, {
+      get: function() {
+        if (exists) {
+          return this.pluginRef[key];
+        } else {
+          return {};
+        }
+      },
+      set: function(value) {
+        if (exists) {
+          this.pluginRef[key] = value;
+        }
+      }
+    });
+
+  }
 }
 
 /**
