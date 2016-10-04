@@ -382,10 +382,10 @@ export function CordovaInstance(opts: any = {}) {
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
 export function CordovaProperty(target: Function, key: string) {
-  if (delete(this[key])){
+  if (delete (this[key])) {
 
     let exists: Function = function(): boolean {
-      if(!window.cordova) {
+      if (!window.cordova) {
         cordovaWarn(this.name, null);
         return false;
       }
@@ -430,7 +430,7 @@ export function InstanceProperty(target: any, key: string) {
       set: function(value){
         this._objectInstance[key] = value;
       }
-    })
+    });
   }
 }
 
