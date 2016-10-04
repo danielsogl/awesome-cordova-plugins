@@ -382,37 +382,33 @@ export function CordovaInstance(opts: any = {}) {
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
 export function CordovaProperty(target: Function, key: string) {
-  if (delete (this[key])) {
+  let exists: Function = function(): boolean {
+    if (!window.cordova) {
+      cordovaWarn(this.name, null);
+      return false;
+    }
+    let pluginInstance = getPlugin(this.pluginRef);
+    if (!pluginInstance) {
+      pluginWarn(this, key);
+      return false;
+    }
+    return true;
+  };
 
-    let exists: Function = function(): boolean {
-      if (!window.cordova) {
-        cordovaWarn(this.name, null);
-        return false;
+  Object.defineProperty(target, key, {
+    get: function() {
+      if (exists) {
+        return this.pluginRef[key];
+      } else {
+        return {};
       }
-      let pluginInstance = getPlugin(this.pluginRef);
-      if (!pluginInstance) {
-        pluginWarn(this, key);
-        return false;
+    },
+    set: function(value) {
+      if (exists) {
+        this.pluginRef[key] = value;
       }
-      return true;
-    };
-
-    Object.defineProperty(target, key, {
-      get: function() {
-        if (exists) {
-          return this.pluginRef[key];
-        } else {
-          return {};
-        }
-      },
-      set: function(value) {
-        if (exists) {
-          this.pluginRef[key] = value;
-        }
-      }
-    });
-
-  }
+    }
+  });
 }
 
 /**
@@ -422,16 +418,14 @@ export function CordovaProperty(target: Function, key: string) {
  * @constructor
  */
 export function InstanceProperty(target: any, key: string) {
-  if (delete this[key]) {
-    Object.defineProperty(target, key, {
-      get: function(){
-        return this._objectInstance[key];
-      },
-      set: function(value){
-        this._objectInstance[key] = value;
-      }
-    });
-  }
+  Object.defineProperty(target, key, {
+    get: function(){
+      return this._objectInstance[key];
+    },
+    set: function(value){
+      this._objectInstance[key] = value;
+    }
+  });
 }
 
 /**
