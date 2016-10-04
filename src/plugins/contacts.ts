@@ -1,9 +1,11 @@
 import { Cordova, CordovaInstance, InstanceProperty, Plugin } from './plugin';
 
-
 declare var window: any,
   navigator: any;
 
+/**
+ * @private
+ */
 export interface IContactProperties {
   /** A globally unique identifier. */
   id?: string;
@@ -75,6 +77,9 @@ export class Contact implements IContactProperties {
   save(): Promise<any> { return; }
 }
 
+/**
+ * @private
+ */
 interface IContactError {
   /** Error code */
   code: number;
@@ -82,6 +87,9 @@ interface IContactError {
   message: string;
 }
 
+/**
+ * @private
+ */
 declare var ContactError: {
   new (code: number): IContactError;
   UNKNOWN_ERROR: number;
@@ -186,13 +194,21 @@ export class ContactAddress implements IContactAddress {
     this._objectInstance = new window.ContactAddress(pref, type, formatted, streetAddress, locality, region, postalCode, country);
   }
 
+  /** Set to true if this ContactAddress contains the user's preferred value. */
   @InstanceProperty get pref(): boolean { return; }
+  /** A string indicating what type of field this is, home for example. */
   @InstanceProperty get type(): string { return; }
+  /** The full address formatted for display. */
   @InstanceProperty get formatted(): string { return; }
+  /** The full street address. */
   @InstanceProperty get streetAddress(): string { return; }
+  /** The city or locality. */
   @InstanceProperty get locality(): string { return; }
+  /** The state or region. */
   @InstanceProperty get region(): string { return; }
+  /** The zip code or postal code. */
   @InstanceProperty get postalCode(): string { return; }
+  /** The country name. */
   @InstanceProperty get country(): string { return; }
 }
 
@@ -217,10 +233,15 @@ export class ContactOrganization implements IContactOrganization {
   constructor() {
     this._objectInstance = new window.ContactOrganization();
   }
+  /** Set to true if this ContactOrganization contains the user's preferred value. */
   @InstanceProperty get pref(): boolean { return; }
+  /** A string that indicates what type of field this is, home for example. */
   @InstanceProperty get type(): string { return; }
+  /** The name of the organization. */
   @InstanceProperty get name(): string { return; }
+  /** The department the contract works for. */
   @InstanceProperty get department(): string { return; }
+  /** The contact's title at the organization. */
   @InstanceProperty get title(): string { return; }
 }
 
@@ -232,6 +253,10 @@ export interface IContactFindOptions {
   multiple?: boolean;
   /* Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields. */
   desiredFields?: string[];
+  /**
+   * (Android only): Filters the search to only return contacts with a phone number informed.
+   */
+  hasPhoneNumber?: boolean;
 }
 
 /**
@@ -244,9 +269,24 @@ export class ContactFindOptions implements IContactFindOptions {
     this._objectInstance = new window.ContactFindOptions();
   }
 
+  /**
+   * The search string used to find navigator.contacts. (Default: "")
+   */
   @InstanceProperty get filter(): string { return; }
+
+  /**
+   * Determines if the find operation returns multiple navigator.contacts. (Default: false)
+   */
   @InstanceProperty get multiple(): boolean { return; }
+
+  /**
+   * Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields.
+   */
   @InstanceProperty get desiredFields(): any { return; }
+
+  /**
+   * (Android only): Filters the search to only return contacts with a phone number informed.
+   */
   @InstanceProperty get hasPhoneNumber(): boolean { return; }
 }
 
@@ -268,8 +308,12 @@ export class ContactFindOptions implements IContactFindOptions {
  *   (error: any) => console.error('Error saving contact.', error)
  * );
  * ```
- *
- *
+ * @interfaces
+ * IContactProperties
+ * @classes
+ * ContactFindOptions
+ * ContactOrganization
+ * ContactAddress
  */
 @Plugin({
   plugin: 'cordova-plugin-contacts',
