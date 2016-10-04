@@ -109,113 +109,110 @@ import { WebIntent } from './plugins/webintent';
 import { YoutubeVideoPlayer } from './plugins/youtube-video-player';
 import { Zip } from './plugins/zip';
 export * from './plugins/3dtouch';
+export * from './plugins/actionsheet';
+export * from './plugins/admob';
+export * from './plugins/android-fingerprint-auth';
+export * from './plugins/appavailability';
+export * from './plugins/apprate';
+export * from './plugins/appversion';
 export * from './plugins/background-geolocation';
 export * from './plugins/backgroundmode';
+export * from './plugins/badge';
+export * from './plugins/barcodescanner';
+export * from './plugins/base64togallery';
 export * from './plugins/batterystatus';
+export * from './plugins/ble';
+export * from './plugins/bluetoothserial';
+export * from './plugins/brightness';
 export * from './plugins/calendar';
+export * from './plugins/call-number';
 export * from './plugins/camera';
+export * from './plugins/camera-preview';
 export * from './plugins/card-io';
+export * from './plugins/clipboard';
 export * from './plugins/code-push';
 export * from './plugins/contacts';
+export * from './plugins/crop';
 export * from './plugins/datepicker';
+export * from './plugins/dbmeter';
+export * from './plugins/deeplinks';
 export * from './plugins/device';
+export * from './plugins/deviceaccounts';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
+export * from './plugins/diagnostic';
+export * from './plugins/dialogs';
+export * from './plugins/emailcomposer';
+export * from './plugins/estimote-beacons';
 export * from './plugins/facebook';
 export * from './plugins/file';
+export * from './plugins/file-chooser';
+export * from './plugins/file-opener';
 export * from './plugins/filetransfer';
+export * from './plugins/flashlight';
+export * from './plugins/geofence';
 export * from './plugins/geolocation';
+export * from './plugins/globalization';
+export * from './plugins/google-plus';
+export * from './plugins/googleanalytics';
 export * from './plugins/googlemaps';
+export * from './plugins/hotspot';
 export * from './plugins/httpd';
 export * from './plugins/ibeacon';
 export * from './plugins/imagepicker';
 export * from './plugins/imageresizer';
 export * from './plugins/inappbrowser';
+export * from './plugins/inapppurchase';
+export * from './plugins/insomnia';
+export * from './plugins/instagram';
+export * from './plugins/is-debug';
+export * from './plugins/keyboard';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
-export * from './plugins/nfc';
+export * from './plugins/location-accuracy';
+export * from './plugins/market';
 export * from './plugins/media';
 export * from './plugins/media-capture';
 export * from './plugins/mixpanel';
-export * from './plugins/pay-pal';
+export * from './plugins/music-controls';
+export * from './plugins/native-audio';
 export * from './plugins/native-page-transitions';
+export * from './plugins/nativestorage';
+export * from './plugins/network';
+export * from './plugins/nfc';
+export * from './plugins/onesignal';
+export * from './plugins/pay-pal';
+export * from './plugins/photo-viewer';
+export * from './plugins/pin-dialog';
+export * from './plugins/plugin';
+export * from './plugins/power-management';
 export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
+export * from './plugins/screen-orientation';
+export * from './plugins/screenshot';
+export * from './plugins/securestorage';
+export * from './plugins/shake';
+export * from './plugins/sim';
 export * from './plugins/sms';
+export * from './plugins/socialsharing';
 export * from './plugins/spinnerdialog';
+export * from './plugins/splashscreen';
+export * from './plugins/sqlite';
+export * from './plugins/statusbar';
+export * from './plugins/stepcounter';
 export * from './plugins/streaming-media';
+export * from './plugins/text-to-speech';
 export * from './plugins/themable-browser';
 export * from './plugins/toast';
+export * from './plugins/touchid';
 export * from './plugins/twitter-connect';
+export * from './plugins/vibration';
 export * from './plugins/video-editor';
 export * from './plugins/video-player';
-export {
-ActionSheet,
-AdMob,
-AndroidFingerprintAuth,
-AppAvailability,
-AppRate,
-AppVersion,
-Badge,
-BarcodeScanner,
-Base64ToGallery,
-Brightness,
-BLE,
-BluetoothSerial,
-CallNumber,
-CameraPreview,
-Clipboard,
-Crop,
-DBMeter,
-Deeplinks,
-DeviceAccounts,
-Dialogs,
-Diagnostic,
-EmailComposer,
-EstimoteBeacons,
-FileChooser,
-FileOpener,
-Flashlight,
-Geofence,
-Globalization,
-GooglePlus,
-GoogleAnalytics,
-Hotspot,
-InAppPurchase,
-Insomnia,
-Instagram,
-IsDebug,
-Keyboard,
-LocationAccuracy,
-MusicControls,
-NativeAudio,
-NativeStorage,
-Network,
-Market,
-OneSignal,
-PhotoViewer,
-ScreenOrientation,
-PinDialog,
-PowerManagement,
-Screenshot,
-SecureStorage,
-Shake,
-SocialSharing,
-Sim,
-Splashscreen,
-SQLite,
-StatusBar,
-Stepcounter,
-TouchID,
-TextToSpeech,
-Vibration,
-WebIntent,
-YoutubeVideoPlayer,
-Zip
-}
-
-export * from './plugins/plugin';
+export * from './plugins/webintent';
+export * from './plugins/youtube-video-player';
+export * from './plugins/zip';
 
 // Window export to use outside of a module loading system
 window['IonicNative'] = {
@@ -272,6 +269,7 @@ window['IonicNative'] = {
   ImageResizer,
   InAppBrowser,
   InAppPurchase,
+  Insomnia,
   Instagram,
   IsDebug,
   Keyboard,
