@@ -42,20 +42,20 @@ export interface IContactProperties {
  */
 export class Contact implements IContactProperties {
   private _objectInstance: any;
-  @InstanceProperty get id(): string { return; }
-  @InstanceProperty get displayName(): string { return; }
-  @InstanceProperty get name(): IContactName {return; }
-  @InstanceProperty get nickname(): string { return; }
-  @InstanceProperty get phoneNumbers(): IContactField[] { return; }
-  @InstanceProperty get emails(): IContactField[] { return; }
-  @InstanceProperty get addresses(): IContactAddress[] { return; }
-  @InstanceProperty get ims(): IContactField[] { return; }
-  @InstanceProperty get organizations(): IContactOrganization[] { return; }
-  @InstanceProperty get birthday(): Date { return; }
-  @InstanceProperty get note(): string { return; }
-  @InstanceProperty get photos(): IContactField[] { return; }
-  @InstanceProperty get categories(): IContactField[] { return; }
-  @InstanceProperty get urls(): IContactField[] { return; }
+  @InstanceProperty id: string;
+  @InstanceProperty displayName: string;
+  @InstanceProperty name: IContactName;
+  @InstanceProperty nickname: string;
+  @InstanceProperty phoneNumbers: IContactField[];
+  @InstanceProperty emails: IContactField[];
+  @InstanceProperty addresses: IContactAddress[];
+  @InstanceProperty ims: IContactField[];
+  @InstanceProperty organizations: IContactOrganization[];
+  @InstanceProperty birthday: Date;
+  @InstanceProperty note: string;
+  @InstanceProperty photos: IContactField[];
+  @InstanceProperty categories: IContactField[];
+  @InstanceProperty urls: IContactField[];
 
   constructor() {
     this._objectInstance = navigator.contacts.create();
@@ -126,12 +126,12 @@ export class ContactName implements IContactName {
     this._objectInstance = new window.ContactName(formatted, familyName, givenName, middleName, honorificPrefix, honorificSuffix);
   }
 
-  @InstanceProperty get formatted(): string { return; }
-  @InstanceProperty get familyName(): string { return; }
-  @InstanceProperty get givenName(): string { return; }
-  @InstanceProperty get middleName(): string { return; }
-  @InstanceProperty get honorificPrefix(): string { return; }
-  @InstanceProperty get honorificSuffix(): string { return; }
+  @InstanceProperty formatted: string;
+  @InstanceProperty familyName: string;
+  @InstanceProperty givenName: string;
+  @InstanceProperty middleName: string;
+  @InstanceProperty honorificPrefix: string;
+  @InstanceProperty honorificSuffix: string;
 }
 
 export interface IContactField {
@@ -153,9 +153,9 @@ export class ContactField implements IContactField {
     this._objectInstance = new window.ContactField(type, value, pref);
   }
 
-  @InstanceProperty get type(): string { return; }
-  @InstanceProperty get value(): string { return; }
-  @InstanceProperty get pref(): boolean { return; }
+  @InstanceProperty type: string;
+  @InstanceProperty value: string;
+  @InstanceProperty pref: boolean;
 }
 
 export interface IContactAddress {
@@ -195,21 +195,21 @@ export class ContactAddress implements IContactAddress {
   }
 
   /** Set to true if this ContactAddress contains the user's preferred value. */
-  @InstanceProperty get pref(): boolean { return; }
+  @InstanceProperty pref: boolean;
   /** A string indicating what type of field this is, home for example. */
-  @InstanceProperty get type(): string { return; }
+  @InstanceProperty type: string;
   /** The full address formatted for display. */
-  @InstanceProperty get formatted(): string { return; }
+  @InstanceProperty formatted: string;
   /** The full street address. */
-  @InstanceProperty get streetAddress(): string { return; }
+  @InstanceProperty streetAddress: string;
   /** The city or locality. */
-  @InstanceProperty get locality(): string { return; }
+  @InstanceProperty locality: string;
   /** The state or region. */
-  @InstanceProperty get region(): string { return; }
+  @InstanceProperty region: string;
   /** The zip code or postal code. */
-  @InstanceProperty get postalCode(): string { return; }
+  @InstanceProperty postalCode: string;
   /** The country name. */
-  @InstanceProperty get country(): string { return; }
+  @InstanceProperty country: string;
 }
 
 export interface IContactOrganization {
@@ -234,15 +234,15 @@ export class ContactOrganization implements IContactOrganization {
     this._objectInstance = new window.ContactOrganization();
   }
   /** Set to true if this ContactOrganization contains the user's preferred value. */
-  @InstanceProperty get pref(): boolean { return; }
+  @InstanceProperty pref: boolean;
   /** A string that indicates what type of field this is, home for example. */
-  @InstanceProperty get type(): string { return; }
+  @InstanceProperty type: string;
   /** The name of the organization. */
-  @InstanceProperty get name(): string { return; }
+  @InstanceProperty name: string;
   /** The department the contract works for. */
-  @InstanceProperty get department(): string { return; }
+  @InstanceProperty department: string;
   /** The contact's title at the organization. */
-  @InstanceProperty get title(): string { return; }
+  @InstanceProperty title: string;
 }
 
 /** Search options to filter navigator.contacts.  */
@@ -272,22 +272,22 @@ export class ContactFindOptions implements IContactFindOptions {
   /**
    * The search string used to find navigator.contacts. (Default: "")
    */
-  @InstanceProperty get filter(): string { return; }
+  @InstanceProperty filter: string;
 
   /**
    * Determines if the find operation returns multiple navigator.contacts. (Default: false)
    */
-  @InstanceProperty get multiple(): boolean { return; }
+  @InstanceProperty multiple: boolean;
 
   /**
    * Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields.
    */
-  @InstanceProperty get desiredFields(): any { return; }
+  @InstanceProperty desiredFields: any;
 
   /**
    * (Android only): Filters the search to only return contacts with a phone number informed.
    */
-  @InstanceProperty get hasPhoneNumber(): boolean { return; }
+  @InstanceProperty hasPhoneNumber: boolean;
 }
 
 /**

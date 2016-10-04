@@ -405,19 +405,19 @@ export function CordovaProperty(target: Function, key: string, descriptor: Typed
  * @private
  * @param target
  * @param key
- * @param descriptor
  * @constructor
  */
-export function InstanceProperty(target: any, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  descriptor.get = function() {
-    return this._objectInstance[key];
-  };
-
-  descriptor.set = function(...args: any[]) {
-    this._objectInstance[key] = args[0];
-  };
-
-  return descriptor;
+export function InstanceProperty(target: any, key: string) {
+  if (delete this[key]) {
+    Object.defineProperty(target, key, {
+      get: function(){
+        return this._objectInstance[key];
+      },
+      set: function(value){
+        this._objectInstance[key] = value;
+      }
+    })
+  }
 }
 
 /**
