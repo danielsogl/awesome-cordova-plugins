@@ -272,7 +272,7 @@ export class EstimoteBeacons {
    *
    * @usage
    * ```
-   * let region: BeaconRegion = {} // Empty region matches all beacons.
+   * let region: EstimoteBeaconRegion = {} // Empty region matches all beacons.
    * EstimoteBeacons.startRangingBeaconsInRegion(region).subscribe(info => {
    *   console.log(JSON.stringify(info));
    * });
@@ -280,7 +280,7 @@ export class EstimoteBeacons {
    *   EstimoteBeacons.stopRangingBeaconsInRegion(region).then(() => { console.log('scan stopped'); });
    * }, 5000);
    * ```
-   * @param region {BeaconRegion} Dictionary with region properties (mandatory).
+   * @param region {EstimoteBeaconRegion} Dictionary with region properties (mandatory).
    * @return Returns an Observable that notifies of each beacon discovered.
    */
   @Cordova({
@@ -288,14 +288,14 @@ export class EstimoteBeacons {
     clearFunction: 'stopRangingBeaconsInRegion',
     clearWithArgs: true
   })
-  static startRangingBeaconsInRegion(region: BeaconRegion): Observable<any> { return; }
+  static startRangingBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> { return; }
 
   /**
    * Stop ranging beacons. Available on iOS and Android.
    *
    * @usage
    * ```
-   * let region: BeaconRegion = {} // Empty region matches all beacons.
+   * let region: EstimoteBeaconRegion = {} // Empty region matches all beacons.
    * EstimoteBeacons.startRangingBeaconsInRegion(region).subscribe(info => {
    *   console.log(JSON.stringify(info));
    * });
@@ -303,11 +303,11 @@ export class EstimoteBeacons {
    *   EstimoteBeacons.stopRangingBeaconsInRegion(region).then(() => { console.log('scan stopped'); });
    * }, 5000);
    * ```
-   * @param region {BeaconRegion} Dictionary with region properties (mandatory).
+   * @param region {EstimoteBeaconRegion} Dictionary with region properties (mandatory).
    * @return returns a Promise.
    */
   @Cordova()
-  static stopRangingBeaconsInRegion(region: BeaconRegion): Promise<any> { return; }
+  static stopRangingBeaconsInRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Start ranging secure beacons. Available on iOS.
@@ -321,7 +321,7 @@ export class EstimoteBeacons {
     clearFunction: 'stopRangingSecureBeaconsInRegion',
     clearWithArgs: true
   })
-  static startRangingSecureBeaconsInRegion(region: BeaconRegion): Observable<any> { return; }
+  static startRangingSecureBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> { return; }
 
   /**
    * Stop ranging secure beacons. Available on iOS.
@@ -329,19 +329,19 @@ export class EstimoteBeacons {
    * {@link EstimoteBeacons.stopRangingBeaconsInRegion}.
    */
   @Cordova()
-  static stopRangingSecureBeaconsInRegion(region: BeaconRegion): Promise<any> { return; }
+  static stopRangingSecureBeaconsInRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Start monitoring beacons. Available on iOS and Android.
    *
    * @usage
    * ```
-   * let region: BeaconRegion = {} // Empty region matches all beacons.
+   * let region: EstimoteBeaconRegion = {} // Empty region matches all beacons.
    * EstimoteBeacons.startMonitoringForRegion(region).subscribe(state => {
    *   console.log('Region state: ' + JSON.stringify(state));
    * });
    * ```
-   * @param region {BeaconRegion} Dictionary with region properties (mandatory).
+   * @param region {EstimoteBeaconRegion} Dictionary with region properties (mandatory).
    * @param [notifyEntryStateOnDisplay=false] {boolean} Set to true to detect if you
    * are inside a region when the user turns display on, see
    * {@link https://developer.apple.com/library/prerelease/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/instp/CLBeaconRegion/notifyEntryStateOnDisplay|iOS documentation}
@@ -355,21 +355,21 @@ export class EstimoteBeacons {
     successIndex: 1,
     errorIndex: 2
   })
-  static startMonitoringForRegion(region: BeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> { return; }
+  static startMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> { return; }
 
   /**
    * Stop monitoring beacons. Available on iOS and Android.
    *
    * @usage
    * ```
-   * let region: BeaconRegion = {} // Empty region matches all beacons.
+   * let region: EstimoteBeaconRegion = {} // Empty region matches all beacons.
    * EstimoteBeacons.stopMonitoringForRegion(region).then(() => { console.log('monitoring is stopped'); });
    * ```
-   * @param region {BeaconRegion} Dictionary with region properties (mandatory).
+   * @param region {EstimoteBeaconRegion} Dictionary with region properties (mandatory).
    * @return returns a Promise.
    */
   @Cordova()
-  static stopMonitoringForRegion(region: BeaconRegion): Promise<any> { return; }
+  static stopMonitoringForRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Start monitoring secure beacons. Available on iOS.
@@ -378,6 +378,8 @@ export class EstimoteBeacons {
    * To use secure beacons set the App ID and App Token using
    * {@link EstimoteBeacons.setupAppIDAndAppToken}.
    * @see {@link EstimoteBeacons.startMonitoringForRegion}
+   * @param region {EstimoteBeaconRegion} Region
+   * @param notifyEntryStateOnDisplay {boolean}
    */
   @Cordova({
     observable: true,
@@ -386,16 +388,17 @@ export class EstimoteBeacons {
     successIndex: 1,
     errorIndex: 2
   })
-  static startSecureMonitoringForRegion(region: BeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> { return; }
+  static startSecureMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> { return; }
 
 
   /**
   * Stop monitoring secure beacons. Available on iOS.
   * This function has the same parameters/behaviour as
   * {@link EstimoteBeacons.stopMonitoringForRegion}.
+   * @param region {EstimoteBeaconRegion} Region
   */
   @Cordova()
-  static stopSecureMonitoringForRegion(region: BeaconRegion): Promise<any> { return; }
+  static stopSecureMonitoringForRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Connect to Estimote Beacon. Available on Android.
@@ -473,7 +476,7 @@ export class EstimoteBeacons {
 
 }
 
-export interface BeaconRegion {
+export interface EstimoteBeaconRegion {
   state?: string;
   major: number;
   minor: number;

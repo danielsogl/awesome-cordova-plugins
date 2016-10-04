@@ -155,10 +155,10 @@ export class Hotspot {
   static isWifiDirectSupported(): Promise<boolean> { return; }
 
   @Cordova()
-  static scanWifi(): Promise<Array<Network>> { return; }
+  static scanWifi(): Promise<Array<HotspotNetwork>> { return; }
 
   @Cordova()
-  static scanWifiByLevel(): Promise<Array<Network>> { return; }
+  static scanWifiByLevel(): Promise<Array<HotspotNetwork>> { return; }
 
   @Cordova()
   static startWifiPeriodicallyScan(interval: number, duration: number): Promise<any> { return; }
@@ -167,7 +167,7 @@ export class Hotspot {
   static stopWifiPeriodicallyScan(): Promise<any> { return; }
 
   @Cordova()
-  static getNetConfig(): Promise<NetworkConfig> { return; }
+  static getNetConfig(): Promise<HotspotNetworkConfig> { return; }
 
   @Cordova()
   static getConnectionInfo(): Promise<ConnectionInfo> { return; }
@@ -243,7 +243,7 @@ export interface ConnectionInfo {
   networkID: string;
 }
 
-export interface Network {
+export interface HotspotNetwork {
   /**
    * @property {string}       SSID
    *      Human readable network name
@@ -275,7 +275,7 @@ export interface Network {
    */
   capabilities: string;
 }
-export interface NetworkConfig {
+export interface HotspotNetworkConfig {
   /**
    * @property {string}   deviceIPAddress - Device IP Address
    */
