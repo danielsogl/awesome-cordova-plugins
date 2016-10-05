@@ -19,7 +19,7 @@ import { Plugin, Cordova } from './plugin';
  * @interfaces
  * PayPalEnvironment
  * PayPalPayment
- * PayPAlItem
+ * PayPalItem
  * PayPalPaymentDetails
  * PayPalConfigurationOptions
  * PayPalShippingAddress
