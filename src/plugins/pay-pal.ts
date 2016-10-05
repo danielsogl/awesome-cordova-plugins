@@ -36,8 +36,8 @@ export class PayPal {
    * UI faster. The preconnect is valid for a limited time, so
    * the recommended time to preconnect is on page load.
    *
-   * @param {String} environment: available options are "PayPalEnvironmentNoNetwork", "PayPalEnvironmentProduction" and "PayPalEnvironmentSandbox"
-   * @param {PayPalConfiguration} configuration: For Future Payments merchantName, merchantPrivacyPolicyURL and merchantUserAgreementURL must be set be set
+   * @param {String} environment available options are "PayPalEnvironmentNoNetwork", "PayPalEnvironmentProduction" and "PayPalEnvironmentSandbox"
+   * @param {PayPalConfiguration} configuration For Future Payments merchantName, merchantPrivacyPolicyURL and merchantUserAgreementURL must be set be set
    */
   @Cordova()
   static init(environment: PayPalEnvironment, configuration?: PayPalConfiguration): Promise<any> {return; }
@@ -53,7 +53,7 @@ export class PayPal {
    * See https://developer.paypal.com/webapps/developer/docs/integration/mobile/ios-integration-guide/
    * for more documentation of the params.
    *
-   * @param {PayPalPayment} payment: PayPalPayment object
+   * @param {PayPalPayment} payment PayPalPayment object
    */
   @Cordova()
   static renderSinglePaymentUI(payment: PayPalPayment): Promise<any> {return; }
@@ -79,7 +79,7 @@ export class PayPal {
   /**
    * Please Read Docs on Profile Sharing at https://github.com/paypal/PayPal-iOS-SDK#profile-sharing
    *
-   * @param {Array<string>} scopes: scopes Set of requested scope-values. Accepted scopes are: openid, profile, address, email, phone, futurepayments and paypalattributes
+   * @param {Array<string>} scopes scopes Set of requested scope-values. Accepted scopes are: openid, profile, address, email, phone, futurepayments and paypalattributes
    * See https://developer.paypal.com/docs/integration/direct/identity/attributes/ for more details
    **/
   @Cordova()
