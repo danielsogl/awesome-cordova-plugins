@@ -61,7 +61,12 @@ function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Func
     args.push(obj);
   } else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
     // If we've specified a success/error index
-    args.splice(opts.successIndex, 0, resolve);
+
+    if (opts.successIndex > args.length) {
+      args[opts.successIndex] = resolve;
+    } else {
+      args.splice(opts.successIndex, 0, resolve);
+    }
 
     // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behaviour.
     if (opts.errorIndex > args.length) {
