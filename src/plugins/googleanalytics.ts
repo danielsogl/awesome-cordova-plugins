@@ -82,7 +82,10 @@ export class GoogleAnalytics {
    * @param value {any}
    * @return {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 2,
+    errorIndex: 3
+  })
   static trackMetric(key: string, value?: any): Promise<any> { return; }
 
   /**
@@ -94,14 +97,17 @@ export class GoogleAnalytics {
    * @param newSession {boolean} Set to true to create a new session
    * @return {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 3,
+    errorIndex: 4
+  })
   static trackView(title: string, campaignUrl?: string, newSession?: boolean): Promise<any> { return; }
 
   /**
    * Add a Custom Dimension
    * https://developers.google.com/analytics/devguides/platform/customdimsmets
-   * @param {string}  key
-   * @param {string}  value
+   * @param key {string}
+   * @param value {string}
    * @return {Promise<any>}
    */
   @Cordova()
@@ -117,13 +123,16 @@ export class GoogleAnalytics {
    * @param newSession {boolean} Set to true to create a new session
    * @return {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 5,
+    errorIndex: 6
+  })
   static trackEvent(category: string, action: string, label?: string, value?: number, newSession?: boolean): Promise<any> { return; }
 
   /**
    * Track an exception
-   * @param {string}  description
-   * @param {boolean} fatal
+   * @param description {string}
+   * @param fatal {boolean}
    * @return {Promise<any>}
    */
   @Cordova()
@@ -131,10 +140,10 @@ export class GoogleAnalytics {
 
   /**
    * Track User Timing (App Speed)
-   * @param {string}  category
-   * @param {number}  intervalInMilliseconds
-   * @param {string}  variable
-   * @param {string}  label
+   * @param category {string}
+   * @param intervalInMilliseconds {number}
+   * @param variable {string}
+   * @param label {string}
    * @return {Promise<any>}
    */
   @Cordova()
@@ -143,12 +152,12 @@ export class GoogleAnalytics {
   /**
    * Add a Transaction (Ecommerce)
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#addTrans
-   * @param {string}  id
-   * @param {string}  affiliation
-   * @param {number}  revenue
-   * @param {number}  tax
-   * @param {number}  shipping
-   * @param {string}  currencyCode
+   * @param id {string}
+   * @param affiliation {string}
+   * @param revenue {number}
+   * @param tax {number}
+   * @param shipping {number}
+   * @param currencyCode {string}
    * @return {Promise<any>}
    */
   @Cordova()
@@ -171,7 +180,7 @@ export class GoogleAnalytics {
 
   /**
    * Enable/disable automatic reporting of uncaught exceptions
-   * @param {boolean} shouldEnable
+   * @param shouldEnable {boolean}
    * @return {Promise<any>}
    */
   @Cordova()
