@@ -1,4 +1,4 @@
-import { Cordova, CordovaInstance, Plugin } from './plugin';
+import {Cordova, CordovaInstance, Plugin, InstanceProperty} from './plugin';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -851,7 +851,10 @@ export class GoogleMapsKmlOverlay {
 export class GoogleMapsLatLngBounds {
   private _objectInstance: any;
 
-  constructor(public southwestOrArrayOfLatLng: GoogleMapsLatLng | GoogleMapsLatLng[], public northeast?: GoogleMapsLatLng) {
+  @InstanceProperty get northeast(): GoogleMapsLatLng { return; }
+  @InstanceProperty get southwest(): GoogleMapsLatLng { return; }
+
+  constructor(southwestOrArrayOfLatLng: GoogleMapsLatLng | GoogleMapsLatLng[], northeast?: GoogleMapsLatLng) {
     let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
     this._objectInstance = new plugin.google.maps.LatLngBounds(args);
   }
@@ -878,7 +881,10 @@ export class GoogleMapsLatLngBounds {
 export class GoogleMapsLatLng {
   private _objectInstance: any;
 
-  constructor(public lat: number, public lng: number) {
+  @InstanceProperty get lat(): number { return; }
+  @InstanceProperty get lng(): number { return; }
+
+  constructor(lat: number, lng: number) {
     this._objectInstance = new plugin.google.maps.LatLng(lat, lng);
   }
 
