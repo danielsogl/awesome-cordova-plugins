@@ -1,3 +1,23 @@
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/driftyco/ionic-native/compare/v2.1.1...v2.1.2) (2016-10-06)
+
+
+### Bug Fixes
+
+* **googlemaps:** add missing properties ([72a694a](https://github.com/driftyco/ionic-native/commit/72a694a)), closes [#642](https://github.com/driftyco/ionic-native/issues/642)
+
+
+### Features
+
+* **zBar:** add zBar barcode scanner plugin ([#634](https://github.com/driftyco/ionic-native/issues/634)) ([bbbbb3e](https://github.com/driftyco/ionic-native/commit/bbbbb3e))
+
+
+
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/driftyco/ionic-native/compare/v2.1.0...v2.1.1) (2016-10-03)
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/driftyco/ionic-native/compare/v2.0.3...v2.1.0) (2016-10-03)
 
