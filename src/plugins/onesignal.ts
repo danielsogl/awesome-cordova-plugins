@@ -34,7 +34,7 @@ export class OneSignal {
   /**
    * Only required method you need to call to setup OneSignal to receive push notifications. Call this from the `deviceready` event.
    *
-   * @param {appId} Your AppId from your OneSignal app
+   * @param {string} Your AppId from your OneSignal app
    * @param {options} The Google Project Number (which you can get from the Google Developer Potal) and the autoRegister option.
    * @returns {Observable} when a notification is received. Handle your notification action here.
    */
@@ -58,8 +58,8 @@ export class OneSignal {
    * Tag a user based on an app event of your choosing so later you can create segments on [onesignal.com](https://onesignal.com/) to target these users.
    * Recommend using sendTags over sendTag if you need to set more than one tag on a user at a time.
    *
-   * @param {key} Key of your choosing to create or update.
-   * @param {value} Value to set on the key. NOTE: Passing in a blank String deletes the key, you can also call deleteTag.
+   * @param {string} Key of your choosing to create or update.
+   * @param {string} Value to set on the key. NOTE: Passing in a blank String deletes the key, you can also call deleteTag.
    */
   @Cordova({ sync: true })
   static sendTag(key: string, value: string): void { }
@@ -68,7 +68,7 @@ export class OneSignal {
  * Tag a user based on an app event of your choosing so later you can create segments on [onesignal.com](https://onesignal.com/) to target these users.
  * Recommend using sendTags over sendTag if you need to set more than one tag on a user at a time.
  *
- * @param {json} Pass a json object with key/value pairs like: {key: "value", key2: "value2"}
+ * @param {string} Pass a json object with key/value pairs like: {key: "value", key2: "value2"}
  */
   @Cordova({ sync: true })
   static sendTags(json: any): void { }
@@ -84,7 +84,7 @@ export class OneSignal {
   /**
   * Deletes a tag that was previously set on a user with `sendTag` or `sendTags`. Use `deleteTags` if you need to delete more than one.
   *
-  * @param {key} Key to remove.
+  * @param {string} Key to remove.
   */
   @Cordova({ sync: true })
   static deleteTag(key: string): void { }
@@ -92,7 +92,7 @@ export class OneSignal {
   /**
   * Deletes tags that were previously set on a user with `sendTag` or `sendTags`.
   *
-  * @param {keys} Keys to remove.
+  * @param {Array<string>} Keys to remove.
   */
   @Cordova({ sync: true })
   static deleteTags(keys: string[]): void { }
@@ -114,7 +114,7 @@ export class OneSignal {
   * By default OneSignal always vibrates the device when a notification is displayed unless the device is in a total silent mode.
   * Passing false means that the device will only vibrate lightly when the device is in it's vibrate only mode.
   *
-  * @param {enable} false to disable vibrate, true to re-enable it.
+  * @param {boolean} false to disable vibrate, true to re-enable it.
   */
   @Cordova({ sync: true })
   static enableVibrate(enable: boolean): void { }
@@ -126,7 +126,7 @@ export class OneSignal {
   * By default OneSignal plays the system's default notification sound when the device's notification system volume is turned on.
   * Passing false means that the device will only vibrate unless the device is set to a total silent mode.
   *
-  * @param {enable} false to disable sound, true to re-enable it.
+  * @param {boolean} false to disable sound, true to re-enable it.
   */
   @Cordova({ sync: true })
   static enableSound(enable: boolean): void { }
@@ -138,7 +138,7 @@ export class OneSignal {
   * By default this is false and notifications will not be shown when the user is in your app, instead the notificationOpenedCallback is fired.
   * If set to true notifications will always show in the notification area and notificationOpenedCallback will not fire until the user taps on the notification.
   *
-  * @param {enable} enable
+  * @param {boolean} enable
   */
   @Cordova({ sync: true })
   static enableNotificationsWhenActive(enable: boolean): void { }
@@ -148,7 +148,7 @@ export class OneSignal {
   * If set to true notifications will be shown as native alert boxes if a notification is received when the user is in your app.
   * The notificationOpenedCallback is then fired after the alert box is closed.
   *
-  * @param {enable} enable
+  * @param {boolean} enable
   */
   @Cordova({ sync: true })
   static enableInAppAlertNotification(enable: boolean): void { }
@@ -157,7 +157,7 @@ export class OneSignal {
   * You can call this method with false to opt users out of receiving all notifications through OneSignal.
   * You can pass true later to opt users back into notifications.
   *
-  * @param {enable} enable
+  * @param {boolean} enable
   */
   @Cordova({ sync: true })
   static setSubscription(enable: boolean): void { }
