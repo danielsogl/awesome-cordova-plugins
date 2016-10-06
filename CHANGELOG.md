@@ -1,3 +1,18 @@
+<a name="2.1.6"></a>
+## [2.1.6](https://github.com/driftyco/ionic-native/compare/v2.1.5...v2.1.6) (2016-10-06)
+
+
+### Bug Fixes
+
+* **paypal:** fix helper classes ([f002657](https://github.com/driftyco/ionic-native/commit/f002657))
+
+
+
+<a name="2.1.5"></a>
+## [2.1.5](https://github.com/driftyco/ionic-native/compare/v2.1.4...v2.1.5) (2016-10-06)
+
+
+
 <a name="2.1.4"></a>
 ## [2.1.4](https://github.com/driftyco/ionic-native/compare/v2.1.3...v2.1.4) (2016-10-06)
 
