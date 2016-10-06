@@ -267,6 +267,9 @@ export interface Config {
  * BackgroundGeolocation.stop();
  *
  * ```
+ * @interfaces
+ * Location
+ * Config
  */
 @Plugin({
   plugin: 'cordova-plugin-mauron85-background-geolocation',
