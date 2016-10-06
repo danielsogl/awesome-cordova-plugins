@@ -14,7 +14,7 @@ declare var window;
  */
 @Plugin({
   plugin: 'cordova-plugin-google-analytics',
-  pluginRef: 'analytics',
+  pluginRef: 'ga',
   repo: 'https://github.com/danwilson/google-analytics-plugin',
   platforms: ['Android', 'iOS']
 })
