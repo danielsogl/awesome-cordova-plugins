@@ -1,3 +1,15 @@
+<a name="2.1.3"></a>
+## [2.1.3](https://github.com/driftyco/ionic-native/compare/v2.1.2...v2.1.3) (2016-10-06)
+
+
+### Bug Fixes
+
+* **google-analytics:** add missing methods, fix return types ([77b0277](https://github.com/driftyco/ionic-native/commit/77b0277))
+* **google-analytics:** add newSession param ([f62e108](https://github.com/driftyco/ionic-native/commit/f62e108))
+* **google-analytics:** fix depreciated plugin reference ([40325ca](https://github.com/driftyco/ionic-native/commit/40325ca))
+
+
+
 <a name="2.1.2"></a>
 ## [2.1.2](https://github.com/driftyco/ionic-native/compare/v2.1.1...v2.1.2) (2016-10-06)
 
