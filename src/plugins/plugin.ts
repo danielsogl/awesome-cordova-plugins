@@ -72,8 +72,10 @@ function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Func
   } else {
     // Otherwise, let's tack them on to the end of the argument list
     // which is 90% of cases
-    args.push(resolve);
-    args.push(reject);
+    if (resolve || reject) {
+      args.push(resolve);
+      args.push(reject);
+    }
   }
   return args;
 }
