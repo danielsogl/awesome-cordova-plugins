@@ -23,6 +23,7 @@ export class GoogleAnalytics {
    * In your 'deviceready' handler, set up your Analytics tracker.
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/
    * @param {string}  id  Your Google Analytics Mobile App property
+   * @return {Promise<any>}
    */
   @Cordova()
   static startTrackerWithId(id: string): Promise<any> { return; }
@@ -38,7 +39,7 @@ export class GoogleAnalytics {
   /**
    * Set a UserId
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/user-id
-   * @param {string}  id
+   * @param {string} id User ID
    * @return {Promise<any>}
    */
   @Cordova()
@@ -46,38 +47,43 @@ export class GoogleAnalytics {
 
   /**
    * Set a anonymize Ip address
-   * @param anonymize
+   * @param anonymize {boolean} Set to true to anonymize the IP Address
+   * @return {Promise<any>}
    */
   @Cordova()
   static setAnonymizeIp(anonymize: boolean): Promise<any> { return; }
 
   /**
    * Sets the app version
-   * @param appVersion
+   * @param appVersion {string} App version
+   * @return {Promise<any>}
    */
   @Cordova()
   static setAppVersion(appVersion: string): Promise<any> { return; }
 
   /**
-   *
-   * @param oputout
+   * Set OptOut
+   * @param optout {boolean}
+   * @return {Promise<any>}
    */
   @Cordova()
-  static setOptOut(oputout: boolean): Promise<any> { return; }
+  static setOptOut(optout: boolean): Promise<any> { return; }
 
   /**
    * Enable verbose logging
+   * @return {Promise<any>}
    */
   @Cordova()
   static debugMode(): Promise<any> { return; }
 
   /**
-   *
-   * @param key
-   * @param value
+   * Track custom metric
+   * @param key {string}
+   * @param value {any}
+   * @return {Promise<any>}
    */
   @Cordova()
-  static trackMetric(key, value): Promise<any> { return; }
+  static trackMetric(key: string, value?: any): Promise<any> { return; }
 
   /**
    * Track a screen
@@ -85,6 +91,7 @@ export class GoogleAnalytics {
    *
    * @param {string}  title         Screen title
    * @param {string}  campaignUrl   Campaign url for measuring referrals
+   * @return {Promise<any>}
    */
   @Cordova()
   static trackView(title: string, campaignUrl?: string): Promise<any> { return; }
@@ -94,6 +101,7 @@ export class GoogleAnalytics {
    * https://developers.google.com/analytics/devguides/platform/customdimsmets
    * @param {string}  key
    * @param {string}  value
+   * @return {Promise<any>}
    */
   @Cordova()
   static addCustomDimension(key: number, value: string): Promise<any> { return; }
@@ -105,6 +113,7 @@ export class GoogleAnalytics {
    * @param {string}  action
    * @param {string}  label
    * @param {number}  value
+   * @return {Promise<any>}
    */
   @Cordova()
   static trackEvent(category: string, action: string, label?: string, value?: number): Promise<any> { return; }
@@ -113,6 +122,7 @@ export class GoogleAnalytics {
    * Track an exception
    * @param {string}  description
    * @param {boolean} fatal
+   * @return {Promise<any>}
    */
   @Cordova()
   static trackException(description: string, fatal: boolean): Promise<any> { return; }
@@ -123,6 +133,7 @@ export class GoogleAnalytics {
    * @param {number}  intervalInMilliseconds
    * @param {string}  variable
    * @param {string}  label
+   * @return {Promise<any>}
    */
   @Cordova()
   static trackTiming(category: string, intervalInMilliseconds: number, variable: string, label: string): Promise<any> { return; }
@@ -136,6 +147,7 @@ export class GoogleAnalytics {
    * @param {number}  tax
    * @param {number}  shipping
    * @param {string}  currencyCode
+   * @return {Promise<any>}
    */
   @Cordova()
   static addTransaction(id: string, affiliation: string, revenue: number, tax: number, shipping: number, currencyCode: string): Promise<any> { return; }
@@ -150,6 +162,7 @@ export class GoogleAnalytics {
    * @param {number}  price
    * @param {number}  quantity
    * @param {string}  currencyCode
+   * @return {Promise<any>}
    */
   @Cordova()
   static addTransactionItem(id: string, name: string, sku: string, category: string, price: number, quantity: number, currencyCode: string): Promise<any> { return; }
@@ -157,6 +170,7 @@ export class GoogleAnalytics {
   /**
    * Enable/disable automatic reporting of uncaught exceptions
    * @param {boolean} shouldEnable
+   * @return {Promise<any>}
    */
   @Cordova()
   static enableUncaughtExceptionReporting(shouldEnable: boolean): Promise<any> { return; }
