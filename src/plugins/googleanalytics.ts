@@ -89,12 +89,13 @@ export class GoogleAnalytics {
    * Track a screen
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/screens
    *
-   * @param {string}  title         Screen title
-   * @param {string}  campaignUrl   Campaign url for measuring referrals
+   * @param title {string} Screen title
+   * @param campaignUrl {string} Campaign url for measuring referrals
+   * @param newSession {boolean} Set to true to create a new session
    * @return {Promise<any>}
    */
   @Cordova()
-  static trackView(title: string, campaignUrl?: string): Promise<any> { return; }
+  static trackView(title: string, campaignUrl?: string, newSession?: boolean): Promise<any> { return; }
 
   /**
    * Add a Custom Dimension
@@ -109,14 +110,15 @@ export class GoogleAnalytics {
   /**
    * Track an event
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/events
-   * @param {string}  category
-   * @param {string}  action
-   * @param {string}  label
-   * @param {number}  value
+   * @param category {string}
+   * @param action {string}
+   * @param label {string}
+   * @param value {number}
+   * @param newSession {boolean} Set to true to create a new session
    * @return {Promise<any>}
    */
   @Cordova()
-  static trackEvent(category: string, action: string, label?: string, value?: number): Promise<any> { return; }
+  static trackEvent(category: string, action: string, label?: string, value?: number, newSession?: boolean): Promise<any> { return; }
 
   /**
    * Track an exception
