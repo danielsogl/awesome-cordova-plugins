@@ -28,6 +28,58 @@ export class GoogleAnalytics {
   static startTrackerWithId(id: string): Promise<any> { return; }
 
   /**
+   * Enabling Advertising Features in Google Analytics allows you to take advantage of Remarketing, Demographics & Interests reports, and more
+   * @param allow {boolean}
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static setAllowIDFACollection(allow: boolean): Promise<any> { return; }
+
+  /**
+   * Set a UserId
+   * https://developers.google.com/analytics/devguides/collection/analyticsjs/user-id
+   * @param {string}  id
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static setUserId(id: string): Promise<any> { return; }
+
+  /**
+   * Set a anonymize Ip address
+   * @param anonymize
+   */
+  @Cordova()
+  static setAnonymizeIp(anonymize: boolean): Promise<any> { return; }
+
+  /**
+   * Sets the app version
+   * @param appVersion
+   */
+  @Cordova()
+  static setAppVersion(appVersion: string): Promise<any> { return; }
+
+  /**
+   *
+   * @param oputout
+   */
+  @Cordova()
+  static setOptOut(oputout: boolean): Promise<any> { return; }
+
+  /**
+   * Enable verbose logging
+   */
+  @Cordova()
+  static debugMode(): Promise<any> { return; }
+
+  /**
+   *
+   * @param key
+   * @param value
+   */
+  @Cordova()
+  static trackMetric(key, value): Promise<any> { return; }
+
+  /**
    * Track a screen
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/screens
    *
@@ -36,6 +88,15 @@ export class GoogleAnalytics {
    */
   @Cordova()
   static trackView(title: string, campaignUrl?: string): Promise<any> { return; }
+
+  /**
+   * Add a Custom Dimension
+   * https://developers.google.com/analytics/devguides/platform/customdimsmets
+   * @param {string}  key
+   * @param {string}  value
+   */
+  @Cordova()
+  static addCustomDimension(key: number, value: string): Promise<any> { return; }
 
   /**
    * Track an event
@@ -92,50 +153,6 @@ export class GoogleAnalytics {
    */
   @Cordova()
   static addTransactionItem(id: string, name: string, sku: string, category: string, price: number, quantity: number, currencyCode: string): Promise<any> { return; }
-
-  /**
-   * Add a Custom Dimension
-   * https://developers.google.com/analytics/devguides/platform/customdimsmets
-   * @param {string}  key
-   * @param {string}  value
-   */
-  @Cordova()
-  static addCustomDimension(key: number, value: string): Promise<any> { return; }
-
-  /**
-   * Set a UserId
-   * https://developers.google.com/analytics/devguides/collection/analyticsjs/user-id
-   * @param {string}  id
-   */
-  @Cordova({sync: true})
-  static setUserId(id: string): void { }
-
-  /**
-   * Sets the app version
-   * @param appVersion
-   */
-  @Cordova({sync: true})
-  static setAppVersion(appVersion: string): void { }
-
-  /**
-   * Set a anonymize Ip address
-   * @param anonymize
-   */
-  @Cordova({sync: true})
-  static setAnonymizeIp(anonymize: boolean): void { }
-
-  /**
-   * Enabling Advertising Features in Google Analytics allows you to take advantage of Remarketing, Demographics & Interests reports, and more
-   * @param allow
-   */
-  @Cordova({sync: true})
-  static setAllowIDFACollection(allow: boolean): void { }
-
-  /**
-   * Enable verbose logging
-   */
-  @Cordova({sync: true})
-  static debugMode(): Promise<any> { return; }
 
   /**
    * Enable/disable automatic reporting of uncaught exceptions
