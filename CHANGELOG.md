@@ -1,3 +1,13 @@
+<a name="2.1.4"></a>
+## [2.1.4](https://github.com/driftyco/ionic-native/compare/v2.1.3...v2.1.4) (2016-10-06)
+
+
+### Bug Fixes
+
+* **google-analytics:** specify successIndex and errorIndex for methods with optional params ([6f23bef](https://github.com/driftyco/ionic-native/commit/6f23bef))
+
+
+
 <a name="2.1.3"></a>
 ## [2.1.3](https://github.com/driftyco/ionic-native/compare/v2.1.2...v2.1.3) (2016-10-06)
 
