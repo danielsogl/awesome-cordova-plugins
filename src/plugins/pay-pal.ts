@@ -18,10 +18,11 @@ import { Plugin, Cordova } from './plugin';
  * ```
  * @interfaces
  * PayPalEnvironment
+ * PayPalConfigurationOptions
+ * @classes
  * PayPalPayment
  * PayPalItem
  * PayPalPaymentDetails
- * PayPalConfigurationOptions
  * PayPalShippingAddress
  */
 @Plugin({
@@ -91,7 +92,11 @@ export interface PayPalEnvironment {
   PayPalEnvironmentProduction: string;
   PayPalEnvironmentSandbox: string;
 }
-export declare var PayPalPayment: {
+
+/**
+ * @private
+ */
+export class PayPalPayment {
   /**
    * Convenience constructor.
    * Returns a PayPalPayment with the specified amount, currency code, and short description.
@@ -100,12 +105,13 @@ export declare var PayPalPayment: {
    * @param {String} shortDescription: A short description of the payment.
    * @param {String} intent: "Sale" for an immediate payment.
    */
-  new(amount: string, currencyCode: string, shortDescription: string, intent: string): PayPalPayment;
-};
-/**
- * @private
- */
-export interface PayPalPayment {
+  constructor(amount: string, currencyCode: string, shortDescription: string, intent: string) {
+    this.amount = amount;
+    this.currencyCode = currencyCode;
+    this.shortDescription = shortDescription;
+    this.intent = intent;
+  }
+
   /**
    * The amount of the payment.
    */
@@ -126,7 +132,7 @@ export interface PayPalPayment {
    * Optional Build Notation code ("BN code"), obtained from partnerprogram@paypal.com,
    * for your tracking purposes.
    */
-  bnCode: string;
+  bnCode: string = 'PhoneGap_SP';
   /**
    * Optional invoice number, for your tracking purposes. (up to 256 characters)
    */
@@ -153,7 +159,27 @@ export interface PayPalPayment {
   shippingAddress: string;
 }
 
-export interface PayPalItem {
+/**
+ * @private
+ */
+export class PayPalItem {
+  /**
+   * The PayPalItem class defines an optional itemization for a payment.
+   * @see https://developer.paypal.com/docs/api/#item-object for more details.
+   * @param {String} name: Name of the item. 127 characters max
+   * @param {Number} quantity: Number of units. 10 characters max.
+   * @param {String} price: Unit price for this item 10 characters max.
+   * May be negative for "coupon" etc
+   * @param {String} currency: ISO standard currency code.
+   * @param {String} sku: The stock keeping unit for this item. 50 characters max (optional)
+   */
+  constructor(name: string, quantity: number, price: string, currency: string, sku: string) {
+    this.name = name;
+    this.quantity = quantity;
+    this.price = price;
+    this.currency = currency;
+    this.sku = sku;
+  }
   /**
    * Name of the item. 127 characters max
    */
@@ -176,21 +202,21 @@ export interface PayPalItem {
   sku: string;
 }
 
-export declare var PayPalItem: {
+/**
+ * @private
+ */
+export class PayPalPaymentDetails {
   /**
-   * The PayPalItem class defines an optional itemization for a payment.
-   * @see https://developer.paypal.com/docs/api/#item-object for more details.
-   * @param {String} name: Name of the item. 127 characters max
-   * @param {Number} quantity: Number of units. 10 characters max.
-   * @param {String} price: Unit price for this item 10 characters max.
-   * May be negative for "coupon" etc
-   * @param {String} currency: ISO standard currency code.
-   * @param {String} sku: The stock keeping unit for this item. 50 characters max (optional)
+   * The PayPalPaymentDetails class defines optional amount details.
+   * @param {String} subtotal: Sub-total (amount) of items being paid for. 10 characters max with support for 2 decimal places.
+   * @param {String} shipping: Amount charged for shipping. 10 characters max with support for 2 decimal places.
+   * @param {String} tax: Amount charged for tax. 10 characters max with support for 2 decimal places.
    */
-  new(name: string, quantity: number, price: string, currency: string, sku: string): PayPalItem;
-};
-
-export interface PayPalPaymentDetails {
+  constructor(subtotal: string, shipping: string, tax: string) {
+    this.subtotal = subtotal;
+    this.shipping = shipping;
+    this.tax = tax;
+  }
   /**
    * Sub-total (amount) of items being paid for. 10 characters max with support for 2 decimal places.
    */
@@ -204,16 +230,6 @@ export interface PayPalPaymentDetails {
    */
   tax: string;
 }
-
-export declare var PayPalPaymentDetails: {
-  /**
-   * The PayPalPaymentDetails class defines optional amount details.
-   * @param {String} subtotal: Sub-total (amount) of items being paid for. 10 characters max with support for 2 decimal places.
-   * @param {String} shipping: Amount charged for shipping. 10 characters max with support for 2 decimal places.
-   * @param {String} tax: Amount charged for tax. 10 characters max with support for 2 decimal places.
-   */
-  new(subtotal: string, shipping: string, tax: string): PayPalPaymentDetails;
-};
 
 /**
  * @private
@@ -238,11 +254,11 @@ export interface PayPalConfigurationOptions {
   /**
    * URL of your company's privacy policy, which will be offered to the user when requesting consent via a PayPalFuturePaymentViewController.
    */
-  merchantPrivacyPolicyUrl?: string;
+  merchantPrivacyPolicyURL?: string;
   /**
    * URL of your company's user agreement, which will be offered to the user when requesting consent via a PayPalFuturePaymentViewController.
    */
-  merchantUserAgreementUrl?: string;
+  merchantUserAgreementURL?: string;
   /**
    * If set to NO, the SDK will only support paying with PayPal, not with credit cards.
    * This applies only to single payments (via PayPalPaymentViewController).
@@ -316,35 +332,47 @@ export interface PayPalConfigurationOptions {
 /**
  * @private
  */
-export declare var PayPalConfiguration: {
+export class PayPalConfiguration implements PayPalConfigurationOptions {
   /**
    * You use a PayPalConfiguration object to configure many aspects of how the SDK behaves.
    * see defaults for options available
    */
-  new(options: PayPalConfigurationOptions): PayPalConfiguration;
-};
+  constructor(options?: PayPalConfigurationOptions) {
 
-export interface PayPalConfiguration {
-  defaultUserEmail: string;
-  defaultUserPhoneCountryCode: string;
-  defaultUserPhoneNumber: string;
-  merchantName: string;
-  merchantPrivacyPolicyUrl: string;
-  merchantUserAgreementUrl: string;
-  acceptCreditCards: boolean;
-  payPalShippingAddressOption: number;
-  rememberUser: boolean;
-  languageOrLocale: string;
-  disableBlurWhenBackgrounding: boolean;
-  presentingInPopover: boolean;
-  forceDefaultsInSandbox: boolean;
-  sandboxUserPassword: string;
-  sandboxUserPin: string;
+    let defaults: PayPalConfigurationOptions = {
+      defaultUserEmail: null,
+      defaultUserPhoneCountryCode: null,
+      defaultUserPhoneNumber: null,
+      merchantName: null,
+      merchantPrivacyPolicyURL: null,
+      merchantUserAgreementURL: null,
+      acceptCreditCards: true,
+      payPalShippingAddressOption: 0,
+      rememberUser: true,
+      languageOrLocale: null,
+      disableBlurWhenBackgrounding: false,
+      presentingInPopover: false,
+      forceDefaultsInSandbox: false,
+      sandboxUserPassword: null,
+      sandboxUserPin: null
+    };
+
+    if (options && typeof options === 'object') {
+      for (var i in options) {
+        if (defaults.hasOwnProperty(i)) {
+          defaults[i] = options[i];
+        }
+      }
+    }
+
+    return defaults;
+  }
 }
+
 /**
  * @private
  */
-export declare var PayPalShippingAddress: {
+export class PayPalShippingAddress {
   /**
    * See the documentation of the individual properties for more detail.
    * @param {String} recipientName: Name of the recipient at this address. 50 characters max.
@@ -355,10 +383,15 @@ export declare var PayPalShippingAddress: {
    * @param {String} postalCode: ZIP code or equivalent is usually required for countries that have them. 20 characters max. Required in certain countries.
    * @param {String} countryCode: 2-letter country code. 2 characters max.
    */
-  new(recipientName: string, line1: string, line2: string, city: string, state: string, postalCode: string, countryCode: string): PayPalShippingAddress;
-};
-
-export interface PayPalShippingAddress {
+  constructor(recipientName: string, line1: string, line2: string, city: string, state: string, postalCode: string, countryCode: string) {
+    this.recipientName = recipientName;
+    this.line1 = line1;
+    this.line2 = line2;
+    this.city = city;
+    this.state = state;
+    this.postalCode = postalCode;
+    this.countryCode = countryCode;
+  }
   /**
    * Name of the recipient at this address. 50 characters max.
    */
