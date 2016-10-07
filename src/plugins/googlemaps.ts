@@ -1,12 +1,5 @@
-import {Cordova, CordovaInstance, Plugin, InstanceProperty} from './plugin';
+import { Cordova, CordovaInstance, Plugin, InstanceProperty, getPlugin, pluginWarn } from './plugin';
 import { Observable } from 'rxjs/Observable';
-
-
-/**
- * @private
- * Created by Ibrahim on 3/29/2016.
- */
-declare var plugin: any;
 
 /**
  * @private
