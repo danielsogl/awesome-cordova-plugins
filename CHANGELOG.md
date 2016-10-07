@@ -1,3 +1,13 @@
+<a name="2.1.7"></a>
+## [2.1.7](https://github.com/driftyco/ionic-native/compare/v2.1.6...v2.1.7) (2016-10-07)
+
+
+### Bug Fixes
+
+* **paypal:** fixed currency code not found issue ([#653](https://github.com/driftyco/ionic-native/issues/653)) ([598f8a9](https://github.com/driftyco/ionic-native/commit/598f8a9))
+
+
+
 <a name="2.1.6"></a>
 ## [2.1.6](https://github.com/driftyco/ionic-native/compare/v2.1.5...v2.1.6) (2016-10-06)
 
