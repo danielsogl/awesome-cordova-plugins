@@ -36,7 +36,7 @@ describe('plugin', () => {
     const spy = spyOn(window.plugins.test, 'syncMethod').and.callThrough();
     const result = Test.syncMethod('foo');
     expect(result).toEqual('syncResult');
-    expect(spy).toHaveBeenCalledWith('foo', undefined, undefined);
+    expect(spy).toHaveBeenCalledWith('foo');
 
   });
 
