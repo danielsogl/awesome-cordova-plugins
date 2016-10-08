@@ -879,21 +879,22 @@ export class GoogleMapsLatLngBounds {
  * @private
  */
 export class GoogleMapsLatLng {
-  private _objectInstance: any;
 
-  @InstanceProperty get lat(): number { return; }
-  @InstanceProperty get lng(): number { return; }
+  lat: number;
+  lng: number;
 
   constructor(lat: number, lng: number) {
-    this._objectInstance = new plugin.google.maps.LatLng(lat, lng);
+    this.lat = lat;
+    this.lng = lng;
   }
 
   equals(other: GoogleMapsLatLng): boolean {
     return this.lat === other.lat && this.lng === other.lng;
   }
 
-  @CordovaInstance({ sync: true })
-  toString(): string { return; }
+  toString(): string {
+    return this.lat + ',' + this.lng;
+  }
 
   toUrlValue(precision?: number): string {
     precision = precision || 6;
