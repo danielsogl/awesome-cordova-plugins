@@ -1,3 +1,13 @@
+<a name="2.1.8"></a>
+## [2.1.8](https://github.com/driftyco/ionic-native/compare/v2.1.7...v2.1.8) (2016-10-08)
+
+
+### Bug Fixes
+
+* **googlemaps:** fixes GoogleMapsLatLng class ([11653ce](https://github.com/driftyco/ionic-native/commit/11653ce))
+
+
+
 <a name="2.1.7"></a>
 ## [2.1.7](https://github.com/driftyco/ionic-native/compare/v2.1.6...v2.1.7) (2016-10-07)
 
