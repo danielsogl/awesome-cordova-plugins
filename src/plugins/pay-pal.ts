@@ -101,13 +101,13 @@ export class PayPalPayment {
    * Convenience constructor.
    * Returns a PayPalPayment with the specified amount, currency code, and short description.
    * @param {String} amount: The amount of the payment.
-   * @param {String} currencyCode: The ISO 4217 currency for the payment.
+   * @param {String} currency: The ISO 4217 currency for the payment.
    * @param {String} shortDescription: A short description of the payment.
    * @param {String} intent: "Sale" for an immediate payment.
    */
-  constructor(amount: string, currencyCode: string, shortDescription: string, intent: string) {
+  constructor(amount: string, currency: string, shortDescription: string, intent: string) {
     this.amount = amount;
-    this.currencyCode = currencyCode;
+    this.currency = currency;
     this.shortDescription = shortDescription;
     this.intent = intent;
   }
@@ -119,7 +119,7 @@ export class PayPalPayment {
   /**
    * The ISO 4217 currency for the payment.
    */
-  currencyCode: string;
+  currency: string;
   /**
    * A short description of the payment.
    */

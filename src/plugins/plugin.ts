@@ -41,6 +41,11 @@ export const cordovaWarn = function(pluginName: string, method: string) {
   }
 };
 function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Function): any {
+  // ignore resolve and reject in case sync
+  if (opts.sync) {
+    return args;
+  }
+
   // If the plugin method expects myMethod(success, err, options)
   if (opts.callbackOrder === 'reverse') {
     // Get those arguments in the order [resolve, reject, ...restOfArgs]

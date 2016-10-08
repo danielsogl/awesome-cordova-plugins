@@ -53,7 +53,7 @@ export class Calendar {
    * - You're using Android < 6, or
    * - You've already granted permission
    *
-   * If this returns false, you should call `requestReadWritePermissions` function
+   * If this returns false, you should call the `requestReadWritePermission` function
    * @returns {Promise<boolean>}
    */
   @Cordova()
