@@ -32,22 +32,32 @@ import { Plugin, Cordova } from './plugin';
 })
 export class PayPal {
   /**
+   * Retrieve the version of the PayPal iOS SDK library. Useful when contacting support.
+   */
+  @Cordova()
+  static version(): Promise<string> {return; }
+
+  /**
    * You must preconnect to PayPal to prepare the device for processing payments.
    * This improves the user experience, by making the presentation of the
    * UI faster. The preconnect is valid for a limited time, so
    * the recommended time to preconnect is on page load.
    *
-   * @param {String} environment available options are "PayPalEnvironmentNoNetwork", "PayPalEnvironmentProduction" and "PayPalEnvironmentSandbox"
-   * @param {PayPalConfiguration} configuration For Future Payments merchantName, merchantPrivacyPolicyURL and merchantUserAgreementURL must be set be set
+   * @param {PayPalEnvironment} clientIdsForEnvironments: set of client ids for environments
    */
   @Cordova()
-  static init(environment: PayPalEnvironment, configuration?: PayPalConfiguration): Promise<any> {return; }
+  static init(clientIdsForEnvironments: PayPalEnvironment): Promise<any> {return; }
 
   /**
-   * Retreive the version of PayPal iOS SDK Library.
-   */
+   * You must preconnect to PayPal to prepare the device for processing payments.
+   * This improves the user experience, by making the presentation of the UI faster.
+   * The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
+   *
+   * @param {String} environment: available options are "PayPalEnvironmentNoNetwork", "PayPalEnvironmentProduction" and "PayPalEnvironmentSandbox"
+   * @param {PayPalConfiguration} configuration: PayPalConfiguration object, for Future Payments merchantName, merchantPrivacyPolicyURL and merchantUserAgreementURL must be set be set
+   **/
   @Cordova()
-  static version(): Promise<string> {return; }
+  static prepareToRender(environment: string, configuration: PayPalConfiguration): Promise<any> {return; }
 
   /**
    * Start PayPal UI to collect payment from the user.
@@ -85,7 +95,6 @@ export class PayPal {
    **/
   @Cordova()
   static renderProfileSharingUI(scopes: string[]): Promise<any> {return; }
-
 }
 
 export interface PayPalEnvironment {
