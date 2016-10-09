@@ -5,7 +5,7 @@ const DEVICE_READY_TIMEOUT = 2000;
 declare var window;
 
 export * from './plugins/decorators';
-export { getPlugin, pluginWarn, cordovaWarn } from './plugin';
+export { getPlugin, pluginWarn, cordovaWarn } from './plugins/plugin';
 
 import { ActionSheet } from './plugins/actionsheet';
 import { AdMob } from './plugins/admob';
