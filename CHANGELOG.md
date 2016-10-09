@@ -1,3 +1,14 @@
+<a name="2.1.9"></a>
+## [2.1.9](https://github.com/driftyco/ionic-native/compare/v2.1.8...v2.1.9) (2016-10-09)
+
+
+### Bug Fixes
+
+* **paypal:** add optional details param to paypalpayment ([7200845](https://github.com/driftyco/ionic-native/commit/7200845))
+* **paypal:** problems with selection of PayPal environment ([#662](https://github.com/driftyco/ionic-native/issues/662)) ([3dd6a92](https://github.com/driftyco/ionic-native/commit/3dd6a92))
+
+
+
 <a name="2.1.8"></a>
 ## [2.1.8](https://github.com/driftyco/ionic-native/compare/v2.1.7...v2.1.8) (2016-10-08)
 
