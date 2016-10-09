@@ -100,7 +100,7 @@ import { ThreeDeeTouch } from './plugins/3dtouch';
 import { Toast } from './plugins/toast';
 import { TouchID } from './plugins/touchid';
 import { TextToSpeech } from './plugins/text-to-speech';
-import { ThemableBrowser } from './plugins/themable-browser';
+import { ThemeableBrowser } from './plugins/themeable-browser';
 import { TwitterConnect } from './plugins/twitter-connect';
 import { Vibration } from './plugins/vibration';
 import { VideoEditor } from './plugins/video-editor';
@@ -204,7 +204,7 @@ export * from './plugins/statusbar';
 export * from './plugins/stepcounter';
 export * from './plugins/streaming-media';
 export * from './plugins/text-to-speech';
-export * from './plugins/themable-browser';
+export * from './plugins/themeable-browser';
 export * from './plugins/toast';
 export * from './plugins/touchid';
 export * from './plugins/twitter-connect';
@@ -314,7 +314,7 @@ window['IonicNative'] = {
   TouchID,
   Transfer,
   TextToSpeech,
-  ThemableBrowser,
+  ThemeableBrowser,
   TwitterConnect,
   VideoEditor,
   VideoPlayer,
