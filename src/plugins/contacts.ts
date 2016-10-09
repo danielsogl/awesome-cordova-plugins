@@ -1,4 +1,4 @@
-import { Cordova, CordovaInstance, InstanceProperty, Plugin } from './plugin';
+import { Cordova, CordovaInstance, InstanceProperty, Plugin } from './decorators';
 
 declare var window: any,
   navigator: any;

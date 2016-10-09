@@ -1,4 +1,4 @@
-import { Cordova, CordovaInstance, Plugin } from './plugin';
+import { Cordova, CordovaInstance, Plugin } from './decorators';
 
 
 declare var sqlitePlugin;

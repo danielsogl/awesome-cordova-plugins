@@ -1,4 +1,5 @@
-import { CordovaInstance, Plugin, getPlugin, pluginWarn } from './plugin';
+import { CordovaInstance, Plugin } from './decorators';
+import { getPlugin, pluginWarn } from './plugin';
 
 declare var Media: any;
 

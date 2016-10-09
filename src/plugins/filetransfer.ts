@@ -1,4 +1,4 @@
-import { CordovaInstance, Plugin } from './plugin';
+import { CordovaInstance, Plugin } from './decorators';
 
 
 declare var FileTransfer;

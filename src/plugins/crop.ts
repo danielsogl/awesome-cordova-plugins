@@ -1,4 +1,4 @@
-import { Cordova, Plugin } from './plugin';
+import { Cordova, Plugin } from './decorators';
 /**
  * @name Crop
  * @description Crops images

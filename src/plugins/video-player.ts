@@ -1,4 +1,4 @@
-import { Cordova, Plugin } from './plugin';
+import { Cordova, Plugin } from './decorators';
 
 /**
  * Options for the video playback using the `play` function.

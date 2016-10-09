@@ -1,4 +1,5 @@
-import { Cordova, CordovaInstance, Plugin, InstanceProperty, getPlugin, pluginWarn } from './plugin';
+import { Cordova, CordovaInstance, Plugin, InstanceProperty } from './decorators';
+import { getPlugin, pluginWarn } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
 declare var plugin: any;

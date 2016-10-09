@@ -1,4 +1,4 @@
-import { CordovaProperty, Plugin } from './plugin';
+import { CordovaProperty, Plugin } from './decorators';
 
 
 declare var window: {

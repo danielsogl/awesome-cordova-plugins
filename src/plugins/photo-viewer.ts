@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from './plugin';
+import { Plugin, Cordova } from './decorators';
 /**
  * @name Photo Viewer
  * @description This plugin can display your image in full screen with the ability to pan, zoom, and share the image.

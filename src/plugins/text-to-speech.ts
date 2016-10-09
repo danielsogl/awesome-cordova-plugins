@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from './plugin';
+import { Plugin, Cordova } from './decorators';
 
 export interface TTSOptions {
     /** text to speak */
