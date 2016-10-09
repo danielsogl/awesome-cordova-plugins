@@ -6,15 +6,47 @@ import { Plugin, Cordova } from './plugin';
  *
  * @usage
  * ```
- * import {PayPal} from 'ionic-native';
+ * import {PayPal, PayPalPayment, PayPalConfiguration} from "ionic-native";
  *
  * PayPal.init({
- *      "PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
-       "PayPalEnvironmentSandbox": "YOUR_SANDBOX_CLIENT_ID"
-       })
- *   .then(onSuccess)
- *   .catch(onError);
+ *   "PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
+ *   "PayPalEnvironmentSandbox": "YOUR_SANDBOX_CLIENT_ID"
+ * }).then(() => {
+ *   // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
+ *   PayPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+ *     // Only needed if you get an "Internal Service Error" after PayPal login!
+ *     //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
+ *   })).then(() => {
+ *     let payment = new PayPalPayment('3.33', 'USD', 'Description', 'sale');
+ *     PayPal.renderSinglePaymentUI(payment).then(() => {
+ *       // Successfully paid
  *
+ *       // Example sandbox response
+ *       //
+ *       // {
+ *       //   "client": {
+ *       //     "environment": "sandbox",
+ *       //     "product_name": "PayPal iOS SDK",
+ *       //     "paypal_sdk_version": "2.16.0",
+ *       //     "platform": "iOS"
+ *       //   },
+ *       //   "response_type": "payment",
+ *       //   "response": {
+ *       //     "id": "PAY-1AB23456CD789012EF34GHIJ",
+ *       //     "state": "approved",
+ *       //     "create_time": "2016-10-03T13:33:33Z",
+ *       //     "intent": "sale"
+ *       //   }
+ *       // }
+ *     }, () => {
+ *       // Error or render dialog closed without being successful
+ *     });
+ *   }, () => {
+ *     // Error in configuration
+ *   });
+ * }, () => {
+ *   // Error in initialization, maybe PayPal isn't supported or something else
+ * });
  * ```
  * @interfaces
  * PayPalEnvironment
@@ -32,22 +64,32 @@ import { Plugin, Cordova } from './plugin';
 })
 export class PayPal {
   /**
+   * Retrieve the version of the PayPal iOS SDK library. Useful when contacting support.
+   */
+  @Cordova()
+  static version(): Promise<string> {return; }
+
+  /**
    * You must preconnect to PayPal to prepare the device for processing payments.
    * This improves the user experience, by making the presentation of the
    * UI faster. The preconnect is valid for a limited time, so
    * the recommended time to preconnect is on page load.
    *
-   * @param {String} environment available options are "PayPalEnvironmentNoNetwork", "PayPalEnvironmentProduction" and "PayPalEnvironmentSandbox"
-   * @param {PayPalConfiguration} configuration For Future Payments merchantName, merchantPrivacyPolicyURL and merchantUserAgreementURL must be set be set
+   * @param {PayPalEnvironment} clientIdsForEnvironments: set of client ids for environments
    */
   @Cordova()
-  static init(environment: PayPalEnvironment, configuration?: PayPalConfiguration): Promise<any> {return; }
+  static init(clientIdsForEnvironments: PayPalEnvironment): Promise<any> {return; }
 
   /**
-   * Retreive the version of PayPal iOS SDK Library.
-   */
+   * You must preconnect to PayPal to prepare the device for processing payments.
+   * This improves the user experience, by making the presentation of the UI faster.
+   * The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
+   *
+   * @param {String} environment: available options are "PayPalEnvironmentNoNetwork", "PayPalEnvironmentProduction" and "PayPalEnvironmentSandbox"
+   * @param {PayPalConfiguration} configuration: PayPalConfiguration object, for Future Payments merchantName, merchantPrivacyPolicyURL and merchantUserAgreementURL must be set be set
+   **/
   @Cordova()
-  static version(): Promise<string> {return; }
+  static prepareToRender(environment: string, configuration: PayPalConfiguration): Promise<any> {return; }
 
   /**
    * Start PayPal UI to collect payment from the user.
@@ -85,7 +127,6 @@ export class PayPal {
    **/
   @Cordova()
   static renderProfileSharingUI(scopes: string[]): Promise<any> {return; }
-
 }
 
 export interface PayPalEnvironment {
