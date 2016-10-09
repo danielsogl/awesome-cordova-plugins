@@ -138,19 +138,12 @@ export interface PayPalEnvironment {
  * @private
  */
 export class PayPalPayment {
-  /**
-   * Convenience constructor.
-   * Returns a PayPalPayment with the specified amount, currency code, and short description.
-   * @param {String} amount: The amount of the payment.
-   * @param {String} currency: The ISO 4217 currency for the payment.
-   * @param {String} shortDescription: A short description of the payment.
-   * @param {String} intent: "Sale" for an immediate payment.
-   */
-  constructor(amount: string, currency: string, shortDescription: string, intent: string) {
+  constructor(amount: string, currency: string, shortDescription: string, intent: string, details?: PayPalPaymentDetails) {
     this.amount = amount;
     this.currency = currency;
     this.shortDescription = shortDescription;
     this.intent = intent;
+    this.details = details;
   }
 
   /**
@@ -198,6 +191,11 @@ export class PayPalPayment {
    * Optional customer shipping address, if your app wishes to provide this to the SDK.
    */
   shippingAddress: string;
+
+  /**
+   * Optional PayPalPaymentDetails object
+   */
+  details: PayPalPaymentDetails;
 }
 
 /**
