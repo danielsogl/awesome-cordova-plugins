@@ -1,6 +1,8 @@
 import { Cordova, CordovaInstance, Plugin, InstanceProperty, getPlugin, pluginWarn } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
+declare var plugin: any;
+
 /**
  * @private
  * You can listen to these events where appropriate
@@ -81,7 +83,7 @@ export const GoogleMapsAnimation = {
  *   });
  * ```
  */
- let pluginMap = {
+let pluginMap = {
   pluginRef: 'plugin.google.maps.Map',
   plugin: 'cordova-plugin-googlemaps',
   repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
@@ -90,8 +92,6 @@ export const GoogleMapsAnimation = {
 @Plugin(pluginMap)
 export class GoogleMap {
   _objectInstance: any;
-
-  _hasPluginInstalled: boolean = true;
 
   /**
    * Checks if a map object has been created and is available.
@@ -109,7 +109,6 @@ export class GoogleMap {
       this._objectInstance = plugin.google.maps.Map.getMap(element, options);
     } else {
       pluginWarn(pluginMap);
-      this._hasPluginInstalled = false;
     }
   }
 
@@ -119,9 +118,10 @@ export class GoogleMap {
    * @return {Observable<any>}
    */
   on(event: any): Observable<any> {
-    if (!this._hasPluginInstalled) {
-      pluginWarn(pluginMap);
-      return new Observable((observer) => {});
+    if (!this._objectInstance) {
+      return new Observable((observer) => {
+        observer.error({ error: 'plugin_not_installed' });
+      });
     }
 
     return new Observable(
@@ -138,9 +138,8 @@ export class GoogleMap {
    * @return {Promise<any>}
    */
   one(event: any): Promise<any> {
-    if (!this._hasPluginInstalled) {
-      pluginWarn(pluginMap);
-      return Promise.resolve();
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
     }
     return new Promise<any>(
       resolve => this._objectInstance.one(event, resolve)
@@ -220,9 +219,8 @@ export class GoogleMap {
   setAllGesturesEnabled(enabled: boolean): void { }
 
   addMarker(options: GoogleMapsMarkerOptions): Promise<GoogleMapsMarker | any> {
-    if (!this._hasPluginInstalled) {
-      pluginWarn(pluginMap);
-      return Promise.resolve();
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
     }
     return new Promise<GoogleMapsMarker>(
       (resolve, reject) => {
@@ -238,9 +236,8 @@ export class GoogleMap {
   }
 
   addCircle(options: GoogleMapsCircleOptions): Promise<GoogleMapsCircle | any> {
-    if (!this._hasPluginInstalled) {
-      pluginWarn(pluginMap);
-      return Promise.resolve();
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
     }
     return new Promise<GoogleMapsCircle>(
       (resolve, reject) => {
@@ -256,9 +253,8 @@ export class GoogleMap {
   }
 
   addPolygon(options: GoogleMapsPolygonOptions): Promise<GoogleMapsPolygon | any> {
-    if (!this._hasPluginInstalled) {
-      pluginWarn(pluginMap);
-      return Promise.resolve();
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
     }
     return new Promise<GoogleMapsPolygon>(
       (resolve, reject) => {
@@ -274,9 +270,8 @@ export class GoogleMap {
   }
 
   addPolyline(options: GoogleMapsPolylineOptions): Promise<GoogleMapsPolyline | any> {
-    if (!this._hasPluginInstalled) {
-      pluginWarn(pluginMap);
-      return Promise.resolve();
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
     }
     return new Promise<GoogleMapsPolyline>(
       (resolve, reject) => {
@@ -292,9 +287,8 @@ export class GoogleMap {
   }
 
   addTileOverlay(options: GoogleMapsTileOverlayOptions): Promise<GoogleMapsTileOverlay | any> {
-    if (!this._hasPluginInstalled) {
-      pluginWarn(pluginMap);
-      return Promise.resolve();
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
     }
     return new Promise<GoogleMapsTileOverlay>(
       (resolve, reject) => {
@@ -310,9 +304,8 @@ export class GoogleMap {
   }
 
   addGroundOverlay(options: GoogleMapsGroundOverlayOptions): Promise<GoogleMapsGroundOverlay | any> {
-    if (!this._hasPluginInstalled) {
-      pluginWarn(pluginMap);
-      return Promise.resolve();
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
     }
     return new Promise<GoogleMapsGroundOverlay>(
       (resolve, reject) => {
@@ -328,9 +321,8 @@ export class GoogleMap {
   }
 
   addKmlOverlay(options: GoogleMapsKmlOverlayOptions): Promise<GoogleMapsKmlOverlay | any> {
-    if (!this._hasPluginInstalled) {
-      pluginWarn(pluginMap);
-      return Promise.resolve();
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
     }
     return new Promise<GoogleMapsKmlOverlay>(
       (resolve, reject) => {
@@ -981,9 +973,10 @@ export class Geocoder {
    * @param {GeocoderRequest} request Request object with either an address or a position
    * @returns {Promise<GeocoderResult[]>}
    */
-  static geocode(request: GeocoderRequest): Promise<GeocoderResult[]> {
+  static geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
     return new Promise<GeocoderResult[]>((resolve, reject) => {
       if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) {
+        pluginWarn(pluginMap);
         reject({ error: 'plugin_not_installed' });
       } else {
         plugin.google.maps.Geocoder.geocode(request, resolve);
