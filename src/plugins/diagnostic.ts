@@ -279,7 +279,7 @@ export class Diagnostic {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  static getContactsAuthroizationStatus(): Promise<any> { return; }
+  static getContactsAuthorizationStatus(): Promise<any> { return; }
 
   /**
    * Requests contacts authorization for the application.
