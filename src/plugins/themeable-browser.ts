@@ -1,22 +1,79 @@
 import { Plugin, CordovaInstance } from './plugin';
 import { Observable } from 'rxjs/Observable';
 import { InAppBrowserEvent } from './inappbrowser';
+
 declare var cordova: any;
+
+export interface ThemeableBrowserButton {
+  wwwImage?: string;
+  image?: string;
+  wwwImagePressed?: string;
+  imagePressed?: string;
+  wwwImageDensity?: number;
+  align?: string;
+  event?: string;
+}
+
+export interface ThemeableBrowserOptions {
+  statusbar?: { color: string; };
+  toolbar?: {
+    height?: number;
+    color?: string;
+  };
+  title?: { color: string; };
+  backButton?: ThemeableBrowserButton;
+  forwardButton?: ThemeableBrowserButton;
+  closeButton?: ThemeableBrowserButton;
+  customButtons?: ThemeableBrowserButton[];
+  menu?: {
+    image?: string;
+    imagePressed?: string;
+    title?: string;
+    cancel?: string;
+    align?: string;
+    items?: {
+      event: string;
+      label: string;
+    }[];
+  };
+  backButtonCanClose?: boolean;
+
+  // inAppBrowser options
+  location?: string;
+  hidden?: string;
+  clearcache?: string;
+  clearsessioncache?: string;
+  zoom?: string;
+  hardwareback?: string;
+  mediaPlaybackRequiresUserAction?: string;
+  shouldPauseOnSuspsend?: string;
+  closebuttoncaption?: string;
+  disallowoverscroll?: string;
+  enableViewportScale?: string;
+  allowInlineMediaPlayback?: string;
+  keyboardDisplayRequiresUserAction?: string;
+  suppressesIncrementalRendering?: string;
+  presentationstyle?: string;
+  transitionstyle?: string;
+  toolbarposition?: string;
+  fullscreen?: string;
+}
+
 /**
- * @name ThemableBrowser
+ * @name ThemeableBrowser
  * @description
  * In-app browser that allows styling.
  *
  * @usage
  * ```
- * import { ThemableBrowser } from 'ionic-native';
+ * import { ThemeableBrowser } from 'ionic-native';
  *
  * // can add options from the original InAppBrowser in a JavaScript object form (not string)
- * // This options object also takes additional parameters introduced by the ThemableBrowser plugin
- * // This example only shows the additional parameters for ThemableBrowser
+ * // This options object also takes additional parameters introduced by the ThemeableBrowser plugin
+ * // This example only shows the additional parameters for ThemeableBrowser
  * // Note that that `image` and `imagePressed` values refer to resources that are stored in your app
  * let options = {
- *  statusbar: {
+ *      statusbar: {
  *          color: '#ffffffff'
  *      },
  *      toolbar: {
@@ -83,11 +140,16 @@ declare var cordova: any;
   pluginRef: 'cordova.ThemeableBrowser',
   repo: 'https://github.com/initialxy/cordova-plugin-themeablebrowser'
 })
-export class ThemableBrowser {
+export class ThemeableBrowser {
   private _objectInstance: any;
 
   constructor(url: string, target: string, styleOptions: ThemeableBrowserOptions) {
-    this._objectInstance = cordova.ThemableBrowser.open(arguments);
+    try {
+      this._objectInstance = cordova.ThemeableBrowser.open(url, target, styleOptions);
+    } catch (e) {
+      window.open(url);
+      console.warn('Native: ThemeableBrowser is not installed or you are running on a browser. Falling back to window.open, all instance methods will NOT work.');
+    }
   }
 
   /**
@@ -125,7 +187,7 @@ export class ThemableBrowser {
 
   /**
    * A method that allows you to listen to events happening in the browser.
-   * Available events are: `ThemableBrowserError`, `ThemableBrowserWarning`, `critical`, `loadfail`, `unexpected`, `undefined`
+   * Available events are: `ThemeableBrowserError`, `ThemeableBrowserWarning`, `critical`, `loadfail`, `unexpected`, `undefined`
    * @param event Event name
    * @returns {Observable<any>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
    */
@@ -138,57 +200,3 @@ export class ThemableBrowser {
 
 }
 
-export interface ThemeableBrowserOptions {
-  statusbar?: { color: string; };
-  toobar?: {
-    height?: number;
-    color?: string;
-  };
-  title?: { color: string; };
-  backButton?: ThemableBrowserButton;
-  forwardButton?: ThemableBrowserButton;
-  closeButton?: ThemableBrowserButton;
-  customButtons?: ThemableBrowserButton[];
-  menu?: {
-    image?: string;
-    imagePressed?: string;
-    title?: string;
-    cancel?: string;
-    align?: string;
-    items?: {
-      event: string;
-      label: string;
-    }[];
-  };
-  backButtonCanClose?: boolean;
-
-  // inAppBrowser options
-  location?: string;
-  hidden?: string;
-  clearcache?: string;
-  clearsessioncache?: string;
-  zoom?: string;
-  hardwareback?: string;
-  mediaPlaybackRequiresUserAction?: string;
-  shouldPauseOnSuspsend?: string;
-  closebuttoncaption?: string;
-  disallowoverscroll?: string;
-  enableViewportScale?: string;
-  allowInlineMediaPlayback?: string;
-  keyboardDisplayRequiresUserAction?: string;
-  suppressesIncrementalRendering?: string;
-  presentationstyle?: string;
-  transitionstyle?: string;
-  toolbarposition?: string;
-  fullscreen?: string;
-}
-
-export interface ThemableBrowserButton {
-  wwwImage?: string;
-  image?: string;
-  wwwImagePressed?: string;
-  imagePressed?: string;
-  wwwImageDensity?: number;
-  align?: string;
-  event?: string;
-}
