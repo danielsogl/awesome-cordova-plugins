@@ -1,4 +1,4 @@
-import { Cordova, CordovaFunctionOverride, Plugin } from './plugin';
+import { Cordova, CordovaFunctionOverride, Plugin } from './decorators';
 
 import { Observable } from 'rxjs/Observable';
 

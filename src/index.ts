@@ -4,6 +4,9 @@ const DEVICE_READY_TIMEOUT = 2000;
 
 declare var window;
 
+export * from './plugins/decorators';
+export { getPlugin, pluginWarn, cordovaWarn } from './plugins/plugin';
+
 import { ActionSheet } from './plugins/actionsheet';
 import { AdMob } from './plugins/admob';
 import { AndroidFingerprintAuth } from './plugins/android-fingerprint-auth';
@@ -187,7 +190,6 @@ export * from './plugins/onesignal';
 export * from './plugins/pay-pal';
 export * from './plugins/photo-viewer';
 export * from './plugins/pin-dialog';
-export * from './plugins/plugin';
 export * from './plugins/power-management';
 export * from './plugins/printer';
 export * from './plugins/push';

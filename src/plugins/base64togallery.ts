@@ -1,4 +1,4 @@
-import { Cordova, Plugin } from './plugin';
+import { Cordova, Plugin } from './decorators';
 /**
  * @name Base64 To Gallery
  * @description This plugin allows you to save base64 data as a png image into the device

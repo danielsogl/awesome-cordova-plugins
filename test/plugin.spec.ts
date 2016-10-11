@@ -1,7 +1,7 @@
 /// <reference path="./../typings/index.d.ts" />
 
 import 'es6-shim';
-import {Plugin, Cordova} from './../src/plugins/plugin';
+import { Plugin, Cordova } from './../src/plugins/decorators';
 
 declare const window: any;
 window.plugins = {
