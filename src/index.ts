@@ -52,7 +52,7 @@ import { GooglePlus } from './plugins/google-plus';
 import { GoogleMap } from './plugins/googlemaps';
 import { GoogleAnalytics } from './plugins/googleanalytics';
 import { Hotspot } from  './plugins/hotspot';
-import { Http } from  './plugins/http';
+import { HTTP } from  './plugins/http';
 import { Httpd } from './plugins/httpd';
 import { IBeacon } from './plugins/ibeacon';
 import { ImagePicker } from './plugins/imagepicker';
@@ -267,7 +267,7 @@ window['IonicNative'] = {
   GoogleMap,
   GoogleAnalytics,
   Hotspot,
-  Http,
+  HTTP,
   Httpd,
   IBeacon,
   ImagePicker,
