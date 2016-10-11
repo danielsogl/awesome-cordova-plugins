@@ -2,6 +2,16 @@
 # [2.2.0](https://github.com/driftyco/ionic-native/compare/v2.1.9...v2.2.0) (2016-10-11)
 
 
+## BREAKING CHANGES
+
+### OneSignal
+The wrapper for this plugin has been updated to the match latest version of the plugin (2.x). If you are still using and older version of the plugin (1.x), you should use ionic-native v.2.1.x. 
+
+### ThemeableBrowser
+The wrapper for this plugin (and related interfaces) has been refactored to replace "Themable" with "Themeable". Please fix your existing code to match the new class and interfaces names.
+
+----
+
 ### Bug Fixes
 
 * **native-transitions:** add missing interface properties ([35c8bbd](https://github.com/driftyco/ionic-native/commit/35c8bbd))
