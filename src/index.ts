@@ -158,6 +158,7 @@ export * from './plugins/google-plus';
 export * from './plugins/googleanalytics';
 export * from './plugins/googlemaps';
 export * from './plugins/hotspot';
+export * from './plugins/http';
 export * from './plugins/httpd';
 export * from './plugins/ibeacon';
 export * from './plugins/imagepicker';
