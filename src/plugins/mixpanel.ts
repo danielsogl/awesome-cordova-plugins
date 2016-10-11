@@ -103,10 +103,42 @@ export class Mixpanel {
 /**
  * @private
  */
-export declare class MixpanelPeople {
-  static identify(distinctId: string, onSuccess?: Function, onFail?: Function): void;
-  static increment(peopleProperties: any, onSuccess?: Function, onFail?: Function): void;
-  static setPushId(pushId: string, onSuccess?: Function, onFail?: Function): void;
-  static set(peopleProperties: any, onSuccess?: Function, onFail?: Function): void;
-  static setOnce(peopleProperties: any, onSuccess?: Function, onFail?: Function): void;
+export class MixpanelPeople {
+  private plugin: string = 'cordova-plugin-mixpanel';
+  private pluginRef: string = 'mixpanel.people';
+
+  /**
+   *
+   * @param distinctId {string}
+   * @return {Promise<any>}
+   */
+  static identify(distinctId: string): Promise<any> { return; }
+
+  /**
+   *
+   * @param peopleProperties {string}
+   * @return {Promise<any>}
+   */
+  static increment(peopleProperties: any): Promise<any> { return; }
+
+  /**
+   *
+   * @param pushId
+   * @return {Promise<any>}
+   */
+  static setPushId(pushId: string): Promise<any> { return; }
+
+  /**
+   *
+   * @param peopleProperties
+   * @return {Promise<any>}
+   */
+  static set(peopleProperties: any): Promise<any> { return; }
+
+  /**
+   *
+   * @param peopleProperties
+   * @return {Promise<any>}
+   */
+  static setOnce(peopleProperties: any): Promise<any> { return; }
 }
