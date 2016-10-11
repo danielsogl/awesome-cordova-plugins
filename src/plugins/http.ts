@@ -35,7 +35,8 @@ import { Plugin, Cordova } from './plugin';
 @Plugin({
   plugin: 'cordova-plugin-http',
   pluginRef: 'cordovaHTTP',
-  repo: 'https://github.com/wymsee/cordova-HTTP'
+  repo: 'https://github.com/wymsee/cordova-HTTP',
+  platforms: ['Android', 'iOS']
 })
 export class HTTP {
 
