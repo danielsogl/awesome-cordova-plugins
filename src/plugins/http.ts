@@ -119,11 +119,11 @@ export class HTTP {
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The local path of the file to upload
-   * @param fileParameter {string} The name of the parameter to pass the file along as
+   * @param name {string} The name of the parameter to pass the file along as
    * @return {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  static uploadFile(url: string, body: any, headers: any, filePath: string, fileParameter: string): Promise<HTTPResponse> { return; }
+  static uploadFile(url: string, body: any, headers: any, filePath: string, name: string): Promise<HTTPResponse> { return; }
 
   /**
    *
