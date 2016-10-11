@@ -140,29 +140,10 @@ export class CameraPreview {
   static hide(): void { };
 
   /**
-   * Set the default mode for the Flash.
-   */
-  // @Cordova({
-  //   sync: true
-  // })
-  // static setFlashMode(mode: number): void { };
-
-  /**
    * Set camera color effect.
    */
   @Cordova({
     sync: true
   })
   static setColorEffect(effect: string): void { };
-
-  /**
-   * @private
-   * @enum {number}
-   */
-  static FlashMode = {
-    OFF: 0,
-    ON: 1,
-    AUTO: 2
-  };
-
 }
