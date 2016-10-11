@@ -19,7 +19,7 @@ export interface CameraPreviewSize {
  * @description
  * Showing camera preview in HTML
  *
- * For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview).
+ * For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/westonganger/cordova-plugin-camera-preview').
  *
  * @usage
  * ```
@@ -71,7 +71,7 @@ export interface CameraPreviewSize {
 @Plugin({
   plugin: 'cordova-plugin-camera-preview',
   pluginRef: 'cordova.plugins.camerapreview',
-  repo: 'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
+  repo: 'https://github.com/westonganger/cordova-plugin-camera-preview',
   platforms: ['Android', 'iOS']
 })
 export class CameraPreview {
@@ -140,29 +140,10 @@ export class CameraPreview {
   static hide(): void { };
 
   /**
-   * Set the default mode for the Flash.
-   */
-  // @Cordova({
-  //   sync: true
-  // })
-  // static setFlashMode(mode: number): void { };
-
-  /**
    * Set camera color effect.
    */
   @Cordova({
     sync: true
   })
   static setColorEffect(effect: string): void { };
-
-  /**
-   * @private
-   * @enum {number}
-   */
-  static FlashMode = {
-    OFF: 0,
-    ON: 1,
-    AUTO: 2
-  };
-
 }
