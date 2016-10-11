@@ -134,8 +134,6 @@ export class HTTP {
    */
   @Cordova()
   static downloadFile(url: string, body: any, headers: any, filePath: string): Promise<HTTPResponse> { return; }
-
-
 }
 
 export interface HTTPResponse {
