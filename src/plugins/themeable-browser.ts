@@ -15,12 +15,19 @@ export interface ThemeableBrowserButton {
 }
 
 export interface ThemeableBrowserOptions {
-  statusbar?: { color: string; };
+  statusbar?: {
+    color: string;
+  };
   toolbar?: {
     height?: number;
     color?: string;
+    image?: string;
   };
-  title?: { color: string; };
+  title?: {
+    color?: string;
+    staticText?: string;
+    showPageTitle?: boolean;
+  };
   backButton?: ThemeableBrowserButton;
   forwardButton?: ThemeableBrowserButton;
   closeButton?: ThemeableBrowserButton;
@@ -37,6 +44,7 @@ export interface ThemeableBrowserOptions {
     }[];
   };
   backButtonCanClose?: boolean;
+  disableAnimation?: boolean;
 
   // inAppBrowser options
   location?: string;
