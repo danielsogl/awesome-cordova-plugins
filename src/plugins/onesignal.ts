@@ -41,8 +41,8 @@ export class OneSignal {
   @Cordova({ observable: true })
   static init(appId: string,
     options: {
-      googleProjectNumber: string,
-      autoRegister: boolean
+      googleProjectNumber: string;
+      autoRegister: boolean;
     }): Observable<any> { return; }
 
 
@@ -168,68 +168,7 @@ export class OneSignal {
   * @returns {Promise} Returns a Promise that resolves if the notification was send successfully.
   */
   @Cordova()
-  static postNotification(notificationObj: {
-    app_id: string,
-    contents: any,
-    headings?: any,
-    isIos?: boolean,
-    isAndroid?: boolean,
-    isWP?: boolean,
-    isWP_WNS?: boolean,
-    isAdm?: boolean,
-    isChrome?: boolean,
-    isChromeWeb?: boolean,
-    isSafari?: boolean,
-    isAnyWeb?: boolean,
-    included_segments?: string[],
-    excluded_segments?: string[],
-    include_player_ids?: string[],
-    include_ios_tokens?: string[],
-    include_android_reg_ids?: string[],
-    include_wp_uris?: string[],
-    include_wp_wns_uris?: string[],
-    include_amazon_reg_ids?: string[],
-    include_chrome_reg_ids?: string[],
-    include_chrome_web_reg_ids?: string[],
-    app_ids?: string[];
-    tags?: any[],
-    ios_badgeType?: string,
-    ios_badgeCount?: number,
-    ios_sound?: string,
-    android_sound?: string,
-    adm_sound?: string,
-    wp_sound?: string,
-    wp_wns_sound?: string,
-    data?: any,
-    buttons?: any,
-    small_icon?: string,
-    large_icon?: string,
-    big_picture?: string,
-    adm_small_icon?: string,
-    adm_large_icon?: string,
-    adm_big_picture?: string,
-    chrome_icon?: string,
-    chrome_big_picture?: string,
-    chrome_web_icon?: string,
-    firefox_icon?: string,
-    url?: string,
-    send_after?: string,
-    delayed_option?: string,
-    delivery_time_of_day?: string,
-    android_led_color?: string,
-    android_accent_color?: string,
-    android_visibility?: number,
-    content_available?: boolean,
-    amazon_background_data?: boolean,
-    template_id?: string,
-    android_group?: string,
-    android_group_message?: any,
-    adm_group?: string,
-    adm_group_message?: any,
-    ttl?: number,
-    priority?: number,
-    ios_category?: string
-  }): Promise<any> { return; }
+  static postNotification(notificationObj: OneSignalNotification): Promise<any> { return; }
 
   /**
   * Prompts the user for location permission to allow geotagging based on the "Location radius" filter on the OneSignal dashboard.
@@ -251,4 +190,67 @@ export class OneSignal {
     visualLevel: number
   }): void { }
 
+}
+
+export interface OneSignalNotification {
+  app_id: string;
+  contents: any;
+  headings?: any;
+  isIos?: boolean;
+  isAndroid?: boolean;
+  isWP?: boolean;
+  isWP_WNS?: boolean;
+  isAdm?: boolean;
+  isChrome?: boolean;
+  isChromeWeb?: boolean;
+  isSafari?: boolean;
+  isAnyWeb?: boolean;
+  included_segments?: string[];
+  excluded_segments?: string[];
+  include_player_ids?: string[];
+  include_ios_tokens?: string[];
+  include_android_reg_ids?: string[];
+  include_wp_uris?: string[];
+  include_wp_wns_uris?: string[];
+  include_amazon_reg_ids?: string[];
+  include_chrome_reg_ids?: string[];
+  include_chrome_web_reg_ids?: string[];
+  app_ids?: string[];
+  tags?: any[];
+  ios_badgeType?: string;
+  ios_badgeCount?: number;
+  ios_sound?: string;
+  android_sound?: string;
+  adm_sound?: string;
+  wp_sound?: string;
+  wp_wns_sound?: string;
+  data?: any;
+  buttons?: any;
+  small_icon?: string;
+  large_icon?: string;
+  big_picture?: string;
+  adm_small_icon?: string;
+  adm_large_icon?: string;
+  adm_big_picture?: string;
+  chrome_icon?: string;
+  chrome_big_picture?: string;
+  chrome_web_icon?: string;
+  firefox_icon?: string;
+  url?: string;
+  send_after?: string;
+  delayed_option?: string;
+  delivery_time_of_day?: string;
+  android_led_color?: string;
+  android_accent_color?: string;
+  android_visibility?: number;
+  content_available?: boolean;
+  amazon_background_data?: boolean;
+  template_id?: string;
+  android_group?: string;
+  android_group_message?: any;
+  adm_group?: string;
+  adm_group_message?: any;
+  ttl?: number;
+  priority?: number;
+  ios_category?: string
 }
