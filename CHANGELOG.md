@@ -1,3 +1,20 @@
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/driftyco/ionic-native/compare/v2.1.9...v2.2.0) (2016-10-11)
+
+
+### Bug Fixes
+
+* **native-transitions:** add missing interface properties ([35c8bbd](https://github.com/driftyco/ionic-native/commit/35c8bbd))
+* **onesignal:** update to match latest api ([#671](https://github.com/driftyco/ionic-native/issues/671)) ([7c6e6d8](https://github.com/driftyco/ionic-native/commit/7c6e6d8)), closes [#667](https://github.com/driftyco/ionic-native/issues/667)
+* **thmeable-browser:** fix the name of the plugin ([#663](https://github.com/driftyco/ionic-native/issues/663)) ([1368175](https://github.com/driftyco/ionic-native/commit/1368175))
+
+
+### Features
+
+* **http:** add cordovaHTTP wrapper ([#674](https://github.com/driftyco/ionic-native/issues/674)) ([f0961c7](https://github.com/driftyco/ionic-native/commit/f0961c7))
+
+
+
 <a name="2.1.9"></a>
 ## [2.1.9](https://github.com/driftyco/ionic-native/compare/v2.1.8...v2.1.9) (2016-10-09)
 
