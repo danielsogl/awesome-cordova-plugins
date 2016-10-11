@@ -252,5 +252,5 @@ export interface OneSignalNotification {
   adm_group_message?: any;
   ttl?: number;
   priority?: number;
-  ios_category?: string
+  ios_category?: string;
 }
