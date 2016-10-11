@@ -96,8 +96,7 @@ export class Mixpanel {
    *
    * @returns {MixpanelPeople}
    */
-  @CordovaProperty
-  static get people(): MixpanelPeople { return mixpanel.people; };
+  static people: MixpanelPeople = MixpanelPeople;
 
 }
 /**
