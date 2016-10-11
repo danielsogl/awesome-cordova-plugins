@@ -14,13 +14,19 @@ import { Observable } from 'rxjs/Observable';
  * ```typescript
  * import { OneSignal } from 'ionic-native';
  *
- * OneSignal.init('b2f7f966-d8cc-11e4-bed1-df8f05be55ba',
- *                        {googleProjectNumber: '703322744261'})
- *  .subscribe(jsonData => {
- *    console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
- *  });
+ * OneSignal.startInit('b2f7f966-d8cc-11e4-bed1-df8f05be55ba', '703322744261');
  *
  * OneSignal.enableInAppAlertNotification(true);
+ *
+ * OneSignal.handleNotificationReceived().subscribe(() => {
+ *  // do something when notification is received
+ * });
+ *
+ * OneSignal.handleNotificationOpened().subscribe(() => {
+ *   // do something when a notification is opened
+ * });
+ *
+ * OneSignal.endInit();
  * ```
  *
  */
@@ -32,26 +38,71 @@ import { Observable } from 'rxjs/Observable';
 export class OneSignal {
 
   /**
-   * Only required method you need to call to setup OneSignal to receive push notifications. Call this from the `deviceready` event.
-   *
-   * @param {string} Your AppId from your OneSignal app
-   * @param {options} The Google Project Number (which you can get from the Google Developer Potal) and the autoRegister option.
-   * @returns {Observable} when a notification is received. Handle your notification action here.
+   * @private
    */
-  @Cordova({ observable: true })
-  static init(appId: string,
-    options: {
-      googleProjectNumber: string;
-      autoRegister: boolean;
-    }): Observable<any> { return; }
-
+  static OSInFocusDisplayOption = {
+    None: 0,
+    InAppAlert : 1,
+    Notification : 2
+  };
 
   /**
-   * Call this when you would like to prompt an iOS user to accept push notifications with the default system prompt.
-   * Only use if you passed false to autoRegister when calling init.
+   * Start the initialization process. Once you are done configuring OneSignal, call the endInit function.
+   *
+   * @param {string} appId Your AppId from your OneSignal app
+   * @param {string} googleProjectNumber The Google Project Number (which you can get from the Google Developer Portal) and the autoRegister option.
    */
   @Cordova({ sync: true })
-  static registerForPushNotifications(): void { }
+  static startInit(appId: string, googleProjectNumber: string): any { return; }
+
+  /**
+   * Callback to run when a notification is received
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  static handleNotificationReceived(): Observable<any> { return; }
+
+  /**
+   * Callback to run when a notification is opened
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  static handleNotificationOpened(): Observable<any> { return; }
+
+  /**
+   *
+   * @param settings
+   */
+  @Cordova({ sync: true })
+  static iOSSettings(settings: {
+    kOSSettingsKeyInAppLaunchURL: boolean;
+    kOSSettingsKeyAutoPrompt: boolean;
+  }): any { return; }
+
+  @Cordova({ sync: true })
+  static endInit(): any { return; }
+
+  /**
+   * Retrieve a list of tags that have been set on the user from the OneSignal server.
+   *
+   * @returns {Promise} Returns a Promise that resolves when tags are recieved.
+   */
+  @Cordova()
+  static getTags(): Promise<any> { return; }
+
+  /**
+   * Lets you retrieve the OneSignal user id and device token.
+   * Your handler is called after the device is successfully registered with OneSignal.
+   *
+   * @returns {Promise} Returns a Promise that reolves if the device was successfully registered.
+   * It returns a JSON with `userId`and `pushToken`.
+   */
+  @Cordova()
+  static getIds(): Promise<any> { return; }
 
 
   /**
@@ -65,47 +116,36 @@ export class OneSignal {
   static sendTag(key: string, value: string): void { }
 
   /**
- * Tag a user based on an app event of your choosing so later you can create segments on [onesignal.com](https://onesignal.com/) to target these users.
- * Recommend using sendTags over sendTag if you need to set more than one tag on a user at a time.
- *
- * @param {string} Pass a json object with key/value pairs like: {key: "value", key2: "value2"}
- */
+   * Tag a user based on an app event of your choosing so later you can create segments on [onesignal.com](https://onesignal.com/) to target these users.
+   * Recommend using sendTags over sendTag if you need to set more than one tag on a user at a time.
+   *
+   * @param {string} Pass a json object with key/value pairs like: {key: "value", key2: "value2"}
+   */
   @Cordova({ sync: true })
   static sendTags(json: any): void { }
 
   /**
-  * Retrieve a list of tags that have been set on the user from the OneSignal server.
-  *
-  * @returns {Promise} Returns a Promise that resolves when tags are recieved.
-  */
-  @Cordova()
-  static getTags(): Promise<any> { return; }
-
-  /**
-  * Deletes a tag that was previously set on a user with `sendTag` or `sendTags`. Use `deleteTags` if you need to delete more than one.
-  *
-  * @param {string} Key to remove.
-  */
+   * Deletes a tag that was previously set on a user with `sendTag` or `sendTags`. Use `deleteTags` if you need to delete more than one.
+   *
+   * @param {string} Key to remove.
+   */
   @Cordova({ sync: true })
   static deleteTag(key: string): void { }
 
   /**
-  * Deletes tags that were previously set on a user with `sendTag` or `sendTags`.
-  *
-  * @param {Array<string>} Keys to remove.
-  */
+   * Deletes tags that were previously set on a user with `sendTag` or `sendTags`.
+   *
+   * @param {Array<string>} Keys to remove.
+   */
   @Cordova({ sync: true })
   static deleteTags(keys: string[]): void { }
 
   /**
-  * Lets you retrieve the OneSignal user id and device token.
-  * Your handler is called after the device is successfully registered with OneSignal.
-  *
-  * @returns {Promise} Returns a Promise that reolves if the device was successfully registered.
-  * It returns a JSON with `userId`and `pushToken`.
-  */
-  @Cordova()
-  static getIds(): Promise<any> { return; }
+   * Call this when you would like to prompt an iOS user to accept push notifications with the default system prompt.
+   * Only use if you passed false to autoRegister when calling init.
+   */
+  @Cordova({ sync: true })
+  static registerForPushNotifications(): void { }
 
   /**
   * Warning:
@@ -143,15 +183,6 @@ export class OneSignal {
   @Cordova({ sync: true })
   static enableNotificationsWhenActive(enable: boolean): void { }
 
-  /**
-  * By default this is false and notifications will not be shown when the user is in your app, instead the notificationOpenedCallback is fired.
-  * If set to true notifications will be shown as native alert boxes if a notification is received when the user is in your app.
-  * The notificationOpenedCallback is then fired after the alert box is closed.
-  *
-  * @param {boolean} enable
-  */
-  @Cordova({ sync: true })
-  static enableInAppAlertNotification(enable: boolean): void { }
 
   /**
   * You can call this method with false to opt users out of receiving all notifications through OneSignal.
@@ -175,6 +206,13 @@ export class OneSignal {
   */
   @Cordova({ sync: true })
   static promptLocation(): void { }
+
+  /**
+   *
+   * @param email {string}
+   */
+  @Cordova({ sync: true })
+  static syncHashedEmail(email: string): void { }
 
   /**
   * Enable logging to help debug if you run into an issue setting up OneSignal.
