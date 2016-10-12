@@ -111,6 +111,7 @@ export class MixpanelPeople {
    * @param distinctId {string}
    * @return {Promise<any>}
    */
+  @Cordova()
   static identify(distinctId: string): Promise<any> { return; }
 
   /**
@@ -118,6 +119,7 @@ export class MixpanelPeople {
    * @param peopleProperties {string}
    * @return {Promise<any>}
    */
+  @Cordova()
   static increment(peopleProperties: any): Promise<any> { return; }
 
   /**
@@ -125,6 +127,7 @@ export class MixpanelPeople {
    * @param pushId
    * @return {Promise<any>}
    */
+  @Cordova()
   static setPushId(pushId: string): Promise<any> { return; }
 
   /**
@@ -132,6 +135,7 @@ export class MixpanelPeople {
    * @param peopleProperties
    * @return {Promise<any>}
    */
+  @Cordova()
   static set(peopleProperties: any): Promise<any> { return; }
 
   /**
@@ -139,5 +143,6 @@ export class MixpanelPeople {
    * @param peopleProperties
    * @return {Promise<any>}
    */
+  @Cordova()
   static setOnce(peopleProperties: any): Promise<any> { return; }
 }
