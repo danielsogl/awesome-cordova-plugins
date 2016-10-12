@@ -16,7 +16,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * OneSignal.startInit('b2f7f966-d8cc-11e4-bed1-df8f05be55ba', '703322744261');
  *
- * OneSignal.enableInAppAlertNotification(true);
+ * OneSignal.enableNotificationsWhenActive(true);
  *
  * OneSignal.handleNotificationReceived().subscribe(() => {
  *  // do something when notification is received
