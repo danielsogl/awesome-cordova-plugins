@@ -1,3 +1,19 @@
+<a name="2.2.2"></a>
+## [2.2.2](https://github.com/driftyco/ionic-native/compare/v2.2.1...v2.2.2) (2016-10-12)
+
+
+### Bug Fixes
+
+* **file:** getFreeDiskSpace now works ([d2f42ef](https://github.com/driftyco/ionic-native/commit/d2f42ef))
+* **file:** read methods can accept Blobs too ([276d61b](https://github.com/driftyco/ionic-native/commit/276d61b))
+
+
+### Features
+
+* **file:** getFile and getDirectory are now public ([5c92455](https://github.com/driftyco/ionic-native/commit/5c92455)), closes [#657](https://github.com/driftyco/ionic-native/issues/657)
+
+
+
 <a name="2.2.1"></a>
 ## [2.2.1](https://github.com/driftyco/ionic-native/compare/v2.2.0...v2.2.1) (2016-10-12)
 
@@ -5,9 +21,16 @@
 ### Bug Fixes
 
 * **diagnostic:** misspelled getContactsAuthorizationStatus method ([#678](https://github.com/driftyco/ionic-native/issues/678)) ([bff4862](https://github.com/driftyco/ionic-native/commit/bff4862))
+* **file:** fix writeFile method ([842a80d](https://github.com/driftyco/ionic-native/commit/842a80d))
+* **file:** last parameter for writeFile now only accepts options ([5710eb7](https://github.com/driftyco/ionic-native/commit/5710eb7))
 * **http:** export via window.IonicNative ([#675](https://github.com/driftyco/ionic-native/issues/675)) ([cf7abe1](https://github.com/driftyco/ionic-native/commit/cf7abe1))
 * **location-accuracy:** accuracy param is number ([c2d4f1c](https://github.com/driftyco/ionic-native/commit/c2d4f1c)), closes [#676](https://github.com/driftyco/ionic-native/issues/676)
 * **themeablebrowser:** add missed options ([#680](https://github.com/driftyco/ionic-native/issues/680)) ([e28e5b0](https://github.com/driftyco/ionic-native/commit/e28e5b0))
+
+
+### Features
+
+* **file:** resolveLocalFilesystemUrl and resolveDirectoryUrl are now public methods ([542ff4c](https://github.com/driftyco/ionic-native/commit/542ff4c)), closes [#657](https://github.com/driftyco/ionic-native/issues/657)
 
 
 
