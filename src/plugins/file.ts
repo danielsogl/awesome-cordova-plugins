@@ -381,6 +381,10 @@ export class File {
     14: 'DIR_READ_ERR',
   };
 
+  /**
+   * Get free disk space
+   * @returns {Promise<number}
+   */
   @Cordova()
   static getFreeDiskSpace(): Promise<number> {
     return;
@@ -393,7 +397,6 @@ export class File {
    * @param {string} dir Name of directory to check
    * @return {Promise<boolean|FileError>} Returns a Promise that resolves to true if the directory exists or rejects with an error.
    */
-
   static checkDir(path: string, dir: string): Promise<boolean|FileError> {
     if ((/^\//.test(dir))) {
       let err = new FileError(5);
@@ -418,7 +421,6 @@ export class File {
    * @param {boolean} replace If true, replaces file with same name. If false returns error
    * @return {Promise<DirectoryEntry|FileError>} Returns a Promise that resolves with a DirectoryEntry or rejects with an error.
    */
-
   static createDir(path: string, dirName: string, replace: boolean): Promise<DirectoryEntry|FileError> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -447,7 +449,6 @@ export class File {
    * @param {string} dirName The directory name
    * @return {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
-
   static removeDir(path: string, dirName: string): Promise<RemoveResult|FileError> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -473,7 +474,6 @@ export class File {
    * @param {string} newDirName The destination directory name
    * @return {Promise<DirectoryEntry|Entry|FileError>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
    */
-
   static moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry|Entry|FileError> {
     newDirName = newDirName || dirName;
 
@@ -530,7 +530,6 @@ export class File {
    * @param {string} dirName Name of directory
    * @return {Promise<Entry[]>} Returns a Promise that resolves to an array of Entry objects or rejects with an error.
    */
-
   static listDir(path: string, dirName: string): Promise<Entry[]> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -555,7 +554,6 @@ export class File {
    * @param {string} dirName Name of directory
    * @return {Promise<RemoveResult>} Returns a Promise that resolves with a RemoveResult or rejects with an error.
    */
-
   static removeRecursively(path: string, dirName: string): Promise<RemoveResult> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -579,7 +577,6 @@ export class File {
    * @param {string} file Name of file to check
    * @return {Promise<boolean|FileError>} Returns a Promise that resolves with a boolean or rejects with an error.
    */
-
   static checkFile(path: string, file: string): Promise<boolean|FileError> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
@@ -637,7 +634,6 @@ export class File {
    * @param {string} fileName Name of file to remove
    * @return {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
-
   static removeFile(path: string, fileName: string): Promise<RemoveResult|FileError> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
