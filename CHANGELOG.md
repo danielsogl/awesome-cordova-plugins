@@ -1,16 +1,19 @@
+<a name="2.2.1"></a>
+## [2.2.1](https://github.com/driftyco/ionic-native/compare/v2.2.0...v2.2.1) (2016-10-12)
+
+
+### Bug Fixes
+
+* **diagnostic:** misspelled getContactsAuthorizationStatus method ([#678](https://github.com/driftyco/ionic-native/issues/678)) ([bff4862](https://github.com/driftyco/ionic-native/commit/bff4862))
+* **http:** export via window.IonicNative ([#675](https://github.com/driftyco/ionic-native/issues/675)) ([cf7abe1](https://github.com/driftyco/ionic-native/commit/cf7abe1))
+* **location-accuracy:** accuracy param is number ([c2d4f1c](https://github.com/driftyco/ionic-native/commit/c2d4f1c)), closes [#676](https://github.com/driftyco/ionic-native/issues/676)
+* **themeablebrowser:** add missed options ([#680](https://github.com/driftyco/ionic-native/issues/680)) ([e28e5b0](https://github.com/driftyco/ionic-native/commit/e28e5b0))
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/driftyco/ionic-native/compare/v2.1.9...v2.2.0) (2016-10-11)
 
-
-## BREAKING CHANGES
-
-### OneSignal
-The wrapper for this plugin has been updated to the match latest version of the plugin (2.x). If you are still using and older version of the plugin (1.x), you should use ionic-native v.2.1.x. 
-
-### ThemeableBrowser
-The wrapper for this plugin (and related interfaces) has been refactored to replace "Themable" with "Themeable". Please fix your existing code to match the new class and interfaces names.
-
-----
 
 ### Bug Fixes
 
