@@ -659,29 +659,20 @@ export class File {
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName path relative to base path
    * @param {string | Blob} text content or blob to write
-   * @param {boolean | WriteOptions} replaceOrOptions replace file if set to true. See WriteOptions for more information.
+   * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
   static writeFile(path: string, fileName: string,
-                   text: string | Blob, replaceOrOptions: boolean | WriteOptions): Promise<void> {
+                   text: string | Blob, options: WriteOptions): Promise<void> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
       return Promise.reject(err);
     }
 
-    let opts: WriteOptions = {};
-    if (replaceOrOptions) {
-      if (typeof(replaceOrOptions) === 'boolean') {
-        opts.replace = <boolean>replaceOrOptions;
-      } else {
-        opts.replace = (<WriteOptions>replaceOrOptions).replace
-      }
-    }
-
     let getFileOpts: Flags = {
       create: true,
-      exclusive: opts.replace
+      exclusive: options.replace
     };
 
     return File.resolveDirectoryUrl(path)
@@ -693,12 +684,12 @@ export class File {
       })
       .then((writer) => {
 
-        if (opts.append) {
+        if (options.append) {
           writer.seek(writer.length);
         }
 
-        if (opts.truncate) {
-          writer.truncate(opts.truncate);
+        if (options.truncate) {
+          writer.truncate(options.truncate);
         }
 
         return File.write(writer, text);
