@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from './plugin';
+import {Plugin, Cordova, pluginWarn} from './plugin';
 
 declare var window: any;
 declare var cordova: any;
@@ -337,6 +337,12 @@ declare var FileError: {
   PATH_EXISTS_ERR: number;
 };
 
+let pluginMeta = {
+  plugin: 'cordova-plugin-file',
+  pluginRef: 'cordova.file',
+  repo: 'https://github.com/apache/cordova-plugin-file'
+};
+
 /**
  * @name File
  * @description
@@ -358,11 +364,7 @@ declare var FileError: {
  *  Although most of the plugin code was written when an earlier spec was current: http://www.w3.org/TR/2011/WD-file-system-api-20110419/
  *  It also implements the FileWriter spec : http://dev.w3.org/2009/dap/file-system/file-writer.html
  */
-@Plugin({
-  plugin: 'cordova-plugin-file',
-  pluginRef: 'cordova.file',
-  repo: 'https://github.com/apache/cordova-plugin-file'
-})
+@Plugin(pluginMeta)
 export class File {
   static cordovaFileError: {} = {
     1: 'NOT_FOUND_ERR',
@@ -383,11 +385,17 @@ export class File {
 
   /**
    * Get free disk space
-   * @returns {Promise<number}
+   * @returns {Promise<number>}
    */
-  @Cordova()
   static getFreeDiskSpace(): Promise<number> {
-    return;
+    return new Promise<any>((resolve, reject) => {
+      if (!cordova || !cordova.exec) {
+        pluginWarn(pluginMeta);
+        reject({ error: 'plugin_not_installed' });
+      } else {
+        cordova.exec(resolve, reject, 'File', 'getFreeDiskSpace', []);
+      }
+    });
   }
 
   /**
