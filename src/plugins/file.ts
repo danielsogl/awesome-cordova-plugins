@@ -674,22 +674,30 @@ export class File {
     if (replaceOrOptions) {
       if (typeof(replaceOrOptions) === 'boolean') {
         opts.replace = <boolean>replaceOrOptions;
+      } else {
+        opts.replace = (<WriteOptions>replaceOrOptions).replace
       }
     }
 
+    let getFileOpts: Flags = {
+      create: true,
+      exclusive: opts.replace
+    };
+
     return File.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getFile(fse, fileName, opts);
+        return File.getFile(fse, fileName, getFileOpts);
       })
       .then((fe) => {
         return File.createWriter(fe);
       })
       .then((writer) => {
+
         if (opts.append) {
           writer.seek(writer.length);
         }
 
-        if (opts.hasOwnProperty('truncate')) {
+        if (opts.truncate) {
           writer.truncate(opts.truncate);
         }
 
@@ -1018,9 +1026,7 @@ export class File {
   private static getFile(fse: DirectoryEntry, fn: string, flags: Flags): Promise<FileEntry> {
     return new Promise<FileEntry>((resolve, reject) => {
       try {
-        fse.getFile(fn, flags, (fe) => {
-          resolve(fe);
-        }, (err) => {
+        fse.getFile(fn, flags, resolve, (err) => {
           File.fillErrorMessage(err);
           reject(err);
         });
@@ -1123,12 +1129,12 @@ export class File {
       return this.writeFileInChunks(writer, gu);
     }
 
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       writer.onwriteend = (evt) => {
         if (writer.error) {
           reject(writer.error);
         } else {
-          resolve();
+          resolve(evt);
         }
       };
       writer.write(gu);
