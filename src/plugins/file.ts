@@ -959,13 +959,13 @@ export class File {
 
   /**
    * Resolves a local file system URL
-   * @param furl {string} file system url
+   * @param fileUrl {string} file system url
    * @returns {Promise<Entry>}
    */
-  static resolveLocalFilesystemUrl(furl: string): Promise<Entry> {
+  static resolveLocalFilesystemUrl(fileUrl: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
       try {
-        window.resolveLocalFileSystemURL(furl, (entry) => {
+        window.resolveLocalFileSystemURL(fileUrl, (entry) => {
           resolve(entry);
         }, (err) => {
           File.fillErrorMessage(err);
@@ -980,11 +980,11 @@ export class File {
 
   /**
    * Resolves a local directory url
-   * @param durl {string} directory system url
+   * @param directoryUrl {string} directory system url
    * @returns {Promise<DirectoryEntry>}
    */
-  static resolveDirectoryUrl(durl: string): Promise<DirectoryEntry> {
-    return File.resolveLocalFilesystemUrl(durl)
+  static resolveDirectoryUrl(directoryUrl: string): Promise<DirectoryEntry> {
+    return File.resolveLocalFilesystemUrl(directoryUrl)
       .then((de) => {
         if (de.isDirectory) {
           return <DirectoryEntry>de;
@@ -997,12 +997,16 @@ export class File {
   }
 
   /**
-   * @private
+   * Get a directory
+   * @param directoryEntry {DirectoryEntry} Directory entry, obtained by resolveDirectoryUrl method
+   * @param directoryName {string} Directory name
+   * @param flags {Flags} Options
+   * @returns {Promise<DirectoryEntry>}
    */
-  private static getDirectory(fse: DirectoryEntry, dn: string, flags: Flags): Promise<DirectoryEntry> {
+  static getDirectory(directoryEntry: DirectoryEntry, directoryName: string, flags: Flags): Promise<DirectoryEntry> {
     return new Promise<DirectoryEntry>((resolve, reject) => {
       try {
-        fse.getDirectory(dn, flags, (de) => {
+        directoryEntry.getDirectory(directoryName, flags, (de) => {
           resolve(de);
         }, (err) => {
           File.fillErrorMessage(err);
@@ -1016,12 +1020,16 @@ export class File {
   }
 
   /**
-   * @private
+   * Get a file
+   * @param directoryEntry {DirectoryEntry} Directory entry, obtained by resolveDirectoryUrl method
+   * @param fileName {string} File name
+   * @param flags {Flags} Options
+   * @returns {Promise<FileEntry>}
    */
-  private static getFile(fse: DirectoryEntry, fn: string, flags: Flags): Promise<FileEntry> {
+  static getFile(directoryEntry: DirectoryEntry, fileName: string, flags: Flags): Promise<FileEntry> {
     return new Promise<FileEntry>((resolve, reject) => {
       try {
-        fse.getFile(fn, flags, resolve, (err) => {
+        directoryEntry.getFile(fileName, flags, resolve, (err) => {
           File.fillErrorMessage(err);
           reject(err);
         });
