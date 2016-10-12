@@ -301,10 +301,10 @@ export interface FileReader {
   onabort: (evt: ProgressEvent) => void;
 
   abort(): void;
-  readAsText(fe: File, encoding?: string): void;
-  readAsDataURL(fe: File): void;
-  readAsBinaryString(fe: File): void;
-  readAsArrayBuffer(fe: File): void;
+  readAsText(fe: File | Blob, encoding?: string): void;
+  readAsDataURL(fe: File | Blob): void;
+  readAsBinaryString(fe: File | Blob): void;
+  readAsArrayBuffer(fe: File | Blob): void;
 }
 
 declare var FileReader: {
