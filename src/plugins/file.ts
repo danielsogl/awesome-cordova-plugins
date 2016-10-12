@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from './plugin';
+import {Plugin, Cordova, pluginWarn} from './plugin';
 
 declare var window: any;
 declare var cordova: any;
@@ -301,10 +301,10 @@ export interface FileReader {
   onabort: (evt: ProgressEvent) => void;
 
   abort(): void;
-  readAsText(fe: File, encoding?: string): void;
-  readAsDataURL(fe: File): void;
-  readAsBinaryString(fe: File): void;
-  readAsArrayBuffer(fe: File): void;
+  readAsText(fe: File | Blob, encoding?: string): void;
+  readAsDataURL(fe: File | Blob): void;
+  readAsBinaryString(fe: File | Blob): void;
+  readAsArrayBuffer(fe: File | Blob): void;
 }
 
 declare var FileReader: {
@@ -337,6 +337,12 @@ declare var FileError: {
   PATH_EXISTS_ERR: number;
 };
 
+let pluginMeta = {
+  plugin: 'cordova-plugin-file',
+  pluginRef: 'cordova.file',
+  repo: 'https://github.com/apache/cordova-plugin-file'
+};
+
 /**
  * @name File
  * @description
@@ -358,11 +364,7 @@ declare var FileError: {
  *  Although most of the plugin code was written when an earlier spec was current: http://www.w3.org/TR/2011/WD-file-system-api-20110419/
  *  It also implements the FileWriter spec : http://dev.w3.org/2009/dap/file-system/file-writer.html
  */
-@Plugin({
-  plugin: 'cordova-plugin-file',
-  pluginRef: 'cordova.file',
-  repo: 'https://github.com/apache/cordova-plugin-file'
-})
+@Plugin(pluginMeta)
 export class File {
   static cordovaFileError: {} = {
     1: 'NOT_FOUND_ERR',
@@ -381,9 +383,19 @@ export class File {
     14: 'DIR_READ_ERR',
   };
 
-  @Cordova()
+  /**
+   * Get free disk space
+   * @returns {Promise<number>} Returns a promise that resolves with the remaining free disk space
+   */
   static getFreeDiskSpace(): Promise<number> {
-    return;
+    return new Promise<any>((resolve, reject) => {
+      if (!cordova || !cordova.exec) {
+        pluginWarn(pluginMeta);
+        reject({ error: 'plugin_not_installed' });
+      } else {
+        cordova.exec(resolve, reject, 'File', 'getFreeDiskSpace', []);
+      }
+    });
   }
 
   /**
@@ -393,7 +405,6 @@ export class File {
    * @param {string} dir Name of directory to check
    * @return {Promise<boolean|FileError>} Returns a Promise that resolves to true if the directory exists or rejects with an error.
    */
-
   static checkDir(path: string, dir: string): Promise<boolean|FileError> {
     if ((/^\//.test(dir))) {
       let err = new FileError(5);
@@ -418,7 +429,6 @@ export class File {
    * @param {boolean} replace If true, replaces file with same name. If false returns error
    * @return {Promise<DirectoryEntry|FileError>} Returns a Promise that resolves with a DirectoryEntry or rejects with an error.
    */
-
   static createDir(path: string, dirName: string, replace: boolean): Promise<DirectoryEntry|FileError> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -447,7 +457,6 @@ export class File {
    * @param {string} dirName The directory name
    * @return {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
-
   static removeDir(path: string, dirName: string): Promise<RemoveResult|FileError> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -473,7 +482,6 @@ export class File {
    * @param {string} newDirName The destination directory name
    * @return {Promise<DirectoryEntry|Entry|FileError>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
    */
-
   static moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry|Entry|FileError> {
     newDirName = newDirName || dirName;
 
@@ -530,7 +538,6 @@ export class File {
    * @param {string} dirName Name of directory
    * @return {Promise<Entry[]>} Returns a Promise that resolves to an array of Entry objects or rejects with an error.
    */
-
   static listDir(path: string, dirName: string): Promise<Entry[]> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -555,7 +562,6 @@ export class File {
    * @param {string} dirName Name of directory
    * @return {Promise<RemoveResult>} Returns a Promise that resolves with a RemoveResult or rejects with an error.
    */
-
   static removeRecursively(path: string, dirName: string): Promise<RemoveResult> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -579,7 +585,6 @@ export class File {
    * @param {string} file Name of file to check
    * @return {Promise<boolean|FileError>} Returns a Promise that resolves with a boolean or rejects with an error.
    */
-
   static checkFile(path: string, file: string): Promise<boolean|FileError> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
@@ -637,7 +642,6 @@ export class File {
    * @param {string} fileName Name of file to remove
    * @return {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
-
   static removeFile(path: string, fileName: string): Promise<RemoveResult|FileError> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
@@ -659,38 +663,37 @@ export class File {
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName path relative to base path
    * @param {string | Blob} text content or blob to write
-   * @param {boolean | WriteOptions} replaceOrOptions replace file if set to true. See WriteOptions for more information.
+   * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
   static writeFile(path: string, fileName: string,
-                   text: string | Blob, replaceOrOptions: boolean | WriteOptions): Promise<void> {
+                   text: string | Blob, options: WriteOptions): Promise<void> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
       return Promise.reject(err);
     }
 
-    let opts: WriteOptions = {};
-    if (replaceOrOptions) {
-      if (typeof(replaceOrOptions) === 'boolean') {
-        opts.replace = <boolean>replaceOrOptions;
-      }
-    }
+    let getFileOpts: Flags = {
+      create: true,
+      exclusive: options.replace
+    };
 
     return File.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getFile(fse, fileName, opts);
+        return File.getFile(fse, fileName, getFileOpts);
       })
       .then((fe) => {
         return File.createWriter(fe);
       })
       .then((writer) => {
-        if (opts.append) {
+
+        if (options.append) {
           writer.seek(writer.length);
         }
 
-        if (opts.hasOwnProperty('truncate')) {
-          writer.truncate(opts.truncate);
+        if (options.truncate) {
+          writer.truncate(options.truncate);
         }
 
         return File.write(writer, text);
@@ -959,12 +962,14 @@ export class File {
   }
 
   /**
-   * @private
+   * Resolves a local file system URL
+   * @param fileUrl {string} file system url
+   * @returns {Promise<Entry>}
    */
-  private static resolveLocalFilesystemUrl(furl: string): Promise<Entry> {
+  static resolveLocalFilesystemUrl(fileUrl: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
       try {
-        window.resolveLocalFileSystemURL(furl, (entry) => {
+        window.resolveLocalFileSystemURL(fileUrl, (entry) => {
           resolve(entry);
         }, (err) => {
           File.fillErrorMessage(err);
@@ -978,10 +983,12 @@ export class File {
   }
 
   /**
-   * @private
+   * Resolves a local directory url
+   * @param directoryUrl {string} directory system url
+   * @returns {Promise<DirectoryEntry>}
    */
-  private static resolveDirectoryUrl(durl: string): Promise<DirectoryEntry> {
-    return File.resolveLocalFilesystemUrl(durl)
+  static resolveDirectoryUrl(directoryUrl: string): Promise<DirectoryEntry> {
+    return File.resolveLocalFilesystemUrl(directoryUrl)
       .then((de) => {
         if (de.isDirectory) {
           return <DirectoryEntry>de;
@@ -994,12 +1001,16 @@ export class File {
   }
 
   /**
-   * @private
+   * Get a directory
+   * @param directoryEntry {DirectoryEntry} Directory entry, obtained by resolveDirectoryUrl method
+   * @param directoryName {string} Directory name
+   * @param flags {Flags} Options
+   * @returns {Promise<DirectoryEntry>}
    */
-  private static getDirectory(fse: DirectoryEntry, dn: string, flags: Flags): Promise<DirectoryEntry> {
+  static getDirectory(directoryEntry: DirectoryEntry, directoryName: string, flags: Flags): Promise<DirectoryEntry> {
     return new Promise<DirectoryEntry>((resolve, reject) => {
       try {
-        fse.getDirectory(dn, flags, (de) => {
+        directoryEntry.getDirectory(directoryName, flags, (de) => {
           resolve(de);
         }, (err) => {
           File.fillErrorMessage(err);
@@ -1013,14 +1024,16 @@ export class File {
   }
 
   /**
-   * @private
+   * Get a file
+   * @param directoryEntry {DirectoryEntry} Directory entry, obtained by resolveDirectoryUrl method
+   * @param fileName {string} File name
+   * @param flags {Flags} Options
+   * @returns {Promise<FileEntry>}
    */
-  private static getFile(fse: DirectoryEntry, fn: string, flags: Flags): Promise<FileEntry> {
+  static getFile(directoryEntry: DirectoryEntry, fileName: string, flags: Flags): Promise<FileEntry> {
     return new Promise<FileEntry>((resolve, reject) => {
       try {
-        fse.getFile(fn, flags, (fe) => {
-          resolve(fe);
-        }, (err) => {
+        directoryEntry.getFile(fileName, flags, resolve, (err) => {
           File.fillErrorMessage(err);
           reject(err);
         });
@@ -1123,12 +1136,12 @@ export class File {
       return this.writeFileInChunks(writer, gu);
     }
 
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       writer.onwriteend = (evt) => {
         if (writer.error) {
           reject(writer.error);
         } else {
-          resolve();
+          resolve(evt);
         }
       };
       writer.write(gu);
