@@ -958,9 +958,11 @@ export class File {
   }
 
   /**
-   * @private
+   * Resolves a local file system URL
+   * @param furl {string} file system url
+   * @returns {Promise<Entry>}
    */
-  private static resolveLocalFilesystemUrl(furl: string): Promise<Entry> {
+  static resolveLocalFilesystemUrl(furl: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
       try {
         window.resolveLocalFileSystemURL(furl, (entry) => {
@@ -977,9 +979,11 @@ export class File {
   }
 
   /**
-   * @private
+   * Resolves a local directory url
+   * @param durl {string} directory system url
+   * @returns {Promise<DirectoryEntry>}
    */
-  private static resolveDirectoryUrl(durl: string): Promise<DirectoryEntry> {
+  static resolveDirectoryUrl(durl: string): Promise<DirectoryEntry> {
     return File.resolveLocalFilesystemUrl(durl)
       .then((de) => {
         if (de.isDirectory) {
