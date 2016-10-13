@@ -400,17 +400,10 @@ export class BLE {
   /**
    * Report if bluetooth is enabled.
    *
-   * @usage
-   * ```
-   * BLE.isEnabled().then(
-   *   () => { console.log('enabled'); },
-   *   () => { console.log('not enabled'); }
-   * );
-   * ```
-   * @return Returns a Promise.
+   * @return {Promise<void>} Returns a Promise that resolves if Bluetooth is enabled, and rejects if disabled.
    */
   @Cordova()
-  static isEnabled(): Promise<any> { return; }
+  static isEnabled(): Promise<void> { return; }
 
   /**
    * Open System Bluetooth settings (Android only).
