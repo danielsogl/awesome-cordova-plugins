@@ -885,6 +885,7 @@ export class GoogleMapsLatLngBounds {
 
   @InstanceProperty get northeast(): GoogleMapsLatLng { return; }
   @InstanceProperty get southwest(): GoogleMapsLatLng { return; }
+  @InstanceProperty get type(): string { return; }
 
   constructor(southwestOrArrayOfLatLng: GoogleMapsLatLng | GoogleMapsLatLng[], northeast?: GoogleMapsLatLng) {
     let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;

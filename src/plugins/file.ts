@@ -1,4 +1,4 @@
-import {Plugin, pluginWarn} from './plugin';
+import { Plugin, pluginWarn } from './plugin';
 
 declare var window: any;
 declare var cordova: any;

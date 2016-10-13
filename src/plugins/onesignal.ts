@@ -1,7 +1,6 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 /**
  * @name OneSignal
  * @description
@@ -16,7 +15,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * OneSignal.startInit('b2f7f966-d8cc-11e4-bed1-df8f05be55ba', '703322744261');
  *
- * OneSignal.enableInAppAlertNotification(true);
+ * OneSignal.inFocusDisplaying(OneSignal.OSInFocusDisplayOption.InAppAlert);
  *
  * OneSignal.handleNotificationReceived().subscribe(() => {
  *  // do something when notification is received
@@ -38,7 +37,7 @@ import { Observable } from 'rxjs/Observable';
 export class OneSignal {
 
   /**
-   * @private
+   * constants to use in inFocusDisplaying()
    */
   static OSInFocusDisplayOption = {
     None: 0,
@@ -172,17 +171,13 @@ export class OneSignal {
   static enableSound(enable: boolean): void { }
 
   /**
-  * Warning:
-  * Only applies to Android and Amazon devices.
   *
-  * By default this is false and notifications will not be shown when the user is in your app, instead the notificationOpenedCallback is fired.
-  * If set to true notifications will always show in the notification area and notificationOpenedCallback will not fire until the user taps on the notification.
+  * Setting to control how OneSignal notifications will be shown when one is received while your app is in focus. By default this is set to inAppAlert, which can be helpful during development.
   *
-  * @param {boolean} enable
+  * @param {number} displayOption Options are 0 = None, 1 = InAppAlert, and 2 = Notification.
   */
   @Cordova({ sync: true })
-  static enableNotificationsWhenActive(enable: boolean): void { }
-
+  static inFocusDisplaying(displayOption: number): void { }
 
   /**
   * You can call this method with false to opt users out of receiving all notifications through OneSignal.
