@@ -19,7 +19,7 @@ export interface CameraPreviewSize {
  * @description
  * Showing camera preview in HTML
  *
- * For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/westonganger/cordova-plugin-camera-preview').
+ * For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/westonganger/cordova-plugin-camera-preview).
  *
  * @usage
  * ```
