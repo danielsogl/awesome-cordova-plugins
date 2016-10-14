@@ -1,4 +1,4 @@
-/// <reference path="./../typings/index.d.ts" />
+/// <reference path="../typings/index.d.ts" />
 
 import 'es6-shim';
 import {Plugin, Cordova} from './../src/plugins/plugin';
