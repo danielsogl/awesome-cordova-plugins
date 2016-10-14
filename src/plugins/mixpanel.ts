@@ -1,7 +1,15 @@
-import { Cordova, CordovaProperty, Plugin } from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 declare var mixpanel: any;
 
+/**
+ * @private
+ */
+export const pluginMeta = {
+  plugin: 'cordova-plugin-mixpanel',
+  pluginRef: 'mixpanel',
+  repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin'
+};
 
 /**
  * @name Mixpanel
@@ -18,11 +26,7 @@ declare var mixpanel: any;
  *
  * ```
  */
-@Plugin({
-  plugin: 'cordova-plugin-mixpanel',
-  pluginRef: 'mixpanel',
-  repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin'
-})
+@Plugin(pluginMeta)
 export class Mixpanel {
   /**
    *
@@ -96,15 +100,23 @@ export class Mixpanel {
    *
    * @returns {MixpanelPeople}
    */
-  static people: MixpanelPeople = MixpanelPeople;
+  static get people(): typeof MixpanelPeople {
+    return MixpanelPeople;
+  };
 
 }
 /**
  * @private
  */
 export class MixpanelPeople {
-  private plugin: string = 'cordova-plugin-mixpanel';
-  private pluginRef: string = 'mixpanel.people';
+  /**
+   * @private
+   */
+  static plugin: string = pluginMeta.plugin;
+  /**
+   * @private
+   */
+  static pluginRef: string = pluginMeta.pluginRef + '.people';
 
   /**
    *
