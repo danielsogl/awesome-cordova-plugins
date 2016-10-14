@@ -1,10 +1,5 @@
-/// <reference path="../../typings/index.d.ts" />
-
-import 'es6-shim';
-import {Plugin, Cordova} from '../../src/plugins/plugin';
-import {pluginMeta, MixpanelPeople, Mixpanel} from '../../src/plugins/mixpanel';
+import {Mixpanel} from '../../src/plugins/mixpanel';
 declare const window: any;
-declare const mixpanel: any;
 
 window.mixpanel = {
   people: {
