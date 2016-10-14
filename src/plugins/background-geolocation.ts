@@ -236,8 +236,8 @@ export interface Config {
  *
  * // When device is ready :
  * platform.ready().then(() => {
- *     // IMPORTANT: BackgroundGeolocation must be called within app.ts and or before Geolocation. Otherwise the platform will not ask you for background tracking permission. 
- * 
+ *     // IMPORTANT: BackgroundGeolocation must be called within app.ts and or before Geolocation. Otherwise the platform will not ask you for background tracking permission.
+ *
  *     // BackgroundGeolocation is highly configurable. See platform specific configuration options
  *     let config = {
  *             desiredAccuracy: 10,
@@ -330,10 +330,9 @@ export class BackgroundGeolocation {
   /**
    * Configure the plugin.
    *
-   * @param {Function} Success callback will be called when background location is determined.
-   * @param {Function} Fail callback to be executed every time a geolocation error occurs.
-   * @param {Object} An object of type Config
-   *
+   * @param {Function} callback callback will be called when background location is determined.
+   * @param {Function} errorCallback callback to be executed every time a geolocation error occurs.
+   * @param {Config} options An object of type Config
    * @return Location object, which tries to mimic w3c Coordinates interface.
    * See http://dev.w3.org/geo/api/spec-source.html#coordinates_interface
    * Callback to be executed every time a geolocation is recorded in the background.
@@ -341,7 +340,7 @@ export class BackgroundGeolocation {
   @Cordova({
     sync: true
   })
-  static configure(callback: Function, errorCallback: Function, options: Config): void { return; }
+  static configure(callback: Function, errorCallback: Function, options: Config): any { return; }
 
   /**
    * Turn ON the background-geolocation system.
