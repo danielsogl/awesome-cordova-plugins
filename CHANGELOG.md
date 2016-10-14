@@ -1,3 +1,14 @@
+<a name="2.2.3"></a>
+## [2.2.3](https://github.com/driftyco/ionic-native/compare/v2.2.2...v2.2.3) (2016-10-14)
+
+
+### Bug Fixes
+
+* **googlemaps:** Expose 'type' property in GoogleMapsLatLngBounds [#693](https://github.com/driftyco/ionic-native/issues/693) ([#694](https://github.com/driftyco/ionic-native/issues/694)) ([74a252b](https://github.com/driftyco/ionic-native/commit/74a252b))
+* **onesignal:** update to match latest API version ([#691](https://github.com/driftyco/ionic-native/issues/691)) ([babfb0d](https://github.com/driftyco/ionic-native/commit/babfb0d))
+
+
+
 <a name="2.2.2"></a>
 ## [2.2.2](https://github.com/driftyco/ionic-native/compare/v2.2.1...v2.2.2) (2016-10-12)
 
