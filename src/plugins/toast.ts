@@ -53,6 +53,8 @@ export interface ToastOptions {
  *   }
  * );
  * ```
+ * @interfaces
+ * ToastOptions
  */
 @Plugin({
   plugin: 'cordova-plugin-x-toast',
