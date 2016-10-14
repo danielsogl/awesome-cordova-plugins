@@ -126,7 +126,14 @@ export class GoogleMap {
 
     return new Observable(
       (observer) => {
-        this._objectInstance.on(event, observer.next.bind(observer));
+        this._objectInstance.on(event, (data, ...rest) => {
+          if (rest) {
+            rest.splice(0,0, data);
+            observer.next(rest);
+          } else {
+            observer.next(data);
+          }
+        });
         return () => this._objectInstance.off(event);
       }
     );
