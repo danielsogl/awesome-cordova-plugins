@@ -62,4 +62,22 @@ export class ImagePicker {
   })
   static getPictures(options: ImagePickerOptions): Promise<any> { return; }
 
+  /**
+   * Check if we have permission to read images
+   * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that indicates whether we have permission
+   */
+  @Cordova({
+    platforms: ['Android']
+  })
+  static hasReadPermission(): Promise<boolean> { return; }
+
+  /**
+   * Request permission to read images
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    platforms: ['Android']
+  })
+  static requestReadPermission(): Promise<any> { return; }
+
 }
