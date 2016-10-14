@@ -32,6 +32,7 @@ import { DatePicker } from './plugins/datepicker';
 import { DBMeter } from './plugins/dbmeter';
 import { Deeplinks } from './plugins/deeplinks';
 import { Device } from './plugins/device';
+import { DeviceFeedback } from './plugins/device-feedback';
 import { DeviceAccounts } from './plugins/deviceaccounts';
 import { DeviceMotion } from './plugins/devicemotion';
 import { DeviceOrientation } from './plugins/deviceorientation';
@@ -139,6 +140,7 @@ export * from './plugins/datepicker';
 export * from './plugins/dbmeter';
 export * from './plugins/deeplinks';
 export * from './plugins/device';
+export * from './plugins/device-feedback';
 export * from './plugins/deviceaccounts';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
@@ -248,6 +250,7 @@ window['IonicNative'] = {
   DBMeter,
   Deeplinks,
   Device,
+  DeviceFeedback,
   DeviceAccounts,
   DeviceMotion,
   DeviceOrientation,
