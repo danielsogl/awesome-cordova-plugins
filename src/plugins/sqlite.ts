@@ -87,7 +87,10 @@ export class SQLite {
   })
   addTransaction(transaction: any): void { }
 
-  @CordovaInstance()
+  @CordovaInstance({
+    successIndex: 2,
+    errorIndex: 1
+  })
   transaction(fn: any): Promise<any> { return; }
 
   @CordovaInstance()
