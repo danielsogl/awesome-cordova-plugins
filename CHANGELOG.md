@@ -1,3 +1,20 @@
+<a name="2.2.4"></a>
+## [2.2.4](https://github.com/driftyco/ionic-native/compare/v2.2.3...v2.2.4) (2016-10-15)
+
+
+### Bug Fixes
+
+* **sqlite:** fix callback order for transaction ([#700](https://github.com/driftyco/ionic-native/issues/700)) ([799e2f0](https://github.com/driftyco/ionic-native/commit/799e2f0))
+
+
+### Features
+
+* **device-feedback:** add DeviceFeedback plugin ([#696](https://github.com/driftyco/ionic-native/issues/696)) ([bbda6e2](https://github.com/driftyco/ionic-native/commit/bbda6e2))
+* **image-picker:** add new android methods ([3edfafb](https://github.com/driftyco/ionic-native/commit/3edfafb))
+* **mixpanel:** MixpanelPeople returns promises ([#681](https://github.com/driftyco/ionic-native/issues/681)) ([b95f88c](https://github.com/driftyco/ionic-native/commit/b95f88c)), closes [#667](https://github.com/driftyco/ionic-native/issues/667)
+
+
+
 <a name="2.2.3"></a>
 ## [2.2.3](https://github.com/driftyco/ionic-native/compare/v2.2.2...v2.2.3) (2016-10-14)
 
