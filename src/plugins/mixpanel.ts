@@ -1,7 +1,15 @@
-import { Cordova, CordovaProperty, Plugin } from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 declare var mixpanel: any;
 
+/**
+ * @private
+ */
+export const pluginMeta = {
+  plugin: 'cordova-plugin-mixpanel',
+  pluginRef: 'mixpanel',
+  repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin'
+};
 
 /**
  * @name Mixpanel
@@ -18,11 +26,7 @@ declare var mixpanel: any;
  *
  * ```
  */
-@Plugin({
-  plugin: 'cordova-plugin-mixpanel',
-  pluginRef: 'mixpanel',
-  repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin'
-})
+@Plugin(pluginMeta)
 export class Mixpanel {
   /**
    *
@@ -96,17 +100,61 @@ export class Mixpanel {
    *
    * @returns {MixpanelPeople}
    */
-  @CordovaProperty
-  static get people(): MixpanelPeople { return mixpanel.people; };
+  static get people(): typeof MixpanelPeople {
+    return MixpanelPeople;
+  };
 
 }
 /**
  * @private
  */
-export declare class MixpanelPeople {
-  static identify(distinctId: string, onSuccess?: Function, onFail?: Function): void;
-  static increment(peopleProperties: any, onSuccess?: Function, onFail?: Function): void;
-  static setPushId(pushId: string, onSuccess?: Function, onFail?: Function): void;
-  static set(peopleProperties: any, onSuccess?: Function, onFail?: Function): void;
-  static setOnce(peopleProperties: any, onSuccess?: Function, onFail?: Function): void;
+export class MixpanelPeople {
+  /**
+   * @private
+   */
+  static plugin: string = pluginMeta.plugin;
+  /**
+   * @private
+   */
+  static pluginRef: string = pluginMeta.pluginRef + '.people';
+
+  /**
+   *
+   * @param distinctId {string}
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static identify(distinctId: string): Promise<any> { return; }
+
+  /**
+   *
+   * @param peopleProperties {string}
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static increment(peopleProperties: any): Promise<any> { return; }
+
+  /**
+   *
+   * @param pushId
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static setPushId(pushId: string): Promise<any> { return; }
+
+  /**
+   *
+   * @param peopleProperties
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static set(peopleProperties: any): Promise<any> { return; }
+
+  /**
+   *
+   * @param peopleProperties
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static setOnce(peopleProperties: any): Promise<any> { return; }
 }
