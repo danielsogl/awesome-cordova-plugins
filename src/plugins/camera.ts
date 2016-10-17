@@ -6,7 +6,7 @@ export interface CameraOptions {
   quality?: number;
   /**
    * Choose the format of the return value.
-   * Defined in navigator.camera.DestinationType. Default is FILE_URI.
+   * Defined in Camera.DestinationType. Default is FILE_URI.
    *      DATA_URL : 0,   Return image as base64-encoded string,
    *      FILE_URI : 1,   Return image file URI,
    *      NATIVE_URI : 2  Return image native URI
@@ -15,7 +15,7 @@ export interface CameraOptions {
   destinationType?: number;
   /**
    * Set the source of the picture.
-   * Defined in navigator.camera.PictureSourceType. Default is CAMERA.
+   * Defined in Camera.PictureSourceType. Default is CAMERA.
    *      PHOTOLIBRARY : 0,
    *      CAMERA : 1,
    *      SAVEDPHOTOALBUM : 2
@@ -25,7 +25,7 @@ export interface CameraOptions {
   allowEdit?: boolean;
   /**
    * Choose the returned image file's encoding.
-   * Defined in navigator.camera.EncodingType. Default is JPEG
+   * Defined in Camera.EncodingType. Default is JPEG
    *      JPEG : 0    Return JPEG encoded image
    *      PNG : 1     Return PNG encoded image
    */
@@ -42,7 +42,7 @@ export interface CameraOptions {
   targetHeight?: number;
   /**
    * Set the type of media to select from. Only works when PictureSourceType
-   * is PHOTOLIBRARY or SAVEDPHOTOALBUM. Defined in nagivator.camera.MediaType
+   * is PHOTOLIBRARY or SAVEDPHOTOALBUM. Defined in Camera.MediaType
    *      PICTURE: 0      allow selection of still pictures only. DEFAULT.
    *          Will return format specified via DestinationType
    *      VIDEO: 1        allow selection of video only, WILL ALWAYS RETURN FILE_URI
@@ -55,7 +55,7 @@ export interface CameraOptions {
   saveToPhotoAlbum?: boolean;
   /**
    * Choose the camera to use (front- or back-facing).
-   * Defined in navigator.camera.Direction. Default is BACK.
+   * Defined in Camera.Direction. Default is BACK.
    *      FRONT: 0
    *      BACK: 1
    */
