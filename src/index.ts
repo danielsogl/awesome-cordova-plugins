@@ -44,6 +44,7 @@ import { Facebook } from './plugins/facebook';
 import { File } from './plugins/file';
 import { FileChooser } from './plugins/file-chooser';
 import { FileOpener } from './plugins/file-opener';
+import { FilePath } from './plugins/filepath';
 import { Transfer } from './plugins/filetransfer';
 import { Flashlight } from './plugins/flashlight';
 import { Geofence } from './plugins/geofence';
@@ -153,6 +154,7 @@ export * from './plugins/file';
 export * from './plugins/file-chooser';
 export * from './plugins/file-opener';
 export * from './plugins/filetransfer';
+export * from './plugins/filepath';
 export * from './plugins/flashlight';
 export * from './plugins/geofence';
 export * from './plugins/geolocation';
@@ -262,6 +264,7 @@ window['IonicNative'] = {
   File,
   FileChooser,
   FileOpener,
+  FilePath,
   Flashlight,
   Geofence,
   Geolocation,
