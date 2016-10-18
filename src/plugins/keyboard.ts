@@ -14,6 +14,7 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
+  name: 'Keyboard',
   plugin: 'ionic-plugin-keyboard',
   pluginRef: 'cordova.plugins.Keyboard',
   repo: 'https://github.com/driftyco/ionic-plugin-keyboard'

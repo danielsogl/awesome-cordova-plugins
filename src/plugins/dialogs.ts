@@ -32,6 +32,7 @@ export interface PromptCallback {
  * ```
  */
 @Plugin({
+  name: 'Dialogs',
   plugin: 'cordova-plugin-dialogs',
   pluginRef: 'navigator.notification',
   repo: 'https://github.com/apache/cordova-plugin-dialogs.git'

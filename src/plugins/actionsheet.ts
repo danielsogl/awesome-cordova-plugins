@@ -41,6 +41,7 @@ import { Cordova, Plugin } from './plugin';
  *
  */
 @Plugin({
+  name: 'ActionSheet',
   plugin: 'cordova-plugin-actionsheet',
   pluginRef: 'plugins.actionsheet',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet',

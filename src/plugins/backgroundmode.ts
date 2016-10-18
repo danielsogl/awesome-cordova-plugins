@@ -28,6 +28,7 @@ import { Observable } from 'rxjs/Observable';
 *
 */
 @Plugin({
+  name: 'BackgroundMode',
   plugin: 'cordova-plugin-background-mode',
   pluginRef: 'cordova.plugins.backgroundMode',
   repo: 'https://github.com/katzer/cordova-plugin-background-mode',

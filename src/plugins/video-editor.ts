@@ -137,6 +137,7 @@ export interface VideoInfo {
  * ```
  */
 @Plugin({
+  name: 'VideoEditor',
   plugin: 'cordova-plugin-video-editor',
   pluginRef: 'VideoEditor',
   repo: 'https://github.com/jbavari/cordova-plugin-video-editor',

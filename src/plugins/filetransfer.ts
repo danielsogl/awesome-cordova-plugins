@@ -138,7 +138,7 @@ export interface FileTransferError {
  *      fileKey: 'file',
  *      fileName: 'name.jpg',
  *      headers: {}
- *      ..... 
+ *      .....
  *   }
  *   fileTransfer.upload("<file path>", "<api endpoint>", options)
  *    .then((data) => {
@@ -152,6 +152,7 @@ export interface FileTransferError {
  *
  */
 @Plugin({
+  name: 'FileTransfer',
   plugin: 'cordova-plugin-file-transfer',
   pluginRef: 'FileTransfer',
   repo: 'https://github.com/apache/cordova-plugin-file-transfer'

@@ -17,6 +17,7 @@ declare var navigator: any;
  * ```
  */
 @Plugin({
+  name: 'Screenshot',
   plugin: 'https://github.com/gitawego/cordova-screenshot.git',
   pluginRef: 'navigator.screenshot',
   repo: 'https://github.com/gitawego/cordova-screenshot.git'

@@ -68,6 +68,7 @@ export interface MediaError {
  * ```
  */
 let pluginMeta = {
+  name: 'MediaPlugin',
   repo: 'https://github.com/apache/cordova-plugin-media',
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media'

@@ -58,6 +58,7 @@ import { Plugin, Cordova } from './plugin';
  * PayPalShippingAddress
  */
 @Plugin({
+  name: 'PayPal',
   plugin: 'com.paypal.cordova.mobilesdk',
   pluginRef: 'PayPalMobile',
   repo: 'https://github.com/paypal/PayPal-Cordova-Plugin'

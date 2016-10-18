@@ -39,6 +39,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'SafariViewController',
   plugin: 'cordova-plugin-safariviewcontroller',
   pluginRef: 'SafariViewController',
   platforms: ['iOS', 'Android'],

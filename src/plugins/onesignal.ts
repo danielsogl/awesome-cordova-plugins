@@ -30,6 +30,7 @@ import { Observable } from 'rxjs/Observable';
  *
  */
 @Plugin({
+  name: 'OneSignal',
   plugin: 'onesignal-cordova-plugin',
   pluginRef: 'plugins.OneSignal',
   repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK'

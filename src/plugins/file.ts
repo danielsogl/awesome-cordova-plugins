@@ -338,6 +338,7 @@ declare var FileError: {
 };
 
 let pluginMeta = {
+  name: 'File',
   plugin: 'cordova-plugin-file',
   pluginRef: 'cordova.file',
   repo: 'https://github.com/apache/cordova-plugin-file'

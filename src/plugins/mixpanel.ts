@@ -6,6 +6,7 @@ declare var mixpanel: any;
  * @private
  */
 export const pluginMeta = {
+  name: 'Mixpanel',
   plugin: 'cordova-plugin-mixpanel',
   pluginRef: 'mixpanel',
   repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin'

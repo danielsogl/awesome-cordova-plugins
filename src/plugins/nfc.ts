@@ -23,6 +23,7 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
+  name: 'NFC',
   plugin: 'phonegap-nfc',
   pluginRef: 'nfc',
   repo: 'https://github.com/chariotsolutions/phonegap-nfc'

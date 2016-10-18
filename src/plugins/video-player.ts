@@ -38,6 +38,7 @@ export interface VideoOptions {
  * ```
  */
 @Plugin({
+  name: 'VideoPlayer',
   plugin: 'cordova-plugin-videoplayer',
   pluginRef: 'VideoPlayer',
   repo: 'https://github.com/moust/cordova-plugin-videoplayer',

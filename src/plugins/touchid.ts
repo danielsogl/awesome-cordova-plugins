@@ -45,6 +45,7 @@ import { Cordova, Plugin } from './plugin';
  *  -  `-8` - TouchID is locked out from too many tries
  */
 @Plugin({
+  name: 'TouchID',
   plugin: 'cordova-plugin-touch-id',
   pluginRef: 'plugins.touchid',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-touch-id',

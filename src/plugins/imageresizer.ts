@@ -67,6 +67,7 @@ export interface ImageResizerOptions {
  * ```
  */
 @Plugin({
+  name: 'ImageResizer',
   plugin: 'https://github.com/protonet/cordova-plugin-image-resizer.git',
   pluginRef: 'ImageResizer',
   repo: 'https://github.com/protonet/cordova-plugin-image-resizer'

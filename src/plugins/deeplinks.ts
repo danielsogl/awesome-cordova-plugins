@@ -33,6 +33,7 @@ export interface DeeplinkMatch {
  * ```
  */
 @Plugin({
+  name: 'Deeplinks',
   plugin: 'ionic-plugin-deeplinks',
   pluginRef: 'IonicDeeplink',
   repo: 'https://github.com/driftyco/ionic-plugin-deeplinks',

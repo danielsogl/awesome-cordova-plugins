@@ -20,6 +20,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'PinDialog',
   plugin: 'cordova-plugin-pin-dialog',
   pluginRef: 'plugins.pinDialog',
   repo: 'https://github.com/Paldom/PinDialog'

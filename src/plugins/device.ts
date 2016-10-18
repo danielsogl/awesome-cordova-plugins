@@ -41,6 +41,7 @@ export interface Device {
  * ```
  */
 @Plugin({
+  name: 'Device',
   plugin: 'cordova-plugin-device',
   pluginRef: 'device',
   repo: 'https://github.com/apache/cordova-plugin-device'

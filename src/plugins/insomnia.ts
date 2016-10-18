@@ -26,6 +26,7 @@ import { Cordova, Plugin } from './plugin';
  *
  */
 @Plugin({
+  name: 'Insomnia',
   plugin: 'https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git',
   pluginRef: 'plugins.insomnia',
   repo: 'https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin',

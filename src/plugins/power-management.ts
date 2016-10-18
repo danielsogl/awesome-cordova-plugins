@@ -16,6 +16,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'PowerManagement',
   plugin: 'cordova-plugin-powermanagement-orig',
   pluginRef: 'powerManagement',
   repo: 'https://github.com/Viras-/cordova-plugin-powermanagement'

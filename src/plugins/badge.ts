@@ -18,6 +18,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'Badge',
   plugin: 'cordova-plugin-badge',
   pluginRef: 'cordova.plugins.notification.badge',
   repo: 'https://github.com/katzer/cordova-plugin-badge',

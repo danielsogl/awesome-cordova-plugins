@@ -17,6 +17,7 @@ declare var window;
  * ```
  */
 @Plugin({
+  name: 'WebIntent',
   plugin: 'https://github.com/Initsogar/cordova-webintent.git',
   pluginRef: 'window.plugins.webintent',
   repo: 'https://github.com/Initsogar/cordova-webintent.git',

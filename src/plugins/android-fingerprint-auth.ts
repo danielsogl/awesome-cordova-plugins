@@ -30,6 +30,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'AndroidFingerprintAuth',
   plugin: 'cordova-plugin-android-fingerprint-auth',
   pluginRef: 'FingerprintAuth',
   repo: 'https://github.com/mjwheatley/cordova-plugin-android-fingerprint-auth'

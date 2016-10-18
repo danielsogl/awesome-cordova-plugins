@@ -27,6 +27,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'TwitterConnect',
   plugin: 'twitter-connect-plugin',
   pluginRef: 'TwitterConnect',
   repo: 'https://github.com/ManifestWebDesign/twitter-connect-plugin',

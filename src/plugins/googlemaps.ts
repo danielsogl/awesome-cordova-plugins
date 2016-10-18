@@ -84,6 +84,7 @@ export const GoogleMapsAnimation = {
  * ```
  */
 let pluginMap = {
+  name: 'GoogleMap',
   pluginRef: 'plugin.google.maps.Map',
   plugin: 'cordova-plugin-googlemaps',
   repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',

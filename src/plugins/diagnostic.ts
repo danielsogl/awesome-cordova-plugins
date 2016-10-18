@@ -29,6 +29,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'Diagnostic',
   plugin: 'cordova.plugins.diagnostic',
   pluginRef: 'cordova.plugins.diagnostic',
   repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin'

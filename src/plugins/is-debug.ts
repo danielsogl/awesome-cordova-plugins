@@ -17,6 +17,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'IsDebug',
   plugin: 'cordova-plugin-is-debug',
   pluginRef: 'cordova.plugins.IsDebug',
   repo: 'https://github.com/mattlewis92/cordova-plugin-is-debug'

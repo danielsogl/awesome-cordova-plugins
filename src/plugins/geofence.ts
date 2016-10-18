@@ -74,6 +74,7 @@ import { Observable } from 'rxjs/Observable';
 declare var window: any;
 
 @Plugin({
+  name: 'Geofence',
   plugin: 'cordova-plugin-geofence',
   pluginRef: 'geofence',
   repo: 'https://github.com/cowbell/cordova-plugin-geofence/',
@@ -146,7 +147,7 @@ export class Geofence {
   }
 
   /**
-   * Called when the user clicks a geofence notification. iOS and Android only.   
+   * Called when the user clicks a geofence notification. iOS and Android only.
    *
    * @return {Promise<Object>}
    */

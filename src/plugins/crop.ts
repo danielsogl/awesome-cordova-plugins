@@ -16,6 +16,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'Crop',
   plugin: 'cordova-plugin-crop',
   pluginRef: 'plugins',
   repo: 'https://github.com/jeduan/cordova-plugin-crop'

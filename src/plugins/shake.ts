@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
+  name: 'Shake',
   plugin: 'cordova-plugin-shake',
   pluginRef: 'shake',
   repo: 'https://github.com/leecrossley/cordova-plugin-shake'

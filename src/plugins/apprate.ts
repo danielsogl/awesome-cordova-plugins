@@ -44,6 +44,7 @@ declare var window;
 
  */
 @Plugin({
+  name: 'AppRate',
   plugin: 'cordova-plugin-apprate',
   pluginRef: 'AppRate',
   repo: 'https://github.com/pushandplay/cordova-plugin-apprate',

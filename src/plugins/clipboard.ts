@@ -28,6 +28,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'Clipboard',
   plugin: 'https://github.com/VersoSolutions/CordovaClipboard.git',
   pluginRef: 'cordova.plugins.clipboard',
   repo: 'https://github.com/VersoSolutions/CordovaClipboard',

@@ -78,6 +78,7 @@ import { Cordova, Plugin } from './plugin';
  *
  */
 @Plugin({
+  name: 'Facebook',
   plugin: 'cordova-plugin-facebook4',
   pluginRef: 'facebookConnectPlugin',
   repo: 'https://github.com/jeduan/cordova-plugin-facebook4',

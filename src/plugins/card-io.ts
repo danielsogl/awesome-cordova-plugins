@@ -25,6 +25,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'CardIO',
   plugin: 'https://github.com/card-io/card.io-Cordova-Plugin',
   pluginRef: 'CardIO',
   repo: 'https://github.com/card-io/card.io-Cordova-Plugin',

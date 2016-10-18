@@ -13,6 +13,7 @@ declare var window;
  * - (Android) Google Play Services SDK installed via [Android SDK Manager](https://developer.android.com/sdk/installing/adding-packages.html)
  */
 @Plugin({
+  name: 'GoogleAnalytics',
   plugin: 'cordova-plugin-google-analytics',
   pluginRef: 'ga',
   repo: 'https://github.com/danwilson/google-analytics-plugin',

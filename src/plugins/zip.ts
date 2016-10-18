@@ -18,6 +18,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'Zip',
   plugin: 'cordova-plugin-zip',
   pluginRef: 'zip',
   repo: 'https://github.com/MobileChromeApps/cordova-plugin-zip',

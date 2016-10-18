@@ -20,6 +20,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'Sim',
   plugin: 'cordova-plugin-sim',
   pluginRef: 'plugins.sim',
   repo: 'https://github.com/pbakondy/cordova-plugin-sim',

@@ -15,6 +15,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'SpinnerDialog',
   plugin: 'cordova-plugin-spinner-dialog',
   pluginRef: 'window.plugins.spinnerDialog',
   repo: 'https://github.com/Paldom/SpinnerDialog',
