@@ -23,6 +23,7 @@ import {Plugin, Cordova} from './plugin';
  * ```
  */
 @Plugin({
+  name: 'LocationAccuracy',
   plugin: 'cordova-plugin-request-location-accuracy',
   pluginRef: 'cordova.plugins.locationAccuracy',
   repo: 'https://github.com/dpa99c/cordova-plugin-request-location-accuracy'
