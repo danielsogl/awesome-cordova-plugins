@@ -39,6 +39,7 @@ import { Plugin, Cordova } from './plugin';
  *
  */
 @Plugin({
+  name: 'ZBar',
   plugin: 'cordova-plugin-cszbar',
   pluginRef: 'cloudSky.zBar',
   repo: 'https://github.com/tjwoon/csZBar',
