@@ -25,6 +25,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
+  name: 'DeviceFeedback',
   plugin: 'cordova-plugin-velda-devicefeedback',
   pluginRef: 'plugins.deviceFeedback',
   repo: 'https://github.com/VVelda/device-feedback',
