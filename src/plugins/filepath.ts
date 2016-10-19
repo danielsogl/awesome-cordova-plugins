@@ -19,6 +19,7 @@ declare var window: any;
  * ```
  */
 @Plugin({
+  name: 'FilePath',
   plugin: 'cordova-plugin-filepath',
   pluginRef: 'window.FilePath',
   repo: 'https://github.com/hiddentao/cordova-plugin-filepath',
