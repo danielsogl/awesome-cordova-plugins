@@ -33,6 +33,7 @@ import { Plugin, Cordova } from './plugin';
  * HTTPResponse
  */
 @Plugin({
+  name: 'HTTP',
   plugin: 'cordova-plugin-http',
   pluginRef: 'cordovaHTTP',
   repo: 'https://github.com/wymsee/cordova-HTTP',
