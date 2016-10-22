@@ -28,6 +28,9 @@ function run {
     git reset --hard
     git pull origin master
   fi
+  
+  git rm -rf docs/v2/native/*
+  
 }
 
 source $(dirname $0)/../utils.inc.sh
