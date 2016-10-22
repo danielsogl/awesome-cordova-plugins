@@ -144,6 +144,7 @@ export interface ThemeableBrowserOptions {
  * We suggest that you refer to the plugin's repository for additional information on usage that may not be covered here.
  */
 @Plugin({
+  name: 'ThemeableBrowser',
   plugin: 'cordova-plugin-themeablebrowser',
   pluginRef: 'cordova.ThemeableBrowser',
   repo: 'https://github.com/initialxy/cordova-plugin-themeablebrowser'
