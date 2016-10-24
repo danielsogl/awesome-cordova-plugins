@@ -54,7 +54,7 @@ declare var window: any;
  * ];
  * ThreeDeeTouch.configureQuickActions(actions);
  *
- * ThreeDeeTouchForceTouch.onHomeIconPressed().subscribe(
+ * ThreeDeeTouch.onHomeIconPressed().subscribe(
  *  (payload) => {
  *    // returns an object that is the button you presed
  *    console.log('Pressed the ${payload.title} button')
@@ -95,6 +95,7 @@ export class ThreeDeeTouch {
    * @param {string} title Title for your action
    * @param {string} subtitle (optional) A short description for your action
    * @param {string} iconType (optional) Choose between Prohibit, Contact, Home, MarkLocation, Favorite, Love, Cloud, Invitation, Confirmation, Mail, Message, Date, Time, CapturePhoto, CaptureVideo, Task, TaskCompleted, Alarm, Bookmark, Shuffle, Audio, Update
+   * @param {string} iconTemplate (optional) Can be used to provide your own icon
    */
   @Cordova({
     sync: true
@@ -140,6 +141,7 @@ export interface ThreeDeeTouchQuickAction {
   title: string;
   subtitle?: string;
   iconType?: string;
+  iconTemplate?: string;
 }
 
 export interface ThreeDeeTouchForceTouch {
