@@ -3,10 +3,6 @@ import { Cordova, Plugin } from './plugin';
 declare var mixpanel: any;
 
 /**
- * @private
- */
-
-/**
  * @name Mixpanel
  * @description
  * Cordova Plugin that wraps Mixpanel SDK for Android and iOS
@@ -112,11 +108,11 @@ export class MixpanelPeople {
   /**
    * @private
    */
-  static plugin: string = pluginMeta.plugin;
+  static plugin: string = 'cordova-plugin-mixpanel';
   /**
    * @private
    */
-  static pluginRef: string = pluginMeta.pluginRef + '.people';
+  static pluginRef: string = 'mixpanel.people';
 
   /**
    *

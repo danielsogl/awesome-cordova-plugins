@@ -67,13 +67,12 @@ export interface MediaError {
  *
  * ```
  */
-let pluginMeta = {
+@Plugin({
   name: 'MediaPlugin',
   repo: 'https://github.com/apache/cordova-plugin-media',
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media'
-};
-@Plugin(pluginMeta)
+})
 export class MediaPlugin {
 
   // Constants
@@ -132,7 +131,10 @@ export class MediaPlugin {
         this._objectInstance = new Media(src, resolve, reject, onStatusUpdate);
       });
     } else {
-      pluginWarn(pluginMeta);
+      pluginWarn({
+        name: 'MediaPlugin',
+        plugin: 'cordova-plugin-media'
+      });
     }
   }
 
