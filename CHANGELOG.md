@@ -1,3 +1,14 @@
+<a name="2.2.6"></a>
+## [2.2.6](https://github.com/driftyco/ionic-native/compare/v2.2.5...v2.2.6) (2016-10-27)
+
+
+### Bug Fixes
+
+* **nfc:** don't bind to name field, fix [#740](https://github.com/driftyco/ionic-native/issues/740) ([#749](https://github.com/driftyco/ionic-native/issues/749)) ([ca43394](https://github.com/driftyco/ionic-native/commit/ca43394))
+* **plugin:** don't bind to name field. Fixes [#740](https://github.com/driftyco/ionic-native/issues/740) ([71916a8](https://github.com/driftyco/ionic-native/commit/71916a8))
+
+
+
 <a name="2.2.5"></a>
 ## [2.2.5](https://github.com/driftyco/ionic-native/compare/v2.2.4...v2.2.5) (2016-10-27)
 
