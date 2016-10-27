@@ -83,14 +83,13 @@ export const GoogleMapsAnimation = {
  *   });
  * ```
  */
-let pluginMap = {
+@Plugin({
   name: 'GoogleMap',
   pluginRef: 'plugin.google.maps.Map',
   plugin: 'cordova-plugin-googlemaps',
   repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
   install: 'ionic plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"'
-};
-@Plugin(pluginMap)
+})
 export class GoogleMap {
   _objectInstance: any;
 
@@ -109,7 +108,10 @@ export class GoogleMap {
       }
       this._objectInstance = plugin.google.maps.Map.getMap(element, options);
     } else {
-      pluginWarn(pluginMap);
+      pluginWarn({
+        name: 'GoogleMap',
+        plugin: 'plugin.google.maps.Map'
+      });
     }
   }
 
@@ -979,7 +981,10 @@ export class Geocoder {
   static geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
     return new Promise<GeocoderResult[]>((resolve, reject) => {
       if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) {
-        pluginWarn(pluginMap);
+        pluginWarn({
+          name: 'GoogleMap',
+          plugin: 'plugin.google.maps.Map'
+        });
         reject({ error: 'plugin_not_installed' });
       } else {
         plugin.google.maps.Geocoder.geocode(request, resolve);
