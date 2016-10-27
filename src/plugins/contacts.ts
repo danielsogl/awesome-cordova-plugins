@@ -80,7 +80,7 @@ export class Contact implements IContactProperties {
 /**
  * @private
  */
-interface IContactError {
+export interface IContactError {
   /** Error code */
   code: number;
   /** Error message */
@@ -90,7 +90,7 @@ interface IContactError {
 /**
  * @private
  */
-declare var ContactError: {
+export declare var ContactError: {
   new (code: number): IContactError;
   UNKNOWN_ERROR: number;
   INVALID_ARGUMENT_ERROR: number;
