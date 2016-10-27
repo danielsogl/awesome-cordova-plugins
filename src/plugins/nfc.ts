@@ -161,7 +161,7 @@ export class Ndef {
   /**
    * @private
    */
-  static name = 'NFC';
+  static pluginName = 'NFC';
   /**
    * @private
    */
