@@ -1,4 +1,5 @@
 import { Cordova, Plugin } from './plugin';
+import {Observable} from "rxjs";
 
 /**
  * @name Diagnostic
@@ -440,6 +441,24 @@ export class Diagnostic {
    */
   @Cordova({ platforms: ['Android'], callbackOrder: 'reverse' })
   static requestRuntimePermissions(permissions: any[]): Promise<any> { return; }
+
+  /**
+   * Indicates if the plugin is currently requesting a runtime permission via the native API.
+   * Note that only one request can be made concurrently because the native API cannot handle concurrent requests,
+   * so the plugin will invoke the error callback if attempting to make more than one simultaneous request.
+   * Multiple permission requests should be grouped into a single call since the native API is setup to handle batch requests of multiple permission groups.
+   * @return {boolean}
+   */
+  @Cordova({ sync: true })
+  static isRequestingPermission(): boolean { return; }
+
+  /**
+   * Registers a function to be called when a runtime permission request has completed.
+   * Pass in a falsey value to de-register the currently registered function.
+   * @param handler {Function}
+   */
+  @Cordova({ sync: true })
+  static registerPermissionRequestCompleteHandler(handler: Function): void { return; }
 
   /**
    * Checks if the device setting for Bluetooth is switched on.
