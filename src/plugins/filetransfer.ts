@@ -148,8 +148,29 @@ export interface FileTransferError {
  *    })
  * }
  *
+ * // Cordova
+ * declare var cordova: any;
+ *
+ * download() {
+ *   const fileTransfer = new Transfer();
+ *   let url = 'http://www.example.com/file.pdf';
+ *   fileTransfer.download(url, cordova.file.dataDirectory + 'file.pdf').then((entry) => {
+ *     console.log('download complete: ' + entry.toURL());
+ *   }, (error) => {
+ *     // handle error
+ *   });
+ * }
+ *
  * ```
  *
+ * Note: You will not see your documents using a file explorer on your device. Use adb:
+ *
+ * ```
+ * adb shell
+ * run-as com.your.app
+ * cd files
+ * ls
+ * ```
  */
 @Plugin({
   name: 'FileTransfer',
