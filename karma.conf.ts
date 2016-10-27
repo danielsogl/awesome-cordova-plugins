@@ -22,6 +22,7 @@ module.exports = config => {
     },
 
     browserify: {
+      debug: true,
       plugin: [ 'tsify' ],
       extensions: ['.js', '.ts']
     },

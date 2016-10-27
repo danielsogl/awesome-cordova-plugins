@@ -3,7 +3,7 @@
 import 'es6-shim';
 import {Plugin, Cordova} from './../src/plugins/plugin';
 
-declare const window: any;
+declare let window: any;
 window.plugins = {
   test: {}
 };
