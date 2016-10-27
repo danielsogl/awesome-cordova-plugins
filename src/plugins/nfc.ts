@@ -158,9 +158,18 @@ export class NFC {
  * @private
  */
 export class Ndef {
-  private static name = 'NFC';
-  private static plugin = 'phonegap-nfc';
-  private static pluginRef = 'ndef';
+  /**
+   * @private
+   */
+  static name = 'NFC';
+  /**
+   * @private
+   */
+  static plugin = 'phonegap-nfc';
+  /**
+   * @private
+   */
+  static pluginRef = 'ndef';
 
   @Cordova({ sync: true })
   static uriRecord(uri: string): any { return; }

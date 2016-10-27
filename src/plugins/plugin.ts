@@ -83,7 +83,7 @@ function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Func
       }
     };
 
-    if(opts.successIndex > opts.errorIndex) {
+    if (opts.successIndex > opts.errorIndex) {
       setErrorIndex();
       setSuccessIndex();
     } else {
