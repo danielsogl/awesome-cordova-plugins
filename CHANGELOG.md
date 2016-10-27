@@ -1,3 +1,26 @@
+<a name="2.2.5"></a>
+## [2.2.5](https://github.com/driftyco/ionic-native/compare/v2.2.4...v2.2.5) (2016-10-27)
+
+
+### Bug Fixes
+
+* **3dtouch:** add missing property ([#739](https://github.com/driftyco/ionic-native/issues/739)) ([757d096](https://github.com/driftyco/ionic-native/commit/757d096))
+* **geolocation:** fix watchPosition return type ([d5310b0](https://github.com/driftyco/ionic-native/commit/d5310b0)), closes [#741](https://github.com/driftyco/ionic-native/issues/741)
+* **nfc:** fix Ndef class ([ac181c5](https://github.com/driftyco/ionic-native/commit/ac181c5)), closes [#713](https://github.com/driftyco/ionic-native/issues/713)
+* **sqlite:** check if plugin exists before opening database ([6f47371](https://github.com/driftyco/ionic-native/commit/6f47371))
+* **sqlite:** check if plugin exists before opening database ([c98b4f4](https://github.com/driftyco/ionic-native/commit/c98b4f4))
+* **sqlite:** fix callback issue with transaction method ([a72cd59](https://github.com/driftyco/ionic-native/commit/a72cd59)), closes [#732](https://github.com/driftyco/ionic-native/issues/732)
+
+
+### Features
+
+* **diagnostic:** add missing functions ([eb03de9](https://github.com/driftyco/ionic-native/commit/eb03de9)), closes [#743](https://github.com/driftyco/ionic-native/issues/743)
+* **filepath:** add cordova-plugin-filepath ([#714](https://github.com/driftyco/ionic-native/issues/714)) ([0660a3b](https://github.com/driftyco/ionic-native/commit/0660a3b))
+* **plugins:** add name field ([9677656](https://github.com/driftyco/ionic-native/commit/9677656))
+* **sms:** add hasPermission method ([8fbf1f2](https://github.com/driftyco/ionic-native/commit/8fbf1f2)), closes [#721](https://github.com/driftyco/ionic-native/issues/721)
+
+
+
 <a name="2.2.4"></a>
 ## [2.2.4](https://github.com/driftyco/ionic-native/compare/v2.2.3...v2.2.4) (2016-10-15)
 
