@@ -13,7 +13,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'FileOpener',
+  pluginName: 'FileOpener',
   plugin: 'cordova-plugin-file-opener2',
   pluginRef: 'cordova.plugins.fileOpener2',
   repo: 'https://github.com/pwlin/cordova-plugin-file-opener2'

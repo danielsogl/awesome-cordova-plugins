@@ -43,7 +43,7 @@ declare var navigator: any;
  * The `connection` property will return one of the following connection types: `unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
  */
 @Plugin({
-  name: 'Network',
+  pluginName: 'Network',
   plugin: 'cordova-plugin-network-information',
   repo: 'https://github.com/apache/cordova-plugin-network-information',
   platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser'],

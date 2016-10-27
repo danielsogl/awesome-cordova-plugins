@@ -40,7 +40,7 @@ declare var cordova: any;
  * ```
  */
 @Plugin({
-  name: 'SecureStorage',
+  pluginName: 'SecureStorage',
   plugin: 'cordova-plugin-secure-storage',
   pluginRef: 'plugins.securestorage',
   repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',

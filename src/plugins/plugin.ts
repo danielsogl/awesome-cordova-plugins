@@ -19,7 +19,7 @@ export const getPlugin = function(pluginRef: string): any {
  * @param method
  */
 export const pluginWarn = function(pluginObj: any, method?: string) {
-  let pluginName = pluginObj.name, plugin = pluginObj.plugin;
+  let pluginName = pluginObj.pluginName, plugin = pluginObj.plugin;
   if (method) {
     console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
   } else {
@@ -111,7 +111,7 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
   if (!pluginInstance) {
     // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
     if (!window.cordova) {
-      cordovaWarn(pluginObj.name, methodName);
+      cordovaWarn(pluginObj.pluginName, methodName);
       return {
         error: 'cordova_not_available'
       };
@@ -196,7 +196,7 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
           return get(window, pluginObj.pluginRef)[opts.clearFunction].call(pluginObj, pluginResult);
         }
       } catch (e) {
-        console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
+        console.warn('Unable to clear the previous observable watch for', pluginObj.pluginName, methodName);
         console.error(e);
       }
     };
@@ -223,7 +223,7 @@ function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
             }
             return pluginObj._objectInstance[opts.clearFunction].call(pluginObj, pluginResult);
           } catch (e) {
-            console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
+            console.warn('Unable to clear the previous observable watch for', pluginObj.pluginName, methodName);
             console.error(e);
           }
         };
@@ -268,7 +268,7 @@ function overrideFunction(pluginObj: any, methodName: string, args: any[], opts:
     if (!pluginInstance) {
       // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
       if (!window.cordova) {
-        cordovaWarn(pluginObj.name, methodName);
+        cordovaWarn(pluginObj.pluginName, methodName);
         observer.error({
           error: 'cordova_not_available'
         });
@@ -326,7 +326,7 @@ export const wrap = function(pluginObj: any, methodName: string, opts: any = {})
  * @usage
  * ```typescript
  * @Plugin({
- *  name: 'MyPlugin',
+ *  pluginName: 'MyPlugin',
  *  plugin: 'cordova-plugin-myplugin',
  *  pluginRef: 'window.myplugin'
  *  })

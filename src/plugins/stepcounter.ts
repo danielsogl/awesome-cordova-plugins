@@ -20,7 +20,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'Stepcounter',
+  pluginName: 'Stepcounter',
   plugin: 'https://github.com/texh/cordova-plugin-stepcounter',
   pluginRef: 'stepcounter',
   repo: 'https://github.com/texh/cordova-plugin-stepcounter',

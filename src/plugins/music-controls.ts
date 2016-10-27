@@ -73,7 +73,7 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
-  name: 'MusicControls',
+  pluginName: 'MusicControls',
   plugin: 'cordova-plugin-music-controls',
   pluginRef: 'MusicControls',
   repo: 'https://github.com/homerours/cordova-music-controls-plugin'

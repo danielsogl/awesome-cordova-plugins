@@ -15,7 +15,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'Hotspot',
+  pluginName: 'Hotspot',
   plugin: 'cordova-plugin-hotspot',
   pluginRef: 'cordova.plugins.hotspot',
   repo: 'https://github.com/hypery2k/cordova-hotspot-plugin',

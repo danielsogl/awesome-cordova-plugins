@@ -23,7 +23,7 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
-  name: 'Httpd',
+  pluginName: 'Httpd',
   plugin: 'https://github.com/floatinghotpot/cordova-httpd.git',
   pluginRef: 'cordova.plugins.CorHttpd',
   repo: 'https://github.com/floatinghotpot/cordova-httpd',

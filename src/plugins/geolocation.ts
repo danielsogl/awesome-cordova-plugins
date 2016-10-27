@@ -139,7 +139,7 @@ export interface GeolocationOptions {
  * GeolocationOptions
  */
 @Plugin({
-  name: 'Geolocation',
+  pluginName: 'Geolocation',
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation',
   repo: 'https://github.com/apache/cordova-plugin-geolocation'

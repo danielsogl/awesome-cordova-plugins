@@ -82,7 +82,7 @@ export interface LaunchNavigatorOptions {
  * ```
  */
 @Plugin({
-  name: 'LaunchNavigator',
+  pluginName: 'LaunchNavigator',
   plugin: 'uk.co.workingedge.phonegap.plugin.launchnavigator',
   pluginRef: 'launchnavigator',
   repo: 'https://github.com/dpa99c/phonegap-launch-navigator.git'

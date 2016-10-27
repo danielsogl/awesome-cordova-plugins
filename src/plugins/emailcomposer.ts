@@ -44,7 +44,7 @@ declare var cordova: any;
  * ```
  */
 @Plugin({
-  name: 'EmailComposer',
+  pluginName: 'EmailComposer',
   plugin: 'cordova-plugin-email',
   pluginRef: 'cordova.plugins.email',
   repo: 'https://github.com/hypery2k/cordova-email-plugin',

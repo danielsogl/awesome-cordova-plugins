@@ -15,7 +15,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'Instagram',
+  pluginName: 'Instagram',
   plugin: 'cordova-instagram-plugin',
   pluginRef: 'Instagram',
   repo: 'https://github.com/vstirbu/InstagramPlugin'

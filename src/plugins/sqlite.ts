@@ -31,7 +31,7 @@ declare var sqlitePlugin;
  *
  */
 @Plugin({
-  name: 'SQLite',
+  pluginName: 'SQLite',
   pluginRef: 'sqlitePlugin',
   plugin: 'cordova-sqlite-storage',
   repo: 'https://github.com/litehelpers/Cordova-sqlite-storage'
@@ -83,7 +83,7 @@ export class SQLite {
         });
       } else {
         pluginWarn({
-          name: 'SQLite',
+          pluginName: 'SQLite',
           plugin: 'cordova-sqlite-storage'
         });
       }

@@ -24,7 +24,7 @@ declare let window: any;
  * ```
  */
 @Plugin({
-  name: 'NFC',
+  pluginName: 'NFC',
   plugin: 'phonegap-nfc',
   pluginRef: 'nfc',
   repo: 'https://github.com/chariotsolutions/phonegap-nfc'

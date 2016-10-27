@@ -31,7 +31,7 @@ export interface InAppBrowserEvent extends Event {
  * ```
  */
 @Plugin({
-  name: 'InAppBrowser',
+  pluginName: 'InAppBrowser',
   plugin: 'cordova-plugin-inappbrowser',
   pluginRef: 'cordova.InAppBrowser',
   repo: 'https://github.com/apache/cordova-plugin-inappbrowser'

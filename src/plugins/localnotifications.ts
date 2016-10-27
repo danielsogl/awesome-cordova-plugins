@@ -45,7 +45,7 @@ import { Cordova, Plugin } from './plugin';
  *
  */
 @Plugin({
-  name: 'LocalNotifications',
+  pluginName: 'LocalNotifications',
   plugin: 'de.appplant.cordova.plugin.local-notification',
   pluginRef: 'cordova.plugins.notification.local',
   repo: 'https://github.com/katzer/cordova-plugin-local-notifications'

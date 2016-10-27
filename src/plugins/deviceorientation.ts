@@ -67,7 +67,7 @@ export interface CompassOptions {
  * ```
  */
 @Plugin({
-  name: 'DeviceOrientation',
+  pluginName: 'DeviceOrientation',
   plugin: 'cordova-plugin-device-orientation',
   pluginRef: 'navigator.compass',
   repo: 'https://github.com/apache/cordova-plugin-device-orientation'

@@ -65,7 +65,7 @@ declare var window: any;
  * ```
  */
 @Plugin({
-  name: 'ThreeDeeTouch',
+  pluginName: 'ThreeDeeTouch',
   plugin: 'cordova-plugin-3dtouch',
   pluginRef: 'ThreeDeeTouch',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-3dtouch',

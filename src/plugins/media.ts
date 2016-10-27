@@ -68,7 +68,7 @@ export interface MediaError {
  * ```
  */
 @Plugin({
-  name: 'MediaPlugin',
+  pluginName: 'MediaPlugin',
   repo: 'https://github.com/apache/cordova-plugin-media',
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media'
@@ -132,7 +132,7 @@ export class MediaPlugin {
       });
     } else {
       pluginWarn({
-        name: 'MediaPlugin',
+        pluginName: 'MediaPlugin',
         plugin: 'cordova-plugin-media'
       });
     }

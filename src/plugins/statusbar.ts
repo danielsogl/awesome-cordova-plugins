@@ -22,7 +22,7 @@ declare var window;
  *
  */
 @Plugin({
-  name: 'StatusBar',
+  pluginName: 'StatusBar',
   plugin: 'cordova-plugin-statusbar',
   pluginRef: 'StatusBar',
   repo: 'https://github.com/apache/cordova-plugin-statusbar',

@@ -38,7 +38,7 @@ export interface CalendarOptions {
  *
  */
 @Plugin({
-  name: 'Calendar',
+  pluginName: 'Calendar',
   plugin: 'cordova-plugin-calendar',
   pluginRef: 'plugins.calendar',
   repo: 'https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin',

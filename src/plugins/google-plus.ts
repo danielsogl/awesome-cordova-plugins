@@ -12,7 +12,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'GooglePlus',
+  pluginName: 'GooglePlus',
   plugin: 'cordova-plugin-googleplus',
   pluginRef: 'window.plugins.googleplus',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-googleplus',

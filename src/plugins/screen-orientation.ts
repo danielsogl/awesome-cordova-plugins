@@ -37,7 +37,7 @@ declare var window;
  *
  */
 @Plugin({
-  name: 'ScreenOrientation',
+  pluginName: 'ScreenOrientation',
   plugin: 'cordova-plugin-screen-orientation',
   pluginRef: 'window.screen',
   repo: 'https://github.com/apache/cordova-plugin-screen-orientation',

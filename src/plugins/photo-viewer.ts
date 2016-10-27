@@ -12,7 +12,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'PhotoViewer',
+  pluginName: 'PhotoViewer',
   plugin: 'com-sarriaroman-photoviewer',
   pluginRef: 'PhotoViewer',
   repo: 'https://github.com/sarriaroman/photoviewer'

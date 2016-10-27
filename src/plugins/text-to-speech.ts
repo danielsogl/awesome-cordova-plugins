@@ -25,7 +25,7 @@ export interface TTSOptions {
  * ```
  */
 @Plugin({
-  name: 'TextToSpeech',
+  pluginName: 'TextToSpeech',
   plugin: 'cordova-plugin-tts',
   pluginRef: 'TTS',
   repo: 'https://github.com/vilic/cordova-plugin-tts'

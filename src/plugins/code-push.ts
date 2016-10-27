@@ -420,7 +420,7 @@ export interface DownloadProgress {
  * ```
  */
 @Plugin({
-  name: 'CodePush',
+  pluginName: 'CodePush',
   plugin: 'cordova-plugin-code-push',
   pluginRef: 'codePush',
   repo: 'https://github.com/Microsoft/cordova-plugin-code-push',

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
  *
  */
 @Plugin({
-  name: 'EstimoteBeacons',
+  pluginName: 'EstimoteBeacons',
   plugin: 'cordova-plugin-estimote',
   pluginRef: 'estimote.beacons',
   repo: 'https://github.com/evothings/phonegap-estimotebeacons',

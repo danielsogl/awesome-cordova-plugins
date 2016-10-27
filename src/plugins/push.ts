@@ -286,7 +286,7 @@ declare var PushNotification: {
  * ```
  */
 @Plugin({
-  name: 'Push',
+  pluginName: 'Push',
   plugin: 'phonegap-plugin-push',
   pluginRef: 'PushNotification',
   repo: 'https://github.com/phonegap/phonegap-plugin-push'

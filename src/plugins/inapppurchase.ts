@@ -51,7 +51,7 @@ import { Plugin, Cordova } from './plugin';
  *
  */
 @Plugin({
-  name: 'InAppPurchase',
+  pluginName: 'InAppPurchase',
   plugin: 'cordova-plugin-inapppurchase',
   pluginRef: 'inAppPurchase',
   platforms: ['Android', 'iOS'],

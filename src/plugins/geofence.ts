@@ -74,7 +74,7 @@ import { Observable } from 'rxjs/Observable';
 declare var window: any;
 
 @Plugin({
-  name: 'Geofence',
+  pluginName: 'Geofence',
   plugin: 'cordova-plugin-geofence',
   pluginRef: 'geofence',
   repo: 'https://github.com/cowbell/cordova-plugin-geofence/',

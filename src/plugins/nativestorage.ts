@@ -23,7 +23,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'NativeStorage',
+  pluginName: 'NativeStorage',
   plugin: 'cordova-plugin-nativestorage',
   pluginRef: 'NativeStorage',
   repo: 'https://github.com/TheCocoaProject/cordova-plugin-nativestorage'

@@ -62,7 +62,7 @@ export interface AccelerometerOptions {
  * ```
  */
 @Plugin({
-  name: 'DeviceMotion',
+  pluginName: 'DeviceMotion',
   plugin: 'cordova-plugin-device-motion',
   pluginRef: 'navigator.accelerometer',
   repo: 'https://github.com/apache/cordova-plugin-device-motion'

@@ -18,7 +18,7 @@ declare var mixpanel: any;
  * ```
  */
 @Plugin({
-  name: 'Mixpanel',
+  pluginName: 'Mixpanel',
   plugin: 'cordova-plugin-mixpanel',
   pluginRef: 'mixpanel',
   repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin'

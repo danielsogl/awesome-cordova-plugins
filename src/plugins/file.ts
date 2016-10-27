@@ -360,7 +360,7 @@ declare var FileError: {
  *  It also implements the FileWriter spec : http://dev.w3.org/2009/dap/file-system/file-writer.html
  */
 @Plugin({
-  name: 'File',
+  pluginName: 'File',
   plugin: 'cordova-plugin-file',
   pluginRef: 'cordova.file',
   repo: 'https://github.com/apache/cordova-plugin-file'
@@ -391,7 +391,7 @@ export class File {
     return new Promise<any>((resolve, reject) => {
       if (!cordova || !cordova.exec) {
         pluginWarn({
-          name: 'File',
+          pluginName: 'File',
           plugin: 'cordova-plugin-file'
         });
         reject({ error: 'plugin_not_installed' });

@@ -31,7 +31,7 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
-  name: 'DBMeter',
+  pluginName: 'DBMeter',
   plugin: 'cordova-plugin-dbmeter',
   pluginRef: 'DBMeter',
   repo: 'https://github.com/akofman/cordova-plugin-dbmeter',

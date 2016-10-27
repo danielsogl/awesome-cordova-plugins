@@ -13,7 +13,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'YoutubeVideoPlayer',
+  pluginName: 'YoutubeVideoPlayer',
   plugin: 'https://github.com/Glitchbone/CordovaYoutubeVideoPlayer.git',
   pluginRef: 'YoutubeVideoPlayer',
   repo: 'https://github.com/Glitchbone/CordovaYoutubeVideoPlayer',

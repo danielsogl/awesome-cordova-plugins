@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
  * Please refer the the plugin's original repository for detailed usage.
  */
 @Plugin({
-  name: 'AdMob',
+  pluginName: 'AdMob',
   plugin: 'cordova-plugin-admobpro',
   pluginRef: 'AdMob',
   repo: 'https://github.com/floatinghotpot/cordova-admob-pro',

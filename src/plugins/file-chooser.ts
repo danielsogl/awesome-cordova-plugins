@@ -16,7 +16,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'FileChooser',
+  pluginName: 'FileChooser',
   plugin: 'http://github.com/don/cordova-filechooser.git',
   pluginRef: 'fileChooser',
   repo: 'https://github.com/don/cordova-filechooser',

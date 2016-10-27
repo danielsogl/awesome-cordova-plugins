@@ -268,7 +268,7 @@ export interface Delegate {
  * ```
  */
 @Plugin({
-  name: 'IBeacon',
+  pluginName: 'IBeacon',
   plugin: 'cordova-plugin-ibeacon',
   pluginRef: 'cordova.plugins.locationManager',
   repo: 'https://github.com/petermetz/cordova-plugin-ibeacon',

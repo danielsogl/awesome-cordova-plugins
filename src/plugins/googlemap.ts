@@ -84,7 +84,7 @@ export const GoogleMapsAnimation = {
  * ```
  */
 @Plugin({
-  name: 'GoogleMap',
+  pluginName: 'GoogleMap',
   pluginRef: 'plugin.google.maps.Map',
   plugin: 'cordova-plugin-googlemaps',
   repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
@@ -109,7 +109,7 @@ export class GoogleMap {
       this._objectInstance = plugin.google.maps.Map.getMap(element, options);
     } else {
       pluginWarn({
-        name: 'GoogleMap',
+        pluginName: 'GoogleMap',
         plugin: 'plugin.google.maps.Map'
       });
     }
@@ -982,7 +982,7 @@ export class Geocoder {
     return new Promise<GeocoderResult[]>((resolve, reject) => {
       if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) {
         pluginWarn({
-          name: 'GoogleMap',
+          pluginName: 'GoogleMap',
           plugin: 'plugin.google.maps.Map'
         });
         reject({ error: 'plugin_not_installed' });

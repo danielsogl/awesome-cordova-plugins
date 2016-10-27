@@ -59,7 +59,7 @@ export interface DeeplinkMatch {
  * retrieve the `NavController` reference at runtime.
  */
 @Plugin({
-  name: 'Deeplinks',
+  pluginName: 'Deeplinks',
   plugin: 'ionic-plugin-deeplinks',
   pluginRef: 'IonicDeeplink',
   repo: 'https://github.com/driftyco/ionic-plugin-deeplinks',

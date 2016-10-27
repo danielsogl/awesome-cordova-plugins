@@ -14,7 +14,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'Base64ToGallery',
+  pluginName: 'Base64ToGallery',
   plugin: 'cordova-base64-to-gallery',
   pluginRef: 'cordova',
   repo: 'https://github.com/Nexxa/cordova-base64-to-gallery',

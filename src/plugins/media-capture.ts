@@ -22,7 +22,7 @@ declare var navigator: any;
  * ```
  */
 @Plugin({
-  name: 'MediaCapture',
+  pluginName: 'MediaCapture',
   plugin: 'cordova-plugin-media-capture',
   pluginRef: 'navigator.device.capture',
   repo: 'https://github.com/apache/cordova-plugin-media-capture'

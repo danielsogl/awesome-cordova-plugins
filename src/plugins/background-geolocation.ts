@@ -272,7 +272,7 @@ export interface Config {
  * Config
  */
 @Plugin({
-  name: 'BackgroundGeolocation',
+  pluginName: 'BackgroundGeolocation',
   plugin: 'cordova-plugin-mauron85-background-geolocation',
   pluginRef: 'backgroundGeolocation',
   repo: 'https://github.com/mauron85/cordova-plugin-background-geolocation',
