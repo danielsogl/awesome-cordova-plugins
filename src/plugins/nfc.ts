@@ -1,5 +1,6 @@
 import { Plugin, Cordova } from './plugin';
 import { Observable } from 'rxjs/Observable';
+declare let window: any;
 /**
  * @name NFC
  * @description
@@ -156,9 +157,20 @@ export class NFC {
 /**
  * @private
  */
-export declare class Ndef {
-  static uriRecord(uri: string): any;
-  static textRecord(text: string): any;
-  static mimeMediaRecord(mimeType: string, payload: string): any;
-  static androidApplicationRecord(packageName: string): any;
+export class Ndef {
+  private static name = 'NFC';
+  private static plugin = 'phonegap-nfc';
+  private static pluginRef = 'ndef';
+
+  @Cordova({ sync: true })
+  static uriRecord(uri: string): any { return; }
+
+  @Cordova({ sync: true })
+  static textRecord(text: string): any { return; }
+
+  @Cordova({ sync: true })
+  static mimeMediaRecord(mimeType: string, payload: string): any { return; }
+
+  @Cordova({ sync: true })
+  static androidApplicationRecord(packageName: string): any { return; }
 }
