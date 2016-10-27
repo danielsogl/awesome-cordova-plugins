@@ -65,20 +65,33 @@ function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Func
     obj[opts.errorName] = reject;
     args.push(obj);
   } else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
-    // If we've specified a success/error index
+    const setSuccessIndex = () => {
+      // If we've specified a success/error index
+      if (opts.successIndex > args.length) {
+        args[opts.successIndex] = resolve;
+      } else {
+        args.splice(opts.successIndex, 0, resolve);
+      }
+    };
 
-    if (opts.successIndex > args.length) {
-      args[opts.successIndex] = resolve;
+    const setErrorIndex = () => {
+      // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behaviour.
+      if (opts.errorIndex > args.length) {
+        args[opts.errorIndex] = reject; // insert the reject fn at the correct specific index
+      } else {
+        args.splice(opts.errorIndex, 0, reject); // otherwise just splice it into the array
+      }
+    };
+
+    if(opts.successIndex > opts.errorIndex) {
+      setErrorIndex();
+      setSuccessIndex();
     } else {
-      args.splice(opts.successIndex, 0, resolve);
+      setSuccessIndex();
+      setErrorIndex();
     }
 
-    // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behaviour.
-    if (opts.errorIndex > args.length) {
-      args[opts.errorIndex] = reject; // insert the reject fn at the correct specific index
-    } else {
-      args.splice(opts.errorIndex, 0, reject); // otherwise just splice it into the array
-    }
+
   } else {
     // Otherwise, let's tack them on to the end of the argument list
     // which is 90% of cases
