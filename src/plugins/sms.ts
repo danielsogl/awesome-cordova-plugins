@@ -60,6 +60,15 @@ export class SMS {
     phoneNumber: string | string[],
     message: string,
     options?: SmsOptions
-    ): Promise<any> { return; }
+  ): Promise<any> { return; }
+
+  /**
+   * This function lets you know if the app has permission to send SMS
+   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if we have permission
+   */
+  @Cordova({
+    platforms: ['Android']
+  })
+  static hasPermission(): Promise<boolean> { return; }
 
 }
