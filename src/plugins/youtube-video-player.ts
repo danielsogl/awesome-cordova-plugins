@@ -8,7 +8,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  * import {YoutubeVideoPlayer} from 'ionic-native';
  *
- * YouTubeVideoPlayer.openVideo('myvideoid');
+ * YoutubeVideoPlayer.openVideo('myvideoid');
  *
  * ```
  */
