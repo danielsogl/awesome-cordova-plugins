@@ -1,4 +1,4 @@
-import { Cordova, CordovaInstance, Plugin } from './plugin';
+import {Cordova, CordovaInstance, Plugin, pluginWarn} from './plugin';
 
 
 declare var sqlitePlugin;
@@ -73,13 +73,20 @@ export class SQLite {
    */
   openDatabase(config: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      sqlitePlugin.openDatabase(config, db => {
-        this._objectInstance = db;
-        resolve(db);
-      }, error => {
-        console.warn(error);
-        reject(error);
-      });
+      if (typeof sqlitePlugin !== 'undefined') {
+        sqlitePlugin.openDatabase(config, db => {
+          this._objectInstance = db;
+          resolve(db);
+        }, error => {
+          console.warn(error);
+          reject(error);
+        });
+      } else {
+        pluginWarn({
+          name: 'SQLite',
+          plugin: 'cordova-sqlite-storage'
+        });
+      }
     });
   }
 
