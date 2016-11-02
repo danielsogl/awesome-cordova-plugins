@@ -59,7 +59,7 @@ export interface DatePickerOptions {
   /**
    * Shows or hide dates earlier then selected date.
    */
-  allowOldDate?: boolean;
+  allowOldDates?: boolean;
   /**
    * Shows or hide dates after selected date.
    */
