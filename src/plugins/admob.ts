@@ -5,6 +5,20 @@ import { Observable } from 'rxjs/Observable';
  * @name AdMob
  * @description Plugin for Google Ads, including AdMob / DFP (doubleclick for publisher) and mediations to other Ad networks.
  * @usage
+ * ```typescript
+ * import { AdMob } from 'ionic-native';
+ * 
+ * ionViewDidLoad() {
+ *   AdMob.onBannerDismiss()
+ *     .subscribe(() => { console.log('User returned from interstitial'); });
+ * }
+ * 
+ * public onClick() {
+ *   AdMob.prepareInterstitial('YOUR_ADID')
+ *     .then(() => { AdMob.showInterstitial(); });
+ * }
+ *
+ * ```
  * Please refer the the plugin's original repository for detailed usage.
  */
 @Plugin({
