@@ -19,7 +19,7 @@ declare var window;
  *    android: 'market://details?id=<package_name>',
  *  };
  *
- * AppRate.promptForRating();
+ * AppRate.promptForRating(false);
  * ```
  *
  * @advanced
