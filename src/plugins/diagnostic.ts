@@ -215,7 +215,7 @@ export class Diagnostic {
    * mode - (iOS-only / optional) location authorization mode: "always" or "when_in_use". If not specified, defaults to "when_in_use".
    * @returns {Promise<any>}
    */
-  @Cordova({ platforms: ['Android', 'iOS'] })
+  @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
   static requestLocationAuthorization(mode?: string): Promise<any> { return; }
 
   /**
