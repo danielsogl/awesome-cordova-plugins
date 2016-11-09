@@ -38,6 +38,9 @@ export interface InAppBrowserEvent extends Event {
 })
 export class InAppBrowser {
 
+  /**
+   * @private
+   */
   static open(url: string, target?: string, options?: string): void {
     console.warn('Native: Your current usage of the InAppBrowser plugin is deprecated as of ionic-native@1.3.8. Please check the Ionic Native docs for the latest usage details.');
   }
