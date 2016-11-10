@@ -17,10 +17,10 @@ declare var cordova: any;
  * import { EmailComposer } from 'ionic-native';
  *
  *
- * EmailComposer.isAvailable().then((available: boolean) =>{
- *  if(available) {
- *    //Now we know we can send
- *  }
+ * EmailComposer.isAvailable().then(() => {
+ *   // Now we know we can send
+ * }, () => {
+ *   // not available
  * });
  *
  * let email = {
@@ -39,8 +39,9 @@ declare var cordova: any;
  * };
  *
  * // Send a text message using default options
- * EmailComposer.open(email);
- *
+ * EmailComposer.open(email).then(() => {
+ *   // Email composer has been dismissed
+ * });;
  * ```
  */
 @Plugin({
@@ -56,10 +57,10 @@ export class EmailComposer {
    * Verifies if sending emails is supported on the device.
    *
    * @param app {string?} An optional app id or uri scheme.
-   * @returns {Promise<boolean>} Resolves if available, rejects if not available
+   * @returns {Promise<void>} Resolves if available, rejects if not available
    */
   static isAvailable(app?: string): Promise<any> {
-    return new Promise<boolean>((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       if (app) {
         cordova.plugins.email.isAvailable(app, (isAvailable) => {
           if (isAvailable) {
@@ -94,13 +95,25 @@ export class EmailComposer {
    *
    * @param email {Email} Email
    * @param scope {any?} An optional scope for the promise
-   * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
+   * @returns {Promise<any>} Resolves promise when the EmailComposer has been dismissed
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 3
   })
-  static open(email: Email, scope?: any): Promise<any> { return; }
+  static open(email: Email, scope?: any): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      if (scope) {
+        cordova.plugins.email.open(email, () => {
+          resolve.call(scope);
+        });
+      } else {
+        cordova.plugins.email.open(email, () => {
+          resolve();
+        });
+      }
+    });
+  }
 
 }
 
