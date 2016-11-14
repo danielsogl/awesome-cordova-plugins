@@ -38,7 +38,7 @@ export interface CameraPreviewSize {
  * CameraPreview.startCamera(
  *   cameraRect, // position and size of preview
  *   'front', // default camera
- *   true, // tape to take picture
+ *   true, // tap to take picture
  *   false, // disable drag
  *   true // send the preview to the back of the screen so we can add overlaying elements
  * );
