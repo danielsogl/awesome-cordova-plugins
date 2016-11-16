@@ -678,8 +678,8 @@ export class File {
     }
 
     let getFileOpts: Flags = {
-      create: true,
-      exclusive: options.replace
+      create: !options.append,
+      exclusive: !options.replace
     };
 
     return File.resolveDirectoryUrl(path)
