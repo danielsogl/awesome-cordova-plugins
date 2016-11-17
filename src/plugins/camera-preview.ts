@@ -200,4 +200,10 @@ export class CameraPreview {
   })
   static setColorEffect(effect: string): void { };
 
+  /**
+   * Set flash mode
+   * @param {number} mode 0 = OFF, 1 = ON, 2 = AUTO 
+   */
+  @Cordova()
+  static setFlashMode(mode: number): Promise<any> { return; };
 }
