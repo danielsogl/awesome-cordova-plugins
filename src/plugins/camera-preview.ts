@@ -1,16 +1,74 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
+export interface CameraPreviewOptions {
+  /**
+   * The x position of the preview window, relative to the top left corner
+   * Default: 0
+   */
+  x?: number;
 
-export interface CameraPreviewRect {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
+  /**
+   * The y position of the preview window, relative to the top left corner
+   * Default: 0
+   */
+  y?: number;
+
+  /**
+   * Width of the preview window
+   * Default: window.device.width
+   */
+  width?: number;
+
+  /**
+   * Height of the preview window
+   * Default: window.device.height
+   */
+  height?: number;
+
+  /**
+   * Set the camera to use - 'front' | 'back'
+   * Default: front
+   */
+  camera?: string;
+
+  /**
+   * Set whether tapping the preview window captures a photo
+   * Default: true
+   */
+  tapPhoto?: boolean
+
+  /**
+   * Set whether preview window can be dragged
+   * Default: false
+   */
+  previewDrag?: boolean;
+
+  /**
+   * Set whether the camera preview window will be positioned behind
+   * the current view.  
+   * Default: false
+   */
+  toBack?: boolean;
+
+  /**
+   * Alpha of preview window
+   * Default: 1
+   */
+  alpha?: number;
 }
 
 export interface CameraPreviewSize {
+  /**
+   * Maximum width of the photo
+   * Default: CameraPreviewOptions.width
+   */
   maxWidth: number;
+  
+  /**
+   * Maximum height of the photo
+   * Default: CameraPreviewOptions.height
+   */
   maxHeight: number;
 }
 
@@ -19,42 +77,41 @@ export interface CameraPreviewSize {
  * @description
  * Showing camera preview in HTML
  *
- * For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview).
+ * For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/westonganger/cordova-plugin-camera-preview).
  *
  * @usage
  * ```
  * import { CameraPreview } from 'ionic-native';
  *
- * // camera options (Size and location)
- * let cameraRect: CameraPreviewRect = {
- *   x: 100,
- *   y: 100,
- *   width: 200,
- *   height: 200
- * };
- *
- *
  * // start camera
- * CameraPreview.startCamera(
- *   cameraRect, // position and size of preview
- *   'front', // default camera
- *   true, // tap to take picture
- *   false, // disable drag
- *   true // send the preview to the back of the screen so we can add overlaying elements
- * );
+ * let cameraPreviewOptions = {
+ *    x: 100,
+ *    y: 100,
+ *    width: 200,
+ *    height: 200,
+ *    camera: 'front',
+ *    tapPhoto: false,
+ *    previewDrag: false,
+ *    toBack: false,
+ *    alpha: 1
+ * }
+ * 
+ * CameraPreview.startCamera(cameraPreviewOptions);
  *
  * // Set the handler to run every time we take a picture
- * CameraPreview.setOnPictureTakenHandler().subscribe((result) => {
+ * CameraPreview.setOnPictureTakenHandler().subscribe(result => {
  *   console.log(result);
  *   // do something with the result
  * });
  *
  *
  * // take a picture
- * CameraPreview.takePicture({
+ * let photoSize: CameraPreviewSize = {
  *   maxWidth: 640,
  *   maxHeight: 640
- * });
+ * }
+ * 
+ * CameraPreview.takePicture(photoSize);
  *
  * // Switch camera
  * CameraPreview.switchCamera();
@@ -79,17 +136,12 @@ export class CameraPreview {
 
   /**
    * Starts the camera preview instance.
-   * @param {CameraPreviewRect} position and size of the preview window - {x: number, y: number, width: number, height: number}
-   * @param {string} which camera to use - 'front' | 'back'
-   * @param {boolean} enable tap to take picture
-   * @param {boolean} enable preview box drag across the screen
-   * @param {boolean} send preview box to the back of the webview
-   * @param {number} alpha of the preview box
+   * @param {CameraPreviewOptions} options Options for the camera preview window; position, size, etc. 
    */
   @Cordova({
     sync: true
   })
-  static startCamera(rect: CameraPreviewRect, defaultCamera: string, tapEnabled: boolean, dragEnabled: boolean, toBack: boolean, alpha: number): void { };
+  static startCamera(options?: CameraPreviewOptions): void { };
 
   /**
    * Stops the camera preview instance.
@@ -106,7 +158,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static takePicture(size: CameraPreviewSize): void { };
+  static takePicture(size?: CameraPreviewSize): void { };
 
   /**
    * Register a callback function that receives the original picture and the image captured from the preview box.
@@ -147,4 +199,5 @@ export class CameraPreview {
     sync: true
   })
   static setColorEffect(effect: string): void { };
+
 }
