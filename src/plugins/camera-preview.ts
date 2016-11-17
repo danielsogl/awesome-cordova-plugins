@@ -19,7 +19,7 @@ export interface CameraPreviewSize {
  * @description
  * Showing camera preview in HTML
  *
- * For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/westonganger/cordova-plugin-camera-preview).
+ * For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview).
  *
  * @usage
  * ```
@@ -38,7 +38,7 @@ export interface CameraPreviewSize {
  * CameraPreview.startCamera(
  *   cameraRect, // position and size of preview
  *   'front', // default camera
- *   true, // tape to take picture
+ *   true, // tap to take picture
  *   false, // disable drag
  *   true // send the preview to the back of the screen so we can add overlaying elements
  * );
@@ -70,7 +70,7 @@ export interface CameraPreviewSize {
  */
 @Plugin({
   pluginName: 'CameraPreview',
-  plugin: 'cordova-plugin-camera-preview',
+  plugin: 'https://github.com/westonganger/cordova-plugin-camera-preview',
   pluginRef: 'cordova.plugins.camerapreview',
   repo: 'https://github.com/westonganger/cordova-plugin-camera-preview',
   platforms: ['Android', 'iOS']
