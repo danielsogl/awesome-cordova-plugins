@@ -36,8 +36,7 @@ export interface CameraPreviewOptions {
    * Set whether tapping the preview window captures a photo
    * Default: true
    */
-  tapPhoto?: boolean
-
+  tapPhoto?: boolean;
   /**
    * Set whether preview window can be dragged
    * Default: false
@@ -64,7 +63,7 @@ export interface CameraPreviewSize {
    * Default: CameraPreviewOptions.width
    */
   maxWidth: number;
-  
+
   /**
    * Maximum height of the photo
    * Default: CameraPreviewOptions.height
@@ -138,27 +137,21 @@ export class CameraPreview {
    * Starts the camera preview instance.
    * @param {CameraPreviewOptions} options Options for the camera preview window; position, size, etc. 
    */
-  @Cordova({
-    sync: true
-  })
-  static startCamera(options?: CameraPreviewOptions): void { };
+  @Cordova()
+  static startCamera(options?: CameraPreviewOptions): Promise<any> { return; };
 
   /**
    * Stops the camera preview instance.
    */
-  @Cordova({
-    sync: true
-  })
-  static stopCamera(): void { };
+  @Cordova()
+  static stopCamera(): Promise<any> { return; };
 
   /**
    * Take the picture, the parameter size is optional
    * @param {CameraPreviewSize} optional - size of the picture to take
    */
-  @Cordova({
-    sync: true
-  })
-  static takePicture(size?: CameraPreviewSize): void { };
+  @Cordova()
+  static takePicture(size?: CameraPreviewSize): Promise<any> { return; };
 
   /**
    * Register a callback function that receives the original picture and the image captured from the preview box.
@@ -171,39 +164,31 @@ export class CameraPreview {
   /**
    * Switch from the rear camera and front camera, if available.
    */
-  @Cordova({
-    sync: true
-  })
-  static switchCamera(): void { };
+  @Cordova()
+  static switchCamera(): Promise<any> { return; };
 
   /**
    * Show the camera preview box.
    */
-  @Cordova({
-    sync: true
-  })
-  static show(): void { };
+  @Cordova()
+  static show(): Promise<any> { return; };
 
   /**
    * Hide the camera preview box.
    */
-  @Cordova({
-    sync: true
-  })
-  static hide(): void { };
+  @Cordova()
+  static hide(): Promise<any> { return; };
 
   /**
    * Set camera color effect.
    */
-  @Cordova({
-    sync: true
-  })
-  static setColorEffect(effect: string): void { };
+  @Cordova()
+  static setColorEffect(effect: string): Promise<any> { return; };
 
   /**
    * Set flash mode
    * @param {number} mode 0 = OFF, 1 = ON, 2 = AUTO 
    */
   @Cordova()
-  static setFlashMode(mode: number): Promise<any> { return; };
+  static setFlashMode(mode: number | string): Promise<any> { return; };
 }
