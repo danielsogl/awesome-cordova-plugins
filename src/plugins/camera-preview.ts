@@ -70,9 +70,9 @@ export interface CameraPreviewSize {
  */
 @Plugin({
   pluginName: 'CameraPreview',
-  plugin: 'https://github.com/westonganger/cordova-plugin-camera-preview',
+  plugin: 'cordova-plugin-camera-preview',
   pluginRef: 'cordova.plugins.camerapreview',
-  repo: 'https://github.com/westonganger/cordova-plugin-camera-preview',
+  repo: 'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
   platforms: ['Android', 'iOS']
 })
 export class CameraPreview {
