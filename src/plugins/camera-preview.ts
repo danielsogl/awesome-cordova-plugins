@@ -200,5 +200,5 @@ export class CameraPreview {
    * @param {number} mode 0 = OFF, 1 = ON, 2 = AUTO 
    */
   @Cordova()
-  static setFlashMode(mode: number | string): Promise<any> { return; };
+  static setFlashMode(mode: number): Promise<any> { return; };
 }
