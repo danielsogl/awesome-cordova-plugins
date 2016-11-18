@@ -76,13 +76,14 @@ export interface CameraPreviewSize {
  * @description
  * Showing camera preview in HTML
  *
- * For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/westonganger/cordova-plugin-camera-preview).
+ * For more info, please see the [Cordova Camera Preview Plugin Docs](https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview).
  *
  * @usage
  * ```
  * import { CameraPreview } from 'ionic-native';
  *
  * // start camera
+<<<<<<< HEAD
  * let cameraPreviewOptions = {
  *    x: 100,
  *    y: 100,
@@ -96,6 +97,15 @@ export interface CameraPreviewSize {
  * }
  * 
  * CameraPreview.startCamera(cameraPreviewOptions);
+=======
+ * CameraPreview.startCamera(
+ *   cameraRect, // position and size of preview
+ *   'front', // default camera
+ *   true, // tap to take picture
+ *   false, // disable drag
+ *   true // send the preview to the back of the screen so we can add overlaying elements
+ * );
+>>>>>>> dd2ccef0c72680d04e1bd1abefc3ddbe683addf4
  *
  * // Set the handler to run every time we take a picture
  * CameraPreview.setOnPictureTakenHandler().subscribe(result => {
