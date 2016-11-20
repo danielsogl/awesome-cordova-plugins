@@ -15,7 +15,7 @@ import { Plugin, Cordova } from './plugin';
 @Plugin({
   pluginName: 'Market',
   plugin: 'cordova-plugin-market',
-  pluginRef: 'plugins.market',
+  pluginRef: 'cordova.plugins.market',
   repo: 'https://github.com/xmartlabs/cordova-plugin-market'
 })
 export class Market {
