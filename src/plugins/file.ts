@@ -171,6 +171,7 @@ export interface Flags {
 }
 
 export interface WriteOptions {
+  create?: boolean;
   replace?: boolean;
   append?: boolean;
   truncate?: number; // if present, number of bytes to truncate file to before writing
@@ -667,19 +668,19 @@ export class File {
    * @param {string} fileName path relative to base path
    * @param {string | Blob} text content or blob to write
    * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
-   * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   static writeFile(path: string, fileName: string,
-                   text: string | Blob, options: WriteOptions): Promise<void> {
+                   text: string | Blob, options: WriteOptions = {}): Promise<void> {
     if ((/^\//.test(fileName))) {
-      let err = new FileError(5);
+      const err = new FileError(5);
       err.message = 'file-name cannot start with \/';
       return Promise.reject(err);
     }
 
-    let getFileOpts: Flags = {
-      create: true,
-      exclusive: options.replace
+    const getFileOpts: Flags = {
+      create: !('create' in options) || options.create,
+      exclusive: !!options.replace
     };
 
     return File.resolveDirectoryUrl(path)
@@ -687,10 +688,21 @@ export class File {
         return File.getFile(fse, fileName, getFileOpts);
       })
       .then((fe) => {
-        return File.createWriter(fe);
+        return File.writeFileEntry(fe, text, options);
       })
-      .then((writer) => {
+  }
 
+  /** Write content to FileEntry.
+   *
+   * @private
+   * @param {FileEntry} fe file entry object
+   * @param {string | Blob} text content or blob to write
+   * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
+   * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
+   */
+  private static writeFileEntry(fe: FileEntry, text: string | Blob, options : WriteOptions) {
+    return File.createWriter(fe)
+      .then((writer) => {
         if (options.append) {
           writer.seek(writer.length);
         }
@@ -700,8 +712,10 @@ export class File {
         }
 
         return File.write(writer, text);
-      });
+      })
+      .then(() => fe);
   }
+
 
   /** Write to an existing file.
    *
@@ -711,22 +725,7 @@ export class File {
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
   static writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
-    if ((/^\//.test(fileName))) {
-      let err = new FileError(5);
-      err.message = 'file-name cannot start with \/';
-      return Promise.reject(err);
-    }
-
-    return File.resolveDirectoryUrl(path)
-      .then((fse) => {
-        return File.getFile(fse, fileName, {create: false});
-      })
-      .then((fe) => {
-        return File.createWriter(fe);
-      })
-      .then((writer) => {
-        return File.write(writer, text);
-      });
+    return File.writeFile(path, fileName, text, { create: false })
   }
 
   /**
