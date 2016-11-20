@@ -17,7 +17,7 @@ declare var window;
   plugin: 'cordova-plugin-google-analytics',
   pluginRef: 'ga',
   repo: 'https://github.com/danwilson/google-analytics-plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS', 'Browser']
 })
 export class GoogleAnalytics {
   /**
