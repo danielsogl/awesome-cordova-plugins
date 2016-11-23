@@ -89,7 +89,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static startCamera(rect: CameraPreviewRect, defaultCamera: string, tapEnabled: boolean, dragEnabled: boolean, toBack: boolean, alpha: number): void { };
+  static startCamera(rect: CameraPreviewRect, defaultCamera: string, tapEnabled: boolean, dragEnabled: boolean, toBack: boolean, alpha: number): void { }
 
   /**
    * Stops the camera preview instance.
@@ -97,7 +97,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static stopCamera(): void { };
+  static stopCamera(): void { }
 
   /**
    * Take the picture, the parameter size is optional
@@ -106,7 +106,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static takePicture(size: CameraPreviewSize): void { };
+  static takePicture(size: CameraPreviewSize): void { }
 
   /**
    * Register a callback function that receives the original picture and the image captured from the preview box.
@@ -114,7 +114,7 @@ export class CameraPreview {
   @Cordova({
     observable: true
   })
-  static setOnPictureTakenHandler(): Observable<any> { return; };
+  static setOnPictureTakenHandler(): Observable<any> { return; }
 
   /**
    * Switch from the rear camera and front camera, if available.
@@ -122,7 +122,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static switchCamera(): void { };
+  static switchCamera(): void { }
 
   /**
    * Show the camera preview box.
@@ -130,7 +130,7 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static show(): void { };
+  static show(): void { }
 
   /**
    * Hide the camera preview box.
@@ -138,7 +138,15 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static hide(): void { };
+  static hide(): void { }
+
+  /**
+   * Disables the camera preview
+   */
+  @Cordova({
+    sync: true
+  })
+  static disable(): void { }
 
   /**
    * Set camera color effect.
@@ -146,5 +154,5 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static setColorEffect(effect: string): void { };
+  static setColorEffect(effect: string): void { }
 }
