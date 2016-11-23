@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 * @name Background Mode
 * @description
 * Cordova plugin to prevent the app from going to sleep while in background.
-*  Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode#android-customization
+* Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode
 *@usage
 * ```typescript
 * import { BackgroundMode } from 'ionic-native';
