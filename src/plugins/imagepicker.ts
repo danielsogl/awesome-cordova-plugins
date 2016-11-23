@@ -47,9 +47,9 @@ export interface ImagePickerOptions {
  */
 @Plugin({
   pluginName: 'ImagePicker',
-  plugin: 'cordova-plugin-image-picker',
+  plugin: 'https://github.com/Telerik-Verified-Plugins/ImagePicker',
   pluginRef: 'window.imagePicker',
-  repo: 'https://github.com/wymsee/cordova-imagePicker'
+  repo: 'https://github.com/Telerik-Verified-Plugins/ImagePicker'
 })
 export class ImagePicker {
   /**
