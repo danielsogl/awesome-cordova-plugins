@@ -656,7 +656,7 @@ export class GoogleMapsCircle {
 export interface GoogleMapsPolylineOptions {
   points?: Array<GoogleMapsLatLng>;
   visible?: boolean;
-  googledesic?: boolean;
+  geodesic?: boolean;
   color?: string;
   width?: number;
   zIndex?: number;
