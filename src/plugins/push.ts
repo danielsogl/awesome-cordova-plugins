@@ -289,7 +289,8 @@ declare var PushNotification: {
   pluginName: 'Push',
   plugin: 'phonegap-plugin-push',
   pluginRef: 'PushNotification',
-  repo: 'https://github.com/phonegap/phonegap-plugin-push'
+  repo: 'https://github.com/phonegap/phonegap-plugin-push',
+  install: 'ionic plugin add phonegap-plugin-push --variable SENDER_ID=XXXXXXXXX'
 })
 export class Push {
 
