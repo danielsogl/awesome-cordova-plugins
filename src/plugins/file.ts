@@ -689,7 +689,7 @@ export class File {
       })
       .then((fe) => {
         return File.writeFileEntry(fe, text, options);
-      })
+      });
   }
 
   /** Write content to FileEntry.
@@ -700,7 +700,7 @@ export class File {
    * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
-  private static writeFileEntry(fe: FileEntry, text: string | Blob, options : WriteOptions) {
+  private static writeFileEntry(fe: FileEntry, text: string | Blob, options: WriteOptions) {
     return File.createWriter(fe)
       .then((writer) => {
         if (options.append) {
@@ -725,7 +725,7 @@ export class File {
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
   static writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
-    return File.writeFile(path, fileName, text, { create: false })
+    return File.writeFile(path, fileName, text, { create: false });
   }
 
   /**
