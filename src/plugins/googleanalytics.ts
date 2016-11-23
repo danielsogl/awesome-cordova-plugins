@@ -24,10 +24,11 @@ export class GoogleAnalytics {
    * In your 'deviceready' handler, set up your Analytics tracker.
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/
    * @param {string}  id  Your Google Analytics Mobile App property
+   * @param {number} interval Optional dispatch period in seconds. Defaults to 30.
    * @return {Promise<any>}
    */
   @Cordova()
-  static startTrackerWithId(id: string): Promise<any> { return; }
+  static startTrackerWithId(id: string, interval?: number): Promise<any> { return; }
 
   /**
    * Enabling Advertising Features in Google Analytics allows you to take advantage of Remarketing, Demographics & Interests reports, and more
