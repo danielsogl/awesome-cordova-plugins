@@ -41,7 +41,7 @@ export const GoogleMapsAnimation = {
  * @description This plugin uses the native Google Maps SDK
  * @usage
  * ```
- * import { 
+ * import {
  *  GoogleMap,
  *  GoogleMapsEvent,
  *  GoogleMapsLatLng,
@@ -57,16 +57,16 @@ export const GoogleMapsAnimation = {
  * ngAfterViewInit() {
  *  this.loadMap();
  * }
- * 
+ *
  * loadMap() {
  *  // make sure to create following structure in your view.html file
  *  // <ion-content>
- *  //  <div #map id="map"></div>  
+ *  //  <div #map id="map"></div>
  *  // </ion-content>
  *
  *  // create a new map by passing HTMLElement
  *  let element: HTMLElement = document.getElementById('map');
- * 
+ *
  *  let map = new GoogleMap(element);
  *
  *  // listen to MAP_READY event
@@ -96,7 +96,7 @@ export const GoogleMapsAnimation = {
  *       marker.showInfoWindow();
  *     });
  *  }
- * 
+ *
  * }
  * ```
  */
@@ -485,6 +485,21 @@ export class GoogleMapsMarker {
       }
     );
   }
+
+  /**
+   * Gets a value
+   * @param key
+   */
+  @CordovaInstance({sync: true})
+  get(key: string): any { return; }
+
+  /**
+   * Sets a value
+   * @param key
+   * @param value
+   */
+  @CordovaInstance({sync: true})
+  set(key: string, value: any): void { }
 
   @CordovaInstance({ sync: true })
   isVisible(): boolean { return; }
