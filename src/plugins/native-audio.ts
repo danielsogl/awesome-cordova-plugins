@@ -10,6 +10,10 @@ import { Plugin, Cordova } from './plugin';
  * NativeAudio.preloadComplex('uniqueId2', 'path/to/file2.mp3', 1, 1, 0).then(onSuccess, onError);
  *
  * NativeAudio.play('uniqueId1').then(onSuccess, onError);
+ *
+ * // can optionally pass a callback to be called when the file is done playing
+ * NativeAudio.play('uniqueId1', () => console.log('uniqueId1 is done playing'));
+ *
  * NativeAudio.loop('uniqueId2').then(onSuccess, onError);
  *
  * NativeAudio.setVolumeForComplexAsset('uniqueId2', 0.6).then(onSuccess,onError);
@@ -57,7 +61,7 @@ export class NativeAudio {
     successIndex: 1,
     errorIndex: 2
   })
-  static play(id: string, completeCallback: Function): Promise<any> {return; }
+  static play(id: string, completeCallback?: Function): Promise<any> {return; }
 
   /**
    * Stops playing an audio
