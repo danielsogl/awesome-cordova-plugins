@@ -671,7 +671,7 @@ export class File {
    * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   static writeFile(path: string, fileName: string,
-                   text: string | Blob, options: WriteOptions = {}): Promise<void> {
+                   text: string | Blob, options: WriteOptions = {}): Promise<any> {
     if ((/^\//.test(fileName))) {
       const err = new FileError(5);
       err.message = 'file-name cannot start with \/';
