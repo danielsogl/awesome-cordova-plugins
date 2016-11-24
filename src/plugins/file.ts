@@ -679,8 +679,8 @@ export class File {
     }
 
     const getFileOpts: Flags = {
-      create: !('create' in options) || options.create,
-      exclusive: !!options.replace
+      create: !options.append,
+      exclusive: !options.replace
     };
 
     return File.resolveDirectoryUrl(path)
