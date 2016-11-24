@@ -25,7 +25,7 @@ export interface Entry {
   /** The full absolute path from the root to the entry. */
   fullPath: string;
   /** The file system on which the entry resides. */
-  fileSystem: FileSystem;
+  filesystem: FileSystem;
   nativeURL: string;
   /**
    * Look up metadata about this entry.
