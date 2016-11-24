@@ -9,13 +9,7 @@ import { Plugin, Cordova } from './plugin';
  * ```typescript
  * import { HeaderColor } from 'ionic-native';
  *
- * HeaderColor.tint("#becb29").then(
- *   (success) => {
- *   console.log("Your header have a color now")
- *   },
- *   (error) => {
- *   console.log("Your header not have a color now")
- *   }
+ * HeaderColor.tint("#becb29");
  * ```
  */
 @Plugin({
@@ -30,9 +24,9 @@ export class HeaderColor {
   /**
    * Set a color to the task header
    * @param color {string} The color
-   * @return {Promise<any>}
+   * @param {Object} Optional callbacks
    */
   @Cordova()
-  static tint(color: string): Promise<any> { return; }
+  static tint(color: string, callbacks?: {success?: Function, failure?: Function}): void { }
 
 }
