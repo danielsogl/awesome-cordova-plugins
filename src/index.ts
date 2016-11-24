@@ -72,6 +72,7 @@ import { MediaCapture } from './plugins/media-capture';
 import { NativeAudio } from './plugins/native-audio';
 import { NativePageTransitions } from './plugins/native-page-transitions';
 import { NativeStorage } from './plugins/nativestorage';
+import { NavigationBar } from './plugins/navigationbar';
 import { Market } from './plugins/market';
 import { MediaPlugin } from './plugins/media';
 import { Mixpanel } from './plugins/mixpanel';
@@ -185,6 +186,7 @@ export * from './plugins/music-controls';
 export * from './plugins/native-audio';
 export * from './plugins/native-page-transitions';
 export * from './plugins/nativestorage';
+export * from './plugins/navigationbar';
 export * from './plugins/network';
 export * from './plugins/nfc';
 export * from './plugins/onesignal';
@@ -295,6 +297,7 @@ window['IonicNative'] = {
   NativeAudio,
   NativePageTransitions,
   NativeStorage,
+  NavigationBar,
   Network,
   PayPal,
   NFC,
