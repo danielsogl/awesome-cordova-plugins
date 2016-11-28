@@ -196,6 +196,7 @@ export * from './plugins/plugin';
 export * from './plugins/power-management';
 export * from './plugins/printer';
 export * from './plugins/push';
+export * from './plugins/rollbar';
 export * from './plugins/safari-view-controller';
 export * from './plugins/screen-orientation';
 export * from './plugins/screenshot';
