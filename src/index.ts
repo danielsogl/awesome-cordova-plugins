@@ -86,6 +86,7 @@ import { PinDialog } from './plugins/pin-dialog';
 import { PowerManagement } from './plugins/power-management';
 import { Printer } from './plugins/printer';
 import { Push } from './plugins/push';
+import { Rollbar } from './plugins/rollbar';
 import { SafariViewController } from './plugins/safari-view-controller';
 import { Screenshot } from './plugins/screenshot';
 import { SecureStorage } from './plugins/securestorage';
@@ -305,6 +306,7 @@ window['IonicNative'] = {
   ScreenOrientation,
   PinDialog,
   PowerManagement,
+  Rollbar,
   SafariViewController,
   Screenshot,
   SecureStorage,
