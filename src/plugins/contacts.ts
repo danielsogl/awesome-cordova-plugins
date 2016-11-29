@@ -324,7 +324,7 @@ export class ContactFindOptions implements IContactFindOptions {
 export class Contacts {
   /**
    * Create a single contact.
-   * @return Returns a object Contact
+   * @returns {Contact} Returns a Contact object
    */
   static create(): Contact {
     return new Contact();
@@ -342,7 +342,7 @@ export class Contacts {
    *   desiredFields: Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields. (DOMString[]) [Optional]
    *   hasPhoneNumber(Android only): Filters the search to only return contacts with a phone number informed. (Boolean) (Default: false)
    *
-   * @return Returns a Promise that resolves with the search results (an array of Contact objects)
+   * @returns {Promise<any>} Returns a Promise that resolves with the search results (an array of Contact objects)
    */
   @Cordova({
     successIndex: 1,
@@ -352,7 +352,7 @@ export class Contacts {
 
   /**
    * Select a single Contact.
-   * @return Returns a Promise that resolves with the selected Contact
+   * @returns {Promise<any>} Returns a Promise that resolves with the selected Contact
    */
   @Cordova()
   static pickContact(): Promise<any> { return; }

@@ -28,28 +28,28 @@ import { Cordova, Plugin } from './plugin';
 export class AppVersion {
   /**
    * Returns the name of the app
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static getAppName(): Promise<any> { return; }
 
   /**
    * Returns the package name of the app
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static getPackageName(): Promise<any> { return; }
 
   /**
    * Returns the build identifier of the app
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static getVersionCode(): Promise<any> { return; }
 
   /**
    * Returns the version of the app
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static getVersionNumber(): Promise<any> { return; }

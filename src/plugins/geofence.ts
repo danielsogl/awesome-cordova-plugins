@@ -94,7 +94,7 @@ export class Geofence {
   /**
    * Initializes the plugin. User will be prompted to allow the app to use location and notifications.
    *
-   * @return {Promise<any>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   static initialize(): Promise<void> { return; };
@@ -102,7 +102,7 @@ export class Geofence {
   /**
    * Adds a new geofence or array of geofences. For geofence object, see above.
    *
-   * @return {Promise<any>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   static addOrUpdate(geofences: Object | Array<Object>): Promise<void> { return; };
@@ -111,7 +111,7 @@ export class Geofence {
    * Removes a geofence or array of geofences. `geofenceID` corresponds to one or more IDs specified when the
    * geofence was created.
    *
-   * @return {Promise<any>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   static remove(geofenceId: string | Array<string>): Promise<void> { return; };
@@ -119,7 +119,7 @@ export class Geofence {
   /**
    * Removes all geofences.
    *
-   * @return {Promise<any>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   static removeAll(): Promise<void> { return; };
@@ -127,7 +127,7 @@ export class Geofence {
   /**
    * Returns an array of geofences currently being monitored.
    *
-   * @return {Promise<Array<string>>}
+   * @returns {Promise<Array<string>>}
    */
   @Cordova()
   static getWatched(): Promise<string> { return; };
@@ -135,7 +135,7 @@ export class Geofence {
   /**
    * Called when a geofence is crossed in the direction specified by `TransitType`.
    *
-   * @return {Promise<any>}
+   * @returns {Observable<any>}
    */
   static onTransitionReceived(): Observable<any> {
 
@@ -149,7 +149,7 @@ export class Geofence {
   /**
    * Called when the user clicks a geofence notification. iOS and Android only.
    *
-   * @return {Promise<Object>}
+   * @returns {Observable<any>}
    */
   static onNotificationClicked(): Observable<any> {
 

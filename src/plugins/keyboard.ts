@@ -58,6 +58,7 @@ export class Keyboard {
 
   /**
    * Creates an observable that notifies you when the keyboard is shown. Unsubscribe to observable to cancel event watch.
+   * @returns {Observable<any>}
    */
   @Cordova({
     eventObservable: true,
@@ -68,6 +69,7 @@ export class Keyboard {
 
   /**
    * Creates an observable that notifies you when the keyboard is hidden. Unsubscribe to observable to cancel event watch.
+   * @returns {Observable<any>}
    */
   @Cordova({
     eventObservable: true,

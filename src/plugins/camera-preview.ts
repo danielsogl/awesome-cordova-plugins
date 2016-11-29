@@ -111,6 +111,7 @@ export class CameraPreview {
 
   /**
    * Register a callback function that receives the original picture and the image captured from the preview box.
+   * @returns {Observable<any>}
    */
   @Cordova({
     observable: true

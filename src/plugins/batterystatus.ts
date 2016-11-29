@@ -33,7 +33,7 @@ export class BatteryStatus {
 
   /**
    * Watch the change in battery level
-   * @returns {Observable} Returns an observable that pushes a status object
+   * @returns {Observable<StatusObject>} Returns an observable that pushes a status object
    */
   @Cordova({
     eventObservable: true,

@@ -28,6 +28,7 @@ export class Badge {
 
   /**
    * Clear the badge of the app icon.
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   static clear(): Promise<boolean> { return; }
@@ -35,14 +36,14 @@ export class Badge {
   /**
    * Set the badge of the app icon.
    * @param {number} badgeNumber  The new badge number.
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static set(badgeNumber: number): Promise<any> { return; }
 
   /**
    * Get the badge of the app icon.
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static get(): Promise<any> { return; }
@@ -50,7 +51,7 @@ export class Badge {
   /**
    * Increase the badge number.
    * @param {number} increaseBy  Count to add to the current badge number
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static increase(increaseBy: number): Promise<any> { return; }
@@ -58,20 +59,21 @@ export class Badge {
   /**
    * Decrease the badge number.
    * @param {number} decreaseBy  Count to subtract from the current badge number
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static decrease(decreaseBy: number): Promise<any> { return; }
 
   /**
    * Determine if the app has permission to show badges.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static hasPermission(): Promise<any> { return; }
 
   /**
    * Register permission to set badge notifications
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static registerPermission(): Promise<any> { return; }

@@ -71,6 +71,7 @@ export class AndroidFingerprintAuth {
 
   /**
    * Check if service is available
+   * @returns {Promise<any>} Returns a Promise that resolves if fingerprint auth is available on the device
    */
   @Cordova()
   static isAvailable(): Promise<{isAvailable: boolean}> {return; }

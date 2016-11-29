@@ -56,7 +56,7 @@ export class EmailComposer {
    * Verifies if sending emails is supported on the device.
    *
    * @param app {string?} An optional app id or uri scheme.
-   * @returns {Promise<boolean>} Resolves if available, rejects if not available
+   * @returns {Promise<any>} Resolves if available, rejects if not available
    */
   static isAvailable(app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {

@@ -40,7 +40,7 @@ export class BarcodeScanner {
   /**
    * Open the barcode scanner.
    * @param options {Object} Optional options to pass to the scanner
-   * @return Returns a Promise that resolves with scanner data, or rejects with an error.
+   * @returns {Promise<any>} Returns a Promise that resolves with scanner data, or rejects with an error.
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -52,6 +52,7 @@ export class BarcodeScanner {
    * NOTE: not well supported on Android
    * @param type {string} Type of encoding
    * @param data {any} Data to encode
+   * @returns {Promise<any>}
    */
   @Cordova()
   static encode(type: string, data: any): Promise<any> { return; }

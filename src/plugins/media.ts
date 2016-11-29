@@ -140,21 +140,21 @@ export class MediaPlugin {
 
   /**
    * Get the current amplitude of the current recording.
-   * @returns {Promise} Returns a promise with the amplitude of the current recording
+   * @returns {Promise<any>} Returns a promise with the amplitude of the current recording
    */
   @CordovaInstance()
   getCurrentAmplitude(): Promise<any> { return; }
 
   /**
    * Get the current position within an audio file. Also updates the Media object's position parameter.
-   * @returns {Promise} Returns a promise with the position of the current recording
+   * @returns {Promise<any>} Returns a promise with the position of the current recording
    */
   @CordovaInstance()
   getCurrentPosition(): Promise<any> { return; }
 
   /**
    * Get the duration of an audio file in seconds. If the duration is unknown, it returns a value of -1.
-   * @returns {Promise} Returns a promise with the duration of the current recording
+   * @returns {number} Returns a promise with the duration of the current recording
    */
   @CordovaInstance({
     sync: true
@@ -199,7 +199,7 @@ export class MediaPlugin {
 
   /**
    * Set the volume for an audio file.
-   * @param volume The volume to set for playback. The value must be within the range of 0.0 to 1.0.
+   * @param volume {number} The volume to set for playback. The value must be within the range of 0.0 to 1.0.
    */
   @CordovaInstance({
     sync: true
