@@ -321,6 +321,13 @@ export class Push {
 
   /**
    * Check whether the push notification permission has been granted.
+   * 
+   * ```
+   * Push.hasPermission().then((data) => {
+     console.log(data.isEnabled);
+   });
+   * ```
+   * 
    * @return {Promise} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
    */
   @Cordova()
