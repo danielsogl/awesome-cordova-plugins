@@ -53,14 +53,14 @@ export class BackgroundMode {
 
   /**
   * Checks if background mode is enabled or not.
-  * @returns {Promise<boolean>} returns a true of false if the background mode is enabled.
+  * @returns {Promise<boolean>} returns a promise that resolves with boolean that indicates if the background mode is enabled.
   */
   @Cordova()
   static isEnabled(): Promise<boolean> { return; }
 
   /**
   * Can be used to get the information if the background mode is active.
-  * @returns {Promise<boolean>} returns true or false if the background mode is active.
+  * @returns {Promise<boolean>} returns a promise that resolves with boolean that indicates if the background mode is active.
   */
   @Cordova()
   static isActive(): Promise<boolean> { return; }
