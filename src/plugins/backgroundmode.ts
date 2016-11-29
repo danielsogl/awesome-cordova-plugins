@@ -53,14 +53,14 @@ export class BackgroundMode {
 
   /**
   * Checks if background mode is enabled or not.
-  * @returns {boolean} returns a true of false if the background mode is enabled.
+  * @returns {Promise<boolean>} returns a true of false if the background mode is enabled.
   */
   @Cordova()
   static isEnabled(): Promise<boolean> { return; }
 
   /**
   * Can be used to get the information if the background mode is active.
-  * @returns {boolean} returns tru or flase if the background mode is active.
+  * @returns {Promise<boolean>} returns true or false if the background mode is active.
   */
   @Cordova()
   static isActive(): Promise<boolean> { return; }
@@ -87,18 +87,21 @@ export class BackgroundMode {
 
   /**
   * Called when background mode is activated.
+  * @returns {Observable<any>} returns an observable that emits when background mode is activated
   */
   @CordovaFunctionOverride()
   static onactivate(): Observable<any> { return; };
 
   /**
   * Called when background mode is deactivated.
+  * @returns {Observable<any>} returns an observable that emits when background mode is deactivated
   */
   @CordovaFunctionOverride()
   static ondeactivate(): Observable<any> { return; };
 
   /**
   * Called when background mode fails
+  * @returns {Observable<any>} returns an observable that emits when background mode fails
   */
   @CordovaFunctionOverride()
   static onfailure(): Observable<any> { return; };
