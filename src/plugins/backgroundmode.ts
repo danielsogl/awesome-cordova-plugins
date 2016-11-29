@@ -49,18 +49,18 @@ export class BackgroundMode {
   * Once the background mode has been disabled, the app will be paused when in background.
   */
   @Cordova()
-  static disable(): void { }
+  static disable(): Promise<any> { return; }
 
   /**
   * Checks if background mode is enabled or not.
-  * @returns {Promise<boolean>} returns a true of false if the background mode is enabled.
+  * @returns {Promise<boolean>} returns a promise that resolves with boolean that indicates if the background mode is enabled.
   */
   @Cordova()
   static isEnabled(): Promise<boolean> { return; }
 
   /**
   * Can be used to get the information if the background mode is active.
-  * @returns {Promise<boolean>} returns true or false if the background mode is active.
+  * @returns {Promise<boolean>} returns a promise that resolves with boolean that indicates if the background mode is active.
   */
   @Cordova()
   static isActive(): Promise<boolean> { return; }
@@ -73,7 +73,7 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static setDefaults(options?: Configure): void { }
+  static setDefaults(options?: Configure): Promise<any> { return; }
 
   /**
   * Modify the displayed information.
@@ -83,7 +83,7 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static configure(options?: Configure): void { }
+  static configure(options?: Configure): Promise<any> { return; }
 
   /**
   * Called when background mode is activated.
