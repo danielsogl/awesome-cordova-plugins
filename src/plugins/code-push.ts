@@ -433,6 +433,7 @@ export class CodePush {
    *
    * @param packageSuccess Callback invoked with the currently deployed package information.
    * @param packageError Optional callback invoked in case of an error.
+   * @returns {Promise<ILocalPackage>}
    */
   @Cordova()
   static getCurrentPackage(): Promise<ILocalPackage> {
@@ -442,6 +443,7 @@ export class CodePush {
   /**
    * Gets the pending package information, if any. A pending package is one that has been installed but the application still runs the old code.
    * This happends only after a package has been installed using ON_NEXT_RESTART or ON_NEXT_RESUME mode, but the application was not restarted/resumed yet.
+   * @returns {Promise<ILocalPackage>}
    */
   @Cordova()
   static getPendingPackage(): Promise<ILocalPackage> {
@@ -456,6 +458,7 @@ export class CodePush {
    *                     A null package means the application is up to date for the current native application version.
    * @param queryError Optional callback invoked in case of an error.
    * @param deploymentKey Optional deployment key that overrides the config.xml setting.
+   * @returns {Promise<IRemotePackage>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -471,6 +474,7 @@ export class CodePush {
    *
    * @param notifySucceeded Optional callback invoked if the plugin was successfully notified.
    * @param notifyFailed Optional callback invoked in case of an error during notifying the plugin.
+   * @returns {Promise<void>}
    */
   @Cordova()
   static notifyApplicationReady(): Promise<void> {
@@ -480,6 +484,7 @@ export class CodePush {
   /**
    * Reloads the application. If there is a pending update package installed using ON_NEXT_RESTART or ON_NEXT_RESUME modes, the update
    * will be immediately visible to the user. Otherwise, calling this function will simply reload the current version of the application.
+   * @returns {Promise<void>}
    */
   @Cordova()
   static restartApplication(): Promise<void> {
@@ -504,6 +509,7 @@ export class CodePush {
    * @param syncCallback Optional callback to be called with the status of the sync operation.
    * @param syncOptions Optional SyncOptions parameter configuring the behavior of the sync operation.
    * @param downloadProgress Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
+   * @returns {Observable<SyncStatus>}
    *
    */
   @Cordova({

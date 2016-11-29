@@ -36,6 +36,7 @@ export class CardIO {
    * Check whether card scanning is currently available. (May vary by
    * device, OS version, network connectivity, etc.)
    *
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   static canScan(): Promise<boolean> { return; }
@@ -43,12 +44,14 @@ export class CardIO {
   /**
    * Scan a credit card with card.io.
    * @param {CardIOOptions} options Options for configuring the plugin
+   * @returns {Promise<any>}
    */
   @Cordova()
   static scan(options?: CardIOOptions): Promise<any> { return; }
 
   /**
    * Retrieve the version of the card.io library. Useful when contacting support.
+   * @returns {Promise<string>}
    */
   @Cordova()
   static version(): Promise<string> { return; }

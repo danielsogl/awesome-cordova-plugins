@@ -36,14 +36,14 @@ export class Insomnia {
 
   /**
    * Keeps awake the application
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static keepAwake(): Promise<any> { return; }
 
   /**
    * Allows the application to sleep again
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static allowSleepAgain(): Promise<any> { return; }

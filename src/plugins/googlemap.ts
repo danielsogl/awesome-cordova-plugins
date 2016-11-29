@@ -113,7 +113,7 @@ export class GoogleMap {
   /**
    * Checks if a map object has been created and is available.
    *
-   * @return {Promise<boolean>}
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   static isAvailable(): Promise<boolean> { return; }
@@ -135,7 +135,7 @@ export class GoogleMap {
   /**
    * Listen to a map event.
    *
-   * @return {Observable<any>}
+   * @returns {Observable<any>}
    */
   on(event: any): Observable<any> {
     if (!this._objectInstance) {
@@ -155,7 +155,7 @@ export class GoogleMap {
   /**
    * Listen to a map event only once.
    *
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   one(event: any): Promise<any> {
     if (!this._objectInstance) {
@@ -175,7 +175,7 @@ export class GoogleMap {
   /**
    * Get the position of the camera.
    *
-   * @return {Promise<CameraPosition>}
+   * @returns {Promise<CameraPosition>}
    */
   @CordovaInstance()
   getCameraPosition(): Promise<CameraPosition> { return; }
@@ -183,7 +183,7 @@ export class GoogleMap {
   /**
    * Get the location of the user.
    *
-   * @return {Promise<MyLocation>}
+   * @returns {Promise<MyLocation>}
    */
   @CordovaInstance()
   getMyLocation(options?: MyLocationOptions): Promise<MyLocation> { return; }
@@ -191,7 +191,7 @@ export class GoogleMap {
   /**
    * Get the visible region.
    *
-   * @return {Promise<VisibleRegion>}
+   * @returns {Promise<VisibleRegion>}
    */
   @CordovaInstance()
   getVisibleRegion(): Promise<VisibleRegion> { return; }
@@ -217,9 +217,15 @@ export class GoogleMap {
   @CordovaInstance({ sync: true })
   setTilt(tiltLevel: number): void { }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   animateCamera(animateCameraOptions: AnimateCameraOptions): Promise<any> { return; }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   moveCamera(cameraPosition: CameraPosition): Promise<any> { return; }
 
@@ -238,6 +244,9 @@ export class GoogleMap {
   @CordovaInstance({ sync: true })
   setAllGesturesEnabled(enabled: boolean): void { }
 
+  /**
+   * @returns {Promise<GoogleMapsMarker | any>}
+   */
   addMarker(options: GoogleMapsMarkerOptions): Promise<GoogleMapsMarker | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -255,6 +264,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsCircle | any>}
+   */
   addCircle(options: GoogleMapsCircleOptions): Promise<GoogleMapsCircle | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -272,6 +284,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsPolygon | any>}
+   */
   addPolygon(options: GoogleMapsPolygonOptions): Promise<GoogleMapsPolygon | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -289,6 +304,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsPolyline | any>}
+   */
   addPolyline(options: GoogleMapsPolylineOptions): Promise<GoogleMapsPolyline | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -306,6 +324,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsTileOverlay | any>}
+   */
   addTileOverlay(options: GoogleMapsTileOverlayOptions): Promise<GoogleMapsTileOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -323,6 +344,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsGroundOverlay | any>}
+   */
   addGroundOverlay(options: GoogleMapsGroundOverlayOptions): Promise<GoogleMapsGroundOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -340,6 +364,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsKmlOverlay | any>}
+   */
   addKmlOverlay(options: GoogleMapsKmlOverlayOptions): Promise<GoogleMapsKmlOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -378,12 +405,21 @@ export class GoogleMap {
   @CordovaInstance({ sync: true })
   refreshLayout(): void { }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   fromLatLngToPoint(latLng: GoogleMapsLatLng, point: any): Promise<any> { return; }
 
+  /**
+   * @returns {Promise<GoogleMapsLatLng>}
+   */
   @CordovaInstance()
   fromPointToLatLng(point: any, latLng: GoogleMapsLatLng): Promise<GoogleMapsLatLng> { return; }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   toDataURL(): Promise<any> { return; }
 

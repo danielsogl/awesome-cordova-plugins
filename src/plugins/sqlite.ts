@@ -51,6 +51,7 @@ export class SQLite {
    * See the plugin docs for an explanation of all options: https://github.com/litehelpers/Cordova-sqlite-storage#opening-a-database
    *
    * @param config the config for opening the database.
+   * @returns {Promise<any>}
    * @usage
    *
    * ```typescript
@@ -95,12 +96,20 @@ export class SQLite {
   })
   addTransaction(transaction: any): void { }
 
+  /**
+   * @param fn {any}
+   * @returns {Promise<any>}
+   */
   @CordovaInstance({
     successIndex: 2,
     errorIndex: 1
   })
   transaction(fn: any): Promise<any> { return; }
 
+  /**
+   * @param fn {any}
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   readTransaction(fn: any): Promise<any> { return; }
 
@@ -109,6 +118,9 @@ export class SQLite {
   })
   startNextTransaction(): void { }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   close(): Promise<any> { return; }
 
@@ -129,13 +141,25 @@ export class SQLite {
    *   // resultSet.rows.item(i)
    * }, (err) => {})
    * ```
+   * @param statement {string}
+   * @param params {any}
+   * @returns {Promise<any>}
    */
   @CordovaInstance()
   executeSql(statement: string, params: any): Promise<any> { return; }
 
+  /**
+   * @param sql
+   * @param values
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   addStatement(sql, values): Promise<any> { return; }
 
+  /**
+   * @param sqlStatements {any}
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   sqlBatch(sqlStatements: any): Promise<any> { return; }
 
@@ -144,12 +168,19 @@ export class SQLite {
   })
   abortallPendingTransactions(): void { }
 
+  /**
+   @param handler
+   @param response
+   */
   @CordovaInstance({
     sync: true
   })
   handleStatementSuccess(handler, response): void { }
 
-
+  /**
+   * @param handler
+   * @param response
+   */
   @CordovaInstance({
     sync: true
   })
@@ -161,7 +192,9 @@ export class SQLite {
   })
   run(): void { }
 
-
+  /**
+   * @param txFailure
+   */
   @CordovaInstance({
     sync: true
   })
@@ -173,16 +206,24 @@ export class SQLite {
   })
   finish(): void { }
 
-
+  /**
+   * @param sqlerror
+   */
   @CordovaInstance({
     sync: true
   })
   abortFromQ(sqlerror): void { }
 
-
+  /**
+   * @returns {Promise<any>}
+   */
   @Cordova()
   static echoTest(): Promise<any> { return; }
 
+  /**
+   * @param first
+   * @returns {Promise<any>}
+   */
   @Cordova()
   static deleteDatabase(first): Promise<any> { return; }
 

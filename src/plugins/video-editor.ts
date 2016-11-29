@@ -160,7 +160,7 @@ export class VideoEditor {
   /**
    * Transcode a video
    * @param options {TranscodeOptions} Options
-   * @return {Promise<string>} Returns a promise that resolves to the path of the transcoded video
+   * @returns {Promise<string>} Returns a promise that resolves to the path of the transcoded video
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -170,7 +170,7 @@ export class VideoEditor {
   /**
    * Trim a video
    * @param options {TrimOptions} Options
-   * @return {Promise<string>} Returns a promise that resolves to the path of the trimmed video
+   * @returns {Promise<string>} Returns a promise that resolves to the path of the trimmed video
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -181,7 +181,7 @@ export class VideoEditor {
   /**
    * Create a JPEG thumbnail from a video
    * @param options {CreateThumbnailOptions} Options
-   * @return {Promise<string>} Returns a promise that resolves to the path to the jpeg image on the device
+   * @returns {Promise<string>} Returns a promise that resolves to the path to the jpeg image on the device
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -191,7 +191,7 @@ export class VideoEditor {
   /**
    * Get info on a video (width, height, orientation, duration, size, & bitrate)
    * @param options {GetVideoInfoOptions} Options
-   * @return {Promise<VideoInfo>} Returns a promise that resolves to an object containing info on the video
+   * @returns {Promise<VideoInfo>} Returns a promise that resolves to an object containing info on the video
    */
   @Cordova({
     callbackOrder: 'reverse'

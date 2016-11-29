@@ -71,7 +71,7 @@ export class Toast {
    * @param {string} message  The message to display.
    * @param {string} duration  Duration to show the toast, either 'short', 'long' or any number of milliseconds: '1500'.
    * @param {string} position  Where to position the toast, either 'top', 'center', or 'bottom'.
-   * @return {Observable}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
   @Cordova({
     observable: true,
@@ -85,7 +85,7 @@ export class Toast {
 
   /**
    * Manually hide any currently visible toast.
-   * @return {Promise} Returns a Promise that resolves on success.
+   * @returns {Promise<any>} Returns a Promise that resolves on success.
    */
   @Cordova()
   static hide(): Promise<any> { return; }
@@ -99,7 +99,7 @@ export class Toast {
    *   position  Where to position the toast, either 'top', 'center', or 'bottom'.
    *   addPixelsY  Offset in pixels to move the toast up or down from its specified position.
    *
-   * @return {Observable}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
   @Cordova({
     observable: true,
@@ -109,7 +109,8 @@ export class Toast {
 
   /**
    * Shorthand for `show(message, 'short', 'top')`.
-   * @return {Observable}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @param message {string}
+   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
   @Cordova({
     observable: true,
@@ -119,7 +120,8 @@ export class Toast {
 
   /**
    * Shorthand for `show(message, 'short', 'center')`.
-   * @return {Observable}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @param message {string}
+   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
   @Cordova({
     observable: true,
@@ -130,7 +132,8 @@ export class Toast {
 
   /**
    * Shorthand for `show(message, 'short', 'bottom')`.
-   * @return {Observable}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @param message {string}
+   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
   @Cordova({
     observable: true,
@@ -141,7 +144,8 @@ export class Toast {
 
   /**
    * Shorthand for `show(message, 'long', 'top')`.
-   * @return {Observable}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @param message {string}
+   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
   @Cordova({
     observable: true,
@@ -152,7 +156,8 @@ export class Toast {
 
   /**
    * Shorthand for `show(message, 'long', 'center')`.
-   * @return {Observable}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @param message {string}
+   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
   @Cordova({
     observable: true,
@@ -163,7 +168,8 @@ export class Toast {
 
   /**
    * Shorthand for `show(message, 'long', 'bottom')`.
-   * @return {Observable}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @param message {string}
+   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
   @Cordova({
     observable: true,

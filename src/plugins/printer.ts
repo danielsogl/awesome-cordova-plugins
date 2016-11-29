@@ -71,14 +71,16 @@ export class Printer {
 
   /**
    * Checks whether to device is capable of printing.
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   static isAvailable(): Promise<boolean> { return; }
 
   /**
    * Sends content to the printer.
-   * @param {content} The content to print. Can be a URL or an HTML string. If a HTML DOM Object is provided, its innerHtml property value will be used.
-   * @param {options} The options to pass to the printer
+   * @param content {string | HTMLElement} The content to print. Can be a URL or an HTML string. If a HTML DOM Object is provided, its innerHtml property value will be used.
+   * @param options {PrintOptions} optional. The options to pass to the printer
+   * @returns {Promise<any>}
    */
   @Cordova()
   static print(content: string | HTMLElement, options?: PrintOptions): Promise<any> { return; }

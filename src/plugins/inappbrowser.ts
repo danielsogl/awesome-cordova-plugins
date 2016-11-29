@@ -80,13 +80,15 @@ export class InAppBrowser {
   /**
    * Injects JavaScript code into the InAppBrowser window.
    * @param script    Details of the script to run, specifying either a file or code key.
+   * @returns {Promise<any>}
    */
   @CordovaInstance()
   executeScript(script: {file?: string, code?: string}): Promise<any> {return; }
 
   /**
    * Injects CSS into the InAppBrowser window.
-   * @param css       Details of the script to run, specifying either a file or code key.
+   * @param {Object}       Details of the script to run, specifying either a file or code key.
+   * @returns {Promise<any>}
    */
   @CordovaInstance()
   insertCss(css: {file?: string, code?: string}): Promise<any> {return; }
@@ -96,8 +98,8 @@ export class InAppBrowser {
 
   /**
    * A method that allows you to listen to events happening in the browser.
-   * @param event Event name
-   * @returns {Observable<any>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
+   * @param {string} name of the event
+   * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
    */
   on(event: string): Observable<InAppBrowserEvent> {
     return new Observable<InAppBrowserEvent>((observer) => {

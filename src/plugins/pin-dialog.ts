@@ -31,6 +31,7 @@ export class PinDialog {
    * @param {string} message Message to show the user
    * @param {string} title Title of the dialog
    * @param {string[]} buttons Buttons to show
+   * @returns {Promise<{ buttonIndex: number, input1: string }>}
    */
   @Cordova({
     successIndex: 1

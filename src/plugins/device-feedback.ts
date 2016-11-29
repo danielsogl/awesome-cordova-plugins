@@ -48,6 +48,7 @@ export class DeviceFeedback {
 
   /**
    * Check if haptic and acoustic feedback is enabled by user settings.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static isFeedbackEnabled(): Promise<{ haptic: boolean; acoustic: boolean; }> { return; }

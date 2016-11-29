@@ -29,6 +29,7 @@ export class FilePath {
   /**
    * Resolve native path for given content URL/path.
    * @param {String} path  Content URL/path.
+   * @returns {Promise<string>}
    */
   @Cordova()
   static resolveNativePath(path: string): Promise<string> {return; }

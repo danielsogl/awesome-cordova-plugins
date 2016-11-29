@@ -25,6 +25,7 @@ import { Plugin, Cordova } from './plugin';
 export class FileChooser {
   /**
    * Open a file
+   * @returns {Promise<string>}
    */
   @Cordova()
   static open(): Promise<string> { return; }

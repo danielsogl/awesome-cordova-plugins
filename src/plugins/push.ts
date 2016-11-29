@@ -312,7 +312,7 @@ export class Push {
    * ```
    *
    * @param {PushOptions} options  The Push [options](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/API.md#parameters).
-   * @return {PushNotification}  Returns a new [PushNotification](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/API.md#pushonevent-callback) object.
+   * @returns {PushNotification}  Returns a new [PushNotification](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/API.md#pushonevent-callback) object.
    */
   @Cordova({
     sync: true
@@ -321,7 +321,7 @@ export class Push {
 
   /**
    * Check whether the push notification permission has been granted.
-   * @return {Promise} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
+   * @return {Promise<{isEnabled: boolean}>} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
    */
   @Cordova()
   static hasPermission(): Promise<{ isEnabled: boolean }> { return; }

@@ -51,6 +51,7 @@ export class OneSignal {
    *
    * @param {string} appId Your AppId from your OneSignal app
    * @param {string} googleProjectNumber The Google Project Number (which you can get from the Google Developer Portal) and the autoRegister option.
+   * @returns {any}
    */
   @Cordova({ sync: true })
   static startInit(appId: string, googleProjectNumber: string): any { return; }
@@ -76,6 +77,7 @@ export class OneSignal {
   /**
    *
    * @param settings
+   * @returns {any}
    */
   @Cordova({ sync: true })
   static iOSSettings(settings: {
@@ -83,13 +85,16 @@ export class OneSignal {
     kOSSettingsKeyAutoPrompt: boolean;
   }): any { return; }
 
+  /**
+   * @returns {any}
+   */
   @Cordova({ sync: true })
   static endInit(): any { return; }
 
   /**
    * Retrieve a list of tags that have been set on the user from the OneSignal server.
    *
-   * @returns {Promise} Returns a Promise that resolves when tags are recieved.
+   * @returns {Promise<any>} Returns a Promise that resolves when tags are recieved.
    */
   @Cordova()
   static getTags(): Promise<any> { return; }
@@ -98,7 +103,7 @@ export class OneSignal {
    * Lets you retrieve the OneSignal user id and device token.
    * Your handler is called after the device is successfully registered with OneSignal.
    *
-   * @returns {Promise} Returns a Promise that reolves if the device was successfully registered.
+   * @returns {Promise<any>} Returns a Promise that reolves if the device was successfully registered.
    * It returns a JSON with `userId`and `pushToken`.
    */
   @Cordova()
@@ -192,7 +197,7 @@ export class OneSignal {
   /**
   *
   * @param {notificationObj} Parameters see POST [documentation](https://documentation.onesignal.com/v2.0/docs/notifications-create-notification)
-  * @returns {Promise} Returns a Promise that resolves if the notification was send successfully.
+  * @returns {Promise<any>} Returns a Promise that resolves if the notification was send successfully.
   */
   @Cordova()
   static postNotification(notificationObj: OneSignalNotification): Promise<any> { return; }

@@ -58,6 +58,7 @@ export class MediaCapture {
   /**
    * Start the audio recorder application and return information about captured audio clip files.
    * @param options
+   * @returns {Promise<MediaFile[]>} 
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -67,6 +68,7 @@ export class MediaCapture {
   /**
    * Start the camera application and return information about captured image files.
    * @param options
+   * @returns {Promise<MediaFile[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -76,6 +78,7 @@ export class MediaCapture {
   /**
    * Start the video recorder application and return information about captured video clip files.
    * @param options
+   * @returns {Promise<MediaFile[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -84,6 +87,7 @@ export class MediaCapture {
 
   /**
    * is fired if the capture call is successful
+   * @returns {Observable<MediaFile[]>}
    */
   @Cordova({
     eventObservable: true,
@@ -93,6 +97,7 @@ export class MediaCapture {
 
   /**
    * is fired if the capture call is unsuccessful
+   * @returns {Observable<CaptureError>}
    */
   @Cordova({
     eventObservable: true,
