@@ -23,10 +23,13 @@ export class HeaderColor {
 
   /**
    * Set a color to the task header
-   * @param color {string} The color
-   * @param {Object} Optional callbacks
+   * @param color {string} The color 
    */
-  @Cordova()
-  static tint(color: string, callbacks?: {success?: Function, failure?: Function}): void { }
+  @Cordova({
+    callbackStyle: 'object',
+    successName: 'success',
+    errorName: 'failure'
+  })
+  static tint(color: string): Promise<any> { }
 
 }
