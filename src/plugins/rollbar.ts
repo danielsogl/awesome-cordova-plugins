@@ -25,11 +25,9 @@ export class Rollbar {
 
   /**
    * This function initializes the monitoring of your application
-   * @param successCallback {Function} A function to be executed when the plugin successfully initializes
-   * @param errorCallback {Function} A function to be executed when an error happens while initializing the plugin
    * @return {Promise<any>} Returns a promise that resolves when the plugin successfully initializes
    */
   @Cordova()
-  static init(successCallback?: Function, errorCallback?: Function): Promise<any> { return; }
+  static init(): Promise<any> { return; }
 
 }
