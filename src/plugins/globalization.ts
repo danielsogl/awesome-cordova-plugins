@@ -93,14 +93,14 @@ export class Globalization {
 
   /**
    * Returns a number formatted as a string according to the client's user preferences.
-   * @param number {Number} The number to convert
+   * @param numberToConvert {Number} The number to convert
    * @param options {Object} Object with property `type` that can be set to: decimal, percent, or currency.
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  static numberToString(number: number, options: { type: string }): Promise<{ value: string }> { return; }
+  static numberToString(numberToConvert: number, options: { type: string }): Promise<{ value: string }> { return; }
 
   /**
    *
