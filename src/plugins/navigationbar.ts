@@ -27,12 +27,13 @@ export class NavigationBar {
    * Hide the navigation bar.
    * @param autohide {boolean} 
    * @param callbacks {Object} Optional callbacks
+   * @return {Promise<any>}
    */
   @Cordova({
     callbackStyle: 'object',
     successName: 'success',
     errorName: 'failure'
   })
-  static setUp(autohide?: boolean = false): void { }
+  static setUp(autohide?: boolean = false): Promise<any> { return; }
 
 }
