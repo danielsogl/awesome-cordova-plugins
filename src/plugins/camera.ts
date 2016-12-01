@@ -56,8 +56,8 @@ export interface CameraOptions {
   /**
    * Choose the camera to use (front- or back-facing).
    * Defined in Camera.Direction. Default is BACK.
-   *      FRONT: 0
-   *      BACK: 1
+   *      BACK: 0
+   *      FRONT: 1
    */
   cameraDirection?: number;
   /** iOS-only options that specify popover location in iPad. Defined in CameraPopoverOptions. */
