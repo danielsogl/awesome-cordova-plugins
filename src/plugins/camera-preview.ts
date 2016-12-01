@@ -40,7 +40,7 @@ export interface CameraPreviewSize {
  *   'front', // default camera
  *   true, // tap to take picture
  *   false, // disable drag
- *   false, // Keep preview in front. Set to false (back of the screen) to apply overlaying elements
+ *   false, // keep preview in front. Set to true (back of the screen) to apply overlaying elements
  *   1 // set the preview alpha
  * );
  *
