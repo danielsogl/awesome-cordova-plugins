@@ -45,7 +45,7 @@ export class CardIO {
    * @param {CardIOOptions} options Options for configuring the plugin
    */
   @Cordova()
-  static scan(options?: CardIOOptions): Promise<any> { return; }
+  static scan(options?: CardIOOptions): Promise<CardIOResponse> { return; }
 
   /**
    * Retrieve the version of the card.io library. Useful when contacting support.
@@ -72,4 +72,15 @@ export interface CardIOOptions {
   hideCardIOLogo?: boolean;
   useCardIOLogo?: boolean;
   supressScan?: boolean;
+}
+
+export interface CardIOResponse {
+  cardType: string;
+  redactedCardNumber: string;
+  cardNumber: string;
+  expiryMonth: number;
+  expiryYear: number;
+  cvv: string;
+  postalCode: string;
+  cardholderName: string;
 }
