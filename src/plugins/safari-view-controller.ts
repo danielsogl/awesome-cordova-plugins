@@ -49,13 +49,15 @@ export class SafariViewController {
 
   /**
    * Checks if SafariViewController is available
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   static isAvailable(): Promise<boolean> { return; }
 
   /**
    * Shows Safari View Controller
-   * @param options
+   * @param options {SafariViewControllerOptions} optional
+   * @returns {Promise<any>}
    */
   @Cordova()
   static show(options?: SafariViewControllerOptions): Promise<any> { return; }
@@ -68,19 +70,22 @@ export class SafariViewController {
 
   /**
    * Tries to connect to the  Chrome's custom tabs service. you must call this method before calling any of the other methods listed below.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static connectToService(): Promise<any> { return; }
 
   /**
    * Call this method whenever there's a chance the user will open an external url.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static warmUp(): Promise<any> { return; }
 
   /**
    * For even better performance optimization, call this methods if there's more than a 50% chance the user will open a certain URL.
-   * @param url
+   * @param url{string}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static mayLaunchUrl(url: string): Promise<any> { return; }

@@ -48,7 +48,7 @@ export class ScreenOrientation {
   /**
    * Lock the orientation to the passed value.
    * See below for accepted values
-   * @param {orientation} The orientation which should be locked. Accepted values see table below.
+   * @param orientation {string} The orientation which should be locked. Accepted values see table below.
    */
   @Cordova({ sync: true })
   static lockOrientation(orientation: string): void { }

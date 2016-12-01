@@ -41,7 +41,7 @@ export class Mixpanel {
   static distinctId(): Promise<any> { return; }
 
   /**
-   *
+   * @returns {Promise<any>}
    */
   @Cordova()
   static flush(): Promise<any> { return; }
@@ -52,7 +52,7 @@ export class Mixpanel {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static identify(distinctId): Promise<any> { return; }
+  static identify(distinctId: string): Promise<any> { return; }
 
   /**
    *
@@ -64,7 +64,7 @@ export class Mixpanel {
 
   /**
    *
-   * @param superProperties
+   * @param superProperties {any}
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -79,8 +79,9 @@ export class Mixpanel {
 
   /**
    *
-   * @param eventName
-   * @param eventProperties
+   * @param eventName {string}
+   * @param eventProperties {any} optional
+   * @returns {Promise<any>}
    */
   @Cordova()
   static track(eventName: string, eventProperties?: any): Promise<any> { return; }

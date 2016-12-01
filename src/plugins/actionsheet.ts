@@ -52,7 +52,7 @@ export class ActionSheet {
   /**
    * Show a native ActionSheet component. See below for options.
    * @param {options} Options See table below
-   * @returns {Promise} Returns a Promise that resolves with the index of the
+   * @returns {Promise<any>} Returns a Promise that resolves with the index of the
    *   button pressed (1 based, so 1, 2, 3, etc.)
    */
   @Cordova()
@@ -70,7 +70,7 @@ export class ActionSheet {
 
   /**
    * Progamtically hide the native ActionSheet
-   * @returns {Promise} Returns a Promise that resolves when the actionsheet is closed
+   * @returns {Promise<any>} Returns a Promise that resolves when the actionsheet is closed
    */
   @Cordova()
   static hide(options?: any): Promise<any> { return; }

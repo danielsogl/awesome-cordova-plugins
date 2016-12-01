@@ -22,7 +22,7 @@ export class Market {
   /**
    * Opens an app in Google Play / App Store
    * @param appId {string} Package name
-   * @param callbacks {Object} Optional callbacks
+   * @param callbacks {Object} Optional callbacks in the format {success?: Function, failure?: Function}
    */
   @Cordova({sync: true})
   static open(appId: string, callbacks?: {success?: Function, failure?: Function}): void { }

@@ -24,6 +24,7 @@ export class Shake {
   /**
    * Watch for shake gesture
    * @param sensitivity {number} Optional sensitivity parameter. Defaults to 40
+   * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,

@@ -29,7 +29,7 @@ export class Zip {
    * @param sourceZip {string} Source ZIP file
    * @param destUrl {string} Destination folder
    * @param onProgress {Function} optional callback to be called on progress update
-   * @return  {Promise<number>} returns a promise that resolves with a number. 0 is success, -1 is error
+   * @returns {Promise<number>} returns a promise that resolves with a number. 0 is success, -1 is error
    */
   @Cordova({
     successIndex: 2,

@@ -36,20 +36,20 @@ import { Plugin, Cordova } from './plugin';
 export class TwitterConnect {
   /**
    * Logs in
-   * @return {Promise<TwitterConnectResponse>} returns a promise that resolves if logged in and rejects if failed to login
+   * @returns {Promise<TwitterConnectResponse>} returns a promise that resolves if logged in and rejects if failed to login
    */
   @Cordova()
   static login(): Promise<TwitterConnectResponse> {return; }
   /**
    * Logs out
-   * @return {Promise<any>} returns a promise that resolves if logged out and rejects if failed to logout
+   * @returns {Promise<any>} returns a promise that resolves if logged out and rejects if failed to logout
    */
   @Cordova()
   static logout(): Promise<any> {return; }
 
   /**
    * Returns user's profile information
-   * @return {Promise<any>} returns a promise that resolves if user profile is successfully retrieved and rejects if request fails
+   * @returns {Promise<any>} returns a promise that resolves if user profile is successfully retrieved and rejects if request fails
    */
   @Cordova()
   static showUser(): Promise<any> {return; }

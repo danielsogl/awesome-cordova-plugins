@@ -71,7 +71,7 @@ export class DeviceMotion {
 
   /**
    * Get the current acceleration along the x, y, and z axes.
-   * @returns {Promise<any>} Returns object with x, y, z, and timestamp properties
+   * @returns {Promise<AccelerationData>} Returns object with x, y, z, and timestamp properties
    */
   @Cordova()
   static getCurrentAcceleration(): Promise<AccelerationData> { return; }

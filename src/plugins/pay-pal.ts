@@ -66,6 +66,7 @@ import { Plugin, Cordova } from './plugin';
 export class PayPal {
   /**
    * Retrieve the version of the PayPal iOS SDK library. Useful when contacting support.
+   * @returns {Promise<string>}
    */
   @Cordova()
   static version(): Promise<string> {return; }
@@ -77,6 +78,7 @@ export class PayPal {
    * the recommended time to preconnect is on page load.
    *
    * @param {PayPalEnvironment} clientIdsForEnvironments: set of client ids for environments
+   * @returns {Promise<any>}
    */
   @Cordova()
   static init(clientIdsForEnvironments: PayPalEnvironment): Promise<any> {return; }
@@ -88,7 +90,8 @@ export class PayPal {
    *
    * @param {String} environment: available options are "PayPalEnvironmentNoNetwork", "PayPalEnvironmentProduction" and "PayPalEnvironmentSandbox"
    * @param {PayPalConfiguration} configuration: PayPalConfiguration object, for Future Payments merchantName, merchantPrivacyPolicyURL and merchantUserAgreementURL must be set be set
-   **/
+   * @returns {Promise<any>}
+   */
   @Cordova()
   static prepareToRender(environment: string, configuration: PayPalConfiguration): Promise<any> {return; }
 
@@ -98,6 +101,7 @@ export class PayPal {
    * for more documentation of the params.
    *
    * @param {PayPalPayment} payment PayPalPayment object
+   * @returns {Promise<any>}
    */
   @Cordova()
   static renderSinglePaymentUI(payment: PayPalPayment): Promise<any> {return; }
@@ -110,12 +114,14 @@ export class PayPal {
    * This method MUST be called prior to initiating a pre-consented payment (a "future payment") from a mobile device.
    * Pass the result to your server, to include in the payment request sent to PayPal.
    * Do not otherwise cache or store this value.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static clientMetadataID(): Promise<any> {return; }
 
   /**
    * Please Read Docs on Future Payments at https://github.com/paypal/PayPal-iOS-SDK#future-payments
+   * @returns {Promise<any>}
    */
   @Cordova()
   static renderFuturePaymentUI(): Promise<any> {return; }
@@ -125,7 +131,8 @@ export class PayPal {
    *
    * @param {Array<string>} scopes scopes Set of requested scope-values. Accepted scopes are: openid, profile, address, email, phone, futurepayments and paypalattributes
    * See https://developer.paypal.com/docs/integration/direct/identity/attributes/ for more details
-   **/
+   * @returns {Promise<any>}
+   */
   @Cordova()
   static renderProfileSharingUI(scopes: string[]): Promise<any> {return; }
 }

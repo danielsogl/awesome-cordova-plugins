@@ -407,7 +407,7 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} dir Name of directory to check
-   * @return {Promise<boolean|FileError>} Returns a Promise that resolves to true if the directory exists or rejects with an error.
+   * @returns {Promise<boolean|FileError>} Returns a Promise that resolves to true if the directory exists or rejects with an error.
    */
   static checkDir(path: string, dir: string): Promise<boolean|FileError> {
     if ((/^\//.test(dir))) {
@@ -431,7 +431,7 @@ export class File {
    * @param {string} path  Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} dirName Name of directory to create
    * @param {boolean} replace If true, replaces file with same name. If false returns error
-   * @return {Promise<DirectoryEntry|FileError>} Returns a Promise that resolves with a DirectoryEntry or rejects with an error.
+   * @returns {Promise<DirectoryEntry|FileError>} Returns a Promise that resolves with a DirectoryEntry or rejects with an error.
    */
   static createDir(path: string, dirName: string, replace: boolean): Promise<DirectoryEntry|FileError> {
     if ((/^\//.test(dirName))) {
@@ -459,7 +459,7 @@ export class File {
    *
    * @param {string} path The path to the directory
    * @param {string} dirName The directory name
-   * @return {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
+   * @returns {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
   static removeDir(path: string, dirName: string): Promise<RemoveResult|FileError> {
     if ((/^\//.test(dirName))) {
@@ -484,7 +484,7 @@ export class File {
    * @param {string} dirName The source directory name
    * @param {string} newPath The destionation path to the directory
    * @param {string} newDirName The destination directory name
-   * @return {Promise<DirectoryEntry|Entry|FileError>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
+   * @returns {Promise<DirectoryEntry|Entry|FileError>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
    */
   static moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry|Entry|FileError> {
     newDirName = newDirName || dirName;
@@ -514,7 +514,7 @@ export class File {
    * @param {string} dirName Name of directory to copy
    * @param {string} newPath Base FileSystem of new location
    * @param {string} newDirName New name of directory to copy to (leave blank to remain the same)
-   * @return {Promise<Entry|FileError>} Returns a Promise that resolves to the new Entry object or rejects with an error.
+   * @returns {Promise<Entry|FileError>} Returns a Promise that resolves to the new Entry object or rejects with an error.
    */
   static copyDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<Entry|FileError> {
     if ((/^\//.test(newDirName))) {
@@ -540,7 +540,7 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} dirName Name of directory
-   * @return {Promise<Entry[]>} Returns a Promise that resolves to an array of Entry objects or rejects with an error.
+   * @returns {Promise<Entry[]>} Returns a Promise that resolves to an array of Entry objects or rejects with an error.
    */
   static listDir(path: string, dirName: string): Promise<Entry[]> {
     if ((/^\//.test(dirName))) {
@@ -564,7 +564,7 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} dirName Name of directory
-   * @return {Promise<RemoveResult>} Returns a Promise that resolves with a RemoveResult or rejects with an error.
+   * @returns {Promise<RemoveResult>} Returns a Promise that resolves with a RemoveResult or rejects with an error.
    */
   static removeRecursively(path: string, dirName: string): Promise<RemoveResult> {
     if ((/^\//.test(dirName))) {
@@ -587,7 +587,7 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} file Name of file to check
-   * @return {Promise<boolean|FileError>} Returns a Promise that resolves with a boolean or rejects with an error.
+   * @returns {Promise<boolean|FileError>} Returns a Promise that resolves with a boolean or rejects with an error.
    */
   static checkFile(path: string, file: string): Promise<boolean|FileError> {
     if ((/^\//.test(file))) {
@@ -616,7 +616,7 @@ export class File {
    * @param {string} path  Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName Name of file to create
    * @param {boolean} replace If true, replaces file with same name. If false returns error
-   * @return {Promise<FileEntry|FileError>} Returns a Promise that resolves to a FileEntry or rejects with an error.
+   * @returns {Promise<FileEntry|FileError>} Returns a Promise that resolves to a FileEntry or rejects with an error.
    */
   static createFile(path: string, fileName: string, replace: boolean): Promise<FileEntry|FileError> {
     if ((/^\//.test(fileName))) {
@@ -644,7 +644,7 @@ export class File {
    *
    * @param {string} path  Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName Name of file to remove
-   * @return {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
+   * @returns {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
   static removeFile(path: string, fileName: string): Promise<RemoveResult|FileError> {
     if ((/^\//.test(fileName))) {
@@ -668,7 +668,7 @@ export class File {
    * @param {string} fileName path relative to base path
    * @param {string | Blob} text content or blob to write
    * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
-   * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
+   * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   static writeFile(path: string, fileName: string,
                    text: string | Blob, options: WriteOptions = {}): Promise<any> {
@@ -733,7 +733,7 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} file Name of file, relative to path.
-   * @return {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as string or rejects with an error.
+   * @returns {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as string or rejects with an error.
    */
   static readAsText(path: string, file: string): Promise<string|FileError> {
     if ((/^\//.test(file))) {
@@ -774,7 +774,7 @@ export class File {
 
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} file Name of file, relative to path.
-   * @return {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as data URL or rejects with an error.
+   * @returns {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as data URL or rejects with an error.
    */
   static readAsDataURL(path: string, file: string): Promise<string|FileError> {
     if ((/^\//.test(file))) {
@@ -816,7 +816,7 @@ export class File {
 
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} file Name of file, relative to path.
-   * @return {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as string rejects with an error.
+   * @returns {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as string rejects with an error.
    */
   static readAsBinaryString(path: string, file: string): Promise<string|FileError> {
     if ((/^\//.test(file))) {
@@ -857,7 +857,7 @@ export class File {
 
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} file Name of file, relative to path.
-   * @return {Promise<ArrayBuffer|FileError>} Returns a Promise that resolves with the contents of the file as ArrayBuffer or rejects with an error.
+   * @returns {Promise<ArrayBuffer|FileError>} Returns a Promise that resolves with the contents of the file as ArrayBuffer or rejects with an error.
    */
   static readAsArrayBuffer(path: string, file: string): Promise<ArrayBuffer|FileError> {
     if ((/^\//.test(file))) {
@@ -900,7 +900,7 @@ export class File {
    * @param {string} fileName Name of file to move
    * @param {string} newPath Base FileSystem of new location
    * @param {string} newFileName New name of file to move to (leave blank to remain the same)
-   * @return {Promise<Entry|FileError>} Returns a Promise that resolves to the new Entry or rejects with an error.
+   * @returns {Promise<Entry|FileError>} Returns a Promise that resolves to the new Entry or rejects with an error.
    */
   static moveFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry|FileError> {
     newFileName = newFileName || fileName;
@@ -930,7 +930,7 @@ export class File {
    * @param {string} fileName Name of file to copy
    * @param {string} newPath Base FileSystem of new location
    * @param {string} newFileName New name of file to copy to (leave blank to remain the same)
-   * @return {Promise<Entry|FileError>} Returns a Promise that resolves to an Entry or rejects with an error.
+   * @returns {Promise<Entry|FileError>} Returns a Promise that resolves to an Entry or rejects with an error.
    */
   static copyFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry|FileError> {
     newFileName = newFileName || fileName;
