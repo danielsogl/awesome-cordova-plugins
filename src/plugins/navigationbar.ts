@@ -25,8 +25,7 @@ export class NavigationBar {
 
   /**
    * Hide the navigation bar.
-   * @param autohide {boolean} 
-   * @param callbacks {Object} Optional callbacks
+   * @param autohide {boolean}  
    * @return {Promise<any>}
    */
   @Cordova({
