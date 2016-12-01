@@ -57,7 +57,7 @@ export class CardIO {
 
 export interface CardIOOptions {
   requireExpiry?: boolean;
-  requireCCV?: boolean;
+  requireCVV?: boolean;
   requirePostalCode?: boolean;
   supressManual?: boolean;
   restrictPostalCodeToNumericOnly?: boolean;
