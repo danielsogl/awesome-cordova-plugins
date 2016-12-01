@@ -1,6 +1,6 @@
 {
   "name": "ionic-native",
-  "version": "2.2.7",
+  "version": "2.2.8",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "main": "dist/es5/index.js",
   "module": "dist/esm/index.js",
