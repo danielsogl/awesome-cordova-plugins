@@ -30,6 +30,6 @@ export class HeaderColor {
     successName: 'success',
     errorName: 'failure'
   })
-  static tint(color: string): Promise<any> { }
+  static tint(color: string): Promise<any> { return; }
 
 }
