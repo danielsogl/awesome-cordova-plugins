@@ -220,7 +220,10 @@ export class Push {
   private _objectInstance: any;
 
   constructor(options: PushOptions) {
-    if (!window.PushNotification) return console.warn('Native: PushNotification is not installed, or you are not running on a device.');
+    if (!window.PushNotification) {
+      console.warn('Native: PushNotification is not installed, or you are not running on a device.');
+      return;
+    }
     this._objectInstance = window.PushNotification.init(options);
   }
 
