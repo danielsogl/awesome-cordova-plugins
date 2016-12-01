@@ -98,7 +98,7 @@ export class Deeplinks {
    * matches the path, the resulting path-data pair will be returned in the
    * promise result which you can then use to navigate in the app as you see fit.
    *
-   * @returns {Observable<DeeplinkMatch} Returns an Observable that resolves each time a deeplink comes through, and
+   * @returns {Observable<DeeplinkMatch>} Returns an Observable that resolves each time a deeplink comes through, and
    * errors if a deeplink comes through that does not match a given path.
    */
   @Cordova({
