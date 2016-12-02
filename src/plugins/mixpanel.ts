@@ -1,7 +1,6 @@
-import { Cordova, CordovaProperty, Plugin } from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 declare var mixpanel: any;
-
 
 /**
  * @name Mixpanel
@@ -17,8 +16,11 @@ declare var mixpanel: any;
  *   .catch(onError);
  *
  * ```
+ * @classes
+ * MixpanelPeople
  */
 @Plugin({
+  pluginName: 'Mixpanel',
   plugin: 'cordova-plugin-mixpanel',
   pluginRef: 'mixpanel',
   repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin'
@@ -41,7 +43,7 @@ export class Mixpanel {
   static distinctId(): Promise<any> { return; }
 
   /**
-   *
+   * @returns {Promise<any>}
    */
   @Cordova()
   static flush(): Promise<any> { return; }
@@ -52,7 +54,7 @@ export class Mixpanel {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static identify(distinctId): Promise<any> { return; }
+  static identify(distinctId: string): Promise<any> { return; }
 
   /**
    *
@@ -64,7 +66,7 @@ export class Mixpanel {
 
   /**
    *
-   * @param superProperties
+   * @param superProperties {any}
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -79,8 +81,9 @@ export class Mixpanel {
 
   /**
    *
-   * @param eventName
-   * @param eventProperties
+   * @param eventName {string}
+   * @param eventProperties {any} optional
+   * @returns {Promise<any>}
    */
   @Cordova()
   static track(eventName: string, eventProperties?: any): Promise<any> { return; }
@@ -96,17 +99,61 @@ export class Mixpanel {
    *
    * @returns {MixpanelPeople}
    */
-  @CordovaProperty
-  static people: MixpanelPeople;
+  static get people(): typeof MixpanelPeople {
+    return MixpanelPeople;
+  };
 
 }
 /**
  * @private
  */
-export declare class MixpanelPeople {
-  static identify(distinctId: string, onSuccess?: Function, onFail?: Function): void;
-  static increment(peopleProperties: any, onSuccess?: Function, onFail?: Function): void;
-  static setPushId(pushId: string, onSuccess?: Function, onFail?: Function): void;
-  static set(peopleProperties: any, onSuccess?: Function, onFail?: Function): void;
-  static setOnce(peopleProperties: any, onSuccess?: Function, onFail?: Function): void;
+export class MixpanelPeople {
+  /**
+   * @private
+   */
+  static plugin: string = 'cordova-plugin-mixpanel';
+  /**
+   * @private
+   */
+  static pluginRef: string = 'mixpanel.people';
+
+  /**
+   *
+   * @param distinctId {string}
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static identify(distinctId: string): Promise<any> { return; }
+
+  /**
+   *
+   * @param peopleProperties {string}
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static increment(peopleProperties: any): Promise<any> { return; }
+
+  /**
+   *
+   * @param pushId
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static setPushId(pushId: string): Promise<any> { return; }
+
+  /**
+   *
+   * @param peopleProperties
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static set(peopleProperties: any): Promise<any> { return; }
+
+  /**
+   *
+   * @param peopleProperties
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static setOnce(peopleProperties: any): Promise<any> { return; }
 }

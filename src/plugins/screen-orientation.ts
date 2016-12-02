@@ -37,6 +37,7 @@ declare var window;
  *
  */
 @Plugin({
+  pluginName: 'ScreenOrientation',
   plugin: 'cordova-plugin-screen-orientation',
   pluginRef: 'window.screen',
   repo: 'https://github.com/apache/cordova-plugin-screen-orientation',
@@ -47,7 +48,7 @@ export class ScreenOrientation {
   /**
    * Lock the orientation to the passed value.
    * See below for accepted values
-   * @param {orientation} The orientation which should be locked. Accepted values see table below.
+   * @param orientation {string} The orientation which should be locked. Accepted values see table below.
    */
   @Cordova({ sync: true })
   static lockOrientation(orientation: string): void { }

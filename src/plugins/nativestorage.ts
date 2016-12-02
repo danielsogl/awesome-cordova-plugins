@@ -23,6 +23,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'NativeStorage',
   plugin: 'cordova-plugin-nativestorage',
   pluginRef: 'NativeStorage',
   repo: 'https://github.com/TheCocoaProject/cordova-plugin-nativestorage'
@@ -32,6 +33,7 @@ export class NativeStorage {
    * Stores a value
    * @param reference {string}
    * @param value
+   * @returns {Promise<any>}
    */
   @Cordova()
   static setItem(reference: string, value: any): Promise<any> {return; }
@@ -39,6 +41,7 @@ export class NativeStorage {
   /**
    * Gets a stored item
    * @param reference {string}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static getItem(reference: string): Promise<any> {return; }
@@ -46,12 +49,14 @@ export class NativeStorage {
   /**
    * Removes a single stored item
    * @param reference {string}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static remove(reference: string): Promise<any> {return; }
 
   /**
    * Removes all stored values.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static clear(): Promise<any> {return; }

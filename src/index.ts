@@ -32,6 +32,7 @@ import { DatePicker } from './plugins/datepicker';
 import { DBMeter } from './plugins/dbmeter';
 import { Deeplinks } from './plugins/deeplinks';
 import { Device } from './plugins/device';
+import { DeviceFeedback } from './plugins/device-feedback';
 import { DeviceAccounts } from './plugins/deviceaccounts';
 import { DeviceMotion } from './plugins/devicemotion';
 import { DeviceOrientation } from './plugins/deviceorientation';
@@ -43,15 +44,17 @@ import { Facebook } from './plugins/facebook';
 import { File } from './plugins/file';
 import { FileChooser } from './plugins/file-chooser';
 import { FileOpener } from './plugins/file-opener';
+import { FilePath } from './plugins/filepath';
 import { Transfer } from './plugins/filetransfer';
 import { Flashlight } from './plugins/flashlight';
 import { Geofence } from './plugins/geofence';
 import { Geolocation } from './plugins/geolocation';
 import { Globalization } from './plugins/globalization';
 import { GooglePlus } from './plugins/google-plus';
-import { GoogleMap } from './plugins/googlemaps';
+import { GoogleMap } from './plugins/googlemap';
 import { GoogleAnalytics } from './plugins/googleanalytics';
 import { Hotspot } from  './plugins/hotspot';
+import { HTTP } from  './plugins/http';
 import { Httpd } from './plugins/httpd';
 import { IBeacon } from './plugins/ibeacon';
 import { ImagePicker } from './plugins/imagepicker';
@@ -100,127 +103,124 @@ import { ThreeDeeTouch } from './plugins/3dtouch';
 import { Toast } from './plugins/toast';
 import { TouchID } from './plugins/touchid';
 import { TextToSpeech } from './plugins/text-to-speech';
-import { ThemableBrowser } from './plugins/themable-browser';
+import { ThemeableBrowser } from './plugins/themeable-browser';
 import { TwitterConnect } from './plugins/twitter-connect';
 import { Vibration } from './plugins/vibration';
 import { VideoEditor } from './plugins/video-editor';
 import { VideoPlayer } from './plugins/video-player';
 import { WebIntent } from './plugins/webintent';
 import { YoutubeVideoPlayer } from './plugins/youtube-video-player';
+import { ZBar } from './plugins/z-bar';
 import { Zip } from './plugins/zip';
 export * from './plugins/3dtouch';
+export * from './plugins/actionsheet';
+export * from './plugins/admob';
+export * from './plugins/android-fingerprint-auth';
+export * from './plugins/appavailability';
+export * from './plugins/apprate';
+export * from './plugins/appversion';
 export * from './plugins/background-geolocation';
 export * from './plugins/backgroundmode';
+export * from './plugins/badge';
+export * from './plugins/barcodescanner';
+export * from './plugins/base64togallery';
 export * from './plugins/batterystatus';
+export * from './plugins/ble';
+export * from './plugins/bluetoothserial';
+export * from './plugins/brightness';
 export * from './plugins/calendar';
+export * from './plugins/call-number';
 export * from './plugins/camera';
+export * from './plugins/camera-preview';
 export * from './plugins/card-io';
+export * from './plugins/clipboard';
 export * from './plugins/code-push';
 export * from './plugins/contacts';
+export * from './plugins/crop';
 export * from './plugins/datepicker';
+export * from './plugins/dbmeter';
+export * from './plugins/deeplinks';
 export * from './plugins/device';
+export * from './plugins/device-feedback';
+export * from './plugins/deviceaccounts';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
+export * from './plugins/diagnostic';
+export * from './plugins/dialogs';
+export * from './plugins/emailcomposer';
+export * from './plugins/estimote-beacons';
 export * from './plugins/facebook';
 export * from './plugins/file';
+export * from './plugins/file-chooser';
+export * from './plugins/file-opener';
 export * from './plugins/filetransfer';
+export * from './plugins/filepath';
+export * from './plugins/flashlight';
+export * from './plugins/geofence';
 export * from './plugins/geolocation';
-export * from './plugins/googlemaps';
+export * from './plugins/globalization';
+export * from './plugins/google-plus';
+export * from './plugins/googleanalytics';
+export * from './plugins/googlemap';
+export * from './plugins/hotspot';
+export * from './plugins/http';
 export * from './plugins/httpd';
 export * from './plugins/ibeacon';
 export * from './plugins/imagepicker';
 export * from './plugins/imageresizer';
 export * from './plugins/inappbrowser';
+export * from './plugins/inapppurchase';
+export * from './plugins/insomnia';
+export * from './plugins/instagram';
+export * from './plugins/is-debug';
+export * from './plugins/keyboard';
 export * from './plugins/launchnavigator';
 export * from './plugins/localnotifications';
-export * from './plugins/nfc';
+export * from './plugins/location-accuracy';
+export * from './plugins/market';
 export * from './plugins/media';
 export * from './plugins/media-capture';
 export * from './plugins/mixpanel';
-export * from './plugins/pay-pal';
+export * from './plugins/music-controls';
+export * from './plugins/native-audio';
 export * from './plugins/native-page-transitions';
+export * from './plugins/nativestorage';
+export * from './plugins/network';
+export * from './plugins/nfc';
+export * from './plugins/onesignal';
+export * from './plugins/pay-pal';
+export * from './plugins/photo-viewer';
+export * from './plugins/pin-dialog';
+export * from './plugins/plugin';
+export * from './plugins/power-management';
 export * from './plugins/printer';
 export * from './plugins/push';
 export * from './plugins/safari-view-controller';
+export * from './plugins/screen-orientation';
+export * from './plugins/screenshot';
+export * from './plugins/securestorage';
+export * from './plugins/shake';
+export * from './plugins/sim';
 export * from './plugins/sms';
+export * from './plugins/socialsharing';
 export * from './plugins/spinnerdialog';
+export * from './plugins/splashscreen';
+export * from './plugins/sqlite';
+export * from './plugins/statusbar';
+export * from './plugins/stepcounter';
 export * from './plugins/streaming-media';
-export * from './plugins/themable-browser';
+export * from './plugins/text-to-speech';
+export * from './plugins/themeable-browser';
 export * from './plugins/toast';
+export * from './plugins/touchid';
 export * from './plugins/twitter-connect';
+export * from './plugins/vibration';
 export * from './plugins/video-editor';
 export * from './plugins/video-player';
-export {
-ActionSheet,
-AdMob,
-AndroidFingerprintAuth,
-AppAvailability,
-AppRate,
-AppVersion,
-Badge,
-BarcodeScanner,
-Base64ToGallery,
-BatteryStatus,
-Brightness,
-BLE,
-BluetoothSerial,
-CallNumber,
-CameraPreview,
-Clipboard,
-CodePush,
-Crop,
-DBMeter,
-Deeplinks,
-DeviceAccounts,
-Dialogs,
-Diagnostic,
-EmailComposer,
-EstimoteBeacons,
-File,
-FileChooser,
-FileOpener,
-Flashlight,
-Geofence,
-Globalization,
-GooglePlus,
-GoogleAnalytics,
-Hotspot,
-InAppPurchase,
-Insomnia,
-Instagram,
-IsDebug,
-Keyboard,
-LocationAccuracy,
-MusicControls,
-NativeAudio,
-NativeStorage,
-Network,
-Market,
-OneSignal,
-PhotoViewer,
-ScreenOrientation,
-PinDialog,
-PowerManagement,
-Screenshot,
-SecureStorage,
-Shake,
-SocialSharing,
-Sim,
-Splashscreen,
-SQLite,
-StatusBar,
-Stepcounter,
-TouchID,
-Transfer,
-TextToSpeech,
-Vibration,
-VideoPlayer,
-WebIntent,
-YoutubeVideoPlayer,
-Zip
-}
-
-export * from './plugins/plugin';
+export * from './plugins/webintent';
+export * from './plugins/youtube-video-player';
+export * from './plugins/z-bar';
+export * from './plugins/zip';
 
 // Window export to use outside of a module loading system
 window['IonicNative'] = {
@@ -252,6 +252,7 @@ window['IonicNative'] = {
   DBMeter,
   Deeplinks,
   Device,
+  DeviceFeedback,
   DeviceAccounts,
   DeviceMotion,
   DeviceOrientation,
@@ -263,6 +264,7 @@ window['IonicNative'] = {
   File,
   FileChooser,
   FileOpener,
+  FilePath,
   Flashlight,
   Geofence,
   Geolocation,
@@ -271,12 +273,14 @@ window['IonicNative'] = {
   GoogleMap,
   GoogleAnalytics,
   Hotspot,
+  HTTP,
   Httpd,
   IBeacon,
   ImagePicker,
   ImageResizer,
   InAppBrowser,
   InAppPurchase,
+  Insomnia,
   Instagram,
   IsDebug,
   Keyboard,
@@ -319,13 +323,14 @@ window['IonicNative'] = {
   TouchID,
   Transfer,
   TextToSpeech,
-  ThemableBrowser,
+  ThemeableBrowser,
   TwitterConnect,
   VideoEditor,
   VideoPlayer,
   Vibration,
   WebIntent,
   YoutubeVideoPlayer,
+  ZBar,
   Zip
 };
 

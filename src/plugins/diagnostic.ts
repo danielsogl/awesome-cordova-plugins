@@ -29,6 +29,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'Diagnostic',
   plugin: 'cordova.plugins.diagnostic',
   pluginRef: 'cordova.plugins.diagnostic',
   repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin'
@@ -173,6 +174,7 @@ export class Diagnostic {
    * Enables/disables WiFi on the device.
    * Requires `ACCESS_WIFI_STATE` and `CHANGE_WIFI_STATE` permissions on Android
    * @param state {boolean}
+   * @returns {Promise<any>}
    */
   @Cordova({ callbackOrder: 'reverse', platforms: ['Android', 'Windows 10'] })
   static setWifiState(state: boolean): Promise<any> { return; }
@@ -181,6 +183,7 @@ export class Diagnostic {
    * Enables/disables Bluetooth on the device.
    * Requires `BLUETOOTH` and `BLUETOOTH_ADMIN` permissions on Android
    * @param state {boolean}
+   * @returns {Promise<any>}
    */
   @Cordova({ callbackOrder: 'reverse', platforms: ['Android', 'Windows 10'] })
   static setBluetoothState(state: boolean): Promise<any> { return; }
@@ -214,7 +217,7 @@ export class Diagnostic {
    * mode - (iOS-only / optional) location authorization mode: "always" or "when_in_use". If not specified, defaults to "when_in_use".
    * @returns {Promise<any>}
    */
-  @Cordova({ platforms: ['Android', 'iOS'] })
+  @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
   static requestLocationAuthorization(mode?: string): Promise<any> { return; }
 
   /**
@@ -279,7 +282,7 @@ export class Diagnostic {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  static getContactsAuthroizationStatus(): Promise<any> { return; }
+  static getContactsAuthorizationStatus(): Promise<any> { return; }
 
   /**
    * Requests contacts authorization for the application.
@@ -296,7 +299,7 @@ export class Diagnostic {
    *
    * Notes for iOS:
    *   - This relates to Calendar Events (not Calendar Reminders)
-   * @returns {Promise<any>}
+   * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
   static isCalendarAuthorized(): Promise<boolean> { return; }
@@ -365,7 +368,7 @@ export class Diagnostic {
   /**
    * Checks if high-accuracy locations are available to the app from GPS hardware.
    * Returns true if Location mode is enabled and is set to "Device only" or "High accuracy" AND if the app is authorised to use location.
-   * @returns {Promise<any>}
+   * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
   static isGpsLocationAvailable(): Promise<boolean> { return; }
@@ -375,6 +378,7 @@ export class Diagnostic {
    *   Returns true if Location mode is enabled and is set to either:
    *   - Device only = GPS hardware only (high accuracy)
    *   - High accuracy = GPS hardware, network triangulation and Wifi network IDs (high and low accuracy)
+   * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
   static isGpsLocationEnabled(): Promise<any> { return; }
@@ -439,6 +443,24 @@ export class Diagnostic {
    */
   @Cordova({ platforms: ['Android'], callbackOrder: 'reverse' })
   static requestRuntimePermissions(permissions: any[]): Promise<any> { return; }
+
+  /**
+   * Indicates if the plugin is currently requesting a runtime permission via the native API.
+   * Note that only one request can be made concurrently because the native API cannot handle concurrent requests,
+   * so the plugin will invoke the error callback if attempting to make more than one simultaneous request.
+   * Multiple permission requests should be grouped into a single call since the native API is setup to handle batch requests of multiple permission groups.
+   * @returns {boolean}
+   */
+  @Cordova({ sync: true })
+  static isRequestingPermission(): boolean { return; }
+
+  /**
+   * Registers a function to be called when a runtime permission request has completed.
+   * Pass in a falsey value to de-register the currently registered function.
+   * @param handler {Function}
+   */
+  @Cordova({ sync: true })
+  static registerPermissionRequestCompleteHandler(handler: Function): void { return; }
 
   /**
    * Checks if the device setting for Bluetooth is switched on.

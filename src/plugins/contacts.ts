@@ -80,7 +80,7 @@ export class Contact implements IContactProperties {
 /**
  * @private
  */
-interface IContactError {
+export interface IContactError {
   /** Error code */
   code: number;
   /** Error message */
@@ -90,7 +90,7 @@ interface IContactError {
 /**
  * @private
  */
-declare var ContactError: {
+export declare var ContactError: {
   new (code: number): IContactError;
   UNKNOWN_ERROR: number;
   INVALID_ARGUMENT_ERROR: number;
@@ -316,6 +316,7 @@ export class ContactFindOptions implements IContactFindOptions {
  * ContactAddress
  */
 @Plugin({
+  pluginName: 'Contacts',
   plugin: 'cordova-plugin-contacts',
   pluginRef: 'navigator.contacts',
   repo: 'https://github.com/apache/cordova-plugin-contacts'
@@ -323,7 +324,7 @@ export class ContactFindOptions implements IContactFindOptions {
 export class Contacts {
   /**
    * Create a single contact.
-   * @return Returns a object Contact
+   * @returns {Contact} Returns a Contact object
    */
   static create(): Contact {
     return new Contact();
@@ -341,7 +342,7 @@ export class Contacts {
    *   desiredFields: Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields. (DOMString[]) [Optional]
    *   hasPhoneNumber(Android only): Filters the search to only return contacts with a phone number informed. (Boolean) (Default: false)
    *
-   * @return Returns a Promise that resolves with the search results (an array of Contact objects)
+   * @returns {Promise<any>} Returns a Promise that resolves with the search results (an array of Contact objects)
    */
   @Cordova({
     successIndex: 1,
@@ -351,7 +352,7 @@ export class Contacts {
 
   /**
    * Select a single Contact.
-   * @return Returns a Promise that resolves with the selected Contact
+   * @returns {Promise<any>} Returns a Promise that resolves with the selected Contact
    */
   @Cordova()
   static pickContact(): Promise<any> { return; }

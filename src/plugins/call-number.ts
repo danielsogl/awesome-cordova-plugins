@@ -16,6 +16,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'CallNumber',
   plugin: 'call-number',
   pluginRef: 'plugins.CallNumber',
   repo: 'https://github.com/Rohfosho/CordovaCallNumberPlugin',
@@ -26,6 +27,7 @@ export class CallNumber {
    * Calls a phone number
    * @param numberToCall {string} The phone number to call as a string
    * @param bypassAppChooser {boolean} Set to true to bypass the app chooser and go directly to dialer
+   * @return {Promise<any>}
    */
   @Cordova({
     callbackOrder: 'reverse'

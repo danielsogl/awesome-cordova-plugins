@@ -17,6 +17,7 @@ declare var navigator: any;
  * ```
  */
 @Plugin({
+  pluginName: 'Screenshot',
   plugin: 'https://github.com/gitawego/cordova-screenshot.git',
   pluginRef: 'navigator.screenshot',
   repo: 'https://github.com/gitawego/cordova-screenshot.git'
@@ -31,6 +32,7 @@ export class Screenshot {
    * @param {number} quality. Determines the quality of the screenshot.
    *        Default quality is set to 100.
    * @param {string} filename. Name of the file as stored on the storage
+   * @returns {Promise<any>}
    */
   static save(format?: string, quality?: number, filename?: string): Promise<any> {
     return new Promise<any>(
@@ -56,6 +58,7 @@ export class Screenshot {
    *
    * @param {number} quality. Determines the quality of the screenshot.
    *        Default quality is set to 100.
+   * @returns {Promise<any>}
    */
   static URI(quality?: number): Promise<any> {
     return new Promise<any>(

@@ -25,6 +25,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'SocialSharing',
   plugin: 'cordova-plugin-x-socialsharing',
   pluginRef: 'plugins.socialsharing',
   repo: 'https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin',
@@ -37,7 +38,7 @@ export class SocialSharing {
    * @param subject {string} The subject
    * @param file {string|string[]} URL(s) to file(s) or image(s), local path(s) to file(s) or image(s), or base64 data of an image. Only the first file/image will be used on Windows Phone.
    * @param url {string} A URL to share
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static share(message?: string, subject?: string, file?: string|string[], url?: string): Promise<any> { return; }
@@ -45,7 +46,7 @@ export class SocialSharing {
   /**
    * Shares using the share sheet with additional options and returns a result object or an error message (requires plugin version 5.1.0+)
    * @param options {object} The options object with the message, subject, files, url and chooserTitle properties.
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     platforms: ['iOS', 'Android']
@@ -59,7 +60,7 @@ export class SocialSharing {
    * @param subject {string}
    * @param image {string}
    * @param url {string}
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 5,
@@ -73,7 +74,7 @@ export class SocialSharing {
    * @param message {string}
    * @param image {string}
    * @param url {string}
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 3,
@@ -87,7 +88,7 @@ export class SocialSharing {
    * @param message {string}
    * @param image {string}
    * @param url {string}
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 3,
@@ -103,7 +104,7 @@ export class SocialSharing {
    * @param image {string}
    * @param url {string}
    * @param pasteMessageHint {string}
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 4,
@@ -116,7 +117,7 @@ export class SocialSharing {
    * Shares directly to Instagram
    * @param message {string}
    * @param image {string}
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     platforms: ['iOS', 'Android']
@@ -128,7 +129,7 @@ export class SocialSharing {
    * @param message {string}
    * @param image {string}
    * @param url {string}
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 3,
@@ -143,7 +144,7 @@ export class SocialSharing {
    * @param message {string} Message to send
    * @param image {string} Image to send (does not work on iOS
    * @param url {string} Link to send
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 4,
@@ -156,7 +157,7 @@ export class SocialSharing {
    * Share via SMS
    * @param messge {string} message to send
    * @param phoneNumber {string} Number or multiple numbers seperated by commas
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     platforms: ['iOS', 'Android']
@@ -165,7 +166,7 @@ export class SocialSharing {
 
   /**
    * Checks if you can share via email
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     platforms: ['iOS', 'Android']
@@ -180,7 +181,7 @@ export class SocialSharing {
    * @param cc {string[]} Optional
    * @param bcc {string[]} Optional
    * @param files {string|string[]} Optional URL or local path to file(s) to attach
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     platforms: ['iOS', 'Android'],
@@ -196,7 +197,7 @@ export class SocialSharing {
    * @param subject {string}
    * @param image {string}
    * @param url {string}
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 5,

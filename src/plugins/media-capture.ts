@@ -22,20 +22,21 @@ declare var navigator: any;
  * ```
  */
 @Plugin({
+  pluginName: 'MediaCapture',
   plugin: 'cordova-plugin-media-capture',
   pluginRef: 'navigator.device.capture',
   repo: 'https://github.com/apache/cordova-plugin-media-capture'
 })
 export class MediaCapture {
   /**
-   * The audio recording formats supported by the device.
+   * The recording image sizes and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
   @CordovaProperty
   static supportedImageModes: ConfigurationData[];
 
   /**
-   * The recording image sizes and formats supported by the device.
+   * The audio recording formats supported by the device.
    * @returns {ConfigurationData[]}
    */
   @CordovaProperty
@@ -51,6 +52,7 @@ export class MediaCapture {
   /**
    * Start the audio recorder application and return information about captured audio clip files.
    * @param options
+   * @returns {Promise<MediaFile[]>} 
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -60,6 +62,7 @@ export class MediaCapture {
   /**
    * Start the camera application and return information about captured image files.
    * @param options
+   * @returns {Promise<MediaFile[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -69,6 +72,7 @@ export class MediaCapture {
   /**
    * Start the video recorder application and return information about captured video clip files.
    * @param options
+   * @returns {Promise<MediaFile[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -77,6 +81,7 @@ export class MediaCapture {
 
   /**
    * is fired if the capture call is successful
+   * @returns {Observable<MediaFile[]>}
    */
   @Cordova({
     eventObservable: true,
@@ -86,6 +91,7 @@ export class MediaCapture {
 
   /**
    * is fired if the capture call is unsuccessful
+   * @returns {Observable<CaptureError>}
    */
   @Cordova({
     eventObservable: true,

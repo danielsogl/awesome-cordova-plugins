@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var minimist = require('minimist');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
-var tslint = require('ionic-gulp-tslint');
+var tslint = require('gulp-tslint');
 var decamelize = require('decamelize');
 var replace = require('gulp-replace');
 
@@ -28,7 +28,12 @@ gulp.task("minify:dist", function(){
 });
 
 gulp.task('lint', function() {
-  tslint({src: 'src/**/*.ts'});
+  gulp.src('src/**/*.ts')
+    .pipe(tslint({
+      formatter: "verbose",
+      configuration: 'tslint.json'
+    }))
+    .pipe(tslint.report())
 });
 
 gulp.task('plugin:create', function(){

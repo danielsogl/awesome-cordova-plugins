@@ -19,7 +19,7 @@ export const getPlugin = function(pluginRef: string): any {
  * @param method
  */
 export const pluginWarn = function(pluginObj: any, method?: string) {
-  let pluginName = pluginObj.name, plugin = pluginObj.plugin;
+  let pluginName = pluginObj.pluginName, plugin = pluginObj.plugin;
   if (method) {
     console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
   } else {
@@ -41,6 +41,11 @@ export const cordovaWarn = function(pluginName: string, method: string) {
   }
 };
 function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Function): any {
+  // ignore resolve and reject in case sync
+  if (opts.sync) {
+    return args;
+  }
+
   // If the plugin method expects myMethod(success, err, options)
   if (opts.callbackOrder === 'reverse') {
     // Get those arguments in the order [resolve, reject, ...restOfArgs]
@@ -60,15 +65,33 @@ function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Func
     obj[opts.errorName] = reject;
     args.push(obj);
   } else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
-    // If we've specified a success/error index
-    args.splice(opts.successIndex, 0, resolve);
+    const setSuccessIndex = () => {
+      // If we've specified a success/error index
+      if (opts.successIndex > args.length) {
+        args[opts.successIndex] = resolve;
+      } else {
+        args.splice(opts.successIndex, 0, resolve);
+      }
+    };
 
-    // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behaviour.
-    if (opts.errorIndex > args.length) {
-      args[opts.errorIndex] = reject; // insert the reject fn at the correct specific index
+    const setErrorIndex = () => {
+      // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behaviour.
+      if (opts.errorIndex > args.length) {
+        args[opts.errorIndex] = reject; // insert the reject fn at the correct specific index
+      } else {
+        args.splice(opts.errorIndex, 0, reject); // otherwise just splice it into the array
+      }
+    };
+
+    if (opts.successIndex > opts.errorIndex) {
+      setErrorIndex();
+      setSuccessIndex();
     } else {
-      args.splice(opts.errorIndex, 0, reject); // otherwise just splice it into the array
+      setSuccessIndex();
+      setErrorIndex();
     }
+
+
   } else {
     // Otherwise, let's tack them on to the end of the argument list
     // which is 90% of cases
@@ -88,7 +111,7 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
   if (!pluginInstance) {
     // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
     if (!window.cordova) {
-      cordovaWarn(pluginObj.name, methodName);
+      cordovaWarn(pluginObj.pluginName, methodName);
       return {
         error: 'cordova_not_available'
       };
@@ -173,7 +196,7 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
           return get(window, pluginObj.pluginRef)[opts.clearFunction].call(pluginObj, pluginResult);
         }
       } catch (e) {
-        console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
+        console.warn('Unable to clear the previous observable watch for', pluginObj.pluginName, methodName);
         console.error(e);
       }
     };
@@ -200,7 +223,7 @@ function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
             }
             return pluginObj._objectInstance[opts.clearFunction].call(pluginObj, pluginResult);
           } catch (e) {
-            console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
+            console.warn('Unable to clear the previous observable watch for', pluginObj.pluginName, methodName);
             console.error(e);
           }
         };
@@ -245,7 +268,7 @@ function overrideFunction(pluginObj: any, methodName: string, args: any[], opts:
     if (!pluginInstance) {
       // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
       if (!window.cordova) {
-        cordovaWarn(pluginObj.name, methodName);
+        cordovaWarn(pluginObj.pluginName, methodName);
         observer.error({
           error: 'cordova_not_available'
         });
@@ -303,7 +326,7 @@ export const wrap = function(pluginObj: any, methodName: string, opts: any = {})
  * @usage
  * ```typescript
  * @Plugin({
- *  name: 'MyPlugin',
+ *  pluginName: 'MyPlugin',
  *  plugin: 'cordova-plugin-myplugin',
  *  pluginRef: 'window.myplugin'
  *  })

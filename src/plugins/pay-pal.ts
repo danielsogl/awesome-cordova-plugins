@@ -6,54 +6,102 @@ import { Plugin, Cordova } from './plugin';
  *
  * @usage
  * ```
- * import {PayPal} from 'ionic-native';
+ * import {PayPal, PayPalPayment, PayPalConfiguration} from "ionic-native";
  *
  * PayPal.init({
- *      "PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
-       "PayPalEnvironmentSandbox": "YOUR_SANDBOX_CLIENT_ID"
-       })
- *   .then(onSuccess)
- *   .catch(onError);
+ *   "PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
+ *   "PayPalEnvironmentSandbox": "YOUR_SANDBOX_CLIENT_ID"
+ * }).then(() => {
+ *   // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
+ *   PayPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+ *     // Only needed if you get an "Internal Service Error" after PayPal login!
+ *     //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
+ *   })).then(() => {
+ *     let payment = new PayPalPayment('3.33', 'USD', 'Description', 'sale');
+ *     PayPal.renderSinglePaymentUI(payment).then(() => {
+ *       // Successfully paid
  *
+ *       // Example sandbox response
+ *       //
+ *       // {
+ *       //   "client": {
+ *       //     "environment": "sandbox",
+ *       //     "product_name": "PayPal iOS SDK",
+ *       //     "paypal_sdk_version": "2.16.0",
+ *       //     "platform": "iOS"
+ *       //   },
+ *       //   "response_type": "payment",
+ *       //   "response": {
+ *       //     "id": "PAY-1AB23456CD789012EF34GHIJ",
+ *       //     "state": "approved",
+ *       //     "create_time": "2016-10-03T13:33:33Z",
+ *       //     "intent": "sale"
+ *       //   }
+ *       // }
+ *     }, () => {
+ *       // Error or render dialog closed without being successful
+ *     });
+ *   }, () => {
+ *     // Error in configuration
+ *   });
+ * }, () => {
+ *   // Error in initialization, maybe PayPal isn't supported or something else
+ * });
  * ```
  * @interfaces
  * PayPalEnvironment
- * PayPalPayment
- * PayPAlItem
- * PayPalPaymentDetails
  * PayPalConfigurationOptions
+ * @classes
+ * PayPalPayment
+ * PayPalItem
+ * PayPalPaymentDetails
  * PayPalShippingAddress
  */
 @Plugin({
+  pluginName: 'PayPal',
   plugin: 'com.paypal.cordova.mobilesdk',
   pluginRef: 'PayPalMobile',
   repo: 'https://github.com/paypal/PayPal-Cordova-Plugin'
 })
 export class PayPal {
   /**
+   * Retrieve the version of the PayPal iOS SDK library. Useful when contacting support.
+   * @returns {Promise<string>}
+   */
+  @Cordova()
+  static version(): Promise<string> {return; }
+
+  /**
    * You must preconnect to PayPal to prepare the device for processing payments.
    * This improves the user experience, by making the presentation of the
    * UI faster. The preconnect is valid for a limited time, so
    * the recommended time to preconnect is on page load.
    *
-   * @param {String} environment: available options are "PayPalEnvironmentNoNetwork", "PayPalEnvironmentProduction" and "PayPalEnvironmentSandbox"
-   * @param {PayPalConfiguration} configuration: For Future Payments merchantName, merchantPrivacyPolicyURL and merchantUserAgreementURL must be set be set
+   * @param {PayPalEnvironment} clientIdsForEnvironments: set of client ids for environments
+   * @returns {Promise<any>}
    */
   @Cordova()
-  static init(environment: PayPalEnvironment, configuration?: PayPalConfiguration): Promise<any> {return; }
+  static init(clientIdsForEnvironments: PayPalEnvironment): Promise<any> {return; }
 
   /**
-   * Retreive the version of PayPal iOS SDK Library.
+   * You must preconnect to PayPal to prepare the device for processing payments.
+   * This improves the user experience, by making the presentation of the UI faster.
+   * The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
+   *
+   * @param {String} environment: available options are "PayPalEnvironmentNoNetwork", "PayPalEnvironmentProduction" and "PayPalEnvironmentSandbox"
+   * @param {PayPalConfiguration} configuration: PayPalConfiguration object, for Future Payments merchantName, merchantPrivacyPolicyURL and merchantUserAgreementURL must be set be set
+   * @returns {Promise<any>}
    */
   @Cordova()
-  static version(): Promise<string> {return; }
+  static prepareToRender(environment: string, configuration: PayPalConfiguration): Promise<any> {return; }
 
   /**
    * Start PayPal UI to collect payment from the user.
    * See https://developer.paypal.com/webapps/developer/docs/integration/mobile/ios-integration-guide/
    * for more documentation of the params.
    *
-   * @param {PayPalPayment} payment: PayPalPayment object
+   * @param {PayPalPayment} payment PayPalPayment object
+   * @returns {Promise<any>}
    */
   @Cordova()
   static renderSinglePaymentUI(payment: PayPalPayment): Promise<any> {return; }
@@ -66,12 +114,14 @@ export class PayPal {
    * This method MUST be called prior to initiating a pre-consented payment (a "future payment") from a mobile device.
    * Pass the result to your server, to include in the payment request sent to PayPal.
    * Do not otherwise cache or store this value.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static clientMetadataID(): Promise<any> {return; }
 
   /**
    * Please Read Docs on Future Payments at https://github.com/paypal/PayPal-iOS-SDK#future-payments
+   * @returns {Promise<any>}
    */
   @Cordova()
   static renderFuturePaymentUI(): Promise<any> {return; }
@@ -79,33 +129,31 @@ export class PayPal {
   /**
    * Please Read Docs on Profile Sharing at https://github.com/paypal/PayPal-iOS-SDK#profile-sharing
    *
-   * @param {Array<string>} scopes: scopes Set of requested scope-values. Accepted scopes are: openid, profile, address, email, phone, futurepayments and paypalattributes
+   * @param {Array<string>} scopes scopes Set of requested scope-values. Accepted scopes are: openid, profile, address, email, phone, futurepayments and paypalattributes
    * See https://developer.paypal.com/docs/integration/direct/identity/attributes/ for more details
-   **/
+   * @returns {Promise<any>}
+   */
   @Cordova()
   static renderProfileSharingUI(scopes: string[]): Promise<any> {return; }
-
 }
 
 export interface PayPalEnvironment {
   PayPalEnvironmentProduction: string;
   PayPalEnvironmentSandbox: string;
 }
-export declare var PayPalPayment: {
-  /**
-   * Convenience constructor.
-   * Returns a PayPalPayment with the specified amount, currency code, and short description.
-   * @param {String} amount: The amount of the payment.
-   * @param {String} currencyCode: The ISO 4217 currency for the payment.
-   * @param {String} shortDescription: A short description of the payment.
-   * @param {String} intent: "Sale" for an immediate payment.
-   */
-  new(amount: string, currencyCode: string, shortDescription: string, intent: string): PayPalPayment;
-};
+
 /**
  * @private
  */
-export interface PayPalPayment {
+export class PayPalPayment {
+  constructor(amount: string, currency: string, shortDescription: string, intent: string, details?: PayPalPaymentDetails) {
+    this.amount = amount;
+    this.currency = currency;
+    this.shortDescription = shortDescription;
+    this.intent = intent;
+    this.details = details;
+  }
+
   /**
    * The amount of the payment.
    */
@@ -113,7 +161,7 @@ export interface PayPalPayment {
   /**
    * The ISO 4217 currency for the payment.
    */
-  currencyCode: string;
+  currency: string;
   /**
    * A short description of the payment.
    */
@@ -126,7 +174,7 @@ export interface PayPalPayment {
    * Optional Build Notation code ("BN code"), obtained from partnerprogram@paypal.com,
    * for your tracking purposes.
    */
-  bnCode: string;
+  bnCode: string = 'PhoneGap_SP';
   /**
    * Optional invoice number, for your tracking purposes. (up to 256 characters)
    */
@@ -151,9 +199,34 @@ export interface PayPalPayment {
    * Optional customer shipping address, if your app wishes to provide this to the SDK.
    */
   shippingAddress: string;
+
+  /**
+   * Optional PayPalPaymentDetails object
+   */
+  details: PayPalPaymentDetails;
 }
 
-export interface PayPalItem {
+/**
+ * @private
+ */
+export class PayPalItem {
+  /**
+   * The PayPalItem class defines an optional itemization for a payment.
+   * @see https://developer.paypal.com/docs/api/#item-object for more details.
+   * @param {String} name: Name of the item. 127 characters max
+   * @param {Number} quantity: Number of units. 10 characters max.
+   * @param {String} price: Unit price for this item 10 characters max.
+   * May be negative for "coupon" etc
+   * @param {String} currency: ISO standard currency code.
+   * @param {String} sku: The stock keeping unit for this item. 50 characters max (optional)
+   */
+  constructor(name: string, quantity: number, price: string, currency: string, sku: string) {
+    this.name = name;
+    this.quantity = quantity;
+    this.price = price;
+    this.currency = currency;
+    this.sku = sku;
+  }
   /**
    * Name of the item. 127 characters max
    */
@@ -176,21 +249,21 @@ export interface PayPalItem {
   sku: string;
 }
 
-export declare var PayPalItem: {
+/**
+ * @private
+ */
+export class PayPalPaymentDetails {
   /**
-   * The PayPalItem class defines an optional itemization for a payment.
-   * @see https://developer.paypal.com/docs/api/#item-object for more details.
-   * @param {String} name: Name of the item. 127 characters max
-   * @param {Number} quantity: Number of units. 10 characters max.
-   * @param {String} price: Unit price for this item 10 characters max.
-   * May be negative for "coupon" etc
-   * @param {String} currency: ISO standard currency code.
-   * @param {String} sku: The stock keeping unit for this item. 50 characters max (optional)
+   * The PayPalPaymentDetails class defines optional amount details.
+   * @param {String} subtotal: Sub-total (amount) of items being paid for. 10 characters max with support for 2 decimal places.
+   * @param {String} shipping: Amount charged for shipping. 10 characters max with support for 2 decimal places.
+   * @param {String} tax: Amount charged for tax. 10 characters max with support for 2 decimal places.
    */
-  new(name: string, quantity: number, price: string, currency: string, sku: string): PayPalItem;
-};
-
-export interface PayPalPaymentDetails {
+  constructor(subtotal: string, shipping: string, tax: string) {
+    this.subtotal = subtotal;
+    this.shipping = shipping;
+    this.tax = tax;
+  }
   /**
    * Sub-total (amount) of items being paid for. 10 characters max with support for 2 decimal places.
    */
@@ -204,16 +277,6 @@ export interface PayPalPaymentDetails {
    */
   tax: string;
 }
-
-export declare var PayPalPaymentDetails: {
-  /**
-   * The PayPalPaymentDetails class defines optional amount details.
-   * @param {String} subtotal: Sub-total (amount) of items being paid for. 10 characters max with support for 2 decimal places.
-   * @param {String} shipping: Amount charged for shipping. 10 characters max with support for 2 decimal places.
-   * @param {String} tax: Amount charged for tax. 10 characters max with support for 2 decimal places.
-   */
-  new(subtotal: string, shipping: string, tax: string): PayPalPaymentDetails;
-};
 
 /**
  * @private
@@ -238,11 +301,11 @@ export interface PayPalConfigurationOptions {
   /**
    * URL of your company's privacy policy, which will be offered to the user when requesting consent via a PayPalFuturePaymentViewController.
    */
-  merchantPrivacyPolicyUrl?: string;
+  merchantPrivacyPolicyURL?: string;
   /**
    * URL of your company's user agreement, which will be offered to the user when requesting consent via a PayPalFuturePaymentViewController.
    */
-  merchantUserAgreementUrl?: string;
+  merchantUserAgreementURL?: string;
   /**
    * If set to NO, the SDK will only support paying with PayPal, not with credit cards.
    * This applies only to single payments (via PayPalPaymentViewController).
@@ -316,35 +379,47 @@ export interface PayPalConfigurationOptions {
 /**
  * @private
  */
-export declare var PayPalConfiguration: {
+export class PayPalConfiguration implements PayPalConfigurationOptions {
   /**
    * You use a PayPalConfiguration object to configure many aspects of how the SDK behaves.
    * see defaults for options available
    */
-  new(options: PayPalConfigurationOptions): PayPalConfiguration;
-};
+  constructor(options?: PayPalConfigurationOptions) {
 
-export interface PayPalConfiguration {
-  defaultUserEmail: string;
-  defaultUserPhoneCountryCode: string;
-  defaultUserPhoneNumber: string;
-  merchantName: string;
-  merchantPrivacyPolicyUrl: string;
-  merchantUserAgreementUrl: string;
-  acceptCreditCards: boolean;
-  payPalShippingAddressOption: number;
-  rememberUser: boolean;
-  languageOrLocale: string;
-  disableBlurWhenBackgrounding: boolean;
-  presentingInPopover: boolean;
-  forceDefaultsInSandbox: boolean;
-  sandboxUserPassword: string;
-  sandboxUserPin: string;
+    let defaults: PayPalConfigurationOptions = {
+      defaultUserEmail: null,
+      defaultUserPhoneCountryCode: null,
+      defaultUserPhoneNumber: null,
+      merchantName: null,
+      merchantPrivacyPolicyURL: null,
+      merchantUserAgreementURL: null,
+      acceptCreditCards: true,
+      payPalShippingAddressOption: 0,
+      rememberUser: true,
+      languageOrLocale: null,
+      disableBlurWhenBackgrounding: false,
+      presentingInPopover: false,
+      forceDefaultsInSandbox: false,
+      sandboxUserPassword: null,
+      sandboxUserPin: null
+    };
+
+    if (options && typeof options === 'object') {
+      for (var i in options) {
+        if (defaults.hasOwnProperty(i)) {
+          defaults[i] = options[i];
+        }
+      }
+    }
+
+    return defaults;
+  }
 }
+
 /**
  * @private
  */
-export declare var PayPalShippingAddress: {
+export class PayPalShippingAddress {
   /**
    * See the documentation of the individual properties for more detail.
    * @param {String} recipientName: Name of the recipient at this address. 50 characters max.
@@ -355,10 +430,15 @@ export declare var PayPalShippingAddress: {
    * @param {String} postalCode: ZIP code or equivalent is usually required for countries that have them. 20 characters max. Required in certain countries.
    * @param {String} countryCode: 2-letter country code. 2 characters max.
    */
-  new(recipientName: string, line1: string, line2: string, city: string, state: string, postalCode: string, countryCode: string): PayPalShippingAddress;
-};
-
-export interface PayPalShippingAddress {
+  constructor(recipientName: string, line1: string, line2: string, city: string, state: string, postalCode: string, countryCode: string) {
+    this.recipientName = recipientName;
+    this.line1 = line1;
+    this.line2 = line2;
+    this.city = city;
+    this.state = state;
+    this.postalCode = postalCode;
+    this.countryCode = countryCode;
+  }
   /**
    * Name of the recipient at this address. 50 characters max.
    */

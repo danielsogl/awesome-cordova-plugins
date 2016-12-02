@@ -23,6 +23,7 @@ import {Plugin, Cordova} from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'LocationAccuracy',
   plugin: 'cordova-plugin-request-location-accuracy',
   pluginRef: 'cordova.plugins.locationAccuracy',
   repo: 'https://github.com/dpa99c/cordova-plugin-request-location-accuracy'
@@ -44,10 +45,11 @@ export class LocationAccuracy {
 
   /**
    * Requests accurate location
+   * @param accuracy {number} Accuracy, from 0 to 4. You can use the static properties of this class that start with REQUEST_PRIORITY_
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects if an error occurred
    */
   @Cordova({ callbackOrder: 'reverse' })
-  static request(accuracy: string): Promise<any> { return; }
+  static request(accuracy: number): Promise<any> { return; }
 
   static REQUEST_PRIORITY_NO_POWER = 0;
   static REQUEST_PRIORITY_LOW_POWER = 1;
