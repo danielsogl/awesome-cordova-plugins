@@ -1,10 +1,12 @@
-import { Cordova, Plugin } from './plugin';
+import { Cordova, CordovaFunctionOverride, Plugin } from './plugin';
+
+import { Observable } from 'rxjs/Observable';
 
 /**
 * @name Background Mode
 * @description
 * Cordova plugin to prevent the app from going to sleep while in background.
-*  Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode#android-customization
+* Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode
 *@usage
 * ```typescript
 * import { BackgroundMode } from 'ionic-native';
@@ -26,6 +28,7 @@ import { Cordova, Plugin } from './plugin';
 *
 */
 @Plugin({
+  pluginName: 'BackgroundMode',
   plugin: 'cordova-plugin-background-mode',
   pluginRef: 'cordova.plugins.backgroundMode',
   repo: 'https://github.com/katzer/cordova-plugin-background-mode',
@@ -46,18 +49,18 @@ export class BackgroundMode {
   * Once the background mode has been disabled, the app will be paused when in background.
   */
   @Cordova()
-  static disable(): void { }
+  static disable(): Promise<any> { return; }
 
   /**
   * Checks if background mode is enabled or not.
-  * @returns {boolean} returns a true of false if the background mode is enabled.
+  * @returns {Promise<boolean>} returns a promise that resolves with boolean that indicates if the background mode is enabled.
   */
   @Cordova()
   static isEnabled(): Promise<boolean> { return; }
 
   /**
   * Can be used to get the information if the background mode is active.
-  * @returns {boolean} returns tru or flase if the background mode is active.
+  * @returns {Promise<boolean>} returns a promise that resolves with boolean that indicates if the background mode is active.
   */
   @Cordova()
   static isActive(): Promise<boolean> { return; }
@@ -70,7 +73,7 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static setDefaults(options?: Configure): void { }
+  static setDefaults(options?: Configure): Promise<any> { return; }
 
   /**
   * Modify the displayed information.
@@ -80,17 +83,28 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static update(options?: Configure): void { }
+  static configure(options?: Configure): Promise<any> { return; }
 
   /**
-  * Sets a callback for a specific event
-  * Can be used to get notified or run function when the background mode has been activated, deactivated or failed.
-  * @param eventName The name of the event. Available events: activate, deactivate, failure
+  * Called when background mode is activated.
+  * @returns {Observable<any>} returns an observable that emits when background mode is activated
   */
-  @Cordova({
-    sync: true
-  })
-  static on(eventName: string, callback: any): void { }
+  @CordovaFunctionOverride()
+  static onactivate(): Observable<any> { return; };
+
+  /**
+  * Called when background mode is deactivated.
+  * @returns {Observable<any>} returns an observable that emits when background mode is deactivated
+  */
+  @CordovaFunctionOverride()
+  static ondeactivate(): Observable<any> { return; };
+
+  /**
+  * Called when background mode fails
+  * @returns {Observable<any>} returns an observable that emits when background mode fails
+  */
+  @CordovaFunctionOverride()
+  static onfailure(): Observable<any> { return; };
 
 }
 

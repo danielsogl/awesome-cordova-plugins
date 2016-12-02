@@ -1,66 +1,104 @@
-import { Cordova, Plugin } from './plugin';
+import {Cordova, Plugin} from './plugin';
 
 
 export interface DatePickerOptions {
   /**
-   * Platforms: iOS, Android, Windows
    * The mode of the date picker
    * Values: date | time | datetime
    */
   mode: string;
 
   /**
-   * Platforms: iOS, Android, Windows
    * Selected date
    */
-  date: Date;
+  date: Date | string | number;
 
   /**
-   * Platforms: iOS, Android, Windows
    * Minimum date
-   * Type: Date | empty String
    * Default: empty String
    */
-  minDate?: Date;
+  minDate?: Date | string | number;
 
   /**
-   * Platforms?: iOS, Android, Windows
    * Maximum date
-   * Type?: Date | empty String
    * Default?: empty String
    */
-  maxDate?: Date;
+  maxDate?: Date | string | number;
 
   /**
-   * Platforms?: Android
    * Label for the dialog title. If empty, uses android default (Set date/Set time).
-   * Type?: String
    * Default?: empty String
    */
   titleText?: string;
 
   /**
-   * Platforms?: Android
    * Label of BUTTON_POSITIVE (done button) on Android
    */
   okText?: string;
-
-  // TODO complete documentation here, and copy params & docs to main plugin docs
+  /**
+   * Label of BUTTON_NEGATIVE (cancel button). If empty, uses android.R.string.cancel.
+   */
   cancelText?: string;
+  /**
+   * Label of today button. If empty, doesn't show the option to select current date.
+   */
   todayText?: string;
+  /**
+   * Label of now button. If empty, doesn't show the option to select current time.
+   */
   nowText?: string;
+  /**
+   * Shows time dialog in 24 hours format.
+   */
   is24Hour?: boolean;
+  /**
+   * Choose the Android theme for the picker. You can use the DatePicker.ANDROID_THEMES property.
+   * Values: 1: THEME_TRADITIONAL | 2: THEME_HOLO_DARK | 3: THEME_HOLO_LIGHT | 4: THEME_DEVICE_DEFAULT_DARK | 5: THEME_DEVICE_DEFAULT_LIGHT
+   */
   androidTheme?: number;
-  allowOldDate?: boolean;
+  /**
+   * Shows or hide dates earlier then selected date.
+   */
+  allowOldDates?: boolean;
+  /**
+   * Shows or hide dates after selected date.
+   */
   allowFutureDates?: boolean;
+  /**
+   * Label of done button.
+   */
   doneButtonLabel?: string;
+  /**
+   * Hex color of done button.
+   */
   doneButtonColor?: string;
+  /**
+   * Label of cancel button.
+   */
   cancelButtonLabel?: string;
+  /**
+   * Hex color of cancel button.
+   */
   cancelButtonColor?: string;
+  /**
+   * X position of date picker. The position is absolute to the root view of the application.
+   */
   x?: number;
+  /**
+   * Y position of date picker. The position is absolute to the root view of the application.
+   */
   y?: number;
+  /**
+   * Interval between options in the minute section of the date picker.
+   */
   minuteInterval?: number;
+  /**
+   * Force the UIPopoverArrowDirection enum. The value any will revert to default UIPopoverArrowDirectionAny and let the app choose the proper direction itself.
+   */
   popoverArrowDirection?: string;
+  /**
+   * Force locale for datePicker.
+   */
   locale?: string;
 }
 
@@ -68,10 +106,6 @@ export interface DatePickerOptions {
  * @name Date Picker
  * @description
  * The DatePicker plugin allows the user to fetch date or time using native dialogs.
- *
- * Platforms supported: iOS, Android, Windows
- *
- * Requires Cordova plugin: `cordova-plugin-datepicker`. For more info, please see the [DatePicker plugin docs](https://github.com/VitaliiBlagodir/cordova-plugin-datepicker).
  *
  * @usage
  * ```typescript
@@ -86,14 +120,28 @@ export interface DatePickerOptions {
  *   err => console.log('Error occurred while getting date: ', err)
  * );
  * ```
- *
+ * @interfaces
+ * DatePickerOptions
  */
 @Plugin({
+  pluginName: 'DatePicker',
   plugin: 'cordova-plugin-datepicker',
   pluginRef: 'datePicker',
-  repo: 'https://github.com/VitaliiBlagodir/cordova-plugin-datepicker'
+  repo: 'https://github.com/VitaliiBlagodir/cordova-plugin-datepicker',
+  platforms: ['Android', 'iOS', 'Windows']
 })
 export class DatePicker {
+
+  /**
+   * @private
+   */
+  static ANDROID_THEMES = {
+    THEME_TRADITIONAL: 1,
+    THEME_HOLO_DARK: 2,
+    THEME_HOLO_LIGHT: 3,
+    THEME_DEVICE_DEFAULT_DARK: 4,
+    THEME_DEVICE_DEFAULT_LIGHT: 5
+  };
 
   /**
    * Shows the date and/or time picker dialog(s)
@@ -101,6 +149,8 @@ export class DatePicker {
    * @returns {Promise<Date>} Returns a promise that resolves with the picked date and/or time, or rejects with an error.
    */
   @Cordova()
-  static show(options: DatePickerOptions): Promise<Date> { return; }
+  static show(options: DatePickerOptions): Promise<Date> {
+    return;
+  }
 
 }

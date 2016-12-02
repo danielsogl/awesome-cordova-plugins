@@ -11,6 +11,39 @@ doc: "<$ doc.name $>"
 docType: "<$ doc.docType $>"
 ---
 
+<@ macro interfaceTable(interface) @>
+<@ for export in doc.moduleDoc.exports -@>
+<@ if export.name == interface @>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <@ for param in export.members @>
+  <tr>
+    <td>
+      <$ param.name $>
+      <@ if param.optional @><div><em>(optional)</em></div><@ endif @>
+    </td>
+    <td>
+      <$ param.returnType | escape $>
+    </td>
+    <td>
+      <$ param.description | marked $>
+    </td>
+  </tr>
+  <@ endfor @>
+  </tbody>
+</table>
+
+<@ endif @>
+<@- endfor @>
+<@ endmacro @>
+
 <@ macro paramList(paramData) -@>
 <@- if paramData -@><span class="params">(
     <@- for param in paramData -@>
@@ -73,15 +106,81 @@ docType: "<$ doc.docType $>"
 <$ typeList(fn.typeList) $> <$ fn.description $>
 <@- endmacro -@>
 
+
+
+<@ macro documentClass(doc) @>
+<@- if doc.statics.length -@>
+<h2>Static Members</h2>
+<@ for method in doc.statics -@>
+<@ if not method.internal @>
+<div id="<$ method.name $>"></div>
+<h3><$ functionSyntax(method) $></h3>
+<@- if method.decorators @>
+<@ for prop in method.decorators[0].argumentInfo @>
+<@ if prop.platforms @>
+<p>
+  <b>Platforms:</b>
+  <@- for platform in prop.platforms @>
+  <code><$ platform $></code>&nbsp;
+  <@ endfor -@>
+</p>
+<@ endif @>
+<@ endfor @>
+<@- endif @>
+
+<$ method.description $>
+
+<@ if method.params @>
+<$ paramTable(method.params) $>
+<@ endif @>
+
+<@ if method.this -@>
+<h4> Method's `this`
+  <$ method.this $>
+</h4>
+<@- endif @>
+
+<@ if method.returns @>
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <$ typeInfo(method.returns) $>
+</div>
+<@ endif @>
+<@ endif @>
+<@ endfor -@>
+<@ endif @>
+
+<!-- methods on the class -->
+<@- if doc.members and doc.members.length @>
+
+<h2>Instance Members</h2>
+<@ for method in doc.members -@>
+<div id="<$ method.name $>"></div>
+<h3>
+  <$ functionSyntax(method) $>
+</h3>
+<$ method.description $>
+<@ if method.params -@>
+<$ paramTable(method.params) $>
+<@- endif @>
+<@ if method.this -@>
+<h4> Method's `this`
+  <$ method.this $>
+</h4>
+<@- endif @>
+<@ if method.returns -@>
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <$ typeInfo(method.returns) $>
+</div>
+<@- endif @>
+<@- endfor @>
+<@- endif -@>
+<@ endmacro @>
 <@ block body @>
-
-
 <@ block content @>
-
 <@ block header @>
-
 <h1 class="api-title">
-
   <@ if doc.docType == "directive" @>
   <$ doc.name | dashCase $>
   <@ else @>
@@ -107,10 +206,6 @@ docType: "<$ doc.docType $>"
 <a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
   Improve this doc
 </a>
-
-<@ if doc.codepen @>
-{% include codepen.html id="<$ doc.codepen $>" %}
-<@ endif @>
 
 <@ endblock @>
 
@@ -141,9 +236,9 @@ docType: "<$ doc.docType $>"
 <h2>Supported platforms</h2>
 <@ block platforms @>
 <ul>
-  <@- for platform in prop.platforms @>
+  <@ for platform in prop.platforms -@>
   <li><$ platform $></li>
-  <@ endfor -@>
+  <@- endfor @>
 </ul>
 <@ endblock @>
 <!-- @platforms tag end -->
@@ -181,12 +276,11 @@ docType: "<$ doc.docType $>"
   </tr>
   </thead>
   <tbody>
-  <@ for prop in doc.properties @>
+  <@ for prop in doc.properties -@>
   <tr>
     <td>
       <$ prop.name $>
     </td>
-
     <@ if hasTypes @>
     <td>
       <$ prop.type.name $>
@@ -197,86 +291,12 @@ docType: "<$ doc.docType $>"
       <$ prop.description $>
     </td>
   </tr>
-  <@ endfor @>
+  <@- endfor @>
   </tbody>
 </table>
 <@ endif @>
 
-<@- if doc.statics.length -@>
-<h2>Static Members</h2>
-<@- for method in doc.statics @><@ if not method.internal @>
-<div id="<$ method.name $>"></div>
-<h3><$ functionSyntax(method) $></h3>
-
-<@- if method.decorators @>
-<@ for prop in method.decorators[0].argumentInfo @>
-<@ if prop.platforms @>
-<p>
-<b>Platforms:</b>
-<@- for platform in prop.platforms @>
-<code><$ platform $></code>&nbsp;
-<@ endfor -@>
-</p>
-<@ endif @>
-<@ endfor @>
-<@ endif -@>
-
-<$ method.description $>
-
-<@ if method.params @>
-<$ paramTable(method.params) $>
-<@ endif @>
-
-<@ if method.this @>
-<h4> Method's `this`
-  <$ method.this $>
-</h4>
-<@ endif @>
-
-<@ if method.returns @>
-<div class="return-value" markdown="1">
-  <i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> <$ typeInfo(method.returns) $>
-</div>
-<@ endif @>
-<@ endif @>
-<@ endfor -@>
-<@ endif @>
-
-<!-- methods on the class -->
-<@- if doc.members and doc.members.length @>
-
-<h2>Instance Members</h2>
-<@- for method in doc.members @>
-
-<div id="<$ method.name $>"></div>
-
-<h3>
-  <$ functionSyntax(method) $>
-</h3>
-
-<$ method.description $>
-
-<@ if method.params @>
-<$ paramTable(method.params) $>
-<@ endif @>
-
-<@ if method.this @>
-<h4> Method's `this`
-  <$ method.this $>
-</h4>
-<@ endif @>
-
-<@ if method.returns @>
-<div class="return-value" markdown="1">
-  <i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> <$ typeInfo(method.returns) $>
-</div>
-<@ endif @>
-
-<@ endfor -@>
-
-<@- endif -@>
+<$ documentClass(doc) $>
 
 <@ block advanced @>
 <@- if doc.advanced -@>
@@ -284,6 +304,40 @@ docType: "<$ doc.docType $>"
 <$ doc.advanced | marked $>
 <@- endif -@>
 <@ endblock @>
+
+<!-- other classes -->
+<@ for tag in doc.tags.tags -@>
+<@ if tag.tagName == 'classes' -@>
+<h2><a class="anchor" name="related-classes" href="#related-classes"></a>Related Classes</h2>
+<@ set classes = tag.description.split('\n') @>
+<@ for item in classes -@>
+<@ if item.length > 1 @>
+<@ for export in doc.moduleDoc.exports -@>
+<@ if export.name == item @>
+<h3><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h3>
+<$ documentClass(export) $>
+<@ endif @>
+<@- endfor @>
+<@ endif @>
+<@- endfor @>
+<@- endif @>
+<@- endfor @>
+<!-- end other classes -->
+
+<!-- interfaces -->
+<@ for tag in doc.tags.tags -@>
+<@ if tag.tagName == 'interfaces' @>
+<h2><a class="anchor" name="interfaces" href="#interfaces"></a>Interfaces</h2>
+<@ set interfaces = tag.description.split('\n') @>
+<@ for item in interfaces -@>
+<@ if item.length > 1 @>
+<h3><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h3>
+<$ interfaceTable(item) $>
+<@ endif @>
+<@- endfor @>
+<@ endif @>
+<@- endfor @>
+<!-- end interfaces -->
 
 <!-- related link -->
 <@- if doc.see @>

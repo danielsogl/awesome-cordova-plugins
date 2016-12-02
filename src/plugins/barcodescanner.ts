@@ -20,6 +20,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'BarcodeScanner',
   plugin: 'phonegap-plugin-barcodescanner',
   pluginRef: 'cordova.plugins.barcodeScanner',
   repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner',
@@ -38,7 +39,8 @@ export class BarcodeScanner {
   };
   /**
    * Open the barcode scanner.
-   * @return Returns a Promise that resolves with scanner data, or rejects with an error.
+   * @param options {Object} Optional options to pass to the scanner
+   * @returns {Promise<any>} Returns a Promise that resolves with scanner data, or rejects with an error.
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -48,8 +50,9 @@ export class BarcodeScanner {
   /**
    * Encodes data into a barcode.
    * NOTE: not well supported on Android
-   * @param type
-   * @param data
+   * @param type {string} Type of encoding
+   * @param data {any} Data to encode
+   * @returns {Promise<any>}
    */
   @Cordova()
   static encode(type: string, data: any): Promise<any> { return; }

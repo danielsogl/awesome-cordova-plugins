@@ -19,7 +19,7 @@ declare var window;
  *    android: 'market://details?id=<package_name>',
  *  };
  *
- * AppRate.promptForRating();
+ * AppRate.promptForRating(false);
  * ```
  *
  * @advanced
@@ -44,6 +44,7 @@ declare var window;
 
  */
 @Plugin({
+  pluginName: 'AppRate',
   plugin: 'cordova-plugin-apprate',
   pluginRef: 'AppRate',
   repo: 'https://github.com/pushandplay/cordova-plugin-apprate',

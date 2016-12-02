@@ -15,13 +15,14 @@ declare var window;
  * import { StatusBar } from 'ionic-native';
  *
  *
- * StatusBar.overlaysWebView(true); // let status var overlay webview
+ * StatusBar.overlaysWebView(true); // let status bar overlay webview
  *
  * StatusBar.backgroundColorByHexString('#ffffff'); // set status bar to white
  * ```
  *
  */
 @Plugin({
+  pluginName: 'StatusBar',
   plugin: 'cordova-plugin-statusbar',
   pluginRef: 'StatusBar',
   repo: 'https://github.com/apache/cordova-plugin-statusbar',

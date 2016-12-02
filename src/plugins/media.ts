@@ -1,8 +1,11 @@
-import { CordovaInstance, Plugin } from './plugin';
-import { Observable } from 'rxjs/Observable';
-
+import { CordovaInstance, Plugin, getPlugin, pluginWarn } from './plugin';
 
 declare var Media: any;
+
+export interface MediaError {
+  code: number;
+  message: string;
+}
 
 /**
  * @name MediaPlugin
@@ -65,6 +68,7 @@ declare var Media: any;
  * ```
  */
 @Plugin({
+  pluginName: 'MediaPlugin',
   repo: 'https://github.com/apache/cordova-plugin-media',
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media'
@@ -72,45 +76,85 @@ declare var Media: any;
 export class MediaPlugin {
 
   // Constants
+  /**
+   * @private
+   */
   static MEDIA_NONE: number = 0;
+  /**
+   * @private
+   */
   static MEDIA_STARTING: number = 1;
+  /**
+   * @private
+   */
   static MEDIA_RUNNING: number = 2;
+  /**
+   * @private
+   */
   static MEDIA_PAUSED: number = 3;
+  /**
+   * @private
+   */
   static MEDIA_STOPPED: number = 4;
+
+  // error codes
+  /**
+   * @private
+   */
+  static MEDIA_ERR_ABORTED: number = 1;
+  /**
+   * @private
+   */
+  static MEDIA_ERR_NETWORK: number = 2;
+  /**
+   * @private
+   */
+  static MEDIA_ERR_DECODE: number = 3;
+  /**
+   * @private
+   */
+  static MEDIA_ERR_NONE_SUPPORTED: number = 4;
 
   // Properties
   private _objectInstance: any;
-  status: Observable<any>;
   init: Promise<any>;
 
   // Methods
   /**
    * Open a media file
    * @param src {string} A URI containing the audio content.
+   * @param onStatusUpdate {Function} A callback function to be invoked when the status of the file changes
    */
-  constructor(src: string) {
-    let res, rej, next;
-    this.init = new Promise<any>((resolve, reject) => { res = resolve; rej = reject; });
-    this.status = new Observable((observer) => {
-      next = data => observer.next(data);
-    });
-    this._objectInstance = new Media(src, res, rej, next);
+  constructor(src: string, onStatusUpdate?: Function) {
+    if (!!getPlugin('Media')) {
+      this.init = new Promise<any>((resolve, reject) => {
+        this._objectInstance = new Media(src, resolve, reject, onStatusUpdate);
+      });
+    } else {
+      pluginWarn({
+        pluginName: 'MediaPlugin',
+        plugin: 'cordova-plugin-media'
+      });
+    }
   }
 
   /**
-   * Returns the current amplitude of the current recording.
+   * Get the current amplitude of the current recording.
+   * @returns {Promise<any>} Returns a promise with the amplitude of the current recording
    */
   @CordovaInstance()
   getCurrentAmplitude(): Promise<any> { return; }
 
   /**
-   * Returns the current position within an audio file. Also updates the Media object's position parameter.
+   * Get the current position within an audio file. Also updates the Media object's position parameter.
+   * @returns {Promise<any>} Returns a promise with the position of the current recording
    */
   @CordovaInstance()
   getCurrentPosition(): Promise<any> { return; }
 
   /**
-   * Returns the duration of an audio file in seconds. If the duration is unknown, it returns a value of -1.
+   * Get the duration of an audio file in seconds. If the duration is unknown, it returns a value of -1.
+   * @returns {number} Returns a promise with the duration of the current recording
    */
   @CordovaInstance({
     sync: true
@@ -146,7 +190,7 @@ export class MediaPlugin {
 
   /**
    * Sets the current position within an audio file.
-   * @param milliseconds
+   * @param {number} milliseconds The time position you want to set for the current audio file
    */
   @CordovaInstance({
     sync: true
@@ -155,7 +199,7 @@ export class MediaPlugin {
 
   /**
    * Set the volume for an audio file.
-   * @param volume The volume to set for playback. The value must be within the range of 0.0 to 1.0.
+   * @param volume {number} The volume to set for playback. The value must be within the range of 0.0 to 1.0.
    */
   @CordovaInstance({
     sync: true
@@ -188,13 +232,4 @@ export class MediaPlugin {
   })
   stop(): void { }
 
-}
-
-export class MediaError {
-  static get MEDIA_ERR_ABORTED() { return 1; }
-  static get MEDIA_ERR_NETWORK() { return 2; }
-  static get MEDIA_ERR_DECODE() { return 3; }
-  static get MEDIA_ERR_NONE_SUPPORTED() { return 4; }
-  code: number;
-  message: string;
 }

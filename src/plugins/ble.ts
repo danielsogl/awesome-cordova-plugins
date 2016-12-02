@@ -160,6 +160,7 @@ import { Observable } from 'rxjs/Observable';
  *
  */
 @Plugin({
+  pluginName: 'BLE',
   plugin: 'cordova-plugin-ble-central',
   pluginRef: 'ble',
   repo: 'https://github.com/don/cordova-plugin-ble-central',
@@ -177,7 +178,7 @@ export class BLE {
    * ```
    * @param {string[]} services  List of service UUIDs to discover, or `[]` to find all devices
    * @param {number} seconds  Number of seconds to run discovery
-   * @return Returns an Observable that notifies of each peripheral that is discovered during the specified time.
+   * @returns {Observable<any>} Returns an Observable that notifies of each peripheral that is discovered during the specified time.
    */
   @Cordova({
     observable: true
@@ -198,7 +199,7 @@ export class BLE {
    * }, 5000);
    * ```
    * @param {string[]} services  List of service UUIDs to discover, or `[]` to find all devices
-   * @return Returns an Observable that notifies of each peripheral discovered.
+   * @returns {Observable<any>} Returns an Observable that notifies of each peripheral discovered.
    */
   @Cordova({
     observable: true,
@@ -206,6 +207,19 @@ export class BLE {
     clearWithArgs: true
   })
   static startScan(services: string[]): Observable<any> { return; }
+
+  /**
+   * Scans for BLE devices. This function operates similarly to the `startScan` function, but allows you to specify extra options (like allowing duplicate device reports).
+   * @param {string[]} services  List of service UUIDs to discover, or `[]` to find all devices
+   * @param options {any}
+   * @returns {Observable<any>} Returns an Observable that notifies of each peripheral discovered.
+   */
+  @Cordova({
+    observable: true,
+    clearFunction: 'stopScan',
+    clearWithArgs: true
+  })
+  static startScanWithOptions(services: string[], options: {reportDuplicates?: boolean} | any): Observable<any> { return; }
 
   /**
    * Stop a scan started by `startScan`.
@@ -359,7 +373,7 @@ export class BLE {
    * @param {string} deviceId  UUID or MAC address of the peripheral
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
-   * @return Returns a Promise.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static stopNotification(
@@ -379,7 +393,7 @@ export class BLE {
    * );
    * ```
    * @param {string} deviceId  UUID or MAC address of the peripheral
-   * @return Returns a Promise.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static isConnected(deviceId: string): Promise<any> { return; }
@@ -387,22 +401,15 @@ export class BLE {
   /**
    * Report if bluetooth is enabled.
    *
-   * @usage
-   * ```
-   * BLE.isEnabled().then(
-   *   () => { console.log('enabled'); },
-   *   () => { console.log('not enabled'); }
-   * );
-   * ```
-   * @return Returns a Promise.
+   * @returns {Promise<void>} Returns a Promise that resolves if Bluetooth is enabled, and rejects if disabled.
    */
   @Cordova()
-  static isEnabled(): Promise<any> { return; }
+  static isEnabled(): Promise<void> { return; }
 
   /**
    * Open System Bluetooth settings (Android only).
    *
-   * @return Returns a Promise.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static showBluetoothSettings(): Promise<any> { return; }
@@ -410,7 +417,7 @@ export class BLE {
   /**
    * Enable Bluetooth on the device (Android only).
    *
-   * @return Returns a Promise.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static enable(): Promise<any> { return; }

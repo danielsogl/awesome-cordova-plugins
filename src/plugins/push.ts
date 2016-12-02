@@ -41,8 +41,6 @@ export interface NotificationEventResponse {
 }
 
 /**
- * TODO: document all possible properties (not just Android)
- *
  * Loosened up with a dictionary notation, but all non-defined properties need to use (map['prop']) notation
  *
  * Ideally the developer would overload (merged declaration) this or create a new interface that would extend this one
@@ -56,6 +54,7 @@ export interface NotificationEventAdditionalData {
    */
   foreground?: boolean;
   collapse_key?: string;
+  coldstart?: boolean;
   from?: string;
   notId?: string;
 }
@@ -185,10 +184,10 @@ export interface AndroidPushOptions {
 export interface PushOptions {
   ios?: IOSPushOptions;
   android?: AndroidPushOptions;
-  windows?: {};
+  windows?: any;
 }
 
-export type PushEvents = 'registration' | 'error' | 'notification';
+export type PushEvent = 'registration' | 'error' | 'notification';
 
 /**
  * @name Push
@@ -203,17 +202,44 @@ export type PushEvents = 'registration' | 'error' | 'notification';
  * ```typescript
  * import { Push } from 'ionic-native';
  *
+ * let options = {
+ *    android: {
+ *        senderID: '12345679'
+ *    },
+ *    ios: {
+ *        alert: 'true',
+ *        badge: true,
+ *        sound: 'false'
+ *    },
+ *    windows: {}
+ * };
+ *
  * // create new instance of Push
  * let push: Push = new Push(options);
  * // OR
  * let push: Push = Push.init(options);
  *
+ * push.on('notification').subscribe(notification => console.log('Received a notification', notification));
+ *
+ * push.on('error').subscribe(error => console.error('Error with Push plugin', error));
+ *
+ *
  * ```
+ *
+ * @interfaces
+ * RegistrationEventResponse
+ * NotificationEventResponse
+ * NotificationEventAdditionalData
+ * IOSPushOptions
+ * AndroidPushOptions
+ * PushOptions
  */
 @Plugin({
+  pluginName: 'Push',
   plugin: 'phonegap-plugin-push',
   pluginRef: 'PushNotification',
-  repo: 'https://github.com/phonegap/phonegap-plugin-push'
+  repo: 'https://github.com/phonegap/phonegap-plugin-push',
+  install: 'ionic plugin add phonegap-plugin-push --variable SENDER_ID=XXXXXXXXX'
 })
 export class Push {
 
@@ -229,21 +255,6 @@ export class Push {
 
   /**
    * Initialize the plugin on the native side.
-   *
-   * ```
-   * var push = Push.init({
-   *    android: {
-   *        senderID: '12345679'
-   *    },
-   *    ios: {
-   *        alert: 'true',
-   *        badge: true,
-   *        sound: 'false'
-   *    },
-   *    windows: {}
-   * });
-   * ```
-   *
    * @param {PushOptions} options  The Push [options](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/API.md#parameters).
    * @return {Push}  Returns a new Push object.
    */
@@ -251,7 +262,7 @@ export class Push {
 
   /**
    * Check whether the push notification permission has been granted.
-   * @return {Promise} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
+   * @return {Promise<{isEnabled: boolean}>} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
    */
   @Cordova()
   static hasPermission(): Promise<{ isEnabled: boolean }> { return; }
@@ -265,7 +276,7 @@ export class Push {
     clearFunction: 'off',
     clearWithArgs: true
   })
-  on(event: string): Observable<any> {
+  on(event: PushEvent): Observable<EventResponse> {
     return;
   }
 

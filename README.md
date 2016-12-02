@@ -1,8 +1,8 @@
 [![Circle CI](https://circleci.com/gh/driftyco/ionic-native.svg?style=shield)](https://circleci.com/gh/driftyco/ionic-native) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![npm](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/ionic-native-playground)
+[![npm](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/ionic-native)
 
 [![NPM](https://nodei.co/npm/ionic-native.png?stars&downloads)](https://nodei.co/npm/ionic-native/)
-
+[![NPM](https://nodei.co/npm-dl/ionic-native.png?months=6&height=2)](https://nodei.co/npm/ionic-native/)
 
 # Ionic Native
 

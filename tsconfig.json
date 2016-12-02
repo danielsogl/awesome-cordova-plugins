@@ -5,7 +5,8 @@
     "sourceMap": true,
     "declaration": true,
     "experimentalDecorators": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "moduleResolution": "node"
   },
   "files": [
     "typings/es6-shim/es6-shim.d.ts",

@@ -1,4 +1,4 @@
-import { Cordova, Plugin } from './plugin';
+import { Plugin } from './plugin';
 
 
 declare var navigator: any;
@@ -10,13 +10,14 @@ declare var navigator: any;
  * import {Screenshot} from 'ionic-native';
  *
  * // Take a screenshot and save to file
- * Screneshot.save('jpg', 80, 'myscreenshot.jpg').then(onSuccess, onError);
+ * Screenshot.save('jpg', 80, 'myscreenshot.jpg').then(onSuccess, onError);
  *
  * // Take a screenshot and get temporary file URI
- * Screneshot.URI(80).then(onSuccess, onError);
+ * Screenshot.URI(80).then(onSuccess, onError);
  * ```
  */
 @Plugin({
+  pluginName: 'Screenshot',
   plugin: 'https://github.com/gitawego/cordova-screenshot.git',
   pluginRef: 'navigator.screenshot',
   repo: 'https://github.com/gitawego/cordova-screenshot.git'
@@ -31,6 +32,7 @@ export class Screenshot {
    * @param {number} quality. Determines the quality of the screenshot.
    *        Default quality is set to 100.
    * @param {string} filename. Name of the file as stored on the storage
+   * @returns {Promise<any>}
    */
   static save(format?: string, quality?: number, filename?: string): Promise<any> {
     return new Promise<any>(
@@ -56,6 +58,7 @@ export class Screenshot {
    *
    * @param {number} quality. Determines the quality of the screenshot.
    *        Default quality is set to 100.
+   * @returns {Promise<any>}
    */
   static URI(quality?: number): Promise<any> {
     return new Promise<any>(

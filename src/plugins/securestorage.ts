@@ -1,4 +1,5 @@
 import { CordovaInstance, Plugin } from './plugin';
+
 declare var cordova: any;
 /**
  * @name Secure Storage
@@ -39,6 +40,7 @@ declare var cordova: any;
  * ```
  */
 @Plugin({
+  pluginName: 'SecureStorage',
   plugin: 'cordova-plugin-secure-storage',
   pluginRef: 'plugins.securestorage',
   repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',
@@ -53,6 +55,7 @@ export class SecureStorage {
   /**
    * Creates a namespaced storage.
    * @param store {string}
+   * @returns {Promise<any>}
    */
   create(store: string): Promise<any> {
     return new Promise((res, rej) => {
@@ -63,6 +66,7 @@ export class SecureStorage {
   /**
    * Gets a stored item
    * @param reference {string}
+   * @returns {Promise<any>}
    */
  @CordovaInstance({
     callbackOrder: 'reverse'
@@ -73,6 +77,7 @@ export class SecureStorage {
    * Stores a value
    * @param reference {string}
    * @param value {string}
+   * @returns {Promise<any>}
    */
  @CordovaInstance({
     callbackOrder: 'reverse'
@@ -82,6 +87,7 @@ export class SecureStorage {
   /**
    * Removes a single stored item
    * @param reference {string}
+   * @returns {Promise<any>}
    */
  @CordovaInstance({
     callbackOrder: 'reverse'

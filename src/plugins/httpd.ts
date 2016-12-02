@@ -23,6 +23,7 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
+  pluginName: 'Httpd',
   plugin: 'https://github.com/floatinghotpot/cordova-httpd.git',
   pluginRef: 'cordova.plugins.CorHttpd',
   repo: 'https://github.com/floatinghotpot/cordova-httpd',
@@ -34,6 +35,7 @@ export class Httpd {
    * Starts a web server.
    * @returns {Observable<string>} Returns an Observable. Subscribe to receive the URL for your web server (if succeeded). Unsubscribe to stop the server.
    * @param options {HttpdOptions}
+   * @returns {Observable<string>}
    */
   @Cordova({
     observable: true,

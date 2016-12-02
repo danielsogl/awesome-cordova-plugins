@@ -26,6 +26,7 @@ import { Cordova, Plugin } from './plugin';
  *
  */
 @Plugin({
+  pluginName: 'Insomnia',
   plugin: 'https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git',
   pluginRef: 'plugins.insomnia',
   repo: 'https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin',
@@ -35,14 +36,14 @@ export class Insomnia {
 
   /**
    * Keeps awake the application
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static keepAwake(): Promise<any> { return; }
 
   /**
    * Allows the application to sleep again
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static allowSleepAgain(): Promise<any> { return; }

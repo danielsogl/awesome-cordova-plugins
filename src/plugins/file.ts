@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Plugin, pluginWarn } from './plugin';
+
 declare var window: any;
 declare var cordova: any;
 
@@ -24,7 +25,7 @@ export interface Entry {
   /** The full absolute path from the root to the entry. */
   fullPath: string;
   /** The file system on which the entry resides. */
-  fileSystem: FileSystem;
+  filesystem: FileSystem;
   nativeURL: string;
   /**
    * Look up metadata about this entry.
@@ -170,6 +171,7 @@ export interface Flags {
 }
 
 export interface WriteOptions {
+  create?: boolean;
   replace?: boolean;
   append?: boolean;
   truncate?: number; // if present, number of bytes to truncate file to before writing
@@ -300,10 +302,10 @@ export interface FileReader {
   onabort: (evt: ProgressEvent) => void;
 
   abort(): void;
-  readAsText(fe: FileEntry, encoding?: string): void;
-  readAsDataURL(fe: FileEntry): void;
-  readAsBinaryString(fe: FileEntry): void;
-  readAsArrayBuffer(fe: FileEntry): void;
+  readAsText(fe: File | Blob, encoding?: string): void;
+  readAsDataURL(fe: File | Blob): void;
+  readAsBinaryString(fe: File | Blob): void;
+  readAsArrayBuffer(fe: File | Blob): void;
 }
 
 declare var FileReader: {
@@ -336,10 +338,22 @@ declare var FileError: {
   PATH_EXISTS_ERR: number;
 };
 
+
 /**
  * @name File
  * @description
  * This plugin implements a File API allowing read/write access to files residing on the device.
+ *
+ * The File class implements static convenience functions to access files and directories.
+ *
+ * Example:
+ * ```
+ * import { File } from 'ionic-native';
+ *
+ * declare var cordova: any;
+ * const fs:string = cordova.file.dataDirectory;
+ * File.checkDir(this.fs, 'mydir').then(_ => console.log('yay')).catch(err => console.log('boooh'));
+ * ```
  *
  *  This plugin is based on several specs, including : The HTML5 File API http://www.w3.org/TR/FileAPI/
  *  The (now-defunct) Directories and System extensions Latest: http://www.w3.org/TR/2012/WD-file-system-api-20120417/
@@ -347,6 +361,7 @@ declare var FileError: {
  *  It also implements the FileWriter spec : http://dev.w3.org/2009/dap/file-system/file-writer.html
  */
 @Plugin({
+  pluginName: 'File',
   plugin: 'cordova-plugin-file',
   pluginRef: 'cordova.file',
   repo: 'https://github.com/apache/cordova-plugin-file'
@@ -369,9 +384,22 @@ export class File {
     14: 'DIR_READ_ERR',
   };
 
-  @Cordova()
+  /**
+   * Get free disk space
+   * @returns {Promise<number>} Returns a promise that resolves with the remaining free disk space
+   */
   static getFreeDiskSpace(): Promise<number> {
-    return;
+    return new Promise<any>((resolve, reject) => {
+      if (!cordova || !cordova.exec) {
+        pluginWarn({
+          pluginName: 'File',
+          plugin: 'cordova-plugin-file'
+        });
+        reject({ error: 'plugin_not_installed' });
+      } else {
+        cordova.exec(resolve, reject, 'File', 'getFreeDiskSpace', []);
+      }
+    });
   }
 
   /**
@@ -379,14 +407,13 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} dir Name of directory to check
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<boolean|FileError>} Returns a Promise that resolves to true if the directory exists or rejects with an error.
    */
-
-  static checkDir(path: string, dir: string): Promise<boolean> {
+  static checkDir(path: string, dir: string): Promise<boolean|FileError> {
     if ((/^\//.test(dir))) {
       let err = new FileError(5);
       err.message = 'directory cannot start with \/';
-      return Promise.reject<boolean>(err);
+      return Promise.reject<FileError>(err);
     }
 
     let fullpath = path + dir;
@@ -404,21 +431,20 @@ export class File {
    * @param {string} path  Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} dirName Name of directory to create
    * @param {boolean} replace If true, replaces file with same name. If false returns error
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<DirectoryEntry|FileError>} Returns a Promise that resolves with a DirectoryEntry or rejects with an error.
    */
-
-  static createDir(path: string, dirName: string, replace: boolean): Promise<DirectoryEntry> {
+  static createDir(path: string, dirName: string, replace: boolean): Promise<DirectoryEntry|FileError> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
       err.message = 'directory cannot start with \/';
-      return Promise.reject<DirectoryEntry>(err);
+      return Promise.reject<FileError>(err);
     }
 
     let options: Flags = {
       create: true
     };
 
-    if (replace) {
+    if (!replace) {
       options.exclusive = true;
     }
 
@@ -433,14 +459,13 @@ export class File {
    *
    * @param {string} path The path to the directory
    * @param {string} dirName The directory name
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
-
-  static removeDir(path: string, dirName: string): Promise<RemoveResult> {
+  static removeDir(path: string, dirName: string): Promise<RemoveResult|FileError> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
       err.message = 'directory cannot start with \/';
-      return Promise.reject<RemoveResult>(err);
+      return Promise.reject<FileError>(err);
     }
 
     return File.resolveDirectoryUrl(path)
@@ -459,16 +484,15 @@ export class File {
    * @param {string} dirName The source directory name
    * @param {string} newPath The destionation path to the directory
    * @param {string} newDirName The destination directory name
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<DirectoryEntry|Entry|FileError>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
    */
-
-  static moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry> {
+  static moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry|Entry|FileError> {
     newDirName = newDirName || dirName;
 
     if ((/^\//.test(newDirName))) {
       let err = new FileError(5);
       err.message = 'directory cannot start with \/';
-      return Promise.reject<DirectoryEntry>(err);
+      return Promise.reject<FileError>(err);
     }
 
     return this.resolveDirectoryUrl(path)
@@ -490,13 +514,13 @@ export class File {
    * @param {string} dirName Name of directory to copy
    * @param {string} newPath Base FileSystem of new location
    * @param {string} newDirName New name of directory to copy to (leave blank to remain the same)
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<Entry|FileError>} Returns a Promise that resolves to the new Entry object or rejects with an error.
    */
-  static copyDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<any> {
+  static copyDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<Entry|FileError> {
     if ((/^\//.test(newDirName))) {
       let err = new FileError(5);
       err.message = 'directory cannot start with \/';
-      return Promise.reject(err);
+      return Promise.reject<FileError>(err);
     }
 
     return this.resolveDirectoryUrl(path)
@@ -516,9 +540,8 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} dirName Name of directory
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<Entry[]>} Returns a Promise that resolves to an array of Entry objects or rejects with an error.
    */
-
   static listDir(path: string, dirName: string): Promise<Entry[]> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -541,9 +564,8 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} dirName Name of directory
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<RemoveResult>} Returns a Promise that resolves with a RemoveResult or rejects with an error.
    */
-
   static removeRecursively(path: string, dirName: string): Promise<RemoveResult> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -565,14 +587,13 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} file Name of file to check
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<boolean|FileError>} Returns a Promise that resolves with a boolean or rejects with an error.
    */
-
-   static checkFile(path: string, file: string): Promise<boolean> {
+  static checkFile(path: string, file: string): Promise<boolean|FileError> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
       err.message = 'file cannot start with \/';
-      return Promise.reject<boolean>(err);
+      return Promise.reject<FileError>(err);
     }
 
     return File.resolveLocalFilesystemUrl(path + file)
@@ -595,20 +616,20 @@ export class File {
    * @param {string} path  Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName Name of file to create
    * @param {boolean} replace If true, replaces file with same name. If false returns error
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<FileEntry|FileError>} Returns a Promise that resolves to a FileEntry or rejects with an error.
    */
-  static createFile(path: string, fileName: string, replace: boolean): Promise<any> {
+  static createFile(path: string, fileName: string, replace: boolean): Promise<FileEntry|FileError> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
-      return Promise.reject(err);
+      return Promise.reject<FileError>(err);
     }
 
     let options: Flags = {
       create: true
     };
 
-    if (replace) {
+    if (!replace) {
       options.exclusive = true;
     }
 
@@ -623,14 +644,13 @@ export class File {
    *
    * @param {string} path  Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName Name of file to remove
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
-
-  static removeFile(path: string, fileName: string): Promise<RemoveResult> {
+  static removeFile(path: string, fileName: string): Promise<RemoveResult|FileError> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
-      return Promise.reject<RemoveResult>(err);
+      return Promise.reject<FileError>(err);
     }
 
     return File.resolveDirectoryUrl(path)
@@ -642,69 +662,84 @@ export class File {
       });
   }
 
+  /** Write a new file to the desired location.
+   *
+   * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
+   * @param {string} fileName path relative to base path
+   * @param {string | Blob} text content or blob to write
+   * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
+   * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
+   */
   static writeFile(path: string, fileName: string,
-                   text: string, replaceOrOptions: boolean | WriteOptions): Promise<void> {
+                   text: string | Blob, options: WriteOptions = {}): Promise<any> {
     if ((/^\//.test(fileName))) {
-      let err = new FileError(5);
+      const err = new FileError(5);
       err.message = 'file-name cannot start with \/';
       return Promise.reject(err);
     }
 
-    let opts: WriteOptions;
-    if (replaceOrOptions) {
-      if (typeof(replaceOrOptions) === 'boolean') {
-        opts.replace = <boolean>replaceOrOptions;
-      }
-    }
-
-    let cflags: Flags = {
-      create: true
+    const getFileOpts: Flags = {
+      create: !options.append,
+      exclusive: !options.replace
     };
 
     return File.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getFile(fse, fileName, opts);
+        return File.getFile(fse, fileName, getFileOpts);
       })
       .then((fe) => {
-        return File.createWriter(fe);
-      })
+        return File.writeFileEntry(fe, text, options);
+      });
+  }
+
+  /** Write content to FileEntry.
+   *
+   * @private
+   * @param {FileEntry} fe file entry object
+   * @param {string | Blob} text content or blob to write
+   * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
+   * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
+   */
+  private static writeFileEntry(fe: FileEntry, text: string | Blob, options: WriteOptions) {
+    return File.createWriter(fe)
       .then((writer) => {
-        if (opts.append) {
+        if (options.append) {
           writer.seek(writer.length);
         }
 
-        if (opts.hasOwnProperty('truncate')) {
-          writer.truncate(opts.truncate);
+        if (options.truncate) {
+          writer.truncate(options.truncate);
         }
 
         return File.write(writer, text);
-      });
+      })
+      .then(() => fe);
   }
 
-  static writeExistingFile(path: string, fileName: string, text: string): Promise<void> {
-    if ((/^\//.test(fileName))) {
-      let err = new FileError(5);
-      err.message = 'file-name cannot start with \/';
-      return Promise.reject(err);
-    }
 
-    return File.resolveDirectoryUrl(path)
-      .then((fse) => {
-        return File.getFile(fse, fileName, {create: false});
-      })
-      .then((fe) => {
-        return File.createWriter(fe);
-      })
-      .then((writer) => {
-        return File.write(writer, text);
-      });
+  /** Write to an existing file.
+   *
+   * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
+   * @param {string} fileName path relative to base path
+   * @param {string | Blob} text content or blob to write
+   * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
+   */
+  static writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
+    return File.writeFile(path, fileName, text, { create: false });
   }
 
-  static readAsText(path: string, file: string): Promise<string> {
+  /**
+   * Read the contents of a file as text.
+   *
+   * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
+   * @param {string} file Name of file, relative to path.
+   * @returns {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as string or rejects with an error.
+   */
+  static readAsText(path: string, file: string): Promise<string|FileError> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
-      return Promise.reject<string>(err);
+      return Promise.reject<FileError>(err);
     }
 
     return File.resolveDirectoryUrl(path)
@@ -713,7 +748,48 @@ export class File {
       })
       .then((fe) => {
         let reader = new FileReader();
-        return new Promise((resolve, reject) => {
+        return new Promise<any>((resolve, reject) => {
+          reader.onloadend = () => {
+            if (reader.result !== undefined || reader.result !== null) {
+              resolve(reader.result);
+            } else if (reader.error !== undefined || reader.error !== null) {
+              reject(reader.error);
+            } else {
+              reject({code: null, message: 'READER_ONLOADEND_ERR'});
+            }
+          };
+          fe.file(file => {
+            reader.readAsText(file);
+          }, error => {
+            reject(error);
+          });
+
+        });
+      });
+  }
+  /**
+   * Read file and return data as a base64 encoded data url.
+   * A data url is of the form:
+   *      data:[<mediatype>][;base64],<data>
+
+   * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
+   * @param {string} file Name of file, relative to path.
+   * @returns {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as data URL or rejects with an error.
+   */
+  static readAsDataURL(path: string, file: string): Promise<string|FileError> {
+    if ((/^\//.test(file))) {
+      let err = new FileError(5);
+      err.message = 'file-name cannot start with \/';
+      return Promise.reject<FileError>(err);
+    }
+
+    return File.resolveDirectoryUrl(path)
+      .then((fse) => {
+        return File.getFile(fse, file, {create: false});
+      })
+      .then((fe) => {
+        let reader = new FileReader();
+        return new Promise<any>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
               resolve(reader.result);
@@ -724,16 +800,29 @@ export class File {
             }
           };
 
-          reader.readAsText(fe);
+
+
+          fe.file(file => {
+            reader.readAsDataURL(file);
+          }, error => {
+            reject(error);
+          });
         });
       });
   }
 
-  static readAsDataURL(path: string, file: string): Promise<string> {
+  /**
+   * Read file and return data as a binary data.
+
+   * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
+   * @param {string} file Name of file, relative to path.
+   * @returns {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as string rejects with an error.
+   */
+  static readAsBinaryString(path: string, file: string): Promise<string|FileError> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
-      return Promise.reject<string>(err);
+      return Promise.reject<FileError>(err);
     }
 
     return File.resolveDirectoryUrl(path)
@@ -742,7 +831,7 @@ export class File {
       })
       .then((fe) => {
         let reader = new FileReader();
-        return new Promise((resolve, reject) => {
+        return new Promise<any>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
               resolve(reader.result);
@@ -753,16 +842,28 @@ export class File {
             }
           };
 
-          reader.readAsDataURL(fe);
+          fe.file(file => {
+            reader.readAsBinaryString(file);
+          }, error => {
+            reject(error);
+          });
+
         });
       });
   }
 
-  static readAsBinaryString(path: string, file: string): Promise<string> {
+  /**
+   * Read file and return data as an ArrayBuffer.
+
+   * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
+   * @param {string} file Name of file, relative to path.
+   * @returns {Promise<ArrayBuffer|FileError>} Returns a Promise that resolves with the contents of the file as ArrayBuffer or rejects with an error.
+   */
+  static readAsArrayBuffer(path: string, file: string): Promise<ArrayBuffer|FileError> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
-      return Promise.reject<string>(err);
+      return Promise.reject<FileError>(err);
     }
 
     return File.resolveDirectoryUrl(path)
@@ -771,7 +872,7 @@ export class File {
       })
       .then((fe) => {
         let reader = new FileReader();
-        return new Promise((resolve, reject) => {
+        return new Promise<any>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
               resolve(reader.result);
@@ -782,36 +883,12 @@ export class File {
             }
           };
 
-          reader.readAsBinaryString(fe);
-        });
-      });
-  }
+          fe.file(file => {
+            reader.readAsArrayBuffer(file);
+          }, error => {
+            reject(error);
+          });
 
-  static readAsArrayBuffer(path: string, file: string): Promise<ArrayBuffer> {
-    if ((/^\//.test(file))) {
-      let err = new FileError(5);
-      err.message = 'file-name cannot start with \/';
-      return Promise.reject<ArrayBuffer>(err);
-    }
-
-    return File.resolveDirectoryUrl(path)
-      .then((fse) => {
-        return File.getFile(fse, file, {create: false});
-      })
-      .then((fe) => {
-        let reader = new FileReader();
-        return new Promise((resolve, reject) => {
-          reader.onloadend = () => {
-            if (reader.result !== undefined || reader.result !== null) {
-              resolve(reader.result);
-            } else if (reader.error !== undefined || reader.error !== null) {
-              reject(reader.error);
-            } else {
-              reject({code: null, message: 'READER_ONLOADEND_ERR'});
-            }
-          };
-
-          reader.readAsArrayBuffer(fe);
         });
       });
   }
@@ -823,15 +900,15 @@ export class File {
    * @param {string} fileName Name of file to move
    * @param {string} newPath Base FileSystem of new location
    * @param {string} newFileName New name of file to move to (leave blank to remain the same)
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<Entry|FileError>} Returns a Promise that resolves to the new Entry or rejects with an error.
    */
-  static moveFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<any> {
+  static moveFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry|FileError> {
     newFileName = newFileName || fileName;
 
     if ((/^\//.test(newFileName))) {
       let err = new FileError(5);
       err.message = 'file name cannot start with \/';
-      return Promise.reject(err);
+      return Promise.reject<FileError>(err);
     }
 
     return this.resolveDirectoryUrl(path)
@@ -853,15 +930,15 @@ export class File {
    * @param {string} fileName Name of file to copy
    * @param {string} newPath Base FileSystem of new location
    * @param {string} newFileName New name of file to copy to (leave blank to remain the same)
-   * @return Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<Entry|FileError>} Returns a Promise that resolves to an Entry or rejects with an error.
    */
-  static copyFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<any> {
+  static copyFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry|FileError> {
     newFileName = newFileName || fileName;
 
     if ((/^\//.test(newFileName))) {
       let err = new FileError(5);
       err.message = 'file name cannot start with \/';
-      return Promise.reject(err);
+      return Promise.reject<FileError>(err);
     }
 
     return this.resolveDirectoryUrl(path)
@@ -879,15 +956,22 @@ export class File {
   // these private methods help avoid cascading error handling
   // in the public ones, primarily simply wrapping callback
   // operations to return Promises that can then be chained.
-
+  /**
+   * @private
+   */
   private static fillErrorMessage(err: FileError): void {
     err.message = File.cordovaFileError[err.code];
   }
 
-  private static resolveLocalFilesystemUrl(furl: string): Promise<Entry> {
-    return new Promise((resolve, reject) => {
+  /**
+   * Resolves a local file system URL
+   * @param fileUrl {string} file system url
+   * @returns {Promise<Entry>}
+   */
+  static resolveLocalFilesystemUrl(fileUrl: string): Promise<Entry> {
+    return new Promise<Entry>((resolve, reject) => {
       try {
-        window.resolveLocalFileSystemURL(furl, (entry) => {
+        window.resolveLocalFileSystemURL(fileUrl, (entry) => {
           resolve(entry);
         }, (err) => {
           File.fillErrorMessage(err);
@@ -900,8 +984,13 @@ export class File {
     });
   }
 
-  private static resolveDirectoryUrl(durl: string): Promise<DirectoryEntry> {
-    return File.resolveLocalFilesystemUrl(durl)
+  /**
+   * Resolves a local directory url
+   * @param directoryUrl {string} directory system url
+   * @returns {Promise<DirectoryEntry>}
+   */
+  static resolveDirectoryUrl(directoryUrl: string): Promise<DirectoryEntry> {
+    return File.resolveLocalFilesystemUrl(directoryUrl)
       .then((de) => {
         if (de.isDirectory) {
           return <DirectoryEntry>de;
@@ -913,10 +1002,17 @@ export class File {
       });
   }
 
-  private static getDirectory(fse: DirectoryEntry, dn: string, flags: Flags): Promise<DirectoryEntry> {
-    return new Promise((resolve, reject) => {
+  /**
+   * Get a directory
+   * @param directoryEntry {DirectoryEntry} Directory entry, obtained by resolveDirectoryUrl method
+   * @param directoryName {string} Directory name
+   * @param flags {Flags} Options
+   * @returns {Promise<DirectoryEntry>}
+   */
+  static getDirectory(directoryEntry: DirectoryEntry, directoryName: string, flags: Flags): Promise<DirectoryEntry> {
+    return new Promise<DirectoryEntry>((resolve, reject) => {
       try {
-        fse.getDirectory(dn, flags, (de) => {
+        directoryEntry.getDirectory(directoryName, flags, (de) => {
           resolve(de);
         }, (err) => {
           File.fillErrorMessage(err);
@@ -929,12 +1025,17 @@ export class File {
     });
   }
 
-  private static getFile(fse: DirectoryEntry, fn: string, flags: Flags): Promise<FileEntry> {
-    return new Promise((resolve, reject) => {
+  /**
+   * Get a file
+   * @param directoryEntry {DirectoryEntry} Directory entry, obtained by resolveDirectoryUrl method
+   * @param fileName {string} File name
+   * @param flags {Flags} Options
+   * @returns {Promise<FileEntry>}
+   */
+  static getFile(directoryEntry: DirectoryEntry, fileName: string, flags: Flags): Promise<FileEntry> {
+    return new Promise<FileEntry>((resolve, reject) => {
       try {
-        fse.getFile(fn, flags, (fe) => {
-          resolve(fe);
-        }, (err) => {
+        directoryEntry.getFile(fileName, flags, resolve, (err) => {
           File.fillErrorMessage(err);
           reject(err);
         });
@@ -945,8 +1046,11 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static remove(fe: Entry): Promise<RemoveResult> {
-    return new Promise((resolve, reject) => {
+    return new Promise<RemoveResult>((resolve, reject) => {
       fe.remove(() => {
         resolve({success: true, fileRemoved: fe});
       }, (err) => {
@@ -956,8 +1060,11 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static move(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
-    return new Promise((resolve, reject) => {
+    return new Promise<Entry>((resolve, reject) => {
       srce.moveTo(destdir, newName, (deste) => {
         resolve(deste);
       }, (err) => {
@@ -967,8 +1074,11 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static copy(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
-    return new Promise((resolve, reject) => {
+    return new Promise<Entry>((resolve, reject) => {
       srce.copyTo(destdir, newName, (deste) => {
         resolve(deste);
       }, (err) => {
@@ -978,8 +1088,11 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static readEntries(dr: DirectoryReader): Promise<Entry[]> {
-    return new Promise((resolve, reject) => {
+    return new Promise<Entry[]>((resolve, reject) => {
       dr.readEntries((entries) => {
         resolve(entries);
       }, (err) => {
@@ -989,8 +1102,11 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static rimraf(de: DirectoryEntry): Promise<RemoveResult> {
-    return new Promise((resolve, reject) => {
+    return new Promise<RemoveResult>((resolve, reject) => {
       de.removeRecursively(() => {
         resolve({success: true, fileRemoved: de});
       }, (err) => {
@@ -1000,8 +1116,11 @@ export class File {
     });
   }
 
+  /**
+   * @private
+   */
   private static createWriter(fe: FileEntry): Promise<FileWriter> {
-    return new Promise((resolve, reject) => {
+    return new Promise<FileWriter>((resolve, reject) => {
       fe.createWriter((writer) => {
         resolve(writer);
       }, (err) => {
@@ -1011,16 +1130,51 @@ export class File {
     });
   }
 
-  private static write(writer: FileWriter, gu: string | Blob): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
+  /**
+   * @private
+   */
+  private static write(writer: FileWriter, gu: string | Blob): Promise<any> {
+    if (gu instanceof Blob) {
+      return this.writeFileInChunks(writer, gu);
+    }
+
+    return new Promise<any>((resolve, reject) => {
       writer.onwriteend = (evt) => {
         if (writer.error) {
           reject(writer.error);
         } else {
-          resolve();
+          resolve(evt);
         }
       };
       writer.write(gu);
+    });
+  }
+
+  /**
+   * @private
+   */
+  private static writeFileInChunks(writer: FileWriter, file: Blob) {
+    const BLOCK_SIZE = 1024 * 1024;
+    let writtenSize = 0;
+
+    function writeNextChunk() {
+      const size = Math.min(BLOCK_SIZE, file.size - writtenSize);
+      const chunk = file.slice(writtenSize, writtenSize + size);
+
+      writtenSize += size;
+      writer.write(chunk);
+    }
+
+    return new Promise<any>((resolve, reject) => {
+      writer.onerror = reject;
+      writer.onwrite = () => {
+        if (writtenSize < file.size) {
+          writeNextChunk();
+        } else {
+          resolve();
+        }
+      };
+      writeNextChunk();
     });
   }
 }

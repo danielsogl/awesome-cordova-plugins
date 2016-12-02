@@ -1,5 +1,6 @@
 import { Plugin, CordovaInstance } from './plugin';
 import { Observable } from 'rxjs/Observable';
+
 declare var cordova: any;
 
 export interface InAppBrowserEvent extends Event {
@@ -30,14 +31,18 @@ export interface InAppBrowserEvent extends Event {
  * ```
  */
 @Plugin({
+  pluginName: 'InAppBrowser',
   plugin: 'cordova-plugin-inappbrowser',
   pluginRef: 'cordova.InAppBrowser',
   repo: 'https://github.com/apache/cordova-plugin-inappbrowser'
 })
 export class InAppBrowser {
 
+  /**
+   * @private
+   */
   static open(url: string, target?: string, options?: string): void {
-    console.warn('Native: Your current usage of the InAppBrowser plugin is depreciated as of ionic-native@1.3.8. Please check the Ionic Native docs for the latest usage details.');
+    console.warn('Native: Your current usage of the InAppBrowser plugin is deprecated as of ionic-native@1.3.8. Please check the Ionic Native docs for the latest usage details.');
   }
 
   private _objectInstance: any;
@@ -75,13 +80,15 @@ export class InAppBrowser {
   /**
    * Injects JavaScript code into the InAppBrowser window.
    * @param script    Details of the script to run, specifying either a file or code key.
+   * @returns {Promise<any>}
    */
   @CordovaInstance()
   executeScript(script: {file?: string, code?: string}): Promise<any> {return; }
 
   /**
    * Injects CSS into the InAppBrowser window.
-   * @param css       Details of the script to run, specifying either a file or code key.
+   * @param {Object}       Details of the script to run, specifying either a file or code key.
+   * @returns {Promise<any>}
    */
   @CordovaInstance()
   insertCss(css: {file?: string, code?: string}): Promise<any> {return; }
@@ -91,8 +98,8 @@ export class InAppBrowser {
 
   /**
    * A method that allows you to listen to events happening in the browser.
-   * @param event Event name
-   * @returns {Observable<any>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
+   * @param {string} name of the event
+   * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
    */
   on(event: string): Observable<InAppBrowserEvent> {
     return new Observable<InAppBrowserEvent>((observer) => {
