@@ -32,6 +32,7 @@ import { DatePicker } from './plugins/datepicker';
 import { DBMeter } from './plugins/dbmeter';
 import { Deeplinks } from './plugins/deeplinks';
 import { Device } from './plugins/device';
+import { DeviceFeedback } from './plugins/device-feedback';
 import { DeviceAccounts } from './plugins/deviceaccounts';
 import { DeviceMotion } from './plugins/devicemotion';
 import { DeviceOrientation } from './plugins/deviceorientation';
@@ -43,13 +44,14 @@ import { Facebook } from './plugins/facebook';
 import { File } from './plugins/file';
 import { FileChooser } from './plugins/file-chooser';
 import { FileOpener } from './plugins/file-opener';
+import { FilePath } from './plugins/filepath';
 import { Transfer } from './plugins/filetransfer';
 import { Flashlight } from './plugins/flashlight';
 import { Geofence } from './plugins/geofence';
 import { Geolocation } from './plugins/geolocation';
 import { Globalization } from './plugins/globalization';
 import { GooglePlus } from './plugins/google-plus';
-import { GoogleMap } from './plugins/googlemaps';
+import { GoogleMap } from './plugins/googlemap';
 import { GoogleAnalytics } from './plugins/googleanalytics';
 import { Hotspot } from  './plugins/hotspot';
 import { HTTP } from  './plugins/http';
@@ -139,6 +141,7 @@ export * from './plugins/datepicker';
 export * from './plugins/dbmeter';
 export * from './plugins/deeplinks';
 export * from './plugins/device';
+export * from './plugins/device-feedback';
 export * from './plugins/deviceaccounts';
 export * from './plugins/devicemotion';
 export * from './plugins/deviceorientation';
@@ -151,13 +154,14 @@ export * from './plugins/file';
 export * from './plugins/file-chooser';
 export * from './plugins/file-opener';
 export * from './plugins/filetransfer';
+export * from './plugins/filepath';
 export * from './plugins/flashlight';
 export * from './plugins/geofence';
 export * from './plugins/geolocation';
 export * from './plugins/globalization';
 export * from './plugins/google-plus';
 export * from './plugins/googleanalytics';
-export * from './plugins/googlemaps';
+export * from './plugins/googlemap';
 export * from './plugins/hotspot';
 export * from './plugins/http';
 export * from './plugins/httpd';
@@ -248,6 +252,7 @@ window['IonicNative'] = {
   DBMeter,
   Deeplinks,
   Device,
+  DeviceFeedback,
   DeviceAccounts,
   DeviceMotion,
   DeviceOrientation,
@@ -259,6 +264,7 @@ window['IonicNative'] = {
   File,
   FileChooser,
   FileOpener,
+  FilePath,
   Flashlight,
   Geofence,
   Geolocation,

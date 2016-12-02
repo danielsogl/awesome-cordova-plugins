@@ -1,4 +1,4 @@
-import { Cordova, CordovaInstance, Plugin } from './plugin';
+import {Cordova, CordovaInstance, Plugin, pluginWarn} from './plugin';
 
 
 declare var sqlitePlugin;
@@ -27,7 +27,7 @@ declare var sqlitePlugin;
  *   .catch(error => console.error('Error openening database', error);
  *
  *
- * // OPTION B: Create a new instance
+ * // OPTION B: Create a new instance of SQLite
  * let db = new SQLite();
  * db.openDatabase({
  *   name: 'data.db',
@@ -45,9 +45,10 @@ declare var sqlitePlugin;
  *
  */
 @Plugin({
-    pluginRef: 'sqlitePlugin',
-    plugin: 'cordova-sqlite-storage',
-    repo: 'https://github.com/litehelpers/Cordova-sqlite-storage'
+  pluginName: 'SQLite',
+  pluginRef: 'sqlitePlugin',
+  plugin: 'cordova-sqlite-storage',
+  repo: 'https://github.com/litehelpers/Cordova-sqlite-storage'
 })
 export class SQLite {
 
@@ -73,13 +74,20 @@ export class SQLite {
    */
   openDatabase(config: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      sqlitePlugin.openDatabase(config, db => {
-        this._objectInstance = db;
-        resolve(this);
-      }, error => {
-        console.warn(error);
-        reject(error);
-      });
+      if (typeof sqlitePlugin !== 'undefined') {
+        sqlitePlugin.openDatabase(config, db => {
+          this._objectInstance = db;
+          resolve(db);
+        }, error => {
+          console.warn(error);
+          reject(error);
+        });
+      } else {
+        pluginWarn({
+          pluginName: 'SQLite',
+          plugin: 'cordova-sqlite-storage'
+        });
+      }
     });
   }
 
@@ -88,9 +96,20 @@ export class SQLite {
   })
   addTransaction(transaction: any): void { }
 
-  @CordovaInstance()
+  /**
+   * @param fn {any}
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance({
+    successIndex: 2,
+    errorIndex: 1
+  })
   transaction(fn: any): Promise<any> { return; }
 
+  /**
+   * @param fn {any}
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   readTransaction(fn: any): Promise<any> { return; }
 
@@ -99,6 +118,9 @@ export class SQLite {
   })
   startNextTransaction(): void { }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   close(): Promise<any> { return; }
 
@@ -110,14 +132,22 @@ export class SQLite {
   /**
    * Execute SQL on the opened database. Note, you must call `openDatabase` first, and
    * ensure it resolved and successfully opened the database.
-   *
    */
   @CordovaInstance()
   executeSql(statement: string, params: any): Promise<any> { return; }
 
+  /**
+   * @param sql
+   * @param values
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   addStatement(sql, values): Promise<any> { return; }
 
+  /**
+   * @param sqlStatements {any}
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   sqlBatch(sqlStatements: any): Promise<any> { return; }
 
@@ -126,12 +156,19 @@ export class SQLite {
   })
   abortallPendingTransactions(): void { }
 
+  /**
+   @param handler
+   @param response
+   */
   @CordovaInstance({
     sync: true
   })
   handleStatementSuccess(handler, response): void { }
 
-
+  /**
+   * @param handler
+   * @param response
+   */
   @CordovaInstance({
     sync: true
   })
@@ -143,7 +180,9 @@ export class SQLite {
   })
   run(): void { }
 
-
+  /**
+   * @param txFailure
+   */
   @CordovaInstance({
     sync: true
   })
@@ -155,16 +194,24 @@ export class SQLite {
   })
   finish(): void { }
 
-
+  /**
+   * @param sqlerror
+   */
   @CordovaInstance({
     sync: true
   })
   abortFromQ(sqlerror): void { }
 
-
+  /**
+   * @returns {Promise<any>}
+   */
   @Cordova()
   static echoTest(): Promise<any> { return; }
 
+  /**
+   * @param first
+   * @returns {Promise<any>}
+   */
   @Cordova()
   static deleteDatabase(first): Promise<any> { return; }
 

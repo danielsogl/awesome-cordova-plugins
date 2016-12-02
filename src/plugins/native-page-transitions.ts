@@ -27,6 +27,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'NativePageTransitions',
   plugin: 'com.telerik.plugins.nativepagetransitions',
   pluginRef: 'plugins.nativepagetransitions',
   repo: 'https://github.com/Telerik-Verified-Plugins/NativePageTransitions',
@@ -36,6 +37,7 @@ export class NativePageTransitions {
   /**
    * Perform a slide animation
    * @param options {TransitionOptions} Options for the transition
+   * @returns {Promise<any>}
    */
   @Cordova()
   static slide(options: TransitionOptions): Promise<any> { return; }
@@ -43,6 +45,7 @@ export class NativePageTransitions {
   /**
    * Perform a flip animation
    * @param options {TransitionOptions} Options for the transition
+   * @returns {Promise<any>}
    */
   @Cordova()
   static flip(options: TransitionOptions): Promise<any> { return; }
@@ -50,6 +53,7 @@ export class NativePageTransitions {
   /**
    * Perform a fade animation
    * @param options {TransitionOptions} Options for the transition
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS', 'Android']})
   static fade(options: TransitionOptions): Promise<any> { return; }
@@ -58,6 +62,7 @@ export class NativePageTransitions {
   /**
    * Perform a slide animation
    * @param options {TransitionOptions} Options for the transition
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS', 'Android']})
   static drawer(options: TransitionOptions): Promise<any> { return; }
@@ -67,6 +72,7 @@ export class NativePageTransitions {
   /**
    * Perform a slide animation
    * @param options {TransitionOptions} Options for the transition
+   * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS']})
   static curl(options: TransitionOptions): Promise<any> { return; }

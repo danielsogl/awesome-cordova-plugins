@@ -1,9 +1,9 @@
-/// <reference path="./../typings/index.d.ts" />
+/// <reference path="../typings/index.d.ts" />
 
 import 'es6-shim';
 import {Plugin, Cordova} from './../src/plugins/plugin';
 
-declare const window: any;
+declare let window: any;
 window.plugins = {
   test: {}
 };
@@ -135,6 +135,38 @@ describe('plugin', () => {
       done();
     });
     expect(spy.calls.mostRecent().args[0]).toEqual('foo');
+
+  });
+
+  it('reverse callback at the end of the function', done => {
+
+    window.plugins.test.reverseEndCallback = (args, error, success) => {
+      success('Success');
+    };
+
+    @Plugin(testPluginMeta)
+    class Test {
+
+      @Cordova({
+        successIndex: 2,
+        errorIndex: 1
+      })
+      static reverseEndCallback(args: any): Promise<any> { return; }
+
+    }
+
+    const spy = spyOn(window.plugins.test, 'reverseEndCallback').and.callThrough();
+    const cb = (result) => {
+      expect(result).toEqual('Success');
+      done();
+    };
+
+    Test.reverseEndCallback('foo').then(cb, cb);
+
+    expect(spy.calls.mostRecent().args[0]).toEqual('foo');
+    expect(spy.calls.mostRecent().args[1]).toBeDefined();
+    expect(spy.calls.mostRecent().args[2]).toBeDefined();
+    expect(spy.calls.mostRecent().args[3]).toBeUndefined();
 
   });
 

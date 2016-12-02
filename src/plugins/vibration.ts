@@ -10,7 +10,7 @@ import { Cordova, Plugin } from './plugin';
  *
  *
  * // Vibrate the device for a second
- * // Duration is ignored on iOS. 
+ * // Duration is ignored on iOS.
  * Vibration.vibrate(1000);
  *
  * // Vibrate 2 seconds
@@ -25,6 +25,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'Vibration',
   plugin: 'cordova-plugin-vibration',
   pluginRef: 'navigator',
   repo: 'https://github.com/apache/cordova-plugin-vibration',

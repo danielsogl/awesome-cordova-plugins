@@ -16,6 +16,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'FileChooser',
   plugin: 'http://github.com/don/cordova-filechooser.git',
   pluginRef: 'fileChooser',
   repo: 'https://github.com/don/cordova-filechooser',
@@ -24,6 +25,7 @@ import { Plugin, Cordova } from './plugin';
 export class FileChooser {
   /**
    * Open a file
+   * @returns {Promise<string>}
    */
   @Cordova()
   static open(): Promise<string> { return; }

@@ -51,6 +51,7 @@ import { Plugin, Cordova } from './plugin';
  *
  */
 @Plugin({
+  pluginName: 'InAppPurchase',
   plugin: 'cordova-plugin-inapppurchase',
   pluginRef: 'inAppPurchase',
   platforms: ['Android', 'iOS'],
@@ -61,7 +62,7 @@ export class InAppPurchase {
   /**
    * Retrieves a list of full product data from Apple/Google. This method must be called before making purchases.
    * @param {array<string>} productId an array of product ids.
-   * @returns {Promise} Returns a Promise that resolves with an array of objects.
+   * @returns {Promise<any>} Returns a Promise that resolves with an array of objects.
    */
   @Cordova({
     otherPromise: true
@@ -71,7 +72,7 @@ export class InAppPurchase {
   /**
    * Buy a product that matches the productId.
    * @param {string} productId A string that matches the product you want to buy.
-   * @returns {Promise} Returns a Promise that resolves with the transaction details.
+   * @returns {Promise<{transactionId: string, receipt: string, signature: string, productType: string}>} Returns a Promise that resolves with the transaction details.
    */
   @Cordova({
     otherPromise: true
@@ -81,7 +82,7 @@ export class InAppPurchase {
   /**
    * Same as buy, but for subscription based products.
    * @param {string} productId A string that matches the product you want to subscribe to.
-   * @returns {Promise} Returns a Promise that resolves with the transaction details.
+   * @returns {Promise<{transactionId: string, receipt: string, signature: string, productType: string}>} Returns a Promise that resolves with the transaction details.
    */
   @Cordova({
     otherPromise: true
@@ -93,6 +94,7 @@ export class InAppPurchase {
    * @param {string} productType
    * @param {string} receipt
    * @param {string} signature
+   * @returns {Promise<any>}
    */
   @Cordova({
     otherPromise: true
@@ -101,7 +103,7 @@ export class InAppPurchase {
 
   /**
    * Restore all purchases from the store
-   * @returns {Promise} Returns a promise with an array of purchases.
+   * @returns {Promise<any>} Returns a promise with an array of purchases.
    */
   @Cordova({
     otherPromise: true
