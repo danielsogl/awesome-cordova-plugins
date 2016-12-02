@@ -1,7 +1,8 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
-declare var window;
+
+declare var navigator: any;
 
 export interface Coordinates {
   /**
@@ -61,6 +62,18 @@ export interface Geoposition {
   timestamp: number;
 }
 
+export interface PositionError {
+  /**
+   * A code that indicates the error that occurred
+   */
+  code: number;
+
+  /**
+   * A message that can describe the error that occurred
+   */
+   message: string;
+}
+
 export interface GeolocationOptions {
   /**
    * Is a positive long value indicating the maximum age in milliseconds of a
@@ -101,24 +114,32 @@ export interface GeolocationOptions {
  *
  * @usage
  *
- * ```ts
- * import {Geolocation} from 'ionic-native';
- *
+ * ```typescript
+ * import { Geolocation } from 'ionic-native';
  *
  *
  * Geolocation.getCurrentPosition().then((resp) => {
- *  //resp.coords.latitude
- *  //resp.coords.longitude
- * })
+ *  // resp.coords.latitude
+ *  // resp.coords.longitude
+ * }).catch((error) => {
+ *   console.log('Error getting location', error);
+ * });
  *
  * let watch = Geolocation.watchPosition();
  * watch.subscribe((data) => {
- *  //data.coords.latitude
- *  //data.coords.longitude
- * })
+ *  // data can be a set of coordinates, or an error (if an error occurred).
+ *  // data.coords.latitude
+ *  // data.coords.longitude
+ * });
  * ```
+ * @interfaces
+ * Coordinates
+ * Geoposition
+ * PositionError
+ * GeolocationOptions
  */
 @Plugin({
+  pluginName: 'Geolocation',
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation',
   repo: 'https://github.com/apache/cordova-plugin-geolocation'
@@ -128,7 +149,7 @@ export class Geolocation {
    * Get the device's current position.
    *
    * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
-   * @return Returns a Promise that resolves with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or rejects with an error.
+   * @returns {Promise<Geoposition>} Returns a Promise that resolves with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or rejects with an error.
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -139,8 +160,10 @@ export class Geolocation {
    * Watch the current device's position.  Clear the watch by unsubscribing from
    * Observable changes.
    *
-   * ```ts
-   * var subscription = Geolocation.watchPosition().subscribe(position => {
+   * ```typescript
+   * var subscription = Geolocation.watchPosition()
+   *                               .filter((p) => p.code === undefined) //Filter Out Errors
+   *                               .subscribe(position => {
    *   console.log(position.coords.longitude + ' ' + position.coords.latitude);
    * });
    *
@@ -149,12 +172,14 @@ export class Geolocation {
    * ```
    *
    * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
-   * @return Returns an Observable that notifies with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or errors.
+   * @returns {Observable<Geoposition>} Returns an Observable that notifies with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or errors.
    */
-  @Cordova({
-    callbackOrder: 'reverse',
-    observable: true,
-    clearFunction: 'clearWatch'
-  })
-  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return; }
+  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> {
+    return new Observable<Geoposition>(
+      (observer: any) => {
+        let watchId = navigator.geolocation.watchPosition(observer.next.bind(observer), observer.next.bind(observer), options);
+        return () => navigator.geolocation.clearWatch(watchId);
+      }
+    );
+  }
 }

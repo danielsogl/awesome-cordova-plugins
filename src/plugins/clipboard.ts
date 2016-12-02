@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * @name Clipboard
@@ -9,25 +10,25 @@ import {Plugin, Cordova} from './plugin';
  * For more info, please see the [Clipboard plugin docs](https://github.com/VersoSolutions/CordovaClipboard.git).
  *
  * @usage
- * ```js
- * import {Clipboard} from 'ionic-native';
+ * ```typescript
+ * import { Clipboard } from 'ionic-native';
  *
  *
- *
- * Clipboard.copy("Hello world");
+ * Clipboard.copy('Hello world');
  *
  * Clipboard.paste().then(
- *    (resolve : string) => {
-  *     alert(resolve);
-*     },
- *     (reject : string) => {
- *     alert("Error: " + reject);
+ *    (resolve: string) => {
+ *     alert(resolve);
+ *     },
+ *     (reject: string) => {
+ *     alert('Error: ' + reject);
  *     }
-*     );
+ *     );
  * );
  * ```
  */
 @Plugin({
+  pluginName: 'Clipboard',
   plugin: 'https://github.com/VersoSolutions/CordovaClipboard.git',
   pluginRef: 'cordova.plugins.clipboard',
   repo: 'https://github.com/VersoSolutions/CordovaClipboard',
@@ -37,15 +38,15 @@ export class Clipboard {
 
   /**
    * Copies the given text
-   * @param text
-   * @returns {Promise<T>}
+   * @param {string} text Text that gets copied on the system clipboard
+   * @returns {Promise<any>} Returns a promise after the text has been copied
    */
   @Cordova()
   static copy(text: string): Promise<any> { return; }
 
   /**
    * Pastes the text stored in clipboard
-   * @returns {Promise<T>}
+   * @returns {Promise<any>} Returns a promise after the text has been pasted
    */
   @Cordova()
   static paste(): Promise<any> { return; }

@@ -1,14 +1,16 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
+
 /**
  * @name Vibration
  * @description Vibrates the device
  * @usage
- * ```ts
- * import {Vibration} from 'ionic-native';
- *
+ * ```typescript
+ * import { Vibration } from 'ionic-native';
  *
  *
  * // Vibrate the device for a second
+ * // Duration is ignored on iOS.
  * Vibration.vibrate(1000);
  *
  * // Vibrate 2 seconds
@@ -23,19 +25,21 @@ import {Plugin, Cordova} from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'Vibration',
   plugin: 'cordova-plugin-vibration',
   pluginRef: 'navigator',
-  repo: 'https://github.com/apache/cordova-plugin-vibration'
+  repo: 'https://github.com/apache/cordova-plugin-vibration',
+  platforms: ['Android', 'iOS', 'Windows 8.1 Phone', 'Windows 8.1', 'Windows 10']
 })
 export class Vibration {
 
   /**
    * Vibrates the device for given amount of time.
-   * @param time {Number|Array<Number>} Milliseconds to vibrate the device. If passed an array of numbers, it will define a vibration pattern. Pass 0 to stop any vibration immediately.
+   * @param time {number|Array<number>} Milliseconds to vibrate the device. If passed an array of numbers, it will define a vibration pattern. Pass 0 to stop any vibration immediately.
    */
   @Cordova({
     sync: true
   })
-  static vibrate(time: any) {}
+  static vibrate(time: number | Array<number>) { }
 
 }

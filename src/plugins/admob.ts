@@ -1,15 +1,32 @@
-import {Plugin, Cordova} from './plugin';
-import {Observable} from 'rxjs/Observable';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * @name AdMob
- * @description
+ * @description Plugin for Google Ads, including AdMob / DFP (doubleclick for publisher) and mediations to other Ad networks.
  * @usage
+ * ```typescript
+ * import { AdMob } from 'ionic-native';
+ * 
+ * ionViewDidLoad() {
+ *   AdMob.onBannerDismiss()
+ *     .subscribe(() => { console.log('User returned from interstitial'); });
+ * }
+ * 
+ * public onClick() {
+ *   AdMob.prepareInterstitial('YOUR_ADID')
+ *     .then(() => { AdMob.showInterstitial(); });
+ * }
+ *
+ * ```
+ * Please refer the the plugin's original repository for detailed usage.
  */
 @Plugin({
+  pluginName: 'AdMob',
   plugin: 'cordova-plugin-admobpro',
   pluginRef: 'AdMob',
-  repo: 'https://github.com/floatinghotspot/cordova-admob-pro'
+  repo: 'https://github.com/floatinghotpot/cordova-admob-pro',
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class AdMob {
 
@@ -18,9 +35,10 @@ export class AdMob {
   /**
    *
    * @param adIdOrOptions
+   * @returns {Promise<any>} Returns a Promise that resolves when the banner is created
    */
   @Cordova()
-  static createBanner(adIdOrOptions: any): Promise<any> {return; }
+  static createBanner(adIdOrOptions: any): Promise<any> { return; }
 
   /**
    *
@@ -28,7 +46,7 @@ export class AdMob {
   @Cordova({
     sync: true
   })
-  static removeBanner(): void {}
+  static removeBanner(): void { }
 
   /**
    *
@@ -37,7 +55,7 @@ export class AdMob {
   @Cordova({
     sync: true
   })
-  static showBanner(position: any): void {}
+  static showBanner(position: any): void { }
 
   /**
    *
@@ -47,7 +65,7 @@ export class AdMob {
   @Cordova({
     sync: true
   })
-  static showBannerAtXY(x: number, y: number): void {}
+  static showBannerAtXY(x: number, y: number): void { }
 
   /**
    *
@@ -55,14 +73,15 @@ export class AdMob {
   @Cordova({
     sync: true
   })
-  static hideBanner(): void {}
+  static hideBanner(): void { }
 
   /**
    *
    * @param adIdOrOptions
+   * @returns {Promise<any>} Returns a Promise that resolves when interstitial is prepared
    */
   @Cordova()
-  static prepareInterstitial(adIdOrOptions: any): Promise<any> {return; }
+  static prepareInterstitial(adIdOrOptions: any): Promise<any> { return; }
 
   /**
    * Show interstitial
@@ -70,20 +89,22 @@ export class AdMob {
   @Cordova({
     sync: true
   })
-  static showInterstitial(): void {}
+  static showInterstitial(): void { }
 
   /**
    *
+   * @returns {Promise<any>} Returns a Promise that resolves when the interstitial is ready
    */
   @Cordova()
-  static isInterstitialReady (): Promise<boolean> {return; }
+  static isInterstitialReady(): Promise<boolean> { return; }
 
   /**
    * Prepare a reward video ad
    * @param adIdOrOptions
+   * @returns {Promise<any>} Returns a Promise that resolves when the ad is prepared
    */
   @Cordova()
-  static prepareRewardVideoAd(adIdOrOptions: any): Promise<any> {return; }
+  static prepareRewardVideoAd(adIdOrOptions: any): Promise<any> { return; }
 
   /**
    * Show a reward video ad
@@ -96,16 +117,17 @@ export class AdMob {
   /**
    * Sets the values for configuration and targeting
    * @param options Returns a promise that resolves if the options are set successfully
+   * @returns {Promise<any>} Returns a Promise that resolves when the options have been set
    */
   @Cordova()
-  static setOptions(options: any): Promise<any> {return; }
+  static setOptions(options: any): Promise<any> { return; }
 
   /**
    * Get user ad settings
    * @returns {Promise<any>} Returns a promise that resolves with the ad settings
    */
   @Cordova()
-  static getAdSettings(): Promise<any> {return; }
+  static getAdSettings(): Promise<any> { return; }
 
   // Events
 
@@ -113,65 +135,65 @@ export class AdMob {
     eventObservable: true,
     event: 'onBannerFailedToReceive'
   })
-  static onBannerFailedToReceive (): Observable<any> {return; }
+  static onBannerFailedToReceive(): Observable<any> { return; }
 
   @Cordova({
     eventObservable: true,
     event: 'onBannerReceive'
   })
-  static onBannerReceive (): Observable<any> {return; }
+  static onBannerReceive(): Observable<any> { return; }
 
   @Cordova({
     eventObservable: true,
     event: 'onBannerPresent'
   })
-  static onBannerPresent (): Observable<any> {return; }
+  static onBannerPresent(): Observable<any> { return; }
 
   @Cordova({
     eventObservable: true,
     event: 'onBannerLeaveApp'
   })
-  static onBannerLeaveApp (): Observable<any> {return; }
+  static onBannerLeaveApp(): Observable<any> { return; }
 
   @Cordova({
     eventObservable: true,
     event: 'onBannerDismiss'
   })
-  static onBannerDismiss (): Observable<any> {return; }
+  static onBannerDismiss(): Observable<any> { return; }
 
 
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialFailedToReceive'
   })
-  static onInterstitialFailedToReceive (): Observable<any> {return; }
+  static onInterstitialFailedToReceive(): Observable<any> { return; }
 
 
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialReceive'
   })
-  static onInterstitialReceive (): Observable<any> {return; }
+  static onInterstitialReceive(): Observable<any> { return; }
 
 
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialPresent'
   })
-  static onInterstitialPresent (): Observable<any> {return; }
+  static onInterstitialPresent(): Observable<any> { return; }
 
 
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialLeaveApp'
   })
-  static onInterstitialLeaveApp (): Observable<any> {return; }
+  static onInterstitialLeaveApp(): Observable<any> { return; }
 
 
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialDismiss'
   })
-  static onInterstitialDismiss (): Observable<any> {return; }
+  static onInterstitialDismiss(): Observable<any> { return; }
 
 }

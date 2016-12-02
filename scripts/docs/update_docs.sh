@@ -23,13 +23,13 @@ function run {
   # CD in to the site dir to commit updated docs
   cd $SITE_DIR
 
-  CHANGES=$(git status --porcelain)
-
   # if no changes, don't commit
-  if [[ "$CHANGES" == "" ]]; then
+  if [[ `git status --porcelain` ]]; then
     echo "-- No changes detected for the following commit, docs not updated."
     echo "https://github.com/driftyco/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1"
   else
+    git config --global user.email "hi@ionicframework.com"
+    git config --global user.name "Ionitron"
     git add -A
     git commit -am "Automated build of native docs driftyco/$CIRCLE_PROJECT_REPONAME@$CIRCLE_SHA1"
     # in case a different commit was pushed to ionic-site during doc/demo gen,

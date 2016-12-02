@@ -1,33 +1,23 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
-declare var cordova;
 
-/**
- * Email object for Opening Email Composer
- */
-export interface Email {
-  app?: string;
-  to: string | Array<string>;
-  cc: string | Array<string>;
-  bcc: string | Array<string>;
-  attachments: Array<any>;
-  subject: string;
-  body: string;
-  isHtml: boolean;
-}
+declare var cordova: any;
 
 /**
  * @name Email Composer
  * @description
  *
- * Requires Cordova plugin: cordova-plugin-email-composer. For more info, please see the [Email Composer plugin docs](https://github.com/katzer/cordova-plugin-email-composer).
+ * Requires Cordova plugin: cordova-plugin-email-composer. For more info, please see the [Email Composer plugin docs](https://github.com/hypery2k/cordova-email-plugin).
+ *
+ * DISCLAIMER: This plugin is experiencing issues with the latest versions of Cordova. Use at your own risk. Functionality is not guaranteed. Please stay tuned for a more stable version.
+ * A good alternative to this plugin is the social sharing plugin.
  *
  * @usage
- * ```ts
- * import {EmailComposer} from 'ionic-native';
+ * ```typescript
+ * import { EmailComposer } from 'ionic-native';
  *
  *
- * EmailComposer.isAvailable().then((available) =>{
+ * EmailComposer.isAvailable().then((available: boolean) =>{
  *  if(available) {
  *    //Now we know we can send
  *  }
@@ -49,28 +39,44 @@ export interface Email {
  * };
  *
  * // Send a text message using default options
- * EmailComposer.send(email);
+ * EmailComposer.open(email);
  *
  * ```
  */
 @Plugin({
-  plugin: 'cordova-plugin-email-composer',
+  pluginName: 'EmailComposer',
+  plugin: 'cordova-plugin-email',
   pluginRef: 'cordova.plugins.email',
-  repo: 'https://github.com/katzer/cordova-plugin-email-composer.git',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  repo: 'https://github.com/hypery2k/cordova-email-plugin',
+  platforms: ['Android', 'iOS']
 })
 export class EmailComposer {
 
   /**
    * Verifies if sending emails is supported on the device.
    *
-   * @param app {string?} An optional app id or uri scheme. Defaults to mailto.
-   * @param scope {any?} An optional scope for the promise
-   * @returns {Promise<boolean>} Resolves promise with boolean whether EmailComposer is available
+   * @param app {string?} An optional app id or uri scheme.
+   * @returns {Promise<any>} Resolves if available, rejects if not available
    */
-  static isAvailable (app?: string, scope?: any): Promise<boolean> {
+  static isAvailable(app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
-      cordova.plugins.email.isAvailable(app, resolve, scope);
+      if (app) {
+        cordova.plugins.email.isAvailable(app, (isAvailable) => {
+          if (isAvailable) {
+            resolve();
+          } else {
+            reject();
+          }
+        });
+      } else {
+        cordova.plugins.email.isAvailable((isAvailable) => {
+          if (isAvailable) {
+            resolve();
+          } else {
+            reject();
+          }
+        });
+      }
     });
   }
 
@@ -81,7 +87,7 @@ export class EmailComposer {
    * @param packageName {string} The package name
    */
   @Cordova()
-  static addAlias(alias: string, packageName: string): void {}
+  static addAlias(alias: string, packageName: string): void { }
 
   /**
    * Displays the email composer pre-filled with data.
@@ -94,6 +100,17 @@ export class EmailComposer {
     successIndex: 1,
     errorIndex: 3
   })
-  static open(email: Email, scope?: any): Promise<any> {return; }
+  static open(email: Email, scope?: any): Promise<any> { return; }
 
+}
+
+export interface Email {
+  app?: string;
+  to?: string | Array<string>;
+  cc?: string | Array<string>;
+  bcc?: string | Array<string>;
+  attachments?: Array<any>;
+  subject?: string;
+  body?: string;
+  isHtml?: boolean;
 }

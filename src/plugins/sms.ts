@@ -1,4 +1,5 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
+
 
 /**
  * Options for sending an SMS
@@ -30,17 +31,16 @@ export interface SmsOptionsAndroid {
  * Requires Cordova plugin: cordova-plugin-sms. For more info, please see the [SMS plugin docs](https://github.com/cordova-sms/cordova-sms-plugin).
  *
  * @usage
- * ```ts
- * import {SMS} from 'ionic-native';
- *
+ * ```typescript
+ * import { SMS } from 'ionic-native';
  *
  *
  * // Send a text message using default options
- * SMS.send('416123456','Hello world!');
- *
+ * SMS.send('416123456', 'Hello world!');
  * ```
  */
 @Plugin({
+  pluginName: 'SMS',
   plugin: 'cordova-sms-plugin',
   pluginRef: 'sms',
   repo: 'https://github.com/cordova-sms/cordova-sms-plugin',
@@ -61,5 +61,14 @@ export class SMS {
     message: string,
     options?: SmsOptions
   ): Promise<any> { return; }
+
+  /**
+   * This function lets you know if the app has permission to send SMS
+   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if we have permission
+   */
+  @Cordova({
+    platforms: ['Android']
+  })
+  static hasPermission(): Promise<boolean> { return; }
 
 }

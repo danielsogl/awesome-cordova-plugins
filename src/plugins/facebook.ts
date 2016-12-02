@@ -1,4 +1,4 @@
-import {Plugin, Cordova} from './plugin';
+import { Cordova, Plugin } from './plugin';
 
 /**
  * @name Facebook
@@ -20,7 +20,7 @@ import {Plugin, Cordova} from './plugin';
  * Then type in the following command in your Terminal, where APP_ID and APP_NAME are the values from the Facebook Developer portal.
  *
  * ```bash
- *  cordova plugin add cordova-plugin-facebook4 --save --variable APP_ID="123456789" --variable APP_NAME="myApplication"
+ *  ionic plugin add cordova-plugin-facebook4 --save --variable APP_ID="123456789" --variable APP_NAME="myApplication"
  * ```
  *
  * After, you'll need to add the native platforms you'll be using to your app in the Facebook Developer portal under your app's Settings:
@@ -69,8 +69,8 @@ import {Plugin, Cordova} from './plugin';
  * For tracking events, see `logEvent` and `logPurchase`.
  *
  * @usage
- * ```js
- * import {Facebook} from 'ionic-native';
+ * ```typescript
+ * import { Facebook } from 'ionic-native';
  *
  *
  *
@@ -78,22 +78,29 @@ import {Plugin, Cordova} from './plugin';
  *
  */
 @Plugin({
+  pluginName: 'Facebook',
   plugin: 'cordova-plugin-facebook4',
   pluginRef: 'facebookConnectPlugin',
   repo: 'https://github.com/jeduan/cordova-plugin-facebook4',
-  install: 'cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"'
+  install: 'ionic plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"'
 })
 export class Facebook {
 
-  // @Cordova()
-  // static browserInit(appId: number){
-  //   return new Promise<any>((res, rej) => {});
-  // }
+  /**
+   * Browser wrapper
+   * @param {number} appId Your Facebook AppID from their dashboard
+   * @param {string} version The version of API you may want to use. Optional
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  static browserInit(appId: number, version?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Login to Facebook to authenticate this app.
    *
-   * ```ts
+   * ```typescript
    * {
    *   status: "connected",
    *   authResponse: {
@@ -108,16 +115,16 @@ export class Facebook {
    * ```
    *
    * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) this app has upon logging in.
-   * @return Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
+   * @returns {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
    */
   @Cordova()
-  static login(permissions: string[]): Promise<any> { return; }
+  static login(permissions: string[]): Promise<FacebookLoginResponse> { return; }
 
   /**
    * Logout of Facebook.
    *
    * For more info see the [Facebook docs](https://developers.facebook.com/docs/reference/javascript/FB.logout)
-   * @return Returns a Promise that resolves on a successful logout, and rejects if logout fails.
+   * @returns {Promise<any>} Returns a Promise that resolves on a successful logout, and rejects if logout fails.
    */
   @Cordova()
   static logout(): Promise<any> { return; }
@@ -146,7 +153,7 @@ export class Facebook {
    *
    * For more information see the [Facebook docs](https://developers.facebook.com/docs/reference/javascript/FB.getLoginStatus)
    *
-   * @return Returns a Promise that resolves with a status, or rejects with an error
+   * @returns {Promise<any>} Returns a Promise that resolves with a status, or rejects with an error
    */
   @Cordova()
   static getLoginStatus(): Promise<any> { return; }
@@ -154,7 +161,7 @@ export class Facebook {
   /**
    * Get a Facebook access token for using Facebook services.
    *
-   * @return Returns a Promise that resolves with an access token, or rejects with an error
+   * @returns {Promise<string>} Returns a Promise that resolves with an access token, or rejects with an error
    */
   @Cordova()
   static getAccessToken(): Promise<string> { return; }
@@ -173,8 +180,8 @@ export class Facebook {
    * ```
    *
    * For more options see the [Cordova plugin docs](https://github.com/jeduan/cordova-plugin-facebook4#show-a-dialog) and the [Facebook docs](https://developers.facebook.com/docs/javascript/reference/FB.ui)
-   * @options {Object}  options The dialog options
-   * @return Returns a Promise that resolves with success data, or rejects with an error
+   * @param {Object} options The dialog options
+   * @returns {Promise<any>} Returns a Promise that resolves with success data, or rejects with an error
    */
   @Cordova()
   static showDialog(options: any): Promise<any> { return; }
@@ -190,7 +197,7 @@ export class Facebook {
    *
    * @param {string}  requestPath Graph API endpoint you want to call
    * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) for this request.
-   * @return Returns a Promise that resolves with the result of the request, or rejects with an error
+   * @returns {Promise<any>} Returns a Promise that resolves with the result of the request, or rejects with an error
    */
   @Cordova()
   static api(requestPath: string, permissions: string[]): Promise<any> { return; }
@@ -201,21 +208,21 @@ export class Facebook {
    * @param {string}  name Name of the event
    * @param {Object}  [params] An object containing extra data to log with the event
    * @param {number}  [valueToSum] any value to be added to added to a sum on each event
-   * @return
+   * @returns {Promise<any>}
    */
   @Cordova()
   static logEvent(
     name: string,
     params?: Object,
     valueToSum?: number
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * Log a purchase. For more information see the Events section above.
    *
    * @param {number}  value Value of the purchase.
    * @param {string}  currency The currency, as an [ISO 4217 currency code](http://en.wikipedia.org/wiki/ISO_4217)
-   * @return Returns a Promise
+   * @returns {Promise<any>}
    */
   @Cordova()
   static logPurchase(value: number, currency: string): Promise<any> { return; }
@@ -233,11 +240,24 @@ export class Facebook {
    *   url: [App Link](https://developers.facebook.com/docs/applinks) to your app
    *   picture: image to be displayed in the App Invite dialog
    *
-   * @return Returns a Promise that resolves with the result data, or rejects with an error
+   * @returns {Promise<any>} Returns a Promise that resolves with the result data, or rejects with an error
    */
   @Cordova()
   static appInvite(options: {
     url: string,
     picture: string
   }): Promise<any> { return; }
+
+}
+
+export interface FacebookLoginResponse {
+  status: string;
+  authResponse: {
+    session_key: boolean;
+    accessToken: string;
+    expiresIn: number;
+    sig: string;
+    secret: string;
+    userID: string;
+  };
 }
