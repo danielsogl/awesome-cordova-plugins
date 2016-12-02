@@ -14,6 +14,7 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
+  pluginName: 'Keyboard',
   plugin: 'ionic-plugin-keyboard',
   pluginRef: 'cordova.plugins.Keyboard',
   repo: 'https://github.com/driftyco/ionic-plugin-keyboard'
@@ -57,6 +58,7 @@ export class Keyboard {
 
   /**
    * Creates an observable that notifies you when the keyboard is shown. Unsubscribe to observable to cancel event watch.
+   * @returns {Observable<any>}
    */
   @Cordova({
     eventObservable: true,
@@ -67,6 +69,7 @@ export class Keyboard {
 
   /**
    * Creates an observable that notifies you when the keyboard is hidden. Unsubscribe to observable to cancel event watch.
+   * @returns {Observable<any>}
    */
   @Cordova({
     eventObservable: true,

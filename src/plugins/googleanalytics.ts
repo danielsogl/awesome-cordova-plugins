@@ -13,25 +13,27 @@ declare var window;
  * - (Android) Google Play Services SDK installed via [Android SDK Manager](https://developer.android.com/sdk/installing/adding-packages.html)
  */
 @Plugin({
+  pluginName: 'GoogleAnalytics',
   plugin: 'cordova-plugin-google-analytics',
   pluginRef: 'ga',
   repo: 'https://github.com/danwilson/google-analytics-plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS', 'Browser']
 })
 export class GoogleAnalytics {
   /**
    * In your 'deviceready' handler, set up your Analytics tracker.
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/
    * @param {string}  id  Your Google Analytics Mobile App property
-   * @return {Promise<any>}
+   * @param {number} interval Optional dispatch period in seconds. Defaults to 30.
+   * @returns {Promise<any>}
    */
   @Cordova()
-  static startTrackerWithId(id: string): Promise<any> { return; }
+  static startTrackerWithId(id: string, interval?: number): Promise<any> { return; }
 
   /**
    * Enabling Advertising Features in Google Analytics allows you to take advantage of Remarketing, Demographics & Interests reports, and more
    * @param allow {boolean}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static setAllowIDFACollection(allow: boolean): Promise<any> { return; }
@@ -40,7 +42,7 @@ export class GoogleAnalytics {
    * Set a UserId
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/user-id
    * @param {string} id User ID
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static setUserId(id: string): Promise<any> { return; }
@@ -48,7 +50,7 @@ export class GoogleAnalytics {
   /**
    * Set a anonymize Ip address
    * @param anonymize {boolean} Set to true to anonymize the IP Address
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static setAnonymizeIp(anonymize: boolean): Promise<any> { return; }
@@ -56,7 +58,7 @@ export class GoogleAnalytics {
   /**
    * Sets the app version
    * @param appVersion {string} App version
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static setAppVersion(appVersion: string): Promise<any> { return; }
@@ -64,14 +66,14 @@ export class GoogleAnalytics {
   /**
    * Set OptOut
    * @param optout {boolean}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static setOptOut(optout: boolean): Promise<any> { return; }
 
   /**
    * Enable verbose logging
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static debugMode(): Promise<any> { return; }
@@ -80,7 +82,7 @@ export class GoogleAnalytics {
    * Track custom metric
    * @param key {string}
    * @param value {any}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 2,
@@ -95,7 +97,7 @@ export class GoogleAnalytics {
    * @param title {string} Screen title
    * @param campaignUrl {string} Campaign url for measuring referrals
    * @param newSession {boolean} Set to true to create a new session
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 3,
@@ -108,7 +110,7 @@ export class GoogleAnalytics {
    * https://developers.google.com/analytics/devguides/platform/customdimsmets
    * @param key {string}
    * @param value {string}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static addCustomDimension(key: number, value: string): Promise<any> { return; }
@@ -121,7 +123,7 @@ export class GoogleAnalytics {
    * @param label {string}
    * @param value {number}
    * @param newSession {boolean} Set to true to create a new session
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 5,
@@ -133,7 +135,7 @@ export class GoogleAnalytics {
    * Track an exception
    * @param description {string}
    * @param fatal {boolean}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static trackException(description: string, fatal: boolean): Promise<any> { return; }
@@ -144,7 +146,7 @@ export class GoogleAnalytics {
    * @param intervalInMilliseconds {number}
    * @param variable {string}
    * @param label {string}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static trackTiming(category: string, intervalInMilliseconds: number, variable: string, label: string): Promise<any> { return; }
@@ -158,7 +160,7 @@ export class GoogleAnalytics {
    * @param tax {number}
    * @param shipping {number}
    * @param currencyCode {string}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static addTransaction(id: string, affiliation: string, revenue: number, tax: number, shipping: number, currencyCode: string): Promise<any> { return; }
@@ -173,7 +175,7 @@ export class GoogleAnalytics {
    * @param {number}  price
    * @param {number}  quantity
    * @param {string}  currencyCode
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static addTransactionItem(id: string, name: string, sku: string, category: string, price: number, quantity: number, currencyCode: string): Promise<any> { return; }
@@ -181,7 +183,7 @@ export class GoogleAnalytics {
   /**
    * Enable/disable automatic reporting of uncaught exceptions
    * @param shouldEnable {boolean}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static enableUncaughtExceptionReporting(shouldEnable: boolean): Promise<any> { return; }

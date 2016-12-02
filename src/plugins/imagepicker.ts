@@ -46,20 +46,39 @@ export interface ImagePickerOptions {
  * ImagePickerOptions
  */
 @Plugin({
-  plugin: 'cordova-plugin-image-picker',
+  pluginName: 'ImagePicker',
+  plugin: 'https://github.com/Telerik-Verified-Plugins/ImagePicker',
   pluginRef: 'window.imagePicker',
-  repo: 'https://github.com/wymsee/cordova-imagePicker'
+  repo: 'https://github.com/Telerik-Verified-Plugins/ImagePicker'
 })
 export class ImagePicker {
   /**
    * Pick pictures from the library.
    * @param {ImagePickerOptions} options
-   * @return Returns a Promise that resolves the image file URI
+   * @returns {Promise<any>} Returns a Promise that resolves the image file URI
    * otherwise rejects with an error.
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
   static getPictures(options: ImagePickerOptions): Promise<any> { return; }
+
+  /**
+   * Check if we have permission to read images
+   * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that indicates whether we have permission
+   */
+  @Cordova({
+    platforms: ['Android']
+  })
+  static hasReadPermission(): Promise<boolean> { return; }
+
+  /**
+   * Request permission to read images
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    platforms: ['Android']
+  })
+  static requestReadPermission(): Promise<any> { return; }
 
 }

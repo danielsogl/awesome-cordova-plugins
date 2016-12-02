@@ -138,7 +138,7 @@ export interface FileTransferError {
  *      fileKey: 'file',
  *      fileName: 'name.jpg',
  *      headers: {}
- *      ..... 
+ *      .....
  *   }
  *   fileTransfer.upload("<file path>", "<api endpoint>", options)
  *    .then((data) => {
@@ -148,10 +148,32 @@ export interface FileTransferError {
  *    })
  * }
  *
+ * // Cordova
+ * declare var cordova: any;
+ *
+ * download() {
+ *   const fileTransfer = new Transfer();
+ *   let url = 'http://www.example.com/file.pdf';
+ *   fileTransfer.download(url, cordova.file.dataDirectory + 'file.pdf').then((entry) => {
+ *     console.log('download complete: ' + entry.toURL());
+ *   }, (error) => {
+ *     // handle error
+ *   });
+ * }
+ *
  * ```
  *
+ * Note: You will not see your documents using a file explorer on your device. Use adb:
+ *
+ * ```
+ * adb shell
+ * run-as com.your.app
+ * cd files
+ * ls
+ * ```
  */
 @Plugin({
+  pluginName: 'FileTransfer',
   plugin: 'cordova-plugin-file-transfer',
   pluginRef: 'FileTransfer',
   repo: 'https://github.com/apache/cordova-plugin-file-transfer'
@@ -189,7 +211,7 @@ export class Transfer {
    * @param {string} url  URL of the server to receive the file, as encoded by encodeURI().
    * @param {FileUploadOptions} options  Optional parameters.
    * @param {boolean} trustAllHosts  Optional parameter, defaults to false. If set to true, it accepts all security certificates. This is useful since Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS.
-   * @return Returns a Promise that resolves to a FileUploadResult and rejects with FileTransferError.
+   * @returns {Promise<FileUploadResult>} Returns a Promise that resolves to a FileUploadResult and rejects with FileTransferError.
    */
   @CordovaInstance({
     successIndex: 2,
@@ -206,7 +228,7 @@ export class Transfer {
    * @param {stirng} target  Filesystem url representing the file on the device. For backwards compatibility, this can also be the full path of the file on the device.
    * @param {boolean} trustAllHosts  Optional parameter, defaults to false. If set to true, it accepts all security certificates. This is useful because Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS.
    * @param {object} Optional parameters, currently only supports headers (such as Authorization (Basic Authentication), etc).
-   * @return Returns a Promise that resolves to a FileEntry object.
+   * @returns {Promise<any>} Returns a Promise that resolves to a FileEntry object.
    */
   @CordovaInstance({
     successIndex: 2,

@@ -30,6 +30,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'AndroidFingerprintAuth',
   plugin: 'cordova-plugin-android-fingerprint-auth',
   pluginRef: 'FingerprintAuth',
   repo: 'https://github.com/mjwheatley/cordova-plugin-android-fingerprint-auth'
@@ -70,6 +71,7 @@ export class AndroidFingerprintAuth {
 
   /**
    * Check if service is available
+   * @returns {Promise<any>} Returns a Promise that resolves if fingerprint auth is available on the device
    */
   @Cordova()
   static isAvailable(): Promise<{isAvailable: boolean}> {return; }

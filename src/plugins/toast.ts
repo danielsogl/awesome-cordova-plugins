@@ -52,8 +52,11 @@ export interface ToastOptions {
  *   }
  * );
  * ```
+ * @interfaces
+ * ToastOptions
  */
 @Plugin({
+  pluginName: 'Toast',
   plugin: 'cordova-plugin-x-toast',
   pluginRef: 'plugins.toast',
   repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin',
@@ -77,15 +80,8 @@ export class Toast {
   ): Promise<any> { return; }
 
   /**
-   * Hides any visible toasts
-   * @return {Promise}
-   */
-  @Cordova()
-  static hide(): Promise<any> { return; }
-
-  /**
    * Manually hide any currently visible toast.
-   * @return {Promise} Returns a Promise that resolves on success.
+   * @returns {Promise<any>} Returns a Promise that resolves on success.
    */
   @Cordova()
   static hide(): Promise<any> { return; }
@@ -106,6 +102,7 @@ export class Toast {
 
   /**
    * Shorthand for `show(message, 'short', 'top')`.
+   * @param message {string}
    * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
   @Cordova()
@@ -113,14 +110,15 @@ export class Toast {
 
   /**
    * Shorthand for `show(message, 'short', 'center')`.
+   * @param message {string}
    * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
   @Cordova()
   static showShortCenter(message: string): Promise<any> { return; }
 
-
   /**
    * Shorthand for `show(message, 'short', 'bottom')`.
+   * @param message {string}
    * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
   @Cordova()
@@ -129,6 +127,7 @@ export class Toast {
 
   /**
    * Shorthand for `show(message, 'long', 'top')`.
+   * @param message {string}
    * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
   @Cordova()
@@ -137,6 +136,7 @@ export class Toast {
 
   /**
    * Shorthand for `show(message, 'long', 'center')`.
+   * @param message {string}
    * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
   @Cordova()
@@ -145,6 +145,7 @@ export class Toast {
 
   /**
    * Shorthand for `show(message, 'long', 'bottom')`.
+   * @param message {string}
    * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
   @Cordova()

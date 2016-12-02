@@ -59,7 +59,7 @@ export interface DatePickerOptions {
   /**
    * Shows or hide dates earlier then selected date.
    */
-  allowOldDate?: boolean;
+  allowOldDates?: boolean;
   /**
    * Shows or hide dates after selected date.
    */
@@ -107,10 +107,6 @@ export interface DatePickerOptions {
  * @description
  * The DatePicker plugin allows the user to fetch date or time using native dialogs.
  *
- * Platforms supported: iOS, Android, Windows
- *
- * Requires Cordova plugin: `cordova-plugin-datepicker`. For more info, please see the [DatePicker plugin docs](https://github.com/VitaliiBlagodir/cordova-plugin-datepicker).
- *
  * @usage
  * ```typescript
  * import { DatePicker } from 'ionic-native';
@@ -128,9 +124,11 @@ export interface DatePickerOptions {
  * DatePickerOptions
  */
 @Plugin({
+  pluginName: 'DatePicker',
   plugin: 'cordova-plugin-datepicker',
   pluginRef: 'datePicker',
-  repo: 'https://github.com/VitaliiBlagodir/cordova-plugin-datepicker'
+  repo: 'https://github.com/VitaliiBlagodir/cordova-plugin-datepicker',
+  platforms: ['Android', 'iOS', 'Windows']
 })
 export class DatePicker {
 

@@ -24,6 +24,7 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
+  pluginName: 'BatteryStatus',
   plugin: 'cordova-plugin-battery-status',
   repo: 'https://github.com/apache/cordova-plugin-battery-status',
   platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser']
@@ -32,7 +33,7 @@ export class BatteryStatus {
 
   /**
    * Watch the change in battery level
-   * @returns {Observable} Returns an observable that pushes a status object
+   * @returns {Observable<StatusObject>} Returns an observable that pushes a status object
    */
   @Cordova({
     eventObservable: true,

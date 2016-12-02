@@ -19,6 +19,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'StreamingMedia',
   plugin: 'cordova-plugin-streaming-media',
   pluginRef: 'plugins.streamingMedia',
   repo: 'https://github.com/nchutchind/cordova-plugin-streaming-media',

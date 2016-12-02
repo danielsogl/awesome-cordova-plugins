@@ -23,9 +23,9 @@ declare var window;
  * ```
  *
  * @advanced
- * 
+ *
  * Accepted orientation values:
- * 
+ *
  * | Value                         | Description                                                                  |
  * |-------------------------------|------------------------------------------------------------------------------|
  * | portrait-primary              | The orientation is in the primary portrait mode.                             |
@@ -34,9 +34,10 @@ declare var window;
  * | landscape-secondary           | The orientation is in the secondary landscape mode.                          |
  * | portrait                      | The orientation is either portrait-primary or portrait-secondary (sensor).   |
  * | landscape                     | The orientation is either landscape-primary or landscape-secondary (sensor). |
- * 
+ *
  */
 @Plugin({
+  pluginName: 'ScreenOrientation',
   plugin: 'cordova-plugin-screen-orientation',
   pluginRef: 'window.screen',
   repo: 'https://github.com/apache/cordova-plugin-screen-orientation',
@@ -47,7 +48,7 @@ export class ScreenOrientation {
   /**
    * Lock the orientation to the passed value.
    * See below for accepted values
-   * @param {orientation} The orientation which should be locked. Accepted values see table below.
+   * @param orientation {string} The orientation which should be locked. Accepted values see table below.
    */
   @Cordova({ sync: true })
   static lockOrientation(orientation: string): void { }

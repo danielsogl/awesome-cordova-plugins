@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
+  pluginName: 'Shake',
   plugin: 'cordova-plugin-shake',
   pluginRef: 'shake',
   repo: 'https://github.com/leecrossley/cordova-plugin-shake'
@@ -23,6 +24,7 @@ export class Shake {
   /**
    * Watch for shake gesture
    * @param sensitivity {number} Optional sensitivity parameter. Defaults to 40
+   * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,

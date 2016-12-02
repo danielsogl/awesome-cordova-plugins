@@ -10,6 +10,10 @@ import { Plugin, Cordova } from './plugin';
  * NativeAudio.preloadComplex('uniqueId2', 'path/to/file2.mp3', 1, 1, 0).then(onSuccess, onError);
  *
  * NativeAudio.play('uniqueId1').then(onSuccess, onError);
+ *
+ * // can optionally pass a callback to be called when the file is done playing
+ * NativeAudio.play('uniqueId1', () => console.log('uniqueId1 is done playing'));
+ *
  * NativeAudio.loop('uniqueId2').then(onSuccess, onError);
  *
  * NativeAudio.setVolumeForComplexAsset('uniqueId2', 0.6).then(onSuccess,onError);
@@ -21,6 +25,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'NativeAudio',
   plugin: 'cordova-plugin-nativeaudio',
   pluginRef: 'plugins.NativeAudio',
   repo: 'https://github.com/floatinghotpot/cordova-plugin-nativeaudio'
@@ -50,17 +55,19 @@ export class NativeAudio {
   /**
    * Plays an audio asset
    * @param id {string} unique ID for the audio file
-   * @param completeCallback {Function} callback to be invoked when audio is done playing
+   * @param completeCallback {Function} optional. Callback to be invoked when audio is done playing
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  static play(id: string, completeCallback: Function): Promise<any> {return; }
+  static play(id: string, completeCallback?: Function): Promise<any> {return; }
 
   /**
    * Stops playing an audio
    * @param id {string} unique ID for the audio file
+   * @returns {Promise<any>}
    */
   @Cordova()
   static stop(id: string): Promise<any> {return; }
@@ -76,6 +83,7 @@ export class NativeAudio {
   /**
    * Unloads an audio file from memory
    * @param id {string} unique ID for the audio file
+   * @returns {Promise<any>}
    */
   @Cordova()
   static unload(id: string): Promise<any> {return; }
@@ -84,6 +92,7 @@ export class NativeAudio {
    * Changes the volume for preloaded complex assets.
    * @param id {string} unique ID for the audio file
    * @param volume {number} the volume of the audio asset (0.1 to 1.0)
+   * @returns {Promise<any>}
    */
   @Cordova()
   static setVolumeForComplexAsset(id: string, volume: number): Promise<any> {return; }

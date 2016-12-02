@@ -5,9 +5,24 @@ import { Observable } from 'rxjs/Observable';
  * @name AdMob
  * @description Plugin for Google Ads, including AdMob / DFP (doubleclick for publisher) and mediations to other Ad networks.
  * @usage
+ * ```typescript
+ * import { AdMob } from 'ionic-native';
+ * 
+ * ionViewDidLoad() {
+ *   AdMob.onBannerDismiss()
+ *     .subscribe(() => { console.log('User returned from interstitial'); });
+ * }
+ * 
+ * public onClick() {
+ *   AdMob.prepareInterstitial('YOUR_ADID')
+ *     .then(() => { AdMob.showInterstitial(); });
+ * }
+ *
+ * ```
  * Please refer the the plugin's original repository for detailed usage.
  */
 @Plugin({
+  pluginName: 'AdMob',
   plugin: 'cordova-plugin-admobpro',
   pluginRef: 'AdMob',
   repo: 'https://github.com/floatinghotpot/cordova-admob-pro',
@@ -20,6 +35,7 @@ export class AdMob {
   /**
    *
    * @param adIdOrOptions
+   * @returns {Promise<any>} Returns a Promise that resolves when the banner is created
    */
   @Cordova()
   static createBanner(adIdOrOptions: any): Promise<any> { return; }
@@ -62,6 +78,7 @@ export class AdMob {
   /**
    *
    * @param adIdOrOptions
+   * @returns {Promise<any>} Returns a Promise that resolves when interstitial is prepared
    */
   @Cordova()
   static prepareInterstitial(adIdOrOptions: any): Promise<any> { return; }
@@ -76,6 +93,7 @@ export class AdMob {
 
   /**
    *
+   * @returns {Promise<any>} Returns a Promise that resolves when the interstitial is ready
    */
   @Cordova()
   static isInterstitialReady(): Promise<boolean> { return; }
@@ -83,6 +101,7 @@ export class AdMob {
   /**
    * Prepare a reward video ad
    * @param adIdOrOptions
+   * @returns {Promise<any>} Returns a Promise that resolves when the ad is prepared
    */
   @Cordova()
   static prepareRewardVideoAd(adIdOrOptions: any): Promise<any> { return; }
@@ -98,6 +117,7 @@ export class AdMob {
   /**
    * Sets the values for configuration and targeting
    * @param options Returns a promise that resolves if the options are set successfully
+   * @returns {Promise<any>} Returns a Promise that resolves when the options have been set
    */
   @Cordova()
   static setOptions(options: any): Promise<any> { return; }

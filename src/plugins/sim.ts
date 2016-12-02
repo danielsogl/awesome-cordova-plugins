@@ -20,6 +20,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'Sim',
   plugin: 'cordova-plugin-sim',
   pluginRef: 'plugins.sim',
   repo: 'https://github.com/pbakondy/cordova-plugin-sim',
@@ -28,7 +29,7 @@ import { Cordova, Plugin } from './plugin';
 export class Sim {
   /**
    * Returns info from the SIM card.
-   * @returns {Promise}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static getSimInfo(): Promise<any> { return; }

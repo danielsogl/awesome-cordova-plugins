@@ -25,6 +25,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
+  pluginName: 'CardIO',
   plugin: 'https://github.com/card-io/card.io-Cordova-Plugin',
   pluginRef: 'CardIO',
   repo: 'https://github.com/card-io/card.io-Cordova-Plugin',
@@ -35,6 +36,7 @@ export class CardIO {
    * Check whether card scanning is currently available. (May vary by
    * device, OS version, network connectivity, etc.)
    *
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   static canScan(): Promise<boolean> { return; }
@@ -42,12 +44,14 @@ export class CardIO {
   /**
    * Scan a credit card with card.io.
    * @param {CardIOOptions} options Options for configuring the plugin
+   * @returns {Promise<any>}
    */
   @Cordova()
-  static scan(options?: CardIOOptions): Promise<any> { return; }
+  static scan(options?: CardIOOptions): Promise<CardIOResponse> { return; }
 
   /**
    * Retrieve the version of the card.io library. Useful when contacting support.
+   * @returns {Promise<string>}
    */
   @Cordova()
   static version(): Promise<string> { return; }
@@ -56,7 +60,7 @@ export class CardIO {
 
 export interface CardIOOptions {
   requireExpiry?: boolean;
-  requireCCV?: boolean;
+  requireCVV?: boolean;
   requirePostalCode?: boolean;
   supressManual?: boolean;
   restrictPostalCodeToNumericOnly?: boolean;
@@ -71,4 +75,15 @@ export interface CardIOOptions {
   hideCardIOLogo?: boolean;
   useCardIOLogo?: boolean;
   supressScan?: boolean;
+}
+
+export interface CardIOResponse {
+  cardType: string;
+  redactedCardNumber: string;
+  cardNumber: string;
+  expiryMonth: number;
+  expiryYear: number;
+  cvv: string;
+  postalCode: string;
+  cardholderName: string;
 }

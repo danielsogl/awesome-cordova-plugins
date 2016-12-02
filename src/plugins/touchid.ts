@@ -45,6 +45,7 @@ import { Cordova, Plugin } from './plugin';
  *  -  `-8` - TouchID is locked out from too many tries
  */
 @Plugin({
+  pluginName: 'TouchID',
   plugin: 'cordova-plugin-touch-id',
   pluginRef: 'plugins.touchid',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-touch-id',
@@ -55,7 +56,7 @@ export class TouchID {
   /**
    * Checks Whether TouchID is available or not.
    *
-   * @return {Promise} Returns a Promise that resolves if yes, rejects if no.
+   * @returns {Promise<any>} Returns a Promise that resolves if yes, rejects if no.
    */
   @Cordova()
   static isAvailable(): Promise<any> { return; }
@@ -64,7 +65,7 @@ export class TouchID {
    * Show TouchID dialog and wait for a fingerprint scan. If user taps 'Enter Password' button, brings up standard system passcode screen.
    *
    * @param {string} message  The message to display
-   * @return {Promise} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
+   * @returns {Promise<any>} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
   static verifyFingerprint(message: string): Promise<any> { return; }
@@ -73,7 +74,7 @@ export class TouchID {
    * Show TouchID dialog and wait for a fingerprint scan. If user taps 'Enter Password' button, rejects with code '-3' (see above).
    *
    * @param {string} message  The message to display
-   * @return {Promise} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
+   * @returns {Promise<any>} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
   static verifyFingerprintWithCustomPasswordFallback(message: string): Promise<any> { return; }
@@ -83,7 +84,7 @@ export class TouchID {
    *
    * @param {string} message  The message to display
    * @param {string} enterPasswordLabel  Custom text for the 'Enter Password' button
-   * @return {Promise} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
+   * @returns {Promise<any>} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
   static verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string): Promise<any> { return; }

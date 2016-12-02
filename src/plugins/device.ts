@@ -41,6 +41,7 @@ export interface Device {
  * ```
  */
 @Plugin({
+  pluginName: 'Device',
   plugin: 'cordova-plugin-device',
   pluginRef: 'device',
   repo: 'https://github.com/apache/cordova-plugin-device'
@@ -50,9 +51,9 @@ export class Device {
   /**
    * Returns the whole device object.
    *
-   * @returns {Object} The device object.
+   * @returns {Device} The device object.
    */
   @CordovaProperty
-  static get device() { return window.device; }
+  static get device(): Device { return window.device; }
 
 }
