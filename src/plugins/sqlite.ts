@@ -1,4 +1,4 @@
-import {Cordova, CordovaInstance, Plugin, pluginWarn} from './plugin';
+import {Cordova, CordovaInstance, Plugin, pluginWarn, InstanceProperty} from './plugin';
 
 
 declare var sqlitePlugin;
@@ -53,9 +53,8 @@ declare var sqlitePlugin;
 export class SQLite {
 
   private _objectInstance: any;
-  get databaseFeatures(): any {
-    return this._objectInstance.databaseFeatures;
-  }
+
+  @InstanceProperty databaseFeatures: any;
 
   constructor() { }
 
