@@ -46,6 +46,7 @@ import { FileChooser } from './plugins/file-chooser';
 import { FileOpener } from './plugins/file-opener';
 import { FilePath } from './plugins/filepath';
 import { Transfer } from './plugins/filetransfer';
+import { FingerprintAIO } from './plugins/fingerprint-aio';
 import { Flashlight } from './plugins/flashlight';
 import { Geofence } from './plugins/geofence';
 import { Geolocation } from './plugins/geolocation';
@@ -155,6 +156,7 @@ export * from './plugins/file-chooser';
 export * from './plugins/file-opener';
 export * from './plugins/filetransfer';
 export * from './plugins/filepath';
+export * from './plugins/fingerprint-aio';
 export * from './plugins/flashlight';
 export * from './plugins/geofence';
 export * from './plugins/geolocation';
@@ -265,6 +267,7 @@ window['IonicNative'] = {
   FileChooser,
   FileOpener,
   FilePath,
+  FingerprintAIO,
   Flashlight,
   Geofence,
   Geolocation,
