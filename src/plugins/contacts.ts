@@ -260,10 +260,12 @@ export class ContactFindOptions implements IContactFindOptions {
  * ```
  * @interfaces
  * IContactProperties
- * @classes
- * ContactFindOptions
- * ContactOrganization
- * ContactAddress
+ * IContactError
+ * IContactName
+ * IContactField
+ * IContactAddress
+ * IContactOrganization
+ * IContactFindOptions
  */
 @Plugin({
   pluginName: 'Contacts',

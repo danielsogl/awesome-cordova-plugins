@@ -30,7 +30,7 @@ docType: "<$ doc.docType $>"
       <@ if param.optional @><div><em>(optional)</em></div><@ endif @>
     </td>
     <td>
-      <$ param.returnType | escape $>
+      <code><$ param.returnType | escape $></code>
     </td>
     <td>
       <$ param.description | marked $>
@@ -308,13 +308,13 @@ docType: "<$ doc.docType $>"
 <!-- other classes -->
 <@ for tag in doc.tags.tags -@>
 <@ if tag.tagName == 'classes' -@>
-<h2><a class="anchor" name="related-classes" href="#related-classes"></a>Related Classes</h2>
+<!--<h2><a class="anchor" name="related-classes" href="#related-classes"></a>Related Classes</h2>-->
 <@ set classes = tag.description.split('\n') @>
 <@ for item in classes -@>
 <@ if item.length > 1 @>
 <@ for export in doc.moduleDoc.exports -@>
 <@ if export.name == item @>
-<h3><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h3>
+<h2><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h2>
 <$ documentClass(export) $>
 <@ endif @>
 <@- endfor @>
@@ -327,11 +327,11 @@ docType: "<$ doc.docType $>"
 <!-- interfaces -->
 <@ for tag in doc.tags.tags -@>
 <@ if tag.tagName == 'interfaces' @>
-<h2><a class="anchor" name="interfaces" href="#interfaces"></a>Interfaces</h2>
+<!--<h2><a class="anchor" name="interfaces" href="#interfaces"></a>Interfaces</h2>-->
 <@ set interfaces = tag.description.split('\n') @>
 <@ for item in interfaces -@>
 <@ if item.length > 1 @>
-<h3><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h3>
+<h2><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h2>
 <$ interfaceTable(item) $>
 <@ endif @>
 <@- endfor @>

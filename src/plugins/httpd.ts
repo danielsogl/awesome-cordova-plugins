@@ -33,9 +33,8 @@ export class Httpd {
 
   /**
    * Starts a web server.
-   * @returns {Observable<string>} Returns an Observable. Subscribe to receive the URL for your web server (if succeeded). Unsubscribe to stop the server.
    * @param options {HttpdOptions}
-   * @returns {Observable<string>}
+   * @returns {Observable<string>} Returns an Observable. Subscribe to receive the URL for your web server (if succeeded). Unsubscribe to stop the server.
    */
   @Cordova({
     observable: true,
