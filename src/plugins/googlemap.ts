@@ -494,6 +494,8 @@ export interface GoogleMapsMarkerOptions {
   animation?: string;
   zIndex?: number;
   disableAutoPan?: boolean;
+  markerClick?: Function;
+  infoClick?: Function;
 }
 
 /**
