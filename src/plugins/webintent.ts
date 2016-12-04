@@ -26,14 +26,10 @@ declare var window;
 export class WebIntent {
 
   @CordovaProperty
-  static get ACTION_VIEW() {
-    return window.plugins.webintent.ACTION_VIEW;
-  }
+  static ACTION_VIEW;
 
   @CordovaProperty
-  static get EXTRA_TEXT() {
-    return window.plugins.webintent.EXTRA_TEXT;
-  }
+  static EXTRA_TEXT;
 
   /**
    * @param options {Object} { action: any, url: string, type?: string }

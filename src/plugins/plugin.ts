@@ -404,43 +404,51 @@ export function CordovaInstance(opts: any = {}) {
  *
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
-export function CordovaProperty(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  let originalMethod = descriptor.get;
-
-  descriptor.get = function(...args: any[]) {
+export function CordovaProperty(target: Function, key: string) {
+  let exists: Function = function(): boolean {
     if (!window.cordova) {
       cordovaWarn(this.name, null);
-      return {};
+      return false;
     }
-    let pluginObj: any = this;
-    let pluginInstance = getPlugin(pluginObj.pluginRef);
+    let pluginInstance = getPlugin(this.pluginRef);
     if (!pluginInstance) {
       pluginWarn(this, key);
-      return {};
+      return false;
     }
-    return originalMethod.apply(this, args);
+    return true;
   };
 
-  return descriptor;
+  Object.defineProperty(target, key, {
+    get: function() {
+      if (exists) {
+        return this.pluginRef[key];
+      } else {
+        return {};
+      }
+    },
+    set: function(value) {
+      if (exists) {
+        this.pluginRef[key] = value;
+      }
+    }
+  });
 }
 
 /**
  * @private
  * @param target
  * @param key
- * @param descriptor
  * @constructor
  */
-export function InstanceProperty(target: any, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  descriptor.get = function() {
-    return this._objectInstance[key];
-  };
-
-  descriptor.set = function(...args: any[]) {
-    this._objectInstance[key] = args[0];
-  };
-
-  return descriptor;
+export function InstanceProperty(target: any, key: string) {
+  Object.defineProperty(target, key, {
+    get: function(){
+      return this._objectInstance[key];
+    },
+    set: function(value){
+      this._objectInstance[key] = value;
+    }
+  });
 }
 
 /**
