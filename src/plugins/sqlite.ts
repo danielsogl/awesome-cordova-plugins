@@ -14,6 +14,20 @@ declare var sqlitePlugin;
  * ```typescript
  * import { SQLite } from 'ionic-native';
  *
+ * // OPTION A: Use static constructor
+ * SQLite.openDatabase({
+ *   name: 'data.db',
+ *   location: 'default'
+ * })
+ *   .then((db: SQLite) => {
+ *
+ *     db.executeSQL('create table danceMoves(name VARCHAR(32))').then(() => {}).catch(() => {});
+ *
+ *   })
+ *   .catch(error => console.error('Error openening database', error);
+ *
+ *
+ * // OPTION B: Create a new instance of SQLite
  * let db = new SQLite();
  * db.openDatabase({
  *   name: 'data.db',
@@ -45,32 +59,18 @@ export class SQLite {
 
   constructor() { }
 
+  static openDatabase(config: any): Promise<SQLite> {
+    let db = new SQLite();
+    return db.openDatabase(config);
+  }
+
+
   /**
    * Open or create a SQLite database file.
    *
    * See the plugin docs for an explanation of all options: https://github.com/litehelpers/Cordova-sqlite-storage#opening-a-database
    *
    * @param config the config for opening the database.
-   * @returns {Promise<any>}
-   * @usage
-   *
-   * ```typescript
-   * import { SQLite } from 'ionic-native';
-   *
-   * let db = new SQLite();
-   * db.openDatabase({
-   *   name: 'data.db',
-   *   location: 'default' // the location field is required
-   * }).then(() => {
-   *   db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {
-   *
-   *   }, (err) => {
-   *     console.error('Unable to execute sql', err);
-   *   })
-   * }, (err) => {
-   *   console.error('Unable to open database', err);
-   * });
-   * ```
    */
   openDatabase(config: any): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -132,18 +132,6 @@ export class SQLite {
   /**
    * Execute SQL on the opened database. Note, you must call `openDatabase` first, and
    * ensure it resolved and successfully opened the database.
-   *
-   * @usage
-   *
-   * ```typescript
-   * db.executeSql('SELECT FROM puppies WHERE type = ?', ['cavalier']).then((resultSet) => {
-   *   // Access the items through resultSet.rows
-   *   // resultSet.rows.item(i)
-   * }, (err) => {})
-   * ```
-   * @param statement {string}
-   * @param params {any}
-   * @returns {Promise<any>}
    */
   @CordovaInstance()
   executeSql(statement: string, params: any): Promise<any> { return; }
