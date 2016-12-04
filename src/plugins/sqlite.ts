@@ -59,8 +59,7 @@ export class SQLite {
   constructor() { }
 
   static openDatabase(config: any): Promise<SQLite> {
-    let db = new SQLite();
-    return db.openDatabase(config);
+    return new SQLite().openDatabase(config);
   }
 
 
