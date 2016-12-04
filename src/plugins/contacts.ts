@@ -1,7 +1,9 @@
-import { Cordova, CordovaInstance, InstanceProperty, Plugin } from './plugin';
+import { CordovaInstance, InstanceProperty, Plugin, getPromise } from './plugin';
 
 declare var window: any,
   navigator: any;
+
+export type ContactFieldType = 'addresses' | 'birthday' | 'categories' | 'country' | 'department' | 'displayName' | 'emails' | 'familyName' | 'formatted' | 'givenName' | 'honorificPrefix' | 'honorificSuffix' | 'id' | 'ims' | 'locality' | 'middleName' | 'name' | 'nickname' | 'note' | 'organizations' | 'phoneNumbers' | 'photos' | 'postalCode' | 'region' | 'streetAddress' | 'title' | 'urls';
 
 /**
  * @private
@@ -73,8 +75,14 @@ export class Contact implements IContactProperties {
   @CordovaInstance()
   remove(): Promise<any> { return; }
 
-  @CordovaInstance()
-  save(): Promise<any> { return; }
+  save(): Promise<any> {
+    return getPromise((resolve, reject) => {
+      this._objectInstance.save((contact) => {
+        this._objectInstance = contact;
+        resolve(this);
+      }, reject);
+    });
+  }
 }
 
 /**
@@ -120,49 +128,37 @@ export interface IContactName {
  * @private
  */
 export class ContactName implements IContactName {
-  private _objectInstance: any;
-
-  constructor(formatted?: string, familyName?: string, givenName?: string, middleName?: string, honorificPrefix?: string, honorificSuffix?: string) {
-    this._objectInstance = new window.ContactName(formatted, familyName, givenName, middleName, honorificPrefix, honorificSuffix);
-  }
-
-  @InstanceProperty formatted: string;
-  @InstanceProperty familyName: string;
-  @InstanceProperty givenName: string;
-  @InstanceProperty middleName: string;
-  @InstanceProperty honorificPrefix: string;
-  @InstanceProperty honorificSuffix: string;
+  constructor(public formatted?: string,
+              public familyName?: string,
+              public givenName?: string,
+              public middleName?: string,
+              public honorificPrefix?: string,
+              public honorificSuffix?: string) {}
 }
 
 export interface IContactField {
   /** A string that indicates what type of field this is, home for example. */
-  type: string;
+    type?: string;
   /** The value of the field, such as a phone number or email address. */
-  value: string;
+  value?: string;
   /** Set to true if this ContactField contains the user's preferred value. */
-  pref: boolean;
+  pref?: boolean;
 }
 
 /**
  * @private
  */
 export class ContactField implements IContactField {
-  private _objectInstance: any;
-
-  constructor(type?: string, value?: string, pref?: boolean) {
-    this._objectInstance = new window.ContactField(type, value, pref);
-  }
-
-  @InstanceProperty type: string;
-  @InstanceProperty value: string;
-  @InstanceProperty pref: boolean;
+  constructor(public type?: string,
+              public value?: string,
+              public pref?: boolean) {}
 }
 
 export interface IContactAddress {
   /** Set to true if this ContactAddress contains the user's preferred value. */
   pref?: boolean;
   /** A string indicating what type of field this is, home for example. */
-  type?: string;
+    type?: string;
   /** The full address formatted for display. */
   formatted?: string;
   /** The full street address. */
@@ -181,42 +177,21 @@ export interface IContactAddress {
  * @private
  */
 export class ContactAddress implements IContactAddress {
-  private _objectInstance: any;
-
-  constructor(pref?: boolean,
-    type?: string,
-    formatted?: string,
-    streetAddress?: string,
-    locality?: string,
-    region?: string,
-    postalCode?: string,
-    country?: string) {
-    this._objectInstance = new window.ContactAddress(pref, type, formatted, streetAddress, locality, region, postalCode, country);
-  }
-
-  /** Set to true if this ContactAddress contains the user's preferred value. */
-  @InstanceProperty pref: boolean;
-  /** A string indicating what type of field this is, home for example. */
-  @InstanceProperty type: string;
-  /** The full address formatted for display. */
-  @InstanceProperty formatted: string;
-  /** The full street address. */
-  @InstanceProperty streetAddress: string;
-  /** The city or locality. */
-  @InstanceProperty locality: string;
-  /** The state or region. */
-  @InstanceProperty region: string;
-  /** The zip code or postal code. */
-  @InstanceProperty postalCode: string;
-  /** The country name. */
-  @InstanceProperty country: string;
+  constructor(public pref?: boolean,
+              public type?: string,
+              public formatted?: string,
+              public streetAddress?: string,
+              public locality?: string,
+              public region?: string,
+              public postalCode?: string,
+              public country?: string) {}
 }
 
 export interface IContactOrganization {
   /** Set to true if this ContactOrganization contains the user's preferred value. */
   pref?: boolean;
   /** A string that indicates what type of field this is, home for example. */
-  type?: string;
+    type?: string;
   /** The name of the organization. */
   name?: string;
   /** The department the contract works for. */
@@ -229,20 +204,13 @@ export interface IContactOrganization {
  * @private
  */
 export class ContactOrganization implements IContactOrganization {
-  private _objectInstance: any;
-  constructor() {
-    this._objectInstance = new window.ContactOrganization();
-  }
-  /** Set to true if this ContactOrganization contains the user's preferred value. */
-  @InstanceProperty pref: boolean;
-  /** A string that indicates what type of field this is, home for example. */
-  @InstanceProperty type: string;
-  /** The name of the organization. */
-  @InstanceProperty name: string;
-  /** The department the contract works for. */
-  @InstanceProperty department: string;
-  /** The contact's title at the organization. */
-  @InstanceProperty title: string;
+  constructor(
+    public type?: string,
+    public name?: string,
+    public department?: string,
+    public title?: string,
+    public pref?: boolean
+  ) {}
 }
 
 /** Search options to filter navigator.contacts.  */
@@ -263,31 +231,10 @@ export interface IContactFindOptions {
  * @private
  */
 export class ContactFindOptions implements IContactFindOptions {
-  private _objectInstance: any;
-
-  constructor() {
-    this._objectInstance = new window.ContactFindOptions();
-  }
-
-  /**
-   * The search string used to find navigator.contacts. (Default: "")
-   */
-  @InstanceProperty filter: string;
-
-  /**
-   * Determines if the find operation returns multiple navigator.contacts. (Default: false)
-   */
-  @InstanceProperty multiple: boolean;
-
-  /**
-   * Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields.
-   */
-  @InstanceProperty desiredFields: any;
-
-  /**
-   * (Android only): Filters the search to only return contacts with a phone number informed.
-   */
-  @InstanceProperty hasPhoneNumber: boolean;
+  constructor(public filter?: string,
+              public multiple?: boolean,
+              public desiredFields?: string[],
+              public hasPhoneNumber?: boolean) {}
 }
 
 /**
@@ -302,11 +249,14 @@ export class ContactFindOptions implements IContactFindOptions {
  *
  *
  * let contact = new Contact();
- * contact.displayName = 'Mr. Ionitron';
+ *
+ * contact.name = new ContactName(null, 'Smith', 'John');
+ * contact.phoneNumbers = [new ContactField('mobile', '6471234567')];
  * contact.save().then(
  *   () => console.log('Contact saved!', contact),
  *   (error: any) => console.error('Error saving contact.', error)
  * );
+ *
  * ```
  * @interfaces
  * IContactProperties
@@ -332,29 +282,46 @@ export class Contacts {
 
   /**
    * Search for contacts in the Contacts list.
-   * @param fields {string[]}  Contact fields to be used as a search qualifier.
+   * @param fields {ContactFieldType[]}  Contact fields to be used as a search qualifier.
    *  A zero-length contactFields parameter is invalid and results in ContactError.INVALID_ARGUMENT_ERROR.
    *  A contactFields value of "*" searches all contact fields.
    *
-   * @param options {Object} the options to query with:
+   * @param options {IContactFindOptions} the options to query with:
    *   filter: The search string used to find navigator.contacts. (string) (Default: "")
    *   multiple: Determines if the find operation returns multiple navigator.contacts. (Boolean) (Default: false)
    *   desiredFields: Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields. (DOMString[]) [Optional]
    *   hasPhoneNumber(Android only): Filters the search to only return contacts with a phone number informed. (Boolean) (Default: false)
    *
-   * @returns {Promise<any>} Returns a Promise that resolves with the search results (an array of Contact objects)
+   * @returns {Promise<Contact[]>} Returns a Promise that resolves with the search results (an array of Contact objects)
    */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 2
-  })
-  static find(fields: string[], options?: any): Promise<any> { return; }
+  static find(fields: ContactFieldType[], options?: IContactFindOptions): Promise<Contact[]> {
+    return getPromise((resolve, reject) => {
+      navigator.contacts.find(fields, (contacts) => {
+        resolve(contacts.map(processContact));
+      }, reject, options);
+    });
+  }
 
   /**
    * Select a single Contact.
-   * @returns {Promise<any>} Returns a Promise that resolves with the selected Contact
+   * @returns {Promise<Contact>} Returns a Promise that resolves with the selected Contact
    */
-  @Cordova()
-  static pickContact(): Promise<any> { return; }
+  static pickContact(): Promise<Contact> {
+    return getPromise((resolve, reject) => {
+      navigator.contacts.pickContact((contact) => resolve(processContact(contact)), reject);
+    });
+  }
 
+}
+
+/**
+ * @private
+ */
+function processContact(contact) {
+  let newContact = new Contact();
+  for (let prop in contact) {
+    if (typeof contact[prop] === 'function') continue;
+    newContact[prop] = contact[prop];
+  }
+  return newContact;
 }
