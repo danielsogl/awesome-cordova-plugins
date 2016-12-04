@@ -481,20 +481,79 @@ export interface VisibleRegion {
  * @private
  */
 export interface GoogleMapsMarkerOptions {
+  /**
+   * The icon image url or properties. Also you can specify HTML Color values. Alternatively you can specify the image as Base64
+   */
   icon?: any;
+
+  /**
+   * The content of the infoWindow.
+   */
   title?: string;
+
+  /**
+   * The snippet of the infoWindow.
+   */
   snippet?: string;
+
+  /**
+   * The position of the marker.
+   */
   position?: GoogleMapsLatLng;
+
+  /**
+   * 	Specify the anchor of the InfoWindow
+   */
   infoWindowAnchor?: number[];
+
+  /**
+   * Set true if you want to enable to drag the marker. (Default: false) Important! Drag starts after long pressed on the marker.
+   */
   draggable?: boolean;
+
+  /**
+   * 	Set true if you want to use a flat marker. (Default: false)
+   */
   flat?: boolean;
+
+  /**
+   * 	Set rotation angle. (Default: 0)
+   */
   rotation?: number;
+
+  /**
+   * Set false if you want to hide. (Default: true)
+   */
   visible?: boolean;
+
+  /**
+   * Specify the options for title.
+   */
   styles?: any;
+
+  /**
+   * Which animation to play when marker is added to a map.
+   */
   animation?: string;
+
+  /**
+   * 	iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
+   */
   zIndex?: number;
+
+  /**
+   * Set to true to disable auto panning when the marker is clicked.
+   */
   disableAutoPan?: boolean;
+
+  /**
+   * Function to be invoked when the user clicks on the marker
+   */
   markerClick?: Function;
+
+  /**
+   * Function to be invoked when the user clicks on the info box
+   */
   infoClick?: Function;
 }
 
