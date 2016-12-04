@@ -493,6 +493,7 @@ export interface GoogleMapsMarkerOptions {
   styles?: any;
   animation?: string;
   zIndex?: number;
+  disableAutoPan?: boolean;
 }
 
 /**
