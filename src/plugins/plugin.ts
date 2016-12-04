@@ -127,7 +127,10 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
   return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
 }
 
-function getPromise(cb) {
+/**
+ * @private
+ */
+export function getPromise(cb) {
 
   const tryNativePromise = () => {
     if (window.Promise) {
