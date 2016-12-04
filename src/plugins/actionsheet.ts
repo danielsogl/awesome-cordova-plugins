@@ -12,7 +12,6 @@ import { Cordova, Plugin } from './plugin';
  * ```typescript
  * import { ActionSheet } from 'ionic-native';
  *
- *
  * let buttonLabels = ['Share via Facebook', 'Share via Twitter'];
  * ActionSheet.show({
  *   'title': 'What do you want with this image?',
@@ -23,22 +22,8 @@ import { Cordova, Plugin } from './plugin';
  *   console.log('Button pressed: ' + buttonIndex);
  * });
  * ```
- *
- * @advanced
- * ActionSheet options
- *
- * | Option                        | Type      | Description                                  |
- * |-------------------------------|-----------|----------------------------------------------|
- * | title                         |`string`   | The title for the actionsheet                |
- * | buttonLabels                  |`string[]` | the labels for the buttons. Uses the index x |
- * | androidTheme                  |`number`   | Theme to be used on Android                  |
- * | androidEnableCancelButton     |`boolean`  | Enable a cancel on Android                   |
- * | winphoneEnableCancelButton    |`boolean`  | Enable a cancel on Windows Phone             |
- * | addCancelButtonWithLabel      |`string`   | Add a cancel button with text                |
- * | addDestructiveButtonWithLabel |`string`   | Add a destructive button with text           |
- * | position                      |`number[]` | On an iPad, set the X,Y position             |
- *
- *
+ * @interfaces
+ * ActionSheetOptions
  */
 @Plugin({
   pluginName: 'ActionSheet',
@@ -51,21 +36,12 @@ export class ActionSheet {
 
   /**
    * Show a native ActionSheet component. See below for options.
-   * @param {options} Options See table below
+   * @param options {ActionSheetOptions} Options See table below
    * @returns {Promise<any>} Returns a Promise that resolves with the index of the
    *   button pressed (1 based, so 1, 2, 3, etc.)
    */
   @Cordova()
-  static show(options?: {
-    buttonLabels: string[],
-    title?: string,
-    androidTheme?: number,
-    androidEnableCancelButton?: boolean,
-    winphoneEnableCancelButton?: boolean,
-    addCancelButtonWithLabel?: string,
-    addDestructiveButtonWithLabel?: string,
-    position?: number[]
-  }): Promise<any> { return; }
+  static show(options?: ActionSheetOptions): Promise<any> { return; }
 
 
   /**
@@ -75,4 +51,39 @@ export class ActionSheet {
   @Cordova()
   static hide(options?: any): Promise<any> { return; }
 
+}
+
+export interface ActionSheetOptions {
+  /**
+   * The labels for the buttons. Uses the index x
+   */
+  buttonLabels: string[];
+  /**
+   * The title for the actionsheet
+   */
+  title?: string;
+  /**
+   * Theme to be used on Android
+   */
+  androidTheme?: number;
+  /**
+   * Enable a cancel on Android
+   */
+  androidEnableCancelButton?: boolean;
+  /**
+   * Enable a cancel on Windows Phone
+   */
+  winphoneEnableCancelButton?: boolean;
+  /**
+   * Add a cancel button with text
+   */
+  addCancelButtonWithLabel?: string;
+  /**
+   * Add a destructive button with text
+   */
+  addDestructiveButtonWithLabel?: string;
+  /**
+   * On an iPad, set the X,Y position
+   */
+  position?: number[];
 }
