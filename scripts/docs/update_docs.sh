@@ -31,13 +31,13 @@ function run {
     git config --global user.email "hi@ionicframework.com"
     git config --global user.name "Ionitron"
     git add -A
-    git commit -am "Automated build of native docs driftyco/$CIRCLE_PROJECT_REPONAME@$CIRCLE_SHA1"
+    git commit -am "Automated build of native docs driftyco/$CIRCLE_PROJECT_REPONAME@$CIRCLE_SHA1" > /dev/null
     # in case a different commit was pushed to ionic-site during doc/demo gen,
     # try to rebase around it before pushing
     git fetch
     git rebase
 
-    git push origin master
+    git push origin master > /dev/null
 
     echo "-- Updated docs for $VERSION_NAME succesfully!"
   fi
