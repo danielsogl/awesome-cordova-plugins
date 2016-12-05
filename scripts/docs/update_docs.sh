@@ -24,7 +24,7 @@ function run {
   cd $SITE_DIR
 
   # if no changes, don't commit
-  if git diff-index --quiet HEAD --
+  if ! git diff-index --quiet HEAD --
   then
     echo "-- No changes detected for the following commit, docs not updated."
     echo "https://github.com/driftyco/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1"
@@ -38,7 +38,7 @@ function run {
     git fetch
     git rebase
 
-    git push origin master
+    git push origin master || :
 
     echo "-- Updated docs for $VERSION_NAME succesfully!"
   fi
