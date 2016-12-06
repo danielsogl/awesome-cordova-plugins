@@ -2,7 +2,7 @@ import { Cordova, Plugin } from './plugin';
 
 declare var cordova: any;
 
-export interface Email {
+export interface EmailComposerOptions {
 
   app?: string;
 
@@ -62,6 +62,8 @@ export interface Email {
  * EmailComposer.open(email);
  *
  * ```
+ * @interfaces
+ * EmailComposerOptions
  */
 @Plugin({
   pluginName: 'EmailComposer',
@@ -112,7 +114,7 @@ export class EmailComposer {
   /**
    * Displays the email composer pre-filled with data.
    *
-   * @param email {Email} Email
+   * @param options {EmailComposerOptions} Email
    * @param scope {any?} An optional scope for the promise
    * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
    */
@@ -120,6 +122,6 @@ export class EmailComposer {
     successIndex: 1,
     errorIndex: 3
   })
-  static open(email: Email, scope?: any): Promise<any> { return; }
+  static open(options: EmailComposerOptions, scope?: any): Promise<any> { return; }
 
 }
