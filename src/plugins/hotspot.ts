@@ -1,5 +1,107 @@
 import { Cordova, Plugin } from './plugin';
 
+export interface HotspotConnectionInfo {
+
+  /**
+   *      The service set identifier (SSID) of the current 802.11 network.
+   */
+  SSID: string;
+
+  /**
+   *      The basic service set identifier (BSSID) of the current access point.
+   */
+  BSSID: string;
+
+  /**
+   *      The current link speed in Mbps
+   */
+  linkSpeed: string;
+
+  /**
+   *      The IP Address
+   */
+  IPAddress: string;
+
+  /**
+   *      Each configured network has a unique small integer ID, used to identify the network when performing operations on the supplicant.
+   */
+  networkID: string;
+
+}
+
+export interface HotspotNetwork {
+
+  /**
+   *      Human readable network name
+   */
+  SSID: string;
+
+  /**
+   *      MAC Address of the access point
+   */
+  BSSID: string;
+
+  /**
+   *      The primary 20 MHz frequency (in MHz) of the channel over which the client is communicating with the access point.
+   */
+  frequency: number;
+
+  /**
+   *      The detected signal level in dBm, also known as the RSSI.
+   */
+  level: number;
+
+  /**
+   *      Timestamp in microseconds (since boot) when this result was last seen.
+   */
+  timestamp: number;
+
+  /**
+   *      Describes the authentication, key management, and encryption schemes supported by the access point.
+   */
+  capabilities: string;
+
+}
+export interface HotspotNetworkConfig {
+
+  /**
+   *   Device IP Address
+   */
+  deviceIPAddress: string;
+
+  /**
+   *   Device MAC Address
+   */
+  deviceMacAddress: string;
+
+  /**
+   *   Gateway IP Address
+   */
+  gatewayIPAddress: string;
+
+  /**
+   *   Gateway MAC Address
+   */
+  gatewayMacAddress: string;
+
+}
+
+export interface HotspotDevice {
+
+  /**
+   *   ip
+   *      Hotspot IP Address
+   */
+  ip: string;
+
+  /**
+   *   mac
+   *      Hotspot MAC Address
+   */
+  mac: string;
+
+}
+
 /**
  * @name Hotspot
  * @description
@@ -13,6 +115,11 @@ import { Cordova, Plugin } from './plugin';
  * });
  *
  * ```
+ * @interfaces
+ * HotspotConnectionInfo
+ * HotspotNetwork
+ * HotspotNetworkConfig
+ * HotspotDevice
  */
 @Plugin({
   pluginName: 'Hotspot',
@@ -210,10 +317,10 @@ export class Hotspot {
   static getNetConfig(): Promise<HotspotNetworkConfig> { return; }
 
   /**
-   * @returns {Promise<ConnectionInfo>}
+   * @returns {Promise<HotspotConnectionInfo>}
    */
   @Cordova()
-  static getConnectionInfo(): Promise<ConnectionInfo> { return; }
+  static getConnectionInfo(): Promise<HotspotConnectionInfo> { return; }
 
   /**
    * @returns {Promise<string>}
@@ -259,95 +366,4 @@ export class Hotspot {
   @Cordova()
   static isRooted(): Promise<boolean> { return; }
 
-}
-
-export interface ConnectionInfo {
-  /**
-   *   SSID
-   *      The service set identifier (SSID) of the current 802.11 network.
-   */
-  SSID: string;
-  /**
-   *   BSSID
-   *      The basic service set identifier (BSSID) of the current access point.
-   */
-  BSSID: string;
-  /**
-   *   linkSpeed
-   *      The current link speed in Mbps
-   */
-  linkSpeed: string;
-  /**
-   *   IPAddress
-   *      The IP Address
-   */
-  IPAddress: string;
-  /**
-   *   networkID
-   *      Each configured network has a unique small integer ID, used to identify the network when performing operations on the supplicant.
-   */
-  networkID: string;
-}
-
-export interface HotspotNetwork {
-  /**
-   *       SSID
-   *      Human readable network name
-   */
-  SSID: string;
-  /**
-   *       BSSID
-   *      MAC Address of the access point
-   */
-  BSSID: string;
-  /**
-   * frequency
-   *      The primary 20 MHz frequency (in MHz) of the channel over which the client is communicating with the access point.
-   */
-  frequency: number;
-  /**
-   *       level
-   *      The detected signal level in dBm, also known as the RSSI.
-   */
-  level: number;
-  /**
-   *       timestamp
-   *      Timestamp in microseconds (since boot) when this result was last seen.
-   */
-  timestamp: number;
-  /**
-   *       capabilities
-   *      Describes the authentication, key management, and encryption schemes supported by the access point.
-   */
-  capabilities: string;
-}
-export interface HotspotNetworkConfig {
-  /**
-   *   deviceIPAddress - Device IP Address
-   */
-  deviceIPAddress: string;
-  /**
-   *   deviceMacAddress - Device MAC Address
-   */
-  deviceMacAddress: string;
-  /**
-   *   gatewayIPAddress - Gateway IP Address
-   */
-  gatewayIPAddress: string;
-  /**
-   *   gatewayMacAddress - Gateway MAC Address
-   */
-  gatewayMacAddress: string;
-}
-export interface HotspotDevice {
-  /**
-   *   ip
-   *      Hotspot IP Address
-   */
-  ip: string;
-  /**
-   *   mac
-   *      Hotspot MAC Address
-   */
-  mac: string;
 }
