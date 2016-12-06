@@ -3,6 +3,38 @@ import { Cordova, CordovaFunctionOverride, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
 /**
+ * Configurations items that can be updated.
+ */
+export interface BackgroundModeConfiguration {
+
+  /**
+   * Title of the background task
+   */
+  title?: String;
+
+  /**
+   * The text that scrolls itself on statusbar
+   */
+  ticker?: String;
+
+  /**
+   * Description of background task
+   */
+  text?: String;
+
+  /**
+   * if true plugin will not display a notification. Default is false.
+   */
+  silent?: boolean;
+
+  /**
+   * By default the app will come to foreground when taping on the notification. If false, plugin wont come to foreground when tapped.
+   */
+  resume?: boolean;
+
+}
+
+/**
 * @name Background Mode
 * @description
 * Cordova plugin to prevent the app from going to sleep while in background.
@@ -13,19 +45,9 @@ import { Observable } from 'rxjs/Observable';
 *
 * BackgroundMode.enable();
 * ```
-*
-* @advanced
-*
-* Configuration options
-*
-* | Property | Type      | Description                                                                  |
-* |----------|-----------|------------------------------------------------------------------------------|
-* | title    | `string`  | Title of the background task. Optional                                       |
-* | ticker   | `string`  | The text that scrolls itself on the statusbar. Optional                      |
-* | text     | `string`  | Description of the background task. Optional                                 |
-* | silent   | `boolean` | If the plugin will display a notification or not. Default is false. Optional |
-* | resume   | `boolean` | Bring the app into the foreground if the notification is tapped. Optional    |
-*
+ *
+ * @interfaces
+ * BackgroundModeConfiguration
 */
 @Plugin({
   pluginName: 'BackgroundMode',
@@ -74,7 +96,7 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static setDefaults(options?: Configure): Promise<any> { return; }
+  static setDefaults(options?: BackgroundModeConfiguration): Promise<any> { return; }
 
   /**
   * Modify the displayed information.
@@ -84,7 +106,7 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static configure(options?: Configure): Promise<any> { return; }
+  static configure(options?: BackgroundModeConfiguration): Promise<any> { return; }
 
   /**
   * Called when background mode is activated.
@@ -106,37 +128,5 @@ export class BackgroundMode {
   */
   @CordovaFunctionOverride()
   static onfailure(): Observable<any> { return; };
-
-}
-
-/**
-* Configurations items that can be updated.
-*/
-export interface Configure {
-
-  /**
-  *Title of the background task
-  */
-  title?: String;
-
-  /**
-  *The text that scrolls itself on statusbar
-  */
-  ticker?: String;
-
-  /**
-  *Description of background task
-  */
-  text?: String;
-
-  /**
-  *Boolean, if true plugin will not display a notification. Default is false.
-  */
-  silent?: boolean;
-
-  /**
-  *Boolean. By default the app will come to foreground when taping on the notification. If false, plugin wont come to foreground when tapped.
-  */
-  resume?: boolean;
 
 }
