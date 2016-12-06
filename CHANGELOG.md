@@ -1,3 +1,19 @@
+<a name="2.2.11"></a>
+## [2.2.11](https://github.com/driftyco/ionic-native/compare/v2.2.10...v2.2.11) (2016-12-06)
+
+
+### Bug Fixes
+
+* **cordova-property:** fixes static properties of classes ([7ae6e10](https://github.com/driftyco/ionic-native/commit/7ae6e10))
+* **device:** fixes device plugin ([d918844](https://github.com/driftyco/ionic-native/commit/d918844))
+
+
+### BREAKING CHANGES
+
+* device: device property no longer exists
+
+
+
 <a name="2.2.10"></a>
 ## [2.2.10](https://github.com/driftyco/ionic-native/compare/v2.2.9...v2.2.10) (2016-12-04)
 
