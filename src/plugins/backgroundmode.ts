@@ -35,6 +35,7 @@ import { Observable } from 'rxjs/Observable';
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class BackgroundMode {
+
   /**
   * Enable the background mode.
   * Once called, prevents the app from being paused while in background.
@@ -112,6 +113,7 @@ export class BackgroundMode {
 * Configurations items that can be updated.
 */
 export interface Configure {
+
   /**
   *Title of the background task
   */

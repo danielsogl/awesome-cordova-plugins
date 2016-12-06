@@ -1,6 +1,5 @@
 import { Cordova, Plugin } from './plugin';
 
-
 declare var window;
 
 /**
@@ -20,6 +19,7 @@ declare var window;
   platforms: ['Android', 'iOS', 'Browser']
 })
 export class GoogleAnalytics {
+
   /**
    * In your 'deviceready' handler, set up your Analytics tracker.
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/
@@ -187,4 +187,5 @@ export class GoogleAnalytics {
    */
   @Cordova()
   static enableUncaughtExceptionReporting(shouldEnable: boolean): Promise<any> { return; }
+
 }

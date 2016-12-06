@@ -36,6 +36,7 @@ import { Cordova, Plugin } from './plugin';
   repo: 'https://github.com/mjwheatley/cordova-plugin-android-fingerprint-auth'
 })
 export class AndroidFingerprintAuth {
+
   /**
    * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.
    * @param params {any}

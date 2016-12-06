@@ -1,6 +1,5 @@
 import { Cordova, Plugin } from './plugin';
 
-
 /**
  * @name Action Sheet
  * @description
@@ -54,36 +53,45 @@ export class ActionSheet {
 }
 
 export interface ActionSheetOptions {
+
   /**
    * The labels for the buttons. Uses the index x
    */
   buttonLabels: string[];
+
   /**
    * The title for the actionsheet
    */
   title?: string;
+
   /**
    * Theme to be used on Android
    */
   androidTheme?: number;
+
   /**
    * Enable a cancel on Android
    */
   androidEnableCancelButton?: boolean;
+
   /**
    * Enable a cancel on Windows Phone
    */
   winphoneEnableCancelButton?: boolean;
+
   /**
    * Add a cancel button with text
    */
   addCancelButtonWithLabel?: string;
+
   /**
    * Add a destructive button with text
    */
   addDestructiveButtonWithLabel?: string;
+
   /**
    * On an iPad, set the X,Y position
    */
   position?: number[];
+
 }

@@ -1,4 +1,5 @@
 import { Plugin, Cordova } from './plugin';
+
 /**
  * @name FileChooser
  * @description
@@ -23,10 +24,12 @@ import { Plugin, Cordova } from './plugin';
   platforms: ['Android']
 })
 export class FileChooser {
+
   /**
    * Open a file
    * @returns {Promise<string>}
    */
   @Cordova()
   static open(): Promise<string> { return; }
+
 }

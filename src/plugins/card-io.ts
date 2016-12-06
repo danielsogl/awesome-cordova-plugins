@@ -1,6 +1,5 @@
 import { Cordova, Plugin } from './plugin';
 
-
 /**
  * @name CardIO
  * @description
@@ -32,6 +31,7 @@ import { Cordova, Plugin } from './plugin';
   platforms: ['iOS', 'Android']
 })
 export class CardIO {
+
   /**
    * Check whether card scanning is currently available. (May vary by
    * device, OS version, network connectivity, etc.)
@@ -59,31 +59,57 @@ export class CardIO {
 }
 
 export interface CardIOOptions {
+
   requireExpiry?: boolean;
+
   requireCVV?: boolean;
+
   requirePostalCode?: boolean;
+
   supressManual?: boolean;
+
   restrictPostalCodeToNumericOnly?: boolean;
+
   keepApplicationTheme?: boolean;
+
   requireCardholderName?: boolean;
+
   scanInstructions?: string;
+
   noCamera?: boolean;
+
   scanExpiry?: boolean;
+
   languageOrLocale?: string;
+
   guideColor?: string;
+
   supressConfirmation?: boolean;
+
   hideCardIOLogo?: boolean;
+
   useCardIOLogo?: boolean;
+
   supressScan?: boolean;
+
 }
 
 export interface CardIOResponse {
+
   cardType: string;
+
   redactedCardNumber: string;
+
   cardNumber: string;
+
   expiryMonth: number;
+
   expiryYear: number;
+
   cvv: string;
+
   postalCode: string;
+
   cardholderName: string;
+
 }

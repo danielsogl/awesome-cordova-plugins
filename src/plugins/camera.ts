@@ -117,6 +117,7 @@ export interface CameraPopoverOptions {
   platforms: ['Android', 'BlackBerry', 'Browser', 'Firefox', 'FireOS', 'iOS', 'Windows', 'Windows Phone 8', 'Ubuntu']
 })
 export class Camera {
+
   /**
    * @private
    * @enum {number}

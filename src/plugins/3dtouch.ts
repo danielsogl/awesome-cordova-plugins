@@ -1,7 +1,6 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 declare var window: any;
 
 /**
@@ -137,16 +136,27 @@ export class ThreeDeeTouch {
 }
 
 export interface ThreeDeeTouchQuickAction {
+
   type?: string;
+
   title: string;
+
   subtitle?: string;
+
   iconType?: string;
+
   iconTemplate?: string;
+
 }
 
 export interface ThreeDeeTouchForceTouch {
+
   force: number;
+
   timestamp: number;
+
   x: number;
+
   y: number;
+
 }

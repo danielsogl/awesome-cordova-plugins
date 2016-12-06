@@ -64,6 +64,7 @@ export class BatteryStatus {
 }
 
 export interface StatusObject {
+
   /**
    * The battery charge percentage
    */
@@ -73,4 +74,5 @@ export interface StatusObject {
    * A boolean that indicates whether the device is plugged in
    */
   isPlugged: boolean;
+
 }

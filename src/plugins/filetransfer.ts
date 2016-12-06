@@ -1,6 +1,5 @@
 import { CordovaInstance, Plugin } from './plugin';
 
-
 declare var FileTransfer;
 
 export interface FileUploadOptions {
@@ -46,6 +45,7 @@ export interface FileUploadOptions {
    * Content-Type is present, multipart form data will NOT be used.
    */
   headers?: { [s: string]: any; };
+
 }
 
 export interface FileUploadResult {
@@ -69,6 +69,7 @@ export interface FileUploadResult {
    * The HTTP response headers by the server.
    */
   headers: { [s: string]: any; };
+
 }
 
 export interface FileTransferError {
@@ -103,6 +104,7 @@ export interface FileTransferError {
    * Either e.getMessage or e.toString.
    */
   exception: string;
+
 }
 
 /**

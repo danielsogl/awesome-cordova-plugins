@@ -167,6 +167,7 @@ import { Observable } from 'rxjs/Observable';
   platforms: ['iOS', 'Android']
 })
 export class BLE {
+
   /**
    * Scan and discover BLE peripherals for the specified amount of time.
    *
@@ -421,4 +422,5 @@ export class BLE {
    */
   @Cordova()
   static enable(): Promise<any> { return; }
+
 }

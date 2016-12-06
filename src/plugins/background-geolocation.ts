@@ -498,4 +498,5 @@ export class BackgroundGeolocation {
    */
   @Cordova()
   static getLogEntries(limit: number): Promise<any> { return; }
+
 }

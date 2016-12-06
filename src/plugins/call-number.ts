@@ -23,6 +23,7 @@ import { Plugin, Cordova } from './plugin';
   platforms: ['iOS', 'Android']
 })
 export class CallNumber {
+
   /**
    * Calls a phone number
    * @param numberToCall {string} The phone number to call as a string
@@ -35,4 +36,5 @@ export class CallNumber {
   static callNumber(numberToCall: string, bypassAppChooser: boolean): Promise<any> {
     return;
   }
+
 }

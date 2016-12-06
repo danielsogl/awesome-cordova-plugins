@@ -7,12 +7,12 @@ import { Observable } from 'rxjs/Observable';
  * @usage
  * ```typescript
  * import { AdMob } from 'ionic-native';
- * 
+ *
  * ionViewDidLoad() {
  *   AdMob.onBannerDismiss()
  *     .subscribe(() => { console.log('User returned from interstitial'); });
  * }
- * 
+ *
  * public onClick() {
  *   AdMob.prepareInterstitial('YOUR_ADID')
  *     .then(() => { AdMob.showInterstitial(); });
@@ -29,8 +29,6 @@ import { Observable } from 'rxjs/Observable';
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class AdMob {
-
-  // Static Methods
 
   /**
    *
@@ -129,8 +127,6 @@ export class AdMob {
   @Cordova()
   static getAdSettings(): Promise<any> { return; }
 
-  // Events
-
   @Cordova({
     eventObservable: true,
     event: 'onBannerFailedToReceive'
@@ -161,13 +157,11 @@ export class AdMob {
   })
   static onBannerDismiss(): Observable<any> { return; }
 
-
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialFailedToReceive'
   })
   static onInterstitialFailedToReceive(): Observable<any> { return; }
-
 
   @Cordova({
     eventObservable: true,
@@ -182,13 +176,11 @@ export class AdMob {
   })
   static onInterstitialPresent(): Observable<any> { return; }
 
-
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialLeaveApp'
   })
   static onInterstitialLeaveApp(): Observable<any> { return; }
-
 
   @Cordova({
     eventObservable: true,

@@ -1,7 +1,6 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 export interface AccelerationData {
 
   /**

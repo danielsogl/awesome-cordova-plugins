@@ -12,6 +12,7 @@ export interface PromptCallback {
    * The text entered in the prompt dialog box. (String)
    */
   input1: string;
+
 }
 
 

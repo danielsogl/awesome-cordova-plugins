@@ -1,19 +1,28 @@
 import { Cordova, Plugin } from './plugin';
 
-
 /**
  * @private
  */
 export interface CalendarOptions {
+
   id?: string;
+
   firstReminderMinutes?: number;
+
   secondReminderMinutes?: number;
+
   recurrence?: string; // options are: 'daily', 'weekly', 'monthly', 'yearly'
+
   recurrenceInterval?: number; // only used when recurrence is set
+
   recurrenceEndDate?: Date;
+
   calendarName?: string;
+
   calendarId?: number;
+
   url?: string;
+
 }
 
 /**

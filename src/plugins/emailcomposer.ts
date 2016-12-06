@@ -1,7 +1,27 @@
 import { Cordova, Plugin } from './plugin';
 
-
 declare var cordova: any;
+
+export interface Email {
+
+  app?: string;
+
+  to?: string | Array<string>;
+
+  cc?: string | Array<string>;
+
+  bcc?: string | Array<string>;
+
+  attachments?: Array<any>;
+
+  subject?: string;
+
+  body?: string;
+
+  isHtml?: boolean;
+
+}
+
 
 /**
  * @name Email Composer
@@ -102,15 +122,4 @@ export class EmailComposer {
   })
   static open(email: Email, scope?: any): Promise<any> { return; }
 
-}
-
-export interface Email {
-  app?: string;
-  to?: string | Array<string>;
-  cc?: string | Array<string>;
-  bcc?: string | Array<string>;
-  attachments?: Array<any>;
-  subject?: string;
-  body?: string;
-  isHtml?: boolean;
 }

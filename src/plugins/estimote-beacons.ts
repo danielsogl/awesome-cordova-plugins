@@ -1,6 +1,20 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
+export interface EstimoteBeaconRegion {
+
+  state?: string;
+
+  major: number;
+
+  minor: number;
+
+  identifier?: string;
+
+  uuid: string;
+
+}
+
 /**
  * @name EstimoteBeacons
  *
@@ -40,6 +54,7 @@ export class EstimoteBeacons {
 
   /** Beacon colour */
   static BeaconColorBlueberryPie = 3;
+
   /**
    * Beacon colour.
    */
@@ -394,7 +409,6 @@ export class EstimoteBeacons {
   })
   static startSecureMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> { return; }
 
-
   /**
   * Stop monitoring secure beacons. Available on iOS.
   * This function has the same parameters/behaviour as
@@ -481,10 +495,3 @@ export class EstimoteBeacons {
 
 }
 
-export interface EstimoteBeaconRegion {
-  state?: string;
-  major: number;
-  minor: number;
-  identifier?: string;
-  uuid: string;
-}

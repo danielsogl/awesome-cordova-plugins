@@ -9,32 +9,46 @@ export type ContactFieldType = 'addresses' | 'birthday' | 'categories' | 'countr
  * @private
  */
 export interface IContactProperties {
+
   /** A globally unique identifier. */
   id?: string;
+
   /** The name of this Contact, suitable for display to end users. */
   displayName?: string;
+
   /** An object containing all components of a persons name. */
   name?: IContactName;
+
   /** A casual name by which to address the contact. */
   nickname?: string;
+
   /** An array of all the contact's phone numbers. */
   phoneNumbers?: IContactField[];
+
   /** An array of all the contact's email addresses. */
   emails?: IContactField[];
+
   /** An array of all the contact's addresses. */
   addresses?: IContactAddress[];
+
   /** An array of all the contact's IM addresses. */
   ims?: IContactField[];
+
   /** An array of all the contact's organizations. */
   organizations?: IContactOrganization[];
+
   /** The birthday of the contact. */
   birthday?: Date;
+
   /** A note about the contact. */
   note?: string;
+
   /** An array of the contact's photos. */
   photos?: IContactField[];
+
   /** An array of all the user-defined categories associated with the contact. */
   categories?: IContactField[];
+
   /** An array of web pages associated with the contact. */
   urls?: IContactField[];
 }
@@ -274,6 +288,7 @@ export class ContactFindOptions implements IContactFindOptions {
   repo: 'https://github.com/apache/cordova-plugin-contacts'
 })
 export class Contacts {
+
   /**
    * Create a single contact.
    * @returns {Contact} Returns a Contact object

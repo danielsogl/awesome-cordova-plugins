@@ -1,10 +1,6 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-// below are taken from
-// https://raw.githubusercontent.com/Microsoft/cordova-plugin-code-push/master/typings/codePush.d.ts
-// and adjusted to remove warnings and access control
-
 namespace Http {
   export const enum Verb {
     GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT, PATCH

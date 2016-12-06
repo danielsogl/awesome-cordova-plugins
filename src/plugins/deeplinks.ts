@@ -1,8 +1,8 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 export interface DeeplinkMatch {
+
   /**
    * The route info for the matched route
    */
@@ -19,6 +19,7 @@ export interface DeeplinkMatch {
    * the route was matched (for example, Facebook sometimes adds extra data)
    */
   $link: any;
+
 }
 
 /**

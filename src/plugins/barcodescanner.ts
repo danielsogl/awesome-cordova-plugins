@@ -37,6 +37,7 @@ export class BarcodeScanner {
     PHONE_TYPE: 'PHONE_TYPE',
     SMS_TYPE: 'SMS_TYPE'
   };
+
   /**
    * Open the barcode scanner.
    * @param options {Object} Optional options to pass to the scanner
