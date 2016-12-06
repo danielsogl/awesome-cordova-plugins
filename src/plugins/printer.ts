@@ -59,6 +59,8 @@ export interface PrintOptions {
  *
  * Printer.print(content, options).then(onSuccess, onError);
  * ```
+ * @interfaces
+ * PrintOptions
  */
 @Plugin({
   pluginName: 'Printer',

@@ -38,6 +38,9 @@ export interface SmsOptionsAndroid {
  * // Send a text message using default options
  * SMS.send('416123456', 'Hello world!');
  * ```
+ * @interfaces
+ * SmsOptions
+ * SmsOptionsAndroid
  */
 @Plugin({
   pluginName: 'SMS',

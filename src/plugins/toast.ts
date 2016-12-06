@@ -1,7 +1,6 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 export interface ToastOptions {
   /**
    * Message to display
@@ -35,6 +34,7 @@ export interface ToastOptions {
     verticalPadding?: number;
   };
 }
+
 /**
  * @name Toast
  * @description

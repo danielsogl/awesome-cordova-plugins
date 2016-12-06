@@ -1,5 +1,11 @@
 import { Cordova, Plugin } from './plugin';
 
+export interface SpinnerDialogIOSOptions {
+  overlayOpacity?: number;
+  textColorRed?: number;
+  textColorGreen?: number;
+  textColorBlue?: number;
+}
 
 /**
  * @name Spinner Dialog
@@ -13,6 +19,8 @@ import { Cordova, Plugin } from './plugin';
  *
  * SpinnerDialog.hide();
  * ```
+ * @interfaces
+ * SpinnerDialogIOSOptions
  */
 @Plugin({
   pluginName: 'SpinnerDialog',
@@ -43,11 +51,4 @@ export class SpinnerDialog {
   })
   static hide(): void {}
 
-}
-
-export interface SpinnerDialogIOSOptions {
-  overlayOpacity?: number;
-  textColorRed?: number;
-  textColorGreen?: number;
-  textColorBlue?: number;
 }
