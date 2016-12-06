@@ -58,6 +58,9 @@ export interface DeeplinkMatch {
  *
  * See the [Ionic 2 Deeplinks Demo](https://github.com/driftyco/ionic2-deeplinks-demo/blob/master/app/app.ts) for an example of how to
  * retrieve the `NavController` reference at runtime.
+ *
+ * @interfaces
+ * DeeplinkMatch
  */
 @Plugin({
   pluginName: 'Deeplinks',
