@@ -29,6 +29,8 @@ export interface InAppBrowserEvent extends Event {
  * browser.insertCSS(...);
  * browser.close();
  * ```
+ * @interfaces
+ * InAppBrowserEvent
  */
 @Plugin({
   pluginName: 'InAppBrowser',
@@ -93,9 +95,6 @@ export class InAppBrowser {
   @CordovaInstance()
   insertCss(css: {file?: string, code?: string}): Promise<any> {return; }
 
-
-
-
   /**
    * A method that allows you to listen to events happening in the browser.
    * @param {string} name of the event
@@ -107,4 +106,5 @@ export class InAppBrowser {
       return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
     });
   }
+
 }
