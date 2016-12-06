@@ -2,7 +2,7 @@ import {Cordova, Plugin} from './plugin';
 
 declare var window;
 
-export interface Location {
+export interface BackgroundGeolocationResponse {
 
   /**
    * ID of location as stored in DB (or null)
@@ -65,7 +65,7 @@ export interface Location {
   timestamp: number;
 }
 
-export interface Config {
+export interface BackgroundGeolocationConfig {
 
   /**
    * Desired accuracy in meters. Possible values [0, 10, 100, 1000]. The lower
@@ -268,8 +268,8 @@ export interface Config {
  *
  * ```
  * @interfaces
- * Location
- * Config
+ * BackgroundGeolocationResponse
+ * BackgroundGeolocationConfig
  */
 @Plugin({
   pluginName: 'BackgroundGeolocation',
@@ -341,7 +341,7 @@ export class BackgroundGeolocation {
   @Cordova({
     sync: true
   })
-  static configure(callback: Function, errorCallback: Function, options: Config): any { return; }
+  static configure(callback: Function, errorCallback: Function, options: BackgroundGeolocationConfig): any { return; }
 
   /**
    * Turn ON the background-geolocation system.
@@ -379,7 +379,7 @@ export class BackgroundGeolocation {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static setConfig(options: Config): Promise<any> { return; }
+  static setConfig(options: BackgroundGeolocationConfig): Promise<any> { return; }
 
   /**
    * Returns current stationaryLocation if available. null if not
@@ -387,7 +387,7 @@ export class BackgroundGeolocation {
    * @returns {Promise<Location>}
    */
   @Cordova()
-  static getStationaryLocation(): Promise<Location> { return; }
+  static getStationaryLocation(): Promise<BackgroundGeolocationResponse> { return; }
 
   /**
    * Add a stationary-region listener. Whenever the devices enters "stationary-mode",
