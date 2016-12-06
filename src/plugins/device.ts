@@ -1,32 +1,6 @@
 import { CordovaProperty, Plugin } from './plugin';
 
-
 declare var window: any;
-
-/**
- * @private
- */
-export interface IDevice {
-  /** Get the version of Cordova running on the device. */
-  cordova: string;
-  /**
-   * The device.model returns the name of the device's model or product. The value is set
-   * by the device manufacturer and may be different across versions of the same product.
-   */
-  model: string;
-  /** Get the device's operating system name. */
-  platform: string;
-  /** Get the device's Universally Unique Identifier (UUID). */
-  uuid: string;
-  /** Get the operating system version. */
-  version: string;
-  /** Get the device's manufacturer. */
-  manufacturer: string;
-  /** Whether the device is running on a simulator. */
-  isVirtual: boolean;
-  /** Get the device hardware serial number. */
-  serial: string;
-}
 
 /**
  * @name Device
@@ -38,7 +12,7 @@ export interface IDevice {
  * import { Device } from 'ionic-native';
  *
  *
- * console.log('Device UUID is: ' + Device.device.uuid);
+ * console.log('Device UUID is: ' + Device.uuid);
  * ```
  */
 @Plugin({
@@ -49,12 +23,39 @@ export interface IDevice {
 })
 export class Device {
 
+  /** Get the version of Cordova running on the device. */
+  @CordovaProperty
+  static cordova: string;
+
   /**
-   * Returns the whole device object.
-   *
-   * @returns {Device} The device object.
+   * The device.model returns the name of the device's model or product. The value is set
+   * by the device manufacturer and may be different across versions of the same product.
    */
   @CordovaProperty
-  static device: IDevice;
+  static model: string;
+
+  /** Get the device's operating system name. */
+  @CordovaProperty
+  static platform: string;
+
+  /** Get the device's Universally Unique Identifier (UUID). */
+  @CordovaProperty
+  static uuid: string;
+
+  /** Get the operating system version. */
+  @CordovaProperty
+  static version: string;
+
+  /** Get the device's manufacturer. */
+  @CordovaProperty
+  static manufacturer: string;
+
+  /** Whether the device is running on a simulator. */
+  @CordovaProperty
+  static isVirtual: boolean;
+
+  /** Get the device hardware serial number. */
+  @CordovaProperty
+  static serial: string;
 
 }
