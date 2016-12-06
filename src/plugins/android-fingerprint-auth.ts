@@ -20,7 +20,7 @@ export interface AndroidFingerprintAuthOptions {
   /**
    * Change the language. (en_US or es)
    */
-  locale?: string
+  locale?: string;
 
 }
 
