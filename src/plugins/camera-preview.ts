@@ -75,6 +75,9 @@ export interface CameraPreviewSize {
  *
  * ```
  *
+ * @interfaces
+ * CameraPreviewRect
+ * CameraPreviewSize
  */
 @Plugin({
   pluginName: 'CameraPreview',
