@@ -9,12 +9,12 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```typescript
- * import { AppAvailability } from 'ionic-native';
+ * import { AppAvailability, Device } from 'ionic-native';
  *
  *
  * let app;
  *
- * if (device.platform === 'iOS') {
+ * if (Device.platform === 'iOS') {
  *   app = 'twitter://';
  * } else if (device.platform === 'Android') {
  *   app = 'com.twitter.android';
