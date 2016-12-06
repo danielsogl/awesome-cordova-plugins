@@ -1,7 +1,7 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-export interface CompassHeading {
+export interface DeviceOrientationCompassHeading {
 
   /**
    * The heading in degrees from 0-359.99 at a single moment in time. (Number)
@@ -25,7 +25,7 @@ export interface CompassHeading {
 
 }
 
-export interface CompassOptions {
+export interface DeviceOrientationCompassOptions {
 
   /**
    * How often to retrieve the compass heading in milliseconds. (Number) (Default: 100)
@@ -64,6 +64,9 @@ export interface CompassOptions {
  * // Stop watching heading change
  * subscription.unsubscribe();
  * ```
+ * @interfaces
+ * DeviceOrientationCompassOptions
+ * DeviceOrientationCompassHeading
  */
 @Plugin({
   pluginName: 'DeviceOrientation',
@@ -75,23 +78,23 @@ export class DeviceOrientation {
 
   /**
    * Get the current compass heading.
-   * @returns {Promise<CompassHeading>}
+   * @returns {Promise<DeviceOrientationCompassHeading>}
    */
   @Cordova()
-  static getCurrentHeading(): Promise<CompassHeading> { return; }
+  static getCurrentHeading(): Promise<DeviceOrientationCompassHeading> { return; }
 
   /**
    * Get the device current heading at a regular interval
    *
    * Stop the watch by unsubscribing from the observable
-   * @param {CompassOptions} options Options for compass. Frequency and Filter. Optional
-   * @returns {Observable<CompassHeading>} Returns an observable that contains the compass heading
+   * @param {DeviceOrientationCompassOptions} options Options for compass. Frequency and Filter. Optional
+   * @returns {Observable<DeviceOrientationCompassHeading>} Returns an observable that contains the compass heading
    */
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchHeading(options?: CompassOptions): Observable<CompassHeading> { return; }
+  static watchHeading(options?: DeviceOrientationCompassOptions): Observable<DeviceOrientationCompassHeading> { return; }
 
 }
