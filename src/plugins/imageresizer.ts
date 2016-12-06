@@ -65,6 +65,8 @@ export interface ImageResizerOptions {
  *  () => { console.log('Error occured'); }
  * )
  * ```
+ * @interfaces
+ * ImageResizerOptions
  */
 @Plugin({
   pluginName: 'ImageResizer',
