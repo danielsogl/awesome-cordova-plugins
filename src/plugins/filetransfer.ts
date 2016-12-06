@@ -173,6 +173,10 @@ export interface FileTransferError {
  * cd files
  * ls
  * ```
+ * @interfaces
+ * FileUploadOptions
+ * FileUploadResult
+ * FileTransferError
  */
 @Plugin({
   pluginName: 'FileTransfer',
@@ -219,7 +223,7 @@ export class Transfer {
     successIndex: 2,
     errorIndex: 3
   })
-  upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult> {
+  upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult | FileTransferError> {
     return;
   }
 
