@@ -15,6 +15,8 @@ import { Observable } from 'rxjs/Observable';
  *
  * OneSignal.startInit('b2f7f966-d8cc-11e4-bed1-df8f05be55ba', '703322744261');
  *
+ * OneSignal.setLogLevel({logLevel: OneSignal.LogLevel.Info, visualLevel: OneSignal.LogLevel.Info});
+ * 
  * OneSignal.inFocusDisplaying(OneSignal.OSInFocusDisplayOption.InAppAlert);
  *
  * OneSignal.handleNotificationReceived().subscribe(() => {
@@ -47,6 +49,19 @@ export class OneSignal {
   };
 
   /**
+   * constants to use setLogLevel() into two properties of logLevel
+   */
+  static LogLevel = {
+    None: 0,
+    Fatal: 1,
+    Errors: 2,
+    Warnings: 3,
+    Info: 4,
+    Debug: 5,
+    Verbose: 6
+  };
+
+  /**
    * Start the initialization process. Once you are done configuring OneSignal, call the endInit function.
    *
    * @param {string} appId Your AppId from your OneSignal app
@@ -58,21 +73,21 @@ export class OneSignal {
 
   /**
    * Callback to run when a notification is received
-   * @return {Observable<any>}
+   * @return {Observable<OSNotificationOpenedResult>}
    */
   @Cordova({
     observable: true
   })
-  static handleNotificationReceived(): Observable<any> { return; }
+  static handleNotificationReceived(): Observable<OSNotificationOpenedResult> { return; }
 
   /**
    * Callback to run when a notification is opened
-   * @return {Observable<any>}
+   * @return {Observable<OSNotificationOpenedResult>}
    */
   @Cordova({
     observable: true
   })
-  static handleNotificationOpened(): Observable<any> { return; }
+  static handleNotificationOpened(): Observable<OSNotificationOpenedResult> { return; }
 
   /**
    *
@@ -292,4 +307,84 @@ export interface OneSignalNotification {
   ttl?: number;
   priority?: number;
   ios_category?: string;
+}
+
+/**
+ * The notification the user opened.
+ */
+export interface OSNotification {
+  isAppInFocus: boolean;
+  shown: boolean;
+  androidNotificationId: number;
+  payload: OSNotificationPayload;
+  displayType: DisplayType;
+  groupedNotifications: OSNotificationPayload[];
+}
+
+/**
+ * How the notification was displayed to the user. Part of OSNotification.
+ * See inFocusDisplaying for more information on how this is used.
+ */
+export enum DisplayType {
+  Notification,
+  InAppAlert,
+  None
+}
+
+/**
+ * List of action buttons on the notification. Part of OSNotificationPayload.
+ */
+export interface ActionButton {
+  id: string;
+  text: string;
+  icon: string;
+}
+
+/**
+ * If a background image was set, this object will be available. Part of OSNotificationPayload.
+ */
+export interface BackgroundImageLayout {
+  image: string;
+  titleTextColor: string;
+  bodyTextColor: string;
+}
+
+/**
+ * Contents and settings of the notification the user received.
+ */
+export interface OSNotificationPayload {
+  notificationId: string;
+  title: string;
+  body: string;
+  additionalData: Object;
+  smallIcon: string;
+  largeIcon: string;
+  bigPicture: string;
+  smallIconAccentColor: string;
+  launchUrl: string;
+  sound: string;
+  ledColor: string;
+  lockScreenVisibility: number;
+  groupKey: string;
+  groupMessage: string;
+  actionButtons: ActionButton[];
+  fromProjectNumber: string;
+  backgroundImageLayout: BackgroundImageLayout;
+  rawPayload: string;
+}
+
+/**
+ * he action the user took on the notification.
+ */
+export interface OSNotificationAction {
+  type: string;
+  actionID: string;
+}
+
+/**
+ * The information returned from a notification the user received.
+ */
+export interface OSNotificationOpenedResult {
+  notification: OSNotification;
+  action: OSNotificationAction;
 }
