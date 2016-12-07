@@ -97,7 +97,8 @@ export interface OneSignalNotification {
   pluginName: 'OneSignal',
   plugin: 'onesignal-cordova-plugin',
   pluginRef: 'plugins.OneSignal',
-  repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK'
+  repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK',
+  platforms: ['Android', 'iOS', 'Windows', 'FireOS']
 })
 export class OneSignal {
 
