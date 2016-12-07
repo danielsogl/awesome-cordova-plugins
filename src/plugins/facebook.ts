@@ -1,5 +1,27 @@
 import { Cordova, Plugin } from './plugin';
 
+export interface FacebookLoginResponse {
+
+  status: string;
+
+  authResponse: {
+
+    session_key: boolean;
+
+    accessToken: string;
+
+    expiresIn: number;
+
+    sig: string;
+
+    secret: string;
+
+    userID: string;
+
+  };
+
+}
+
 /**
  * @name Facebook
  * @description
@@ -248,16 +270,4 @@ export class Facebook {
     picture: string
   }): Promise<any> { return; }
 
-}
-
-export interface FacebookLoginResponse {
-  status: string;
-  authResponse: {
-    session_key: boolean;
-    accessToken: string;
-    expiresIn: number;
-    sig: string;
-    secret: string;
-    userID: string;
-  };
 }

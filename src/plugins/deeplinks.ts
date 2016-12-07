@@ -1,8 +1,8 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 export interface DeeplinkMatch {
+
   /**
    * The route info for the matched route
    */
@@ -19,6 +19,7 @@ export interface DeeplinkMatch {
    * the route was matched (for example, Facebook sometimes adds extra data)
    */
   $link: any;
+
 }
 
 /**
@@ -57,6 +58,9 @@ export interface DeeplinkMatch {
  *
  * See the [Ionic 2 Deeplinks Demo](https://github.com/driftyco/ionic2-deeplinks-demo/blob/master/app/app.ts) for an example of how to
  * retrieve the `NavController` reference at runtime.
+ *
+ * @interfaces
+ * DeeplinkMatch
  */
 @Plugin({
   pluginName: 'Deeplinks',

@@ -1,5 +1,15 @@
 import { Cordova, Plugin } from './plugin';
 
+export interface SafariViewControllerOptions {
+  url?: string;
+  hidden?: boolean;
+  toolbarColor?: string;
+  animated?: boolean;
+  showDefaultShareMenuItem?: boolean;
+  enterReaderModeIfAvailable?: boolean;
+  tintColor?: string;
+  transition?: string;
+}
 
 /**
  * @name SafariViewController
@@ -37,6 +47,8 @@ import { Cordova, Plugin } from './plugin';
  *     }
  *   );
  * ```
+ * @interfaces
+ * SafariViewControllerOptions
  */
 @Plugin({
   pluginName: 'SafariViewController',
@@ -90,15 +102,4 @@ export class SafariViewController {
   @Cordova()
   static mayLaunchUrl(url: string): Promise<any> { return; }
 
-}
-
-export interface SafariViewControllerOptions {
-  url?: string;
-  hidden?: boolean;
-  toolbarColor?: string;
-  animated?: boolean;
-  showDefaultShareMenuItem?: boolean;
-  enterReaderModeIfAvailable?: boolean;
-  tintColor?: string;
-  transition?: string;
 }

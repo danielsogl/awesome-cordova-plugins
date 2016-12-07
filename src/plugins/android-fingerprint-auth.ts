@@ -1,4 +1,29 @@
 import { Cordova, Plugin } from './plugin';
+
+export interface AndroidFingerprintAuthOptions {
+
+  /**
+   * Used as the alias for your key in the Android Key Store.
+   */
+  clientId: string;
+
+  /**
+   * Used to encrypt the token returned upon successful fingerprint authentication.
+   */
+  clientSecret: string;
+
+  /**
+   * Set to true to remove the "USE BACKUP" button
+   */
+  disableBackup?: boolean;
+
+  /**
+   * Change the language. (en_US or es)
+   */
+  locale?: string;
+
+}
+
 /**
  * @name Android Fingerprint Auth
  * @description
@@ -28,6 +53,8 @@ import { Cordova, Plugin } from './plugin';
  *   })
  *   .catch(error => console.error(error));
  * ```
+ * @interfaces
+ * AndroidFingerprintAuthOptions
  */
 @Plugin({
   pluginName: 'AndroidFingerprintAuth',
@@ -36,29 +63,14 @@ import { Cordova, Plugin } from './plugin';
   repo: 'https://github.com/mjwheatley/cordova-plugin-android-fingerprint-auth'
 })
 export class AndroidFingerprintAuth {
+
   /**
    * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.
-   * @param params {any}
+   * @param options {AndroidFingerprintAuthOptions} Options
+   * @returns {Promise<any>}
    */
   @Cordova()
-  static show(params: {
-    /**
-     * Used as the alias for your key in the Android Key Store.
-     */
-    clientId: string;
-    /**
-     * Used to encrypt the token returned upon successful fingerprint authentication.
-     */
-    clientSecret: string;
-    /**
-     * Set to true to remove the "USE BACKUP" button
-     */
-    disableBackup?: boolean;
-    /**
-     * Change the language. (en_US or es)
-     */
-    locale?: string
-  }): Promise<{
+  static show(options: AndroidFingerprintAuthOptions): Promise<{
     /**
      * Base64 encoded string
      */

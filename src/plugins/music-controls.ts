@@ -1,5 +1,18 @@
 import { Plugin, Cordova } from './plugin';
 import { Observable } from 'rxjs/Observable';
+
+export interface MusicControlsOptions {
+  track: string;
+  artist: string;
+  cover: string;
+  isPlaying: boolean;
+  dismissable: boolean;
+  hasPrev: boolean;
+  hasNext: boolean;
+  hasClose: boolean;
+  ticker: string;
+}
+
 /**
  * @name MusicControls
  * @description
@@ -71,6 +84,8 @@ import { Observable } from 'rxjs/Observable';
  *
  *
  * ```
+ * @interfaces
+ * MusicControlsOptions
  */
 @Plugin({
   pluginName: 'MusicControls',
@@ -79,6 +94,7 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/homerours/cordova-music-controls-plugin'
 })
 export class MusicControls {
+
   /**
    * Create the media controls
    * @param options {MusicControlsOptions}
@@ -115,15 +131,5 @@ export class MusicControls {
    */
   @Cordova({sync: true})
   static updateIsPlaying(isPlaying: boolean): void {}
-}
-export interface MusicControlsOptions {
-  track: string;
-  artist: string;
-  cover: string;
-  isPlaying: boolean;
-  dismissable: boolean;
-  hasPrev: boolean;
-  hasNext: boolean;
-  hasClose: boolean;
-  ticker: string;
+
 }

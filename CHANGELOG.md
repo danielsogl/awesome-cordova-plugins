@@ -1,3 +1,42 @@
+<a name="2.2.11"></a>
+## [2.2.11](https://github.com/driftyco/ionic-native/compare/v2.2.10...v2.2.11) (2016-12-06)
+
+
+### Bug Fixes
+
+* **cordova-property:** fixes static properties of classes ([7ae6e10](https://github.com/driftyco/ionic-native/commit/7ae6e10))
+* **device:** fixes device plugin ([d918844](https://github.com/driftyco/ionic-native/commit/d918844))
+
+
+### BREAKING CHANGES
+
+* device: device property no longer exists
+
+
+
+<a name="2.2.10"></a>
+## [2.2.10](https://github.com/driftyco/ionic-native/compare/v2.2.9...v2.2.10) (2016-12-04)
+
+
+### Bug Fixes
+
+* **contacts:** fix few bugs in Contacts ([#846](https://github.com/driftyco/ionic-native/issues/846)) ([b19f6d1](https://github.com/driftyco/ionic-native/commit/b19f6d1))
+* **sqlite:** add static constructor, and fix resolve type ([#697](https://github.com/driftyco/ionic-native/issues/697)) ([9082c5e](https://github.com/driftyco/ionic-native/commit/9082c5e))
+
+
+### Features
+
+* **actionsheet:** add ActionSheetOptions interface ([f211da7](https://github.com/driftyco/ionic-native/commit/f211da7))
+* **googlemap:** add disableAutoPan to GoogleMapsMarkerOptions ([cf75a53](https://github.com/driftyco/ionic-native/commit/cf75a53)), closes [#844](https://github.com/driftyco/ionic-native/issues/844)
+* **googlemaps:** add markerClick and infoClick to MarkerOptions ([6f7171d](https://github.com/driftyco/ionic-native/commit/6f7171d))
+
+
+
+<a name="2.2.9"></a>
+## [2.2.9](https://github.com/driftyco/ionic-native/compare/v2.2.8...v2.2.9) (2016-12-01)
+
+
+
 <a name="2.2.8"></a>
 ## [2.2.8](https://github.com/driftyco/ionic-native/compare/v2.2.7...v2.2.8) (2016-12-01)
 

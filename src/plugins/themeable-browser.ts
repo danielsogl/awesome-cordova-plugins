@@ -142,6 +142,9 @@ export interface ThemeableBrowserOptions {
  *
  * ```
  * We suggest that you refer to the plugin's repository for additional information on usage that may not be covered here.
+ * @interfaces
+ * ThemeableBrowserButton
+ * ThemeableBrowserOptions
  */
 @Plugin({
   pluginName: 'ThemeableBrowser',

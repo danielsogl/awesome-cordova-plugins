@@ -135,6 +135,12 @@ export interface VideoInfo {
  * .catch((error: any) => console.log('video transcode error', error));
  *
  * ```
+ * @interfaces
+ * TranscodeOptions
+ * TrimOptions
+ * CreateThumbnailOptions
+ * GetVideoInfoOptions
+ * VideoInfo
  */
 @Plugin({
   pluginName: 'VideoEditor',

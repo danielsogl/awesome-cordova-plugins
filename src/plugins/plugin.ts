@@ -127,7 +127,10 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
   return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
 }
 
-function getPromise(cb) {
+/**
+ * @private
+ */
+export function getPromise(cb) {
 
   const tryNativePromise = () => {
     if (window.Promise) {
@@ -404,43 +407,47 @@ export function CordovaInstance(opts: any = {}) {
  *
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
-export function CordovaProperty(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  let originalMethod = descriptor.get;
-
-  descriptor.get = function(...args: any[]) {
-    if (!window.cordova) {
-      cordovaWarn(this.name, null);
-      return {};
-    }
-    let pluginObj: any = this;
-    let pluginInstance = getPlugin(pluginObj.pluginRef);
+export function CordovaProperty(target: any, key: string) {
+  const exists = () => {
+    let pluginInstance = getPlugin(target.pluginRef);
     if (!pluginInstance) {
-      pluginWarn(this, key);
-      return {};
+      pluginWarn(target, key);
+      return false;
     }
-    return originalMethod.apply(this, args);
+    return true;
   };
 
-  return descriptor;
+  Object.defineProperty(target, key, {
+    get: () => {
+      if (exists()) {
+        return getPlugin(target.pluginRef)[key];
+      } else {
+        return {};
+      }
+    },
+    set: (value) => {
+      if (exists()) {
+        getPlugin(target.pluginRef)[key] = value;
+      }
+    }
+  });
 }
 
 /**
  * @private
  * @param target
  * @param key
- * @param descriptor
  * @constructor
  */
-export function InstanceProperty(target: any, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  descriptor.get = function() {
-    return this._objectInstance[key];
-  };
-
-  descriptor.set = function(...args: any[]) {
-    this._objectInstance[key] = args[0];
-  };
-
-  return descriptor;
+export function InstanceProperty(target: any, key: string) {
+  Object.defineProperty(target, key, {
+    get: function(){
+      return this._objectInstance[key];
+    },
+    set: function(value){
+      this._objectInstance[key] = value;
+    }
+  });
 }
 
 /**

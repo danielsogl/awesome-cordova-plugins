@@ -1,6 +1,5 @@
 import { Cordova, Plugin } from './plugin';
 
-
 export interface LaunchNavigatorOptions {
 
   /**
@@ -80,6 +79,8 @@ export interface LaunchNavigatorOptions {
  *     error => console.log('Error launching navigator', error)
  *   );
  * ```
+ * @interfaces
+ * LaunchNavigatorOptions
  */
 @Plugin({
   pluginName: 'LaunchNavigator',

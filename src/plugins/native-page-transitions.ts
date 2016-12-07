@@ -1,4 +1,20 @@
 import { Plugin, Cordova } from './plugin';
+
+export interface NativeTransitionOptions {
+  direction?: string;
+  duration?: number;
+  slowdownfactor?: number;
+  slidePixels?: number;
+  iosdelay?: number;
+  androiddelay?: number;
+  winphonedelay?: number;
+  fixedPixelsTop?: number;
+  fixedPixelsBottom?: number;
+  action?: string;
+  origin?: string;
+  href?: string;
+}
+
 /**
  * @name NativePageTransitions
  * @description
@@ -6,9 +22,9 @@ import { Plugin, Cordova } from './plugin';
  *
  * @usage
  * ```
- * import {NativePageTransitions, TransitionOptions} from 'ionic-native';
+ * import {NativePageTransitions, NativeTransitionOptions} from 'ionic-native';
  *
- * let options: TransitionOptions = {
+ * let options: NativeTransitionOptions = {
  *    direction: 'up',
  *    duration: 500,
  *    slowdownfactor: 3,
@@ -36,60 +52,46 @@ import { Plugin, Cordova } from './plugin';
 export class NativePageTransitions {
   /**
    * Perform a slide animation
-   * @param options {TransitionOptions} Options for the transition
+   * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
   @Cordova()
-  static slide(options: TransitionOptions): Promise<any> { return; }
+  static slide(options: NativeTransitionOptions): Promise<any> { return; }
 
   /**
    * Perform a flip animation
-   * @param options {TransitionOptions} Options for the transition
+   * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
   @Cordova()
-  static flip(options: TransitionOptions): Promise<any> { return; }
+  static flip(options: NativeTransitionOptions): Promise<any> { return; }
 
   /**
    * Perform a fade animation
-   * @param options {TransitionOptions} Options for the transition
+   * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS', 'Android']})
-  static fade(options: TransitionOptions): Promise<any> { return; }
+  static fade(options: NativeTransitionOptions): Promise<any> { return; }
 
 
   /**
    * Perform a slide animation
-   * @param options {TransitionOptions} Options for the transition
+   * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS', 'Android']})
-  static drawer(options: TransitionOptions): Promise<any> { return; }
+  static drawer(options: NativeTransitionOptions): Promise<any> { return; }
 
 
 
   /**
    * Perform a slide animation
-   * @param options {TransitionOptions} Options for the transition
+   * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS']})
-  static curl(options: TransitionOptions): Promise<any> { return; }
+  static curl(options: NativeTransitionOptions): Promise<any> { return; }
 
 }
 
-export interface TransitionOptions {
-  direction?: string;
-  duration?: number;
-  slowdownfactor?: number;
-  slidePixels?: number;
-  iosdelay?: number;
-  androiddelay?: number;
-  winphonedelay?: number;
-  fixedPixelsTop?: number;
-  fixedPixelsBottom?: number;
-  action?: string;
-  origin?: string;
-  href?: string;
-}

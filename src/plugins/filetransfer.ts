@@ -1,6 +1,5 @@
 import { CordovaInstance, Plugin } from './plugin';
 
-
 declare var FileTransfer;
 
 export interface FileUploadOptions {
@@ -46,6 +45,7 @@ export interface FileUploadOptions {
    * Content-Type is present, multipart form data will NOT be used.
    */
   headers?: { [s: string]: any; };
+
 }
 
 export interface FileUploadResult {
@@ -69,6 +69,7 @@ export interface FileUploadResult {
    * The HTTP response headers by the server.
    */
   headers: { [s: string]: any; };
+
 }
 
 export interface FileTransferError {
@@ -103,6 +104,7 @@ export interface FileTransferError {
    * Either e.getMessage or e.toString.
    */
   exception: string;
+
 }
 
 /**
@@ -171,6 +173,10 @@ export interface FileTransferError {
  * cd files
  * ls
  * ```
+ * @interfaces
+ * FileUploadOptions
+ * FileUploadResult
+ * FileTransferError
  */
 @Plugin({
   pluginName: 'FileTransfer',
@@ -217,7 +223,7 @@ export class Transfer {
     successIndex: 2,
     errorIndex: 3
   })
-  upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult> {
+  upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult | FileTransferError> {
     return;
   }
 

@@ -1,5 +1,8 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
+
+declare var window: any;
+
 /**
  * @name Geofence
  * @description Monitors circular geofences around latitude/longitude coordinates, and sends a notification to the user when the boundary of a geofence is crossed. Notifications can be sent when the user enters and/or exits a geofence.
@@ -71,8 +74,6 @@ import { Observable } from 'rxjs/Observable';
  * Try running `ionic platform rm <platform>` then run `ionic platform add <platform>` to recreate the
  * platform directories.
  */
-declare var window: any;
-
 @Plugin({
   pluginName: 'Geofence',
   plugin: 'cordova-plugin-geofence',

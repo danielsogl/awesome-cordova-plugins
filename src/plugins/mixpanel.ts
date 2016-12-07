@@ -16,6 +16,8 @@ declare var mixpanel: any;
  *   .catch(onError);
  *
  * ```
+ * @classes
+ * MixpanelPeople
  */
 @Plugin({
   pluginName: 'Mixpanel',

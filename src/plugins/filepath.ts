@@ -26,6 +26,7 @@ declare var window: any;
   platforms: ['Android']
 })
 export class FilePath {
+
   /**
    * Resolve native path for given content URL/path.
    * @param {String} path  Content URL/path.
@@ -33,4 +34,5 @@ export class FilePath {
    */
   @Cordova()
   static resolveNativePath(path: string): Promise<string> {return; }
+
 }

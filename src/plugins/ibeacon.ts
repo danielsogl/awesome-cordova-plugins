@@ -1,7 +1,6 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 declare var cordova: any;
 
 export interface Beacon {
@@ -103,7 +102,7 @@ export interface CircularRegion {
 
 export type Region = BeaconRegion | CircularRegion;
 
-export interface PluginResult {
+export interface IBeaconPluginResult {
 
   /**
    * The name of the delegate function that produced the PluginResult object.
@@ -136,7 +135,7 @@ export interface PluginResult {
   error: string;
 }
 
-export interface Delegate {
+export interface IBeaconDelegate {
   /**
    * An observable that publishes information about the location permission authorization status.
    *
@@ -151,9 +150,9 @@ export interface Delegate {
    * This event is called when the phone begins starts monitoring,
    * when requestStateForRegion is called, etc.
    *
-   * @returns {Observable<PluginResult>} Returns a PluginResult object with information about the event, region, and beacon(s).
+   * @returns {Observable<IBeaconPluginResult>} Returns a IBeaconPluginResult object with information about the event, region, and beacon(s).
    */
-  didDetermineStateForRegion(): Observable<PluginResult>;
+  didDetermineStateForRegion(): Observable<IBeaconPluginResult>;
 
   /**
    * An Observable that publishes event data to it's subscribers
@@ -163,9 +162,9 @@ export interface Delegate {
    *  will be called even when the app is not running on iOS.
    * The app will run silently in the background for a small amount of time.
    *
-   * @returns {Observable<PluginResult>} Returns a PluginResult object with information about the event, region, and beacon(s).
+   * @returns {Observable<IBeaconPluginResult>} Returns a IBeaconPluginResult object with information about the event, region, and beacon(s).
    */
-  didEnterRegion(): Observable<PluginResult>;
+  didEnterRegion(): Observable<IBeaconPluginResult>;
 
   /**
    * An Observable that publishes event data to it's subscribers
@@ -175,51 +174,51 @@ export interface Delegate {
    *  will be called even when the app is not running on iOS.
    * The app will run silently in the background for a small amount of time.
    *
-   * @returns {Observable<PluginResult>} Returns a PluginResult object with information about the event, region, and beacon(s).
+   * @returns {Observable<IBeaconPluginResult>} Returns a IBeaconPluginResult object with information about the event, region, and beacon(s).
    */
-  didExitRegion(): Observable<PluginResult>;
+  didExitRegion(): Observable<IBeaconPluginResult>;
 
   /**
    * An Observable that publishes event data to it's subscribers
    *  each time that the device ranges beacons. Modern Android and iOS devices range
    * aproximately once per second.
    *
-   * @returns {Observable<PluginResult>} Returns a PluginResult object with information about the event, region, and beacon(s).
+   * @returns {Observable<IBeaconPluginResult>} Returns a IBeaconPluginResult object with information about the event, region, and beacon(s).
    */
-  didRangeBeaconsInRegion(): Observable<PluginResult>;
+  didRangeBeaconsInRegion(): Observable<IBeaconPluginResult>;
 
   /**
    * An Observable that publishes event data to it's subscribers
    *  when the device begins monitoring a region.
    *
-   * @returns {Observable<PluginResult>} Returns a PluginResult object with information about the event, region, and beacon(s).
+   * @returns {Observable<IBeaconPluginResult>} Returns a IBeaconPluginResult object with information about the event, region, and beacon(s).
    */
-  didStartMonitoringForRegion(): Observable<PluginResult>;
+  didStartMonitoringForRegion(): Observable<IBeaconPluginResult>;
 
   /**
    * An Observable that publishes event data to it's subscribers
    *  when the device fails to monitor a region.
    *
-   * @returns {Observable<PluginResult>} Returns a PluginResult object with information about the event, region, and beacon(s).
+   * @returns {Observable<IBeaconPluginResult>} Returns a IBeaconPluginResult object with information about the event, region, and beacon(s).
    */
-  monitoringDidFailForRegionWithError(): Observable<PluginResult>;
+  monitoringDidFailForRegionWithError(): Observable<IBeaconPluginResult>;
 
   /**
    * An Observable that publishes event data to it's subscribers
    *  when the device begins advertising as an iBeacon.
    *
-   * @returns {Observable<PluginResult>} Returns a PluginResult object with information about the event, region, and beacon(s).
+   * @returns {Observable<IBeaconPluginResult>} Returns a IBeaconPluginResult object with information about the event, region, and beacon(s).
    */
-  peripheralManagerDidStartAdvertising(): Observable<PluginResult>;
+  peripheralManagerDidStartAdvertising(): Observable<IBeaconPluginResult>;
 
   /**
    * An Observable that publishes event data to it's subscribers
    * when the state of the peripheral manager's state updates.
    *
    *
-   * @returns {Observable<PluginResult>} Returns a PluginResult object with information about the event, region, and beacon(s).
+   * @returns {Observable<IBeaconPluginResult>} Returns a IBeaconPluginResult object with information about the event, region, and beacon(s).
    */
-  peripheralManagerDidUpdateState(): Observable<PluginResult>;
+  peripheralManagerDidUpdateState(): Observable<IBeaconPluginResult>;
 }
 
 /**
@@ -238,7 +237,7 @@ export interface Delegate {
  * // Request permission to use location on iOS
  * IBeacon.requestAlwaysAuthorization();
  * // create a new delegate and register it with the native layer
- * let delegate = IBeacon.Delegate();
+ * let delegate = IBeacon.IBeaconDelegate();
  *
  * // Subscribe to some of the delegate's event handlers
  * delegate.didRangeBeaconsInRegion()
@@ -266,6 +265,13 @@ export interface Delegate {
  *     error => console.error('Native layer failed to begin monitoring: ', error)
  *   );
  * ```
+ * @interfaces
+ * Beacon
+ * BeaconRegion
+ * CircularRegion
+ * IBeaconPluginResult
+ * IBeaconDelegate
+ *
  */
 @Plugin({
   pluginName: 'IBeacon',
@@ -280,87 +286,87 @@ export class IBeacon {
    * Instances of this class are delegates between the {@link LocationManager} and
    * the code that consumes the messages generated on in the native layer.
    *
-   * @returns {Delegate} An instance of the type {@type Delegate}.
+   * @returns {IBeaconDelegate} An instance of the type {@type Delegate}.
    */
-  static Delegate(): Delegate {
+  static Delegate(): IBeaconDelegate {
     let delegate = new cordova.plugins.locationManager.Delegate();
 
-    delegate.didChangeAuthorizationStatus = (pluginResult?: PluginResult) => {
-      return new Observable<PluginResult>(
+    delegate.didChangeAuthorizationStatus = (pluginResult?: IBeaconPluginResult) => {
+      return new Observable<IBeaconPluginResult>(
         (observer: any) => {
-          let cb = (data: PluginResult) => observer.next(data);
+          let cb = (data: IBeaconPluginResult) => observer.next(data);
           return delegate.didChangeAuthorizationStatus = cb;
         }
       );
     };
 
-    delegate.didDetermineStateForRegion = (pluginResult?: PluginResult) => {
-      return new Observable<PluginResult>(
+    delegate.didDetermineStateForRegion = (pluginResult?: IBeaconPluginResult) => {
+      return new Observable<IBeaconPluginResult>(
         (observer: any) => {
-          let cb = (data: PluginResult) => observer.next(data);
+          let cb = (data: IBeaconPluginResult) => observer.next(data);
           return delegate.didDetermineStateForRegion = cb;
         }
       );
     };
 
-    delegate.didEnterRegion = (pluginResult?: PluginResult) => {
-      return new Observable<PluginResult>(
+    delegate.didEnterRegion = (pluginResult?: IBeaconPluginResult) => {
+      return new Observable<IBeaconPluginResult>(
         (observer: any) => {
-          let cb = (data: PluginResult) => observer.next(data);
+          let cb = (data: IBeaconPluginResult) => observer.next(data);
           return delegate.didEnterRegion = cb;
         }
       );
     };
 
-    delegate.didExitRegion = (pluginResult?: PluginResult) => {
-      return new Observable<PluginResult>(
+    delegate.didExitRegion = (pluginResult?: IBeaconPluginResult) => {
+      return new Observable<IBeaconPluginResult>(
         (observer: any) => {
-          let cb = (data: PluginResult) => observer.next(data);
+          let cb = (data: IBeaconPluginResult) => observer.next(data);
           return delegate.didExitRegion = cb;
         }
       );
     };
 
-    delegate.didRangeBeaconsInRegion = (pluginResult?: PluginResult) => {
-      return new Observable<PluginResult>(
+    delegate.didRangeBeaconsInRegion = (pluginResult?: IBeaconPluginResult) => {
+      return new Observable<IBeaconPluginResult>(
         (observer: any) => {
-          let cb = (data: PluginResult) => observer.next(data);
+          let cb = (data: IBeaconPluginResult) => observer.next(data);
           return delegate.didRangeBeaconsInRegion = cb;
         }
       );
     };
 
-    delegate.didStartMonitoringForRegion = (pluginResult?: PluginResult) => {
-      return new Observable<PluginResult>(
+    delegate.didStartMonitoringForRegion = (pluginResult?: IBeaconPluginResult) => {
+      return new Observable<IBeaconPluginResult>(
         (observer: any) => {
-          let cb = (data: PluginResult) => observer.next(data);
+          let cb = (data: IBeaconPluginResult) => observer.next(data);
           return delegate.didStartMonitoringForRegion = cb;
         }
       );
     };
 
-    delegate.monitoringDidFailForRegionWithError = (pluginResult?: PluginResult) => {
-      return new Observable<PluginResult>(
+    delegate.monitoringDidFailForRegionWithError = (pluginResult?: IBeaconPluginResult) => {
+      return new Observable<IBeaconPluginResult>(
         (observer: any) => {
-          let cb = (data: PluginResult) => observer.next(data);
+          let cb = (data: IBeaconPluginResult) => observer.next(data);
           return delegate.monitoringDidFailForRegionWithError = cb;
         }
       );
     };
 
-    delegate.peripheralManagerDidStartAdvertising = (pluginResult?: PluginResult) => {
-      return new Observable<PluginResult>(
+    delegate.peripheralManagerDidStartAdvertising = (pluginResult?: IBeaconPluginResult) => {
+      return new Observable<IBeaconPluginResult>(
         (observer: any) => {
-          let cb = (data: PluginResult) => observer.next(data);
+          let cb = (data: IBeaconPluginResult) => observer.next(data);
           return delegate.peripheralManagerDidStartAdvertising = cb;
         }
       );
     };
 
-    delegate.peripheralManagerDidUpdateState = (pluginResult?: PluginResult) => {
-      return new Observable<PluginResult>(
+    delegate.peripheralManagerDidUpdateState = (pluginResult?: IBeaconPluginResult) => {
+      return new Observable<IBeaconPluginResult>(
         (observer: any) => {
-          let cb = (data: PluginResult) => observer.next(data);
+          let cb = (data: IBeaconPluginResult) => observer.next(data);
           return delegate.peripheralManagerDidUpdateState = cb;
         }
       );
@@ -387,33 +393,33 @@ export class IBeacon {
   }
 
   /**
-   * @returns {Delegate} Returns the Delegate
+   * @returns {IBeaconDelegate} Returns the IBeaconDelegate
    */
   @Cordova()
-  static getDelegate(): Delegate { return; }
+  static getDelegate(): IBeaconDelegate { return; }
 
   /**
-   * @param {Delegate} delegate An instance of a delegate to register with the native layer.
+   * @param {IBeaconDelegate} delegate An instance of a delegate to register with the native layer.
    *
-   * @returns {Delegate} Returns the Delegate
+   * @returns {IBeaconDelegate} Returns the IBeaconDelegate
    */
   @Cordova()
-  static setDelegate(delegate: Delegate): Delegate { return; }
+  static setDelegate(delegate: IBeaconDelegate): IBeaconDelegate { return; }
 
   /**
    * Signals the native layer that the client side is ready to consume messages.
-   * Readiness here means that it has a {Delegate} set by the consumer javascript
+   * Readiness here means that it has a {IBeaconDelegate} set by the consumer javascript
    * code.
    *
    * The {LocationManager.setDelegate()} will implicitly call this method as well,
    * therefore the only case when you have to call this manually is if you don't
-   * wish to specify a {Delegate} of yours.
+   * wish to specify a {IBeaconDelegate} of yours.
    *
    * The purpose of this signaling mechanism is to make the events work when the
    * app is being woken up by the Operating System to give it a chance to handle
    * region monitoring events for example.
    *
-   * If you don't set a {Delegate} and don't call this method manually, an error
+   * If you don't set a {IBeaconDelegate} and don't call this method manually, an error
    * message get emitted in the native runtime and the DOM as well after a certain
    * period of time.
    *
@@ -611,7 +617,7 @@ export class IBeacon {
    * this application, it will be replaced with the new identifier.
    *
    * This call will accept a valid beacon even when no BlueTooth is available,
-   * and will start when BlueTooth is powered on. See {Delegate.}
+   * and will start when BlueTooth is powered on. See {IBeaconDelegate.}
    *
    * @param {Region} region An instance of {Region} which will be advertised
    * by the operating system.

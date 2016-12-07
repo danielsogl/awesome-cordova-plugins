@@ -1,7 +1,7 @@
 import { Cordova, Plugin } from './plugin';
 
 
-export interface PromptCallback {
+export interface DialogsPromptCallback {
 
   /**
    * The index of the pressed button. (Number) Note that the index uses one-based indexing, so the value is 1, 2, 3, etc.
@@ -12,6 +12,7 @@ export interface PromptCallback {
    * The text entered in the prompt dialog box. (String)
    */
   input1: string;
+
 }
 
 
@@ -30,6 +31,8 @@ export interface PromptCallback {
  *
  *
  * ```
+ * @interfaces
+ * DialogsPromptCallback
  */
 @Plugin({
   pluginName: 'Dialogs',
@@ -79,7 +82,7 @@ export class Dialogs {
    * @param {string} title Dialog title. (Optional, defaults to Prompt)
    * @param {Array<string>} buttonLabels  Array of strings specifying button labels. (Optional, defaults to ["OK","Cancel"])
    * @param {string} defaultText Default textbox input value.  (Optional, Default: empty string)
-   * @returns {Promise<any>} Returns a promise that resolves an object with the button index clicked and the text entered
+   * @returns {Promise<DialogsPromptCallback>} Returns a promise that resolves an object with the button index clicked and the text entered
    */
   @Cordova({
     successIndex: 1,
@@ -90,7 +93,7 @@ export class Dialogs {
     title: string = 'Prompt',
     buttonLabels: Array<string> = ['OK', 'Cancel'],
     defaultText: string = ''
-    ): Promise<any> { return; }
+    ): Promise<DialogsPromptCallback> { return; }
 
 
   /**

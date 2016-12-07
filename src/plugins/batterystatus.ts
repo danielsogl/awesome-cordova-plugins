@@ -1,6 +1,20 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
+export interface BatteryStatusResponse {
+
+  /**
+   * The battery charge percentage
+   */
+  level: number;
+
+  /**
+   * A boolean that indicates whether the device is plugged in
+   */
+  isPlugged: boolean;
+
+}
+
 /**
  * @name Battery Status
  * @description
@@ -22,6 +36,8 @@ import { Observable } from 'rxjs/Observable';
  * subscription.unsubscribe();
  *
  * ```
+ * @interfaces
+ * BatteryStatusResponse
  */
 @Plugin({
   pluginName: 'BatteryStatus',
@@ -33,44 +49,32 @@ export class BatteryStatus {
 
   /**
    * Watch the change in battery level
-   * @returns {Observable<StatusObject>} Returns an observable that pushes a status object
+   * @returns {Observable<BatteryStatusResponse>} Returns an observable that pushes a status object
    */
   @Cordova({
     eventObservable: true,
     event: 'batterystatus'
   })
-  static onChange(): Observable<StatusObject> { return; }
+  static onChange(): Observable<BatteryStatusResponse> { return; }
 
   /**
    * Watch when the battery level goes low
-   * @returns {Observable<StatusObject>} Returns an observable that pushes a status object
+   * @returns {Observable<BatteryStatusResponse>} Returns an observable that pushes a status object
    */
   @Cordova({
     eventObservable: true,
     event: 'batterylow'
   })
-  static onLow(): Observable<StatusObject> { return; }
+  static onLow(): Observable<BatteryStatusResponse> { return; }
 
   /**
    * Watch when the battery level goes to critial
-   * @returns {Observable<StatusObject>} Returns an observable that pushes a status object
+   * @returns {Observable<BatteryStatusResponse>} Returns an observable that pushes a status object
    */
   @Cordova({
     eventObservable: true,
     event: 'batterycritical'
   })
-  static onCritical(): Observable<StatusObject> { return; }
+  static onCritical(): Observable<BatteryStatusResponse> { return; }
 
-}
-
-export interface StatusObject {
-  /**
-   * The battery charge percentage
-   */
-  level: number;
-
-  /**
-   * A boolean that indicates whether the device is plugged in
-   */
-  isPlugged: boolean;
 }

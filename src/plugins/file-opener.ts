@@ -1,4 +1,5 @@
 import { Plugin, Cordova } from './plugin';
+
 /**
  * @name FileOpener
  * @description
@@ -19,6 +20,7 @@ import { Plugin, Cordova } from './plugin';
   repo: 'https://github.com/pwlin/cordova-plugin-file-opener2'
 })
 export class FileOpener {
+
   /**
    * Open an file
    * @param filePath {string} File Path
@@ -55,4 +57,5 @@ export class FileOpener {
     errorName: 'error'
   })
   static appIsInstalled(packageId: string): Promise<any> {return; }
+
 }

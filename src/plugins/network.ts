@@ -55,7 +55,7 @@ export class Network {
    * Return the network connection type
    */
   @CordovaProperty
-  static get connection(): string { return navigator.connection.type; }
+  static connection: string;
 
   /**
    * Get notified when the device goes offline

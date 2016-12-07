@@ -1,8 +1,60 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 declare var window: any;
+
+export interface ThreeDeeTouchQuickAction {
+
+  /**
+   * Type that can be used in the onHomeIconPressed callback
+   */
+  type?: string;
+
+  /**
+   * Title
+   */
+  title: string;
+
+  /**
+   * Subtitle
+   */
+  subtitle?: string;
+
+  /**
+   * Icon type. Case insensitive
+   */
+  iconType?: string;
+
+  /**
+   * Icon template
+   */
+  iconTemplate?: string;
+
+}
+
+export interface ThreeDeeTouchForceTouch {
+
+  /**
+   * Touch force
+   */
+  force: number;
+
+  /**
+   * Timestamp of action
+   */
+  timestamp: number;
+
+  /**
+   * X coordinate of action
+   */
+  x: number;
+
+  /**
+   * Y coordinate of action
+   */
+  y: number;
+
+}
 
 /**
  * @name 3DTouch
@@ -63,6 +115,9 @@ declare var window: any;
  *  }
  * )
  * ```
+ * @interfaces
+ * ThreeDeeTouchQuickAction
+ * ThreeDeeTouchForceTouch
  */
 @Plugin({
   pluginName: 'ThreeDeeTouch',
@@ -134,19 +189,4 @@ export class ThreeDeeTouch {
   })
   static disableLinkPreview(): void { }
 
-}
-
-export interface ThreeDeeTouchQuickAction {
-  type?: string;
-  title: string;
-  subtitle?: string;
-  iconType?: string;
-  iconTemplate?: string;
-}
-
-export interface ThreeDeeTouchForceTouch {
-  force: number;
-  timestamp: number;
-  x: number;
-  y: number;
 }

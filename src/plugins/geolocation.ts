@@ -1,10 +1,10 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 declare var navigator: any;
 
 export interface Coordinates {
+
   /**
    * a double representing the position's latitude in decimal degrees.
    */
@@ -48,6 +48,7 @@ export interface Coordinates {
    * This value can be null.
    */
   speed: number;
+
 }
 
 export interface Geoposition {
@@ -63,6 +64,7 @@ export interface Geoposition {
 }
 
 export interface PositionError {
+
   /**
    * A code that indicates the error that occurred
    */
@@ -72,9 +74,11 @@ export interface PositionError {
    * A message that can describe the error that occurred
    */
    message: string;
+
 }
 
 export interface GeolocationOptions {
+
   /**
    * Is a positive long value indicating the maximum age in milliseconds of a
    * possible cached position that is acceptable to return. If set to 0, it
@@ -102,8 +106,8 @@ export interface GeolocationOptions {
    * @type {boolean}
    */
   enableHighAccuracy?: boolean;
-}
 
+}
 
 /**
  * @name Geolocation
@@ -145,6 +149,7 @@ export interface GeolocationOptions {
   repo: 'https://github.com/apache/cordova-plugin-geolocation'
 })
 export class Geolocation {
+
   /**
    * Get the device's current position.
    *
@@ -182,4 +187,5 @@ export class Geolocation {
       }
     );
   }
+
 }

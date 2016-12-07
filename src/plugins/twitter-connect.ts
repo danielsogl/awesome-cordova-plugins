@@ -1,5 +1,23 @@
 import { Plugin, Cordova } from './plugin';
 
+export interface TwitterConnectResponse {
+  /**
+   * Twitter Username
+   */
+  userName: string;
+  /**
+   * Twitter User ID
+   */
+  userId: string;
+  /**
+   * Twitter OAuth Secret
+   */
+  secret: string;
+  /**
+   * Twitter OAuth Token
+   */
+  token: string;
+}
 
 /**
  * @name Twitter Connect
@@ -25,6 +43,8 @@ import { Plugin, Cordova } from './plugin';
  *
  * TwitterConnect.logout().then(onLogoutSuccess, onLogoutError);
  * ```
+ * @interfaces
+ * TwitterConnectResponse
  */
 @Plugin({
   pluginName: 'TwitterConnect',
@@ -54,21 +74,4 @@ export class TwitterConnect {
   @Cordova()
   static showUser(): Promise<any> {return; }
 }
-export interface TwitterConnectResponse {
-  /**
-   * Twitter Username
-   */
-  userName: string;
-  /**
-   * Twitter User ID
-   */
-  userId: string;
-  /**
-   * Twitter OAuth Secret
-   */
-  secret: string;
-  /**
-   * Twitter OAuth Token
-   */
-  token: string;
-}
+

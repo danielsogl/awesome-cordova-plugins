@@ -1,6 +1,5 @@
 import { Cordova, Plugin } from './plugin';
 
-
 @Plugin({
   pluginName: 'DeviceAccounts',
   plugin: 'https://github.com/loicknuchel/cordova-device-accounts.git',

@@ -26,6 +26,7 @@ import { Cordova, Plugin } from './plugin';
   platforms: ['Android', 'iOS']
 })
 export class AppVersion {
+
   /**
    * Returns the name of the app
    * @returns {Promise<any>}

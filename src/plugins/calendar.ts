@@ -1,19 +1,55 @@
 import { Cordova, Plugin } from './plugin';
 
-
 /**
  * @private
  */
 export interface CalendarOptions {
+
+  /**
+   * Id
+   */
   id?: string;
+
+  /**
+   *
+   */
   firstReminderMinutes?: number;
+
+  /**
+   *
+   */
   secondReminderMinutes?: number;
-  recurrence?: string; // options are: 'daily', 'weekly', 'monthly', 'yearly'
-  recurrenceInterval?: number; // only used when recurrence is set
+
+  /**
+   * Recurrence. Can be set to `daily`, `weekly`, `monthly` or `yearly`
+   */
+  recurrence?: string;
+
+  /**
+   * Recurrence interval. Valid only when `recurrence` option is set.
+   */
+  recurrenceInterval?: number;
+
+  /**
+   * Recurrence end date. Valid only when `recurrence` option is set.
+   */
   recurrenceEndDate?: Date;
+
+  /**
+   * Calendar name. Ths is supported by `iOS` only.
+   */
   calendarName?: string;
+
+  /**
+   * Calendar id
+   */
   calendarId?: number;
+
+  /**
+   * URL
+   */
   url?: string;
+
 }
 
 /**
@@ -35,7 +71,8 @@ export interface CalendarOptions {
  *   (err) => { console.log(err); }
  * );
  * ```
- *
+ * @interfaces
+ * CalendarOptions
  */
 @Plugin({
   pluginName: 'Calendar',
@@ -102,9 +139,7 @@ export class Calendar {
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  static createCalendar(
-    nameOrOptions: string | { calendarName: string, calendarColor: string }
-    ): Promise<any> { return; }
+  static createCalendar(nameOrOptions: string | any): Promise<any> { return; }
 
   /**
    * Delete a calendar. (iOS only)
@@ -117,31 +152,12 @@ export class Calendar {
   /**
    * Returns the default calendar options.
    *
-   * @return Returns an object with the default calendar options:
-   *   firstReminderMinutes: 60,
-   *   secondReminderMinutes: null,
-   *   recurrence: null, // options are: 'daily', 'weekly', 'monthly', 'yearly'
-   *   recurrenceInterval: 1, // only used when recurrence is set
-   *   recurrenceEndDate: null,
-   *   calendarName: null,
-   *   calendarId: null,
-   *   url: null
+   * @return {CalendarOptions} Returns an object with the default calendar options
    */
   @Cordova({
     sync: true
   })
-  static getCalendarOptions(): CalendarOptions {
-    return {
-      firstReminderMinutes: 60,
-      secondReminderMinutes: null,
-      recurrence: null,
-      recurrenceInterval: 1,
-      recurrenceEndDate: null,
-      calendarName: null,
-      calendarId: null,
-      url: null
-    };
-  }
+  static getCalendarOptions(): CalendarOptions { return; }
 
   /**
    * Silently create an event.
@@ -279,7 +295,9 @@ export class Calendar {
    * @param {Date} [endDate]  The end date
    * @returns {Promise<any>} Returns a Promise that resolves with the list of events, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['Android']
+  })
   static listEventsInRange(startDate: Date, endDate: Date): Promise<any> { return; }
 
   /**
@@ -293,7 +311,9 @@ export class Calendar {
    * Get a list of all future events in the specified calendar. (iOS only)
    * @returns {Promise<any>} Returns a Promise that resolves with the list of events, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['iOS']
+  })
   static findAllEventsInNamedCalendar(calendarName: string): Promise<any> { return; }
 
   /**
@@ -311,7 +331,9 @@ export class Calendar {
    * @param {Date} [newEndDate]  The new event end date
    * @return Returns a Promise
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['iOS']
+  })
   static modifyEvent(
     title?: string,
     location?: string,
@@ -342,7 +364,9 @@ export class Calendar {
    * @param {CalendarOptions} [newOptions]  New event options, see `getCalendarOptions`
    * @return Returns a Promise
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['iOS']
+  })
   static modifyEventWithOptions(
     title?: string,
     location?: string,
@@ -388,7 +412,9 @@ export class Calendar {
    * @param {string} calendarName
    * @return Returns a Promise
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['iOS']
+  })
   static deleteEventFromNamedCalendar(
     title?: string,
     location?: string,

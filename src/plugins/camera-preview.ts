@@ -1,17 +1,24 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 export interface CameraPreviewRect {
+
   x: number;
+
   y: number;
+
   width: number;
+
   height: number;
+
 }
 
 export interface CameraPreviewSize {
+
   maxWidth: number;
+
   maxHeight: number;
+
 }
 
 /**
@@ -68,6 +75,9 @@ export interface CameraPreviewSize {
  *
  * ```
  *
+ * @interfaces
+ * CameraPreviewRect
+ * CameraPreviewSize
  */
 @Plugin({
   pluginName: 'CameraPreview',
@@ -157,4 +167,5 @@ export class CameraPreview {
     sync: true
   })
   static setColorEffect(effect: string): void { }
+
 }

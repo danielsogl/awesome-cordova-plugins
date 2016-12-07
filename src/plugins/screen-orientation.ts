@@ -59,11 +59,9 @@ export class ScreenOrientation {
   @Cordova({ sync: true })
   static unlockOrientation(): void { }
 
-  /*
+  /**
    * Get the current orientation of the device.
    */
   @CordovaProperty
-  static get orientation() {
-    return window.screen.orientation;
-  }
+  static orientation: string;
 }

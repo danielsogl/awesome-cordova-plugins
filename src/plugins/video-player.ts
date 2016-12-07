@@ -36,6 +36,8 @@ export interface VideoOptions {
  * });
  *
  * ```
+ * @interfaces
+ * VideoOptions
  */
 @Plugin({
   pluginName: 'VideoPlayer',

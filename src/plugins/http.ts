@@ -1,4 +1,24 @@
 import { Plugin, Cordova } from './plugin';
+
+export interface HTTPResponse {
+  /**
+   * The status number of the response
+   */
+  status: number;
+  /**
+   * The data that is in the response. This property usually exists when a promise returned by a request method resolves.
+   */
+  data?: any;
+  /**
+   * The headers of the response
+   */
+  headers: any;
+  /**
+   * Error response from the server. This property usually exists when a promise returned by a request method rejects.
+   */
+  error?: string;
+}
+
 /**
  * @name HTTP
  * @description
@@ -136,23 +156,4 @@ export class HTTP {
    */
   @Cordova()
   static downloadFile(url: string, body: any, headers: any, filePath: string): Promise<HTTPResponse> { return; }
-}
-
-export interface HTTPResponse {
-  /**
-   * The status number of the response
-   */
-  status: number;
-  /**
-   * The data that is in the response. This property usually exists when a promise returned by a request method resolves.
-   */
-  data?: any;
-  /**
-   * The headers of the response
-   */
-  headers: any;
-  /**
-   * Error response from the server. This property usually exists when a promise returned by a request method rejects.
-   */
-  error?: string;
 }
