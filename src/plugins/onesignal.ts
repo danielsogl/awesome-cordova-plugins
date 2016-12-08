@@ -65,6 +65,204 @@ export interface OneSignalNotification {
 }
 
 /**
+ * **ANDROID** - Privacy setting for how the notification should be shown on the lockscreen of Android 5+ devices.
+ */
+export enum LockScreenVisibility {
+  /**
+   * Fully visible (default)
+   */
+  Public = 1,
+  /**
+   * Contents are hidden
+   */
+  Private = 0,
+  /**
+   * Not shown
+   */
+  Secret = -1
+}
+
+export interface OSNotification {
+  /**
+   * Was app in focus.
+   */
+  isAppInFocus: boolean;
+  /**
+   * Was notification shown to the user. Will be false for silent notifications.
+   */
+  shown: boolean;
+  /**
+   * **ANDROID** - Android Notification assigned to the notification. Can be used to cancel or replace the notification.
+   */
+  androidNotificationId?: number;
+  /**
+   * Payload received from OneSignal.
+   */
+  payload: OSNotificationPayload;
+  /**
+   * How the notification was displayed to the user. Can be set to `Notification`, `InAppAlert`, or `None` if it was not displayed.
+   */
+  displayType: DisplayType;
+  /**
+   * **ANDROID** - Notification is a summary notification for a group this will contain all notification payloads it was created from.
+   */
+  groupedNotifications?: OSNotificationPayload[];
+}
+
+/**
+ * How the notification was displayed to the user. Part of OSNotification. See inFocusDisplaying for more information on how this is used.
+ */
+export enum DisplayType {
+  /**
+   * notification is silent, or inFocusDisplaying is disabled.
+   */
+  None = 0,
+  /**
+   * (**DEFAULT**) - native alert dialog display.
+   */
+  InAppAlert = 1,
+  /**
+   * native notification display.
+   */
+  Notification = 2
+}
+
+/**
+ * Contents and settings of the notification the user received.
+ */
+export interface OSNotificationPayload {
+  /**
+   * OneSignal notification UUID.
+   */
+  notificationID: string;
+  /**
+   * Title of the notification.
+   */
+  title: string;
+  /**
+   * Body of the notification.
+   */
+  body: string;
+  /**
+   * Custom additional data that was sent with the notification. Set on the dashboard under Options > Additional Data
+   * or with the 'data' field on the REST API.
+   */
+  additionalData?: any;
+  /**
+   * **ANDROID** - Small icon resource name set on the notification.
+   */
+  smallIcon?: string;
+  /**
+   * **ANDROID** - Large icon set on the notification.
+   */
+  largeIcon?: string;
+  /**
+   * **ANDROID** - Big picture image set on the notification.
+   */
+  bigPicture?: string;
+  /**
+   * **ANDROID** - Accent color shown around small notification icon on Android 5+ devices. ARGB format.
+   */
+  smallIconAccentColor?: string;
+  /**
+   * URL to open when opening the notification.
+   */
+  launchUrl?: string;
+  /**
+   * Sound resource to play when the notification is shown.
+   */
+  sound: string;
+  /**
+   * **ANDROID** - Devices that have a notification LED will blink in this color. ARGB format.
+   */
+  ledColor?: string;
+  lockScreenVisibility?: LockScreenVisibility;
+  /**
+   * **ANDROID** - Notifications with this same key will be grouped together as a single summary notification.
+   */
+  groupKey?: string;
+  /**
+   * **ANDROID** - Summary text displayed in the summary notification.
+   */
+  groupMessage?: string;
+  /**
+   * List of action buttons on the notification.
+   */
+  actionButtons: ActionButton[];
+  /**
+   * **ANDROID** - The Google project number the notification was sent under.
+   */
+  fromProjectNumber?: string;
+  /**
+   * **ANDROID** - If a background image was set this object will be available.
+   */
+  backgroundImageLayout?: BackgroundImageLayout;
+  priority?: number;
+  /**
+   * List of action buttons on the notification.
+   */
+  rawPayload: string;
+}
+
+/**
+ * List of action buttons on the notification.
+ */
+export interface ActionButton {
+  /**
+   * Id assigned to the button.
+   */
+  id: string;
+  /**
+   * Text show on the button to the user.
+   */
+  text: string;
+  /**
+   * **ANDROID** - Icon shown on the button.
+   */
+  icon: string;
+}
+
+/**
+ * **ANDROID** - If a background image was set, this object will be available.
+ */
+export interface BackgroundImageLayout {
+  /**
+   * Image URL or name used as the background image.
+   */
+  image: string;
+  /**
+   * Text color of the title on the notification. ARGB Format.
+   */
+  titleTextColor: string;
+  /**
+   * Text color of the body on the notification. ARGB Format.
+   */
+  bodyTextColor: string;
+}
+
+/**
+ * The information returned from a notification the user received.
+ */
+export interface OSNotificationOpenedResult {
+  action: {
+    /**
+     * Was the notification opened normally (`Opened`) or was a button pressed on the notification (`ActionTaken`).
+     */
+    type: ActionType;
+    /**
+     * If `type` == `ActionTaken` then this will contain the id of the button pressed.
+     */
+    actionID?: string;
+  };
+  notification: OSNotification;
+}
+
+export enum ActionType {
+  Opened = 0,
+  ActionTake = 1
+}
+
+/**
  * @name OneSignal
  * @description
  * The OneSignal plugin is an client implementation for using the [OneSignal](https://onesignal.com/) Service.
@@ -112,45 +310,57 @@ export class OneSignal {
   };
 
   /**
-   * Start the initialization process. Once you are done configuring OneSignal, call the endInit function.
+   * Start the initialization process. Once you are done configuring OneSignal, call the `endInit` function.
    *
-   * @param {string} appId Your AppId from your OneSignal app
-   * @param {string} googleProjectNumber The Google Project Number (which you can get from the Google Developer Portal) and the autoRegister option.
+   * @param {string} appId Your OneSignal app id
+   * @param {string} googleProjectNumber **ANDROID** - your Google project number; only required for Android GCM/FCM pushes.
    * @returns {any}
    */
   @Cordova({ sync: true })
-  static startInit(appId: string, googleProjectNumber: string): any { return; }
+  static startInit(appId: string, googleProjectNumber?: string): any { return; }
 
   /**
-   * Callback to run when a notification is received
-   * @return {Observable<any>}
+   * Callback to run when a notification is received, whether it was displayed or not.
+   *
+   * @return {Observable<OneSignalReceivedNotification>}
    */
   @Cordova({
     observable: true
   })
-  static handleNotificationReceived(): Observable<any> { return; }
+  static handleNotificationReceived(): Observable<OSNotification> { return; }
 
   /**
-   * Callback to run when a notification is opened
-   * @return {Observable<any>}
+   * Callback to run when a notification is tapped on from the notification shade (**ANDROID**) or notification
+   * center (**iOS**), or when closing an Alert notification shown in the app (if InAppAlert is enabled in
+   * inFocusDisplaying).
+   *
+   * @return {Observable<OneSignalOpenedNotification>}
    */
   @Cordova({
     observable: true
   })
-  static handleNotificationOpened(): Observable<any> { return; }
+  static handleNotificationOpened(): Observable<OSNotificationOpenedResult> { return; }
 
   /**
+   * **iOS** - Settings for iOS apps
    *
    * @param settings
+   *  kOSSettingsKeyAutoPrompt: boolean = true
+   *  Auto prompt user for notification permissions.
+   *
+   *  kOSSettingsKeyInAppLaunchURL: boolean = false
+   *  Launch notifications with a launch URL as an in app webview.
    * @returns {any}
    */
   @Cordova({ sync: true })
   static iOSSettings(settings: {
-    kOSSettingsKeyInAppLaunchURL: boolean;
     kOSSettingsKeyAutoPrompt: boolean;
+    kOSSettingsKeyInAppLaunchURL: boolean;
   }): any { return; }
 
   /**
+   * Must be called after `startInit` to complete initialization of OneSignal.
+   *
    * @returns {any}
    */
   @Cordova({ sync: true })
@@ -168,11 +378,14 @@ export class OneSignal {
    * Lets you retrieve the OneSignal user id and device token.
    * Your handler is called after the device is successfully registered with OneSignal.
    *
-   * @returns {Promise<any>} Returns a Promise that reolves if the device was successfully registered.
-   * It returns a JSON with `userId`and `pushToken`.
+   * @returns {Promise<{userId: string; pushToken: string}>} Returns a Promise that reolves if the device was successfully registered.
+   *
+   *  userId {string} OneSignal userId is a UUID formatted string. (unique per device per app)
+   *
+   *  pushToken {string} A push token is a Google/Apple assigned identifier(unique per device per app).
    */
   @Cordova()
-  static getIds(): Promise<any> { return; }
+  static getIds(): Promise<{userId: string; pushToken: string}> { return; }
 
 
   /**
@@ -212,7 +425,7 @@ export class OneSignal {
 
   /**
    * Call this when you would like to prompt an iOS user to accept push notifications with the default system prompt.
-   * Only use if you passed false to autoRegister when calling init.
+   * Only works if you set `kOSSettingsAutoPrompt` to `false` in `iOSSettings`
    */
   @Cordova({ sync: true })
   static registerForPushNotifications(): void { }
@@ -245,10 +458,11 @@ export class OneSignal {
   *
   * Setting to control how OneSignal notifications will be shown when one is received while your app is in focus. By default this is set to inAppAlert, which can be helpful during development.
   *
-  * @param {number} displayOption Options are 0 = None, 1 = InAppAlert, and 2 = Notification.
+  * @param {DisplayType} displayOption
+  * @returns {any}
   */
   @Cordova({ sync: true })
-  static inFocusDisplaying(displayOption: number): void { }
+  static inFocusDisplaying(displayOption: DisplayType): any { return; }
 
   /**
   * You can call this method with false to opt users out of receiving all notifications through OneSignal.
