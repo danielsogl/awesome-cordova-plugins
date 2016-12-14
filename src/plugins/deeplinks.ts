@@ -53,7 +53,15 @@ export interface DeeplinkMatch {
  * Deeplinks.routeWithNavController(this.navController, {
     '/about-us': AboutPage,
     '/products/:productId': ProductPage
-  });
+  }).subscribe((match) => {
+      // match.$route - the route we matched, which is the matched entry from the arguments to route()
+      // match.$args - the args passed in the link
+      // match.$link - the full link data
+      console.log('Successfully matched route', match);
+    }, (nomatch) => {
+      // nomatch.$link - the full link data
+      console.error('Got a deeplink that didn\'t match', nomatch);
+    });
  * ```
  *
  * See the [Ionic 2 Deeplinks Demo](https://github.com/driftyco/ionic2-deeplinks-demo/blob/master/app/app.ts) for an example of how to
