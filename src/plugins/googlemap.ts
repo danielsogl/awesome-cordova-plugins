@@ -41,6 +41,7 @@ export const GoogleMapsAnimation = {
  * @description This plugin uses the native Google Maps SDK
  * @usage
  * ```
+ * import { Platform } from 'ionic-angular';
  * import {
  *  GoogleMap,
  *  GoogleMapsEvent,
@@ -51,12 +52,11 @@ export const GoogleMapsAnimation = {
  * } from 'ionic-native';
  *
  * export class MapPage {
- *  constructor() {}
  *
- * // Load map only after view is initialize
- * ngAfterViewInit() {
- *  this.loadMap();
- * }
+ *  // Load map only after platform is ready
+ *  constructor(private platform: Platform) {
+ *    this.platform.ready().then( () => { this.loadMap(); } );
+ *  }
  *
  * loadMap() {
  *  // make sure to create following structure in your view.html file
