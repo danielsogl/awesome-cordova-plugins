@@ -259,10 +259,10 @@ export class ContactFindOptions implements IContactFindOptions {
  * @usage
  *
  * ```typescript
- * import { Contact } from 'ionic-native';
+ * import { Contacts, Contact, ContactField, ContactName } from 'ionic-native';
  *
  *
- * let contact = new Contact();
+ * let contact: Contact = Contacts.create();
  *
  * contact.name = new ContactName(null, 'Smith', 'John');
  * contact.phoneNumbers = [new ContactField('mobile', '6471234567')];
