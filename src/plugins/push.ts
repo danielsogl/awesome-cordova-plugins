@@ -331,4 +331,20 @@ export class Push {
     return;
   }
 
+  /**
+   * The subscribe method is used when the application wants to subscribe a new topic to receive push notifications.
+   * @param topic {string} Topic to subscribe to.
+   * @return {Promise<any>}
+   */
+  @CordovaInstance()
+  subscribe(topic: string): Promise<any> { return; }
+
+  /**
+   * The unsubscribe method is used when the application no longer wants to receive push notifications from a specific topic but continue to receive other push messages.
+   * @param topic {string} Topic to unsubscribe from.
+   * @return {Promise<any>}
+   */
+  @CordovaInstance()
+  unsubscribe(topic: string): Promise<any> { return; }
+
 }
