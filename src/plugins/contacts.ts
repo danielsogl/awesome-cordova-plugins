@@ -231,9 +231,9 @@ export class ContactOrganization implements IContactOrganization {
 export interface IContactFindOptions {
   /** The search string used to find navigator.contacts. */
   filter?: string;
-  /** Determines if the find operation returns multiple navigator.contacts. */
+  /** Determines if the find operation returns multiple navigator.contacts. Defaults to true. */
   multiple?: boolean;
-  /* Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields. */
+  /** Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields. */
   desiredFields?: string[];
   /**
    * (Android only): Filters the search to only return contacts with a phone number informed.
@@ -299,16 +299,8 @@ export class Contacts {
 
   /**
    * Search for contacts in the Contacts list.
-   * @param fields {ContactFieldType[]}  Contact fields to be used as a search qualifier.
-   *  A zero-length contactFields parameter is invalid and results in ContactError.INVALID_ARGUMENT_ERROR.
-   *  A contactFields value of "*" searches all contact fields.
-   *
-   * @param options {IContactFindOptions} the options to query with:
-   *   filter: The search string used to find navigator.contacts. (string) (Default: "")
-   *   multiple: Determines if the find operation returns multiple navigator.contacts. (Boolean) (Default: false)
-   *   desiredFields: Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields. (DOMString[]) [Optional]
-   *   hasPhoneNumber(Android only): Filters the search to only return contacts with a phone number informed. (Boolean) (Default: false)
-   *
+   * @param fields {ContactFieldType[]}  Contact fields to be used as a search qualifier
+   * @param options {IContactFindOptions} Optional options for the query
    * @returns {Promise<Contact[]>} Returns a Promise that resolves with the search results (an array of Contact objects)
    */
   static find(fields: ContactFieldType[], options?: IContactFindOptions): Promise<Contact[]> {
