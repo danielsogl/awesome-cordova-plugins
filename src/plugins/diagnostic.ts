@@ -1,4 +1,4 @@
-import { Cordova, Plugin } from './plugin';
+import {Cordova, Plugin, CordovaProperty} from './plugin';
 
 /**
  * @name Diagnostic
@@ -27,6 +27,7 @@ import { Cordova, Plugin } from './plugin';
  *   }).catch(e => console.error(e));
  *
  * ```
+ *
  */
 @Plugin({
   pluginName: 'Diagnostic',
@@ -63,18 +64,19 @@ export class Diagnostic {
     BODY_SENSORS: 'BODY_SENSORS'
   };
 
-  static permissionStatus = {
-    GRANTED: 'GRANTED',
-    GRANTED_WHEN_IN_USE: 'GRANTED_WHEN_IN_USE', // iOS
-    RESTRICTED: 'RESTRICTED', // iOS
-    DENIED: 'DENIED',
-    DENIED_ALWAYS: 'DENIED_ALWAYS', // android
-    NOT_REQUESTED: 'NOT_REQUESTED'
+  @CordovaProperty
+  static permissionStatus: {
+    GRANTED;
+    DENIED;
+    NOT_REQUESTED;
+    DENIED_ALWAYS;
+    RESTRICTED;
+    GRANTED_WHEN_IN_USE;
   };
 
   static locationAuthorizationMode = {
-    ALWAYS: 'ALWAYS',
-    WHEN_IN_USE: 'WHEN_IN_USE'
+    ALWAYS: 'always',
+    WHEN_IN_USE: 'when_in_use'
   };
 
   static permissionGroups = {
