@@ -194,7 +194,7 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
       try {
         if (opts.clearFunction) {
           if (opts.clearWithArgs) {
-            return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, args);
+            return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, args, observer.next.bind(observer), observer.error.bind(observer));
           }
           return get(window, pluginObj.pluginRef)[opts.clearFunction].call(pluginObj, pluginResult);
         }
