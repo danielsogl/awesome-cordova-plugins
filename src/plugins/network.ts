@@ -1,4 +1,4 @@
-import { Cordova, CordovaProperty, Plugin } from './plugin';
+import {Cordova, CordovaProperty, Plugin, CordovaFunctionOverride} from './plugin';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -52,10 +52,32 @@ declare var navigator: any;
 export class Network {
 
   /**
-   * Return the network connection type
+   * Connection type
+   * @return {string}
    */
   @CordovaProperty
-  static connection: string;
+  static type: string;
+
+  /**
+   * Downlink Max Speed
+   * @return {string}
+   */
+  @CordovaProperty
+  static downlinkMax: string;
+
+  /**
+   * Returns an observable to watch connection changes
+   * @return {Observable<any>}
+   */
+  @CordovaFunctionOverride()
+  static onchange(): Observable<any> { return; }
+
+  /**
+   * Returns an observable to watch connection type changes
+   * @return {Observable<any>}
+   */
+  @CordovaFunctionOverride()
+  static ontypechange(): Observable<any> { return; }
 
   /**
    * Get notified when the device goes offline
