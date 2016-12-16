@@ -1,4 +1,5 @@
 import { Plugin, Cordova } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * @name Broadcaster
@@ -22,18 +23,21 @@ import { Plugin, Cordova } from './plugin';
   plugin: 'cordova-plugin-broadcaster',
   pluginRef: 'broadcaster',
   repo: 'https://github.com/bsorrentino/cordova-broadcaster',
-  platforms: ['Android', 'iOS'],
-  install: 'ionic plugin add cordova-plugin-broadcaster'
+  platforms: ['Android', 'iOS']
 })
 export class Broadcaster {
 
   /**
    * This function listen to an event sent from the native code
    * @param eventName {string}
-   * @return {Promise<any>} Returns a promise that resolves when an event is received
+   * @return {Observable<any>} Returns an observable to watch when an event is received
    */
-  @Cordova()
-  static addEventListener(eventName: string): Promise<any> { return; }
+  @Cordova({
+    observable: true,
+    clearFunction: 'removeEventListener',
+    clearWithArgs: true
+  })
+  static addEventListener(eventName: string): Observable<any> { return; }
 
   /**
    * This function sends data to the native code
