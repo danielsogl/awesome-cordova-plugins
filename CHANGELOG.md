@@ -1,3 +1,21 @@
+<a name="2.2.12"></a>
+## [2.2.12](https://github.com/driftyco/ionic-native/compare/v2.2.11...v2.2.12) (2016-12-16)
+
+
+### Bug Fixes
+
+* **camera-preview:** parameter size is optional ([#871](https://github.com/driftyco/ionic-native/issues/871)) ([61dc8aa](https://github.com/driftyco/ionic-native/commit/61dc8aa))
+* **diagnostic:** permissionStatus gets values from plugin in runtime ([9986e0d](https://github.com/driftyco/ionic-native/commit/9986e0d)), closes [#872](https://github.com/driftyco/ionic-native/issues/872)
+* **network:** update API ([ec5e27b](https://github.com/driftyco/ionic-native/commit/ec5e27b))
+* **sms:** fix callback index when omitting options param ([114a74d](https://github.com/driftyco/ionic-native/commit/114a74d)), closes [#858](https://github.com/driftyco/ionic-native/issues/858)
+
+
+### Features
+
+* **admob:** update api and docs ([6ba1d49](https://github.com/driftyco/ionic-native/commit/6ba1d49))
+
+
+
 <a name="2.2.11"></a>
 ## [2.2.11](https://github.com/driftyco/ionic-native/compare/v2.2.10...v2.2.11) (2016-12-06)
 
