@@ -231,7 +231,7 @@ export class ContactOrganization implements IContactOrganization {
 export interface IContactFindOptions {
   /** The search string used to find navigator.contacts. */
   filter?: string;
-  /** Determines if the find operation returns multiple navigator.contacts. Defaults to true. */
+  /** Determines if the find operation returns multiple navigator.contacts. Defaults to false. */
   multiple?: boolean;
   /** Contact fields to be returned back. If specified, the resulting Contact object only features values for these fields. */
   desiredFields?: string[];
