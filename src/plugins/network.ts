@@ -29,7 +29,7 @@ declare var navigator: any;
  *    // before we determine the connection type.  Might need to wait 
  *   // prior to doing any api requests as well.
  *   setTimeout(() => {
- *     if (Network.connection === 'wifi') {
+ *     if (Network.type === 'wifi') {
  *       console.log('we got a wifi connection, woohoo!');
  *     }
  *   }, 3000);
