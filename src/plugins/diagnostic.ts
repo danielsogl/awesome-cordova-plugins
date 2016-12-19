@@ -66,12 +66,12 @@ export class Diagnostic {
 
   @CordovaProperty
   static permissionStatus: {
-    GRANTED;
-    DENIED;
-    NOT_REQUESTED;
-    DENIED_ALWAYS;
-    RESTRICTED;
-    GRANTED_WHEN_IN_USE;
+    GRANTED: string;
+    DENIED: string;
+    NOT_REQUESTED: string;
+    DENIED_ALWAYS: string;
+    RESTRICTED: string;
+    GRANTED_WHEN_IN_USE: string;
   };
 
   static locationAuthorizationMode = {
