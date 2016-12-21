@@ -93,6 +93,7 @@ import { Shake } from './plugins/shake';
 import { Sim } from './plugins/sim';
 import { SMS } from './plugins/sms';
 import { SocialSharing } from './plugins/socialsharing';
+import { SpeechRecognition } from './plugins/speech-recognition';
 import { SpinnerDialog } from './plugins/spinnerdialog';
 import { Splashscreen } from './plugins/splashscreen';
 import { SQLite } from './plugins/sqlite';
@@ -203,6 +204,7 @@ export * from './plugins/shake';
 export * from './plugins/sim';
 export * from './plugins/sms';
 export * from './plugins/socialsharing';
+export * from './plugins/speech-recognition';
 export * from './plugins/spinnerdialog';
 export * from './plugins/splashscreen';
 export * from './plugins/sqlite';
@@ -316,6 +318,7 @@ window['IonicNative'] = {
   Splashscreen,
   SQLite,
   StatusBar,
+  SpeechRecognition,
   Stepcounter,
   StreamingMedia,
   ThreeDeeTouch,
