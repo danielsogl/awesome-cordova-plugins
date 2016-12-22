@@ -6,6 +6,11 @@ export type AdMobAdSize = 'SMART_BANNER' | 'BANNER' | 'MEDIUM_RECTANGLE' | 'FULL
 export interface AdMobOptions {
 
   /**
+   * Banner ad ID
+   */
+  adId?: string;
+
+  /**
    * Banner Ad Size, defaults to `SMART_BANNER`. IT can be: `SMART_BANNER`, `BANNER`, `MEDIUM_RECTANGLE`, `FULL_BANNER`, `LEADERBOARD`, `SKYSCRAPER`, or `CUSTOM`
    */
   adSize?: AdMobAdSize;
