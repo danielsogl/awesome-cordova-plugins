@@ -3,9 +3,9 @@ import { initAngular1 } from './ng1';
 const DEVICE_READY_TIMEOUT = 2000;
 
 declare var window;
-
 import { ActionSheet } from './plugins/actionsheet';
 import { AdMob } from './plugins/admob';
+import { Alipay } from './plugins/alipay';
 import { AndroidFingerprintAuth } from './plugins/android-fingerprint-auth';
 import { AppAvailability } from './plugins/appavailability';
 import { AppRate } from './plugins/apprate';
@@ -115,6 +115,7 @@ import { Zip } from './plugins/zip';
 export * from './plugins/3dtouch';
 export * from './plugins/actionsheet';
 export * from './plugins/admob';
+export * from './plugins/alipay';
 export * from './plugins/android-fingerprint-auth';
 export * from './plugins/appavailability';
 export * from './plugins/apprate';
@@ -226,6 +227,7 @@ export * from './plugins/zip';
 window['IonicNative'] = {
   ActionSheet,
   AdMob,
+  Alipay,
   AndroidFingerprintAuth,
   AppAvailability,
   AppRate,
