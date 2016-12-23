@@ -1,7 +1,7 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-export interface OneSignalNotification {
+export interface OSNotification {
   app_id: string;
   contents: any;
   headings?: any;
@@ -67,7 +67,7 @@ export interface OneSignalNotification {
 /**
  * **ANDROID** - Privacy setting for how the notification should be shown on the lockscreen of Android 5+ devices.
  */
-export enum LockScreenVisibility {
+export enum OSLockScreenVisibility {
   /**
    * Fully visible (default)
    */
@@ -102,7 +102,7 @@ export interface OSNotification {
   /**
    * How the notification was displayed to the user. Can be set to `Notification`, `InAppAlert`, or `None` if it was not displayed.
    */
-  displayType: DisplayType;
+  displayType: OSDisplayType;
   /**
    * **ANDROID** - Notification is a summary notification for a group this will contain all notification payloads it was created from.
    */
@@ -112,7 +112,7 @@ export interface OSNotification {
 /**
  * How the notification was displayed to the user. Part of OSNotification. See inFocusDisplaying for more information on how this is used.
  */
-export enum DisplayType {
+export enum OSDisplayType {
   /**
    * notification is silent, or inFocusDisplaying is disabled.
    */
@@ -176,7 +176,7 @@ export interface OSNotificationPayload {
    * **ANDROID** - Devices that have a notification LED will blink in this color. ARGB format.
    */
   ledColor?: string;
-  lockScreenVisibility?: LockScreenVisibility;
+  lockScreenVisibility?: OSLockScreenVisibility;
   /**
    * **ANDROID** - Notifications with this same key will be grouped together as a single summary notification.
    */
@@ -188,7 +188,7 @@ export interface OSNotificationPayload {
   /**
    * List of action buttons on the notification.
    */
-  actionButtons: ActionButton[];
+  actionButtons: OSActionButton[];
   /**
    * **ANDROID** - The Google project number the notification was sent under.
    */
@@ -196,7 +196,7 @@ export interface OSNotificationPayload {
   /**
    * **ANDROID** - If a background image was set this object will be available.
    */
-  backgroundImageLayout?: BackgroundImageLayout;
+  backgroundImageLayout?: OSBackgroundImageLayout;
   priority?: number;
   /**
    * List of action buttons on the notification.
@@ -207,7 +207,7 @@ export interface OSNotificationPayload {
 /**
  * List of action buttons on the notification.
  */
-export interface ActionButton {
+export interface OSActionButton {
   /**
    * Id assigned to the button.
    */
@@ -225,7 +225,7 @@ export interface ActionButton {
 /**
  * **ANDROID** - If a background image was set, this object will be available.
  */
-export interface BackgroundImageLayout {
+export interface OSBackgroundImageLayout {
   /**
    * Image URL or name used as the background image.
    */
@@ -248,7 +248,7 @@ export interface OSNotificationOpenedResult {
     /**
      * Was the notification opened normally (`Opened`) or was a button pressed on the notification (`ActionTaken`).
      */
-    type: ActionType;
+    type: OSActionType;
     /**
      * If `type` == `ActionTaken` then this will contain the id of the button pressed.
      */
@@ -257,7 +257,7 @@ export interface OSNotificationOpenedResult {
   notification: OSNotification;
 }
 
-export enum ActionType {
+export enum OSActionType {
   Opened = 0,
   ActionTake = 1
 }
@@ -462,7 +462,7 @@ export class OneSignal {
   * @returns {any}
   */
   @Cordova({ sync: true })
-  static inFocusDisplaying(displayOption: DisplayType): any { return; }
+  static inFocusDisplaying(displayOption: OSDisplayType): any { return; }
 
   /**
   * You can call this method with false to opt users out of receiving all notifications through OneSignal.
@@ -479,7 +479,7 @@ export class OneSignal {
   * @returns {Promise<any>} Returns a Promise that resolves if the notification was send successfully.
   */
   @Cordova()
-  static postNotification(notificationObj: OneSignalNotification): Promise<any> { return; }
+  static postNotification(notificationObj: OSNotification): Promise<any> { return; }
 
   /**
   * Prompts the user for location permission to allow geotagging based on the "Location radius" filter on the OneSignal dashboard.
