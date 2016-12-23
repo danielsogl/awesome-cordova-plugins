@@ -125,7 +125,6 @@ export class AndroidFingerprintAuth {
      */
     withBackup: boolean;
     /**
-     * FingerprintAuth.CipherMode.ENCRYPT
      * base64encoded string representation of user credentials
      */
     token: string;
