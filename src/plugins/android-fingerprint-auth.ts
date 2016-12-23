@@ -9,7 +9,6 @@ export interface AndroidFingerprintAuthOptions {
   clientId: string;
 
   /**
-   * Required
    * Used to create credential string for encrypted token and as alias to retrieve the cipher.
    */
   username?: string;
