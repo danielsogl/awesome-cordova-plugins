@@ -12,25 +12,16 @@ export interface AndroidFingerprintAuthOptions {
    * Required
    * Used to create credential string for encrypted token and as alias to retrieve the cipher.
    */
-  username: string;
-  
-  /**
-   * Required
-   * Used to determine if plugin should encrypt or decrypt after authentication. 
-   *   FingerprintAuth.CipherMode.ENCRYPT // "encrypt"
-   *   FingerprintAuth.CipherMode.DECRYPT // "decrypt"
-   */
-  cipherMode: string;
+  username?: string;
 
   /**
-   * FingerprintAuth.CipherMode.ENCRYPT
    * Used to create credential string for encrypted token
    */
   password?: string;
   
   /**
-   * FingerprintAuth.CipherMode.DECRYPT
-   * Encrypted user credentials to decrypt upon successfull authentication.
+   * Required for decrypt()
+   * Encrypted user credentials to decrypt upon successful authentication.
    */
   token?: string;
   
@@ -86,16 +77,11 @@ export interface AndroidFingerprintAuthOptions {
  *     if(result.isAvailable){
  *       // it is available
  *
- *       AndroidFingerprintAuth.show({ clientId: "myAppName", username: "myUsername", cipherMode: "decrypt", token: "base64encodedToken" })
+ *       AndroidFingerprintAuth.encrypt({ clientId: "myAppName", username: "myUsername", password: "myPassword" })
  *         .then(result => {
  *            if (result.withFingerprint) {
- *              if (result.cipherMode === "encrypt") {
  *                console.log("Successfully encrypted credentials.");
  *                console.log("Encrypted credentials: " + result.token);   
- *              } else if (result.cipherMode === "decrypt") {
- *                console.log("Successfully decrypted user credentials.");
- *                console.log("password: " + result.password);
- *              }
  *            } else if (result.withBackup) {
  *              console.log('Successfully authenticated with backup password!');
  *            } else console.log('Didn\'t authenticate!');
@@ -129,7 +115,7 @@ export class AndroidFingerprintAuth {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static show(options: AndroidFingerprintAuthOptions): Promise<{
+  static encrypt(options: AndroidFingerprintAuthOptions): Promise<{
     /**
      * Biometric authentication
      */
@@ -139,14 +125,27 @@ export class AndroidFingerprintAuth {
      */
     withBackup: boolean;
     /**
-     * The cipher mode used after fingerprint authentication.
-     */
-    cipherMode: string;
-    /**
      * FingerprintAuth.CipherMode.ENCRYPT
      * base64encoded string representation of user credentials
      */
     token: string;
+  }> {return; }
+  
+  /**
+   * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.
+   * @param options {AndroidFingerprintAuthOptions} Options
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  static decrypt(options: AndroidFingerprintAuthOptions): Promise<{
+    /**
+     * Biometric authentication
+     */
+    withFingerprint: boolean;
+    /**
+     * Authentication using backup credential activity
+     */
+    withBackup: boolean;
     /**
      * FingerprintAuth.CipherMode.DECRYPT
      * Decrypted password
