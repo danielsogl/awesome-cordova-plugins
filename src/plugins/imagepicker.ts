@@ -20,6 +20,14 @@ export interface ImagePickerOptions {
    * Quality of images, defaults to 100
    */
   quality?: number;
+
+  /**
+   * output type, defaults to FILE_URIs.
+   * available options are 
+   * window.imagePicker.OutputType.FILE_URI (0) or 
+   * window.imagePicker.OutputType.BASE64_STRING (1)
+   */
+  outputType?: number;
 }
 
 /**
