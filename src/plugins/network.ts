@@ -40,7 +40,7 @@ declare var navigator: any;
  *
  * ```
  * @advanced
- * The `connection` property will return one of the following connection types: `unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
+ * The `type` property will return one of the following connection types: `unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
  */
 @Plugin({
   pluginName: 'Network',
