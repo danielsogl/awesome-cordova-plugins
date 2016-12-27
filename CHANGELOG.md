@@ -1,3 +1,24 @@
+<a name="2.2.13"></a>
+## [2.2.13](https://github.com/driftyco/ionic-native/compare/v2.2.12...v2.2.13) (2016-12-27)
+
+
+### Bug Fixes
+
+* **admob:** add adId prop to AdMobOptions ([d5dfdf8](https://github.com/driftyco/ionic-native/commit/d5dfdf8))
+* **background-mode:** isEnabled and isActive return booleans ([ba77fd7](https://github.com/driftyco/ionic-native/commit/ba77fd7)), closes [#908](https://github.com/driftyco/ionic-native/issues/908)
+* **diagnostic:** add missing types ([1841220](https://github.com/driftyco/ionic-native/commit/1841220)), closes [#905](https://github.com/driftyco/ionic-native/issues/905)
+* **diagnostic:** add permissionStatus types ([#890](https://github.com/driftyco/ionic-native/issues/890)) ([3385c1b](https://github.com/driftyco/ionic-native/commit/3385c1b))
+
+
+### Features
+
+* **android-fingerprint-auth:** update to v1.2.1 ([#910](https://github.com/driftyco/ionic-native/issues/910)) ([a1b0f88](https://github.com/driftyco/ionic-native/commit/a1b0f88))
+* **nfc:** add new functions ([#853](https://github.com/driftyco/ionic-native/issues/853)) ([c44fb75](https://github.com/driftyco/ionic-native/commit/c44fb75))
+* **onesignal:** improve typings ([#888](https://github.com/driftyco/ionic-native/issues/888)) ([56e8eae](https://github.com/driftyco/ionic-native/commit/56e8eae))
+* **sim:** add new methods ([#894](https://github.com/driftyco/ionic-native/issues/894)) ([0c36988](https://github.com/driftyco/ionic-native/commit/0c36988))
+
+
+
 <a name="2.2.12"></a>
 ## [2.2.12](https://github.com/driftyco/ionic-native/compare/v2.2.11...v2.2.12) (2016-12-16)
 
