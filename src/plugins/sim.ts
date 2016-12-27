@@ -17,6 +17,15 @@ import { Cordova, Plugin } from './plugin';
  *   (info) => console.log('Sim info: ', info),
  *   (err) => console.log('Unable to get sim info: ', err)
  * );
+ *
+ * Sim.hasReadPermission().then(
+ *   (info) => console.log('Has permission: ', info)
+ * );
+ *
+ * Sim.requestReadPermission().then(
+ *   () => console.log('Permission granted'),
+ *   () => console.log('Permission denied')
+ * );
  * ```
  */
 @Plugin({
@@ -34,4 +43,19 @@ export class Sim {
   @Cordova()
   static getSimInfo(): Promise<any> { return; }
 
+  /**
+   * Check permission
+   * Android only
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  static hasReadPermission(): Promise<any> { return; }
+
+  /**
+   * Request permission
+   * Android only
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  static requestReadPermission(): Promise<any> { return; }
 }
