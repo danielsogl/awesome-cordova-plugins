@@ -46,6 +46,7 @@ import { FileChooser } from './plugins/file-chooser';
 import { FileOpener } from './plugins/file-opener';
 import { FilePath } from './plugins/filepath';
 import { Transfer } from './plugins/filetransfer';
+import { Firebase } from './plugins/firebase';
 import { Flashlight } from './plugins/flashlight';
 import { Geofence } from './plugins/geofence';
 import { Geolocation } from './plugins/geolocation';
@@ -154,6 +155,7 @@ export * from './plugins/file';
 export * from './plugins/file-chooser';
 export * from './plugins/file-opener';
 export * from './plugins/filetransfer';
+export * from './plugins/firebase';
 export * from './plugins/filepath';
 export * from './plugins/flashlight';
 export * from './plugins/geofence';
@@ -266,6 +268,7 @@ window['IonicNative'] = {
   FileOpener,
   FilePath,
   Flashlight,
+  Firebase,
   Geofence,
   Geolocation,
   Globalization,
