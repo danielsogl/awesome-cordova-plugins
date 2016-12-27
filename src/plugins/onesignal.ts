@@ -2,6 +2,30 @@ import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
 export interface OSNotification {
+  /**
+   * Was app in focus.
+   */
+  isAppInFocus: boolean;
+  /**
+   * Was notification shown to the user. Will be false for silent notifications.
+   */
+  shown: boolean;
+  /**
+   * **ANDROID** - Android Notification assigned to the notification. Can be used to cancel or replace the notification.
+   */
+  androidNotificationId?: number;
+  /**
+   * Payload received from OneSignal.
+   */
+  payload: OSNotificationPayload;
+  /**
+   * How the notification was displayed to the user. Can be set to `Notification`, `InAppAlert`, or `None` if it was not displayed.
+   */
+  displayType: OSDisplayType;
+  /**
+   * **ANDROID** - Notification is a summary notification for a group this will contain all notification payloads it was created from.
+   */
+  groupedNotifications?: OSNotificationPayload[];
   app_id: string;
   contents: any;
   headings?: any;
@@ -80,33 +104,6 @@ export enum OSLockScreenVisibility {
    * Not shown
    */
   Secret = -1
-}
-
-export interface OSNotification {
-  /**
-   * Was app in focus.
-   */
-  isAppInFocus: boolean;
-  /**
-   * Was notification shown to the user. Will be false for silent notifications.
-   */
-  shown: boolean;
-  /**
-   * **ANDROID** - Android Notification assigned to the notification. Can be used to cancel or replace the notification.
-   */
-  androidNotificationId?: number;
-  /**
-   * Payload received from OneSignal.
-   */
-  payload: OSNotificationPayload;
-  /**
-   * How the notification was displayed to the user. Can be set to `Notification`, `InAppAlert`, or `None` if it was not displayed.
-   */
-  displayType: OSDisplayType;
-  /**
-   * **ANDROID** - Notification is a summary notification for a group this will contain all notification payloads it was created from.
-   */
-  groupedNotifications?: OSNotificationPayload[];
 }
 
 /**
@@ -289,7 +286,14 @@ export enum OSActionType {
  * OneSignal.endInit();
  * ```
  * @interfaces
- * OneSignalNotification
+ * OSNotification
+ * OSLockScreenVisibility
+ * OSDisplayType
+ * OSNotificationPayload
+ * OSActionButton
+ * OSBackgroundImageLayout
+ * OSNotificationOpenedResult
+ * OSActionType
  */
 @Plugin({
   pluginName: 'OneSignal',
