@@ -88,7 +88,7 @@ export class Stripe {
 
   /**
    * Set publishable key
-   * @param publishableKey
+   * @param publishableKey {string} Publishable key
    * @return {Promise<void>}
    */
   @Cordova()
