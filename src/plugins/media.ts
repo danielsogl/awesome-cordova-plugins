@@ -17,7 +17,11 @@ export interface MediaError {
  *
  *
  * // Create a MediaPlugin instance.  Expects path to file or url as argument
- * var file = new MediaPlugin('path/to/file.mp3');
+ * // We can optionally pass a second argument to track the status of the media
+ *
+ * const onStatusUpdate = (status) => console.log(status);
+ *
+ * const file = new MediaPlugin('path/to/file.mp3', onStatusUpdate);
  *
  * // Catch the Success & Error Output
  * // Platform Quirks
