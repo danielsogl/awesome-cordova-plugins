@@ -17,13 +17,13 @@ export interface AndroidFingerprintAuthOptions {
    * Used to create credential string for encrypted token
    */
   password?: string;
-  
+
   /**
    * Required for decrypt()
    * Encrypted user credentials to decrypt upon successful authentication.
    */
   token?: string;
-  
+
   /**
    * Set to true to remove the "USE BACKUP" button
    */
@@ -33,29 +33,29 @@ export interface AndroidFingerprintAuthOptions {
    * Change the language. (en_US or es)
    */
   locale?: string;
-  
+
   /**
    * The device max is 5 attempts. Set this parameter if you want to allow fewer than 5 attempts.
    */
   maxAttempts?: number;
-  
+
   /**
-   * Require the user to authenticate with a fingerprint to authorize every use of the key. 
-   * New fingerprint enrollment will invalidate key and require backup authenticate to 
+   * Require the user to authenticate with a fingerprint to authorize every use of the key.
+   * New fingerprint enrollment will invalidate key and require backup authenticate to
    * re-enable the fingerprint authentication dialog.
    */
   userAuthRequired?: boolean;
-  
+
   /**
    * Set the title of the fingerprint authentication dialog.
    */
   dialogTitle?: string;
-  
+
   /**
    * Set the message of the fingerprint authentication dialog.
    */
   dialogMessage?: string;
-  
+
   /**
    * Set the hint displayed by the fingerprint icon on the fingerprint authentication dialog.
    */
@@ -80,7 +80,7 @@ export interface AndroidFingerprintAuthOptions {
  *         .then(result => {
  *            if (result.withFingerprint) {
  *                console.log("Successfully encrypted credentials.");
- *                console.log("Encrypted credentials: " + result.token);   
+ *                console.log("Encrypted credentials: " + result.token);
  *            } else if (result.withBackup) {
  *              console.log('Successfully authenticated with backup password!');
  *            } else console.log('Didn\'t authenticate!');
@@ -128,7 +128,7 @@ export class AndroidFingerprintAuth {
      */
     token: string;
   }> {return; }
-  
+
   /**
    * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.
    * @param options {AndroidFingerprintAuthOptions} Options
@@ -148,7 +148,7 @@ export class AndroidFingerprintAuth {
      * FingerprintAuth.CipherMode.DECRYPT
      * Decrypted password
      */
-     password: string;
+    password: string;
   }> {return; }
 
   /**
@@ -156,12 +156,12 @@ export class AndroidFingerprintAuth {
    * @returns {Promise<any>} Returns a Promise that resolves if fingerprint auth is available on the device
    */
   @Cordova()
-  static isAvailable(): Promise<{isAvailable: boolean}> {return; }
-  
+  static isAvailable(): Promise<{isAvailable: boolean}> { return; }
+
   /**
    * Delete the cipher used for encryption and decryption by username
    * @returns {Promise<any>} Returns a Promise that resolves if the cipher was successfully deleted
    */
   @Cordova()
-  static delete(options: {clientId: string; username: string;}): Promise<{deleted: boolean}> {return; }
+  static delete(options: {clientId: string; username: string; }): Promise<{deleted: boolean}> { return; }
 }
