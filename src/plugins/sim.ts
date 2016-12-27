@@ -45,17 +45,19 @@ export class Sim {
 
   /**
    * Check permission
-   * Android only
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['Android']
+  })
   static hasReadPermission(): Promise<any> { return; }
 
   /**
    * Request permission
-   * Android only
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['Android']
+  })
   static requestReadPermission(): Promise<any> { return; }
 }
