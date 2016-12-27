@@ -47,19 +47,18 @@ export class NFC {
 
   /**
    * Registers an event listener for tags matching any tag type.
-   * @param mimeType
    * @param onSuccess
    * @param onFailure
    * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,
-    successIndex: 1,
-    errorIndex: 4,
+    successIndex: 0,
+    errorIndex: 3,
     clearFunction: 'removeTagDiscoveredListener',
     clearWithArgs: true
   })
-  static addTagDiscoveredListener(mimeType: string, onSuccess?: Function, onFailure?: Function): Observable<any> {return; }
+  static addTagDiscoveredListener(onSuccess?: Function, onFailure?: Function): Observable<any> {return; }
 
   /**
    * Registers an event listener for NDEF tags matching a specified MIME type.
@@ -152,6 +151,27 @@ export class NFC {
    */
   @Cordova()
   static enabled(): Promise<any> {return; }
+  /**
+   * Convert bytes to string
+   * @param bytes {number[]}
+   * @returns {string}
+   */
+  @Cordova({ sync: true })
+  static bytesToString(bytes: number[]): string {return; }
+  /**
+   * Convert string to bytes
+   * @param str {string}
+   * @returns {string}
+   */
+  @Cordova({ sync: true })
+  static stringToBytes(str: string): number[] {return; };
+  /**
+   * Convert bytes to hex string
+   * @param bytes {number[]}
+   * @returns {string}
+   */
+  @Cordova({ sync: true })
+  static bytesToHexString(bytes: number[]): string {return; };
 
 }
 /**
