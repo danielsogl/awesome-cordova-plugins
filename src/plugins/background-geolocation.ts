@@ -48,7 +48,7 @@ export interface BackgroundGeolocationResponse {
    * altitude if available, in meters above the WGS 84 reference ellipsoid.
    */
   altitude: number;
-  
+
   /**
     * accuracy of the altitude if available.
     */
