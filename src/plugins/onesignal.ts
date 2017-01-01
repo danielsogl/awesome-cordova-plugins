@@ -382,7 +382,7 @@ export class OneSignal {
    * Lets you retrieve the OneSignal user id and device token.
    * Your handler is called after the device is successfully registered with OneSignal.
    *
-   * @returns {Promise<{userId: string; pushToken: string}>} Returns a Promise that reolves if the device was successfully registered.
+   * @returns {Promise<Object>} Returns a Promise that resolves if the device was successfully registered.
    *
    *  userId {string} OneSignal userId is a UUID formatted string. (unique per device per app)
    *
