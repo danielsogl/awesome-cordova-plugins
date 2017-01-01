@@ -41,7 +41,10 @@ export class GoogleAnalytics {
    * @param {number} interval Optional dispatch period in seconds. Defaults to 30.
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 2,
+    errorIndex: 3
+  })
   static startTrackerWithId(id: string, interval?: number): Promise<any> { return; }
 
   /**
