@@ -89,6 +89,7 @@ import { Push } from './plugins/push';
 import { SafariViewController } from './plugins/safari-view-controller';
 import { Screenshot } from './plugins/screenshot';
 import { SecureStorage } from './plugins/securestorage';
+import { Serial } from './plugins/serial';
 import { Shake } from './plugins/shake';
 import { Sim } from './plugins/sim';
 import { SMS } from './plugins/sms';
@@ -199,6 +200,7 @@ export * from './plugins/safari-view-controller';
 export * from './plugins/screen-orientation';
 export * from './plugins/screenshot';
 export * from './plugins/securestorage';
+export * from './plugins/serial';
 export * from './plugins/shake';
 export * from './plugins/sim';
 export * from './plugins/sms';
@@ -308,6 +310,7 @@ window['IonicNative'] = {
   SafariViewController,
   Screenshot,
   SecureStorage,
+  Serial,
   Shake,
   Sim,
   SMS,
