@@ -62,18 +62,19 @@ export class NFC {
 
   /**
    * Registers an event listener for NDEF tags matching a specified MIME type.
+   * @param mimeType
    * @param onSuccess
    * @param onFailure
    * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,
-    successIndex: 0,
-    errorIndex: 3,
+    successIndex: 1,
+    errorIndex: 4,
     clearFunction: 'removeMimeTypeListener',
     clearWithArgs: true
   })
-  static addMimeTypeListener(onSuccess?: Function, onFailure?: Function): Observable<any> {return; }
+  static addMimeTypeListener(mimeType: string, onSuccess?: Function, onFailure?: Function): Observable<any> {return; }
 
   /**
    * Registers an event listener for formatable NDEF tags.
