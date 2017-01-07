@@ -81,7 +81,7 @@ export class InAppBrowser {
 
   /**
    * Injects JavaScript code into the InAppBrowser window.
-   * @param script    Details of the script to run, specifying either a file or code key.
+   * @param script {Object} Details of the script to run, specifying either a file or code key.
    * @returns {Promise<any>}
    */
   @CordovaInstance()
@@ -89,11 +89,11 @@ export class InAppBrowser {
 
   /**
    * Injects CSS into the InAppBrowser window.
-   * @param {Object}       Details of the script to run, specifying either a file or code key.
+   * @param css {Object} Details of the script to run, specifying either a file or code key.
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  insertCss(css: {file?: string, code?: string}): Promise<any> {return; }
+  insertCSS(css: {file?: string, code?: string}): Promise<any> {return; }
 
   /**
    * A method that allows you to listen to events happening in the browser.
