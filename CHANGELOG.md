@@ -1,3 +1,24 @@
+<a name="2.2.14"></a>
+## [2.2.14](https://github.com/driftyco/ionic-native/compare/v2.2.13...v2.2.14) (2017-01-07)
+
+
+### Bug Fixes
+
+* **google-analytics:** fix startTrackerWithId when interval is not provided ([49fe24d](https://github.com/driftyco/ionic-native/commit/49fe24d))
+* **google-plus:** fixes login without options ([ca14bf6](https://github.com/driftyco/ionic-native/commit/ca14bf6)), closes [#932](https://github.com/driftyco/ionic-native/issues/932)
+* **inappbrowser:** fix insertCSS method name ([de07df6](https://github.com/driftyco/ionic-native/commit/de07df6)), closes [#921](https://github.com/driftyco/ionic-native/issues/921)
+* **mixpanel:** fix issue when not passing eventProperties ([#927](https://github.com/driftyco/ionic-native/issues/927)) ([bbf75bc](https://github.com/driftyco/ionic-native/commit/bbf75bc))
+* **nfc:** add missing param for addMimeTypeListener ([#937](https://github.com/driftyco/ionic-native/issues/937)) ([ca60c5b](https://github.com/driftyco/ionic-native/commit/ca60c5b))
+* **push:** fix typing for additionalData ([0d6997c](https://github.com/driftyco/ionic-native/commit/0d6997c)), closes [#868](https://github.com/driftyco/ionic-native/issues/868)
+
+
+### Features
+
+* **background-geolocation:** add altitudeAccuracy into response typings ([#922](https://github.com/driftyco/ionic-native/issues/922)) ([8eb656c](https://github.com/driftyco/ionic-native/commit/8eb656c))
+* **market:** add search method, return promises ([d62779a](https://github.com/driftyco/ionic-native/commit/d62779a))
+
+
+
 <a name="2.2.13"></a>
 ## [2.2.13](https://github.com/driftyco/ionic-native/compare/v2.2.12...v2.2.13) (2016-12-27)
 
