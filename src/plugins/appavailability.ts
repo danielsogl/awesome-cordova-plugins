@@ -16,7 +16,7 @@ import { Cordova, Plugin } from './plugin';
  *
  * if (Device.platform === 'iOS') {
  *   app = 'twitter://';
- * } else if (device.platform === 'Android') {
+ * } else if (Device.platform === 'Android') {
  *   app = 'com.twitter.android';
  * }
  *
