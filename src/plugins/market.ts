@@ -30,7 +30,7 @@ export class Market {
     successName: 'success',
     errorName: 'failure'
   })
-  static open(appId: string): Promise<any> { return }
+  static open(appId: string): Promise<any> { return; }
 
   /**
    * Search apps by keyword
@@ -43,6 +43,6 @@ export class Market {
     errorName: 'failure',
     platforms: ['Android']
   })
-  static search(keyword: string): Promise<any> { return }
+  static search(keyword: string): Promise<any> { return; }
 
 }

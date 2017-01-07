@@ -130,7 +130,7 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
   } catch (e) {
     value = {
       error: 'cordova_not_available'
-    }
+    };
   }
   return value;
 }
