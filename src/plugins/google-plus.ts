@@ -25,7 +25,10 @@ export class GooglePlus {
    * @param options
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2
+  })
   static login(options?: any): Promise<any> { return; }
 
   /**
