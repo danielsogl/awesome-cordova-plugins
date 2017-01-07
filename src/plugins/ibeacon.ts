@@ -237,7 +237,7 @@ export interface IBeaconDelegate {
  * // Request permission to use location on iOS
  * IBeacon.requestAlwaysAuthorization();
  * // create a new delegate and register it with the native layer
- * let delegate = IBeacon.IBeaconDelegate();
+ * let delegate = IBeacon.Delegate();
  *
  * // Subscribe to some of the delegate's event handlers
  * delegate.didRangeBeaconsInRegion()
