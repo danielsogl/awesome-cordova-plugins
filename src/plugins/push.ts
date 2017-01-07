@@ -36,7 +36,7 @@ export interface NotificationEventResponse {
   /**
    * An optional collection of data sent by the 3rd party push service that does not fit in the above properties.
    */
-  additionalData: NotificationEventAdditionalData;
+  additionalData: NotificationEventAdditionalData | any;
 }
 
 /**
