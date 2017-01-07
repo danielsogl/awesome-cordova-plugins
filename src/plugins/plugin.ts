@@ -124,7 +124,15 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
   }
 
   // TODO: Illegal invocation needs window context
-  return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
+  let value;
+  try {
+    value = get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
+  } catch (e) {
+    value = {
+      error: 'cordova_not_available'
+    }
+  }
+  return value;
 }
 
 /**
