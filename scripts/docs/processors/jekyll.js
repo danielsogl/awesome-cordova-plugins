@@ -20,7 +20,9 @@ module.exports = function jekyll(renderDocsProcessor) {
         doc.outputPath = doc.outputPath.toLowerCase().replace(' ', '-');
         docs[i].URL = doc.outputPath.replace('docs/v2//', 'docs/v2/')
                                     .replace('/index.md', '')
-                                    .replace('content/','');
+                                    .replace('content/', '');
+
+        docs[i].demo = !!docs[i].demo;
       });
 
       docs.push({
