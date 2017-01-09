@@ -26,7 +26,7 @@ export interface OSNotification {
    * **ANDROID** - Notification is a summary notification for a group this will contain all notification payloads it was created from.
    */
   groupedNotifications?: OSNotificationPayload[];
-  app_id: string;
+  app_id?: string;
   contents: any;
   headings?: any;
   isIos?: boolean;
