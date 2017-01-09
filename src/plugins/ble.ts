@@ -205,7 +205,7 @@ export class BLE {
   @Cordova({
     observable: true,
     clearFunction: 'stopScan',
-    clearWithArgs: true
+    clearWithArgs: false
   })
   static startScan(services: string[]): Observable<any> { return; }
 
@@ -218,7 +218,7 @@ export class BLE {
   @Cordova({
     observable: true,
     clearFunction: 'stopScan',
-    clearWithArgs: true
+    clearWithArgs: false
   })
   static startScanWithOptions(services: string[], options: {reportDuplicates?: boolean} | any): Observable<any> { return; }
 
