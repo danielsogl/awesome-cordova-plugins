@@ -20,7 +20,7 @@ import { Plugin, Cordova } from './plugin';
 @Plugin({
   pluginName: 'LaunchReview',
   plugin: 'cordova-launch-review',
-  pluginRef: 'launchReview',
+  pluginRef: 'LaunchReview',
   repo: 'https://github.com/dpa99c/cordova-launch-review',
   platforms: ['Android', 'iOS']
 })
