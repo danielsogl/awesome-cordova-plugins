@@ -39,9 +39,9 @@ export interface SerialOpenOptions {
  */
 @Plugin({
   pluginName: 'Serial',
-  plugin: 'cordovarduino', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'serial', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/xseignard/cordovarduino', // the github repository URL for the plugin
+  plugin: 'cordovarduino',
+  pluginRef: 'serial',
+  repo: 'https://github.com/xseignard/cordovarduino',
   platforms: ['Android']
 })
 export class Serial {
