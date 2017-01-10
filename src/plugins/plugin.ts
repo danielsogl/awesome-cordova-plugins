@@ -108,7 +108,7 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 
   let pluginInstance = getPlugin(pluginObj.pluginRef);
 
-  if (!pluginInstance) {
+  if (!pluginInstance || !pluginInstance.hasOwnProperty(methodName)) {
     // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
     if (!window.cordova) {
       cordovaWarn(pluginObj.pluginName, methodName);
@@ -123,17 +123,7 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
     };
   }
 
-  // TODO: Illegal invocation needs window context
-  const ref = get(window, pluginObj.pluginRef);
-
-  if (ref && ref.hasOwnProperty(methodName)) {
-    return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
-  } else {
-    pluginWarn(pluginObj, methodName);
-    return {
-      error: 'plugin_not_installed'
-    };
-  }
+  return pluginInstance[methodName].apply(pluginInstance, args);
 }
 
 /**
