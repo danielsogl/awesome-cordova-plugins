@@ -41,7 +41,7 @@
     "semver": "^5.0.1",
     "tsify": "~1.0.4",
     "tslint": "^3.15.1",
-    "tslint-ionic-rules": "0.0.5",
+    "tslint-ionic-rules": "0.0.7",
     "typescript": "~2.0.10",
     "watchify": "~3.7.0"
   },
