@@ -24,6 +24,7 @@ export interface EmailComposerOptions {
 
 
 /**
+ * @beta
  * @name Email Composer
  * @description
  *
