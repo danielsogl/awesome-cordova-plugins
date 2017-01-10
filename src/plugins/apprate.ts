@@ -47,7 +47,7 @@ export interface AppRatePreferences {
   /**
    * App Store URLS
    */
-  storeAppUrl?: AppRateStoreAppUrls;
+  storeAppURL?: AppRateStoreAppUrls;
 
 }
 
