@@ -76,7 +76,7 @@ module.exports = function(currentVersion) {
 
   versions = [];
   // new version, add it to the versions list
-  if (currentVersion != 'nightly' && !_.contains(versions, currentVersion)) {
+  if (currentVersion != 'nightly' && !_.includes(versions, currentVersion)) {
     versions.unshift(currentVersion);
   }
   //First semver valid version is latest
