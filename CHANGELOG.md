@@ -1,3 +1,8 @@
+<a name="2.2.16"></a>
+## [2.2.16](https://github.com/driftyco/ionic-native/compare/v2.2.15...v2.2.16) (2017-01-11)
+
+
+
 <a name="2.2.15"></a>
 ## [2.2.15](https://github.com/driftyco/ionic-native/compare/v2.2.14...v2.2.15) (2017-01-11)
 
