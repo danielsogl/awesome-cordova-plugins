@@ -200,7 +200,9 @@ docType: "<$ doc.docType $>"
     Delegate: <$ doc.delegate $>
   </small>
   <@ endif @>
-
+  <@- if doc.beta == true -@>
+    <span class="beta" title="beta">&beta;</span>
+  <@- endif -@>
 </h1>
 
 <a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
@@ -213,6 +215,15 @@ docType: "<$ doc.docType $>"
 <@- if doc.decorators @>
 
 <@ for prop in doc.decorators[0].argumentInfo @>
+
+<@ if doc.beta == true @>
+<p class="beta-notice">
+  This plugin is still in beta stage and may not work as expected. Please
+  submit and issues to the <a target="_blank"
+  href="<$ prop.repo $>/issues">plugin repo</a>.
+</p>
+<@ endif @>
+
 <pre><code>$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif -@></code></pre>
 <p>Repo:
   <a href="<$ prop.repo $>">
@@ -244,7 +255,7 @@ docType: "<$ doc.docType $>"
 <!-- @platforms tag end -->
 <@ endif @>
 <@ endfor @>
-<@ endif -@>
+<@ endif -@><!-- if doc.decorators -->
 
 <!-- @usage tag -->
 <@ if doc.usage @>

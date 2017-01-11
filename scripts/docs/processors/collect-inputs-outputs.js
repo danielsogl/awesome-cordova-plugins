@@ -7,7 +7,7 @@ module.exports = function collectInputsOutputs() {
 
         if (doc.statics && doc.statics.length) {
           for (var i in doc.statics) {
-            // identify properties to differentiate from statics
+            // identify properties to differentiate from methods
             if (typeof doc.statics[i].parameters == 'undefined') {
               doc.statics[i].isProperty = true;
             }
