@@ -162,7 +162,7 @@ export class NFC {
   /**
    * Convert string to bytes
    * @param str {string}
-   * @returns {string}
+   * @returns {number[]}
    */
   @Cordova({ sync: true })
   static stringToBytes(str: string): number[] {return; };
