@@ -108,7 +108,7 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 
   let pluginInstance = getPlugin(pluginObj.pluginRef);
 
-  if (!pluginInstance || !pluginInstance.hasOwnProperty(methodName)) {
+  if (!pluginInstance || pluginInstance[methodName] === 'undefined') {
     // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
     if (!window.cordova) {
       cordovaWarn(pluginObj.pluginName, methodName);
