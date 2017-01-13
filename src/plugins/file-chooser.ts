@@ -11,8 +11,8 @@ import { Plugin, Cordova } from './plugin';
  * import {FileChooser} from 'ionic-native';
  *
  * FileChooser.open()
- *   .then(uri => console.log(uri);
- *   .catch(e => console.log(e);
+ *   .then(uri => console.log(uri));
+ *   .catch(e => console.log(e));
  *
  * ```
  */
