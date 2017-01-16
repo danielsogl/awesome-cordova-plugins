@@ -1,6 +1,6 @@
 import { initAngular1 } from './ng1';
 
-const DEVICE_READY_TIMEOUT = 2000;
+const DEVICE_READY_TIMEOUT = 5000;
 
 declare var window;
 
