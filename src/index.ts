@@ -13,6 +13,7 @@ import { AppVersion } from './plugins/appversion';
 import { Badge } from './plugins/badge';
 import { BackgroundGeolocation } from './plugins/background-geolocation';
 import { BackgroundMode } from './plugins/backgroundmode';
+import { Backlight } from './plugins/backlight';
 import { BarcodeScanner } from './plugins/barcodescanner';
 import { Base64ToGallery } from './plugins/base64togallery';
 import { BatteryStatus } from './plugins/batterystatus';
@@ -121,6 +122,7 @@ export * from './plugins/apprate';
 export * from './plugins/appversion';
 export * from './plugins/background-geolocation';
 export * from './plugins/backgroundmode';
+export * from './plugins/backlight';
 export * from './plugins/badge';
 export * from './plugins/barcodescanner';
 export * from './plugins/base64togallery';
@@ -233,6 +235,7 @@ window['IonicNative'] = {
   Badge,
   BackgroundGeolocation,
   BackgroundMode,
+  Backlight,
   BarcodeScanner,
   Base64ToGallery,
   BatteryStatus,
