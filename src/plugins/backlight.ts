@@ -1,6 +1,7 @@
 import { Plugin, Cordova } from './plugin';
 
 /**
+ * @beta
  * @name Backlight
  * @description
  * This plugin adds turning on/off the device backlight.
