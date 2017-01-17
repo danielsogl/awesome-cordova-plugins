@@ -132,4 +132,10 @@ export class MusicControls {
   @Cordova({sync: true})
   static updateIsPlaying(isPlaying: boolean): void {}
 
+  /**
+   * Toggle dismissable:
+   * @param dismissable {boolean}
+   */
+  @Cordova({sync: true})
+  static updateDismissable(dismissable: boolean): void {}
 }
