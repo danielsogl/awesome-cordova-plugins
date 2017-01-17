@@ -385,8 +385,8 @@ export class File {
   };
 
   /**
-   * Get free disk space
-   * @returns {Promise<number>} Returns a promise that resolves with the remaining free disk space
+   * Get free disk space in Bytes
+   * @returns {Promise<number>} Returns a promise that resolves with the remaining free disk space in Bytes
    */
   static getFreeDiskSpace(): Promise<number> {
     return new Promise<any>((resolve, reject) => {
