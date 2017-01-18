@@ -61,7 +61,7 @@ export interface AppRateCallbacks {
   /**
    * call back function. called when rate-dialog showing
    */
-  onRateDialogShowed?: Function;
+  onRateDialogShow?: Function;
 
 }
 
