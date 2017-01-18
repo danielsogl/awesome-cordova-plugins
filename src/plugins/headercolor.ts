@@ -15,7 +15,7 @@ import { Plugin, Cordova } from './plugin';
 @Plugin({
   name: 'HeaderColor',
   plugin: 'cordova-plugin-headercolor',
-  pluginRef: 'headercolor',
+  pluginRef: 'plugins.headerColor',
   repo: 'https://github.com/tomloprod/cordova-plugin-headercolor',
   platforms: ['Android']
 })
