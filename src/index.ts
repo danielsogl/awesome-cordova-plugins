@@ -162,7 +162,7 @@ export * from './plugins/geolocation';
 export * from './plugins/globalization';
 export * from './plugins/google-plus';
 export * from './plugins/googleanalytics';
-export * from './plugins/googlemaps';
+export * from './plugins/googlemap';
 export * from './plugins/headercolor';
 export * from './plugins/hotspot';
 export * from './plugins/http';
