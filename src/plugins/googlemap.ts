@@ -60,8 +60,9 @@ export const GoogleMapsAnimation = {
  *
  * loadMap() {
  *  // make sure to create following structure in your view.html file
+ *  // and add a height (for example 100%) to it, else the map won't be visible
  *  // <ion-content>
- *  //  <div #map id="map"></div>
+ *  //  <div #map id="map" style="height:100%;"></div>
  *  // </ion-content>
  *
  *  // create a new map by passing HTMLElement
