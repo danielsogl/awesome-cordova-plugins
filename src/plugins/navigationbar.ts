@@ -17,14 +17,14 @@ import { Cordova, Plugin } from './plugin';
 @Plugin({
   name: 'NavigationBar',
   plugin: 'cordova-plugin-navigationbar',
-  pluginRef: 'plugins.navigationbar',
+  pluginRef: 'navigationbar',
   repo: 'https://github.com/cranberrygame/cordova-plugin-navigationbar',
   platforms: ['Android']
 })
 export class NavigationBar {
 
   /**
-   * Hide the navigation bar.
+   * hide automatically (or not) the navigation bar.
    * @param autohide {boolean}  
    * @return {Promise<any>}
    */
@@ -35,4 +35,15 @@ export class NavigationBar {
   })
   static setUp(autohide?: boolean = false): Promise<any> { return; }
 
+  /**
+   * Hide the navigation bar. 
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    callbackStyle: 'object',
+    successName: 'success',
+    errorName: 'failure'
+  })
+  static hideNavigationBar(): Promise<any> { return; }
+  
 }
