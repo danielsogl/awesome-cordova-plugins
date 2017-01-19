@@ -23,7 +23,8 @@ export class HeaderColor {
 
   /**
    * Set a color to the task header
-   * @param color {string} The color 
+   * @param color {string} The hex value of the color
+   * @returns {Promise<any>}
    */
   @Cordova({
     callbackStyle: 'object',
