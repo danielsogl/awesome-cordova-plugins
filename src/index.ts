@@ -54,6 +54,7 @@ import { Globalization } from './plugins/globalization';
 import { GooglePlus } from './plugins/google-plus';
 import { GoogleMap } from './plugins/googlemap';
 import { GoogleAnalytics } from './plugins/googleanalytics';
+import { HeaderColor } from './plugins/headercolor';
 import { Hotspot } from  './plugins/hotspot';
 import { HTTP } from  './plugins/http';
 import { Httpd } from './plugins/httpd';
@@ -166,6 +167,7 @@ export * from './plugins/globalization';
 export * from './plugins/google-plus';
 export * from './plugins/googleanalytics';
 export * from './plugins/googlemap';
+export * from './plugins/headercolor';
 export * from './plugins/hotspot';
 export * from './plugins/http';
 export * from './plugins/httpd';
@@ -279,6 +281,7 @@ window['IonicNative'] = {
   GooglePlus,
   GoogleMap,
   GoogleAnalytics,
+  HeaderColor,
   Hotspot,
   HTTP,
   Httpd,
