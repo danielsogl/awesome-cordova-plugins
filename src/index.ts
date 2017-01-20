@@ -13,12 +13,14 @@ import { AppVersion } from './plugins/appversion';
 import { Badge } from './plugins/badge';
 import { BackgroundGeolocation } from './plugins/background-geolocation';
 import { BackgroundMode } from './plugins/backgroundmode';
+import { Backlight } from './plugins/backlight';
 import { BarcodeScanner } from './plugins/barcodescanner';
 import { Base64ToGallery } from './plugins/base64togallery';
 import { BatteryStatus } from './plugins/batterystatus';
 import { Brightness } from './plugins/brightness';
 import { BLE } from './plugins/ble';
 import { BluetoothSerial } from './plugins/bluetoothserial';
+import { Broadcaster } from './plugins/broadcaster';
 import { Calendar } from './plugins/calendar';
 import { CallNumber } from './plugins/call-number';
 import { Camera } from './plugins/camera';
@@ -69,6 +71,7 @@ import { Instagram } from './plugins/instagram';
 import { IsDebug } from './plugins/is-debug';
 import { Keyboard } from './plugins/keyboard';
 import { LaunchNavigator } from './plugins/launchnavigator';
+import { LaunchReview } from './plugins/launch-review';
 import { LocalNotifications } from './plugins/localnotifications';
 import { LocationAccuracy } from './plugins/location-accuracy';
 import { MediaCapture } from './plugins/media-capture';
@@ -95,10 +98,12 @@ import { Rollbar } from './plugins/rollbar';
 import { SafariViewController } from './plugins/safari-view-controller';
 import { Screenshot } from './plugins/screenshot';
 import { SecureStorage } from './plugins/securestorage';
+import { Serial } from './plugins/serial';
 import { Shake } from './plugins/shake';
 import { Sim } from './plugins/sim';
 import { SMS } from './plugins/sms';
 import { SocialSharing } from './plugins/socialsharing';
+import { SpeechRecognition } from './plugins/speech-recognition';
 import { SpinnerDialog } from './plugins/spinnerdialog';
 import { Splashscreen } from './plugins/splashscreen';
 import { SQLite } from './plugins/sqlite';
@@ -128,6 +133,7 @@ export * from './plugins/apprate';
 export * from './plugins/appversion';
 export * from './plugins/background-geolocation';
 export * from './plugins/backgroundmode';
+export * from './plugins/backlight';
 export * from './plugins/badge';
 export * from './plugins/barcodescanner';
 export * from './plugins/base64togallery';
@@ -135,6 +141,7 @@ export * from './plugins/batterystatus';
 export * from './plugins/ble';
 export * from './plugins/bluetoothserial';
 export * from './plugins/brightness';
+export * from './plugins/broadcaster';
 export * from './plugins/calendar';
 export * from './plugins/call-number';
 export * from './plugins/camera';
@@ -185,6 +192,7 @@ export * from './plugins/instagram';
 export * from './plugins/is-debug';
 export * from './plugins/keyboard';
 export * from './plugins/launchnavigator';
+export * from './plugins/launch-review';
 export * from './plugins/localnotifications';
 export * from './plugins/location-accuracy';
 export * from './plugins/market';
@@ -212,10 +220,12 @@ export * from './plugins/safari-view-controller';
 export * from './plugins/screen-orientation';
 export * from './plugins/screenshot';
 export * from './plugins/securestorage';
+export * from './plugins/serial';
 export * from './plugins/shake';
 export * from './plugins/sim';
 export * from './plugins/sms';
 export * from './plugins/socialsharing';
+export * from './plugins/speech-recognition';
 export * from './plugins/spinnerdialog';
 export * from './plugins/splashscreen';
 export * from './plugins/sqlite';
@@ -247,12 +257,14 @@ window['IonicNative'] = {
   Badge,
   BackgroundGeolocation,
   BackgroundMode,
+  Backlight,
   BarcodeScanner,
   Base64ToGallery,
   BatteryStatus,
   Brightness,
   BLE,
   BluetoothSerial,
+  Broadcaster,
   Calendar,
   CallNumber,
   Camera,
@@ -302,6 +314,7 @@ window['IonicNative'] = {
   IsDebug,
   Keyboard,
   LaunchNavigator,
+  LaunchReview,
   LocalNotifications,
   LocationAccuracy,
   Market,
@@ -328,6 +341,7 @@ window['IonicNative'] = {
   SafariViewController,
   Screenshot,
   SecureStorage,
+  Serial,
   Shake,
   Sim,
   SMS,
@@ -336,6 +350,7 @@ window['IonicNative'] = {
   Splashscreen,
   SQLite,
   StatusBar,
+  SpeechRecognition,
   Stepcounter,
   StreamingMedia,
   Stripe,
