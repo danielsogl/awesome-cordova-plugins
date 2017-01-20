@@ -100,6 +100,7 @@ import { SQLite } from './plugins/sqlite';
 import { StatusBar } from './plugins/statusbar';
 import { Stepcounter } from './plugins/stepcounter';
 import { StreamingMedia } from './plugins/streaming-media';
+import { Stripe } from './plugins/stripe';
 import { ThreeDeeTouch } from './plugins/3dtouch';
 import { Toast } from './plugins/toast';
 import { TouchID } from './plugins/touchid';
@@ -211,6 +212,7 @@ export * from './plugins/sqlite';
 export * from './plugins/statusbar';
 export * from './plugins/stepcounter';
 export * from './plugins/streaming-media';
+export * from './plugins/stripe';
 export * from './plugins/text-to-speech';
 export * from './plugins/themeable-browser';
 export * from './plugins/toast';
@@ -321,6 +323,7 @@ window['IonicNative'] = {
   StatusBar,
   Stepcounter,
   StreamingMedia,
+  Stripe,
   ThreeDeeTouch,
   Toast,
   TouchID,
