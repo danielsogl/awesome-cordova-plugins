@@ -1,6 +1,7 @@
 import { Plugin, Cordova } from './plugin';
 
 /**
+ * @beta
  * @name Rollbar
  * @description
  * This plugin adds Rollbar App monitoring to your application
