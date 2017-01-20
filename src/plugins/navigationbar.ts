@@ -34,7 +34,7 @@ export class NavigationBar {
     successName: 'success',
     errorName: 'failure'
   })
-  static setUp(autohide?: boolean = false): Promise<any> { return; }
+  static setUp(autohide?: boolean): Promise<any> { return; }
 
   /**
    * Hide the navigation bar. 
