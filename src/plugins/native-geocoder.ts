@@ -18,7 +18,8 @@ import { Plugin, Cordova } from './plugin';
  *   .catch((error: any) => console.log(error));
  * ```
  * @interfaces
- *
+ * NativeGeocoderReverseResult
+ * NativeGeocoderForwardResult
  */
 @Plugin({
   name: 'NativeGeocoder',
