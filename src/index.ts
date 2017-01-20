@@ -90,6 +90,7 @@ import { PinDialog } from './plugins/pin-dialog';
 import { PowerManagement } from './plugins/power-management';
 import { Printer } from './plugins/printer';
 import { Push } from './plugins/push';
+import { Rollbar } from './plugins/rollbar';
 import { SafariViewController } from './plugins/safari-view-controller';
 import { Screenshot } from './plugins/screenshot';
 import { SecureStorage } from './plugins/securestorage';
@@ -204,6 +205,7 @@ export * from './plugins/plugin';
 export * from './plugins/power-management';
 export * from './plugins/printer';
 export * from './plugins/push';
+export * from './plugins/rollbar';
 export * from './plugins/safari-view-controller';
 export * from './plugins/screen-orientation';
 export * from './plugins/screenshot';
@@ -319,6 +321,7 @@ window['IonicNative'] = {
   ScreenOrientation,
   PinDialog,
   PowerManagement,
+  Rollbar,
   SafariViewController,
   Screenshot,
   SecureStorage,
