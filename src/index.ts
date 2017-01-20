@@ -70,6 +70,7 @@ import { LocalNotifications } from './plugins/localnotifications';
 import { LocationAccuracy } from './plugins/location-accuracy';
 import { MediaCapture } from './plugins/media-capture';
 import { NativeAudio } from './plugins/native-audio';
+import { NativeGeocoder } from './plugins/native-geocoder';
 import { NativePageTransitions } from './plugins/native-page-transitions';
 import { NativeStorage } from './plugins/nativestorage';
 import { Market } from './plugins/market';
@@ -183,6 +184,7 @@ export * from './plugins/media-capture';
 export * from './plugins/mixpanel';
 export * from './plugins/music-controls';
 export * from './plugins/native-audio';
+export * from './plugins/native-geocoder';
 export * from './plugins/native-page-transitions';
 export * from './plugins/nativestorage';
 export * from './plugins/network';
@@ -293,6 +295,7 @@ window['IonicNative'] = {
   Mixpanel,
   MusicControls,
   NativeAudio,
+  NativeGeocoder,
   NativePageTransitions,
   NativeStorage,
   Network,
