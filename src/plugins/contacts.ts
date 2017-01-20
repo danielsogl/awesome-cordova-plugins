@@ -81,7 +81,7 @@ export class Contact implements IContactProperties {
     let newContact = new Contact();
     for (let prop in this) {
       if (prop === 'id') return;
-      newContact[prop] = this[prop];
+      (<any>newContact)[prop] = (<any>this)[prop];
     }
     return newContact;
   }
@@ -90,8 +90,8 @@ export class Contact implements IContactProperties {
   remove(): Promise<any> { return; }
 
   save(): Promise<any> {
-    return getPromise((resolve, reject) => {
-      this._objectInstance.save((contact) => {
+    return getPromise((resolve: Function, reject: Function) => {
+      this._objectInstance.save((contact: any) => {
         this._objectInstance = contact;
         resolve(this);
       }, reject);
@@ -304,8 +304,8 @@ export class Contacts {
    * @returns {Promise<Contact[]>} Returns a Promise that resolves with the search results (an array of Contact objects)
    */
   static find(fields: ContactFieldType[], options?: IContactFindOptions): Promise<Contact[]> {
-    return getPromise((resolve, reject) => {
-      navigator.contacts.find(fields, (contacts) => {
+    return getPromise((resolve: Function, reject: Function) => {
+      navigator.contacts.find(fields, (contacts: any[]) => {
         resolve(contacts.map(processContact));
       }, reject, options);
     });
@@ -316,8 +316,8 @@ export class Contacts {
    * @returns {Promise<Contact>} Returns a Promise that resolves with the selected Contact
    */
   static pickContact(): Promise<Contact> {
-    return getPromise((resolve, reject) => {
-      navigator.contacts.pickContact((contact) => resolve(processContact(contact)), reject);
+    return getPromise((resolve: Function, reject: Function) => {
+      navigator.contacts.pickContact((contact: any) => resolve(processContact(contact)), reject);
     });
   }
 
@@ -326,11 +326,11 @@ export class Contacts {
 /**
  * @private
  */
-function processContact(contact) {
+function processContact(contact: any) {
   let newContact = new Contact();
   for (let prop in contact) {
     if (typeof contact[prop] === 'function') continue;
-    newContact[prop] = contact[prop];
+    (<any>newContact)[prop] = contact[prop];
   }
   return newContact;
 }

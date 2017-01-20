@@ -2,7 +2,7 @@ import { initAngular1 } from './ng1';
 
 const DEVICE_READY_TIMEOUT = 5000;
 
-declare var window;
+declare var window: any;
 
 import { ActionSheet } from './plugins/actionsheet';
 import { AdMob } from './plugins/admob';

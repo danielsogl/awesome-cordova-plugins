@@ -1,5 +1,6 @@
 import { Plugin, CordovaInstance } from './plugin';
 import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 import { InAppBrowserEvent } from './inappbrowser';
 
 declare var cordova: any;
@@ -206,7 +207,7 @@ export class ThemeableBrowser {
    * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
    */
   on(event: string): Observable<InAppBrowserEvent> {
-    return new Observable<InAppBrowserEvent>((observer) => {
+    return new Observable<InAppBrowserEvent>((observer: Observer<InAppBrowserEvent>) => {
       this._objectInstance.addEventListener(event, observer.next.bind(observer));
       return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
     });

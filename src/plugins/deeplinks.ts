@@ -83,7 +83,7 @@ export class Deeplinks {
   /**
    * Define a set of paths to match against incoming deeplinks.
    *
-   * @param {paths} Define a set of paths to match against incoming deeplinks.
+   * @param paths {any} Define a set of paths to match against incoming deeplinks.
    * paths takes an object of the form { 'path': data }. If a deeplink
    * matches the path, the resulting path-data pair will be returned in the
    * promise result which you can then use to navigate in the app as you see fit.
@@ -93,7 +93,7 @@ export class Deeplinks {
   @Cordova({
     observable: true
   })
-  static route(paths): Observable<DeeplinkMatch> { return; }
+  static route(paths: any): Observable<DeeplinkMatch> { return; }
 
   /**
    *
@@ -105,7 +105,8 @@ export class Deeplinks {
    * This handler will automatically navigate when a route matches. If you need finer-grained
    * control over the behavior of a matching deeplink, use the plain `route` method.
    *
-   * @param {paths} Define a set of paths to match against incoming deeplinks.
+   * @param navController {NavController} Ionic 2 NavController
+   * @param paths {any} Define a set of paths to match against incoming deeplinks.
    * paths takes an object of the form { 'path': data }. If a deeplink
    * matches the path, the resulting path-data pair will be returned in the
    * promise result which you can then use to navigate in the app as you see fit.
@@ -116,6 +117,6 @@ export class Deeplinks {
   @Cordova({
     observable: true
   })
-  static routeWithNavController(navController, paths): Observable<DeeplinkMatch> { return; }
+  static routeWithNavController(navController: any, paths: any): Observable<DeeplinkMatch> { return; }
 
 }

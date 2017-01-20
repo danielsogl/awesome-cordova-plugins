@@ -1,6 +1,6 @@
 import { Cordova, Plugin } from './plugin';
 
-declare var window;
+declare var window: any;
 
 /**
  * @name Google Analytics

@@ -1,7 +1,7 @@
 import {Cordova, CordovaInstance, Plugin, pluginWarn, InstanceProperty} from './plugin';
 
 
-declare var sqlitePlugin;
+declare var sqlitePlugin: any;
 
 /**
  * @name SQLite
@@ -73,10 +73,10 @@ export class SQLite {
   openDatabase(config: any): Promise<any> {
     return new Promise((resolve, reject) => {
       if (typeof sqlitePlugin !== 'undefined') {
-        sqlitePlugin.openDatabase(config, db => {
+        sqlitePlugin.openDatabase(config, (db: any) => {
           this._objectInstance = db;
           resolve(db);
-        }, error => {
+        }, (error: any) => {
           console.warn(error);
           reject(error);
         });
@@ -140,7 +140,7 @@ export class SQLite {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  addStatement(sql, values): Promise<any> { return; }
+  addStatement(sql: string, values: any): Promise<any> { return; }
 
   /**
    * @param sqlStatements {any}
@@ -161,7 +161,7 @@ export class SQLite {
   @CordovaInstance({
     sync: true
   })
-  handleStatementSuccess(handler, response): void { }
+  handleStatementSuccess(handler: any, response: any): void { }
 
   /**
    * @param handler
@@ -170,7 +170,7 @@ export class SQLite {
   @CordovaInstance({
     sync: true
   })
-  handleStatementFailure(handler, response): void { }
+  handleStatementFailure(handler: any, response: any): void { }
 
 
   @CordovaInstance({
@@ -184,7 +184,7 @@ export class SQLite {
   @CordovaInstance({
     sync: true
   })
-  abort(txFailure): void { }
+  abort(txFailure: any): void { }
 
 
   @CordovaInstance({
@@ -198,7 +198,7 @@ export class SQLite {
   @CordovaInstance({
     sync: true
   })
-  abortFromQ(sqlerror): void { }
+  abortFromQ(sqlerror: any): void { }
 
   /**
    * @returns {Promise<any>}
@@ -211,6 +211,6 @@ export class SQLite {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static deleteDatabase(first): Promise<any> { return; }
+  static deleteDatabase(first: any): Promise<any> { return; }
 
 }

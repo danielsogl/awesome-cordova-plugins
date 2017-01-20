@@ -1,8 +1,9 @@
 import { get } from '../util';
 import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
-declare var window;
-declare var Promise;
+declare var window: any;
+declare var Promise: any;
 
 /**
  * @private
@@ -52,7 +53,7 @@ function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Func
     args.unshift(reject);
     args.unshift(resolve);
   } else if (opts.callbackStyle === 'node') {
-    args.push((err, result) => {
+    args.push((err: any, result: any) => {
       if (err) {
         reject(err);
       } else {
@@ -129,11 +130,11 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 /**
  * @private
  */
-export function getPromise(cb) {
+export function getPromise(cb: Function) {
 
   const tryNativePromise = () => {
     if (window.Promise) {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve: Function, reject: Function) => {
         cb(resolve, reject);
       });
     } else {
@@ -145,7 +146,7 @@ export function getPromise(cb) {
     let injector = window.angular.element(document.querySelector('[ng-app]') || document.body).injector();
     if (injector) {
       let $q = injector.get('$q');
-      return $q((resolve, reject) => {
+      return $q((resolve: Function, reject: Function) => {
         cb(resolve, reject);
       });
     } else {
@@ -158,8 +159,8 @@ export function getPromise(cb) {
 }
 
 function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
-  let pluginResult, rej;
-  const p = getPromise((resolve, reject) => {
+  let pluginResult: any, rej: Function;
+  const p = getPromise((resolve: Function, reject: Function) => {
     pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
     rej = reject;
   });
@@ -174,7 +175,7 @@ function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any 
 }
 
 function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts: any= {}) {
-  return getPromise((resolve, reject) => {
+  return getPromise((resolve: Function, reject: Function) => {
     let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts);
     if (pluginResult && pluginResult.error) {
       reject(pluginResult.error);
@@ -184,7 +185,7 @@ function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts:
 }
 
 function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
-  return new Observable(observer => {
+  return new Observable((observer: Observer<any>) => {
     let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
     if (pluginResult && pluginResult.error) {
       observer.error(pluginResult.error);
@@ -211,12 +212,12 @@ function callInstance(pluginObj: any, methodName: string, args: any[], opts: any
 }
 
 function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
-  return (...args) => {
+  return (...args: any[]) => {
     if (opts.sync) {
       // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
       return callInstance(pluginObj, methodName, args, opts);
     } else if (opts.observable) {
-      return new Observable(observer => {
+      return new Observable((observer: Observer<any>) => {
         let pluginResult = callInstance(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
         return () => {
           try {
@@ -231,12 +232,12 @@ function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
         };
       });
     } else if (opts.otherPromise) {
-      return getPromise((resolve, reject) => {
+      return getPromise((resolve: Function, reject: Function) => {
         let result = callInstance(pluginObj, methodName, args, opts, resolve, reject);
         result.then(resolve, reject);
       });
     } else {
-      return getPromise((resolve, reject) => {
+      return getPromise((resolve: Function, reject: Function) => {
         callInstance(pluginObj, methodName, args, opts, resolve, reject);
       });
     }
@@ -249,7 +250,7 @@ function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
  * @returns {Observable}
  */
 function wrapEventObservable(event: string): Observable<any> {
-  return new Observable(observer => {
+  return new Observable((observer: Observer<any>) => {
     window.addEventListener(event, observer.next.bind(observer), false);
     return () => window.removeEventListener(event, observer.next.bind(observer), false);
   });
@@ -263,7 +264,7 @@ function wrapEventObservable(event: string): Observable<any> {
  * does just this.
  */
 function overrideFunction(pluginObj: any, methodName: string, args: any[], opts: any = {}): Observable<any> {
-  return new Observable(observer => {
+  return new Observable((observer: Observer<any>) => {
 
     let pluginInstance = getPlugin(pluginObj.pluginRef);
 
@@ -304,7 +305,7 @@ function overrideFunction(pluginObj: any, methodName: string, args: any[], opts:
  * @returns {function(...[any]): (undefined|*|Observable|*|*)}
  */
 export const wrap = function(pluginObj: any, methodName: string, opts: any = {}) {
-  return (...args) => {
+  return (...args: any[]) => {
     if (opts.sync) {
       // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
       return callCordovaPlugin(pluginObj, methodName, args, opts);
@@ -339,8 +340,8 @@ export const wrap = function(pluginObj: any, methodName: string, opts: any = {})
  *  }
  * ```
  */
-export function Plugin(config) {
-  return function(cls) {
+export function Plugin(config: any) {
+  return function(cls: any) {
 
     // Add these fields to the class
     for (let k in config) {

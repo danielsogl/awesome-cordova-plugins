@@ -84,7 +84,7 @@ export class EmailComposer {
   static isAvailable(app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
       if (app) {
-        cordova.plugins.email.isAvailable(app, (isAvailable) => {
+        cordova.plugins.email.isAvailable(app, (isAvailable: boolean) => {
           if (isAvailable) {
             resolve();
           } else {
@@ -92,7 +92,7 @@ export class EmailComposer {
           }
         });
       } else {
-        cordova.plugins.email.isAvailable((isAvailable) => {
+        cordova.plugins.email.isAvailable((isAvailable: boolean) => {
           if (isAvailable) {
             resolve();
           } else {

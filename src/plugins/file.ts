@@ -367,7 +367,7 @@ declare var FileError: {
   repo: 'https://github.com/apache/cordova-plugin-file'
 })
 export class File {
-  static cordovaFileError: {} = {
+  static cordovaFileError: any = {
     1: 'NOT_FOUND_ERR',
     2: 'SECURITY_ERR',
     3: 'ABORT_ERR',
@@ -960,7 +960,7 @@ export class File {
    * @private
    */
   private static fillErrorMessage(err: FileError): void {
-    err.message = File.cordovaFileError[err.code];
+    err.message = <string>File.cordovaFileError[err.code];
   }
 
   /**
@@ -971,9 +971,9 @@ export class File {
   static resolveLocalFilesystemUrl(fileUrl: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
       try {
-        window.resolveLocalFileSystemURL(fileUrl, (entry) => {
+        window.resolveLocalFileSystemURL(fileUrl, (entry: Entry) => {
           resolve(entry);
-        }, (err) => {
+        }, (err: FileError) => {
           File.fillErrorMessage(err);
           reject(err);
         });

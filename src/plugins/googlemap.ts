@@ -1,5 +1,6 @@
 import { Cordova, CordovaInstance, Plugin, InstanceProperty, getPlugin, pluginWarn } from './plugin';
 import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 declare var plugin: any;
 
@@ -140,13 +141,13 @@ export class GoogleMap {
    */
   on(event: any): Observable<any> {
     if (!this._objectInstance) {
-      return new Observable((observer) => {
+      return new Observable((observer: Observer<any>) => {
         observer.error({ error: 'plugin_not_installed' });
       });
     }
 
     return new Observable(
-      (observer) => {
+      (observer: Observer<any>) => {
         this._objectInstance.on(event, observer.next.bind(observer));
         return () => this._objectInstance.off(event);
       }
@@ -577,12 +578,10 @@ export class GoogleMapsMarker {
   constructor(private _objectInstance: any) { }
 
   addEventListener(event: any): Observable<any> {
-    return new Observable(
-      (observer) => {
+    return new Observable((observer: Observer<any>) => {
         this._objectInstance.addEventListener(event, observer.next.bind(observer));
         return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
-      }
-    );
+    });
   }
 
   /**
@@ -798,12 +797,10 @@ export class GoogleMapsCircle {
   constructor(private _objectInstance: any) { }
 
   addEventListener(event: any): Observable<any> {
-    return new Observable(
-      (observer) => {
+    return new Observable((observer: Observer<any>) => {
         this._objectInstance.addEventListener(event, observer.next.bind(observer));
         return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
-      }
-    );
+    });
   }
 
   @CordovaInstance({ sync: true })
@@ -868,12 +865,10 @@ export class GoogleMapsPolyline {
   constructor(private _objectInstance: any) { }
 
   addEventListener(event: any): Observable<any> {
-    return new Observable(
-      (observer) => {
+    return new Observable((observer: Observer<any>) => {
         this._objectInstance.addEventListener(event, observer.next.bind(observer));
         return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
-      }
-    );
+    });
   }
 
   @CordovaInstance({ sync: true })
@@ -939,12 +934,10 @@ export class GoogleMapsPolygon {
   constructor(private _objectInstance: any) { }
 
   addEventListener(event: any): Observable<any> {
-    return new Observable(
-      (observer) => {
+    return new Observable((observer: Observer<any>) => {
         this._objectInstance.addEventListener(event, observer.next.bind(observer));
         return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
-      }
-    );
+    });
   }
 
   @CordovaInstance({ sync: true })
