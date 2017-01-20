@@ -70,6 +70,7 @@ import { Instagram } from './plugins/instagram';
 import { IsDebug } from './plugins/is-debug';
 import { Keyboard } from './plugins/keyboard';
 import { LaunchNavigator } from './plugins/launchnavigator';
+import { LaunchReview } from './plugins/launch-review';
 import { LocalNotifications } from './plugins/localnotifications';
 import { LocationAccuracy } from './plugins/location-accuracy';
 import { MediaCapture } from './plugins/media-capture';
@@ -187,6 +188,7 @@ export * from './plugins/instagram';
 export * from './plugins/is-debug';
 export * from './plugins/keyboard';
 export * from './plugins/launchnavigator';
+export * from './plugins/launch-review';
 export * from './plugins/localnotifications';
 export * from './plugins/location-accuracy';
 export * from './plugins/market';
@@ -305,6 +307,7 @@ window['IonicNative'] = {
   IsDebug,
   Keyboard,
   LaunchNavigator,
+  LaunchReview,
   LocalNotifications,
   LocationAccuracy,
   Market,
