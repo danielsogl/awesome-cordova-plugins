@@ -12,11 +12,13 @@ import { Plugin, Cordova } from './plugin';
  * NativeGeocoder.reverseGeocode(52.5072095, 13.1452818)
  *   .then((result: ReverseResult) => console.log("The address is " + result.address + " in " + result.countryCode))
  *   .catch((error: any) => console.log(error));
- * 
+ *
  * NativeGeocoder.forwardGeocode("Berlin")
  *   .then((coordinates: ForwardResult) => console.log("The coordinates are latitude=" + coordinates.latitude + " and longitude=" + coordinates.longitude))
  *   .catch((error: any) => console.log(error));
  * ```
+ * @interfaces
+ *
  */
 @Plugin({
   name: 'NativeGeocoder',
@@ -33,7 +35,9 @@ export class NativeGeocoder {
    * @param longitude {number} The longitude
    * @return {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
   static reverseGeocode(latitude: number, longitude: number): Promise<ReverseResult> { return; }
 
   /**
@@ -41,7 +45,9 @@ export class NativeGeocoder {
    * @param addressString {string} The address to be geocoded
    * @return {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
   static forwardGeocode(addressString: string): Promise<ForwardResult> { return; }
 
 }
