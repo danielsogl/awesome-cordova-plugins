@@ -1,6 +1,7 @@
 import { Plugin, Cordova } from './plugin';
 
 /**
+ * @beta
  * @name NativeGeocoder
  * @description
  * Cordova plugin for native forward and reverse geocoding

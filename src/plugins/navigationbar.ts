@@ -2,9 +2,10 @@ import { Cordova, Plugin } from './plugin';
 
 
 /**
+ * @beta
  * @name NavigationBar
  * @description
- * The NavigationBar plugin can you to hide and auto hide the android navigation bar. 
+ * The NavigationBar plugin can you to hide and auto hide the android navigation bar.
  *
  * @usage
  * ```typescript
@@ -45,5 +46,5 @@ export class NavigationBar {
     errorName: 'failure'
   })
   static hideNavigationBar(): Promise<any> { return; }
-  
+
 }
