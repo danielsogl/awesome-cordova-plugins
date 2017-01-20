@@ -1,3 +1,28 @@
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/driftyco/ionic-native/compare/v2.2.17...v2.3.0) (2017-01-20)
+
+
+### Bug Fixes
+
+* **native-geocoder:** fix callback order ([dbf95ea](https://github.com/driftyco/ionic-native/commit/dbf95ea))
+
+
+### Features
+
+* **backlight:** add Backlight plugin ([#973](https://github.com/driftyco/ionic-native/issues/973)) ([1279114](https://github.com/driftyco/ionic-native/commit/1279114))
+* **broadcaster:** add Broadcaster plugin ([#877](https://github.com/driftyco/ionic-native/issues/877)) ([1e38a6c](https://github.com/driftyco/ionic-native/commit/1e38a6c))
+* **fingerprint-aio:** add cordova-plugin-fingerprint-aio ([#845](https://github.com/driftyco/ionic-native/issues/845)) ([1615b74](https://github.com/driftyco/ionic-native/commit/1615b74))
+* **firebase:** add firebase plugin ([#914](https://github.com/driftyco/ionic-native/issues/914)) ([8e98481](https://github.com/driftyco/ionic-native/commit/8e98481)), closes [#608](https://github.com/driftyco/ionic-native/issues/608)
+* **launch-review:** add LaunchReview plugin ([#949](https://github.com/driftyco/ionic-native/issues/949)) ([9c75a06](https://github.com/driftyco/ionic-native/commit/9c75a06))
+* **nativegeocoder:** add NativeGeocoder plugin ([#800](https://github.com/driftyco/ionic-native/issues/800)) ([911537b](https://github.com/driftyco/ionic-native/commit/911537b))
+* **navigationbar:** add NavigationBar plugin ([#826](https://github.com/driftyco/ionic-native/issues/826)) ([70c15c3](https://github.com/driftyco/ionic-native/commit/70c15c3))
+* **rollbar:** add Rollbar plugin ([#832](https://github.com/driftyco/ionic-native/issues/832)) ([229f550](https://github.com/driftyco/ionic-native/commit/229f550))
+* **serial:** add Serial plugin ([#952](https://github.com/driftyco/ionic-native/issues/952)) ([ac748ab](https://github.com/driftyco/ionic-native/commit/ac748ab))
+* **speech-recognition:** add SpeechRecognition plugin ([#897](https://github.com/driftyco/ionic-native/issues/897)) ([7c30718](https://github.com/driftyco/ionic-native/commit/7c30718))
+* **stripe:** add stripe plugin ([#913](https://github.com/driftyco/ionic-native/issues/913)) ([0ec46b0](https://github.com/driftyco/ionic-native/commit/0ec46b0))
+
+
+
 <a name="2.2.17"></a>
 ## [2.2.17](https://github.com/driftyco/ionic-native/compare/v2.2.16...v2.2.17) (2017-01-20)
 
@@ -136,8 +161,10 @@
 
 ### Bug Fixes
 
+* add return ([3fdc4a8](https://github.com/driftyco/ionic-native/commit/3fdc4a8))
 * **card-io:** fix typo in options ([e6700a3](https://github.com/driftyco/ionic-native/commit/e6700a3))
 * **globalization:** add missing parameter to numberToString function ([1072ab1](https://github.com/driftyco/ionic-native/commit/1072ab1)), closes [#835](https://github.com/driftyco/ionic-native/issues/835)
+* **headercolor:** solve typo in usage and chore ([bab2971](https://github.com/driftyco/ionic-native/commit/bab2971))
 
 
 ### Features
@@ -169,6 +196,7 @@
 * **camera-preview:** add disable method ([6ad54ec](https://github.com/driftyco/ionic-native/commit/6ad54ec))
 * **google-analytics:** new interval period parameter ([abd910d](https://github.com/driftyco/ionic-native/commit/abd910d)), closes [#816](https://github.com/driftyco/ionic-native/issues/816)
 * **google-map:** add get and set methods to Marker class ([51ab03d](https://github.com/driftyco/ionic-native/commit/51ab03d)), closes [#798](https://github.com/driftyco/ionic-native/issues/798)
+* **headercolor:** add HeaderColor plugin ([93696d5](https://github.com/driftyco/ionic-native/commit/93696d5)), closes [#760](https://github.com/driftyco/ionic-native/issues/760)
 
 
 
