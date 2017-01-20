@@ -1,4 +1,5 @@
 import { Plugin, Cordova } from './plugin';
+
 /**
  * @name FileOpener
  * @description
@@ -19,10 +20,12 @@ import { Plugin, Cordova } from './plugin';
   repo: 'https://github.com/pwlin/cordova-plugin-file-opener2'
 })
 export class FileOpener {
+
   /**
    * Open an file
    * @param filePath {string} File Path
    * @param fileMIMEType {string} File MIME Type
+   * @returns {Promise<any>}
    */
   @Cordova({
     callbackStyle: 'object',
@@ -34,6 +37,7 @@ export class FileOpener {
   /**
    * Uninstalls a package
    * @param packageId {string}  Package ID
+   * @returns {Promise<any>}
    */
   @Cordova({
     callbackStyle: 'object',
@@ -45,6 +49,7 @@ export class FileOpener {
   /**
    * Check if an app is already installed
    * @param packageId {string} Package ID
+   * @returns {Promise<any>}
    */
   @Cordova({
     callbackStyle: 'object',
@@ -52,4 +57,5 @@ export class FileOpener {
     errorName: 'error'
   })
   static appIsInstalled(packageId: string): Promise<any> {return; }
+
 }

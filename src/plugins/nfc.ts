@@ -34,7 +34,7 @@ export class NFC {
    * Registers an event listener for any NDEF tag.
    * @param onSuccess
    * @param onFailure
-   * @return {Promise<any>}
+   * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,
@@ -47,40 +47,40 @@ export class NFC {
 
   /**
    * Registers an event listener for tags matching any tag type.
-   * @param mimeType
    * @param onSuccess
    * @param onFailure
-   * @return {Promise<any>}
-   */
-  @Cordova({
-    observable: true,
-    successIndex: 1,
-    errorIndex: 4,
-    clearFunction: 'removeTagDiscoveredListener',
-    clearWithArgs: true
-  })
-  static addTagDiscoveredListener(mimeType: string, onSuccess?: Function, onFailure?: Function): Observable<any> {return; }
-
-  /**
-   * Registers an event listener for NDEF tags matching a specified MIME type.
-   * @param onSuccess
-   * @param onFailure
-   * @return {Promise<any>}
+   * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,
     successIndex: 0,
     errorIndex: 3,
+    clearFunction: 'removeTagDiscoveredListener',
+    clearWithArgs: true
+  })
+  static addTagDiscoveredListener(onSuccess?: Function, onFailure?: Function): Observable<any> {return; }
+
+  /**
+   * Registers an event listener for NDEF tags matching a specified MIME type.
+   * @param mimeType
+   * @param onSuccess
+   * @param onFailure
+   * @returns {Observable<any>}
+   */
+  @Cordova({
+    observable: true,
+    successIndex: 1,
+    errorIndex: 4,
     clearFunction: 'removeMimeTypeListener',
     clearWithArgs: true
   })
-  static addMimeTypeListener(onSuccess?: Function, onFailure?: Function): Observable<any> {return; }
+  static addMimeTypeListener(mimeType: string, onSuccess?: Function, onFailure?: Function): Observable<any> {return; }
 
   /**
    * Registers an event listener for formatable NDEF tags.
    * @param onSuccess
    * @param onFailure
-   * @return {Promise<any>}
+   * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,
@@ -92,13 +92,13 @@ export class NFC {
   /**
    * Qrites an NdefMessage to a NFC tag.
    * @param message {any[]}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static write(message: any[]): Promise<any> {return; }
   /**
    * Makes a NFC tag read only. **Warning** this is permanent.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static makeReadyOnly(): Promise<any> {return; }
@@ -106,14 +106,14 @@ export class NFC {
   /**
    * Shares an NDEF Message via peer-to-peer.
    * @param message An array of NDEF Records.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static share(message: any[]): Promise<any> {return; }
 
   /**
    * Stop sharing NDEF data via peer-to-peer.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static unshare(): Promise<any> {return; }
@@ -127,31 +127,52 @@ export class NFC {
   /**
    * Send a file to another device via NFC handover.
    * @param uris A URI as a String, or an array of URIs.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static handover(uris: string[]): Promise<any> {return; }
 
   /**
    * Stop sharing NDEF data via NFC handover.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static stopHandover(): Promise<any> {return; }
 
   /**
    * Show the NFC settings on the device.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static showSettings(): Promise<any> {return; }
 
   /**
    * Check if NFC is available and enabled on this device.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static enabled(): Promise<any> {return; }
+  /**
+   * Convert bytes to string
+   * @param bytes {number[]}
+   * @returns {string}
+   */
+  @Cordova({ sync: true })
+  static bytesToString(bytes: number[]): string {return; }
+  /**
+   * Convert string to bytes
+   * @param str {string}
+   * @returns {number[]}
+   */
+  @Cordova({ sync: true })
+  static stringToBytes(str: string): number[] {return; };
+  /**
+   * Convert bytes to hex string
+   * @param bytes {number[]}
+   * @returns {string}
+   */
+  @Cordova({ sync: true })
+  static bytesToHexString(bytes: number[]): string {return; };
 
 }
 /**

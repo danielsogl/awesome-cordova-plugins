@@ -56,8 +56,8 @@ export interface CameraOptions {
   /**
    * Choose the camera to use (front- or back-facing).
    * Defined in Camera.Direction. Default is BACK.
-   *      FRONT: 0
-   *      BACK: 1
+   *      BACK: 0
+   *      FRONT: 1
    */
   cameraDirection?: number;
   /** iOS-only options that specify popover location in iPad. Defined in CameraPopoverOptions. */
@@ -117,11 +117,12 @@ export interface CameraPopoverOptions {
   platforms: ['Android', 'BlackBerry', 'Browser', 'Firefox', 'FireOS', 'iOS', 'Windows', 'Windows Phone 8', 'Ubuntu']
 })
 export class Camera {
+
   /**
    * @private
    * @enum {number}
    */
-  public static DestinationType = {
+  static DestinationType = {
     /** Return base64 encoded string. DATA_URL can be very memory intensive and cause app crashes or out of memory errors. Use FILE_URI or NATIVE_URI if possible */
     DATA_URL: 0,
     /** Return file uri (content://media/external/images/media/2 for Android) */
@@ -134,7 +135,7 @@ export class Camera {
    * @private
    * @enum {number}
    */
-  public static EncodingType = {
+  static EncodingType = {
     /** Return JPEG encoded image */
     JPEG: 0,
     /** Return PNG encoded image */
@@ -144,7 +145,7 @@ export class Camera {
    * @private
    * @enum {number}
    */
-  public static MediaType = {
+  static MediaType = {
     /** Allow selection of still pictures only. DEFAULT. Will return format specified via DestinationType */
     PICTURE: 0,
     /** Allow selection of video only, ONLY RETURNS URL */
@@ -157,7 +158,7 @@ export class Camera {
    * @private
    * @enum {number}
    */
-  public static PictureSourceType = {
+  static PictureSourceType = {
     /** Choose image from picture library (same as SAVEDPHOTOALBUM for Android) */
     PHOTOLIBRARY: 0,
     /** Take picture from camera */
@@ -171,7 +172,7 @@ export class Camera {
    * Matches iOS UIPopoverArrowDirection constants to specify arrow location on popover.
    * @enum {number}
    */
-  public static PopoverArrowDirection = {
+  static PopoverArrowDirection = {
     ARROW_UP: 1,
     ARROW_DOWN: 2,
     ARROW_LEFT: 4,
@@ -183,7 +184,7 @@ export class Camera {
    * @private
    * @enum {number}
    */
-  public static Direction = {
+  static Direction = {
     /** Use the back-facing camera */
     BACK: 0,
     /** Use the front-facing camera */
@@ -192,8 +193,8 @@ export class Camera {
 
   /**
    * Take a picture or video, or load one from the library.
-   * @param {CameraOptions?} options Options that you want to pass to the camera. Encoding type, quality, etc. Optional
-   * @return {Promise} Returns a Promise that resolves with Base64 encoding of the image data, or the image file URI, depending on cameraOptions, otherwise rejects with an error.
+   * @param {CameraOptions?} options optional. Options that you want to pass to the camera. Encoding type, quality, etc. Platform-specific quirks are described in the [Cordova plugin docs](https://github.com/apache/cordova-plugin-camera#cameraoptions-errata-).
+   * @returns {Promise<any>} Returns a Promise that resolves with Base64 encoding of the image data, or the image file URI, depending on cameraOptions, otherwise rejects with an error.
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -203,7 +204,7 @@ export class Camera {
   /**
    * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
    * Applies only when the value of Camera.sourceType equals Camera.PictureSourceType.CAMERA and the Camera.destinationType equals Camera.DestinationType.FILE_URI.
-   * @return Returns a Promise
+   * @returns {Promise<any>}
    */
   @Cordova({
     platforms: ['iOS']

@@ -16,6 +16,8 @@ declare var mixpanel: any;
  *   .catch(onError);
  *
  * ```
+ * @classes
+ * MixpanelPeople
  */
 @Plugin({
   pluginName: 'Mixpanel',
@@ -41,7 +43,7 @@ export class Mixpanel {
   static distinctId(): Promise<any> { return; }
 
   /**
-   *
+   * @returns {Promise<any>}
    */
   @Cordova()
   static flush(): Promise<any> { return; }
@@ -52,7 +54,7 @@ export class Mixpanel {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static identify(distinctId): Promise<any> { return; }
+  static identify(distinctId: string): Promise<any> { return; }
 
   /**
    *
@@ -64,7 +66,7 @@ export class Mixpanel {
 
   /**
    *
-   * @param superProperties
+   * @param superProperties {any}
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -79,10 +81,14 @@ export class Mixpanel {
 
   /**
    *
-   * @param eventName
-   * @param eventProperties
+   * @param eventName {string}
+   * @param eventProperties {any} optional
+   * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 2,
+    errorIndex: 3
+  })
   static track(eventName: string, eventProperties?: any): Promise<any> { return; }
 
   /**

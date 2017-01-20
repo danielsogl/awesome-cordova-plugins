@@ -1,4 +1,5 @@
 import { Plugin, Cordova } from './plugin';
+
 /**
  * @name FileChooser
  * @description
@@ -10,8 +11,8 @@ import { Plugin, Cordova } from './plugin';
  * import {FileChooser} from 'ionic-native';
  *
  * FileChooser.open()
- *   .then(uri => console.log(uri);
- *   .catch(e => console.log(e);
+ *   .then(uri => console.log(uri));
+ *   .catch(e => console.log(e));
  *
  * ```
  */
@@ -23,9 +24,12 @@ import { Plugin, Cordova } from './plugin';
   platforms: ['Android']
 })
 export class FileChooser {
+
   /**
    * Open a file
+   * @returns {Promise<string>}
    */
   @Cordova()
   static open(): Promise<string> { return; }
+
 }

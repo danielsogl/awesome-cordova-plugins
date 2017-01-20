@@ -38,6 +38,9 @@ export interface SmsOptionsAndroid {
  * // Send a text message using default options
  * SMS.send('416123456', 'Hello world!');
  * ```
+ * @interfaces
+ * SmsOptions
+ * SmsOptionsAndroid
  */
 @Plugin({
   pluginName: 'SMS',
@@ -55,7 +58,10 @@ export class SMS {
    * @param options {SmsOptions} Options
    * @returns {Promise<any>} Resolves promise when the SMS has been sent
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 3,
+    errorIndex: 4
+  })
   static send(
     phoneNumber: string | string[],
     message: string,

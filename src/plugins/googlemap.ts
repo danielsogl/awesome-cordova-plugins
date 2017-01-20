@@ -60,8 +60,9 @@ export const GoogleMapsAnimation = {
  *
  * loadMap() {
  *  // make sure to create following structure in your view.html file
+ *  // and add a height (for example 100%) to it, else the map won't be visible
  *  // <ion-content>
- *  //  <div #map id="map"></div>
+ *  //  <div #map id="map" style="height:100%;"></div>
  *  // </ion-content>
  *
  *  // create a new map by passing HTMLElement
@@ -113,7 +114,7 @@ export class GoogleMap {
   /**
    * Checks if a map object has been created and is available.
    *
-   * @return {Promise<boolean>}
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   static isAvailable(): Promise<boolean> { return; }
@@ -135,7 +136,7 @@ export class GoogleMap {
   /**
    * Listen to a map event.
    *
-   * @return {Observable<any>}
+   * @returns {Observable<any>}
    */
   on(event: any): Observable<any> {
     if (!this._objectInstance) {
@@ -155,7 +156,7 @@ export class GoogleMap {
   /**
    * Listen to a map event only once.
    *
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   one(event: any): Promise<any> {
     if (!this._objectInstance) {
@@ -175,7 +176,7 @@ export class GoogleMap {
   /**
    * Get the position of the camera.
    *
-   * @return {Promise<CameraPosition>}
+   * @returns {Promise<CameraPosition>}
    */
   @CordovaInstance()
   getCameraPosition(): Promise<CameraPosition> { return; }
@@ -183,7 +184,7 @@ export class GoogleMap {
   /**
    * Get the location of the user.
    *
-   * @return {Promise<MyLocation>}
+   * @returns {Promise<MyLocation>}
    */
   @CordovaInstance()
   getMyLocation(options?: MyLocationOptions): Promise<MyLocation> { return; }
@@ -191,7 +192,7 @@ export class GoogleMap {
   /**
    * Get the visible region.
    *
-   * @return {Promise<VisibleRegion>}
+   * @returns {Promise<VisibleRegion>}
    */
   @CordovaInstance()
   getVisibleRegion(): Promise<VisibleRegion> { return; }
@@ -217,9 +218,15 @@ export class GoogleMap {
   @CordovaInstance({ sync: true })
   setTilt(tiltLevel: number): void { }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   animateCamera(animateCameraOptions: AnimateCameraOptions): Promise<any> { return; }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   moveCamera(cameraPosition: CameraPosition): Promise<any> { return; }
 
@@ -238,6 +245,9 @@ export class GoogleMap {
   @CordovaInstance({ sync: true })
   setAllGesturesEnabled(enabled: boolean): void { }
 
+  /**
+   * @returns {Promise<GoogleMapsMarker | any>}
+   */
   addMarker(options: GoogleMapsMarkerOptions): Promise<GoogleMapsMarker | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -255,6 +265,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsCircle | any>}
+   */
   addCircle(options: GoogleMapsCircleOptions): Promise<GoogleMapsCircle | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -272,6 +285,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsPolygon | any>}
+   */
   addPolygon(options: GoogleMapsPolygonOptions): Promise<GoogleMapsPolygon | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -289,6 +305,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsPolyline | any>}
+   */
   addPolyline(options: GoogleMapsPolylineOptions): Promise<GoogleMapsPolyline | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -306,6 +325,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsTileOverlay | any>}
+   */
   addTileOverlay(options: GoogleMapsTileOverlayOptions): Promise<GoogleMapsTileOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -323,6 +345,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsGroundOverlay | any>}
+   */
   addGroundOverlay(options: GoogleMapsGroundOverlayOptions): Promise<GoogleMapsGroundOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -340,6 +365,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsKmlOverlay | any>}
+   */
   addKmlOverlay(options: GoogleMapsKmlOverlayOptions): Promise<GoogleMapsKmlOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -378,12 +406,21 @@ export class GoogleMap {
   @CordovaInstance({ sync: true })
   refreshLayout(): void { }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   fromLatLngToPoint(latLng: GoogleMapsLatLng, point: any): Promise<any> { return; }
 
+  /**
+   * @returns {Promise<GoogleMapsLatLng>}
+   */
   @CordovaInstance()
   fromPointToLatLng(point: any, latLng: GoogleMapsLatLng): Promise<GoogleMapsLatLng> { return; }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   toDataURL(): Promise<any> { return; }
 
@@ -445,18 +482,80 @@ export interface VisibleRegion {
  * @private
  */
 export interface GoogleMapsMarkerOptions {
+  /**
+   * The icon image url or properties. Also you can specify HTML Color values. Alternatively you can specify the image as Base64
+   */
   icon?: any;
+
+  /**
+   * The content of the infoWindow.
+   */
   title?: string;
+
+  /**
+   * The snippet of the infoWindow.
+   */
   snippet?: string;
+
+  /**
+   * The position of the marker.
+   */
   position?: GoogleMapsLatLng;
+
+  /**
+   * 	Specify the anchor of the InfoWindow
+   */
   infoWindowAnchor?: number[];
+
+  /**
+   * Set true if you want to enable to drag the marker. (Default: false) Important! Drag starts after long pressed on the marker.
+   */
   draggable?: boolean;
+
+  /**
+   * 	Set true if you want to use a flat marker. (Default: false)
+   */
   flat?: boolean;
+
+  /**
+   * 	Set rotation angle. (Default: 0)
+   */
   rotation?: number;
+
+  /**
+   * Set false if you want to hide. (Default: true)
+   */
   visible?: boolean;
+
+  /**
+   * Specify the options for title.
+   */
   styles?: any;
+
+  /**
+   * Which animation to play when marker is added to a map.
+   */
   animation?: string;
+
+  /**
+   * 	iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
+   */
   zIndex?: number;
+
+  /**
+   * Set to true to disable auto panning when the marker is clicked.
+   */
+  disableAutoPan?: boolean;
+
+  /**
+   * Function to be invoked when the user clicks on the marker
+   */
+  markerClick?: Function;
+
+  /**
+   * Function to be invoked when the user clicks on the info box
+   */
+  infoClick?: Function;
 }
 
 /**
@@ -501,78 +600,178 @@ export class GoogleMapsMarker {
   @CordovaInstance({sync: true})
   set(key: string, value: any): void { }
 
+  /**
+   * Return true if the marker is visible
+   */
   @CordovaInstance({ sync: true })
   isVisible(): boolean { return; }
 
+  /**
+   * Set false if you want to hide the marker.
+   * @param visible
+   */
   @CordovaInstance()
   setVisible(visible: boolean): void { }
 
+  /**
+   * Return the marker hash code.
+   * @return {string} Marker hash code
+   */
   @CordovaInstance({ sync: true })
   getHashCode(): string { return; }
 
+  /**
+   * Remove the marker completely.
+   */
   @CordovaInstance({ sync: true })
   remove(): void { }
 
+  /**
+   * Change the marker opacity.
+   * @param alpha {number} Opacity
+   */
   @CordovaInstance({ sync: true })
   setOpacity(alpha: number): void { }
 
+  /**
+   * Return the marker opacity.
+   * @return {number} Opacity
+   */
   @CordovaInstance({ sync: true })
   getOpacity(): number { return; }
 
+  /**
+   * iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
-  setZIndex(): void { }
+  setZIndex(): number { return; }
 
+  /**
+   * Change the info window anchor. This defaults to 50% from the left of the image and at the bottom of the image.
+   * @param x {number}
+   * @param y {number}
+   */
   @CordovaInstance({ sync: true })
   setIconAnchor(x: number, y: number): void { }
 
+  /**
+   * Change the info window anchor. This defaults to 50% from the left of the image and at the top of the image.
+   * @param x {number}
+   * @param y {number}
+   */
   @CordovaInstance({ sync: true })
   setInfoWindowAnchor(x: number, y: number): void { }
 
+  /**
+   * 	Set true if you allows all users to drag the marker.
+   * @param draggable {boolean}
+   */
   @CordovaInstance({ sync: true })
   setDraggable(draggable: boolean): void { }
 
+  /**
+   * Return true if the marker drag is enabled.
+   * @return {boolean}
+   */
   @CordovaInstance({ sync: true })
   isDraggable(): boolean { return; }
 
+  /**
+   * Set true if you want to be flat marker.
+   * @param flat {boolean}
+   */
   @CordovaInstance({ sync: true })
   setFlat(flat: boolean): void { return; }
 
+  /**
+   * Change icon url and/or size
+   * @param icon
+   */
   @CordovaInstance({ sync: true })
   setIcon(icon: GoogleMapsMarkerIcon): void { return; }
 
+  /**
+   * Change title of the infoWindow.
+   * @param title {string}
+   */
   @CordovaInstance({ sync: true })
   setTitle(title: string): void { }
 
+  /**
+   * Return the title strings.
+   * @return {string}
+   */
   @CordovaInstance({ sync: true })
   getTitle(): string { return; }
 
+  /**
+   * Change snippet of the infoWindow.
+   * @param snippet {string}
+   */
   @CordovaInstance({ sync: true })
   setSnippet(snippet: string): void { }
 
+  /**
+   * Return the snippet strings.
+   * @return {string}
+   */
   @CordovaInstance({ sync: true })
   getSnippet(): string { return; }
 
+  /**
+   * Set the marker rotation angle.
+   * @param rotation {number}
+   */
   @CordovaInstance({ sync: true })
   setRotation(rotation: number): void { }
 
+  /**
+   * Return the marker rotation angle.
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   getRotation(): number { return; }
 
+  /**
+   * Show the infoWindow of the marker.
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   showInfoWindow(): number { return; }
 
+  /**
+   * Hide the infoWindow of the marker.
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   hideInfoWindow(): number { return; }
 
+  /**
+   * Set the marker position.
+   * @param latLng {GoogleMapLatLng}
+   */
   @CordovaInstance({ sync: true })
   setPosition(latLng: GoogleMapsLatLng): void { return; }
 
+  /**
+   * Return the marker position.
+   * @return {Promise<GoogleMapLatLng>}
+   */
   @CordovaInstance()
   getPosition(): Promise<GoogleMapsLatLng> { return; }
 
+  /**
+   * Return the map instance.
+   * @return {GoogleMap}
+   */
   @CordovaInstance({ sync: true })
   getMap(): GoogleMap { return; }
 
+  /**
+   * Specify the animation either `DROP` or `BOUNCE`
+   * @param animation {string}
+   */
   @CordovaInstance({ sync: true })
   setAnimation(animation: string): void { }
 

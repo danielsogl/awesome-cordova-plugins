@@ -108,7 +108,7 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 
   let pluginInstance = getPlugin(pluginObj.pluginRef);
 
-  if (!pluginInstance) {
+  if (!pluginInstance || pluginInstance[methodName] === 'undefined') {
     // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
     if (!window.cordova) {
       cordovaWarn(pluginObj.pluginName, methodName);
@@ -123,11 +123,13 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
     };
   }
 
-  // TODO: Illegal invocation needs window context
-  return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
+  return pluginInstance[methodName].apply(pluginInstance, args);
 }
 
-function getPromise(cb) {
+/**
+ * @private
+ */
+export function getPromise(cb) {
 
   const tryNativePromise = () => {
     if (window.Promise) {
@@ -191,7 +193,7 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
       try {
         if (opts.clearFunction) {
           if (opts.clearWithArgs) {
-            return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, args);
+            return callCordovaPlugin(pluginObj, opts.clearFunction, args, opts, observer.next.bind(observer), observer.error.bind(observer));
           }
           return get(window, pluginObj.pluginRef)[opts.clearFunction].call(pluginObj, pluginResult);
         }
@@ -404,43 +406,47 @@ export function CordovaInstance(opts: any = {}) {
  *
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
-export function CordovaProperty(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  let originalMethod = descriptor.get;
-
-  descriptor.get = function(...args: any[]) {
-    if (!window.cordova) {
-      cordovaWarn(this.name, null);
-      return {};
+export function CordovaProperty(target: any, key: string) {
+  const pluginInstance = getPlugin(target.pluginRef);
+  const exists = () => {
+    if (!pluginInstance || pluginInstance[key] === 'undefined') {
+      pluginWarn(target, key);
+      return false;
     }
-    let pluginObj: any = this;
-    let pluginInstance = getPlugin(pluginObj.pluginRef);
-    if (!pluginInstance) {
-      pluginWarn(this, key);
-      return {};
-    }
-    return originalMethod.apply(this, args);
+    return true;
   };
 
-  return descriptor;
+  Object.defineProperty(target, key, {
+    get: () => {
+      if (exists()) {
+        return pluginInstance[key];
+      } else {
+        return null;
+      }
+    },
+    set: (value) => {
+      if (exists()) {
+        pluginInstance[key] = value;
+      }
+    }
+  });
 }
 
 /**
  * @private
  * @param target
  * @param key
- * @param descriptor
  * @constructor
  */
-export function InstanceProperty(target: any, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  descriptor.get = function() {
-    return this._objectInstance[key];
-  };
-
-  descriptor.set = function(...args: any[]) {
-    this._objectInstance[key] = args[0];
-  };
-
-  return descriptor;
+export function InstanceProperty(target: any, key: string) {
+  Object.defineProperty(target, key, {
+    get: function(){
+      return this._objectInstance[key];
+    },
+    set: function(value){
+      this._objectInstance[key] = value;
+    }
+  });
 }
 
 /**

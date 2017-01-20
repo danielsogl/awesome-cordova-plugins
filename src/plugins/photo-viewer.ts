@@ -25,5 +25,5 @@ export class PhotoViewer {
    * @param options {any}
    */
   @Cordova({sync: true})
-  static show(url: string, title?: string, options?: {share?: boolean; }): void { }
+  static show(url: string, title?: string, options?: {share?: boolean}): void { }
 }

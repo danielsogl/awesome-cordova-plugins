@@ -1,4 +1,5 @@
 import { Cordova, Plugin } from './plugin';
+
 /**
  * @name Crop
  * @description Crops images
@@ -22,14 +23,16 @@ import { Cordova, Plugin } from './plugin';
   repo: 'https://github.com/jeduan/cordova-plugin-crop'
 })
 export class Crop {
+
   /**
    * Crops an image
    * @param pathToImage
    * @param options
-   * @return {Promise<string>} Returns a promise that resolves with the new image path, or rejects if failed to crop.
+   * @returns {Promise<string>} Returns a promise that resolves with the new image path, or rejects if failed to crop.
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
   static crop(pathToImage: string, options?: {quality: number}): Promise<string> { return; }
+
 }

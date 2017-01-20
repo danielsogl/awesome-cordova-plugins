@@ -1,20 +1,28 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 export interface CameraPreviewRect {
+
   x: number;
+
   y: number;
+
   width: number;
+
   height: number;
+
 }
 
 export interface CameraPreviewSize {
+
   maxWidth: number;
+
   maxHeight: number;
+
 }
 
 /**
+ * @beta
  * @name CameraPreview
  * @description
  * Showing camera preview in HTML
@@ -40,7 +48,8 @@ export interface CameraPreviewSize {
  *   'front', // default camera
  *   true, // tap to take picture
  *   false, // disable drag
- *   true // send the preview to the back of the screen so we can add overlaying elements
+ *   false, // keep preview in front. Set to true (back of the screen) to apply overlaying elements
+ *   1 // set the preview alpha
  * );
  *
  * // Set the handler to run every time we take a picture
@@ -67,6 +76,9 @@ export interface CameraPreviewSize {
  *
  * ```
  *
+ * @interfaces
+ * CameraPreviewRect
+ * CameraPreviewSize
  */
 @Plugin({
   pluginName: 'CameraPreview',
@@ -106,10 +118,11 @@ export class CameraPreview {
   @Cordova({
     sync: true
   })
-  static takePicture(size: CameraPreviewSize): void { }
+  static takePicture(size?: CameraPreviewSize): void { }
 
   /**
    * Register a callback function that receives the original picture and the image captured from the preview box.
+   * @returns {Observable<any>}
    */
   @Cordova({
     observable: true
@@ -155,4 +168,5 @@ export class CameraPreview {
     sync: true
   })
   static setColorEffect(effect: string): void { }
+
 }

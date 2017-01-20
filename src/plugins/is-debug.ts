@@ -26,7 +26,7 @@ export class IsDebug {
 
   /**
    * Determine if an app was installed via xcode / eclipse / the ionic CLI etc
-   * @return {Promise<boolean>} Returns a promise that resolves with true if the app was installed via xcode / eclipse / the ionic CLI etc. It will resolve to false if the app was downloaded from the app / play store by the end user.
+   * @returns {Promise<boolean>} Returns a promise that resolves with true if the app was installed via xcode / eclipse / the ionic CLI etc. It will resolve to false if the app was downloaded from the app / play store by the end user.
    */
   @Cordova()
   static getIsDebug(): Promise<boolean> {

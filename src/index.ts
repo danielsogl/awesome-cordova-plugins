@@ -1,6 +1,6 @@
 import { initAngular1 } from './ng1';
 
-const DEVICE_READY_TIMEOUT = 2000;
+const DEVICE_READY_TIMEOUT = 5000;
 
 declare var window;
 
@@ -47,6 +47,7 @@ import { FileOpener } from './plugins/file-opener';
 import { FilePath } from './plugins/filepath';
 import { Transfer } from './plugins/filetransfer';
 import { FingerprintAIO } from './plugins/fingerprint-aio';
+import { Firebase } from './plugins/firebase';
 import { Flashlight } from './plugins/flashlight';
 import { Geofence } from './plugins/geofence';
 import { Geolocation } from './plugins/geolocation';
@@ -54,6 +55,7 @@ import { Globalization } from './plugins/globalization';
 import { GooglePlus } from './plugins/google-plus';
 import { GoogleMap } from './plugins/googlemap';
 import { GoogleAnalytics } from './plugins/googleanalytics';
+import { HeaderColor } from './plugins/headercolor';
 import { Hotspot } from  './plugins/hotspot';
 import { HTTP } from  './plugins/http';
 import { Httpd } from './plugins/httpd';
@@ -71,8 +73,10 @@ import { LocalNotifications } from './plugins/localnotifications';
 import { LocationAccuracy } from './plugins/location-accuracy';
 import { MediaCapture } from './plugins/media-capture';
 import { NativeAudio } from './plugins/native-audio';
+import { NativeGeocoder } from './plugins/native-geocoder';
 import { NativePageTransitions } from './plugins/native-page-transitions';
 import { NativeStorage } from './plugins/nativestorage';
+import { NavigationBar } from './plugins/navigationbar';
 import { Market } from './plugins/market';
 import { MediaPlugin } from './plugins/media';
 import { Mixpanel } from './plugins/mixpanel';
@@ -87,6 +91,7 @@ import { PinDialog } from './plugins/pin-dialog';
 import { PowerManagement } from './plugins/power-management';
 import { Printer } from './plugins/printer';
 import { Push } from './plugins/push';
+import { Rollbar } from './plugins/rollbar';
 import { SafariViewController } from './plugins/safari-view-controller';
 import { Screenshot } from './plugins/screenshot';
 import { SecureStorage } from './plugins/securestorage';
@@ -100,6 +105,7 @@ import { SQLite } from './plugins/sqlite';
 import { StatusBar } from './plugins/statusbar';
 import { Stepcounter } from './plugins/stepcounter';
 import { StreamingMedia } from './plugins/streaming-media';
+import { Stripe } from './plugins/stripe';
 import { ThreeDeeTouch } from './plugins/3dtouch';
 import { Toast } from './plugins/toast';
 import { TouchID } from './plugins/touchid';
@@ -155,6 +161,7 @@ export * from './plugins/file';
 export * from './plugins/file-chooser';
 export * from './plugins/file-opener';
 export * from './plugins/filetransfer';
+export * from './plugins/firebase';
 export * from './plugins/filepath';
 export * from './plugins/fingerprint-aio';
 export * from './plugins/flashlight';
@@ -164,6 +171,7 @@ export * from './plugins/globalization';
 export * from './plugins/google-plus';
 export * from './plugins/googleanalytics';
 export * from './plugins/googlemap';
+export * from './plugins/headercolor';
 export * from './plugins/hotspot';
 export * from './plugins/http';
 export * from './plugins/httpd';
@@ -185,8 +193,10 @@ export * from './plugins/media-capture';
 export * from './plugins/mixpanel';
 export * from './plugins/music-controls';
 export * from './plugins/native-audio';
+export * from './plugins/native-geocoder';
 export * from './plugins/native-page-transitions';
 export * from './plugins/nativestorage';
+export * from './plugins/navigationbar';
 export * from './plugins/network';
 export * from './plugins/nfc';
 export * from './plugins/onesignal';
@@ -197,6 +207,7 @@ export * from './plugins/plugin';
 export * from './plugins/power-management';
 export * from './plugins/printer';
 export * from './plugins/push';
+export * from './plugins/rollbar';
 export * from './plugins/safari-view-controller';
 export * from './plugins/screen-orientation';
 export * from './plugins/screenshot';
@@ -211,6 +222,7 @@ export * from './plugins/sqlite';
 export * from './plugins/statusbar';
 export * from './plugins/stepcounter';
 export * from './plugins/streaming-media';
+export * from './plugins/stripe';
 export * from './plugins/text-to-speech';
 export * from './plugins/themeable-browser';
 export * from './plugins/toast';
@@ -269,12 +281,14 @@ window['IonicNative'] = {
   FilePath,
   FingerprintAIO,
   Flashlight,
+  Firebase,
   Geofence,
   Geolocation,
   Globalization,
   GooglePlus,
   GoogleMap,
   GoogleAnalytics,
+  HeaderColor,
   Hotspot,
   HTTP,
   Httpd,
@@ -296,8 +310,10 @@ window['IonicNative'] = {
   Mixpanel,
   MusicControls,
   NativeAudio,
+  NativeGeocoder,
   NativePageTransitions,
   NativeStorage,
+  NavigationBar,
   Network,
   PayPal,
   NFC,
@@ -308,6 +324,7 @@ window['IonicNative'] = {
   ScreenOrientation,
   PinDialog,
   PowerManagement,
+  Rollbar,
   SafariViewController,
   Screenshot,
   SecureStorage,
@@ -321,6 +338,7 @@ window['IonicNative'] = {
   StatusBar,
   Stepcounter,
   StreamingMedia,
+  Stripe,
   ThreeDeeTouch,
   Toast,
   TouchID,

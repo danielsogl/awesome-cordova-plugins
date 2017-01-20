@@ -55,7 +55,8 @@ export class NativeAudio {
   /**
    * Plays an audio asset
    * @param id {string} unique ID for the audio file
-   * @param completeCallback {Function} callback to be invoked when audio is done playing
+   * @param completeCallback {Function} optional. Callback to be invoked when audio is done playing
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 1,
@@ -66,6 +67,7 @@ export class NativeAudio {
   /**
    * Stops playing an audio
    * @param id {string} unique ID for the audio file
+   * @returns {Promise<any>}
    */
   @Cordova()
   static stop(id: string): Promise<any> {return; }
@@ -81,6 +83,7 @@ export class NativeAudio {
   /**
    * Unloads an audio file from memory
    * @param id {string} unique ID for the audio file
+   * @returns {Promise<any>}
    */
   @Cordova()
   static unload(id: string): Promise<any> {return; }
@@ -89,6 +92,7 @@ export class NativeAudio {
    * Changes the volume for preloaded complex assets.
    * @param id {string} unique ID for the audio file
    * @param volume {number} the volume of the audio asset (0.1 to 1.0)
+   * @returns {Promise<any>}
    */
   @Cordova()
   static setVolumeForComplexAsset(id: string, volume: number): Promise<any> {return; }

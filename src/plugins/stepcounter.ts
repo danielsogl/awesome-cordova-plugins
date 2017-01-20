@@ -32,42 +32,42 @@ export class Stepcounter {
    * Start the step counter
    *
    * @param startingOffset {number} will be added to the total steps counted in this session
-   * @return {Promise} Returns a Promise that resolves on success or rejects on failure
+   * @returns {Promise<any | number>} Returns a Promise that resolves on success or rejects on failure
    */
   @Cordova()
   static start(startingOffset: number): Promise<number | any> { return; }
 
   /**
    * Stop the step counter
-   * @return {Promise} Returns a Promise that resolves on success with the amount of steps since the start command has been called, or rejects on failure
+   * @returns {Promise<any | number>} Returns a Promise that resolves on success with the amount of steps since the start command has been called, or rejects on failure
    */
   @Cordova()
   static stop(): Promise<number | any> { return; }
 
   /**
    * Get the amount of steps for today (or -1 if it no data given)
-   * @return {Promise} Returns a Promise that resolves on success with the amount of steps today, or rejects on failure
+   * @returns {Promise<any | number>} Returns a Promise that resolves on success with the amount of steps today, or rejects on failure
    */
   @Cordova()
   static getTodayStepCount(): Promise<number | any> { return; }
 
   /**
    * Get the amount of steps since the start command has been called
-   * @return {Promise} Returns a Promise that resolves on success with the amount of steps since the start command has been called, or rejects on failure
+   * @returns {Promise<any | number>} Returns a Promise that resolves on success with the amount of steps since the start command has been called, or rejects on failure
    */
   @Cordova()
   static getStepCount(): Promise<number | any> { return; }
 
   /**
    * Returns true/false if Android device is running >API level 19 && has the step counter API available
-   * @return {Promise} Returns a Promise that resolves on success, or rejects on failure
+   * @returns {Promise<any | boolean>} Returns a Promise that resolves on success, or rejects on failure
    */
   @Cordova()
   static deviceCanCountSteps(): Promise<boolean | any> { return; }
 
   /**
    * Get the step history (JavaScript object)
-   * @return {Promise} Returns a Promise that resolves on success, or rejects on failure
+   * @returns {Promise<any>} Returns a Promise that resolves on success, or rejects on failure
    */
   @Cordova()
   static getHistory(): Promise<any> { return; }

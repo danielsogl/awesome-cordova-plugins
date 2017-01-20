@@ -76,7 +76,7 @@ module.exports = function(currentVersion) {
 
   versions = [];
   // new version, add it to the versions list
-  if (currentVersion != 'nightly' && !_.contains(versions, currentVersion)) {
+  if (currentVersion != 'nightly' && !_.includes(versions, currentVersion)) {
     versions.unshift(currentVersion);
   }
   //First semver valid version is latest
@@ -85,7 +85,7 @@ module.exports = function(currentVersion) {
     // We don't separate by versions so always put the docs in the root
     var folder = '';
     return {
-      href: path.join('/' + config.v2DocsDir, folder),
+      href: '/' + config.v2DocsDir.replace('content/',''),
       folder: folder,
       name: version
     };
@@ -99,12 +99,11 @@ module.exports = function(currentVersion) {
 
   renderDocsProcessor.extraData.version = versionData;
   renderDocsProcessor.extraData.versionInfo = versionInfo;
-
   computePathsProcessor.pathTemplates = [{
     docTypes: ['class', 'var', 'function', 'let'],
     getOutputPath: function(doc) {
       var docPath = doc.name + '/index.md';
-      var path = config.v2DocsDir + '/' +  docPath;
+      var path = 'content/' + config.v2DocsDir + '/' +  docPath;
 
       return path;
     }

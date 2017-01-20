@@ -1,7 +1,6 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
 /**
  * @name DB Meter
  * @description This plugin defines a global DBMeter object, which permits to get the decibel values from the microphone.
@@ -41,7 +40,7 @@ export class DBMeter {
 
   /**
    * Starts listening
-   * @return {Observable<string>} Returns an observable. Subscribe to start listening. Unsubscribe to stop listening.
+   * @returns {Observable<any>} Returns an observable. Subscribe to start listening. Unsubscribe to stop listening.
    */
   @Cordova({
     observable: true,
@@ -58,14 +57,14 @@ export class DBMeter {
 
   /**
    * Check if the DB Meter is listening
-   * @return {Promise<boolean>} Returns a promise that resolves with a boolean that tells us whether the DB meter is listening
+   * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that tells us whether the DB meter is listening
    */
   @Cordova()
   static isListening(): Promise<boolean> { return; }
 
   /**
    * Delete the DB Meter instance
-   * @return {Promise<any>} Returns a promise that will resolve if the instance has been deleted, and rejects if errors occur.
+   * @returns {Promise<any>} Returns a promise that will resolve if the instance has been deleted, and rejects if errors occur.
    */
   @Cordova()
   static delete(): Promise<any> { return; }

@@ -25,7 +25,7 @@ export class Instagram {
   /**
    * Detect if the Instagram application is installed on the device.
    *
-   * @return {Promise<boolean|string>} Returns a promise that returns a boolean value if installed, or the app version on android
+   * @returns {Promise<boolean|string>} Returns a promise that returns a boolean value if installed, or the app version on android
    */
   @Cordova({
     callbackStyle: 'node'
@@ -38,7 +38,7 @@ export class Instagram {
    *
    * @param canvasIdOrDataUrl The canvas element id or the dataURL of the image to share
    * @param caption The caption of the image
-   * @return {Promise<any>} Returns a promise that resolves if the image was shared
+   * @returns {Promise<any>} Returns a promise that resolves if the image was shared
    */
   @Cordova({
     callbackStyle: 'node'
@@ -48,7 +48,7 @@ export class Instagram {
   /**
    * Share a library asset or video
    * @param assetLocalIdentifier A local fileURI
-   * @return {Promise<any>} Returns a promise that resolves if the image was shared
+   * @returns {Promise<any>} Returns a promise that resolves if the image was shared
    */
   @Cordova({
     callbackOrder: 'reverse'

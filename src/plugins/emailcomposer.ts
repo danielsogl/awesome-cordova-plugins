@@ -1,9 +1,30 @@
 import { Cordova, Plugin } from './plugin';
 
-
 declare var cordova: any;
 
+export interface EmailComposerOptions {
+
+  app?: string;
+
+  to?: string | Array<string>;
+
+  cc?: string | Array<string>;
+
+  bcc?: string | Array<string>;
+
+  attachments?: Array<any>;
+
+  subject?: string;
+
+  body?: string;
+
+  isHtml?: boolean;
+
+}
+
+
 /**
+ * @beta
  * @name Email Composer
  * @description
  *
@@ -42,6 +63,8 @@ declare var cordova: any;
  * EmailComposer.open(email);
  *
  * ```
+ * @interfaces
+ * EmailComposerOptions
  */
 @Plugin({
   pluginName: 'EmailComposer',
@@ -56,7 +79,7 @@ export class EmailComposer {
    * Verifies if sending emails is supported on the device.
    *
    * @param app {string?} An optional app id or uri scheme.
-   * @returns {Promise<boolean>} Resolves if available, rejects if not available
+   * @returns {Promise<any>} Resolves if available, rejects if not available
    */
   static isAvailable(app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
@@ -92,7 +115,7 @@ export class EmailComposer {
   /**
    * Displays the email composer pre-filled with data.
    *
-   * @param email {Email} Email
+   * @param options {EmailComposerOptions} Email
    * @param scope {any?} An optional scope for the promise
    * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
    */
@@ -100,17 +123,6 @@ export class EmailComposer {
     successIndex: 1,
     errorIndex: 3
   })
-  static open(email: Email, scope?: any): Promise<any> { return; }
+  static open(options: EmailComposerOptions, scope?: any): Promise<any> { return; }
 
-}
-
-export interface Email {
-  app?: string;
-  to?: string | Array<string>;
-  cc?: string | Array<string>;
-  bcc?: string | Array<string>;
-  attachments?: Array<any>;
-  subject?: string;
-  body?: string;
-  isHtml?: boolean;
 }

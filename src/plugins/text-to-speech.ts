@@ -23,6 +23,8 @@ export interface TTSOptions {
  *   .catch((reason: any) => console.log(reason));
  *
  * ```
+ * @interfaces
+ * TTSOptions
  */
 @Plugin({
   pluginName: 'TextToSpeech',
