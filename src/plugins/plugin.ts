@@ -407,8 +407,8 @@ export function CordovaInstance(opts: any = {}) {
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
 export function CordovaProperty(target: any, key: string) {
-  const pluginInstance = getPlugin(target.pluginRef);
   const exists = () => {
+    let pluginInstance = getPlugin(target.pluginRef);
     if (!pluginInstance || pluginInstance[key] === 'undefined') {
       pluginWarn(target, key);
       return false;
@@ -419,14 +419,14 @@ export function CordovaProperty(target: any, key: string) {
   Object.defineProperty(target, key, {
     get: () => {
       if (exists()) {
-        return pluginInstance[key];
+        return getPlugin(target.pluginRef)[key];
       } else {
         return null;
       }
     },
     set: (value) => {
       if (exists()) {
-        pluginInstance[key] = value;
+        getPlugin(target.pluginRef)[key] = value;
       }
     }
   });
