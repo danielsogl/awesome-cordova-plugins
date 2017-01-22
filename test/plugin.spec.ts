@@ -9,6 +9,7 @@ window.plugins = {
 };
 
 const testPluginMeta = {
+  pluginName: 'Test',
   plugin: 'cordova-plugin-test',
   pluginRef: 'plugins.test',
   repo: 'https://github.com/apache/cordova-plugin-test',
