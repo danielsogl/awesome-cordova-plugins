@@ -1,3 +1,23 @@
+<a name="2.3.1"></a>
+## [2.3.1](https://github.com/driftyco/ionic-native/compare/v2.3.0...v2.3.1) (2017-01-22)
+
+
+### Bug Fixes
+
+* add clearAllNotifications() ([8c021bc](https://github.com/driftyco/ionic-native/commit/8c021bc))
+* **battery-status:** add missing pluginRef ([3da0efe](https://github.com/driftyco/ionic-native/commit/3da0efe))
+* **core:** fix exception in CordovaProperty ([#998](https://github.com/driftyco/ionic-native/issues/998)) ([cb29363](https://github.com/driftyco/ionic-native/commit/cb29363)), closes [#992](https://github.com/driftyco/ionic-native/issues/992)
+* **core:** fix plugin check ([da7a370](https://github.com/driftyco/ionic-native/commit/da7a370))
+* **plugin:** adds subscribe() and unsubscribe() ([94025a7](https://github.com/driftyco/ionic-native/commit/94025a7))
+
+
+### Features
+
+* **core:** add PluginConfig interface ([b983de2](https://github.com/driftyco/ionic-native/commit/b983de2)), closes [#996](https://github.com/driftyco/ionic-native/issues/996)
+* **google-maps:** add base class functions ([#993](https://github.com/driftyco/ionic-native/issues/993)) ([9f98f8e](https://github.com/driftyco/ionic-native/commit/9f98f8e))
+
+
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/driftyco/ionic-native/compare/v2.2.17...v2.3.0) (2017-01-20)
 
