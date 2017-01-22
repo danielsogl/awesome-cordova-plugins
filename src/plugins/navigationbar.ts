@@ -16,7 +16,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'NavigationBar',
+  pluginName: 'NavigationBar',
   plugin: 'cordova-plugin-navigationbar',
   pluginRef: 'navigationbar',
   repo: 'https://github.com/cranberrygame/cordova-plugin-navigationbar',

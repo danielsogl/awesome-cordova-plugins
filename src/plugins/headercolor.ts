@@ -13,7 +13,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'HeaderColor',
+  pluginName: 'HeaderColor',
   plugin: 'cordova-plugin-headercolor',
   pluginRef: 'plugins.headerColor',
   repo: 'https://github.com/tomloprod/cordova-plugin-headercolor',
