@@ -409,7 +409,7 @@ export function CordovaInstance(opts: any = {}) {
 export function CordovaProperty(target: any, key: string) {
   const exists = () => {
     let pluginInstance = getPlugin(target.pluginRef);
-    if (!pluginInstance || pluginInstance[key] === 'undefined') {
+    if (!pluginInstance || typeof pluginInstance[key] === 'undefined') {
       pluginWarn(target, key);
       return false;
     }
