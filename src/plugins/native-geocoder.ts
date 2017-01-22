@@ -23,7 +23,7 @@ import { Plugin, Cordova } from './plugin';
  * NativeGeocoderForwardResult
  */
 @Plugin({
-  name: 'NativeGeocoder',
+  pluginName: 'NativeGeocoder',
   plugin: 'cordova-plugin-nativegeocoder',
   pluginRef: 'nativegeocoder',
   repo: 'https://github.com/sebastianbaar/cordova-plugin-nativegeocoder',
