@@ -322,6 +322,36 @@ export const wrap = function(pluginObj: any, methodName: string, opts: any = {})
 
 /**
  * @private
+ */
+export interface PluginConfig {
+  /**
+   * Plugin name, this should match the class name
+   */
+  pluginName: string;
+  /**
+   * Plugin NPM package name
+   */
+  plugin: string;
+  /**
+   * Plugin object reference
+   */
+  pluginRef: string;
+  /**
+   * Github repository URL
+   */
+  repo: string;
+  /**
+   * Custom install command
+   */
+  install?: string;
+  /**
+   * Supported platforms
+   */
+  platforms?: string[];
+}
+
+/**
+ * @private
  *
  * Class decorator specifying Plugin metadata. Required for all plugins.
  *
@@ -339,7 +369,7 @@ export const wrap = function(pluginObj: any, methodName: string, opts: any = {})
  *  }
  * ```
  */
-export function Plugin(config) {
+export function Plugin(config: PluginConfig) {
   return function(cls) {
 
     // Add these fields to the class
