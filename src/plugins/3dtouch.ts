@@ -162,7 +162,7 @@ export class ThreeDeeTouch {
    * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
    */
   static onHomeIconPressed(): Observable<any> {
-    return new Observable(observer => {
+    return new Observable((observer: any) => {
       if (window.ThreeDeeTouch) {
         window.ThreeDeeTouch.onHomeIconPressed = observer.next.bind(observer);
       } else {

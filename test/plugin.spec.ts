@@ -1,7 +1,7 @@
 /// <reference path="../typings/index.d.ts" />
 
 import 'es6-shim';
-import {Plugin, Cordova} from './../src/plugins/plugin';
+import {Plugin, Cordova} from '../src/plugins/plugin';
 
 declare let window: any;
 window.plugins = {
@@ -42,7 +42,7 @@ describe('plugin', () => {
 
   it('normal order callback', done => {
 
-    window.plugins.test.normalOrderCallback = (args, success, error) => {
+    window.plugins.test.normalOrderCallback = (args: any, success: any, error: any) => {
       success('normalOrderCallback');
     };
 
@@ -63,7 +63,7 @@ describe('plugin', () => {
 
   it('reverse order callback', done => {
 
-    window.plugins.test.reverseOrderCallback = (success, error, args) => {
+    window.plugins.test.reverseOrderCallback = (success: Function, error: Function, args: any) => {
       success('reverseOrderCallback');
     };
 
@@ -88,7 +88,7 @@ describe('plugin', () => {
 
   it('node style callback', done => {
 
-    window.plugins.test.nodeStyleCallback = (args, done) => {
+    window.plugins.test.nodeStyleCallback = (args: any, done: any) => {
       done(null, 'nodeStyleCallback');
     };
 
@@ -113,7 +113,7 @@ describe('plugin', () => {
 
   it('object style callback', done => {
 
-    window.plugins.test.objectStyleCallback = (args, {success}) => {
+    window.plugins.test.objectStyleCallback = (args: any, {success}: any) => {
       success('objectStyleCallback');
     };
 
@@ -140,7 +140,7 @@ describe('plugin', () => {
 
   it('reverse callback at the end of the function', done => {
 
-    window.plugins.test.reverseEndCallback = (args, error, success) => {
+    window.plugins.test.reverseEndCallback = (args: any, error: any, success: any) => {
       success('Success');
     };
 
@@ -156,7 +156,7 @@ describe('plugin', () => {
     }
 
     const spy = spyOn(window.plugins.test, 'reverseEndCallback').and.callThrough();
-    const cb = (result) => {
+    const cb = (result: any) => {
       expect(result).toEqual('Success');
       done();
     };

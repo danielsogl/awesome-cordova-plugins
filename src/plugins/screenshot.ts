@@ -38,7 +38,7 @@ export class Screenshot {
     return new Promise<any>(
       (resolve, reject) => {
         navigator.screenshot.save(
-          (error, result) => {
+          (error: any, result: any) => {
             if (error) {
               reject(error);
             } else {
@@ -64,7 +64,7 @@ export class Screenshot {
     return new Promise<any>(
       (resolve, reject) => {
         navigator.screenshot.URI(
-          (error, result) => {
+          (error: any, result: any) => {
             if (error) {
               reject(error);
             } else {

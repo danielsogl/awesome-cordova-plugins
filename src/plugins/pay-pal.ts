@@ -407,7 +407,7 @@ export class PayPalConfiguration implements PayPalConfigurationOptions {
     if (options && typeof options === 'object') {
       for (var i in options) {
         if (defaults.hasOwnProperty(i)) {
-          defaults[i] = options[i];
+          (<any>defaults)[i] = (<any>options)[i];
         }
       }
     }

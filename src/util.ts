@@ -1,4 +1,4 @@
-export function get(obj, path) {
+export function get(obj: any, path: any) {
   for (var i = 0, path = path.split('.'), len = path.length; i < len; i++) {
     if (!obj) { return null; }
     obj = obj[path[i]];

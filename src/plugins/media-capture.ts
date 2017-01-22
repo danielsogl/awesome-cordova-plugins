@@ -29,7 +29,7 @@ export interface MediaFile {
    * @param {Function} successCallback
    * @param {Function} errorCallback
    */
-  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any);
+  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any): Function;
 }
 
 export interface MediaFileData {

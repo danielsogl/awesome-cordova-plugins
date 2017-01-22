@@ -3,7 +3,7 @@ declare const window: any;
 
 window.mixpanel = {
   people: {
-    identify: (args, success, error) => success('Success')
+    identify: (args: any, success: any, error: any) => success('Success')
   }
 };
 

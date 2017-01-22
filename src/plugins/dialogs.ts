@@ -54,7 +54,7 @@ export class Dialogs {
     errorIndex: 4
   })
   static alert(
-    message,
+    message: string,
     title: string = 'Alert',
     buttonName: string = 'OK'
     ): Promise<any> { return; }
@@ -71,7 +71,7 @@ export class Dialogs {
     errorIndex: 4
   })
   static confirm(
-    message,
+    message: string,
     title: string = 'Confirm',
     buttonLabels: Array<string> = ['OK', 'Cancel']
     ): Promise<number> { return; }

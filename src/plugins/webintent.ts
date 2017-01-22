@@ -1,7 +1,7 @@
 import { Cordova, CordovaProperty, Plugin } from './plugin';
 
 
-declare var window;
+declare var window: any;
 
 /**
  * @name WebIntent
@@ -26,10 +26,10 @@ declare var window;
 export class WebIntent {
 
   @CordovaProperty
-  static ACTION_VIEW;
+  static ACTION_VIEW: any;
 
   @CordovaProperty
-  static EXTRA_TEXT;
+  static EXTRA_TEXT: any;
 
   /**
    * @param options {Object} { action: any, url: string, type?: string }

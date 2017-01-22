@@ -1,5 +1,6 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 declare var window: any;
 
@@ -140,7 +141,7 @@ export class Geofence {
    */
   static onTransitionReceived(): Observable<any> {
 
-    return new Observable<any>((observer) => {
+    return new Observable<any>((observer: Observer<any>) => {
       window && window.geofence && (window.geofence.onTransitionReceived = observer.next.bind(observer));
       return () => window.geofence.onTransitionReceived = () => {};
     });
@@ -154,7 +155,7 @@ export class Geofence {
    */
   static onNotificationClicked(): Observable<any> {
 
-    return new Observable<any>((observer) => {
+    return new Observable<any>((observer: Observer<any>) => {
       window && window.geofence && (window.geofence.onNotificationClicked = observer.next.bind(observer));
         return () => window.geofence.onNotificationClicked = () => {};
     });

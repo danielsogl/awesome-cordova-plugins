@@ -1,6 +1,6 @@
 import { CordovaInstance, Plugin } from './plugin';
 
-declare var FileTransfer;
+declare var FileTransfer: any;
 
 export interface FileUploadOptions {
 

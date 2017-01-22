@@ -1,6 +1,6 @@
 import { Cordova, CordovaProperty, Plugin } from './plugin';
 
-declare var window;
+declare var window: any;
 
 /**
  * @name Screen Orientation
