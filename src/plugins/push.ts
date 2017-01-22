@@ -110,6 +110,23 @@ export interface PushNotification {
   unregister(successHandler: () => any, errorHandler?: () => any): void;
 
   /**
+   * The subscribe method is used when the application wants to subscribe a new topic to receive push notifications.
+   * @param {string} topic: Topic to subscribe to.
+   * @param successHandler
+   * @param errorHandler
+   */
+  subscribe(topic: string, successHandler: () => any, errorHandler?: () => any): void;
+
+  /**
+   * The unsubscribe method is used when the application no longer wants to receive push notifications
+   * from a specific topic but continue to receive other push messages.
+   * @param {string} topic: Topic to subscribe to.
+   * @param successHandler
+   * @param errorHandler
+   */
+  unsubscribe(topic: string, successHandler: () => any, errorHandler?: () => any): void;
+
+  /**
    * iOS & android only
    *
    * Set the badge count visible when the app is not running
