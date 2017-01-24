@@ -91,6 +91,7 @@ import { PhotoViewer } from './plugins/photo-viewer';
 import { ScreenOrientation } from './plugins/screen-orientation';
 import { PayPal } from './plugins/pay-pal';
 import { PinDialog } from './plugins/pin-dialog';
+import { Pinterest } from './plugins/pinterest';
 import { PowerManagement } from './plugins/power-management';
 import { Printer } from './plugins/printer';
 import { Push } from './plugins/push';
@@ -211,6 +212,7 @@ export * from './plugins/onesignal';
 export * from './plugins/pay-pal';
 export * from './plugins/photo-viewer';
 export * from './plugins/pin-dialog';
+export * from './plugins/pinterest';
 export * from './plugins/plugin';
 export * from './plugins/power-management';
 export * from './plugins/printer';
@@ -336,6 +338,7 @@ window['IonicNative'] = {
   PhotoViewer,
   ScreenOrientation,
   PinDialog,
+  Pinterest,
   PowerManagement,
   Rollbar,
   SafariViewController,
