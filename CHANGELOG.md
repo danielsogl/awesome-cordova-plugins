@@ -1,3 +1,18 @@
+<a name="2.4.0"></a>
+# [2.4.0](https://github.com/driftyco/ionic-native/compare/v2.3.2...v2.4.0) (2017-01-24)
+
+
+### Bug Fixes
+
+* **google-maps:** fix event listeners ([416071a](https://github.com/driftyco/ionic-native/commit/416071a)), closes [#999](https://github.com/driftyco/ionic-native/issues/999)
+
+
+### Features
+
+* **pinterest:** add pinterest plugin ([466437a](https://github.com/driftyco/ionic-native/commit/466437a))
+
+
+
 <a name="2.3.2"></a>
 ## [2.3.2](https://github.com/driftyco/ionic-native/compare/v2.3.1...v2.3.2) (2017-01-24)
 
