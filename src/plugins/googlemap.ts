@@ -1696,9 +1696,9 @@ export class GoogleMapsKmlOverlay {
 export class GoogleMapsLatLngBounds {
   private _objectInstance: any;
 
-  @InstanceProperty get northeast(): GoogleMapsLatLng { return; }
-  @InstanceProperty get southwest(): GoogleMapsLatLng { return; }
-  @InstanceProperty get type(): string { return; }
+  @InstanceProperty northeast: GoogleMapsLatLng;
+  @InstanceProperty southwest: GoogleMapsLatLng;
+  @InstanceProperty type: string;
 
   constructor(southwestOrArrayOfLatLng: GoogleMapsLatLng | GoogleMapsLatLng[], northeast?: GoogleMapsLatLng) {
     let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
