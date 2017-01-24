@@ -1,3 +1,13 @@
+<a name="2.3.2"></a>
+## [2.3.2](https://github.com/driftyco/ionic-native/compare/v2.3.1...v2.3.2) (2017-01-24)
+
+
+### Bug Fixes
+
+* **googlemaps:** fix GoogleMapsLaLngBounds ([c3127d3](https://github.com/driftyco/ionic-native/commit/c3127d3)), closes [#972](https://github.com/driftyco/ionic-native/issues/972)
+
+
+
 <a name="2.3.1"></a>
 ## [2.3.1](https://github.com/driftyco/ionic-native/compare/v2.3.0...v2.3.1) (2017-01-22)
 
