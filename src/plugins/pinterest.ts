@@ -302,7 +302,7 @@ export class Pinterest {
     successIndex: 1,
     errorIndex: 2
   })
-  static getBoardPins(boardId: string, fields?: string, limit?: number): Primise<Array<PinterestPin>> { return; }
+  static getBoardPins(boardId: string, fields?: string, limit?: number): Promise<Array<PinterestPin>> { return; }
 
   /**
    * Delete a board.
