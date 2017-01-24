@@ -1,5 +1,20 @@
+<a name="2.4.1"></a>
+## [2.4.1](https://github.com/driftyco/ionic-native/compare/v2.4.0...v2.4.1) (2017-01-24)
+
+
+### Bug Fixes
+
+* **screen-orientation:** lockOrientation returns a promise ([1c09ee1](https://github.com/driftyco/ionic-native/commit/1c09ee1)), closes [#939](https://github.com/driftyco/ionic-native/issues/939)
+
+
+
 <a name="2.4.0"></a>
-# [2.4.0](https://github.com/driftyco/ionic-native/compare/v2.3.2...v2.4.0) (2017-01-24)
+# [2.4.0](https://github.com/driftyco/ionic-native/compare/v2.3.3...v2.4.0) (2017-01-24)
+
+
+
+<a name="2.3.3"></a>
+## [2.3.3](https://github.com/driftyco/ionic-native/compare/v2.3.2...v2.3.3) (2017-01-24)
 
 
 ### Bug Fixes
