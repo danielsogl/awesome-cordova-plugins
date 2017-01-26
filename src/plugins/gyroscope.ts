@@ -5,20 +5,22 @@ declare var navigator: any;
 
 /**
 * Interface that represent output data
+* @property x {number} Represent x-axis
+* @property y {number} Represent y-axis
+* @property z {number} Represent z-axis
+* @property timestamp {number} Represent timestamp of sensor read
 */
-
-export interface Orientation {
+export interface GyroscopeOrientation {
   x: number;
   y: number;
   z: number;
   timestamp: number;
 }
 
-
 /**
 * Interface that represent option data
+* @property frequency {number}  Represent how often (in milliseconds) sensor should be read.  Default is 10000 ms
 */
-
 export interface GyroscopeOptions {
   frequency: number;
 }
@@ -28,7 +30,7 @@ export interface GyroscopeOptions {
  * @description Read Gyroscope sensor data
  * @usage
  * ```
- * import { Gyroscope, Orientation, GyroscopeOptions } from 'ionic-native';
+ * import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from 'ionic-native';
  *
  *
  * let options: GyroscopeOptions = {
@@ -36,14 +38,14 @@ export interface GyroscopeOptions {
  * };
  *
  * Gyroscope.getCurrent(options)
- *   .then((orientation: Orientation) => {
+ *   .then((orientation: GyroscopeOrientation) => {
  *      console.log(orientation.x, orientation.y, orientation.z, orientation.timestamp);
  *    })
  *   .catch()
  *
  *
  * Gyroscope.watch()
- *    .subscribe((orientation: Orientation) => {
+ *    .subscribe((orientation: GyroscopeOrientation) => {
  *       console.log(orientation.x, orientation.y, orientation.z, orientation.timestamp);
  *    });
  *
@@ -62,26 +64,24 @@ export interface GyroscopeOptions {
   /**
    * Watching for gyroscope sensor changes
    * @param options {GyroscopeOptions} (optional)
-   * @return {Observable<Gyroscope>} Returns an Observable that resolves Orientation
+   * @return {Observable<GyroscopeOrientation>} Returns an Observable that resolves GyroscopeOrientation
    */
-
-   static watch(options?: GyroscopeOptions): Observable<Orientation> {
-     return new Observable<Orientation> (
+   static watch(options?: GyroscopeOptions): Observable<GyroscopeOrientation> {
+     return new Observable<GyroscopeOrientation> (
        (observer: any) => {
          let watchId = navigator.gyroscope.watch(observer.next.bind(observer), observer.next.bind(observer), options);
          return () => navigator.gyroscope.clearWatch(watchId);
        }
-       );
+     );
    }
 
    /**
    * Get current data from gyroscope sensor
    * @param options {GyroscopeOptions} (optional)
-   * @return {Promise<Orientation>} Returns a promise that resolves Orientation
+   * @return {Promise<GyroscopeOrientation>} Returns a promise that resolves GyroscopeOrientation
    */
    @Cordova({
-     successIndex: 0,
-     errorIndex: 1,
+     callbackOrder: 'reverse'
    })
-   static getCurrent(options?: GyroscopeOptions): Promise<Orientation> { return; }
+   static getCurrent(options?: GyroscopeOptions): Promise<GyroscopeOrientation> { return; }
  }
