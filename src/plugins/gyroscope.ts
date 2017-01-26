@@ -4,24 +4,37 @@ import { Observable } from 'rxjs/Observable';
 declare var navigator: any;
 
 /**
-* Interface that represent output data
-* @property x {number} Represent x-axis
-* @property y {number} Represent y-axis
-* @property z {number} Represent z-axis
-* @property timestamp {number} Represent timestamp of sensor read
-*/
+ *  Interface that represent output data
+ */
 export interface GyroscopeOrientation {
+ /**
+  *  Represent x-axis
+  */
   x: number;
+  
+ /**
+  *  Represent y-axis
+  */
   y: number;
+  
+ /**
+  *  Represent z-axis
+  */
   z: number;
+  
+ /**
+  *  Represent timestamp of sensor read. Default is 10000ms
+  */
   timestamp: number;
 }
 
 /**
-* Interface that represent option data
-* @property frequency {number}  Represent how often (in milliseconds) sensor should be read.  Default is 10000 ms
-*/
+ *  Interface that represent option data
+ */
 export interface GyroscopeOptions {
+ /**
+  *  Represent how often (in milliseconds) sensor should be read.  Default is 10000 ms
+  */
   frequency: number;
 }
 
