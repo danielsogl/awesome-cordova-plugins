@@ -21,9 +21,9 @@ import { Plugin, Cordova } from './plugin';
  */
 @Plugin({
   pluginName: 'Stepcounter',
-  plugin: 'https://github.com/texh/cordova-plugin-stepcounter',
+  plugin: 'https://github.com/Slidee/cordova-plugin-stepcounter',
   pluginRef: 'stepcounter',
-  repo: 'https://github.com/texh/cordova-plugin-stepcounter',
+  repo: 'https://github.com/Slidee/cordova-plugin-stepcounterr',
   platforms: ['Android']
 })
 export class Stepcounter {
