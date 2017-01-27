@@ -223,7 +223,7 @@ export class Transfer {
     successIndex: 2,
     errorIndex: 3
   })
-  upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult | FileTransferError> {
+  upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult> {
     return;
   }
 
