@@ -11,6 +11,7 @@ import { AppAvailability } from './plugins/appavailability';
 import { AppRate } from './plugins/apprate';
 import { AppVersion } from './plugins/appversion';
 import { Badge } from './plugins/badge';
+import { BackgroundFetch } from './plugins/background-fetch';
 import { BackgroundGeolocation } from './plugins/background-geolocation';
 import { BackgroundMode } from './plugins/backgroundmode';
 import { Backlight } from './plugins/backlight';
@@ -132,6 +133,7 @@ export * from './plugins/android-fingerprint-auth';
 export * from './plugins/appavailability';
 export * from './plugins/apprate';
 export * from './plugins/appversion';
+export * from './plugins/background-fetch';
 export * from './plugins/background-geolocation';
 export * from './plugins/backgroundmode';
 export * from './plugins/backlight';
@@ -258,6 +260,7 @@ window['IonicNative'] = {
   AppVersion,
   Badge,
   BackgroundGeolocation,
+  BackgroundFetch,
   BackgroundMode,
   Backlight,
   BarcodeScanner,
