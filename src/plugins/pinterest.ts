@@ -118,7 +118,7 @@ export interface PinterestPin {
   /**
    * The Pin’s image. The default response returns the image’s URL, width and height.
    */
-  image?; any;
+  image?: any;
   /**
    * Extra information about the Pin for Rich Pins. Includes the Pin type (e.g., article, recipe) and related information (e.g., ingredients, author).
    */
