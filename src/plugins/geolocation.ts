@@ -167,7 +167,7 @@ export class Geolocation {
    *
    * ```typescript
    * var subscription = Geolocation.watchPosition()
-   *                               .filter((p) => p.code === undefined) //Filter Out Errors
+   *                               .filter((p) => p.coords !== undefined) //Filter Out Errors
    *                               .subscribe(position => {
    *   console.log(position.coords.longitude + ' ' + position.coords.latitude);
    * });
