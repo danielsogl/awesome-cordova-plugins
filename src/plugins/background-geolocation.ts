@@ -126,10 +126,14 @@ export interface BackgroundGeolocationConfig {
 
   /**
    * ANDROID, WP8 ONLY
-   * The minimum time interval between location updates in seconds.
+   * When using BackgroundGeolocation.LocationProvider.ANDROID_DISTANCE_FILTER_PROVIDER:
+   * The minimum time interval between location updates in milliseconds.
    * @see Android docs (http://developer.android.com/reference/android/location/LocationManager.html#requestLocationUpdates(long,%20float,%20android.location.Criteria,%20android.app.PendingIntent))
    * and the MS doc (http://msdn.microsoft.com/en-us/library/windows/apps/windows.devices.geolocation.geolocator.reportinterval)
    * for more information
+   * When using BackgroundGeolocation.LocationProvider.ANDROID_ACTIVITY_PROVIDER:
+   * Rate in milliseconds at which your app prefers to receive location updates.
+   * @see Android docs (https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#getInterval())
    */
   interval?: number;
 
@@ -225,6 +229,28 @@ export interface BackgroundGeolocationConfig {
    * Defaults to 10000 
    */
   maxLocations?: number;
+
+  /**
+   * ANDROID ONLY with BackgroundGeolocation.LocationProvider.ANDROID_ACTIVITY_PROVIDER
+   *
+   * Fastest rate in milliseconds at which your app can handle location updates.
+   * @see Android docs (https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#getFastestInterval())
+   */
+  fastestInterval?: number;
+
+  /**
+   * ANDROID ONLY with BackgroundGeolocation.LocationProvider.ANDROID_ACTIVITY_PROVIDER
+   *
+   * Rate in milliseconds at which activity recognition occurs. Larger values will result in fewer activity detections while improving battery life.
+   */
+  activitiesInterval?: number;
+
+  /**
+   * ANDROID ONLY with BackgroundGeolocation.LocationProvider.ANDROID_ACTIVITY_PROVIDER
+   *
+   * stop() is forced, when the STILL activity is detected (default is true)
+   */
+  stopOnStillActivity?: boolean;
 }
 
 /**
