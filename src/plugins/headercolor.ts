@@ -1,7 +1,7 @@
 import { Plugin, Cordova } from './plugin';
 
 /**
- * @name Headerolor
+ * @name HeaderColor
  * @description
  * Cordova plugin to change color of header in multitask view
  *
