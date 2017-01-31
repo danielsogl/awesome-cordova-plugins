@@ -71,7 +71,10 @@ export class SafariViewController {
    * @param options {SafariViewControllerOptions} optional
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2
+  })
   static show(options?: SafariViewControllerOptions): Promise<any> { return; }
 
   /**
