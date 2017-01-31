@@ -30,7 +30,7 @@ export interface StreamingAudioOptions {
  *   orientation: 'landscape'
  * };
  *
- * StreamingMedia.('https://path/to/video/stream', options);
+ * StreamingMedia.playVideo('https://path/to/video/stream', options);
  *
  * ```
  * @interfaces
