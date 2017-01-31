@@ -73,6 +73,13 @@ export class InAppBrowser {
   close(): void { }
 
   /**
+   * Hides an InAppBrowser window that is currently shown. Calling this has no effect
+   * if the InAppBrowser was already hidden.
+   */
+  @CordovaInstance({sync: true})
+  hide(): void { }
+
+  /**
    * Injects JavaScript code into the InAppBrowser window.
    * @param script {Object} Details of the script to run, specifying either a file or code key.
    * @returns {Promise<any>}
