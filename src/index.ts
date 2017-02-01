@@ -29,6 +29,7 @@ import { CardIO } from './plugins/card-io';
 import { Clipboard } from './plugins/clipboard';
 import { CodePush } from './plugins/code-push';
 import { Contacts } from './plugins/contacts';
+import { CouchbaseLite } from './plugins/couchbase-lite';
 import { Crop } from './plugins/crop';
 import { DatePicker } from './plugins/datepicker';
 import { DBMeter } from './plugins/dbmeter';
@@ -151,6 +152,7 @@ export * from './plugins/card-io';
 export * from './plugins/clipboard';
 export * from './plugins/code-push';
 export * from './plugins/contacts';
+export * from './plugins/couchbase-lite';
 export * from './plugins/crop';
 export * from './plugins/datepicker';
 export * from './plugins/dbmeter';
@@ -275,6 +277,7 @@ window['IonicNative'] = {
   Clipboard,
   CodePush,
   Contacts,
+  CouchbaseLite,
   Crop,
   DatePicker,
   DBMeter,
