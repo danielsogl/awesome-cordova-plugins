@@ -24,14 +24,15 @@ import { Plugin, Cordova } from './plugin';
 })
 export class Appodeal {
 
-  static AD_TYPES = {
+  // available
+  readonly AD_TYPES = {
     INTERSTITIAL: 1,
     SKIPPABLE_VIDEO: 2,
     BANNER: 4,
     BANNER_BOTTOM: 8,
     BANNER_TOP: 16,
     REWARDED_VIDEO: 128,
-    NON_SKIPPABLE_VIDEO: 256,
+    NON_SKIPPABLE_VIDEO: 256
   };
 
   /**
@@ -89,23 +90,23 @@ export class Appodeal {
   static isLoaded(adType: number): Promise<any> { return; };
 
   /**
-   *
-   * @param adType
+   * check if ad of specified
+   * @param {number} adType
    */
   @Cordova()
   static isPrecache(adType: number): Promise<any> { return; };
 
   /**
    *
-   * @param adType
+   * @param {number} adType
    * @param autoCache
    */
   @Cordova()
   static setAutoCache(adType: number, autoCache: any): void {};
 
   /**
-   *
-   * @param adType
+   * forcefully cache an ad by type
+   * @param {number} adType
    */
   @Cordova()
   static cache(adType: number): void {};
@@ -125,213 +126,213 @@ export class Appodeal {
   static setSmartBanners(value: any): void {};
 
   /**
-   * 
+   *
    * @param value
    */
   @Cordova()
   static setBannerBackground(value: any): void {};
 
   /**
-   * 
+   *
    * @param value
    */
   @Cordova()
   static setBannerAnimation(value: any): void {};
 
   /**
-   * 
+   *
    * @param value
    */
   @Cordova()
   static set728x90Banners(value: any): void {};
 
   /**
-   * 
+   *
    * @param logging
    */
   @Cordova()
   static setLogging(logging: boolean): void {};
 
   /**
-   * 
+   *
    * @param testing
    */
   @Cordova()
   static setTesting(testing: boolean): void {};
 
   /**
-   * 
+   *
    */
   @Cordova()
   static resetUUID(): void {};
 
   /**
-   * 
+   *
    * @param callback
    */
   @Cordova()
   static getVersion(callback?: Function): void {};
 
   /**
-   * 
+   *
    * @param network
-   * @param adType
+   * @param {number} adType
    */
   @Cordova()
   static disableNetwork(network: any, adType: number): void {};
 
   /**
-   * 
+   *
    * @param network
-   * @param adType
+   * @param {number} adType
    */
   @Cordova()
   static disableNetworkType(network: any, adType: number): void {};
 
   /**
-   * 
+   *
    */
   @Cordova()
   static disableLocationPermissionCheck(): void {};
 
   /**
-   * 
+   *
    */
   @Cordova()
   static disableWriteExternalStoragePermissionCheck(): void {};
 
   /**
-   * 
-   * @param listener
+   *
+   * @param {Function} listener
    */
   @Cordova()
   static enableInterstitialCallbacks(listener: Function): void {};
 
   /**
-   * 
-   * @param listener
+   *
+   * @param {Function} listener
    */
   @Cordova()
   static enableSkippableVideoCallbacks(listener: Function): void {};
 
   /**
-   * 
-   * @param listener
+   *
+   * @param {Function} listener
    */
   @Cordova()
   static enableNonSkippableVideoCallbacks(listener: Function): void {};
 
   /**
-   * 
-   * @param listener
+   *
+   * @param {Function} listener
    */
   @Cordova()
   static enableBannerCallbacks(listener: Function): void {};
 
   /**
-   * 
-   * @param listener
+   *
+   * @param {Function} listener
    */
   @Cordova()
   static enableRewardedVideoCallbacks(listener: Function): void {};
 
   /**
-   * 
-   * @param name
-   * @param rule
+   *
+   * @param {string} name
+   * @param {any} rule
    */
   @Cordova()
-  static setCustomBooleanRule(name: any, rule: any): void {};
+  static setCustomBooleanRule(name: string, rule: any): void {};
 
   /**
-   * 
-   * @param name
-   * @param rule
+   *
+   * @param {string} name
+   * @param {any} rule
    */
   @Cordova()
-  static setCustomIntegerRule(name: any, rule: any): void {};
+  static setCustomIntegerRule(name: string, rule: any): void {};
 
   /**
-   * 
-   * @param name
-   * @param rule
+   *
+   * @param {string} name
+   * @param {any} rule
    */
   @Cordova()
-  static setCustomDoubleRule(name: any, rule: any): void {};
+  static setCustomDoubleRule(name: string, rule: any): void {};
 
   /**
-   * 
-   * @param name
-   * @param rule
+   *
+   * @param {string} name
+   * @param {any} rule
    */
   @Cordova()
-  static setCustomStringRule(name: any, rule: any): void {};
+  static setCustomStringRule(name: string, rule: any): void {};
 
   /**
-   * 
+   * set ID preference in Appodeal for current user
    * @param id
    */
   @Cordova()
   static setUserId(id: any): void {};
 
   /**
-   * 
+   * set Email preference in Appodeal for current user
    * @param email
    */
   @Cordova()
   static setEmail(email: any): void {};
 
   /**
-   * 
+   * set Birthday preference in Appodeal for current user
    * @param birthday
    */
   @Cordova()
   static setBirthday(birthday: any): void {};
 
   /**
-   * 
+   * et Age preference in Appodeal for current user
    * @param age
    */
   @Cordova()
   static setAge(age: any): void {};
 
   /**
-   * 
+   * set Gender preference in Appodeal for current user
    * @param gender
    */
   @Cordova()
   static setGender(gender: any): void {};
 
   /**
-   * 
+   * set Occupation preference in Appodeal for current user
    * @param occupation
    */
   @Cordova()
   static setOccupation(occupation: any): void {};
 
   /**
-   * 
+   * set Relation preference in Appodeal for current user
    * @param relation
    */
   @Cordova()
   static setRelation(relation: any): void {};
 
   /**
-   * 
+   * set Smoking preference in Appodeal for current user
    * @param smoking
    */
   @Cordova()
   static setSmoking(smoking: any): void {};
 
   /**
-   * 
+   * set Alcohol preference in Appodeal for current user
    * @param alcohol
    */
   @Cordova()
   static setAlcohol(alcohol: any): void {};
 
   /**
-   * 
+   * set Interests preference in Appodeal for current user
    * @param interests
    */
   @Cordova()
