@@ -16,8 +16,8 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  pluginName: 'Couchbase Lite',
-  plugin: '',
+  pluginName: 'CouchbaseLite',
+  plugin: 'https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin',
   pluginRef: 'cblite',
   repo: 'https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin',
 })
