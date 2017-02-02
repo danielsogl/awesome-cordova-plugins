@@ -8,6 +8,7 @@ import { ActionSheet } from './plugins/actionsheet';
 import { AdMob } from './plugins/admob';
 import { AndroidFingerprintAuth } from './plugins/android-fingerprint-auth';
 import { AppAvailability } from './plugins/appavailability';
+import { Appodeal } from './plugins/appodeal';
 import { AppRate } from './plugins/apprate';
 import { AppVersion } from './plugins/appversion';
 import { Badge } from './plugins/badge';
@@ -130,6 +131,7 @@ export * from './plugins/actionsheet';
 export * from './plugins/admob';
 export * from './plugins/android-fingerprint-auth';
 export * from './plugins/appavailability';
+export * from './plugins/appodeal';
 export * from './plugins/apprate';
 export * from './plugins/appversion';
 export * from './plugins/background-geolocation';
@@ -254,6 +256,7 @@ window['IonicNative'] = {
   AdMob,
   AndroidFingerprintAuth,
   AppAvailability,
+  Appodeal,
   AppRate,
   AppVersion,
   Badge,
