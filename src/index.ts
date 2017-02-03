@@ -166,6 +166,7 @@ export * from './plugins/dialogs';
 export * from './plugins/emailcomposer';
 export * from './plugins/estimote-beacons';
 export * from './plugins/facebook';
+export * from './plugins/fcm';
 export * from './plugins/file';
 export * from './plugins/file-chooser';
 export * from './plugins/file-opener';
