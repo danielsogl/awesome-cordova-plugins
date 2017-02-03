@@ -4,15 +4,15 @@ import { Observable } from 'rxjs';
 /**
  * @name Appodeal
  * @description
- * Plugin to serve Appodeal ads through native Appodeal SDKs
+ * Plugin to serve ads through native Appodeal SDKs
  *
  * @usage
  * ```
  * import { Appodeal } from 'ionic-native';
  *
- * Appodeal.functionName('Hello', 123)
- *   .then((something: any) => doSomething(something))
- *   .catch((error: any) => console.log(error));
+ * let appKey = '<your app key>';
+ * Appodeal.initialize(appKey, Appodeal.AD_TYPES.REWARDED_VIDEO);
+ * Appodeal.show(Appodeal.AD_TYPES.REWARDED_VIDEO);
  *
  * ```
  */
@@ -341,152 +341,103 @@ export class Appodeal {
   @Cordova()
   static setInterests(interests: any): void {};
 
-  /**
-   * event Observables
-   *
-   *
-   */
-  @Cordova({
-    eventObservable: true,
-    event: 'onInterstitialLoaded'
-  })
-  static onInterstitialLoaded(): Observable<any> { return; }
+  /*********************
+   * event Observables *
+   *********************/
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onInterstitialFailedToLoad'
-  })
-  static onInterstitialFailedToLoad(): Observable<any> { return; }
+  static onInterstitialLoaded(): Observable<any> {
+    return Observable.fromEvent(document, 'onInterstitialLoaded');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onInterstitialShown'
-  })
-  static onInterstitialShown(): Observable<any> { return; }
+  static onInterstitialFailedToLoad(): Observable<any> {
+    return Observable.fromEvent(document, 'onInterstitialFailedToLoad');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onInterstitialClicked'
-  })
-  static onInterstitialClicked(): Observable<any> { return; }
+  static onInterstitialShown(): Observable<any> {
+    return Observable.fromEvent(document, 'onInterstitialShown');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onInterstitialClosed'
-  })
-  static onInterstitialClosed(): Observable<any> { return; }
+  static onInterstitialClicked(): Observable<any> {
+    return Observable.fromEvent(document, 'onInterstitialClicked');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onSkippableVideoLoaded'
-  })
-  static onSkippableVideoLoaded(): Observable<any> { return; }
+  static onInterstitialClosed(): Observable<any> {
+    return Observable.fromEvent(document, 'onInterstitialClosed');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onSkippableVideoFailedToLoad'
-  })
-  static onSkippableVideoFailedToLoad(): Observable<any> { return; }
+  static onSkippableVideoLoaded(): Observable<any> {
+    return Observable.fromEvent(document, 'onSkippableVideoLoaded');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onSkippableVideoShown'
-  })
-  static onSkippableVideoShown(): Observable<any> { return; }
+  static onSkippableVideoFailedToLoad(): Observable<any> {
+    return Observable.fromEvent(document, 'onSkippableVideoFailedToLoad');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onSkippableVideoFinished'
-  })
-  static onSkippableVideoFinished(): Observable<any> { return; }
+  static onSkippableVideoShown(): Observable<any> {
+    return Observable.fromEvent(document, 'onSkippableVideoShown');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onSkippableVideoClosed'
-  })
-  static onSkippableVideoClosed(): Observable<any> { return; }
+  static onSkippableVideoFinished(): Observable<any> {
+    return Observable.fromEvent(document, 'onSkippableVideoFinished');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onRewardedVideoLoaded'
-  })
-  static onRewardedVideoLoaded(): Observable<any> { return; }
+  static onSkippableVideoClosed(): Observable<any> {
+    return Observable.fromEvent(document, 'onSkippableVideoClosed');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onRewardedVideoFailedToLoad'
-  })
-  static onRewardedVideoFailedToLoad(): Observable<any> { return; }
+  static onRewardedVideoLoaded(): Observable<any> {
+    return Observable.fromEvent(document, 'onRewardedVideoLoaded');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onRewardedVideoShown'
-  })
-  static onRewardedVideoShown(): Observable<any> { return; }
+  static onRewardedVideoFailedToLoad(): Observable<any> {
+    return Observable.fromEvent(document, 'onRewardedVideoFailedToLoad');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onRewardedVideoFinished'
-  })
-  static onRewardedVideoFinished(): Observable<any> { return; }
+  static onRewardedVideoShown(): Observable<any> {
+    return Observable.fromEvent(document, 'onRewardedVideoShown');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onRewardedVideoClosed'
-  })
-  static onRewardedVideoClosed(): Observable<any> { return; }
+  static onRewardedVideoFinished(): Observable<any> {
+    return Observable.fromEvent(document, 'onRewardedVideoFinished');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onNonSkippableVideoLoaded'
-  })
-  static onNonSkippableVideoLoaded(): Observable<any> { return; }
+  static onRewardedVideoClosed(): Observable<any> {
+    return Observable.fromEvent(document, 'onRewardedVideoClosed');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onNonSkippableVideoFailedToLoad'
-  })
-  static onNonSkippableVideoFailedToLoad(): Observable<any> { return; }
+  static onNonSkippableVideoLoaded(): Observable<any> {
+    return Observable.fromEvent(document, 'onNonSkippableVideoLoaded');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onNonSkippableVideoShown'
-  })
-  static onNonSkippableVideoShown(): Observable<any> { return; }
+  static onNonSkippableVideoFailedToLoad(): Observable<any> {
+    return Observable.fromEvent(document, 'onNonSkippableVideoFailedToLoad');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onNonSkippableVideoFinished'
-  })
-  static onNonSkippableVideoFinished(): Observable<any> { return; }
+  static onNonSkippableVideoShown(): Observable<any> {
+    return Observable.fromEvent(document, 'onNonSkippableVideoShown');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onNonSkippableVideoClosed'
-  })
-  static onNonSkippableVideoClosed(): Observable<any> { return; }
+  static onNonSkippableVideoFinished(): Observable<any> {
+    return Observable.fromEvent(document, 'onNonSkippableVideoFinished');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onBannerClicked'
-  })
-  static onBannerClicked(): Observable<any> { return; }
+  static onNonSkippableVideoClosed(): Observable<any> {
+    return Observable.fromEvent(document, 'onNonSkippableVideoClosed');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onBannerFailedToLoad'
-  })
-  static onBannerFailedToLoad(): Observable<any> { return; }
+  static onBannerClicked(): Observable<any> {
+    return Observable.fromEvent(document, 'onBannerClicked');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onBannerLoaded'
-  })
-  static onBannerLoaded(): Observable<any> { return; }
+  static onBannerFailedToLoad(): Observable<any> {
+    return Observable.fromEvent(document, 'onBannerFailedToLoad');
+  }
 
-  @Cordova({
-    eventObservable: true,
-    event: 'onBannerShown'
-  })
-  static onBannerShown(): Observable<any> { return; }
+  static onBannerLoaded(): Observable<any> {
+    return Observable.fromEvent(document, 'onBannerLoaded');
+  }
+
+  static onBannerShown(): Observable<any> {
+    return Observable.fromEvent(document, 'onBannerShown');
+  }
 }
