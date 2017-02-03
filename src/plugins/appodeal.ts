@@ -1,9 +1,10 @@
 import { Plugin, Cordova } from './plugin';
+import { Observable } from 'rxjs';
 
 /**
  * @name Appodeal
  * @description
- * Plugin to serve Appodeal ads through the Appodeal SDKs
+ * Plugin to serve Appodeal ads through native Appodeal SDKs
  *
  * @usage
  * ```
@@ -23,9 +24,8 @@ import { Plugin, Cordova } from './plugin';
   platforms: [ 'ios', 'android' ]
 })
 export class Appodeal {
-
-  // available
-  readonly AD_TYPES = {
+  // available types of advertisements
+  static readonly AD_TYPES = {
     INTERSTITIAL: 1,
     SKIPPABLE_VIDEO: 2,
     BANNER: 4,
@@ -65,8 +65,10 @@ export class Appodeal {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static showWithPlacement(adType: number,
-    placement: any): Promise<any> { return; };
+  static showWithPlacement(
+    adType: number,
+    placement: any
+  ): Promise<any> { return; };
 
   /**
    * hide ad of specified type
@@ -85,6 +87,7 @@ export class Appodeal {
   /**
    * check if ad of specified type has been loaded
    * @param {number} adType
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   static isLoaded(adType: number): Promise<any> { return; };
@@ -92,6 +95,7 @@ export class Appodeal {
   /**
    * check if ad of specified
    * @param {number} adType
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   static isPrecache(adType: number): Promise<any> { return; };
@@ -113,31 +117,31 @@ export class Appodeal {
 
   /**
    *
-   * @param set
+   * @param {boolean} set
    */
   @Cordova()
-  static setOnLoadedTriggerBoth(set): void {};
+  static setOnLoadedTriggerBoth(set: boolean): void {};
 
   /**
-   *
-   * @param value
+   * enable or disable Smart Banners
+   * @param {boolean} enabled
    */
   @Cordova()
-  static setSmartBanners(value: any): void {};
+  static setSmartBanners(enabled: boolean): void {};
 
   /**
-   *
-   * @param value
+   * enable or disable banner backgrounds
+   * @param {boolean} enabled
    */
   @Cordova()
-  static setBannerBackground(value: any): void {};
+  static setBannerBackground(enabled: boolean): void {};
 
   /**
-   *
-   * @param value
+   * enable or disable banner animations
+   * @param {boolean} enabled
    */
   @Cordova()
-  static setBannerAnimation(value: any): void {};
+  static setBannerAnimation(enabled: boolean): void {};
 
   /**
    *
@@ -147,126 +151,125 @@ export class Appodeal {
   static set728x90Banners(value: any): void {};
 
   /**
-   *
-   * @param logging
+   * enable or disable logging
+   * @param {boolean} logging
    */
   @Cordova()
   static setLogging(logging: boolean): void {};
 
   /**
-   *
-   * @param testing
+   * enable or disable testing mode
+   * @param {boolean} testing
    */
   @Cordova()
   static setTesting(testing: boolean): void {};
 
   /**
-   *
+   * reset device ID
    */
   @Cordova()
   static resetUUID(): void {};
 
   /**
-   *
-   * @param callback
+   * get version of Appdeal SDK
    */
   @Cordova()
-  static getVersion(callback?: Function): void {};
+  static getVersion(): Promise<any> { return; };
 
   /**
    *
-   * @param network
+   * @param {string} network
    * @param {number} adType
    */
   @Cordova()
-  static disableNetwork(network: any, adType: number): void {};
+  static disableNetwork(network?: string, adType?: number): void {};
 
   /**
    *
-   * @param network
+   * @param {string} network
    * @param {number} adType
    */
   @Cordova()
-  static disableNetworkType(network: any, adType: number): void {};
+  static disableNetworkType(network?: string, adType?: number): void {};
 
   /**
-   *
+   * disable Location permissions for Appodeal SDK
    */
   @Cordova()
   static disableLocationPermissionCheck(): void {};
 
   /**
-   *
+   * disable Storage permissions for Appodeal SDK
    */
   @Cordova()
   static disableWriteExternalStoragePermissionCheck(): void {};
 
   /**
-   *
-   * @param {Function} listener
+   * enable event listeners
+   * @param {boolean} enabled
    */
   @Cordova()
-  static enableInterstitialCallbacks(listener: Function): void {};
+  static enableInterstitialCallbacks(enabled: boolean): void {};
+
+  /**
+   * enable event listeners
+   * @param {boolean} enabled
+   */
+  @Cordova()
+  static enableSkippableVideoCallbacks(enabled: boolean): void {};
+
+  /**
+   * enable event listeners
+   * @param {boolean} enabled
+   */
+  @Cordova()
+  static enableNonSkippableVideoCallbacks(enabled: boolean): void {};
+
+  /**
+   * enable event listeners
+   * @param {boolean} enabled
+   */
+  @Cordova()
+  static enableBannerCallbacks(enabled: boolean): void {};
+
+  /**
+   * enable event listeners
+   * @param {boolean} enabled
+   */
+  @Cordova()
+  static enableRewardedVideoCallbacks(enabled: boolean): void {};
 
   /**
    *
-   * @param {Function} listener
+   * @param {string} name - name of rule
+   * @param {boolean} value
    */
   @Cordova()
-  static enableSkippableVideoCallbacks(listener: Function): void {};
+  static setCustomBooleanRule(name: string, value: boolean): void {};
 
   /**
    *
-   * @param {Function} listener
+   * @param {string} name - name of rule
+   * @param {number} value
    */
   @Cordova()
-  static enableNonSkippableVideoCallbacks(listener: Function): void {};
+  static setCustomIntegerRule(name: string, value: number): void {};
 
   /**
-   *
-   * @param {Function} listener
-   */
-  @Cordova()
-  static enableBannerCallbacks(listener: Function): void {};
-
-  /**
-   *
-   * @param {Function} listener
-   */
-  @Cordova()
-  static enableRewardedVideoCallbacks(listener: Function): void {};
-
-  /**
-   *
+   * set rule with float value
    * @param {string} name
-   * @param {any} rule
+   * @param {number} value
    */
   @Cordova()
-  static setCustomBooleanRule(name: string, rule: any): void {};
+  static setCustomDoubleRule(name: string, value: number): void {};
 
   /**
-   *
-   * @param {string} name
-   * @param {any} rule
+   * set rule with string value
+   * @param {string} name - name of rule
+   * @param {string} value
    */
   @Cordova()
-  static setCustomIntegerRule(name: string, rule: any): void {};
-
-  /**
-   *
-   * @param {string} name
-   * @param {any} rule
-   */
-  @Cordova()
-  static setCustomDoubleRule(name: string, rule: any): void {};
-
-  /**
-   *
-   * @param {string} name
-   * @param {any} rule
-   */
-  @Cordova()
-  static setCustomStringRule(name: string, rule: any): void {};
+  static setCustomStringRule(name: string, value: string): void {};
 
   /**
    * set ID preference in Appodeal for current user
@@ -338,4 +341,152 @@ export class Appodeal {
   @Cordova()
   static setInterests(interests: any): void {};
 
+  /**
+   * event Observables
+   *
+   *
+   */
+  @Cordova({
+    eventObservable: true,
+    event: 'onInterstitialLoaded'
+  })
+  static onInterstitialLoaded(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onInterstitialFailedToLoad'
+  })
+  static onInterstitialFailedToLoad(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onInterstitialShown'
+  })
+  static onInterstitialShown(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onInterstitialClicked'
+  })
+  static onInterstitialClicked(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onInterstitialClosed'
+  })
+  static onInterstitialClosed(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onSkippableVideoLoaded'
+  })
+  static onSkippableVideoLoaded(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onSkippableVideoFailedToLoad'
+  })
+  static onSkippableVideoFailedToLoad(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onSkippableVideoShown'
+  })
+  static onSkippableVideoShown(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onSkippableVideoFinished'
+  })
+  static onSkippableVideoFinished(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onSkippableVideoClosed'
+  })
+  static onSkippableVideoClosed(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onRewardedVideoLoaded'
+  })
+  static onRewardedVideoLoaded(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onRewardedVideoFailedToLoad'
+  })
+  static onRewardedVideoFailedToLoad(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onRewardedVideoShown'
+  })
+  static onRewardedVideoShown(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onRewardedVideoFinished'
+  })
+  static onRewardedVideoFinished(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onRewardedVideoClosed'
+  })
+  static onRewardedVideoClosed(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onNonSkippableVideoLoaded'
+  })
+  static onNonSkippableVideoLoaded(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onNonSkippableVideoFailedToLoad'
+  })
+  static onNonSkippableVideoFailedToLoad(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onNonSkippableVideoShown'
+  })
+  static onNonSkippableVideoShown(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onNonSkippableVideoFinished'
+  })
+  static onNonSkippableVideoFinished(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onNonSkippableVideoClosed'
+  })
+  static onNonSkippableVideoClosed(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onBannerClicked'
+  })
+  static onBannerClicked(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onBannerFailedToLoad'
+  })
+  static onBannerFailedToLoad(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onBannerLoaded'
+  })
+  static onBannerLoaded(): Observable<any> { return; }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'onBannerShown'
+  })
+  static onBannerShown(): Observable<any> { return; }
 }
