@@ -43,6 +43,7 @@ import { Dialogs } from './plugins/dialogs';
 import { EmailComposer } from './plugins/emailcomposer';
 import { EstimoteBeacons } from './plugins/estimote-beacons';
 import { Facebook } from './plugins/facebook';
+import { FCM } from './plugins/fcm';
 import { File } from './plugins/file';
 import { FileChooser } from './plugins/file-chooser';
 import { FileOpener } from './plugins/file-opener';
@@ -289,6 +290,7 @@ window['IonicNative'] = {
   EmailComposer,
   EstimoteBeacons,
   Facebook,
+  FCM,
   File,
   FileChooser,
   FileOpener,
