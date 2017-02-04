@@ -1,5 +1,6 @@
 import { get } from '../util';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
 
 declare var window;
 declare var Promise;
@@ -86,6 +87,10 @@ export interface CordovaOptions {
    * Event name, this must be set if eventObservable is set to true
    */
   event?: string;
+  /**
+   * Element to attach the event listener to, this is optional, defaults to `window`
+   */
+  element?: any;
   /**
    * Set to true if the wrapped method returns a promise
    */
@@ -337,14 +342,12 @@ function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
 
 /**
  * Wrap the event with an observable
- * @param event
+ * @param event even name
+ * @param element The element to attach the event listener to
  * @returns {Observable}
  */
-function wrapEventObservable(event: string): Observable<any> {
-  return new Observable(observer => {
-    window.addEventListener(event, observer.next.bind(observer), false);
-    return () => window.removeEventListener(event, observer.next.bind(observer), false);
-  });
+function wrapEventObservable(event: string, element: any = window): Observable<any> {
+  return Observable.fromEvent(element, event);
 }
 
 /**
@@ -403,7 +406,7 @@ export const wrap = function(pluginObj: any, methodName: string, opts: CordovaOp
     } else if (opts.observable) {
       return wrapObservable(pluginObj, methodName, args, opts);
     } else if (opts.eventObservable && opts.event) {
-      return wrapEventObservable(opts.event);
+      return wrapEventObservable(opts.event, opts.element);
     } else if (opts.otherPromise) {
       return wrapOtherPromise(pluginObj, methodName, args, opts);
     } else {
