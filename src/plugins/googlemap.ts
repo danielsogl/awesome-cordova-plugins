@@ -1,5 +1,6 @@
 import { Cordova, CordovaInstance, Plugin, InstanceProperty, getPlugin, pluginWarn } from './plugin';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
 
 declare var plugin: any;
 
@@ -139,12 +140,7 @@ export class GoogleMap {
    * @returns {Observable<any>}
    */
   addEventListener(eventName: string): Observable<any> {
-    return new Observable(
-      (observer) => {
-        this._objectInstance.addEventListener(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(eventName, observer.next.bind(observer));
-      }
-    );
+    return Observable.fromEvent(this._objectInstance, eventName);
   }
 
   /**
@@ -631,12 +627,7 @@ export class GoogleMapsMarker {
    * @returns {Observable<any>}
    */
   addEventListener(eventName: string): Observable<any> {
-    return new Observable(
-      (observer) => {
-        this._objectInstance.addEventListener(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(eventName, observer.next.bind(observer));
-      }
-    );
+    return Observable.fromEvent(this._objectInstance, eventName);
   }
 
   /**
@@ -911,12 +902,7 @@ export class GoogleMapsCircle {
    * @returns {Observable<any>}
    */
   addEventListener(eventName: string): Observable<any> {
-    return new Observable(
-      (observer) => {
-        this._objectInstance.addEventListener(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(eventName, observer.next.bind(observer));
-      }
-    );
+    return Observable.fromEvent(this._objectInstance, eventName);
   }
 
   /**
@@ -1055,12 +1041,7 @@ export class GoogleMapsPolyline {
    * @returns {Observable<any>}
    */
   addEventListener(eventName: string): Observable<any> {
-    return new Observable(
-      (observer) => {
-        this._objectInstance.addEventListener(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(eventName, observer.next.bind(observer));
-      }
-    );
+    return Observable.fromEvent(this._objectInstance, eventName);
   }
 
   /**
@@ -1200,12 +1181,7 @@ export class GoogleMapsPolygon {
    * @returns {Observable<any>}
    */
   addEventListener(eventName: string): Observable<any> {
-    return new Observable(
-      (observer) => {
-        this._objectInstance.addEventListener(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(eventName, observer.next.bind(observer));
-      }
-    );
+    return Observable.fromEvent(this._objectInstance, eventName);
   }
 
   /**
@@ -1347,12 +1323,7 @@ export class GoogleMapsTileOverlay {
    * @returns {Observable<any>}
    */
   addEventListener(eventName: string): Observable<any> {
-    return new Observable(
-      (observer) => {
-        this._objectInstance.addEventListener(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(eventName, observer.next.bind(observer));
-      }
-    );
+    return Observable.fromEvent(this._objectInstance, eventName);
   }
 
   /**
@@ -1481,12 +1452,7 @@ export class GoogleMapsGroundOverlay {
    * @returns {Observable<any>}
    */
   addEventListener(eventName: string): Observable<any> {
-    return new Observable(
-      (observer) => {
-        this._objectInstance.addEventListener(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(eventName, observer.next.bind(observer));
-      }
-    );
+    return Observable.fromEvent(this._objectInstance, eventName);
   }
 
   /**
@@ -1606,12 +1572,7 @@ export class GoogleMapsKmlOverlay {
    * @returns {Observable<any>}
    */
   addEventListener(eventName: string): Observable<any> {
-    return new Observable(
-      (observer) => {
-        this._objectInstance.addEventListener(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(eventName, observer.next.bind(observer));
-      }
-    );
+    return Observable.fromEvent(this._objectInstance, eventName);
   }
 
   /**
