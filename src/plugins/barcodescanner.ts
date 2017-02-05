@@ -23,6 +23,11 @@ export interface BarcodeScannerOptions {
   disableAnimations?: boolean;
 
   /**
+   * Disable success beep. Supported on iOS only.
+   */
+  disableSuccessBeep?: boolean;
+
+  /**
    * Prompt text. Supported on Android only.
    */
   prompt?: string;
