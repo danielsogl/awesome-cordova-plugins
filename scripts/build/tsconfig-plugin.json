@@ -6,11 +6,11 @@
     "experimentalDecorators": true,
     "module": "es2015",
     "moduleResolution": "node",
-    "outDir": "../../dist/packages-dist/plugins/{{PLUGIN}}",
+    "outDir": "../../dist/packages-dist/",
     "paths": {
-      "@ionic-native/core": ["../../dist/packages-dist/core"]
+      "@ionic-native/core": ["../../dist/packages-dist/"]
     },
-    "rootDir": ".",
+    "rootDir": "../../src/",
     "sourceMap": true,
     "inlineSources": true,
     "target": "es5",
@@ -18,6 +18,6 @@
     "lib": ["es2015", "dom"]
   },
   "files": [
-    "index.ts"
+    "../../src/@ionic-native/plugins/{{PLUGIN}}/index.ts"
   ]
 }
