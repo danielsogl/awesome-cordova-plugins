@@ -1,9 +1,8 @@
-import { get } from './util';
-import { checkReady } from './bootstrap';
-
+import { get } from '../util';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
+import { checkReady } from './bootstrap';
 
 checkReady();
 

@@ -1,7 +1,8 @@
+declare var window;
+
 export function checkReady() {
   const DEVICE_READY_TIMEOUT = 5000;
 
-  declare var window;
 
   // To help developers using cordova, we listen for the device ready event and
   // log an error if it didn't fire in a reasonable amount of time. Generally,
