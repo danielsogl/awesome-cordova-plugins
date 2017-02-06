@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "stripInternal": true,
+    "experimentalDecorators": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "outDir": "../../dist/packages-dist/plugins/{{PLUGIN}}",
+    "paths": {
+      "@ionic-native/core": ["../../dist/packages-dist/core"]
+    },
+    "rootDir": ".",
+    "sourceMap": true,
+    "inlineSources": true,
+    "target": "es5",
+    "skipLibCheck": true,
+    "lib": ["es2015", "dom"]
+  },
+  "files": [
+    "index.ts"
+  ]
+}

@@ -6,10 +6,7 @@
     "experimentalDecorators": true,
     "module": "es2015",
     "moduleResolution": "node",
-    "outDir": "../../dist/packages-dist/{{PLUGIN}}",
-    "paths": {
-      "@ionic-native/core": ["../../dist/packages-dist/core"]
-    },
+    "outDir": "../../dist/packages-dist/core",
     "rootDir": ".",
     "sourceMap": true,
     "inlineSources": true,
