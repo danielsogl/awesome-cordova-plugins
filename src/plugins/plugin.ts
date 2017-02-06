@@ -2,6 +2,10 @@ import { get } from '../util';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
+import { checkReady } from '../bootstrap';
+
+checkReady();
+
 declare var window;
 declare var Promise;
 
