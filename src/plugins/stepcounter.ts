@@ -23,7 +23,7 @@ import { Plugin, Cordova } from './plugin';
   pluginName: 'Stepcounter',
   plugin: 'https://github.com/Slidee/cordova-plugin-stepcounter',
   pluginRef: 'stepcounter',
-  repo: 'https://github.com/Slidee/cordova-plugin-stepcounterr',
+  repo: 'https://github.com/Slidee/cordova-plugin-stepcounter',
   platforms: ['Android']
 })
 export class Stepcounter {
