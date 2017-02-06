@@ -18,7 +18,7 @@ import { Observable } from 'rxjs';
  */
 @Plugin({
   pluginName: 'Appodeal',
-  plugin: 'com.appodeal.plugin',
+  plugin: 'https://github.com/appodeal/appodeal-cordova-plugin',
   pluginRef: 'Appodeal',
   repo: 'https://github.com/appodeal/appodeal-cordova-plugin.git',
   platforms: [ 'ios', 'android' ]
