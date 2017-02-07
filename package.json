@@ -51,7 +51,7 @@
     "start": "npm run test:watch",
     "lint": "gulp lint",
     "build": "npm run lint && npm run build:js && npm run build:esm && npm run build:bundle && npm run build:minify",
-    "build2:js": "tsc -p scripts/build/tsconfig-core.json",
+    "build:js2": "sh scripts/build/build.sh",
     "build:js": "tsc -p tsconfig-es5.json",
     "build:esm": "tsc -p tsconfig-esm.json",
     "build:bundle": "browserify dist/es5/index.js > dist/ionic.native.js",
