@@ -7,8 +7,7 @@
   "author": "ionic",
   "license": "MIT",
   "peerDependencies": {
-    "rxjs": "^5.0.1",
-    "zone.js": "^0.7.2"
+    "rxjs": "^5.0.1"
   },
   "repository": {
     "type": "git",
