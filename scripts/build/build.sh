@@ -17,5 +17,5 @@ for d in $PLUGINS ; do
   mkdir -p "$PLUGIN_BUILD_DIR"
   NEW_TSCONFIG="$(echo "$PLUGIN_TSCONFIG" | sed "s/{{PLUGIN}}/$BASE/g")"
   echo "$NEW_TSCONFIG" > "$PLUGIN_BUILD_DIR/tsconfig.json"
-  
+  ./node_modules/.bin/tsc -p "$PLUGIN_BUILD_DIR/tsconfig.json"
 done
