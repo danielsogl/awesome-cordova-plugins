@@ -1,6 +1,5 @@
 import { Plugin, CordovaInstance } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-import { InAppBrowserEvent } from './inappbrowser';
 
 declare var cordova: any;
 
@@ -203,14 +202,13 @@ export class ThemeableBrowser {
    * A method that allows you to listen to events happening in the browser.
    * Available events are: `ThemeableBrowserError`, `ThemeableBrowserWarning`, `critical`, `loadfail`, `unexpected`, `undefined`
    * @param event Event name
-   * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
+   * @returns {Observable<any>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
    */
-  on(event: string): Observable<InAppBrowserEvent> {
-    return new Observable<InAppBrowserEvent>((observer) => {
+  on(event: string): Observable<any> {
+    return new Observable<any>((observer) => {
       this._objectInstance.addEventListener(event, observer.next.bind(observer));
       return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
     });
   }
 
 }
-

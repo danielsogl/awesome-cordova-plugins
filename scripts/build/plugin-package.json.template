@@ -1,6 +1,6 @@
 {
-  "name": "@ionic-native/PLUGIN",
-  "version": "VERSION",
+  "name": "@ionic-native/{{PLUGIN}}",
+  "version": "{{VERSION}}",
   "description": "Ionic Native - Native plugins for ionic apps",
   "module": "index.js",
   "typings": "index.d.ts",
