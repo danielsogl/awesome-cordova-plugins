@@ -172,6 +172,9 @@ function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Func
     };
 
     const setErrorIndex = () => {
+      if (typeof opts.errorIndex === 'undefined') {
+        opts.errorIndex = args.length + 1;
+      }
       // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behaviour.
       if (opts.errorIndex > args.length) {
         args[opts.errorIndex] = reject; // insert the reject fn at the correct specific index
