@@ -1,3 +1,13 @@
+<a name="2.5.1"></a>
+## [2.5.1](https://github.com/driftyco/ionic-native/compare/v2.5.0...v2.5.1) (2017-02-07)
+
+
+### Bug Fixes
+
+* **pin-dialog:** add missing errorIndex ([b7701cd](https://github.com/driftyco/ionic-native/commit/b7701cd))
+
+
+
 <a name="2.5.0"></a>
 # [2.5.0](https://github.com/driftyco/ionic-native/compare/v2.4.1...v2.5.0) (2017-02-07)
 
