@@ -1,6 +1,8 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
+import {Injectable} from '@angular/core';
+
 declare var window: any;
 
 export interface ThreeDeeTouchQuickAction {
@@ -126,6 +128,7 @@ export interface ThreeDeeTouchForceTouch {
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-3dtouch',
   platforms: ['iOS']
 })
+@Injectable()
 export class ThreeDeeTouch {
 
   /**
@@ -133,7 +136,7 @@ export class ThreeDeeTouch {
    * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates whether the plugin is available or not
    */
   @Cordova()
-  static isAvailable(): Promise<boolean> { return; }
+  isAvailable(): Promise<boolean> { return; }
 
   /**
    * You can get a notification when the user force touches the webview. The plugin defines a Force Touch when at least 75% of the maximum force is applied to the screen. Your app will receive the x and y coordinates, so you have to figure out which UI element was touched.
@@ -142,7 +145,7 @@ export class ThreeDeeTouch {
   @Cordova({
     observable: true
   })
-  static watchForceTouches(): Observable<ThreeDeeTouchForceTouch> { return; }
+  watchForceTouches(): Observable<ThreeDeeTouchForceTouch> { return; }
 
   /**
    * setup the 3D-touch actions, takes an array of objects with the following
@@ -155,13 +158,13 @@ export class ThreeDeeTouch {
   @Cordova({
     sync: true
   })
-  static configureQuickActions(quickActions: Array<ThreeDeeTouchQuickAction>): void { }
+  configureQuickActions(quickActions: Array<ThreeDeeTouchQuickAction>): void { }
 
   /**
    * When a home icon is pressed, your app launches and this JS callback is invoked.
    * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
    */
-  static onHomeIconPressed(): Observable<any> {
+  onHomeIconPressed(): Observable<any> {
     return new Observable(observer => {
       if (window.ThreeDeeTouch) {
         window.ThreeDeeTouch.onHomeIconPressed = observer.next.bind(observer);
@@ -179,7 +182,7 @@ export class ThreeDeeTouch {
   @Cordova({
     sync: true
   })
-  static enableLinkPreview(): void { }
+  enableLinkPreview(): void { }
 
   /**
    * Disabled the link preview feature, if enabled.
@@ -187,6 +190,6 @@ export class ThreeDeeTouch {
   @Cordova({
     sync: true
   })
-  static disableLinkPreview(): void { }
+  disableLinkPreview(): void { }
 
 }

@@ -121,7 +121,7 @@ export const getPlugin = function(pluginRef: string): any {
  * @param method
  */
 export const pluginWarn = function(pluginObj: any, method?: string) {
-  let pluginName = pluginObj.pluginName, plugin = pluginObj.plugin;
+  let pluginName = pluginObj.constructor.getPluginName(), plugin = pluginObj.constructor.getPlugin();
   if (method) {
     console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
   } else {
@@ -208,12 +208,12 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
   // to our promise resolve/reject handlers.
   args = setIndex(args, opts, resolve, reject);
 
-  let pluginInstance = getPlugin(pluginObj.pluginRef);
+  let pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
 
   if (!pluginInstance || pluginInstance[methodName] === 'undefined') {
     // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
     if (!window.cordova) {
-      cordovaWarn(pluginObj.pluginName, methodName);
+      cordovaWarn(pluginObj.constructor.getPluginName(), methodName);
       return {
         error: 'cordova_not_available'
       };
@@ -239,24 +239,11 @@ export function getPromise(cb) {
         cb(resolve, reject);
       });
     } else {
-      console.error('No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular 1/2 or on a recent browser.');
+      console.error('No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular 2 or on a recent browser.');
     }
   };
 
-  if (window.angular) {
-    let injector = window.angular.element(document.querySelector('[ng-app]') || document.body).injector();
-    if (injector) {
-      let $q = injector.get('$q');
-      return $q((resolve, reject) => {
-        cb(resolve, reject);
-      });
-    } else {
-      console.warn('Angular 1 was detected but $q couldn\'t be retrieved. This is usually when the app is not bootstrapped on the html or body tag. Falling back to native promises which won\'t trigger an automatic digest when promises resolve.');
-      return tryNativePromise();
-    }
-  } else {
-    return tryNativePromise();
-  }
+  return tryNativePromise();
 }
 
 function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
@@ -297,10 +284,10 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
           if (opts.clearWithArgs) {
             return callCordovaPlugin(pluginObj, opts.clearFunction, args, opts, observer.next.bind(observer), observer.error.bind(observer));
           }
-          return get(window, pluginObj.pluginRef)[opts.clearFunction].call(pluginObj, pluginResult);
+          return get(window, pluginObj.constructor.getPluginRef())[opts.clearFunction].call(pluginObj, pluginResult);
         }
       } catch (e) {
-        console.warn('Unable to clear the previous observable watch for', pluginObj.pluginName, methodName);
+        console.warn('Unable to clear the previous observable watch for', pluginObj.constructor.getPluginName(), methodName);
         console.error(e);
       }
     };
@@ -327,7 +314,7 @@ function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
             }
             return pluginObj._objectInstance[opts.clearFunction].call(pluginObj, pluginResult);
           } catch (e) {
-            console.warn('Unable to clear the previous observable watch for', pluginObj.pluginName, methodName);
+            console.warn('Unable to clear the previous observable watch for', pluginObj.constructor.getPluginName(), methodName);
             console.error(e);
           }
         };
@@ -365,12 +352,12 @@ function wrapEventObservable(event: string, element: any = window): Observable<a
 function overrideFunction(pluginObj: any, methodName: string, args: any[], opts: any = {}): Observable<any> {
   return new Observable(observer => {
 
-    let pluginInstance = getPlugin(pluginObj.pluginRef);
+    let pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
 
     if (!pluginInstance) {
       // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
       if (!window.cordova) {
-        cordovaWarn(pluginObj.pluginName, methodName);
+        cordovaWarn(pluginObj.constructor.getPluginName(), methodName);
         observer.error({
           error: 'cordova_not_available'
         });
@@ -466,6 +453,22 @@ export function Plugin(config: PluginConfig) {
       return true;
     };
 
+    cls['getPluginName'] = function() {
+      return config.pluginName;
+    };
+    cls['getPluginRef'] = function() {
+      return config.pluginRef;
+    };
+    cls['getPluginInstallName'] = function() {
+      return config.plugin;
+    };
+    cls['getPluginRepo'] = function() {
+      return config.repo;
+    };
+    cls['getSupportedPlatforms'] = function() {
+      return config.platforms;
+    };
+
     return cls;
   };
 }
@@ -478,8 +481,10 @@ export function Plugin(config: PluginConfig) {
  */
 export function Cordova(opts: CordovaOptions = {}) {
   return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
+    console.log('@Cordova()', target, methodName, descriptor);
     return {
       value: function(...args: any[]) {
+        console.log('@Cordova() wrap()', this, methodName, opts);
         return wrap(this, methodName, opts).apply(this, args);
       }
     };
