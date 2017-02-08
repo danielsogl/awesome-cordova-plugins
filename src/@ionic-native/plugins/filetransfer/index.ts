@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { CordovaInstance, Plugin } from '@ionic-native/core';
 
 declare var FileTransfer;

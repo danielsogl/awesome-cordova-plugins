@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Plugin } from '@ionic-native/core';
 
 

@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Cordova, CordovaFunctionOverride, Plugin } from '@ionic-native/core';
 
 import { Observable } from 'rxjs/Observable';

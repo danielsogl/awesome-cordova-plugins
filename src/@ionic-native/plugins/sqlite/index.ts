@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import {Cordova, CordovaInstance, Plugin, pluginWarn, InstanceProperty} from '@ionic-native/core';
 
 

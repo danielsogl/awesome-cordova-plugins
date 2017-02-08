@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { CordovaInstance, InstanceProperty, Plugin, getPromise } from '@ionic-native/core';
 
 declare var window: any,

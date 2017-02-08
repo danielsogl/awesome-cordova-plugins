@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Cordova, CordovaInstance, Plugin, InstanceProperty, getPlugin, pluginWarn } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';

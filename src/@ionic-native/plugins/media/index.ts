@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { CordovaInstance, Plugin, getPlugin, pluginWarn } from '@ionic-native/core';
 
 declare var Media: any;

@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 
 
@@ -41,6 +42,6 @@ export class Vibration {
   @Cordova({
     sync: true
   })
-  static vibrate(time: number | Array<number>) { }
+  vibrate(time: number | Array<number>) { }
 
 }
