@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 
-import { Injectable } from '@angular/core';
 export interface CardIOOptions {
 
   /**

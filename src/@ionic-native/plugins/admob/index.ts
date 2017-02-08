@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-import { Injectable } from '@angular/core';
 
 export type AdMobAdSize = 'SMART_BANNER' | 'BANNER' | 'MEDIUM_RECTANGLE' | 'FULL_BANNER' | 'LEADERBOARD' | 'SKYSCRAPER' | 'CUSTOM';
 

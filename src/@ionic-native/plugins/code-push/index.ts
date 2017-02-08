@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-import { Injectable } from '@angular/core';
 namespace Http {
   export const enum Verb {
     GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT, PATCH

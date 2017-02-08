@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 /**
  * @name CallNumber
  * @description

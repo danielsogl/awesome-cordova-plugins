@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 export interface CameraOptions {
   /** Picture quality in range 0-100. Default is 50 */

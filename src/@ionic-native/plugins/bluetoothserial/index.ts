@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-import { Injectable } from '@angular/core';
-
-
 /**
  * @name Bluetooth Serial
  * @description This plugin enables serial communication over Bluetooth. It was written for communicating between Android or iOS and an Arduino.

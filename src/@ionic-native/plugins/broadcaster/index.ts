@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-import { Injectable } from '@angular/core';
-
-
 /**
  * @name Broadcaster
  * @description
