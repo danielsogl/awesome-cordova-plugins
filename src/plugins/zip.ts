@@ -35,6 +35,6 @@ export class Zip {
     successIndex: 2,
     errorIndex: 4
   })
-  static unzip(sourceZip: string, destUrl: string, onProgress: Function): Promise<number> {return; }
+  static unzip(sourceZip: string, destUrl: string, onProgress?: Function): Promise<number> {return; }
 
 }
