@@ -10,7 +10,7 @@
     "@ionic-native/core": "{{VERSION}}"
   },
   "peerDependencies": {
-    "rxjs": "^5.0.1"
+    "rxjs": "5.0.0-beta.12"
   },
   "repository": {
     "type": "git",
