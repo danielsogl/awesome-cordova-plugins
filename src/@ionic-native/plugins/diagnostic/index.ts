@@ -35,6 +35,7 @@ import {Cordova, Plugin, CordovaProperty} from '@ionic-native/core';
   pluginRef: 'cordova.plugins.diagnostic',
   repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin'
 })
+@Injectable()
 export class Diagnostic {
 
   static permission = {

@@ -56,6 +56,7 @@ export interface IContactProperties {
 /**
  * @private
  */
+@Injectable()
 export class Contact implements IContactProperties {
   private _objectInstance: any;
   @InstanceProperty id: string;
@@ -141,6 +142,7 @@ export interface IContactName {
 /**
  * @private
  */
+@Injectable()
 export class ContactName implements IContactName {
   constructor(public formatted?: string,
               public familyName?: string,
@@ -162,6 +164,7 @@ export interface IContactField {
 /**
  * @private
  */
+@Injectable()
 export class ContactField implements IContactField {
   constructor(public type?: string,
               public value?: string,
@@ -190,6 +193,7 @@ export interface IContactAddress {
 /**
  * @private
  */
+@Injectable()
 export class ContactAddress implements IContactAddress {
   constructor(public pref?: boolean,
               public type?: string,
@@ -217,6 +221,7 @@ export interface IContactOrganization {
 /**
  * @private
  */
+@Injectable()
 export class ContactOrganization implements IContactOrganization {
   constructor(
     public type?: string,
@@ -244,6 +249,7 @@ export interface IContactFindOptions {
 /**
  * @private
  */
+@Injectable()
 export class ContactFindOptions implements IContactFindOptions {
   constructor(public filter?: string,
               public multiple?: boolean,
@@ -287,6 +293,7 @@ export class ContactFindOptions implements IContactFindOptions {
   pluginRef: 'navigator.contacts',
   repo: 'https://github.com/apache/cordova-plugin-contacts'
 })
+@Injectable()
 export class Contacts {
 
   /**

@@ -40,6 +40,7 @@ export interface DialogsPromptCallback {
   pluginRef: 'navigator.notification',
   repo: 'https://github.com/apache/cordova-plugin-dialogs.git'
 })
+@Injectable()
 export class Dialogs {
 
   /**

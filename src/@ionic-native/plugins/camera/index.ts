@@ -1,5 +1,5 @@
 import { Cordova, Plugin } from '@ionic-native/core';
-
+import { Injectable } from '@angular/core';
 
 export interface CameraOptions {
   /** Picture quality in range 0-100. Default is 50 */
@@ -116,6 +116,7 @@ export interface CameraPopoverOptions {
   repo: 'https://github.com/apache/cordova-plugin-camera',
   platforms: ['Android', 'BlackBerry', 'Browser', 'Firefox', 'FireOS', 'iOS', 'Windows', 'Windows Phone 8', 'Ubuntu']
 })
+@Injectable()
 export class Camera {
 
   /**

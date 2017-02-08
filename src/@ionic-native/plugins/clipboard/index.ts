@@ -1,5 +1,5 @@
 import { Cordova, Plugin } from '@ionic-native/core';
-
+import { Injectable } from '@angular/core';
 /**
  * @name Clipboard
  * @description
@@ -33,6 +33,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/VersoSolutions/CordovaClipboard',
   platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser']
 })
+@Injectable()
 export class Clipboard {
 
   /**

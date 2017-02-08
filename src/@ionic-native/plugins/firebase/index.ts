@@ -26,6 +26,7 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/arnesson/cordova-plugin-firebase',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class Firebase {
 
   /**

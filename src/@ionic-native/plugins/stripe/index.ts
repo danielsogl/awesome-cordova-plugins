@@ -85,6 +85,7 @@ export interface StripeCardTokenParams {
   pluginRef: 'cordova.plugins.stripe',
   repo: 'https://github.com/zyramedia/cordova-plugin-stripe'
 })
+@Injectable()
 export class Stripe {
 
   /**

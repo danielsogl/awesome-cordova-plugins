@@ -21,6 +21,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   pluginRef: 'powerManagement',
   repo: 'https://github.com/Viras-/cordova-plugin-powermanagement'
 })
+@Injectable()
 export class PowerManagement {
   /**
    * Acquire a wakelock by calling this.

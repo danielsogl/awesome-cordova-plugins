@@ -35,6 +35,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/pbakondy/cordova-plugin-sim',
   platforms: ['Android', 'iOS', 'Windows Phone']
 })
+@Injectable()
 export class Sim {
   /**
    * Returns info from the SIM card.

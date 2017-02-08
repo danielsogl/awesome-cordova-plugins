@@ -53,6 +53,7 @@ export interface TwitterConnectResponse {
   repo: 'https://github.com/ManifestWebDesign/twitter-connect-plugin',
   install: 'ionic plugin add twitter-connect-plugin --variable FABRIC_KEY=fabric_API_key'
 })
+@Injectable()
 export class TwitterConnect {
   /**
    * Logs in

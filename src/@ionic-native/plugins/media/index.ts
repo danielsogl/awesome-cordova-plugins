@@ -77,6 +77,7 @@ export interface MediaError {
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media'
 })
+@Injectable()
 export class MediaPlugin {
 
   // Constants

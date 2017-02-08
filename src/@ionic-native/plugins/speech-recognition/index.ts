@@ -93,6 +93,7 @@ export interface SpeechRecognitionListeningOptionsAndroid {
   repo: 'https://github.com/pbakondy/cordova-plugin-speechrecognition',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class SpeechRecognition {
 
   /**

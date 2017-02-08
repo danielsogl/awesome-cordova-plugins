@@ -36,6 +36,7 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/akofman/cordova-plugin-dbmeter',
   platforms: ['iOS', 'Android']
 })
+@Injectable()
 export class DBMeter {
 
   /**

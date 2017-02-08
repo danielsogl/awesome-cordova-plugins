@@ -46,6 +46,7 @@ declare var cordova: any;
   repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',
   platforms: ['Android', 'iOS', 'Windows Phone', 'Browser']
 })
+@Injectable()
 export class SecureStorage {
 
   private _objectInstance: any;

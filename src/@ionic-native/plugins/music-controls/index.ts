@@ -93,6 +93,7 @@ export interface MusicControlsOptions {
   pluginRef: 'MusicControls',
   repo: 'https://github.com/homerours/cordova-music-controls-plugin'
 })
+@Injectable()
 export class MusicControls {
 
   /**

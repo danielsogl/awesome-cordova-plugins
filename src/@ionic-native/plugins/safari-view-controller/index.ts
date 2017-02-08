@@ -57,6 +57,7 @@ export interface SafariViewControllerOptions {
   platforms: ['iOS', 'Android'],
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller'
 })
+@Injectable()
 export class SafariViewController {
 
   /**

@@ -31,6 +31,7 @@ export interface EstimoteBeaconRegion {
   repo: 'https://github.com/evothings/phonegap-estimotebeacons',
   platforms: ['iOS', 'Android']
 })
+@Injectable()
 export class EstimoteBeacons {
 
   /** Proximity value */

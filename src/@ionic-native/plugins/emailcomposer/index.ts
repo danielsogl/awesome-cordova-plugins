@@ -73,6 +73,7 @@ export interface EmailComposerOptions {
   repo: 'https://github.com/hypery2k/cordova-email-plugin',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class EmailComposer {
 
   /**

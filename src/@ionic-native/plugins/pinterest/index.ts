@@ -170,6 +170,7 @@ export interface PinterestPin {
   install: 'ionic plugin add cordova-plugin-pinterest --variable APP_ID=YOUR_APP_ID',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class Pinterest {
 
   /**

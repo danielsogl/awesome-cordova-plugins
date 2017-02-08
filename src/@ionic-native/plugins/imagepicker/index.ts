@@ -51,6 +51,7 @@ export interface ImagePickerOptions {
   pluginRef: 'window.imagePicker',
   repo: 'https://github.com/Telerik-Verified-Plugins/ImagePicker'
 })
+@Injectable()
 export class ImagePicker {
   /**
    * Pick pictures from the library.

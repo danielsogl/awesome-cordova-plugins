@@ -50,6 +50,7 @@ declare var sqlitePlugin;
   plugin: 'cordova-sqlite-storage',
   repo: 'https://github.com/litehelpers/Cordova-sqlite-storage'
 })
+@Injectable()
 export class SQLite {
 
   private _objectInstance: any;

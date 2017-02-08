@@ -302,6 +302,7 @@ export enum OSActionType {
   repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK',
   platforms: ['Android', 'iOS', 'Windows', 'FireOS']
 })
+@Injectable()
 export class OneSignal {
 
   /**

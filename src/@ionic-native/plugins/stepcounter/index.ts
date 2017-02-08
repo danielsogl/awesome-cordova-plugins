@@ -26,6 +26,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   repo: 'https://github.com/Slidee/cordova-plugin-stepcounter',
   platforms: ['Android']
 })
+@Injectable()
 export class Stepcounter {
 
   /**

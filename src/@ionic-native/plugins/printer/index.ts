@@ -69,6 +69,7 @@ export interface PrintOptions {
   repo: 'https://github.com/katzer/cordova-plugin-printer.git',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class Printer {
 
   /**

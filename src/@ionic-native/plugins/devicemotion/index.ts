@@ -69,6 +69,7 @@ export interface DeviceMotionAccelerometerOptions {
   pluginRef: 'navigator.accelerometer',
   repo: 'https://github.com/apache/cordova-plugin-device-motion'
 })
+@Injectable()
 export class DeviceMotion {
 
   /**

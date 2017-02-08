@@ -18,6 +18,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   pluginRef: 'cordova.plugins.market',
   repo: 'https://github.com/xmartlabs/cordova-plugin-market'
 })
+@Injectable()
 export class Market {
 
   /**

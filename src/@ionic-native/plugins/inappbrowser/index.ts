@@ -38,6 +38,7 @@ export interface InAppBrowserEvent extends Event {
   pluginRef: 'cordova.InAppBrowser',
   repo: 'https://github.com/apache/cordova-plugin-inappbrowser'
 })
+@Injectable()
 export class InAppBrowser {
 
   private _objectInstance: any;

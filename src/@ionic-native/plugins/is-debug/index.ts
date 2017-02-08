@@ -22,6 +22,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   pluginRef: 'cordova.plugins.IsDebug',
   repo: 'https://github.com/mattlewis92/cordova-plugin-is-debug'
 })
+@Injectable()
 export class IsDebug {
 
   /**

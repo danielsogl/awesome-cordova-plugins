@@ -31,6 +31,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   repo: 'https://github.com/VVelda/device-feedback',
   platforms: ['Android']
 })
+@Injectable()
 export class DeviceFeedback {
 
   /**

@@ -46,6 +46,7 @@ export interface VideoOptions {
   repo: 'https://github.com/moust/cordova-plugin-videoplayer',
   platforms: ['Android']
 })
+@Injectable()
 export class VideoPlayer {
 
   /**

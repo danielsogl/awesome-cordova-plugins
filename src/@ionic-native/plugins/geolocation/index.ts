@@ -148,6 +148,7 @@ export interface GeolocationOptions {
   pluginRef: 'navigator.geolocation',
   repo: 'https://github.com/apache/cordova-plugin-geolocation'
 })
+@Injectable()
 export class Geolocation {
 
   /**

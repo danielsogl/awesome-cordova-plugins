@@ -7,6 +7,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/loicknuchel/cordova-device-accounts',
   platforms: ['Android']
 })
+@Injectable()
 export class DeviceAccounts {
 
   /**

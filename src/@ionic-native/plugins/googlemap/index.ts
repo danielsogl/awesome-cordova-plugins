@@ -51,7 +51,8 @@ export const GoogleMapsAnimation = {
  *  GoogleMapsMarker
  * } from 'ionic-native';
  *
- * export class MapPage {
+ * @Injectable()
+export class MapPage {
  *  constructor() {}
  *
  * // Load map only after view is initialize
@@ -109,6 +110,7 @@ export const GoogleMapsAnimation = {
   repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
   install: 'ionic plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"'
 })
+@Injectable()
 export class GoogleMap {
   _objectInstance: any;
 
@@ -617,6 +619,7 @@ export interface GoogleMapsMarkerIcon {
 /**
  * @private
  */
+@Injectable()
 export class GoogleMapsMarker {
 
   constructor(private _objectInstance: any) { }
@@ -892,6 +895,7 @@ export interface GoogleMapsCircleOptions {
 /**
  * @private
  */
+@Injectable()
 export class GoogleMapsCircle {
 
   constructor(private _objectInstance: any) { }
@@ -1032,6 +1036,7 @@ export interface GoogleMapsPolylineOptions {
 /**
  * @private
  */
+@Injectable()
 export class GoogleMapsPolyline {
   constructor(private _objectInstance: any) { }
 
@@ -1171,6 +1176,7 @@ export interface GoogleMapsPolygonOptions {
 /**
  * @private
  */
+@Injectable()
 export class GoogleMapsPolygon {
 
   constructor(private _objectInstance: any) { }
@@ -1313,6 +1319,7 @@ export interface GoogleMapsTileOverlayOptions {
 /**
  * @private
  */
+@Injectable()
 export class GoogleMapsTileOverlay {
 
   constructor(private _objectInstance: any) { }
@@ -1442,6 +1449,7 @@ export interface GoogleMapsGroundOverlayOptions {
 /**
  * @private
  */
+@Injectable()
 export class GoogleMapsGroundOverlay {
 
   constructor(private _objectInstance: any) { }
@@ -1562,6 +1570,7 @@ export interface GoogleMapsKmlOverlayOptions {
 /**
  * @private
  */
+@Injectable()
 export class GoogleMapsKmlOverlay {
 
   constructor(private _objectInstance: any) { }
@@ -1654,6 +1663,7 @@ export class GoogleMapsKmlOverlay {
 /**
  * @private
  */
+@Injectable()
 export class GoogleMapsLatLngBounds {
   private _objectInstance: any;
 
@@ -1685,6 +1695,7 @@ export class GoogleMapsLatLngBounds {
 /**
  * @private
  */
+@Injectable()
 export class GoogleMapsLatLng {
 
   lat: number;
@@ -1743,6 +1754,7 @@ export interface GeocoderResult {
 /**
  * @private
  */
+@Injectable()
 export class Geocoder {
   /**
    * Converts position to address and vice versa

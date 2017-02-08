@@ -59,6 +59,7 @@ export interface HTTPResponse {
   repo: 'https://github.com/wymsee/cordova-HTTP',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class HTTP {
 
   /**

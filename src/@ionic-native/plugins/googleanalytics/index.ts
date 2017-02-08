@@ -32,6 +32,7 @@ declare var window;
   repo: 'https://github.com/danwilson/google-analytics-plugin',
   platforms: ['Android', 'iOS', 'Browser']
 })
+@Injectable()
 export class GoogleAnalytics {
 
   /**

@@ -44,6 +44,7 @@ export interface StreamingAudioOptions {
   repo: 'https://github.com/nchutchind/cordova-plugin-streaming-media',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class StreamingMedia {
   /**
    * Streams a video

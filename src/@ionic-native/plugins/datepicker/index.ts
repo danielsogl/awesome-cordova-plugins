@@ -146,6 +146,7 @@ export interface DatePickerOptions {
   repo: 'https://github.com/VitaliiBlagodir/cordova-plugin-datepicker',
   platforms: ['Android', 'iOS', 'Windows']
 })
+@Injectable()
 export class DatePicker {
 
   /**

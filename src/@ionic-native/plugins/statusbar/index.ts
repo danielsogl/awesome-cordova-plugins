@@ -28,6 +28,7 @@ declare var window;
   repo: 'https://github.com/apache/cordova-plugin-statusbar',
   platforms: ['iOS', 'Android', 'Windows Phone 8', 'Windows 8', 'Windows 10']
 })
+@Injectable()
 export class StatusBar {
   /**
    * Set whether the status bar overlays the main app view. The default

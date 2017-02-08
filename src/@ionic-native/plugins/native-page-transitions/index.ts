@@ -49,6 +49,7 @@ export interface NativeTransitionOptions {
   repo: 'https://github.com/Telerik-Verified-Plugins/NativePageTransitions',
   platforms: ['iOS', 'Android', 'Windows Phone']
 })
+@Injectable()
 export class NativePageTransitions {
   /**
    * Perform a slide animation

@@ -82,6 +82,7 @@ declare var window: any;
   platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows Phone']
 })
 
+@Injectable()
 export class Geofence {
 
   public static TransitionType = {

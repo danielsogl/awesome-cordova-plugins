@@ -1,6 +1,6 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-
+import { Injectable } from '@angular/core';
 export interface CameraPreviewRect {
 
   x: number;
@@ -87,6 +87,7 @@ export interface CameraPreviewSize {
   repo: 'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class CameraPreview {
 
   /**

@@ -31,6 +31,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin',
   platforms: ['iOS', 'Android', 'Windows Phone']
 })
+@Injectable()
 export class SocialSharing {
   /**
    * Shares using the share sheet

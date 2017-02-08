@@ -32,6 +32,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
+@Injectable()
 export class Insomnia {
 
   /**

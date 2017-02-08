@@ -19,6 +19,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   pluginRef: 'cordova.plugins.fileOpener2',
   repo: 'https://github.com/pwlin/cordova-plugin-file-opener2'
 })
+@Injectable()
 export class FileOpener {
 
   /**

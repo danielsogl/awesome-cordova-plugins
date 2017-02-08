@@ -48,6 +48,7 @@ export interface HttpdOptions {
   repo: 'https://github.com/floatinghotpot/cordova-httpd',
   platforms: ['iOS', 'Android']
 })
+@Injectable()
 export class Httpd {
 
   /**

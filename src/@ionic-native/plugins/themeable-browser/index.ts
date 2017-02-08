@@ -151,6 +151,7 @@ export interface ThemeableBrowserOptions {
   pluginRef: 'cordova.ThemeableBrowser',
   repo: 'https://github.com/initialxy/cordova-plugin-themeablebrowser'
 })
+@Injectable()
 export class ThemeableBrowser {
   private _objectInstance: any;
 

@@ -29,6 +29,7 @@ declare let window: any;
   pluginRef: 'nfc',
   repo: 'https://github.com/chariotsolutions/phonegap-nfc'
 })
+@Injectable()
 export class NFC {
   /**
    * Registers an event listener for any NDEF tag.
@@ -178,6 +179,7 @@ export class NFC {
 /**
  * @private
  */
+@Injectable()
 export class Ndef {
   /**
    * @private

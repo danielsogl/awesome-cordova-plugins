@@ -17,6 +17,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   pluginRef: 'PhotoViewer',
   repo: 'https://github.com/sarriaroman/photoviewer'
 })
+@Injectable()
 export class PhotoViewer {
   /**
    * Shows an image in full screen

@@ -23,6 +23,7 @@ declare var window;
   repo: 'https://github.com/Initsogar/cordova-webintent.git',
   platforms: ['Android']
 })
+@Injectable()
 export class WebIntent {
 
   @CordovaProperty

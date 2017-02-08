@@ -139,6 +139,7 @@ export interface ConfigurationData {
   pluginRef: 'navigator.device.capture',
   repo: 'https://github.com/apache/cordova-plugin-media-capture'
 })
+@Injectable()
 export class MediaCapture {
   /**
    * The recording image sizes and formats supported by the device.

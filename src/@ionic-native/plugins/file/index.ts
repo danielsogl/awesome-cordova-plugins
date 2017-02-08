@@ -366,6 +366,7 @@ declare var FileError: {
   pluginRef: 'cordova.file',
   repo: 'https://github.com/apache/cordova-plugin-file'
 })
+@Injectable()
 export class File {
   static cordovaFileError: {} = {
     1: 'NOT_FOUND_ERR',

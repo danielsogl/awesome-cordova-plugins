@@ -42,6 +42,7 @@ export interface FingerprintOptions {
   repo: 'https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class FingerprintAIO {
 
   /**

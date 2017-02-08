@@ -63,6 +63,7 @@ export interface ToastOptions {
   repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
+@Injectable()
 export class Toast {
 
   /**

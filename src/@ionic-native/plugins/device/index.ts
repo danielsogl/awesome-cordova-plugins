@@ -21,6 +21,7 @@ declare var window: any;
   pluginRef: 'device',
   repo: 'https://github.com/apache/cordova-plugin-device'
 })
+@Injectable()
 export class Device {
 
   /** Get the version of Cordova running on the device. */

@@ -20,6 +20,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   pluginRef: 'navigator.splashscreen',
   repo: 'https://github.com/apache/cordova-plugin-splashscreen'
 })
+@Injectable()
 export class Splashscreen {
 
   /**

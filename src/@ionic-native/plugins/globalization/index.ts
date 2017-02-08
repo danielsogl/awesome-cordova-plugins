@@ -17,6 +17,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/apache/cordova-plugin-globalization',
   platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Firefox OS', 'iOS', 'Windows Phone 8', 'Widnows', 'Browser']
 })
+@Injectable()
 export class Globalization {
 
   /**

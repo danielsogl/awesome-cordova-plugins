@@ -25,6 +25,7 @@ declare var window: any;
   repo: 'https://github.com/hiddentao/cordova-plugin-filepath',
   platforms: ['Android']
 })
+@Injectable()
 export class FilePath {
 
   /**

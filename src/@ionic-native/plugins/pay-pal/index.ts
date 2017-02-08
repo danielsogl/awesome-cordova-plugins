@@ -63,6 +63,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   pluginRef: 'PayPalMobile',
   repo: 'https://github.com/paypal/PayPal-Cordova-Plugin'
 })
+@Injectable()
 export class PayPal {
   /**
    * Retrieve the version of the PayPal iOS SDK library. Useful when contacting support.
@@ -145,6 +146,7 @@ export interface PayPalEnvironment {
 /**
  * @private
  */
+@Injectable()
 export class PayPalPayment {
   constructor(amount: string, currency: string, shortDescription: string, intent: string, details?: PayPalPaymentDetails) {
     this.amount = amount;
@@ -209,6 +211,7 @@ export class PayPalPayment {
 /**
  * @private
  */
+@Injectable()
 export class PayPalItem {
   /**
    * The PayPalItem class defines an optional itemization for a payment.
@@ -252,6 +255,7 @@ export class PayPalItem {
 /**
  * @private
  */
+@Injectable()
 export class PayPalPaymentDetails {
   /**
    * The PayPalPaymentDetails class defines optional amount details.
@@ -379,6 +383,7 @@ export interface PayPalConfigurationOptions {
 /**
  * @private
  */
+@Injectable()
 export class PayPalConfiguration implements PayPalConfigurationOptions {
   /**
    * You use a PayPalConfiguration object to configure many aspects of how the SDK behaves.
@@ -419,6 +424,7 @@ export class PayPalConfiguration implements PayPalConfigurationOptions {
 /**
  * @private
  */
+@Injectable()
 export class PayPalShippingAddress {
   /**
    * See the documentation of the individual properties for more detail.

@@ -43,6 +43,7 @@ declare var window;
   repo: 'https://github.com/apache/cordova-plugin-screen-orientation',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
+@Injectable()
 export class ScreenOrientation {
 
   /**

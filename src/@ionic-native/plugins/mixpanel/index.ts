@@ -25,6 +25,7 @@ declare var mixpanel: any;
   pluginRef: 'mixpanel',
   repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin'
 })
+@Injectable()
 export class Mixpanel {
   /**
    *
@@ -110,6 +111,7 @@ export class Mixpanel {
 /**
  * @private
  */
+@Injectable()
 export class MixpanelPeople {
   /**
    * @private

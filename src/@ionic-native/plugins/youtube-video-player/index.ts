@@ -19,6 +19,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   repo: 'https://github.com/Glitchbone/CordovaYoutubeVideoPlayer',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class YoutubeVideoPlayer {
   /**
    * Plays a YouTube video

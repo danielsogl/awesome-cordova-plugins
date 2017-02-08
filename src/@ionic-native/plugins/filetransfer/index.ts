@@ -188,6 +188,7 @@ export interface FileTransferError {
   pluginRef: 'FileTransfer',
   repo: 'https://github.com/apache/cordova-plugin-file-transfer'
 })
+@Injectable()
 export class Transfer {
 
   /**

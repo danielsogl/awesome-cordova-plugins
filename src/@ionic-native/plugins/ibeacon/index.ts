@@ -280,6 +280,7 @@ export interface IBeaconDelegate {
   repo: 'https://github.com/petermetz/cordova-plugin-ibeacon',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class IBeacon {
 
   /**

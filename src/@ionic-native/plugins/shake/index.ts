@@ -20,6 +20,7 @@ import { Observable } from 'rxjs/Observable';
   pluginRef: 'shake',
   repo: 'https://github.com/leecrossley/cordova-plugin-shake'
 })
+@Injectable()
 export class Shake {
   /**
    * Watch for shake gesture

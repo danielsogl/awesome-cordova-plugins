@@ -22,6 +22,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/cranberrygame/cordova-plugin-navigationbar',
   platforms: ['Android']
 })
+@Injectable()
 export class NavigationBar {
 
   /**

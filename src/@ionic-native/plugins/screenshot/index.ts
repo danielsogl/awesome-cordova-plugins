@@ -22,6 +22,7 @@ declare var navigator: any;
   pluginRef: 'navigator.screenshot',
   repo: 'https://github.com/gitawego/cordova-screenshot.git'
 })
+@Injectable()
 export class Screenshot {
 
   /**

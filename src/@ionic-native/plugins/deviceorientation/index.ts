@@ -74,6 +74,7 @@ export interface DeviceOrientationCompassOptions {
   pluginRef: 'navigator.compass',
   repo: 'https://github.com/apache/cordova-plugin-device-orientation'
 })
+@Injectable()
 export class DeviceOrientation {
 
   /**

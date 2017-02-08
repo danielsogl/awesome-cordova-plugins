@@ -1,6 +1,6 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-
+import { Injectable } from '@angular/core';
 namespace Http {
   export const enum Verb {
     GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT, PATCH
@@ -422,6 +422,7 @@ export interface DownloadProgress {
   repo: 'https://github.com/Microsoft/cordova-plugin-code-push',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class CodePush {
 
   /**

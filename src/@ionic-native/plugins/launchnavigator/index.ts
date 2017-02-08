@@ -88,6 +88,7 @@ export interface LaunchNavigatorOptions {
   pluginRef: 'launchnavigator',
   repo: 'https://github.com/dpa99c/phonegap-launch-navigator.git'
 })
+@Injectable()
 export class LaunchNavigator {
 
   /**

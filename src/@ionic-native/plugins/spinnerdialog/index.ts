@@ -29,6 +29,7 @@ export interface SpinnerDialogIOSOptions {
   repo: 'https://github.com/Paldom/SpinnerDialog',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
+@Injectable()
 export class SpinnerDialog {
 
   /**

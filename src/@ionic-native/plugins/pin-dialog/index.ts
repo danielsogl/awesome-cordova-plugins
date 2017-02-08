@@ -25,6 +25,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   pluginRef: 'plugins.pinDialog',
   repo: 'https://github.com/Paldom/PinDialog'
 })
+@Injectable()
 export class PinDialog {
   /**
    * Show pin dialog

@@ -149,6 +149,7 @@ export interface VideoInfo {
   repo: 'https://github.com/jbavari/cordova-plugin-video-editor',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
+@Injectable()
 export class VideoEditor {
 
   static OptimizeForNetworkUse = {

@@ -44,6 +44,7 @@ export interface SerialOpenOptions {
   repo: 'https://github.com/xseignard/cordovarduino',
   platforms: ['Android']
 })
+@Injectable()
 export class Serial {
 
   /**

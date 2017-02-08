@@ -129,6 +129,7 @@ export interface HotspotDevice {
   repo: 'https://github.com/hypery2k/cordova-hotspot-plugin',
   platforms: ['Android']
 })
+@Injectable()
 export class Hotspot {
 
   /**

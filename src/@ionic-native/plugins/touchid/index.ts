@@ -51,6 +51,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-touch-id',
   platforms: ['iOS']
 })
+@Injectable()
 export class TouchID {
 
   /**

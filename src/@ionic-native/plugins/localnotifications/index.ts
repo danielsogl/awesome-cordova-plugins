@@ -133,6 +133,7 @@ export interface ILocalNotification {
   pluginRef: 'cordova.plugins.notification.local',
   repo: 'https://github.com/katzer/cordova-plugin-local-notifications'
 })
+@Injectable()
 export class LocalNotifications {
 
   /**

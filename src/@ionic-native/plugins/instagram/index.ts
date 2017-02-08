@@ -20,6 +20,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   pluginRef: 'Instagram',
   repo: 'https://github.com/vstirbu/InstagramPlugin'
 })
+@Injectable()
 export class Instagram {
 
   /**

@@ -19,6 +19,7 @@ import { Observable } from 'rxjs/Observable';
   pluginRef: 'cordova.plugins.Keyboard',
   repo: 'https://github.com/driftyco/ionic-plugin-keyboard'
 })
+@Injectable()
 export class Keyboard {
 
   /**
