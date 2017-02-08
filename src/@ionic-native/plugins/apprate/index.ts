@@ -1,4 +1,6 @@
 import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
+import { Injectable } from '@angular/core';
+
 
 declare var window;
 
@@ -121,6 +123,7 @@ export interface AppRateStoreAppUrls {
   repo: 'https://github.com/pushandplay/cordova-plugin-apprate',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class AppRate {
 
   /**
@@ -128,13 +131,13 @@ export class AppRate {
    * See table below for options
    */
   @CordovaProperty
-  static preferences: AppRatePreferences;
+  preferences: AppRatePreferences;
 
   /**
    * Prompts the user for rating
    * @param {boolean} immediately  Show the rating prompt immediately.
    */
   @Cordova()
-  static promptForRating(immediately: boolean): void { };
+  promptForRating(immediately: boolean): void { };
 
 }

@@ -1,4 +1,6 @@
 import { Cordova, Plugin } from '@ionic-native/core';
+import { Injectable } from '@angular/core';
+
 
 export interface BarcodeScannerOptions {
 
@@ -82,6 +84,7 @@ export interface BarcodeScannerOptions {
   repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner',
   platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows 10', 'Windows 8', 'BlackBerry 10', 'Browser']
 })
+@Injectable()
 export class BarcodeScanner {
 
   /**
@@ -102,7 +105,7 @@ export class BarcodeScanner {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static scan(options?: BarcodeScannerOptions): Promise<any> { return; }
+  scan(options?: BarcodeScannerOptions): Promise<any> { return; }
 
   /**
    * Encodes data into a barcode.
@@ -112,6 +115,6 @@ export class BarcodeScanner {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static encode(type: string, data: any): Promise<any> { return; }
+  encode(type: string, data: any): Promise<any> { return; }
 
 }

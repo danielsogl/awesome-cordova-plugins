@@ -1,6 +1,9 @@
 import { Plugin, Cordova } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
+import { Injectable } from '@angular/core';
+
+
 /**
  * @name Broadcaster
  * @description
@@ -25,6 +28,7 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/bsorrentino/cordova-broadcaster',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class Broadcaster {
 
   /**
@@ -37,7 +41,7 @@ export class Broadcaster {
     clearFunction: 'removeEventListener',
     clearWithArgs: true
   })
-  static addEventListener(eventName: string): Observable<any> { return; }
+  addEventListener(eventName: string): Observable<any> { return; }
 
   /**
    * This function sends data to the native code
@@ -46,6 +50,6 @@ export class Broadcaster {
    * @return {Promise<any>} Returns a promise that resolves when an event is successfully fired
    */
   @Cordova()
-  static fireNativeEvent(eventName: string, eventData: any): Promise<any> { return; }
+  fireNativeEvent(eventName: string, eventData: any): Promise<any> { return; }
 
 }

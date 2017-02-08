@@ -1,5 +1,7 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 
+import { Injectable } from '@angular/core';
+
 export interface ActionSheetOptions {
 
   /**
@@ -75,6 +77,7 @@ export interface ActionSheetOptions {
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
+@Injectable()
 export class ActionSheet {
 
   /**
@@ -84,7 +87,7 @@ export class ActionSheet {
    *   button pressed (1 based, so 1, 2, 3, etc.)
    */
   @Cordova()
-  static show(options?: ActionSheetOptions): Promise<any> { return; }
+  show(options?: ActionSheetOptions): Promise<any> { return; }
 
 
   /**
@@ -92,6 +95,5 @@ export class ActionSheet {
    * @returns {Promise<any>} Returns a Promise that resolves when the actionsheet is closed
    */
   @Cordova()
-  static hide(options?: any): Promise<any> { return; }
-
+  hide(options?: any): Promise<any> { return; }
 }

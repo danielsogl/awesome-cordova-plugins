@@ -1,5 +1,7 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 
+import { Injectable } from '@angular/core';
+
 export interface AndroidFingerprintAuthOptions {
 
   /**
@@ -106,6 +108,7 @@ export interface AndroidFingerprintAuthOptions {
   pluginRef: 'FingerprintAuth',
   repo: 'https://github.com/mjwheatley/cordova-plugin-android-fingerprint-auth'
 })
+@Injectable()
 export class AndroidFingerprintAuth {
 
   /**
@@ -114,7 +117,7 @@ export class AndroidFingerprintAuth {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static encrypt(options: AndroidFingerprintAuthOptions): Promise<{
+  encrypt(options: AndroidFingerprintAuthOptions): Promise<{
     /**
      * Biometric authentication
      */
@@ -135,7 +138,7 @@ export class AndroidFingerprintAuth {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static decrypt(options: AndroidFingerprintAuthOptions): Promise<{
+  decrypt(options: AndroidFingerprintAuthOptions): Promise<{
     /**
      * Biometric authentication
      */
@@ -156,12 +159,12 @@ export class AndroidFingerprintAuth {
    * @returns {Promise<any>} Returns a Promise that resolves if fingerprint auth is available on the device
    */
   @Cordova()
-  static isAvailable(): Promise<{isAvailable: boolean}> { return; }
+  isAvailable(): Promise<{isAvailable: boolean}> { return; }
 
   /**
    * Delete the cipher used for encryption and decryption by username
    * @returns {Promise<any>} Returns a Promise that resolves if the cipher was successfully deleted
    */
   @Cordova()
-  static delete(options: {clientId: string; username: string; }): Promise<{deleted: boolean}> { return; }
+  delete(options: {clientId: string; username: string; }): Promise<{deleted: boolean}> { return; }
 }

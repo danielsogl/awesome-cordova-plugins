@@ -1,5 +1,7 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 
+import { Injectable } from '@angular/core';
+
 /**
  * @name Base64 To Gallery
  * @description This plugin allows you to save base64 data as a png image into the device
@@ -21,6 +23,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/Nexxa/cordova-base64-to-gallery',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
+@Injectable()
 export class Base64ToGallery {
 
   /**
@@ -33,7 +36,7 @@ export class Base64ToGallery {
     successIndex: 2,
     errorIndex: 3
   })
-  static base64ToGallery(data: string, options?: {prefix?: string; mediaScanner?: boolean}): Promise<any> {
+  base64ToGallery(data: string, options?: {prefix?: string; mediaScanner?: boolean}): Promise<any> {
     return;
   }
 

@@ -1,6 +1,9 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
+import { Injectable } from '@angular/core';
+
+
 export interface BatteryStatusResponse {
 
   /**
@@ -46,6 +49,7 @@ export interface BatteryStatusResponse {
   repo: 'https://github.com/apache/cordova-plugin-battery-status',
   platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser']
 })
+@Injectable()
 export class BatteryStatus {
 
   /**
@@ -56,7 +60,7 @@ export class BatteryStatus {
     eventObservable: true,
     event: 'batterystatus'
   })
-  static onChange(): Observable<BatteryStatusResponse> { return; }
+  onChange(): Observable<BatteryStatusResponse> { return; }
 
   /**
    * Watch when the battery level goes low
@@ -66,7 +70,7 @@ export class BatteryStatus {
     eventObservable: true,
     event: 'batterylow'
   })
-  static onLow(): Observable<BatteryStatusResponse> { return; }
+  onLow(): Observable<BatteryStatusResponse> { return; }
 
   /**
    * Watch when the battery level goes to critial
@@ -76,6 +80,6 @@ export class BatteryStatus {
     eventObservable: true,
     event: 'batterycritical'
   })
-  static onCritical(): Observable<BatteryStatusResponse> { return; }
+  onCritical(): Observable<BatteryStatusResponse> { return; }
 
 }

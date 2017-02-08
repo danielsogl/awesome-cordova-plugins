@@ -1,4 +1,6 @@
 import { Cordova, Plugin } from '@ionic-native/core';
+import { Injectable } from '@angular/core';
+
 
 /**
  * @name Badge
@@ -24,6 +26,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/katzer/cordova-plugin-badge',
   platforms: ['Android', 'iOS', 'Browser', 'Windows', 'Amazon FireOS', 'Windows Phone 8']
 })
+@Injectable()
 export class Badge {
 
   /**
@@ -31,7 +34,7 @@ export class Badge {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static clear(): Promise<boolean> { return; }
+  clear(): Promise<boolean> { return; }
 
   /**
    * Set the badge of the app icon.
@@ -39,14 +42,14 @@ export class Badge {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static set(badgeNumber: number): Promise<any> { return; }
+  set(badgeNumber: number): Promise<any> { return; }
 
   /**
    * Get the badge of the app icon.
    * @returns {Promise<any>}
    */
   @Cordova()
-  static get(): Promise<any> { return; }
+  get(): Promise<any> { return; }
 
   /**
    * Increase the badge number.
@@ -54,7 +57,7 @@ export class Badge {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static increase(increaseBy: number): Promise<any> { return; }
+  increase(increaseBy: number): Promise<any> { return; }
 
   /**
    * Decrease the badge number.
@@ -62,20 +65,20 @@ export class Badge {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static decrease(decreaseBy: number): Promise<any> { return; }
+  decrease(decreaseBy: number): Promise<any> { return; }
 
   /**
    * Determine if the app has permission to show badges.
    * @returns {Promise<any>}
    */
   @Cordova()
-  static hasPermission(): Promise<any> { return; }
+  hasPermission(): Promise<any> { return; }
 
   /**
    * Register permission to set badge notifications
    * @returns {Promise<any>}
    */
   @Cordova()
-  static registerPermission(): Promise<any> { return; }
+  registerPermission(): Promise<any> { return; }
 
 }

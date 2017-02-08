@@ -1,5 +1,6 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 
+import { Injectable } from '@angular/core';
 /**
  * @name App Availability
  * @description
@@ -34,6 +35,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/ohh2ahh/AppAvailability',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class AppAvailability {
 
   /**
@@ -42,6 +44,6 @@ export class AppAvailability {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static check(app: string): Promise<boolean> { return; }
+  check(app: string): Promise<boolean> { return; }
 
 }

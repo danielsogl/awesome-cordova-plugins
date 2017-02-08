@@ -2,6 +2,9 @@ import { Cordova, CordovaFunctionOverride, Plugin } from '@ionic-native/core';
 
 import { Observable } from 'rxjs/Observable';
 
+import { Injectable } from '@angular/core';
+
+
 /**
  * Configurations items that can be updated.
  */
@@ -56,6 +59,7 @@ export interface BackgroundModeConfiguration {
   repo: 'https://github.com/katzer/cordova-plugin-background-mode',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
+@Injectable()
 export class BackgroundMode {
 
   /**
@@ -65,14 +69,14 @@ export class BackgroundMode {
   @Cordova({
     sync: true
   })
-  static enable(): void { }
+  enable(): void { }
 
   /**
   * Disable the background mode.
   * Once the background mode has been disabled, the app will be paused when in background.
   */
   @Cordova()
-  static disable(): Promise<any> { return; }
+  disable(): Promise<any> { return; }
 
   /**
   * Checks if background mode is enabled or not.
@@ -81,7 +85,7 @@ export class BackgroundMode {
   @Cordova({
     sync: true
   })
-  static isEnabled(): boolean { return; }
+  isEnabled(): boolean { return; }
 
   /**
   * Can be used to get the information if the background mode is active.
@@ -90,7 +94,7 @@ export class BackgroundMode {
   @Cordova({
     sync: true
   })
-  static isActive(): boolean { return; }
+  isActive(): boolean { return; }
 
   /**
   * Override the default title, ticker and text.
@@ -100,7 +104,7 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static setDefaults(options?: BackgroundModeConfiguration): Promise<any> { return; }
+  setDefaults(options?: BackgroundModeConfiguration): Promise<any> { return; }
 
   /**
   * Modify the displayed information.
@@ -110,27 +114,27 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static configure(options?: BackgroundModeConfiguration): Promise<any> { return; }
+  configure(options?: BackgroundModeConfiguration): Promise<any> { return; }
 
   /**
   * Called when background mode is activated.
   * @returns {Observable<any>} returns an observable that emits when background mode is activated
   */
   @CordovaFunctionOverride()
-  static onactivate(): Observable<any> { return; };
+  onactivate(): Observable<any> { return; };
 
   /**
   * Called when background mode is deactivated.
   * @returns {Observable<any>} returns an observable that emits when background mode is deactivated
   */
   @CordovaFunctionOverride()
-  static ondeactivate(): Observable<any> { return; };
+  ondeactivate(): Observable<any> { return; };
 
   /**
   * Called when background mode fails
   * @returns {Observable<any>} returns an observable that emits when background mode fails
   */
   @CordovaFunctionOverride()
-  static onfailure(): Observable<any> { return; };
+  onfailure(): Observable<any> { return; };
 
 }

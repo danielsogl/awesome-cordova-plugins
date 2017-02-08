@@ -1,5 +1,7 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+
 
 /**
  * @name BLE
@@ -166,6 +168,7 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/don/cordova-plugin-ble-central',
   platforms: ['iOS', 'Android']
 })
+@Injectable()
 export class BLE {
 
   /**
@@ -184,7 +187,7 @@ export class BLE {
   @Cordova({
     observable: true
   })
-  static scan(services: string[], seconds: number): Observable<any> { return; }
+  scan(services: string[], seconds: number): Observable<any> { return; }
 
   /**
    * Scan and discover BLE peripherals until `stopScan` is called.
@@ -207,7 +210,7 @@ export class BLE {
     clearFunction: 'stopScan',
     clearWithArgs: false
   })
-  static startScan(services: string[]): Observable<any> { return; }
+  startScan(services: string[]): Observable<any> { return; }
 
   /**
    * Scans for BLE devices. This function operates similarly to the `startScan` function, but allows you to specify extra options (like allowing duplicate device reports).
@@ -220,7 +223,7 @@ export class BLE {
     clearFunction: 'stopScan',
     clearWithArgs: false
   })
-  static startScanWithOptions(services: string[], options: {reportDuplicates?: boolean} | any): Observable<any> { return; }
+  startScanWithOptions(services: string[], options: {reportDuplicates?: boolean} | any): Observable<any> { return; }
 
   /**
    * Stop a scan started by `startScan`.
@@ -237,7 +240,7 @@ export class BLE {
    * @return returns a Promise.
    */
   @Cordova()
-  static stopScan(): Promise<any> { return; }
+  stopScan(): Promise<any> { return; }
 
   /**
    * Connect to a peripheral.
@@ -258,7 +261,7 @@ export class BLE {
     clearFunction: 'disconnect',
     clearWithArgs: true
   })
-  static connect(deviceId: string): Observable<any> { return; }
+  connect(deviceId: string): Observable<any> { return; }
 
   /**
    * Disconnect from a peripheral.
@@ -272,7 +275,7 @@ export class BLE {
    * @return Returns a Promise
    */
   @Cordova()
-  static disconnect(deviceId: string): Promise<any> { return; }
+  disconnect(deviceId: string): Promise<any> { return; }
 
   /**
    * Read the value of a characteristic.
@@ -283,7 +286,7 @@ export class BLE {
    * @return Returns a Promise
    */
   @Cordova()
-  static read(
+  read(
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
@@ -318,7 +321,7 @@ export class BLE {
    * @return Returns a Promise
    */
   @Cordova()
-  static write(
+  write(
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string,
@@ -335,7 +338,7 @@ export class BLE {
    * @return Returns a Promise
    */
   @Cordova()
-  static writeWithoutResponse(
+  writeWithoutResponse(
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string,
@@ -362,7 +365,7 @@ export class BLE {
     clearFunction: 'stopNotification',
     clearWithArgs: true
   })
-  static startNotification(
+  startNotification(
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
@@ -377,7 +380,7 @@ export class BLE {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static stopNotification(
+  stopNotification(
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
@@ -397,7 +400,7 @@ export class BLE {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static isConnected(deviceId: string): Promise<any> { return; }
+  isConnected(deviceId: string): Promise<any> { return; }
 
   /**
    * Report if bluetooth is enabled.
@@ -405,7 +408,7 @@ export class BLE {
    * @returns {Promise<void>} Returns a Promise that resolves if Bluetooth is enabled, and rejects if disabled.
    */
   @Cordova()
-  static isEnabled(): Promise<void> { return; }
+  isEnabled(): Promise<void> { return; }
 
   /**
    * Open System Bluetooth settings (Android only).
@@ -413,7 +416,7 @@ export class BLE {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static showBluetoothSettings(): Promise<any> { return; }
+  showBluetoothSettings(): Promise<any> { return; }
 
   /**
    * Enable Bluetooth on the device (Android only).
@@ -421,6 +424,6 @@ export class BLE {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static enable(): Promise<any> { return; }
+  enable(): Promise<any> { return; }
 
 }

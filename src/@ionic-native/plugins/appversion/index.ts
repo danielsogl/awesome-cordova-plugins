@@ -1,5 +1,8 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 
+import { Injectable } from '@angular/core';
+
+
 /**
  * @name App Version
  * @description
@@ -25,6 +28,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/whiteoctober/cordova-plugin-app-version',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class AppVersion {
 
   /**
@@ -32,27 +36,27 @@ export class AppVersion {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static getAppName(): Promise<any> { return; }
+  getAppName(): Promise<any> { return; }
 
   /**
    * Returns the package name of the app
    * @returns {Promise<any>}
    */
   @Cordova()
-  static getPackageName(): Promise<any> { return; }
+  getPackageName(): Promise<any> { return; }
 
   /**
    * Returns the build identifier of the app
    * @returns {Promise<any>}
    */
   @Cordova()
-  static getVersionCode(): Promise<any> { return; }
+  getVersionCode(): Promise<any> { return; }
 
   /**
    * Returns the version of the app
    * @returns {Promise<any>}
    */
   @Cordova()
-  static getVersionNumber(): Promise<any> { return; }
+  getVersionNumber(): Promise<any> { return; }
 
 }

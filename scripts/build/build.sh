@@ -33,5 +33,4 @@ for d in $PLUGINS ; do
   echo "$NEW_TSCONFIG" > "$PLUGIN_BUILD_DIR/tsconfig.json"
   ./node_modules/.bin/tsc -p "$PLUGIN_BUILD_DIR/tsconfig.json"
   echo "$NEW_PACKAGE_JSON" > "$BUILD_PLUGINS_DIST/$BASE/package.json"
-  exit 0
 done

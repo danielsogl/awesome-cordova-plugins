@@ -1,5 +1,8 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 
+import { Injectable } from '@angular/core';
+
+
 /**
  * @private
  */
@@ -81,6 +84,7 @@ export interface CalendarOptions {
   repo: 'https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin',
   platforms: ['Android', 'iOS']
 })
+@Injectable()
 export class Calendar {
 
   /**
@@ -95,42 +99,42 @@ export class Calendar {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static hasReadWritePermission(): Promise<boolean> { return; }
+  hasReadWritePermission(): Promise<boolean> { return; }
 
   /**
    * Check if we have read permission
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static hasReadPermission(): Promise<boolean> { return; }
+  hasReadPermission(): Promise<boolean> { return; }
 
   /**
    * Check if we have write permission
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static hasWritePermission(): Promise<boolean> { return; }
+  hasWritePermission(): Promise<boolean> { return; }
 
   /**
    * Request write permission
    * @returns {Promise<any>}
    */
   @Cordova()
-  static requestWritePermission(): Promise<any> { return; }
+  requestWritePermission(): Promise<any> { return; }
 
   /**
    * Request read permission
    * @returns {Promise<any>}
    */
   @Cordova()
-  static requestReadPermission(): Promise<any> { return; }
+  requestReadPermission(): Promise<any> { return; }
 
   /**
    * Requests read/write permissions
    * @returns {Promise<any>}
    */
   @Cordova()
-  static requestReadWritePermission(): Promise<any> { return; }
+  requestReadWritePermission(): Promise<any> { return; }
 
   /**
    * Create a calendar. (iOS only)
@@ -139,7 +143,7 @@ export class Calendar {
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  static createCalendar(nameOrOptions: string | any): Promise<any> { return; }
+  createCalendar(nameOrOptions: string | any): Promise<any> { return; }
 
   /**
    * Delete a calendar. (iOS only)
@@ -147,7 +151,7 @@ export class Calendar {
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  static deleteCalendar(name: string): Promise<any> { return; }
+  deleteCalendar(name: string): Promise<any> { return; }
 
   /**
    * Returns the default calendar options.
@@ -157,7 +161,7 @@ export class Calendar {
   @Cordova({
     sync: true
   })
-  static getCalendarOptions(): CalendarOptions { return; }
+  getCalendarOptions(): CalendarOptions { return; }
 
   /**
    * Silently create an event.
@@ -169,7 +173,7 @@ export class Calendar {
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  static createEvent(
+  createEvent(
     title?: string,
     location?: string,
     notes?: string,
@@ -189,7 +193,7 @@ export class Calendar {
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  static createEventWithOptions(
+  createEventWithOptions(
     title?: string,
     location?: string,
     notes?: string,
@@ -209,7 +213,7 @@ export class Calendar {
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  static createEventInteractively(
+  createEventInteractively(
     title?: string,
     location?: string,
     notes?: string,
@@ -229,7 +233,7 @@ export class Calendar {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static createEventInteractivelyWithOptions(
+  createEventInteractivelyWithOptions(
     title?: string,
     location?: string,
     notes?: string,
@@ -260,7 +264,7 @@ export class Calendar {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static findEvent(
+  findEvent(
     title?: string,
     location?: string,
     notes?: string,
@@ -279,7 +283,7 @@ export class Calendar {
    * @returns {Promise<any>} Returns a Promise that resolves with the event, or rejects with an error.
    */
   @Cordova()
-  static findEventWithOptions(
+  findEventWithOptions(
     title?: string,
     location?: string,
     notes?: string,
@@ -298,14 +302,14 @@ export class Calendar {
   @Cordova({
     platforms: ['Android']
   })
-  static listEventsInRange(startDate: Date, endDate: Date): Promise<any> { return; }
+  listEventsInRange(startDate: Date, endDate: Date): Promise<any> { return; }
 
   /**
    * Get a list of all calendars.
    * @returns {Promise<any>} A Promise that resolves with the list of calendars, or rejects with an error.
    */
   @Cordova()
-  static listCalendars(): Promise<any> { return; }
+  listCalendars(): Promise<any> { return; }
 
   /**
    * Get a list of all future events in the specified calendar. (iOS only)
@@ -314,7 +318,7 @@ export class Calendar {
   @Cordova({
     platforms: ['iOS']
   })
-  static findAllEventsInNamedCalendar(calendarName: string): Promise<any> { return; }
+  findAllEventsInNamedCalendar(calendarName: string): Promise<any> { return; }
 
   /**
    * Modify an event. (iOS only)
@@ -334,7 +338,7 @@ export class Calendar {
   @Cordova({
     platforms: ['iOS']
   })
-  static modifyEvent(
+  modifyEvent(
     title?: string,
     location?: string,
     notes?: string,
@@ -367,7 +371,7 @@ export class Calendar {
   @Cordova({
     platforms: ['iOS']
   })
-  static modifyEventWithOptions(
+  modifyEventWithOptions(
     title?: string,
     location?: string,
     notes?: string,
@@ -393,7 +397,7 @@ export class Calendar {
    * @return Returns a Promise
    */
   @Cordova()
-  static deleteEvent(
+  deleteEvent(
     title?: string,
     location?: string,
     notes?: string,
@@ -415,7 +419,7 @@ export class Calendar {
   @Cordova({
     platforms: ['iOS']
   })
-  static deleteEventFromNamedCalendar(
+  deleteEventFromNamedCalendar(
     title?: string,
     location?: string,
     notes?: string,
@@ -430,6 +434,6 @@ export class Calendar {
    * @return {Promise<any>} Promise returns a promise
    */
   @Cordova()
-  static openCalendar(date: Date): Promise<any> { return; }
+  openCalendar(date: Date): Promise<any> { return; }
 
 }

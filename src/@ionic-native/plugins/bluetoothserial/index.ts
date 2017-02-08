@@ -1,6 +1,9 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
+import { Injectable } from '@angular/core';
+
+
 /**
  * @name Bluetooth Serial
  * @description This plugin enables serial communication over Bluetooth. It was written for communicating between Android or iOS and an Arduino.
@@ -34,6 +37,7 @@ import { Observable } from 'rxjs/Observable';
   pluginRef: 'bluetoothSerial',
   platforms: ['Android', 'iOS', 'Windows Phone', 'Browser']
 })
+@Injectable()
 export class BluetoothSerial {
 
   /**
@@ -46,7 +50,7 @@ export class BluetoothSerial {
     observable: true,
     clearFunction: 'disconnect'
   })
-  static connect(macAddress_or_uuid: string): Observable<any> { return; }
+  connect(macAddress_or_uuid: string): Observable<any> { return; }
 
   /**
    * Connect insecurely to a Bluetooth device
@@ -58,7 +62,7 @@ export class BluetoothSerial {
     observable: true,
     clearFunction: 'disconnect'
   })
-  static connectInsecure(macAddress: string): Observable<any> { return; }
+  connectInsecure(macAddress: string): Observable<any> { return; }
 
   /**
    * Writes data to the serial port
@@ -68,7 +72,7 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static write(data: any): Promise<any> { return; }
+  write(data: any): Promise<any> { return; }
 
   /**
    * Gets the number of bytes of data available
@@ -76,7 +80,7 @@ export class BluetoothSerial {
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
-  }) static available(): Promise<any> { return; }
+  }) available(): Promise<any> { return; }
 
   /**
    * Reads data from the buffer
@@ -85,7 +89,7 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static read(): Promise<any> { return; }
+  read(): Promise<any> { return; }
 
   /**
    * Reads data from the buffer until it reaches a delimiter
@@ -95,7 +99,7 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static readUntil(delimiter: string): Promise<any> { return; }
+  readUntil(delimiter: string): Promise<any> { return; }
 
   /**
    * Subscribe to be notified when data is received
@@ -107,7 +111,7 @@ export class BluetoothSerial {
     observable: true,
     clearFunction: 'unsubscribe'
   })
-  static subscribe(delimiter: string): Observable<any> { return; }
+  subscribe(delimiter: string): Observable<any> { return; }
 
   /**
    * Subscribe to be notified when data is received
@@ -118,7 +122,7 @@ export class BluetoothSerial {
     observable: true,
     clearFunction: 'unsubscribeRawData'
   })
-  static subscribeRawData(): Observable<any> { return; }
+  subscribeRawData(): Observable<any> { return; }
 
   /**
    * Clears data in buffer
@@ -127,7 +131,7 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static clear(): Promise<any> { return; }
+  clear(): Promise<any> { return; }
 
   /**
    * Lists bonded devices
@@ -136,7 +140,7 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static list(): Promise<any> { return; }
+  list(): Promise<any> { return; }
 
   /**
    * Reports if bluetooth is enabled
@@ -145,7 +149,7 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static isEnabled(): Promise<any> { return; }
+  isEnabled(): Promise<any> { return; }
 
   /**
    * Reports the connection status
@@ -154,7 +158,7 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static isConnected(): Promise<any> { return; }
+  isConnected(): Promise<any> { return; }
 
   /**
    * Reads the RSSI from the connected peripheral
@@ -163,7 +167,7 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static readRSSI(): Promise<any> { return; }
+  readRSSI(): Promise<any> { return; }
 
   /**
    * Show the Bluetooth settings on the device
@@ -172,7 +176,7 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static showBluetoothSettings(): Promise<any> { return; }
+  showBluetoothSettings(): Promise<any> { return; }
 
   /**
    * Enable Bluetooth on the device
@@ -181,7 +185,7 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static enable(): Promise<any> { return; }
+  enable(): Promise<any> { return; }
 
   /**
    * Discover unpaired devices
@@ -190,7 +194,7 @@ export class BluetoothSerial {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  static discoverUnpaired(): Promise<any> { return; }
+  discoverUnpaired(): Promise<any> { return; }
 
   /**
    * Subscribe to be notified on Bluetooth device discovery. Discovery process must be initiated with the `discoverUnpaired` function.
@@ -201,7 +205,7 @@ export class BluetoothSerial {
     observable: true,
     clearFunction: 'clearDeviceDiscoveredListener'
   })
-  static setDeviceDiscoveredListener(): Observable<any> { return; }
+  setDeviceDiscoveredListener(): Observable<any> { return; }
 
   /**
    * Sets the human readable device name that is broadcasted to other devices
@@ -211,7 +215,7 @@ export class BluetoothSerial {
     platforms: ['Android'],
     sync: true
   })
-  static setName(newName: string): void { }
+  setName(newName: string): void { }
 
   /**
    * Makes the device discoverable by other devices
@@ -221,6 +225,6 @@ export class BluetoothSerial {
     platforms: ['Android'],
     sync: true
   })
-  static setDiscoverable(discoverableDuration: number): void { }
+  setDiscoverable(discoverableDuration: number): void { }
 
 }

@@ -1,5 +1,6 @@
 import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
 
 export type AdMobAdSize = 'SMART_BANNER' | 'BANNER' | 'MEDIUM_RECTANGLE' | 'FULL_BANNER' | 'LEADERBOARD' | 'SKYSCRAPER' | 'CUSTOM';
 
@@ -114,6 +115,7 @@ export interface AdMobAdExtras {
   repo: 'https://github.com/floatinghotpot/cordova-admob-pro',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
+@Injectable()
 export class AdMob {
 
   /**
@@ -139,7 +141,7 @@ export class AdMob {
    * @returns {Promise<any>} Returns a Promise that resolves when the banner is created
    */
   @Cordova()
-  static createBanner(adIdOrOptions: string | AdMobOptions): Promise<any> { return; }
+  createBanner(adIdOrOptions: string | AdMobOptions): Promise<any> { return; }
 
   /**
    * Destroy the banner, remove it from screen.
@@ -147,7 +149,7 @@ export class AdMob {
   @Cordova({
     sync: true
   })
-  static removeBanner(): void { }
+  removeBanner(): void { }
 
   /**
    * Show banner at position
@@ -156,7 +158,7 @@ export class AdMob {
   @Cordova({
     sync: true
   })
-  static showBanner(position: number): void { }
+  showBanner(position: number): void { }
 
   /**
    * Show banner at custom position
@@ -166,7 +168,7 @@ export class AdMob {
   @Cordova({
     sync: true
   })
-  static showBannerAtXY(x: number, y: number): void { }
+  showBannerAtXY(x: number, y: number): void { }
 
   /**
    * Hide the banner, remove it from screen, but can show it later
@@ -174,7 +176,7 @@ export class AdMob {
   @Cordova({
     sync: true
   })
-  static hideBanner(): void { }
+  hideBanner(): void { }
 
   /**
    * Prepare interstitial banner
@@ -182,7 +184,7 @@ export class AdMob {
    * @returns {Promise<any>} Returns a Promise that resolves when interstitial is prepared
    */
   @Cordova()
-  static prepareInterstitial(adIdOrOptions: string | AdMobOptions): Promise<any> { return; }
+  prepareInterstitial(adIdOrOptions: string | AdMobOptions): Promise<any> { return; }
 
   /**
    * Show interstitial ad when it's ready
@@ -190,7 +192,7 @@ export class AdMob {
   @Cordova({
     sync: true
   })
-  static showInterstitial(): void { }
+  showInterstitial(): void { }
 
   /**
    * Prepare a reward video ad
@@ -198,7 +200,7 @@ export class AdMob {
    * @returns {Promise<any>} Returns a Promise that resolves when the ad is prepared
    */
   @Cordova()
-  static prepareRewardVideoAd(adIdOrOptions: string | AdMobOptions): Promise<any> { return; }
+  prepareRewardVideoAd(adIdOrOptions: string | AdMobOptions): Promise<any> { return; }
 
   /**
    * Show a reward video ad
@@ -206,7 +208,7 @@ export class AdMob {
   @Cordova({
     sync: true
   })
-  static showRewardVideoAd(): void { }
+  showRewardVideoAd(): void { }
 
   /**
    * Sets the values for configuration and targeting
@@ -214,14 +216,14 @@ export class AdMob {
    * @returns {Promise<any>} Returns a Promise that resolves when the options have been set
    */
   @Cordova()
-  static setOptions(options: AdMobOptions): Promise<any> { return; }
+  setOptions(options: AdMobOptions): Promise<any> { return; }
 
   /**
    * Get user ad settings
    * @returns {Promise<any>} Returns a promise that resolves with the ad settings
    */
   @Cordova()
-  static getAdSettings(): Promise<any> { return; }
+  getAdSettings(): Promise<any> { return; }
 
   /**
    * Triggered when failed to receive Ad
@@ -231,7 +233,7 @@ export class AdMob {
     eventObservable: true,
     event: 'onAdFailLoad'
   })
-  static onAdFailLoad(): Observable<any> { return; }
+  onAdFailLoad(): Observable<any> { return; }
 
   /**
    * Triggered when Ad received
@@ -241,7 +243,7 @@ export class AdMob {
     eventObservable: true,
     event: 'onAdLoaded'
   })
-  static onAdLoaded(): Observable<any> { return; }
+  onAdLoaded(): Observable<any> { return; }
 
   /**
    * Triggered when Ad will be showed on screen
@@ -251,7 +253,7 @@ export class AdMob {
     eventObservable: true,
     event: 'onAdPresent'
   })
-  static onAdPresent(): Observable<any> { return; }
+  onAdPresent(): Observable<any> { return; }
 
   /**
    * Triggered when user click the Ad, and will jump out of your App
@@ -261,7 +263,7 @@ export class AdMob {
     eventObservable: true,
     event: 'onAdLeaveApp'
   })
-  static onAdLeaveApp(): Observable<any> { return; }
+  onAdLeaveApp(): Observable<any> { return; }
 
   /**
    * Triggered when dismiss the Ad and back to your App
@@ -271,6 +273,6 @@ export class AdMob {
     eventObservable: true,
     event: 'onAdDismiss'
   })
-  static onAdDismiss(): Observable<any> { return; }
+  onAdDismiss(): Observable<any> { return; }
 
 }
