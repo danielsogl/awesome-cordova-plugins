@@ -11,6 +11,8 @@ var _ = require('lodash');
 var config = require('../config.json');
 var projectPackage = require('../../package.json');
 
+// jscs:disable validateIndentation
+
 // Define the dgeni package for generating the docs
 module.exports = function(currentVersion) {
 
@@ -67,7 +69,6 @@ module.exports = function(currentVersion) {
 //     }
 //   }
 // })
-
 .config(function(log) {
   log.level = 'error'; //'silly', 'debug', 'info', 'warn', 'error'
 })
@@ -85,7 +86,7 @@ module.exports = function(currentVersion) {
     // We don't separate by versions so always put the docs in the root
     var folder = '';
     return {
-      href: '/' + config.v2DocsDir.replace('content/',''),
+      href: '/' + config.v2DocsDir.replace('content/', ''),
       folder: folder,
       name: version
     };
@@ -102,10 +103,8 @@ module.exports = function(currentVersion) {
   computePathsProcessor.pathTemplates = [{
     docTypes: ['class', 'var', 'function', 'let'],
     getOutputPath: function(doc) {
-      var docPath = doc.name + '/index.md';
-      var path = 'content/' + config.v2DocsDir + '/' +  docPath;
-
-      return path;
+      return doc.originalModule.replace(config.pluginDir + '/', '')
+        .replace('/index', '') + '/README.md';
     }
   }];
 })
@@ -148,7 +147,7 @@ module.exports = function(currentVersion) {
 
 // Configure file writing
 .config(function(writeFilesProcessor) {
-  writeFilesProcessor.outputFolder  = './src/@ionic-native/plugins2/';
+  writeFilesProcessor.outputFolder  = './' + config.pluginDir;
 })
 
 // Configure rendering
@@ -177,7 +176,7 @@ module.exports = function(currentVersion) {
   // Specify how to match docs to templates.
   templateFinder.templatePatterns = [
     '${ doc.template }',
-    '${ doc.docType }.template.html',
+    '${ doc.docType }.template.md',
     'common.template.html'
   ];
 });
