@@ -9,7 +9,6 @@
     "dist"
   ],
   "dependencies": {
-    "fs-extra-promise": "^0.4.1",
     "rxjs": "5.0.0-beta.12"
   },
   "devDependencies": {
@@ -24,6 +23,7 @@
     "dgeni-packages": "^0.10.18",
     "es6-shim": "~0.35.2",
     "fs-extra": "^2.0.0",
+    "fs-extra-promise": "^0.4.1",
     "glob": "^7.1.1",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
