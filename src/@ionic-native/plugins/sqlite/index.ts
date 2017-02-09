@@ -60,9 +60,11 @@ export class SQLite {
 
   constructor() { }
 
+  /*
   openDatabase(config: any): Promise<SQLite> {
     return new SQLite().openDatabase(config);
   }
+  */
 
 
   /**

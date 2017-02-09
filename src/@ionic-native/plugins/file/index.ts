@@ -353,7 +353,7 @@ declare var FileError: {
  *
  * declare var cordova: any;
  * const fs:string = cordova.file.dataDirectory;
- * File.checkDir(this.fs, 'mydir').then(_ => console.log('yay')).catch(err => console.log('boooh'));
+ * this.checkDir(this.fs, 'mydir').then(_ => console.log('yay')).catch(err => console.log('boooh'));
  * ```
  *
  *  This plugin is based on several specs, including : The HTML5 File API http://www.w3.org/TR/FileAPI/
@@ -419,7 +419,7 @@ export class File {
     }
 
     let fullpath = path + dir;
-    return File.resolveDirectoryUrl(fullpath)
+    return this.resolveDirectoryUrl(fullpath)
       .then(() => {
         return true;
       });
@@ -450,9 +450,9 @@ export class File {
       options.exclusive = true;
     }
 
-    return File.resolveDirectoryUrl(path)
+    return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getDirectory(fse, dirName, options);
+        return this.getDirectory(fse, dirName, options);
       });
   }
 
@@ -470,12 +470,12 @@ export class File {
       return Promise.reject<FileError>(err);
     }
 
-    return File.resolveDirectoryUrl(path)
+    return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getDirectory(fse, dirName, {create: false});
+        return this.getDirectory(fse, dirName, {create: false});
       })
       .then((de) => {
-        return File.remove(de);
+        return this.remove(de);
       });
   }
 
@@ -504,7 +504,7 @@ export class File {
       .then((srcde) => {
         return this.resolveDirectoryUrl(newPath)
           .then((deste) => {
-            return File.move(srcde, deste, newDirName);
+            return this.move(srcde, deste, newDirName);
           });
       });
   }
@@ -532,7 +532,7 @@ export class File {
       .then((srcde) => {
         return this.resolveDirectoryUrl(newPath)
           .then((deste) => {
-            return File.copy(srcde, deste, newDirName);
+            return this.copy(srcde, deste, newDirName);
           });
       });
   }
@@ -551,13 +551,13 @@ export class File {
       return Promise.reject<Entry[]>(err);
     }
 
-    return File.resolveDirectoryUrl(path)
+    return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getDirectory(fse, dirName, {create: false, exclusive: false});
+        return this.getDirectory(fse, dirName, {create: false, exclusive: false});
       })
       .then((de) => {
         let reader = de.createReader();
-        return File.readEntries(reader);
+        return this.readEntries(reader);
       });
   }
 
@@ -575,12 +575,12 @@ export class File {
       return Promise.reject<RemoveResult>(err);
     }
 
-    return File.resolveDirectoryUrl(path)
+    return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getDirectory(fse, dirName, {create: false});
+        return this.getDirectory(fse, dirName, {create: false});
       })
       .then((de) => {
-        return File.rimraf(de);
+        return this.rimraf(de);
       });
   }
 
@@ -598,7 +598,7 @@ export class File {
       return Promise.reject<FileError>(err);
     }
 
-    return File.resolveLocalFilesystemUrl(path + file)
+    return this.resolveLocalFilesystemUrl(path + file)
       .then((fse) => {
         if (fse.isFile) {
           return true;
@@ -635,9 +635,9 @@ export class File {
       options.exclusive = true;
     }
 
-    return File.resolveDirectoryUrl(path)
+    return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getFile(fse, fileName, options);
+        return this.getFile(fse, fileName, options);
       });
   }
 
@@ -655,12 +655,12 @@ export class File {
       return Promise.reject<FileError>(err);
     }
 
-    return File.resolveDirectoryUrl(path)
+    return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getFile(fse, fileName, {create: false});
+        return this.getFile(fse, fileName, {create: false});
       })
       .then((fe) => {
-        return File.remove(fe);
+        return this.remove(fe);
       });
   }
 
@@ -685,12 +685,12 @@ export class File {
       exclusive: !options.replace
     };
 
-    return File.resolveDirectoryUrl(path)
+    return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getFile(fse, fileName, getFileOpts);
+        return this.getFile(fse, fileName, getFileOpts);
       })
       .then((fe) => {
-        return File.writeFileEntry(fe, text, options);
+        return this.writeFileEntry(fe, text, options);
       });
   }
 
@@ -703,7 +703,7 @@ export class File {
    * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   private writeFileEntry(fe: FileEntry, text: string | Blob, options: WriteOptions) {
-    return File.createWriter(fe)
+    return this.createWriter(fe)
       .then((writer) => {
         if (options.append) {
           writer.seek(writer.length);
@@ -713,7 +713,7 @@ export class File {
           writer.truncate(options.truncate);
         }
 
-        return File.write(writer, text);
+        return this.write(writer, text);
       })
       .then(() => fe);
   }
@@ -727,7 +727,7 @@ export class File {
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
   writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
-    return File.writeFile(path, fileName, text, { create: false });
+    return this.writeFile(path, fileName, text, { create: false });
   }
 
   /**
@@ -744,9 +744,9 @@ export class File {
       return Promise.reject<FileError>(err);
     }
 
-    return File.resolveDirectoryUrl(path)
+    return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getFile(fse, file, {create: false});
+        return this.getFile(fse, file, {create: false});
       })
       .then((fe) => {
         let reader = new FileReader();
@@ -785,9 +785,9 @@ export class File {
       return Promise.reject<FileError>(err);
     }
 
-    return File.resolveDirectoryUrl(path)
+    return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getFile(fse, file, {create: false});
+        return this.getFile(fse, file, {create: false});
       })
       .then((fe) => {
         let reader = new FileReader();
@@ -827,9 +827,9 @@ export class File {
       return Promise.reject<FileError>(err);
     }
 
-    return File.resolveDirectoryUrl(path)
+    return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getFile(fse, file, {create: false});
+        return this.getFile(fse, file, {create: false});
       })
       .then((fe) => {
         let reader = new FileReader();
@@ -868,9 +868,9 @@ export class File {
       return Promise.reject<FileError>(err);
     }
 
-    return File.resolveDirectoryUrl(path)
+    return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return File.getFile(fse, file, {create: false});
+        return this.getFile(fse, file, {create: false});
       })
       .then((fe) => {
         let reader = new FileReader();
@@ -920,7 +920,7 @@ export class File {
       .then((srcfe) => {
         return this.resolveDirectoryUrl(newPath)
           .then((deste) => {
-            return File.move(srcfe, deste, newFileName);
+            return this.move(srcfe, deste, newFileName);
           });
       });
   }
@@ -950,7 +950,7 @@ export class File {
       .then((srcfe) => {
         return this.resolveDirectoryUrl(newPath)
           .then((deste) => {
-            return File.copy(srcfe, deste, newFileName);
+            return this.copy(srcfe, deste, newFileName);
           });
       });
   }
@@ -976,11 +976,11 @@ export class File {
         window.resolveLocalFileSystemURL(fileUrl, (entry) => {
           resolve(entry);
         }, (err) => {
-          File.fillErrorMessage(err);
+          this.fillErrorMessage(err);
           reject(err);
         });
       } catch (xc) {
-        File.fillErrorMessage(xc);
+        this.fillErrorMessage(xc);
         reject(xc);
       }
     });
@@ -992,7 +992,7 @@ export class File {
    * @returns {Promise<DirectoryEntry>}
    */
   resolveDirectoryUrl(directoryUrl: string): Promise<DirectoryEntry> {
-    return File.resolveLocalFilesystemUrl(directoryUrl)
+    return this.resolveLocalFilesystemUrl(directoryUrl)
       .then((de) => {
         if (de.isDirectory) {
           return <DirectoryEntry>de;
@@ -1017,11 +1017,11 @@ export class File {
         directoryEntry.getDirectory(directoryName, flags, (de) => {
           resolve(de);
         }, (err) => {
-          File.fillErrorMessage(err);
+          this.fillErrorMessage(err);
           reject(err);
         });
       } catch (xc) {
-        File.fillErrorMessage(xc);
+        this.fillErrorMessage(xc);
         reject(xc);
       }
     });
@@ -1038,11 +1038,11 @@ export class File {
     return new Promise<FileEntry>((resolve, reject) => {
       try {
         directoryEntry.getFile(fileName, flags, resolve, (err) => {
-          File.fillErrorMessage(err);
+          this.fillErrorMessage(err);
           reject(err);
         });
       } catch (xc) {
-        File.fillErrorMessage(xc);
+        this.fillErrorMessage(xc);
         reject(xc);
       }
     });
@@ -1056,7 +1056,7 @@ export class File {
       fe.remove(() => {
         resolve({success: true, fileRemoved: fe});
       }, (err) => {
-        File.fillErrorMessage(err);
+        this.fillErrorMessage(err);
         reject(err);
       });
     });
@@ -1070,7 +1070,7 @@ export class File {
       srce.moveTo(destdir, newName, (deste) => {
         resolve(deste);
       }, (err) => {
-        File.fillErrorMessage(err);
+        this.fillErrorMessage(err);
         reject(err);
       });
     });
@@ -1084,7 +1084,7 @@ export class File {
       srce.copyTo(destdir, newName, (deste) => {
         resolve(deste);
       }, (err) => {
-        File.fillErrorMessage(err);
+        this.fillErrorMessage(err);
         reject(err);
       });
     });
@@ -1098,7 +1098,7 @@ export class File {
       dr.readEntries((entries) => {
         resolve(entries);
       }, (err) => {
-        File.fillErrorMessage(err);
+        this.fillErrorMessage(err);
         reject(err);
       });
     });
@@ -1112,7 +1112,7 @@ export class File {
       de.removeRecursively(() => {
         resolve({success: true, fileRemoved: de});
       }, (err) => {
-        File.fillErrorMessage(err);
+        this.fillErrorMessage(err);
         reject(err);
       });
     });
@@ -1126,7 +1126,7 @@ export class File {
       fe.createWriter((writer) => {
         resolve(writer);
       }, (err) => {
-        File.fillErrorMessage(err);
+        this.fillErrorMessage(err);
         reject(err);
       });
     });
