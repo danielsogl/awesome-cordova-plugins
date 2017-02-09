@@ -177,7 +177,7 @@ module.exports = function(currentVersion) {
   templateFinder.templatePatterns = [
     '${ doc.template }',
     '${ doc.docType }.template.md',
-    'common.template.html'
+    'readme.template.md'
   ];
 });
 
