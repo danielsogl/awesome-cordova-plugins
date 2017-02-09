@@ -9,77 +9,9 @@ export interface MediaError {
 }
 
 /**
- * @name MediaPlugin
- * @description
- * @usage
- * ```typescript
- * import { MediaPlugin } from 'ionic-native';
- *
- *
- *
- * // Create a MediaPlugin instance.  Expects path to file or url as argument
- * // We can optionally pass a second argument to track the status of the media
- *
- * const onStatusUpdate = (status) => console.log(status);
- *
- * const file = new MediaPlugin('path/to/file.mp3', onStatusUpdate);
- *
- * // Catch the Success & Error Output
- * // Platform Quirks
- * // iOS calls success on completion of playback only
- * // Android calls success on completion of playback AND on release()
- * file.init.then(() => {
- *   console.log('Playback Finished');
- * }, (err) => {
- *   console.log('somthing went wrong! error code: ' + err.code + ' message: ' + err.message);
- * });
- *
- * // play the file
- * file.play();
- *
- * // pause the file
- * file.pause();
- *
- * // get current playback position
- * file.getCurrentPosition().then((position) => {
- *   console.log(position);
- * });
- *
- * // get file duration
- * file.getDuration().then((duration) => {
- *   console.log(position);
- * });
- *
- * // skip to 10 seconds (expects int value in ms)
- * file.seekTo(10000);
- *
- * // stop playing the file
- * file.stop();
- *
- * // release the native audio resource
- * // Platform Quirks:
- * // iOS simply create a new instance and the old one will be overwritten
- * // Android you must call release() to destroy instances of media when you are done
- * file.release();
- *
- * // Recording to a file
- * var newFile = new MediaPlugin('path/to/file.mp3');
- * newFile.startRecord();
- *
- * newFile.stopRecord();
- *
- *
- *
- * ```
+ * @private
  */
-@Plugin({
-  pluginName: 'MediaPlugin',
-  repo: 'https://github.com/apache/cordova-plugin-media',
-  plugin: 'cordova-plugin-media',
-  pluginRef: 'Media'
-})
-@Injectable()
-export class MediaPlugin {
+export class MediaObject {
 
   // Constants
   /**
@@ -237,5 +169,90 @@ export class MediaPlugin {
     sync: true
   })
   stop(): void { }
+}
+
+/**
+ * @name MediaPlugin
+ * @description
+ * @usage
+ * ```typescript
+ * import { MediaPlugin } from 'ionic-native';
+ *
+ *
+ *
+ * // Create a MediaPlugin instance.  Expects path to file or url as argument
+ * // We can optionally pass a second argument to track the status of the media
+ *
+ * const onStatusUpdate = (status) => console.log(status);
+ *
+ * const file = new MediaPlugin('path/to/file.mp3', onStatusUpdate);
+ *
+ * // Catch the Success & Error Output
+ * // Platform Quirks
+ * // iOS calls success on completion of playback only
+ * // Android calls success on completion of playback AND on release()
+ * file.init.then(() => {
+ *   console.log('Playback Finished');
+ * }, (err) => {
+ *   console.log('somthing went wrong! error code: ' + err.code + ' message: ' + err.message);
+ * });
+ *
+ * // play the file
+ * file.play();
+ *
+ * // pause the file
+ * file.pause();
+ *
+ * // get current playback position
+ * file.getCurrentPosition().then((position) => {
+ *   console.log(position);
+ * });
+ *
+ * // get file duration
+ * file.getDuration().then((duration) => {
+ *   console.log(position);
+ * });
+ *
+ * // skip to 10 seconds (expects int value in ms)
+ * file.seekTo(10000);
+ *
+ * // stop playing the file
+ * file.stop();
+ *
+ * // release the native audio resource
+ * // Platform Quirks:
+ * // iOS simply create a new instance and the old one will be overwritten
+ * // Android you must call release() to destroy instances of media when you are done
+ * file.release();
+ *
+ * // Recording to a file
+ * var newFile = new MediaPlugin('path/to/file.mp3');
+ * newFile.startRecord();
+ *
+ * newFile.stopRecord();
+ *
+ *
+ *
+ * ```
+ * @classes
+ * MediaObject
+ */
+@Plugin({
+  pluginName: 'MediaPlugin',
+  repo: 'https://github.com/apache/cordova-plugin-media',
+  plugin: 'cordova-plugin-media',
+  pluginRef: 'Media'
+})
+@Injectable()
+class MediaPlugin {
+
+  /**
+   * Open a media file
+   * @param src {string} A URI containing the audio content.
+   * @param onStatusUpdate {Function} A callback function to be invoked when the status of the file changes
+   */
+  create(src: string, onStatusUpdate?: Function): MediaObject {
+    return new MediaObject(src,  onStatusUpdate);
+  }
 
 }

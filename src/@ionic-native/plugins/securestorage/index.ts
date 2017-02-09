@@ -2,6 +2,47 @@ import { Injectable } from '@angular/core';
 import { CordovaInstance, Plugin } from '@ionic-native/core';
 
 declare var cordova: any;
+
+/**
+ * @private
+ */
+export class SecureStorageObject {
+
+  constructor(private _objectInstance: any) {}
+
+  /**
+   * Gets a stored item
+   * @param reference {string}
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance({
+    callbackOrder: 'reverse'
+  })
+  get(reference: string): Promise<any> { return; }
+
+  /**
+   * Stores a value
+   * @param reference {string}
+   * @param value {string}
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance({
+    callbackOrder: 'reverse'
+  })
+  set(reference: string, value: string): Promise<any> { return; }
+
+  /**
+   * Removes a single stored item
+   * @param reference {string}
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance({
+    callbackOrder: 'reverse'
+  })
+  remove(reference: string): Promise<any> { return; }
+
+}
+
 /**
  * @name Secure Storage
  * @description
@@ -39,6 +80,8 @@ declare var cordova: any;
  *    error => console.log(error)
  * );
  * ```
+ * @classes
+ * SecureStorageObject
  */
 @Plugin({
   pluginName: 'SecureStorage',
@@ -50,49 +93,15 @@ declare var cordova: any;
 @Injectable()
 export class SecureStorage {
 
-  private _objectInstance: any;
-
-  constructor() {}
-
   /**
    * Creates a namespaced storage.
    * @param store {string}
-   * @returns {Promise<any>}
+   * @returns {Promise<SecureStorageObject>}
    */
-  create(store: string): Promise<any> {
+  create(store: string): Promise<SecureStorageObject> {
     return new Promise((res, rej) => {
-      this._objectInstance = new cordova.plugins.SecureStorage(res, rej, store);
+      const instance = new cordova.plugins.SecureStorage(() => res(new SecureStorageObject(instance)), rej, store);
     });
   }
 
-  /**
-   * Gets a stored item
-   * @param reference {string}
-   * @returns {Promise<any>}
-   */
- @CordovaInstance({
-    callbackOrder: 'reverse'
-  })
-  get(reference: string): Promise<any> { return; }
-
-  /**
-   * Stores a value
-   * @param reference {string}
-   * @param value {string}
-   * @returns {Promise<any>}
-   */
- @CordovaInstance({
-    callbackOrder: 'reverse'
-  })
-  set(reference: string, value: string): Promise<any> { return; }
-
-  /**
-   * Removes a single stored item
-   * @param reference {string}
-   * @returns {Promise<any>}
-   */
- @CordovaInstance({
-    callbackOrder: 'reverse'
-  })
-  remove(reference: string): Promise<any> { return; }
 }

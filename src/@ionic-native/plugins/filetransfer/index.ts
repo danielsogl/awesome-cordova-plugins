@@ -202,7 +202,7 @@ export class Transfer {
    *      NOT_MODIFIED_ERR: 5     Return on "304 Not Modified" HTTP response
    * @enum {number}
    */
-  public static FileTransferErrorCode = {
+  static FileTransferErrorCode = {
     FILE_NOT_FOUND_ERR: 1,
     INVALID_URL_ERR: 2,
     CONNECTION_ERR: 3,
@@ -252,9 +252,8 @@ export class Transfer {
 
   /**
    * Registers a listener that gets called whenever a new chunk of data is transferred.
-   * @param {function} Listener that takes a progress event.
+   * @param listener {function} Listener that takes a progress event.
    */
-
   onProgress(listener: (event: ProgressEvent) => any): void {
     this._objectInstance.onprogress = listener;
   }
