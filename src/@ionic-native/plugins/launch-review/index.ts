@@ -33,6 +33,6 @@ export class LaunchReview {
    * @returns {Promise<void>}
    */
   @Cordova()
-  static launch(appId: string): Promise<void> { return; }
+  launch(appId: string): Promise<void> { return; }
 
 }

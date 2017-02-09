@@ -36,7 +36,7 @@ export class Screenshot {
    * @param {string} filename. Name of the file as stored on the storage
    * @returns {Promise<any>}
    */
-  static save(format?: string, quality?: number, filename?: string): Promise<any> {
+  save(format?: string, quality?: number, filename?: string): Promise<any> {
     return new Promise<any>(
       (resolve, reject) => {
         navigator.screenshot.save(
@@ -62,7 +62,7 @@ export class Screenshot {
    *        Default quality is set to 100.
    * @returns {Promise<any>}
    */
-  static URI(quality?: number): Promise<any> {
+  URI(quality?: number): Promise<any> {
     return new Promise<any>(
       (resolve, reject) => {
         navigator.screenshot.URI(

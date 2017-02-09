@@ -433,7 +433,7 @@ export class CodePush {
    * @returns {Promise<ILocalPackage>}
    */
   @Cordova()
-  static getCurrentPackage(): Promise<ILocalPackage> {
+  getCurrentPackage(): Promise<ILocalPackage> {
     return;
   }
 
@@ -443,7 +443,7 @@ export class CodePush {
    * @returns {Promise<ILocalPackage>}
    */
   @Cordova()
-  static getPendingPackage(): Promise<ILocalPackage> {
+  getPendingPackage(): Promise<ILocalPackage> {
     return;
   }
 
@@ -460,7 +460,7 @@ export class CodePush {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static checkForUpdate(deploymentKey?: string): Promise<IRemotePackage> {
+  checkForUpdate(deploymentKey?: string): Promise<IRemotePackage> {
     return;
   }
 
@@ -474,7 +474,7 @@ export class CodePush {
    * @returns {Promise<void>}
    */
   @Cordova()
-  static notifyApplicationReady(): Promise<void> {
+  notifyApplicationReady(): Promise<void> {
     return;
   }
 
@@ -484,7 +484,7 @@ export class CodePush {
    * @returns {Promise<void>}
    */
   @Cordova()
-  static restartApplication(): Promise<void> {
+  restartApplication(): Promise<void> {
     return;
   }
 
@@ -514,7 +514,7 @@ export class CodePush {
     successIndex: 0,
     errorIndex: 3 // we don't need this, so we set it to a value higher than # of args
   })
-  static sync(syncOptions?: SyncOptions, downloadProgress?: SuccessCallback<DownloadProgress>): Observable<SyncStatus> {
+  sync(syncOptions?: SyncOptions, downloadProgress?: SuccessCallback<DownloadProgress>): Observable<SyncStatus> {
     return;
   }
 

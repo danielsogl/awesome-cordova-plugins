@@ -35,6 +35,6 @@ export class Crop {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static crop(pathToImage: string, options?: {quality: number}): Promise<string> { return; }
+  crop(pathToImage: string, options?: {quality: number}): Promise<string> { return; }
 
 }

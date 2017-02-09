@@ -58,7 +58,7 @@ export class NativePageTransitions {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static slide(options: NativeTransitionOptions): Promise<any> { return; }
+  slide(options: NativeTransitionOptions): Promise<any> { return; }
 
   /**
    * Perform a flip animation
@@ -66,7 +66,7 @@ export class NativePageTransitions {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static flip(options: NativeTransitionOptions): Promise<any> { return; }
+  flip(options: NativeTransitionOptions): Promise<any> { return; }
 
   /**
    * Perform a fade animation
@@ -74,7 +74,7 @@ export class NativePageTransitions {
    * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS', 'Android']})
-  static fade(options: NativeTransitionOptions): Promise<any> { return; }
+  fade(options: NativeTransitionOptions): Promise<any> { return; }
 
 
   /**
@@ -83,7 +83,7 @@ export class NativePageTransitions {
    * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS', 'Android']})
-  static drawer(options: NativeTransitionOptions): Promise<any> { return; }
+  drawer(options: NativeTransitionOptions): Promise<any> { return; }
 
 
 
@@ -93,7 +93,7 @@ export class NativePageTransitions {
    * @returns {Promise<any>}
    */
   @Cordova({platforms: ['iOS']})
-  static curl(options: NativeTransitionOptions): Promise<any> { return; }
+  curl(options: NativeTransitionOptions): Promise<any> { return; }
 
 }
 

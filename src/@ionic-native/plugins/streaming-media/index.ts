@@ -53,7 +53,7 @@ export class StreamingMedia {
    * @param options {StreamingVideoOptions} Options
    */
   @Cordova({sync: true})
-  static playVideo(videoUrl: string, options?: StreamingVideoOptions): void { }
+  playVideo(videoUrl: string, options?: StreamingVideoOptions): void { }
 
   /**
    * Streams an audio
@@ -61,24 +61,24 @@ export class StreamingMedia {
    * @param options {StreamingAudioOptions} Options
    */
   @Cordova({sync: true})
-  static playAudio(audioUrl: string, options?: StreamingAudioOptions): void { }
+  playAudio(audioUrl: string, options?: StreamingAudioOptions): void { }
 
   /**
    * Stops streaming audio
    */
   @Cordova({sync: true})
-  static stopAudio(): void { }
+  stopAudio(): void { }
 
   /**
    * Pauses streaming audio
    */
   @Cordova({sync: true, platforms: ['iOS']})
-  static pauseAudio(): void { }
+  pauseAudio(): void { }
 
   /**
    * Resumes streaming audio
    */
   @Cordova({sync: true, platforms: ['iOS']})
-  static resumeAudio(): void { }
+  resumeAudio(): void { }
 
 }

@@ -38,39 +38,39 @@ export class WebIntent {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static startActivity(options: { action: any, url: string, type?: string }): Promise<any> { return; }
+  startActivity(options: { action: any, url: string, type?: string }): Promise<any> { return; }
 
   /**
    * @param extra {any}
    * @returns {Promise<any>}
    */
   @Cordova()
-  static hasExtra(extra: any): Promise<any> { return; }
+  hasExtra(extra: any): Promise<any> { return; }
 
   /**
    * @param extra {any}
    * @returns {Promise<any>}
    */
   @Cordova()
-  static getExtra(extra: any): Promise<any> { return; }
+  getExtra(extra: any): Promise<any> { return; }
 
   /**
    * @returns {Promise<any>}
    */
   @Cordova()
-  static getUri(): Promise<string> { return; };
+  getUri(): Promise<string> { return; };
 
   /**
    * @returns {Promise<string>}
    */
   @Cordova()
-  static onNewIntent(): Promise<string> { return; };
+  onNewIntent(): Promise<string> { return; };
 
   /**
    * @param options {Object} { action: string, extras?: { option: boolean } }
    * @returns {Promise<any>}
    */
   @Cordova()
-  static sendBroadcast(options: { action: string, extras?: { option: boolean } }): Promise<any> { return; }
+  sendBroadcast(options: { action: string, extras?: { option: boolean } }): Promise<any> { return; }
 
 }

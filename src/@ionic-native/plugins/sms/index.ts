@@ -64,7 +64,7 @@ export class SMS {
     successIndex: 3,
     errorIndex: 4
   })
-  static send(
+  send(
     phoneNumber: string | string[],
     message: string,
     options?: SmsOptions
@@ -77,6 +77,6 @@ export class SMS {
   @Cordova({
     platforms: ['Android']
   })
-  static hasPermission(): Promise<boolean> { return; }
+  hasPermission(): Promise<boolean> { return; }
 
 }

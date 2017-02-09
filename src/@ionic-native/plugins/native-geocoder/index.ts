@@ -42,7 +42,7 @@ export class NativeGeocoder {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static reverseGeocode(latitude: number, longitude: number): Promise<NativeGeocoderReverseResult> { return; }
+  reverseGeocode(latitude: number, longitude: number): Promise<NativeGeocoderReverseResult> { return; }
 
   /**
    * Forward geocode a given address to find coordinates
@@ -52,7 +52,7 @@ export class NativeGeocoder {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static forwardGeocode(addressString: string): Promise<NativeGeocoderForwardResult> { return; }
+  forwardGeocode(addressString: string): Promise<NativeGeocoderForwardResult> { return; }
 
 }
 

@@ -161,7 +161,7 @@ export class Geolocation {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return; }
+  getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return; }
 
   /**
    * Watch the current device's position.  Clear the watch by unsubscribing from
@@ -181,7 +181,7 @@ export class Geolocation {
    * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
    * @returns {Observable<Geoposition>} Returns an Observable that notifies with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or errors.
    */
-  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> {
+  watchPosition(options?: GeolocationOptions): Observable<Geoposition> {
     return new Observable<Geoposition>(
       (observer: any) => {
         let watchId = navigator.geolocation.watchPosition(observer.next.bind(observer), observer.next.bind(observer), options);

@@ -38,7 +38,7 @@ export class NativeStorage {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static setItem(reference: string, value: any): Promise<any> {return; }
+  setItem(reference: string, value: any): Promise<any> {return; }
 
   /**
    * Gets a stored item
@@ -46,7 +46,7 @@ export class NativeStorage {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static getItem(reference: string): Promise<any> {return; }
+  getItem(reference: string): Promise<any> {return; }
 
   /**
    * Removes a single stored item
@@ -54,13 +54,13 @@ export class NativeStorage {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static remove(reference: string): Promise<any> {return; }
+  remove(reference: string): Promise<any> {return; }
 
   /**
    * Removes all stored values.
    * @returns {Promise<any>}
    */
   @Cordova()
-  static clear(): Promise<any> {return; }
+  clear(): Promise<any> {return; }
 
 }

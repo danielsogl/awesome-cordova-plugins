@@ -103,14 +103,14 @@ export class MusicControls {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static create(options: MusicControlsOptions): Promise<any> {return; }
+  create(options: MusicControlsOptions): Promise<any> {return; }
 
   /**
    * Destroy the media controller
    * @returns {Promise<any>}
    */
   @Cordova()
-  static destroy(): Promise<any> {return; }
+  destroy(): Promise<any> {return; }
 
   /**
    * Subscribe to the events of the media controller
@@ -119,19 +119,19 @@ export class MusicControls {
   @Cordova({
     observable: true
   })
-  static subscribe(): Observable<any> {return; }
+  subscribe(): Observable<any> {return; }
 
   /**
    * Start listening for events, this enables the Observable from the subscribe method
    */
   @Cordova({sync: true})
-  static listen(): void {}
+  listen(): void {}
 
   /**
    * Toggle play/pause:
    * @param isPlaying {boolean}
    */
   @Cordova({sync: true})
-  static updateIsPlaying(isPlaying: boolean): void {}
+  updateIsPlaying(isPlaying: boolean): void {}
 
 }

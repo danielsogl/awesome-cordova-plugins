@@ -57,11 +57,11 @@ export class VideoPlayer {
    * @returns {Promise<any>} Resolves promise when the video was played successfully.
    */
   @Cordova()
-  static play(fileUrl: string, options?: VideoOptions): Promise<any> { return; }
+  play(fileUrl: string, options?: VideoOptions): Promise<any> { return; }
 
   /**
    * Stops the video playback immediatly.
    */
   @Cordova({ sync: true })
-  static close(): void { }
+  close(): void { }
 }

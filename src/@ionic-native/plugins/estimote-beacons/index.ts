@@ -110,7 +110,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static requestWhenInUseAuthorization(): Promise<any> { return; }
+  requestWhenInUseAuthorization(): Promise<any> { return; }
 
   /**
    * Ask the user for permission to use location services
@@ -131,7 +131,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static requestAlwaysAuthorization(): Promise<any> { return; }
+  requestAlwaysAuthorization(): Promise<any> { return; }
 
   /**
    * Get the current location authorization status.
@@ -150,7 +150,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static authorizationStatus(): Promise<any> { return; }
+  authorizationStatus(): Promise<any> { return; }
 
   /**
    * Start advertising as a beacon.
@@ -172,7 +172,7 @@ export class EstimoteBeacons {
   @Cordova({
     clearFunction: 'stopAdvertisingAsBeacon'
   })
-  static startAdvertisingAsBeacon(uuid: string, major: number, minor: number, regionId: string): Promise<any> { return; }
+  startAdvertisingAsBeacon(uuid: string, major: number, minor: number, regionId: string): Promise<any> { return; }
 
   /**
    * Stop advertising as a beacon.
@@ -188,7 +188,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static stopAdvertisingAsBeacon(): Promise<any> { return; }
+  stopAdvertisingAsBeacon(): Promise<any> { return; }
 
   /**
    * Enable analytics.
@@ -203,7 +203,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static enableAnalytics(enable: boolean): Promise<any> { return; }
+  enableAnalytics(enable: boolean): Promise<any> { return; }
 
   /**
   * Test if analytics is enabled.
@@ -217,7 +217,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static isAnalyticsEnabled(): Promise<any> { return; }
+  isAnalyticsEnabled(): Promise<any> { return; }
 
   /**
   * Test if App ID and App Token is set.
@@ -231,7 +231,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static isAuthorized(): Promise<any> { return; }
+  isAuthorized(): Promise<any> { return; }
 
   /**
   * Set App ID and App Token.
@@ -247,7 +247,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static setupAppIDAndAppToken(appID: string, appToken: string): Promise<any> { return; }
+  setupAppIDAndAppToken(appID: string, appToken: string): Promise<any> { return; }
 
   /**
    * Start scanning for all nearby beacons using CoreBluetooth (no region object is used).
@@ -268,7 +268,7 @@ export class EstimoteBeacons {
     observable: true,
     clearFunction: 'stopEstimoteBeaconDiscovery'
   })
-  static startEstimoteBeaconDiscovery(): Observable<any> { return; }
+  startEstimoteBeaconDiscovery(): Observable<any> { return; }
 
   /**
    * Stop CoreBluetooth scan. Available on iOS.
@@ -285,7 +285,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static stopEstimoteBeaconDiscovery(): Promise<any> { return; }
+  stopEstimoteBeaconDiscovery(): Promise<any> { return; }
 
   /**
    * Start ranging beacons. Available on iOS and Android.
@@ -308,7 +308,7 @@ export class EstimoteBeacons {
     clearFunction: 'stopRangingBeaconsInRegion',
     clearWithArgs: true
   })
-  static startRangingBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> { return; }
+  startRangingBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> { return; }
 
   /**
    * Stop ranging beacons. Available on iOS and Android.
@@ -327,7 +327,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static stopRangingBeaconsInRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
+  stopRangingBeaconsInRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Start ranging secure beacons. Available on iOS.
@@ -342,7 +342,7 @@ export class EstimoteBeacons {
     clearFunction: 'stopRangingSecureBeaconsInRegion',
     clearWithArgs: true
   })
-  static startRangingSecureBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> { return; }
+  startRangingSecureBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> { return; }
 
   /**
    * Stop ranging secure beacons. Available on iOS.
@@ -351,7 +351,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static stopRangingSecureBeaconsInRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
+  stopRangingSecureBeaconsInRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Start monitoring beacons. Available on iOS and Android.
@@ -377,7 +377,7 @@ export class EstimoteBeacons {
     successIndex: 1,
     errorIndex: 2
   })
-  static startMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> { return; }
+  startMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> { return; }
 
   /**
    * Stop monitoring beacons. Available on iOS and Android.
@@ -391,7 +391,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static stopMonitoringForRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
+  stopMonitoringForRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Start monitoring secure beacons. Available on iOS.
@@ -411,7 +411,7 @@ export class EstimoteBeacons {
     successIndex: 1,
     errorIndex: 2
   })
-  static startSecureMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> { return; }
+  startSecureMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> { return; }
 
   /**
   * Stop monitoring secure beacons. Available on iOS.
@@ -421,7 +421,7 @@ export class EstimoteBeacons {
   * @returns {Promise<any>}
   */
   @Cordova()
-  static stopSecureMonitoringForRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
+  stopSecureMonitoringForRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Connect to Estimote Beacon. Available on Android.
@@ -441,7 +441,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static connectToBeacon(beacon: any): Promise<any> { return; }
+  connectToBeacon(beacon: any): Promise<any> { return; }
 
   /**
    * Disconnect from connected Estimote Beacon. Available on Android.
@@ -453,7 +453,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static disconnectConnectedBeacon(): Promise<any> { return; }
+  disconnectConnectedBeacon(): Promise<any> { return; }
 
   /**
    * Write proximity UUID to connected Estimote Beacon. Available on Android.
@@ -467,7 +467,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static writeConnectedProximityUUID(uuid: any): Promise<any> { return; }
+  writeConnectedProximityUUID(uuid: any): Promise<any> { return; }
 
   /**
    * Write major to connected Estimote Beacon. Available on Android.
@@ -481,7 +481,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static writeConnectedMajor(major: number): Promise<any> { return; }
+  writeConnectedMajor(major: number): Promise<any> { return; }
 
   /**
    * Write minor to connected Estimote Beacon. Available on Android.
@@ -495,7 +495,7 @@ export class EstimoteBeacons {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static writeConnectedMinor(minor: number): Promise<any> { return; }
+  writeConnectedMinor(minor: number): Promise<any> { return; }
 
 }
 

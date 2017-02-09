@@ -351,13 +351,13 @@ export class Push {
   @Cordova({
     sync: true
   })
-  static init(options: PushOptions): PushNotification { return; }
+  init(options: PushOptions): PushNotification { return; }
 
   /**
    * Check whether the push notification permission has been granted.
    * @return {Promise<{isEnabled: boolean}>} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
    */
   @Cordova()
-  static hasPermission(): Promise<{ isEnabled: boolean }> { return; }
+  hasPermission(): Promise<{ isEnabled: boolean }> { return; }
 
 }

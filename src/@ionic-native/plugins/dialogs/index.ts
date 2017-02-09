@@ -55,7 +55,7 @@ export class Dialogs {
     successIndex: 1,
     errorIndex: 4
   })
-  static alert(
+  alert(
     message,
     title: string = 'Alert',
     buttonName: string = 'OK'
@@ -72,7 +72,7 @@ export class Dialogs {
     successIndex: 1,
     errorIndex: 4
   })
-  static confirm(
+  confirm(
     message,
     title: string = 'Confirm',
     buttonLabels: Array<string> = ['OK', 'Cancel']
@@ -90,7 +90,7 @@ export class Dialogs {
     successIndex: 1,
     errorIndex: 5
   })
-  static prompt(
+  prompt(
     message?: string,
     title: string = 'Prompt',
     buttonLabels: Array<string> = ['OK', 'Cancel'],
@@ -105,6 +105,6 @@ export class Dialogs {
   @Cordova({
     sync: true
   })
-  static beep(times: number): void { }
+  beep(times: number): void { }
 
 }

@@ -80,6 +80,6 @@ export class ZBar {
    * @returns {Promise<any>} Returns a Promise that resolves with the scanned string, or rejects with an error.
    */
   @Cordova()
-  static scan(options: ZBarOptions): Promise<any> { return; }
+  scan(options: ZBarOptions): Promise<any> { return; }
 
 }

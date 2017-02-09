@@ -78,7 +78,7 @@ export class Printer {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static isAvailable(): Promise<boolean> { return; }
+  isAvailable(): Promise<boolean> { return; }
 
   /**
    * Sends content to the printer.
@@ -87,6 +87,6 @@ export class Printer {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static print(content: string | HTMLElement, options?: PrintOptions): Promise<any> { return; }
+  print(content: string | HTMLElement, options?: PrintOptions): Promise<any> { return; }
 
 }

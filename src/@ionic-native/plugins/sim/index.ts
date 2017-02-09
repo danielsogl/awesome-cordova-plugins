@@ -43,7 +43,7 @@ export class Sim {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static getSimInfo(): Promise<any> { return; }
+  getSimInfo(): Promise<any> { return; }
 
   /**
    * Check permission
@@ -52,7 +52,7 @@ export class Sim {
   @Cordova({
     platforms: ['Android']
   })
-  static hasReadPermission(): Promise<any> { return; }
+  hasReadPermission(): Promise<any> { return; }
 
   /**
    * Request permission
@@ -61,5 +61,5 @@ export class Sim {
   @Cordova({
     platforms: ['Android']
   })
-  static requestReadPermission(): Promise<any> { return; }
+  requestReadPermission(): Promise<any> { return; }
 }

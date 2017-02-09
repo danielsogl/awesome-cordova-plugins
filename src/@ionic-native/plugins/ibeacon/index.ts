@@ -290,7 +290,7 @@ export class IBeacon {
    *
    * @returns {IBeaconDelegate} An instance of the type {@type Delegate}.
    */
-  static Delegate(): IBeaconDelegate {
+  Delegate(): IBeaconDelegate {
     let delegate = new cordova.plugins.locationManager.Delegate();
 
     delegate.didChangeAuthorizationStatus = (pluginResult?: IBeaconPluginResult) => {
@@ -390,7 +390,7 @@ export class IBeacon {
    *
    * @returns {BeaconRegion} Returns the BeaconRegion that was created
    */
-  static BeaconRegion(identifer: string, uuid: string, major?: number, minor?: number, notifyEntryStateOnDisplay?: boolean): BeaconRegion {
+  BeaconRegion(identifer: string, uuid: string, major?: number, minor?: number, notifyEntryStateOnDisplay?: boolean): BeaconRegion {
     return new cordova.plugins.locationManager.BeaconRegion(identifer, uuid, major, minor, notifyEntryStateOnDisplay);
   }
 
@@ -398,7 +398,7 @@ export class IBeacon {
    * @returns {IBeaconDelegate} Returns the IBeaconDelegate
    */
   @Cordova()
-  static getDelegate(): IBeaconDelegate { return; }
+  getDelegate(): IBeaconDelegate { return; }
 
   /**
    * @param {IBeaconDelegate} delegate An instance of a delegate to register with the native layer.
@@ -406,7 +406,7 @@ export class IBeacon {
    * @returns {IBeaconDelegate} Returns the IBeaconDelegate
    */
   @Cordova()
-  static setDelegate(delegate: IBeaconDelegate): IBeaconDelegate { return; }
+  setDelegate(delegate: IBeaconDelegate): IBeaconDelegate { return; }
 
   /**
    * Signals the native layer that the client side is ready to consume messages.
@@ -429,7 +429,7 @@ export class IBeacon {
    * native layer acknowledged the request and started to send events.
    */
   @Cordova({otherPromise: true})
-  static onDomDelegateReady(): Promise<void> { return; }
+  onDomDelegateReady(): Promise<void> { return; }
 
   /**
    * Determines if bluetooth is switched on, according to the native layer.
@@ -437,7 +437,7 @@ export class IBeacon {
    * indicating whether bluetooth is active.
    */
   @Cordova({otherPromise: true})
-  static isBluetoothEnabled(): Promise<boolean> { return; }
+  isBluetoothEnabled(): Promise<boolean> { return; }
 
   /**
    * Enables Bluetooth using the native Layer. (ANDROID ONLY)
@@ -446,7 +446,7 @@ export class IBeacon {
    * could be enabled. If not, the promise will be rejected with an error.
    */
   @Cordova({otherPromise: true})
-  static enableBluetooth(): Promise<void> { return; }
+  enableBluetooth(): Promise<void> { return; }
 
   /**
    * Disables Bluetooth using the native Layer. (ANDROID ONLY)
@@ -455,7 +455,7 @@ export class IBeacon {
    * could be enabled. If not, the promise will be rejected with an error.
    */
   @Cordova({otherPromise: true})
-  static disableBluetooth(): Promise<void> { return; }
+  disableBluetooth(): Promise<void> { return; }
 
   /**
    * Start monitoring the specified region.
@@ -475,7 +475,7 @@ export class IBeacon {
    * native layer acknowledged the dispatch of the monitoring request.
    */
   @Cordova({otherPromise: true})
-  static startMonitoringForRegion(region: BeaconRegion): Promise<string> { return; }
+  startMonitoringForRegion(region: BeaconRegion): Promise<string> { return; }
 
   /**
    * Stop monitoring the specified region.  It is valid to call
@@ -492,7 +492,7 @@ export class IBeacon {
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
   @Cordova({otherPromise: true})
-  static stopMonitoringForRegion(region: BeaconRegion): Promise<void> { return; }
+  stopMonitoringForRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
    * Request state the for specified region. When result is ready
@@ -508,7 +508,7 @@ export class IBeacon {
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
   @Cordova({otherPromise: true})
-  static requestStateForRegion(region: Region): Promise<void> { return; }
+  requestStateForRegion(region: Region): Promise<void> { return; }
 
 
   /**
@@ -526,7 +526,7 @@ export class IBeacon {
    * native layer acknowledged the dispatch of the monitoring request.
    */
   @Cordova({otherPromise: true})
-  static startRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
+  startRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
    * Stop ranging the specified region.  It is valid to call
@@ -543,7 +543,7 @@ export class IBeacon {
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
   @Cordova({otherPromise: true})
-  static stopRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
+  stopRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
    * Queries the native layer to determine the current authorization in effect.
@@ -552,7 +552,7 @@ export class IBeacon {
    * requested authorization status.
    */
   @Cordova({otherPromise: true})
-  static getAuthorizationStatus(): Promise<any> { return; }
+  getAuthorizationStatus(): Promise<any> { return; }
 
   /**
    * For iOS 8 and above only. The permission model has changed by Apple in iOS 8, making it necessary for apps to
@@ -564,7 +564,7 @@ export class IBeacon {
    * @returns {Promise<void>} Returns a promise that is resolved when the request dialog is shown.
    */
   @Cordova({otherPromise: true})
-  static requestWhenInUseAuthorization(): Promise<void> { return; }
+  requestWhenInUseAuthorization(): Promise<void> { return; }
 
 
   /**
@@ -574,7 +574,7 @@ export class IBeacon {
    * shows the request dialog.
    */
   @Cordova({otherPromise: true})
-  static requestAlwaysAuthorization(): Promise<void> { return; }
+  requestAlwaysAuthorization(): Promise<void> { return; }
 
   /**
    *
@@ -582,7 +582,7 @@ export class IBeacon {
    * of {Region} instances that are being monitored by the native layer.
    */
   @Cordova({otherPromise: true})
-  static getMonitoredRegions(): Promise<Region[]> { return; }
+  getMonitoredRegions(): Promise<Region[]> { return; }
 
   /**
    *
@@ -590,7 +590,7 @@ export class IBeacon {
    * of {Region} instances that are being ranged by the native layer.
    */
   @Cordova({otherPromise: true})
-  static getRangedRegions(): Promise<Region[]> { return; }
+  getRangedRegions(): Promise<Region[]> { return; }
 
   /**
    * Determines if ranging is available or not, according to the native layer.
@@ -598,7 +598,7 @@ export class IBeacon {
    * indicating whether ranging is available or not.
    */
   @Cordova({otherPromise: true})
-  static isRangingAvailable(): Promise<boolean> { return; }
+  isRangingAvailable(): Promise<boolean> { return; }
 
   /**
    * Determines if region type is supported or not, according to the native layer.
@@ -610,7 +610,7 @@ export class IBeacon {
    * indicating whether the region type is supported or not.
    */
   @Cordova({otherPromise: true})
-  static isMonitoringAvailableForClass(region: Region): Promise<boolean> { return; }
+  isMonitoringAvailableForClass(region: Region): Promise<boolean> { return; }
 
   /**
    * Start advertising the specified region.
@@ -630,7 +630,7 @@ export class IBeacon {
    * native layer acknowledged the dispatch of the advertising request.
    */
   @Cordova({otherPromise: true})
-  static startAdvertising(region: Region, measuredPower: number): Promise<void> { return; }
+  startAdvertising(region: Region, measuredPower: number): Promise<void> { return; }
 
   /**
    * Stop advertising as a beacon.
@@ -641,7 +641,7 @@ export class IBeacon {
    * native layer acknowledged the dispatch of the request to stop advertising.
    */
   @Cordova({otherPromise: true})
-  static stopAdvertising(region: Region): Promise<void> { return; }
+  stopAdvertising(region: Region): Promise<void> { return; }
 
   /**
    * Determines if advertising is available or not, according to the native layer.
@@ -649,7 +649,7 @@ export class IBeacon {
    * indicating whether advertising is available or not.
    */
   @Cordova({otherPromise: true})
-  static isAdvertisingAvailable(): Promise<boolean> { return; }
+  isAdvertisingAvailable(): Promise<boolean> { return; }
 
   /**
    * Determines if advertising is currently active, according to the native layer.
@@ -657,7 +657,7 @@ export class IBeacon {
    * indicating whether advertising is active.
    */
   @Cordova({otherPromise: true})
-  static isAdvertising(): Promise<boolean> { return; }
+  isAdvertising(): Promise<boolean> { return; }
 
   /**
    * Disables debug logging in the native layer. Use this method if you want
@@ -667,7 +667,7 @@ export class IBeacon {
    * native layer has set the logging level accordingly.
    */
   @Cordova({otherPromise: true})
-  static disableDebugLogs(): Promise<void> { return; }
+  disableDebugLogs(): Promise<void> { return; }
 
   /**
    * Enables the posting of debug notifications in the native layer. Use this method if you want
@@ -678,7 +678,7 @@ export class IBeacon {
    * native layer has set the flag to enabled.
    */
   @Cordova({otherPromise: true})
-  static enableDebugNotifications(): Promise<void> { return; }
+  enableDebugNotifications(): Promise<void> { return; }
 
   /**
    * Disables the posting of debug notifications in the native layer. Use this method if you want
@@ -688,7 +688,7 @@ export class IBeacon {
    * native layer has set the flag to disabled.
    */
   @Cordova({otherPromise: true})
-  static disableDebugNotifications(): Promise<void> { return; }
+  disableDebugNotifications(): Promise<void> { return; }
 
   /**
    * Enables debug logging in the native layer. Use this method if you want
@@ -698,7 +698,7 @@ export class IBeacon {
    * native layer has set the logging level accordingly.
    */
   @Cordova({otherPromise: true})
-  static enableDebugLogs(): Promise<void> { return; }
+  enableDebugLogs(): Promise<void> { return; }
 
   /**
    * Appends the provided [message] to the device logs.
@@ -711,6 +711,6 @@ export class IBeacon {
    * is expected to be equivalent to the one provided in the original call.
    */
   @Cordova({otherPromise: true})
-  static appendToDeviceLog(message: string): Promise<void> { return; }
+  appendToDeviceLog(message: string): Promise<void> { return; }
 
 }

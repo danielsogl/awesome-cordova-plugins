@@ -34,7 +34,7 @@ export class CallNumber {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static callNumber(numberToCall: string, bypassAppChooser: boolean): Promise<any> {
+  callNumber(numberToCall: string, bypassAppChooser: boolean): Promise<any> {
     return;
   }
 

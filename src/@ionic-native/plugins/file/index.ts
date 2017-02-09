@@ -390,7 +390,7 @@ export class File {
    * Get free disk space in Bytes
    * @returns {Promise<number>} Returns a promise that resolves with the remaining free disk space in Bytes
    */
-  static getFreeDiskSpace(): Promise<number> {
+  getFreeDiskSpace(): Promise<number> {
     return new Promise<any>((resolve, reject) => {
       if (!cordova || !cordova.exec) {
         pluginWarn({
@@ -411,7 +411,7 @@ export class File {
    * @param {string} dir Name of directory to check
    * @returns {Promise<boolean|FileError>} Returns a Promise that resolves to true if the directory exists or rejects with an error.
    */
-  static checkDir(path: string, dir: string): Promise<boolean|FileError> {
+  checkDir(path: string, dir: string): Promise<boolean|FileError> {
     if ((/^\//.test(dir))) {
       let err = new FileError(5);
       err.message = 'directory cannot start with \/';
@@ -435,7 +435,7 @@ export class File {
    * @param {boolean} replace If true, replaces file with same name. If false returns error
    * @returns {Promise<DirectoryEntry|FileError>} Returns a Promise that resolves with a DirectoryEntry or rejects with an error.
    */
-  static createDir(path: string, dirName: string, replace: boolean): Promise<DirectoryEntry|FileError> {
+  createDir(path: string, dirName: string, replace: boolean): Promise<DirectoryEntry|FileError> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
       err.message = 'directory cannot start with \/';
@@ -463,7 +463,7 @@ export class File {
    * @param {string} dirName The directory name
    * @returns {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
-  static removeDir(path: string, dirName: string): Promise<RemoveResult|FileError> {
+  removeDir(path: string, dirName: string): Promise<RemoveResult|FileError> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
       err.message = 'directory cannot start with \/';
@@ -488,7 +488,7 @@ export class File {
    * @param {string} newDirName The destination directory name
    * @returns {Promise<DirectoryEntry|Entry|FileError>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
    */
-  static moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry|Entry|FileError> {
+  moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry|Entry|FileError> {
     newDirName = newDirName || dirName;
 
     if ((/^\//.test(newDirName))) {
@@ -518,7 +518,7 @@ export class File {
    * @param {string} newDirName New name of directory to copy to (leave blank to remain the same)
    * @returns {Promise<Entry|FileError>} Returns a Promise that resolves to the new Entry object or rejects with an error.
    */
-  static copyDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<Entry|FileError> {
+  copyDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<Entry|FileError> {
     if ((/^\//.test(newDirName))) {
       let err = new FileError(5);
       err.message = 'directory cannot start with \/';
@@ -544,7 +544,7 @@ export class File {
    * @param {string} dirName Name of directory
    * @returns {Promise<Entry[]>} Returns a Promise that resolves to an array of Entry objects or rejects with an error.
    */
-  static listDir(path: string, dirName: string): Promise<Entry[]> {
+  listDir(path: string, dirName: string): Promise<Entry[]> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
       err.message = 'directory cannot start with \/';
@@ -568,7 +568,7 @@ export class File {
    * @param {string} dirName Name of directory
    * @returns {Promise<RemoveResult>} Returns a Promise that resolves with a RemoveResult or rejects with an error.
    */
-  static removeRecursively(path: string, dirName: string): Promise<RemoveResult> {
+  removeRecursively(path: string, dirName: string): Promise<RemoveResult> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
       err.message = 'directory cannot start with \/';
@@ -591,7 +591,7 @@ export class File {
    * @param {string} file Name of file to check
    * @returns {Promise<boolean|FileError>} Returns a Promise that resolves with a boolean or rejects with an error.
    */
-  static checkFile(path: string, file: string): Promise<boolean|FileError> {
+  checkFile(path: string, file: string): Promise<boolean|FileError> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
       err.message = 'file cannot start with \/';
@@ -620,7 +620,7 @@ export class File {
    * @param {boolean} replace If true, replaces file with same name. If false returns error
    * @returns {Promise<FileEntry|FileError>} Returns a Promise that resolves to a FileEntry or rejects with an error.
    */
-  static createFile(path: string, fileName: string, replace: boolean): Promise<FileEntry|FileError> {
+  createFile(path: string, fileName: string, replace: boolean): Promise<FileEntry|FileError> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -648,7 +648,7 @@ export class File {
    * @param {string} fileName Name of file to remove
    * @returns {Promise<RemoveResult|FileError>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
-  static removeFile(path: string, fileName: string): Promise<RemoveResult|FileError> {
+  removeFile(path: string, fileName: string): Promise<RemoveResult|FileError> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -672,7 +672,7 @@ export class File {
    * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
-  static writeFile(path: string, fileName: string,
+  writeFile(path: string, fileName: string,
                    text: string | Blob, options: WriteOptions = {}): Promise<any> {
     if ((/^\//.test(fileName))) {
       const err = new FileError(5);
@@ -702,7 +702,7 @@ export class File {
    * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
-  private static writeFileEntry(fe: FileEntry, text: string | Blob, options: WriteOptions) {
+  private writeFileEntry(fe: FileEntry, text: string | Blob, options: WriteOptions) {
     return File.createWriter(fe)
       .then((writer) => {
         if (options.append) {
@@ -726,7 +726,7 @@ export class File {
    * @param {string | Blob} text content or blob to write
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
-  static writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
+  writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
     return File.writeFile(path, fileName, text, { create: false });
   }
 
@@ -737,7 +737,7 @@ export class File {
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as string or rejects with an error.
    */
-  static readAsText(path: string, file: string): Promise<string|FileError> {
+  readAsText(path: string, file: string): Promise<string|FileError> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -778,7 +778,7 @@ export class File {
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as data URL or rejects with an error.
    */
-  static readAsDataURL(path: string, file: string): Promise<string|FileError> {
+  readAsDataURL(path: string, file: string): Promise<string|FileError> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -820,7 +820,7 @@ export class File {
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<string|FileError>} Returns a Promise that resolves with the contents of the file as string rejects with an error.
    */
-  static readAsBinaryString(path: string, file: string): Promise<string|FileError> {
+  readAsBinaryString(path: string, file: string): Promise<string|FileError> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -861,7 +861,7 @@ export class File {
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<ArrayBuffer|FileError>} Returns a Promise that resolves with the contents of the file as ArrayBuffer or rejects with an error.
    */
-  static readAsArrayBuffer(path: string, file: string): Promise<ArrayBuffer|FileError> {
+  readAsArrayBuffer(path: string, file: string): Promise<ArrayBuffer|FileError> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -904,7 +904,7 @@ export class File {
    * @param {string} newFileName New name of file to move to (leave blank to remain the same)
    * @returns {Promise<Entry|FileError>} Returns a Promise that resolves to the new Entry or rejects with an error.
    */
-  static moveFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry|FileError> {
+  moveFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry|FileError> {
     newFileName = newFileName || fileName;
 
     if ((/^\//.test(newFileName))) {
@@ -934,7 +934,7 @@ export class File {
    * @param {string} newFileName New name of file to copy to (leave blank to remain the same)
    * @returns {Promise<Entry|FileError>} Returns a Promise that resolves to an Entry or rejects with an error.
    */
-  static copyFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry|FileError> {
+  copyFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry|FileError> {
     newFileName = newFileName || fileName;
 
     if ((/^\//.test(newFileName))) {
@@ -961,7 +961,7 @@ export class File {
   /**
    * @private
    */
-  private static fillErrorMessage(err: FileError): void {
+  private fillErrorMessage(err: FileError): void {
     err.message = File.cordovaFileError[err.code];
   }
 
@@ -970,7 +970,7 @@ export class File {
    * @param fileUrl {string} file system url
    * @returns {Promise<Entry>}
    */
-  static resolveLocalFilesystemUrl(fileUrl: string): Promise<Entry> {
+  resolveLocalFilesystemUrl(fileUrl: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
       try {
         window.resolveLocalFileSystemURL(fileUrl, (entry) => {
@@ -991,7 +991,7 @@ export class File {
    * @param directoryUrl {string} directory system url
    * @returns {Promise<DirectoryEntry>}
    */
-  static resolveDirectoryUrl(directoryUrl: string): Promise<DirectoryEntry> {
+  resolveDirectoryUrl(directoryUrl: string): Promise<DirectoryEntry> {
     return File.resolveLocalFilesystemUrl(directoryUrl)
       .then((de) => {
         if (de.isDirectory) {
@@ -1011,7 +1011,7 @@ export class File {
    * @param flags {Flags} Options
    * @returns {Promise<DirectoryEntry>}
    */
-  static getDirectory(directoryEntry: DirectoryEntry, directoryName: string, flags: Flags): Promise<DirectoryEntry> {
+  getDirectory(directoryEntry: DirectoryEntry, directoryName: string, flags: Flags): Promise<DirectoryEntry> {
     return new Promise<DirectoryEntry>((resolve, reject) => {
       try {
         directoryEntry.getDirectory(directoryName, flags, (de) => {
@@ -1034,7 +1034,7 @@ export class File {
    * @param flags {Flags} Options
    * @returns {Promise<FileEntry>}
    */
-  static getFile(directoryEntry: DirectoryEntry, fileName: string, flags: Flags): Promise<FileEntry> {
+  getFile(directoryEntry: DirectoryEntry, fileName: string, flags: Flags): Promise<FileEntry> {
     return new Promise<FileEntry>((resolve, reject) => {
       try {
         directoryEntry.getFile(fileName, flags, resolve, (err) => {
@@ -1051,7 +1051,7 @@ export class File {
   /**
    * @private
    */
-  private static remove(fe: Entry): Promise<RemoveResult> {
+  private remove(fe: Entry): Promise<RemoveResult> {
     return new Promise<RemoveResult>((resolve, reject) => {
       fe.remove(() => {
         resolve({success: true, fileRemoved: fe});
@@ -1065,7 +1065,7 @@ export class File {
   /**
    * @private
    */
-  private static move(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
+  private move(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
       srce.moveTo(destdir, newName, (deste) => {
         resolve(deste);
@@ -1079,7 +1079,7 @@ export class File {
   /**
    * @private
    */
-  private static copy(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
+  private copy(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
       srce.copyTo(destdir, newName, (deste) => {
         resolve(deste);
@@ -1093,7 +1093,7 @@ export class File {
   /**
    * @private
    */
-  private static readEntries(dr: DirectoryReader): Promise<Entry[]> {
+  private readEntries(dr: DirectoryReader): Promise<Entry[]> {
     return new Promise<Entry[]>((resolve, reject) => {
       dr.readEntries((entries) => {
         resolve(entries);
@@ -1107,7 +1107,7 @@ export class File {
   /**
    * @private
    */
-  private static rimraf(de: DirectoryEntry): Promise<RemoveResult> {
+  private rimraf(de: DirectoryEntry): Promise<RemoveResult> {
     return new Promise<RemoveResult>((resolve, reject) => {
       de.removeRecursively(() => {
         resolve({success: true, fileRemoved: de});
@@ -1121,7 +1121,7 @@ export class File {
   /**
    * @private
    */
-  private static createWriter(fe: FileEntry): Promise<FileWriter> {
+  private createWriter(fe: FileEntry): Promise<FileWriter> {
     return new Promise<FileWriter>((resolve, reject) => {
       fe.createWriter((writer) => {
         resolve(writer);
@@ -1135,7 +1135,7 @@ export class File {
   /**
    * @private
    */
-  private static write(writer: FileWriter, gu: string | Blob): Promise<any> {
+  private write(writer: FileWriter, gu: string | Blob): Promise<any> {
     if (gu instanceof Blob) {
       return this.writeFileInChunks(writer, gu);
     }
@@ -1155,7 +1155,7 @@ export class File {
   /**
    * @private
    */
-  private static writeFileInChunks(writer: FileWriter, file: Blob) {
+  private writeFileInChunks(writer: FileWriter, file: Blob) {
     const BLOCK_SIZE = 1024 * 1024;
     let writtenSize = 0;
 

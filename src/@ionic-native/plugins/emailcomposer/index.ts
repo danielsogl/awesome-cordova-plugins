@@ -83,7 +83,7 @@ export class EmailComposer {
    * @param app {string?} An optional app id or uri scheme.
    * @returns {Promise<any>} Resolves if available, rejects if not available
    */
-  static isAvailable(app?: string): Promise<any> {
+  isAvailable(app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
       if (app) {
         cordova.plugins.email.isAvailable(app, (isAvailable) => {
@@ -112,7 +112,7 @@ export class EmailComposer {
    * @param packageName {string} The package name
    */
   @Cordova()
-  static addAlias(alias: string, packageName: string): void { }
+  addAlias(alias: string, packageName: string): void { }
 
   /**
    * Displays the email composer pre-filled with data.
@@ -125,6 +125,6 @@ export class EmailComposer {
     successIndex: 1,
     errorIndex: 3
   })
-  static open(options: EmailComposerOptions, scope?: any): Promise<any> { return; }
+  open(options: EmailComposerOptions, scope?: any): Promise<any> { return; }
 
 }

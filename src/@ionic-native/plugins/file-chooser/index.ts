@@ -32,6 +32,6 @@ export class FileChooser {
    * @returns {Promise<string>}
    */
   @Cordova()
-  static open(): Promise<string> { return; }
+  open(): Promise<string> { return; }
 
 }

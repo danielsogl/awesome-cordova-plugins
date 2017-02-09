@@ -51,7 +51,7 @@ export class FingerprintAIO {
    * @return {Promise<any>} Returns a promise with result
    */
   @Cordova()
-  static isAvailable(): Promise<any> { return; }
+  isAvailable(): Promise<any> { return; }
 
   /**
    * Show authentication dialogue
@@ -59,6 +59,6 @@ export class FingerprintAIO {
    * @return {Promise<any>} Returns a promise that resolves when authentication was successfull
    */
   @Cordova()
-  static show(options: FingerprintOptions): Promise<any> { return; }
+  show(options: FingerprintOptions): Promise<any> { return; }
 
 }

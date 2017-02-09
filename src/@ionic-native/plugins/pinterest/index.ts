@@ -191,7 +191,7 @@ export class Pinterest {
    * @returns {Promise<any>} The response object will contain the user's profile data, as well as the access token (if you need to use it elsewhere, example: send it to your server and perform actions on behalf of the user).
    */
   @Cordova()
-  static login(scopes: string[]): Promise<any> { return; }
+  login(scopes: string[]): Promise<any> { return; }
 
   /**
    * Gets the authenticated user's profile
@@ -201,7 +201,7 @@ export class Pinterest {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getMe(fields?: string): Promise<PinterestUser> { return; }
+  getMe(fields?: string): Promise<PinterestUser> { return; }
 
   /**
    *
@@ -212,7 +212,7 @@ export class Pinterest {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getMyPins(fields?: string, limit?: number): Promise<Array<PinterestPin>> { return; }
+  getMyPins(fields?: string, limit?: number): Promise<Array<PinterestPin>> { return; }
 
   /**
    *
@@ -223,7 +223,7 @@ export class Pinterest {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getMyBoards(fields?: string, limit?: number): Promise<Array<PinterestBoard>> { return; }
+  getMyBoards(fields?: string, limit?: number): Promise<Array<PinterestBoard>> { return; }
 
   /**
    * Get the authenticated user's likes.
@@ -234,7 +234,7 @@ export class Pinterest {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getMyLikes(fields?: string, limit?: number): Promise<Array<PinterestPin>> { return; }
+  getMyLikes(fields?: string, limit?: number): Promise<Array<PinterestPin>> { return; }
 
   /**
    * Get the authenticated user's followers.
@@ -245,7 +245,7 @@ export class Pinterest {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getMyFollowers(fields?: string, limit?: number): Promise<Array<PinterestUser>> { return; }
+  getMyFollowers(fields?: string, limit?: number): Promise<Array<PinterestUser>> { return; }
 
   /**
    * Get the authenticated user's followed boards.
@@ -256,7 +256,7 @@ export class Pinterest {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getMyFollowedBoards(fields?: string, limit?: number): Promise<Array<PinterestBoard>> { return; }
+  getMyFollowedBoards(fields?: string, limit?: number): Promise<Array<PinterestBoard>> { return; }
 
   /**
    * Get the authenticated user's followed interests.
@@ -267,7 +267,7 @@ export class Pinterest {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getMyFollowedInterests(fields?: string, limit?: number): Promise<any> { return; }
+  getMyFollowedInterests(fields?: string, limit?: number): Promise<any> { return; }
 
   /**
    * Get a user's profile.
@@ -279,7 +279,7 @@ export class Pinterest {
     successIndex: 1,
     errorIndex: 2
   })
-  static getUser(username: string, fields?: string): Promise<PinterestUser> { return; }
+  getUser(username: string, fields?: string): Promise<PinterestUser> { return; }
 
   /**
    * Get a board's data.
@@ -291,7 +291,7 @@ export class Pinterest {
     successIndex: 1,
     errorIndex: 2
   })
-  static getBoard(boardId: string, fields?: string): Promise<PinterestBoard> { return; }
+  getBoard(boardId: string, fields?: string): Promise<PinterestBoard> { return; }
 
   /**
    * Get Pins of a specific board.
@@ -304,7 +304,7 @@ export class Pinterest {
     successIndex: 1,
     errorIndex: 2
   })
-  static getBoardPins(boardId: string, fields?: string, limit?: number): Promise<Array<PinterestPin>> { return; }
+  getBoardPins(boardId: string, fields?: string, limit?: number): Promise<Array<PinterestPin>> { return; }
 
   /**
    * Delete a board.
@@ -312,7 +312,7 @@ export class Pinterest {
    * @returns {Promise<PinterestUser>}
    */
   @Cordova()
-  static deleteBoard(boardId: string): Promise<any> { return; }
+  deleteBoard(boardId: string): Promise<any> { return; }
 
   /**
    * Create a new board for the authenticated user.
@@ -324,7 +324,7 @@ export class Pinterest {
     successIndex: 2,
     errorIndex: 3
   })
-  static createBoard(name: string, desc?: string): Promise<PinterestBoard> { return; }
+  createBoard(name: string, desc?: string): Promise<PinterestBoard> { return; }
 
   /**
    * Get a Pin by ID.
@@ -336,7 +336,7 @@ export class Pinterest {
     successIndex: 1,
     errorIndex: 2
   })
-  static getPin(pinId: string, fields?: string): Promise<PinterestPin> { return; }
+  getPin(pinId: string, fields?: string): Promise<PinterestPin> { return; }
 
   /**
    * Deletes a pin
@@ -344,7 +344,7 @@ export class Pinterest {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static deletePin(pinId: string): Promise<any> { return; }
+  deletePin(pinId: string): Promise<any> { return; }
 
   /**
    * Creates a Pin
@@ -358,6 +358,6 @@ export class Pinterest {
     successIndex: 4,
     errorIndex: 5
   })
-  static createPin(note: string, boardId: string, imageUrl: string, link?: string): Promise<PinterestPin> { return; }
+  createPin(note: string, boardId: string, imageUrl: string, link?: string): Promise<PinterestPin> { return; }
 
 }

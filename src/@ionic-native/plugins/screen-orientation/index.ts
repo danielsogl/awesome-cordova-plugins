@@ -54,13 +54,13 @@ export class ScreenOrientation {
    * @returns {Promise<any>} returns a promise that resolves when the screen orientation is locked, and rejects when an error occurs.
    */
   @Cordova({ otherPromise: true })
-  static lockOrientation(orientation: string): Promise<string> { return; }
+  lockOrientation(orientation: string): Promise<string> { return; }
 
   /**
    * Unlock and allow all orientations.
    */
   @Cordova({ sync: true })
-  static unlockOrientation(): void { }
+  unlockOrientation(): void { }
 
   /**
    * Get the current orientation of the device.

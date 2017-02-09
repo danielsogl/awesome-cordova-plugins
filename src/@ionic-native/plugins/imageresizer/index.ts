@@ -81,5 +81,5 @@ export class ImageResizer {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static resize(options: ImageResizerOptions): Promise<any> { return; }
+  resize(options: ImageResizerOptions): Promise<any> { return; }
 }

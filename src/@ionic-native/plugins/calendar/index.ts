@@ -242,7 +242,7 @@ export class Calendar {
 
   // deprecated
   // @Cordova()
-  // static createEventInNamedCalendar(
+  // createEventInNamedCalendar(
   //   title?: string,
   //   location?: string,
   //   notes?: string,

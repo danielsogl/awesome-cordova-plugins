@@ -48,27 +48,27 @@ export class DBMeter {
     observable: true,
     clearFunction: 'stop'
   })
-  static start(): Observable<any> { return; }
+  start(): Observable<any> { return; }
 
   /**
    * Stops listening
    * @private
    */
   @Cordova()
-  static stop(): Promise<any> { return; }
+  stop(): Promise<any> { return; }
 
   /**
    * Check if the DB Meter is listening
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that tells us whether the DB meter is listening
    */
   @Cordova()
-  static isListening(): Promise<boolean> { return; }
+  isListening(): Promise<boolean> { return; }
 
   /**
    * Delete the DB Meter instance
    * @returns {Promise<any>} Returns a promise that will resolve if the instance has been deleted, and rejects if errors occur.
    */
   @Cordova()
-  static delete(): Promise<any> { return; }
+  delete(): Promise<any> { return; }
 
 }

@@ -323,7 +323,7 @@ export class OneSignal {
    * @returns {any}
    */
   @Cordova({ sync: true })
-  static startInit(appId: string, googleProjectNumber?: string): any { return; }
+  startInit(appId: string, googleProjectNumber?: string): any { return; }
 
   /**
    * Callback to run when a notification is received, whether it was displayed or not.
@@ -333,7 +333,7 @@ export class OneSignal {
   @Cordova({
     observable: true
   })
-  static handleNotificationReceived(): Observable<OSNotification> { return; }
+  handleNotificationReceived(): Observable<OSNotification> { return; }
 
   /**
    * Callback to run when a notification is tapped on from the notification shade (**ANDROID**) or notification
@@ -345,7 +345,7 @@ export class OneSignal {
   @Cordova({
     observable: true
   })
-  static handleNotificationOpened(): Observable<OSNotificationOpenedResult> { return; }
+  handleNotificationOpened(): Observable<OSNotificationOpenedResult> { return; }
 
   /**
    * **iOS** - Settings for iOS apps
@@ -359,7 +359,7 @@ export class OneSignal {
    * @returns {any}
    */
   @Cordova({ sync: true })
-  static iOSSettings(settings: {
+  iOSSettings(settings: {
     kOSSettingsKeyAutoPrompt: boolean;
     kOSSettingsKeyInAppLaunchURL: boolean;
   }): any { return; }
@@ -370,7 +370,7 @@ export class OneSignal {
    * @returns {any}
    */
   @Cordova({ sync: true })
-  static endInit(): any { return; }
+  endInit(): any { return; }
 
   /**
    * Retrieve a list of tags that have been set on the user from the OneSignal server.
@@ -378,7 +378,7 @@ export class OneSignal {
    * @returns {Promise<any>} Returns a Promise that resolves when tags are recieved.
    */
   @Cordova()
-  static getTags(): Promise<any> { return; }
+  getTags(): Promise<any> { return; }
 
   /**
    * Lets you retrieve the OneSignal user id and device token.
@@ -391,7 +391,7 @@ export class OneSignal {
    *  pushToken {string} A push token is a Google/Apple assigned identifier(unique per device per app).
    */
   @Cordova()
-  static getIds(): Promise<{userId: string; pushToken: string}> { return; }
+  getIds(): Promise<{userId: string; pushToken: string}> { return; }
 
 
   /**
@@ -402,7 +402,7 @@ export class OneSignal {
    * @param {string} Value to set on the key. NOTE: Passing in a blank String deletes the key, you can also call deleteTag.
    */
   @Cordova({ sync: true })
-  static sendTag(key: string, value: string): void { }
+  sendTag(key: string, value: string): void { }
 
   /**
    * Tag a user based on an app event of your choosing so later you can create segments on [onesignal.com](https://onesignal.com/) to target these users.
@@ -411,7 +411,7 @@ export class OneSignal {
    * @param {string} Pass a json object with key/value pairs like: {key: "value", key2: "value2"}
    */
   @Cordova({ sync: true })
-  static sendTags(json: any): void { }
+  sendTags(json: any): void { }
 
   /**
    * Deletes a tag that was previously set on a user with `sendTag` or `sendTags`. Use `deleteTags` if you need to delete more than one.
@@ -419,7 +419,7 @@ export class OneSignal {
    * @param {string} Key to remove.
    */
   @Cordova({ sync: true })
-  static deleteTag(key: string): void { }
+  deleteTag(key: string): void { }
 
   /**
    * Deletes tags that were previously set on a user with `sendTag` or `sendTags`.
@@ -427,14 +427,14 @@ export class OneSignal {
    * @param {Array<string>} Keys to remove.
    */
   @Cordova({ sync: true })
-  static deleteTags(keys: string[]): void { }
+  deleteTags(keys: string[]): void { }
 
   /**
    * Call this when you would like to prompt an iOS user to accept push notifications with the default system prompt.
    * Only works if you set `kOSSettingsAutoPrompt` to `false` in `iOSSettings`
    */
   @Cordova({ sync: true })
-  static registerForPushNotifications(): void { }
+  registerForPushNotifications(): void { }
 
   /**
   * Warning:
@@ -446,7 +446,7 @@ export class OneSignal {
   * @param {boolean} false to disable vibrate, true to re-enable it.
   */
   @Cordova({ sync: true })
-  static enableVibrate(enable: boolean): void { }
+  enableVibrate(enable: boolean): void { }
 
   /**
   * Warning:
@@ -458,7 +458,7 @@ export class OneSignal {
   * @param {boolean} false to disable sound, true to re-enable it.
   */
   @Cordova({ sync: true })
-  static enableSound(enable: boolean): void { }
+  enableSound(enable: boolean): void { }
 
   /**
   *
@@ -468,7 +468,7 @@ export class OneSignal {
   * @returns {any}
   */
   @Cordova({ sync: true })
-  static inFocusDisplaying(displayOption: OSDisplayType): any { return; }
+  inFocusDisplaying(displayOption: OSDisplayType): any { return; }
 
   /**
   * You can call this method with false to opt users out of receiving all notifications through OneSignal.
@@ -477,7 +477,7 @@ export class OneSignal {
   * @param {boolean} enable
   */
   @Cordova({ sync: true })
-  static setSubscription(enable: boolean): void { }
+  setSubscription(enable: boolean): void { }
 
   /**
   *
@@ -485,20 +485,20 @@ export class OneSignal {
   * @returns {Promise<any>} Returns a Promise that resolves if the notification was send successfully.
   */
   @Cordova()
-  static postNotification(notificationObj: OSNotification): Promise<any> { return; }
+  postNotification(notificationObj: OSNotification): Promise<any> { return; }
 
   /**
   * Prompts the user for location permission to allow geotagging based on the "Location radius" filter on the OneSignal dashboard.
   */
   @Cordova({ sync: true })
-  static promptLocation(): void { }
+  promptLocation(): void { }
 
   /**
    *
    * @param email {string}
    */
   @Cordova({ sync: true })
-  static syncHashedEmail(email: string): void { }
+  syncHashedEmail(email: string): void { }
 
   /**
   * Enable logging to help debug if you run into an issue setting up OneSignal.
@@ -509,7 +509,7 @@ export class OneSignal {
   * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
   */
   @Cordova({ sync: true })
-  static setLogLevel(logLevel: {
+  setLogLevel(logLevel: {
     logLevel: number,
     visualLevel: number
   }): void { }

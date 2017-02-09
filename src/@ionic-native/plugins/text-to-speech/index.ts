@@ -45,7 +45,7 @@ export class TextToSpeech {
     successIndex: 1,
     errorIndex: 2
   })
-  static speak(options: string | TTSOptions): Promise<any> {
+  speak(options: string | TTSOptions): Promise<any> {
     return;
   }
 

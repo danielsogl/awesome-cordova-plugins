@@ -38,6 +38,6 @@ export class PinDialog {
   @Cordova({
     successIndex: 1
   })
-  static prompt(message: string, title: string, buttons: string[]): Promise<{ buttonIndex: number, input1: string }> { return; }
+  prompt(message: string, title: string, buttons: string[]): Promise<{ buttonIndex: number, input1: string }> { return; }
 
 }

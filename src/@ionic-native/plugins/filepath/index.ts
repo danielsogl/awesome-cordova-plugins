@@ -35,6 +35,6 @@ export class FilePath {
    * @returns {Promise<string>}
    */
   @Cordova()
-  static resolveNativePath(path: string): Promise<string> {return; }
+  resolveNativePath(path: string): Promise<string> {return; }
 
 }

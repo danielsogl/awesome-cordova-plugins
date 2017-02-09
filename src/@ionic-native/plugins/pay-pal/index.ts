@@ -71,7 +71,7 @@ export class PayPal {
    * @returns {Promise<string>}
    */
   @Cordova()
-  static version(): Promise<string> {return; }
+  version(): Promise<string> {return; }
 
   /**
    * You must preconnect to PayPal to prepare the device for processing payments.
@@ -83,7 +83,7 @@ export class PayPal {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static init(clientIdsForEnvironments: PayPalEnvironment): Promise<any> {return; }
+  init(clientIdsForEnvironments: PayPalEnvironment): Promise<any> {return; }
 
   /**
    * You must preconnect to PayPal to prepare the device for processing payments.
@@ -95,7 +95,7 @@ export class PayPal {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static prepareToRender(environment: string, configuration: PayPalConfiguration): Promise<any> {return; }
+  prepareToRender(environment: string, configuration: PayPalConfiguration): Promise<any> {return; }
 
   /**
    * Start PayPal UI to collect payment from the user.
@@ -106,7 +106,7 @@ export class PayPal {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static renderSinglePaymentUI(payment: PayPalPayment): Promise<any> {return; }
+  renderSinglePaymentUI(payment: PayPalPayment): Promise<any> {return; }
 
   /**
    * Once a user has consented to future payments, when the user subsequently initiates a PayPal payment
@@ -119,14 +119,14 @@ export class PayPal {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static clientMetadataID(): Promise<any> {return; }
+  clientMetadataID(): Promise<any> {return; }
 
   /**
    * Please Read Docs on Future Payments at https://github.com/paypal/PayPal-iOS-SDK#future-payments
    * @returns {Promise<any>}
    */
   @Cordova()
-  static renderFuturePaymentUI(): Promise<any> {return; }
+  renderFuturePaymentUI(): Promise<any> {return; }
 
   /**
    * Please Read Docs on Profile Sharing at https://github.com/paypal/PayPal-iOS-SDK#profile-sharing
@@ -136,7 +136,7 @@ export class PayPal {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static renderProfileSharingUI(scopes: string[]): Promise<any> {return; }
+  renderProfileSharingUI(scopes: string[]): Promise<any> {return; }
 }
 
 export interface PayPalEnvironment {

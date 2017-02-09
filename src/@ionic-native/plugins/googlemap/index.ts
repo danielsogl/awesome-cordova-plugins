@@ -121,7 +121,7 @@ export class GoogleMap {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static isAvailable(): Promise<boolean> { return; }
+  isAvailable(): Promise<boolean> { return; }
 
   constructor(element: string | HTMLElement, options?: any) {
     if (!!getPlugin('plugin.google.maps.Map')) {
@@ -1762,7 +1762,7 @@ export class Geocoder {
    * @param {GeocoderRequest} request Request object with either an address or a position
    * @returns {Promise<GeocoderResult[]>}
    */
-  static geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
+  geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
     return new Promise<GeocoderResult[]>((resolve, reject) => {
       if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) {
         pluginWarn({

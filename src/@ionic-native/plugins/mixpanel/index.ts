@@ -35,20 +35,20 @@ export class Mixpanel {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static alias(aliasId: string, originalId: string): Promise<any> { return; }
+  alias(aliasId: string, originalId: string): Promise<any> { return; }
 
   /**
    *
    * @returns {Promise<any>}
    */
   @Cordova()
-  static distinctId(): Promise<any> { return; }
+  distinctId(): Promise<any> { return; }
 
   /**
    * @returns {Promise<any>}
    */
   @Cordova()
-  static flush(): Promise<any> { return; }
+  flush(): Promise<any> { return; }
 
   /**
    *
@@ -56,7 +56,7 @@ export class Mixpanel {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static identify(distinctId: string): Promise<any> { return; }
+  identify(distinctId: string): Promise<any> { return; }
 
   /**
    *
@@ -64,7 +64,7 @@ export class Mixpanel {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static init(token: string): Promise<any> { return; }
+  init(token: string): Promise<any> { return; }
 
   /**
    *
@@ -72,14 +72,14 @@ export class Mixpanel {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static registerSuperProperties(superProperties: any): Promise<any> { return; }
+  registerSuperProperties(superProperties: any): Promise<any> { return; }
 
   /**
    *
    * @returns {Promise<any>}
    */
   @Cordova()
-  static reset(): Promise<any> { return; }
+  reset(): Promise<any> { return; }
 
   /**
    *
@@ -91,14 +91,14 @@ export class Mixpanel {
     successIndex: 2,
     errorIndex: 3
   })
-  static track(eventName: string, eventProperties?: any): Promise<any> { return; }
+  track(eventName: string, eventProperties?: any): Promise<any> { return; }
 
   /**
    *
    * @returns {Promise<any>}
    */
   @Cordova()
-  static showSurvey(): Promise<any> { return; }
+  showSurvey(): Promise<any> { return; }
 
   /**
    *
@@ -129,7 +129,7 @@ export class MixpanelPeople {
    * @return {Promise<any>}
    */
   @Cordova()
-  static identify(distinctId: string): Promise<any> { return; }
+  identify(distinctId: string): Promise<any> { return; }
 
   /**
    *
@@ -137,7 +137,7 @@ export class MixpanelPeople {
    * @return {Promise<any>}
    */
   @Cordova()
-  static increment(peopleProperties: any): Promise<any> { return; }
+  increment(peopleProperties: any): Promise<any> { return; }
 
   /**
    *
@@ -145,7 +145,7 @@ export class MixpanelPeople {
    * @return {Promise<any>}
    */
   @Cordova()
-  static setPushId(pushId: string): Promise<any> { return; }
+  setPushId(pushId: string): Promise<any> { return; }
 
   /**
    *
@@ -153,7 +153,7 @@ export class MixpanelPeople {
    * @return {Promise<any>}
    */
   @Cordova()
-  static set(peopleProperties: any): Promise<any> { return; }
+  set(peopleProperties: any): Promise<any> { return; }
 
   /**
    *
@@ -161,5 +161,5 @@ export class MixpanelPeople {
    * @return {Promise<any>}
    */
   @Cordova()
-  static setOnce(peopleProperties: any): Promise<any> { return; }
+  setOnce(peopleProperties: any): Promise<any> { return; }
 }

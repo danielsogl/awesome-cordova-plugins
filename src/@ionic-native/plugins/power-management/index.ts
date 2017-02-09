@@ -29,21 +29,21 @@ export class PowerManagement {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static acquire(): Promise<any> {return; }
+  acquire(): Promise<any> {return; }
 
   /**
    * This acquires a partial wakelock, allowing the screen to be dimmed.
    * @returns {Promise<any>}
    */
   @Cordova()
-  static dim(): Promise<any> {return; }
+  dim(): Promise<any> {return; }
 
   /**
    * Release the wakelock. It's important to do this when you're finished with the wakelock, to avoid unnecessary battery drain.
    * @returns {Promise<any>}
    */
   @Cordova()
-  static release(): Promise<any> {return; }
+  release(): Promise<any> {return; }
 
   /**
    * By default, the plugin will automatically release a wakelock when your app is paused (e.g. when the screen is turned off, or the user switches to another app).
@@ -52,5 +52,5 @@ export class PowerManagement {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static setReleaseOnPause(set: boolean): Promise<any> {return; }
+  setReleaseOnPause(set: boolean): Promise<any> {return; }
 }

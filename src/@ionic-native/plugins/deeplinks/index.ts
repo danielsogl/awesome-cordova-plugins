@@ -95,7 +95,7 @@ export class Deeplinks {
   @Cordova({
     observable: true
   })
-  static route(paths): Observable<DeeplinkMatch> { return; }
+  route(paths): Observable<DeeplinkMatch> { return; }
 
   /**
    *
@@ -118,6 +118,6 @@ export class Deeplinks {
   @Cordova({
     observable: true
   })
-  static routeWithNavController(navController, paths): Observable<DeeplinkMatch> { return; }
+  routeWithNavController(navController, paths): Observable<DeeplinkMatch> { return; }
 
 }

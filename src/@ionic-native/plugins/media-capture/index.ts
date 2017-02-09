@@ -171,7 +171,7 @@ export class MediaCapture {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static captureAudio(options?: CaptureAudioOptions): Promise<MediaFile[] | CaptureError> { return; }
+  captureAudio(options?: CaptureAudioOptions): Promise<MediaFile[] | CaptureError> { return; }
 
   /**
    * Start the camera application and return information about captured image files.
@@ -181,7 +181,7 @@ export class MediaCapture {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static captureImage(options?: CaptureImageOptions): Promise<MediaFile[] | CaptureError> { return; }
+  captureImage(options?: CaptureImageOptions): Promise<MediaFile[] | CaptureError> { return; }
 
   /**
    * Start the video recorder application and return information about captured video clip files.
@@ -191,7 +191,7 @@ export class MediaCapture {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static captureVideo(options?: CaptureVideoOptions): Promise<MediaFile[] | CaptureError> { return; }
+  captureVideo(options?: CaptureVideoOptions): Promise<MediaFile[] | CaptureError> { return; }
 
   /**
    * is fired if the capture call is successful
@@ -201,7 +201,7 @@ export class MediaCapture {
     eventObservable: true,
     event: 'pendingcaptureresult'
   })
-  static onPendingCaptureResult(): Observable<MediaFile[]> { return; }
+  onPendingCaptureResult(): Observable<MediaFile[]> { return; }
 
   /**
    * is fired if the capture call is unsuccessful
@@ -211,6 +211,6 @@ export class MediaCapture {
     eventObservable: true,
     event: 'pendingcaptureerror'
   })
-  static onPendingCaptureError(): Observable<CaptureError> { return; }
+  onPendingCaptureError(): Observable<CaptureError> { return; }
 
 }

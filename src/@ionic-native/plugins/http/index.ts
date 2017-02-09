@@ -70,7 +70,7 @@ export class HTTP {
    * @returns {Object} an object representing a basic HTTP Authorization header of the form {'Authorization': 'Basic base64encodedusernameandpassword'}
    */
   @Cordova({ sync: true })
-  static getBasicAuthHeader(username: string, password: string): { Authorization: string; } { return; }
+  getBasicAuthHeader(username: string, password: string): { Authorization: string; } { return; }
 
   /**
    * This sets up all future requests to use Basic HTTP authentication with the given username and password.
@@ -78,7 +78,7 @@ export class HTTP {
    * @param password {string} Password
    */
   @Cordova({ sync: true })
-  static useBasicAuth(username: string, password: string): void { }
+  useBasicAuth(username: string, password: string): void { }
 
   /**
    * Set a header for all future requests. Takes a header and a value.
@@ -86,7 +86,7 @@ export class HTTP {
    * @param value {string} The value of the header
    */
   @Cordova({ sync: true })
-  static setHeader(header: string, value: string): void { }
+  setHeader(header: string, value: string): void { }
 
   /**
    * Enable or disable SSL Pinning. This defaults to false.
@@ -98,7 +98,7 @@ export class HTTP {
    * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
-  static enableSSLPinning(enable: boolean): Promise<void> { return; }
+  enableSSLPinning(enable: boolean): Promise<void> { return; }
 
   /**
    * Accept all SSL certificates. Or disabled accepting all certificates. Defaults to false.
@@ -106,7 +106,7 @@ export class HTTP {
    * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
-  static acceptAllCerts(accept: boolean): Promise<void> { return; }
+  acceptAllCerts(accept: boolean): Promise<void> { return; }
 
   /**
    * Whether or not to validate the domain name in the certificate. This defaults to true.
@@ -114,7 +114,7 @@ export class HTTP {
    * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
-  static validateDomainName(validate: boolean): Promise<void> { return; }
+  validateDomainName(validate: boolean): Promise<void> { return; }
 
   /**
    * Make a POST request
@@ -124,7 +124,7 @@ export class HTTP {
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  static post(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
+  post(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
 
   /**
    *
@@ -134,7 +134,7 @@ export class HTTP {
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  static get(url: string, parameters: any, headers: any): Promise<HTTPResponse> { return; }
+  get(url: string, parameters: any, headers: any): Promise<HTTPResponse> { return; }
 
   /**
    *
@@ -146,7 +146,7 @@ export class HTTP {
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  static uploadFile(url: string, body: any, headers: any, filePath: string, name: string): Promise<HTTPResponse> { return; }
+  uploadFile(url: string, body: any, headers: any, filePath: string, name: string): Promise<HTTPResponse> { return; }
 
   /**
    *
@@ -157,5 +157,5 @@ export class HTTP {
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  static downloadFile(url: string, body: any, headers: any, filePath: string): Promise<HTTPResponse> { return; }
+  downloadFile(url: string, body: any, headers: any, filePath: string): Promise<HTTPResponse> { return; }
 }

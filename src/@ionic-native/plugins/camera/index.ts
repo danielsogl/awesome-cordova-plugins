@@ -200,7 +200,7 @@ export class Camera {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getPicture(options?: CameraOptions): Promise<any> { return; }
+  getPicture(options?: CameraOptions): Promise<any> { return; }
 
   /**
    * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
@@ -210,6 +210,6 @@ export class Camera {
   @Cordova({
     platforms: ['iOS']
   })
-  static cleanup(): Promise<any> { return; };
+  cleanup(): Promise<any> { return; };
 
 }

@@ -31,6 +31,6 @@ export class Rollbar {
    * @return {Promise<any>} Returns a promise that resolves when the plugin successfully initializes
    */
   @Cordova()
-  static init(): Promise<any> { return; }
+  init(): Promise<any> { return; }
 
 }

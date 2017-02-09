@@ -102,7 +102,7 @@ export class SpeechRecognition {
    * @return {Promise<boolean>}
    */
   @Cordova()
-  static isRecognitionAvailable(): Promise<boolean> {
+  isRecognitionAvailable(): Promise<boolean> {
     return;
   }
 
@@ -115,7 +115,7 @@ export class SpeechRecognition {
     observable: true,
 
   })
-  static startListening(options?: SpeechRecognitionListeningOptions): Observable<Array<string>> {
+  startListening(options?: SpeechRecognitionListeningOptions): Observable<Array<string>> {
     return;
   }
 
@@ -125,7 +125,7 @@ export class SpeechRecognition {
   @Cordova({
     platforms: ['iOS']
   })
-  static stopListening(): Promise<void> {
+  stopListening(): Promise<void> {
     return;
   }
 
@@ -134,7 +134,7 @@ export class SpeechRecognition {
    * @return {Promise< Array<string> >} list of languages
    */
   @Cordova()
-  static getSupportedLanguages(): Promise<Array<string>> {
+  getSupportedLanguages(): Promise<Array<string>> {
     return;
   }
 
@@ -143,7 +143,7 @@ export class SpeechRecognition {
    * @return {Promise<boolean>} has permission
    */
   @Cordova()
-  static hasPermission(): Promise<boolean> {
+  hasPermission(): Promise<boolean> {
     return;
   }
 
@@ -152,7 +152,7 @@ export class SpeechRecognition {
    * @return {Promise<void>}
    */
   @Cordova()
-  static requestPermission(): Promise<void> {
+  requestPermission(): Promise<void> {
     return;
   }
 

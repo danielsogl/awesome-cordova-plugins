@@ -34,6 +34,6 @@ export class Shake {
     successIndex: 0,
     errorIndex: 2
   })
-  static startWatch(sensitivity?: number): Observable<any> {return; }
+  startWatch(sensitivity?: number): Observable<any> {return; }
 
 }

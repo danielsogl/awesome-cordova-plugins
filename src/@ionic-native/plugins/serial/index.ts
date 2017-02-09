@@ -55,7 +55,7 @@ export class Serial {
    * @return {Promise<any>} Returns a promise that resolves when permissions are granted
    */
   @Cordova()
-  static requestPermission(options: SerialPermissionOptions): Promise<any> { return; }
+  requestPermission(options: SerialPermissionOptions): Promise<any> { return; }
 
   /**
    * Open connection to a serial device
@@ -64,7 +64,7 @@ export class Serial {
    * @return {Promise<any>} Returns a promise that resolves when the serial connection is opened
    */
   @Cordova()
-  static open(options: SerialOpenOptions): Promise<any> { return; }
+  open(options: SerialOpenOptions): Promise<any> { return; }
 
   /**
    * Write to a serial connection
@@ -73,7 +73,7 @@ export class Serial {
    * @return {Promise<any>} Returns a promise that resolves when the write is complete
    */
   @Cordova()
-  static write(data: any): Promise<any> { return; }
+  write(data: any): Promise<any> { return; }
 
   /**
    * Write hex to a serial connection
@@ -82,7 +82,7 @@ export class Serial {
    * @return {Promise<any>} Returns a promise that resolves when the write is complete
    */
   @Cordova()
-  static writeHex(data: any): Promise<any> { return; }
+  writeHex(data: any): Promise<any> { return; }
 
   /**
    * Read from a serial connection
@@ -90,7 +90,7 @@ export class Serial {
    * @return {Promise<any>} Returns a promise that resolves with data read from the serial connection
    */
   @Cordova()
-  static read(): Promise<any> { return; }
+  read(): Promise<any> { return; }
 
   /**
    * Watch the incoming data from the serial connection. Clear the watch by unsubscribing from the observable
@@ -100,7 +100,7 @@ export class Serial {
   @Cordova({
     observable: true
   })
-  static registerReadCallback(): Observable<any> { return; }
+  registerReadCallback(): Observable<any> { return; }
 
   /**
    * Close the serial connection
@@ -108,6 +108,6 @@ export class Serial {
    * @return {Promise<any>} Returns a promise that resolves when the serial connection is closed
    */
   @Cordova()
-  static close(): Promise<any> { return; }
+  close(): Promise<any> { return; }
 
 }

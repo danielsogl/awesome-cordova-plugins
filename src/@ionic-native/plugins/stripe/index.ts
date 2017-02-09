@@ -95,7 +95,7 @@ export class Stripe {
    * @return {Promise<void>}
    */
   @Cordova()
-  static setPublishableKey(publishableKey: string): Promise<void> { return; }
+  setPublishableKey(publishableKey: string): Promise<void> { return; }
 
   /**
    * Create Credit Card Token
@@ -103,6 +103,6 @@ export class Stripe {
    * @return {Promise<string>} returns a promise that resolves with the token, or reject with an error
    */
   @Cordova()
-  static createCardToken(params: StripeCardTokenParams): Promise<string> { return; }
+  createCardToken(params: StripeCardTokenParams): Promise<string> { return; }
 
 }

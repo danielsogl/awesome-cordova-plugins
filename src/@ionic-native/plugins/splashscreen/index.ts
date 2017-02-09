@@ -30,7 +30,7 @@ export class Splashscreen {
   @Cordova({
     sync: true
   })
-  static show(): void {}
+  show(): void {}
 
   /**
    * Hides the splashscreen
@@ -38,6 +38,6 @@ export class Splashscreen {
   @Cordova({
     sync: true
   })
-  static hide(): void {}
+  hide(): void {}
 
 }

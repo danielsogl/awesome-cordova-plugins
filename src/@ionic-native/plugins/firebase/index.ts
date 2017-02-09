@@ -35,7 +35,7 @@ export class Firebase {
    * @return {Promise<any>}
    */
   @Cordova()
-  static getToken(): Promise<any> { return; }
+  getToken(): Promise<any> { return; }
 
   /**
    * Get notified when a token is refreshed
@@ -44,7 +44,7 @@ export class Firebase {
   @Cordova({
     observable: true
   })
-  static onTokenRefresh(): Observable<any> { return; }
+  onTokenRefresh(): Observable<any> { return; }
 
   /**
    * Get notified when the user opens a notification
@@ -53,7 +53,7 @@ export class Firebase {
   @Cordova({
     observable: true
   })
-  static onNotificationOpen(): Observable<any> { return; }
+  onNotificationOpen(): Observable<any> { return; }
 
   /**
    * Grant permission to recieve push notifications
@@ -62,7 +62,7 @@ export class Firebase {
   @Cordova({
     platforms: ['iOS']
   })
-  static grantPermission(): Promise<any> { return; }
+  grantPermission(): Promise<any> { return; }
 
   /**
    * Set icon badge number. Set to 0 to clear the badge.
@@ -70,14 +70,14 @@ export class Firebase {
    * @return {Promise<any>}
    */
   @Cordova()
-  static setBadgeNumber(badgeNumber: number): Promise<any> { return; }
+  setBadgeNumber(badgeNumber: number): Promise<any> { return; }
 
   /**
    * Get icon badge number
    * @return {Promise<any>}
    */
   @Cordova()
-  static getBadgeNumber(): Promise<any> { return; }
+  getBadgeNumber(): Promise<any> { return; }
 
   /**
    * Subscribe to a topic
@@ -85,7 +85,7 @@ export class Firebase {
    * @return {Promise<any>}
    */
   @Cordova()
-  static subscribe(topic: string): Promise<any> { return; }
+  subscribe(topic: string): Promise<any> { return; }
 
   /**
    * Unsubscribe from a topic
@@ -93,7 +93,7 @@ export class Firebase {
    * @return {Promise<any>}
    */
   @Cordova()
-  static unsubscribe(topic: string): Promise<any> { return; }
+  unsubscribe(topic: string): Promise<any> { return; }
 
   /**
    * Log an event using Analytics
@@ -102,7 +102,7 @@ export class Firebase {
    * @return {Promise<any>}
    */
   @Cordova()
-  static logEvent(type: string, data: any): Promise<any> { return; }
+  logEvent(type: string, data: any): Promise<any> { return; }
 
   /**
    * Set a user id for use in Analytics
@@ -110,7 +110,7 @@ export class Firebase {
    * @return {Promise<any>}
    */
   @Cordova()
-  static setUserId(userId: string): Promise<any> { return; }
+  setUserId(userId: string): Promise<any> { return; }
 
   /**
    * Set a user property for use in Analytics
@@ -119,7 +119,7 @@ export class Firebase {
    * @return {Promise<any>}
    */
   @Cordova()
-  static setUserProperty(name: string, value: string): Promise<any> { return; }
+  setUserProperty(name: string, value: string): Promise<any> { return; }
 
   /**
    * Fetch Remote Config parameter values for your app
@@ -131,7 +131,7 @@ export class Firebase {
     successIndex: 1,
     errorIndex: 2
   })
-  static fetch(cacheExpirationSeconds?: number): Promise<any> { return; }
+  fetch(cacheExpirationSeconds?: number): Promise<any> { return; }
 
   /**
    * Activate the Remote Config fetched config
@@ -140,7 +140,7 @@ export class Firebase {
   @Cordova({
     platforms: ['Android']
   })
-  static activateFetched(): Promise<any> { return; }
+  activateFetched(): Promise<any> { return; }
 
   /**
    * Retrieve a Remote Config value
@@ -153,7 +153,7 @@ export class Firebase {
     successIndex: 2,
     errorIndex: 3
   })
-  static getValue(key: string, namespace?: string): Promise<any> { return; }
+  getValue(key: string, namespace?: string): Promise<any> { return; }
 
   /**
    * Retrieve a Remote Config byte array
@@ -166,7 +166,7 @@ export class Firebase {
     successIndex: 2,
     errorIndex: 3
   })
-  static getByteArray(key: string, namespace?: string): Promise<any> { return; }
+  getByteArray(key: string, namespace?: string): Promise<any> { return; }
 
   /**
    * Get the current state of the FirebaseRemoteConfig singleton object
@@ -175,7 +175,7 @@ export class Firebase {
   @Cordova({
     platforms: ['Android']
   })
-  static getInfo(): Promise<any> { return; }
+  getInfo(): Promise<any> { return; }
 
   /**
    * Change the settings for the FirebaseRemoteConfig object's operations
@@ -185,7 +185,7 @@ export class Firebase {
   @Cordova({
     platforms: ['Android']
   })
-  static setConfigSettings(settings: any): Promise<any> { return; }
+  setConfigSettings(settings: any): Promise<any> { return; }
 
   /**
    * Set defaults in the Remote Config
@@ -198,6 +198,6 @@ export class Firebase {
     successIndex: 2,
     errorIndex: 3
   })
-  static setDefaults(defaults: any, namespace: string): Promise<any> { return; }
+  setDefaults(defaults: any, namespace: string): Promise<any> { return; }
 
 }

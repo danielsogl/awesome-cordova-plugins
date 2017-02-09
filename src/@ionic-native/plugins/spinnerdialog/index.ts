@@ -43,7 +43,7 @@ export class SpinnerDialog {
   @Cordova({
     sync: true
   })
-  static show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void {}
+  show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void {}
 
   /**
    * Hides the spinner dialog if visible
@@ -51,6 +51,6 @@ export class SpinnerDialog {
   @Cordova({
     sync: true
   })
-  static hide(): void {}
+  hide(): void {}
 
 }

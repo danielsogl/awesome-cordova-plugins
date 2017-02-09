@@ -43,7 +43,7 @@ export class SocialSharing {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static share(message?: string, subject?: string, file?: string|string[], url?: string): Promise<any> { return; }
+  share(message?: string, subject?: string, file?: string|string[], url?: string): Promise<any> { return; }
 
   /**
    * Shares using the share sheet with additional options and returns a result object or an error message (requires plugin version 5.1.0+)
@@ -53,7 +53,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareWithOptions(options: { message?: string, subject?: string, files?: string|string[], url?: string, chooserTitle?: string }): Promise<any> { return; }
+  shareWithOptions(options: { message?: string, subject?: string, files?: string|string[], url?: string, chooserTitle?: string }): Promise<any> { return; }
 
   /**
    * Checks if you can share via a specific app.
@@ -69,7 +69,7 @@ export class SocialSharing {
     errorIndex: 6,
     platforms: ['iOS', 'Android']
   })
-  static canShareVia(appName: string, message?: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
+  canShareVia(appName: string, message?: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
 
   /**
    * Shares directly to Twitter
@@ -83,7 +83,7 @@ export class SocialSharing {
     errorIndex: 4,
     platforms: ['iOS', 'Android']
   })
-  static shareViaTwitter(message: string, image?: string, url?: string): Promise<any> { return; }
+  shareViaTwitter(message: string, image?: string, url?: string): Promise<any> { return; }
 
   /**
    * Shares directly to Facebook
@@ -97,7 +97,7 @@ export class SocialSharing {
     errorIndex: 4,
     platforms: ['iOS', 'Android']
   })
-  static shareViaFacebook(message: string, image?: string, url?: string): Promise<any> { return; }
+  shareViaFacebook(message: string, image?: string, url?: string): Promise<any> { return; }
 
 
   /**
@@ -113,7 +113,7 @@ export class SocialSharing {
     errorIndex: 5,
     platforms: ['iOS', 'Android']
   })
-  static shareViaFacebookWithPasteMessageHint(message: string, image?: string, url?: string, pasteMessageHint?: string): Promise<any> { return; }
+  shareViaFacebookWithPasteMessageHint(message: string, image?: string, url?: string, pasteMessageHint?: string): Promise<any> { return; }
 
   /**
    * Shares directly to Instagram
@@ -124,7 +124,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareViaInstagram(message: string, image: string): Promise<any> { return; }
+  shareViaInstagram(message: string, image: string): Promise<any> { return; }
 
   /**
    * Shares directly to WhatsApp
@@ -138,7 +138,7 @@ export class SocialSharing {
     errorIndex: 4,
     platforms: ['iOS', 'Android']
   })
-  static shareViaWhatsApp(message: string, image?: string, url?: string): Promise<any> { return; }
+  shareViaWhatsApp(message: string, image?: string, url?: string): Promise<any> { return; }
 
   /**
    * Shares directly to a WhatsApp Contact
@@ -153,7 +153,7 @@ export class SocialSharing {
     errorIndex: 5,
     platforms: ['iOS', 'Android']
   })
-  static shareViaWhatsAppToReceiver(receiver: string, message: string, image?: string, url?: string): Promise<any> { return; }
+  shareViaWhatsAppToReceiver(receiver: string, message: string, image?: string, url?: string): Promise<any> { return; }
 
   /**
    * Share via SMS
@@ -164,7 +164,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static shareViaSMS(messge: string, phoneNumber: string): Promise<any> { return; }
+  shareViaSMS(messge: string, phoneNumber: string): Promise<any> { return; }
 
   /**
    * Checks if you can share via email
@@ -173,7 +173,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  static canShareViaEmail(): Promise<any> { return; }
+  canShareViaEmail(): Promise<any> { return; }
 
   /**
    * Share via Email
@@ -190,7 +190,7 @@ export class SocialSharing {
     successIndex: 6,
     errorIndex: 7
   })
-  static shareViaEmail(message: string, subject: string, to: string[], cc?: string[], bcc?: string[], files?: string|string[]): Promise<any> { return; }
+  shareViaEmail(message: string, subject: string, to: string[], cc?: string[], bcc?: string[], files?: string|string[]): Promise<any> { return; }
 
   /**
    * Share via AppName
@@ -206,5 +206,5 @@ export class SocialSharing {
     errorIndex: 6,
     platforms: ['iOS', 'Android']
   })
-  static shareVia(appName: string, message: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
+  shareVia(appName: string, message: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
 }

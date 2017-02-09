@@ -61,7 +61,7 @@ export class TouchID {
    * @returns {Promise<any>} Returns a Promise that resolves if yes, rejects if no.
    */
   @Cordova()
-  static isAvailable(): Promise<any> { return; }
+  isAvailable(): Promise<any> { return; }
 
   /**
    * Show TouchID dialog and wait for a fingerprint scan. If user taps 'Enter Password' button, brings up standard system passcode screen.
@@ -70,7 +70,7 @@ export class TouchID {
    * @returns {Promise<any>} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
-  static verifyFingerprint(message: string): Promise<any> { return; }
+  verifyFingerprint(message: string): Promise<any> { return; }
 
   /**
    * Show TouchID dialog and wait for a fingerprint scan. If user taps 'Enter Password' button, rejects with code '-3' (see above).
@@ -79,7 +79,7 @@ export class TouchID {
    * @returns {Promise<any>} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
-  static verifyFingerprintWithCustomPasswordFallback(message: string): Promise<any> { return; }
+  verifyFingerprintWithCustomPasswordFallback(message: string): Promise<any> { return; }
 
   /**
    * Show TouchID dialog with custom 'Enter Password' message and wait for a fingerprint scan. If user taps 'Enter Password' button, rejects with code '-3' (see above).
@@ -89,6 +89,6 @@ export class TouchID {
    * @returns {Promise<any>} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
-  static verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string): Promise<any> { return; }
+  verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string): Promise<any> { return; }
 
 }

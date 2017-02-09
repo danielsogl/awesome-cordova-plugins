@@ -27,5 +27,5 @@ export class YoutubeVideoPlayer {
    * @param videoId {string} Video ID
    */
   @Cordova({sync: true})
-  static openVideo(videoId: string): void { }
+  openVideo(videoId: string): void { }
 }

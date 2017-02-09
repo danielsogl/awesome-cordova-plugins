@@ -301,7 +301,7 @@ export class Contacts {
    * Create a single contact.
    * @returns {Contact} Returns a Contact object
    */
-  static create(): Contact {
+  create(): Contact {
     return new Contact();
   }
 
@@ -311,7 +311,7 @@ export class Contacts {
    * @param options {IContactFindOptions} Optional options for the query
    * @returns {Promise<Contact[]>} Returns a Promise that resolves with the search results (an array of Contact objects)
    */
-  static find(fields: ContactFieldType[], options?: IContactFindOptions): Promise<Contact[]> {
+  find(fields: ContactFieldType[], options?: IContactFindOptions): Promise<Contact[]> {
     return getPromise((resolve, reject) => {
       navigator.contacts.find(fields, (contacts) => {
         resolve(contacts.map(processContact));
@@ -323,7 +323,7 @@ export class Contacts {
    * Select a single Contact.
    * @returns {Promise<Contact>} Returns a Promise that resolves with the selected Contact
    */
-  static pickContact(): Promise<Contact> {
+  pickContact(): Promise<Contact> {
     return getPromise((resolve, reject) => {
       navigator.contacts.pickContact((contact) => resolve(processContact(contact)), reject);
     });

@@ -173,7 +173,7 @@ export class CardIO {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static canScan(): Promise<boolean> { return; }
+  canScan(): Promise<boolean> { return; }
 
   /**
    * Scan a credit card with card.io.
@@ -181,13 +181,13 @@ export class CardIO {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static scan(options?: CardIOOptions): Promise<CardIOResponse> { return; }
+  scan(options?: CardIOOptions): Promise<CardIOResponse> { return; }
 
   /**
    * Retrieve the version of the card.io library. Useful when contacting support.
    * @returns {Promise<string>}
    */
   @Cordova()
-  static version(): Promise<string> { return; }
+  version(): Promise<string> { return; }
 
 }

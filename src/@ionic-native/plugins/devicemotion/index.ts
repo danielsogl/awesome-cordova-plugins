@@ -78,7 +78,7 @@ export class DeviceMotion {
    * @returns {Promise<DeviceMotionAccelerationData>} Returns object with x, y, z, and timestamp properties
    */
   @Cordova()
-  static getCurrentAcceleration(): Promise<DeviceMotionAccelerationData> { return; }
+  getCurrentAcceleration(): Promise<DeviceMotionAccelerationData> { return; }
 
   /**
    * Watch the device acceleration. Clear the watch by unsubscribing from the observable.
@@ -90,6 +90,6 @@ export class DeviceMotion {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchAcceleration(options?: DeviceMotionAccelerometerOptions): Observable<DeviceMotionAccelerationData> { return; }
+  watchAcceleration(options?: DeviceMotionAccelerometerOptions): Observable<DeviceMotionAccelerationData> { return; }
 
 }

@@ -144,7 +144,7 @@ export class LocalNotifications {
   @Cordova({
     sync: true
   })
-  static schedule(options?: ILocalNotification | Array<ILocalNotification>): void { }
+  schedule(options?: ILocalNotification | Array<ILocalNotification>): void { }
 
   /**
    * Updates a previously scheduled notification. Must include the id in the options parameter.
@@ -153,7 +153,7 @@ export class LocalNotifications {
   @Cordova({
     sync: true
   })
-  static update(options?: ILocalNotification): void { }
+  update(options?: ILocalNotification): void { }
 
   /**
    * Clears single or multiple notifications
@@ -161,7 +161,7 @@ export class LocalNotifications {
    * @returns {Promise<any>} Returns a promise when the notification had been cleared
    */
   @Cordova()
-  static clear(notificationId: any): Promise<any> { return; }
+  clear(notificationId: any): Promise<any> { return; }
 
   /**
    * Clears all notifications
@@ -171,7 +171,7 @@ export class LocalNotifications {
     successIndex: 0,
     errorIndex: 2
   })
-  static clearAll(): Promise<any> { return; }
+  clearAll(): Promise<any> { return; }
 
   /**
    * Cancels single or multiple notifications
@@ -179,7 +179,7 @@ export class LocalNotifications {
    * @returns {Promise<any>} Returns a promise when the notification is canceled
    */
   @Cordova()
-  static cancel(notificationId: any): Promise<any> { return; }
+  cancel(notificationId: any): Promise<any> { return; }
 
   /**
    * Cancels all notifications
@@ -189,7 +189,7 @@ export class LocalNotifications {
     successIndex: 0,
     errorIndex: 2
   })
-  static cancelAll(): Promise<any> { return; }
+  cancelAll(): Promise<any> { return; }
 
   /**
    * Checks presence of a notification
@@ -197,7 +197,7 @@ export class LocalNotifications {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static isPresent(notificationId: number): Promise<boolean> { return; }
+  isPresent(notificationId: number): Promise<boolean> { return; }
 
   /**
    * Checks is a notification is scheduled
@@ -205,7 +205,7 @@ export class LocalNotifications {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static isScheduled(notificationId: number): Promise<boolean> { return; }
+  isScheduled(notificationId: number): Promise<boolean> { return; }
 
   /**
    * Checks if a notification is triggered
@@ -213,28 +213,28 @@ export class LocalNotifications {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static isTriggered(notificationId: number): Promise<boolean> { return; }
+  isTriggered(notificationId: number): Promise<boolean> { return; }
 
   /**
    * Get all the notification ids
    * @returns {Promise<Array<number>>}
    */
   @Cordova()
-  static getAllIds(): Promise<Array<number>> { return; }
+  getAllIds(): Promise<Array<number>> { return; }
 
   /**
    * Get the ids of triggered notifications
    * @returns {Promise<Array<number>>}
    */
   @Cordova()
-  static getTriggeredIds(): Promise<Array<number>> { return; }
+  getTriggeredIds(): Promise<Array<number>> { return; }
 
   /**
    * Get the ids of scheduled notifications
    * @returns {Promise<Array<number>>} Returns a promise
    */
   @Cordova()
-  static getScheduledIds(): Promise<Array<number>> { return; }
+  getScheduledIds(): Promise<Array<number>> { return; }
 
   /**
    * Get a notification object
@@ -242,7 +242,7 @@ export class LocalNotifications {
    * @returns {Promise<ILocalNotification>}
    */
   @Cordova()
-  static get(notificationId: any): Promise<ILocalNotification> { return; }
+  get(notificationId: any): Promise<ILocalNotification> { return; }
 
   /**
    * Get a scheduled notification object
@@ -250,7 +250,7 @@ export class LocalNotifications {
    * @returns {Promise<ILocalNotification>}
    */
   @Cordova()
-  static getScheduled(notificationId: any): Promise<ILocalNotification> { return; }
+  getScheduled(notificationId: any): Promise<ILocalNotification> { return; }
 
   /**
    * Get a triggered notification object
@@ -258,42 +258,42 @@ export class LocalNotifications {
    * @returns {Promise<ILocalNotification>}
    */
   @Cordova()
-  static getTriggered(notificationId: any): Promise<ILocalNotification> { return; }
+  getTriggered(notificationId: any): Promise<ILocalNotification> { return; }
 
   /**
    * Get all notification objects
    * @returns {Promise<Array<ILocalNotification>>}
    */
   @Cordova()
-  static getAll(): Promise<Array<ILocalNotification>> { return; }
+  getAll(): Promise<Array<ILocalNotification>> { return; }
 
   /**
    * Get all scheduled notification objects
    * @returns {Promise<Array<ILocalNotification>>}
    */
   @Cordova()
-  static getAllScheduled(): Promise<Array<ILocalNotification>> { return; }
+  getAllScheduled(): Promise<Array<ILocalNotification>> { return; }
 
   /**
    * Get all triggered notification objects
    * @returns {Promise<Array<ILocalNotification>>}
    */
   @Cordova()
-  static getAllTriggered(): Promise<Array<ILocalNotification>> { return; }
+  getAllTriggered(): Promise<Array<ILocalNotification>> { return; }
 
   /**
    * Register permission to show notifications if not already granted.
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static registerPermission(): Promise<boolean> { return; }
+  registerPermission(): Promise<boolean> { return; }
 
   /**
    * Informs if the app has the permission to show notifications.
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  static hasPermission(): Promise<boolean> { return; }
+  hasPermission(): Promise<boolean> { return; }
 
 
   /**
@@ -304,7 +304,7 @@ export class LocalNotifications {
   @Cordova({
     sync: true
   })
-  static on(eventName: string, callback: any): void { }
+  on(eventName: string, callback: any): void { }
 
 
 }

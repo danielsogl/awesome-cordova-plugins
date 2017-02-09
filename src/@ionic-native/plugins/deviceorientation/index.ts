@@ -83,7 +83,7 @@ export class DeviceOrientation {
    * @returns {Promise<DeviceOrientationCompassHeading>}
    */
   @Cordova()
-  static getCurrentHeading(): Promise<DeviceOrientationCompassHeading> { return; }
+  getCurrentHeading(): Promise<DeviceOrientationCompassHeading> { return; }
 
   /**
    * Get the device current heading at a regular interval
@@ -97,6 +97,6 @@ export class DeviceOrientation {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchHeading(options?: DeviceOrientationCompassOptions): Observable<DeviceOrientationCompassHeading> { return; }
+  watchHeading(options?: DeviceOrientationCompassOptions): Observable<DeviceOrientationCompassHeading> { return; }
 
 }

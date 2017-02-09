@@ -102,7 +102,7 @@ export class LaunchNavigator {
     successIndex: 1,
     errorIndex: 2
   })
-  static navigate(
+  navigate(
     destination: string | number[],
     options?: LaunchNavigatorOptions
     ): Promise<any> { return; }
@@ -113,14 +113,14 @@ export class LaunchNavigator {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static isAppAvailable(app: string): Promise<any> { return; }
+  isAppAvailable(app: string): Promise<any> { return; }
 
   /**
    * Returns a list indicating which apps are installed and available on the current device.
    * @returns {Promise<string[]>}
    */
   @Cordova()
-  static availableApps(): Promise<string[]> { return; }
+  availableApps(): Promise<string[]> { return; }
 
   /**
    * Returns the display name of the specified app.
@@ -128,7 +128,7 @@ export class LaunchNavigator {
    * @returns {string}
    */
   @Cordova({ sync: true })
-  static getAppDisplayName(app: string): string { return; }
+  getAppDisplayName(app: string): string { return; }
 
   /**
    * Returns list of supported apps on a given platform.
@@ -136,7 +136,7 @@ export class LaunchNavigator {
    * @returns {string[]}
    */
   @Cordova({ sync: true })
-  static getAppsForPlatform(platform: string): string[] { return; }
+  getAppsForPlatform(platform: string): string[] { return; }
 
   /**
    * Indicates if an app on a given platform supports specification of transport mode.
@@ -145,7 +145,7 @@ export class LaunchNavigator {
    * @returns {boolean}
    */
   @Cordova({ sync: true })
-  static supportsTransportMode(app: string, platform: string): boolean { return; }
+  supportsTransportMode(app: string, platform: string): boolean { return; }
 
   /**
    * Returns the list of transport modes supported by an app on a given platform.
@@ -154,7 +154,7 @@ export class LaunchNavigator {
    * @returns {string[]}
    */
   @Cordova({ sync: true })
-  static getTransportModes(app: string, platform: string): string[] { return; }
+  getTransportModes(app: string, platform: string): string[] { return; }
 
   /**
    * Indicates if an app on a given platform supports specification of launch mode.
@@ -164,7 +164,7 @@ export class LaunchNavigator {
    * @returns {boolean}
    */
   @Cordova({ sync: true })
-  static supportsLaunchMode(app: string, platform: string): boolean { return; }
+  supportsLaunchMode(app: string, platform: string): boolean { return; }
 
   /**
    * Indicates if an app on a given platform supports specification of start location.
@@ -173,7 +173,7 @@ export class LaunchNavigator {
    * @returns {boolean}
    */
   @Cordova({ sync: true })
-  static supportsStart(app: string, platform: string): boolean { return; }
+  supportsStart(app: string, platform: string): boolean { return; }
 
   /**
    * @param app {string}
@@ -181,7 +181,7 @@ export class LaunchNavigator {
    * @returns {boolean}
    */
   @Cordova({ sync: true })
-  static supportsStartName(app: string, platform: string): boolean { return; }
+  supportsStartName(app: string, platform: string): boolean { return; }
 
   /**
    * @param app {string}
@@ -189,14 +189,14 @@ export class LaunchNavigator {
    * @returns {boolean}
    */
   @Cordova({ sync: true })
-  static supportsDestName(app: string, platform: string): boolean { return; }
+  supportsDestName(app: string, platform: string): boolean { return; }
 
   /**
    * @param destination {string | number[]}
    * @param options {LaunchNavigatorOptions}
    */
   @Cordova({ sync: true })
-  static userSelect(destination: string | number[], options: LaunchNavigatorOptions): void { }
+  userSelect(destination: string | number[], options: LaunchNavigatorOptions): void { }
 
   static APP: any = {
     USER_SELECT: 'user_select',

@@ -60,7 +60,7 @@ export class SQLite {
 
   constructor() { }
 
-  static openDatabase(config: any): Promise<SQLite> {
+  openDatabase(config: any): Promise<SQLite> {
     return new SQLite().openDatabase(config);
   }
 
@@ -206,13 +206,13 @@ export class SQLite {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static echoTest(): Promise<any> { return; }
+  echoTest(): Promise<any> { return; }
 
   /**
    * @param first
    * @returns {Promise<any>}
    */
   @Cordova()
-  static deleteDatabase(first): Promise<any> { return; }
+  deleteDatabase(first): Promise<any> { return; }
 
 }

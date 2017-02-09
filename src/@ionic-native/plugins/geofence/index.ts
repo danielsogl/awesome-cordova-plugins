@@ -100,7 +100,7 @@ export class Geofence {
    * @returns {Promise<void>}
    */
   @Cordova()
-  static initialize(): Promise<void> { return; };
+  initialize(): Promise<void> { return; };
 
   /**
    * Adds a new geofence or array of geofences. For geofence object, see above.
@@ -108,7 +108,7 @@ export class Geofence {
    * @returns {Promise<void>}
    */
   @Cordova()
-  static addOrUpdate(geofences: Object | Array<Object>): Promise<void> { return; };
+  addOrUpdate(geofences: Object | Array<Object>): Promise<void> { return; };
 
   /**
    * Removes a geofence or array of geofences. `geofenceID` corresponds to one or more IDs specified when the
@@ -117,7 +117,7 @@ export class Geofence {
    * @returns {Promise<void>}
    */
   @Cordova()
-  static remove(geofenceId: string | Array<string>): Promise<void> { return; };
+  remove(geofenceId: string | Array<string>): Promise<void> { return; };
 
   /**
    * Removes all geofences.
@@ -125,7 +125,7 @@ export class Geofence {
    * @returns {Promise<void>}
    */
   @Cordova()
-  static removeAll(): Promise<void> { return; };
+  removeAll(): Promise<void> { return; };
 
   /**
    * Returns an array of geofences currently being monitored.
@@ -133,14 +133,14 @@ export class Geofence {
    * @returns {Promise<Array<string>>}
    */
   @Cordova()
-  static getWatched(): Promise<string> { return; };
+  getWatched(): Promise<string> { return; };
 
   /**
    * Called when a geofence is crossed in the direction specified by `TransitType`.
    *
    * @returns {Observable<any>}
    */
-  static onTransitionReceived(): Observable<any> {
+  onTransitionReceived(): Observable<any> {
 
     return new Observable<any>((observer) => {
       window && window.geofence && (window.geofence.onTransitionReceived = observer.next.bind(observer));
@@ -154,7 +154,7 @@ export class Geofence {
    *
    * @returns {Observable<any>}
    */
-  static onNotificationClicked(): Observable<any> {
+  onNotificationClicked(): Observable<any> {
 
     return new Observable<any>((observer) => {
       window && window.geofence && (window.geofence.onNotificationClicked = observer.next.bind(observer));

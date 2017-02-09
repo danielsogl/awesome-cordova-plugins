@@ -63,7 +63,7 @@ export class ImagePicker {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  static getPictures(options: ImagePickerOptions): Promise<any> { return; }
+  getPictures(options: ImagePickerOptions): Promise<any> { return; }
 
   /**
    * Check if we have permission to read images
@@ -72,7 +72,7 @@ export class ImagePicker {
   @Cordova({
     platforms: ['Android']
   })
-  static hasReadPermission(): Promise<boolean> { return; }
+  hasReadPermission(): Promise<boolean> { return; }
 
   /**
    * Request permission to read images
@@ -81,6 +81,6 @@ export class ImagePicker {
   @Cordova({
     platforms: ['Android']
   })
-  static requestReadPermission(): Promise<any> { return; }
+  requestReadPermission(): Promise<any> { return; }
 
 }

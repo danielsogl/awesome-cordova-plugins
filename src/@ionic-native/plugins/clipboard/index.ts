@@ -42,13 +42,13 @@ export class Clipboard {
    * @returns {Promise<any>} Returns a promise after the text has been copied
    */
   @Cordova()
-  static copy(text: string): Promise<any> { return; }
+  copy(text: string): Promise<any> { return; }
 
   /**
    * Pastes the text stored in clipboard
    * @returns {Promise<any>} Returns a promise after the text has been pasted
    */
   @Cordova()
-  static paste(): Promise<any> { return; }
+  paste(): Promise<any> { return; }
 
 }

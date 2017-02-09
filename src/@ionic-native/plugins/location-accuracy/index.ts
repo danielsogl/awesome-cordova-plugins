@@ -36,14 +36,14 @@ export class LocationAccuracy {
    * @returns {Promise<boolean>} Returns a promise that resovles with a boolean that indicates if you can request accurate location
    */
   @Cordova()
-  static canRequest(): Promise<boolean> { return; }
+  canRequest(): Promise<boolean> { return; }
 
   /**
    * Indicates if a request is currently in progress
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that indicates if a request is currently in progress
    */
   @Cordova()
-  static isRequesting(): Promise<boolean> { return; }
+  isRequesting(): Promise<boolean> { return; }
 
   /**
    * Requests accurate location
@@ -51,7 +51,7 @@ export class LocationAccuracy {
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects if an error occurred
    */
   @Cordova({ callbackOrder: 'reverse' })
-  static request(accuracy: number): Promise<any> { return; }
+  request(accuracy: number): Promise<any> { return; }
 
   static REQUEST_PRIORITY_NO_POWER = 0;
   static REQUEST_PRIORITY_LOW_POWER = 1;

@@ -28,7 +28,7 @@ export class Keyboard {
    * @param hide {boolean}
    */
    @Cordova({sync: true})
-  static hideKeyboardAccessoryBar(hide: boolean): void { }
+  hideKeyboardAccessoryBar(hide: boolean): void { }
 
   /**
    * Force keyboard to be shown.
@@ -37,7 +37,7 @@ export class Keyboard {
     sync: true,
     platforms: ['Android', 'BlackBerry 10', 'Windows']
   })
-  static show(): void { }
+  show(): void { }
 
   /**
    * Close the keyboard if open.
@@ -46,7 +46,7 @@ export class Keyboard {
     sync: true,
     platforms: ['iOS', 'Android', 'BlackBerry 10', 'Windows']
   })
-  static close(): void { }
+  close(): void { }
 
   /**
    * Prevents the native UIScrollView from moving when an input is focused.
@@ -56,7 +56,7 @@ export class Keyboard {
     sync: true,
     platforms: ['iOS', 'Windows']
   })
-  static disableScroll(disable: boolean): void { }
+  disableScroll(disable: boolean): void { }
 
   /**
    * Creates an observable that notifies you when the keyboard is shown. Unsubscribe to observable to cancel event watch.
@@ -67,7 +67,7 @@ export class Keyboard {
     event: 'native.keyboardshow',
     platforms: ['iOS', 'Android', 'BlackBerry 10', 'Windows']
   })
-  static onKeyboardShow(): Observable<any> { return; }
+  onKeyboardShow(): Observable<any> { return; }
 
   /**
    * Creates an observable that notifies you when the keyboard is hidden. Unsubscribe to observable to cancel event watch.
@@ -78,6 +78,6 @@ export class Keyboard {
     event: 'native.keyboardhide',
     platforms: ['iOS', 'Android', 'BlackBerry 10', 'Windows']
   })
-  static onKeyboardHide(): Observable<any> { return; }
+  onKeyboardHide(): Observable<any> { return; }
 
 }

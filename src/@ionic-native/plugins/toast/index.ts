@@ -79,7 +79,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static show(
+  show(
     message: string,
     duration: string,
     position: string
@@ -90,7 +90,7 @@ export class Toast {
    * @returns {Promise<any>} Returns a Promise that resolves on success.
    */
   @Cordova()
-  static hide(): Promise<any> { return; }
+  hide(): Promise<any> { return; }
 
   /**
    * Show a native toast with the given options.
@@ -107,7 +107,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showWithOptions(options: ToastOptions): Observable<any> { return; }
+  showWithOptions(options: ToastOptions): Observable<any> { return; }
 
   /**
    * Shorthand for `show(message, 'short', 'top')`.
@@ -118,7 +118,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showShortTop(message: string): Observable<any> { return; }
+  showShortTop(message: string): Observable<any> { return; }
 
   /**
    * Shorthand for `show(message, 'short', 'center')`.
@@ -129,7 +129,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showShortCenter(message: string): Observable<any> { return; }
+  showShortCenter(message: string): Observable<any> { return; }
 
 
   /**
@@ -141,7 +141,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showShortBottom(message: string): Observable<any> { return; }
+  showShortBottom(message: string): Observable<any> { return; }
 
 
   /**
@@ -153,7 +153,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showLongTop(message: string): Observable<any> { return; }
+  showLongTop(message: string): Observable<any> { return; }
 
 
   /**
@@ -165,7 +165,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showLongCenter(message: string): Observable<any> { return; }
+  showLongCenter(message: string): Observable<any> { return; }
 
 
   /**
@@ -177,6 +177,6 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  static showLongBottom(message: string): Observable<any> { return; }
+  showLongBottom(message: string): Observable<any> { return; }
 
 }

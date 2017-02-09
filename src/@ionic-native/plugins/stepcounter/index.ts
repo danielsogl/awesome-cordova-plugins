@@ -37,40 +37,40 @@ export class Stepcounter {
    * @returns {Promise<any | number>} Returns a Promise that resolves on success or rejects on failure
    */
   @Cordova()
-  static start(startingOffset: number): Promise<number | any> { return; }
+  start(startingOffset: number): Promise<number | any> { return; }
 
   /**
    * Stop the step counter
    * @returns {Promise<any | number>} Returns a Promise that resolves on success with the amount of steps since the start command has been called, or rejects on failure
    */
   @Cordova()
-  static stop(): Promise<number | any> { return; }
+  stop(): Promise<number | any> { return; }
 
   /**
    * Get the amount of steps for today (or -1 if it no data given)
    * @returns {Promise<any | number>} Returns a Promise that resolves on success with the amount of steps today, or rejects on failure
    */
   @Cordova()
-  static getTodayStepCount(): Promise<number | any> { return; }
+  getTodayStepCount(): Promise<number | any> { return; }
 
   /**
    * Get the amount of steps since the start command has been called
    * @returns {Promise<any | number>} Returns a Promise that resolves on success with the amount of steps since the start command has been called, or rejects on failure
    */
   @Cordova()
-  static getStepCount(): Promise<number | any> { return; }
+  getStepCount(): Promise<number | any> { return; }
 
   /**
    * Returns true/false if Android device is running >API level 19 && has the step counter API available
    * @returns {Promise<any | boolean>} Returns a Promise that resolves on success, or rejects on failure
    */
   @Cordova()
-  static deviceCanCountSteps(): Promise<boolean | any> { return; }
+  deviceCanCountSteps(): Promise<boolean | any> { return; }
 
   /**
    * Get the step history (JavaScript object)
    * @returns {Promise<any>} Returns a Promise that resolves on success, or rejects on failure
    */
   @Cordova()
-  static getHistory(): Promise<any> { return; }
+  getHistory(): Promise<any> { return; }
 }

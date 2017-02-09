@@ -34,7 +34,7 @@ export class FileOpener {
     successName: 'success',
     errorName: 'error'
   })
-  static open(filePath: string, fileMIMEType: string): Promise<any> {return; }
+  open(filePath: string, fileMIMEType: string): Promise<any> {return; }
 
   /**
    * Uninstalls a package
@@ -46,7 +46,7 @@ export class FileOpener {
     successName: 'success',
     errorName: 'error'
   })
-  static uninstall(packageId: string): Promise<any> {return; }
+  uninstall(packageId: string): Promise<any> {return; }
 
   /**
    * Check if an app is already installed
@@ -58,6 +58,6 @@ export class FileOpener {
     successName: 'success',
     errorName: 'error'
   })
-  static appIsInstalled(packageId: string): Promise<any> {return; }
+  appIsInstalled(packageId: string): Promise<any> {return; }
 
 }

@@ -72,14 +72,14 @@ export class Network {
    * @return {Observable<any>}
    */
   @CordovaFunctionOverride()
-  static onchange(): Observable<any> { return; }
+  onchange(): Observable<any> { return; }
 
   /**
    * Returns an observable to watch connection type changes
    * @return {Observable<any>}
    */
   @CordovaFunctionOverride()
-  static ontypechange(): Observable<any> { return; }
+  ontypechange(): Observable<any> { return; }
 
   /**
    * Get notified when the device goes offline
@@ -89,7 +89,7 @@ export class Network {
     eventObservable: true,
     event: 'offline'
   })
-  static onDisconnect(): Observable<any> { return; }
+  onDisconnect(): Observable<any> { return; }
 
   /**
    * Get notified when the device goes online
@@ -99,6 +99,6 @@ export class Network {
     eventObservable: true,
     event: 'online'
   })
-  static onConnect(): Observable<any> { return; }
+  onConnect(): Observable<any> { return; }
 
 }
