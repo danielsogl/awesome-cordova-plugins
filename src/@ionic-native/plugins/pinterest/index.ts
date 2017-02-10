@@ -169,6 +169,7 @@ export interface PinterestPin {
   pluginRef: 'cordova.plugins.Pinterest',
   repo: 'https://github.com/zyramedia/cordova-plugin-pinterest',
   install: 'ionic plugin add cordova-plugin-pinterest --variable APP_ID=YOUR_APP_ID',
+  installVariables: ['APP_ID'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()

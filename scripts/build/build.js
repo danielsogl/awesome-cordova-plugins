@@ -9,12 +9,15 @@ const ROOT = path.resolve(path.join(__dirname, '../../')), // root ionic-native 
   VERSION = require(path.resolve(ROOT, 'package.json')).version, // current ionic-native version
   PLUGINS_PATH = path.resolve(ROOT, 'src/@ionic-native/plugins'), // path to plugins source files
   CORE_PACKAGE_JSON = require(path.resolve(__dirname, 'core-package.json')), // core package.json
+  UTILS_PACKAGE_JSON = require(path.resolve(__dirname, 'utils-package.json')), // utils package.json
   PLUGIN_PACKAGE_JSON = require(path.resolve(__dirname, 'plugin-package.json')), // plugin package.json template
   PLUGIN_TS_CONFIG = require(path.resolve(__dirname, 'tsconfig-plugin.json')), // plugin tsconfig template
+  PLUGIN_CONFIG = require(path.resolve(__dirname, 'plugin-config.json')), // plugin config for @ionic-native/utils
   BUILD_TMP = path.resolve(ROOT, '.tmp'), // tmp directory path
   BUILD_DIST_ROOT = path.resolve(ROOT, 'dist/packages-dist/@ionic-native'), // dist directory root path
   BUILD_PLUGINS_DIST = path.resolve(BUILD_DIST_ROOT, 'plugins'), // plugins dist directory path
-  BUILD_CORE_DIST = path.resolve(BUILD_DIST_ROOT, 'core'); // core dist directory path
+  BUILD_CORE_DIST = path.resolve(BUILD_DIST_ROOT, 'core'), // core dist directory path
+  BUILD_UTILS_DIST = path.resolve(BUILD_DIST_ROOT, 'utils');
 
 
 // Delete dist directory and any temporary files
@@ -32,6 +35,14 @@ fs.mkdirpSync(BUILD_TMP);
 console.log('Preparing core module package.json');
 CORE_PACKAGE_JSON.version = VERSION;
 fs.writeJsonSync(path.resolve(BUILD_CORE_DIST, 'package.json'), CORE_PACKAGE_JSON);
+
+console.log('Preparing utils module package.json');
+UTILS_PACKAGE_JSON.version = VERSION;
+fs.mkdirpSync(BUILD_UTILS_DIST);
+fs.writeJsonSync(path.resolve(BUILD_UTILS_DIST, 'package.json'), UTILS_PACKAGE_JSON);
+
+console.log('Copying utils module');
+fs.copySync(path.resolve(__dirname, 'utils.js'), path.resolve(BUILD_UTILS_DIST, 'index.js'));
 
 
 // Fetch a list of the plugins
@@ -72,31 +83,38 @@ const addPluginToQueue = pluginName => {
       .then(() => fs.readFileAsync(PLUGIN_SRC_PATH, 'utf-8')) // read the plugin definition
       .then((pluginFile) => {
 
-        let postinstall,
-          regexInstall = /install:\s'(.*)',?\s/g.exec(pluginFile),
-          regexPlugin = /plugin:\s'(.*)',?\s/g.exec(pluginFile);
+        let packageLocator,
+          installVariables,
+          regexPlugin = /plugin:\s'(.*)',?\s/g.exec(pluginFile),
+          regexPluginName = /pluginName:\s'(.*)',?\s/g.exec(pluginFile),
+          regexVars = /installVariables:\s(\[.*]),?\s/g.exec(pluginFile);
 
-        if (regexInstall) {
-          // console.log('install command exists');
-          // postinstall = regexInstall[1];
-
-        } else if (regexPlugin) {
-          postinstall = `ionic plugin add ${ regexPlugin[1] }`;
-        } else {
-          console.log('nothing was found');
+        if (regexPlugin) {
+          packageLocator = regexPlugin[1];
         }
 
+        if (regexVars) {
+          installVariables = JSON.parse(regexVars[1].replace(/'/g, '"'));
+        }
 
+        if (packageLocator) console.log(packageLocator);
+        if (installVariables) console.log(installVariables);
+
+        // clone plugin-config.json
+        const pluginConfig = JSON.parse(JSON.stringify(PLUGIN_CONFIG));
+
+        pluginConfig.name = regexPluginName[1];
+        pluginConfig.variables = installVariables;
+        pluginConfig.locator = packageLocator;
+
+        return fs.writeJsonAsync(path.resolve(BUILD_PLUGINS_DIST, pluginName, 'plugin-config.json'), pluginConfig);
+      })
+      .then(() => {
         // clone package.json
         const packageJson = JSON.parse(JSON.stringify(PLUGIN_PACKAGE_JSON));
 
         packageJson.name = `@ionic-native/${pluginName}`;
-        packageJson.version = packageJson.dependencies['@ionic-native/core'] = VERSION;
-
-        if (postinstall) {
-          // add postinstall script
-          packageJson.scripts = { postinstall };
-        }
+        packageJson.version = packageJson.dependencies['@ionic-native/core'] = packageJson.dependencies['@ionic-native/utils'] = VERSION;
 
         return fs.writeJsonAsync(path.resolve(BUILD_PLUGINS_DIST, pluginName, 'package.json'), packageJson);
       })
@@ -107,7 +125,7 @@ const addPluginToQueue = pluginName => {
 
           if (err) {
             // oops! something went wrong.
-            callback(`Building ${pluginName} failed.`);
+            callback(`\n\nBuilding ${pluginName} failed.`);
             console.log(stdout);
             return;
           }

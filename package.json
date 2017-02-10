@@ -55,6 +55,7 @@
     "lint": "gulp lint",
     "build": "npm run lint && npm run build:core && npm run build:modules",
     "build:core": "tsc -p scripts/build/tsconfig-core.json",
+    "build:utils": "tsc -p scripts/build/tsconfig-utils.json",
     "build:modules": "node scripts/build/build.js",
     "shipit": "npm run build && npm run npmpub",
     "npmpub": "sh scripts/build/publish.sh",

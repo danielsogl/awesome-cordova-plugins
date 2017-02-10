@@ -8,7 +8,8 @@
   "license": "MIT",
   "dependencies": {
     "@angular/core": "2.2.1",
-    "@ionic-native/core": "{{VERSION}}"
+    "@ionic-native/core": "{{VERSION}}",
+    "@ionic-native/utils": "{{VERSION}}"
   },
   "peerDependencies": {
     "rxjs": "5.0.0-beta.12"
@@ -16,5 +17,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/driftyco/ionic-native.git"
+  },
+  "scripts": {
+    "postinstall": "node -p \"require('@ionic-native/utils').install(require('./plugin-config.json'))\""
   }
 }
