@@ -14,6 +14,7 @@ module.exports = function jekyll(renderDocsProcessor) {
 
       docs.forEach(function(doc, i) {
         doc.npmId = doc.outputPath.replace('/README.md', '');
+        doc.outputPath = doc.outputPath.replace('src/', '');
       });
 
       // returning docs will replace docs object in the next process

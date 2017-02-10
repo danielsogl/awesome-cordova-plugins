@@ -25,4 +25,3 @@ deployment:
    branch: master
    commands:
      - ./scripts/docs/update_docs.sh
-     - ./scripts/docs/update_readmes.sh

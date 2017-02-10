@@ -147,7 +147,7 @@ module.exports = function(currentVersion) {
 
 // Configure file writing
 .config(function(writeFilesProcessor) {
-  writeFilesProcessor.outputFolder  = './' + config.pluginDir;
+  writeFilesProcessor.outputFolder  = './dist/packages-dist/';
 })
 
 // Configure rendering
