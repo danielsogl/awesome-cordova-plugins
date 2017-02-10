@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-vibration
+$ npm install @ionic-native/vibration --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/vibration/)

@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add https://github.com/Glitchbone/CordovaYoutubeVideoPlayer.git
+$ npm install @ionic-native/youtube-video-player --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/youtube-video-player/)

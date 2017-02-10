@@ -13,7 +13,7 @@ declare var window;
  * - (Android) Google Play Services SDK installed via [Android SDK Manager](https://developer.android.com/sdk/installing/adding-packages.html)
  * @usage
  * ```typescript
- * import { GoogleAnalytics } from 'ionic-native';
+ * import { GoogleAnalytics } from '@ionic-native/googleanalytics';
  *
  * GoogleAnalytics.startTrackerWithId('YOUR_TRACKER_ID')
  *    .then(() => {

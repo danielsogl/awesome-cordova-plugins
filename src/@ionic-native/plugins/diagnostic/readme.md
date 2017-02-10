@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova.plugins.diagnostic
+$ npm install @ionic-native/diagnostic --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/diagnostic/)

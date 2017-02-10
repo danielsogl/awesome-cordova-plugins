@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-media
+$ npm install @ionic-native/media --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/media/)

@@ -404,7 +404,7 @@ export interface DownloadProgress {
  *
  * @usage
  * ```typescript
- * import { CodePush } from 'ionic-native';
+ * import { CodePush } from '@ionic-native/code-push';
  *
  * // note - mostly error & completed methods of observable will not fire
  * // as syncStatus will contain the current state of the update

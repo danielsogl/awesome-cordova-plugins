@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-inappbrowser
+$ npm install @ionic-native/inappbrowser --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/inappbrowser/)

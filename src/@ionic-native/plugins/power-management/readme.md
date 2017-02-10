@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-powermanagement-orig
+$ npm install @ionic-native/power-management --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/power-management/)

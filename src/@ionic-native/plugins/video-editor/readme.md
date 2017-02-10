@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-video-editor
+$ npm install @ionic-native/video-editor --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/video-editor/)

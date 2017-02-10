@@ -64,10 +64,10 @@ export interface ThreeDeeTouchForceTouch {
  * @usage
  * Please do refer to the original plugin's repo for detailed usage. The usage example here might not be sufficient.
  * ```
- * import { ThreeDeeTouch } from 'ionic-native';
+ * import { ThreeDeeTiouch } from '@ionic-native/3dtouch';
  *
  * // import for type completion on variables
- * import { ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch } from 'ionic-native';
+ * import { ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch } from '@ionic-native/3dtouch';
  * ...
  *
  * ThreeDeeTouch.isAvailable().then(isAvailable => console.log("3D Touch available? " + isAvailable));

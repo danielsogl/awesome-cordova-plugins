@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-dialogs
+$ npm install @ionic-native/dialogs --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/dialogs/)

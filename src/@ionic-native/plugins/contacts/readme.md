@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-contacts
+$ npm install @ionic-native/contacts --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/contacts/)

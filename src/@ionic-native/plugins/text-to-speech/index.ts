@@ -17,7 +17,7 @@ export interface TTSOptions {
  *
  * @usage
  * ```
- * import {TextToSpeech} from 'ionic-native';
+ * import {TextToSpeech} from '@ionic-native/text-to-speech';
  *
  * TextToSpeech.speak('Hello World')
  *   .then(() => console.log('Success'))

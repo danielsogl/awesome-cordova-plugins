@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-ibeacon
+$ npm install @ionic-native/ibeacon --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/ibeacon/)

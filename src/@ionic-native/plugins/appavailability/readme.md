@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-appavailability
+$ npm install @ionic-native/appavailability --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/appavailability/)

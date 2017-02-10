@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-x-toast
+$ npm install @ionic-native/toast --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/toast/)

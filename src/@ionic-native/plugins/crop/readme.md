@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-crop
+$ npm install @ionic-native/crop --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/crop/)

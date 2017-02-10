@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-calendar
+$ npm install @ionic-native/calendar --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/calendar/)

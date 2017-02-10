@@ -7,7 +7,7 @@ import {Plugin, Cordova} from '@ionic-native/core';
  *
  * @usage
  * ```
- * import { LocationAccuracy } from 'ionic-native';
+ * import { LocationAccuracy } from '@ionic-native/location-accuracy';
  *
  * LocationAccuracy.canRequest().then((canRequest: boolean) => {
  *

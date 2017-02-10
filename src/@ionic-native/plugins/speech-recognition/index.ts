@@ -51,7 +51,7 @@ export interface SpeechRecognitionListeningOptionsAndroid {
  *
  * @usage
  * ```
- * import { SpeechRecognition } from 'ionic-native';
+ * import { SpeechRecognition } from '@ionic-native/speech-recognition';
  *
  * // Check feature available
  * SpeechRecognition.isRecognitionAvailable()

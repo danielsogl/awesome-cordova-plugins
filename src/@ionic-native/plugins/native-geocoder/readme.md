@@ -13,7 +13,7 @@
 </p>
 
 ```
-$ ionic plugin add cordova-plugin-nativegeocoder
+$ npm install @ionic-native/native-geocoder --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/native-geocoder/)

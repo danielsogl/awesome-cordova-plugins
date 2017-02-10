@@ -8,7 +8,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {Zip} from 'ionic-native';
+ * import {Zip} from '@ionic-native/zip';
  *
  * Zip.unzip('path/to/source.zip', 'path/to/dest', (progress) => console.log('Unzipping, ' + Math.round((progress.loaded / progress.total) * 100) + '%'))
  *  .then((result) => {

@@ -21,7 +21,7 @@ module.exports = function(currentVersion) {
                       linksPackage, gitPackage])
 
 // .processor(require('./processors/latest-version'))
-.processor(require('./processors/jekyll'))
+.processor(require('./processors/readmes'))
 .processor(require('./processors/remove-private-members'))
 .processor(require('./processors/hide-private-api'))
 .processor(require('./processors/collect-inputs-outputs'))

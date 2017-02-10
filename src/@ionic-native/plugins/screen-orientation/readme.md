@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-screen-orientation
+$ npm install @ionic-native/screen-orientation --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/screen-orientation/)

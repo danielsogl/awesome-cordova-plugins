@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-x-socialsharing
+$ npm install @ionic-native/socialsharing --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/socialsharing/)

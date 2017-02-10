@@ -93,7 +93,7 @@ export interface FacebookLoginResponse {
  *
  * @usage
  * ```typescript
- * import { Facebook } from 'ionic-native';
+ * import { Facebook } from '@ionic-native/facebook';
  *
  *
  *

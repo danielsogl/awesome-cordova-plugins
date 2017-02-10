@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-media-capture
+$ npm install @ionic-native/media-capture --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/media-capture/)

@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-firebase
+$ npm install @ionic-native/firebase --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/firebase/)

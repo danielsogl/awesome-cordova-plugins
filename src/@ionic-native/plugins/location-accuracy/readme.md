@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-request-location-accuracy
+$ npm install @ionic-native/location-accuracy --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/location-accuracy/)

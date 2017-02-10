@@ -13,7 +13,7 @@
 </p>
 
 ```
-$ ionic plugin add cordova-plugin-stripe
+$ npm install @ionic-native/stripe --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/stripe/)

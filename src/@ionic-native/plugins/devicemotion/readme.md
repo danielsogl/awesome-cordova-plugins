@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-device-motion
+$ npm install @ionic-native/devicemotion --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/devicemotion/)

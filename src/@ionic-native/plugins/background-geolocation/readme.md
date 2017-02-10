@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-mauron85-background-geolocation
+$ npm install @ionic-native/background-geolocation --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/background-geolocation/)

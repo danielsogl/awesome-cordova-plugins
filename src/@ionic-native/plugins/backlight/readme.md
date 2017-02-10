@@ -13,7 +13,7 @@
 </p>
 
 ```
-$ ionic plugin add cordova-plugin-backlight
+$ npm install @ionic-native/backlight --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/backlight/)

@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add https://github.com/VersoSolutions/CordovaClipboard.git
+$ npm install @ionic-native/clipboard --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/clipboard/)

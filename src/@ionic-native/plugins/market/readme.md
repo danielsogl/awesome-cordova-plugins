@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-market
+$ npm install @ionic-native/market --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/market/)

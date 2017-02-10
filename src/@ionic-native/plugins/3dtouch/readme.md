@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-3dtouch
+$ npm install @ionic-native/3dtouch --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/3dtouch/)

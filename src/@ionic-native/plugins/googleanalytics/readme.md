@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-google-analytics
+$ npm install @ionic-native/googleanalytics --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/googleanalytics/)

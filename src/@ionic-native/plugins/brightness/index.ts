@@ -10,7 +10,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Brightness } from 'ionic-native';
+ * import { Brightness } from '@ionic-native/brightness';
  *
  *
  * let brightnessValue: number = 0.8;

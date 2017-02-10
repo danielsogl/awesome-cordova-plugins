@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add uk.co.workingedge.phonegap.plugin.launchnavigator
+$ npm install @ionic-native/launchnavigator --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/launchnavigator/)

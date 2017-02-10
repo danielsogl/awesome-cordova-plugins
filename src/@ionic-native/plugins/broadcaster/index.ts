@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```
- * import { Broadcaster } from 'ionic-native';
+ * import { Broadcaster } from '@ionic-native/broadcaster';
  *
  * // Listen to events from Native
  * Broadcaster.addEventListener('eventName').then((event) => console.log(event));

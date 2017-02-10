@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add ionic-plugin-keyboard
+$ npm install @ionic-native/keyboard --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/keyboard/)

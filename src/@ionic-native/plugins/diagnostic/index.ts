@@ -8,7 +8,7 @@ import {Cordova, Plugin, CordovaProperty} from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Diagnostic } from 'ionic-native';
+ * import { Diagnostic } from '@ionic-native/diagnostic';
  *
  * let successCallback = (isAvailable) => { console.log('Is available? ' + isAvailable); };
  * let errorCallback = (e) => console.error(e);

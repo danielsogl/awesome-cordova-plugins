@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-file
+$ npm install @ionic-native/file --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/file/)
@@ -21,7 +21,7 @@ The File class implements static convenience functions to access files and direc
 
 Example:
 ```
-import { File } from 'ionic-native';
+import { File } from '@ionic-native/file';
 
 declare var cordova: any;
 const fs:string = cordova.file.dataDirectory;

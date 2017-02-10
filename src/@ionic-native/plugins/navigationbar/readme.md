@@ -13,7 +13,7 @@
 </p>
 
 ```
-$ ionic plugin add cordova-plugin-navigationbar
+$ npm install @ionic-native/navigationbar --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/navigationbar/)

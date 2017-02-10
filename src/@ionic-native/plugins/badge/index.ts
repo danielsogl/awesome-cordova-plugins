@@ -11,7 +11,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Badge } from 'ionic-native';
+ * import { Badge } from '@ionic-native/badge';
  *
  *
  * Badge.set(10);

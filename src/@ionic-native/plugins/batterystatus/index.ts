@@ -23,7 +23,7 @@ export interface BatteryStatusResponse {
  *
  * @usage
  * ```typescript
- * import { BatteryStatus } from 'ionic-native';
+ * import { BatteryStatus } from '@ionic-native/batterystatus';
  *
  *
  * // watch change in battery status

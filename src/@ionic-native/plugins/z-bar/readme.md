@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-cszbar
+$ npm install @ionic-native/z-bar --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/z-bar/)

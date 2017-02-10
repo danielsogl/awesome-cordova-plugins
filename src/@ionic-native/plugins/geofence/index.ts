@@ -10,7 +10,7 @@ declare var window: any;
  * Geofences persist after device reboot. Geofences will be monitored even when the app is not running.
  * @usage
  * ```
- * import { Geofence } from 'ionic-native';
+ * import { Geofence } from '@ionic-native/geofence';
  * import { Platform } from  'ionic-angular'
  * ...
  *

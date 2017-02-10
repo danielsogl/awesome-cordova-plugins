@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-spinner-dialog
+$ npm install @ionic-native/spinnerdialog --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/spinnerdialog/)

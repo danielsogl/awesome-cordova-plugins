@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-velda-devicefeedback
+$ npm install @ionic-native/device-feedback --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/device-feedback/)

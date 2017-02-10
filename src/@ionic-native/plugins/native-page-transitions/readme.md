@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add com.telerik.plugins.nativepagetransitions
+$ npm install @ionic-native/native-page-transitions --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/native-page-transitions/)

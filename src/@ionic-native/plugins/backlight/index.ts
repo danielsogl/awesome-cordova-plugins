@@ -10,7 +10,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import { Backlight } from 'ionic-native';
+ * import { Backlight } from '@ionic-native/backlight';
  *
  * // Turn backlight on
  * Backlight.on().then(() => console.log('backlight on'));

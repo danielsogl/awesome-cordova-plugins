@@ -264,7 +264,7 @@ export interface BackgroundGeolocationConfig {
  * @usage
  *
  * ```typescript
- * import { BackgroundGeolocation } from 'ionic-native';
+ * import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
  *
  *
  * // When device is ready :

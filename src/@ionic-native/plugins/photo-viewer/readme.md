@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add com-sarriaroman-photoviewer
+$ npm install @ionic-native/photo-viewer --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/photo-viewer/)

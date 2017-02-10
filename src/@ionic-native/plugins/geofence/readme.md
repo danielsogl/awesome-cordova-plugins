@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-geofence
+$ npm install @ionic-native/geofence --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/geofence/)

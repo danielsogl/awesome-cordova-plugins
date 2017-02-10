@@ -8,7 +8,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import { DeviceFeedback } from 'ionic-native';
+ * import { DeviceFeedback } from '@ionic-native/device-feedback';
  *
  * DeviceFeedback.acoustic();
  *

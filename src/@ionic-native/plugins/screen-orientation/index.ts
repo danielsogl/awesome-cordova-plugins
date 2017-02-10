@@ -13,7 +13,7 @@ declare var window;
  *
  * @usage
  * ```typescript
- * import { ScreenOrientation } from 'ionic-native';
+ * import { ScreenOrientation } from '@ionic-native/screen-orientation';
  *
  *
  * // set to either landscape

@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-broadcaster
+$ npm install @ionic-native/broadcaster --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/broadcaster/)

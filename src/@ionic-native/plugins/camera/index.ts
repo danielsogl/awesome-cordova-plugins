@@ -94,7 +94,7 @@ export interface CameraPopoverOptions {
  *
  * @usage
  * ```typescript
- * import { Camera } from 'ionic-native';
+ * import { Camera } from '@ionic-native/camera';
  *
  *
  * Camera.getPicture(options).then((imageData) => {

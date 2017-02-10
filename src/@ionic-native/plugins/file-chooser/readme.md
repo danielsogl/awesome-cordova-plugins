@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add http://github.com/don/cordova-filechooser.git
+$ npm install @ionic-native/file-chooser --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/file-chooser/)

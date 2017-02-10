@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add https://github.com/Slidee/cordova-plugin-stepcounter
+$ npm install @ionic-native/stepcounter --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/stepcounter/)

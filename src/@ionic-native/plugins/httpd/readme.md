@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add https://github.com/floatinghotpot/cordova-httpd.git
+$ npm install @ionic-native/httpd --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/httpd/)

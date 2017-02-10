@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-sqlite-storage
+$ npm install @ionic-native/sqlite --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/sqlite/)

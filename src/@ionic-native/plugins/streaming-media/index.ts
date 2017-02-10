@@ -23,7 +23,7 @@ export interface StreamingAudioOptions {
  *
  * @usage
  * ```
- * import {StreamingMedia, StreamingVideoOptions} from 'ionic-native';
+ * import {StreamingMedia, StreamingVideoOptions} from '@ionic-native/streaming-media';
  *
  * let options: StreamingVideoOptions = {
  *   successCallback: () => { console.log('Video played') },

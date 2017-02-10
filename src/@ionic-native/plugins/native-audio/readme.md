@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-nativeaudio
+$ npm install @ionic-native/native-audio --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/native-audio/)

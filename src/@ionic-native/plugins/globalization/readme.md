@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-globalization
+$ npm install @ionic-native/globalization --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/globalization/)

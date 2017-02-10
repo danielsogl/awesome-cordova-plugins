@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add https://github.com/moust/cordova-plugin-videoplayer
+$ npm install @ionic-native/video-player --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/video-player/)

@@ -13,7 +13,7 @@
 </p>
 
 ```
-$ ionic plugin add cordova-plugin-hotspot
+$ npm install @ionic-native/hotspot --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/hotspot/)

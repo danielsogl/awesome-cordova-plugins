@@ -148,7 +148,7 @@ export class SQLiteObject {
  * @usage
  *
  * ```typescript
- * import { SQLite } from 'ionic-native';
+ * import { SQLite } from '@ionic-native/sqlite';
  *
  * // OPTION A: Use static constructor
  * SQLite.openDatabase({

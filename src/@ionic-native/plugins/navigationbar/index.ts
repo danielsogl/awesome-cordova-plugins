@@ -10,7 +10,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { NavigationBar } from 'ionic-native';
+ * import { NavigationBar } from '@ionic-native/navigationbar';
  *
  * let autoHide: boolean = true;
  * NavigationBar.hide(autoHide);

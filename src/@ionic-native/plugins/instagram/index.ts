@@ -7,7 +7,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {Instagram} from 'ionic-native';
+ * import {Instagram} from '@ionic-native/instagram';
  *
  * Instagram.share('data:image/png;uhduhf3hfif33', 'Caption')
  *   .then(() => console.log('Shared!'))

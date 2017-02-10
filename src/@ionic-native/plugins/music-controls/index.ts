@@ -23,7 +23,7 @@ export interface MusicControlsOptions {
  *
  * @usage
  * ```
- * import {MusicControls} from 'ionic-native';
+ * import {MusicControls} from '@ionic-native/music-controls';
  *
  * MusicControls.create({
  *   track       : 'Time is Running Out',        // optional, default : ''

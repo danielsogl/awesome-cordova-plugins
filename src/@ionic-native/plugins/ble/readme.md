@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-ble-central
+$ npm install @ionic-native/ble --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/ble/)

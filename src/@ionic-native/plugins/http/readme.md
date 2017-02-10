@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-http
+$ npm install @ionic-native/http --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/http/)

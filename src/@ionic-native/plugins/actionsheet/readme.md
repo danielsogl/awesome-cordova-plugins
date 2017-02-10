@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-actionsheet
+$ npm install @ionic-native/actionsheet --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/actionsheet/)

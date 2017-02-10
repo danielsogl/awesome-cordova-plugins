@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add onesignal-cordova-plugin
+$ npm install @ionic-native/onesignal --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/onesignal/)
