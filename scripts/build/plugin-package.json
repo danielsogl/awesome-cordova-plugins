@@ -19,6 +19,6 @@
     "url": "https://github.com/driftyco/ionic-native.git"
   },
   "scripts": {
-    "postinstall": "node -p \"require('@ionic-native/utils').install(require('./plugin-config.json'))\""
+    "postinstall": "node -e \"require('@ionic-native/utils').install(require('./plugin-config.json'))\""
   }
 }

@@ -26,7 +26,6 @@ module.exports = (function(){
 
   this.processVariables = function() {
     console.log('\nThis plugin requires variables to install. Please specify values for these variables to complete the process.'.green);
-    console.log();
 
     prompt.message = '-> Enter value for variable';
     prompt.delimiter = ': ';
@@ -94,5 +93,3 @@ module.exports = (function(){
   return this;
 
 })();
-
-
