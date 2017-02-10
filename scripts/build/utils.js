@@ -27,7 +27,7 @@ module.exports = (function(){
   this.processVariables = function() {
     console.log('\nThis plugin requires variables to install. Please specify values for these variables to complete the process.'.green);
 
-    prompt.message = '-> Enter value for variable';
+    prompt.message = null;
     prompt.delimiter = ': ';
     prompt.colors = false;
 
@@ -42,7 +42,6 @@ module.exports = (function(){
 
   this.confirmValues = function(values) {
     prompt.message = '';
-    prompt.delimiter = '';
     prompt.getInput('\nAre you sure you want to continue with the values you provided? (Y/n)'.green, function(err, result) {
       if (!result || result.toLowerCase() == 'y') {
         _self.varValues = values;
@@ -93,5 +92,3 @@ module.exports = (function(){
   return this;
 
 })();
-
-
