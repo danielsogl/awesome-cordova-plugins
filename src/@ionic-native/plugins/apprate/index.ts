@@ -98,7 +98,7 @@ export interface AppRateStoreAppUrls {
  *
  * @usage
  * ```typescript
- * import { AppRate } from 'ionic-native';
+ * import { AppRate } from '@ionic-native/apprate';
  *
  *  AppRate.preferences.storeAppURL = {
  *    ios: '<my_app_id>',

@@ -25,7 +25,7 @@ export interface DialogsPromptCallback {
  *
  * @usage
  * ```typescript
- * import { Dialogs } from 'ionic-native';
+ * import { Dialogs } from '@ionic-native/dialogs';
  *
  *
  *

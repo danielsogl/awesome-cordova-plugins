@@ -7,7 +7,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { PinDialog } from 'ionic-native';
+ * import { PinDialog } from '@ionic-native/'pin-dialog;
  *
  *
  * PinDialog.prompt('Enter your PIN', 'Verify PIN', ['OK', 'Cancel'])

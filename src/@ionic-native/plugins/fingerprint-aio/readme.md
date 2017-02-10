@@ -13,7 +13,7 @@
 </p>
 
 ```
-$ ionic plugin add cordova-plugin-fingerprint-aio
+$ npm install @ionic-native/fingerprint-aio --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/fingerprint-aio/)

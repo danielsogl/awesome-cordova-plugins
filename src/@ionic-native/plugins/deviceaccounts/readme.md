@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add https://github.com/loicknuchel/cordova-device-accounts.git
+$ npm install @ionic-native/deviceaccounts --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/deviceaccounts/)

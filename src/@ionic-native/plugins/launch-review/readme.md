@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-launch-review
+$ npm install @ionic-native/launch-review --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/launch-review/)

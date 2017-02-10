@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-geolocation
+$ npm install @ionic-native/geolocation --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/geolocation/)

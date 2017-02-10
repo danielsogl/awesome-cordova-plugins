@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-dbmeter
+$ npm install @ionic-native/dbmeter --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/dbmeter/)

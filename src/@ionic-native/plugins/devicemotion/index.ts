@@ -41,7 +41,7 @@ export interface DeviceMotionAccelerometerOptions {
  *
  * @usage
  * ```typescript
- * import { DeviceMotion } from 'ionic-native';
+ * import { DeviceMotion } from '@ionic-native/devicemotion';
  *
  *
  * // Get the device current acceleration

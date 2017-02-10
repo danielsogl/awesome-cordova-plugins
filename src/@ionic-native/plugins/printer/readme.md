@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add de.appplant.cordova.plugin.printer
+$ npm install @ionic-native/printer --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/printer/)

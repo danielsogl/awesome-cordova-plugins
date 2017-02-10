@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-filepath
+$ npm install @ionic-native/filepath --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/filepath/)

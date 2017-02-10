@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-touch-id
+$ npm install @ionic-native/touchid --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/touchid/)

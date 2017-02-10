@@ -53,7 +53,7 @@ export interface ActionSheetOptions {
  *
  * @usage
  * ```typescript
- * import { ActionSheet } from 'ionic-native';
+ * import { ActionSheet } from '@ionic-native/actionsheet';
  *
  * let buttonLabels = ['Share via Facebook', 'Share via Twitter'];
  * ActionSheet.show({

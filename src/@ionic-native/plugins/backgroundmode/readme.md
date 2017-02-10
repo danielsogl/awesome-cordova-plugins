@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-background-mode
+$ npm install @ionic-native/backgroundmode --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/backgroundmode/)

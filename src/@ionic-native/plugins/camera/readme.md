@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-camera
+$ npm install @ionic-native/camera --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/camera/)

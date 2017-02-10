@@ -134,7 +134,7 @@ export interface CardIOResponse {
  * @description
  * @usage
  * ```
- * import { CardIO } from 'ionic-native';
+ * import { CardIO } from '@ionic-native/card-io';
  *
  *
  * CardIO.canScan()

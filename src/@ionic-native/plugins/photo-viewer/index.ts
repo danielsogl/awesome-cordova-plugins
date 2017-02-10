@@ -4,7 +4,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * @description This plugin can display your image in full screen with the ability to pan, zoom, and share the image.
  * @usage
  * ```typescript
- * import { PhotoViewer } from 'ionic-native';
+ * import { PhotoViewer } from '@ionic-native/photo-viewer';
  *
  * PhotoViewer.show('https://mysite.com/path/to/image.jpg');
  *

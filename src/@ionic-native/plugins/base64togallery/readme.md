@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-base64-to-gallery
+$ npm install @ionic-native/base64togallery --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/base64togallery/)

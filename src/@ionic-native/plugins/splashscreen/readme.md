@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-splashscreen
+$ npm install @ionic-native/splashscreen --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/splashscreen/)

@@ -49,7 +49,7 @@ export const GoogleMapsAnimation = {
  *  CameraPosition,
  *  GoogleMapsMarkerOptions,
  *  GoogleMapsMarker
- * } from 'ionic-native';
+ * } from '@ionic-native/googlemap';
  *
  * export class MapPage {
  *  constructor() {}

@@ -11,7 +11,7 @@ declare var navigator: any;
  *
  * @usage
  * ```typescript
- * import { Network } from 'ionic-native';
+ * import { Network } from '@ionic-native/network';
  *
  * // watch network for a disconnect
  * let disconnectSubscription = Network.onDisconnect().subscribe(() => {

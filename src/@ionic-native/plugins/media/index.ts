@@ -12,7 +12,7 @@ export interface MediaError {
  * @description
  * @usage
  * ```typescript
- * import { MediaPlugin } from 'ionic-native';
+ * import { MediaPlugin } from '@ionic-native/media';
  *
  *
  *

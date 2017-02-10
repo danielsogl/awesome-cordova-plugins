@@ -10,7 +10,7 @@ declare var window: any;
  *
  * @usage
  * ```
- * import {FilePath} from 'ionic-native';
+ * import {FilePath} from '@ionic-native/filepath';
  *
  * FilePath.resolveNativePath(path)
  *   .then(filePath => console.log(filePath);

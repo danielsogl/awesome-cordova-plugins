@@ -30,7 +30,7 @@ export interface HTTPResponse {
  *
  * @usage
  * ```
- * import { HTTP } from 'ionic-native';
+ * import { HTTP } from '@ionic-native/http';
  *
  * HTTP.get('http://ionic.io', {}, {})
  *   .then(data => {

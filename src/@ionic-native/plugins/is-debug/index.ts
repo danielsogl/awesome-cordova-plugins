@@ -8,7 +8,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {IsDebug} from 'ionic-native';
+ * import {IsDebug} from '@ionic-native/is-debug';
  *
  * IsDebug.getIsDebug()
  *   .then((isDebug: boolean) => console.log('Is debug:', isDebug))

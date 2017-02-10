@@ -10,7 +10,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Clipboard } from 'ionic-native';
+ * import { Clipboard } from '@ionic-native/clipboard';
  *
  *
  * Clipboard.copy('Hello world');

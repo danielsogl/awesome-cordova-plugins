@@ -231,7 +231,7 @@ export interface IBeaconDelegate {
  * @usage
  *
  * ```typescript
- * import { IBeacon } from 'ionic-native';
+ * import { IBeacon } from '@ionic-native/ibeacon';
  *
  *
  * // Request permission to use location on iOS

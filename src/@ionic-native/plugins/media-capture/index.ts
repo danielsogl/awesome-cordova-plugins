@@ -113,7 +113,7 @@ export interface ConfigurationData {
  * @description
  * @usage
  * ```typescript
- * import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from 'ionic-native';
+ * import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
  *
  *
  * let options: CaptureImageOptions = { limit: 3 };

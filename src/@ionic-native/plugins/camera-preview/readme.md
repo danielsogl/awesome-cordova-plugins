@@ -13,7 +13,7 @@
 </p>
 
 ```
-$ ionic plugin add cordova-plugin-camera-preview
+$ npm install @ionic-native/camera-preview --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/camera-preview/)

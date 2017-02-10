@@ -119,7 +119,7 @@ export interface GeolocationOptions {
  * @usage
  *
  * ```typescript
- * import { Geolocation } from 'ionic-native';
+ * import { Geolocation } from '@ionic-native/geolocation';
  *
  *
  * Geolocation.getCurrentPosition().then((resp) => {

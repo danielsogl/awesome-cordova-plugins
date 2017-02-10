@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-device
+$ npm install @ionic-native/device --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/device/)

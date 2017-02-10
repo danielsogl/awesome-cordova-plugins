@@ -4,7 +4,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * @description Native Audio Playback
  * @usage
  * ```typescript
- * import {NativeAudio} from 'ionic-native';
+ * import {NativeAudio} from '@ionic-native/native-audio';
  *
  * NativeAudio.preloadSimple('uniqueId1', 'path/to/file.mp3').then(onSuccess, onError);
  * NativeAudio.preloadComplex('uniqueId2', 'path/to/file2.mp3', 1, 1, 0).then(onSuccess, onError);

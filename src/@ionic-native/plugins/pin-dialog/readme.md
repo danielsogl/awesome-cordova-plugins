@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-pin-dialog
+$ npm install @ionic-native/pin-dialog --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/pin-dialog/)

@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-statusbar
+$ npm install @ionic-native/statusbar --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/statusbar/)

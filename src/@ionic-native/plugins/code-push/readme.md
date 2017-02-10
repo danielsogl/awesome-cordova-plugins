@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-code-push
+$ npm install @ionic-native/code-push --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/code-push/)

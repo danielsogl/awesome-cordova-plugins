@@ -13,7 +13,7 @@
 </p>
 
 ```
-$ ionic plugin add cordova-plugin-speechrecognition
+$ npm install @ionic-native/speech-recognition --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/speech-recognition/)

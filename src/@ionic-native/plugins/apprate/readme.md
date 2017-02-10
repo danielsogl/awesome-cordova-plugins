@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-apprate
+$ npm install @ionic-native/apprate --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/apprate/)

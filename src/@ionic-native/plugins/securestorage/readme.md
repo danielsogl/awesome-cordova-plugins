@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-secure-storage
+$ npm install @ionic-native/securestorage --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/securestorage/)

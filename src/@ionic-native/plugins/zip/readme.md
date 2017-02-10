@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-zip
+$ npm install @ionic-native/zip --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/zip/)

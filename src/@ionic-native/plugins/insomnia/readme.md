@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git
+$ npm install @ionic-native/insomnia --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/insomnia/)

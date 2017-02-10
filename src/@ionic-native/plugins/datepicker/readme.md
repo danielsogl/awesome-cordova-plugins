@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-datepicker
+$ npm install @ionic-native/datepicker --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/datepicker/)

@@ -16,7 +16,7 @@ declare let window: any;
  *
  * @usage
  * ```
- * import {NFC, Ndef} from 'ionic-native';
+ * import {NFC, Ndef} from '@ionic-native/nfc';
  *
  * let message = Ndef.textRecord('Hello world');
  * NFC.share([message]).then(onSuccess).catch(onError);

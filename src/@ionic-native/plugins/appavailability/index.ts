@@ -9,7 +9,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { AppAvailability, Device } from 'ionic-native';
+ * import { AppAvailability, Device } from '@ionic-native/appavailability';
  *
  *
  * let app;

@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-streaming-media
+$ npm install @ionic-native/streaming-media --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/streaming-media/)

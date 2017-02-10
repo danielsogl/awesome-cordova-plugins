@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```
- * import { Firebase } from 'ionic-native';
+ * import { Firebase } from '@ionic-native/firebase';
  *
  * Firebase.getToken()
  *   .then(token => console.log(`The token is ${token}`)) // save the token server-side and use it to push notifications to this device

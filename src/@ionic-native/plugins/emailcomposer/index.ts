@@ -35,7 +35,7 @@ export interface EmailComposerOptions {
  *
  * @usage
  * ```typescript
- * import { EmailComposer } from 'ionic-native';
+ * import { EmailComposer } from '@ionic-native/emailcomposer';
  *
  *
  * EmailComposer.isAvailable().then((available: boolean) =>{

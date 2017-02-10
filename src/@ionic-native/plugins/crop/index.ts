@@ -5,7 +5,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * @description Crops images
  * @usage
  * ```
- * import {Crop} from 'ionic-native';
+ * import {Crop} from '@ionic-native/crop';
  *
  * ...
  *

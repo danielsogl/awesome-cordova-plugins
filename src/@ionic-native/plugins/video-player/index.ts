@@ -25,7 +25,7 @@ export interface VideoOptions {
  *
  * @usage
  * ```typescript
- * import { VideoPlayer } from 'ionic-native';
+ * import { VideoPlayer } from '@ionic-native/video-player;
  *
  *
  * // Playing a video.

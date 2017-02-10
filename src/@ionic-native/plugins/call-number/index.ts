@@ -7,7 +7,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {CallNumber} from 'ionic-native';
+ * import {CallNumber} from '@ionic-native/call-number';
  *
  * CallNumber.callNumber(18001010101, true)
  *   .then(() => console.log('Launched dialer!'))

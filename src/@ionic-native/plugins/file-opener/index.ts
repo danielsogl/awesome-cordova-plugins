@@ -7,7 +7,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {FileOpener} from 'ionic-native';
+ * import {FileOpener} from '@ionic-native/file-opener';
  *
  *
  *

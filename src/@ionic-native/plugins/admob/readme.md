@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-admobpro
+$ npm install @ionic-native/admob --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/admob/)

@@ -32,7 +32,7 @@ export interface SmsOptionsAndroid {
  *
  * @usage
  * ```typescript
- * import { SMS } from 'ionic-native';
+ * import { SMS } from '@ionic-native/sms';
  *
  *
  * // Send a text message using default options

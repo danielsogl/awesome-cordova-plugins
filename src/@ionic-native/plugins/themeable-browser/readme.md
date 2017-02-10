@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-themeablebrowser
+$ npm install @ionic-native/themeable-browser --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/themeable-browser/)

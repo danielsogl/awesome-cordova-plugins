@@ -11,7 +11,7 @@ declare var cordova: any;
  * @usage
  *
  * ```typescript
- * import { SecureStorage } from 'ionic-native';
+ * import { SecureStorage } from '@ionic-native/securestorage';
  *
  * let secureStorage: SecureStorage = new SecureStorage();
  * secureStorage.create('my_store_name')

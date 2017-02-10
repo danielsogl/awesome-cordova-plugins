@@ -8,7 +8,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Flashlight } from 'ionic-native';
+ * import { Flashlight } from '@ionic-native/flashlight';
  *
  *
  *

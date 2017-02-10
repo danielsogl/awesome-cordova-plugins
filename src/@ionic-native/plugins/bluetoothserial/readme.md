@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-bluetooth-serial
+$ npm install @ionic-native/bluetoothserial --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/bluetoothserial/)

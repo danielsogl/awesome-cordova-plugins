@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-safariviewcontroller
+$ npm install @ionic-native/safari-view-controller --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/safari-view-controller/)

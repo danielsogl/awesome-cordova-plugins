@@ -66,7 +66,7 @@ export interface LaunchNavigatorOptions {
  * Please refer to the plugin's repo for detailed usage. This docs page only explains the Native wrapper.
  *
  * ```typescript
- * import { LaunchNavigator, LaunchNavigatorOptions } from 'ionic-native';
+ * import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launchnavigator';
  *
  * let options: LaunchNavigatorOptions = {
  *   start: 'London, ON',

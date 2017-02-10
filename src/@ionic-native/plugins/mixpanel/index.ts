@@ -9,7 +9,7 @@ declare var mixpanel: any;
  *
  * @usage
  * ```
- * import {Mixpanel} from 'ionic-native';
+ * import {Mixpanel} from '@ionic-native/mixpanel';
  *
  * Mixpanel.init(token)
  *   .then(onSuccess)

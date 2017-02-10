@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add phonegap-nfc
+$ npm install @ionic-native/nfc --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/nfc/)

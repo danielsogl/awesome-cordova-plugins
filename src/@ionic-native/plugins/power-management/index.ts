@@ -7,7 +7,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {PowerManagement} from 'ionic-native';
+ * import {PowerManagement} from '@ionic-native/power-management';
  *
  * PowerManagement.acquire()
  *   .then(onSuccess)

@@ -108,7 +108,7 @@ export interface HotspotDevice {
  * @description
  * @usage
  * ```typescript
- * import { Hotspot, Network } from 'ionic-native';
+ * import { Hotspot, Network } from '@ionic-native/hotspot';
  *
  *
  * Hotspot.scanWifi().then((networks: Array<Network>) => {

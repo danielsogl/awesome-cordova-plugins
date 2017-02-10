@@ -7,7 +7,7 @@ declare var navigator: any;
  * @description Captures a screen shot
  * @usage
  * ```typescript
- * import {Screenshot} from 'ionic-native';
+ * import {Screenshot} from '@ionic-native/screenshot';
  *
  * // Take a screenshot and save to file
  * Screenshot.save('jpg', 80, 'myscreenshot.jpg').then(onSuccess, onError);

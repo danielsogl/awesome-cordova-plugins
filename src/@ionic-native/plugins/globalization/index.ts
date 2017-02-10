@@ -5,7 +5,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * @description
  * @usage
  * ```typescript
- * import { Globalization } from 'ionic-native';
+ * import { Globalization } from '@ionic-native/globalization';
  *
  *
  * ```

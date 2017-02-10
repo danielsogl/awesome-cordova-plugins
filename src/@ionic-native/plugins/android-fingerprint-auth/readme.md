@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-android-fingerprint-auth
+$ npm install @ionic-native/android-fingerprint-auth --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/android-fingerprint-auth/)

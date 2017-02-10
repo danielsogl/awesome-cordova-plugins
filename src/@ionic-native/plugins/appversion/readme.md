@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-app-version
+$ npm install @ionic-native/appversion --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/appversion/)

@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add com.paypal.cordova.mobilesdk
+$ npm install @ionic-native/pay-pal --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/pay-pal/)

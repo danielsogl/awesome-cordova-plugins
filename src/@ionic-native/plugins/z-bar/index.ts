@@ -43,7 +43,7 @@ export interface ZBarOptions {
  *
  * @usage
  * ```
- * import { ZBar } from 'ionic-native';
+ * import { ZBar } from '@ionic-native/z-bar';
  *
  * let zBarOptions = {
  *       flash: "off",

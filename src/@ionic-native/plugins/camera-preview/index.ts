@@ -31,7 +31,7 @@ export interface CameraPreviewSize {
  *
  * @usage
  * ```
- * import { CameraPreview, CameraPreviewRect } from 'ionic-native';
+ * import { CameraPreview, CameraPreviewRect } from '@ionic-native/camera-preview';
  *
  * // camera options (Size and location)
  * let cameraRect: CameraPreviewRect = {

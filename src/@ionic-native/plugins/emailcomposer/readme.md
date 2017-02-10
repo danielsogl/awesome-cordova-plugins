@@ -13,7 +13,7 @@
 </p>
 
 ```
-$ ionic plugin add cordova-plugin-email
+$ npm install @ionic-native/emailcomposer --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/emailcomposer/)

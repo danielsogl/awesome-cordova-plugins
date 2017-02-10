@@ -18,7 +18,7 @@ export interface InAppBrowserEvent extends Event {
  * @description Launches in app Browser
  * @usage
  * ```typescript
- * import {InAppBrowser} from 'ionic-native';
+ * import {InAppBrowser} from '@ionic-native/inappbrowser';
  *
  *
  * ...

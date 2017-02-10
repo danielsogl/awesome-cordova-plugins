@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-file-opener2
+$ npm install @ionic-native/file-opener --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/file-opener/)

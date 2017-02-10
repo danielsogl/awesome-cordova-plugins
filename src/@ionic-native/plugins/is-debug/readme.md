@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-is-debug
+$ npm install @ionic-native/is-debug --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/is-debug/)

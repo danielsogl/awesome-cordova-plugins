@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add card.io.cordova.mobilesdk
+$ npm install @ionic-native/card-io --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/card-io/)

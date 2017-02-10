@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add https://github.com/gitawego/cordova-screenshot.git
+$ npm install @ionic-native/screenshot --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/screenshot/)

@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-file-transfer
+$ npm install @ionic-native/filetransfer --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/filetransfer/)

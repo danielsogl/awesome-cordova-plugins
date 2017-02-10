@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-tts
+$ npm install @ionic-native/text-to-speech --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/text-to-speech/)

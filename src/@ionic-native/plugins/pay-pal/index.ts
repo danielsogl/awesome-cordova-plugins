@@ -6,7 +6,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {PayPal, PayPalPayment, PayPalConfiguration} from "ionic-native";
+ * import {PayPal, PayPalPayment, PayPalConfiguration} from "@ionic-native/pay-pal";
  *
  * PayPal.init({
  *   "PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",

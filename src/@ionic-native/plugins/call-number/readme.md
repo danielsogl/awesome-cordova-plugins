@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add call-number
+$ npm install @ionic-native/call-number --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/call-number/)

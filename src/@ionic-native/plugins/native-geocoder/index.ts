@@ -8,7 +8,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from 'ionic-native';
+ * import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
  *
  * NativeGeocoder.reverseGeocode(52.5072095, 13.1452818)
  *   .then((result: NativeGeocoderReverseResult) => console.log("The address is " + result.address + " in " + result.countryCode))

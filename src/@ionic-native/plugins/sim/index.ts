@@ -10,7 +10,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Sim } from 'ionic-native';
+ * import { Sim } from '@ionic-native/sim';
  *
  *
  * Sim.getSimInfo().then(

@@ -6,7 +6,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {YoutubeVideoPlayer} from 'ionic-native';
+ * import {YoutubeVideoPlayer} from '@ionic-native/youtube-video-player';
  *
  * YoutubeVideoPlayer.openVideo('myvideoid');
  *

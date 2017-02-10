@@ -22,7 +22,7 @@ export interface NativeTransitionOptions {
  *
  * @usage
  * ```
- * import {NativePageTransitions, NativeTransitionOptions} from 'ionic-native';
+ * import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions';
  *
  * let options: NativeTransitionOptions = {
  *    direction: 'up',
@@ -94,4 +94,3 @@ export class NativePageTransitions {
   static curl(options: NativeTransitionOptions): Promise<any> { return; }
 
 }
-

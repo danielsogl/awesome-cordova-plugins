@@ -8,7 +8,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import { Rollbar } from 'ionic-native';
+ * import { Rollbar } from '@ionic-native/rollbar';
  *
  * Rollbar.init();
  *

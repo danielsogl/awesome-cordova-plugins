@@ -59,7 +59,7 @@ export interface StripeCardTokenParams {
  *
  * @usage
  * ```
- * import { Stripe } from 'ionic-native';
+ * import { Stripe } from '@ionic-native/stripe';
  *
  * Stripe.setPublishableKey('my_publishable_key');
  *

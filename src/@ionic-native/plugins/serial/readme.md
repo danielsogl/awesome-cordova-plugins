@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordovarduino
+$ npm install @ionic-native/serial --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/serial/)

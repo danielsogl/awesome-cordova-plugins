@@ -73,7 +73,7 @@ export interface ThemeableBrowserOptions {
  *
  * @usage
  * ```
- * import { ThemeableBrowser } from 'ionic-native';
+ * import { ThemeableBrowser } from '@ionic-native/themeable-browser';
  *
  * // can add options from the original InAppBrowser in a JavaScript object form (not string)
  * // This options object also takes additional parameters introduced by the ThemeableBrowser plugin

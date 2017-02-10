@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-headercolor
+$ npm install @ionic-native/headercolor --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/headercolor/)

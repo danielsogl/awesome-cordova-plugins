@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add de.appplant.cordova.plugin.local-notification
+$ npm install @ionic-native/localnotifications --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/localnotifications/)

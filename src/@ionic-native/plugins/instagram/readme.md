@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-instagram-plugin
+$ npm install @ionic-native/instagram --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/instagram/)

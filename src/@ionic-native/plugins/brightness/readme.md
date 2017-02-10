@@ -7,7 +7,7 @@
 <!-- end header block -->
 
 ```
-$ ionic plugin add cordova-plugin-brightness
+$ npm install @ionic-native/brightness --save
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/brightness/)

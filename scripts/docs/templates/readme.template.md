@@ -19,7 +19,7 @@
 
 <@- for prop in doc.decorators[0].argumentInfo @>
 ```
-$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif @>
+$ <@ if prop.install @><$ prop.install $><@ else @>npm install @ionic-native/<$ doc.npmId $> --save<@ endif @>
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/v2/native/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/')|replace('index.ts','')|replace('src/@ionic-native/plugins/','') $>)
