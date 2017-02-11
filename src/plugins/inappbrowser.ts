@@ -22,6 +22,14 @@ export interface InAppBrowserOptions {
   mediaPlaybackRequiresUserAction?: 'yes' | 'no';
   /** (Android Only) Set to yes to make InAppBrowser WebView to pause/resume with the app to stop background audio (this may be required to avoid Google Play issues) */
   shouldPauseOnSuspend?: 'yes' | 'no';
+  /** (iOS Only) Set to a string to use as the Done button's caption. Note that you need to localize this value yourself. */
+  closebuttoncaption?: string;
+  /** (iOS Only) Set to yes or no (default is no). Turns on/off the UIWebViewBounce property. */
+  disallowoverscroll?: 'yes' | 'no';
+  /** (iOS Only) Set to yes or no to turn the toolbar on or off for the InAppBrowser (defaults to yes) */
+  toolbar?: 'yes' | 'no';
+  /** (iOS Only)  Set to yes or no to prevent viewport scaling through a meta tag (defaults to no). */
+  enableViewportScale?: 'yes' | 'no';
   /** (iOS Only) Set to yes or no to allow in-line HTML5 media playback, displaying within the browser window rather than a device-specific playback interface.
    * The HTML's video element must also include the webkit-playsinline attribute (defaults to no) */
   allowInlineMediaPlayback?: 'yes' | 'no';
