@@ -86,8 +86,12 @@ export class InAppBrowser {
    *                 The options string must not contain any blank space, and each feature's
    *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
    */
-  constructor(url: string, target?: string, options?: InAppBrowserOptions) {
+  constructor(url: string, target?: string, options?: InAppBrowserOptions);
+  constructor(url: string, target?: string, options?: string);
+  constructor(url: string, target?: string, options?: string | InAppBrowserOptions) {
     try {
+      if (options && typeof options !== 'string')
+        options = Object.keys(options).map(key => `${key}=${options[key]}`).join(',');
       this._objectInstance = cordova.InAppBrowser.open(url, target, options);
     } catch (e) {
       window.open(url);
