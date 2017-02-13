@@ -1,97 +1,17 @@
 import { Injectable } from '@angular/core';
-import {Cordova, CordovaInstance, Plugin, pluginWarn, InstanceProperty} from '@ionic-native/core';
+import { Cordova, CordovaInstance, Plugin, pluginWarn, InstanceProperty } from '@ionic-native/core';
 
 
 declare var sqlitePlugin;
 
 /**
- * @name SQLite
- *
- * @description
- * Access SQLite databases on the device.
- *
- * @usage
- *
- * ```typescript
- * import { SQLite } from 'ionic-native';
- *
- * // OPTION A: Use static constructor
- * SQLite.openDatabase({
- *   name: 'data.db',
- *   location: 'default'
- * })
- *   .then((db: SQLite) => {
- *
- *     db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {}).catch(() => {});
- *
- *   })
- *   .catch(error => console.error('Error opening database', error);
- *
- *
- * // OPTION B: Create a new instance of SQLite
- * let db = new SQLite();
- * db.openDatabase({
- *   name: 'data.db',
- *   location: 'default' // the location field is required
- * }).then(() => {
- *   db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {
- *
- *   }, (err) => {
- *     console.error('Unable to execute sql: ', err);
- *   });
- * }, (err) => {
- *   console.error('Unable to open database: ', err);
- * });
- * ```
- *
+ * @private
  */
-@Plugin({
-  pluginName: 'SQLite',
-  pluginRef: 'sqlitePlugin',
-  plugin: 'cordova-sqlite-storage',
-  repo: 'https://github.com/litehelpers/Cordova-sqlite-storage'
-})
-@Injectable()
-export class SQLite {
+export class SQLiteObject {
 
-  private _objectInstance: any;
+  constructor(private _objectInstance: any) { }
 
   @InstanceProperty databaseFeatures: any;
-
-  constructor() { }
-
-  /*
-  openDatabase(config: any): Promise<SQLite> {
-    return new SQLite().openDatabase(config);
-  }
-  */
-
-
-  /**
-   * Open or create a SQLite database file.
-   *
-   * See the plugin docs for an explanation of all options: https://github.com/litehelpers/Cordova-sqlite-storage#opening-a-database
-   *
-   * @param config the config for opening the database.
-   */
-  openDatabase(config: any): Promise<any> {
-    return new Promise((resolve, reject) => {
-      if (typeof sqlitePlugin !== 'undefined') {
-        sqlitePlugin.openDatabase(config, db => {
-          this._objectInstance = db;
-          resolve(db);
-        }, error => {
-          console.warn(error);
-          reject(error);
-        });
-      } else {
-        pluginWarn({
-          pluginName: 'SQLite',
-          plugin: 'cordova-sqlite-storage'
-        });
-      }
-    });
-  }
 
   @CordovaInstance({
     sync: true
@@ -216,5 +136,80 @@ export class SQLite {
    */
   @Cordova()
   deleteDatabase(first): Promise<any> { return; }
+
+}
+
+/**
+ * @name SQLite
+ *
+ * @description
+ * Access SQLite databases on the device.
+ *
+ * @usage
+ *
+ * ```typescript
+ * import { SQLite } from 'ionic-native';
+ *
+ * // OPTION A: Use static constructor
+ * SQLite.openDatabase({
+ *   name: 'data.db',
+ *   location: 'default'
+ * })
+ *   .then((db: SQLite) => {
+ *
+ *     db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {}).catch(() => {});
+ *
+ *   })
+ *   .catch(error => console.error('Error opening database', error);
+ *
+ *
+ * // OPTION B: Create a new instance of SQLite
+ * let db = new SQLite();
+ * db.openDatabase({
+ *   name: 'data.db',
+ *   location: 'default' // the location field is required
+ * }).then(() => {
+ *   db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {
+ *
+ *   }, (err) => {
+ *     console.error('Unable to execute sql: ', err);
+ *   });
+ * }, (err) => {
+ *   console.error('Unable to open database: ', err);
+ * });
+ * ```
+ *
+ * @classes
+ * SQLiteObject
+ */
+@Plugin({
+  pluginName: 'SQLite',
+  pluginRef: 'sqlitePlugin',
+  plugin: 'cordova-sqlite-storage',
+  repo: 'https://github.com/litehelpers/Cordova-sqlite-storage'
+})
+@Injectable()
+export class SQLite {
+
+  /**
+   * Open or create a SQLite database file.
+   *
+   * See the plugin docs for an explanation of all options: https://github.com/litehelpers/Cordova-sqlite-storage#opening-a-database
+   *
+   * @param config the config for opening the database.
+   * @return Promise<SQLiteObject>
+   */
+  create(config: any): Promise<SQLiteObject> {
+    return new Promise((resolve, reject) => {
+      if (typeof sqlitePlugin !== 'undefined') {
+        sqlitePlugin.openDatabase(config, db => resolve(new SQLiteObject(db)), reject);
+      } else {
+        pluginWarn({
+          pluginName: 'SQLite',
+          plugin: 'cordova-sqlite-storage'
+        });
+      }
+    });
+  }
 
 }

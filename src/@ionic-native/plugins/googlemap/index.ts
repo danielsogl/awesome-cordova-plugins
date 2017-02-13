@@ -39,81 +39,9 @@ export const GoogleMapsAnimation = {
 };
 
 /**
- * @name Google Maps
- * @description This plugin uses the native Google Maps SDK
- * @usage
- * ```
- * import {
- *  GoogleMap,
- *  GoogleMapsEvent,
- *  GoogleMapsLatLng,
- *  CameraPosition,
- *  GoogleMapsMarkerOptions,
- *  GoogleMapsMarker
- * } from 'ionic-native';
- *
- * @Injectable()
-export class MapPage {
- *  constructor() {}
- *
- * // Load map only after view is initialize
- * ngAfterViewInit() {
- *  this.loadMap();
- * }
- *
- * loadMap() {
- *  // make sure to create following structure in your view.html file
- *  // and add a height (for example 100%) to it, else the map won't be visible
- *  // <ion-content>
- *  //  <div #map id="map" style="height:100%;"></div>
- *  // </ion-content>
- *
- *  // create a new map by passing HTMLElement
- *  let element: HTMLElement = document.getElementById('map');
- *
- *  let map = new GoogleMap(element);
- *
- *  // listen to MAP_READY event
- *  map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
- *
- *  // create LatLng object
- *  let ionic: GoogleMapsLatLng = new GoogleMapsLatLng(43.0741904,-89.3809802);
- *
- *  // create CameraPosition
- *  let position: CameraPosition = {
- *    target: ionic,
- *    zoom: 18,
- *    tilt: 30
- *  };
- *
- *  // move the map's camera to position
- *  map.moveCamera(position);
- *
- *  // create new marker
- *  let markerOptions: GoogleMapsMarkerOptions = {
- *    position: ionic,
- *    title: 'Ionic'
- *  };
- *
- *  map.addMarker(markerOptions)
- *    .then((marker: GoogleMapsMarker) => {
- *       marker.showInfoWindow();
- *     });
- *  }
- *
- * }
- * ```
+ * @private
  */
-@Plugin({
-  pluginName: 'GoogleMap',
-  pluginRef: 'plugin.google.maps.Map',
-  plugin: 'cordova-plugin-googlemaps',
-  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
-  install: 'ionic plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
-  installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS']
-})
-@Injectable()
-export class GoogleMap {
+export class GoogleMapsObject {
   _objectInstance: any;
 
   /**
@@ -478,6 +406,96 @@ export class GoogleMap {
 
   @CordovaInstance({ sync: true })
   panBy(): void { }
+}
+
+/**
+ * @name Google Maps
+ * @description This plugin uses the native Google Maps SDK
+ * @usage
+ * ```
+ * import {
+ *  GoogleMap,
+ *  GoogleMapsEvent,
+ *  GoogleMapsLatLng,
+ *  CameraPosition,
+ *  GoogleMapsMarkerOptions,
+ *  GoogleMapsMarker
+ * } from 'ionic-native';
+ *
+ * @Injectable()
+export class MapPage {
+ *  constructor() {}
+ *
+ * // Load map only after view is initialize
+ * ngAfterViewInit() {
+ *  this.loadMap();
+ * }
+ *
+ * loadMap() {
+ *  // make sure to create following structure in your view.html file
+ *  // and add a height (for example 100%) to it, else the map won't be visible
+ *  // <ion-content>
+ *  //  <div #map id="map" style="height:100%;"></div>
+ *  // </ion-content>
+ *
+ *  // create a new map by passing HTMLElement
+ *  let element: HTMLElement = document.getElementById('map');
+ *
+ *  let map = new GoogleMap(element);
+ *
+ *  // listen to MAP_READY event
+ *  map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
+ *
+ *  // create LatLng object
+ *  let ionic: GoogleMapsLatLng = new GoogleMapsLatLng(43.0741904,-89.3809802);
+ *
+ *  // create CameraPosition
+ *  let position: CameraPosition = {
+ *    target: ionic,
+ *    zoom: 18,
+ *    tilt: 30
+ *  };
+ *
+ *  // move the map's camera to position
+ *  map.moveCamera(position);
+ *
+ *  // create new marker
+ *  let markerOptions: GoogleMapsMarkerOptions = {
+ *    position: ionic,
+ *    title: 'Ionic'
+ *  };
+ *
+ *  map.addMarker(markerOptions)
+ *    .then((marker: GoogleMapsMarker) => {
+ *       marker.showInfoWindow();
+ *     });
+ *  }
+ *
+ * }
+ * ```
+ * @classes
+ * GoogleMapsObject
+ */
+@Plugin({
+  pluginName: 'GoogleMap',
+  pluginRef: 'plugin.google.maps.Map',
+  plugin: 'cordova-plugin-googlemaps',
+  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
+  install: 'ionic plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
+  installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS']
+})
+@Injectable()
+export class GoogleMap {
+
+  /**
+   * Creates a new GoogleMap instance
+   * @param element {string | HTMLElement} Element ID or reference to attach the map to
+   * @param options {any} Options
+   * @returns {GoogleMapsObject}
+   */
+  create(element: string | HTMLElement, options?: any): GoogleMapsObject {
+    return new GoogleMapsObject(element, options);
+  }
 
 }
 

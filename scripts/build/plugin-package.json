@@ -6,12 +6,10 @@
   "typings": "index.d.ts",
   "author": "ionic",
   "license": "MIT",
-  "dependencies": {
+  "peerDependencies": {
     "@angular/core": "2.2.1",
     "@ionic-native/core": "{{VERSION}}",
-    "@ionic-native/utils": "{{VERSION}}"
-  },
-  "peerDependencies": {
+    "@ionic-native/utils": "{{VERSION}}",
     "rxjs": "5.0.0-beta.12"
   },
   "repository": {
