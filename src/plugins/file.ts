@@ -342,7 +342,7 @@ declare var FileError: {
 /**
  * @name File
  * @description
- * This plugin implements a File API allowing read/write access to files residing on the device.
+ * This plugin implements a File API allowing read/write access to files residing on the device (it can't be tested in a browser).
  *
  * The File class implements static convenience functions to access files and directories.
  *
@@ -359,6 +359,7 @@ declare var FileError: {
  *  The (now-defunct) Directories and System extensions Latest: http://www.w3.org/TR/2012/WD-file-system-api-20120417/
  *  Although most of the plugin code was written when an earlier spec was current: http://www.w3.org/TR/2011/WD-file-system-api-20110419/
  *  It also implements the FileWriter spec : http://dev.w3.org/2009/dap/file-system/file-writer.html
+ *  
  */
 @Plugin({
   pluginName: 'File',
