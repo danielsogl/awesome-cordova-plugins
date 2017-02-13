@@ -477,7 +477,7 @@ export class MapPage {
  * GoogleMapsObject
  */
 @Plugin({
-  pluginName: 'GoogleMap',
+  pluginName: 'GoogleMaps',
   pluginRef: 'plugin.google.maps.Map',
   plugin: 'cordova-plugin-googlemaps',
   repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
@@ -485,7 +485,7 @@ export class MapPage {
   installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS']
 })
 @Injectable()
-export class GoogleMap {
+export class GoogleMaps {
 
   /**
    * Creates a new GoogleMap instance
