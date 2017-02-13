@@ -68,6 +68,72 @@ export interface ThemeableBrowserOptions {
 }
 
 /**
+ * @private
+ */
+export class ThemeableBrowserObject {
+
+  private _objectInstance: any;
+
+  constructor(url: string, target: string, styleOptions: ThemeableBrowserOptions) {
+    try {
+      this._objectInstance = cordova.ThemeableBrowser.open(url, target, styleOptions);
+    } catch (e) {
+      window.open(url);
+      console.warn('Native: ThemeableBrowser is not installed or you are running on a browser. Falling back to window.open.');
+    }
+  }
+
+  /**
+   * Displays an browser window that was opened hidden. Calling this has no effect
+   * if the browser was already visible.
+   */
+  @CordovaInstance({sync: true})
+  show(): void { }
+
+  /**
+   * Closes the browser window.
+   */
+  @CordovaInstance({sync: true})
+  close(): void { }
+
+  /**
+   * Reloads the current page
+   */
+  @CordovaInstance({ sync: true })
+  reload(): void { }
+
+  /**
+   * Injects JavaScript code into the browser window.
+   * @param script    Details of the script to run, specifying either a file or code key.
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance()
+  executeScript(script: {file?: string, code?: string}): Promise<any> {return; }
+
+  /**
+   * Injects CSS into the browser window.
+   * @param css       Details of the script to run, specifying either a file or code key.
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance()
+  insertCss(css: {file?: string, code?: string}): Promise<any> {return; }
+
+  /**
+   * A method that allows you to listen to events happening in the browser.
+   * Available events are: `ThemeableBrowserError`, `ThemeableBrowserWarning`, `critical`, `loadfail`, `unexpected`, `undefined`
+   * @param event Event name
+   * @returns {Observable<any>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
+   */
+  on(event: string): Observable<any> {
+    return new Observable<any>((observer) => {
+      this._objectInstance.addEventListener(event, observer.next.bind(observer));
+      return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
+    });
+  }
+
+}
+
+/**
  * @name ThemeableBrowser
  * @description
  * In-app browser that allows styling.
@@ -142,6 +208,8 @@ export interface ThemeableBrowserOptions {
  *
  * ```
  * We suggest that you refer to the plugin's repository for additional information on usage that may not be covered here.
+ * @classes
+ * ThemeableBrowserObject
  * @interfaces
  * ThemeableBrowserButton
  * ThemeableBrowserOptions
@@ -154,63 +222,16 @@ export interface ThemeableBrowserOptions {
 })
 @Injectable()
 export class ThemeableBrowser {
-  private _objectInstance: any;
-
-  constructor(url: string, target: string, styleOptions: ThemeableBrowserOptions) {
-    try {
-      this._objectInstance = cordova.ThemeableBrowser.open(url, target, styleOptions);
-    } catch (e) {
-      window.open(url);
-      console.warn('Native: ThemeableBrowser is not installed or you are running on a browser. Falling back to window.open, all instance methods will NOT work.');
-    }
-  }
 
   /**
-   * Displays an browser window that was opened hidden. Calling this has no effect
-   * if the browser was already visible.
+   * Creates a browser instance
+   * @param url {string} URL to open
+   * @param target {string} Target
+   * @param styleOptions {ThemeableBrowserOptions} Themeable browser options
+   * @returns {ThemeableBrowserObject}
    */
-  @CordovaInstance({sync: true})
-  show(): void { }
-
-  /**
-   * Closes the browser window.
-   */
-  @CordovaInstance({sync: true})
-  close(): void { }
-
-  /**
-   * Reloads the current page
-   */
-  @CordovaInstance({ sync: true })
-  reload(): void { }
-
-  /**
-   * Injects JavaScript code into the browser window.
-   * @param script    Details of the script to run, specifying either a file or code key.
-   * @returns {Promise<any>}
-   */
-  @CordovaInstance()
-  executeScript(script: {file?: string, code?: string}): Promise<any> {return; }
-
-  /**
-   * Injects CSS into the browser window.
-   * @param css       Details of the script to run, specifying either a file or code key.
-   * @returns {Promise<any>}
-   */
-  @CordovaInstance()
-  insertCss(css: {file?: string, code?: string}): Promise<any> {return; }
-
-  /**
-   * A method that allows you to listen to events happening in the browser.
-   * Available events are: `ThemeableBrowserError`, `ThemeableBrowserWarning`, `critical`, `loadfail`, `unexpected`, `undefined`
-   * @param event Event name
-   * @returns {Observable<any>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
-   */
-  on(event: string): Observable<any> {
-    return new Observable<any>((observer) => {
-      this._objectInstance.addEventListener(event, observer.next.bind(observer));
-      return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
-    });
+  create(url: string, target: string, styleOptions: ThemeableBrowserOptions): ThemeableBrowserObject {
+    return new ThemeableBrowserObject(url, target, styleOptions);
   }
 
 }
