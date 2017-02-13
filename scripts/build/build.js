@@ -91,7 +91,7 @@ const addPluginToQueue = pluginName => {
         const packageJson = JSON.parse(JSON.stringify(PLUGIN_PACKAGE_JSON));
 
         packageJson.name = `@ionic-native/${pluginName}`;
-        packageJson.version = packageJson.dependencies['@ionic-native/core'] = VERSION;
+        packageJson.version = packageJson.peerDependencies['@ionic-native/core'] = VERSION;
 
         if (postinstall) {
           // add postinstall script
