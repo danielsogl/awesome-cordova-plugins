@@ -35,6 +35,10 @@ export interface PluginConfig {
    */
   install?: string;
   /**
+   * Available installation variables
+   */
+  installVariables?: string[];
+  /**
    * Supported platforms
    */
   platforms?: string[];

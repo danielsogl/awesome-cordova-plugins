@@ -1,0 +1,9 @@
+{
+  "name": "Facebook",
+  "variables": [
+    "APP_ID",
+    "SOME_OTHER_VAR",
+    "AND_ANOTHER_ONE"
+  ],
+  "locator": "cordova-plugin-facebook4"
+}
