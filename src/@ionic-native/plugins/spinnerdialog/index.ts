@@ -13,7 +13,7 @@ export interface SpinnerDialogIOSOptions {
  * @description
  * @usage
  * ```typescript
- * import { SpinnerDialog } from '@ionic-native/spinnerdialog';
+ * import { SpinnerDialog } from '@ionic-native/spinner-dialog';
  *
  *
  * SpinnerDialog.show();

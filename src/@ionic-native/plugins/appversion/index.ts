@@ -12,7 +12,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { AppVersion } from '@ionic-native/appversion';
+ * import { AppVersion } from '@ionic-native/app-version';
  *
  *
  *  AppVersion.getAppName();

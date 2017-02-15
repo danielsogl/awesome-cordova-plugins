@@ -53,7 +53,7 @@ export class SecureStorageObject {
  * @usage
  *
  * ```typescript
- * import { SecureStorage } from '@ionic-native/securestorage';
+ * import { SecureStorage } from '@ionic-native/secure-storage';
  *
  * let secureStorage: SecureStorage = new SecureStorage();
  * secureStorage.create('my_store_name')

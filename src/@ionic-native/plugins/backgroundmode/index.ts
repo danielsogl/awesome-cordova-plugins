@@ -43,7 +43,7 @@ export interface BackgroundModeConfiguration {
 * Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode
 *@usage
 * ```typescript
-* import { BackgroundMode } from '@ionic-native/backgroundmode';
+* import { BackgroundMode } from '@ionic-native/background-mode';
 *
 * BackgroundMode.enable();
 * ```

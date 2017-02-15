@@ -13,7 +13,7 @@ declare var window;
  *
  * @usage
  * ```typescript
- * import { StatusBar } from '@ionic-native/statusbar';
+ * import { StatusBar } from '@ionic-native/status-bar';
  *
  *
  * StatusBar.overlaysWebView(true); // let status bar overlay webview

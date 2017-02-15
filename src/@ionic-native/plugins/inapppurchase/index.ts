@@ -9,7 +9,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```ts
- * import {InAppPurchase} from '@ionic-native/inapppurchase';
+ * import {InAppPurchase} from '@ionic-native/in-app-purchase';
  *
  * InAppPurchase
  *  .getProducts(['com.yourapp.prod1', 'com.yourapp.prod2', ...])

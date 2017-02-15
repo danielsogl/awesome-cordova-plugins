@@ -33,7 +33,7 @@ export interface ImagePickerOptions {
  *
  * @usage
  * ```typescript
- * import { ImagePicker } from '@ionic-native/imagepicker';
+ * import { ImagePicker } from '@ionic-native/image-picker';
  *
  *
  *

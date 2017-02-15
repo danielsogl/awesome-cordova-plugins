@@ -91,7 +91,7 @@ export interface ILocalNotification {
  *
  * @usage
  * ```typescript
- * import { LocalNotifications } from '@ionic-native/localnotification';
+ * import { LocalNotifications } from '@ionic-native/local-notifications';
  *
  *
  * // Schedule a single notification

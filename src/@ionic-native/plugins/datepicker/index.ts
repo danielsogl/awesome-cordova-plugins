@@ -126,7 +126,7 @@ export interface DatePickerOptions {
  *
  * @usage
  * ```typescript
- * import { DatePicker } from '@ionic-native/datepicker';
+ * import { DatePicker } from '@ionic-native/date-picker';
  *
  *
  * DatePicker.show({

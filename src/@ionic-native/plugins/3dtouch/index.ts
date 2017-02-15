@@ -64,7 +64,7 @@ export interface ThreeDeeTouchForceTouch {
  * @usage
  * Please do refer to the original plugin's repo for detailed usage. The usage example here might not be sufficient.
  * ```
- * import { ThreeDeeTiouch } from '@ionic-native/3dtouch';
+ * import { ThreeDeeTiouch } from '@ionic-native/three-dee-touch';
  *
  * // import for type completion on variables
  * import { ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch } from '@ionic-native/3dtouch';
