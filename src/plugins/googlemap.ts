@@ -37,6 +37,15 @@ export const GoogleMapsAnimation = {
   DROP: 'DROP'
 };
 
+export const GoogleMapsMapTypeId = {
+    HYBRID: 'MAP_TYPE_HYBRID',
+    NONE: 'MAP_TYPE_NONE',
+    NORMAL: 'MAP_TYPE_NORMAL',
+    ROADMAP: 'MAP_TYPE_ROADMAP',
+    SATELLITE: 'MAP_TYPE_SATELLITE',
+    TERAIN: 'MAP_TYPE_TERRAIN'
+};
+
 /**
  * @name Google Maps
  * @description This plugin uses the native Google Maps SDK
@@ -48,7 +57,8 @@ export const GoogleMapsAnimation = {
  *  GoogleMapsLatLng,
  *  CameraPosition,
  *  GoogleMapsMarkerOptions,
- *  GoogleMapsMarker
+ *  GoogleMapsMarker,
+ *  GoogleMapsMapTypeId
  * } from 'ionic-native';
  *
  * export class MapPage {
@@ -258,7 +268,7 @@ export class GoogleMap {
   setZoom(zoomLevel: number): void { }
 
   @CordovaInstance({ sync: true })
-  setMapTypeId(typeId: string): void { }
+  setMapTypeId(mapTypeId: string): void { }
 
   @CordovaInstance({ sync: true })
   setTilt(tiltLevel: number): void { }
