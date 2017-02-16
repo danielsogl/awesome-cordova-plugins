@@ -9,6 +9,7 @@ import { AdMob } from './plugins/admob';
 import { AndroidFingerprintAuth } from './plugins/android-fingerprint-auth';
 import { AppAvailability } from './plugins/appavailability';
 import { AppRate } from './plugins/apprate';
+import { AppPreferences } from './plugins/apppreferences';
 import { AppVersion } from './plugins/appversion';
 import { Badge } from './plugins/badge';
 import { BackgroundGeolocation } from './plugins/background-geolocation';
@@ -130,6 +131,7 @@ export * from './plugins/actionsheet';
 export * from './plugins/admob';
 export * from './plugins/android-fingerprint-auth';
 export * from './plugins/appavailability';
+export * from './plugins/apppreferences';
 export * from './plugins/apprate';
 export * from './plugins/appversion';
 export * from './plugins/background-geolocation';
@@ -254,6 +256,7 @@ window['IonicNative'] = {
   AdMob,
   AndroidFingerprintAuth,
   AppAvailability,
+  AppPreferences,
   AppRate,
   AppVersion,
   Badge,
