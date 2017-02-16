@@ -32,74 +32,72 @@ export class AppPreferences {
   /**
    * Get a preference value
    *
-   * @param {Function} successCallback The function to call when the value is available
-   * @param {Function} errorCallback The function to call when value is unavailable
-   * @param {string} dict Dictionary for key
+   * @param {string} dict Dictionary for key (OPTIONAL)
    * @param {string} key Key
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
-  static fetch(successCallback: Function, errorCallback: Function, dict: string, key?: string): Promise<any> { return; }
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  static fetch(dict: string, key?: string): Promise<any> { return; }
 
   /**
    * Set a preference value
    *
-   * @param {Function} successCallback The function to call when the value is set successfully
-   * @param {Function} errorCallback The function to call when value is not set
-   * @param {string} dict Dictionary for key
+   * @param {string} dict Dictionary for key (OPTIONAL)
    * @param {string} key Key
    * @param {string} value Value
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
-  static store(successCallback: Function, errorCallback: Function, dict: string, key: string, value?: string): Promise<any> {
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  static store(dict: string, key: string, value?: string): Promise<any> {
     return;
   }
 
   /**
    * Remove value from preferences
    *
-   * @param {Function} successCallback The function to call when the value is available
-   * @param {Function} errorCallback The function to call when value is unavailable
-   * @param {string} dict Dictionary for key
+   * @param {string} dict Dictionary for key (OPTIONAL)
    * @param {string} key Key
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
-  static remove(successCallback: Function, errorCallback: Function, dict: string, key?: string): Promise<any> { return; }
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  static remove(dict: string, key?: string): Promise<any> { return; }
 
   /**
    * Clear preferences
    *
-   * @param {Function} successCallback The function to call when the value is available
-   * @param {Function} errorCallback The function to call when value is unavailable
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
-  static clearAll(successCallback: Function, errorCallback: Function): Promise<any> { return; }
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  static clearAll(): Promise<any> { return; }
 
   /**
    * Show native preferences interface
    *
-   * @param {Function} successCallback The function to call when the value is available
-   * @param {Function} errorCallback The function to call when value is unavailable
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
-  static show(successCallback: Function, errorCallback: Function): Promise<any> { return; }
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  static show(): Promise<any> { return; }
 
   /**
    * Show native preferences interface
    *
-   * @param {Function} successCallback The function to call when the value is available
-   * @param {Function} errorCallback The function to call when value is unavailable
    * @param {boolean} subscribe true value to subscribe, false - unsubscribe
    * @return {Observable<any>} Returns an observable
    */
   @Cordova({
     observable: true
   })
-  static watch(successCallback: Function, errorCallback: Function, subscribe: boolean): Observable<any> { return; }
+  static watch(subscribe: boolean): Observable<any> { return; }
 
   /**
    * Return named configuration context
