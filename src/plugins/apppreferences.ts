@@ -10,15 +10,8 @@ import { Observable } from 'rxjs/Observable';
  * ```
  * import { AppPreferences } from 'ionic-native';
  *
- * AppPreferences.fetch(prefsRead, prefsErr, 'key');
+ * AppPreferences.fetch('key').then((res) => { console.log(res); });
  *
- * prefsRead(value) {
- *   console.log(value);
- * }
- *
- * prefsErr(error) {
- *   console.log(error);
- * }
  *
  */
 @Plugin({
