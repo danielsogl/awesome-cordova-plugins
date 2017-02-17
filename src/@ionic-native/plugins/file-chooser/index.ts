@@ -9,7 +9,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {FileChooser} from 'ionic-native';
+ * import {FileChooser} from '@ionic-native/file';
  *
  * FileChooser.open()
  *   .then(uri => console.log(uri));

@@ -11,6 +11,8 @@ var _ = require('lodash');
 var config = require('../config.json');
 var projectPackage = require('../../package.json');
 
+// jscs:disable validateIndentation
+
 // Define the dgeni package for generating the docs
 module.exports = function(currentVersion) {
 
@@ -19,7 +21,7 @@ module.exports = function(currentVersion) {
                       linksPackage, gitPackage])
 
 // .processor(require('./processors/latest-version'))
-.processor(require('./processors/jekyll'))
+.processor(require('./processors/readmes'))
 .processor(require('./processors/remove-private-members'))
 .processor(require('./processors/hide-private-api'))
 .processor(require('./processors/collect-inputs-outputs'))
@@ -67,7 +69,6 @@ module.exports = function(currentVersion) {
 //     }
 //   }
 // })
-
 .config(function(log) {
   log.level = 'error'; //'silly', 'debug', 'info', 'warn', 'error'
 })
@@ -85,7 +86,7 @@ module.exports = function(currentVersion) {
     // We don't separate by versions so always put the docs in the root
     var folder = '';
     return {
-      href: '/' + config.v2DocsDir.replace('content/',''),
+      href: '/' + config.v2DocsDir.replace('content/', ''),
       folder: folder,
       name: version
     };
@@ -102,10 +103,8 @@ module.exports = function(currentVersion) {
   computePathsProcessor.pathTemplates = [{
     docTypes: ['class', 'var', 'function', 'let'],
     getOutputPath: function(doc) {
-      var docPath = doc.name + '/index.md';
-      var path = 'content/' + config.v2DocsDir + '/' +  docPath;
-
-      return path;
+      return doc.originalModule.replace(config.pluginDir + '/', '')
+        .replace('/index', '') + '/README.md';
     }
   }];
 })
@@ -148,7 +147,7 @@ module.exports = function(currentVersion) {
 
 // Configure file writing
 .config(function(writeFilesProcessor) {
-  writeFilesProcessor.outputFolder  = './src/@ionic-native/plugins2/';
+  writeFilesProcessor.outputFolder  = './dist/packages-dist/';
 })
 
 // Configure rendering
@@ -177,8 +176,8 @@ module.exports = function(currentVersion) {
   // Specify how to match docs to templates.
   templateFinder.templatePatterns = [
     '${ doc.template }',
-    '${ doc.docType }.template.html',
-    'common.template.html'
+    '${ doc.docType }.template.md',
+    'readme.template.md'
   ];
 });
 

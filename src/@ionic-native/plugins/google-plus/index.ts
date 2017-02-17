@@ -6,7 +6,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * @description
  * @usage
  * ```typescript
- * import { GooglePlus } from 'ionic-native';
+ * import { GooglePlus } from '@ionic-native/google-plus';
  *
  * GooglePlus.login()
  *   .then(res => console.log(res))

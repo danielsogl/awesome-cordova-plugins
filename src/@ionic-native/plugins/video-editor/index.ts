@@ -125,7 +125,7 @@ export interface VideoInfo {
  *
  * @usage
  * ```
- * import {VideoEditor} from 'ionic-native';
+ * import {VideoEditor} from '@ionic-native/video-editor';
  *
  * VideoEditor.transcodeVideo({
  *   fileUri: '/path/to/input.mov',

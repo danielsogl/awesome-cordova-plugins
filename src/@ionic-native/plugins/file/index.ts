@@ -349,7 +349,7 @@ declare var FileError: {
  *
  * Example:
  * ```
- * import { File } from 'ionic-native';
+ * import { File } from '@ionic-native/file';
  *
  * declare var cordova: any;
  * const fs:string = cordova.file.dataDirectory;

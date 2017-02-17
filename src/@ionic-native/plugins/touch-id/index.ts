@@ -12,7 +12,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * @usage
  * ### Import Touch ID Plugin into Project
  * ```typescript
- * import { TouchID } from 'ionic-native';
+ * import { TouchID } from '@ionic-native/touch-id';
  * ```
  * ### Check for Touch ID Availability
  * ```typescript

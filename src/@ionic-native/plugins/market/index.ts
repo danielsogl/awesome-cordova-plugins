@@ -7,7 +7,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {Market} from 'ionic-native';
+ * import {Market} from '@ionic-native/market';
  *
  * Market.open('your.package.name');
  *

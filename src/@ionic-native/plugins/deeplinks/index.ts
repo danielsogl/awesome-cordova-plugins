@@ -30,7 +30,7 @@ export interface DeeplinkMatch {
  *
  * @usage
  * ```typescript
- * import { Deeplinks } from 'ionic-native';
+ * import { Deeplinks } from '@ionic-native/deeplinks';
  *
  * Deeplinks.route({
       '/about-us': AboutPage,

@@ -10,7 +10,7 @@ declare var window: any;
  *
  * @usage
  * ```typescript
- * import { Device } from 'ionic-native';
+ * import { Device } from '@ionic-native/device';
  *
  *
  * console.log('Device UUID is: ' + Device.uuid);

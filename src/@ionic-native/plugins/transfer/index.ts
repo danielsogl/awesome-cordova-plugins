@@ -116,7 +116,7 @@ export interface FileTransferError {
  *
  * @usage
  * ```typescript
- * import { Transfer } from 'ionic-native';
+ * import { Transfer } from '@ionic-native/transfer';
  *
  *
  * // Create instance:

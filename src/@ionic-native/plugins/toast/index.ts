@@ -45,7 +45,7 @@ export interface ToastOptions {
  *
  * @usage
  * ```typescript
- * import { Toast } from 'ionic-native';
+ * import { Toast } from '@ionic-native/toast';
  *
  *
  * Toast.show("I'm a toast", '5000', 'center').subscribe(

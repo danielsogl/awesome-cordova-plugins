@@ -11,7 +11,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import { LaunchReview } from 'ionic-native';
+ * import { LaunchReview } from '@ionic-native/launch-review';
  *
  * const appId: string = 'yourAppId';
  * LaunchReview.launch(appId)

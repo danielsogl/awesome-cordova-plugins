@@ -46,7 +46,7 @@ export interface PrintOptions {
  * @description Prints documents or HTML rendered content
  * @usage
  * ```typescript
- * import {Printer, PrintOptions} from 'ionic-native';
+ * import {Printer, PrintOptions} from '@ionic-native/printer';
  *
  * Printer.isAvailable().then(onSuccess, onError);
  *

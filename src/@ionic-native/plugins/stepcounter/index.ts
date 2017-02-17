@@ -11,7 +11,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import { Stepcounter } from 'ionic-native';
+ * import { Stepcounter } from '@ionic-native/stepcounter';
  *
  * let startingOffset = 0;
  * Stepcounter.start(startingOffset).then(onSuccess => console.log('stepcounter-start success', onSuccess), onFailure => console.log('stepcounter-start error', onFailure));

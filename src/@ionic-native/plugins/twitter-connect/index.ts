@@ -26,7 +26,7 @@ export interface TwitterConnectResponse {
  * Plugin to use Twitter Single Sign On
  * Uses Twitter's Fabric SDK
  * ```typescript
- * import {TwitterConnect} from 'ionic-native';
+ * import {TwitterConnect} from '@ionic-native/twitter-connect';
  *
  * function onSuccess(response) {
  *   console.log(response);
@@ -77,4 +77,3 @@ export class TwitterConnect {
   @Cordova()
   showUser(): Promise<any> {return; }
 }
-

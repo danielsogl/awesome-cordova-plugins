@@ -270,7 +270,7 @@ export enum OSActionType {
  *
  * @usage
  * ```typescript
- * import { OneSignal } from 'ionic-native';
+ * import { OneSignal } from '@ionic-native/onesignal';
  *
  * OneSignal.startInit('b2f7f966-d8cc-11e4-bed1-df8f05be55ba', '703322744261');
  *

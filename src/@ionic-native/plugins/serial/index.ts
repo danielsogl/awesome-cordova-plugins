@@ -22,7 +22,7 @@ export interface SerialOpenOptions {
  * @usage
  *
  * ```
- * import { Serial } from 'ionic-native';
+ * import { Serial } from '@ionic-native/serial';
  *
  * Serial.requestPermission({
  *   vid: '0403',

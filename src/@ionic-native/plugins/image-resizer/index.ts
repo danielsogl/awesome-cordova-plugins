@@ -49,7 +49,7 @@ export interface ImageResizerOptions {
  *
  * @usage
  * ```typescript
- * import { ImageResizer, ImageResizerOptions } from 'ionic-native';
+ * import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
  *
  * let options = {
  *  uri: uri,

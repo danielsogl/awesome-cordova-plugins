@@ -8,7 +8,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { HeaderColor } from 'ionic-native';
+ * import { HeaderColor } from '@ionic-native/header-color';
  *
  * HeaderColor.tint("#becb29");
  * ```

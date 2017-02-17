@@ -11,7 +11,7 @@ declare var window;
  * For usage information please refer to the plugin's Github repo.
  *
  * ```typescript
- * import {WebIntent} from 'ionic-native';
+ * import {WebIntent} from '@ionic-native/web-intent';
  *
  * WebIntent.startActivity(options).then(onSuccess, onError);
  *

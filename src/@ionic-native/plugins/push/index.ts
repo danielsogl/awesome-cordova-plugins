@@ -315,7 +315,7 @@ declare var PushNotification: {
  *
  * @usage
  * ```typescript
- * import { Push } from 'ionic-native';
+ * import { Push } from '@ionic-native/push';
  * ```
  */
 @Plugin({

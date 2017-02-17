@@ -23,7 +23,7 @@ export interface FingerprintOptions {
  *
  * @usage
  * ```typescript
- * import { FingerprintAIO } from 'ionic-native';
+ * import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
  *
  * FingerprintAIO.show({
  *     clientId: "Fingerprint-Demo",

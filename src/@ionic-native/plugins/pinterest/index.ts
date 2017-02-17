@@ -134,7 +134,7 @@ export interface PinterestPin {
  *
  * @usage
  * ```
- * import { Pinterest, PinterestUser, PinterestPin, PinterestBoard } from 'ionic-native';
+ * import { Pinterest, PinterestUser, PinterestPin, PinterestBoard } from '@ionic-native/pinterest';
  *
  * const scopes = [
  *   Pinterest.SCOPES.READ_PUBLIC,

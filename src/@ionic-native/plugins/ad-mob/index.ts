@@ -90,7 +90,7 @@ export interface AdMobAdExtras {
  * Plugin for Google Ads, including AdMob / DFP (doubleclick for publisher) and mediations to other Ad networks.
  * @usage
  * ```typescript
- * import { AdMob } from 'ionic-native';
+ * import { AdMob } from '@ionic-native/ad-mob';
  *
  * ionViewDidLoad() {
  *   AdMob.onAdDismiss()

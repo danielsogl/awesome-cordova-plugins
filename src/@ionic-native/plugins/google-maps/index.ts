@@ -420,7 +420,7 @@ export class GoogleMapsObject {
  *  CameraPosition,
  *  GoogleMapsMarkerOptions,
  *  GoogleMapsMarker
- * } from 'ionic-native';
+ * } from '@ionic-native/google-maps';
  *
  * @Injectable()
 export class MapPage {

@@ -17,7 +17,7 @@ export interface SafariViewControllerOptions {
  * @description
  * @usage
  * ```
- * import { SafariViewController } from 'ionic-native';
+ * import { SafariViewController } from '@ionic-native/safari-view-controller';
  *
  *
  * SafariViewController.isAvailable()
