@@ -8,11 +8,10 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@angular/core": "^2.4.6",
-    "rxjs": "5.0.0-beta.12"
-  },
   "devDependencies": {
+    "@angular/compiler": "^2.4.7",
+    "@angular/compiler-cli": "^2.4.7",
+    "@angular/core": "^2.4.6",
     "browserify": "^13.3.0",
     "canonical-path": "0.0.2",
     "conventional-changelog-cli": "^1.2.0",
@@ -54,7 +53,7 @@
     "start": "npm run test:watch",
     "lint": "gulp lint",
     "build": "npm run lint && npm run build:core && npm run build:modules",
-    "build:core": "tsc -p scripts/build/tsconfig-core.json",
+    "build:core": "ngc -p scripts/build/tsconfig-core.json",
     "build:utils": "tsc -p scripts/build/tsconfig-utils.json",
     "build:modules": "node scripts/build/build.js",
     "shipit": "npm run build && gulp readmes && npm run npmpub",

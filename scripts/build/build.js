@@ -97,9 +97,6 @@ const addPluginToQueue = pluginName => {
           installVariables = JSON.parse(regexVars[1].replace(/'/g, '"'));
         }
 
-        if (packageLocator) console.log(packageLocator);
-        if (installVariables) console.log(installVariables);
-
         // clone plugin-config.json
         const pluginConfig = JSON.parse(JSON.stringify(PLUGIN_CONFIG));
 
@@ -121,12 +118,12 @@ const addPluginToQueue = pluginName => {
       .then(() => {
 
         // compile the plugin
-        exec(`${ROOT}/node_modules/.bin/tsc -p ${tsConfigPath}`, (err, stdout, stderr) => {
+        exec(`${ROOT}/node_modules/.bin/ngc -p ${tsConfigPath}`, (err, stdout, stderr) => {
 
           if (err) {
             // oops! something went wrong.
             callback(`\n\nBuilding ${pluginName} failed.`);
-            console.log(stdout);
+            console.log(err);
             return;
           }
 

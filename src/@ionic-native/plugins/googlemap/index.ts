@@ -422,8 +422,7 @@ export class GoogleMapsObject {
  *  GoogleMapsMarker
  * } from '@ionic-native/google-maps';
  *
- * @Injectable()
-export class MapPage {
+ * export class MapPage {
  *  constructor() {}
  *
  * // Load map only after view is initialize
@@ -639,7 +638,6 @@ export interface GoogleMapsMarkerIcon {
 /**
  * @private
  */
-@Injectable()
 export class GoogleMapsMarker {
 
   constructor(private _objectInstance: any) { }
@@ -915,7 +913,7 @@ export interface GoogleMapsCircleOptions {
 /**
  * @private
  */
-@Injectable()
+
 export class GoogleMapsCircle {
 
   constructor(private _objectInstance: any) { }
@@ -1056,7 +1054,7 @@ export interface GoogleMapsPolylineOptions {
 /**
  * @private
  */
-@Injectable()
+
 export class GoogleMapsPolyline {
   constructor(private _objectInstance: any) { }
 
@@ -1196,7 +1194,7 @@ export interface GoogleMapsPolygonOptions {
 /**
  * @private
  */
-@Injectable()
+
 export class GoogleMapsPolygon {
 
   constructor(private _objectInstance: any) { }
@@ -1339,7 +1337,6 @@ export interface GoogleMapsTileOverlayOptions {
 /**
  * @private
  */
-@Injectable()
 export class GoogleMapsTileOverlay {
 
   constructor(private _objectInstance: any) { }
@@ -1469,7 +1466,6 @@ export interface GoogleMapsGroundOverlayOptions {
 /**
  * @private
  */
-@Injectable()
 export class GoogleMapsGroundOverlay {
 
   constructor(private _objectInstance: any) { }
@@ -1590,7 +1586,6 @@ export interface GoogleMapsKmlOverlayOptions {
 /**
  * @private
  */
-@Injectable()
 export class GoogleMapsKmlOverlay {
 
   constructor(private _objectInstance: any) { }
@@ -1683,7 +1678,6 @@ export class GoogleMapsKmlOverlay {
 /**
  * @private
  */
-@Injectable()
 export class GoogleMapsLatLngBounds {
   private _objectInstance: any;
 
@@ -1715,7 +1709,7 @@ export class GoogleMapsLatLngBounds {
 /**
  * @private
  */
-@Injectable()
+
 export class GoogleMapsLatLng {
 
   lat: number;
@@ -1774,14 +1768,13 @@ export interface GeocoderResult {
 /**
  * @private
  */
-@Injectable()
 export class Geocoder {
   /**
    * Converts position to address and vice versa
    * @param {GeocoderRequest} request Request object with either an address or a position
    * @returns {Promise<GeocoderResult[]>}
    */
-  geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
+  static geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
     return new Promise<GeocoderResult[]>((resolve, reject) => {
       if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) {
         pluginWarn({
