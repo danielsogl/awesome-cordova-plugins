@@ -15,7 +15,10 @@ const FLAGS = '--access public --tag alpha'; // add any flags here if you want..
 
 console.log('Publishing @ionic-native/core');
 exec(`npm publish ${CORE} ${FLAGS}`)
-  .then(() => exec(`npm publish ${UTILS} ${FLAGS}`))
+  .then(() => {
+    console.log('Publishing @ionic-native/utils');
+    return exec(`npm publish ${UTILS} ${FLAGS}`)
+  })
   .then(() => {
 
     const PLUGINS = fs.readdirSync(PLUGINS_ROOT);
