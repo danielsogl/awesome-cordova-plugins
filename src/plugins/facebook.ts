@@ -235,8 +235,8 @@ export class Facebook {
   @Cordova()
   static logEvent(
     name: string,
-    params?: Object,
-    valueToSum?: number
+    params: Object = null,
+    valueToSum: number = null
     ): Promise<any> { return; }
 
   /**
