@@ -4,20 +4,16 @@
     "declaration": true,
     "stripInternal": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "module": "es2015",
     "moduleResolution": "node",
     "outDir": "../../dist/packages-dist/",
     "rootDir": "../../src/",
-    "sourceMap": true,
-    "inlineSources": true,
     "target": "es5",
     "skipLibCheck": true,
     "lib": ["es2015", "dom"]
   },
   "files": [
     "../../src/@ionic-native/core/index.ts"
-  ],
-  "angularCompilerOptions": {
-    "genDir": "aot"
-  }
+  ]
 }

@@ -5,14 +5,14 @@ UTILS="./dist/packages-dist/@ionic-native/utils/"
 BUILD_PLUGINS_DIST='dist/packages-dist/@ionic-native/plugins'
 
 echo "Publishing @ionic-native/core"
-npm publish "$CORE" --access public
+npm publish "$CORE" --access public --tag alpha
 
 echo "Publishing @ionic-native/utils"
-npm publish "$UTILS" --access public
+npm publish "$UTILS" --access public --tag alpha
 
 # For each plugin, replace the values in tsconfig w/ the appropriate ones for this plugin
 for d in $PLUGINS ; do
   BASE=`basename $d`
   echo "Publishing @ionic-native/$BASE"
-  npm publish "$BUILD_PLUGINS_DIST/$BASE/" --access public
+  npm publish "$BUILD_PLUGINS_DIST/$BASE/" --access public --tag alpha
 done
