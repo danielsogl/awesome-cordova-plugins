@@ -11,7 +11,7 @@ const ROOT = path.resolve(path.join(__dirname, '../../')),
   CORE = path.resolve(DIST, 'core'),
   UTILS = path.resolve(DIST, 'utils');
 
-const FLAGS = '--access public --tag alpha'; // add any flags here if you want... (example: --tag alpha)
+const FLAGS = '--access public'; // add any flags here if you want... (example: --tag alpha)
 
 console.log('Publishing @ionic-native/core');
 exec(`npm publish ${CORE} ${FLAGS}`)
