@@ -109,6 +109,7 @@ export interface CameraPopoverOptions {
  * CameraOptions
  * CameraPopoverOptions
  */
+@Injectable()
 @Plugin({
   pluginName: 'Camera',
   plugin: 'cordova-plugin-camera',
@@ -116,7 +117,6 @@ export interface CameraPopoverOptions {
   repo: 'https://github.com/apache/cordova-plugin-camera',
   platforms: ['Android', 'BlackBerry', 'Browser', 'Firefox', 'FireOS', 'iOS', 'Windows', 'Windows Phone 8', 'Ubuntu']
 })
-@Injectable()
 export class Camera {
 
   /**

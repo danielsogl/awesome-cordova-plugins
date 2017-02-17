@@ -34,6 +34,7 @@ fs.mkdirpSync(BUILD_TMP);
 // Prepare and copy the core module's package.json
 console.log('Preparing core module package.json');
 CORE_PACKAGE_JSON.version = VERSION;
+CORE_PACKAGE_JSON.dependencies = { "@ionic-native/utils": VERSION };
 fs.writeJsonSync(path.resolve(BUILD_CORE_DIST, 'package.json'), CORE_PACKAGE_JSON);
 
 console.log('Preparing utils module package.json');

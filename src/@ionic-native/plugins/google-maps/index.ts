@@ -886,7 +886,7 @@ export class GoogleMapsMarker {
    * @return {GoogleMap}
    */
   @CordovaInstance({ sync: true })
-  getMap(): GoogleMap { return; }
+  getMap(): GoogleMapsObject { return; }
 
   /**
    * Specify the animation either `DROP` or `BOUNCE`
@@ -1036,7 +1036,7 @@ export class GoogleMapsCircle {
   setRadius(radius: number): void { }
 
   @CordovaInstance({ sync: true })
-  getMap(): GoogleMap { return; }
+  getMap(): GoogleMapsObject { return; }
 }
 
 /**
@@ -1173,7 +1173,7 @@ export class GoogleMapsPolyline {
   setGeoDesic(geoDesic: boolean): void { }
 
   @CordovaInstance({ sync: true })
-  getMap(): GoogleMap { return; }
+  getMap(): GoogleMapsObject { return; }
 
 }
 
