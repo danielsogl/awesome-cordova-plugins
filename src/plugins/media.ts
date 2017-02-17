@@ -45,9 +45,7 @@ export interface MediaError {
  * });
  *
  * // get file duration
- * file.getDuration().then((duration) => {
- *   console.log(position);
- * });
+ * file.getDuration();
  *
  * // skip to 10 seconds (expects int value in ms)
  * file.seekTo(10000);
