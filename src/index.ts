@@ -90,6 +90,7 @@ import { OneSignal } from './plugins/onesignal';
 import { PhotoViewer } from './plugins/photo-viewer';
 import { ScreenOrientation } from './plugins/screen-orientation';
 import { PayPal } from './plugins/pay-pal';
+import { PhotoLibrary } from './plugins/photo-library';
 import { PinDialog } from './plugins/pin-dialog';
 import { Pinterest } from './plugins/pinterest';
 import { PowerManagement } from './plugins/power-management';
@@ -210,6 +211,7 @@ export * from './plugins/network';
 export * from './plugins/nfc';
 export * from './plugins/onesignal';
 export * from './plugins/pay-pal';
+export * from './plugins/photo-library';
 export * from './plugins/photo-viewer';
 export * from './plugins/pin-dialog';
 export * from './plugins/pinterest';
@@ -331,6 +333,7 @@ window['IonicNative'] = {
   NavigationBar,
   Network,
   PayPal,
+  PhotoLibrary,
   NFC,
   Printer,
   Push,
