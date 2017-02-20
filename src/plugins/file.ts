@@ -283,7 +283,7 @@ export interface FileWriter extends FileSaver {
 }
 
 /* FileWriter states */
-declare var FileWriter: {
+export declare var FileWriter: {
   INIT: number;
   WRITING: number;
   DONE: number
@@ -308,7 +308,7 @@ export interface FileReader {
   readAsArrayBuffer(fe: File | Blob): void;
 }
 
-declare var FileReader: {
+export declare var FileReader: {
   EMPTY: number;
   LOADING: number;
   DONE: number;
@@ -322,7 +322,7 @@ export interface FileError {
   message: string;
 }
 
-declare var FileError: {
+export declare var FileError: {
   new (code: number): FileError;
   NOT_FOUND_ERR: number;
   SECURITY_ERR: number;
