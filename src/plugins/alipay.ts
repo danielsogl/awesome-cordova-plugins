@@ -1,62 +1,63 @@
 import { Plugin, Cordova } from './plugin';
 /**
  * @link https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.wlOhAE&treeId=193&articleId=105465&docType=1
- * 所有value都需要经过urlencode。
+ *
+ * All values need be urlencoded.
  */
 export interface AlipayOrder {
   /**
-   * 支付宝分配给开发者的应用ID
+   * appId assigned by Alipay
    */
   app_id: string;
 
   /**
-   * 接口名称
+   * Api name.
    * Should be: alipay.trade.app.pay
    */
   method: string;
 
   /**
-   * 数据格式
+   * Data format
    * Default: "JSON"
    */
   format?: string;
 
   /**
-   * 请求使用的编码格式
+   * Charset
    * Possible values: "UTF-8", "GBK"
    * Default: "UTF-8"
    */
   charset: string;
 
   /**
-   * 签名算法
+   * Sign method
    * Default: 'RSA'
    */
   sign_type: string;
 
   /**
-   * 签名，这个很重要，需要从服务器端签名后传过来。APP上不应该存有签名用的任何密钥。
+   * Sign value. Should be got from server side.
    * Default: 'RSA'
    */
   sign: string;
 
   /**
-   * 发送请求的时间戳。"yyyy-MM-dd HH:mm:ss"格式，比如：2014-07-24 03:07:50 
+   * Timestamp, formated like "yyyy-MM-dd HH:mm:ss", e.g. 2014-07-24 03:07:50 
    */
   timestamp: string;
 
   /**
-   * 接口版本，固定 '1.0'
+   * Api version. Fixed value '1.0'
    */
   version: string;
 
   /**
-   * 通知地址, 用来接收结果的地址。
+   * Notify url.
    */
   notify_url: string;
 
   /**
-   * 业务请求参数集合，详见接口文档。这里是一个JSON格式的字符串。
+   * biz content. formated in json. see alipay doc for detail.
    */
   biz_content: string;
 }
@@ -64,7 +65,6 @@ export interface AlipayOrder {
 /**
  * @name Alipay
  * @description
- *  支付宝APP支付插件，支持最新版本的支付宝SDK。
  *  This plugin is used for Alipay APP support. Integrated with the latest SDK.
  *
  * Requires Cordova plugin: `cordova-alipay-base`. For more info, please see the [Alipay plugin docs](https://github.com/xueron/cordova-alipay-base).
