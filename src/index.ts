@@ -8,8 +8,8 @@ import { ActionSheet } from './plugins/actionsheet';
 import { AdMob } from './plugins/admob';
 import { AndroidFingerprintAuth } from './plugins/android-fingerprint-auth';
 import { AppAvailability } from './plugins/appavailability';
-import { AppPreferences } from './plugins/apppreferences';
 import { AppRate } from './plugins/apprate';
+import { AppPreferences } from './plugins/apppreferences';
 import { AppVersion } from './plugins/appversion';
 import { Badge } from './plugins/badge';
 import { BackgroundGeolocation } from './plugins/background-geolocation';
@@ -22,7 +22,6 @@ import { Brightness } from './plugins/brightness';
 import { BLE } from './plugins/ble';
 import { BluetoothSerial } from './plugins/bluetoothserial';
 import { Broadcaster } from './plugins/broadcaster';
-import { BrowserTab } from './plugins/browser-tab';
 import { Calendar } from './plugins/calendar';
 import { CallNumber } from './plugins/call-number';
 import { Camera } from './plugins/camera';
@@ -146,7 +145,6 @@ export * from './plugins/ble';
 export * from './plugins/bluetoothserial';
 export * from './plugins/brightness';
 export * from './plugins/broadcaster';
-export * from './plugins/browser-tab';
 export * from './plugins/calendar';
 export * from './plugins/call-number';
 export * from './plugins/camera';
@@ -272,7 +270,6 @@ window['IonicNative'] = {
   BLE,
   BluetoothSerial,
   Broadcaster,
-  BrowserTab,
   Calendar,
   CallNumber,
   Camera,
