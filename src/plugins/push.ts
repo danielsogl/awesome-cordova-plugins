@@ -276,6 +276,11 @@ export interface AndroidPushOptions {
   vibrate?: boolean | string;
 
   /**
+   * If true the icon badge will be cleared on init and before push messages are processed.
+   */
+  clearBadge?: boolean | string;
+
+  /**
    * If true the app clears all pending notifications when it is closed.
    */
   clearNotifications?: boolean | string;

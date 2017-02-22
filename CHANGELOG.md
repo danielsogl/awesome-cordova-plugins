@@ -1,3 +1,32 @@
+<a name="2.5.1"></a>
+## [2.5.1](https://github.com/driftyco/ionic-native/compare/v2.5.0...v2.5.1) (2017-02-07)
+
+
+### Bug Fixes
+
+* **pin-dialog:** add missing errorIndex ([b7701cd](https://github.com/driftyco/ionic-native/commit/b7701cd))
+
+
+
+<a name="2.5.0"></a>
+# [2.5.0](https://github.com/driftyco/ionic-native/compare/v2.4.1...v2.5.0) (2017-02-07)
+
+
+### Bug Fixes
+
+* **file-transfer:** fix return type of upload method ([a5b4632](https://github.com/driftyco/ionic-native/commit/a5b4632)), closes [#1002](https://github.com/driftyco/ionic-native/issues/1002)
+* **pinterest:** fix PinterestPin interface ([a03afcf](https://github.com/driftyco/ionic-native/commit/a03afcf))
+* **safari-view-controller:** fix issue caused by calling show without options ([dc37d8f](https://github.com/driftyco/ionic-native/commit/dc37d8f))
+
+
+### Features
+
+* **background-geolocation:** add missing properties for Android ([f0cf860](https://github.com/driftyco/ionic-native/commit/f0cf860))
+* **barcodescanner:** add option disableSuccessBeep ([#1035](https://github.com/driftyco/ionic-native/issues/1035)) ([97489ba](https://github.com/driftyco/ionic-native/commit/97489ba))
+* **inappbrowser:** add hide function ([#1018](https://github.com/driftyco/ionic-native/issues/1018)) ([4ab87d8](https://github.com/driftyco/ionic-native/commit/4ab87d8))
+
+
+
 <a name="2.4.1"></a>
 ## [2.4.1](https://github.com/driftyco/ionic-native/compare/v2.4.0...v2.4.1) (2017-01-24)
 
