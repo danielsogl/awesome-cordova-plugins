@@ -19,8 +19,8 @@ import { Plugin, Cordova } from './plugin';
   pluginName: 'AppUpdate',
   plugin: 'cordova-plugin-app-update',
   pluginRef: 'AppUpdate',
-  repo: 'https://github.com/xueron/cordova-plugin-app-update',
-  install: 'ionic plugin add https://github.com/xueron/cordova-plugin-app-update',
+  repo: 'https://github.com/vaenow/cordova-plugin-app-update',
+  install: 'ionic plugin add cordova-plugin-app-update --save',
   platforms: ['Android']
 })
 export class AppUpdate {
