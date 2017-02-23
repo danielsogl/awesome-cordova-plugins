@@ -267,7 +267,7 @@ export interface FileWriter extends FileSaver {
    * Write the supplied data to the file at position.
    * @param {Blob} data The blob to write.
    */
-  write(data: Blob | string): void;
+  write(data: ArrayBuffer | Blob | string): void;
   /**
    * The file position at which the next write will occur.
    * @param offset If nonnegative, an absolute byte offset into the file.
@@ -671,7 +671,7 @@ export class File {
    * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   static writeFile(path: string, fileName: string,
-                   text: string | Blob, options: WriteOptions = {}): Promise<any> {
+                   text: string | Blob | ArrayBuffer, options: WriteOptions = {}): Promise<any> {
     if ((/^\//.test(fileName))) {
       const err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -700,7 +700,7 @@ export class File {
    * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
-  private static writeFileEntry(fe: FileEntry, text: string | Blob, options: WriteOptions) {
+  private static writeFileEntry(fe: FileEntry, text: string | Blob | ArrayBuffer, options: WriteOptions) {
     return File.createWriter(fe)
       .then((writer) => {
         if (options.append) {
@@ -1133,7 +1133,7 @@ export class File {
   /**
    * @private
    */
-  private static write(writer: FileWriter, gu: string | Blob): Promise<any> {
+  private static write(writer: FileWriter, gu: string | Blob | ArrayBuffer): Promise<any> {
     if (gu instanceof Blob) {
       return this.writeFileInChunks(writer, gu);
     }
