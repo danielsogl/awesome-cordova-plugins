@@ -30,6 +30,7 @@ export class AppPreferences {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova({
+    sync: true,
     callbackOrder: 'reverse'
   })
   static fetch(dict: string, key?: string): Promise<any> { return; }
