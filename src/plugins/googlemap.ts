@@ -72,7 +72,8 @@ export const GoogleMapsAnimation = {
  *  let map = new GoogleMap(element);
  *
  *  // listen to MAP_READY event
- *  map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
+ *  map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      console.log('Map is ready!');
  *
  *  // create LatLng object
  *  let ionic: GoogleMapsLatLng = new GoogleMapsLatLng(43.0741904,-89.3809802);
@@ -98,7 +99,7 @@ export const GoogleMapsAnimation = {
  *       marker.showInfoWindow();
  *     });
  *  }
- *
+ * });
  * }
  * ```
  */
