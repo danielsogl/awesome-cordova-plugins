@@ -24,7 +24,7 @@ declare var sqlitePlugin;
  *     db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {}).catch(() => {});
  *
  *   })
- *   .catch(error => console.error('Error opening database', error);
+ *   .catch(error => console.error('Error opening database', error));
  *
  *
  * // OPTION B: Create a new instance of SQLite
