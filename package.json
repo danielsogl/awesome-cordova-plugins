@@ -58,7 +58,6 @@
     "lint": "gulp lint",
     "build": "npm run clean && npm run lint && npm run build:core && npm run build:modules",
     "build:core": "ngc -p scripts/build/tsconfig-core.json",
-    "build:utils": "tsc -p scripts/build/tsconfig-utils.json",
     "build:modules": "node scripts/build/build.js",
     "clean": "rimraf dist",
     "shipit": "npm run build && gulp readmes && npm run npmpub",
