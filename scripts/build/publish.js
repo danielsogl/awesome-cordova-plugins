@@ -8,17 +8,12 @@ const fs = require('fs-extra-promise').useFs(require('fs-extra')),
 const ROOT = path.resolve(path.join(__dirname, '../../')),
   DIST = path.resolve(ROOT, 'dist', 'packages-dist', '@ionic-native'),
   PLUGINS_ROOT = path.resolve(DIST, 'plugins'),
-  CORE = path.resolve(DIST, 'core'),
-  UTILS = path.resolve(DIST, 'utils');
+  CORE = path.resolve(DIST, 'core');
 
 const FLAGS = '--access public'; // add any flags here if you want... (example: --tag alpha)
 
 console.log('Publishing @ionic-native/core');
 exec(`npm publish ${CORE} ${FLAGS}`)
-  .then(() => {
-    console.log('Publishing @ionic-native/utils');
-    return exec(`npm publish ${UTILS} ${FLAGS}`)
-  })
   .then(() => {
 
     const PLUGINS = fs.readdirSync(PLUGINS_ROOT);
