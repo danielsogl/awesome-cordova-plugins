@@ -9,6 +9,9 @@ export interface QueryOptions {
   startDate: Date;
   endDate: Date;
   dataType: string;
+  limit?: number;
+  ascending?: boolean;
+  filtered?: boolean;
 }
 
 /**
