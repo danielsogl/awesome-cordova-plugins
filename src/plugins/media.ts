@@ -225,6 +225,21 @@ export class MediaPlugin {
   })
   stopRecord(): void { }
 
+  /**
+   * Pauses recording
+   */
+  @CordovaInstance({
+    sync: true
+  })
+  pauseRecord(): void { }
+
+  /**
+   * Resumes recording
+   */
+  @CordovaInstance({
+    sync: true
+  })
+  resumeRecord(): void { }
 
   /**
    * Stops playing an audio file.
