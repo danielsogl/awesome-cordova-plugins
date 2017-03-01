@@ -18,6 +18,7 @@ import { BarcodeScanner } from './plugins/barcodescanner';
 import { Base64ToGallery } from './plugins/base64togallery';
 import { BatteryStatus } from './plugins/batterystatus';
 import { Brightness } from './plugins/brightness';
+import { BrowserTab } from './plugins/browser-tab';
 import { BLE } from './plugins/ble';
 import { BluetoothSerial } from './plugins/bluetoothserial';
 import { Broadcaster } from './plugins/broadcaster';
@@ -142,6 +143,7 @@ export * from './plugins/batterystatus';
 export * from './plugins/ble';
 export * from './plugins/bluetoothserial';
 export * from './plugins/brightness';
+export * from './plugins/browser-tab';
 export * from './plugins/broadcaster';
 export * from './plugins/calendar';
 export * from './plugins/call-number';
@@ -264,6 +266,7 @@ window['IonicNative'] = {
   Base64ToGallery,
   BatteryStatus,
   Brightness,
+  BrowserTab,
   BLE,
   BluetoothSerial,
   Broadcaster,
