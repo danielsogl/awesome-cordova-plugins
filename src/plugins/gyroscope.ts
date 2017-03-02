@@ -11,17 +11,17 @@ export interface GyroscopeOrientation {
   *  Represent x-axis
   */
   x: number;
-  
+
  /**
   *  Represent y-axis
   */
   y: number;
-  
+
  /**
   *  Represent z-axis
   */
   z: number;
-  
+
  /**
   *  Represent timestamp of sensor read. Default is 10000ms
   */
