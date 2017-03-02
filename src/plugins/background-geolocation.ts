@@ -365,14 +365,12 @@ export class BackgroundGeolocation {
    * @param {Function} callback callback will be called when background location is determined.
    * @param {Function} errorCallback callback to be executed every time a geolocation error occurs.
    * @param {Config} options An object of type Config
-   * @return Location object, which tries to mimic w3c Coordinates interface.
-   * See http://dev.w3.org/geo/api/spec-source.html#coordinates_interface
-   * Callback to be executed every time a geolocation is recorded in the background.
+   * @return {Promise<any>}
    */
   @Cordova({
-    sync: true
+    callbackOrder: 'reverse'
   })
-  static configure(callback: Function, errorCallback: Function, options: BackgroundGeolocationConfig): any { return; }
+  static configure(options: BackgroundGeolocationConfig): Promise<any> { return; }
 
   /**
    * Turn ON the background-geolocation system.
@@ -392,9 +390,10 @@ export class BackgroundGeolocation {
   /**
    * Inform the native plugin that you're finished, the background-task may be completed
    * NOTE: IOS, WP only
+   * @returns {Promise<any>}
    */
   @Cordova()
-  static finish() { }
+  static finish(): Promise<any> { }
 
   /**
    * Force the plugin to enter "moving" or "stationary" state
