@@ -1,5 +1,4 @@
-import { Cordova, CordovaFunctionOverride, Plugin } from './plugin';
-
+import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -113,24 +112,59 @@ export class BackgroundMode {
   static configure(options?: BackgroundModeConfiguration): Promise<any> { return; }
 
   /**
-  * Called when background mode is activated.
-  * @returns {Observable<any>} returns an observable that emits when background mode is activated
-  */
-  @CordovaFunctionOverride()
-  static onactivate(): Observable<any> { return; };
+   * Listen for events that the plugin fires. Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
+   * @param event {string} Event name
+   * @returns {Observable<any>}
+   */
+  @Cordova({
+    observable: true,
+    clearFunction: 'un',
+    clearWithArgs: true
+  })
+  static on(event: string): Observable<any> { return; }
 
   /**
-  * Called when background mode is deactivated.
-  * @returns {Observable<any>} returns an observable that emits when background mode is deactivated
-  */
-  @CordovaFunctionOverride()
-  static ondeactivate(): Observable<any> { return; };
+   * Override the back button on Android to go to background instead of closing the app.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static overrideBackButton(): void {}
 
   /**
-  * Called when background mode fails
-  * @returns {Observable<any>} returns an observable that emits when background mode fails
-  */
-  @CordovaFunctionOverride()
-  static onfailure(): Observable<any> { return; };
+   * Exclude the app from the recent task list works on Android 5.0+.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static excludeFromTaskList(): void {}
+
+  /**
+   * The method works async instead of isActive() or isEnabled().
+   */
+  @Cordova({
+    platforms: ['Android']
+  })
+  static isScreenOff(): Promise<boolean> { return; }
+
+  /**
+   * Turn screen on
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static wakeUp(): void {}
+
+  /**
+   * Turn screen on and show app even locked
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static unlock(): void {}
 
 }

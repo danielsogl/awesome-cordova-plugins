@@ -193,7 +193,7 @@ export class PayPalPayment {
   /**
    * Optional array of PayPalItem objects.
    */
-  items: string;
+  items: Array<PayPalItem>;
 
   /**
    * Optional customer shipping address, if your app wishes to provide this to the SDK.

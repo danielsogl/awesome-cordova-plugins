@@ -20,6 +20,11 @@ export interface ImagePickerOptions {
    * Quality of images, defaults to 100
    */
   quality?: number;
+
+  /**
+   * Output type, defaults to 0  (FILE_URI).
+   */
+  outputType?: number;
 }
 
 /**

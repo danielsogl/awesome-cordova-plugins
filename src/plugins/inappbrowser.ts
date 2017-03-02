@@ -75,6 +75,7 @@ export interface InAppBrowserEvent extends Event {
  * ```
  * @interfaces
  * InAppBrowserEvent
+ * InAppBrowserOptions
  */
 @Plugin({
   pluginName: 'InAppBrowser',
