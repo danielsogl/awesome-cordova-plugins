@@ -8,6 +8,7 @@ import { AdMob } from './plugins/admob';
 import { Alipay } from './plugins/alipay';
 import { AndroidFingerprintAuth } from './plugins/android-fingerprint-auth';
 import { AppAvailability } from './plugins/appavailability';
+import { Appodeal } from './plugins/appodeal';
 import { AppRate } from './plugins/apprate';
 import { AppUpdate } from './plugins/app-update';
 import { AppVersion } from './plugins/appversion';
@@ -134,6 +135,7 @@ export * from './plugins/admob';
 export * from './plugins/alipay';
 export * from './plugins/android-fingerprint-auth';
 export * from './plugins/appavailability';
+export * from './plugins/appodeal';
 export * from './plugins/apprate';
 export * from './plugins/app-update';
 export * from './plugins/appversion';
@@ -262,6 +264,7 @@ window['IonicNative'] = {
   Alipay,
   AndroidFingerprintAuth,
   AppAvailability,
+  Appodeal,
   AppRate,
   AppUpdate,
   AppVersion,
