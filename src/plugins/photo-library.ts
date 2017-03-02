@@ -1,4 +1,4 @@
-import { Plugin, Cordova, CordovaOptions, wrap } from './plugin';
+import { Plugin, Cordova, CordovaFiniteObservable } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -77,13 +77,19 @@ export class PhotoLibrary {
   static getAlbums(): Promise<AlbumItem[]> { return; }
 
   /**
+   * @private
+   */
+  static getThumbnailURL(photoId: string, options?: GetThumbnailOptions): Promise<string>;
+  /**
+   * @private
+   */
+  static getThumbnailURL(libraryItem: LibraryItem, options?: GetThumbnailOptions): Promise<string>;
+  /**
    * Provides means to request URL of thumbnail, with specified size or quality.
    * @param photo {string | LibraryItem} Id of photo, or LibraryItem.
    * @param options {GetThumbnailOptions} Options, like thumbnail size or quality.
    * @return {Promise<string>} Resolves to URL of cdvphotolibrary schema.
    */
-  static getThumbnailURL(photoId: string, options?: GetThumbnailOptions): Promise<string>;
-  static getThumbnailURL(libraryItem: LibraryItem, options?: GetThumbnailOptions): Promise<string>;
   @Cordova({
     successIndex: 1,
     errorIndex: 2
@@ -91,13 +97,19 @@ export class PhotoLibrary {
   static getThumbnailURL(photo: string | LibraryItem, options?: GetThumbnailOptions): Promise<string> { return; }
 
   /**
+   * @private
+   */
+  static getPhotoURL(photoId: string, options?: GetPhotoOptions): Promise<string>;
+  /**
+   * @private
+   */
+  static getPhotoURL(libraryItem: LibraryItem, options?: GetPhotoOptions): Promise<string>;
+  /**
    * Provides means to request photo URL by id.
    * @param photo {string | LibraryItem} Id or LibraryItem.
    * @param options {GetPhotoOptions} Optional options.
    * @return {Promise<string>} Resolves to URL of cdvphotolibrary schema.
    */
-  static getPhotoURL(photoId: string, options?: GetPhotoOptions): Promise<string>;
-  static getPhotoURL(libraryItem: LibraryItem, options?: GetPhotoOptions): Promise<string>;
   @Cordova({
     successIndex: 1,
     errorIndex: 2
@@ -105,13 +117,19 @@ export class PhotoLibrary {
   static getPhotoURL(photo: string | LibraryItem, options?: GetPhotoOptions): Promise<string> { return; }
 
   /**
+   * @private
+   */
+  static getThumbnail(photoId: string, options?: GetThumbnailOptions): Promise<Blob>;
+  /**
+   * @private
+   */
+  static getThumbnail(libraryItem: LibraryItem, options?: GetThumbnailOptions): Promise<Blob>;
+  /**
    * Returns thumbnail as Blob.
    * @param photo {string | LibraryItem} Id or LibraryItem.
    * @param options {GetThumbnailOptions} Options, like thumbnail size or quality.
    * @return {Promise<Blob>} Resolves requested thumbnail as blob.
    */
-  static getThumbnail(photoId: string, options?: GetThumbnailOptions): Promise<Blob>;
-  static getThumbnail(libraryItem: LibraryItem, options?: GetThumbnailOptions): Promise<Blob>;
   @Cordova({
     successIndex: 1,
     errorIndex: 2
@@ -119,13 +137,19 @@ export class PhotoLibrary {
   static getThumbnail(photo: string | LibraryItem, options?: GetThumbnailOptions): Promise<Blob> { return; }
 
   /**
+   * @private
+   */
+  static getPhoto(photoId: string, options?: GetPhotoOptions): Promise<Blob>;
+  /**
+   * @private
+   */
+  static getPhoto(libraryItem: LibraryItem, options?: GetPhotoOptions): Promise<Blob>;
+  /**
    * Returns photo as Blob.
    * @param photo {string | LibraryItem} Id or LibraryItem.
    * @param options {GetPhotoOptions} Optional options.
    * @return {Promise<Blob>} Resolves requested photo as blob.
    */
-  static getPhoto(photoId: string, options?: GetPhotoOptions): Promise<Blob>;
-  static getPhoto(libraryItem: LibraryItem, options?: GetPhotoOptions): Promise<Blob>;
   @Cordova({
     successIndex: 1,
     errorIndex: 2
@@ -212,41 +236,4 @@ export interface GetThumbnailOptions {
 }
 
 export interface GetPhotoOptions {
-}
-
-/**
- * @private
- */
-function CordovaFiniteObservable(opts: CordovaFiniteObservableOptions = {}) {
-  opts.observable = true;
-  return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
-    return {
-      value: function(...args: any[]) {
-        let wrappedObservable: Observable<any> = wrap(this, methodName, opts).apply(this, args);
-        return new Observable((observer) => {
-          let wrappedSubscription = wrappedObservable.subscribe({
-            next: (x) => {
-              observer.next(opts.resultTransform ? opts.resultTransform(x) : x);
-              if (opts.resultFinalPredicate && opts.resultFinalPredicate(x)) {
-                observer.complete();
-              }
-            },
-            error: (err) => { observer.error(err); },
-            complete: () => { observer.complete(); }
-          });
-          return () => {
-            wrappedSubscription.unsubscribe();
-          };
-        });
-      }
-    };
-  };
-}
-
-/**
- * @private
- */
-interface CordovaFiniteObservableOptions extends CordovaOptions {
-  resultFinalPredicate?: (x: any) => boolean;
-  resultTransform?: (x: any) => any;
 }
