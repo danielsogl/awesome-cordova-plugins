@@ -8,7 +8,7 @@ declare var navigator: any;
  * @name Network
  * @description
  * Requires Cordova plugin: cordova-plugin-network-information. For more info, please see the [Network plugin docs](https://github.com/apache/cordova-plugin-network-information).
- *
+ * This does not give the initial network status but only responds to changes.  To get initial network status try navigator.onLine when your app first loads.
  * @usage
  * ```typescript
  * import { Network } from 'ionic-native';
