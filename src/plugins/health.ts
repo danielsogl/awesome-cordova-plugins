@@ -201,7 +201,7 @@ export class Health {
    *
    * This function is only available on Android.
    *
-   * @return successCallback: {type: function()}, called if the function was called
+   * @return  {Promise<any>} {type: function()}, called if the function was called
    * errorCallback: {type: function(err)}, called if something went wrong
    */
   @Cordova({
@@ -229,7 +229,7 @@ export class Health {
    *
    * @param {Array<String>} datatypes a list of data types you want to be granted access to
    *
-   * @return successCallback: {type: function}, called if all OK
+   * @return {Promise<any>}: {type: function}, called if all OK
    * errorCallback: {type: function(err)}, called if something went wrong,
    * err contains a textual description of the problem
 
