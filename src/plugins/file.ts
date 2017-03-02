@@ -1034,6 +1034,9 @@ export class File {
    * @private
    */
   private static fillErrorMessage(err: FileError): void {
+    if (typeof err === "DOMException") {
+      return;
+    }
     err.message = File.cordovaFileError[err.code];
   }
 
