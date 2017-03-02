@@ -57,10 +57,17 @@ export interface QueryOptions {
    */
   dataType: string;
   /**
-   * Limit the number of values returned. Defaults to 1000.
+   * Optional limit the number of values returned. Defaults to 1000
    */
   limit?: number;
+   /**
+   * Optional indicator to sort values ascending or descending
+   */
   ascending?: boolean;
+  /**
+   * In Android, it is possible to query for "raw" steps or to select those as filtered by the Google Fit app. 
+   * In the latter case the query object must contain the field filtered: true.
+   */
   filtered?: boolean;
 }
 
