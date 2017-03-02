@@ -48,22 +48,27 @@ export interface QueryOptions {
    * Start date from which to get data
    */
   startDate: Date;
+  
   /**
    * End date from which to get data
    */
   endDate: Date;
+  
   /**
    * Datatype to be queried (see "Overview of valid datatypes")
    */
   dataType: string;
+  
   /**
    * Optional limit the number of values returned. Defaults to 1000
    */
   limit?: number;
-   /**
+  
+  /**
    * Optional indicator to sort values ascending or descending
    */
   ascending?: boolean;
+  
   /**
    * In Android, it is possible to query for "raw" steps or to select those as filtered by the Google Fit app. 
    * In the latter case the query object must contain the field filtered: true.
@@ -76,14 +81,17 @@ export interface QueryOptionsAggregated {
    * Start date from which to get data
    */
   startDate: Date;
+  
   /**
    * End date from which to get data
    */
   endDate: Date;
+  
   /**
    * Datatype to be queried (see "Overview of valid datatypes")
    */
   dataType: string;
+  
   /**
    * if specified, aggregation is grouped an array of "buckets" (windows of time), 
    * supported values are: 'hour', 'day', 'week', 'month', 'year'.
@@ -331,4 +339,3 @@ export class Health {
   };
 
 }
-
