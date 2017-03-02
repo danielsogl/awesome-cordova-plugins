@@ -1,48 +1,5 @@
 import {Plugin, Cordova} from './plugin';
 
-/*
-
-Overview of valid datatypes
-
-+-------------------------------+-------------------+------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-|           data type           |       Unit        |                                   HealthKit equivalent                                   |                       Google Fit equivalent                        |
-+-------------------------------+-------------------+------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| steps                         | count             | HKQuantityTypeIdentifierStepCount                                                        | TYPE_STEP_COUNT_DELTA                                              |
-| distance                      | m                 | HKQuantityTypeIdentifierDistanceWalkingRunning + HKQuantityTypeIdentifierDistanceCycling | TYPE_DISTANCE_DELTA                                                |
-| calories                      | kcal              | HKQuantityTypeIdentifierActiveEnergyBurned + HKQuantityTypeIdentifierBasalEnergyBurned   | TYPE_CALORIES_EXPENDED                                             |
-| calories.active               | kcal              | HKQuantityTypeIdentifierActiveEnergyBurned                                               | TYPE_CALORIES_EXPENDED - (TYPE_BASAL_METABOLIC_RATE * time window) |
-| calories.basal                | kcal              | HKQuantityTypeIdentifierBasalEnergyBurned                                                | TYPE_BASAL_METABOLIC_RATE * time window                            |
-| activity                      |                   | HKWorkoutTypeIdentifier + HKCategoryTypeIdentifierSleepAnalysis                          | TYPE_ACTIVITY_SEGMENT                                              |
-| height                        | m                 | HKQuantityTypeIdentifierHeight                                                           | TYPE_HEIGHT                                                        |
-| weight                        | kg                | HKQuantityTypeIdentifierBodyMass                                                         | TYPE_WEIGHT                                                        |
-| heart_rate                    | count/min         | HKQuantityTypeIdentifierHeartRate                                                        | TYPE_HEART_RATE_BPM                                                |
-| fat_percentage                | %                 | HKQuantityTypeIdentifierBodyFatPercentage                                                | TYPE_BODY_FAT_PERCENTAGE                                           |
-| gender                        |                   | HKCharacteristicTypeIdentifierBiologicalSex                                              | custom (YOUR_PACKAGE_NAME.gender)                                  |
-| date_of_birth                 |                   | HKCharacteristicTypeIdentifierDateOfBirth                                                | custom (YOUR_PACKAGE_NAME.date_of_birth)                           |
-| nutrition                     |                   | HKCorrelationTypeIdentifierFood                                                          | TYPE_NUTRITION                                                     |
-| nutrition.calories            | kcal              | HKQuantityTypeIdentifierDietaryEnergyConsumed                                            | TYPE_NUTRITION, NUTRIENT_CALORIES                                  |
-| nutrition.fat.total           | g                 | HKQuantityTypeIdentifierDietaryFatTotal                                                  | TYPE_NUTRITION, NUTRIENT_TOTAL_FAT                                 |
-| nutrition.fat.saturated       | g                 | HKQuantityTypeIdentifierDietaryFatSaturated                                              | TYPE_NUTRITION, NUTRIENT_SATURATED_FAT                             |
-| nutrition.fat.unsaturated     | g                 | NA                                                                                       | TYPE_NUTRITION, NUTRIENT_UNSATURATED_FAT                           |
-| nutrition.fat.polyunsaturated | g                 | HKQuantityTypeIdentifierDietaryFatPolyunsaturated                                        | TYPE_NUTRITION, NUTRIENT_POLYUNSATURATED_FAT                       |
-| nutrition.fat.monounsaturated | g                 | HKQuantityTypeIdentifierDietaryFatMonounsaturated                                        | TYPE_NUTRITION, NUTRIENT_MONOUNSATURATED_FAT                       |
-| nutrition.fat.trans           | g                 | NA                                                                                       | TYPE_NUTRITION, NUTRIENT_TRANS_FAT (g)                             |
-| nutrition.cholesterol         | mg                | HKQuantityTypeIdentifierDietaryCholesterol                                               | TYPE_NUTRITION, NUTRIENT_CHOLESTEROL                               |
-| nutrition.sodium              | mg                | HKQuantityTypeIdentifierDietarySodium                                                    | TYPE_NUTRITION, NUTRIENT_SODIUM                                    |
-| nutrition.potassium           | mg                | HKQuantityTypeIdentifierDietaryPotassium                                                 | TYPE_NUTRITION, NUTRIENT_POTASSIUM                                 |
-| nutrition.carbs.total         | g                 | HKQuantityTypeIdentifierDietaryCarbohydrates                                             | TYPE_NUTRITION, NUTRIENT_TOTAL_CARBS                               |
-| nutrition.dietary_fiber       | g                 | HKQuantityTypeIdentifierDietaryFiber                                                     | TYPE_NUTRITION, NUTRIENT_DIETARY_FIBER                             |
-| nutrition.sugar               | g                 | HKQuantityTypeIdentifierDietarySugar                                                     | TYPE_NUTRITION, NUTRIENT_SUGAR                                     |
-| nutrition.protein             | g                 | HKQuantityTypeIdentifierDietaryProtein                                                   | TYPE_NUTRITION, NUTRIENT_PROTEIN                                   |
-| nutrition.vitamin_a           | mcg (HK), IU (GF) | HKQuantityTypeIdentifierDietaryVitaminA                                                  | TYPE_NUTRITION, NUTRIENT_VITAMIN_A                                 |
-| nutrition.vitamin_c           | mg                | HKQuantityTypeIdentifierDietaryVitaminC                                                  | TYPE_NUTRITION, NUTRIENT_VITAMIN_C                                 |
-| nutrition.calcium             | mg                | HKQuantityTypeIdentifierDietaryCalcium                                                   | TYPE_NUTRITION, NUTRIENT_CALCIUM                                   |
-| nutrition.iron                | mg                | HKQuantityTypeIdentifierDietaryIron                                                      | TYPE_NUTRITION, NUTRIENT_IRON                                      |
-| nutrition.water               | ml                | HKQuantityTypeIdentifierDietaryWater                                                     | TYPE_HYDRATION                                                     |
-| nutrition.caffeine            | g                 | HKQuantityTypeIdentifierDietaryCaffeine                                                  | NA                                                                 |
-+-------------------------------+-------------------+------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-*/
-
 export interface QueryOptions {
   /**
    * Start date from which to get data
@@ -55,7 +12,7 @@ export interface QueryOptions {
   endDate: Date;
   
   /**
-   * Datatype to be queried (see "Overview of valid datatypes")
+   * Datatype to be queried (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   dataType: string;
   
@@ -88,7 +45,7 @@ export interface QueryOptionsAggregated {
   endDate: Date;
   
   /**
-   * Datatype to be queried (see "Overview of valid datatypes")
+   * Datatype to be queried (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   dataType: string;
   
@@ -111,7 +68,7 @@ export interface StoreOptions {
   endDate: Date;
   
   /**
-   * Datatype to be queried (see "Overview of valid datatypes")
+   * Datatype to be queried (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   dataType: string;
   
@@ -146,12 +103,12 @@ export interface HealthData {
   endDate: Date;
  
   /**
-   * Value of corresponding Datatype (see "Overview of valid datatypes")
+   * Value of corresponding Datatype (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   value: string;
   
   /**
-   * Unit of corresponding value of Datatype (see "Overview of valid datatypes")
+   * Unit of corresponding value of Datatype (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   unit: string;
  
@@ -179,7 +136,9 @@ export interface HealthData {
  * import { Health } from 'ionic-native';
  *
  * ```
+ * See description at https://github.com/dariosalvi78/cordova-plugin-health for a full list of Datatypes and see examples.
  */
+
 @Plugin({
   pluginName: 'Health',
   plugin: 'cordova-plugin-health',
