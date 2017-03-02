@@ -113,24 +113,15 @@ export class BackgroundMode {
   static configure(options?: BackgroundModeConfiguration): Promise<any> { return; }
 
   /**
-  * Called when background mode is activated.
-  * @returns {Observable<any>} returns an observable that emits when background mode is activated
-  */
-  @CordovaFunctionOverride()
-  static onactivate(): Observable<any> { return; };
-
-  /**
-  * Called when background mode is deactivated.
-  * @returns {Observable<any>} returns an observable that emits when background mode is deactivated
-  */
-  @CordovaFunctionOverride()
-  static ondeactivate(): Observable<any> { return; };
-
-  /**
-  * Called when background mode fails
-  * @returns {Observable<any>} returns an observable that emits when background mode fails
-  */
-  @CordovaFunctionOverride()
-  static onfailure(): Observable<any> { return; };
+   * Listen for events that the plugin fires. Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
+   * @param event {string} Event name
+   * @returns {Observable<any>}
+   */
+  @Cordova({
+    observable: true,
+    clearFunction: 'un',
+    clearWithArgs: true
+  })
+  static on(event: string): Observable<any> { return; }
 
 }
