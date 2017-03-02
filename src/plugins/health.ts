@@ -150,7 +150,7 @@ export class Health {
   /**
    * Tells if either Google Fit or HealthKit are available.
    *
-   * @return {Promise<any>} Returns a promise, if available a true is passed, false otherwise
+   * @return {Promise<boolean>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -168,8 +168,7 @@ export class Health {
    *
    * This function is only available on Android.
    *
-   * @return  {Promise<any>} {type: function()}, called if the function was called
-   * errorCallback: {type: function(err)}, called if something went wrong
+   * @return {Promise<any>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -196,10 +195,7 @@ export class Health {
    *
    * @param {Array<String>} datatypes a list of data types you want to be granted access to
    *
-   * @return {Promise<any>}: {type: function}, called if all OK
-   * errorCallback: {type: function(err)}, called if something went wrong,
-   * err contains a textual description of the problem
-
+   * @return {Promise<any>}
    */
   @Cordova()
   static requestAuthorization(datatypes: Array<string>): Promise<any> {
@@ -273,6 +269,7 @@ export class Health {
    * nutrition.vitamin_a is given in micrograms in HealthKit and International Unit in Google Fit.
    *
    * @param queryOptionsAggregated
+   * @return {Promise<any>}
    */
   @Cordova()
   static queryAggregated(queryOptionsAggregated: QueryOptionsAggregated): Promise<any> {
@@ -291,6 +288,7 @@ export class Health {
    * In iOS storing the sleep activities is not supported at the moment.
    * Storing of nutrients is not supported at the moment.
    * @param storeOptions
+   * @return {Promise<any>}
    */
   @Cordova()
   static store(storeOptions: StoreOptions): Promise<any> {
