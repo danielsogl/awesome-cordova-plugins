@@ -169,8 +169,7 @@ export interface HealthData {
   pluginName: 'Health',
   plugin: 'cordova-plugin-health',
   pluginRef: 'navigator.health',
-  repo: 'https://github.com/dariosalvi78/cordova-plugin-health',
-  install: ''
+  repo: 'https://github.com/dariosalvi78/cordova-plugin-health'
 })
 export class Health {
 
