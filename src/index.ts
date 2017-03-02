@@ -13,6 +13,7 @@ import { AppRate } from './plugins/apprate';
 import { AppUpdate } from './plugins/app-update';
 import { AppVersion } from './plugins/appversion';
 import { Badge } from './plugins/badge';
+import { BackgroundFetch } from './plugins/background-fetch';
 import { BackgroundGeolocation } from './plugins/background-geolocation';
 import { BackgroundMode } from './plugins/backgroundmode';
 import { Backlight } from './plugins/backlight';
@@ -140,6 +141,7 @@ export * from './plugins/appodeal';
 export * from './plugins/apprate';
 export * from './plugins/app-update';
 export * from './plugins/appversion';
+export * from './plugins/background-fetch';
 export * from './plugins/background-geolocation';
 export * from './plugins/backgroundmode';
 export * from './plugins/backlight';
@@ -272,6 +274,7 @@ window['IonicNative'] = {
   AppVersion,
   Badge,
   BackgroundGeolocation,
+  BackgroundFetch,
   BackgroundMode,
   Backlight,
   BarcodeScanner,
