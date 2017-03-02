@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-export type AdMobAdSize = 'SMART_BANNER' | 'BANNER' | 'MEDIUM_RECTANGLE' | 'FULL_BANNER' | 'LEADERBOARD' | 'SKYSCRAPER' | 'CUSTOM';
+export type AdSize = 'SMART_BANNER' | 'BANNER' | 'MEDIUM_RECTANGLE' | 'FULL_BANNER' | 'LEADERBOARD' | 'SKYSCRAPER' | 'CUSTOM';
 
 export interface AdMobOptions {
 
@@ -14,7 +14,7 @@ export interface AdMobOptions {
   /**
    * Banner Ad Size, defaults to `SMART_BANNER`. IT can be: `SMART_BANNER`, `BANNER`, `MEDIUM_RECTANGLE`, `FULL_BANNER`, `LEADERBOARD`, `SKYSCRAPER`, or `CUSTOM`
    */
-  adSize?: AdMobAdSize;
+  adSize?: AdSize;
 
   /**
    * Banner width, valid when `adSize` is set to `CUSTOM`
@@ -64,11 +64,11 @@ export interface AdMobOptions {
   /**
    * Set extra color style for Ad
    */
-  adExtras?: AdMobAdExtras;
+  adExtras?: AdExtras;
 
 }
 
-export interface AdMobAdExtras {
+export interface AdExtras {
 
   color_bg: string;
 
@@ -90,23 +90,25 @@ export interface AdMobAdExtras {
  * Plugin for Google Ads, including AdMob / DFP (doubleclick for publisher) and mediations to other Ad networks.
  * @usage
  * ```typescript
- * import { AdMob } from '@ionic-native/ad-mob';
+ * import { AdMob, AdMobOptions, AdSize, AdExtras } from '@ionic-native/ad-mob';
+ *
+ * constructor(private admob: AdMob){}
  *
  * ionViewDidLoad() {
- *   AdMob.onAdDismiss()
+ *   this.admob.onAdDismiss()
  *     .subscribe(() => { console.log('User dismissed ad'); });
  * }
  *
  * onClick() {
- *   AdMob.prepareInterstitial('YOUR_ADID')
- *     .then(() => { AdMob.showInterstitial(); });
+ *   this.admob.prepareInterstitial('YOUR_ADID')
+ *     .then(() => { this.admob.showInterstitial(); });
  * }
  *
  * ```
  *
  * @interfaces
  * AdMobOptions
- * AdMobAdExtras
+ * AdExtras
  */
 @Plugin({
   pluginName: 'AdMob',

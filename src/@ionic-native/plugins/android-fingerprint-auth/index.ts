@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 
 
-export interface AndroidFingerprintAuthOptions {
+export interface AuthOptions {
 
   /**
    * Required
@@ -71,7 +71,7 @@ export interface AndroidFingerprintAuthOptions {
  * This plugin will open a native dialog fragment prompting the user to authenticate using their fingerprint. If the device has a secure lockscreen (pattern, PIN, or password), the user may opt to authenticate using that method as a backup.
  * @usage
  * ```typescript
- * import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth';
+ * import { AndroidFingerprintAuth, AuthOptions } from '@ionic-native/android-fingerprint-auth';
  *
  * AndroidFingerprintAuth.isAvailable()
  *   .then((result)=> {
@@ -100,7 +100,7 @@ export interface AndroidFingerprintAuthOptions {
  *   .catch(error => console.error(error));
  * ```
  * @interfaces
- * AndroidFingerprintAuthOptions
+ * AuthOptions
  */
 @Plugin({
   pluginName: 'AndroidFingerprintAuth',
@@ -113,11 +113,11 @@ export class AndroidFingerprintAuth {
 
   /**
    * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.
-   * @param options {AndroidFingerprintAuthOptions} Options
+   * @param options {AuthOptions} Options
    * @returns {Promise<any>}
    */
   @Cordova()
-  encrypt(options: AndroidFingerprintAuthOptions): Promise<{
+  encrypt(options: AuthOptions): Promise<{
     /**
      * Biometric authentication
      */
@@ -134,11 +134,11 @@ export class AndroidFingerprintAuth {
 
   /**
    * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.
-   * @param options {AndroidFingerprintAuthOptions} Options
+   * @param options {AuthOptions} Options
    * @returns {Promise<any>}
    */
   @Cordova()
-  decrypt(options: AndroidFingerprintAuthOptions): Promise<{
+  decrypt(options: AuthOptions): Promise<{
     /**
      * Biometric authentication
      */

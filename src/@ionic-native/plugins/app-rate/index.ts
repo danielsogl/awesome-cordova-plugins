@@ -49,7 +49,7 @@ export interface AppRatePreferences {
   /**
    * App Store URLS
    */
-  storeAppURL?: AppRateStoreAppUrls;
+  storeAppURL?: AppUrls;
 
 }
 
@@ -67,7 +67,7 @@ export interface AppRateCallbacks {
 
 }
 
-export interface AppRateStoreAppUrls {
+export interface AppUrls {
 
   /**
    * application id in AppStore
@@ -112,7 +112,7 @@ export interface AppRateStoreAppUrls {
  *
  * @interfaces
  * AppRatePreferences
- * AppRateStoreAppUrls
+ * AppUrls
  * AppRateCallbacks
  *
  */

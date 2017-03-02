@@ -55,15 +55,18 @@ export interface ActionSheetOptions {
  *
  * @usage
  * ```typescript
- * import { ActionSheet } from '@ionic-native/action-sheet';
+ * import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
  *
  * let buttonLabels = ['Share via Facebook', 'Share via Twitter'];
- * ActionSheet.show({
- *   'title': 'What do you want with this image?',
- *   'buttonLabels': buttonLabels,
- *   'addCancelButtonWithLabel': 'Cancel',
- *   'addDestructiveButtonWithLabel' : 'Delete'
- * }).then((buttonIndex: number) => {
+ *
+ * const options: ActionSheetOptions = {
+ *   title: 'What do you want with this image?',
+ *   buttonLabels: buttonLabels,
+ *   addCancelButtonWithLabel: 'Cancel',
+ *   addDestructiveButtonWithLabel: 'Delete'
+ * };
+ *
+ * ActionSheet.show(options).then((buttonIndex: number) => {
  *   console.log('Button pressed: ' + buttonIndex);
  * });
  * ```

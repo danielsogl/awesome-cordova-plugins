@@ -41,7 +41,7 @@ export const GoogleMapsAnimation = {
 /**
  * @private
  */
-export class GoogleMapsObject {
+export class GoogleMap {
   _objectInstance: any;
 
   /**
@@ -184,7 +184,7 @@ export class GoogleMapsObject {
   getLicenseInfo(): Promise<string> { return; }
 
   @CordovaInstance({ sync: true })
-  setCenter(latLng: GoogleMapsLatLng): void { }
+  setCenter(latLng: LatLng): void { }
 
   @CordovaInstance({ sync: true })
   setZoom(zoomLevel: number): void { }
@@ -223,17 +223,17 @@ export class GoogleMapsObject {
   setAllGesturesEnabled(enabled: boolean): void { }
 
   /**
-   * @returns {Promise<GoogleMapsMarker | any>}
+   * @returns {Promise<Marker | any>}
    */
-  addMarker(options: GoogleMapsMarkerOptions): Promise<GoogleMapsMarker | any> {
+  addMarker(options: MarkerOptions): Promise<Marker | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
     }
-    return new Promise<GoogleMapsMarker>(
+    return new Promise<Marker>(
       (resolve, reject) => {
         this._objectInstance.addMarker(options, (marker: any) => {
           if (marker) {
-            resolve(new GoogleMapsMarker(marker));
+            resolve(new Marker(marker));
           } else {
             reject();
           }
@@ -243,17 +243,17 @@ export class GoogleMapsObject {
   }
 
   /**
-   * @returns {Promise<GoogleMapsCircle | any>}
+   * @returns {Promise<Circle | any>}
    */
-  addCircle(options: GoogleMapsCircleOptions): Promise<GoogleMapsCircle | any> {
+  addCircle(options: CircleOptions): Promise<Circle | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
     }
-    return new Promise<GoogleMapsCircle>(
+    return new Promise<Circle>(
       (resolve, reject) => {
         this._objectInstance.addCircle(options, (circle: any) => {
           if (circle) {
-            resolve(new GoogleMapsCircle(circle));
+            resolve(new Circle(circle));
           } else {
             reject();
           }
@@ -263,17 +263,17 @@ export class GoogleMapsObject {
   }
 
   /**
-   * @returns {Promise<GoogleMapsPolygon | any>}
+   * @returns {Promise<Polygon | any>}
    */
-  addPolygon(options: GoogleMapsPolygonOptions): Promise<GoogleMapsPolygon | any> {
+  addPolygon(options: PolygonOptions): Promise<Polygon | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
     }
-    return new Promise<GoogleMapsPolygon>(
+    return new Promise<Polygon>(
       (resolve, reject) => {
         this._objectInstance.addPolygon(options, (polygon: any) => {
           if (polygon) {
-            resolve(new GoogleMapsPolygon(polygon));
+            resolve(new Polygon(polygon));
           } else {
             reject();
           }
@@ -283,17 +283,17 @@ export class GoogleMapsObject {
   }
 
   /**
-   * @returns {Promise<GoogleMapsPolyline | any>}
+   * @returns {Promise<Polyline | any>}
    */
-  addPolyline(options: GoogleMapsPolylineOptions): Promise<GoogleMapsPolyline | any> {
+  addPolyline(options: PolylineOptions): Promise<Polyline | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
     }
-    return new Promise<GoogleMapsPolyline>(
+    return new Promise<Polyline>(
       (resolve, reject) => {
         this._objectInstance.addPolyline(options, (polyline: any) => {
           if (polyline) {
-            resolve(new GoogleMapsPolyline(polyline));
+            resolve(new Polyline(polyline));
           } else {
             reject();
           }
@@ -303,17 +303,17 @@ export class GoogleMapsObject {
   }
 
   /**
-   * @returns {Promise<GoogleMapsTileOverlay | any>}
+   * @returns {Promise<TileOverlay | any>}
    */
-  addTileOverlay(options: GoogleMapsTileOverlayOptions): Promise<GoogleMapsTileOverlay | any> {
+  addTileOverlay(options: TileOverlayOptions): Promise<TileOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
     }
-    return new Promise<GoogleMapsTileOverlay>(
+    return new Promise<TileOverlay>(
       (resolve, reject) => {
         this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
           if (tileOverlay) {
-            resolve(new GoogleMapsTileOverlay(tileOverlay));
+            resolve(new TileOverlay(tileOverlay));
           } else {
             reject();
           }
@@ -323,17 +323,17 @@ export class GoogleMapsObject {
   }
 
   /**
-   * @returns {Promise<GoogleMapsGroundOverlay | any>}
+   * @returns {Promise<GroundOverlay | any>}
    */
-  addGroundOverlay(options: GoogleMapsGroundOverlayOptions): Promise<GoogleMapsGroundOverlay | any> {
+  addGroundOverlay(options: GroundOverlayOptions): Promise<GroundOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
     }
-    return new Promise<GoogleMapsGroundOverlay>(
+    return new Promise<GroundOverlay>(
       (resolve, reject) => {
         this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
           if (groundOverlay) {
-            resolve(new GoogleMapsGroundOverlay(groundOverlay));
+            resolve(new GroundOverlay(groundOverlay));
           } else {
             reject();
           }
@@ -343,17 +343,17 @@ export class GoogleMapsObject {
   }
 
   /**
-   * @returns {Promise<GoogleMapsKmlOverlay | any>}
+   * @returns {Promise<KmlOverlay | any>}
    */
-  addKmlOverlay(options: GoogleMapsKmlOverlayOptions): Promise<GoogleMapsKmlOverlay | any> {
+  addKmlOverlay(options: KmlOverlayOptions): Promise<KmlOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
     }
-    return new Promise<GoogleMapsKmlOverlay>(
+    return new Promise<KmlOverlay>(
       (resolve, reject) => {
         this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
           if (kmlOverlay) {
-            resolve(new GoogleMapsKmlOverlay(kmlOverlay));
+            resolve(new KmlOverlay(kmlOverlay));
           } else {
             reject();
           }
@@ -387,13 +387,13 @@ export class GoogleMapsObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  fromLatLngToPoint(latLng: GoogleMapsLatLng, point: any): Promise<any> { return; }
+  fromLatLngToPoint(latLng: LatLng, point: any): Promise<any> { return; }
 
   /**
-   * @returns {Promise<GoogleMapsLatLng>}
+   * @returns {Promise<LatLng>}
    */
   @CordovaInstance()
-  fromPointToLatLng(point: any, latLng: GoogleMapsLatLng): Promise<GoogleMapsLatLng> { return; }
+  fromPointToLatLng(point: any, latLng: LatLng): Promise<LatLng> { return; }
 
   /**
    * @returns {Promise<any>}
@@ -414,16 +414,17 @@ export class GoogleMapsObject {
  * @usage
  * ```
  * import {
+ *  GoogleMaps,
  *  GoogleMap,
  *  GoogleMapsEvent,
- *  GoogleMapsLatLng,
+ *  LatLng,
  *  CameraPosition,
- *  GoogleMapsMarkerOptions,
- *  GoogleMapsMarker
+ *  MarkerOptions,
+ *  Marker
  * } from '@ionic-native/google-maps';
  *
  * export class MapPage {
- *  constructor() {}
+ *  constructor(private googleMaps: GoogleMaps) {}
  *
  * // Load map only after view is initialize
  * ngAfterViewInit() {
@@ -440,13 +441,13 @@ export class GoogleMapsObject {
  *  // create a new map by passing HTMLElement
  *  let element: HTMLElement = document.getElementById('map');
  *
- *  let map = new GoogleMap(element);
+ *  let map: GoogleMap = GoogleMaps.create(element);
  *
  *  // listen to MAP_READY event
  *  map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
  *
  *  // create LatLng object
- *  let ionic: GoogleMapsLatLng = new GoogleMapsLatLng(43.0741904,-89.3809802);
+ *  let ionic: LatLng = new GoogleMapsLatLng(43.0741904,-89.3809802);
  *
  *  // create CameraPosition
  *  let position: CameraPosition = {
@@ -459,13 +460,13 @@ export class GoogleMapsObject {
  *  map.moveCamera(position);
  *
  *  // create new marker
- *  let markerOptions: GoogleMapsMarkerOptions = {
+ *  let markerOptions: MarkerOptions = {
  *    position: ionic,
  *    title: 'Ionic'
  *  };
  *
- *  map.addMarker(markerOptions)
- *    .then((marker: GoogleMapsMarker) => {
+ *  const marker: Marker = map.addMarker(markerOptions)
+ *    .then((marker: Marker) => {
  *       marker.showInfoWindow();
  *     });
  *  }
@@ -473,7 +474,7 @@ export class GoogleMapsObject {
  * }
  * ```
  * @classes
- * GoogleMapsObject
+ * GoogleMap
  */
 @Plugin({
   pluginName: 'GoogleMaps',
@@ -490,10 +491,10 @@ export class GoogleMaps {
    * Creates a new GoogleMap instance
    * @param element {string | HTMLElement} Element ID or reference to attach the map to
    * @param options {any} Options
-   * @returns {GoogleMapsObject}
+   * @returns {GoogleMap}
    */
-  create(element: string | HTMLElement, options?: any): GoogleMapsObject {
-    return new GoogleMapsObject(element, options);
+  create(element: string | HTMLElement, options?: any): GoogleMap {
+    return new GoogleMap(element, options);
   }
 
 }
@@ -502,7 +503,7 @@ export class GoogleMaps {
  * @private
  */
 export interface AnimateCameraOptions {
-  target?: GoogleMapsLatLng | Array<GoogleMapsMarker> | GoogleMapsLatLngBounds;
+  target?: LatLng | Array<Marker> | LatLngBounds;
   tilt?: number;
   zoom?: number;
   bearing?: number;
@@ -513,7 +514,7 @@ export interface AnimateCameraOptions {
  * @private
  */
 export interface CameraPosition {
-  target?: GoogleMapsLatLng | GoogleMapsLatLngBounds | GoogleMapsLatLng[];
+  target?: LatLng | LatLngBounds | LatLng[];
   zoom?: number;
   tilt?: number;
   bearing?: number;
@@ -523,7 +524,7 @@ export interface CameraPosition {
  * @private
  */
 export interface MyLocation {
-  latLng?: GoogleMapsLatLng;
+  latLng?: LatLng;
   speed?: number;
   time?: string;
   bearing?: number;
@@ -547,7 +548,7 @@ export interface VisibleRegion {
 /**
  * @private
  */
-export interface GoogleMapsMarkerOptions {
+export interface MarkerOptions {
   /**
    * The icon image url or properties. Also you can specify HTML Color values. Alternatively you can specify the image as Base64
    */
@@ -566,7 +567,7 @@ export interface GoogleMapsMarkerOptions {
   /**
    * The position of the marker.
    */
-  position?: GoogleMapsLatLng;
+  position?: LatLng;
 
   /**
    * 	Specify the anchor of the InfoWindow
@@ -627,7 +628,7 @@ export interface GoogleMapsMarkerOptions {
 /**
  * @private
  */
-export interface GoogleMapsMarkerIcon {
+export interface MarkerIcon {
   url?: string;
   size?: {
     width?: number;
@@ -638,7 +639,7 @@ export interface GoogleMapsMarkerIcon {
 /**
  * @private
  */
-export class GoogleMapsMarker {
+export class Marker {
 
   constructor(private _objectInstance: any) { }
 
@@ -809,7 +810,7 @@ export class GoogleMapsMarker {
    * @param icon
    */
   @CordovaInstance({ sync: true })
-  setIcon(icon: GoogleMapsMarkerIcon): void { return; }
+  setIcon(icon: MarkerIcon): void { return; }
 
   /**
    * Change title of the infoWindow.
@@ -872,21 +873,21 @@ export class GoogleMapsMarker {
    * @param latLng {GoogleMapLatLng}
    */
   @CordovaInstance({ sync: true })
-  setPosition(latLng: GoogleMapsLatLng): void { return; }
+  setPosition(latLng: LatLng): void { return; }
 
   /**
    * Return the marker position.
    * @return {Promise<GoogleMapLatLng>}
    */
   @CordovaInstance()
-  getPosition(): Promise<GoogleMapsLatLng> { return; }
+  getPosition(): Promise<LatLng> { return; }
 
   /**
    * Return the map instance.
    * @return {GoogleMap}
    */
   @CordovaInstance({ sync: true })
-  getMap(): GoogleMapsObject { return; }
+  getMap(): GoogleMap { return; }
 
   /**
    * Specify the animation either `DROP` or `BOUNCE`
@@ -900,8 +901,8 @@ export class GoogleMapsMarker {
 /**
  * @private
  */
-export interface GoogleMapsCircleOptions {
-  center?: GoogleMapsLatLng;
+export interface CircleOptions {
+  center?: LatLng;
   radius?: number;
   strokeColor?: string;
   strokeWidth?: number;
@@ -914,7 +915,7 @@ export interface GoogleMapsCircleOptions {
  * @private
  */
 
-export class GoogleMapsCircle {
+export class Circle {
 
   constructor(private _objectInstance: any) { }
 
@@ -997,7 +998,7 @@ export class GoogleMapsCircle {
   empty(): void { }
 
   @CordovaInstance({ sync: true })
-  getCenter(): GoogleMapsLatLng { return; }
+  getCenter(): LatLng { return; }
 
   @CordovaInstance({ sync: true })
   getRadius(): number { return; }
@@ -1015,7 +1016,7 @@ export class GoogleMapsCircle {
   remove(): void { }
 
   @CordovaInstance({ sync: true })
-  setCenter(latLng: GoogleMapsLatLng): void { }
+  setCenter(latLng: LatLng): void { }
 
   @CordovaInstance({ sync: true })
   setFillColor(fillColor: string): void { }
@@ -1036,14 +1037,14 @@ export class GoogleMapsCircle {
   setRadius(radius: number): void { }
 
   @CordovaInstance({ sync: true })
-  getMap(): GoogleMapsObject { return; }
+  getMap(): GoogleMap { return; }
 }
 
 /**
  * @private
  */
-export interface GoogleMapsPolylineOptions {
-  points?: Array<GoogleMapsLatLng>;
+export interface PolylineOptions {
+  points?: Array<LatLng>;
   visible?: boolean;
   geodesic?: boolean;
   color?: string;
@@ -1055,7 +1056,7 @@ export interface GoogleMapsPolylineOptions {
  * @private
  */
 
-export class GoogleMapsPolyline {
+export class Polyline {
   constructor(private _objectInstance: any) { }
 
   /**
@@ -1137,7 +1138,7 @@ export class GoogleMapsPolyline {
   empty(): void { }
 
   @CordovaInstance({ sync: true })
-  getPoints(): Array<GoogleMapsLatLng> { return; }
+  getPoints(): Array<LatLng> { return; }
 
   @CordovaInstance({ sync: true })
   getCOlor(): string { return; }
@@ -1155,7 +1156,7 @@ export class GoogleMapsPolyline {
   remove(): void { }
 
   @CordovaInstance({ sync: true })
-  setPoints(points: Array<GoogleMapsLatLng>): void { }
+  setPoints(points: Array<LatLng>): void { }
 
   @CordovaInstance({ sync: true })
   setColor(color: string): void { }
@@ -1173,29 +1174,29 @@ export class GoogleMapsPolyline {
   setGeoDesic(geoDesic: boolean): void { }
 
   @CordovaInstance({ sync: true })
-  getMap(): GoogleMapsObject { return; }
+  getMap(): GoogleMap { return; }
 
 }
 
 /**
  * @private
  */
-export interface GoogleMapsPolygonOptions {
-  points?: Array<GoogleMapsLatLng>;
+export interface PolygonOptions {
+  points?: Array<LatLng>;
   geodesic?: boolean;
   strokeColor?: string;
   strokeWidth?: number;
   fillColor?: string;
   visible?: boolean;
   zIndex?: number;
-  addHole?: Array<GoogleMapsLatLng>;
+  addHole?: Array<LatLng>;
 }
 
 /**
  * @private
  */
 
-export class GoogleMapsPolygon {
+export class Polygon {
 
   constructor(private _objectInstance: any) { }
 
@@ -1278,7 +1279,7 @@ export class GoogleMapsPolygon {
   empty(): void { }
 
   @CordovaInstance({ sync: true })
-  getPoints(): Array<GoogleMapsLatLng> { return; }
+  getPoints(): Array<LatLng> { return; }
 
   @CordovaInstance({ sync: true })
   getStrokeColor(): string { return; }
@@ -1302,7 +1303,7 @@ export class GoogleMapsPolygon {
   remove(): void { }
 
   @CordovaInstance({ sync: true })
-  setPoints(points: Array<GoogleMapsLatLng>): void { }
+  setPoints(points: Array<LatLng>): void { }
 
   @CordovaInstance({ sync: true })
   setStrokeColor(strokeColor: string): void { }
@@ -1326,7 +1327,7 @@ export class GoogleMapsPolygon {
 /**
  * @private
  */
-export interface GoogleMapsTileOverlayOptions {
+export interface TileOverlayOptions {
   tileUrlFormat?: string;
   visible?: boolean;
   zIndex?: number;
@@ -1337,7 +1338,7 @@ export interface GoogleMapsTileOverlayOptions {
 /**
  * @private
  */
-export class GoogleMapsTileOverlay {
+export class TileOverlay {
 
   constructor(private _objectInstance: any) { }
 
@@ -1454,9 +1455,9 @@ export class GoogleMapsTileOverlay {
 /**
  * @private
  */
-export interface GoogleMapsGroundOverlayOptions {
+export interface GroundOverlayOptions {
   url?: string;
-  bounds?: Array<GoogleMapsLatLng>;
+  bounds?: Array<LatLng>;
   visible?: boolean;
   opacity?: number;
   bearing?: number;
@@ -1466,7 +1467,7 @@ export interface GoogleMapsGroundOverlayOptions {
 /**
  * @private
  */
-export class GoogleMapsGroundOverlay {
+export class GroundOverlay {
 
   constructor(private _objectInstance: any) { }
 
@@ -1577,7 +1578,7 @@ export class GoogleMapsGroundOverlay {
 /**
  * @private
  */
-export interface GoogleMapsKmlOverlayOptions {
+export interface KmlOverlayOptions {
   url?: string;
   preserveViewport?: boolean;
   animation?: boolean;
@@ -1586,7 +1587,7 @@ export interface GoogleMapsKmlOverlayOptions {
 /**
  * @private
  */
-export class GoogleMapsKmlOverlay {
+export class KmlOverlay {
 
   constructor(private _objectInstance: any) { }
 
@@ -1672,20 +1673,20 @@ export class GoogleMapsKmlOverlay {
   remove(): void { }
 
   @CordovaInstance({ sync: true })
-  getOverlays(): Array<GoogleMapsPolyline | GoogleMapsPolygon | GoogleMapsMarker> { return; }
+  getOverlays(): Array<Polyline | Polygon | Marker> { return; }
 }
 
 /**
  * @private
  */
-export class GoogleMapsLatLngBounds {
+export class LatLngBounds {
   private _objectInstance: any;
 
-  @InstanceProperty northeast: GoogleMapsLatLng;
-  @InstanceProperty southwest: GoogleMapsLatLng;
+  @InstanceProperty northeast: LatLng;
+  @InstanceProperty southwest: LatLng;
   @InstanceProperty type: string;
 
-  constructor(southwestOrArrayOfLatLng: GoogleMapsLatLng | GoogleMapsLatLng[], northeast?: GoogleMapsLatLng) {
+  constructor(southwestOrArrayOfLatLng: LatLng | LatLng[], northeast?: LatLng) {
     let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
     this._objectInstance = new plugin.google.maps.LatLngBounds(args);
   }
@@ -1697,20 +1698,20 @@ export class GoogleMapsLatLngBounds {
   toUrlValue(precision?: number): string { return; }
 
   @CordovaInstance({ sync: true })
-  extend(LatLng: GoogleMapsLatLng): void { }
+  extend(LatLng: LatLng): void { }
 
   @CordovaInstance({ sync: true })
-  contains(LatLng: GoogleMapsLatLng): boolean { return; }
+  contains(LatLng: LatLng): boolean { return; }
 
   @CordovaInstance({ sync: true })
-  getCenter(): GoogleMapsLatLng { return; }
+  getCenter(): LatLng { return; }
 }
 
 /**
  * @private
  */
 
-export class GoogleMapsLatLng {
+export class LatLng {
 
   lat: number;
   lng: number;
@@ -1720,7 +1721,7 @@ export class GoogleMapsLatLng {
     this.lng = lng;
   }
 
-  equals(other: GoogleMapsLatLng): boolean {
+  equals(other: LatLng): boolean {
     return this.lat === other.lat && this.lng === other.lng;
   }
 
@@ -1739,7 +1740,7 @@ export class GoogleMapsLatLng {
  */
 export interface GeocoderRequest {
   address?: string;
-  bounds?: GoogleMapsLatLng[];
+  bounds?: LatLng[];
   position?: { lat: number; lng: number };
 }
 /**

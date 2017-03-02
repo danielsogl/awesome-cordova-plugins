@@ -20,7 +20,7 @@ window.plugin = {
   }
 };
 
-describe('GoogleMapsLatLngBounds', () => {
+describe('LatLngBounds', () => {
 
   const southwest = new GoogleMapsLatLng(1,1);
   const northeast = new GoogleMapsLatLng(4,4);
