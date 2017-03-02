@@ -171,7 +171,6 @@ export interface Flags {
 }
 
 export interface WriteOptions {
-  create?: boolean;
   replace?: boolean;
   append?: boolean;
   truncate?: number; // if present, number of bytes to truncate file to before writing
@@ -799,7 +798,7 @@ export class File {
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
   static writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
-    return File.writeFile(path, fileName, text, { create: false });
+    return File.writeFile(path, fileName, text, { replace: true });
   }
 
   /**
