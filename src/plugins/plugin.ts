@@ -582,7 +582,7 @@ export function CordovaFiniteObservable(opts: CordovaFiniteObservableOptions = {
     return {
       value: function(...args: any[]) {
         let wrappedObservable: Observable<any> = wrap(this, methodName, opts).apply(this, args);
-        return new Observable((observer) => {
+        return new Observable<any>((observer) => {
           let wrappedSubscription = wrappedObservable.subscribe({
             next: (x) => {
               observer.next(opts.resultTransform ? opts.resultTransform(x) : x);
