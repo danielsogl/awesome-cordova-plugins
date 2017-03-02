@@ -64,6 +64,13 @@ export interface ILocalNotification {
    * Default: res://ic_popup_reminder
    */
   smallIcon?: string;
+  
+  /**
+  * ANDROID ONLY
+  * RGB value for the background color of the smallIcon. 
+  * Default: Androids COLOR_DEFAULT, which will vary based on Android version.
+  */
+  color?: string;
 
 
   /**
