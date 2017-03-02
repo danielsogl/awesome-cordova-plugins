@@ -37,6 +37,9 @@ export const GoogleMapsAnimation = {
   DROP: 'DROP'
 };
 
+/**
+ * @private
+ */
 export const GoogleMapsMapTypeId = {
     HYBRID: 'MAP_TYPE_HYBRID',
     NONE: 'MAP_TYPE_NONE',
@@ -97,7 +100,7 @@ export const GoogleMapsMapTypeId = {
  *    map.moveCamera(position); // works on iOS and Android
  * });
  *
- *  
+ *
  *  // create new marker
  *  let markerOptions: GoogleMapsMarkerOptions = {
  *    position: ionic,
