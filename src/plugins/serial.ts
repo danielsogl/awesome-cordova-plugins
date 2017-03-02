@@ -23,13 +23,9 @@ export interface SerialOpenOptions {
  * ```
  * import { Serial } from 'ionic-native';
  *
- * Serial.requestPermission({
- *   vid: '0403',
- *   pid: '6001',
- *   driver: 'FtdiSerialDriver'
- * }).then(() => {
+ * Serial.requestPermission().then(() => {
  *   Serial.open({
- *     baudRate: 38400
+ *     baudRate: 9800
  *   }).then(() => {
  *     console.log('Serial connection opened');
  *   });
@@ -49,11 +45,14 @@ export class Serial {
   /**
    * Request permission to connect to a serial device
    *
-   * @param options {SerialPermissionOptions} Options used to request serial permissions
+   * @param options {SerialPermissionOptions} Options used to request serial permissions for an unknown device
    * @return {Promise<any>} Returns a promise that resolves when permissions are granted
    */
-  @Cordova()
-  static requestPermission(options: SerialPermissionOptions): Promise<any> { return; }
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2
+  })
+  static requestPermission(options?: SerialPermissionOptions): Promise<any> { return; }
 
   /**
    * Open connection to a serial device

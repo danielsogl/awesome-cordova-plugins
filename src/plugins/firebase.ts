@@ -62,6 +62,15 @@ export class Firebase {
   })
   static grantPermission(): Promise<any> { return; }
 
+    /**
+   * Check permission to recieve push notifications
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  static hasPermission(): Promise<any> { return; }
+
   /**
    * Set icon badge number. Set to 0 to clear the badge.
    * @param badgeNumber {number}

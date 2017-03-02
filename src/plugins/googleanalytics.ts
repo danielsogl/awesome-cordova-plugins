@@ -125,7 +125,7 @@ export class GoogleAnalytics {
   /**
    * Add a Custom Dimension
    * https://developers.google.com/analytics/devguides/platform/customdimsmets
-   * @param key {string}
+   * @param key {number}
    * @param value {string}
    * @returns {Promise<any>}
    */

@@ -109,6 +109,15 @@ export class Diagnostic {
     POWERING_ON: 'powering_on'
   };
 
+  @CordovaProperty
+  static NFCState: {
+    UNKNOWN: string;
+    POWERED_OFF: string;
+    POWERED_ON: string;
+    POWERING_ON: string;
+    POWERING_OFF: string;
+  };
+
 
   /**
    * Checks if app is able to access device location.
@@ -189,6 +198,9 @@ export class Diagnostic {
    */
   @Cordova({ callbackOrder: 'reverse', platforms: ['Android', 'Windows 10'] })
   static setBluetoothState(state: boolean): Promise<any> { return; }
+
+
+  // ANDROID AND IOS ONLY
 
   /**
    * Returns true if the device setting for location is on. On Android this returns true if Location Mode is switched on. On iOS this returns true if Location Services is switched on.
@@ -367,6 +379,9 @@ export class Diagnostic {
   @Cordova({ platforms: ['Android', 'iOS'], sync: true })
   static registerLocationStateChangeHandler(handler: Function): void { }
 
+
+  // ANDROID ONLY
+
   /**
    * Checks if high-accuracy locations are available to the app from GPS hardware.
    * Returns true if Location mode is enabled and is set to "Device only" or "High accuracy" AND if the app is authorised to use location.
@@ -494,6 +509,96 @@ export class Diagnostic {
   static hasBluetoothLEPeripheralSupport(): Promise<boolean> { return; }
 
   /**
+   * Checks if the application is authorized to use external storage.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static isExternalStorageAuthorized(): Promise<boolean> { return; }
+
+  /**
+   * CReturns the external storage authorization status for the application.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static getExternalStorageAuthorizationStatus(): Promise<any> { return; }
+
+  /**
+   * Requests external storage authorization for the application.
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static requestExternalStorageAuthorization(): Promise<any> { return; }
+
+  /**
+   * Returns details of external SD card(s): absolute path, is writable, free space.
+   *
+   * The intention of this method is to return the location and details of removable external SD cards.
+   * This differs from the "external directories" returned by cordova-plugin-file which return mount points relating to non-removable (internal) storage.
+   *
+   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#getexternalsdcarddetails)
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static getExternalSdCardDetails(): Promise<any> { return; }
+
+  /**
+   * Switches to the wireless settings page in the Settings app. Allows configuration of wireless controls such as Wi-Fi, Bluetooth and Mobile networks.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  switchToWirelessSettings(): void { }
+
+  /**
+   * Displays NFC settings to allow user to enable NFC.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  switchToNFCSettings(): void { }
+
+  /**
+   * Checks if NFC hardware is present on device.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static isNFCPresent(): Promise<boolean> { return; }
+
+  /**
+   * Checks if the device setting for NFC is switched on.
+   * Note: this operation does not require NFC permission in the manifest.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static isNFCEnabled(): Promise<boolean> { return; }
+
+  /**
+   * Checks if NFC is available to the app. Returns true if the device has NFC capabilities AND if NFC setting is switched on.
+   * Note: this operation does not require NFC permission in the manifest.
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static isNFCAvailable(): Promise<boolean> { return; }
+
+  /**
+   * Registers a function to be called when a change in NFC state occurs. Pass in a falsey value to de-register the currently registered function.
+   * @param hander {Function} callback function to be called when NFC state changes
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  registerNFCStateChangeHandler(handler: Function): void { }
+
+
+
+  // IOS ONLY
+
+  /**
    * Checks if the application is authorized to use the Camera Roll in Photos app.
    * @returns {Promise<boolean>}
    */
@@ -572,5 +677,41 @@ export class Diagnostic {
    */
   @Cordova({ platforms: ['iOS'] })
   static getBackgroundRefreshStatus(): Promise<any> { return; }
+
+  /**
+   * Requests Bluetooth authorization for the application.
+   *
+   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#requestbluetoothauthorization)
+   * @return {Promise<any>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  static requestBluetoothAuthorization(): Promise<any> { return; }
+
+  /**
+   * Checks if motion tracking is available on the current device.
+   * @return {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  static isMotionAvailable(): Promise<boolean> { return; }
+
+  /**
+   * Checks if it's possible to determine the outcome of a motion authorization request on the current device.
+   * There's no direct way to determine if authorization was granted or denied, so the Pedometer API must be used to indirectly determine this:
+   * therefore, if the device supports motion tracking but not Pedometer Event Tracking, the outcome of requesting motion detection cannot be determined.
+   *
+   * @return {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  static isMotionRequestOutcomeAvailable(): Promise<boolean> { return; }
+
+  /**
+   * Requests and checks motion authorization for the application: there is no way to independently request only or check only, so both must be done in one operation.
+   *
+   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#requestandcheckmotionauthorization)
+   *
+   * @return {Promise<any>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  static requestAndCheckMotionAuthorization(): Promise<any> { return; }
 
 }

@@ -38,6 +38,18 @@ export const GoogleMapsAnimation = {
 };
 
 /**
+ * @private
+ */
+export const GoogleMapsMapTypeId = {
+    HYBRID: 'MAP_TYPE_HYBRID',
+    NONE: 'MAP_TYPE_NONE',
+    NORMAL: 'MAP_TYPE_NORMAL',
+    ROADMAP: 'MAP_TYPE_ROADMAP',
+    SATELLITE: 'MAP_TYPE_SATELLITE',
+    TERAIN: 'MAP_TYPE_TERRAIN'
+};
+
+/**
  * @name Google Maps
  * @description This plugin uses the native Google Maps SDK
  * @usage
@@ -48,7 +60,8 @@ export const GoogleMapsAnimation = {
  *  GoogleMapsLatLng,
  *  CameraPosition,
  *  GoogleMapsMarkerOptions,
- *  GoogleMapsMarker
+ *  GoogleMapsMarker,
+ *  GoogleMapsMapTypeId
  * } from 'ionic-native';
  *
  * export class MapPage {
@@ -71,9 +84,6 @@ export const GoogleMapsAnimation = {
  *
  *  let map = new GoogleMap(element);
  *
- *  // listen to MAP_READY event
- *  map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
- *
  *  // create LatLng object
  *  let ionic: GoogleMapsLatLng = new GoogleMapsLatLng(43.0741904,-89.3809802);
  *
@@ -84,8 +94,12 @@ export const GoogleMapsAnimation = {
  *    tilt: 30
  *  };
  *
- *  // move the map's camera to position
- *  map.moveCamera(position);
+ *  // listen to MAP_READY event
+ *  map.one(GoogleMapsEvent.MAP_READY).then(() => {
+ *    // move the map's camera to position
+ *    map.moveCamera(position); // works on iOS and Android
+ * });
+ *
  *
  *  // create new marker
  *  let markerOptions: GoogleMapsMarkerOptions = {
@@ -98,7 +112,7 @@ export const GoogleMapsAnimation = {
  *       marker.showInfoWindow();
  *     });
  *  }
- *
+ * });
  * }
  * ```
  */
@@ -258,7 +272,7 @@ export class GoogleMap {
   setZoom(zoomLevel: number): void { }
 
   @CordovaInstance({ sync: true })
-  setMapTypeId(typeId: string): void { }
+  setMapTypeId(mapTypeId: string): void { }
 
   @CordovaInstance({ sync: true })
   setTilt(tiltLevel: number): void { }

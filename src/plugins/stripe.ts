@@ -52,7 +52,6 @@ export interface StripeCardTokenParams {
 }
 
 /**
- * @beta
  * @name Stripe
  * @description
  * A plugin that allows you to use Stripe's Native SDKs for Android and iOS.
@@ -67,10 +66,10 @@ export interface StripeCardTokenParams {
  *  number: '4242424242424242',
  *  expMonth: 12,
  *  expYear: 2020,
- *  cvc: 220
+ *  cvc: '220'
  * };
  *
- * Stripe.createToken(card)
+ * Stripe.createCardToken(card)
  *    .then(token => console.log(token))
  *    .catch(error => console.error(error));
  *

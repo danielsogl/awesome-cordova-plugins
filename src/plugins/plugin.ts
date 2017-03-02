@@ -378,14 +378,6 @@ function overrideFunction(pluginObj: any, methodName: string, args: any[], opts:
       return;
     }
 
-    let method = pluginInstance[methodName];
-    if (!method) {
-      observer.error({
-        error: 'no_such_method'
-      });
-      observer.complete();
-      return;
-    }
     pluginInstance[methodName] = observer.next.bind(observer);
   });
 }
