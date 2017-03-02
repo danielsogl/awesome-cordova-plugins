@@ -10,16 +10,16 @@ import { Plugin, Cordova } from './plugin';
  * import { UniqueDeviceID } from 'ionic-native';
  *
  * UniqueDeviceID.get()
- *   .then((uuid: any) => doSomething(uuid))
+ *   .then((uuid: any) => console.log(uuid))
  *   .catch((error: any) => console.log(error));
  *
  * ```
  */
 @Plugin({
   pluginName: 'UniqueDeviceID',
-  plugin: 'cordova-plugin-uniquedeviceid', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'window.plugins.uniqueDeviceID', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/Paldom/UniqueDeviceID' // the github repository URL for the plugin
+  plugin: 'cordova-plugin-uniquedeviceid',
+  pluginRef: 'window.plugins.uniqueDeviceID',
+  repo: 'https://github.com/Paldom/UniqueDeviceID'
 })
 export class UniqueDeviceID {
 
@@ -28,8 +28,6 @@ export class UniqueDeviceID {
    * @return {Promise<string>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  static get(): Promise<string> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  static get(): Promise<string> { return; }
 
 }
