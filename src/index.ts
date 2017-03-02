@@ -120,6 +120,7 @@ import { TouchID } from './plugins/touchid';
 import { TextToSpeech } from './plugins/text-to-speech';
 import { ThemeableBrowser } from './plugins/themeable-browser';
 import { TwitterConnect } from './plugins/twitter-connect';
+import { UniqueDeviceID } from './plugins/unique-device-id';
 import { Vibration } from './plugins/vibration';
 import { VideoEditor } from './plugins/video-editor';
 import { VideoPlayer } from './plugins/video-player';
@@ -245,6 +246,7 @@ export * from './plugins/themeable-browser';
 export * from './plugins/toast';
 export * from './plugins/touchid';
 export * from './plugins/twitter-connect';
+export * from './plugins/unique-device-id';
 export * from './plugins/vibration';
 export * from './plugins/video-editor';
 export * from './plugins/video-player';
@@ -372,6 +374,7 @@ window['IonicNative'] = {
   TextToSpeech,
   ThemeableBrowser,
   TwitterConnect,
+  UniqueDeviceID,
   VideoEditor,
   VideoPlayer,
   Vibration,
