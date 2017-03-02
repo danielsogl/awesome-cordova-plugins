@@ -1,3 +1,21 @@
+<a name="2.7.0"></a>
+# [2.7.0](https://github.com/driftyco/ionic-native/compare/v2.6.0...v2.7.0) (2017-03-02)
+
+
+### Bug Fixes
+
+* **core:** dont check if method exists when overriding ([754c5ec](https://github.com/driftyco/ionic-native/commit/754c5ec)), closes [#1043](https://github.com/driftyco/ionic-native/issues/1043)
+* **file:** fix writeExistingFile ([47f48ba](https://github.com/driftyco/ionic-native/commit/47f48ba)), closes [#1044](https://github.com/driftyco/ionic-native/issues/1044)
+
+
+### Features
+
+* **background-mode:** add missing functions ([906401b](https://github.com/driftyco/ionic-native/commit/906401b)), closes [#1078](https://github.com/driftyco/ionic-native/issues/1078)
+* **background-mode:** replace event listeners with on method ([ffdbab7](https://github.com/driftyco/ionic-native/commit/ffdbab7))
+* **diagnostic:** add new methods ([5144345](https://github.com/driftyco/ionic-native/commit/5144345)), closes [#1045](https://github.com/driftyco/ionic-native/issues/1045)
+
+
+
 <a name="2.6.0"></a>
 # [2.6.0](https://github.com/driftyco/ionic-native/compare/v2.5.1...v2.6.0) (2017-03-02)
 
@@ -7,6 +25,7 @@
 * **apprate:** add missing Windows Store option ([#1072](https://github.com/driftyco/ionic-native/issues/1072)) ([439ccee](https://github.com/driftyco/ionic-native/commit/439ccee))
 * **background-geolocation:** configure returns a promise ([fc87992](https://github.com/driftyco/ionic-native/commit/fc87992)), closes [#1118](https://github.com/driftyco/ionic-native/issues/1118)
 * **contacts:** allow passing asterisk as contact field type ([9c5b593](https://github.com/driftyco/ionic-native/commit/9c5b593)), closes [#1093](https://github.com/driftyco/ionic-native/issues/1093)
+* **contacts:** allow passing asterisk as contact field type ([2639486](https://github.com/driftyco/ionic-native/commit/2639486))
 * **facebook:** fixes issue when not supplying default params ([#1088](https://github.com/driftyco/ionic-native/issues/1088)) ([85a3a40](https://github.com/driftyco/ionic-native/commit/85a3a40))
 * **file:** add missing exports ([#1101](https://github.com/driftyco/ionic-native/issues/1101)) ([23b97f6](https://github.com/driftyco/ionic-native/commit/23b97f6))
 * **file:** platform Browser will raise a an DOMException ([#1082](https://github.com/driftyco/ionic-native/issues/1082)) ([2fba915](https://github.com/driftyco/ionic-native/commit/2fba915))
