@@ -1,5 +1,4 @@
 import {Cordova, Plugin, CordovaProperty} from './plugin';
-import {Observable} from "rxjs";
 
 /**
  * @name Diagnostic
