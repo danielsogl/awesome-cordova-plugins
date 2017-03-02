@@ -3,12 +3,13 @@ import { initAngular1 } from './ng1';
 const DEVICE_READY_TIMEOUT = 5000;
 
 declare var window;
-
 import { ActionSheet } from './plugins/actionsheet';
 import { AdMob } from './plugins/admob';
+import { Alipay } from './plugins/alipay';
 import { AndroidFingerprintAuth } from './plugins/android-fingerprint-auth';
 import { AppAvailability } from './plugins/appavailability';
 import { AppRate } from './plugins/apprate';
+import { AppUpdate } from './plugins/app-update';
 import { AppVersion } from './plugins/appversion';
 import { Badge } from './plugins/badge';
 import { BackgroundGeolocation } from './plugins/background-geolocation';
@@ -18,6 +19,7 @@ import { BarcodeScanner } from './plugins/barcodescanner';
 import { Base64ToGallery } from './plugins/base64togallery';
 import { BatteryStatus } from './plugins/batterystatus';
 import { Brightness } from './plugins/brightness';
+import { BrowserTab } from './plugins/browser-tab';
 import { BLE } from './plugins/ble';
 import { BluetoothSerial } from './plugins/bluetoothserial';
 import { Broadcaster } from './plugins/broadcaster';
@@ -128,9 +130,11 @@ import { Zip } from './plugins/zip';
 export * from './plugins/3dtouch';
 export * from './plugins/actionsheet';
 export * from './plugins/admob';
+export * from './plugins/alipay';
 export * from './plugins/android-fingerprint-auth';
 export * from './plugins/appavailability';
 export * from './plugins/apprate';
+export * from './plugins/app-update';
 export * from './plugins/appversion';
 export * from './plugins/background-geolocation';
 export * from './plugins/backgroundmode';
@@ -142,6 +146,7 @@ export * from './plugins/batterystatus';
 export * from './plugins/ble';
 export * from './plugins/bluetoothserial';
 export * from './plugins/brightness';
+export * from './plugins/browser-tab';
 export * from './plugins/broadcaster';
 export * from './plugins/calendar';
 export * from './plugins/call-number';
@@ -252,9 +257,11 @@ export * from './plugins/zip';
 window['IonicNative'] = {
   ActionSheet,
   AdMob,
+  Alipay,
   AndroidFingerprintAuth,
   AppAvailability,
   AppRate,
+  AppUpdate,
   AppVersion,
   Badge,
   BackgroundGeolocation,
@@ -264,6 +271,7 @@ window['IonicNative'] = {
   Base64ToGallery,
   BatteryStatus,
   Brightness,
+  BrowserTab,
   BLE,
   BluetoothSerial,
   Broadcaster,

@@ -1,4 +1,4 @@
-import { Plugin, pluginWarn } from './plugin';
+import {CordovaProperty, Plugin, pluginWarn} from './plugin';
 
 declare var window: any;
 declare var cordova: any;
@@ -267,7 +267,7 @@ export interface FileWriter extends FileSaver {
    * Write the supplied data to the file at position.
    * @param {Blob} data The blob to write.
    */
-  write(data: Blob | string): void;
+  write(data: ArrayBuffer | Blob | string): void;
   /**
    * The file position at which the next write will occur.
    * @param offset If nonnegative, an absolute byte offset into the file.
@@ -283,7 +283,7 @@ export interface FileWriter extends FileSaver {
 }
 
 /* FileWriter states */
-declare var FileWriter: {
+export declare var FileWriter: {
   INIT: number;
   WRITING: number;
   DONE: number
@@ -308,7 +308,7 @@ export interface FileReader {
   readAsArrayBuffer(fe: File | Blob): void;
 }
 
-declare var FileReader: {
+export declare var FileReader: {
   EMPTY: number;
   LOADING: number;
   DONE: number;
@@ -322,7 +322,7 @@ export interface FileError {
   message: string;
 }
 
-declare var FileError: {
+export declare var FileError: {
   new (code: number): FileError;
   NOT_FOUND_ERR: number;
   SECURITY_ERR: number;
@@ -350,9 +350,9 @@ declare var FileError: {
  * ```
  * import { File } from 'ionic-native';
  *
- * declare var cordova: any;
- * const fs:string = cordova.file.dataDirectory;
- * File.checkDir(this.fs, 'mydir').then(_ => console.log('yay')).catch(err => console.log('boooh'));
+ * const dataDirectory: string = File.dataDirectory;
+ *
+ * File.checkDir(dataDirectory, 'mydir').then(_ => console.log('yay')).catch(err => console.log('boooh'));
  * ```
  *
  *  This plugin is based on several specs, including : The HTML5 File API http://www.w3.org/TR/FileAPI/
@@ -367,6 +367,80 @@ declare var FileError: {
   repo: 'https://github.com/apache/cordova-plugin-file'
 })
 export class File {
+
+  /**
+   *  Read-only directory where the application is installed.
+   */
+  @CordovaProperty
+  static applicationDirectory: string;
+
+  /**
+   *  Read-only directory where the application is installed.
+   */
+  @CordovaProperty
+  static applicationStorageDirectory: string;
+
+  /**
+   * Where to put app-specific data files.
+   */
+  @CordovaProperty
+  static dataDirectory: string;
+
+  /**
+   * Cached files that should survive app restarts.
+   * Apps should not rely on the OS to delete files in here.
+   */
+  @CordovaProperty
+  static cacheDirectory: string;
+
+  /**
+   * Android: the application space on external storage.
+   */
+  @CordovaProperty
+  static externalApplicationStorageDirectory: string;
+
+  /**
+   *  Android: Where to put app-specific data files on external storage.
+   */
+  @CordovaProperty
+  static externalDataDirectory: string;
+
+  /**
+   * Android: the application cache on external storage.
+   */
+  @CordovaProperty
+  static externalCacheDirectory: string;
+
+  /**
+   * Android: the external storage (SD card) root.
+   */
+  @CordovaProperty
+  static externalRootDirectory: string;
+
+  /**
+   * iOS: Temp directory that the OS can clear at will.
+   */
+  @CordovaProperty
+  static tempDirectory: string;
+
+  /**
+   * iOS: Holds app-specific files that should be synced (e.g. to iCloud).
+   */
+  @CordovaProperty
+  static syncedDataDirectory: string;
+
+  /**
+   * iOS: Files private to the app, but that are meaningful to other applications (e.g. Office files)
+   */
+  @CordovaProperty
+  static documentsDirectory: string;
+
+  /**
+   * BlackBerry10: Files globally available to all apps
+   */
+  @CordovaProperty
+  static sharedDirectory: string;
+
   static cordovaFileError: {} = {
     1: 'NOT_FOUND_ERR',
     2: 'SECURITY_ERR',
@@ -671,7 +745,7 @@ export class File {
    * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   static writeFile(path: string, fileName: string,
-                   text: string | Blob, options: WriteOptions = {}): Promise<any> {
+                   text: string | Blob | ArrayBuffer, options: WriteOptions = {}): Promise<any> {
     if ((/^\//.test(fileName))) {
       const err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -700,7 +774,7 @@ export class File {
    * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
-  private static writeFileEntry(fe: FileEntry, text: string | Blob, options: WriteOptions) {
+  private static writeFileEntry(fe: FileEntry, text: string | Blob | ArrayBuffer, options: WriteOptions) {
     return File.createWriter(fe)
       .then((writer) => {
         if (options.append) {
@@ -1133,7 +1207,7 @@ export class File {
   /**
    * @private
    */
-  private static write(writer: FileWriter, gu: string | Blob): Promise<any> {
+  private static write(writer: FileWriter, gu: string | Blob | ArrayBuffer): Promise<any> {
     if (gu instanceof Blob) {
       return this.writeFileInChunks(writer, gu);
     }

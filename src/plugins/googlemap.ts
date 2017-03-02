@@ -99,7 +99,7 @@ export const GoogleMapsAnimation = {
  *       marker.showInfoWindow();
  *     });
  *  }
- *
+ * });
  * }
  * ```
  */

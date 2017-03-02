@@ -67,10 +67,10 @@ export interface StripeCardTokenParams {
  *  number: '4242424242424242',
  *  expMonth: 12,
  *  expYear: 2020,
- *  cvc: 220
+ *  cvc: '220'
  * };
  *
- * Stripe.createToken(card)
+ * Stripe.createCardToken(card)
  *    .then(token => console.log(token))
  *    .catch(error => console.error(error));
  *
