@@ -97,6 +97,7 @@ import { OneSignal } from './plugins/onesignal';
 import { PhotoViewer } from './plugins/photo-viewer';
 import { ScreenOrientation } from './plugins/screen-orientation';
 import { PayPal } from './plugins/pay-pal';
+import { Pedometer } from './plugins/pedometer';
 import { PhotoLibrary } from './plugins/photo-library';
 import { PinDialog } from './plugins/pin-dialog';
 import { Pinterest } from './plugins/pinterest';
@@ -227,6 +228,7 @@ export * from './plugins/network';
 export * from './plugins/nfc';
 export * from './plugins/onesignal';
 export * from './plugins/pay-pal';
+export * from './plugins/pedometer';
 export * from './plugins/photo-library';
 export * from './plugins/photo-viewer';
 export * from './plugins/pin-dialog';
@@ -358,6 +360,7 @@ window['IonicNative'] = {
   NavigationBar,
   Network,
   PayPal,
+  Pedometer,
   PhotoLibrary,
   NFC,
   Printer,
