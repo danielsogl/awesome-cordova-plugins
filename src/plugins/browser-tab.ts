@@ -1,37 +1,34 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Add this file to /src/index.ts (follow style of other plugins)
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs.
- * - Remove this note
- *
- */
 import { Plugin, Cordova } from './plugin';
 
 /**
  * @name BrowserTab
  * @description
- * This plugin does something
+ * This plugin provides an interface to in-app browser tabs that exist on some mobile platforms, specifically [Custom Tabs](http://developer.android.com/tools/support-library/features.html#custom-tabs) on Android (including the [Chrome Custom Tabs](https://developer.chrome.com/multidevice/android/customtabs) implementation), and [SFSafariViewController](https://developer.apple.com/library/ios/documentation/SafariServices/Reference/SFSafariViewController_Ref/) on iOS.
  *
  * @usage
  * ```
  * import { BrowserTab } from 'ionic-native';
  *
- * BrowserTab.functionName('Hello', 123)
- *   .then((something: any) => doSomething(something))
- *   .catch((error: any) => console.log(error));
+ * BrowserTab.isAvailable()
+ *   .then((isAvailable: boolean) => {
+ *
+ *     if (isAvailable) {
+ *
+ *       BrowserTab.openUrl('https://ionic.io');
+ *
+ *     } else {
+ *       // open url with InAppBrowser instead
+ *     }
+ *
+ *   });
  *
  * ```
  */
 @Plugin({
   pluginName: 'BrowserTab',
-  plugin: 'cordova-plugin-browsertab', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'cordova.plugins.browsertab', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/google/cordova-plugin-browsertab', // the github repository URL for the plugin
+  plugin: 'cordova-plugin-browsertab',
+  pluginRef: 'cordova.plugins.browsertab',
+  repo: 'https://github.com/google/cordova-plugin-browsertab',
   platforms: ['Android', 'iOS']
 })
 export class BrowserTab {
@@ -41,9 +38,7 @@ export class BrowserTab {
    * @return {Promise<any>} Returns a promise that resolves when check is successful and returns true or false
    */
   @Cordova()
-  static isAvailable(): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  static isAvailable(): Promise<any> { return; }
 
   /**
    * Opens the provided URL using a browser tab
@@ -51,16 +46,12 @@ export class BrowserTab {
    * @return {Promise<any>} Returns a promise that resolves when check open was successful
    */
   @Cordova()
-  static openUrl(url: string): Promise<any> {
-    return;
-  }
+  static openUrl(url: string): Promise<any> { return; }
 
   /**
    * Closes browser tab
    * @return {Promise<any>} Returns a promise that resolves when close was finished
    */
   @Cordova()
-  static close(): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  static close(): Promise<any> { return; }
 }
