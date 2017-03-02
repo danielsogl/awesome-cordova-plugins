@@ -1,60 +1,156 @@
 import {Plugin, Cordova} from './plugin';
 
-/**
- * @param: startDate: {type: Date}, start date from which to get data
- * @param: endDate: {type: Date}, end data to which to get the data
- * @param: dataType: {type: String}, the data type to be queried (see below for supported data types)
- */
+/*
+
+Overview of valid datatypes
+
++-------------------------------+-------------------+------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+|           data type           |       Unit        |                                   HealthKit equivalent                                   |                       Google Fit equivalent                        |
++-------------------------------+-------------------+------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| steps                         | count             | HKQuantityTypeIdentifierStepCount                                                        | TYPE_STEP_COUNT_DELTA                                              |
+| distance                      | m                 | HKQuantityTypeIdentifierDistanceWalkingRunning + HKQuantityTypeIdentifierDistanceCycling | TYPE_DISTANCE_DELTA                                                |
+| calories                      | kcal              | HKQuantityTypeIdentifierActiveEnergyBurned + HKQuantityTypeIdentifierBasalEnergyBurned   | TYPE_CALORIES_EXPENDED                                             |
+| calories.active               | kcal              | HKQuantityTypeIdentifierActiveEnergyBurned                                               | TYPE_CALORIES_EXPENDED - (TYPE_BASAL_METABOLIC_RATE * time window) |
+| calories.basal                | kcal              | HKQuantityTypeIdentifierBasalEnergyBurned                                                | TYPE_BASAL_METABOLIC_RATE * time window                            |
+| activity                      |                   | HKWorkoutTypeIdentifier + HKCategoryTypeIdentifierSleepAnalysis                          | TYPE_ACTIVITY_SEGMENT                                              |
+| height                        | m                 | HKQuantityTypeIdentifierHeight                                                           | TYPE_HEIGHT                                                        |
+| weight                        | kg                | HKQuantityTypeIdentifierBodyMass                                                         | TYPE_WEIGHT                                                        |
+| heart_rate                    | count/min         | HKQuantityTypeIdentifierHeartRate                                                        | TYPE_HEART_RATE_BPM                                                |
+| fat_percentage                | %                 | HKQuantityTypeIdentifierBodyFatPercentage                                                | TYPE_BODY_FAT_PERCENTAGE                                           |
+| gender                        |                   | HKCharacteristicTypeIdentifierBiologicalSex                                              | custom (YOUR_PACKAGE_NAME.gender)                                  |
+| date_of_birth                 |                   | HKCharacteristicTypeIdentifierDateOfBirth                                                | custom (YOUR_PACKAGE_NAME.date_of_birth)                           |
+| nutrition                     |                   | HKCorrelationTypeIdentifierFood                                                          | TYPE_NUTRITION                                                     |
+| nutrition.calories            | kcal              | HKQuantityTypeIdentifierDietaryEnergyConsumed                                            | TYPE_NUTRITION, NUTRIENT_CALORIES                                  |
+| nutrition.fat.total           | g                 | HKQuantityTypeIdentifierDietaryFatTotal                                                  | TYPE_NUTRITION, NUTRIENT_TOTAL_FAT                                 |
+| nutrition.fat.saturated       | g                 | HKQuantityTypeIdentifierDietaryFatSaturated                                              | TYPE_NUTRITION, NUTRIENT_SATURATED_FAT                             |
+| nutrition.fat.unsaturated     | g                 | NA                                                                                       | TYPE_NUTRITION, NUTRIENT_UNSATURATED_FAT                           |
+| nutrition.fat.polyunsaturated | g                 | HKQuantityTypeIdentifierDietaryFatPolyunsaturated                                        | TYPE_NUTRITION, NUTRIENT_POLYUNSATURATED_FAT                       |
+| nutrition.fat.monounsaturated | g                 | HKQuantityTypeIdentifierDietaryFatMonounsaturated                                        | TYPE_NUTRITION, NUTRIENT_MONOUNSATURATED_FAT                       |
+| nutrition.fat.trans           | g                 | NA                                                                                       | TYPE_NUTRITION, NUTRIENT_TRANS_FAT (g)                             |
+| nutrition.cholesterol         | mg                | HKQuantityTypeIdentifierDietaryCholesterol                                               | TYPE_NUTRITION, NUTRIENT_CHOLESTEROL                               |
+| nutrition.sodium              | mg                | HKQuantityTypeIdentifierDietarySodium                                                    | TYPE_NUTRITION, NUTRIENT_SODIUM                                    |
+| nutrition.potassium           | mg                | HKQuantityTypeIdentifierDietaryPotassium                                                 | TYPE_NUTRITION, NUTRIENT_POTASSIUM                                 |
+| nutrition.carbs.total         | g                 | HKQuantityTypeIdentifierDietaryCarbohydrates                                             | TYPE_NUTRITION, NUTRIENT_TOTAL_CARBS                               |
+| nutrition.dietary_fiber       | g                 | HKQuantityTypeIdentifierDietaryFiber                                                     | TYPE_NUTRITION, NUTRIENT_DIETARY_FIBER                             |
+| nutrition.sugar               | g                 | HKQuantityTypeIdentifierDietarySugar                                                     | TYPE_NUTRITION, NUTRIENT_SUGAR                                     |
+| nutrition.protein             | g                 | HKQuantityTypeIdentifierDietaryProtein                                                   | TYPE_NUTRITION, NUTRIENT_PROTEIN                                   |
+| nutrition.vitamin_a           | mcg (HK), IU (GF) | HKQuantityTypeIdentifierDietaryVitaminA                                                  | TYPE_NUTRITION, NUTRIENT_VITAMIN_A                                 |
+| nutrition.vitamin_c           | mg                | HKQuantityTypeIdentifierDietaryVitaminC                                                  | TYPE_NUTRITION, NUTRIENT_VITAMIN_C                                 |
+| nutrition.calcium             | mg                | HKQuantityTypeIdentifierDietaryCalcium                                                   | TYPE_NUTRITION, NUTRIENT_CALCIUM                                   |
+| nutrition.iron                | mg                | HKQuantityTypeIdentifierDietaryIron                                                      | TYPE_NUTRITION, NUTRIENT_IRON                                      |
+| nutrition.water               | ml                | HKQuantityTypeIdentifierDietaryWater                                                     | TYPE_HYDRATION                                                     |
+| nutrition.caffeine            | g                 | HKQuantityTypeIdentifierDietaryCaffeine                                                  | NA                                                                 |
++-------------------------------+-------------------+------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+*/
+
 export interface QueryOptions {
+  /**
+   * Start date from which to get data
+   */
   startDate: Date;
+  /**
+   * End date from which to get data
+   */
   endDate: Date;
+  /**
+   * Datatype to be queried (see "Overview of valid datatypes")
+   */
   dataType: string;
+  /**
+   * Limit the number of values returned. Defaults to 1000.
+   */
   limit?: number;
   ascending?: boolean;
   filtered?: boolean;
 }
 
-/**
- * @param: startDate: {type: Date}, start date from which to get data
- * @param: endDate: {type: Date}, end data to which to get the data
- * @param: dataType: {type: String}, the data type to be queried (see below for supported data types)
- * @param: bucket: {type: String}, if specified, aggregation is grouped an array of "buckets" (windows of time),
- * supported values are: 'hour', 'day', 'week', 'month', 'year'
- */
 export interface QueryOptionsAggregated {
+  /**
+   * Start date from which to get data
+   */
   startDate: Date;
+  /**
+   * End date from which to get data
+   */
   endDate: Date;
+  /**
+   * Datatype to be queried (see "Overview of valid datatypes")
+   */
   dataType: string;
+  /**
+   * if specified, aggregation is grouped an array of "buckets" (windows of time), 
+   * supported values are: 'hour', 'day', 'week', 'month', 'year'.
+   */
   bucket: string;
 }
 
-/**
- * @param: startDate: {type: Date}, start date from which to get data
- * @param: endDate: {type: Date}, end data to which to get the data
- * @param: dataType: {type: a String}, the data type
- * @param: value: {type: a number or an Object}, depending on the actual data type
- * @param: sourceName: {type: String}, the source that produced this data. In iOS this is ignored and
- * set automatically to the name of your app.
- * @param: sourceBundleId: {type: String}, the complete package of the source that produced this data.
- * In Android, if not specified, it's assigned to the package of the App. In iOS this is ignored and
- * set automatically to the bunde id of the app.
- */
 export interface StoreOptions {
+  /**
+   * Start date from which to get data
+   */
   startDate: Date;
+  
+  /**
+   * End date from which to get data
+   */
   endDate: Date;
+  
+  /**
+   * Datatype to be queried (see "Overview of valid datatypes")
+   */
   dataType: string;
+  
+  /**
+   * Value of corresponding Datatype (see "Overview of valid datatypes")
+   */
   value: string;
+  
+  /* 
+   * The source that produced this data. In iOS this is ignored and
+   * set automatically to the name of your app.
+   */
   sourceName: string;
+  
+  /*
+   * The complete package of the source that produced this data.
+   * In Android, if not specified, it's assigned to the package of the App. In iOS this is ignored and
+   * set automatically to the bunde id of the app.
+   */
   sourceBundleId: string;
 }
 
-
 export interface HealthData {
+  /**
+   * Start date from which to get data
+   */
   startDate: Date;
+  
+  /**
+   * End date from which to get data
+   */
   endDate: Date;
+ 
+  /**
+   * Value of corresponding Datatype (see "Overview of valid datatypes")
+   */
   value: string;
+  
+  /**
+   * Unit of corresponding value of Datatype (see "Overview of valid datatypes")
+   */
   unit: string;
+ 
+  /* 
+   * The source that produced this data. In iOS this is ignored and
+   * set automatically to the name of your app.
+   */
   sourceName: string;
+  
+  /*
+   * The complete package of the source that produced this data.
+   * In Android, if not specified, it's assigned to the package of the App. In iOS this is ignored and
+   * set automatically to the bunde id of the app.
+   */
   sourceBundleId: string;
 }
 
