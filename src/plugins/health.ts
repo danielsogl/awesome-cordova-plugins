@@ -5,29 +5,29 @@ export interface QueryOptions {
    * Start date from which to get data
    */
   startDate: Date;
-  
+
   /**
    * End date from which to get data
    */
   endDate: Date;
-  
+
   /**
    * Datatype to be queried (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   dataType: string;
-  
+
   /**
    * Optional limit the number of values returned. Defaults to 1000
    */
   limit?: number;
-  
+
   /**
    * Optional indicator to sort values ascending or descending
    */
   ascending?: boolean;
-  
+
   /**
-   * In Android, it is possible to query for "raw" steps or to select those as filtered by the Google Fit app. 
+   * In Android, it is possible to query for "raw" steps or to select those as filtered by the Google Fit app.
    * In the latter case the query object must contain the field filtered: true.
    */
   filtered?: boolean;
@@ -38,19 +38,19 @@ export interface QueryOptionsAggregated {
    * Start date from which to get data
    */
   startDate: Date;
-  
+
   /**
    * End date from which to get data
    */
   endDate: Date;
-  
+
   /**
    * Datatype to be queried (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   dataType: string;
-  
+
   /**
-   * if specified, aggregation is grouped an array of "buckets" (windows of time), 
+   * if specified, aggregation is grouped an array of "buckets" (windows of time),
    * supported values are: 'hour', 'day', 'week', 'month', 'year'.
    */
   bucket: string;
@@ -61,28 +61,28 @@ export interface StoreOptions {
    * Start date from which to get data
    */
   startDate: Date;
-  
+
   /**
    * End date from which to get data
    */
   endDate: Date;
-  
+
   /**
    * Datatype to be queried (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   dataType: string;
-  
+
   /**
    * Value of corresponding Datatype (see "Overview of valid datatypes")
    */
   value: string;
-  
-  /* 
+
+  /*
    * The source that produced this data. In iOS this is ignored and
    * set automatically to the name of your app.
    */
   sourceName: string;
-  
+
   /*
    * The complete package of the source that produced this data.
    * In Android, if not specified, it's assigned to the package of the App. In iOS this is ignored and
@@ -96,28 +96,28 @@ export interface HealthData {
    * Start date from which to get data
    */
   startDate: Date;
-  
+
   /**
    * End date from which to get data
    */
   endDate: Date;
- 
+
   /**
    * Value of corresponding Datatype (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   value: string;
-  
+
   /**
    * Unit of corresponding value of Datatype (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   unit: string;
- 
-  /* 
+
+  /*
    * The source that produced this data. In iOS this is ignored and
    * set automatically to the name of your app.
    */
   sourceName: string;
-  
+
   /*
    * The complete package of the source that produced this data.
    * In Android, if not specified, it's assigned to the package of the App. In iOS this is ignored and
