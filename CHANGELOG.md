@@ -1,3 +1,20 @@
+<a name="2.8.0"></a>
+# [2.8.0](https://github.com/driftyco/ionic-native/compare/v2.7.0...v2.8.0) (2017-03-04)
+
+
+### Bug Fixes
+
+* **file:** fix return types ([b458327](https://github.com/driftyco/ionic-native/commit/b458327)), closes [#1139](https://github.com/driftyco/ionic-native/issues/1139)
+
+
+### Features
+
+* **app-preferences:** added cordova-plugin-app-preferences support ([#1084](https://github.com/driftyco/ionic-native/issues/1084)) ([12280dd](https://github.com/driftyco/ionic-native/commit/12280dd))
+* **health:** add wrapper for cordova-plugin-health ([#1039](https://github.com/driftyco/ionic-native/issues/1039)) ([3500d80](https://github.com/driftyco/ionic-native/commit/3500d80))
+* **photo-library:** added cordova-plugin-photo-library ([#1102](https://github.com/driftyco/ionic-native/issues/1102)) ([384dfc2](https://github.com/driftyco/ionic-native/commit/384dfc2))
+
+
+
 <a name="2.7.0"></a>
 # [2.7.0](https://github.com/driftyco/ionic-native/compare/v2.6.0...v2.7.0) (2017-03-02)
 
