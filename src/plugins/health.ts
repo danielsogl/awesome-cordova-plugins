@@ -1,88 +1,88 @@
 import {Plugin, Cordova} from './plugin';
 
-export interface QueryOptions {
+export interface HealthQueryOptions {
   /**
    * Start date from which to get data
    */
   startDate: Date;
-  
+
   /**
    * End date from which to get data
    */
   endDate: Date;
-  
+
   /**
    * Datatype to be queried (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   dataType: string;
-  
+
   /**
    * Optional limit the number of values returned. Defaults to 1000
    */
   limit?: number;
-  
+
   /**
    * Optional indicator to sort values ascending or descending
    */
   ascending?: boolean;
-  
+
   /**
-   * In Android, it is possible to query for "raw" steps or to select those as filtered by the Google Fit app. 
+   * In Android, it is possible to query for "raw" steps or to select those as filtered by the Google Fit app.
    * In the latter case the query object must contain the field filtered: true.
    */
   filtered?: boolean;
 }
 
-export interface QueryOptionsAggregated {
+export interface HealthQueryOptionsAggregated {
   /**
    * Start date from which to get data
    */
   startDate: Date;
-  
+
   /**
    * End date from which to get data
    */
   endDate: Date;
-  
+
   /**
    * Datatype to be queried (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   dataType: string;
-  
+
   /**
-   * if specified, aggregation is grouped an array of "buckets" (windows of time), 
+   * if specified, aggregation is grouped an array of "buckets" (windows of time),
    * supported values are: 'hour', 'day', 'week', 'month', 'year'.
    */
   bucket: string;
 }
 
-export interface StoreOptions {
+export interface HealthStoreOptions {
   /**
    * Start date from which to get data
    */
   startDate: Date;
-  
+
   /**
    * End date from which to get data
    */
   endDate: Date;
-  
+
   /**
    * Datatype to be queried (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   dataType: string;
-  
+
   /**
    * Value of corresponding Datatype (see "Overview of valid datatypes")
    */
   value: string;
-  
-  /* 
+
+  /*
    * The source that produced this data. In iOS this is ignored and
    * set automatically to the name of your app.
    */
   sourceName: string;
-  
+
   /*
    * The complete package of the source that produced this data.
    * In Android, if not specified, it's assigned to the package of the App. In iOS this is ignored and
@@ -96,29 +96,29 @@ export interface HealthData {
    * Start date from which to get data
    */
   startDate: Date;
-  
+
   /**
    * End date from which to get data
    */
   endDate: Date;
- 
+
   /**
    * Value of corresponding Datatype (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   value: string;
-  
+
   /**
    * Unit of corresponding value of Datatype (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
    */
   unit: string;
- 
-  /* 
+
+  /**
    * The source that produced this data. In iOS this is ignored and
    * set automatically to the name of your app.
    */
   sourceName: string;
-  
-  /*
+
+  /**
    * The complete package of the source that produced this data.
    * In Android, if not specified, it's assigned to the package of the App. In iOS this is ignored and
    * set automatically to the bunde id of the app.
@@ -137,6 +137,11 @@ export interface HealthData {
  *
  * ```
  * See description at https://github.com/dariosalvi78/cordova-plugin-health for a full list of Datatypes and see examples.
+ * @interfaces
+ * HealthQueryOptions
+ * HealthQueryOptionsAggregated
+ * HealthStoreOptions
+ * HealthData
  */
 
 @Plugin({
@@ -242,11 +247,11 @@ export class Health {
    * nutrition.vitamin_a is given in micrograms in HealthKit and International Unit in Google Fit.
    * Automatic conversion is not trivial and depends on the actual substance.
    *
-   * @param queryOptions
-   *
+   * @param queryOptions {HealthQueryOptions}
+   * @return {Promise<HealthData>}
    */
   @Cordova()
-  static query(queryOptions: QueryOptions): Promise<any> {
+  static query(queryOptions: HealthQueryOptions): Promise<HealthData> {
     return;
   };
 
@@ -269,10 +274,10 @@ export class Health {
    * nutrition.vitamin_a is given in micrograms in HealthKit and International Unit in Google Fit.
    *
    * @param queryOptionsAggregated
-   * @return {Promise<any>}
+   * @return {Promise<HealthData>}
    */
   @Cordova()
-  static queryAggregated(queryOptionsAggregated: QueryOptionsAggregated): Promise<any> {
+  static queryAggregated(queryOptionsAggregated: HealthQueryOptionsAggregated): Promise<HealthData> {
     return;
   };
 
@@ -291,7 +296,7 @@ export class Health {
    * @return {Promise<any>}
    */
   @Cordova()
-  static store(storeOptions: StoreOptions): Promise<any> {
+  static store(storeOptions: HealthStoreOptions): Promise<any> {
     return;
   };
 
