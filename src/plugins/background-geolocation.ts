@@ -362,9 +362,7 @@ export class BackgroundGeolocation {
   /**
    * Configure the plugin.
    *
-   * @param {Function} callback callback will be called when background location is determined.
-   * @param {Function} errorCallback callback to be executed every time a geolocation error occurs.
-   * @param {Config} options An object of type Config
+   * @param options {BackgroundGeolocationConfig} options An object of type Config
    * @return {Promise<any>}
    */
   @Cordova({
@@ -398,6 +396,7 @@ export class BackgroundGeolocation {
 
   /**
    * Force the plugin to enter "moving" or "stationary" state
+   * @param isMoving {boolean}
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -407,6 +406,7 @@ export class BackgroundGeolocation {
 
   /**
    * Setup configuration
+   * @param options {BackgroundGeolocationConfig}
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -497,6 +497,7 @@ export class BackgroundGeolocation {
 
   /**
    * Delete stored location by given locationId.
+   * @param locationId {number}
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -523,7 +524,7 @@ export class BackgroundGeolocation {
    * BackgroundGeolocation.Mode.FOREGROUND
    * BackgroundGeolocation.Mode.BACKGROUND 
    **
-   * @param {number} See above. 
+   * @param modeId {number}
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -535,7 +536,7 @@ export class BackgroundGeolocation {
    * Return all logged events. Useful for plugin debugging. Parameter limit limits number of returned entries. 
    * @see https://github.com/mauron85/cordova-plugin-background-geolocation/tree/v2.2.1#debugging for more information. 
    *
-   * @param {number} Limits the number of entries 
+   * @param limit {number} Limits the number of entries 
    * @returns {Promise<any>}
    */
   @Cordova()
