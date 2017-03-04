@@ -10,6 +10,7 @@ import { AndroidFingerprintAuth } from './plugins/android-fingerprint-auth';
 import { AppAvailability } from './plugins/appavailability';
 import { Appodeal } from './plugins/appodeal';
 import { AppRate } from './plugins/apprate';
+import { AppPreferences } from './plugins/apppreferences';
 import { AppUpdate } from './plugins/app-update';
 import { AppVersion } from './plugins/appversion';
 import { Badge } from './plugins/badge';
@@ -64,6 +65,7 @@ import { GoogleMap } from './plugins/googlemap';
 import { GoogleAnalytics } from './plugins/googleanalytics';
 import { Gyroscope } from './plugins/gyroscope';
 import { HeaderColor } from './plugins/headercolor';
+import { Health } from './plugins/health';
 import { Hotspot } from  './plugins/hotspot';
 import { HTTP } from  './plugins/http';
 import { Httpd } from './plugins/httpd';
@@ -96,6 +98,7 @@ import { OneSignal } from './plugins/onesignal';
 import { PhotoViewer } from './plugins/photo-viewer';
 import { ScreenOrientation } from './plugins/screen-orientation';
 import { PayPal } from './plugins/pay-pal';
+import { PhotoLibrary } from './plugins/photo-library';
 import { PinDialog } from './plugins/pin-dialog';
 import { Pinterest } from './plugins/pinterest';
 import { PowerManagement } from './plugins/power-management';
@@ -138,6 +141,7 @@ export * from './plugins/admob';
 export * from './plugins/alipay';
 export * from './plugins/android-fingerprint-auth';
 export * from './plugins/appavailability';
+export * from './plugins/apppreferences';
 export * from './plugins/appodeal';
 export * from './plugins/apprate';
 export * from './plugins/app-update';
@@ -194,6 +198,7 @@ export * from './plugins/googleanalytics';
 export * from './plugins/googlemap';
 export * from './plugins/gyroscope';
 export * from './plugins/headercolor';
+export * from './plugins/health';
 export * from './plugins/hotspot';
 export * from './plugins/http';
 export * from './plugins/httpd';
@@ -224,6 +229,7 @@ export * from './plugins/network';
 export * from './plugins/nfc';
 export * from './plugins/onesignal';
 export * from './plugins/pay-pal';
+export * from './plugins/photo-library';
 export * from './plugins/photo-viewer';
 export * from './plugins/pin-dialog';
 export * from './plugins/pinterest';
@@ -270,6 +276,7 @@ window['IonicNative'] = {
   Alipay,
   AndroidFingerprintAuth,
   AppAvailability,
+  AppPreferences,
   Appodeal,
   AppRate,
   AppUpdate,
@@ -325,6 +332,7 @@ window['IonicNative'] = {
   GoogleAnalytics,
   Gyroscope,
   HeaderColor,
+  Health,
   Hotspot,
   HTTP,
   Httpd,
@@ -353,6 +361,7 @@ window['IonicNative'] = {
   NavigationBar,
   Network,
   PayPal,
+  PhotoLibrary,
   NFC,
   Printer,
   Push,

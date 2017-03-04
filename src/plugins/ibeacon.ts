@@ -566,7 +566,7 @@ export class IBeacon {
 
 
   /**
-   * See the docuemntation of {@code requestWhenInUseAuthorization} for further details.
+   * See the documentation of {@code requestWhenInUseAuthorization} for further details.
    *
    * @returns {Promise<void>} Returns a promise which is resolved when the native layer
    * shows the request dialog.

@@ -81,7 +81,7 @@ export class SafariViewController {
    * Hides Safari View Controller
    */
   @Cordova()
-  static hide(): void { }
+  static hide(): Promise<any> { return; }
 
   /**
    * Tries to connect to the  Chrome's custom tabs service. you must call this method before calling any of the other methods listed below.
