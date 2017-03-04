@@ -9,14 +9,25 @@ import { Plugin, Cordova} from './plugin';
  * ```
  * import { BTPrinter } from 'ionic-native';
  *
- * BTPrinter.list()
- *   .then((printer: any) => {
- *		BTPrinter.connect(printer[0]).then(data => {
- *	    // print line feed
- *			BTPrinter.printPOSCommand({'0A'})
- *      }).catch((error: any => console.log(error)))
- *	 })
- *   .catch((error: any) => console.log(error));
+ * BTPrinter.list(printer => {
+ *  BTPrinter.connect(function(printer[0]){
+ *    BTPrinter.printPOSCommand(function(data){
+ *      console.log('successfully', data);
+ *    },function(err){
+ *      console.log('error', data);
+ *    }, char)
+ *  },function(err){
+ *       console.log('error', data);
+ *  }, printer[0]);
+ * });
+ *
+ * setTimeout(function(){
+ *  BTPrinter.disconnect(function(data){
+ *    console.log(data);
+ *  },function(err){
+ *    console.log(err);
+ *  })
+ * }, 4000);
  *
  * ```
  */
