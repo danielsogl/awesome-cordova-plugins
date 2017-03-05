@@ -77,13 +77,13 @@ export interface StoreOptions {
    */
   value: string;
 
-  /*
+  /**
    * The source that produced this data. In iOS this is ignored and
    * set automatically to the name of your app.
    */
   sourceName: string;
 
-  /*
+  /**
    * The complete package of the source that produced this data.
    * In Android, if not specified, it's assigned to the package of the App. In iOS this is ignored and
    * set automatically to the bunde id of the app.
@@ -112,13 +112,13 @@ export interface HealthData {
    */
   unit: string;
 
-  /*
+  /**
    * The source that produced this data. In iOS this is ignored and
    * set automatically to the name of your app.
    */
   sourceName: string;
 
-  /*
+  /**
    * The complete package of the source that produced this data.
    * In Android, if not specified, it's assigned to the package of the App. In iOS this is ignored and
    * set automatically to the bunde id of the app.
