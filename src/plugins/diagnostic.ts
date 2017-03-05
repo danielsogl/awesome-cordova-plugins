@@ -714,4 +714,49 @@ export class Diagnostic {
   @Cordova({ platforms: ['iOS'] })
   static requestAndCheckMotionAuthorization(): Promise<any> { return; }
 
+  /**
+   * Opens settings page for this app.
+   * On Android, this opens the "App Info" page in the Settings app.
+   * On iOS, this opens the app settings page in the Settings app. This works only on iOS 8+ - iOS 7 and below will invoke the errorCallback.   */
+  @Cordova()
+  static switchToSettings(): Promise<any> { return; }
+
+  /**
+   * Checks if the application is authorized to use the calendar.
+   * 
+   * Notes for Android:
+   *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return TRUE as permissions are already granted at installation time.
+   * 
+   * Notes for iOS:
+   *   - This relates to Calendar Events (not Calendar Reminders)
+   */
+  @Cordova()
+  static isCalendarAuthorized(): Promise<boolean> { return; }
+
+  /**
+   * Returns the calendar authorization status for the application.
+   * 
+   * Notes for Android:
+   *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return `GRANTED` status as permissions are already granted at installation time.
+   * 
+   * Notes for iOS:
+   *   - This relates to Calendar Events (not Calendar Reminders)
+   */
+  @Cordova()
+  static getCalendarAuthorizationStatus(): Promise<any> { return; }
+
+  /**
+   * Requests calendar authorization for the application.
+   * 
+   * Notes for iOS:
+   *   - Should only be called if authorization status is NOT_DETERMINED. Calling it when in any other state will have no effect and just return the current authorization status.
+   *   - This relates to Calendar Events (not Calendar Reminders)
+   * 
+   * Notes for Android:
+   *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will have no effect as the permissions are already granted at installation time.
+   *   - This requests permission for `READ_CALENDAR` run-time permission
+   *   - Required permissions must be added to `AndroidManifest.xml` as appropriate - see Android permissions: `READ_CALENDAR`, `WRITE_CALENDAR`
+   */
+  @Cordova()
+  static requestCalendarAuthorization(): Promise<any> { return; }
 }
