@@ -21,7 +21,7 @@ declare var sqlitePlugin;
  * })
  *   .then((db: SQLite) => {
  *
- *     db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {}).catch(() => {});
+ *     db.executeSql('create table danceMoves(name VARCHAR(32))', []).then(() => []).catch(() => {});
  *
  *   })
  *   .catch(error => console.error('Error opening database', error));
@@ -33,7 +33,7 @@ declare var sqlitePlugin;
  *   name: 'data.db',
  *   location: 'default' // the location field is required
  * }).then(() => {
- *   db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {
+ *   db.executeSql('create table danceMoves(name VARCHAR(32))', []).then(() => {
  *
  *   }, (err) => {
  *     console.error('Unable to execute sql: ', err);
