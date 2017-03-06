@@ -485,10 +485,8 @@ export function Plugin(config: PluginConfig) {
  */
 export function Cordova(opts: CordovaOptions = {}) {
   return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
-    console.log('@Cordova()', target, methodName, descriptor);
     return {
       value: function(...args: any[]) {
-        console.log('@Cordova() wrap()', this, methodName, opts);
         return wrap(this, methodName, opts).apply(this, args);
       }
     };
