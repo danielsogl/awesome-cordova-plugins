@@ -41,6 +41,18 @@ export const GoogleMapsAnimation = {
 /**
  * @private
  */
+export const GoogleMapsMapTypeId = {
+    HYBRID: 'MAP_TYPE_HYBRID',
+    NONE: 'MAP_TYPE_NONE',
+    NORMAL: 'MAP_TYPE_NORMAL',
+    ROADMAP: 'MAP_TYPE_ROADMAP',
+    SATELLITE: 'MAP_TYPE_SATELLITE',
+    TERAIN: 'MAP_TYPE_TERRAIN'
+};
+
+/**
+ * @private
+ */
 export class GoogleMap {
   _objectInstance: any;
 
@@ -190,7 +202,7 @@ export class GoogleMap {
   setZoom(zoomLevel: number): void { }
 
   @CordovaInstance({ sync: true })
-  setMapTypeId(typeId: string): void { }
+  setMapTypeId(mapTypeId: string): void { }
 
   @CordovaInstance({ sync: true })
   setTilt(tiltLevel: number): void { }
@@ -444,6 +456,7 @@ export class GoogleMap {
  *  let map: GoogleMap = GoogleMaps.create(element);
  *
  *  // listen to MAP_READY event
+ *  // You must wait for this event to fire before adding something to the map or modifying it in anyway
  *  map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
  *
  *  // create LatLng object

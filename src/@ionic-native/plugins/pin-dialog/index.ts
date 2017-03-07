@@ -36,7 +36,8 @@ export class PinDialog {
    * @returns {Promise<{ buttonIndex: number, input1: string }>}
    */
   @Cordova({
-    successIndex: 1
+    successIndex: 1,
+    errorIndex: 4 // no error callback
   })
   prompt(message: string, title: string, buttons: string[]): Promise<{ buttonIndex: number, input1: string }> { return; }
 

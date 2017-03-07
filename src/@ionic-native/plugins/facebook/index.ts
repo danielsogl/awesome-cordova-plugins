@@ -235,7 +235,10 @@ export class Facebook {
    * @param {number}  [valueToSum] any value to be added to added to a sum on each event
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 3,
+    errorIndex: 4
+  })
   logEvent(
     name: string,
     params?: Object,
