@@ -12,9 +12,12 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { Brightness } from '@ionic-native/brightness';
  *
+ * constructor(private brightness: Brightness) { }
+ *
+ * ...
  *
  * let brightnessValue: number = 0.8;
- * Brightness.setBrightness(brightnessValue);
+ * this.brightness.setBrightness(brightnessValue);
  * ```
  *
  */

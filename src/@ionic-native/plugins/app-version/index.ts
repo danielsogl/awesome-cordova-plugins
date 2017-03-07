@@ -14,11 +14,16 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { AppVersion } from '@ionic-native/app-version';
  *
+ * constructor(private appVersion: AppVersion) { }
  *
- *  AppVersion.getAppName();
- *  AppVersion.getPackageName();
- *  AppVersion.getVersionCode();
- *  AppVersion.getVersionNumber();
+ * ...
+ *
+ *
+ * this.appVersion.getAppName();
+ * this.appVersion.getPackageName();
+ * this.appVersion.getVersionCode();
+ * this.appVersion.getVersionNumber();
+ *
  * ```
  */
 @Plugin({

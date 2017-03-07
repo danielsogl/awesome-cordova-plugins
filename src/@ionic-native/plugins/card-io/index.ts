@@ -136,8 +136,12 @@ export interface CardIOResponse {
  * ```
  * import { CardIO } from '@ionic-native/card-io';
  *
+ * constructor(private cardIO: CardIO) { }
  *
- * CardIO.canScan()
+ * ...
+ *
+ *
+ * this.cardIO.canScan()
  *   .then(
  *     (res: boolean) => {
  *       if(res){

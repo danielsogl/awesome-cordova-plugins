@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 
-
 export interface ActionSheetOptions {
 
   /**
@@ -57,6 +56,11 @@ export interface ActionSheetOptions {
  * ```typescript
  * import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
  *
+ * constructor(private actionSheet: ActionSheet) { }
+ *
+ * ...
+ *
+ *
  * let buttonLabels = ['Share via Facebook', 'Share via Twitter'];
  *
  * const options: ActionSheetOptions = {
@@ -66,7 +70,7 @@ export interface ActionSheetOptions {
  *   addDestructiveButtonWithLabel: 'Delete'
  * };
  *
- * ActionSheet.show(options).then((buttonIndex: number) => {
+ * this.actionSheet.show(options).then((buttonIndex: number) => {
  *   console.log('Button pressed: ' + buttonIndex);
  * });
  * ```

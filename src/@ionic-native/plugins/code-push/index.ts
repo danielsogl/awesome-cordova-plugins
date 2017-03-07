@@ -406,12 +406,16 @@ export interface DownloadProgress {
  * ```typescript
  * import { CodePush } from '@ionic-native/code-push';
  *
+ * constructor(private codePush: CodePush) { }
+ *
+ * ...
+ *
  * // note - mostly error & completed methods of observable will not fire
  * // as syncStatus will contain the current state of the update
- * CodePush.sync().subscribe((syncStatus) => console.log(syncStatus));
+ * this.codePush.sync().subscribe((syncStatus) => console.log(syncStatus));
  *
  * const downloadProgress = (progress) => { console.log(`Downloaded ${progress.receivedBytes} of ${progress.totalBytes}`); }
- * CodePush.sync({}, downloadProgress).subscribe((syncStatus) => console.log(syncStatus));
+ * this.codePush.sync({}, downloadProgress).subscribe((syncStatus) => console.log(syncStatus));
  *
  * ```
  */

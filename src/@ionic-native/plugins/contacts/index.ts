@@ -262,8 +262,9 @@ export class ContactFindOptions implements IContactFindOptions {
  * ```typescript
  * import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
  *
+ * constructor(private contacts: Contacts) { }
  *
- * let contact: Contact = Contacts.create();
+ * let contact: Contact = this.contacts.create();
  *
  * contact.name = new ContactName(null, 'Smith', 'John');
  * contact.phoneNumbers = [new ContactField('mobile', '6471234567')];

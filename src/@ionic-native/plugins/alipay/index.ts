@@ -1,9 +1,6 @@
 import { Plugin, Cordova } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
-/**
- * @private
- */
 export interface AlipayOrder {
   /**
    * appId assigned by Alipay

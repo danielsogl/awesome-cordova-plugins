@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 
 
-export interface AuthOptions {
+export interface AFAAuthOptions {
 
   /**
    * Required
@@ -65,20 +65,56 @@ export interface AuthOptions {
 
 }
 
+export interface AFADecryptOptions {
+  /**
+   * Biometric authentication
+   */
+  withFingerprint: boolean;
+  /**
+   * Authentication using backup credential activity
+   */
+  withBackup: boolean;
+  /**
+   * FingerprintAuth.CipherMode.DECRYPT
+   * Decrypted password
+   */
+  password: string;
+}
+
+export interface AFAEncryptResponse {
+  /**
+   * Biometric authentication
+   */
+  withFingerprint: boolean;
+  /**
+   * Authentication using backup credential activity
+   */
+  withBackup: boolean;
+  /**
+   * base64encoded string representation of user credentials
+   */
+  token: string;
+}
+
 /**
  * @name Android Fingerprint Auth
  * @description
  * This plugin will open a native dialog fragment prompting the user to authenticate using their fingerprint. If the device has a secure lockscreen (pattern, PIN, or password), the user may opt to authenticate using that method as a backup.
  * @usage
  * ```typescript
- * import { AndroidFingerprintAuth, AuthOptions } from '@ionic-native/android-fingerprint-auth';
+ * import { AndroidFingerprintAuth, AFAAuthOptions } from '@ionic-native/android-fingerprint-auth';
  *
- * AndroidFingerprintAuth.isAvailable()
+ * constructor(private androidFingerprintAuth: AndroidFingerprintAuth) { }
+ *
+ * ...
+ *
+ *
+ * this.androidFingerprintAuth.isAvailable()
  *   .then((result)=> {
  *     if(result.isAvailable){
  *       // it is available
  *
- *       AndroidFingerprintAuth.encrypt({ clientId: "myAppName", username: "myUsername", password: "myPassword" })
+ *       this.androidFingerprintAuth.encrypt({ clientId: "myAppName", username: "myUsername", password: "myPassword" })
  *         .then(result => {
  *            if (result.withFingerprint) {
  *                console.log("Successfully encrypted credentials.");
@@ -100,7 +136,9 @@ export interface AuthOptions {
  *   .catch(error => console.error(error));
  * ```
  * @interfaces
- * AuthOptions
+ * AFAAuthOptions
+ * AFAEncryptResponse
+ * AFADecryptOptions
  */
 @Plugin({
   pluginName: 'AndroidFingerprintAuth',
@@ -113,46 +151,19 @@ export class AndroidFingerprintAuth {
 
   /**
    * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.
-   * @param options {AuthOptions} Options
+   * @param options {AFAAuthOptions} Options
    * @returns {Promise<any>}
    */
   @Cordova()
-  encrypt(options: AuthOptions): Promise<{
-    /**
-     * Biometric authentication
-     */
-    withFingerprint: boolean;
-    /**
-     * Authentication using backup credential activity
-     */
-    withBackup: boolean;
-    /**
-     * base64encoded string representation of user credentials
-     */
-    token: string;
-  }> {return; }
+  encrypt(options: AFAAuthOptions): Promise<AFAEncryptResponse> {return; }
 
   /**
    * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.
-   * @param options {AuthOptions} Options
+   * @param options {AFAAuthOptions} Options
    * @returns {Promise<any>}
    */
   @Cordova()
-  decrypt(options: AuthOptions): Promise<{
-    /**
-     * Biometric authentication
-     */
-    withFingerprint: boolean;
-    /**
-     * Authentication using backup credential activity
-     */
-    withBackup: boolean;
-    /**
-     * FingerprintAuth.CipherMode.DECRYPT
-     * Decrypted password
-     */
-    password: string;
-  }> {return; }
+  decrypt(options: AFAAuthOptions): Promise<AFADecryptOptions> {return; }
 
   /**
    * Check if service is available

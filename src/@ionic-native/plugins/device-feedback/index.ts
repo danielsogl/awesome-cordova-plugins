@@ -10,11 +10,16 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * ```
  * import { DeviceFeedback } from '@ionic-native/device-feedback';
  *
- * DeviceFeedback.acoustic();
+ * constructor(private deviceFeedback: DeviceFeedback) { }
  *
- * DeviceFeedback.haptic(0);
+ * ...
  *
- * DeviceFeedback.isFeedbackEnabled()
+ *
+ * this.deviceFeedback.acoustic();
+ *
+ * this.deviceFeedback.haptic(0);
+ *
+ * this.deviceFeedback.isFeedbackEnabled()
  *   .then((feedback) => {
  *     console.log(feedback);
  *     // {

@@ -9,12 +9,14 @@ import { Observable } from 'rxjs/Observable';
  * ```typescript
  * import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
  *
+ * constructor(private bluetoothSerial: BluetoothSerial) { }
+ *
  *
  * // Write a string
- * BluetoothSerial.write("hello world").then(success, failure);
+ * this.bluetoothSerial.write("hello world").then(success, failure);
  *
  * // Array of int or bytes
- * BluetoothSerial.write([186, 220, 222]).then(success, failure);
+ * this.bluetoothSerial.write([186, 220, 222]).then(success, failure);
  *
  * // Typed Array
  * var data = new Uint8Array(4);
@@ -22,10 +24,10 @@ import { Observable } from 'rxjs/Observable';
  * data[1] = 0x42;
  * data[2] = 0x43;
  * data[3] = 0x44;
- * BluetoothSerial.write(data).then(success, failure);
+ * this.bluetoothSerial.write(data).then(success, failure);
  *
  * // Array Buffer
- * BluetoothSerial.write(data.buffer).then(success, failure);
+ * this.bluetoothSerial.write(data.buffer).then(success, failure);
  * ```
  */
 @Plugin({

@@ -10,18 +10,22 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { AppAvailability, Device } from '@ionic-native/app-availability';
+ * import { AppAvailability } from '@ionic-native/app-availability';
+ * import { Platform } from 'ionic-angular';
  *
+ * constructor(private appAvailability: AppAvailability, private platform: Platform) { }
+ *
+ * ...
  *
  * let app;
  *
- * if (Device.platform === 'iOS') {
+ * if (this.platform.is('ios')) {
  *   app = 'twitter://';
- * } else if (Device.platform === 'Android') {
+ * } else if (this.platform.is('android')) {
  *   app = 'com.twitter.android';
  * }
  *
- * AppAvailability.check(app)
+ * this.appAvailability.check(app)
  *   .then(
  *     (yes: string) => console.log(app + ' is available'),
  *     (no: string) => console.log(app + ' is NOT available')

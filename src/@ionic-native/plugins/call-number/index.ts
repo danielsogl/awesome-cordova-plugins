@@ -9,7 +9,12 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * ```
  * import {CallNumber} from '@ionic-native/call-number';
  *
- * CallNumber.callNumber(18001010101, true)
+ * constructor(private callNumber: CallNumber) { }
+ *
+ * ...
+ *
+ *
+ * this.callNumber.callNumber(18001010101, true)
  *   .then(() => console.log('Launched dialer!'))
  *   .catch(() => console.log('Error launching dialer'));
  *

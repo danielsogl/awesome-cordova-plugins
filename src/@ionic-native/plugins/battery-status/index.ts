@@ -25,9 +25,13 @@ export interface BatteryStatusResponse {
  * ```typescript
  * import { BatteryStatus } from '@ionic-native/battery-status';
  *
+ * constructor(private batteryStatus: BatteryStatus) { }
+ *
+ * ...
+ *
  *
  * // watch change in battery status
- * let subscription = BatteryStatus.onChange().subscribe(
+ * let subscription = this.batteryStatus.onChange().subscribe(
  *  (status: StatusObject) => {
  *    console.log(status.level, status.isPlugged);
  *  }

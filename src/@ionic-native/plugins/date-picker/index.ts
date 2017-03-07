@@ -128,8 +128,13 @@ export interface DatePickerOptions {
  * ```typescript
  * import { DatePicker } from '@ionic-native/date-picker';
  *
+ * constructor(private datePicker: DatePicker) { }
  *
- * DatePicker.show({
+ *
+ * ...
+ *
+ *
+ * this.datePicker.show({
  *   date: new Date(),
  *   mode: 'date'
  * }).then(

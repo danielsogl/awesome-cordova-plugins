@@ -8,9 +8,11 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```
  * import {Crop} from '@ionic-native/crop';
  *
+ * constructor(private crop: Crop) { }
+ *
  * ...
  *
- * Crop.crop('path/to/image.jpg', {quality: 75})
+ * this.crop.crop('path/to/image.jpg', {quality: 75})
  *   .then(
  *     newImage => console.log("new image path is: " + newImage),
  *     error => console.error("Error cropping image", error)

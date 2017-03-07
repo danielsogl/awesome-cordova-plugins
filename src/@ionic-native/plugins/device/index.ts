@@ -12,8 +12,11 @@ declare var window: any;
  * ```typescript
  * import { Device } from '@ionic-native/device';
  *
+ * constructor(private device: Device) { }
  *
- * console.log('Device UUID is: ' + Device.uuid);
+ * ...
+ *
+ * console.log('Device UUID is: ' + this.device.uuid);
  * ```
  */
 @Plugin({

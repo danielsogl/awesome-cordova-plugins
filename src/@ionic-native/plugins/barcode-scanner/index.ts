@@ -67,8 +67,12 @@ export interface BarcodeScannerOptions {
  * ```typescript
  * import { BarcodeScanner } from '@ionic-native/barcode-scanner';
  *
+ * constructor(private barcodeScanner: BarcodeScanner) { }
  *
- * BarcodeScanner.scan().then((barcodeData) => {
+ * ...
+ *
+ *
+ * this.barcodeScanner.scan().then((barcodeData) => {
  *  // Success! Barcode data is here
  * }, (err) => {
  * 	// An error occurred

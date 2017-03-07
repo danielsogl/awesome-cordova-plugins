@@ -12,11 +12,15 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * ```
  * import { Backlight } from '@ionic-native/backlight';
  *
+ * constructor(private backlight: Backlight) { }
+ *
+ * ...
+ *
  * // Turn backlight on
- * Backlight.on().then(() => console.log('backlight on'));
+ * this.backlight.on().then(() => console.log('backlight on'));
  *
  * // Turn backlight off
- * Backlight.off().then(() => console.log('backlight off'));
+ * this.backlight.off().then(() => console.log('backlight off'));
  *
  * ```
  */

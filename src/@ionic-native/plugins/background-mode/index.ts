@@ -36,20 +36,24 @@ export interface BackgroundModeConfiguration {
 }
 
 /**
-* @name Background Mode
-* @description
-* Cordova plugin to prevent the app from going to sleep while in background.
-* Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode
-*@usage
-* ```typescript
-* import { BackgroundMode } from '@ionic-native/background-mode';
-*
-* BackgroundMode.enable();
-* ```
+ * @name Background Mode
+ * @description
+ * Cordova plugin to prevent the app from going to sleep while in background.
+ * Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode
+ *@usage
+ * ```typescript
+ * import { BackgroundMode } from '@ionic-native/background-mode';
+ *
+ * constructor(private backgroundMode: BackgroundMode) { }
+ *
+ * ...
+ *
+ * this.backgroundMode.enable();
+ * ```
  *
  * @interfaces
  * BackgroundModeConfiguration
-*/
+ */
 @Plugin({
   pluginName: 'BackgroundMode',
   plugin: 'cordova-plugin-background-mode',
@@ -61,54 +65,54 @@ export interface BackgroundModeConfiguration {
 export class BackgroundMode {
 
   /**
-  * Enable the background mode.
-  * Once called, prevents the app from being paused while in background.
-  */
+   * Enable the background mode.
+   * Once called, prevents the app from being paused while in background.
+   */
   @Cordova({
     sync: true
   })
   enable(): void { }
 
   /**
-  * Disable the background mode.
-  * Once the background mode has been disabled, the app will be paused when in background.
-  */
+   * Disable the background mode.
+   * Once the background mode has been disabled, the app will be paused when in background.
+   */
   @Cordova()
   disable(): Promise<any> { return; }
 
   /**
-  * Checks if background mode is enabled or not.
-  * @returns {boolean} returns a boolean that indicates if the background mode is enabled.
-  */
+   * Checks if background mode is enabled or not.
+   * @returns {boolean} returns a boolean that indicates if the background mode is enabled.
+   */
   @Cordova({
     sync: true
   })
   isEnabled(): boolean { return; }
 
   /**
-  * Can be used to get the information if the background mode is active.
-  * @returns {boolean} returns a boolean that indicates if the background mode is active.
-  */
+   * Can be used to get the information if the background mode is active.
+   * @returns {boolean} returns a boolean that indicates if the background mode is active.
+   */
   @Cordova({
     sync: true
   })
   isActive(): boolean { return; }
 
   /**
-  * Override the default title, ticker and text.
-  * Available only for Android platform.
-  * @param {Configure} options List of option to configure. See table below
-  */
+   * Override the default title, ticker and text.
+   * Available only for Android platform.
+   * @param {Configure} options List of option to configure. See table below
+   */
   @Cordova({
     platforms: ['Android']
   })
   setDefaults(options?: BackgroundModeConfiguration): Promise<any> { return; }
 
   /**
-  * Modify the displayed information.
-  * Available only for Android platform.
-  * @param {Configure} options Any options you want to update. See table below.
-  */
+   * Modify the displayed information.
+   * Available only for Android platform.
+   * @param {Configure} options Any options you want to update. See table below.
+   */
   @Cordova({
     platforms: ['Android']
   })

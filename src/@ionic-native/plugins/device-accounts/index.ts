@@ -1,6 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 
+/**
+ * @name Device Accounts
+ * @description
+ * Gets the Google accounts associated with the Android device
+ *
+ * @usage
+ * ```typescript
+ * import { DeviceAccounts } from '@ionic-native/device-accounts';
+ *
+ * constructor(private deviceAccounts: DeviceAccounts) { }
+ *
+ * ...
+ *
+ * this.deviceAccounts.get()
+ *   .then(accounts => console.log(accounts))
+ *   .catch(error => console.error(error));
+ *
+ * ```
+ */
 @Plugin({
   pluginName: 'DeviceAccounts',
   plugin: 'https://github.com/loicknuchel/cordova-device-accounts.git',

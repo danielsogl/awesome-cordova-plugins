@@ -11,11 +11,15 @@ import { Observable } from 'rxjs/Observable';
  * ```
  * import { Broadcaster } from '@ionic-native/broadcaster';
  *
+ * constructor(private broadcaster: Broadcaster) { }
+ *
+ * ...
+ *
  * // Listen to events from Native
- * Broadcaster.addEventListener('eventName').then((event) => console.log(event));
+ * this.broadcaster.addEventListener('eventName').then((event) => console.log(event));
  *
  * // Send event to Native
- * Broadcaster.fireNativeEvent('eventName', {}).then(() => console.log('success'));
+ * this.broadcaster.fireNativeEvent('eventName', {}).then(() => console.log('success'));
  *
  * ```
  */

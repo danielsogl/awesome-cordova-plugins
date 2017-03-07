@@ -9,14 +9,18 @@ import { Observable } from 'rxjs/Observable';
  * ```typescript
  * import { DBMeter } from '@ionic-native/db-meter';
  *
+ * constructor(private dbMeter: DBMeter) { }
+ *
+ * ...
+ *
  *
  * // Start listening
- * let subscription = DBMeter.start().subscribe(
+ * let subscription = this.dbMeter.start().subscribe(
  *   data => console.log(data)
  * );
  *
  * // Check if we are listening
- * DBMeter.isListening().then(
+ * this.dbMeter.isListening().then(
  *   (isListening: boolean) => console.log(isListening)
  * );
  *
@@ -24,7 +28,7 @@ import { Observable } from 'rxjs/Observable';
  * subscription.unsubscribe();
  *
  * // Delete DBMeter instance from memory
- * DBMeter.delete().then(
+ * this.dbMeter.delete().then(
  *   () => console.log('Deleted DB Meter instance'),
  *   error => console.log('Error occurred while deleting DB Meter instance')
  * );

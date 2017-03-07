@@ -8,8 +8,13 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
  *
+ * constructor(private base64ToGallery: Base64ToGallery) { }
  *
- * Base64ToGallery.base64ToGallery(base64Data, 'img_').then(
+ *
+ * ...
+ *
+ *
+ * this.base64ToGallery.base64ToGallery(base64Data, { prefix: '_img' }).then(
  *   res => console.log('Saved image to gallery ', res),
  *   err => console.log('Error saving image to gallery ', err)
  * );

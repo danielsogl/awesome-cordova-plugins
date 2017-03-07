@@ -33,6 +33,10 @@ export interface CameraPreviewSize {
  * ```
  * import { CameraPreview, CameraPreviewRect } from '@ionic-native/camera-preview';
  *
+ * constructor(private cameraPreview: CameraPreview) { }
+ *
+ * ...
+ *
  * // camera options (Size and location)
  * let cameraRect: CameraPreviewRect = {
  *   x: 100,
@@ -43,7 +47,7 @@ export interface CameraPreviewSize {
  *
  *
  * // start camera
- * CameraPreview.startCamera(
+ * this.cameraPreview.startCamera(
  *   cameraRect, // position and size of preview
  *   'front', // default camera
  *   true, // tap to take picture
@@ -53,26 +57,26 @@ export interface CameraPreviewSize {
  * );
  *
  * // Set the handler to run every time we take a picture
- * CameraPreview.setOnPictureTakenHandler().subscribe((result) => {
+ * this.cameraPreview.setOnPictureTakenHandler().subscribe((result) => {
  *   console.log(result);
  *   // do something with the result
  * });
  *
  *
  * // take a picture
- * CameraPreview.takePicture({
+ * this.cameraPreview.takePicture({
  *   maxWidth: 640,
  *   maxHeight: 640
  * });
  *
  * // Switch camera
- * CameraPreview.switchCamera();
+ * this.cameraPreview.switchCamera();
  *
  * // set color effect to negative
- * CameraPreview.setColorEffect('negative');
+ * this.cameraPreview.setColorEffect('negative');
  *
  * // Stop the camera preview
- * CameraPreview.stopCamera();
+ * this.cameraPreview.stopCamera();
  *
  * ```
  *

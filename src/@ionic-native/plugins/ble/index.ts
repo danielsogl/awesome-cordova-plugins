@@ -21,6 +21,14 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  *
+ * ```typescript
+ *
+ * import { BLE } from '@ionic-native/ble';
+ *
+ * constructor(private ble: BLE) { }
+ *
+ * ```
+ *
  * ## Peripheral Data
  *
  * Peripheral Data is passed to the success callback when scanning and connecting. Limited data is passed when scanning.

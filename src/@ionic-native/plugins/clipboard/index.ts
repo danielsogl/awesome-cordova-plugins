@@ -12,18 +12,21 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { Clipboard } from '@ionic-native/clipboard';
  *
+ * constructor(private clipboard: Clipboard) { }
  *
- * Clipboard.copy('Hello world');
+ * ...
  *
- * Clipboard.paste().then(
+ *
+ * this.clipboard.copy('Hello world');
+ *
+ * this.clipboard.paste().then(
  *    (resolve: string) => {
- *     alert(resolve);
+ *       alert(resolve);
  *     },
  *     (reject: string) => {
- *     alert('Error: ' + reject);
+ *       alert('Error: ' + reject);
  *     }
- *     );
- * );
+ *   );
  * ```
  */
 @Plugin({

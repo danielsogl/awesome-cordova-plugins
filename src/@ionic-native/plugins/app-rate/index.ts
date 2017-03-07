@@ -107,13 +107,17 @@ export interface AppUrls {
  * ```typescript
  * import { AppRate } from '@ionic-native/app-rate';
  *
- *  AppRate.preferences.storeAppURL = {
+ * constructor(private appRate: AppRate) { }
+ *
+ * ...
+ *
+ *  this.appRate.preferences.storeAppURL = {
  *    ios: '<my_app_id>',
  *    android: 'market://details?id=<package_name>',
  *    windows: 'ms-windows-store://review/?ProductId=<Store_ID>'
  *  };
  *
- * AppRate.promptForRating(false);
+ * this.appRate.promptForRating(false);
  * ```
  *
  * @interfaces
