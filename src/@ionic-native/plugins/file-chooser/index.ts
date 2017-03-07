@@ -12,7 +12,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * import {FileChooser} from '@ionic-native/file';
  *
  * FileChooser.open()
- *   .then(uri => console.log(uri));
+ *   .then(uri => console.log(uri))
  *   .catch(e => console.log(e));
  *
  * ```

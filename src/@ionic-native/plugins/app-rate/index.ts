@@ -80,6 +80,11 @@ export interface AppUrls {
   android?: string;
 
   /**
+   * application URL in Windows Store
+   */
+  windows?: string;
+
+  /**
    * application URL in AppWorld
    */
   blackberry?: string;
@@ -105,6 +110,7 @@ export interface AppUrls {
  *  AppRate.preferences.storeAppURL = {
  *    ios: '<my_app_id>',
  *    android: 'market://details?id=<package_name>',
+ *    windows: 'ms-windows-store://review/?ProductId=<Store_ID>'
  *  };
  *
  * AppRate.promptForRating(false);
@@ -121,7 +127,7 @@ export interface AppUrls {
   plugin: 'cordova-plugin-apprate',
   pluginRef: 'AppRate',
   repo: 'https://github.com/pushandplay/cordova-plugin-apprate',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS', 'Windows (experimental)']
 })
 @Injectable()
 export class AppRate {

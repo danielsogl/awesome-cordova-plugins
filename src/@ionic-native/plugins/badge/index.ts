@@ -15,7 +15,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  *
  * Badge.set(10);
- * Badge.increase();
+ * Badge.increase(1);
  * Badge.clear();
  * ```
  */

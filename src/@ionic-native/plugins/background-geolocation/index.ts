@@ -365,17 +365,13 @@ export class BackgroundGeolocation {
   /**
    * Configure the plugin.
    *
-   * @param {Function} callback callback will be called when background location is determined.
-   * @param {Function} errorCallback callback to be executed every time a geolocation error occurs.
-   * @param {Config} options An object of type Config
-   * @return Location object, which tries to mimic w3c Coordinates interface.
-   * See http://dev.w3.org/geo/api/spec-source.html#coordinates_interface
-   * Callback to be executed every time a geolocation is recorded in the background.
+   * @param options {BackgroundGeolocationConfig} options An object of type Config
+   * @return {Promise<any>}
    */
   @Cordova({
-    sync: true
+    callbackOrder: 'reverse'
   })
-  configure(callback: Function, errorCallback: Function, options: BackgroundGeolocationConfig): any { return; }
+  configure(options: BackgroundGeolocationConfig): Promise<any> { return; }
 
   /**
    * Turn ON the background-geolocation system.
@@ -394,20 +390,26 @@ export class BackgroundGeolocation {
 
   /**
    * Inform the native plugin that you're finished, the background-task may be completed
-   * NOTE: IOS, WP only
+   * @returns {Promise<any>}
    */
-  @Cordova()
-  finish() { }
+  @Cordova({
+    platforms: ['iOS', 'Windows Phone']
+  })
+  finish(): Promise<any> { return; }
 
   /**
    * Force the plugin to enter "moving" or "stationary" state
-   * NOTE: IOS, WP only
+   * @param isMoving {boolean}
+   * @returns {Promise<any>}
    */
-  @Cordova()
-  changePace(isMoving: boolean) { }
+  @Cordova({
+    platforms: ['iOS', 'Windows Phone']
+  })
+  changePace(isMoving: boolean): Promise<any> { return; }
 
   /**
    * Setup configuration
+   * @param options {BackgroundGeolocationConfig}
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -417,27 +419,30 @@ export class BackgroundGeolocation {
 
   /**
    * Returns current stationaryLocation if available. null if not
-   * NOTE: IOS, WP only
    * @returns {Promise<Location>}
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['iOS', 'Windows Phone']
+  })
   getStationaryLocation(): Promise<BackgroundGeolocationResponse> { return; }
 
   /**
    * Add a stationary-region listener. Whenever the devices enters "stationary-mode",
    * your #success callback will be executed with #location param containing #radius of region
-   * NOTE: IOS, WP only
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['iOS', 'Windows Phone']
+  })
   onStationary(): Promise<any> { return; }
 
   /**
    * Check if location is enabled on the device
    * @returns {Promise<number>} Returns a promise with int argument that takes values 0, 1 (true).
-   * NOTE: ANDROID only
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['Android']
+  })
   isLocationEnabled(): Promise<number> { return; }
 
   /**
@@ -456,18 +461,21 @@ export class BackgroundGeolocation {
    * Method can be used to detect user changes in location services settings.
    * If user enable or disable location services then success callback will be executed.
    * In case or error (SettingNotFoundException) fail callback will be executed.
-   * NOTE: ANDROID only
    * @returns {Promise<boolean>}
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['Android']
+  })
   watchLocationMode(): Promise<boolean> { return; }
 
   /**
    * Stop watching for location mode changes.
-   * NOTE: ANDROID only
+   * @returns {Promise<any>}
    */
-  @Cordova()
-  stopWatchingLocationMode() { }
+  @Cordova({
+    platforms: ['Android']
+  })
+  stopWatchingLocationMode(): Promise<any> { return; }
 
   /**
    * Method will return all stored locations.
@@ -476,10 +484,11 @@ export class BackgroundGeolocation {
    *    by the system
    *  or
    *  - option.debug is true
-   * NOTE: ANDROID only
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['Android']
+  })
   getLocations(): Promise<any> { return; }
 
   /** 
@@ -491,18 +500,21 @@ export class BackgroundGeolocation {
 
   /**
    * Delete stored location by given locationId.
-   * NOTE: ANDROID only
+   * @param locationId {number}
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['Android']
+  })
   deleteLocation(locationId: number): Promise<any> { return; }
 
   /**
    * Delete all stored locations.
-   * NOTE: ANDROID only
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['Android']
+  })
   deleteAllLocations(): Promise<any> { return; }
 
   /**
@@ -514,20 +526,20 @@ export class BackgroundGeolocation {
    *
    * BackgroundGeolocation.Mode.FOREGROUND
    * BackgroundGeolocation.Mode.BACKGROUND 
-   *
-   * NOTE: iOS only
-   *
-   * @param {number} See above. 
+   **
+   * @param modeId {number}
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['iOS']
+  })
   switchMode(modeId: number): Promise<any> { return; }
 
   /** 
    * Return all logged events. Useful for plugin debugging. Parameter limit limits number of returned entries. 
    * @see https://github.com/mauron85/cordova-plugin-background-geolocation/tree/v2.2.1#debugging for more information. 
    *
-   * @param {number} Limits the number of entries 
+   * @param limit {number} Limits the number of entries 
    * @returns {Promise<any>}
    */
   @Cordova()
