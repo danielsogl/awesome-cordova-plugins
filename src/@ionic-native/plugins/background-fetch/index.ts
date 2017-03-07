@@ -70,9 +70,6 @@ export class BackgroundFetch {
    * Configures the plugin's fetch callbackFn
    *
    * @param {BackgroundFetchConfig} config Configuration for plugin
-   * @return Location object, which tries to mimic w3c Coordinates interface.
-   * See http://dev.w3.org/geo/api/spec-source.html#coordinates_interface
-   * Callback to be executed every time a geolocation is recorded in the background.
    * @return {Promise<any>}
    */
   @Cordova({
