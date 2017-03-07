@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Cordova, Plugin} from '@ionic-native/core';
+import {Observable} from "rxjs";
 
 
 declare var window;
@@ -263,16 +264,16 @@ export interface BackgroundGeolocationConfig {
  *
  * @usage
  *
+ * BackgroundGeolocation must be called within app.ts and or before Geolocation. Otherwise the platform will not ask you for background tracking permission.
+ *
  * ```typescript
- * import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+ * import { BackgroundGeolocation, BackgroundGeolocationConfig } from '@ionic-native/background-geolocation';
  *
+ * constructor(private backgroundGeolocation: BackgroundGeolocation) { }
  *
- * // When device is ready :
- * platform.ready().then(() => {
- *     // IMPORTANT: BackgroundGeolocation must be called within app.ts and or before Geolocation. Otherwise the platform will not ask you for background tracking permission.
+ * ...
  *
- *     // BackgroundGeolocation is highly configurable. See platform specific configuration options
- *     let config = {
+ * const config: BackgroundGeolocationConfig = {
  *             desiredAccuracy: 10,
  *             stationaryRadius: 20,
  *             distanceFilter: 30,
@@ -280,24 +281,23 @@ export interface BackgroundGeolocationConfig {
  *             stopOnTerminate: false, // enable this to clear background location settings when the app terminates
  *     };
  *
- *     BackgroundGeolocation.configure((location) => {
-         console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
-
-          // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
-          // and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
-          // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
-          BackgroundGeolocation.finish(); // FOR IOS ONLY
-
- *      }, (error) => {
- *        console.log('BackgroundGeolocation error');
- *      }, config);
+ * this.backgroundGeolocation.configure(config)
+ *   .subscribe((location: BackgroundGeolocationResponse) => {
  *
- *     // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
- *     BackgroundGeolocation.start();
- * })
+ *     console.log(location);
+ *
+ *     // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
+ *     // and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
+ *     // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
+ *     BackgroundGeolocation.finish(); // FOR IOS ONLY
+ *
+ *   });
+ *
+ * // start recording location
+ * this.backgroundGeolocation.start();
  *
  * // If you wish to turn OFF background-tracking, call the #stop method.
- * BackgroundGeolocation.stop();
+ * this.backgroundGeolocation.stop();
  *
  * ```
  * @interfaces
@@ -366,12 +366,13 @@ export class BackgroundGeolocation {
    * Configure the plugin.
    *
    * @param options {BackgroundGeolocationConfig} options An object of type Config
-   * @return {Promise<any>}
+   * @return {Observable<BackgroundGeolocationResponse>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
+    observable: true
   })
-  configure(options: BackgroundGeolocationConfig): Promise<any> { return; }
+  configure(options: BackgroundGeolocationConfig): Observable<BackgroundGeolocationResponse> { return; }
 
   /**
    * Turn ON the background-geolocation system.
