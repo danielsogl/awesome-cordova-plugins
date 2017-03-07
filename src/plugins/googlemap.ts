@@ -54,6 +54,7 @@ export const GoogleMapsMapTypeId = {
  * @description This plugin uses the native Google Maps SDK
  * @usage
  * ```
+ * import { Platform } from 'ionic-angular';
  * import {
  *  GoogleMap,
  *  GoogleMapsEvent,
@@ -65,11 +66,14 @@ export const GoogleMapsMapTypeId = {
  * } from 'ionic-native';
  *
  * export class MapPage {
- *  constructor() {}
+ *  constructor(private platform: Platform) {}
  *
  * // Load map only after view is initialize
  * ngAfterViewInit() {
- *  this.loadMap();
+ *  this.platform.ready().then(()=>{
+ *    // Must wait until google maps plugin is ready
+ *    this.loadMap();
+ *  });
  * }
  *
  * loadMap() {
