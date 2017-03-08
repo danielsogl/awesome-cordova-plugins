@@ -13,8 +13,8 @@ declare var window: any;
  * import {FilePath} from 'ionic-native';
  *
  * FilePath.resolveNativePath(path)
- *   .then(filePath => console.log(filePath);
- *   .catch(err => console.log(err);
+ *   .then(filePath => console.log(filePath))
+ *   .catch(err => console.log(err));
  *
  * ```
  */
