@@ -112,6 +112,14 @@ export class Firebase {
   static logEvent(type: string, data: any): Promise<any> { return; }
 
   /**
+   * Set the name of the current screen in Analytics
+   * @param name {string} Screen name
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  static setScreenName(name: string): Promise<any> { return; }
+
+  /**
    * Set a user id for use in Analytics
    * @param userId {string}
    * @return {Promise<any>}
