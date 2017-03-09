@@ -112,6 +112,28 @@ export interface CordovaOptions {
 
 /**
  * @private
+ */
+export interface CordovaCheckOptions {
+  promise?: boolean;
+  observable?: boolean;
+}
+
+/**
+ * @private
+ */
+export interface CordovaFiniteObservableOptions extends CordovaOptions {
+  /**
+   * Function that gets a result returned from plugin's success callback, and decides whether it is last value and observable should complete.
+   */
+  resultFinalPredicate?: (result: any) => boolean;
+  /**
+   * Function that gets called after resultFinalPredicate, and removes service data that indicates end of stream from the result.
+   */
+  resultTransform?: (result: any) => any;
+}
+
+/**
+ * @private
  * @param pluginRef
  * @returns {null|*}
  */
@@ -146,6 +168,97 @@ export const cordovaWarn = function(pluginName: string, method: string) {
     console.warn('Native: tried accessing the ' + pluginName + ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
   }
 };
+
+
+/**
+ * Checks if plugin/cordova is available
+ * @return {boolean | { error: string } }
+ * @private
+ */
+export function checkAvailability(pluginObj: any, methodName: string): boolean | { error: string } {
+  let pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
+
+  if (!pluginInstance || pluginInstance[methodName] === 'undefined') {
+    if (!window.cordova) {
+      cordovaWarn(pluginObj.constructor.getPluginName(), methodName);
+      return {
+        error: 'cordova_not_available'
+      };
+    }
+
+    pluginWarn(pluginObj, methodName);
+    return {
+      error: 'plugin_not_installed'
+    };
+  }
+
+  return true;
+}
+
+/**
+ * Checks if _objectInstance exists and has the method/property
+ * @private
+ */
+export function instanceAvailability(pluginObj: any, methodName: string) {
+  if (!pluginObj._objectInstance || pluginObj._objectInstance[methodName] === 'undefined') {
+    if (!window.cordova) {
+      cordovaWarn(pluginObj.constructor.getPluginName(), methodName);
+      return {
+        error: 'cordova_not_available'
+      };
+    }
+    pluginWarn(pluginObj, methodName);
+    return {
+      error: 'plugin_not_installed'
+    };
+    return false;
+  }
+  return true;
+}
+
+/**
+ * @private
+ */
+export function InstanceCheck() {
+  return (pluginObj: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
+    return {
+      value: function(...args: any[]) {
+        if (instanceAvailability(pluginObj, methodName) === true) {
+          descriptor.value.apply(this, args);
+        } else {
+          return null;
+        }
+      }
+    };
+  };
+}
+
+/**
+ * Executes function only if plugin is available
+ * @private
+ */
+export function CordovaCheck(opts: CordovaCheckOptions = {}) {
+  return (pluginObj: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
+    return {
+      value: function(...args: any[]) {
+        if (checkAvailability(pluginObj, methodName) === true) {
+          descriptor.value.apply(this, args);
+        } else {
+
+          if (opts.promise) {
+            return getPromise(() => {});
+          } else if (opts.observable) {
+            return new Observable<any>(observer => observer.complete());
+          }
+
+          return null;
+
+        }
+      }
+    };
+  };
+}
+
 function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Function): any {
   // ignore resolve and reject in case sync
   if (opts.sync) {
@@ -212,24 +325,15 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
   // to our promise resolve/reject handlers.
   args = setIndex(args, opts, resolve, reject);
 
-  let pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
+  const availabilityCheck = checkAvailability(pluginObj, methodName);
 
-  if (!pluginInstance || pluginInstance[methodName] === 'undefined') {
-    // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
-    if (!window.cordova) {
-      cordovaWarn(pluginObj.constructor.getPluginName(), methodName);
-      return {
-        error: 'cordova_not_available'
-      };
-    }
-
-    pluginWarn(pluginObj, methodName);
-    return {
-      error: 'plugin_not_installed'
-    };
+  if (availabilityCheck === true) {
+    const pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
+    return pluginInstance[methodName].apply(pluginInstance, args);
+  } else {
+    return availabilityCheck;
   }
 
-  return pluginInstance[methodName].apply(pluginInstance, args);
 }
 
 /**
@@ -281,6 +385,7 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
     let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
     if (pluginResult && pluginResult.error) {
       observer.error(pluginResult.error);
+      observer.complete();
     }
     return () => {
       try {
@@ -300,17 +405,32 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
 
 function callInstance(pluginObj: any, methodName: string, args: any[], opts: any = {}, resolve?: Function, reject?: Function) {
   args = setIndex(args, opts, resolve, reject);
-  return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
+  const availabilityCheck = instanceAvailability(pluginObj, methodName);
+
+  if (availabilityCheck === true) {
+    return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
+  } else {
+    return availabilityCheck;
+  }
+
 }
 
 function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
   return (...args) => {
     if (opts.sync) {
-      // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
+
       return callInstance(pluginObj, methodName, args, opts);
+
     } else if (opts.observable) {
+
       return new Observable(observer => {
         let pluginResult = callInstance(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+
+        if (pluginResult && pluginResult.error) {
+          observer.error(pluginResult.error);
+          observer.complete();
+        }
+
         return () => {
           try {
             if (opts.clearWithArgs) {
@@ -323,15 +443,29 @@ function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
           }
         };
       });
+
     } else if (opts.otherPromise) {
+
       return getPromise((resolve, reject) => {
         let result = callInstance(pluginObj, methodName, args, opts, resolve, reject);
-        result.then(resolve, reject);
+        if (result && !result.error) {
+          result.then(resolve, reject);
+        }
       });
+
     } else {
-      return getPromise((resolve, reject) => {
-        callInstance(pluginObj, methodName, args, opts, resolve, reject);
+
+      let pluginResult, rej;
+      const p = getPromise((resolve, reject) => {
+        pluginResult = callInstance(pluginObj, methodName, args, opts, resolve, reject);
+        rej = reject;
       });
+      if (pluginResult && pluginResult.error) {
+        p.catch(() => { });
+        rej(pluginResult.error);
+      }
+      return p;
+
     }
   };
 }
@@ -356,25 +490,17 @@ function wrapEventObservable(event: string, element: any = window): Observable<a
 function overrideFunction(pluginObj: any, methodName: string, args: any[], opts: any = {}): Observable<any> {
   return new Observable(observer => {
 
-    let pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
+    const availabilityCheck = checkAvailability(pluginObj, methodName);
 
-    if (!pluginInstance) {
-      // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
-      if (!window.cordova) {
-        cordovaWarn(pluginObj.constructor.getPluginName(), methodName);
-        observer.error({
-          error: 'cordova_not_available'
-        });
-      }
-
-      pluginWarn(pluginObj, methodName);
-      observer.error({
-        error: 'plugin_not_installed'
-      });
-      return;
+    if (availabilityCheck === true) {
+      const pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
+      pluginInstance[methodName] = observer.next.bind(observer);
+      return () => pluginInstance[methodName] = () => {};
+    } else {
+      observer.error(availabilityCheck);
+      observer.complete();
     }
 
-    pluginInstance[methodName] = observer.next.bind(observer);
   });
 }
 
@@ -565,19 +691,6 @@ export function CordovaFunctionOverride(opts: any = {}) {
   };
 }
 
-/**
- * @private
- */
-export interface CordovaFiniteObservableOptions extends CordovaOptions {
-  /**
-   * Function that gets a result returned from plugin's success callback, and decides whether it is last value and observable should complete.
-   */
-  resultFinalPredicate?: (result: any) => boolean;
-  /**
-   * Function that gets called after resultFinalPredicate, and removes service data that indicates end of stream from the result.
-   */
-  resultTransform?: (result: any) => any;
-}
 
 /**
  * @private
