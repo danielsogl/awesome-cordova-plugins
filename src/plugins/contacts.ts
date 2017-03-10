@@ -81,7 +81,7 @@ export class Contact implements IContactProperties {
     let newContact = new Contact();
     for (let prop in this) {
       if (prop === 'id') return;
-      newContact[prop] = this[prop];
+      newContact[<any>prop] = this[prop];
     }
     return newContact;
   }
