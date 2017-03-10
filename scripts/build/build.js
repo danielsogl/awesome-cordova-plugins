@@ -60,7 +60,7 @@ const PLUGINS = fs.readdirSync(PLUGINS_PATH);
 
 // Create a queue to process tasks
 const QUEUE = queue({
-  concurrency: 10
+  concurrency: require('os').cpus().length
 });
 
 
