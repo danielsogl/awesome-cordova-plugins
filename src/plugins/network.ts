@@ -29,7 +29,7 @@ declare var navigator: any;
  *    // before we determine the connection type.  Might need to wait 
  *   // prior to doing any api requests as well.
  *   setTimeout(() => {
- *     if (Network.type === 'wifi') {
+ *     if (Network.connection === 'wifi') {
  *       console.log('we got a wifi connection, woohoo!');
  *     }
  *   }, 3000);
@@ -40,7 +40,7 @@ declare var navigator: any;
  *
  * ```
  * @advanced
- * The `type` property will return one of the following connection types: `unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
+ * The `connection` property will return one of the following connection types: `unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
  */
 @Plugin({
   pluginName: 'Network',
@@ -56,7 +56,7 @@ export class Network {
    * @return {string}
    */
   @CordovaProperty
-  static type: string;
+  static connection: string;
 
   /**
    * Downlink Max Speed
