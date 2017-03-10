@@ -77,14 +77,6 @@ export class PhotoLibrary {
   static getAlbums(): Promise<AlbumItem[]> { return; }
 
   /**
-   * @private
-   */
-  static getThumbnailURL(photoId: string, options?: GetThumbnailOptions): Promise<string>;
-  /**
-   * @private
-   */
-  static getThumbnailURL(libraryItem: LibraryItem, options?: GetThumbnailOptions): Promise<string>;
-  /**
    * Provides means to request URL of thumbnail, with specified size or quality.
    * @param photo {string | LibraryItem} Id of photo, or LibraryItem.
    * @param options {GetThumbnailOptions} Options, like thumbnail size or quality.
@@ -96,14 +88,6 @@ export class PhotoLibrary {
   })
   static getThumbnailURL(photo: string | LibraryItem, options?: GetThumbnailOptions): Promise<string> { return; }
 
-  /**
-   * @private
-   */
-  static getPhotoURL(photoId: string, options?: GetPhotoOptions): Promise<string>;
-  /**
-   * @private
-   */
-  static getPhotoURL(libraryItem: LibraryItem, options?: GetPhotoOptions): Promise<string>;
   /**
    * Provides means to request photo URL by id.
    * @param photo {string | LibraryItem} Id or LibraryItem.
@@ -117,14 +101,6 @@ export class PhotoLibrary {
   static getPhotoURL(photo: string | LibraryItem, options?: GetPhotoOptions): Promise<string> { return; }
 
   /**
-   * @private
-   */
-  static getThumbnail(photoId: string, options?: GetThumbnailOptions): Promise<Blob>;
-  /**
-   * @private
-   */
-  static getThumbnail(libraryItem: LibraryItem, options?: GetThumbnailOptions): Promise<Blob>;
-  /**
    * Returns thumbnail as Blob.
    * @param photo {string | LibraryItem} Id or LibraryItem.
    * @param options {GetThumbnailOptions} Options, like thumbnail size or quality.
@@ -136,14 +112,6 @@ export class PhotoLibrary {
   })
   static getThumbnail(photo: string | LibraryItem, options?: GetThumbnailOptions): Promise<Blob> { return; }
 
-  /**
-   * @private
-   */
-  static getPhoto(photoId: string, options?: GetPhotoOptions): Promise<Blob>;
-  /**
-   * @private
-   */
-  static getPhoto(libraryItem: LibraryItem, options?: GetPhotoOptions): Promise<Blob>;
   /**
    * Returns photo as Blob.
    * @param photo {string | LibraryItem} Id or LibraryItem.
