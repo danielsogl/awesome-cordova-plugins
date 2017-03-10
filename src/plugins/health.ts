@@ -212,7 +212,7 @@ export class Health {
    * This function is similar to requestAuthorization() and has similar quirks.
    *
    * @param {Array<String>} datatypes a list of data types you want to be granted access to
-   * @return {type: function(authorized)}, if the argument is true, the app is authorized
+   * @return {Promise<any>}
    */
   @Cordova()
   static isAuthorized(datatypes: Array<string>): Promise<any> {
