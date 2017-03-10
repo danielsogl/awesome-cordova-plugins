@@ -57,7 +57,7 @@ export class GoogleMap {
   _objectInstance: any;
 
   constructor(element: string | HTMLElement, options?: any) {
-    if (checkAvailability(GoogleMaps.constructor, 'getMap') === true) {
+    if (checkAvailability('plugin.google.maps.Map', 'getMap') === true) {
       if (typeof element === 'string') {
         element = document.getElementById(<string>element);
       }
@@ -1738,7 +1738,8 @@ export interface GeocoderResult {
 @Plugin({
   pluginName: 'Geocoder',
   pluginRef: 'plugins.google.maps.Geocoder',
-  plugin: 'cordova-plugin-googlemaps'
+  plugin: 'cordova-plugin-googlemaps',
+  repo: ''
 })
 export class Geocoder {
   /**
