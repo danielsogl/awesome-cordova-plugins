@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, CordovaCheck, Plugin, InstanceProperty, InstanceCheck } from '@ionic-native/core';
+import { Cordova, CordovaInstance, CordovaCheck, Plugin, InstanceProperty, InstanceCheck, checkAvailability } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
@@ -57,10 +57,12 @@ export class GoogleMap {
   _objectInstance: any;
 
   constructor(element: string | HTMLElement, options?: any) {
-    if (typeof element === 'string') {
-      element = document.getElementById(<string>element);
+    if (checkAvailability(GoogleMaps.constructor, 'getMap') === true) {
+      if (typeof element === 'string') {
+        element = document.getElementById(<string>element);
+      }
+      this._objectInstance = plugin.google.maps.Map.getMap(element, options);
     }
-    this._objectInstance = plugin.google.maps.Map.getMap(element, options);
   }
 
   /**
@@ -457,7 +459,6 @@ export class GoogleMaps {
    * @param options {any} Options
    * @returns {GoogleMap}
    */
-  @CordovaCheck()
   create(element: string | HTMLElement, options?: any): GoogleMap {
     return new GoogleMap(element, options);
   }
