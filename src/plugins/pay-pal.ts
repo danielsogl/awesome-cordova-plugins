@@ -220,7 +220,7 @@ export class PayPalItem {
    * @param {String} currency: ISO standard currency code.
    * @param {String} sku: The stock keeping unit for this item. 50 characters max (optional)
    */
-  constructor(name: string, quantity: number, price: string, currency: string, sku: string) {
+  constructor(name: string, quantity: number, price: string, currency: string, sku?: string) {
     this.name = name;
     this.quantity = quantity;
     this.price = price;
@@ -246,7 +246,7 @@ export class PayPalItem {
   /**
    * The stock keeping unit for this item. 50 characters max (optional)
    */
-  sku: string;
+  sku?: string;
 }
 
 /**
