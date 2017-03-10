@@ -17,8 +17,8 @@ const ROOT = path.resolve(path.join(__dirname, '../../')), // root ionic-native 
 
 
 // dependency versions
-const ANGULAR_VERSION = '2.2.1',
-  RXJS_VERSION = '5.0.0-beta.12',
+const ANGULAR_VERSION = '2.4.8',
+  RXJS_VERSION = '5.0.1',
   IONIC_NATIVE_VERSION = require(path.resolve(ROOT, 'package.json')).version;
 
 // package dependencies
@@ -60,7 +60,7 @@ const PLUGINS = fs.readdirSync(PLUGINS_PATH);
 
 // Create a queue to process tasks
 const QUEUE = queue({
-  concurrency: 10
+  concurrency: require('os').cpus().length
 });
 
 
