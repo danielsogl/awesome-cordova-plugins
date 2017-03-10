@@ -9,9 +9,9 @@
     "dist"
   ],
   "devDependencies": {
-    "@angular/compiler": "2.2.1",
-    "@angular/compiler-cli": "2.2.1",
-    "@angular/core": "2.2.1",
+    "@angular/compiler": "2.4.8",
+    "@angular/compiler-cli": "2.4.8",
+    "@angular/core": "2.4.8",
     "browserify": "^13.3.0",
     "canonical-path": "0.0.2",
     "child-process-promise": "^2.2.0",
