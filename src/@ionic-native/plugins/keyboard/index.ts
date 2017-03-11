@@ -10,7 +10,13 @@ import { Observable } from 'rxjs/Observable';
  * ```typescript
  * import { Keyboard } from '@ionic-native/keyboard';
  *
+ * constructor(private keyboard: Keyboard) { }
  *
+ * ...
+ *
+ * this.keyboard.show();
+ *
+ * this.keyboard.close();
  *
  * ```
  */

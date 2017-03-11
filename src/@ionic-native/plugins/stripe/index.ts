@@ -61,7 +61,11 @@ export interface StripeCardTokenParams {
  * ```
  * import { Stripe } from '@ionic-native/stripe';
  *
- * Stripe.setPublishableKey('my_publishable_key');
+ * constructor(private stripe: Stripe) { }
+ *
+ * ...
+ *
+ * this.stripe.setPublishableKey('my_publishable_key');
  *
  * let card = {
  *  number: '4242424242424242',
@@ -70,7 +74,7 @@ export interface StripeCardTokenParams {
  *  cvc: '220'
  * };
  *
- * Stripe.createCardToken(card)
+ * this.stripe.createCardToken(card)
  *    .then(token => console.log(token))
  *    .catch(error => console.error(error));
  *

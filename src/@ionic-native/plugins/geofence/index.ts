@@ -11,19 +11,19 @@ declare var window: any;
  * @usage
  * ```
  * import { Geofence } from '@ionic-native/geofence';
- * import { Platform } from  'ionic-angular'
+ *
  * ...
  *
- * constructor(private platform: Platform) {
- *   this.platform.ready().then(() => {
-         // initialize the plugin
- *       Geofence.initialize().then(
- *         // resolved promise does not return a value
- *         () => console.log('Geofence Plugin Ready'),
- *         (err) => console.log(err)
- *       )
- *   })
+ * constructor(private geofence: Geofence) {
+ *   // initialize the plugin
+ *   geofence.initialize().then(
+ *     // resolved promise does not return a value
+ *     () => console.log('Geofence Plugin Ready'),
+ *     (err) => console.log(err)
+ *   )
  * }
+ *
+ * ...
  *
  * private addGeofence() {
  *   //options describing geofence
@@ -41,7 +41,7 @@ declare var window: any;
  *     }
  *   }
  *
- *   Geofence.addOrUpdate(fence).then(
+ *   this.geofence.addOrUpdate(fence).then(
  *      () => console.log('Geofence added'),
  *      (err) => console.log('Geofence failed to add')
  *    );

@@ -10,9 +10,13 @@ declare var mixpanel: any;
  *
  * @usage
  * ```
- * import {Mixpanel} from '@ionic-native/mixpanel';
+ * import { Mixpanel } from '@ionic-native/mixpanel';
  *
- * Mixpanel.init(token)
+ * constructor(private mixpanel: Mixpanel) { }
+ *
+ * ...
+ *
+ * this.mixpanel.init(token)
  *   .then(onSuccess)
  *   .catch(onError);
  *

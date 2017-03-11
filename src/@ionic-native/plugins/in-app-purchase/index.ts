@@ -9,9 +9,13 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```ts
- * import {InAppPurchase} from '@ionic-native/in-app-purchase';
+ * import { InAppPurchase } from '@ionic-native/in-app-purchase';
  *
- * InAppPurchase
+ * constructor(private iap: InAppPurchase) { }
+ *
+ * ...
+ *
+ * this.iap
  *  .getProducts(['com.yourapp.prod1', 'com.yourapp.prod2', ...])
  *  .then((products) => {
  *    console.log(products);
@@ -22,7 +26,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *  });
  *
  *
- * InAppPurchase
+ * this.iap
  *   .buy('com.yourapp.prod1')
  *   .then((data)=> {
  *     console.log(data);
@@ -42,14 +46,12 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * ```ts
  * // fist buy the product...
- * InAppPurchase
+ * this.iap
  *   .buy('com.yourapp.consumable_prod1')
- *   .then(data => InAppPurchase.consume(data.productType, data.receipt, data.signature))
+ *   .then(data => this.iap.consume(data.productType, data.receipt, data.signature))
  *   .then(() => console.log('product was successfully consumed!'))
  *   .catch( err=> console.log(err))
  * ```
- *
- *
  */
 @Plugin({
   pluginName: 'InAppPurchase',

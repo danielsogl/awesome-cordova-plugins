@@ -7,9 +7,14 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {YoutubeVideoPlayer} from '@ionic-native/youtube-video-player';
+ * import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
  *
- * YoutubeVideoPlayer.openVideo('myvideoid');
+ * constructor(private youtube: YoutubeVideoPlayer) { }
+ *
+ * ...
+ *
+ *
+ * this.youtube.openVideo('myvideoid');
  *
  * ```
  */

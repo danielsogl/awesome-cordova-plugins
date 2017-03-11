@@ -15,7 +15,11 @@ declare var window;
  * ```typescript
  * import { GoogleAnalytics } from '@ionic-native/google-analytics';
  *
- * GoogleAnalytics.startTrackerWithId('YOUR_TRACKER_ID')
+ * constructor(private ga: GoogleAnalytics) { }
+ *
+ * ...
+ *
+ * this.ga.startTrackerWithId('YOUR_TRACKER_ID')
  *    .then(() => {
  *      console.log('Google analytics is ready now');
  *      // Tracker is ready

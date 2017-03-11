@@ -137,16 +137,20 @@ export class InAppBrowserObject {
  * @description Launches in app Browser
  * @usage
  * ```typescript
- * import {InAppBrowser} from '@ionic-native/in-app-browser';
+ * import { InAppBrowser } from '@ionic-native/in-app-browser';
+ *
+ * constructor(private iab: InAppBrowser) { }
  *
  *
  * ...
  *
  *
- * let browser = new InAppBrowser('https://ionic.io', '_system');
+ * const browser = this.iab.create('https://ionic.io');
+ *
  * browser.executeScript(...);
  * browser.insertCSS(...);
  * browser.close();
+ *
  * ```
  * @classes
  * InAppBrowserObject

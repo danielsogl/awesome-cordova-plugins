@@ -7,9 +7,13 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {Market} from '@ionic-native/market';
+ * import { Market } from '@ionic-native/market';
  *
- * Market.open('your.package.name');
+ * constructor(private market: Market) { }
+ *
+ * ...
+ *
+ * this.market.open('your.package.name');
  *
  * ```
  */

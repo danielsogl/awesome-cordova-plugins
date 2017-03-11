@@ -9,10 +9,13 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { SplashScreen } from '@ionic-native/splash-screen';
  *
+ * constructor(private splashScreen: SplashScreen) { }
  *
- * Splashscreen.show();
+ * ...
  *
- * Splashscreen.hide();
+ * this.splashScreen.show();
+ *
+ * this.splashScreen.hide();
  * ```
  */
 @Plugin({

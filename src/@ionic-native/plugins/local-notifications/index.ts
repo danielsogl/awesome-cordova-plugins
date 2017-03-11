@@ -101,8 +101,13 @@ export interface ILocalNotification {
  * import { LocalNotifications } from '@ionic-native/local-notifications';
  *
  *
+ * constructor(private localNotifications: LocalNotifications) { }
+ *
+ * ...
+ *
+ *
  * // Schedule a single notification
- * LocalNotifications.schedule({
+ * this.localNotifications.schedule({
  *   id: 1,
  *   text: 'Single ILocalNotification',
  *   sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
@@ -111,7 +116,7 @@ export interface ILocalNotification {
  *
  *
  * // Schedule multiple notifications
- * LocalNotifications.schedule([{
+ * this.localNotifications.schedule([{
  *    id: 1,
  *    text: 'Multi ILocalNotification 1',
  *    sound: isAndroid ? 'file://sound.mp3': 'file://beep.caf',
@@ -125,7 +130,7 @@ export interface ILocalNotification {
  *
  *
  * // Schedule delayed notification
- * LocalNotifications.schedule({
+ * this.localNotifications.schedule({
  *    text: 'Delayed ILocalNotification',
  *    at: new Date(new Date().getTime() + 3600),
  *    led: 'FF0000',

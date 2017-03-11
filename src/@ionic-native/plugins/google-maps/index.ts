@@ -437,6 +437,16 @@ export class GoogleMap {
  * ```
  * @classes
  * GoogleMap
+ * Marker
+ * LatLng
+ * Geocoder
+ * @interfaces
+ * AnimateCameraOptions
+ * MarkerOptions
+ * MyLocation
+ * MyLocationOptions
+ * VisibleRegion
+ *
  */
 @Plugin({
   pluginName: 'GoogleMaps',

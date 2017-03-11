@@ -6,9 +6,13 @@ import { Observable } from 'rxjs/Observable';
  * @description Handles shake gesture
  * @usage
  * ```typescript
- * import {Shake} from '@ionic-native/shake';
+ * import { Shake } from '@ionic-native/shake';
  *
- * let watch = Shake.startWatch(60).subscribe(() => {
+ * constructor(private shake: Shake) { }
+ *
+ * ...
+ *
+ * const watch = this.shake.startWatch(60).subscribe(() => {
  *   // do something
  *   });
  *

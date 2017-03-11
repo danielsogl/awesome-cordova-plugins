@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin } from '@ionic-native/core';
+import { CordovaInstance, Plugin, InstanceCheck, checkAvailability } from '@ionic-native/core';
 
 declare var FileTransfer;
 
@@ -116,63 +116,48 @@ export interface FileTransferError {
  *
  * @usage
  * ```typescript
- * import { Transfer } from '@ionic-native/transfer';
+ * import { Transfer, FileUploadOptions } from '@ionic-native/transfer';
+ * import { File } from '@ionic-native/file';
  *
+ * constructor(private transfer: Transfer, private file: File) { }
  *
- * // Create instance:
- * const fileTransfer = new Transfer();
+ * ...
  *
  * // Upload a file:
- * fileTransfer.upload(..).then(..).catch(..);
+ * this.transfer.upload(..).then(..).catch(..);
  *
  * // Download a file:
- * fileTransfer.download(..).then(..).catch(..);
+ * this.transfer.download(..).then(..).catch(..);
  *
  * // Abort active transfer:
- * fileTransfer.abort();
+ * this.transfer.abort();
  *
- * E.g
- *
- * upload(){
- *   const fileTransfer = new Transfer();
- *   var options: any;
- *
- *   options = {
+ * // full example
+ * upload() {
+ *   let options: FileUploadOptions = {
  *      fileKey: 'file',
  *      fileName: 'name.jpg',
  *      headers: {}
  *      .....
  *   }
- *   fileTransfer.upload("<file path>", "<api endpoint>", options)
+ *
+ *   this.transfer.upload("<file path>", "<api endpoint>", options)
  *    .then((data) => {
  *      // success
  *    }, (err) => {
  *      // error
  *    })
  * }
- *
- * // Cordova
- * declare var cordova: any;
- *
+ **
  * download() {
- *   const fileTransfer = new Transfer();
  *   let url = 'http://www.example.com/file.pdf';
- *   fileTransfer.download(url, cordova.file.dataDirectory + 'file.pdf').then((entry) => {
+ *   this.transfer.download(url, this.file.dataDirectory + 'file.pdf').then((entry) => {
  *     console.log('download complete: ' + entry.toURL());
  *   }, (error) => {
  *     // handle error
  *   });
  * }
  *
- * ```
- *
- * Note: You will not see your documents using a file explorer on your device. Use adb:
- *
- * ```
- * adb shell
- * run-as com.your.app
- * cd files
- * ls
  * ```
  *
  * To store files in a different/publicly accessible directory, please refer to the following link
@@ -213,7 +198,9 @@ export class Transfer {
   private _objectInstance: any;
 
   constructor() {
-    this._objectInstance = new FileTransfer();
+    if (checkAvailability('FileTransfer', null, 'FileTransfer') === true) {
+      this._objectInstance = new FileTransfer();
+    }
   }
 
   /**
@@ -254,6 +241,7 @@ export class Transfer {
    * Registers a listener that gets called whenever a new chunk of data is transferred.
    * @param listener {function} Listener that takes a progress event.
    */
+  @InstanceCheck({ sync: true })
   onProgress(listener: (event: ProgressEvent) => any): void {
     this._objectInstance.onprogress = listener;
   }

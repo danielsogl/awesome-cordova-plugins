@@ -8,13 +8,17 @@ declare var navigator: any;
  * @description Captures a screen shot
  * @usage
  * ```typescript
- * import {Screenshot} from '@ionic-native/screenshot';
+ * import { Screenshot } from '@ionic-native/screenshot';
+ *
+ * constructor(private screenshot: Screenshot) { }
+ *
+ * ...
  *
  * // Take a screenshot and save to file
- * Screenshot.save('jpg', 80, 'myscreenshot.jpg').then(onSuccess, onError);
+ * this.screenshot.save('jpg', 80, 'myscreenshot.jpg').then(onSuccess, onError);
  *
  * // Take a screenshot and get temporary file URI
- * Screenshot.URI(80).then(onSuccess, onError);
+ * this.screenshot.URI(80).then(onSuccess, onError);
  * ```
  */
 @Plugin({

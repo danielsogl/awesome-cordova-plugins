@@ -24,8 +24,12 @@ export interface SerialOpenOptions {
  * ```
  * import { Serial } from '@ionic-native/serial';
  *
- * Serial.requestPermission().then(() => {
- *   Serial.open({
+ * constructor(private serial: Serial) { }
+ *
+ * ...
+ *
+ * this.serial.requestPermission().then(() => {
+ *   this.serial.open({
  *     baudRate: 9800
  *   }).then(() => {
  *     console.log('Serial connection opened');

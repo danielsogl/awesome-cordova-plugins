@@ -10,17 +10,21 @@ import {Cordova, Plugin, CordovaProperty} from '@ionic-native/core';
  * ```typescript
  * import { Diagnostic } from '@ionic-native/diagnostic';
  *
+ * constructor(private diagnostic: Diagnostic) { }
+ *
+ * ...
+ *
  * let successCallback = (isAvailable) => { console.log('Is available? ' + isAvailable); };
  * let errorCallback = (e) => console.error(e);
  *
- * Diagnostic.isCameraAvailable().then(successCallback).catch(errorCallback);
+ * this.diagnostic.isCameraAvailable().then(successCallback).catch(errorCallback);
  *
- * Diagnostic.isBluetoothAvailable().then(successCallback, errorCallback);
+ * this.diagnostic.isBluetoothAvailable().then(successCallback, errorCallback);
  *
  *
- * Diagnostic.getBluetoothState()
+ * this.diagnostic.getBluetoothState()
  *   .then((state) => {
- *     if (state == Diagnostic.bluetoothStates.POWERED_ON){
+ *     if (state == this.diagnostic.bluetoothStates.POWERED_ON){
  *       // do something
  *     } else {
  *       // do something else

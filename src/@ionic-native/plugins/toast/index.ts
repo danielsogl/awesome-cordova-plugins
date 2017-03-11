@@ -47,8 +47,11 @@ export interface ToastOptions {
  * ```typescript
  * import { Toast } from '@ionic-native/toast';
  *
+ * constructor(private toast: Toast) { }
  *
- * Toast.show("I'm a toast", '5000', 'center').subscribe(
+ * ...
+ *
+ * thisoast.show("I'm a toast", '5000', 'center').subscribe(
  *   toast => {
  *     console.log(toast);
  *   }
@@ -79,11 +82,7 @@ export class Toast {
     observable: true,
     clearFunction: 'hide'
   })
-  show(
-    message: string,
-    duration: string,
-    position: string
-  ): Observable<any> { return; }
+  show(message: string, duration: string, position: string): Observable<any> { return; }
 
   /**
    * Manually hide any currently visible toast.

@@ -272,19 +272,23 @@ export enum OSActionType {
  * ```typescript
  * import { OneSignal } from '@ionic-native/onesignal';
  *
- * OneSignal.startInit('b2f7f966-d8cc-11e4-bed1-df8f05be55ba', '703322744261');
+ * constructor(private oneSignal: OneSignal) { }
  *
- * OneSignal.inFocusDisplaying(OneSignal.OSInFocusDisplayOption.InAppAlert);
+ * ...
  *
- * OneSignal.handleNotificationReceived().subscribe(() => {
+ * this.oneSignal.startInit('b2f7f966-d8cc-11e4-bed1-df8f05be55ba', '703322744261');
+ *
+ * this.oneSignal.inFocusDisplaying(OneSignal.OSInFocusDisplayOption.InAppAlert);
+ *
+ * this.oneSignal.handleNotificationReceived().subscribe(() => {
  *  // do something when notification is received
  * });
  *
- * OneSignal.handleNotificationOpened().subscribe(() => {
+ * this.oneSignal.handleNotificationOpened().subscribe(() => {
  *   // do something when a notification is opened
  * });
  *
- * OneSignal.endInit();
+ * this.oneSignal.endInit();
  * ```
  * @interfaces
  * OSNotification

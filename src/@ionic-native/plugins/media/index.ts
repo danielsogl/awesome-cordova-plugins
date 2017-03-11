@@ -189,13 +189,18 @@ export class MediaObject {
  * import { MediaPlugin } from '@ionic-native/media';
  *
  *
+ * constructor(private media: MediaPlugin) { }
+ *
+ *
+ * ...
+ *
  *
  * // Create a MediaPlugin instance.  Expects path to file or url as argument
  * // We can optionally pass a second argument to track the status of the media
  *
  * const onStatusUpdate = (status) => console.log(status);
  *
- * const file = new MediaPlugin('path/to/file.mp3', onStatusUpdate);
+ * const file = this.media.create('path/to/file.mp3', onStatusUpdate);
  *
  * // Catch the Success & Error Output
  * // Platform Quirks
@@ -236,7 +241,7 @@ export class MediaObject {
  * file.release();
  *
  * // Recording to a file
- * var newFile = new MediaPlugin('path/to/file.mp3');
+ * var newFile = this.media.create('path/to/file.mp3');
  * newFile.startRecord();
  *
  * newFile.stopRecord();

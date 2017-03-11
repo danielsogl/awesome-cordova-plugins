@@ -7,9 +7,13 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * ```typescript
  * import { PhotoViewer } from '@ionic-native/photo-viewer';
  *
- * PhotoViewer.show('https://mysite.com/path/to/image.jpg');
+ * constructor(private photoViewer: PhotoViewer) { }
  *
- * PhotoViewer.show('https://mysite.com/path/to/image.jpg', 'My image title', {share: false});
+ * ...
+ *
+ * this.photoViewer.show('https://mysite.com/path/to/image.jpg');
+ *
+ * this.photoViewer.show('https://mysite.com/path/to/image.jpg', 'My image title', {share: false});
  * ```
  */
 @Plugin({

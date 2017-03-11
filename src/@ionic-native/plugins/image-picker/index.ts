@@ -41,12 +41,16 @@ export interface ImagePickerOptions {
  * import { ImagePicker } from '@ionic-native/image-picker';
  *
  *
+ * constructor(private imagePicker: ImagePicker) { }
  *
- * ImagePicker.getPictures(options).then((results) => {
+ * ...
+ *
+ * this.imagePicker.getPictures(options).then((results) => {
  *   for (var i = 0; i < results.length; i++) {
  *       console.log('Image URI: ' + results[i]);
  *   }
  * }, (err) => { });
+ *
  * ```
  * @interfaces
  * ImagePickerOptions

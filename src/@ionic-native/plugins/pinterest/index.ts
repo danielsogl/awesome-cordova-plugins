@@ -136,25 +136,29 @@ export interface PinterestPin {
  * ```
  * import { Pinterest, PinterestUser, PinterestPin, PinterestBoard } from '@ionic-native/pinterest';
  *
+ * constructor(private pinterest: Pinterest) { }
+ *
+ * ...
+ *
  * const scopes = [
- *   Pinterest.SCOPES.READ_PUBLIC,
- *   Pinterest.SCOPES.WRITE_PUBLIC,
- *   Pinterest.SCOPES.READ_RELATIONSHIPS,
- *   Pinterest.SCOPES.WRITE_RELATIONSHIPS
+ *   this.pinterest.SCOPES.READ_PUBLIC,
+ *   this.pinterest.SCOPES.WRITE_PUBLIC,
+ *   this.pinterest.SCOPES.READ_RELATIONSHIPS,
+ *   this.pinterest.SCOPES.WRITE_RELATIONSHIPS
  * ];
  *
- * Pinterest.login(scopes)
+ * this.pinterest.login(scopes)
  *   .then(res => console.log('Logged in!', res))
  *   .catch(err => console.error('Error loggin in', err));
  *
- * Pinterest.getMyPins()
+ * this.pinterest.getMyPins()
  *   .then((pins: Array<PinterestPin>) => console.log(pins))
  *   .catch(err => console.error(err));
  *
- * Pinterest.getMe()
+ * this.pinterest.getMe()
  *   .then((user: PinterestUser) => console.log(user));
  *
- * Pinterest.getMyBoards()
+ * this.pinterest.getMyBoards()
  *   .then((boards: Array<PinterestBoard>) => console.log(boards));
  *
  * ```

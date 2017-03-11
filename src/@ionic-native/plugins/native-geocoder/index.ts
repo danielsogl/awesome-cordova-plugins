@@ -11,11 +11,15 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * ```typescript
  * import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
  *
- * NativeGeocoder.reverseGeocode(52.5072095, 13.1452818)
+ * constructor(private nativeGeocoder: NativeGeocoder) { }
+ *
+ * ...
+ *
+ * this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818)
  *   .then((result: NativeGeocoderReverseResult) => console.log("The address is " + result.address + " in " + result.countryCode))
  *   .catch((error: any) => console.log(error));
  *
- * NativeGeocoder.forwardGeocode("Berlin")
+ * this.nativeGeocoder.forwardGeocode("Berlin")
  *   .then((coordinates: NativeGeocoderForwardResult) => console.log("The coordinates are latitude=" + coordinates.latitude + " and longitude=" + coordinates.longitude))
  *   .catch((error: any) => console.log(error));
  * ```

@@ -11,14 +11,17 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { Insomnia } from '@ionic-native/insomnia';
  *
+ * constructor(private insomnia: Insomnia) { }
  *
- * Insomnia.keepAwake()
+ * ...
+ *
+ * this.insomnia.keepAwake()
  *   .then(
  *     () => console.log('success'),
  *     () => console.log('error')
  *   );
  *
- * Insomnia.allowSleepAgain()
+ * this.insomnia.allowSleepAgain()
  *   .then(
  *     () => console.log('success'),
  *     () => console.log('error')

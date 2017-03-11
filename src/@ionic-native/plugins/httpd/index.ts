@@ -26,7 +26,12 @@ export interface HttpdOptions {
  * Embedded httpd for Cordova apps. Light weight HTTP server.
  * @usage
  * ```typescript
- * import {Httpd, HttpdOptions} from '@ionic-native/httpd';
+ * import { Httpd, HttpdOptions } from '@ionic-native/httpd';
+ *
+ * constructor(private httpd: Httpd) { }
+ *
+ * ...
+ *
  *
  * let options: HttpdOptions = {
  *      www_root: 'httpd_root', // relative path to app's www directory
@@ -34,7 +39,7 @@ export interface HttpdOptions {
  *      localhost_only: false
  *  };
  *
- * Httpd.startServer(options).subscribe((data) => {
+ * this.httpd.startServer(options).subscribe((data) => {
  *  console.log('Server is live');
  * });
  *

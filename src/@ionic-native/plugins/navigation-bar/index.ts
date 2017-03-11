@@ -12,8 +12,12 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { NavigationBar } from '@ionic-native/navigation-bar';
  *
+ * constructor(private navigationBar: NavigationBar) { }
+ *
+ * ...
+ *
  * let autoHide: boolean = true;
- * NavigationBar.hide(autoHide);
+ * this.navigationBar.hide(autoHide);
  * ```
  */
 @Plugin({

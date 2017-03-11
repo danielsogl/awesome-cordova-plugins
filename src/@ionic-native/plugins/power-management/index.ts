@@ -8,9 +8,13 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {PowerManagement} from '@ionic-native/power-management';
+ * import { PowerManagement } from '@ionic-native/power-management';
  *
- * PowerManagement.acquire()
+ * constructor(private powerManagement: PowerManagement) { }
+ *
+ * ...
+ *
+ * this.powerManagement.acquire()
  *   .then(onSuccess)
  *   .catch(onError);
  *

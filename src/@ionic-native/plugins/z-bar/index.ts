@@ -44,14 +44,18 @@ export interface ZBarOptions {
  *
  * @usage
  * ```
- * import { ZBar } from '@ionic-native/z-bar';
+ * import { ZBar, ZBarOptions } from '@ionic-native/z-bar';
  *
- * let zBarOptions = {
+ * constructor(private zbar: ZBar) { }
+ *
+ * ...
+ *
+ * let ZBarOptions = {
  *       flash: "off",
  *       drawSight: false
  *     };
  *
- * ZBar.scan(zBarOptions)
+ * this.zbar.scan(zBarOptions)
  *    .then(result => {
  *       console.log(result); // Scanned code
  *    })

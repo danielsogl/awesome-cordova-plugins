@@ -11,7 +11,11 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * ```
  * import { Rollbar } from '@ionic-native/rollbar';
  *
- * Rollbar.init();
+ * constructor(private rollbar: Rollbar) { }
+ *
+ * ...
+ *
+ * this.rollbar.init();
  *
  * ```
  */

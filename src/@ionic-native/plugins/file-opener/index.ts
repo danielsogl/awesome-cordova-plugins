@@ -8,9 +8,15 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {FileOpener} from '@ionic-native/file-opener';
+ * import { FileOpener } from '@ionic-native/file-opener';
  *
+ * constructor(private fileOpener: FileOpener) { }
  *
+ * ...
+ *
+ * this.fileOpener.open('path/to/file.pdf', 'application/pdf')
+ *   .then(() => console.log('File is opened'))
+ *   .catch(e => console.log('Error openening file', e));
  *
  * ```
  */

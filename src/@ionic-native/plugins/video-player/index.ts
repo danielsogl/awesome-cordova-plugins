@@ -28,9 +28,12 @@ export interface VideoOptions {
  * ```typescript
  * import { VideoPlayer } from '@ionic-native/video-player;
  *
+ * constructor(private videoPlayer: VideoPlayer) { }
+ *
+ * ...
  *
  * // Playing a video.
- * VideoPlayer.play("file:///android_asset/www/movie.mp4").then(() => {
+ * this.videoPlayer.play("file:///android_asset/www/movie.mp4").then(() => {
  *  console.log('video completed');
  * }).catch(err => {
  *  console.log(err);

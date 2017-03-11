@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, CordovaCheck } from '@ionic-native/core';
 
 declare var cordova: any;
 
@@ -38,8 +38,12 @@ export interface EmailComposerOptions {
  * ```typescript
  * import { EmailComposer } from '@ionic-native/email-composer';
  *
+ * constructor(private emailComposer: EmailComposer) { }
  *
- * EmailComposer.isAvailable().then((available: boolean) =>{
+ * ...
+ *
+ *
+ * this.emailComposer.isAvailable().then((available: boolean) =>{
  *  if(available) {
  *    //Now we know we can send
  *  }
@@ -61,7 +65,7 @@ export interface EmailComposerOptions {
  * };
  *
  * // Send a text message using default options
- * EmailComposer.open(email);
+ * this.emailComposer.open(email);
  *
  * ```
  * @interfaces
@@ -83,6 +87,7 @@ export class EmailComposer {
    * @param app {string?} An optional app id or uri scheme.
    * @returns {Promise<any>} Resolves if available, rejects if not available
    */
+  @CordovaCheck()
   isAvailable(app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
       if (app) {

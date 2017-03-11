@@ -5,23 +5,27 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * @description Native Audio Playback
  * @usage
  * ```typescript
- * import {NativeAudio} from '@ionic-native/native-audio';
+ * import { NativeAudio } from '@ionic-native/native-audio';
  *
- * NativeAudio.preloadSimple('uniqueId1', 'path/to/file.mp3').then(onSuccess, onError);
- * NativeAudio.preloadComplex('uniqueId2', 'path/to/file2.mp3', 1, 1, 0).then(onSuccess, onError);
+ * constructor(private nativeAudio: NativeAudio) { }
  *
- * NativeAudio.play('uniqueId1').then(onSuccess, onError);
+ * ...
+ *
+ * this.nativeAudio.preloadSimple('uniqueId1', 'path/to/file.mp3').then(onSuccess, onError);
+ * this.nativeAudio.preloadComplex('uniqueId2', 'path/to/file2.mp3', 1, 1, 0).then(onSuccess, onError);
+ *
+ * this.nativeAudio.play('uniqueId1').then(onSuccess, onError);
  *
  * // can optionally pass a callback to be called when the file is done playing
- * NativeAudio.play('uniqueId1', () => console.log('uniqueId1 is done playing'));
+ * this.nativeAudio.play('uniqueId1', () => console.log('uniqueId1 is done playing'));
  *
- * NativeAudio.loop('uniqueId2').then(onSuccess, onError);
+ * this.nativeAudio.loop('uniqueId2').then(onSuccess, onError);
  *
- * NativeAudio.setVolumeForComplexAsset('uniqueId2', 0.6).then(onSuccess,onError);
+ * this.nativeAudio.setVolumeForComplexAsset('uniqueId2', 0.6).then(onSuccess,onError);
  *
- * NativeAudio.stop('uniqueId1').then(onSuccess,onError);
+ * this.nativeAudio.stop('uniqueId1').then(onSuccess,onError);
  *
- * NativeAudio.unload('uniqueId1').then(onSuccess,onError);
+ * this.nativeAudio.unload('uniqueId1').then(onSuccess,onError);
  *
  * ```
  */

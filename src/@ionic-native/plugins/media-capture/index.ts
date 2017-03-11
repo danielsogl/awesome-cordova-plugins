@@ -117,8 +117,13 @@ export interface ConfigurationData {
  * import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
  *
  *
+ * constructor(private mediaCapture: MediaCapture) { }
+ *
+ * ...
+ *
+ *
  * let options: CaptureImageOptions = { limit: 3 };
- * MediaCapture.captureImage(options)
+ * this.mediaCapture.captureImage(options)
  *   .then(
  *     (data: MediaFile[]) => console.log(data),
  *     (err: CaptureError) => console.error(err)

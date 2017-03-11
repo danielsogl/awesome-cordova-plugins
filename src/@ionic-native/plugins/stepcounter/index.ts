@@ -13,10 +13,14 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * ```
  * import { Stepcounter } from '@ionic-native/stepcounter';
  *
- * let startingOffset = 0;
- * Stepcounter.start(startingOffset).then(onSuccess => console.log('stepcounter-start success', onSuccess), onFailure => console.log('stepcounter-start error', onFailure));
+ * constructor(private stepcounter: Stepcounter) { }
  *
- * Stepcounter.getHistory().then(historyObj => console.log('stepcounter-history success', historyObj), onFailure => console.log('stepcounter-history error', onFailure));
+ * ...
+ *
+ * let startingOffset = 0;
+ * this.stepcounter.start(startingOffset).then(onSuccess => console.log('stepcounter-start success', onSuccess), onFailure => console.log('stepcounter-start error', onFailure));
+ *
+ * this.stepcounter.getHistory().then(historyObj => console.log('stepcounter-history success', historyObj), onFailure => console.log('stepcounter-history error', onFailure));
  *
  * ```
  */

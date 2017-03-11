@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, CordovaInstance } from '@ionic-native/core';
+import { Plugin, CordovaInstance, InstanceCheck } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var cordova: any;
@@ -124,6 +124,7 @@ export class ThemeableBrowserObject {
    * @param event Event name
    * @returns {Observable<any>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
    */
+  @InstanceCheck({ observable: true })
   on(event: string): Observable<any> {
     return new Observable<any>((observer) => {
       this._objectInstance.addEventListener(event, observer.next.bind(observer));
@@ -140,13 +141,17 @@ export class ThemeableBrowserObject {
  *
  * @usage
  * ```
- * import { ThemeableBrowser } from '@ionic-native/themeable-browser';
+ * import { ThemeableBrowser, ThemeableBrowserOptions, ThemeableBrowserObject } from '@ionic-native/themeable-browser';
+ *
+ * constructor(private themeableBrowser: ThemeableBrowser) { }
+ *
+ * ...
  *
  * // can add options from the original InAppBrowser in a JavaScript object form (not string)
  * // This options object also takes additional parameters introduced by the ThemeableBrowser plugin
  * // This example only shows the additional parameters for ThemeableBrowser
  * // Note that that `image` and `imagePressed` values refer to resources that are stored in your app
- * let options = {
+ * const options: ThemeableBrowserOptions = {
  *      statusbar: {
  *          color: '#ffffffff'
  *      },
@@ -204,7 +209,7 @@ export class ThemeableBrowserObject {
  *      backButtonCanClose: true
  * };
  *
- * let browser = new ThemeableBrowser('https://ionic.io', '_blank', options);
+ * const browser: ThemeableBrowserObject = this.themeableBrowser.create('https://ionic.io', '_blank', options);
  *
  * ```
  * We suggest that you refer to the plugin's repository for additional information on usage that may not be covered here.

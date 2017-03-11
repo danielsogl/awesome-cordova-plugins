@@ -46,9 +46,13 @@ export interface PrintOptions {
  * @description Prints documents or HTML rendered content
  * @usage
  * ```typescript
- * import {Printer, PrintOptions} from '@ionic-native/printer';
+ * import { Printer, PrintOptions } from '@ionic-native/printer';
  *
- * Printer.isAvailable().then(onSuccess, onError);
+ * constructor(private printer: Printer) { }
+ *
+ * ...
+ *
+ * this.printer.isAvailable().then(onSuccess, onError);
  *
  * let options: PrintOptions = {
  *      name: 'MyDocument',
@@ -58,7 +62,7 @@ export interface PrintOptions {
  *      grayscale: true
  *    };
  *
- * Printer.print(content, options).then(onSuccess, onError);
+ * this.p.print(content, options).then(onSuccess, onError);
  * ```
  * @interfaces
  * PrintOptions

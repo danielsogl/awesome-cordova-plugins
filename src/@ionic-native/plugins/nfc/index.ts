@@ -17,10 +17,14 @@ declare let window: any;
  *
  * @usage
  * ```
- * import {NFC, Ndef} from '@ionic-native/nfc';
+ * import { NFC, Ndef } from '@ionic-native/nfc';
  *
- * let message = Ndef.textRecord('Hello world');
- * NFC.share([message]).then(onSuccess).catch(onError);
+ * constructor(private nfc: NFC, private ndef: Ndef) { }
+ *
+ * ...
+ *
+ * let message = this.ndef.textRecord('Hello world');
+ * this.nfc.share([message]).then(onSuccess).catch(onError);
  *
  * ```
  */
@@ -181,19 +185,12 @@ export class NFC {
  * @private
  */
 @Injectable()
+@Plugin({
+  pluginName: 'NFC',
+  plugin: 'phonegap-nfc',
+  pluginRef: 'ndef'
+})
 export class Ndef {
-  /**
-   * @private
-   */
-  static pluginName = 'NFC';
-  /**
-   * @private
-   */
-  static plugin = 'phonegap-nfc';
-  /**
-   * @private
-   */
-  static pluginRef = 'ndef';
 
   @Cordova({ sync: true })
   uriRecord(uri: string): any { return; }

@@ -9,9 +9,13 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {IsDebug} from '@ionic-native/is-debug';
+ * import { IsDebug } from '@ionic-native/is-debug';
  *
- * IsDebug.getIsDebug()
+ * constructor(private isDebug: IsDebug) { }
+ *
+ * ...
+ *
+ * this.isDebug.getIsDebug()
  *   .then((isDebug: boolean) => console.log('Is debug:', isDebug))
  *   .catch((error: any) => console.error(error));
  *

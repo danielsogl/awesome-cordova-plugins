@@ -25,7 +25,11 @@ export interface FingerprintOptions {
  * ```typescript
  * import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
  *
- * FingerprintAIO.show({
+ * constructor(private faio: FingerpirntAIO) { }
+ *
+ * ...
+ *
+ * this.faio.show({
  *     clientId: "Fingerprint-Demo",
  *    clientSecret: "password" //Only necessary for Android
  * })

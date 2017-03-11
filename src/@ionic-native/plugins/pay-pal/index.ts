@@ -7,19 +7,24 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {PayPal, PayPalPayment, PayPalConfiguration} from "@ionic-native/pay-pal";
+ * import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/pay-pal';
  *
- * PayPal.init({
- *   "PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
- *   "PayPalEnvironmentSandbox": "YOUR_SANDBOX_CLIENT_ID"
+ * constructor(private payPal: PayPal) { }
+ *
+ * ...
+ *
+ *
+ * this.payPal.init({
+ *   PayPalEnvironmentProduction: "YOUR_PRODUCTION_CLIENT_ID",
+ *   PayPalEnvironmentSandbox: "YOUR_SANDBOX_CLIENT_ID"
  * }).then(() => {
  *   // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
- *   PayPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+ *   this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
  *     // Only needed if you get an "Internal Service Error" after PayPal login!
  *     //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
  *   })).then(() => {
  *     let payment = new PayPalPayment('3.33', 'USD', 'Description', 'sale');
- *     PayPal.renderSinglePaymentUI(payment).then(() => {
+ *     this.payPal.renderSinglePaymentUI(payment).then(() => {
  *       // Successfully paid
  *
  *       // Example sandbox response

@@ -14,8 +14,12 @@ declare var navigator: any;
  * ```typescript
  * import { Network } from '@ionic-native/network';
  *
+ * constructor(private network: Network) { }
+ *
+ * ...
+ *
  * // watch network for a disconnect
- * let disconnectSubscription = Network.onDisconnect().subscribe(() => {
+ * let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
  *   console.log('network was disconnected :-(');
  * });
  *
@@ -24,7 +28,7 @@ declare var navigator: any;
  *
  *
  * // watch network for a connection
- * let connectSubscription = Network.onConnect().subscribe(() => {
+ * let connectSubscription = this.network.onConnect().subscribe(() => {
  *   console.log('network connected!'); 
  *   // We just got a connection but we need to wait briefly
  *    // before we determine the connection type.  Might need to wait 

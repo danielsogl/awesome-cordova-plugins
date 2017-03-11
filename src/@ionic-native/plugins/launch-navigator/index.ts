@@ -69,12 +69,16 @@ export interface LaunchNavigatorOptions {
  * ```typescript
  * import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
  *
+ * constructor(private launchNavigator: LaunchNavigator) { }
+ *
+ * ...
+ *
  * let options: LaunchNavigatorOptions = {
  *   start: 'London, ON',
  *   app: LaunchNavigator.APPS.UBER
  * };
  *
- * LaunchNavigator.navigate('Toronto, ON', options)
+ * this.launchNavigator.navigate('Toronto, ON', options)
  *   .then(
  *     success => console.log('Launched navigator'),
  *     error => console.log('Error launching navigator', error)

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, CordovaCheck } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var cordova: any;
@@ -234,11 +234,15 @@ export interface IBeaconDelegate {
  * ```typescript
  * import { IBeacon } from '@ionic-native/ibeacon';
  *
+ * constructor(private ibeacon: IBeacon) { }
+ *
+ * ...
+ *
  *
  * // Request permission to use location on iOS
- * IBeacon.requestAlwaysAuthorization();
+ * this.ibeacon.requestAlwaysAuthorization();
  * // create a new delegate and register it with the native layer
- * let delegate = IBeacon.Delegate();
+ * let delegate = this.ibeacon.Delegate();
  *
  * // Subscribe to some of the delegate's event handlers
  * delegate.didRangeBeaconsInRegion()
@@ -258,9 +262,9 @@ export interface IBeaconDelegate {
  *     }
  *   );
  *
- * let beaconRegion = IBeacon.BeaconRegion('deskBeacon','F7826DA6-ASDF-ASDF-8024-BC5B71E0893E');
+ * let beaconRegion = this.ibeacon.BeaconRegion('deskBeacon','F7826DA6-ASDF-ASDF-8024-BC5B71E0893E');
  *
- * IBeacon.startMonitoringForRegion(beaconRegion)
+ * this.ibeacon.startMonitoringForRegion(beaconRegion)
  *   .then(
  *     () => console.log('Native layer recieved the request to monitoring'),
  *     error => console.error('Native layer failed to begin monitoring: ', error)
@@ -290,6 +294,7 @@ export class IBeacon {
    *
    * @returns {IBeaconDelegate} An instance of the type {@type Delegate}.
    */
+  @CordovaCheck({ sync: true })
   Delegate(): IBeaconDelegate {
     let delegate = new cordova.plugins.locationManager.Delegate();
 
@@ -390,6 +395,7 @@ export class IBeacon {
    *
    * @returns {BeaconRegion} Returns the BeaconRegion that was created
    */
+  @CordovaCheck({ sync: true })
   BeaconRegion(identifer: string, uuid: string, major?: number, minor?: number, notifyEntryStateOnDisplay?: boolean): BeaconRegion {
     return new cordova.plugins.locationManager.BeaconRegion(identifer, uuid, major, minor, notifyEntryStateOnDisplay);
   }

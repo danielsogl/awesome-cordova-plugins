@@ -23,7 +23,11 @@ export interface NativeTransitionOptions {
  *
  * @usage
  * ```
- * import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions';
+ * import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
+ *
+ * constructor(private nativePageTransitions: NativePageTransitions) { }
+ *
+ * ...
  *
  * let options: NativeTransitionOptions = {
  *    direction: 'up',
@@ -37,7 +41,7 @@ export interface NativeTransitionOptions {
  *    fixedPixelsBottom: 60
  *  };
  *
- * NativePageTransitions.slide(options)
+ * this.nativePageTransitions.slide(options)
  *   .then(onSuccess)
  *   .catch(onError);
  *

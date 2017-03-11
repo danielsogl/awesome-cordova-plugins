@@ -44,14 +44,18 @@ export interface DeviceMotionAccelerometerOptions {
  * ```typescript
  * import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion';
  *
+ * constructor(private deviceMotion: DeviceMotion) { }
+ *
+ * ...
+ *
  * // Get the device current acceleration
- * DeviceMotion.getCurrentAcceleration().then(
+ * this.deviceMotion.getCurrentAcceleration().then(
  *   (acceleration: DeviceMotionAccelerationData) => console.log(acceleration),
  *   (error: any) => console.log(error)
  * );
  *
  * // Watch device acceleration
- * var subscription = DeviceMotion.watchAcceleration().subscribe((acceleration: DeviceMotionAccelerationData) => {
+ * var subscription = this.deviceMotion.watchAcceleration().subscribe((acceleration: DeviceMotionAccelerationData) => {
  *   console.log(acceleration);
  * });
  *

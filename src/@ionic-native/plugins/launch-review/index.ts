@@ -13,8 +13,12 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * ```
  * import { LaunchReview } from '@ionic-native/launch-review';
  *
+ * constructor(private launchReview: LaunchReview) { }
+ *
+ * ...
+ *
  * const appId: string = 'yourAppId';
- * LaunchReview.launch(appId)
+ * this.launchReview.launch(appId)
  *   .then(() => console.log('Successfully launched store app');
  * ```
  */

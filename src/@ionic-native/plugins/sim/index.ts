@@ -14,16 +14,20 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * import { Sim } from '@ionic-native/sim';
  *
  *
- * Sim.getSimInfo().then(
+ * constructor(private sim: Sim) { }
+ *
+ * ...
+ *
+ * this.sim.getSimInfo().then(
  *   (info) => console.log('Sim info: ', info),
  *   (err) => console.log('Unable to get sim info: ', err)
  * );
  *
- * Sim.hasReadPermission().then(
+ * this.sim.hasReadPermission().then(
  *   (info) => console.log('Has permission: ', info)
  * );
  *
- * Sim.requestReadPermission().then(
+ * this.sim.requestReadPermission().then(
  *   () => console.log('Permission granted'),
  *   () => console.log('Permission denied')
  * );

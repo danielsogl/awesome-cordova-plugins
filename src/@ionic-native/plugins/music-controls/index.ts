@@ -23,9 +23,13 @@ export interface MusicControlsOptions {
  *
  * @usage
  * ```
- * import {MusicControls} from '@ionic-native/music-controls';
+ * import { MusicControls } from '@ionic-native/music-controls';
  *
- * MusicControls.create({
+ * constructor(private musicControls: MusicControls) { }
+ *
+ * ...
+ *
+ * this.musicControls.create({
  *   track       : 'Time is Running Out',        // optional, default : ''
  *   artist      : 'Muse',                       // optional, default : ''
  *   cover       : 'albums/absolution.jpg',      // optional, default : nothing
@@ -44,7 +48,7 @@ export interface MusicControlsOptions {
  *   ticker    : 'Now playing "Time is Running Out"'
  *  });
  *
- *  MusicControls.subscribe().subscribe(action => {
+ *  this.musicControls.subscribe().subscribe(action => {
  *
  *    switch(action) {
  *        case 'music-controls-next':
@@ -79,9 +83,9 @@ export interface MusicControlsOptions {
  *
  *  });
  *
- *  MusicControls.listen(); // activates the observable above
+ *  this.musicControls.listen(); // activates the observable above
  *
- *  MusicControls.updateIsPlaying(true);
+ *  this.musicControls.updateIsPlaying(true);
  *
  *
  * ```

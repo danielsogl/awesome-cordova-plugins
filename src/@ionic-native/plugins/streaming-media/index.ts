@@ -23,7 +23,9 @@ export interface StreamingAudioOptions {
  *
  * @usage
  * ```
- * import {StreamingMedia, StreamingVideoOptions} from '@ionic-native/streaming-media';
+ * import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
+ *
+ * constructor(private streamingMedia: StreamingMedia) { }
  *
  * let options: StreamingVideoOptions = {
  *   successCallback: () => { console.log('Video played') },
@@ -31,7 +33,7 @@ export interface StreamingAudioOptions {
  *   orientation: 'landscape'
  * };
  *
- * StreamingMedia.playVideo('https://path/to/video/stream', options);
+ * this.streamingMedia.playVideo('https://path/to/video/stream', options);
  *
  * ```
  * @interfaces

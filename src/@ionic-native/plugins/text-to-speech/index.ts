@@ -17,9 +17,13 @@ export interface TTSOptions {
  *
  * @usage
  * ```
- * import {TextToSpeech} from '@ionic-native/text-to-speech';
+ * import { TextToSpeech } from '@ionic-native/text-to-speech';
  *
- * TextToSpeech.speak('Hello World')
+ * constructor(private tts: TextToSpeech) { }
+ *
+ * ...
+ *
+ * this.tts.speak('Hello World')
  *   .then(() => console.log('Success'))
  *   .catch((reason: any) => console.log(reason));
  *

@@ -8,7 +8,11 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { GooglePlus } from '@ionic-native/google-plus';
  *
- * GooglePlus.login()
+ * constructor(private googlePlus: GooglePlus) { }
+ *
+ * ...
+ *
+ * this.googlePlus.login()
  *   .then(res => console.log(res))
  *   .catch(err => console.error(err));
  *

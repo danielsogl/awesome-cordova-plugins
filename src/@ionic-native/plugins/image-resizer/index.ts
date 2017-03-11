@@ -51,6 +51,10 @@ export interface ImageResizerOptions {
  * ```typescript
  * import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
  *
+ * constructor(private imageResizer: ImageResizer) { }
+ *
+ * ...
+ *
  * let options = {
  *  uri: uri,
  *  folderName: 'Protonet',
@@ -59,12 +63,11 @@ export interface ImageResizerOptions {
  *  height: 1280
  * } as ImageResizerOptions;
  *
- * ImageResizer
- * .resize(options)
- * .then(
- *  (filePath: string) => { console.log('FilePath', filePath); },
- *  () => { console.log('Error occured'); }
- * )
+ * this.imageResizer
+ *   .resize(options)
+ *   .then((filePath: string) => console.log('FilePath', filePath))
+ *   .catch(e => console.log(e));
+ *   
  * ```
  * @interfaces
  * ImageResizerOptions

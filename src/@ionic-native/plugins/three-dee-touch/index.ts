@@ -59,20 +59,20 @@ export interface ThreeDeeTouchForceTouch {
 }
 
 /**
- * @name 3DTouch
+ * @name 3D Touch
  * @description
  * @usage
  * Please do refer to the original plugin's repo for detailed usage. The usage example here might not be sufficient.
  * ```
- * import { ThreeDeeTiouch } from '@ionic-native/three-dee-touch';
+ * import { ThreeDeeTouch, ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch } from '@ionic-native/three-dee-touch';
  *
- * // import for type completion on variables
- * import { ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch } from '@ionic-native/3dtouch';
+ * constructor(private threeDeeTouch: ThreeDeeTouch) { }
+ *
  * ...
  *
- * ThreeDeeTouch.isAvailable().then(isAvailable => console.log("3D Touch available? " + isAvailable));
+ * this.threeDeeTouch.isAvailable().then(isAvailable => console.log("3D Touch available? " + isAvailable));
  *
- * ThreeDeeTouch.watchForceTouches()
+ * this.threeDeeTouch.watchForceTouches()
  *   .subscribe(
  *     (data: ThreeDeeTouchForceTouch) => {
  *       console.log("Force touch %" + data.force);
@@ -106,9 +106,10 @@ export interface ThreeDeeTouchForceTouch {
  *     iconTemplate: 'HeartTemplate'
  *   }
  * ];
- * ThreeDeeTouch.configureQuickActions(actions);
  *
- * ThreeDeeTouch.onHomeIconPressed().subscribe(
+ * this.threeDeeTouch.configureQuickActions(actions);
+ *
+ * this.threeDeeTouch.onHomeIconPressed().subscribe(
  *  (payload) => {
  *    // returns an object that is the button you presed
  *    console.log('Pressed the ${payload.title} button')

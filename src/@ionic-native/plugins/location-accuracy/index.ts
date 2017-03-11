@@ -9,11 +9,15 @@ import {Plugin, Cordova} from '@ionic-native/core';
  * ```
  * import { LocationAccuracy } from '@ionic-native/location-accuracy';
  *
- * LocationAccuracy.canRequest().then((canRequest: boolean) => {
+ * constructor(private locationAccuracy: LocationAccuracy) { }
+ *
+ * ...
+ *
+ * this.locationAccuracy.canRequest().then((canRequest: boolean) => {
  *
  *   if(canRequest) {
  *     // the accuracy option will be ignored by iOS
- *     LocationAccuracy.request(LocationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+ *     this.locationAccuracy.request(LocationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
  *       () => console.log('Request successful'),
  *       error => console.log('Error requesting location permissions', error)
  *     );

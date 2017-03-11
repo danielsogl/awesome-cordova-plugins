@@ -8,6 +8,16 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { Globalization } from '@ionic-native/globalization';
  *
+ * constructor(private globalization: Globalization) { }
+ *
+ *
+ * ...
+ *
+ *
+ * this.globalization.getPreferredLanguage()
+ *   .then(res => console.log(res))
+ *   .catch(e => console.log(e));
+ *
  *
  * ```
  */

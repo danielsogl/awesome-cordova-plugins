@@ -10,15 +10,19 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { SocialSharing } from '@ionic-native/social-sharing';
  *
+ * constructor(private socialSharing: SocialSharing) { }
+ *
+ * ...
+ *
  * // Check if sharing via email is supported
- * SocialSharing.canShareViaEmail().then(() => {
+ * this.socialSharing.canShareViaEmail().then(() => {
  *   // Sharing via email is possible
  * }).catch(() => {
  *   // Sharing via email is not possible
  * });
  *
  * // Share via email
- * SocialSharing.shareViaEmail('Body', 'Subject', 'recipient@example.org').then(() => {
+ * this.socialSharing.shareViaEmail('Body', 'Subject', 'recipient@example.org').then(() => {
  *   // Success!
  * }).catch(() => {
  *   // Error!

@@ -15,10 +15,14 @@ declare var window;
  * ```typescript
  * import { StatusBar } from '@ionic-native/status-bar';
  *
+ * constructor(private statusBar: StatusBar) { }
  *
- * StatusBar.overlaysWebView(true); // let status bar overlay webview
+ * ...
  *
- * StatusBar.backgroundColorByHexString('#ffffff'); // set status bar to white
+ *
+ * this.statusBar.overlaysWebView(true); // let status bar overlay webview
+ *
+ * this.statusBar.backgroundColorByHexString('#ffffff'); // set status bar to white
  * ```
  *
  */

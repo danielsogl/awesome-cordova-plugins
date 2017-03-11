@@ -9,9 +9,13 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {FileChooser} from '@ionic-native/file';
+ * import { FileChooser } from '@ionic-native/file-chooser';
  *
- * FileChooser.open()
+ * constructor(private fileChooser: FileChooser) { }
+ *
+ * ...
+ *
+ * this.fileChooser.open()
  *   .then(uri => console.log(uri))
  *   .catch(e => console.log(e));
  *

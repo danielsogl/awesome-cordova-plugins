@@ -22,6 +22,20 @@ export interface EstimoteBeaconRegion {
  * @description
  * This plugin enables communication between a phone and Estimote Beacons peripherals.
  *
+ * @usage
+ * ```typescript
+ * import { EstimoteBeacons } from '@ionic-native/estimote-beacons';
+ *
+ * constructor(private eb: EstimoteBeacons) { }
+ *
+ * ...
+ *
+ * this.eb.requestAlwaysAuthorization();
+ *
+ * this.eb.enableAnalytics(true);
+ *
+ * ```
+ *
  * @interfaces
  * EstimoteBeaconRegion
  */

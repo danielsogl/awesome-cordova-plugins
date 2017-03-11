@@ -19,13 +19,15 @@ export interface SafariViewControllerOptions {
  * ```
  * import { SafariViewController } from '@ionic-native/safari-view-controller';
  *
+ * constructor(private safariViewController: SafariViewController) { }
  *
- * SafariViewController.isAvailable()
- *   .then(
- *     (available: boolean) => {
- *       if(available){
+ * ...
  *
- *         SafariViewController.show({
+ * this.safariViewController.isAvailable()
+ *   .then((available: boolean) => {
+ *       if (available) {
+ *
+ *         this.safariViewController.show({
  *           url: 'http://ionic.io',
  *           hidden: false,
  *           animated: false,
@@ -33,8 +35,7 @@ export interface SafariViewControllerOptions {
  *           enterReaderModeIfAvailable: true,
  *           tintColor: '#ff0000'
  *         })
- *         .then(
- *           (result: any) => {
+ *         .then((result: any) => {
  *             if(result.event === 'opened') console.log('Opened');
  *             else if(result.event === 'loaded') console.log('Loaded');
  *             else if(result.event === 'closed') console.log('Closed');

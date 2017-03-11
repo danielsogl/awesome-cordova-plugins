@@ -15,10 +15,13 @@ export interface SpinnerDialogIOSOptions {
  * ```typescript
  * import { SpinnerDialog } from '@ionic-native/spinner-dialog';
  *
+ * constructor(private spinnerDialog: SpinnerDialog) { }
  *
- * SpinnerDialog.show();
+ * ...
  *
- * SpinnerDialog.hide();
+ * this.spinnerDialog.show();
+ *
+ * this.spinnerDialog.hide();
  * ```
  * @interfaces
  * SpinnerDialogIOSOptions

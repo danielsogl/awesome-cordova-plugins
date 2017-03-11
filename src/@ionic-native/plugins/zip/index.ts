@@ -8,9 +8,13 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {Zip} from '@ionic-native/zip';
+ * import { Zip } from '@ionic-native/zip';
  *
- * Zip.unzip('path/to/source.zip', 'path/to/dest', (progress) => console.log('Unzipping, ' + Math.round((progress.loaded / progress.total) * 100) + '%'))
+ * constructor(private zip: Zip) { }
+ *
+ * ...
+ *
+ * this.zip.unzip('path/to/source.zip', 'path/to/dest', (progress) => console.log('Unzipping, ' + Math.round((progress.loaded / progress.total) * 100) + '%'))
  *  .then((result) => {
  *    if(result === 0) console.log('SUCCESS');
  *    if(result === -1) console.log('FAILED');

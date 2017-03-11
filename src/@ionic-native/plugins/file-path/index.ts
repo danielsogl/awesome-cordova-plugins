@@ -4,16 +4,20 @@ import { Plugin, Cordova } from '@ionic-native/core';
 declare var window: any;
 
 /**
- * @name FilePath
+ * @name File Path
  * @description
  *
  * This plugin allows you to resolve the native filesystem path for Android content URIs and is based on code in the aFileChooser library.
  *
  * @usage
  * ```
- * import {FilePath} from '@ionic-native/filepath';
+ * import { FilePath } from '@ionic-native/file-path';
  *
- * FilePath.resolveNativePath(path)
+ * constructor(private filePath: FilePath) { }
+ *
+ * ...
+ *
+ * this.filePath.resolveNativePath(path)
  *   .then(filePath => console.log(filePath);
  *   .catch(err => console.log(err);
  *

@@ -7,9 +7,13 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {Instagram} from '@ionic-native/instagram';
+ * import { Instagram } from '@ionic-native/instagram';
  *
- * Instagram.share('data:image/png;uhduhf3hfif33', 'Caption')
+ * constructor(private instagram: Instagram) { }
+ *
+ * ...
+ *
+ * this.instagram.share('data:image/png;uhduhf3hfif33', 'Caption')
  *   .then(() => console.log('Shared!'))
  *   .catch((error: any) => console.error(error));
  *

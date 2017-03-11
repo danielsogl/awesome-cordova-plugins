@@ -53,33 +53,39 @@ export interface SpeechRecognitionListeningOptionsAndroid {
  * ```
  * import { SpeechRecognition } from '@ionic-native/speech-recognition';
  *
+ * constructor(private speechRecognition: SpeechRecognition) { }
+ *
+ * ...
+ *
+ *
+ *
  * // Check feature available
- * SpeechRecognition.isRecognitionAvailable()
+ * this.speechRecognition.isRecognitionAvailable()
  *   .then((available: boolean) => console.log(available))
  *
  * // Start the recognition process
- * SpeechRecognition.startListening(options)
+ * this.speechRecognition.startListening(options)
  *   .subscribe(
  *     (matches: Array<string>) => console.log(matches),
  *     (onerror) => console.log('error:', onerror)
  *   )
  *
  * // Stop the recognition process (iOS only)
- * SpeechRecognition.stopListening()
+ * this.speechRecognition.stopListening()
  *
  * // Get the list of supported languages
- * SpeechRecognition.getSupportedLanguages()
+ * this.speechRecognition.getSupportedLanguages()
  *   .then(
  *     (languages: Array<string>) => console.log(languages),
  *     (error) => console.log(error)
  *   )
  *
  * // Check permission
- * SpeechRecognition.hasPermission()
+ * this.speechRecognition.hasPermission()
  *   .then((hasPermission: boolean) => console.log(hasPermission))
  *
  * // Request permissions
- * SpeechRecognition.requestPermission()
+ * this.speechRecognition.requestPermission()
  *   .then(
  *     () => console.log('Granted'),
  *     () => console.log('Denied')

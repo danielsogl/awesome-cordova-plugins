@@ -148,35 +148,27 @@ export class SQLiteObject {
  * @usage
  *
  * ```typescript
- * import { SQLite } from '@ionic-native/sqlite';
+ * import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
  *
- * // OPTION A: Use static constructor
- * SQLite.openDatabase({
+ * constructor(private sqlite: SQLite) { }
+ *
+ * ...
+ *
+ * this.sqlite.create({
  *   name: 'data.db',
  *   location: 'default'
  * })
- *   .then((db: SQLite) => {
+ *   .then((db: SQLiteObject) => {
  *
- *     db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {}).catch(() => {});
+ *
+ *     db.executeSql('create table danceMoves(name VARCHAR(32))', {})
+ *       .then(() => console.log('Executed SQL'))
+ *       .catch(e => console.log(e));
+ *
  *
  *   })
- *   .catch(error => console.error('Error opening database', error);
+ *   .catch(e => console.log(e));
  *
- *
- * // OPTION B: Create a new instance of SQLite
- * let db = new SQLite();
- * db.openDatabase({
- *   name: 'data.db',
- *   location: 'default' // the location field is required
- * }).then(() => {
- *   db.executeSql('create table danceMoves(name VARCHAR(32))', {}).then(() => {
- *
- *   }, (err) => {
- *     console.error('Unable to execute sql: ', err);
- *   });
- * }, (err) => {
- *   console.error('Unable to open database: ', err);
- * });
  * ```
  *
  * @classes

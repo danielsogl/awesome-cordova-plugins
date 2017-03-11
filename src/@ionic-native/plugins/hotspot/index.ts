@@ -90,13 +90,11 @@ export interface HotspotNetworkConfig {
 export interface HotspotDevice {
 
   /**
-   *   ip
    *      Hotspot IP Address
    */
   ip: string;
 
   /**
-   *   mac
    *      Hotspot MAC Address
    */
   mac: string;
@@ -109,10 +107,14 @@ export interface HotspotDevice {
  * @description
  * @usage
  * ```typescript
- * import { Hotspot, Network } from '@ionic-native/hotspot';
+ * import { Hotspot, HotspotNetwork } from '@ionic-native/hotspot';
+ *
+ * constructor(private hotspot: Hotspot) { }
+ *
+ * ...
  *
  *
- * Hotspot.scanWifi().then((networks: Array<Network>) => {
+ * this.hotspot.scanWifi().then((networks: Array<HotspotNetwork>) => {
  *     console.log(networks);
  * });
  *

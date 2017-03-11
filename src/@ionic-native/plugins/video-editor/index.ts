@@ -125,9 +125,13 @@ export interface VideoInfo {
  *
  * @usage
  * ```
- * import {VideoEditor} from '@ionic-native/video-editor';
+ * import { VideoEditor } from '@ionic-native/video-editor';
  *
- * VideoEditor.transcodeVideo({
+ * constructor(private videoEditor: VideoEditor) { }
+ *
+ * ...
+ *
+ * this.videoEditor.transcodeVideo({
  *   fileUri: '/path/to/input.mov',
  *   outputFileName: 'output.mp4',
  *   outputFileType: VideoEditor.OutputFileType.MPEG4

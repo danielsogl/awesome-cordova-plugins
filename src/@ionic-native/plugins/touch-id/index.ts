@@ -10,22 +10,20 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * Requires Cordova plugin: `cordova-plugin-touch-id`. For more info, please see the [TouchID plugin docs](https://github.com/EddyVerbruggen/cordova-plugin-touch-id).
  *
  * @usage
- * ### Import Touch ID Plugin into Project
  * ```typescript
  * import { TouchID } from '@ionic-native/touch-id';
- * ```
- * ### Check for Touch ID Availability
- * ```typescript
- * TouchID.isAvailable()
+ *
+ * constructor(private touchId: TouchID) { }
+ *
+ * ...
+ *
+ * this.touchId.isAvailable()
  *   .then(
  *     res => console.log('TouchID is available!'),
  *     err => console.error('TouchID is not available', err)
  *   );
- * ```
- * ### Invoke Touch ID w/ Custom Message
  *
- * ```typescript
- * TouchID.verifyFingerprint('Scan your fingerprint please')
+ * this.touchId.verifyFingerprint('Scan your fingerprint please')
  *   .then(
  *     res => console.log('Ok', res),
  *     err => console.error('Error', err)

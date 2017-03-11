@@ -15,12 +15,16 @@ declare var window;
  * ```typescript
  * import { ScreenOrientation } from '@ionic-native/screen-orientation';
  *
+ * constructor(private screenOrientation: ScreenOrientation) { }
+ *
+ * ...
+ *
  *
  * // set to either landscape
- * ScreenOrientation.lockOrientation('landscape');
+ * this.screenOrientation.lockOrientation('landscape');
  *
  * // allow user rotate
- * ScreenOrientation.unlockOrientation();
+ * this.screenOrientation.unlockOrientation();
  * ```
  *
  * @advanced

@@ -35,9 +35,14 @@ export interface SmsOptionsAndroid {
  * ```typescript
  * import { SMS } from '@ionic-native/sms';
  *
+ * constructor(private sms: SMS) { }
+ *
+ *
+ * ...
+ *
  *
  * // Send a text message using default options
- * SMS.send('416123456', 'Hello world!');
+ * this.sms.send('416123456', 'Hello world!');
  * ```
  * @interfaces
  * SmsOptions

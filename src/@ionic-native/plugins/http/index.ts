@@ -33,7 +33,11 @@ export interface HTTPResponse {
  * ```
  * import { HTTP } from '@ionic-native/http';
  *
- * HTTP.get('http://ionic.io', {}, {})
+ * constructor(private http: HTTP) { }
+ *
+ * ...
+ *
+ * this.http.get('http://ionic.io', {}, {})
  *   .then(data => {
  *
  *     console.log(data.status);

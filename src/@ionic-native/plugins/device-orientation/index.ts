@@ -50,15 +50,18 @@ export interface DeviceOrientationCompassOptions {
  * // DeviceOrientationCompassHeading is an interface for compass
  * import { DeviceOrientation, DeviceOrientationCompassHeading } from '@ionic-native/device-orientation';
  *
+ * constructor(private deviceOrientation: DeviceOrientation) { }
+ *
+ * ...
  *
  * // Get the device current compass heading
- * DeviceOrientation.getCurrentHeading().then(
+ * this.deviceOrientation.getCurrentHeading().then(
  *   (data: DeviceOrientationCompassHeading) => console.log(data),
  *   (error: any) => console.log(error)
  * );
  *
  * // Watch the device compass heading change
- * var subscription = DeviceOrientation.watchHeading().subscribe(
+ * var subscription = this.deviceOrientation.watchHeading().subscribe(
  *   (data: DeviceOrientationCompassHeading) => console.log(data)
  * );
  *

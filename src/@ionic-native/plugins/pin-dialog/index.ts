@@ -8,10 +8,14 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { PinDialog } from '@ionic-native/'pin-dialog;
+ * import { PinDialog } from '@ionic-native/pin-dialog';
  *
  *
- * PinDialog.prompt('Enter your PIN', 'Verify PIN', ['OK', 'Cancel'])
+ * constructor(private pinDialog: PinDialog) { }
+ *
+ * ...
+ *
+ * this.pinDialog.prompt('Enter your PIN', 'Verify PIN', ['OK', 'Cancel'])
  *   .then(
  *     (result: any) => {
  *       if (result.buttonIndex == 1) console.log('User clicked OK, value is: ', result.input1);

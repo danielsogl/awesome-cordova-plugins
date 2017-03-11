@@ -28,7 +28,13 @@ export interface DialogsPromptCallback {
  * ```typescript
  * import { Dialogs } from '@ionic-native/dialogs';
  *
+ * constructor(private dialogs: Dialogs) { }
  *
+ * ...
+ *
+ * this.dialogs.alert('Hello world')
+ *   .then(() => console.log('Dialog dismissed'))
+ *   .catch(e => console.log('Error displaying dialog', e));
  *
  *
  * ```
@@ -55,11 +61,7 @@ export class Dialogs {
     successIndex: 1,
     errorIndex: 4
   })
-  alert(
-    message,
-    title: string = 'Alert',
-    buttonName: string = 'OK'
-    ): Promise<any> { return; }
+  alert(message: string, title?: string, buttonName?: string): Promise<any> { return; }
 
   /**
    * Displays a customizable confirmation dialog box.
@@ -72,11 +74,7 @@ export class Dialogs {
     successIndex: 1,
     errorIndex: 4
   })
-  confirm(
-    message,
-    title: string = 'Confirm',
-    buttonLabels: Array<string> = ['OK', 'Cancel']
-    ): Promise<number> { return; }
+  confirm(message, title?: string, buttonLabels?: string[]): Promise<number> { return; }
 
   /**
    * Displays a native dialog box that is more customizable than the browser's prompt function.
@@ -90,12 +88,7 @@ export class Dialogs {
     successIndex: 1,
     errorIndex: 5
   })
-  prompt(
-    message?: string,
-    title: string = 'Prompt',
-    buttonLabels: Array<string> = ['OK', 'Cancel'],
-    defaultText: string = ''
-    ): Promise<DialogsPromptCallback> { return; }
+  prompt(message?: string, title?: string, buttonLabels?: string[], defaultText?: string): Promise<DialogsPromptCallback> { return; }
 
 
   /**

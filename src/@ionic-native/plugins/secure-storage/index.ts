@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin } from '@ionic-native/core';
+import { CordovaInstance, Plugin, CordovaCheck } from '@ionic-native/core';
 
 declare var cordova: any;
 
@@ -53,32 +53,36 @@ export class SecureStorageObject {
  * @usage
  *
  * ```typescript
- * import { SecureStorage } from '@ionic-native/secure-storage';
+ * import { SecureStorage, SecureStorageOBject } from '@ionic-native/secure-storage';
  *
- * let secureStorage: SecureStorage = new SecureStorage();
- * secureStorage.create('my_store_name')
- *  .then(
- *    () => console.log('Storage is ready!'),
- *    error => console.log(error)
- * );
+ * constructor(private secureStorage: SecureStorage) { }
  *
- * secureStorage.get('myitem')
- *  .then(
- *    data => console.log(data),
- *    error => console.log(error)
- * );
+ * ...
  *
- * secureStorage.set('myitem', 'myvalue')
- *  .then(
- *    data => console.log(data),
- *    error => console.log(error)
- * );
+ * this.secureStorage.create('my_store_name')
+ *   .then((storage: SecureStorageObject) => {
  *
- * secureStorage.remove('myitem')
- * .then(
- *    data => console.log(data),
- *    error => console.log(error)
- * );
+ *      storage.get('myitem')
+ *        .then(
+ *          data => console.log(data),
+ *          error => console.log(error)
+ *      );
+ *
+ *      storage.set('myitem', 'myvalue')
+ *        .then(
+ *         data => console.log(data),
+ *          error => console.log(error)
+ *      );
+ *
+ *      storage.remove('myitem')
+ *      .then(
+ *          data => console.log(data),
+ *          error => console.log(error)
+ *      );
+ *
+ *   });
+ *
+ *
  * ```
  * @classes
  * SecureStorageObject
@@ -98,6 +102,7 @@ export class SecureStorage {
    * @param store {string}
    * @returns {Promise<SecureStorageObject>}
    */
+  @CordovaCheck()
   create(store: string): Promise<SecureStorageObject> {
     return new Promise((res, rej) => {
       const instance = new cordova.plugins.SecureStorage(() => res(new SecureStorageObject(instance)), rej, store);
