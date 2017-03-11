@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaProperty, Plugin, pluginWarn } from '@ionic-native/core';
+import { CordovaProperty, Plugin, CordovaCheck } from '@ionic-native/core';
 
 declare var window: any;
 declare var cordova: any;
@@ -461,17 +461,12 @@ export class File {
    * Get free disk space in Bytes
    * @returns {Promise<number>} Returns a promise that resolves with the remaining free disk space in Bytes
    */
+  @CordovaCheck({
+    promise: true
+  })
   getFreeDiskSpace(): Promise<number> {
     return new Promise<any>((resolve, reject) => {
-      if (!cordova || !cordova.exec) {
-        pluginWarn({
-          pluginName: 'File',
-          plugin: 'cordova-plugin-file'
-        });
-        reject({ error: 'plugin_not_installed' });
-      } else {
-        cordova.exec(resolve, reject, 'File', 'getFreeDiskSpace', []);
-      }
+      cordova.exec(resolve, reject, 'File', 'getFreeDiskSpace', []);
     });
   }
 

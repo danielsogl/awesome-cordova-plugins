@@ -3,7 +3,6 @@ declare var window;
 export function checkReady() {
   const DEVICE_READY_TIMEOUT = 5000;
 
-
   // To help developers using cordova, we listen for the device ready event and
   // log an error if it didn't fire in a reasonable amount of time. Generally,
   // when this happens, developers should remove and reinstall plugins, since
@@ -12,13 +11,13 @@ export function checkReady() {
 
   let didFireReady = false;
   document.addEventListener('deviceready', () => {
-    console.log('DEVICE READY FIRED AFTER', (Date.now() - before), 'ms');
+    console.log(`Ionic Native: deviceready event fired after ${(Date.now() - before)} ms`);
     didFireReady = true;
   });
 
   setTimeout(() => {
     if (!didFireReady && window.cordova) {
-      console.warn(`Native: deviceready did not fire within ${DEVICE_READY_TIMEOUT}ms. This can happen when plugins are in an inconsistent state. Try removing plugins from plugins/ and reinstalling them.`);
+      console.warn(`Ionic Native: deviceready did not fire within ${DEVICE_READY_TIMEOUT}ms. This can happen when plugins are in an inconsistent state. Try removing plugins from plugins/ and reinstalling them.`);
     }
   }, DEVICE_READY_TIMEOUT);
 }
