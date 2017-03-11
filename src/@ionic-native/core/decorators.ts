@@ -97,7 +97,7 @@ export interface CordovaOptions {
 }
 
 export interface CordovaCheckOptions {
-  promise?: boolean;
+  sync?: boolean;
   observable?: boolean;
 }
 
@@ -123,13 +123,13 @@ export function InstanceCheck(opts: CordovaCheckOptions = {}) {
           descriptor.value.apply(this, args);
         } else {
 
-          if (opts.promise) {
-            return getPromise(() => {});
+          if (opts.sync) {
+            return;
           } else if (opts.observable) {
             return new Observable<any>(() => {});
           }
 
-          return null;
+          return getPromise(() => {});
 
         }
       }
@@ -149,13 +149,13 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
           descriptor.value.apply(this, args);
         } else {
 
-          if (opts.promise) {
-            return getPromise(() => {});
+          if (opts.sync) {
+            return;
           } else if (opts.observable) {
             return new Observable<any>(() => {});
           }
 
-          return null;
+          return getPromise(() => {});
 
         }
       }
