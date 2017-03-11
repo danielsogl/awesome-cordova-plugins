@@ -199,9 +199,7 @@ export class SQLite {
    * @param config the config for opening the database.
    * @return Promise<SQLiteObject>
    */
-  @CordovaCheck({
-    promise: true
-  })
+  @CordovaCheck()
   create(config: any): Promise<SQLiteObject> {
     return new Promise((resolve, reject) => {
         sqlitePlugin.openDatabase(config, db => resolve(new SQLiteObject(db)), reject);

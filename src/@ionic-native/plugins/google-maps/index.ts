@@ -109,7 +109,7 @@ export class GoogleMap {
    *
    * @returns {Observable<any>}
    */
-  @InstanceCheck()
+  @InstanceCheck({ observable: true })
   on(eventName: string): Observable<any> {
     return new Observable((observer) => {
         this._objectInstance.on(eventName, observer.next.bind(observer));
@@ -1751,9 +1751,7 @@ export class Geocoder {
    * @param {GeocoderRequest} request Request object with either an address or a position
    * @returns {Promise<GeocoderResult[]>}
    */
-  @CordovaCheck({
-    promise: true
-  })
+  @CordovaCheck()
   static geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
     return new Promise<GeocoderResult[]>(resolve => {
       plugin.google.maps.Geocoder.geocode(request, resolve);

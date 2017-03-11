@@ -350,6 +350,10 @@ export declare var FileError: {
  * ```
  * import { File } from '@ionic-native/file';
  *
+ * constructor(private file: File) { }
+ *
+ * ...
+ *
  * this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Directory exists')).catch(err => console.log('Directory doesnt exist'));
  * ```
  *
@@ -461,9 +465,7 @@ export class File {
    * Get free disk space in Bytes
    * @returns {Promise<number>} Returns a promise that resolves with the remaining free disk space in Bytes
    */
-  @CordovaCheck({
-    promise: true
-  })
+  @CordovaCheck()
   getFreeDiskSpace(): Promise<number> {
     return new Promise<any>((resolve, reject) => {
       cordova.exec(resolve, reject, 'File', 'getFreeDiskSpace', []);
@@ -477,6 +479,7 @@ export class File {
    * @param {string} dir Name of directory to check
    * @returns {Promise<boolean>} Returns a Promise that resolves to true if the directory exists or rejects with an error.
    */
+  @CordovaCheck()
   checkDir(path: string, dir: string): Promise<boolean> {
     if ((/^\//.test(dir))) {
       let err = new FileError(5);
@@ -501,6 +504,7 @@ export class File {
    * @param {boolean} replace If true, replaces file with same name. If false returns error
    * @returns {Promise<DirectoryEntry>} Returns a Promise that resolves with a DirectoryEntry or rejects with an error.
    */
+  @CordovaCheck()
   createDir(path: string, dirName: string, replace: boolean): Promise<DirectoryEntry> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -529,6 +533,7 @@ export class File {
    * @param {string} dirName The directory name
    * @returns {Promise<RemoveResult>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
+  @CordovaCheck()
   removeDir(path: string, dirName: string): Promise<RemoveResult> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -554,6 +559,7 @@ export class File {
    * @param {string} newDirName The destination directory name
    * @returns {Promise<DirectoryEntry|Entry>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
    */
+  @CordovaCheck()
   moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry|Entry> {
     newDirName = newDirName || dirName;
 
@@ -584,6 +590,7 @@ export class File {
    * @param {string} newDirName New name of directory to copy to (leave blank to remain the same)
    * @returns {Promise<Entry>} Returns a Promise that resolves to the new Entry object or rejects with an error.
    */
+  @CordovaCheck()
   copyDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<Entry> {
     if ((/^\//.test(newDirName))) {
       let err = new FileError(5);
@@ -610,6 +617,7 @@ export class File {
    * @param {string} dirName Name of directory
    * @returns {Promise<Entry[]>} Returns a Promise that resolves to an array of Entry objects or rejects with an error.
    */
+  @CordovaCheck()
   listDir(path: string, dirName: string): Promise<Entry[]> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -634,6 +642,7 @@ export class File {
    * @param {string} dirName Name of directory
    * @returns {Promise<RemoveResult>} Returns a Promise that resolves with a RemoveResult or rejects with an error.
    */
+  @CordovaCheck()
   removeRecursively(path: string, dirName: string): Promise<RemoveResult> {
     if ((/^\//.test(dirName))) {
       let err = new FileError(5);
@@ -657,6 +666,7 @@ export class File {
    * @param {string} file Name of file to check
    * @returns {Promise<boolean>} Returns a Promise that resolves with a boolean or rejects with an error.
    */
+  @CordovaCheck()
   checkFile(path: string, file: string): Promise<boolean> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
@@ -686,6 +696,7 @@ export class File {
    * @param {boolean} replace If true, replaces file with same name. If false returns error
    * @returns {Promise<FileEntry>} Returns a Promise that resolves to a FileEntry or rejects with an error.
    */
+  @CordovaCheck()
   createFile(path: string, fileName: string, replace: boolean): Promise<FileEntry> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
@@ -714,6 +725,7 @@ export class File {
    * @param {string} fileName Name of file to remove
    * @returns {Promise<RemoveResult>} Returns a Promise that resolves to a RemoveResult or rejects with an error.
    */
+  @CordovaCheck()
   removeFile(path: string, fileName: string): Promise<RemoveResult> {
     if ((/^\//.test(fileName))) {
       let err = new FileError(5);
@@ -738,6 +750,7 @@ export class File {
    * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
+  @CordovaCheck()
   writeFile(path: string, fileName: string,
                    text: string | Blob | ArrayBuffer, options: WriteOptions = {}): Promise<any> {
     if ((/^\//.test(fileName))) {
@@ -792,6 +805,7 @@ export class File {
    * @param {string | Blob} text content or blob to write
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
+  @CordovaCheck()
   writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
     return this.writeFile(path, fileName, text, { replace: true });
   }
@@ -803,6 +817,7 @@ export class File {
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as string or rejects with an error.
    */
+  @CordovaCheck()
   readAsText(path: string, file: string): Promise<string> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
@@ -844,6 +859,7 @@ export class File {
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as data URL or rejects with an error.
    */
+  @CordovaCheck()
   readAsDataURL(path: string, file: string): Promise<string> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
@@ -886,6 +902,7 @@ export class File {
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as string rejects with an error.
    */
+  @CordovaCheck()
   readAsBinaryString(path: string, file: string): Promise<string> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
@@ -922,11 +939,11 @@ export class File {
 
   /**
    * Read file and return data as an ArrayBuffer.
-
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<ArrayBuffer>} Returns a Promise that resolves with the contents of the file as ArrayBuffer or rejects with an error.
    */
+  @CordovaCheck()
   readAsArrayBuffer(path: string, file: string): Promise<ArrayBuffer> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
@@ -970,6 +987,7 @@ export class File {
    * @param {string} newFileName New name of file to move to (leave blank to remain the same)
    * @returns {Promise<Entry>} Returns a Promise that resolves to the new Entry or rejects with an error.
    */
+  @CordovaCheck()
   moveFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry> {
     newFileName = newFileName || fileName;
 
@@ -1000,6 +1018,7 @@ export class File {
    * @param {string} newFileName New name of file to copy to (leave blank to remain the same)
    * @returns {Promise<Entry>} Returns a Promise that resolves to an Entry or rejects with an error.
    */
+  @CordovaCheck()
   copyFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry> {
     newFileName = newFileName || fileName;
 
@@ -1035,6 +1054,7 @@ export class File {
    * @param fileUrl {string} file system url
    * @returns {Promise<Entry>}
    */
+  @CordovaCheck()
   resolveLocalFilesystemUrl(fileUrl: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
       try {
@@ -1056,6 +1076,7 @@ export class File {
    * @param directoryUrl {string} directory system url
    * @returns {Promise<DirectoryEntry>}
    */
+  @CordovaCheck()
   resolveDirectoryUrl(directoryUrl: string): Promise<DirectoryEntry> {
     return this.resolveLocalFilesystemUrl(directoryUrl)
       .then((de) => {
@@ -1076,6 +1097,7 @@ export class File {
    * @param flags {Flags} Options
    * @returns {Promise<DirectoryEntry>}
    */
+  @CordovaCheck()
   getDirectory(directoryEntry: DirectoryEntry, directoryName: string, flags: Flags): Promise<DirectoryEntry> {
     return new Promise<DirectoryEntry>((resolve, reject) => {
       try {
@@ -1099,6 +1121,7 @@ export class File {
    * @param flags {Flags} Options
    * @returns {Promise<FileEntry>}
    */
+  @CordovaCheck()
   getFile(directoryEntry: DirectoryEntry, fileName: string, flags: Flags): Promise<FileEntry> {
     return new Promise<FileEntry>((resolve, reject) => {
       try {
