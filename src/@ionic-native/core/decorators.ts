@@ -115,14 +115,22 @@ export interface CordovaFiniteObservableOptions extends CordovaOptions {
 /**
  * @private
  */
-export function InstanceCheck() {
-  return (pluginObj: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
+export function InstanceCheck(opts: CordovaCheckOptions = {}) {
+  return (pluginObj: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> => {
     return {
-      value: function(...args: any[]) {
+      value: function(...args: any[]): any {
         if (instanceAvailability(pluginObj, methodName)) {
           descriptor.value.apply(this, args);
         } else {
+
+          if (opts.promise) {
+            return getPromise(() => {});
+          } else if (opts.observable) {
+            return new Observable<any>(() => {});
+          }
+
           return null;
+
         }
       }
     };
@@ -144,7 +152,7 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
           if (opts.promise) {
             return getPromise(() => {});
           } else if (opts.observable) {
-            return new Observable<any>(observer => observer.complete());
+            return new Observable<any>(() => {});
           }
 
           return null;
