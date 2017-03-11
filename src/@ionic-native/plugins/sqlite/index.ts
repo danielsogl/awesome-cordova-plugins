@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, Plugin, pluginWarn, InstanceProperty } from '@ionic-native/core';
+import { Cordova, CordovaInstance, Plugin, CordovaCheck, InstanceProperty } from '@ionic-native/core';
 
 
 declare var sqlitePlugin;
@@ -199,16 +199,12 @@ export class SQLite {
    * @param config the config for opening the database.
    * @return Promise<SQLiteObject>
    */
+  @CordovaCheck({
+    promise: true
+  })
   create(config: any): Promise<SQLiteObject> {
     return new Promise((resolve, reject) => {
-      if (typeof sqlitePlugin !== 'undefined') {
         sqlitePlugin.openDatabase(config, db => resolve(new SQLiteObject(db)), reject);
-      } else {
-        pluginWarn({
-          pluginName: 'SQLite',
-          plugin: 'cordova-sqlite-storage'
-        });
-      }
     });
   }
 

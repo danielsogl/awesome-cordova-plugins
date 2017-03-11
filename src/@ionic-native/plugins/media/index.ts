@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, getPlugin, pluginWarn } from '@ionic-native/core';
+import { CordovaInstance, Plugin, checkAvailability } from '@ionic-native/core';
 
 declare var Media: any;
 
@@ -64,14 +64,9 @@ export class MediaObject {
    * @param onStatusUpdate {Function} A callback function to be invoked when the status of the file changes
    */
   constructor(src: string, onStatusUpdate?: Function) {
-    if (!!getPlugin('Media')) {
+    if (checkAvailability('Media', null, 'Media') === true) {
       this.init = new Promise<any>((resolve, reject) => {
         this._objectInstance = new Media(src, resolve, reject, onStatusUpdate);
-      });
-    } else {
-      pluginWarn({
-        pluginName: 'MediaPlugin',
-        plugin: 'cordova-plugin-media'
       });
     }
   }

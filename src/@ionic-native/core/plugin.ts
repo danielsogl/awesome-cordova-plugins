@@ -52,22 +52,8 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
  * Checks if _objectInstance exists and has the method/property
  * @private
  */
-export function instanceAvailability(pluginObj: any, methodName: string): boolean | { error: string } {
-  if (!pluginObj._objectInstance || pluginObj._objectInstance[methodName] === 'undefined') {
-    try { //  might use this in places where pluginObj doesn't have meta data
-      if (!window.cordova) {
-        cordovaWarn(pluginObj.constructor.getPluginName(), methodName);
-        return {
-          error: 'cordova_not_available'
-        };
-      }
-      pluginWarn(pluginObj, methodName);
-      return {
-        error: 'plugin_not_installed'
-      };
-    } catch (e) {}
-  }
-  return true;
+export function instanceAvailability(pluginObj: any, methodName: string): boolean {
+  return pluginObj._objectInstance && pluginObj._objectInstance[methodName] !== 'undefined';
 }
 
 function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Function): any {
@@ -197,13 +183,11 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
 }
 
 function callInstance(pluginObj: any, methodName: string, args: any[], opts: any = {}, resolve?: Function, reject?: Function) {
-  args = setIndex(args, opts, resolve, reject);
-  const availabilityCheck = instanceAvailability(pluginObj, methodName);
 
-  if (availabilityCheck === true) {
+  args = setIndex(args, opts, resolve, reject);
+
+  if (instanceAvailability(pluginObj, methodName)) {
     return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
-  } else {
-    return availabilityCheck;
   }
 
 }

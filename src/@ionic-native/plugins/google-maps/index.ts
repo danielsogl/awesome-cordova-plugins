@@ -53,11 +53,15 @@ export const GoogleMapsMapTypeId = {
 /**
  * @private
  */
+@Plugin({
+  pluginName: 'GoogleMaps',
+  plugin: 'cordova-plugin-googlemaps'
+})
 export class GoogleMap {
   _objectInstance: any;
 
   constructor(element: string | HTMLElement, options?: any) {
-    if (checkAvailability('plugin.google.maps.Map', 'getMap') === true) {
+    if (checkAvailability('plugin.google.maps.Map', null, 'GoogleMaps') === true) {
       if (typeof element === 'string') {
         element = document.getElementById(<string>element);
       }

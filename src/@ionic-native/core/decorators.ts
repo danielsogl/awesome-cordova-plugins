@@ -14,11 +14,11 @@ export interface PluginConfig {
   /**
    * Plugin object reference
    */
-  pluginRef: string;
+  pluginRef?: string;
   /**
    * Github repository URL
    */
-  repo: string;
+  repo?: string;
   /**
    * Custom install command
    */
@@ -119,7 +119,7 @@ export function InstanceCheck() {
   return (pluginObj: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
     return {
       value: function(...args: any[]) {
-        if (instanceAvailability(pluginObj, methodName) === true) {
+        if (instanceAvailability(pluginObj, methodName)) {
           descriptor.value.apply(this, args);
         } else {
           return null;
