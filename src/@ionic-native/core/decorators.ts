@@ -120,7 +120,7 @@ export function InstanceCheck(opts: CordovaCheckOptions = {}) {
     return {
       value: function(...args: any[]): any {
         if (instanceAvailability(pluginObj, methodName)) {
-          descriptor.value.apply(this, args);
+          return descriptor.value.apply(this, args);
         } else {
 
           if (opts.sync) {
@@ -146,17 +146,14 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
     return {
       value: function(...args: any[]): any {
         if (checkAvailability(pluginObj, methodName) === true) {
-          descriptor.value.apply(this, args);
+          return descriptor.value.apply(this, args);
         } else {
-
           if (opts.sync) {
             return;
           } else if (opts.observable) {
             return new Observable<any>(() => {});
           }
-
           return getPromise(() => {});
-
         }
       }
     };
