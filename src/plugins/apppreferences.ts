@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * AppPreferences.fetch('key').then((res) => { console.log(res); });
  *
- *
+ *```
  */
 @Plugin({
   pluginName: 'AppPreferences',
