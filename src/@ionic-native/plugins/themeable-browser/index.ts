@@ -68,7 +68,7 @@ export interface ThemeableBrowserOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class ThemeableBrowserObject {
 

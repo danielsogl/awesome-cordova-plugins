@@ -114,16 +114,16 @@ export class Mixpanel {
 
 }
 /**
- * @private
+ * @hidden
  */
 @Injectable()
 export class MixpanelPeople {
   /**
-   * @private
+   * @hidden
    */
   static plugin: string = 'cordova-plugin-mixpanel';
   /**
-   * @private
+   * @hidden
    */
   static pluginRef: string = 'mixpanel.people';
 

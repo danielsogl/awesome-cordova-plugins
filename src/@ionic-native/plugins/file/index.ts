@@ -776,7 +776,7 @@ export class File {
 
   /** Write content to FileEntry.
    *
-   * @private
+   * @hidden
    * @param {FileEntry} fe file entry object
    * @param {string | Blob} text content or blob to write
    * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
@@ -1042,7 +1042,7 @@ export class File {
   }
 
   /**
-   * @private
+   * @hidden
    */
   private fillErrorMessage(err: FileError): void {
     try {
@@ -1138,7 +1138,7 @@ export class File {
   }
 
   /**
-   * @private
+   * @hidden
    */
   private remove(fe: Entry): Promise<RemoveResult> {
     return new Promise<RemoveResult>((resolve, reject) => {
@@ -1152,7 +1152,7 @@ export class File {
   }
 
   /**
-   * @private
+   * @hidden
    */
   private move(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
@@ -1166,7 +1166,7 @@ export class File {
   }
 
   /**
-   * @private
+   * @hidden
    */
   private copy(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
@@ -1180,7 +1180,7 @@ export class File {
   }
 
   /**
-   * @private
+   * @hidden
    */
   private readEntries(dr: DirectoryReader): Promise<Entry[]> {
     return new Promise<Entry[]>((resolve, reject) => {
@@ -1194,7 +1194,7 @@ export class File {
   }
 
   /**
-   * @private
+   * @hidden
    */
   private rimraf(de: DirectoryEntry): Promise<RemoveResult> {
     return new Promise<RemoveResult>((resolve, reject) => {
@@ -1208,7 +1208,7 @@ export class File {
   }
 
   /**
-   * @private
+   * @hidden
    */
   private createWriter(fe: FileEntry): Promise<FileWriter> {
     return new Promise<FileWriter>((resolve, reject) => {
@@ -1222,7 +1222,7 @@ export class File {
   }
 
   /**
-   * @private
+   * @hidden
    */
   private write(writer: FileWriter, gu: string | Blob | ArrayBuffer): Promise<any> {
     if (gu instanceof Blob) {
@@ -1242,7 +1242,7 @@ export class File {
   }
 
   /**
-   * @private
+   * @hidden
    */
   private writeFileInChunks(writer: FileWriter, file: Blob) {
     const BLOCK_SIZE = 1024 * 1024;

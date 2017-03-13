@@ -9,47 +9,47 @@ export interface MediaError {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class MediaObject {
 
   // Constants
   /**
-   * @private
+   * @hidden
    */
   static MEDIA_NONE: number = 0;
   /**
-   * @private
+   * @hidden
    */
   static MEDIA_STARTING: number = 1;
   /**
-   * @private
+   * @hidden
    */
   static MEDIA_RUNNING: number = 2;
   /**
-   * @private
+   * @hidden
    */
   static MEDIA_PAUSED: number = 3;
   /**
-   * @private
+   * @hidden
    */
   static MEDIA_STOPPED: number = 4;
 
   // error codes
   /**
-   * @private
+   * @hidden
    */
   static MEDIA_ERR_ABORTED: number = 1;
   /**
-   * @private
+   * @hidden
    */
   static MEDIA_ERR_NETWORK: number = 2;
   /**
-   * @private
+   * @hidden
    */
   static MEDIA_ERR_DECODE: number = 3;
   /**
-   * @private
+   * @hidden
    */
   static MEDIA_ERR_NONE_SUPPORTED: number = 4;
 

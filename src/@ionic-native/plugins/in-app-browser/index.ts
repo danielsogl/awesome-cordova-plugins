@@ -61,7 +61,7 @@ export interface InAppBrowserEvent extends Event {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class InAppBrowserObject {
 

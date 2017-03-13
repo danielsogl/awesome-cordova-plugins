@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 
-/**
- * @private
- */
 export interface CalendarOptions {
 
   /**
@@ -240,17 +237,6 @@ export class Calendar {
     endDate?: Date,
     options?: CalendarOptions
     ): Promise<any> { return; }
-
-  // deprecated
-  // @Cordova()
-  // createEventInNamedCalendar(
-  //   title?: string,
-  //   location?: string,
-  //   notes?: string,
-  //   startDate?: Date,
-  //   endDate?: Date,
-  //   calendarName?: string
-  // ) {}
 
   /**
    * Find an event.

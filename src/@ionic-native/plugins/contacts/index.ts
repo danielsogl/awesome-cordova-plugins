@@ -6,9 +6,6 @@ declare var window: any,
 
 export type ContactFieldType = '*' | 'addresses' | 'birthday' | 'categories' | 'country' | 'department' | 'displayName' | 'emails' | 'familyName' | 'formatted' | 'givenName' | 'honorificPrefix' | 'honorificSuffix' | 'id' | 'ims' | 'locality' | 'middleName' | 'name' | 'nickname' | 'note' | 'organizations' | 'phoneNumbers' | 'photos' | 'postalCode' | 'region' | 'streetAddress' | 'title' | 'urls';
 
-/**
- * @private
- */
 export interface IContactProperties {
 
   /** A globally unique identifier. */
@@ -55,7 +52,7 @@ export interface IContactProperties {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class Contact implements IContactProperties {
   private _objectInstance: any;
@@ -101,7 +98,7 @@ export class Contact implements IContactProperties {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface IContactError {
   /** Error code */
@@ -111,7 +108,7 @@ export interface IContactError {
 }
 
 /**
- * @private
+ * @hidden
  */
 export declare var ContactError: {
   new (code: number): IContactError;
@@ -140,7 +137,7 @@ export interface IContactName {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class ContactName implements IContactName {
   constructor(public formatted?: string,
@@ -161,7 +158,7 @@ export interface IContactField {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class ContactField implements IContactField {
   constructor(public type?: string,
@@ -189,7 +186,7 @@ export interface IContactAddress {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class ContactAddress implements IContactAddress {
   constructor(public pref?: boolean,
@@ -216,7 +213,7 @@ export interface IContactOrganization {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class ContactOrganization implements IContactOrganization {
   constructor(
@@ -243,7 +240,7 @@ export interface IContactFindOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class ContactFindOptions implements IContactFindOptions {
   constructor(public filter?: string,
@@ -274,6 +271,8 @@ export class ContactFindOptions implements IContactFindOptions {
  * );
  *
  * ```
+ * @classes
+ * Contact
  * @interfaces
  * IContactProperties
  * IContactError
@@ -327,7 +326,7 @@ export class Contacts {
 }
 
 /**
- * @private
+ * @hidden
  */
 function processContact(contact) {
   let newContact = new Contact();

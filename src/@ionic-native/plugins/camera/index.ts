@@ -124,8 +124,7 @@ export interface CameraPopoverOptions {
 export class Camera {
 
   /**
-   * @private
-   * @enum {number}
+   * Constant for possible destination types
    */
   static DestinationType = {
     /** Return base64 encoded string. DATA_URL can be very memory intensive and cause app crashes or out of memory errors. Use FILE_URI or NATIVE_URI if possible */
@@ -136,19 +135,15 @@ export class Camera {
     NATIVE_URI: 2
   };
 
-  /**
-   * @private
-   * @enum {number}
-   */
   static EncodingType = {
     /** Return JPEG encoded image */
     JPEG: 0,
     /** Return PNG encoded image */
     PNG: 1
   };
+
   /**
-   * @private
-   * @enum {number}
+   * @hidden
    */
   static MediaType = {
     /** Allow selection of still pictures only. DEFAULT. Will return format specified via DestinationType */
@@ -159,10 +154,6 @@ export class Camera {
     ALLMEDIA: 2
   };
 
-  /**
-   * @private
-   * @enum {number}
-   */
   static PictureSourceType = {
     /** Choose image from picture library (same as SAVEDPHOTOALBUM for Android) */
     PHOTOLIBRARY: 0,
@@ -172,11 +163,6 @@ export class Camera {
     SAVEDPHOTOALBUM: 2
   };
 
-  /**
-   * @private
-   * Matches iOS UIPopoverArrowDirection constants to specify arrow location on popover.
-   * @enum {number}
-   */
   static PopoverArrowDirection = {
     ARROW_UP: 1,
     ARROW_DOWN: 2,
@@ -185,10 +171,6 @@ export class Camera {
     ARROW_ANY: 15
   };
 
-  /**
-   * @private
-   * @enum {number}
-   */
   static Direction = {
     /** Use the back-facing camera */
     BACK: 0,

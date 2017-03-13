@@ -4,7 +4,7 @@ import { CordovaInstance, Plugin, CordovaCheck } from '@ionic-native/core';
 declare var cordova: any;
 
 /**
- * @private
+ * @hidden
  */
 export class SecureStorageObject {
 

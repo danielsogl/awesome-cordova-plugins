@@ -265,7 +265,7 @@ export class Push {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class PushObject {
 
