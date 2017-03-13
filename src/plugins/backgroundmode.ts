@@ -124,6 +124,24 @@ export class BackgroundMode {
   static on(event: string): Observable<any> { return; }
 
   /**
+   * Android allows to programmatically move from foreground to background.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static moveToBackground(): void {}
+
+  /**
+   * Android allows to programmatically move from background to foreground.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static moveToForeground(): void {}
+
+  /**
    * Override the back button on Android to go to background instead of closing the app.
    */
   @Cordova({
