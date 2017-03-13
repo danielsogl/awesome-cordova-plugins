@@ -69,7 +69,7 @@ export class BluetoothSerial {
    * @returns {Promise<any>}
    */
   @Cordova()
-  static disconnect(): Promise<any> { return; }
+  disconnect(): Promise<any> { return; }
 
   /**
    * Writes data to the serial port

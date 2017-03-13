@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, CordovaFunctionOverride } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var window: any;
@@ -86,13 +86,18 @@ declare var window: any;
 @Injectable()
 export class Geofence {
 
-  public static TransitionType = {
+  public TransitionType = {
     ENTER: 1,
     EXIT: 2,
     BOTH: 3
   };
 
-  public static onTrasitionReceived: Function;
+  /**
+   * Subscribe to get notified when a transition is received
+   * @return {Observable<any>}
+   */
+  @CordovaFunctionOverride()
+  onTrasitionReceived(): Observable<any> { return; };
 
   /**
    * Initializes the plugin. User will be prompted to allow the app to use location and notifications.

@@ -16,15 +16,18 @@ export interface MediaFile {
   /**
    * The file's mime type
    */
-    type: string;
+  type: string;
+
   /**
    * The date and time when the file was last modified.
    */
   lastModifiedDate: Date;
+
   /**
    * The size of the file, in bytes.
    */
   size: number;
+
   /**
    * Retrieves the format information of the media file.
    * @param {Function} successCallback
@@ -152,21 +155,21 @@ export class MediaCapture {
    * @returns {ConfigurationData[]}
    */
   @CordovaProperty
-  static supportedImageModes: ConfigurationData[];
+  supportedImageModes: ConfigurationData[];
 
   /**
    * The audio recording formats supported by the device.
    * @returns {ConfigurationData[]}
    */
   @CordovaProperty
-  static supportedAudioModes: ConfigurationData[];
+  supportedAudioModes: ConfigurationData[];
 
   /**
    * The recording video resolutions and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
   @CordovaProperty
-  static supportedVideoModes: ConfigurationData[];
+  supportedVideoModes: ConfigurationData[];
 
   /**
    * Start the audio recorder application and return information about captured audio clip files.
@@ -176,7 +179,9 @@ export class MediaCapture {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  captureAudio(options?: CaptureAudioOptions): Promise<MediaFile[] | CaptureError> { return; }
+  captureAudio(options?: CaptureAudioOptions): Promise<MediaFile[] | CaptureError> {
+    return;
+  }
 
   /**
    * Start the camera application and return information about captured image files.
@@ -186,7 +191,9 @@ export class MediaCapture {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  captureImage(options?: CaptureImageOptions): Promise<MediaFile[] | CaptureError> { return; }
+  captureImage(options?: CaptureImageOptions): Promise<MediaFile[] | CaptureError> {
+    return;
+  }
 
   /**
    * Start the video recorder application and return information about captured video clip files.
@@ -196,7 +203,9 @@ export class MediaCapture {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  captureVideo(options?: CaptureVideoOptions): Promise<MediaFile[] | CaptureError> { return; }
+  captureVideo(options?: CaptureVideoOptions): Promise<MediaFile[] | CaptureError> {
+    return;
+  }
 
   /**
    * is fired if the capture call is successful
@@ -206,7 +215,9 @@ export class MediaCapture {
     eventObservable: true,
     event: 'pendingcaptureresult'
   })
-  onPendingCaptureResult(): Observable<MediaFile[]> { return; }
+  onPendingCaptureResult(): Observable<MediaFile[]> {
+    return;
+  }
 
   /**
    * is fired if the capture call is unsuccessful
@@ -216,6 +227,8 @@ export class MediaCapture {
     eventObservable: true,
     event: 'pendingcaptureerror'
   })
-  onPendingCaptureError(): Observable<CaptureError> { return; }
+  onPendingCaptureError(): Observable<CaptureError> {
+    return;
+  }
 
 }

@@ -1762,7 +1762,7 @@ export class Geocoder {
    * @returns {Promise<GeocoderResult[]>}
    */
   @CordovaCheck()
-  static geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
+  geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
     return new Promise<GeocoderResult[]>(resolve => {
       plugin.google.maps.Geocoder.geocode(request, resolve);
     });

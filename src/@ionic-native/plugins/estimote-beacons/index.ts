@@ -50,60 +50,60 @@ export interface EstimoteBeaconRegion {
 export class EstimoteBeacons {
 
   /** Proximity value */
-  static ProximityUnknown = 0;
+  ProximityUnknown = 0;
 
   /** Proximity value */
-  static ProximityImmediate = 1;
+  ProximityImmediate = 1;
 
   /** Proximity value */
-  static ProximityNear = 2;
+  ProximityNear = 2;
 
   /** Proximity value */
-  static ProximityFar = 3;
+  ProximityFar = 3;
 
   /** Beacon colour */
-  static BeaconColorUnknown = 0;
+  BeaconColorUnknown = 0;
 
   /** Beacon colour */
-  static BeaconColorMintCocktail = 1;
+  BeaconColorMintCocktail = 1;
 
   /** Beacon colour */
-  static BeaconColorIcyMarshmallow = 2;
+  BeaconColorIcyMarshmallow = 2;
 
   /** Beacon colour */
-  static BeaconColorBlueberryPie = 3;
+  BeaconColorBlueberryPie = 3;
 
   /**
    * Beacon colour.
    */
-  static BeaconColorSweetBeetroot = 4;
+  BeaconColorSweetBeetroot = 4;
 
   /** Beacon colour */
-  static BeaconColorCandyFloss = 5;
+  BeaconColorCandyFloss = 5;
 
   /** Beacon colour */
-  static BeaconColorLemonTart = 6;
+  BeaconColorLemonTart = 6;
 
   /** Beacon colour */
-  static BeaconColorVanillaJello = 7;
+  BeaconColorVanillaJello = 7;
 
   /** Beacon colour */
-  static BeaconColorLiquoriceSwirl = 8;
+  BeaconColorLiquoriceSwirl = 8;
 
   /** Beacon colour */
-  static BeaconColorWhite = 9;
+  BeaconColorWhite = 9;
 
   /** Beacon colour */
-  static BeaconColorTransparent = 10;
+  BeaconColorTransparent = 10;
 
   /** Region state */
-  static RegionStateUnknown = 'unknown';
+  RegionStateUnknown = 'unknown';
 
   /** Region state */
-  static RegionStateOutside = 'outside';
+  RegionStateOutside = 'outside';
 
   /** Region state */
-  static RegionStateInside = 'inside';
+  RegionStateInside = 'inside';
 
   /**
    * Ask the user for permission to use location services

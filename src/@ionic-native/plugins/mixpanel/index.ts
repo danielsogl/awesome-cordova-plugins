@@ -10,9 +10,9 @@ declare var mixpanel: any;
  *
  * @usage
  * ```
- * import { Mixpanel } from '@ionic-native/mixpanel';
+ * import { Mixpanel, MixpanelPeople } from '@ionic-native/mixpanel';
  *
- * constructor(private mixpanel: Mixpanel) { }
+ * constructor(private mixpanel: Mixpanel, private mixpanelPeople: MixpanelPeople) { }
  *
  * ...
  *
@@ -32,6 +32,7 @@ declare var mixpanel: any;
 })
 @Injectable()
 export class Mixpanel {
+
   /**
    *
    * @param aliasId {string}
@@ -104,28 +105,17 @@ export class Mixpanel {
   @Cordova()
   showSurvey(): Promise<any> { return; }
 
-  /**
-   *
-   * @returns {MixpanelPeople}
-   */
-  static get people(): typeof MixpanelPeople {
-    return MixpanelPeople;
-  };
-
 }
 /**
  * @hidden
  */
 @Injectable()
+@Plugin({
+  plugin: 'cordova-plugin-mixpanel',
+  pluginRef: 'mixpanel.people',
+  pluginName: 'Mixpanel'
+})
 export class MixpanelPeople {
-  /**
-   * @hidden
-   */
-  static plugin: string = 'cordova-plugin-mixpanel';
-  /**
-   * @hidden
-   */
-  static pluginRef: string = 'mixpanel.people';
 
   /**
    *
@@ -166,4 +156,5 @@ export class MixpanelPeople {
    */
   @Cordova()
   setOnce(peopleProperties: any): Promise<any> { return; }
+
 }

@@ -187,7 +187,7 @@ export class Transfer {
    *      NOT_MODIFIED_ERR: 5     Return on "304 Not Modified" HTTP response
    * @enum {number}
    */
-  static FileTransferErrorCode = {
+  FileTransferErrorCode = {
     FILE_NOT_FOUND_ERR: 1,
     INVALID_URL_ERR: 2,
     CONNECTION_ERR: 3,

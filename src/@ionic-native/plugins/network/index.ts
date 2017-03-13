@@ -62,14 +62,14 @@ export class Network {
    * @return {string}
    */
   @CordovaProperty
-  static type: string;
+  type: string;
 
   /**
    * Downlink Max Speed
    * @return {string}
    */
   @CordovaProperty
-  static downlinkMax: string;
+  downlinkMax: string;
 
   /**
    * Returns an observable to watch connection changes

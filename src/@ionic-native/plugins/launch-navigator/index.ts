@@ -202,7 +202,7 @@ export class LaunchNavigator {
   @Cordova({ sync: true })
   userSelect(destination: string | number[], options: LaunchNavigatorOptions): void { }
 
-  static APP: any = {
+  APP: any = {
     USER_SELECT: 'user_select',
     APPLE_MAPS: 'apple_maps',
     GOOGLE_MAPS: 'google_maps',
@@ -219,7 +219,7 @@ export class LaunchNavigator {
     MOOVIT: 'moovit'
   };
 
-  static TRANSPORT_MODE: any = {
+  TRANSPORT_MODE: any = {
     DRIVING: 'driving',
     WALKING: 'walking',
     BICYCLING: 'bicycling',

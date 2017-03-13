@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Plugin, Cordova} from '@ionic-native/core';
+import { Plugin, Cordova } from '@ionic-native/core';
+
 /**
  * @name LocationAccuracy
  * @description
@@ -17,7 +18,7 @@ import {Plugin, Cordova} from '@ionic-native/core';
  *
  *   if(canRequest) {
  *     // the accuracy option will be ignored by iOS
- *     this.locationAccuracy.request(LocationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+ *     this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
  *       () => console.log('Request successful'),
  *       error => console.log('Error requesting location permissions', error)
  *     );
@@ -57,18 +58,92 @@ export class LocationAccuracy {
   @Cordova({ callbackOrder: 'reverse' })
   request(accuracy: number): Promise<any> { return; }
 
-  static REQUEST_PRIORITY_NO_POWER = 0;
-  static REQUEST_PRIORITY_LOW_POWER = 1;
-  static REQUEST_PRIORITY_BALANCED_POWER_ACCURACY = 2;
-  static REQUEST_PRIORITY_HIGH_ACCURACY = 3;
-  static SUCCESS_SETTINGS_SATISFIED = 0;
-  static SUCCESS_USER_AGREED = 1;
-  static ERROR_ALREADY_REQUESTING = -1;
-  static ERROR_INVALID_ACTION = 0;
-  static ERROR_INVALID_ACCURACY = 1;
-  static ERROR_EXCEPTION = 1;
-  static ERROR_CANNOT_CHANGE_ACCURACY = 3;
-  static ERROR_USER_DISAGREED = 4;
-  static ERROR_GOOGLE_API_CONNECTION_FAILED = 4;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  REQUEST_PRIORITY_NO_POWER = 0;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  REQUEST_PRIORITY_LOW_POWER = 1;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  REQUEST_PRIORITY_BALANCED_POWER_ACCURACY = 2;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  REQUEST_PRIORITY_HIGH_ACCURACY = 3;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  SUCCESS_SETTINGS_SATISFIED = 0;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  SUCCESS_USER_AGREED = 1;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_ALREADY_REQUESTING = -1;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_INVALID_ACTION = 0;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_INVALID_ACCURACY = 1;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_EXCEPTION = 1;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_CANNOT_CHANGE_ACCURACY = 3;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_USER_DISAGREED = 4;
+
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_GOOGLE_API_CONNECTION_FAILED = 4;
 
 }

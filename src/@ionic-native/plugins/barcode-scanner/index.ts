@@ -91,7 +91,7 @@ export interface BarcodeScannerOptions {
 @Injectable()
 export class BarcodeScanner {
 
-  static Encode: {
+  Encode: {
     TEXT_TYPE: string;
     EMAIL_TYPE: string;
     PHONE_TYPE: string;

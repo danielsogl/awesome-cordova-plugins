@@ -137,7 +137,7 @@ export class BackgroundMode {
     platforms: ['Android'],
     sync: true
   })
-  static moveToBackground(): void {}
+  moveToBackground(): void {}
 
   /**
    * Android allows to programmatically move from background to foreground.
@@ -146,7 +146,7 @@ export class BackgroundMode {
     platforms: ['Android'],
     sync: true
   })
-  static moveToForeground(): void {}
+  moveToForeground(): void {}
 
   /**
    * Override the back button on Android to go to background instead of closing the app.

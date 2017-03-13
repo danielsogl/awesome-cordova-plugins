@@ -53,11 +53,11 @@ export class TextToSpeech {
     return;
   }
 
-  static stop(): Promise<any> {
+  stop(): Promise<any> {
     return;
   }
 
-  static stop(): Promise<any> {
+  stop(): Promise<any> {
     return;
   }
 

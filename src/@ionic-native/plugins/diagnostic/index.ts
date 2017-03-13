@@ -43,7 +43,7 @@ import {Cordova, Plugin, CordovaProperty} from '@ionic-native/core';
 @Injectable()
 export class Diagnostic {
 
-  static permission = {
+  permission = {
     READ_CALENDAR: 'READ_CALENDAR',
     WRITE_CALENDAR: 'WRITE_CALENDAR',
     CAMERA: 'CAMERA',
@@ -71,7 +71,7 @@ export class Diagnostic {
   };
 
   @CordovaProperty
-  static permissionStatus: {
+  permissionStatus: {
     GRANTED: string;
     DENIED: string;
     NOT_REQUESTED: string;
@@ -80,12 +80,12 @@ export class Diagnostic {
     GRANTED_WHEN_IN_USE: string;
   };
 
-  static locationAuthorizationMode = {
+  locationAuthorizationMode = {
     ALWAYS: 'always',
     WHEN_IN_USE: 'when_in_use'
   };
 
-  static permissionGroups = {
+  permissionGroups = {
     CALENDAR: ['READ_CALENDAR', 'WRITE_CALENDAR'],
     CAMERA: ['CAMERA'],
     CONTACTS: ['READ_CONTACTS', 'WRITE_CONTACTS', 'GET_ACCOUNTS'],
@@ -97,14 +97,14 @@ export class Diagnostic {
     STORAGE: ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']
   };
 
-  static locationMode = {
+  locationMode = {
     HIGH_ACCURACY: 'high_accuracy',
     DEVICE_ONLY: 'device_only',
     BATTERY_SAVING: 'battery_saving',
     LOCATION_OFF: 'location_off'
   };
 
-  static bluetoothState = {
+  bluetoothState = {
     UNKNOWN: 'unknown',
     RESETTING: 'resetting', // iOS
     UNSUPPORTED: 'unsupported', // iOS
@@ -116,7 +116,7 @@ export class Diagnostic {
   };
 
   @CordovaProperty
-  static NFCState: {
+  NFCState: {
     UNKNOWN: string;
     POWERED_OFF: string;
     POWERED_ON: string;
@@ -519,21 +519,21 @@ export class Diagnostic {
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  static isExternalStorageAuthorized(): Promise<boolean> { return; }
+  isExternalStorageAuthorized(): Promise<boolean> { return; }
 
   /**
    * CReturns the external storage authorization status for the application.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  static getExternalStorageAuthorizationStatus(): Promise<any> { return; }
+  getExternalStorageAuthorizationStatus(): Promise<any> { return; }
 
   /**
    * Requests external storage authorization for the application.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
-  static requestExternalStorageAuthorization(): Promise<any> { return; }
+  requestExternalStorageAuthorization(): Promise<any> { return; }
 
   /**
    * Returns details of external SD card(s): absolute path, is writable, free space.
@@ -546,7 +546,7 @@ export class Diagnostic {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
-  static getExternalSdCardDetails(): Promise<any> { return; }
+  getExternalSdCardDetails(): Promise<any> { return; }
 
   /**
    * Switches to the wireless settings page in the Settings app. Allows configuration of wireless controls such as Wi-Fi, Bluetooth and Mobile networks.
@@ -571,7 +571,7 @@ export class Diagnostic {
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  static isNFCPresent(): Promise<boolean> { return; }
+  isNFCPresent(): Promise<boolean> { return; }
 
   /**
    * Checks if the device setting for NFC is switched on.
@@ -579,7 +579,7 @@ export class Diagnostic {
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  static isNFCEnabled(): Promise<boolean> { return; }
+  isNFCEnabled(): Promise<boolean> { return; }
 
   /**
    * Checks if NFC is available to the app. Returns true if the device has NFC capabilities AND if NFC setting is switched on.
@@ -587,7 +587,7 @@ export class Diagnostic {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
-  static isNFCAvailable(): Promise<boolean> { return; }
+  isNFCAvailable(): Promise<boolean> { return; }
 
   /**
    * Registers a function to be called when a change in NFC state occurs. Pass in a falsey value to de-register the currently registered function.
@@ -691,14 +691,14 @@ export class Diagnostic {
    * @return {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
-  static requestBluetoothAuthorization(): Promise<any> { return; }
+  requestBluetoothAuthorization(): Promise<any> { return; }
 
   /**
    * Checks if motion tracking is available on the current device.
    * @return {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
-  static isMotionAvailable(): Promise<boolean> { return; }
+  isMotionAvailable(): Promise<boolean> { return; }
 
   /**
    * Checks if it's possible to determine the outcome of a motion authorization request on the current device.
@@ -708,7 +708,7 @@ export class Diagnostic {
    * @return {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
-  static isMotionRequestOutcomeAvailable(): Promise<boolean> { return; }
+  isMotionRequestOutcomeAvailable(): Promise<boolean> { return; }
 
   /**
    * Requests and checks motion authorization for the application: there is no way to independently request only or check only, so both must be done in one operation.
@@ -718,6 +718,6 @@ export class Diagnostic {
    * @return {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
-  static requestAndCheckMotionAuthorization(): Promise<any> { return; }
+  requestAndCheckMotionAuthorization(): Promise<any> { return; }
 
 }

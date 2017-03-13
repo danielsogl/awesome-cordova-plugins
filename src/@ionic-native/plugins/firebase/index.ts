@@ -75,16 +75,7 @@ export class Firebase {
   @Cordova({
     platforms: ['iOS']
   })
-  static hasPermission(): Promise<any> { return; }
-
-    /**
-   * Check permission to recieve push notifications
-   * @return {Promise<any>}
-   */
-  @Cordova({
-    platforms: ['iOS']
-  })
-  static hasPermission(): Promise<any> { return; }
+  hasPermission(): Promise<any> { return; }
 
   /**
    * Set icon badge number. Set to 0 to clear the badge.
@@ -132,7 +123,7 @@ export class Firebase {
    * @return {Promise<any>}
    */
   @Cordova()
-  static setScreenName(name: string): Promise<any> { return; }
+  setScreenName(name: string): Promise<any> { return; }
 
   /**
    * Set a user id for use in Analytics

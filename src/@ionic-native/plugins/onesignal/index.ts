@@ -278,7 +278,7 @@ export enum OSActionType {
  *
  * this.oneSignal.startInit('b2f7f966-d8cc-11e4-bed1-df8f05be55ba', '703322744261');
  *
- * this.oneSignal.inFocusDisplaying(OneSignal.OSInFocusDisplayOption.InAppAlert);
+ * this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
  *
  * this.oneSignal.handleNotificationReceived().subscribe(() => {
  *  // do something when notification is received
@@ -313,7 +313,7 @@ export class OneSignal {
   /**
    * constants to use in inFocusDisplaying()
    */
-  static OSInFocusDisplayOption = {
+  OSInFocusDisplayOption = {
     None: 0,
     InAppAlert : 1,
     Notification : 2

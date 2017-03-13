@@ -136,7 +136,8 @@ export interface DatePickerOptions {
  *
  * this.datePicker.show({
  *   date: new Date(),
- *   mode: 'date'
+ *   mode: 'date',
+ *   androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
  * }).then(
  *   date => console.log('Got date: ', date),
  *   err => console.log('Error occurred while getting date: ', err)
@@ -158,7 +159,7 @@ export class DatePicker {
   /**
    * @hidden
    */
-  static ANDROID_THEMES = {
+  ANDROID_THEMES = {
     THEME_TRADITIONAL: 1,
     THEME_HOLO_DARK: 2,
     THEME_HOLO_LIGHT: 3,

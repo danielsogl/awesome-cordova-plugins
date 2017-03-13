@@ -157,12 +157,12 @@ export interface VideoInfo {
 @Injectable()
 export class VideoEditor {
 
-  static OptimizeForNetworkUse = {
+  OptimizeForNetworkUse = {
     NO: 0,
     YES: 1
   };
 
-  static OutputFileType = {
+  OutputFileType = {
     M4V: 0,
     MPEG4: 1,
     M4A: 2,

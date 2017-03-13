@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
-
+import { Observable } from 'rxjs/Observable';
 
 declare var window;
 
@@ -17,6 +17,12 @@ declare var window;
  *
  * ...
  *
+ * const options = {
+ *   action: this.webIntent.ACTION_VIEW,
+ *   url: 'path/to/file',
+ *   type: 'application/vnd.android.package-archive'
+ * };
+ *
  * this.webIntent.startActivity(options).then(onSuccess, onError);
  *
  * ```
@@ -31,13 +37,65 @@ declare var window;
 @Injectable()
 export class WebIntent {
 
+  /**
+   * Convenience constant for actions
+   * @type {string}
+   */
   @CordovaProperty
-  static ACTION_VIEW;
-
-  @CordovaProperty
-  static EXTRA_TEXT;
+  ACTION_SEND: string;
 
   /**
+   * Convenience constant for actions
+   * @type {string}
+   */
+  @CordovaProperty
+  ACTION_VIEW: string;
+
+  /**
+   * Convenience constant for extras
+   * @type {string}
+   */
+  @CordovaProperty
+  EXTRA_TEXT: string;
+
+  /**
+   * Convenience constant for extras
+   * @type {string}
+   */
+  @CordovaProperty
+  EXTRA_SUBJECT: string;
+
+  /**
+   * Convenience constant for extras
+   * @type {string}
+   */
+  @CordovaProperty
+  EXTRA_STREAM: string;
+
+  /**
+   * Convenience constant for extras
+   * @type {string}
+   */
+  @CordovaProperty
+  EXTRA_EMAIL: string;
+
+  /**
+   * Convenience constant for actions
+   * @type {string}
+   */
+  @CordovaProperty
+  ACTION_CALL: string;
+
+  /**
+   * Convenience constant for actions
+   * @type {string}
+   */
+  @CordovaProperty
+  ACTION_SENDTO: string;
+
+
+  /**
+   * Launches an Android intent
    * @param options {Object} { action: any, url: string, type?: string }
    * @returns {Promise<any>}
    */
@@ -45,32 +103,38 @@ export class WebIntent {
   startActivity(options: { action: any, url: string, type?: string }): Promise<any> { return; }
 
   /**
-   * @param extra {any}
+   * Checks if this app was invoked with specified extra
+   * @param extra {string}
    * @returns {Promise<any>}
    */
   @Cordova()
-  hasExtra(extra: any): Promise<any> { return; }
+  hasExtra(extra: string): Promise<any> { return; }
 
   /**
-   * @param extra {any}
+   * Gets the extra that this app was invoked with
+   * @param extra {string}
    * @returns {Promise<any>}
    */
   @Cordova()
-  getExtra(extra: any): Promise<any> { return; }
+  getExtra(extra: string): Promise<any> { return; }
 
   /**
+   * Gets the Uri the app was invoked with
    * @returns {Promise<any>}
    */
   @Cordova()
   getUri(): Promise<string> { return; };
 
   /**
-   * @returns {Promise<string>}
+   * @returns {Observable<string>}
    */
-  @Cordova()
-  onNewIntent(): Promise<string> { return; };
+  @Cordova({
+    observable: true
+  })
+  onNewIntent(): Observable<string> { return; };
 
   /**
+   * Sends a custom intent passing optional extras
    * @param options {Object} { action: string, extras?: { option: boolean } }
    * @returns {Promise<any>}
    */

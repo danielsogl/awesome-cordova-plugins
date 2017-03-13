@@ -120,7 +120,7 @@ export interface AdExtras {
 @Injectable()
 export class AdMob {
 
-  static AD_POSITION: {
+  AD_POSITION: {
     NO_CHANGE: number;
     TOP_LEFT: number;
     TOP_CENTER: number;

@@ -94,12 +94,19 @@ export interface CameraPopoverOptions {
  *
  * @usage
  * ```typescript
- * import { Camera } from '@ionic-native/camera';
+ * import { Camera, CameraOptions } from '@ionic-native/camera';
  *
  * constructor(private camera: Camera) { }
  *
  * ...
  *
+ *
+ * constant options: CameraOptions = {
+ *   quality: 100,
+ *   destinationType: this.camera.DestinationType.DATA_URL,
+ *   enodingType: this.camera.EncodingType.JPEG,
+ *   mediaType: this.camera.MediaType.PICTURE
+ * }
  *
  * this.camera.getPicture(options).then((imageData) => {
  *  // imageData is either a base64 encoded string or a file URI
@@ -126,7 +133,7 @@ export class Camera {
   /**
    * Constant for possible destination types
    */
-  static DestinationType = {
+  DestinationType = {
     /** Return base64 encoded string. DATA_URL can be very memory intensive and cause app crashes or out of memory errors. Use FILE_URI or NATIVE_URI if possible */
     DATA_URL: 0,
     /** Return file uri (content://media/external/images/media/2 for Android) */
@@ -135,7 +142,10 @@ export class Camera {
     NATIVE_URI: 2
   };
 
-  static EncodingType = {
+  /**
+   * Convenience constant
+   */
+  EncodingType = {
     /** Return JPEG encoded image */
     JPEG: 0,
     /** Return PNG encoded image */
@@ -143,9 +153,9 @@ export class Camera {
   };
 
   /**
-   * @hidden
+   * Convenience constant
    */
-  static MediaType = {
+  MediaType = {
     /** Allow selection of still pictures only. DEFAULT. Will return format specified via DestinationType */
     PICTURE: 0,
     /** Allow selection of video only, ONLY RETURNS URL */
@@ -154,7 +164,11 @@ export class Camera {
     ALLMEDIA: 2
   };
 
-  static PictureSourceType = {
+
+  /**
+   * Convenience constant
+   */
+  PictureSourceType = {
     /** Choose image from picture library (same as SAVEDPHOTOALBUM for Android) */
     PHOTOLIBRARY: 0,
     /** Take picture from camera */
@@ -163,7 +177,11 @@ export class Camera {
     SAVEDPHOTOALBUM: 2
   };
 
-  static PopoverArrowDirection = {
+
+  /**
+   * Convenience constant
+   */
+  PopoverArrowDirection = {
     ARROW_UP: 1,
     ARROW_DOWN: 2,
     ARROW_LEFT: 4,
@@ -171,7 +189,10 @@ export class Camera {
     ARROW_ANY: 15
   };
 
-  static Direction = {
+  /**
+   * Convenience constant
+   */
+  Direction = {
     /** Use the back-facing camera */
     BACK: 0,
     /** Use the front-facing camera */
