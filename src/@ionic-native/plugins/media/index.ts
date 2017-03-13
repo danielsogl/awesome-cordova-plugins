@@ -1,75 +1,20 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, checkAvailability } from '@ionic-native/core';
+import { CordovaInstance, Plugin, CordovaCheck } from '@ionic-native/core';
 
 declare var Media: any;
 
-export interface MediaError {
-  code: number;
-  message: string;
-}
 
 /**
  * @hidden
  */
 export class MediaObject {
 
-  // Constants
-  /**
-   * @hidden
-   */
-  static MEDIA_NONE: number = 0;
-  /**
-   * @hidden
-   */
-  static MEDIA_STARTING: number = 1;
-  /**
-   * @hidden
-   */
-  static MEDIA_RUNNING: number = 2;
-  /**
-   * @hidden
-   */
-  static MEDIA_PAUSED: number = 3;
-  /**
-   * @hidden
-   */
-  static MEDIA_STOPPED: number = 4;
-
-  // error codes
-  /**
-   * @hidden
-   */
-  static MEDIA_ERR_ABORTED: number = 1;
-  /**
-   * @hidden
-   */
-  static MEDIA_ERR_NETWORK: number = 2;
-  /**
-   * @hidden
-   */
-  static MEDIA_ERR_DECODE: number = 3;
-  /**
-   * @hidden
-   */
-  static MEDIA_ERR_NONE_SUPPORTED: number = 4;
-
-  // Properties
-  private _objectInstance: any;
-  init: Promise<any>;
-
-  // Methods
   /**
    * Open a media file
    * @param src {string} A URI containing the audio content.
    * @param onStatusUpdate {Function} A callback function to be invoked when the status of the file changes
    */
-  constructor(src: string, onStatusUpdate?: Function) {
-    if (checkAvailability('Media', null, 'Media') === true) {
-      this.init = new Promise<any>((resolve, reject) => {
-        this._objectInstance = new Media(src, resolve, reject, onStatusUpdate);
-      });
-    }
-  }
+  constructor(private _objectInstnace: any) {}
 
   /**
    * Get the current amplitude of the current recording.
@@ -186,7 +131,7 @@ export class MediaObject {
  * @description
  * @usage
  * ```typescript
- * import { MediaPlugin } from '@ionic-native/media';
+ * import { MediaPlugin, MediaObject } from '@ionic-native/media';
  *
  *
  * constructor(private media: MediaPlugin) { }
@@ -200,53 +145,50 @@ export class MediaObject {
  *
  * const onStatusUpdate = (status) => console.log(status);
  *
- * const file = this.media.create('path/to/file.mp3', onStatusUpdate);
+ * this.media.create('path/to/file.mp3', onStatusUpdate)
+ *   .then((file: MediaObject) => {
  *
- * // Catch the Success & Error Output
- * // Platform Quirks
- * // iOS calls success on completion of playback only
- * // Android calls success on completion of playback AND on release()
- * file.init.then(() => {
- *   console.log('Playback Finished');
- * }, (err) => {
- *   console.log('somthing went wrong! error code: ' + err.code + ' message: ' + err.message);
- * });
+ *      // play the file
+ *      file.play();
  *
- * // play the file
- * file.play();
+ *      // pause the file
+ *      file.pause();
  *
- * // pause the file
- * file.pause();
+ *      // get current playback position
+ *       file.getCurrentPosition().then((position) => {
+ *         console.log(position);
+ *      });
  *
- * // get current playback position
- * file.getCurrentPosition().then((position) => {
- *   console.log(position);
- * });
+ *      // get file duration
+ *      file.getDuration().then((duration) => {
+ *         console.log(position);
+ *      });
  *
- * // get file duration
- * file.getDuration().then((duration) => {
- *   console.log(position);
- * });
+ *      // skip to 10 seconds (expects int value in ms)
+ *      file.seekTo(10000);
  *
- * // skip to 10 seconds (expects int value in ms)
- * file.seekTo(10000);
+ *      // stop playing the file
+ *      file.stop();
  *
- * // stop playing the file
- * file.stop();
+ *      // release the native audio resource
+ *      // Platform Quirks:
+ *      // iOS simply create a new instance and the old one will be overwritten
+ *      // Android you must call release() to destroy instances of media when you are done
+ *      file.release();
  *
- * // release the native audio resource
- * // Platform Quirks:
- * // iOS simply create a new instance and the old one will be overwritten
- * // Android you must call release() to destroy instances of media when you are done
- * file.release();
+ *   })
+ *   .catch(e => console.log('Error opening media file', e));
+ *
  *
  * // Recording to a file
- * var newFile = this.media.create('path/to/file.mp3');
- * newFile.startRecord();
+ * this.media.create('path/to/file.mp3')
+ *   .then((file: MedieObject) => {
  *
- * newFile.stopRecord();
+ *     file.startRecord();
  *
+ *     file.stopRecord();
  *
+ *   });
  *
  * ```
  * @classes
@@ -261,13 +203,62 @@ export class MediaObject {
 @Injectable()
 class MediaPlugin {
 
+  // Constants
+  /**
+   * @hidden
+   */
+  MEDIA_NONE: number = 0;
+  /**
+   * @hidden
+   */
+  MEDIA_STARTING: number = 1;
+  /**
+   * @hidden
+   */
+  MEDIA_RUNNING: number = 2;
+  /**
+   * @hidden
+   */
+  MEDIA_PAUSED: number = 3;
+  /**
+   * @hidden
+   */
+  MEDIA_STOPPED: number = 4;
+
+  // error codes
+  /**
+   * @hidden
+   */
+  MEDIA_ERR_ABORTED: number = 1;
+  /**
+   * @hidden
+   */
+  MEDIA_ERR_NETWORK: number = 2;
+  /**
+   * @hidden
+   */
+  MEDIA_ERR_DECODE: number = 3;
+  /**
+   * @hidden
+   */
+  MEDIA_ERR_NONE_SUPPORTED: number = 4;
+
   /**
    * Open a media file
    * @param src {string} A URI containing the audio content.
    * @param onStatusUpdate {Function} A callback function to be invoked when the status of the file changes
+   * @return {Promise<MediaObject>}
    */
-  create(src: string, onStatusUpdate?: Function): MediaObject {
-    return new MediaObject(src,  onStatusUpdate);
+  @CordovaCheck()
+  create(src: string, onStatusUpdate?: Function): Promise<MediaObject> {
+
+    return new Promise<MediaObject>((resolve, reject) => {
+      // Creates a new media object
+      // Resolves with the media object
+      // or rejects with the error
+      const instance = new Media(src, () => resolve(new Media(instance)), reject, onStatusUpdate);
+    });
+
   }
 
 }
