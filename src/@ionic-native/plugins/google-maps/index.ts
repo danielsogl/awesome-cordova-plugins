@@ -6,7 +6,7 @@ import 'rxjs/add/observable/fromEvent';
 declare var plugin: any;
 
 /**
- * @private
+ * @hidden
  * You can listen to these events where appropriate
  */
 export const GoogleMapsEvent = {
@@ -31,7 +31,7 @@ export const GoogleMapsEvent = {
 };
 
 /**
- * @private
+ * @hidden
  */
 export const GoogleMapsAnimation = {
   BOUNCE: 'BOUNCE',
@@ -39,7 +39,7 @@ export const GoogleMapsAnimation = {
 };
 
 /**
- * @private
+ * @hidden
  */
 export const GoogleMapsMapTypeId = {
     HYBRID: 'MAP_TYPE_HYBRID',
@@ -51,7 +51,7 @@ export const GoogleMapsMapTypeId = {
 };
 
 /**
- * @private
+ * @hidden
  */
 @Plugin({
   pluginName: 'GoogleMaps',
@@ -480,7 +480,7 @@ export class GoogleMaps {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface AnimateCameraOptions {
   target?: LatLng | Array<Marker> | LatLngBounds;
@@ -491,7 +491,7 @@ export interface AnimateCameraOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface CameraPosition {
   target?: LatLng | LatLngBounds | LatLng[];
@@ -501,7 +501,7 @@ export interface CameraPosition {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface MyLocation {
   latLng?: LatLng;
@@ -511,14 +511,14 @@ export interface MyLocation {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface MyLocationOptions {
   enableHighAccuracy?: boolean;
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface VisibleRegion {
   northeast?: any;
@@ -526,7 +526,7 @@ export interface VisibleRegion {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface MarkerOptions {
   /**
@@ -606,7 +606,7 @@ export interface MarkerOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface MarkerIcon {
   url?: string;
@@ -617,7 +617,7 @@ export interface MarkerIcon {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class Marker {
 
@@ -879,7 +879,7 @@ export class Marker {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface CircleOptions {
   center?: LatLng;
@@ -892,7 +892,7 @@ export interface CircleOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 
 export class Circle {
@@ -1021,7 +1021,7 @@ export class Circle {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface PolylineOptions {
   points?: Array<LatLng>;
@@ -1033,7 +1033,7 @@ export interface PolylineOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 
 export class Polyline {
@@ -1159,7 +1159,7 @@ export class Polyline {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface PolygonOptions {
   points?: Array<LatLng>;
@@ -1173,7 +1173,7 @@ export interface PolygonOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 
 export class Polygon {
@@ -1305,7 +1305,7 @@ export class Polygon {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface TileOverlayOptions {
   tileUrlFormat?: string;
@@ -1316,7 +1316,7 @@ export interface TileOverlayOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class TileOverlay {
 
@@ -1433,7 +1433,7 @@ export class TileOverlay {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface GroundOverlayOptions {
   url?: string;
@@ -1445,7 +1445,7 @@ export interface GroundOverlayOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class GroundOverlay {
 
@@ -1556,7 +1556,7 @@ export class GroundOverlay {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface KmlOverlayOptions {
   url?: string;
@@ -1565,7 +1565,7 @@ export interface KmlOverlayOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class KmlOverlay {
 
@@ -1657,7 +1657,7 @@ export class KmlOverlay {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class LatLngBounds {
   private _objectInstance: any;
@@ -1688,7 +1688,7 @@ export class LatLngBounds {
 }
 
 /**
- * @private
+ * @hidden
  */
 
 export class LatLng {
@@ -1716,7 +1716,7 @@ export class LatLng {
   }
 }
 /**
- * @private
+ * @hidden
  */
 export interface GeocoderRequest {
   address?: string;
@@ -1724,7 +1724,7 @@ export interface GeocoderRequest {
   position?: { lat: number; lng: number };
 }
 /**
- * @private
+ * @hidden
  */
 export interface GeocoderResult {
   adminArea?: string;
@@ -1747,7 +1747,7 @@ export interface GeocoderResult {
   thoroughfare?: string;
 }
 /**
- * @private
+ * @hidden
  */
 @Plugin({
   pluginName: 'Geocoder',

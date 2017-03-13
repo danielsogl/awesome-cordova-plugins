@@ -2,7 +2,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
- * @private
+ * @hidden
  */
 export interface HealthQueryOptions {
   /**
@@ -38,7 +38,7 @@ export interface HealthQueryOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface HealthQueryOptionsAggregated {
   /**
@@ -64,7 +64,7 @@ export interface HealthQueryOptionsAggregated {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface HealthStoreOptions {
   /**
@@ -102,7 +102,7 @@ export interface HealthStoreOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface HealthData {
   /**

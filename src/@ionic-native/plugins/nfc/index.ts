@@ -182,7 +182,7 @@ export class NFC {
 
 }
 /**
- * @private
+ * @hidden
  */
 @Injectable()
 @Plugin({

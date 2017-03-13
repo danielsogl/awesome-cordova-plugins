@@ -1,8 +1,8 @@
 var Package = require('dgeni').Package;
 var jsdocPackage = require('dgeni-packages/jsdoc');
 var nunjucksPackage = require('dgeni-packages/nunjucks');
-var typescriptPackage = require('./typescript-package');
-var linksPackage = require('./links-package');
+var typescriptPackage = require('dgeni-packages/typescript');
+var linksPackage = require('dgeni-packages/links');
 var path = require('path');
 var semver = require('semver');
 var fs = require('fs');
@@ -15,15 +15,13 @@ var projectPackage = require('../../package.json');
 // Define the dgeni package for generating the docs
 module.exports = function(currentVersion) {
 
-  return new Package('ionic-v2-docs',
-                     [jsdocPackage, nunjucksPackage, typescriptPackage,
-                      linksPackage])
+  return new Package('ionic-v2-docs', [jsdocPackage, nunjucksPackage, typescriptPackage, linksPackage])
 
 // .processor(require('./processors/latest-version'))
 .processor(require('./processors/readmes'))
-.processor(require('./processors/remove-private-members'))
-.processor(require('./processors/hide-private-api'))
-.processor(require('./processors/collect-inputs-outputs'))
+// .processor(require('./processors/remove-private-members'))
+// .processor(require('./processors/hide-private-api'))
+// .processor(require('./processors/collect-inputs-outputs'))
 
 // for debugging docs
 // .processor(function test(){
@@ -99,7 +97,7 @@ module.exports = function(currentVersion) {
 
   renderDocsProcessor.extraData.version = versionData;
   computePathsProcessor.pathTemplates = [{
-    docTypes: ['class', 'var', 'function', 'let'],
+    docTypes: ['class'],
     getOutputPath: function(doc) {
       return doc.originalModule.replace(config.pluginDir + '/', '')
         .replace('/index', '') + '/README.md';
@@ -114,11 +112,8 @@ module.exports = function(currentVersion) {
   readFilesProcessor.$enabled = false;
   readFilesProcessor.basePath = path.resolve(__dirname, '../..');
 
-  readTypeScriptModules.basePath = path.resolve(path.resolve(__dirname,
-                                                '../..'));
-  readTypeScriptModules.sourceFiles = [
-    './src/@ionic-native/plugins/**/*.ts'
-  ];
+  readTypeScriptModules.basePath = path.resolve(path.resolve(__dirname, '../..'));
+  readTypeScriptModules.sourceFiles = ['./src/@ionic-native/plugins/**/*.ts'];
 })
 
 .config(function(parseTagsProcessor) {

@@ -1,8 +1,8 @@
 var Package = require('dgeni').Package;
 var jsdocPackage = require('dgeni-packages/jsdoc');
 var nunjucksPackage = require('dgeni-packages/nunjucks');
-var typescriptPackage = require('./typescript-package');
-var linksPackage = require('./links-package');
+var typescriptPackage = require('dgeni-packages/typescript');
+var linksPackage = require('dgeni-packages/links');
 var path = require('path');
 var semver = require('semver');
 var fs = require('fs');
@@ -13,9 +13,7 @@ var projectPackage = require('../../package.json');
 // Define the dgeni package for generating the docs
 module.exports = function(currentVersion) {
 
-  return new Package('ionic-v2-docs',
-                     [jsdocPackage, nunjucksPackage, typescriptPackage,
-                      linksPackage])
+  return new Package('ionic-v2-docs', [jsdocPackage, nunjucksPackage, typescriptPackage, linksPackage])
 
 // .processor(require('./processors/latest-version'))
 .processor(require('./processors/jekyll'))
@@ -115,8 +113,7 @@ module.exports = function(currentVersion) {
   readFilesProcessor.$enabled = false;
   readFilesProcessor.basePath = path.resolve(__dirname, '../..');
 
-  readTypeScriptModules.basePath = path.resolve(path.resolve(__dirname,
-                                                '../..'));
+  readTypeScriptModules.basePath = path.resolve(__dirname, '../..');
   readTypeScriptModules.sourceFiles = [
     './src/@ionic-native/plugins/**/*.ts'
   ];
@@ -146,7 +143,7 @@ module.exports = function(currentVersion) {
 
 // Configure file writing
 .config(function(writeFilesProcessor) {
-  writeFilesProcessor.outputFolder  = './src/@ionic-native/plugins2/';
+  writeFilesProcessor.outputFolder  = '../ionic-site/';
 })
 
 // Configure rendering

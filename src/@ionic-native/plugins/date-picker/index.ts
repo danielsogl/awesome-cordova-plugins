@@ -156,7 +156,7 @@ export interface DatePickerOptions {
 export class DatePicker {
 
   /**
-   * @private
+   * @hidden
    */
   static ANDROID_THEMES = {
     THEME_TRADITIONAL: 1,

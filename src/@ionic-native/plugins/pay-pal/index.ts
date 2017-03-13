@@ -150,7 +150,7 @@ export interface PayPalEnvironment {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class PayPalPayment {
   constructor(amount: string, currency: string, shortDescription: string, intent: string, details?: PayPalPaymentDetails) {
@@ -214,7 +214,7 @@ export class PayPalPayment {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class PayPalItem {
   /**
@@ -257,7 +257,7 @@ export class PayPalItem {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class PayPalPaymentDetails {
   /**
@@ -286,7 +286,7 @@ export class PayPalPaymentDetails {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface PayPalConfigurationOptions {
   /**
@@ -384,7 +384,7 @@ export interface PayPalConfigurationOptions {
   sandboxUserPin?: string;
 }
 /**
- * @private
+ * @hidden
  */
 export class PayPalConfiguration implements PayPalConfigurationOptions {
   /**
@@ -424,7 +424,7 @@ export class PayPalConfiguration implements PayPalConfigurationOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export class PayPalShippingAddress {
   /**

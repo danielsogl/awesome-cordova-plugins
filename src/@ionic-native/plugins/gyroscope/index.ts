@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 declare var navigator: any;
 
 /**
- *  @private
+ *  @hidden
  */
 export interface GyroscopeOrientation {
   /**
@@ -30,7 +30,7 @@ export interface GyroscopeOrientation {
 }
 
 /**
- *  @private
+ *  @hidden
  */
 export interface GyroscopeOptions {
   /**

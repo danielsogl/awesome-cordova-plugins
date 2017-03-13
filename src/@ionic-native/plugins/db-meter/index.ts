@@ -56,7 +56,7 @@ export class DBMeter {
 
   /**
    * Stops listening
-   * @private
+   * @hidden
    */
   @Cordova()
   stop(): Promise<any> { return; }

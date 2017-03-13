@@ -5,14 +5,14 @@ module.exports = function removePrivateApi() {
     $runBefore: ['rendering-docs'],
     $process: function(docs) {
       var publicDocs = [];
-       docs.forEach(function(doc){
-        if(!doc.private){
+      docs.forEach(function(doc){
+        if (!doc.private && (!doc.tags || !doc.tags.tagsByName.get('hidden'))){
           publicDocs.push(doc);
           return doc
         }
-      })
-     docs = publicDocs;
-     return docs;
+      });
+      docs = publicDocs;
+      return docs;
     }
   }
 };

@@ -157,7 +157,7 @@ export class PhotoLibrary {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface LibraryItem {
   /**
@@ -182,7 +182,7 @@ export interface LibraryItem {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface AlbumItem {
   /**
@@ -193,7 +193,7 @@ export interface AlbumItem {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface GetLibraryOptions {
   thumbnailWidth?: number;
@@ -206,7 +206,7 @@ export interface GetLibraryOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface RequestAuthorizationOptions {
   read?: boolean;
@@ -214,7 +214,7 @@ export interface RequestAuthorizationOptions {
 }
 
 /**
- * @private
+ * @hidden
  */
 export interface GetThumbnailOptions {
   thumbnailWidth?: number;

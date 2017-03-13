@@ -5,7 +5,7 @@ import { Cordova, CordovaInstance, Plugin, CordovaCheck, InstanceProperty } from
 declare var sqlitePlugin;
 
 /**
- * @private
+ * @hidden
  */
 export class SQLiteObject {
 
