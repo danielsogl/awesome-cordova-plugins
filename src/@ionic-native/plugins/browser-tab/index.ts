@@ -2,7 +2,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
- * @name BrowserTab
+ * @name Browser Tab
  * @description
  * This plugin provides an interface to in-app browser tabs that exist on some mobile platforms, specifically [Custom Tabs](http://developer.android.com/tools/support-library/features.html#custom-tabs) on Android (including the [Chrome Custom Tabs](https://developer.chrome.com/multidevice/android/customtabs) implementation), and [SFSafariViewController](https://developer.apple.com/library/ios/documentation/SafariServices/Reference/SFSafariViewController_Ref/) on iOS.
  *

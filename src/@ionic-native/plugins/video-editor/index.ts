@@ -120,7 +120,7 @@ export interface VideoInfo {
 }
 
 /**
- * @name VideoEditor
+ * @name Video Editor
  * @description Edit videos using native device APIs
  *
  * @usage

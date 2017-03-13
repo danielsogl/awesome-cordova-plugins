@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova } from '@ionic-native/core';
 /**
- * @name YoutubeVideoPlayer
+ * @name Youtube Video Player
  * @description
  * Plays YouTube videos in Native YouTube App
  *

@@ -3,7 +3,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
 
 
 /**
- * @name InAppPurchase
+ * @name In App Purchase
  * @description
  * A lightweight Cordova plugin for in app purchases on iOS/Android.
  *

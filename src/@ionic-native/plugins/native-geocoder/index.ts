@@ -3,7 +3,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
 
 /**
  * @beta
- * @name NativeGeocoder
+ * @name Native Geocoder
  * @description
  * Cordova plugin for native forward and reverse geocoding
  *

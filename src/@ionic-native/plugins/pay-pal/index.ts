@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova } from '@ionic-native/core';
 /**
- * @name PayPal
+ * @name Pay Pal
  * @description
  * PayPal plugin for Cordova/Ionic Applications
  *

@@ -135,7 +135,7 @@ export class ThemeableBrowserObject {
 }
 
 /**
- * @name ThemeableBrowser
+ * @name Themeable Browser
  * @description
  * In-app browser that allows styling.
  *

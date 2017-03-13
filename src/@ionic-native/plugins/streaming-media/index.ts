@@ -17,7 +17,7 @@ export interface StreamingAudioOptions {
 }
 
 /**
- * @name StreamingMedia
+ * @name Streaming Media
  * @description
  * This plugin allows you to stream audio and video in a fullscreen, native player on iOS and Android.
  *

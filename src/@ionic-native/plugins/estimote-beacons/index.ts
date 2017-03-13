@@ -17,7 +17,7 @@ export interface EstimoteBeaconRegion {
 }
 
 /**
- * @name EstimoteBeacons
+ * @name Estimote Beacons
  *
  * @description
  * This plugin enables communication between a phone and Estimote Beacons peripherals.

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 declare var window;
 
 /**
- * @name WebIntent
+ * @name Web Intent
  * @description
  * @usage
  * For usage information please refer to the plugin's Github repo.

@@ -23,7 +23,7 @@ export interface CameraPreviewSize {
 
 /**
  * @beta
- * @name CameraPreview
+ * @name Camera Preview
  * @description
  * Showing camera preview in HTML
  *

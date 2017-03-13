@@ -38,7 +38,7 @@ export interface ImageResizerOptions {
 }
 
 /**
- * @name ImageResizer
+ * @name Image Resizer
  * @description
  * Cordova Plugin For Image Resize
  *
@@ -67,7 +67,7 @@ export interface ImageResizerOptions {
  *   .resize(options)
  *   .then((filePath: string) => console.log('FilePath', filePath))
  *   .catch(e => console.log(e));
- *   
+ *
  * ```
  * @interfaces
  * ImageResizerOptions

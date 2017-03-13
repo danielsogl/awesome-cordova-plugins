@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova } from '@ionic-native/core';
 
 /**
- * @name HeaderColor
+ * @name Header Color
  * @description
  * Cordova plugin to change color of header in multitask view
  *

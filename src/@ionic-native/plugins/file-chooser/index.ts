@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova } from '@ionic-native/core';
 
 /**
- * @name FileChooser
+ * @name File Chooser
  * @description
  *
  * Opens the file picker on Android for the user to select a file, returns a file URI.

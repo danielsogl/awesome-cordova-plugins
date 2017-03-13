@@ -130,7 +130,7 @@ export interface CardIOResponse {
 }
 
 /**
- * @name CardIO
+ * @name Card IO
  * @description
  * @usage
  * ```

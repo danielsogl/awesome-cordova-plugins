@@ -3,7 +3,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
 
 
 /**
- * @name TouchID
+ * @name Touch ID
  * @description
  * Scan the fingerprint of a user with the TouchID sensor.
  *

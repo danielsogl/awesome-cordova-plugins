@@ -133,7 +133,7 @@ export class InAppBrowserObject {
 }
 
 /**
- * @name InAppBrowser
+ * @name In App Browser
  * @description Launches in app Browser
  * @usage
  * ```typescript

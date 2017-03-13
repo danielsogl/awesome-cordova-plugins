@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova } from '@ionic-native/core';
 /**
- * @name CallNumber
+ * @name Call Number
  * @description
  * Call a number directly from your Cordova/Ionic application.
  *

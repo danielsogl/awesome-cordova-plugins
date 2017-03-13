@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova } from '@ionic-native/core';
 /**
- * @name DeviceFeedback
+ * @name Device Feedback
  * @description
  *
  * Plugin that lets you provide haptic or acoustic feedback on Android devices.

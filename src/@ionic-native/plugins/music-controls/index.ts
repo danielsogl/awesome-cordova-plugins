@@ -15,7 +15,7 @@ export interface MusicControlsOptions {
 }
 
 /**
- * @name MusicControls
+ * @name Music Controls
  * @description
  * Music controls for Cordova applications.
  * Display a 'media' notification with play/pause, previous, next buttons, allowing the user to control the play.

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova } from '@ionic-native/core';
 
 /**
- * @name LaunchReview
+ * @name Launch Review
  * @description
  *
  * This launches the native store app in order for the user to leave a review.

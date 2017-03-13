@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova } from '@ionic-native/core';
 /**
- * @name NativeAudio
+ * @name Native Audio
  * @description Native Audio Playback
  * @usage
  * ```typescript

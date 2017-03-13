@@ -396,7 +396,7 @@ export interface DownloadProgress {
 }
 
 /**
- * @name CodePush
+ * @name Code Push
  * @description
  * CodePush plugin for Cordova by Microsoft that supports iOS and Android.
  *

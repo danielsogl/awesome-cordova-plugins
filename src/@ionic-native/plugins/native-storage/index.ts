@@ -3,7 +3,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
 
 
 /**
- * @name NativeStorage
+ * @name Native Storage
  * @description Native storage of variables in Android and iOS
  *
  * @usage

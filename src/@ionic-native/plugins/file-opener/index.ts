@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova } from '@ionic-native/core';
 
 /**
- * @name FileOpener
+ * @name File Opener
  * @description
  * This plugin will open a file on your device file system with its default application.
  *

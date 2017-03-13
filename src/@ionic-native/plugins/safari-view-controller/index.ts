@@ -13,7 +13,7 @@ export interface SafariViewControllerOptions {
 }
 
 /**
- * @name SafariViewController
+ * @name Safari View Controller
  * @description
  * @usage
  * ```
