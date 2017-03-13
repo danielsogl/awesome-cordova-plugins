@@ -3,7 +3,6 @@ var jsdocPackage = require('dgeni-packages/jsdoc');
 var nunjucksPackage = require('dgeni-packages/nunjucks');
 var typescriptPackage = require('./typescript-package');
 var linksPackage = require('./links-package');
-var gitPackage = require('dgeni-packages/git');
 var path = require('path');
 var semver = require('semver');
 var fs = require('fs');
@@ -18,7 +17,7 @@ module.exports = function(currentVersion) {
 
   return new Package('ionic-v2-docs',
                      [jsdocPackage, nunjucksPackage, typescriptPackage,
-                      linksPackage, gitPackage])
+                      linksPackage])
 
 // .processor(require('./processors/latest-version'))
 .processor(require('./processors/readmes'))
@@ -73,7 +72,7 @@ module.exports = function(currentVersion) {
   log.level = 'error'; //'silly', 'debug', 'info', 'warn', 'error'
 })
 
-.config(function(renderDocsProcessor, computePathsProcessor, versionInfo) {
+.config(function(renderDocsProcessor, computePathsProcessor) {
 
   versions = [];
   // new version, add it to the versions list
@@ -99,7 +98,6 @@ module.exports = function(currentVersion) {
   };
 
   renderDocsProcessor.extraData.version = versionData;
-  renderDocsProcessor.extraData.versionInfo = versionInfo;
   computePathsProcessor.pathTemplates = [{
     docTypes: ['class', 'var', 'function', 'let'],
     getOutputPath: function(doc) {

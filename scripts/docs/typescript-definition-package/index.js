@@ -25,9 +25,9 @@ module.exports = new Package('angular-v2-docs', [jsdocPackage, nunjucksPackage, 
 })
 
 
-.config(function(renderDocsProcessor, versionInfo) {
-  renderDocsProcessor.extraData.versionInfo = versionInfo;
-})
+// .config(function(renderDocsProcessor, versionInfo) {
+//   renderDocsProcessor.extraData.versionInfo = versionInfo;
+// })
 
 .config(function(readFilesProcessor, inlineTagProcessor, readTypeScriptModules, createTypeDefinitionFile) {
 
@@ -42,7 +42,7 @@ module.exports = new Package('angular-v2-docs', [jsdocPackage, nunjucksPackage, 
     'angular2/router.ts'
   ];
   readTypeScriptModules.basePath = path.resolve(path.resolve(__dirname, '../../modules'));
-  
+
   createTypeDefinitionFile.typeDefinitions = [
       {
         id: 'angular2/angular2',
@@ -55,7 +55,7 @@ module.exports = new Package('angular-v2-docs', [jsdocPackage, nunjucksPackage, 
         modules: {
           'angular2/router': 'angular2/router'
         }
-      }    
+      }
   ];
 })
 
