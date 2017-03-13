@@ -53,10 +53,11 @@ export class TextToSpeech {
     return;
   }
 
-  stop(): Promise<any> {
-    return;
-  }
-
+  /**
+   * Stop any current TTS playback
+   * @return {Promise<any>}
+   */
+  @Cordova()
   stop(): Promise<any> {
     return;
   }
