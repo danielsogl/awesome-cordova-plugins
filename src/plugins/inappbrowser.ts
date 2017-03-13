@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 declare var cordova: any;
 
 export interface InAppBrowserOptions {
-  /** Set to yes or no to ruen the InAppBrowser's location bar on or off. */
+  /** Set to yes or no to turn the InAppBrowser's location bar on or off. */
   location?: 'yes' | 'no';
   /** Set to yes to create the browser and load the page, but not show it. The loadstop event fires when loading is complete.
    * Omit or set to no (default) to have the browser open and load normally. */
