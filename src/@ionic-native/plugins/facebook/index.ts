@@ -246,11 +246,7 @@ export class Facebook {
     successIndex: 3,
     errorIndex: 4
   })
-  logEvent(
-    name: string,
-    params?: Object,
-    valueToSum?: number
-    ): Promise<any> { return; }
+  logEvent(name: string, params?: Object, valueToSum?: number): Promise<any> { return; }
 
   /**
    * Log a purchase. For more information see the Events section above.

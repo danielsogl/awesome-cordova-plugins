@@ -65,6 +65,13 @@ export class BluetoothSerial {
   connectInsecure(macAddress: string): Observable<any> { return; }
 
   /**
+   * Disconnect from the connected device
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  static disconnect(): Promise<any> { return; }
+
+  /**
    * Writes data to the serial port
    * @param {any} data ArrayBuffer of data
    * @returns {Promise<any>} returns a promise when data has been written

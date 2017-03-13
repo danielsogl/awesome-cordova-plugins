@@ -57,4 +57,8 @@ export class TextToSpeech {
     return;
   }
 
+  static stop(): Promise<any> {
+    return;
+  }
+
 }

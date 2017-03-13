@@ -12,6 +12,11 @@ export interface FingerprintOptions {
    * Secret password. Only for android
    */
   clientSecret?: string;
+
+  /**
+   * Disable 'use backup' option. Only for android (optional)
+   */
+  disableBackup?: boolean;
 }
 
 /**
@@ -31,7 +36,8 @@ export interface FingerprintOptions {
  *
  * this.faio.show({
  *     clientId: "Fingerprint-Demo",
- *    clientSecret: "password" //Only necessary for Android
+ *     clientSecret: "password", //Only necessary for Android
+ *     disableBackup:true  //Only for Android(optional)
  * })
  * .then((result: any) => console.log(any))
  * .catch((error: any) => console.log(error));

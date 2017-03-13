@@ -1,3 +1,21 @@
+<a name="2.8.1"></a>
+## [2.8.1](https://github.com/driftyco/ionic-native/compare/v2.8.0...v2.8.1) (2017-03-10)
+
+
+### Bug Fixes
+
+* **bluetooth-serial:** add missing disconnect method ([74971fe](https://github.com/driftyco/ionic-native/commit/74971fe)), closes [#1151](https://github.com/driftyco/ionic-native/issues/1151)
+* **fingerprint-aio:** add useBackup property ([#1158](https://github.com/driftyco/ionic-native/issues/1158)) ([6fdeeaf](https://github.com/driftyco/ionic-native/commit/6fdeeaf))
+* **health:** fix return type ([0f8c3ce](https://github.com/driftyco/ionic-native/commit/0f8c3ce))
+* **paypal:** sku param is optional ([#1161](https://github.com/driftyco/ionic-native/issues/1161)) ([62c7a60](https://github.com/driftyco/ionic-native/commit/62c7a60))
+
+
+### Features
+
+* **firebase:** add new setScreenName method ([0009cbf](https://github.com/driftyco/ionic-native/commit/0009cbf)), closes [#1149](https://github.com/driftyco/ionic-native/issues/1149)
+
+
+
 <a name="2.8.0"></a>
 # [2.8.0](https://github.com/driftyco/ionic-native/compare/v2.7.0...v2.8.0) (2017-03-04)
 
