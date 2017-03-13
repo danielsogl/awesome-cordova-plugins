@@ -122,11 +122,6 @@ export class LocationAccuracy {
    * Convenience constant
    * @type {number}
    */
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
   ERROR_CANNOT_CHANGE_ACCURACY = 3;
 
   /**
