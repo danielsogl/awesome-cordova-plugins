@@ -133,11 +133,6 @@ export class LocationAccuracy {
    * Convenience constant
    * @type {number}
    */
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
   ERROR_USER_DISAGREED = 4;
 
   /**
