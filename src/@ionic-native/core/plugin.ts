@@ -39,7 +39,7 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
       };
     }
 
-    pluginWarn(pluginName, methodName);
+    pluginWarn(pluginName, null, methodName);
     return {
       error: 'plugin_not_installed'
     };
