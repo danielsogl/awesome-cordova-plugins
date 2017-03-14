@@ -145,7 +145,7 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
   return (pluginObj: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> => {
     return {
       value: function(...args: any[]): any {
-        if (checkAvailability(pluginObj, methodName) === true) {
+        if (checkAvailability(pluginObj) === true) {
           return descriptor.value.apply(this, args);
         } else {
           if (opts.sync) {
