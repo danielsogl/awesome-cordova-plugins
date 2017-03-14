@@ -20,13 +20,14 @@ export function checkAvailability(pluginRef: string, methodName?: string, plugin
 export function checkAvailability(pluginObj: any, methodName?: string, pluginName?: string);
 export function checkAvailability(plugin: any, methodName?: string, pluginName?: string): boolean | { error: string } {
 
-  let pluginRef, pluginInstance;
+  let pluginRef, pluginInstance, pluginPackage;
 
   if (typeof plugin === 'string') {
     pluginRef = plugin;
   } else {
     pluginRef = plugin.constructor.getPluginRef();
     pluginName = plugin.constructor.getPluginName();
+    pluginPackage = plugin.constructor.getPluginInstallName();
   }
 
   pluginInstance = getPlugin(pluginRef);
@@ -39,7 +40,7 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
       };
     }
 
-    pluginWarn(pluginName, null, methodName);
+    pluginWarn(pluginName, pluginPackage, methodName);
     return {
       error: 'plugin_not_installed'
     };
