@@ -52,8 +52,8 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
  * Checks if _objectInstance exists and has the method/property
  * @private
  */
-export function instanceAvailability(pluginObj: any, methodName: string): boolean {
-  return pluginObj._objectInstance && pluginObj._objectInstance[methodName] !== 'undefined';
+export function instanceAvailability(pluginObj: any, methodName?: string): boolean {
+  return pluginObj._objectInstance && (!methodName || pluginObj._objectInstance[methodName] !== 'undefined');
 }
 
 function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Function): any {
