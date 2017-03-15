@@ -112,7 +112,6 @@ export const GoogleMapsMapTypeId = {
  *       marker.showInfoWindow();
  *     });
  *  }
- * });
  * }
  * ```
  */
