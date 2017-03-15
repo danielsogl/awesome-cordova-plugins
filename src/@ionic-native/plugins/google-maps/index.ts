@@ -111,10 +111,7 @@ export class GoogleMap {
    */
   @InstanceCheck({ observable: true })
   on(eventName: string): Observable<any> {
-    return new Observable((observer) => {
-        this._objectInstance.on(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.off(event);
-    });
+    return Observable.fromEvent(this._objectInstance, eventName);
   }
 
   /**

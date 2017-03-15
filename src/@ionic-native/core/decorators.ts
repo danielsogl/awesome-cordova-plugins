@@ -119,7 +119,7 @@ export function InstanceCheck(opts: CordovaCheckOptions = {}) {
   return (pluginObj: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> => {
     return {
       value: function(...args: any[]): any {
-        if (instanceAvailability(pluginObj)) {
+        if (instanceAvailability(this)) {
           return descriptor.value.apply(this, args);
         } else {
 
