@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, CordovaProperty } from '@ionic-native/core';
 
 export interface ActionSheetOptions {
 
@@ -67,7 +67,8 @@ export interface ActionSheetOptions {
  *   title: 'What do you want with this image?',
  *   buttonLabels: buttonLabels,
  *   addCancelButtonWithLabel: 'Cancel',
- *   addDestructiveButtonWithLabel: 'Delete'
+ *   addDestructiveButtonWithLabel: 'Delete',
+ *   androidTheme: this.actionSheet.ANDROID_THEMES.THEME_HOLO_DARK
  * };
  *
  * this.actionSheet.show(options).then((buttonIndex: number) => {
@@ -86,6 +87,15 @@ export interface ActionSheetOptions {
 })
 @Injectable()
 export class ActionSheet {
+
+  @CordovaProperty
+  ANDROID_THEMES: {
+    THEME_TRADITIONAL: number;
+    THEME_HOLO_DARK: number;
+    THEME_HOLO_LIGHT: number;
+    THEME_DEVICE_DEFAULT_DARK: number;
+    THEME_DEVICE_DEFAULT_LIGHT: number;
+  };
 
   /**
    * Show a native ActionSheet component. See below for options.
