@@ -164,7 +164,8 @@ module.exports = function(currentVersion) {
   templateEngine.filters.push(
     require('./filters/capital'),
     require('./filters/code'),
-    require('./filters/dump')
+    require('./filters/dump'),
+    require('./filters/dashify')
   );
 
   templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
