@@ -53,7 +53,7 @@ export interface PictureOptions {
  * @description
  * Showing camera preview in HTML
  * 
- * Requires Cordova plugin: `cordova-camera-custom`. For more info, please see the [Cordova Camera Preview docs](https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview).
+ * Requires Cordova plugin: `https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git`. For more info, please see the [Cordova Camera Preview docs](https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview).
  *
  * @usage
  * ```typescript
@@ -116,9 +116,9 @@ export interface PictureOptions {
  */
 @Plugin({
   pluginName: 'CameraPreview',
-  plugin: 'cordova-camera-custom',
+  plugin: 'cordova-plugin-camera-preview',
   pluginRef: 'CameraPreview',
-  repo: 'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git',
+  repo: 'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
   platforms: ['Android', 'iOS']
 })
 export class CameraPreview {
