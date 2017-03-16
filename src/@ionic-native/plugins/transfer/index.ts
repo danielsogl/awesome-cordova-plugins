@@ -116,21 +116,23 @@ export interface FileTransferError {
  *
  * @usage
  * ```typescript
- * import { Transfer, FileUploadOptions } from '@ionic-native/transfer';
+ * import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
  * import { File } from '@ionic-native/file';
  *
  * constructor(private transfer: Transfer, private file: File) { }
  *
  * ...
  *
+ * const fileTransfer: TransferObject = this.transfer.create();
+ *
  * // Upload a file:
- * this.transfer.upload(..).then(..).catch(..);
+ * fileTransfer.upload(..).then(..).catch(..);
  *
  * // Download a file:
- * this.transfer.download(..).then(..).catch(..);
+ * fileTransfer.download(..).then(..).catch(..);
  *
  * // Abort active transfer:
- * this.transfer.abort();
+ * fileTransfer.abort();
  *
  * // full example
  * upload() {
@@ -141,7 +143,7 @@ export interface FileTransferError {
  *      .....
  *   }
  *
- *   this.transfer.upload("<file path>", "<api endpoint>", options)
+ *   fileTransfer.upload('<file path>', '<api endpoint>', options)
  *    .then((data) => {
  *      // success
  *    }, (err) => {
@@ -150,8 +152,8 @@ export interface FileTransferError {
  * }
  **
  * download() {
- *   let url = 'http://www.example.com/file.pdf';
- *   this.transfer.download(url, this.file.dataDirectory + 'file.pdf').then((entry) => {
+ *   const url = 'http://www.example.com/file.pdf';
+ *   fileTransfer.download(url, this.file.dataDirectory + 'file.pdf').then((entry) => {
  *     console.log('download complete: ' + entry.toURL());
  *   }, (error) => {
  *     // handle error
@@ -167,6 +169,8 @@ export interface FileTransferError {
  * FileUploadOptions
  * FileUploadResult
  * FileTransferError
+ * @classes
+ * TransferObject
  */
 @Plugin({
   pluginName: 'FileTransfer',
@@ -184,7 +188,7 @@ export class Transfer {
    *      INVALID_URL_ERR: 2,     Return when url was invalid
    *      CONNECTION_ERR: 3,      Return on connection error
    *      ABORT_ERR: 4,           Return on aborting
-   *      NOT_MODIFIED_ERR: 5     Return on "304 Not Modified" HTTP response
+   *      NOT_MODIFIED_ERR: 5     Return on '304 Not Modified' HTTP response
    * @enum {number}
    */
   FileTransferErrorCode = {
@@ -195,6 +199,24 @@ export class Transfer {
     NOT_MODIFIED_ERR: 5
   };
 
+  /**
+   * Creates a new FileTransfer object
+   * @return {TransferObject}
+   */
+  create(): TransferObject {
+    return new TransferObject();
+  }
+
+}
+
+/**
+ * @hidden
+ */
+@Plugin({
+  plugin: 'cordova-plugin-file-transfer',
+  pluginName: 'FileTransfer'
+})
+export class TransferObject {
   private _objectInstance: any;
 
   constructor() {
@@ -254,5 +276,4 @@ export class Transfer {
     sync: true
   })
   abort(): void { }
-
 }
