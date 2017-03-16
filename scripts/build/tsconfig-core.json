@@ -15,5 +15,8 @@
   },
   "files": [
     "../../src/@ionic-native/core/index.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "genDir": "../../.tmp/core-aot"
+  }
 }
