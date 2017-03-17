@@ -12,6 +12,9 @@ First, let's start by creating a new plugin wrapper from template.
 // Make sure to capitalize the first letter, or use CamelCase if necessary.
  
 gulp plugin:create -n PluginName
+
+// add -m flag to get a minimal template to start with
+gulp plugin:create -m -n PluginName
 ```
 
 
@@ -22,17 +25,18 @@ Let's take a look at the existing plugin wrapper for Geolocation to see what goe
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation'
 })
+@Injectable()
 export class Geolocation {
 
   @Cordova()
-  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
+  getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return; }
 
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return }
+  watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return; }
 }
 ```
 
@@ -41,6 +45,7 @@ export class Geolocation {
 First and foremost, we want to create a class representing our plugin, in this case Geolocation.
 
 ```
+@Injectable()
 class Geolocation {
 
 }
@@ -57,6 +62,7 @@ For example, the `@Plugin` decorator adds information about the plugin to our Ge
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation'
 })
+@Injectable()
 export class Geolocation {
 
 }
@@ -74,7 +80,7 @@ Let's take a look at `getCurrentPosition` first.
 
 ```
   @Cordova()
-  static getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
+  getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
 ```
 
 It's just a stub. The `return` is only there to keep the TypeScript type-checker from complaining since we indicate that `getCurrentPosition` returns a `Promise<Geoposition>`.
@@ -91,7 +97,7 @@ Next, let's look at the `watchPosition` method.
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return }
+  watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return }
 ```
 
 The `@Cordova` decorator has a few more options now.
@@ -101,58 +107,6 @@ The `@Cordova` decorator has a few more options now.
 `callbackOrder` refers to the method signature of the underlying Cordova plugin, and tells Ionic Native which arguments are the callbacks to map to the wrapping Promise or Observable.  In this case, the signature is [`watchPosition(success, error, options)`](https://github.com/apache/cordova-plugin-geolocation#navigatorgeolocationwatchposition), so we need to tell `@Cordova` that the callbacks are the first arguments, not the last arguments.  For rare cases, you can also specify the options `successIndex` and `errorIndex` to indicate where in the argument list the callbacks are located.
 
 `clearFunction` is used in conjunction with the `observable` option and indicates the function to be called when the Observable is disposed.
-
-### Updating index.ts
-
-For new plugins, you will need to update `/src/index.ts` to properly export your plugin and make it available for use.
-
-1. Import the plugin class into `index.ts`:
-
-`import {PluginClassName} from ./plugins/filenameForPlugin`
-
-No need to put the `.ts` extension on the filename.
-
-2. Add the plugin class name to the list in the `export` object:
-
-```
-export {
-  ActionSheet,
-  AdMob,
-  AndroidFingerprintAuth,
-  YourPluginClassName,
-  ...
-}
-```
-
-3. Add the plugin class name to the `window['IonicNative']` object:
-
-```
-window['IonicNative'] = {
-  ActionSheet: ActionSheet,
-  AdMob: AdMob,
-  AndroidFingerprintAuth: AndroidFingerprintAuth,
-  YourPluginClassName: YourPluginClassName,
-  ...
-```
-
-4. If your plugin exports any other objects outside of the plugin class, add an export statement for the file:
-
-`export * from './plugins/filenameForPlugin';`
-
-No need to put the `.ts` extension on the filename.
-
-For example, `googlemaps.ts` exports a const outside of the plugin's main `GoogleMap` class:
-
-```
-export const GoogleMapsAnimation = {
-  BOUNCE: 'BOUNCE',
-  DROP: 'DROP'
-};
-```
-
-To properly export `GoogleMapsAnimation`, `index.ts` is updated with:
-
-`export * from './plugins/googlemaps';`
 
 ### Testing your changes
 
@@ -164,7 +118,7 @@ You need to run `npm run lint` to analyze the code and ensure it's consistency w
 
 ### 'Wrapping' Up
 
-That's it! The only thing left to do is rigorously document the plugin and it's usage.  Take a look at some of the other plugins for good documentation styles.
+That's it! The only thing left to do is rigorously document the plugin and it's usage. Take a look at some of the other plugins for good documentation styles.
 
 ## Commit Message Format
 

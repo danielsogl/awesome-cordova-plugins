@@ -6,15 +6,16 @@
  * - Document usage (importing, executing main functionality)
  * - Remove any imports that you are not using
  * - Add this file to /src/index.ts (follow style of other plugins)
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs.
+ * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
  * - Remove this note
  *
  */
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty } from './plugin';
+import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty } from '@ionic-native/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
- * @name PluginName
+ * @name Plugin Name
  * @description
  * This plugin does something
  *
@@ -35,6 +36,7 @@ import { Observable } from 'rxjs/Observable';
   repo: '', // the github repository URL for the plugin
   install: '' // OPTIONAL install command, in case the plugin requires variables
 })
+@Injectable()
 export class PluginName {
 
   /**
@@ -44,7 +46,7 @@ export class PluginName {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  static functionName(arg1: string, arg2: number): Promise<any> {
+  functionName(arg1: string, arg2: number): Promise<any> {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
