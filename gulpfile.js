@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var minimist = require('minimist');
-var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var tslint = require('gulp-tslint');
 var decamelize = require('decamelize');
@@ -17,16 +16,6 @@ var flags = minimist(process.argv.slice(2), flagConfig);
 /* Docs tasks */
 require('./scripts/docs/gulp-tasks')(gulp, flags);
 
-
-gulp.task("minify:dist", function(){
-  gulp.src('./dist/ionic.native.js')
-  .pipe(uglify())
-  .pipe(rename({
-    suffix: '.min'
-  }))
-  .pipe(gulp.dest('./dist'));
-});
-
 gulp.task('lint', function() {
   gulp.src('src/**/*.ts')
     .pipe(tslint({
@@ -38,12 +27,21 @@ gulp.task('lint', function() {
 
 gulp.task('plugin:create', function(){
   if(flags.n && flags.n !== ''){
-    var src = flags.m?'./scripts/templates/wrap-min.tmpl':'./scripts/templates/wrap.tmpl';
+
+    const src = flags.m?'./scripts/templates/wrap-min.tmpl':'./scripts/templates/wrap.tmpl',
+      pluginName = flags.n,
+      pluginPackageName = decamelize(pluginName, '-'),
+      pluginNameSpaced = pluginName.replace(/(?!^)([A-Z])/g, ' $1');
+
     return gulp.src(src)
-      .pipe(replace('PluginName', flags.n))
-      .pipe(rename(decamelize(flags.n, '-') + '.ts'))
-      .pipe(gulp.dest('./src/plugins/'));
+      .pipe(replace('PluginName', pluginName))
+      .pipe(replace('Plugin Name', pluginNameSpaced))
+      .pipe(rename('index.ts'))
+      .pipe(gulp.dest('./src/@ionic-native/plugins/' + pluginPackageName));
+
   } else {
+
     console.log("Usage is: gulp plugin:create -n PluginName");
+
   }
 });
