@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
-import {Observable} from "rxjs";
+import { Observable } from 'rxjs/Observable';
 
 declare var window;
 
