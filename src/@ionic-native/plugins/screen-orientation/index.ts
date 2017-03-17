@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
+import {Observable} from "rxjs";
 
 declare var window;
 
@@ -20,11 +21,14 @@ declare var window;
  * ...
  *
  *
- * // set to either landscape
- * this.screenOrientation.lockOrientation('landscape');
+ * // get current
+ * console.log(this.screenOrientation.type); // logs the current orientation, example: 'landscape'
+ *
+ * // set to landscape
+ * this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
  *
  * // allow user rotate
- * this.screenOrientation.unlockOrientation();
+ * this.screenOrientation.unlock();
  * ```
  *
  * @advanced
@@ -44,7 +48,7 @@ declare var window;
 @Plugin({
   pluginName: 'ScreenOrientation',
   plugin: 'cordova-plugin-screen-orientation',
-  pluginRef: 'window.screen',
+  pluginRef: 'screen.orientation',
   repo: 'https://github.com/apache/cordova-plugin-screen-orientation',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
@@ -52,22 +56,47 @@ declare var window;
 export class ScreenOrientation {
 
   /**
+   * Convenience enum for possible orientations
+   */
+  ORIENTATIONS = {
+    PORTRAIT_PRIMARY: 'portrait-primary',
+    PORTRAIT_SECONDARY: 'portrait-secondary',
+    LANDSCAPE_PRIMARY: 'landscape-primary',
+    LANDSCAPE_SECONDARY: 'landscape-secondary',
+    PORTRAIT: 'portrait',
+    LANDSCAPE: 'landscape',
+    ANY: 'any'
+  };
+
+  /**
+   * Listen to orientation change event
+   * @return {Observable<void>}
+   */
+  @Cordova({
+    eventObservable: true,
+    event: 'orientationchange'
+  })
+  onChange(): Observable<void> { return; }
+
+  /**
    * Lock the orientation to the passed value.
    * See below for accepted values
    * @param orientation {string} The orientation which should be locked. Accepted values see table above.
+   * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
-  lockOrientation(orientation: string): void { }
+  @Cordova({ otherPromise: true })
+  lock(orientation: string): Promise<any> { return; }
 
   /**
    * Unlock and allow all orientations.
    */
   @Cordova({ sync: true })
-  unlockOrientation(): void { }
+  unlock(): void { }
 
   /**
    * Get the current orientation of the device.
    */
   @CordovaProperty
-  orientation: string;
+  type: string;
+
 }
