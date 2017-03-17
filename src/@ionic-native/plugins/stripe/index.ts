@@ -52,6 +52,33 @@ export interface StripeCardTokenParams {
   currency?: string;
 }
 
+export interface StripeBankAccountParams {
+  /**
+   * Routing number.
+   */
+  routing_number: string;
+  /**
+   * Account number.
+   */
+  account_number: string;
+  /**
+   * Currency code. Example: `USD`.
+   */
+  currency: string;
+  /**
+   * Country code. Example: `US`.
+   */
+  country: string;
+  /**
+   * Account holder name.
+   */
+  account_holder_name?: string;
+  /**
+   * Account holder type. This can be `individual` or `company`.
+   */
+  account_holder_type?: string;
+}
+
 /**
  * @name Stripe
  * @description
@@ -103,9 +130,50 @@ export class Stripe {
   /**
    * Create Credit Card Token
    * @param params {StripeCardTokenParams} Credit card information
-   * @return {Promise<string>} returns a promise that resolves with the token, or reject with an error
+   * @return {Promise<string>} returns a promise that resolves with the token, or rejects with an error
    */
   @Cordova()
   createCardToken(params: StripeCardTokenParams): Promise<string> { return; }
+
+  /**
+   * Create a bank account token
+   * @param params {StripeBankAccountParams} Bank account information
+   * @return {Promise<string>} returns a promise that resolves with the token, or rejects with an error
+   */
+  @Cordova()
+  createBankAccountToken(params: StripeBankAccountParams): Promise<string> { return; }
+
+  /**
+   * Validates a credit card number
+   * @param cardNumber {string} Credit card number
+   * @return {Promise<any>} returns a promise that resolves if the number is valid, and rejects if it's invalid
+   */
+  @Cordova()
+  validateCardNumber(cardNumber: string): Promise<any> { return; }
+
+  /**
+   * Validates a CVC number
+   * @param cvc {string} CVC number
+   * @return {Promise<any>} returns a promise that resolves if the number is valid, and rejects if it's invalid
+   */
+  @Cordova()
+  validateCVC(cvc: string): Promise<any> { return; }
+
+  /**
+   * Validates an expiry date
+   * @param expMonth {string} expiry month
+   * @param expYear {string} expiry year
+   * @return {Promise<any>} returns a promise that resolves if the date is valid, and rejects if it's invalid
+   */
+  @Cordova()
+  validateExpiryDate(expMonth: string, expYear: string): Promise<any> { return; }
+
+  /**
+   * Get a card type from card number
+   * @param cardNumber {string} Card number
+   * @return {Promise<string>} returns a promise that resolves with the credit card type
+   */
+  @Cordova()
+  getCardType(cardNumber: string): Promise<string> { return; }
 
 }
