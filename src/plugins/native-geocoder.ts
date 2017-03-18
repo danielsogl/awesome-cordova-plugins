@@ -11,7 +11,7 @@ import { Plugin, Cordova } from './plugin';
  * import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from 'ionic-native';
  *
  * NativeGeocoder.reverseGeocode(52.5072095, 13.1452818)
- *   .then((result: NativeGeocoderReverseResult) => console.log("The address is " + result.address + " in " + result.countryCode))
+ *   .then((result: NativeGeocoderReverseResult) => console.log("The address is " + result.street + " in " + result.countryCode))
  *   .catch((error: any) => console.log(error));
  *
  * NativeGeocoder.forwardGeocode("Berlin")
