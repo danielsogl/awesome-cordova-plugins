@@ -1,4 +1,5 @@
-import {Cordova, Plugin} from './plugin';
+import { Cordova, Plugin } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 declare var window;
 
@@ -363,12 +364,13 @@ export class BackgroundGeolocation {
    * Configure the plugin.
    *
    * @param options {BackgroundGeolocationConfig} options An object of type Config
-   * @return {Promise<any>}
+   * @return {Observable<any>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
+    observable: true
   })
-  static configure(options: BackgroundGeolocationConfig): Promise<any> { return; }
+  static configure(options: BackgroundGeolocationConfig): Observable<any> { return; }
 
   /**
    * Turn ON the background-geolocation system.
