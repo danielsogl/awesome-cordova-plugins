@@ -1,3 +1,18 @@
+<a name="2.9.0"></a>
+# [2.9.0](https://github.com/driftyco/ionic-native/compare/v2.8.1...v2.9.0) (2017-03-18)
+
+
+### Bug Fixes
+
+* **background-geolocation:** configure returns an observable ([961cff1](https://github.com/driftyco/ionic-native/commit/961cff1))
+
+
+### Features
+
+* **background-mode:** added moveToBackground and moveToForeground ([#1181](https://github.com/driftyco/ionic-native/issues/1181)) ([95ac7e1](https://github.com/driftyco/ionic-native/commit/95ac7e1))
+
+
+
 <a name="2.8.1"></a>
 ## [2.8.1](https://github.com/driftyco/ionic-native/compare/v2.8.0...v2.8.1) (2017-03-10)
 
@@ -310,7 +325,7 @@
 
 ### BREAKING CHANGES
 
-* device: device property no longer exists
+* **device:** device property no longer exists
 
 
 
