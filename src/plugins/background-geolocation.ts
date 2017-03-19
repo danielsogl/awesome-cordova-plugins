@@ -262,6 +262,7 @@ export interface BackgroundGeolocationConfig {
  *
  * @usage
  *
+ * Example of Ionic 2 project including cordova-plugin-mauron85-background-geolocation available at: (https://github.com/oliviercherrier/mauron85-background-geolocation-example-ionic2)
  * ```typescript
  * import { BackgroundGeolocation } from 'ionic-native';
  *
