@@ -1,4 +1,3 @@
-<<<<<<< HEAD:src/@ionic-native/plugins/camera-preview/index.ts
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin } from '@ionic-native/core';
 
