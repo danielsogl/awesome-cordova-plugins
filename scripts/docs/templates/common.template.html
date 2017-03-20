@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
 version: "<$ version.current.name $>"
-versionHref: "<$ version.current.href $>"
+versionHref: "<$ version.current.href.replace('content/','') $>"
 path: "<$ doc.path $>"
 category: native
 id: "<$ doc.name|lower|replace(' ','-') $>"
@@ -30,7 +30,7 @@ docType: "<$ doc.docType $>"
       <@ if param.optional @><div><em>(optional)</em></div><@ endif @>
     </td>
     <td>
-      <$ param.returnType | escape $>
+      <code><$ param.returnType | escape $></code>
     </td>
     <td>
       <$ param.description | marked $>
@@ -200,7 +200,9 @@ docType: "<$ doc.docType $>"
     Delegate: <$ doc.delegate $>
   </small>
   <@ endif @>
-
+  <@- if doc.beta == true -@>
+    <span class="beta" title="beta">&beta;</span>
+  <@- endif -@>
 </h1>
 
 <a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
@@ -213,6 +215,15 @@ docType: "<$ doc.docType $>"
 <@- if doc.decorators @>
 
 <@ for prop in doc.decorators[0].argumentInfo @>
+
+<@ if doc.beta == true @>
+<p class="beta-notice">
+  This plugin is still in beta stage and may not work as expected. Please
+  submit any issues to the <a target="_blank"
+  href="<$ prop.repo $>/issues">plugin repo</a>.
+</p>
+<@ endif @>
+
 <pre><code>$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif -@></code></pre>
 <p>Repo:
   <a href="<$ prop.repo $>">
@@ -244,7 +255,7 @@ docType: "<$ doc.docType $>"
 <!-- @platforms tag end -->
 <@ endif @>
 <@ endfor @>
-<@ endif -@>
+<@ endif -@><!-- if doc.decorators -->
 
 <!-- @usage tag -->
 <@ if doc.usage @>
@@ -308,13 +319,13 @@ docType: "<$ doc.docType $>"
 <!-- other classes -->
 <@ for tag in doc.tags.tags -@>
 <@ if tag.tagName == 'classes' -@>
-<h2><a class="anchor" name="related-classes" href="#related-classes"></a>Related Classes</h2>
+<!--<h2><a class="anchor" name="related-classes" href="#related-classes"></a>Related Classes</h2>-->
 <@ set classes = tag.description.split('\n') @>
 <@ for item in classes -@>
 <@ if item.length > 1 @>
 <@ for export in doc.moduleDoc.exports -@>
 <@ if export.name == item @>
-<h3><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h3>
+<h2><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h2>
 <$ documentClass(export) $>
 <@ endif @>
 <@- endfor @>
@@ -327,11 +338,11 @@ docType: "<$ doc.docType $>"
 <!-- interfaces -->
 <@ for tag in doc.tags.tags -@>
 <@ if tag.tagName == 'interfaces' @>
-<h2><a class="anchor" name="interfaces" href="#interfaces"></a>Interfaces</h2>
+<!--<h2><a class="anchor" name="interfaces" href="#interfaces"></a>Interfaces</h2>-->
 <@ set interfaces = tag.description.split('\n') @>
 <@ for item in interfaces -@>
 <@ if item.length > 1 @>
-<h3><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h3>
+<h2><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h2>
 <$ interfaceTable(item) $>
 <@ endif @>
 <@- endfor @>

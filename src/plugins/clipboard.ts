@@ -1,6 +1,5 @@
 import { Cordova, Plugin } from './plugin';
 
-
 /**
  * @name Clipboard
  * @description
@@ -28,7 +27,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'Clipboard',
+  pluginName: 'Clipboard',
   plugin: 'https://github.com/VersoSolutions/CordovaClipboard.git',
   pluginRef: 'cordova.plugins.clipboard',
   repo: 'https://github.com/VersoSolutions/CordovaClipboard',
@@ -39,14 +38,14 @@ export class Clipboard {
   /**
    * Copies the given text
    * @param {string} text Text that gets copied on the system clipboard
-   * @returns {Promise<T>} Returns a promise after the text has been copied
+   * @returns {Promise<any>} Returns a promise after the text has been copied
    */
   @Cordova()
   static copy(text: string): Promise<any> { return; }
 
   /**
    * Pastes the text stored in clipboard
-   * @returns {Promise<T>} Returns a promise after the text has been pasted
+   * @returns {Promise<any>} Returns a promise after the text has been pasted
    */
   @Cordova()
   static paste(): Promise<any> { return; }

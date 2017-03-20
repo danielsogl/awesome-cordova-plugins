@@ -65,14 +65,19 @@ export interface ImageResizerOptions {
  *  () => { console.log('Error occured'); }
  * )
  * ```
+ * @interfaces
+ * ImageResizerOptions
  */
 @Plugin({
-  name: 'ImageResizer',
+  pluginName: 'ImageResizer',
   plugin: 'https://github.com/protonet/cordova-plugin-image-resizer.git',
   pluginRef: 'ImageResizer',
   repo: 'https://github.com/protonet/cordova-plugin-image-resizer'
 })
 export class ImageResizer {
+  /**
+   * @returns {Promise<any>}
+   */
   @Cordova()
   static resize(options: ImageResizerOptions): Promise<any> { return; }
 }

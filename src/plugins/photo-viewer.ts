@@ -12,7 +12,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'PhotoViewer',
+  pluginName: 'PhotoViewer',
   plugin: 'com-sarriaroman-photoviewer',
   pluginRef: 'PhotoViewer',
   repo: 'https://github.com/sarriaroman/photoviewer'
@@ -25,5 +25,5 @@ export class PhotoViewer {
    * @param options {any}
    */
   @Cordova({sync: true})
-  static show(url: string, title?: string, options?: {share?: boolean; }): void { }
+  static show(url: string, title?: string, options?: {share?: boolean}): void { }
 }

@@ -18,7 +18,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'Zip',
+  pluginName: 'Zip',
   plugin: 'cordova-plugin-zip',
   pluginRef: 'zip',
   repo: 'https://github.com/MobileChromeApps/cordova-plugin-zip',
@@ -29,12 +29,12 @@ export class Zip {
    * @param sourceZip {string} Source ZIP file
    * @param destUrl {string} Destination folder
    * @param onProgress {Function} optional callback to be called on progress update
-   * @return  {Promise<number>} returns a promise that resolves with a number. 0 is success, -1 is error
+   * @returns {Promise<number>} returns a promise that resolves with a number. 0 is success, -1 is error
    */
   @Cordova({
     successIndex: 2,
     errorIndex: 4
   })
-  static unzip(sourceZip: string, destUrl: string, onProgress: Function): Promise<number> {return; }
+  static unzip(sourceZip: string, destUrl: string, onProgress?: Function): Promise<number> {return; }
 
 }

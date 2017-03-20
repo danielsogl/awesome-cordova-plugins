@@ -1,8 +1,105 @@
 import { get } from '../util';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
 
 declare var window;
 declare var Promise;
+
+/**
+ * @private
+ */
+export interface PluginConfig {
+  /**
+   * Plugin name, this should match the class name
+   */
+  pluginName: string;
+  /**
+   * Plugin NPM package name
+   */
+  plugin: string;
+  /**
+   * Plugin object reference
+   */
+  pluginRef: string;
+  /**
+   * Github repository URL
+   */
+  repo: string;
+  /**
+   * Custom install command
+   */
+  install?: string;
+  /**
+   * Supported platforms
+   */
+  platforms?: string[];
+}
+
+/**
+ * @private
+ */
+export interface CordovaOptions {
+  /**
+   * Set to true if the wrapped method is a sync function
+   */
+  sync?: boolean;
+  /**
+   * Callback order. Set to reverse if the success/error callbacks are the first 2 arguments that the wrapped method takes.
+   */
+  callbackOrder?: 'reverse';
+  /**
+   * Callback style
+   */
+  callbackStyle?: 'node' | 'object';
+  /**
+   * Set a custom index for the success callback function. This doesn't work if callbackOrder or callbackStyle are set.
+   */
+  successIndex?: number;
+  /**
+   * Set a custom index for the error callback function. This doesn't work if callbackOrder or callbackStyle are set.
+   */
+  errorIndex?: number;
+  /**
+   * Success function property name. This must be set if callbackStyle is set to object.
+   */
+  successName?: string;
+  /**
+   * Error function property name. This must be set if callbackStyle is set to object.
+   */
+  errorName?: string;
+  /**
+   * Set to true to return an observable
+   */
+  observable?: boolean;
+  /**
+   * If observable is set to true, this can be set to a different function name that will cancel the observable.
+   */
+  clearFunction?: string;
+  /**
+   * This can be used if clearFunction is set. Set this to true to call the clearFunction with the same arguments used in the initial function.
+   */
+  clearWithArgs?: boolean;
+  /**
+   * Creates an observable that wraps a global event. Replaces document.addEventListener
+   */
+  eventObservable?: boolean;
+  /**
+   * Event name, this must be set if eventObservable is set to true
+   */
+  event?: string;
+  /**
+   * Element to attach the event listener to, this is optional, defaults to `window`
+   */
+  element?: any;
+  /**
+   * Set to true if the wrapped method returns a promise
+   */
+  otherPromise?: boolean;
+  /**
+   * Supported platforms
+   */
+  platforms?: string[];
+}
 
 /**
  * @private
@@ -19,7 +116,7 @@ export const getPlugin = function(pluginRef: string): any {
  * @param method
  */
 export const pluginWarn = function(pluginObj: any, method?: string) {
-  let pluginName = pluginObj.name, plugin = pluginObj.plugin;
+  let pluginName = pluginObj.pluginName, plugin = pluginObj.plugin;
   if (method) {
     console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
   } else {
@@ -65,20 +162,33 @@ function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Func
     obj[opts.errorName] = reject;
     args.push(obj);
   } else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
-    // If we've specified a success/error index
+    const setSuccessIndex = () => {
+      // If we've specified a success/error index
+      if (opts.successIndex > args.length) {
+        args[opts.successIndex] = resolve;
+      } else {
+        args.splice(opts.successIndex, 0, resolve);
+      }
+    };
 
-    if (opts.successIndex > args.length) {
-      args[opts.successIndex] = resolve;
+    const setErrorIndex = () => {
+      // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behaviour.
+      if (opts.errorIndex > args.length) {
+        args[opts.errorIndex] = reject; // insert the reject fn at the correct specific index
+      } else {
+        args.splice(opts.errorIndex, 0, reject); // otherwise just splice it into the array
+      }
+    };
+
+    if (opts.successIndex > opts.errorIndex) {
+      setErrorIndex();
+      setSuccessIndex();
     } else {
-      args.splice(opts.successIndex, 0, resolve);
+      setSuccessIndex();
+      setErrorIndex();
     }
 
-    // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behaviour.
-    if (opts.errorIndex > args.length) {
-      args[opts.errorIndex] = reject; // insert the reject fn at the correct specific index
-    } else {
-      args.splice(opts.errorIndex, 0, reject); // otherwise just splice it into the array
-    }
+
   } else {
     // Otherwise, let's tack them on to the end of the argument list
     // which is 90% of cases
@@ -95,10 +205,10 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 
   let pluginInstance = getPlugin(pluginObj.pluginRef);
 
-  if (!pluginInstance) {
+  if (!pluginInstance || pluginInstance[methodName] === 'undefined') {
     // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
     if (!window.cordova) {
-      cordovaWarn(pluginObj.name, methodName);
+      cordovaWarn(pluginObj.pluginName, methodName);
       return {
         error: 'cordova_not_available'
       };
@@ -110,11 +220,13 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
     };
   }
 
-  // TODO: Illegal invocation needs window context
-  return get(window, pluginObj.pluginRef)[methodName].apply(pluginInstance, args);
+  return pluginInstance[methodName].apply(pluginInstance, args);
 }
 
-function getPromise(cb) {
+/**
+ * @private
+ */
+export function getPromise(cb) {
 
   const tryNativePromise = () => {
     if (window.Promise) {
@@ -178,12 +290,12 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
       try {
         if (opts.clearFunction) {
           if (opts.clearWithArgs) {
-            return get(window, pluginObj.pluginRef)[opts.clearFunction].apply(pluginObj, args);
+            return callCordovaPlugin(pluginObj, opts.clearFunction, args, opts, observer.next.bind(observer), observer.error.bind(observer));
           }
           return get(window, pluginObj.pluginRef)[opts.clearFunction].call(pluginObj, pluginResult);
         }
       } catch (e) {
-        console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
+        console.warn('Unable to clear the previous observable watch for', pluginObj.pluginName, methodName);
         console.error(e);
       }
     };
@@ -210,7 +322,7 @@ function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
             }
             return pluginObj._objectInstance[opts.clearFunction].call(pluginObj, pluginResult);
           } catch (e) {
-            console.warn('Unable to clear the previous observable watch for', pluginObj.name, methodName);
+            console.warn('Unable to clear the previous observable watch for', pluginObj.pluginName, methodName);
             console.error(e);
           }
         };
@@ -230,14 +342,12 @@ function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
 
 /**
  * Wrap the event with an observable
- * @param event
+ * @param event even name
+ * @param element The element to attach the event listener to
  * @returns {Observable}
  */
-function wrapEventObservable(event: string): Observable<any> {
-  return new Observable(observer => {
-    window.addEventListener(event, observer.next.bind(observer), false);
-    return () => window.removeEventListener(event, observer.next.bind(observer), false);
-  });
+function wrapEventObservable(event: string, element: any = window): Observable<any> {
+  return Observable.fromEvent(element, event);
 }
 
 /**
@@ -255,7 +365,7 @@ function overrideFunction(pluginObj: any, methodName: string, args: any[], opts:
     if (!pluginInstance) {
       // Do this check in here in the case that the Web API for this plugin is available (for example, Geolocation).
       if (!window.cordova) {
-        cordovaWarn(pluginObj.name, methodName);
+        cordovaWarn(pluginObj.pluginName, methodName);
         observer.error({
           error: 'cordova_not_available'
         });
@@ -268,14 +378,6 @@ function overrideFunction(pluginObj: any, methodName: string, args: any[], opts:
       return;
     }
 
-    let method = pluginInstance[methodName];
-    if (!method) {
-      observer.error({
-        error: 'no_such_method'
-      });
-      observer.complete();
-      return;
-    }
     pluginInstance[methodName] = observer.next.bind(observer);
   });
 }
@@ -288,7 +390,7 @@ function overrideFunction(pluginObj: any, methodName: string, args: any[], opts:
  * @param opts
  * @returns {function(...[any]): (undefined|*|Observable|*|*)}
  */
-export const wrap = function(pluginObj: any, methodName: string, opts: any = {}) {
+export const wrap = function(pluginObj: any, methodName: string, opts: CordovaOptions = {}) {
   return (...args) => {
     if (opts.sync) {
       // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
@@ -296,7 +398,7 @@ export const wrap = function(pluginObj: any, methodName: string, opts: any = {})
     } else if (opts.observable) {
       return wrapObservable(pluginObj, methodName, args, opts);
     } else if (opts.eventObservable && opts.event) {
-      return wrapEventObservable(opts.event);
+      return wrapEventObservable(opts.event, opts.element);
     } else if (opts.otherPromise) {
       return wrapOtherPromise(pluginObj, methodName, args, opts);
     } else {
@@ -304,6 +406,7 @@ export const wrap = function(pluginObj: any, methodName: string, opts: any = {})
     }
   };
 };
+
 
 /**
  * @private
@@ -313,7 +416,7 @@ export const wrap = function(pluginObj: any, methodName: string, opts: any = {})
  * @usage
  * ```typescript
  * @Plugin({
- *  name: 'MyPlugin',
+ *  pluginName: 'MyPlugin',
  *  plugin: 'cordova-plugin-myplugin',
  *  pluginRef: 'window.myplugin'
  *  })
@@ -324,7 +427,7 @@ export const wrap = function(pluginObj: any, methodName: string, opts: any = {})
  *  }
  * ```
  */
-export function Plugin(config) {
+export function Plugin(config: PluginConfig) {
   return function(cls) {
 
     // Add these fields to the class
@@ -360,7 +463,7 @@ export function Plugin(config) {
  * Wrap a stub function in a call to a Cordova plugin, checking if both Cordova
  * and the required plugin are installed.
  */
-export function Cordova(opts: any = {}) {
+export function Cordova(opts: CordovaOptions = {}) {
   return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
     return {
       value: function(...args: any[]) {
@@ -391,43 +494,47 @@ export function CordovaInstance(opts: any = {}) {
  *
  * Before calling the original method, ensure Cordova and the plugin are installed.
  */
-export function CordovaProperty(target: Function, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  let originalMethod = descriptor.get;
-
-  descriptor.get = function(...args: any[]) {
-    if (!window.cordova) {
-      cordovaWarn(this.name, null);
-      return {};
+export function CordovaProperty(target: any, key: string) {
+  const exists = () => {
+    let pluginInstance = getPlugin(target.pluginRef);
+    if (!pluginInstance || typeof pluginInstance[key] === 'undefined') {
+      pluginWarn(target, key);
+      return false;
     }
-    let pluginObj: any = this;
-    let pluginInstance = getPlugin(pluginObj.pluginRef);
-    if (!pluginInstance) {
-      pluginWarn(this, key);
-      return {};
-    }
-    return originalMethod.apply(this, args);
+    return true;
   };
 
-  return descriptor;
+  Object.defineProperty(target, key, {
+    get: () => {
+      if (exists()) {
+        return getPlugin(target.pluginRef)[key];
+      } else {
+        return null;
+      }
+    },
+    set: (value) => {
+      if (exists()) {
+        getPlugin(target.pluginRef)[key] = value;
+      }
+    }
+  });
 }
 
 /**
  * @private
  * @param target
  * @param key
- * @param descriptor
  * @constructor
  */
-export function InstanceProperty(target: any, key: string, descriptor: TypedPropertyDescriptor<any>) {
-  descriptor.get = function() {
-    return this._objectInstance[key];
-  };
-
-  descriptor.set = function(...args: any[]) {
-    this._objectInstance[key] = args[0];
-  };
-
-  return descriptor;
+export function InstanceProperty(target: any, key: string) {
+  Object.defineProperty(target, key, {
+    get: function(){
+      return this._objectInstance[key];
+    },
+    set: function(value){
+      this._objectInstance[key] = value;
+    }
+  });
 }
 
 /**
@@ -441,6 +548,55 @@ export function CordovaFunctionOverride(opts: any = {}) {
     return {
       value: function(...args: any[]) {
         return overrideFunction(this, methodName, opts);
+      }
+    };
+  };
+}
+
+/**
+ * @private
+ */
+export interface CordovaFiniteObservableOptions extends CordovaOptions {
+  /**
+   * Function that gets a result returned from plugin's success callback, and decides whether it is last value and observable should complete.
+   */
+  resultFinalPredicate?: (result: any) => boolean;
+  /**
+   * Function that gets called after resultFinalPredicate, and removes service data that indicates end of stream from the result.
+   */
+  resultTransform?: (result: any) => any;
+}
+
+/**
+ * @private
+ *
+ * Wraps method that returns an observable that can be completed. Provided opts.resultFinalPredicate dictates when the observable completes.
+ *
+ */
+export function CordovaFiniteObservable(opts: CordovaFiniteObservableOptions = {}) {
+  if (opts.observable === false) {
+    throw new Error('CordovaFiniteObservable decorator can only be used on methods that returns observable. Please provide correct option.');
+  }
+  opts.observable = true;
+  return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
+    return {
+      value: function(...args: any[]) {
+        let wrappedObservable: Observable<any> = wrap(this, methodName, opts).apply(this, args);
+        return new Observable<any>((observer) => {
+          let wrappedSubscription = wrappedObservable.subscribe({
+            next: (x) => {
+              observer.next(opts.resultTransform ? opts.resultTransform(x) : x);
+              if (opts.resultFinalPredicate && opts.resultFinalPredicate(x)) {
+                observer.complete();
+              }
+            },
+            error: (err) => { observer.error(err); },
+            complete: () => { observer.complete(); }
+          });
+          return () => {
+            wrappedSubscription.unsubscribe();
+          };
+        });
       }
     };
   };

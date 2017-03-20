@@ -1,8 +1,7 @@
 import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
 
-
-export interface AccelerationData {
+export interface DeviceMotionAccelerationData {
 
   /**
    * Amount of acceleration on the x-axis. (in m/s^2)
@@ -26,7 +25,7 @@ export interface AccelerationData {
 
 }
 
-export interface AccelerometerOptions {
+export interface DeviceMotionAccelerometerOptions {
 
   /**
    * Requested period of calls to accelerometerSuccess with acceleration data in Milliseconds. Default: 10000
@@ -42,17 +41,17 @@ export interface AccelerometerOptions {
  *
  * @usage
  * ```typescript
- * import { DeviceMotion } from 'ionic-native';
+ * import { DeviceMotion, DeviceMotionAccelerationData } from 'ionic-native';
  *
  *
  * // Get the device current acceleration
  * DeviceMotion.getCurrentAcceleration().then(
- *   (acceleration: AccelerationData) => console.log(acceleration),
+ *   (acceleration: DeviceMotionAccelerationData) => console.log(acceleration),
  *   (error: any) => console.log(error)
  * );
  *
  * // Watch device acceleration
- * var subscription = DeviceMotion.watchAcceleration().subscribe((acceleration: AccelerationData) => {
+ * var subscription = DeviceMotion.watchAcceleration().subscribe((acceleration: DeviceMotionAccelerationData) => {
  *   console.log(acceleration);
  * });
  *
@@ -60,9 +59,12 @@ export interface AccelerometerOptions {
  * subscription.unsubscribe();
  *
  * ```
+ * @interfaces
+ * DeviceMotionAccelerationData
+ * DeviceMotionAccelerometerOptions
  */
 @Plugin({
-  name: 'DeviceMotion',
+  pluginName: 'DeviceMotion',
   plugin: 'cordova-plugin-device-motion',
   pluginRef: 'navigator.accelerometer',
   repo: 'https://github.com/apache/cordova-plugin-device-motion'
@@ -71,21 +73,21 @@ export class DeviceMotion {
 
   /**
    * Get the current acceleration along the x, y, and z axes.
-   * @returns {Promise<any>} Returns object with x, y, z, and timestamp properties
+   * @returns {Promise<DeviceMotionAccelerationData>} Returns object with x, y, z, and timestamp properties
    */
   @Cordova()
-  static getCurrentAcceleration(): Promise<AccelerationData> { return; }
+  static getCurrentAcceleration(): Promise<DeviceMotionAccelerationData> { return; }
 
   /**
    * Watch the device acceleration. Clear the watch by unsubscribing from the observable.
    * @param {AccelerometerOptions} options list of options for the accelerometer.
-   * @returns {Observable<AccelerationData>} Observable returns an observable that you can subscribe to
+   * @returns {Observable<DeviceMotionAccelerationData>} Observable returns an observable that you can subscribe to
    */
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
     clearFunction: 'clearWatch'
   })
-  static watchAcceleration(options?: AccelerometerOptions): Observable<AccelerationData> { return; }
+  static watchAcceleration(options?: DeviceMotionAccelerometerOptions): Observable<DeviceMotionAccelerationData> { return; }
 
 }

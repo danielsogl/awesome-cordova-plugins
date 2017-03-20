@@ -38,9 +38,12 @@ export interface SmsOptionsAndroid {
  * // Send a text message using default options
  * SMS.send('416123456', 'Hello world!');
  * ```
+ * @interfaces
+ * SmsOptions
+ * SmsOptionsAndroid
  */
 @Plugin({
-  name: 'SMS',
+  pluginName: 'SMS',
   plugin: 'cordova-sms-plugin',
   pluginRef: 'sms',
   repo: 'https://github.com/cordova-sms/cordova-sms-plugin',
@@ -55,11 +58,23 @@ export class SMS {
    * @param options {SmsOptions} Options
    * @returns {Promise<any>} Resolves promise when the SMS has been sent
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 3,
+    errorIndex: 4
+  })
   static send(
     phoneNumber: string | string[],
     message: string,
     options?: SmsOptions
-    ): Promise<any> { return; }
+  ): Promise<any> { return; }
+
+  /**
+   * This function lets you know if the app has permission to send SMS
+   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if we have permission
+   */
+  @Cordova({
+    platforms: ['Android']
+  })
+  static hasPermission(): Promise<boolean> { return; }
 
 }

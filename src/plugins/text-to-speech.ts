@@ -23,9 +23,11 @@ export interface TTSOptions {
  *   .catch((reason: any) => console.log(reason));
  *
  * ```
+ * @interfaces
+ * TTSOptions
  */
 @Plugin({
-  name: 'TextToSpeech',
+  pluginName: 'TextToSpeech',
   plugin: 'cordova-plugin-tts',
   pluginRef: 'TTS',
   repo: 'https://github.com/vilic/cordova-plugin-tts'
@@ -42,6 +44,10 @@ export class TextToSpeech {
     errorIndex: 2
   })
   static speak(options: string | TTSOptions): Promise<any> {
+    return;
+  }
+
+  static stop(): Promise<any> {
     return;
   }
 

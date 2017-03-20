@@ -15,7 +15,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'Splashscreen',
+  pluginName: 'Splashscreen',
   plugin: 'cordova-plugin-splashscreen',
   pluginRef: 'navigator.splashscreen',
   repo: 'https://github.com/apache/cordova-plugin-splashscreen'

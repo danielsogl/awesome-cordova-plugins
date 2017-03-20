@@ -1,6 +1,5 @@
 import { Cordova, Plugin } from './plugin';
 
-
 export interface LaunchNavigatorOptions {
 
   /**
@@ -80,9 +79,11 @@ export interface LaunchNavigatorOptions {
  *     error => console.log('Error launching navigator', error)
  *   );
  * ```
+ * @interfaces
+ * LaunchNavigatorOptions
  */
 @Plugin({
-  name: 'LaunchNavigator',
+  pluginName: 'LaunchNavigator',
   plugin: 'uk.co.workingedge.phonegap.plugin.launchnavigator',
   pluginRef: 'launchnavigator',
   repo: 'https://github.com/dpa99c/phonegap-launch-navigator.git'
@@ -107,12 +108,14 @@ export class LaunchNavigator {
   /**
    * Determines if the given app is installed and available on the current device.
    * @param app {string}
+   * @returns {Promise<any>}
    */
   @Cordova()
   static isAppAvailable(app: string): Promise<any> { return; }
 
   /**
    * Returns a list indicating which apps are installed and available on the current device.
+   * @returns {Promise<string[]>}
    */
   @Cordova()
   static availableApps(): Promise<string[]> { return; }
@@ -120,6 +123,7 @@ export class LaunchNavigator {
   /**
    * Returns the display name of the specified app.
    * @param app {string}
+   * @returns {string}
    */
   @Cordova({ sync: true })
   static getAppDisplayName(app: string): string { return; }
@@ -127,6 +131,7 @@ export class LaunchNavigator {
   /**
    * Returns list of supported apps on a given platform.
    * @param platform {string}
+   * @returns {string[]}
    */
   @Cordova({ sync: true })
   static getAppsForPlatform(platform: string): string[] { return; }
@@ -135,6 +140,7 @@ export class LaunchNavigator {
    * Indicates if an app on a given platform supports specification of transport mode.
    * @param app {string} specified as a string, you can use one of the constants, e.g `LaunchNavigator.APP.GOOGLE_MAPS`
    * @param platform {string}
+   * @returns {boolean}
    */
   @Cordova({ sync: true })
   static supportsTransportMode(app: string, platform: string): boolean { return; }
@@ -143,6 +149,7 @@ export class LaunchNavigator {
    * Returns the list of transport modes supported by an app on a given platform.
    * @param app {string}
    * @param platform {string}
+   * @returns {string[]}
    */
   @Cordova({ sync: true })
   static getTransportModes(app: string, platform: string): string[] { return; }
@@ -152,6 +159,7 @@ export class LaunchNavigator {
    * Note that currently only Google Maps on Android does.
    * @param app {string}
    * @param platform {string}
+   * @returns {boolean}
    */
   @Cordova({ sync: true })
   static supportsLaunchMode(app: string, platform: string): boolean { return; }
@@ -160,16 +168,31 @@ export class LaunchNavigator {
    * Indicates if an app on a given platform supports specification of start location.
    * @param app {string}
    * @param platform {string}
+   * @returns {boolean}
    */
   @Cordova({ sync: true })
   static supportsStart(app: string, platform: string): boolean { return; }
 
+  /**
+   * @param app {string}
+   * @param platform {string}
+   * @returns {boolean}
+   */
   @Cordova({ sync: true })
   static supportsStartName(app: string, platform: string): boolean { return; }
 
+  /**
+   * @param app {string}
+   * @param platform {string}
+   * @returns {boolean}
+   */
   @Cordova({ sync: true })
   static supportsDestName(app: string, platform: string): boolean { return; }
 
+  /**
+   * @param destination {string | number[]}
+   * @param options {LaunchNavigatorOptions}
+   */
   @Cordova({ sync: true })
   static userSelect(destination: string | number[], options: LaunchNavigatorOptions): void { }
 

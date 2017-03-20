@@ -5,6 +5,15 @@ module.exports = function collectInputsOutputs() {
     $process: function(docs) {
       docs.forEach(function(doc) {
 
+        if (doc.statics && doc.statics.length) {
+          for (var i in doc.statics) {
+            // identify properties to differentiate from methods
+            if (typeof doc.statics[i].parameters == 'undefined') {
+              doc.statics[i].isProperty = true;
+            }
+          }
+        }
+
         if (doc.members && doc.members.length) {
           var members = [];
           var inputs = [];

@@ -22,7 +22,7 @@ declare var window;
  *
  */
 @Plugin({
-  name: 'StatusBar',
+  pluginName: 'StatusBar',
   plugin: 'cordova-plugin-statusbar',
   pluginRef: 'StatusBar',
   repo: 'https://github.com/apache/cordova-plugin-statusbar',
@@ -117,6 +117,6 @@ export class StatusBar {
    * Whether the StatusBar is currently visible or not.
    */
   @CordovaProperty
-  static get isVisible() { return window.StatusBar.isVisible; }
+  static isVisible: boolean;
 
 }

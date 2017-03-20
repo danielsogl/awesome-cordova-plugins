@@ -23,10 +23,10 @@ function run {
   # CD in to the site dir to commit updated docs
   cd $SITE_DIR
 
-  CHANGES=$(git status --porcelain)
-
   # if no changes, don't commit
-  if [[ "$CHANGES" == "" ]]; then
+  CHANGED=$(git diff-index --name-only HEAD --)
+  if [ -z "$CHANGED" ];
+  then
     echo "-- No changes detected for the following commit, docs not updated."
     echo "https://github.com/driftyco/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1"
   else
@@ -39,7 +39,7 @@ function run {
     git fetch
     git rebase
 
-    git push origin master
+    git push origin master || :
 
     echo "-- Updated docs for $VERSION_NAME succesfully!"
   fi

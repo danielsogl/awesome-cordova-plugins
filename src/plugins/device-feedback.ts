@@ -25,7 +25,7 @@ import { Plugin, Cordova } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'DeviceFeedback',
+  pluginName: 'DeviceFeedback',
   plugin: 'cordova-plugin-velda-devicefeedback',
   pluginRef: 'plugins.deviceFeedback',
   repo: 'https://github.com/VVelda/device-feedback',
@@ -48,6 +48,7 @@ export class DeviceFeedback {
 
   /**
    * Check if haptic and acoustic feedback is enabled by user settings.
+   * @returns {Promise<any>}
    */
   @Cordova()
   static isFeedbackEnabled(): Promise<{ haptic: boolean; acoustic: boolean; }> { return; }

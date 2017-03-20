@@ -1,6 +1,5 @@
 import { Cordova, Plugin } from './plugin';
 
-
 /**
  * @name Flashlight
  * @description This plugin allows you to switch the flashlight / torch of the device on and off.
@@ -16,7 +15,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'Flashlight',
+  pluginName: 'Flashlight',
   plugin: 'cordova-plugin-flashlight',
   pluginRef: 'window.plugins.flashlight',
   repo: 'https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git'

@@ -1,5 +1,6 @@
 import { Cordova, CordovaInstance, Plugin, InstanceProperty, getPlugin, pluginWarn } from './plugin';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
 
 declare var plugin: any;
 
@@ -37,88 +38,160 @@ export const GoogleMapsAnimation = {
 };
 
 /**
+ * @private
+ */
+export const GoogleMapsMapTypeId = {
+    HYBRID: 'MAP_TYPE_HYBRID',
+    NONE: 'MAP_TYPE_NONE',
+    NORMAL: 'MAP_TYPE_NORMAL',
+    ROADMAP: 'MAP_TYPE_ROADMAP',
+    SATELLITE: 'MAP_TYPE_SATELLITE',
+    TERAIN: 'MAP_TYPE_TERRAIN'
+};
+
+/**
  * @name Google Maps
  * @description This plugin uses the native Google Maps SDK
  * @usage
  * ```
- * import { GoogleMap, GoogleMapsEvent } from 'ionic-native';
+ * import {
+ *  GoogleMap,
+ *  GoogleMapsEvent,
+ *  GoogleMapsLatLng,
+ *  CameraPosition,
+ *  GoogleMapsMarkerOptions,
+ *  GoogleMapsMarker,
+ *  GoogleMapsMapTypeId
+ * } from 'ionic-native';
  *
- * // create a new map using element ID
- * let map = new GoogleMap('elementID');
+ * export class MapPage {
+ *  constructor() {}
  *
- * // or create a new map by passing HTMLElement
- * let element: HTMLElement = document.getElementById('elementID');
+ * // Load map only after view is initialize
+ * ngAfterViewInit() {
+ *  this.loadMap();
+ * }
  *
- * // In Angular 2 or Ionic 2, if we have this element in html: <div #map></div>
- * // then we can use @ViewChild to find the element and pass it to GoogleMaps
- * @ViewChild('map') mapElement;
- * let map = new GoogleMap(mapElement);
+ * loadMap() {
+ *  // make sure to create following structure in your view.html file
+ *  // and add a height (for example 100%) to it, else the map won't be visible
+ *  // <ion-content>
+ *  //  <div #map id="map" style="height:100%;"></div>
+ *  // </ion-content>
  *
- * // listen to MAP_READY event
- * map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
+ *  // create a new map by passing HTMLElement
+ *  let element: HTMLElement = document.getElementById('map');
+ *
+ *  let map = new GoogleMap(element);
+ *
+ *  // create LatLng object
+ *  let ionic: GoogleMapsLatLng = new GoogleMapsLatLng(43.0741904,-89.3809802);
+ *
+ *  // create CameraPosition
+ *  let position: CameraPosition = {
+ *    target: ionic,
+ *    zoom: 18,
+ *    tilt: 30
+ *  };
+ *
+ *  // listen to MAP_READY event
+ *  map.one(GoogleMapsEvent.MAP_READY).then(() => {
+ *    // move the map's camera to position
+ *    map.moveCamera(position); // works on iOS and Android
+ * });
  *
  *
- * // create LatLng object
- * let ionic: GoogleMapsLatLng = new GoogleMapsLatLng(43.0741904,-89.3809802);
+ *  // create new marker
+ *  let markerOptions: GoogleMapsMarkerOptions = {
+ *    position: ionic,
+ *    title: 'Ionic'
+ *  };
  *
- * // create CameraPosition
- * let position: CameraPosition = {
- *   target: ionic,
- *   zoom: 18,
- *   tilt: 30
- * };
- *
- * // move the map's camera to position
- * map.moveCamera(position);
- *
- * // create new marker
- * let markerOptions: GoogleMapsMarkerOptions = {
- *   position: ionic,
- *   title: 'Ionic'
- * };
- *
- * map.addMarker(markerOptions)
- *   .then((marker: GoogleMapsMarker) => {
- *     marker.showInfoWindow();
- *   });
+ *  map.addMarker(markerOptions)
+ *    .then((marker: GoogleMapsMarker) => {
+ *       marker.showInfoWindow();
+ *     });
+ *  }
+ * });
+ * }
  * ```
  */
-let pluginMap = {
-  name: 'GoogleMap',
+@Plugin({
+  pluginName: 'GoogleMap',
   pluginRef: 'plugin.google.maps.Map',
   plugin: 'cordova-plugin-googlemaps',
   repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
   install: 'ionic plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"'
-};
-@Plugin(pluginMap)
+})
 export class GoogleMap {
   _objectInstance: any;
 
   /**
    * Checks if a map object has been created and is available.
    *
-   * @return {Promise<boolean>}
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   static isAvailable(): Promise<boolean> { return; }
 
-  constructor(element: string|HTMLElement, options?: any) {
+  constructor(element: string | HTMLElement, options?: any) {
     if (!!getPlugin('plugin.google.maps.Map')) {
       if (typeof element === 'string') {
         element = document.getElementById(<string>element);
       }
       this._objectInstance = plugin.google.maps.Map.getMap(element, options);
     } else {
-      pluginWarn(pluginMap);
+      pluginWarn({
+        pluginName: 'GoogleMap',
+        plugin: 'plugin.google.maps.Map'
+      });
     }
   }
 
   /**
+   * Adds an event listener.
+   *
+   * @returns {Observable<any>}
+   */
+  addEventListener(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Adds an event listener that works once.
+   *
+   * @returns {Promise<any>}
+   */
+  addListenerOnce(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
+    );
+  }
+
+  /**
+   * Gets a value
+   * @param key
+   */
+  @CordovaInstance({ sync: true })
+  get(key: string): any { return; }
+
+  /**
+   * Sets a value
+   * @param key
+   * @param value
+   */
+  @CordovaInstance({ sync: true })
+  set(key: string, value: any): void { }
+
+  /**
    * Listen to a map event.
    *
-   * @return {Observable<any>}
+   * @returns {Observable<any>}
    */
-  on(event: any): Observable<any> {
+  on(eventName: string): Observable<any> {
     if (!this._objectInstance) {
       return new Observable((observer) => {
         observer.error({ error: 'plugin_not_installed' });
@@ -127,7 +200,7 @@ export class GoogleMap {
 
     return new Observable(
       (observer) => {
-        this._objectInstance.on(event, observer.next.bind(observer));
+        this._objectInstance.on(eventName, observer.next.bind(observer));
         return () => this._objectInstance.off(event);
       }
     );
@@ -136,16 +209,22 @@ export class GoogleMap {
   /**
    * Listen to a map event only once.
    *
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
-  one(event: any): Promise<any> {
+  one(eventName: string): Promise<any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
     }
     return new Promise<any>(
-      resolve => this._objectInstance.one(event, resolve)
+      resolve => this._objectInstance.one(eventName, resolve)
     );
   }
+
+  /**
+   * Clears all stored values
+   */
+  @CordovaInstance({ sync: true })
+  empty(): void { }
 
   @CordovaInstance({ sync: true })
   setDebuggable(isDebuggable: boolean): void { }
@@ -156,7 +235,7 @@ export class GoogleMap {
   /**
    * Get the position of the camera.
    *
-   * @return {Promise<CameraPosition>}
+   * @returns {Promise<CameraPosition>}
    */
   @CordovaInstance()
   getCameraPosition(): Promise<CameraPosition> { return; }
@@ -164,7 +243,7 @@ export class GoogleMap {
   /**
    * Get the location of the user.
    *
-   * @return {Promise<MyLocation>}
+   * @returns {Promise<MyLocation>}
    */
   @CordovaInstance()
   getMyLocation(options?: MyLocationOptions): Promise<MyLocation> { return; }
@@ -172,7 +251,7 @@ export class GoogleMap {
   /**
    * Get the visible region.
    *
-   * @return {Promise<VisibleRegion>}
+   * @returns {Promise<VisibleRegion>}
    */
   @CordovaInstance()
   getVisibleRegion(): Promise<VisibleRegion> { return; }
@@ -193,14 +272,20 @@ export class GoogleMap {
   setZoom(zoomLevel: number): void { }
 
   @CordovaInstance({ sync: true })
-  setMapTypeId(typeId: string): void { }
+  setMapTypeId(mapTypeId: string): void { }
 
   @CordovaInstance({ sync: true })
   setTilt(tiltLevel: number): void { }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   animateCamera(animateCameraOptions: AnimateCameraOptions): Promise<any> { return; }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   moveCamera(cameraPosition: CameraPosition): Promise<any> { return; }
 
@@ -219,6 +304,9 @@ export class GoogleMap {
   @CordovaInstance({ sync: true })
   setAllGesturesEnabled(enabled: boolean): void { }
 
+  /**
+   * @returns {Promise<GoogleMapsMarker | any>}
+   */
   addMarker(options: GoogleMapsMarkerOptions): Promise<GoogleMapsMarker | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -236,6 +324,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsCircle | any>}
+   */
   addCircle(options: GoogleMapsCircleOptions): Promise<GoogleMapsCircle | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -253,6 +344,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsPolygon | any>}
+   */
   addPolygon(options: GoogleMapsPolygonOptions): Promise<GoogleMapsPolygon | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -270,6 +364,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsPolyline | any>}
+   */
   addPolyline(options: GoogleMapsPolylineOptions): Promise<GoogleMapsPolyline | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -287,6 +384,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsTileOverlay | any>}
+   */
   addTileOverlay(options: GoogleMapsTileOverlayOptions): Promise<GoogleMapsTileOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -304,6 +404,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsGroundOverlay | any>}
+   */
   addGroundOverlay(options: GoogleMapsGroundOverlayOptions): Promise<GoogleMapsGroundOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -321,6 +424,9 @@ export class GoogleMap {
     );
   }
 
+  /**
+   * @returns {Promise<GoogleMapsKmlOverlay | any>}
+   */
   addKmlOverlay(options: GoogleMapsKmlOverlayOptions): Promise<GoogleMapsKmlOverlay | any> {
     if (!this._objectInstance) {
       return Promise.reject({ error: 'plugin_not_installed' });
@@ -359,12 +465,21 @@ export class GoogleMap {
   @CordovaInstance({ sync: true })
   refreshLayout(): void { }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   fromLatLngToPoint(latLng: GoogleMapsLatLng, point: any): Promise<any> { return; }
 
+  /**
+   * @returns {Promise<GoogleMapsLatLng>}
+   */
   @CordovaInstance()
   fromPointToLatLng(point: any, latLng: GoogleMapsLatLng): Promise<GoogleMapsLatLng> { return; }
 
+  /**
+   * @returns {Promise<any>}
+   */
   @CordovaInstance()
   toDataURL(): Promise<any> { return; }
 
@@ -426,18 +541,80 @@ export interface VisibleRegion {
  * @private
  */
 export interface GoogleMapsMarkerOptions {
+  /**
+   * The icon image url or properties. Also you can specify HTML Color values. Alternatively you can specify the image as Base64
+   */
   icon?: any;
+
+  /**
+   * The content of the infoWindow.
+   */
   title?: string;
+
+  /**
+   * The snippet of the infoWindow.
+   */
   snippet?: string;
+
+  /**
+   * The position of the marker.
+   */
   position?: GoogleMapsLatLng;
+
+  /**
+   * 	Specify the anchor of the InfoWindow
+   */
   infoWindowAnchor?: number[];
+
+  /**
+   * Set true if you want to enable to drag the marker. (Default: false) Important! Drag starts after long pressed on the marker.
+   */
   draggable?: boolean;
+
+  /**
+   * 	Set true if you want to use a flat marker. (Default: false)
+   */
   flat?: boolean;
+
+  /**
+   * 	Set rotation angle. (Default: 0)
+   */
   rotation?: number;
+
+  /**
+   * Set false if you want to hide. (Default: true)
+   */
   visible?: boolean;
+
+  /**
+   * Specify the options for title.
+   */
   styles?: any;
+
+  /**
+   * Which animation to play when marker is added to a map.
+   */
   animation?: string;
+
+  /**
+   * 	iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
+   */
   zIndex?: number;
+
+  /**
+   * Set to true to disable auto panning when the marker is clicked.
+   */
+  disableAutoPan?: boolean;
+
+  /**
+   * Function to be invoked when the user clicks on the marker
+   */
+  markerClick?: Function;
+
+  /**
+   * Function to be invoked when the user clicks on the info box
+   */
+  infoClick?: Function;
 }
 
 /**
@@ -458,87 +635,256 @@ export class GoogleMapsMarker {
 
   constructor(private _objectInstance: any) { }
 
-  addEventListener(event: any): Observable<any> {
+  /**
+   * Adds an event listener.
+   *
+   * @returns {Observable<any>}
+   */
+  addEventListener(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Adds an event listener that works once.
+   *
+   * @returns {Promise<any>}
+   */
+  addListenerOnce(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
+    );
+  }
+
+  /**
+   * Gets a value
+   * @param key
+   */
+  @CordovaInstance({ sync: true })
+  get(key: string): any { return; }
+
+  /**
+   * Sets a value
+   * @param key
+   * @param value
+   */
+  @CordovaInstance({ sync: true })
+  set(key: string, value: any): void { }
+
+  /**
+   * Listen to a map event.
+   *
+   * @returns {Observable<any>}
+   */
+  on(eventName: string): Observable<any> {
+    if (!this._objectInstance) {
+      return new Observable((observer) => {
+        observer.error({ error: 'plugin_not_installed' });
+      });
+    }
+
     return new Observable(
       (observer) => {
-        this._objectInstance.addEventListener(event, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
+        this._objectInstance.on(eventName, observer.next.bind(observer));
+        return () => this._objectInstance.off(event);
       }
     );
   }
 
+  /**
+   * Listen to a map event only once.
+   *
+   * @returns {Promise<any>}
+   */
+  one(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.one(eventName, resolve)
+    );
+  }
+
+  /**
+   * Clears all stored values
+   */
+  @CordovaInstance({ sync: true })
+  empty(): void { }
+
+  /**
+   * Return true if the marker is visible
+   */
   @CordovaInstance({ sync: true })
   isVisible(): boolean { return; }
 
+  /**
+   * Set false if you want to hide the marker.
+   * @param visible
+   */
   @CordovaInstance()
   setVisible(visible: boolean): void { }
 
+  /**
+   * Return the marker hash code.
+   * @return {string} Marker hash code
+   */
   @CordovaInstance({ sync: true })
   getHashCode(): string { return; }
 
+  /**
+   * Remove the marker completely.
+   */
   @CordovaInstance({ sync: true })
   remove(): void { }
 
+  /**
+   * Change the marker opacity.
+   * @param alpha {number} Opacity
+   */
   @CordovaInstance({ sync: true })
   setOpacity(alpha: number): void { }
 
+  /**
+   * Return the marker opacity.
+   * @return {number} Opacity
+   */
   @CordovaInstance({ sync: true })
   getOpacity(): number { return; }
 
+  /**
+   * iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
-  setZIndex(): void { }
+  setZIndex(): number { return; }
 
+  /**
+   * Change the info window anchor. This defaults to 50% from the left of the image and at the bottom of the image.
+   * @param x {number}
+   * @param y {number}
+   */
   @CordovaInstance({ sync: true })
   setIconAnchor(x: number, y: number): void { }
 
+  /**
+   * Change the info window anchor. This defaults to 50% from the left of the image and at the top of the image.
+   * @param x {number}
+   * @param y {number}
+   */
   @CordovaInstance({ sync: true })
   setInfoWindowAnchor(x: number, y: number): void { }
 
+  /**
+   * 	Set true if you allows all users to drag the marker.
+   * @param draggable {boolean}
+   */
   @CordovaInstance({ sync: true })
   setDraggable(draggable: boolean): void { }
 
+  /**
+   * Return true if the marker drag is enabled.
+   * @return {boolean}
+   */
   @CordovaInstance({ sync: true })
   isDraggable(): boolean { return; }
 
+  /**
+   * Set true if you want to be flat marker.
+   * @param flat {boolean}
+   */
   @CordovaInstance({ sync: true })
   setFlat(flat: boolean): void { return; }
 
+  /**
+   * Change icon url and/or size
+   * @param icon
+   */
   @CordovaInstance({ sync: true })
   setIcon(icon: GoogleMapsMarkerIcon): void { return; }
 
+  /**
+   * Change title of the infoWindow.
+   * @param title {string}
+   */
   @CordovaInstance({ sync: true })
   setTitle(title: string): void { }
 
+  /**
+   * Return the title strings.
+   * @return {string}
+   */
   @CordovaInstance({ sync: true })
   getTitle(): string { return; }
 
+  /**
+   * Change snippet of the infoWindow.
+   * @param snippet {string}
+   */
   @CordovaInstance({ sync: true })
   setSnippet(snippet: string): void { }
 
+  /**
+   * Return the snippet strings.
+   * @return {string}
+   */
   @CordovaInstance({ sync: true })
   getSnippet(): string { return; }
 
+  /**
+   * Set the marker rotation angle.
+   * @param rotation {number}
+   */
   @CordovaInstance({ sync: true })
   setRotation(rotation: number): void { }
 
+  /**
+   * Return the marker rotation angle.
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   getRotation(): number { return; }
 
+  /**
+   * Show the infoWindow of the marker.
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   showInfoWindow(): number { return; }
 
+  /**
+   * Hide the infoWindow of the marker.
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   hideInfoWindow(): number { return; }
 
+  /**
+   * Set the marker position.
+   * @param latLng {GoogleMapLatLng}
+   */
   @CordovaInstance({ sync: true })
   setPosition(latLng: GoogleMapsLatLng): void { return; }
 
+  /**
+   * Return the marker position.
+   * @return {Promise<GoogleMapLatLng>}
+   */
   @CordovaInstance()
   getPosition(): Promise<GoogleMapsLatLng> { return; }
 
+  /**
+   * Return the map instance.
+   * @return {GoogleMap}
+   */
   @CordovaInstance({ sync: true })
   getMap(): GoogleMap { return; }
 
+  /**
+   * Specify the animation either `DROP` or `BOUNCE`
+   * @param animation {string}
+   */
   @CordovaInstance({ sync: true })
   setAnimation(animation: string): void { }
 
@@ -564,14 +910,83 @@ export class GoogleMapsCircle {
 
   constructor(private _objectInstance: any) { }
 
-  addEventListener(event: any): Observable<any> {
+  /**
+   * Adds an event listener.
+   *
+   * @returns {Observable<any>}
+   */
+  addEventListener(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Adds an event listener that works once.
+   *
+   * @returns {Promise<any>}
+   */
+  addListenerOnce(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
+    );
+  }
+
+  /**
+   * Gets a value
+   * @param key
+   */
+  @CordovaInstance({ sync: true })
+  get(key: string): any { return; }
+
+  /**
+   * Sets a value
+   * @param key
+   * @param value
+   */
+  @CordovaInstance({ sync: true })
+  set(key: string, value: any): void { }
+
+  /**
+   * Listen to a map event.
+   *
+   * @returns {Observable<any>}
+   */
+  on(eventName: string): Observable<any> {
+    if (!this._objectInstance) {
+      return new Observable((observer) => {
+        observer.error({ error: 'plugin_not_installed' });
+      });
+    }
+
     return new Observable(
       (observer) => {
-        this._objectInstance.addEventListener(event, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
+        this._objectInstance.on(eventName, observer.next.bind(observer));
+        return () => this._objectInstance.off(event);
       }
     );
   }
+
+  /**
+   * Listen to a map event only once.
+   *
+   * @returns {Promise<any>}
+   */
+  one(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.one(eventName, resolve)
+    );
+  }
+
+  /**
+   * Clears all stored values
+   */
+  @CordovaInstance({ sync: true })
+  empty(): void { }
 
   @CordovaInstance({ sync: true })
   getCenter(): GoogleMapsLatLng { return; }
@@ -622,7 +1037,7 @@ export class GoogleMapsCircle {
 export interface GoogleMapsPolylineOptions {
   points?: Array<GoogleMapsLatLng>;
   visible?: boolean;
-  googledesic?: boolean;
+  geodesic?: boolean;
   color?: string;
   width?: number;
   zIndex?: number;
@@ -634,14 +1049,83 @@ export interface GoogleMapsPolylineOptions {
 export class GoogleMapsPolyline {
   constructor(private _objectInstance: any) { }
 
-  addEventListener(event: any): Observable<any> {
+  /**
+   * Adds an event listener.
+   *
+   * @returns {Observable<any>}
+   */
+  addEventListener(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Adds an event listener that works once.
+   *
+   * @returns {Promise<any>}
+   */
+  addListenerOnce(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
+    );
+  }
+
+  /**
+   * Gets a value
+   * @param key
+   */
+  @CordovaInstance({ sync: true })
+  get(key: string): any { return; }
+
+  /**
+   * Sets a value
+   * @param key
+   * @param value
+   */
+  @CordovaInstance({ sync: true })
+  set(key: string, value: any): void { }
+
+  /**
+   * Listen to a map event.
+   *
+   * @returns {Observable<any>}
+   */
+  on(eventName: string): Observable<any> {
+    if (!this._objectInstance) {
+      return new Observable((observer) => {
+        observer.error({ error: 'plugin_not_installed' });
+      });
+    }
+
     return new Observable(
       (observer) => {
-        this._objectInstance.addEventListener(event, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
+        this._objectInstance.on(eventName, observer.next.bind(observer));
+        return () => this._objectInstance.off(event);
       }
     );
   }
+
+  /**
+   * Listen to a map event only once.
+   *
+   * @returns {Promise<any>}
+   */
+  one(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.one(eventName, resolve)
+    );
+  }
+
+  /**
+   * Clears all stored values
+   */
+  @CordovaInstance({ sync: true })
+  empty(): void { }
 
   @CordovaInstance({ sync: true })
   getPoints(): Array<GoogleMapsLatLng> { return; }
@@ -705,14 +1189,83 @@ export class GoogleMapsPolygon {
 
   constructor(private _objectInstance: any) { }
 
-  addEventListener(event: any): Observable<any> {
+  /**
+   * Adds an event listener.
+   *
+   * @returns {Observable<any>}
+   */
+  addEventListener(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Adds an event listener that works once.
+   *
+   * @returns {Promise<any>}
+   */
+  addListenerOnce(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
+    );
+  }
+
+  /**
+   * Gets a value
+   * @param key
+   */
+  @CordovaInstance({ sync: true })
+  get(key: string): any { return; }
+
+  /**
+   * Sets a value
+   * @param key
+   * @param value
+   */
+  @CordovaInstance({ sync: true })
+  set(key: string, value: any): void { }
+
+  /**
+   * Listen to a map event.
+   *
+   * @returns {Observable<any>}
+   */
+  on(eventName: string): Observable<any> {
+    if (!this._objectInstance) {
+      return new Observable((observer) => {
+        observer.error({ error: 'plugin_not_installed' });
+      });
+    }
+
     return new Observable(
       (observer) => {
-        this._objectInstance.addEventListener(event, observer.next.bind(observer));
-        return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
+        this._objectInstance.on(eventName, observer.next.bind(observer));
+        return () => this._objectInstance.off(event);
       }
     );
   }
+
+  /**
+   * Listen to a map event only once.
+   *
+   * @returns {Promise<any>}
+   */
+  one(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.one(eventName, resolve)
+    );
+  }
+
+  /**
+   * Clears all stored values
+   */
+  @CordovaInstance({ sync: true })
+  empty(): void { }
 
   @CordovaInstance({ sync: true })
   getPoints(): Array<GoogleMapsLatLng> { return; }
@@ -778,6 +1331,84 @@ export class GoogleMapsTileOverlay {
 
   constructor(private _objectInstance: any) { }
 
+  /**
+   * Adds an event listener.
+   *
+   * @returns {Observable<any>}
+   */
+  addEventListener(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Adds an event listener that works once.
+   *
+   * @returns {Promise<any>}
+   */
+  addListenerOnce(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
+    );
+  }
+
+  /**
+   * Gets a value
+   * @param key
+   */
+  @CordovaInstance({ sync: true })
+  get(key: string): any { return; }
+
+  /**
+   * Sets a value
+   * @param key
+   * @param value
+   */
+  @CordovaInstance({ sync: true })
+  set(key: string, value: any): void { }
+
+  /**
+   * Listen to a map event.
+   *
+   * @returns {Observable<any>}
+   */
+  on(eventName: string): Observable<any> {
+    if (!this._objectInstance) {
+      return new Observable((observer) => {
+        observer.error({ error: 'plugin_not_installed' });
+      });
+    }
+
+    return new Observable(
+      (observer) => {
+        this._objectInstance.on(eventName, observer.next.bind(observer));
+        return () => this._objectInstance.off(event);
+      }
+    );
+  }
+
+  /**
+   * Listen to a map event only once.
+   *
+   * @returns {Promise<any>}
+   */
+  one(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.one(eventName, resolve)
+    );
+  }
+
+  /**
+   * Clears all stored values
+   */
+  @CordovaInstance({ sync: true })
+  empty(): void { }
+
   @CordovaInstance({ sync: true })
   getVisible(): boolean { return; }
 
@@ -829,6 +1460,84 @@ export class GoogleMapsGroundOverlay {
 
   constructor(private _objectInstance: any) { }
 
+  /**
+   * Adds an event listener.
+   *
+   * @returns {Observable<any>}
+   */
+  addEventListener(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Adds an event listener that works once.
+   *
+   * @returns {Promise<any>}
+   */
+  addListenerOnce(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
+    );
+  }
+
+  /**
+   * Gets a value
+   * @param key
+   */
+  @CordovaInstance({ sync: true })
+  get(key: string): any { return; }
+
+  /**
+   * Sets a value
+   * @param key
+   * @param value
+   */
+  @CordovaInstance({ sync: true })
+  set(key: string, value: any): void { }
+
+  /**
+   * Listen to a map event.
+   *
+   * @returns {Observable<any>}
+   */
+  on(eventName: string): Observable<any> {
+    if (!this._objectInstance) {
+      return new Observable((observer) => {
+        observer.error({ error: 'plugin_not_installed' });
+      });
+    }
+
+    return new Observable(
+      (observer) => {
+        this._objectInstance.on(eventName, observer.next.bind(observer));
+        return () => this._objectInstance.off(event);
+      }
+    );
+  }
+
+  /**
+   * Listen to a map event only once.
+   *
+   * @returns {Promise<any>}
+   */
+  one(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.one(eventName, resolve)
+    );
+  }
+
+  /**
+   * Clears all stored values
+   */
+  @CordovaInstance({ sync: true })
+  empty(): void { }
+
   @CordovaInstance({ sync: true })
   setBearing(bearing: number): void { }
 
@@ -871,6 +1580,84 @@ export class GoogleMapsKmlOverlay {
 
   constructor(private _objectInstance: any) { }
 
+  /**
+   * Adds an event listener.
+   *
+   * @returns {Observable<any>}
+   */
+  addEventListener(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Adds an event listener that works once.
+   *
+   * @returns {Promise<any>}
+   */
+  addListenerOnce(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
+    );
+  }
+
+  /**
+   * Gets a value
+   * @param key
+   */
+  @CordovaInstance({ sync: true })
+  get(key: string): any { return; }
+
+  /**
+   * Sets a value
+   * @param key
+   * @param value
+   */
+  @CordovaInstance({ sync: true })
+  set(key: string, value: any): void { }
+
+  /**
+   * Listen to a map event.
+   *
+   * @returns {Observable<any>}
+   */
+  on(eventName: string): Observable<any> {
+    if (!this._objectInstance) {
+      return new Observable((observer) => {
+        observer.error({ error: 'plugin_not_installed' });
+      });
+    }
+
+    return new Observable(
+      (observer) => {
+        this._objectInstance.on(eventName, observer.next.bind(observer));
+        return () => this._objectInstance.off(event);
+      }
+    );
+  }
+
+  /**
+   * Listen to a map event only once.
+   *
+   * @returns {Promise<any>}
+   */
+  one(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+      return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    return new Promise<any>(
+      resolve => this._objectInstance.one(eventName, resolve)
+    );
+  }
+
+  /**
+   * Clears all stored values
+   */
+  @CordovaInstance({ sync: true })
+  empty(): void { }
+
   @CordovaInstance({ sync: true })
   remove(): void { }
 
@@ -884,9 +1671,9 @@ export class GoogleMapsKmlOverlay {
 export class GoogleMapsLatLngBounds {
   private _objectInstance: any;
 
-  @InstanceProperty get northeast(): GoogleMapsLatLng { return; }
-  @InstanceProperty get southwest(): GoogleMapsLatLng { return; }
-  @InstanceProperty get type(): string { return; }
+  @InstanceProperty northeast: GoogleMapsLatLng;
+  @InstanceProperty southwest: GoogleMapsLatLng;
+  @InstanceProperty type: string;
 
   constructor(southwestOrArrayOfLatLng: GoogleMapsLatLng | GoogleMapsLatLng[], northeast?: GoogleMapsLatLng) {
     let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
@@ -979,7 +1766,10 @@ export class Geocoder {
   static geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
     return new Promise<GeocoderResult[]>((resolve, reject) => {
       if (!plugin || !plugin.google || !plugin.google.maps || !plugin.google.maps.Geocoder) {
-        pluginWarn(pluginMap);
+        pluginWarn({
+          pluginName: 'GoogleMap',
+          plugin: 'plugin.google.maps.Map'
+        });
         reject({ error: 'plugin_not_installed' });
       } else {
         plugin.google.maps.Geocoder.geocode(request, resolve);

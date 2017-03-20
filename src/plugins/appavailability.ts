@@ -9,14 +9,14 @@ import { Cordova, Plugin } from './plugin';
  *
  * @usage
  * ```typescript
- * import { AppAvailability } from 'ionic-native';
+ * import { AppAvailability, Device } from 'ionic-native';
  *
  *
  * let app;
  *
- * if (device.platform === 'iOS') {
+ * if (Device.platform === 'iOS') {
  *   app = 'twitter://';
- * } else if (device.platform === 'Android') {
+ * } else if (Device.platform === 'Android') {
  *   app = 'com.twitter.android';
  * }
  *
@@ -28,7 +28,7 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'AppAvailability',
+  pluginName: 'AppAvailability',
   plugin: 'cordova-plugin-appavailability',
   pluginRef: 'appAvailability',
   repo: 'https://github.com/ohh2ahh/AppAvailability',

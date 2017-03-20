@@ -1,40 +1,62 @@
-import { Cordova, CordovaFunctionOverride, Plugin } from './plugin';
-
+import { Cordova, Plugin } from './plugin';
 import { Observable } from 'rxjs/Observable';
+
+/**
+ * Configurations items that can be updated.
+ */
+export interface BackgroundModeConfiguration {
+
+  /**
+   * Title of the background task
+   */
+  title?: String;
+
+  /**
+   * The text that scrolls itself on statusbar
+   */
+  ticker?: String;
+
+  /**
+   * Description of background task
+   */
+  text?: String;
+
+  /**
+   * if true plugin will not display a notification. Default is false.
+   */
+  silent?: boolean;
+
+  /**
+   * By default the app will come to foreground when taping on the notification. If false, plugin wont come to foreground when tapped.
+   */
+  resume?: boolean;
+
+}
 
 /**
 * @name Background Mode
 * @description
 * Cordova plugin to prevent the app from going to sleep while in background.
-*  Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode#android-customization
+* Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode
 *@usage
 * ```typescript
 * import { BackgroundMode } from 'ionic-native';
 *
 * BackgroundMode.enable();
 * ```
-*
-* @advanced
-*
-* Configuration options
-*
-* | Property | Type      | Description                                                                  |
-* |----------|-----------|------------------------------------------------------------------------------|
-* | title    | `string`  | Title of the background task. Optional                                       |
-* | ticker   | `string`  | The text that scrolls itself on the statusbar. Optional                      |
-* | text     | `string`  | Description of the background task. Optional                                 |
-* | silent   | `boolean` | If the plugin will display a notification or not. Default is false. Optional |
-* | resume   | `boolean` | Bring the app into the foreground if the notification is tapped. Optional    |
-*
+ *
+ * @interfaces
+ * BackgroundModeConfiguration
 */
 @Plugin({
-  name: 'BackgroundMode',
+  pluginName: 'BackgroundMode',
   plugin: 'cordova-plugin-background-mode',
   pluginRef: 'cordova.plugins.backgroundMode',
   repo: 'https://github.com/katzer/cordova-plugin-background-mode',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 export class BackgroundMode {
+
   /**
   * Enable the background mode.
   * Once called, prevents the app from being paused while in background.
@@ -49,21 +71,25 @@ export class BackgroundMode {
   * Once the background mode has been disabled, the app will be paused when in background.
   */
   @Cordova()
-  static disable(): void { }
+  static disable(): Promise<any> { return; }
 
   /**
   * Checks if background mode is enabled or not.
-  * @returns {boolean} returns a true of false if the background mode is enabled.
+  * @returns {boolean} returns a boolean that indicates if the background mode is enabled.
   */
-  @Cordova()
-  static isEnabled(): Promise<boolean> { return; }
+  @Cordova({
+    sync: true
+  })
+  static isEnabled(): boolean { return; }
 
   /**
   * Can be used to get the information if the background mode is active.
-  * @returns {boolean} returns tru or flase if the background mode is active.
+  * @returns {boolean} returns a boolean that indicates if the background mode is active.
   */
-  @Cordova()
-  static isActive(): Promise<boolean> { return; }
+  @Cordova({
+    sync: true
+  })
+  static isActive(): boolean { return; }
 
   /**
   * Override the default title, ticker and text.
@@ -73,7 +99,7 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static setDefaults(options?: Configure): void { }
+  static setDefaults(options?: BackgroundModeConfiguration): Promise<any> { return; }
 
   /**
   * Modify the displayed information.
@@ -83,55 +109,80 @@ export class BackgroundMode {
   @Cordova({
     platforms: ['Android']
   })
-  static configure(options?: Configure): void { }
+  static configure(options?: BackgroundModeConfiguration): Promise<any> { return; }
 
   /**
-  * Called when background mode is activated.
-  */
-  @CordovaFunctionOverride()
-  static onactivate(): Observable<any> { return; };
+   * Listen for events that the plugin fires. Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
+   * @param event {string} Event name
+   * @returns {Observable<any>}
+   */
+  @Cordova({
+    observable: true,
+    clearFunction: 'un',
+    clearWithArgs: true
+  })
+  static on(event: string): Observable<any> { return; }
 
   /**
-  * Called when background mode is deactivated.
-  */
-  @CordovaFunctionOverride()
-  static ondeactivate(): Observable<any> { return; };
+   * Android allows to programmatically move from foreground to background.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static moveToBackground(): void {}
 
   /**
-  * Called when background mode fails
-  */
-  @CordovaFunctionOverride()
-  static onfailure(): Observable<any> { return; };
-
-}
-
-/**
-* Configurations items that can be updated.
-*/
-export interface Configure {
-  /**
-  *Title of the background task
-  */
-  title?: String;
+   * Android allows to programmatically move from background to foreground.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static moveToForeground(): void {}
 
   /**
-  *The text that scrolls itself on statusbar
-  */
-  ticker?: String;
+   * Override the back button on Android to go to background instead of closing the app.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static overrideBackButton(): void {}
 
   /**
-  *Description of background task
-  */
-  text?: String;
+   * Exclude the app from the recent task list works on Android 5.0+.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static excludeFromTaskList(): void {}
 
   /**
-  *Boolean, if true plugin will not display a notification. Default is false.
-  */
-  silent?: boolean;
+   * The method works async instead of isActive() or isEnabled().
+   */
+  @Cordova({
+    platforms: ['Android']
+  })
+  static isScreenOff(): Promise<boolean> { return; }
 
   /**
-  *Boolean. By default the app will come to foreground when taping on the notification. If false, plugin wont come to foreground when tapped.
-  */
-  resume?: boolean;
+   * Turn screen on
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static wakeUp(): void {}
+
+  /**
+   * Turn screen on and show app even locked
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  static unlock(): void {}
 
 }

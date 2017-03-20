@@ -1,4 +1,4 @@
-import { Cordova, CordovaProperty, Plugin } from './plugin';
+import {Cordova, CordovaProperty, Plugin, CordovaFunctionOverride} from './plugin';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -29,7 +29,7 @@ declare var navigator: any;
  *    // before we determine the connection type.  Might need to wait 
  *   // prior to doing any api requests as well.
  *   setTimeout(() => {
- *     if (Network.connection === 'wifi') {
+ *     if (Network.type === 'wifi') {
  *       console.log('we got a wifi connection, woohoo!');
  *     }
  *   }, 3000);
@@ -40,10 +40,10 @@ declare var navigator: any;
  *
  * ```
  * @advanced
- * The `connection` property will return one of the following connection types: `unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
+ * The `type` property will return one of the following connection types: `unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
  */
 @Plugin({
-  name: 'Network',
+  pluginName: 'Network',
   plugin: 'cordova-plugin-network-information',
   repo: 'https://github.com/apache/cordova-plugin-network-information',
   platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser'],
@@ -52,10 +52,32 @@ declare var navigator: any;
 export class Network {
 
   /**
-   * Return the network connection type
+   * Connection type
+   * @return {string}
    */
   @CordovaProperty
-  static get connection(): string { return navigator.connection.type; }
+  static type: string;
+
+  /**
+   * Downlink Max Speed
+   * @return {string}
+   */
+  @CordovaProperty
+  static downlinkMax: string;
+
+  /**
+   * Returns an observable to watch connection changes
+   * @return {Observable<any>}
+   */
+  @CordovaFunctionOverride()
+  static onchange(): Observable<any> { return; }
+
+  /**
+   * Returns an observable to watch connection type changes
+   * @return {Observable<any>}
+   */
+  @CordovaFunctionOverride()
+  static ontypechange(): Observable<any> { return; }
 
   /**
    * Get notified when the device goes offline

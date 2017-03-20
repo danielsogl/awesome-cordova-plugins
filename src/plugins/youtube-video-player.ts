@@ -8,12 +8,12 @@ import { Plugin, Cordova } from './plugin';
  * ```
  * import {YoutubeVideoPlayer} from 'ionic-native';
  *
- * YouTubeVideoPlayer.openVideo('myvideoid');
+ * YoutubeVideoPlayer.openVideo('myvideoid');
  *
  * ```
  */
 @Plugin({
-  name: 'YoutubeVideoPlayer',
+  pluginName: 'YoutubeVideoPlayer',
   plugin: 'https://github.com/Glitchbone/CordovaYoutubeVideoPlayer.git',
   pluginRef: 'YoutubeVideoPlayer',
   repo: 'https://github.com/Glitchbone/CordovaYoutubeVideoPlayer',

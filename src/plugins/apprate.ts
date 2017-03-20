@@ -1,7 +1,98 @@
 import { Cordova, CordovaProperty, Plugin } from './plugin';
 
-
 declare var window;
+
+export interface AppRatePreferences {
+
+  /**
+   * Custom BCP 47 language tag
+   */
+  useLanguage?: string;
+
+  /**
+   * Custom application title
+   */
+  displayAppName?: string;
+
+  /**
+   * Show dialog again when application version will be updated. Defaults to `true`
+   */
+  promptAgainForEachNewVersion?: boolean;
+
+  /**
+   * count of runs of application before dialog will be displayed. Defaults to `3`
+   */
+  usesUntilPrompt?: number;
+
+  /**
+   * leave app or no when application page opened in app store (now supported only for iOS). Defaults to `false`
+   */
+  openStoreInApp?: boolean;
+
+  /**
+   * use custom view for rate dialog. Defaults to `false`
+   */
+  useCustomRateDialog?: boolean;
+
+  /**
+   * Custom locale object
+   */
+  customLocale?: any;
+
+  /**
+   * Callbacks for events
+   */
+  callbacks?: AppRateCallbacks;
+
+  /**
+   * App Store URLS
+   */
+  storeAppURL?: AppRateStoreAppUrls;
+
+}
+
+export interface AppRateCallbacks {
+
+  /**
+   * call back function. called when user clicked on rate-dialog buttons
+   */
+  onButtonClicked?: Function;
+
+  /**
+   * call back function. called when rate-dialog showing
+   */
+  onRateDialogShow?: Function;
+
+}
+
+export interface AppRateStoreAppUrls {
+
+  /**
+   * application id in AppStore
+   */
+  ios?: string;
+
+  /**
+   * application URL in GooglePlay
+   */
+  android?: string;
+
+  /**
+   * application URL in Windows Store
+   */
+  windows?: string;
+
+  /**
+   * application URL in AppWorld
+   */
+  blackberry?: string;
+
+  /**
+   * application URL in WindowsStore
+   */
+  windows8?: string;
+
+}
 
 /**
  * @name App Rate
@@ -17,38 +108,24 @@ declare var window;
  *  AppRate.preferences.storeAppURL = {
  *    ios: '<my_app_id>',
  *    android: 'market://details?id=<package_name>',
+ *    windows: 'ms-windows-store://review/?ProductId=<Store_ID>'
  *  };
  *
- * AppRate.promptForRating();
+ * AppRate.promptForRating(false);
  * ```
  *
- * @advanced
+ * @interfaces
+ * AppRatePreferences
+ * AppRateStoreAppUrls
+ * AppRateCallbacks
  *
- * Rating dialog preferences
- *
- * | Option                       | Type       | Default | Description                                                                            |
- * |------------------------------|------------|---------|----------------------------------------------------------------------------------------|
- * | useLanguage                  | `String`   | null    | custom BCP 47 language tag                                                             |
- * | displayAppName               | `String`   | ''      | custom application title                                                               |
- * | promptAgainForEachNewVersion | `Boolean`  | true    | show dialog again when application version will be updated                             |
- * | usesUntilPrompt              | `Integer`  | 3       | count of runs of application before dialog will be displayed                           |
- * | openStoreInApp               | `Boolean`  | false   | leave app or no when application page opened in app store (now supported only for iOS) |
- * | useCustomRateDialog          | `Boolean`  | false   | use custom view for rate dialog                                                        |
- * | callbacks.onButtonClicked    | `Function` | null    | call back function. called when user clicked on rate-dialog buttons                    |
- * | callbacks.onRateDialogShow   | `Function` | null    | call back function. called when rate-dialog showing                                    |
- * | storeAppURL.ios              | `String`   | null    | application id in AppStore                                                             |
- * | storeAppURL.android          | `String`   | null    | application URL in GooglePlay                                                          |
- * | storeAppURL.blackberry       | `String`   | null    | application URL in AppWorld                                                            |
- * | storeAppURL.windows8         | `String`   | null    | application URL in WindowsStore                                                        |
- * | customLocale                 | `Object`   | null    | custom locale object                                                                   |
-
  */
 @Plugin({
-  name: 'AppRate',
+  pluginName: 'AppRate',
   plugin: 'cordova-plugin-apprate',
   pluginRef: 'AppRate',
   repo: 'https://github.com/pushandplay/cordova-plugin-apprate',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS', 'Windows (experimental)']
 })
 export class AppRate {
 
@@ -57,7 +134,7 @@ export class AppRate {
    * See table below for options
    */
   @CordovaProperty
-  static get preferences() { return window.AppRate.preferences; }
+  static preferences: AppRatePreferences;
 
   /**
    * Prompts the user for rating

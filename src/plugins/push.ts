@@ -36,7 +36,7 @@ export interface NotificationEventResponse {
   /**
    * An optional collection of data sent by the 3rd party push service that does not fit in the above properties.
    */
-  additionalData: NotificationEventAdditionalData;
+  additionalData: NotificationEventAdditionalData | any;
 }
 
 /**
@@ -110,6 +110,25 @@ export interface PushNotification {
   unregister(successHandler: () => any, errorHandler?: () => any): void;
 
   /**
+   * The subscribe method is used when the application wants to subscribe a new topic to receive push notifications.
+   * @param {string} topic: Topic to subscribe to.
+   * @param successHandler
+   * @param errorHandler
+   */
+  subscribe(topic: string, successHandler: () => any, errorHandler?: () => any): void;
+
+  /**
+   * The unsubscribe method is used when the application no longer wants to receive push notifications
+   * from a specific topic but continue to receive other push messages.
+   * @param {string} topic: Topic to subscribe to.
+   * @param successHandler
+   * @param errorHandler
+   */
+  unsubscribe(topic: string, successHandler: () => any, errorHandler?: () => any): void;
+
+  /**
+   * iOS & android only
+   *
    * Set the badge count visible when the app is not running
    *
    * The count is an integer indicating what number should show up in the badge.
@@ -121,6 +140,8 @@ export interface PushNotification {
    */
   setApplicationIconBadgeNumber(successHandler: () => any, errorHandler: () => any, count?: number): void;
   /**
+   * iOS only
+   *
    * Get the current badge count visible when the app is not running
    * successHandler gets called with an integer which is the current badge count
    * @param successHandler
@@ -130,6 +151,7 @@ export interface PushNotification {
 
   /**
    * iOS only
+   *
    * Tells the OS that you are done processing a background push notification.
    * successHandler gets called when background push processing is successfully completed.
    * @param successHandler
@@ -137,6 +159,16 @@ export interface PushNotification {
    * @param id
    */
   finish(successHandler: () => any, errorHandler: () => any, id?: string): void;
+
+  /**
+   * iOS & android only
+   *
+   * Tells the OS to clear all notifications from the Notification Center.
+   * successHandler gets called when the api successfully clears the notifications
+   * @param successHandler
+   * @param errorHandler
+   */
+  clearAllNotifications(successHandler: () => any, errorHandler: () => any): void;
 }
 
 export interface IOSPushOptions {
@@ -244,6 +276,11 @@ export interface AndroidPushOptions {
   vibrate?: boolean | string;
 
   /**
+   * If true the icon badge will be cleared on init and before push messages are processed.
+   */
+  clearBadge?: boolean | string;
+
+  /**
    * If true the app clears all pending notifications when it is closed.
    */
   clearNotifications?: boolean | string;
@@ -286,10 +323,11 @@ declare var PushNotification: {
  * ```
  */
 @Plugin({
-  name: 'Push',
+  pluginName: 'Push',
   plugin: 'phonegap-plugin-push',
   pluginRef: 'PushNotification',
-  repo: 'https://github.com/phonegap/phonegap-plugin-push'
+  repo: 'https://github.com/phonegap/phonegap-plugin-push',
+  install: 'ionic plugin add phonegap-plugin-push --variable SENDER_ID=XXXXXXXXX'
 })
 export class Push {
 
@@ -311,7 +349,7 @@ export class Push {
    * ```
    *
    * @param {PushOptions} options  The Push [options](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/API.md#parameters).
-   * @return {PushNotification}  Returns a new [PushNotification](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/API.md#pushonevent-callback) object.
+   * @returns {PushNotification}  Returns a new [PushNotification](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/API.md#pushonevent-callback) object.
    */
   @Cordova({
     sync: true
@@ -320,7 +358,7 @@ export class Push {
 
   /**
    * Check whether the push notification permission has been granted.
-   * @return {Promise} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
+   * @return {Promise<{isEnabled: boolean}>} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
    */
   @Cordova()
   static hasPermission(): Promise<{ isEnabled: boolean }> { return; }

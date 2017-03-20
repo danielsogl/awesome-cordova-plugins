@@ -1,4 +1,20 @@
 import { Plugin, Cordova } from './plugin';
+
+export interface StreamingVideoOptions {
+  successCallback?: Function;
+  errorCallback?: Function;
+  orientation?: string;
+}
+
+export interface StreamingAudioOptions {
+  bgColor?: string;
+  bgImage?: string;
+  bgImageScale?: string;
+  initFullscreen?: boolean;
+  successCallback?: Function;
+  errorCallback?: Function;
+}
+
 /**
  * @name StreamingMedia
  * @description
@@ -14,12 +30,15 @@ import { Plugin, Cordova } from './plugin';
  *   orientation: 'landscape'
  * };
  *
- * StreamingMedia.('https://path/to/video/stream', options);
+ * StreamingMedia.playVideo('https://path/to/video/stream', options);
  *
  * ```
+ * @interfaces
+ * StreamingVideoOptions
+ * StreamingAudioOptions
  */
 @Plugin({
-  name: 'StreamingMedia',
+  pluginName: 'StreamingMedia',
   plugin: 'cordova-plugin-streaming-media',
   pluginRef: 'plugins.streamingMedia',
   repo: 'https://github.com/nchutchind/cordova-plugin-streaming-media',
@@ -60,19 +79,4 @@ export class StreamingMedia {
   @Cordova({sync: true, platforms: ['iOS']})
   static resumeAudio(): void { }
 
-}
-
-export interface StreamingVideoOptions {
-  successCallback?: Function;
-  errorCallback?: Function;
-  orientation?: string;
-}
-
-export interface StreamingAudioOptions {
-  bgColor?: string;
-  bgImage?: string;
-  bgImageScale?: string;
-  initFullscreen?: boolean;
-  successCallback?: Function;
-  errorCallback?: Function;
 }

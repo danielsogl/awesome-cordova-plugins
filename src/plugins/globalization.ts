@@ -11,23 +11,24 @@ import { Cordova, Plugin } from './plugin';
  * ```
  */
 @Plugin({
-  name: 'Globalization',
+  pluginName: 'Globalization',
   plugin: 'cordova-plugin-globalization',
   pluginRef: 'navigator.globalization',
-  repo: 'https://github.com/apache/cordova-plugin-globalization'
+  repo: 'https://github.com/apache/cordova-plugin-globalization',
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Firefox OS', 'iOS', 'Windows Phone 8', 'Widnows', 'Browser']
 })
 export class Globalization {
 
   /**
    * Returns the BCP-47 compliant language identifier tag to the successCallback with a properties object as a parameter. That object should have a value property with a String value.
-   * @return {Promise<{value: string}>}
+   * @returns {Promise<{value: string}>}
    */
   @Cordova()
   static getPreferredLanguage(): Promise<{ value: string }> { return; }
 
   /**
    * Returns the BCP 47 compliant locale identifier string to the successCallback with a properties object as a parameter.
-   * @return {Promise<{value: string}>}
+   * @returns {Promise<{value: string}>}
    */
   @Cordova()
   static getLocaleName(): Promise<{ value: string }> { return; }
@@ -36,7 +37,7 @@ export class Globalization {
    * Converts date to string
    * @param {Date} date Date you wish to convert
    * @param options Options for the converted date. Length, selector.
-   * @return {Promise<{value: string}>} Returns a promise when the date has been converted.
+   * @returns {Promise<{value: string}>} Returns a promise when the date has been converted.
    */
   @Cordova({
     successIndex: 1,
@@ -48,7 +49,7 @@ export class Globalization {
    * Parses a date formatted as a string, according to the client's user preferences and calendar using the time zone of the client, and returns the corresponding date object.
    * @param {string} dateString Date as a string to be converted
    * @param options Options for the converted date. Length, selector.
-   * @return {Promise<{value: string}>} Returns a promise when the date has been converted.
+   * @returns {Promise<{ year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number }>} Returns a promise when the date has been converted.
    */
   @Cordova({
     successIndex: 1,
@@ -59,7 +60,7 @@ export class Globalization {
   /**
    * Returns a pattern string to format and parse dates according to the client's user preferences.
    * @param options Object with the format length and selector
-   * @return {Promise<{value: string}>} Returns a promise.
+   * @returns {Promise<{pattern: string}>} Returns a promise.
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -69,7 +70,7 @@ export class Globalization {
   /**
    * Returns an array of the names of the months or days of the week, depending on the client's user preferences and calendar.
    * @param options Object with type (narrow or wide) and item (month or days).
-   * @return {Promise<{value: string}>} Returns a promise.
+   * @returns {Promise<{value: Array<string>}>} Returns a promise.
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -79,33 +80,34 @@ export class Globalization {
   /**
    * Indicates whether daylight savings time is in effect for a given date using the client's time zone and calendar.
    * @param {data} date Date to process
-   * @returns {Promise<dst>} reutrns a promise with the value
+   * @returns {Promise<{dst: string}>} reutrns a promise with the value
    */
   @Cordova()
   static isDayLightSavingsTime(date: Date): Promise<{ dst: string }> { return; }
 
   /**
    * Returns the first day of the week according to the client's user preferences and calendar.
-   * @returns {Promise<value>} reutrns a promise with the value
+   * @returns {Promise<{value: string}>} returns a promise with the value
    */
   @Cordova()
   static getFirstDayOfWeek(): Promise<{ value: string }> { return; }
 
   /**
    * Returns a number formatted as a string according to the client's user preferences.
-   * @param options
+   * @param numberToConvert {Number} The number to convert
+   * @param options {Object} Object with property `type` that can be set to: decimal, percent, or currency.
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  static numberToString(options: { type: string }): Promise<{ value: string }> { return; }
+  static numberToString(numberToConvert: number, options: { type: string }): Promise<{ value: string }> { return; }
 
   /**
    *
    * @param {string} stringToConvert String you want to conver to a number
    * @param options  The type of number you want to return. Can be decimal, percent, or currency.
-   * @returns {Promise} Returns a promise with the value.
+   * @returns {Promise<{ value: number | string }>} Returns a promise with the value.
    */
   @Cordova({
     successIndex: 1,
@@ -116,7 +118,7 @@ export class Globalization {
   /**
    * Returns a pattern string to format and parse numbers according to the client's user preferences.
    * @param options Can be decimal, percent, or currency.
-   * @returns {Promise} returns a promise with the value.
+   * @returns {Promise<{ pattern: string, symbol: string, fraction: number, rounding: number, positive: string, negative: string, decimal: string, grouping: string }>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -126,7 +128,7 @@ export class Globalization {
   /**
    * Returns a pattern string to format and parse currency values according to the client's user preferences and ISO 4217 currency code.
    * @param {string} currencyCode Currency Code.A
-   * @returns {Promise} returns a promise with the value
+   * @returns {Promise<{ pattern: string, code: string, fraction: number, rounding: number, decimal: number, grouping: string }>}
    */
   @Cordova()
   static getCurrencyPattern(currencyCode: string): Promise<{ pattern: string, code: string, fraction: number, rounding: number, decimal: number, grouping: string }> { return; }

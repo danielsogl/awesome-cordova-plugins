@@ -19,14 +19,17 @@ module.exports = function jekyll(renderDocsProcessor) {
       docs.forEach(function(doc, i) {
         doc.outputPath = doc.outputPath.toLowerCase().replace(' ', '-');
         docs[i].URL = doc.outputPath.replace('docs/v2//', 'docs/v2/')
-                                    .replace('/index.md', '');
+                                    .replace('/index.md', '')
+                                    .replace('content/', '');
+
+        docs[i].demo = !!docs[i].demo;
       });
 
       docs.push({
         docType: 'native_menu-menu',
         id: 'native_menu-menu',
         template: 'native_menu.template.html',
-        outputPath: '_includes/v2_fluid/native_menu.html'
+        outputPath: 'content/_includes/v2_fluid/native_menu.html'
       });
 
       // returning docs will replace docs object in the next process

@@ -1,4 +1,4 @@
-import { Cordova, Plugin } from './plugin';
+import {Cordova, Plugin, CordovaProperty} from './plugin';
 
 /**
  * @name Diagnostic
@@ -27,9 +27,10 @@ import { Cordova, Plugin } from './plugin';
  *   }).catch(e => console.error(e));
  *
  * ```
+ *
  */
 @Plugin({
-  name: 'Diagnostic',
+  pluginName: 'Diagnostic',
   plugin: 'cordova.plugins.diagnostic',
   pluginRef: 'cordova.plugins.diagnostic',
   repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin'
@@ -63,18 +64,19 @@ export class Diagnostic {
     BODY_SENSORS: 'BODY_SENSORS'
   };
 
-  static permissionStatus = {
-    GRANTED: 'GRANTED',
-    GRANTED_WHEN_IN_USE: 'GRANTED_WHEN_IN_USE', // iOS
-    RESTRICTED: 'RESTRICTED', // iOS
-    DENIED: 'DENIED',
-    DENIED_ALWAYS: 'DENIED_ALWAYS', // android
-    NOT_REQUESTED: 'NOT_REQUESTED'
+  @CordovaProperty
+  static permissionStatus: {
+    GRANTED: string;
+    DENIED: string;
+    NOT_REQUESTED: string;
+    DENIED_ALWAYS: string;
+    RESTRICTED: string;
+    GRANTED_WHEN_IN_USE: string;
   };
 
   static locationAuthorizationMode = {
-    ALWAYS: 'ALWAYS',
-    WHEN_IN_USE: 'WHEN_IN_USE'
+    ALWAYS: 'always',
+    WHEN_IN_USE: 'when_in_use'
   };
 
   static permissionGroups = {
@@ -105,6 +107,15 @@ export class Diagnostic {
     POWERED_ON: 'powered_on',
     POWERING_OFF: 'powering_off',
     POWERING_ON: 'powering_on'
+  };
+
+  @CordovaProperty
+  static NFCState: {
+    UNKNOWN: string;
+    POWERED_OFF: string;
+    POWERED_ON: string;
+    POWERING_ON: string;
+    POWERING_OFF: string;
   };
 
 
@@ -174,6 +185,7 @@ export class Diagnostic {
    * Enables/disables WiFi on the device.
    * Requires `ACCESS_WIFI_STATE` and `CHANGE_WIFI_STATE` permissions on Android
    * @param state {boolean}
+   * @returns {Promise<any>}
    */
   @Cordova({ callbackOrder: 'reverse', platforms: ['Android', 'Windows 10'] })
   static setWifiState(state: boolean): Promise<any> { return; }
@@ -182,9 +194,13 @@ export class Diagnostic {
    * Enables/disables Bluetooth on the device.
    * Requires `BLUETOOTH` and `BLUETOOTH_ADMIN` permissions on Android
    * @param state {boolean}
+   * @returns {Promise<any>}
    */
   @Cordova({ callbackOrder: 'reverse', platforms: ['Android', 'Windows 10'] })
   static setBluetoothState(state: boolean): Promise<any> { return; }
+
+
+  // ANDROID AND IOS ONLY
 
   /**
    * Returns true if the device setting for location is on. On Android this returns true if Location Mode is switched on. On iOS this returns true if Location Services is switched on.
@@ -215,7 +231,7 @@ export class Diagnostic {
    * mode - (iOS-only / optional) location authorization mode: "always" or "when_in_use". If not specified, defaults to "when_in_use".
    * @returns {Promise<any>}
    */
-  @Cordova({ platforms: ['Android', 'iOS'] })
+  @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
   static requestLocationAuthorization(mode?: string): Promise<any> { return; }
 
   /**
@@ -297,7 +313,7 @@ export class Diagnostic {
    *
    * Notes for iOS:
    *   - This relates to Calendar Events (not Calendar Reminders)
-   * @returns {Promise<any>}
+   * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
   static isCalendarAuthorized(): Promise<boolean> { return; }
@@ -363,10 +379,13 @@ export class Diagnostic {
   @Cordova({ platforms: ['Android', 'iOS'], sync: true })
   static registerLocationStateChangeHandler(handler: Function): void { }
 
+
+  // ANDROID ONLY
+
   /**
    * Checks if high-accuracy locations are available to the app from GPS hardware.
    * Returns true if Location mode is enabled and is set to "Device only" or "High accuracy" AND if the app is authorised to use location.
-   * @returns {Promise<any>}
+   * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
   static isGpsLocationAvailable(): Promise<boolean> { return; }
@@ -376,6 +395,7 @@ export class Diagnostic {
    *   Returns true if Location mode is enabled and is set to either:
    *   - Device only = GPS hardware only (high accuracy)
    *   - High accuracy = GPS hardware, network triangulation and Wifi network IDs (high and low accuracy)
+   * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
   static isGpsLocationEnabled(): Promise<any> { return; }
@@ -442,6 +462,24 @@ export class Diagnostic {
   static requestRuntimePermissions(permissions: any[]): Promise<any> { return; }
 
   /**
+   * Indicates if the plugin is currently requesting a runtime permission via the native API.
+   * Note that only one request can be made concurrently because the native API cannot handle concurrent requests,
+   * so the plugin will invoke the error callback if attempting to make more than one simultaneous request.
+   * Multiple permission requests should be grouped into a single call since the native API is setup to handle batch requests of multiple permission groups.
+   * @returns {boolean}
+   */
+  @Cordova({ sync: true })
+  static isRequestingPermission(): boolean { return; }
+
+  /**
+   * Registers a function to be called when a runtime permission request has completed.
+   * Pass in a falsey value to de-register the currently registered function.
+   * @param handler {Function}
+   */
+  @Cordova({ sync: true })
+  static registerPermissionRequestCompleteHandler(handler: Function): void { return; }
+
+  /**
    * Checks if the device setting for Bluetooth is switched on.
    * This requires `BLUETOOTH` permission on Android
    * @returns {Promise<boolean>}
@@ -469,6 +507,96 @@ export class Diagnostic {
    */
   @Cordova({ platforms: ['Android'] })
   static hasBluetoothLEPeripheralSupport(): Promise<boolean> { return; }
+
+  /**
+   * Checks if the application is authorized to use external storage.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static isExternalStorageAuthorized(): Promise<boolean> { return; }
+
+  /**
+   * CReturns the external storage authorization status for the application.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static getExternalStorageAuthorizationStatus(): Promise<any> { return; }
+
+  /**
+   * Requests external storage authorization for the application.
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static requestExternalStorageAuthorization(): Promise<any> { return; }
+
+  /**
+   * Returns details of external SD card(s): absolute path, is writable, free space.
+   *
+   * The intention of this method is to return the location and details of removable external SD cards.
+   * This differs from the "external directories" returned by cordova-plugin-file which return mount points relating to non-removable (internal) storage.
+   *
+   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#getexternalsdcarddetails)
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static getExternalSdCardDetails(): Promise<any> { return; }
+
+  /**
+   * Switches to the wireless settings page in the Settings app. Allows configuration of wireless controls such as Wi-Fi, Bluetooth and Mobile networks.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  switchToWirelessSettings(): void { }
+
+  /**
+   * Displays NFC settings to allow user to enable NFC.
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  switchToNFCSettings(): void { }
+
+  /**
+   * Checks if NFC hardware is present on device.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static isNFCPresent(): Promise<boolean> { return; }
+
+  /**
+   * Checks if the device setting for NFC is switched on.
+   * Note: this operation does not require NFC permission in the manifest.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static isNFCEnabled(): Promise<boolean> { return; }
+
+  /**
+   * Checks if NFC is available to the app. Returns true if the device has NFC capabilities AND if NFC setting is switched on.
+   * Note: this operation does not require NFC permission in the manifest.
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  static isNFCAvailable(): Promise<boolean> { return; }
+
+  /**
+   * Registers a function to be called when a change in NFC state occurs. Pass in a falsey value to de-register the currently registered function.
+   * @param hander {Function} callback function to be called when NFC state changes
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  registerNFCStateChangeHandler(handler: Function): void { }
+
+
+
+  // IOS ONLY
 
   /**
    * Checks if the application is authorized to use the Camera Roll in Photos app.
@@ -549,5 +677,41 @@ export class Diagnostic {
    */
   @Cordova({ platforms: ['iOS'] })
   static getBackgroundRefreshStatus(): Promise<any> { return; }
+
+  /**
+   * Requests Bluetooth authorization for the application.
+   *
+   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#requestbluetoothauthorization)
+   * @return {Promise<any>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  static requestBluetoothAuthorization(): Promise<any> { return; }
+
+  /**
+   * Checks if motion tracking is available on the current device.
+   * @return {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  static isMotionAvailable(): Promise<boolean> { return; }
+
+  /**
+   * Checks if it's possible to determine the outcome of a motion authorization request on the current device.
+   * There's no direct way to determine if authorization was granted or denied, so the Pedometer API must be used to indirectly determine this:
+   * therefore, if the device supports motion tracking but not Pedometer Event Tracking, the outcome of requesting motion detection cannot be determined.
+   *
+   * @return {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  static isMotionRequestOutcomeAvailable(): Promise<boolean> { return; }
+
+  /**
+   * Requests and checks motion authorization for the application: there is no way to independently request only or check only, so both must be done in one operation.
+   *
+   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#requestandcheckmotionauthorization)
+   *
+   * @return {Promise<any>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  static requestAndCheckMotionAuthorization(): Promise<any> { return; }
 
 }
