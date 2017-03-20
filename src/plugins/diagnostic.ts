@@ -19,7 +19,7 @@ import {Cordova, Plugin, CordovaProperty} from './plugin';
  *
  * Diagnostic.getBluetoothState()
  *   .then((state) => {
- *     if (state == Diagnostic.bluetoothStates.POWERED_ON){
+ *     if (state == Diagnostic.bluetoothState.POWERED_ON){
  *       // do something
  *     } else {
  *       // do something else
