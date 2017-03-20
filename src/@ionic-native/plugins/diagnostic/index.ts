@@ -24,7 +24,7 @@ import {Cordova, Plugin, CordovaProperty} from '@ionic-native/core';
  *
  * this.diagnostic.getBluetoothState()
  *   .then((state) => {
- *     if (state == this.diagnostic.bluetoothStates.POWERED_ON){
+ *     if (state == this.diagnostic.bluetoothState.POWERED_ON){
  *       // do something
  *     } else {
  *       // do something else

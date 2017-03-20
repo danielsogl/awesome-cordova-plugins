@@ -287,11 +287,11 @@ export class Health {
    * To be sure to get all the stored quantities, it's better to query single nutrients.
    * nutrition.vitamin_a is given in micrograms in HealthKit and International Unit in Google Fit.
    *
-   * @param queryOptionsAggregated
-   * @return {Promise<HealthData>}
+   * @param queryOptionsAggregated {HealthQueryOptionsAggregated}
+   * @return {Promise<HealthData[]>}
    */
   @Cordova()
-  queryAggregated(queryOptionsAggregated: HealthQueryOptionsAggregated): Promise<HealthData> { return; }
+  queryAggregated(queryOptionsAggregated: HealthQueryOptionsAggregated): Promise<HealthData[]> { return; }
 
   /**
    * Stores a data point.

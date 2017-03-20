@@ -11,6 +11,9 @@ export interface MusicControlsOptions {
   hasPrev: boolean;
   hasNext: boolean;
   hasClose: boolean;
+  album:string;
+  duration: number;
+  elapsed:number;
   ticker: string;
 }
 
@@ -42,6 +45,11 @@ export interface MusicControlsOptions {
  *   hasPrev   : false,      // show previous button, optional, default: true
  *   hasNext   : false,      // show next button, optional, default: true
  *   hasClose  : true,       // show close button, optional, default: false
+ *
+ * // iOS only, optional
+ *   album       : 'Absolution'     // optional, default: ''
+ *   duration : 60, // optional, default: 0
+ *   elapsed : 10, // optional, default: 0
  *
  *   // Android only, optional
  *   // text displayed in the status bar when the notification (and the ticker) are updated
@@ -135,7 +143,13 @@ export class MusicControls {
    * Toggle play/pause:
    * @param isPlaying {boolean}
    */
-  @Cordova({sync: true})
+  @Cordova()
   updateIsPlaying(isPlaying: boolean): void {}
 
+  /**
+   * Toggle dismissable:
+   * @param dismissable {boolean}
+   */
+  @Cordova()
+  updateDismissable(dismissable: boolean): void {}
 }
