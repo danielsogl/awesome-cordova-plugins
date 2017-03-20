@@ -9,24 +9,27 @@ declare var plugin: any;
  * You can listen to these events where appropriate
  */
 export const GoogleMapsEvent = {
-  MAP_CLICK: 'click',
-  MAP_LONG_CLICK: 'long_click',
-  MY_LOCATION_CHANGE: 'my_location_change',
-  MY_LOCATION_BUTTON_CLICK: 'my_location_button_click',
-  INDOOR_BUILDING_FOCUSED: 'indoor_building_focused',
-  INDOOR_LEVEL_ACTIVATED: 'indoor_level_activated',
-  CAMERA_CHANGE: 'camera_change',
-  CAMERA_IDLE: 'camera_idle',
-  MAP_READY: 'map_ready',
-  MAP_LOADED: 'map_loaded',
-  MAP_WILL_MOVE: 'will_move',
-  MAP_CLOSE: 'map_close',
-  MARKER_CLICK: 'click',
-  OVERLAY_CLICK: 'overlay_click',
-  INFO_CLICK: 'info_click',
-  MARKER_DRAG: 'drag',
-  MARKER_DRAG_START: 'drag_start',
-  MARKER_DRAG_END: 'drag_end'
+  MAP_READY : 'map_ready',
+  MAP_CLICK : 'click',
+  MAP_LONG_CLICK : 'long_click',
+  MY_LOCATION_BUTTON_CLICK : 'my_location_button_click',
+  INDOOR_BUILDING_FOCUSED : 'indoor_building_focused',
+  INDOOR_LEVEL_ACTIVATED : 'indoor_level_activated',
+  CAMERA_MOVE_START : 'camera_move_start',
+  CAMERA_MOVE : 'camera_move',
+  CAMERA_MOVE_END : 'camera_move_end',
+  POLYGON_CLICK : 'polygon_click',
+  POLYLINE_CLICK : 'polyline_click',
+  CIRCLE_CLICK : 'circle_click',
+  GROUND_OVERLAY_CLICK : 'ground_overlay_click',
+  INFO_CLICK : 'info_click',
+  INFO_LONG_CLICK : 'info_long_click',
+  INFO_CLOSE : 'info_close',
+  INFO_OPEN : 'info_open',
+  MARKER_CLICK : 'click',
+  MARKER_DRAG : 'drag',
+  MARKER_DRAG_START : 'drag_start',
+  MARKER_DRAG_END : 'drag_end'
 };
 
 /**
@@ -118,9 +121,9 @@ export const GoogleMapsMapTypeId = {
 @Plugin({
   pluginName: 'GoogleMap',
   pluginRef: 'plugin.google.maps.Map',
-  plugin: 'cordova-plugin-googlemaps',
-  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
-  install: 'ionic plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"'
+  plugin: 'cordova-plugin-googlemaps#multiple_maps',
+  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps',
+  install: 'cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps --variable API_KEY_FOR_ANDROID="<YOUR KEY>" --variable API_KEY_FOR_IOS="<YOUR KEY>"'
 })
 export class GoogleMap {
   _objectInstance: any;
@@ -265,16 +268,16 @@ export class GoogleMap {
   getLicenseInfo(): Promise<string> { return; }
 
   @CordovaInstance({ sync: true })
-  setCenter(latLng: GoogleMapsLatLng): void { }
+  setCameraTarget(latLng: GoogleMapsLatLng): void { }
 
   @CordovaInstance({ sync: true })
-  setZoom(zoomLevel: number): void { }
+  setCameraZoom(zoomLevel: number): void { }
 
   @CordovaInstance({ sync: true })
   setMapTypeId(mapTypeId: string): void { }
 
   @CordovaInstance({ sync: true })
-  setTilt(tiltLevel: number): void { }
+  setCameraTilt(tiltLevel: number): void { }
 
   /**
    * @returns {Promise<any>}
@@ -561,7 +564,7 @@ export interface GoogleMapsMarkerOptions {
   position?: GoogleMapsLatLng;
 
   /**
-   * 	Specify the anchor of the InfoWindow
+   *   Specify the anchor of the InfoWindow
    */
   infoWindowAnchor?: number[];
 
@@ -571,12 +574,12 @@ export interface GoogleMapsMarkerOptions {
   draggable?: boolean;
 
   /**
-   * 	Set true if you want to use a flat marker. (Default: false)
+   *   Set true if you want to use a flat marker. (Default: false)
    */
   flat?: boolean;
 
   /**
-   * 	Set rotation angle. (Default: 0)
+   *   Set rotation angle. (Default: 0)
    */
   rotation?: number;
 
@@ -596,7 +599,7 @@ export interface GoogleMapsMarkerOptions {
   animation?: string;
 
   /**
-   * 	iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
+   *   iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
    */
   zIndex?: number;
 
@@ -776,7 +779,7 @@ export class GoogleMapsMarker {
   setInfoWindowAnchor(x: number, y: number): void { }
 
   /**
-   * 	Set true if you allows all users to drag the marker.
+   *   Set true if you allows all users to drag the marker.
    * @param draggable {boolean}
    */
   @CordovaInstance({ sync: true })
@@ -988,7 +991,7 @@ export class GoogleMapsCircle {
   empty(): void { }
 
   @CordovaInstance({ sync: true })
-  getCenter(): GoogleMapsLatLng { return; }
+  getCameraTarget(): GoogleMapsLatLng { return; }
 
   @CordovaInstance({ sync: true })
   getRadius(): number { return; }
@@ -1006,7 +1009,7 @@ export class GoogleMapsCircle {
   remove(): void { }
 
   @CordovaInstance({ sync: true })
-  setCenter(latLng: GoogleMapsLatLng): void { }
+  setCameraTarget(latLng: GoogleMapsLatLng): void { }
 
   @CordovaInstance({ sync: true })
   setFillColor(fillColor: string): void { }
@@ -1538,10 +1541,10 @@ export class GoogleMapsGroundOverlay {
   empty(): void { }
 
   @CordovaInstance({ sync: true })
-  setBearing(bearing: number): void { }
+  setCameraBearing(bearing: number): void { }
 
   @CordovaInstance({ sync: true })
-  getBearing(): number { return; }
+  getCameraBearing(): number { return; }
 
   @CordovaInstance({ sync: true })
   setOpacity(opacity: number): void { }
@@ -1692,7 +1695,7 @@ export class GoogleMapsLatLngBounds {
   contains(LatLng: GoogleMapsLatLng): boolean { return; }
 
   @CordovaInstance({ sync: true })
-  getCenter(): GoogleMapsLatLng { return; }
+  getCameraTarget(): GoogleMapsLatLng { return; }
 }
 
 /**
