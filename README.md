@@ -8,7 +8,16 @@
 
 Ionic Native is a curated set of wrappers for Cordova plugins that make adding any native functionality you need to your [Ionic 2](http://ionicframework.com/) mobile app easy.
 
-### Documentation
+## Installation
+
+Run following command to install Ionic Native in your project.
+```
+npm install @ionic-native/core --save
+```
+
+You also need to install the Ionic Native package for each plugin you want to add. Please see the Ionic Native documentation for complete instructions on how to add and use the plugins.
+
+## Documentation
 
 For the full Ionic Native documentation, please visit [http://ionicframework.com/docs/v2/native/](http://ionicframework.com/docs/v2/native/).
 
@@ -57,13 +66,6 @@ export class MyComponent {
 Spent way too long diagnosing an issue only to realize a plugin wasn't firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.
 
 ![img](http://ionic-io-assets.s3.amazonaws.com/ionic-native-console.png)
-
-## Installation
-
-Run following commmand to install ionic-native in your project.
-```
-npm install ionic-native --save
-```
 
 
 ## Plugin Missing?
