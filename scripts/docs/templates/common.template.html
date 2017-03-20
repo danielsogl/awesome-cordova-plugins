@@ -53,7 +53,7 @@ docType: "<$ doc.docType $>"
 <@- endmacro -@>
 
 <@ macro githubViewLink(doc) -@>
-<a href="https://github.com/<$ versionInfo.gitRepoInfo.owner $>/<$ versionInfo.gitRepoInfo.repo $>/tree/master/<$ doc.fileInfo.relativePath $>#L<$ doc.location.start.line+1 $>-L<$ doc.location.end.line+1 $>"><$ doc.fileInfo.relativePath $> (line <$ doc.location.start.line+1 $>)</a>
+<a href="https://github.com/driftyco/ionic-native/tree/master/<$ doc.fileInfo.relativePath $>#L<$ doc.location.start.line+1 $>-L<$ doc.location.end.line+1 $>"><$ doc.fileInfo.relativePath $> (line <$ doc.location.start.line+1 $>)</a>
 <@- endmacro -@>
 
 <@ macro paramTable(params, isDirective) -@>
@@ -224,7 +224,10 @@ docType: "<$ doc.docType $>"
 </p>
 <@ endif @>
 
-<pre><code>$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif -@></code></pre>
+<pre><code>
+  $ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif -@>
+  $ npm install --save @ionic-native/<$ prop.pluginRef $>
+</code></pre>
 <p>Repo:
   <a href="<$ prop.repo $>">
     <$ prop.repo $>

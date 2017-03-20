@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "##### "
-echo "##### ci/deploy.sh"
+echo "##### ci/update_docs.sh"
 echo "#####"
 
 

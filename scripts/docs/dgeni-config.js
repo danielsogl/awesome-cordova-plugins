@@ -1,9 +1,8 @@
 var Package = require('dgeni').Package;
 var jsdocPackage = require('dgeni-packages/jsdoc');
 var nunjucksPackage = require('dgeni-packages/nunjucks');
-var typescriptPackage = require('./typescript-package');
-var linksPackage = require('./links-package');
-var gitPackage = require('dgeni-packages/git');
+var typescriptPackage = require('dgeni-packages/typescript');
+var linksPackage = require('dgeni-packages/links');
 var path = require('path');
 var semver = require('semver');
 var fs = require('fs');
@@ -14,9 +13,7 @@ var projectPackage = require('../../package.json');
 // Define the dgeni package for generating the docs
 module.exports = function(currentVersion) {
 
-  return new Package('ionic-v2-docs',
-                     [jsdocPackage, nunjucksPackage, typescriptPackage,
-                      linksPackage, gitPackage])
+  return new Package('ionic-v2-docs', [jsdocPackage, nunjucksPackage, typescriptPackage, linksPackage])
 
 // .processor(require('./processors/latest-version'))
 .processor(require('./processors/jekyll'))
@@ -72,7 +69,7 @@ module.exports = function(currentVersion) {
   log.level = 'error'; //'silly', 'debug', 'info', 'warn', 'error'
 })
 
-.config(function(renderDocsProcessor, computePathsProcessor, versionInfo) {
+.config(function(renderDocsProcessor, computePathsProcessor) {
 
   versions = [];
   // new version, add it to the versions list
@@ -98,7 +95,6 @@ module.exports = function(currentVersion) {
   };
 
   renderDocsProcessor.extraData.version = versionData;
-  renderDocsProcessor.extraData.versionInfo = versionInfo;
   computePathsProcessor.pathTemplates = [{
     docTypes: ['class', 'var', 'function', 'let'],
     getOutputPath: function(doc) {
@@ -117,10 +113,9 @@ module.exports = function(currentVersion) {
   readFilesProcessor.$enabled = false;
   readFilesProcessor.basePath = path.resolve(__dirname, '../..');
 
-  readTypeScriptModules.basePath = path.resolve(path.resolve(__dirname,
-                                                '../..'));
+  readTypeScriptModules.basePath = path.resolve(__dirname, '../..');
   readTypeScriptModules.sourceFiles = [
-    'src/index.ts'
+    './src/@ionic-native/plugins/**/*.ts'
   ];
 })
 
@@ -148,7 +143,7 @@ module.exports = function(currentVersion) {
 
 // Configure file writing
 .config(function(writeFilesProcessor) {
-  writeFilesProcessor.outputFolder  = config.sitePath;
+  writeFilesProcessor.outputFolder  = '../ionic-site/';
 })
 
 // Configure rendering
@@ -169,7 +164,8 @@ module.exports = function(currentVersion) {
   templateEngine.filters.push(
     require('./filters/capital'),
     require('./filters/code'),
-    require('./filters/dump')
+    require('./filters/dump'),
+    require('./filters/dashify')
   );
 
   templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));

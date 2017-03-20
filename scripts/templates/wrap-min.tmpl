@@ -1,6 +1,8 @@
-import { Plugin } from './plugin';
+import { Plugin } from '@ionic-native/core';
+import { Injectable } from '@angular/core';
+
 /**
- * @name PluginName
+ * @name Plugin Name
  * @description
  *
  * @usage
@@ -16,5 +18,7 @@ import { Plugin } from './plugin';
   pluginRef: '',
   repo: ''
 })
+@Injectable()
 export class PluginName {
+
 }

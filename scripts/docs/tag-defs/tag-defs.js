@@ -6,6 +6,7 @@ module.exports = [
     return typeof value !== 'undefined';
   }},
   {'name': 'usage'},
+  {'name': 'hidden'}, // hide from docs
   {'name': 'classes'}, // related classes
   {'name': 'interfaces'} // related interfaces
 ];
