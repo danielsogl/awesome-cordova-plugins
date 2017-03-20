@@ -224,9 +224,8 @@ docType: "<$ doc.docType $>"
 </p>
 <@ endif @>
 
-<pre><code>
-  $ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif @>
-  $ npm install --save @ionic-native/<$ prop.pluginRef $>
+<pre><code>$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif @>
+$ npm install --save @ionic-native/<$ prop.npmId $>
 </code></pre>
 <p>Repo:
   <a href="<$ prop.repo $>">

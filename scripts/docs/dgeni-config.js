@@ -20,6 +20,7 @@ module.exports = function(currentVersion) {
 .processor(require('./processors/remove-private-members'))
 .processor(require('./processors/hide-private-api'))
 .processor(require('./processors/collect-inputs-outputs'))
+.processor(require('./processors/npm-id'))
 
 // for debugging docs
 // .processor(function test(){

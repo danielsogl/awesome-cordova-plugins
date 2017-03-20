@@ -1,7 +1,6 @@
-module.exports = function readmes(renderDocsProcessor) {
+module.exports = function npmId(renderDocsProcessor) {
   return {
-    name: 'readmes',
-    description: 'Create jekyll includes',
+    name: 'npm-id',
     $runAfter: ['paths-computed'],
     $runBefore: ['rendering-docs'],
     $process: function(docs) {
@@ -13,7 +12,9 @@ module.exports = function readmes(renderDocsProcessor) {
       });
 
       docs.forEach(function(doc, i) {
-        doc.outputPath = doc.outputPath.replace('src/', '');
+        doc.npmId = doc.outputPath.replace('/README.md', '')
+          .replace('src/@ionic-native/plugins/','')
+          .replace('@ionic-native/plugins/','');
       });
 
       // returning docs will replace docs object in the next process
