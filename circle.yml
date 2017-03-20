@@ -17,7 +17,7 @@ dependencies:
 
 test:
   override:
-    - npm run build
+    - echo "No tests to run"
 
 deployment:
  staging:
