@@ -1,5 +1,4 @@
 import { Cordova, Plugin } from './plugin';
-import { Observable } from 'rxjs/Observable';
 
 export interface ToastOptions {
   /**
@@ -47,7 +46,7 @@ export interface ToastOptions {
  * import { Toast } from 'ionic-native';
  *
  *
- * Toast.show("I'm a toast", '5000', 'center').subscribe(
+ * Toast.show("I'm a toast", '5000', 'center').then(
  *   toast => {
  *     console.log(toast);
  *   }
@@ -71,17 +70,14 @@ export class Toast {
    * @param {string} message  The message to display.
    * @param {string} duration  Duration to show the toast, either 'short', 'long' or any number of milliseconds: '1500'.
    * @param {string} position  Where to position the toast, either 'top', 'center', or 'bottom'.
-   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
-  @Cordova({
-    observable: true,
-    clearFunction: 'hide'
-  })
+  @Cordova()
   static show(
     message: string,
     duration: string,
     position: string
-  ): Observable<any> { return; }
+  ): Promise<any> { return; }
 
   /**
    * Manually hide any currently visible toast.
@@ -99,82 +95,60 @@ export class Toast {
    *   position  Where to position the toast, either 'top', 'center', or 'bottom'.
    *   addPixelsY  Offset in pixels to move the toast up or down from its specified position.
    *
-   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
-  @Cordova({
-    observable: true,
-    clearFunction: 'hide'
-  })
-  static showWithOptions(options: ToastOptions): Observable<any> { return; }
+  @Cordova()
+  static showWithOptions(options: ToastOptions): Promise<any> { return; }
 
   /**
    * Shorthand for `show(message, 'short', 'top')`.
    * @param message {string}
-   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
-  @Cordova({
-    observable: true,
-    clearFunction: 'hide'
-  })
-  static showShortTop(message: string): Observable<any> { return; }
+  @Cordova()
+  static showShortTop(message: string): Promise<any> { return; }
 
   /**
    * Shorthand for `show(message, 'short', 'center')`.
    * @param message {string}
-   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
-  @Cordova({
-    observable: true,
-    clearFunction: 'hide'
-  })
-  static showShortCenter(message: string): Observable<any> { return; }
-
+  @Cordova()
+  static showShortCenter(message: string): Promise<any> { return; }
 
   /**
    * Shorthand for `show(message, 'short', 'bottom')`.
    * @param message {string}
-   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
-  @Cordova({
-    observable: true,
-    clearFunction: 'hide'
-  })
-  static showShortBottom(message: string): Observable<any> { return; }
+  @Cordova()
+  static showShortBottom(message: string): Promise<any> { return; }
 
 
   /**
    * Shorthand for `show(message, 'long', 'top')`.
    * @param message {string}
-   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
-  @Cordova({
-    observable: true,
-    clearFunction: 'hide'
-  })
-  static showLongTop(message: string): Observable<any> { return; }
+  @Cordova()
+  static showLongTop(message: string): Promise<any> { return; }
 
 
   /**
    * Shorthand for `show(message, 'long', 'center')`.
    * @param message {string}
-   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
-  @Cordova({
-    observable: true,
-    clearFunction: 'hide'
-  })
-  static showLongCenter(message: string): Observable<any> { return; }
+  @Cordova()
+  static showLongCenter(message: string): Promise<any> { return; }
 
 
   /**
    * Shorthand for `show(message, 'long', 'bottom')`.
    * @param message {string}
-   * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
+   * @return {Promise}  Returns a promise that resolves when the toast is visible, rejects on error.
    */
-  @Cordova({
-    observable: true,
-    clearFunction: 'hide'
-  })
-  static showLongBottom(message: string): Observable<any> { return; }
+  @Cordova()
+  static showLongBottom(message: string): Promise<any> { return; }
 
 }
