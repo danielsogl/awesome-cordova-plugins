@@ -423,4 +423,15 @@ export class BLE {
   @Cordova()
   static enable(): Promise<any> { return; }
 
+  /**
+   * Read the RSSI value on the device connection.
+   *
+   * @param {string} deviceId  UUID or MAC address of the peripheral
+   *
+   *@returns {Promise<any>}
+   */
+  @Cordova()
+  static readRSSI(
+    deviceId: string,
+  ): Promise<any> { return; }
 }
