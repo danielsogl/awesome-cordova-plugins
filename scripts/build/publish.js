@@ -1,3 +1,4 @@
+"use strict";
 // Node module dependencies
 const fs = require('fs-extra-promise').useFs(require('fs-extra')),
   queue = require('queue'),
