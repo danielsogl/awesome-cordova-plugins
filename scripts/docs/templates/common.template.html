@@ -27,13 +27,13 @@ docType: "<$ doc.docType $>"
   <tr>
     <td>
       <$ param.name $>
-      <@ if param.optional @><div><em>(optional)</em></div><@ endif @>
     </td>
     <td>
       <code><$ param.returnType | escape $></code>
     </td>
     <td>
       <$ param.description | marked $>
+      <@ if param.optional @><strong class="tag">Optional</strong><@ endif @>
     </td>
   </tr>
   <@ endfor @>
@@ -71,14 +71,14 @@ docType: "<$ doc.docType $>"
     <td>
       <$ param.name $>
       <@ if param.alias @>| <$ param.alias $><@ endif @>
-      <@ if param.type.optional @><div><em>(optional)</em></div><@ endif @>
     </td>
     <td>
       <$ typeList(param.typeList) $>
     </td>
     <td>
       <$ param.description | marked $>
-      <@ if param.default @><p><em>(default: <$ param.default $>)</em></p><@ endif @>
+      <@ if param.optional @><strong class="tag">Optional</strong><@ endif @>
+      <@ if param.defaultValue @><p><em>(default: <$ param.defaultValue $>)</em></p><@ endif @>
     </td>
   </tr>
   <@ endfor @>
