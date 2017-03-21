@@ -1,6 +1,8 @@
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty } from '@ionic-native/core';
+import { Plugin, Cordova } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+
+declare var cordova: any;
 
 /**
  * @name jins-meme
@@ -18,14 +20,14 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
-  pluginName: 'jins-meme',
+  pluginName: 'JinsMeme',
   plugin: 'JinsMemeSDK-Plugin-Cordova', // npm package name, example: cordova-plugin-camera
   pluginRef: 'cordova.plugins.JinsMemePlugin', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/jins-meme/JinsMemeSDK-Plugin-Cordova.git', // the github repository URL for the plugin
   install: '' // OPTIONAL install command, in case the plugin requires variables
 })
 @Injectable()
-export class jins-meme {
+export class JinsMeme {
 
   /**
   * Authentication and authorization of App and SDK.
