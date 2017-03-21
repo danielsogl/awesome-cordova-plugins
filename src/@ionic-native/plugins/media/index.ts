@@ -201,7 +201,7 @@ export class MediaObject {
   pluginRef: 'Media'
 })
 @Injectable()
-class MediaPlugin {
+export class MediaPlugin {
 
   // Constants
   /**
