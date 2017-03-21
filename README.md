@@ -43,11 +43,10 @@ import { Camera } from '@ionic-native/camera';
   ]
   ...
 })
-```
-
-```
 export class AppModule { }
+```
 
+```typescript
 import { Geolocation } from '@ionic-native/geolocation';
 import { Platform } from 'ionic-angular';
 
