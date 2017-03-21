@@ -1,3 +1,13 @@
+<a name="3.1.1"></a>
+## [3.1.1](https://github.com/driftyco/ionic-native/compare/v3.1.0...v3.1.1) (2017-03-21)
+
+
+### Bug Fixes
+
+* **media-plugin:** export MediaPlugin class ([cb0a366](https://github.com/driftyco/ionic-native/commit/cb0a366)), closes [#1207](https://github.com/driftyco/ionic-native/issues/1207)
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/driftyco/ionic-native/compare/v2.9.0...v3.1.0) (2017-03-20)
 
