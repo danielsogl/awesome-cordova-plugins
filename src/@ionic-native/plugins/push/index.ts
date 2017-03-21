@@ -229,6 +229,8 @@ export type PushEvent = 'registration' | 'error' | 'notification';
  *
  * pushObject.on('notification').subscribe(notification => console.log('Received a notification', notification));
  *
+ * pushObject.on('registration').subscribe(registration => console.log('Device registered', registration));
+ *
  * pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
  *
  *
