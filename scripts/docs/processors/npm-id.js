@@ -12,9 +12,10 @@ module.exports = function npmId(renderDocsProcessor) {
       });
 
       docs.forEach(function(doc, i) {
-        doc.npmId = doc.outputPath.replace('/README.md', '')
-          .replace('src/@ionic-native/plugins/','')
-          .replace('@ionic-native/plugins/','');
+        doc.npmId = doc.outputPath.replace('/README.md', '') // for readmes
+          .replace('@ionic-native/plugins/','') // for readmes
+          .replace('content/docs/v2/native/', '') // for docs
+          .replace('/index.md', ''); // for docs
       });
 
       // returning docs will replace docs object in the next process
