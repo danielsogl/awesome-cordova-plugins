@@ -91,6 +91,78 @@ export class MyComponent {
 }
 ```
 
+### Mocking and Browser Development
+
+Ionic Native 3.x makes it possible to mock plugins and develop nearly the entirety of your app in the browser or in `ionic serve`.
+
+To do this, you need to provide a mock implementation of the plugins you wish to use. Here's an example of mocking the `Camera` plugin to return a stock image while in development:
+
+First import the `Camera` class in your `src/app/app.module.ts` file:
+
+```ts
+import { Camera } from '@ionic-native/camera';
+```
+
+Then create a new class that extends the `Camera` class with a mock implementation:
+
+```ts
+class CameraMock extends Camera {
+  getPicture(options) {
+    return new Promise((resolve, reject) => {
+      resolve("BASE_64_ENCODED_DATA_GOES_HERE");
+    })
+  }
+}
+```
+
+Finally, override the previous `Camera` class in your `providers` for this module:
+
+```ts
+providers: [
+  { provide: Camera, useClass: CameraMock }
+]
+```
+
+Here's the full example:
+
+```ts
+import { NgModule, ErrorHandler } from '@angular/core';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+
+import { Camera } from '@ionic-native/camera';
+
+class CameraMock extends Camera {
+  getPicture(options) {
+    return new Promise((resolve, reject) => {
+      resolve("BASE_64_ENCODED_DATA_GOES_HERE");
+    })
+  }
+}
+
+@NgModule({
+  declarations: [
+    MyApp,
+    HomePage
+  ],
+  imports: [
+    IonicModule.forRoot(MyApp)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    HomePage
+  ],
+  providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: Camera, useClass: CameraMock }
+  ]
+})
+export class AppModule {}
+```
+
+
 ### Runtime Diagnostics
 
 Spent way too long diagnosing an issue only to realize a plugin wasn't firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.
