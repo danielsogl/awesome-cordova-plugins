@@ -1,19 +1,18 @@
-import { Plugin, Cordova } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
+import { Cordova, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var cordova: any;
 
 /**
- * @name jins-meme
+ * @name JinsMeme
  * @description
- * This plugin does something
+ * Implementation of the JINS MEME SDK
  *
  * @usage
  * ```
- * import { jins-meme } from 'ionic-native';
+ * import { JinsMeme } from 'ionic-native';
  *
- * jins-meme.functionName('Hello', 123)
+ * JinsMeme.functionName('Hello', 123)
  *   .then((something: any) => doSomething(something))
  *   .catch((error: any) => console.log(error));
  *
