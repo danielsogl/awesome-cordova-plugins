@@ -7,16 +7,14 @@
     "emitDecoratorMetadata": true,
     "module": "es2015",
     "moduleResolution": "node",
-    "outDir": "../../../dist/",
+    "outDir": "../../../dist/@ionic-native/",
     "paths": {
       "@ionic-native/core": ["../../../dist/@ionic-native/core"]
     },
-    "rootDir": "../../../src/",
+    "rootDir": "../../../src/@ionic-native/plugins/",
     "target": "es5",
     "skipLibCheck": true,
     "lib": ["es2015", "dom"]
   },
-  "files": [
-    "../../../src/@ionic-native/plugins/{{PLUGIN}}/index.ts"
-  ]
+  "files": []
 }
