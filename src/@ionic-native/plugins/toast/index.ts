@@ -51,7 +51,7 @@ export interface ToastOptions {
  *
  * ...
  *
- * thisoast.show("I'm a toast", '5000', 'center').subscribe(
+ * this.toast.show("I'm a toast", '5000', 'center').subscribe(
  *   toast => {
  *     console.log(toast);
  *   }

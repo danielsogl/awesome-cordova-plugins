@@ -32,9 +32,9 @@ export interface DeeplinkMatch {
  * ```typescript
  * import { Deeplinks } from '@ionic-native/deeplinks';
  *
- * constructor(private deepLinks: DeepLinks) { }
+ * constructor(private deeplinks: Deeplinks) { }
  *
- * this.deepLinks.route({
+ * this.deeplinks.route({
  *      '/about-us': AboutPage,
  *      '/universal-links-test': AboutPage,
  *      '/products/:productId': ProductPage
@@ -53,7 +53,7 @@ export interface DeeplinkMatch {
  * the actual navigation for you:
  *
  * ```typescript
- * this.deepLinks.routeWithNavController(this.navController, {
+ * this.deeplinks.routeWithNavController(this.navController, {
  *   '/about-us': AboutPage,
  *   '/products/:productId': ProductPage
  * }).subscribe((match) => {
