@@ -110,7 +110,7 @@ The `@Cordova` decorator has a few more options now.
 
 ### Testing your changes
 
-You need to run `npm run build` in the `ionic-native` project, this will create a `dist` directory. Then, you must go to your ionic application folder and replace your current `node_modules/ionic-native/dist/` with the newly generated one.
+You need to run `npm run build` in the `ionic-native` project, this will create a `dist/packages-dist` directory. Then, you must go to your ionic application folder and replace your current `node_modules/@ionic-native/` with the newly generated `dist/packages-dist/@ionic-native/` folder.
 
 ### Cleaning the code
 
