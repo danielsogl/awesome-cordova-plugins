@@ -11,7 +11,7 @@ export interface TTSOptions {
 }
 
 /**
- * @name TextToSpeech
+ * @name Text To Speech
  * @description
  * Text to Speech plugin
  *
