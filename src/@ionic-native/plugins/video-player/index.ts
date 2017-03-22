@@ -18,7 +18,7 @@ export interface VideoOptions {
 }
 
 /**
- * @name VideoPlayer
+ * @name Video Player
  * @description
  * A Codova plugin that simply allows you to immediately play a video in fullscreen mode.
  *
