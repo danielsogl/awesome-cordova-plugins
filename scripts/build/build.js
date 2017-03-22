@@ -12,8 +12,7 @@ const ROOT = path.resolve(path.join(__dirname, '../../')), // root ionic-native 
   PLUGIN_PACKAGE_JSON = require(path.resolve(__dirname, 'plugin-package.json')), // plugin package.json template
   PLUGIN_TS_CONFIG = require(path.resolve(__dirname, 'tsconfig-plugin.json')), // plugin tsconfig template
   BUILD_TMP = path.resolve(ROOT, '.tmp'), // tmp directory path
-  BUILD_DIST_ROOT = path.resolve(ROOT, 'dist/packages-dist/@ionic-native'), // dist directory root path
-  BUILD_PLUGINS_DIST = path.resolve(BUILD_DIST_ROOT, 'plugins'), // plugins dist directory path
+  BUILD_DIST_ROOT = path.resolve(ROOT, 'dist/@ionic-native'), // dist directory root path
   BUILD_CORE_DIST = path.resolve(BUILD_DIST_ROOT, 'core'); // core dist directory path
 
 
@@ -35,13 +34,6 @@ const PLUGIN_PEER_DEPS = {
 
 // set peer dependencies for all plugins
 PLUGIN_PACKAGE_JSON.peerDependencies = PLUGIN_PEER_DEPS;
-
-
-// Delete dist directory and any temporary files
-console.log('Removing old TMP directory');
-fs.removeSync(BUILD_TMP);
-fs.removeSync(BUILD_PLUGINS_DIST);
-
 
 // Create tmp/dist directories
 console.log('Making new TMP directory');
@@ -78,7 +70,7 @@ const addPluginToQueue = pluginName => {
     let tsConfigPath;
 
     fs.mkdirpAsync(PLUGIN_BUILD_DIR) // create tmp build dir
-      .then(() => fs.mkdirpAsync(path.resolve(BUILD_PLUGINS_DIST, pluginName))) // create dist dir
+      .then(() => fs.mkdirpAsync(path.resolve(BUILD_DIST_ROOT, pluginName))) // create dist dir
       .then(() => {
 
         // Write tsconfig.json
@@ -97,7 +89,7 @@ const addPluginToQueue = pluginName => {
         packageJson.name = `@ionic-native/${pluginName}`;
         packageJson.version = IONIC_NATIVE_VERSION;
 
-        return fs.writeJsonAsync(path.resolve(BUILD_PLUGINS_DIST, pluginName, 'package.json'), packageJson);
+        return fs.writeJsonAsync(path.resolve(BUILD_DIST_ROOT, pluginName, 'package.json'), packageJson);
       })
       .then(() => {
 
