@@ -40,7 +40,7 @@
     "build": "npm run clean && npm run lint && npm run build:core && npm run build:modules",
     "build:core": "ngc -p scripts/build/tsconfig-core.json",
     "build:modules": "node scripts/build/build.js",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist .tmp",
     "shipit": "npm run build && gulp readmes && npm run npmpub",
     "npmpub": "node scripts/build/publish.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
