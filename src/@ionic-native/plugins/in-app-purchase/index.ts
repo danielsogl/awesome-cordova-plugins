@@ -55,7 +55,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'InAppPurchase',
-  plugin: 'cordova-plugin-inapppurchase',
+  plugin: 'cc.fovea.cordova.purchase',
   pluginRef: 'inAppPurchase',
   platforms: ['Android', 'iOS'],
   repo: 'https://github.com/j3k0/cordova-plugin-purchase'
