@@ -1,3 +1,18 @@
+<a name="3.2.0"></a>
+# [3.2.0](https://github.com/driftyco/ionic-native/compare/v3.1.1...v3.2.0) (2017-03-22)
+
+
+### Bug Fixes
+
+* **media-plugin:** MediaPlugin.create promise never fires (#1220) ([82d2ae8](https://github.com/driftyco/ionic-native/commit/82d2ae8))
+
+
+### Features
+
+* **jins-meme:** add support for jins meme smart glasses (#1212) ([9c88cfb](https://github.com/driftyco/ionic-native/commit/9c88cfb))
+
+
+
 <a name="3.1.1"></a>
 ## [3.1.1](https://github.com/driftyco/ionic-native/compare/v3.1.0...v3.1.1) (2017-03-21)
 
