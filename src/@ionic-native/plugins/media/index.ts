@@ -14,7 +14,7 @@ export class MediaObject {
    * @param src {string} A URI containing the audio content.
    * @param onStatusUpdate {Function} A callback function to be invoked when the status of the file changes
    */
-  constructor(private _objectInstnace: any) {}
+  constructor(private _objectInstance: any) {}
 
   /**
    * Get the current amplitude of the current recording.
@@ -256,7 +256,8 @@ export class MediaPlugin {
       // Creates a new media object
       // Resolves with the media object
       // or rejects with the error
-      const instance = new Media(src, () => resolve(new Media(instance)), reject, onStatusUpdate);
+      const instance = new Media(src, resolve, reject, onStatusUpdate);
+      return resolve(new MediaObject(instance));
     });
 
   }
