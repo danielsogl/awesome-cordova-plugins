@@ -17,9 +17,9 @@ declare var cordova: any;
  * 
  * ...
  * 
- * this.jinsMeme.functionName()
- *   .then(...)
- *   .catch(...);
+ * this.jinsMeme.setAppClientID(appClientId: string, clientSecret: string)
+ *   .then(this.jinsMeme.startScan())
+ *   .catch(console.log('jinsMeme.setAppClientID authentication error!'));
  *
  * ```
  */
