@@ -5,18 +5,18 @@ import { Observable } from 'rxjs/Observable';
 declare var cordova: any;
 
 /**
- * @name JinsMeme
+ * @name Jins Meme
  * @description
  * Implementation of the JINS MEME SDK
  *
  * @usage
  * ```
  * import { JinsMeme } from '@ionic-native/jins-meme';
- * 
+ *
  * constructor(private jinsMeme: JinsMeme) { }
- * 
+ *
  * ...
- * 
+ *
  * this.jinsMeme.setAppClientID(appClientId: string, clientSecret: string)
  *   .then(this.jinsMeme.startScan())
  *   .catch(console.log('jinsMeme.setAppClientID authentication error!'));
