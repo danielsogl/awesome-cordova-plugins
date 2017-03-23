@@ -90,7 +90,7 @@ export class SecureStorageObject {
 @Plugin({
   pluginName: 'SecureStorage',
   plugin: 'cordova-plugin-secure-storage',
-  pluginRef: 'plugins.securestorage',
+  pluginRef: 'cordova.plugins.SecureStorage',
   repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',
   platforms: ['Android', 'iOS', 'Windows Phone', 'Browser']
 })
