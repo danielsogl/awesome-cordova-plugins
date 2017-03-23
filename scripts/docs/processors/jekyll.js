@@ -26,8 +26,8 @@ module.exports = function jekyll(renderDocsProcessor) {
       });
 
       docs.push({
-        docType: 'native_menu-menu',
-        id: 'native_menu-menu',
+        docType: 'nativeMenu',
+        id: 'native_menu',
         template: 'native_menu.template.html',
         outputPath: 'content/_includes/v2_fluid/native_menu.html'
       });
