@@ -96,19 +96,17 @@ export interface CameraPopoverOptions {
  * ```typescript
  * import { Camera, CameraOptions } from '@ionic-native/camera';
  *
- * constructor(private camera: Camera) { }
- *
  * ...
  *
  *
  * constant options: CameraOptions = {
  *   quality: 100,
- *   destinationType: this.camera.DestinationType.DATA_URL,
- *   enodingType: this.camera.EncodingType.JPEG,
- *   mediaType: this.camera.MediaType.PICTURE
+ *   destinationType: Camera.DestinationType.DATA_URL,
+ *   enodingType: Camera.EncodingType.JPEG,
+ *   mediaType: Camera.MediaType.PICTURE
  * }
  *
- * this.camera.getPicture(options).then((imageData) => {
+ * Camera.getPicture(options).then((imageData) => {
  *  // imageData is either a base64 encoded string or a file URI
  *  // If it's base64:
  *  let base64Image = 'data:image/jpeg;base64,' + imageData;
