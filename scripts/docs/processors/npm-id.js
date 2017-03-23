@@ -2,7 +2,7 @@ module.exports = function npmId(renderDocsProcessor) {
   return {
     name: 'npm-id',
     $runAfter: ['paths-computed'],
-    $runBefore: ['rendering-docs'],
+    $runBefore: ['jekyll'],
     $process: function(docs) {
       var currentVersion = renderDocsProcessor.extraData.version.current.name;
 
