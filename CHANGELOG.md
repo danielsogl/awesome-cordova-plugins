@@ -1,3 +1,13 @@
+<a name="3.2.1"></a>
+## [3.2.1](https://github.com/driftyco/ionic-native/compare/v3.2.0...v3.2.1) (2017-03-23)
+
+
+### Bug Fixes
+
+* **secure-storage:** update the pluginRef (#1228) ([baff7b3](https://github.com/driftyco/ionic-native/commit/baff7b3))
+
+
+
 <a name="3.2.0"></a>
 # [3.2.0](https://github.com/driftyco/ionic-native/compare/v3.1.1...v3.2.0) (2017-03-22)
 
