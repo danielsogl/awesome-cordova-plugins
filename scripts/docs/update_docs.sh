@@ -23,9 +23,12 @@ function run {
   # CD in to the site dir to commit updated docs
   cd $SITE_DIR
 
+  # Add all files to git
+  git add .
+
   # if no changes, don't commit
-  CHANGED=$(git diff-index --name-only HEAD --)
-  if [ -z "$CHANGED" ];
+  CHANGED=$(git diff-index --name-only HEAD 2>/dev/null | wc -l)
+  if [ $CHANGED -gt 0 ];
   then
     echo "-- No changes detected for the following commit, docs not updated."
     echo "https://github.com/driftyco/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1"
