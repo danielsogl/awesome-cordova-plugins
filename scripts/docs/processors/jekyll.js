@@ -5,6 +5,9 @@ module.exports = function jekyll(renderDocsProcessor) {
     $runAfter: ['paths-computed'],
     $runBefore: ['rendering-docs'],
     $process: function(docs) {
+
+      console.log('jekyll running');
+
       var currentVersion = renderDocsProcessor.extraData.version.current.name;
 
       // pretty up and sort the docs object for menu generation

@@ -2,7 +2,7 @@ module.exports = function npmId(renderDocsProcessor) {
   return {
     name: 'npm-id',
     $runAfter: ['paths-computed'],
-    $runBefore: ['jekyll'],
+    $runBefore: ['rendering-docs'],
     $process: function(docs) {
       var currentVersion = renderDocsProcessor.extraData.version.current.name;
 
@@ -12,10 +12,8 @@ module.exports = function npmId(renderDocsProcessor) {
       });
 
       docs.forEach(function(doc, i) {
-        doc.npmId = doc.outputPath.replace('/README.md', '') // for readmes
-          .replace('@ionic-native/plugins/','') // for readmes
-          .replace('content/docs/v2/native/', '') // for docs
-          .replace('/index.md', ''); // for docs
+        doc.npmId = doc.id.match(/plugins\/(.*)\/index/)[1];
+        console.log('@ionic-native/' + doc.npmId);
       });
 
       // returning docs will replace docs object in the next process

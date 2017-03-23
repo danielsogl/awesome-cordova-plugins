@@ -19,9 +19,10 @@ module.exports = function(currentVersion) {
 
   // .processor(require('./processors/latest-version'))
     .processor(require('./processors/readmes'))
-    .processor(require('./processors/npm-id'))
     .processor(require('./processors/remove-private-members'))
     .processor(require('./processors/hide-private-api'))
+    .processor(require('./processors/npm-id'))
+
     // .processor(require('./processors/collect-inputs-outputs'))
 
     // for debugging docs
