@@ -28,7 +28,7 @@ function run {
 
   # if no changes, don't commit
   CHANGED=$(git diff-index --name-only HEAD 2>/dev/null | wc -l)
-  if [ $CHANGED -gt 0 ];
+  if [ $CHANGED -eq 0 ];
   then
     echo "-- No changes detected for the following commit, docs not updated."
     echo "https://github.com/driftyco/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1"
