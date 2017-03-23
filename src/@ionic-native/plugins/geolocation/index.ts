@@ -120,7 +120,7 @@ export interface GeolocationOptions {
  * @usage
  *
  * ```typescript
- * import { Geolocation } from '@ionic-native/geolocation';
+ * import { Geolocation } from 'ionic-native';
  *
  * ...
  *
