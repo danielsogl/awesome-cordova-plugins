@@ -33,7 +33,7 @@ docType: "<$ doc.docType $>"
     </td>
     <td>
       <$ param.description | marked $>
-      <@ if param.optional @><strong class="tag">Optional</strong><@ endif @>
+      <@ if param.optional @><em>(optional)</em><@ endif @>
     </td>
   </tr>
   <@ endfor @>
@@ -77,7 +77,6 @@ docType: "<$ doc.docType $>"
     </td>
     <td>
       <$ param.description | marked $>
-      <@ if param.optional @><strong class="tag">Optional</strong><@ endif @>
       <@ if param.defaultValue @><p><em>(default: <$ param.defaultValue $>)</em></p><@ endif @>
     </td>
   </tr>

@@ -16,11 +16,12 @@ module.exports = function(currentVersion) {
   return new Package('ionic-v2-docs', [jsdocPackage, nunjucksPackage, typescriptPackage, linksPackage])
 
 // .processor(require('./processors/latest-version'))
-.processor(require('./processors/jekyll'))
-.processor(require('./processors/remove-private-members'))
-.processor(require('./processors/hide-private-api'))
-.processor(require('./processors/collect-inputs-outputs'))
-.processor(require('./processors/npm-id'))
+    .processor(require('./processors/jekyll'))
+    .processor(require('./processors/remove-private-members'))
+    .processor(require('./processors/hide-private-api'))
+    .processor(require('./processors/collect-inputs-outputs'))
+    .processor(require('./processors/npm-id'))
+    .processor(require('./processors/parse-optional'))
 
 // for debugging docs
 // .processor(function test(){
