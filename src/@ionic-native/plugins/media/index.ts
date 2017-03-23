@@ -127,7 +127,7 @@ export class MediaObject {
 }
 
 /**
- * @name MediaPlugin
+ * @name Media
  * @description
  * @usage
  * ```typescript
