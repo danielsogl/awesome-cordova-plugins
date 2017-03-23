@@ -381,7 +381,7 @@ export class EstimoteBeacons {
    * @param [notifyEntryStateOnDisplay=false] {boolean} Set to true to detect if you
    * are inside a region when the user turns display on, see
    * {@link https://developer.apple.com/library/prerelease/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/instp/CLBeaconRegion/notifyEntryStateOnDisplay|iOS documentation}
-   * for further details (optional, defaults to false, iOS only).
+   * for further details (iOS only).
    * @returns {Observable<any>} Returns an Observable that notifies of each region state discovered.
    */
   @Cordova({

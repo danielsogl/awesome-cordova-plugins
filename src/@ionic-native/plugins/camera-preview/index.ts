@@ -187,7 +187,7 @@ export class CameraPreview {
 
   /**
    * Take the picture (base64)
-   * @param options {CameraPreviewPictureOptions} optional - size and quality of the picture to take
+   * @param [options] {CameraPreviewPictureOptions} size and quality of the picture to take
    * @return {Promise<any>}
    */
   @Cordova({

@@ -268,9 +268,8 @@ export class Facebook {
    *
    *
    * @param {Object}  options An object containing an [App Link](https://developers.facebook.com/docs/applinks) URL to your app and an optional image URL.
-   *   url: [App Link](https://developers.facebook.com/docs/applinks) to your app
-   *   picture: image to be displayed in the App Invite dialog
-   *
+   * @param {string} options.url [App Link](https://developers.facebook.com/docs/applinks) to your app
+   * @param {string} [options.picture] image to be displayed in the App Invite dialog
    * @returns {Promise<any>} Returns a Promise that resolves with the result data, or rejects with an error
    */
   @Cordova()

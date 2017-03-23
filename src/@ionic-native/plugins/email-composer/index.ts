@@ -84,7 +84,7 @@ export class EmailComposer {
   /**
    * Verifies if sending emails is supported on the device.
    *
-   * @param app {string?} An optional app id or uri scheme.
+   * @param [app] {string} App id or uri scheme.
    * @returns {Promise<any>} Resolves if available, rejects if not available
    */
   @CordovaCheck()
@@ -123,7 +123,7 @@ export class EmailComposer {
    * Displays the email composer pre-filled with data.
    *
    * @param options {EmailComposerOptions} Email
-   * @param scope {any?} An optional scope for the promise
+   * @param [scope] {any} Scope for the promise
    * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
    */
   @Cordova({

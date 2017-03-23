@@ -85,7 +85,7 @@ export class Gyroscope {
 
   /**
    * Watching for gyroscope sensor changes
-   * @param options {GyroscopeOptions} (optional)
+   * @param {GyroscopeOptions} [options]
    * @return {Observable<GyroscopeOrientation>} Returns an Observable that resolves GyroscopeOrientation
    */
   watch(options?: GyroscopeOptions): Observable<GyroscopeOrientation> {
@@ -99,7 +99,7 @@ export class Gyroscope {
 
   /**
    * Get current data from gyroscope sensor
-   * @param options {GyroscopeOptions} (optional)
+   * @param {GyroscopeOptions} [options]
    * @return {Promise<GyroscopeOrientation>} Returns a promise that resolves GyroscopeOrientation
    */
   @Cordova({
