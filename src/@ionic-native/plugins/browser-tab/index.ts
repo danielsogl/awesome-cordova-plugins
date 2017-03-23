@@ -17,7 +17,7 @@ import { Injectable } from '@angular/core';
  *
  *       if (isAvailable) {
  *
- *         browserTab.open('https://ionic.io');
+ *         browserTab.openUrl('https://ionic.io');
  *
  *       } else {
  *
