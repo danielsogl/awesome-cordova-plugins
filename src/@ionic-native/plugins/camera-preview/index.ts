@@ -57,7 +57,7 @@ export interface CameraPreviewPictureOptions {
  *
  * @usage
  * ```typescript
- * import { CameraPreview, PictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from 'ionic-native';
+ * import { CameraPreview, PictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
  *
  * constructor(private cameraPreview: CameraPreview) { }
  *
