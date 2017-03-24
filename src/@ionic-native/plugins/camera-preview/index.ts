@@ -211,7 +211,7 @@ export class CameraPreview {
 
   /**
    * Set the zoom (Android)
-   * @param zoom {number} Zoom value
+   * @param [zoom] {number} Zoom value
    * @return {Promise<any>}
    */
   @Cordova({
@@ -223,7 +223,7 @@ export class CameraPreview {
 
   /**
    * Set the preview Size
-   * @param dimensions {CameraPreviewDimensions}
+   * @param [dimensions] {CameraPreviewDimensions}
    * @return {Promise<any>}
    */
   @Cordova({
@@ -235,7 +235,7 @@ export class CameraPreview {
 
   /**
    * Set the flashmode
-   * @param flashMode {string} 'off' (iOS & Android), 'on' (iOS & Android), 'auto' (iOS & Android), 'torch' (Android)
+   * @param [flashMode] {string} 'off' (iOS & Android), 'on' (iOS & Android), 'auto' (iOS & Android), 'torch' (Android)
    * @return {Promise<any>}
    */
   @Cordova({
