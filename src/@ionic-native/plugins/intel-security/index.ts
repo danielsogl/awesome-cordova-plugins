@@ -10,9 +10,8 @@
  * - Remove this note
  *
  */
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty } from '@ionic-native/core';
+import { Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 
 declare var intel: any;
 
