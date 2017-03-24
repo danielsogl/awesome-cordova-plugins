@@ -399,7 +399,7 @@ export class GoogleMap {
  *  // create a new map by passing HTMLElement
  *  let element: HTMLElement = document.getElementById('map');
  *
- *  let map: GoogleMap = GoogleMaps.create(element);
+ *  let map: GoogleMap = this.googleMaps.create(element);
  *
  *  // listen to MAP_READY event
  *  // You must wait for this event to fire before adding something to the map or modifying it in anyway
