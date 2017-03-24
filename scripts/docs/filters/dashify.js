@@ -1,7 +1,5 @@
+"use strict";
 module.exports = {
   name: 'dashify',
-  process: function(str) {
-    str || (str = '');
-    return str.replace(/\s/g, '-');
-  }
+  process: str => str? str.replace(/\s/g, '-') : ''
 };
