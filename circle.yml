@@ -8,6 +8,7 @@ general:
   branches:
     only:
       - master # ignore PRs and branches
+      - es6-docs
 
 dependencies:
  pre:
