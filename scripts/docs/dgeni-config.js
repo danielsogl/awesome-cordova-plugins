@@ -14,6 +14,7 @@ module.exports = currentVersion => {
     .processor(require('./processors/remove-private-members'))
     .processor(require('./processors/hide-private-api'))
     .processor(require('./processors/parse-optional'))
+    .processor(require('./processors/mark-properties'))
     .processor(require('./processors/npm-id'))
     .processor(require('./processors/jekyll'))
 

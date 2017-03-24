@@ -10,6 +10,7 @@ header_sub_title: "<$ doc.docType | capital $> in module <$ doc.module $>"
 doc: "<$ doc.name $>"
 docType: "<$ doc.docType $>"
 ---
+
 <@- macro interfaceTable(interface) -@>
 <@ for export in doc.moduleDoc.exports -@>
 <@ if export.name == interface @>
@@ -78,12 +79,11 @@ docType: "<$ doc.docType $>"
 <@- macro functionSyntax(fn) @>
   <@- set sep = joiner(',&nbsp;') -@>
   <code><$ fn.name $><@- if not fn.isProperty @>(<@ endif -@><@- for param in fn.params @><$ sep() $>
-  <@- if param.type.optional @>[<@ endif -@>
+  <@- if param.type.optional @>[<@- endif -@>
   <$ param.name $>
-  <@- if param.type.optional @>]<@ endif -@>
-  <@ endfor @><@- if not fn.isProperty @>)<@ endif -@></code>
-  <@ if fn.alias @><small>(alias: <$ fn.alias $>)</small><@ endif @>
-<@ endmacro -@>
+  <@- if param.type.optional -@>]<@- endif -@>
+  <@- endfor -@><@- if not fn.isProperty @>)<@- endif -@></code>
+<@- endmacro -@>
 
 <@- macro typeList(types) -@>
 <@ set separator = joiner("|") @>
@@ -109,7 +109,7 @@ docType: "<$ doc.docType $>"
 <@- endif @>
 <@- endmacro -@>
 
-<@- macro documentMethod(method) -@>
+<@ macro documentMethod(method) -@>
 <h3><a class="anchor" name="<$ method.name $>" href="#<$ method.name $>"></a><$ functionSyntax(method) $></h3>
 <$ documentPlatforms(method) $>
 <$ method.description $>
@@ -141,28 +141,9 @@ docType: "<$ doc.docType $>"
 <$ documentMethod(method) $>
 <@- endfor @>
 <@- endif -@>
-<@- endmacro -@>
+<@ endmacro @>
 
-<h1 class="api-title">
-  <@ if doc.docType == "directive" @>
-  <$ doc.name | dashCase $>
-  <@ else @>
-  <$ doc.name $>
-  <@ endif @>
-
-  <@ if doc.parent @>
-  <br />
-  <small>
-    Child of <$ doc.parent $>
-  </small>
-  <@ endif @>
-
-  <@ if doc.delegate @>
-  <br/>
-  <small>
-    Delegate: <$ doc.delegate $>
-  </small>
-  <@ endif @>
+<h1 class="api-title"><$ doc.name $>
   <@- if doc.beta == true -@>
     <span class="beta" title="beta">&beta;</span>
   <@- endif -@>
@@ -182,6 +163,8 @@ docType: "<$ doc.docType $>"
   href="<$ prop.repo $>/issues">plugin repo</a>.
 </p>
 <@ endif @>
+
+<# --- Install commands --- #>
 <pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif @>
 $ npm install --save @ionic-native/<$ doc.npmId $>
 </code></pre>
