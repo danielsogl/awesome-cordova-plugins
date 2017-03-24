@@ -22,6 +22,6 @@ test:
 
 deployment:
  staging:
-   branch: master
+   branch: es6-docs
    commands:
      - ./scripts/docs/update_docs.sh
