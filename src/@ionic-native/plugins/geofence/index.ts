@@ -82,7 +82,6 @@ declare var window: any;
   repo: 'https://github.com/cowbell/cordova-plugin-geofence/',
   platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows Phone']
 })
-
 @Injectable()
 export class Geofence {
 

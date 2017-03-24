@@ -109,12 +109,12 @@ export class Mixpanel {
 /**
  * @hidden
  */
-@Injectable()
 @Plugin({
   plugin: 'cordova-plugin-mixpanel',
   pluginRef: 'mixpanel.people',
   pluginName: 'Mixpanel'
 })
+@Injectable()
 export class MixpanelPeople {
 
   /**

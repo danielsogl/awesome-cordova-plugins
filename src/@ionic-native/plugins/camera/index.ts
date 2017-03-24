@@ -90,7 +90,7 @@ export interface CameraPopoverOptions {
  * @description
  * Take a photo or capture video.
  *
- * Requires {@link module:driftyco/ionic-native} and the Cordova plugin: `cordova-plugin-camera`. For more info, please see the [Cordova Camera Plugin Docs](https://github.com/apache/cordova-plugin-camera).
+ * Requires and the Cordova plugin: `cordova-plugin-camera`. For more info, please see the [Cordova Camera Plugin Docs](https://github.com/apache/cordova-plugin-camera).
  *
  * @usage
  * ```typescript
@@ -120,7 +120,6 @@ export interface CameraPopoverOptions {
  * CameraOptions
  * CameraPopoverOptions
  */
-@Injectable()
 @Plugin({
   pluginName: 'Camera',
   plugin: 'cordova-plugin-camera',
@@ -128,6 +127,7 @@ export interface CameraPopoverOptions {
   repo: 'https://github.com/apache/cordova-plugin-camera',
   platforms: ['Android', 'BlackBerry', 'Browser', 'Firefox', 'FireOS', 'iOS', 'Windows', 'Windows Phone 8', 'Ubuntu']
 })
+@Injectable()
 export class Camera {
 
   /**

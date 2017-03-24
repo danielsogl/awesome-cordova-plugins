@@ -184,12 +184,12 @@ export class NFC {
 /**
  * @hidden
  */
-@Injectable()
 @Plugin({
   pluginName: 'NFC',
   plugin: 'phonegap-nfc',
   pluginRef: 'ndef'
 })
+@Injectable()
 export class Ndef {
 
   @Cordova({ sync: true })
