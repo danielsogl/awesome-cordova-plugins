@@ -167,13 +167,13 @@ export interface HealthData {
  * HealthStoreOptions
  * HealthData
  */
-@Injectable()
 @Plugin({
   pluginName: 'Health',
   plugin: 'cordova-plugin-health',
   pluginRef: 'navigator.health',
   repo: 'https://github.com/dariosalvi78/cordova-plugin-health'
 })
+@Injectable()
 export class Health {
 
   /**
