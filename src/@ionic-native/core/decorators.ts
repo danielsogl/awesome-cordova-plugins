@@ -259,6 +259,7 @@ export function CordovaInstance(opts: any = {}) {
  */
 export function CordovaProperty(target: any, key: string) {
   Object.defineProperty(target, key, {
+    enumerable: true,
     get: () => {
       if (checkAvailability(target, key) === true) {
         return getPlugin(target.constructor.getPluginRef())[key];
@@ -282,6 +283,7 @@ export function CordovaProperty(target: any, key: string) {
  */
 export function InstanceProperty(target: any, key: string) {
   Object.defineProperty(target, key, {
+    enumerable: true,
     get: function(){
       return this._objectInstance[key];
     },
