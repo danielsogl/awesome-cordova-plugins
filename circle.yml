@@ -8,7 +8,6 @@ general:
   branches:
     only:
       - master # ignore PRs and branches
-      - es6-docs
 
 dependencies:
  pre:
@@ -22,6 +21,6 @@ test:
 
 deployment:
  staging:
-   branch: es6-docs
+   branch: master
    commands:
      - ./scripts/docs/update_docs.sh
