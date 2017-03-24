@@ -1,15 +1,3 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Add this file to /src/index.ts (follow style of other plugins)
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
@@ -38,8 +26,20 @@ declare var intel: any;
 })
 @Injectable()
 export class IntelSecurity {
-  storage: IntelSecurityStorage = new IntelSecurityStorage();
-  data: IntelSecurityData = new IntelSecurityData();
+
+  public storage;
+  public data;
+
+  constructor() {
+    this.storage = new IntelSecurityStorage();
+    this.data = new IntelSecurityData();
+    try {
+      if (!intel)
+        throw true;
+    } catch (e) {
+      console.warn('Native: Intel App Security API is not installed or you are running on a browser.');
+    }
+  }
 }
 
 /**
@@ -53,7 +53,11 @@ export class IntelSecurityData {
   * @returns {Promise<any>} Returns a Promise that resolves with the instanceID of the created data instance, or rejects with an error.
   */
   createFromData(data: string): Promise<any> {
-    return intel.security.secureData.createFromData({ data: data });
+    try {
+      return intel.security.secureData.createFromData({ data: data });
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.data.createFromData, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -62,7 +66,11 @@ export class IntelSecurityData {
    * @returns {Promise<any>} Returns a Promise that resolves with the instanceID of the created data instance, or rejects with an error.
    */
   createFromSealedData(sealedData: string): Promise<any> {
-    return intel.security.secureData.createFromSealedData({ sealedData: sealedData });
+    try {
+      return intel.security.secureData.createFromSealedData({ sealedData: sealedData });
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.data.createFromSealedData, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -71,7 +79,12 @@ export class IntelSecurityData {
    * @returns {Promise<string>} Returns a Promise that resolves to the data as plain-text, or rejects with an error.
    */
   getData(instanceID: any): Promise<string> {
-    return intel.security.secureData.getData(instanceID);
+    try {
+      return intel.security.secureData.getData(instanceID);
+
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.data.getData, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -80,7 +93,11 @@ export class IntelSecurityData {
    * @returns {Promise<any>} Returns a Promise that resolves to the sealed data, or rejects with an error.
    */
   getSealedData(instanceID: any): Promise<any> {
-    return intel.security.secureData.getSealedData(instanceID);
+    try {
+      return intel.security.secureData.getSealedData(instanceID);
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.data.getSealedData, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -89,7 +106,11 @@ export class IntelSecurityData {
    * @returns {Promise<string>} Returns a Promise that resolves to the tag, or rejects with an error.
    */
   getTag(instanceID: any): Promise<string> {
-    return intel.security.secureData.getTag(instanceID);
+     try {
+      return intel.security.secureData.getTag(instanceID);
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.data.getTag, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -98,7 +119,11 @@ export class IntelSecurityData {
    * @returns {Promise<any> Returns a promise that resolves to the policy object, or rejects with an error.
    */
   getPolicy(instanceID: any): Promise<any> {
-    return intel.security.secureData.getPolicy(instanceID);
+     try {
+      return intel.security.secureData.getPolicy(instanceID);
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.data.getPolicy, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -107,7 +132,11 @@ export class IntelSecurityData {
    * @returns {Promise<Array>} Returns a promise that resolves to an array of owners' unique IDs, or rejects with an error.
    */
   getOwners(instanceID: any): Promise<Array<any>> {
-    return intel.security.secureData.getOwners(instanceID);
+     try {
+      return intel.security.secureData.getOwners(instanceID);
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.data.getOwners, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -116,7 +145,11 @@ export class IntelSecurityData {
    * @returns {Promise<Number>} Returns a promsie that resolves to the creator's unique ID, or rejects with an error.
    */
   getCreator(instanceID: any): Promise<Number> {
-    return intel.security.secureData.getCreator(instanceID);
+     try {
+      return intel.security.secureData.getCreator(instanceID);
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.data.getCreator, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -125,7 +158,11 @@ export class IntelSecurityData {
    * @returns {Promise<Array>} Returns a promise that resolves to a list of web owners, or rejects with an error.
    */
   getWebOwners(instanceID: any): Promise<Array<any>> {
-    return intel.security.secureData.getWebOwners(instanceID);
+     try {
+      return intel.security.secureData.getWebOwners(instanceID);
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.data.getWebOwners, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -135,7 +172,11 @@ export class IntelSecurityData {
    * @returns {Promise<any>} Returns a promise that resolves with no parameters, or rejects with an error.
    */
   changeExtraKey(instanceID: any, extraKey: Number): Promise<any> {
-    return intel.security.secureData.changeExtraKey({ instanceID: instanceID, extraKey: extraKey });
+     try {
+      return intel.security.secureData.changeExtraKey({ instanceID: instanceID, extraKey: extraKey });
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.data.changeExtraKey, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -144,7 +185,11 @@ export class IntelSecurityData {
    * @returns {Promise<any>} Returns a promise that resovles with no parameters, or rejects with an error.
    */
   destroy(instanceID: any): Promise<any> {
-    return intel.security.secureData.destroy(instanceID);
+     try {
+      return intel.security.secureData.destroy(instanceID);
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.data.destroy, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
 }
@@ -160,7 +205,11 @@ export class IntelSecurityStorage {
    * @returns {Promise<any>} Returns a Promise that resolves with no parameters, or rejects with an error.
    */
   delete(id: string): Promise<any> {
-    return intel.security.secureStorage.delete({ id: id });
+     try {
+      return intel.security.secureStorage.delete({ id: id });
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.storage.delete, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -169,7 +218,11 @@ export class IntelSecurityStorage {
    * @returns {Promise<string>} Returns a Promise that resolved with the data as plain-text, or rejects with an error.
    */
   read(id: string): Promise<string> {
-    return intel.security.secureStorage.read({ id: id });
+     try {
+      return intel.security.secureStorage.read({ id: id });
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.storage.read, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
   /**
@@ -178,7 +231,11 @@ export class IntelSecurityStorage {
    * @param instanceID {number} Valid secure data instance ID
    */
   write(id: string, instanceID: number): Promise<any> {
-    return intel.security.secureStorage.write({ id: id, instanceID: instanceID });
+     try {
+      return intel.security.secureStorage.write({ id: id, instanceID: instanceID });
+    } catch (e) {
+      console.warn('Native: tried calling IntelSecurity.storage.write, but Intel App Security API is not available. Make sure to run in a device/simulator.');
+    }
   }
 
 }
