@@ -7,14 +7,34 @@ declare var intel: any;
 /**
  * @name Intel Security
  * @description
- * This plugin does something
+ * The App Security API enables the use of security properties and capabilities on the platform, using a new set of API defined for application developers. You are not required to be a security expert to make good use of the API. Key elements, such as encryption of data and establishments of capabilities, is abstracted and done by the API implementation, for you.
+ *
+ * For example:
+ * - Use the API to store (E.g. cache) data locally, using the device non-volatile storage. Data protection/encryption will be done for you by the API implementation
+ * - Establish a connection with remote server (E.g. XHR) using a protected channel. SSL/TLS establishment and usage will be done for you by the API implementation
+ *
+ * For more information please visit the [API documentation](https://software.intel.com/en-us/app-security-api/api).
  *
  * @usage
  * ```
  * import { IntelSecurity } from '@ionic-native/intel-security';
+ * ...
+ * constructor(private intelSecurity: IntelSecurity) { }
+ * ...
  *
- * IntelSecurity.functionName('Hello', 123)
- *   .then((something: any) => doSomething(something))
+ * let storageID = 'id';
+ *
+ * this.intelSecurity.data.createFromData('Sample Data')
+ *   .then((instanceID: any) => this.IntelSecurity.storage.write(id, instanceID))
+ *   .catch((error: any) => console.log(error));
+ *
+ * this.intelSecurity.storage.read(storageID)
+ *   .then(this.intelSecurity.data.getData)
+ *   .then((data: string) => console.log(data)) // Resolves to 'Sample Data'
+ *   .catch((error: any) => console.log(error));
+ *
+ * this.intelSecurity.storage.delete(storageID)
+ *   .then(() => console.log('Deleted Successfully'))
  *   .catch((error: any) => console.log(error));
  *
  * ```
