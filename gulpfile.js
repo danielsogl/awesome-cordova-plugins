@@ -5,7 +5,8 @@ const gulp = require('gulp'),
   rename = require("gulp-rename"),
   tslint = require('gulp-tslint'),
   decamelize = require('decamelize'),
-  replace = require('gulp-replace');
+  replace = require('gulp-replace'),
+  _ = require('lodash');
 
 const flagConfig = {
     string: ['port', 'version', 'ngVersion', 'animations'],
@@ -31,16 +32,16 @@ gulp.task('lint', () => {
 gulp.task('plugin:create', () => {
   if (flags.n && flags.n !== ''){
 
-    const src = flags.m?'./scripts/templates/wrap-min.tmpl':'./scripts/templates/wrap.tmpl',
+    const src = flags.m ? './scripts/templates/wrap-min.tmpl':'./scripts/templates/wrap.tmpl',
       pluginName = flags.n,
-      pluginPackageName = decamelize(pluginName, '-'),
       pluginNameSpaced = pluginName.replace(/(?!^)([A-Z])/g, ' $1');
 
     return gulp.src(src)
-      .pipe(replace('PluginName', pluginName))
-      .pipe(replace('Plugin Name', pluginNameSpaced))
+      .pipe(replace('$PluginName', pluginName))
+      .pipe(replace('$Plugin_Name', pluginNameSpaced))
+      .pipe(replace('$pluginName', _.lowerFirst(pluginName)))
       .pipe(rename('index.ts'))
-      .pipe(gulp.dest('./src/@ionic-native/plugins/' + pluginPackageName));
+      .pipe(gulp.dest('./src/@ionic-native/plugins/' + _.kebabCase(pluginName)));
 
   } else {
     console.log("Usage is: gulp plugin:create -n PluginName");

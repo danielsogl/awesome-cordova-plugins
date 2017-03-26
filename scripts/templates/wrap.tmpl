@@ -15,29 +15,35 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
- * @name Plugin Name
+ * @name $Plugin_Name
  * @description
  * This plugin does something
  *
  * @usage
  * ```
- * import { PluginName } from 'ionic-native';
+ * import { $PluginName } from 'ionic-native';
  *
- * PluginName.functionName('Hello', 123)
- *   .then((something: any) => doSomething(something))
- *   .catch((error: any) => console.log(error));
+ *
+ * constructor(private $pluginName: $PluginName) { }
+ *
+ * ...
+ *
+ *
+ * this.$pluginName.functionName('Hello', 123)
+ *   .then((res: any) => console.log(res))
+ *   .catch((error: any) => console.error(error));
  *
  * ```
  */
 @Plugin({
-  pluginName: 'PluginName',
+  pluginName: '$PluginName',
   plugin: '', // npm package name, example: cordova-plugin-camera
   pluginRef: '', // the variable reference to call the plugin, example: navigator.geolocation
   repo: '', // the github repository URL for the plugin
   install: '' // OPTIONAL install command, in case the plugin requires variables
 })
 @Injectable()
-export class PluginName {
+export class $PluginName {
 
   /**
    * This function does something
