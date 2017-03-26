@@ -188,33 +188,21 @@ export function Plugin(config: PluginConfig) {
       cls[k] = config[k];
     }
 
-    cls['installed'] = function(printWarning?: boolean) {
-      return !!getPlugin(config.pluginRef);
-    };
+    cls['installed'] = () => !!getPlugin(config.pluginRef);
 
-    cls['getPlugin'] = function() {
-      return getPlugin(config.pluginRef);
-    };
+    cls['getPlugin'] = () => getPlugin(config.pluginRef);
 
-    cls['checkInstall'] = function() {
-      return checkAvailability(cls) === true;
-    };
+    cls['checkInstall'] = () => (checkAvailability(cls) === true);
 
-    cls['getPluginName'] = function() {
-      return config.pluginName;
-    };
-    cls['getPluginRef'] = function() {
-      return config.pluginRef;
-    };
-    cls['getPluginInstallName'] = function() {
-      return config.plugin;
-    };
-    cls['getPluginRepo'] = function() {
-      return config.repo;
-    };
-    cls['getSupportedPlatforms'] = function() {
-      return config.platforms;
-    };
+    cls['getPluginName'] = () => config.pluginName;
+
+    cls['getPluginRef'] = () => config.pluginRef;
+
+    cls['getPluginInstallName'] = () => config.plugin;
+
+    cls['getPluginRepo'] = () => config.repo;
+
+    cls['getSupportedPlatforms'] = () => config.platforms;
 
     return cls;
   };
