@@ -39,7 +39,7 @@ export interface FingerprintOptions {
  *     clientSecret: "password", //Only necessary for Android
  *     disableBackup:true  //Only for Android(optional)
  * })
- * .then((result: any) => console.log(any))
+ * .then((result: any) => console.log(result))
  * .catch((error: any) => console.log(error));
  *
  * ```
