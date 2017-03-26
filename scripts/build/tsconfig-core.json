@@ -11,7 +11,9 @@
     "rootDir": "../../src/",
     "target": "es5",
     "skipLibCheck": true,
-    "lib": ["es2015", "dom"]
+    "lib": ["es2015", "dom"],
+    "sourceMap": true,
+    "inlineSources": true
   },
   "files": [
     "../../src/@ionic-native/core/index.ts"
