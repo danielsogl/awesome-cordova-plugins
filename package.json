@@ -43,7 +43,8 @@
     "clean": "rimraf dist .tmp",
     "shipit": "npm run build && gulp readmes && npm run npmpub",
     "npmpub": "node scripts/build/publish.js",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "postchangelog": "git commit -am \"chore(): update changelog\""
   },
   "config": {
     "commitizen": {
