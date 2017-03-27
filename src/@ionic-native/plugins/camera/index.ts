@@ -90,7 +90,7 @@ export interface CameraPopoverOptions {
  * @description
  * Take a photo or capture video.
  *
- * Requires {@link module:driftyco/ionic-native} and the Cordova plugin: `cordova-plugin-camera`. For more info, please see the [Cordova Camera Plugin Docs](https://github.com/apache/cordova-plugin-camera).
+ * Requires and the Cordova plugin: `cordova-plugin-camera`. For more info, please see the [Cordova Camera Plugin Docs](https://github.com/apache/cordova-plugin-camera).
  *
  * @usage
  * ```typescript
@@ -101,10 +101,10 @@ export interface CameraPopoverOptions {
  * ...
  *
  *
- * constant options: CameraOptions = {
+ * const options: CameraOptions = {
  *   quality: 100,
  *   destinationType: this.camera.DestinationType.DATA_URL,
- *   enodingType: this.camera.EncodingType.JPEG,
+ *   encodingType: this.camera.EncodingType.JPEG,
  *   mediaType: this.camera.MediaType.PICTURE
  * }
  *
@@ -120,7 +120,6 @@ export interface CameraPopoverOptions {
  * CameraOptions
  * CameraPopoverOptions
  */
-@Injectable()
 @Plugin({
   pluginName: 'Camera',
   plugin: 'cordova-plugin-camera',
@@ -128,6 +127,7 @@ export interface CameraPopoverOptions {
   repo: 'https://github.com/apache/cordova-plugin-camera',
   platforms: ['Android', 'BlackBerry', 'Browser', 'Firefox', 'FireOS', 'iOS', 'Windows', 'Windows Phone 8', 'Ubuntu']
 })
+@Injectable()
 export class Camera {
 
   /**
@@ -201,7 +201,7 @@ export class Camera {
 
   /**
    * Take a picture or video, or load one from the library.
-   * @param {CameraOptions?} options optional. Options that you want to pass to the camera. Encoding type, quality, etc. Platform-specific quirks are described in the [Cordova plugin docs](https://github.com/apache/cordova-plugin-camera#cameraoptions-errata-).
+   * @param {CameraOptions} [options] Options that you want to pass to the camera. Encoding type, quality, etc. Platform-specific quirks are described in the [Cordova plugin docs](https://github.com/apache/cordova-plugin-camera#cameraoptions-errata-).
    * @returns {Promise<any>} Returns a Promise that resolves with Base64 encoding of the image data, or the image file URI, depending on cameraOptions, otherwise rejects with an error.
    */
   @Cordova({

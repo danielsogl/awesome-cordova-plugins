@@ -379,6 +379,8 @@ export class OneSignal {
   /**
    * Retrieve a list of tags that have been set on the user from the OneSignal server.
    *
+   * **Quirk**: You must wait for `getTags` to resolve before calling it again, as the plugin will only process the last method call and discard any previous ones.
+   *
    * @returns {Promise<any>} Returns a Promise that resolves when tags are recieved.
    */
   @Cordova()

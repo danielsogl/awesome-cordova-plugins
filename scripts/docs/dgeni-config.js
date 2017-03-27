@@ -1,182 +1,79 @@
-var Package = require('dgeni').Package;
-var jsdocPackage = require('dgeni-packages/jsdoc');
-var nunjucksPackage = require('dgeni-packages/nunjucks');
-var typescriptPackage = require('dgeni-packages/typescript');
-var linksPackage = require('dgeni-packages/links');
-var path = require('path');
-var semver = require('semver');
-var fs = require('fs');
-var _ = require('lodash');
-var config = require('../config.json');
-var projectPackage = require('../../package.json');
+"use strict";
+const Package = require('dgeni').Package,
+  jsdocPackage = require('dgeni-packages/jsdoc'),
+  nunjucksPackage = require('dgeni-packages/nunjucks'),
+  typescriptPackage = require('dgeni-packages/typescript'),
+  linksPackage = require('dgeni-packages/links'),
+  path = require('path'),
+  config = require('../config.json');
 
-// Define the dgeni package for generating the docs
-module.exports = function(currentVersion) {
+module.exports = currentVersion => {
 
-  return new Package('ionic-v2-docs', [jsdocPackage, nunjucksPackage, typescriptPackage, linksPackage])
+  return new Package('ionic-native-docs', [jsdocPackage, nunjucksPackage, typescriptPackage, linksPackage])
 
-// .processor(require('./processors/latest-version'))
-.processor(require('./processors/jekyll'))
-.processor(require('./processors/remove-private-members'))
-.processor(require('./processors/hide-private-api'))
-.processor(require('./processors/collect-inputs-outputs'))
-.processor(require('./processors/npm-id'))
+    .processor(require('./processors/remove-private-members'))
+    .processor(require('./processors/hide-private-api'))
+    .processor(require('./processors/parse-optional'))
+    .processor(require('./processors/mark-properties'))
+    .processor(require('./processors/npm-id'))
+    .processor(require('./processors/jekyll'))
 
-// for debugging docs
-// .processor(function test(){
-//   return {
-//
-//     $runBefore: ['rendering-docs'],
-//     $process: function(docs){
-//       docs.forEach(function(doc){
-//         if (doc.name == "Camera"){
-//
-//           // console.log(doc.tags);
-//           // doc.tags.forEach(function(tag){
-//           //   if(tag.tagName == 'classes'){
-//           //
-//           //   }
-//           // });
-//
-//           // doc.moduleDoc.exports.forEach(function(d,i){
-//           //   if(d.name === 'CameraOptions') {
-//           //     console.log('Name: ' + d.name);
-//           //     console.log('Type: ' + d.docType);
-//           //     console.log('First member: ', d.members[0]);
-//           //   }
-//           // });
-//
-//
-//           // var exports = doc.exportSymbol.parent.exports;
-//           // for(var p in exports) {
-//           //   if(p == 'CameraOptions')
-//           //   {
-//           //     var x = exports[p];
-//           //     console.log(x.members.quality);
-//           //   }
-//           // }
-//           // doc.members.forEach(function(method){
-//           //   if (method.name === "getPicture") {
-//           //     console.log(method);
-//           //   }
-//           // })
-//         }
-//       })
-//     }
-//   }
-// })
+    .config(require('./configs/log'))
+    .config(require('./configs/template-filters'))
+    .config(require('./configs/template-tags'))
+    .config(require('./configs/tag-defs'))
+    .config(require('./configs/links'))
 
-.config(function(log) {
-  log.level = 'error'; //'silly', 'debug', 'info', 'warn', 'error'
-})
+    .config(function(renderDocsProcessor, computePathsProcessor) {
 
-.config(function(renderDocsProcessor, computePathsProcessor) {
+      currentVersion = {
+        href: '/' + config.v2DocsDir.replace('content/', ''),
+        folder: '',
+        name: currentVersion
+      };
 
-  versions = [];
-  // new version, add it to the versions list
-  if (currentVersion != 'nightly' && !_.includes(versions, currentVersion)) {
-    versions.unshift(currentVersion);
-  }
-  //First semver valid version is latest
-  var latestVersion = _.find(versions, semver.valid);
-  versions = versions.map(function(version) {
-    // We don't separate by versions so always put the docs in the root
-    var folder = '';
-    return {
-      href: '/' + config.v2DocsDir.replace('content/',''),
-      folder: folder,
-      name: version
-    };
-  });
+      renderDocsProcessor.extraData.version = {
+        list: [currentVersion],
+        current: currentVersion,
+        latest: currentVersion
+      };
 
-  var versionData = {
-    list: versions,
-    current: _.find(versions, {name: currentVersion}),
-    latest: _.find(versions, {name: latestVersion}) || _.first(versions)
-  };
+      computePathsProcessor.pathTemplates = [{
+        docTypes: ['class'],
+        getOutputPath: doc => 'content/' + config.v2DocsDir + '/' +  doc.name + '/index.md'
+      }];
 
-  renderDocsProcessor.extraData.version = versionData;
-  computePathsProcessor.pathTemplates = [{
-    docTypes: ['class', 'var', 'function', 'let'],
-    getOutputPath: function(doc) {
-      var docPath = doc.name + '/index.md';
-      var path = 'content/' + config.v2DocsDir + '/' +  docPath;
+    })
 
-      return path;
-    }
-  }];
-})
+    //configure file reading
+    .config(function(readFilesProcessor, readTypeScriptModules) {
 
-//configure file reading
-.config(function(readFilesProcessor, readTypeScriptModules) {
+      // Don't run unwanted processors since we are not using the normal file reading processor
+      readFilesProcessor.$enabled = false;
+      readFilesProcessor.basePath = path.resolve(__dirname, '../..');
 
-  // Don't run unwanted processors since we are not using the normal file reading processor
-  readFilesProcessor.$enabled = false;
-  readFilesProcessor.basePath = path.resolve(__dirname, '../..');
+      readTypeScriptModules.basePath = path.resolve(__dirname, '../..');
+      readTypeScriptModules.sourceFiles = [
+        './src/@ionic-native/plugins/**/*.ts'
+      ];
+    })
 
-  readTypeScriptModules.basePath = path.resolve(__dirname, '../..');
-  readTypeScriptModules.sourceFiles = [
-    './src/@ionic-native/plugins/**/*.ts'
-  ];
-})
+    // Configure file writing
+    .config(function(writeFilesProcessor) {
+      writeFilesProcessor.outputFolder  = '../ionic-site/';
+    })
 
-.config(function(parseTagsProcessor) {
-  parseTagsProcessor.tagDefinitions = parseTagsProcessor.tagDefinitions
-                                        .concat(require('./tag-defs/tag-defs'));
-})
+    // Configure rendering
+    .config(function(templateFinder) {
 
-// .config(function(parseTagsProcessor) {
-//   // We actually don't want to parse param docs in this package as we are
-//   // getting the data out using TS
-//   parseTagsProcessor.tagDefinitions.forEach(function(tagDef) {
-//     console.log(tagDef);
-//     if (tagDef.name === 'param') {
-//       tagDef.docProperty = 'paramData';
-//       tagDef.transforms = [];
-//     }
-//   });
-// })
+      templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
 
-// Configure links
-.config(function(getLinkInfo) {
-  getLinkInfo.useFirstAmbiguousLink = false;
-})
-
-// Configure file writing
-.config(function(writeFilesProcessor) {
-  writeFilesProcessor.outputFolder  = '../ionic-site/';
-})
-
-// Configure rendering
-.config(function(templateFinder, templateEngine) {
-
-  // Nunjucks and Angular conflict in their template bindings so change the Nunjucks
-  // Also conflict with Jekyll
-  templateEngine.config.tags = {
-    variableStart: '<$',
-    variableEnd: '$>',
-    blockStart: '<@',
-    blockEnd: '@>',
-    commentStart: '<#',
-    commentEnd: '#>'
-  };
-
-  // add custom filters to nunjucks
-  templateEngine.filters.push(
-    require('./filters/capital'),
-    require('./filters/code'),
-    require('./filters/dump'),
-    require('./filters/dashify')
-  );
-
-  templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
-
-  // Specify how to match docs to templates.
-  templateFinder.templatePatterns = [
-    '${ doc.template }',
-    '${ doc.docType }.template.html',
-    'common.template.html'
-  ];
-});
+      // Specify how to match docs to templates.
+      templateFinder.templatePatterns = [
+        '${ doc.template }',
+        '${ doc.docType }.template.html',
+        'common.template.html'
+      ];
+    });
 
 };

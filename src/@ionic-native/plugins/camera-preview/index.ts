@@ -57,7 +57,7 @@ export interface CameraPreviewPictureOptions {
  *
  * @usage
  * ```typescript
- * import { CameraPreview, PictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from 'ionic-native';
+ * import { CameraPreview, PictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
  *
  * constructor(private cameraPreview: CameraPreview) { }
  *
@@ -187,7 +187,7 @@ export class CameraPreview {
 
   /**
    * Take the picture (base64)
-   * @param options {CameraPreviewPictureOptions} optional - size and quality of the picture to take
+   * @param [options] {CameraPreviewPictureOptions} size and quality of the picture to take
    * @return {Promise<any>}
    */
   @Cordova({
@@ -211,7 +211,7 @@ export class CameraPreview {
 
   /**
    * Set the zoom (Android)
-   * @param zoom {number} Zoom value
+   * @param [zoom] {number} Zoom value
    * @return {Promise<any>}
    */
   @Cordova({
@@ -223,7 +223,7 @@ export class CameraPreview {
 
   /**
    * Set the preview Size
-   * @param dimensions {CameraPreviewDimensions}
+   * @param [dimensions] {CameraPreviewDimensions}
    * @return {Promise<any>}
    */
   @Cordova({
@@ -235,7 +235,7 @@ export class CameraPreview {
 
   /**
    * Set the flashmode
-   * @param flashMode {string} 'off' (iOS & Android), 'on' (iOS & Android), 'auto' (iOS & Android), 'torch' (Android)
+   * @param [flashMode] {string} 'off' (iOS & Android), 'on' (iOS & Android), 'auto' (iOS & Android), 'torch' (Android)
    * @return {Promise<any>}
    */
   @Cordova({

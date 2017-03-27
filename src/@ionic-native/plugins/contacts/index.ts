@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, InstanceProperty, Plugin, getPromise } from '@ionic-native/core';
+import { CordovaInstance, InstanceProperty, Plugin, getPromise, InstanceCheck, checkAvailability } from '@ionic-native/core';
 
 declare var window: any,
   navigator: any;
@@ -72,9 +72,12 @@ export class Contact implements IContactProperties {
   @InstanceProperty urls: IContactField[];
 
   constructor() {
-    this._objectInstance = navigator.contacts.create();
+    if (checkAvailability(navigator.contacts, 'create', 'Contacts') === true) {
+      this._objectInstance = navigator.contacts.create();
+    }
   }
 
+  @InstanceCheck()
   clone(): Contact {
     let newContact = new Contact();
     for (let prop in this) {
@@ -87,6 +90,7 @@ export class Contact implements IContactProperties {
   @CordovaInstance()
   remove(): Promise<any> { return; }
 
+  @InstanceCheck()
   save(): Promise<any> {
     return getPromise((resolve, reject) => {
       this._objectInstance.save((contact) => {

@@ -7,18 +7,23 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```
- * import { PluginName } from 'ionic-native';
+ * import { $PluginName } from 'ionic-native';
+ *
+ *
+ * constructor(private $pluginName: $PluginName) { }
+ *
+ * ...
  *
  *
  * ```
  */
 @Plugin({
-  pluginName: 'PluginName',
+  pluginName: '$PluginName',
   plugin: '',
   pluginRef: '',
   repo: ''
 })
 @Injectable()
-export class PluginName {
+export class $PluginName {
 
 }

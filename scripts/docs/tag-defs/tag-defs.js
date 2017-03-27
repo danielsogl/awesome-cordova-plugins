@@ -1,10 +1,8 @@
+"use strict";
 module.exports = [
   {'name': 'advanced'},
   {'name': 'demo'},
-  {'name': 'beta', transforms: function(doc, tag, value) {
-    // make the value true or undefined instead of '' or undefined
-    return typeof value !== 'undefined';
-  }},
+  {'name': 'beta', transforms: (doc, tag, value) => typeof value !== 'undefined'}, // make the value true or undefined instead of '' or undefined
   {'name': 'usage'},
   {'name': 'hidden'}, // hide from docs
   {'name': 'classes'}, // related classes

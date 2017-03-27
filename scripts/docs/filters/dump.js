@@ -1,6 +1,5 @@
+"use strict";
 module.exports = {
   name: 'dump',
-  process: function(obj) {
-    console.log(obj);
-  }
+  process: obj => console.log(obj)
 };

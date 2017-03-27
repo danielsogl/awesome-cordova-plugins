@@ -234,7 +234,7 @@ export class Diagnostic {
    * Returns the location authorization status for the application.
    * Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
    *
-   * mode - (iOS-only / optional) location authorization mode: "always" or "when_in_use". If not specified, defaults to "when_in_use".
+   * @param {string} [mode] iOS only: location authorization mode: "always" or "when_in_use". If not specified, defaults to "when_in_use".
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
