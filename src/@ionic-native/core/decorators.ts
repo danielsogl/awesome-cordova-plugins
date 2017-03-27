@@ -1,6 +1,7 @@
 import { instanceAvailability, checkAvailability, wrap, wrapInstance, overrideFunction } from './plugin';
 import { getPlugin, getPromise } from './util';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/observable/throw';
 
 export interface PluginConfig {
   /**
@@ -145,15 +146,16 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
   return (pluginObj: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> => {
     return {
       value: function(...args: any[]): any {
-        if (checkAvailability(pluginObj) === true) {
+        const check = checkAvailability(pluginObj);
+        if (check === true) {
           return descriptor.value.apply(this, args);
         } else {
           if (opts.sync) {
-            return;
+            return null;
           } else if (opts.observable) {
-            return new Observable<any>(() => {});
+            return Observable.throw(new Error(check && check.error));
           }
-          return getPromise(() => {});
+          return Promise.reject(check && check.error);
         }
       }
     };
