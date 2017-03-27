@@ -92,7 +92,7 @@ export class SecureStorageObject {
   plugin: 'cordova-plugin-secure-storage',
   pluginRef: 'cordova.plugins.SecureStorage',
   repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',
-  platforms: ['Android', 'iOS', 'Windows Phone', 'Browser']
+  platforms: ['Android', 'iOS', 'Windows Phone']
 })
 @Injectable()
 export class SecureStorage {
