@@ -1,21 +1,21 @@
+"use strict";
 module.exports = function removePrivateMembers() {
   return {
     name: 'remove-private-members',
     description: 'Remove member docs with @private tags',
     $runAfter: ['tags-parsed'],
     $runBefore: ['rendering-docs'],
-    $process: function(docs) {
-      docs.forEach(function(doc) {
+    $process: docs => {
+      docs.forEach(doc => {
+
         if (doc.members) {
-          doc.members = doc.members.filter(function(member) {
-            return !member.tags.tagsByName.get('private');
-          });
+          doc.members = doc.members.filter(member => !member.tags.tagsByName.get('hidden'));
         }
+
         if (doc.statics) {
-          doc.statics = doc.statics.filter(function(staticMethod) {
-            return !staticMethod.tags.tagsByName.get('private');
-          });
+          doc.statics = doc.statics.filter(staticMethod => !staticMethod.tags.tagsByName.get('hidden'));
         }
+
       });
 
       return docs;

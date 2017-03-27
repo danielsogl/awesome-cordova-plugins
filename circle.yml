@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 4.1.0
+    version: 5.5.0
   ruby:
     version: 2.1.2
 
@@ -17,8 +17,7 @@ dependencies:
 
 test:
   override:
-    - npm test
-    - npm run build
+    - echo "No tests to run"
 
 deployment:
  staging:
