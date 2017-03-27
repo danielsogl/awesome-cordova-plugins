@@ -152,11 +152,16 @@ function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any 
 
 function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts: any= {}) {
   return getPromise((resolve, reject) => {
-    let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts);
-    if (pluginResult && pluginResult.error) {
-      reject(pluginResult.error);
+    const pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts);
+    if (pluginResult) {
+      if (pluginResult.error) {
+        reject(pluginResult.error);
+      } else if (pluginResult.then) {
+        pluginResult.then(resolve).catch(reject);
+      }
+    } else {
+      reject({ error: 'unexpected_error' });
     }
-    pluginResult.then(resolve).catch(reject);
   });
 }
 
