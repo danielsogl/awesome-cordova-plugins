@@ -4,6 +4,31 @@ import { Injectable } from '@angular/core';
 declare var window: any;
 declare var intel: any;
 
+export interface IntelSecurityDataOptions {
+  /** Non-empty string. **/
+  data: String;
+  /** Tag text.  */
+  tag?: String;
+  /** Valid secure data instance ID. */
+  extraKey?: Number;
+  /** Application access control policy. */
+  appAccessControl?: Number;
+  /** Device locality policy. */
+  deviceLocality?: Number;
+  /** Sensitivity level policy. */
+  sensitivityLevel?: Number;
+  /** Disallow sealed blob access. */
+  noStore?: Boolean;
+  /** Disallow plain-text data access. */
+  noRead?: Boolean;
+  /** Creator unique ID. */
+  creator?: Number;
+  /** Array of owners unique IDs. */
+  owners?: Number[];
+  /** List of trusted web domains. */
+  webOwners?: String[];
+}
+
 /**
  * @name Intel Security
  * @description
@@ -24,20 +49,25 @@ declare var intel: any;
  *
  * let storageID = 'id';
  *
- * this.intelSecurity.data.createFromData({data: 'Sample Data'})
- *   .then((instanceID: any) => this.IntelSecurity.storage.write(id, instanceID))
+ * this.intelSecurity.data.createFromData({ data: 'Sample Data' })
+ *   .then((instanceID: Number) => this.IntelSecurity.storage.write({ id: storageId, instanceID: instanceID }))
  *   .catch((error: any) => console.log(error));
  *
- * this.intelSecurity.storage.read(storageID)
+ * this.intelSecurity.storage.read({id: storageID })
  *   .then(this.intelSecurity.data.getData)
  *   .then((data: string) => console.log(data)) // Resolves to 'Sample Data'
  *   .catch((error: any) => console.log(error));
  *
- * this.intelSecurity.storage.delete(storageID)
+ * this.intelSecurity.storage.delete({ id: storageID })
  *   .then(() => console.log('Deleted Successfully'))
  *   .catch((error: any) => console.log(error));
  *
  * ```
+ * @classes
+ * IntelSecurityData
+ * IntelSecurityStorage
+ * @interfaces
+ * IntelSecurityDataOptions
  */
 @Plugin({
   pluginName: 'IntelSecurity',
@@ -54,13 +84,6 @@ export class IntelSecurity {
   constructor() {
     this.storage = new IntelSecurityStorage();
     this.data = new IntelSecurityData();
-
-    try {
-      if (!window.intel)
-        throw true;
-    } catch (e) {
-      console.warn('Native: Intel App Security API is not installed or you are running on a browser.');
-    }
   }
 }
 
@@ -70,41 +93,17 @@ export class IntelSecurity {
 @Plugin({
   pluginName: 'IntelSecurity',
   plugin: 'com-intel-security-cordova-plugin',
-  pluginRef: 'intel.security.secureData',
-  repo: ''
+  pluginRef: 'intel.security.secureData'
 })
 export class IntelSecurityData {
 
   /**
   * This creates a new instance of secure data using plain-text data.
-  * @param options {Object}
-  * @param options.data {String} Non-empty string.
-  * @param [options.tag] {String} Tag text.
-  * @param [options.extraKey] {Number} Valid secure data instance ID.
-  * @param [options.appAccessControl] {Number} Application access control policy.
-  * @param [options.deviceLocality] {Number} Device locality policy.
-  * @param [options.sensitivityLevel] {Number} Sensitivity level policy.
-  * @param [options.noStore] {Boolean} Disallow sealed blob access.
-  * @param [options.noRead] {Boolean} Disallow plaintext data access.
-  * @param [options.creator] {Number} Creator unique ID.
-  * @param [options.owners] {Number[]} Array of owners unique ID.
-  * @param [options.webOwners] {String[]} List of trusted web domains.
+  * @param options {IntelSecurityDataOptions}
   * @returns {Promise<any>} Returns a Promise that resolves with the instanceID of the created data instance, or rejects with an error.
   */
-  @Cordova()
-  createFromData(options: {
-    data: String,
-    tag?: String,
-    extraKey?: Number,
-    appAccessControl?: Number,
-    deviceLocality?: Number,
-    sensitivityLevel?: Number,
-    noStore?: Boolean,
-    noRead?: Boolean,
-    creator?: Number,
-    owners?: Number[],
-    webOwners?: String[]
-  }): Promise<Number> { return; }
+  @Cordova({ otherPromise: true })
+  createFromData(options: IntelSecurityDataOptions): Promise<Number> { return; }
 
   /**
    * This creates a new instance of secure data (using sealed data)
@@ -112,7 +111,7 @@ export class IntelSecurityData {
    * @param options.sealedData {string} Sealed data in string format.
    * @returns {Promise<any>} Returns a Promise that resolves with the instanceID of the created data instance, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   createFromSealedData(options: { sealedData: string }): Promise<Number> { return; }
 
   /**
@@ -120,7 +119,7 @@ export class IntelSecurityData {
    * @param instanceID {Number} Secure data instance ID.
    * @returns {Promise<string>} Returns a Promise that resolves to the data as plain-text, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   getData(instanceID: Number): Promise<string> { return; }
 
   /**
@@ -128,7 +127,7 @@ export class IntelSecurityData {
    * @param instanceID {any} Secure data instance ID.
    * @returns {Promise<any>} Returns a Promise that resolves to the sealed data, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   getSealedData(instanceID: any): Promise<any> { return; }
 
   /**
@@ -136,7 +135,7 @@ export class IntelSecurityData {
    * @param instanceID {any} Secure data instance ID.
    * @returns {Promise<string>} Returns a Promise that resolves to the tag, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   getTag(instanceID: any): Promise<string> { return; }
 
   /**
@@ -144,7 +143,7 @@ export class IntelSecurityData {
    * @param instanceID {any} Secure data instance ID.
    * @returns {Promise<any>} Returns a promise that resolves to the policy object, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   getPolicy(instanceID: any): Promise<any> { return; }
 
   /**
@@ -152,7 +151,7 @@ export class IntelSecurityData {
    * @param instanceID {any} Secure data instance ID.
    * @returns {Promise<Array>} Returns a promise that resolves to an array of owners' unique IDs, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   getOwners(instanceID: any): Promise<Array<any>> { return; }
 
   /**
@@ -160,7 +159,7 @@ export class IntelSecurityData {
    * @param instanceID {any} Secure data instance ID.
    * @returns {Promise<Number>} Returns a promsie that resolves to the creator's unique ID, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   getCreator(instanceID: any): Promise<Number> { return; }
 
   /**
@@ -168,7 +167,7 @@ export class IntelSecurityData {
    * @param instanceID {any} Secure data instance ID.
    * @returns {Promise<Array>} Returns a promise that resolves to a list of web owners, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   getWebOwners(instanceID: any): Promise<Array<any>> { return; }
 
   /**
@@ -178,7 +177,7 @@ export class IntelSecurityData {
    * @param options.extraKey {Number} Extra sealing secret for secure data instance.
    * @returns {Promise<any>} Returns a promise that resolves with no parameters, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   changeExtraKey(options: any): Promise<any> { return; }
 
   /**
@@ -186,7 +185,7 @@ export class IntelSecurityData {
    * @param instanceID {any} Secure data instance ID.
    * @returns {Promise<any>} Returns a promise that resovles with no parameters, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   destroy(instanceID: any): Promise<any> { return; }
 
 }
@@ -197,8 +196,7 @@ export class IntelSecurityData {
 @Plugin({
   pluginName: 'IntelSecurity',
   plugin: 'com-intel-security-cordova-plugin',
-  pluginRef: 'intel.security.secureStorage',
-  repo: ''
+  pluginRef: 'intel.security.secureStorage'
 })
 export class IntelSecurityStorage {
 
@@ -209,7 +207,7 @@ export class IntelSecurityStorage {
    * @param [options.storageType] {Number} Storage type.
    * @returns {Promise<any>} Returns a Promise that resolves with no parameters, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   delete(options: {
     id: string,
     storageType?: Number
@@ -221,14 +219,14 @@ export class IntelSecurityStorage {
    * @param options.id {String} Storage resource identifier.
    * @param [options.storageType] {Number} Storage type.
    * @param [options.extraKey] {Number} Valid secure data instance ID.
-   * @returns {Promise<string>} Returns a Promise that resolves with the data as plain-text, or rejects with an error.
+   * @returns {Promise<Number>} Returns a Promise that resolves with the instance ID of the created secure data instance, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   read(options: {
     id: string,
     storageType?: Number,
     extraKey?: Number
-  }): Promise<string> { return; }
+  }): Promise<Number> { return; }
 
   /**
    * This writes the data contained in a secure data instance into secure storage.
@@ -238,7 +236,7 @@ export class IntelSecurityStorage {
    * @param [options.storageType] {Number} Storage type.
    * @returns {Promise<any>} Returns a Promise that resolves with no parameters, or rejects with an error.
    */
-  @Cordova()
+  @Cordova({ otherPromise: true })
   write(options: {
     id: String,
     instanceID: Number,
