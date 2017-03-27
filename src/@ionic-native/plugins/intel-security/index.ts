@@ -4,6 +4,32 @@ import { Injectable } from '@angular/core';
 declare var window: any;
 declare var intel: any;
 
+export interface IntelSecurityDataOptions {
+  /** Non-empty string. **/
+  data: String;
+  /** Tag text.  */
+  tag?: String;
+  /** Valid secure data instance ID. */
+  extraKey?: Number;
+  /** Application access control policy. */
+  appAccessControl?: Number;
+  /** Device locality policy. */
+  deviceLocality?: Number;
+  /** Sensitivity level policy. */
+  sensitivityLevel?: Number;
+  /** Disallow sealed blob access. */
+  noStore?: Boolean;
+  /** Disallow plain-text data access. */
+  noRead?: Boolean;
+  /** Creator unique ID. */
+  creator?: Number;
+  /** Array of owners unique IDs. */
+  owners?: Number[];
+  /** List of trusted web domains. */
+  webOwners?: String[];
+}
+
+
 /**
  * @name Intel Security
  * @description
@@ -24,7 +50,7 @@ declare var intel: any;
  *
  * let storageID = 'id';
  *
- * this.intelSecurity.data.createFromData('Sample Data')
+ * this.intelSecurity.data.createFromData({data: 'Sample Data'})
  *   .then((instanceID: any) => this.IntelSecurity.storage.write(id, instanceID))
  *   .catch((error: any) => console.log(error));
  *
@@ -38,6 +64,8 @@ declare var intel: any;
  *   .catch((error: any) => console.log(error));
  *
  * ```
+ * @interfaces
+ * IntelSecurityDataOptions
  */
 @Plugin({
   pluginName: 'IntelSecurity',
@@ -77,12 +105,12 @@ export class IntelSecurityData {
 
   /**
   * This creates a new instance of secure data using plain-text data.
-  * @param id {string} Storage resource identifier.
+  * @param options {IntelSecurityDataOptions}
   * @returns {Promise<any>} Returns a Promise that resolves with the instanceID of the created data instance, or rejects with an error.
   */
   @Cordova()
-  createFromData(data: string): Promise<any> {
-    return intel.security.secureData.createFromData({ data: data });
+  createFromData(options: IntelSecurityDataOptions): Promise<any> {
+    return;
   }
 
   /**
