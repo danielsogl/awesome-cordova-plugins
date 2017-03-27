@@ -9,7 +9,7 @@ declare var sqlitePlugin;
  */
 export class SQLiteObject {
 
-  constructor(private _objectInstance: any) { }
+  constructor(public _objectInstance: any) { }
 
   @InstanceProperty databaseFeatures: any;
 
