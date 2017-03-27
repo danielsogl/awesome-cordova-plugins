@@ -2,7 +2,6 @@ import { Plugin, Cordova } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 declare var window: any;
-declare var intel: any;
 
 export interface IntelSecurityDataOptions {
   /** Non-empty string. **/
@@ -78,13 +77,18 @@ export interface IntelSecurityDataOptions {
 @Injectable()
 export class IntelSecurity {
 
-  public storage: IntelSecurityStorage;
-  public data: IntelSecurityData;
+  /**
+   * returns an IntelSecurityStorage object
+   * @type {IntelSecurityStorage}
+   */
+  storage: IntelSecurityStorage = new IntelSecurityStorage();
 
-  constructor() {
-    this.storage = new IntelSecurityStorage();
-    this.data = new IntelSecurityData();
-  }
+  /**
+   * Returns an IntelSecurityData object
+   * @type {IntelSecurityData}
+   */
+  data: IntelSecurityData = new IntelSecurityData();
+
 }
 
 /**
