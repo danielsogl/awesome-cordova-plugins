@@ -1,3 +1,14 @@
+<a name="3.3.0"></a>
+# [3.3.0](https://github.com/driftyco/ionic-native/compare/v3.2.4...v3.3.0) (2017-03-27)
+
+
+### Features
+
+* **android-full-screen:** add cordova-plugin-fullscreen support (#1255) ([b08e3a8](https://github.com/driftyco/ionic-native/commit/b08e3a8))
+* **intel-security:** add com-intel-security-cordova-plugin support (#1256) ([aedc9d6](https://github.com/driftyco/ionic-native/commit/aedc9d6))
+
+
+
 <a name="3.2.4"></a>
 ## [3.2.4](https://github.com/driftyco/ionic-native/compare/v3.2.3...v3.2.4) (2017-03-26)
 
