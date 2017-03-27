@@ -56,7 +56,7 @@ export interface MusicControlsOptions {
  *   ticker    : 'Now playing "Time is Running Out"'
  *  });
  *
- *  this.musicControls.subscribe().subscribe(action => {
+ *  this.musicControls.subscribe(action => {
  *
  *    switch(action) {
  *        case 'music-controls-next':
