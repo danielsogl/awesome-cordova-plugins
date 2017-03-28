@@ -6,13 +6,17 @@ declare var sqlitePlugin;
 
 export interface SQLiteDatabaseConfig {
   /**
-   * Name of the database
+   * Name of the database. Example: 'my.db'
    */
   name: string;
   /**
-   * Location of the database
+   * Location of the database. Example: 'default'
    */
   location: string;
+  /**
+   * iOS Database Location. Example: 'Library'
+   */
+  iosDatabaseLocation: string;
 }
 
 /**
@@ -188,7 +192,7 @@ export class SQLite {
    *
    * See the plugin docs for an explanation of all options: https://github.com/litehelpers/Cordova-sqlite-storage#opening-a-database
    *
-   * @param config the config for opening the database.
+   * @param config {SQLiteDatabaseConfig} database configuration
    * @return Promise<SQLiteObject>
    */
   @CordovaCheck()
@@ -199,16 +203,18 @@ export class SQLite {
   }
 
   /**
+   * Verify that both the Javascript and native part of this plugin are installed in your application
    * @returns {Promise<any>}
    */
   @Cordova()
   echoTest(): Promise<any> { return; }
 
   /**
-   * @param first
+   * Deletes a database
+   * @param config {SQLiteDatabaseConfig} database configuration
    * @returns {Promise<any>}
    */
   @Cordova()
-  deleteDatabase(first): Promise<any> { return; }
+  deleteDatabase(config: SQLiteDatabaseConfig): Promise<any> { return; }
 
 }
