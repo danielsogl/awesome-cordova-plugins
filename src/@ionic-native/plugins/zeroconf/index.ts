@@ -29,6 +29,26 @@ export interface ZeroconfResult {
  * constructor(private zeroconf: Zeroconf) { }
  *
  * ...
+ *
+ * // watch for services of a specified type
+ * this.zeroconf.watch('_http._tcp.', 'local.').subscribe(result => {
+ *   if (result.action == 'added') {
+ *     console.log('service added', result.service);
+ *   } else {
+ *     console.log('service removed', result.service);
+ *   }
+ * });
+ *
+ * // publish a zeroconf service of your own
+ * this.zeroconf.register('_http._tcp.', 'local.', 'Becvert\'s iPad', 80, {
+ *   'foo': 'bar'
+ * }).then(result => {
+ *   console.log('Service registered', result.service);
+ * });
+ *
+ *
+ * // unregister your service
+ * this.zeroconf.unregister('_http._tcp.', 'local.', 'Becvert\'s iPad');
  * ```
  */
 @Plugin({
@@ -48,14 +68,6 @@ export class Zeroconf {
 
   /**
    * Publishes a new service.
-   * @usage
-   * ```typescript
-   * this.zeroconf.register('_http._tcp.', 'local.', 'Becvert\'s iPad', 80, {
-   *   'foo': 'bar'
-   * }).then(result => {
-   *   console.log('Service registered', result.service);
-   * });
-   * ```
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
    * @param name {string} Unqualified service instance name.
@@ -68,10 +80,6 @@ export class Zeroconf {
 
   /**
    * Unregisters a service.
-   * @usage
-   * ```typescript
-   * this.zeroconf.unregister('_http._tcp.', 'local.', 'Becvert\'s iPad');
-   * ```
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
    * @param name {string} Unqualified service instance name.
@@ -89,16 +97,6 @@ export class Zeroconf {
 
   /**
    * Starts watching for services of the specified type.
-   * @usage
-   * ```typescript
-   * this.zeroconf.watch('_http._tcp.', 'local.').subscribe(result => {
-   *   if (result.action == 'added') {
-   *     console.log('service added', result.service);
-   *   } else {
-   *     console.log('service removed', result.service);
-   *   }
-   * });
-   * ```
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
    * @return {Observable<ZeroconfResult>} Returns an Observable that notifies of each service added or removed.
@@ -112,10 +110,6 @@ export class Zeroconf {
 
   /**
    * Stops watching for services of the specified type.
-   * @usage
-   * ```typescript
-   * this.zeroconf.unwatch('_http._tcp.', 'local.');
-   * ```
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
    * @return {Promise<void>}
