@@ -17,6 +17,7 @@ gulp plugin:create -n PluginName
 gulp plugin:create -m -n PluginName
 ```
 
+Running the command above will create a new directory `src/@ionic-native/plugins/plugin-name/` with a single file in there: `index.ts`. This file is where all the plugin definitions should be.
 
 Let's take a look at the existing plugin wrapper for Geolocation to see what goes into an Ionic Native plugin (comments have been removed for clarity):
 
@@ -110,7 +111,7 @@ The `@Cordova` decorator has a few more options now.
 
 ### Testing your changes
 
-You need to run `npm run build` in the `ionic-native` project, this will create a `dist` directory. Then, you must go to your ionic application folder and replace your current `node_modules/ionic-native/dist/` with the newly generated one.
+You need to run `npm run build` in the `ionic-native` project, this will create a `dist` directory. The `dist` directory will contain a sub directory `@ionic-native` with all the packages compiled in there. Copy the package(s) you created/modified to your app's node_modules under the `@ionic-native` directory. (e.g. `cp -r dist/@ionic-native/plugin-name ../my-app/node_modules/@ionic-native/`).
 
 ### Cleaning the code
 
@@ -148,3 +149,64 @@ The subject contains succinct description of the change:
 * do not capitalize first letter
 * do not place a period (.) at the end
 * entire length of the commit message must not go over 50 characters
+
+
+### Ionic Native Decorators
+
+#### Plugin
+A decorator to wrap the main plugin class, and any other classes that will use `@Cordova` or `@CordovaProperty` decorators. This decorator accepts the following configuration:
+- *pluginName*: Plugin name, this should match the class name
+- *plugin*: The plugin's NPM package, or Github URL if NPM is not available.
+- *pluginRef*: The plugin object reference. Example: 'cordova.file'.
+- *repo*: The plugin's Github Repository URL
+- *install*: (optional) Install command. This is used in case a plugin has a custom install command (takes variables).
+- *platforms*: An array of strings indicating the supported platforms. 
+
+#### Cordova
+Checks if the plugin and the method are available before executing. By default, the decorator will wrap the callbacks of the function and return a Promise. This decorator takes the following configuration options:
+- **observable**: set to true to return an Observable
+- **clearFunction**: an optional name of a method to clear the observable we returned
+- **clearWithArgs**: This can be used if clearFunction is set. Set this to true to call the clearFunction with the same arguments used in the initial function.
+- **sync**: set to true if the method should return the value as-is without wrapping with Observable/Promise
+- **callbackOrder**: set to `reverse` if the success and error callbacks are the first two arguements of the method
+- **callbackStyle**: set to `node` if the plugin has one callback with a node style (e.g: `function(err, result){}`), or set to `object` if the callbacks are part of an object
+- **successName**: Success function property name. This must be set if callbackStyle is set to object.
+- **errorName**: Error function property name. This must be set if callbackStyle is set to object.
+- **successIndex**: Set a custom index for the success callback function. This doesn't work if callbackOrder or callbackStyle are set.
+- **errorIndex**: Set a custom index for the error callback function. This doesn't work if callbackOrder or callbackStyle are set.
+- **eventObservable**: set to true to return an observable that wraps an event listener
+- **event**: Event name, this must be set if eventObservable is set to true
+- **element**: Element to attach the event listener to, this is optional, defaults to `window`
+- **otherPromise**: Set to true if the wrapped method returns a promise
+- **platforms**: array of strings indicating supported platforms. Specify this if the supported platforms doesn't match the plugin's supported platforms.
+
+Example:
+```ts
+@Cordova()
+someMethod(): Promise<any> { return; }
+
+@Cordova({ sync: true })
+syncMethod(): number { }
+```
+
+#### CordovaProperty
+Checks if the plugin and property exist before getting/setting the property's value
+
+Example:
+```ts
+@CordovaProperty
+someProperty: string;
+```
+
+#### CordovaCheck
+Checks if the plugin exists before performing a custom written method. By default, the method will return a promise that will reject with an error if the plugin is not available.  This wrapper accepts two optional configurations:
+- **observable**: set to true to return an empty Observable if the plugin isn't available
+- **sync**: set to true to return nothing if the plugin isn't available
+
+Example:
+```ts
+@CordovaCheck()
+someMethod(): Promise<any> {
+  // anything here will only run if the plugin is available
+}
+```
