@@ -8,10 +8,13 @@ jobs:
       - only:
         - cci2
     steps:
+      - restore_cache:
+         key: ionic-site
       - run:
             name: Prepare ionic-site repo
             command: ./scripts/docs/prepare.sh
       - save_cache:
+               key: ionic-site
                paths:
                  - ~/ionic-site/
       - checkout
