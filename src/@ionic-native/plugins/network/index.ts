@@ -79,13 +79,6 @@ export class Network {
   onchange(): Observable<any> { return; }
 
   /**
-   * Returns an observable to watch connection type changes
-   * @return {Observable<any>}
-   */
-  @CordovaFunctionOverride()
-  ontypechange(): Observable<any> { return; }
-
-  /**
    * Get notified when the device goes offline
    * @returns {Observable<any>} Returns an observable.
    */
