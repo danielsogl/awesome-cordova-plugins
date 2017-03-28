@@ -124,19 +124,6 @@ export class SQLiteObject {
   })
   abortFromQ(sqlerror): void { }
 
-  /**
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  echoTest(): Promise<any> { return; }
-
-  /**
-   * @param first
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  deleteDatabase(first): Promise<any> { return; }
-
 }
 
 /**
@@ -197,5 +184,18 @@ export class SQLite {
         sqlitePlugin.openDatabase(config, db => resolve(new SQLiteObject(db)), reject);
     });
   }
+
+  /**
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  echoTest(): Promise<any> { return; }
+
+  /**
+   * @param first
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  deleteDatabase(first): Promise<any> { return; }
 
 }
