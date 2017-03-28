@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, Plugin, CordovaCheck } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/observable/merge';
+import 'rxjs/add/observable/merge';
 
 
 declare var navigator: any;
