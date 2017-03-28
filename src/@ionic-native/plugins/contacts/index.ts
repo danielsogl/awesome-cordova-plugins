@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, InstanceProperty, Plugin, getPromise, InstanceCheck, checkAvailability } from '@ionic-native/core';
+import { CordovaInstance, InstanceProperty, Plugin, getPromise, InstanceCheck, checkAvailability, CordovaCheck } from '@ionic-native/core';
 
 declare var window: any,
   navigator: any;
@@ -309,6 +309,7 @@ export class Contacts {
    * @param options {IContactFindOptions} Optional options for the query
    * @returns {Promise<Contact[]>} Returns a Promise that resolves with the search results (an array of Contact objects)
    */
+  @CordovaCheck()
   find(fields: ContactFieldType[], options?: IContactFindOptions): Promise<Contact[]> {
     return getPromise((resolve, reject) => {
       navigator.contacts.find(fields, (contacts) => {
@@ -321,6 +322,7 @@ export class Contacts {
    * Select a single Contact.
    * @returns {Promise<Contact>} Returns a Promise that resolves with the selected Contact
    */
+  @CordovaCheck()
   pickContact(): Promise<Contact> {
     return getPromise((resolve, reject) => {
       navigator.contacts.pickContact((contact) => resolve(processContact(contact)), reject);
