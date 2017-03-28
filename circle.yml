@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
          name: Install node modules
-         run: npm i
+         command: npm i
   deployDocs:
     working_directory: ~/ionic-native/
     docker:
