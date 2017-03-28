@@ -9,23 +9,23 @@ export interface AdMobFreeBannerConfig {
    */
   id?: string;
   /**
-   * receiving test ad
+   * Receiving test ad
    */
   isTesting?: boolean;
   /**
-   * auto show ad when loaded
+   * Auto show ad when loaded
    */
   autoShow?: boolean;
   /**
-   * set to true, to put banner at top
+   * Set to true, to put banner at top
    */
   bannerAtTop?: boolean;
   /**
-   * set to true, to allow banner overlap webview
+   * Set to true, to allow banner overlap WebView
    */
   overlap?: boolean;
   /**
-   * set to true to avoid ios7 status bar overlap
+   * Set to true to avoid ios7 status bar overlap
    */
   offsetTopBar?: boolean;
   /**
@@ -40,11 +40,11 @@ export interface AdMobFreeInterstitialConfig {
    */
   id?: string;
   /**
-   * receiving test ad
+   * Receiving test ad
    */
   isTesting?: boolean;
   /**
-   * auto show ad when loaded
+   * Auto show ad when loaded
    */
   autoShow?: boolean;
 }
@@ -55,11 +55,11 @@ export interface AdMobFreeRewardVideoConfig {
    */
   id?: string;
   /**
-   * receiving test ad
+   * Receiving test ad
    */
   isTesting?: boolean;
   /**
-   * auto show ad when loaded
+   * Auto show ad when loaded
    */
   autoShow?: boolean;
 }
@@ -70,12 +70,29 @@ export interface AdMobFreeRewardVideoConfig {
  *
  * @usage
  * ```
- * import { AdMobFree } from 'ionic-native';
+ * import { AdMobFree, AdMobFreeBannerConfig } from 'ionic-native';
  *
  *
  * constructor(private admobFree: AdMobFree) { }
  *
+ *
  * ...
+ *
+ *
+ * const bannerConfig: AdMobFreeBannerConfig = {
+ *  // add your config here
+ *  // for the sake of this example we will just use the test config
+ *  isTesting: true,
+ *  autoShow: true
+ * };
+ * this.admobFree.banner.config(bannerConfig);
+ *
+ * this.admobFree.banner.prepare()
+ *   .then(() => {
+ *     // banner Ad is ready
+ *     // if we set autoShow to false, then we will need to call the show method here
+ *   })
+ *   .catch(e => console.log(e));
  *
  *
  * ```
