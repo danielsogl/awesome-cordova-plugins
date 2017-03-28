@@ -14,7 +14,6 @@ jobs:
          command: npm i
       - run: npm run build
   update_docs:
-    machine: true
     working_directory: ~/ionic-native/
     docker:
       - image: node:7
