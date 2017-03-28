@@ -1,3 +1,26 @@
+<a name="3.4.0"></a>
+# [3.4.0](https://github.com/driftyco/ionic-native/compare/v3.3.2...v3.4.0) (2017-03-28)
+
+
+
+<a name="3.3.2"></a>
+## [3.3.2](https://github.com/driftyco/ionic-native/compare/v3.3.1...v3.3.2) (2017-03-28)
+
+
+### Bug Fixes
+
+* **sqlite:** fix SQLiteDatabaseConfig interface ([ea88c9e](https://github.com/driftyco/ionic-native/commit/ea88c9e)), closes [#1280](https://github.com/driftyco/ionic-native/issues/1280)
+
+
+### Features
+
+* **admob-free:** add AdMobFree plugin (#1272) ([0ef4a73](https://github.com/driftyco/ionic-native/commit/0ef4a73)), closes [#1170](https://github.com/driftyco/ionic-native/issues/1170)
+* **sqlite-porter:** add SQLite porter plugin (#1273) ([f911366](https://github.com/driftyco/ionic-native/commit/f911366)), closes [#485](https://github.com/driftyco/ionic-native/issues/485)
+* **taptic-engine:** add taptic engine plugin support (#1271) ([ffa37e2](https://github.com/driftyco/ionic-native/commit/ffa37e2))
+* **zeroconf:** add cordova-plugin-zeroconf support (#1260) ([68d9946](https://github.com/driftyco/ionic-native/commit/68d9946))
+
+
+
 <a name="3.3.1"></a>
 ## [3.3.1](https://github.com/driftyco/ionic-native/compare/v3.3.0...v3.3.1) (2017-03-28)
 
