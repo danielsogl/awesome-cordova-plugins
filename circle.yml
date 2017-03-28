@@ -12,16 +12,24 @@ jobs:
       - restore_cache:
          key: ionic-site
       - run:
-            name: Prepare ionic-site repo
-            command: ./scripts/docs/prepare.sh
+         name: Prepare ionic-site repo
+         command: ./scripts/docs/prepare.sh
       - save_cache:
-               key: ionic-site
-               paths:
-                 - ~/ionic-site/
+         key: ionic-site
+         paths:
+         - ~/ionic-site/
+      - restore_cache:
+         key: node_modules
       - run:
          name: Install node modules
          command: npm i
-      - run: npm run lint
+      - save_cache:
+         key: node-modules-{{ checksum "package.json" }} # used cached node_modules if package.json didn't change
+         paths:
+         - ~/node_modules/
+      - run:
+          name: Run tslint
+          command: npm run lint
       - run:
           name: Update docs
           command: ./scripts/docs/update_docs.sh
