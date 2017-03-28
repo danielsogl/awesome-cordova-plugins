@@ -12,7 +12,9 @@ jobs:
       - run:
          name: Install node modules
          command: npm i
-  deployDocs:
+      - run: npm run build
+  update_docs:
+    machine: true
     working_directory: ~/ionic-native/
     docker:
       - image: node:7
