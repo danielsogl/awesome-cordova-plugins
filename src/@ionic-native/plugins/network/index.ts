@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Cordova, CordovaProperty, Plugin, CordovaFunctionOverride} from '@ionic-native/core';
+import { Cordova, CordovaProperty, Plugin, CordovaCheck } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/observable/merge';
 
 
 declare var navigator: any;
@@ -75,8 +76,10 @@ export class Network {
    * Returns an observable to watch connection changes
    * @return {Observable<any>}
    */
-  @CordovaFunctionOverride()
-  onchange(): Observable<any> { return; }
+  @CordovaCheck()
+  onchange(): Observable<any> {
+    return Observable.merge(this.onConnect(), this.onDisconnect());
+  }
 
   /**
    * Get notified when the device goes offline
