@@ -72,7 +72,7 @@ export class Contact implements IContactProperties {
   @InstanceProperty urls: IContactField[];
 
   constructor() {
-    if (checkAvailability(navigator.contacts, 'create', 'Contacts') === true) {
+    if (checkAvailability('navigator.contacts', 'create', 'Contacts') === true) {
       this._objectInstance = navigator.contacts.create();
     }
   }
