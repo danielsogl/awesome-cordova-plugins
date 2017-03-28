@@ -1,26 +1,35 @@
-machine:
-  node:
-    version: 5.5.0
-  ruby:
-    version: 2.1.2
-
-general:
-  branches:
-    only:
-      - master # ignore PRs and branches
-
-dependencies:
- pre:
-   - ./scripts/docs/prepare.sh
- cache_directories:
-   - "~/ionic-site" # cache ionic-site
-
-test:
-  override:
-    - echo "No tests to run"
-
-deployment:
- staging:
-   branch: master
-   commands:
-     - ./scripts/docs/update_docs.sh
+version: 2
+jobs:
+  build:
+    working_directory: ~/ionic-native/
+    docker:
+      - image: node:7
+    branches:
+      - only:
+        - cci2
+    steps:
+      - checkout
+      - run:
+         name: Install node modules
+         run: npm i
+  deployDocs:
+    working_directory: ~/ionic-native/
+    docker:
+      - image: node:7
+    branches:
+      - only:
+        - cci2 # set this to master
+    steps:
+      - run:
+          name: Prepare ionic-site repo
+          command: ./scripts/docs/prepare.sh
+      - save_cache:
+         paths:
+           - ~/ionic-site/
+      - checkout
+      - run:
+          name: Install node modules
+          command: npm i
+      - run:
+          name: Update docs
+          command: ./scripts/docs/update_docs.sh
