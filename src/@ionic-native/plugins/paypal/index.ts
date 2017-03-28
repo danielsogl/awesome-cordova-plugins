@@ -67,7 +67,8 @@ import { Plugin, Cordova } from '@ionic-native/core';
   pluginName: 'PayPal',
   plugin: 'com.paypal.cordova.mobilesdk',
   pluginRef: 'PayPalMobile',
-  repo: 'https://github.com/paypal/PayPal-Cordova-Plugin'
+  repo: 'https://github.com/paypal/PayPal-Cordova-Plugin',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class PayPal {

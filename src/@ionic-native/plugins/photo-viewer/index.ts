@@ -20,7 +20,8 @@ import { Plugin, Cordova } from '@ionic-native/core';
   pluginName: 'PhotoViewer',
   plugin: 'com-sarriaroman-photoviewer',
   pluginRef: 'PhotoViewer',
-  repo: 'https://github.com/sarriaroman/photoviewer'
+  repo: 'https://github.com/sarriaroman/photoviewer',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class PhotoViewer {
