@@ -26,6 +26,7 @@ import { Injectable } from '@angular/core';
   plugin: 'https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin',
   pluginRef: 'cblite',
   repo: 'https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class CouchbaseLite {

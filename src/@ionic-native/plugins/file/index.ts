@@ -367,7 +367,8 @@ export declare var FileError: {
   pluginName: 'File',
   plugin: 'cordova-plugin-file',
   pluginRef: 'cordova.file',
-  repo: 'https://github.com/apache/cordova-plugin-file'
+  repo: 'https://github.com/apache/cordova-plugin-file',
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class File {

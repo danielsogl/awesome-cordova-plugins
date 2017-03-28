@@ -27,7 +27,8 @@ declare var cordova: any;
   pluginName: 'Jins Meme',
   plugin: 'JinsMemeSDK-Plugin-Cordova',
   pluginRef: 'cordova.plugins.JinsMemePlugin',
-  repo: 'https://github.com/jins-meme/JinsMemeSDK-Plugin-Cordova.git'
+  repo: 'https://github.com/jins-meme/JinsMemeSDK-Plugin-Cordova',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class JinsMeme {

@@ -162,7 +162,8 @@ export class InAppBrowserObject {
   pluginName: 'InAppBrowser',
   plugin: 'cordova-plugin-inappbrowser',
   pluginRef: 'cordova.InAppBrowser',
-  repo: 'https://github.com/apache/cordova-plugin-inappbrowser'
+  repo: 'https://github.com/apache/cordova-plugin-inappbrowser',
+  platforms: ['Amazon', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class InAppBrowser {

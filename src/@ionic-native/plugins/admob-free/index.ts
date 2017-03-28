@@ -101,7 +101,8 @@ export interface AdMobFreeRewardVideoConfig {
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
   pluginRef: 'admob',
-  repo: 'https://github.com/ratson/cordova-plugin-admob-free'
+  repo: 'https://github.com/ratson/cordova-plugin-admob-free',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class AdMobFree {

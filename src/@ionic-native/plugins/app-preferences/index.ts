@@ -21,9 +21,10 @@ import { Injectable } from '@angular/core';
  */
 @Plugin({
   pluginName: 'AppPreferences',
-  plugin: 'cordova-plugin-app-preferences', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'plugins.appPreferences', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/apla/me.apla.cordova.app-preferences', // the github repository URL for the plugin
+  plugin: 'cordova-plugin-app-preferences',
+  pluginRef: 'plugins.appPreferences',
+  repo: 'https://github.com/apla/me.apla.cordova.app-preferences',
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'OS X', 'Windows 8', 'Windows Phone']
 })
 @Injectable()
 export class AppPreferences {

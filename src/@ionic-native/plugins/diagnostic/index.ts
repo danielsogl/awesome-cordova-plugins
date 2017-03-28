@@ -38,7 +38,8 @@ import {Cordova, Plugin, CordovaProperty} from '@ionic-native/core';
   pluginName: 'Diagnostic',
   plugin: 'cordova.plugins.diagnostic',
   pluginRef: 'cordova.plugins.diagnostic',
-  repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin'
+  repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin',
+  platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
 export class Diagnostic {

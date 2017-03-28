@@ -23,7 +23,8 @@ declare var window: any;
   pluginName: 'Device',
   plugin: 'cordova-plugin-device',
   pluginRef: 'device',
-  repo: 'https://github.com/apache/cordova-plugin-device'
+  repo: 'https://github.com/apache/cordova-plugin-device',
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class Device {

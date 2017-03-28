@@ -72,7 +72,8 @@ export interface IntelSecurityDataOptions {
   pluginName: 'IntelSecurity',
   plugin: 'com-intel-security-cordova-plugin',
   pluginRef: 'intel.security',
-  repo: 'https://github.com/AppSecurityApi/com-intel-security-cordova-plugin'
+  repo: 'https://github.com/AppSecurityApi/com-intel-security-cordova-plugin',
+  platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
 export class IntelSecurity {

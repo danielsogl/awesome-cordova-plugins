@@ -78,7 +78,7 @@ export interface DeeplinkMatch {
   plugin: 'ionic-plugin-deeplinks',
   pluginRef: 'IonicDeeplink',
   repo: 'https://github.com/driftyco/ionic-plugin-deeplinks',
-  platforms: ['iOS', 'Android'],
+  platforms: ['iOS', 'Android', 'Browser'],
   install: 'ionic plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/',
   installVariables: ['URL_SCHEME', 'DEEPLINK_SCHEME', 'DEEPLINK_HOST', 'ANDROID_PATH_PREFIX']
 })

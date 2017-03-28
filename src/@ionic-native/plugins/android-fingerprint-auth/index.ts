@@ -144,7 +144,8 @@ export interface AFAEncryptResponse {
   pluginName: 'AndroidFingerprintAuth',
   plugin: 'cordova-plugin-android-fingerprint-auth',
   pluginRef: 'FingerprintAuth',
-  repo: 'https://github.com/mjwheatley/cordova-plugin-android-fingerprint-auth'
+  repo: 'https://github.com/mjwheatley/cordova-plugin-android-fingerprint-auth',
+  platforms: ['Android']
 })
 @Injectable()
 export class AndroidFingerprintAuth {

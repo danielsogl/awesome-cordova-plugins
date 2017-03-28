@@ -23,7 +23,8 @@ import { Cordova, Plugin } from '@ionic-native/core';
   pluginName: 'Crop',
   plugin: 'cordova-plugin-crop',
   pluginRef: 'plugins',
-  repo: 'https://github.com/jeduan/cordova-plugin-crop'
+  repo: 'https://github.com/jeduan/cordova-plugin-crop',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Crop {

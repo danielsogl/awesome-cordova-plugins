@@ -91,7 +91,8 @@ export interface LaunchNavigatorOptions {
   pluginName: 'LaunchNavigator',
   plugin: 'uk.co.workingedge.phonegap.plugin.launchnavigator',
   pluginRef: 'launchnavigator',
-  repo: 'https://github.com/dpa99c/phonegap-launch-navigator.git'
+  repo: 'https://github.com/dpa99c/phonegap-launch-navigator',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class LaunchNavigator {

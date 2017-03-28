@@ -290,7 +290,8 @@ export class ContactFindOptions implements IContactFindOptions {
   pluginName: 'Contacts',
   plugin: 'cordova-plugin-contacts',
   pluginRef: 'navigator.contacts',
-  repo: 'https://github.com/apache/cordova-plugin-contacts'
+  repo: 'https://github.com/apache/cordova-plugin-contacts',
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows 8', 'Windows Phone']
 })
 @Injectable()
 export class Contacts {

@@ -23,7 +23,8 @@ import { Plugin, Cordova } from '@ionic-native/core';
   pluginName: 'Instagram',
   plugin: 'cordova-instagram-plugin',
   pluginRef: 'Instagram',
-  repo: 'https://github.com/vstirbu/InstagramPlugin'
+  repo: 'https://github.com/vstirbu/InstagramPlugin',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Instagram {
