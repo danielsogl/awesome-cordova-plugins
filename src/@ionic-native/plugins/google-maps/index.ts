@@ -406,7 +406,7 @@ export class GoogleMap {
  *  map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
  *
  *  // create LatLng object
- *  let ionic: LatLng = new GoogleMapsLatLng(43.0741904,-89.3809802);
+ *  let ionic: LatLng = new LatLng(43.0741904,-89.3809802);
  *
  *  // create CameraPosition
  *  let position: CameraPosition = {
