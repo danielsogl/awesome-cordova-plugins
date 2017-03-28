@@ -14,24 +14,35 @@ export interface BackgroundModeConfiguration {
   title?: String;
 
   /**
-   * The text that scrolls itself on statusbar
-   */
-  ticker?: String;
-
-  /**
    * Description of background task
    */
   text?: String;
 
   /**
-   * if true plugin will not display a notification. Default is false.
+   * This will look for <icon name>.png in platforms/android/res/drawable|mipmap
    */
-  silent?: boolean;
+  icon?: string;
+
+  color?: string;
 
   /**
    * By default the app will come to foreground when taping on the notification. If false, plugin wont come to foreground when tapped.
    */
   resume?: boolean;
+
+  hidden?: boolean;
+
+  bigText?: boolean;
+
+  /**
+   * The text that scrolls itself on statusbar
+   */
+  ticker?: String;
+
+  /**
+   * if true plugin will not display a notification. Default is false.
+   */
+  silent?: boolean;
 
 }
 
