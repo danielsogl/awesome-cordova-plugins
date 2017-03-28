@@ -4,6 +4,17 @@ import { Cordova, CordovaInstance, Plugin, CordovaCheck, InstanceProperty } from
 
 declare var sqlitePlugin;
 
+export interface SQLiteDatabaseConfig {
+  /**
+   * Name of the database
+   */
+  name: string;
+  /**
+   * Location of the database
+   */
+  location: string;
+}
+
 /**
  * @hidden
  */
@@ -160,6 +171,8 @@ export class SQLiteObject {
  *
  * @classes
  * SQLiteObject
+ * @interfaces
+ * SQLiteDatabaseConfig
  */
 @Plugin({
   pluginName: 'SQLite',
@@ -179,7 +192,7 @@ export class SQLite {
    * @return Promise<SQLiteObject>
    */
   @CordovaCheck()
-  create(config: any): Promise<SQLiteObject> {
+  create(config: SQLiteDatabaseConfig): Promise<SQLiteObject> {
     return new Promise((resolve, reject) => {
         sqlitePlugin.openDatabase(config, db => resolve(new SQLiteObject(db)), reject);
     });
