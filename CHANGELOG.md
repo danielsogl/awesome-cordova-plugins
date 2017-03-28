@@ -1,3 +1,15 @@
+<a name="3.4.1"></a>
+## [3.4.1](https://github.com/driftyco/ionic-native/compare/v3.4.0...v3.4.1) (2017-03-28)
+
+
+### Bug Fixes
+
+* **admob:** fix event listeners ([b53af8e](https://github.com/driftyco/ionic-native/commit/b53af8e)), closes [#1165](https://github.com/driftyco/ionic-native/issues/1165)
+* **network:** fix onchange method ([006f7dc](https://github.com/driftyco/ionic-native/commit/006f7dc)), closes [#1173](https://github.com/driftyco/ionic-native/issues/1173)
+* **network:** remove ontypechange method ([19bc841](https://github.com/driftyco/ionic-native/commit/19bc841))
+
+
+
 <a name="3.4.0"></a>
 # [3.4.0](https://github.com/driftyco/ionic-native/compare/v3.3.2...v3.4.0) (2017-03-28)
 
