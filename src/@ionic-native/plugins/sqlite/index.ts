@@ -12,11 +12,11 @@ export interface SQLiteDatabaseConfig {
   /**
    * Location of the database. Example: 'default'
    */
-  location: string;
+  location?: string;
   /**
    * iOS Database Location. Example: 'Library'
    */
-  iosDatabaseLocation: string;
+  iosDatabaseLocation?: string;
 }
 
 /**
