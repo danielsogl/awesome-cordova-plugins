@@ -8,29 +8,17 @@ jobs:
       - only:
         - cci2
     steps:
+      - run:
+            name: Prepare ionic-site repo
+            command: ./scripts/docs/prepare.sh
+      - save_cache:
+               paths:
+                 - ~/ionic-site/
       - checkout
       - run:
          name: Install node modules
          command: npm i
-      - run: npm run build
-  update_docs:
-    working_directory: ~/ionic-native/
-    docker:
-      - image: node:7
-    branches:
-      - only:
-        - cci2 # set this to master
-    steps:
-      - run:
-          name: Prepare ionic-site repo
-          command: ./scripts/docs/prepare.sh
-      - save_cache:
-         paths:
-           - ~/ionic-site/
-      - checkout
-      - run:
-          name: Install node modules
-          command: npm i
+      - run: npm run lint
       - run:
           name: Update docs
           command: ./scripts/docs/update_docs.sh
