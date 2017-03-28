@@ -242,7 +242,8 @@ export class AdMob {
    */
   @Cordova({
     eventObservable: true,
-    event: 'onAdFailLoad'
+    event: 'onAdFailLoad',
+    element: document
   })
   onAdFailLoad(): Observable<any> { return; }
 
@@ -252,7 +253,8 @@ export class AdMob {
    */
   @Cordova({
     eventObservable: true,
-    event: 'onAdLoaded'
+    event: 'onAdLoaded',
+    element: document
   })
   onAdLoaded(): Observable<any> { return; }
 
@@ -262,7 +264,8 @@ export class AdMob {
    */
   @Cordova({
     eventObservable: true,
-    event: 'onAdPresent'
+    event: 'onAdPresent',
+    element: document
   })
   onAdPresent(): Observable<any> { return; }
 
@@ -272,7 +275,8 @@ export class AdMob {
    */
   @Cordova({
     eventObservable: true,
-    event: 'onAdLeaveApp'
+    event: 'onAdLeaveApp',
+    element: document
   })
   onAdLeaveApp(): Observable<any> { return; }
 
@@ -282,7 +286,8 @@ export class AdMob {
    */
   @Cordova({
     eventObservable: true,
-    event: 'onAdDismiss'
+    event: 'onAdDismiss',
+    element: document
   })
   onAdDismiss(): Observable<any> { return; }
 
