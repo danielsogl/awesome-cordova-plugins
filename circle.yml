@@ -8,6 +8,7 @@ jobs:
       - only:
         - cci2
     steps:
+      - checkout
       - restore_cache:
          key: ionic-site
       - run:
@@ -17,7 +18,6 @@ jobs:
                key: ionic-site
                paths:
                  - ~/ionic-site/
-      - checkout
       - run:
          name: Install node modules
          command: npm i
