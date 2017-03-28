@@ -1,3 +1,23 @@
+<a name="3.3.1"></a>
+## [3.3.1](https://github.com/driftyco/ionic-native/compare/v3.3.0...v3.3.1) (2017-03-28)
+
+
+### Bug Fixes
+
+* **background-mode:** add missing config options ([9c30a1d](https://github.com/driftyco/ionic-native/commit/9c30a1d)), closes [#1277](https://github.com/driftyco/ionic-native/issues/1277)
+* **contacts:** fix major bug ([6e20137](https://github.com/driftyco/ionic-native/commit/6e20137))
+* **contacts:** handle cordova_not_found errors ([961727e](https://github.com/driftyco/ionic-native/commit/961727e))
+* **core:** handle unexpected errors in wrapOtherPromise ([9074362](https://github.com/driftyco/ionic-native/commit/9074362)), closes [#1185](https://github.com/driftyco/ionic-native/issues/1185)
+* **core:** return errors from CordovaCheck decorators ([fd0a2e9](https://github.com/driftyco/ionic-native/commit/fd0a2e9)), closes [#1268](https://github.com/driftyco/ionic-native/issues/1268)
+* **sqlite:** fixes echoTest and deleteDatabase ([01aece1](https://github.com/driftyco/ionic-native/commit/01aece1)), closes [#1275](https://github.com/driftyco/ionic-native/issues/1275)
+
+
+### Features
+
+* **sqlite:** add SQLiteDatabaseConfig interface ([544e7ef](https://github.com/driftyco/ionic-native/commit/544e7ef))
+
+
+
 <a name="3.3.0"></a>
 # [3.3.0](https://github.com/driftyco/ionic-native/compare/v3.2.4...v3.3.0) (2017-03-27)
 
