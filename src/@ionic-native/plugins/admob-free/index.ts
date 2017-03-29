@@ -70,7 +70,7 @@ export interface AdMobFreeRewardVideoConfig {
  *
  * @usage
  * ```
- * import { AdMobFree, AdMobFreeBannerConfig } from 'ionic-native';
+ * import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
  *
  *
  * constructor(private admobFree: AdMobFree) { }
