@@ -1,3 +1,26 @@
+<a name="3.4.3"></a>
+## [3.4.3](https://github.com/driftyco/ionic-native/compare/v3.4.2...v3.4.3) (2017-03-29)
+
+
+### Bug Fixes
+
+* **admob:** add missing license property ([2b94ffd](https://github.com/driftyco/ionic-native/commit/2b94ffd)), closes [#1291](https://github.com/driftyco/ionic-native/issues/1291)
+* **app-preferences:** fix bug with fetch method ([65cf94b](https://github.com/driftyco/ionic-native/commit/65cf94b)), closes [#1299](https://github.com/driftyco/ionic-native/issues/1299)
+* **push:** add missing plugin decorator ([208748a](https://github.com/driftyco/ionic-native/commit/208748a)), closes [#1297](https://github.com/driftyco/ionic-native/issues/1297)
+* **secure-storage:** return unfunctional SecureStorageObject if plugin doesn't exist ([b91757e](https://github.com/driftyco/ionic-native/commit/b91757e))
+
+
+### Features
+
+* **secure-storage:** add keys() and clear() methods (#1281) ([8b31d72](https://github.com/driftyco/ionic-native/commit/8b31d72))
+
+
+
+<a name="3.4.2"></a>
+## [3.4.2](https://github.com/driftyco/ionic-native/compare/v3.4.1...v3.4.2) (2017-03-28)
+
+
+
 <a name="3.4.1"></a>
 ## [3.4.1](https://github.com/driftyco/ionic-native/compare/v3.4.0...v3.4.1) (2017-03-28)
 
