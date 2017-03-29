@@ -19,10 +19,11 @@ declare var window;
  *
  * ...
  *
+ * // let status bar overlay webview
+ * this.statusBar.overlaysWebView(true);
  *
- * this.statusBar.overlaysWebView(true); // let status bar overlay webview
- *
- * this.statusBar.backgroundColorByHexString('#ffffff'); // set status bar to white
+ * // set status bar to white
+ * this.statusBar.backgroundColorByHexString('#ffffff');
  * ```
  *
  */
