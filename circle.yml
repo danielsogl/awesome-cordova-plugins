@@ -1,26 +1,41 @@
-machine:
-  node:
-    version: 5.5.0
-  ruby:
-    version: 2.1.2
-
-general:
-  branches:
-    only:
-      - master # ignore PRs and branches
-
-dependencies:
- pre:
-   - ./scripts/docs/prepare.sh
- cache_directories:
-   - "~/ionic-site" # cache ionic-site
-
-test:
-  override:
-    - echo "No tests to run"
-
-deployment:
- staging:
-   branch: master
-   commands:
-     - ./scripts/docs/update_docs.sh
+version: 2
+jobs:
+  build:
+    working_directory: ~/ionic-native/
+    docker:
+      - image: node:7
+    branches:
+      - only:
+        - cci2
+    steps:
+      - checkout
+      - restore_cache:
+         key: ionic-site
+      - run:
+         name: Prepare ionic-site repo
+         command: ./scripts/docs/prepare.sh
+      - save_cache:
+         key: ionic-site
+         paths:
+         - ~/ionic-site/
+      - restore_cache:
+         key: node_modules_{{ checksum "package.json" }}
+      - run:
+         name: Install node modules
+         command: npm i
+      - save_cache:
+         key: node_modules_{{ checksum "package.json" }}
+         paths:
+         - ~/ionic-native/node_modules/
+      - run:
+          name: Run tslint
+          command: npm run lint
+      - add_ssh_keys
+      - deploy:
+          name: Update docs
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ./scripts/docs/update_docs.sh
+            else
+              echo "We are on ${CIRCLE_BRANCH} branch, not going to update docs."
+            fi
