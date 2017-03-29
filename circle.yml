@@ -33,7 +33,7 @@ jobs:
       - deploy:
           name: Update docs
           command: |
-            if [ "${CIRCLE_BRANCH}" == "cci2" ]; then
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
               ./scripts/docs/update_docs.sh
             else
               echo "We are on ${CIRCLE_BRANCH} branch, not going to update docs."
