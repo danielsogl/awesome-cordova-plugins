@@ -41,6 +41,26 @@ export class SecureStorageObject {
   })
   remove(reference: string): Promise<any> { return; }
 
+  /**
+   * Get all references from the storage.
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance({
+    callbackOrder: 'reverse'
+  })
+  keys(): Promise<any> { return; }
+
+  /**
+   * Clear all references from the storage.
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance({
+    callbackOrder: 'reverse'
+  })
+  clear(): Promise<any> { return; }
+
+
+
 }
 
 /**
