@@ -26,7 +26,7 @@ jobs:
       - save_cache:
          key: node-modules-{{ checksum "package.json" }} # used cached node_modules if package.json didn't change
          paths:
-         - ~/node_modules/
+         - ~/ionic-native/node_modules/
       - run:
           name: Run tslint
           command: npm run lint
