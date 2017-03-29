@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, CordovaCheck } from '@ionic-native/core';
+import { CordovaInstance, Plugin, checkAvailability } from '@ionic-native/core';
 
 declare var cordova: any;
 
@@ -8,7 +8,7 @@ declare var cordova: any;
  */
 export class SecureStorageObject {
 
-  constructor(private _objectInstance: any) {}
+  constructor(private _objectInstance?: any) {}
 
   /**
    * Gets a stored item
@@ -58,8 +58,6 @@ export class SecureStorageObject {
     callbackOrder: 'reverse'
   })
   clear(): Promise<any> { return; }
-
-
 
 }
 
@@ -122,10 +120,13 @@ export class SecureStorage {
    * @param store {string}
    * @returns {Promise<SecureStorageObject>}
    */
-  @CordovaCheck()
   create(store: string): Promise<SecureStorageObject> {
     return new Promise((res, rej) => {
-      const instance = new cordova.plugins.SecureStorage(() => res(new SecureStorageObject(instance)), rej, store);
+      if (checkAvailability('cordova.plugins.SecureStorage', null, 'SecureStorage') === true) {
+        const instance = new cordova.plugins.SecureStorage(() => res(new SecureStorageObject(instance)), rej, store);
+      } else {
+        res(new SecureStorageObject());
+      }
     });
   }
 
