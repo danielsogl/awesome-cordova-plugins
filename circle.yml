@@ -19,12 +19,12 @@ jobs:
          paths:
          - ~/ionic-site/
       - restore_cache:
-         key: {{ checksum "package.json" }}-node-modules
+         key: node_modules_{{ checksum "package.json" }}
       - run:
          name: Install node modules
          command: npm i
       - save_cache:
-         key: {{ checksum "package.json" }}-node-modules # used cached node_modules if package.json didn't change
+         key: node_modules_{{ checksum "package.json" }} # used cached node_modules if package.json didn't change
          paths:
          - ~/ionic-native/node_modules/
       - run:
