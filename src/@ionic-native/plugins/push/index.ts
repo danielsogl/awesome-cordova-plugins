@@ -269,6 +269,11 @@ export class Push {
 /**
  * @hidden
  */
+@Plugin({
+  pluginName: 'Push',
+  plugin: 'phonegap-plugin-push',
+  pluginRef: 'PushNotification'
+})
 export class PushObject {
 
   private _objectInstance: any;
