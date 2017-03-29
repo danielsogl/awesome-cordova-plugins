@@ -24,12 +24,18 @@ jobs:
          name: Install node modules
          command: npm i
       - save_cache:
-         key: node_modules_{{ checksum "package.json" }} # used cached node_modules if package.json didn't change
+         key: node_modules_{{ checksum "package.json" }}
          paths:
          - ~/ionic-native/node_modules/
       - run:
           name: Run tslint
           command: npm run lint
-      - run:
+      - deploy:
           name: Update docs
-          command: ./scripts/docs/update_docs.sh
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "cci2" ]; then
+              # update docs since we're on master
+              ./scripts/docs/update_docs.sh
+            else
+              echo "We are on ${CIRCLE_BRANCH} branch, not going to update docs"
+            fi
