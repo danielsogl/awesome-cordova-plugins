@@ -4,9 +4,6 @@ jobs:
     working_directory: ~/ionic-native/
     docker:
       - image: node:7
-    branches:
-      - only:
-        - cci2
     steps:
       - checkout
       - restore_cache:
