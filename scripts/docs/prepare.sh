@@ -30,7 +30,7 @@ function run {
     git pull origin master
   fi
 
-  git rm -rf content/docs/v2/native/*/ || true
+  git rm -rf content/docs/native/*/ || true
 
 }
 

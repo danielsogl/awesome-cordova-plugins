@@ -14,11 +14,11 @@ Run following command to install Ionic Native in your project.
 npm install @ionic-native/core --save
 ```
 
-You also need to install the Ionic Native package for each plugin you want to add. Please see the [Ionic Native documentation](http://ionicframework.com/docs/v2/native/) for complete instructions on how to add and use the plugins.
+You also need to install the Ionic Native package for each plugin you want to add. Please see the [Ionic Native documentation](http://ionicframework.com/docs/native/) for complete instructions on how to add and use the plugins.
 
 ## Documentation
 
-For the full Ionic Native documentation, please visit [http://ionicframework.com/docs/v2/native/](http://ionicframework.com/docs/v2/native/).
+For the full Ionic Native documentation, please visit [http://ionicframework.com/docs/native/](http://ionicframework.com/docs/native/).
 
 ### Basic Usage
 

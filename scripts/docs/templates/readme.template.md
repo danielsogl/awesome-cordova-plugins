@@ -20,7 +20,7 @@ $ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plug
 $ npm install --save @ionic-native/<$ doc.npmId $>
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/v2/native/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/')|replace('index.ts','')|replace('src/@ionic-native/plugins/','') $>)
+## [Usage Documentation](https://ionicframework.com/docs/native/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/')|replace('index.ts','')|replace('src/@ionic-native/plugins/','') $>)
 
 Plugin Repo: [<$ prop.repo $>](<$ prop.repo $>)
 

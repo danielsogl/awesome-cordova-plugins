@@ -19,7 +19,7 @@ module.exports = function jekyll(renderDocsProcessor) {
 
       docs.forEach(doc => {
         doc.outputPath = doc.outputPath.toLowerCase().replace(/\s/g, '-');
-        doc.URL = doc.outputPath.replace('docs/v2//', 'docs/v2/')
+        doc.URL = doc.outputPath.replace('docs//', 'docs/')
           .replace('/index.md', '')
           .replace('content/', '');
       });
@@ -29,7 +29,7 @@ module.exports = function jekyll(renderDocsProcessor) {
         docType: 'nativeMenu',
         id: 'native_menu',
         template: 'native_menu.template.html',
-        outputPath: 'content/_includes/v2_fluid/native_menu.html'
+        outputPath: 'content/_includes/fluid/native_menu.html'
       });
 
       return docs;
