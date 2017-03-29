@@ -66,6 +66,11 @@ export interface AdMobOptions {
    */
   adExtras?: AdExtras;
 
+  /**
+   * License key for the plugin
+   */
+  license?: any;
+
 }
 
 export interface AdExtras {
