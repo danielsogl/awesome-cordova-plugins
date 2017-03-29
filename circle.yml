@@ -19,7 +19,7 @@ jobs:
          paths:
          - ~/ionic-site/
       - restore_cache:
-         key: node_modules
+         key: node-modules-{{ checksum "package.json" }}
       - run:
          name: Install node modules
          command: npm i
