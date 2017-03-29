@@ -17,9 +17,16 @@ declare var cordova: any;
  *
  * ...
  *
- * this.jinsMeme.setAppClientID(appClientId: string, clientSecret: string)
- *   .then(this.jinsMeme.startScan())
- *   .catch(console.log('jinsMeme.setAppClientID authentication error!'));
+ * this.jinsMeme.setAppClientID(appClientId: string, clientSecret: string).then(
+ *   // Bluetooth should be enabled and the JINS MEME powered on (blinking blue light)
+ *   this.jinsMeme.startScan().subscribe((meme_addr) => {
+ *     this.jinsMeme.connect(meme_addr).subscribe((connectResult) => {
+ *       this.memeService.startDataReport().subscribe((dataReport) => {
+ *         console.log(dataReport);
+ *       });
+ *     });
+ *   });
+ * .catch(console.log('jinsMeme.setAppClientID authentication error'));
  *
  * ```
  */
@@ -34,7 +41,8 @@ declare var cordova: any;
 export class JinsMeme {
   /**
    * Authentication and authorization of App and SDK.
-   * Must call this method at first.
+   * Must call this method first.
+   * Sign up for an app ID (and get an app/client secret) at developers.jins.com
    *
    *@param {string} setAppClientID
    *@param {string} clientSecret
