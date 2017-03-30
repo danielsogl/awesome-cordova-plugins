@@ -49,18 +49,17 @@ export interface IntelSecurityDataOptions {
  * let storageID = 'id';
  *
  * this.intelSecurity.data.createFromData({ data: 'Sample Data' })
- *   .then((instanceID: Number) => this.IntelSecurity.storage.write({ id: storageId, instanceID: instanceID }))
+ *   .then((instanceID: Number) => this.intelSecurity.storage.write({ id: storageId, instanceID: instanceID }))
  *   .catch((error: any) => console.log(error));
  *
  * this.intelSecurity.storage.read({id: storageID })
- *   .then(this.intelSecurity.data.getData)
+ *   .then((instanceID: number) => this.intelSec.data.getData(instanceID))
  *   .then((data: string) => console.log(data)) // Resolves to 'Sample Data'
  *   .catch((error: any) => console.log(error));
  *
  * this.intelSecurity.storage.delete({ id: storageID })
  *   .then(() => console.log('Deleted Successfully'))
  *   .catch((error: any) => console.log(error));
- *
  * ```
  * @classes
  * IntelSecurityData
