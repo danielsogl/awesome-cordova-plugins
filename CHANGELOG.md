@@ -1,3 +1,13 @@
+<a name="3.4.4"></a>
+## [3.4.4](https://github.com/driftyco/ionic-native/compare/v3.4.3...v3.4.4) (2017-03-30)
+
+
+### Bug Fixes
+
+* **push:** hasPermission is part of Push object ([145577f](https://github.com/driftyco/ionic-native/commit/145577f))
+
+
+
 <a name="3.4.3"></a>
 ## [3.4.3](https://github.com/driftyco/ionic-native/compare/v3.4.2...v3.4.3) (2017-03-29)
 
