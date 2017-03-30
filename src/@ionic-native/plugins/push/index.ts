@@ -213,6 +213,21 @@ export type PushEvent = 'registration' | 'error' | 'notification';
  *
  * ...
  *
+ *
+ * // to check if we have permission
+ * this.push.hasPermission()
+ *   .then((res: any) => {
+ *
+ *     if (res.isEnabled) {
+ *       console.log('We have permission to send push notifications');
+ *     } else {
+ *       console.log('We don't have permission to send push notifications');
+ *     }
+ *
+ *   });
+ *
+ * // to initialize push notifications
+ *
  * const options: PushOptions = {
  *    android: {
  *        senderID: '12345679'
@@ -264,6 +279,13 @@ export class Push {
     return new PushObject(options);
   }
 
+  /**
+   * Check whether the push notification permission has been granted.
+   * @return {Promise<{isEnabled: boolean}>} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
+   */
+  @Cordova()
+  hasPermission(): Promise<{ isEnabled: boolean }> { return; }
+
 }
 
 /**
@@ -283,13 +305,6 @@ export class PushObject {
       this._objectInstance = window.PushNotification.init(options);
     }
   }
-
-  /**
-   * Check whether the push notification permission has been granted.
-   * @return {Promise<{isEnabled: boolean}>} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
-   */
-  @Cordova()
-  hasPermission(): Promise<{ isEnabled: boolean }> { return; }
 
   /**
    * Adds an event listener
