@@ -11,7 +11,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { Flashlight } from '@ionic-native/flashlight';
  *
- * constructor(private flashlight: FlashLight) { }
+ * constructor(private flashlight: Flashlight) { }
  *
  * ...
  *
