@@ -65,7 +65,7 @@ export interface AdMobFreeRewardVideoConfig {
 }
 
 /**
- * @name AdbMobFree
+ * @name AdMob Free
  * @description
  *
  * @usage
