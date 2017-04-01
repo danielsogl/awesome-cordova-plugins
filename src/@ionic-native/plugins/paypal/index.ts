@@ -7,7 +7,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/pay-pal';
+ * import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
  *
  * constructor(private payPal: PayPal) { }
  *
