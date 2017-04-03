@@ -3,11 +3,10 @@ import { Injectable } from '@angular/core';
 
 export interface FlurryAnalyticsOptions {
   /** Flurry API key is required */
-  appKey?: string;
+  appKey: string;
   /**
-   * Optional parameters
+   * Overrides the version of the app
    */
-  /** Overrides the version of the app */
   version?: string;
   /**
    * How long can the app be paused before a new session is created,
@@ -61,8 +60,16 @@ export interface FlurryAnalyticsOptions {
 export interface FlurryAnalyticsLocation {
   latitude: number;
   longitude: number;
-  verticalAccuracy?: number; // optional iOS only
-  horizontalAccuracy?: number; // optional iOS only
+  /**
+   * Set altitude
+   * It is optional and use only for iOS
+   */
+  verticalAccuracy?: number;
+  /**
+   * Set radius about 2d point
+   * It is optional and use only for iOS
+   */
+  horizontalAccuracy?: number;
 }
 
 /**
@@ -106,6 +113,7 @@ export class FlurryAnalytics {
    * Set the setting for Flurry Analytics
    * @param appKey {string} API key is required
    * @param options {FlurryAnalyticsOptions} is optional
+   * @return {Promise<any>}
    */
   @Cordova()
   init(appKey: string, options?: FlurryAnalyticsOptions): Promise<any> {
@@ -115,46 +123,42 @@ export class FlurryAnalytics {
   /**
    * This function set the Event
    * @param eventName {string} The param to configure name of Event
-   * @param params is optional
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @param params {Object} optional
+   * @return {Promise<any>} Returns a promise that resolves when event is set
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 0
+  })
   logEvent(eventName: string, params?: any): Promise<any> {
-    if (!eventName || typeof eventName !== 'string') {
-      console.error(`FlurryAnalytics.logEvent: eventName must be a string. Got ${eventName}`);
-      return;
-    }
-
     return;
   }
 
   /**
    * This function start a timed event
    * @param eventName
-   * @param params is optional
+   * @param params {Object} optional
+   * @return {Promise<any>} Returns a promise that resolves when timed event is started tracking
    */
-  @Cordova()
-  startTimedEvent(eventName: string, params?: any): Promise<any> {
-    if (!eventName || typeof eventName !== 'string') {
-      console.error(`FlurryAnalytics.startTimedEvent: eventName must be a string. Got ${eventName}`);
-      return;
-    }
-
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 0
+  })
+  startTimedEvent(eventName: string, params?: Object): Promise<any> {
     return;
   }
 
   /**
    * This function complete a timed event
    * @param eventName
-   * @param params is optional
+   * @param params {Object} optional
+   * @return {Promise<any>} Returns a promise that resolves when timed event is ended tracking
    */
-  @Cordova()
-  endTimedEvent(eventName: string, params?: any): Promise<any> {
-    if (!eventName || typeof eventName !== 'string') {
-      console.error(`FlurryAnalytics.endTimedEvent: eventName must be a string. Got ${eventName}`);
-      return;
-    }
-
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 0
+  })
+  endTimedEvent(eventName: string, params?: Object): Promise<any> {
     return;
   }
 
@@ -162,19 +166,19 @@ export class FlurryAnalytics {
    * This function log an error
    * @param code
    * @param message
+   * @return {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 0
+  })
   logError(code, message): Promise<any> {
-    if ((!code || typeof code !== 'string') || (!message || typeof message !== 'string')) {
-      console.error(`FlurryAnalytics.logError: code must be a string. Got ${code}`);
-      return;
-    }
-
     return;
   }
 
   /**
    * This function log a page view
+   * @return {Promise<any>}
    */
   @Cordova()
   logPageView(): Promise<any> {
@@ -185,16 +189,20 @@ export class FlurryAnalytics {
    * This function set the location for the event
    * (this is will only be used for very course grained statistics like city)
    * @param location
+   * @return {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 0
+  })
   setLocation(location: FlurryAnalyticsLocation): Promise<any> {
     return;
   }
 
-
   /**
    * This function start the session
    * Only needed for older versions of Android
+   * @return {Promise<any>}
    */
   @Cordova()
   startSession(): Promise<any> {
@@ -204,6 +212,7 @@ export class FlurryAnalytics {
   /**
    * This function end the session
    * Only needed for older versions of Android
+   * @return {Promise<any>}
    */
   @Cordova()
   endSession(): Promise<any> {
