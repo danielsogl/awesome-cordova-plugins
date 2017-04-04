@@ -30,7 +30,7 @@ export interface FingerprintOptions {
  * ```typescript
  * import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
  *
- * constructor(private faio: FingerpirntAIO) { }
+ * constructor(private faio: FingerprintAIO) { }
  *
  * ...
  *
