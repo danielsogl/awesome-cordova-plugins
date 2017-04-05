@@ -34,6 +34,9 @@ declare let window: any;
   pluginRef: 'nfc',
   repo: 'https://github.com/chariotsolutions/phonegap-nfc'
 })
+  /**
+  *@{ NFC } class methods
+  */
 @Injectable()
 export class NFC {
   /**
@@ -96,7 +99,7 @@ export class NFC {
   addNdefFormatableListener(onSuccess?: Function, onFailure?: Function): Observable<any> {return; }
 
   /**
-   * Qrites an NdefMessage to a NFC tag.
+   * Writes an NdefMessage(array of ndef records) to a NFC tag.
    * @param message {any[]}
    * @returns {Promise<any>}
    */
@@ -110,7 +113,7 @@ export class NFC {
   makeReadyOnly(): Promise<any> {return; }
 
   /**
-   * Shares an NDEF Message via peer-to-peer.
+   * Shares an NDEF Message(array of ndef records) via peer-to-peer.
    * @param message An array of NDEF Records.
    * @returns {Promise<any>}
    */
@@ -146,7 +149,7 @@ export class NFC {
   stopHandover(): Promise<any> {return; }
 
   /**
-   * Show the NFC settings on the device.
+   * Opens the device's NFC settings.
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -159,21 +162,26 @@ export class NFC {
   @Cordova()
   enabled(): Promise<any> {return; }
   /**
-   * Convert bytes to string
+  * @{ NFC } class utility methods
+  * for use with 
+  */
+  /**
+   * Convert byte array to string
    * @param bytes {number[]}
    * @returns {string}
    */
   @Cordova({ sync: true })
   bytesToString(bytes: number[]): string {return; }
   /**
-   * Convert string to bytes
+   * Convert string to byte array.
    * @param str {string}
    * @returns {number[]}
    */
   @Cordova({ sync: true })
   stringToBytes(str: string): number[] {return; };
   /**
-   * Convert bytes to hex string
+   * Convert byte array to hex string
+   * 
    * @param bytes {number[]}
    * @returns {string}
    */
@@ -189,6 +197,14 @@ export class NFC {
   plugin: 'phonegap-nfc',
   pluginRef: 'ndef'
 })
+/**
+*@{ Ndef } class methods
+*@description
+* Utility methods for creating ndef records for the ndef tag format.
+* Move records into array before usage. Then pass an array to methods as parameters.
+* Do not pass bytes as parameters for these methods, conversion is built in.
+* For usage with nfc.write() and nfc.share()
+*/
 @Injectable()
 export class Ndef {
 
