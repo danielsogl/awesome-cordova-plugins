@@ -127,6 +127,9 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 
   if (availabilityCheck === true) {
     const pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
+    // In the rare case there is an attempt to call an undefined method
+    if (!pluginInstance[methodName])
+      throw new Error(`Plugin '${pluginObj.constructor.getPluginName()}', does not have method '${methodName}'`);
     return pluginInstance[methodName].apply(pluginInstance, args);
   } else {
     return availabilityCheck;
