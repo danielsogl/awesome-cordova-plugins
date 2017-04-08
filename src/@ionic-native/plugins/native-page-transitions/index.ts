@@ -113,4 +113,18 @@ export class NativePageTransitions {
   @Cordova({platforms: ['iOS']})
   curl(options: NativeTransitionOptions): Promise<any> { return; }
 
+  /**
+   * Execute pending transition
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  executePendingTransition(): Promise<any> { return; }
+
+  /**
+   * Cancel pending transition
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  cancelPendingTransition(): Promise<any> { return; }
+
 }
