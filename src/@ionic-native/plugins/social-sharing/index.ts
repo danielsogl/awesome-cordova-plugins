@@ -22,7 +22,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  * });
  *
  * // Share via email
- * this.socialSharing.shareViaEmail('Body', 'Subject', 'recipient@example.org').then(() => {
+ * this.socialSharing.shareViaEmail('Body', 'Subject', ['recipient@example.org']).then(() => {
  *   // Success!
  * }).catch(() => {
  *   // Error!
