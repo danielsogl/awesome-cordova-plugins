@@ -39,12 +39,12 @@ export interface CameraPreviewOptions {
 }
 
 export interface CameraPreviewPictureOptions {
-    /** The width in pixels, default 0 */
-    width?: number;
-    /** The height in pixels, default 0 */
-    height?: number;
-    /** The picture quality, 0 - 100, default 85 */
-    quality?: number;
+  /** The width in pixels, default 0 */
+  width?: number;
+  /** The height in pixels, default 0 */
+  height?: number;
+  /** The picture quality, 0 - 100, default 85 */
+  quality?: number;
 }
 
 /**
@@ -243,5 +243,15 @@ export class CameraPreview {
     errorIndex: 2
   })
   setFlashMode(flashMode?: string): Promise<any> { return; }
+
+  /**
+   * get supported picture size
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 0,
+    errorIndex: 1
+  })
+  getSupportedPictureSizes(): Promise<any> { return; }
 
 }
