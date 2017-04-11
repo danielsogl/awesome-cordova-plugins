@@ -117,6 +117,14 @@ export interface CameraPreviewPictureOptions {
  * // Stop the camera preview
  * this.cameraPreview.stopCamera();
  *
+ *
+ * // Get supported Picture size
+ * this.cameraPreview.getSupportedPictureSizes().then( (dimensions) => {
+ *  dimensions.forEach((dimension) => {
+ *    console.log(dimension.width + " / " + dimension.height)
+ *  })
+ * })
+ *
  * ```
  *
  * @interfaces
