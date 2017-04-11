@@ -39,12 +39,12 @@ export interface CameraPreviewOptions {
 }
 
 export interface CameraPreviewPictureOptions {
-  /** The width in pixels, default 0 */
-  width?: number;
-  /** The height in pixels, default 0 */
-  height?: number;
-  /** The picture quality, 0 - 100, default 85 */
-  quality?: number;
+    /** The width in pixels, default 0 */
+    width?: number;
+    /** The height in pixels, default 0 */
+    height?: number;
+    /** The picture quality, 0 - 100, default 85 */
+    quality?: number;
 }
 
 /**
