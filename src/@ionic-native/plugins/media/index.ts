@@ -255,8 +255,7 @@ export class MediaPlugin {
       // Creates a new media object
       // Resolves with the media object
       // or rejects with the error
-      const instance = new Media(src, resolve, reject, onStatusUpdate);
-      return resolve(new MediaObject(instance));
+      const instance = new Media(src, () => resolve(new MediaObject(instance)), reject, onStatusUpdate);
     });
 
   }
