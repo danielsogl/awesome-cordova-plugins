@@ -160,9 +160,8 @@ export class MediaObject {
  *      });
  *
  *      // get file duration
- *      file.getDuration().then((duration) => {
- *         console.log(position);
- *      });
+ *      let duration = file.getDuration();
+ *      console.log(duration);
  *
  *      // skip to 10 seconds (expects int value in ms)
  *      file.seekTo(10000);
