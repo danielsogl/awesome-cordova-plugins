@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```
- * import { SQLitePorter } from 'ionic-native';
+ * import { SQLitePorter } from '@ionic-native/sqlite-porter';
  *
  *
  * constructor(private sqlitePorter: SQLitePorter) { }
