@@ -18,8 +18,8 @@ declare var window: any;
  * ...
  *
  * this.filePath.resolveNativePath(path)
- *   .then(filePath => console.log(filePath);
- *   .catch(err => console.log(err);
+ *   .then(filePath => console.log(filePath))
+ *   .catch(err => console.log(err));
  *
  * ```
  */
