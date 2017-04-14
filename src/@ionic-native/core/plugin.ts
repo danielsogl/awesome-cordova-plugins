@@ -32,7 +32,7 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
 
   pluginInstance = getPlugin(pluginRef);
 
-  if (!pluginInstance || (!!methodName && pluginInstance[methodName] === 'undefined')) {
+  if (!pluginInstance || (!!methodName && typeof pluginInstance[methodName] === 'undefined')) {
     if (!window.cordova) {
       cordovaWarn(pluginName, methodName);
       return {
@@ -54,7 +54,7 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
  * @private
  */
 export function instanceAvailability(pluginObj: any, methodName?: string): boolean {
-  return pluginObj._objectInstance && (!methodName || pluginObj._objectInstance[methodName] !== 'undefined');
+  return pluginObj._objectInstance && (!methodName || typeof pluginObj._objectInstance[methodName] !== 'undefined');
 }
 
 function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Function): any {
