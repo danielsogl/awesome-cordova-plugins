@@ -4,6 +4,21 @@ import { Injectable } from '@angular/core';
 /**
  * @hidden
  */
+export interface HealthDataType {
+  /**
+  * Read only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
+  */
+  read?: string[];
+    
+  /**
+  * Write only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
+  */
+  write?: string[];
+}
+  
+/**
+ * @hidden
+ */
 export interface HealthQueryOptions {
   /**
    * Start date from which to get data
@@ -154,9 +169,19 @@ export interface HealthData {
  * ...
  *
  * this.health.isAvailable()
+ * .then((available:boolean) => {
+ *   console.log(available);
+ *   this.health.requestAuthorization([
+ *     'distance', 'nutrition',  //read and write permissions
+ *     {
+ *       read: ['steps'],       //read only permission
+ *       write: ['height', 'weight']  //write only permission
+ *     }
+ *   ])
  *   .then(res => console.log(res))
  *   .catch(e => console.log(e));
- *
+ * })
+ * .catch(e => console.log(e));
  *
  * ```
  * See description at https://github.com/dariosalvi78/cordova-plugin-health for a full list of Datatypes and see examples.
@@ -204,7 +229,7 @@ export class Health {
   promptInstallFit(): Promise<any> { return; }
 
   /**
-   * Requests read and write access to a set of data types. It is recommendable to always explain why the app
+   * Requests read and/or write access to a set of data types. It is recommendable to always explain why the app
    * needs access to the data before asking the user to authorize it.
    * This function must be called before using the query and store functions, even if the authorization has already
    * been given at some point in the past.
@@ -219,32 +244,25 @@ export class Health {
    * In Android 6 and over, this function will also ask for some dynamic permissions if needed
    * (e.g. in the case of "distance", it will need access to ACCESS_FINE_LOCATION).
    *
-   * @param {(string|{ read: string[], write: string[] })[]} datatypes a list of data types you want to be granted access to.
-   *
-   * ```
-   *  [
-   *   'calories', 'distance',   //read and write permissions
-   *   {
-   *     read : ['steps'],       //read only permission
-   *     write : ['height', 'weight']  //write only permission
-   *   }
-   *  ]
-   * ```
-   * 
+   * @param {Array<string | HealthDataType>} datatypes a list of data types you want to be granted access to.
    * @return {Promise<any>}
    */
   @Cordova()
-  requestAuthorization(datatypes: (string|{ read: string[], write: string[] })[]): Promise<any> { return; }
+  requestAuthorization(datatypes: Array<string | HealthDataType>): Promise<any> { return; }
 
   /**
    * Check if the app has authorization to read/write a set of datatypes.
-   * This function is similar to requestAuthorization() and has similar quirks.
    *
-   * @param {(string|{ read: string[], write: string[] })[]} datatypes a list of data types you want to check access of, same as in requestAuthorization
+   * Quirks of isAuthorized()
+   *
+   * In iOS, this function will only check authorization status for writeable data. 
+   * Read-only data will always be considered as not authorized. This is an intended behaviour of HealthKit.
+   *
+   * @param {Array<string | HealthDataType>} datatypes a list of data types you want to check access of, same as in requestAuthorization
    * @return {Promise<boolean>} Returns a promise that resolves with a boolean that indicates the authorization status
    */
   @Cordova()
-  isAuthorized(datatypes: (string|{ read: string[], write: string[] })[]): Promise<boolean> { return; }
+  isAuthorized(datatypes: Array<string | HealthDataType>): Promise<boolean> { return; }
 
   /**
    * Gets all the data points of a certain data type within a certain time window.
