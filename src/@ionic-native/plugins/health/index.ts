@@ -219,7 +219,7 @@ export class Health {
    * In Android 6 and over, this function will also ask for some dynamic permissions if needed
    * (e.g. in the case of "distance", it will need access to ACCESS_FINE_LOCATION).
    *
-   * @param {Array<any>} datatypes a list of data types you want to be granted access to.
+   * @param {(string|{ read: string[], write: string[] })[]} datatypes a list of data types you want to be granted access to.
    *
    * ```
    *  [
@@ -234,17 +234,17 @@ export class Health {
    * @return {Promise<any>}
    */
   @Cordova()
-  requestAuthorization(datatypes: Array<any>): Promise<any> { return; }
+  requestAuthorization(datatypes: (string|{ read: string[], write: string[] })[]): Promise<any> { return; }
 
   /**
    * Check if the app has authorization to read/write a set of datatypes.
    * This function is similar to requestAuthorization() and has similar quirks.
    *
-   * @param {Array<any>} datatypes a list of data types you want to be granted access to
+   * @param {(string|{ read: string[], write: string[] })[]} datatypes a list of data types you want to check access of, same as in requestAuthorization
    * @return {Promise<boolean>} Returns a promise that resolves with a boolean that indicates the authorization status
    */
   @Cordova()
-  isAuthorized(datatypes: Array<any>): Promise<boolean> { return; }
+  isAuthorized(datatypes: (string|{ read: string[], write: string[] })[]): Promise<boolean> { return; }
 
   /**
    * Gets all the data points of a certain data type within a certain time window.
