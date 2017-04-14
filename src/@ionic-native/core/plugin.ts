@@ -32,7 +32,7 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
 
   pluginInstance = getPlugin(pluginRef);
 
-  if (!pluginInstance || (!!methodName && pluginInstance[methodName] === 'undefined')) {
+  if (!pluginInstance || (!!methodName && typeof pluginInstance[methodName] === 'undefined')) {
     if (!window.cordova) {
       cordovaWarn(pluginName, methodName);
       return {
@@ -54,7 +54,7 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
  * @private
  */
 export function instanceAvailability(pluginObj: any, methodName?: string): boolean {
-  return pluginObj._objectInstance && (!methodName || pluginObj._objectInstance[methodName] !== 'undefined');
+  return pluginObj._objectInstance && (!methodName || typeof pluginObj._objectInstance[methodName] !== 'undefined');
 }
 
 function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Function): any {
@@ -127,9 +127,6 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 
   if (availabilityCheck === true) {
     const pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
-    // In the rare case there is an attempt to call an undefined method
-    if (!pluginInstance[methodName])
-      throw new Error(`Plugin '${pluginObj.constructor.getPluginName()}', does not have method '${methodName}'`);
     return pluginInstance[methodName].apply(pluginInstance, args);
   } else {
     return availabilityCheck;
