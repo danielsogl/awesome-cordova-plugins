@@ -123,7 +123,7 @@ export class Firebase {
    * @return {Promise<any>}
    */
   @Cordova()
-  logEvent(message: string): Promise<any> { return; }
+  logError(message: string): Promise<any> { return; }
 
   /**
    * Set the name of the current screen in Analytics
