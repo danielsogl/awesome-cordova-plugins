@@ -12,7 +12,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * ...
  *
- * this.googlePlus.login()
+ * this.googlePlus.login({})
  *   .then(res => console.log(res))
  *   .catch(err => console.error(err));
  *
