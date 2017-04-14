@@ -221,7 +221,7 @@ export type PushEvent = 'registration' | 'error' | 'notification';
  *     if (res.isEnabled) {
  *       console.log('We have permission to send push notifications');
  *     } else {
- *       console.log('We don't have permission to send push notifications');
+ *       console.log('We do not have permission to send push notifications');
  *     }
  *
  *   });
