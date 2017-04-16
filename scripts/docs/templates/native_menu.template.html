@@ -1,4 +1,14 @@
-<@ for doc in docs @><@ if doc.URL and doc.private != true @>
-<li class="capitalize {% if page.id == '<$ doc.name|lower|replace(' ','-') $>' %}active{% endif %}">
+<li class="capitalize {% if page.id == 'overview' %}active{% endif %}">
+  <a href="/docs/native/">Overview</a>
+</li>
+<li class="capitalize {% if page.id == 'mocking' %}active{% endif %}">
+  <a href="/docs/native/browser.html">Browser Usage</a>
+</li>
+<@- for doc in docs @><@ if doc.URL and doc.private != true and doc.beta != true @>
+<li class="capitalize {% if page.id == '<$ doc.name|lower|dashify $>' %}active{% endif %}">
   <a href="/<$ doc.URL $>"><$ doc.name $></a>
+</li><@ endif @><@ endfor @>
+<@- for doc in docs @><@ if doc.URL and doc.private != true and doc.beta == true @>
+<li class="capitalize {% if page.id == '<$ doc.name|lower|dashify $>' %}active{% endif %}">
+  <a href="/<$ doc.URL $>"><$ doc.name $> <span class="beta">&beta;</span></a>
 </li><@ endif @><@ endfor @>

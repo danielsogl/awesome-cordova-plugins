@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "ES5",
-    "sourceMap": true,
+    "baseUrl": ".",
     "declaration": true,
+    "stripInternal": true,
     "experimentalDecorators": true,
-    "outDir": "dist",
-    "moduleResolution": "node"
-  },
-  "files": [
-    "typings/es6-shim/es6-shim.d.ts",
-    "src/index.ts"
-  ]
+    "emitDecoratorMetadata": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "paths": {
+      "@ionic-native/core": ["./dist/@ionic-native/core"]
+    },
+    "rootDir": ".",
+    "target": "es5",
+    "skipLibCheck": true,
+    "lib": ["es2015", "dom"]
+  }
 }

@@ -4,8 +4,8 @@
 #### There are no rules, but here are a few things to consider:
 ###### Before you submit an issue:
 * Do a quick search to see if there are similar issues
-* Make sure that you are waiting for `deviceready` to fire before interacting with any plugin. If you are using Ionic 2, this can be done using [the `Platform.ready()` function](http://ionicframework.com/docs/v2/api/platform/Platform/#ready).
-* **Check that you are using the latest version of** `ionic-native`, you can install the latest version by running `npm i --save ionic-native@latest`
+* Make sure that you are waiting for `deviceready` to fire before interacting with any plugin. If you are using Ionic 2, this can be done using [the `Platform.ready()` function](http://ionicframework.com/docs/api/platform/Platform/#ready).
+* **Check that you are using the latest version of** `ionic-native`, you can install the latest version by running `npm i --save @ionic-native/core@latest`
 
 ###### Still having problems? submit an issue with the following details:
 * Short description of the issue

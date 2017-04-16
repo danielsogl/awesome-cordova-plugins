@@ -1,0 +1,14 @@
+{
+  "name": "@ionic-native/{{PLUGIN}}",
+  "version": "{{VERSION}}",
+  "description": "Ionic Native - Native plugins for ionic apps",
+  "module": "index.js",
+  "typings": "index.d.ts",
+  "author": "ionic",
+  "license": "MIT",
+  "peerDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/driftyco/ionic-native.git"
+  }
+}

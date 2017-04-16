@@ -1,20 +1,30 @@
-import { Plugin } from './plugin';
+import { Plugin } from '@ionic-native/core';
+import { Injectable } from '@angular/core';
+
 /**
- * @name PluginName
+ * @name $Plugin_Name
  * @description
  *
  * @usage
  * ```
- * import { PluginName } from 'ionic-native';
+ * import { $PluginName } from 'ionic-native';
+ *
+ *
+ * constructor(private $pluginName: $PluginName) { }
+ *
+ * ...
  *
  *
  * ```
  */
 @Plugin({
-  name: 'PluginName',
+  pluginName: '$PluginName',
   plugin: '',
   pluginRef: '',
-  repo: ''
+  repo: '',
+  platforms: []
 })
-export class PluginName {
+@Injectable()
+export class $PluginName {
+
 }

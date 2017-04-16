@@ -1,15 +1,39 @@
-var config = require('../config.json');
-var projectPackage = require('../../package.json');
-module.exports = function(gulp) {
-  gulp.task('docs', [], function() {
-    var Dgeni = require('dgeni');
-    var semver = require('semver');
+"use strict";
+const config = require('../config.json'),
+  projectPackage = require('../../package.json'),
+  path = require('path'),
+  fs = require('fs-extra-promise').useFs(require('fs-extra')),
+  Dgeni = require('dgeni');
+
+module.exports = gulp => {
+  gulp.task('docs', [], () => {
+
     try {
-      var ionicPackage = require('./dgeni-config')(projectPackage.version);
-      var dgeni = new Dgeni([ionicPackage]);
-      return dgeni.generate();
+
+      const ionicPackage = require('./dgeni-config')(projectPackage.version),
+        dgeni = new Dgeni([ionicPackage]);
+
+      return dgeni.generate().then(docs => console.log(docs.length + ' docs generated'));
+
     } catch (err) {
       console.log(err.stack);
     }
+
   });
-}
+
+  gulp.task('readmes', [], function() {
+
+    fs.copySync(path.resolve(__dirname, '..', '..', 'README.md'), path.resolve(__dirname, '..', '..', config.pluginDir, 'core', 'README.md'));
+
+    try {
+
+      const ionicPackage = require('./dgeni-readmes-config')(projectPackage.version),
+        dgeni = new Dgeni([ionicPackage]);
+      return dgeni.generate().then(docs => console.log(docs.length + ' README files generated'));
+
+    } catch (err) {
+      console.log(err.stack);
+    }
+
+  });
+};
