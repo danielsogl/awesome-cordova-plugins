@@ -100,4 +100,11 @@ export class BackgroundFetch {
   })
   finish(): void { }
 
+  /**
+   * Return the status of the background-fetch
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  status(): Promise<any> { return; }
+
 }
