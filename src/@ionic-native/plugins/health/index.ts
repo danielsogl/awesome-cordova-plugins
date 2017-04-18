@@ -9,13 +9,13 @@ export interface HealthDataType {
   * Read only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
   */
   read?: string[];
-    
+
   /**
   * Write only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
   */
   write?: string[];
 }
-  
+
 /**
  * @hidden
  */
@@ -255,7 +255,7 @@ export class Health {
    *
    * Quirks of isAuthorized()
    *
-   * In iOS, this function will only check authorization status for writeable data. 
+   * In iOS, this function will only check authorization status for writeable data.
    * Read-only data will always be considered as not authorized. This is an intended behaviour of HealthKit.
    *
    * @param {Array<string | HealthDataType>} datatypes a list of data types you want to check access of, same as in requestAuthorization

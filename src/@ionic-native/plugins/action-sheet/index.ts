@@ -16,7 +16,7 @@ export interface ActionSheetOptions {
   /**
    * The subtitle for the actionsheet (IOS only)
    */
-  subtitle?: string
+  subtitle?: string;
 
   /**
    * Theme to be used on Android
@@ -51,7 +51,7 @@ export interface ActionSheetOptions {
   /**
    * Choose if destructive button will be the last
    */
-  destructiveButtonLast: boolean
+  destructiveButtonLast: boolean;
 }
 
 /**
