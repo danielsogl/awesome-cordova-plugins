@@ -181,7 +181,7 @@ export class MediaObject {
  *
  * // Recording to a file
  * this.media.create('path/to/file.mp3')
- *   .then((file: MedieObject) => {
+ *   .then((file: MediaObject) => {
  *
  *     file.startRecord();
  *
