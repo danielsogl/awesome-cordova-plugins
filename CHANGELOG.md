@@ -1,3 +1,21 @@
+<a name="3.5.0"></a>
+# [3.5.0](https://github.com/driftyco/ionic-native/compare/v3.4.4...v3.5.0) (2017-04-18)
+
+
+### Bug Fixes
+
+* **core:** fix bug when checking if plugin exists (#1348) ([4bd6aab](https://github.com/driftyco/ionic-native/commit/4bd6aab)), closes [#1348](https://github.com/driftyco/ionic-native/issues/1348)
+* **media:** fix issue with create method ([6bba72d](https://github.com/driftyco/ionic-native/commit/6bba72d)), closes [#1333](https://github.com/driftyco/ionic-native/issues/1333)
+* **rollbar:** fix pluginRef ([f396940](https://github.com/driftyco/ionic-native/commit/f396940))
+
+
+### Features
+
+* **action-sheet:** update to newest version ([9c92580](https://github.com/driftyco/ionic-native/commit/9c92580))
+* **background-fetch:** add status method ([6168eae](https://github.com/driftyco/ionic-native/commit/6168eae))
+
+
+
 <a name="3.4.4"></a>
 ## [3.4.4](https://github.com/driftyco/ionic-native/compare/v3.4.3...v3.4.4) (2017-03-30)
 
