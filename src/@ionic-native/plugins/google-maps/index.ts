@@ -1749,7 +1749,7 @@ export interface GeocoderResult {
  */
 @Plugin({
   pluginName: 'Geocoder',
-  pluginRef: 'plugins.google.maps.Geocoder',
+  pluginRef: 'plugin.google.maps.Geocoder',
   plugin: 'cordova-plugin-googlemaps',
   repo: ''
 })
