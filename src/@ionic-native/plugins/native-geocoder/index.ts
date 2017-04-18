@@ -81,6 +81,10 @@ export interface NativeGeocoderReverseResult {
    */
   city: string;
   /**
+   * The district.
+   */
+  district: string;
+  /**
    * The country name.
    */
   countryName: string;
