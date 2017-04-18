@@ -14,6 +14,11 @@ export interface ActionSheetOptions {
   title?: string;
 
   /**
+   * The subtitle for the actionsheet (IOS only)
+   */
+  subtitle?: string
+
+  /**
    * Theme to be used on Android
    */
   androidTheme?: number;
@@ -43,6 +48,10 @@ export interface ActionSheetOptions {
    */
   position?: number[];
 
+  /**
+   * Choose if destructive button will be the last
+   */
+  destructiveButtonLast: boolean
 }
 
 /**
@@ -65,10 +74,12 @@ export interface ActionSheetOptions {
  *
  * const options: ActionSheetOptions = {
  *   title: 'What do you want with this image?',
+ *   subtitle: 'Choose an action'
  *   buttonLabels: buttonLabels,
  *   addCancelButtonWithLabel: 'Cancel',
  *   addDestructiveButtonWithLabel: 'Delete',
- *   androidTheme: this.actionSheet.ANDROID_THEMES.THEME_HOLO_DARK
+ *   androidTheme: this.actionSheet.ANDROID_THEMES.THEME_HOLO_DARK,
+ *   destructiveButtonLast: true
  * };
  *
  * this.actionSheet.show(options).then((buttonIndex: number) => {
@@ -83,7 +94,7 @@ export interface ActionSheetOptions {
   plugin: 'cordova-plugin-actionsheet',
   pluginRef: 'plugins.actionsheet',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows Phone 8', 'Browser']
 })
 @Injectable()
 export class ActionSheet {
