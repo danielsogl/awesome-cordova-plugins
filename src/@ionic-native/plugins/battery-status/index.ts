@@ -32,7 +32,7 @@ export interface BatteryStatusResponse {
  *
  * // watch change in battery status
  * let subscription = this.batteryStatus.onChange().subscribe(
- *  (status: StatusObject) => {
+ *  (status: BatteryStatusResponse) => {
  *    console.log(status.level, status.isPlugged);
  *  }
  * );
