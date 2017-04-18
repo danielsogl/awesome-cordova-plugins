@@ -67,7 +67,7 @@ export class SQLiteObject {
   start(): void { }
 
   /**
-   * Execute SQL on the opened database. Note, you must call `openDatabase` first, and
+   * Execute SQL on the opened database. Note, you must call `create` first, and
    * ensure it resolved and successfully opened the database.
    */
   @CordovaInstance()
