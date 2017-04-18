@@ -117,6 +117,14 @@ export interface CameraPreviewPictureOptions {
  * // Stop the camera preview
  * this.cameraPreview.stopCamera();
  *
+ *
+ * // Get supported Picture size
+ * this.cameraPreview.getSupportedPictureSizes().then( (dimensions) => {
+ *  dimensions.forEach((dimension) => {
+ *    console.log(dimension.width + " / " + dimension.height)
+ *  })
+ * })
+ *
  * ```
  *
  * @interfaces
@@ -149,40 +157,28 @@ export class CameraPreview {
    * Stops the camera preview instance. (iOS & Android)
    * @return {Promise<any>}
    */
-  @Cordova({
-    successIndex: 0,
-    errorIndex: 1
-  })
+  @Cordova()
   stopCamera(): Promise<any> { return; }
 
   /**
    * Switch from the rear camera and front camera, if available.
    * @return {Promise<any>}
    */
-  @Cordova({
-    successIndex: 0,
-    errorIndex: 1
-  })
+  @Cordova()
   switchCamera(): Promise<any> { return; }
 
   /**
    * Hide the camera preview box.
    * @return {Promise<any>}
    */
-  @Cordova({
-    successIndex: 0,
-    errorIndex: 1
-  })
+  @Cordova()
   hide(): Promise<any> { return; }
 
   /**
    * Show the camera preview box.
    * @return {Promise<any>}
    */
-  @Cordova({
-    successIndex: 0,
-    errorIndex: 1
-  })
+  @Cordova()
   show(): Promise<any> { return; }
 
   /**
@@ -243,5 +239,12 @@ export class CameraPreview {
     errorIndex: 2
   })
   setFlashMode(flashMode?: string): Promise<any> { return; }
+
+  /**
+   * get supported picture size
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getSupportedPictureSizes(): Promise<any> { return; }
 
 }
