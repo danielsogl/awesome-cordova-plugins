@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```ts
- * import { TapticEngine } from '@ionic-native/taptic-engine;
+ * import { TapticEngine } from '@ionic-native/taptic-engine';
  *
  * ...
  *
