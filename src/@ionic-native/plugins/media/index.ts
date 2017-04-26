@@ -126,6 +126,24 @@ export class MediaObject {
   stop(): void { }
 }
 
+export type MediaStatusUpdateCallback = (statusCode: number) => void;
+
+export interface MediaError {
+
+  /**
+   * Error message
+   */
+  message: string;
+
+  /**
+   * Error code
+   */
+  code: number;
+
+}
+
+export type MediaErrorCallback = (error: MediaError) => void;
+
 /**
  * @name Media
  * @description
@@ -144,54 +162,53 @@ export class MediaObject {
  * // We can optionally pass a second argument to track the status of the media
  *
  * const onStatusUpdate = (status) => console.log(status);
+ * const onSuccess = () => console.log('Action is successful.');
+ * const onError = (error) => console.error(error.message);
  *
- * this.media.create('path/to/file.mp3', onStatusUpdate)
- *   .then((file: MediaObject) => {
+ * const file: MediaObject = this.media.create('path/to/file.mp3', onStatusUpdate, onSuccess, onError);
  *
- *      // play the file
- *      file.play();
+ * // play the file
+ * file.play();
  *
- *      // pause the file
- *      file.pause();
+ * // pause the file
+ * file.pause();
  *
- *      // get current playback position
- *       file.getCurrentPosition().then((position) => {
- *         console.log(position);
- *      });
+ * // get current playback position
+ * file.getCurrentPosition().then((position) => {
+ *   console.log(position);
+ * });
  *
- *      // get file duration
- *      let duration = file.getDuration();
- *      console.log(duration);
+ * // get file duration
+ * let duration = file.getDuration();
+ * console.log(duration);
  *
- *      // skip to 10 seconds (expects int value in ms)
- *      file.seekTo(10000);
+ * // skip to 10 seconds (expects int value in ms)
+ * file.seekTo(10000);
  *
- *      // stop playing the file
- *      file.stop();
+ * // stop playing the file
+ * file.stop();
  *
- *      // release the native audio resource
- *      // Platform Quirks:
- *      // iOS simply create a new instance and the old one will be overwritten
- *      // Android you must call release() to destroy instances of media when you are done
- *      file.release();
+ * // release the native audio resource
+ * // Platform Quirks:
+ * // iOS simply create a new instance and the old one will be overwritten
+ * // Android you must call release() to destroy instances of media when you are done
+ * file.release();
  *
- *   })
- *   .catch(e => console.log('Error opening media file', e));
  *
  *
  * // Recording to a file
- * this.media.create('path/to/file.mp3')
- *   .then((file: MediaObject) => {
+ * const file: MediaObject = this.media.create('path/to/file.mp3');
  *
- *     file.startRecord();
+ * file.startRecord();
  *
- *     file.stopRecord();
+ * file.stopRecord();
  *
- *   });
  *
  * ```
  * @classes
  * MediaObject
+ * @interfaces
+ * MediaError
  */
 @Plugin({
   pluginName: 'MediaPlugin',
@@ -245,18 +262,20 @@ export class MediaPlugin {
   /**
    * Open a media file
    * @param src {string} A URI containing the audio content.
-   * @param onStatusUpdate {Function} A callback function to be invoked when the status of the file changes
-   * @return {Promise<MediaObject>}
+   * @param onStatusUpdate {MediaStatusUpdateCallback} A callback function to be invoked when the status of the file changes
+   * @param onSuccess {Function} A callback function to be invoked after the current play, record, or stop action is completed
+   * @param onError {MediaErrorCallback} A callback function is be invoked if an error occurs.
+   * @return {MediaObject}
    */
   @CordovaCheck()
-  create(src: string, onStatusUpdate?: Function): Promise<MediaObject> {
+  create(src: string,
+    onStatusUpdate?: MediaStatusUpdateCallback,
+    onSuccess?: Function,
+    onError?: MediaErrorCallback): MediaObject {
 
-    return new Promise<MediaObject>((resolve, reject) => {
       // Creates a new media object
-      // Resolves with the media object
-      // or rejects with the error
-      const instance = new Media(src, () => resolve(new MediaObject(instance)), reject, onStatusUpdate);
-    });
+      const instance = new Media(src, onSuccess, onError, onStatusUpdate);
+      return new MediaObject(instance);
 
   }
 
