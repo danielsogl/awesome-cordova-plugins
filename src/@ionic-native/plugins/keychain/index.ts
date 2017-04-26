@@ -44,7 +44,7 @@ export class Keychain {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  get(key: string, touchIDMessage: string): Promise<any> { return; }
+  get(key: string, touchIDMessage?: string): Promise<any> { return; }
 
   /**
    * Sets a value for a key
@@ -56,7 +56,7 @@ export class Keychain {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  set(key: string, value: string|number|boolean, useTouchID: boolean): Promise<any> { return; }
+  set(key: string, value: string|number|boolean, useTouchID?: boolean): Promise<any> { return; }
 
   /**
    * Gets a JSON value for a key
@@ -67,7 +67,7 @@ export class Keychain {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getJson(key: string, touchIDMessage: string): Promise<any> { return; }
+  getJson(key: string, touchIDMessage?: string): Promise<any> { return; }
 
   /**
    * Sets a JSON value for a key
@@ -79,7 +79,7 @@ export class Keychain {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  setJson(key: string, obj: any, useTouchId: boolean): Promise<any> { return; }
+  setJson(key: string, obj: any, useTouchId?: boolean): Promise<any> { return; }
 
   /**
    * Removes a value for a key
