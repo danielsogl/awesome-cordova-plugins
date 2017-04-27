@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name PayPal
  * @description
@@ -71,7 +71,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class PayPal {
+export class PayPal extends IonicNativePlugin {
   /**
    * Retrieve the version of the PayPal iOS SDK library. Useful when contacting support.
    * @returns {Promise<string>}

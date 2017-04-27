@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Globalization
@@ -29,7 +29,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Firefox OS', 'iOS', 'Windows Phone 8', 'Widnows', 'Browser']
 })
 @Injectable()
-export class Globalization {
+export class Globalization extends IonicNativePlugin {
 
   /**
    * Returns the BCP-47 compliant language identifier tag to the successCallback with a properties object as a parameter. That object should have a value property with a String value.

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 /**
  * @name Shake
@@ -26,7 +26,7 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/leecrossley/cordova-plugin-shake'
 })
 @Injectable()
-export class Shake {
+export class Shake extends IonicNativePlugin {
   /**
    * Watch for shake gesture
    * @param sensitivity {number} Optional sensitivity parameter. Defaults to 40

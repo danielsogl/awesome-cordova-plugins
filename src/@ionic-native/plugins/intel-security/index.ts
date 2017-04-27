@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 declare var window: any;
@@ -75,7 +75,7 @@ export interface IntelSecurityDataOptions {
   platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
-export class IntelSecurity {
+export class IntelSecurity extends IonicNativePlugin {
 
   /**
    * returns an IntelSecurityStorage object

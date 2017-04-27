@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface TwitterConnectResponse {
   /**
@@ -60,7 +60,7 @@ export interface TwitterConnectResponse {
   installVariables: ['FABRIC_KEY']
 })
 @Injectable()
-export class TwitterConnect {
+export class TwitterConnect extends IonicNativePlugin {
   /**
    * Logs in
    * @returns {Promise<TwitterConnectResponse>} returns a promise that resolves if logged in and rejects if failed to login

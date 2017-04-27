@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -200,7 +200,7 @@ export interface HealthData {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Health {
+export class Health extends IonicNativePlugin {
 
   /**
    * Tells if either Google Fit or HealthKit are available.

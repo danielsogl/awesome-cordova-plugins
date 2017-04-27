@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface CameraOptions {
   /** Picture quality in range 0-100. Default is 50 */
@@ -128,7 +128,7 @@ export interface CameraPopoverOptions {
   platforms: ['Android', 'BlackBerry', 'Browser', 'Firefox', 'FireOS', 'iOS', 'Windows', 'Windows Phone 8', 'Ubuntu']
 })
 @Injectable()
-export class Camera {
+export class Camera extends IonicNativePlugin {
 
   /**
    * Constant for possible destination types

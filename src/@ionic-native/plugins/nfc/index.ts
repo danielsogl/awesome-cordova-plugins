@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 declare let window: any;
 /**
@@ -38,7 +38,7 @@ declare let window: any;
   *@{ NFC } class methods
   */
 @Injectable()
-export class NFC {
+export class NFC extends IonicNativePlugin {
   /**
    * Registers an event listener for any NDEF tag.
    * @param onSuccess
@@ -163,7 +163,7 @@ export class NFC {
   enabled(): Promise<any> {return; }
   /**
   * @{ NFC } class utility methods
-  * for use with 
+  * for use with
   */
   /**
    * Convert byte array to string
@@ -181,7 +181,7 @@ export class NFC {
   stringToBytes(str: string): number[] {return; };
   /**
    * Convert byte array to hex string
-   * 
+   *
    * @param bytes {number[]}
    * @returns {string}
    */
@@ -206,7 +206,7 @@ export class NFC {
 * For usage with nfc.write() and nfc.share()
 */
 @Injectable()
-export class Ndef {
+export class Ndef extends IonicNativePlugin {
 
   @Cordova({ sync: true })
   uriRecord(uri: string): any { return; }

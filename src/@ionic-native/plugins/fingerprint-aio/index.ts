@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 
 export interface FingerprintOptions {
@@ -54,7 +54,7 @@ export interface FingerprintOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class FingerprintAIO {
+export class FingerprintAIO extends IonicNativePlugin {
 
   /**
    * Check if fingerprint authentication is available

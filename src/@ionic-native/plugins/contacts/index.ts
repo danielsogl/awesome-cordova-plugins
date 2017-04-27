@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, InstanceProperty, Plugin, getPromise, InstanceCheck, checkAvailability, CordovaCheck } from '@ionic-native/core';
+import { CordovaInstance, InstanceProperty, Plugin, getPromise, InstanceCheck, checkAvailability, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 declare var window: any,
   navigator: any;
@@ -294,7 +294,7 @@ export class ContactFindOptions implements IContactFindOptions {
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows 8', 'Windows Phone']
 })
 @Injectable()
-export class Contacts {
+export class Contacts extends IonicNativePlugin {
 
   /**
    * Create a single contact.

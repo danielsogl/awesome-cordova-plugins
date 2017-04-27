@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface BatteryStatusResponse {
@@ -52,7 +52,7 @@ export interface BatteryStatusResponse {
   platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser']
 })
 @Injectable()
-export class BatteryStatus {
+export class BatteryStatus extends IonicNativePlugin {
 
   /**
    * Watch the change in battery level

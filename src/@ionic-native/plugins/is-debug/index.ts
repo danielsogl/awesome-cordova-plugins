@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Is Debug
@@ -29,7 +29,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class IsDebug {
+export class IsDebug extends IonicNativePlugin {
 
   /**
    * Determine if an app was installed via xcode / eclipse / the ionic CLI etc

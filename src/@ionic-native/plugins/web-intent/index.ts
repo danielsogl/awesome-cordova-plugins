@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var window;
@@ -35,7 +35,7 @@ declare var window;
   platforms: ['Android']
 })
 @Injectable()
-export class WebIntent {
+export class WebIntent extends IonicNativePlugin {
 
   /**
    * Convenience constant for actions

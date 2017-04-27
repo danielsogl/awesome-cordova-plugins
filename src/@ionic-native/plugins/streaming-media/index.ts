@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface StreamingVideoOptions {
   successCallback?: Function;
@@ -48,7 +48,7 @@ export interface StreamingAudioOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class StreamingMedia {
+export class StreamingMedia extends IonicNativePlugin {
   /**
    * Streams a video
    * @param videoUrl {string} The URL of the video

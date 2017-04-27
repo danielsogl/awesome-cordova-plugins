@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 export interface FlurryAnalyticsOptions {
@@ -107,7 +107,7 @@ export interface FlurryAnalyticsLocation {
   platforms: ['Android', 'iOS', 'Browser']
 })
 @Injectable()
-export class FlurryAnalytics {
+export class FlurryAnalytics extends IonicNativePlugin {
 
   /**
    * Set the setting for Flurry Analytics

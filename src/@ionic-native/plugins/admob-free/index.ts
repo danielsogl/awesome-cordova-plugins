@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
@@ -105,7 +105,7 @@ export interface AdMobFreeRewardVideoConfig {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class AdMobFree {
+export class AdMobFree extends IonicNativePlugin {
 
   /**
    * Convenience constructor to get event names
@@ -170,8 +170,6 @@ export class AdMobFree {
   pluginRef: 'admob.banner',
 })
 export class AdMobFreeBanner {
-
-
 
   /**
    * Update config.

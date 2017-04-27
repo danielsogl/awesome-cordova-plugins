@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
@@ -31,7 +31,7 @@ import { Injectable } from '@angular/core';
   platforms: [ 'iOS', 'Android' ]
 })
 @Injectable()
-export class Appodeal {
+export class Appodeal extends IonicNativePlugin {
   // available types of advertisements
   readonly AD_TYPES = {
     INTERSTITIAL: 1,

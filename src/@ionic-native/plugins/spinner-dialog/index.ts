@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface SpinnerDialogIOSOptions {
   overlayOpacity?: number;
@@ -34,7 +34,7 @@ export interface SpinnerDialogIOSOptions {
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
-export class SpinnerDialog {
+export class SpinnerDialog extends IonicNativePlugin {
 
   /**
    * Shows the spinner dialog

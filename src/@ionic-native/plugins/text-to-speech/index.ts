@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface TTSOptions {
     /** text to speak */
@@ -38,7 +38,7 @@ export interface TTSOptions {
   repo: 'https://github.com/vilic/cordova-plugin-tts'
 })
 @Injectable()
-export class TextToSpeech {
+export class TextToSpeech extends IonicNativePlugin {
 
   /**
    * This function speaks

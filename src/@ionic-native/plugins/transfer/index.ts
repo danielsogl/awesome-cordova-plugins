@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, InstanceCheck, checkAvailability } from '@ionic-native/core';
+import { CordovaInstance, Plugin, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 
 declare var FileTransfer;
 
@@ -179,7 +179,7 @@ export interface FileTransferError {
   repo: 'https://github.com/apache/cordova-plugin-file-transfer'
 })
 @Injectable()
-export class Transfer {
+export class Transfer extends IonicNativePlugin {
 
   /**
    * Error code rejected from upload with FileTransferError

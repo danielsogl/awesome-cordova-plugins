@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 export interface ImagePickerOptions {
@@ -63,7 +63,7 @@ export interface ImagePickerOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class ImagePicker {
+export class ImagePicker extends IonicNativePlugin {
   /**
    * Pick pictures from the library.
    * @param {ImagePickerOptions} options

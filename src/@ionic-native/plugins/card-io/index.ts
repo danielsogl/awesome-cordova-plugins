@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface CardIOOptions {
 
@@ -167,7 +167,7 @@ export interface CardIOResponse {
   platforms: ['iOS', 'Android']
 })
 @Injectable()
-export class CardIO {
+export class CardIO extends IonicNativePlugin {
 
   /**
    * Check whether card scanning is currently available. (May vary by

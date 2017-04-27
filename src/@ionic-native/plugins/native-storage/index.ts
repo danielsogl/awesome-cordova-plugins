@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -35,7 +35,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
-export class NativeStorage {
+export class NativeStorage extends IonicNativePlugin {
   /**
    * Stores a value
    * @param reference {string}

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface LaunchNavigatorOptions {
 
@@ -95,7 +95,7 @@ export interface LaunchNavigatorOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class LaunchNavigator {
+export class LaunchNavigator extends IonicNativePlugin {
 
   /**
    * Launches navigator app

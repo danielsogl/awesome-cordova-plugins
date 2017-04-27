@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 export interface AlipayOrder {
@@ -103,7 +103,7 @@ export interface AlipayOrder {
   install: 'ionic plugin add https://github.com/xueron/cordova-alipay-base --variable APP_ID=your_app_id'
 })
 @Injectable()
-export class Alipay {
+export class Alipay extends IonicNativePlugin {
   /**
    * Open Alipay to perform App pay
    * @param order { AlipayOrder } alipay options

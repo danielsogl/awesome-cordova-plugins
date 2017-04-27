@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin, CordovaCheck } from '@ionic-native/core';
+import { Cordova, CordovaProperty, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
 
@@ -56,7 +56,7 @@ declare var navigator: any;
   pluginRef: 'navigator.connection'
 })
 @Injectable()
-export class Network {
+export class Network extends IonicNativePlugin {
 
   /**
    * Connection type

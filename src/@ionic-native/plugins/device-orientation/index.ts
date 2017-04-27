@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface DeviceOrientationCompassHeading {
@@ -80,7 +80,7 @@ export interface DeviceOrientationCompassOptions {
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class DeviceOrientation {
+export class DeviceOrientation extends IonicNativePlugin {
 
   /**
    * Get the current compass heading.

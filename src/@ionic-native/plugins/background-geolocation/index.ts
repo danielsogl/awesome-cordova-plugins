@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var window;
@@ -311,7 +311,7 @@ export interface BackgroundGeolocationConfig {
   platforms: ['iOS', 'Android', 'Windows Phone 8']
 })
 @Injectable()
-export class BackgroundGeolocation {
+export class BackgroundGeolocation extends IonicNativePlugin {
 
   /** 
    * Set location service provider @see https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-providers 

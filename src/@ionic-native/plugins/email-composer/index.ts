@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, CordovaCheck } from '@ionic-native/core';
+import { Cordova, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 declare var cordova: any;
 
@@ -79,7 +79,7 @@ export interface EmailComposerOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class EmailComposer {
+export class EmailComposer extends IonicNativePlugin {
 
   /**
    * Verifies if sending emails is supported on the device.

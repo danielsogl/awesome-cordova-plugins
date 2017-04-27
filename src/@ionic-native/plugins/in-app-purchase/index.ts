@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -61,7 +61,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   repo: 'https://github.com/AlexDisler/cordova-plugin-inapppurchase'
 })
 @Injectable()
-export class InAppPurchase {
+export class InAppPurchase extends IonicNativePlugin {
 
   /**
    * Retrieves a list of full product data from Apple/Google. This method must be called before making purchases.

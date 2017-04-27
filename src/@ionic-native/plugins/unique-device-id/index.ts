@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -27,7 +27,7 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/Paldom/UniqueDeviceID'
 })
 @Injectable()
-export class UniqueDeviceID {
+export class UniqueDeviceID extends IonicNativePlugin {
 
   /**
    * Gets a unique, cross-install, app-specific device id.

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, CordovaInstance } from '@ionic-native/core';
+import { Plugin, CordovaInstance, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
@@ -166,7 +166,7 @@ export class InAppBrowserObject {
   platforms: ['Amazon', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class InAppBrowser {
+export class InAppBrowser extends IonicNativePlugin {
 
   /**
    * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.

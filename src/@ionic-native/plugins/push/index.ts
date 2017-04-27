@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, CordovaInstance, checkAvailability } from '@ionic-native/core';
+import { Cordova, Plugin, CordovaInstance, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var window: any;
@@ -268,7 +268,7 @@ export type PushEvent = 'registration' | 'error' | 'notification';
   installVariables: ['SENDER_ID']
 })
 @Injectable()
-export class Push {
+export class Push extends IonicNativePlugin {
 
   /**
    * Init push notifications

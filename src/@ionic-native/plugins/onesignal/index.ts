@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface OSNotification {
@@ -308,7 +308,7 @@ export enum OSActionType {
   platforms: ['Android', 'iOS', 'Windows', 'FireOS']
 })
 @Injectable()
-export class OneSignal {
+export class OneSignal extends IonicNativePlugin {
 
   /**
    * constants to use in inFocusDisplaying()

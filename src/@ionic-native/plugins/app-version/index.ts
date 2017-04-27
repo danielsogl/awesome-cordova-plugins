@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 
@@ -34,7 +34,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class AppVersion {
+export class AppVersion extends IonicNativePlugin {
 
   /**
    * Returns the name of the app

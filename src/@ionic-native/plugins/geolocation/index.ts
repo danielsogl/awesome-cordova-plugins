@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var navigator: any;
@@ -156,7 +156,7 @@ export interface GeolocationOptions {
   platforms: ['Android', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class Geolocation {
+export class Geolocation extends IonicNativePlugin {
 
   /**
    * Get the device's current position.

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -51,7 +51,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   platforms: ['iOS']
 })
 @Injectable()
-export class TouchID {
+export class TouchID extends IonicNativePlugin {
 
   /**
    * Checks Whether TouchID is available or not.

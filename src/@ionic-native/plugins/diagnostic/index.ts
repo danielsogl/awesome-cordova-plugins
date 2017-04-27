@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Cordova, Plugin, CordovaProperty} from '@ionic-native/core';
+import { Cordova, Plugin, CordovaProperty, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Diagnostic
@@ -42,7 +42,7 @@ import {Cordova, Plugin, CordovaProperty} from '@ionic-native/core';
   platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
-export class Diagnostic {
+export class Diagnostic extends IonicNativePlugin {
 
   permission = {
     READ_CALENDAR: 'READ_CALENDAR',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface HTTPResponse {
   /**
@@ -65,7 +65,7 @@ export interface HTTPResponse {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class HTTP {
+export class HTTP extends IonicNativePlugin {
 
   /**
    * This returns an object representing a basic HTTP Authorization header of the form.

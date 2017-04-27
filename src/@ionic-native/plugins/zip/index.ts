@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Zip
@@ -29,7 +29,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   repo: 'https://github.com/MobileChromeApps/cordova-plugin-zip',
 })
 @Injectable()
-export class Zip {
+export class Zip extends IonicNativePlugin {
 
   /**
    * Extracts files from a ZIP archive

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, CordovaCheck } from '@ionic-native/core';
+import { Cordova, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var cordova: any;
@@ -286,7 +286,7 @@ export interface IBeaconDelegate {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class IBeacon {
+export class IBeacon extends IonicNativePlugin {
 
   /**
    * Instances of this class are delegates between the {@link LocationManager} and

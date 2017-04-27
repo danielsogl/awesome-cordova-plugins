@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export type AdSize = 'SMART_BANNER' | 'BANNER' | 'MEDIUM_RECTANGLE' | 'FULL_BANNER' | 'LEADERBOARD' | 'SKYSCRAPER' | 'CUSTOM';
@@ -123,7 +123,7 @@ export interface AdExtras {
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
-export class AdMob {
+export class AdMob extends IonicNativePlugin {
 
   AD_POSITION: {
     NO_CHANGE: number;

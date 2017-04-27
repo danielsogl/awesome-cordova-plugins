@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, CordovaCheck, Plugin, InstanceProperty, InstanceCheck, checkAvailability } from '@ionic-native/core';
+import { Cordova, CordovaInstance, CordovaCheck, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
@@ -455,7 +455,7 @@ export class GoogleMap {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class GoogleMaps {
+export class GoogleMaps extends IonicNativePlugin {
 
   /**
    * Checks if a map object has been created and is available.

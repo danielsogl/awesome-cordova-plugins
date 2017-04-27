@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 declare var cordova: any;
@@ -75,7 +75,7 @@ export interface PrintOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Printer {
+export class Printer extends IonicNativePlugin {
 
   /**
    * Checks whether to device is capable of printing.

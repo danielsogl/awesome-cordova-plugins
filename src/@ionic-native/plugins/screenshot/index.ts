@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin } from '@ionic-native/core';
+import { Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 declare var navigator: any;
@@ -28,7 +28,7 @@ declare var navigator: any;
   repo: 'https://github.com/gitawego/cordova-screenshot.git'
 })
 @Injectable()
-export class Screenshot {
+export class Screenshot extends IonicNativePlugin {
 
   /**
    *  Takes screenshot and saves the image

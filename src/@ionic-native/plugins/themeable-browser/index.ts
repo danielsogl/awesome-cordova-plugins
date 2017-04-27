@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, CordovaInstance, InstanceCheck } from '@ionic-native/core';
+import { Plugin, CordovaInstance, InstanceCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var cordova: any;
@@ -226,7 +226,7 @@ export class ThemeableBrowserObject {
   repo: 'https://github.com/initialxy/cordova-plugin-themeablebrowser'
 })
 @Injectable()
-export class ThemeableBrowser {
+export class ThemeableBrowser extends IonicNativePlugin {
 
   /**
    * Creates a browser instance

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var window;
@@ -53,7 +53,7 @@ declare var window;
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
-export class ScreenOrientation {
+export class ScreenOrientation extends IonicNativePlugin {
 
   /**
    * Convenience enum for possible orientations

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaCheck } from '@ionic-native/core';
+import { Plugin, Cordova, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var cordova: any;
@@ -38,7 +38,7 @@ declare var cordova: any;
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class JinsMeme {
+export class JinsMeme extends IonicNativePlugin {
   /**
    * Authentication and authorization of App and SDK.
    * Must call this method first.

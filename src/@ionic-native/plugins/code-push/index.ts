@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 namespace Http {
   export const enum Verb {
@@ -427,7 +427,7 @@ export interface DownloadProgress {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class CodePush {
+export class CodePush extends IonicNativePlugin {
 
   /**
    * Get the current package information.
