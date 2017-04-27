@@ -74,7 +74,7 @@ export interface ActionSheetOptions {
  *
  * const options: ActionSheetOptions = {
  *   title: 'What do you want with this image?',
- *   subtitle: 'Choose an action'
+ *   subtitle: 'Choose an action',
  *   buttonLabels: buttonLabels,
  *   addCancelButtonWithLabel: 'Cancel',
  *   addDestructiveButtonWithLabel: 'Delete',
