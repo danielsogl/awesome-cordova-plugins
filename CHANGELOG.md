@@ -1,3 +1,19 @@
+<a name="3.6.0"></a>
+# [3.6.0](https://github.com/driftyco/ionic-native/compare/v3.5.0...v3.6.0) (2017-04-27)
+
+
+### Bug Fixes
+
+* **media:** function 'create' never returns media object (#1419) ([b58149f](https://github.com/driftyco/ionic-native/commit/b58149f))
+
+
+### Features
+
+* **keychain:** add Keychain plugin (#1420) ([16dc71a](https://github.com/driftyco/ionic-native/commit/16dc71a))
+* add IonicNativePlugin base class (#1425) ([17366a2](https://github.com/driftyco/ionic-native/commit/17366a2))
+
+
+
 <a name="3.5.0"></a>
 # [3.5.0](https://github.com/driftyco/ionic-native/compare/v3.4.4...v3.5.0) (2017-04-18)
 
