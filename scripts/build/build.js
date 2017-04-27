@@ -40,7 +40,6 @@ PLUGIN_PACKAGE_JSON.peerDependencies = PLUGIN_PEER_DEPS;
 console.log('Making new TMP directory');
 fs.mkdirpSync(BUILD_TMP);
 
-
 // Prepare and copy the core module's package.json
 console.log('Preparing core module package.json');
 CORE_PACKAGE_JSON.version = IONIC_NATIVE_VERSION;
@@ -51,6 +50,11 @@ fs.writeJsonSync(path.resolve(BUILD_CORE_DIST, 'package.json'), CORE_PACKAGE_JSO
 // Fetch a list of the plugins
 const PLUGINS = fs.readdirSync(PLUGINS_PATH);
 
+// Build specific list of plugins to build from arguments, if any
+let pluginsToBuild = process.argv.slice(2);
+if (!pluginsToBuild.length) {
+  pluginsToBuild = PLUGINS;
+}
 
 // Create a queue to process tasks
 const QUEUE = queue({
@@ -116,7 +120,7 @@ const addPluginToQueue = pluginName => {
 
 };
 
-PLUGINS.forEach(addPluginToQueue);
+pluginsToBuild.forEach(addPluginToQueue);
 
 QUEUE.start((err) => {
 
