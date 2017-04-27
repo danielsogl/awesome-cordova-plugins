@@ -12,43 +12,43 @@ export class SecureStorageObject {
 
   /**
    * Gets a stored item
-   * @param reference {string}
-   * @returns {Promise<any>}
+   * @param key {string}
+   * @returns {Promise<string>}
    */
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  get(reference: string): Promise<any> { return; }
+  get(key: string): Promise<string> { return; }
 
   /**
    * Stores a value
-   * @param reference {string}
+   * @param key {string}
    * @param value {string}
    * @returns {Promise<any>}
    */
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  set(reference: string, value: string): Promise<any> { return; }
+  set(key: string, value: string): Promise<any> { return; }
 
   /**
    * Removes a single stored item
-   * @param reference {string}
-   * @returns {Promise<any>}
+   * @param key {string}
+   * @returns {Promise<string>} returns a promise that resolves with the key that was removed
    */
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  remove(reference: string): Promise<any> { return; }
+  remove(key: string): Promise<string> { return; }
 
   /**
    * Get all references from the storage.
-   * @returns {Promise<any>}
+   * @returns {Promise<string[]>} returns a promise that resolves with array of keys storage
    */
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  keys(): Promise<any> { return; }
+  keys(): Promise<string[]> { return; }
 
   /**
    * Clear all references from the storage.
