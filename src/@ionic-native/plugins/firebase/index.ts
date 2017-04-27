@@ -60,7 +60,7 @@ export class Firebase extends IonicNativePlugin {
   onNotificationOpen(): Observable<any> { return; }
 
   /**
-   * Grant permission to recieve push notifications
+   * Grant permission to receive push notifications
    * @return {Promise<any>}
    */
   @Cordova({
@@ -69,7 +69,7 @@ export class Firebase extends IonicNativePlugin {
   grantPermission(): Promise<any> { return; }
 
     /**
-   * Check permission to recieve push notifications
+   * Check permission to receive push notifications
    * @return {Promise<any>}
    */
   @Cordova({
