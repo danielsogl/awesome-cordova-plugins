@@ -92,7 +92,6 @@ export class MediaObject {
   })
   startRecord(): void { }
 
-
   /**
    * Stops recording
    */
@@ -124,6 +123,7 @@ export class MediaObject {
     sync: true
   })
   stop(): void { }
+
 }
 
 export type MediaStatusUpdateCallback = (statusCode: number) => void;
@@ -262,9 +262,9 @@ export class MediaPlugin extends IonicNativePlugin {
   /**
    * Open a media file
    * @param src {string} A URI containing the audio content.
-   * @param onStatusUpdate {MediaStatusUpdateCallback} A callback function to be invoked when the status of the file changes
-   * @param onSuccess {Function} A callback function to be invoked after the current play, record, or stop action is completed
-   * @param onError {MediaErrorCallback} A callback function is be invoked if an error occurs.
+   * @param [onStatusUpdate] {MediaStatusUpdateCallback} A callback function to be invoked when the status of the file changes
+   * @param [onSuccess] {Function} A callback function to be invoked after the current play, record, or stop action is completed
+   * @param [onError] {MediaErrorCallback} A callback function is be invoked if an error occurs.
    * @return {MediaObject}
    */
   @CordovaCheck()

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -33,13 +33,13 @@ import { Cordova, Plugin } from '@ionic-native/core';
   platforms: ['iOS']
 })
 @Injectable()
-export class Keychain {
+export class Keychain extends IonicNativePlugin {
 
   /**
    * Retrieves a value for a key
    *
    * @param {string} key the key to retrieve
-   * @param {string} TouchIDMessage the message to show underneath the TouchID prompt (if any)
+   * @param {string} [touchIDMessage] the message to show underneath the TouchID prompt (if any)
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -51,7 +51,7 @@ export class Keychain {
    *
    * @param {string} key the key to set
    * @param {string|number|boolean} value the value to set
-   * @param {boolean} useTouchID whether to store the value with security such that TouchID will be needed to grab it
+   * @param {boolean} [useTouchID] whether to store the value with security such that TouchID will be needed to grab it
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -62,7 +62,7 @@ export class Keychain {
    * Gets a JSON value for a key
    *
    * @param {string} key the key to retrieve
-   * @param {string} TouchIDMessage the message to show underneath the TouchID prompt (if any)
+   * @param {string} touchIDMessage the message to show underneath the TouchID prompt (if any)
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -73,8 +73,8 @@ export class Keychain {
    * Sets a JSON value for a key
    *
    * @param {string} key the key to set
-   * @param {any} value the value to set
-   * @param {boolean} Wether to store the value with security such that TouchID will be needed to grab it
+   * @param {any} obj value the value to set
+   * @param {boolean} [useTouchId] Wether to store the value with security such that TouchID will be needed to grab it
    */
   @Cordova({
     callbackOrder: 'reverse'
