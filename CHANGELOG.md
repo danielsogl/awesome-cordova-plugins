@@ -1,3 +1,8 @@
+<a name="3.6.1"></a>
+## [3.6.1](https://github.com/driftyco/ionic-native/compare/v3.6.0...v3.6.1) (2017-04-27)
+
+
+
 <a name="3.6.0"></a>
 # [3.6.0](https://github.com/driftyco/ionic-native/compare/v3.5.0...v3.6.0) (2017-04-27)
 
