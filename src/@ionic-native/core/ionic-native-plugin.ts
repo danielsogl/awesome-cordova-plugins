@@ -1,18 +1,16 @@
-import { PluginConfig } from './decorators';
+export class IonicNativePlugin {
 
-export class IonicNativePlugin implements PluginConfig {
+  static pluginName: string;
 
-  pluginName: string;
+  static pluginRef: string;
 
-  pluginRef: string;
+  static plugin: string;
 
-  plugin: string;
+  static repo: string;
 
-  repo: string;
+  static platforms: string[];
 
-  platforms: string[];
-
-  install: string;
+  static install: string;
 
   /**
    * Returns a boolean that indicates whether the plugin is installed
