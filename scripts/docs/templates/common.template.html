@@ -165,7 +165,7 @@ docType: "<$ doc.docType $>"
 <@ endif @>
 
 <# --- Install commands --- #>
-<pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif @>
+<pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add --save <$ prop.plugin $><@ endif @>
 $ npm install --save @ionic-native/<$ doc.npmId $>
 </code></pre>
 <p>Repo:
