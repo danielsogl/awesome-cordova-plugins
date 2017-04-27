@@ -6,7 +6,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  * @description Crops images
  * @usage
  * ```
- * import {Crop} from '@ionic-native/crop';
+ * import { Crop } from '@ionic-native/crop';
  *
  * constructor(private crop: Crop) { }
  *

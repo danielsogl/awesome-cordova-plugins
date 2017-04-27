@@ -7,7 +7,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import {CallNumber} from '@ionic-native/call-number';
+ * import { CallNumber } from '@ionic-native/call-number';
  *
  * constructor(private callNumber: CallNumber) { }
  *

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin, IonicNativePlugin } from '@ionic-native/core';
+import { Plugin, Cordova IonicNativePlugin } from '@ionic-native/core';
 
 export interface HTTPResponse {
   /**
    * The status number of the response
    */
-  status: number;
+  status: number;,
   /**
    * The data that is in the response. This property usually exists when a promise returned by a request method resolves.
    */

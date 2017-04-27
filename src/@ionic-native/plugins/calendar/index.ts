@@ -60,7 +60,7 @@ export interface CalendarOptions {
  *
  * @usage
  * ```
- * import {Calendar} from '@ionic-native/calendar';
+ * import { Calendar } from '@ionic-native/calendar';
  *
  * constructor(private calendar: Calendar) { }
  *

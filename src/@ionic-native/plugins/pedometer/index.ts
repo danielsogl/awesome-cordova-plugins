@@ -22,7 +22,7 @@ export interface IPedometerData {
  *
  * @usage
  * ```
- * import { Pedometer } from 'ionic-native';
+ * import { Pedometer } from '@ionic-native/pedometer';
  *
  * Pedometer.isDistanceAvailable()
  *   .then((available: boolean) => console.log(available))
