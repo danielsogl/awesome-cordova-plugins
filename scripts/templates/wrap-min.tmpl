@@ -1,4 +1,4 @@
-import { Plugin } from '@ionic-native/core';
+import { Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -25,6 +25,6 @@ import { Injectable } from '@angular/core';
   platforms: []
 })
 @Injectable()
-export class $PluginName {
+export class $PluginName extends IonicNativePlugin {
 
 }

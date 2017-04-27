@@ -10,7 +10,7 @@
  * - Remove this note
  *
  */
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty } from '@ionic-native/core';
+import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -44,7 +44,7 @@ import { Observable } from 'rxjs/Observable';
   install: '', // OPTIONAL install command, in case the plugin requires variables
 })
 @Injectable()
-export class $PluginName {
+export class $PluginName extends IonicNativePlugin {
 
   /**
    * This function does something
