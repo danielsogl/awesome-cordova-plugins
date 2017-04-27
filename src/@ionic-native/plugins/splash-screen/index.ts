@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -25,7 +25,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/apache/cordova-plugin-splashscreen'
 })
 @Injectable()
-export class SplashScreen {
+export class SplashScreen extends IonicNativePlugin {
 
   /**
    * Shows the splashscreen

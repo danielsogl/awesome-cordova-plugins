@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface MusicControlsOptions {
@@ -107,7 +107,7 @@ export interface MusicControlsOptions {
   repo: 'https://github.com/homerours/cordova-music-controls-plugin'
 })
 @Injectable()
-export class MusicControls {
+export class MusicControls extends IonicNativePlugin {
 
   /**
    * Create the media controls

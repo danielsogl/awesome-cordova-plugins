@@ -1,4 +1,4 @@
-import { Plugin, Cordova, CordovaFiniteObservable } from '@ionic-native/core';
+import { Plugin, Cordova, CordovaFiniteObservable, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -48,7 +48,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()
-export class PhotoLibrary {
+export class PhotoLibrary extends IonicNativePlugin {
 
   /**
    * Retrieves library items. Library item contains photo metadata like width and height, as well as photoURL and thumbnailURL.

@@ -154,7 +154,7 @@ export interface DatePickerOptions {
   platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
-export class DatePicker {
+export class DatePicker extends IonicNativePlugin {
 
   /**
    * @hidden

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name File Opener
@@ -28,7 +28,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
 })
 @Injectable()
-export class FileOpener {
+export class FileOpener extends IonicNativePlugin {
 
   /**
    * Open an file

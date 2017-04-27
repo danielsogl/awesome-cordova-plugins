@@ -117,7 +117,7 @@ export interface StripeBankAccountParams {
   repo: 'https://github.com/zyramedia/cordova-plugin-stripe'
 })
 @Injectable()
-export class Stripe {
+export class Stripe extends IonicNativePlugin {
 
   /**
    * Set publishable key

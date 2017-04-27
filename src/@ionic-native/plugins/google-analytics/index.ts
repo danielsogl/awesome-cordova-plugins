@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 declare var window;
 
@@ -39,7 +39,7 @@ declare var window;
   platforms: ['Android', 'iOS', 'Browser']
 })
 @Injectable()
-export class GoogleAnalytics {
+export class GoogleAnalytics extends IonicNativePlugin {
 
   /**
    * In your 'deviceready' handler, set up your Analytics tracker.

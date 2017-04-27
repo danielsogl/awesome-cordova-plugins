@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -32,7 +32,7 @@ import { Observable } from 'rxjs/Observable';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Firebase {
+export class Firebase extends IonicNativePlugin {
 
   /**
    * Get the device token

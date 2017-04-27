@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface EstimoteBeaconRegion {
@@ -47,7 +47,7 @@ export interface EstimoteBeaconRegion {
   platforms: ['iOS', 'Android']
 })
 @Injectable()
-export class EstimoteBeacons {
+export class EstimoteBeacons extends IonicNativePlugin {
 
   /** Proximity value */
   ProximityUnknown = 0;

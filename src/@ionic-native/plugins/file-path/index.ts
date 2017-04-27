@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 declare var window: any;
 
@@ -31,7 +31,7 @@ declare var window: any;
   platforms: ['Android']
 })
 @Injectable()
-export class FilePath {
+export class FilePath extends IonicNativePlugin {
 
   /**
    * Resolve native path for given content URL/path.

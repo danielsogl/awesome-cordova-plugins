@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, Plugin, CordovaCheck, InstanceProperty } from '@ionic-native/core';
+import { Cordova, CordovaInstance, Plugin, CordovaCheck, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
 
 
 declare var sqlitePlugin;
@@ -185,7 +185,7 @@ export class SQLiteObject {
   repo: 'https://github.com/litehelpers/Cordova-sqlite-storage'
 })
 @Injectable()
-export class SQLite {
+export class SQLite extends IonicNativePlugin {
 
   /**
    * Open or create a SQLite database file.

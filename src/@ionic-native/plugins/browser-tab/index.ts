@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -40,7 +40,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class BrowserTab {
+export class BrowserTab extends IonicNativePlugin {
 
   /**
    * Check if BrowserTab option is available

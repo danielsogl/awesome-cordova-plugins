@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @beta
@@ -29,7 +29,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   installVariables: ['ROLLBAR_ACCESS_TOKEN', 'ROLLBAR_ENVIRONMENT']
 })
 @Injectable()
-export class Rollbar {
+export class Rollbar extends IonicNativePlugin {
 
   /**
    * This function initializes the monitoring of your application

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -32,7 +32,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android']
 })
 @Injectable()
-export class Backlight {
+export class Backlight extends IonicNativePlugin {
 
   /**
    * This function turns backlight on

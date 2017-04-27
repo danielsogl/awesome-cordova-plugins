@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Launch Review
@@ -30,7 +30,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class LaunchReview {
+export class LaunchReview extends IonicNativePlugin {
 
   /**
    * Launch store app using given app ID

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var navigator: any;
@@ -149,7 +149,7 @@ export interface ConfigurationData {
   repo: 'https://github.com/apache/cordova-plugin-media-capture'
 })
 @Injectable()
-export class MediaCapture {
+export class MediaCapture extends IonicNativePlugin {
   /**
    * The recording image sizes and formats supported by the device.
    * @returns {ConfigurationData[]}

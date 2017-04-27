@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -130,7 +130,7 @@ export interface ThreeDeeTouchForceTouch {
   platforms: ['iOS']
 })
 @Injectable()
-export class ThreeDeeTouch {
+export class ThreeDeeTouch extends IonicNativePlugin {
 
   /**
    * You need an iPhone 6S or some future tech to use the features of this plugin, so you can check at runtime if the user's device is supported.

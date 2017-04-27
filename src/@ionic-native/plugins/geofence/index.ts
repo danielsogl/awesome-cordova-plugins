@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, CordovaFunctionOverride } from '@ionic-native/core';
+import { Cordova, Plugin, CordovaFunctionOverride, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var window: any;
@@ -83,7 +83,7 @@ declare var window: any;
   platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows Phone']
 })
 @Injectable()
-export class Geofence {
+export class Geofence extends IonicNativePlugin {
 
   public TransitionType = {
     ENTER: 1,

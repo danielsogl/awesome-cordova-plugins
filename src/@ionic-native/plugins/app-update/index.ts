@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -42,7 +42,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android']
 })
 @Injectable()
-export class AppUpdate {
+export class AppUpdate extends IonicNativePlugin {
   /**
    * Check and update
    * @param updateUrl {string} update api url

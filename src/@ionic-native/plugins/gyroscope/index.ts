@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -81,7 +81,7 @@ export interface GyroscopeOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Gyroscope {
+export class Gyroscope extends IonicNativePlugin {
 
   /**
    * Watching for gyroscope sensor changes

@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -42,7 +42,7 @@ export interface IPedometerData {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Pedometer {
+export class Pedometer extends IonicNativePlugin {
 
   /**
    * Checks if step counting is available. Only works on iOS.

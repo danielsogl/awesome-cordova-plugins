@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 
@@ -29,7 +29,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class CouchbaseLite {
+export class CouchbaseLite extends IonicNativePlugin {
 
   /**
    * Get the database url

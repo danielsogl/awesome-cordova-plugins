@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface CameraPreviewDimensions {
   /** The width of the camera preview, default to window.screen.width */
@@ -132,7 +132,7 @@ export interface CameraPreviewPictureOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class CameraPreview {
+export class CameraPreview extends IonicNativePlugin {
 
   EXPOSURE_MODES = {
     LOCK: 'lock', // IOS Only

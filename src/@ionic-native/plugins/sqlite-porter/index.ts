@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -46,7 +46,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android', 'iOS', 'Tizen', 'BlackBerry 10']
 })
 @Injectable()
-export class SQLitePorter {
+export class SQLitePorter extends IonicNativePlugin {
 
   /**
    * Executes a set of SQL statements against the defined database. Can be used to import data defined in the SQL statements into the database, and may additionally include commands to create the table structure.

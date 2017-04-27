@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -31,7 +31,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/Paldom/PinDialog'
 })
 @Injectable()
-export class PinDialog {
+export class PinDialog extends IonicNativePlugin {
   /**
    * Show pin dialog
    * @param {string} message Message to show the user

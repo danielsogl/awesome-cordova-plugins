@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export type SpeechRecognitionListeningOptions = SpeechRecognitionListeningOptionsIOS | SpeechRecognitionListeningOptionsAndroid;
@@ -101,7 +101,7 @@ export interface SpeechRecognitionListeningOptionsAndroid {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class SpeechRecognition {
+export class SpeechRecognition extends IonicNativePlugin {
 
   /**
    * Check feature available

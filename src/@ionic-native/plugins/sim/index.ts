@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -41,7 +41,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   platforms: ['Android', 'iOS', 'Windows Phone']
 })
 @Injectable()
-export class Sim {
+export class Sim extends IonicNativePlugin {
   /**
    * Returns info from the SIM card.
    * @returns {Promise<any>}

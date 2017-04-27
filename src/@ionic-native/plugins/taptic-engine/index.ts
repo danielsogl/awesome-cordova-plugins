@@ -1,4 +1,4 @@
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -32,7 +32,7 @@ import { Injectable } from '@angular/core';
   platforms: ['iOS']
 })
 @Injectable()
-export class TapticEngine {
+export class TapticEngine extends IonicNativePlugin {
 
   /**
    * Use selection feedback generators to indicate a change in selection.

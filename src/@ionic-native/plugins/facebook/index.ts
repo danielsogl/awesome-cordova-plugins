@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface FacebookLoginResponse {
 
@@ -117,7 +117,7 @@ export interface FacebookLoginResponse {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Facebook {
+export class Facebook extends IonicNativePlugin {
 
   /**
    * Browser wrapper

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, CordovaCheck } from '@ionic-native/core';
+import { CordovaInstance, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 declare var Media: any;
 
@@ -200,7 +200,7 @@ export class MediaObject {
   pluginRef: 'Media'
 })
 @Injectable()
-export class MediaPlugin {
+export class MediaPlugin extends IonicNativePlugin {
 
   // Constants
   /**

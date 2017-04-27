@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaProperty, Plugin, CordovaCheck } from '@ionic-native/core';
+import { CordovaProperty, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 declare var window: any;
 declare var cordova: any;
@@ -371,7 +371,7 @@ export declare var FileError: {
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class File {
+export class File extends IonicNativePlugin {
 
   /**
    *  Read-only directory where the application is installed.

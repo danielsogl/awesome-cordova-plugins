@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 export interface AFAAuthOptions {
@@ -148,7 +148,7 @@ export interface AFAEncryptResponse {
   platforms: ['Android']
 })
 @Injectable()
-export class AndroidFingerprintAuth {
+export class AndroidFingerprintAuth extends IonicNativePlugin {
 
   /**
    * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.

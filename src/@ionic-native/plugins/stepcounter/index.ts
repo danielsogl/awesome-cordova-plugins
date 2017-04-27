@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Stepcounter
  * @description
@@ -32,7 +32,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android']
 })
 @Injectable()
-export class Stepcounter {
+export class Stepcounter extends IonicNativePlugin {
 
   /**
    * Start the step counter

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 declare var window;
@@ -134,7 +134,7 @@ export interface AppUrls {
   platforms: ['Android', 'iOS', 'Windows (experimental)']
 })
 @Injectable()
-export class AppRate {
+export class AppRate extends IonicNativePlugin {
 
   /**
    * Configure various settings for the Rating View.

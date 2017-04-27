@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 export interface BarcodeScannerOptions {
@@ -89,7 +89,7 @@ export interface BarcodeScannerOptions {
   platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows 10', 'Windows 8', 'BlackBerry 10', 'Browser']
 })
 @Injectable()
-export class BarcodeScanner {
+export class BarcodeScanner extends IonicNativePlugin {
 
   Encode: {
     TEXT_TYPE: string;
