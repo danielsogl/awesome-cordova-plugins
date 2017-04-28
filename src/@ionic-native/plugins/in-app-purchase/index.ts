@@ -16,7 +16,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  * this.iap
- *  .getProducts(['com.yourapp.prod1', 'com.yourapp.prod2', ...])
+ *  .getProducts(['prod1', 'prod2', ...])
  *  .then((products) => {
  *    console.log(products);
  *     //  [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', price: '...' }, ...]
@@ -27,7 +27,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  *
  * this.iap
- *   .buy('com.yourapp.prod1')
+ *   .buy('prod1')
  *   .then((data)=> {
  *     console.log(data);
  *     // {
@@ -47,7 +47,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ```ts
  * // fist buy the product...
  * this.iap
- *   .buy('com.yourapp.consumable_prod1')
+ *   .buy('consumable_prod1')
  *   .then(data => this.iap.consume(data.productType, data.receipt, data.signature))
  *   .then(() => console.log('product was successfully consumed!'))
  *   .catch( err=> console.log(err))
