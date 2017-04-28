@@ -10,7 +10,7 @@ Ionic Native wraps plugin callbacks in a Promise or Observable, providing a comm
 ## Installation
 
 Run following command to install Ionic Native in your project.
-```
+```bash
 npm install @ionic-native/core --save
 ```
 
@@ -95,13 +95,13 @@ To do this, you need to provide a mock implementation of the plugins you wish to
 
 First import the `Camera` class in your `src/app/app.module.ts` file:
 
-```ts
+```typescript
 import { Camera } from '@ionic-native/camera';
 ```
 
 Then create a new class that extends the `Camera` class with a mock implementation:
 
-```ts
+```typescript
 class CameraMock extends Camera {
   getPicture(options) {
     return new Promise((resolve, reject) => {
@@ -113,7 +113,7 @@ class CameraMock extends Camera {
 
 Finally, override the previous `Camera` class in your `providers` for this module:
 
-```ts
+```typescript
 providers: [
   { provide: Camera, useClass: CameraMock }
 ]
@@ -121,8 +121,9 @@ providers: [
 
 Here's the full example:
 
-```ts
+```typescript
 import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -143,6 +144,7 @@ class CameraMock extends Camera {
     HomePage
   ],
   imports: [
+    BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -169,9 +171,9 @@ Spent way too long diagnosing an issue only to realize a plugin wasn't firing or
 ## Plugin Missing?
 Let us know or submit a PR! Take a look at [the Developer Guide](https://github.com/driftyco/ionic-native/blob/master/DEVELOPER.md) for more on how to contribute. :heart:
 
-## Ionic 1/Angular 1 support
+## Ionic V1/Angular 1 support
 
-Ionic Native 3.x supports Ionic 2.x and above. For Ionic/Angular 1 support, please use version 2 of Ionic Native. See the [2.x README](https://github.com/driftyco/ionic-native/blob/8cd648db5cddd7bdbe2bd78839b19c620cc8c04c/README.md) for usage information.
+For Ionic V1/Angular 1 support, please use version 2 of Ionic Native. See the [2.x README](https://github.com/driftyco/ionic-native/blob/8cd648db5cddd7bdbe2bd78839b19c620cc8c04c/README.md) for usage information.
 
 # Credits
 
