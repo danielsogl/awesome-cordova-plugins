@@ -86,7 +86,7 @@ export class SecureStorageObject {
  *          error => console.log(error)
  *      );
  *
- *      storage.set('myitem', 'myvalue')
+ *      storage.set('myvalue', 'myitem')
  *        .then(
  *         data => console.log(data),
  *          error => console.log(error)
