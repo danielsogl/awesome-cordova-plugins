@@ -61,7 +61,7 @@ docType: "<$ doc.docType $>"
   <tr>
     <td>
       <$ param.name $>
-      <@- if param.alias @>| <$ param.alias $><@ endif -@>
+      <@- if param.alias @>| <$ param.alias $><@ endif -@>f
     </td>
     <td>
       <$ typeList(param.typeList) $>
@@ -165,6 +165,7 @@ docType: "<$ doc.docType $>"
 <@ endif @>
 
 <# --- Install commands --- #>
+<h2>Installation</h2>
 <pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add --save <$ prop.plugin $><@ endif @>
 $ npm install --save @ionic-native/<$ doc.npmId $>
 </code></pre>
