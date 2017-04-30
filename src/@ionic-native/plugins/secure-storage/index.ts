@@ -80,19 +80,19 @@ export class SecureStorageObject {
  * this.secureStorage.create('my_store_name')
  *   .then((storage: SecureStorageObject) => {
  *
- *      storage.get('myitem')
+ *      storage.get('key')
  *        .then(
  *          data => console.log(data),
  *          error => console.log(error)
  *      );
  *
- *      storage.set('myitem', 'myvalue')
+ *      storage.set('key', 'value')
  *        .then(
  *         data => console.log(data),
  *          error => console.log(error)
  *      );
  *
- *      storage.remove('myitem')
+ *      storage.remove('key')
  *      .then(
  *          data => console.log(data),
  *          error => console.log(error)
