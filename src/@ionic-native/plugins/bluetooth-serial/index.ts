@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
  *
  *
  * // Write a string
- * this.bluetoothSerial.write("hello world").then(success, failure);
+ * this.bluetoothSerial.write('hello world').then(success, failure);
  *
  * // Array of int or bytes
  * this.bluetoothSerial.write([186, 220, 222]).then(success, failure);

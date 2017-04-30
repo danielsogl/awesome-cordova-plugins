@@ -73,7 +73,7 @@ export class SMS extends IonicNativePlugin {
     phoneNumber: string | string[],
     message: string,
     options?: SmsOptions
-  ): Promise<any> { return; }
+    ): Promise<any> { return; }
 
   /**
    * This function lets you know if the app has permission to send SMS

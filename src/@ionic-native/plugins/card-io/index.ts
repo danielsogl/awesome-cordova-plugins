@@ -133,7 +133,7 @@ export interface CardIOResponse {
  * @name Card IO
  * @description
  * @usage
- * ```
+ * ```typescript
  * import { CardIO } from '@ionic-native/card-io';
  *
  * constructor(private cardIO: CardIO) { }

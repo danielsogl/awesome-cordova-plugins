@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
  * This plugin brings push notifications, analytics, event tracking, crash reporting and more from Google Firebase to your Cordova project! Android and iOS supported (including iOS 10).
  *
  * @usage
- * ```
+ * ```typescript
  * import { Firebase } from '@ionic-native/firebase';
  *
  * constructor(private firebase: Firebase) { }
@@ -68,10 +68,10 @@ export class Firebase extends IonicNativePlugin {
   })
   grantPermission(): Promise<any> { return; }
 
-    /**
-   * Check permission to receive push notifications
-   * @return {Promise<any>}
-   */
+  /**
+ * Check permission to receive push notifications
+ * @return {Promise<any>}
+ */
   @Cordova({
     platforms: ['iOS']
   })

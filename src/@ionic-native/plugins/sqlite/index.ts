@@ -198,7 +198,7 @@ export class SQLite extends IonicNativePlugin {
   @CordovaCheck()
   create(config: SQLiteDatabaseConfig): Promise<SQLiteObject> {
     return new Promise((resolve, reject) => {
-        sqlitePlugin.openDatabase(config, db => resolve(new SQLiteObject(db)), reject);
+      sqlitePlugin.openDatabase(config, db => resolve(new SQLiteObject(db)), reject);
     });
   }
 

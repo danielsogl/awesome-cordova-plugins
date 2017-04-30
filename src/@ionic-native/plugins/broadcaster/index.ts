@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
  * This plugin adds exchanging events between native code and your app.
  *
  * @usage
- * ```
+ * ```typescript
  * import { Broadcaster } from '@ionic-native/broadcaster';
  *
  * constructor(private broadcaster: Broadcaster) { }

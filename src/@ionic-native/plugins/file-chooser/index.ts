@@ -8,7 +8,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * Opens the file picker on Android for the user to select a file, returns a file URI.
  *
  * @usage
- * ```
+ * ```typescript
  * import { FileChooser } from '@ionic-native/file-chooser';
  *
  * constructor(private fileChooser: FileChooser) { }

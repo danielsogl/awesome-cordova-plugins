@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
  * This plugin produces a unique, cross-install, app-specific device id.
  *
  * @usage
- * ```
+ * ```typescript
  * import { UniqueDeviceID } from '@ionic-native/unique-device-id';
  *
  * constructor(private uniqueDeviceID: UniqueDeviceID) { }

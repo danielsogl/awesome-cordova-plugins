@@ -34,7 +34,7 @@ export interface Entry {
    * @param errorCallback   A callback that is called when errors happen.
    */
   getMetadata(successCallback: (metadata: Metadata) => void,
-              errorCallback?: (error: FileError) => void): void;
+    errorCallback?: (error: FileError) => void): void;
   /**
    * Move an entry to a different location on the file system. It is an error to try to:
    *     move a directory inside itself or to any child at any depth;move an entry into its parent if a name different from its current one isn't provided;
@@ -49,9 +49,9 @@ export interface Entry {
    * @param errorCallback   A callback that is called when errors happen.
    */
   moveTo(parent: DirectoryEntry,
-         newName?: string,
-         successCallback?: (entry: Entry) => void,
-         errorCallback?: (error: FileError) => void): void;
+    newName?: string,
+    successCallback?: (entry: Entry) => void,
+    errorCallback?: (error: FileError) => void): void;
   /**
    * Copy an entry to a different location on the file system. It is an error to try to:
    *     copy a directory inside itself or to any child at any depth;
@@ -68,9 +68,9 @@ export interface Entry {
    * @param errorCallback A callback that is called when errors happen.
    */
   copyTo(parent: DirectoryEntry,
-         newName?: string,
-         successCallback?: (entry: Entry) => void,
-         errorCallback?: (error: FileError) => void): void;
+    newName?: string,
+    successCallback?: (entry: Entry) => void,
+    errorCallback?: (error: FileError) => void): void;
   /**
    * Returns a URL that can be used as the src attribute of a <video> or <audio> tag.
    * If that is not possible, construct a cdvfile:// URL.
@@ -88,14 +88,14 @@ export interface Entry {
    * @param errorCallback   A callback that is called when errors happen.
    */
   remove(successCallback: () => void,
-         errorCallback?: (error: FileError) => void): void;
+    errorCallback?: (error: FileError) => void): void;
   /**
    * Look up the parent DirectoryEntry containing this Entry. If this Entry is the root of its filesystem, its parent is itself.
    * @param successCallback A callback that is called with the time of the last modification.
    * @param errorCallback   A callback that is called when errors happen.
    */
   getParent(successCallback: (entry: Entry) => void,
-            errorCallback?: (error: FileError) => void): void;
+    errorCallback?: (error: FileError) => void): void;
 }
 
 /** This interface supplies information about the state of a file or directory. */
@@ -126,8 +126,8 @@ export interface DirectoryEntry extends Entry {
    * @param errorCallback   A callback that is called when errors happen.
    */
   getFile(path: string, options?: Flags,
-          successCallback?: (entry: FileEntry) => void,
-          errorCallback?: (error: FileError) => void): void;
+    successCallback?: (entry: FileEntry) => void,
+    errorCallback?: (error: FileError) => void): void;
   /**
    * Creates or looks up a directory.
    * @param path    Either an absolute path or a relative path from this DirectoryEntry
@@ -142,8 +142,8 @@ export interface DirectoryEntry extends Entry {
    * @param errorCallback   A callback that is called when errors happen.
    */
   getDirectory(path: string, options?: Flags,
-               successCallback?: (entry: DirectoryEntry) => void,
-               errorCallback?: (error: FileError) => void): void;
+    successCallback?: (entry: DirectoryEntry) => void,
+    errorCallback?: (error: FileError) => void): void;
   /**
    * Deletes a directory and all of its contents, if any. In the event of an error (e.g. trying
    * to delete a directory that contains a file that cannot be removed), some of the contents
@@ -152,7 +152,7 @@ export interface DirectoryEntry extends Entry {
    * @param errorCallback   A callback that is called when errors happen.
    */
   removeRecursively(successCallback: () => void,
-                    errorCallback?: (error: FileError) => void): void;
+    errorCallback?: (error: FileError) => void): void;
 }
 
 export interface RemoveResult {
@@ -196,7 +196,7 @@ export interface DirectoryReader {
    * @param errorCallback   A callback indicating that there was an error reading from the Directory.
    */
   readEntries(successCallback: (entries: Entry[]) => void,
-              errorCallback?: (error: FileError) => void): void;
+    errorCallback?: (error: FileError) => void): void;
 }
 
 /** This interface represents a file on a file system. */
@@ -207,14 +207,14 @@ export interface FileEntry extends Entry {
    * @param errorCallback   A callback that is called when errors happen.
    */
   createWriter(successCallback: (writer: FileWriter) => void,
-               errorCallback?: (error: FileError) => void): void;
+    errorCallback?: (error: FileError) => void): void;
   /**
    * Returns a File that represents the current state of the file that this FileEntry represents.
    * @param successCallback A callback that is called with the File.
    * @param errorCallback   A callback that is called when errors happen.
    */
   file(successCallback: (file: File) => void,
-       errorCallback?: (error: FileError) => void): void;
+    errorCallback?: (error: FileError) => void): void;
 }
 
 /**
@@ -313,7 +313,7 @@ export declare var FileReader: {
   LOADING: number;
   DONE: number;
 
-  new(): FileReader;
+  new (): FileReader;
 };
 
 export interface FileError {
@@ -545,7 +545,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getDirectory(fse, dirName, {create: false});
+        return this.getDirectory(fse, dirName, { create: false });
       })
       .then((de) => {
         return this.remove(de);
@@ -562,7 +562,7 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<DirectoryEntry|Entry>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
    */
   @CordovaCheck()
-  moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry|Entry> {
+  moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry | Entry> {
     newDirName = newDirName || dirName;
 
     if ((/^\//.test(newDirName))) {
@@ -573,7 +573,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getDirectory(fse, dirName, {create: false});
+        return this.getDirectory(fse, dirName, { create: false });
       })
       .then((srcde) => {
         return this.resolveDirectoryUrl(newPath)
@@ -602,7 +602,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getDirectory(fse, dirName, {create: false});
+        return this.getDirectory(fse, dirName, { create: false });
       })
       .then((srcde) => {
         return this.resolveDirectoryUrl(newPath)
@@ -629,7 +629,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getDirectory(fse, dirName, {create: false, exclusive: false});
+        return this.getDirectory(fse, dirName, { create: false, exclusive: false });
       })
       .then((de) => {
         let reader = de.createReader();
@@ -654,7 +654,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getDirectory(fse, dirName, {create: false});
+        return this.getDirectory(fse, dirName, { create: false });
       })
       .then((de) => {
         return this.rimraf(de);
@@ -737,7 +737,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getFile(fse, fileName, {create: false});
+        return this.getFile(fse, fileName, { create: false });
       })
       .then((fe) => {
         return this.remove(fe);
@@ -754,7 +754,7 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   writeFile(path: string, fileName: string,
-                   text: string | Blob | ArrayBuffer, options: WriteOptions = {}): Promise<any> {
+    text: string | Blob | ArrayBuffer, options: WriteOptions = {}): Promise<any> {
     if ((/^\//.test(fileName))) {
       const err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -829,7 +829,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((directoryEntry: DirectoryEntry) => {
-        return this.getFile(directoryEntry, file, {create: false});
+        return this.getFile(directoryEntry, file, { create: false });
       })
       .then((fileEntry: FileEntry) => {
         let reader = new FileReader();
@@ -840,7 +840,7 @@ export class File extends IonicNativePlugin {
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {
-              reject({code: null, message: 'READER_ONLOADEND_ERR'});
+              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
             }
           };
           fileEntry.file(file => {
@@ -871,7 +871,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((directoryEntry: DirectoryEntry) => {
-        return this.getFile(directoryEntry, file, {create: false});
+        return this.getFile(directoryEntry, file, { create: false });
       })
       .then((fileEntry: FileEntry) => {
         let reader = new FileReader();
@@ -882,7 +882,7 @@ export class File extends IonicNativePlugin {
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {
-              reject({code: null, message: 'READER_ONLOADEND_ERR'});
+              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
             }
           };
 
@@ -914,7 +914,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((directoryEntry: DirectoryEntry) => {
-        return this.getFile(directoryEntry, file, {create: false});
+        return this.getFile(directoryEntry, file, { create: false });
       })
       .then((fileEntry: FileEntry) => {
         let reader = new FileReader();
@@ -925,7 +925,7 @@ export class File extends IonicNativePlugin {
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {
-              reject({code: null, message: 'READER_ONLOADEND_ERR'});
+              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
             }
           };
 
@@ -955,7 +955,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((directoryEntry: DirectoryEntry) => {
-        return this.getFile(directoryEntry, file, {create: false});
+        return this.getFile(directoryEntry, file, { create: false });
       })
       .then((fileEntry: FileEntry) => {
         let reader = new FileReader();
@@ -966,7 +966,7 @@ export class File extends IonicNativePlugin {
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {
-              reject({code: null, message: 'READER_ONLOADEND_ERR'});
+              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
             }
           };
 
@@ -1001,7 +1001,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getFile(fse, fileName, {create: false});
+        return this.getFile(fse, fileName, { create: false });
       })
       .then((srcfe) => {
         return this.resolveDirectoryUrl(newPath)
@@ -1032,7 +1032,7 @@ export class File extends IonicNativePlugin {
 
     return this.resolveDirectoryUrl(path)
       .then((fse) => {
-        return this.getFile(fse, fileName, {create: false});
+        return this.getFile(fse, fileName, { create: false });
       })
       .then((srcfe) => {
         return this.resolveDirectoryUrl(newPath)
@@ -1048,7 +1048,7 @@ export class File extends IonicNativePlugin {
   private fillErrorMessage(err: FileError): void {
     try {
       err.message = this.cordovaFileError[err.code];
-    } catch (e) {}
+    } catch (e) { }
   }
 
   /**
@@ -1144,7 +1144,7 @@ export class File extends IonicNativePlugin {
   private remove(fe: Entry): Promise<RemoveResult> {
     return new Promise<RemoveResult>((resolve, reject) => {
       fe.remove(() => {
-        resolve({success: true, fileRemoved: fe});
+        resolve({ success: true, fileRemoved: fe });
       }, (err) => {
         this.fillErrorMessage(err);
         reject(err);
@@ -1200,7 +1200,7 @@ export class File extends IonicNativePlugin {
   private rimraf(de: DirectoryEntry): Promise<RemoveResult> {
     return new Promise<RemoveResult>((resolve, reject) => {
       de.removeRecursively(() => {
-        resolve({success: true, fileRemoved: de});
+        resolve({ success: true, fileRemoved: de });
       }, (err) => {
         this.fillErrorMessage(err);
         reject(err);

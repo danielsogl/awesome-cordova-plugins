@@ -14,7 +14,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * ...
  *
- * this.headerColor.tint("#becb29");
+ * this.headerColor.tint('#becb29');
  * ```
  */
 @Plugin({

@@ -150,7 +150,7 @@ function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any 
   return p;
 }
 
-function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts: any= {}) {
+function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
   return getPromise((resolve, reject) => {
     const pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts);
     if (pluginResult) {
@@ -225,7 +225,7 @@ export function overrideFunction(pluginObj: any, methodName: string, args: any[]
     if (availabilityCheck === true) {
       const pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
       pluginInstance[methodName] = observer.next.bind(observer);
-      return () => pluginInstance[methodName] = () => {};
+      return () => pluginInstance[methodName] = () => { };
     } else {
       observer.error(availabilityCheck);
       observer.complete();

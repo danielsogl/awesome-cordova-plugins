@@ -6,7 +6,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * PayPal plugin for Cordova/Ionic Applications
  *
  * @usage
- * ```
+ * ```typescript
  * import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
  *
  * constructor(private payPal: PayPal) { }
@@ -15,8 +15,8 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  *
  * this.payPal.init({
- *   PayPalEnvironmentProduction: "YOUR_PRODUCTION_CLIENT_ID",
- *   PayPalEnvironmentSandbox: "YOUR_SANDBOX_CLIENT_ID"
+ *   PayPalEnvironmentProduction: 'YOUR_PRODUCTION_CLIENT_ID',
+ *   PayPalEnvironmentSandbox: 'YOUR_SANDBOX_CLIENT_ID'
  * }).then(() => {
  *   // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
  *   this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
@@ -77,7 +77,7 @@ export class PayPal extends IonicNativePlugin {
    * @returns {Promise<string>}
    */
   @Cordova()
-  version(): Promise<string> {return; }
+  version(): Promise<string> { return; }
 
   /**
    * You must preconnect to PayPal to prepare the device for processing payments.
@@ -89,7 +89,7 @@ export class PayPal extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  init(clientIdsForEnvironments: PayPalEnvironment): Promise<any> {return; }
+  init(clientIdsForEnvironments: PayPalEnvironment): Promise<any> { return; }
 
   /**
    * You must preconnect to PayPal to prepare the device for processing payments.
@@ -101,7 +101,7 @@ export class PayPal extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  prepareToRender(environment: string, configuration: PayPalConfiguration): Promise<any> {return; }
+  prepareToRender(environment: string, configuration: PayPalConfiguration): Promise<any> { return; }
 
   /**
    * Start PayPal UI to collect payment from the user.
@@ -112,7 +112,7 @@ export class PayPal extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  renderSinglePaymentUI(payment: PayPalPayment): Promise<any> {return; }
+  renderSinglePaymentUI(payment: PayPalPayment): Promise<any> { return; }
 
   /**
    * Once a user has consented to future payments, when the user subsequently initiates a PayPal payment
@@ -125,14 +125,14 @@ export class PayPal extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  clientMetadataID(): Promise<any> {return; }
+  clientMetadataID(): Promise<any> { return; }
 
   /**
    * Please Read Docs on Future Payments at https://github.com/paypal/PayPal-iOS-SDK#future-payments
    * @returns {Promise<any>}
    */
   @Cordova()
-  renderFuturePaymentUI(): Promise<any> {return; }
+  renderFuturePaymentUI(): Promise<any> { return; }
 
   /**
    * Please Read Docs on Profile Sharing at https://github.com/paypal/PayPal-iOS-SDK#profile-sharing
@@ -142,7 +142,7 @@ export class PayPal extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  renderProfileSharingUI(scopes: string[]): Promise<any> {return; }
+  renderProfileSharingUI(scopes: string[]): Promise<any> { return; }
 }
 
 export interface PayPalEnvironment {

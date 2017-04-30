@@ -6,7 +6,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * Opens an app's page in the market place (Google Play, App Store)
  *
  * @usage
- * ```
+ * ```typescript
  * import { Market } from '@ionic-native/market';
  *
  * constructor(private market: Market) { }

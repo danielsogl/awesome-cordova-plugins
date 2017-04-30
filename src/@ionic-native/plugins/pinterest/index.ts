@@ -133,7 +133,7 @@ export interface PinterestPin {
  * Cordova plugin for Pinterest
  *
  * @usage
- * ```
+ * ```typescript
  * import { Pinterest, PinterestUser, PinterestPin, PinterestBoard } from '@ionic-native/pinterest';
  *
  * constructor(private pinterest: Pinterest) { }

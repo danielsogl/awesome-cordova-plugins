@@ -9,7 +9,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * This plugin adds turning on/off the device backlight.
  *
  * @usage
- * ```
+ * ```typescript
  * import { Backlight } from '@ionic-native/backlight';
  *
  * constructor(private backlight: Backlight) { }

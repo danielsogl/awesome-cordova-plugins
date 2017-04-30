@@ -43,7 +43,7 @@ export interface ZBarOptions {
  * Requires Cordova plugin: `cordova-plugin-cszbar`. For more info, please see the [zBar plugin docs](https://github.com/tjwoon/csZBar).
  *
  * @usage
- * ```
+ * ```typescript
  * import { ZBar, ZBarOptions } from '@ionic-native/z-bar';
  *
  * constructor(private zbar: ZBar) { }
@@ -51,7 +51,7 @@ export interface ZBarOptions {
  * ...
  *
  * let ZBarOptions = {
- *       flash: "off",
+ *       flash: 'off',
  *       drawSight: false
  *     };
  *

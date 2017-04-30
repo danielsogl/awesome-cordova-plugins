@@ -17,7 +17,6 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * this.flashlight.switchOn();
  *
- *
  * ```
  */
 @Plugin({

@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
  * An Ionic plugin to use Taptic Engine API on iPHone 7, 7 Plus or newer.
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { TapticEngine } from '@ionic-native/taptic-engine';
  *
  * ...

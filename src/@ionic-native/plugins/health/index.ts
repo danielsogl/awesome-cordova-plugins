@@ -160,7 +160,7 @@ export interface HealthData {
  * A plugin that abstracts fitness and health repositories like Apple HealthKit or Google Fit.
  *
  * @usage
- * ```
+ * ```typescript
  * import { Health } from '@ionic-native/health';
  *
  *

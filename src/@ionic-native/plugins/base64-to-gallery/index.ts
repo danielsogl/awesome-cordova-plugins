@@ -40,7 +40,7 @@ export class Base64ToGallery extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 3
   })
-  base64ToGallery(data: string, options?: {prefix?: string; mediaScanner?: boolean}): Promise<any> {
+  base64ToGallery(data: string, options?: { prefix?: string; mediaScanner?: boolean }): Promise<any> {
     return;
   }
 

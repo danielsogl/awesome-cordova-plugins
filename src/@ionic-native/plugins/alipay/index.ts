@@ -67,7 +67,7 @@ export interface AlipayOrder {
  * Requires Cordova plugin: `cordova-alipay-base`. For more info, please see the [Alipay plugin docs](https://github.com/xueron/cordova-alipay-base).
  *
  * @usage
- * ```
+ * ```typescript
  * import { Alipay, AlipayOrder } from '@ionic-native/alipay';
  *
  * constructor(private alipay: Alipay) {
@@ -112,4 +112,3 @@ export class Alipay extends IonicNativePlugin {
   @Cordova()
   pay(order: AlipayOrder): Promise<any> { return; }
 }
-

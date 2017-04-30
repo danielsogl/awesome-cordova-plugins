@@ -46,7 +46,7 @@ export class SpinnerDialog extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void {}
+  show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void { }
 
   /**
    * Hides the spinner dialog if visible
@@ -54,6 +54,6 @@ export class SpinnerDialog extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  hide(): void {}
+  hide(): void { }
 
 }

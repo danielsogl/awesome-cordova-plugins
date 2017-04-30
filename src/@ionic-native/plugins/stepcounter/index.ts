@@ -10,7 +10,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * - read device's stepcounter data
  *
  * @usage
- * ```
+ * ```typescript
  * import { Stepcounter } from '@ionic-native/stepcounter';
  *
  * constructor(private stepcounter: Stepcounter) { }

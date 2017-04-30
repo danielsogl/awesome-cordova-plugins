@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
  * cdvphotolibrary urls should be trusted by Angular. See plugin homepage to learn how.
  *
  * @usage
- * ```
+ * ```typescript
  * import { PhotoLibrary } from '@ionic-native/photo-library';
  *
  * constructor(private photoLibrary: PhotoLibrary) { }
@@ -32,10 +32,10 @@ import { Injectable } from '@angular/core';
  *       });
  *     },
  *     error: err => {},
- *     complete: () => { console.log("could not get photos"); }
+ *     complete: () => { console.log('could not get photos'); }
  *   });
  * })
- * .catch(err => console.log("permissions weren't granted"));
+ * .catch(err => console.log('permissions weren't granted'));
  *
  * ```
  */
@@ -57,8 +57,8 @@ export class PhotoLibrary extends IonicNativePlugin {
    */
   @CordovaFiniteObservable({
     callbackOrder: 'reverse',
-    resultFinalPredicate: (result: {isLastChunk: boolean}) => { return result.isLastChunk; },
-    resultTransform: (result: {library: LibraryItem[]}) => { return result.library; },
+    resultFinalPredicate: (result: { isLastChunk: boolean }) => { return result.isLastChunk; },
+    resultTransform: (result: { library: LibraryItem[] }) => { return result.library; },
   })
   getLibrary(options?: GetLibraryOptions): Observable<LibraryItem[]> { return; }
 

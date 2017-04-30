@@ -7,7 +7,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * Plugin that lets you provide haptic or acoustic feedback on Android devices.
  *
  * @usage
- * ```
+ * ```typescript
  * import { DeviceFeedback } from '@ionic-native/device-feedback';
  *
  * constructor(private deviceFeedback: DeviceFeedback) { }

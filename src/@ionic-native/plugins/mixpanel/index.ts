@@ -9,7 +9,7 @@ declare var mixpanel: any;
  * Cordova Plugin that wraps Mixpanel SDK for Android and iOS
  *
  * @usage
- * ```
+ * ```typescript
  * import { Mixpanel, MixpanelPeople } from '@ionic-native/mixpanel';
  *
  * constructor(private mixpanel: Mixpanel, private mixpanelPeople: MixpanelPeople) { }
