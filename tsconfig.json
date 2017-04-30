@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "stripInternal": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "paths": {
+      "@ionic-native/core": ["./dist/@ionic-native/core"]
+    },
+    "rootDir": ".",
+    "target": "es5",
+    "skipLibCheck": true,
+    "lib": ["es2015", "dom"]
+  }
+}

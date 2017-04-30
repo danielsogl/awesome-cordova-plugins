@@ -21,13 +21,17 @@ function run {
     ./git/clone.sh --repository="ionic-site" \
       --directory="$SITE_DIR" \
       --branch="master"
-    ls -al $SITE_DIR
+    cd $SITE_DIR
+    ls -al
   else
     echo "using existing"
     cd $SITE_DIR
     git reset --hard
     git pull origin master
   fi
+
+  git rm -rf content/docs/native/*/ || true
+
 }
 
 source $(dirname $0)/../utils.inc.sh

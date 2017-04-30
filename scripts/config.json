@@ -1,5 +1,6 @@
 {
   "sitePath": "../ionic-site",
-  "v2DocsDir": "docs/v2/native",
-  "docsDest": "../ionic-site/docs/v2/native"
+  "v2DocsDir": "docs/native",
+  "docsDest": "../ionic-site/content/docs/native",
+  "pluginDir": "dist/@ionic-native"
 }
