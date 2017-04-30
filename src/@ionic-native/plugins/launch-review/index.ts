@@ -10,7 +10,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * On iOS, the plugin opens the app's storepage in the App Store and focuses the Review tab, where the user can leave a review by pressing "Write a review".
  *
  * @usage
- * ```
+ * ```typescript
  * import { LaunchReview } from '@ionic-native/launch-review';
  *
  * constructor(private launchReview: LaunchReview) { }

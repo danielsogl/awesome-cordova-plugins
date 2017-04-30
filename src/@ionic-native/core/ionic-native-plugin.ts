@@ -21,7 +21,7 @@ export class IonicNativePlugin {
   /**
    * Returns the original plugin object
    */
-  static getPlugin(): any {}
+  static getPlugin(): any { }
 
   /**
    * Returns the plugin's name

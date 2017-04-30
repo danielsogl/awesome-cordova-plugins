@@ -40,7 +40,7 @@ export interface IntelSecurityDataOptions {
  * For more information please visit the [API documentation](https://software.intel.com/en-us/app-security-api/api).
  *
  * @usage
- * ```
+ * ```typescript
  * import { IntelSecurity } from '@ionic-native/intel-security';
  * ...
  * constructor(private intelSecurity: IntelSecurity) { }

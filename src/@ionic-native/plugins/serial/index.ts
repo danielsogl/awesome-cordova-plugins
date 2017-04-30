@@ -20,8 +20,7 @@ export interface SerialOpenOptions {
  * This plugin provides functions for working with Serial connections
  *
  * @usage
- *
- * ```
+ * ```typescript
  * import { Serial } from '@ionic-native/serial';
  *
  * constructor(private serial: Serial) { }

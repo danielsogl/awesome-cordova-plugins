@@ -38,6 +38,6 @@ export class Shake extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 2
   })
-  startWatch(sensitivity?: number): Observable<any> {return; }
+  startWatch(sensitivity?: number): Observable<any> { return; }
 
 }

@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface TTSOptions {
-    /** text to speak */
-    text: string;
-    /** a string like 'en-US', 'zh-CN', etc */
-    locale?: string;
-    /** speed rate, 0 ~ 1 */
-    rate?: number;
+  /** text to speak */
+  text: string;
+  /** a string like 'en-US', 'zh-CN', etc */
+  locale?: string;
+  /** speed rate, 0 ~ 1 */
+  rate?: number;
 }
 
 /**
@@ -16,7 +16,7 @@ export interface TTSOptions {
  * Text to Speech plugin
  *
  * @usage
- * ```
+ * ```typescript
  * import { TextToSpeech } from '@ionic-native/text-to-speech';
  *
  * constructor(private tts: TextToSpeech) { }

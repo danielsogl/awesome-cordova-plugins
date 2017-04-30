@@ -30,7 +30,7 @@ export interface HTTPResponse {
  * - SSL Pinning
  *
  * @usage
- * ```
+ * ```typescript
  * import { HTTP } from '@ionic-native/http';
  *
  * constructor(private http: HTTP) { }

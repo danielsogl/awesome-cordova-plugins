@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
  * This Cordova/Phonegap plugin can be used to import/export to/from a SQLite database using either SQL or JSON.
  *
  * @usage
- * ```
+ * ```typescript
  * import { SQLitePorter } from '@ionic-native/sqlite-porter';
  *
  *
@@ -15,7 +15,7 @@ import { Injectable } from '@angular/core';
  *
  * ...
  *
- * let db = window.openDatabase("Test", "1.0", "TestDB", 1 * 1024);
+ * let db = window.openDatabase('Test', '1.0', 'TestDB', 1 * 1024);
  * // or we can use SQLite plugin
  * // we will assume that we injected SQLite into this component as sqlite
  * this.sqlite.create({
@@ -28,8 +28,8 @@ import { Injectable } from '@angular/core';
  *   });
  *
  *
- * let sql = "CREATE TABLE Artist ([Id] PRIMARY KEY, [Title]);" +
- *            "INSERT INTO Artist(Id,Title) VALUES ('1','Fred');";
+ * let sql = 'CREATE TABLE Artist ([Id] PRIMARY KEY, [Title]);' +
+ *            'INSERT INTO Artist(Id,Title) VALUES ("1","Fred");';
  *
  * this.sqlitePorter.importSqlToDb(db, sql)
  *   .then(() => console.log('Imported'))

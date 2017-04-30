@@ -11,7 +11,7 @@ export type LinkedInLoginScopes = 'r_basicprofile' | 'r_emailaddress' | 'rw_comp
  * Please see the [plugin's repo](https://github.com/zyramedia/cordova-plugin-linkedin#installation) for detailed installation steps.
  *
  * @usage
- * ```
+ * ```typescript
  * import { LinkedIn } from '@ionic-native/linkedin';
  *
  * constructor(private linkedin: LinkedIn) { }

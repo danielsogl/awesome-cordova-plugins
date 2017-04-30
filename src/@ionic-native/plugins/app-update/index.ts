@@ -19,7 +19,7 @@ import { Injectable } from '@angular/core';
  *
  * Then use the following code:
  *
- * ```
+ * ```typescript
  * import { AppUpdate } from '@ionic-native/app-update';
  *
  * constructor(private appUpdate: AppUpdate) {
@@ -28,8 +28,6 @@ import { Injectable } from '@angular/core';
  *    this.appUpdate.checkAppUpdate(updateUrl);
  *
  * }
- *
- *
  * ```
  *
  * The plugin will compare the app version and update it automatically if the API has a newer version to install.
@@ -53,4 +51,3 @@ export class AppUpdate extends IonicNativePlugin {
   })
   checkAppUpdate(updateUrl: string): Promise<any> { return; }
 }
-

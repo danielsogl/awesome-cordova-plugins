@@ -8,7 +8,7 @@ declare var cordova: any;
  */
 export class SecureStorageObject {
 
-  constructor(private _objectInstance?: any) {}
+  constructor(private _objectInstance?: any) { }
 
   /**
    * Gets a stored item

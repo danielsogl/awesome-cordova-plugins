@@ -10,7 +10,7 @@ declare var cordova: any;
  * Implementation of the JINS MEME SDK
  *
  * @usage
- * ```
+ * ```typescript
  * import { JinsMeme } from '@ionic-native/jins-meme';
  *
  * constructor(private jinsMeme: JinsMeme) { }
@@ -75,11 +75,11 @@ export class JinsMeme extends IonicNativePlugin {
     observable: true
   })
   connect(target: string): Observable<any> {
-     return new Observable<any>((observer: any) => {
-       let data = cordova.plugins.JinsMemePlugin.connect(target, observer.next.bind(observer), observer.complete.bind(observer), observer.error.bind(observer));
-       return () => console.log(data);
-     });
-    }
+    return new Observable<any>((observer: any) => {
+      let data = cordova.plugins.JinsMemePlugin.connect(target, observer.next.bind(observer), observer.complete.bind(observer), observer.error.bind(observer));
+      return () => console.log(data);
+    });
+  }
   /**
    * Set auto connection mode.
    *@param {Boolean} flag
@@ -109,10 +109,10 @@ export class JinsMeme extends IonicNativePlugin {
     clearWithArgs: true
   })
   startDataReport(): Observable<any> { return; }
-   /**
-   * Stops receiving data.
-   *@returns {Promise<any>}
-   */
+  /**
+  * Stops receiving data.
+  *@returns {Promise<any>}
+  */
   @Cordova()
   stopDataReport(): Promise<any> { return; }
   /**

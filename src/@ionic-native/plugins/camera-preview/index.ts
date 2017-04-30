@@ -39,12 +39,12 @@ export interface CameraPreviewOptions {
 }
 
 export interface CameraPreviewPictureOptions {
-    /** The width in pixels, default 0 */
-    width?: number;
-    /** The height in pixels, default 0 */
-    height?: number;
-    /** The picture quality, 0 - 100, default 85 */
-    quality?: number;
+  /** The width in pixels, default 0 */
+  width?: number;
+  /** The height in pixels, default 0 */
+  height?: number;
+  /** The picture quality, 0 - 100, default 85 */
+  quality?: number;
 }
 
 /**
@@ -251,10 +251,10 @@ export class CameraPreview extends IonicNativePlugin {
   })
   setZoom(zoom?: number): Promise<any> { return; }
 
-/**
-   * Get the maximum zoom (Android)
-   * @return {Promise<any>}
-   */
+  /**
+     * Get the maximum zoom (Android)
+     * @return {Promise<any>}
+     */
   @Cordova()
   getMaxZoom(): Promise<any> { return; }
 

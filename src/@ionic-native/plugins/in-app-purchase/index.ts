@@ -8,7 +8,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * A lightweight Cordova plugin for in app purchases on iOS/Android.
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { InAppPurchase } from '@ionic-native/in-app-purchase';
  *
  * constructor(private iap: InAppPurchase) { }
@@ -44,7 +44,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @advanced
  *
- * ```ts
+ * ```typescript
  * // fist buy the product...
  * this.iap
  *   .buy('consumable_prod1')
@@ -81,7 +81,7 @@ export class InAppPurchase extends IonicNativePlugin {
   @Cordova({
     otherPromise: true
   })
-  buy(productId: string): Promise<{transactionId: string, receipt: string, signature: string, productType: string}> { return; }
+  buy(productId: string): Promise<{ transactionId: string, receipt: string, signature: string, productType: string }> { return; }
 
   /**
    * Same as buy, but for subscription based products.
@@ -91,7 +91,7 @@ export class InAppPurchase extends IonicNativePlugin {
   @Cordova({
     otherPromise: true
   })
-  subscribe(productId: string): Promise<{transactionId: string, receipt: string, signature: string, productType: string}> { return; }
+  subscribe(productId: string): Promise<{ transactionId: string, receipt: string, signature: string, productType: string }> { return; }
 
   /**
    * Call this function after purchasing a "consumable" product to mark it as consumed. On Android, you must consume products that you want to let the user purchase multiple times. If you will not consume the product after a purchase, the next time you will attempt to purchase it you will get the error message:

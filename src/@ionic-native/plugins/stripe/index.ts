@@ -85,7 +85,7 @@ export interface StripeBankAccountParams {
  * A plugin that allows you to use Stripe's Native SDKs for Android and iOS.
  *
  * @usage
- * ```
+ * ```typescript
  * import { Stripe } from '@ionic-native/stripe';
  *
  * constructor(private stripe: Stripe) { }

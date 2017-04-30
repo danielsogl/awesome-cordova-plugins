@@ -78,7 +78,7 @@ export interface FlurryAnalyticsLocation {
  * This plugin connects to Flurry Analytics SDK
  *
  * @usage
- * ```
+ * ```typescript
  * import { FlurryAnalytics } from 'ionic-native/flurry-analytics';
  *
  * constructor(private flurryAnalytics: FlurryAnalytics) { }

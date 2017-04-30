@@ -148,7 +148,7 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  moveToBackground(): void {}
+  moveToBackground(): void { }
 
   /**
    * Android allows to programmatically move from background to foreground.
@@ -157,7 +157,7 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  moveToForeground(): void {}
+  moveToForeground(): void { }
 
   /**
    * Override the back button on Android to go to background instead of closing the app.
@@ -166,7 +166,7 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  overrideBackButton(): void {}
+  overrideBackButton(): void { }
 
   /**
    * Exclude the app from the recent task list works on Android 5.0+.
@@ -175,7 +175,7 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  excludeFromTaskList(): void {}
+  excludeFromTaskList(): void { }
 
   /**
    * The method works async instead of isActive() or isEnabled().
@@ -192,7 +192,7 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  wakeUp(): void {}
+  wakeUp(): void { }
 
   /**
    * Turn screen on and show app even locked
@@ -201,6 +201,6 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  unlock(): void {}
+  unlock(): void { }
 
 }

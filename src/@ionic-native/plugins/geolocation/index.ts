@@ -74,7 +74,7 @@ export interface PositionError {
   /**
    * A message that can describe the error that occurred
    */
-   message: string;
+  message: string;
 
 }
 

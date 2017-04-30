@@ -42,12 +42,12 @@ export const GoogleMapsAnimation = {
  * @hidden
  */
 export const GoogleMapsMapTypeId = {
-    HYBRID: 'MAP_TYPE_HYBRID',
-    NONE: 'MAP_TYPE_NONE',
-    NORMAL: 'MAP_TYPE_NORMAL',
-    ROADMAP: 'MAP_TYPE_ROADMAP',
-    SATELLITE: 'MAP_TYPE_SATELLITE',
-    TERAIN: 'MAP_TYPE_TERRAIN'
+  HYBRID: 'MAP_TYPE_HYBRID',
+  NONE: 'MAP_TYPE_NONE',
+  NORMAL: 'MAP_TYPE_NORMAL',
+  ROADMAP: 'MAP_TYPE_ROADMAP',
+  SATELLITE: 'MAP_TYPE_SATELLITE',
+  TERAIN: 'MAP_TYPE_TERRAIN'
 };
 
 /**
@@ -214,13 +214,13 @@ export class GoogleMap {
   @InstanceCheck()
   addMarker(options: MarkerOptions): Promise<Marker | any> {
     return new Promise<Marker>((resolve, reject) => {
-        this._objectInstance.addMarker(options, (marker: any) => {
-          if (marker) {
-            resolve(new Marker(marker));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addMarker(options, (marker: any) => {
+        if (marker) {
+          resolve(new Marker(marker));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -230,13 +230,13 @@ export class GoogleMap {
   @InstanceCheck()
   addCircle(options: CircleOptions): Promise<Circle | any> {
     return new Promise<Circle>((resolve, reject) => {
-        this._objectInstance.addCircle(options, (circle: any) => {
-          if (circle) {
-            resolve(new Circle(circle));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addCircle(options, (circle: any) => {
+        if (circle) {
+          resolve(new Circle(circle));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -246,13 +246,13 @@ export class GoogleMap {
   @InstanceCheck()
   addPolygon(options: PolygonOptions): Promise<Polygon | any> {
     return new Promise<Polygon>((resolve, reject) => {
-        this._objectInstance.addPolygon(options, (polygon: any) => {
-          if (polygon) {
-            resolve(new Polygon(polygon));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addPolygon(options, (polygon: any) => {
+        if (polygon) {
+          resolve(new Polygon(polygon));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -262,13 +262,13 @@ export class GoogleMap {
   @InstanceCheck()
   addPolyline(options: PolylineOptions): Promise<Polyline | any> {
     return new Promise<Polyline>((resolve, reject) => {
-        this._objectInstance.addPolyline(options, (polyline: any) => {
-          if (polyline) {
-            resolve(new Polyline(polyline));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addPolyline(options, (polyline: any) => {
+        if (polyline) {
+          resolve(new Polyline(polyline));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -278,13 +278,13 @@ export class GoogleMap {
   @InstanceCheck()
   addTileOverlay(options: TileOverlayOptions): Promise<TileOverlay | any> {
     return new Promise<TileOverlay>((resolve, reject) => {
-        this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
-          if (tileOverlay) {
-            resolve(new TileOverlay(tileOverlay));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
+        if (tileOverlay) {
+          resolve(new TileOverlay(tileOverlay));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -294,13 +294,13 @@ export class GoogleMap {
   @InstanceCheck()
   addGroundOverlay(options: GroundOverlayOptions): Promise<GroundOverlay | any> {
     return new Promise<GroundOverlay>((resolve, reject) => {
-        this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
-          if (groundOverlay) {
-            resolve(new GroundOverlay(groundOverlay));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
+        if (groundOverlay) {
+          resolve(new GroundOverlay(groundOverlay));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -310,13 +310,13 @@ export class GoogleMap {
   @InstanceCheck()
   addKmlOverlay(options: KmlOverlayOptions): Promise<KmlOverlay | any> {
     return new Promise<KmlOverlay>((resolve, reject) => {
-        this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
-          if (kmlOverlay) {
-            resolve(new KmlOverlay(kmlOverlay));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
+        if (kmlOverlay) {
+          resolve(new KmlOverlay(kmlOverlay));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -370,7 +370,7 @@ export class GoogleMap {
  * @name Google Maps
  * @description This plugin uses the native Google Maps SDK
  * @usage
- * ```
+ * ```typescript
  * import {
  *  GoogleMaps,
  *  GoogleMap,

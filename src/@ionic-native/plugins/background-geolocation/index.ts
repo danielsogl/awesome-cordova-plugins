@@ -448,13 +448,13 @@ export class BackgroundGeolocation extends IonicNativePlugin {
   /**
    * Display app settings to change permissions
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   showAppSettings(): void { }
 
   /**
    * Display device location settings
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   showLocationSettings(): void { }
 
   /**

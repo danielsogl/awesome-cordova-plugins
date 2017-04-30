@@ -50,7 +50,7 @@ export interface SpeechRecognitionListeningOptionsAndroid {
  * This plugin does speech recognition using cloud services
  *
  * @usage
- * ```
+ * ```typescript
  * import { SpeechRecognition } from '@ionic-native/speech-recognition';
  *
  * constructor(private speechRecognition: SpeechRecognition) { }

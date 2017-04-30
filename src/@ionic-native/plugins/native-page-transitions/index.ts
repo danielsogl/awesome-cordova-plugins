@@ -22,7 +22,7 @@ export interface NativeTransitionOptions {
  * The Native Page Transitions plugin uses native hardware acceleration to animate your transitions between views. You have complete control over the type of transition, the duration, and direction.
  *
  * @usage
- * ```
+ * ```typescript
  * import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
  *
  * constructor(private nativePageTransitions: NativePageTransitions) { }
@@ -91,7 +91,7 @@ export class NativePageTransitions extends IonicNativePlugin {
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
-  @Cordova({platforms: ['iOS', 'Android']})
+  @Cordova({ platforms: ['iOS', 'Android'] })
   fade(options: NativeTransitionOptions): Promise<any> { return; }
 
 
@@ -100,7 +100,7 @@ export class NativePageTransitions extends IonicNativePlugin {
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
-  @Cordova({platforms: ['iOS', 'Android']})
+  @Cordova({ platforms: ['iOS', 'Android'] })
   drawer(options: NativeTransitionOptions): Promise<any> { return; }
 
 
@@ -110,7 +110,7 @@ export class NativePageTransitions extends IonicNativePlugin {
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
-  @Cordova({platforms: ['iOS']})
+  @Cordova({ platforms: ['iOS'] })
   curl(options: NativeTransitionOptions): Promise<any> { return; }
 
   /**
