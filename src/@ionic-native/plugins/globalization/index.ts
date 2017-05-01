@@ -72,12 +72,12 @@ export class Globalization extends IonicNativePlugin {
   /**
    * Returns a pattern string to format and parse dates according to the client's user preferences.
    * @param options Object with the format length and selector
-   * @returns {Promise<{pattern: string}>} Returns a promise.
+   * @returns {Promise<{ pattern: string, timezone: string, utf_offset: number, dst_offset: number }>} Returns a promise.
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getDatePattern(options: { formatLength: string, selector: string }): Promise<{ pattern: string }> { return; }
+  getDatePattern(options: { formatLength: string, selector: string }): Promise<{ pattern: string, timezone: string, utf_offset: number, dst_offset: number }> { return; }
 
   /**
    * Returns an array of the names of the months or days of the week, depending on the client's user preferences and calendar.
