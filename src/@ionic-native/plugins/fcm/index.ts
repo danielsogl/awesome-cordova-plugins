@@ -2,30 +2,6 @@ import { Plugin, IonicNativePlugin, Cordova } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-/**
- * @name FCM
- * @description
- * Provides basic functionality for Firebase Cloud Messaging
- *
- * @usage
- * ```
- * import { FCM } from 'ionic-native';
- *
- *
- * constructor(private fcm: FCM) { 
- *   fcm.subscribeToTopic('marketing1')
- *   fcm.onNotification().subscribe(data=>{
- *     if(data.wasPressed){
- *       console.log("Received in background")
- *     } else {
- *       console.log("Received in foreground")
- *     }
- *   })
- * }
- *
- *
- * ```
- */
 export interface NotificationData {
 
   /**
@@ -42,6 +18,29 @@ export interface NotificationData {
 
 }
 
+/**
+ * @name FCM
+ * @description
+ * Provides basic functionality for Firebase Cloud Messaging
+ *
+ * @usage
+ * ```
+ * import { FCM } from 'ionic-native';
+ *
+ * constructor(private fcm: FCM) { 
+ *   fcm.subscribeToTopic('marketing1')
+ *   fcm.onNotification().subscribe(data=>{
+ *     if(data.wasPressed){
+ *       console.log("Received in background")
+ *     } else {
+ *       console.log("Received in foreground")
+ *     }
+ *   })
+ * }
+ * ```
+ * @interfaces
+ * NotificationData
+ */
 @Plugin({
   pluginName: 'FCM',
   plugin: 'cordova-plugin-fcm',
@@ -71,6 +70,7 @@ export class FCM extends IonicNativePlugin {
 
   /**
    * Subscribes you to a topic
+   * @param {string} topic Topic to be subscribed to
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -80,6 +80,7 @@ export class FCM extends IonicNativePlugin {
 
   /**
    * Unubscribes you to a topic
+   * @param {string} topic Topic to be unsubscribed from
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -89,12 +90,13 @@ export class FCM extends IonicNativePlugin {
 
   /**
    * Launches on incoming notification
+   * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,
     successIndex: 0,
     errorIndex: 2
   })
-  onNotification(): Observable<any> { return; }
+  onNotification(): Observable<NotificationData> { return; }
 
 }
