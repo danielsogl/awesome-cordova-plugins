@@ -24,19 +24,33 @@ export interface NotificationData {
  * Provides basic functionality for Firebase Cloud Messaging
  *
  * @usage
- * ```
+ * ```typescript
  * import { FCM } from 'ionic-native';
  *
- * constructor(private fcm: FCM) { 
- *   fcm.subscribeToTopic('marketing1')
- *   fcm.onNotification().subscribe(data=>{
- *     if(data.wasPressed){
- *       console.log("Received in background")
- *     } else {
- *       console.log("Received in foreground")
- *     }
- *   })
- * }
+ * constructor(private fcm: FCM) {}
+ * 
+ * ...
+ * 
+ * fcm.subscribeToTopic('marketing');
+ * 
+ * fcm.getToken().then(token=>{
+ *   backend.registerToken(token);
+ * })
+ * 
+ * fcm.onNotification().subscribe(data=>{
+ *   if(data.wasPressed){
+ *     console.log("Received in background");
+ *   } else {
+ *     console.log("Received in foreground");
+ *   };
+ * })
+ * 
+ * fcm.onTokenRefresh().subscribe(token=>{
+ *   backend.registerToken(token);
+ * })
+ * 
+ * fcm.unsubscribeToTopic('marketing');
+ * 
  * ```
  * @interfaces
  * NotificationData
@@ -53,14 +67,36 @@ export class FCM extends IonicNativePlugin {
 
   /**
    * Get's device's current registration id
-   * @returns {Promise<string>}
+   * 
+   * ```typescript
+   * 
+   * fcm.getToken().then(token=>{
+   *   backend.registerToken(token)
+   * })
+   * 
+   * ```
+   * 
+   * @returns {Promise<string>} Returns a Promise that resolves with the registration id token
    */
   @Cordova()
   getToken(): Promise<string> { return; }
 
   /**
    * Event firing on the token refresh
-   * @returns {Observable<string>}
+   * 
+   * ```typescript
+   * 
+   * let tokenChange = fcm.onTokenRefresh().subscribe(token=>{
+   *   backend.registerToken(token)
+   * })
+   * 
+   * // To unsubscribe from changes 
+   * 
+   * tokenChange.unsubscribe()
+   * 
+   * ```
+   * 
+   * @returns {Observable<string>} Returns an Observable that notifies with the change of device's registration id
    */
   @Cordova({
     observable: true,
@@ -69,9 +105,17 @@ export class FCM extends IonicNativePlugin {
   onTokenRefresh(): Observable<string> { return; }
 
   /**
-   * Subscribes you to a topic
+   * Subscribes you to a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
+   * 
+   * ```typescript
+   * 
+   * fcm.subscribeToTopic('marketing');
+   * 
+   * ```
+   * 
    * @param {string} topic Topic to be subscribed to
-   * @returns {Promise<any>}
+   * 
+   * @returns {Promise<any>} Returns a promise resolving in result of subscribing to a topic
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -79,9 +123,17 @@ export class FCM extends IonicNativePlugin {
   subscribeToTopic(topic: string): Promise<any> { return; }
 
   /**
-   * Unubscribes you to a topic
+   * Unubscribes you from a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
+   * 
+   * ```typescript
+   * 
+   * fcm.unsubscribeToTopic('marketing');
+   * 
+   * ```
+   * 
    * @param {string} topic Topic to be unsubscribed from
-   * @returns {Promise<any>}
+   * 
+   * @returns {Promise<any>} Returns a promise resolving in result of unsubscribing from a topic
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -89,8 +141,25 @@ export class FCM extends IonicNativePlugin {
   unsubscribeToTopic(topic: string): Promise<any> { return; }
 
   /**
-   * Launches on incoming notification
-   * @returns {Observable<any>}
+   * Watch for incoming notifications
+   * 
+   * ```typescript
+   * 
+   * let notificationStream = fcm.onNotification().subscribe(data=>{
+   *   if(data.wasPressed){
+   *     console.log("Received in background:",JSON.parse(data));
+   *   } else {
+   *     console.log("Received in foreground:",JSON.parse(data));
+   *   };
+   * })
+   * 
+   * // To unsubscribe from notifications 
+   * 
+   * notificationStream.unsubscribe()
+   * 
+   * ```
+   * 
+   * @returns {Observable<any>} returns an object with data from the notification
    */
   @Cordova({
     observable: true,
