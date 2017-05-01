@@ -1,5 +1,6 @@
 import { Plugin, IonicNativePlugin, Cordova } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * @name FCM
@@ -25,6 +26,22 @@ import { Injectable } from '@angular/core';
  *
  * ```
  */
+export interface NotificationData {
+
+  /**
+   * Determines whether the notification was pressed or not
+   */
+
+  wasTapped: boolean;
+
+  /**
+   * Notification data hash item
+   */
+
+  [name: string]: any;
+
+}
+
 @Plugin({
   pluginName: 'FCM',
   plugin: 'cordova-plugin-fcm',
@@ -40,14 +57,17 @@ export class FCM extends IonicNativePlugin {
    * @returns {Promise<string>}
    */
   @Cordova()
-  getToken() { return; }
+  getToken(): Promise<string> { return; }
 
   /**
    * Event firing on the token refresh
    * @returns {Observable<string>}
    */
-  @Cordova()
-  onTokenRefresh(callback: (token: string) => void) { return; }
+  @Cordova({
+    observable: true,
+    successIndex: 0
+  })
+  onTokenRefresh(): Observable<string> { return; }
 
   /**
    * Subscribes you to a topic
@@ -56,7 +76,7 @@ export class FCM extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  subscribeToTopic(topic: string) { return; }
+  subscribeToTopic(topic: string): Promise<any> { return; }
 
   /**
    * Unubscribes you to a topic
@@ -65,15 +85,16 @@ export class FCM extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  unsubscribeToTopic(topic: string) { return; }
+  unsubscribeToTopic(topic: string): Promise<any> { return; }
 
   /**
    * Launches on incoming notification
    */
   @Cordova({
     observable: true,
-    callbackOrder: 'reverse'
+    successIndex: 0,
+    errorIndex: 2
   })
-  onNotification(callback?: (data: any) => void) { return; }
+  onNotification(): Observable<any> { return; }
 
 }
