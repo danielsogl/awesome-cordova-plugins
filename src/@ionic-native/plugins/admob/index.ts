@@ -97,7 +97,7 @@ export interface AdExtras {
  * ```typescript
  * import { AdMob } from '@ionic-native/admob';
  *
- * constructor(private admob: AdMob){}
+ * constructor(private admob: AdMob) { }
  *
  * ionViewDidLoad() {
  *   this.admob.onAdDismiss()
