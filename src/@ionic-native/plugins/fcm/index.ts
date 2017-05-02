@@ -79,8 +79,7 @@ export class FCM extends IonicNativePlugin {
    * @returns {Observable<string>} Returns an Observable that notifies with the change of device's registration id
    */
   @Cordova({
-    observable: true,
-    successIndex: 0
+    observable: true
   })
   onTokenRefresh(): Observable<string> { return; }
 
@@ -91,9 +90,7 @@ export class FCM extends IonicNativePlugin {
    * 
    * @returns {Promise<any>} Returns a promise resolving in result of subscribing to a topic
    */
-  @Cordova({
-    callbackOrder: 'reverse'
-  })
+  @Cordova()
   subscribeToTopic(topic: string): Promise<any> { return; }
 
   /**
@@ -103,9 +100,7 @@ export class FCM extends IonicNativePlugin {
    * 
    * @returns {Promise<any>} Returns a promise resolving in result of unsubscribing from a topic
    */
-  @Cordova({
-    callbackOrder: 'reverse'
-  })
+  @Cordova()
   unsubscribeToTopic(topic: string): Promise<any> { return; }
 
   /**
