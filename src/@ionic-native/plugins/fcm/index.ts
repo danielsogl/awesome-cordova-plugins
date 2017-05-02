@@ -68,14 +68,6 @@ export class FCM extends IonicNativePlugin {
   /**
    * Get's device's current registration id
    * 
-   * ```typescript
-   * 
-   * fcm.getToken().then(token=>{
-   *   backend.registerToken(token)
-   * })
-   * 
-   * ```
-   * 
    * @returns {Promise<string>} Returns a Promise that resolves with the registration id token
    */
   @Cordova()
@@ -83,18 +75,6 @@ export class FCM extends IonicNativePlugin {
 
   /**
    * Event firing on the token refresh
-   * 
-   * ```typescript
-   * 
-   * let tokenChange = fcm.onTokenRefresh().subscribe(token=>{
-   *   backend.registerToken(token)
-   * })
-   * 
-   * // To unsubscribe from changes 
-   * 
-   * tokenChange.unsubscribe()
-   * 
-   * ```
    * 
    * @returns {Observable<string>} Returns an Observable that notifies with the change of device's registration id
    */
@@ -106,12 +86,6 @@ export class FCM extends IonicNativePlugin {
 
   /**
    * Subscribes you to a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
-   * 
-   * ```typescript
-   * 
-   * fcm.subscribeToTopic('marketing');
-   * 
-   * ```
    * 
    * @param {string} topic Topic to be subscribed to
    * 
@@ -125,12 +99,6 @@ export class FCM extends IonicNativePlugin {
   /**
    * Unubscribes you from a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
    * 
-   * ```typescript
-   * 
-   * fcm.unsubscribeToTopic('marketing');
-   * 
-   * ```
-   * 
    * @param {string} topic Topic to be unsubscribed from
    * 
    * @returns {Promise<any>} Returns a promise resolving in result of unsubscribing from a topic
@@ -142,22 +110,6 @@ export class FCM extends IonicNativePlugin {
 
   /**
    * Watch for incoming notifications
-   * 
-   * ```typescript
-   * 
-   * let notificationStream = fcm.onNotification().subscribe(data=>{
-   *   if(data.wasPressed){
-   *     console.log("Received in background:",JSON.parse(data));
-   *   } else {
-   *     console.log("Received in foreground:",JSON.parse(data));
-   *   };
-   * })
-   * 
-   * // To unsubscribe from notifications 
-   * 
-   * notificationStream.unsubscribe()
-   * 
-   * ```
    * 
    * @returns {Observable<any>} returns an object with data from the notification
    */
