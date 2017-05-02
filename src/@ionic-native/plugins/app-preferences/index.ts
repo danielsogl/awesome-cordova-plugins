@@ -11,11 +11,12 @@ import { Injectable } from '@angular/core';
  * ```typescript
  * import { AppPreferences } from '@ionic-native/app-preferences';
  *
- * constructor(private appPreferences: AppPreferences) {
+ * constructor(private appPreferences: AppPreferences) { }
  *
- *   this.appPreferences.fetch('key').then((res) => { console.log(res); });
+ * ...
  *
- * }
+ * this.appPreferences.fetch('key').then((res) => { console.log(res); });
+ *
  * ```
  *
  */
