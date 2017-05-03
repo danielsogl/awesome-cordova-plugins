@@ -144,10 +144,12 @@ export class Diagnostic extends IonicNativePlugin {
   /**
    * Checks if the device has a camera. On Android this returns true if the device has a camera. On iOS this returns true if both the device has a camera AND the application is authorized to use it. On Windows 10 Mobile this returns true if both the device has a rear-facing camera AND the
    * application is authorized to use it.
+   * @param {boolean} [externalStorage] Android only: If true, checks permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
+   *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.   
    * @returns {Promise<any>}
    */
   @Cordova()
-  isCameraAvailable(): Promise<any> { return; }
+  isCameraAvailable(externalStorage?:boolean): Promise<any> { return; }
 
   /**
    * Checks if the device has Bluetooth capabilities and if so that Bluetooth is switched on (same on Android, iOS and Windows 10 Mobile)
@@ -251,24 +253,30 @@ export class Diagnostic extends IonicNativePlugin {
   /**
    * Checks if the application is authorized to use the camera.
    * Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return TRUE as permissions are already granted at installation time.
+   * @param {boolean} [externalStorage] Android only: If true, checks permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
+   *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  isCameraAuthorized(): Promise<any> { return; }
+  isCameraAuthorized(externalStorage?:boolean): Promise<any> { return; }
 
   /**
    * Returns the camera authorization status for the application.
+   * @param {boolean} [externalStorage] Android only: If true, checks permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
+   *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  getCameraAuthorizationStatus(): Promise<any> { return; }
+  getCameraAuthorizationStatus(externalStorage?:boolean): Promise<any> { return; }
 
   /**
    * Requests camera authorization for the application.
+   * @param {boolean} [externalStorage] Android only: If true, requests permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
+   *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  requestCameraAuthorization(): Promise<any> { return; }
+  requestCameraAuthorization(externalStorage?:boolean): Promise<any> { return; }
 
   /**
    * Checks if the application is authorized to use the microphone.
