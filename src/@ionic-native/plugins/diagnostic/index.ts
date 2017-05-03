@@ -149,7 +149,7 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  isCameraAvailable(externalStorage?:boolean): Promise<any> { return; }
+  isCameraAvailable( externalStorage?: boolean ): Promise<any> { return; }
 
   /**
    * Checks if the device has Bluetooth capabilities and if so that Bluetooth is switched on (same on Android, iOS and Windows 10 Mobile)
@@ -258,7 +258,7 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  isCameraAuthorized(externalStorage?:boolean): Promise<any> { return; }
+  isCameraAuthorized( externalStorage?: boolean ): Promise<any> { return; }
 
   /**
    * Returns the camera authorization status for the application.
@@ -267,7 +267,7 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  getCameraAuthorizationStatus(externalStorage?:boolean): Promise<any> { return; }
+  getCameraAuthorizationStatus( externalStorage?: boolean ): Promise<any> { return; }
 
   /**
    * Requests camera authorization for the application.
@@ -276,7 +276,7 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  requestCameraAuthorization(externalStorage?:boolean): Promise<any> { return; }
+  requestCameraAuthorization( externalStorage?: boolean ): Promise<any> { return; }
 
   /**
    * Checks if the application is authorized to use the microphone.
