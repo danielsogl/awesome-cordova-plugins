@@ -403,7 +403,12 @@ export class GoogleMap {
  *
  *  // listen to MAP_READY event
  *  // You must wait for this event to fire before adding something to the map or modifying it in anyway
- *  map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
+ *  map.one(GoogleMapsEvent.MAP_READY).then(
+ *    () => {
+ *      console.log('Map is ready!');
+ *      // Now you can add elements to the map like the marker
+ *    }
+ *  );
  *
  *  // create LatLng object
  *  let ionic: LatLng = new LatLng(43.0741904,-89.3809802);
