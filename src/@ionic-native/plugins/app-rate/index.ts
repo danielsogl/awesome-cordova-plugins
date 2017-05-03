@@ -113,9 +113,9 @@ export interface AppUrls {
  *
  * this.appRate.preferences.storeAppURL = {
  *   usesUntilPrompt: 3,
- *   ios: '<my_app_id>',
+ *   ios: '<app_id>',
  *   android: 'market://details?id=<package_name>',
- *   windows: 'ms-windows-store://review/?ProductId=<Store_ID>'
+ *   windows: 'ms-windows-store://review/?ProductId=<store_ID>'
  * };
  *
  * this.appRate.promptForRating(false);
