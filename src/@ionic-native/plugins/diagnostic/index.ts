@@ -622,10 +622,10 @@ export class Diagnostic extends IonicNativePlugin {
 
   /**
    * Returns the authorization status for the application to use the Camera Roll in Photos app.
-   * @returns {Promise<boolean>}
+   * @returns {Promise<string>}
    */
   @Cordova({ platforms: ['iOS'] })
-  getCameraRollAuthorizationStatus(): Promise<boolean> { return; }
+  getCameraRollAuthorizationStatus(): Promise<string> { return; }
 
   /**
    * Requests camera roll authorization for the application.
