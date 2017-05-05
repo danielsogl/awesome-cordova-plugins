@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaInstance, Plugin, IonicNativePlugin, checkAvailability } from '@ionic-native/core';
 
 declare var Notification: any;
 // can use a shorter name here, like PLNObject ?
@@ -8,7 +8,7 @@ export class PLNObject {
   private _objectInstance: any;
 
   constructor(title: string, options: any) {
-    if (checkCordovaAvailablity('Notification') === true) {
+    if (checkAvailability('Notification') === true) {
       this._objectInstance = new Notification(title, options);
     }
   }
