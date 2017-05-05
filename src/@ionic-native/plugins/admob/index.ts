@@ -95,9 +95,10 @@ export interface AdExtras {
  * Plugin for Google Ads, including AdMob / DFP (doubleclick for publisher) and mediations to other Ad networks.
  * @usage
  * ```typescript
- * import { AdMob, AdMobOptions, AdSize, AdExtras } from '@ionic-native/admob';
+ * import { AdMob } from '@ionic-native/admob';
+ * import { Platform } from 'ionic-angular';
  *
- * constructor(private admob: AdMob){}
+ * constructor(private admob: AdMob, private platform: Platform ) { }
  *
  * ionViewDidLoad() {
  *   this.admob.onAdDismiss()
@@ -105,7 +106,13 @@ export interface AdExtras {
  * }
  *
  * onClick() {
- *   this.admob.prepareInterstitial('YOUR_ADID')
+ *   let adId;
+ *   if(this.platform.is('android') {
+ *     adId = 'YOUR_ADID_ANDROID';
+ *   } else if (this.platform.is('ios')) {
+ *     adId = 'YOUR_ADID_IOS';
+ *   }
+ *   this.admob.prepareInterstitial(adId)
  *     .then(() => { this.admob.showInterstitial(); });
  * }
  *
