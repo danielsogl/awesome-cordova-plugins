@@ -67,7 +67,7 @@ export interface LocalNotificationOptions {
  *     if (permission === 'granted') {
  *
  *       // Create the notification
- *       this.localNotification.create("My Title", {
+ *       this.localNotification.create('My Title', {
  *         tag: 'message1',
  *         body: 'My body',
  *         icon: 'assets/icon/favicon.ico'
