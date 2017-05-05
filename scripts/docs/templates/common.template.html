@@ -164,19 +164,20 @@ docType: "<$ doc.docType $>"
 </p>
 <@ endif @>
 
-<# --- Install commands --- #>
-<h2>Installation</h2>
-<pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add --save <$ prop.plugin $><@ endif @>
-$ npm install --save @ionic-native/<$ doc.npmId $>
-</code></pre>
+<# --- Plugin description --- #>
+<$ doc.description | marked $>
+
 <p>Repo:
   <a href="<$ prop.repo $>">
     <$ prop.repo $>
   </a>
 </p>
 
-<# --- Plugin description --- #>
-<$ doc.description | marked $>
+<# --- Install commands --- #>
+<h2>Installation</h2>
+<pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add --save <$ prop.plugin $><@ endif @>
+$ npm install --save @ionic-native/<$ doc.npmId $>
+</code></pre>
 
 <# --- Plugin supported platforms --- #>
 <@ if prop.platforms @>
