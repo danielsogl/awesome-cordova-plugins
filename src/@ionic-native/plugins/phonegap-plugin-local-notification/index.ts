@@ -1,5 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaInstance, Plugin, IonicNativePlugin } from '@ionic-native/core';
+
+declare var Notification: any;
+// can use a shorter name here, like PLNObject ?
+export class PLNObject {
+
+  private _objectInstance: any;
+
+  constructor(title: string, options: any) {
+    if (checkCordovaAvailablity('Notification') === true) {
+      this._objectInstance = new Notification(title, options);
+    }
+  }
+
+  @CordovaInstance({ sync: true })
+  close(): void { }
+
+}
 
 export interface LocalNotificationOptions {
 
@@ -73,10 +90,9 @@ export class PhonegapLocalNotifications extends IonicNativePlugin {
    * @param Options {LocalNotificationOptions} An object containing optional property/value pairs.
    */
   @Cordova()
-  Notification(title: string, options: LocalNotificationOptions): void { }
+  create(title: string, options: any) { return new PLNObject(title, options); }
   /**
   * requests permission from the user to show a local notification.
-  * @function requestPermission
   * @param {Promise<any>}
   */
   @Cordova()
