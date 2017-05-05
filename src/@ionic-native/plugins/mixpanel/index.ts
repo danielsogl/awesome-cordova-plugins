@@ -98,13 +98,6 @@ export class Mixpanel extends IonicNativePlugin {
   })
   track(eventName: string, eventProperties?: any): Promise<any> { return; }
 
-  /**
-   *
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  showSurvey(): Promise<any> { return; }
-
 }
 /**
  * @hidden
