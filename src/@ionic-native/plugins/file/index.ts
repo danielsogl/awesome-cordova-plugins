@@ -821,37 +821,9 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   readAsText(path: string, file: string): Promise<string> {
-    if ((/^\//.test(file))) {
-      let err = new FileError(5);
-      err.message = 'file-name cannot start with \/';
-      return Promise.reject<any>(err);
-    }
-
-    return this.resolveDirectoryUrl(path)
-      .then((directoryEntry: DirectoryEntry) => {
-        return this.getFile(directoryEntry, file, { create: false });
-      })
-      .then((fileEntry: FileEntry) => {
-        let reader = new FileReader();
-        return new Promise<string>((resolve, reject) => {
-          reader.onloadend = () => {
-            if (reader.result !== undefined || reader.result !== null) {
-              resolve(<string>reader.result);
-            } else if (reader.error !== undefined || reader.error !== null) {
-              reject(reader.error);
-            } else {
-              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
-            }
-          };
-          fileEntry.file(file => {
-            reader.readAsText(file);
-          }, error => {
-            reject(error);
-          });
-
-        });
-      });
+    return this.readFile<string>(path, file, 'Text');
   }
+
   /**
    * Read file and return data as a base64 encoded data url.
    * A data url is of the form:
@@ -863,78 +835,18 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   readAsDataURL(path: string, file: string): Promise<string> {
-    if ((/^\//.test(file))) {
-      let err = new FileError(5);
-      err.message = 'file-name cannot start with \/';
-      return Promise.reject<any>(err);
-    }
-
-    return this.resolveDirectoryUrl(path)
-      .then((directoryEntry: DirectoryEntry) => {
-        return this.getFile(directoryEntry, file, { create: false });
-      })
-      .then((fileEntry: FileEntry) => {
-        let reader = new FileReader();
-        return new Promise<string>((resolve, reject) => {
-          reader.onloadend = () => {
-            if (reader.result !== undefined || reader.result !== null) {
-              resolve(<string>reader.result);
-            } else if (reader.error !== undefined || reader.error !== null) {
-              reject(reader.error);
-            } else {
-              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
-            }
-          };
-
-          fileEntry.file(file => {
-            reader.readAsDataURL(file);
-          }, error => {
-            reject(error);
-          });
-        });
-      });
+    return this.readFile<string>(path, file, 'DataURL');
   }
 
   /**
    * Read file and return data as a binary data.
-
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as string rejects with an error.
    */
   @CordovaCheck()
   readAsBinaryString(path: string, file: string): Promise<string> {
-    if ((/^\//.test(file))) {
-      let err = new FileError(5);
-      err.message = 'file-name cannot start with \/';
-      return Promise.reject<any>(err);
-    }
-
-    return this.resolveDirectoryUrl(path)
-      .then((directoryEntry: DirectoryEntry) => {
-        return this.getFile(directoryEntry, file, { create: false });
-      })
-      .then((fileEntry: FileEntry) => {
-        let reader = new FileReader();
-        return new Promise<string>((resolve, reject) => {
-          reader.onloadend = () => {
-            if (reader.result !== undefined || reader.result !== null) {
-              resolve(<string>reader.result);
-            } else if (reader.error !== undefined || reader.error !== null) {
-              reject(reader.error);
-            } else {
-              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
-            }
-          };
-
-          fileEntry.file(file => {
-            reader.readAsBinaryString(file);
-          }, error => {
-            reject(error);
-          });
-
-        });
-      });
+    return this.readFile<string>(path, file, 'BinaryString');
   }
 
   /**
@@ -945,6 +857,10 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   readAsArrayBuffer(path: string, file: string): Promise<ArrayBuffer> {
+    return this.readFile<ArrayBuffer>(path, file, 'ArrayBuffer');
+  }
+
+  private readFile<T>(path: string, file: string, readAs: 'ArrayBuffer' | 'BinaryString' | 'DataURL' | 'Text'): Promise<T> {
     if ((/^\//.test(file))) {
       let err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -957,10 +873,10 @@ export class File extends IonicNativePlugin {
       })
       .then((fileEntry: FileEntry) => {
         let reader = new FileReader();
-        return new Promise<ArrayBuffer>((resolve, reject) => {
+        return new Promise<T>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
-              resolve(<ArrayBuffer>reader.result);
+              resolve(<T><any>reader.result);
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {
@@ -969,7 +885,7 @@ export class File extends IonicNativePlugin {
           };
 
           fileEntry.file(file => {
-            reader.readAsArrayBuffer(file);
+            reader[`readAs${readAs}`].call(null, file);
           }, error => {
             reject(error);
           });
