@@ -833,10 +833,10 @@ export class File extends IonicNativePlugin {
       })
       .then((fileEntry: FileEntry) => {
         let reader = new FileReader();
-        return new Promise<any>((resolve, reject) => {
+        return new Promise<string>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
-              resolve(reader.result);
+              resolve(<string>reader.result);
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {
@@ -875,18 +875,16 @@ export class File extends IonicNativePlugin {
       })
       .then((fileEntry: FileEntry) => {
         let reader = new FileReader();
-        return new Promise<any>((resolve, reject) => {
+        return new Promise<string>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
-              resolve(reader.result);
+              resolve(<string>reader.result);
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {
               reject({ code: null, message: 'READER_ONLOADEND_ERR' });
             }
           };
-
-
 
           fileEntry.file(file => {
             reader.readAsDataURL(file);
@@ -918,10 +916,10 @@ export class File extends IonicNativePlugin {
       })
       .then((fileEntry: FileEntry) => {
         let reader = new FileReader();
-        return new Promise<any>((resolve, reject) => {
+        return new Promise<string>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
-              resolve(reader.result);
+              resolve(<string>reader.result);
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {
@@ -959,10 +957,10 @@ export class File extends IonicNativePlugin {
       })
       .then((fileEntry: FileEntry) => {
         let reader = new FileReader();
-        return new Promise<any>((resolve, reject) => {
+        return new Promise<ArrayBuffer>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
-              resolve(reader.result);
+              resolve(<ArrayBuffer>reader.result);
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {
