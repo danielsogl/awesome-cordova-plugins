@@ -50,7 +50,8 @@ export interface LocalNotificationOptions {
 /**
  * @name Phonegap Local Notification
  * @description
- * This plugin does something
+ * The Local Notification plugin gives developers the ability to post notifications from their app that show up in the device’s notification area.
+ * The API for the local notification plugin follows the W3C Web Notifications specification: https://www.w3.org/TR/notifications/
  *
  * @usage
  * ```
@@ -63,11 +64,15 @@ export interface LocalNotificationOptions {
  *
  * this.localNotification.requestPermission().then(
  *   (permission) => {
- *     if (permission === ‘granted’) {
- *      let notification = new Notification(“My title”, {
- *            tag: ‘message1’,
- *            body: “My body”
- *      });
+ *     if (permission === 'granted') {
+ *
+ *       // Create the notification
+ *       let notification = this.localNotification.create("My Title", {
+ *         tag: 'message1',
+ *         body: 'My body',
+ *         icon: 'assets/icon/favicon.ico'
+ *       });
+ *
  *     }
  *   }
  * );
@@ -79,7 +84,7 @@ export interface LocalNotificationOptions {
   plugin: 'phonegap-local-notifications',
   pluginRef: 'Notification',
   repo: 'https://github.com/phonegap/phonegap-plugin-local-notification',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS', 'Browser']
 })
 @Injectable()
 export class PhonegapLocalNotifications extends IonicNativePlugin {
