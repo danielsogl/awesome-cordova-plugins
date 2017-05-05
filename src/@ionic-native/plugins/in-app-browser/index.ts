@@ -145,7 +145,7 @@ export class InAppBrowserObject {
  * ...
  *
  *
- * const browser = this.iab.create('https://ionic.io');
+ * const browser = this.iab.create('https://ionicframework.com/');
  *
  * browser.executeScript(...);
  * browser.insertCSS(...);
