@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
- * @beta
  * @name Native Geocoder
  * @description
  * Cordova plugin for native forward and reverse geocoding
