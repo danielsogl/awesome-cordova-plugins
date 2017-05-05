@@ -90,7 +90,7 @@ export class TouchID extends IonicNativePlugin {
   verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string): Promise<any> { return; }
 
   /**
-   * Checks if the fingerpringt database changed.
+   * Checks if the fingerprint database changed.
    *
    * @returns {Promise<any>} Returns a Promise that resolves if yes, rejects if no.
    */
