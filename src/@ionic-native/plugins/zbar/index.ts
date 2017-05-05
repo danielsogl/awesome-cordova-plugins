@@ -50,7 +50,7 @@ export interface ZBarOptions {
  *
  * ...
  *
- * let options: ZBarOptions = {
+ * const options: ZBarOptions = {
  *       flash: 'off',
  *       drawSight: false
  *     };
