@@ -93,12 +93,13 @@ export class PhonegapLocalNotifications extends IonicNativePlugin {
    * A global object that lets you interact with the Notification API.
    * @param title {string} Title of the local notification.
    * @param Options {LocalNotificationOptions} An object containing optional property/value pairs.
+   * @returns {PLNObject}
    */
   create(title: string, options: any) { return new PLNObject(title, options); }
 
   /**
   * requests permission from the user to show a local notification.
-  * @param {Promise<any>}
+  * @returns {Promise<any>}
   */
   @Cordova()
   requestPermission(): Promise<any> { return; }
