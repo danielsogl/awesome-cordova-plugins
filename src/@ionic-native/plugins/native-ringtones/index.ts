@@ -34,12 +34,26 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class NativeRingtones extends IonicNativePlugin {
 
+  /**
+   * Get the ringtone list of the device
+   * @return {Promise<any>} Returns a promise that resolves when ringtones found successfully
+   */
   @Cordova()
   getRingtone(): Promise<any> { return; }
 
+  /**
+   * This function starts playing the ringtone
+   * @param {string} ringtoneUri The path to the ringtone file
+   * @return {Promise<any>} Returns a promise
+   */
   @Cordova()
   playRingtone(ringtoneUri: string): Promise<any> { return; }
 
+  /**
+   * This function stops playing the ringtone
+   * @param {string} ringtoneUri The path to the ringtone file
+   * @return {Promise<any>} Returns a promise
+   */
   @Cordova()
   stopRingtone(ringtoneUri: string): Promise<any> { return; }
 }
