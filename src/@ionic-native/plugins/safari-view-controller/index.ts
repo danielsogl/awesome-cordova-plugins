@@ -2,18 +2,16 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface SafariViewControllerOptions {
-  url?: string;
-  hidden?: boolean;
   animated?: boolean;
-  transition?: string;
-  tintColor?: string;
-  controlTintColor?: string;
   barColor?: string;
-  toolbarColor?: string;  
-  showDefaultShareMenuItem?: boolean;
+  controlTintColor?: string;
   enterReaderModeIfAvailable?: boolean;
-  
-  
+  hidden?: boolean;
+  showDefaultShareMenuItem?: boolean;
+  tintColor?: string;
+  toolbarColor?: string;  
+  transition?: string;
+  url?: string;
 }
 
 /**
