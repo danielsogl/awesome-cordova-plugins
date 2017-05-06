@@ -1,19 +1,26 @@
-import { Plugin, IonicNativePlugin, Cordova } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
+ * @beta
  * @name Native Ringtones
  * @description
+ * The plugin helps get the native ringtones list on Android or IOS devices.
+ * And you can also use this plugin to play or stop the native ringtones and custom ringtones(added in the www folder).
  *
  * @usage
  * ```
- * import { native-ringtones } from 'ionic-native';
+ * import { NativeRingtones } from '@ionic-native/native-ringtones';
  *
  *
- * constructor(private native-ringtones: native-ringtones) { }
+ * constructor(private ringtones: NativeRingtones) { }
  *
  * ...
+ * this.ringtones.getRingtone().then((ringtones) => { console.log(ringtones); });
  *
+ * this.ringtones.playRingtone('assets/ringtones/sound_1.caf');
+ *
+ * this.ringtones.stopRingtone('assets/ringtones/sound_1.caf');
  *
  * ```
  */
