@@ -71,6 +71,9 @@ export class InAppBrowserObject {
    * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.
    * @param {string} url     The URL to load.
    * @param {string} [target="self"]  The target in which to load the URL, an optional parameter that defaults to _self.
+   *                 _self: Opens in the WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
+   *                 _blank: Opens in the InAppBrowser.
+   *                 _system: Opens in the system's web browser.
    * @param {string | InAppBrowserOptions} [options] Options for the InAppBrowser. Optional, defaulting to: location=yes.
    *                 The options string must not contain any blank space, and each feature's
    *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
