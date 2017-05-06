@@ -9,6 +9,7 @@ export interface SafariViewControllerOptions {
   hidden?: boolean;
   showDefaultShareMenuItem?: boolean;
   tintColor?: string;
+  toolbarColor?: string;
   transition?: string;
   url?: string;
 }
