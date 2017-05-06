@@ -151,6 +151,15 @@ export class BackgroundMode extends IonicNativePlugin {
   moveToBackground(): void { }
 
   /**
+   * Enable GPS-tracking in background (Android).
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  disableWebViewOptimizations (): void { }
+
+  /**
    * Android allows to programmatically move from background to foreground.
    */
   @Cordova({
