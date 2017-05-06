@@ -10,7 +10,7 @@ declare var mixpanel: any;
  *
  * @usage
  * ```typescript
- * import { Mixpanel, MixpanelPeople } from '@ionic-native/mixpanel';
+ * import { Mixpanel } from '@ionic-native/mixpanel';
  *
  * constructor(private mixpanel: Mixpanel, private mixpanelPeople: MixpanelPeople) { }
  *
@@ -97,13 +97,6 @@ export class Mixpanel extends IonicNativePlugin {
     errorIndex: 3
   })
   track(eventName: string, eventProperties?: any): Promise<any> { return; }
-
-  /**
-   *
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  showSurvey(): Promise<any> { return; }
 
 }
 /**

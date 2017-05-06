@@ -79,7 +79,7 @@ export class Contact implements IContactProperties {
 
   @InstanceCheck()
   clone(): Contact {
-    let newContact = new Contact();
+    let newContact: any = new Contact();
     for (let prop in this) {
       if (prop === 'id') return;
       newContact[prop] = this[prop];
