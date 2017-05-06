@@ -95,7 +95,7 @@ export class PhonegapLocalNotifications extends IonicNativePlugin {
    * @param Options {LocalNotificationOptions} An object containing optional property/value pairs.
    * @returns {PLNObject}
    */
-  create(title: string, options: any) { return new PLNObject(title, options); }
+  create(title: string, options: LocalNotificationOptions) { return new PLNObject(title, options); }
 
   /**
   * requests permission from the user to show a local notification.
