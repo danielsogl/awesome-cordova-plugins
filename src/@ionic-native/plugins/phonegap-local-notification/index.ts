@@ -7,7 +7,7 @@ export class PLNObject {
 
   private _objectInstance: any;
 
-  constructor(title: string, options: any) {
+  constructor(title: string, options: LocalNotificationOptions) {
     if (checkAvailability('Notification') === true) {
       this._objectInstance = new Notification(title, options);
     }
