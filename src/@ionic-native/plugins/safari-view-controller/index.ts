@@ -4,12 +4,16 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 export interface SafariViewControllerOptions {
   url?: string;
   hidden?: boolean;
-  toolbarColor?: string;
   animated?: boolean;
+  transition?: string;
+  tintColor?: string;
+  controlTintColor?: string;
+  barColor?: string;
+  toolbarColor?: string;  
   showDefaultShareMenuItem?: boolean;
   enterReaderModeIfAvailable?: boolean;
-  tintColor?: string;
-  transition?: string;
+  
+  
 }
 
 /**
