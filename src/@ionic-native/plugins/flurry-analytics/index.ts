@@ -102,7 +102,7 @@ export interface FlurryAnalyticsLocation {
 @Plugin({
   pluginName: 'FlurryAnalyticsPlugin',
   plugin: 'cordova-plugin-flurryanalytics',
-  pluginRef: 'fa',
+  pluginRef: 'FlurryAnalytics',
   repo: 'https://github.com/blakgeek/cordova-plugin-flurryanalytics.git',
   platforms: ['Android', 'iOS', 'Browser']
 })
