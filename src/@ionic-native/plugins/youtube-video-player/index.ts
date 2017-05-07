@@ -37,8 +37,7 @@ export class YoutubeVideoPlayer extends IonicNativePlugin {
   /**
    * Plays a YouTube video
    * @param videoId {string} Video ID
-   * @returns {Promise<any>}
    */
-  @Cordova()
-  openVideo(videoId: string): Promise<any> { return; }
+  @Cordova({ sync: true })
+  openVideo(videoId: string): void { }
 }
