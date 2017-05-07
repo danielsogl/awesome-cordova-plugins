@@ -78,6 +78,9 @@ export interface LocalNotificationOptions {
  * );
  *
  * ```
+ *
+ * @interfaces
+ * LocalNotificationOptions
  */
 @Plugin({
   pluginName: 'Phonegap Local Notifications',
