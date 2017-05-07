@@ -211,4 +211,14 @@ export class SocialSharing extends IonicNativePlugin {
     platforms: ['iOS', 'Android']
   })
   shareVia(appName: string, message: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
+
+  /**
+   * defines the popup position before call the share method.
+   * @param targetBounds {string} left,top,width,height
+   */
+  @Cordova({
+    sync: true,
+    platforms: ['iOS']
+  })
+  setIPadPopupCoordinates(targetBounds: string): void { }
 }
