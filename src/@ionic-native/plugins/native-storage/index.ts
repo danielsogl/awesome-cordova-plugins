@@ -54,6 +54,13 @@ export class NativeStorage extends IonicNativePlugin {
   getItem(reference: string): Promise<any> { return; }
 
   /**
+   * Retrieving all keys
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  keys(): Promise<any> { return; }
+
+  /**
    * Removes a single stored item
    * @param reference {string}
    * @returns {Promise<any>}
