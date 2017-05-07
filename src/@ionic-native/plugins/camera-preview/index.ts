@@ -389,10 +389,7 @@ export class CameraPreview extends IonicNativePlugin {
    * @param yPoint {number}
    * @return {Promise<any>}
    */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 2
-  })
+  @Cordova()
   tapToFocus(xPoint: number, yPoint: number): Promise<any> { return; }
 
 }
