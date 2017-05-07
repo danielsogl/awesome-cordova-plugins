@@ -383,4 +383,16 @@ export class CameraPreview extends IonicNativePlugin {
   @Cordova()
   getExposureCompensationRange(): Promise<any> { return; }
 
+  /**
+   * Set specific focus point. Note, this assumes the camera is full-screen.
+   * @param xPoint {number}
+   * @param yPoint {number}
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2
+  })
+  tapToFocus(xPoint: number, yPoint: number): Promise<any> { return; }
+
 }
