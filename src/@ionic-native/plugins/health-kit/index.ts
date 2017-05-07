@@ -1,9 +1,7 @@
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin, checkAvailability  } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin  } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 
 export interface HealthKitOptions {
-
   activityType?: string; // HKWorkoutActivityType constant (https://developer.apple.com/library/ios/documentation/HealthKit/Reference/HKWorkout_Class/#//apple_ref/c/tdef/HKWorkoutActivityType)
   aggregation?: string; // 'hour', 'week', 'year' or 'day', default 'day'
   amount?: number;
@@ -18,13 +16,14 @@ export interface HealthKitOptions {
   extraData?: any;
   metadata?: any;
   quantityType?: string;
+  readTypes?: any;
   requestWritePermission?: boolean;
   samples?: any;
   sampleType?: string;
   startDate?: any;
   unit?: string; // m|cm|mm|in|ft
   requestReadPermission?: boolean;
-
+  writeTypes?: any;
 }
 
 /**
@@ -34,7 +33,7 @@ export interface HealthKitOptions {
  * Any data saved shows up in the iOS Health app and is available for other iOS apps.
  *
  * @usage
- * ```
+ * ```typescript
  * import { HealthKit } from '@ionic-native/health-kit';
  *
  *
@@ -42,6 +41,9 @@ export interface HealthKitOptions {
  *
  * ...
  * ```
+ *
+ * @interfaces
+ * HealthKitOptions
  */
 @Plugin({
   pluginName: 'HealthKit',
@@ -53,68 +55,161 @@ export interface HealthKitOptions {
 @Injectable()
 export class HealthKit extends IonicNativePlugin {
 
+  /**
+ * Check if HealthKit is supported (iOS8+, not on iPad)
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  available(): void { }
+  available(): Promise<any> { return; }
 
-  @Cordova()
-  checkAuthStatus(): void { }
+  /**
+ * Pass in a type and get back on of undetermined | denied | authorized
+ * @param options {HealthKitOptions}
+ */
+  @Cordova({ sync: true })
+  checkAuthStatus(options: HealthKitOptions): void { }
 
+  /**
+ * Ask some or all permissions up front
+ * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  requestAuthorization(): void { }
+  requestAuthorization(options: HealthKitOptions): Promise<any> { return; }
 
+  /**
+ * Formatted as yyyy-MM-dd
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  readDateOfBirth(): void { }
+  readDateOfBirth(): Promise<any> { return; }
 
+  /**
+ * Output = male|female|other|unknown
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  readGender(): void { }
+  readGender(): Promise<any> { return; }
 
+  /**
+ * Output = A+|A-|B+|B-|AB+|AB-|O+|O-|unknown
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  readBloodType(): void { }
+  readBloodType(): Promise<any> { return; }
 
+  /**
+ * Output = I|II|III|IV|V|VI|unknown
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  readFitzpatrickSkinType(): void { }
+  readFitzpatrickSkinType(): Promise<any> { return; }
 
+  /**
+ * Pass in unit (g=gram, kg=kilogram, oz=ounce, lb=pound, st=stone) and amount
+ * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  readWeight(): void { }
+  saveWeight(options: HealthKitOptions): Promise<any> { return; }
 
+  /**
+ * Pass in unit (g=gram, kg=kilogram, oz=ounce, lb=pound, st=stone)
+ * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  saveWeight(): void { }
+  readWeight(options: HealthKitOptions): Promise<any> { return; }
 
+  /**
+ * Pass in unit (mm=millimeter, cm=centimeter, m=meter, in=inch, ft=foot) and amount
+ * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  readHeight(): void { }
+  saveHeight(options: HealthKitOptions): Promise<any> { return; }
 
+  /**
+ * Pass in unit (mm=millimeter, cm=centimeter, m=meter, in=inch, ft=foot)
+ * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  saveHeight(): void { }
+  readHeight(options: HealthKitOptions): Promise<any> { return; }
 
+  /**
+ * no params yet, so this will return all workouts ever of any type
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  saveWorkout(): void { }
+  findWorkouts(): Promise<any> { return; }
 
+  /**
+ *
+ * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  findWorkouts(): void { }
+  saveWorkout(options: HealthKitOptions): Promise<any> { return; }
 
+  /**
+ *
+ * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  querySampleType(): void { }
+  querySampleType(options: HealthKitOptions): Promise<any> { return; }
 
+  /**
+ *
+ * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  querySampleTypeAggregated(): void { }
+  querySampleTypeAggregated(options: HealthKitOptions): Promise<any> { return; }
 
+  /**
+ *
+ * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
+ */
   @Cordova()
-  sumQuantityType(): void { }
+  deleteSamples(options: HealthKitOptions): Promise<any> { return; }
 
-  @Cordova()
-  monitorSampleType(): void { }
+  /**
+ *
+ * @param options {HealthKitOptions}
+ */
+  @Cordova({ sync: true })
+  monitorSampleType(options: HealthKitOptions): void { }
 
-  @Cordova()
-  saveQuantitySample(): void { }
+  /**
+ *
+ * @param options {HealthKitOptions}
+ */
+  @Cordova({ sync: true })
+  sumQuantityType(options: HealthKitOptions): void { }
 
-  @Cordova()
-  saveCorrelation(): void { }
+  /**
+ *
+ * @param options {HealthKitOptions}
+ */
+  @Cordova({ sync: true })
+  saveQuantitySample(options: HealthKitOptions): void { }
 
-  @Cordova()
-  queryCorrelationType(): void { }
+  /**
+ *
+ * @param options {HealthKitOptions}
+ */
+  @Cordova({ sync: true })
+  saveCorrelation(options: HealthKitOptions): void { }
 
-  @Cordova()
-  deleteSamples(): void { }
+  /**
+ *
+ * @param options {HealthKitOptions}
+ */
+  @Cordova({ sync: true })
+  queryCorrelationType(options: HealthKitOptions): void { }
 
 
 }
