@@ -2,6 +2,31 @@ import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, Io
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+export interface HealthKitOptions {
+
+  activityType?: string; // HKWorkoutActivityType constant (https://developer.apple.com/library/ios/documentation/HealthKit/Reference/HKWorkout_Class/#//apple_ref/c/tdef/HKWorkoutActivityType)
+  aggregation?: string; // 'hour', 'week', 'year' or 'day', default 'day'
+  amount?: number;
+  correlationType?: string;
+  date?: any;
+  distance?: number;
+  distanceUnit?: string; // probably useful with the former param
+  duration?: number;  // in seconds, optional, use either this or endDate
+  endDate?: any;
+  energy?: number;
+  energyUnit?: string; // J|cal|kcal
+  extraData?: any;
+  metadata?: any;
+  quantityType?: string;
+  requestWritePermission?: boolean;
+  samples?: any;
+  sampleType?: string;
+  startDate?: any;
+  unit?: string; // m|cm|mm|in|ft
+  requestReadPermission?: boolean;
+
+}
+
 /**
  * @name Health Kit
  * @description
