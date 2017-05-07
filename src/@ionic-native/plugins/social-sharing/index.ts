@@ -214,7 +214,7 @@ export class SocialSharing extends IonicNativePlugin {
 
   /**
    * defines the popup position before call the share method.
-   * @param targetBounds {string} left,top,width,height
+   * @param targetBounds {string} left, top, width, height
    */
   @Cordova({
     sync: true,
