@@ -21,7 +21,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  *
- * this.youtube.openVideo('myvideoid').then(() => console.log('Video closed'));
+ * this.youtube.openVideo('myvideoid');
  *
  * ```
  */
