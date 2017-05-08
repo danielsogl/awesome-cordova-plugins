@@ -46,14 +46,14 @@ export class AppPreferences extends IonicNativePlugin {
    * Set a preference value
    *
    * @param {string} dict Dictionary for key (OPTIONAL)
-   * @param {string|number|boolean} key Key
-   * @param {string|number|boolean} value Value
+   * @param {string} key Key
+   * @param {any} value Value
    * @return {Promise<any>} Returns a promise
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  store(dict: string, key: string | number | boolean, value?: string | number | boolean): Promise<any> {
+  store(dict: string, key: string, value?: any): Promise<any> {
     return;
   }
 
