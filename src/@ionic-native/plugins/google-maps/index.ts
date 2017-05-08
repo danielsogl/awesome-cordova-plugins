@@ -363,7 +363,7 @@ export class GoogleMap {
   remove(): void { }
 
   @CordovaInstance({ sync: true })
-  panBy(): void { }
+  panBy(x: string, y: string): void { }
 }
 
 /**
