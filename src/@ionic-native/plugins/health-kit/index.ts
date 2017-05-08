@@ -2,27 +2,115 @@ import { Plugin, Cordova, IonicNativePlugin  } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 export interface HealthKitOptions {
-  activityType?: string; // HKWorkoutActivityType constant (https://developer.apple.com/library/ios/documentation/HealthKit/Reference/HKWorkout_Class/#//apple_ref/c/tdef/HKWorkoutActivityType)
-  aggregation?: string; // 'hour', 'week', 'year' or 'day', default 'day'
+  /**
+  * HKWorkoutActivityType constant
+  * Read more here: https://developer.apple.com/library/ios/documentation/HealthKit/Reference/HKWorkout_Class/#//apple_ref/c/tdef/HKWorkoutActivityType
+  */
+  activityType?: string; //
+
+  /**
+  * 'hour', 'week', 'year' or 'day', default 'day'
+  */
+  aggregation?: string;
+
+  /**
+  *
+  */
   amount?: number;
+
+  /**
+  *
+  */
   correlationType?: string;
+
+  /**
+  *
+  */
   date?: any;
+
+  /**
+  *
+  */
   distance?: number;
-  distanceUnit?: string; // probably useful with the former param
-  duration?: number;  // in seconds, optional, use either this or endDate
+
+  /**
+  * probably useful with the former param
+  */
+  distanceUnit?: string;
+
+  /**
+  * in seconds, optional, use either this or endDate
+  */
+  duration?: number;
+
+  /**
+  *
+  */
   endDate?: any;
+
+  /**
+  *
+  */
   energy?: number;
-  energyUnit?: string; // J|cal|kcal
+
+  /**
+  * J|cal|kcal
+  */
+  energyUnit?: string;
+
+  /**
+  *
+  */
   extraData?: any;
+
+  /**
+  *
+  */
   metadata?: any;
+
+  /**
+  *
+  */
   quantityType?: string;
+
+  /**
+  *
+  */
   readTypes?: any;
+
+  /**
+  *
+  */
   requestWritePermission?: boolean;
+
+  /**
+  *
+  */
   samples?: any;
+
+  /**
+  *
+  */
   sampleType?: string;
+
+  /**
+  *
+  */
   startDate?: any;
-  unit?: string; // m|cm|mm|in|ft
+
+  /**
+  * m|cm|mm|in|ft
+  */
+  unit?: string;
+
+  /**
+  *
+  */
   requestReadPermission?: boolean;
+
+  /**
+  *
+  */
   writeTypes?: any;
 }
 
