@@ -16,7 +16,7 @@ import { Injectable } from '@angular/core';
  *
  * ...
  *
- * if(this.mobileAccessibility.isScreenReaderRunningCallback) { console.log(true) }
+ * if(this.mobileAccessibility.isScreenReaderRunningCallback();
  *
  * ```
  */
