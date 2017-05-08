@@ -65,9 +65,10 @@ export class HealthKit extends IonicNativePlugin {
   /**
  * Pass in a type and get back on of undetermined | denied | authorized
  * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
  */
-  @Cordova({ sync: true })
-  checkAuthStatus(options: HealthKitOptions): void { }
+  @Cordova()
+  checkAuthStatus(options: HealthKitOptions): Promise<any> { return; }
 
   /**
  * Ask some or all permissions up front
@@ -179,37 +180,42 @@ export class HealthKit extends IonicNativePlugin {
   /**
  *
  * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
  */
-  @Cordova({ sync: true })
-  monitorSampleType(options: HealthKitOptions): void { }
+  @Cordova()
+  monitorSampleType(options: HealthKitOptions): Promise<any> { return; }
 
   /**
  *
  * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
  */
-  @Cordova({ sync: true })
-  sumQuantityType(options: HealthKitOptions): void { }
+  @Cordova()
+  sumQuantityType(options: HealthKitOptions): Promise<any> { return; }
 
   /**
  *
  * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
  */
-  @Cordova({ sync: true })
-  saveQuantitySample(options: HealthKitOptions): void { }
+  @Cordova()
+  saveQuantitySample(options: HealthKitOptions): Promise<any> { return; }
 
   /**
  *
  * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
  */
-  @Cordova({ sync: true })
-  saveCorrelation(options: HealthKitOptions): void { }
+  @Cordova()
+  saveCorrelation(options: HealthKitOptions): Promise<any> { return; }
 
   /**
  *
  * @param options {HealthKitOptions}
+ * @returns {Promise<any>}
  */
-  @Cordova({ sync: true })
-  queryCorrelationType(options: HealthKitOptions): void { }
+  @Cordova()
+  queryCorrelationType(options: HealthKitOptions): Promise<any> { return; }
 
 
 }
