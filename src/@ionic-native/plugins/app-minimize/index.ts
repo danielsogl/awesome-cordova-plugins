@@ -31,8 +31,9 @@ export class AppMinimize extends IonicNativePlugin {
 
   /**
    * Minimizes the application
+   * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
-  minimize(): void { }
+  @Cordova()
+  minimize(): Promise<any> { return; }
 
 }
