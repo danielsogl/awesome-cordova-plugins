@@ -30,7 +30,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MobileAccessibility extends IonicNativePlugin {
 
-  MobileAccessibilityNotifications = {
+  MobileAccessibilityNotifications: {
     ANNOUNCEMENT: 'ANNOUNCEMENT',
     BOLD_TEXT_STATUS_CHANGED: 'BOLD_TEXT_STATUS_CHANGED',
     CLOSED_CAPTIONING_STATUS_CHANGED: 'CLOSED_CAPTIONING_STATUS_CHANGED',
@@ -49,176 +49,176 @@ export class MobileAccessibility extends IonicNativePlugin {
     SPEAK_SELECTION_STATUS_CHANGED: 'SPEAK_SELECTION_STATUS_CHANGED',
     SWITCH_CONTROL_STATUS_CHANGED: 'SWITCH_CONTROL_STATUS_CHANGED',
     TOUCH_EXPLORATION_STATUS_CHANGED: 'TOUCH_EXPLORATION_STATUS_CHANGED'
-  }
+  };
 
   /**
    * Makes an asynchronous call to native MobileAccessibility to determine if a screen reader is running.
-   * @return result {boolean}  A result method to receive the boolean result asynchronously from the native MobileAccessibility plugin.
+   * @returns result {Promise<boolean>}  A result method to receive the boolean result asynchronously from the native MobileAccessibility plugin.
    */
-  @Cordova({ sync: true })
-  isScreenReaderRunning(): boolean { return }
+  @Cordova()
+  isScreenReaderRunning(): Promise<any> { return; };
 
   /**
    * An iOS-specific proxy for the MobileAccessibility.isScreenReaderRunning method
-   * @return result {boolean} A result method to receive the boolean result asynchronously from the native MobileAccessibility plugin.
+   * @returns result {Promise<boolean>} A result method to receive the boolean result asynchronously from the native MobileAccessibility plugin.
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isVoiceOverRunningCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isVoiceOverRunningCallback(): Promise<any> { return; };
 
   /**
    * An Android/Amazon Fire OS-specific proxy for the MobileAccessibility.isScreenReaderRunning method.
-   * @return result {boolean}  A result method to receive the boolean result asynchronously from the native MobileAccessibility plugin.
+   * @returns result {Promise<boolean>}  A result method to receive the boolean result asynchronously from the native MobileAccessibility plugin.
    */
-  @Cordova({ sync: true, platforms: ['Amazon Fire OS', 'Android'] })
-  isTalkBackRunningCallback(): boolean { return }
+  @Cordova({ platforms: ['Amazon Fire OS', 'Android'] })
+  isTalkBackRunningCallback(): Promise<any> { return; };
 
   /**
    * On Android, this method returns true if ChromeVox is active and properly initialized with access to the text to speech API in the WebView.
    * If TalkBack is running but ChromeVox is not active, this method is useful to alert the user of a potential problem.
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['Amazon Fire OS', 'Android'] })
-  isChromeVoxActive(): boolean { return }
+  @Cordova({ platforms: ['Amazon Fire OS', 'Android'] })
+  isChromeVoxActive(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isBoldTextEnabledCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isBoldTextEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true })
-  isClosedCaptioningEnabledCallback(): boolean { return }
+  @Cordova()
+  isClosedCaptioningEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isDarkerSystemColorsEnabledCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isDarkerSystemColorsEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isGrayscaleEnabledCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isGrayscaleEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isGuidedAccessEnabledCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isGuidedAccessEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isInvertColorsEnabledCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isInvertColorsEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isMonoAudioEnabledCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isMonoAudioEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isReduceMotionEnabledCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isReduceMotionEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isReduceTransparencyEnabledCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isReduceTransparencyEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isSpeakScreenEnabledCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isSpeakScreenEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isSpeakSelectionEnabledCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isSpeakSelectionEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  isSwitchControlRunningCallback(): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  isSwitchControlRunningCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {boolean} Returns the result
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['Amazon Fire OS', 'Android'] })
-  isTouchExplorationEnabledCallback(): boolean { return }
+  @Cordova({ platforms: ['Amazon Fire OS', 'Android'] })
+  isTouchExplorationEnabledCallback(): Promise<any> { return; };
 
   /**
    *
-   * @return result {number} Returns the result
+   * * @returns {Promise<number>} Returns the result
    */
-  @Cordova({ sync: true })
-  getTextZoomCallback(): number { return }
+  @Cordova()
+  getTextZoomCallback(): Promise<any> { return; };
 
   /**
    * @param textZoom {nuber} A percentage value by which text in the WebView should be scaled.
    */
   @Cordova({ sync: true })
-  setTextZoom(textZoom: number): void { }
+  setTextZoom(textZoom: number): void { };
 
   /**
    *
    */
   @Cordova({ sync: true })
-  updateTextZoom(): void { }
+  updateTextZoom(): void { };
 
   /**
    * A Boolean value which specifies whether to use the preferred text zoom of a default percent value of 100.
    * @param value {boolean} Returns the result
    */
   @Cordova({ sync: true })
-  usePreferredTextZoom(value: boolean): void { }
+  usePreferredTextZoom(value: boolean): void { };
 
   /**
    * Posts a notification with a string for the screen reader to announce if it is running.
    * @param mobileAccessibilityNotification {any}
-   * @param string {string} A string to be announced by a screen reader.
-   * @return result {boolean} Returns the result
+   * @param value {string} A string to be announced by a screen reader.
+   * @returns result {Promise<boolean>} Returns the result
    */
-  @Cordova({ sync: true, platforms: ['iOS'] })
-  postNotification(mobileAccessibilityNotification: any, string: string): boolean { return }
+  @Cordova({ platforms: ['iOS'] })
+  postNotification(mobileAccessibilityNotification: any, value: string): Promise<any> { return; };
 
   /**
    * Speaks a given string through the screenreader. On Android, if ChromeVox is active, it will use the specified queueMode and properties.
-   * @param string {string}
+   * @param value {string}
    * @param queueMode {mumber}
    * @param properties {any}
    */
   @Cordova({ sync: true })
-  speak(string: string, queueMode?: number, properties?: any): void { }
+  speak(value: string, queueMode?: number, properties?: any): void { };
 
   /**
    * Stops speech.
    */
   @Cordova({ sync: true })
-  stop(): void { }
+  stop(): void { };
 
 }
