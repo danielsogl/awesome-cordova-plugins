@@ -15,7 +15,10 @@ import { Injectable } from '@angular/core';
  *
  * ...
  *
- * this.appMinimize.minimize();
+ * this.plugin.minimize().then(
+ *   success => console.log('Closed'),
+ *   err => console.log('Something went wrong')
+ * );
  *
  * ```
  */
