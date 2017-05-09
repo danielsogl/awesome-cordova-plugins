@@ -15,9 +15,9 @@ import { Injectable } from '@angular/core';
  *
  * ...
  *
- * this.fileEncryption.decrypt(file, key);
+ * this.fileEncryption.decrypt('assets/json/topSecret.json', 'secretKey');
  *
- * this.fileEncryption.encrypt(file, key);
+ * this.fileEncryption.encrypt('assets/json/topSecret.json', 'secretKey');
  *
  * ```
  */
@@ -32,7 +32,7 @@ import { Injectable } from '@angular/core';
 export class FileEncryption extends IonicNativePlugin {
 
   /**
-   * This function does something
+   * Enrcypt a file
    * @param file {string} A string representing a local URI
    * @param key {string} A key for the crypto operations
    * @return {Promise<any>} Returns a promise that resolves when something happens
@@ -41,7 +41,7 @@ export class FileEncryption extends IonicNativePlugin {
   encrypt(file: string, key: string): Promise<any> { return; }
 
   /**
-   * This function does something
+   * Decrypt a file
    * @param file {string} A string representing a local URI
    * @param key {string} A key for the crypto operations
    * @return {Promise<any>} Returns a promise that resolves when something happens
