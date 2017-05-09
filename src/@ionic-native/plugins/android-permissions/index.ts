@@ -4,8 +4,9 @@ import { Injectable } from '@angular/core';
 /**
  * @name Android Permissions
  * @description
- * This plugin is designed for supporting Android new permissions checking mechanism.
- * YOur will find all permissions here: https://developer.android.com/reference/android/Manifest.permission.html
+ * This plugin is designed to support Android new permissions checking mechanism.
+ *
+ * You can find all permissions here: https://developer.android.com/reference/android/Manifest.permission.html
  *
  * @usage
  * ```
