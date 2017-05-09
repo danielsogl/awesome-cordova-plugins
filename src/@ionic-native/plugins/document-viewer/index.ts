@@ -27,7 +27,7 @@ export interface DocumentViewerOptions {
   autoClose: {
     onPause: boolean;
   };
-};
+}
 
 /**
  * @name Document Viewer
@@ -56,7 +56,7 @@ export interface DocumentViewerOptions {
   pluginName: 'Document Viewer',
   plugin: 'cordova-plugin-document-viewer',
   pluginRef: 'SitewaertsDocumentViewer',
-  repo: 'DocumentViewer',
+  repo: 'https://github.com/sitewaerts/cordova-plugin-document-viewer',
   platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
@@ -76,9 +76,13 @@ export class DocumentViewer extends IonicNativePlugin {
    * @param url {string} Url to the file
    * @param contentType {string} Content type of the file
    * @param options {Array<DocumentViewerOptions>} options
+   * @param [onPossible] {Function}
+   * @param [onMissingApp] {Function}
+   * @param [onImpossible] {Function}
+   * @param [onError] {Function}
    */
   @Cordova({ sync: true })
-  canViewDocument(url: string, contentType: string, options: Array<DocumentViewerOptions>): void { }
+  canViewDocument(url: string, contentType: string, options: Array<DocumentViewerOptions>, onPossible?: Function, onMissingApp?: Function, onImpossible?: Function, onError?: Function): void { }
 
   /**
    * Opens the file
@@ -86,8 +90,12 @@ export class DocumentViewer extends IonicNativePlugin {
    * @param url {string} Url to the file
    * @param contentType {string} Content type of the file
    * @param options {Array<DocumentViewerOptions>} options
+   * @param [onShow] {Function}
+   * @param [onClose] {Function}
+   * @param [onMissingApp] {Function}
+   * @param [onError] {Function}
    */
   @Cordova({ sync: true })
-  viewDocument(url: string, contentType: string, options: Array<DocumentViewerOptions>): void { }
+  viewDocument(url: string, contentType: string, options: Array<DocumentViewerOptions>, onShow?: Function, onClose?: Function, onMissingApp?: Function, onError?: Function): void { }
 
 }
