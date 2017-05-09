@@ -172,14 +172,14 @@ export class Facebook extends IonicNativePlugin {
    *
    * ```typescript
    * {
-   *   status: 'connected",
+   *   status: 'connected',
    *   authResponse: {
    *     session_key: true,
-   *     accessToken: "kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn",
+   *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
    *     expiresIn: 5183979,
-   *     sig: "...",
-   *     secret: "...",
-   *     userID: "634565435"
+   *     sig: '...',
+   *     secret: '...',
+   *     userID: '634565435'
    *   }
    * }
    *
@@ -212,13 +212,13 @@ export class Facebook extends IonicNativePlugin {
    * ```
    * {
    *   authResponse: {
-   *     userID: "12345678912345",
-   *     accessToken: "kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn",
+   *     userID: '12345678912345',
+   *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
    *     session_Key: true,
-   *     expiresIn: "5183738",
-   *     sig: "..."
+   *     expiresIn: '5183738',
+   *     sig: '...'
    *   },
-   *   status: "connected"
+   *   status: 'connected'
    * }
    * ```
    *
@@ -242,10 +242,10 @@ export class Facebook extends IonicNativePlugin {
    *
    * ```
    * {
-   *   method: "share",
-   *   href: "http://example.com",
-   *   caption: "Such caption, very feed.",
-   *   description: "Much description",
+   *   method: 'share',
+   *   href: 'http://example.com',
+   *   caption: 'Such caption, very feed.',
+   *   description: 'Much description',
    *   picture: 'http://example.com/image.png'
    * }
    * ```
