@@ -72,9 +72,7 @@ export class Firebase extends IonicNativePlugin {
  * Check permission to receive push notifications
  * @return {Promise<any>}
  */
-  @Cordova({
-    platforms: ['iOS']
-  })
+  @Cordova()
   hasPermission(): Promise<any> { return; }
 
   /**
@@ -156,7 +154,6 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
     successIndex: 1,
     errorIndex: 2
   })
@@ -166,9 +163,7 @@ export class Firebase extends IonicNativePlugin {
    * Activate the Remote Config fetched config
    * @return {Promise<any>}
    */
-  @Cordova({
-    platforms: ['Android']
-  })
+  @Cordova()
   activateFetched(): Promise<any> { return; }
 
   /**
@@ -178,7 +173,6 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
     successIndex: 2,
     errorIndex: 3
   })
