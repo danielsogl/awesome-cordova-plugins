@@ -1,32 +1,32 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
-export interface Options {
+export interface DocumentViewerOptions {
   title: string;
   documentView: {
     closeLabel: string;
-  },
+  };
   navigationView: {
     closeLabel: string;
-  },
+  };
   email: {
     enabled: boolean;
-  },
+  };
   print: {
     enabled: boolean;
-  },
+  };
   openWith: {
     enabled: boolean;
-  },
+  };
   bookmarks: {
     enabled: boolean;
-  },
+  };
   search: {
     enabled: boolean;
-  },
+  };
   autoClose: {
     onPause: boolean;
-  }
+  };
 };
 
 /**
@@ -42,7 +42,7 @@ export interface Options {
  * constructor(private document: DocumentViewer) { }
  *
  * ...
- * let options = {
+ * const options = {
  *   title: 'My PDF'
  * }
  * this.document.view('assets/myFile.pdf', 'application/pdf', options)
@@ -50,7 +50,7 @@ export interface Options {
  * ```
  *
  * @interfaces
- * Options
+ * DocumentViewerOptions
  */
 @Plugin({
   pluginName: 'Document Viewer',
@@ -75,19 +75,19 @@ export class DocumentViewer extends IonicNativePlugin {
    *
    * @param url {string} Url to the file
    * @param contentType {string} Content type of the file
-   * @param options {EmailComposerOptions} options
+   * @param options {Array<DocumentViewerOptions>} options
    */
   @Cordova({ sync: true })
-  canViewDocument(url: string, contentType: string, options: any): void { }
+  canViewDocument(url: string, contentType: string, options: Array<DocumentViewerOptions>): void { }
 
   /**
    * Opens the file
    *
    * @param url {string} Url to the file
    * @param contentType {string} Content type of the file
-   * @param options {EmailComposerOptions} options
+   * @param options {Array<DocumentViewerOptions>} options
    */
   @Cordova({ sync: true })
-  viewDocument(url: string, contentType: string, options: any): void { }
+  viewDocument(url: string, contentType: string, options: Array<DocumentViewerOptions>): void { }
 
 }
