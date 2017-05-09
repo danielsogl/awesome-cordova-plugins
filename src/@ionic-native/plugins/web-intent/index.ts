@@ -29,9 +29,9 @@ declare var window;
  */
 @Plugin({
   pluginName: 'WebIntent',
-  plugin: 'https://github.com/Initsogar/cordova-webintent.git',
-  pluginRef: 'window.plugins.webintent',
-  repo: 'https://github.com/Initsogar/cordova-webintent.git',
+  plugin: 'https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent.git',
+  pluginRef: 'intentShim',
+  repo: 'https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent',
   platforms: ['Android']
 })
 @Injectable()
@@ -93,6 +93,20 @@ export class WebIntent extends IonicNativePlugin {
   @CordovaProperty
   ACTION_SENDTO: string;
 
+  /**
+   * Convenience constant for actions
+   * @type {string}
+   */
+  @CordovaProperty
+  ACTION_GET_CONTENT: string;
+
+  /**
+   * Convenience constant for actions
+   * @type {string}
+   */
+  @CordovaProperty
+  ACTION_PICK: string;
+
 
   /**
    * Launches an Android intent
@@ -101,6 +115,14 @@ export class WebIntent extends IonicNativePlugin {
    */
   @Cordova()
   startActivity(options: { action: any, url: string, type?: string }): Promise<any> { return; }
+
+  /**
+   * Starts a new activity and return the result to the application
+   * @param options {Object} { action: any, url: string, type?: string }
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  startActivityForResult(options: { action: any, url: string, type?: string }): Promise<any> { return; }
 
   /**
    * Checks if this app was invoked with specified extra
@@ -140,5 +162,36 @@ export class WebIntent extends IonicNativePlugin {
    */
   @Cordova()
   sendBroadcast(options: { action: string, extras?: { option: boolean } }): Promise<any> { return; }
+
+  /**
+   * Registers a broadcast receiver for the specified filters
+   * @param filters {any}
+   */
+  @Cordova({ sync: true })
+  registerBroadcastReceiver(filters: any): void { }
+
+  /**
+   * Unregisters a broadcast receiver
+   */
+  @Cordova({ sync: true })
+  unregisterBroadcastReceiver(): void { }
+
+  /**
+  * Returns the content of the intent used whenever the application activity is launched
+  */
+  @Cordova({ sync: true })
+  onIntent(): void { }
+
+  /**
+  *
+  */
+  @Cordova({ sync: true })
+  onActivityResult(): void { }
+
+  /**
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getIntent(): Promise<any> { return; };
 
 }
