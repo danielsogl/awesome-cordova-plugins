@@ -20,7 +20,6 @@ export interface FingerprintOptions {
 }
 
 /**
- * @beta
  * @name Fingerprint AIO
  * @description
  * Use simple fingerprint authentication on Android and iOS.
