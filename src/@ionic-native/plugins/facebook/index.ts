@@ -154,7 +154,7 @@ export class Facebook extends IonicNativePlugin {
     EVENT_PARAM_SOURCE_APPLICATION: 'fb_mobile_launch_source',
     EVENT_PARAM_VALUE_YES: '1',
     EVENT_PARAM_VALUE_NO: '0'
-  }
+  };
 
   /**
    * Browser wrapper
