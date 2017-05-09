@@ -147,6 +147,31 @@ export type MediaErrorCallback = (error: MediaError) => void;
 /**
  * @name Media
  * @description
+ * Some hints if you are using iOS and recording doesn't work:
+ * 1.) Try to use a absolute file path but remove beginning "file://".
+ * Then it looks like: `/var/mobile/Containers/Data/Application/AF438B8B-7724-4FBB-8E69-083463224FC4/tmp/my_file.m4a`
+ * Example: `this.media.create(this.file.tempDirectory.replace(/^file:\/\//, '') + 'my_file.m4a')`
+ * 2.) If that's not working, too, create the file before using.
+ * Example:
+ * ```typescript
+ * import { MediaPlugin, MediaObject } from '@ionic-native/media';
+ * import { File } from '@ionic-native/file';
+ *
+ * ...
+ *
+ * constructor(private media: MediaPlugin, private file: File) { }
+ *
+ * ...
+ *
+ * this.file.createFile(this.file.tempDirectory, 'my_file.m4a', true).then(() => {
+ *   let file = this.media.create(this.file.tempDirectory.replace(/^file:\/\//, '') + 'my_file.m4a');
+ *   file.startRecord();
+ *   window.setTimeout(() => file.stopRecord(), 10000);
+ * });
+ * ```
+ * 
+ * You can find the reasons here: https://github.com/driftyco/ionic-native/issues/1452#issuecomment-299605906
+ *
  * @usage
  * ```typescript
  * import { MediaPlugin, MediaObject } from '@ionic-native/media';
