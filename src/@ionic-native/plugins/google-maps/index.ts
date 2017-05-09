@@ -351,7 +351,7 @@ export class GoogleMap {
    * @returns {Promise<LatLng>}
    */
   @CordovaInstance()
-  fromPointToLatLng(point: any, latLng: LatLng): Promise<LatLng> { return; }
+  fromPointToLatLng(point: any): Promise<LatLng> { return; }
 
   /**
    * @returns {Promise<any>}
