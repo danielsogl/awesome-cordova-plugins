@@ -1,9 +1,36 @@
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+
+export interface Options {
+  title: string;
+  documentView: {
+    closeLabel: string;
+  },
+  navigationView: {
+    closeLabel: string;
+  },
+  email: {
+    enabled: boolean;
+  },
+  print: {
+    enabled: boolean;
+  },
+  openWith: {
+    enabled: boolean;
+  },
+  bookmarks: {
+    enabled: boolean;
+  },
+  search: {
+    enabled: boolean;
+  },
+  autoClose: {
+    onPause: boolean;
+  }
+};
 
 /**
- * @name document-viewer
+ * @name Document Viewer
  * @description
  * This plugin offers a slim API to view PDF files which are either stored in the apps assets folder (/www/*) or in any other file system directory available via the cordova file plugin.
  *
@@ -12,13 +39,18 @@ import { Observable } from 'rxjs/Observable';
  * import { DocumentViewer } from '@ionic-native/document-viewer';
  *
  *
- * constructor(private document-viewer: DocumentViewer) { }
+ * constructor(private document: DocumentViewer) { }
  *
  * ...
- *
- *
+ * let options = {
+ *   title: 'My PDF'
+ * }
+ * this.document.view('assets/myFile.pdf', 'application/pdf', options)
  *
  * ```
+ *
+ * @interfaces
+ * Options
  */
 @Plugin({
   pluginName: 'Document Viewer',
@@ -30,13 +62,32 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class DocumentViewer extends IonicNativePlugin {
 
+  /**
+   * Displays the email composer pre-filled with data.
+   *
+   * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
+   */
   @Cordova()
   getSupportInfo(): Promise<any> { return; }
 
-  @Cordova()
-  canViewDocument(url: string, contentType: string, options: any): Promise<any> { return; }
+  /**
+   * Check if the document can be shown
+   *
+   * @param url {string} Url to the file
+   * @param contentType {string} Content type of the file
+   * @param options {EmailComposerOptions} options
+   */
+  @Cordova({ sync: true })
+  canViewDocument(url: string, contentType: string, options: any): void { }
 
-  @Cordova()
-  viewDocument(url: string, contentType: string, options: any): Promise<any> { return; }
+  /**
+   * Opens the file
+   *
+   * @param url {string} Url to the file
+   * @param contentType {string} Content type of the file
+   * @param options {EmailComposerOptions} options
+   */
+  @Cordova({ sync: true })
+  viewDocument(url: string, contentType: string, options: any): void { }
 
 }
