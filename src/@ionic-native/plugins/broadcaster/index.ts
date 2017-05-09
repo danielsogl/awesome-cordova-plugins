@@ -16,7 +16,7 @@ import { Observable } from 'rxjs/Observable';
  * ...
  *
  * // Listen to events from Native
- * this.broadcaster.addEventListener('eventName').then((event) => console.log(event));
+ * this.broadcaster.addEventListener('eventName').subscribe((event) => console.log(event));
  *
  * // Send event to Native
  * this.broadcaster.fireNativeEvent('eventName', {}).then(() => console.log('success'));
