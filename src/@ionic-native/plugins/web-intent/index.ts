@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 declare var window;
 
 /**
+ * @beta
  * @name Web Intent
  * @description
  * @usage
