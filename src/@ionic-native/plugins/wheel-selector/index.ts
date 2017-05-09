@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
+export interface WheelSelectorItem {
+  description: string;
+}
+
 export interface WheelSelectorOptions {
   /**
    * The title of the selector's input box
@@ -8,17 +12,14 @@ export interface WheelSelectorOptions {
   title: string;
 
   /**
-   * The items to display (array of items).  
-   * Example, 2 wheels: 
-   * [{description: "1", description: "2", description: "3"}, 
-   * {description: "Apple", description: "Pear", description: "Banana"}]
+   * The items to display (array of items).
    */
-  items: {};
+  items: WheelSelectorItem[];
 
   /**
    * Which items to display by default, example ["2","Apple"] (if items.length is 2 for instance)
    */
-  defaultItems?: any;
+  defaultItems?: WheelSelectorItem[];
 
   /**
    * The 'ok' button text
@@ -53,17 +54,17 @@ export interface WheelSelectorOptions {
 }
 
 export interface WheelSelectorData {
-
   data: any;
-
 }
+
 /**
+ * @beta
  * @name WheelSelector Plugin
  * @description Native wheel selector for Cordova (Android/iOS).
  *
  * @usage
  * ```
- * import { WheelSelector } from 'ionic-native';
+ * import { WheelSelector } from '@ionic-native/wheel-selector';
  *
  *
  * constructor(private selector: WheelSelector) { }
@@ -122,5 +123,14 @@ export class WheelSelector extends IonicNativePlugin {
   show(options: WheelSelectorOptions): Promise<WheelSelectorData> {
     return;
   }
+
+  /**
+   * Hide the selector
+   * @returns {Promise<void>}
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  hideSelector(): Promise<void> { return; }
 
 }
