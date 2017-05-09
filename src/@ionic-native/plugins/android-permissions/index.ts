@@ -18,7 +18,7 @@ import { Injectable } from '@angular/core';
  * ...
  *
  * this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
- *   success => console.log('Permission geranted'),
+ *   success => console.log('Permission granted'),
  *   err => this.androidPermissions.requestPermissions(this.androidPermissions.PERMISSION.CAMERA)
  * );
  *
