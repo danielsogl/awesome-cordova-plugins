@@ -189,7 +189,6 @@ export class WebIntent extends IonicNativePlugin {
   onActivityResult(): void { }
 
   /**
-   * Gets the Uri the app was invoked with
    * @returns {Promise<any>}
    */
   @Cordova()
