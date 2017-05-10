@@ -1,9 +1,9 @@
-[![Circle CI](https://circleci.com/gh/driftyco/ionic-native.svg?style=shield)](https://circleci.com/gh/driftyco/ionic-native) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![](https://img.shields.io/npm/v/@ionic-native/core.svg)
+[![Circle CI](https://circleci.com/gh/driftyco/ionic-native.svg?style=shield)](https://circleci.com/gh/driftyco/ionic-native) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://commitizen.github.io/cz-cli/) ![](https://img.shields.io/npm/v/@ionic-native/core.svg)
 
 
 # Ionic Native
 
-Ionic Native is a curated set of wrappers for Cordova plugins that make adding any native functionality you need to your [Ionic](http://ionicframework.com/) mobile app easy.
+Ionic Native is a curated set of wrappers for Cordova plugins that make adding any native functionality you need to your [Ionic](https://ionicframework.com/) mobile app easy.
 
 Ionic Native wraps plugin callbacks in a Promise or Observable, providing a common interface for all plugins and making it easy to use plugins with Angular change detection.
 
@@ -14,11 +14,11 @@ Run following command to install Ionic Native in your project.
 npm install @ionic-native/core --save
 ```
 
-You also need to install the Ionic Native package for each plugin you want to add. Please see the [Ionic Native documentation](http://ionicframework.com/docs/native/) for complete instructions on how to add and use the plugins.
+You also need to install the Ionic Native package for each plugin you want to add. Please see the [Ionic Native documentation](https://ionicframework.com/docs/native/) for complete instructions on how to add and use the plugins.
 
 ## Documentation
 
-For the full Ionic Native documentation, please visit [http://ionicframework.com/docs/native/](http://ionicframework.com/docs/native/).
+For the full Ionic Native documentation, please visit [https://ionicframework.com/docs/native/](https://ionicframework.com/docs/native/).
 
 ### Basic Usage
 
@@ -165,7 +165,7 @@ export class AppModule {}
 
 Spent way too long diagnosing an issue only to realize a plugin wasn't firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.
 
-![img](http://ionic-io-assets.s3.amazonaws.com/ionic-native-console.png)
+![img](https://ionic-io-assets.s3.amazonaws.com/ionic-native-console.png)
 
 
 ## Plugin Missing?
@@ -177,12 +177,12 @@ For Ionic V1/Angular 1 support, please use version 2 of Ionic Native. See the [2
 
 # Credits
 
-Ibby Hadeed - [@ihadeed](http://github.com/ihadeed)
+Ibby Hadeed - [@ihadeed](https://github.com/ihadeed)
 
-Tim Lancina - [@timlancina](http://twitter.com/timlancina)
+Tim Lancina - [@timlancina](https://twitter.com/timlancina)
 
 Mike Hartington - [@mhartington](https://twitter.com/mhartington)
 
-Max Lynch - [@maxlynch](http://twitter.com/maxlynch)
+Max Lynch - [@maxlynch](https://twitter.com/maxlynch)
 
 Rob Wormald - [@robwormald](https://twitter.com/robwormald)
