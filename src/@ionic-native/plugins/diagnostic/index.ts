@@ -148,7 +148,7 @@ export class Diagnostic extends IonicNativePlugin {
    *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.   
    * @returns {Promise<any>}
    */
-  @Cordova({ successIndex: 1, errorIndex: 2 })
+  @Cordova({ callbackOrder: 'reverse' })
   isCameraAvailable( externalStorage?: boolean ): Promise<any> { return; }
 
   /**
@@ -257,7 +257,7 @@ export class Diagnostic extends IonicNativePlugin {
    *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
    */
-  @Cordova({ platforms: ['Android', 'iOS'], successIndex: 1, errorIndex: 2 })
+  @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
   isCameraAuthorized( externalStorage?: boolean ): Promise<any> { return; }
 
   /**
@@ -266,7 +266,7 @@ export class Diagnostic extends IonicNativePlugin {
    *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
    */
-  @Cordova({ platforms: ['Android', 'iOS'], successIndex: 1, errorIndex: 2 })
+  @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
   getCameraAuthorizationStatus( externalStorage?: boolean ): Promise<any> { return; }
 
   /**
@@ -275,7 +275,7 @@ export class Diagnostic extends IonicNativePlugin {
    *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
    */
-  @Cordova({ platforms: ['Android', 'iOS'], successIndex: 1, errorIndex: 2 })
+  @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
   requestCameraAuthorization( externalStorage?: boolean ): Promise<any> { return; }
 
   /**
