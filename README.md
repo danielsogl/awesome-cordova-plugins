@@ -3,7 +3,7 @@
 
 # Ionic Native
 
-Ionic Native is a curated set of wrappers for Cordova plugins that make adding any native functionality you need to your [Ionic 2](http://ionicframework.com/) mobile app easy.
+Ionic Native is a curated set of wrappers for Cordova plugins that make adding any native functionality you need to your [Ionic](http://ionicframework.com/) mobile app easy.
 
 Ionic Native wraps plugin callbacks in a Promise or Observable, providing a common interface for all plugins and making it easy to use plugins with Angular change detection.
 
