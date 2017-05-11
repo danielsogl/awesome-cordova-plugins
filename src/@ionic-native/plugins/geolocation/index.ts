@@ -174,7 +174,7 @@ export class Geolocation extends IonicNativePlugin {
    * Observable changes.
    *
    * ```typescript
-   * var subscription = Geolocation.watchPosition()
+   * var subscription = this.geolocation.watchPosition()
    *                               .filter((p) => p.coords !== undefined) //Filter Out Errors
    *                               .subscribe(position => {
    *   console.log(position.coords.longitude + ' ' + position.coords.latitude);
