@@ -175,15 +175,6 @@ docType: "<$ doc.docType $>"
 
 <# --- Install commands --- #>
 <h2>Installation</h2>
-<style>
-  .installation li {
-    font-size:15px;
-    margin-bottom:10px;
-  }
-  .installation li pre {
-    margin-top:10px;
-  }
-</style>
 <ol class="installation">
   <li>Install the Cordova and Ionic Native plugins:<br>
     <pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add --save <$ prop.plugin $><@ endif @>
