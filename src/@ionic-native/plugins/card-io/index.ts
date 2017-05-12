@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CardIOOptions {
 
@@ -166,7 +165,6 @@ export interface CardIOResponse {
   repo: 'https://github.com/card-io/card.io-Cordova-Plugin',
   platforms: ['iOS', 'Android']
 })
-@Injectable()
 export class CardIO extends IonicNativePlugin {
 
   /**
