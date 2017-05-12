@@ -112,7 +112,7 @@ export interface AdExtras {
  *   } else if (this.platform.is('ios')) {
  *     adId = 'YOUR_ADID_IOS';
  *   }
- *   this.admob.prepareInterstitial(adId)
+ *   this.admob.prepareInterstitial({adId: adId})
  *     .then(() => { this.admob.showInterstitial(); });
  * }
  *
