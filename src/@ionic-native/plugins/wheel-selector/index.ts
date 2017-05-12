@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
+export interface WheelSelectorItem {
+  description: string;
+}
+
 export interface WheelSelectorOptions {
   /**
    * The title of the selector's input box
@@ -8,17 +12,14 @@ export interface WheelSelectorOptions {
   title: string;
 
   /**
-   * The items to display (array of items).  
-   * Example, 2 wheels: 
-   * [{description: "1", description: "2", description: "3"}, 
-   * {description: "Apple", description: "Pear", description: "Banana"}]
+   * The items to display (array of items).
    */
-  items: {};
+  items: Array<Array<WheelSelectorItem>>;
 
   /**
    * Which items to display by default, example ["2","Apple"] (if items.length is 2 for instance)
    */
-  defaultItems?: any;
+  defaultItems?: Array<WheelSelectorItem>;
 
   /**
    * The 'ok' button text
@@ -43,27 +44,20 @@ export interface WheelSelectorOptions {
    * Default: false
    */
   wrapWheelText?: boolean;
-
-  /**
-   * The json key to display, by default it is description, this allows for setting any
-   * key/value to be displayed
-   * Default: description
-   */
-  displayKey?: string;
 }
 
 export interface WheelSelectorData {
-
   data: any;
-
 }
+
 /**
+ * @beta
  * @name WheelSelector Plugin
  * @description Native wheel selector for Cordova (Android/iOS).
  *
  * @usage
  * ```
- * import { WheelSelector } from 'ionic-native';
+ * import { WheelSelector } from '@ionic-native/wheel-selector';
  *
  *
  * constructor(private selector: WheelSelector) { }
@@ -83,12 +77,13 @@ export interface WheelSelectorData {
  *     ],
  *   };
  *
+ *   //use most of the default values
  *   this.selector.show({
  *     title: "Select some Fruit",
  *     items: [
- *       [jsonData.numbers],
- *       [jsonData.fruits]
- *     ],
+ *       jsonData.numbers,
+ *       jsonData.fruits
+ *     ]
  *   }).then(
  *     result => {
  *       console.log('Selected: ' + result[0].description + ' at index: ' + result[0].index
@@ -96,6 +91,28 @@ export interface WheelSelectorData {
  *     },
  *     err => console.log('Error occurred while getting result: ', err)
  *     );
+ *
+ *   ...
+ *
+ *   //set some initial default values to display: "2", "Tangerine"
+ *   this.selector.show({
+ *     title: "Select some Fruit",
+ *     items: [
+ *       jsonData.numbers,
+ *       jsonData.fruits
+ *     ],
+ *     defaultItems: [
+ *       jsonData.numbers[1],
+ *       jsonData.fruits[2]
+ *     ]
+ *   }).then(
+ *     result => {
+ *       console.log('Selected: ' + result[0].description + ' at index: ' + result[0].index
+ *         + ' and ' + result[1].description + ' at index: ' + result[1].index);
+ *     },
+ *     err => console.log('Error occurred while getting result: ', err)
+ *     );
+ *
  *
  * ```
  *
@@ -122,5 +139,14 @@ export class WheelSelector extends IonicNativePlugin {
   show(options: WheelSelectorOptions): Promise<WheelSelectorData> {
     return;
   }
+
+  /**
+   * Hide the selector
+   * @returns {Promise<void>}
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  hideSelector(): Promise<void> { return; }
 
 }
