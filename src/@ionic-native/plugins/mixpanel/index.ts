@@ -89,6 +89,17 @@ export class Mixpanel extends IonicNativePlugin {
   /**
    *
    * @param eventName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 2,
+    errorIndex: 3
+  })
+  timeEvent(eventName: string): Promise<any> { return; }
+
+  /**
+   *
+   * @param eventName {string}
    * @param eventProperties {any} optional
    * @returns {Promise<any>}
    */
