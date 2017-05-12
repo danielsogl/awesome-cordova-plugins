@@ -885,7 +885,7 @@ export class File extends IonicNativePlugin {
           };
 
           fileEntry.file(file => {
-            reader[`readAs${readAs}`].call(null, file);
+            reader[`readAs${readAs}`].call(reader, file);
           }, error => {
             reject(error);
           });
