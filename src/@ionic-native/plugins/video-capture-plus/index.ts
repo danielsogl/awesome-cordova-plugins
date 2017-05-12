@@ -1,6 +1,61 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
+export interface MediaFile {
+  /**
+   * The name of the file, without path information.
+   */
+  name: string;
+  /**
+   * The full path of the file, including the name.
+   */
+  fullPath: string;
+  /**
+   * The file's mime type
+   */
+  type: string;
+
+  /**
+   * The date and time when the file was last modified.
+   */
+  lastModifiedDate: Date;
+
+  /**
+   * The size of the file, in bytes.
+   */
+  size: number;
+
+  /**
+   * Retrieves the format information of the media file.
+   * @param {Function} successCallback
+   * @param {Function} errorCallback
+   */
+  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any);
+}
+
+export interface MediaFileData {
+  /**
+   * The actual format of the audio and video content.
+   */
+  codecs: string;
+  /**
+   * The average bitrate of the content. The value is zero for images.
+   */
+  bitrate: number;
+  /**
+   * The height of the image or video in pixels. The value is zero for audio clips.
+   */
+  height: number;
+  /**
+   * The width of the image or video in pixels. The value is zero for audio clips.
+   */
+  width: number;
+  /**
+   * The length of the video or sound clip in seconds. The value is zero for images.
+   */
+  duration: number;
+}
+
 export interface VideoCapturePlusOptions {
 
   /**
@@ -45,14 +100,14 @@ export interface VideoCapturePlusOptions {
  * @beta
  * @name Video Capture Plus
  * @description
- * This plugin offers some useful extras on top of the default Video Capture Plugin capabilities:
+ * This plugin offers some useful extras on top of the default Media Capture Plugin capabilities:
  * - HD recording.
  * - Starting with the front camera.
  * - A custom overlay (currently iOS only).
  *
  * @usage
  * ```typescript
- * import { VideoCapturePlus, VideoCapturePlusOptions } from '@ionic-native/video-capture-plus';
+ * import { VideoCapturePlus, VideoCapturePlusOptions, MediaFile } from '@ionic-native/video-capture-plus';
  *
  *
  * constructor(private videoCapturePlus: VideoCapturePlus) { }
@@ -66,10 +121,12 @@ export interface VideoCapturePlusOptions {
  *    landscapeOverlay: 'assets/img/camera/overlay/landscape.png'
  * }
  *
- * this.videoCapturePlus.captureVideo(options).then(mediafile => console.log(mediafile), error => console.log('Something went wrong'));
+ * this.videoCapturePlus.captureVideo(options).then(mediafile: MediaFile[] => console.log(mediafile), error => console.log('Something went wrong'));
  *
  * ```
  * @interfaces
+ * MediaFile
+ * MediaFileData
  * VideoCapturePlusOptions
  */
 @Plugin({
@@ -85,9 +142,11 @@ export class VideoCapturePlus extends IonicNativePlugin {
   /**
    * Starts recordings
    * @param [options] {VideoCapturePlusOptions} Configure options
-   * @return {Promise<any>} Returns a promise
+   * @return {Promise<MediaFile[]>}
    */
-  @Cordova({ callbackOrder: 'reverse' })
-  captureVideo(options?: VideoCapturePlusOptions): Promise<any> { return; }
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  captureVideo(options?: VideoCapturePlusOptions): Promise<MediaFile[]> { return; }
 
 }
