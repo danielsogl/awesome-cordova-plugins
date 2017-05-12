@@ -57,7 +57,7 @@ export interface CameraPreviewPictureOptions {
  *
  * @usage
  * ```typescript
- * import { CameraPreview, PictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+ * import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
  *
  * constructor(private cameraPreview: CameraPreview) { }
  *
@@ -93,7 +93,7 @@ export interface CameraPreviewPictureOptions {
  *
  *
  * // picture options
- * const pictureOpts: PictureOptions = {
+ * const pictureOpts: CameraPreviewPictureOptions = {
  *   width: 1280,
  *   height: 1280,
  *   quality: 85
