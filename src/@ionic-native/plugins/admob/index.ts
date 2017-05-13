@@ -107,7 +107,7 @@ export interface AdExtras {
  *
  * onClick() {
  *   let adId;
- *   if(this.platform.is('android') {
+ *   if(this.platform.is('android')) {
  *     adId = 'YOUR_ADID_ANDROID';
  *   } else if (this.platform.is('ios')) {
  *     adId = 'YOUR_ADID_IOS';
