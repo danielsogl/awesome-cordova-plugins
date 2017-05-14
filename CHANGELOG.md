@@ -1,3 +1,22 @@
+<a name="3.8.0"></a>
+# [3.8.0](https://github.com/driftyco/ionic-native/compare/v3.7.0...v3.8.0) (2017-05-14)
+
+
+### Bug Fixes
+
+* **app-minimize:** fix pluginRef ([10d61c2](https://github.com/driftyco/ionic-native/commit/10d61c2))
+* **diagnostic:** fix Cordova decorator in camera API (#1527) ([45108c4](https://github.com/driftyco/ionic-native/commit/45108c4)), closes [#1527](https://github.com/driftyco/ionic-native/issues/1527)
+* **fcm:** fix method name (#1531) ([ad514bb](https://github.com/driftyco/ionic-native/commit/ad514bb)), closes [#1531](https://github.com/driftyco/ionic-native/issues/1531)
+* **file:** fix file reader (#1537) ([efae1be](https://github.com/driftyco/ionic-native/commit/efae1be)), closes [#1537](https://github.com/driftyco/ionic-native/issues/1537) [#1530](https://github.com/driftyco/ionic-native/issues/1530)
+* **file:** various fixes (#1553) ([f98f90a](https://github.com/driftyco/ionic-native/commit/f98f90a)), closes [#1553](https://github.com/driftyco/ionic-native/issues/1553)
+
+
+### Features
+
+* **video-capture-plus:** add Video Capture Plus plugin (#1538) ([385da01](https://github.com/driftyco/ionic-native/commit/385da01)), closes [#709](https://github.com/driftyco/ionic-native/issues/709)
+
+
+
 <a name="3.7.0"></a>
 # [3.7.0](https://github.com/driftyco/ionic-native/compare/v3.6.1...v3.7.0) (2017-05-09)
 
