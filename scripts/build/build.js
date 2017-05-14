@@ -52,8 +52,15 @@ const PLUGINS = fs.readdirSync(PLUGINS_PATH);
 
 // Build specific list of plugins to build from arguments, if any
 let pluginsToBuild = process.argv.slice(2);
+let ignoreErrors = false;
 if (!pluginsToBuild.length) {
   pluginsToBuild = PLUGINS;
+} else {
+  const index = pluginsToBuild.indexOf('--ignore-errors');
+  if (index > -1) {
+    ignoreErrors = true;
+    pluginsToBuild.splice(index, 1);
+  }
 }
 
 // Create a queue to process tasks
@@ -102,10 +109,14 @@ const addPluginToQueue = pluginName => {
         exec(`${ROOT}/node_modules/.bin/ngc -p ${tsConfigPath}`, (err, stdout, stderr) => {
 
           if (err) {
-            // oops! something went wrong.
-            callback(`\n\nBuilding ${pluginName} failed.`);
             console.log(err);
-            return;
+
+            if (!ignoreErrors) {
+              // oops! something went wrong.
+              callback(`\n\nBuilding ${pluginName} failed.`);
+              return;
+            }
+
           }
 
           // we're done with this plugin!
