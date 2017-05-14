@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 declare const window: any;
 
@@ -74,7 +73,6 @@ export interface IntelSecurityDataOptions {
   repo: 'https://github.com/AppSecurityApi/com-intel-security-cordova-plugin',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable()
 export class IntelSecurity extends IonicNativePlugin {
 
   /**

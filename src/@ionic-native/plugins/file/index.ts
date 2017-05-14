@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { CordovaProperty, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 export interface IFile extends Blob {
@@ -559,7 +558,6 @@ declare const window: Window;
   repo: 'https: //github.com/apache/cordova-plugin-file',
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Ubuntu', 'Windows', 'Windows Phone']
 })
-@Injectable()
 export class File extends IonicNativePlugin {
 
   /**

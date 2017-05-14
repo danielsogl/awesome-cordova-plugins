@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface ImageResizerOptions {
@@ -79,7 +78,6 @@ export interface ImageResizerOptions {
   repo: 'https://github.com/protonet/cordova-plugin-image-resizer',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable()
 export class ImageResizer extends IonicNativePlugin {
   /**
    * @returns {Promise<any>}

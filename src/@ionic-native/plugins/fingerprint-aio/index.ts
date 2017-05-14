@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 
@@ -52,7 +51,6 @@ export interface FingerprintOptions {
   repo: 'https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class FingerprintAIO extends IonicNativePlugin {
 
   /**

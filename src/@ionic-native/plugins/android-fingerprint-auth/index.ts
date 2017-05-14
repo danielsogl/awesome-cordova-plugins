@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
@@ -147,7 +146,6 @@ export interface AFAEncryptResponse {
   repo: 'https://github.com/mjwheatley/cordova-plugin-android-fingerprint-auth',
   platforms: ['Android']
 })
-@Injectable()
 export class AndroidFingerprintAuth extends IonicNativePlugin {
 
   ERRORS: {

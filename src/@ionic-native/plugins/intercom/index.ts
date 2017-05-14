@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 /**
  * @name Intercom
@@ -29,7 +28,6 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/intercom/intercom-cordova',
   platforms: ['Android', 'iOS'],
 })
-@Injectable()
 export class Intercom extends IonicNativePlugin {
 
   /**

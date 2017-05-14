@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -44,7 +43,6 @@ export interface SerialOpenOptions {
   repo: 'https://github.com/xseignard/cordovarduino',
   platforms: ['Android']
 })
-@Injectable()
 export class Serial extends IonicNativePlugin {
 
   /**

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface MediaFile {
@@ -136,7 +135,6 @@ export interface VideoCapturePlusOptions {
   repo: 'https://github.com/EddyVerbruggen/VideoCapturePlus-PhoneGap-Plugin',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class VideoCapturePlus extends IonicNativePlugin {
 
   /**

@@ -1,5 +1,4 @@
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 /**
  * @beta
@@ -31,7 +30,6 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/TongZhangzt/cordova-plugin-native-ringtones',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class NativeRingtones extends IonicNativePlugin {
 
   /**

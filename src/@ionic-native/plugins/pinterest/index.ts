@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, CordovaProperty, IonicNativePlugin } from '@ionic-native/core';
 
 export interface PinterestUser {
@@ -176,7 +175,6 @@ export interface PinterestPin {
   installVariables: ['APP_ID'],
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class Pinterest extends IonicNativePlugin {
 
   /**

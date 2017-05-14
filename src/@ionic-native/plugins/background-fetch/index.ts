@@ -1,5 +1,4 @@
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 export interface BackgroundFetchConfig {
 
@@ -59,7 +58,6 @@ export interface BackgroundFetchConfig {
   repo: 'https://github.com/transistorsoft/cordova-plugin-background-fetch',
   platforms: ['iOS']
 })
-@Injectable()
 export class BackgroundFetch extends IonicNativePlugin {
 
 

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface CalendarOptions {
@@ -80,7 +79,6 @@ export interface CalendarOptions {
   repo: 'https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class Calendar extends IonicNativePlugin {
 
   /**

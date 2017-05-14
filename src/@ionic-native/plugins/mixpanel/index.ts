@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 declare var mixpanel: any;
@@ -30,7 +29,6 @@ declare var mixpanel: any;
   pluginRef: 'mixpanel',
   repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin'
 })
-@Injectable()
 export class Mixpanel extends IonicNativePlugin {
 
   /**
@@ -115,7 +113,6 @@ export class Mixpanel extends IonicNativePlugin {
   pluginRef: 'mixpanel.people',
   pluginName: 'Mixpanel'
 })
-@Injectable()
 export class MixpanelPeople extends IonicNativePlugin {
 
   /**

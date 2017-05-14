@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, CordovaInstance, InstanceCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -225,7 +224,6 @@ export class ThemeableBrowserObject {
   pluginRef: 'cordova.ThemeableBrowser',
   repo: 'https://github.com/initialxy/cordova-plugin-themeablebrowser'
 })
-@Injectable()
 export class ThemeableBrowser extends IonicNativePlugin {
 
   /**

@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 /**
  * @name App Minimize
@@ -29,7 +28,6 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/tomloprod/cordova-plugin-appminimize',
   platforms: ['Android']
 })
-@Injectable()
 export class AppMinimize extends IonicNativePlugin {
 
   /**

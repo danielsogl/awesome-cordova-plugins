@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -57,7 +56,6 @@ export interface ZeroconfResult {
   pluginRef: 'cordova.plugins.zeroconf',
   repo: 'https://github.com/becvert/cordova-plugin-zeroconf'
 })
-@Injectable()
 export class Zeroconf extends IonicNativePlugin {
   /**
    * Returns this device's hostname.

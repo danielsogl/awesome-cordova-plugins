@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, CordovaProperty, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -41,7 +40,6 @@ import { Cordova, Plugin, CordovaProperty, IonicNativePlugin } from '@ionic-nati
   repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable()
 export class Diagnostic extends IonicNativePlugin {
 
   permission = {
@@ -145,7 +143,7 @@ export class Diagnostic extends IonicNativePlugin {
    * Checks if the device has a camera. On Android this returns true if the device has a camera. On iOS this returns true if both the device has a camera AND the application is authorized to use it. On Windows 10 Mobile this returns true if both the device has a rear-facing camera AND the
    * application is authorized to use it.
    * @param {boolean} [externalStorage] Android only: If true, checks permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
-   *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.   
+   *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
    */
   @Cordova({ callbackOrder: 'reverse' })

@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 /**
  * @name Autostart
@@ -29,7 +28,6 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/ToniKorin/cordova-plugin-autostart',
   platforms: ['Android']
 })
-@Injectable()
 export class Autostart extends IonicNativePlugin {
 
   /**

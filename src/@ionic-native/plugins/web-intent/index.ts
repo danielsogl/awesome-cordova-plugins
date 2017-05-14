@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -33,7 +32,6 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent',
   platforms: ['Android']
 })
-@Injectable()
 export class WebIntent extends IonicNativePlugin {
 
   /**

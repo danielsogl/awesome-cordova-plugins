@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, CordovaInstance, CordovaCheck, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
@@ -459,7 +458,6 @@ export class GoogleMap {
   installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS'],
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class GoogleMaps extends IonicNativePlugin {
 
   /**

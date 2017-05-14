@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, CordovaProperty, IonicNativePlugin } from '@ionic-native/core';
 
 export interface ActionSheetOptions {
@@ -96,7 +95,6 @@ export interface ActionSheetOptions {
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet',
   platforms: ['Android', 'iOS', 'Windows Phone 8', 'Browser']
 })
-@Injectable()
 export class ActionSheet extends IonicNativePlugin {
 
   @CordovaProperty

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface SpinnerDialogIOSOptions {
@@ -33,7 +32,6 @@ export interface SpinnerDialogIOSOptions {
   repo: 'https://github.com/Paldom/SpinnerDialog',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
 export class SpinnerDialog extends IonicNativePlugin {
 
   /**

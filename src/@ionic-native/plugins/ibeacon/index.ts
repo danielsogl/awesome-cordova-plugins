@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -285,7 +284,6 @@ export interface IBeaconDelegate {
   repo: 'https://github.com/petermetz/cordova-plugin-ibeacon',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class IBeacon extends IonicNativePlugin {
 
   /**

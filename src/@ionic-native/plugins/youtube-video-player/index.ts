@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Youtube Video Player
@@ -32,7 +31,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/JonSmart/CordovaYoutubeVideoPlayer',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class YoutubeVideoPlayer extends IonicNativePlugin {
   /**
    * Plays a YouTube video

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -50,7 +49,6 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/apache/cordova-plugin-screen-orientation',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
 export class ScreenOrientation extends IonicNativePlugin {
 
   /**

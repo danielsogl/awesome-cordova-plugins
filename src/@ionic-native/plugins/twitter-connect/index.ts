@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface TwitterConnectResponse {
@@ -59,7 +58,6 @@ export interface TwitterConnectResponse {
   install: 'ionic plugin add twitter-connect-plugin --variable FABRIC_KEY=fabric_API_key',
   installVariables: ['FABRIC_KEY']
 })
-@Injectable()
 export class TwitterConnect extends IonicNativePlugin {
   /**
    * Logs in

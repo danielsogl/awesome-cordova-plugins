@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -308,7 +307,6 @@ export interface BackgroundGeolocationConfig {
   repo: 'https://github.com/mauron85/cordova-plugin-background-geolocation',
   platforms: ['iOS', 'Android', 'Windows Phone 8']
 })
-@Injectable()
 export class BackgroundGeolocation extends IonicNativePlugin {
 
   /** 

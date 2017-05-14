@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, CordovaInstance, Plugin, CordovaCheck, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
 
 declare const sqlitePlugin: any;
@@ -148,7 +147,6 @@ export class SQLiteObject {
   plugin: 'cordova-sqlite-storage',
   repo: 'https://github.com/litehelpers/Cordova-sqlite-storage'
 })
-@Injectable()
 export class SQLite extends IonicNativePlugin {
 
   /**

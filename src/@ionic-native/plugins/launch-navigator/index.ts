@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface LaunchNavigatorOptions {
@@ -94,7 +93,6 @@ export interface LaunchNavigatorOptions {
   repo: 'https://github.com/dpa99c/phonegap-launch-navigator',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class LaunchNavigator extends IonicNativePlugin {
 
   /**

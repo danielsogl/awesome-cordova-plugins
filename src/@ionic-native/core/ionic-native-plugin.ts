@@ -1,27 +1,19 @@
 export class IonicNativePlugin {
 
-  static pluginName: string;
+  private static _class: any;
 
-  static pluginRef: string;
-
-  static plugin: string;
-
-  static repo: string;
-
-  static platforms: string[];
-
-  static install: string;
+  [key: string]: any;
 
   /**
    * Returns a boolean that indicates whether the plugin is installed
    * @return {boolean}
    */
-  static installed(): boolean { return false; }
+  static installed(): boolean { return; }
 
   /**
    * Returns the original plugin object
    */
-  static getPlugin(): any { }
+  static getPlugin(): any { return; }
 
   /**
    * Returns the plugin's name
@@ -37,5 +29,29 @@ export class IonicNativePlugin {
    * Returns the plugin's install name
    */
   static getPluginInstallName(): string { return; }
+
+  static useClass(_class: any): void {
+
+
+    if (!_class || !_class.prototype) return;
+
+
+    for (let prop in _class.prototype) {
+      this.prototype[prop] = _class.prototype[prop];
+    }
+
+    this._class = _class;
+
+  }
+
+  useClass(_class: any): void {
+
+    if (!_class || !_class.prototype) return;
+
+    for (let prop in _class.prototype) {
+      this[prop] = _class.prototype[prop];
+    }
+
+  }
 
 }

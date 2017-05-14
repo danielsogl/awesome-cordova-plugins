@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 
@@ -60,7 +59,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   platforms: ['Android', 'iOS'],
   repo: 'https://github.com/AlexDisler/cordova-plugin-inapppurchase'
 })
-@Injectable()
 export class InAppPurchase extends IonicNativePlugin {
 
   /**

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 declare const window: any;
@@ -30,7 +29,6 @@ declare const window: any;
   repo: 'https://github.com/hiddentao/cordova-plugin-filepath',
   platforms: ['Android']
 })
-@Injectable()
 export class FilePath extends IonicNativePlugin {
 
   /**

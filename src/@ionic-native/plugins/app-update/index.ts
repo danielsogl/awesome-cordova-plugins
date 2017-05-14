@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 /**
  * @name App Update
@@ -39,7 +38,6 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/vaenow/cordova-plugin-app-update',
   platforms: ['Android']
 })
-@Injectable()
 export class AppUpdate extends IonicNativePlugin {
   /**
    * Check and update

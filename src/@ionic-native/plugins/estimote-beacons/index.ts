@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -46,7 +45,6 @@ export interface EstimoteBeaconRegion {
   repo: 'https://github.com/evothings/phonegap-estimotebeacons',
   platforms: ['iOS', 'Android']
 })
-@Injectable()
 export class EstimoteBeacons extends IonicNativePlugin {
 
   /** Proximity value */

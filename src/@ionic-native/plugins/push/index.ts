@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, CordovaInstance, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -267,7 +266,6 @@ export type PushEvent = 'registration' | 'error' | 'notification';
   install: 'ionic plugin add phonegap-plugin-push --variable SENDER_ID=XXXXXXXXX',
   installVariables: ['SENDER_ID']
 })
-@Injectable()
 export class Push extends IonicNativePlugin {
 
   /**

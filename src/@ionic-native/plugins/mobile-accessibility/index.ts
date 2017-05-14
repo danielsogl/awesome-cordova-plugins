@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 /**
  * @name Mobile Accessibility
@@ -27,7 +26,6 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/phonegap/phonegap-mobile-accessibility',
   platforms: ['Amazon Fire OS', 'Android', 'iOS']
 })
-@Injectable()
 export class MobileAccessibility extends IonicNativePlugin {
 
   MobileAccessibilityNotifications: {

@@ -1,6 +1,5 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
 
 /**
  * @name Appodeal
@@ -27,7 +26,6 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/appodeal/appodeal-cordova-plugin.git',
   platforms: ['iOS', 'Android']
 })
-@Injectable()
 export class Appodeal extends IonicNativePlugin {
   // available types of advertisements
   readonly AD_TYPES = {

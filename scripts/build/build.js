@@ -17,7 +17,7 @@ const ROOT = path.resolve(path.join(__dirname, '../../')), // root ionic-native 
 
 
 // dependency versions
-const ANGULAR_VERSION = '*',
+const
   RXJS_VERSION = '^5.0.1',
   MIN_CORE_VERSION = '^3.6.0',
   IONIC_NATIVE_VERSION = require(path.resolve(ROOT, 'package.json')).version;
@@ -29,7 +29,6 @@ const CORE_PEER_DEPS = {
 
 const PLUGIN_PEER_DEPS = {
   '@ionic-native/core': MIN_CORE_VERSION,
-  '@angular/core': ANGULAR_VERSION,
   'rxjs': RXJS_VERSION
 };
 
@@ -109,7 +108,7 @@ const addPluginToQueue = pluginName => {
       .then(() => {
 
         // compile the plugin
-        exec(`${ROOT}/node_modules/.bin/ngc -p ${tsConfigPath}`, (err, stdout, stderr) => {
+        exec(`${ROOT}/node_modules/.bin/tsc -p ${tsConfigPath}`, (err, stdout, stderr) => {
 
           if (err) {
 

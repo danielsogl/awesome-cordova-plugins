@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface CameraOptions {
@@ -127,7 +126,6 @@ export interface CameraPopoverOptions {
   repo: 'https://github.com/apache/cordova-plugin-camera',
   platforms: ['Android', 'BlackBerry', 'Browser', 'Firefox', 'FireOS', 'iOS', 'Windows', 'Windows Phone 8', 'Ubuntu']
 })
-@Injectable()
 export class Camera extends IonicNativePlugin {
 
   /**

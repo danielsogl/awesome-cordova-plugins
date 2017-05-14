@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Market
@@ -24,7 +23,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/xmartlabs/cordova-plugin-market',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class Market extends IonicNativePlugin {
 
   /**

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Power Management
@@ -26,7 +25,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   pluginRef: 'powerManagement',
   repo: 'https://github.com/Viras-/cordova-plugin-powermanagement'
 })
-@Injectable()
 export class PowerManagement extends IonicNativePlugin {
   /**
    * Acquire a wakelock by calling this.

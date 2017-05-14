@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -27,7 +26,6 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/Nexxa/cordova-base64-to-gallery',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
 export class Base64ToGallery extends IonicNativePlugin {
 
   /**

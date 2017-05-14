@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface StreamingVideoOptions {
@@ -47,7 +46,6 @@ export interface StreamingAudioOptions {
   repo: 'https://github.com/nchutchind/cordova-plugin-streaming-media',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class StreamingMedia extends IonicNativePlugin {
   /**
    * Streams a video

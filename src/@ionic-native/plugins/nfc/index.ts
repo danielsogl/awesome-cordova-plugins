@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 declare let window: any;
@@ -37,7 +36,6 @@ declare let window: any;
 /**
 *@{ NFC } class methods
 */
-@Injectable()
 export class NFC extends IonicNativePlugin {
   /**
    * Registers an event listener for any NDEF tag.
@@ -205,7 +203,6 @@ export class NFC extends IonicNativePlugin {
 * Do not pass bytes as parameters for these methods, conversion is built in.
 * For usage with nfc.write() and nfc.share()
 */
-@Injectable()
 export class Ndef extends IonicNativePlugin {
 
   @Cordova({ sync: true })

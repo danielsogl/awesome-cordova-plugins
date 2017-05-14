@@ -1,5 +1,4 @@
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 /**
  * @name Taptic Engine
@@ -31,7 +30,6 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-taptic-engine',
   platforms: ['iOS']
 })
-@Injectable()
 export class TapticEngine extends IonicNativePlugin {
 
   /**

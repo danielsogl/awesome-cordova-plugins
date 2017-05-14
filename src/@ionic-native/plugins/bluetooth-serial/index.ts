@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -37,7 +36,6 @@ import { Observable } from 'rxjs/Observable';
   pluginRef: 'bluetoothSerial',
   platforms: ['Android', 'iOS', 'Windows Phone', 'Browser']
 })
-@Injectable()
 export class BluetoothSerial extends IonicNativePlugin {
 
   /**

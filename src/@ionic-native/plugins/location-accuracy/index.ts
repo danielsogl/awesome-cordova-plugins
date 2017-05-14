@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -35,7 +34,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/dpa99c/cordova-plugin-request-location-accuracy',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class LocationAccuracy extends IonicNativePlugin {
   /**
    * Indicates if you can request accurate location

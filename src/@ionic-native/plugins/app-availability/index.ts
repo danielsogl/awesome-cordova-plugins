@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -39,7 +38,6 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/ohh2ahh/AppAvailability',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class AppAvailability extends IonicNativePlugin {
 
   /**

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 
@@ -31,7 +30,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/mebibou/cordova-plugin-backlight',
   platforms: ['Android']
 })
-@Injectable()
 export class Backlight extends IonicNativePlugin {
 
   /**

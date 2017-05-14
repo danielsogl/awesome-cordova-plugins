@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 declare const navigator: any;
@@ -27,7 +26,6 @@ declare const navigator: any;
   pluginRef: 'navigator.screenshot',
   repo: 'https://github.com/gitawego/cordova-screenshot.git'
 })
-@Injectable()
 export class Screenshot extends IonicNativePlugin {
 
   /**

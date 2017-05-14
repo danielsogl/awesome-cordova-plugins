@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, CordovaInstance, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
@@ -179,7 +178,6 @@ export class InAppBrowserObject {
   repo: 'https://github.com/apache/cordova-plugin-inappbrowser',
   platforms: ['Amazon', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Ubuntu', 'Windows', 'Windows Phone']
 })
-@Injectable()
 export class InAppBrowser extends IonicNativePlugin {
 
   /**

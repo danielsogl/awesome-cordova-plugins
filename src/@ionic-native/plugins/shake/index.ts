@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 /**
@@ -25,7 +24,6 @@ import { Observable } from 'rxjs/Observable';
   pluginRef: 'shake',
   repo: 'https://github.com/leecrossley/cordova-plugin-shake'
 })
-@Injectable()
 export class Shake extends IonicNativePlugin {
   /**
    * Watch for shake gesture

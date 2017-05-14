@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
@@ -29,7 +28,6 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/mgcrea/cordova-plugin-brightness',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class Brightness extends IonicNativePlugin {
 
   /**

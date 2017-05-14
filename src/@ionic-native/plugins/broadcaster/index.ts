@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -30,7 +29,6 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/bsorrentino/cordova-broadcaster',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class Broadcaster extends IonicNativePlugin {
 
   /**

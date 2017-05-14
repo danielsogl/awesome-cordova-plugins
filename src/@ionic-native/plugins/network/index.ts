@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
@@ -55,7 +54,6 @@ declare var navigator: any;
   platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser'],
   pluginRef: 'navigator.connection'
 })
-@Injectable()
 export class Network extends IonicNativePlugin {
 
   /**

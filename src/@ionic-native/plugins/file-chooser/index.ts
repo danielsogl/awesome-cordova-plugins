@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -28,7 +27,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/don/cordova-filechooser',
   platforms: ['Android']
 })
-@Injectable()
 export class FileChooser extends IonicNativePlugin {
 
   /**

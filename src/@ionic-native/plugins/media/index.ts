@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { CordovaInstance, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 declare const Media: any;
@@ -241,7 +240,6 @@ export type MediaErrorCallback = (error: MediaError) => void;
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media'
 })
-@Injectable()
 export class MediaPlugin extends IonicNativePlugin {
 
   // Constants

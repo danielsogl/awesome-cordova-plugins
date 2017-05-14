@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 /**
  * @name Browser Tab
@@ -39,7 +38,6 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/google/cordova-plugin-browsertab',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class BrowserTab extends IonicNativePlugin {
 
   /**

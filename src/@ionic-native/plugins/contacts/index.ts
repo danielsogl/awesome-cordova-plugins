@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { CordovaInstance, InstanceProperty, Plugin, getPromise, InstanceCheck, checkAvailability, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 declare const window: any,
@@ -296,7 +295,6 @@ export class ContactFindOptions implements IContactFindOptions {
   repo: 'https://github.com/apache/cordova-plugin-contacts',
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows 8', 'Windows Phone']
 })
-@Injectable()
 export class Contacts extends IonicNativePlugin {
 
   /**

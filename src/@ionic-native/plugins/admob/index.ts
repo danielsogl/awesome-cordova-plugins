@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -129,7 +128,6 @@ export interface AdExtras {
   repo: 'https://github.com/floatinghotpot/cordova-admob-pro',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
 export class AdMob extends IonicNativePlugin {
 
   AD_POSITION: {

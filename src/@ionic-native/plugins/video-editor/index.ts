@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface TranscodeOptions {
@@ -154,7 +153,6 @@ export interface VideoInfo {
   repo: 'https://github.com/jbavari/cordova-plugin-video-editor',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
 export class VideoEditor extends IonicNativePlugin {
 
   OptimizeForNetworkUse = {

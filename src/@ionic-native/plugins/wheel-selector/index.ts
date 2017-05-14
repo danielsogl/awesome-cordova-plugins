@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface WheelSelectorItem {
@@ -127,7 +126,6 @@ export interface WheelSelectorData {
   platforms: ['Android', 'iOS']
 })
 
-@Injectable()
 export class WheelSelector extends IonicNativePlugin {
 
   /**

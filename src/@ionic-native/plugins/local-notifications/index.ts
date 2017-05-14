@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface ILocalNotification {
@@ -147,7 +146,6 @@ export interface ILocalNotification {
   repo: 'https://github.com/katzer/cordova-plugin-local-notifications',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable()
 export class LocalNotifications extends IonicNativePlugin {
 
   /**

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Device Feedback
@@ -37,7 +36,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/VVelda/device-feedback',
   platforms: ['Android']
 })
-@Injectable()
 export class DeviceFeedback extends IonicNativePlugin {
 
   /**

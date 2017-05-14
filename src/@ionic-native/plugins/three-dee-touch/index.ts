@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -129,7 +128,6 @@ export interface ThreeDeeTouchForceTouch {
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-3dtouch',
   platforms: ['iOS']
 })
-@Injectable()
 export class ThreeDeeTouch extends IonicNativePlugin {
 
   /**

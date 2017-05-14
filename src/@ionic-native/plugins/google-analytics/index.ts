@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -36,7 +35,6 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/danwilson/google-analytics-plugin',
   platforms: ['Android', 'iOS', 'Browser']
 })
-@Injectable()
 export class GoogleAnalytics extends IonicNativePlugin {
 
   /**

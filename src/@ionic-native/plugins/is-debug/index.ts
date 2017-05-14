@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -28,7 +27,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/mattlewis92/cordova-plugin-is-debug',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class IsDebug extends IonicNativePlugin {
 
   /**

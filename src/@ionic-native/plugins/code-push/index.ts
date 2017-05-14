@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 namespace Http {
@@ -426,7 +425,6 @@ export interface DownloadProgress {
   repo: 'https://github.com/Microsoft/cordova-plugin-code-push',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class CodePush extends IonicNativePlugin {
 
   /**

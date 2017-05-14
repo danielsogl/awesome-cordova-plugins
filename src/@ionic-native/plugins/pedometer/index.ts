@@ -1,6 +1,5 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-import { Injectable } from '@angular/core';
 
 /**
  * Interface of a pedometer data object which is returned by watching for new data or by recieving historical data
@@ -41,7 +40,6 @@ export interface IPedometerData {
   repo: 'https://github.com/leecrossley/cordova-plugin-pedometer',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class Pedometer extends IonicNativePlugin {
 
   /**

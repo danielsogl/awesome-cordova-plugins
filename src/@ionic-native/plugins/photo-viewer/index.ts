@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Photo Viewer
@@ -23,7 +22,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/sarriaroman/photoviewer',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class PhotoViewer extends IonicNativePlugin {
   /**
    * Shows an image in full screen

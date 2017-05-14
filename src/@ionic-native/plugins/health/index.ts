@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 /**
  * @hidden
@@ -199,7 +198,6 @@ export interface HealthData {
   repo: 'https://github.com/dariosalvi78/cordova-plugin-health',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class Health extends IonicNativePlugin {
 
   /**

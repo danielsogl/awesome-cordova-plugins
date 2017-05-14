@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -26,7 +25,6 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/jeduan/cordova-plugin-crop',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class Crop extends IonicNativePlugin {
 
   /**

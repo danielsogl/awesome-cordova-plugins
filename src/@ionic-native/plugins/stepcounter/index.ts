@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Stepcounter
@@ -31,7 +30,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/Slidee/cordova-plugin-stepcounter',
   platforms: ['Android']
 })
-@Injectable()
 export class Stepcounter extends IonicNativePlugin {
 
   /**

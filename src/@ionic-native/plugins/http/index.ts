@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface HTTPResponse {
@@ -64,7 +63,6 @@ export interface HTTPResponse {
   repo: 'https://github.com/wymsee/cordova-HTTP',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class HTTP extends IonicNativePlugin {
 
   /**

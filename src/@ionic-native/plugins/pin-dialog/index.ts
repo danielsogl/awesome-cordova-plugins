@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
@@ -30,7 +29,6 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   pluginRef: 'plugins.pinDialog',
   repo: 'https://github.com/Paldom/PinDialog'
 })
-@Injectable()
 export class PinDialog extends IonicNativePlugin {
   /**
    * Show pin dialog

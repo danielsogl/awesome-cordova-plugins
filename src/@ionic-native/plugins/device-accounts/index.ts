@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -27,7 +26,6 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/loicknuchel/cordova-device-accounts',
   platforms: ['Android']
 })
-@Injectable()
 export class DeviceAccounts extends IonicNativePlugin {
 
   /**

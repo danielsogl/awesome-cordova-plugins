@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -67,7 +66,6 @@ export interface ToastOptions {
   repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
 export class Toast extends IonicNativePlugin {
 
   /**

@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 export type LinkedInLoginScopes = 'r_basicprofile' | 'r_emailaddress' | 'rw_company_admin' | 'w_share';
 
@@ -56,7 +55,6 @@ export type LinkedInLoginScopes = 'r_basicprofile' | 'r_emailaddress' | 'rw_comp
   install: 'ionic plugin add cordova-plugin-linkedin --variable APP_ID=YOUR_APP_ID',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class LinkedIn extends IonicNativePlugin {
 
   /**

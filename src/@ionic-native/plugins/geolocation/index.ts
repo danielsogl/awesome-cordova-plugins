@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -155,7 +154,6 @@ export interface GeolocationOptions {
   repo: 'https://github.com/apache/cordova-plugin-geolocation',
   platforms: ['Android', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
-@Injectable()
 export class Geolocation extends IonicNativePlugin {
 
   /**

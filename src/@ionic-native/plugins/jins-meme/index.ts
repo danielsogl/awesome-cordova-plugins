@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -37,7 +36,6 @@ declare const cordova: any;
   repo: 'https://github.com/jins-meme/JinsMemeSDK-Plugin-Cordova',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class JinsMeme extends IonicNativePlugin {
   /**
    * Authentication and authorization of App and SDK.

@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin  } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 export interface HealthKitOptions {
   /**
@@ -140,7 +139,6 @@ export interface HealthKitOptions {
   repo: 'https://github.com/Telerik-Verified-Plugins/HealthKit',
   platforms: ['iOS']
 })
-@Injectable()
 export class HealthKit extends IonicNativePlugin {
 
   /**

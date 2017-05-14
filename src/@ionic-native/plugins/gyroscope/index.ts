@@ -1,6 +1,5 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-import { Injectable } from '@angular/core';
 
 declare const navigator: any;
 
@@ -80,7 +79,6 @@ export interface GyroscopeOptions {
   repo: 'https://github.com/NeoLSN/cordova-plugin-gyroscope',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class Gyroscope extends IonicNativePlugin {
 
   /**

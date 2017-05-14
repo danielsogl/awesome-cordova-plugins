@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
@@ -104,7 +103,6 @@ export interface AdMobFreeRewardVideoConfig {
   repo: 'https://github.com/ratson/cordova-plugin-admob-free',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class AdMobFree extends IonicNativePlugin {
 
   /**

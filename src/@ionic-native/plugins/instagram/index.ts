@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -26,7 +25,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/vstirbu/InstagramPlugin',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class Instagram extends IonicNativePlugin {
 
   /**

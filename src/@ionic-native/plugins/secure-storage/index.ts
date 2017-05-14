@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { CordovaInstance, Plugin, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 
 declare var cordova: any;
@@ -112,7 +111,6 @@ export class SecureStorageObject {
   repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',
   platforms: ['Android', 'iOS', 'Windows Phone']
 })
-@Injectable()
 export class SecureStorage extends IonicNativePlugin {
 
   /**

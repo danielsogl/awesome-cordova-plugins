@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 
 /**
@@ -28,7 +27,6 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class CouchbaseLite extends IonicNativePlugin {
 
   /**

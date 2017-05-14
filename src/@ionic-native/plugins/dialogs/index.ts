@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
@@ -48,7 +47,6 @@ export interface DialogsPromptCallback {
   repo: 'https://github.com/apache/cordova-plugin-dialogs.git',
   platforms: ['Android', 'BlackBerry 10', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
-@Injectable()
 export class Dialogs extends IonicNativePlugin {
 
   /**

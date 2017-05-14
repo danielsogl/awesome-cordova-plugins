@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
@@ -62,7 +61,6 @@ export interface ImagePickerOptions {
   repo: 'https://github.com/Telerik-Verified-Plugins/ImagePicker',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class ImagePicker extends IonicNativePlugin {
   /**
    * Pick pictures from the library.

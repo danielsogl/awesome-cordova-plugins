@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -24,7 +23,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/tomloprod/cordova-plugin-headercolor',
   platforms: ['Android']
 })
-@Injectable()
 export class HeaderColor extends IonicNativePlugin {
 
   /**

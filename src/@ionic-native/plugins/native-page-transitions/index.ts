@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface NativeTransitionOptions {
@@ -68,7 +67,6 @@ export interface NativeTransitionOptions {
   repo: 'https://github.com/Telerik-Verified-Plugins/NativePageTransitions',
   platforms: ['iOS', 'Android', 'Windows Phone']
 })
-@Injectable()
 export class NativePageTransitions extends IonicNativePlugin {
   /**
    * Perform a slide animation

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface CameraPreviewDimensions {
@@ -131,7 +130,6 @@ export interface CameraPreviewPictureOptions {
   repo: 'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class CameraPreview extends IonicNativePlugin {
 
   FOCUS_MODE = {

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -29,7 +28,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/dpa99c/cordova-launch-review',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class LaunchReview extends IonicNativePlugin {
 
   /**

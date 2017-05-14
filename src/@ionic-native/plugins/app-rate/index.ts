@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface AppRatePreferences {
@@ -142,7 +141,6 @@ export interface AppUrls {
   repo: 'https://github.com/pushandplay/cordova-plugin-apprate',
   platforms: ['Android', 'iOS', 'Windows (experimental)']
 })
-@Injectable()
 export class AppRate extends IonicNativePlugin {
 
   /**

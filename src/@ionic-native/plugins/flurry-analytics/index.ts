@@ -1,5 +1,4 @@
 import { Plugin, CordovaInstance, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 export interface FlurryAnalyticsOptions {
   /** Flurry API key is required */
@@ -211,7 +210,6 @@ export class FlurryAnalyticsObject {
   repo: 'https://github.com/blakgeek/cordova-plugin-flurryanalytics.git',
   platforms: ['Android', 'iOS', 'Browser']
 })
-@Injectable()
 export class FlurryAnalytics extends IonicNativePlugin {
 
   /**
@@ -223,7 +221,7 @@ export class FlurryAnalytics extends IonicNativePlugin {
 
     let instance: any;
 
-    if (checkAvailability(FlurryAnalytics.pluginRef, null, FlurryAnalytics.pluginName) === true) {
+    if (checkAvailability(FlurryAnalytics.getPluginRef(), null, FlurryAnalytics.getPluginName()) === true) {
       instance = new (window as any).FlurryAnalaytics(options);
     }
 

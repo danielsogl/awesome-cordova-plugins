@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -175,7 +174,6 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/don/cordova-plugin-ble-central',
   platforms: ['iOS', 'Android']
 })
-@Injectable()
 export class BLE extends IonicNativePlugin {
 
   /**

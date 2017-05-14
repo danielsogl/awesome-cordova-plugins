@@ -1,14 +1,13 @@
-import { Injectable } from '@angular/core';
 import { Cordova, CordovaInstance, Plugin, IonicNativePlugin, checkAvailability } from '@ionic-native/core';
 
-declare var Notification: any;
+declare const Notification: any;
 
 export class PLNObject {
 
   private _objectInstance: any;
 
   constructor(title: string, options: LocalNotificationOptions) {
-    if (checkAvailability(PhonegapLocalNotifications.pluginRef, null, PhonegapLocalNotifications.pluginName) === true) {
+    if (checkAvailability(PhonegapLocalNotifications.getPluginRef(), null, PhonegapLocalNotifications.getPluginName()) === true) {
       this._objectInstance = new Notification(title, options);
     }
   }
@@ -89,7 +88,6 @@ export interface LocalNotificationOptions {
   repo: 'https://github.com/phonegap/phonegap-plugin-local-notification',
   platforms: ['Android', 'iOS', 'Browser']
 })
-@Injectable()
 export class PhonegapLocalNotifications extends IonicNativePlugin {
 
   /**

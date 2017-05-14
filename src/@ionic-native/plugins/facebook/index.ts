@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface FacebookLoginResponse {
@@ -118,7 +117,6 @@ export interface FacebookLoginResponse {
   installVariables: ['APP_ID', 'APP_NAME'],
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class Facebook extends IonicNativePlugin {
 
   EVENTS: {

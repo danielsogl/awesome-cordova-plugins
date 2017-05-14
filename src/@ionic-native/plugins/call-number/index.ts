@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Call Number
@@ -27,7 +26,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/Rohfosho/CordovaCallNumberPlugin',
   platforms: ['iOS', 'Android']
 })
-@Injectable()
 export class CallNumber extends IonicNativePlugin {
 
   /**

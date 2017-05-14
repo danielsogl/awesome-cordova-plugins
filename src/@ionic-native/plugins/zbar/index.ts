@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface ZBarOptions {
@@ -75,7 +74,6 @@ export interface ZBarOptions {
   repo: 'https://github.com/tjwoon/csZBar',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
 export class ZBar extends IonicNativePlugin {
 
   /**

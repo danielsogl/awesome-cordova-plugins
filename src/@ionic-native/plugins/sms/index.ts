@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
@@ -55,7 +54,6 @@ export interface SmsOptionsAndroid {
   repo: 'https://github.com/cordova-sms/cordova-sms-plugin',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
 export class SMS extends IonicNativePlugin {
 
   /**

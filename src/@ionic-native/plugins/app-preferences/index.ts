@@ -1,6 +1,5 @@
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-import { Injectable } from '@angular/core';
 
 /**
  * @name App Preferences
@@ -27,7 +26,6 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/apla/me.apla.cordova.app-preferences',
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'OS X', 'Windows 8', 'Windows Phone']
 })
-@Injectable()
 export class AppPreferences extends IonicNativePlugin {
 
   /**

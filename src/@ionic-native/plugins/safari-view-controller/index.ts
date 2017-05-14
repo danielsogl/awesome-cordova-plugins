@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface SafariViewControllerOptions {
@@ -61,7 +60,6 @@ export interface SafariViewControllerOptions {
   platforms: ['iOS', 'Android'],
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller'
 })
-@Injectable()
 export class SafariViewController extends IonicNativePlugin {
 
   /**

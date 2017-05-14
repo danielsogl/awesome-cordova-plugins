@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -79,7 +78,6 @@ export interface DeviceOrientationCompassOptions {
   repo: 'https://github.com/apache/cordova-plugin-device-orientation',
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
 })
-@Injectable()
 export class DeviceOrientation extends IonicNativePlugin {
 
   /**

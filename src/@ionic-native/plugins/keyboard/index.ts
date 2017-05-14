@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -27,7 +26,6 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/driftyco/ionic-plugin-keyboard',
   platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows']
 })
-@Injectable()
 export class Keyboard extends IonicNativePlugin {
 
   /**

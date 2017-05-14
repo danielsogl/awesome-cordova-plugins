@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
@@ -50,7 +49,6 @@ export interface VideoOptions {
   repo: 'https://github.com/moust/cordova-plugin-videoplayer',
   platforms: ['Android']
 })
-@Injectable()
 export class VideoPlayer extends IonicNativePlugin {
 
   /**

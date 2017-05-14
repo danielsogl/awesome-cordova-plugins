@@ -1,5 +1,4 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Injectable } from '@angular/core';
 
 export interface DocumentViewerOptions {
   title: string;
@@ -59,7 +58,6 @@ export interface DocumentViewerOptions {
   repo: 'https://github.com/sitewaerts/cordova-plugin-document-viewer',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable()
 export class DocumentViewer extends IonicNativePlugin {
 
   /**

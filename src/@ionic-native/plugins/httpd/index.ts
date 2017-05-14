@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -54,7 +53,6 @@ export interface HttpdOptions {
   repo: 'https://github.com/floatinghotpot/cordova-httpd',
   platforms: ['iOS', 'Android']
 })
-@Injectable()
 export class Httpd extends IonicNativePlugin {
 
   /**

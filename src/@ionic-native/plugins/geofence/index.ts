@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Cordova, Plugin, CordovaFunctionOverride, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -82,7 +81,6 @@ declare const window: any;
   repo: 'https://github.com/cowbell/cordova-plugin-geofence/',
   platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows Phone']
 })
-@Injectable()
 export class Geofence extends IonicNativePlugin {
 
   public TransitionType = {
