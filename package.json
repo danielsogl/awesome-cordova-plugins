@@ -4,7 +4,6 @@
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "license": "MIT",
   "devDependencies": {
-    "@angular/core": "4.1.2",
     "@types/cordova": "0.0.34",
     "@types/jasmine": "^2.5.47",
     "@types/node": "^7.0.18",
