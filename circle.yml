@@ -7,12 +7,15 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-         key: ionic-site
+         key: ionic-site-{{ .Branch }}
       - run:
          name: Prepare ionic-site repo
-         command: ./scripts/docs/prepare.sh
+         command: |
+           if [ "${CIRCLE_BRANCH}" == "master" ]; then
+             ./scripts/docs/prepare.sh
+           fi
       - save_cache:
-         key: ionic-site
+         key: ionic-site-{{ .Branch }}
          paths:
          - ~/ionic-site/
       - restore_cache:
@@ -27,6 +30,9 @@ jobs:
       - run:
           name: Run tslint
           command: npm run lint
+      - run:
+          name: Build changed plugins
+          command: node scripts/ci-tests.js
       - add_ssh_keys
       - deploy:
           name: Update docs
