@@ -33,6 +33,9 @@ jobs:
       - run:
           name: Build changed plugins
           command: node scripts/ci-tests.js
+      - run:
+          name: Run tests
+          command: npm test
       - add_ssh_keys
       - deploy:
           name: Update docs
