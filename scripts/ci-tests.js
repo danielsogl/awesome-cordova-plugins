@@ -17,14 +17,14 @@ exec(`git branch | grep \\* | cut -d ' ' -f2`)
     }
   })
   .then((output) => {
-    if (output.stderr) {
+    if (output && output.stderr) {
       return Promise.reject(output.stderr);
     }
     console.log('Checking for differences ...');
     return exec(`git diff --name-status origin master`)
   })
   .then((output) => {
-    if (output.stderr) {
+    if (output && output.stderr) {
       return Promise.reject(output.stderr);
     }
 
@@ -40,7 +40,7 @@ exec(`git branch | grep \\* | cut -d ' ' -f2`)
   })
   .then((output) => {
 
-    if (output.stderr) {
+    if (output && output.stderr) {
       return Promise.reject(output.stderr);
     }
 
@@ -52,7 +52,7 @@ exec(`git branch | grep \\* | cut -d ' ' -f2`)
     return exec(`npm run build:modules ${diff.join(' ')} --silent`);
   })
   .then((output) => {
-    if (output.stderr) {
+    if (output && output.stderr) {
       console.log(output.stderr);
       process.exit(1);
     }
