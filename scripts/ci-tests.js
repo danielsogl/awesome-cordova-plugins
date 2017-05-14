@@ -36,7 +36,7 @@ exec(`git branch | grep \\* | cut -d ' ' -f2`)
 
     console.log(`${ diff.length } plugins were modified. We will now build them to verify they still work.`);
 
-    return exec('npm run build:core');
+    return exec('npm run build:core --silent');
   })
   .then((output) => {
 
@@ -49,7 +49,7 @@ exec(`git branch | grep \\* | cut -d ' ' -f2`)
 
     diff = diff.map(text => text.replace('src/@ionic-native/plugins/', '').replace('/index.ts', ''));
 
-    return exec(`npm run build:modules ${diff.join(' ')}`);
+    return exec(`npm run build:modules ${diff.join(' ')} --silent`);
   })
   .then((output) => {
     if (output.stderr) {
