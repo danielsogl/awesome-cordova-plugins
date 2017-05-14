@@ -21,7 +21,7 @@ exec(`git branch | grep \\* | cut -d ' ' -f2`)
       return Promise.reject(output.stderr);
     }
     console.log('Checking for differences ...');
-    return exec(`git diff --name-status master`)
+    return exec(`git diff --name-status origin master`)
   })
   .then((output) => {
     if (output.stderr) {
