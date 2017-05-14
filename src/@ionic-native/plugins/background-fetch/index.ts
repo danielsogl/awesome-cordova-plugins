@@ -1,9 +1,6 @@
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
-declare var window;
-
-
 export interface BackgroundFetchConfig {
 
   /**

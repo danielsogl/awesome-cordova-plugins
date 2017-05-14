@@ -75,7 +75,7 @@ export class Dialogs extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 4
   })
-  confirm(message, title?: string, buttonLabels?: string[]): Promise<number> { return; }
+  confirm(message: string, title?: string, buttonLabels?: string[]): Promise<number> { return; }
 
   /**
    * Displays a native dialog box that is more customizable than the browser's prompt function.

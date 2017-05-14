@@ -517,6 +517,11 @@ export declare class FileReader {
   readAsBinaryString(fe: IFile): void;
   readAsArrayBuffer(fe: IFile): void;
 
+  /**
+   * @hidden
+   */
+  [key: string]: any;
+
 }
 
 interface Window extends LocalFileSystem {}
@@ -630,7 +635,7 @@ export class File extends IonicNativePlugin {
   @CordovaProperty
   sharedDirectory: string;
 
-  cordovaFileError: {} = {
+  cordovaFileError: any = {
     1: 'NOT_FOUND_ERR',
     2: 'SECURITY_ERR',
     3: 'ABORT_ERR',

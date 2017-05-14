@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+
 /**
  * @name PayPal
  * @description
@@ -383,6 +384,11 @@ export interface PayPalConfigurationOptions {
    * PIN to use for sandbox if 'forceDefaultsInSandbox' is set.
    */
   sandboxUserPin?: string;
+
+  /**
+   * @hidden
+   */
+  [key: string]: any;
 }
 /**
  * @hidden
@@ -413,7 +419,7 @@ export class PayPalConfiguration implements PayPalConfigurationOptions {
     };
 
     if (options && typeof options === 'object') {
-      for (var i in options) {
+      for (let i in options) {
         if (defaults.hasOwnProperty(i)) {
           defaults[i] = options[i];
         }

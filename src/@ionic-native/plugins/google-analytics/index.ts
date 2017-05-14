@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
-declare var window;
-
 /**
  * @name Google Analytics
  * @description

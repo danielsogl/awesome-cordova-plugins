@@ -2,7 +2,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
-declare var navigator: any;
+declare const navigator: any;
 
 /**
  *  @hidden

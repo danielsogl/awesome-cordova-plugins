@@ -1,7 +1,7 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
-declare var window: any;
+declare const window: any;
 
 export interface IntelSecurityDataOptions {
   /** Non-empty string. **/

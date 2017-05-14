@@ -3,7 +3,7 @@ import { Cordova, CordovaInstance, CordovaCheck, Plugin, InstanceProperty, Insta
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
-declare var plugin: any;
+declare const plugin: any;
 
 /**
  * @hidden
@@ -1473,7 +1473,7 @@ export class GroundOverlay {
       return Promise.reject({ error: 'plugin_not_installed' });
     }
     return new Promise<any>(
-      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
+      (resolve: Function) => this._objectInstance.addListenerOnce(eventName, resolve)
     );
   }
 
@@ -1766,7 +1766,7 @@ export class Geocoder {
    */
   @CordovaCheck()
   geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
-    return new Promise<GeocoderResult[]>(resolve => {
+    return new Promise<GeocoderResult[]>((resolve: Function) => {
       plugin.google.maps.Geocoder.geocode(request, resolve);
     });
   }

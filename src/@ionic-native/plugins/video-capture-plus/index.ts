@@ -28,9 +28,9 @@ export interface MediaFile {
   /**
    * Retrieves the format information of the media file.
    * @param {Function} successCallback
-   * @param {Function} errorCallback
+   * @param {Function} [errorCallback]
    */
-  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any);
+  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any): any;
 }
 
 export interface MediaFileData {

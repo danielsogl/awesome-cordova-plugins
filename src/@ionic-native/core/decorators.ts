@@ -32,6 +32,8 @@ export interface PluginConfig {
    * Supported platforms
    */
   platforms?: string[];
+
+  [key: string]: any;
 }
 
 export interface CordovaOptions {
@@ -182,12 +184,12 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
  *  }
  * ```
  */
-export function Plugin(config: PluginConfig) {
-  return function(cls) {
+export function Plugin(config: PluginConfig): ClassDecorator {
+  return function(cls: any) {
 
     // Add these fields to the class
-    for (let k in config) {
-      cls[k] = config[k];
+    for (let prop in config) {
+      cls[prop] = config[prop];
     }
 
     cls['installed'] = function(printWarning?: boolean) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CordovaInstance, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
-declare var Media: any;
+declare const Media: any;
 
 
 /**
@@ -169,7 +169,7 @@ export type MediaErrorCallback = (error: MediaError) => void;
  *   window.setTimeout(() => file.stopRecord(), 10000);
  * });
  * ```
- * 
+ *
  * You can find the reasons here: https://github.com/driftyco/ionic-native/issues/1452#issuecomment-299605906
  *
  * @usage

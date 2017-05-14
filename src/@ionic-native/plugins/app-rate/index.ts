@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
-
-declare var window;
-
 export interface AppRatePreferences {
 
   /**

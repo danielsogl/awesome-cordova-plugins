@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-declare var window;
-
 export interface BackgroundGeolocationResponse {
 
   /**

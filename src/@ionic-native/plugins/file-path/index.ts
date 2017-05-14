@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
-declare var window: any;
+declare const window: any;
 
 /**
  * @name File Path

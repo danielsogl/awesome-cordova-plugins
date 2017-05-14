@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Plugin, IonicNativePlugin } from '@ionic-native/core';
 
+declare const navigator: any;
 
-declare var navigator: any;
 /**
  * @name Screenshot
  * @description Captures a screen shot
@@ -44,7 +44,7 @@ export class Screenshot extends IonicNativePlugin {
     return new Promise<any>(
       (resolve, reject) => {
         navigator.screenshot.save(
-          (error, result) => {
+          (error: any, result: any) => {
             if (error) {
               reject(error);
             } else {
@@ -70,7 +70,7 @@ export class Screenshot extends IonicNativePlugin {
     return new Promise<any>(
       (resolve, reject) => {
         navigator.screenshot.URI(
-          (error, result) => {
+          (error: any, result: any) => {
             if (error) {
               reject(error);
             } else {

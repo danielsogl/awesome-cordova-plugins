@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CordovaInstance, InstanceProperty, Plugin, getPromise, InstanceCheck, checkAvailability, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
-declare var window: any,
+declare const window: any,
   navigator: any;
 
 export type ContactFieldType = '*' | 'addresses' | 'birthday' | 'categories' | 'country' | 'department' | 'displayName' | 'emails' | 'familyName' | 'formatted' | 'givenName' | 'honorificPrefix' | 'honorificSuffix' | 'id' | 'ims' | 'locality' | 'middleName' | 'name' | 'nickname' | 'note' | 'organizations' | 'phoneNumbers' | 'photos' | 'postalCode' | 'region' | 'streetAddress' | 'title' | 'urls';
@@ -49,6 +49,7 @@ export interface IContactProperties {
 
   /** An array of web pages associated with the contact. */
   urls?: IContactField[];
+
 }
 
 /**
@@ -71,6 +72,8 @@ export class Contact implements IContactProperties {
   @InstanceProperty categories: IContactField[];
   @InstanceProperty urls: IContactField[];
 
+  [key: string]: any;
+
   constructor() {
     if (checkAvailability('navigator.contacts', 'create', 'Contacts') === true) {
       this._objectInstance = navigator.contacts.create();
@@ -92,8 +95,8 @@ export class Contact implements IContactProperties {
 
   @InstanceCheck()
   save(): Promise<any> {
-    return getPromise((resolve, reject) => {
-      this._objectInstance.save((contact) => {
+    return getPromise((resolve: Function, reject: Function) => {
+      this._objectInstance.save((contact: any) => {
         this._objectInstance = contact;
         resolve(this);
       }, reject);
@@ -114,7 +117,7 @@ export interface IContactError {
 /**
  * @hidden
  */
-export declare var ContactError: {
+export declare const ContactError: {
   new (code: number): IContactError;
   UNKNOWN_ERROR: number;
   INVALID_ARGUMENT_ERROR: number;
@@ -312,8 +315,8 @@ export class Contacts extends IonicNativePlugin {
    */
   @CordovaCheck()
   find(fields: ContactFieldType[], options?: IContactFindOptions): Promise<Contact[]> {
-    return getPromise((resolve, reject) => {
-      navigator.contacts.find(fields, (contacts) => {
+    return getPromise((resolve: Function, reject: Function) => {
+      navigator.contacts.find(fields, (contacts: any[]) => {
         resolve(contacts.map(processContact));
       }, reject, options);
     });
@@ -325,8 +328,8 @@ export class Contacts extends IonicNativePlugin {
    */
   @CordovaCheck()
   pickContact(): Promise<Contact> {
-    return getPromise((resolve, reject) => {
-      navigator.contacts.pickContact((contact) => resolve(processContact(contact)), reject);
+    return getPromise((resolve: Function, reject: Function) => {
+      navigator.contacts.pickContact((contact: any) => resolve(processContact(contact)), reject);
     });
   }
 
@@ -335,7 +338,7 @@ export class Contacts extends IonicNativePlugin {
 /**
  * @hidden
  */
-function processContact(contact) {
+function processContact(contact: any) {
   let newContact = new Contact();
   for (let prop in contact) {
     if (typeof contact[prop] === 'function') continue;
