@@ -14,12 +14,12 @@ export interface WheelSelectorOptions {
   /**
    * The items to display (array of items).
    */
-  items: WheelSelectorItem[];
+  items: Array<Array<WheelSelectorItem>>;
 
   /**
    * Which items to display by default, example ["2","Apple"] (if items.length is 2 for instance)
    */
-  defaultItems?: WheelSelectorItem[];
+  defaultItems?: Array<WheelSelectorItem>;
 
   /**
    * The 'ok' button text
@@ -44,13 +44,6 @@ export interface WheelSelectorOptions {
    * Default: false
    */
   wrapWheelText?: boolean;
-
-  /**
-   * The json key to display, by default it is description, this allows for setting any
-   * key/value to be displayed
-   * Default: description
-   */
-  displayKey?: string;
 }
 
 export interface WheelSelectorData {
@@ -84,12 +77,13 @@ export interface WheelSelectorData {
  *     ],
  *   };
  *
+ *   //use most of the default values
  *   this.selector.show({
  *     title: "Select some Fruit",
  *     items: [
- *       [jsonData.numbers],
- *       [jsonData.fruits]
- *     ],
+ *       jsonData.numbers,
+ *       jsonData.fruits
+ *     ]
  *   }).then(
  *     result => {
  *       console.log('Selected: ' + result[0].description + ' at index: ' + result[0].index
@@ -97,6 +91,28 @@ export interface WheelSelectorData {
  *     },
  *     err => console.log('Error occurred while getting result: ', err)
  *     );
+ *
+ *   ...
+ *
+ *   //set some initial default values to display: "2", "Tangerine"
+ *   this.selector.show({
+ *     title: "Select some Fruit",
+ *     items: [
+ *       jsonData.numbers,
+ *       jsonData.fruits
+ *     ],
+ *     defaultItems: [
+ *       jsonData.numbers[1],
+ *       jsonData.fruits[2]
+ *     ]
+ *   }).then(
+ *     result => {
+ *       console.log('Selected: ' + result[0].description + ' at index: ' + result[0].index
+ *         + ' and ' + result[1].description + ' at index: ' + result[1].index);
+ *     },
+ *     err => console.log('Error occurred while getting result: ', err)
+ *     );
+ *
  *
  * ```
  *
