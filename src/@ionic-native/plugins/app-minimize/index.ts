@@ -25,7 +25,7 @@ import { Injectable } from '@angular/core';
 @Plugin({
   pluginName: 'AppMinimize',
   plugin: 'https://github.com/tomloprod/cordova-plugin-appminimize.git',
-  pluginRef: 'cordova.plugins.appMinimize',
+  pluginRef: 'plugins.appMinimize',
   repo: 'https://github.com/tomloprod/cordova-plugin-appminimize',
   platforms: ['Android']
 })

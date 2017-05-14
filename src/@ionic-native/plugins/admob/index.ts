@@ -107,12 +107,12 @@ export interface AdExtras {
  *
  * onClick() {
  *   let adId;
- *   if(this.platform.is('android') {
+ *   if(this.platform.is('android')) {
  *     adId = 'YOUR_ADID_ANDROID';
  *   } else if (this.platform.is('ios')) {
  *     adId = 'YOUR_ADID_IOS';
  *   }
- *   this.admob.prepareInterstitial(adId)
+ *   this.admob.prepareInterstitial({adId: adId})
  *     .then(() => { this.admob.showInterstitial(); });
  * }
  *

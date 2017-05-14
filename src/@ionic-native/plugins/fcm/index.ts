@@ -49,7 +49,7 @@ export interface NotificationData {
  *   backend.registerToken(token);
  * })
  * 
- * fcm.unsubscribeToTopic('marketing');
+ * fcm.unsubscribeFromTopic('marketing');
  * 
  * ```
  * @interfaces
@@ -101,7 +101,7 @@ export class FCM extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise resolving in result of unsubscribing from a topic
    */
   @Cordova()
-  unsubscribeToTopic(topic: string): Promise<any> { return; }
+  unsubscribeFromTopic(topic: string): Promise<any> { return; }
 
   /**
    * Watch for incoming notifications
