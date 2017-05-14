@@ -51,6 +51,14 @@ exec(`git branch | grep \\* | cut -d ' ' -f2`)
 
     return exec(`npm run build:modules ${diff.join(' ')}`);
   })
+  .then((output) => {
+    if (output.stderr) {
+      console.log(output.stderr);
+      process.exit(0);
+    }
+    console.log(output.stdout);
+    process.exit();
+  })
   .catch(e => {
     console.log(e.message || e);
   });
