@@ -141,9 +141,9 @@ pluginsToBuild.forEach(addPluginToQueue);
 QUEUE.start((err) => {
 
   if (err) {
-    console.log('Error building plugins. ', err);
+    console.error('Error building plugins. ', err);
   } else if (errors.length) {
-    errors.forEach(e => console.log(e.message) && console.log('\n'));
+    errors.forEach(e => console.error(e.message) && console.log('\n'));
     console.log('Build complete with errors');
   } else {
     console.log('Done processing plugins!');
