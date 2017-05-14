@@ -1,4 +1,4 @@
-import { PluginLol, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -22,7 +22,7 @@ import { Injectable } from '@angular/core';
  *
  * ```
  */
-@PluginLol({
+@Plugin({
   pluginName: 'Autostart',
   plugin: 'cordova-plugin-autostart',
   pluginRef: 'cordova.plugins.autoStart',
