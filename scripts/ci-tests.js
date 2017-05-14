@@ -61,4 +61,5 @@ exec(`git branch | grep \\* | cut -d ' ' -f2`)
   })
   .catch(e => {
     console.log(e.message || e);
+    process.exit(1);
   });
