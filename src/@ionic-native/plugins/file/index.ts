@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CordovaProperty, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
+export interface IFile extends Blob {
+  lastModified: number;
+  lastModifiedDate: number;
+  name: string;
+  size: number;
+  type: string;
+}
+
 export interface LocalFileSystem {
 
   /**
@@ -318,7 +326,7 @@ export interface FileWriterCallback {
  * This export interface is the callback used to obtain a File.
  */
 export interface FileCallback {
-  (file: File): void;
+  (file: IFile): void;
 }
 
 /**
@@ -340,11 +348,13 @@ export interface RemoveResult {
   fileRemoved: Entry;
 }
 
-/**
- * This interface provides methods to monitor the asynchronous writing of blobs to disk using progress events [PROGRESS-EVENTS] and event handler attributes.
- * This interface is specified to be used within the context of the global object (Window [HTML5]) and within Web Workers (WorkerUtils [WEBWORKERS-ED]).
- */
-export interface FileSaver extends EventTarget {
+export declare class FileSaver extends EventTarget {
+  /**
+   * When the FileSaver constructor is called, the user agent must return a new FileSaver object with readyState set to INIT.
+   * This constructor must be visible when the script's global object is either a Window object or an object implementing the WorkerUtils interface.
+   */
+  constructor(data: Blob);
+
   /**
    * When the abort method is called, user agents must run the steps below:
    * <ol>
@@ -426,18 +436,10 @@ export interface FileSaver extends EventTarget {
   onwriteend: (event: ProgressEvent) => void;
 }
 
-declare const FileSaver: {
-  /**
-   * When the FileSaver constructor is called, the user agent must return a new FileSaver object with readyState set to INIT.
-   * This constructor must be visible when the script's global object is either a Window object or an object implementing the WorkerUtils interface.
-   */
-  new(data: Blob): FileSaver;
-};
-
 /**
  * This interface expands on the FileSaver interface to allow for multiple write actions, rather than just saving a single Blob.
  */
-export interface FileWriter extends FileSaver {
+export declare class FileWriter extends FileSaver {
   /**
    * The byte offset at which the next write to the file will occur. This must be no greater than length.
    * A newly-created FileWriter must have position set to 0.
@@ -468,33 +470,54 @@ export interface FileWriter extends FileSaver {
   truncate(size: number): void;
 }
 
-export interface WriteOptions {
+export interface IWriteOptions {
   replace?: boolean;
   append?: boolean;
   truncate?: number; // if present, number of bytes to truncate file to before writing
 }
 
-export interface FileError {
+export declare class FileError {
+  constructor(code: number);
+  static NOT_FOUND_ERR: number;
+  static SECURITY_ERR: number;
+  static ABORT_ERR: number;
+  static NOT_READABLE_ERR: number;
+  static ENCODING_ERR: number;
+  static NO_MODIFICATION_ALLOWED_ERR: number;
+  static INVALID_STATE_ERR: number;
+  static SYNTAX_ERR: number;
+  static INVALID_MODIFICATION_ERR: number;
+  static QUOTA_EXCEEDED_ERR: number;
+  static TYPE_MISMATCH_ERR: number;
+  static PATH_EXISTS_ERR: number;
   /** Error code */
   code: number;
   message: string;
 }
 
-export declare const FileError: {
-  new (code: number): FileError;
-  NOT_FOUND_ERR: number;
-  SECURITY_ERR: number;
-  ABORT_ERR: number;
-  NOT_READABLE_ERR: number;
-  ENCODING_ERR: number;
-  NO_MODIFICATION_ALLOWED_ERR: number;
-  INVALID_STATE_ERR: number;
-  SYNTAX_ERR: number;
-  INVALID_MODIFICATION_ERR: number;
-  QUOTA_EXCEEDED_ERR: number;
-  TYPE_MISMATCH_ERR: number;
-  PATH_EXISTS_ERR: number;
-};
+export declare class FileReader {
+  static EMPTY: number;
+  static LOADING: number;
+  static DONE: number;
+
+  readyState: number; // see constants in var declaration below
+  error: Error;
+  result: string | ArrayBuffer; // type depends on readAsXXX() call type
+
+  onloadstart: (evt: ProgressEvent) => void;
+  onprogress: (evt: ProgressEvent) => void;
+  onload: (evt: ProgressEvent) => void;
+  onerror: (evt: ProgressEvent) => void;
+  onloadend: (evt: ProgressEvent) => void;
+  onabort: (evt: ProgressEvent) => void;
+
+  abort(): void;
+  readAsText(fe: IFile, encoding?: string): void;
+  readAsDataURL(fe: IFile): void;
+  readAsBinaryString(fe: IFile): void;
+  readAsArrayBuffer(fe: IFile): void;
+
+}
 
 interface Window extends LocalFileSystem {}
 
@@ -910,12 +933,12 @@ export class File extends IonicNativePlugin {
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName path relative to base path
    * @param {string | Blob} text content or blob to write
-   * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
+   * @param {IWriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   @CordovaCheck()
   writeFile(path: string, fileName: string,
-    text: string | Blob | ArrayBuffer, options: WriteOptions = {}): Promise<any> {
+            text: string | Blob | ArrayBuffer, options: IWriteOptions = {}): Promise<any> {
     if ((/^\//.test(fileName))) {
       const err = new FileError(5);
       err.message = 'file-name cannot start with \/';
@@ -941,10 +964,10 @@ export class File extends IonicNativePlugin {
    * @hidden
    * @param {FileEntry} fe file entry object
    * @param {string | Blob} text content or blob to write
-   * @param {WriteOptions} options replace file if set to true. See WriteOptions for more information.
+   * @param {IWriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
-  private writeFileEntry(fe: FileEntry, text: string | Blob | ArrayBuffer, options: WriteOptions) {
+  private writeFileEntry(fe: FileEntry, text: string | Blob | ArrayBuffer, options: IWriteOptions) {
     return this.createWriter(fe)
       .then((writer) => {
         if (options.append) {
@@ -1033,7 +1056,7 @@ export class File extends IonicNativePlugin {
         return this.getFile(directoryEntry, file, { create: false });
       })
       .then((fileEntry: FileEntry) => {
-        let reader = new FileReader();
+        const reader = new FileReader();
         return new Promise<T>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
@@ -1046,7 +1069,7 @@ export class File extends IonicNativePlugin {
           };
 
           fileEntry.file(file => {
-            reader[`readAs${readAs}`].call(null, file);
+            reader[`readAs${readAs}`].call(reader, file);
           }, error => {
             reject(error);
           });
