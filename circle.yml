@@ -28,14 +28,11 @@ jobs:
          paths:
          - ~/ionic-native/node_modules/
       - run:
-          name: Run tslint
-          command: npm run lint
-      - run:
-          name: Build changed plugins
-          command: node scripts/ci-tests.js
-      - run:
           name: Run tests
           command: npm test
+      - run:
+          name: Building library
+          command: npm run build
       - add_ssh_keys
       - deploy:
           name: Update docs
