@@ -10,15 +10,17 @@ exec(`git branch | grep \\* | cut -d ' ' -f2`)
 
     if (branch !== 'master') {
 
+      console.log('Merging master branch in ...');
       // not on master branch
       // let's test the changes that were made
-      return exec(`git merge master`);
+      return exec(`git merge origin master`);
     }
   })
   .then((output) => {
     if (output.stderr) {
       return Promise.reject(output.stderr);
     }
+    console.log('Checking for differences ...');
     return exec(`git diff --name-status master`)
   })
   .then((output) => {
