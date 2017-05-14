@@ -60,7 +60,7 @@ export class SQLiteObject {
   transaction(fn: any): Promise<any> { return; }
 
   /**
-   * @param fn {(tx: SQLiteTransaction) => void}
+   * @param fn {Function}
    * @returns {Promise<any>}
    */
   @CordovaInstance()
