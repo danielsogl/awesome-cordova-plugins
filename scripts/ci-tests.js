@@ -54,7 +54,7 @@ exec(`git branch | grep \\* | cut -d ' ' -f2`)
   .then((output) => {
     if (output.stderr) {
       console.log(output.stderr);
-      process.exit(0);
+      process.exit(1);
     }
     console.log(output.stdout);
     process.exit();
