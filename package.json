@@ -7,6 +7,7 @@
     "@angular/compiler": "4.1.2",
     "@angular/compiler-cli": "4.1.2",
     "@angular/core": "4.1.2",
+    "@types/cordova": "0.0.34",
     "canonical-path": "0.0.2",
     "child-process-promise": "2.2.0",
     "conventional-changelog-cli": "1.2.0",
