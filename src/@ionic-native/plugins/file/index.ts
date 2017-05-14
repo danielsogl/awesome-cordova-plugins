@@ -6,12 +6,12 @@ export interface LocalFileSystem {
   /**
    * Used for storage with no guarantee of persistence.
    */
-  TEMPORARY:number;
+  TEMPORARY: number;
 
   /**
    * Used for storage that should not be removed by the user agent without application or user permission.
    */
-  PERSISTENT:number;
+  PERSISTENT: number;
 
   /**
    * Requests a filesystem in which to store application data.
@@ -20,7 +20,7 @@ export interface LocalFileSystem {
    * @param successCallback The callback that is called when the user agent provides a filesystem.
    * @param errorCallback A callback that is called when errors happen, or when the request to obtain the filesystem is denied.
    */
-  requestFileSystem(type:number, size:number, successCallback:FileSystemCallback, errorCallback?:ErrorCallback):void;
+  requestFileSystem(type: number, size: number, successCallback: FileSystemCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * Allows the user to look up the Entry for a file or directory referred to by a local URL.
@@ -28,12 +28,12 @@ export interface LocalFileSystem {
    * @param successCallback A callback that is called to report the Entry to which the supplied URL refers.
    * @param errorCallback A callback that is called when errors happen, or when the request to obtain the Entry is denied.
    */
-  resolveLocalFileSystemURL(url:string, successCallback:EntryCallback, errorCallback?:ErrorCallback):void;
+  resolveLocalFileSystemURL(url: string, successCallback: EntryCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * see requestFileSystem.
    */
-  webkitRequestFileSystem(type:number, size:number, successCallback:FileSystemCallback, errorCallback?:ErrorCallback):void;
+  webkitRequestFileSystem(type: number, size: number, successCallback: FileSystemCallback, errorCallback?: ErrorCallback): void;
 }
 
 export interface Metadata {
@@ -41,31 +41,31 @@ export interface Metadata {
    * This is the time at which the file or directory was last modified.
    * @readonly
    */
-  modificationTime:Date;
+  modificationTime: Date;
 
   /**
    * The size of the file, in bytes. This must return 0 for directories.
    * @readonly
    */
-  size:number;
+  size: number;
 }
 
 export interface Flags {
   /**
    * Used to indicate that the user wants to create a file or directory if it was not previously there.
    */
-  create?:boolean;
+  create?: boolean;
 
   /**
    * By itself, exclusive must have no effect. Used with create, it must cause getFile and getDirectory to fail if the target path already exists.
    */
-  exclusive?:boolean;
+  exclusive?: boolean;
 }
 
 /**
  * This export interface represents a file system.
  */
-export interface FileSystem{
+export interface FileSystem {
   /**
    * This is the name of the file system. The specifics of naming filesystems is unspecified, but a name must be unique across the list of exposed file systems.
    * @readonly
@@ -84,34 +84,34 @@ export interface Entry {
   /**
    * Entry is a file.
    */
-  isFile:boolean;
+  isFile: boolean;
 
   /**
    * Entry is a directory.
    */
-  isDirectory:boolean;
+  isDirectory: boolean;
 
   /**
    * Look up metadata about this entry.
    * @param successCallback A callback that is called with the time of the last modification.
    * @param errorCallback ErrorCallback A callback that is called when errors happen.
    */
-  getMetadata(successCallback:MetadataCallback, errorCallback?:ErrorCallback):void;
+  getMetadata(successCallback: MetadataCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * The name of the entry, excluding the path leading to it.
    */
-  name:string;
+  name: string;
 
   /**
    * The full absolute path from the root to the entry.
    */
-  fullPath:string;
+  fullPath: string;
 
   /**
    * The file system on which the entry resides.
    */
-  filesystem:FileSystem;
+  filesystem: FileSystem;
 
   /**
    * Move an entry to a different location on the file system. It is an error to try to:
@@ -127,7 +127,7 @@ export interface Entry {
    * A move of a file on top of an existing file must attempt to delete and replace that file.
    * A move of a directory on top of an existing empty directory must attempt to delete and replace that directory.
    */
-  moveTo(parent:DirectoryEntry, newName?:string, successCallback?:EntryCallback, errorCallback?:ErrorCallback):void;
+  moveTo(parent: DirectoryEntry, newName?: string, successCallback?: EntryCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * Copy an entry to a different location on the file system. It is an error to try to:
@@ -144,26 +144,26 @@ export interface Entry {
    *
    * Directory copies are always recursive--that is, they copy all contents of the directory.
    */
-  copyTo(parent:DirectoryEntry, newName?:string, successCallback?:EntryCallback, errorCallback?:ErrorCallback):void;
+  copyTo(parent: DirectoryEntry, newName?: string, successCallback?: EntryCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * Returns a URL that can be used to identify this entry. Unlike the URN defined in [FILE-API-ED], it has no specific expiration; as it describes a location on disk, it should be valid at least as long as that location exists.
    */
-  toURL():string;
+  toURL(): string;
 
   /**
    * Deletes a file or directory. It is an error to attempt to delete a directory that is not empty. It is an error to attempt to delete the root directory of a filesystem.
    * @param successCallback A callback that is called on success.
    * @param errorCallback A callback that is called when errors happen.
    */
-  remove(successCallback:VoidCallback, errorCallback?:ErrorCallback):void;
+  remove(successCallback: VoidCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * Look up the parent DirectoryEntry containing this Entry. If this Entry is the root of its filesystem, its parent is itself.
    * @param successCallback A callback that is called to return the parent Entry.
    * @param errorCallback A callback that is called when errors happen.
    */
-  getParent(successCallback:DirectoryEntryCallback, errorCallback?:ErrorCallback):void;
+  getParent(successCallback: DirectoryEntryCallback, errorCallback?: ErrorCallback): void;
 }
 
 /**
@@ -173,7 +173,7 @@ export interface DirectoryEntry extends Entry {
   /**
    * Creates a new DirectoryReader to read Entries from this Directory.
    */
-  createReader():DirectoryReader;
+  createReader(): DirectoryReader;
 
   /**
    * Creates or looks up a file.
@@ -189,7 +189,7 @@ export interface DirectoryEntry extends Entry {
    * @param successCallback A callback that is called to return the File selected or created.
    * @param errorCallback A callback that is called when errors happen.
    */
-  getFile(path:string, options?:Flags, successCallback?:FileEntryCallback, errorCallback?:ErrorCallback):void;
+  getFile(path: string, options?: Flags, successCallback?: FileEntryCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * Creates or looks up a directory.
@@ -206,14 +206,14 @@ export interface DirectoryEntry extends Entry {
    * @param errorCallback A callback that is called when errors happen.
    *
    */
-  getDirectory(path:string, options?:Flags, successCallback?:DirectoryEntryCallback, errorCallback?:ErrorCallback):void;
+  getDirectory(path: string, options?: Flags, successCallback?: DirectoryEntryCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * Deletes a directory and all of its contents, if any. In the event of an error [e.g. trying to delete a directory that contains a file that cannot be removed], some of the contents of the directory may be deleted. It is an error to attempt to delete the root directory of a filesystem.
    * @param successCallback A callback that is called on success.
    * @param errorCallback A callback that is called when errors happen.
    */
-  removeRecursively(successCallback:VoidCallback, errorCallback?:ErrorCallback):void;
+  removeRecursively(successCallback: VoidCallback, errorCallback?: ErrorCallback): void;
 }
 
 /**
@@ -231,7 +231,7 @@ export interface DirectoryReader {
    * @param successCallback Called once per successful call to readEntries to deliver the next previously-unreported set of Entries in the associated Directory. If all Entries have already been returned from previous invocations of readEntries, successCallback must be called with a zero-length array as an argument.
    * @param errorCallback A callback indicating that there was an error reading from the Directory.
    */
-  readEntries(successCallback:EntriesCallback, errorCallback?:ErrorCallback):void;
+  readEntries(successCallback: EntriesCallback, errorCallback?: ErrorCallback): void;
 }
 
 /**
@@ -243,14 +243,14 @@ export interface FileEntry extends Entry {
    * @param successCallback A callback that is called with the new FileWriter.
    * @param errorCallback A callback that is called when errors happen.
    */
-  createWriter(successCallback:FileWriterCallback, errorCallback?:ErrorCallback):void;
+  createWriter(successCallback: FileWriterCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * Returns a File that represents the current state of the file that this FileEntry represents.
    * @param successCallback A callback that is called with the File.
    * @param errorCallback A callback that is called when errors happen.
    */
-  file(successCallback:FileCallback, errorCallback?:ErrorCallback):void;
+  file(successCallback: FileCallback, errorCallback?: ErrorCallback): void;
 }
 
 /**
@@ -260,7 +260,7 @@ export interface FileSystemCallback {
   /**
    * @param filesystem The file systems to which the app is granted access.
    */
-  (filesystem:FileSystem):void;
+  (filesystem: FileSystem): void;
 }
 
 /**
@@ -270,7 +270,7 @@ export interface EntryCallback {
   /**
    * @param entry
    */
-  (entry:Entry):void;
+  (entry: Entry): void;
 }
 
 /**
@@ -280,7 +280,7 @@ export interface FileEntryCallback {
   /**
    * @param entry
    */
-  (entry:FileEntry):void;
+  (entry: FileEntry): void;
 }
 
 /**
@@ -290,35 +290,35 @@ export interface DirectoryEntryCallback {
   /**
    * @param entry
    */
-  (entry:DirectoryEntry):void;
+  (entry: DirectoryEntry): void;
 }
 
 /**
  * When readEntries() succeeds, the following callback is made.
  */
 export interface EntriesCallback {
-  (entries:Entry[]):void;
+  (entries: Entry[]): void;
 }
 
 /**
  * This export interface is the callback used to look up file and directory metadata.
  */
 export interface MetadataCallback {
-  (metadata:Metadata):void;
+  (metadata: Metadata): void;
 }
 
 /**
  * This export interface is the callback used to create a FileWriter.
  */
 export interface FileWriterCallback {
-  (fileWriter: FileWriter):void;
+  (fileWriter: FileWriter): void;
 }
 
 /**
  * This export interface is the callback used to obtain a File.
  */
 export interface FileCallback {
-  (file: File):void;
+  (file: File): void;
 }
 
 /**
@@ -332,7 +332,7 @@ export interface VoidCallback {
  * When an error occurs, the following callback is made.
  */
 export interface ErrorCallback {
-  (err: FileError):void;
+  (err: FileError): void;
 }
 
 export interface RemoveResult {
@@ -431,7 +431,7 @@ declare const FileSaver: {
    * When the FileSaver constructor is called, the user agent must return a new FileSaver object with readyState set to INIT.
    * This constructor must be visible when the script's global object is either a Window object or an object implementing the WorkerUtils interface.
    */
-  new(data:Blob): FileSaver;
+  new(data: Blob): FileSaver;
 };
 
 /**
@@ -453,19 +453,19 @@ export interface FileWriter extends FileSaver {
    * Write the supplied data to the file at position.
    * @param data The blob to write.
    */
-  write(data: Blob):void;
+  write(data: ArrayBuffer | Blob | string): void;
 
   /**
    * Seek sets the file position at which the next write will occur.
    * @param offset If nonnegative, an absolute byte offset into the file. If negative, an offset back from the end of the file.
    */
-  seek(offset: number):void;
+  seek(offset: number): void;
 
   /**
    * Changes the length of the file to that specified. If shortening the file, data beyond the new length must be discarded. If extending the file, the existing data must be zero-padded up to the new length.
    * @param size The size to which the length of the file is to be adjusted, measured in bytes.
    */
-  truncate(size: number):void;
+  truncate(size: number): void;
 }
 
 export interface WriteOptions {
@@ -519,16 +519,16 @@ declare const window: Window;
  *
  * ```
  *
- *  This plugin is based on several specs, including : The HTML5 File API http://www.w3.org/TR/FileAPI/
- *  The (now-defunct) Directories and System extensions Latest: http://www.w3.org/TR/2012/WD-file-system-api-20120417/
- *  Although most of the plugin code was written when an earlier spec was current: http://www.w3.org/TR/2011/WD-file-system-api-20110419/
- *  It also implements the FileWriter spec : http://dev.w3.org/2009/dap/file-system/file-writer.html
+ *  This plugin is based on several specs, including : The HTML5 File API http: //www.w3.org/TR/FileAPI/
+ *  The (now-defunct) Directories and System extensions Latest: http: //www.w3.org/TR/2012/WD-file-system-api-20120417/
+ *  Although most of the plugin code was written when an earlier spec was current: http: //www.w3.org/TR/2011/WD-file-system-api-20110419/
+ *  It also implements the FileWriter spec : http: //dev.w3.org/2009/dap/file-system/file-writer.html
  */
 @Plugin({
   pluginName: 'File',
   plugin: 'cordova-plugin-file',
   pluginRef: 'cordova.file',
-  repo: 'https://github.com/apache/cordova-plugin-file',
+  repo: 'https: //github.com/apache/cordova-plugin-file',
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
@@ -988,7 +988,7 @@ export class File extends IonicNativePlugin {
   /**
    * Read file and return data as a base64 encoded data url.
    * A data url is of the form:
-   *      data:[<mediatype>][;base64],<data>
+   *      data: [<mediatype>][;base64],<data>
 
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} file Name of file, relative to path.
@@ -1160,7 +1160,7 @@ export class File extends IonicNativePlugin {
         if (de.isDirectory) {
           return <DirectoryEntry>de;
         } else {
-          let err = new FileError(13);
+          const err = new FileError(13);
           err.message = 'input is not a directory';
           return Promise.reject<DirectoryEntry>(err);
         }
