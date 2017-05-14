@@ -143,14 +143,18 @@ QUEUE.start((err) => {
   if (err) {
     console.log('Error building plugins.');
     console.log(err);
-    process.exit(1);
+    process.stderr.write(err);
+    // process.exit(1);
   } else if (errors.length) {
-    errors.forEach(e => console.log(e.message) && console.log('\n'));
+    errors.forEach(e => {
+      console.log(e.message) && console.log('\n');
+      process.stderr.write(err);
+    });
     console.log('Build complete with errors');
-    process.exit(1);
+    // process.exit(1);
   } else {
     console.log('Done processing plugins!');
-    process.exit();
+    // process.exit();
   }
 
 });
