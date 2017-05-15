@@ -158,11 +158,11 @@ export interface Entry {
    * Returns a URL that can be used to identify this entry. Unlike the URN defined in [FILE-API-ED], it has no specific expiration; as it describes a location on disk, it should be valid at least as long as that location exists.
    */
   toURL(): string;
-  
+
   /**
-   * Return a URL that can be passed across the bridge to identify this entry.		
+   * Return a URL that can be passed across the bridge to identify this entry.
    * @return string URL that can be passed across the bridge to identify this entry
-   */		
+   */
   toInternalURL(): string;
 
   /**
