@@ -160,6 +160,12 @@ export interface Entry {
   toURL(): string;
 
   /**
+   * Return a URL that can be passed across the bridge to identify this entry.
+   * @return string URL that can be passed across the bridge to identify this entry
+   */
+  toInternalURL(): string;
+
+  /**
    * Deletes a file or directory. It is an error to attempt to delete a directory that is not empty. It is an error to attempt to delete the root directory of a filesystem.
    * @param successCallback A callback that is called on success.
    * @param errorCallback A callback that is called when errors happen.
