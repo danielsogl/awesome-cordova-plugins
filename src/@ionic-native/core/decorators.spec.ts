@@ -67,11 +67,8 @@ describe('Regular Decorators', () => {
   let plugin: TestPlugin;
 
   beforeEach(() => {
-
     plugin = new TestPlugin();
-
     definePlugin();
-
   });
 
   describe('Plugin', () => {
@@ -170,7 +167,7 @@ describe('Regular Decorators', () => {
         .catch(e => {
           expect(e).toEqual(ERR_PLUGIN_NOT_INSTALLED.error);
           done();
-        })
+        });
     });
 
   });
