@@ -82,7 +82,7 @@ export class DocumentViewer extends IonicNativePlugin {
    * @param [onError] {Function}
    */
   @Cordova({ sync: true })
-  canViewDocument(url: string, contentType: string, options: Array<DocumentViewerOptions>, onPossible?: Function, onMissingApp?: Function, onImpossible?: Function, onError?: Function): void { }
+  canViewDocument(url: string, contentType: string, options: DocumentViewerOptions, onPossible?: Function, onMissingApp?: Function, onImpossible?: Function, onError?: Function): void { }
 
   /**
    * Opens the file
