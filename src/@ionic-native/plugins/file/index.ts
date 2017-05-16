@@ -160,6 +160,12 @@ export interface Entry {
   toURL(): string;
 
   /**
+   * Return a URL that can be passed across the bridge to identify this entry.
+   * @return string URL that can be passed across the bridge to identify this entry
+   */
+  toInternalURL(): string;
+
+  /**
    * Deletes a file or directory. It is an error to attempt to delete a directory that is not empty. It is an error to attempt to delete the root directory of a filesystem.
    * @param successCallback A callback that is called on success.
    * @param errorCallback A callback that is called when errors happen.
@@ -556,7 +562,7 @@ declare const window: Window;
   pluginName: 'File',
   plugin: 'cordova-plugin-file',
   pluginRef: 'cordova.file',
-  repo: 'https: //github.com/apache/cordova-plugin-file',
+  repo: 'https://github.com/apache/cordova-plugin-file',
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
