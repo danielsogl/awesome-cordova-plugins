@@ -42,9 +42,10 @@ export interface DocumentViewerOptions {
  * constructor(private document: DocumentViewer) { }
  *
  * ...
- * const options = {
+ * const options: DocumentViewerOptions = {
  *   title: 'My PDF'
  * }
+ *
  * this.document.viewDocument('assets/myFile.pdf', 'application/pdf', options)
  *
  * ```
