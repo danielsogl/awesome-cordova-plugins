@@ -1,3 +1,22 @@
+<a name="3.8.1"></a>
+## [3.8.1](https://github.com/driftyco/ionic-native/compare/v3.8.0...v3.8.1) (2017-05-16)
+
+
+### Bug Fixes
+
+* **document-viewer:** fix params and docs for canViewDocument (#1568) ([b35417a](https://github.com/driftyco/ionic-native/commit/b35417a)), closes [#1568](https://github.com/driftyco/ionic-native/issues/1568)
+* **file:** add toInternalURL (#1561) ([7c79712](https://github.com/driftyco/ionic-native/commit/7c79712)), closes [#1560](https://github.com/driftyco/ionic-native/issues/1560)
+* **file:** fix repo link (#1566) ([adf9c5a](https://github.com/driftyco/ionic-native/commit/adf9c5a)), closes [#1566](https://github.com/driftyco/ionic-native/issues/1566)
+* **file:** various fixes ([d0dec7a](https://github.com/driftyco/ionic-native/commit/d0dec7a)), closes [#1564](https://github.com/driftyco/ionic-native/issues/1564)
+* **sqlite:** fix implementation and improve typings ([fec19b7](https://github.com/driftyco/ionic-native/commit/fec19b7))
+
+
+### Features
+
+* **mix-panel:** add timeEvent (#1536) ([965a90c](https://github.com/driftyco/ionic-native/commit/965a90c))
+
+
+
 <a name="3.8.0"></a>
 # [3.8.0](https://github.com/driftyco/ionic-native/compare/v3.7.0...v3.8.0) (2017-05-14)
 
