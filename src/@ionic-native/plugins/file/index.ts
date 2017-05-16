@@ -32,7 +32,7 @@ export interface IFile extends Blob {
    * @param start {Number} The index at which to start the slice (inclusive).
    * @param end {Number} The index at which to end the slice (exclusive).
    */
-  slice(start: number, end: number): void;
+  slice(start: number, end: number): Blob;
 }
 
 export interface LocalFileSystem {
