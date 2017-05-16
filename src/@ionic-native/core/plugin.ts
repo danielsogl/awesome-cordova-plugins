@@ -10,6 +10,9 @@ checkReady();
 // declare const window;
 // declare var Promise;
 
+export const ERR_CORDOVA_NOT_AVAILABLE = { error: 'cordova_not_available' };
+export const ERR_PLUGIN_NOT_INSTALLED = { error: 'plugin_not_installed' };
+
 
 /**
  * Checks if plugin/cordova is available
@@ -35,15 +38,11 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
   if (!pluginInstance || (!!methodName && typeof pluginInstance[methodName] === 'undefined')) {
     if (!window.cordova) {
       cordovaWarn(pluginName, methodName);
-      return {
-        error: 'cordova_not_available'
-      };
+      return ERR_CORDOVA_NOT_AVAILABLE;
     }
 
     pluginWarn(pluginName, pluginPackage, methodName);
-    return {
-      error: 'plugin_not_installed'
-    };
+    return ERR_PLUGIN_NOT_INSTALLED;
   }
 
   return true;
