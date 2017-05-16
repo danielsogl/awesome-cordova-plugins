@@ -2,11 +2,37 @@ import { Injectable } from '@angular/core';
 import { CordovaProperty, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 export interface IFile extends Blob {
-  lastModified: number;
-  lastModifiedDate: number;
+  /**
+   * Name of the file, without path information
+   */
   name: string;
+  /**
+   * Last modified date
+   */
+  lastModified: number;
+  /**
+   * Last modified date
+   */
+  lastModifiedDate: number;
+  /**
+   * Size in bytes
+   */
   size: number;
+  /**
+   * File mime type
+   */
   type: string;
+  localURL: string;
+  start: number;
+  end: number;
+  /**
+   * Returns a "slice" of the file. Since Cordova Files don't contain the actual
+   * content, this really returns a File with adjusted start and end.
+   * Slices of slices are supported.
+   * @param start {Number} The index at which to start the slice (inclusive).
+   * @param end {Number} The index at which to end the slice (exclusive).
+   */
+  slice(start: number, end: number): void;
 }
 
 export interface LocalFileSystem {
@@ -85,6 +111,11 @@ export interface FileSystem {
    * @readonly
    */
   root: DirectoryEntry;
+
+  toJSON(): string;
+
+  encodeURIPath(path: string): string;
+
 }
 
 export interface Entry {
@@ -107,6 +138,14 @@ export interface Entry {
   getMetadata(successCallback: MetadataCallback, errorCallback?: ErrorCallback): void;
 
   /**
+   * Set the metadata of the entry.
+   * @param successCallback {Function} is called with a Metadata object
+   * @param errorCallback {Function} is called with a FileError
+   * @param metadataObject {Metadata} keys and values to set
+   */
+  setMetadata(successCallback: MetadataCallback, errorCallback: ErrorCallback, metadataObject: Metadata): void;
+
+  /**
    * The name of the entry, excluding the path leading to it.
    */
   name: string;
@@ -120,6 +159,11 @@ export interface Entry {
    * The file system on which the entry resides.
    */
   filesystem: FileSystem;
+
+  /**
+   * an alternate URL which can be used by native webview controls, for example media players.
+   */
+  nativeURL: string;
 
   /**
    * Move an entry to a different location on the file system. It is an error to try to:
@@ -240,6 +284,8 @@ export interface DirectoryEntry extends Entry {
  * </ul>
  */
 export interface DirectoryReader {
+  localURL: string;
+  hasReadEntries: boolean;
   /**
    * Read the next block of entries from this directory.
    * @param successCallback Called once per successful call to readEntries to deliver the next previously-unreported set of Entries in the associated Directory. If all Entries have already been returned from previous invocations of readEntries, successCallback must be called with a zero-length array as an argument.
@@ -505,6 +551,7 @@ export declare class FileReader {
   static EMPTY: number;
   static LOADING: number;
   static DONE: number;
+  static READ_CHUNK_SIZE: number;
 
   readyState: number; // see constants in var declaration below
   error: Error;
@@ -557,6 +604,12 @@ declare const window: Window;
  *  The (now-defunct) Directories and System extensions Latest: http: //www.w3.org/TR/2012/WD-file-system-api-20120417/
  *  Although most of the plugin code was written when an earlier spec was current: http: //www.w3.org/TR/2011/WD-file-system-api-20110419/
  *  It also implements the FileWriter spec : http: //dev.w3.org/2009/dap/file-system/file-writer.html
+ *  @interfaces
+ *  IFile
+ *  Entry
+ *  DirectoryEntry
+ *  DirectoryReader
+ *  FileSystem
  */
 @Plugin({
   pluginName: 'File',
