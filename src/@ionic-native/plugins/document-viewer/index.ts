@@ -45,7 +45,7 @@ export interface DocumentViewerOptions {
  * const options = {
  *   title: 'My PDF'
  * }
- * this.document.view('assets/myFile.pdf', 'application/pdf', options)
+ * this.document.viewDocument('assets/myFile.pdf', 'application/pdf', options)
  *
  * ```
  *
