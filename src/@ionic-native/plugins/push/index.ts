@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 declare var window: any;
 
-export type EventResponse = RegistrationEventResponse | NotificationEventResponse | Error;
+export type EventResponse = RegistrationEventResponse & NotificationEventResponse & Error;
 
 export interface RegistrationEventResponse {
   /**
@@ -39,7 +39,7 @@ export interface NotificationEventResponse {
   /**
    * An optional collection of data sent by the 3rd party push service that does not fit in the above properties.
    */
-  additionalData: NotificationEventAdditionalData | any;
+  additionalData: NotificationEventAdditionalData & any;
 }
 
 /**
