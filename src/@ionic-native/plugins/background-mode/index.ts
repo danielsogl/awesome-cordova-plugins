@@ -125,9 +125,10 @@ export class BackgroundMode extends IonicNativePlugin {
    * @param {BackgroundModeConfiguration} options Any options you want to update. See table below.
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
+    sync: true
   })
-  configure(options?: BackgroundModeConfiguration): Promise<any> { return; }
+  configure(options?: BackgroundModeConfiguration): void {}
 
   /**
    * Listen for events that the plugin fires. Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
