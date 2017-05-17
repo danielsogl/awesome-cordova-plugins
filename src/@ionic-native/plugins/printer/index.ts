@@ -85,12 +85,21 @@ export class Printer extends IonicNativePlugin {
   isAvailable(): Promise<boolean> { return; }
 
   /**
+   * Displays a system interface allowing the user to select an available printer. To speak with a printer directly you need to know the network address by picking them before via `printer.pick`.
+   */
+  @Cordova()
+  pick(): Promise<any> { return; }
+
+  /**
    * Sends content to the printer.
    * @param content {string | HTMLElement} The content to print. Can be a URL or an HTML string. If a HTML DOM Object is provided, its innerHtml property value will be used.
    * @param options {PrintOptions} optional. The options to pass to the printer
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 2,
+    errorIndex: 4
+  })
   print(content: string | HTMLElement, options?: PrintOptions): Promise<any> { return; }
 
 }
