@@ -108,14 +108,16 @@ export class AppPreferences extends IonicNativePlugin {
    * @returns {Object} Custom object, bound to that suite
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
+    sync: true
   })
-  suite(suiteName: string): Object { return; }
+  suite(suiteName: string): any { return; }
 
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
+    sync: true
   })
-  iosSuite(suiteName: string): Object { return; }
+  iosSuite(suiteName: string): any { return; }
 
   /**
    * Return cloud synchronized configuration context
