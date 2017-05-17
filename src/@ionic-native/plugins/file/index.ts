@@ -400,6 +400,7 @@ export interface RemoveResult {
   fileRemoved: Entry;
 }
 
+/** @hidden */
 export declare class FileSaver extends EventTarget {
   /**
    * When the FileSaver constructor is called, the user agent must return a new FileSaver object with readyState set to INIT.
