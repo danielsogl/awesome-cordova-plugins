@@ -297,16 +297,7 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
 
     } else {
 
-      let pluginResult: any, rej: Function;
-      const p = getPromise((resolve: Function, reject: Function) => {
-        pluginResult = callInstance(pluginObj, methodName, args, opts, resolve, reject);
-        rej = reject;
-      });
-      if (pluginResult && pluginResult.error) {
-        p.catch(() => { });
-        typeof rej === 'function' && rej(pluginResult.error);
-      }
-      return p;
+      return getPromise((resolve: Function, reject: Function) => callInstance(pluginObj, methodName, args, opts, resolve, reject));
 
     }
   };
