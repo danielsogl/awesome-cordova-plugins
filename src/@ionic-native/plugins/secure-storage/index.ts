@@ -120,17 +120,8 @@ export class SecureStorage extends IonicNativePlugin {
    */
   @CordovaCheck()
   create(store: string): Promise<SecureStorageObject> {
-<<<<<<< HEAD
     return new Promise((res: Function, rej: Function) => {
       const instance = new (SecureStorage.getPlugin())(() => res(new SecureStorageObject(instance)), rej, store);
-=======
-    return new Promise((res, rej) => {
-      if (checkAvailability('cordova.plugins.SecureStorage', null, 'SecureStorage') === true) {
-        const instance = new cordova.plugins.SecureStorage(() => res(new SecureStorageObject(instance)), rej, store);
-      } else {
-        rej('SecureStorage failure: cordova plugin is not available');
-      }
->>>>>>> 5145395dd7bea7d2fb81b11b356a4a7497c607e7
     });
   }
 
