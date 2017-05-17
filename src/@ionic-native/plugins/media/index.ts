@@ -29,17 +29,13 @@ export class MediaObject {
    * Get the duration of an audio file in seconds. If the duration is unknown, it returns a value of -1.
    * @returns {number} Returns a promise with the duration of the current recording
    */
-  @CordovaInstance({
-    sync: true
-  })
+  @CordovaInstance({ sync: true })
   getDuration(): number { return; }
 
   /**
    * Starts or resumes playing an audio file.
    */
-  @CordovaInstance({
-    sync: true
-  })
+  @CordovaInstance({ sync: true })
   play(iosOptions?: {
     numberOfLoops?: number,
     playAudioWhenScreenIsLocked?: boolean
@@ -48,75 +44,57 @@ export class MediaObject {
   /**
    * Pauses playing an audio file.
    */
-  @CordovaInstance({
-    sync: true
-  })
+  @CordovaInstance({ sync: true })
   pause(): void { }
 
   /**
    * Releases the underlying operating system's audio resources. This is particularly important for Android, since there are a finite amount of OpenCore instances for media playback. Applications should call the release function for any Media resource that is no longer needed.
    */
-  @CordovaInstance({
-    sync: true
-  })
+  @CordovaInstance({ sync: true })
   release(): void { }
 
   /**
    * Sets the current position within an audio file.
    * @param {number} milliseconds The time position you want to set for the current audio file
    */
-  @CordovaInstance({
-    sync: true
-  })
+  @CordovaInstance({ sync: true })
   seekTo(milliseconds: number): void { }
 
   /**
    * Set the volume for an audio file.
    * @param volume {number} The volume to set for playback. The value must be within the range of 0.0 to 1.0.
    */
-  @CordovaInstance({
-    sync: true
-  })
+  @CordovaInstance({ sync: true })
   setVolume(volume: number): void { }
 
   /**
    * Starts recording an audio file.
    */
-  @CordovaInstance({
-    sync: true
-  })
+  @CordovaInstance({ sync: true })
   startRecord(): void { }
 
   /**
    * Stops recording
    */
-  @CordovaInstance({
-    sync: true
-  })
+  @CordovaInstance({ sync: true })
   stopRecord(): void { }
 
   /**
    * Pauses recording
    */
-  @CordovaInstance({
-    sync: true
-  })
+  @CordovaInstance({ sync: true })
   pauseRecord(): void { }
 
   /**
    * Resumes recording
    */
-  @CordovaInstance({
-    sync: true
-  })
+  @CordovaInstance({ sync: true })
   resumeRecord(): void { }
 
   /**
    * Stops playing an audio file.
    */
-  @CordovaInstance({
-    sync: true
-  })
+  @CordovaInstance({ sync: true })
   stop(): void { }
 
 }
