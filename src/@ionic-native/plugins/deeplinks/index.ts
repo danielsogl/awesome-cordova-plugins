@@ -88,7 +88,7 @@ export class Deeplinks extends IonicNativePlugin {
   /**
    * Define a set of paths to match against incoming deeplinks.
    *
-   * @param {paths} Define a set of paths to match against incoming deeplinks.
+   * @param {paths} paths Define a set of paths to match against incoming deeplinks.
    * paths takes an object of the form { 'path': data }. If a deeplink
    * matches the path, the resulting path-data pair will be returned in the
    * promise result which you can then use to navigate in the app as you see fit.
@@ -110,10 +110,12 @@ export class Deeplinks extends IonicNativePlugin {
    * This handler will automatically navigate when a route matches. If you need finer-grained
    * control over the behavior of a matching deeplink, use the plain `route` method.
    *
-   * @param {paths} Define a set of paths to match against incoming deeplinks.
+   * @param {Nav} navController Define a set of paths to match against incoming deeplinks.
    * paths takes an object of the form { 'path': data }. If a deeplink
    * matches the path, the resulting path-data pair will be returned in the
    * promise result which you can then use to navigate in the app as you see fit.
+   *
+   * @param {Object} paths
    *
    * @returns {Observable<DeeplinkMatch>} Returns an Observable that resolves each time a deeplink comes through, and
    * errors if a deeplink comes through that does not match a given path.
