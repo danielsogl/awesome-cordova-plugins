@@ -34,14 +34,16 @@ gulp.task('plugin:create', () => {
 
     const src = flags.m ? './scripts/templates/wrap-min.tmpl':'./scripts/templates/wrap.tmpl',
       pluginName = flags.n,
-      pluginNameSpaced = pluginName.replace(/(?!^)([A-Z])/g, ' $1');
+      spaced = pluginName.replace(/(?!^)([A-Z])/g, ' $1'),
+      kebabCase = _.kebabCase(pluginName);
 
     return gulp.src(src)
-      .pipe(replace('$PluginName', pluginName))
-      .pipe(replace('$Plugin_Name', pluginNameSpaced))
-      .pipe(replace('$pluginName', _.lowerFirst(pluginName)))
+      .pipe(replace('{{ PluginName }}', pluginName))
+      .pipe(replace('{{ Plugin_Name }}', spaced))
+      .pipe(replace('{{ pluginName }}', _.lowerFirst(pluginName)))
+      .pipe(replace('{{ plugin-name }}', kebabCase))
       .pipe(rename('index.ts'))
-      .pipe(gulp.dest('./src/@ionic-native/plugins/' + _.kebabCase(pluginName)));
+      .pipe(gulp.dest('./src/@ionic-native/plugins/' + kebabCase));
 
   } else {
     console.log("Usage is: gulp plugin:create -n PluginName");

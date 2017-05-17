@@ -8,7 +8,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * This plugin adds Rollbar App monitoring to your application
  *
  * @usage
- * ```
+ * ```typescript
  * import { Rollbar } from '@ionic-native/rollbar';
  *
  * constructor(private rollbar: Rollbar) { }

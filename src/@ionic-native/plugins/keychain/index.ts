@@ -56,7 +56,7 @@ export class Keychain extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  set(key: string, value: string|number|boolean, useTouchID?: boolean): Promise<any> { return; }
+  set(key: string, value: string | number | boolean, useTouchID?: boolean): Promise<any> { return; }
 
   /**
    * Gets a JSON value for a key

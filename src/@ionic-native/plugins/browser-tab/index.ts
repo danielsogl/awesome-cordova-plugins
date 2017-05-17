@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
  * This plugin provides an interface to in-app browser tabs that exist on some mobile platforms, specifically [Custom Tabs](http://developer.android.com/tools/support-library/features.html#custom-tabs) on Android (including the [Chrome Custom Tabs](https://developer.chrome.com/multidevice/android/customtabs) implementation), and [SFSafariViewController](https://developer.apple.com/library/ios/documentation/SafariServices/Reference/SFSafariViewController_Ref/) on iOS.
  *
  * @usage
- * ```
+ * ```typescript
  * import { BrowserTab } from '@ionic-native/browser-tab';
  *
  * constructor(private browserTab: BrowserTab) {

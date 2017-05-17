@@ -1,3 +1,86 @@
+<a name="3.8.1"></a>
+## [3.8.1](https://github.com/driftyco/ionic-native/compare/v3.8.0...v3.8.1) (2017-05-16)
+
+
+### Bug Fixes
+
+* **document-viewer:** fix params and docs for canViewDocument (#1568) ([b35417a](https://github.com/driftyco/ionic-native/commit/b35417a)), closes [#1568](https://github.com/driftyco/ionic-native/issues/1568)
+* **file:** add toInternalURL (#1561) ([7c79712](https://github.com/driftyco/ionic-native/commit/7c79712)), closes [#1560](https://github.com/driftyco/ionic-native/issues/1560)
+* **file:** fix repo link (#1566) ([adf9c5a](https://github.com/driftyco/ionic-native/commit/adf9c5a)), closes [#1566](https://github.com/driftyco/ionic-native/issues/1566)
+* **file:** various fixes ([d0dec7a](https://github.com/driftyco/ionic-native/commit/d0dec7a)), closes [#1564](https://github.com/driftyco/ionic-native/issues/1564)
+* **sqlite:** fix implementation and improve typings ([fec19b7](https://github.com/driftyco/ionic-native/commit/fec19b7))
+
+
+### Features
+
+* **mix-panel:** add timeEvent (#1536) ([965a90c](https://github.com/driftyco/ionic-native/commit/965a90c))
+
+
+
+<a name="3.8.0"></a>
+# [3.8.0](https://github.com/driftyco/ionic-native/compare/v3.7.0...v3.8.0) (2017-05-14)
+
+
+### Bug Fixes
+
+* **app-minimize:** fix pluginRef ([10d61c2](https://github.com/driftyco/ionic-native/commit/10d61c2))
+* **diagnostic:** fix Cordova decorator in camera API (#1527) ([45108c4](https://github.com/driftyco/ionic-native/commit/45108c4)), closes [#1527](https://github.com/driftyco/ionic-native/issues/1527)
+* **fcm:** fix method name (#1531) ([ad514bb](https://github.com/driftyco/ionic-native/commit/ad514bb)), closes [#1531](https://github.com/driftyco/ionic-native/issues/1531)
+* **file:** fix file reader (#1537) ([efae1be](https://github.com/driftyco/ionic-native/commit/efae1be)), closes [#1537](https://github.com/driftyco/ionic-native/issues/1537) [#1530](https://github.com/driftyco/ionic-native/issues/1530)
+* **file:** various fixes (#1553) ([f98f90a](https://github.com/driftyco/ionic-native/commit/f98f90a)), closes [#1553](https://github.com/driftyco/ionic-native/issues/1553)
+
+
+### Features
+
+* **video-capture-plus:** add Video Capture Plus plugin (#1538) ([385da01](https://github.com/driftyco/ionic-native/commit/385da01)), closes [#709](https://github.com/driftyco/ionic-native/issues/709)
+
+
+
+<a name="3.7.0"></a>
+# [3.7.0](https://github.com/driftyco/ionic-native/compare/v3.6.1...v3.7.0) (2017-05-09)
+
+
+### Bug Fixes
+
+* **app-preferences:** value can be any type (#1498) ([c7111a3](https://github.com/driftyco/ionic-native/commit/c7111a3)), closes [#1334](https://github.com/driftyco/ionic-native/issues/1334)
+* **background-mode:** add missing method (#1486) ([e6a647b](https://github.com/driftyco/ionic-native/commit/e6a647b)), closes [#1393](https://github.com/driftyco/ionic-native/issues/1393)
+* **build:** fix build errors (#1472) ([8a445e9](https://github.com/driftyco/ionic-native/commit/8a445e9)), closes [#1472](https://github.com/driftyco/ionic-native/issues/1472)
+* **document-viewer:** fix params ([1379f63](https://github.com/driftyco/ionic-native/commit/1379f63))
+* **flurry-analytics:** fix plugin wrapper ([14959c1](https://github.com/driftyco/ionic-native/commit/14959c1))
+* **flurry-analytics:** fix pluginRef (#1485) ([ce72be7](https://github.com/driftyco/ionic-native/commit/ce72be7)), closes [#1485](https://github.com/driftyco/ionic-native/issues/1485) [#1399](https://github.com/driftyco/ionic-native/issues/1399)
+* **globalization:** getDatePattern return types (#1451) ([6e2fdf9](https://github.com/driftyco/ionic-native/commit/6e2fdf9))
+* **google-maps:** add args to panBy (#1507) ([ec85792](https://github.com/driftyco/ionic-native/commit/ec85792))
+* **google-maps:** fix fromPointToLatLng params (#1514) ([9583802](https://github.com/driftyco/ionic-native/commit/9583802)), closes [#1514](https://github.com/driftyco/ionic-native/issues/1514)
+* **native-storage:** add missing keys method (#1495) ([8311aaf](https://github.com/driftyco/ionic-native/commit/8311aaf)), closes [#1415](https://github.com/driftyco/ionic-native/issues/1415)
+* **web-intent:** updated source (#1519) ([252c3e4](https://github.com/driftyco/ionic-native/commit/252c3e4)), closes [#1517](https://github.com/driftyco/ionic-native/issues/1517)
+
+
+### Features
+
+* **android-fingerprint-auth:** add ERRORS constant (#1470) ([ed6044d](https://github.com/driftyco/ionic-native/commit/ed6044d))
+* **android-premissions:** add Android Permissions plugin (#1508) ([5ee79b4](https://github.com/driftyco/ionic-native/commit/5ee79b4)), closes [#929](https://github.com/driftyco/ionic-native/issues/929)
+* **app-minimize:** add AppMinimize plugin (#1501) ([d25b2f1](https://github.com/driftyco/ionic-native/commit/d25b2f1))
+* **camera-preview:** add new focus methods & getFlashMode() (#1442) ([748c6bd](https://github.com/driftyco/ionic-native/commit/748c6bd))
+* **camera-preview:** add tapToFocus method (#1494) ([8330c92](https://github.com/driftyco/ionic-native/commit/8330c92))
+* **diagnostic:** update to support latest signatures (#1458) ([a4151ab](https://github.com/driftyco/ionic-native/commit/a4151ab))
+* **facebook:** add EVENTS constant (#1510) ([aa9826f](https://github.com/driftyco/ionic-native/commit/aa9826f))
+* **fcm:** support Firebase Cloud Messaging plugin (#1449) ([6cc6393](https://github.com/driftyco/ionic-native/commit/6cc6393))
+* **firebase:** add support for firebase ErrorLog (#1440) ([11dbe42](https://github.com/driftyco/ionic-native/commit/11dbe42))
+* **health-kit:** add HealthKit plugin (#1499) ([14f38a0](https://github.com/driftyco/ionic-native/commit/14f38a0))
+* **intercom:** add Intercom plugin (#1504) ([ce2cc1b](https://github.com/driftyco/ionic-native/commit/ce2cc1b))
+* **mobile-accessibility:** add Mobile Accessibility plugin (#1505) ([4e9b2d9](https://github.com/driftyco/ionic-native/commit/4e9b2d9)), closes [#1304](https://github.com/driftyco/ionic-native/issues/1304)
+* **native-page-transitions:** add pendingTransition methods (#1344) ([f699c6d](https://github.com/driftyco/ionic-native/commit/f699c6d))
+* **native-ringtones:** add Native Ringtones plugin (#1488) ([21c9cd2](https://github.com/driftyco/ionic-native/commit/21c9cd2))
+* **phonegap-local-notifications:** add Phonegap local notifications plugin (#1474) ([3d747d3](https://github.com/driftyco/ionic-native/commit/3d747d3))
+* **plugin:** add Document Viewer plugin (#1520) ([6855fe8](https://github.com/driftyco/ionic-native/commit/6855fe8))
+* **plugin:** add File encryption plugin (#1509) ([46b4e25](https://github.com/driftyco/ionic-native/commit/46b4e25)), closes [#618](https://github.com/driftyco/ionic-native/issues/618)
+* **safari-view-controller:** add missing options (#1490) ([a5b2e98](https://github.com/driftyco/ionic-native/commit/a5b2e98)), closes [#1489](https://github.com/driftyco/ionic-native/issues/1489)
+* **social-sharing:** add setIPadPopupCoordinates method (#1497) ([65a8095](https://github.com/driftyco/ionic-native/commit/65a8095)), closes [#1288](https://github.com/driftyco/ionic-native/issues/1288)
+* **touch-id:** add didFingerprintDatabaseChange (#1475) ([d9cc959](https://github.com/driftyco/ionic-native/commit/d9cc959)), closes [#1466](https://github.com/driftyco/ionic-native/issues/1466)
+* **wheel-selector:** add Native wheel Selector plugin (#1522) ([8fe4eec](https://github.com/driftyco/ionic-native/commit/8fe4eec))
+
+
+
 <a name="3.6.1"></a>
 ## [3.6.1](https://github.com/driftyco/ionic-native/compare/v3.6.0...v3.6.1) (2017-04-27)
 

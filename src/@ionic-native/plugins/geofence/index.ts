@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, CordovaFunctionOverride, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-declare var window: any;
+declare const window: any;
 
 /**
  * @name Geofence
  * @description Monitors circular geofences around latitude/longitude coordinates, and sends a notification to the user when the boundary of a geofence is crossed. Notifications can be sent when the user enters and/or exits a geofence.
  * Geofences persist after device reboot. Geofences will be monitored even when the app is not running.
  * @usage
- * ```
+ * ```typescript
  * import { Geofence } from '@ionic-native/geofence';
  *
  * ...
@@ -28,15 +28,15 @@ declare var window: any;
  * private addGeofence() {
  *   //options describing geofence
  *   let fence = {
- *     id: "69ca1b88-6fbe-4e80-a4d4-ff4d3748acdb", //any unique ID
+ *     id: '69ca1b88-6fbe-4e80-a4d4-ff4d3748acdb', //any unique ID
  *     latitude:       37.285951, //center of geofence radius
  *     longitude:      -121.936650,
- *     radius:         100, //radius to edge of geofence
+ *     radius:         100, //radius to edge of geofence in meters
  *     transitionType: 3, //see 'Transition Types' below
  *     notification: { //notification settings
  *         id:             1, //any unique ID
- *         title:          "You crossed a fence", //notification title
- *         text:           "You just arrived to Gliwice city center.", //notification body
+ *         title:          'You crossed a fence', //notification title
+ *         text:           'You just arrived to Gliwice city center.', //notification body
  *         openAppOnClick: true //open app when notification is tapped
  *     }
  *   }
@@ -148,7 +148,7 @@ export class Geofence extends IonicNativePlugin {
 
     return new Observable<any>((observer) => {
       window && window.geofence && (window.geofence.onTransitionReceived = observer.next.bind(observer));
-      return () => window.geofence.onTransitionReceived = () => {};
+      return () => window.geofence.onTransitionReceived = () => { };
     });
 
   }
@@ -162,7 +162,7 @@ export class Geofence extends IonicNativePlugin {
 
     return new Observable<any>((observer) => {
       window && window.geofence && (window.geofence.onNotificationClicked = observer.next.bind(observer));
-        return () => window.geofence.onNotificationClicked = () => {};
+      return () => window.geofence.onNotificationClicked = () => { };
     });
 
   }

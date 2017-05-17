@@ -3,7 +3,7 @@ import { Cordova, CordovaInstance, CordovaCheck, Plugin, InstanceProperty, Insta
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
-declare var plugin: any;
+declare const plugin: any;
 
 /**
  * @hidden
@@ -42,12 +42,12 @@ export const GoogleMapsAnimation = {
  * @hidden
  */
 export const GoogleMapsMapTypeId = {
-    HYBRID: 'MAP_TYPE_HYBRID',
-    NONE: 'MAP_TYPE_NONE',
-    NORMAL: 'MAP_TYPE_NORMAL',
-    ROADMAP: 'MAP_TYPE_ROADMAP',
-    SATELLITE: 'MAP_TYPE_SATELLITE',
-    TERAIN: 'MAP_TYPE_TERRAIN'
+  HYBRID: 'MAP_TYPE_HYBRID',
+  NONE: 'MAP_TYPE_NONE',
+  NORMAL: 'MAP_TYPE_NORMAL',
+  ROADMAP: 'MAP_TYPE_ROADMAP',
+  SATELLITE: 'MAP_TYPE_SATELLITE',
+  TERAIN: 'MAP_TYPE_TERRAIN'
 };
 
 /**
@@ -214,13 +214,13 @@ export class GoogleMap {
   @InstanceCheck()
   addMarker(options: MarkerOptions): Promise<Marker | any> {
     return new Promise<Marker>((resolve, reject) => {
-        this._objectInstance.addMarker(options, (marker: any) => {
-          if (marker) {
-            resolve(new Marker(marker));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addMarker(options, (marker: any) => {
+        if (marker) {
+          resolve(new Marker(marker));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -230,13 +230,13 @@ export class GoogleMap {
   @InstanceCheck()
   addCircle(options: CircleOptions): Promise<Circle | any> {
     return new Promise<Circle>((resolve, reject) => {
-        this._objectInstance.addCircle(options, (circle: any) => {
-          if (circle) {
-            resolve(new Circle(circle));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addCircle(options, (circle: any) => {
+        if (circle) {
+          resolve(new Circle(circle));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -246,13 +246,13 @@ export class GoogleMap {
   @InstanceCheck()
   addPolygon(options: PolygonOptions): Promise<Polygon | any> {
     return new Promise<Polygon>((resolve, reject) => {
-        this._objectInstance.addPolygon(options, (polygon: any) => {
-          if (polygon) {
-            resolve(new Polygon(polygon));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addPolygon(options, (polygon: any) => {
+        if (polygon) {
+          resolve(new Polygon(polygon));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -262,13 +262,13 @@ export class GoogleMap {
   @InstanceCheck()
   addPolyline(options: PolylineOptions): Promise<Polyline | any> {
     return new Promise<Polyline>((resolve, reject) => {
-        this._objectInstance.addPolyline(options, (polyline: any) => {
-          if (polyline) {
-            resolve(new Polyline(polyline));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addPolyline(options, (polyline: any) => {
+        if (polyline) {
+          resolve(new Polyline(polyline));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -278,13 +278,13 @@ export class GoogleMap {
   @InstanceCheck()
   addTileOverlay(options: TileOverlayOptions): Promise<TileOverlay | any> {
     return new Promise<TileOverlay>((resolve, reject) => {
-        this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
-          if (tileOverlay) {
-            resolve(new TileOverlay(tileOverlay));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
+        if (tileOverlay) {
+          resolve(new TileOverlay(tileOverlay));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -294,13 +294,13 @@ export class GoogleMap {
   @InstanceCheck()
   addGroundOverlay(options: GroundOverlayOptions): Promise<GroundOverlay | any> {
     return new Promise<GroundOverlay>((resolve, reject) => {
-        this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
-          if (groundOverlay) {
-            resolve(new GroundOverlay(groundOverlay));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
+        if (groundOverlay) {
+          resolve(new GroundOverlay(groundOverlay));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -310,13 +310,13 @@ export class GoogleMap {
   @InstanceCheck()
   addKmlOverlay(options: KmlOverlayOptions): Promise<KmlOverlay | any> {
     return new Promise<KmlOverlay>((resolve, reject) => {
-        this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
-          if (kmlOverlay) {
-            resolve(new KmlOverlay(kmlOverlay));
-          } else {
-            reject();
-          }
-        });
+      this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
+        if (kmlOverlay) {
+          resolve(new KmlOverlay(kmlOverlay));
+        } else {
+          reject();
+        }
+      });
     });
   }
 
@@ -351,7 +351,7 @@ export class GoogleMap {
    * @returns {Promise<LatLng>}
    */
   @CordovaInstance()
-  fromPointToLatLng(point: any, latLng: LatLng): Promise<LatLng> { return; }
+  fromPointToLatLng(point: any): Promise<LatLng> { return; }
 
   /**
    * @returns {Promise<any>}
@@ -363,14 +363,14 @@ export class GoogleMap {
   remove(): void { }
 
   @CordovaInstance({ sync: true })
-  panBy(): void { }
+  panBy(x: string | number, y: string | number): void { }
 }
 
 /**
  * @name Google Maps
  * @description This plugin uses the native Google Maps SDK
  * @usage
- * ```
+ * ```typescript
  * import {
  *  GoogleMaps,
  *  GoogleMap,
@@ -403,7 +403,12 @@ export class GoogleMap {
  *
  *  // listen to MAP_READY event
  *  // You must wait for this event to fire before adding something to the map or modifying it in anyway
- *  map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
+ *  map.one(GoogleMapsEvent.MAP_READY).then(
+ *    () => {
+ *      console.log('Map is ready!');
+ *      // Now you can add elements to the map like the marker
+ *    }
+ *  );
  *
  *  // create LatLng object
  *  let ionic: LatLng = new LatLng(43.0741904,-89.3809802);
@@ -450,7 +455,7 @@ export class GoogleMap {
   pluginRef: 'plugin.google.maps.Map',
   plugin: 'cordova-plugin-googlemaps',
   repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
-  install: 'ionic plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
+  install: 'ionic cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
   installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS'],
   platforms: ['Android', 'iOS']
 })
@@ -1468,7 +1473,7 @@ export class GroundOverlay {
       return Promise.reject({ error: 'plugin_not_installed' });
     }
     return new Promise<any>(
-      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
+      (resolve: Function) => this._objectInstance.addListenerOnce(eventName, resolve)
     );
   }
 
@@ -1761,7 +1766,7 @@ export class Geocoder {
    */
   @CordovaCheck()
   geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
-    return new Promise<GeocoderResult[]>(resolve => {
+    return new Promise<GeocoderResult[]>((resolve: Function) => {
       plugin.google.maps.Geocoder.geocode(request, resolve);
     });
   }

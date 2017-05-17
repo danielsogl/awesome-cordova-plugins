@@ -62,7 +62,7 @@ export interface PrintOptions {
  *      grayscale: true
  *    };
  *
- * this.p.print(content, options).then(onSuccess, onError);
+ * this.printer.print(content, options).then(onSuccess, onError);
  * ```
  * @interfaces
  * PrintOptions

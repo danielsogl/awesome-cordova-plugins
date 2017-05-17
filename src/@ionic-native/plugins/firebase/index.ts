@@ -3,12 +3,13 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
+ * @beta
  * @name Firebase
  * @description
  * This plugin brings push notifications, analytics, event tracking, crash reporting and more from Google Firebase to your Cordova project! Android and iOS supported (including iOS 10).
  *
  * @usage
- * ```
+ * ```typescript
  * import { Firebase } from '@ionic-native/firebase';
  *
  * constructor(private firebase: Firebase) { }
@@ -60,7 +61,7 @@ export class Firebase extends IonicNativePlugin {
   onNotificationOpen(): Observable<any> { return; }
 
   /**
-   * Grant permission to recieve push notifications
+   * Grant permission to receive push notifications
    * @return {Promise<any>}
    */
   @Cordova({
@@ -68,13 +69,11 @@ export class Firebase extends IonicNativePlugin {
   })
   grantPermission(): Promise<any> { return; }
 
-    /**
-   * Check permission to recieve push notifications
-   * @return {Promise<any>}
-   */
-  @Cordova({
-    platforms: ['iOS']
-  })
+  /**
+ * Check permission to receive push notifications
+ * @return {Promise<any>}
+ */
+  @Cordova()
   hasPermission(): Promise<any> { return; }
 
   /**
@@ -118,6 +117,14 @@ export class Firebase extends IonicNativePlugin {
   logEvent(type: string, data: any): Promise<any> { return; }
 
   /**
+   * Log an Error using FirebaseCrash
+   * @param message {string}
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  logError(message: string): Promise<any> { return; }
+
+  /**
    * Set the name of the current screen in Analytics
    * @param name {string} Screen name
    * @return {Promise<any>}
@@ -148,7 +155,6 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
     successIndex: 1,
     errorIndex: 2
   })
@@ -158,9 +164,7 @@ export class Firebase extends IonicNativePlugin {
    * Activate the Remote Config fetched config
    * @return {Promise<any>}
    */
-  @Cordova({
-    platforms: ['Android']
-  })
+  @Cordova()
   activateFetched(): Promise<any> { return; }
 
   /**
@@ -170,7 +174,6 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
     successIndex: 2,
     errorIndex: 3
   })

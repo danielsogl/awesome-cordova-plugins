@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
+
 /**
  * @name Brightness
  * @description

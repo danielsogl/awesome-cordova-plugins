@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
-
-declare var window;
-
 export interface AppRatePreferences {
 
   /**
@@ -110,12 +107,24 @@ export interface AppUrls {
  * constructor(private appRate: AppRate) { }
  *
  * ...
+ * // set certain preferences
+ * this.appRate.preferences.storeAppURL = {
+ *   ios: '<app_id>',
+ *   android: 'market://details?id=<package_name>',
+ *   windows: 'ms-windows-store://review/?ProductId=<store_id>'
+ * };
  *
- *  this.appRate.preferences.storeAppURL = {
- *    ios: '<my_app_id>',
+ * this.appRate.promptForRating(true);
+ *
+ * // or, override the whole preferences object
+ * this.appRate.preferences = {
+ *   usesUntilPrompt: 3,
+ *   storeAppURL: {
+ *    ios: '<app_id>',
  *    android: 'market://details?id=<package_name>',
- *    windows: 'ms-windows-store://review/?ProductId=<Store_ID>'
- *  };
+ *    windows: 'ms-windows-store://review/?ProductId=<store_id>'
+ *   }
+ * };
  *
  * this.appRate.promptForRating(false);
  * ```

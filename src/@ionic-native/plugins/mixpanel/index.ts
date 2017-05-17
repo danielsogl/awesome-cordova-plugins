@@ -9,8 +9,8 @@ declare var mixpanel: any;
  * Cordova Plugin that wraps Mixpanel SDK for Android and iOS
  *
  * @usage
- * ```
- * import { Mixpanel, MixpanelPeople } from '@ionic-native/mixpanel';
+ * ```typescript
+ * import { Mixpanel } from '@ionic-native/mixpanel';
  *
  * constructor(private mixpanel: Mixpanel, private mixpanelPeople: MixpanelPeople) { }
  *
@@ -89,6 +89,14 @@ export class Mixpanel extends IonicNativePlugin {
   /**
    *
    * @param eventName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  timeEvent(eventName: string): Promise<any> { return; }
+
+  /**
+   *
+   * @param eventName {string}
    * @param eventProperties {any} optional
    * @returns {Promise<any>}
    */
@@ -97,13 +105,6 @@ export class Mixpanel extends IonicNativePlugin {
     errorIndex: 3
   })
   track(eventName: string, eventProperties?: any): Promise<any> { return; }
-
-  /**
-   *
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  showSurvey(): Promise<any> { return; }
 
 }
 /**

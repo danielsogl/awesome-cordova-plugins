@@ -8,7 +8,7 @@ declare var cordova: any;
  */
 export class SecureStorageObject {
 
-  constructor(private _objectInstance?: any) {}
+  constructor(private _objectInstance: any) { }
 
   /**
    * Gets a stored item
@@ -80,19 +80,19 @@ export class SecureStorageObject {
  * this.secureStorage.create('my_store_name')
  *   .then((storage: SecureStorageObject) => {
  *
- *      storage.get('myitem')
+ *      storage.get('key')
  *        .then(
  *          data => console.log(data),
  *          error => console.log(error)
  *      );
  *
- *      storage.set('myitem', 'myvalue')
+ *      storage.set('key', 'value')
  *        .then(
  *         data => console.log(data),
  *          error => console.log(error)
  *      );
  *
- *      storage.remove('myitem')
+ *      storage.remove('key')
  *      .then(
  *          data => console.log(data),
  *          error => console.log(error)
@@ -125,7 +125,7 @@ export class SecureStorage extends IonicNativePlugin {
       if (checkAvailability('cordova.plugins.SecureStorage', null, 'SecureStorage') === true) {
         const instance = new cordova.plugins.SecureStorage(() => res(new SecureStorageObject(instance)), rej, store);
       } else {
-        res(new SecureStorageObject());
+        rej('SecureStorage failure: cordova plugin is not available');
       }
     });
   }

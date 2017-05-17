@@ -16,7 +16,7 @@
 <@ for prop in doc.decorators[0].argumentInfo @>
 
 ```
-$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif @>
+$ <@ if prop.install @><$ prop.install $><@ else @>ionic cordova plugin add <$ prop.plugin $><@ endif @>
 $ npm install --save @ionic-native/<$ doc.npmId $>
 ```
 

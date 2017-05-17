@@ -4,7 +4,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface ImagePickerOptions {
   /**
-   * max images to be selected, defaults to 15. If this is set to 1, upon selection of a single image, the plugin will return it.
+   * max images to be selected, defaults to 15. If this is set to 1, upon selection of a single image, the plugin will return it. (Android only)
    */
   maximumImagesCount?: number;
 

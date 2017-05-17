@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Plugin, CordovaInstance, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 export interface FlurryAnalyticsOptions {
@@ -72,91 +72,47 @@ export interface FlurryAnalyticsLocation {
   horizontalAccuracy?: number;
 }
 
-/**
- * @name Flurry Analytics
- * @description
- * This plugin connects to Flurry Analytics SDK
- *
- * @usage
- * ```
- * import { FlurryAnalytics } from 'ionic-native/flurry-analytics';
- *
- * constructor(private flurryAnalytics: FlurryAnalytics) { }
- *
- * ...
- *
- * constant options: FlurryAnalyticsOptions = {
- *  reportSessionsOnClose: true,
- *  enableLogging: true
- * }
- *
- * FlurryAnalytics.init('12345678965412303214', options)
- *   .then((something: any) => doSomething(something))
- *   .catch((error: any) => console.log(error));
- *
- * ```
- * @interfaces
- * FlurryAnalyticsOptions
- * FlurryAnalyticsLocation
- */
-@Plugin({
-  pluginName: 'FlurryAnalyticsPlugin',
-  plugin: 'cordova-plugin-flurryanalytics',
-  pluginRef: 'fa',
-  repo: 'https://github.com/blakgeek/cordova-plugin-flurryanalytics.git',
-  platforms: ['Android', 'iOS', 'Browser']
-})
-@Injectable()
-export class FlurryAnalytics extends IonicNativePlugin {
+export class FlurryAnalyticsObject {
 
-  /**
-   * Set the setting for Flurry Analytics
-   * @param appKey {string} API key is required
-   * @param options {FlurryAnalyticsOptions} is optional
-   * @return {Promise<any>}
-   */
-  @Cordova()
-  init(appKey: string, options?: FlurryAnalyticsOptions): Promise<any> {
-    return;
-  }
+  constructor(private _objectInstance: any) { }
 
   /**
    * This function set the Event
-   * @param eventName {string} The param to configure name of Event
-   * @param params {Object} optional
-   * @return {Promise<any>} Returns a promise that resolves when event is set
+   * @param eventName {string} Name of the event
+   * @param [params] {Object} Optional params
+   * @return {Promise<any>} Returns a promise that resolves when event is sent
    */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 0
+  @CordovaInstance({
+    successIndex: 2,
+    errorIndex: 3
   })
   logEvent(eventName: string, params?: any): Promise<any> {
     return;
   }
 
   /**
-   * This function start a timed event
-   * @param eventName
-   * @param params {Object} optional
+   * Start a timed event
+   * @param eventName {string} Name of the event
+   * @param [params] {Object} Optional params
    * @return {Promise<any>} Returns a promise that resolves when timed event is started tracking
    */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 0
+  @CordovaInstance({
+    successIndex: 2,
+    errorIndex: 3
   })
   startTimedEvent(eventName: string, params?: Object): Promise<any> {
     return;
   }
 
   /**
-   * This function complete a timed event
-   * @param eventName
-   * @param params {Object} optional
+   * Complete a timed event
+   * @param eventName {string} Name of the event
+   * @param [params] {Object} Optional params
    * @return {Promise<any>} Returns a promise that resolves when timed event is ended tracking
    */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 0
+  @CordovaInstance({
+    successIndex: 2,
+    errorIndex: 3
   })
   endTimedEvent(eventName: string, params?: Object): Promise<any> {
     return;
@@ -168,11 +124,8 @@ export class FlurryAnalytics extends IonicNativePlugin {
    * @param message
    * @return {Promise<any>}
    */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 0
-  })
-  logError(code, message): Promise<any> {
+  @CordovaInstance()
+  logError(code: any, message: any): Promise<any> {
     return;
   }
 
@@ -180,7 +133,7 @@ export class FlurryAnalytics extends IonicNativePlugin {
    * This function log a page view
    * @return {Promise<any>}
    */
-  @Cordova()
+  @CordovaInstance()
   logPageView(): Promise<any> {
     return;
   }
@@ -188,14 +141,12 @@ export class FlurryAnalytics extends IonicNativePlugin {
   /**
    * This function set the location for the event
    * (this is will only be used for very course grained statistics like city)
-   * @param location
+   * @param location {FlurryAnalyticsLocation}
+   * @param message {string}
    * @return {Promise<any>}
    */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 0
-  })
-  setLocation(location: FlurryAnalyticsLocation): Promise<any> {
+  @CordovaInstance()
+  setLocation(location: FlurryAnalyticsLocation, message: string): Promise<any> {
     return;
   }
 
@@ -204,7 +155,7 @@ export class FlurryAnalytics extends IonicNativePlugin {
    * Only needed for older versions of Android
    * @return {Promise<any>}
    */
-  @Cordova()
+  @CordovaInstance()
   startSession(): Promise<any> {
     return;
   }
@@ -214,8 +165,70 @@ export class FlurryAnalytics extends IonicNativePlugin {
    * Only needed for older versions of Android
    * @return {Promise<any>}
    */
-  @Cordova()
+  @CordovaInstance()
   endSession(): Promise<any> {
     return;
   }
+
+}
+
+/**
+ * @name Flurry Analytics
+ * @description
+ * This plugin connects to Flurry Analytics SDK
+ *
+ * @usage
+ * ```typescript
+ * import { FlurryAnalytics, FlurryAnalyticsObject, FlurryAnalyticsOptions } from 'ionic-native/flurry-analytics';
+ *
+ * constructor(private flurryAnalytics: FlurryAnalytics) { }
+ *
+ * ...
+ *
+ * const options: FlurryAnalyticsOptions = {
+ *  appKey: '<your app key>', // REQUIRED
+ *  reportSessionsOnClose: true,
+ *  enableLogging: true
+ * };
+ *
+ * let fa: FlurryAnalyticsObject = this.flurryAnalytics.create(options);
+ *
+ * fa.logEvent('event name')
+ *   .then(() => console.log('Logged an event!'))
+ *   .catch(e => console.log('Error logging the event', e));
+ *
+ * ```
+ * @interfaces
+ * FlurryAnalyticsOptions
+ * FlurryAnalyticsLocation
+ * @classes
+ * FlurryAnalyticsObject
+ */
+@Plugin({
+  pluginName: 'FlurryAnalytics',
+  plugin: 'cordova-plugin-flurryanalytics',
+  pluginRef: 'FlurryAnalytics',
+  repo: 'https://github.com/blakgeek/cordova-plugin-flurryanalytics.git',
+  platforms: ['Android', 'iOS', 'Browser']
+})
+@Injectable()
+export class FlurryAnalytics extends IonicNativePlugin {
+
+  /**
+   * Creates a new instance of FlurryAnalyticsObject
+   * @param options {FlurryAnalyticsOptions} options
+   * @return {FlurryAnalyticsObject}
+   */
+  create(options: FlurryAnalyticsOptions): FlurryAnalyticsObject {
+
+    let instance: any;
+
+    if (checkAvailability(FlurryAnalytics.pluginRef, null, FlurryAnalytics.pluginName) === true) {
+      instance = new (window as any).FlurryAnalaytics(options);
+    }
+
+    return new FlurryAnalyticsObject(instance);
+
+  }
+
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-declare var cordova: any;
+declare const cordova: any;
 
 export interface Beacon {
   /**
@@ -434,7 +434,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the request and started to send events.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   onDomDelegateReady(): Promise<void> { return; }
 
   /**
@@ -442,7 +442,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<boolean>} Returns a promise which is resolved with a {Boolean}
    * indicating whether bluetooth is active.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   isBluetoothEnabled(): Promise<boolean> { return; }
 
   /**
@@ -451,7 +451,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved when Bluetooth
    * could be enabled. If not, the promise will be rejected with an error.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   enableBluetooth(): Promise<void> { return; }
 
   /**
@@ -460,7 +460,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved when Bluetooth
    * could be enabled. If not, the promise will be rejected with an error.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   disableBluetooth(): Promise<void> { return; }
 
   /**
@@ -480,7 +480,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<string>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the monitoring request.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   startMonitoringForRegion(region: BeaconRegion): Promise<string> { return; }
 
   /**
@@ -497,7 +497,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   stopMonitoringForRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
@@ -513,7 +513,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   requestStateForRegion(region: Region): Promise<void> { return; }
 
 
@@ -531,7 +531,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the monitoring request.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   startRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
@@ -548,7 +548,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   stopRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
 
   /**
@@ -557,7 +557,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<IBeaconPluginResult>} Returns a promise which is resolved with the
    * requested authorization status.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   getAuthorizationStatus(): Promise<IBeaconPluginResult> { return; }
 
   /**
@@ -569,7 +569,7 @@ export class IBeacon extends IonicNativePlugin {
    * If you are using this plugin on Android devices only, you will never have to use this, nor {@code requestAlwaysAuthorization}
    * @returns {Promise<void>} Returns a promise that is resolved when the request dialog is shown.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   requestWhenInUseAuthorization(): Promise<void> { return; }
 
 
@@ -579,7 +579,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved when the native layer
    * shows the request dialog.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   requestAlwaysAuthorization(): Promise<void> { return; }
 
   /**
@@ -587,7 +587,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<Region[]>} Returns a promise which is resolved with an {Array}
    * of {Region} instances that are being monitored by the native layer.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   getMonitoredRegions(): Promise<Region[]> { return; }
 
   /**
@@ -595,7 +595,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<Region[]>} Returns a promise which is resolved with an {Array}
    * of {Region} instances that are being ranged by the native layer.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   getRangedRegions(): Promise<Region[]> { return; }
 
   /**
@@ -603,7 +603,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<boolean>} Returns a promise which is resolved with a {Boolean}
    * indicating whether ranging is available or not.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   isRangingAvailable(): Promise<boolean> { return; }
 
   /**
@@ -615,7 +615,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<boolean>} Returns a promise which is resolved with a {Boolean}
    * indicating whether the region type is supported or not.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   isMonitoringAvailableForClass(region: Region): Promise<boolean> { return; }
 
   /**
@@ -635,7 +635,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the advertising request.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   startAdvertising(region: Region, measuredPower: number): Promise<void> { return; }
 
   /**
@@ -646,7 +646,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop advertising.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   stopAdvertising(region: Region): Promise<void> { return; }
 
   /**
@@ -654,7 +654,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved with a {Boolean}
    * indicating whether advertising is available or not.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   isAdvertisingAvailable(): Promise<boolean> { return; }
 
   /**
@@ -662,7 +662,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved with a {Boolean}
    * indicating whether advertising is active.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   isAdvertising(): Promise<boolean> { return; }
 
   /**
@@ -672,7 +672,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer has set the logging level accordingly.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   disableDebugLogs(): Promise<void> { return; }
 
   /**
@@ -683,7 +683,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer has set the flag to enabled.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   enableDebugNotifications(): Promise<void> { return; }
 
   /**
@@ -693,7 +693,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer has set the flag to disabled.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   disableDebugNotifications(): Promise<void> { return; }
 
   /**
@@ -703,7 +703,7 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer has set the logging level accordingly.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   enableDebugLogs(): Promise<void> { return; }
 
   /**
@@ -716,7 +716,7 @@ export class IBeacon extends IonicNativePlugin {
    * message received by the native layer for appending. The returned message
    * is expected to be equivalent to the one provided in the original call.
    */
-  @Cordova({otherPromise: true})
+  @Cordova({ otherPromise: true })
   appendToDeviceLog(message: string): Promise<void> { return; }
 
 }

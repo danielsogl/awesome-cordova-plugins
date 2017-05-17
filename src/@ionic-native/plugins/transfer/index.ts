@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CordovaInstance, Plugin, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 
-declare var FileTransfer;
+declare const FileTransfer: any;
 
 export interface FileUploadOptions {
 

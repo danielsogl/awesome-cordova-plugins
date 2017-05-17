@@ -4,7 +4,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Header Color
  * @description
- * Cordova plugin to change color of header in multitask view
+ * Cordova plugin to change color of header in Android Multitask View
  *
  * @usage
  * ```typescript
@@ -14,7 +14,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * ...
  *
- * this.headerColor.tint("#becb29");
+ * this.headerColor.tint('#becb29');
  * ```
  */
 @Plugin({

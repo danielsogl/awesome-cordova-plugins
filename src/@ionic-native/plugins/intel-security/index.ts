@@ -1,7 +1,7 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
-declare var window: any;
+declare const window: any;
 
 export interface IntelSecurityDataOptions {
   /** Non-empty string. **/
@@ -40,7 +40,7 @@ export interface IntelSecurityDataOptions {
  * For more information please visit the [API documentation](https://software.intel.com/en-us/app-security-api/api).
  *
  * @usage
- * ```
+ * ```typescript
  * import { IntelSecurity } from '@ionic-native/intel-security';
  * ...
  * constructor(private intelSecurity: IntelSecurity) { }

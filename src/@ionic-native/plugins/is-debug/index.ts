@@ -8,7 +8,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * Debug mode is when the app is built and installed locally via xcode / eclipse / the cordova cli etc, compared to release mode when the app was downloaded from the app / play store via an end user.
  *
  * @usage
- * ```
+ * ```typescript
  * import { IsDebug } from '@ionic-native/is-debug';
  *
  * constructor(private isDebug: IsDebug) { }

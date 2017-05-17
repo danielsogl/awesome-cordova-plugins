@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
-declare var cordova: any;
+interface Cordova {
+  plugins: CordovaPlugins & { email: any };
+}
+
+declare const cordova: Cordova;
 
 export interface EmailComposerOptions {
 
@@ -25,14 +29,11 @@ export interface EmailComposerOptions {
 
 
 /**
- * @beta
  * @name Email Composer
  * @description
  *
  * Requires Cordova plugin: cordova-plugin-email-composer. For more info, please see the [Email Composer plugin docs](https://github.com/hypery2k/cordova-email-plugin).
  *
- * DISCLAIMER: This plugin is experiencing issues with the latest versions of Cordova. Use at your own risk. Functionality is not guaranteed. Please stay tuned for a more stable version.
- * A good alternative to this plugin is the social sharing plugin.
  *
  * @usage
  * ```typescript
@@ -91,7 +92,7 @@ export class EmailComposer extends IonicNativePlugin {
   isAvailable(app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
       if (app) {
-        cordova.plugins.email.isAvailable(app, (isAvailable) => {
+        cordova.plugins.email.isAvailable(app, (isAvailable: boolean) => {
           if (isAvailable) {
             resolve();
           } else {
@@ -99,7 +100,7 @@ export class EmailComposer extends IonicNativePlugin {
           }
         });
       } else {
-        cordova.plugins.email.isAvailable((isAvailable) => {
+        cordova.plugins.email.isAvailable((isAvailable: boolean) => {
           if (isAvailable) {
             resolve();
           } else {

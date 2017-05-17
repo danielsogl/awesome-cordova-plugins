@@ -20,7 +20,6 @@ export interface FingerprintOptions {
 }
 
 /**
- * @beta
  * @name Fingerprint AIO
  * @description
  * Use simple fingerprint authentication on Android and iOS.
@@ -35,8 +34,8 @@ export interface FingerprintOptions {
  * ...
  *
  * this.faio.show({
- *     clientId: "Fingerprint-Demo",
- *     clientSecret: "password", //Only necessary for Android
+ *     clientId: 'Fingerprint-Demo',
+ *     clientSecret: 'password', //Only necessary for Android
  *     disableBackup:true  //Only for Android(optional)
  * })
  * .then((result: any) => console.log(result))

@@ -33,7 +33,7 @@ export class SplashScreen extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  show(): void {}
+  show(): void { }
 
   /**
    * Hides the splashscreen
@@ -41,6 +41,6 @@ export class SplashScreen extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  hide(): void {}
+  hide(): void { }
 
 }

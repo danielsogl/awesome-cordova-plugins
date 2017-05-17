@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
  * Plugin to install Couchbase Lite in your PhoneGap app on iOS or Android
  *
  * @usage
- * ```
+ * ```typescript
  * import { CouchbaseLite } from '@ionic-native/couchbase-lite';
  *
  * constructor(private couchbase: CouchbaseLite) {
@@ -38,6 +38,6 @@ export class CouchbaseLite extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'node'
   })
-  getURL(): Promise<any> { return;  }
+  getURL(): Promise<any> { return; }
 
 }

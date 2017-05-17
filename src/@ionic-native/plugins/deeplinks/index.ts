@@ -98,7 +98,7 @@ export class Deeplinks extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  route(paths): Observable<DeeplinkMatch> { return; }
+  route(paths: any): Observable<DeeplinkMatch> { return; }
 
   /**
    *
@@ -121,6 +121,6 @@ export class Deeplinks extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  routeWithNavController(navController, paths): Observable<DeeplinkMatch> { return; }
+  routeWithNavController(navController: any, paths: any): Observable<DeeplinkMatch> { return; }
 
 }

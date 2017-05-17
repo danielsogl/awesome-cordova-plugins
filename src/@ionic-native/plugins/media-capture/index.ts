@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-declare var navigator: any;
+declare const navigator: any;
 
 export interface MediaFile {
   /**
@@ -33,7 +33,7 @@ export interface MediaFile {
    * @param {Function} successCallback
    * @param {Function} errorCallback
    */
-  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any);
+  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any): void;
 }
 
 export interface MediaFileData {

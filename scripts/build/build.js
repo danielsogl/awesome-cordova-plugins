@@ -52,6 +52,16 @@ const PLUGINS = fs.readdirSync(PLUGINS_PATH);
 
 // Build specific list of plugins to build from arguments, if any
 let pluginsToBuild = process.argv.slice(2);
+let ignoreErrors = false;
+let errors = [];
+
+const index = pluginsToBuild.indexOf('ignore-errors');
+if (index > -1) {
+  ignoreErrors = true;
+  pluginsToBuild.splice(index, 1);
+  console.log('Build will continue even if errors were thrown. Errors will be printed when build finishes.');
+}
+
 if (!pluginsToBuild.length) {
   pluginsToBuild = PLUGINS;
 }
@@ -102,10 +112,16 @@ const addPluginToQueue = pluginName => {
         exec(`${ROOT}/node_modules/.bin/ngc -p ${tsConfigPath}`, (err, stdout, stderr) => {
 
           if (err) {
-            // oops! something went wrong.
-            callback(`\n\nBuilding ${pluginName} failed.`);
-            console.log(err);
-            return;
+
+            if (!ignoreErrors) {
+              // oops! something went wrong.
+              console.log(err);
+              callback(`\n\nBuilding ${pluginName} failed.`);
+              return;
+            } else {
+              errors.push(err);
+            }
+
           }
 
           // we're done with this plugin!
@@ -125,7 +141,17 @@ pluginsToBuild.forEach(addPluginToQueue);
 QUEUE.start((err) => {
 
   if (err) {
-    console.log('Error building plugins. ', err);
+    console.log('Error building plugins.');
+    console.log(err);
+    process.stderr.write(err);
+    process.exit(1);
+  } else if (errors.length) {
+    errors.forEach(e => {
+      console.log(e.message) && console.log('\n');
+      process.stderr.write(err);
+    });
+    console.log('Build complete with errors');
+    process.exit(1);
   } else {
     console.log('Done processing plugins!');
   }

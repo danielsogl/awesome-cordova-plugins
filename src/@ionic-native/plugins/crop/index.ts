@@ -5,7 +5,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  * @name Crop
  * @description Crops images
  * @usage
- * ```
+ * ```typescript
  * import { Crop } from '@ionic-native/crop';
  *
  * constructor(private crop: Crop) { }
@@ -14,8 +14,8 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * this.crop.crop('path/to/image.jpg', {quality: 75})
  *   .then(
- *     newImage => console.log("new image path is: " + newImage),
- *     error => console.error("Error cropping image", error)
+ *     newImage => console.log('new image path is: ' + newImage),
+ *     error => console.error('Error cropping image', error)
  *   );
  * ```
  */
@@ -38,6 +38,6 @@ export class Crop extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  crop(pathToImage: string, options?: {quality: number}): Promise<string> { return; }
+  crop(pathToImage: string, options?: { quality: number }): Promise<string> { return; }
 
 }

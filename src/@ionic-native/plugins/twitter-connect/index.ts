@@ -66,18 +66,18 @@ export class TwitterConnect extends IonicNativePlugin {
    * @returns {Promise<TwitterConnectResponse>} returns a promise that resolves if logged in and rejects if failed to login
    */
   @Cordova()
-  login(): Promise<TwitterConnectResponse> {return; }
+  login(): Promise<TwitterConnectResponse> { return; }
   /**
    * Logs out
    * @returns {Promise<any>} returns a promise that resolves if logged out and rejects if failed to logout
    */
   @Cordova()
-  logout(): Promise<any> {return; }
+  logout(): Promise<any> { return; }
 
   /**
    * Returns user's profile information
    * @returns {Promise<any>} returns a promise that resolves if user profile is successfully retrieved and rejects if request fails
    */
   @Cordova()
-  showUser(): Promise<any> {return; }
+  showUser(): Promise<any> { return; }
 }

@@ -6,7 +6,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * Call a number directly from your Cordova/Ionic application.
  *
  * @usage
- * ```
+ * ```typescript
  * import { CallNumber } from '@ionic-native/call-number';
  *
  * constructor(private callNumber: CallNumber) { }

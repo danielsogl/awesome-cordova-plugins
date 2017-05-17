@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-declare var navigator: any;
+declare const navigator: any;
 
 export interface Coordinates {
 
@@ -74,7 +74,7 @@ export interface PositionError {
   /**
    * A message that can describe the error that occurred
    */
-   message: string;
+  message: string;
 
 }
 
@@ -174,7 +174,7 @@ export class Geolocation extends IonicNativePlugin {
    * Observable changes.
    *
    * ```typescript
-   * var subscription = Geolocation.watchPosition()
+   * const subscription = this.geolocation.watchPosition()
    *                               .filter((p) => p.coords !== undefined) //Filter Out Errors
    *                               .subscribe(position => {
    *   console.log(position.coords.longitude + ' ' + position.coords.latitude);

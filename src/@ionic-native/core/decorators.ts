@@ -32,6 +32,8 @@ export interface PluginConfig {
    * Supported platforms
    */
   platforms?: string[];
+
+  [key: string]: any;
 }
 
 export interface CordovaOptions {
@@ -127,10 +129,10 @@ export function InstanceCheck(opts: CordovaCheckOptions = {}) {
           if (opts.sync) {
             return;
           } else if (opts.observable) {
-            return new Observable<any>(() => {});
+            return new Observable<any>(() => { });
           }
 
-          return getPromise(() => {});
+          return getPromise(() => { });
 
         }
       }
@@ -182,12 +184,12 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
  *  }
  * ```
  */
-export function Plugin(config: PluginConfig) {
-  return function(cls) {
+export function Plugin(config: PluginConfig): ClassDecorator {
+  return function(cls: any) {
 
     // Add these fields to the class
-    for (let k in config) {
-      cls[k] = config[k];
+    for (let prop in config) {
+      cls[prop] = config[prop];
     }
 
     cls['installed'] = function(printWarning?: boolean) {
@@ -290,10 +292,10 @@ export function CordovaProperty(target: any, key: string) {
 export function InstanceProperty(target: any, key: string) {
   Object.defineProperty(target, key, {
     enumerable: true,
-    get: function(){
+    get: function() {
       return this._objectInstance[key];
     },
-    set: function(value){
+    set: function(value) {
       this._objectInstance[key] = value;
     }
   });

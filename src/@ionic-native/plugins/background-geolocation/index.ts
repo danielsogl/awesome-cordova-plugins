@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-declare var window;
-
 export interface BackgroundGeolocationResponse {
 
   /**
@@ -448,13 +446,13 @@ export class BackgroundGeolocation extends IonicNativePlugin {
   /**
    * Display app settings to change permissions
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   showAppSettings(): void { }
 
   /**
    * Display device location settings
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   showLocationSettings(): void { }
 
   /**

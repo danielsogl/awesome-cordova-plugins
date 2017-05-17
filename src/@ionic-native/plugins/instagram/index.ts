@@ -6,7 +6,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * @description Share a photo with the instagram app
  *
  * @usage
- * ```
+ * ```typescript
  * import { Instagram } from '@ionic-native/instagram';
  *
  * constructor(private instagram: Instagram) { }
@@ -37,7 +37,7 @@ export class Instagram extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'node'
   })
-  isInstalled(): Promise<boolean|string> { return; }
+  isInstalled(): Promise<boolean | string> { return; }
 
   /**
    * Share an image on Instagram
