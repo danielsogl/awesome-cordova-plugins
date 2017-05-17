@@ -1,3 +1,27 @@
+<a name="3.9.0"></a>
+# [3.9.0](https://github.com/driftyco/ionic-native/compare/v3.8.1...v3.9.0) (2017-05-17)
+
+
+### Bug Fixes
+
+* **android-permissions:** fix PERMISSION property and add requestPermission ([ebf4028](https://github.com/driftyco/ionic-native/commit/ebf4028)), closes [#1574](https://github.com/driftyco/ionic-native/issues/1574)
+* **app-preferences:** suite is sync ([3cb8383](https://github.com/driftyco/ionic-native/commit/3cb8383)), closes [#1321](https://github.com/driftyco/ionic-native/issues/1321)
+* **background-mode:** configure doesn't return anything ([92ef4f0](https://github.com/driftyco/ionic-native/commit/92ef4f0)), closes [#1457](https://github.com/driftyco/ionic-native/issues/1457)
+* **in-app-browser:** fix on method ([975a65d](https://github.com/driftyco/ionic-native/commit/975a65d)), closes [#1446](https://github.com/driftyco/ionic-native/issues/1446)
+* **media:** create should return null if plugin is not available ([d68618f](https://github.com/driftyco/ionic-native/commit/d68618f))
+* **media:** create will always return MediaObject even if plugin doesnt exist ([ee4b61e](https://github.com/driftyco/ionic-native/commit/ee4b61e))
+* **printer:** fix implementation and add pick method ([55071c0](https://github.com/driftyco/ionic-native/commit/55071c0))
+* **push:** fix types ([ca76593](https://github.com/driftyco/ionic-native/commit/ca76593)), closes [#1331](https://github.com/driftyco/ionic-native/issues/1331)
+* **secure-storage:** reject the promise if the plugin doesn't exist (#1562) ([d5919d1](https://github.com/driftyco/ionic-native/commit/d5919d1))
+
+
+### Features
+
+* **linkedin:** add getActiveSession method ([4c8deb2](https://github.com/driftyco/ionic-native/commit/4c8deb2)), closes [#1570](https://github.com/driftyco/ionic-native/issues/1570)
+* **printer:** add check method ([991f2f0](https://github.com/driftyco/ionic-native/commit/991f2f0))
+
+
+
 <a name="3.8.1"></a>
 ## [3.8.1](https://github.com/driftyco/ionic-native/compare/v3.8.0...v3.8.1) (2017-05-16)
 
