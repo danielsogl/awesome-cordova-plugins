@@ -853,14 +853,14 @@ export class Marker {
 
   /**
    * Set the marker position.
-   * @param latLng {GoogleMapLatLng}
+   * @param latLng {LatLng}
    */
   @CordovaInstance({ sync: true })
   setPosition(latLng: LatLng): void { return; }
 
   /**
    * Return the marker position.
-   * @return {Promise<GoogleMapLatLng>}
+   * @return {Promise<LatLng>}
    */
   @CordovaInstance()
   getPosition(): Promise<LatLng> { return; }
