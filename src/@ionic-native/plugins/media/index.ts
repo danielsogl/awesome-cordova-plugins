@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CordovaInstance, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 declare const Media: any;
-
+// TODO for ionic native 4.x ... rename plugin class to Media and use Media.getPlugin() to retrieve the original media object
 
 /**
  * @hidden
