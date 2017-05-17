@@ -1,3 +1,14 @@
+<a name="3.9.2"></a>
+## [3.9.2](https://github.com/driftyco/ionic-native/compare/v3.9.1...v3.9.2) (2017-05-17)
+
+
+### Bug Fixes
+
+* **action-sheet:** destructiveButtonLast is optional ([6416c25](https://github.com/driftyco/ionic-native/commit/6416c25))
+* **core:** decorators should define enumerable properties ([22102a7](https://github.com/driftyco/ionic-native/commit/22102a7))
+
+
+
 <a name="3.9.1"></a>
 ## [3.9.1](https://github.com/driftyco/ionic-native/compare/v3.9.0...v3.9.1) (2017-05-17)
 
