@@ -1,3 +1,13 @@
+<a name="3.9.1"></a>
+## [3.9.1](https://github.com/driftyco/ionic-native/compare/v3.9.0...v3.9.1) (2017-05-17)
+
+
+### Bug Fixes
+
+* **core:** fix issues when clearing observables ([93a119b](https://github.com/driftyco/ionic-native/commit/93a119b))
+
+
+
 <a name="3.9.0"></a>
 # [3.9.0](https://github.com/driftyco/ionic-native/compare/v3.8.1...v3.9.0) (2017-05-17)
 
