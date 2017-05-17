@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Plugin, CordovaInstance, IonicNativePlugin } from '@ionic-native/core';
+import { Plugin, CordovaInstance, InstanceCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromEvent';
+import { Observer } from 'rxjs/Observer';
 
 declare const cordova: Cordova & { InAppBrowser: any; };
 
@@ -141,8 +141,12 @@ export class InAppBrowserObject {
    * @param event {string} Name of the event
    * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
    */
+  @InstanceCheck()
   on(event: string): Observable<InAppBrowserEvent> {
-    return Observable.fromEvent(this._objectInstance, event);
+    return new Observable<InAppBrowserEvent>((observer: Observer<InAppBrowserEvent>) => {
+      this._objectInstance.addEventListener(event, observer.next.bind(observer));
+      return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
+    });
   }
 }
 
