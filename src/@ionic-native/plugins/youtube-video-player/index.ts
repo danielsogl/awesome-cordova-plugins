@@ -34,10 +34,12 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class YoutubeVideoPlayer extends IonicNativePlugin {
+
   /**
    * Plays a YouTube video
    * @param videoId {string} Video ID
    */
   @Cordova({ sync: true })
   openVideo(videoId: string): void { }
+
 }
