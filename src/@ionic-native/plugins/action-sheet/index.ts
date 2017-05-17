@@ -51,7 +51,7 @@ export interface ActionSheetOptions {
   /**
    * Choose if destructive button will be the last
    */
-  destructiveButtonLast: boolean;
+  destructiveButtonLast?: boolean;
 }
 
 /**
