@@ -86,6 +86,7 @@ export class Printer extends IonicNativePlugin {
 
   /**
    * Displays a system interface allowing the user to select an available printer. To speak with a printer directly you need to know the network address by picking them before via `printer.pick`.
+   * @returns {Promise<any>}
    */
   @Cordova()
   pick(): Promise<any> { return; }
