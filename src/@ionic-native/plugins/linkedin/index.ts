@@ -100,10 +100,17 @@ export class LinkedIn extends IonicNativePlugin {
   openProfile(memberId: string): Promise<any> { return; }
 
   /**
-   * Checks if there is already an existing active session. This should be used to avoid unecessary login.
+   * Checks if there is already an existing active session. This should be used to avoid unnecessary login.
    * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates whether there is an active session
    */
   @Cordova()
   hasActiveSession(): Promise<boolean> { return; }
+
+  /**
+   * Checks if there is an active session and returns the access token if it exists.
+   * @return {Promise<any>} returns a promise that resolves with an object that contains an access token if there is an active session
+   */
+  @Cordova()
+  getActiveSession(): Promise<any> { return; }
 
 }
