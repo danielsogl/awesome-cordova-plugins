@@ -36,7 +36,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AndroidPermissions extends IonicNativePlugin {
 
-  PERMISSION: {
+  PERMISSION: any = {
     ACCESS_CHECKIN_PROPERTIES: 'android.permission.ACCESS_CHECKIN_PROPERTIES',
     ACCESS_COARSE_LOCATION: 'android.permission.ACCESS_COARSE_LOCATION',
     ACCESS_FINE_LOCATION: 'android.permission.ACCESS_FINE_LOCATION',
@@ -200,12 +200,20 @@ export class AndroidPermissions extends IonicNativePlugin {
   checkPermission(permission: string): Promise<any> { return; }
 
   /**
+   * Request permission
+   * @param permission {string} The name of the permission to request
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  requestPermission(permission: string): Promise<any> { return; }
+
+  /**
    * Request permissions
-   * @param permissions {array} An array with permissions
+   * @param permissions {Array<Sstring>} An array with permissions
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  requestPermissions(permissions: string): Promise<any> { return; }
+  requestPermissions(permissions: string[]): Promise<any> { return; }
 
   /**
    * This function still works now, will not support in the future.
