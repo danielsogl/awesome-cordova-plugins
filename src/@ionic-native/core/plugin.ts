@@ -1,4 +1,4 @@
-import { get, getPlugin, getPromise, cordovaWarn, pluginWarn } from './util';
+import { getPlugin, getPromise, cordovaWarn, pluginWarn } from './util';
 import { checkReady } from './bootstrap';
 import { CordovaOptions } from './decorators';
 
