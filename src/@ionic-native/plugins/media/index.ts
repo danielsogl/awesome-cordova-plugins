@@ -287,7 +287,7 @@ export class MediaPlugin extends IonicNativePlugin {
    * @param [onError] {MediaErrorCallback} A callback function is be invoked if an error occurs.
    * @return {MediaObject}
    */
-  @CordovaCheck()
+  @CordovaCheck({ sync: true })
   create(src: string,
     onStatusUpdate?: MediaStatusUpdateCallback,
     onSuccess?: Function,
