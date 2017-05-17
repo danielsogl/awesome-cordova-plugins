@@ -177,11 +177,11 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
           if (opts.clearWithArgs) {
             return callCordovaPlugin(pluginObj, opts.clearFunction, args, opts, observer.next.bind(observer), observer.error.bind(observer));
           }
-          return get(window, pluginObj.constructor.getPluginRef())[opts.clearFunction].call(pluginObj, pluginResult);
+          return callCordovaPlugin(pluginObj, opts.clearFunction, []);
         }
       } catch (e) {
         console.warn('Unable to clear the previous observable watch for', pluginObj.constructor.getPluginName(), methodName);
-        console.error(e);
+        console.warn(e);
       }
     };
   });
@@ -276,12 +276,12 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
         return () => {
           try {
             if (opts.clearWithArgs) {
-              return pluginObj._objectInstance[opts.clearFunction].apply(pluginObj._objectInstance, args);
+              return callInstance(pluginObj, opts.clearFunction, args, opts, observer.next.bind(observer), observer.error.bind(observer));
             }
-            return pluginObj._objectInstance[opts.clearFunction].call(pluginObj, pluginResult);
+            return callInstance(pluginObj, opts.clearFunction, []);
           } catch (e) {
             console.warn('Unable to clear the previous observable watch for', pluginObj.constructor.getPluginName(), methodName);
-            console.error(e);
+            console.warn(e);
           }
         };
       });
