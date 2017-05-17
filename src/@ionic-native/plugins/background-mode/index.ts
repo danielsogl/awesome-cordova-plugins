@@ -122,7 +122,7 @@ export class BackgroundMode extends IonicNativePlugin {
   /**
    * Modify the displayed information.
    * Available only for Android platform.
-   * @param {Configure} options Any options you want to update. See table below.
+   * @param {BackgroundModeConfiguration} options Any options you want to update. See table below.
    */
   @Cordova({
     platforms: ['Android']
