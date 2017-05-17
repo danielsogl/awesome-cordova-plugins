@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
+import { CordovaInstance, Plugin, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 
 declare const Media: any;
 // TODO for ionic native 4.x ... rename plugin class to Media and use Media.getPlugin() to retrieve the original media object
@@ -287,15 +287,19 @@ export class MediaPlugin extends IonicNativePlugin {
    * @param [onError] {MediaErrorCallback} A callback function is be invoked if an error occurs.
    * @return {MediaObject}
    */
-  @CordovaCheck({ sync: true })
   create(src: string,
     onStatusUpdate?: MediaStatusUpdateCallback,
     onSuccess?: Function,
     onError?: MediaErrorCallback): MediaObject {
 
+    let instance: any;
+
+    if (checkAvailability(MediaPlugin.getPluginRef(), null, MediaPlugin.getPluginName()) === true) {
       // Creates a new media object
-      const instance = new Media(src, onSuccess, onError, onStatusUpdate);
-      return new MediaObject(instance);
+      instance = new Media(src, onSuccess, onError, onStatusUpdate);
+    }
+
+    return new MediaObject(instance);
 
   }
 
