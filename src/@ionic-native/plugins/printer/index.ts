@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
-
-
-declare var cordova: any;
+import { Cordova, CordovaCheck, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface PrintOptions {
   /**
@@ -41,6 +38,7 @@ export interface PrintOptions {
    */
   bounds?: number[] | any;
 }
+
 /**
  * @name Printer
  * @description Prints documents or HTML rendered content
@@ -81,8 +79,24 @@ export class Printer extends IonicNativePlugin {
    * Checks whether to device is capable of printing.
    * @returns {Promise<boolean>}
    */
-  @Cordova()
-  isAvailable(): Promise<boolean> { return; }
+  isAvailable(): Promise<boolean> {
+    return this.check()
+      .then((res: any) => Promise.resolve(res.avail));
+  }
+
+  /**
+   * Checks if the printer service is available (iOS) or if printer services are installed and enabled (Android).
+   * @return {Promise<any>} returns a promise that resolve with an object indicating whether printing is available, and providing the number of printers available
+   */
+  @CordovaCheck()
+  check(): Promise<any> {
+    return new Promise<any>((resolve: Function) => {
+      Printer.getPlugin()
+        .check((avail: boolean, count: any) => {
+          resolve({ avail, count });
+        });
+    });
+  }
 
   /**
    * Displays a system interface allowing the user to select an available printer. To speak with a printer directly you need to know the network address by picking them before via `printer.pick`.
