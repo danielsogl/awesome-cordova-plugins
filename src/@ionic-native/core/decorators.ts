@@ -135,7 +135,8 @@ export function InstanceCheck(opts: CordovaCheckOptions = {}) {
           return getPromise(() => { });
 
         }
-      }
+      },
+      enumerable: true
     };
   };
 }
@@ -159,7 +160,8 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
           }
           return Promise.reject(check && check.error);
         }
-      }
+      },
+      enumerable: true
     };
   };
 }
@@ -239,7 +241,8 @@ export function Cordova(opts: CordovaOptions = {}) {
     return {
       value: function(...args: any[]) {
         return wrap(this, methodName, opts).apply(this, args);
-      }
+      },
+      enumerable: true
     };
   };
 }
@@ -254,7 +257,8 @@ export function CordovaInstance(opts: any = {}) {
     return {
       value: function(...args: any[]) {
         return wrapInstance(this, methodName, opts).apply(this, args);
-      }
+      },
+      enumerable: true
     };
   };
 }
@@ -312,7 +316,8 @@ export function CordovaFunctionOverride(opts: any = {}) {
     return {
       value: function(...args: any[]) {
         return overrideFunction(this, methodName, opts);
-      }
+      },
+      enumerable: true
     };
   };
 }
@@ -348,7 +353,8 @@ export function CordovaFiniteObservable(opts: CordovaFiniteObservableOptions = {
             wrappedSubscription.unsubscribe();
           };
         });
-      }
+      },
+      enumerable: true
     };
   };
 }
