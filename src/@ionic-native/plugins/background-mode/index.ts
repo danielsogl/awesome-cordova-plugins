@@ -112,7 +112,7 @@ export class BackgroundMode extends IonicNativePlugin {
   /**
    * Override the default title, ticker and text.
    * Available only for Android platform.
-   * @param {Configure} options List of option to configure. See table below
+   * @param {BackgroundModeConfiguration} options List of option to configure. See table below
    */
   @Cordova({
     platforms: ['Android']
