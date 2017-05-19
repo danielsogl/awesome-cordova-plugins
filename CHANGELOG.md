@@ -1,3 +1,19 @@
+<a name="3.10.0"></a>
+# [3.10.0](https://github.com/driftyco/ionic-native/compare/v3.9.2...v3.10.0) (2017-05-19)
+
+
+### Bug Fixes
+
+* **admob-free:** use otherPromise to fix browser development ([2bd244a](https://github.com/driftyco/ionic-native/commit/2bd244a))
+
+
+### Features
+
+* **native-keyboard:** add native keyboard plugin (#1588) ([6031a24](https://github.com/driftyco/ionic-native/commit/6031a24))
+* **user-agent:** add User-Agent plugin (#1582) ([6f6392e](https://github.com/driftyco/ionic-native/commit/6f6392e))
+
+
+
 <a name="3.9.2"></a>
 ## [3.9.2](https://github.com/driftyco/ionic-native/compare/v3.9.1...v3.9.2) (2017-05-17)
 
