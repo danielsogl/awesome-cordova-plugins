@@ -192,28 +192,28 @@ export class AdMobFreeBanner {
    * Hide the banner.
    * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
+  @Cordova({ otherPromise: true })
   hide(): Promise<any> { return; }
 
   /**
    * Create banner.
    * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
+  @Cordova({ otherPromise: true })
   prepare(): Promise<any> { return; }
 
   /**
    * Remove the banner.
    * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
+  @Cordova({ otherPromise: true })
   remove(): Promise<any> { return; }
 
   /**
    * Show the banner.
    * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
+  @Cordova({ otherPromise: true })
   show(): Promise<any> { return; }
 
 }
@@ -240,21 +240,21 @@ export class AdMobFreeInterstitial {
    * Check if interstitial is ready
    * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
+  @Cordova({ otherPromise: true })
   isReady(): Promise<any> { return; }
 
   /**
    * Prepare interstitial
    * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
+  @Cordova({ otherPromise: true })
   prepare(): Promise<any> { return; }
 
   /**
    * Show the interstitial
    * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
+  @Cordova({ otherPromise: true })
   show(): Promise<any> { return; }
 
 }
@@ -281,21 +281,21 @@ export class AdMobFreeRewardVideo {
    * Check if reward video is ready
    * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
+  @Cordova({ otherPromise: true })
   isReady(): Promise<any> { return; }
 
   /**
    * Prepare reward video
    * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
+  @Cordova({ otherPromise: true })
   prepare(): Promise<any> { return; }
 
   /**
    * Show the reward video
    * @return {Promise<any>}
    */
-  @Cordova({ sync: true })
+  @Cordova({ otherPromise: true })
   show(): Promise<any> { return; }
 
 }
