@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Plugin, Cordova, IonicNativePlugin} from '@ionic-native/core';
+import { Injectable } from '@angular/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
- * @name User-Agent
+ * @name User Agent
  * @description
  * The UserAgent plugin provides functions to set the HTTP  user-agent header. For more info about User-Agents, please [see the HTTP User-Agent docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
  *
