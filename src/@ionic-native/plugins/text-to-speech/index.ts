@@ -42,14 +42,14 @@ export class TextToSpeech extends IonicNativePlugin {
 
   /**
    * This function speaks
-   * @param options {string | TTSOptions} Text to speak or TTSOptions
+   * @param textOrOptions {string | TTSOptions} Text to speak or TTSOptions
    * @return {Promise<any>} Returns a promise that resolves when the speaking finishes
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  speak(options: string | TTSOptions): Promise<any> {
+  speak(textOrOptions: string | TTSOptions): Promise<any> {
     return;
   }
 
