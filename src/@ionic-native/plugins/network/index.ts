@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
 
 
-declare var navigator: any;
+declare const navigator: any;
 
 /**
  * @name Network
