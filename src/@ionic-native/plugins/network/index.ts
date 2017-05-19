@@ -30,9 +30,9 @@ declare const navigator: any;
  *
  * // watch network for a connection
  * let connectSubscription = this.network.onConnect().subscribe(() => {
- *   console.log('network connected!'); 
+ *   console.log('network connected!');
  *   // We just got a connection but we need to wait briefly
- *    // before we determine the connection type.  Might need to wait 
+ *    // before we determine the connection type. Might need to wait.
  *   // prior to doing any api requests as well.
  *   setTimeout(() => {
  *     if (this.network.type === 'wifi') {
