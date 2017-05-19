@@ -96,6 +96,14 @@ export interface AdMobFreeRewardVideoConfig {
  *
  *
  * ```
+ * @interfaces
+ * AdMobFreeBannerConfig
+ * AdMobFreeInterstitialConfig
+ * AdMobFreeRewardVideoConfig
+ * @classes
+ * AdMobFreeBanner
+ * AdMobFreeInterstitial
+ * AdMobFreeRewardVideo
  */
 @Plugin({
   pluginName: 'AdMobFree',
@@ -108,9 +116,10 @@ export interface AdMobFreeRewardVideoConfig {
 export class AdMobFree extends IonicNativePlugin {
 
   /**
-   * Convenience constructor to get event names
+   * Convenience object to get event names
+   * @type {Object}
    */
-  events = {
+  events: any = {
     BANNER_LOAD: 'admob.banner.events.LOAD',
     BANNER_LOAD_FAIL: 'admob.banner.events.LOAD_FAIL',
     BANNER_OPEN: 'admob.banner.events.OPEN',
@@ -142,19 +151,19 @@ export class AdMobFree extends IonicNativePlugin {
   }
 
   /**
-   *
+   * Returns the AdMobFreeBanner object
    * @type {AdMobFreeBanner}
    */
   banner: AdMobFreeBanner = new AdMobFreeBanner();
 
   /**
-   *
+   * Returns the AdMobFreeInterstitial object
    * @type {AdMobFreeInterstitial}
    */
   interstitial: AdMobFreeInterstitial = new AdMobFreeInterstitial();
 
   /**
-   *
+   * Returns the AdMobFreeRewardVideo object
    * @type {AdMobFreeRewardVideo}
    */
   rewardVideo: AdMobFreeRewardVideo = new AdMobFreeRewardVideo();
