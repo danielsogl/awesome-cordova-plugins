@@ -30,6 +30,7 @@ jobs:
       - run:
           name: Run tslint
           command: npm run lint
+      - run: ./scripts/git/config.sh
       - run:
           name: Build changed plugins
           command: node scripts/ci-tests.js
