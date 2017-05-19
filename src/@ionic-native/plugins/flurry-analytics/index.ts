@@ -72,6 +72,9 @@ export interface FlurryAnalyticsLocation {
   horizontalAccuracy?: number;
 }
 
+/**
+* @hidden
+*/
 export class FlurryAnalyticsObject {
 
   constructor(private _objectInstance: any) { }

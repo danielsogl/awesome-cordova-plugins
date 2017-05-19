@@ -400,6 +400,7 @@ export interface RemoveResult {
   fileRemoved: Entry;
 }
 
+/** @hidden */
 export declare class FileSaver extends EventTarget {
   /**
    * When the FileSaver constructor is called, the user agent must return a new FileSaver object with readyState set to INIT.
@@ -489,6 +490,7 @@ export declare class FileSaver extends EventTarget {
 }
 
 /**
+ * @hidden
  * This interface expands on the FileSaver interface to allow for multiple write actions, rather than just saving a single Blob.
  */
 export declare class FileWriter extends FileSaver {
@@ -528,6 +530,7 @@ export interface IWriteOptions {
   truncate?: number; // if present, number of bytes to truncate file to before writing
 }
 
+/** @hidden */
 export declare class FileError {
   constructor(code: number);
   static NOT_FOUND_ERR: number;
@@ -547,6 +550,7 @@ export declare class FileError {
   message: string;
 }
 
+/** @hidden */
 export declare class FileReader {
   static EMPTY: number;
   static LOADING: number;
