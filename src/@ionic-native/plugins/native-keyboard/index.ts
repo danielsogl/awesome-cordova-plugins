@@ -156,9 +156,29 @@ export interface NativeKeyboardLeftButton extends NativeKeyboardButton {
   disabledWhenTextEntered: boolean;
 }
 
+export interface NativeKeyboardUpdateMessengerOptions {
+  /**
+   * Replace the messenger's text by this. The current text remains if omitted.
+   */
+  text: string;
+  /**
+   * Position the cursor anywhere in the text range. Defaults to the end of the text.
+   */
+  caretIndex: number;
+  /**
+   * If `false` or omitted no changes to the keyboard state are made.
+   */
+  showKeyboard: boolean;
+}
+
 /**
  * @name Native Keyboard
  * @description
+ * A cross platform WhatsApp / Messenger / Slack -style keyboard even. For your Cordova app.
+ *
+ *
+ * IMPORTANT NOTICE: this plugin is paid, please read more about this at the [plugin's repo](https://github.com/EddyVerbruggen/cordova-plugin-native-keyboard#i-like-it-hook-me-up).
+ *
  *
  * @usage
  * ```
@@ -175,6 +195,7 @@ export interface NativeKeyboardLeftButton extends NativeKeyboardButton {
  * NativeKeyboardOptions
  * NativeKeyboardButton
  * NativeKeyboardLeftButton
+ * NativeKeyboardUpdateMessengerOptions
  */
 @Plugin({
   pluginName: 'NativeKeyboard',
@@ -186,16 +207,38 @@ export interface NativeKeyboardLeftButton extends NativeKeyboardButton {
 @Injectable()
 export class NativeKeyboard extends IonicNativePlugin {
 
+  /**
+   * Show messenger
+   * @param options {NativeKeyboardOptions}
+   */
   @Cordova({ sync: true })
-  hideMessenger(options: NativeKeyboardOptions): void { }
+  showMessenger(options: NativeKeyboardOptions): void {}
 
+  /**
+   * Hide messenger
+   * @param options {NativeKeyboardOptions}
+   */
+  @Cordova({ sync: true })
+  hideMessenger(options: NativeKeyboardOptions): void {}
+
+  /**
+   * Programmatically pop up the keyboard again if the user dismissed it.
+   * @return {Promise<any>}
+   */
   @Cordova()
   showMessengerKeyboard(): Promise<any> { return; }
 
+  /**
+   * Programmatically hide the keyboard (but not the messenger bar)
+   */
   @Cordova()
   hideMessengerKeyboard(): Promise<any> { return; }
 
+  /**
+   * Manipulate the messenger while it's open. For instance if you want to update the text programmatically based on what the user typed.
+   * @param options
+   */
   @Cordova()
-  updateMessenger(options: any): Promise<any> { return; }
+  updateMessenger(options: NativeKeyboardUpdateMessengerOptions): Promise<any> { return; }
 
 }
