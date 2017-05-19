@@ -38,7 +38,7 @@ export interface NotificationData {
  * })
  * 
  * fcm.onNotification().subscribe(data=>{
- *   if(data.wasPressed){
+ *   if(data.wasTapped){
  *     console.log("Received in background");
  *   } else {
  *     console.log("Received in foreground");

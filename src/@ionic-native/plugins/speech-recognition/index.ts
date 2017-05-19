@@ -44,7 +44,6 @@ export interface SpeechRecognitionListeningOptionsAndroid {
 }
 
 /**
- * @beta
  * @name Speech Recognition
  * @description
  * This plugin does speech recognition using cloud services
