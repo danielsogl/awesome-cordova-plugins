@@ -44,7 +44,7 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-photo-library',
   pluginRef: 'cordova.plugins.photoLibrary',
   repo: 'https://github.com/terikon/cordova-plugin-photo-library',
-  install: 'ionic plugin add cordova-plugin-photo-library --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="To choose photos"',
+  install: 'ionic cordova plugin add cordova-plugin-photo-library --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="To choose photos"',
   platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()

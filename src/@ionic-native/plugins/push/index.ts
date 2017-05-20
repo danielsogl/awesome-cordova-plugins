@@ -264,7 +264,7 @@ export type PushEvent = 'registration' | 'error' | 'notification';
   plugin: 'phonegap-plugin-push',
   pluginRef: 'PushNotification',
   repo: 'https://github.com/phonegap/phonegap-plugin-push',
-  install: 'ionic plugin add phonegap-plugin-push --variable SENDER_ID=XXXXXXXXX',
+  install: 'ionic cordova plugin add phonegap-plugin-push --variable SENDER_ID=XXXXXXXXX',
   installVariables: ['SENDER_ID']
 })
 @Injectable()

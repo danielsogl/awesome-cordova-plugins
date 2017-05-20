@@ -102,7 +102,7 @@ export interface AlipayOrder {
   pluginRef: 'Alipay.Base',
   repo: 'https://github.com/xueron/cordova-alipay-base',
   platforms: ['Android', 'iOS'],
-  install: 'ionic plugin add https://github.com/xueron/cordova-alipay-base --variable APP_ID=your_app_id'
+  install: 'ionic cordova plugin add https://github.com/xueron/cordova-alipay-base --variable APP_ID=your_app_id'
 })
 @Injectable()
 export class Alipay extends IonicNativePlugin {
