@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface WheelSelectorItem {
-  description: string;
+  description?: string;
 }
 
 export interface WheelSelectorOptions {
@@ -44,6 +44,13 @@ export interface WheelSelectorOptions {
    * Default: false
    */
   wrapWheelText?: boolean;
+
+  /**
+   * The json key to display, by default it is description, this allows for setting any
+   * key/value to be displayed
+   * Default: description
+   */
+   displayKey?: string;
 }
 
 export interface WheelSelectorData {
@@ -65,54 +72,95 @@ export interface WheelSelectorData {
  * ...
  *
  * let jsonData = {
- *     numbers: [
- *      { description: "1" },
- *       { description: "2" },
- *       { description: "3" }
- *     ],
- *     fruits: [
- *       { description: "Apple" },
- *       { description: "Banana" },
- *       { description: "Tangerine" }
- *     ],
- *   };
+ *   numbers: [
+ *    { description: "1" },
+ *     { description: "2" },
+ *     { description: "3" }
+ *   ],
+ *   fruits: [
+ *     { description: "Apple" },
+ *     { description: "Banana" },
+ *     { description: "Tangerine" }
+ *   ],
+ *   firstNames: [
+ *     { name: "Fred", id: '1' },
+ *     { name: "Jane", id: '2' },
+ *     { name: "Bob", id: '3' },
+ *     { name: "Earl", id: '4' },
+ *     { name: "Eunice", id: '5' }
+ *   ],
+ *   lastNames: [
+ *     { name: "Johnson", id: '100' },
+ *     { name: "Doe", id: '101' },
+ *     { name: "Kinishiwa", id: '102' },
+ *     { name: "Gordon", id: '103' },
+ *     { name: "Smith", id: '104' }
+ *   ]
+ * };
  *
- *   //use most of the default values
- *   this.selector.show({
- *     title: "Select some Fruit",
- *     items: [
- *       jsonData.numbers,
- *       jsonData.fruits
- *     ]
- *   }).then(
- *     result => {
- *       console.log('Selected: ' + result[0].description + ' at index: ' + result[0].index
- *         + ' and ' + result[1].description + ' at index: ' + result[1].index);
- *     },
- *     err => console.log('Error occurred while getting result: ', err)
- *     );
+ * ...
  *
- *   ...
+ * //basic number selection, index is always returned in the result
+ *  selectANumber() {
+ *    this.selector.show({
+ *      title: "How Many?",
+ *      items: [
+ *        this.jsonData.numbers
+ *      ],
+ *    }).then(
+ *      result => {
+ *        console.log(result[0].description + ' at index: ' + result[0].index);
+ *      },
+ *      err => console.log('Error: ', err)
+ *      );
+ *  }
+ * 
+ *  ...
  *
- *   //set some initial default values to display: "2", "Tangerine"
- *   this.selector.show({
- *     title: "Select some Fruit",
- *     items: [
- *       jsonData.numbers,
- *       jsonData.fruits
- *     ],
- *     defaultItems: [
- *       jsonData.numbers[1],
- *       jsonData.fruits[2]
- *     ]
- *   }).then(
- *     result => {
- *       console.log('Selected: ' + result[0].description + ' at index: ' + result[0].index
- *         + ' and ' + result[1].description + ' at index: ' + result[1].index);
- *     },
- *     err => console.log('Error occurred while getting result: ', err)
- *     );
+ *  //basic selection, setting initial displayed default values: '3' 'Banana'
+ *  selectFruit() {
+ *    this.selector.show({
+ *      title: "How Much?",
+ *      items: [
+ *        this.jsonData.numbers, this.jsonData.fruits
+ *      ],
+ *      positiveButtonText: "Ok",
+ *      negativeButtonText: "Nope",
+ *      defaultItems: [
+ *        this.jsonData.numbers[2], // '3'
+ *        this.jsonData.fruits[3] // 'Banana'
+ *      ]
+ *    }).then(
+ *      result => {
+ *        console.log(result[0].description + ' ' + result[1].description);
+ *      },
+ *      err => console.log('Error: ' + JSON.stringify(err))
+ *      );
+ *  }
+ * 
+ *  ...
  *
+ *  //more complex as overrides which key to display
+ *  //then retrieve properties from original data
+ *  selectNamesUsingDisplayKey() {
+ *    this.selector.show({
+ *      title: "Who?",
+ *      items: [
+ *        this.jsonData.firstNames, this.jsonData.lastNames
+ *      ],
+ *      displayKey: 'name',
+ *      defaultItems: [
+ *        this.jsonData.firstNames[2],
+ *        this.jsonData.lastNames[3]
+ *      ]
+ *    }).then(
+ *      result => {
+ *        console.log(result[0].name + ' (id= ' + this.jsonData.firstNames[result[0].index].id + '), ' +
+ *          result[1].name + ' (id=' + this.jsonData.lastNames[result[1].index].id + ')');
+ *      },
+ *      err => console.log('Error: ' + JSON.stringify(err))
+ *      );
+ *  }
  *
  * ```
  *
