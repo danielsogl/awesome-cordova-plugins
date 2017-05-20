@@ -1,3 +1,13 @@
+<a name="3.10.1"></a>
+## [3.10.1](https://github.com/driftyco/ionic-native/compare/v3.10.0...v3.10.1) (2017-05-20)
+
+
+### Features
+
+* **core:** add getSupportedPlatforms method ([c8f53d2](https://github.com/driftyco/ionic-native/commit/c8f53d2))
+
+
+
 <a name="3.10.0"></a>
 # [3.10.0](https://github.com/driftyco/ionic-native/compare/v3.9.2...v3.10.0) (2017-05-19)
 
