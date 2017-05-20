@@ -38,4 +38,9 @@ export class IonicNativePlugin {
    */
   static getPluginInstallName(): string { return; }
 
+  /**
+   * Returns the plugin's supported platforms
+   */
+  static getSupportedPlatforms(): string[] { return; }
+
 }

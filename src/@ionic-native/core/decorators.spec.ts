@@ -24,7 +24,8 @@ class TestObject {
   pluginName: 'TestPlugin',
   pluginRef: 'testPlugin',
   repo: '',
-  plugin: 'cordova-plugin-my-plugin'
+  plugin: 'cordova-plugin-my-plugin',
+  platforms: ['Android', 'iOS']
 })
 class TestPlugin extends IonicNativePlugin {
 
@@ -83,6 +84,10 @@ describe('Regular Decorators', () => {
 
     it('should return original plugin object', () => {
       expect(TestPlugin.getPlugin()).toEqual(window.testPlugin);
+    });
+
+    it('should return supported platforms', () => {
+      expect(TestPlugin.getSupportedPlatforms()).toEqual(['Android', 'iOS']);
     });
 
   });
