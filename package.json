@@ -1,6 +1,6 @@
 {
   "name": "ionic-native",
-  "version": "3.10.1",
+  "version": "3.10.2",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "license": "MIT",
   "devDependencies": {
