@@ -164,18 +164,25 @@ docType: "<$ doc.docType $>"
 </p>
 <@ endif @>
 
-<# --- Install commands --- #>
-<pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install $><@ else @>ionic cordova plugin add <$ prop.plugin $><@ endif @>
-$ npm install --save @ionic-native/<$ doc.npmId $>
-</code></pre>
+<# --- Plugin description --- #>
+<$ doc.description | marked $>
+
 <p>Repo:
   <a href="<$ prop.repo $>">
     <$ prop.repo $>
   </a>
 </p>
 
-<# --- Plugin description --- #>
-<$ doc.description | marked $>
+<# --- Install commands --- #>
+<h2>Installation</h2>
+<ol class="installation">
+  <li>Install the Cordova and Ionic Native plugins:<br>
+    <pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install $><@ else @>ionic cordova plugin add <$ prop.plugin $><@ endif @>
+$ npm install --save @ionic-native/<$ doc.npmId $>
+</code></pre>
+  </li>
+  <li><a href="https://ionicframework.com/docs/native/#Add_Plugins_to_Your_App_Module">Add this plugin to your app's module</a></li>
+</ol>
 
 <# --- Plugin supported platforms --- #>
 <@ if prop.platforms @>
