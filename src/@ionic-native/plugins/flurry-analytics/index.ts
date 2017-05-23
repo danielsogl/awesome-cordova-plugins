@@ -227,7 +227,7 @@ export class FlurryAnalytics extends IonicNativePlugin {
     let instance: any;
 
     if (checkAvailability(FlurryAnalytics.pluginRef, null, FlurryAnalytics.pluginName) === true) {
-      instance = new (window as any).FlurryAnalaytics(options);
+      instance = new (window as any).FlurryAnalytics(options);
     }
 
     return new FlurryAnalyticsObject(instance);
