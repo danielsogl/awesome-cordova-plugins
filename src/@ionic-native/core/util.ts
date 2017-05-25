@@ -51,7 +51,7 @@ export const pluginWarn = (pluginName: string, plugin?: string, method?: string)
     console.warn('Native: tried accessing the ' + pluginName + ' plugin but it\'s not installed.');
   }
   if (plugin) {
-    console.warn('Install the ' + pluginName + ' plugin: \'ionic plugin add ' + plugin + '\'');
+    console.warn('Install the ' + pluginName + ' plugin: \'ionic cordova plugin add ' + plugin + '\'');
   }
 };
 
