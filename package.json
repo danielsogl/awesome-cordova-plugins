@@ -16,7 +16,7 @@
     "cpr": "2.0.2",
     "cz-conventional-changelog": "2.0.0",
     "decamelize": "1.2.0",
-    "dgeni": "0.4.7",
+    "dgeni": "0.4.10",
     "dgeni-packages": "0.16.10",
     "fs-extra": "2.0.0",
     "fs-extra-promise": "0.4.1",
