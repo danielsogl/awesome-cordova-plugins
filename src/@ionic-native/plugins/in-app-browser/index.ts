@@ -181,7 +181,7 @@ export class InAppBrowserObject {
   plugin: 'cordova-plugin-inappbrowser',
   pluginRef: 'cordova.InAppBrowser',
   repo: 'https://github.com/apache/cordova-plugin-inappbrowser',
-  platforms: ['Amazon', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Amazon', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'macOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class InAppBrowser extends IonicNativePlugin {
