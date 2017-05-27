@@ -620,7 +620,7 @@ declare const window: Window;
   plugin: 'cordova-plugin-file',
   pluginRef: 'cordova.file',
   repo: 'https://github.com/apache/cordova-plugin-file',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'macOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class File extends IonicNativePlugin {
