@@ -69,7 +69,7 @@ export class Dialogs extends IonicNativePlugin {
    * @param {string} message Dialog message.
    * @param {string} title Dialog title. (Optional, defaults to Confirm)
    * @param {Array<string>} buttonLabels Array of strings specifying button labels. (Optional, defaults to [OK,Cancel])
-   * @returns {Promise<number>} Returns a promise that resolves the button index that was clicked. Note that the index use one-based indexing.
+   * @returns {Promise<number>} Returns a promise that resolves the button index that was clicked, or 0 if the user has dismissed the dialog by clicking outside the dialog box. Note that the index use one-based indexing.
    */
   @Cordova({
     successIndex: 1,
