@@ -94,7 +94,7 @@ export interface ActionSheetOptions {
   plugin: 'cordova-plugin-actionsheet',
   pluginRef: 'plugins.actionsheet',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet',
-  platforms: ['Android', 'iOS', 'Windows Phone 8', 'Browser']
+  platforms: ['Android', 'iOS', 'Windows Phone 8', 'Browser', 'Electron']
 })
 @Injectable()
 export class ActionSheet extends IonicNativePlugin {

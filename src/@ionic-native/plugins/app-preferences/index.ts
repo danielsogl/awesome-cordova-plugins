@@ -25,7 +25,7 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-app-preferences',
   pluginRef: 'plugins.appPreferences',
   repo: 'https://github.com/apla/me.apla.cordova.app-preferences',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'OS X', 'Windows 8', 'Windows Phone']
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'OS X', 'Windows 8', 'Windows Phone', 'Electron']
 })
 @Injectable()
 export class AppPreferences extends IonicNativePlugin {
