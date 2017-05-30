@@ -143,7 +143,7 @@ export type MediaErrorCallback = (error: MediaError) => void;
  * });
  * ```
  *
- * You can find the reasons here: https://github.com/driftyco/ionic-native/issues/1452#issuecomment-299605906
+ * You can find the reasons here: https://github.com/ionic-team/ionic-native/issues/1452#issuecomment-299605906
  *
  * @usage
  * ```typescript

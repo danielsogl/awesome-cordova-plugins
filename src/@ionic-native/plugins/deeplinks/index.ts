@@ -67,7 +67,7 @@ export interface DeeplinkMatch {
  *   });
  * ```
  *
- * See the [Ionic 2 Deeplinks Demo](https://github.com/driftyco/ionic2-deeplinks-demo/blob/master/app/app.ts) for an example of how to
+ * See the [Ionic 2 Deeplinks Demo](https://github.com/ionic-team/ionic2-deeplinks-demo/blob/master/app/app.ts) for an example of how to
  * retrieve the `NavController` reference at runtime.
  *
  * @interfaces
@@ -77,7 +77,7 @@ export interface DeeplinkMatch {
   pluginName: 'Deeplinks',
   plugin: 'ionic-plugin-deeplinks',
   pluginRef: 'IonicDeeplink',
-  repo: 'https://github.com/driftyco/ionic-plugin-deeplinks',
+  repo: 'https://github.com/ionic-team/ionic-plugin-deeplinks',
   platforms: ['iOS', 'Android', 'Browser'],
   install: 'ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/',
   installVariables: ['URL_SCHEME', 'DEEPLINK_SCHEME', 'DEEPLINK_HOST', 'ANDROID_PATH_PREFIX']

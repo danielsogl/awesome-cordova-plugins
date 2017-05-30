@@ -31,7 +31,7 @@ function run {
   if [ $CHANGED -eq 0 ];
   then
     echo "-- No changes detected for the following commit, docs not updated."
-    echo "https://github.com/driftyco/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1"
+    echo "https://github.com/ionic-team/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1"
   else
     git config --global user.email "hi@ionicframework.com"
     git config --global user.name "Ionitron"
