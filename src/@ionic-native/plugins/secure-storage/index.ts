@@ -56,7 +56,7 @@ export class SecureStorageObject {
     callbackOrder: 'reverse'
   })
   clear(): Promise<any> { return; }
-  
+
   /**
    * Brings up the screen-lock settings
    * @returns {Promise<any>}
