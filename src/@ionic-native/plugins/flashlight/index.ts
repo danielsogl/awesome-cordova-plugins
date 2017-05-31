@@ -23,7 +23,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   pluginName: 'Flashlight',
   plugin: 'cordova-plugin-flashlight',
   pluginRef: 'window.plugins.flashlight',
-  repo: 'https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git',
+  repo: 'https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()

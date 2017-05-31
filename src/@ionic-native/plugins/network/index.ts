@@ -51,9 +51,9 @@ declare const navigator: any;
 @Plugin({
   pluginName: 'Network',
   plugin: 'cordova-plugin-network-information',
+  pluginRef: 'navigator.connection',
   repo: 'https://github.com/apache/cordova-plugin-network-information',
-  platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser'],
-  pluginRef: 'navigator.connection'
+  platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser']
 })
 @Injectable()
 export class Network extends IonicNativePlugin {

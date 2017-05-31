@@ -22,9 +22,9 @@ import { Injectable } from '@angular/core';
  */
 @Plugin({
   pluginName: 'Appodeal',
-  plugin: 'https://github.com/appodeal/appodeal-cordova-plugin',
+  plugin: 'https://github.com/appodeal/appodeal-cordova-plugin.git',
   pluginRef: 'Appodeal',
-  repo: 'https://github.com/appodeal/appodeal-cordova-plugin.git',
+  repo: 'https://github.com/appodeal/appodeal-cordova-plugin',
   platforms: ['iOS', 'Android']
 })
 @Injectable()

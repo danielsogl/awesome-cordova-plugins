@@ -23,7 +23,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 @Plugin({
   pluginName: 'Base64ToGallery',
   plugin: 'cordova-base64-to-gallery',
-  pluginRef: 'cordova',
+  pluginRef: 'cordova.base64ToGallery',
   repo: 'https://github.com/Nexxa/cordova-base64-to-gallery',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })

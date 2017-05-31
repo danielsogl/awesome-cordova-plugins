@@ -55,7 +55,8 @@ export interface ZeroconfResult {
   pluginName: 'Zeroconf',
   plugin: 'cordova-plugin-zeroconf',
   pluginRef: 'cordova.plugins.zeroconf',
-  repo: 'https://github.com/becvert/cordova-plugin-zeroconf'
+  repo: 'https://github.com/becvert/cordova-plugin-zeroconf',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Zeroconf extends IonicNativePlugin {
