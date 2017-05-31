@@ -52,52 +52,34 @@ export class HotCodePush extends IonicNativePlugin {
   * Options are send to the native side.
   * As soon as they are processed - callback is called.
   *
-  * @param arg1 {string} Some param to configure something
-  * @param arg2 {number} Another param to configure something
-  * @return {Promise<any>} Returns a promise that resolves when something happens
+  * @param options {HoteCodePushOptions} options to set
   */
-  @Cordova()
-  configure(arg1: string, arg2: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  @Cordova({ sync: true })
+  configure(options: HoteCodePushOptions) { return; }
 
   /**
   * Show dialog with the request to update application through the Store (App Store or Google Play).
   * For that purpose you can use any other cordova library, this is just a small helper method.
   *
-  * @param arg1 {string} Some param to configure something
-  * @param arg2 {number} Another param to configure something
-  * @return {Promise<any>} Returns a promise that resolves when something happens
+  * @param message {string} message to show in the dialog
   */
-  @Cordova()
-  requestApplicationUpdate(arg1: string, arg2: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  @Cordova({ sync: true })
+  requestApplicationUpdate(message: string) { return; }
 
   /**
   * Check if any new content is available on the server and download it.
   * Usually this is done automatically by the plugin, but can be triggered at any time from the web page.
   *
-  * @param arg1 {string} Some param to configure something
-  * @param arg2 {number} Another param to configure something
-  * @return {Promise<any>} Returns a promise that resolves when something happens
+  * @param options {HoteCodePushOptions} additional options, such as "config-url" and additional http headers.
   */
-  @Cordova()
-  fetchUpdate(arg1: string, arg2: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  @Cordova({ sync: true })
+  fetchUpdate(options: HoteCodePushOptions) { return; }
 
   /**
   * Install update if there is anything to install.
-  *
-  * @param arg1 {string} Some param to configure something
-  * @param arg2 {number} Another param to configure something
-  * @return {Promise<any>} Returns a promise that resolves when something happens
   */
-  @Cordova()
-  installUpdate(arg1: string, arg2: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  @Cordova({ sync: true })
+  installUpdate() { return; }
 
   /**
   * Check if update was loaded and ready to be installed.
@@ -105,26 +87,16 @@ export class HotCodePush extends IonicNativePlugin {
   * version.
   * If not - "error" will contain code chcp.error.NOTHING_TO_INSTALL.
   *
-  * @param arg1 {string} Some param to configure something
-  * @param arg2 {number} Another param to configure something
-  * @return {Promise<any>} Returns a promise that resolves when something happens
   */
-  @Cordova()
-  isUpdateAvailableForInstallation(arg1: string, arg2: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  @Cordova({ sync: true })
+  isUpdateAvailableForInstallation() { return; }
 
   /**
   * Get information about the current version like current release version, app build version and so on.
   * The "data" property of the callback will contain all the information.
   *
-  * @param arg1 {string} Some param to configure something
-  * @param arg2 {number} Another param to configure something
-  * @return {Promise<any>} Returns a promise that resolves when something happens
   */
-  @Cordova()
-  getVersionInfo(arg1: string, arg2: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  @Cordova({ sync: true })
+  getVersionInfo() { return; }
 
 }
