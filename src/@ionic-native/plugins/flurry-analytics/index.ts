@@ -211,7 +211,7 @@ export class FlurryAnalyticsObject {
   pluginName: 'FlurryAnalytics',
   plugin: 'cordova-plugin-flurryanalytics',
   pluginRef: 'FlurryAnalytics',
-  repo: 'https://github.com/blakgeek/cordova-plugin-flurryanalytics.git',
+  repo: 'https://github.com/blakgeek/cordova-plugin-flurryanalytics',
   platforms: ['Android', 'iOS', 'Browser']
 })
 @Injectable()

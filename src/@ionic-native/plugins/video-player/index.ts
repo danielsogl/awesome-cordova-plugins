@@ -45,7 +45,7 @@ export interface VideoOptions {
  */
 @Plugin({
   pluginName: 'VideoPlayer',
-  plugin: 'https://github.com/moust/cordova-plugin-videoplayer',
+  plugin: 'https://github.com/moust/cordova-plugin-videoplayer.git',
   pluginRef: 'VideoPlayer',
   repo: 'https://github.com/moust/cordova-plugin-videoplayer',
   platforms: ['Android']

@@ -35,7 +35,8 @@ export interface TTSOptions {
   pluginName: 'Text To Speech',
   plugin: 'cordova-plugin-tts',
   pluginRef: 'TTS',
-  repo: 'https://github.com/vilic/cordova-plugin-tts'
+  repo: 'https://github.com/vilic/cordova-plugin-tts',
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
 export class TextToSpeech extends IonicNativePlugin {

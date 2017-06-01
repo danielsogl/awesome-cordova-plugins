@@ -28,7 +28,8 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   pluginName: 'PinDialog',
   plugin: 'cordova-plugin-pin-dialog',
   pluginRef: 'plugins.pinDialog',
-  repo: 'https://github.com/Paldom/PinDialog'
+  repo: 'https://github.com/Paldom/PinDialog',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class PinDialog extends IonicNativePlugin {

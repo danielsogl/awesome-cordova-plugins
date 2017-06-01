@@ -223,7 +223,8 @@ export class ThemeableBrowserObject {
   pluginName: 'ThemeableBrowser',
   plugin: 'cordova-plugin-themeablebrowser',
   pluginRef: 'cordova.ThemeableBrowser',
-  repo: 'https://github.com/initialxy/cordova-plugin-themeablebrowser'
+  repo: 'https://github.com/initialxy/cordova-plugin-themeablebrowser',
+  platforms: ['Amazon Fire OS', 'Android', 'Blackberry 10', 'Browser', 'FirefoxOS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class ThemeableBrowser extends IonicNativePlugin {

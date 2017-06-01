@@ -54,6 +54,7 @@ export type LinkedInLoginScopes = 'r_basicprofile' | 'r_emailaddress' | 'rw_comp
   pluginRef: 'cordova.plugins.LinkedIn',
   repo: 'https://github.com/zyra/cordova-plugin-linkedin',
   install: 'ionic cordova plugin add cordova-plugin-linkedin --variable APP_ID=YOUR_APP_ID',
+  installVariables: ['APP_ID'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()

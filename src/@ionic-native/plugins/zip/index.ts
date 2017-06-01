@@ -27,6 +27,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-zip',
   pluginRef: 'zip',
   repo: 'https://github.com/MobileChromeApps/cordova-plugin-zip',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Zip extends IonicNativePlugin {
