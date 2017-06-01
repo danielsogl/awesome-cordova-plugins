@@ -70,7 +70,7 @@ export interface BackgroundModeConfiguration {
   plugin: 'cordova-plugin-background-mode',
   pluginRef: 'cordova.plugins.backgroundMode',
   repo: 'https://github.com/katzer/cordova-plugin-background-mode',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows Phone 8']
+  platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
 export class BackgroundMode extends IonicNativePlugin {

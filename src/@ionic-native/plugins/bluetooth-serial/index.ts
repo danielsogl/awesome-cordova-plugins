@@ -35,7 +35,7 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/don/BluetoothSerial',
   plugin: 'cordova-plugin-bluetooth-serial',
   pluginRef: 'bluetoothSerial',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows Phone']
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
 export class BluetoothSerial extends IonicNativePlugin {

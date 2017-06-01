@@ -49,7 +49,7 @@ export interface BatteryStatusResponse {
   plugin: 'cordova-plugin-battery-status',
   pluginRef: 'navigator.battery',
   repo: 'https://github.com/apache/cordova-plugin-battery-status',
-  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows']
 })
 @Injectable()
 export class BatteryStatus extends IonicNativePlugin {

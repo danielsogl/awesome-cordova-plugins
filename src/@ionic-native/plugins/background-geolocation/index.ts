@@ -306,7 +306,7 @@ export interface BackgroundGeolocationConfig {
   plugin: 'cordova-plugin-mauron85-background-geolocation',
   pluginRef: 'backgroundGeolocation',
   repo: 'https://github.com/mauron85/cordova-plugin-background-geolocation',
-  platforms: ['iOS', 'Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class BackgroundGeolocation extends IonicNativePlugin {

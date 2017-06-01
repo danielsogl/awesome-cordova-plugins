@@ -153,7 +153,7 @@ export interface GeolocationOptions {
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation',
   repo: 'https://github.com/apache/cordova-plugin-geolocation',
-  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Firefox OS', 'iOS', 'Tizen', 'Windows', 'Windows Phone']
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class Geolocation extends IonicNativePlugin {
