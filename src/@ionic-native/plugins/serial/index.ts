@@ -42,7 +42,7 @@ export interface SerialOpenOptions {
   plugin: 'cordovarduino',
   pluginRef: 'serial',
   repo: 'https://github.com/xseignard/cordovarduino',
-  platforms: ['Android']
+  platforms: ['Android', 'Ubuntu']
 })
 @Injectable()
 export class Serial extends IonicNativePlugin {

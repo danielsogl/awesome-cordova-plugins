@@ -115,7 +115,7 @@ export class SecureStorageObject {
   plugin: 'cordova-plugin-secure-storage',
   pluginRef: 'cordova.plugins.SecureStorage',
   repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',
-  platforms: ['Android', 'iOS', 'Windows Phone']
+  platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
 export class SecureStorage extends IonicNativePlugin {

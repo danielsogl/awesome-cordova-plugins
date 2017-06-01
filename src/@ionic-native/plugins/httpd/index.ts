@@ -52,7 +52,7 @@ export interface HttpdOptions {
   plugin: 'https://github.com/floatinghotpot/cordova-httpd.git',
   pluginRef: 'cordova.plugins.CorHttpd',
   repo: 'https://github.com/floatinghotpot/cordova-httpd',
-  platforms: ['iOS', 'Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Httpd extends IonicNativePlugin {

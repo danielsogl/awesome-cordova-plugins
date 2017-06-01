@@ -116,7 +116,7 @@ export interface FacebookLoginResponse {
   repo: 'https://github.com/jeduan/cordova-plugin-facebook4',
   install: 'ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"',
   installVariables: ['APP_ID', 'APP_NAME'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS', 'Browser']
 })
 @Injectable()
 export class Facebook extends IonicNativePlugin {

@@ -80,7 +80,7 @@ declare const window: any;
   plugin: 'cordova-plugin-geofence',
   pluginRef: 'geofence',
   repo: 'https://github.com/cowbell/cordova-plugin-geofence',
-  platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows Phone']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
 })
 @Injectable()
 export class Geofence extends IonicNativePlugin {

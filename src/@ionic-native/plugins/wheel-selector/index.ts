@@ -114,7 +114,7 @@ export interface WheelSelectorData {
  *      err => console.log('Error: ', err)
  *      );
  *  }
- * 
+ *
  *  ...
  *
  *  //basic selection, setting initial displayed default values: '3' 'Banana'
@@ -137,7 +137,7 @@ export interface WheelSelectorData {
  *      err => console.log('Error: ' + JSON.stringify(err))
  *      );
  *  }
- * 
+ *
  *  ...
  *
  *  //more complex as overrides which key to display
@@ -172,7 +172,7 @@ export interface WheelSelectorData {
   plugin: 'cordova-wheel-selector-plugin',
   pluginRef: 'SelectorCordovaPlugin',
   repo: 'https://github.com/jasonmamy/cordova-wheel-selector-plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'Browser', 'iOS']
 })
 
 @Injectable()

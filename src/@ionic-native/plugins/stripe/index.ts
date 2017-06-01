@@ -115,7 +115,7 @@ export interface StripeBankAccountParams {
   plugin: 'cordova-plugin-stripe',
   pluginRef: 'cordova.plugins.stripe',
   repo: 'https://github.com/zyramedia/cordova-plugin-stripe',
-  platforms: ['Android', 'iOS', 'Browser']
+  platforms: ['Android', , 'Browser', 'iOS']
 })
 @Injectable()
 export class Stripe extends IonicNativePlugin {

@@ -77,7 +77,7 @@ export interface EmailComposerOptions {
   plugin: 'cordova-plugin-email',
   pluginRef: 'cordova.plugins.email',
   repo: 'https://github.com/hypery2k/cordova-email-plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Amazon FireOS', 'Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
 export class EmailComposer extends IonicNativePlugin {

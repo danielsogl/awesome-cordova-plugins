@@ -59,7 +59,7 @@ export interface SafariViewControllerOptions {
   plugin: 'cordova-plugin-safariviewcontroller',
   pluginRef: 'SafariViewController',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller',
-  platforms: ['iOS', 'Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class SafariViewController extends IonicNativePlugin {

@@ -26,7 +26,7 @@ declare const navigator: any;
   plugin: 'https://github.com/gitawego/cordova-screenshot.git',
   pluginRef: 'navigator.screenshot',
   repo: 'https://github.com/gitawego/cordova-screenshot',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS', 'macOS']
 })
 @Injectable()
 export class Screenshot extends IonicNativePlugin {
