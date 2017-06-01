@@ -52,7 +52,7 @@ declare const navigator: any;
   pluginName: 'Network',
   plugin: 'cordova-plugin-network-information',
   repo: 'https://github.com/apache/cordova-plugin-network-information',
-  platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser'],
+  platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser', 'Electron'],
   pluginRef: 'navigator.connection'
 })
 @Injectable()

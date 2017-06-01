@@ -23,7 +23,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-googleplus',
   pluginRef: 'window.plugins.googleplus',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-googleplus',
-  platforms: ['Web', 'Android', 'iOS'],
+  platforms: ['Browser', 'Android', 'iOS', 'Electron'],
   install: 'ionic cordova plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=myreversedclientid',
   installVariables: ['REVERSED_CLIENT_ID']
 })
