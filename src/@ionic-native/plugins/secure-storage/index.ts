@@ -73,6 +73,8 @@ export class SecureStorageObject {
  *
  * Requires Cordova plugin: `cordova-plugin-secure-storage`. For more info, please see the [Cordova Secure Storage docs](https://github.com/Crypho/cordova-plugin-secure-storage).
  *
+ * The browser platform is supported as a mock only. Key/values are stored unencrypted in localStorage.
+ *
  * @usage
  *
  * ```typescript
@@ -115,7 +117,7 @@ export class SecureStorageObject {
   plugin: 'cordova-plugin-secure-storage',
   pluginRef: 'cordova.plugins.SecureStorage',
   repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
 export class SecureStorage extends IonicNativePlugin {

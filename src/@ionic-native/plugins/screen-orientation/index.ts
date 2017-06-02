@@ -48,7 +48,7 @@ import { Observable } from 'rxjs/Observable';
   plugin: 'cordova-plugin-screen-orientation',
   pluginRef: 'screen.orientation',
   repo: 'https://github.com/apache/cordova-plugin-screen-orientation',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows']
 })
 @Injectable()
 export class ScreenOrientation extends IonicNativePlugin {

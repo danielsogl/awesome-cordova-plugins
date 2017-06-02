@@ -172,7 +172,7 @@ export interface WheelSelectorData {
   plugin: 'cordova-wheel-selector-plugin',
   pluginRef: 'SelectorCordovaPlugin',
   repo: 'https://github.com/jasonmamy/cordova-wheel-selector-plugin',
-  platforms: ['Android', 'Browser', 'iOS']
+  platforms: ['Android', 'iOS']
 })
 
 @Injectable()

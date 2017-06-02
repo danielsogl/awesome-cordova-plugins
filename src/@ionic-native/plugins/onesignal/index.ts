@@ -305,7 +305,7 @@ export enum OSActionType {
   plugin: 'onesignal-cordova-plugin',
   pluginRef: 'plugins.OneSignal',
   repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK',
-  platforms: ['Amazon Fire OS', 'Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Amazon Fire OS', 'Android', 'iOS', 'Windows']
 })
 @Injectable()
 export class OneSignal extends IonicNativePlugin {
