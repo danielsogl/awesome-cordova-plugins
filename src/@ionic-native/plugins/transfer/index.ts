@@ -177,7 +177,7 @@ export interface FileTransferError {
   plugin: 'cordova-plugin-file-transfer',
   pluginRef: 'FileTransfer',
   repo: 'https://github.com/apache/cordova-plugin-file-transfer',
-  platforms: ['Amazon Fire OS', 'Android', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class Transfer extends IonicNativePlugin {

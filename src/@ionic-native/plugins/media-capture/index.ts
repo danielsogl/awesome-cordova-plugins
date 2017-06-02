@@ -146,7 +146,8 @@ export interface ConfigurationData {
   pluginName: 'MediaCapture',
   plugin: 'cordova-plugin-media-capture',
   pluginRef: 'navigator.device.capture',
-  repo: 'https://github.com/apache/cordova-plugin-media-capture'
+  repo: 'https://github.com/apache/cordova-plugin-media-capture',
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class MediaCapture extends IonicNativePlugin {

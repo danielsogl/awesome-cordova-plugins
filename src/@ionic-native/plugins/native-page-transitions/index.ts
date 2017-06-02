@@ -66,7 +66,7 @@ export interface NativeTransitionOptions {
   plugin: 'com.telerik.plugins.nativepagetransitions',
   pluginRef: 'plugins.nativepagetransitions',
   repo: 'https://github.com/Telerik-Verified-Plugins/NativePageTransitions',
-  platforms: ['iOS', 'Android', 'Windows Phone']
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
 export class NativePageTransitions extends IonicNativePlugin {

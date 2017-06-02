@@ -38,7 +38,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-sim',
   pluginRef: 'plugins.sim',
   repo: 'https://github.com/pbakondy/cordova-plugin-sim',
-  platforms: ['Android', 'iOS', 'Windows Phone']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class Sim extends IonicNativePlugin {

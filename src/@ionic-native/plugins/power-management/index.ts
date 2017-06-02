@@ -25,7 +25,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-powermanagement-orig',
   pluginRef: 'powerManagement',
   repo: 'https://github.com/Viras-/cordova-plugin-powermanagement',
-  platforms: ['Android', 'iOS', 'WindowsPhone', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class PowerManagement extends IonicNativePlugin {

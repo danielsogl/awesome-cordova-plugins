@@ -34,7 +34,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'https://github.com/VersoSolutions/CordovaClipboard.git',
   pluginRef: 'cordova.plugins.clipboard',
   repo: 'https://github.com/VersoSolutions/CordovaClipboard',
-  platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser']
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
 export class Clipboard extends IonicNativePlugin {

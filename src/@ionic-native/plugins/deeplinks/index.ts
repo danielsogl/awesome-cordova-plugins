@@ -80,7 +80,7 @@ export interface DeeplinkMatch {
   repo: 'https://github.com/ionic-team/ionic-plugin-deeplinks',
   install: 'ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/',
   installVariables: ['URL_SCHEME', 'DEEPLINK_SCHEME', 'DEEPLINK_HOST', 'ANDROID_PATH_PREFIX'],
-  platforms: ['iOS', 'Android', 'Browser']
+  platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()
 export class Deeplinks extends IonicNativePlugin {

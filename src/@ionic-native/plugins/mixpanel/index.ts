@@ -28,7 +28,8 @@ declare var mixpanel: any;
   pluginName: 'Mixpanel',
   plugin: 'cordova-plugin-mixpanel',
   pluginRef: 'mixpanel',
-  repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin'
+  repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin',
+  platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()
 export class Mixpanel extends IonicNativePlugin {

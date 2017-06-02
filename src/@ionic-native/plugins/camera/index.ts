@@ -125,7 +125,7 @@ export interface CameraPopoverOptions {
   plugin: 'cordova-plugin-camera',
   pluginRef: 'navigator.camera',
   repo: 'https://github.com/apache/cordova-plugin-camera',
-  platforms: ['Android', 'BlackBerry', 'Browser', 'Firefox', 'FireOS', 'iOS', 'Windows', 'Windows Phone 8', 'Ubuntu']
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone 8']
 })
 @Injectable()
 export class Camera extends IonicNativePlugin {

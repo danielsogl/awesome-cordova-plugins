@@ -173,7 +173,7 @@ import { Observable } from 'rxjs/Observable';
   plugin: 'cordova-plugin-ble-central',
   pluginRef: 'ble',
   repo: 'https://github.com/don/cordova-plugin-ble-central',
-  platforms: ['iOS', 'Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class BLE extends IonicNativePlugin {
