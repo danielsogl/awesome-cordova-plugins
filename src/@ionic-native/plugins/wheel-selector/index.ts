@@ -196,5 +196,4 @@ export class WheelSelector extends IonicNativePlugin {
     platforms: ['iOS']
   })
   hideSelector(): Promise<void> { return; }
-
 }
