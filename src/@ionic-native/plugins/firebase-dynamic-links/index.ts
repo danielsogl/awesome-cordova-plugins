@@ -1,12 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
+
+export interface DynamicLinksOptions {
+  title: string;
+  message: string;
+  deepLink?: string;
+  callToActionText?: string;
+}
 
 /**
  * @name Firebase Dynamic Links
  * @description
- * This plugin does something
+ * Cordova plugin for Firebase Invites and Firebase Dynamic Links
  *
+ * Variables APP_DOMAIN and APP_PATH specify web URL where your app will start an activity to handle the link. They also used to setup support for App Indexing.
+ *
+ * Go to firebase console and export google-services.json and GoogleService-Info.plist. Put those files into the root of your cordova app folder.
+ *
+ * Preferences
+ *
+ * Preferences GoogleIOSClientId and GoogleAndroidClientId are used to setup dynamic links when you have an app for several platforms.
+ * You can find values at your GoogleService-Info.plist (key ANDROID_CLIENT_ID) and google-services.json (key client[0].oauth_client[0].client_id).
+ *
+ *config.xml:
+ * ```xml
+ * <platform name="android">
+ *     <preference name="GoogleIOSClientId" value="..." />
+ * </platform>
+ * <platform name="ios">
+ *     <preference name="GoogleAndroidClientId" value="..." />
+ * </platform>
+ * ```
  * @usage
  * ```typescript
  * import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links';
@@ -16,12 +41,19 @@ import { Observable } from 'rxjs/Observable';
  *
  * ...
  *
+ * const options: DynamicLinksOptions = {
+ *   title: 'My Title';
+ *   message: 'My message';
+ * }
  *
- * this.firebaseDynamicLinks.functionName('Hello', 123)
+ * this.firebaseDynamicLinks.sendInvitation(options)
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
  * ```
+ *
+ * @interfaces
+ * DynamicLinksOptions
  */
 @Plugin({
   pluginName: 'FirebaseDynamicLinks',
@@ -36,14 +68,25 @@ import { Observable } from 'rxjs/Observable';
 export class FirebaseDynamicLinks extends IonicNativePlugin {
 
   /**
-   * This function does something
-   * @param arg1 {string} Some param to configure something
-   * @param arg2 {number} Another param to configure something
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * Registers callback that is triggered on each dynamic link click.
+   * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  functionName(arg1: string, arg2: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  onDynamicLink(): Promise<any> { return; }
+
+  /**
+   * Display invitation dialog.
+   * @param options {DynamicLinksOptions} Some param to configure something
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  sendInvitation(options: DynamicLinksOptions): Promise<any> { return; }
+
+  /**
+   * @param invitationId {string} Some param to configure something
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  convertInvitation(invitationId: string): Promise<any> { return; }
 
 }
