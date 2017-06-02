@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Firebase Realtime Database
  * @description
- * This plugin does something
+ * Cordova plugin for Google Firebase Realtime Database Based on the the Firebase Notification / FCM plugin
+ *
+ * Download your Firebase configuration files, GoogleService-Info.plist for iOS and google-services.json for Android, and place them in the root folder of your Cordova project.
  *
  * @usage
  * ```typescript
@@ -17,7 +18,7 @@ import { Observable } from 'rxjs/Observable';
  * ...
  *
  *
- * this.firebaseRealtimeDatabase.functionName('Hello', 123)
+ * this.firebaseRealtimeDatabase.signInWithEmailAndPassword('email', 'password')
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
@@ -34,14 +35,77 @@ import { Observable } from 'rxjs/Observable';
 export class FirebaseRealtimeDatabase extends IonicNativePlugin {
 
   /**
-   * This function does something
-   * @param arg1 {string} Some param to configure something
-   * @param arg2 {number} Another param to configure something
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * Get a reference to a child path
+   * @param path {string} The path
+   */
+  @Cordova({ sync: true })
+  ref(path: string): void { return; }
+
+  /**
+   * At a particular reference, update the given keys
+   * @param path {string}
+   * @param updates {string}
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({ otherPromise: true })
+  updateChildren(path: string, updates: string): Promise<any> { return; }
+
+  /**
+   * At a particular reference, set the given value
+   * @param path {string}
+   * @param updates {string}
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({ otherPromise: true })
+  setValue(path: string, updates: string): Promise<any> { return; }
+
+  /**
+   * At a particular reference, get the value
+   * @param key {string}
+   * @param namespace {string}
+   * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  functionName(arg1: string, arg2: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  getValue(key: string, namespace: string): Promise<any> { return; }
+
+  /**
+   * Get some infos
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  getInfo(): Promise<any> { return; }
+
+  /**
+   * Choose whether data should be persisted on disk, i.e. between app relaunches
+   * @param settings {any} Some param to configure something
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  setConfigSettings(settings: any): Promise<any> { return; }
+
+  /**
+   * Choose whether data should be persisted on disk, i.e. between app relaunches
+   * @param persistent {string} Some param to configure something
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  setDatabasePersistent(persistent: string): Promise<any> { return; }
+
+  /**
+   * Choose whether data should be persisted on disk, i.e. between app relaunches
+   * @param persistent {string} Some param to configure something
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  setPersistenceEnabled(persistent: string): Promise<any> { return; }
+
+  /**
+   * Choose whether data should be persisted on disk, i.e. between app relaunches
+   * @param email {string} Some param to configure something
+   * @param password {string} Another param to configure something
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({ otherPromise: true })
+  signInWithEmailAndPassword(email: string, password: string): Promise<any> { return; }
 
 }
