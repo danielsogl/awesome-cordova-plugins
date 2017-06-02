@@ -1,23 +1,14 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Add this file to /src/index.ts (follow style of other plugins)
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Firebase Analytics
  * @description
- * This plugin does something
+ * Cordova plugin for Firebase Analytics
+ *
+ * Go yo firebase console and export google-services.json and GoogleService-Info.plist. Put those files into the root of your cordova app folder.
+ *
+ * NOTE: on iOS in order to collect demographic, age, gender data etc. you should additionally include AdSupport.framework into your project.
  *
  * @usage
  * ```typescript
@@ -28,8 +19,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * ...
  *
- *
- * this.firebaseAnalytics.functionName('Hello', 123)
+ * this.firebaseAnalytics.logEvent('page_view', {page: "dashboard"})
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
@@ -46,14 +36,49 @@ import { Observable } from 'rxjs/Observable';
 export class FirebaseAnalytics extends IonicNativePlugin {
 
   /**
-   * This function does something
-   * @param arg1 {string} Some param to configure something
-   * @param arg2 {number} Another param to configure something
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * Logs an app event.
+   * Be aware of automatically collected events.
+   * @param name {string} The name of the event
+   * @param params {any} Some param to configure something
+   * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  functionName(arg1: string, arg2: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  logEvent(name: string, params: any): Promise<any> { return; }
+
+  /**
+   * Sets the user ID property.
+   * This feature must be used in accordance with Google's Privacy Policy.
+   * @param id {string} THe user ID
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  setUserId(id: string): Promise<any> { return; }
+
+  /**
+   * This feature must be used in accordance with Google's Privacy Policy.
+   * Be aware of automatically collected user properties.
+   * @param name {string} The property name
+   * @param value {string} The property value
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  setUserProperty(name: string, value: string): Promise<any> { return; }
+
+  /**
+   * Sets whether analytics collection is enabled for this app on this device.
+   * @param enabled {boolean}
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  setEnabled(enabled: boolean): Promise<any> { return; }
+
+  /**
+   * Sets the current screen name, which specifies the current visual context in your app.
+   * This helps identify the areas in your app where users spend their time and how they interact with your app.
+   * @param name {string} The name of the screen
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  setCurrentScreen(name: string): Promise<any> { return; }
 
 }
