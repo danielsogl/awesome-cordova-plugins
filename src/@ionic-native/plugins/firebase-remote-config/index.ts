@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
  * @name Firebase Remote Config
  * @description
- * This plugin does something
+ * Cordova plugin for Firebase Remote Config
  *
  * @usage
  * ```typescript
@@ -35,13 +35,55 @@ export class FirebaseRemoteConfig extends IonicNativePlugin {
 
   /**
    * This function does something
-   * @param arg1 {string} Some param to configure something
-   * @param arg2 {number} Another param to configure something
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @param ttlSeconds {string} Some param to configure something
+   * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  functionName(arg1: string, arg2: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
+  update(ttlSeconds: string): Promise<any> { return; }
+
+  /**
+   * This function does something
+   * @param key {string} Some param to configure something
+   * @param namespace {string} Another param to configure something
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  get(key: string, namespace: string): Promise<any> { return; }
+
+  /**
+   * This function does something
+   * @param key {string} Some param to configure something
+   * @param namespace {string} Another param to configure something
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  getBoolean(key: string, namespace: string): Promise<any> { return; }
+
+  /**
+   * This function does something
+   * @param key {string} Some param to configure something
+   * @param namespace {string} Another param to configure something
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  getString(key: string, namespace: string): Promise<any> { return; }
+
+  /**
+   * This function does something
+   * @param key {string} Some param to configure something
+   * @param namespace {string} Another param to configure something
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  getNumber(key: string, namespace: string): Promise<any> { return; }
+
+  /**
+   * This function does something
+   * @param key {string} Some param to configure something
+   * @param namespace {string} Another param to configure something
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  getByteArray(key: string, namespace: string): Promise<any> { return; }
 
 }
