@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
 
 /**
+ * @beta
  * @name Firebase Remote Config
  * @description
  * Cordova plugin for Firebase Remote Config

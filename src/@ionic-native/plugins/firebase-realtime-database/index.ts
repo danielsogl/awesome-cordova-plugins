@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
+ * @beta
  * @name Firebase Realtime Database
  * @description
  * Cordova plugin for Google Firebase Realtime Database Based on the the Firebase Notification / FCM plugin

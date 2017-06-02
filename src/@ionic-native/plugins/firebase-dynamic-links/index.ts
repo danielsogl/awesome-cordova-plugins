@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
 
 export interface DynamicLinksOptions {
   title: string;
@@ -10,6 +9,7 @@ export interface DynamicLinksOptions {
 }
 
 /**
+ * @beta
  * @name Firebase Dynamic Links
  * @description
  * Cordova plugin for Firebase Invites and Firebase Dynamic Links

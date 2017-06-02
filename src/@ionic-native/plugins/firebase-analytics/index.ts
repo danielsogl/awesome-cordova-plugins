@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
+ * @beta
  * @name Firebase Analytics
  * @description
  * Cordova plugin for Firebase Analytics
