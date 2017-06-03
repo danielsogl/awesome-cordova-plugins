@@ -57,7 +57,7 @@ export class Keyboard extends IonicNativePlugin {
 
   /**
    * Prevents the native UIScrollView from moving when an input is focused.
-   * @param disable
+   * @param disable {boolean}
    */
   @Cordova({
     sync: true,
