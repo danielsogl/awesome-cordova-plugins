@@ -1,3 +1,15 @@
+<a name="3.12.0"></a>
+# [3.12.0](https://github.com/ionic-team/ionic-native/compare/v3.11.0...v3.12.0) (2017-06-03)
+
+
+### Features
+
+* **base64:** add Base64 plugin ([#1645](https://github.com/ionic-team/ionic-native/issues/1645)) ([793e2e3](https://github.com/ionic-team/ionic-native/commit/793e2e3))
+* **firebase-analytics:** add firebase analytics plugin ([#1647](https://github.com/ionic-team/ionic-native/issues/1647)) ([3eb69b4](https://github.com/ionic-team/ionic-native/commit/3eb69b4))
+* **firebase-dynamic-links:** add firebase dynamic links plugin ([#1649](https://github.com/ionic-team/ionic-native/issues/1649)) ([0467a0d](https://github.com/ionic-team/ionic-native/commit/0467a0d))
+
+
+
 <a name="3.11.0"></a>
 # [3.11.0](https://github.com/ionic-team/ionic-native/compare/v3.10.2...v3.11.0) (2017-06-01)
 
