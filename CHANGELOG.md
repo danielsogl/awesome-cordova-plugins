@@ -1,3 +1,18 @@
+<a name="3.12.1"></a>
+## [3.12.1](https://github.com/ionic-team/ionic-native/compare/v3.12.0...v3.12.1) (2017-06-03)
+
+
+### Code Refactoring
+
+* **phonegap-local-notification:** fix class name to match plugin name ([c6a76c2](https://github.com/ionic-team/ionic-native/commit/c6a76c2))
+
+
+### BREAKING CHANGES
+
+* **phonegap-local-notification:** PhonegapLocalNotifications class has been renamed to PhonegapLocalNotification
+
+
+
 <a name="3.12.0"></a>
 # [3.12.0](https://github.com/ionic-team/ionic-native/compare/v3.11.0...v3.12.0) (2017-06-03)
 
