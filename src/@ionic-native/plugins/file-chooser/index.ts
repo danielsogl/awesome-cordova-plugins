@@ -25,7 +25,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   pluginName: 'FileChooser',
   plugin: 'cordova-plugin-filechooser',
   pluginRef: 'fileChooser',
-  repo: 'https://github.com/don/cordova-filechooser',
+  repo: 'https://github.com/ihadeed/cordova-filechooser',
   platforms: ['Android']
 })
 @Injectable()
