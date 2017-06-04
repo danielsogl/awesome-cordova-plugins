@@ -29,7 +29,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   pluginName: 'Keychain',
   plugin: 'cordova-plugin-ios-keychain',
   pluginRef: 'window.Keychain',
-  repo: 'https://github.com/ionic-team/cordova-plugin-ios-keychain/',
+  repo: 'https://github.com/ionic-team/cordova-plugin-ios-keychain',
   platforms: ['iOS']
 })
 @Injectable()

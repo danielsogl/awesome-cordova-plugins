@@ -57,6 +57,13 @@ export class SecureStorageObject {
   })
   clear(): Promise<any> { return; }
 
+  /**
+   * Brings up the screen-lock settings
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance()
+  secureDevice(): Promise<any> { return; }
+
 }
 
 /**
@@ -65,6 +72,8 @@ export class SecureStorageObject {
  * This plugin gets, sets and removes key,value pairs from a device's secure storage.
  *
  * Requires Cordova plugin: `cordova-plugin-secure-storage`. For more info, please see the [Cordova Secure Storage docs](https://github.com/Crypho/cordova-plugin-secure-storage).
+ *
+ * The browser platform is supported as a mock only. Key/values are stored unencrypted in localStorage.
  *
  * @usage
  *
@@ -108,7 +117,7 @@ export class SecureStorageObject {
   plugin: 'cordova-plugin-secure-storage',
   pluginRef: 'cordova.plugins.SecureStorage',
   repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',
-  platforms: ['Android', 'iOS', 'Windows Phone']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
 export class SecureStorage extends IonicNativePlugin {

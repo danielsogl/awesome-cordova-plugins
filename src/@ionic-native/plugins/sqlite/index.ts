@@ -146,7 +146,8 @@ export class SQLiteObject {
   pluginName: 'SQLite',
   pluginRef: 'sqlitePlugin',
   plugin: 'cordova-sqlite-storage',
-  repo: 'https://github.com/litehelpers/Cordova-sqlite-storage'
+  repo: 'https://github.com/litehelpers/Cordova-sqlite-storage',
+  platforms: ['Android', 'iOS', 'macOS', 'Windows']
 })
 @Injectable()
 export class SQLite extends IonicNativePlugin {

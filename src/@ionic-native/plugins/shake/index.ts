@@ -23,7 +23,8 @@ import { Observable } from 'rxjs/Observable';
   pluginName: 'Shake',
   plugin: 'cordova-plugin-shake',
   pluginRef: 'shake',
-  repo: 'https://github.com/leecrossley/cordova-plugin-shake'
+  repo: 'https://github.com/leecrossley/cordova-plugin-shake',
+  platforms: ['iOS']
 })
 @Injectable()
 export class Shake extends IonicNativePlugin {

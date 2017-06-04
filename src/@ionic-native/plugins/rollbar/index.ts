@@ -24,9 +24,9 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'resgrid-cordova-plugins-rollbar',
   pluginRef: 'cordova.plugins.Rollbar',
   repo: 'https://github.com/Resgrid/cordova-plugins-rollbar',
-  platforms: ['Android', 'iOS'],
   install: 'ionic cordova plugin add resgrid-cordova-plugins-rollbar --variable ROLLBAR_ACCESS_TOKEN="YOUR_ROLLBAR_ACCEESS_TOKEN" --variable ROLLBAR_ENVIRONMENT="ROLLBAR_ENVIRONMENT"',
-  installVariables: ['ROLLBAR_ACCESS_TOKEN', 'ROLLBAR_ENVIRONMENT']
+  installVariables: ['ROLLBAR_ACCESS_TOKEN', 'ROLLBAR_ENVIRONMENT'],
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Rollbar extends IonicNativePlugin {

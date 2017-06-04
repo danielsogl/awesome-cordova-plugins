@@ -31,7 +31,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-app-version',
   pluginRef: 'cordova.getAppVersion',
   repo: 'https://github.com/whiteoctober/cordova-plugin-app-version',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
 export class AppVersion extends IonicNativePlugin {

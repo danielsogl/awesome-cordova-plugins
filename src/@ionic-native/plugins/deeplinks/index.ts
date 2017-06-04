@@ -49,7 +49,7 @@ export interface DeeplinkMatch {
  *    });
  * ```
  *
- * Alternatively, if you're using Ionic 2, there's a convenience method that takes a reference to a `NavController` and handles
+ * Alternatively, if you're using Ionic, there's a convenience method that takes a reference to a `NavController` and handles
  * the actual navigation for you:
  *
  * ```typescript
@@ -67,7 +67,7 @@ export interface DeeplinkMatch {
  *   });
  * ```
  *
- * See the [Ionic 2 Deeplinks Demo](https://github.com/ionic-team/ionic2-deeplinks-demo/blob/master/app/app.ts) for an example of how to
+ * See the [Ionic Deeplinks Demo](https://github.com/ionic-team/ionic2-deeplinks-demo/blob/master/app/app.ts) for an example of how to
  * retrieve the `NavController` reference at runtime.
  *
  * @interfaces
@@ -78,9 +78,9 @@ export interface DeeplinkMatch {
   plugin: 'ionic-plugin-deeplinks',
   pluginRef: 'IonicDeeplink',
   repo: 'https://github.com/ionic-team/ionic-plugin-deeplinks',
-  platforms: ['iOS', 'Android', 'Browser'],
   install: 'ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/',
-  installVariables: ['URL_SCHEME', 'DEEPLINK_SCHEME', 'DEEPLINK_HOST', 'ANDROID_PATH_PREFIX']
+  installVariables: ['URL_SCHEME', 'DEEPLINK_SCHEME', 'DEEPLINK_HOST', 'ANDROID_PATH_PREFIX'],
+  platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()
 export class Deeplinks extends IonicNativePlugin {
@@ -103,7 +103,7 @@ export class Deeplinks extends IonicNativePlugin {
   /**
    *
    * This is a convenience version of `route` that takes a reference to a NavController
-   * from Ionic 2, or a custom class that conforms to this protocol:
+   * from Ionic, or a custom class that conforms to this protocol:
    *
    * NavController.push = function(View, Params){}
    *

@@ -39,7 +39,7 @@ import { Observable } from 'rxjs/Observable';
   plugin: 'cordova-plugin-dbmeter',
   pluginRef: 'DBMeter',
   repo: 'https://github.com/akofman/cordova-plugin-dbmeter',
-  platforms: ['iOS', 'Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class DBMeter extends IonicNativePlugin {

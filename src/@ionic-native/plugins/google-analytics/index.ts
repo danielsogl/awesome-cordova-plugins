@@ -34,7 +34,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-google-analytics',
   pluginRef: 'ga',
   repo: 'https://github.com/danwilson/google-analytics-plugin',
-  platforms: ['Android', 'iOS', 'Browser']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
 export class GoogleAnalytics extends IonicNativePlugin {

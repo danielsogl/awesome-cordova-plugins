@@ -114,7 +114,7 @@ export interface WheelSelectorData {
  *      err => console.log('Error: ', err)
  *      );
  *  }
- * 
+ *
  *  ...
  *
  *  //basic selection, setting initial displayed default values: '3' 'Banana'
@@ -137,7 +137,7 @@ export interface WheelSelectorData {
  *      err => console.log('Error: ' + JSON.stringify(err))
  *      );
  *  }
- * 
+ *
  *  ...
  *
  *  //more complex as overrides which key to display
@@ -196,5 +196,4 @@ export class WheelSelector extends IonicNativePlugin {
     platforms: ['iOS']
   })
   hideSelector(): Promise<void> { return; }
-
 }

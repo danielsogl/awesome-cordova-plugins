@@ -25,7 +25,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'call-number',
   pluginRef: 'plugins.CallNumber',
   repo: 'https://github.com/Rohfosho/CordovaCallNumberPlugin',
-  platforms: ['iOS', 'Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class CallNumber extends IonicNativePlugin {

@@ -92,7 +92,7 @@ export interface BarcodeScanResult {
   plugin: 'phonegap-plugin-barcodescanner',
   pluginRef: 'cordova.plugins.barcodeScanner',
   repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner',
-  platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows 10', 'Windows 8', 'BlackBerry 10', 'Browser']
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
 export class BarcodeScanner extends IonicNativePlugin {

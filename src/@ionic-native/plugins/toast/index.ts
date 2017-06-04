@@ -65,7 +65,7 @@ export interface ToastOptions {
   plugin: 'cordova-plugin-x-toast',
   pluginRef: 'plugins.toast',
   repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows', 'Windows Phone 8']
 })
 @Injectable()
 export class Toast extends IonicNativePlugin {

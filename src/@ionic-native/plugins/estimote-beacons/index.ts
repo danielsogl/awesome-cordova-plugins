@@ -44,7 +44,7 @@ export interface EstimoteBeaconRegion {
   plugin: 'cordova-plugin-estimote',
   pluginRef: 'estimote.beacons',
   repo: 'https://github.com/evothings/phonegap-estimotebeacons',
-  platforms: ['iOS', 'Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class EstimoteBeacons extends IonicNativePlugin {
@@ -512,4 +512,3 @@ export class EstimoteBeacons extends IonicNativePlugin {
   writeConnectedMinor(minor: number): Promise<any> { return; }
 
 }
-

@@ -45,8 +45,8 @@ export interface DialogsPromptCallback {
   pluginName: 'Dialogs',
   plugin: 'cordova-plugin-dialogs',
   pluginRef: 'navigator.notification',
-  repo: 'https://github.com/apache/cordova-plugin-dialogs.git',
-  platforms: ['Android', 'BlackBerry 10', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
+  repo: 'https://github.com/apache/cordova-plugin-dialogs',
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class Dialogs extends IonicNativePlugin {

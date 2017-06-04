@@ -24,7 +24,8 @@ import { Injectable } from '@angular/core';
   pluginName: 'UniqueDeviceID',
   plugin: 'cordova-plugin-uniquedeviceid',
   pluginRef: 'window.plugins.uniqueDeviceID',
-  repo: 'https://github.com/Paldom/UniqueDeviceID'
+  repo: 'https://github.com/Paldom/UniqueDeviceID',
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
 export class UniqueDeviceID extends IonicNativePlugin {

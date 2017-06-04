@@ -77,7 +77,7 @@ export interface DeviceOrientationCompassOptions {
   plugin: 'cordova-plugin-device-orientation',
   pluginRef: 'navigator.compass',
   repo: 'https://github.com/apache/cordova-plugin-device-orientation',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class DeviceOrientation extends IonicNativePlugin {

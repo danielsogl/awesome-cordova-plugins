@@ -104,7 +104,8 @@ export interface MusicControlsOptions {
   pluginName: 'MusicControls',
   plugin: 'cordova-plugin-music-controls',
   pluginRef: 'MusicControls',
-  repo: 'https://github.com/homerours/cordova-music-controls-plugin'
+  repo: 'https://github.com/homerours/cordova-music-controls-plugin',
+  platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
 export class MusicControls extends IonicNativePlugin {

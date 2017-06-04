@@ -33,7 +33,8 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   pluginName: 'NativeAudio',
   plugin: 'cordova-plugin-nativeaudio',
   pluginRef: 'plugins.NativeAudio',
-  repo: 'https://github.com/floatinghotpot/cordova-plugin-nativeaudio'
+  repo: 'https://github.com/floatinghotpot/cordova-plugin-nativeaudio',
+  platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()
 export class NativeAudio extends IonicNativePlugin {

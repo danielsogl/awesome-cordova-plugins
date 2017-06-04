@@ -32,7 +32,8 @@ declare let window: any;
   pluginName: 'NFC',
   plugin: 'phonegap-nfc',
   pluginRef: 'nfc',
-  repo: 'https://github.com/chariotsolutions/phonegap-nfc'
+  repo: 'https://github.com/chariotsolutions/phonegap-nfc',
+  platforms: ['Android', 'BlackBerry 10', 'Windows', 'Windows Phone 8']
 })
 /**
 *@{ NFC } class methods

@@ -20,7 +20,7 @@ export interface VideoOptions {
 /**
  * @name Video Player
  * @description
- * A Codova plugin that simply allows you to immediately play a video in fullscreen mode.
+ * A Cordova plugin that simply allows you to immediately play a video in fullscreen mode.
  *
  * Requires Cordova plugin: `com.moust.cordova.videoplayer`. For more info, please see the [VideoPlayer plugin docs](https://github.com/moust/cordova-plugin-videoplayer).
  *
@@ -45,7 +45,7 @@ export interface VideoOptions {
  */
 @Plugin({
   pluginName: 'VideoPlayer',
-  plugin: 'https://github.com/moust/cordova-plugin-videoplayer',
+  plugin: 'https://github.com/moust/cordova-plugin-videoplayer.git',
   pluginRef: 'VideoPlayer',
   repo: 'https://github.com/moust/cordova-plugin-videoplayer',
   platforms: ['Android']
