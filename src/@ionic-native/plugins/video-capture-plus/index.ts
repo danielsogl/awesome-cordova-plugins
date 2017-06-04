@@ -131,9 +131,9 @@ export interface VideoCapturePlusOptions {
  */
 @Plugin({
   pluginName: 'VideoCapturePlus',
-  plugin: 'https://github.com/EddyVerbruggen/VideoCapturePlus-PhoneGap-Plugin.git',
+  plugin: 'cordova-plugin-video-capture-plus',
   pluginRef: 'window.plugins.videocaptureplus',
-  repo: 'https://github.com/EddyVerbruggen/VideoCapturePlus-PhoneGap-Plugin',
+  repo: 'https://github.com/danielsogl/cordova-plugin-video-capture-plus',
   platforms: ['Android', 'iOS']
 })
 @Injectable()
