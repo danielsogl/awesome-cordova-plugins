@@ -8,17 +8,17 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
+ * import { Platfrom } from 'ionic-angular';
  * import { AppMinimize } from '@ionic-native/app-minimize';
  *
  *
- * constructor(private appMinimize: AppMinimize) { }
+ * constructor(private platform: Platform, private appMinimize: AppMinimize) { }
  *
  * ...
  *
- * this.plugin.minimize().then(
- *   success => console.log('Closed'),
- *   err => console.log('Something went wrong')
- * );
+ * this.platform.registerBackButtonAction(() => {
+ *    this.appMinimize.minimize();
+ * });
  *
  * ```
  */
