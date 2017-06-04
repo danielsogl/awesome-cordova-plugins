@@ -27,9 +27,9 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'YoutubeVideoPlayer',
-  plugin: 'https://github.com/JonSmart/CordovaYoutubeVideoPlayer.git',
+  plugin: 'cordova-plugin-youtube-video-player',
   pluginRef: 'YoutubeVideoPlayer',
-  repo: 'https://github.com/JonSmart/CordovaYoutubeVideoPlayer',
+  repo: 'https://github.com/ihadeed/CordovaYoutubeVideoPlayer',
   platforms: ['Android', 'iOS']
 })
 @Injectable()
