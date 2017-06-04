@@ -22,9 +22,9 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'DeviceAccounts',
-  plugin: 'https://github.com/loicknuchel/cordova-device-accounts.git',
+  plugin: 'cordova-device-accounts',
   pluginRef: 'plugins.DeviceAccounts',
-  repo: 'https://github.com/loicknuchel/cordova-device-accounts',
+  repo: 'https://github.com/danielsogl/cordova-device-accounts',
   platforms: ['Android']
 })
 @Injectable()
