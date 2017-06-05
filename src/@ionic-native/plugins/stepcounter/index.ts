@@ -26,7 +26,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'Stepcounter',
-  plugin: 'npm i cordova-plugin-stepcounter',
+  plugin: 'cordova-plugin-stepcounter',
   pluginRef: 'stepcounter',
   repo: 'https://github.com/ihadeed/cordova-plugin-stepcounter',
   platforms: ['Android']
