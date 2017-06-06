@@ -72,7 +72,7 @@ declare const window: any;
  * ### Troubleshooting ###
  * #### I get compile errors when I run `ionic build ios` or `ionic run ios`. ####
  * This could be caused by the Cordova project directory in `/platforms/ios` not being named correctly.
- * Try running `ionic platform rm <platform>` then run `ionic platform add <platform>` to recreate the
+ * Try running `ionic cordova platform rm <platform>` then run `ionic cordova platform add <platform>` to recreate the
  * platform directories.
  */
 @Plugin({
