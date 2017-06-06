@@ -23,7 +23,7 @@ declare const navigator: any;
  */
 @Plugin({
   pluginName: 'Screenshot',
-  plugin: 'https://github.com/gitawego/cordova-screenshot.git',
+  plugin: 'com.darktalker.cordova.screenshot',
   pluginRef: 'navigator.screenshot',
   repo: 'https://github.com/gitawego/cordova-screenshot',
   platforms: ['Android', 'iOS', 'macOS']
