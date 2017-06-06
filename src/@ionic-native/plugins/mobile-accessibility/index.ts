@@ -22,7 +22,7 @@ import { Injectable } from '@angular/core';
  */
 @Plugin({
   pluginName: 'MobileAccessibility',
-  plugin: 'https://github.com/phonegap/phonegap-mobile-accessibility.git',
+  plugin: 'phonegap-plugin-mobile-accessibility',
   pluginRef: 'MobileAccessibilityNotifications',
   repo: 'https://github.com/phonegap/phonegap-mobile-accessibility',
   platforms: ['Android Fire OS', 'Android', 'iOS', 'Windows']
