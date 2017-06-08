@@ -13,13 +13,11 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  * ```typescript
  * import { Badge } from '@ionic-native/badge';
  *
- * constructor(private badge: Badge) { }
- *
  * ...
  *
- * this.badge.set(10);
- * this.badge.increase(1);
- * this.badge.clear();
+ * Badge.set(10);
+ * Badge.increase(1);
+ * Badge.clear();
  * ```
  */
 @Plugin({
