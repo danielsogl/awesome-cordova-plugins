@@ -371,6 +371,7 @@ export class GoogleMap {
  * @description This plugin uses the native Google Maps SDK
  * @usage
  * ```typescript
+ * import { Platform } from 'ionic-angular';
  * import {
  *  GoogleMaps,
  *  GoogleMap,
@@ -382,12 +383,11 @@ export class GoogleMap {
  * } from '@ionic-native/google-maps';
  *
  * export class MapPage {
- *  constructor(private googleMaps: GoogleMaps) {}
- *
- * // Load map only after view is initialized
- * ngAfterViewInit() {
- *  this.loadMap();
- * }
+ *  constructor(platform: Platform, private googleMaps: GoogleMaps) {
+ *    platform.ready().then(() => {
+ *      this.loadMap();
+ *    });
+ *  }
  *
  * loadMap() {
  *  // make sure to create following structure in your view.html file
