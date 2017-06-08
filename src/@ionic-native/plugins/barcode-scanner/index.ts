@@ -72,6 +72,10 @@ export interface BarcodeScanResult {
  * ```typescript
  * import { BarcodeScanner } from '@ionic-native/barcode-scanner';
  *
+ *@Component({
+ *   providers: [BarcodeScanner]
+ *})
+ *
  * constructor(private barcodeScanner: BarcodeScanner) { }
  *
  * ...
