@@ -102,7 +102,6 @@ export interface HotspotDevice {
 }
 
 /**
- * @beta
  * @name Hotspot
  * @description
  * @usage
