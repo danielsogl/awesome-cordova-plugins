@@ -74,9 +74,9 @@ export interface ImageResizerOptions {
  */
 @Plugin({
   pluginName: 'ImageResizer',
-  plugin: 'https://github.com/protonet/cordova-plugin-image-resizer.git',
+  plugin: 'cordova-plugin-image-resizer',
   pluginRef: 'ImageResizer',
-  repo: 'https://github.com/protonet/cordova-plugin-image-resizer',
+  repo: 'https://github.com/wymsee/cordova-imageResizer',
   platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
