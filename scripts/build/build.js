@@ -19,7 +19,7 @@ const ROOT = path.resolve(path.join(__dirname, '../../')), // root ionic-native 
 // dependency versions
 const ANGULAR_VERSION = '*',
   RXJS_VERSION = '^5.0.1',
-  MIN_CORE_VERSION = '^3.6.0',
+  MIN_CORE_VERSION = '^3.7.0',
   IONIC_NATIVE_VERSION = require(path.resolve(ROOT, 'package.json')).version;
 
 // package dependencies
