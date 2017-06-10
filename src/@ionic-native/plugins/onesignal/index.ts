@@ -226,7 +226,7 @@ export interface OSPermissionState {
   /**
    * User was prompted.
    */
-  hasPrompted: boolean;  
+  hasPrompted: boolean;
   /**
    * Permissions Status
    */
@@ -236,12 +236,9 @@ export interface OSPermissionState {
  * OSSubscriptionState
  */
 export interface OSSubscriptionState {
-    subscribed: boolean;  
-
+    subscribed: boolean;
     userSubscriptionSetting: any;
-  
     userId: any;
-  
     pushToken: any;
 }
 /**
