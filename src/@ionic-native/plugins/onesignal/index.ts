@@ -219,6 +219,41 @@ export interface OSActionButton {
    */
   icon: string;
 }
+/**
+ * OSPermissionState
+ */
+export interface OSPermissionState {
+  /**
+   * User was prompted.
+   */
+  hasPrompted: boolean;
+  /**
+   * Permissions Status
+   */
+  status: any;
+}
+/**
+ * OSSubscriptionState
+ */
+export interface OSSubscriptionState {
+    subscribed: boolean;
+    userSubscriptionSetting: any;
+    userId: any;
+    pushToken: any;
+}
+/**
+ * Subscription and permissions status
+ */
+export interface OSPermissionSubscriptionState {
+  /**
+   * Id assigned to the button.
+   */
+  permissionStatus: OSPermissionState;
+  /**
+   * Text show on the button to the user.
+   */
+  subscriptionStatus: OSSubscriptionState;
+}
 
 /**
  * **ANDROID** - If a background image was set, this object will be available.
@@ -536,6 +571,18 @@ export class OneSignal extends IonicNativePlugin {
   */
   @Cordova({ sync: true })
   setSubscription(enable: boolean): void { }
+
+
+  /**
+  * Get the current notification and permission state. Returns a OSPermissionSubscriptionState type described below.
+  * You can pass true later to opt users back into notifications.
+  *
+  * @param {boolean} enable
+  */
+  @Cordova({ sync: true })
+  getPermissionSubscriptionState(): OSPermissionSubscriptionState { }
+
+
 
   /**
   *
