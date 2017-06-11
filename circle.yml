@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-         key: ionic-site-{{ .Branch }}
+         key: ionic-site-{{ checksum "package.json" }}
       - run:
          name: Prepare ionic-site repo
          command: |
@@ -15,7 +15,7 @@ jobs:
              ./scripts/docs/prepare.sh
            fi
       - save_cache:
-         key: ionic-site-{{ .Branch }}
+         key: ionic-site-{{ checksum "package.json" }}
          paths:
          - ~/ionic-site/
       - restore_cache:
