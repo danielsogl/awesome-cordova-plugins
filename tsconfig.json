@@ -11,6 +11,7 @@
     "paths": {
       "@ionic-native/core": ["./dist/@ionic-native/core"]
     },
+    "outDir": "dist",
     "rootDir": ".",
     "target": "es5",
     "skipLibCheck": true,
