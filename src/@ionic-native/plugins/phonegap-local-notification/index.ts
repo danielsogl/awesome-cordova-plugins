@@ -4,8 +4,8 @@ import { Cordova, CordovaInstance, Plugin, IonicNativePlugin, checkAvailability 
 declare const Notification: any;
 
 /**
-* @hidden
-*/
+ * @hidden
+ */
 export class PLNObject {
 
   private _objectInstance: any;
