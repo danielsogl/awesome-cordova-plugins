@@ -32,8 +32,8 @@ jobs:
           command: npm run lint
       - run: bash ./scripts/git/config.sh
       - run:
-          name: Build changed plugins
-          command: node scripts/ci-tests.js
+          name: Build Ionic Native
+          command: ./node_modules/.bin/tsc
       - run:
           name: Run tests
           command: npm test
