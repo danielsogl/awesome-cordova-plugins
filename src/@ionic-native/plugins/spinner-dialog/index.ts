@@ -28,10 +28,10 @@ export interface SpinnerDialogIOSOptions {
  */
 @Plugin({
   pluginName: 'SpinnerDialog',
-  plugin: 'cordova-plugin-spinner-dialog',
+  plugin: 'cordova-plugin-native-spinner',
   pluginRef: 'window.plugins.spinnerDialog',
-  repo: 'https://github.com/Paldom/SpinnerDialog',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  repo: 'https://github.com/greybax/cordova-plugin-native-spinner',
+  platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows']
 })
 @Injectable()
 export class SpinnerDialog extends IonicNativePlugin {
