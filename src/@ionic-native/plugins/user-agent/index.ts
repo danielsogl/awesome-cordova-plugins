@@ -34,9 +34,9 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'UserAgent',
-  plugin: 'https://github.com/LouisT/cordova-useragent.git',
+  plugin: 'cordova-plugin-useragent',
   pluginRef: 'plugins.useragent',
-  repo: 'https://github.com/LouisT/cordova-useragent',
+  repo: 'https://github.com/danielsogl/cordova-plugin-useragent',
   platforms: ['Android', 'iOS']
 })
 @Injectable()
