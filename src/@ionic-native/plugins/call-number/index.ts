@@ -14,7 +14,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  *
- * this.callNumber.callNumber(18001010101, true)
+ * this.callNumber.callNumber("18001010101", true)
  *   .then(() => console.log('Launched dialer!'))
  *   .catch(() => console.log('Error launching dialer'));
  *
