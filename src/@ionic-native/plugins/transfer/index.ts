@@ -247,7 +247,7 @@ export class TransferObject {
    * Downloads a file from server.
    *
    * @param {string} source  URL of the server to download the file, as encoded by encodeURI().
-   * @param {stirng} target  Filesystem url representing the file on the device. For backwards compatibility, this can also be the full path of the file on the device.
+   * @param {string} target  Filesystem url representing the file on the device. For backwards compatibility, this can also be the full path of the file on the device.
    * @param {boolean} trustAllHosts  Optional parameter, defaults to false. If set to true, it accepts all security certificates. This is useful because Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS.
    * @param {object} Optional parameters, currently only supports headers (such as Authorization (Basic Authentication), etc).
    * @returns {Promise<any>} Returns a Promise that resolves to a FileEntry object.
