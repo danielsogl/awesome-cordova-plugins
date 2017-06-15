@@ -16,7 +16,7 @@ export interface Beacon {
   major: number;
 
   /**
-   * The beacon's major identifier number.
+   * The beacon's minor identifier number.
    */
   minor: number;
 
