@@ -35,7 +35,7 @@ import { Injectable } from '@angular/core';
  *     complete: () => { console.log('could not get photos'); }
  *   });
  * })
- * .catch(err => console.log('permissions weren't granted'));
+ * .catch(err => console.log('permissions weren\'t granted'));
  *
  * ```
  */
