@@ -179,7 +179,7 @@ export class MobileAccessibility extends IonicNativePlugin {
   getTextZoomCallback(): Promise<number> { return; }
 
   /**
-   * @param textZoom {nuber} A percentage value by which text in the WebView should be scaled.
+   * @param textZoom {number} A percentage value by which text in the WebView should be scaled.
    */
   @Cordova({ sync: true })
   setTextZoom(textZoom: number): void { }
