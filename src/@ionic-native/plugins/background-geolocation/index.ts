@@ -125,7 +125,7 @@ export interface BackgroundGeolocationConfig {
   startForeground?: boolean;
 
   /**
-   * ANDROID, WP8 ONLY
+   * ANDROID ONLY
    * When using BackgroundGeolocation.LocationProvider.ANDROID_DISTANCE_FILTER_PROVIDER:
    * The minimum time interval between location updates in milliseconds.
    * @see Android docs (http://developer.android.com/reference/android/location/LocationManager.html#requestLocationUpdates(long,%20float,%20android.location.Criteria,%20android.app.PendingIntent))
@@ -391,7 +391,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS', 'Windows Phone']
+    platforms: ['iOS']
   })
   finish(): Promise<any> { return; }
 
@@ -401,7 +401,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS', 'Windows Phone']
+    platforms: ['iOS']
   })
   changePace(isMoving: boolean): Promise<any> { return; }
 
@@ -420,7 +420,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<Location>}
    */
   @Cordova({
-    platforms: ['iOS', 'Windows Phone']
+    platforms: ['iOS']
   })
   getStationaryLocation(): Promise<BackgroundGeolocationResponse> { return; }
 
@@ -430,7 +430,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS', 'Windows Phone']
+    platforms: ['iOS']
   })
   onStationary(): Promise<any> { return; }
 
