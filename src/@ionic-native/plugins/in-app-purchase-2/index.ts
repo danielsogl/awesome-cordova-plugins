@@ -297,7 +297,7 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * @param idOrAlias
    */
   @Cordova({ sync: true })
-  get(idOrAlias: string): IAPProduct { return; };
+  get(idOrAlias: string): IAPProduct { return; }
 
   /**
    * Register error handler
@@ -310,7 +310,8 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * Add or register a product
    * @param product {IAPProductOptions}
    */
-  register(product: IAPProductOptions): void {};
+  @Cordova({ sync: true})
+  register(product: IAPProductOptions): void {}
 
   /**
    *
