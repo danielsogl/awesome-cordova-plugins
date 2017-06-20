@@ -636,7 +636,7 @@ export class IBeacon extends IonicNativePlugin {
    * native layer acknowledged the dispatch of the advertising request.
    */
   @Cordova({ otherPromise: true })
-  startAdvertising(region: Region, measuredPower: number): Promise<void> { return; }
+  startAdvertising(region: Region, measuredPower?: number): Promise<void> { return; }
 
   /**
    * Stop advertising as a beacon.
