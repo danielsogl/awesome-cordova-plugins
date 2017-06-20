@@ -79,24 +79,24 @@ export interface IAPProduct {
 }
 
 export interface IAPProductEvents {
-  loaded: (product: IAPProduct) => void;
-  updated: (product: IAPProduct) => void;
-  error: (error: IAPError) => void;
-  approved: (product: IAPProduct) => void;
-  owned: (product: IAPProduct) => void;
-  cancelled: (product: IAPProduct) => void;
-  refunded: (product: IAPProduct) => void;
-  registered: (product: IAPProduct) => void;
-  valid: (product: IAPProduct) => void;
-  invalid: (product: IAPProduct) => void;
-  requested: (product: IAPProduct) => void;
-  initiated: (product: IAPProduct) => void;
-  finished: (product: IAPProduct) => void;
-  verified: (product: IAPProduct) => void;
-  unverified: (product: IAPProduct) => void;
-  expired: (product: IAPProduct) => void;
+  loaded: (callback: IAPQueryCallback) => void;
+  updated: (callback: IAPQueryCallback) => void;
+  error: (callback: IAPQueryCallback) => void;
+  approved: (callback: IAPQueryCallback) => void;
+  owned: (callback: IAPQueryCallback) => void;
+  cancelled: (callback: IAPQueryCallback) => void;
+  refunded: (callback: IAPQueryCallback) => void;
+  registered: (callback: IAPQueryCallback) => void;
+  valid: (callback: IAPQueryCallback) => void;
+  invalid: (callback: IAPQueryCallback) => void;
+  requested: (callback: IAPQueryCallback) => void;
+  initiated: (callback: IAPQueryCallback) => void;
+  finished: (callback: IAPQueryCallback) => void;
+  verified: (callback: IAPQueryCallback) => void;
+  unverified: (callback: IAPQueryCallback) => void;
+  expired: (callback: IAPQueryCallback) => void;
   downloading: (product: IAPProduct, progress: any, time_remaining: any) => void;
-  downloaded: (product: IAPProduct) => void;
+  downloaded: (callback: IAPQueryCallback) => void;
 }
 
 export class IAPError {
