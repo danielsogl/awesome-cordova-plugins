@@ -25,10 +25,10 @@ export interface DynamicLinksOptions {
  *
  *config.xml:
  * ```xml
- * <platform name="android">
+ * <platform name="ios">
  *     <preference name="GoogleIOSClientId" value="..." />
  * </platform>
- * <platform name="ios">
+ * <platform name="android">
  *     <preference name="GoogleAndroidClientId" value="..." />
  * </platform>
  * ```
@@ -50,6 +50,9 @@ export interface DynamicLinksOptions {
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
+ * this.firebaseDynamicLinks.onDynamicLink()
+ *   .then((res: any) => console.log(res))
+ *   .catch((error:any) => console.log(error));
  * ```
  *
  * @interfaces
