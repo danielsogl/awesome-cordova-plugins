@@ -25,10 +25,10 @@ export interface DynamicLinksOptions {
  *
  *config.xml:
  * ```xml
- * <platform name="ios">
+ * <platform name="android">
  *     <preference name="GoogleIOSClientId" value="..." />
  * </platform>
- * <platform name="android">
+ * <platform name="ios">
  *     <preference name="GoogleAndroidClientId" value="..." />
  * </platform>
  * ```
@@ -44,6 +44,8 @@ export interface DynamicLinksOptions {
  * const options: DynamicLinksOptions = {
  *   title: 'My Title';
  *   message: 'My message';
+ *   deepLink: 'http://example.com/';
+ *   callToActionText: 'Message on button';
  * }
  *
  * this.firebaseDynamicLinks.sendInvitation(options)
