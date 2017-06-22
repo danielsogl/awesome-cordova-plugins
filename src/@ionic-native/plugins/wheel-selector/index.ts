@@ -5,6 +5,11 @@ export interface WheelSelectorItem {
   description?: string;
 }
 
+export interface DefaultItem {
+  index: number;
+  defaultValue: string;
+}
+
 export interface WheelSelectorOptions {
   /**
    * The title of the selector's input box
@@ -19,7 +24,7 @@ export interface WheelSelectorOptions {
   /**
    * Which items to display by default, example ["2","Apple"] (if items.length is 2 for instance)
    */
-  defaultItems?: Array<WheelSelectorItem>;
+  defaultItems?: Array<DefaultItem>;
 
   /**
    * The 'ok' button text
@@ -127,9 +132,9 @@ export interface WheelSelectorData {
  *      positiveButtonText: "Ok",
  *      negativeButtonText: "Nope",
  *      defaultItems: [
- *        this.jsonData.numbers[2], // '3'
- *        this.jsonData.fruits[3] // 'Banana'
- *      ]
+ *  	  {index:0, defaultValue: this.jsonData.numbers[2].description},
+ *  	  {index: 1, defaultValue: this.jsonData.fruits[3].description}
+ *  	]
  *    }).then(
  *      result => {
  *        console.log(result[0].description + ' ' + result[1].description);
@@ -150,8 +155,8 @@ export interface WheelSelectorData {
  *      ],
  *      displayKey: 'name',
  *      defaultItems: [
- *        this.jsonData.firstNames[2],
- *        this.jsonData.lastNames[3]
+ *  	  {index:0, defaultValue: this.jsonData.firstNames[2].name}, 
+ *        {index: 0, defaultValue: this.jsonData.lastNames[3].name}
  *      ]
  *    }).then(
  *      result => {
