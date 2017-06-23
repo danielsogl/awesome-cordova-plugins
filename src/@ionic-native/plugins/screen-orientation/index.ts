@@ -27,8 +27,16 @@ import { Observable } from 'rxjs/Observable';
  *
  * // allow user rotate
  * this.screenOrientation.unlock();
- * ```
  *
+ * // detect orientation changes
+ * this.screenOrientation.onChange().subscribe(
+ *    () => {
+ *        console.log("Orientation Changed");
+ *    }
+ * );
+ *
+ * ```
+ * 
  * @advanced
  *
  * Accepted orientation values:
