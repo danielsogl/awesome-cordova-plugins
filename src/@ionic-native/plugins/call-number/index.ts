@@ -4,6 +4,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * @name Call Number
  * @description
  * Call a number directly from your Cordova/Ionic application.
+ * **NOTE**: The iOS Simulator (and maybe Android Simulators) do not provide access to the phone subsystem.
  *
  * @usage
  * ```typescript
