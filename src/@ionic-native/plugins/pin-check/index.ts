@@ -27,7 +27,7 @@ import { Injectable } from '@angular/core';
 @Plugin({
   pluginName: 'PinCheck',
   plugin: 'cordova-plugin-pincheck',
-  pluginRef: 'plugins.PinCheck',
+  pluginRef: 'cordova.plugins.PinCheck',
   repo: 'https://github.com/shangyilim/cordova-plugin-pincheck',
   platforms: ['Android', 'iOS']
 })
