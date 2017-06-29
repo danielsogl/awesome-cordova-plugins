@@ -574,12 +574,11 @@ export class OneSignal extends IonicNativePlugin {
 
   /**
   * Get the current notification and permission state. Returns a OSPermissionSubscriptionState type described below.
-  * You can pass true later to opt users back into notifications.
-  *
-  * @param {boolean} enable
+  * 
+  * @returns {Promise<OSPermissionSubscriptionState>}
   */
-  @Cordova({ sync: true })
-  getPermissionSubscriptionState(): OSPermissionSubscriptionState { return; }
+  @Cordova()
+  getPermissionSubscriptionState(): Promise<OSPermissionSubscriptionState> { return; }
 
   /**
   *
