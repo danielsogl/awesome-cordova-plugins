@@ -53,7 +53,7 @@ export interface IntelSecurityDataOptions {
  *   .catch((error: any) => console.log(error));
  *
  * this.intelSecurity.storage.read({id: storageID })
- *   .then((instanceID: number) => this.intelSec.data.getData(instanceID))
+ *   .then((instanceID: number) => this.intelSecurity.data.getData(instanceID))
  *   .then((data: string) => console.log(data)) // Resolves to 'Sample Data'
  *   .catch((error: any) => console.log(error));
  *
