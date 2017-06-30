@@ -61,6 +61,10 @@ export interface AppRateCallbacks {
    * call back function. called when rate-dialog showing
    */
   onRateDialogShow?: Function;
+  /**
+   * call back function. called when user clicked on negative feedback
+   */
+  handleNegativeFeedback?: Function;
 
 }
 
