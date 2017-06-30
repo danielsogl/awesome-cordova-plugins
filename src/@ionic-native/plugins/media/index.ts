@@ -120,6 +120,8 @@ export type MediaErrorCallback = (error: MediaError) => void;
 /**
  * @name Media
  * @description
+ * This plugin provides the ability to record and play back audio files on a device.
+ *
  * Some hints if you are using iOS and recording doesn't work:
  * 1.) Try to use a absolute file path but remove beginning "file://".
  * Then it looks like: `/var/mobile/Containers/Data/Application/AF438B8B-7724-4FBB-8E69-083463224FC4/tmp/my_file.m4a`
