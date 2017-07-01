@@ -37,6 +37,12 @@ export interface EmailComposerOptions {
  *
  * @usage
  * ```typescript
+ * Add to providers section in app.module.ts
+ * import { EmailComposer } from '@ionic-native/email-composer';
+ * providers: [EmailComposer]
+ *
+ * ...
+ *
  * import { EmailComposer } from '@ionic-native/email-composer';
  *
  * constructor(private emailComposer: EmailComposer) { }
