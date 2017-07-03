@@ -1,6 +1,75 @@
 import { Plugin, IonicNativePlugin, Cordova, CordovaProperty } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
+/**
+ * @name In App Purchase 2
+ * @description
+ * In-App Purchase for Cordova on iOS, Android and Windows
+ *
+ * @usage
+ * ```typescript
+ * import { InAppPurchase2 } from '@ionic-native/in-app-purchase-2';
+ *
+ * constructor(private store: InAppPurchase2) { }
+ *
+ * ...
+ * 
+ *  * @advanced
+ * 
+ *  ```typescript
+ *    // After Platform Ready
+ *    this.store.verbosity = this.store.DEBUG;
+ *    this.store.register({
+ *      id: productId,
+ *      alias: productId,
+ *      type: this.store.NON_RENEWING_SUBSCRIPTION
+ *    });
+ *
+ *    // Register Event Handlers for the specific product
+ *   this.store.when(productId).registered( (product: IAPProduct) => {
+ *     console.log('Registered: ' + JSON.stringify(product));
+ *   });
+ *
+ *    // Updated
+ *    this.store.when(productId).updated( (product: IAPProduct) => {
+ *      console.log('Loaded' + JSON.stringify(product));
+ *    });
+ * 
+ *    // Issue with buying
+ *     this.store.when(productId).cancelled( (product) => {
+ *         alert('Purchase was Cancelled');
+ *     });
+ *      
+ *      // Track All Store Errors
+ *     this.store.error( (err) => {
+ *       alert('Store Error ' + JSON.stringify(err));
+ *     });
+ *
+ *     this.store.ready().then((status) => {
+ *       console.log(JSON.stringify(this.store.get(productId)));
+ *       console.log('Store is Ready: ' + JSON.stringify(status));
+ *       console.log('Products: ' + JSON.stringify(this.store.products));
+ *     });
+ *
+ *
+ *     // Errors
+ *     this.store.when(productId).error( (error) => {
+ *       this.loader.dismiss();        
+ *       alert('An Error Occured' + JSON.stringify(error));
+ *     });
+ *     // Refresh Starts Handlers 
+ *     console.log('Refresh Store');
+ *     this.store.refresh();
+ * 
+ *    ...
+ *    
+ *    // To Purchase
+ *    this.store.order(productId);
+ *
+ * ```
+ *
+ */
+
 export interface IAPProductOptions {
   id: string;
   alias: string;
