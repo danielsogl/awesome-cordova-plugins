@@ -58,7 +58,8 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "postchangelog": "git commit -am \"chore(): update changelog\"",
     "test": "karma start karma.conf.js --single-run",
-    "test:watch": "karma start karma.conf.js"
+    "test:watch": "karma start karma.conf.js",
+    "readmes": "gulp readmes"
   },
   "repository": {
     "type": "git",
