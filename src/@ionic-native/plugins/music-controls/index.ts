@@ -58,38 +58,53 @@ export interface MusicControlsOptions {
  *
  *  this.musicControls.subscribe().subscribe(action => {
  *
- *    switch(action) {
- *        case 'music-controls-next':
- *            // Do something
- *            break;
- *        case 'music-controls-previous':
- *            // Do something
- *            break;
- *        case 'music-controls-pause':
- *            // Do something
- *            break;
- *        case 'music-controls-play':
- *            // Do something
- *            break;
- *        case 'music-controls-destroy':
+ *    function events(action) {
+ *      const message = JSON.parse(action).message;
+ *      	switch(message) {
+ *      		case 'music-controls-next':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-previous':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-pause':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-play':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-destroy':
+ *      			// Do something
+ *      			break;
+ *
+ *          // External controls (iOS only)
+ *          case 'music-controls-toggle-play-pause' :
+ *      			// Do something
+ *      			break;
+ *          case 'music-controls-seek-to':
+ *            const seekToInSeconds = JSON.parse(action).position;
+ *            MusicControls.updateElapsed({
+ *              elapsed: seekToInSeconds,
+ *              isPlaying: true
+ *            });
  *            // Do something
  *            break;
  *
- *        // Headset events (Android only)
- *        case 'music-controls-media-button' :
- *            // Do something
- *            break;
- *        case 'music-controls-headset-unplugged':
- *            // Do something
- *            break;
- *        case 'music-controls-headset-plugged':
- *            // Do something
- *            break;
- *        default:
- *            break;
- *    }
- *
- *  });
+ *      		// Headset events (Android only)
+ *      		// All media button events are listed below
+ *      		case 'music-controls-media-button' :
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-headset-unplugged':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-headset-plugged':
+ *      			// Do something
+ *      			break;
+ *      		default:
+ *      			break;
+ *      	}
+ *      }
  *
  *  this.musicControls.listen(); // activates the observable above
  *
@@ -146,6 +161,15 @@ export class MusicControls extends IonicNativePlugin {
    */
   @Cordova()
   updateIsPlaying(isPlaying: boolean): void { }
+
+  /**
+  * Update elapsed time, optionally toggle play/pause:
+  * @param args {elapsed: string, isPlaying: boolean} 
+  */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  updateElapsed(args: object): void { }
 
   /**
    * Toggle dismissable:
