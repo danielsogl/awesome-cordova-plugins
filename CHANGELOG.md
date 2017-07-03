@@ -1,3 +1,24 @@
+<a name="3.12.2"></a>
+## [3.12.2](https://github.com/ionic-team/ionic-native/compare/v3.12.1...v3.12.2) (2017-07-03)
+
+
+### Bug Fixes
+
+* **android-fingerprint-auth:** fix return type of isAvailable ([#1697](https://github.com/ionic-team/ionic-native/issues/1697)) ([af91977](https://github.com/ionic-team/ionic-native/commit/af91977))
+* **ibeacon:** optional parameter ([#1702](https://github.com/ionic-team/ionic-native/issues/1702)) ([64ce132](https://github.com/ionic-team/ionic-native/commit/64ce132)), closes [#1701](https://github.com/ionic-team/ionic-native/issues/1701)
+* **local-notifications:** add missing priority option ([e40247c](https://github.com/ionic-team/ionic-native/commit/e40247c)), closes [#1683](https://github.com/ionic-team/ionic-native/issues/1683)
+* **mobile-accessibility:** fix plugin reference ([03ac735](https://github.com/ionic-team/ionic-native/commit/03ac735)), closes [#1666](https://github.com/ionic-team/ionic-native/issues/1666)
+* **onesignal:** fix getPermissionSubscriptionState return type ([#1742](https://github.com/ionic-team/ionic-native/issues/1742)) ([3c125bb](https://github.com/ionic-team/ionic-native/commit/3c125bb))
+
+
+### Features
+
+* **music-controls:** add event for ios control center seek and function to update ios elapsed time ([#1727](https://github.com/ionic-team/ionic-native/issues/1727)) ([593607e](https://github.com/ionic-team/ionic-native/commit/593607e))
+* **one-signal:** add getPermissionSubscriptionState ([#1678](https://github.com/ionic-team/ionic-native/issues/1678)) ([e9283a9](https://github.com/ionic-team/ionic-native/commit/e9283a9))
+* **sqlite:** support pre-filled databases ([#1687](https://github.com/ionic-team/ionic-native/issues/1687)) ([b52371b](https://github.com/ionic-team/ionic-native/commit/b52371b))
+
+
+
 <a name="3.12.1"></a>
 ## [3.12.1](https://github.com/ionic-team/ionic-native/compare/v3.12.0...v3.12.1) (2017-06-03)
 
