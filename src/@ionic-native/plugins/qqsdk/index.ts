@@ -166,7 +166,6 @@ export class QQSDK extends IonicNativePlugin {
 
   /**
    * QQ Share Scene
-   * @type {{QQ: number; QQZone: number; Favorite: number}}
    */
   Scene = {
     QQ: 0,
@@ -175,7 +174,6 @@ export class QQSDK extends IonicNativePlugin {
   };
   /**
    *  client type:  QQ application or TIM application
-   * @type {{QQ: number; TIM: number}}
    */
   ClientType = {
     QQ: 0,
