@@ -163,4 +163,10 @@ export class AppRate extends IonicNativePlugin {
   @Cordova()
   promptForRating(immediately: boolean): void { };
 
+  /**
+   * Immediately send the user to the app store rating page
+   */
+  @Cordova()
+  navigateToAppStore(): void { };
+
 }
