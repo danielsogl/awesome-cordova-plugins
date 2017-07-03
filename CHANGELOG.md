@@ -1,3 +1,14 @@
+<a name="3.13.0"></a>
+# [3.13.0](https://github.com/ionic-team/ionic-native/compare/v3.12.2...v3.13.0) (2017-07-03)
+
+
+### Features
+
+* **pin-check:** add pin check plugin ([#1734](https://github.com/ionic-team/ionic-native/issues/1734)) ([b8ac7bf](https://github.com/ionic-team/ionic-native/commit/b8ac7bf))
+* **qqsdk:** add qqsdk plugin ([#1689](https://github.com/ionic-team/ionic-native/issues/1689)) ([b56297e](https://github.com/ionic-team/ionic-native/commit/b56297e))
+
+
+
 <a name="3.12.2"></a>
 ## [3.12.2](https://github.com/ionic-team/ionic-native/compare/v3.12.1...v3.12.2) (2017-07-03)
 
