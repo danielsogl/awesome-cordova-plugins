@@ -40,16 +40,21 @@ export interface DynamicLinksOptions {
  * constructor(private firebaseDynamicLinks: FirebaseDynamicLinks) { }
  *
  * ...
- *
+ * // The deepLink and callToActionText properties are optional
  * const options: DynamicLinksOptions = {
  *   title: 'My Title';
  *   message: 'My message';
+ *   deepLink: 'http://example.com/';
+ *   callToActionText: 'Message on button';
  * }
  *
  * this.firebaseDynamicLinks.sendInvitation(options)
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
+ * this.firebaseDynamicLinks.onDynamicLink()
+ *   .then((res: any) => console.log(res)) //Handle the logic here after opening the app with the Dynamic link
+ *   .catch((error:any) => console.log(error));
  * ```
  *
  * @interfaces
