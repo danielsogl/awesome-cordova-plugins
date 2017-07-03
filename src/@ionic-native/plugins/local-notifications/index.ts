@@ -89,6 +89,11 @@ export interface ILocalNotification {
    * Default: FFFFFF
    */
   led?: string;
+
+  /**
+  * Notification priority.
+  */
+  priority?: number;
 }
 
 /**
