@@ -146,7 +146,7 @@ export interface PolygonOptions {
 }
 
 export interface TileOverlayOptions {
-  getTile?: Function;
+  getTile: (x: number, y: number, zoom: number) => string;
   visible?: boolean;
   zIndex?: number;
   tileSize?: number;
