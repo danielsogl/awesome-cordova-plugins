@@ -10,24 +10,27 @@ declare const plugin: any;
  * You can listen to these events where appropriate
  */
 export const GoogleMapsEvent = {
-  MAP_CLICK: 'click',
-  MAP_LONG_CLICK: 'long_click',
-  MY_LOCATION_CHANGE: 'my_location_change',
+  MAP_READY: 'map_ready',
+  MAP_CLICK: 'map_click',
+  MAP_LONG_CLICK: 'map_long_click',
   MY_LOCATION_BUTTON_CLICK: 'my_location_button_click',
   INDOOR_BUILDING_FOCUSED: 'indoor_building_focused',
   INDOOR_LEVEL_ACTIVATED: 'indoor_level_activated',
-  CAMERA_CHANGE: 'camera_change',
-  CAMERA_IDLE: 'camera_idle',
-  MAP_READY: 'map_ready',
-  MAP_LOADED: 'map_loaded',
-  MAP_WILL_MOVE: 'will_move',
-  MAP_CLOSE: 'map_close',
-  MARKER_CLICK: 'click',
-  OVERLAY_CLICK: 'overlay_click',
+  CAMERA_MOVE_START: 'camera_move_start',
+  CAMERA_MOVE: 'camera_move',
+  CAMERA_MOVE_END: 'camera_move_end',
+  POLYGON_CLICK: 'polygon_click',
+  POLYLINE_CLICK: 'polyline_click',
+  CIRCLE_CLICK: 'circle_click',
+  GROUND_OVERLAY_CLICK: 'ground_overlay_click',
   INFO_CLICK: 'info_click',
-  MARKER_DRAG: 'drag',
-  MARKER_DRAG_START: 'drag_start',
-  MARKER_DRAG_END: 'drag_end'
+  INFO_LONG_CLICK: 'info_long_click',
+  INFO_CLOSE: 'info_close',
+  INFO_OPEN: 'info_open',
+  MARKER_CLICK: 'marker_click',
+  MARKER_DRAG: 'marker_drag',
+  MARKER_DRAG_START: 'marker_drag_start',
+  MARKER_DRAG_END: 'marker_drag_end'
 };
 
 /**
@@ -145,6 +148,13 @@ export class GoogleMap {
   getCameraPosition(): Promise<CameraPosition> { return; }
 
   /**
+   *
+   * @return {Promise<CameraPosition>}
+   */
+  @CordovaInstance()
+  getCameraTarget(): Promise<CameraPosition> { return; }
+
+  /**
    * Get the location of the user.
    *
    * @returns {Promise<MyLocation>}
@@ -170,16 +180,16 @@ export class GoogleMap {
   getLicenseInfo(): Promise<string> { return; }
 
   @CordovaInstance({ sync: true })
-  setCenter(latLng: LatLng): void { }
+  setCameraTarget(latLng: LatLng): void { }
 
   @CordovaInstance({ sync: true })
-  setZoom(zoomLevel: number): void { }
+  setCameraZoom(zoomLevel: number): void { }
 
   @CordovaInstance({ sync: true })
   setMapTypeId(mapTypeId: string): void { }
 
   @CordovaInstance({ sync: true })
-  setTilt(tiltLevel: number): void { }
+  setCameraTilt(tiltLevel: number): void { }
 
   /**
    * @returns {Promise<any>}
@@ -596,16 +606,6 @@ export interface MarkerOptions {
    * Set to true to disable auto panning when the marker is clicked.
    */
   disableAutoPan?: boolean;
-
-  /**
-   * Function to be invoked when the user clicks on the marker
-   */
-  markerClick?: Function;
-
-  /**
-   * Function to be invoked when the user clicks on the info box
-   */
-  infoClick?: Function;
 }
 
 /**
