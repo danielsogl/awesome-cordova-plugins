@@ -283,6 +283,73 @@ export class BaseClass {
 /**
  * @hidden
  */
+export class BaseArrayClass {
+  /**
+   * Removes all elements from the array.
+   */
+  empty() {}
+
+  /**
+   * Iterate over each element, calling the provided callback.
+   * @param fn {Function}
+   * @param callback {Function}
+   */
+  forEach(fn: Function, callback?: Function) {}
+
+  /**
+   * Iterate over each element, calling the provided callback.
+   * Then you can get the results of each callback.
+   * @param fn {Function}
+   * @param callback {Function}
+   */
+  map(fn: Function, callback?: Function) {}
+
+  /**
+   * Returns a reference to the underlying Array.
+   */
+  getArray() {}
+
+  /**
+   * Returns the element at the specified index.
+   * @param index {number}
+   */
+  getAt(index: number) {}
+
+  /**
+   * Inserts an element at the specified index.
+   * @param index {number}
+   * @param element {object}
+   */
+  insertAt(index: number, element: any) {}
+
+  /**
+   * Removes the last element of the array and returns that element.
+   */
+  pop() {}
+
+  /**
+   * Adds one element to the end of the array and returns the new length of the array.
+   * @param element {object}
+   */
+  push(element: any) {}
+
+  /**
+   * Removes an element from the specified index.
+   * @param index {number}
+   */
+  remoteAt(index: number) {}
+
+  /**
+   * Sets an element at the specified index.
+   * @param index {number}
+   * @param element {object}
+   */
+  setAt(index: number, element: any) {}
+}
+
+/**
+ * @hidden
+ */
 @Plugin({
   pluginName: 'GoogleMaps',
   plugin: 'cordova-plugin-googlemaps'
