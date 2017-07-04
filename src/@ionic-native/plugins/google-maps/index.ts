@@ -7,6 +7,162 @@ declare const plugin: any;
 
 /**
  * @hidden
+ */
+export interface CircleOptions {
+  center?: LatLng;
+  radius?: number;
+  strokeColor?: string;
+  strokeWidth?: number;
+  fillColor?: string;
+  visible?: boolean;
+  zIndex?: number;
+}
+
+export interface AnimateCameraOptions {
+  target?: LatLng | Array<Marker> | LatLngBounds;
+  tilt?: number;
+  zoom?: number;
+  bearing?: number;
+  duration?: number;
+}
+
+export interface CameraPosition {
+  target?: LatLng | LatLngBounds | LatLng[];
+  zoom?: number;
+  tilt?: number;
+  bearing?: number;
+}
+
+export interface MyLocation {
+  latLng?: LatLng;
+  speed?: number;
+  time?: string;
+  bearing?: number;
+}
+
+export interface MyLocationOptions {
+  enableHighAccuracy?: boolean;
+}
+
+export interface VisibleRegion {
+  northeast?: any;
+  southwest?: any;
+}
+
+export interface MarkerOptions {
+  /**
+   * The icon image url or properties. Also you can specify HTML Color values. Alternatively you can specify the image as Base64
+   */
+  icon?: any;
+
+  /**
+   * The content of the infoWindow.
+   */
+  title?: string;
+
+  /**
+   * The snippet of the infoWindow.
+   */
+  snippet?: string;
+
+  /**
+   * The position of the marker.
+   */
+  position?: LatLng;
+
+  /**
+   * 	Specify the anchor of the InfoWindow
+   */
+  infoWindowAnchor?: number[];
+
+  /**
+   * Set true if you want to enable to drag the marker. (Default: false) Important! Drag starts after long pressed on the marker.
+   */
+  draggable?: boolean;
+
+  /**
+   * 	Set true if you want to use a flat marker. (Default: false)
+   */
+  flat?: boolean;
+
+  /**
+   * 	Set rotation angle. (Default: 0)
+   */
+  rotation?: number;
+
+  /**
+   * Set false if you want to hide. (Default: true)
+   */
+  visible?: boolean;
+
+  /**
+   * Specify the options for title.
+   */
+  styles?: any;
+
+  /**
+   * Which animation to play when marker is added to a map.
+   */
+  animation?: string;
+
+  /**
+   * 	iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
+   */
+  zIndex?: number;
+
+  /**
+   * Set to true to disable auto panning when the marker is clicked.
+   */
+  disableAutoPan?: boolean;
+}
+
+export interface MarkerIcon {
+  url?: string;
+  size?: {
+    width?: number;
+    height?: number;
+  };
+}
+
+export interface PolylineOptions {
+  points?: Array<LatLng>;
+  visible?: boolean;
+  geodesic?: boolean;
+  color?: string;
+  width?: number;
+  zIndex?: number;
+}
+
+export interface PolygonOptions {
+  points?: Array<LatLng>;
+  geodesic?: boolean;
+  strokeColor?: string;
+  strokeWidth?: number;
+  fillColor?: string;
+  visible?: boolean;
+  zIndex?: number;
+  addHole?: Array<LatLng>;
+}
+
+export interface TileOverlayOptions {
+  getTile?: Function;
+  visible?: boolean;
+  zIndex?: number;
+  tileSize?: number;
+  opacity?: number;
+}
+
+export interface GroundOverlayOptions {
+  url?: string;
+  bounds?: Array<LatLng>;
+  visible?: boolean;
+  opacity?: number;
+  bearing?: number;
+  zIndex?: number;
+}
+
+/**
+ * @hidden
  * You can listen to these events where appropriate
  */
 export const GoogleMapsEvent = {
@@ -56,21 +212,8 @@ export const GoogleMapsMapTypeId = {
 /**
  * @hidden
  */
-@Plugin({
-  pluginName: 'GoogleMaps',
-  plugin: 'cordova-plugin-googlemaps'
-})
-export class GoogleMap {
-  _objectInstance: any;
-
-  constructor(element: string | HTMLElement, options?: any) {
-    if (checkAvailability('plugin.google.maps.Map', null, 'GoogleMaps') === true) {
-      if (typeof element === 'string') {
-        element = document.getElementById(<string>element);
-      }
-      this._objectInstance = plugin.google.maps.Map.getMap(element, options);
-    }
-  }
+export class BaseClass {
+  protected _objectInstance: any;
 
   /**
    * Adds an event listener.
@@ -132,6 +275,29 @@ export class GoogleMap {
    */
   @CordovaInstance({ sync: true })
   empty(): void { }
+
+  @CordovaInstance({ sync: true })
+  trigger(eventName: string, ...parameters: any[]): void {}
+}
+
+/**
+ * @hidden
+ */
+@Plugin({
+  pluginName: 'GoogleMaps',
+  plugin: 'cordova-plugin-googlemaps'
+})
+export class GoogleMap extends BaseClass {
+
+  constructor(element: string | HTMLElement, options?: any) {
+    super();
+    if (checkAvailability('plugin.google.maps.Map', null, 'GoogleMaps') === true) {
+      if (typeof element === 'string') {
+        element = document.getElementById(<string>element);
+      }
+      this._objectInstance = plugin.google.maps.Map.getMap(element, options);
+    }
+  }
 
   @CordovaInstance({ sync: true })
   setDebuggable(isDebuggable: boolean): void { }
@@ -492,214 +658,12 @@ export class GoogleMaps extends IonicNativePlugin {
 /**
  * @hidden
  */
-export interface AnimateCameraOptions {
-  target?: LatLng | Array<Marker> | LatLngBounds;
-  tilt?: number;
-  zoom?: number;
-  bearing?: number;
-  duration?: number;
-}
+export class Marker extends BaseClass {
 
-/**
- * @hidden
- */
-export interface CameraPosition {
-  target?: LatLng | LatLngBounds | LatLng[];
-  zoom?: number;
-  tilt?: number;
-  bearing?: number;
-}
-
-/**
- * @hidden
- */
-export interface MyLocation {
-  latLng?: LatLng;
-  speed?: number;
-  time?: string;
-  bearing?: number;
-}
-
-/**
- * @hidden
- */
-export interface MyLocationOptions {
-  enableHighAccuracy?: boolean;
-}
-
-/**
- * @hidden
- */
-export interface VisibleRegion {
-  northeast?: any;
-  southwest?: any;
-}
-
-/**
- * @hidden
- */
-export interface MarkerOptions {
-  /**
-   * The icon image url or properties. Also you can specify HTML Color values. Alternatively you can specify the image as Base64
-   */
-  icon?: any;
-
-  /**
-   * The content of the infoWindow.
-   */
-  title?: string;
-
-  /**
-   * The snippet of the infoWindow.
-   */
-  snippet?: string;
-
-  /**
-   * The position of the marker.
-   */
-  position?: LatLng;
-
-  /**
-   * 	Specify the anchor of the InfoWindow
-   */
-  infoWindowAnchor?: number[];
-
-  /**
-   * Set true if you want to enable to drag the marker. (Default: false) Important! Drag starts after long pressed on the marker.
-   */
-  draggable?: boolean;
-
-  /**
-   * 	Set true if you want to use a flat marker. (Default: false)
-   */
-  flat?: boolean;
-
-  /**
-   * 	Set rotation angle. (Default: 0)
-   */
-  rotation?: number;
-
-  /**
-   * Set false if you want to hide. (Default: true)
-   */
-  visible?: boolean;
-
-  /**
-   * Specify the options for title.
-   */
-  styles?: any;
-
-  /**
-   * Which animation to play when marker is added to a map.
-   */
-  animation?: string;
-
-  /**
-   * 	iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
-   */
-  zIndex?: number;
-
-  /**
-   * Set to true to disable auto panning when the marker is clicked.
-   */
-  disableAutoPan?: boolean;
-}
-
-/**
- * @hidden
- */
-export interface MarkerIcon {
-  url?: string;
-  size?: {
-    width?: number;
-    height?: number;
-  };
-}
-
-/**
- * @hidden
- */
-export class Marker {
-
-  constructor(private _objectInstance: any) { }
-
-  /**
-   * Adds an event listener.
-   *
-   * @returns {Observable<any>}
-   */
-  addEventListener(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
+  constructor(_objectInstance: any) {
+    super();
+    this._objectInstance = _objectInstance;
   }
-
-  /**
-   * Adds an event listener that works once.
-   *
-   * @returns {Promise<any>}
-   */
-  addListenerOnce(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
-    );
-  }
-
-  /**
-   * Gets a value
-   * @param key
-   */
-  @CordovaInstance({ sync: true })
-  get(key: string): any { return; }
-
-  /**
-   * Sets a value
-   * @param key
-   * @param value
-   */
-  @CordovaInstance({ sync: true })
-  set(key: string, value: any): void { }
-
-  /**
-   * Listen to a map event.
-   *
-   * @returns {Observable<any>}
-   */
-  on(eventName: string): Observable<any> {
-    if (!this._objectInstance) {
-      return new Observable((observer) => {
-        observer.error({ error: 'plugin_not_installed' });
-      });
-    }
-
-    return new Observable(
-      (observer) => {
-        this._objectInstance.on(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.off(event);
-      }
-    );
-  }
-
-  /**
-   * Listen to a map event only once.
-   *
-   * @returns {Promise<any>}
-   */
-  one(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.one(eventName, resolve)
-    );
-  }
-
-  /**
-   * Clears all stored values
-   */
-  @CordovaInstance({ sync: true })
-  empty(): void { }
 
   /**
    * Return true if the marker is visible
@@ -881,101 +845,12 @@ export class Marker {
 /**
  * @hidden
  */
-export interface CircleOptions {
-  center?: LatLng;
-  radius?: number;
-  strokeColor?: string;
-  strokeWidth?: number;
-  fillColor?: string;
-  visible?: boolean;
-  zIndex?: number;
-}
+export class Circle extends BaseClass {
 
-/**
- * @hidden
- */
-
-export class Circle {
-
-  constructor(private _objectInstance: any) { }
-
-  /**
-   * Adds an event listener.
-   *
-   * @returns {Observable<any>}
-   */
-  addEventListener(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
+  constructor(_objectInstance: any) {
+    super();
+    this._objectInstance = _objectInstance;
   }
-
-  /**
-   * Adds an event listener that works once.
-   *
-   * @returns {Promise<any>}
-   */
-  addListenerOnce(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
-    );
-  }
-
-  /**
-   * Gets a value
-   * @param key
-   */
-  @CordovaInstance({ sync: true })
-  get(key: string): any { return; }
-
-  /**
-   * Sets a value
-   * @param key
-   * @param value
-   */
-  @CordovaInstance({ sync: true })
-  set(key: string, value: any): void { }
-
-  /**
-   * Listen to a map event.
-   *
-   * @returns {Observable<any>}
-   */
-  on(eventName: string): Observable<any> {
-    if (!this._objectInstance) {
-      return new Observable((observer) => {
-        observer.error({ error: 'plugin_not_installed' });
-      });
-    }
-
-    return new Observable(
-      (observer) => {
-        this._objectInstance.on(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.off(event);
-      }
-    );
-  }
-
-  /**
-   * Listen to a map event only once.
-   *
-   * @returns {Promise<any>}
-   */
-  one(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.one(eventName, resolve)
-    );
-  }
-
-  /**
-   * Clears all stored values
-   */
-  @CordovaInstance({ sync: true })
-  empty(): void { }
 
   @CordovaInstance({ sync: true })
   getCenter(): LatLng { return; }
@@ -1023,99 +898,11 @@ export class Circle {
 /**
  * @hidden
  */
-export interface PolylineOptions {
-  points?: Array<LatLng>;
-  visible?: boolean;
-  geodesic?: boolean;
-  color?: string;
-  width?: number;
-  zIndex?: number;
-}
-
-/**
- * @hidden
- */
-
-export class Polyline {
-  constructor(private _objectInstance: any) { }
-
-  /**
-   * Adds an event listener.
-   *
-   * @returns {Observable<any>}
-   */
-  addEventListener(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
+export class Polyline extends BaseClass {
+  constructor(_objectInstance: any) {
+    super();
+    this._objectInstance = _objectInstance;
   }
-
-  /**
-   * Adds an event listener that works once.
-   *
-   * @returns {Promise<any>}
-   */
-  addListenerOnce(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
-    );
-  }
-
-  /**
-   * Gets a value
-   * @param key
-   */
-  @CordovaInstance({ sync: true })
-  get(key: string): any { return; }
-
-  /**
-   * Sets a value
-   * @param key
-   * @param value
-   */
-  @CordovaInstance({ sync: true })
-  set(key: string, value: any): void { }
-
-  /**
-   * Listen to a map event.
-   *
-   * @returns {Observable<any>}
-   */
-  on(eventName: string): Observable<any> {
-    if (!this._objectInstance) {
-      return new Observable((observer) => {
-        observer.error({ error: 'plugin_not_installed' });
-      });
-    }
-
-    return new Observable(
-      (observer) => {
-        this._objectInstance.on(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.off(event);
-      }
-    );
-  }
-
-  /**
-   * Listen to a map event only once.
-   *
-   * @returns {Promise<any>}
-   */
-  one(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.one(eventName, resolve)
-    );
-  }
-
-  /**
-   * Clears all stored values
-   */
-  @CordovaInstance({ sync: true })
-  empty(): void { }
 
   @CordovaInstance({ sync: true })
   getPoints(): Array<LatLng> { return; }
@@ -1161,102 +948,12 @@ export class Polyline {
 /**
  * @hidden
  */
-export interface PolygonOptions {
-  points?: Array<LatLng>;
-  geodesic?: boolean;
-  strokeColor?: string;
-  strokeWidth?: number;
-  fillColor?: string;
-  visible?: boolean;
-  zIndex?: number;
-  addHole?: Array<LatLng>;
-}
+export class Polygon extends BaseClass {
 
-/**
- * @hidden
- */
-
-export class Polygon {
-
-  constructor(private _objectInstance: any) { }
-
-  /**
-   * Adds an event listener.
-   *
-   * @returns {Observable<any>}
-   */
-  addEventListener(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
+  constructor(_objectInstance: any) {
+    super();
+    this._objectInstance = _objectInstance;
   }
-
-  /**
-   * Adds an event listener that works once.
-   *
-   * @returns {Promise<any>}
-   */
-  addListenerOnce(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
-    );
-  }
-
-  /**
-   * Gets a value
-   * @param key
-   */
-  @CordovaInstance({ sync: true })
-  get(key: string): any { return; }
-
-  /**
-   * Sets a value
-   * @param key
-   * @param value
-   */
-  @CordovaInstance({ sync: true })
-  set(key: string, value: any): void { }
-
-  /**
-   * Listen to a map event.
-   *
-   * @returns {Observable<any>}
-   */
-  on(eventName: string): Observable<any> {
-    if (!this._objectInstance) {
-      return new Observable((observer) => {
-        observer.error({ error: 'plugin_not_installed' });
-      });
-    }
-
-    return new Observable(
-      (observer) => {
-        this._objectInstance.on(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.off(event);
-      }
-    );
-  }
-
-  /**
-   * Listen to a map event only once.
-   *
-   * @returns {Promise<any>}
-   */
-  one(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.one(eventName, resolve)
-    );
-  }
-
-  /**
-   * Clears all stored values
-   */
-  @CordovaInstance({ sync: true })
-  empty(): void { }
 
   @CordovaInstance({ sync: true })
   getPoints(): Array<LatLng> { return; }
@@ -1307,98 +1004,12 @@ export class Polygon {
 /**
  * @hidden
  */
-export interface TileOverlayOptions {
-  getTile?: Function;
-  visible?: boolean;
-  zIndex?: number;
-  tileSize?: number;
-  opacity?: number;
-}
+export class TileOverlay extends BaseClass {
 
-/**
- * @hidden
- */
-export class TileOverlay {
-
-  constructor(private _objectInstance: any) { }
-
-  /**
-   * Adds an event listener.
-   *
-   * @returns {Observable<any>}
-   */
-  addEventListener(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
+  constructor(_objectInstance: any) {
+    super();
+    this._objectInstance = _objectInstance;
   }
-
-  /**
-   * Adds an event listener that works once.
-   *
-   * @returns {Promise<any>}
-   */
-  addListenerOnce(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
-    );
-  }
-
-  /**
-   * Gets a value
-   * @param key
-   */
-  @CordovaInstance({ sync: true })
-  get(key: string): any { return; }
-
-  /**
-   * Sets a value
-   * @param key
-   * @param value
-   */
-  @CordovaInstance({ sync: true })
-  set(key: string, value: any): void { }
-
-  /**
-   * Listen to a map event.
-   *
-   * @returns {Observable<any>}
-   */
-  on(eventName: string): Observable<any> {
-    if (!this._objectInstance) {
-      return new Observable((observer) => {
-        observer.error({ error: 'plugin_not_installed' });
-      });
-    }
-
-    return new Observable(
-      (observer) => {
-        this._objectInstance.on(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.off(event);
-      }
-    );
-  }
-
-  /**
-   * Listen to a map event only once.
-   *
-   * @returns {Promise<any>}
-   */
-  one(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.one(eventName, resolve)
-    );
-  }
-
-  /**
-   * Clears all stored values
-   */
-  @CordovaInstance({ sync: true })
-  empty(): void { }
 
   @CordovaInstance({ sync: true })
   getVisible(): boolean { return; }
@@ -1435,99 +1046,12 @@ export class TileOverlay {
 /**
  * @hidden
  */
-export interface GroundOverlayOptions {
-  url?: string;
-  bounds?: Array<LatLng>;
-  visible?: boolean;
-  opacity?: number;
-  bearing?: number;
-  zIndex?: number;
-}
+export class GroundOverlay extends BaseClass {
 
-/**
- * @hidden
- */
-export class GroundOverlay {
-
-  constructor(private _objectInstance: any) { }
-
-  /**
-   * Adds an event listener.
-   *
-   * @returns {Observable<any>}
-   */
-  addEventListener(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
+  constructor(_objectInstance: any) {
+    super();
+    this._objectInstance = _objectInstance;
   }
-
-  /**
-   * Adds an event listener that works once.
-   *
-   * @returns {Promise<any>}
-   */
-  addListenerOnce(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      (resolve: Function) => this._objectInstance.addListenerOnce(eventName, resolve)
-    );
-  }
-
-  /**
-   * Gets a value
-   * @param key
-   */
-  @CordovaInstance({ sync: true })
-  get(key: string): any { return; }
-
-  /**
-   * Sets a value
-   * @param key
-   * @param value
-   */
-  @CordovaInstance({ sync: true })
-  set(key: string, value: any): void { }
-
-  /**
-   * Listen to a map event.
-   *
-   * @returns {Observable<any>}
-   */
-  on(eventName: string): Observable<any> {
-    if (!this._objectInstance) {
-      return new Observable((observer) => {
-        observer.error({ error: 'plugin_not_installed' });
-      });
-    }
-
-    return new Observable(
-      (observer) => {
-        this._objectInstance.on(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.off(event);
-      }
-    );
-  }
-
-  /**
-   * Listen to a map event only once.
-   *
-   * @returns {Promise<any>}
-   */
-  one(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.one(eventName, resolve)
-    );
-  }
-
-  /**
-   * Clears all stored values
-   */
-  @CordovaInstance({ sync: true })
-  empty(): void { }
 
   @CordovaInstance({ sync: true })
   setBearing(bearing: number): void { }
