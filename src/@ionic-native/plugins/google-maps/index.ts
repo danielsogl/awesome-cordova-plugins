@@ -399,7 +399,6 @@ export class BaseArrayClass extends IonicNativePlugin {
   plugin: 'cordova-plugin-googlemaps'
 })
 export class GoogleMap extends BaseClass {
-
   constructor(element: string | HTMLElement, options?: any) {
     super();
     if (checkAvailability(GoogleMaps.getPluginRef(), null, GoogleMaps.getPluginName()) === true) {
@@ -410,83 +409,244 @@ export class GoogleMap extends BaseClass {
     }
   }
 
+  /**
+   * Changes the map div
+   * @param domNode
+   */
   @CordovaInstance({ sync: true })
-  setDebuggable(isDebuggable: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  setClickable(isClickable: boolean): void { }
+  setDiv(domNode: HTMLElement): void { }
 
   /**
-   * Get the position of the camera.
-   *
-   * @returns {Promise<CameraPosition>}
+   * Changes the map type id
+   * @param mapTypeId {string}
    */
-  @CordovaInstance()
-  getCameraPosition(): Promise<CameraPosition> { return; }
-
-  /**
-   *
-   * @return {Promise<CameraPosition>}
-   */
-  @CordovaInstance()
-  getCameraTarget(): Promise<CameraPosition> { return; }
-
-  /**
-   * Get the location of the user.
-   *
-   * @returns {Promise<MyLocation>}
-   */
-  @CordovaInstance()
-  getMyLocation(options?: MyLocationOptions): Promise<MyLocation> { return; }
-
-  /**
-   * Get the visible region.
-   *
-   * @returns {Promise<VisibleRegion>}
-   */
-  @CordovaInstance()
-  getVisibleRegion(): Promise<VisibleRegion> { return; }
-
-  @CordovaInstance({ sync: true })
-  setCameraTarget(latLng: LatLng): void { }
-
-  @CordovaInstance({ sync: true })
-  setCameraZoom(zoomLevel: number): void { }
-
   @CordovaInstance({ sync: true })
   setMapTypeId(mapTypeId: string): void { }
 
-  @CordovaInstance({ sync: true })
-  setCameraTilt(tiltLevel: number): void { }
-
   /**
+   * Moves the camera with animation
    * @returns {Promise<any>}
    */
   @CordovaInstance()
   animateCamera(animateCameraOptions: AnimateCameraOptions): Promise<any> { return; }
 
   /**
+   * Zooming in the camera with animation
+   */
+  @CordovaInstance()
+  animateCameraZoomIn(): void {}
+
+  /**
+   * Zooming out the camera with animation
+   */
+  @CordovaInstance()
+  animateCameraZoomOut(): void {}
+
+  /**
+   * Moves the camera without animation
    * @returns {Promise<any>}
    */
   @CordovaInstance()
   moveCamera(cameraPosition: CameraPosition): Promise<any> { return; }
 
-  @CordovaInstance({ sync: true })
-  setMyLocationEnabled(enabled: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  setIndoorEnabled(enabled: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  setTrafficEnabled(enabled: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  setCompassEnabled(enabled: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  setAllGesturesEnabled(enabled: boolean): void { }
+  /**
+   * Zooming in the camera without animation
+   */
+  @CordovaInstance()
+  moveCameraZoomIn(): void {}
 
   /**
+   * Zooming out the camera without animation
+   */
+  @CordovaInstance()
+  moveCameraZoomOut(): void {}
+
+  /**
+   * Get the position of the camera.
+   * @returns {Promise<CameraPosition>}
+   */
+  @CordovaInstance()
+  getCameraPosition(): Promise<CameraPosition> { return; }
+
+  /**
+   * Get the current camera target position
+   * @return {Promise<CameraPosition>}
+   */
+  @CordovaInstance()
+  getCameraTarget(): Promise<CameraPosition> { return; }
+
+  /**
+   * Get the current camera zoom level
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  getCameraZoom(): number { return; }
+
+  /**
+   * Get the current camera bearing
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  getCameraBearing(): number { return; }
+
+  /**
+   * Get the current camera tilt (view angle)
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  getCameraTilt(): number { return; }
+
+  /**
+   * Set the center position of the camera view
+   * @param latLng {LatLng}
+   */
+  @CordovaInstance({ sync: true })
+  setCameraTarget(latLng: LatLng): void { }
+
+  /**
+   * Set zoom level of the camera
+   * @param zoomLevel {number} Zoom level
+   */
+  @CordovaInstance({ sync: true })
+  setCameraZoom(zoomLevel: number): void {}
+
+  /**
+   * Set the camera view angle
+   * @param tiltLevel {number} Tilt level
+   */
+  @CordovaInstance({ sync: true })
+  setCameraTilt(tiltLevel: number): void {}
+
+  /**
+   * Set camera bearing
+   * @param bearing {any}
+   */
+  @CordovaInstance({ sync: true })
+  setCameraBearing(bearing: any): void {}
+
+  /**
+   * Change the center of the map by the given distance in pixels
+   * @param x {any}
+   * @param y {any}
+   */
+  @CordovaInstance({ sync: true })
+  panBy(x: string | number, y: string | number): void { }
+
+  /**
+   * Get the current visible region (sw and ne)
+   * @returns {Promise<VisibleRegion>}
+   */
+  @CordovaInstance()
+  getVisibleRegion(): Promise<VisibleRegion> { return; }
+
+  /**
+   * Get the current device location
+   * @returns {Promise<MyLocation>}
+   */
+  @CordovaInstance()
+  getMyLocation(options?: MyLocationOptions): Promise<MyLocation> { return; }
+
+  /**
+   * Set false to ignore all clicks on the map
+   * @param isClickable {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setClickable(isClickable: boolean): void {}
+
+  /**
+   * Destroy a map completely
+   */
+  @CordovaInstance({ sync: true })
+  remove(): void {}
+
+  /**
+   * Remove all overlays, such as marker
+   */
+  @CordovaInstance({ sync: true })
+  clear(): void {}
+
+  /**
+   * Convert the unit from LatLng to the pixels from the left/top of the map div
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance()
+  fromLatLngToPoint(latLng: LatLng): Promise<any> { return; }
+
+  /**
+   * Convert the unit from the pixels from the left/top to the LatLng
+   * @returns {Promise<LatLng>}
+   */
+  @CordovaInstance()
+  fromPointToLatLng(point: any): Promise<LatLng> { return; }
+
+  /**
+   * Set true if you want to show the MyLocation button
+   * @param enabled {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setMyLocationEnabled(enabled: boolean): void {}
+
+  /**
+   * Get the currently focused building
+   * @return {Promise<any>}
+   */
+  @CordovaInstance()
+  getFocusedBuilding(): Promise<any> { return; }
+
+  /**
+   * Set true if you want to show the indoor map
+   * @param enabled {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setIndoorEnabled(enabled: boolean): void {}
+
+  /**
+   * Set true if you want to show the traffic layer
+   * @param enabled {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setTrafficEnabled(enabled: boolean): void {}
+
+  /**
+   * Set true if you want to show the compass button
+   * @param enabled {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setCompassEnabled(enabled: boolean): void {}
+
+  /**
+   * Sets the preference for whether all gestures should be enabled or disabled
+   * @param enabled {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setAllGesturesEnabled(enabled: boolean): void {}
+
+  /**
+   * Set visiblity of the map
+   * @param visible {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setVisible(visible: boolean): void {}
+
+  /**
+   * Adjust the map padding
+   * @param top {number}
+   * @param right {number}
+   * @param left {number}
+   * @param bottom {number}
+   */
+  @CordovaInstance({ sync: true })
+  setPadding(top?: number, right?: number, bottom?: number, left?: number): void { }
+
+  /**
+   * Set options
+   * @param options
+   */
+  @CordovaInstance({ sync: true })
+  setOptions(options: any): void {}
+
+  /**
+   * Adds a marker
    * @returns {Promise<Marker | any>}
    */
   @InstanceCheck()
@@ -503,6 +663,7 @@ export class GoogleMap extends BaseClass {
   }
 
   /**
+   * Adds a circle
    * @returns {Promise<Circle | any>}
    */
   @InstanceCheck()
@@ -519,6 +680,7 @@ export class GoogleMap extends BaseClass {
   }
 
   /**
+   * Adds a polygon
    * @returns {Promise<Polygon | any>}
    */
   @InstanceCheck()
@@ -535,6 +697,7 @@ export class GoogleMap extends BaseClass {
   }
 
   /**
+   *
    * @returns {Promise<Polyline | any>}
    */
   @InstanceCheck()
@@ -582,6 +745,19 @@ export class GoogleMap extends BaseClass {
     });
   }
 
+  /**
+   * Refreshes layout.
+   * You can execute it, but you don't need to do that. The plugin does this automatically.
+   */
+  @CordovaInstance({ sync: true })
+  refreshLayout(): void {}
+
+  /**
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance()
+  toDataURL(): Promise<any> { return; }
+
   // /**
   //  * @returns {Promise<KmlOverlay | any>}
   //  */
@@ -597,57 +773,6 @@ export class GoogleMap extends BaseClass {
   //     });
   //   });
   // }
-
-  @CordovaInstance({ sync: true })
-  setDiv(domNode: HTMLElement): void { }
-
-  @CordovaInstance({ sync: true })
-  setVisible(visible: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  setOptions(options: any): void { }
-
-  @CordovaInstance({ sync: true })
-  setPadding(top?: number, right?: number, bottom?: number, left?: number): void { }
-
-  @CordovaInstance({ sync: true })
-  clear(): void { }
-
-  @CordovaInstance({ sync: true })
-  refreshLayout(): void { }
-
-  /**
-   * @returns {Promise<any>}
-   */
-  @CordovaInstance()
-  fromLatLngToPoint(latLng: LatLng, point: any): Promise<any> { return; }
-
-  /**
-   * @returns {Promise<LatLng>}
-   */
-  @CordovaInstance()
-  fromPointToLatLng(point: any): Promise<LatLng> { return; }
-
-  /**
-   * @returns {Promise<any>}
-   */
-  @CordovaInstance()
-  toDataURL(): Promise<any> { return; }
-
-  @CordovaInstance({ sync: true })
-  remove(): void { }
-
-  @CordovaInstance({ sync: true })
-  panBy(x: string | number, y: string | number): void { }
-
-  setCameraBearing() {}
-
-  getCameraZoom() {}
-
-  getCameraBearing() {}
-
-  getCameraTilt() {}
-
 }
 
 /**
