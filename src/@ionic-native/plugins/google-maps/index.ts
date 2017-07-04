@@ -295,10 +295,10 @@ export class BaseClass {
   pluginRef: 'plugin.google.maps.BaseArrayClass',
   repo: ''
 })
-export class BaseArrayClass extends IonicNativePlugin {
+export class BaseArrayClass<T> extends IonicNativePlugin {
   private _objectInstance: any;
 
-  constructor(initialData: any[]) {
+  constructor(initialData: T[]) {
     super();
     if (checkAvailability(BaseArrayClass.getPluginRef(), null, BaseArrayClass.getPluginName()) === true) {
       this._objectInstance = new (BaseArrayClass.getPlugin())(initialData);
@@ -330,7 +330,7 @@ export class BaseArrayClass extends IonicNativePlugin {
    * @param callback {Function}
    */
   @CordovaInstance({ sync: true })
-  forEach(fn: Function, callback?: Function): void {}
+  forEach(fn: ((element: T, index?: number) => void) | ((element: T, callback: () => void) => void), callback?: () => void): void {}
 
   /**
    * Iterate over each element, calling the provided callback.
@@ -340,14 +340,14 @@ export class BaseArrayClass extends IonicNativePlugin {
    * @return {Array<Object>} returns a new array with the results
    */
   @CordovaInstance({ sync: true })
-  map(fn: Function, callback?: Function): any[] { return; }
+  map(fn: Function, callback?: ((element: T, index: number) => T) | ((element: T, callback: (newElement: T) => void) => void)): T[] { return; }
 
   /**
    * Returns a reference to the underlying Array.
    * @return {Array<Object>}
    */
   @CordovaInstance({ sync: true })
-  getArray(): any[] { return; }
+  getArray(): T[] { return; }
 
   /**
    * Returns the element at the specified index.
@@ -364,21 +364,21 @@ export class BaseArrayClass extends IonicNativePlugin {
    * @return {Object}
    */
   @CordovaInstance({ sync: true })
-  insertAt(index: number, element: any) {}
+  insertAt(index: number, element: T) {}
 
   /**
    * Removes the last element of the array and returns that element.
    * @return {Object}
    */
   @CordovaInstance({ sync: true })
-  pop(): any {}
+  pop(): T { return; }
 
   /**
    * Adds one element to the end of the array and returns the new length of the array.
    * @param element {object}
    */
   @CordovaInstance({ sync: true })
-  push(element: any): void {}
+  push(element: T): void {}
 
   /**
    * Removes an element from the specified index.
@@ -393,7 +393,7 @@ export class BaseArrayClass extends IonicNativePlugin {
    * @param element {object}
    */
   @CordovaInstance({ sync: true })
-  setAt(index: number, element: any): void {}
+  setAt(index: number, element: T): void {}
 }
 
 /**
@@ -1512,7 +1512,7 @@ export class LatLng implements ILatLng {
  */
 export interface GeocoderRequest {
   address?: string | string[];
-  position?: { lat: number; lng: number };
+  position?: ILatLng | ILatLng[];
 }
 
 /**
