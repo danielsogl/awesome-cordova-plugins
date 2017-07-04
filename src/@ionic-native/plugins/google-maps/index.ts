@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaInstance, CordovaCheck, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/observable/fromEvent';
 
 declare const plugin: any;
@@ -300,66 +301,94 @@ export class BaseArrayClass extends IonicNativePlugin {
   }
 
   /**
+   * Add an event listener
+   * @param event {string} name of the event. Can be `insert_at`, `remove_at`, or `set_at`.
+   * @returns {Observable<any>} returns an Observable
+   */
+  @InstanceCheck({ observable: true })
+  on(event: 'insert_at' | 'remove_at' | 'set_at') {
+    return new Observable<any>((observer: Observer<any>) => {
+      this._objectInstance.on(event, observer.next.bind(observer));
+      return () => this._objectInstance.off(event, observer.next.bind(observer));
+    });
+  }
+
+  /**
    * Removes all elements from the array.
    */
-  empty() {}
+  @CordovaInstance({ sync: true })
+  empty(): void {}
 
   /**
    * Iterate over each element, calling the provided callback.
    * @param fn {Function}
    * @param callback {Function}
    */
-  forEach(fn: Function, callback?: Function) {}
+  @CordovaInstance({ sync: true })
+  forEach(fn: Function, callback?: Function): void {}
 
   /**
    * Iterate over each element, calling the provided callback.
    * Then you can get the results of each callback.
    * @param fn {Function}
    * @param callback {Function}
+   * @return {Array<Object>} returns a new array with the results
    */
-  map(fn: Function, callback?: Function) {}
+  @CordovaInstance({ sync: true })
+  map(fn: Function, callback?: Function): any[] { return; }
 
   /**
    * Returns a reference to the underlying Array.
+   * @return {Array<Object>}
    */
-  getArray() {}
+  @CordovaInstance({ sync: true })
+  getArray(): any[] { return; }
 
   /**
    * Returns the element at the specified index.
    * @param index {number}
+   * @return {Object}
    */
-  getAt(index: number) {}
+  @CordovaInstance({ sync: true })
+  getAt(index: number): any {}
 
   /**
    * Inserts an element at the specified index.
    * @param index {number}
-   * @param element {object}
+   * @param element {Object}
+   * @return {Object}
    */
+  @CordovaInstance({ sync: true })
   insertAt(index: number, element: any) {}
 
   /**
    * Removes the last element of the array and returns that element.
+   * @return {Object}
    */
-  pop() {}
+  @CordovaInstance({ sync: true })
+  pop(): any {}
 
   /**
    * Adds one element to the end of the array and returns the new length of the array.
    * @param element {object}
    */
-  push(element: any) {}
+  @CordovaInstance({ sync: true })
+  push(element: any): void {}
 
   /**
    * Removes an element from the specified index.
    * @param index {number}
    */
-  remoteAt(index: number) {}
+  @CordovaInstance({ sync: true })
+  removeAt(index: number): void {}
 
   /**
    * Sets an element at the specified index.
    * @param index {number}
    * @param element {object}
    */
-  setAt(index: number, element: any) {}
+  @CordovaInstance({ sync: true })
+  setAt(index: number, element: any): void {}
 }
 
 /**
