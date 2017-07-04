@@ -1552,10 +1552,10 @@ export class Geocoder {
   /**
    * Converts position to address and vice versa
    * @param {GeocoderRequest} request Request object with either an address or a position
-   * @returns {Promise<GeocoderResult[]>}
+   * @returns {Promise<GeocoderResult | BaseArrayClass<GeocoderResult>>}
    */
   @CordovaCheck()
-  geocode(request: GeocoderRequest): Promise<GeocoderResult[] | any> {
+  geocode(request: GeocoderRequest): Promise<GeocoderResult | BaseArrayClass<GeocoderResult>> {
     return new Promise<GeocoderResult[]>((resolve: Function) => {
       plugin.google.maps.Geocoder.geocode(request, resolve);
     });
