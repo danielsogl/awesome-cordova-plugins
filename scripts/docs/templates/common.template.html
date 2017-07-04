@@ -127,7 +127,7 @@ docType: "<$ doc.docType $>"
 
 <@- macro documentClass(doc) @>
 <@- if doc.statics.length -@>
-<h2>Static Members</h2>
+<h2><a class="anchor" name="static-members" href="#static-members"></a>Static Members</h2>
 <@ for method in doc.statics -@>
 <$ documentMethod(method) $>
 <@ endfor -@>
@@ -136,7 +136,7 @@ docType: "<$ doc.docType $>"
 <# --- methods in class --- #>
 <@- if doc.members and doc.members.length @>
 
-<h2>Instance Members</h2>
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
 <@ for method in doc.members -@>
 <$ documentMethod(method) $>
 <@- endfor @>
@@ -174,7 +174,7 @@ docType: "<$ doc.docType $>"
 </p>
 
 <# --- Install commands --- #>
-<h2>Installation</h2>
+<h2><a class="anchor" name="installation" href="#installation"></a>Installation</h2>
 <ol class="installation">
   <li>Install the Cordova and Ionic Native plugins:<br>
     <pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install $><@ else @>ionic cordova plugin add <$ prop.plugin $><@ endif @>
@@ -186,7 +186,7 @@ $ npm install --save @ionic-native/<$ doc.npmId $>
 
 <# --- Plugin supported platforms --- #>
 <@ if prop.platforms @>
-<h2>Supported platforms</h2>
+<h2><a class="anchor" name="platforms" href="#platforms"></a>Supported platforms</h2>
 <ul>
   <@ for platform in prop.platforms -@>
   <li><$ platform $></li>
@@ -198,13 +198,13 @@ $ npm install --save @ionic-native/<$ doc.npmId $>
 
 <# --- Plugin usage --- #>
 <@ if doc.usage @>
-<h2>Usage</h2>
+<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
 <$ doc.usage | marked $>
 <@ endif @>
 
 <# --- Plugin attributes --- #>
 <@- if doc.properties -@>
-<h2>Attributes:</h2>
+<h2><a class="anchor" name="attributes" href="#attributes"></a>Attributes:</h2>
 <table class="table" style="margin:0;">
   <thead>
   <tr>
