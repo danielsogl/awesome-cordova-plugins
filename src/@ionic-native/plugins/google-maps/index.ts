@@ -171,15 +171,6 @@ export class GoogleMap {
   getVisibleRegion(): Promise<VisibleRegion> { return; }
 
   @CordovaInstance({ sync: true })
-  showDialog(): void { }
-
-  @CordovaInstance({ sync: true })
-  closeDialog(): void { }
-
-  @CordovaInstance()
-  getLicenseInfo(): Promise<string> { return; }
-
-  @CordovaInstance({ sync: true })
   setCameraTarget(latLng: LatLng): void { }
 
   @CordovaInstance({ sync: true })
@@ -314,21 +305,21 @@ export class GoogleMap {
     });
   }
 
-  /**
-   * @returns {Promise<KmlOverlay | any>}
-   */
-  @InstanceCheck()
-  addKmlOverlay(options: KmlOverlayOptions): Promise<KmlOverlay | any> {
-    return new Promise<KmlOverlay>((resolve, reject) => {
-      this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
-        if (kmlOverlay) {
-          resolve(new KmlOverlay(kmlOverlay));
-        } else {
-          reject();
-        }
-      });
-    });
-  }
+  // /**
+  //  * @returns {Promise<KmlOverlay | any>}
+  //  */
+  // @InstanceCheck()
+  // addKmlOverlay(options: KmlOverlayOptions): Promise<KmlOverlay | any> {
+  //   return new Promise<KmlOverlay>((resolve, reject) => {
+  //     this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
+  //       if (kmlOverlay) {
+  //         resolve(new KmlOverlay(kmlOverlay));
+  //       } else {
+  //         reject();
+  //       }
+  //     });
+  //   });
+  // }
 
   @CordovaInstance({ sync: true })
   setDiv(domNode: HTMLElement): void { }
@@ -338,9 +329,6 @@ export class GoogleMap {
 
   @CordovaInstance({ sync: true })
   setOptions(options: any): void { }
-
-  @CordovaInstance({ sync: true })
-  setBackgroundColor(backgroundColor: string): void { }
 
   @CordovaInstance({ sync: true })
   setPadding(top?: number, right?: number, bottom?: number, left?: number): void { }
@@ -374,6 +362,15 @@ export class GoogleMap {
 
   @CordovaInstance({ sync: true })
   panBy(x: string | number, y: string | number): void { }
+
+  setCameraBearing() {}
+
+  getCameraZoom() {}
+
+  getCameraBearing() {}
+
+  getCameraTilt() {}
+
 }
 
 /**
@@ -464,8 +461,8 @@ export class GoogleMap {
   pluginName: 'GoogleMaps',
   pluginRef: 'plugin.google.maps.Map',
   plugin: 'cordova-plugin-googlemaps',
-  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
-  install: 'ionic cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
+  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps',
+  install: 'ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
   installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS'],
   platforms: ['Android', 'iOS']
 })
@@ -1311,7 +1308,7 @@ export class Polygon {
  * @hidden
  */
 export interface TileOverlayOptions {
-  tileUrlFormat?: string;
+  getTile?: Function;
   visible?: boolean;
   zIndex?: number;
   tileSize?: number;
@@ -1558,106 +1555,106 @@ export class GroundOverlay {
 
 }
 
-/**
- * @hidden
- */
-export interface KmlOverlayOptions {
-  url?: string;
-  preserveViewport?: boolean;
-  animation?: boolean;
-}
+// /**
+//  * @hidden
+//  */
+// export interface KmlOverlayOptions {
+//   url?: string;
+//   preserveViewport?: boolean;
+//   animation?: boolean;
+// }
 
-/**
- * @hidden
- */
-export class KmlOverlay {
-
-  constructor(private _objectInstance: any) { }
-
-  /**
-   * Adds an event listener.
-   *
-   * @returns {Observable<any>}
-   */
-  addEventListener(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
-  }
-
-  /**
-   * Adds an event listener that works once.
-   *
-   * @returns {Promise<any>}
-   */
-  addListenerOnce(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.addListenerOnce(eventName, resolve)
-    );
-  }
-
-  /**
-   * Gets a value
-   * @param key
-   */
-  @CordovaInstance({ sync: true })
-  get(key: string): any { return; }
-
-  /**
-   * Sets a value
-   * @param key
-   * @param value
-   */
-  @CordovaInstance({ sync: true })
-  set(key: string, value: any): void { }
-
-  /**
-   * Listen to a map event.
-   *
-   * @returns {Observable<any>}
-   */
-  on(eventName: string): Observable<any> {
-    if (!this._objectInstance) {
-      return new Observable((observer) => {
-        observer.error({ error: 'plugin_not_installed' });
-      });
-    }
-
-    return new Observable(
-      (observer) => {
-        this._objectInstance.on(eventName, observer.next.bind(observer));
-        return () => this._objectInstance.off(event);
-      }
-    );
-  }
-
-  /**
-   * Listen to a map event only once.
-   *
-   * @returns {Promise<any>}
-   */
-  one(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-      return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    return new Promise<any>(
-      resolve => this._objectInstance.one(eventName, resolve)
-    );
-  }
-
-  /**
-   * Clears all stored values
-   */
-  @CordovaInstance({ sync: true })
-  empty(): void { }
-
-  @CordovaInstance({ sync: true })
-  remove(): void { }
-
-  @CordovaInstance({ sync: true })
-  getOverlays(): Array<Polyline | Polygon | Marker> { return; }
-}
+// /**
+//  * @hidden
+//  */
+// export class KmlOverlay {
+//
+//   constructor(private _objectInstance: any) { }
+//
+//   /**
+//    * Adds an event listener.
+//    *
+//    * @returns {Observable<any>}
+//    */
+//   addEventListener(eventName: string): Observable<any> {
+//     return Observable.fromEvent(this._objectInstance, eventName);
+//   }
+//
+//   /**
+//    * Adds an event listener that works once.
+//    *
+//    * @returns {Promise<any>}
+//    */
+//   addListenerOnce(eventName: string): Promise<any> {
+//     if (!this._objectInstance) {
+//       return Promise.reject({ error: 'plugin_not_installed' });
+//     }
+//     return new Promise<any>(
+//       resolve => this._objectInstance.addListenerOnce(eventName, resolve)
+//     );
+//   }
+//
+//   /**
+//    * Gets a value
+//    * @param key
+//    */
+//   @CordovaInstance({ sync: true })
+//   get(key: string): any { return; }
+//
+//   /**
+//    * Sets a value
+//    * @param key
+//    * @param value
+//    */
+//   @CordovaInstance({ sync: true })
+//   set(key: string, value: any): void { }
+//
+//   /**
+//    * Listen to a map event.
+//    *
+//    * @returns {Observable<any>}
+//    */
+//   on(eventName: string): Observable<any> {
+//     if (!this._objectInstance) {
+//       return new Observable((observer) => {
+//         observer.error({ error: 'plugin_not_installed' });
+//       });
+//     }
+//
+//     return new Observable(
+//       (observer) => {
+//         this._objectInstance.on(eventName, observer.next.bind(observer));
+//         return () => this._objectInstance.off(event);
+//       }
+//     );
+//   }
+//
+//   /**
+//    * Listen to a map event only once.
+//    *
+//    * @returns {Promise<any>}
+//    */
+//   one(eventName: string): Promise<any> {
+//     if (!this._objectInstance) {
+//       return Promise.reject({ error: 'plugin_not_installed' });
+//     }
+//     return new Promise<any>(
+//       resolve => this._objectInstance.one(eventName, resolve)
+//     );
+//   }
+//
+//   /**
+//    * Clears all stored values
+//    */
+//   @CordovaInstance({ sync: true })
+//   empty(): void { }
+//
+//   @CordovaInstance({ sync: true })
+//   remove(): void { }
+//
+//   @CordovaInstance({ sync: true })
+//   getOverlays(): Array<Polyline | Polygon | Marker> { return; }
+// }
 
 /**
  * @hidden
