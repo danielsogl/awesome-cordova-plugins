@@ -283,7 +283,22 @@ export class BaseClass {
 /**
  * @hidden
  */
-export class BaseArrayClass {
+@Plugin({
+  plugin: 'GoogleMaps',
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.BaseArrayClass',
+  repo: ''
+})
+export class BaseArrayClass extends IonicNativePlugin {
+  private _objectInstance: any;
+
+  constructor(initialData: any[]) {
+    super();
+    if (checkAvailability(BaseArrayClass.getPluginRef(), null, BaseArrayClass.getPluginName()) === true) {
+      this._objectInstance = new (BaseArrayClass.getPlugin())(initialData);
+    }
+  }
+
   /**
    * Removes all elements from the array.
    */
@@ -358,7 +373,7 @@ export class GoogleMap extends BaseClass {
 
   constructor(element: string | HTMLElement, options?: any) {
     super();
-    if (checkAvailability('plugin.google.maps.Map', null, 'GoogleMaps') === true) {
+    if (checkAvailability(GoogleMaps.getPluginRef(), null, GoogleMaps.getPluginName()) === true) {
       if (typeof element === 'string') {
         element = document.getElementById(<string>element);
       }
