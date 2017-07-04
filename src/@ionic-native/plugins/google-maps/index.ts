@@ -769,6 +769,33 @@ export class GoogleMaps extends IonicNativePlugin {
 /**
  * @hidden
  */
+@Plugin({
+  plugin: 'GoogleMaps',
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.environment',
+  repo: ''
+})
+export class Environment extends IonicNativePlugin {
+
+  /**
+   * Get the open source software license information for Google Maps Android API v2 and Google Maps SDK for iOS.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getLicenseInfo(): Promise<any> { return; }
+
+  /**
+   * Specifies the background color of the app.
+   * @param color
+   */
+  @Cordova()
+  setBackgroundColor(color: string): void {}
+
+}
+
+/**
+ * @hidden
+ */
 export class Marker extends BaseClass {
 
   constructor(_objectInstance: any) {
