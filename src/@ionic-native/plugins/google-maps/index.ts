@@ -145,6 +145,11 @@ export interface PolygonOptions {
   addHole?: Array<LatLng>;
 }
 
+export interface ILatLng {
+  lat: number;
+  lng: number;
+}
+
 export interface TileOverlayOptions {
   getTile: (x: number, y: number, zoom: number) => string;
   visible?: boolean;
@@ -302,11 +307,11 @@ export class BaseArrayClass extends IonicNativePlugin {
 
   /**
    * Add an event listener
-   * @param event {string} name of the event. Can be `insert_at`, `remove_at`, or `set_at`.
+   * @param event {string} name of the event. Can be `insert_at`, `remove_at`, `set_at`, or `finish`.
    * @returns {Observable<any>} returns an Observable
    */
   @InstanceCheck({ observable: true })
-  on(event: 'insert_at' | 'remove_at' | 'set_at') {
+  on(event: 'insert_at' | 'remove_at' | 'set_at' | 'finish') {
     return new Observable<any>((observer: Observer<any>) => {
       this._objectInstance.on(event, observer.next.bind(observer));
       return () => this._objectInstance.off(event, observer.next.bind(observer));
@@ -1477,8 +1482,7 @@ export class LatLngBounds {
 /**
  * @hidden
  */
-
-export class LatLng {
+export class LatLng implements ILatLng {
 
   lat: number;
   lng: number;
@@ -1488,7 +1492,7 @@ export class LatLng {
     this.lng = lng;
   }
 
-  equals(other: LatLng): boolean {
+  equals(other: ILatLng): boolean {
     return this.lat === other.lat && this.lng === other.lng;
   }
 
@@ -1502,14 +1506,15 @@ export class LatLng {
     return this.lat.toFixed(precision) + ',' + this.lng.toFixed(precision);
   }
 }
+
 /**
  * @hidden
  */
 export interface GeocoderRequest {
-  address?: string;
-  bounds?: LatLng[];
+  address?: string | string[];
   position?: { lat: number; lng: number };
 }
+
 /**
  * @hidden
  */
@@ -1533,6 +1538,7 @@ export interface GeocoderResult {
   subThoroughfare?: string;
   thoroughfare?: string;
 }
+
 /**
  * @hidden
  */
