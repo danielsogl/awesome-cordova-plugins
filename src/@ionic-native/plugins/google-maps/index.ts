@@ -1270,7 +1270,46 @@ export class GroundOverlay extends BaseClass {
 
 }
 
-// TODO add HtmlInfoWindow class here
+/**
+ * @hidden
+ */
+export class HtmlInfoWindow extends BaseClass {
+
+  constructor() {
+    super();
+    if (checkAvailability(GoogleMaps.getPluginRef(), null, GoogleMaps.getPluginName()) === true) {
+      this._objectInstance = new (GoogleMaps.getPlugin()).HtmlInfoWindow();
+    }
+  }
+
+  /**
+   * Change the backgroundColor
+   * @param color {string}
+   */
+  @CordovaInstance()
+  setBackgroundColor(color: string): void {}
+
+  /**
+   * Set your HTML contents.
+   * @param content {any} String containing text or HTML element
+   */
+  @CordovaInstance()
+  setContent(content: string | Element): void {}
+
+  /**
+   * Open the htmlInfoWindow
+   * @param marker {Marker}
+   */
+  @CordovaInstance()
+  open(marker: any): any {}
+
+  /**
+   * Close the htmlInfoWindow
+   */
+  @CordovaInstance()
+  close(): void {}
+
+}
 
 /**
  * @hidden
@@ -1504,10 +1543,11 @@ export class Marker extends BaseClass {
 
   /**
    * Return the map instance.
-   * @return {GoogleMap}
+   * Note that this method returns the original Google Map object, and not the Ionic Native wrapper.
+   * @return {Object}
    */
   @CordovaInstance({ sync: true })
-  getMap(): GoogleMap { return; }
+  getMap(): any { return; }
 
   /**
    * Specify the animation either `DROP` or `BOUNCE`
