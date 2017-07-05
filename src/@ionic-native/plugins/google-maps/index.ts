@@ -1729,9 +1729,17 @@ export class Polygon extends BaseClass {
   @CordovaInstance({ sync: true })
   getStrokeWidth(): number { return; }
 
+  /**
+   * When true, edges of the polygon are interpreted as geodesic and will follow the curvature of the Earth.
+   * @param geodesic {boolean}
+   */
   @CordovaInstance({ sync: true })
   setGeodesic(geodesic: boolean): void {}
 
+  /**
+   * Return true if the polylgon is geodesic.
+   * @return {boolean}
+   */
   @CordovaInstance({ sync: true })
   getGeodesic(): boolean { return; }
 }
@@ -1740,49 +1748,117 @@ export class Polygon extends BaseClass {
  * @hidden
  */
 export class Polyline extends BaseClass {
+
   constructor(_objectInstance: any) {
     super();
     this._objectInstance = _objectInstance;
   }
 
+  /**
+   * Change the polyline points.
+   * @param points {ILatLng[]}
+   */
   @CordovaInstance({ sync: true })
-  getPoints(): Array<LatLng> { return; }
+  setPoints(points: ILatLng[]): void {}
 
+  /**
+   * Return an instance of the BaseArrayClass
+   * You can modify the points.
+   */
   @CordovaInstance({ sync: true })
-  getCOlor(): string { return; }
+  getPoints(): BaseArrayClass<LatLng> { return; }
 
+  /**
+   * When true, edges of the polyline are interpreted as geodesic and will follow the curvature of the Earth.
+   * @param geoDesic {boolean}
+   */
   @CordovaInstance({ sync: true })
-  getWidth(): number { return; }
+  setGeoDesic(geoDesic: boolean): void {}
 
+  /**
+   * Return true if the polyline is geodesic
+   */
   @CordovaInstance({ sync: true })
   getGeodesic(): boolean { return; }
 
+  /**
+   * Change visibility of the polyline
+   * @param visible {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setVisible(visible: boolean): void {}
+
+  /**
+   * Return true if the polyline is visible
+   * @return {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  getVisible(): boolean { return; }
+
+  /**
+   * Change clickablity of the polyline
+   * @param clickable {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setClickable(clickable: boolean): void {}
+
+  /**
+   * Return true if the polyline is clickable
+   * @return {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  getClickable(): boolean { return; }
+
+  /**
+   * Change the polyline color
+   * @param strokeColor {string}
+   */
+  @CordovaInstance({ sync: true })
+  setStrokeColor(strokeColor: string): void {}
+
+  /**
+   * Return the current polyline color
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getStrokeColor(): string { return; }
+
+  /**
+   * Change the polyline stroke width
+   * @param strokeWidth {number}
+   */
+  @CordovaInstance({ sync: true })
+  setStrokeWidth(strokeWidth: number): void {}
+
+  /**
+   * Return the current stroke width (unit: pixel).
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  getStrokeWidth(): number { return; }
+
+  /**
+   * Change the polyline zIndex order.
+   * @param index {number}
+   */
+  @CordovaInstance({ sync: true })
+  setZIndex(index: number): void {}
+
+  /**
+   * Return the current polyline zIndex
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   getZIndex(): number { return; }
 
+  /**
+   * Remove the polyline
+   */
   @CordovaInstance({ sync: true })
-  remove(): void { }
+  remove(): void {}
 
   @CordovaInstance({ sync: true })
-  setPoints(points: Array<LatLng>): void { }
-
-  @CordovaInstance({ sync: true })
-  setColor(color: string): void { }
-
-  @CordovaInstance({ sync: true })
-  setWidth(width: number): void { }
-
-  @CordovaInstance({ sync: true })
-  setVisible(visible: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  setZIndex(zIndex: number): void { }
-
-  @CordovaInstance({ sync: true })
-  setGeoDesic(geoDesic: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  getMap(): GoogleMap { return; }
+  getMap(): any { return; }
 
 }
 
@@ -1796,39 +1872,75 @@ export class TileOverlay extends BaseClass {
     this._objectInstance = _objectInstance;
   }
 
+  /**
+   * Set whether the tiles should fade in.
+   * @param fadeIn {boolean}
+   */
   @CordovaInstance({ sync: true })
-  getVisible(): boolean { return; }
+  setFadeIn(fadeIn: boolean): void {}
 
-  @CordovaInstance({ sync: true })
-  setVisible(visible: boolean): void { }
-
+  /**
+   * Get whether the tiles should fade in
+   * @return {boolean}
+   */
   @CordovaInstance({ sync: true })
   getFadeIn(): boolean { return; }
 
+  /**
+   * Set the zIndex of the tile overlay
+   * @param zIndex {number}
+   */
   @CordovaInstance({ sync: true })
-  setFadeIn(fadeIn: boolean): void { }
+  setZIndex(zIndex: number): void {}
 
+  /**
+   * Return the zIndex of the tile overlay
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   getZIndex(): number { return; }
 
+  /**
+   * Set the opacity of the tile overlay
+   * @param opacity {number}
+   */
   @CordovaInstance({ sync: true })
-  setZIndex(zIndex: number): void { }
+  setOpacity(opacity: number): void {}
 
+  /**
+   * Return the opacity of the tile overlay
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   getOpacity(): number { return; }
 
+  /**
+   * Set false if you want to hide
+   * @param visible {boolean}
+   */
   @CordovaInstance({ sync: true })
-  setOpacity(opacity: number): void { }
+  setVisible(visible: boolean): void {}
 
+  /**
+   * Return true if the tile overlay is visible
+   * @return {boolean}
+   */
   @CordovaInstance({ sync: true })
-  clearTileCache(): void { }
+  getVisible(): boolean { return; }
 
+  /**
+   * Get tile size
+   */
   @CordovaInstance({ sync: true })
-  remove(): void { }
+  getTileSize(): any { return; }
+
+  /**
+   * Remove the tile overlay
+   */
+  @CordovaInstance({ sync: true })
+  remove(): void {}
 
 }
-
-// TODO add spherical utility class here
 
 // /**
 //  * @hidden
