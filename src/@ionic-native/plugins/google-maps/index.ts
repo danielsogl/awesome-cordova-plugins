@@ -869,6 +869,8 @@ export class GoogleMap extends BaseClass {
  * ```
  * @classes
  * GoogleMap
+ * Circle
+ * Environment
  * Marker
  * LatLng
  * Geocoder
