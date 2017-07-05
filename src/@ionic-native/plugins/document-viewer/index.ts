@@ -2,29 +2,29 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 export interface DocumentViewerOptions {
-  title: string;
-  documentView: {
+  title?: string;
+  documentView?: {
     closeLabel: string;
   };
-  navigationView: {
+  navigationView?: {
     closeLabel: string;
   };
-  email: {
+  email?: {
     enabled: boolean;
   };
-  print: {
+  print?: {
     enabled: boolean;
   };
-  openWith: {
+  openWith?: {
     enabled: boolean;
   };
-  bookmarks: {
+  bookmarks?: {
     enabled: boolean;
   };
-  search: {
+  search?: {
     enabled: boolean;
   };
-  autoClose: {
+  autoClose?: {
     onPause: boolean;
   };
 }
