@@ -267,12 +267,12 @@ export const GoogleMapsAnimation: { [animationName: string]: string; } = {
  * @hidden
  */
 export const GoogleMapsMapTypeId: { [mapType: string]: string; } = {
-  HYBRID: 'MAP_TYPE_HYBRID',
-  NONE: 'MAP_TYPE_NONE',
   NORMAL: 'MAP_TYPE_NORMAL',
   ROADMAP: 'MAP_TYPE_ROADMAP',
   SATELLITE: 'MAP_TYPE_SATELLITE',
-  TERAIN: 'MAP_TYPE_TERRAIN'
+  HYBRID: 'MAP_TYPE_HYBRID',
+  TERRAIN: 'MAP_TYPE_TERRAIN',
+  NONE: 'MAP_TYPE_NONE'
 };
 
 /**
