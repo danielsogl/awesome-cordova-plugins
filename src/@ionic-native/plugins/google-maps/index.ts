@@ -809,6 +809,13 @@ export class GoogleMap extends BaseClass {
   setDiv(domNode: HTMLElement): void { }
 
   /**
+   * Returns the map HTML element
+   * @return {HTMLElement}
+   */
+  @CordovaInstance({ sync: true })
+  getDiv(): HTMLElement { return; }
+
+  /**
    * Changes the map type id
    * @param mapTypeId {string}
    */
