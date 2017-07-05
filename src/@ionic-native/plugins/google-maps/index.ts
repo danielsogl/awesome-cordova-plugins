@@ -1131,52 +1131,123 @@ export class Marker extends BaseClass {
  */
 export class Circle extends BaseClass {
 
+  @CordovaInstance({ sync: true })
+
   constructor(_objectInstance: any) {
     super();
     this._objectInstance = _objectInstance;
   }
 
+  /**
+   * Change the center position.
+   * @param latLng {LatLng}
+   */
+  @CordovaInstance({ sync: true })
+  setCenter(latLng: LatLng): void {}
+
+  /**
+   * Return the current center position
+   * @return {LatLng}
+   */
   @CordovaInstance({ sync: true })
   getCenter(): LatLng { return; }
 
+  /**
+   * Return the current circle radius.
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   getRadius(): number { return; }
 
+  /**
+   * Change the circle radius.
+   * @param radius {number}
+   */
+  @CordovaInstance({ sync: true })
+  setRadius(radius: number): void {}
+
+  /**
+   * Change the filling color (inner color).
+   * @param color {string}
+   */
+  @CordovaInstance({ sync: true })
+  setFillColor(color: string): void {}
+
+  /**
+   * Return the current circle filling color (inner color).
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getFillColor(): string { return; }
+
+  /**
+   * Change the stroke width.
+   * @param strokeWidth {number}
+   */
+  @CordovaInstance({ sync: true })
+  setStrokeWidth(strokeWidth: number): void {}
+
+  /**
+   * Return the current circle stroke width (unit: pixel).
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  getStrokeWidth(): number { return; }
+
+  /**
+   * Change the stroke color (outter color).
+   * @param strokeColor {string}
+   */
+  @CordovaInstance({ sync: true })
+  setStrokeColor(strokeColor: string): void {}
+
+  /**
+   * Return the current circle stroke color (outer color).
+   * @return {string}
+   */
   @CordovaInstance({ sync: true })
   getStrokeColor(): string { return; }
 
+  /**
+   * Change clickablity of the circle.
+   * @param clickable {boolean}
+   */
   @CordovaInstance({ sync: true })
-  getVisible(): boolean { return; }
+  setClickable(clickable: boolean): void {}
 
+  /**
+   * Return true if the circle is clickable.
+   * @return {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  getClickable(): boolean { return; }
+
+  /**
+   * Change the circle zIndex order.
+   * @param zIndex {number}
+   */
+  @CordovaInstance({ sync: true })
+  setZIndex(zIndex: number): void {}
+
+  /**
+   * Return the current circle zIndex.
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   getZIndex(): number { return; }
 
+  /**
+   * Remove the circle.
+   */
   @CordovaInstance({ sync: true })
-  remove(): void { }
+  remove(): void {}
 
+  /**
+   * Return the latLngBounds (rectangle) that contains the circle.
+   * @return {LatLngBounds}
+   */
   @CordovaInstance({ sync: true })
-  setCenter(latLng: LatLng): void { }
-
-  @CordovaInstance({ sync: true })
-  setFillColor(fillColor: string): void { }
-
-  @CordovaInstance({ sync: true })
-  setStrokeColor(strokeColor: string): void { }
-
-  @CordovaInstance({ sync: true })
-  setStrokeWidth(strokeWidth: number): void { }
-
-  @CordovaInstance({ sync: true })
-  setVisible(visible: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  setZIndex(zIndex: number): void { }
-
-  @CordovaInstance({ sync: true })
-  setRadius(radius: number): void { }
-
-  @CordovaInstance({ sync: true })
-  getMap(): GoogleMap { return; }
+  getBounds(): LatLngBounds { return; }
 }
 
 /**
