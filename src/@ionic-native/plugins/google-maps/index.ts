@@ -4,21 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/observable/fromEvent';
 
-declare const plugin: any;
-
-/**
- * @hidden
- */
-export interface CircleOptions {
-  center?: LatLng;
-  radius?: number;
-  strokeColor?: string;
-  strokeWidth?: number;
-  fillColor?: string;
-  visible?: boolean;
-  zIndex?: number;
-}
-
 export interface AnimateCameraOptions {
   target?: LatLng | Array<Marker> | LatLngBounds;
   tilt?: number;
@@ -50,20 +35,62 @@ export interface CameraPosition {
   duration?: number;
 }
 
-export interface MyLocation {
-  latLng?: LatLng;
-  speed?: number;
-  time?: string;
+export interface CircleOptions {
+  center?: LatLng;
+  radius?: number;
+  strokeColor?: string;
+  strokeWidth?: number;
+  fillColor?: string;
+  visible?: boolean;
+  zIndex?: number;
+}
+
+export interface GeocoderRequest {
+  address?: string | string[];
+  position?: ILatLng | ILatLng[];
+}
+
+export interface GeocoderResult {
+  adminArea?: string;
+  country?: string;
+  countryCode?: string;
+  extra?: {
+    featureName?: string;
+    lines?: Array<string>;
+    permises?: string;
+    phone?: string;
+    url?: string
+  };
+  locale?: string;
+  locality?: string;
+  position?: { lat: number; lng: number };
+  postalCode?: string;
+  subAdminArea?: string;
+  subLocality?: string;
+  subThoroughfare?: string;
+  thoroughfare?: string;
+}
+
+export interface GroundOverlayOptions {
+  url?: string;
+  bounds?: Array<LatLng>;
+  visible?: boolean;
+  opacity?: number;
   bearing?: number;
+  zIndex?: number;
 }
 
-export interface MyLocationOptions {
-  enableHighAccuracy?: boolean;
+export interface ILatLng {
+  lat: number;
+  lng: number;
 }
 
-export interface VisibleRegion {
-  northeast?: any;
-  southwest?: any;
+export interface MarkerIcon {
+  url?: string;
+  size?: {
+    width?: number;
+    height?: number;
+  };
 }
 
 export interface MarkerOptions {
@@ -133,21 +160,15 @@ export interface MarkerOptions {
   disableAutoPan?: boolean;
 }
 
-export interface MarkerIcon {
-  url?: string;
-  size?: {
-    width?: number;
-    height?: number;
-  };
+export interface MyLocation {
+  latLng?: LatLng;
+  speed?: number;
+  time?: string;
+  bearing?: number;
 }
 
-export interface PolylineOptions {
-  points?: Array<LatLng>;
-  visible?: boolean;
-  geodesic?: boolean;
-  color?: string;
-  width?: number;
-  zIndex?: number;
+export interface MyLocationOptions {
+  enableHighAccuracy?: boolean;
 }
 
 export interface PolygonOptions {
@@ -161,9 +182,13 @@ export interface PolygonOptions {
   addHole?: Array<LatLng>;
 }
 
-export interface ILatLng {
-  lat: number;
-  lng: number;
+export interface PolylineOptions {
+  points?: Array<LatLng>;
+  visible?: boolean;
+  geodesic?: boolean;
+  color?: string;
+  width?: number;
+  zIndex?: number;
 }
 
 export interface TileOverlayOptions {
@@ -174,13 +199,9 @@ export interface TileOverlayOptions {
   opacity?: number;
 }
 
-export interface GroundOverlayOptions {
-  url?: string;
-  bounds?: Array<LatLng>;
-  visible?: boolean;
-  opacity?: number;
-  bearing?: number;
-  zIndex?: number;
+export interface VisibleRegion {
+  northeast?: any;
+  southwest?: any;
 }
 
 /**
@@ -232,74 +253,134 @@ export const GoogleMapsMapTypeId: { [mapType: string]: string; } = {
 };
 
 /**
- * @hidden
+ * @name Google Maps
+ * @description This plugin uses the native Google Maps SDK
+ * @usage
+ * ```typescript
+ * import {
+ *  GoogleMaps,
+ *  GoogleMap,
+ *  GoogleMapsEvent,
+ *  LatLng,
+ *  CameraPosition,
+ *  MarkerOptions,
+ *  Marker
+ * } from '@ionic-native/google-maps';
+ *
+ * export class MapPage {
+ *  constructor(private googleMaps: GoogleMaps) {}
+ *
+ * // Load map only after view is initialized
+ * ngAfterViewInit() {
+ *  this.loadMap();
+ * }
+ *
+ * loadMap() {
+ *  // make sure to create following structure in your view.html file
+ *  // and add a height (for example 100%) to it, else the map won't be visible
+ *  // <ion-content>
+ *  //  <div #map id="map" style="height:100%;"></div>
+ *  // </ion-content>
+ *
+ *  // create a new map by passing HTMLElement
+ *  let element: HTMLElement = document.getElementById('map');
+ *
+ *  let map: GoogleMap = this.googleMaps.create(element);
+ *
+ *  // listen to MAP_READY event
+ *  // You must wait for this event to fire before adding something to the map or modifying it in anyway
+ *  map.one(GoogleMapsEvent.MAP_READY).then(
+ *    () => {
+ *      console.log('Map is ready!');
+ *      // Now you can add elements to the map like the marker
+ *    }
+ *  );
+ *
+ *  // create LatLng object
+ *  let ionic: LatLng = new LatLng(43.0741904,-89.3809802);
+ *
+ *  // create CameraPosition
+ *  let position: CameraPosition = {
+ *    target: ionic,
+ *    zoom: 18,
+ *    tilt: 30
+ *  };
+ *
+ *  // move the map's camera to position
+ *  map.moveCamera(position);
+ *
+ *  // create new marker
+ *  let markerOptions: MarkerOptions = {
+ *    position: ionic,
+ *    title: 'Ionic'
+ *  };
+ *
+ *  const marker: Marker = map.addMarker(markerOptions)
+ *    .then((marker: Marker) => {
+ *       marker.showInfoWindow();
+ *     });
+ *  }
+ *
+ * }
+ * ```
+ * @classes
+ * GoogleMap
+ * Circle
+ * Environment
+ * Marker
+ * LatLng
+ * Geocoder
+ * @interfaces
+ * AnimateCameraOptions
+ * MarkerOptions
+ * MyLocation
+ * MyLocationOptions
+ * VisibleRegion
+ *
  */
-export class BaseClass {
-  protected _objectInstance: any;
+@Plugin({
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps',
+  plugin: 'cordova-plugin-googlemaps',
+  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps',
+  install: 'ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
+  installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS'],
+  platforms: ['Android', 'iOS']
+})
+@Injectable()
+export class GoogleMaps extends IonicNativePlugin {
 
   /**
-   * Adds an event listener.
-   *
-   * @returns {Observable<any>}
+   * @hidden
    */
-  @InstanceCheck()
-  addEventListener(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
+  _environment: Environment = new Environment();
+
+  /**
+   * Checks if a map object has been created and is available.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova()
+  isAvailable(): Promise<boolean> { return; }
+
+  /**
+   * Creates a new GoogleMap instance
+   * @param element {string | HTMLElement} Element ID or reference to attach the map to
+   * @param options {any} Options
+   * @returns {GoogleMap}
+   */
+  create(element: string | HTMLElement, options?: any): GoogleMap {
+    return new GoogleMap(element, options);
   }
 
   /**
-   * Adds an event listener that works once.
-   *
-   * @returns {Promise<any>}
+   * Convenience method that returns an instance of Environment class
+   * @return {Object}
    */
-  @InstanceCheck()
-  addListenerOnce(eventName: string): Promise<any> {
-    return new Promise<any>(resolve => this._objectInstance.addListenerOnce(eventName, resolve));
+  environment(): Environment {
+    return this._environment;
   }
 
-  /**
-   * Gets a value
-   * @param key
-   */
-  @CordovaInstance({ sync: true })
-  get(key: string): any { return; }
-
-  /**
-   * Sets a value
-   * @param key
-   * @param value
-   */
-  @CordovaInstance({ sync: true })
-  set(key: string, value: any): void { }
-
-  /**
-   * Listen to a map event.
-   *
-   * @returns {Observable<any>}
-   */
-  @InstanceCheck({ observable: true })
-  on(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
-  }
-
-  /**
-   * Listen to a map event only once.
-   *
-   * @returns {Promise<any>}
-   */
-  @InstanceCheck()
-  one(eventName: string): Promise<any> {
-    return new Promise<any>(resolve => this._objectInstance.one(eventName, resolve));
-  }
-
-  /**
-   * Clears all stored values
-   */
-  @CordovaInstance({ sync: true })
-  empty(): void { }
-
-  @CordovaInstance({ sync: true })
-  trigger(eventName: string, ...parameters: any[]): void {}
 }
 
 /**
@@ -415,6 +496,273 @@ export class BaseArrayClass<T> extends IonicNativePlugin {
 /**
  * @hidden
  */
+export class BaseClass {
+  protected _objectInstance: any;
+
+  /**
+   * Adds an event listener.
+   *
+   * @returns {Observable<any>}
+   */
+  @InstanceCheck()
+  addEventListener(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Adds an event listener that works once.
+   *
+   * @returns {Promise<any>}
+   */
+  @InstanceCheck()
+  addListenerOnce(eventName: string): Promise<any> {
+    return new Promise<any>(resolve => this._objectInstance.addListenerOnce(eventName, resolve));
+  }
+
+  /**
+   * Gets a value
+   * @param key
+   */
+  @CordovaInstance({ sync: true })
+  get(key: string): any { return; }
+
+  /**
+   * Sets a value
+   * @param key
+   * @param value
+   */
+  @CordovaInstance({ sync: true })
+  set(key: string, value: any): void { }
+
+  /**
+   * Listen to a map event.
+   *
+   * @returns {Observable<any>}
+   */
+  @InstanceCheck({ observable: true })
+  on(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Listen to a map event only once.
+   *
+   * @returns {Promise<any>}
+   */
+  @InstanceCheck()
+  one(eventName: string): Promise<any> {
+    return new Promise<any>(resolve => this._objectInstance.one(eventName, resolve));
+  }
+
+  /**
+   * Clears all stored values
+   */
+  @CordovaInstance({ sync: true })
+  empty(): void { }
+
+  @CordovaInstance({ sync: true })
+  trigger(eventName: string, ...parameters: any[]): void {}
+}
+
+/**
+ * @hidden
+ */
+export class Circle extends BaseClass {
+
+  constructor(_objectInstance: any) {
+    super();
+    this._objectInstance = _objectInstance;
+  }
+
+  /**
+   * Change the center position.
+   * @param latLng {LatLng}
+   */
+  @CordovaInstance({ sync: true })
+  setCenter(latLng: LatLng): void {}
+
+  /**
+   * Return the current center position
+   * @return {LatLng}
+   */
+  @CordovaInstance({ sync: true })
+  getCenter(): LatLng { return; }
+
+  /**
+   * Return the current circle radius.
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  getRadius(): number { return; }
+
+  /**
+   * Change the circle radius.
+   * @param radius {number}
+   */
+  @CordovaInstance({ sync: true })
+  setRadius(radius: number): void {}
+
+  /**
+   * Change the filling color (inner color).
+   * @param color {string}
+   */
+  @CordovaInstance({ sync: true })
+  setFillColor(color: string): void {}
+
+  /**
+   * Return the current circle filling color (inner color).
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getFillColor(): string { return; }
+
+  /**
+   * Change the stroke width.
+   * @param strokeWidth {number}
+   */
+  @CordovaInstance({ sync: true })
+  setStrokeWidth(strokeWidth: number): void {}
+
+  /**
+   * Return the current circle stroke width (unit: pixel).
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  getStrokeWidth(): number { return; }
+
+  /**
+   * Change the stroke color (outter color).
+   * @param strokeColor {string}
+   */
+  @CordovaInstance({ sync: true })
+  setStrokeColor(strokeColor: string): void {}
+
+  /**
+   * Return the current circle stroke color (outer color).
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getStrokeColor(): string { return; }
+
+  /**
+   * Change clickablity of the circle.
+   * @param clickable {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setClickable(clickable: boolean): void {}
+
+  /**
+   * Return true if the circle is clickable.
+   * @return {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  getClickable(): boolean { return; }
+
+  /**
+   * Change the circle zIndex order.
+   * @param zIndex {number}
+   */
+  @CordovaInstance({ sync: true })
+  setZIndex(zIndex: number): void {}
+
+  /**
+   * Return the current circle zIndex.
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  getZIndex(): number { return; }
+
+  /**
+   * Remove the circle.
+   */
+  @CordovaInstance({ sync: true })
+  remove(): void {}
+
+  /**
+   * Return the latLngBounds (rectangle) that contains the circle.
+   * @return {LatLngBounds}
+   */
+  @CordovaInstance({ sync: true })
+  getBounds(): LatLngBounds { return; }
+
+  /**
+   * Set circle visibility
+   * @param visible {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setVisible(visible: boolean): void {}
+
+  /**
+   * Returns a boolean that indicates whether the circle is visible
+   * @return {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  getVisible(): boolean { return; }
+}
+
+/**
+ * @hidden
+ */
+@Plugin({
+  plugin: 'cordova-plugin-googlemaps',
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.environment',
+  repo: ''
+})
+export class Environment extends IonicNativePlugin {
+
+  /**
+   * Get the open source software license information for Google Maps Android API v2 and Google Maps SDK for iOS.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getLicenseInfo(): Promise<any> { return; }
+
+  /**
+   * Specifies the background color of the app.
+   * @param color
+   */
+  @Cordova({ sync: true })
+  setBackgroundColor(color: string): void {}
+
+  /**
+   * Set maps to debuggable
+   * @param debug {boolean}
+   */
+  @Cordova({ sync: true })
+  setDebuggable(debug: boolean): void {}
+
+  /**
+   * Checks if plugin is available
+   * @return {Promise<boolean>}
+   */
+  @Cordova()
+  isAvailable(): Promise<boolean> { return; }
+
+}
+
+/**
+ * @hidden
+ */
+@Plugin({
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.Geocoder',
+  plugin: 'cordova-plugin-googlemaps',
+  repo: ''
+})
+export class Geocoder {
+  /**
+   * Converts position to address and vice versa
+   * @param {GeocoderRequest} request Request object with either an address or a position
+   * @returns {Promise<GeocoderResult | BaseArrayClass<GeocoderResult>>}
+   */
+  @Cordova()
+  geocode(request: GeocoderRequest): Promise<GeocoderResult | BaseArrayClass<GeocoderResult>> { return; }
+}
+
+/**
+ * @hidden
+ */
 @Plugin({
   pluginName: 'GoogleMaps',
   plugin: 'cordova-plugin-googlemaps'
@@ -426,7 +774,7 @@ export class GoogleMap extends BaseClass {
       if (typeof element === 'string') {
         element = document.getElementById(<string>element);
       }
-      this._objectInstance = plugin.google.maps.Map.getMap(element, options);
+      this._objectInstance = GoogleMaps.getPlugin().Map.getMap(element, options);
     }
   }
 
@@ -797,175 +1145,100 @@ export class GoogleMap extends BaseClass {
 }
 
 /**
- * @name Google Maps
- * @description This plugin uses the native Google Maps SDK
- * @usage
- * ```typescript
- * import {
- *  GoogleMaps,
- *  GoogleMap,
- *  GoogleMapsEvent,
- *  LatLng,
- *  CameraPosition,
- *  MarkerOptions,
- *  Marker
- * } from '@ionic-native/google-maps';
- *
- * export class MapPage {
- *  constructor(private googleMaps: GoogleMaps) {}
- *
- * // Load map only after view is initialized
- * ngAfterViewInit() {
- *  this.loadMap();
- * }
- *
- * loadMap() {
- *  // make sure to create following structure in your view.html file
- *  // and add a height (for example 100%) to it, else the map won't be visible
- *  // <ion-content>
- *  //  <div #map id="map" style="height:100%;"></div>
- *  // </ion-content>
- *
- *  // create a new map by passing HTMLElement
- *  let element: HTMLElement = document.getElementById('map');
- *
- *  let map: GoogleMap = this.googleMaps.create(element);
- *
- *  // listen to MAP_READY event
- *  // You must wait for this event to fire before adding something to the map or modifying it in anyway
- *  map.one(GoogleMapsEvent.MAP_READY).then(
- *    () => {
- *      console.log('Map is ready!');
- *      // Now you can add elements to the map like the marker
- *    }
- *  );
- *
- *  // create LatLng object
- *  let ionic: LatLng = new LatLng(43.0741904,-89.3809802);
- *
- *  // create CameraPosition
- *  let position: CameraPosition = {
- *    target: ionic,
- *    zoom: 18,
- *    tilt: 30
- *  };
- *
- *  // move the map's camera to position
- *  map.moveCamera(position);
- *
- *  // create new marker
- *  let markerOptions: MarkerOptions = {
- *    position: ionic,
- *    title: 'Ionic'
- *  };
- *
- *  const marker: Marker = map.addMarker(markerOptions)
- *    .then((marker: Marker) => {
- *       marker.showInfoWindow();
- *     });
- *  }
- *
- * }
- * ```
- * @classes
- * GoogleMap
- * Circle
- * Environment
- * Marker
- * LatLng
- * Geocoder
- * @interfaces
- * AnimateCameraOptions
- * MarkerOptions
- * MyLocation
- * MyLocationOptions
- * VisibleRegion
- *
+ * @hidden
  */
-@Plugin({
-  pluginName: 'GoogleMaps',
-  pluginRef: 'plugin.google.maps.Map',
-  plugin: 'cordova-plugin-googlemaps',
-  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps',
-  install: 'ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
-  installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS'],
-  platforms: ['Android', 'iOS']
-})
-@Injectable()
-export class GoogleMaps extends IonicNativePlugin {
+export class GroundOverlay extends BaseClass {
 
-  /**
-   * @hidden
-   */
-  _environment: Environment = new Environment();
-
-  /**
-   * Checks if a map object has been created and is available.
-   *
-   * @returns {Promise<boolean>}
-   */
-  @Cordova()
-  isAvailable(): Promise<boolean> { return; }
-
-  /**
-   * Creates a new GoogleMap instance
-   * @param element {string | HTMLElement} Element ID or reference to attach the map to
-   * @param options {any} Options
-   * @returns {GoogleMap}
-   */
-  create(element: string | HTMLElement, options?: any): GoogleMap {
-    return new GoogleMap(element, options);
+  constructor(_objectInstance: any) {
+    super();
+    this._objectInstance = _objectInstance;
   }
 
-  /**
-   * Convenience method that returns an instance of Environment class
-   * @return {Object}
-   */
-  environment(): Environment {
-    return this._environment;
+  @CordovaInstance({ sync: true })
+  setBearing(bearing: number): void { }
+
+  @CordovaInstance({ sync: true })
+  getBearing(): number { return; }
+
+  @CordovaInstance({ sync: true })
+  setOpacity(opacity: number): void { }
+
+  @CordovaInstance({ sync: true })
+  getOpacity(): number { return; }
+
+  @CordovaInstance({ sync: true })
+  setVisible(visible: boolean): void { }
+
+  @CordovaInstance({ sync: true })
+  getVisible(): boolean { return; }
+
+  @CordovaInstance({ sync: true })
+  setImage(image: string): void { };
+
+  @CordovaInstance({ sync: true })
+  remove(): void { }
+
+}
+
+// TODO add HtmlInfoWindow class here
+
+/**
+ * @hidden
+ */
+export class LatLng implements ILatLng {
+
+  lat: number;
+  lng: number;
+
+  constructor(lat: number, lng: number) {
+    this.lat = lat;
+    this.lng = lng;
   }
 
+  equals(other: ILatLng): boolean {
+    return this.lat === other.lat && this.lng === other.lng;
+  }
+
+  toString(): string {
+    return this.lat + ',' + this.lng;
+  }
+
+  toUrlValue(precision?: number): string {
+    precision = precision || 6;
+
+    return this.lat.toFixed(precision) + ',' + this.lng.toFixed(precision);
+  }
 }
 
 /**
  * @hidden
  */
-@Plugin({
-  plugin: 'cordova-plugin-googlemaps',
-  pluginName: 'GoogleMaps',
-  pluginRef: 'plugin.google.maps.environment',
-  repo: ''
-})
-export class Environment extends IonicNativePlugin {
+export class LatLngBounds {
+  private _objectInstance: any;
 
-  /**
-   * Get the open source software license information for Google Maps Android API v2 and Google Maps SDK for iOS.
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getLicenseInfo(): Promise<any> { return; }
+  @InstanceProperty northeast: LatLng;
+  @InstanceProperty southwest: LatLng;
+  @InstanceProperty type: string;
 
-  /**
-   * Specifies the background color of the app.
-   * @param color
-   */
-  @Cordova({ sync: true })
-  setBackgroundColor(color: string): void {}
+  constructor(southwestOrArrayOfLatLng: LatLng | LatLng[], northeast?: LatLng) {
+    let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
+    this._objectInstance = new (GoogleMaps.getPlugin()).LatLngBounds(args);
+  }
 
-  /**
-   * Set maps to debuggable
-   * @param debug {boolean}
-   */
-  @Cordova({ sync: true })
-  setDebuggable(debug: boolean): void {}
+  @CordovaInstance({ sync: true })
+  toString(): string { return; }
 
-  /**
-   * Checks if plugin is available
-   * @return {Promise<boolean>}
-   */
-  @Cordova()
-  isAvailable(): Promise<boolean> { return; }
+  @CordovaInstance({ sync: true })
+  toUrlValue(precision?: number): string { return; }
 
+  @CordovaInstance({ sync: true })
+  extend(LatLng: LatLng): void { }
+
+  @CordovaInstance({ sync: true })
+  contains(LatLng: LatLng): boolean { return; }
+
+  @CordovaInstance({ sync: true })
+  getCenter(): LatLng { return; }
 }
 
 /**
@@ -1158,192 +1431,6 @@ export class Marker extends BaseClass {
 /**
  * @hidden
  */
-export class Circle extends BaseClass {
-
-  constructor(_objectInstance: any) {
-    super();
-    this._objectInstance = _objectInstance;
-  }
-
-  /**
-   * Change the center position.
-   * @param latLng {LatLng}
-   */
-  @CordovaInstance({ sync: true })
-  setCenter(latLng: LatLng): void {}
-
-  /**
-   * Return the current center position
-   * @return {LatLng}
-   */
-  @CordovaInstance({ sync: true })
-  getCenter(): LatLng { return; }
-
-  /**
-   * Return the current circle radius.
-   * @return {number}
-   */
-  @CordovaInstance({ sync: true })
-  getRadius(): number { return; }
-
-  /**
-   * Change the circle radius.
-   * @param radius {number}
-   */
-  @CordovaInstance({ sync: true })
-  setRadius(radius: number): void {}
-
-  /**
-   * Change the filling color (inner color).
-   * @param color {string}
-   */
-  @CordovaInstance({ sync: true })
-  setFillColor(color: string): void {}
-
-  /**
-   * Return the current circle filling color (inner color).
-   * @return {string}
-   */
-  @CordovaInstance({ sync: true })
-  getFillColor(): string { return; }
-
-  /**
-   * Change the stroke width.
-   * @param strokeWidth {number}
-   */
-  @CordovaInstance({ sync: true })
-  setStrokeWidth(strokeWidth: number): void {}
-
-  /**
-   * Return the current circle stroke width (unit: pixel).
-   * @return {number}
-   */
-  @CordovaInstance({ sync: true })
-  getStrokeWidth(): number { return; }
-
-  /**
-   * Change the stroke color (outter color).
-   * @param strokeColor {string}
-   */
-  @CordovaInstance({ sync: true })
-  setStrokeColor(strokeColor: string): void {}
-
-  /**
-   * Return the current circle stroke color (outer color).
-   * @return {string}
-   */
-  @CordovaInstance({ sync: true })
-  getStrokeColor(): string { return; }
-
-  /**
-   * Change clickablity of the circle.
-   * @param clickable {boolean}
-   */
-  @CordovaInstance({ sync: true })
-  setClickable(clickable: boolean): void {}
-
-  /**
-   * Return true if the circle is clickable.
-   * @return {boolean}
-   */
-  @CordovaInstance({ sync: true })
-  getClickable(): boolean { return; }
-
-  /**
-   * Change the circle zIndex order.
-   * @param zIndex {number}
-   */
-  @CordovaInstance({ sync: true })
-  setZIndex(zIndex: number): void {}
-
-  /**
-   * Return the current circle zIndex.
-   * @return {number}
-   */
-  @CordovaInstance({ sync: true })
-  getZIndex(): number { return; }
-
-  /**
-   * Remove the circle.
-   */
-  @CordovaInstance({ sync: true })
-  remove(): void {}
-
-  /**
-   * Return the latLngBounds (rectangle) that contains the circle.
-   * @return {LatLngBounds}
-   */
-  @CordovaInstance({ sync: true })
-  getBounds(): LatLngBounds { return; }
-
-  /**
-   * Set circle visibility
-   * @param visible {boolean}
-   */
-  @CordovaInstance({ sync: true })
-  setVisible(visible: boolean): void {}
-
-  /**
-   * Returns a boolean that indicates whether the circle is visible
-   * @return {boolean}
-   */
-  @CordovaInstance({ sync: true })
-  getVisible(): boolean { return; }
-}
-
-/**
- * @hidden
- */
-export class Polyline extends BaseClass {
-  constructor(_objectInstance: any) {
-    super();
-    this._objectInstance = _objectInstance;
-  }
-
-  @CordovaInstance({ sync: true })
-  getPoints(): Array<LatLng> { return; }
-
-  @CordovaInstance({ sync: true })
-  getCOlor(): string { return; }
-
-  @CordovaInstance({ sync: true })
-  getWidth(): number { return; }
-
-  @CordovaInstance({ sync: true })
-  getGeodesic(): boolean { return; }
-
-  @CordovaInstance({ sync: true })
-  getZIndex(): number { return; }
-
-  @CordovaInstance({ sync: true })
-  remove(): void { }
-
-  @CordovaInstance({ sync: true })
-  setPoints(points: Array<LatLng>): void { }
-
-  @CordovaInstance({ sync: true })
-  setColor(color: string): void { }
-
-  @CordovaInstance({ sync: true })
-  setWidth(width: number): void { }
-
-  @CordovaInstance({ sync: true })
-  setVisible(visible: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  setZIndex(zIndex: number): void { }
-
-  @CordovaInstance({ sync: true })
-  setGeoDesic(geoDesic: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  getMap(): GoogleMap { return; }
-
-}
-
-/**
- * @hidden
- */
 export class Polygon extends BaseClass {
 
   constructor(_objectInstance: any) {
@@ -1400,6 +1487,56 @@ export class Polygon extends BaseClass {
 /**
  * @hidden
  */
+export class Polyline extends BaseClass {
+  constructor(_objectInstance: any) {
+    super();
+    this._objectInstance = _objectInstance;
+  }
+
+  @CordovaInstance({ sync: true })
+  getPoints(): Array<LatLng> { return; }
+
+  @CordovaInstance({ sync: true })
+  getCOlor(): string { return; }
+
+  @CordovaInstance({ sync: true })
+  getWidth(): number { return; }
+
+  @CordovaInstance({ sync: true })
+  getGeodesic(): boolean { return; }
+
+  @CordovaInstance({ sync: true })
+  getZIndex(): number { return; }
+
+  @CordovaInstance({ sync: true })
+  remove(): void { }
+
+  @CordovaInstance({ sync: true })
+  setPoints(points: Array<LatLng>): void { }
+
+  @CordovaInstance({ sync: true })
+  setColor(color: string): void { }
+
+  @CordovaInstance({ sync: true })
+  setWidth(width: number): void { }
+
+  @CordovaInstance({ sync: true })
+  setVisible(visible: boolean): void { }
+
+  @CordovaInstance({ sync: true })
+  setZIndex(zIndex: number): void { }
+
+  @CordovaInstance({ sync: true })
+  setGeoDesic(geoDesic: boolean): void { }
+
+  @CordovaInstance({ sync: true })
+  getMap(): GoogleMap { return; }
+
+}
+
+/**
+ * @hidden
+ */
 export class TileOverlay extends BaseClass {
 
   constructor(_objectInstance: any) {
@@ -1439,41 +1576,7 @@ export class TileOverlay extends BaseClass {
 
 }
 
-/**
- * @hidden
- */
-export class GroundOverlay extends BaseClass {
-
-  constructor(_objectInstance: any) {
-    super();
-    this._objectInstance = _objectInstance;
-  }
-
-  @CordovaInstance({ sync: true })
-  setBearing(bearing: number): void { }
-
-  @CordovaInstance({ sync: true })
-  getBearing(): number { return; }
-
-  @CordovaInstance({ sync: true })
-  setOpacity(opacity: number): void { }
-
-  @CordovaInstance({ sync: true })
-  getOpacity(): number { return; }
-
-  @CordovaInstance({ sync: true })
-  setVisible(visible: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  getVisible(): boolean { return; }
-
-  @CordovaInstance({ sync: true })
-  setImage(image: string): void { };
-
-  @CordovaInstance({ sync: true })
-  remove(): void { }
-
-}
+// TODO add spherical utility class here
 
 // /**
 //  * @hidden
@@ -1483,7 +1586,6 @@ export class GroundOverlay extends BaseClass {
 //   preserveViewport?: boolean;
 //   animation?: boolean;
 // }
-
 // /**
 //  * @hidden
 //  */
@@ -1575,113 +1677,3 @@ export class GroundOverlay extends BaseClass {
 //   @CordovaInstance({ sync: true })
 //   getOverlays(): Array<Polyline | Polygon | Marker> { return; }
 // }
-
-/**
- * @hidden
- */
-export class LatLngBounds {
-  private _objectInstance: any;
-
-  @InstanceProperty northeast: LatLng;
-  @InstanceProperty southwest: LatLng;
-  @InstanceProperty type: string;
-
-  constructor(southwestOrArrayOfLatLng: LatLng | LatLng[], northeast?: LatLng) {
-    let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
-    this._objectInstance = new plugin.google.maps.LatLngBounds(args);
-  }
-
-  @CordovaInstance({ sync: true })
-  toString(): string { return; }
-
-  @CordovaInstance({ sync: true })
-  toUrlValue(precision?: number): string { return; }
-
-  @CordovaInstance({ sync: true })
-  extend(LatLng: LatLng): void { }
-
-  @CordovaInstance({ sync: true })
-  contains(LatLng: LatLng): boolean { return; }
-
-  @CordovaInstance({ sync: true })
-  getCenter(): LatLng { return; }
-}
-
-/**
- * @hidden
- */
-export class LatLng implements ILatLng {
-
-  lat: number;
-  lng: number;
-
-  constructor(lat: number, lng: number) {
-    this.lat = lat;
-    this.lng = lng;
-  }
-
-  equals(other: ILatLng): boolean {
-    return this.lat === other.lat && this.lng === other.lng;
-  }
-
-  toString(): string {
-    return this.lat + ',' + this.lng;
-  }
-
-  toUrlValue(precision?: number): string {
-    precision = precision || 6;
-
-    return this.lat.toFixed(precision) + ',' + this.lng.toFixed(precision);
-  }
-}
-
-/**
- * @hidden
- */
-export interface GeocoderRequest {
-  address?: string | string[];
-  position?: ILatLng | ILatLng[];
-}
-
-/**
- * @hidden
- */
-export interface GeocoderResult {
-  adminArea?: string;
-  country?: string;
-  countryCode?: string;
-  extra?: {
-    featureName?: string;
-    lines?: Array<string>;
-    permises?: string;
-    phone?: string;
-    url?: string
-  };
-  locale?: string;
-  locality?: string;
-  position?: { lat: number; lng: number };
-  postalCode?: string;
-  subAdminArea?: string;
-  subLocality?: string;
-  subThoroughfare?: string;
-  thoroughfare?: string;
-}
-
-/**
- * @hidden
- */
-@Plugin({
-  pluginName: 'GoogleMaps',
-  pluginRef: 'plugin.google.maps.Geocoder',
-  plugin: 'cordova-plugin-googlemaps',
-  repo: ''
-})
-export class Geocoder {
-  /**
-   * Converts position to address and vice versa
-   * @param {GeocoderRequest} request Request object with either an address or a position
-   * @returns {Promise<GeocoderResult | BaseArrayClass<GeocoderResult>>}
-   */
-  @Cordova()
-  geocode(request: GeocoderRequest): Promise<GeocoderResult | BaseArrayClass<GeocoderResult>> { return; }
-}
