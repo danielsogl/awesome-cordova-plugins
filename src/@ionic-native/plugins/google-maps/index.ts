@@ -934,8 +934,22 @@ export class Environment extends IonicNativePlugin {
    * Specifies the background color of the app.
    * @param color
    */
-  @Cordova()
+  @Cordova({ sync: true })
   setBackgroundColor(color: string): void {}
+
+  /**
+   * Set maps to debuggable
+   * @param debug {boolean}
+   */
+  @Cordova({ sync: true })
+  setDebuggable(debug: boolean): void {}
+
+  /**
+   * Checks if plugin is available
+   * @return {Promise<boolean>}
+   */
+  @Cordova()
+  isAvailable(): Promise<boolean> { return; }
 
 }
 
