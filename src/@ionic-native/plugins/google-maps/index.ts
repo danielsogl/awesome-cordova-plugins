@@ -180,9 +180,14 @@ export interface MarkerOptions {
 
 export interface MyLocation {
   latLng?: LatLng;
-  speed?: number;
+  elapsedRealtimeNanos?: any;
   time?: string;
+  accuracy?: any;
   bearing?: number;
+  altitude?: any;
+  speed?: number;
+  provider?: any;
+  hashCode?: any;
 }
 
 export interface MyLocationOptions {
