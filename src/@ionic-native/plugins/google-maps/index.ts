@@ -1621,50 +1621,119 @@ export class Polygon extends BaseClass {
     this._objectInstance = _objectInstance;
   }
 
+  /**
+   * Change the polygon points.
+   * @param points {ILatLng[]}
+   */
   @CordovaInstance({ sync: true })
-  getPoints(): Array<LatLng> { return; }
+  setPoints(points: ILatLng[]): void {}
 
+  /**
+   * Return an instance of the BaseArrayClass.
+   * You can modify the points.
+   * @return {BaseArrayClass<ILatLng>}
+   */
+  @CordovaInstance({ sync: true })
+  getPoints(): BaseArrayClass<ILatLng> { return; }
+
+  /**
+   * Change the polygon holes.
+   * @param holes {ILatLng[][]}
+   */
+  @CordovaInstance({ sync: true })
+  setHoles(holes: ILatLng[][]): void {}
+
+  /**
+   * Return an instance of the BaseArrayClass.
+   * You can modify the holes.
+   * @return {BaseArrayClass<ILatLng[]>}
+   */
+  @CordovaInstance({ sync: true })
+  getHoles(): BaseArrayClass<ILatLng[]> { return; }
+
+  /**
+   * Change the filling color (inner color)
+   * @param fillColor {string}
+   */
+  @CordovaInstance({ sync: true })
+  setFillColor(fillColor: string): void {}
+
+  /**
+   * Return the current polygon filling color (inner color).
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getFillColor(): string { return; }
+
+  /**
+   * Change the stroke color (outter color)
+   * @param strokeColor {string}
+   */
+  @CordovaInstance({ sync: true })
+  setStrokeColor(strokeColor: string): void {}
+
+  /**
+   * Return the current polygon stroke color (outer color)
+   * @return {string}
+   */
   @CordovaInstance({ sync: true })
   getStrokeColor(): string { return; }
 
+  /**
+   * Change clickablity of the polygon
+   * @param clickable {boolean}
+   */
   @CordovaInstance({ sync: true })
-  getFillColor(): string { return; }
+  setClickable(clickable: boolean): void {}
+
+  /**
+   * Return true if the polygon is clickable
+   */
+  @CordovaInstance({ sync: true })
+  getClickable(): boolean { return; }
+
+  /**
+   * Change visibility of the polygon
+   * @param visible {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setVisible(visible: boolean): void {}
+
+  /**
+   * Return true if the polygon is visible
+   * @return {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  getVisible(): boolean { return; }
+
+  /**
+   * Change the polygon zIndex order.
+   * @param zIndex {number}
+   */
+  @CordovaInstance({ sync: true })
+  setZIndex(zIndex: number): void {}
+
+  /**
+   * Return the current polygon zIndex
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  getZIndex(): number { return; }
+
+  @CordovaInstance({ sync: true })
+  remove(): void {}
+
+  @CordovaInstance({ sync: true })
+  setStrokeWidth(strokeWidth: number): void {}
 
   @CordovaInstance({ sync: true })
   getStrokeWidth(): number { return; }
 
   @CordovaInstance({ sync: true })
+  setGeodesic(geodesic: boolean): void {}
+
+  @CordovaInstance({ sync: true })
   getGeodesic(): boolean { return; }
-
-  @CordovaInstance({ sync: true })
-  getVisible(): boolean { return; }
-
-  @CordovaInstance({ sync: true })
-  getZIndex(): boolean { return; }
-
-  @CordovaInstance({ sync: true })
-  remove(): void { }
-
-  @CordovaInstance({ sync: true })
-  setPoints(points: Array<LatLng>): void { }
-
-  @CordovaInstance({ sync: true })
-  setStrokeColor(strokeColor: string): void { }
-
-  @CordovaInstance({ sync: true })
-  setFillColor(fillColor: string): void { }
-
-  @CordovaInstance({ sync: true })
-  setStrokeWidth(strokeWidth: number): void { }
-
-  @CordovaInstance({ sync: true })
-  setVisible(visible: boolean): void { }
-
-  @CordovaInstance({ sync: true })
-  setZIndex(zIndex: number): void { }
-
-  @CordovaInstance({ sync: true })
-  setGeodesic(geodesic: boolean): void { }
 }
 
 /**
