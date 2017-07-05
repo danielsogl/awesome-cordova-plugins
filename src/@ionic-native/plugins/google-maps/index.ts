@@ -893,6 +893,11 @@ export class GoogleMap extends BaseClass {
 export class GoogleMaps extends IonicNativePlugin {
 
   /**
+   * @hidden
+   */
+  _environment: Environment = new Environment();
+
+  /**
    * Checks if a map object has been created and is available.
    *
    * @returns {Promise<boolean>}
@@ -908,6 +913,14 @@ export class GoogleMaps extends IonicNativePlugin {
    */
   create(element: string | HTMLElement, options?: any): GoogleMap {
     return new GoogleMap(element, options);
+  }
+
+  /**
+   * Convenience method that returns an instance of Environment class
+   * @return {Object}
+   */
+  environment(): Environment {
+    return this._environment;
   }
 
 }
