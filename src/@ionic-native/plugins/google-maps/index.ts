@@ -1131,8 +1131,6 @@ export class Marker extends BaseClass {
  */
 export class Circle extends BaseClass {
 
-  @CordovaInstance({ sync: true })
-
   constructor(_objectInstance: any) {
     super();
     this._objectInstance = _objectInstance;
