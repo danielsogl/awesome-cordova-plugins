@@ -1246,6 +1246,20 @@ export class Circle extends BaseClass {
    */
   @CordovaInstance({ sync: true })
   getBounds(): LatLngBounds { return; }
+
+  /**
+   * Set circle visibility
+   * @param visible {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setVisible(visible: boolean): void {}
+
+  /**
+   * Returns a boolean that indicates whether the circle is visible
+   * @return {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  getVisible(): boolean { return; }
 }
 
 /**
