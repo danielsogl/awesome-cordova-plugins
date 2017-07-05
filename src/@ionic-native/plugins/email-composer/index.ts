@@ -9,20 +9,44 @@ declare const cordova: Cordova;
 
 export interface EmailComposerOptions {
 
+  /**
+   * App to send the email with
+   */
   app?: string;
 
+  /**
+   * Email address(es) for To field
+   */
   to?: string | Array<string>;
 
+  /**
+   * Email address(es) for CC field
+   */
   cc?: string | Array<string>;
 
+  /**
+   * Email address(es) for BCC field
+   */
   bcc?: string | Array<string>;
 
-  attachments?: Array<any>;
+  /**
+   * File paths or base64 data streams
+   */
+  attachments?: string[];
 
+  /**
+   * Subject of the email
+   */
   subject?: string;
 
+  /**
+   * Email body (for HTML, set isHtml to true)
+   */
   body?: string;
 
+  /**
+   * Indicates if the body is HTML or plain text
+   */
   isHtml?: boolean;
 
 }
@@ -74,9 +98,9 @@ export interface EmailComposerOptions {
  */
 @Plugin({
   pluginName: 'EmailComposer',
-  plugin: 'cordova-plugin-email',
+  plugin: 'cordova-plugin-email-composer',
   pluginRef: 'cordova.plugins.email',
-  repo: 'https://github.com/hypery2k/cordova-email-plugin',
+  repo: 'https://github.com/katzer/cordova-plugin-email-composer',
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
