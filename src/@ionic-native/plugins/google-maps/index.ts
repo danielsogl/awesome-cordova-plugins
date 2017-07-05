@@ -28,10 +28,26 @@ export interface AnimateCameraOptions {
 }
 
 export interface CameraPosition {
+  /**
+   * The center location of the camera view.
+   */
   target?: LatLng | LatLngBounds | LatLng[];
-  zoom?: number;
+  /**
+   * View angle
+   */
   tilt?: number;
+  /**
+   * Zoom level
+   */
+  zoom?: number;
+  /**
+   * Map orientation
+   */
   bearing?: number;
+  /**
+   * The duration of animation in milliseconds
+   */
+  duration?: number;
 }
 
 export interface MyLocation {
