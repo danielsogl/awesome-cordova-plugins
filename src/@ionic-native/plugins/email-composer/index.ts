@@ -91,7 +91,18 @@ export interface EmailComposerOptions {
  *
  * // Send a text message using default options
  * this.emailComposer.open(email);
+ * ```
  *
+ * You can also assign aliases to email apps
+ * ```ts
+ * // add alias
+ * this.email.addAlias('gmail', 'com.google.android.gm');
+ *
+ * // then use alias when sending email
+ * this.email.open({
+ *   app: 'gmail',
+ *   ...
+ * });
  * ```
  * @interfaces
  * EmailComposerOptions
