@@ -1414,37 +1414,94 @@ export class Marker extends BaseClass {
   }
 
   /**
-   * Return true if the marker is visible
+   * Set the marker position.
+   * @param latLng {LatLng}
    */
   @CordovaInstance({ sync: true })
-  isVisible(): boolean { return; }
+  setPosition(latLng: LatLng): void { return; }
+
+  /**
+   * Return the marker position.
+   * @return {Promise<LatLng>}
+   */
+  @CordovaInstance()
+  getPosition(): Promise<LatLng> { return; }
+
+  /**
+   * Show the infoWindow of the marker.
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  showInfoWindow(): number { return; }
+
+  /**
+   * Hide the infoWindow of the marker.
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  hideInfoWindow(): number { return; }
+
+  /**
+   * Specify the animation either `DROP` or `BOUNCE`
+   * @param animation {string}
+   */
+  @CordovaInstance({ sync: true })
+  setAnimation(animation: string): void {}
+
+  /**
+   * Set true if you **do not want** to move the map when you click on the marker.
+   * @param disableAutoPan {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setDisableAutoPan(disableAutoPan: boolean): void {}
 
   /**
    * Set false if you want to hide the marker.
    * @param visible
    */
   @CordovaInstance()
-  setVisible(visible: boolean): void { }
+  setVisible(visible: boolean): void {}
 
   /**
-   * Return the marker hash code.
-   * @return {string} Marker hash code
+   * Return true if the marker is visible
    */
   @CordovaInstance({ sync: true })
-  getHashCode(): string { return; }
+  isVisible(): boolean { return; }
 
   /**
-   * Remove the marker completely.
+   * Change title of the infoWindow.
+   * @param title {string}
    */
   @CordovaInstance({ sync: true })
-  remove(): void { }
+  setTitle(title: string): void {}
+
+  /**
+   * Return the title strings.
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getTitle(): string { return; }
+
+  /**
+   * Change snippet of the infoWindow.
+   * @param snippet {string}
+   */
+  @CordovaInstance({ sync: true })
+  setSnippet(snippet: string): void {}
+
+  /**
+   * Return the snippet strings.
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getSnippet(): string { return; }
 
   /**
    * Change the marker opacity.
    * @param alpha {number} Opacity
    */
   @CordovaInstance({ sync: true })
-  setOpacity(alpha: number): void { }
+  setOpacity(alpha: number): void {}
 
   /**
    * Return the marker opacity.
@@ -1454,11 +1511,10 @@ export class Marker extends BaseClass {
   getOpacity(): number { return; }
 
   /**
-   * iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
-   * @return {number}
+   * Remove the marker completely.
    */
   @CordovaInstance({ sync: true })
-  setZIndex(): number { return; }
+  remove(): void {}
 
   /**
    * Change the info window anchor. This defaults to 50% from the left of the image and at the bottom of the image.
@@ -1466,7 +1522,7 @@ export class Marker extends BaseClass {
    * @param y {number}
    */
   @CordovaInstance({ sync: true })
-  setIconAnchor(x: number, y: number): void { }
+  setIconAnchor(x: number, y: number): void {}
 
   /**
    * Change the info window anchor. This defaults to 50% from the left of the image and at the top of the image.
@@ -1474,7 +1530,34 @@ export class Marker extends BaseClass {
    * @param y {number}
    */
   @CordovaInstance({ sync: true })
-  setInfoWindowAnchor(x: number, y: number): void { }
+  setInfoWindowAnchor(x: number, y: number): void {}
+
+  /**
+   * Retrurn true if the infoWindow is shown on the marker
+   * @return {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  isInfoWindowShown(): boolean { return; }
+
+  /**
+   * Return the marker hash code.
+   * @return {string} Marker hash code
+   */
+  @CordovaInstance({ sync: true })
+  getHashCode(): string { return; }
+
+  /**
+   * iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
+   */
+  @CordovaInstance({ sync: true })
+  setZIndex(): void {}
+
+  /**
+   * Get z-index
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  getZIndex(): number { return; }
 
   /**
    * 	Set true if you allows all users to drag the marker.
@@ -1505,34 +1588,6 @@ export class Marker extends BaseClass {
   setIcon(icon: MarkerIcon): void { return; }
 
   /**
-   * Change title of the infoWindow.
-   * @param title {string}
-   */
-  @CordovaInstance({ sync: true })
-  setTitle(title: string): void { }
-
-  /**
-   * Return the title strings.
-   * @return {string}
-   */
-  @CordovaInstance({ sync: true })
-  getTitle(): string { return; }
-
-  /**
-   * Change snippet of the infoWindow.
-   * @param snippet {string}
-   */
-  @CordovaInstance({ sync: true })
-  setSnippet(snippet: string): void { }
-
-  /**
-   * Return the snippet strings.
-   * @return {string}
-   */
-  @CordovaInstance({ sync: true })
-  getSnippet(): string { return; }
-
-  /**
    * Set the marker rotation angle.
    * @param rotation {number}
    */
@@ -1547,47 +1602,12 @@ export class Marker extends BaseClass {
   getRotation(): number { return; }
 
   /**
-   * Show the infoWindow of the marker.
-   * @return {number}
-   */
-  @CordovaInstance({ sync: true })
-  showInfoWindow(): number { return; }
-
-  /**
-   * Hide the infoWindow of the marker.
-   * @return {number}
-   */
-  @CordovaInstance({ sync: true })
-  hideInfoWindow(): number { return; }
-
-  /**
-   * Set the marker position.
-   * @param latLng {LatLng}
-   */
-  @CordovaInstance({ sync: true })
-  setPosition(latLng: LatLng): void { return; }
-
-  /**
-   * Return the marker position.
-   * @return {Promise<LatLng>}
-   */
-  @CordovaInstance()
-  getPosition(): Promise<LatLng> { return; }
-
-  /**
    * Return the map instance.
    * Note that this method returns the original Google Map object, and not the Ionic Native wrapper.
    * @return {Object}
    */
   @CordovaInstance({ sync: true })
   getMap(): any { return; }
-
-  /**
-   * Specify the animation either `DROP` or `BOUNCE`
-   * @param animation {string}
-   */
-  @CordovaInstance({ sync: true })
-  setAnimation(animation: string): void { }
 
 }
 
