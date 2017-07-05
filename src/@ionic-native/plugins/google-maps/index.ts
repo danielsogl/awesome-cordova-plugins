@@ -72,11 +72,29 @@ export interface GeocoderResult {
 }
 
 export interface GroundOverlayOptions {
+  /**
+   * URL of overlay
+   */
   url?: string;
+  /**
+   * Bounds, array of LatLng
+   */
   bounds?: Array<LatLng>;
+  /**
+   * Set to false to hide
+   */
   visible?: boolean;
+  /**
+   * Opacity. From 0 to 1.
+   */
   opacity?: number;
+  /**
+   * Bearing
+   */
   bearing?: number;
+  /**
+   * Z-index
+   */
   zIndex?: number;
 }
 
