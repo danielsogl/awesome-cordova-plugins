@@ -1354,18 +1354,39 @@ export class LatLngBounds {
     this._objectInstance = new (GoogleMaps.getPlugin()).LatLngBounds(args);
   }
 
+  /**
+   * Converts to string
+   * @return {string}
+   */
   @CordovaInstance({ sync: true })
   toString(): string { return; }
 
+  /**
+   * Returns a string of the form "lat_lo,lng_lo,lat_hi,lng_hi" for this bounds, where "lo" corresponds to the southwest corner of the bounding box, while "hi" corresponds to the northeast corner of that box.
+   * @param precision {number}
+   * @return {string}
+   */
   @CordovaInstance({ sync: true })
   toUrlValue(precision?: number): string { return; }
 
+  /**
+   * Extends this bounds to contain the given point.
+   * @param LatLng {ILatLng}
+   */
   @CordovaInstance({ sync: true })
-  extend(LatLng: LatLng): void { }
+  extend(LatLng: ILatLng): void {}
 
+  /**
+   * Returns true if the given lat/lng is in this bounds.
+   * @param LatLng {ILatLng}
+   */
   @CordovaInstance({ sync: true })
-  contains(LatLng: LatLng): boolean { return; }
+  contains(LatLng: ILatLng): boolean { return; }
 
+  /**
+   * Computes the center of this LatLngBounds
+   * @return {ILatLng}
+   */
   @CordovaInstance({ sync: true })
   getCenter(): LatLng { return; }
 }
