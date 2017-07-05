@@ -290,7 +290,7 @@ export class BaseClass {
  * @hidden
  */
 @Plugin({
-  plugin: 'GoogleMaps',
+  plugin: 'cordova-plugin-googlemaps',
   pluginName: 'GoogleMaps',
   pluginRef: 'plugin.google.maps.BaseArrayClass',
   repo: ''
@@ -900,7 +900,7 @@ export class GoogleMaps extends IonicNativePlugin {
  * @hidden
  */
 @Plugin({
-  plugin: 'GoogleMaps',
+  plugin: 'cordova-plugin-googlemaps',
   pluginName: 'GoogleMaps',
   pluginRef: 'plugin.google.maps.environment',
   repo: ''
@@ -1543,7 +1543,7 @@ export interface GeocoderResult {
  * @hidden
  */
 @Plugin({
-  pluginName: 'Geocoder',
+  pluginName: 'GoogleMaps',
   pluginRef: 'plugin.google.maps.Geocoder',
   plugin: 'cordova-plugin-googlemaps',
   repo: ''
@@ -1554,10 +1554,6 @@ export class Geocoder {
    * @param {GeocoderRequest} request Request object with either an address or a position
    * @returns {Promise<GeocoderResult | BaseArrayClass<GeocoderResult>>}
    */
-  @CordovaCheck()
-  geocode(request: GeocoderRequest): Promise<GeocoderResult | BaseArrayClass<GeocoderResult>> {
-    return new Promise<GeocoderResult[]>((resolve: Function) => {
-      plugin.google.maps.Geocoder.geocode(request, resolve);
-    });
-  }
+  @Cordova()
+  geocode(request: GeocoderRequest): Promise<GeocoderResult | BaseArrayClass<GeocoderResult>> { return; }
 }
