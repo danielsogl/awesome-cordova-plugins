@@ -1172,29 +1172,101 @@ export class GroundOverlay extends BaseClass {
     this._objectInstance = _objectInstance;
   }
 
+  /**
+   * Change the bounds of the GroundOverlay
+   * @param bounds {ILatLng[]}
+   */
+  @CordovaInstance({ sync: true })
+  setBounds(bounds: ILatLng[]): void {}
+
+  /**
+   * Return the current center position
+   * @return {ILatLng[]}
+   */
+  @CordovaInstance({ sync: true })
+  getBounds(): ILatLng[] { return; }
+
+  /**
+   * Change the bearing of the ground overlay
+   * @param bearing {number}
+   */
   @CordovaInstance({ sync: true })
   setBearing(bearing: number): void { }
 
+  /**
+   * Return the current bearing value
+   */
   @CordovaInstance({ sync: true })
   getBearing(): number { return; }
 
+  /**
+   * Change the image of the ground overlay
+   * @param image {string} URL of image
+   */
+  @CordovaInstance({ sync: true })
+  setImage(image: string): void {};
+
+  /**
+   * Change the opacity of the ground overlay
+   * @param opacity {number}
+   */
   @CordovaInstance({ sync: true })
   setOpacity(opacity: number): void { }
 
+  /**
+   * Return the current opacity
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
   getOpacity(): number { return; }
 
+  /**
+   * Change clickablity of the ground overlay
+   * @param clickable {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setClickable(clickable: boolean): void {}
+
+  /**
+   * Return true if the ground overlay is clickable
+   * @return {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  getClickable(): boolean { return; }
+
+  /**
+   * Change visibility of the ground overlay
+   * @param visible {boolean}
+   */
   @CordovaInstance({ sync: true })
   setVisible(visible: boolean): void { }
 
+  /**
+   * Return true if the ground overlay is visible
+   * @return {boolean}
+   */
   @CordovaInstance({ sync: true })
   getVisible(): boolean { return; }
 
+  /**
+   * Change the ground overlay zIndex order
+   * @param index {number}
+   */
   @CordovaInstance({ sync: true })
-  setImage(image: string): void { };
+  setZIndex(index: number): void {}
 
+  /**
+   * Return the current ground overlay zIndex
+   * @return {number}
+   */
   @CordovaInstance({ sync: true })
-  remove(): void { }
+  getZIndex(): number { return; }
+
+  /**
+   * Remove the ground overlay
+   */
+  @CordovaInstance({ sync: true })
+  remove(): void {}
 
 }
 
