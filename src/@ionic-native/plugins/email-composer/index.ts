@@ -147,6 +147,26 @@ export class EmailComposer extends IonicNativePlugin {
   }
 
   /**
+   * Request permission to access email accounts information
+   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
+   */
+  @Cordova({
+    successIndex: 0,
+    errorIndex: 2
+  })
+  requestPermission(): Promise<boolean> { return; }
+
+  /**
+   * Checks if the app has a permission to access email accounts information
+   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
+   */
+  @Cordova({
+    successIndex: 0,
+    errorIndex: 2
+  })
+  hasPermission(): Promise<boolean> { return; }
+
+  /**
    * Adds a new mail app alias.
    *
    * @param alias {string} The alias name
