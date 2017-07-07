@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CordovaInstance, Plugin, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 /**
  * @hidden
  */
 export class MediaObject {
 
-  constructor(private _objectInstance: any) {}
+  constructor(private _objectInstance: any, public onSuccess: Observable<any>, public onError: Observable<any>, public onStatusUpdate: Observable<any>) {}
 
   /**
    * Get the current amplitude of the current recording.
@@ -119,31 +121,6 @@ export type MediaErrorCallback = (error: MediaError) => void;
  * @description
  * This plugin provides the ability to record and play back audio files on a device.
  *
- * Some hints if you are using iOS and recording doesn't work:
- * 1.) Try to use a absolute file path but remove beginning "file://".
- * Then it looks like: `/var/mobile/Containers/Data/Application/AF438B8B-7724-4FBB-8E69-083463224FC4/tmp/my_file.m4a`
- * Example: `this.media.create(this.file.tempDirectory.replace(/^file:\/\//, '') + 'my_file.m4a')`
- * 2.) If that's not working, too, create the file before using.
- * Example:
- * ```typescript
- * import { Media, MediaObject } from '@ionic-native/media';
- * import { File } from '@ionic-native/file';
- *
- * ...
- *
- * constructor(private media: Media, private file: File) { }
- *
- * ...
- *
- * this.file.createFile(this.file.tempDirectory, 'my_file.m4a', true).then(() => {
- *   let file = this.media.create(this.file.tempDirectory.replace(/^file:\/\//, '') + 'my_file.m4a');
- *   file.startRecord();
- *   window.setTimeout(() => file.stopRecord(), 10000);
- * });
- * ```
- *
- * You can find the reasons here: https://github.com/ionic-team/ionic-native/issues/1452#issuecomment-299605906
- *
  * @usage
  * ```typescript
  * import { Media, MediaObject } from '@ionic-native/media';
@@ -158,11 +135,15 @@ export type MediaErrorCallback = (error: MediaError) => void;
  * // Create a Media instance.  Expects path to file or url as argument
  * // We can optionally pass a second argument to track the status of the media
  *
- * const onStatusUpdate = (status) => console.log(status);
- * const onSuccess = () => console.log('Action is successful.');
- * const onError = (error) => console.error(error.message);
+ * const file: MediaObject = this.media.create('file.mp3');
  *
- * const file: MediaObject = this.media.create('path/to/file.mp3', onStatusUpdate, onSuccess, onError);
+ * // to listen to plugin events:
+ *
+ * file.onStatusUpdate.subscribe(status => console.log(status)); // fires when file status changes
+ *
+ * file.onSuccess.subscribe(() => console.log('Action is successful'));
+ *
+ * file.onError.subscribe(error => console.log('Error!', error));
  *
  * // play the file
  * file.play();
@@ -202,6 +183,31 @@ export type MediaErrorCallback = (error: MediaError) => void;
  *
  *
  * ```
+ *
+ * Some hints if you are using iOS and recording doesn't work:
+ * 1.) Try to use a absolute file path but remove beginning "file://".
+ * Then it looks like: `/var/mobile/Containers/Data/Application/AF438B8B-7724-4FBB-8E69-083463224FC4/tmp/my_file.m4a`
+ * Example: `this.media.create(this.file.tempDirectory.replace(/^file:\/\//, '') + 'my_file.m4a')`
+ * 2.) If that's not working, too, create the file before using.
+ * Example:
+ * ```typescript
+ * import { Media, MediaObject } from '@ionic-native/media';
+ * import { File } from '@ionic-native/file';
+ *
+ * ...
+ *
+ * constructor(private media: Media, private file: File) { }
+ *
+ * ...
+ *
+ * this.file.createFile(this.file.tempDirectory, 'my_file.m4a', true).then(() => {
+ *   let file = this.media.create(this.file.tempDirectory.replace(/^file:\/\//, '') + 'my_file.m4a');
+ *   file.startRecord();
+ *   window.setTimeout(() => file.stopRecord(), 10000);
+ * });
+ * ```
+ *
+ * You can find the reasons here: https://github.com/ionic-team/ionic-native/issues/1452#issuecomment-299605906
  * @classes
  * MediaObject
  * @interfaces
@@ -265,19 +271,33 @@ export class Media extends IonicNativePlugin {
    * @param [onError] {MediaErrorCallback} A callback function is be invoked if an error occurs.
    * @return {MediaObject}
    */
-  create(src: string,
-    onStatusUpdate?: MediaStatusUpdateCallback,
-    onSuccess?: Function,
-    onError?: MediaErrorCallback): MediaObject {
+  create(src: string): MediaObject {
 
-    let instance: any;
+    let instance: any,
+      onSuccess: Function,
+      onError: Function,
+      onStatusUpdate: Function;
+
+
+    const onSuccessObservable: Observable<any> = new Observable<any>((observer: Observer<any>) => {
+        onSuccess = observer.next.bind(observer);
+        return () => {};
+      }),
+      onErrorObservable: Observable<any> = new Observable<any>((observer: Observer<any>) => {
+        onError = observer.next.bind(observer);
+        return () => {};
+      }),
+      onStatusUpdateObservable: Observable<any> = new Observable<any>((observer: Observer<any>) => {
+        onStatusUpdate = observer.next.bind(observer);
+        return () => {};
+      });
 
     if (checkAvailability(Media.getPluginRef(), null, Media.getPluginName()) === true) {
       // Creates a new media object
       instance = new (Media.getPlugin())(src, onSuccess, onError, onStatusUpdate);
     }
 
-    return new MediaObject(instance);
+    return new MediaObject(instance, onSuccessObservable, onErrorObservable, onStatusUpdateObservable);
 
   }
 
