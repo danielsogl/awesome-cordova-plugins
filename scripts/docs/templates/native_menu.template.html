@@ -4,11 +4,7 @@
 <li class="capitalize {% if page.id == 'mocking' %}active{% endif %}">
   <a href="/docs/native/browser.html">Browser Usage</a>
 </li>
-<@- for doc in docs @><@ if doc.URL and doc.private != true and doc.beta != true @>
+<@- for doc in docs @><@ if doc.URL and doc.private != true @>
 <li class="capitalize {% if page.id == '<$ doc.name|lower|dashify $>' %}active{% endif %}">
-  <a href="/<$ doc.URL $>"><$ doc.name $></a>
-</li><@ endif @><@ endfor @>
-<@- for doc in docs @><@ if doc.URL and doc.private != true and doc.beta == true @>
-<li class="capitalize {% if page.id == '<$ doc.name|lower|dashify $>' %}active{% endif %}">
-  <a href="/<$ doc.URL $>"><$ doc.name $> <span class="beta">&beta;</span></a>
+  <a href="/<$ doc.URL $>"><$ doc.name $></a> <@ if doc.paid == true @><span class="paid">Paid</span><@ endif @><@ if doc.beta == true @><span class="beta">&beta;</span><@ endif @>
 </li><@ endif @><@ endfor @>

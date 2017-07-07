@@ -172,12 +172,10 @@ export interface NativeKeyboardUpdateMessengerOptions {
 }
 
 /**
+ * @paid
  * @name Native Keyboard
  * @description
  * A cross platform WhatsApp / Messenger / Slack -style keyboard even. For your Cordova app.
- *
- *
- * IMPORTANT NOTICE: this plugin is paid, please read more about this at the [plugin's repo](https://github.com/EddyVerbruggen/cordova-plugin-native-keyboard#i-like-it-hook-me-up).
  *
  *
  * @usage
