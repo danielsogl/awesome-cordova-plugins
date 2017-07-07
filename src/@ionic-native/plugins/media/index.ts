@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CordovaInstance, Plugin, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 
-declare const Media: any;
-// TODO for ionic native 4.x ... rename plugin class to Media and use Media.getPlugin() to retrieve the original media object
-
 /**
  * @hidden
  */
@@ -129,12 +126,12 @@ export type MediaErrorCallback = (error: MediaError) => void;
  * 2.) If that's not working, too, create the file before using.
  * Example:
  * ```typescript
- * import { MediaPlugin, MediaObject } from '@ionic-native/media';
+ * import { Media, MediaObject } from '@ionic-native/media';
  * import { File } from '@ionic-native/file';
  *
  * ...
  *
- * constructor(private media: MediaPlugin, private file: File) { }
+ * constructor(private media: Media, private file: File) { }
  *
  * ...
  *
@@ -149,16 +146,16 @@ export type MediaErrorCallback = (error: MediaError) => void;
  *
  * @usage
  * ```typescript
- * import { MediaPlugin, MediaObject } from '@ionic-native/media';
+ * import { Media, MediaObject } from '@ionic-native/media';
  *
  *
- * constructor(private media: MediaPlugin) { }
+ * constructor(private media: Media) { }
  *
  *
  * ...
  *
  *
- * // Create a MediaPlugin instance.  Expects path to file or url as argument
+ * // Create a Media instance.  Expects path to file or url as argument
  * // We can optionally pass a second argument to track the status of the media
  *
  * const onStatusUpdate = (status) => console.log(status);
@@ -211,14 +208,14 @@ export type MediaErrorCallback = (error: MediaError) => void;
  * MediaError
  */
 @Plugin({
-  pluginName: 'MediaPlugin',
+  pluginName: 'Media',
   repo: 'https://github.com/apache/cordova-plugin-media',
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media',
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class MediaPlugin extends IonicNativePlugin {
+export class Media extends IonicNativePlugin {
 
   // Constants
   /**
@@ -275,9 +272,9 @@ export class MediaPlugin extends IonicNativePlugin {
 
     let instance: any;
 
-    if (checkAvailability(MediaPlugin.getPluginRef(), null, MediaPlugin.getPluginName()) === true) {
+    if (checkAvailability(Media.getPluginRef(), null, Media.getPluginName()) === true) {
       // Creates a new media object
-      instance = new Media(src, onSuccess, onError, onStatusUpdate);
+      instance = new (Media.getPlugin())(src, onSuccess, onError, onStatusUpdate);
     }
 
     return new MediaObject(instance);
