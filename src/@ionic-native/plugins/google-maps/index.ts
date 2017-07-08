@@ -4,6 +4,34 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/observable/fromEvent';
 
+
+export type MapType = 'MAP_TYPE_NORMAL' | 'MAP_TYPE_ROADMAP' | 'MAP_TYPE_SATELLITE' | 'MAP_TYPE_HYBRID' | 'MAP_TYPE_TERRAIN' | 'MAP_TYPE_NONE';
+
+export interface GoogleMapOptions {
+  mapType: MapType;
+  controls: {
+    compass: boolean;
+    myLocationButton: boolean;
+    indoorPicker: boolean;
+    zoom: boolean;
+  };
+  gestures: {
+    scroll: boolean;
+    tilt: boolean;
+    zoom: boolean;
+    rotate: boolean;
+  };
+  styles: any[];
+  camera: CameraPosition;
+  preferences: {
+    zoom: {
+      minZoom: number;
+      maxZoom: number;
+    },
+    building: boolean;
+  };
+}
+
 export interface AnimateCameraOptions {
   target?: LatLng | Array<Marker> | LatLngBounds;
   tilt?: number;
@@ -392,7 +420,7 @@ export class GoogleMaps extends IonicNativePlugin {
    * @param options {any} Options
    * @returns {GoogleMap}
    */
-  create(element: string | HTMLElement, options?: any): GoogleMap {
+  create(element: string | HTMLElement, options?: GoogleMapOptions): GoogleMap {
     return new GoogleMap(element, options);
   }
 
@@ -777,7 +805,7 @@ export class Geocoder {
   plugin: 'cordova-plugin-googlemaps'
 })
 export class GoogleMap extends BaseClass {
-  constructor(element: string | HTMLElement, options?: any) {
+  constructor(element: string | HTMLElement, options?: GoogleMapOptions) {
     super();
     if (checkAvailability(GoogleMaps.getPluginRef(), null, GoogleMaps.getPluginName()) === true) {
       if (typeof element === 'string') {
@@ -1028,7 +1056,7 @@ export class GoogleMap extends BaseClass {
    * @param options
    */
   @CordovaInstance({ sync: true })
-  setOptions(options: any): void {}
+  setOptions(options: GoogleMapOptions): void {}
 
   /**
    * Adds a marker
