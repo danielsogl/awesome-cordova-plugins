@@ -294,7 +294,7 @@ export const GoogleMapsAnimation: { [animationName: string]: string; } = {
 /**
  * @hidden
  */
-export const GoogleMapsMapTypeId: { [mapType: string]: string; } = {
+export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
   NORMAL: 'MAP_TYPE_NORMAL',
   ROADMAP: 'MAP_TYPE_ROADMAP',
   SATELLITE: 'MAP_TYPE_SATELLITE',
@@ -834,7 +834,7 @@ export class GoogleMap extends BaseClass {
    * @param mapTypeId {string}
    */
   @CordovaInstance({ sync: true })
-  setMapTypeId(mapTypeId: string): void { }
+  setMapTypeId(mapTypeId: MapType): void { }
 
   /**
    * Moves the camera with animation
