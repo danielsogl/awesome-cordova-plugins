@@ -102,7 +102,7 @@ export class GoogleAnalytics extends IonicNativePlugin {
 
   /**
    * Track custom metric
-   * @param key {string}
+   * @param key {number}
    * @param value {any}
    * @returns {Promise<any>}
    */
@@ -110,7 +110,7 @@ export class GoogleAnalytics extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 3
   })
-  trackMetric(key: string, value?: any): Promise<any> { return; }
+  trackMetric(key: number, value?: any): Promise<any> { return; }
 
   /**
    * Track a screen
