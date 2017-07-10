@@ -467,6 +467,15 @@ export class OneSignal extends IonicNativePlugin {
   endInit(): any { return; }
 
   /**
+   * Prompt the user for notification permissions. Callback fires as soon as the user accepts or declines notifications.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  promptForPushNotificationsWithUserResponse(): Promise<boolean> { return; }
+
+  /**
    * Retrieve a list of tags that have been set on the user from the OneSignal server.
    *
    * **Quirk**: You must wait for `getTags` to resolve before calling it again, as the plugin will only process the last method call and discard any previous ones.
@@ -592,6 +601,13 @@ export class OneSignal extends IonicNativePlugin {
   postNotification(notificationObj: OSNotification): Promise<any> { return; }
 
   /**
+   * Cancels a single OneSignal notification based on its Android notification integer id. Use instead of NotificationManager.cancel(id); otherwise the notification will be restored when your app is restarted.
+   * @param notificationId {string}
+   */
+  @Cordova({ sync: true })
+  cancelNotification(notificationId: string): void {}
+
+  /**
   * Prompts the user for location permission to allow geotagging based on the "Location radius" filter on the OneSignal dashboard.
   */
   @Cordova({ sync: true })
@@ -617,5 +633,32 @@ export class OneSignal extends IonicNativePlugin {
     logLevel: number,
     visualLevel: number
   }): void { }
+
+  /**
+   * The passed in function will be fired when a notification permission setting changes.
+   * This includes the following events:
+   * - Notification permission prompt shown
+   * - The user accepting or declining the permission prompt
+   * - Enabling/disabling notifications for your app in the device Settings after returning to your app.
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  addPermissionObserver(): Observable<any> { return; }
+
+  /**
+   * The passed in function will be fired when a notification subscription property changes.
+   * This includes the following events:
+   * - Getting a push token from Apple / Google.
+   * - Getting a player / user id from OneSignal
+   * - OneSignal.setSubscription is called
+   * - User disables or enables notifications
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  addSubscriptionObserver(): Observable<any> { return; }
 
 }
