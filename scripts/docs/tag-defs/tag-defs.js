@@ -6,5 +6,6 @@ module.exports = [
   {'name': 'usage'},
   {'name': 'hidden'}, // hide from docs
   {'name': 'classes'}, // related classes
-  {'name': 'interfaces'} // related interfaces
+  {'name': 'interfaces'}, // related interfaces
+  {'name': 'paid', transforms: (doc, tag, value) => typeof value !== 'undefined'} // paid plugin, set value to true
 ];

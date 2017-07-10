@@ -147,6 +147,9 @@ docType: "<$ doc.docType $>"
   <@- if doc.beta == true -@>
     <span class="beta" title="beta">&beta;</span>
   <@- endif -@>
+  <@- if doc.paid == true -@>
+    <span class="paid" title="paid">Paid</span>
+  <@- endif -@>
 </h1>
 
 <a class="improve-v2-docs" href="http://github.com/ionic-team/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
@@ -161,6 +164,12 @@ docType: "<$ doc.docType $>"
   This plugin is still in beta stage and may not work as expected. Please
   submit any issues to the <a target="_blank"
   href="<$ prop.repo $>/issues">plugin repo</a>.
+</p>
+<@ endif @>
+<@ if doc.paid == true @>
+<p class="paid-notice">
+  This plugin might require a paid license, or might take a share of your app's earnings.
+  Check the <a target="_blank" rel="nofollow" href="<$ prop.repo $>">plugin's repo</a> for more information.
 </p>
 <@ endif @>
 
