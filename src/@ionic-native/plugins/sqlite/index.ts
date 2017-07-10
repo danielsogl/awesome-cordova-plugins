@@ -99,7 +99,7 @@ export class SQLiteObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  sqlBatch(sqlStatements: Array<string | string[]>): Promise<any> { return; }
+  sqlBatch(sqlStatements: Array<string | string[] | any>): Promise<any> { return; }
 
   @CordovaInstance({
     sync: true
