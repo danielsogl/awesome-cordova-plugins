@@ -42,11 +42,6 @@ export interface ImageResizerOptions {
  * @description
  * Cordova Plugin For Image Resize
  *
- * Requires plugin `info.protonet.imageresizer` - use the Ionic CLI and type in the following command:
- * `ionic cordova plugin add info.protonet.imageresizer`
- *
- * For more info, please see the https://github.com/protonet/cordova-plugin-image-resizer
- *
  * @usage
  * ```typescript
  * import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
@@ -74,9 +69,9 @@ export interface ImageResizerOptions {
  */
 @Plugin({
   pluginName: 'ImageResizer',
-  plugin: 'https://github.com/protonet/cordova-plugin-image-resizer.git',
+  plugin: 'info.protonet.imageresizer',
   pluginRef: 'ImageResizer',
-  repo: 'https://github.com/protonet/cordova-plugin-image-resizer',
+  repo: 'https://github.com/JoschkaSchulz/cordova-plugin-image-resizer',
   platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
