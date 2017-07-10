@@ -95,11 +95,11 @@ export class SQLiteObject {
   executeSql(statement: string, params: any): Promise<any> { return; }
 
   /**
-   * @param sqlStatements {Array<string | string[]>}
+   * @param sqlStatements {Array<string | string[] | any>}
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  sqlBatch(sqlStatements: Array<string | string[]>): Promise<any> { return; }
+  sqlBatch(sqlStatements: Array<string | string[] | any>): Promise<any> { return; }
 
   @CordovaInstance({
     sync: true

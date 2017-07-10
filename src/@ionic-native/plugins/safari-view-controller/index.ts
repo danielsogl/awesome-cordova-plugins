@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Observable } from 'rxjs/Observable';
 
 export interface SafariViewControllerOptions {
   animated?: boolean;
@@ -74,13 +75,14 @@ export class SafariViewController extends IonicNativePlugin {
   /**
    * Shows Safari View Controller
    * @param options {SafariViewControllerOptions} optional
-   * @returns {Promise<any>}
+   * @returns {Observable<any>}
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
+    observable: true
   })
-  show(options?: SafariViewControllerOptions): Promise<any> { return; }
+  show(options?: SafariViewControllerOptions): Observable<any> { return; }
 
   /**
    * Hides Safari View Controller

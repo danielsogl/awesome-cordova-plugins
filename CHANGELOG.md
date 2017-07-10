@@ -1,3 +1,29 @@
+<a name="3.14.0"></a>
+# [3.14.0](https://github.com/ionic-team/ionic-native/compare/v3.13.1...v3.14.0) (2017-07-07)
+
+
+### Features
+
+* **in-app-purchase2:** add a second InAppPurchase plugin ([#1775](https://github.com/ionic-team/ionic-native/issues/1775)) ([398d0ee](https://github.com/ionic-team/ionic-native/commit/398d0ee)), closes [#1705](https://github.com/ionic-team/ionic-native/issues/1705)
+
+
+
+<a name="3.13.1"></a>
+## [3.13.1](https://github.com/ionic-team/ionic-native/compare/v3.13.0...v3.13.1) (2017-07-05)
+
+
+### Bug Fixes
+
+* **document-viewer:** make config properties optional ([#1767](https://github.com/ionic-team/ionic-native/issues/1767)) ([5b914d7](https://github.com/ionic-team/ionic-native/commit/5b914d7))
+
+
+### Features
+
+* **app-rate:** add function handleNegativeFeedback() ([#1748](https://github.com/ionic-team/ionic-native/issues/1748)) ([e64cc0c](https://github.com/ionic-team/ionic-native/commit/e64cc0c))
+* **app-rate:** add function navigateToAppStore() ([#1719](https://github.com/ionic-team/ionic-native/issues/1719)) ([0c79ac1](https://github.com/ionic-team/ionic-native/commit/0c79ac1))
+
+
+
 <a name="3.13.0"></a>
 # [3.13.0](https://github.com/ionic-team/ionic-native/compare/v3.12.2...v3.13.0) (2017-07-03)
 
