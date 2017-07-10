@@ -378,16 +378,35 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * GoogleMap
  * Circle
  * Environment
- * Marker
- * LatLng
  * Geocoder
+ * GroundOverlay
+ * HtmlInfoWindow
+ * Geocoder
+ * LatLng
+ * LatLngBounds
+ * Marker
+ * Polygon
+ * Polyline
+ * TileOverlay
+ * BaseClass
+ * BaseArrayClass
  * @interfaces
+ * GoogleMapOptions
  * AnimateCameraOptions
+ * CameraPosition
+ * CircleOptions
+ * GeocoderRequest
+ * GeocoderResult
+ * GroundOverlayOptions
+ * ILatLng
+ * MarkerIcon
  * MarkerOptions
  * MyLocation
  * MyLocationOptions
+ * PolygonOptions
+ * PolylineOptions
+ * TileOverlayOptions
  * VisibleRegion
- *
  */
 @Plugin({
   pluginName: 'GoogleMaps',
