@@ -305,14 +305,14 @@ export enum OSActionType {
  *
  * #### Icons
  * If you want to use generated icons with command `ionic cordova resources`:
- * 
+ *
  * 1. Add a file to your `hooks` directory inside the `after_prepare` folder called `030_copy_android_notification_icons.js`
  *
  * 2. Put the following code in it:
  *
  * ```
  * #!/usr/bin/env node
- * 
+ *
  * var filestocopy = [{
  *     "resources/android/icon/drawable-hdpi-icon.png":
  *         "platforms/android/res/drawable-hdpi/ic_stat_onesignal_default.png"
@@ -329,13 +329,13 @@ export enum OSActionType {
  *     "resources/android/icon/drawable-xxxhdpi-icon.png":
  *         "platforms/android/res/drawable-xxxhdpi/ic_stat_onesignal_default.png"
  * } ];
- * 
+ *
  * var fs = require('fs');
  * var path = require('path');
- * 
+ *
  * // no need to configure below
  * var rootdir = process.argv[2];
- * 
+ *
  * filestocopy.forEach(function(obj) {
  *     Object.keys(obj).forEach(function(key) {
  *         var val = obj[key];
@@ -449,7 +449,10 @@ export class OneSignal extends IonicNativePlugin {
    *  Launch notifications with a launch URL as an in app webview.
    * @returns {any}
    */
-  @Cordova({ sync: true })
+  @Cordova({
+    sync: true,
+    platforms: ['iOS']
+  })
   iOSSettings(settings: {
     kOSSettingsKeyAutoPrompt: boolean;
     kOSSettingsKeyInAppLaunchURL: boolean;
@@ -574,7 +577,7 @@ export class OneSignal extends IonicNativePlugin {
 
   /**
   * Get the current notification and permission state. Returns a OSPermissionSubscriptionState type described below.
-  * 
+  *
   * @returns {Promise<OSPermissionSubscriptionState>}
   */
   @Cordova()
