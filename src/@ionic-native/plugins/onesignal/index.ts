@@ -97,13 +97,13 @@ export enum OSLockScreenVisibility {
    * Fully visible (default)
    */
   Public = 1,
-  /**
-   * Contents are hidden
-   */
+    /**
+     * Contents are hidden
+     */
   Private = 0,
-  /**
-   * Not shown
-   */
+    /**
+     * Not shown
+     */
   Secret = -1
 }
 
@@ -115,13 +115,13 @@ export enum OSDisplayType {
    * notification is silent, or inFocusDisplaying is disabled.
    */
   None = 0,
-  /**
-   * (**DEFAULT**) - native alert dialog display.
-   */
+    /**
+     * (**DEFAULT**) - native alert dialog display.
+     */
   InAppAlert = 1,
-  /**
-   * native notification display.
-   */
+    /**
+     * native notification display.
+     */
   Notification = 2
 }
 
@@ -236,10 +236,10 @@ export interface OSPermissionState {
  * OSSubscriptionState
  */
 export interface OSSubscriptionState {
-    subscribed: boolean;
-    userSubscriptionSetting: any;
-    userId: any;
-    pushToken: any;
+  subscribed: boolean;
+  userSubscriptionSetting: any;
+  userId: any;
+  pushToken: any;
 }
 /**
  * Subscription and permissions status
@@ -467,6 +467,15 @@ export class OneSignal extends IonicNativePlugin {
   endInit(): any { return; }
 
   /**
+   * Prompt the user for notification permissions. Callback fires as soon as the user accepts or declines notifications.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  promptForPushNotificationsWithUserResponse(): Promise<boolean> { return; }
+
+  /**
    * Retrieve a list of tags that have been set on the user from the OneSignal server.
    *
    * **Quirk**: You must wait for `getTags` to resolve before calling it again, as the plugin will only process the last method call and discard any previous ones.
@@ -533,67 +542,74 @@ export class OneSignal extends IonicNativePlugin {
   registerForPushNotifications(): void { }
 
   /**
-  * Warning:
-  * Only applies to Android and Amazon. You can call this from your UI from a button press for example to give your user's options for your notifications.
-  *
-  * By default OneSignal always vibrates the device when a notification is displayed unless the device is in a total silent mode.
-  * Passing false means that the device will only vibrate lightly when the device is in it's vibrate only mode.
-  *
-  * @param {boolean} false to disable vibrate, true to re-enable it.
-  */
+   * Warning:
+   * Only applies to Android and Amazon. You can call this from your UI from a button press for example to give your user's options for your notifications.
+   *
+   * By default OneSignal always vibrates the device when a notification is displayed unless the device is in a total silent mode.
+   * Passing false means that the device will only vibrate lightly when the device is in it's vibrate only mode.
+   *
+   * @param {boolean} false to disable vibrate, true to re-enable it.
+   */
   @Cordova({ sync: true })
   enableVibrate(enable: boolean): void { }
 
   /**
-  * Warning:
-  * Only applies to Android and Amazon. You can call this from your UI from a button press for example to give your user's options for your notifications.
-  *
-  * By default OneSignal plays the system's default notification sound when the device's notification system volume is turned on.
-  * Passing false means that the device will only vibrate unless the device is set to a total silent mode.
-  *
-  * @param {boolean} false to disable sound, true to re-enable it.
-  */
+   * Warning:
+   * Only applies to Android and Amazon. You can call this from your UI from a button press for example to give your user's options for your notifications.
+   *
+   * By default OneSignal plays the system's default notification sound when the device's notification system volume is turned on.
+   * Passing false means that the device will only vibrate unless the device is set to a total silent mode.
+   *
+   * @param {boolean} false to disable sound, true to re-enable it.
+   */
   @Cordova({ sync: true })
   enableSound(enable: boolean): void { }
 
   /**
-  *
-  * Setting to control how OneSignal notifications will be shown when one is received while your app is in focus. By default this is set to inAppAlert, which can be helpful during development.
-  *
-  * @param {DisplayType} displayOption
-  * @returns {any}
-  */
+   *
+   * Setting to control how OneSignal notifications will be shown when one is received while your app is in focus. By default this is set to inAppAlert, which can be helpful during development.
+   *
+   * @param {DisplayType} displayOption
+   * @returns {any}
+   */
   @Cordova({ sync: true })
   inFocusDisplaying(displayOption: OSDisplayType): any { return; }
 
   /**
-  * You can call this method with false to opt users out of receiving all notifications through OneSignal.
-  * You can pass true later to opt users back into notifications.
-  *
-  * @param {boolean} enable
-  */
+   * You can call this method with false to opt users out of receiving all notifications through OneSignal.
+   * You can pass true later to opt users back into notifications.
+   *
+   * @param {boolean} enable
+   */
   @Cordova({ sync: true })
   setSubscription(enable: boolean): void { }
 
   /**
-  * Get the current notification and permission state. Returns a OSPermissionSubscriptionState type described below.
-  *
-  * @returns {Promise<OSPermissionSubscriptionState>}
-  */
+   * Get the current notification and permission state. Returns a OSPermissionSubscriptionState type described below.
+   *
+   * @returns {Promise<OSPermissionSubscriptionState>}
+   */
   @Cordova()
   getPermissionSubscriptionState(): Promise<OSPermissionSubscriptionState> { return; }
 
   /**
-  *
-  * @param {notificationObj} Parameters see POST [documentation](https://documentation.onesignal.com/v2.0/docs/notifications-create-notification)
-  * @returns {Promise<any>} Returns a Promise that resolves if the notification was send successfully.
-  */
+   *
+   * @param {notificationObj} Parameters see POST [documentation](https://documentation.onesignal.com/v2.0/docs/notifications-create-notification)
+   * @returns {Promise<any>} Returns a Promise that resolves if the notification was send successfully.
+   */
   @Cordova()
   postNotification(notificationObj: OSNotification): Promise<any> { return; }
 
   /**
-  * Prompts the user for location permission to allow geotagging based on the "Location radius" filter on the OneSignal dashboard.
-  */
+   * Cancels a single OneSignal notification based on its Android notification integer id. Use instead of NotificationManager.cancel(id); otherwise the notification will be restored when your app is restarted.
+   * @param notificationId {string}
+   */
+  @Cordova({ sync: true })
+  cancelNotification(notificationId: string): void {}
+
+  /**
+   * Prompts the user for location permission to allow geotagging based on the "Location radius" filter on the OneSignal dashboard.
+   */
   @Cordova({ sync: true })
   promptLocation(): void { }
 
@@ -605,17 +621,44 @@ export class OneSignal extends IonicNativePlugin {
   syncHashedEmail(email: string): void { }
 
   /**
-  * Enable logging to help debug if you run into an issue setting up OneSignal.
-  * The logging levels are as follows: 0 = None, 1= Fatal, 2 = Errors, 3 = Warnings, 4 = Info, 5 = Debug, 6 = Verbose
+   * Enable logging to help debug if you run into an issue setting up OneSignal.
+   * The logging levels are as follows: 0 = None, 1= Fatal, 2 = Errors, 3 = Warnings, 4 = Info, 5 = Debug, 6 = Verbose
 
-  * The higher the value the more information is shown.
-  *
-  * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
-  */
+   * The higher the value the more information is shown.
+   *
+   * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
+   */
   @Cordova({ sync: true })
   setLogLevel(logLevel: {
     logLevel: number,
     visualLevel: number
   }): void { }
+
+  /**
+   * The passed in function will be fired when a notification permission setting changes.
+   * This includes the following events:
+   * - Notification permission prompt shown
+   * - The user accepting or declining the permission prompt
+   * - Enabling/disabling notifications for your app in the device Settings after returning to your app.
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  addPermissionObserver(): Observable<any> { return; }
+
+  /**
+   * The passed in function will be fired when a notification subscription property changes.
+   * This includes the following events:
+   * - Getting a push token from Apple / Google.
+   * - Getting a player / user id from OneSignal
+   * - OneSignal.setSubscription is called
+   * - User disables or enables notifications
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  addSubscriptionObserver(): Observable<any> { return; }
 
 }
