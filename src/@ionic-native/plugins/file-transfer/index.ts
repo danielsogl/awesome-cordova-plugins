@@ -114,7 +114,7 @@ export interface FileTransferError {
  *
  * @usage
  * ```typescript
- * import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/transfer';
+ * import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
  * import { File } from '@ionic-native/file';
  *
  * constructor(private transfer: FileTransfer, private file: File) { }
