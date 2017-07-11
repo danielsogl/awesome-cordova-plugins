@@ -49,7 +49,7 @@ export class FirebaseAnalytics extends IonicNativePlugin {
   /**
    * Sets the user ID property.
    * This feature must be used in accordance with Google's Privacy Policy.
-   * @param id {string} THe user ID
+   * @param id {string} The user ID
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
