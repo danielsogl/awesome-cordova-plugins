@@ -97,6 +97,30 @@ export interface LaunchNavigatorOptions {
 @Injectable()
 export class LaunchNavigator extends IonicNativePlugin {
 
+  APP: any = {
+    USER_SELECT: 'user_select',
+    APPLE_MAPS: 'apple_maps',
+    GOOGLE_MAPS: 'google_maps',
+    WAZE: 'waze',
+    CITYMAPPER: 'citymapper',
+    NAVIGON: 'navigon',
+    TRANSIT_APP: 'transit_app',
+    YANDEX: 'yandex',
+    UBER: 'uber',
+    TOMTOM: 'tomtom',
+    BING_MAPS: 'bing_maps',
+    SYGIC: 'sygic',
+    HERE_MAPS: 'here_maps',
+    MOOVIT: 'moovit'
+  };
+
+  TRANSPORT_MODE: any = {
+    DRIVING: 'driving',
+    WALKING: 'walking',
+    BICYCLING: 'bicycling',
+    TRANSIT: 'transit'
+  };
+
   /**
    * Launches navigator app
    * @param destination {string|number[]} Location name or coordinates (as string or array)
@@ -203,27 +227,4 @@ export class LaunchNavigator extends IonicNativePlugin {
   @Cordova({ sync: true })
   userSelect(destination: string | number[], options: LaunchNavigatorOptions): void { }
 
-  APP: any = {
-    USER_SELECT: 'user_select',
-    APPLE_MAPS: 'apple_maps',
-    GOOGLE_MAPS: 'google_maps',
-    WAZE: 'waze',
-    CITYMAPPER: 'citymapper',
-    NAVIGON: 'navigon',
-    TRANSIT_APP: 'transit_app',
-    YANDEX: 'yandex',
-    UBER: 'uber',
-    TOMTOM: 'tomtom',
-    BING_MAPS: 'bing_maps',
-    SYGIC: 'sygic',
-    HERE_MAPS: 'here_maps',
-    MOOVIT: 'moovit'
-  };
-
-  TRANSPORT_MODE: any = {
-    DRIVING: 'driving',
-    WALKING: 'walking',
-    BICYCLING: 'bicycling',
-    TRANSIT: 'transit'
-  };
 }
