@@ -1,3 +1,46 @@
+<a name="4.0.0"></a>
+# [4.0.0](https://github.com/ionic-team/ionic-native/compare/v3.14.0...v4.0.0) (2017-07-11)
+
+
+### Bug Fixes
+
+* **google-analytics:** fix parameter types in the trackMetric method ([#1780](https://github.com/ionic-team/ionic-native/issues/1780)) ([7bbd25c](https://github.com/ionic-team/ionic-native/commit/7bbd25c))
+* **media:** wrap plugin callbacks with Observables ([0867cff](https://github.com/ionic-team/ionic-native/commit/0867cff)), closes [#1591](https://github.com/ionic-team/ionic-native/issues/1591)
+* **safari-view-controller:** show should return an Observable ([a6f9714](https://github.com/ionic-team/ionic-native/commit/a6f9714)), closes [#1619](https://github.com/ionic-team/ionic-native/issues/1619)
+* **sqlite:** fix param type for `sqlBatch` method ([e8faf22](https://github.com/ionic-team/ionic-native/commit/e8faf22)), closes [#1596](https://github.com/ionic-team/ionic-native/issues/1596)
+
+
+### Code Refactoring
+
+* **admob-pro:** rename plugin from AdMob to AdMobPro ([#1770](https://github.com/ionic-team/ionic-native/issues/1770)) ([bc6bf66](https://github.com/ionic-team/ionic-native/commit/bc6bf66))
+* **media:** rename main class to Media ([#1769](https://github.com/ionic-team/ionic-native/issues/1769)) ([9f1a0f9](https://github.com/ionic-team/ionic-native/commit/9f1a0f9))
+* **rename plugin to FileTransfer to match original plugin:** ([#1768](https://github.com/ionic-team/ionic-native/issues/1768)) ([3c54a1c](https://github.com/ionic-team/ionic-native/commit/3c54a1c))
+
+
+### Features
+
+* **email-composer:** update plugin to latest version and use original plugin ([#1771](https://github.com/ionic-team/ionic-native/issues/1771)) ([d395b42](https://github.com/ionic-team/ionic-native/commit/d395b42))
+* **google-maps:** add GoogleMapOptions interface ([aff653d](https://github.com/ionic-team/ionic-native/commit/aff653d))
+* **google-maps:** update wrapper to support v2 of the plugin ([#1759](https://github.com/ionic-team/ionic-native/issues/1759)) ([06e666d](https://github.com/ionic-team/ionic-native/commit/06e666d))
+* **ms-adal:** add Azure Active Directory Authentication plugin ([cf0c740](https://github.com/ionic-team/ionic-native/commit/cf0c740)), closes [#372](https://github.com/ionic-team/ionic-native/issues/372)
+* **onesignal:** add new methods ([b35dab2](https://github.com/ionic-team/ionic-native/commit/b35dab2)), closes [#1677](https://github.com/ionic-team/ionic-native/issues/1677)
+* **qr-scanner:** add QRScanner plugin ([bde2b38](https://github.com/ionic-team/ionic-native/commit/bde2b38)), closes [#715](https://github.com/ionic-team/ionic-native/issues/715)
+
+
+### BREAKING CHANGES
+
+* **safari-view-controller:** `show` method now returns an Observable
+* **media:** the plugin's `create` method no longer takes callback functions. You must use the
+observables provided by the `MediaObject` instance. Refer to the updated documentation for more
+information.
+* **admob-pro:** `@ionic-native/admob` is now `@ionic-native/admob-pro`. Also, class name is changed
+from `AdMob` to `AdMobPro`.
+* **media:** `MediaObject` class is now `Media`
+* **rename plugin to FileTransfer to match original plugin:** Package name is now `@ionic-native/file-transfer`. `Transfer` class has been
+renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `FileTransferObject`.
+
+
+
 <a name="3.14.0"></a>
 # [3.14.0](https://github.com/ionic-team/ionic-native/compare/v3.13.1...v3.14.0) (2017-07-07)
 

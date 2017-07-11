@@ -24,6 +24,18 @@ module.exports = function jekyll(renderDocsProcessor) {
           .replace('content/', '');
       });
 
+      const betaDocs = [];
+
+      docs = docs.filter(doc => {
+        if (doc.beta === true) {
+          betaDocs.push(doc);
+          return false;
+        }
+        return true;
+      });
+
+      docs = docs.concat(betaDocs);
+
       // add side menu
       docs.push({
         docType: 'nativeMenu',

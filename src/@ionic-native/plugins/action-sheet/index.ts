@@ -99,13 +99,21 @@ export interface ActionSheetOptions {
 @Injectable()
 export class ActionSheet extends IonicNativePlugin {
 
-  @CordovaProperty
+  /**
+   * Convenience property to select an Android theme value
+   */
   ANDROID_THEMES: {
     THEME_TRADITIONAL: number;
     THEME_HOLO_DARK: number;
     THEME_HOLO_LIGHT: number;
     THEME_DEVICE_DEFAULT_DARK: number;
     THEME_DEVICE_DEFAULT_LIGHT: number;
+  } = {
+    THEME_TRADITIONAL: 1,
+    THEME_HOLO_DARK: 2,
+    THEME_HOLO_LIGHT: 3,
+    THEME_DEVICE_DEFAULT_DARK: 4,
+    THEME_DEVICE_DEFAULT_LIGHT: 5
   };
 
   /**

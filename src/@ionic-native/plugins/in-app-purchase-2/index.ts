@@ -16,7 +16,7 @@ import { Injectable } from '@angular/core';
  * ```
  *
  *  * @advanced
- * 
+ *
  *  ```typescript
  *    // After Platform Ready
  *    this.store.verbosity = this.store.DEBUG;
@@ -35,12 +35,12 @@ import { Injectable } from '@angular/core';
  *    this.store.when(productId).updated( (product: IAPProduct) => {
  *      console.log('Loaded' + JSON.stringify(product));
  *    });
- * 
+ *
  *    // Issue with buying
  *     this.store.when(productId).cancelled( (product) => {
  *         alert('Purchase was Cancelled');
  *     });
- *      
+ *
  *      // Track All Store Errors
  *     this.store.error( (err) => {
  *       alert('Store Error ' + JSON.stringify(err));
@@ -55,15 +55,15 @@ import { Injectable } from '@angular/core';
  *
  *     // Errors
  *     this.store.when(productId).error( (error) => {
- *       this.loader.dismiss();        
+ *       this.loader.dismiss();
  *       alert('An Error Occured' + JSON.stringify(error));
  *     });
- *     // Refresh Starts Handlers 
+ *     // Refresh Starts Handlers
  *     console.log('Refresh Store');
  *     this.store.refresh();
- * 
+ *
  *    ...
- *    
+ *
  *    // To Purchase
  *    this.store.order(productId);
  *
@@ -169,6 +169,9 @@ export interface IAPProductEvents {
   downloaded: (callback: IAPQueryCallback) => void;
 }
 
+/**
+ * @hidden
+ */
 export class IAPError {
   code: number;
   message: string;

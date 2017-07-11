@@ -106,6 +106,9 @@ export class MSAdal extends IonicNativePlugin {
 
 }
 
+/**
+ * @hidden
+ */
 export class AuthenticationContext {
 
   @InstanceProperty
