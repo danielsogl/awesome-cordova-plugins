@@ -52,7 +52,7 @@ export interface BarcodeScannerOptions {
    * Display scanned text for X ms. 0 suppresses it entirely, default 1500. Supported on Android only.
    */
   resultDisplayDuration?: number;
-  
+
   /*
   * Active proper FNC detection for GS1 Barcodes
   */
