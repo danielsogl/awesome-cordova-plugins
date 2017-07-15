@@ -114,6 +114,21 @@ export interface MediaError {
 
 }
 
+export enum MEDIA_STATUS {
+  NONE = 0,
+  STARTING,
+  RUNNING,
+  PAUSED,
+  STOPPED
+}
+
+export enum MEDIA_ERROR {
+  ABORTED = 1,
+  NETWORK,
+  DECODE,
+  SUPPORTED
+}
+
 export type MediaErrorCallback = (error: MediaError) => void;
 
 /**
