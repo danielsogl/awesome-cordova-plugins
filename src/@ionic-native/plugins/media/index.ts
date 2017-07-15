@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
+import { CordovaInstance, Plugin, checkAvailability, IonicNativePlugin, InstanceProperty } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 
@@ -8,7 +8,55 @@ import { Observer } from 'rxjs/Observer';
  */
 export class MediaObject {
 
-  constructor(private _objectInstance: any, public onSuccess: Observable<any>, public onError: Observable<any>, public onStatusUpdate: Observable<any>) {}
+  /**
+   * An observable that notifies you on actions success
+   */
+  onSuccess: Observable<any>;
+
+  /**
+   * An observable that notifies you when an error occurs
+   */
+  onError: Observable<MEDIA_ERROR>;
+
+  /**
+   * An observable that notifies you when the file status changes
+   */
+  onStatusUpdate: Observable<MEDIA_STATUS>;
+
+  /**
+   * @hidden
+   */
+  @InstanceProperty
+  successCallback: Function;
+
+  /**
+   * @hidden
+   */
+  @InstanceProperty
+  errorCallback: Function;
+
+  /**
+   * @hidden
+   */
+  @InstanceProperty
+  statusCallback: Function;
+
+  constructor(private _objectInstance: any) {
+    this.onSuccess = new Observable<any>((observer: Observer<any>) => {
+      this.successCallback = observer.next.bind(observer);
+      return () => this.successCallback = () => {};
+    });
+
+    this.onError = new Observable<MEDIA_ERROR>((observer: Observer<MEDIA_ERROR>) => {
+      this.errorCallback = observer.next.bind(observer);
+      return () => this.errorCallback = () => {};
+    });
+
+    this.onStatusUpdate = new Observable<MEDIA_STATUS>((observer: Observer<MEDIA_STATUS>) => {
+      this.statusCallback = observer.next.bind(observer);
+      return () => this.statusCallback = () => {};
+    });
+  }
 
   /**
    * Get the current amplitude of the current recording.
@@ -281,39 +329,17 @@ export class Media extends IonicNativePlugin {
   /**
    * Open a media file
    * @param src {string} A URI containing the audio content.
-   * @param [onStatusUpdate] {MediaStatusUpdateCallback} A callback function to be invoked when the status of the file changes
-   * @param [onSuccess] {Function} A callback function to be invoked after the current play, record, or stop action is completed
-   * @param [onError] {MediaErrorCallback} A callback function is be invoked if an error occurs.
    * @return {MediaObject}
    */
   create(src: string): MediaObject {
-
-    let instance: any,
-      onSuccess: Function,
-      onError: Function,
-      onStatusUpdate: Function;
-
-
-    const onSuccessObservable: Observable<any> = new Observable<any>((observer: Observer<any>) => {
-        onSuccess = observer.next.bind(observer);
-        return () => {};
-      }),
-      onErrorObservable: Observable<any> = new Observable<any>((observer: Observer<any>) => {
-        onError = observer.next.bind(observer);
-        return () => {};
-      }),
-      onStatusUpdateObservable: Observable<any> = new Observable<any>((observer: Observer<any>) => {
-        onStatusUpdate = observer.next.bind(observer);
-        return () => {};
-      });
+    let instance: any;
 
     if (checkAvailability(Media.getPluginRef(), null, Media.getPluginName()) === true) {
       // Creates a new media object
-      instance = new (Media.getPlugin())(src, onSuccess, onError, onStatusUpdate);
+      instance = new (Media.getPlugin())(src);
     }
 
-    return new MediaObject(instance, onSuccessObservable, onErrorObservable, onStatusUpdateObservable);
-
+    return new MediaObject(instance);
   }
 
 }
