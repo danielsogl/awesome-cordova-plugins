@@ -1,3 +1,21 @@
+<a name="4.0.1"></a>
+## [4.0.1](https://github.com/ionic-team/ionic-native/compare/v4.0.0...v4.0.1) (2017-07-15)
+
+
+### Bug Fixes
+
+* **media:** fix success/error/statusUpdate observables ([7105048](https://github.com/ionic-team/ionic-native/commit/7105048)), closes [#1806](https://github.com/ionic-team/ionic-native/issues/1806)
+* **social-sharing:** fix issues caused by omitting optional params ([25c1cf4](https://github.com/ionic-team/ionic-native/commit/25c1cf4)), closes [#1805](https://github.com/ionic-team/ionic-native/issues/1805)
+
+
+### Features
+
+* **camera:** add enums for camera options ([6061af6](https://github.com/ionic-team/ionic-native/commit/6061af6))
+* **launch-navigator:** update plugin wrapper to support v4 ([9538416](https://github.com/ionic-team/ionic-native/commit/9538416)), closes [#1738](https://github.com/ionic-team/ionic-native/issues/1738)
+* **media:** add MEDIA_STATUS and MEDIA_ERROR enums ([1decedd](https://github.com/ionic-team/ionic-native/commit/1decedd))
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/ionic-team/ionic-native/compare/v3.14.0...v4.0.0) (2017-07-11)
 
