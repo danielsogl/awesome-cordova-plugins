@@ -85,6 +85,42 @@ export interface CameraPopoverOptions {
   arrowDir: number;
 }
 
+export enum DestinationType {
+  DATA_URL = 0,
+  FILE_URL,
+  NATIVE_URI
+}
+
+export enum EncodingType {
+  JPEG = 0,
+  PNG
+}
+
+export enum MediaType {
+  PICTURE = 0,
+  VIDEO,
+  ALLMEDIA
+}
+
+export enum PictureSourceType {
+  PHOTOLIBRARY = 0,
+  CAMERA,
+  SAVEDPHOTOALBUM
+}
+
+export enum PopoverArrowDirection {
+  ARROW_UP = 1,
+  ARROW_DOWN,
+  ARROW_LEFT,
+  ARROW_RIGHT,
+  ARROW_ANY
+}
+
+export enum Direction {
+  BACK = 0,
+  FRONT
+}
+
 /**
  * @name Camera
  * @description
