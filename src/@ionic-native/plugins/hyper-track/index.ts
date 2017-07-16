@@ -14,6 +14,11 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * ...
  *
+ * this.hyperTrack.getOrCreateUser().then((user) => {
+ *  // handle success
+ * }, (error) => {
+ *  // handle error
+ * });
  *
  * ```
  */
@@ -34,7 +39,10 @@ export class HyperTrack extends IonicNativePlugin {
 
   /**
    * Create a new user to identify the current device or get a user from a lookup id.
+   *
+   * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
+   * @returns {Promise<any>}
    */
   @Cordova()
-  getOrCreateUser(options?: any): Promise<Boolean> { return; }
+  getOrCreateUser(name?: String, phone?: String, photo?: String, lookupId?: String): Promise<any> { return; }
 }
