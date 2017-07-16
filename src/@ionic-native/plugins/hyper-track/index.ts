@@ -68,15 +68,22 @@ export class HyperTrack extends IonicNativePlugin {
   getOrCreateUser(name?: String, phone?: String, photo?: String, lookupId?: String): Promise<any> { return; }
 
   /**
-   * Request user to grant Location access to the app (for Anrdoid).
+   * Set UserId for the SDK created using HyperTrack APIs
    *
+   * @usage
+   * ```
+   * HyperTrack.setUserId("userId")
+   *  .then(() => {
+   *    // handle success
+   *  }, error => {
+   *    // handle error
+   *  });
+   * ```
    * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
    * @returns {Promise<any>}
    */
-  @Cordova({
-    platforms: ['android']
-  })
-  requestPermissions(): Promise<any> { return; }
+  @Cordova()
+  setUserId(userId: String): Promise<any> { return; }
 
   /**
    * Enable the SDK and start tracking
@@ -114,24 +121,6 @@ export class HyperTrack extends IonicNativePlugin {
   stopTracking(): Promise<any> { return; }
 
   /**
-   * Set UserId for the SDK created using HyperTrack APIs
-   *
-   * @usage
-   * ```
-   * HyperTrack.setUserId("userId")
-   *  .then(() => {
-   *    // handle success
-   *  }, error => {
-   *    // handle error
-   *  });
-   * ```
-   * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  setUserId(userId: String): Promise<any> { return; }
-
-  /**
    * Get user's current location from the SDK
    *
    * @usage
@@ -147,4 +136,15 @@ export class HyperTrack extends IonicNativePlugin {
    */
   @Cordova()
   getCurrentLocation(): Promise<any> { return; }
+
+  /**
+   * Request user to grant Location access to the app (for Anrdoid).
+   *
+   * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    platforms: ['android']
+  })
+  requestPermissions(): Promise<any> { return; }
 }
