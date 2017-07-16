@@ -141,6 +141,23 @@ export class HyperTrack extends IonicNativePlugin {
   completeAction(id: String): Promise<any> { return; }
 
   /**
+   * Complete an action from the SDK using Action's lookupId as parameter
+   *
+   * @usage
+   * ```
+   * HyperTrack.completeActionWithLookupId('lookupId').then(() => {
+   *    // handle success
+   *  }, error => {
+   *    // handle error
+   *  });
+   * ```
+   * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  completeActionWithLookupId(lookupId: String): Promise<any> { return; }
+
+  /**
    * Disable the SDK and stop tracking.
    * Needs user setting (via getOrCreateUser or setUserId).
    *
