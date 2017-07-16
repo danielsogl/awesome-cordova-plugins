@@ -7,6 +7,8 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
+ * // Make sure to include <preference name="HYPERTRACK_PK" value="YOUR_PUBLISHABLE_KEY" /> in your app's config.xml.
+ *
  * import { HyperTrack } from '@ionic-native/hyper-track';
  *
  *
