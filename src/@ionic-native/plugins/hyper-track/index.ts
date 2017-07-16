@@ -250,4 +250,23 @@ export class HyperTrack extends IonicNativePlugin {
     platforms: ['android']
   })
   checkLocationServices(): Promise<any> { return; }
+
+  /**
+   * Request user to enable Location services on the device.
+   *
+   * @usage
+   * ```
+   * HyperTrack.requestLocationServices().then(response => {
+   *  // handle response
+   * }, error => {
+   *  // handle error
+   * });
+   * ```
+   * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    platforms: ['android']
+  })
+  requestLocationServices(): Promise<any> { return; }
 }
