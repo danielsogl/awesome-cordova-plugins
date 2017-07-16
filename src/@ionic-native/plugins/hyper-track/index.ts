@@ -96,7 +96,8 @@ export class HyperTrack extends IonicNativePlugin {
   startTracking(): Promise<any> { return; }
 
   /**
-   * Disable the SDK and stop tracking
+   * Disable the SDK and stop tracking.
+   * Needs user setting (via getOrCreateUser or setUserId).
    *
    * @usage
    * ```
