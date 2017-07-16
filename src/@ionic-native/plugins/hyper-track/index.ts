@@ -58,4 +58,13 @@ export class HyperTrack extends IonicNativePlugin {
     platforms: ['android']
   })
   requestPermissions(): Promise<any> { return; }
+
+  /**
+   * 	Enable the SDK and start tracking
+   *
+   * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  startTracking(): Promise<any> { return; }
 }
