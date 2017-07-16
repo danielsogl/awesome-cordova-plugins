@@ -29,7 +29,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-hypertrack',
   pluginRef: 'cordova.plugins.HyperTrack',
   repo: 'https://github.com/hypertrack/hypertrack-cordova',
-  platforms: []
+  platforms: ['android', 'ios']
 })
 @Injectable()
 export class HyperTrack extends IonicNativePlugin {
@@ -47,4 +47,15 @@ export class HyperTrack extends IonicNativePlugin {
    */
   @Cordova()
   getOrCreateUser(name?: String, phone?: String, photo?: String, lookupId?: String): Promise<any> { return; }
+
+  /**
+   * Request user to grant Location access to the app (for Anrdoid).
+   *
+   * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    platforms: ['android']
+  })
+  requestPermissions(): Promise<any> { return; }
 }
