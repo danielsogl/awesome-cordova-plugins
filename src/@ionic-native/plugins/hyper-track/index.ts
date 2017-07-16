@@ -193,6 +193,24 @@ export class HyperTrack extends IonicNativePlugin {
   getCurrentLocation(): Promise<any> { return; }
 
   /**
+   * Check if Location permission has been granted to the app.
+   * Returns "true" or "false" in success method accordingly.
+   *
+   * @usage
+   * ```
+   * HyperTrack.checkLocationPermission().then(response => {
+   *  // handle response. It can be "true" or "false"
+   * }, error => {
+   *  // handle error
+   * });
+   * ```
+   * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  checkLocationPermission(): Promise<any> { return; }
+
+  /**
    * Request user to grant Location access to the app (for Anrdoid).
    *
    * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
