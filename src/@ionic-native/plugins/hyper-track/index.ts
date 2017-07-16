@@ -130,4 +130,21 @@ export class HyperTrack extends IonicNativePlugin {
    */
   @Cordova()
   setUserId(userId: String): Promise<any> { return; }
+
+  /**
+   * Get user's current location from the SDK
+   *
+   * @usage
+   * ```
+   * HyperTrack.getCurrentLocation().then(location => {
+   *  // handle location
+   * }, error => {
+   *  // handle error
+   * });
+   * ```
+   * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getCurrentLocation(): Promise<any> { return; }
 }
