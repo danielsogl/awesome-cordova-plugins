@@ -17,16 +17,13 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  * this.hyperTrack.getOrCreateUser().then(user => {
- *  // handle success
- *  // user is a string representation of the User's JSON.
+ *  this.hyperTrack.startTracking().then(userId => {
+ *   // handle tracking success
+ *  }, error => {
+ *   // handle tracking error
+ *  });
  * }, (error) => {
- *  // handle error
- * });
- *
- * this.hyperTrack.startTracking().then(userId => {
- *  // handle success
- * }, error => {
- *  // handle error
+ *  // handle user error
  * });
  *
  * ```
@@ -82,7 +79,7 @@ export class HyperTrack extends IonicNativePlugin {
   requestPermissions(): Promise<any> { return; }
 
   /**
-   * 	Enable the SDK and start tracking
+   * Enable the SDK and start tracking
    *
    * @usage
    * ```
@@ -97,4 +94,21 @@ export class HyperTrack extends IonicNativePlugin {
    */
   @Cordova()
   startTracking(): Promise<any> { return; }
+
+  /**
+   * Disable the SDK and stop tracking
+   *
+   * @usage
+   * ```
+   * HyperTrack.stopTracking().then(() => {
+   *  // handle success
+   * }, error => {
+   *  // handle error
+   * });
+   * ```
+   * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  stopTracking(): Promise<any> { return; }
 }
