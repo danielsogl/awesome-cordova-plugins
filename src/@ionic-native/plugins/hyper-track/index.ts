@@ -213,6 +213,14 @@ export class HyperTrack extends IonicNativePlugin {
   /**
    * Request user to grant Location access to the app (for Anrdoid).
    *
+   * @usage
+   * ```
+   * HyperTrack.requestPermissions().then(response => {
+   *  // handle response
+   * }, error => {
+   *  // handle error
+   * });
+   * ```
    * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
    * @returns {Promise<any>}
    */
