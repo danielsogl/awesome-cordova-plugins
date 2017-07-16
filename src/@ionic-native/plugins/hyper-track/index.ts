@@ -112,4 +112,22 @@ export class HyperTrack extends IonicNativePlugin {
    */
   @Cordova()
   stopTracking(): Promise<any> { return; }
+
+  /**
+   * Set UserId for the SDK created using HyperTrack APIs
+   *
+   * @usage
+   * ```
+   * HyperTrack.setUserId("userId")
+   *  .then(() => {
+   *    // handle success
+   *  }, error => {
+   *    // handle error
+   *  });
+   * ```
+   * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setUserId(userId: String): Promise<any> { return; }
 }
