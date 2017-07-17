@@ -38,7 +38,13 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 @Injectable()
 export class HyperTrack extends IonicNativePlugin {
   /**
-   * Prints 'helloWorld [text]'
+   * Returns given text. For testing purposes.
+   *
+   * @param {String} [text] Given text to print
+   *
+   * @returns {Promise<any>} Returns a Promise that resolves with the result text (which is the same as the given text) if successful, or it gets rejected if an error ocurred.
+   *
+   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#L6|HyperTrack.js helloWorld implementation}
    *
    * @usage
    * ```
@@ -46,7 +52,7 @@ export class HyperTrack extends IonicNativePlugin {
    * ```
    */
   @Cordova()
-  helloWorld(options?: any): Promise<String> { return; }
+  helloWorld(text: String): Promise<String> { return; }
 
   /**
    * Create a new user to identify the current device or get a user from a lookup id.
