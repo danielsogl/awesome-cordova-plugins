@@ -865,25 +865,6 @@ export class Geocoder {
  */
 @Plugin({
   pluginName: 'GoogleMaps',
-  pluginRef: 'plugin.google.maps.Geocoder',
-  plugin: 'cordova-plugin-googlemaps',
-  repo: ''
-})
-export class Geocoder {
-  /**
-   * Converts position to address and vice versa
-   * @param {GeocoderRequest} request Request object with either an address or a position
-   * @return {Promise<GeocoderResult | BaseArrayClass<GeocoderResult>>}
-   */
-  @Cordova()
-  geocode(request: GeocoderRequest): Promise<GeocoderResult | BaseArrayClass<GeocoderResult>> { return; }
-}
-
-/**
- * @hidden
- */
-@Plugin({
-  pluginName: 'GoogleMaps',
   pluginRef: 'plugin.google.maps.geometry',
   plugin: 'cordova-plugin-googlemaps',
   repo: ''
