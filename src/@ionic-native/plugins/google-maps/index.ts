@@ -609,12 +609,12 @@ export class BaseClass {
   /**
    * Bind a key to another object
    * @param key {string}
-   * @param target {string}
+   * @param target {any}
    * @param targetKey? {string}
    * @param noNotify? {boolean}
    */
   @CordovaInstance({ sync: true })
-  bindTo(key: string, target: string, targetKey: string, noNotify: boolean): void { }
+  bindTo(key: string, target: any, targetKey: string, noNotify: boolean): void { }
 
   /**
    * Listen to a map event.
