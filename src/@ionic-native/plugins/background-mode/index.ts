@@ -19,7 +19,7 @@ export interface BackgroundModeConfiguration {
   text?: String;
 
   /**
-   * This will look for <icon name>.png in platforms/android/res/drawable|mipmap
+   * This will look for `<icon name>.png` in platforms/android/res/drawable|mipmap
    */
   icon?: string;
 
