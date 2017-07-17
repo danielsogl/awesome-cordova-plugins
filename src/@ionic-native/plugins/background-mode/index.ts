@@ -26,7 +26,7 @@ export interface BackgroundModeConfiguration {
   color?: string;
 
   /**
-   * By default the app will come to foreground when taping on the notification. If false, plugin wont come to foreground when tapped.
+   * By default the app will come to foreground when taping on the notification. If false, plugin won't come to foreground when tapped.
    */
   resume?: boolean;
 
@@ -50,7 +50,7 @@ export interface BackgroundModeConfiguration {
  * @name Background Mode
  * @description
  * Cordova plugin to prevent the app from going to sleep while in background.
- * Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode
+ * Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, visit: https://github.com/katzer/cordova-plugin-background-mode
  *@usage
  * ```typescript
  * import { BackgroundMode } from '@ionic-native/background-mode';
