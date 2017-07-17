@@ -14,6 +14,7 @@ export interface GoogleMapOptions {
     myLocationButton: boolean;
     indoorPicker: boolean;
     zoom: boolean;
+    mapToolbar: boolean
   };
   gestures: {
     scroll: boolean;
@@ -28,15 +29,35 @@ export interface GoogleMapOptions {
       minZoom: number;
       maxZoom: number;
     },
-    building: boolean;
+    padding: {
+      left: number,
+      top: number,
+      bottom: number,
+      right: number
+    }
   };
 }
 
 export interface AnimateCameraOptions {
-  target?: LatLng | Array<Marker> | LatLngBounds;
+  /**
+   * Center position of the camera target.
+   */
+  target?: ILatLng | Array<ILatLng> | LatLngBounds;
+  /**
+   * View angle of camera from 0 to 90
+   */
   tilt?: number;
+  /**
+   * Zoom level from 0 to 20
+   */
   zoom?: number;
+  /**
+   * Heading from 0 to 359
+   */
   bearing?: number;
+  /**
+   * Duration of camera animation in milli seconds
+   */
   duration?: number;
 }
 
@@ -44,7 +65,7 @@ export interface CameraPosition {
   /**
    * The center location of the camera view.
    */
-  target?: LatLng | LatLngBounds | LatLng[];
+  target?: ILatLng | LatLngBounds | ILatLng[];
   /**
    * View angle
    */
@@ -64,11 +85,12 @@ export interface CameraPosition {
 }
 
 export interface CircleOptions {
-  center?: LatLng;
+  center?: ILatLng;
   radius?: number;
   strokeColor?: string;
   strokeWidth?: number;
   fillColor?: string;
+  clickable?: boolean;
   visible?: boolean;
   zIndex?: number;
 }
@@ -105,15 +127,19 @@ export interface GroundOverlayOptions {
    */
   url?: string;
   /**
-   * Bounds, array of LatLng
+   * Bounds, array of ILatLng
    */
-  bounds?: Array<LatLng>;
+  bounds?: Array<ILatLng>;
+  /**
+   * Set to false to ignore click event
+   */
+  clickable?: boolean;
   /**
    * Set to false to hide
    */
   visible?: boolean;
   /**
-   * Opacity. From 0 to 1.
+   * Opacity. From 0.0 to 1.0 .
    */
   opacity?: number;
   /**
@@ -158,7 +184,7 @@ export interface MarkerOptions {
   /**
    * The position of the marker.
    */
-  position?: LatLng;
+  position?: ILatLng;
 
   /**
    * 	Specify the anchor of the InfoWindow
@@ -186,7 +212,7 @@ export interface MarkerOptions {
   visible?: boolean;
 
   /**
-   * Specify the options for title.
+   * Specify the options for title. This property work for normal InfoWindow.
    */
   styles?: any;
 
@@ -196,7 +222,7 @@ export interface MarkerOptions {
   animation?: string;
 
   /**
-   * 	iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
+   * Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays.
    */
   zIndex?: number;
 
@@ -223,7 +249,7 @@ export interface MyLocationOptions {
 }
 
 export interface PolygonOptions {
-  points?: Array<LatLng>;
+  points?: Array<ILatLng>;
   geodesic?: boolean;
   strokeColor?: string;
   strokeWidth?: number;
@@ -234,7 +260,7 @@ export interface PolygonOptions {
 }
 
 export interface PolylineOptions {
-  points?: Array<LatLng>;
+  points?: Array<ILatLng>;
   visible?: boolean;
   geodesic?: boolean;
   color?: string;
@@ -349,12 +375,12 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  *    }
  *  );
  *
- *  // create LatLng object
- *  let ionic: LatLng = new LatLng(43.0741904,-89.3809802);
- *
  *  // create CameraPosition
  *  let position: CameraPosition = {
- *    target: ionic,
+ *    target: {
+ *      lat: 43.0741904,
+ *      lng: -89.3809802
+ *    },
  *    zoom: 18,
  *    tilt: 30
  *  };
@@ -430,7 +456,7 @@ export class GoogleMaps extends IonicNativePlugin {
   /**
    * Checks if a map object has been created and is available.
    *
-   * @returns {Promise<boolean>}
+   * @return {Promise<boolean>}
    */
   @Cordova()
   isAvailable(): Promise<boolean> { return; }
@@ -439,7 +465,7 @@ export class GoogleMaps extends IonicNativePlugin {
    * Creates a new GoogleMap instance
    * @param element {string | HTMLElement} Element ID or reference to attach the map to
    * @param options {any} Options
-   * @returns {GoogleMap}
+   * @return {GoogleMap}
    */
   create(element: string | HTMLElement, options?: GoogleMapOptions): GoogleMap {
     return new GoogleMap(element, options);
@@ -457,6 +483,7 @@ export class GoogleMaps extends IonicNativePlugin {
 
 /**
  * @hidden
+ * https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.0.0/class/BaseArrayClass/README.md
  */
 @Plugin({
   plugin: 'cordova-plugin-googlemaps',
@@ -477,7 +504,7 @@ export class BaseArrayClass<T> extends IonicNativePlugin {
   /**
    * Add an event listener
    * @param event {string} name of the event. Can be `insert_at`, `remove_at`, `set_at`, or `finish`.
-   * @returns {Observable<any>} returns an Observable
+   * @return {Observable<any>} returns an Observable
    */
   @InstanceCheck({ observable: true })
   on(event: 'insert_at' | 'remove_at' | 'set_at' | 'finish') {
@@ -567,6 +594,7 @@ export class BaseArrayClass<T> extends IonicNativePlugin {
 
 /**
  * @hidden
+ * https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.0.0/class/BaseClass/README.md
  */
 export class BaseClass {
   protected _objectInstance: any;
@@ -574,7 +602,7 @@ export class BaseClass {
   /**
    * Adds an event listener.
    *
-   * @returns {Observable<any>}
+   * @return {Observable<any>}
    */
   @InstanceCheck()
   addEventListener(eventName: string): Observable<any> {
@@ -584,7 +612,7 @@ export class BaseClass {
   /**
    * Adds an event listener that works once.
    *
-   * @returns {Promise<any>}
+   * @return {Promise<any>}
    */
   @InstanceCheck()
   addListenerOnce(eventName: string): Promise<any> {
@@ -619,7 +647,7 @@ export class BaseClass {
   /**
    * Listen to a map event.
    *
-   * @returns {Observable<any>}
+   * @return {Observable<any>}
    */
   @InstanceCheck({ observable: true })
   on(eventName: string): Observable<any> {
@@ -629,7 +657,7 @@ export class BaseClass {
   /**
    * Listen to a map event only once.
    *
-   * @returns {Promise<any>}
+   * @return {Promise<any>}
    */
   @InstanceCheck()
   one(eventName: string): Promise<any> {
@@ -642,12 +670,16 @@ export class BaseClass {
   @CordovaInstance({ sync: true })
   empty(): void { }
 
+  /**
+   * Dispatch event.
+   */
   @CordovaInstance({ sync: true })
   trigger(eventName: string, ...parameters: any[]): void {}
 }
 
 /**
  * @hidden
+ * https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.0.0/class/Circle/README.md
  */
 export class Circle extends BaseClass {
 
@@ -658,17 +690,17 @@ export class Circle extends BaseClass {
 
   /**
    * Change the center position.
-   * @param latLng {LatLng}
+   * @param latLng {ILatLng}
    */
   @CordovaInstance({ sync: true })
-  setCenter(latLng: LatLng): void {}
+  setCenter(latLng: ILatLng): void {}
 
   /**
    * Return the current center position
-   * @return {LatLng}
+   * @return {ILatLng}
    */
   @CordovaInstance({ sync: true })
-  getCenter(): LatLng { return; }
+  getCenter(): ILatLng { return; }
 
   /**
    * Return the current circle radius.
@@ -795,7 +827,7 @@ export class Environment extends IonicNativePlugin {
 
   /**
    * Get the open source software license information for Google Maps Android API v2 and Google Maps SDK for iOS.
-   * @returns {Promise<any>}
+   * @return {Promise<any>}
    */
   @Cordova()
   getLicenseInfo(): Promise<any> { return; }
@@ -822,10 +854,140 @@ export class Geocoder {
   /**
    * Converts position to address and vice versa
    * @param {GeocoderRequest} request Request object with either an address or a position
-   * @returns {Promise<GeocoderResult | BaseArrayClass<GeocoderResult>>}
+   * @return {Promise<GeocoderResult | BaseArrayClass<GeocoderResult>>}
    */
   @Cordova()
   geocode(request: GeocoderRequest): Promise<GeocoderResult | BaseArrayClass<GeocoderResult>> { return; }
+}
+
+/**
+ * @hidden
+ */
+@Plugin({
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.Geocoder',
+  plugin: 'cordova-plugin-googlemaps',
+  repo: ''
+})
+export class Geocoder {
+  /**
+   * Converts position to address and vice versa
+   * @param {GeocoderRequest} request Request object with either an address or a position
+   * @return {Promise<GeocoderResult | BaseArrayClass<GeocoderResult>>}
+   */
+  @Cordova()
+  geocode(request: GeocoderRequest): Promise<GeocoderResult | BaseArrayClass<GeocoderResult>> { return; }
+}
+
+/**
+ * @hidden
+ */
+@Plugin({
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.geometry',
+  plugin: 'cordova-plugin-googlemaps',
+  repo: ''
+})
+export class encoding {
+  /**
+   * Decodes an encoded path string into a sequence of LatLngs.
+   * @param encoded {string} an encoded path string
+   * @param precision? {number} default: 5
+   * @return {LatLng}
+   */
+  @CordovaInstance({ sync: true })
+  decodePath(encoded: string, precision?: number): LatLng { return; }
+
+  /**
+   * Encodes a sequence of LatLngs into an encoded path string.
+   * @param encoded {Array<ILatLng> | BaseArrayClass<ILatLng>} a sequence of LatLngs
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  encodePath(path: Array<ILatLng> | BaseArrayClass<ILatLng>): string { return; }
+}
+
+/**
+ * @hidden
+ */
+@Plugin({
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.geometry',
+  plugin: 'cordova-plugin-googlemaps',
+  repo: ''
+})
+export class spherical {
+  /**
+   * Returns the distance, in meters, between two LatLngs.
+   * @param locationA {ILatLng}
+   * @param locationB {ILatLng}
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  computeDistanceBetween(from: ILatLng, to: ILatLng): number { return; }
+
+  /**
+   * Returns the LatLng resulting from moving a distance from an origin in the specified heading (expressed in degrees clockwise from north)
+   * @param from {ILatLng}
+   * @param distance {number}
+   * @param heading {number}
+   * @return {LatLng}
+   */
+  @CordovaInstance({ sync: true })
+  computeOffset(from: ILatLng, distance: number, heading: number): LatLng { return; }
+
+  /**
+   * Returns the location of origin when provided with a LatLng destination, meters travelled and original heading. Headings are expressed in degrees clockwise from North. This function returns null when no solution is available.
+   * @param to {ILatLng} The destination LatLng.
+   * @param distance {number} The distance travelled, in meters.
+   * @param heading {number} The heading in degrees clockwise from north.
+   * @return {LatLng}
+   */
+  @CordovaInstance({ sync: true })
+  computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng { return; }
+
+  /**
+   * Returns the length of the given path.
+   * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+
+  /**
+   * Returns the area of a closed path. The computed area uses the same units as the radius.
+   * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+
+  /**
+   * Returns the signed area of a closed path. The signed area may be used to determine the orientation of the path.
+   * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+
+  /**
+   * Returns the heading from one LatLng to another LatLng. Headings are expressed in degrees clockwise from North within the range (-180,180).
+   * @param from {ILatLng}
+   * @param to {ILatLng}
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  computeHeading(from: ILatLng, to: ILatLng): number { return; }
+
+  /**
+   * Returns the LatLng which lies the given fraction of the way between the origin LatLng and the destination LatLng.
+   * @param from {ILatLng}     The LatLng from which to start.
+   * @param to {ILatLng}       The LatLng toward which to travel.
+   * @param fraction {number}  A fraction of the distance to travel from 0.0 to 1.0 .
+   * @return {LatLng}
+   */
+  @CordovaInstance({ sync: true })
+  interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng { return; }
 }
 
 /**
@@ -869,48 +1031,52 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Moves the camera with animation
-   * @returns {Promise<any>}
+   * @return {Promise<any>}
    */
   @CordovaInstance()
   animateCamera(animateCameraOptions: AnimateCameraOptions): Promise<any> { return; }
 
   /**
    * Zooming in the camera with animation
+   * @return {Promise<any>}
    */
   @CordovaInstance()
-  animateCameraZoomIn(): void {}
+  animateCameraZoomIn(): Promise<any> { return; }
 
   /**
    * Zooming out the camera with animation
+   * @return {Promise<any>}
    */
   @CordovaInstance()
-  animateCameraZoomOut(): void {}
+  animateCameraZoomOut(): Promise<any> { return; }
 
   /**
    * Moves the camera without animation
-   * @returns {Promise<any>}
+   * @return {Promise<any>}
    */
   @CordovaInstance()
   moveCamera(cameraPosition: CameraPosition): Promise<any> { return; }
 
   /**
    * Zooming in the camera without animation
+   * @return {Promise<any>}
    */
   @CordovaInstance()
-  moveCameraZoomIn(): void {}
+  moveCameraZoomIn(): Promise<any> { return; }
 
   /**
    * Zooming out the camera without animation
+   * @return {Promise<any>}
    */
   @CordovaInstance()
-  moveCameraZoomOut(): void {}
+  moveCameraZoomOut(): Promise<any> { return; }
 
   /**
    * Get the position of the camera.
-   * @returns {Promise<CameraPosition>}
+   * @return {CameraPosition}
    */
-  @CordovaInstance()
-  getCameraPosition(): Promise<CameraPosition> { return; }
+  @CordovaInstance({ sync: true })
+  getCameraPosition(): CameraPosition { return; }
 
   /**
    * Get the current camera target position
@@ -942,10 +1108,10 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Set the center position of the camera view
-   * @param latLng {LatLng}
+   * @param latLng {ILatLng | Array<ILatLng>}
    */
   @CordovaInstance({ sync: true })
-  setCameraTarget(latLng: LatLng): void { }
+  setCameraTarget(latLng: ILatLng | Array<ILatLng>): void { }
 
   /**
    * Set zoom level of the camera
@@ -977,15 +1143,15 @@ export class GoogleMap extends BaseClass {
   panBy(x: string | number, y: string | number): void { }
 
   /**
-   * Get the current visible region (sw and ne)
-   * @returns {Promise<VisibleRegion>}
+   * Get the current visible region (southWest and northEast)
+   * @return {VisibleRegion}
    */
-  @CordovaInstance()
-  getVisibleRegion(): Promise<VisibleRegion> { return; }
+  @CordovaInstance({ sync: true })
+  getVisibleRegion(): VisibleRegion { return; }
 
   /**
    * Get the current device location
-   * @returns {Promise<MyLocation>}
+   * @return {Promise<MyLocation>}
    */
   @CordovaInstance()
   getMyLocation(options?: MyLocationOptions): Promise<MyLocation> { return; }
@@ -1011,14 +1177,14 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Convert the unit from LatLng to the pixels from the left/top of the map div
-   * @returns {Promise<any>}
+   * @return {Promise<any>}
    */
   @CordovaInstance()
-  fromLatLngToPoint(latLng: LatLng): Promise<any> { return; }
+  fromLatLngToPoint(latLng: ILatLng): Promise<any> { return; }
 
   /**
    * Convert the unit from the pixels from the left/top to the LatLng
-   * @returns {Promise<LatLng>}
+   * @return {Promise<LatLng>}
    */
   @CordovaInstance()
   fromPointToLatLng(point: any): Promise<LatLng> { return; }
@@ -1066,14 +1232,14 @@ export class GoogleMap extends BaseClass {
   setAllGesturesEnabled(enabled: boolean): void {}
 
   /**
-   * Set visiblity of the map
+   * Set visibility of the map
    * @param visible {boolean}
    */
   @CordovaInstance({ sync: true })
   setVisible(visible: boolean): void {}
 
   /**
-   * Adjust the map padding
+   * Adjust the map padding (same as CSS padding rule)
    * @param top {number}
    * @param right {number}
    * @param left {number}
@@ -1091,7 +1257,7 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Adds a marker
-   * @returns {Promise<Marker | any>}
+   * @return {Promise<Marker | any>}
    */
   @InstanceCheck()
   addMarker(options: MarkerOptions): Promise<Marker | any> {
@@ -1108,7 +1274,7 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Adds a circle
-   * @returns {Promise<Circle | any>}
+   * @return {Promise<Circle | any>}
    */
   @InstanceCheck()
   addCircle(options: CircleOptions): Promise<Circle | any> {
@@ -1125,7 +1291,7 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Adds a polygon
-   * @returns {Promise<Polygon | any>}
+   * @return {Promise<Polygon | any>}
    */
   @InstanceCheck()
   addPolygon(options: PolygonOptions): Promise<Polygon | any> {
@@ -1142,7 +1308,7 @@ export class GoogleMap extends BaseClass {
 
   /**
    *
-   * @returns {Promise<Polyline | any>}
+   * @return {Promise<Polyline | any>}
    */
   @InstanceCheck()
   addPolyline(options: PolylineOptions): Promise<Polyline | any> {
@@ -1158,7 +1324,7 @@ export class GoogleMap extends BaseClass {
   }
 
   /**
-   * @returns {Promise<TileOverlay | any>}
+   * @return {Promise<TileOverlay | any>}
    */
   @InstanceCheck()
   addTileOverlay(options: TileOverlayOptions): Promise<TileOverlay | any> {
@@ -1174,7 +1340,7 @@ export class GoogleMap extends BaseClass {
   }
 
   /**
-   * @returns {Promise<GroundOverlay | any>}
+   * @return {Promise<GroundOverlay | any>}
    */
   @InstanceCheck()
   addGroundOverlay(options: GroundOverlayOptions): Promise<GroundOverlay | any> {
@@ -1197,13 +1363,13 @@ export class GoogleMap extends BaseClass {
   refreshLayout(): void {}
 
   /**
-   * @returns {Promise<any>}
+   * @return {Promise<any>}
    */
   @CordovaInstance()
   toDataURL(): Promise<any> { return; }
 
   // /**
-  //  * @returns {Promise<KmlOverlay | any>}
+  //  * @return {Promise<KmlOverlay | any>}
   //  */
   // @InstanceCheck()
   // addKmlOverlay(options: KmlOverlayOptions): Promise<KmlOverlay | any> {
@@ -1231,17 +1397,10 @@ export class GroundOverlay extends BaseClass {
 
   /**
    * Change the bounds of the GroundOverlay
-   * @param bounds {ILatLng[]}
+   * @param bounds { ILatLng[]}
    */
   @CordovaInstance({ sync: true })
   setBounds(bounds: ILatLng[]): void {}
-
-  /**
-   * Return the current center position
-   * @return {ILatLng[]}
-   */
-  @CordovaInstance({ sync: true })
-  getBounds(): ILatLng[] { return; }
 
   /**
    * Change the bearing of the ground overlay
@@ -1264,7 +1423,7 @@ export class GroundOverlay extends BaseClass {
   setImage(image: string): void {};
 
   /**
-   * Change the opacity of the ground overlay
+   * Change the opacity of the ground overlay from 0.0 to 1.0
    * @param opacity {number}
    */
   @CordovaInstance({ sync: true })
@@ -1419,7 +1578,7 @@ export class LatLngBounds {
   toString(): string { return; }
 
   /**
-   * Returns a string of the form "lat_lo,lng_lo,lat_hi,lng_hi" for this bounds, where "lo" corresponds to the southwest corner of the bounding box, while "hi" corresponds to the northeast corner of that box.
+   * Returns a string of the form "lat_sw,lng_sw,lat_ne,lng_ne" for this bounds, where "sw" corresponds to the southwest corner of the bounding box, while "ne" corresponds to the northeast corner of that box.
    * @param precision {number}
    * @return {string}
    */
@@ -1442,7 +1601,7 @@ export class LatLngBounds {
 
   /**
    * Computes the center of this LatLngBounds
-   * @return {ILatLng}
+   * @return {LatLng}
    */
   @CordovaInstance({ sync: true })
   getCenter(): LatLng { return; }
@@ -1460,31 +1619,29 @@ export class Marker extends BaseClass {
 
   /**
    * Set the marker position.
-   * @param latLng {LatLng}
+   * @param latLng {ILatLng}
    */
   @CordovaInstance({ sync: true })
-  setPosition(latLng: LatLng): void { return; }
+  setPosition(latLng: ILatLng): void { return; }
 
   /**
    * Return the marker position.
-   * @return {Promise<LatLng>}
-   */
-  @CordovaInstance()
-  getPosition(): Promise<LatLng> { return; }
-
-  /**
-   * Show the infoWindow of the marker.
-   * @return {number}
+   * @return {ILatLng}
    */
   @CordovaInstance({ sync: true })
-  showInfoWindow(): number { return; }
+  getPosition(): ILatLng { return; }
 
   /**
-   * Hide the infoWindow of the marker.
-   * @return {number}
+   * Show the normal infoWindow of the marker.
    */
   @CordovaInstance({ sync: true })
-  hideInfoWindow(): number { return; }
+  showInfoWindow(): void {}
+
+  /**
+   * Hide the normal infoWindow of the marker.
+   */
+  @CordovaInstance({ sync: true })
+  hideInfoWindow(): void {}
 
   /**
    * Specify the animation either `DROP` or `BOUNCE`
@@ -1504,7 +1661,7 @@ export class Marker extends BaseClass {
    * Set false if you want to hide the marker.
    * @param visible
    */
-  @CordovaInstance()
+  @CordovaInstance({ sync: true })
   setVisible(visible: boolean): void {}
 
   /**
@@ -1514,7 +1671,7 @@ export class Marker extends BaseClass {
   isVisible(): boolean { return; }
 
   /**
-   * Change title of the infoWindow.
+   * Change title of the normal infoWindow.
    * @param title {string}
    */
   @CordovaInstance({ sync: true })
@@ -1528,7 +1685,7 @@ export class Marker extends BaseClass {
   getTitle(): string { return; }
 
   /**
-   * Change snippet of the infoWindow.
+   * Change snippet of the normal infoWindow.
    * @param snippet {string}
    */
   @CordovaInstance({ sync: true })
@@ -1542,7 +1699,7 @@ export class Marker extends BaseClass {
   getSnippet(): string { return; }
 
   /**
-   * Change the marker opacity.
+   * Change the marker opacity from 0.0 to 1.0.
    * @param alpha {number} Opacity
    */
   @CordovaInstance({ sync: true })
@@ -1556,29 +1713,29 @@ export class Marker extends BaseClass {
   getOpacity(): number { return; }
 
   /**
-   * Remove the marker completely.
+   * Remove the marker.
    */
   @CordovaInstance({ sync: true })
   remove(): void {}
 
   /**
    * Change the info window anchor. This defaults to 50% from the left of the image and at the bottom of the image.
-   * @param x {number}
-   * @param y {number}
+   * @param x {number} Distance from left of the icon image in pixels.
+   * @param y {number} Distance from top of the icon image in pixels.
    */
   @CordovaInstance({ sync: true })
   setIconAnchor(x: number, y: number): void {}
 
   /**
    * Change the info window anchor. This defaults to 50% from the left of the image and at the top of the image.
-   * @param x {number}
-   * @param y {number}
+   * @param x {number} Distance from left of the icon image in pixels.
+   * @param y {number} Distance from top of the icon image in pixels.
    */
   @CordovaInstance({ sync: true })
   setInfoWindowAnchor(x: number, y: number): void {}
 
   /**
-   * Retrurn true if the infoWindow is shown on the marker
+   * Return true if the infoWindow is shown on the marker
    * @return {boolean}
    */
   @CordovaInstance({ sync: true })
@@ -1592,10 +1749,11 @@ export class Marker extends BaseClass {
   getHashCode(): string { return; }
 
   /**
-   * iOS only, Plugin Version >= 1.3.3 Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays. (You're able to run this on Android, but it will have no effect)
+   * Higher zIndex value overlays will be drawn on top of lower zIndex value tile layers and overlays.
+   * @param y {number} z-index
    */
   @CordovaInstance({ sync: true })
-  setZIndex(): void {}
+  setZIndex(zIndex: number): void {}
 
   /**
    * Get z-index
@@ -1605,7 +1763,7 @@ export class Marker extends BaseClass {
   getZIndex(): number { return; }
 
   /**
-   * 	Set true if you allows all users to drag the marker.
+   * Set true if you allow all users to drag the marker.
    * @param draggable {boolean}
    */
   @CordovaInstance({ sync: true })
@@ -1711,7 +1869,7 @@ export class Polygon extends BaseClass {
   getFillColor(): string { return; }
 
   /**
-   * Change the stroke color (outter color)
+   * Change the stroke color (outer color)
    * @param strokeColor {string}
    */
   @CordovaInstance({ sync: true })
@@ -1765,12 +1923,21 @@ export class Polygon extends BaseClass {
   @CordovaInstance({ sync: true })
   getZIndex(): number { return; }
 
+  /**
+   * Remove the polygon.
+   */
   @CordovaInstance({ sync: true })
   remove(): void {}
 
+  /**
+   * Change the polygon stroke width
+   */
   @CordovaInstance({ sync: true })
   setStrokeWidth(strokeWidth: number): void {}
 
+  /**
+   * Return the polygon stroke width
+   */
   @CordovaInstance({ sync: true })
   getStrokeWidth(): number { return; }
 
@@ -1787,6 +1954,14 @@ export class Polygon extends BaseClass {
    */
   @CordovaInstance({ sync: true })
   getGeodesic(): boolean { return; }
+
+  /**
+   * Return the map instance.
+   * Note that this method returns the original Google Map object, and not the Ionic Native wrapper.
+   * @return {Object}
+   */
+  @CordovaInstance({ sync: true })
+  getMap(): any { return; }
 }
 
 /**
@@ -1811,7 +1986,7 @@ export class Polyline extends BaseClass {
    * You can modify the points.
    */
   @CordovaInstance({ sync: true })
-  getPoints(): BaseArrayClass<LatLng> { return; }
+  getPoints(): BaseArrayClass<ILatLng> { return; }
 
   /**
    * When true, edges of the polyline are interpreted as geodesic and will follow the curvature of the Earth.
@@ -1902,9 +2077,13 @@ export class Polyline extends BaseClass {
   @CordovaInstance({ sync: true })
   remove(): void {}
 
+  /**
+   * Return the map instance.
+   * Note that this method returns the original Google Map object, and not the Ionic Native wrapper.
+   * @return {Object}
+   */
   @CordovaInstance({ sync: true })
   getMap(): any { return; }
-
 }
 
 /**
@@ -1985,6 +2164,13 @@ export class TileOverlay extends BaseClass {
   @CordovaInstance({ sync: true })
   remove(): void {}
 
+  /**
+   * Return the map instance.
+   * Note that this method returns the original Google Map object, and not the Ionic Native wrapper.
+   * @return {Object}
+   */
+  @CordovaInstance({ sync: true })
+  getMap(): any { return; }
 }
 
 // /**
@@ -2005,7 +2191,7 @@ export class TileOverlay extends BaseClass {
 //   /**
 //    * Adds an event listener.
 //    *
-//    * @returns {Observable<any>}
+//    * @return {Observable<any>}
 //    */
 //   addEventListener(eventName: string): Observable<any> {
 //     return Observable.fromEvent(this._objectInstance, eventName);
@@ -2014,7 +2200,7 @@ export class TileOverlay extends BaseClass {
 //   /**
 //    * Adds an event listener that works once.
 //    *
-//    * @returns {Promise<any>}
+//    * @return {Promise<any>}
 //    */
 //   addListenerOnce(eventName: string): Promise<any> {
 //     if (!this._objectInstance) {
@@ -2043,7 +2229,7 @@ export class TileOverlay extends BaseClass {
 //   /**
 //    * Listen to a map event.
 //    *
-//    * @returns {Observable<any>}
+//    * @return {Observable<any>}
 //    */
 //   on(eventName: string): Observable<any> {
 //     if (!this._objectInstance) {
@@ -2063,7 +2249,7 @@ export class TileOverlay extends BaseClass {
 //   /**
 //    * Listen to a map event only once.
 //    *
-//    * @returns {Promise<any>}
+//    * @return {Promise<any>}
 //    */
 //   one(eventName: string): Promise<any> {
 //     if (!this._objectInstance) {
