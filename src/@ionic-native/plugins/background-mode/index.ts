@@ -179,7 +179,7 @@ export class BackgroundMode extends IonicNativePlugin {
   overrideBackButton(): void { }
 
   /**
-   * Exclude the app from the recent task list works on Android 5.0+.
+   * Exclude the app from the recent task list. Works on Android 5.0+.
    */
   @Cordova({
     platforms: ['Android'],
