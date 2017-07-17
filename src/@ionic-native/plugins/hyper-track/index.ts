@@ -17,13 +17,13 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  * this.hyperTrack.getOrCreateUser().then(user => {
- *  this.hyperTrack.startTracking().then(userId => {
- *   // handle tracking success
- *  }, error => {
- *   // handle tracking error
- *  });
- * }, (error) => {
- *  // handle user error
+ *   this.hyperTrack.startTracking().then(userId => {
+ *     // handle tracking success
+ *   }, trackingError => {
+ *     // handle tracking error
+ *   });
+ * }, userError => {
+ *   // handle user error
  * });
  *
  * ```
