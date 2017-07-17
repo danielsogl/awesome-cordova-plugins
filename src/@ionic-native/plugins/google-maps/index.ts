@@ -607,6 +607,16 @@ export class BaseClass {
   set(key: string, value: any): void { }
 
   /**
+   * Bind a key to another object
+   * @param key {string}
+   * @param target {string}
+   * @param targetKey? {string}
+   * @param noNotify? {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  bindTo(key: string, target: string, targetKey: string, noNotify: boolean): void { }
+
+  /**
    * Listen to a map event.
    *
    * @returns {Observable<any>}
