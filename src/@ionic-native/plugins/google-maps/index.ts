@@ -1274,7 +1274,7 @@ export class GoogleMap extends BaseClass {
     return new Promise<Marker>((resolve, reject) => {
       this._objectInstance.addMarker(options, (marker: any) => {
         if (marker) {
-          resolve(new Marker(marker));
+          resolve(new Marker(this, marker));
         } else {
           reject();
         }
@@ -1291,7 +1291,7 @@ export class GoogleMap extends BaseClass {
     return new Promise<Circle>((resolve, reject) => {
       this._objectInstance.addCircle(options, (circle: any) => {
         if (circle) {
-          resolve(new Circle(circle));
+          resolve(new Circle(this, circle));
         } else {
           reject();
         }
@@ -1308,7 +1308,7 @@ export class GoogleMap extends BaseClass {
     return new Promise<Polygon>((resolve, reject) => {
       this._objectInstance.addPolygon(options, (polygon: any) => {
         if (polygon) {
-          resolve(new Polygon(polygon));
+          resolve(new Polygon(this, polygon));
         } else {
           reject();
         }
@@ -1325,7 +1325,7 @@ export class GoogleMap extends BaseClass {
     return new Promise<Polyline>((resolve, reject) => {
       this._objectInstance.addPolyline(options, (polyline: any) => {
         if (polyline) {
-          resolve(new Polyline(polyline));
+          resolve(new Polyline(this, polyline));
         } else {
           reject();
         }
@@ -1341,7 +1341,7 @@ export class GoogleMap extends BaseClass {
     return new Promise<TileOverlay>((resolve, reject) => {
       this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
         if (tileOverlay) {
-          resolve(new TileOverlay(tileOverlay));
+          resolve(new TileOverlay(this, tileOverlay));
         } else {
           reject();
         }
@@ -1357,7 +1357,7 @@ export class GoogleMap extends BaseClass {
     return new Promise<GroundOverlay>((resolve, reject) => {
       this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
         if (groundOverlay) {
-          resolve(new GroundOverlay(groundOverlay));
+          resolve(new GroundOverlay(this, groundOverlay));
         } else {
           reject();
         }
@@ -1400,10 +1400,20 @@ export class GoogleMap extends BaseClass {
  */
 export class GroundOverlay extends BaseClass {
 
-  constructor(_objectInstance: any) {
+  private _map: GoogleMap;
+
+  constructor(_map: GoogleMap, _objectInstance: any) {
     super();
+    this._map = _map;
     this._objectInstance = _objectInstance;
   }
+
+  /**
+   * Return the map instance.
+   * @return {GoogleMap}
+   */
+  @CordovaInstance({ sync: true })
+  getMap(): any { return this._map; }
 
   /**
    * Change the bounds of the GroundOverlay
@@ -1622,10 +1632,20 @@ export class LatLngBounds {
  */
 export class Marker extends BaseClass {
 
-  constructor(_objectInstance: any) {
+  private _map: GoogleMap;
+
+  constructor(_map: GoogleMap, _objectInstance: any) {
     super();
+    this._map = _map;
     this._objectInstance = _objectInstance;
   }
+
+  /**
+   * Return the map instance.
+   * @return {GoogleMap}
+   */
+  @CordovaInstance({ sync: true })
+  getMap(): any { return this._map; }
 
   /**
    * Set the marker position.
@@ -1814,14 +1834,6 @@ export class Marker extends BaseClass {
   @CordovaInstance({ sync: true })
   getRotation(): number { return; }
 
-  /**
-   * Return the map instance.
-   * Note that this method returns the original Google Map object, and not the Ionic Native wrapper.
-   * @return {Object}
-   */
-  @CordovaInstance({ sync: true })
-  getMap(): any { return; }
-
 }
 
 /**
@@ -1829,10 +1841,20 @@ export class Marker extends BaseClass {
  */
 export class Polygon extends BaseClass {
 
-  constructor(_objectInstance: any) {
+  private _map: GoogleMap;
+
+  constructor(_map: GoogleMap, _objectInstance: any) {
     super();
+    this._map = _map;
     this._objectInstance = _objectInstance;
   }
+
+  /**
+   * Return the map instance.
+   * @return {GoogleMap}
+   */
+  @CordovaInstance({ sync: true })
+  getMap(): any { return this._map; }
 
   /**
    * Change the polygon points.
@@ -1965,13 +1987,6 @@ export class Polygon extends BaseClass {
   @CordovaInstance({ sync: true })
   getGeodesic(): boolean { return; }
 
-  /**
-   * Return the map instance.
-   * Note that this method returns the original Google Map object, and not the Ionic Native wrapper.
-   * @return {Object}
-   */
-  @CordovaInstance({ sync: true })
-  getMap(): any { return; }
 }
 
 /**
@@ -1979,10 +1994,20 @@ export class Polygon extends BaseClass {
  */
 export class Polyline extends BaseClass {
 
-  constructor(_objectInstance: any) {
+  private _map: GoogleMap;
+
+  constructor(_map: GoogleMap, _objectInstance: any) {
     super();
+    this._map = _map;
     this._objectInstance = _objectInstance;
   }
+
+  /**
+   * Return the map instance.
+   * @return {GoogleMap}
+   */
+  @CordovaInstance({ sync: true })
+  getMap(): any { return this._map; }
 
   /**
    * Change the polyline points.
@@ -2087,13 +2112,6 @@ export class Polyline extends BaseClass {
   @CordovaInstance({ sync: true })
   remove(): void {}
 
-  /**
-   * Return the map instance.
-   * Note that this method returns the original Google Map object, and not the Ionic Native wrapper.
-   * @return {Object}
-   */
-  @CordovaInstance({ sync: true })
-  getMap(): any { return; }
 }
 
 /**
@@ -2101,10 +2119,20 @@ export class Polyline extends BaseClass {
  */
 export class TileOverlay extends BaseClass {
 
-  constructor(_objectInstance: any) {
+  private _map: GoogleMap;
+
+  constructor(_map: GoogleMap, _objectInstance: any) {
     super();
+    this._map = _map;
     this._objectInstance = _objectInstance;
   }
+
+  /**
+   * Return the map instance.
+   * @return {GoogleMap}
+   */
+  @CordovaInstance({ sync: true })
+  getMap(): any { return this._map; }
 
   /**
    * Set whether the tiles should fade in.
@@ -2174,13 +2202,6 @@ export class TileOverlay extends BaseClass {
   @CordovaInstance({ sync: true })
   remove(): void {}
 
-  /**
-   * Return the map instance.
-   * Note that this method returns the original Google Map object, and not the Ionic Native wrapper.
-   * @return {Object}
-   */
-  @CordovaInstance({ sync: true })
-  getMap(): any { return; }
 }
 
 // /**
