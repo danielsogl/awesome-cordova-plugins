@@ -869,7 +869,7 @@ export class Geocoder {
   plugin: 'cordova-plugin-googlemaps',
   repo: ''
 })
-export class Encoding {
+export * encoding {
   /**
    * Decodes an encoded path string into a sequence of LatLngs.
    * @param encoded {string} an encoded path string
@@ -897,7 +897,7 @@ export class Encoding {
   plugin: 'cordova-plugin-googlemaps',
   repo: ''
 })
-export class Spherical {
+export * spherical {
   /**
    * Returns the distance, in meters, between two LatLngs.
    * @param locationA {ILatLng}
