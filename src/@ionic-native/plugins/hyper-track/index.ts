@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
+ * @beta
  * @name HyperTrack
  * @description
  * HyperTrack cordova plugin wrapper for Ionic Native. Location-based services provider.
