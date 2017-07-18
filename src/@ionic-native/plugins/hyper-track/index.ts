@@ -3,18 +3,13 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name HyperTrack
- *
- * @description HyperTrack cordova plugin wrapper for Ionic Native. Location-based services provider. iOS is being implemented.
- *
- * @see {@link https://docs.hypertrack.com/sdks/cordova/reference.html#methods|Hypertrack Cordova Methods Reference}
+ * @description
+ * HyperTrack cordova plugin wrapper for Ionic Native. Location-based services provider.
+ * Make sure to include your publishable key at config.xml (see [HyperTrack Cordova Setup](https://docs.hypertrack.com/sdks/cordova/setup.html#step-2-configure-the-sdk)).
  *
  * @usage
  * ```typescript
- * // Make sure to include <preference name="HYPERTRACK_PK" value="YOUR_PUBLISHABLE_KEY" /> in your app's config.xml.
- * // Note that your publishable key can be either a production key or a test key (see your HyperTrack dashboard).
- *
  * import { HyperTrack } from '@ionic-native/hyper-track';
- *
  *
  * constructor(private hyperTrack: HyperTrack) { }
  *
@@ -69,100 +64,68 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-hypertrack',
   pluginRef: 'cordova.plugins.HyperTrack',
   repo: 'https://github.com/hypertrack/hypertrack-cordova',
-  platforms: ['android']
+  platforms: ['Android']
 })
 @Injectable()
 export class HyperTrack extends IonicNativePlugin {
   /**
    * Returns given text. For testing purposes.
-   *
-   * @param {String} [text] Given text to print
-   *
+   * @param {String} text Given text to print
    * @returns {Promise<any>} Returns a Promise that resolves with the result text (which is the same as the given text) if successful, or it gets rejected if an error ocurred.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#L6|HyperTrack.js helloWorld implementation}
    */
   @Cordova()
   helloWorld(text: String): Promise<String> { return; }
 
   /**
    * Create a new user to identify the current device or get a user from a lookup id.
-   *
-   * @param {String} [name] User's name
-   * @param {String} [phone] User's phone
-   * @param {String} [photo] User's photo as URL or a Base64 converted string
-   * @param {String} [lookupId] User's lookupId, which is used to check if a new user is to be created (in this case you could set it to an internal reference for the user that you can use later to identify it), or if one with an existing lookupId is to be used.
-   *
+   * @param {String} name User's name
+   * @param {String} phone User's phone
+   * @param {String} photo User's photo as URL or a Base64 converted string
+   * @param {String} lookupId User's lookupId, which is used to check if a new user is to be created (in this case you could set it to an internal reference for the user that you can use later to identify it), or if one with an existing lookupId is to be used.
    * @returns {Promise<any>} Returns a Promise that resolves with a string representation of the User's JSON, or it gets rejected if an error ocurred.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#L15|HyperTrack.js getOrCreateUser implementation}
-   * @see {@link https://docs.hypertrack.com/api/entities/user.html#the-user-object|HyperTrack API User Oject}
    */
   @Cordova()
   getOrCreateUser(name: String, phone: String, photo: String, lookupId: String): Promise<any> { return; }
 
   /**
    * Set UserId for the SDK created using HyperTrack APIs. This is useful if you already have a user previously created.
-   *
-   * @param {String} [userId] User's ID
-   *
+   * @param {String} userId User's ID
    * @returns {Promise<any>} Returns a Promise that resolves with an "OK" string if successful, or it gets rejected if an error ocurred. An "OK" response doesn't necessarily mean that the userId was found. It just means that it was set correctly.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#L20|HyperTrack.js setUserId implementation}
    */
   @Cordova()
   setUserId(userId: String): Promise<any> { return; }
 
   /**
    * Enable the SDK and start tracking. This will fail if there is no user set.
-   *
    * @returns {Promise<any>} Returns a Promise that resolves with the userId (String) of the User being tracked if successful, or it gets rejected if an error ocurred. One example of an error is not setting a User with getOrCreateUser() or setUserId() before calling this function.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#L27|HyperTrack.js startTracking implementation}
    */
   @Cordova()
   startTracking(): Promise<any> { return; }
 
   /**
    * Create and assign an action to the current user using specified parameters
-   * All parameters are required, even if some of HyeprTrack's examples say
-   * otherwise, because when left as optional and not passed, it won't work nor
-   * will it raise an error.
-   *
-   * @param {String} [type] The action type. Can be one from "pickup", "delivery", "dropoff", "visit", "stopover" or "task"
-   * @param {String} [lookupId] The Action's desired lookupId
-   * @param {String} [expectedPlaceAddress] The address of the Action
-   * @param {Number} [expectedPlaceLatitude] The latitude of the Action
-   * @param {Number} [expectedPlaceLongitude] The longitude of the Action
-   *
+   * @param {String} type The action type. Can be one from "pickup", "delivery", "dropoff", "visit", "stopover" or "task"
+   * @param {String} lookupId The Action's desired lookupId
+   * @param {String} expectedPlaceAddress The address of the Action
+   * @param {Number} expectedPlaceLatitude The latitude of the Action
+   * @param {Number} expectedPlaceLongitude The longitude of the Action
    * @returns {Promise<any>} Returns a Promise that resolves with a string representation of the Action's JSON, or it gets rejected if an error ocurred.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#33|HyperTrack.js createAndAssignAction implementation}
-   * @see {@link https://docs.hypertrack.com/api/entities/action.html#the-action-object|HyperTrack API Documentation for Action}
    */
   @Cordova()
   createAndAssignAction(type: String, lookupId: String, expectedPlaceAddress: String, expectedPlaceLatitude: Number, expectedPlaceLongitude: Number): Promise<any> { return; }
 
   /**
    * Complete an action from the SDK by its ID
-   *
-   * @param {String} [id] ID of the Action that will be marked as completed
-   *
+   * @param {String} actionId ID of the Action that will be marked as completed
    * @returns {Promise<any>} Returns a Promise that resolves with an "OK" string if successful, or it gets rejected if an error ocurred.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#39|HyperTrack.js completeAction implementation}
    */
   @Cordova()
-  completeAction(id: String): Promise<any> { return; }
+  completeAction(actionId: String): Promise<any> { return; }
 
   /**
    * Complete an action from the SDK using Action's lookupId as parameter
-   *
-   * @param {String} [lookupId] Lookup ID of the Action that will be marked as completed
-   *
+   * @param {String} lookupId Lookup ID of the Action that will be marked as completed
    * @returns {Promise<any>} Returns a Promise that resolves with an "OK" string if successful, or it gets rejected if an error ocurred.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#46|HyperTrack.js completeActionWithLookupId implementation}
    */
   @Cordova()
   completeActionWithLookupId(lookupId: String): Promise<any> { return; }
@@ -170,20 +133,14 @@ export class HyperTrack extends IonicNativePlugin {
   /**
    * Disable the SDK and stop tracking.
    * Needs user setting (via getOrCreateUser() or setUserId()) first.
-   *
    * @returns {Promise<any>} Returns a Promise that resolves with the an "OK" string if successful, or it gets rejected if an error ocurred. One example of an error is not setting a User with getOrCreateUser() or setUserId() before calling this function.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#52|HyperTrack.js stopTracking implementation}
    */
   @Cordova()
   stopTracking(): Promise<any> { return; }
 
   /**
    * Get user's current location from the SDK
-   *
    * @returns {Promise<any>} Returns a Promise that resolves with a string representation of the Location's JSON, or it gets rejected if an error ocurred.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#58|HyperTrack.js getCurrentLocation implementation}
    */
   @Cordova()
   getCurrentLocation(): Promise<any> { return; }
@@ -191,56 +148,32 @@ export class HyperTrack extends IonicNativePlugin {
   /**
    * Check if Location permission has been granted to the app (for Android).
    * Returns "true" or "false" in success method accordingly.
-   *
    * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if location permission was granted, or it gets rejected if an error ocurred.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#64|HyperTrack.js checkLocationPermission implementation}
-   * @see {@link https://docs.hypertrack.com/sdks/android/setup.html#step-3-enable-location-permissions|HyperTrack Android SDK Setup}
    */
-  @Cordova({
-    platforms: ['android']
-  })
+  @Cordova()
   checkLocationPermission(): Promise<any> { return; }
 
   /**
    * Request user to grant Location access to the app (for Anrdoid).
    * For Android Marshmallow and above. In other platforms, the Promise is never resolved.
-   *
    * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if Location access was given to the app, or it gets rejected if an error ocurred.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#70|HyperTrack.js requestPermissions implementation}
-   * @see {@link https://docs.hypertrack.com/sdks/android/setup.html#step-3-enable-location-permissions|HyperTrack Android SDK Setup}
    */
-  @Cordova({
-    platforms: ['android']
-  })
+  @Cordova()
   requestPermissions(): Promise<any> { return; }
 
   /**
    * Check if Location services are enabled on the device (for Android).
    * Returns "true" or "false" in success method accordingly.
-   *
    * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if location services are enabled, or it gets rejected if an error ocurred.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#76|HyperTrack.js checkLocationServices implementation}
-   * @see {@link https://docs.hypertrack.com/sdks/android/setup.html#step-3-enable-location-permissions|HyperTrack Android SDK Setup}
    */
-  @Cordova({
-    platforms: ['android']
-  })
+  @Cordova()
   checkLocationServices(): Promise<any> { return; }
 
   /**
    * Request user to enable Location services on the device.
    * For Android Marshmallow and above. In other platforms, the Promise is never resolved.
-   *
    * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if Location services were enabled, or it gets rejected if an error ocurred.
-   *
-   * @see {@link https://github.com/hypertrack/hypertrack-cordova/blob/master/www/HyperTrack.js#82|HyperTrack.js requestLocationServices implementation}
-   * @see {@link https://docs.hypertrack.com/sdks/android/setup.html#step-3-enable-location-permissions|HyperTrack Android SDK Setup}
    */
-  @Cordova({
-    platforms: ['android']
-  })
+  @Cordova()
   requestLocationServices(): Promise<any> { return; }
 }
