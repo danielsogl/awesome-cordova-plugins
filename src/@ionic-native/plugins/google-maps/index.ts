@@ -905,15 +905,15 @@ export class Encoding {
    * @param precision? {number} default: 5
    * @return {LatLng}
    */
-  @CordovaInstance({ sync: true })
+  @Cordova({ sync: true })
   decodePath(encoded: string, precision?: number): LatLng { return; }
 
   /**
    * Encodes a sequence of LatLngs into an encoded path string.
-   * @param encoded {Array<ILatLng> | BaseArrayClass<ILatLng>} a sequence of LatLngs
+   * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>} a sequence of LatLngs
    * @return {string}
    */
-  @CordovaInstance({ sync: true })
+  @Cordova({ sync: true })
   encodePath(path: Array<ILatLng> | BaseArrayClass<ILatLng>): string { return; }
 }
 
@@ -933,7 +933,7 @@ export class Spherical {
    * @param locationB {ILatLng}
    * @return {number}
    */
-  @CordovaInstance({ sync: true })
+  @Cordova({ sync: true })
   computeDistanceBetween(from: ILatLng, to: ILatLng): number { return; }
 
   /**
@@ -943,7 +943,7 @@ export class Spherical {
    * @param heading {number}
    * @return {LatLng}
    */
-  @CordovaInstance({ sync: true })
+  @Cordova({ sync: true })
   computeOffset(from: ILatLng, distance: number, heading: number): LatLng { return; }
 
   /**
@@ -953,7 +953,7 @@ export class Spherical {
    * @param heading {number} The heading in degrees clockwise from north.
    * @return {LatLng}
    */
-  @CordovaInstance({ sync: true })
+  @Cordova({ sync: true })
   computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng { return; }
 
   /**
@@ -961,7 +961,7 @@ export class Spherical {
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}
    * @return {number}
    */
-  @CordovaInstance({ sync: true })
+  @Cordova({ sync: true })
   computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
 
   /**
@@ -969,7 +969,7 @@ export class Spherical {
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
    * @return {number}
    */
-  @CordovaInstance({ sync: true })
+  @Cordova({ sync: true })
   computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
 
   /**
@@ -977,7 +977,7 @@ export class Spherical {
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
    * @return {number}
    */
-  @CordovaInstance({ sync: true })
+  @Cordova({ sync: true })
   computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
 
   /**
@@ -986,7 +986,7 @@ export class Spherical {
    * @param to {ILatLng}
    * @return {number}
    */
-  @CordovaInstance({ sync: true })
+  @Cordova({ sync: true })
   computeHeading(from: ILatLng, to: ILatLng): number { return; }
 
   /**
@@ -996,7 +996,7 @@ export class Spherical {
    * @param fraction {number}  A fraction of the distance to travel from 0.0 to 1.0 .
    * @return {LatLng}
    */
-  @CordovaInstance({ sync: true })
+  @Cordova({ sync: true })
   interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng { return; }
 }
 
