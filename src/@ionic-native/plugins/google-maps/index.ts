@@ -405,6 +405,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * @classes
  * GoogleMap
  * Circle
+ * Encoding
  * Environment
  * Geocoder
  * GroundOverlay
@@ -415,6 +416,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * Marker
  * Polygon
  * Polyline
+ * Spherical
  * TileOverlay
  * BaseClass
  * BaseArrayClass
@@ -449,9 +451,20 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
 export class GoogleMaps extends IonicNativePlugin {
 
   /**
+   * Keep a single instance of Environment in memory
    * @hidden
    */
   _environment: Environment = new Environment();
+
+  /**
+   * @hidden
+   */
+  _spherical: Spherical = new Spherical();
+
+  /**
+   * @hidden
+   */
+  _encoding: Encoding = new Encoding();
 
   /**
    * Checks if a map object has been created and is available.
@@ -472,11 +485,27 @@ export class GoogleMaps extends IonicNativePlugin {
   }
 
   /**
-   * Convenience method that returns an instance of Environment class
-   * @return {Object}
+   * Method that returns an instance of Environment class
+   * @return {Environment}
    */
   environment(): Environment {
     return this._environment;
+  }
+
+  /**
+   * Method that returns an instance of Spherical class
+   * @returns {Spherical}
+   */
+  spherical(): Spherical {
+    return this._spherical;
+  }
+
+  /**
+   * Method that returns an instance of Encoding class
+   * @returns {Encoding}
+   */
+  encoding(): Encoding {
+    return this._encoding;
   }
 
 }
