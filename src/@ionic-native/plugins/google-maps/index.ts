@@ -712,10 +712,20 @@ export class BaseClass {
  */
 export class Circle extends BaseClass {
 
-  constructor(_objectInstance: any) {
+  private _map: GoogleMap;
+
+  constructor(_map: GoogleMap, _objectInstance: any) {
     super();
+    this._map = _map;
     this._objectInstance = _objectInstance;
   }
+
+  /**
+   * Return the map instance.
+   * @return {GoogleMap}
+   */
+  @CordovaInstance({ sync: true })
+  getMap(): any { return this._map; }
 
   /**
    * Change the center position.
