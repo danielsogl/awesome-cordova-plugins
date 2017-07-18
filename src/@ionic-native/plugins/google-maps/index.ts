@@ -877,7 +877,7 @@ export * encoding {
    * @return {LatLng}
    */
   @CordovaInstance({ sync: true })
-  decodePath(encoded: string, precision?: number): LatLng { return; }
+  decodePath(encoded: string, precision?: number): LatLng { return; },
 
   /**
    * Encodes a sequence of LatLngs into an encoded path string.
@@ -905,7 +905,7 @@ export * spherical {
    * @return {number}
    */
   @CordovaInstance({ sync: true })
-  computeDistanceBetween(from: ILatLng, to: ILatLng): number { return; }
+  computeDistanceBetween(from: ILatLng, to: ILatLng): number { return; },
 
   /**
    * Returns the LatLng resulting from moving a distance from an origin in the specified heading (expressed in degrees clockwise from north)
@@ -915,7 +915,7 @@ export * spherical {
    * @return {LatLng}
    */
   @CordovaInstance({ sync: true })
-  computeOffset(from: ILatLng, distance: number, heading: number): LatLng { return; }
+  computeOffset(from: ILatLng, distance: number, heading: number): LatLng { return; },
 
   /**
    * Returns the location of origin when provided with a LatLng destination, meters travelled and original heading. Headings are expressed in degrees clockwise from North. This function returns null when no solution is available.
@@ -925,7 +925,7 @@ export * spherical {
    * @return {LatLng}
    */
   @CordovaInstance({ sync: true })
-  computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng { return; }
+  computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng { return; },
 
   /**
    * Returns the length of the given path.
@@ -933,7 +933,7 @@ export * spherical {
    * @return {number}
    */
   @CordovaInstance({ sync: true })
-  computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+  computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; },
 
   /**
    * Returns the area of a closed path. The computed area uses the same units as the radius.
@@ -941,7 +941,7 @@ export * spherical {
    * @return {number}
    */
   @CordovaInstance({ sync: true })
-  computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+  computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; },
 
   /**
    * Returns the signed area of a closed path. The signed area may be used to determine the orientation of the path.
@@ -949,7 +949,7 @@ export * spherical {
    * @return {number}
    */
   @CordovaInstance({ sync: true })
-  computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+  computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; },
 
   /**
    * Returns the heading from one LatLng to another LatLng. Headings are expressed in degrees clockwise from North within the range (-180,180).
@@ -958,7 +958,7 @@ export * spherical {
    * @return {number}
    */
   @CordovaInstance({ sync: true })
-  computeHeading(from: ILatLng, to: ILatLng): number { return; }
+  computeHeading(from: ILatLng, to: ILatLng): number { return; },
 
   /**
    * Returns the LatLng which lies the given fraction of the way between the origin LatLng and the destination LatLng.
