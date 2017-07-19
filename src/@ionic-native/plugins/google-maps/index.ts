@@ -8,33 +8,61 @@ import 'rxjs/add/observable/fromEvent';
 export type MapType = 'MAP_TYPE_NORMAL' | 'MAP_TYPE_ROADMAP' | 'MAP_TYPE_SATELLITE' | 'MAP_TYPE_HYBRID' | 'MAP_TYPE_TERRAIN' | 'MAP_TYPE_NONE';
 
 export interface GoogleMapOptions {
-  mapType: MapType;
-  controls: {
-    compass: boolean;
-    myLocationButton: boolean;
-    indoorPicker: boolean;
-    zoom: boolean;
-    mapToolbar: boolean
+  mapType?: MapType;
+  controls?: {
+    /**
+     * Turns the compass on or off.
+     */
+    compass?: boolean;
+    /**
+     * Turns the myLocation picker on or off. If turns on this button, the application displays a permission dialog to obtain the geolocation data.
+     */
+    myLocationButton?: boolean;
+    /**
+     * Turns the indoor picker on or off.
+     */
+    indoorPicker?: boolean;
+    /**
+     * Turns the map toolbar on or off. This option is for Android only.
+     */
+    mapToolbar?: boolean
   };
-  gestures: {
-    scroll: boolean;
-    tilt: boolean;
-    zoom: boolean;
-    rotate: boolean;
+  gestures?: {
+    scroll?: boolean;
+    tilt?: boolean;
+    zoom?: boolean;
+    rotate?: boolean;
   };
-  styles: any[];
-  camera: CameraPosition;
-  preferences: {
-    zoom: {
-      minZoom: number;
-      maxZoom: number;
+  /**
+   * Map styles
+   * @ref https://developers.google.com/maps/documentation/javascript/style-reference
+   */
+  styles?: any[];
+  /**
+   * Initial camera position
+   */
+  camera?: CameraPosition;
+  preferences?: {
+    /**
+     * Minimum and maximum zoom levels for zooming gestures.
+     */
+    zoom?: {
+      minZoom?: number;
+      maxZoom?: number;
     },
-    padding: {
-      left: number,
-      top: number,
-      bottom: number,
-      right: number
-    }
+    /**
+     * Paddings of controls.
+     */
+    padding?: {
+      left?: number,
+      top?: number,
+      bottom?: number,
+      right?: number
+    },
+    /**
+     * Turns the 3D buildings layer on or off.
+     */
+    building?: boolean
   };
 }
 
