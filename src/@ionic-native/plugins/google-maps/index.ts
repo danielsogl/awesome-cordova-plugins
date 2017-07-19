@@ -724,7 +724,6 @@ export class Circle extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  @CordovaInstance({ sync: true })
   getMap(): any { return this._map; }
 
   /**
@@ -1422,7 +1421,6 @@ export class GroundOverlay extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  @CordovaInstance({ sync: true })
   getMap(): any { return this._map; }
 
   /**
@@ -1654,7 +1652,6 @@ export class Marker extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  @CordovaInstance({ sync: true })
   getMap(): any { return this._map; }
 
   /**
@@ -1863,7 +1860,6 @@ export class Polygon extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  @CordovaInstance({ sync: true })
   getMap(): any { return this._map; }
 
   /**
@@ -2016,7 +2012,6 @@ export class Polyline extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  @CordovaInstance({ sync: true })
   getMap(): any { return this._map; }
 
   /**
@@ -2141,7 +2136,6 @@ export class TileOverlay extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  @CordovaInstance({ sync: true })
   getMap(): any { return this._map; }
 
   /**
