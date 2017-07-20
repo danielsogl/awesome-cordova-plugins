@@ -573,14 +573,15 @@ export class BaseArrayClass<T> extends IonicNativePlugin {
 
   /**
    * Removes all elements from the array.
+   * @param noNotify? {boolean} Set true to prevent remove_at events.
    */
   @CordovaInstance({ sync: true })
-  empty(): void {}
+  empty(noNotify?: boolean): void {}
 
   /**
    * Iterate over each element, calling the provided callback.
    * @param fn {Function}
-   * @param callback {Function}
+   * @param callback? {Function}
    */
   @CordovaInstance({ sync: true })
   forEach(fn: ((element: T, index?: number) => void) | ((element: T, callback: () => void) => void), callback?: () => void): void {}
@@ -589,11 +590,20 @@ export class BaseArrayClass<T> extends IonicNativePlugin {
    * Iterate over each element, calling the provided callback.
    * Then you can get the results of each callback.
    * @param fn {Function}
-   * @param callback {Function}
+   * @param callback? {Function}
    * @return {Array<Object>} returns a new array with the results
    */
   @CordovaInstance({ sync: true })
   map(fn: Function, callback?: ((element: T, index: number) => T) | ((element: T, callback: (newElement: T) => void) => void)): T[] { return; }
+
+  /**
+   * The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+   * @param fn {Function}
+   * @param callback? {Function}
+   * @return {Array<Object>} returns a new array with the results
+   */
+  @CordovaInstance({ sync: true })
+  filter(fn: Function, callback?: ((element: T, index: number) => T) | ((element: T, callback: (newElement: T) => void) => void)): T[] { return; }
 
   /**
    * Returns a reference to the underlying Array.
@@ -611,42 +621,74 @@ export class BaseArrayClass<T> extends IonicNativePlugin {
   getAt(index: number): any {}
 
   /**
+   * Returns the number of the elements.
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  getLength(): number {}
+
+  /**
+   * The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it is not present.
+   * @param element {Object}
+   * @return {number}
+   */
+  @CordovaInstance({ sync: true })
+  indexOf(element : T): number {}
+
+  /**
+   * The reverse() method reverses an array in place.
+   */
+  @CordovaInstance({ sync: true })
+  reverse(): void {}
+
+  /**
+   * The sort() method sorts the elements of an array in place and returns the array.
+   */
+  @CordovaInstance({ sync: true })
+  sort(): void {}
+
+  /**
    * Inserts an element at the specified index.
    * @param index {number}
    * @param element {Object}
+   * @param noNotify? {boolean} Set true to prevent insert_at events.
    * @return {Object}
    */
   @CordovaInstance({ sync: true })
-  insertAt(index: number, element: T) {}
+  insertAt(index: number, element: T, noNotify?: boolean) {}
 
   /**
    * Removes the last element of the array and returns that element.
+   * @param noNotify? {boolean} Set true to prevent remove_at events.
    * @return {Object}
    */
   @CordovaInstance({ sync: true })
-  pop(): T { return; }
+  pop(noNotify?: boolean): T { return; }
 
   /**
    * Adds one element to the end of the array and returns the new length of the array.
    * @param element {object}
+   * @param noNotify? {boolean} Set true to prevent insert_at events.
    */
   @CordovaInstance({ sync: true })
-  push(element: T): void {}
+  push(element: T, noNotify?: boolean): void {}
 
   /**
    * Removes an element from the specified index.
    * @param index {number}
+   * @param noNotify? {boolean} Set true to prevent insert_at events.
    */
   @CordovaInstance({ sync: true })
-  removeAt(index: number): void {}
+  removeAt(index: number, noNotify?: boolean): void {}
 
   /**
    * Sets an element at the specified index.
    * @param index {number}
    * @param element {object}
+   * @param noNotify? {boolean} Set true to prevent set_at events.
    */
   @CordovaInstance({ sync: true })
-  setAt(index: number, element: T): void {}
+  setAt(index: number, element: T, noNotify?: boolean): void {}
 }
 
 /**
@@ -1218,9 +1260,10 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Remove all overlays, such as marker
+   * @return {Promise<any>}
    */
   @CordovaInstance({ sync: true })
-  clear(): void {}
+  clear(): Promise<any> { return; }
 
   /**
    * Convert the unit from LatLng to the pixels from the left/top of the map div
