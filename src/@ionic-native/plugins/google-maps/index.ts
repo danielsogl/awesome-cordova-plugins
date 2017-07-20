@@ -633,7 +633,7 @@ export class BaseArrayClass<T> extends IonicNativePlugin {
    * @return {number}
    */
   @CordovaInstance({ sync: true })
-  indexOf(element : T): number {}
+  indexOf(element: T): number {}
 
   /**
    * The reverse() method reverses an array in place.
