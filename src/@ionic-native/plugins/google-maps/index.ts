@@ -625,7 +625,7 @@ export class BaseArrayClass<T> extends IonicNativePlugin {
    * @return {number}
    */
   @CordovaInstance({ sync: true })
-  getLength(): number {}
+  getLength(): number { return; }
 
   /**
    * The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it is not present.
@@ -633,7 +633,7 @@ export class BaseArrayClass<T> extends IonicNativePlugin {
    * @return {number}
    */
   @CordovaInstance({ sync: true })
-  indexOf(element: T): number {}
+  indexOf(element: T): number { return; }
 
   /**
    * The reverse() method reverses an array in place.
