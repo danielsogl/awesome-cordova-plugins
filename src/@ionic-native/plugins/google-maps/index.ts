@@ -495,14 +495,6 @@ export class GoogleMaps extends IonicNativePlugin {
   _encoding: Encoding = new Encoding();
 
   /**
-   * Checks if a map object has been created and is available.
-   *
-   * @return {Promise<boolean>}
-   */
-  @Cordova()
-  isAvailable(): Promise<boolean> { return; }
-
-  /**
    * Creates a new GoogleMap instance
    * @param element {string | HTMLElement} Element ID or reference to attach the map to
    * @param options {any} Options
