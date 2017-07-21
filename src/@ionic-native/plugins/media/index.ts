@@ -114,6 +114,9 @@ export class MediaObject {
   @CordovaInstance({ sync: true })
   setVolume(volume: number): void { }
 
+  @CordovaInstance({ sync: true })
+  setRate(speedRate: number): void {}
+
   /**
    * Starts recording an audio file.
    */
