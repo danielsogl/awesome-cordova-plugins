@@ -1,3 +1,21 @@
+<a name="4.1.0"></a>
+# [4.1.0](https://github.com/ionic-team/ionic-native/compare/v4.0.1...v4.1.0) (2017-07-21)
+
+
+### Bug Fixes
+
+* **media:** add setRate method ([4af3d5b](https://github.com/ionic-team/ionic-native/commit/4af3d5b)), closes [#1825](https://github.com/ionic-team/ionic-native/issues/1825)
+
+
+### Features
+
+* **firebase:** add unregister method ([#1823](https://github.com/ionic-team/ionic-native/issues/1823)) ([6230958](https://github.com/ionic-team/ionic-native/commit/6230958))
+* **google-maps:** add missing features and fix wrong definitions ([#1815](https://github.com/ionic-team/ionic-native/issues/1815)) ([976401a](https://github.com/ionic-team/ionic-native/commit/976401a))
+* **hyper-track:** add HyperTrack plugin ([#1816](https://github.com/ionic-team/ionic-native/issues/1816)) ([47fa44c](https://github.com/ionic-team/ionic-native/commit/47fa44c))
+* **open-native-settings:** add Open Native Settings plugin ([0fa82e5](https://github.com/ionic-team/ionic-native/commit/0fa82e5)), closes [#1821](https://github.com/ionic-team/ionic-native/issues/1821)
+
+
+
 <a name="4.0.1"></a>
 ## [4.0.1](https://github.com/ionic-team/ionic-native/compare/v4.0.0...v4.0.1) (2017-07-15)
 
