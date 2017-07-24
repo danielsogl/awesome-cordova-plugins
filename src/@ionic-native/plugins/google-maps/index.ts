@@ -8,57 +8,70 @@ import 'rxjs/add/observable/fromEvent';
 export type MapType = 'MAP_TYPE_NORMAL' | 'MAP_TYPE_ROADMAP' | 'MAP_TYPE_SATELLITE' | 'MAP_TYPE_HYBRID' | 'MAP_TYPE_TERRAIN' | 'MAP_TYPE_NONE';
 
 export interface GoogleMapOptions {
+
   mapType?: MapType;
+
   controls?: {
+
     /**
      * Turns the compass on or off.
      */
     compass?: boolean;
+
     /**
      * Turns the myLocation picker on or off. If turns on this button, the application displays a permission dialog to obtain the geolocation data.
      */
     myLocationButton?: boolean;
+
     /**
      * Turns the indoor picker on or off.
      */
     indoorPicker?: boolean;
+
     /**
      * Turns the map toolbar on or off. This option is for Android only.
      */
-    mapToolbar?: boolean
+    mapToolbar?: boolean;
   };
+
   gestures?: {
     scroll?: boolean;
     tilt?: boolean;
     zoom?: boolean;
     rotate?: boolean;
   };
+
   /**
    * Map styles
    * @ref https://developers.google.com/maps/documentation/javascript/style-reference
    */
   styles?: any[];
+
   /**
    * Initial camera position
    */
   camera?: CameraPosition;
+
   preferences?: {
+
     /**
      * Minimum and maximum zoom levels for zooming gestures.
      */
     zoom?: {
       minZoom?: number;
       maxZoom?: number;
-    },
+    };
+
     /**
      * Paddings of controls.
      */
     padding?: {
-      left?: number,
-      top?: number,
-      bottom?: number,
-      right?: number
-    },
+      left?: number;
+      top?: number;
+      bottom?: number;
+      right?: number;
+    };
+
     /**
      * Turns the 3D buildings layer on or off.
      */
@@ -374,13 +387,21 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  *  Marker
  * } from '@ionic-native/google-maps';
  *
- * export class MapPage {
- *  constructor(private googleMaps: GoogleMaps) {}
+ * import { Platform } from 'ionic-angular';
  *
- * // Load map only after view is initialized
- * ngAfterViewInit() {
- *  this.loadMap();
- * }
+ * export class MapPage {
+ *  constructor(private googleMaps: GoogleMaps, public platform: Platform) {
+ *
+ *    // Wait the native plugin is ready.
+ *    platform.ready().then(() => {
+ *      this.loadMap();
+ *    });
+ *  }
+ *
+ * // Don't use the ngAfterViewInit(). The native plugin is not ready.
+ * //ngAfterViewInit() {
+ * //  this.loadMap();
+ * //}
  *
  * loadMap() {
  *  // make sure to create following structure in your view.html file
