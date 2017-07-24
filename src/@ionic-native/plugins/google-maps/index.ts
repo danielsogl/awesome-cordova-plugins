@@ -373,14 +373,16 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  *  MarkerOptions,
  *  Marker
  * } from '@ionic-native/google-maps';
+ * import { Platform } 'ionic-angular'
  *
  * export class MapPage {
- *  constructor(private googleMaps: GoogleMaps) {}
+ *  constructor(private googleMaps: GoogleMaps, platform: Platform) {
+ * // Load the map when the platform is ready
+ *    this.platform.ready().then(() => {
+ *      this.loadMap();
+ *    });
+ *  }
  *
- * // Load map only after view is initialized
- * ngAfterViewInit() {
- *  this.loadMap();
- * }
  *
  * loadMap() {
  *  // make sure to create following structure in your view.html file
