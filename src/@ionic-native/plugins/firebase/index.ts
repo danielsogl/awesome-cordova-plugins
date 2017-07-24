@@ -108,6 +108,13 @@ export class Firebase extends IonicNativePlugin {
   unsubscribe(topic: string): Promise<any> { return; }
 
   /**
+   * Unregister from firebase, used to stop receiving push notifications.
+   * Call this when you logout user from your app.
+   */
+  @Cordova()
+  unregister(): Promise<any> { return; }
+
+  /**
    * Log an event using Analytics
    * @param type {string}
    * @param data {Object}

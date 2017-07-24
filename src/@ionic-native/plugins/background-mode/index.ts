@@ -19,14 +19,14 @@ export interface BackgroundModeConfiguration {
   text?: String;
 
   /**
-   * This will look for <icon name>.png in platforms/android/res/drawable|mipmap
+   * This will look for `<icon name>.png` in platforms/android/res/drawable|mipmap
    */
   icon?: string;
 
   color?: string;
 
   /**
-   * By default the app will come to foreground when taping on the notification. If false, plugin wont come to foreground when tapped.
+   * By default the app will come to foreground when taping on the notification. If false, plugin won't come to foreground when tapped.
    */
   resume?: boolean;
 
@@ -50,7 +50,7 @@ export interface BackgroundModeConfiguration {
  * @name Background Mode
  * @description
  * Cordova plugin to prevent the app from going to sleep while in background.
- * Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode
+ * Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, visit: https://github.com/katzer/cordova-plugin-background-mode
  *@usage
  * ```typescript
  * import { BackgroundMode } from '@ionic-native/background-mode';
@@ -179,7 +179,7 @@ export class BackgroundMode extends IonicNativePlugin {
   overrideBackButton(): void { }
 
   /**
-   * Exclude the app from the recent task list works on Android 5.0+.
+   * Exclude the app from the recent task list. Works on Android 5.0+.
    */
   @Cordova({
     platforms: ['Android'],
