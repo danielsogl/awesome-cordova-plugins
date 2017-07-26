@@ -15,7 +15,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  * this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818)
- *   .then((result: NativeGeocoderReverseResult) => console.log('The address is ' + result.street + ' in ' + result.countryCode))
+ *   .then((result: NativeGeocoderReverseResult) => console.log(JSON.stringify(result)))
  *   .catch((error: any) => console.log(error));
  *
  * this.nativeGeocoder.forwardGeocode('Berlin')
@@ -40,7 +40,7 @@ export class NativeGeocoder extends IonicNativePlugin {
    * Reverse geocode a given latitude and longitude to find location address
    * @param latitude {number} The latitude
    * @param longitude {number} The longitude
-   * @return {Promise<any>}
+   * @return {Promise<NativeGeocoderReverseResult>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -50,48 +50,59 @@ export class NativeGeocoder extends IonicNativePlugin {
   /**
    * Forward geocode a given address to find coordinates
    * @param addressString {string} The address to be geocoded
-   * @return {Promise<any>}
+   * @return {Promise<NativeGeocoderForwardResult>}
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
   forwardGeocode(addressString: string): Promise<NativeGeocoderForwardResult> { return; }
-
 }
 
 /**
  * Encapsulates format information about a reverse geocoding result.
+ * more Info: 
+ *  - https://developer.apple.com/documentation/corelocation/clplacemark
+ *  - https://developer.android.com/reference/android/location/Address.html
  */
 export interface NativeGeocoderReverseResult {
   /**
-   * The street.
+   * The country code.
    */
-  street: string;
-  /**
-   * The house number.
-   */
-  houseNumber: string;
-  /**
-   * The postal code.
-   */
-  postalCode: string;
-  /**
-   * The city.
-   */
-  city: string;
-  /**
-   * The district.
-   */
-  district: string;
+  countryCode: string;
   /**
    * The country name.
    */
   countryName: string;
   /**
-   * The country code.
+   * The postal code.
    */
-  countryCode: string;
+  postalCode: string;
+  /**
+   * The administrativeArea.
+   */
+  administrativeArea: string;
+  /**
+   * The subAdministrativeArea.
+   */
+  subAdministrativeArea: string;
+  /**
+   * The locality.
+   */
+  locality: string;
+  /**
+   * The subLocality.
+   */
+  subLocality: string;
+  /**
+   * The thoroughfare.
+   */
+  thoroughfare: string;
+  /**
+   * The subThoroughfare.
+   */
+  subThoroughfare: string;
 }
+
 /**
  * Encapsulates format information about a forward geocoding result.
  */
