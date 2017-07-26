@@ -1,8 +1,8 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
-declare var navigator: any;
+declare const navigator: any;
 
 /**
  *  @hidden
@@ -43,7 +43,7 @@ export interface GyroscopeOptions {
  * @name Gyroscope
  * @description Read Gyroscope sensor data
  * @usage
- * ```
+ * ```typescript
  * import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope';
  *
  *
@@ -81,7 +81,7 @@ export interface GyroscopeOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Gyroscope {
+export class Gyroscope extends IonicNativePlugin {
 
   /**
    * Watching for gyroscope sensor changes
@@ -89,7 +89,7 @@ export class Gyroscope {
    * @return {Observable<GyroscopeOrientation>} Returns an Observable that resolves GyroscopeOrientation
    */
   watch(options?: GyroscopeOptions): Observable<GyroscopeOrientation> {
-    return new Observable<GyroscopeOrientation> (
+    return new Observable<GyroscopeOrientation>(
       (observer: any) => {
         let watchId = navigator.gyroscope.watch(observer.next.bind(observer), observer.next.bind(observer), options);
         return () => navigator.gyroscope.clearWatch(watchId);

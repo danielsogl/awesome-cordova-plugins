@@ -19,7 +19,7 @@ const ROOT = path.resolve(path.join(__dirname, '../../')), // root ionic-native 
 // dependency versions
 const ANGULAR_VERSION = '*',
   RXJS_VERSION = '^5.0.1',
-  MIN_CORE_VERSION = '^3.1.0',
+  MIN_CORE_VERSION = '^3.6.0 || >=4.0.0',
   IONIC_NATIVE_VERSION = require(path.resolve(ROOT, 'package.json')).version;
 
 // package dependencies
@@ -40,7 +40,6 @@ PLUGIN_PACKAGE_JSON.peerDependencies = PLUGIN_PEER_DEPS;
 console.log('Making new TMP directory');
 fs.mkdirpSync(BUILD_TMP);
 
-
 // Prepare and copy the core module's package.json
 console.log('Preparing core module package.json');
 CORE_PACKAGE_JSON.version = IONIC_NATIVE_VERSION;
@@ -51,6 +50,21 @@ fs.writeJsonSync(path.resolve(BUILD_CORE_DIST, 'package.json'), CORE_PACKAGE_JSO
 // Fetch a list of the plugins
 const PLUGINS = fs.readdirSync(PLUGINS_PATH);
 
+// Build specific list of plugins to build from arguments, if any
+let pluginsToBuild = process.argv.slice(2);
+let ignoreErrors = false;
+let errors = [];
+
+const index = pluginsToBuild.indexOf('ignore-errors');
+if (index > -1) {
+  ignoreErrors = true;
+  pluginsToBuild.splice(index, 1);
+  console.log('Build will continue even if errors were thrown. Errors will be printed when build finishes.');
+}
+
+if (!pluginsToBuild.length) {
+  pluginsToBuild = PLUGINS;
+}
 
 // Create a queue to process tasks
 const QUEUE = queue({
@@ -98,10 +112,16 @@ const addPluginToQueue = pluginName => {
         exec(`${ROOT}/node_modules/.bin/ngc -p ${tsConfigPath}`, (err, stdout, stderr) => {
 
           if (err) {
-            // oops! something went wrong.
-            callback(`\n\nBuilding ${pluginName} failed.`);
-            console.log(err);
-            return;
+
+            if (!ignoreErrors) {
+              // oops! something went wrong.
+              console.log(err);
+              callback(`\n\nBuilding ${pluginName} failed.`);
+              return;
+            } else {
+              errors.push(err);
+            }
+
           }
 
           // we're done with this plugin!
@@ -116,12 +136,22 @@ const addPluginToQueue = pluginName => {
 
 };
 
-PLUGINS.forEach(addPluginToQueue);
+pluginsToBuild.forEach(addPluginToQueue);
 
 QUEUE.start((err) => {
 
   if (err) {
-    console.log('Error building plugins. ', err);
+    console.log('Error building plugins.');
+    console.log(err);
+    process.stderr.write(err);
+    process.exit(1);
+  } else if (errors.length) {
+    errors.forEach(e => {
+      console.log(e.message) && console.log('\n');
+      process.stderr.write(err);
+    });
+    console.log('Build complete with errors');
+    process.exit(1);
   } else {
     console.log('Done processing plugins!');
   }

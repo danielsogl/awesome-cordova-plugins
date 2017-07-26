@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface StreamingVideoOptions {
   successCallback?: Function;
@@ -22,7 +22,7 @@ export interface StreamingAudioOptions {
  * This plugin allows you to stream audio and video in a fullscreen, native player on iOS and Android.
  *
  * @usage
- * ```
+ * ```typescript
  * import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
  *
  * constructor(private streamingMedia: StreamingMedia) { }
@@ -45,16 +45,16 @@ export interface StreamingAudioOptions {
   plugin: 'cordova-plugin-streaming-media',
   pluginRef: 'plugins.streamingMedia',
   repo: 'https://github.com/nchutchind/cordova-plugin-streaming-media',
-  platforms: ['Android', 'iOS']
+  platforms: ['Amazon Fire OS', 'Android', 'iOS']
 })
 @Injectable()
-export class StreamingMedia {
+export class StreamingMedia extends IonicNativePlugin {
   /**
    * Streams a video
    * @param videoUrl {string} The URL of the video
    * @param options {StreamingVideoOptions} Options
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   playVideo(videoUrl: string, options?: StreamingVideoOptions): void { }
 
   /**
@@ -62,25 +62,25 @@ export class StreamingMedia {
    * @param audioUrl {string} The URL of the audio stream
    * @param options {StreamingAudioOptions} Options
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   playAudio(audioUrl: string, options?: StreamingAudioOptions): void { }
 
   /**
    * Stops streaming audio
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   stopAudio(): void { }
 
   /**
    * Pauses streaming audio
    */
-  @Cordova({sync: true, platforms: ['iOS']})
+  @Cordova({ sync: true, platforms: ['iOS'] })
   pauseAudio(): void { }
 
   /**
    * Resumes streaming audio
    */
-  @Cordova({sync: true, platforms: ['iOS']})
+  @Cordova({ sync: true, platforms: ['iOS'] })
   resumeAudio(): void { }
 
 }

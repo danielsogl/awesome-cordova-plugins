@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CordovaProperty, Plugin } from '@ionic-native/core';
+import { CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
-declare var window: any;
+declare const window: any;
 
 /**
  * @name Device
@@ -24,10 +24,10 @@ declare var window: any;
   plugin: 'cordova-plugin-device',
   pluginRef: 'device',
   repo: 'https://github.com/apache/cordova-plugin-device',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'macOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class Device {
+export class Device extends IonicNativePlugin {
 
   /** Get the version of Cordova running on the device. */
   @CordovaProperty

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Stepcounter
  * @description
@@ -10,7 +10,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * - read device's stepcounter data
  *
  * @usage
- * ```
+ * ```typescript
  * import { Stepcounter } from '@ionic-native/stepcounter';
  *
  * constructor(private stepcounter: Stepcounter) { }
@@ -26,13 +26,13 @@ import { Plugin, Cordova } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'Stepcounter',
-  plugin: 'https://github.com/Slidee/cordova-plugin-stepcounter',
+  plugin: 'cordova-plugin-stepcounter',
   pluginRef: 'stepcounter',
-  repo: 'https://github.com/Slidee/cordova-plugin-stepcounter',
+  repo: 'https://github.com/ihadeed/cordova-plugin-stepcounter',
   platforms: ['Android']
 })
 @Injectable()
-export class Stepcounter {
+export class Stepcounter extends IonicNativePlugin {
 
   /**
    * Start the step counter

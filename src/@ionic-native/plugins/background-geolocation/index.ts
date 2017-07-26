@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-
-declare var window;
 
 export interface BackgroundGeolocationResponse {
 
@@ -127,7 +125,7 @@ export interface BackgroundGeolocationConfig {
   startForeground?: boolean;
 
   /**
-   * ANDROID, WP8 ONLY
+   * ANDROID ONLY
    * When using BackgroundGeolocation.LocationProvider.ANDROID_DISTANCE_FILTER_PROVIDER:
    * The minimum time interval between location updates in milliseconds.
    * @see Android docs (http://developer.android.com/reference/android/location/LocationManager.html#requestLocationUpdates(long,%20float,%20android.location.Criteria,%20android.app.PendingIntent))
@@ -308,10 +306,10 @@ export interface BackgroundGeolocationConfig {
   plugin: 'cordova-plugin-mauron85-background-geolocation',
   pluginRef: 'backgroundGeolocation',
   repo: 'https://github.com/mauron85/cordova-plugin-background-geolocation',
-  platforms: ['iOS', 'Android', 'Windows Phone 8']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class BackgroundGeolocation {
+export class BackgroundGeolocation extends IonicNativePlugin {
 
   /** 
    * Set location service provider @see https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-providers 
@@ -393,7 +391,7 @@ export class BackgroundGeolocation {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS', 'Windows Phone']
+    platforms: ['iOS']
   })
   finish(): Promise<any> { return; }
 
@@ -403,7 +401,7 @@ export class BackgroundGeolocation {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS', 'Windows Phone']
+    platforms: ['iOS']
   })
   changePace(isMoving: boolean): Promise<any> { return; }
 
@@ -422,7 +420,7 @@ export class BackgroundGeolocation {
    * @returns {Promise<Location>}
    */
   @Cordova({
-    platforms: ['iOS', 'Windows Phone']
+    platforms: ['iOS']
   })
   getStationaryLocation(): Promise<BackgroundGeolocationResponse> { return; }
 
@@ -432,7 +430,7 @@ export class BackgroundGeolocation {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS', 'Windows Phone']
+    platforms: ['iOS']
   })
   onStationary(): Promise<any> { return; }
 
@@ -448,13 +446,13 @@ export class BackgroundGeolocation {
   /**
    * Display app settings to change permissions
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   showAppSettings(): void { }
 
   /**
    * Display device location settings
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   showLocationSettings(): void { }
 
   /**

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Google Plus
@@ -23,12 +23,12 @@ import { Cordova, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-googleplus',
   pluginRef: 'window.plugins.googleplus',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-googleplus',
-  platforms: ['Web', 'Android', 'iOS'],
-  install: 'ionic plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=myreversedclientid',
-  installVariables: ['REVERSED_CLIENT_ID']
+  install: 'ionic cordova plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=myreversedclientid',
+  installVariables: ['REVERSED_CLIENT_ID'],
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class GooglePlus {
+export class GooglePlus extends IonicNativePlugin {
 
   /**
    * The login function walks the user through the Google Auth process.

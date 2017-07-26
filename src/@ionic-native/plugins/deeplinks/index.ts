@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface DeeplinkMatch {
@@ -49,7 +49,7 @@ export interface DeeplinkMatch {
  *    });
  * ```
  *
- * Alternatively, if you're using Ionic 2, there's a convenience method that takes a reference to a `NavController` and handles
+ * Alternatively, if you're using Ionic, there's a convenience method that takes a reference to a `NavController` and handles
  * the actual navigation for you:
  *
  * ```typescript
@@ -67,7 +67,7 @@ export interface DeeplinkMatch {
  *   });
  * ```
  *
- * See the [Ionic 2 Deeplinks Demo](https://github.com/driftyco/ionic2-deeplinks-demo/blob/master/app/app.ts) for an example of how to
+ * See the [Ionic Deeplinks Demo](https://github.com/ionic-team/ionic2-deeplinks-demo/blob/master/app/app.ts) for an example of how to
  * retrieve the `NavController` reference at runtime.
  *
  * @interfaces
@@ -77,18 +77,18 @@ export interface DeeplinkMatch {
   pluginName: 'Deeplinks',
   plugin: 'ionic-plugin-deeplinks',
   pluginRef: 'IonicDeeplink',
-  repo: 'https://github.com/driftyco/ionic-plugin-deeplinks',
-  platforms: ['iOS', 'Android', 'Browser'],
-  install: 'ionic plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/',
-  installVariables: ['URL_SCHEME', 'DEEPLINK_SCHEME', 'DEEPLINK_HOST', 'ANDROID_PATH_PREFIX']
+  repo: 'https://github.com/ionic-team/ionic-plugin-deeplinks',
+  install: 'ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/',
+  installVariables: ['URL_SCHEME', 'DEEPLINK_SCHEME', 'DEEPLINK_HOST', 'ANDROID_PATH_PREFIX'],
+  platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()
-export class Deeplinks {
+export class Deeplinks extends IonicNativePlugin {
 
   /**
    * Define a set of paths to match against incoming deeplinks.
    *
-   * @param {paths} Define a set of paths to match against incoming deeplinks.
+   * @param {paths} paths Define a set of paths to match against incoming deeplinks.
    * paths takes an object of the form { 'path': data }. If a deeplink
    * matches the path, the resulting path-data pair will be returned in the
    * promise result which you can then use to navigate in the app as you see fit.
@@ -98,22 +98,24 @@ export class Deeplinks {
   @Cordova({
     observable: true
   })
-  route(paths): Observable<DeeplinkMatch> { return; }
+  route(paths: any): Observable<DeeplinkMatch> { return; }
 
   /**
    *
    * This is a convenience version of `route` that takes a reference to a NavController
-   * from Ionic 2, or a custom class that conforms to this protocol:
+   * from Ionic, or a custom class that conforms to this protocol:
    *
    * NavController.push = function(View, Params){}
    *
    * This handler will automatically navigate when a route matches. If you need finer-grained
    * control over the behavior of a matching deeplink, use the plain `route` method.
    *
-   * @param {paths} Define a set of paths to match against incoming deeplinks.
+   * @param {Nav} navController Define a set of paths to match against incoming deeplinks.
    * paths takes an object of the form { 'path': data }. If a deeplink
    * matches the path, the resulting path-data pair will be returned in the
    * promise result which you can then use to navigate in the app as you see fit.
+   *
+   * @param {Object} paths
    *
    * @returns {Observable<DeeplinkMatch>} Returns an Observable that resolves each time a deeplink comes through, and
    * errors if a deeplink comes through that does not match a given path.
@@ -121,6 +123,6 @@ export class Deeplinks {
   @Cordova({
     observable: true
   })
-  routeWithNavController(navController, paths): Observable<DeeplinkMatch> { return; }
+  routeWithNavController(navController: any, paths: any): Observable<DeeplinkMatch> { return; }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Base64 To Gallery
@@ -28,7 +28,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
-export class Base64ToGallery {
+export class Base64ToGallery extends IonicNativePlugin {
 
   /**
    * Converts a base64 string to an image file in the device gallery
@@ -40,7 +40,7 @@ export class Base64ToGallery {
     successIndex: 2,
     errorIndex: 3
   })
-  base64ToGallery(data: string, options?: {prefix?: string; mediaScanner?: boolean}): Promise<any> {
+  base64ToGallery(data: string, options?: { prefix?: string; mediaScanner?: boolean }): Promise<any> {
     return;
   }
 

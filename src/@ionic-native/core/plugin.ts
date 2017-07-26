@@ -1,4 +1,4 @@
-import { get, getPlugin, getPromise, cordovaWarn, pluginWarn } from './util';
+import { getPlugin, getPromise, cordovaWarn, pluginWarn } from './util';
 import { checkReady } from './bootstrap';
 import { CordovaOptions } from './decorators';
 
@@ -7,8 +7,11 @@ import 'rxjs/add/observable/fromEvent';
 
 checkReady();
 
-declare var window;
-declare var Promise;
+// declare const window;
+// declare var Promise;
+
+export const ERR_CORDOVA_NOT_AVAILABLE = { error: 'cordova_not_available' };
+export const ERR_PLUGIN_NOT_INSTALLED = { error: 'plugin_not_installed' };
 
 
 /**
@@ -16,8 +19,8 @@ declare var Promise;
  * @return {boolean | { error: string } }
  * @private
  */
-export function checkAvailability(pluginRef: string, methodName?: string, pluginName?: string);
-export function checkAvailability(pluginObj: any, methodName?: string, pluginName?: string);
+export function checkAvailability(pluginRef: string, methodName?: string, pluginName?: string): boolean | { error: string };
+export function checkAvailability(pluginObj: any, methodName?: string, pluginName?: string): boolean | { error: string };
 export function checkAvailability(plugin: any, methodName?: string, pluginName?: string): boolean | { error: string } {
 
   let pluginRef, pluginInstance, pluginPackage;
@@ -35,15 +38,11 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
   if (!pluginInstance || (!!methodName && typeof pluginInstance[methodName] === 'undefined')) {
     if (!window.cordova) {
       cordovaWarn(pluginName, methodName);
-      return {
-        error: 'cordova_not_available'
-      };
+      return ERR_CORDOVA_NOT_AVAILABLE;
     }
 
     pluginWarn(pluginName, pluginPackage, methodName);
-    return {
-      error: 'plugin_not_installed'
-    };
+    return ERR_PLUGIN_NOT_INSTALLED;
   }
 
   return true;
@@ -69,7 +68,7 @@ function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Func
     args.unshift(reject);
     args.unshift(resolve);
   } else if (opts.callbackStyle === 'node') {
-    args.push((err, result) => {
+    args.push((err: any, result: any) => {
       if (err) {
         reject(err);
       } else {
@@ -135,8 +134,8 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 }
 
 function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
-  let pluginResult, rej;
-  const p = getPromise((resolve, reject) => {
+  let pluginResult: any, rej: Function;
+  const p = getPromise((resolve: Function, reject: Function) => {
     pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
     rej = reject;
   });
@@ -145,13 +144,13 @@ function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any 
   // to error
   if (pluginResult && pluginResult.error) {
     p.catch(() => { });
-    rej(pluginResult.error);
+    typeof rej === 'function' && rej(pluginResult.error);
   }
   return p;
 }
 
-function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts: any= {}) {
-  return getPromise((resolve, reject) => {
+function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
+  return getPromise((resolve: Function, reject: Function) => {
     const pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts);
     if (pluginResult) {
       if (pluginResult.error) {
@@ -178,11 +177,11 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
           if (opts.clearWithArgs) {
             return callCordovaPlugin(pluginObj, opts.clearFunction, args, opts, observer.next.bind(observer), observer.error.bind(observer));
           }
-          return get(window, pluginObj.constructor.getPluginRef())[opts.clearFunction].call(pluginObj, pluginResult);
+          return callCordovaPlugin(pluginObj, opts.clearFunction, []);
         }
       } catch (e) {
         console.warn('Unable to clear the previous observable watch for', pluginObj.constructor.getPluginName(), methodName);
-        console.error(e);
+        console.warn(e);
       }
     };
   });
@@ -225,7 +224,7 @@ export function overrideFunction(pluginObj: any, methodName: string, args: any[]
     if (availabilityCheck === true) {
       const pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
       pluginInstance[methodName] = observer.next.bind(observer);
-      return () => pluginInstance[methodName] = () => {};
+      return () => pluginInstance[methodName] = () => { };
     } else {
       observer.error(availabilityCheck);
       observer.complete();
@@ -239,7 +238,7 @@ export function overrideFunction(pluginObj: any, methodName: string, args: any[]
  * @private
  */
 export const wrap = function(pluginObj: any, methodName: string, opts: CordovaOptions = {}) {
-  return (...args) => {
+  return (...args: any[]) => {
     if (opts.sync) {
       // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
       return callCordovaPlugin(pluginObj, methodName, args, opts);
@@ -259,7 +258,7 @@ export const wrap = function(pluginObj: any, methodName: string, opts: CordovaOp
  * @private
  */
 export function wrapInstance(pluginObj: any, methodName: string, opts: any = {}) {
-  return (...args) => {
+  return (...args: any[]) => {
     if (opts.sync) {
 
       return callInstance(pluginObj, methodName, args, opts);
@@ -277,37 +276,30 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
         return () => {
           try {
             if (opts.clearWithArgs) {
-              return pluginObj._objectInstance[opts.clearFunction].apply(pluginObj._objectInstance, args);
+              return callInstance(pluginObj, opts.clearFunction, args, opts, observer.next.bind(observer), observer.error.bind(observer));
             }
-            return pluginObj._objectInstance[opts.clearFunction].call(pluginObj, pluginResult);
+            return callInstance(pluginObj, opts.clearFunction, []);
           } catch (e) {
             console.warn('Unable to clear the previous observable watch for', pluginObj.constructor.getPluginName(), methodName);
-            console.error(e);
+            console.warn(e);
           }
         };
       });
 
     } else if (opts.otherPromise) {
 
-      return getPromise((resolve, reject) => {
+      return getPromise((resolve: Function, reject: Function) => {
         let result = callInstance(pluginObj, methodName, args, opts, resolve, reject);
-        if (result && !result.error) {
+        if (result && !!result.then) {
           result.then(resolve, reject);
+        } else {
+          reject();
         }
       });
 
     } else {
 
-      let pluginResult, rej;
-      const p = getPromise((resolve, reject) => {
-        pluginResult = callInstance(pluginObj, methodName, args, opts, resolve, reject);
-        rej = reject;
-      });
-      if (pluginResult && pluginResult.error) {
-        p.catch(() => { });
-        rej(pluginResult.error);
-      }
-      return p;
+      return getPromise((resolve: Function, reject: Function) => callInstance(pluginObj, methodName, args, opts, resolve, reject));
 
     }
   };

@@ -1,8 +1,5 @@
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-
-declare var window;
-
 
 export interface BackgroundFetchConfig {
 
@@ -63,7 +60,7 @@ export interface BackgroundFetchConfig {
   platforms: ['iOS']
 })
 @Injectable()
-export class BackgroundFetch {
+export class BackgroundFetch extends IonicNativePlugin {
 
 
   /**
@@ -99,5 +96,12 @@ export class BackgroundFetch {
     sync: true
   })
   finish(): void { }
+
+  /**
+   * Return the status of the background-fetch
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  status(): Promise<any> { return; }
 
 }

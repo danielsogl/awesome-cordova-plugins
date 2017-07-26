@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export type SpeechRecognitionListeningOptions = SpeechRecognitionListeningOptionsIOS | SpeechRecognitionListeningOptionsAndroid;
@@ -44,13 +44,12 @@ export interface SpeechRecognitionListeningOptionsAndroid {
 }
 
 /**
- * @beta
  * @name Speech Recognition
  * @description
  * This plugin does speech recognition using cloud services
  *
  * @usage
- * ```
+ * ```typescript
  * import { SpeechRecognition } from '@ionic-native/speech-recognition';
  *
  * constructor(private speechRecognition: SpeechRecognition) { }
@@ -101,7 +100,7 @@ export interface SpeechRecognitionListeningOptionsAndroid {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class SpeechRecognition {
+export class SpeechRecognition extends IonicNativePlugin {
 
   /**
    * Check feature available

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Globalization
@@ -26,10 +26,10 @@ import { Cordova, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-globalization',
   pluginRef: 'navigator.globalization',
   repo: 'https://github.com/apache/cordova-plugin-globalization',
-  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Firefox OS', 'iOS', 'Windows Phone 8', 'Widnows', 'Browser']
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class Globalization {
+export class Globalization extends IonicNativePlugin {
 
   /**
    * Returns the BCP-47 compliant language identifier tag to the successCallback with a properties object as a parameter. That object should have a value property with a String value.
@@ -72,12 +72,12 @@ export class Globalization {
   /**
    * Returns a pattern string to format and parse dates according to the client's user preferences.
    * @param options Object with the format length and selector
-   * @returns {Promise<{pattern: string}>} Returns a promise.
+   * @returns {Promise<{ pattern: string, timezone: string, utf_offset: number, dst_offset: number }>} Returns a promise.
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getDatePattern(options: { formatLength: string, selector: string }): Promise<{ pattern: string }> { return; }
+  getDatePattern(options: { formatLength: string, selector: string }): Promise<{ pattern: string, timezone: string, utf_offset: number, dst_offset: number }> { return; }
 
   /**
    * Returns an array of the names of the months or days of the week, depending on the client's user preferences and calendar.

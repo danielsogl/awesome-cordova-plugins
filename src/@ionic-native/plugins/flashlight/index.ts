@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Flashlight
@@ -17,18 +17,17 @@ import { Cordova, Plugin } from '@ionic-native/core';
  *
  * this.flashlight.switchOn();
  *
- *
  * ```
  */
 @Plugin({
   pluginName: 'Flashlight',
   plugin: 'cordova-plugin-flashlight',
   pluginRef: 'window.plugins.flashlight',
-  repo: 'https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git',
+  repo: 'https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
-export class Flashlight {
+export class Flashlight extends IonicNativePlugin {
 
   /**
    * Checks if the flashlight is available

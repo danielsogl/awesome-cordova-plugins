@@ -1,5 +1,7 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+
+
 
 export interface AlipayOrder {
   /**
@@ -67,7 +69,7 @@ export interface AlipayOrder {
  * Requires Cordova plugin: `cordova-alipay-base`. For more info, please see the [Alipay plugin docs](https://github.com/xueron/cordova-alipay-base).
  *
  * @usage
- * ```
+ * ```typescript
  * import { Alipay, AlipayOrder } from '@ionic-native/alipay';
  *
  * constructor(private alipay: Alipay) {
@@ -99,11 +101,12 @@ export interface AlipayOrder {
   plugin: 'cordova-alipay-base',
   pluginRef: 'Alipay.Base',
   repo: 'https://github.com/xueron/cordova-alipay-base',
-  platforms: ['Android', 'iOS'],
-  install: 'ionic plugin add https://github.com/xueron/cordova-alipay-base --variable APP_ID=your_app_id'
+  install: 'ionic cordova plugin add cordova-alipay-base --variable APP_ID=your_app_id',
+  installVariables: ['APP_ID'],
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Alipay {
+export class Alipay extends IonicNativePlugin {
   /**
    * Open Alipay to perform App pay
    * @param order { AlipayOrder } alipay options
@@ -112,4 +115,3 @@ export class Alipay {
   @Cordova()
   pay(order: AlipayOrder): Promise<any> { return; }
 }
-

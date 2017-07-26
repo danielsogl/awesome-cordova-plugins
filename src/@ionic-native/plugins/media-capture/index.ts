@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-declare var navigator: any;
+declare const navigator: any;
 
 export interface MediaFile {
   /**
@@ -33,7 +33,7 @@ export interface MediaFile {
    * @param {Function} successCallback
    * @param {Function} errorCallback
    */
-  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any);
+  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any): void;
 }
 
 export interface MediaFileData {
@@ -146,10 +146,11 @@ export interface ConfigurationData {
   pluginName: 'MediaCapture',
   plugin: 'cordova-plugin-media-capture',
   pluginRef: 'navigator.device.capture',
-  repo: 'https://github.com/apache/cordova-plugin-media-capture'
+  repo: 'https://github.com/apache/cordova-plugin-media-capture',
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class MediaCapture {
+export class MediaCapture extends IonicNativePlugin {
   /**
    * The recording image sizes and formats supported by the device.
    * @returns {ConfigurationData[]}

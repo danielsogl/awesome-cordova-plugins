@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Market
  * @description
  * Opens an app's page in the market place (Google Play, App Store)
  *
  * @usage
- * ```
+ * ```typescript
  * import { Market } from '@ionic-native/market';
  *
  * constructor(private market: Market) { }
@@ -25,7 +25,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Market {
+export class Market extends IonicNativePlugin {
 
   /**
    * Opens an app in Google Play / App Store

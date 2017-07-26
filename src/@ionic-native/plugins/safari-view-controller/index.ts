@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Observable } from 'rxjs/Observable';
 
 export interface SafariViewControllerOptions {
-  url?: string;
-  hidden?: boolean;
-  toolbarColor?: string;
   animated?: boolean;
-  showDefaultShareMenuItem?: boolean;
+  barColor?: string;
+  controlTintColor?: string;
   enterReaderModeIfAvailable?: boolean;
+  hidden?: boolean;
+  showDefaultShareMenuItem?: boolean;
   tintColor?: string;
+  toolbarColor?: string;
   transition?: string;
+  url?: string;
 }
 
 /**
  * @name Safari View Controller
  * @description
  * @usage
- * ```
+ * ```typescript
  * import { SafariViewController } from '@ionic-native/safari-view-controller';
  *
  * constructor(private safariViewController: SafariViewController) { }
@@ -56,11 +59,11 @@ export interface SafariViewControllerOptions {
   pluginName: 'SafariViewController',
   plugin: 'cordova-plugin-safariviewcontroller',
   pluginRef: 'SafariViewController',
-  platforms: ['iOS', 'Android'],
-  repo: 'https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller'
+  repo: 'https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class SafariViewController {
+export class SafariViewController extends IonicNativePlugin {
 
   /**
    * Checks if SafariViewController is available
@@ -72,13 +75,14 @@ export class SafariViewController {
   /**
    * Shows Safari View Controller
    * @param options {SafariViewControllerOptions} optional
-   * @returns {Promise<any>}
+   * @returns {Observable<any>}
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
+    observable: true
   })
-  show(options?: SafariViewControllerOptions): Promise<any> { return; }
+  show(options?: SafariViewControllerOptions): Observable<any> { return; }
 
   /**
    * Hides Safari View Controller

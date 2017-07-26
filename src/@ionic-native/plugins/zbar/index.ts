@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface ZBarOptions {
   /**
@@ -43,19 +43,19 @@ export interface ZBarOptions {
  * Requires Cordova plugin: `cordova-plugin-cszbar`. For more info, please see the [zBar plugin docs](https://github.com/tjwoon/csZBar).
  *
  * @usage
- * ```
- * import { ZBar, ZBarOptions } from '@ionic-native/z-bar';
+ * ```typescript
+ * import { ZBar, ZBarOptions } from '@ionic-native/zbar';
  *
  * constructor(private zbar: ZBar) { }
  *
  * ...
  *
- * let ZBarOptions = {
- *       flash: "off",
+ * let options: ZBarOptions = {
+ *       flash: 'off',
  *       drawSight: false
  *     };
  *
- * this.zbar.scan(zBarOptions)
+ * this.zbar.scan(options)
  *    .then(result => {
  *       console.log(result); // Scanned code
  *    })
@@ -76,7 +76,7 @@ export interface ZBarOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class ZBar {
+export class ZBar extends IonicNativePlugin {
 
   /**
    * Open the scanner

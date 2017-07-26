@@ -1,38 +1,57 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, CordovaCheck } from '@ionic-native/core';
-
-declare var cordova: any;
+import { Cordova, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 export interface EmailComposerOptions {
 
+  /**
+   * App to send the email with
+   */
   app?: string;
 
+  /**
+   * Email address(es) for To field
+   */
   to?: string | Array<string>;
 
+  /**
+   * Email address(es) for CC field
+   */
   cc?: string | Array<string>;
 
+  /**
+   * Email address(es) for BCC field
+   */
   bcc?: string | Array<string>;
 
-  attachments?: Array<any>;
+  /**
+   * File paths or base64 data streams
+   */
+  attachments?: string[];
 
+  /**
+   * Subject of the email
+   */
   subject?: string;
 
+  /**
+   * Email body (for HTML, set isHtml to true)
+   */
   body?: string;
 
+  /**
+   * Indicates if the body is HTML or plain text
+   */
   isHtml?: boolean;
 
 }
 
 
 /**
- * @beta
  * @name Email Composer
  * @description
  *
  * Requires Cordova plugin: cordova-plugin-email-composer. For more info, please see the [Email Composer plugin docs](https://github.com/hypery2k/cordova-email-plugin).
  *
- * DISCLAIMER: This plugin is experiencing issues with the latest versions of Cordova. Use at your own risk. Functionality is not guaranteed. Please stay tuned for a more stable version.
- * A good alternative to this plugin is the social sharing plugin.
  *
  * @usage
  * ```typescript
@@ -66,20 +85,31 @@ export interface EmailComposerOptions {
  *
  * // Send a text message using default options
  * this.emailComposer.open(email);
+ * ```
  *
+ * You can also assign aliases to email apps
+ * ```ts
+ * // add alias
+ * this.email.addAlias('gmail', 'com.google.android.gm');
+ *
+ * // then use alias when sending email
+ * this.email.open({
+ *   app: 'gmail',
+ *   ...
+ * });
  * ```
  * @interfaces
  * EmailComposerOptions
  */
 @Plugin({
   pluginName: 'EmailComposer',
-  plugin: 'cordova-plugin-email',
+  plugin: 'cordova-plugin-email-composer',
   pluginRef: 'cordova.plugins.email',
-  repo: 'https://github.com/hypery2k/cordova-email-plugin',
-  platforms: ['Android', 'iOS']
+  repo: 'https://github.com/katzer/cordova-plugin-email-composer',
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
-export class EmailComposer {
+export class EmailComposer extends IonicNativePlugin {
 
   /**
    * Verifies if sending emails is supported on the device.
@@ -91,7 +121,7 @@ export class EmailComposer {
   isAvailable(app?: string): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
       if (app) {
-        cordova.plugins.email.isAvailable(app, (isAvailable) => {
+        EmailComposer.getPlugin().isAvailable(app, (isAvailable: boolean) => {
           if (isAvailable) {
             resolve();
           } else {
@@ -99,7 +129,7 @@ export class EmailComposer {
           }
         });
       } else {
-        cordova.plugins.email.isAvailable((isAvailable) => {
+        EmailComposer.getPlugin().isAvailable((isAvailable: boolean) => {
           if (isAvailable) {
             resolve();
           } else {
@@ -109,6 +139,26 @@ export class EmailComposer {
       }
     });
   }
+
+  /**
+   * Request permission to access email accounts information
+   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
+   */
+  @Cordova({
+    successIndex: 0,
+    errorIndex: 2
+  })
+  requestPermission(): Promise<boolean> { return; }
+
+  /**
+   * Checks if the app has a permission to access email accounts information
+   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
+   */
+  @Cordova({
+    successIndex: 0,
+    errorIndex: 2
+  })
+  hasPermission(): Promise<boolean> { return; }
 
   /**
    * Adds a new mail app alias.

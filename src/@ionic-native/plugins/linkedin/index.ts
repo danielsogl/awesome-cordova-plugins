@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 export type LinkedInLoginScopes = 'r_basicprofile' | 'r_emailaddress' | 'rw_company_admin' | 'w_share';
@@ -11,7 +11,7 @@ export type LinkedInLoginScopes = 'r_basicprofile' | 'r_emailaddress' | 'rw_comp
  * Please see the [plugin's repo](https://github.com/zyramedia/cordova-plugin-linkedin#installation) for detailed installation steps.
  *
  * @usage
- * ```
+ * ```typescript
  * import { LinkedIn } from '@ionic-native/linkedin';
  *
  * constructor(private linkedin: LinkedIn) { }
@@ -52,12 +52,13 @@ export type LinkedInLoginScopes = 'r_basicprofile' | 'r_emailaddress' | 'rw_comp
   pluginName: 'LinkedIn',
   plugin: 'cordova-plugin-linkedin',
   pluginRef: 'cordova.plugins.LinkedIn',
-  repo: 'https://github.com/zyramedia/cordova-plugin-linkedin',
-  install: 'ionic plugin add cordova-plugin-linkedin --variable APP_ID=YOUR_APP_ID',
+  repo: 'https://github.com/zyra/cordova-plugin-linkedin',
+  install: 'ionic cordova plugin add cordova-plugin-linkedin --variable APP_ID=YOUR_APP_ID',
+  installVariables: ['APP_ID'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class LinkedIn {
+export class LinkedIn extends IonicNativePlugin {
 
   /**
    * Login with the LinkedIn App
@@ -100,10 +101,17 @@ export class LinkedIn {
   openProfile(memberId: string): Promise<any> { return; }
 
   /**
-   * Checks if there is already an existing active session. This should be used to avoid unecessary login.
+   * Checks if there is already an existing active session. This should be used to avoid unnecessary login.
    * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates whether there is an active session
    */
   @Cordova()
   hasActiveSession(): Promise<boolean> { return; }
+
+  /**
+   * Checks if there is an active session and returns the access token if it exists.
+   * @return {Promise<any>} returns a promise that resolves with an object that contains an access token if there is an active session
+   */
+  @Cordova()
+  getActiveSession(): Promise<any> { return; }
 
 }

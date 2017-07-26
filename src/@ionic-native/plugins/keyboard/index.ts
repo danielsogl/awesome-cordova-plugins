@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -24,17 +24,17 @@ import { Observable } from 'rxjs/Observable';
   pluginName: 'Keyboard',
   plugin: 'ionic-plugin-keyboard',
   pluginRef: 'cordova.plugins.Keyboard',
-  repo: 'https://github.com/driftyco/ionic-plugin-keyboard',
+  repo: 'https://github.com/ionic-team/ionic-plugin-keyboard',
   platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows']
 })
 @Injectable()
-export class Keyboard {
+export class Keyboard extends IonicNativePlugin {
 
   /**
    * Hide the keyboard accessory bar with the next, previous and done buttons.
    * @param hide {boolean}
    */
-   @Cordova({sync: true})
+  @Cordova({ sync: true })
   hideKeyboardAccessoryBar(hide: boolean): void { }
 
   /**
@@ -57,7 +57,7 @@ export class Keyboard {
 
   /**
    * Prevents the native UIScrollView from moving when an input is focused.
-   * @param disable
+   * @param disable {boolean}
    */
   @Cordova({
     sync: true,

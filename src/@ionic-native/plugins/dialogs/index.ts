@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 export interface DialogsPromptCallback {
@@ -45,11 +45,11 @@ export interface DialogsPromptCallback {
   pluginName: 'Dialogs',
   plugin: 'cordova-plugin-dialogs',
   pluginRef: 'navigator.notification',
-  repo: 'https://github.com/apache/cordova-plugin-dialogs.git',
-  platforms: ['Android', 'BlackBerry 10', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
+  repo: 'https://github.com/apache/cordova-plugin-dialogs',
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class Dialogs {
+export class Dialogs extends IonicNativePlugin {
 
   /**
    * Shows a custom alert or dialog box.
@@ -69,13 +69,13 @@ export class Dialogs {
    * @param {string} message Dialog message.
    * @param {string} title Dialog title. (Optional, defaults to Confirm)
    * @param {Array<string>} buttonLabels Array of strings specifying button labels. (Optional, defaults to [OK,Cancel])
-   * @returns {Promise<number>} Returns a promise that resolves the button index that was clicked. Note that the index use one-based indexing.
+   * @returns {Promise<number>} Returns a promise that resolves the button index that was clicked, or 0 if the user has dismissed the dialog by clicking outside the dialog box. Note that the index use one-based indexing.
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 4
   })
-  confirm(message, title?: string, buttonLabels?: string[]): Promise<number> { return; }
+  confirm(message: string, title?: string, buttonLabels?: string[]): Promise<number> { return; }
 
   /**
    * Displays a native dialog box that is more customizable than the browser's prompt function.

@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
-
-
-declare var cordova: any;
+import { Cordova, CordovaCheck, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface PrintOptions {
   /**
@@ -41,6 +38,7 @@ export interface PrintOptions {
    */
   bounds?: number[] | any;
 }
+
 /**
  * @name Printer
  * @description Prints documents or HTML rendered content
@@ -62,7 +60,7 @@ export interface PrintOptions {
  *      grayscale: true
  *    };
  *
- * this.p.print(content, options).then(onSuccess, onError);
+ * this.printer.print(content, options).then(onSuccess, onError);
  * ```
  * @interfaces
  * PrintOptions
@@ -71,18 +69,41 @@ export interface PrintOptions {
   pluginName: 'Printer',
   plugin: 'de.appplant.cordova.plugin.printer',
   pluginRef: 'cordova.plugins.printer',
-  repo: 'https://github.com/katzer/cordova-plugin-printer.git',
-  platforms: ['Android', 'iOS']
+  repo: 'https://github.com/katzer/cordova-plugin-printer',
+  platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
-export class Printer {
+export class Printer extends IonicNativePlugin {
 
   /**
-   * Checks whether to device is capable of printing.
+   * Checks whether the device is capable of printing (uses `check()` internally)
    * @returns {Promise<boolean>}
    */
+  isAvailable(): Promise<boolean> {
+    return this.check()
+      .then((res: any) => Promise.resolve(res.avail));
+  }
+
+  /**
+   * Checks if the printer service is available (iOS) or if printer services are installed and enabled (Android).
+   * @return {Promise<any>} returns a promise that resolve with an object indicating whether printing is available, and providing the number of printers available
+   */
+  @CordovaCheck()
+  check(): Promise<any> {
+    return new Promise<any>((resolve: Function) => {
+      Printer.getPlugin()
+        .check((avail: boolean, count: any) => {
+          resolve({ avail, count });
+        });
+    });
+  }
+
+  /**
+   * Displays a system interface allowing the user to select an available printer. To speak with a printer directly you need to know the network address by picking them before via `printer.pick`.
+   * @returns {Promise<any>}
+   */
   @Cordova()
-  isAvailable(): Promise<boolean> { return; }
+  pick(): Promise<any> { return; }
 
   /**
    * Sends content to the printer.
@@ -90,7 +111,10 @@ export class Printer {
    * @param options {PrintOptions} optional. The options to pass to the printer
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 2,
+    errorIndex: 4
+  })
   print(content: string | HTMLElement, options?: PrintOptions): Promise<any> { return; }
 
 }

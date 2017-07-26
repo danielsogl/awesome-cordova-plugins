@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-
-declare var window;
 
 /**
  * @name Screen Orientation
  * @description
- * Cordova plugin to set/lock the screen orientation in a common way for iOS, Android, WP8 and Blackberry 10.
- * This plugin is based on an early version of Screen Orientation API so the api does not currently match the current spec.
+ * Cordova plugin to set/lock the screen orientation in a common way.
  *
  * Requires Cordova plugin: `cordova-plugin-screen-orientation`. For more info, please see the [Screen Orientation plugin docs](https://github.com/apache/cordova-plugin-screen-orientation).
  *
@@ -29,8 +26,16 @@ declare var window;
  *
  * // allow user rotate
  * this.screenOrientation.unlock();
- * ```
  *
+ * // detect orientation changes
+ * this.screenOrientation.onChange().subscribe(
+ *    () => {
+ *        console.log("Orientation Changed");
+ *    }
+ * );
+ *
+ * ```
+ * 
  * @advanced
  *
  * Accepted orientation values:
@@ -50,10 +55,10 @@ declare var window;
   plugin: 'cordova-plugin-screen-orientation',
   pluginRef: 'screen.orientation',
   repo: 'https://github.com/apache/cordova-plugin-screen-orientation',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows']
 })
 @Injectable()
-export class ScreenOrientation {
+export class ScreenOrientation extends IonicNativePlugin {
 
   /**
    * Convenience enum for possible orientations

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface DeviceMotionAccelerationData {
@@ -72,10 +72,10 @@ export interface DeviceMotionAccelerometerOptions {
   plugin: 'cordova-plugin-device-motion',
   pluginRef: 'navigator.accelerometer',
   repo: 'https://github.com/apache/cordova-plugin-device-motion',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone 8']
 })
 @Injectable()
-export class DeviceMotion {
+export class DeviceMotion extends IonicNativePlugin {
 
   /**
    * Get the current acceleration along the x, y, and z axes.

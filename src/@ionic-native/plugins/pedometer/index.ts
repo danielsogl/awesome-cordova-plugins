@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -21,8 +21,8 @@ export interface IPedometerData {
  * such as step counts and other information about the distance travelled.
  *
  * @usage
- * ```
- * import { Pedometer } from 'ionic-native';
+ * ```typescript
+ * import { Pedometer } from '@ionic-native/pedometer';
  *
  * Pedometer.isDistanceAvailable()
  *   .then((available: boolean) => console.log(available))
@@ -42,7 +42,7 @@ export interface IPedometerData {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Pedometer {
+export class Pedometer extends IonicNativePlugin {
 
   /**
    * Checks if step counting is available. Only works on iOS.
@@ -69,13 +69,13 @@ export class Pedometer {
   @Cordova()
   isFloorCountingAvailable(): Promise<boolean> { return; }
 
-   /**
-   * Starts the delivery of recent pedestrian-related data to your Cordova app.
-   *
-   * When the app is suspended, the delivery of updates stops temporarily.
-   * Upon returning to foreground or background execution, the pedometer object begins updates again.
-   * @return {Observable<IPedometerData>} Returns a Observable that recieves repeatly data from pedometer in background.
-   */
+  /**
+  * Starts the delivery of recent pedestrian-related data to your Cordova app.
+  *
+  * When the app is suspended, the delivery of updates stops temporarily.
+  * Upon returning to foreground or background execution, the pedometer object begins updates again.
+  * @return {Observable<IPedometerData>} Returns a Observable that recieves repeatly data from pedometer in background.
+  */
   @Cordova({
     observable: true,
     clearFunction: 'stopPedometerUpdates'

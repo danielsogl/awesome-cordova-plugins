@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface NativeTransitionOptions {
   direction?: string;
@@ -22,7 +22,7 @@ export interface NativeTransitionOptions {
  * The Native Page Transitions plugin uses native hardware acceleration to animate your transitions between views. You have complete control over the type of transition, the duration, and direction.
  *
  * @usage
- * ```
+ * ```typescript
  * import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
  *
  * constructor(private nativePageTransitions: NativePageTransitions) { }
@@ -66,10 +66,10 @@ export interface NativeTransitionOptions {
   plugin: 'com.telerik.plugins.nativepagetransitions',
   pluginRef: 'plugins.nativepagetransitions',
   repo: 'https://github.com/Telerik-Verified-Plugins/NativePageTransitions',
-  platforms: ['iOS', 'Android', 'Windows Phone']
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
-export class NativePageTransitions {
+export class NativePageTransitions extends IonicNativePlugin {
   /**
    * Perform a slide animation
    * @param options {NativeTransitionOptions} Options for the transition
@@ -91,7 +91,7 @@ export class NativePageTransitions {
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
-  @Cordova({platforms: ['iOS', 'Android']})
+  @Cordova({ platforms: ['iOS', 'Android'] })
   fade(options: NativeTransitionOptions): Promise<any> { return; }
 
 
@@ -100,7 +100,7 @@ export class NativePageTransitions {
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
-  @Cordova({platforms: ['iOS', 'Android']})
+  @Cordova({ platforms: ['iOS', 'Android'] })
   drawer(options: NativeTransitionOptions): Promise<any> { return; }
 
 
@@ -110,7 +110,21 @@ export class NativePageTransitions {
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
-  @Cordova({platforms: ['iOS']})
+  @Cordova({ platforms: ['iOS'] })
   curl(options: NativeTransitionOptions): Promise<any> { return; }
+
+  /**
+   * Execute pending transition
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  executePendingTransition(): Promise<any> { return; }
+
+  /**
+   * Cancel pending transition
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  cancelPendingTransition(): Promise<any> { return; }
 
 }

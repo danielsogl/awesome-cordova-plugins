@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name File Opener
@@ -7,7 +7,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * This plugin will open a file on your device file system with its default application.
  *
  * @usage
- * ```
+ * ```typescript
  * import { FileOpener } from '@ionic-native/file-opener';
  *
  * constructor(private fileOpener: FileOpener) { }
@@ -28,7 +28,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
 })
 @Injectable()
-export class FileOpener {
+export class FileOpener extends IonicNativePlugin {
 
   /**
    * Open an file
@@ -41,7 +41,7 @@ export class FileOpener {
     successName: 'success',
     errorName: 'error'
   })
-  open(filePath: string, fileMIMEType: string): Promise<any> {return; }
+  open(filePath: string, fileMIMEType: string): Promise<any> { return; }
 
   /**
    * Uninstalls a package
@@ -53,7 +53,7 @@ export class FileOpener {
     successName: 'success',
     errorName: 'error'
   })
-  uninstall(packageId: string): Promise<any> {return; }
+  uninstall(packageId: string): Promise<any> { return; }
 
   /**
    * Check if an app is already installed
@@ -65,6 +65,6 @@ export class FileOpener {
     successName: 'success',
     errorName: 'error'
   })
-  appIsInstalled(packageId: string): Promise<any> {return; }
+  appIsInstalled(packageId: string): Promise<any> { return; }
 
 }

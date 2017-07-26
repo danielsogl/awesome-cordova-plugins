@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-declare var navigator: any;
+declare const navigator: any;
 
 export interface Coordinates {
 
@@ -74,7 +74,7 @@ export interface PositionError {
   /**
    * A message that can describe the error that occurred
    */
-   message: string;
+  message: string;
 
 }
 
@@ -153,10 +153,10 @@ export interface GeolocationOptions {
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation',
   repo: 'https://github.com/apache/cordova-plugin-geolocation',
-  platforms: ['Android', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class Geolocation {
+export class Geolocation extends IonicNativePlugin {
 
   /**
    * Get the device's current position.
@@ -174,7 +174,7 @@ export class Geolocation {
    * Observable changes.
    *
    * ```typescript
-   * var subscription = Geolocation.watchPosition()
+   * const subscription = this.geolocation.watchPosition()
    *                               .filter((p) => p.coords !== undefined) //Filter Out Errors
    *                               .subscribe(position => {
    *   console.log(position.coords.longitude + ' ' + position.coords.latitude);

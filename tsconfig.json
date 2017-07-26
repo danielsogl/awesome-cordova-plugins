@@ -5,11 +5,13 @@
     "stripInternal": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "noImplicitAny": true,
     "module": "es2015",
     "moduleResolution": "node",
     "paths": {
       "@ionic-native/core": ["./dist/@ionic-native/core"]
     },
+    "outDir": "dist",
     "rootDir": ".",
     "target": "es5",
     "skipLibCheck": true,

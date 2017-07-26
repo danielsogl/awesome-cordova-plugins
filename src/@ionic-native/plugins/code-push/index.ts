@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 namespace Http {
   export const enum Verb {
@@ -109,8 +109,8 @@ interface LocalPackage_Static {
 }
 /* tslint:enable */
 
-declare var RemotePackage: RemotePackage_Static;
-declare var LocalPackage: LocalPackage_Static;
+declare const RemotePackage: RemotePackage_Static;
+declare const LocalPackage: LocalPackage_Static;
 
 /**
  * Defines the JSON format of the current package information file.
@@ -427,7 +427,7 @@ export interface DownloadProgress {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class CodePush {
+export class CodePush extends IonicNativePlugin {
 
   /**
    * Get the current package information.

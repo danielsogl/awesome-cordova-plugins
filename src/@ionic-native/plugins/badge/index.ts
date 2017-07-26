@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -27,10 +27,10 @@ import { Cordova, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-badge',
   pluginRef: 'cordova.plugins.notification.badge',
   repo: 'https://github.com/katzer/cordova-plugin-badge',
-  platforms: ['Android', 'iOS', 'Browser', 'Windows', 'Amazon FireOS', 'Windows Phone 8']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
-export class Badge {
+export class Badge extends IonicNativePlugin {
 
   /**
    * Clear the badge of the app icon.

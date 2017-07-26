@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface BatteryStatusResponse {
@@ -32,7 +32,7 @@ export interface BatteryStatusResponse {
  *
  * // watch change in battery status
  * let subscription = this.batteryStatus.onChange().subscribe(
- *  (status: StatusObject) => {
+ *  (status: BatteryStatusResponse) => {
  *    console.log(status.level, status.isPlugged);
  *  }
  * );
@@ -49,10 +49,10 @@ export interface BatteryStatusResponse {
   plugin: 'cordova-plugin-battery-status',
   pluginRef: 'navigator.battery',
   repo: 'https://github.com/apache/cordova-plugin-battery-status',
-  platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser']
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows']
 })
 @Injectable()
-export class BatteryStatus {
+export class BatteryStatus extends IonicNativePlugin {
 
   /**
    * Watch the change in battery level

@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 
@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
  * Plugin to install Couchbase Lite in your PhoneGap app on iOS or Android
  *
  * @usage
- * ```
+ * ```typescript
  * import { CouchbaseLite } from '@ionic-native/couchbase-lite';
  *
  * constructor(private couchbase: CouchbaseLite) {
@@ -23,13 +23,13 @@ import { Injectable } from '@angular/core';
  */
 @Plugin({
   pluginName: 'CouchbaseLite',
-  plugin: 'https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin',
+  plugin: 'couchbase-lite-phonegap-plugin',
   pluginRef: 'cblite',
   repo: 'https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin',
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class CouchbaseLite {
+export class CouchbaseLite extends IonicNativePlugin {
 
   /**
    * Get the database url
@@ -38,6 +38,6 @@ export class CouchbaseLite {
   @Cordova({
     callbackStyle: 'node'
   })
-  getURL(): Promise<any> { return;  }
+  getURL(): Promise<any> { return; }
 
 }

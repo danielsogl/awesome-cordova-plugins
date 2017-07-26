@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
-
-
-declare var window;
+import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface AppRatePreferences {
 
@@ -64,6 +61,10 @@ export interface AppRateCallbacks {
    * call back function. called when rate-dialog showing
    */
   onRateDialogShow?: Function;
+  /**
+   * call back function. called when user clicked on negative feedback
+   */
+  handleNegativeFeedback?: Function;
 
 }
 
@@ -110,12 +111,24 @@ export interface AppUrls {
  * constructor(private appRate: AppRate) { }
  *
  * ...
+ * // set certain preferences
+ * this.appRate.preferences.storeAppURL = {
+ *   ios: '<app_id>',
+ *   android: 'market://details?id=<package_name>',
+ *   windows: 'ms-windows-store://review/?ProductId=<store_id>'
+ * };
  *
- *  this.appRate.preferences.storeAppURL = {
- *    ios: '<my_app_id>',
+ * this.appRate.promptForRating(true);
+ *
+ * // or, override the whole preferences object
+ * this.appRate.preferences = {
+ *   usesUntilPrompt: 3,
+ *   storeAppURL: {
+ *    ios: '<app_id>',
  *    android: 'market://details?id=<package_name>',
- *    windows: 'ms-windows-store://review/?ProductId=<Store_ID>'
- *  };
+ *    windows: 'ms-windows-store://review/?ProductId=<store_id>'
+ *   }
+ * };
  *
  * this.appRate.promptForRating(false);
  * ```
@@ -131,10 +144,10 @@ export interface AppUrls {
   plugin: 'cordova-plugin-apprate',
   pluginRef: 'AppRate',
   repo: 'https://github.com/pushandplay/cordova-plugin-apprate',
-  platforms: ['Android', 'iOS', 'Windows (experimental)']
+  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows']
 })
 @Injectable()
-export class AppRate {
+export class AppRate extends IonicNativePlugin {
 
   /**
    * Configure various settings for the Rating View.
@@ -149,5 +162,11 @@ export class AppRate {
    */
   @Cordova()
   promptForRating(immediately: boolean): void { };
+
+  /**
+   * Immediately send the user to the app store rating page
+   */
+  @Cordova()
+  navigateToAppStore(): void { };
 
 }

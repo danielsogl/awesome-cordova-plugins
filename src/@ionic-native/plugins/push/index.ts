@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, CordovaInstance, checkAvailability } from '@ionic-native/core';
+import { Cordova, Plugin, CordovaInstance, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var window: any;
 
-export type EventResponse = RegistrationEventResponse | NotificationEventResponse | Error;
+export type EventResponse = RegistrationEventResponse & NotificationEventResponse & Error;
 
 export interface RegistrationEventResponse {
   /**
@@ -39,7 +39,7 @@ export interface NotificationEventResponse {
   /**
    * An optional collection of data sent by the 3rd party push service that does not fit in the above properties.
    */
-  additionalData: NotificationEventAdditionalData | any;
+  additionalData: NotificationEventAdditionalData & any;
 }
 
 /**
@@ -264,11 +264,12 @@ export type PushEvent = 'registration' | 'error' | 'notification';
   plugin: 'phonegap-plugin-push',
   pluginRef: 'PushNotification',
   repo: 'https://github.com/phonegap/phonegap-plugin-push',
-  install: 'ionic plugin add phonegap-plugin-push --variable SENDER_ID=XXXXXXXXX',
-  installVariables: ['SENDER_ID']
+  install: 'ionic cordova plugin add phonegap-plugin-push --variable SENDER_ID=XXXXXXXXX',
+  installVariables: ['SENDER_ID'],
+  platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
-export class Push {
+export class Push extends IonicNativePlugin {
 
   /**
    * Init push notifications

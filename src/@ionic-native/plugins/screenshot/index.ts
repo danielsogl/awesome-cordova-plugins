@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Plugin } from '@ionic-native/core';
+import { Plugin, IonicNativePlugin } from '@ionic-native/core';
 
+declare const navigator: any;
 
-declare var navigator: any;
 /**
  * @name Screenshot
  * @description Captures a screen shot
@@ -23,28 +23,29 @@ declare var navigator: any;
  */
 @Plugin({
   pluginName: 'Screenshot',
-  plugin: 'https://github.com/gitawego/cordova-screenshot.git',
+  plugin: 'com.darktalker.cordova.screenshot',
   pluginRef: 'navigator.screenshot',
-  repo: 'https://github.com/gitawego/cordova-screenshot.git'
+  repo: 'https://github.com/gitawego/cordova-screenshot',
+  platforms: ['Android', 'iOS', 'macOS']
 })
 @Injectable()
-export class Screenshot {
+export class Screenshot extends IonicNativePlugin {
 
   /**
    *  Takes screenshot and saves the image
    *
-   * @param {string} format. Format can take the value of either 'jpg' or 'png'
+   * @param format {string} Format can take the value of either 'jpg' or 'png'
    * On ios, only 'jpg' format is supported
-   * @param {number} quality. Determines the quality of the screenshot.
+   * @param quality {number}  Determines the quality of the screenshot.
    *        Default quality is set to 100.
-   * @param {string} filename. Name of the file as stored on the storage
+   * @param filename {string} Name of the file as stored on the storage
    * @returns {Promise<any>}
    */
   save(format?: string, quality?: number, filename?: string): Promise<any> {
     return new Promise<any>(
       (resolve, reject) => {
         navigator.screenshot.save(
-          (error, result) => {
+          (error: any, result: any) => {
             if (error) {
               reject(error);
             } else {
@@ -62,7 +63,7 @@ export class Screenshot {
   /**
    *  Takes screenshot and returns the image as an URI
    *
-   * @param {number} quality. Determines the quality of the screenshot.
+   * @param quality {number} Determines the quality of the screenshot.
    *        Default quality is set to 100.
    * @returns {Promise<any>}
    */
@@ -70,7 +71,7 @@ export class Screenshot {
     return new Promise<any>(
       (resolve, reject) => {
         navigator.screenshot.URI(
-          (error, result) => {
+          (error: any, result: any) => {
             if (error) {
               reject(error);
             } else {

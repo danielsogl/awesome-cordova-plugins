@@ -1,7 +1,7 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
-declare var window: any;
+declare const window: any;
 
 export interface IntelSecurityDataOptions {
   /** Non-empty string. **/
@@ -40,7 +40,7 @@ export interface IntelSecurityDataOptions {
  * For more information please visit the [API documentation](https://software.intel.com/en-us/app-security-api/api).
  *
  * @usage
- * ```
+ * ```typescript
  * import { IntelSecurity } from '@ionic-native/intel-security';
  * ...
  * constructor(private intelSecurity: IntelSecurity) { }
@@ -53,7 +53,7 @@ export interface IntelSecurityDataOptions {
  *   .catch((error: any) => console.log(error));
  *
  * this.intelSecurity.storage.read({id: storageID })
- *   .then((instanceID: number) => this.intelSec.data.getData(instanceID))
+ *   .then((instanceID: number) => this.intelSecurity.data.getData(instanceID))
  *   .then((data: string) => console.log(data)) // Resolves to 'Sample Data'
  *   .catch((error: any) => console.log(error));
  *
@@ -72,10 +72,10 @@ export interface IntelSecurityDataOptions {
   plugin: 'com-intel-security-cordova-plugin',
   pluginRef: 'intel.security',
   repo: 'https://github.com/AppSecurityApi/com-intel-security-cordova-plugin',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
 })
 @Injectable()
-export class IntelSecurity {
+export class IntelSecurity extends IonicNativePlugin {
 
   /**
    * returns an IntelSecurityStorage object

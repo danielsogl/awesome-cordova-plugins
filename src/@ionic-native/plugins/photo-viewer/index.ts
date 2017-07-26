@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Photo Viewer
  * @description This plugin can display your image in full screen with the ability to pan, zoom, and share the image.
@@ -24,7 +24,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class PhotoViewer {
+export class PhotoViewer extends IonicNativePlugin {
   /**
    * Shows an image in full screen
    * @param url {string} URL or path to image

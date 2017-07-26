@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Launch Review
@@ -10,7 +10,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * On iOS, the plugin opens the app's storepage in the App Store and focuses the Review tab, where the user can leave a review by pressing "Write a review".
  *
  * @usage
- * ```
+ * ```typescript
  * import { LaunchReview } from '@ionic-native/launch-review';
  *
  * constructor(private launchReview: LaunchReview) { }
@@ -30,7 +30,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class LaunchReview {
+export class LaunchReview extends IonicNativePlugin {
 
   /**
    * Launch store app using given app ID

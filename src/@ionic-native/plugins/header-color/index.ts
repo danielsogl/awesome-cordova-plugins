@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Header Color
  * @description
- * Cordova plugin to change color of header in multitask view
+ * Cordova plugin to change color of header in Android Multitask View
  *
  * @usage
  * ```typescript
@@ -14,7 +14,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * ...
  *
- * this.headerColor.tint("#becb29");
+ * this.headerColor.tint('#becb29');
  * ```
  */
 @Plugin({
@@ -25,7 +25,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android']
 })
 @Injectable()
-export class HeaderColor {
+export class HeaderColor extends IonicNativePlugin {
 
   /**
    * Set a color to the task header

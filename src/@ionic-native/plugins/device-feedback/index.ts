@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Device Feedback
  * @description
@@ -7,7 +7,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * Plugin that lets you provide haptic or acoustic feedback on Android devices.
  *
  * @usage
- * ```
+ * ```typescript
  * import { DeviceFeedback } from '@ionic-native/device-feedback';
  *
  * constructor(private deviceFeedback: DeviceFeedback) { }
@@ -38,7 +38,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['Android']
 })
 @Injectable()
-export class DeviceFeedback {
+export class DeviceFeedback extends IonicNativePlugin {
 
   /**
    * Provide sound feedback to user, nevertheless respect user's settings and current active device profile as native feedback do.

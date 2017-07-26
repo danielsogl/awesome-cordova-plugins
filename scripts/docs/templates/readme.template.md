@@ -1,4 +1,4 @@
-<a style="float:right;font-size:12px;" href="http://github.com/driftyco/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
+<a style="float:right;font-size:12px;" href="http://github.com/ionic-team/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
   Improve this doc
 </a>
 
@@ -16,7 +16,7 @@
 <@ for prop in doc.decorators[0].argumentInfo @>
 
 ```
-$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif @>
+$ <@ if prop.install @><$ prop.install $><@ else @>ionic cordova plugin add <$ prop.plugin $><@ endif @>
 $ npm install --save @ionic-native/<$ doc.npmId $>
 ```
 

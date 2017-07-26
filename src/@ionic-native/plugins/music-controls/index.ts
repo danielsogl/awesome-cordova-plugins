@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface MusicControlsOptions {
@@ -25,7 +25,7 @@ export interface MusicControlsOptions {
  * Handle also headset event (plug, unplug, headset button).
  *
  * @usage
- * ```
+ * ```typescript
  * import { MusicControls } from '@ionic-native/music-controls';
  *
  * constructor(private musicControls: MusicControls) { }
@@ -58,38 +58,53 @@ export interface MusicControlsOptions {
  *
  *  this.musicControls.subscribe().subscribe(action => {
  *
- *    switch(action) {
- *        case 'music-controls-next':
- *            // Do something
- *            break;
- *        case 'music-controls-previous':
- *            // Do something
- *            break;
- *        case 'music-controls-pause':
- *            // Do something
- *            break;
- *        case 'music-controls-play':
- *            // Do something
- *            break;
- *        case 'music-controls-destroy':
+ *    function events(action) {
+ *      const message = JSON.parse(action).message;
+ *      	switch(message) {
+ *      		case 'music-controls-next':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-previous':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-pause':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-play':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-destroy':
+ *      			// Do something
+ *      			break;
+ *
+ *          // External controls (iOS only)
+ *          case 'music-controls-toggle-play-pause' :
+ *      			// Do something
+ *      			break;
+ *          case 'music-controls-seek-to':
+ *            const seekToInSeconds = JSON.parse(action).position;
+ *            MusicControls.updateElapsed({
+ *              elapsed: seekToInSeconds,
+ *              isPlaying: true
+ *            });
  *            // Do something
  *            break;
  *
- *        // Headset events (Android only)
- *        case 'music-controls-media-button' :
- *            // Do something
- *            break;
- *        case 'music-controls-headset-unplugged':
- *            // Do something
- *            break;
- *        case 'music-controls-headset-plugged':
- *            // Do something
- *            break;
- *        default:
- *            break;
- *    }
- *
- *  });
+ *      		// Headset events (Android only)
+ *      		// All media button events are listed below
+ *      		case 'music-controls-media-button' :
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-headset-unplugged':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-headset-plugged':
+ *      			// Do something
+ *      			break;
+ *      		default:
+ *      			break;
+ *      	}
+ *      }
  *
  *  this.musicControls.listen(); // activates the observable above
  *
@@ -104,10 +119,11 @@ export interface MusicControlsOptions {
   pluginName: 'MusicControls',
   plugin: 'cordova-plugin-music-controls',
   pluginRef: 'MusicControls',
-  repo: 'https://github.com/homerours/cordova-music-controls-plugin'
+  repo: 'https://github.com/homerours/cordova-music-controls-plugin',
+  platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
-export class MusicControls {
+export class MusicControls extends IonicNativePlugin {
 
   /**
    * Create the media controls
@@ -115,14 +131,14 @@ export class MusicControls {
    * @returns {Promise<any>}
    */
   @Cordova()
-  create(options: MusicControlsOptions): Promise<any> {return; }
+  create(options: MusicControlsOptions): Promise<any> { return; }
 
   /**
    * Destroy the media controller
    * @returns {Promise<any>}
    */
   @Cordova()
-  destroy(): Promise<any> {return; }
+  destroy(): Promise<any> { return; }
 
   /**
    * Subscribe to the events of the media controller
@@ -131,25 +147,34 @@ export class MusicControls {
   @Cordova({
     observable: true
   })
-  subscribe(): Observable<any> {return; }
+  subscribe(): Observable<any> { return; }
 
   /**
    * Start listening for events, this enables the Observable from the subscribe method
    */
-  @Cordova({sync: true})
-  listen(): void {}
+  @Cordova({ sync: true })
+  listen(): void { }
 
   /**
    * Toggle play/pause:
    * @param isPlaying {boolean}
    */
   @Cordova()
-  updateIsPlaying(isPlaying: boolean): void {}
+  updateIsPlaying(isPlaying: boolean): void { }
+
+  /**
+  * Update elapsed time, optionally toggle play/pause:
+  * @param args {Object} 
+  */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  updateElapsed(args: { elapsed: string; isPlaying: boolean; }): void { }
 
   /**
    * Toggle dismissable:
    * @param dismissable {boolean}
    */
   @Cordova()
-  updateDismissable(dismissable: boolean): void {}
+  updateDismissable(dismissable: boolean): void { }
 }

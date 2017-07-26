@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 export interface ImagePickerOptions {
   /**
-   * max images to be selected, defaults to 15. If this is set to 1, upon selection of a single image, the plugin will return it.
+   * max images to be selected, defaults to 15. If this is set to 1, upon selection of a single image, the plugin will return it. (Android only)
    */
   maximumImagesCount?: number;
 
@@ -57,13 +57,15 @@ export interface ImagePickerOptions {
  */
 @Plugin({
   pluginName: 'ImagePicker',
-  plugin: 'https://github.com/Telerik-Verified-Plugins/ImagePicker',
+  plugin: 'cordova-plugin-telerik-imagepicker',
   pluginRef: 'window.imagePicker',
   repo: 'https://github.com/Telerik-Verified-Plugins/ImagePicker',
+  install: 'ionic cordova plugin add cordova-plugin-telerik-imagepicker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="your usage message"',
+  installVariables: ['PHOTO_LIBRARY_USAGE_DESCRIPTION'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class ImagePicker {
+export class ImagePicker extends IonicNativePlugin {
   /**
    * Pick pictures from the library.
    * @param {ImagePickerOptions} options

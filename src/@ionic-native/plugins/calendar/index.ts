@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface CalendarOptions {
 
@@ -59,8 +59,8 @@ export interface CalendarOptions {
  *
  *
  * @usage
- * ```
- * import {Calendar} from '@ionic-native/calendar';
+ * ```typescript
+ * import { Calendar } from '@ionic-native/calendar';
  *
  * constructor(private calendar: Calendar) { }
  *
@@ -81,7 +81,7 @@ export interface CalendarOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Calendar {
+export class Calendar extends IonicNativePlugin {
 
   /**
    * This function checks if we have permission to read/write from/to the calendar.

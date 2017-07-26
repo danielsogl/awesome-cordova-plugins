@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+
 
 /**
  * @name Brightness
@@ -29,7 +30,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Brightness {
+export class Brightness extends IonicNativePlugin {
 
   /**
    * Sets the brightness of the display.

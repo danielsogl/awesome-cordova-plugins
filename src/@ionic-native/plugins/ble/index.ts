@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -35,59 +35,59 @@ import { Observable } from 'rxjs/Observable';
  *
  * ```typescript
  *   {
- *       "name": "Battery Demo",
- *       "id": "20:FF:D0:FF:D1:C0",
- *       "advertising": [2,1,6,3,3,15,24,8,9,66,97,116,116,101,114,121],
- *       "rssi": -55
+ *       'name': 'Battery Demo',
+ *       'id': '20:FF:D0:FF:D1:C0',
+ *       'advertising': [2,1,6,3,3,15,24,8,9,66,97,116,116,101,114,121],
+ *       'rssi': -55
  *   }
  * ```
  * After connecting, the peripheral object also includes service, characteristic and descriptor information.
  *
  * ```typescript
  *   {
- *       "name": "Battery Demo",
- *       "id": "20:FF:D0:FF:D1:C0",
- *       "advertising": [2,1,6,3,3,15,24,8,9,66,97,116,116,101,114,121],
- *       "rssi": -55,
- *       "services": [
- *           "1800",
- *           "1801",
- *           "180f"
+ *       'name': 'Battery Demo',
+ *       'id': '20:FF:D0:FF:D1:C0',
+ *       'advertising': [2,1,6,3,3,15,24,8,9,66,97,116,116,101,114,121],
+ *       'rssi': -55,
+ *       'services': [
+ *           '1800',
+ *           '1801',
+ *           '180f'
  *       ],
- *       "characteristics": [
+ *       'characteristics': [
  *           {
- *               "service": "1800",
- *               "characteristic": "2a00",
- *               "properties": [
- *                   "Read"
+ *               'service': '1800',
+ *               'characteristic': '2a00',
+ *               'properties': [
+ *                   'Read'
  *               ]
  *           },
  *           {
- *               "service": "1800",
- *               "characteristic": "2a01",
- *               "properties": [
- *                   "Read"
+ *               'service': '1800',
+ *               'characteristic': '2a01',
+ *               'properties': [
+ *                   'Read'
  *               ]
  *           },
  *           {
- *               "service": "1801",
- *               "characteristic": "2a05",
- *               "properties": [
- *                   "Read"
+ *               'service': '1801',
+ *               'characteristic': '2a05',
+ *               'properties': [
+ *                   'Read'
  *               ]
  *           },
  *           {
- *               "service": "180f",
- *               "characteristic": "2a19",
- *               "properties": [
- *                   "Read"
+ *               'service': '180f',
+ *               'characteristic': '2a19',
+ *               'properties': [
+ *                   'Read'
  *               ],
- *               "descriptors": [
+ *               'descriptors': [
  *                   {
- *                       "uuid": "2901"
+ *                       'uuid': '2901'
  *                   },
  *                   {
- *                       "uuid": "2904"
+ *                       'uuid': '2904'
  *                   }
  *               ]
  *           }
@@ -104,10 +104,10 @@ import { Observable } from 'rxjs/Observable';
  *
  * ```typescript
  *   {
- *       "name": "demo",
- *       "id": "00:1A:7D:DA:71:13",
- *       "advertising": ArrayBuffer,
- *      "rssi": -37
+ *       'name': 'demo',
+ *       'id': '00:1A:7D:DA:71:13',
+ *       'advertising': ArrayBuffer,
+ *      'rssi': -37
  *  }
  * ```
  *
@@ -119,24 +119,24 @@ import { Observable } from 'rxjs/Observable';
  *
  * ```typescript
  *   {
- *       "name": "demo",
- *       "id": "D8479A4F-7517-BCD3-91B5-3302B2F81802",
- *       "advertising": {
- *           "kCBAdvDataChannel": 37,
- *           "kCBAdvDataServiceData": {
- *               "FED8": {
- *                   "byteLength": 7 // data not shown
+ *       'name': 'demo',
+ *       'id': 'D8479A4F-7517-BCD3-91B5-3302B2F81802',
+ *       'advertising': {
+ *           'kCBAdvDataChannel': 37,
+ *           'kCBAdvDataServiceData': {
+ *               'FED8': {
+ *                   'byteLength': 7 // data not shown
  *               }
  *           },
- *           "kCBAdvDataLocalName": "demo",
- *           "kCBAdvDataServiceUUIDs": ["FED8"],
- *           "kCBAdvDataManufacturerData": {
- *               "byteLength": 7  // data not shown
+ *           'kCBAdvDataLocalName': 'demo',
+ *           'kCBAdvDataServiceUUIDs': ['FED8'],
+ *           'kCBAdvDataManufacturerData': {
+ *               'byteLength': 7  // data not shown
  *           },
- *           "kCBAdvDataTxPowerLevel": 32,
- *           "kCBAdvDataIsConnectable": true
+ *           'kCBAdvDataTxPowerLevel': 32,
+ *           'kCBAdvDataIsConnectable': true
  *       },
- *       "rssi": -53
+ *       'rssi': -53
  *   }
  * ```
  *
@@ -173,10 +173,10 @@ import { Observable } from 'rxjs/Observable';
   plugin: 'cordova-plugin-ble-central',
   pluginRef: 'ble',
   repo: 'https://github.com/don/cordova-plugin-ble-central',
-  platforms: ['iOS', 'Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class BLE {
+export class BLE extends IonicNativePlugin {
 
   /**
    * Scan and discover BLE peripherals for the specified amount of time.
@@ -230,7 +230,7 @@ export class BLE {
     clearFunction: 'stopScan',
     clearWithArgs: false
   })
-  startScanWithOptions(services: string[], options: {reportDuplicates?: boolean} | any): Observable<any> { return; }
+  startScanWithOptions(services: string[], options: { reportDuplicates?: boolean } | any): Observable<any> { return; }
 
   /**
    * Stop a scan started by `startScan`.
@@ -306,14 +306,14 @@ export class BLE {
    * // send 1 byte to switch a light on
    * var data = new Uint8Array(1);
    * data[0] = 1;
-   * BLE.write(device_id, "FF10", "FF11", data.buffer);
+   * BLE.write(device_id, 'FF10', 'FF11', data.buffer);
    *
    * // send a 3 byte value with RGB color
    * var data = new Uint8Array(3);
    * data[0] = 0xFF;  // red
    * data[0] = 0x00; // green
    * data[0] = 0xFF; // blue
-   * BLE.write(device_id, "ccc0", "ccc1", data.buffer);
+   * BLE.write(device_id, 'ccc0', 'ccc1', data.buffer);
    *
    * // send a 32 bit integer
    * var data = new Uint32Array(1);
@@ -357,7 +357,7 @@ export class BLE {
    *
    * @usage
    * ```
-   * BLE.startNotification(device_id, "FF10", "FF11").subscribe(buffer => {
+   * BLE.startNotification(device_id, 'FF10', 'FF11').subscribe(buffer => {
    *   console.log(String.fromCharCode.apply(null, new Uint8Array(buffer));
    * });
    * ```

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export type AdSize = 'SMART_BANNER' | 'BANNER' | 'MEDIUM_RECTANGLE' | 'FULL_BANNER' | 'LEADERBOARD' | 'SKYSCRAPER' | 'CUSTOM';
@@ -32,7 +32,7 @@ export interface AdMobOptions {
   overlap?: boolean;
 
   /**
-   * Position of banner ad. Defaults to `TOP_CENTER`. You can use the `AdMob.AD_POSITION` property to select other values.
+   * Position of banner ad. Defaults to `TOP_CENTER`. You can use the `AdMobPro.AD_POSITION` property to select other values.
    */
   position?: number;
 
@@ -90,14 +90,18 @@ export interface AdExtras {
 }
 
 /**
- * @name AdMob
+ * @paid
+ * @name AdMob Pro
  * @description
- * Plugin for Google Ads, including AdMob / DFP (doubleclick for publisher) and mediations to other Ad networks.
+ * Plugin for Google Ads, including AdMob / DFP (DoubleClick for publisher) and mediations to other Ad networks.
+ *
+ * IMPORTANT NOTICE: this plugin takes a percentage out of your earnings if you profit more than $1,000. Read more about this on the plugin's repo. For a completely free alternative, see [AdMobPro Free](../admob-free).
  * @usage
  * ```typescript
- * import { AdMob, AdMobOptions, AdSize, AdExtras } from '@ionic-native/admob';
+ * import { AdMobPro } from '@ionic-native/admob-pro';
+ * import { Platform } from 'ionic-angular';
  *
- * constructor(private admob: AdMob){}
+ * constructor(private admob: AdMobPro, private platform: Platform ) { }
  *
  * ionViewDidLoad() {
  *   this.admob.onAdDismiss()
@@ -105,7 +109,13 @@ export interface AdExtras {
  * }
  *
  * onClick() {
- *   this.admob.prepareInterstitial('YOUR_ADID')
+ *   let adId;
+ *   if(this.platform.is('android')) {
+ *     adId = 'YOUR_ADID_ANDROID';
+ *   } else if (this.platform.is('ios')) {
+ *     adId = 'YOUR_ADID_IOS';
+ *   }
+ *   this.admob.prepareInterstitial({adId: adId})
  *     .then(() => { this.admob.showInterstitial(); });
  * }
  *
@@ -116,14 +126,14 @@ export interface AdExtras {
  * AdExtras
  */
 @Plugin({
-  pluginName: 'AdMob',
+  pluginName: 'AdMob Pro',
   plugin: 'cordova-plugin-admobpro',
   pluginRef: 'AdMob',
   repo: 'https://github.com/floatinghotpot/cordova-admob-pro',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
-export class AdMob {
+export class AdMobPro extends IonicNativePlugin {
 
   AD_POSITION: {
     NO_CHANGE: number;
@@ -169,7 +179,7 @@ export class AdMob {
 
   /**
    * Show banner at position
-   * @param position {number} Position. Use `AdMob.AD_POSITION` to set values.
+   * @param position {number} Position. Use `AdMobPro.AD_POSITION` to set values.
    */
   @Cordova({
     sync: true

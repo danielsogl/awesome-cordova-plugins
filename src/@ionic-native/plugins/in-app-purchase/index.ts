@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -8,7 +8,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * A lightweight Cordova plugin for in app purchases on iOS/Android.
  *
  * @usage
- * ```ts
+ * ```typescript
  * import { InAppPurchase } from '@ionic-native/in-app-purchase';
  *
  * constructor(private iap: InAppPurchase) { }
@@ -16,7 +16,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * ...
  *
  * this.iap
- *  .getProducts(['com.yourapp.prod1', 'com.yourapp.prod2', ...])
+ *  .getProducts(['prod1', 'prod2', ...])
  *  .then((products) => {
  *    console.log(products);
  *     //  [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', price: '...' }, ...]
@@ -27,7 +27,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  *
  * this.iap
- *   .buy('com.yourapp.prod1')
+ *   .buy('prod1')
  *   .then((data)=> {
  *     console.log(data);
  *     // {
@@ -44,10 +44,10 @@ import { Plugin, Cordova } from '@ionic-native/core';
  *
  * @advanced
  *
- * ```ts
+ * ```typescript
  * // fist buy the product...
  * this.iap
- *   .buy('com.yourapp.consumable_prod1')
+ *   .buy('consumable_prod1')
  *   .then(data => this.iap.consume(data.productType, data.receipt, data.signature))
  *   .then(() => console.log('product was successfully consumed!'))
  *   .catch( err=> console.log(err))
@@ -57,11 +57,11 @@ import { Plugin, Cordova } from '@ionic-native/core';
   pluginName: 'InAppPurchase',
   plugin: 'cordova-plugin-inapppurchase',
   pluginRef: 'inAppPurchase',
-  platforms: ['Android', 'iOS'],
-  repo: 'https://github.com/AlexDisler/cordova-plugin-inapppurchase'
+  repo: 'https://github.com/AlexDisler/cordova-plugin-inapppurchase',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class InAppPurchase {
+export class InAppPurchase extends IonicNativePlugin {
 
   /**
    * Retrieves a list of full product data from Apple/Google. This method must be called before making purchases.
@@ -81,7 +81,7 @@ export class InAppPurchase {
   @Cordova({
     otherPromise: true
   })
-  buy(productId: string): Promise<{transactionId: string, receipt: string, signature: string, productType: string}> { return; }
+  buy(productId: string): Promise<{ transactionId: string, receipt: string, signature: string, productType: string }> { return; }
 
   /**
    * Same as buy, but for subscription based products.
@@ -91,7 +91,7 @@ export class InAppPurchase {
   @Cordova({
     otherPromise: true
   })
-  subscribe(productId: string): Promise<{transactionId: string, receipt: string, signature: string, productType: string}> { return; }
+  subscribe(productId: string): Promise<{ transactionId: string, receipt: string, signature: string, productType: string }> { return; }
 
   /**
    * Call this function after purchasing a "consumable" product to mark it as consumed. On Android, you must consume products that you want to let the user purchase multiple times. If you will not consume the product after a purchase, the next time you will attempt to purchase it you will get the error message:

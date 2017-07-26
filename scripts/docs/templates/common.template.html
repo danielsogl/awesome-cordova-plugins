@@ -44,7 +44,7 @@ docType: "<$ doc.docType $>"
 <@- endmacro -@>
 
 <@- macro githubViewLink(doc) -@>
-<a href="https://github.com/driftyco/ionic-native/tree/master/<$ doc.fileInfo.relativePath $>#L<$ doc.location.start.line+1 $>-L<$ doc.location.end.line+1 $>"><$ doc.fileInfo.relativePath $> (line <$ doc.location.start.line+1 $>)</a>
+<a href="https://github.com/ionic-team/ionic-native/tree/master/<$ doc.fileInfo.relativePath $>#L<$ doc.location.start.line+1 $>-L<$ doc.location.end.line+1 $>"><$ doc.fileInfo.relativePath $> (line <$ doc.location.start.line+1 $>)</a>
 <@- endmacro -@>
 
 <@- macro paramTable(params, isDirective) -@>
@@ -127,7 +127,7 @@ docType: "<$ doc.docType $>"
 
 <@- macro documentClass(doc) @>
 <@- if doc.statics.length -@>
-<h2>Static Members</h2>
+<h2><a class="anchor" name="static-members" href="#static-members"></a>Static Members</h2>
 <@ for method in doc.statics -@>
 <$ documentMethod(method) $>
 <@ endfor -@>
@@ -136,7 +136,7 @@ docType: "<$ doc.docType $>"
 <# --- methods in class --- #>
 <@- if doc.members and doc.members.length @>
 
-<h2>Instance Members</h2>
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
 <@ for method in doc.members -@>
 <$ documentMethod(method) $>
 <@- endfor @>
@@ -147,9 +147,12 @@ docType: "<$ doc.docType $>"
   <@- if doc.beta == true -@>
     <span class="beta" title="beta">&beta;</span>
   <@- endif -@>
+  <@- if doc.paid == true -@>
+    <span class="paid" title="paid">Paid</span>
+  <@- endif -@>
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
+<a class="improve-v2-docs" href="http://github.com/ionic-team/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
   Improve this doc
 </a>
 
@@ -163,23 +166,36 @@ docType: "<$ doc.docType $>"
   href="<$ prop.repo $>/issues">plugin repo</a>.
 </p>
 <@ endif @>
+<@ if doc.paid == true @>
+<p class="paid-notice">
+  This plugin might require a paid license, or might take a share of your app's earnings.
+  Check the <a target="_blank" rel="nofollow" href="<$ prop.repo $>">plugin's repo</a> for more information.
+</p>
+<@ endif @>
 
-<# --- Install commands --- #>
-<pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install $><@ else @>ionic plugin add <$ prop.plugin $><@ endif @>
-$ npm install --save @ionic-native/<$ doc.npmId $>
-</code></pre>
+<# --- Plugin description --- #>
+<$ doc.description | marked $>
+
 <p>Repo:
   <a href="<$ prop.repo $>">
     <$ prop.repo $>
   </a>
 </p>
 
-<# --- Plugin description --- #>
-<$ doc.description | marked $>
+<# --- Install commands --- #>
+<h2><a class="anchor" name="installation" href="#installation"></a>Installation</h2>
+<ol class="installation">
+  <li>Install the Cordova and Ionic Native plugins:<br>
+    <pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install | replace('<', '&lt;').replace('>', '&gt;') $><@ else @>ionic cordova plugin add <$ prop.plugin $><@ endif @>
+$ npm install --save @ionic-native/<$ doc.npmId $>
+</code></pre>
+  </li>
+  <li><a href="https://ionicframework.com/docs/native/#Add_Plugins_to_Your_App_Module">Add this plugin to your app's module</a></li>
+</ol>
 
 <# --- Plugin supported platforms --- #>
 <@ if prop.platforms @>
-<h2>Supported platforms</h2>
+<h2><a class="anchor" name="platforms" href="#platforms"></a>Supported platforms</h2>
 <ul>
   <@ for platform in prop.platforms -@>
   <li><$ platform $></li>
@@ -191,13 +207,13 @@ $ npm install --save @ionic-native/<$ doc.npmId $>
 
 <# --- Plugin usage --- #>
 <@ if doc.usage @>
-<h2>Usage</h2>
+<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
 <$ doc.usage | marked $>
 <@ endif @>
 
 <# --- Plugin attributes --- #>
 <@- if doc.properties -@>
-<h2>Attributes:</h2>
+<h2><a class="anchor" name="attributes" href="#attributes"></a>Attributes:</h2>
 <table class="table" style="margin:0;">
   <thead>
   <tr>

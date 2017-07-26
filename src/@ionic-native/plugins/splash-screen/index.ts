@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -22,10 +22,11 @@ import { Cordova, Plugin } from '@ionic-native/core';
   pluginName: 'SplashScreen',
   plugin: 'cordova-plugin-splashscreen',
   pluginRef: 'navigator.splashscreen',
-  repo: 'https://github.com/apache/cordova-plugin-splashscreen'
+  repo: 'https://github.com/apache/cordova-plugin-splashscreen',
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class SplashScreen {
+export class SplashScreen extends IonicNativePlugin {
 
   /**
    * Shows the splashscreen
@@ -33,7 +34,7 @@ export class SplashScreen {
   @Cordova({
     sync: true
   })
-  show(): void {}
+  show(): void { }
 
   /**
    * Hides the splashscreen
@@ -41,6 +42,6 @@ export class SplashScreen {
   @Cordova({
     sync: true
   })
-  hide(): void {}
+  hide(): void { }
 
 }

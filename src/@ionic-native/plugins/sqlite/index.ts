@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, Plugin, CordovaCheck, InstanceProperty } from '@ionic-native/core';
+import { Cordova, CordovaInstance, Plugin, CordovaCheck, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
 
-
-declare var sqlitePlugin;
+declare const sqlitePlugin: any;
 
 export interface SQLiteDatabaseConfig {
   /**
@@ -17,6 +16,25 @@ export interface SQLiteDatabaseConfig {
    * iOS Database Location. Example: 'Library'
    */
   iosDatabaseLocation?: string;
+  /**
+  * support opening pre-filled databases with https://github.com/litehelpers/cordova-sqlite-ext
+  */
+  createFromLocation?: number;
+}
+
+/**
+ * @hidden
+ */
+export interface SQLiteTransaction {
+  start: () => void;
+  executeSql: (sql: any, values: any, success: Function, error: Function) => void;
+  addStatement: (sql: any, values: any, success: Function, error: Function) => void;
+  handleStatementSuccess: (handler: Function, response: any) => void;
+  handleStatementFailure: (handler: Function, response: any) => void;
+  run: () => void;
+  abort: (txFailure: any) => void;
+  finish: () => void;
+  abortFromQ: (sqlerror: any) => void;
 }
 
 /**
@@ -26,12 +44,14 @@ export class SQLiteObject {
 
   constructor(public _objectInstance: any) { }
 
-  @InstanceProperty databaseFeatures: any;
+  @InstanceProperty databaseFeatures: { isSQLitePluginDatabase: boolean };
+
+  @InstanceProperty openDBs: any;
 
   @CordovaInstance({
     sync: true
   })
-  addTransaction(transaction: any): void { }
+  addTransaction(transaction: (tx: SQLiteTransaction) => void): void { }
 
   /**
    * @param fn {any}
@@ -44,11 +64,11 @@ export class SQLiteObject {
   transaction(fn: any): Promise<any> { return; }
 
   /**
-   * @param fn {any}
+   * @param fn {Function}
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  readTransaction(fn: any): Promise<any> { return; }
+  readTransaction(fn: (tx: SQLiteTransaction) => void): Promise<any> { return; }
 
   @CordovaInstance({
     sync: true
@@ -59,85 +79,32 @@ export class SQLiteObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  close(): Promise<any> { return; }
-
-  @CordovaInstance({
-    sync: true
-  })
-  start(): void { }
+  open(): Promise<any> { return; }
 
   /**
-   * Execute SQL on the opened database. Note, you must call `openDatabase` first, and
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance()
+  close(): Promise<any> { return; }
+
+  /**
+   * Execute SQL on the opened database. Note, you must call `create` first, and
    * ensure it resolved and successfully opened the database.
    */
   @CordovaInstance()
   executeSql(statement: string, params: any): Promise<any> { return; }
 
   /**
-   * @param sql
-   * @param values
+   * @param sqlStatements {Array<string | string[] | any>}
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  addStatement(sql, values): Promise<any> { return; }
-
-  /**
-   * @param sqlStatements {any}
-   * @returns {Promise<any>}
-   */
-  @CordovaInstance()
-  sqlBatch(sqlStatements: any): Promise<any> { return; }
+  sqlBatch(sqlStatements: Array<string | string[] | any>): Promise<any> { return; }
 
   @CordovaInstance({
     sync: true
   })
   abortallPendingTransactions(): void { }
-
-  /**
-   @param handler
-   @param response
-   */
-  @CordovaInstance({
-    sync: true
-  })
-  handleStatementSuccess(handler, response): void { }
-
-  /**
-   * @param handler
-   * @param response
-   */
-  @CordovaInstance({
-    sync: true
-  })
-  handleStatementFailure(handler, response): void { }
-
-
-  @CordovaInstance({
-    sync: true
-  })
-  run(): void { }
-
-  /**
-   * @param txFailure
-   */
-  @CordovaInstance({
-    sync: true
-  })
-  abort(txFailure): void { }
-
-
-  @CordovaInstance({
-    sync: true
-  })
-  finish(): void { }
-
-  /**
-   * @param sqlerror
-   */
-  @CordovaInstance({
-    sync: true
-  })
-  abortFromQ(sqlerror): void { }
 
 }
 
@@ -177,15 +144,17 @@ export class SQLiteObject {
  * SQLiteObject
  * @interfaces
  * SQLiteDatabaseConfig
+ * SQLiteTransaction
  */
 @Plugin({
   pluginName: 'SQLite',
   pluginRef: 'sqlitePlugin',
   plugin: 'cordova-sqlite-storage',
-  repo: 'https://github.com/litehelpers/Cordova-sqlite-storage'
+  repo: 'https://github.com/litehelpers/Cordova-sqlite-storage',
+  platforms: ['Android', 'iOS', 'macOS', 'Windows']
 })
 @Injectable()
-export class SQLite {
+export class SQLite extends IonicNativePlugin {
 
   /**
    * Open or create a SQLite database file.
@@ -198,7 +167,7 @@ export class SQLite {
   @CordovaCheck()
   create(config: SQLiteDatabaseConfig): Promise<SQLiteObject> {
     return new Promise((resolve, reject) => {
-        sqlitePlugin.openDatabase(config, db => resolve(new SQLiteObject(db)), reject);
+      sqlitePlugin.openDatabase(config, (db: any) => resolve(new SQLiteObject(db)), reject);
     });
   }
 

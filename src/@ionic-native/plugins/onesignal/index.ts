@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface OSNotification {
@@ -97,13 +97,13 @@ export enum OSLockScreenVisibility {
    * Fully visible (default)
    */
   Public = 1,
-  /**
-   * Contents are hidden
-   */
+    /**
+     * Contents are hidden
+     */
   Private = 0,
-  /**
-   * Not shown
-   */
+    /**
+     * Not shown
+     */
   Secret = -1
 }
 
@@ -115,13 +115,13 @@ export enum OSDisplayType {
    * notification is silent, or inFocusDisplaying is disabled.
    */
   None = 0,
-  /**
-   * (**DEFAULT**) - native alert dialog display.
-   */
+    /**
+     * (**DEFAULT**) - native alert dialog display.
+     */
   InAppAlert = 1,
-  /**
-   * native notification display.
-   */
+    /**
+     * native notification display.
+     */
   Notification = 2
 }
 
@@ -219,6 +219,41 @@ export interface OSActionButton {
    */
   icon: string;
 }
+/**
+ * OSPermissionState
+ */
+export interface OSPermissionState {
+  /**
+   * User was prompted.
+   */
+  hasPrompted: boolean;
+  /**
+   * Permissions Status
+   */
+  status: any;
+}
+/**
+ * OSSubscriptionState
+ */
+export interface OSSubscriptionState {
+  subscribed: boolean;
+  userSubscriptionSetting: any;
+  userId: any;
+  pushToken: any;
+}
+/**
+ * Subscription and permissions status
+ */
+export interface OSPermissionSubscriptionState {
+  /**
+   * Id assigned to the button.
+   */
+  permissionStatus: OSPermissionState;
+  /**
+   * Text show on the button to the user.
+   */
+  subscriptionStatus: OSSubscriptionState;
+}
 
 /**
  * **ANDROID** - If a background image was set, this object will be available.
@@ -268,6 +303,58 @@ export enum OSActionType {
  *
  * Requires Cordova plugin: `onesignal-cordova-plugin`. For more info, please see the [OneSignal Cordova Docs](https://documentation.onesignal.com/docs/phonegap-sdk-installation).
  *
+ * #### Icons
+ * If you want to use generated icons with command `ionic cordova resources`:
+ *
+ * 1. Add a file to your `hooks` directory inside the `after_prepare` folder called `030_copy_android_notification_icons.js`
+ *
+ * 2. Put the following code in it:
+ *
+ * ```
+ * #!/usr/bin/env node
+ *
+ * var filestocopy = [{
+ *     "resources/android/icon/drawable-hdpi-icon.png":
+ *         "platforms/android/res/drawable-hdpi/ic_stat_onesignal_default.png"
+ * }, {
+ *     "resources/android/icon/drawable-mdpi-icon.png":
+ *         "platforms/android/res/drawable-mdpi/ic_stat_onesignal_default.png"
+ * }, {
+ *     "resources/android/icon/drawable-xhdpi-icon.png":
+ *         "platforms/android/res/drawable-xhdpi/ic_stat_onesignal_default.png"
+ * }, {
+ *     "resources/android/icon/drawable-xxhdpi-icon.png":
+ *         "platforms/android/res/drawable-xxhdpi/ic_stat_onesignal_default.png"
+ * }, {
+ *     "resources/android/icon/drawable-xxxhdpi-icon.png":
+ *         "platforms/android/res/drawable-xxxhdpi/ic_stat_onesignal_default.png"
+ * } ];
+ *
+ * var fs = require('fs');
+ * var path = require('path');
+ *
+ * // no need to configure below
+ * var rootdir = process.argv[2];
+ *
+ * filestocopy.forEach(function(obj) {
+ *     Object.keys(obj).forEach(function(key) {
+ *         var val = obj[key];
+ *         var srcfile = path.join(rootdir, key);
+ *         var destfile = path.join(rootdir, val);
+ *         //console.log("copying "+srcfile+" to "+destfile);
+ *         var destdir = path.dirname(destfile);
+ *         if (fs.existsSync(srcfile) && fs.existsSync(destdir)) {
+ *             fs.createReadStream(srcfile).pipe(
+ *                 fs.createWriteStream(destfile));
+ *         }
+ *     });
+ * });
+ * ```
+ *
+ * 3. From the root of your project make the file executable:
+ * `$ chmod +x hooks/after_prepare/030_copy_android_notification_icons.js`
+ *
+ *
  * @usage
  * ```typescript
  * import { OneSignal } from '@ionic-native/onesignal';
@@ -305,10 +392,10 @@ export enum OSActionType {
   plugin: 'onesignal-cordova-plugin',
   pluginRef: 'plugins.OneSignal',
   repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK',
-  platforms: ['Android', 'iOS', 'Windows', 'FireOS']
+  platforms: ['Amazon Fire OS', 'Android', 'iOS', 'Windows']
 })
 @Injectable()
-export class OneSignal {
+export class OneSignal extends IonicNativePlugin {
 
   /**
    * constants to use in inFocusDisplaying()
@@ -362,7 +449,10 @@ export class OneSignal {
    *  Launch notifications with a launch URL as an in app webview.
    * @returns {any}
    */
-  @Cordova({ sync: true })
+  @Cordova({
+    sync: true,
+    platforms: ['iOS']
+  })
   iOSSettings(settings: {
     kOSSettingsKeyAutoPrompt: boolean;
     kOSSettingsKeyInAppLaunchURL: boolean;
@@ -375,6 +465,15 @@ export class OneSignal {
    */
   @Cordova({ sync: true })
   endInit(): any { return; }
+
+  /**
+   * Prompt the user for notification permissions. Callback fires as soon as the user accepts or declines notifications.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  promptForPushNotificationsWithUserResponse(): Promise<boolean> { return; }
 
   /**
    * Retrieve a list of tags that have been set on the user from the OneSignal server.
@@ -443,59 +542,74 @@ export class OneSignal {
   registerForPushNotifications(): void { }
 
   /**
-  * Warning:
-  * Only applies to Android and Amazon. You can call this from your UI from a button press for example to give your user's options for your notifications.
-  *
-  * By default OneSignal always vibrates the device when a notification is displayed unless the device is in a total silent mode.
-  * Passing false means that the device will only vibrate lightly when the device is in it's vibrate only mode.
-  *
-  * @param {boolean} false to disable vibrate, true to re-enable it.
-  */
+   * Warning:
+   * Only applies to Android and Amazon. You can call this from your UI from a button press for example to give your user's options for your notifications.
+   *
+   * By default OneSignal always vibrates the device when a notification is displayed unless the device is in a total silent mode.
+   * Passing false means that the device will only vibrate lightly when the device is in it's vibrate only mode.
+   *
+   * @param {boolean} false to disable vibrate, true to re-enable it.
+   */
   @Cordova({ sync: true })
   enableVibrate(enable: boolean): void { }
 
   /**
-  * Warning:
-  * Only applies to Android and Amazon. You can call this from your UI from a button press for example to give your user's options for your notifications.
-  *
-  * By default OneSignal plays the system's default notification sound when the device's notification system volume is turned on.
-  * Passing false means that the device will only vibrate unless the device is set to a total silent mode.
-  *
-  * @param {boolean} false to disable sound, true to re-enable it.
-  */
+   * Warning:
+   * Only applies to Android and Amazon. You can call this from your UI from a button press for example to give your user's options for your notifications.
+   *
+   * By default OneSignal plays the system's default notification sound when the device's notification system volume is turned on.
+   * Passing false means that the device will only vibrate unless the device is set to a total silent mode.
+   *
+   * @param {boolean} false to disable sound, true to re-enable it.
+   */
   @Cordova({ sync: true })
   enableSound(enable: boolean): void { }
 
   /**
-  *
-  * Setting to control how OneSignal notifications will be shown when one is received while your app is in focus. By default this is set to inAppAlert, which can be helpful during development.
-  *
-  * @param {DisplayType} displayOption
-  * @returns {any}
-  */
+   *
+   * Setting to control how OneSignal notifications will be shown when one is received while your app is in focus. By default this is set to inAppAlert, which can be helpful during development.
+   *
+   * @param {DisplayType} displayOption
+   * @returns {any}
+   */
   @Cordova({ sync: true })
   inFocusDisplaying(displayOption: OSDisplayType): any { return; }
 
   /**
-  * You can call this method with false to opt users out of receiving all notifications through OneSignal.
-  * You can pass true later to opt users back into notifications.
-  *
-  * @param {boolean} enable
-  */
+   * You can call this method with false to opt users out of receiving all notifications through OneSignal.
+   * You can pass true later to opt users back into notifications.
+   *
+   * @param {boolean} enable
+   */
   @Cordova({ sync: true })
   setSubscription(enable: boolean): void { }
 
   /**
-  *
-  * @param {notificationObj} Parameters see POST [documentation](https://documentation.onesignal.com/v2.0/docs/notifications-create-notification)
-  * @returns {Promise<any>} Returns a Promise that resolves if the notification was send successfully.
-  */
+   * Get the current notification and permission state. Returns a OSPermissionSubscriptionState type described below.
+   *
+   * @returns {Promise<OSPermissionSubscriptionState>}
+   */
+  @Cordova()
+  getPermissionSubscriptionState(): Promise<OSPermissionSubscriptionState> { return; }
+
+  /**
+   *
+   * @param {notificationObj} Parameters see POST [documentation](https://documentation.onesignal.com/v2.0/docs/notifications-create-notification)
+   * @returns {Promise<any>} Returns a Promise that resolves if the notification was send successfully.
+   */
   @Cordova()
   postNotification(notificationObj: OSNotification): Promise<any> { return; }
 
   /**
-  * Prompts the user for location permission to allow geotagging based on the "Location radius" filter on the OneSignal dashboard.
-  */
+   * Cancels a single OneSignal notification based on its Android notification integer id. Use instead of NotificationManager.cancel(id); otherwise the notification will be restored when your app is restarted.
+   * @param notificationId {string}
+   */
+  @Cordova({ sync: true })
+  cancelNotification(notificationId: string): void {}
+
+  /**
+   * Prompts the user for location permission to allow geotagging based on the "Location radius" filter on the OneSignal dashboard.
+   */
   @Cordova({ sync: true })
   promptLocation(): void { }
 
@@ -507,17 +621,44 @@ export class OneSignal {
   syncHashedEmail(email: string): void { }
 
   /**
-  * Enable logging to help debug if you run into an issue setting up OneSignal.
-  * The logging levels are as follows: 0 = None, 1= Fatal, 2 = Errors, 3 = Warnings, 4 = Info, 5 = Debug, 6 = Verbose
+   * Enable logging to help debug if you run into an issue setting up OneSignal.
+   * The logging levels are as follows: 0 = None, 1= Fatal, 2 = Errors, 3 = Warnings, 4 = Info, 5 = Debug, 6 = Verbose
 
-  * The higher the value the more information is shown.
-  *
-  * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
-  */
+   * The higher the value the more information is shown.
+   *
+   * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
+   */
   @Cordova({ sync: true })
   setLogLevel(logLevel: {
     logLevel: number,
     visualLevel: number
   }): void { }
+
+  /**
+   * The passed in function will be fired when a notification permission setting changes.
+   * This includes the following events:
+   * - Notification permission prompt shown
+   * - The user accepting or declining the permission prompt
+   * - Enabling/disabling notifications for your app in the device Settings after returning to your app.
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  addPermissionObserver(): Observable<any> { return; }
+
+  /**
+   * The passed in function will be fired when a notification subscription property changes.
+   * This includes the following events:
+   * - Getting a push token from Apple / Google.
+   * - Getting a player / user id from OneSignal
+   * - OneSignal.setSubscription is called
+   * - User disables or enables notifications
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  addSubscriptionObserver(): Observable<any> { return; }
 
 }

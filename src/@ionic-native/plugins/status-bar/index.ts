@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin } from '@ionic-native/core';
-
-
-declare var window;
+import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Status Bar
@@ -32,10 +29,10 @@ declare var window;
   plugin: 'cordova-plugin-statusbar',
   pluginRef: 'StatusBar',
   repo: 'https://github.com/apache/cordova-plugin-statusbar',
-  platforms: ['iOS', 'Android', 'Windows Phone 8', 'Windows 8', 'Windows 10']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class StatusBar {
+export class StatusBar extends IonicNativePlugin {
   /**
    * Set whether the status bar overlays the main app view. The default
    * is true.

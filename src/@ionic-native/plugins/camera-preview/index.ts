@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface CameraPreviewDimensions {
   /** The width of the camera preview, default to window.screen.width */
@@ -39,12 +39,12 @@ export interface CameraPreviewOptions {
 }
 
 export interface CameraPreviewPictureOptions {
-    /** The width in pixels, default 0 */
-    width?: number;
-    /** The height in pixels, default 0 */
-    height?: number;
-    /** The picture quality, 0 - 100, default 85 */
-    quality?: number;
+  /** The width in pixels, default 0 */
+  width?: number;
+  /** The height in pixels, default 0 */
+  height?: number;
+  /** The picture quality, 0 - 100, default 85 */
+  quality?: number;
 }
 
 /**
@@ -57,7 +57,7 @@ export interface CameraPreviewPictureOptions {
  *
  * @usage
  * ```typescript
- * import { CameraPreview, PictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+ * import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
  *
  * constructor(private cameraPreview: CameraPreview) { }
  *
@@ -93,7 +93,7 @@ export interface CameraPreviewPictureOptions {
  *
  *
  * // picture options
- * const pictureOpts: PictureOptions = {
+ * const pictureOpts: CameraPreviewPictureOptions = {
  *   width: 1280,
  *   height: 1280,
  *   quality: 85
@@ -132,7 +132,50 @@ export interface CameraPreviewPictureOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class CameraPreview {
+export class CameraPreview extends IonicNativePlugin {
+
+  FOCUS_MODE = {
+    FIXED: 'fixed',
+    AUTO: 'auto',
+    CONTINUOUS: 'continuous', // IOS Only
+    CONTINUOUS_PICTURE: 'continuous-picture', // Android Only
+    CONTINUOUS_VIDEO: 'continuous-video', // Android Only
+    EDOF: 'edof', // Android Only
+    INFINITY: 'infinity', // Android Only
+    MACRO: 'macro' // Android Only
+  };
+
+  EXPOSURE_MODE = {
+    LOCK: 'lock', // IOS Only
+    AUTO: 'auto', // IOS Only
+    CONTINUOUS: 'continuous',
+    CUSTOM: 'custom'
+  };
+
+  FLASH_MODE = {
+    OFF: 'off',
+    ON: 'on',
+    AUTO: 'auto',
+    RED_EYE: 'red-eye',
+    TORCH: 'torch' // Android Only
+  };
+
+  COLOR_EFFECT = {
+    AQUA: 'aqua', // Android Only
+    BLACKBOARD: 'blackboard', // Android Only
+    MONO: 'mono',
+    NEGATIVE: 'negative',
+    NONE: 'none',
+    POSTERIZE: 'posterize',
+    SEPIA: 'sepia',
+    SOLARIZE: 'solarize', // Android Only
+    WHITEBOARD: 'whiteboard' // Android Only
+  };
+
+  CAMERA_DIRECTION = {
+    BACK: 'back',
+    FRONT: 'front'
+  };
 
   /**
    * Starts the camera preview instance.
@@ -149,40 +192,28 @@ export class CameraPreview {
    * Stops the camera preview instance. (iOS & Android)
    * @return {Promise<any>}
    */
-  @Cordova({
-    successIndex: 0,
-    errorIndex: 1
-  })
+  @Cordova()
   stopCamera(): Promise<any> { return; }
 
   /**
    * Switch from the rear camera and front camera, if available.
    * @return {Promise<any>}
    */
-  @Cordova({
-    successIndex: 0,
-    errorIndex: 1
-  })
+  @Cordova()
   switchCamera(): Promise<any> { return; }
 
   /**
    * Hide the camera preview box.
    * @return {Promise<any>}
    */
-  @Cordova({
-    successIndex: 0,
-    errorIndex: 1
-  })
+  @Cordova()
   hide(): Promise<any> { return; }
 
   /**
    * Show the camera preview box.
    * @return {Promise<any>}
    */
-  @Cordova({
-    successIndex: 0,
-    errorIndex: 1
-  })
+  @Cordova()
   show(): Promise<any> { return; }
 
   /**
@@ -220,6 +251,19 @@ export class CameraPreview {
   })
   setZoom(zoom?: number): Promise<any> { return; }
 
+  /**
+     * Get the maximum zoom (Android)
+     * @return {Promise<any>}
+     */
+  @Cordova()
+  getMaxZoom(): Promise<any> { return; }
+
+  /**
+   * Get current zoom (Android)
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getZoom(): Promise<any> { return; }
 
   /**
    * Set the preview Size
@@ -228,10 +272,41 @@ export class CameraPreview {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2,
-    platforms: ['Android']
+    errorIndex: 2
   })
   setPreviewSize(dimensions?: CameraPreviewDimensions): Promise<any> { return; }
+
+  /**
+   * Get focus mode
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getFocusMode(): Promise<any> { return; }
+
+  /**
+   * Set the focus mode
+   * @param [focusMode] {string} 'fixed', 'auto', 'continuous-picture', 'continuous-video' (iOS & Android), 'edof', 'infinity', 'macro' (Android Only)
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2
+  })
+  setFocusMode(focusMode?: string): Promise<any> { return; }
+
+  /**
+   * Get supported focus modes
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getSupportedFocusModes(): Promise<any> { return; }
+
+  /**
+   * Get the current flash mode
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getFlashMode(): Promise<any> { return; }
 
   /**
    * Set the flashmode
@@ -243,5 +318,78 @@ export class CameraPreview {
     errorIndex: 2
   })
   setFlashMode(flashMode?: string): Promise<any> { return; }
+
+  /**
+   * Get supported flash modes
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getSupportedFlashModes(): Promise<any> { return; }
+
+  /**
+   * Get supported picture sizes
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getSupportedPictureSizes(): Promise<any> { return; }
+
+  /**
+   * Get exposure mode
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getExposureMode(): Promise<any> { return; }
+
+  /**
+   * Get exposure modes
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getExposureModes(): Promise<any> { return; }
+
+  /**
+   * Set exposure mode
+   * @param [lock] {string}
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2
+  })
+  setExposureMode(lock?: string): Promise<any> { return; }
+
+  /**
+   * Get exposure compensation (Android)
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getExposureCompensation(): Promise<any> { return; }
+
+  /**
+   * Set exposure compensation (Android)
+   * @param [exposureCompensation] {number}
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2
+  })
+  setExposureCompensation(exposureCompensation?: number): Promise<any> { return; }
+
+  /**
+   * Get exposure compensation range (Android)
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getExposureCompensationRange(): Promise<any> { return; }
+
+  /**
+   * Set specific focus point. Note, this assumes the camera is full-screen.
+   * @param xPoint {number}
+   * @param yPoint {number}
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  tapToFocus(xPoint: number, yPoint: number): Promise<any> { return; }
 
 }

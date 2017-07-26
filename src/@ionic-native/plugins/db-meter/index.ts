@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -39,10 +39,10 @@ import { Observable } from 'rxjs/Observable';
   plugin: 'cordova-plugin-dbmeter',
   pluginRef: 'DBMeter',
   repo: 'https://github.com/akofman/cordova-plugin-dbmeter',
-  platforms: ['iOS', 'Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class DBMeter {
+export class DBMeter extends IonicNativePlugin {
 
   /**
    * Starts listening

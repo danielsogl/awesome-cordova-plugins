@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface HttpdOptions {
@@ -49,13 +49,13 @@ export interface HttpdOptions {
  */
 @Plugin({
   pluginName: 'Httpd',
-  plugin: 'https://github.com/floatinghotpot/cordova-httpd.git',
+  plugin: 'cordova-plugin-httpd',
   pluginRef: 'cordova.plugins.CorHttpd',
   repo: 'https://github.com/floatinghotpot/cordova-httpd',
-  platforms: ['iOS', 'Android']
+  platforms: ['Android', 'iOS', 'macOS']
 })
 @Injectable()
-export class Httpd {
+export class Httpd extends IonicNativePlugin {
 
   /**
    * Starts a web server.

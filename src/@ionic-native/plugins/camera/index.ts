@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface CameraOptions {
   /** Picture quality in range 0-100. Default is 50 */
@@ -85,6 +85,42 @@ export interface CameraPopoverOptions {
   arrowDir: number;
 }
 
+export enum DestinationType {
+  DATA_URL = 0,
+  FILE_URL,
+  NATIVE_URI
+}
+
+export enum EncodingType {
+  JPEG = 0,
+  PNG
+}
+
+export enum MediaType {
+  PICTURE = 0,
+  VIDEO,
+  ALLMEDIA
+}
+
+export enum PictureSourceType {
+  PHOTOLIBRARY = 0,
+  CAMERA,
+  SAVEDPHOTOALBUM
+}
+
+export enum PopoverArrowDirection {
+  ARROW_UP = 1,
+  ARROW_DOWN,
+  ARROW_LEFT,
+  ARROW_RIGHT,
+  ARROW_ANY
+}
+
+export enum Direction {
+  BACK = 0,
+  FRONT
+}
+
 /**
  * @name Camera
  * @description
@@ -125,10 +161,10 @@ export interface CameraPopoverOptions {
   plugin: 'cordova-plugin-camera',
   pluginRef: 'navigator.camera',
   repo: 'https://github.com/apache/cordova-plugin-camera',
-  platforms: ['Android', 'BlackBerry', 'Browser', 'Firefox', 'FireOS', 'iOS', 'Windows', 'Windows Phone 8', 'Ubuntu']
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone 8']
 })
 @Injectable()
-export class Camera {
+export class Camera extends IonicNativePlugin {
 
   /**
    * Constant for possible destination types

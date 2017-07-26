@@ -32,6 +32,8 @@ export interface PluginConfig {
    * Supported platforms
    */
   platforms?: string[];
+
+  [key: string]: any;
 }
 
 export interface CordovaOptions {
@@ -127,13 +129,14 @@ export function InstanceCheck(opts: CordovaCheckOptions = {}) {
           if (opts.sync) {
             return;
           } else if (opts.observable) {
-            return new Observable<any>(() => {});
+            return new Observable<any>(() => { });
           }
 
-          return getPromise(() => {});
+          return getPromise(() => { });
 
         }
-      }
+      },
+      enumerable: true
     };
   };
 }
@@ -157,7 +160,8 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
           }
           return Promise.reject(check && check.error);
         }
-      }
+      },
+      enumerable: true
     };
   };
 }
@@ -182,12 +186,12 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
  *  }
  * ```
  */
-export function Plugin(config: PluginConfig) {
-  return function(cls) {
+export function Plugin(config: PluginConfig): ClassDecorator {
+  return function(cls: any) {
 
     // Add these fields to the class
-    for (let k in config) {
-      cls[k] = config[k];
+    for (let prop in config) {
+      cls[prop] = config[prop];
     }
 
     cls['installed'] = function(printWarning?: boolean) {
@@ -237,7 +241,8 @@ export function Cordova(opts: CordovaOptions = {}) {
     return {
       value: function(...args: any[]) {
         return wrap(this, methodName, opts).apply(this, args);
-      }
+      },
+      enumerable: true
     };
   };
 }
@@ -252,7 +257,8 @@ export function CordovaInstance(opts: any = {}) {
     return {
       value: function(...args: any[]) {
         return wrapInstance(this, methodName, opts).apply(this, args);
-      }
+      },
+      enumerable: true
     };
   };
 }
@@ -290,10 +296,10 @@ export function CordovaProperty(target: any, key: string) {
 export function InstanceProperty(target: any, key: string) {
   Object.defineProperty(target, key, {
     enumerable: true,
-    get: function(){
+    get: function() {
       return this._objectInstance[key];
     },
-    set: function(value){
+    set: function(value) {
       this._objectInstance[key] = value;
     }
   });
@@ -310,7 +316,8 @@ export function CordovaFunctionOverride(opts: any = {}) {
     return {
       value: function(...args: any[]) {
         return overrideFunction(this, methodName, opts);
-      }
+      },
+      enumerable: true
     };
   };
 }
@@ -346,7 +353,8 @@ export function CordovaFiniteObservable(opts: CordovaFiniteObservableOptions = {
             wrappedSubscription.unsubscribe();
           };
         });
-      }
+      },
+      enumerable: true
     };
   };
 }

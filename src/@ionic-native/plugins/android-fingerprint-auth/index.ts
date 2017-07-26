@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 export interface AFAAuthOptions {
@@ -102,7 +102,7 @@ export interface AFAEncryptResponse {
  * This plugin will open a native dialog fragment prompting the user to authenticate using their fingerprint. If the device has a secure lockscreen (pattern, PIN, or password), the user may opt to authenticate using that method as a backup.
  * @usage
  * ```typescript
- * import { AndroidFingerprintAuth, AFAAuthOptions } from '@ionic-native/android-fingerprint-auth';
+ * import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth';
  *
  * constructor(private androidFingerprintAuth: AndroidFingerprintAuth) { }
  *
@@ -114,18 +114,18 @@ export interface AFAEncryptResponse {
  *     if(result.isAvailable){
  *       // it is available
  *
- *       this.androidFingerprintAuth.encrypt({ clientId: "myAppName", username: "myUsername", password: "myPassword" })
+ *       this.androidFingerprintAuth.encrypt({ clientId: 'myAppName', username: 'myUsername', password: 'myPassword' })
  *         .then(result => {
  *            if (result.withFingerprint) {
- *                console.log("Successfully encrypted credentials.");
- *                console.log("Encrypted credentials: " + result.token);
+ *                console.log('Successfully encrypted credentials.');
+ *                console.log('Encrypted credentials: ' + result.token);
  *            } else if (result.withBackup) {
  *              console.log('Successfully authenticated with backup password!');
  *            } else console.log('Didn\'t authenticate!');
  *         })
  *         .catch(error => {
- *            if (error === "Cancelled") {
- *              console.log("Fingerprint authentication cancelled");
+ *            if (error === this.androidFingerprintAuth.ERRORS.FINGERPRINT_CANCELLED) {
+ *              console.log('Fingerprint authentication cancelled');
  *            } else console.error(error)
  *         });
  *
@@ -148,7 +148,28 @@ export interface AFAEncryptResponse {
   platforms: ['Android']
 })
 @Injectable()
-export class AndroidFingerprintAuth {
+export class AndroidFingerprintAuth extends IonicNativePlugin {
+
+  ERRORS: {
+    BAD_PADDING_EXCEPTION: 'BAD_PADDING_EXCEPTION',
+    CERTIFICATE_EXCEPTION: 'CERTIFICATE_EXCEPTION',
+    FINGERPRINT_CANCELLED: 'FINGERPRINT_CANCELLED',
+    FINGERPRINT_DATA_NOT_DELETED: 'FINGERPRINT_DATA_NOT_DELETED',
+    FINGERPRINT_ERROR: 'FINGERPRINT_ERROR',
+    FINGERPRINT_NOT_AVAILABLE: 'FINGERPRINT_NOT_AVAILABLE',
+    FINGERPRINT_PERMISSION_DENIED: 'FINGERPRINT_PERMISSION_DENIED',
+    FINGERPRINT_PERMISSION_DENIED_SHOW_REQUEST: 'FINGERPRINT_PERMISSION_DENIED_SHOW_REQUEST',
+    ILLEGAL_BLOCK_SIZE_EXCEPTION: 'ILLEGAL_BLOCK_SIZE_EXCEPTION',
+    INIT_CIPHER_FAILED: 'INIT_CIPHER_FAILED',
+    INVALID_ALGORITHM_PARAMETER_EXCEPTION: 'INVALID_ALGORITHM_PARAMETER_EXCEPTION',
+    IO_EXCEPTION: 'IO_EXCEPTION',
+    JSON_EXCEPTION: 'JSON_EXCEPTION',
+    MINIMUM_SDK: 'MINIMUM_SDK',
+    MISSING_ACTION_PARAMETERS: 'MISSING_ACTION_PARAMETERS',
+    MISSING_PARAMETERS: 'MISSING_PARAMETERS',
+    NO_SUCH_ALGORITHM_EXCEPTION: 'NO_SUCH_ALGORITHM_EXCEPTION',
+    SECURITY_EXCEPTION: 'SECURITY_EXCEPTION'
+  };
 
   /**
    * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.
@@ -156,7 +177,7 @@ export class AndroidFingerprintAuth {
    * @returns {Promise<any>}
    */
   @Cordova()
-  encrypt(options: AFAAuthOptions): Promise<AFAEncryptResponse> {return; }
+  encrypt(options: AFAAuthOptions): Promise<AFAEncryptResponse> { return; }
 
   /**
    * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.
@@ -164,19 +185,19 @@ export class AndroidFingerprintAuth {
    * @returns {Promise<any>}
    */
   @Cordova()
-  decrypt(options: AFAAuthOptions): Promise<AFADecryptOptions> {return; }
+  decrypt(options: AFAAuthOptions): Promise<AFADecryptOptions> { return; }
 
   /**
    * Check if service is available
    * @returns {Promise<any>} Returns a Promise that resolves if fingerprint auth is available on the device
    */
   @Cordova()
-  isAvailable(): Promise<{isAvailable: boolean}> { return; }
+  isAvailable(): Promise<{ isAvailable: boolean, isHardwareDetected: boolean, hasEnrolledFingerprints: boolean }> { return; }
 
   /**
    * Delete the cipher used for encryption and decryption by username
    * @returns {Promise<any>} Returns a Promise that resolves if the cipher was successfully deleted
    */
   @Cordova()
-  delete(options: {clientId: string; username: string; }): Promise<{deleted: boolean}> { return; }
+  delete(options: { clientId: string; username: string; }): Promise<{ deleted: boolean }> { return; }
 }

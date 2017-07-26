@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, CordovaInstance, InstanceCheck } from '@ionic-native/core';
+import { Plugin, CordovaInstance, InstanceCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var cordova: any;
@@ -87,13 +87,13 @@ export class ThemeableBrowserObject {
    * Displays an browser window that was opened hidden. Calling this has no effect
    * if the browser was already visible.
    */
-  @CordovaInstance({sync: true})
+  @CordovaInstance({ sync: true })
   show(): void { }
 
   /**
    * Closes the browser window.
    */
-  @CordovaInstance({sync: true})
+  @CordovaInstance({ sync: true })
   close(): void { }
 
   /**
@@ -108,7 +108,7 @@ export class ThemeableBrowserObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  executeScript(script: {file?: string, code?: string}): Promise<any> {return; }
+  executeScript(script: { file?: string, code?: string }): Promise<any> { return; }
 
   /**
    * Injects CSS into the browser window.
@@ -116,7 +116,7 @@ export class ThemeableBrowserObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  insertCss(css: {file?: string, code?: string}): Promise<any> {return; }
+  insertCss(css: { file?: string, code?: string }): Promise<any> { return; }
 
   /**
    * A method that allows you to listen to events happening in the browser.
@@ -140,7 +140,7 @@ export class ThemeableBrowserObject {
  * In-app browser that allows styling.
  *
  * @usage
- * ```
+ * ```typescript
  * import { ThemeableBrowser, ThemeableBrowserOptions, ThemeableBrowserObject } from '@ionic-native/themeable-browser';
  *
  * constructor(private themeableBrowser: ThemeableBrowser) { }
@@ -223,10 +223,11 @@ export class ThemeableBrowserObject {
   pluginName: 'ThemeableBrowser',
   plugin: 'cordova-plugin-themeablebrowser',
   pluginRef: 'cordova.ThemeableBrowser',
-  repo: 'https://github.com/initialxy/cordova-plugin-themeablebrowser'
+  repo: 'https://github.com/initialxy/cordova-plugin-themeablebrowser',
+  platforms: ['Amazon Fire OS', 'Android', 'Blackberry 10', 'Browser', 'FirefoxOS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class ThemeableBrowser {
+export class ThemeableBrowser extends IonicNativePlugin {
 
   /**
    * Creates a browser instance

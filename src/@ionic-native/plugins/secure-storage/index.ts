@@ -1,54 +1,52 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, checkAvailability } from '@ionic-native/core';
-
-declare var cordova: any;
+import { CordovaInstance, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @hidden
  */
 export class SecureStorageObject {
 
-  constructor(private _objectInstance?: any) {}
+  constructor(private _objectInstance: any) { }
 
   /**
    * Gets a stored item
-   * @param reference {string}
-   * @returns {Promise<any>}
+   * @param key {string}
+   * @returns {Promise<string>}
    */
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  get(reference: string): Promise<any> { return; }
+  get(key: string): Promise<string> { return; }
 
   /**
    * Stores a value
-   * @param reference {string}
+   * @param key {string}
    * @param value {string}
    * @returns {Promise<any>}
    */
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  set(reference: string, value: string): Promise<any> { return; }
+  set(key: string, value: string): Promise<any> { return; }
 
   /**
    * Removes a single stored item
-   * @param reference {string}
-   * @returns {Promise<any>}
+   * @param key {string}
+   * @returns {Promise<string>} returns a promise that resolves with the key that was removed
    */
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  remove(reference: string): Promise<any> { return; }
+  remove(key: string): Promise<string> { return; }
 
   /**
    * Get all references from the storage.
-   * @returns {Promise<any>}
+   * @returns {Promise<string[]>} returns a promise that resolves with array of keys storage
    */
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  keys(): Promise<any> { return; }
+  keys(): Promise<string[]> { return; }
 
   /**
    * Clear all references from the storage.
@@ -59,6 +57,13 @@ export class SecureStorageObject {
   })
   clear(): Promise<any> { return; }
 
+  /**
+   * Brings up the screen-lock settings
+   * @returns {Promise<any>}
+   */
+  @CordovaInstance()
+  secureDevice(): Promise<any> { return; }
+
 }
 
 /**
@@ -67,6 +72,8 @@ export class SecureStorageObject {
  * This plugin gets, sets and removes key,value pairs from a device's secure storage.
  *
  * Requires Cordova plugin: `cordova-plugin-secure-storage`. For more info, please see the [Cordova Secure Storage docs](https://github.com/Crypho/cordova-plugin-secure-storage).
+ *
+ * The browser platform is supported as a mock only. Key/values are stored unencrypted in localStorage.
  *
  * @usage
  *
@@ -80,19 +87,19 @@ export class SecureStorageObject {
  * this.secureStorage.create('my_store_name')
  *   .then((storage: SecureStorageObject) => {
  *
- *      storage.get('myitem')
+ *      storage.get('key')
  *        .then(
  *          data => console.log(data),
  *          error => console.log(error)
  *      );
  *
- *      storage.set('myitem', 'myvalue')
+ *      storage.set('key', 'value')
  *        .then(
  *         data => console.log(data),
  *          error => console.log(error)
  *      );
  *
- *      storage.remove('myitem')
+ *      storage.remove('key')
  *      .then(
  *          data => console.log(data),
  *          error => console.log(error)
@@ -110,23 +117,20 @@ export class SecureStorageObject {
   plugin: 'cordova-plugin-secure-storage',
   pluginRef: 'cordova.plugins.SecureStorage',
   repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',
-  platforms: ['Android', 'iOS', 'Windows Phone']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
-export class SecureStorage {
+export class SecureStorage extends IonicNativePlugin {
 
   /**
    * Creates a namespaced storage.
    * @param store {string}
    * @returns {Promise<SecureStorageObject>}
    */
+  @CordovaCheck()
   create(store: string): Promise<SecureStorageObject> {
-    return new Promise((res, rej) => {
-      if (checkAvailability('cordova.plugins.SecureStorage', null, 'SecureStorage') === true) {
-        const instance = new cordova.plugins.SecureStorage(() => res(new SecureStorageObject(instance)), rej, store);
-      } else {
-        res(new SecureStorageObject());
-      }
+    return new Promise((res: Function, rej: Function) => {
+      const instance = new (SecureStorage.getPlugin())(() => res(new SecureStorageObject(instance)), rej, store);
     });
   }
 

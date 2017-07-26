@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -63,22 +63,22 @@ export interface ThreeDeeTouchForceTouch {
  * @description
  * @usage
  * Please do refer to the original plugin's repo for detailed usage. The usage example here might not be sufficient.
- * ```
+ * ```typescript
  * import { ThreeDeeTouch, ThreeDeeTouchQuickAction, ThreeDeeTouchForceTouch } from '@ionic-native/three-dee-touch';
  *
  * constructor(private threeDeeTouch: ThreeDeeTouch) { }
  *
  * ...
  *
- * this.threeDeeTouch.isAvailable().then(isAvailable => console.log("3D Touch available? " + isAvailable));
+ * this.threeDeeTouch.isAvailable().then(isAvailable => console.log('3D Touch available? ' + isAvailable));
  *
  * this.threeDeeTouch.watchForceTouches()
  *   .subscribe(
  *     (data: ThreeDeeTouchForceTouch) => {
- *       console.log("Force touch %" + data.force);
- *       console.log("Force touch timestamp: " + data.timestamp);
- *       console.log("Force touch x: " + data.x);
- *       console.log("Force touch y: " + data.y);
+ *       console.log('Force touch %' + data.force);
+ *       console.log('Force touch timestamp: ' + data.timestamp);
+ *       console.log('Force touch x: ' + data.x);
+ *       console.log('Force touch y: ' + data.y);
  *     }
  *   );
  *
@@ -130,7 +130,7 @@ export interface ThreeDeeTouchForceTouch {
   platforms: ['iOS']
 })
 @Injectable()
-export class ThreeDeeTouch {
+export class ThreeDeeTouch extends IonicNativePlugin {
 
   /**
    * You need an iPhone 6S or some future tech to use the features of this plugin, so you can check at runtime if the user's device is supported.

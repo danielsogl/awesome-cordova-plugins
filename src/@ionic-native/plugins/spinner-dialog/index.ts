@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface SpinnerDialogIOSOptions {
   overlayOpacity?: number;
@@ -28,13 +28,13 @@ export interface SpinnerDialogIOSOptions {
  */
 @Plugin({
   pluginName: 'SpinnerDialog',
-  plugin: 'cordova-plugin-spinner-dialog',
+  plugin: 'cordova-plugin-native-spinner',
   pluginRef: 'window.plugins.spinnerDialog',
-  repo: 'https://github.com/Paldom/SpinnerDialog',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  repo: 'https://github.com/greybax/cordova-plugin-native-spinner',
+  platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows']
 })
 @Injectable()
-export class SpinnerDialog {
+export class SpinnerDialog extends IonicNativePlugin {
 
   /**
    * Shows the spinner dialog
@@ -46,7 +46,7 @@ export class SpinnerDialog {
   @Cordova({
     sync: true
   })
-  show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void {}
+  show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void { }
 
   /**
    * Hides the spinner dialog if visible
@@ -54,6 +54,6 @@ export class SpinnerDialog {
   @Cordova({
     sync: true
   })
-  hide(): void {}
+  hide(): void { }
 
 }

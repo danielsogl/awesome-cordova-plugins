@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Call Number
  * @description
  * Call a number directly from your Cordova/Ionic application.
+ * **NOTE**: The iOS Simulator (and maybe Android Simulators) do not provide access to the phone subsystem.
  *
  * @usage
- * ```
- * import {CallNumber} from '@ionic-native/call-number';
+ * ```typescript
+ * import { CallNumber } from '@ionic-native/call-number';
  *
  * constructor(private callNumber: CallNumber) { }
  *
  * ...
  *
  *
- * this.callNumber.callNumber(18001010101, true)
+ * this.callNumber.callNumber("18001010101", true)
  *   .then(() => console.log('Launched dialer!'))
  *   .catch(() => console.log('Error launching dialer'));
  *
@@ -25,10 +26,10 @@ import { Plugin, Cordova } from '@ionic-native/core';
   plugin: 'call-number',
   pluginRef: 'plugins.CallNumber',
   repo: 'https://github.com/Rohfosho/CordovaCallNumberPlugin',
-  platforms: ['iOS', 'Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class CallNumber {
+export class CallNumber extends IonicNativePlugin {
 
   /**
    * Calls a phone number

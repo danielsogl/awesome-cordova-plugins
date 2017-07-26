@@ -1,16 +1,16 @@
-import { Plugin } from '@ionic-native/core';
+import { Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
- * @name $Plugin_Name
+ * @name {{ Plugin_Name }}
  * @description
  *
  * @usage
- * ```
- * import { $PluginName } from 'ionic-native';
+ * ```typescript
+ * import { {{ PluginName }} } from '@ionic-native/{{ plugin-name }}';
  *
  *
- * constructor(private $pluginName: $PluginName) { }
+ * constructor(private {{ pluginName }}: {{ PluginName }}) { }
  *
  * ...
  *
@@ -18,13 +18,13 @@ import { Injectable } from '@angular/core';
  * ```
  */
 @Plugin({
-  pluginName: '$PluginName',
+  pluginName: '{{ PluginName }}',
   plugin: '',
   pluginRef: '',
   repo: '',
   platforms: []
 })
 @Injectable()
-export class $PluginName {
+export class {{ PluginName }} extends IonicNativePlugin {
 
 }

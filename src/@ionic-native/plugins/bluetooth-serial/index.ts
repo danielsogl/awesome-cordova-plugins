@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
  *
  *
  * // Write a string
- * this.bluetoothSerial.write("hello world").then(success, failure);
+ * this.bluetoothSerial.write('hello world').then(success, failure);
  *
  * // Array of int or bytes
  * this.bluetoothSerial.write([186, 220, 222]).then(success, failure);
@@ -35,10 +35,10 @@ import { Observable } from 'rxjs/Observable';
   repo: 'https://github.com/don/BluetoothSerial',
   plugin: 'cordova-plugin-bluetooth-serial',
   pluginRef: 'bluetoothSerial',
-  platforms: ['Android', 'iOS', 'Windows Phone', 'Browser']
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
-export class BluetoothSerial {
+export class BluetoothSerial extends IonicNativePlugin {
 
   /**
    * Connect to a Bluetooth device

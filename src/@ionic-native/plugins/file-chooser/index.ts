@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name File Chooser
@@ -8,7 +8,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * Opens the file picker on Android for the user to select a file, returns a file URI.
  *
  * @usage
- * ```
+ * ```typescript
  * import { FileChooser } from '@ionic-native/file-chooser';
  *
  * constructor(private fileChooser: FileChooser) { }
@@ -23,13 +23,13 @@ import { Plugin, Cordova } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'FileChooser',
-  plugin: 'http://github.com/don/cordova-filechooser.git',
+  plugin: 'cordova-plugin-filechooser',
   pluginRef: 'fileChooser',
-  repo: 'https://github.com/don/cordova-filechooser',
+  repo: 'https://github.com/ihadeed/cordova-filechooser',
   platforms: ['Android']
 })
 @Injectable()
-export class FileChooser {
+export class FileChooser extends IonicNativePlugin {
 
   /**
    * Open a file

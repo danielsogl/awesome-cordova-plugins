@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface FacebookLoginResponse {
 
@@ -43,7 +43,7 @@ export interface FacebookLoginResponse {
  * Then type in the following command in your Terminal, where APP_ID and APP_NAME are the values from the Facebook Developer portal.
  *
  * ```bash
- *  ionic plugin add cordova-plugin-facebook4 --save --variable APP_ID="123456789" --variable APP_NAME="myApplication"
+ *  ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"
  * ```
  *
  * After, you'll need to add the native platforms you'll be using to your app in the Facebook Developer portal under your app's Settings:
@@ -104,6 +104,8 @@ export interface FacebookLoginResponse {
  *   .catch(e => console.log('Error logging into Facebook', e));
  *
  *
+ * this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
+ *
  * ```
  *
  */
@@ -112,12 +114,47 @@ export interface FacebookLoginResponse {
   plugin: 'cordova-plugin-facebook4',
   pluginRef: 'facebookConnectPlugin',
   repo: 'https://github.com/jeduan/cordova-plugin-facebook4',
-  install: 'ionic plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"',
+  install: 'ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"',
   installVariables: ['APP_ID', 'APP_NAME'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS', 'Browser']
 })
 @Injectable()
-export class Facebook {
+export class Facebook extends IonicNativePlugin {
+
+  EVENTS: {
+    EVENT_NAME_ACTIVATED_APP: 'fb_mobile_activate_app',
+    EVENT_NAME_DEACTIVATED_APP: 'fb_mobile_deactivate_app',
+    EVENT_NAME_SESSION_INTERRUPTIONS: 'fb_mobile_app_interruptions',
+    EVENT_NAME_TIME_BETWEEN_SESSIONS: 'fb_mobile_time_between_sessions',
+    EVENT_NAME_COMPLETED_REGISTRATION: 'fb_mobile_complete_registration',
+    EVENT_NAME_VIEWED_CONTENT: 'fb_mobile_content_view',
+    EVENT_NAME_SEARCHED: 'fb_mobile_search',
+    EVENT_NAME_RATED: 'fb_mobile_rate',
+    EVENT_NAME_COMPLETED_TUTORIAL: 'fb_mobile_tutorial_completion',
+    EVENT_NAME_PUSH_TOKEN_OBTAINED: 'fb_mobile_obtain_push_token',
+    EVENT_NAME_ADDED_TO_CART: 'fb_mobile_add_to_cart',
+    EVENT_NAME_ADDED_TO_WISHLIST: 'fb_mobile_add_to_wishlist',
+    EVENT_NAME_INITIATED_CHECKOUT: 'fb_mobile_initiated_checkout',
+    EVENT_NAME_ADDED_PAYMENT_INFO: 'fb_mobile_add_payment_info',
+    EVENT_NAME_PURCHASED: 'fb_mobile_purchase',
+    EVENT_NAME_ACHIEVED_LEVEL: 'fb_mobile_level_achieved',
+    EVENT_NAME_UNLOCKED_ACHIEVEMENT: 'fb_mobile_achievement_unlocked',
+    EVENT_NAME_SPENT_CREDITS: 'fb_mobile_spent_credits',
+    EVENT_PARAM_CURRENCY: 'fb_currency',
+    EVENT_PARAM_REGISTRATION_METHOD: 'fb_registration_method',
+    EVENT_PARAM_CONTENT_TYPE: 'fb_content_type',
+    EVENT_PARAM_CONTENT_ID: 'fb_content_id',
+    EVENT_PARAM_SEARCH_STRING: 'fb_search_string',
+    EVENT_PARAM_SUCCESS: 'fb_success',
+    EVENT_PARAM_MAX_RATING_VALUE: 'fb_max_rating_value',
+    EVENT_PARAM_PAYMENT_INFO_AVAILABLE: 'fb_payment_info_available',
+    EVENT_PARAM_NUM_ITEMS: 'fb_num_items',
+    EVENT_PARAM_LEVEL: 'fb_level',
+    EVENT_PARAM_DESCRIPTION: 'fb_description',
+    EVENT_PARAM_SOURCE_APPLICATION: 'fb_mobile_launch_source',
+    EVENT_PARAM_VALUE_YES: '1',
+    EVENT_PARAM_VALUE_NO: '0'
+  };
 
   /**
    * Browser wrapper
@@ -135,16 +172,17 @@ export class Facebook {
    *
    * ```typescript
    * {
-   *   status: "connected",
+   *   status: 'connected',
    *   authResponse: {
    *     session_key: true,
-   *     accessToken: "kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn",
+   *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
    *     expiresIn: 5183979,
-   *     sig: "...",
-   *     secret: "...",
-   *     userID: "634565435"
+   *     sig: '...',
+   *     secret: '...',
+   *     userID: '634565435'
    *   }
    * }
+   *
    * ```
    *
    * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) this app has upon logging in.
@@ -174,13 +212,13 @@ export class Facebook {
    * ```
    * {
    *   authResponse: {
-   *     userID: "12345678912345",
-   *     accessToken: "kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn",
+   *     userID: '12345678912345',
+   *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
    *     session_Key: true,
-   *     expiresIn: "5183738",
-   *     sig: "..."
+   *     expiresIn: '5183738',
+   *     sig: '...'
    *   },
-   *   status: "connected"
+   *   status: 'connected'
    * }
    * ```
    *
@@ -204,10 +242,10 @@ export class Facebook {
    *
    * ```
    * {
-   *   method: "share",
-   *   href: "http://example.com",
-   *   caption: "Such caption, very feed.",
-   *   description: "Much description",
+   *   method: 'share',
+   *   href: 'http://example.com',
+   *   caption: 'Such caption, very feed.',
+   *   description: 'Much description',
    *   picture: 'http://example.com/image.png'
    * }
    * ```

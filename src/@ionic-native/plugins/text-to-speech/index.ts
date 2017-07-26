@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface TTSOptions {
-    /** text to speak */
-    text: string;
-    /** a string like 'en-US', 'zh-CN', etc */
-    locale?: string;
-    /** speed rate, 0 ~ 1 */
-    rate?: number;
+  /** text to speak */
+  text: string;
+  /** a string like 'en-US', 'zh-CN', etc */
+  locale?: string;
+  /** speed rate, 0 ~ 1 */
+  rate?: number;
 }
 
 /**
@@ -16,7 +16,7 @@ export interface TTSOptions {
  * Text to Speech plugin
  *
  * @usage
- * ```
+ * ```typescript
  * import { TextToSpeech } from '@ionic-native/text-to-speech';
  *
  * constructor(private tts: TextToSpeech) { }
@@ -35,21 +35,22 @@ export interface TTSOptions {
   pluginName: 'Text To Speech',
   plugin: 'cordova-plugin-tts',
   pluginRef: 'TTS',
-  repo: 'https://github.com/vilic/cordova-plugin-tts'
+  repo: 'https://github.com/vilic/cordova-plugin-tts',
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
-export class TextToSpeech {
+export class TextToSpeech extends IonicNativePlugin {
 
   /**
    * This function speaks
-   * @param options {string | TTSOptions} Text to speak or TTSOptions
+   * @param textOrOptions {string | TTSOptions} Text to speak or TTSOptions
    * @return {Promise<any>} Returns a promise that resolves when the speaking finishes
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  speak(options: string | TTSOptions): Promise<any> {
+  speak(textOrOptions: string | TTSOptions): Promise<any> {
     return;
   }
 

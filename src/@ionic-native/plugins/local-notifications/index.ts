@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface ILocalNotification {
 
@@ -89,6 +89,11 @@ export interface ILocalNotification {
    * Default: FFFFFF
    */
   led?: string;
+
+  /**
+  * Notification priority.
+  */
+  priority?: number;
 }
 
 /**
@@ -148,7 +153,7 @@ export interface ILocalNotification {
   platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
-export class LocalNotifications {
+export class LocalNotifications extends IonicNativePlugin {
 
   /**
    * Schedules a single or multiple notifications

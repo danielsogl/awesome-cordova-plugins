@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 declare var mixpanel: any;
 
@@ -9,8 +9,8 @@ declare var mixpanel: any;
  * Cordova Plugin that wraps Mixpanel SDK for Android and iOS
  *
  * @usage
- * ```
- * import { Mixpanel, MixpanelPeople } from '@ionic-native/mixpanel';
+ * ```typescript
+ * import { Mixpanel } from '@ionic-native/mixpanel';
  *
  * constructor(private mixpanel: Mixpanel, private mixpanelPeople: MixpanelPeople) { }
  *
@@ -28,10 +28,11 @@ declare var mixpanel: any;
   pluginName: 'Mixpanel',
   plugin: 'cordova-plugin-mixpanel',
   pluginRef: 'mixpanel',
-  repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin'
+  repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin',
+  platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()
-export class Mixpanel {
+export class Mixpanel extends IonicNativePlugin {
 
   /**
    *
@@ -89,6 +90,14 @@ export class Mixpanel {
   /**
    *
    * @param eventName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  timeEvent(eventName: string): Promise<any> { return; }
+
+  /**
+   *
+   * @param eventName {string}
    * @param eventProperties {any} optional
    * @returns {Promise<any>}
    */
@@ -97,13 +106,6 @@ export class Mixpanel {
     errorIndex: 3
   })
   track(eventName: string, eventProperties?: any): Promise<any> { return; }
-
-  /**
-   *
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  showSurvey(): Promise<any> { return; }
 
 }
 /**
@@ -115,7 +117,7 @@ export class Mixpanel {
   pluginName: 'Mixpanel'
 })
 @Injectable()
-export class MixpanelPeople {
+export class MixpanelPeople extends IonicNativePlugin {
 
   /**
    *

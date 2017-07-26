@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var serial: any;
@@ -20,8 +20,7 @@ export interface SerialOpenOptions {
  * This plugin provides functions for working with Serial connections
  *
  * @usage
- *
- * ```
+ * ```typescript
  * import { Serial } from '@ionic-native/serial';
  *
  * constructor(private serial: Serial) { }
@@ -43,10 +42,10 @@ export interface SerialOpenOptions {
   plugin: 'cordovarduino',
   pluginRef: 'serial',
   repo: 'https://github.com/xseignard/cordovarduino',
-  platforms: ['Android']
+  platforms: ['Android', 'Ubuntu']
 })
 @Injectable()
-export class Serial {
+export class Serial extends IonicNativePlugin {
 
   /**
    * Request permission to connect to a serial device

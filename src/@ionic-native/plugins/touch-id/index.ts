@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
@@ -51,7 +51,7 @@ import { Cordova, Plugin } from '@ionic-native/core';
   platforms: ['iOS']
 })
 @Injectable()
-export class TouchID {
+export class TouchID extends IonicNativePlugin {
 
   /**
    * Checks Whether TouchID is available or not.
@@ -88,5 +88,13 @@ export class TouchID {
    */
   @Cordova()
   verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string): Promise<any> { return; }
+
+  /**
+   * Checks if the fingerprint database changed.
+   *
+   * @returns {Promise<any>} Returns a Promise that resolves if yes, rejects if no.
+   */
+  @Cordova()
+  didFingerprintDatabaseChange(): Promise<any> { return; }
 
 }

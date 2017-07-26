@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface TranscodeOptions {
 
@@ -124,7 +124,7 @@ export interface VideoInfo {
  * @description Edit videos using native device APIs
  *
  * @usage
- * ```
+ * ```typescript
  * import { VideoEditor } from '@ionic-native/video-editor';
  *
  * constructor(private videoEditor: VideoEditor) { }
@@ -152,10 +152,10 @@ export interface VideoInfo {
   plugin: 'cordova-plugin-video-editor',
   pluginRef: 'VideoEditor',
   repo: 'https://github.com/jbavari/cordova-plugin-video-editor',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
 })
 @Injectable()
-export class VideoEditor {
+export class VideoEditor extends IonicNativePlugin {
 
   OptimizeForNetworkUse = {
     NO: 0,

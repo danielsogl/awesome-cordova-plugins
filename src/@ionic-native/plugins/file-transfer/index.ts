@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, InstanceCheck, checkAvailability } from '@ionic-native/core';
-
-declare var FileTransfer;
+import { CordovaInstance, Plugin, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 
 export interface FileUploadOptions {
 
@@ -109,21 +107,21 @@ export interface FileTransferError {
 }
 
 /**
- * @name Transfer
+ * @name File Transfer
  *
  * @description
  * This plugin allows you to upload and download files.
  *
  * @usage
  * ```typescript
- * import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
+ * import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
  * import { File } from '@ionic-native/file';
  *
- * constructor(private transfer: Transfer, private file: File) { }
+ * constructor(private transfer: FileTransfer, private file: File) { }
  *
  * ...
  *
- * const fileTransfer: TransferObject = this.transfer.create();
+ * const fileTransfer: FileTransferObject = this.transfer.create();
  *
  * // Upload a file:
  * fileTransfer.upload(..).then(..).catch(..);
@@ -170,16 +168,17 @@ export interface FileTransferError {
  * FileUploadResult
  * FileTransferError
  * @classes
- * TransferObject
+ * FileTransferObject
  */
 @Plugin({
   pluginName: 'FileTransfer',
   plugin: 'cordova-plugin-file-transfer',
   pluginRef: 'FileTransfer',
-  repo: 'https://github.com/apache/cordova-plugin-file-transfer'
+  repo: 'https://github.com/apache/cordova-plugin-file-transfer',
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class Transfer {
+export class FileTransfer extends IonicNativePlugin {
 
   /**
    * Error code rejected from upload with FileTransferError
@@ -201,10 +200,10 @@ export class Transfer {
 
   /**
    * Creates a new FileTransfer object
-   * @return {TransferObject}
+   * @return {FileTransferObject}
    */
-  create(): TransferObject {
-    return new TransferObject();
+  create(): FileTransferObject {
+    return new FileTransferObject();
   }
 
 }
@@ -216,12 +215,12 @@ export class Transfer {
   plugin: 'cordova-plugin-file-transfer',
   pluginName: 'FileTransfer'
 })
-export class TransferObject {
+export class FileTransferObject {
   private _objectInstance: any;
 
   constructor() {
-    if (checkAvailability('FileTransfer', null, 'FileTransfer') === true) {
-      this._objectInstance = new FileTransfer();
+    if (checkAvailability(FileTransfer.getPluginRef(), null, FileTransfer.getPluginName()) === true) {
+      this._objectInstance = new (FileTransfer.getPlugin())();
     }
   }
 
@@ -238,15 +237,13 @@ export class TransferObject {
     successIndex: 2,
     errorIndex: 3
   })
-  upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult> {
-    return;
-  }
+  upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult> { return; }
 
   /**
    * Downloads a file from server.
    *
    * @param {string} source  URL of the server to download the file, as encoded by encodeURI().
-   * @param {stirng} target  Filesystem url representing the file on the device. For backwards compatibility, this can also be the full path of the file on the device.
+   * @param {string} target  Filesystem url representing the file on the device. For backwards compatibility, this can also be the full path of the file on the device.
    * @param {boolean} trustAllHosts  Optional parameter, defaults to false. If set to true, it accepts all security certificates. This is useful because Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS.
    * @param {object} Optional parameters, currently only supports headers (such as Authorization (Basic Authentication), etc).
    * @returns {Promise<any>} Returns a Promise that resolves to a FileEntry object.
@@ -255,9 +252,7 @@ export class TransferObject {
     successIndex: 2,
     errorIndex: 3
   })
-  download(source: string, target: string, trustAllHosts?: boolean, options?: { [s: string]: any; }): Promise<any> {
-    return;
-  }
+  download(source: string, target: string, trustAllHosts?: boolean, options?: { [s: string]: any; }): Promise<any> { return; }
 
   /**
    * Registers a listener that gets called whenever a new chunk of data is transferred.
@@ -275,5 +270,5 @@ export class TransferObject {
   @CordovaInstance({
     sync: true
   })
-  abort(): void { }
+  abort(): void {}
 }

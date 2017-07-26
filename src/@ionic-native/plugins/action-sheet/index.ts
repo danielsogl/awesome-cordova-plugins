@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, CordovaProperty } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface ActionSheetOptions {
 
@@ -12,6 +12,11 @@ export interface ActionSheetOptions {
    * The title for the actionsheet
    */
   title?: string;
+
+  /**
+   * The subtitle for the actionsheet (IOS only)
+   */
+  subtitle?: string;
 
   /**
    * Theme to be used on Android
@@ -43,6 +48,10 @@ export interface ActionSheetOptions {
    */
   position?: number[];
 
+  /**
+   * Choose if destructive button will be the last
+   */
+  destructiveButtonLast?: boolean;
 }
 
 /**
@@ -65,10 +74,12 @@ export interface ActionSheetOptions {
  *
  * const options: ActionSheetOptions = {
  *   title: 'What do you want with this image?',
+ *   subtitle: 'Choose an action',
  *   buttonLabels: buttonLabels,
  *   addCancelButtonWithLabel: 'Cancel',
  *   addDestructiveButtonWithLabel: 'Delete',
- *   androidTheme: this.actionSheet.ANDROID_THEMES.THEME_HOLO_DARK
+ *   androidTheme: this.actionSheet.ANDROID_THEMES.THEME_HOLO_DARK,
+ *   destructiveButtonLast: true
  * };
  *
  * this.actionSheet.show(options).then((buttonIndex: number) => {
@@ -83,18 +94,26 @@ export interface ActionSheetOptions {
   plugin: 'cordova-plugin-actionsheet',
   pluginRef: 'plugins.actionsheet',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows', 'Windows Phone 8']
 })
 @Injectable()
-export class ActionSheet {
+export class ActionSheet extends IonicNativePlugin {
 
-  @CordovaProperty
+  /**
+   * Convenience property to select an Android theme value
+   */
   ANDROID_THEMES: {
     THEME_TRADITIONAL: number;
     THEME_HOLO_DARK: number;
     THEME_HOLO_LIGHT: number;
     THEME_DEVICE_DEFAULT_DARK: number;
     THEME_DEVICE_DEFAULT_LIGHT: number;
+  } = {
+    THEME_TRADITIONAL: 1,
+    THEME_HOLO_DARK: 2,
+    THEME_HOLO_LIGHT: 3,
+    THEME_DEVICE_DEFAULT_DARK: 4,
+    THEME_DEVICE_DEFAULT_LIGHT: 5
   };
 
   /**

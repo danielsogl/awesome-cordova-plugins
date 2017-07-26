@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 
 /**
  * @name Social Sharing
  * @description
  * Share text, files, images, and links via social networks, sms, and email.
+ *
+ * For Browser usage check out the Web Share API docs: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin#web-share-api
+ *
  * @usage
  * ```typescript
  * import { SocialSharing } from '@ionic-native/social-sharing';
@@ -34,10 +37,10 @@ import { Cordova, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-x-socialsharing',
   pluginRef: 'plugins.socialsharing',
   repo: 'https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin',
-  platforms: ['iOS', 'Android', 'Windows Phone']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class SocialSharing {
+export class SocialSharing extends IonicNativePlugin {
   /**
    * Shares using the share sheet
    * @param message {string} The message you would like to share.
@@ -46,8 +49,11 @@ export class SocialSharing {
    * @param url {string} A URL to share
    * @returns {Promise<any>}
    */
-  @Cordova()
-  share(message?: string, subject?: string, file?: string|string[], url?: string): Promise<any> { return; }
+  @Cordova({
+    successIndex: 4,
+    errorIndex: 5
+  })
+  share(message?: string, subject?: string, file?: string | string[], url?: string): Promise<any> { return; }
 
   /**
    * Shares using the share sheet with additional options and returns a result object or an error message (requires plugin version 5.1.0+)
@@ -57,7 +63,7 @@ export class SocialSharing {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  shareWithOptions(options: { message?: string, subject?: string, files?: string|string[], url?: string, chooserTitle?: string }): Promise<any> { return; }
+  shareWithOptions(options: { message?: string, subject?: string, files?: string | string[], url?: string, chooserTitle?: string }): Promise<any> { return; }
 
   /**
    * Checks if you can share via a specific app.
@@ -194,7 +200,7 @@ export class SocialSharing {
     successIndex: 6,
     errorIndex: 7
   })
-  shareViaEmail(message: string, subject: string, to: string[], cc?: string[], bcc?: string[], files?: string|string[]): Promise<any> { return; }
+  shareViaEmail(message: string, subject: string, to: string[], cc?: string[], bcc?: string[], files?: string | string[]): Promise<any> { return; }
 
   /**
    * Share via AppName
@@ -211,4 +217,14 @@ export class SocialSharing {
     platforms: ['iOS', 'Android']
   })
   shareVia(appName: string, message: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
+
+  /**
+   * defines the popup position before call the share method.
+   * @param targetBounds {string} left, top, width, height
+   */
+  @Cordova({
+    sync: true,
+    platforms: ['iOS']
+  })
+  setIPadPopupCoordinates(targetBounds: string): void { }
 }

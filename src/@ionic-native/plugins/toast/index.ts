@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface ToastOptions {
@@ -51,7 +51,7 @@ export interface ToastOptions {
  *
  * ...
  *
- * this.toast.show("I'm a toast", '5000', 'center').subscribe(
+ * this.toast.show(`I'm a toast`, '5000', 'center').subscribe(
  *   toast => {
  *     console.log(toast);
  *   }
@@ -65,10 +65,10 @@ export interface ToastOptions {
   plugin: 'cordova-plugin-x-toast',
   pluginRef: 'plugins.toast',
   repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows', 'Windows Phone 8']
 })
 @Injectable()
-export class Toast {
+export class Toast extends IonicNativePlugin {
 
   /**
    * Show a native toast for the given duration at the specified position.

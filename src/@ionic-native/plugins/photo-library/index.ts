@@ -1,4 +1,4 @@
-import { Plugin, Cordova, CordovaFiniteObservable } from '@ionic-native/core';
+import { Plugin, Cordova, CordovaFiniteObservable, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
  * cdvphotolibrary urls should be trusted by Angular. See plugin homepage to learn how.
  *
  * @usage
- * ```
+ * ```typescript
  * import { PhotoLibrary } from '@ionic-native/photo-library';
  *
  * constructor(private photoLibrary: PhotoLibrary) { }
@@ -32,10 +32,10 @@ import { Injectable } from '@angular/core';
  *       });
  *     },
  *     error: err => {},
- *     complete: () => { console.log("could not get photos"); }
+ *     complete: () => { console.log('could not get photos'); }
  *   });
  * })
- * .catch(err => console.log("permissions weren't granted"));
+ * .catch(err => console.log('permissions weren\'t granted'));
  *
  * ```
  */
@@ -44,11 +44,12 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-photo-library',
   pluginRef: 'cordova.plugins.photoLibrary',
   repo: 'https://github.com/terikon/cordova-plugin-photo-library',
-  install: 'ionic plugin add cordova-plugin-photo-library --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="To choose photos"',
+  install: 'ionic cordova plugin add cordova-plugin-photo-library --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="To choose photos"',
+  installVariables: ['PHOTO_LIBRARY_USAGE_DESCRIPTION'],
   platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()
-export class PhotoLibrary {
+export class PhotoLibrary extends IonicNativePlugin {
 
   /**
    * Retrieves library items. Library item contains photo metadata like width and height, as well as photoURL and thumbnailURL.
@@ -57,8 +58,8 @@ export class PhotoLibrary {
    */
   @CordovaFiniteObservable({
     callbackOrder: 'reverse',
-    resultFinalPredicate: (result: {isLastChunk: boolean}) => { return result.isLastChunk; },
-    resultTransform: (result: {library: LibraryItem[]}) => { return result.library; },
+    resultFinalPredicate: (result: { isLastChunk: boolean }) => { return result.isLastChunk; },
+    resultTransform: (result: { library: LibraryItem[] }) => { return result.library; },
   })
   getLibrary(options?: GetLibraryOptions): Observable<LibraryItem[]> { return; }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @beta
@@ -8,7 +8,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * This plugin adds Rollbar App monitoring to your application
  *
  * @usage
- * ```
+ * ```typescript
  * import { Rollbar } from '@ionic-native/rollbar';
  *
  * constructor(private rollbar: Rollbar) { }
@@ -24,12 +24,12 @@ import { Plugin, Cordova } from '@ionic-native/core';
   plugin: 'resgrid-cordova-plugins-rollbar',
   pluginRef: 'cordova.plugins.Rollbar',
   repo: 'https://github.com/Resgrid/cordova-plugins-rollbar',
-  platforms: ['Android', 'iOS'],
-  install: 'ionic plugin add resgrid-cordova-plugins-rollbar --variable ROLLBAR_ACCESS_TOKEN="YOUR_ROLLBAR_ACCEESS_TOKEN" --variable ROLLBAR_ENVIRONMENT="ROLLBAR_ENVIRONMENT"',
-  installVariables: ['ROLLBAR_ACCESS_TOKEN', 'ROLLBAR_ENVIRONMENT']
+  install: 'ionic cordova plugin add resgrid-cordova-plugins-rollbar --variable ROLLBAR_ACCESS_TOKEN="YOUR_ROLLBAR_ACCEESS_TOKEN" --variable ROLLBAR_ENVIRONMENT="ROLLBAR_ENVIRONMENT"',
+  installVariables: ['ROLLBAR_ACCESS_TOKEN', 'ROLLBAR_ENVIRONMENT'],
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Rollbar {
+export class Rollbar extends IonicNativePlugin {
 
   /**
    * This function initializes the monitoring of your application

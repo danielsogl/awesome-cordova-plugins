@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 
 export interface FingerprintOptions {
@@ -20,7 +20,6 @@ export interface FingerprintOptions {
 }
 
 /**
- * @beta
  * @name Fingerprint AIO
  * @description
  * Use simple fingerprint authentication on Android and iOS.
@@ -35,8 +34,8 @@ export interface FingerprintOptions {
  * ...
  *
  * this.faio.show({
- *     clientId: "Fingerprint-Demo",
- *     clientSecret: "password", //Only necessary for Android
+ *     clientId: 'Fingerprint-Demo',
+ *     clientSecret: 'password', //Only necessary for Android
  *     disableBackup:true  //Only for Android(optional)
  * })
  * .then((result: any) => console.log(result))
@@ -54,7 +53,7 @@ export interface FingerprintOptions {
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class FingerprintAIO {
+export class FingerprintAIO extends IonicNativePlugin {
 
   /**
    * Check if fingerprint authentication is available

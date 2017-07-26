@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
- * @beta
  * @name Native Geocoder
  * @description
  * Cordova plugin for native forward and reverse geocoding
@@ -16,11 +15,11 @@ import { Plugin, Cordova } from '@ionic-native/core';
  * ...
  *
  * this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818)
- *   .then((result: NativeGeocoderReverseResult) => console.log("The address is " + result.street + " in " + result.countryCode))
+ *   .then((result: NativeGeocoderReverseResult) => console.log('The address is ' + result.street + ' in ' + result.countryCode))
  *   .catch((error: any) => console.log(error));
  *
- * this.nativeGeocoder.forwardGeocode("Berlin")
- *   .then((coordinates: NativeGeocoderForwardResult) => console.log("The coordinates are latitude=" + coordinates.latitude + " and longitude=" + coordinates.longitude))
+ * this.nativeGeocoder.forwardGeocode('Berlin')
+ *   .then((coordinates: NativeGeocoderForwardResult) => console.log('The coordinates are latitude=' + coordinates.latitude + ' and longitude=' + coordinates.longitude))
  *   .catch((error: any) => console.log(error));
  * ```
  * @interfaces
@@ -35,7 +34,7 @@ import { Plugin, Cordova } from '@ionic-native/core';
   platforms: ['iOS', 'Android']
 })
 @Injectable()
-export class NativeGeocoder {
+export class NativeGeocoder extends IonicNativePlugin {
 
   /**
    * Reverse geocode a given latitude and longitude to find location address
@@ -81,7 +80,11 @@ export interface NativeGeocoderReverseResult {
    */
   city: string;
   /**
+<<<<<<< HEAD
    * The district (subLocality).
+=======
+   * The district.
+>>>>>>> ionic-team/master
    */
   district: string;
   /**

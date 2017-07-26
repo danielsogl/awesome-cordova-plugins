@@ -1,4 +1,4 @@
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
  * An Ionic plugin to use Taptic Engine API on iPHone 7, 7 Plus or newer.
  *
  * @usage
- * ```ts
- * import { TapticEngine } from '@ionic-native/taptic-engine;
+ * ```typescript
+ * import { TapticEngine } from '@ionic-native/taptic-engine';
  *
  * ...
  *
@@ -32,7 +32,7 @@ import { Injectable } from '@angular/core';
   platforms: ['iOS']
 })
 @Injectable()
-export class TapticEngine {
+export class TapticEngine extends IonicNativePlugin {
 
   /**
    * Use selection feedback generators to indicate a change in selection.

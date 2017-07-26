@@ -1,4 +1,4 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -19,7 +19,7 @@ import { Injectable } from '@angular/core';
  *
  * Then use the following code:
  *
- * ```
+ * ```typescript
  * import { AppUpdate } from '@ionic-native/app-update';
  *
  * constructor(private appUpdate: AppUpdate) {
@@ -28,8 +28,6 @@ import { Injectable } from '@angular/core';
  *    this.appUpdate.checkAppUpdate(updateUrl);
  *
  * }
- *
- *
  * ```
  *
  * The plugin will compare the app version and update it automatically if the API has a newer version to install.
@@ -42,7 +40,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android']
 })
 @Injectable()
-export class AppUpdate {
+export class AppUpdate extends IonicNativePlugin {
   /**
    * Check and update
    * @param updateUrl {string} update api url
@@ -53,4 +51,3 @@ export class AppUpdate {
   })
   checkAppUpdate(updateUrl: string): Promise<any> { return; }
 }
-

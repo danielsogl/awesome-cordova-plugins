@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
  * This plugin adds exchanging events between native code and your app.
  *
  * @usage
- * ```
+ * ```typescript
  * import { Broadcaster } from '@ionic-native/broadcaster';
  *
  * constructor(private broadcaster: Broadcaster) { }
@@ -16,7 +16,7 @@ import { Observable } from 'rxjs/Observable';
  * ...
  *
  * // Listen to events from Native
- * this.broadcaster.addEventListener('eventName').then((event) => console.log(event));
+ * this.broadcaster.addEventListener('eventName').subscribe((event) => console.log(event));
  *
  * // Send event to Native
  * this.broadcaster.fireNativeEvent('eventName', {}).then(() => console.log('success'));
@@ -31,7 +31,7 @@ import { Observable } from 'rxjs/Observable';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Broadcaster {
+export class Broadcaster extends IonicNativePlugin {
 
   /**
    * This function listen to an event sent from the native code

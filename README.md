@@ -1,24 +1,24 @@
-[![Circle CI](https://circleci.com/gh/driftyco/ionic-native.svg?style=shield)](https://circleci.com/gh/driftyco/ionic-native) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![](https://img.shields.io/npm/v/@ionic-native/core.svg)
+[![Circle CI](https://circleci.com/gh/ionic-team/ionic-native.svg?style=shield)](https://circleci.com/gh/ionic-team/ionic-native) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![](https://img.shields.io/npm/v/@ionic-native/core.svg)
 
 
 # Ionic Native
 
-Ionic Native is a curated set of wrappers for Cordova plugins that make adding any native functionality you need to your [Ionic 2](http://ionicframework.com/) mobile app easy.
+Ionic Native is a curated set of wrappers for Cordova plugins that make adding any native functionality you need to your [Ionic](https://ionicframework.com/) mobile app easy.
 
 Ionic Native wraps plugin callbacks in a Promise or Observable, providing a common interface for all plugins and making it easy to use plugins with Angular change detection.
 
 ## Installation
 
 Run following command to install Ionic Native in your project.
-```
+```bash
 npm install @ionic-native/core --save
 ```
 
-You also need to install the Ionic Native package for each plugin you want to add. Please see the [Ionic Native documentation](http://ionicframework.com/docs/native/) for complete instructions on how to add and use the plugins.
+You also need to install the Ionic Native package for each plugin you want to add. Please see the [Ionic Native documentation](https://ionicframework.com/docs/native/) for complete instructions on how to add and use the plugins.
 
 ## Documentation
 
-For the full Ionic Native documentation, please visit [http://ionicframework.com/docs/native/](http://ionicframework.com/docs/native/).
+For the full Ionic Native documentation, please visit [https://ionicframework.com/docs/native/](https://ionicframework.com/docs/native/).
 
 ### Basic Usage
 
@@ -95,13 +95,13 @@ To do this, you need to provide a mock implementation of the plugins you wish to
 
 First import the `Camera` class in your `src/app/app.module.ts` file:
 
-```ts
+```typescript
 import { Camera } from '@ionic-native/camera';
 ```
 
 Then create a new class that extends the `Camera` class with a mock implementation:
 
-```ts
+```typescript
 class CameraMock extends Camera {
   getPicture(options) {
     return new Promise((resolve, reject) => {
@@ -113,7 +113,7 @@ class CameraMock extends Camera {
 
 Finally, override the previous `Camera` class in your `providers` for this module:
 
-```ts
+```typescript
 providers: [
   { provide: Camera, useClass: CameraMock }
 ]
@@ -121,8 +121,9 @@ providers: [
 
 Here's the full example:
 
-```ts
+```typescript
 import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -143,6 +144,7 @@ class CameraMock extends Camera {
     HomePage
   ],
   imports: [
+    BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -163,24 +165,24 @@ export class AppModule {}
 
 Spent way too long diagnosing an issue only to realize a plugin wasn't firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.
 
-![img](http://ionic-io-assets.s3.amazonaws.com/ionic-native-console.png)
+![img](https://ionic-io-assets.s3.amazonaws.com/ionic-native-console.png)
 
 
 ## Plugin Missing?
-Let us know or submit a PR! Take a look at [the Developer Guide](https://github.com/driftyco/ionic-native/blob/master/DEVELOPER.md) for more on how to contribute. :heart:
+Let us know or submit a PR! Take a look at [the Developer Guide](https://github.com/ionic-team/ionic-native/blob/master/DEVELOPER.md) for more on how to contribute. :heart:
 
-## Ionic 1/Angular 1 support
+## Ionic v1 (AngularJS, Angular 1.x) support
 
-Ionic Native 3.x supports Ionic 2.x and above. For Ionic/Angular 1 support, please use version 2 of Ionic Native. See the [2.x README](https://github.com/driftyco/ionic-native/blob/8cd648db5cddd7bdbe2bd78839b19c620cc8c04c/README.md) for usage information.
+For Ionic v1 (AngularJS, Angular 1.x) support, please use version 2 of Ionic Native. See the [2.x README](https://github.com/ionic-team/ionic-native/blob/v2.x/README.md) for usage information.
 
 # Credits
 
-Ibby Hadeed - [@ihadeed](http://github.com/ihadeed)
+Ibby Hadeed - [@ihadeed](https://github.com/ihadeed)
 
-Tim Lancina - [@timlancina](http://twitter.com/timlancina)
+Tim Lancina - [@timlancina](https://twitter.com/timlancina)
 
 Mike Hartington - [@mhartington](https://twitter.com/mhartington)
 
-Max Lynch - [@maxlynch](http://twitter.com/maxlynch)
+Max Lynch - [@maxlynch](https://twitter.com/maxlynch)
 
 Rob Wormald - [@robwormald](https://twitter.com/robwormald)

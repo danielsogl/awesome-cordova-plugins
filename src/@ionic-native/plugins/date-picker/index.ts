@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Cordova, Plugin} from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface DatePickerOptions {
   /**
@@ -154,7 +154,7 @@ export interface DatePickerOptions {
   platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
-export class DatePicker {
+export class DatePicker extends IonicNativePlugin {
 
   /**
    * @hidden

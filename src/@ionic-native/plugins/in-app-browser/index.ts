@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Plugin, CordovaInstance } from '@ionic-native/core';
+import { Plugin, CordovaInstance, InstanceCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromEvent';
+import { Observer } from 'rxjs/Observer';
 
-declare var cordova: any;
+declare const cordova: Cordova & { InAppBrowser: any; };
 
 export interface InAppBrowserOptions {
   /** Set to yes or no to turn the InAppBrowser's location bar on or off. */
@@ -48,6 +48,11 @@ export interface InAppBrowserOptions {
   /** (Windows only) Set to yes to create the browser control without a border around it.
    * Please note that if location=no is also specified, there will be no control presented to user to close IAB window. */
   fullscreen?: 'yes';
+
+  /**
+   * @hidden
+   */
+  [key: string]: any;
 }
 export interface InAppBrowserEvent extends Event {
   /** the eventname, either loadstart, loadstop, loaderror, or exit. */
@@ -71,18 +76,27 @@ export class InAppBrowserObject {
    * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.
    * @param {string} url     The URL to load.
    * @param {string} [target="self"]  The target in which to load the URL, an optional parameter that defaults to _self.
+   *                 _self: Opens in the WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
+   *                 _blank: Opens in the InAppBrowser.
+   *                 _system: Opens in the system's web browser.
    * @param {string | InAppBrowserOptions} [options] Options for the InAppBrowser. Optional, defaulting to: location=yes.
    *                 The options string must not contain any blank space, and each feature's
    *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
    */
   constructor(url: string, target?: string, options?: string | InAppBrowserOptions) {
     try {
-      if (options && typeof options !== 'string')
-        options = Object.keys(options).map(key => `${key}=${options[key]}`).join(',');
+
+      if (options && typeof options !== 'string') {
+        options = Object.keys(options).map((key: string) => `${key}=${(<InAppBrowserOptions>options)[key]}`).join(',');
+      }
+
       this._objectInstance = cordova.InAppBrowser.open(url, target, options);
+
     } catch (e) {
-      window.open(url);
+
+      window.open(url, target);
       console.warn('Native: InAppBrowser is not installed or you are running on a browser. Falling back to window.open.');
+
     }
   }
 
@@ -127,8 +141,12 @@ export class InAppBrowserObject {
    * @param event {string} Name of the event
    * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
    */
+  @InstanceCheck()
   on(event: string): Observable<InAppBrowserEvent> {
-    return Observable.fromEvent(this._objectInstance, event);
+    return new Observable<InAppBrowserEvent>((observer: Observer<InAppBrowserEvent>) => {
+      this._objectInstance.addEventListener(event, observer.next.bind(observer));
+      return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
+    });
   }
 }
 
@@ -145,7 +163,7 @@ export class InAppBrowserObject {
  * ...
  *
  *
- * const browser = this.iab.create('https://ionic.io');
+ * const browser = this.iab.create('https://ionicframework.com/');
  *
  * browser.executeScript(...);
  * browser.insertCSS(...);
@@ -163,10 +181,10 @@ export class InAppBrowserObject {
   plugin: 'cordova-plugin-inappbrowser',
   pluginRef: 'cordova.InAppBrowser',
   repo: 'https://github.com/apache/cordova-plugin-inappbrowser',
-  platforms: ['Amazon', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'OS X', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['AmazonFire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'macOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class InAppBrowser {
+export class InAppBrowser extends IonicNativePlugin {
 
   /**
    * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.

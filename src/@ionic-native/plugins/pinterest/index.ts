@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty } from '@ionic-native/core';
+import { Plugin, Cordova, CordovaProperty, IonicNativePlugin } from '@ionic-native/core';
 
 export interface PinterestUser {
   /**
@@ -133,7 +133,7 @@ export interface PinterestPin {
  * Cordova plugin for Pinterest
  *
  * @usage
- * ```
+ * ```typescript
  * import { Pinterest, PinterestUser, PinterestPin, PinterestBoard } from '@ionic-native/pinterest';
  *
  * constructor(private pinterest: Pinterest) { }
@@ -172,12 +172,12 @@ export interface PinterestPin {
   plugin: 'cordova-plugin-pinterest',
   pluginRef: 'cordova.plugins.Pinterest',
   repo: 'https://github.com/zyramedia/cordova-plugin-pinterest',
-  install: 'ionic plugin add cordova-plugin-pinterest --variable APP_ID=YOUR_APP_ID',
+  install: 'ionic cordova plugin add cordova-plugin-pinterest --variable APP_ID=YOUR_APP_ID',
   installVariables: ['APP_ID'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Pinterest {
+export class Pinterest extends IonicNativePlugin {
 
   /**
    * Convenience constant for authentication scopes

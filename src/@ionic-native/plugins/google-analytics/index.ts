@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
-
-declare var window;
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Google Analytics
@@ -36,10 +34,10 @@ declare var window;
   plugin: 'cordova-plugin-google-analytics',
   pluginRef: 'ga',
   repo: 'https://github.com/danwilson/google-analytics-plugin',
-  platforms: ['Android', 'iOS', 'Browser']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
-export class GoogleAnalytics {
+export class GoogleAnalytics extends IonicNativePlugin {
 
   /**
    * In your 'deviceready' handler, set up your Analytics tracker.
@@ -104,7 +102,7 @@ export class GoogleAnalytics {
 
   /**
    * Track custom metric
-   * @param key {string}
+   * @param key {number}
    * @param value {any}
    * @returns {Promise<any>}
    */
@@ -112,7 +110,7 @@ export class GoogleAnalytics {
     successIndex: 2,
     errorIndex: 3
   })
-  trackMetric(key: string, value?: any): Promise<any> { return; }
+  trackMetric(key: number, value?: number): Promise<any> { return; }
 
   /**
    * Track a screen

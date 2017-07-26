@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Plugin, Cordova} from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface StripeCardTokenParams {
   /**
@@ -85,7 +85,7 @@ export interface StripeBankAccountParams {
  * A plugin that allows you to use Stripe's Native SDKs for Android and iOS.
  *
  * @usage
- * ```
+ * ```typescript
  * import { Stripe } from '@ionic-native/stripe';
  *
  * constructor(private stripe: Stripe) { }
@@ -114,10 +114,11 @@ export interface StripeBankAccountParams {
   pluginName: 'Stripe',
   plugin: 'cordova-plugin-stripe',
   pluginRef: 'cordova.plugins.stripe',
-  repo: 'https://github.com/zyramedia/cordova-plugin-stripe'
+  repo: 'https://github.com/zyramedia/cordova-plugin-stripe',
+  platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()
-export class Stripe {
+export class Stripe extends IonicNativePlugin {
 
   /**
    * Set publishable key

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin, CordovaCheck } from '@ionic-native/core';
+import { Cordova, CordovaProperty, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
 
 
-declare var navigator: any;
+declare const navigator: any;
 
 /**
  * @name Network
@@ -30,9 +30,9 @@ declare var navigator: any;
  *
  * // watch network for a connection
  * let connectSubscription = this.network.onConnect().subscribe(() => {
- *   console.log('network connected!'); 
+ *   console.log('network connected!');
  *   // We just got a connection but we need to wait briefly
- *    // before we determine the connection type.  Might need to wait 
+ *    // before we determine the connection type. Might need to wait.
  *   // prior to doing any api requests as well.
  *   setTimeout(() => {
  *     if (this.network.type === 'wifi') {
@@ -51,12 +51,12 @@ declare var navigator: any;
 @Plugin({
   pluginName: 'Network',
   plugin: 'cordova-plugin-network-information',
+  pluginRef: 'navigator.connection',
   repo: 'https://github.com/apache/cordova-plugin-network-information',
-  platforms: ['Amazon Fire OS', 'iOS', 'Android', 'BlackBerry 10', 'Windows Phone 7', 'Windows Phone 8', 'Windows', 'Firefox OS', 'Browser'],
-  pluginRef: 'navigator.connection'
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
-export class Network {
+export class Network extends IonicNativePlugin {
 
   /**
    * Connection type

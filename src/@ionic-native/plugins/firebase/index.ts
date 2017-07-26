@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
+ * @beta
  * @name Firebase
  * @description
  * This plugin brings push notifications, analytics, event tracking, crash reporting and more from Google Firebase to your Cordova project! Android and iOS supported (including iOS 10).
  *
  * @usage
- * ```
+ * ```typescript
  * import { Firebase } from '@ionic-native/firebase';
  *
  * constructor(private firebase: Firebase) { }
@@ -32,7 +33,7 @@ import { Observable } from 'rxjs/Observable';
   platforms: ['Android', 'iOS']
 })
 @Injectable()
-export class Firebase {
+export class Firebase extends IonicNativePlugin {
 
   /**
    * Get the device token
@@ -60,7 +61,7 @@ export class Firebase {
   onNotificationOpen(): Observable<any> { return; }
 
   /**
-   * Grant permission to recieve push notifications
+   * Grant permission to receive push notifications
    * @return {Promise<any>}
    */
   @Cordova({
@@ -68,13 +69,11 @@ export class Firebase {
   })
   grantPermission(): Promise<any> { return; }
 
-    /**
-   * Check permission to recieve push notifications
-   * @return {Promise<any>}
-   */
-  @Cordova({
-    platforms: ['iOS']
-  })
+  /**
+ * Check permission to receive push notifications
+ * @return {Promise<any>}
+ */
+  @Cordova()
   hasPermission(): Promise<any> { return; }
 
   /**
@@ -109,6 +108,13 @@ export class Firebase {
   unsubscribe(topic: string): Promise<any> { return; }
 
   /**
+   * Unregister from firebase, used to stop receiving push notifications.
+   * Call this when you logout user from your app.
+   */
+  @Cordova()
+  unregister(): Promise<any> { return; }
+
+  /**
    * Log an event using Analytics
    * @param type {string}
    * @param data {Object}
@@ -116,6 +122,14 @@ export class Firebase {
    */
   @Cordova()
   logEvent(type: string, data: any): Promise<any> { return; }
+
+  /**
+   * Log an Error using FirebaseCrash
+   * @param message {string}
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  logError(message: string): Promise<any> { return; }
 
   /**
    * Set the name of the current screen in Analytics
@@ -148,7 +162,6 @@ export class Firebase {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
     successIndex: 1,
     errorIndex: 2
   })
@@ -158,9 +171,7 @@ export class Firebase {
    * Activate the Remote Config fetched config
    * @return {Promise<any>}
    */
-  @Cordova({
-    platforms: ['Android']
-  })
+  @Cordova()
   activateFetched(): Promise<any> { return; }
 
   /**
@@ -170,7 +181,6 @@ export class Firebase {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
     successIndex: 2,
     errorIndex: 3
   })

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -19,14 +19,14 @@ export interface BackgroundModeConfiguration {
   text?: String;
 
   /**
-   * This will look for <icon name>.png in platforms/android/res/drawable|mipmap
+   * This will look for `<icon name>.png` in platforms/android/res/drawable|mipmap
    */
   icon?: string;
 
   color?: string;
 
   /**
-   * By default the app will come to foreground when taping on the notification. If false, plugin wont come to foreground when tapped.
+   * By default the app will come to foreground when taping on the notification. If false, plugin won't come to foreground when tapped.
    */
   resume?: boolean;
 
@@ -50,7 +50,7 @@ export interface BackgroundModeConfiguration {
  * @name Background Mode
  * @description
  * Cordova plugin to prevent the app from going to sleep while in background.
- * Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: https://github.com/katzer/cordova-plugin-background-mode
+ * Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, visit: https://github.com/katzer/cordova-plugin-background-mode
  *@usage
  * ```typescript
  * import { BackgroundMode } from '@ionic-native/background-mode';
@@ -70,10 +70,10 @@ export interface BackgroundModeConfiguration {
   plugin: 'cordova-plugin-background-mode',
   pluginRef: 'cordova.plugins.backgroundMode',
   repo: 'https://github.com/katzer/cordova-plugin-background-mode',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
-export class BackgroundMode {
+export class BackgroundMode extends IonicNativePlugin {
 
   /**
    * Enable the background mode.
@@ -112,7 +112,7 @@ export class BackgroundMode {
   /**
    * Override the default title, ticker and text.
    * Available only for Android platform.
-   * @param {Configure} options List of option to configure. See table below
+   * @param {BackgroundModeConfiguration} options List of option to configure. See table below
    */
   @Cordova({
     platforms: ['Android']
@@ -122,12 +122,13 @@ export class BackgroundMode {
   /**
    * Modify the displayed information.
    * Available only for Android platform.
-   * @param {Configure} options Any options you want to update. See table below.
+   * @param {BackgroundModeConfiguration} options Any options you want to update. See table below.
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
+    sync: true
   })
-  configure(options?: BackgroundModeConfiguration): Promise<any> { return; }
+  configure(options?: BackgroundModeConfiguration): void {}
 
   /**
    * Listen for events that the plugin fires. Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
@@ -148,7 +149,16 @@ export class BackgroundMode {
     platforms: ['Android'],
     sync: true
   })
-  moveToBackground(): void {}
+  moveToBackground(): void { }
+
+  /**
+   * Enable GPS-tracking in background (Android).
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true
+  })
+  disableWebViewOptimizations (): void { }
 
   /**
    * Android allows to programmatically move from background to foreground.
@@ -157,7 +167,7 @@ export class BackgroundMode {
     platforms: ['Android'],
     sync: true
   })
-  moveToForeground(): void {}
+  moveToForeground(): void { }
 
   /**
    * Override the back button on Android to go to background instead of closing the app.
@@ -166,16 +176,16 @@ export class BackgroundMode {
     platforms: ['Android'],
     sync: true
   })
-  overrideBackButton(): void {}
+  overrideBackButton(): void { }
 
   /**
-   * Exclude the app from the recent task list works on Android 5.0+.
+   * Exclude the app from the recent task list. Works on Android 5.0+.
    */
   @Cordova({
     platforms: ['Android'],
     sync: true
   })
-  excludeFromTaskList(): void {}
+  excludeFromTaskList(): void { }
 
   /**
    * The method works async instead of isActive() or isEnabled().
@@ -192,7 +202,7 @@ export class BackgroundMode {
     platforms: ['Android'],
     sync: true
   })
-  wakeUp(): void {}
+  wakeUp(): void { }
 
   /**
    * Turn screen on and show app even locked
@@ -201,6 +211,6 @@ export class BackgroundMode {
     platforms: ['Android'],
     sync: true
   })
-  unlock(): void {}
+  unlock(): void { }
 
 }

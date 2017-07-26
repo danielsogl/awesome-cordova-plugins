@@ -1,4 +1,4 @@
-import { Cordova, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -11,11 +11,12 @@ import { Injectable } from '@angular/core';
  * ```typescript
  * import { AppPreferences } from '@ionic-native/app-preferences';
  *
- * constructor(private appPreferences: AppPreferences) {
+ * constructor(private appPreferences: AppPreferences) { }
  *
- *   this.appPreferences.fetch('key').then((res) => { console.log(res); });
+ * ...
  *
- * }
+ * this.appPreferences.fetch('key').then((res) => { console.log(res); });
+ *
  * ```
  *
  */
@@ -24,10 +25,10 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-app-preferences',
   pluginRef: 'plugins.appPreferences',
   repo: 'https://github.com/apla/me.apla.cordova.app-preferences',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'OS X', 'Windows 8', 'Windows Phone']
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'macOS', 'Windows 8', 'Windows Phone']
 })
 @Injectable()
-export class AppPreferences {
+export class AppPreferences extends IonicNativePlugin {
 
   /**
    * Get a preference value
@@ -46,13 +47,13 @@ export class AppPreferences {
    *
    * @param {string} dict Dictionary for key (OPTIONAL)
    * @param {string} key Key
-   * @param {string} value Value
+   * @param {any} value Value
    * @return {Promise<any>} Returns a promise
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  store(dict: string, key: string, value?: string): Promise<any> {
+  store(dict: string, key: string, value?: any): Promise<any> {
     return;
   }
 
@@ -107,14 +108,16 @@ export class AppPreferences {
    * @returns {Object} Custom object, bound to that suite
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
+    sync: true
   })
-  suite(suiteName: string): Object { return; }
+  suite(suiteName: string): any { return; }
 
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
+    sync: true
   })
-  iosSuite(suiteName: string): Object { return; }
+  iosSuite(suiteName: string): any { return; }
 
   /**
    * Return cloud synchronized configuration context
