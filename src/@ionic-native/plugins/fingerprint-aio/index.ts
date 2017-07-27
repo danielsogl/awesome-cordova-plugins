@@ -17,12 +17,12 @@ export interface FingerprintOptions {
    * Disable 'use backup' option. Only for android (optional)
    */
   disableBackup?: boolean;
-  
+
   /**
    * Title of fallback button. Only for iOS
    */
   localizedFallbackTitle?: string;
-  
+
   /**
    * Description in authentication dialogue. Only for iOS
    */
