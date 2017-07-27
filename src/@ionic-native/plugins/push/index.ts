@@ -192,7 +192,7 @@ export interface BrowserPushOptions {
   /**
    * Optional. Your GCM API key if you are using VAPID keys.
    */
-  applicationServerKey: string;
+  applicationServerKey?: string;
 
   /**
    * URL for the push server you want to use.
