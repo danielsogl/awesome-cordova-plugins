@@ -188,10 +188,25 @@ export interface AndroidPushOptions {
   topics?: string[];
 }
 
+export interface BrowserPushOptions {
+  /**
+   * Optional. Your GCM API key if you are using VAPID keys.
+   */
+  applicationServerKey: string;
+
+  /**
+   * URL for the push server you want to use.
+   * Default: http://push.api.phonegap.com/v1/push	Optional. 
+   */
+  pushServiceURL?: string;
+
+}
+
 export interface PushOptions {
   ios?: IOSPushOptions;
   android?: AndroidPushOptions;
   windows?: any;
+  browser?: BrowserPushOptions;
 }
 
 export type PushEvent = 'registration' | 'error' | 'notification';
@@ -237,7 +252,10 @@ export type PushEvent = 'registration' | 'error' | 'notification';
  *        badge: true,
  *        sound: 'false'
  *    },
- *    windows: {}
+ *    windows: {},
+ *    browser: {
+ *        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+ *    }
  * };
  *
  * const pushObject: PushObject = this.push.init(options);
@@ -257,6 +275,7 @@ export type PushEvent = 'registration' | 'error' | 'notification';
  * NotificationEventAdditionalData
  * IOSPushOptions
  * AndroidPushOptions
+ * BrowserPushOptions
  * PushOptions
  */
 @Plugin({
