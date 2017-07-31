@@ -326,7 +326,7 @@ export interface VisibleRegion {
  * @hidden
  * You can listen to these events where appropriate
  */
-export const GoogleMapsEvent: { [eventName: string]: string; } = {
+export const GoogleMapsEvent: {
   MAP_READY: 'map_ready',
   MAP_CLICK: 'map_click',
   MAP_LONG_CLICK: 'map_long_click',
@@ -353,7 +353,7 @@ export const GoogleMapsEvent: { [eventName: string]: string; } = {
 /**
  * @hidden
  */
-export const GoogleMapsAnimation: { [animationName: string]: string; } = {
+export const GoogleMapsAnimation: {
   BOUNCE: 'BOUNCE',
   DROP: 'DROP'
 };
@@ -450,7 +450,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  *       });
  *   }
  * }
- * 
+ *
  * ```
  * @classes
  * GoogleMap
@@ -1602,12 +1602,19 @@ export class GroundOverlay extends BaseClass {
 /**
  * @hidden
  */
+@Plugin({
+  plugin: 'cordova-plugin-googlemaps',
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.HtmlInfoWindow',
+  repo: ''
+})
 export class HtmlInfoWindow extends BaseClass {
+ private _objectInstance: any;
 
   constructor() {
     super();
-    if (checkAvailability(GoogleMaps.getPluginRef(), null, GoogleMaps.getPluginName()) === true) {
-      this._objectInstance = new (GoogleMaps.getPlugin()).HtmlInfoWindow();
+    if (checkAvailability(HtmlInfoWindow.getPluginRef(), null, HtmlInfoWindow.getPluginName()) === true) {
+      this._objectInstance = new (HtmlInfoWindow.getPlugin())();
     }
   }
 
