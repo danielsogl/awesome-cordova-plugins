@@ -326,7 +326,7 @@ export interface VisibleRegion {
  * @hidden
  * You can listen to these events where appropriate
  */
-export const GoogleMapsEvent: {
+export const GoogleMapsEvent: { [eventName: string]: string; } = {
   MAP_READY: 'map_ready',
   MAP_CLICK: 'map_click',
   MAP_LONG_CLICK: 'map_long_click',
@@ -353,7 +353,7 @@ export const GoogleMapsEvent: {
 /**
  * @hidden
  */
-export const GoogleMapsAnimation: {
+export const GoogleMapsAnimation: { [animationName: string]: string; } = {
   BOUNCE: 'BOUNCE',
   DROP: 'DROP'
 };
