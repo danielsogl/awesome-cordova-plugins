@@ -1604,7 +1604,7 @@ export class GroundOverlay extends BaseClass {
  */
 @Plugin({
   plugin: 'cordova-plugin-googlemaps',
-  pluginName: 'GoogleMaps',
+  pluginName: 'HtmlInfoWindow',
   pluginRef: 'plugin.google.maps.HtmlInfoWindow',
   repo: ''
 })
