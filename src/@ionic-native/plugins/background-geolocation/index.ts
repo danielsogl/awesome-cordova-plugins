@@ -264,7 +264,7 @@ export interface BackgroundGeolocationConfig {
  * BackgroundGeolocation must be called within app.ts and or before Geolocation. Otherwise the platform will not ask you for background tracking permission.
  *
  * ```typescript
- * import { BackgroundGeolocation, BackgroundGeolocationConfig } from '@ionic-native/background-geolocation';
+ * import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
  *
  * constructor(private backgroundGeolocation: BackgroundGeolocation) { }
  *
