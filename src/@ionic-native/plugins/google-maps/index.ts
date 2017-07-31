@@ -1108,7 +1108,7 @@ export class GoogleMap extends BaseClass {
    * @param domNode
    */
   @CordovaInstance({ sync: true })
-  setDiv(domNode: HTMLElement): void { }
+  setDiv(domNode?: HTMLElement): void { }
 
   /**
    * Returns the map HTML element
