@@ -1603,18 +1603,19 @@ export class GroundOverlay extends BaseClass {
  * @hidden
  */
 @Plugin({
-  plugin: 'cordova-plugin-googlemaps',
-  pluginName: 'HtmlInfoWindow',
-  pluginRef: 'plugin.google.maps.HtmlInfoWindow',
-  repo: ''
+ plugin: 'cordova-plugin-googlemaps',
+ pluginName: 'GoogleMaps',
+ pluginRef: 'plugin.google.maps.HtmlInfoWindow',
+ repo: ''
 })
-export class HtmlInfoWindow extends BaseClass {
+export class HtmlInfoWindow<T> extends IonicNativePlugin {
+  private _objectInstance: any;
 
-  constructor() {
-    super();
-    if (checkAvailability(HtmlInfoWindow.getPluginRef(), null, HtmlInfoWindow.getPluginName()) === true) {
-      this._objectInstance = new (GoogleMaps.getPlugin().HtmlInfoWindow())();
-    }
+  constructor(initialData: T[]) {
+   super();
+   if (checkAvailability(HtmlInfoWindow.getPluginRef(), null, HtmlInfoWindow.getPluginName()) === true) {
+     this._objectInstance = new (HtmlInfoWindow.getPlugin())(initialData);
+   }
   }
 
   /**
