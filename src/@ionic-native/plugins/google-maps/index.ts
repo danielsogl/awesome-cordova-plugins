@@ -388,7 +388,6 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * } from '@ionic-native/google-maps';
  * import { Component } from "@angular/core/";
  *
- * import { Platform } from 'ionic-angular';
  * @Component({
  *   selector: 'page-home',
  *   templateUrl: 'home.html'
@@ -396,18 +395,11 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * export class HomePage {
  *   map: GoogleMap;
  *   mapElement: HTMLElement;
- *   constructor(private googleMaps: GoogleMaps, public platform: Platform) {
+ *   constructor(private googleMaps: GoogleMaps) { }
  *
- *     // Wait the native plugin is ready.
- *     platform.ready().then(() => {
- *       this.loadMap();
- *     });
+ *   ionViewDidLoad() {
+ *    this.loadMap();
  *   }
- *
- *   // Don't use the ngAfterViewInit(). The native plugin is not ready.
- *   //ngAfterViewInit() {
- *   // this.loadMap();
- *   //}
  *
  *  loadMap() {
  *     this.mapElement = document.getElementById('map');
