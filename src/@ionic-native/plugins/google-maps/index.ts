@@ -1609,12 +1609,11 @@ export class GroundOverlay extends BaseClass {
   repo: ''
 })
 export class HtmlInfoWindow extends BaseClass {
- private _objectInstance: any;
 
   constructor() {
     super();
     if (checkAvailability(HtmlInfoWindow.getPluginRef(), null, HtmlInfoWindow.getPluginName()) === true) {
-      this._objectInstance = new (HtmlInfoWindow.getPlugin())();
+      this._objectInstance = new (GoogleMaps.getPlugin().HtmlInfoWindow())();
     }
   }
 
