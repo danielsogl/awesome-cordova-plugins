@@ -1603,10 +1603,10 @@ export class GroundOverlay extends BaseClass {
 export class HtmlInfoWindow<T> extends IonicNativePlugin {
   private _objectInstance: any;
 
-  constructor(initialData: T[]) {
+  constructor() {
    super();
    if (checkAvailability(HtmlInfoWindow.getPluginRef(), null, HtmlInfoWindow.getPluginName()) === true) {
-     this._objectInstance = new (HtmlInfoWindow.getPlugin())(initialData);
+     this._objectInstance = new (HtmlInfoWindow.getPlugin())();
    }
   }
 
@@ -1731,6 +1731,13 @@ export class Marker extends BaseClass {
     this._map = _map;
     this._objectInstance = _objectInstance;
   }
+
+  /**
+   * Return the ID of instance.
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getId(): number { return; }
 
   /**
    * Return the map instance.
