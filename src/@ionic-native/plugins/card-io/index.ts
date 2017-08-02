@@ -133,6 +133,11 @@ export interface CardIOResponse {
  * @name Card IO
  * @description
  * @usage
+ * Note: For use with iOS 10 + When building your app with the iOS 10 SDK +, you have to add some info to the info.plist file. This is due to increased security in iOS 10. Go to your app directory and search for the <your app name>Info.plist file. Add the following lines in the main <dict> element.
+ * ```xml
+ *<key>NSCameraUsageDescription</key>
+ *<string>To scan credit cards.</string>
+ *```
  * ```typescript
  * import { CardIO } from '@ionic-native/card-io';
  *
@@ -147,7 +152,7 @@ export interface CardIOResponse {
  *       if(res){
  *         let options = {
  *           requireExpiry: true,
- *           requireCCV: false,
+ *           requireCVV: false,
  *           requirePostalCode: false
  *         };
  *         CardIO.scan(options);
