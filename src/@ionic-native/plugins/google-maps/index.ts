@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaInstance, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
+/* import { Observer } from 'rxjs/Observer'; */
 import 'rxjs/add/observable/fromEvent';
 
 
@@ -546,6 +546,91 @@ export class GoogleMaps extends IonicNativePlugin {
 
 /**
  * @hidden
+ * https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.0.0/class/BaseClass/README.md
+ */
+export class BaseClass {
+  protected _objectInstance: any;
+
+  /**
+   * Adds an event listener.
+   *
+   * @return {Observable<any>}
+   */
+  @InstanceCheck()
+  addEventListener(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Adds an event listener that works once.
+   *
+   * @return {Promise<any>}
+   */
+  @InstanceCheck()
+  addListenerOnce(eventName: string): Promise<any> {
+    return new Promise<any>(resolve => this._objectInstance.addListenerOnce(eventName, resolve));
+  }
+
+  /**
+   * Gets a value
+   * @param key
+   */
+  @CordovaInstance({ sync: true })
+  get(key: string): any { return; }
+
+  /**
+   * Sets a value
+   * @param key
+   * @param value
+   */
+  @CordovaInstance({ sync: true })
+  set(key: string, value: any): void { }
+
+  /**
+   * Bind a key to another object
+   * @param key {string}
+   * @param target {any}
+   * @param targetKey? {string}
+   * @param noNotify? {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  bindTo(key: string, target: any, targetKey: string, noNotify: boolean): void { }
+
+  /**
+   * Listen to a map event.
+   *
+   * @return {Observable<any>}
+   */
+  @InstanceCheck({ observable: true })
+  on(eventName: string): Observable<any> {
+    return Observable.fromEvent(this._objectInstance, eventName);
+  }
+
+  /**
+   * Listen to a map event only once.
+   *
+   * @return {Promise<any>}
+   */
+  @InstanceCheck()
+  one(eventName: string): Promise<any> {
+    return new Promise<any>(resolve => this._objectInstance.one(eventName, resolve));
+  }
+
+  /**
+   * Clears all stored values
+   */
+  @CordovaInstance({ sync: true })
+  empty(): void { }
+
+  /**
+   * Dispatch event.
+   */
+  @CordovaInstance({ sync: true })
+  trigger(eventName: string, ...parameters: any[]): void {}
+}
+
+/**
+ * @hidden
  * https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.0.0/class/BaseArrayClass/README.md
  */
 @Plugin({
@@ -554,27 +639,13 @@ export class GoogleMaps extends IonicNativePlugin {
   pluginRef: 'plugin.google.maps.BaseArrayClass',
   repo: ''
 })
-export class BaseArrayClass<T> extends IonicNativePlugin {
-  private _objectInstance: any;
+export class BaseArrayClass<T> extends BaseClass {
+  /* private _objectInstance: any; */
+
 
   constructor(initialData: T[]) {
     super();
-    if (checkAvailability(BaseArrayClass.getPluginRef(), null, BaseArrayClass.getPluginName()) === true) {
-      this._objectInstance = new (BaseArrayClass.getPlugin())(initialData);
-    }
-  }
-
-  /**
-   * Add an event listener
-   * @param event {string} name of the event. Can be `insert_at`, `remove_at`, `set_at`, or `finish`.
-   * @return {Observable<any>} returns an Observable
-   */
-  @InstanceCheck({ observable: true })
-  on(event: 'insert_at' | 'remove_at' | 'set_at' | 'finish') {
-    return new Observable<any>((observer: Observer<any>) => {
-      this._objectInstance.on(event, observer.next.bind(observer));
-      return () => this._objectInstance.off(event, observer.next.bind(observer));
-    });
+    this._objectInstance = GoogleMaps.getPlugin().BaseArrayClass(initialData);
   }
 
   /**
@@ -695,91 +766,6 @@ export class BaseArrayClass<T> extends IonicNativePlugin {
    */
   @CordovaInstance({ sync: true })
   setAt(index: number, element: T, noNotify?: boolean): void {}
-}
-
-/**
- * @hidden
- * https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.0.0/class/BaseClass/README.md
- */
-export class BaseClass {
-  protected _objectInstance: any;
-
-  /**
-   * Adds an event listener.
-   *
-   * @return {Observable<any>}
-   */
-  @InstanceCheck()
-  addEventListener(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
-  }
-
-  /**
-   * Adds an event listener that works once.
-   *
-   * @return {Promise<any>}
-   */
-  @InstanceCheck()
-  addListenerOnce(eventName: string): Promise<any> {
-    return new Promise<any>(resolve => this._objectInstance.addListenerOnce(eventName, resolve));
-  }
-
-  /**
-   * Gets a value
-   * @param key
-   */
-  @CordovaInstance({ sync: true })
-  get(key: string): any { return; }
-
-  /**
-   * Sets a value
-   * @param key
-   * @param value
-   */
-  @CordovaInstance({ sync: true })
-  set(key: string, value: any): void { }
-
-  /**
-   * Bind a key to another object
-   * @param key {string}
-   * @param target {any}
-   * @param targetKey? {string}
-   * @param noNotify? {boolean}
-   */
-  @CordovaInstance({ sync: true })
-  bindTo(key: string, target: any, targetKey: string, noNotify: boolean): void { }
-
-  /**
-   * Listen to a map event.
-   *
-   * @return {Observable<any>}
-   */
-  @InstanceCheck({ observable: true })
-  on(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
-  }
-
-  /**
-   * Listen to a map event only once.
-   *
-   * @return {Promise<any>}
-   */
-  @InstanceCheck()
-  one(eventName: string): Promise<any> {
-    return new Promise<any>(resolve => this._objectInstance.one(eventName, resolve));
-  }
-
-  /**
-   * Clears all stored values
-   */
-  @CordovaInstance({ sync: true })
-  empty(): void { }
-
-  /**
-   * Dispatch event.
-   */
-  @CordovaInstance({ sync: true })
-  trigger(eventName: string, ...parameters: any[]): void {}
 }
 
 /**
