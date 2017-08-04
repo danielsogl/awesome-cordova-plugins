@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaInstance, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-/* import { Observer } from 'rxjs/Observer'; */
 import 'rxjs/add/observable/fromEvent';
 
 
@@ -640,12 +639,14 @@ export class BaseClass {
   repo: ''
 })
 export class BaseArrayClass<T> extends BaseClass {
-  /* private _objectInstance: any; */
 
-
-  constructor(initialData: T[]) {
+  constructor(initialData?: any) {
     super();
-    this._objectInstance = GoogleMaps.getPlugin().BaseArrayClass(initialData);
+    if (initialData instanceof GoogleMaps.getPlugin().BaseArrayClass) {
+      this._objectInstance = initialData;
+    } else {
+      this._objectInstance = GoogleMaps.getPlugin().BaseArrayClass(initialData);
+    }
   }
 
   /**
