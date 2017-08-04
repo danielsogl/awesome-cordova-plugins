@@ -99,6 +99,10 @@ export interface AnimateCameraOptions {
    * Duration of camera animation in milli seconds
    */
   duration?: number;
+  /**
+   * Camera padding in pixel
+   */
+  padding?: number;
 }
 
 export interface CameraPosition {
