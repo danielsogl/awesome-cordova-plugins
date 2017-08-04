@@ -1700,7 +1700,7 @@ export class LatLngBounds {
   @InstanceProperty southwest: LatLng;
   @InstanceProperty type: string;
 
-  constructor(southwestOrArrayOfLatLng: LatLng | LatLng[], northeast?: LatLng) {
+  constructor(southwestOrArrayOfLatLng?: LatLng | LatLng[], northeast?: LatLng) {
     let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
     this._objectInstance = new (GoogleMaps.getPlugin()).LatLngBounds(args);
   }
