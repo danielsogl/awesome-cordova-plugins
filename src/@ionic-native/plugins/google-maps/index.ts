@@ -955,9 +955,9 @@ export class Geocoder {
   /**
    * Converts position to address and vice versa
    * @param {GeocoderRequest} request Request object with either an address or a position
-   * @return {Promise<GeocoderResult | BaseArrayClass<GeocoderResult>>}
+   * @return {Promise<GeocoderResult[] | BaseArrayClass<GeocoderResult>>}
    */
-  geocode(request: GeocoderRequest): Promise<GeocoderResult | BaseArrayClass<GeocoderResult>> {
+  geocode(request: GeocoderRequest): Promise<GeocoderResult[] | BaseArrayClass<GeocoderResult>> {
 
     if (request.address instanceof Array || Array.isArray(request.address) ||
         request.position instanceof Array || Array.isArray(request.position)) {
@@ -970,9 +970,9 @@ export class Geocoder {
       // })
       // -------------------------
       return new Promise<BaseArrayClass<GeocoderResult>>((resolve, reject) => {
-        GoogleMaps.getPlugin().Geocoder.geocode(request, (result: any) => {
-          if (result) {
-            resolve(new BaseArrayClass(result));
+        GoogleMaps.getPlugin().Geocoder.geocode(request, (mvcArray: any) => {
+          if (mvcArray) {
+            resolve(new BaseArrayClass(mvcArray));
           } else {
             reject();
           }
@@ -984,10 +984,10 @@ export class Geocoder {
       //   address: "Kyoto, Japan"
       // })
       // -------------------------
-      return new Promise<GeocoderResult>((resolve, reject) => {
-        GoogleMaps.getPlugin().Geocoder.geocode(request, (result: GeocoderResult) => {
-          if (result) {
-            resolve(result);
+      return new Promise<GeocoderResult[]>((resolve, reject) => {
+        GoogleMaps.getPlugin().Geocoder.geocode(request, (results: GeocoderResult[]) => {
+          if (results) {
+            resolve(results);
           } else {
             reject();
           }
