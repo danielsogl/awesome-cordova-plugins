@@ -640,7 +640,7 @@ export class BaseClass {
 })
 export class BaseArrayClass<T> extends BaseClass {
 
-  constructor(initialData?: any) {
+  constructor(initialData?: T[] | any) {
     super();
     if (initialData instanceof GoogleMaps.getPlugin().BaseArrayClass) {
       this._objectInstance = initialData;
