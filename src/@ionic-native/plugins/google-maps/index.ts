@@ -623,7 +623,7 @@ export class BaseClass {
    * Clears all stored values
    */
   @CordovaInstance({ sync: true })
-  empty(noNotify?: boolean): void { }
+  empty(): void { }
 
   /**
    * Dispatch event.
