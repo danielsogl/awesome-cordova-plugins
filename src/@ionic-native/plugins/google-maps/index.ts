@@ -583,7 +583,7 @@ export class BaseClass {
    * @param value
    */
   @CordovaInstance({ sync: true })
-  set(key: string, value: any): void { }
+  set(key: string, value: any, noNotify?: boolean): void { }
 
   /**
    * Bind a key to another object
@@ -593,7 +593,7 @@ export class BaseClass {
    * @param noNotify? {boolean}
    */
   @CordovaInstance({ sync: true })
-  bindTo(key: string, target: any, targetKey: string, noNotify: boolean): void { }
+  bindTo(key: string, target: any, targetKey?: string, noNotify?: boolean): void { }
 
   /**
    * Listen to a map event.
@@ -619,7 +619,7 @@ export class BaseClass {
    * Clears all stored values
    */
   @CordovaInstance({ sync: true })
-  empty(): void { }
+  empty(noNotify?: boolean): void { }
 
   /**
    * Dispatch event.
