@@ -22,6 +22,7 @@ module.exports = function jekyll(renderDocsProcessor) {
         doc.URL = doc.outputPath.replace('docs//', 'docs/')
           .replace('/index.md', '')
           .replace('content/', '');
+        doc.URL = doc.URL+'/'; // add trailing slash
       });
 
       const betaDocs = [];
