@@ -325,7 +325,7 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
         p.catch(() => { });
         typeof rej === 'function' && rej(pluginResult.error);
       }
-      return p
+      return p;
 
 
     }
