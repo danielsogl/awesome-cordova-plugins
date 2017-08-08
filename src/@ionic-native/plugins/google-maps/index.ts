@@ -571,20 +571,16 @@ export class BaseClass {
    *
    * @return {Observable<any>}
    */
-  @InstanceCheck()
-  addEventListener(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
-  }
+  @CordovaInstance({ destruct: true, observable: true })
+  addEventListener(eventName: string): Observable<any> { return; }
 
   /**
    * Adds an event listener that works once.
    *
    * @return {Promise<any>}
    */
-  @InstanceCheck()
-  addListenerOnce(eventName: string): Promise<any> {
-    return new Promise<any>(resolve => this._objectInstance.addListenerOnce(eventName, resolve));
-  }
+  @CordovaInstance({ destruct: true })
+  addListenerOnce(eventName: string): Promise<any> { return; }
 
   /**
    * Gets a value
@@ -616,22 +612,16 @@ export class BaseClass {
    *
    * @return {Observable<any>}
    */
-  @InstanceCheck({ observable: true })
-  on(eventName: string): Observable<any> {
-    return Observable.fromEvent(this._objectInstance, eventName);
-  }
+  @CordovaInstance({ destruct: true, observable: true })
+  on(eventName: string): Observable<any> { return; }
 
   /**
    * Listen to a map event only once.
    *
    * @return {Promise<any>}
    */
-  @CordovaInstance({
-    destruct: true
-  })
-  one(eventName: string): Promise<any> {
-    return;
-  }
+  @CordovaInstance({ destruct: true })
+  one(eventName: string): Promise<any> { return; }
 
   /**
    * Clears all stored values

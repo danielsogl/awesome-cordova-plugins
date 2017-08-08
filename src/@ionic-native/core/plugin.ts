@@ -277,7 +277,14 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
     } else if (opts.observable) {
 
       return new Observable(observer => {
-        let pluginResult = callInstance(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+
+        let pluginResult;
+
+        if (opts.destruct) {
+          pluginResult = callInstance(pluginObj, methodName, args, opts, function(){ observer.next(arguments); }, function(){ observer.next(arguments); });
+        } else {
+          pluginResult = callInstance(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+        }
 
         if (pluginResult && pluginResult.error) {
           observer.error(pluginResult.error);
