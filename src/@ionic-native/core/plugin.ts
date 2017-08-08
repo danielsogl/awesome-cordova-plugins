@@ -136,7 +136,11 @@ function callCordovaPlugin(pluginObj: any, methodName: string, args: any[], opts
 function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
   let pluginResult: any, rej: Function;
   const p = getPromise((resolve: Function, reject: Function) => {
-    pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
+    if (opts.destruct) {
+      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, function(){ resolve(arguments); }, function(){ reject(arguments); });
+    } else {
+      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
+    }
     rej = reject;
   });
   // Angular throws an error on unhandled rejection, but in this case we have already printed
@@ -166,7 +170,14 @@ function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts:
 
 function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
   return new Observable(observer => {
-    let pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+    let pluginResult;
+
+    if (opts.destruct) {
+      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, function(){ observer.next(arguments); }, function(){ observer.next(arguments); });
+    } else {
+      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+    }
+
     if (pluginResult && pluginResult.error) {
       observer.error(pluginResult.error);
       observer.complete();
@@ -298,8 +309,24 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
       });
 
     } else {
+      let pluginResult: any, rej: Function;
+      const p = getPromise((resolve: Function, reject: Function) => {
+        if (opts.destruct) {
+          pluginResult = callInstance(pluginObj, methodName, args, opts, function(){ resolve(arguments); }, function(){ reject(arguments); });
+        } else {
+          pluginResult = callInstance(pluginObj, methodName, args, opts, resolve, reject);
+        }
+        rej = reject;
+      });
+      // Angular throws an error on unhandled rejection, but in this case we have already printed
+      // a warning that Cordova is undefined or the plugin is uninstalled, so there is no reason
+      // to error
+      if (pluginResult && pluginResult.error) {
+        p.catch(() => { });
+        typeof rej === 'function' && rej(pluginResult.error);
+      }
+      return p
 
-      return getPromise((resolve: Function, reject: Function) => callInstance(pluginObj, methodName, args, opts, resolve, reject));
 
     }
   };

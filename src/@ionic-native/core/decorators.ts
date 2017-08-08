@@ -37,6 +37,7 @@ export interface PluginConfig {
 }
 
 export interface CordovaOptions {
+  destruct?: boolean;
   /**
    * Set to true if the wrapped method is a sync function
    */

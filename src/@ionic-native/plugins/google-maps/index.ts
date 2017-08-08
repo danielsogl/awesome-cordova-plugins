@@ -551,6 +551,12 @@ export class GoogleMaps extends IonicNativePlugin {
  * @hidden
  * https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.0.0/class/BaseClass/README.md
  */
+@Plugin({
+  plugin: 'cordova-plugin-googlemaps',
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.BaseClass',
+  repo: ''
+})
 export class BaseClass {
   protected _objectInstance: any;
 
@@ -614,9 +620,11 @@ export class BaseClass {
    *
    * @return {Promise<any>}
    */
-  @InstanceCheck()
+  @CordovaInstance({
+    destruct: true
+  })
   one(eventName: string): Promise<any> {
-    return new Promise<any>(resolve => this._objectInstance.one(eventName, resolve));
+    return;
   }
 
   /**
