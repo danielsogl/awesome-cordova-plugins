@@ -305,9 +305,13 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
       });
 
     } else if (opts.otherPromise) {
-
       return getPromise((resolve: Function, reject: Function) => {
-        let result = callInstance(pluginObj, methodName, args, opts, resolve, reject);
+        let result;
+        if (opts.destruct) {
+          result = callInstance(pluginObj, methodName, args, opts, function(){ resolve(arguments); }, function(){ reject(arguments); });
+        } else {
+          result = callInstance(pluginObj, methodName, args, opts, resolve, reject);
+        }
         if (result && !!result.then) {
           result.then(resolve, reject);
         } else {
