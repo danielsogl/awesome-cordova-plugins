@@ -15,7 +15,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  * this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818)
- *   .then((result: NativeGeocoderReverseResult) => console.log('The address is ' + result.street + ' in ' + result.countryCode))
+ *   .then((result: NativeGeocoderReverseResult) => console.log('The address is ' + result.thoroughfare + ' in ' + result.countryCode))
  *   .catch((error: any) => console.log(error));
  *
  * this.nativeGeocoder.forwardGeocode('Berlin')
@@ -64,25 +64,33 @@ export class NativeGeocoder extends IonicNativePlugin {
  */
 export interface NativeGeocoderReverseResult {
   /**
-   * The street.
+   * The street or thoroughfare.
    */
-  street: string;
+  thoroughfare: string;
   /**
-   * The house number.
+   * subThoroughfare unit eg: The house number.
    */
-  houseNumber: string;
+  subThoroughfare: string;
   /**
    * The postal code.
    */
   postalCode: string;
   /**
-   * The city.
+   * locality (The city).
    */
-  city: string;
+  locality: string;
   /**
-   * The district.
+   * subLocality (The district).
    */
-  district: string;
+  subLocality: string;
+  /**
+   * administrativeArea (State/Province).
+   */
+  administrativeArea: string;
+   /**
+   * subAdministrativeArea (County).
+   */
+  subAdministrativeArea: string;
   /**
    * The country name.
    */
