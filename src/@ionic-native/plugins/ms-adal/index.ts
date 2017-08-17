@@ -137,7 +137,7 @@ export class AuthenticationContext {
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId: string, extraQueryParameters?: any): Promise<AuthenticationResult> { return; }
+  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any): Promise<AuthenticationResult> { return; }
 
   /**
    * Acquires token WITHOUT using interactive flow. It checks the cache to return existing result
@@ -152,6 +152,6 @@ export class AuthenticationContext {
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenSilentAsync(resourceUrl: string, clientId: string, userId: string): Promise<AuthenticationResult> { return; }
+  acquireTokenSilentAsync(resourceUrl: string, clientId: string, userId?: string): Promise<AuthenticationResult> { return; }
 
 }
