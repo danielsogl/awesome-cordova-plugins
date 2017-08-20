@@ -55,8 +55,8 @@ export interface TwitterConnectResponse {
   pluginName: 'TwitterConnect',
   plugin: 'twitter-connect-plugin',
   pluginRef: 'TwitterConnect',
-  repo: 'https://github.com/ManifestWebDesign/twitter-connect-plugin',
-  install: 'ionic cordova plugin add twitter-connect-plugin --variable FABRIC_KEY=fabric_API_key',
+  repo: 'https://github.com/chroa/twitter-connect-plugin',
+  install: 'ionic cordova plugin add https://github.com/chroa/twitter-connect-plugin --variable FABRIC_KEY=<Fabric API Key> --variable TWITTER_KEY=<Twitter Consumer Key> --variable TWITTER_SECRET=<Twitter Consumer Secret>',
   installVariables: ['FABRIC_KEY'],
   platforms: ['Android', 'iOS']
 })
