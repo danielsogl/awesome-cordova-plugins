@@ -52,7 +52,7 @@ export interface SignedInResponse {
 }
 
 export interface Player {
-  
+
   /**
    * The players display name.
    */
