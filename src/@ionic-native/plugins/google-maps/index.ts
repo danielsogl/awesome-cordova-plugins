@@ -420,7 +420,7 @@ export class VisibleRegion implements ILatLngBounds {
   @InstanceProperty nearRight: ILatLng;
   @InstanceProperty type: string;
 
-  constructor(southwest: LatLngBounds, northeast: LatLngBounds, farLeft:ILatLng, farRight:ILatLng, nearLeft:ILatLng, nearRight:ILatLng) {
+  constructor(southwest: LatLngBounds, northeast: LatLngBounds, farLeft: ILatLng, farRight: ILatLng, nearLeft: ILatLng, nearRight: ILatLng) {
     this._objectInstance = new (GoogleMaps.getPlugin()).VisibleRegion(southwest, northeast, farLeft, farRight, nearLeft, nearRight);
   }
 
@@ -1423,7 +1423,7 @@ export class GoogleMap extends BaseClass {
    * Remove all overlays, such as marker
    * @return {Promise<any>}
    */
-  @CordovaInstance({ sync: true })
+  @CordovaInstance()
   clear(): Promise<any> { return; }
 
   /**

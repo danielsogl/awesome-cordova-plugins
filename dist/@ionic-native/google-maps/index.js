@@ -18,7 +18,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, Plugin, InstanceCheck, InstanceProperty, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaInstance, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 /**
@@ -1683,7 +1683,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], GoogleMap.prototype, "remove", null);
 __decorate([
-    CordovaInstance({ sync: true }),
+    CordovaInstance(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
