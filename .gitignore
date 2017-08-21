@@ -4,3 +4,4 @@ node_modules/
 .tmp
 aot/
 scripts/ionic-native-bower
+dist/
