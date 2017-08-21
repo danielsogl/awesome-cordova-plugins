@@ -321,8 +321,12 @@ export interface TileOverlayOptions {
 }
 
 export interface VisibleRegion {
-  northeast?: any;
-  southwest?: any;
+  northeast: LatLngBounds;
+  southwest: LatLngBounds;
+  farLeft: LatLng;
+  farRight: LatLng;
+  nearLeft: LatLng;
+  nearRight: LatLng;
 }
 
 /**
