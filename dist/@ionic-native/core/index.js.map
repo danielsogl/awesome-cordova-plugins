@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/@ionic-native/core/index.ts"],"names":[],"mappings":"AAAA,cAAc,UAAU,CAAC;AACzB,cAAc,cAAc,CAAC;AAC7B,cAAc,QAAQ,CAAC;AACvB,cAAc,uBAAuB,CAAC","file":"index.js","sourceRoot":"","sourcesContent":["export * from './plugin';\nexport * from './decorators';\nexport * from './util';\nexport * from './ionic-native-plugin';\n"]}
