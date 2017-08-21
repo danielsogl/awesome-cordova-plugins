@@ -1016,7 +1016,7 @@ export declare class GoogleMap extends BaseClass {
      * Convert the unit from LatLng to the pixels from the left/top of the map div
      * @return {Promise<any>}
      */
-    fromLatLngToPoint(latLng: ILatLng): Promise<any>;
+    fromLatLngToPoint(latLng: ILatLng): Promise<any[]>;
     /**
      * Convert the unit from the pixels from the left/top to the LatLng
      * @return {Promise<LatLng>}
