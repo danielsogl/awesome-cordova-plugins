@@ -2,6 +2,57 @@ import { IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 export declare type MapType = 'MAP_TYPE_NORMAL' | 'MAP_TYPE_ROADMAP' | 'MAP_TYPE_SATELLITE' | 'MAP_TYPE_HYBRID' | 'MAP_TYPE_TERRAIN' | 'MAP_TYPE_NONE';
+/**
+ * @hidden
+ */
+export declare class LatLng implements ILatLng {
+    lat: number;
+    lng: number;
+    constructor(lat: number, lng: number);
+    equals(other: ILatLng): boolean;
+    toString(): string;
+    toUrlValue(precision?: number): string;
+}
+export interface ILatLngBounds {
+    northeast: ILatLng;
+    southwest: ILatLng;
+}
+/**
+ * @hidden
+ */
+export declare class LatLngBounds implements ILatLngBounds {
+    private _objectInstance;
+    northeast: ILatLng;
+    southwest: ILatLng;
+    type: string;
+    constructor(points?: ILatLng[]);
+    /**
+     * Converts to string
+     * @return {string}
+     */
+    toString(): string;
+    /**
+     * Returns a string of the form "lat_sw,lng_sw,lat_ne,lng_ne" for this bounds, where "sw" corresponds to the southwest corner of the bounding box, while "ne" corresponds to the northeast corner of that box.
+     * @param precision {number}
+     * @return {string}
+     */
+    toUrlValue(precision?: number): string;
+    /**
+     * Extends this bounds to contain the given point.
+     * @param LatLng {ILatLng}
+     */
+    extend(LatLng: ILatLng): void;
+    /**
+     * Returns true if the given lat/lng is in this bounds.
+     * @param LatLng {ILatLng}
+     */
+    contains(LatLng: ILatLng): boolean;
+    /**
+     * Computes the center of this LatLngBounds
+     * @return {LatLng}
+     */
+    getCenter(): LatLng;
+}
 export interface GoogleMapOptions {
     mapType?: MapType;
     controls?: {
@@ -262,7 +313,7 @@ export interface PolygonOptions {
     fillColor?: string;
     visible?: boolean;
     zIndex?: number;
-    addHole?: Array<LatLng>;
+    addHole?: Array<Array<LatLng>>;
 }
 export interface PolylineOptions {
     points?: Array<ILatLng>;
@@ -279,13 +330,35 @@ export interface TileOverlayOptions {
     tileSize?: number;
     opacity?: number;
 }
-export interface VisibleRegion {
-    northeast: LatLngBounds;
-    southwest: LatLngBounds;
-    farLeft: LatLng;
-    farRight: LatLng;
-    nearLeft: LatLng;
-    nearRight: LatLng;
+/**
+ * @hidden
+ */
+export declare class VisibleRegion implements ILatLngBounds {
+    private _objectInstance;
+    northeast: ILatLng;
+    southwest: ILatLng;
+    farLeft: ILatLng;
+    farRight: ILatLng;
+    nearLeft: ILatLng;
+    nearRight: ILatLng;
+    type: string;
+    constructor(southwest: LatLngBounds, northeast: LatLngBounds, farLeft: ILatLng, farRight: ILatLng, nearLeft: ILatLng, nearRight: ILatLng);
+    /**
+     * Converts to string
+     * @return {string}
+     */
+    toString(): string;
+    /**
+     * Returns a string of the form "lat_sw,lng_sw,lat_ne,lng_ne" for this bounds, where "sw" corresponds to the southwest corner of the bounding box, while "ne" corresponds to the northeast corner of that box.
+     * @param precision {number}
+     * @return {string}
+     */
+    toUrlValue(precision?: number): string;
+    /**
+     * Returns true if the given lat/lng is in this bounds.
+     * @param LatLng {ILatLng}
+     */
+    contains(LatLng: ILatLng): boolean;
 }
 /**
  * @hidden
@@ -1135,53 +1208,6 @@ export declare class HtmlInfoWindow<T> extends IonicNativePlugin {
      * Close the htmlInfoWindow
      */
     close(): void;
-}
-/**
- * @hidden
- */
-export declare class LatLng implements ILatLng {
-    lat: number;
-    lng: number;
-    constructor(lat: number, lng: number);
-    equals(other: ILatLng): boolean;
-    toString(): string;
-    toUrlValue(precision?: number): string;
-}
-/**
- * @hidden
- */
-export declare class LatLngBounds {
-    private _objectInstance;
-    northeast: LatLng;
-    southwest: LatLng;
-    type: string;
-    constructor(southwestOrArrayOfLatLng?: LatLng | LatLng[], northeast?: LatLng);
-    /**
-     * Converts to string
-     * @return {string}
-     */
-    toString(): string;
-    /**
-     * Returns a string of the form "lat_sw,lng_sw,lat_ne,lng_ne" for this bounds, where "sw" corresponds to the southwest corner of the bounding box, while "ne" corresponds to the northeast corner of that box.
-     * @param precision {number}
-     * @return {string}
-     */
-    toUrlValue(precision?: number): string;
-    /**
-     * Extends this bounds to contain the given point.
-     * @param LatLng {ILatLng}
-     */
-    extend(LatLng: ILatLng): void;
-    /**
-     * Returns true if the given lat/lng is in this bounds.
-     * @param LatLng {ILatLng}
-     */
-    contains(LatLng: ILatLng): boolean;
-    /**
-     * Computes the center of this LatLngBounds
-     * @return {LatLng}
-     */
-    getCenter(): LatLng;
 }
 /**
  * @hidden

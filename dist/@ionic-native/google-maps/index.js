@@ -18,9 +18,180 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaInstance, Plugin, InstanceCheck, InstanceProperty, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
+/**
+ * @hidden
+ */
+var LatLng = (function () {
+    function LatLng(lat, lng) {
+        this.lat = lat;
+        this.lng = lng;
+    }
+    LatLng.prototype.equals = function (other) {
+        return this.lat === other.lat && this.lng === other.lng;
+    };
+    LatLng.prototype.toString = function () {
+        return this.lat + ',' + this.lng;
+    };
+    LatLng.prototype.toUrlValue = function (precision) {
+        precision = precision || 6;
+        return this.lat.toFixed(precision) + ',' + this.lng.toFixed(precision);
+    };
+    return LatLng;
+}());
+export { LatLng };
+/**
+ * @hidden
+ */
+var LatLngBounds = (function () {
+    function LatLngBounds(points) {
+        this._objectInstance = new (GoogleMaps.getPlugin()).LatLngBounds(points);
+    }
+    /**
+     * Converts to string
+     * @return {string}
+     */
+    LatLngBounds.prototype.toString = function () { return; };
+    /**
+     * Returns a string of the form "lat_sw,lng_sw,lat_ne,lng_ne" for this bounds, where "sw" corresponds to the southwest corner of the bounding box, while "ne" corresponds to the northeast corner of that box.
+     * @param precision {number}
+     * @return {string}
+     */
+    LatLngBounds.prototype.toUrlValue = function (precision) { return; };
+    /**
+     * Extends this bounds to contain the given point.
+     * @param LatLng {ILatLng}
+     */
+    LatLngBounds.prototype.extend = function (LatLng) { };
+    /**
+     * Returns true if the given lat/lng is in this bounds.
+     * @param LatLng {ILatLng}
+     */
+    LatLngBounds.prototype.contains = function (LatLng) { return; };
+    /**
+     * Computes the center of this LatLngBounds
+     * @return {LatLng}
+     */
+    LatLngBounds.prototype.getCenter = function () { return; };
+    return LatLngBounds;
+}());
+export { LatLngBounds };
+__decorate([
+    InstanceProperty,
+    __metadata("design:type", Object)
+], LatLngBounds.prototype, "northeast", void 0);
+__decorate([
+    InstanceProperty,
+    __metadata("design:type", Object)
+], LatLngBounds.prototype, "southwest", void 0);
+__decorate([
+    InstanceProperty,
+    __metadata("design:type", String)
+], LatLngBounds.prototype, "type", void 0);
+__decorate([
+    CordovaInstance({ sync: true }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], LatLngBounds.prototype, "toString", null);
+__decorate([
+    CordovaInstance({ sync: true }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", String)
+], LatLngBounds.prototype, "toUrlValue", null);
+__decorate([
+    CordovaInstance({ sync: true }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], LatLngBounds.prototype, "extend", null);
+__decorate([
+    CordovaInstance({ sync: true }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Boolean)
+], LatLngBounds.prototype, "contains", null);
+__decorate([
+    CordovaInstance({ sync: true }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", LatLng)
+], LatLngBounds.prototype, "getCenter", null);
+/**
+ * @hidden
+ */
+var VisibleRegion = (function () {
+    function VisibleRegion(southwest, northeast, farLeft, farRight, nearLeft, nearRight) {
+        this._objectInstance = new (GoogleMaps.getPlugin()).VisibleRegion(southwest, northeast, farLeft, farRight, nearLeft, nearRight);
+    }
+    /**
+     * Converts to string
+     * @return {string}
+     */
+    VisibleRegion.prototype.toString = function () { return; };
+    /**
+     * Returns a string of the form "lat_sw,lng_sw,lat_ne,lng_ne" for this bounds, where "sw" corresponds to the southwest corner of the bounding box, while "ne" corresponds to the northeast corner of that box.
+     * @param precision {number}
+     * @return {string}
+     */
+    VisibleRegion.prototype.toUrlValue = function (precision) { return; };
+    /**
+     * Returns true if the given lat/lng is in this bounds.
+     * @param LatLng {ILatLng}
+     */
+    VisibleRegion.prototype.contains = function (LatLng) { return; };
+    return VisibleRegion;
+}());
+export { VisibleRegion };
+__decorate([
+    InstanceProperty,
+    __metadata("design:type", Object)
+], VisibleRegion.prototype, "northeast", void 0);
+__decorate([
+    InstanceProperty,
+    __metadata("design:type", Object)
+], VisibleRegion.prototype, "southwest", void 0);
+__decorate([
+    InstanceProperty,
+    __metadata("design:type", Object)
+], VisibleRegion.prototype, "farLeft", void 0);
+__decorate([
+    InstanceProperty,
+    __metadata("design:type", Object)
+], VisibleRegion.prototype, "farRight", void 0);
+__decorate([
+    InstanceProperty,
+    __metadata("design:type", Object)
+], VisibleRegion.prototype, "nearLeft", void 0);
+__decorate([
+    InstanceProperty,
+    __metadata("design:type", Object)
+], VisibleRegion.prototype, "nearRight", void 0);
+__decorate([
+    InstanceProperty,
+    __metadata("design:type", String)
+], VisibleRegion.prototype, "type", void 0);
+__decorate([
+    CordovaInstance({ sync: true }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], VisibleRegion.prototype, "toString", null);
+__decorate([
+    CordovaInstance({ sync: true }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", String)
+], VisibleRegion.prototype, "toUrlValue", null);
+__decorate([
+    CordovaInstance({ sync: true }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Boolean)
+], VisibleRegion.prototype, "contains", null);
 /**
  * @hidden
  * You can listen to these events where appropriate
@@ -1491,7 +1662,7 @@ __decorate([
     CordovaInstance({ sync: true }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Object)
+    __metadata("design:returntype", VisibleRegion)
 ], GoogleMap.prototype, "getVisibleRegion", null);
 __decorate([
     CordovaInstance(),
@@ -1867,106 +2038,6 @@ HtmlInfoWindow = HtmlInfoWindow_1 = __decorate([
     __metadata("design:paramtypes", [])
 ], HtmlInfoWindow);
 export { HtmlInfoWindow };
-/**
- * @hidden
- */
-var LatLng = (function () {
-    function LatLng(lat, lng) {
-        this.lat = lat;
-        this.lng = lng;
-    }
-    LatLng.prototype.equals = function (other) {
-        return this.lat === other.lat && this.lng === other.lng;
-    };
-    LatLng.prototype.toString = function () {
-        return this.lat + ',' + this.lng;
-    };
-    LatLng.prototype.toUrlValue = function (precision) {
-        precision = precision || 6;
-        return this.lat.toFixed(precision) + ',' + this.lng.toFixed(precision);
-    };
-    return LatLng;
-}());
-export { LatLng };
-/**
- * @hidden
- */
-var LatLngBounds = (function () {
-    function LatLngBounds(southwestOrArrayOfLatLng, northeast) {
-        var args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
-        this._objectInstance = new (GoogleMaps.getPlugin()).LatLngBounds(args);
-    }
-    /**
-     * Converts to string
-     * @return {string}
-     */
-    LatLngBounds.prototype.toString = function () { return; };
-    /**
-     * Returns a string of the form "lat_sw,lng_sw,lat_ne,lng_ne" for this bounds, where "sw" corresponds to the southwest corner of the bounding box, while "ne" corresponds to the northeast corner of that box.
-     * @param precision {number}
-     * @return {string}
-     */
-    LatLngBounds.prototype.toUrlValue = function (precision) { return; };
-    /**
-     * Extends this bounds to contain the given point.
-     * @param LatLng {ILatLng}
-     */
-    LatLngBounds.prototype.extend = function (LatLng) { };
-    /**
-     * Returns true if the given lat/lng is in this bounds.
-     * @param LatLng {ILatLng}
-     */
-    LatLngBounds.prototype.contains = function (LatLng) { return; };
-    /**
-     * Computes the center of this LatLngBounds
-     * @return {LatLng}
-     */
-    LatLngBounds.prototype.getCenter = function () { return; };
-    return LatLngBounds;
-}());
-export { LatLngBounds };
-__decorate([
-    InstanceProperty,
-    __metadata("design:type", LatLng)
-], LatLngBounds.prototype, "northeast", void 0);
-__decorate([
-    InstanceProperty,
-    __metadata("design:type", LatLng)
-], LatLngBounds.prototype, "southwest", void 0);
-__decorate([
-    InstanceProperty,
-    __metadata("design:type", String)
-], LatLngBounds.prototype, "type", void 0);
-__decorate([
-    CordovaInstance({ sync: true }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], LatLngBounds.prototype, "toString", null);
-__decorate([
-    CordovaInstance({ sync: true }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", String)
-], LatLngBounds.prototype, "toUrlValue", null);
-__decorate([
-    CordovaInstance({ sync: true }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], LatLngBounds.prototype, "extend", null);
-__decorate([
-    CordovaInstance({ sync: true }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Boolean)
-], LatLngBounds.prototype, "contains", null);
-__decorate([
-    CordovaInstance({ sync: true }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", LatLng)
-], LatLngBounds.prototype, "getCenter", null);
 /**
  * @hidden
  */

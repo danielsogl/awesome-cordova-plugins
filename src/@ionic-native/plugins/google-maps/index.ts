@@ -6,6 +6,91 @@ import 'rxjs/add/observable/fromEvent';
 
 export type MapType = 'MAP_TYPE_NORMAL' | 'MAP_TYPE_ROADMAP' | 'MAP_TYPE_SATELLITE' | 'MAP_TYPE_HYBRID' | 'MAP_TYPE_TERRAIN' | 'MAP_TYPE_NONE';
 
+/**
+ * @hidden
+ */
+export class LatLng implements ILatLng {
+
+  lat: number;
+  lng: number;
+
+  constructor(lat: number, lng: number) {
+    this.lat = lat;
+    this.lng = lng;
+  }
+
+  equals(other: ILatLng): boolean {
+    return this.lat === other.lat && this.lng === other.lng;
+  }
+
+  toString(): string {
+    return this.lat + ',' + this.lng;
+  }
+
+  toUrlValue(precision?: number): string {
+    precision = precision || 6;
+
+    return this.lat.toFixed(precision) + ',' + this.lng.toFixed(precision);
+  }
+}
+
+export interface ILatLngBounds {
+  northeast: ILatLng;
+  southwest: ILatLng;
+}
+
+/**
+ * @hidden
+ */
+export class LatLngBounds implements ILatLngBounds {
+
+  private _objectInstance: any;
+
+  @InstanceProperty northeast: ILatLng;
+  @InstanceProperty southwest: ILatLng;
+  @InstanceProperty type: string;
+
+  constructor(points?: ILatLng[]) {
+    this._objectInstance = new (GoogleMaps.getPlugin()).LatLngBounds(points);
+  }
+
+  /**
+   * Converts to string
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  toString(): string { return; }
+
+  /**
+   * Returns a string of the form "lat_sw,lng_sw,lat_ne,lng_ne" for this bounds, where "sw" corresponds to the southwest corner of the bounding box, while "ne" corresponds to the northeast corner of that box.
+   * @param precision {number}
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  toUrlValue(precision?: number): string { return; }
+
+  /**
+   * Extends this bounds to contain the given point.
+   * @param LatLng {ILatLng}
+   */
+  @CordovaInstance({ sync: true })
+  extend(LatLng: ILatLng): void {}
+
+  /**
+   * Returns true if the given lat/lng is in this bounds.
+   * @param LatLng {ILatLng}
+   */
+  @CordovaInstance({ sync: true })
+  contains(LatLng: ILatLng): boolean { return; }
+
+  /**
+   * Computes the center of this LatLngBounds
+   * @return {LatLng}
+   */
+  @CordovaInstance({ sync: true })
+  getCenter(): LatLng { return; }
+}
+
 export interface GoogleMapOptions {
 
   mapType?: MapType;
@@ -300,7 +385,7 @@ export interface PolygonOptions {
   fillColor?: string;
   visible?: boolean;
   zIndex?: number;
-  addHole?: Array<LatLng>;
+  addHole?: Array<Array<LatLng>>;
 }
 
 export interface PolylineOptions {
@@ -320,13 +405,48 @@ export interface TileOverlayOptions {
   opacity?: number;
 }
 
-export interface VisibleRegion {
-  northeast: LatLngBounds;
-  southwest: LatLngBounds;
-  farLeft: LatLng;
-  farRight: LatLng;
-  nearLeft: LatLng;
-  nearRight: LatLng;
+
+/**
+ * @hidden
+ */
+export class VisibleRegion implements ILatLngBounds {
+  private _objectInstance: any;
+
+  @InstanceProperty northeast: ILatLng;
+  @InstanceProperty southwest: ILatLng;
+  @InstanceProperty farLeft: ILatLng;
+  @InstanceProperty farRight: ILatLng;
+  @InstanceProperty nearLeft: ILatLng;
+  @InstanceProperty nearRight: ILatLng;
+  @InstanceProperty type: string;
+
+  constructor(southwest: LatLngBounds, northeast: LatLngBounds, farLeft:ILatLng, farRight:ILatLng, nearLeft:ILatLng, nearRight:ILatLng) {
+    this._objectInstance = new (GoogleMaps.getPlugin()).VisibleRegion(southwest, northeast, farLeft, farRight, nearLeft, nearRight);
+  }
+
+  /**
+   * Converts to string
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  toString(): string { return; }
+
+  /**
+   * Returns a string of the form "lat_sw,lng_sw,lat_ne,lng_ne" for this bounds, where "sw" corresponds to the southwest corner of the bounding box, while "ne" corresponds to the northeast corner of that box.
+   * @param precision {number}
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  toUrlValue(precision?: number): string { return; }
+
+
+  /**
+   * Returns true if the given lat/lng is in this bounds.
+   * @param LatLng {ILatLng}
+   */
+  @CordovaInstance({ sync: true })
+  contains(LatLng: ILatLng): boolean { return; }
+
 }
 
 /**
@@ -1674,85 +1794,6 @@ export class HtmlInfoWindow<T> extends IonicNativePlugin {
 
 }
 
-/**
- * @hidden
- */
-export class LatLng implements ILatLng {
-
-  lat: number;
-  lng: number;
-
-  constructor(lat: number, lng: number) {
-    this.lat = lat;
-    this.lng = lng;
-  }
-
-  equals(other: ILatLng): boolean {
-    return this.lat === other.lat && this.lng === other.lng;
-  }
-
-  toString(): string {
-    return this.lat + ',' + this.lng;
-  }
-
-  toUrlValue(precision?: number): string {
-    precision = precision || 6;
-
-    return this.lat.toFixed(precision) + ',' + this.lng.toFixed(precision);
-  }
-}
-
-/**
- * @hidden
- */
-export class LatLngBounds {
-  private _objectInstance: any;
-
-  @InstanceProperty northeast: LatLng;
-  @InstanceProperty southwest: LatLng;
-  @InstanceProperty type: string;
-
-  constructor(southwestOrArrayOfLatLng?: LatLng | LatLng[], northeast?: LatLng) {
-    let args = !!northeast ? [southwestOrArrayOfLatLng, northeast] : southwestOrArrayOfLatLng;
-    this._objectInstance = new (GoogleMaps.getPlugin()).LatLngBounds(args);
-  }
-
-  /**
-   * Converts to string
-   * @return {string}
-   */
-  @CordovaInstance({ sync: true })
-  toString(): string { return; }
-
-  /**
-   * Returns a string of the form "lat_sw,lng_sw,lat_ne,lng_ne" for this bounds, where "sw" corresponds to the southwest corner of the bounding box, while "ne" corresponds to the northeast corner of that box.
-   * @param precision {number}
-   * @return {string}
-   */
-  @CordovaInstance({ sync: true })
-  toUrlValue(precision?: number): string { return; }
-
-  /**
-   * Extends this bounds to contain the given point.
-   * @param LatLng {ILatLng}
-   */
-  @CordovaInstance({ sync: true })
-  extend(LatLng: ILatLng): void {}
-
-  /**
-   * Returns true if the given lat/lng is in this bounds.
-   * @param LatLng {ILatLng}
-   */
-  @CordovaInstance({ sync: true })
-  contains(LatLng: ILatLng): boolean { return; }
-
-  /**
-   * Computes the center of this LatLngBounds
-   * @return {LatLng}
-   */
-  @CordovaInstance({ sync: true })
-  getCenter(): LatLng { return; }
-}
 
 /**
  * @hidden
