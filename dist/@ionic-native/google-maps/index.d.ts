@@ -869,7 +869,7 @@ export declare class GoogleMap extends BaseClass {
      * Get the current camera target position
      * @return {Promise<CameraPosition>}
      */
-    getCameraTarget(): Promise<CameraPosition>;
+    getCameraTarget(): ILatLng;
     /**
      * Get the current camera zoom level
      * @return {number}

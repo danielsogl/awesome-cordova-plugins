@@ -1434,10 +1434,10 @@ __decorate([
     __metadata("design:returntype", Object)
 ], GoogleMap.prototype, "getCameraPosition", null);
 __decorate([
-    CordovaInstance(),
+    CordovaInstance({ sync: true }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", Object)
 ], GoogleMap.prototype, "getCameraTarget", null);
 __decorate([
     CordovaInstance({ sync: true }),

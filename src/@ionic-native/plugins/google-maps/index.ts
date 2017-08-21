@@ -1208,8 +1208,8 @@ export class GoogleMap extends BaseClass {
    * Get the current camera target position
    * @return {Promise<CameraPosition>}
    */
-  @CordovaInstance()
-  getCameraTarget(): Promise<CameraPosition> { return; }
+  @CordovaInstance({ sync: true })
+  getCameraTarget(): ILatLng { return; }
 
   /**
    * Get the current camera zoom level
