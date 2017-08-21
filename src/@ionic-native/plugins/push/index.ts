@@ -63,15 +63,9 @@ export interface NotificationEventAdditionalData {
 
 export interface IOSPushOptions {
   /**
-   * Maps to the project number in the Google Developer Console. Setting this
-   * uses GCM for notifications instead of native.
-   */
-  senderID?: string;
-
-  /**
    * Whether to use prod or sandbox GCM setting.
    */
-  gcmSandbox?: boolean | string;
+  fcmSandbox?: boolean | string;
 
   /**
    * If true the device shows an alert on receipt of notification.
@@ -138,11 +132,6 @@ export interface CategoryActionData {
 
 export interface AndroidPushOptions {
   /**
-   * Maps to the project number in the Google Developer Console.
-   */
-  senderID: string;
-
-  /**
    * The name of a drawable resource to use as the small-icon. The name should
    * not include the extension.
    */
@@ -186,6 +175,16 @@ export interface AndroidPushOptions {
    * subscribe to a GcmPubSub topic.
    */
   topics?: string[];
+
+  /**
+   * The key to search for text of notification.
+   */
+  messageKey?: string;
+
+  /**
+   * The key to search for title of notification.
+   */
+  titleKey?: string;
 }
 
 export interface BrowserPushOptions {
@@ -244,9 +243,7 @@ export type PushEvent = 'registration' | 'error' | 'notification';
  * // to initialize push notifications
  *
  * const options: PushOptions = {
- *    android: {
- *        senderID: '12345679'
- *    },
+ *    android: {},
  *    ios: {
  *        alert: 'true',
  *        badge: true,
@@ -283,8 +280,7 @@ export type PushEvent = 'registration' | 'error' | 'notification';
   plugin: 'phonegap-plugin-push',
   pluginRef: 'PushNotification',
   repo: 'https://github.com/phonegap/phonegap-plugin-push',
-  install: 'ionic cordova plugin add phonegap-plugin-push --variable SENDER_ID=XXXXXXXXX',
-  installVariables: ['SENDER_ID'],
+  install: 'ionic cordova plugin add phonegap-plugin-push',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
