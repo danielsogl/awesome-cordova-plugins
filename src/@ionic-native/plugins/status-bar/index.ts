@@ -12,6 +12,10 @@ import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-nati
  * ```typescript
  * import { StatusBar } from '@ionic-native/status-bar';
  *
+ * @Component({
+ *  providers: [ StatusBar ]
+ * })
+ *
  * constructor(private statusBar: StatusBar) { }
  *
  * ...
