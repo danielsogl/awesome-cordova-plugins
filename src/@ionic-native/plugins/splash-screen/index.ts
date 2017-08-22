@@ -11,6 +11,10 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * constructor(private splashScreen: SplashScreen) { }
  *
+ * @Component({
+ *  providers: [ SplashScreen ]
+ * })
+ *
  * ...
  *
  * this.splashScreen.show();
