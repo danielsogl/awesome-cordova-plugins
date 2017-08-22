@@ -95,6 +95,10 @@ export interface FacebookLoginResponse {
  * ```typescript
  * import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
  *
+ * @Component({
+ *  providers: [ Facebook ]
+ * })
+ *
  * constructor(private fb: Facebook) { }
  *
  * ...
