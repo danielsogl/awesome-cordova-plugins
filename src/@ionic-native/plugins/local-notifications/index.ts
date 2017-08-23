@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Observable } from 'rxjs/Observable';
 
 export interface ILocalNotification {
 
@@ -316,23 +317,14 @@ export class LocalNotifications extends IonicNativePlugin {
 
   /**
    * Sets a callback for a specific event
-   * @param eventName The name of the event. Available events: schedule, trigger, click, update, clear, clearall, cancel, cancelall
-   * @param callback Call back function. All events return notification and state parameter. clear and clearall return state parameter only.
+   * @param eventName {string} The name of the event. Available events: schedule, trigger, click, update, clear, clearall, cancel, cancelall
+   * @return {Observable}
    */
   @Cordova({
-    sync: true
+    observable: true,
+    clearFunction: 'un',
+    clearWithArgs: true
   })
-  on(eventName: string, callback: any): void { }
-
-  /**
-   * Removes a callback of a specific event
-   * @param eventName The name of the event. Available events: schedule, trigger, click, update, clear, clearall, cancel, cancelall
-   * @param callback Call back function. All events return notification and state parameter. clear and clearall return state parameter only.
-   */
-  @Cordova({
-    sync: true
-  })
-  un(eventName: string, callback: any): void { }
-
+  on(eventName: string): Observable<any> { return; }
 
 }
