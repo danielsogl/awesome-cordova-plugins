@@ -167,23 +167,28 @@ export class PayPalPayment {
    * The amount of the payment.
    */
   amount: string;
+
   /**
    * The ISO 4217 currency for the payment.
    */
   currency: string;
+
   /**
    * A short description of the payment.
    */
   shortDescription: string;
+
   /**
    * "Sale" for an immediate payment.
    */
   intent: string;
+
   /**
    * Optional Build Notation code ("BN code"), obtained from partnerprogram@paypal.com,
    * for your tracking purposes.
    */
   bnCode: string = 'PhoneGap_SP';
+
   /**
    * Optional invoice number, for your tracking purposes. (up to 256 characters)
    */
@@ -203,6 +208,11 @@ export class PayPalPayment {
    * Optional array of PayPalItem objects.
    */
   items: Array<PayPalItem>;
+
+  /**
+  * Optional payee email, if your app is paying a third-party merchant.
+  */
+  payeeEmail: string;
 
   /**
    * Optional customer shipping address, if your app wishes to provide this to the SDK.
