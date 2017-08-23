@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, CordovaInstance, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-declare var window: any;
+declare const window: any;
 
 export type EventResponse = RegistrationEventResponse & NotificationEventResponse & Error;
 
@@ -196,7 +196,7 @@ export interface BrowserPushOptions {
 
   /**
    * URL for the push server you want to use.
-   * Default: http://push.api.phonegap.com/v1/push	Optional. 
+   * Default: http://push.api.phonegap.com/v1/push	Optional.
    */
   pushServiceURL?: string;
 
