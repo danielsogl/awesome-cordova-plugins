@@ -324,5 +324,15 @@ export class LocalNotifications extends IonicNativePlugin {
   })
   on(eventName: string, callback: any): void { }
 
+  /**
+   * Removes a callback of a specific event
+   * @param eventName The name of the event. Available events: schedule, trigger, click, update, clear, clearall, cancel, cancelall
+   * @param callback Call back function. All events return notification and state parameter. clear and clearall return state parameter only.
+   */
+  @Cordova({
+    sync: true
+  })
+  un(eventName: string, callback: any): void { }
+
 
 }
