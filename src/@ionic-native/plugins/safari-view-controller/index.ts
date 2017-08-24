@@ -38,7 +38,7 @@ export interface SafariViewControllerOptions {
  *           enterReaderModeIfAvailable: true,
  *           tintColor: '#ff0000'
  *         })
- *         .then((result: any) => {
+ *         .subscribe((result: any) => {
  *             if(result.event === 'opened') console.log('Opened');
  *             else if(result.event === 'loaded') console.log('Loaded');
  *             else if(result.event === 'closed') console.log('Closed');
