@@ -1,3 +1,30 @@
+<a name="4.2.0"></a>
+# [4.2.0](https://github.com/ionic-team/ionic-native/compare/v4.1.0...v4.2.0) (2017-08-26)
+
+
+### Bug Fixes
+
+* **fingerprint-aio:** add missing FingerprintOptions properties ([#1845](https://github.com/ionic-team/ionic-native/issues/1845)) ([85825c7](https://github.com/ionic-team/ionic-native/commit/85825c7))
+* **geofence:** remove duplicate onTransitionReceived method ([00c0707](https://github.com/ionic-team/ionic-native/commit/00c0707))
+* **google-maps:** add missing debug option ([#1832](https://github.com/ionic-team/ionic-native/issues/1832)) ([39ec515](https://github.com/ionic-team/ionic-native/commit/39ec515))
+* **ms-adal:** make userId optional ([#1894](https://github.com/ionic-team/ionic-native/issues/1894)) ([21045ea](https://github.com/ionic-team/ionic-native/commit/21045ea))
+* **native-geocoder:** update NativeGeocoderReverse result ([#1840](https://github.com/ionic-team/ionic-native/issues/1840)) ([7c1b409](https://github.com/ionic-team/ionic-native/commit/7c1b409))
+* **native-spinner:** update pluginRef ([#1859](https://github.com/ionic-team/ionic-native/issues/1859)) ([262e18f](https://github.com/ionic-team/ionic-native/commit/262e18f))
+* **serial:** add missing options for the open method ([#1844](https://github.com/ionic-team/ionic-native/issues/1844)) ([1acade4](https://github.com/ionic-team/ionic-native/commit/1acade4))
+* **sqlite:** add optional key parameter to SQLiteDatabaseConfig to support sqlcipher-adapter ([#1917](https://github.com/ionic-team/ionic-native/issues/1917)) ([0c097ba](https://github.com/ionic-team/ionic-native/commit/0c097ba))
+
+
+### Features
+
+* **google-maps:** update plugin and fix a few issues ([#1834](https://github.com/ionic-team/ionic-native/issues/1834)) ([c11aec3](https://github.com/ionic-team/ionic-native/commit/c11aec3))
+* **http:** use a different plugin source with better features ([#1921](https://github.com/ionic-team/ionic-native/issues/1921)) ([a2d3396](https://github.com/ionic-team/ionic-native/commit/a2d3396))
+* **keychain-touch-id:** add KeychainTouchId plugin ([#1837](https://github.com/ionic-team/ionic-native/issues/1837)) ([a2cc187](https://github.com/ionic-team/ionic-native/commit/a2cc187))
+* **local-notifications:** add `un` method to unsubscribe from events ([#1871](https://github.com/ionic-team/ionic-native/issues/1871)) ([ce5966b](https://github.com/ionic-team/ionic-native/commit/ce5966b))
+* **paypal:** add payeeEmail for third party merchants ([#1864](https://github.com/ionic-team/ionic-native/issues/1864)) ([cde87e2](https://github.com/ionic-team/ionic-native/commit/cde87e2))
+* **push:** add Browser Push notification support ([#1848](https://github.com/ionic-team/ionic-native/issues/1848)) ([aa4c3b3](https://github.com/ionic-team/ionic-native/commit/aa4c3b3))
+
+
+
 <a name="4.1.0"></a>
 # [4.1.0](https://github.com/ionic-team/ionic-native/compare/v4.0.1...v4.1.0) (2017-07-21)
 
