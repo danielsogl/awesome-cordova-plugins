@@ -137,7 +137,7 @@ function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: any 
   let pluginResult: any, rej: Function;
   const p = getPromise((resolve: Function, reject: Function) => {
     if (opts.destruct) {
-      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, function(){ resolve(arguments); }, function(){ reject(arguments); });
+      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, (...args: any[]) => resolve(args), (...args: any[]) => reject(args));
     } else {
       pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
     }
@@ -173,7 +173,7 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
     let pluginResult;
 
     if (opts.destruct) {
-      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, function(){ observer.next(arguments); }, function(){ observer.next(arguments); });
+      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, (...args: any[]) => observer.next(args), (...args: any[]) => observer.error(args));
     } else {
       pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
     }
@@ -281,7 +281,7 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
         let pluginResult;
 
         if (opts.destruct) {
-          pluginResult = callInstance(pluginObj, methodName, args, opts, function(){ observer.next(arguments); }, function(){ observer.next(arguments); });
+          pluginResult = callInstance(pluginObj, methodName, args, opts, (...args: any[]) => observer.next(args), (...args: any[]) => observer.error(args));
         } else {
           pluginResult = callInstance(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
         }
@@ -308,7 +308,7 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
       return getPromise((resolve: Function, reject: Function) => {
         let result;
         if (opts.destruct) {
-          result = callInstance(pluginObj, methodName, args, opts, function(){ resolve(arguments); }, function(){ reject(arguments); });
+          result = callInstance(pluginObj, methodName, args, opts, (...args: any[]) => resolve(args), (...args: any[]) => reject(args));
         } else {
           result = callInstance(pluginObj, methodName, args, opts, resolve, reject);
         }
@@ -323,7 +323,7 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
       let pluginResult: any, rej: Function;
       const p = getPromise((resolve: Function, reject: Function) => {
         if (opts.destruct) {
-          pluginResult = callInstance(pluginObj, methodName, args, opts, function(){ resolve(arguments); }, function(){ reject(arguments); });
+          pluginResult = callInstance(pluginObj, methodName, args, opts, (...args: any[]) => resolve(args), (...args: any[]) => reject(args));
         } else {
           pluginResult = callInstance(pluginObj, methodName, args, opts, resolve, reject);
         }
