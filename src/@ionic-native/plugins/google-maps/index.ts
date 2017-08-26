@@ -338,6 +338,23 @@ export interface MarkerOptions {
   disableAutoPan?: boolean;
 }
 
+export interface MarkerClusterIcon {
+  min: number;
+  max: number;
+  url: string;
+  anchor: {
+    x: number;
+    y: number;
+  };
+}
+
+export interface MarkerClusterOptions {
+  maxZoomLevel?: number;
+  boundsDraw?: boolean;
+  markers: MarkerOptions[];
+  icons: MarkerClusterIcon[];
+}
+
 export interface MyLocation {
   latLng?: LatLng;
   elapsedRealtimeNanos?: any;
@@ -566,6 +583,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * LatLng
  * LatLngBounds
  * Marker
+ * MarkerCluster
  * Polygon
  * Polyline
  * Spherical
@@ -582,6 +600,8 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * ILatLng
  * MarkerIcon
  * MarkerOptions
+ * MarkerClusterIcon
+ * MarkerClusterOptions
  * MyLocation
  * MyLocationOptions
  * PolygonOptions
@@ -1509,6 +1529,19 @@ export class GoogleMap extends BaseClass {
     });
   }
 
+  @InstanceCheck()
+  addMarkerCluster(options: MarkerClusterOptions): Promise<MarkerCluster | any> {
+    return new Promise<MarkerCluster>((resolve, reject) => {
+      this._objectInstance.addMarkerCluster(options, (markerCluster: any) => {
+        if (markerCluster) {
+          resolve(new MarkerCluster(this, markerCluster));
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
   /**
    * Adds a circle
    * @return {Promise<Circle | any>}
@@ -1993,6 +2026,30 @@ export class Marker extends BaseClass {
    */
   @CordovaInstance({ sync: true })
   getRotation(): number { return; }
+
+}
+
+/**
+ * @hidden
+ */
+export class MarkerCluster extends BaseClass {
+
+  private _map: GoogleMap;
+
+  constructor(_map: GoogleMap, _objectInstance: any) {
+    super();
+    this._map = _map;
+    this._objectInstance = _objectInstance;
+  }
+
+  @CordovaInstance({ sync: true })
+  addMarker(marker: MarkerOptions): void {}
+
+  @CordovaInstance({ sync: true })
+  addMarkers(markers: MarkerOptions[]): void {}
+
+  @CordovaInstance({ sync: true })
+  remove(): void {}
 
 }
 
