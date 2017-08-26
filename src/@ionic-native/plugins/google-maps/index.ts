@@ -524,6 +524,10 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  *   map: GoogleMap;
  *   mapElement: HTMLElement;
  *   constructor(private googleMaps: GoogleMaps) { }
+ *    // Load the map when the platform is ready
+ *    this.platform.ready().then(() => {
+ *      this.loadMap();
+ *    });
  *
  *   ionViewDidLoad() {
  *    this.loadMap();
