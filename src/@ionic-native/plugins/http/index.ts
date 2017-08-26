@@ -59,9 +59,9 @@ export interface HTTPResponse {
  */
 @Plugin({
   pluginName: 'HTTP',
-  plugin: 'cordova-plugin-http',
+  plugin: 'cordova-plugin-advanced-http',
   pluginRef: 'cordovaHTTP',
-  repo: 'https://github.com/wymsee/cordova-HTTP',
+  repo: 'https://github.com/silkimen/cordova-plugin-advanced-http',
   platforms: ['Android', 'iOS']
 })
 @Injectable()
@@ -91,6 +91,34 @@ export class HTTP extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   setHeader(header: string, value: string): void { }
+
+  /**
+   * Set the data serializer which will be used for all future POST and PUT requests. Takes a string representing the name of the serializer.
+   * @param serializer {string} The name of the serializer. Can be urlencoded or json
+   */
+  @Cordova({ sync: true })
+  setDataSerializer(serializer: string): void { }
+
+  /**
+   * Clear all cookies
+   */
+  @Cordova({ sync: true })
+  clearCookies(): void { }
+
+  /**
+   * Remove cookies
+   * @param url {string}
+   * @param cb
+   */
+  @Cordova({ sync: true })
+  removeCookies(url: string, cb: () => void): void { }
+
+  /**
+   * Set request timeout
+   * @param timeout {number} The timeout in seconds. Default 60
+   */
+  @Cordova({ sync: true })
+  setRequestTimeout(timeout: number): void { }
 
   /**
    * Enable or disable SSL Pinning. This defaults to false.
@@ -131,7 +159,7 @@ export class HTTP extends IonicNativePlugin {
   post(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
 
   /**
-   *
+   * Make a GET request
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
@@ -139,6 +167,36 @@ export class HTTP extends IonicNativePlugin {
    */
   @Cordova()
   get(url: string, parameters: any, headers: any): Promise<HTTPResponse> { return; }
+
+  /**
+   * Make a PUT request
+   * @param url {string} The url to send the request to
+   * @param body {Object} The body of the request
+   * @param headers {Object} The headers to set for this request
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  put(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
+
+  /**
+   * Make a DELETE request
+   * @param url {string} The url to send the request to
+   * @param parameters {Object} Parameters to send with the request
+   * @param headers {Object} The headers to set for this request
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  delete(url: string, parameters: any, headers: any): Promise<HTTPResponse> { return; }
+
+  /**
+   * Make a HEAD request
+   * @param url {string} The url to send the request to
+   * @param parameters {Object} Parameters to send with the request
+   * @param headers {Object} The headers to set for this request
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  head(url: string, parameters: any, headers: any): Promise<HTTPResponse> { return; }
 
   /**
    *
