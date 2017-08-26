@@ -184,9 +184,6 @@ export interface CameraPosition<T> {
    * The duration of animation in milliseconds
    */
   duration?: number;
-}
-
-export interface AnimateCameraOptions<T> extends CameraPosition<T> {
   /**
    * Camera padding in pixel
    */
@@ -577,7 +574,6 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * BaseArrayClass
  * @interfaces
  * GoogleMapOptions
- * AnimateCameraOptions
  * CameraPosition
  * CircleOptions
  * GeocoderRequest
@@ -1274,7 +1270,7 @@ export class GoogleMap extends BaseClass {
    * @return {Promise<any>}
    */
   @CordovaInstance()
-  animateCamera(animateCameraOptions: AnimateCameraOptions<any>): Promise<any> { return; }
+  animateCamera(cameraPosition: CameraPosition<any>): Promise<any> { return; }
 
   /**
    * Zooming in the camera with animation
