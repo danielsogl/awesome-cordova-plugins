@@ -194,7 +194,7 @@ export interface CameraPosition {
   /**
    * The center location of the camera view.
    */
-  target?: ILatLng | LatLngBounds | ILatLng[];
+  target?: ILatLng & LatLngBounds & ILatLng[];
   /**
    * View angle
    */
