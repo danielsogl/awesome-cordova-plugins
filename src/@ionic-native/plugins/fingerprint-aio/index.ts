@@ -17,6 +17,16 @@ export interface FingerprintOptions {
    * Disable 'use backup' option. Only for android (optional)
    */
   disableBackup?: boolean;
+
+  /**
+   * Title of fallback button. Only for iOS
+   */
+  localizedFallbackTitle?: string;
+
+  /**
+   * Description in authentication dialogue. Only for iOS
+   */
+  localizedReason?: string;
 }
 
 /**
@@ -36,7 +46,9 @@ export interface FingerprintOptions {
  * this.faio.show({
  *     clientId: 'Fingerprint-Demo',
  *     clientSecret: 'password', //Only necessary for Android
- *     disableBackup:true  //Only for Android(optional)
+ *     disableBackup:true,  //Only for Android(optional)
+ *     localizedFallbackTitle: 'Use Pin', //Only for iOS
+ *     localizedReason: 'Please authenticate' //Only for iOS
  * })
  * .then((result: any) => console.log(result))
  * .catch((error: any) => console.log(error));

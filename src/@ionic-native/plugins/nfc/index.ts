@@ -23,8 +23,17 @@ declare let window: any;
  *
  * ...
  *
- * let message = this.ndef.textRecord('Hello world');
- * this.nfc.share([message]).then(onSuccess).catch(onError);
+ * this.nfc.addNdefListener(() => {
+ *   console.log('successfully attached ndef listener');
+ * }, (err) => {
+ *   console.log('error attaching ndef listener', err);
+ * }).subscribe((event) => {
+ *   console.log('received ndef message. the tag contains: ', event.tag);
+ *   console.log('decoded tag id', this.nfc.bytesToHexString(event.tag.id));
+ *
+ *   let message = this.ndef.textRecord('Hello world');
+ *   this.nfc.share([message]).then(onSuccess).catch(onError);
+ * });
  *
  * ```
  */
