@@ -205,6 +205,12 @@ export class PayPalPayment {
   items: Array<PayPalItem>;
 
   /**
+  * Optional payee email, if your app is paying a third-party merchant.
+  * The payee's email. It must be a valid PayPal email address.
+  */
+  payeeEmail: string;
+
+  /**
    * Optional customer shipping address, if your app wishes to provide this to the SDK.
    */
   shippingAddress: string;
