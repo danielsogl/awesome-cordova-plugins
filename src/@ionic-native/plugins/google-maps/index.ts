@@ -163,33 +163,6 @@ export interface GoogleMapOptions {
   };
 }
 
-export interface AnimateCameraOptions {
-  /**
-   * Center position of the camera target.
-   */
-  target?: ILatLng | Array<ILatLng> | LatLngBounds;
-  /**
-   * View angle of camera from 0 to 90
-   */
-  tilt?: number;
-  /**
-   * Zoom level from 0 to 20
-   */
-  zoom?: number;
-  /**
-   * Heading from 0 to 359
-   */
-  bearing?: number;
-  /**
-   * Duration of camera animation in milli seconds
-   */
-  duration?: number;
-  /**
-   * Camera padding in pixel
-   */
-  padding?: number;
-}
-
 export interface CameraPosition<T> {
   /**
    * The center location of the camera view.
@@ -211,6 +184,13 @@ export interface CameraPosition<T> {
    * The duration of animation in milliseconds
    */
   duration?: number;
+}
+
+export interface AnimateCameraOptions<T> extends CameraPosition<T> {
+  /**
+   * Camera padding in pixel
+   */
+  padding?: number;
 }
 
 export interface CircleOptions {
@@ -1294,7 +1274,7 @@ export class GoogleMap extends BaseClass {
    * @return {Promise<any>}
    */
   @CordovaInstance()
-  animateCamera(animateCameraOptions: AnimateCameraOptions): Promise<any> { return; }
+  animateCamera(animateCameraOptions: AnimateCameraOptions<any>): Promise<any> { return; }
 
   /**
    * Zooming in the camera with animation
