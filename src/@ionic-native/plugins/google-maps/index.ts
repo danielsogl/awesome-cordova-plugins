@@ -134,7 +134,7 @@ export interface GoogleMapOptions {
   /**
    * Initial camera position
    */
-  camera?: CameraPosition;
+  camera?: CameraPosition<any>;
 
   preferences?: {
 
@@ -163,38 +163,11 @@ export interface GoogleMapOptions {
   };
 }
 
-export interface AnimateCameraOptions {
-  /**
-   * Center position of the camera target.
-   */
-  target?: ILatLng | Array<ILatLng> | LatLngBounds;
-  /**
-   * View angle of camera from 0 to 90
-   */
-  tilt?: number;
-  /**
-   * Zoom level from 0 to 20
-   */
-  zoom?: number;
-  /**
-   * Heading from 0 to 359
-   */
-  bearing?: number;
-  /**
-   * Duration of camera animation in milli seconds
-   */
-  duration?: number;
-  /**
-   * Camera padding in pixel
-   */
-  padding?: number;
-}
-
-export interface CameraPosition {
+export interface CameraPosition<T> {
   /**
    * The center location of the camera view.
    */
-  target?: ILatLng | LatLngBounds | ILatLng[];
+  target?: T;
   /**
    * View angle
    */
@@ -211,6 +184,10 @@ export interface CameraPosition {
    * The duration of animation in milliseconds
    */
   duration?: number;
+  /**
+   * Camera padding in pixel
+   */
+  padding?: number;
 }
 
 export interface CircleOptions {
@@ -361,6 +338,23 @@ export interface MarkerOptions {
   disableAutoPan?: boolean;
 }
 
+export interface MarkerClusterIcon {
+  min: number;
+  max: number;
+  url: string;
+  anchor: {
+    x: number;
+    y: number;
+  };
+}
+
+export interface MarkerClusterOptions {
+  maxZoomLevel?: number;
+  boundsDraw?: boolean;
+  markers: MarkerOptions[];
+  icons: MarkerClusterIcon[];
+}
+
 export interface MyLocation {
   latLng?: LatLng;
   elapsedRealtimeNanos?: any;
@@ -454,33 +448,33 @@ export class VisibleRegion implements ILatLngBounds {
  * You can listen to these events where appropriate
  */
 export const GoogleMapsEvent: { [eventName: string]: string; } = {
-  MAP_READY: 'promise-map_ready',
-  MAP_LOADED: 'promise-map_loaded',
-  MAP_CLICK: 'promise-map_click',
-  MAP_LONG_CLICK: 'promise-map_long_click',
-  MY_LOCATION_BUTTON_CLICK: 'promise-my_location_button_click',
-  INDOOR_BUILDING_FOCUSED: 'promise-indoor_building_focused',
-  INDOOR_LEVEL_ACTIVATED: 'promise-indoor_level_activated',
-  CAMERA_MOVE_START: 'promise-camera_move_start',
-  CAMERA_MOVE: 'promise-camera_move',
-  CAMERA_MOVE_END: 'promise-camera_move_end',
-  OVERLAY_CLICK: 'promise-overlay_click',
-  POLYGON_CLICK: 'promise-polygon_click',
-  POLYLINE_CLICK: 'promise-polyline_click',
-  CIRCLE_CLICK: 'promise-circle_click',
-  GROUND_OVERLAY_CLICK: 'promise-groundoverlay_click',
-  INFO_CLICK: 'promise-info_click',
-  INFO_LONG_CLICK: 'promise-info_long_click',
-  INFO_CLOSE: 'promise-info_close',
-  INFO_OPEN: 'promise-info_open',
-  CLUSTER_CLICK: 'promise-cluster_click',
-  MARKER_CLICK: 'promise-marker_click',
-  MARKER_DRAG: 'promise-marker_drag',
-  MARKER_DRAG_START: 'promise-marker_drag_start',
-  MARKER_DRAG_END: 'promise-marker_drag_end',
-  MAP_DRAG: 'promise-map_drag',
-  MAP_DRAG_START: 'promise-map_drag_start',
-  MAP_DRAG_END: 'promise-map_drag_end'
+  MAP_READY: 'map_ready',
+  MAP_LOADED: 'map_loaded',
+  MAP_CLICK: 'map_click',
+  MAP_LONG_CLICK: 'map_long_click',
+  MY_LOCATION_BUTTON_CLICK: 'my_location_button_click',
+  INDOOR_BUILDING_FOCUSED: 'indoor_building_focused',
+  INDOOR_LEVEL_ACTIVATED: 'indoor_level_activated',
+  CAMERA_MOVE_START: 'camera_move_start',
+  CAMERA_MOVE: 'camera_move',
+  CAMERA_MOVE_END: 'camera_move_end',
+  OVERLAY_CLICK: 'overlay_click',
+  POLYGON_CLICK: 'polygon_click',
+  POLYLINE_CLICK: 'polyline_click',
+  CIRCLE_CLICK: 'circle_click',
+  GROUND_OVERLAY_CLICK: 'groundoverlay_click',
+  INFO_CLICK: 'info_click',
+  INFO_LONG_CLICK: 'info_long_click',
+  INFO_CLOSE: 'info_close',
+  INFO_OPEN: 'info_open',
+  CLUSTER_CLICK: 'cluster_click',
+  MARKER_CLICK: 'marker_click',
+  MARKER_DRAG: 'marker_drag',
+  MARKER_DRAG_START: 'marker_drag_start',
+  MARKER_DRAG_END: 'marker_drag_end',
+  MAP_DRAG: 'map_drag',
+  MAP_DRAG_START: 'map_drag_start',
+  MAP_DRAG_END: 'map_drag_end'
 };
 
 /**
@@ -589,6 +583,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * LatLng
  * LatLngBounds
  * Marker
+ * MarkerCluster
  * Polygon
  * Polyline
  * Spherical
@@ -597,7 +592,6 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * BaseArrayClass
  * @interfaces
  * GoogleMapOptions
- * AnimateCameraOptions
  * CameraPosition
  * CircleOptions
  * GeocoderRequest
@@ -606,6 +600,8 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * ILatLng
  * MarkerIcon
  * MarkerOptions
+ * MarkerClusterIcon
+ * MarkerClusterOptions
  * MyLocation
  * MyLocationOptions
  * PolygonOptions
@@ -695,7 +691,12 @@ export class BaseClass {
    *
    * @return {Observable<any>}
    */
-  @CordovaInstance({ destruct: true, observable: true })
+  @CordovaInstance({
+    destruct: true,
+    observable: true,
+    clearFunction: 'removeEventListener',
+    clearWithArgs: true
+  })
   addEventListener(eventName: string): Observable<any> { return; }
 
   /**
@@ -703,7 +704,7 @@ export class BaseClass {
    *
    * @return {Promise<any>}
    */
-  @CordovaInstance({ destruct: true, otherPromise: true })
+  @CordovaInstance({ destruct: true })
   addListenerOnce(eventName: string): Promise<any> { return; }
 
   /**
@@ -736,7 +737,12 @@ export class BaseClass {
    *
    * @return {Observable<any>}
    */
-  @CordovaInstance({ sync: true })
+  @CordovaInstance({
+    observable: true,
+    destruct: true,
+    clearFunction: 'off',
+    clearWithArgs: true
+  })
   on(eventName: string): Observable<any> { return; }
 
   /**
@@ -744,7 +750,7 @@ export class BaseClass {
    *
    * @return {Promise<any>}
    */
-  @CordovaInstance({ destruct: true, otherPromise: true })
+  @CordovaInstance({ destruct: true })
   one(eventName: string): Promise<any> { return; };
 
   /**
@@ -1284,7 +1290,7 @@ export class GoogleMap extends BaseClass {
    * @return {Promise<any>}
    */
   @CordovaInstance()
-  animateCamera(animateCameraOptions: AnimateCameraOptions): Promise<any> { return; }
+  animateCamera(cameraPosition: CameraPosition<any>): Promise<any> { return; }
 
   /**
    * Zooming in the camera with animation
@@ -1305,7 +1311,7 @@ export class GoogleMap extends BaseClass {
    * @return {Promise<any>}
    */
   @CordovaInstance()
-  moveCamera(cameraPosition: CameraPosition): Promise<any> { return; }
+  moveCamera(cameraPosition: CameraPosition<any>): Promise<any> { return; }
 
   /**
    * Zooming in the camera without animation
@@ -1326,7 +1332,7 @@ export class GoogleMap extends BaseClass {
    * @return {CameraPosition}
    */
   @CordovaInstance({ sync: true })
-  getCameraPosition(): CameraPosition { return; }
+  getCameraPosition(): CameraPosition<ILatLng> { return; }
 
   /**
    * Get the current camera target position
@@ -1516,6 +1522,19 @@ export class GoogleMap extends BaseClass {
       this._objectInstance.addMarker(options, (marker: any) => {
         if (marker) {
           resolve(new Marker(this, marker));
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
+  @InstanceCheck()
+  addMarkerCluster(options: MarkerClusterOptions): Promise<MarkerCluster | any> {
+    return new Promise<MarkerCluster>((resolve, reject) => {
+      this._objectInstance.addMarkerCluster(options, (markerCluster: any) => {
+        if (markerCluster) {
+          resolve(new MarkerCluster(this, markerCluster));
         } else {
           reject();
         }
@@ -2007,6 +2026,30 @@ export class Marker extends BaseClass {
    */
   @CordovaInstance({ sync: true })
   getRotation(): number { return; }
+
+}
+
+/**
+ * @hidden
+ */
+export class MarkerCluster extends BaseClass {
+
+  private _map: GoogleMap;
+
+  constructor(_map: GoogleMap, _objectInstance: any) {
+    super();
+    this._map = _map;
+    this._objectInstance = _objectInstance;
+  }
+
+  @CordovaInstance({ sync: true })
+  addMarker(marker: MarkerOptions): void {}
+
+  @CordovaInstance({ sync: true })
+  addMarkers(markers: MarkerOptions[]): void {}
+
+  @CordovaInstance({ sync: true })
+  remove(): void {}
 
 }
 
