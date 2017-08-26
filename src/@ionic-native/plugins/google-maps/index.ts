@@ -397,6 +397,7 @@ export interface TileOverlayOptions {
   zIndex?: number;
   tileSize?: number;
   opacity?: number;
+  debug?: boolean;
 }
 
 
