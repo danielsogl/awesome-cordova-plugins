@@ -134,7 +134,7 @@ export interface GoogleMapOptions {
   /**
    * Initial camera position
    */
-  camera?: CameraPosition;
+  camera?: CameraPosition<any>;
 
   preferences?: {
 
@@ -190,11 +190,11 @@ export interface AnimateCameraOptions {
   padding?: number;
 }
 
-export interface CameraPosition {
+export interface CameraPosition<T> {
   /**
    * The center location of the camera view.
    */
-  target?: ILatLng & LatLngBounds & ILatLng[];
+  target?: T;
   /**
    * View angle
    */
@@ -1315,7 +1315,7 @@ export class GoogleMap extends BaseClass {
    * @return {Promise<any>}
    */
   @CordovaInstance()
-  moveCamera(cameraPosition: CameraPosition): Promise<any> { return; }
+  moveCamera(cameraPosition: CameraPosition<any>): Promise<any> { return; }
 
   /**
    * Zooming in the camera without animation
@@ -1336,7 +1336,7 @@ export class GoogleMap extends BaseClass {
    * @return {CameraPosition}
    */
   @CordovaInstance({ sync: true })
-  getCameraPosition(): CameraPosition { return; }
+  getCameraPosition(): CameraPosition<ILatLng> { return; }
 
   /**
    * Get the current camera target position
