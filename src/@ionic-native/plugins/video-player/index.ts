@@ -11,7 +11,7 @@ export interface VideoOptions {
  */
   volume?: number;
   /**
-   * There are to options for the scaling mode. SCALE_TO_FIT which is default and SCALE_TO_FIT_WITH_CROPPING.
+   * There are two options for the scaling mode. SCALE_TO_FIT which is default and SCALE_TO_FIT_WITH_CROPPING.
    * These strings are the only ones which can be passed as option.
    */
   scalingMode?: number;
