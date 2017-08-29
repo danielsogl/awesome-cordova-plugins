@@ -524,10 +524,6 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  *   map: GoogleMap;
  *   mapElement: HTMLElement;
  *   constructor(private googleMaps: GoogleMaps) { }
- *    // Load the map when the platform is ready
- *    this.platform.ready().then(() => {
- *      this.loadMap();
- *    });
  *
  *   ionViewDidLoad() {
  *    this.loadMap();
@@ -788,7 +784,7 @@ export class BaseArrayClass<T> extends BaseClass {
     if (initialData instanceof GoogleMaps.getPlugin().BaseArrayClass) {
       this._objectInstance = initialData;
     } else {
-      this._objectInstance = GoogleMaps.getPlugin().BaseArrayClass(initialData);
+      this._objectInstance = new (GoogleMaps.getPlugin().BaseArrayClass)(initialData);
     }
   }
 
