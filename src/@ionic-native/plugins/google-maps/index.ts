@@ -783,7 +783,7 @@ export class BaseArrayClass<T> extends BaseClass {
     if (initialData instanceof GoogleMaps.getPlugin().BaseArrayClass) {
       this._objectInstance = initialData;
     } else {
-      this._objectInstance = GoogleMaps.getPlugin().BaseArrayClass(initialData);
+      this._objectInstance = new (GoogleMaps.getPlugin().BaseArrayClass)(initialData);
     }
   }
 
