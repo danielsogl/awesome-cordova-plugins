@@ -60,7 +60,7 @@ export interface HTTPResponse {
 @Plugin({
   pluginName: 'HTTP',
   plugin: 'cordova-plugin-advanced-http',
-  pluginRef: 'cordovaHTTP',
+  pluginRef: 'cordova.plugin.http',
   repo: 'https://github.com/silkimen/cordova-plugin-advanced-http',
   platforms: ['Android', 'iOS']
 })
