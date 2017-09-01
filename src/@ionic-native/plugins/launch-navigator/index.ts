@@ -313,8 +313,8 @@ export class LaunchNavigator extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    successIndex: 1,
-    errorIndex: 2
+    successIndex: 2,
+    errorIndex: 3
   })
   navigate(destination: string | number[], options?: LaunchNavigatorOptions): Promise<any> { return; }
 
