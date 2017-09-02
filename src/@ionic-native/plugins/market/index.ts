@@ -19,8 +19,8 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'Market',
-  plugin: 'cordova-plugin-market',
-  pluginRef: 'cordova.plugins.market',
+  plugin: 'https://github.com/xmartlabs/cordova-plugin-market',
+  pluginRef: 'https://github.com/xmartlabs/cordova-plugin-market',
   repo: 'https://github.com/xmartlabs/cordova-plugin-market',
   platforms: ['Android', 'iOS']
 })
