@@ -338,21 +338,11 @@ export interface MarkerOptions {
   disableAutoPan?: boolean;
 }
 
-export interface MarkerClusterIcon {
-  min: number;
-  max: number;
-  url: string;
-  anchor: {
-    x: number;
-    y: number;
-  };
-}
-
 export interface MarkerClusterOptions {
   maxZoomLevel?: number;
   boundsDraw?: boolean;
   markers: MarkerOptions[];
-  icons: MarkerClusterIcon[];
+  icons: any[];
 }
 
 export interface MyLocation {
