@@ -116,6 +116,11 @@ export interface GoogleMapOptions {
      * Turns the map toolbar on or off. This option is for Android only.
      */
     mapToolbar?: boolean;
+
+    /**
+     * Turns the zoom controller on or off. This option is for Android only.
+     */
+    zoom?: boolean;
   };
 
   gestures?: {
