@@ -609,8 +609,8 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
   pluginName: 'GoogleMaps',
   pluginRef: 'plugin.google.maps',
   plugin: 'cordova-plugin-googlemaps',
-  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps',
-  install: 'ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
+  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
+  install: 'ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
   installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS'],
   platforms: ['Android', 'iOS']
 })
@@ -670,6 +670,22 @@ export class GoogleMaps extends IonicNativePlugin {
 }
 
 /**
+ * Convert a JavaScript instance to the wrapper class instnace
+ * @private
+ */
+export function jsToNative(map: GoogleMap, jsInstance: any): any {
+  if (jsInstance instanceof GoogleMaps.getPlugin().Marker) return new Marker(map, jsInstance);
+  if (jsInstance instanceof GoogleMaps.getPlugin().Circle) return new Circle(map, jsInstance);
+  if (jsInstance instanceof GoogleMaps.getPlugin().Polyline) return new Polyline(map, jsInstance);
+  if (jsInstance instanceof GoogleMaps.getPlugin().Polygon) return new Polygon(map, jsInstance);
+  if (jsInstance instanceof GoogleMaps.getPlugin().TileOverlay) return new TileOverlay(map, jsInstance);
+  if (jsInstance instanceof GoogleMaps.getPlugin().GroundOverlay) return new GroundOverlay(map, jsInstance);
+  if (jsInstance instanceof GoogleMaps.getPlugin().HtmlInfoWindow) return new HtmlInfoWindow(jsInstance);
+  if (jsInstance instanceof GoogleMaps.getPlugin().BaseArrayClass) return new BaseArrayClass(jsInstance);
+  return jsInstance;
+}
+
+/**
  * @hidden
  * https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.0.0/class/BaseClass/README.md
  */
@@ -687,21 +703,53 @@ export class BaseClass {
    *
    * @return {Observable<any>}
    */
-  @CordovaInstance({
-    destruct: true,
-    observable: true,
-    clearFunction: 'removeEventListener',
-    clearWithArgs: true
-  })
-  addEventListener(eventName: string): Observable<any> { return; }
+  addEventListener(eventName: string): Observable<any> {
+    if (!this._objectInstance) {
+      return new Observable((observer) => {
+        observer.error({ error: 'plugin_not_installed' });
+      });
+    }
+
+    return new Observable((observer) => {
+       var self = this;
+       this._objectInstance.on(eventName, function() {
+          var args = Array.prototype.slice.call(arguments, 0);
+          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+            if (args[args.length - 1].type === 'Map') {
+              args[args.length - 1] = self;
+            } else {
+              args[args.length - 1] = jsToNative(self._objectInstance.getMap(), args[args.length - 1]);
+            }
+          }
+          observer.next.call(observer, args);
+       });
+    });
+  }
 
   /**
    * Adds an event listener that works once.
    *
    * @return {Promise<any>}
    */
-  @CordovaInstance({ destruct: true })
-  addListenerOnce(eventName: string): Promise<any> { return; }
+  addListenerOnce(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+       return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    var self = this;
+    return new Promise<any>((resolve) => {
+        this._objectInstance.one(eventName, function() {
+          var args = Array.prototype.slice.call(arguments, 0);
+          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+            if (args[args.length - 1].type === 'Map') {
+              args[args.length - 1] = self;
+            } else {
+              args[args.length - 1] = jsToNative(self._objectInstance.getMap(), args[args.length - 1]);
+            }
+          }
+          resolve.call(self, args);
+      });
+    });
+  }
 
   /**
    * Gets a value
@@ -733,21 +781,53 @@ export class BaseClass {
    *
    * @return {Observable<any>}
    */
-  @CordovaInstance({
-    observable: true,
-    destruct: true,
-    clearFunction: 'off',
-    clearWithArgs: true
-  })
-  on(eventName: string): Observable<any> { return; }
+  on(eventName: string): Observable<any> {
+     if (!this._objectInstance) {
+       return new Observable((observer) => {
+         observer.error({ error: 'plugin_not_installed' });
+       });
+     }
+
+     return new Observable((observer) => {
+        var self = this;
+        this._objectInstance.on(eventName, function() {
+          var args = Array.prototype.slice.call(arguments, 0);
+          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+            if (args[args.length - 1].type === 'Map') {
+              args[args.length - 1] = self;
+            } else {
+              args[args.length - 1] = jsToNative(self._objectInstance.getMap(), args[args.length - 1]);
+            }
+          }
+          observer.next.call(observer, args);
+        });
+     });
+  }
 
   /**
    * Listen to a map event only once.
    *
    * @return {Promise<any>}
    */
-  @CordovaInstance({ destruct: true })
-  one(eventName: string): Promise<any> { return; };
+  one(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+       return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    var self = this;
+    return new Promise<any>((resolve) => {
+        this._objectInstance.one(eventName, function() {
+          var args = Array.prototype.slice.call(arguments, 0);
+          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+            if (args[args.length - 1].type === 'Map') {
+              args[args.length - 1] = self;
+            } else {
+              args[args.length - 1] = jsToNative(self._objectInstance.getMap(), args[args.length - 1]);
+            }
+          }
+          resolve.call(self, args);
+      });
+    });
+  }
 
   /**
    * Clears all stored values
@@ -1773,10 +1853,14 @@ export class GroundOverlay extends BaseClass {
 export class HtmlInfoWindow<T> extends IonicNativePlugin {
   private _objectInstance: any;
 
-  constructor() {
+  constructor(initialData?: any) {
    super();
    if (checkAvailability(HtmlInfoWindow.getPluginRef(), null, HtmlInfoWindow.getPluginName()) === true) {
-     this._objectInstance = new (HtmlInfoWindow.getPlugin())();
+      if (initialData instanceof GoogleMaps.getPlugin().HtmlInfoWindow) {
+        this._objectInstance = initialData;
+      } else {
+        this._objectInstance = new (HtmlInfoWindow.getPlugin())();
+      }
    }
   }
 
@@ -2046,6 +2130,12 @@ export class MarkerCluster extends BaseClass {
 
   @CordovaInstance({ sync: true })
   remove(): void {}
+
+  /**
+   * Return the map instance.
+   * @return {GoogleMap}
+   */
+  getMap(): any { return this._map; }
 
 }
 
