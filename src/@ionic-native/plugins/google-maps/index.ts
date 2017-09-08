@@ -670,8 +670,8 @@ export class GoogleMaps extends IonicNativePlugin {
 }
 
 /**
- * Convert a JavaScript instance to the wrapper class instnace
- * @private
+ * @hidden
+ * Convert a JavaScript instance to the wrapper class instance
  */
 export function jsToNative(map: GoogleMap, jsInstance: any): any {
   if (jsInstance instanceof GoogleMaps.getPlugin().Marker) return new Marker(map, jsInstance);
