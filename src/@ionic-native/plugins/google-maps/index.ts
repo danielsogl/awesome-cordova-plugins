@@ -224,7 +224,7 @@ export interface GeocoderResult {
   };
   locale?: string;
   locality?: string;
-  position?: { lat: number; lng: number };
+  position?: ILatLng;
   postalCode?: string;
   subAdminArea?: string;
   subLocality?: string;
@@ -374,7 +374,7 @@ export interface PolygonOptions {
   fillColor?: string;
   visible?: boolean;
   zIndex?: number;
-  addHole?: Array<Array<LatLng>>;
+  addHole?: Array<Array<ILatLng>>;
 }
 
 export interface PolylineOptions {
@@ -618,22 +618,6 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
 export class GoogleMaps extends IonicNativePlugin {
 
   /**
-   * Keep a single instance of Environment in memory
-   * @hidden
-   */
-  _environment: Environment = new Environment();
-
-  /**
-   * @hidden
-   */
-  _spherical: Spherical = new Spherical();
-
-  /**
-   * @hidden
-   */
-  _encoding: Encoding = new Encoding();
-
-  /**
    * Creates a new GoogleMap instance
    * @param element {string | HTMLElement} Element ID or reference to attach the map to
    * @param options {any} Options
@@ -641,30 +625,6 @@ export class GoogleMaps extends IonicNativePlugin {
    */
   create(element: string | HTMLElement, options?: GoogleMapOptions): GoogleMap {
     return new GoogleMap(element, options);
-  }
-
-  /**
-   * Method that returns an instance of Environment class
-   * @return {Environment}
-   */
-  environment(): Environment {
-    return this._environment;
-  }
-
-  /**
-   * Method that returns an instance of Spherical class
-   * @returns {Spherical}
-   */
-  spherical(): Spherical {
-    return this._spherical;
-  }
-
-  /**
-   * Method that returns an instance of Encoding class
-   * @returns {Encoding}
-   */
-  encoding(): Encoding {
-    return this._encoding;
   }
 
 }
@@ -1138,21 +1098,28 @@ export class Circle extends BaseClass {
   pluginRef: 'plugin.google.maps.environment',
   repo: ''
 })
-export class Environment extends IonicNativePlugin {
+export class Environment {
 
   /**
-   * Get the open source software license information for Google Maps Android API v2 and Google Maps SDK for iOS.
+   * Get the open source software license information for Google Maps SDK for iOS.
    * @return {Promise<any>}
    */
-  @Cordova()
-  getLicenseInfo(): Promise<any> { return; }
+  getLicenseInfo(): Promise<any> {
+    var self = this;
+    return new Promise<any>((resolve, reject) => {
+      getPlugin('plugin.google.maps.enviroment').getLicenseInfo((text: string) => {
+        resolve.call(self, text);
+      });
+    });
+  }
 
   /**
    * Specifies the background color of the app.
    * @param color
    */
-  @Cordova({ sync: true })
-  setBackgroundColor(color: string): void {}
+  setBackgroundColor(color: string): void {
+    GoogleMaps.getPlugin().environment.setBackgroundColor(color);
+  }
 
 }
 
@@ -1255,8 +1222,9 @@ export class Spherical {
    * @param locationB {ILatLng}
    * @return {number}
    */
-  @Cordova({ sync: true })
-  computeDistanceBetween(from: ILatLng, to: ILatLng): number { return; }
+  computeDistanceBetween(from: ILatLng, to: ILatLng): number {
+    return GoogleMaps.getPlugin().geometry.spherical.computeDistanceBetween(from, to);
+  }
 
   /**
    * Returns the LatLng resulting from moving a distance from an origin in the specified heading (expressed in degrees clockwise from north)
@@ -1265,8 +1233,9 @@ export class Spherical {
    * @param heading {number}
    * @return {LatLng}
    */
-  @Cordova({ sync: true })
-  computeOffset(from: ILatLng, distance: number, heading: number): LatLng { return; }
+  computeOffset(from: ILatLng, distance: number, heading: number): LatLng {
+    return GoogleMaps.getPlugin().geometry.spherical.computeOffset(from, distance, heading);
+  }
 
   /**
    * Returns the location of origin when provided with a LatLng destination, meters travelled and original heading. Headings are expressed in degrees clockwise from North. This function returns null when no solution is available.
@@ -1275,32 +1244,36 @@ export class Spherical {
    * @param heading {number} The heading in degrees clockwise from north.
    * @return {LatLng}
    */
-  @Cordova({ sync: true })
-  computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng { return; }
+  computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng {
+    return GoogleMaps.getPlugin().geometry.spherical.computeOffsetOrigin(to, distance, heading);
+  }
 
   /**
    * Returns the length of the given path.
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}
    * @return {number}
    */
-  @Cordova({ sync: true })
-  computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+  computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    return GoogleMaps.getPlugin().geometry.spherical.computeLength(path);
+  }
 
   /**
    * Returns the area of a closed path. The computed area uses the same units as the radius.
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
    * @return {number}
    */
-  @Cordova({ sync: true })
-  computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+  computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    return GoogleMaps.getPlugin().geometry.spherical.computeArea(path);
+  }
 
   /**
    * Returns the signed area of a closed path. The signed area may be used to determine the orientation of the path.
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
    * @return {number}
    */
-  @Cordova({ sync: true })
-  computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+  computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    return GoogleMaps.getPlugin().geometry.spherical.computeSignedArea(path);
+  }
 
   /**
    * Returns the heading from one LatLng to another LatLng. Headings are expressed in degrees clockwise from North within the range (-180,180).
@@ -1308,8 +1281,9 @@ export class Spherical {
    * @param to {ILatLng}
    * @return {number}
    */
-  @Cordova({ sync: true })
-  computeHeading(from: ILatLng, to: ILatLng): number { return; }
+  computeHeading(from: ILatLng, to: ILatLng): number {
+    return GoogleMaps.getPlugin().geometry.spherical.computeHeading(from, to);
+  }
 
   /**
    * Returns the LatLng which lies the given fraction of the way between the origin LatLng and the destination LatLng.
@@ -1318,8 +1292,9 @@ export class Spherical {
    * @param fraction {number}  A fraction of the distance to travel from 0.0 to 1.0 .
    * @return {LatLng}
    */
-  @Cordova({ sync: true })
-  interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng { return; }
+  interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng {
+    return GoogleMaps.getPlugin().geometry.spherical.interpolate(from, to, fraction);
+  }
 }
 
 /**
@@ -1594,10 +1569,11 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addMarker(options: MarkerOptions): Promise<Marker | any> {
+    let self: GoogleMap = this;
     return new Promise<Marker>((resolve, reject) => {
       this._objectInstance.addMarker(options, (marker: any) => {
         if (marker) {
-          resolve(new Marker(this, marker));
+          resolve(new Marker(self, marker));
         } else {
           reject();
         }
@@ -1607,6 +1583,7 @@ export class GoogleMap extends BaseClass {
 
   @InstanceCheck()
   addMarkerCluster(options: MarkerClusterOptions): Promise<MarkerCluster | any> {
+    let self: GoogleMap = this;
     return new Promise<MarkerCluster>((resolve, reject) => {
       this._objectInstance.addMarkerCluster(options, (markerCluster: any) => {
         if (markerCluster) {
@@ -1624,10 +1601,11 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addCircle(options: CircleOptions): Promise<Circle | any> {
+    let self: GoogleMap = this;
     return new Promise<Circle>((resolve, reject) => {
       this._objectInstance.addCircle(options, (circle: any) => {
         if (circle) {
-          resolve(new Circle(this, circle));
+          resolve(new Circle(self, circle));
         } else {
           reject();
         }
@@ -1641,10 +1619,11 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addPolygon(options: PolygonOptions): Promise<Polygon | any> {
+    let self: GoogleMap = this;
     return new Promise<Polygon>((resolve, reject) => {
       this._objectInstance.addPolygon(options, (polygon: any) => {
         if (polygon) {
-          resolve(new Polygon(this, polygon));
+          resolve(new Polygon(self, polygon));
         } else {
           reject();
         }
@@ -1658,10 +1637,11 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addPolyline(options: PolylineOptions): Promise<Polyline | any> {
+    let self: GoogleMap = this;
     return new Promise<Polyline>((resolve, reject) => {
       this._objectInstance.addPolyline(options, (polyline: any) => {
         if (polyline) {
-          resolve(new Polyline(this, polyline));
+          resolve(new Polyline(self, polyline));
         } else {
           reject();
         }
@@ -1674,10 +1654,11 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addTileOverlay(options: TileOverlayOptions): Promise<TileOverlay | any> {
+    let self: GoogleMap = this;
     return new Promise<TileOverlay>((resolve, reject) => {
       this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
         if (tileOverlay) {
-          resolve(new TileOverlay(this, tileOverlay));
+          resolve(new TileOverlay(self, tileOverlay));
         } else {
           reject();
         }
@@ -1690,10 +1671,11 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addGroundOverlay(options: GroundOverlayOptions): Promise<GroundOverlay | any> {
+    let self: GoogleMap = this;
     return new Promise<GroundOverlay>((resolve, reject) => {
       this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
         if (groundOverlay) {
-          resolve(new GroundOverlay(this, groundOverlay));
+          resolve(new GroundOverlay(self, groundOverlay));
         } else {
           reject();
         }
@@ -1892,7 +1874,6 @@ export class HtmlInfoWindow<T> extends IonicNativePlugin {
   close(): void {}
 
 }
-
 
 /**
  * @hidden
@@ -2283,7 +2264,7 @@ export class Polygon extends BaseClass {
   setGeodesic(geodesic: boolean): void {}
 
   /**
-   * Return true if the polylgon is geodesic.
+   * Return true if the polygon is geodesic.
    * @return {boolean}
    */
   @CordovaInstance({ sync: true })
