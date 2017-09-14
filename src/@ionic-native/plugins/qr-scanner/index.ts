@@ -158,6 +158,15 @@ export class QRScanner extends IonicNativePlugin {
     callbackStyle: 'node'
   })
   enableLight(): Promise<QRScannerStatus> { return; }
+  
+    /**
+   * Destroy the QR scanner instance
+   * @return {Promise<QRScannerStatus>}
+   */
+  @Cordova({
+    callbackStyle: 'node'
+  })
+  destroy(): Promise<QRScannerStatus> { return; }
 
   /**
    * Disable the device's light.
