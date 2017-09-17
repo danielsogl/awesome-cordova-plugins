@@ -1,3 +1,5 @@
+//UPDATE DOCS
+
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
