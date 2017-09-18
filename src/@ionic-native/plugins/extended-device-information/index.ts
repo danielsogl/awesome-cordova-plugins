@@ -16,7 +16,7 @@ declare const window: any;
  *
  * ...
  *
- *
+ * console.log('The Memory is: ' + this.extendedDeviceInformation.memory);
  * ```
  */
 @Plugin({
