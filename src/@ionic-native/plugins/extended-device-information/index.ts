@@ -1,0 +1,40 @@
+import { Injectable } from '@angular/core';
+import { CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
+
+declare const window: any;
+
+/**
+ * @name Extended Device Information
+ * @description
+ *
+ * @usage
+ * ```typescript
+ * import { ExtendedDeviceInformation } from '@ionic-native/extended-device-information';
+ *
+ *
+ * constructor(private extendedDeviceInformation: ExtendedDeviceInformation) { }
+ *
+ * ...
+ *
+ *
+ * ```
+ */
+@Plugin({
+  pluginName: 'ExtendedDeviceInformation',
+  plugin: 'cordova-plugin-extended-device-information',
+  pluginRef: 'extended-device-information',
+  repo: 'https://github.com/danielehrhardt/cordova-plugin-extended-device-information',
+  platforms: ['Android']
+})
+@Injectable()
+export class ExtendedDeviceInformation extends IonicNativePlugin {
+
+  /** Get the device's memory size. */
+  @CordovaProperty
+  memory: string;
+
+  /** Get the device's CPU mhz. */
+  @CordovaProperty
+  cpumhz: string;
+
+}
