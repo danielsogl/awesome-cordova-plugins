@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
-declare const window: any;
-
 /**
  * @name Extended Device Information
  * @description
