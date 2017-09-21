@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { CouchbaseLite } from '@ionic-native/couchbase-lite';
-import { Http, URLSearchParams } from '@angular/http';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class LocalDatabaseService{
@@ -20,8 +20,8 @@ export class LocalDatabaseService{
   getUrl(){
     return this.url;
   }
-  //   DATABASE RELATED METHODS
-    // create database
+  /* DATABASE RELATED METHODS */
+    /* create database */
   createDatabase(database_name:string){
     let url = this.getUrl();
     url = url+database_name;
@@ -32,7 +32,7 @@ export class LocalDatabaseService{
             return Observable.throw(error.json() || 'Couchbase Lite error');
         })
   }
-    // delete database
+    /* delete database */
   deleteDatabase(database_name:string){
     let url = this.getUrl();
     url = url+database_name;
@@ -43,7 +43,7 @@ export class LocalDatabaseService{
             return Observable.throw(error.json() || 'Couchbase Lite error');
         })
   }
-    //get all database names
+    /* get all database names */
   getAllDbs(){
     let url = this.getUrl();
     url = url+'_all_dbs';
