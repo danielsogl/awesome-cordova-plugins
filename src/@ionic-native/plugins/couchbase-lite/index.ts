@@ -21,7 +21,7 @@ export class LocalDatabaseService{
     return this.url;
   }
   //   DATABASE RELATED METHODS
-    //create database
+    // create database
   createDatabase(database_name:string){
     let url = this.getUrl();
     url = url+database_name;
@@ -32,7 +32,7 @@ export class LocalDatabaseService{
             return Observable.throw(error.json() || 'Couchbase Lite error');
         })
   }
-    //delete database
+    // delete database
   deleteDatabase(database_name:string){
     let url = this.getUrl();
     url = url+database_name;
