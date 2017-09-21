@@ -21,9 +21,10 @@ export class LocalDatabaseService{
     return this.url;
   }
   //   DATABASE RELATED METHODS
+    //create database
   createDatabase(database_name:string){
     let url = this.getUrl();
-    let urlWithDatabaseName = url+database_name;
+    url = url+database_name;
     return this._http
         .put(url)
         .map(data => {this.results = data['results']})
@@ -31,13 +32,25 @@ export class LocalDatabaseService{
             return Observable.throw(error.json() || 'Couchbase Lite error');
         })
   }
+    //delete database
   deleteDatabase(database_name:string){
     let url = this.getUrl();
-    let urlWithDatabaseName = url+database_name;
+    url = url+database_name;
     return this._http
         .delete(url)
         .map(data => {this.results = data['results']})
         .catch((error:any) =>{
+            return Observable.throw(error.json() || 'Couchbase Lite error');
+        })
+  }
+    //get all database names
+  getAllDbs(){
+    let url = this.getUrl();
+    url = url+'_all_dbs';
+    return this._http
+        .get(url)
+        .map(data => {this.results = data['results']})
+        .catch((error:any) => {
             return Observable.throw(error.json() || 'Couchbase Lite error');
         })
   }
