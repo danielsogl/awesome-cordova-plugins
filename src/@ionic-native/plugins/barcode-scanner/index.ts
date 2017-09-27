@@ -53,6 +53,10 @@ export interface BarcodeScannerOptions {
    */
   resultDisplayDuration?: number;
 
+  /*
+  * Active proper FNC detection for GS1 Barcodes
+  */
+  ASSUME_GS1?: boolean;
 }
 
 export interface BarcodeScanResult {
