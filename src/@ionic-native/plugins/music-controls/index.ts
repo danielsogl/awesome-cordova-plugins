@@ -10,6 +10,10 @@ export interface MusicControlsOptions {
   dismissable: boolean;
   hasPrev: boolean;
   hasNext: boolean;
+  hasSkipForward: boolean;
+  hasSkipBackward: boolean;
+  skipForwardInterval: number;
+  skipBackwardInterval: number;
   hasClose: boolean;
   album: string;
   duration: number;
@@ -50,6 +54,10 @@ export interface MusicControlsOptions {
  *   album       : 'Absolution'     // optional, default: ''
  *   duration : 60, // optional, default: 0
  *   elapsed : 10, // optional, default: 0
+ *   hasSkipForward : true,  // show skip forward button, optional, default: false
+ *   hasSkipBackward : true, // show skip backward button, optional, default: false
+ *   skipForwardInterval: 15, // display number for skip forward, optional, default: 0
+ *   skipBackwardInterval: 15, // display number for skip backward, optional, default: 0
  *
  *   // Android only, optional
  *   // text displayed in the status bar when the notification (and the ticker) are updated
@@ -87,6 +95,12 @@ export interface MusicControlsOptions {
  *              elapsed: seekToInSeconds,
  *              isPlaying: true
  *            });
+ *            // Do something
+ *            break;
+ *          case 'music-controls-skip-forward':
+ *            // Do something
+ *            break;
+ *          case 'music-controls-skip-backward':
  *            // Do something
  *            break;
  *
@@ -164,7 +178,7 @@ export class MusicControls extends IonicNativePlugin {
 
   /**
   * Update elapsed time, optionally toggle play/pause:
-  * @param args {Object} 
+  * @param args {Object}
   */
   @Cordova({
     platforms: ['iOS']
