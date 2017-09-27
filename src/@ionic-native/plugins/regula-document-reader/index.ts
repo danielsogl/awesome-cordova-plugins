@@ -4,21 +4,22 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @paid
  * @beta
- * @name DocumentReader
+ * @name Regula Document Reader
  * @description
  * Plugin for reading and validation of identification documents.
  *
  * @usage
  * ```typescript
- * import { DocumentReader } from 'ionic-native';
- * var license; // read regula.license file
- * DocumentReader.scanDocument(license).then((result) => {
+ * import { RegulaDocumentReader } from '@ionic-native/regula-document-reader';
+ *
+ * let license; // read regula.license file
+ * RegulaDocumentReader.scanDocument(license).then((result) => {
  * 		// read result
  * })
  * ```
  */
 @Plugin({
-  pluginName: 'DocumentReader',
+  pluginName: 'Regula Document Reader',
   plugin: 'cordova-plugin-documentreader',
   pluginRef: 'DocumentReader',
   repo: 'https://github.com/regulaforensics/cordova-plugin-documentreader.git',
@@ -26,7 +27,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   install: 'ionic plugin add cordova-plugin-documentreader --variable CAMERA_USAGE_DESCRIPTION="To take photo"',
 })
 @Injectable()
-export class DocumentReader extends IonicNativePlugin {
+export class RegulaDocumentReader extends IonicNativePlugin {
 
   /**
    * Run the scanner
