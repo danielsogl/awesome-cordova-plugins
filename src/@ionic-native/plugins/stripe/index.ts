@@ -79,6 +79,31 @@ export interface StripeBankAccountParams {
   account_holder_type?: string;
 }
 
+export interface StripeCardTokenRes {
+    /**
+     * Card Object.
+     */
+    card: {
+        brand: string,
+        exp_month: number,
+        exp_year: number,
+        funding: string,
+        last4: string
+    };
+    /**
+     * Token Request Date Time.
+     */
+    created: string;
+    /**
+     * Card Token.
+     */
+    id: string;
+    /**
+     * Source Type (card or account).
+     */
+    type: string;
+}
+
 /**
  * @name Stripe
  * @description
@@ -102,7 +127,7 @@ export interface StripeBankAccountParams {
  * };
  *
  * this.stripe.createCardToken(card)
- *    .then(token => console.log(token))
+ *    .then(token => console.log(token.id))
  *    .catch(error => console.error(error));
  *
  * ```
@@ -131,10 +156,10 @@ export class Stripe extends IonicNativePlugin {
   /**
    * Create Credit Card Token
    * @param params {StripeCardTokenParams} Credit card information
-   * @return {Promise<string>} returns a promise that resolves with the token, or rejects with an error
+   * @return {Promise<StripeCardTokenRes>} returns a promise that resolves with the token object, or rejects with an error
    */
   @Cordova()
-  createCardToken(params: StripeCardTokenParams): Promise<string> { return; }
+  createCardToken(params: StripeCardTokenParams): Promise<StripeCardTokenRes> { return; }
 
   /**
    * Create a bank account token
