@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
+ * @paid
+ * @beta
  * @name DocumentReader
  * @description
  * Plugin for reading and validation of identification documents.
