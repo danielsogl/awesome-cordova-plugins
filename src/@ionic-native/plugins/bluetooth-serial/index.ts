@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 /**
  * @name Bluetooth Serial
- * @description This plugin enables serial communication over Bluetooth. It was written for communicating between Android or iOS and an Arduino.
+ * @description This plugin enables serial communication over Bluetooth. It was written for communicating between Android or iOS and an Arduino (not Android to Android or iOS to iOS).
  * @usage
  * ```typescript
  * import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
