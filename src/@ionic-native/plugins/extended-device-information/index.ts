@@ -4,6 +4,7 @@ import { CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Extended Device Information
  * @description
+ * Retrieves additional device information that is not provided by other plugins
  *
  * @usage
  * ```typescript
@@ -27,15 +28,21 @@ import { CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 @Injectable()
 export class ExtendedDeviceInformation extends IonicNativePlugin {
 
-  /** Get the device's memory size. */
+  /**
+   * Get the device's memory size
+   */
   @CordovaProperty
   memory: number;
 
-  /** Get the device's CPU mhz. */
+  /**
+   * Get the device's CPU mhz
+   */
   @CordovaProperty
   cpumhz: string;
 
-  /** Get the device's CPU mhz. */
+  /**
+   * Get the total storage
+   */
   @CordovaProperty
   totalstorage: string;
 
