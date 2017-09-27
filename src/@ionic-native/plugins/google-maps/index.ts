@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaCheck, CordovaInstance, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
@@ -224,7 +224,7 @@ export interface GeocoderResult {
   };
   locale?: string;
   locality?: string;
-  position?: { lat: number; lng: number };
+  position?: ILatLng;
   postalCode?: string;
   subAdminArea?: string;
   subLocality?: string;
@@ -374,7 +374,7 @@ export interface PolygonOptions {
   fillColor?: string;
   visible?: boolean;
   zIndex?: number;
-  addHole?: Array<Array<LatLng>>;
+  addHole?: Array<Array<ILatLng>>;
 }
 
 export interface PolylineOptions {
@@ -609,29 +609,13 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
   pluginName: 'GoogleMaps',
   pluginRef: 'plugin.google.maps',
   plugin: 'cordova-plugin-googlemaps',
-  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps',
-  install: 'ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
+  repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
+  install: 'ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
   installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class GoogleMaps extends IonicNativePlugin {
-
-  /**
-   * Keep a single instance of Environment in memory
-   * @hidden
-   */
-  _environment: Environment = new Environment();
-
-  /**
-   * @hidden
-   */
-  _spherical: Spherical = new Spherical();
-
-  /**
-   * @hidden
-   */
-  _encoding: Encoding = new Encoding();
 
   /**
    * Creates a new GoogleMap instance
@@ -640,31 +624,9 @@ export class GoogleMaps extends IonicNativePlugin {
    * @return {GoogleMap}
    */
   create(element: string | HTMLElement, options?: GoogleMapOptions): GoogleMap {
-    return new GoogleMap(element, options);
-  }
-
-  /**
-   * Method that returns an instance of Environment class
-   * @return {Environment}
-   */
-  environment(): Environment {
-    return this._environment;
-  }
-
-  /**
-   * Method that returns an instance of Spherical class
-   * @returns {Spherical}
-   */
-  spherical(): Spherical {
-    return this._spherical;
-  }
-
-  /**
-   * Method that returns an instance of Encoding class
-   * @returns {Encoding}
-   */
-  encoding(): Encoding {
-    return this._encoding;
+    let googleMap: GoogleMap = new GoogleMap(element, options);
+    googleMap.set('_overlays', new BaseArrayClass());
+    return googleMap;
   }
 
 }
@@ -687,21 +649,55 @@ export class BaseClass {
    *
    * @return {Observable<any>}
    */
-  @CordovaInstance({
-    destruct: true,
-    observable: true,
-    clearFunction: 'removeEventListener',
-    clearWithArgs: true
-  })
-  addEventListener(eventName: string): Observable<any> { return; }
+  @CordovaCheck({ observable: true })
+  addEventListener(eventName: string): Observable<any> {
+    if (!this._objectInstance) {
+      return new Observable((observer) => {
+        observer.error({ error: 'plugin_not_installed' });
+      });
+    }
+
+    return new Observable((observer) => {
+       var self = this;
+       this._objectInstance.on(eventName, function() {
+          var args = Array.prototype.slice.call(arguments, 0);
+          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+            if (args[args.length - 1].type === 'Map') {
+              args[args.length - 1] = self;
+            } else {
+              args[args.length - 1] = self._objectInstance.getMap().get(args[args.length - 1].getId());
+            }
+          }
+          observer.next.call(observer, args);
+       });
+    });
+  }
 
   /**
    * Adds an event listener that works once.
    *
    * @return {Promise<any>}
    */
-  @CordovaInstance({ destruct: true })
-  addListenerOnce(eventName: string): Promise<any> { return; }
+  @CordovaCheck()
+  addListenerOnce(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+       return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    var self = this;
+    return new Promise<any>((resolve) => {
+        this._objectInstance.one(eventName, function() {
+          var args = Array.prototype.slice.call(arguments, 0);
+          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+            if (args[args.length - 1].type === 'Map') {
+              args[args.length - 1] = self;
+            } else {
+              args[args.length - 1] = self._objectInstance.getMap().get(args[args.length - 1].getId());
+            }
+          }
+          resolve.call(self, args);
+      });
+    });
+  }
 
   /**
    * Gets a value
@@ -733,21 +729,55 @@ export class BaseClass {
    *
    * @return {Observable<any>}
    */
-  @CordovaInstance({
-    observable: true,
-    destruct: true,
-    clearFunction: 'off',
-    clearWithArgs: true
-  })
-  on(eventName: string): Observable<any> { return; }
+  @CordovaCheck({ observable: true })
+  on(eventName: string): Observable<any> {
+     if (!this._objectInstance) {
+       return new Observable((observer) => {
+         observer.error({ error: 'plugin_not_installed' });
+       });
+     }
+
+     return new Observable((observer) => {
+        var self = this;
+        this._objectInstance.on(eventName, function() {
+          var args = Array.prototype.slice.call(arguments, 0);
+          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+            if (args[args.length - 1].type === 'Map') {
+              args[args.length - 1] = self;
+            } else {
+              args[args.length - 1] = self._objectInstance.getMap().get(args[args.length - 1].getId());
+            }
+          }
+          observer.next.call(observer, args);
+        });
+     });
+  }
 
   /**
    * Listen to a map event only once.
    *
    * @return {Promise<any>}
    */
-  @CordovaInstance({ destruct: true })
-  one(eventName: string): Promise<any> { return; };
+  @CordovaCheck()
+  one(eventName: string): Promise<any> {
+    if (!this._objectInstance) {
+       return Promise.reject({ error: 'plugin_not_installed' });
+    }
+    var self = this;
+    return new Promise<any>((resolve) => {
+        this._objectInstance.one(eventName, function() {
+          var args = Array.prototype.slice.call(arguments, 0);
+          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+            if (args[args.length - 1].type === 'Map') {
+              args[args.length - 1] = self;
+            } else {
+              args[args.length - 1] = self._objectInstance.getMap().get(args[args.length - 1].getId());
+            }
+          }
+          resolve.call(self, args);
+      });
+    });
+  }
 
   /**
    * Clears all stored values
@@ -760,6 +790,19 @@ export class BaseClass {
    */
   @CordovaInstance({ sync: true })
   trigger(eventName: string, ...parameters: any[]): void {}
+
+
+  /**
+   * Executes off() and empty()
+   */
+  @CordovaCheck({ sync: true })
+  destroy(): void {
+    let map: GoogleMap = this._objectInstance.getMap();
+    if (map) {
+      map.get('_overlays').set(this._objectInstance.getId(), undefined);
+    }
+    this._objectInstance.remove();
+  }
 }
 
 /**
@@ -918,6 +961,13 @@ export class Circle extends BaseClass {
   }
 
   /**
+   * Return the ID of instance.
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getId(): string { return; }
+
+  /**
    * Return the map instance.
    * @return {GoogleMap}
    */
@@ -1058,21 +1108,28 @@ export class Circle extends BaseClass {
   pluginRef: 'plugin.google.maps.environment',
   repo: ''
 })
-export class Environment extends IonicNativePlugin {
+export class Environment {
 
   /**
-   * Get the open source software license information for Google Maps Android API v2 and Google Maps SDK for iOS.
+   * Get the open source software license information for Google Maps SDK for iOS.
    * @return {Promise<any>}
    */
-  @Cordova()
-  getLicenseInfo(): Promise<any> { return; }
+  getLicenseInfo(): Promise<any> {
+    var self = this;
+    return new Promise<any>((resolve, reject) => {
+      GoogleMaps.getPlugin().environment.getLicenseInfo((text: string) => {
+        resolve.call(self, text);
+      });
+    });
+  }
 
   /**
    * Specifies the background color of the app.
    * @param color
    */
-  @Cordova({ sync: true })
-  setBackgroundColor(color: string): void {}
+  setBackgroundColor(color: string): void {
+    GoogleMaps.getPlugin().environment.setBackgroundColor(color);
+  }
 
 }
 
@@ -1175,8 +1232,9 @@ export class Spherical {
    * @param locationB {ILatLng}
    * @return {number}
    */
-  @Cordova({ sync: true })
-  computeDistanceBetween(from: ILatLng, to: ILatLng): number { return; }
+  computeDistanceBetween(from: ILatLng, to: ILatLng): number {
+    return GoogleMaps.getPlugin().geometry.spherical.computeDistanceBetween(from, to);
+  }
 
   /**
    * Returns the LatLng resulting from moving a distance from an origin in the specified heading (expressed in degrees clockwise from north)
@@ -1185,8 +1243,9 @@ export class Spherical {
    * @param heading {number}
    * @return {LatLng}
    */
-  @Cordova({ sync: true })
-  computeOffset(from: ILatLng, distance: number, heading: number): LatLng { return; }
+  computeOffset(from: ILatLng, distance: number, heading: number): LatLng {
+    return GoogleMaps.getPlugin().geometry.spherical.computeOffset(from, distance, heading);
+  }
 
   /**
    * Returns the location of origin when provided with a LatLng destination, meters travelled and original heading. Headings are expressed in degrees clockwise from North. This function returns null when no solution is available.
@@ -1195,32 +1254,36 @@ export class Spherical {
    * @param heading {number} The heading in degrees clockwise from north.
    * @return {LatLng}
    */
-  @Cordova({ sync: true })
-  computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng { return; }
+  computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng {
+    return GoogleMaps.getPlugin().geometry.spherical.computeOffsetOrigin(to, distance, heading);
+  }
 
   /**
    * Returns the length of the given path.
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}
    * @return {number}
    */
-  @Cordova({ sync: true })
-  computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+  computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    return GoogleMaps.getPlugin().geometry.spherical.computeLength(path);
+  }
 
   /**
    * Returns the area of a closed path. The computed area uses the same units as the radius.
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
    * @return {number}
    */
-  @Cordova({ sync: true })
-  computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+  computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    return GoogleMaps.getPlugin().geometry.spherical.computeArea(path);
+  }
 
   /**
    * Returns the signed area of a closed path. The signed area may be used to determine the orientation of the path.
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
    * @return {number}
    */
-  @Cordova({ sync: true })
-  computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number { return; }
+  computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    return GoogleMaps.getPlugin().geometry.spherical.computeSignedArea(path);
+  }
 
   /**
    * Returns the heading from one LatLng to another LatLng. Headings are expressed in degrees clockwise from North within the range (-180,180).
@@ -1228,8 +1291,9 @@ export class Spherical {
    * @param to {ILatLng}
    * @return {number}
    */
-  @Cordova({ sync: true })
-  computeHeading(from: ILatLng, to: ILatLng): number { return; }
+  computeHeading(from: ILatLng, to: ILatLng): number {
+    return GoogleMaps.getPlugin().geometry.spherical.computeHeading(from, to);
+  }
 
   /**
    * Returns the LatLng which lies the given fraction of the way between the origin LatLng and the destination LatLng.
@@ -1238,8 +1302,9 @@ export class Spherical {
    * @param fraction {number}  A fraction of the distance to travel from 0.0 to 1.0 .
    * @return {LatLng}
    */
-  @Cordova({ sync: true })
-  interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng { return; }
+  interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng {
+    return GoogleMaps.getPlugin().geometry.spherical.interpolate(from, to, fraction);
+  }
 }
 
 /**
@@ -1417,16 +1482,40 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Destroy a map completely
+   * @return {Promise<any>}
    */
-  @CordovaInstance({ sync: true })
-  remove(): void {}
+  @CordovaInstance()
+  remove(): Promise<any> {
+    let self: GoogleMap = this;
+    self.get('_overlays').forEach((overlayId: string) => {
+      self.set(overlayId, null);
+    });
+    self.get('_overlays').empty();
+    self.set('_overlays', undefined);
+    return new Promise<any>((resolve, reject) => {
+      self._objectInstance.remove(() => {
+        resolve();
+      });
+    });
+  }
 
   /**
    * Remove all overlays, such as marker
    * @return {Promise<any>}
    */
-  @CordovaInstance()
-  clear(): Promise<any> { return; }
+  @CordovaCheck()
+  clear(): Promise<any> {
+    let self: GoogleMap = this;
+    self.get('_overlays').forEach((overlayId: string) => {
+      self.set(overlayId, null);
+    });
+    self.get('_overlays').empty();
+    return new Promise<any>((resolve, reject) => {
+      self._objectInstance.clear(() => {
+        resolve();
+      });
+    });
+  }
 
   /**
    * Convert the unit from LatLng to the pixels from the left/top of the map div
@@ -1514,10 +1603,14 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addMarker(options: MarkerOptions): Promise<Marker | any> {
+    let self: GoogleMap = this;
     return new Promise<Marker>((resolve, reject) => {
-      this._objectInstance.addMarker(options, (marker: any) => {
+      self._objectInstance.addMarker(options, (marker: any) => {
         if (marker) {
-          resolve(new Marker(this, marker));
+          let overlay: Marker = new Marker(self, marker);
+          self.get('_overlays').push(marker.getId());
+          self.set(marker.getId(), overlay);
+          resolve(overlay);
         } else {
           reject();
         }
@@ -1527,10 +1620,14 @@ export class GoogleMap extends BaseClass {
 
   @InstanceCheck()
   addMarkerCluster(options: MarkerClusterOptions): Promise<MarkerCluster | any> {
+    let self: GoogleMap = this;
     return new Promise<MarkerCluster>((resolve, reject) => {
-      this._objectInstance.addMarkerCluster(options, (markerCluster: any) => {
+      self._objectInstance.addMarkerCluster(options, (markerCluster: any) => {
         if (markerCluster) {
-          resolve(new MarkerCluster(this, markerCluster));
+          let overlay = new MarkerCluster(self, markerCluster);
+          self.get('_overlays').push(markerCluster.getId());
+          self.set(markerCluster.getId(), overlay);
+          resolve(overlay);
         } else {
           reject();
         }
@@ -1544,10 +1641,14 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addCircle(options: CircleOptions): Promise<Circle | any> {
+    let self: GoogleMap = this;
     return new Promise<Circle>((resolve, reject) => {
-      this._objectInstance.addCircle(options, (circle: any) => {
+      self._objectInstance.addCircle(options, (circle: any) => {
         if (circle) {
-          resolve(new Circle(this, circle));
+          let overlay = new Circle(self, circle);
+          self.get('_overlays').push(circle.getId());
+          self.set(circle.getId(), overlay);
+          resolve(overlay);
         } else {
           reject();
         }
@@ -1561,10 +1662,14 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addPolygon(options: PolygonOptions): Promise<Polygon | any> {
+    let self: GoogleMap = this;
     return new Promise<Polygon>((resolve, reject) => {
-      this._objectInstance.addPolygon(options, (polygon: any) => {
+      self._objectInstance.addPolygon(options, (polygon: any) => {
         if (polygon) {
-          resolve(new Polygon(this, polygon));
+          let overlay = new Polygon(self, polygon);
+          self.get('_overlays').push(polygon.getId());
+          self.set(polygon.getId(), overlay);
+          resolve(polygon);
         } else {
           reject();
         }
@@ -1578,10 +1683,14 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addPolyline(options: PolylineOptions): Promise<Polyline | any> {
+    let self: GoogleMap = this;
     return new Promise<Polyline>((resolve, reject) => {
-      this._objectInstance.addPolyline(options, (polyline: any) => {
+      self._objectInstance.addPolyline(options, (polyline: any) => {
         if (polyline) {
-          resolve(new Polyline(this, polyline));
+          let overlay = new Polyline(self, polyline);
+          self.get('_overlays').push(polyline.getId());
+          self.set(polyline.getId(), overlay);
+          resolve(overlay);
         } else {
           reject();
         }
@@ -1594,10 +1703,14 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addTileOverlay(options: TileOverlayOptions): Promise<TileOverlay | any> {
+    let self: GoogleMap = this;
     return new Promise<TileOverlay>((resolve, reject) => {
-      this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
+      self._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
         if (tileOverlay) {
-          resolve(new TileOverlay(this, tileOverlay));
+          let overlay = new TileOverlay(self, tileOverlay);
+          self.get('_overlays').push(tileOverlay.getId());
+          self.set(tileOverlay.getId(), overlay);
+          resolve(overlay);
         } else {
           reject();
         }
@@ -1610,10 +1723,14 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addGroundOverlay(options: GroundOverlayOptions): Promise<GroundOverlay | any> {
+    let self: GoogleMap = this;
     return new Promise<GroundOverlay>((resolve, reject) => {
-      this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
+      self._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
         if (groundOverlay) {
-          resolve(new GroundOverlay(this, groundOverlay));
+          let overlay = new GroundOverlay(self, groundOverlay);
+          self.get('_overlays').push(groundOverlay.getId());
+          self.set(groundOverlay.getId(), overlay);
+          resolve(overlay);
         } else {
           reject();
         }
@@ -1663,6 +1780,13 @@ export class GroundOverlay extends BaseClass {
     this._map = _map;
     this._objectInstance = _objectInstance;
   }
+
+  /**
+   * Return the ID of instance.
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getId(): string { return; }
 
   /**
    * Return the map instance.
@@ -1756,9 +1880,12 @@ export class GroundOverlay extends BaseClass {
   /**
    * Remove the ground overlay
    */
-  @CordovaInstance({ sync: true })
-  remove(): void {}
-
+  @CordovaCheck()
+  remove(): void {
+    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    this._objectInstance.remove();
+    this.destroy();
+  }
 }
 
 /**
@@ -1773,10 +1900,14 @@ export class GroundOverlay extends BaseClass {
 export class HtmlInfoWindow<T> extends IonicNativePlugin {
   private _objectInstance: any;
 
-  constructor() {
+  constructor(initialData?: any) {
    super();
    if (checkAvailability(HtmlInfoWindow.getPluginRef(), null, HtmlInfoWindow.getPluginName()) === true) {
-     this._objectInstance = new (HtmlInfoWindow.getPlugin())();
+      if (initialData instanceof GoogleMaps.getPlugin().HtmlInfoWindow) {
+        this._objectInstance = initialData;
+      } else {
+        this._objectInstance = new (HtmlInfoWindow.getPlugin())();
+      }
    }
   }
 
@@ -1809,7 +1940,6 @@ export class HtmlInfoWindow<T> extends IonicNativePlugin {
 
 }
 
-
 /**
  * @hidden
  */
@@ -1828,7 +1958,7 @@ export class Marker extends BaseClass {
    * @return {string}
    */
   @CordovaInstance({ sync: true })
-  getId(): number { return; }
+  getId(): string { return; }
 
   /**
    * Return the map instance.
@@ -1934,8 +2064,12 @@ export class Marker extends BaseClass {
   /**
    * Remove the marker.
    */
-  @CordovaInstance({ sync: true })
-  remove(): void {}
+  @CordovaCheck()
+  remove(): void {
+    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    this._objectInstance.remove();
+    this.destroy();
+  }
 
   /**
    * Change the info window anchor. This defaults to 50% from the left of the image and at the bottom of the image.
@@ -2038,14 +2172,31 @@ export class MarkerCluster extends BaseClass {
     this._objectInstance = _objectInstance;
   }
 
+  /**
+   * Return the ID of instance.
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getId(): string { return; }
+
   @CordovaInstance({ sync: true })
   addMarker(marker: MarkerOptions): void {}
 
   @CordovaInstance({ sync: true })
   addMarkers(markers: MarkerOptions[]): void {}
 
-  @CordovaInstance({ sync: true })
-  remove(): void {}
+  @CordovaCheck()
+  remove(): void {
+   this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+   this._objectInstance.remove();
+   this.destroy();
+  }
+
+  /**
+   * Return the map instance.
+   * @return {GoogleMap}
+   */
+  getMap(): any { return this._map; }
 
 }
 
@@ -2061,6 +2212,13 @@ export class Polygon extends BaseClass {
     this._map = _map;
     this._objectInstance = _objectInstance;
   }
+
+  /**
+   * Return the ID of instance.
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getId(): string { return; }
 
   /**
    * Return the map instance.
@@ -2170,8 +2328,12 @@ export class Polygon extends BaseClass {
   /**
    * Remove the polygon.
    */
-  @CordovaInstance({ sync: true })
-  remove(): void {}
+  @CordovaCheck()
+  remove(): void {
+    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    this._objectInstance.remove();
+    this.destroy();
+  }
 
   /**
    * Change the polygon stroke width
@@ -2193,7 +2355,7 @@ export class Polygon extends BaseClass {
   setGeodesic(geodesic: boolean): void {}
 
   /**
-   * Return true if the polylgon is geodesic.
+   * Return true if the polygon is geodesic.
    * @return {boolean}
    */
   @CordovaInstance({ sync: true })
@@ -2213,6 +2375,13 @@ export class Polyline extends BaseClass {
     this._map = _map;
     this._objectInstance = _objectInstance;
   }
+
+  /**
+   * Return the ID of instance.
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getId(): string { return; }
 
   /**
    * Return the map instance.
@@ -2320,9 +2489,12 @@ export class Polyline extends BaseClass {
   /**
    * Remove the polyline
    */
-  @CordovaInstance({ sync: true })
-  remove(): void {}
-
+  @CordovaCheck()
+  remove(): void {
+    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    this._objectInstance.remove();
+    this.destroy();
+  }
 }
 
 /**
@@ -2337,6 +2509,13 @@ export class TileOverlay extends BaseClass {
     this._map = _map;
     this._objectInstance = _objectInstance;
   }
+
+  /**
+   * Return the ID of instance.
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getId(): string { return; }
 
   /**
    * Return the map instance.
@@ -2409,9 +2588,12 @@ export class TileOverlay extends BaseClass {
   /**
    * Remove the tile overlay
    */
-  @CordovaInstance({ sync: true })
-  remove(): void {}
-
+  @CordovaCheck()
+  remove(): void {
+    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    this._objectInstance.remove();
+    this.destroy();
+  }
 }
 
 // /**
