@@ -1,38 +1,26 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Add this file to /src/index.ts (follow style of other plugins)
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface IndexItem {
   domain: string;
-    identifier: string;
-    title: string;
-    description: string;
+  identifier: string;
+  title: string;
+  description: string;
 
-    /**
-     * Url to image
-     */
-    url: string;
+  /**
+   * Url to image
+   */
+  url: string;
 
-    /**
-     * Item keywords
-     */
-    keywords?: Array<string>;
+  /**
+   * Item keywords
+   */
+  keywords?: Array<string>;
 
-    /**
-     * Lifetime in minutes
-     */
-    lifetime?: number;
+  /**
+   * Lifetime in minutes
+   */
+  lifetime?: number;
 }
 
 /**
