@@ -24,6 +24,7 @@ import { Injectable } from '@angular/core';
  * getUrl() {
  *      return this.url;
  * }
+ * // ATABASES //
  * createDatabase(database_name:string) {
  *      let url = this.getUrl();
  *      url = url+database_name;
@@ -34,7 +35,6 @@ import { Injectable } from '@angular/core';
  *           return Observable.throw(error.json() || 'Couchbase Lite error');
  *         })
  *  }
- * 
  * deleteDatabase(database_name:string) {
  *      let url = this.getUrl();
  *      url = url+database_name;
@@ -45,7 +45,6 @@ import { Injectable } from '@angular/core';
  *           return Observable.throw(error.json() || 'Couchbase Lite error');
  *        })
  * }
- *
  * getAllDbs() {
  *      let url = this.getUrl();
  *      url = url+'_all_dbs';
@@ -56,8 +55,28 @@ import { Injectable } from '@angular/core';
  *           return Observable.throw(error.json() || 'Couchbase Lite error');
  *        })
  * }
- *
- *
+ * // DOCUMENTS //
+ * getAllDocuments(database_name){
+ *      // include_docs (optional)
+ *      let url = this.getUrl();
+ *      url = url+database_name+'/_all_docs?include_docs=true;
+ *      return this._http
+ *        .get(url)
+ *        .map(data => { this.results = data['results'] })
+ *        .catch((error:any) => {
+ *           return Observable.throw(error.json() || 'Couchbase Lite error');
+ *        })
+ * }
+ *  createDocument(database_name,data){
+ *      let url = this.getUrl();
+ *      url = url+database_name;
+ *      return this._http
+ *        .post(url,data)
+ *        .map(data => { this.results = data['results'] })
+ *        .catch((error:any) => {
+ *           return Observable.throw(error.json() || 'Couchbase Lite error');
+ *        })
+ * }
  *
  *
  * ```
