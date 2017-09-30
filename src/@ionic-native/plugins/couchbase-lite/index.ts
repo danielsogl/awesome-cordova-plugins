@@ -24,7 +24,7 @@ import { Injectable } from '@angular/core';
  * getUrl() {
  *      return this.url;
  * }
- * // ATABASES //
+ * // DATABASES //
  * createDatabase(database_name:string) {
  *      let url = this.getUrl();
  *      url = url+database_name;
