@@ -23,7 +23,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-documentreader',
   pluginRef: 'DocumentReader',
   repo: 'https://github.com/regulaforensics/cordova-plugin-documentreader.git',
-  platforms: ['iOS'],
+  platforms: ['iOS', 'Android'],
   install: 'ionic plugin add cordova-plugin-documentreader --variable CAMERA_USAGE_DESCRIPTION="To take photo"',
 })
 @Injectable()
