@@ -441,7 +441,7 @@ export class BLE extends IonicNativePlugin {
    *@returns {Promise<any>}
    */
   @Cordova()
-  static readRSSI(
+  readRSSI(
     deviceId: string,
   ): Promise<any> { return; }
 }
