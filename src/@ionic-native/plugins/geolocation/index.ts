@@ -153,6 +153,8 @@ export interface GeolocationOptions {
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation',
   repo: 'https://github.com/apache/cordova-plugin-geolocation',
+  install: 'ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"',
+  installVariables: ['GEOLOCATION_USAGE_DESCRIPTION'],
   platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
