@@ -1,3 +1,35 @@
+<a name="4.3.0"></a>
+# [4.3.0](https://github.com/ionic-team/ionic-native/compare/v4.2.1...v4.3.0) (2017-09-27)
+
+
+### Bug Fixes
+
+* **google-maps:** convert JS classes to Ionic Native ([#1956](https://github.com/ionic-team/ionic-native/issues/1956)) ([57af5c5](https://github.com/ionic-team/ionic-native/commit/57af5c5))
+* **google-maps:** fix icons property of MarkerClusterOptions ([#1937](https://github.com/ionic-team/ionic-native/issues/1937)) ([8004790](https://github.com/ionic-team/ionic-native/commit/8004790))
+* **google-maps:** the zoom option is missing in the GoogleMapOptions class ([#1948](https://github.com/ionic-team/ionic-native/issues/1948)) ([ef898ef](https://github.com/ionic-team/ionic-native/commit/ef898ef))
+* **http:** fix plugin ref ([#1934](https://github.com/ionic-team/ionic-native/issues/1934)) ([3a1034e](https://github.com/ionic-team/ionic-native/commit/3a1034e))
+* **launch-navigator:** fix navigate method ([#1940](https://github.com/ionic-team/ionic-native/issues/1940)) ([a150d4d](https://github.com/ionic-team/ionic-native/commit/a150d4d))
+* **stripe:** fix stripe create card token ([#2002](https://github.com/ionic-team/ionic-native/issues/2002)) ([5b15bb9](https://github.com/ionic-team/ionic-native/commit/5b15bb9))
+* **zeroconf:** extend the ZeroconfResult.action definition ([#1985](https://github.com/ionic-team/ionic-native/issues/1985)) ([e2f3702](https://github.com/ionic-team/ionic-native/commit/e2f3702))
+
+
+### Features
+
+* **android-full-screen:** add support for setSystemUiVisiblity ([#1942](https://github.com/ionic-team/ionic-native/issues/1942)) ([4246d47](https://github.com/ionic-team/ionic-native/commit/4246d47))
+* **document-reader:** add cordova-plugin-documentreader ([#1996](https://github.com/ionic-team/ionic-native/issues/1996)) ([7b94d4f](https://github.com/ionic-team/ionic-native/commit/7b94d4f))
+* **extended-device-information:** add Extended Device Info plugin ([#1980](https://github.com/ionic-team/ionic-native/issues/1980)) ([806766e](https://github.com/ionic-team/ionic-native/commit/806766e))
+* **music-controls:** add support for next/prev track and skip forward/backward in control center ([#1927](https://github.com/ionic-team/ionic-native/issues/1927)) ([fff9969](https://github.com/ionic-team/ionic-native/commit/fff9969))
+* **push:** update PushOptions interfaces to match new version ([#1908](https://github.com/ionic-team/ionic-native/issues/1908)) ([34bf136](https://github.com/ionic-team/ionic-native/commit/34bf136))
+* **qr-scanner:** added destroy method ([#1916](https://github.com/ionic-team/ionic-native/issues/1916)) ([#1971](https://github.com/ionic-team/ionic-native/issues/1971)) ([10eb3ee](https://github.com/ionic-team/ionic-native/commit/10eb3ee))
+* **uid:** add UID plugin ([#1946](https://github.com/ionic-team/ionic-native/issues/1946)) ([e2419a2](https://github.com/ionic-team/ionic-native/commit/e2419a2))
+
+
+### BREAKING CHANGES
+
+* **push:** this wrapper will work only with `phonegap-plugin-push@2.0.0`
+
+
+
 <a name="4.2.1"></a>
 ## [4.2.1](https://github.com/ionic-team/ionic-native/compare/v4.2.0...v4.2.1) (2017-08-29)
 

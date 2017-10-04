@@ -649,27 +649,19 @@ export class BaseClass {
    *
    * @return {Observable<any>}
    */
-  @CordovaCheck({ observable: true })
+  @InstanceCheck({ observable: true })
   addEventListener(eventName: string): Observable<any> {
-    if (!this._objectInstance) {
-      return new Observable((observer) => {
-        observer.error({ error: 'plugin_not_installed' });
-      });
-    }
-
     return new Observable((observer) => {
-       var self = this;
-       this._objectInstance.on(eventName, function() {
-          var args = Array.prototype.slice.call(arguments, 0);
-          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
-            if (args[args.length - 1].type === 'Map') {
-              args[args.length - 1] = self;
-            } else {
-              args[args.length - 1] = self._objectInstance.getMap().get(args[args.length - 1].getId());
-            }
+      this._objectInstance.on(eventName, (...args: any[]) => {
+        if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+          if (args[args.length - 1].type === 'Map') {
+            args[args.length - 1] = this;
+          } else {
+            args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
           }
-          observer.next.call(observer, args);
-       });
+        }
+        observer.next(args);
+      });
     });
   }
 
@@ -678,23 +670,18 @@ export class BaseClass {
    *
    * @return {Promise<any>}
    */
-  @CordovaCheck()
+  @InstanceCheck()
   addListenerOnce(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-       return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    var self = this;
     return new Promise<any>((resolve) => {
-        this._objectInstance.one(eventName, function() {
-          var args = Array.prototype.slice.call(arguments, 0);
-          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
-            if (args[args.length - 1].type === 'Map') {
-              args[args.length - 1] = self;
-            } else {
-              args[args.length - 1] = self._objectInstance.getMap().get(args[args.length - 1].getId());
-            }
+      this._objectInstance.one(eventName, (...args: any[]) => {
+        if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+          if (args[args.length - 1].type === 'Map') {
+            args[args.length - 1] = this;
+          } else {
+            args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
           }
-          resolve.call(self, args);
+        }
+        resolve(args);
       });
     });
   }
@@ -729,28 +716,20 @@ export class BaseClass {
    *
    * @return {Observable<any>}
    */
-  @CordovaCheck({ observable: true })
+  @InstanceCheck({ observable: true })
   on(eventName: string): Observable<any> {
-     if (!this._objectInstance) {
-       return new Observable((observer) => {
-         observer.error({ error: 'plugin_not_installed' });
-       });
-     }
-
-     return new Observable((observer) => {
-        var self = this;
-        this._objectInstance.on(eventName, function() {
-          var args = Array.prototype.slice.call(arguments, 0);
-          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
-            if (args[args.length - 1].type === 'Map') {
-              args[args.length - 1] = self;
-            } else {
-              args[args.length - 1] = self._objectInstance.getMap().get(args[args.length - 1].getId());
-            }
+    return new Observable((observer) => {
+      this._objectInstance.on(eventName, (...args: any[]) => {
+        if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+          if (args[args.length - 1].type === 'Map') {
+            args[args.length - 1] = this;
+          } else {
+            args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
           }
-          observer.next.call(observer, args);
-        });
-     });
+        }
+        observer.next(args);
+      });
+    });
   }
 
   /**
@@ -758,23 +737,18 @@ export class BaseClass {
    *
    * @return {Promise<any>}
    */
-  @CordovaCheck()
+  @InstanceCheck()
   one(eventName: string): Promise<any> {
-    if (!this._objectInstance) {
-       return Promise.reject({ error: 'plugin_not_installed' });
-    }
-    var self = this;
     return new Promise<any>((resolve) => {
-        this._objectInstance.one(eventName, function() {
-          var args = Array.prototype.slice.call(arguments, 0);
-          if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
-            if (args[args.length - 1].type === 'Map') {
-              args[args.length - 1] = self;
-            } else {
-              args[args.length - 1] = self._objectInstance.getMap().get(args[args.length - 1].getId());
-            }
+      this._objectInstance.one(eventName, (...args: any[]) => {
+        if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
+          if (args[args.length - 1].type === 'Map') {
+            args[args.length - 1] = this;
+          } else {
+            args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
           }
-          resolve.call(self, args);
+        }
+        resolve(args);
       });
     });
   }
@@ -1115,11 +1089,8 @@ export class Environment {
    * @return {Promise<any>}
    */
   getLicenseInfo(): Promise<any> {
-    var self = this;
-    return new Promise<any>((resolve, reject) => {
-      GoogleMaps.getPlugin().environment.getLicenseInfo((text: string) => {
-        resolve.call(self, text);
-      });
+    return new Promise<any>((resolve) => {
+      GoogleMaps.getPlugin().environment.getLicenseInfo((text: string) => resolve(text));
     });
   }
 
@@ -1151,7 +1122,7 @@ export class Geocoder {
   geocode(request: GeocoderRequest): Promise<GeocoderResult[] | BaseArrayClass<GeocoderResult>> {
 
     if (request.address instanceof Array || Array.isArray(request.address) ||
-        request.position instanceof Array || Array.isArray(request.position)) {
+      request.position instanceof Array || Array.isArray(request.position)) {
       // -------------------------
       // Geocoder.geocode({
       //   address: [
@@ -1486,16 +1457,11 @@ export class GoogleMap extends BaseClass {
    */
   @CordovaInstance()
   remove(): Promise<any> {
-    let self: GoogleMap = this;
-    self.get('_overlays').forEach((overlayId: string) => {
-      self.set(overlayId, null);
-    });
-    self.get('_overlays').empty();
-    self.set('_overlays', undefined);
-    return new Promise<any>((resolve, reject) => {
-      self._objectInstance.remove(() => {
-        resolve();
-      });
+    this.get('_overlays').forEach((overlayId: string) => this.set(overlayId, null));
+    this.get('_overlays').empty();
+    this.set('_overlays', undefined);
+    return new Promise<any>((resolve) => {
+      this._objectInstance.remove(() => resolve());
     });
   }
 
@@ -1503,17 +1469,12 @@ export class GoogleMap extends BaseClass {
    * Remove all overlays, such as marker
    * @return {Promise<any>}
    */
-  @CordovaCheck()
+  @InstanceCheck()
   clear(): Promise<any> {
-    let self: GoogleMap = this;
-    self.get('_overlays').forEach((overlayId: string) => {
-      self.set(overlayId, null);
-    });
-    self.get('_overlays').empty();
-    return new Promise<any>((resolve, reject) => {
-      self._objectInstance.clear(() => {
-        resolve();
-      });
+    this.get('_overlays').forEach((overlayId: string) => this.set(overlayId, null));
+    this.get('_overlays').empty();
+    return new Promise<any>((resolve) => {
+      this._objectInstance.clear(() => resolve());
     });
   }
 
@@ -1603,13 +1564,12 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addMarker(options: MarkerOptions): Promise<Marker | any> {
-    let self: GoogleMap = this;
     return new Promise<Marker>((resolve, reject) => {
-      self._objectInstance.addMarker(options, (marker: any) => {
+      this._objectInstance.addMarker(options, (marker: any) => {
         if (marker) {
-          let overlay: Marker = new Marker(self, marker);
-          self.get('_overlays').push(marker.getId());
-          self.set(marker.getId(), overlay);
+          const overlay: Marker = new Marker(this, marker);
+          this.get('_overlays').push(marker.getId());
+          this.set(marker.getId(), overlay);
           resolve(overlay);
         } else {
           reject();
@@ -1620,13 +1580,12 @@ export class GoogleMap extends BaseClass {
 
   @InstanceCheck()
   addMarkerCluster(options: MarkerClusterOptions): Promise<MarkerCluster | any> {
-    let self: GoogleMap = this;
     return new Promise<MarkerCluster>((resolve, reject) => {
-      self._objectInstance.addMarkerCluster(options, (markerCluster: any) => {
+      this._objectInstance.addMarkerCluster(options, (markerCluster: any) => {
         if (markerCluster) {
-          let overlay = new MarkerCluster(self, markerCluster);
-          self.get('_overlays').push(markerCluster.getId());
-          self.set(markerCluster.getId(), overlay);
+          const overlay = new MarkerCluster(this, markerCluster);
+          this.get('_overlays').push(markerCluster.getId());
+          this.set(markerCluster.getId(), overlay);
           resolve(overlay);
         } else {
           reject();
@@ -1641,13 +1600,12 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addCircle(options: CircleOptions): Promise<Circle | any> {
-    let self: GoogleMap = this;
     return new Promise<Circle>((resolve, reject) => {
-      self._objectInstance.addCircle(options, (circle: any) => {
+      this._objectInstance.addCircle(options, (circle: any) => {
         if (circle) {
-          let overlay = new Circle(self, circle);
-          self.get('_overlays').push(circle.getId());
-          self.set(circle.getId(), overlay);
+          const overlay = new Circle(this, circle);
+          this.get('_overlays').push(circle.getId());
+          this.set(circle.getId(), overlay);
           resolve(overlay);
         } else {
           reject();
@@ -1662,14 +1620,13 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addPolygon(options: PolygonOptions): Promise<Polygon | any> {
-    let self: GoogleMap = this;
     return new Promise<Polygon>((resolve, reject) => {
-      self._objectInstance.addPolygon(options, (polygon: any) => {
+      this._objectInstance.addPolygon(options, (polygon: any) => {
         if (polygon) {
-          let overlay = new Polygon(self, polygon);
-          self.get('_overlays').push(polygon.getId());
-          self.set(polygon.getId(), overlay);
-          resolve(polygon);
+          const overlay = new Polygon(this, polygon);
+          this.get('_overlays').push(polygon.getId());
+          this.set(polygon.getId(), overlay);
+          resolve(overlay);
         } else {
           reject();
         }
@@ -1683,13 +1640,12 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addPolyline(options: PolylineOptions): Promise<Polyline | any> {
-    let self: GoogleMap = this;
     return new Promise<Polyline>((resolve, reject) => {
-      self._objectInstance.addPolyline(options, (polyline: any) => {
+      this._objectInstance.addPolyline(options, (polyline: any) => {
         if (polyline) {
-          let overlay = new Polyline(self, polyline);
-          self.get('_overlays').push(polyline.getId());
-          self.set(polyline.getId(), overlay);
+          const overlay = new Polyline(this, polyline);
+          this.get('_overlays').push(polyline.getId());
+          this.set(polyline.getId(), overlay);
           resolve(overlay);
         } else {
           reject();
@@ -1703,13 +1659,12 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addTileOverlay(options: TileOverlayOptions): Promise<TileOverlay | any> {
-    let self: GoogleMap = this;
     return new Promise<TileOverlay>((resolve, reject) => {
-      self._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
+      this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
         if (tileOverlay) {
-          let overlay = new TileOverlay(self, tileOverlay);
-          self.get('_overlays').push(tileOverlay.getId());
-          self.set(tileOverlay.getId(), overlay);
+          const overlay = new TileOverlay(this, tileOverlay);
+          this.get('_overlays').push(tileOverlay.getId());
+          this.set(tileOverlay.getId(), overlay);
           resolve(overlay);
         } else {
           reject();
@@ -1723,13 +1678,12 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addGroundOverlay(options: GroundOverlayOptions): Promise<GroundOverlay | any> {
-    let self: GoogleMap = this;
     return new Promise<GroundOverlay>((resolve, reject) => {
-      self._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
+      this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
         if (groundOverlay) {
-          let overlay = new GroundOverlay(self, groundOverlay);
-          self.get('_overlays').push(groundOverlay.getId());
-          self.set(groundOverlay.getId(), overlay);
+          const overlay = new GroundOverlay(this, groundOverlay);
+          this.get('_overlays').push(groundOverlay.getId());
+          this.set(groundOverlay.getId(), overlay);
           resolve(overlay);
         } else {
           reject();
@@ -1892,23 +1846,23 @@ export class GroundOverlay extends BaseClass {
  * @hidden
  */
 @Plugin({
- plugin: 'cordova-plugin-googlemaps',
- pluginName: 'GoogleMaps',
- pluginRef: 'plugin.google.maps.HtmlInfoWindow',
- repo: ''
+  plugin: 'cordova-plugin-googlemaps',
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.HtmlInfoWindow',
+  repo: ''
 })
 export class HtmlInfoWindow<T> extends IonicNativePlugin {
   private _objectInstance: any;
 
   constructor(initialData?: any) {
-   super();
-   if (checkAvailability(HtmlInfoWindow.getPluginRef(), null, HtmlInfoWindow.getPluginName()) === true) {
+    super();
+    if (checkAvailability(HtmlInfoWindow.getPluginRef(), null, HtmlInfoWindow.getPluginName()) === true) {
       if (initialData instanceof GoogleMaps.getPlugin().HtmlInfoWindow) {
         this._objectInstance = initialData;
       } else {
         this._objectInstance = new (HtmlInfoWindow.getPlugin())();
       }
-   }
+    }
   }
 
   /**
@@ -2185,11 +2139,11 @@ export class MarkerCluster extends BaseClass {
   @CordovaInstance({ sync: true })
   addMarkers(markers: MarkerOptions[]): void {}
 
-  @CordovaCheck()
+  @InstanceCheck()
   remove(): void {
-   this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
-   this._objectInstance.remove();
-   this.destroy();
+    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    this._objectInstance.remove();
+    this.destroy();
   }
 
   /**
@@ -2328,7 +2282,7 @@ export class Polygon extends BaseClass {
   /**
    * Remove the polygon.
    */
-  @CordovaCheck()
+  @InstanceCheck()
   remove(): void {
     this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
     this._objectInstance.remove();
@@ -2489,7 +2443,7 @@ export class Polyline extends BaseClass {
   /**
    * Remove the polyline
    */
-  @CordovaCheck()
+  @InstanceCheck()
   remove(): void {
     this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
     this._objectInstance.remove();
