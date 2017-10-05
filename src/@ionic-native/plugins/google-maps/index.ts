@@ -656,6 +656,15 @@ export class BaseClass {
         if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
           if (args[args.length - 1].type === 'Map') {
             args[args.length - 1] = this;
+          } else if (this instanceof MarkerCluster) {
+            let overlay: Marker = this.get(args[args.length - 1].getId());
+            if (!overlay) {
+              let markerCluster: MarkerCluster = (MarkerCluster)this;
+              overlay = new Marker(markerCluster.getMap(), args[args.length - 1]);
+              this.get('_overlays').push(args[args.length - 1].getId());
+              this.set(args[args.length - 1].getId(), overlay);
+            }
+            args[args.length - 1] = overlay;
           } else {
             args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
           }
@@ -1586,6 +1595,7 @@ export class GoogleMap extends BaseClass {
           const overlay = new MarkerCluster(this, markerCluster);
           this.get('_overlays').push(markerCluster.getId());
           this.set(markerCluster.getId(), overlay);
+          markerCluster.set('_overlays', new BaseArrayClass());
           resolve(overlay);
         } else {
           reject();
@@ -2141,6 +2151,7 @@ export class MarkerCluster extends BaseClass {
 
   @InstanceCheck()
   remove(): void {
+    this._objectInstance.set('_overlays', undefined);
     this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
     this._objectInstance.remove();
     this.destroy();
