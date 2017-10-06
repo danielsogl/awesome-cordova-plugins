@@ -610,7 +610,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
   pluginRef: 'plugin.google.maps',
   plugin: 'cordova-plugin-googlemaps',
   repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
-  install: 'ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
+  install: 'ionic cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
   installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS'],
   platforms: ['Android', 'iOS']
 })
@@ -656,6 +656,21 @@ export class BaseClass {
         if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
           if (args[args.length - 1].type === 'Map') {
             args[args.length - 1] = this;
+          } else if (this instanceof MarkerCluster) {
+            let overlay: Marker = this.get(args[args.length - 1].getId());
+            if (!overlay) {
+              let markerJS: any = args[args.length - 1];
+              let markerCluster: MarkerCluster = <MarkerCluster>this;
+              overlay = new Marker(markerCluster.getMap(), markerJS);
+              this.get('_overlays').push(markerJS.getId());
+              this.set(markerJS.getId(), overlay);
+              markerJS.one(markerJS.getId() + '_remove', () => {
+                let idx = this.get('_overlays').indexOf(overlay);
+                this.get('_overlays').removeAt(idx);
+                this.set(markerJS.getId(), undefined);
+              });
+            }
+            args[args.length - 1] = overlay;
           } else {
             args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
           }
@@ -677,6 +692,21 @@ export class BaseClass {
         if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
           if (args[args.length - 1].type === 'Map') {
             args[args.length - 1] = this;
+          } else if (this instanceof MarkerCluster) {
+            let overlay: Marker = this.get(args[args.length - 1].getId());
+            if (!overlay) {
+              let markerJS: any = args[args.length - 1];
+              let markerCluster: MarkerCluster = <MarkerCluster>this;
+              overlay = new Marker(markerCluster.getMap(), markerJS);
+              this.get('_overlays').push(markerJS.getId());
+              this.set(markerJS.getId(), overlay);
+              markerJS.one(markerJS.getId() + '_remove', () => {
+                let idx = this.get('_overlays').indexOf(overlay);
+                this.get('_overlays').removeAt(idx);
+                this.set(markerJS.getId(), undefined);
+              });
+            }
+            args[args.length - 1] = overlay;
           } else {
             args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
           }
@@ -723,6 +753,21 @@ export class BaseClass {
         if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
           if (args[args.length - 1].type === 'Map') {
             args[args.length - 1] = this;
+          } else if (this instanceof MarkerCluster) {
+            let overlay: Marker = this.get(args[args.length - 1].getId());
+            if (!overlay) {
+              let markerJS: any = args[args.length - 1];
+              let markerCluster: MarkerCluster = <MarkerCluster>this;
+              overlay = new Marker(markerCluster.getMap(), markerJS);
+              this.get('_overlays').push(markerJS.getId());
+              this.set(markerJS.getId(), overlay);
+              markerJS.one(markerJS.getId() + '_remove', () => {
+                let idx = this.get('_overlays').indexOf(overlay);
+                this.get('_overlays').removeAt(idx);
+                this.set(markerJS.getId(), undefined);
+              });
+            }
+            args[args.length - 1] = overlay;
           } else {
             args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
           }
@@ -744,6 +789,21 @@ export class BaseClass {
         if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
           if (args[args.length - 1].type === 'Map') {
             args[args.length - 1] = this;
+          } else if (this instanceof MarkerCluster) {
+            let overlay: Marker = this.get(args[args.length - 1].getId());
+            if (!overlay) {
+              let markerJS: any = args[args.length - 1];
+              let markerCluster: MarkerCluster = <MarkerCluster>this;
+              overlay = new Marker(markerCluster.getMap(), markerJS);
+              this.get('_overlays').push(markerJS.getId());
+              this.set(markerJS.getId(), overlay);
+              markerJS.one(markerJS.getId() + '_remove', () => {
+                let idx = this.get('_overlays').indexOf(overlay);
+                this.get('_overlays').removeAt(idx);
+                this.set(markerJS.getId(), undefined);
+              });
+            }
+            args[args.length - 1] = overlay;
           } else {
             args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
           }
@@ -1567,9 +1627,15 @@ export class GoogleMap extends BaseClass {
     return new Promise<Marker>((resolve, reject) => {
       this._objectInstance.addMarker(options, (marker: any) => {
         if (marker) {
+          let markerId: string = marker.getId();
           const overlay: Marker = new Marker(this, marker);
-          this.get('_overlays').push(marker.getId());
-          this.set(marker.getId(), overlay);
+          this.get('_overlays').push(markerId);
+          this.set(markerId, overlay);
+          marker.one(markerId + '_remove', () => {
+            let idx: number = this.get('_overlays').indexOf(overlay);
+            this.get('_overlays').removeAt(idx);
+            this.set(markerId, undefined);
+          });
           resolve(overlay);
         } else {
           reject();
@@ -1586,6 +1652,12 @@ export class GoogleMap extends BaseClass {
           const overlay = new MarkerCluster(this, markerCluster);
           this.get('_overlays').push(markerCluster.getId());
           this.set(markerCluster.getId(), overlay);
+          markerCluster.one('remove', () => {
+            let idx: number = this.get('_overlays').indexOf(overlay);
+            this.get('_overlays').removeAt(idx);
+            this.set(markerCluster.getId(), undefined);
+          });
+          markerCluster.set('_overlays', new BaseArrayClass());
           resolve(overlay);
         } else {
           reject();
@@ -1603,9 +1675,15 @@ export class GoogleMap extends BaseClass {
     return new Promise<Circle>((resolve, reject) => {
       this._objectInstance.addCircle(options, (circle: any) => {
         if (circle) {
+          let circleId: string = circle.getId();
           const overlay = new Circle(this, circle);
-          this.get('_overlays').push(circle.getId());
-          this.set(circle.getId(), overlay);
+          this.get('_overlays').push(circleId);
+          this.set(circleId, overlay);
+          circle.one(circleId + '_remove', () => {
+            let idx: number = this.get('_overlays').indexOf(overlay);
+            this.get('_overlays').removeAt(idx);
+            this.set(circleId, undefined);
+          });
           resolve(overlay);
         } else {
           reject();
@@ -1623,10 +1701,16 @@ export class GoogleMap extends BaseClass {
     return new Promise<Polygon>((resolve, reject) => {
       this._objectInstance.addPolygon(options, (polygon: any) => {
         if (polygon) {
+          let polygonId: string = polygon.getId();
           const overlay = new Polygon(this, polygon);
-          this.get('_overlays').push(polygon.getId());
-          this.set(polygon.getId(), overlay);
-          resolve(polygon);
+          this.get('_overlays').push(polygonId);
+          this.set(polygonId, overlay);
+          polygon.one(polygonId + '_remove', () => {
+            let idx: number = this.get('_overlays').indexOf(overlay);
+            this.get('_overlays').removeAt(idx);
+            this.set(polygonId, undefined);
+          });
+          resolve(overlay);
         } else {
           reject();
         }
@@ -1643,9 +1727,15 @@ export class GoogleMap extends BaseClass {
     return new Promise<Polyline>((resolve, reject) => {
       this._objectInstance.addPolyline(options, (polyline: any) => {
         if (polyline) {
+          let polylineId: string = polyline.getId();
           const overlay = new Polyline(this, polyline);
-          this.get('_overlays').push(polyline.getId());
-          this.set(polyline.getId(), overlay);
+          this.get('_overlays').push(polylineId);
+          this.set(polylineId, overlay);
+          polyline.one(polylineId + '_remove', () => {
+            let idx: number = this.get('_overlays').indexOf(overlay);
+            this.get('_overlays').removeAt(idx);
+            this.set(polylineId, undefined);
+          });
           resolve(overlay);
         } else {
           reject();
@@ -1662,9 +1752,15 @@ export class GoogleMap extends BaseClass {
     return new Promise<TileOverlay>((resolve, reject) => {
       this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
         if (tileOverlay) {
+          let tileOverlayId: string = tileOverlay.getId();
           const overlay = new TileOverlay(this, tileOverlay);
-          this.get('_overlays').push(tileOverlay.getId());
-          this.set(tileOverlay.getId(), overlay);
+          this.get('_overlays').push(tileOverlayId);
+          this.set(tileOverlayId, overlay);
+          tileOverlay.one(tileOverlayId + '_remove', () => {
+            let idx: number = this.get('_overlays').indexOf(overlay);
+            this.get('_overlays').removeAt(idx);
+            this.set(tileOverlayId, undefined);
+          });
           resolve(overlay);
         } else {
           reject();
@@ -1681,9 +1777,15 @@ export class GoogleMap extends BaseClass {
     return new Promise<GroundOverlay>((resolve, reject) => {
       this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
         if (groundOverlay) {
+          let groundOverlayId: string = groundOverlay.getId();
           const overlay = new GroundOverlay(this, groundOverlay);
-          this.get('_overlays').push(groundOverlay.getId());
-          this.set(groundOverlay.getId(), overlay);
+          this.get('_overlays').push(groundOverlayId);
+          this.set(groundOverlayId, overlay);
+          groundOverlay.one(groundOverlayId + '_remove', () => {
+            let idx: number = this.get('_overlays').indexOf(overlay);
+            this.get('_overlays').removeAt(idx);
+            this.set(groundOverlayId, undefined);
+          });
           resolve(overlay);
         } else {
           reject();
@@ -2141,6 +2243,7 @@ export class MarkerCluster extends BaseClass {
 
   @InstanceCheck()
   remove(): void {
+    this._objectInstance.set('_overlays', undefined);
     this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
     this._objectInstance.remove();
     this.destroy();
