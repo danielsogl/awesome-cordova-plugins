@@ -1,5 +1,5 @@
 <a name="4.3.1"></a>
-## [4.3.1](https://github.com/ionic-team/ionic-native/compare/v4.3.0...v4.3.1) (2017-10-06)
+## [4.3.2](https://github.com/ionic-team/ionic-native/compare/v4.3.0...v4.3.2) (2017-10-06)
 
 
 ### Bug Fixes
@@ -11,6 +11,7 @@
 
 ### Features
 
+* **pro:** Add support for Ionic Pro by incorporating cordova-plugin-ionic ([465d551](https://github.com/ionic-team/ionic-native/commit/465d551))
 * **regula-document-reader:** separate initialization and scanning, add android ([#2013](https://github.com/ionic-team/ionic-native/issues/2013)) ([2179699](https://github.com/ionic-team/ionic-native/commit/2179699))
 
 
@@ -1797,13 +1798,13 @@ The whole implementation has changed now. You must update your code.
 * **geolocation:** call correct clearFunction ([9e86a40](https://github.com/ionic-team/ionic-native/commit/9e86a40))
 * **plugin:** return originalMethod return value ([240f0f8](https://github.com/ionic-team/ionic-native/commit/240f0f8))
 * **plugin:** use call for id based clearFunction ([c2fdf39](https://github.com/ionic-team/ionic-native/commit/c2fdf39))
-* datepicker plugin, pluginref, and [@Cordova](https://github.com/Cordova) wrapper ([499ead3](https://github.com/ionic-team/ionic-native/commit/499ead3))
+* datepicker plugin, pluginref, and @Cordova wrapper ([499ead3](https://github.com/ionic-team/ionic-native/commit/499ead3))
 
 
 ### Features
 
 * **DatePicker:** Added DatePicker ([5afa58f](https://github.com/ionic-team/ionic-native/commit/5afa58f))
-* **plugin:** add sync option to [@Cordova](https://github.com/Cordova) for sync functions ([17e3827](https://github.com/ionic-team/ionic-native/commit/17e3827))
+* **plugin:** add sync option to @Cordova for sync functions ([17e3827](https://github.com/ionic-team/ionic-native/commit/17e3827))
 * **plugin:** call clearFunction with original fn args ([8f27fc9](https://github.com/ionic-team/ionic-native/commit/8f27fc9))
 * add app version plugin ([20cb01f](https://github.com/ionic-team/ionic-native/commit/20cb01f))
 * add app version plugin ([8b78521](https://github.com/ionic-team/ionic-native/commit/8b78521))
