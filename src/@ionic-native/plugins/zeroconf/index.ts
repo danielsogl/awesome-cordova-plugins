@@ -14,7 +14,7 @@ export interface ZeroconfService {
 }
 
 export interface ZeroconfResult {
-  action: 'registered' | 'added' | 'removed';
+  action: 'registered' | 'added' | 'removed' | 'resolved';
   service: ZeroconfService;
 }
 
