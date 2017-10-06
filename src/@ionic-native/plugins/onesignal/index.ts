@@ -165,7 +165,7 @@ export interface OSNotificationPayload {
   /**
    * URL to open when opening the notification.
    */
-  launchUrl?: string;
+  launchURL?: string;
   /**
    * Sound resource to play when the notification is shown.
    */
