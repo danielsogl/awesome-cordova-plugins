@@ -24,6 +24,7 @@ import { Injectable } from '@angular/core';
  * getUrl() {
  *      return this.url;
  * }
+ * // DATABASES //
  * createDatabase(database_name:string) {
  *      let url = this.getUrl();
  *      url = url+database_name;
@@ -34,7 +35,6 @@ import { Injectable } from '@angular/core';
  *           return Observable.throw(error.json() || 'Couchbase Lite error');
  *         })
  *  }
- * 
  * deleteDatabase(database_name:string) {
  *      let url = this.getUrl();
  *      url = url+database_name;
@@ -56,8 +56,6 @@ import { Injectable } from '@angular/core';
  *           return Observable.throw(error.json() || 'Couchbase Lite error');
  *        })
  * }
- *
- *
  *
  *
  * ```
