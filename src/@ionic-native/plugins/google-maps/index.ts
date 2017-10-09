@@ -1953,7 +1953,7 @@ export class GroundOverlay extends BaseClass {
   pluginRef: 'plugin.google.maps.HtmlInfoWindow',
   repo: ''
 })
-export class HtmlInfoWindow<T> extends IonicNativePlugin {
+export class HtmlInfoWindow<T> extends BaseClass {
   private _objectInstance: any;
 
   constructor(initialData?: any) {
