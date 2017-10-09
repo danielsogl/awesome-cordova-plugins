@@ -1953,17 +1953,14 @@ export class GroundOverlay extends BaseClass {
   pluginRef: 'plugin.google.maps.HtmlInfoWindow',
   repo: ''
 })
-export class HtmlInfoWindow<T> extends IonicNativePlugin {
-  private _objectInstance: any;
+export class HtmlInfoWindow<T> extends BaseClass {
 
   constructor(initialData?: any) {
     super();
-    if (checkAvailability(HtmlInfoWindow.getPluginRef(), null, HtmlInfoWindow.getPluginName()) === true) {
-      if (initialData instanceof GoogleMaps.getPlugin().HtmlInfoWindow) {
-        this._objectInstance = initialData;
-      } else {
-        this._objectInstance = new (HtmlInfoWindow.getPlugin())();
-      }
+    if (initialData instanceof GoogleMaps.getPlugin().HtmlInfoWindow) {
+      this._objectInstance = initialData;
+    } else {
+      this._objectInstance = new (GoogleMaps.getPlugin().HtmlInfoWindow)();
     }
   }
 
