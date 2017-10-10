@@ -3,5 +3,5 @@ node_modules/
 .idea
 .tmp
 aot/
-dist/
 scripts/ionic-native-bower
+dist/

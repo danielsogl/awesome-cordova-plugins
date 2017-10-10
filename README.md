@@ -52,38 +52,28 @@ import { NgZone } from '@angular/core';
 @Component({ ... })
 export class MyComponent {
 
-  constructor(private geolocation: Geolocation, private platform: Platform, private ngZone: NgZone) {
+  constructor(private geolocation: Geolocation, private platform: Platform) {
 
     platform.ready().then(() => {
 
       // get position
       geolocation.getCurrentPosition().then(pos => {
-
         console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
-
       });
 
 
       // watch position
       const watch = geolocation.watchPosition().subscribe(pos => {
-
         console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
-
-        // Currently, observables from Ionic Native plugins
-        // need to run inside of zone to trigger change detection
-        ngZone.run(() => {
-          this.position = pos;
-        })
-
+        this.position = pos;
       });
 
       // to stop watching
       watch.unsubscribe();
-
     });
-
+    
   }
-
+  
 }
 ```
 

@@ -49,7 +49,10 @@ export class SocialSharing extends IonicNativePlugin {
    * @param url {string} A URL to share
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 4,
+    errorIndex: 5
+  })
   share(message?: string, subject?: string, file?: string | string[], url?: string): Promise<any> { return; }
 
   /**

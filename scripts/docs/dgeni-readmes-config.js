@@ -41,7 +41,7 @@ module.exports = currentVersion => {
         docTypes: ['class'],
         getOutputPath: doc => doc.originalModule.replace(config.pluginDir + '/', '')
           .replace('/plugins', '')
-          .replace('/index', '/README.md')
+          .replace(/\/index$/, '/README.md')
       }];
 
     })

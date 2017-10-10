@@ -20,6 +20,10 @@ export interface SQLiteDatabaseConfig {
   * support opening pre-filled databases with https://github.com/litehelpers/cordova-sqlite-ext
   */
   createFromLocation?: number;
+  /**
+   * support encrypted databases with https://github.com/litehelpers/Cordova-sqlcipher-adapter
+   */
+  key?: string;
 }
 
 /**

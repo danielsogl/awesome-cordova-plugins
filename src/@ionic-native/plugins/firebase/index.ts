@@ -71,10 +71,10 @@ export class Firebase extends IonicNativePlugin {
 
   /**
  * Check permission to receive push notifications
- * @return {Promise<any>}
+ * @return {Promise<{isEnabled: boolean}>}
  */
   @Cordova()
-  hasPermission(): Promise<any> { return; }
+  hasPermission(): Promise<{isEnabled: boolean}> { return; }
 
   /**
    * Set icon badge number. Set to 0 to clear the badge.
@@ -106,6 +106,13 @@ export class Firebase extends IonicNativePlugin {
    */
   @Cordova()
   unsubscribe(topic: string): Promise<any> { return; }
+
+  /**
+   * Unregister from firebase, used to stop receiving push notifications.
+   * Call this when you logout user from your app.
+   */
+  @Cordova()
+  unregister(): Promise<any> { return; }
 
   /**
    * Log an event using Analytics

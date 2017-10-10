@@ -15,7 +15,8 @@ export interface DynamicLinksOptions {
  * Cordova plugin for Firebase Invites and Firebase Dynamic Links
  *
  * Variables APP_DOMAIN and APP_PATH specify web URL where your app will start an activity to handle the link. They also used to setup support for App Indexing.
- *
+ * Variable REVERSED_CLIENT_ID can be found in your GoogleService-Info.plist under the same key name.
+ * Variable PHOTO_LIBRARY_USAGE_DESCRIPTION specifies required value for NSPhotoLibraryUsageDescription on iOS.
  * Go to firebase console and export google-services.json and GoogleService-Info.plist. Put those files into the root of your cordova app folder.
  *
  * Preferences:

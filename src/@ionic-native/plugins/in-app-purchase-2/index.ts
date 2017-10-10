@@ -13,6 +13,7 @@ import { Injectable } from '@angular/core';
  * constructor(private store: InAppPurchase2) { }
  *
  * ...
+ * ```
  *
  *  * @advanced
  *

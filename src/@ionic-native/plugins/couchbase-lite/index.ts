@@ -10,14 +10,53 @@ import { Injectable } from '@angular/core';
  * @usage
  * ```typescript
  * import { CouchbaseLite } from '@ionic-native/couchbase-lite';
- *
- * constructor(private couchbase: CouchbaseLite) {
- *
- *   couchbase.getURL()
- *     .then(url => console.log(url))
- *     .catch(error => console.error(error));
- *
+ * import { Http } from '@angular/http';
+ * import { Observable } from 'rxjs/Observable'
+ * constructor(private couchbase: CouchbaseLite, private platform:Platform,private _http:Http) {
+ *    this.initMethod();
  * }
+ * url:string;
+ * initMethod() {
+ *    this.couchbase.getURL().then((url)=> {
+ *        this.url = url;
+ *    })
+ * }
+ * getUrl() {
+ *      return this.url;
+ * }
+ * // DATABASES //
+ * createDatabase(database_name:string) {
+ *      let url = this.getUrl();
+ *      url = url+database_name;
+ *      return this._http
+ *        .put(url)
+ *        .map(data => { this.results = data['results'] })
+ *        .catch((error:any) => {
+ *           return Observable.throw(error.json() || 'Couchbase Lite error');
+ *         })
+ *  }
+ * deleteDatabase(database_name:string) {
+ *      let url = this.getUrl();
+ *      url = url+database_name;
+ *      return this._http
+ *        .delete(url)
+ *        .map(data => { this.results = data['results'] })
+ *        .catch((error:any) => {
+ *           return Observable.throw(error.json() || 'Couchbase Lite error');
+ *        })
+ * }
+ *
+ * getAllDbs() {
+ *      let url = this.getUrl();
+ *      url = url+'_all_dbs';
+ *      return this._http
+ *        .get(url)
+ *        .map(data => { this.results = data['results'] })
+ *        .catch((error:any) => {
+ *           return Observable.throw(error.json() || 'Couchbase Lite error');
+ *        })
+ * }
+ *
  *
  * ```
  */
