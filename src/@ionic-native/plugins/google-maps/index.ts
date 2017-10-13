@@ -1953,15 +1953,11 @@ export class GroundOverlay extends BaseClass {
   pluginRef: 'plugin.google.maps.HtmlInfoWindow',
   repo: ''
 })
-export class HtmlInfoWindow<T> extends BaseClass {
+export class HtmlInfoWindow extends BaseClass {
 
-  constructor(initialData?: any) {
+  constructor() {
     super();
-    if (initialData instanceof GoogleMaps.getPlugin().HtmlInfoWindow) {
-      this._objectInstance = initialData;
-    } else {
-      this._objectInstance = new (GoogleMaps.getPlugin().HtmlInfoWindow)();
-    }
+    this._objectInstance = new (GoogleMaps.getPlugin().HtmlInfoWindow)();
   }
 
   /**
