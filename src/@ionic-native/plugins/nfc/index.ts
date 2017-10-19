@@ -65,20 +65,6 @@ export class NFC extends IonicNativePlugin {
   beginSession(onSuccess?: Function, onFailure?: Function): Observable<any> { return; }
 
   /**
-   * Stops the NFCNDEFReaderSession returning control to your app.
-   * @param onSuccess
-   * @param onFailure
-   * @returns {Observable<any>}
-   */
-  @Cordova({
-    observable: true,
-    successIndex: 0,
-    errorIndex: 3,
-    clearWithArgs: true
-  })
-  invalidateSession(onSuccess?: Function, onFailure?: Function): Observable<any> { return; }
-
-  /**
    * Registers an event listener for any NDEF tag.
    * @param onSuccess
    * @param onFailure
