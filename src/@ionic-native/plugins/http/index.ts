@@ -148,14 +148,6 @@ export class HTTP extends IonicNativePlugin {
   acceptAllCerts(accept: boolean): Promise<void> { return; }
 
   /**
-   * Whether or not to validate the domain name in the certificate. This defaults to true.
-   * @param validate {boolean} Set to true to validate
-   * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
-   */
-  @Cordova()
-  validateDomainName(validate: boolean): Promise<void> { return; }
-
-  /**
    * Make a POST request
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
