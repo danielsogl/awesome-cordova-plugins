@@ -114,6 +114,13 @@ export class HTTP extends IonicNativePlugin {
   removeCookies(url: string, cb: () => void): void { }
 
   /**
+   * Disable following redirects automatically
+   * @param disable {boolean} Set to true to disable following redirects automatically
+   */
+  @Cordova({ sync: true })
+  disableRedirect(disable: boolean): void { }
+
+  /**
    * Set request timeout
    * @param timeout {number} The timeout in seconds. Default 60
    */
