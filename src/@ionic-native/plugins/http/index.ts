@@ -179,6 +179,16 @@ export class HTTP extends IonicNativePlugin {
   put(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
 
   /**
+   * Make a PATCH request
+   * @param url {string} The url to send the request to
+   * @param body {Object} The body of the request
+   * @param headers {Object} The headers to set for this request
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  patch(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
+
+  /**
    * Make a DELETE request
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
