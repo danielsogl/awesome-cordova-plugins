@@ -443,7 +443,7 @@ export class VisibleRegion implements ILatLngBounds {
  * @hidden
  * You can listen to these events where appropriate
  */
-export const GoogleMapsEvent: { [eventName: string]: string; } = {
+export const GoogleMapsEvent = {
   MAP_READY: 'map_ready',
   MAP_LOADED: 'map_loaded',
   MAP_CLICK: 'map_click',

@@ -210,3 +210,12 @@ someMethod(): Promise<any> {
   // anything here will only run if the plugin is available
 }
 ```
+
+#### CordovaFunctionOverride
+Wrap a stub function in a call to a Cordova plugin, checking if both Cordova and the required plugin are installed.
+
+Example:
+```ts
+@CordovaFunctionOverride()
+someMethod(): Observable<any> { return; }
+```

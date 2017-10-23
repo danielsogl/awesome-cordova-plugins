@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, CordovaInstance, IonicNativePlugin } from '@ionic-native/core';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Information about the currently running app
@@ -22,6 +23,15 @@ export interface DeployInfo {
 }
 
 /**
+ * Object for manually configuring deploy
+ */
+export interface DeployConfig {
+  appId?: string;
+  host?: string;
+  channel?: string;
+}
+
+/**
  * @hidden
  */
 export class ProDeploy {
@@ -30,68 +40,61 @@ export class ProDeploy {
 
   /**
    * Re-initialize Deploy plugin with a new App ID and host.  Not used in most cases.
-   * @param appId An Ionic Pro app ID
-   * @param host An Ionic Pro live update API
+   * @param config A valid Deploy config object
    */
   @CordovaInstance()
-  init(appId: string, host: string): Promise<any> { return; }
-
-  @CordovaInstance()
-  debug(): Promise<any> { return; }
-
-  @CordovaInstance()
-  clearDebug(): Promise<any> { return; }
+  init(config: DeployConfig): Promise<any> { return; }
 
   /**
    * Check a channel for an available update
-   * @param appId An Ionic Pro app ID
-   * @param channelName An Ionic Pro channel name
+   * @return {Promise<string>} Resolves with 'true' or 'false', or rejects with an error.
    */
-  @CordovaInstance()
-  check(appId: string, channelName: string): Promise<any> { return; }
+  @CordovaInstance({
+    observable: true
+  })
+  check(): Promise<string> { return; }
 
   /**
    * Download an available version
-   * @param appId An Ionic Pro app ID
+   * @return {Observable<any>} Updates with percent completion, or errors with a message.
    */
-  @CordovaInstance()
-  download(appId: string): Promise<any> { return; }
+  @CordovaInstance({
+    observable: true
+  })
+  download(): Observable<any> { return; }
 
   /**
    * Unzip the latest downloaded version
-   * @param appId An Ionic Pro app ID
+   * @return {Observable<any>} Updates with percent completion, or errors with a message.
    */
   @CordovaInstance()
-  extract(appId: string): Promise<any> { return; }
+  extract(): Observable<any> { return; }
 
   /**
    * Reload app with the deployed version
-   * @param appId An Ionic Pro app ID
    */
   @CordovaInstance()
-  redirect(appId: string): Promise<any> { return; }
+  redirect(): Promise<any> { return; }
 
   /**
    * Get info about the version running on the device
-   * @param appId An Ionic Pro app ID
+   * @return {Promise<DeployInfo>} Information about the current version running on the app.
    */
   @CordovaInstance()
-  info(appId: string): Promise<DeployInfo> { return; }
+  info(): Promise<DeployInfo> { return; }
 
   /**
    * List versions stored on the device
-   * @param appId An Ionic Pro app ID
    */
   @CordovaInstance()
-  getVersions(appId: string): Promise<any> { return; }
+  getVersions(): Promise<any> { return; }
 
   /**
    * Delete a version stored on the device by UUID
-   * @param appId An Ionic Pro app ID
    * @param version A version UUID
    */
   @CordovaInstance()
-  deleteVersion(appId: string, version: string): Promise<any> { return; }
+  deleteVersion(version: string): Promise<any> { return; }
 }
 
 /**
