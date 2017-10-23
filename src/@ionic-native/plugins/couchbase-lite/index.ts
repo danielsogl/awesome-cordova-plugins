@@ -81,15 +81,23 @@ import { Injectable } from '@angular/core';
  *    _id:'You can either specify the document ID (must be string) else couchbase generates one for your doc',
  *    data:{name:'sandman',age:25,city:pune}
  *  }
- *  createDocument('justbe', document);
- *  // successful response
- *  { "id": "string","rev": "string","ok": true }
- *    
- *    
- *    
- *  
- *
- *
+ * createDocument('justbe', document);
+ * // successful response
+ * { "id": "string","rev": "string","ok": true }
+ * updateDocument(atabase_name:string,document){    
+ *      let url = this.getUrl();
+ *      url = url + database_name + '/' + document.id;     
+ *      return this._http
+ *        .put(url,document)
+ *        .map(data => { this.results = data['results'] })
+ *        .catch((error:any) => {
+ *           return Observable.throw(error.json() || 'Couchbase Lite error');
+ *        })        .
+ * }
+ * // for updation of document your document must contain most recent rev(revision) id.
+ * // for each updation of document new rev id is get generated
+ * // successful response
+ * { "id": "string","rev": "string(new revision id)","ok": true }
  *
  *
  *
