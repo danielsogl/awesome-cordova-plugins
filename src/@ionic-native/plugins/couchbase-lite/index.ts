@@ -45,7 +45,6 @@ import { Injectable } from '@angular/core';
  *           return Observable.throw(error.json() || 'Couchbase Lite error');
  *        })
  * }
- *
  * getAllDbs() {
  *      let url = this.getUrl();
  *      url = url+'_all_dbs';
@@ -56,7 +55,20 @@ import { Injectable } from '@angular/core';
  *           return Observable.throw(error.json() || 'Couchbase Lite error');
  *        })
  * }
- *
+ * // DOCUMENTS //
+ * getAllDocuments(database_name:string){
+ *      let url = this.getUrl();
+ *      // include_docs=true will include a doc inside response, it is false by default
+ *      url = url + database_name + '/_all_docs?include_docs=true';
+ *      return this._http
+ *        .get(url)
+ *        .map(data => { this.results = data['results'] })
+ *        .catch((error:any) => {
+ *           return Observable.throw(error.json() || 'Couchbase Lite error');
+ *        })        .
+ * }      
+ *      
+ *      
  *
  * ```
  */
