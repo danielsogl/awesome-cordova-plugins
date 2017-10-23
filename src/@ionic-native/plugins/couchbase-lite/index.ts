@@ -67,8 +67,31 @@ import { Injectable } from '@angular/core';
  *           return Observable.throw(error.json() || 'Couchbase Lite error');
  *        })        .
  * }      
- *      
- *      
+ * createDocument(database_name:string,document){   
+ *      let url = this.getUrl();
+ *      url = url + database_name;
+ *      return this._http
+ *        .post(url,document)
+ *        .map(data => { this.results = data['results'] })
+ *        .catch((error:any) => {
+ *           return Observable.throw(error.json() || 'Couchbase Lite error');
+ *        })        .
+ * }
+ * let document = {
+ *    _id:'You can either specify the document ID (must be string) else couchbase generates one for your doc',
+ *    data:{name:'sandman',age:25,city:pune}
+ *  }
+ *  createDocument('justbe', document);
+ *  // successful response
+ *  { "id": "string","rev": "string","ok": true }
+ *    
+ *    
+ *    
+ *  
+ *
+ *
+ *
+ *
  *
  * ```
  */
