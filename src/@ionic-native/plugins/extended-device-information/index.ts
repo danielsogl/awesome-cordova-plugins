@@ -29,11 +29,11 @@ export class ExtendedDeviceInformation extends IonicNativePlugin {
 
   /** Get the device's memory size. */
   @CordovaProperty
-  memory: number;
+  memory: string;
 
   /** Get the device's CPU mhz. */
   @CordovaProperty
-  cpumhz: string;
+  cpumhz: number;
 
   /** Get the device's CPU mhz. */
   @CordovaProperty
