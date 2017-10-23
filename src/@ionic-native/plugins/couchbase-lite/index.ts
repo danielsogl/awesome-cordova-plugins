@@ -84,9 +84,9 @@ import { Injectable } from '@angular/core';
  * createDocument('justbe', document);
  * // successful response
  * { "id": "string","rev": "string","ok": true }
- * updateDocument(atabase_name:string,document){    
+ * updateDocument(database_name:string,document){    
  *      let url = this.getUrl();
- *      url = url + database_name + '/' + document.id;     
+ *      url = url + database_name + '/' + document._id;     
  *      return this._http
  *        .put(url,document)
  *        .map(data => { this.results = data['results'] })
@@ -98,6 +98,17 @@ import { Injectable } from '@angular/core';
  * // for each updation of document new rev id is get generated
  * // successful response
  * { "id": "string","rev": "string(new revision id)","ok": true }
+ * deleteDocument(database_name:string,document){
+ *      let url = this.getUrl();
+ *      url = url + database_name + '/' + document._id +'?rev='+doc._rev;
+ *      return this._http
+ *        .delete(url)
+ *        .map(data => { this.results = data['results'] })
+ *        .catch((error:any) => {
+ *           return Observable.throw(error.json() || 'Couchbase Lite error');
+ *        })        .
+ * }
+ *
  *
  *
  *
