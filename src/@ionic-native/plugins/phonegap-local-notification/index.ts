@@ -10,7 +10,7 @@ export class PLNObject {
 
   private _objectInstance: any;
 
-  constructor(title: string, options: LocalNotificationOptions) {
+  constructor(title: string, options: LocalNotificationOption) {
     if (checkAvailability(PhonegapLocalNotification.pluginRef, null, PhonegapLocalNotification.pluginName) === true) {
       this._objectInstance = new Notification(title, options);
     }
