@@ -625,7 +625,7 @@ export class GoogleMaps extends IonicNativePlugin {
    */
   create(element: string | HTMLElement, options?: GoogleMapOptions): GoogleMap {
     let googleMap: GoogleMap = new GoogleMap(element, options);
-    googleMap.set('_overlays', new BaseArrayClass());
+    googleMap.set('_overlays', {});
     return googleMap;
   }
 
@@ -660,19 +660,17 @@ export class BaseClass {
             let overlay: Marker = this.get(args[args.length - 1].getId());
             if (!overlay) {
               let markerJS: any = args[args.length - 1];
+              let markerId: string = markerJS.getId();
               let markerCluster: MarkerCluster = <MarkerCluster>this;
               overlay = new Marker(markerCluster.getMap(), markerJS);
-              this.get('_overlays').push(markerJS.getId());
-              this.set(markerJS.getId(), overlay);
+              this.get('_overlays')[markerId] = overlay;
               markerJS.one(markerJS.getId() + '_remove', () => {
-                let idx = this.get('_overlays').indexOf(overlay);
-                this.get('_overlays').removeAt(idx);
-                this.set(markerJS.getId(), undefined);
+                this.get('_overlays')[markerId] = null;
               });
             }
             args[args.length - 1] = overlay;
           } else {
-            args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
+            args[args.length - 1] = this._objectInstance.getMap().get('_overlays')[args[args.length - 1].getId()];
           }
         }
         observer.next(args);
@@ -696,19 +694,17 @@ export class BaseClass {
             let overlay: Marker = this.get(args[args.length - 1].getId());
             if (!overlay) {
               let markerJS: any = args[args.length - 1];
+              let markerId: string = markerJS.getId();
               let markerCluster: MarkerCluster = <MarkerCluster>this;
               overlay = new Marker(markerCluster.getMap(), markerJS);
-              this.get('_overlays').push(markerJS.getId());
-              this.set(markerJS.getId(), overlay);
+              this.get('_overlays')[markerId] = overlay;
               markerJS.one(markerJS.getId() + '_remove', () => {
-                let idx = this.get('_overlays').indexOf(overlay);
-                this.get('_overlays').removeAt(idx);
-                this.set(markerJS.getId(), undefined);
+                this.get('_overlays')[markerId] = null;
               });
             }
             args[args.length - 1] = overlay;
           } else {
-            args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
+            args[args.length - 1] = this._objectInstance.getMap().get('_overlays')[args[args.length - 1].getId()];
           }
         }
         resolve(args);
@@ -757,19 +753,17 @@ export class BaseClass {
             let overlay: Marker = this.get(args[args.length - 1].getId());
             if (!overlay) {
               let markerJS: any = args[args.length - 1];
+              let markerId: string = markerJS.getId();
               let markerCluster: MarkerCluster = <MarkerCluster>this;
               overlay = new Marker(markerCluster.getMap(), markerJS);
-              this.get('_overlays').push(markerJS.getId());
-              this.set(markerJS.getId(), overlay);
+              this.get('_overlays')[markerId] = overlay;
               markerJS.one(markerJS.getId() + '_remove', () => {
-                let idx = this.get('_overlays').indexOf(overlay);
-                this.get('_overlays').removeAt(idx);
-                this.set(markerJS.getId(), undefined);
+                this.get('_overlays')[markerId] = null;
               });
             }
             args[args.length - 1] = overlay;
           } else {
-            args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
+            args[args.length - 1] = this._objectInstance.getMap().get('_overlays')[args[args.length - 1].getId()];
           }
         }
         observer.next(args);
@@ -793,19 +787,17 @@ export class BaseClass {
             let overlay: Marker = this.get(args[args.length - 1].getId());
             if (!overlay) {
               let markerJS: any = args[args.length - 1];
+              let markerId: string = markerJS.getId();
               let markerCluster: MarkerCluster = <MarkerCluster>this;
               overlay = new Marker(markerCluster.getMap(), markerJS);
-              this.get('_overlays').push(markerJS.getId());
-              this.set(markerJS.getId(), overlay);
+              this.get('_overlays')[markerId] = overlay;
               markerJS.one(markerJS.getId() + '_remove', () => {
-                let idx = this.get('_overlays').indexOf(overlay);
-                this.get('_overlays').removeAt(idx);
-                this.set(markerJS.getId(), undefined);
+                this.get('_overlays')[markerId] = null;
               });
             }
             args[args.length - 1] = overlay;
           } else {
-            args[args.length - 1] = this._objectInstance.getMap().get(args[args.length - 1].getId());
+            args[args.length - 1] = this._objectInstance.getMap().get('_overlays')[args[args.length - 1].getId()];
           }
         }
         resolve(args);
@@ -833,7 +825,7 @@ export class BaseClass {
   destroy(): void {
     let map: GoogleMap = this._objectInstance.getMap();
     if (map) {
-      map.get('_overlays').set(this._objectInstance.getId(), undefined);
+      delete this._objectInstance.getMap().get('_overlays')[this._objectInstance.getId()];
     }
     this._objectInstance.remove();
   }
@@ -1517,9 +1509,12 @@ export class GoogleMap extends BaseClass {
    */
   @CordovaInstance()
   remove(): Promise<any> {
-    this.get('_overlays').forEach((overlayId: string) => this.set(overlayId, null));
-    this.get('_overlays').empty();
-    this.set('_overlays', undefined);
+    if (this.get('_overlays')) {
+      Object.keys(this.get('_overlays')).forEach((overlayId: string) => {
+        this.get('_overlays')[overlayId] = null;
+        delete this.get('_overlays')[overlayId];
+      });
+    }
     return new Promise<any>((resolve) => {
       this._objectInstance.remove(() => resolve());
     });
@@ -1531,8 +1526,12 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   clear(): Promise<any> {
-    this.get('_overlays').forEach((overlayId: string) => this.set(overlayId, null));
-    this.get('_overlays').empty();
+    if (this.get('_overlays')) {
+      Object.keys(this.get('_overlays')).forEach((overlayId: string) => {
+        this.get('_overlays')[overlayId] = null;
+        delete this.get('_overlays')[overlayId];
+      });
+    }
     return new Promise<any>((resolve) => {
       this._objectInstance.clear(() => resolve());
     });
@@ -1627,14 +1626,14 @@ export class GoogleMap extends BaseClass {
     return new Promise<Marker>((resolve, reject) => {
       this._objectInstance.addMarker(options, (marker: any) => {
         if (marker) {
-          let markerId: string = marker.getId();
+          let overlayId: string = marker.getId();
           const overlay: Marker = new Marker(this, marker);
-          this.get('_overlays').push(markerId);
-          this.set(markerId, overlay);
-          marker.one(markerId + '_remove', () => {
-            let idx: number = this.get('_overlays').indexOf(overlay);
-            this.get('_overlays').removeAt(idx);
-            this.set(markerId, undefined);
+          this.get('_overlays')[overlayId] = overlay;
+          marker.one(overlayId + '_remove', () => {
+            if (this.get('_overlays')) {
+              this.get('_overlays')[overlayId] = null;
+              overlay.destroy();
+            }
           });
           resolve(overlay);
         } else {
@@ -1649,13 +1648,14 @@ export class GoogleMap extends BaseClass {
     return new Promise<MarkerCluster>((resolve, reject) => {
       this._objectInstance.addMarkerCluster(options, (markerCluster: any) => {
         if (markerCluster) {
+          let overlayId = markerCluster.getId();
           const overlay = new MarkerCluster(this, markerCluster);
-          this.get('_overlays').push(markerCluster.getId());
-          this.set(markerCluster.getId(), overlay);
+          this.get('_overlays')[overlayId] = overlay;
           markerCluster.one('remove', () => {
-            let idx: number = this.get('_overlays').indexOf(overlay);
-            this.get('_overlays').removeAt(idx);
-            this.set(markerCluster.getId(), undefined);
+            if (this.get('_overlays')) {
+              this.get('_overlays')[overlayId] = null;
+              overlay.destroy();
+            }
           });
           markerCluster.set('_overlays', new BaseArrayClass());
           resolve(overlay);
@@ -1675,14 +1675,14 @@ export class GoogleMap extends BaseClass {
     return new Promise<Circle>((resolve, reject) => {
       this._objectInstance.addCircle(options, (circle: any) => {
         if (circle) {
-          let circleId: string = circle.getId();
+          let overlayId: string = circle.getId();
           const overlay = new Circle(this, circle);
-          this.get('_overlays').push(circleId);
-          this.set(circleId, overlay);
-          circle.one(circleId + '_remove', () => {
-            let idx: number = this.get('_overlays').indexOf(overlay);
-            this.get('_overlays').removeAt(idx);
-            this.set(circleId, undefined);
+          this.get('_overlays')[overlayId] = overlay;
+          circle.one(overlayId + '_remove', () => {
+            if (this.get('_overlays')) {
+              this.get('_overlays')[overlayId] = null;
+              overlay.destroy();
+            }
           });
           resolve(overlay);
         } else {
@@ -1701,14 +1701,14 @@ export class GoogleMap extends BaseClass {
     return new Promise<Polygon>((resolve, reject) => {
       this._objectInstance.addPolygon(options, (polygon: any) => {
         if (polygon) {
-          let polygonId: string = polygon.getId();
+          let overlayId: string = polygon.getId();
           const overlay = new Polygon(this, polygon);
-          this.get('_overlays').push(polygonId);
-          this.set(polygonId, overlay);
-          polygon.one(polygonId + '_remove', () => {
-            let idx: number = this.get('_overlays').indexOf(overlay);
-            this.get('_overlays').removeAt(idx);
-            this.set(polygonId, undefined);
+          this.get('_overlays')[overlayId] = overlay;
+          polygon.one(overlayId + '_remove', () => {
+            if (this.get('_overlays')) {
+              this.get('_overlays')[overlayId] = null;
+              overlay.destroy();
+            }
           });
           resolve(overlay);
         } else {
@@ -1727,14 +1727,14 @@ export class GoogleMap extends BaseClass {
     return new Promise<Polyline>((resolve, reject) => {
       this._objectInstance.addPolyline(options, (polyline: any) => {
         if (polyline) {
-          let polylineId: string = polyline.getId();
+          let overlayId: string = polyline.getId();
           const overlay = new Polyline(this, polyline);
-          this.get('_overlays').push(polylineId);
-          this.set(polylineId, overlay);
-          polyline.one(polylineId + '_remove', () => {
-            let idx: number = this.get('_overlays').indexOf(overlay);
-            this.get('_overlays').removeAt(idx);
-            this.set(polylineId, undefined);
+          this.get('_overlays')[overlayId] = overlay;
+          polyline.one(overlayId + '_remove', () => {
+            if (this.get('_overlays')) {
+              this.get('_overlays')[overlayId] = null;
+              overlay.destroy();
+            }
           });
           resolve(overlay);
         } else {
@@ -1752,14 +1752,14 @@ export class GoogleMap extends BaseClass {
     return new Promise<TileOverlay>((resolve, reject) => {
       this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
         if (tileOverlay) {
-          let tileOverlayId: string = tileOverlay.getId();
+          let overlayId: string = tileOverlay.getId();
           const overlay = new TileOverlay(this, tileOverlay);
-          this.get('_overlays').push(tileOverlayId);
-          this.set(tileOverlayId, overlay);
-          tileOverlay.one(tileOverlayId + '_remove', () => {
-            let idx: number = this.get('_overlays').indexOf(overlay);
-            this.get('_overlays').removeAt(idx);
-            this.set(tileOverlayId, undefined);
+          this.get('_overlays')[overlayId] = overlay;
+          tileOverlay.one(overlayId + '_remove', () => {
+            if (this.get('_overlays')) {
+              this.get('_overlays')[overlayId] = null;
+              overlay.destroy();
+            }
           });
           resolve(overlay);
         } else {
@@ -1777,14 +1777,14 @@ export class GoogleMap extends BaseClass {
     return new Promise<GroundOverlay>((resolve, reject) => {
       this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
         if (groundOverlay) {
-          let groundOverlayId: string = groundOverlay.getId();
+          let overlayId: string = groundOverlay.getId();
           const overlay = new GroundOverlay(this, groundOverlay);
-          this.get('_overlays').push(groundOverlayId);
-          this.set(groundOverlayId, overlay);
-          groundOverlay.one(groundOverlayId + '_remove', () => {
-            let idx: number = this.get('_overlays').indexOf(overlay);
-            this.get('_overlays').removeAt(idx);
-            this.set(groundOverlayId, undefined);
+          this.get('_overlays')[overlayId] = overlay;
+          groundOverlay.one(overlayId + '_remove', () => {
+            if (this.get('_overlays')) {
+              this.get('_overlays')[overlayId] = null;
+              overlay.destroy();
+            }
           });
           resolve(overlay);
         } else {
@@ -1822,6 +1822,7 @@ export class GoogleMap extends BaseClass {
   //     });
   //   });
   // }
+
 }
 
 /**
@@ -1938,7 +1939,7 @@ export class GroundOverlay extends BaseClass {
    */
   @CordovaCheck()
   remove(): void {
-    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    delete this._objectInstance.getMap().get('_overlays')[this.getId()];
     this._objectInstance.remove();
     this.destroy();
   }
@@ -2115,7 +2116,7 @@ export class Marker extends BaseClass {
    */
   @CordovaCheck()
   remove(): void {
-    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    delete this._objectInstance.getMap().get('_overlays')[this.getId()];
     this._objectInstance.remove();
     this.destroy();
   }
@@ -2237,7 +2238,7 @@ export class MarkerCluster extends BaseClass {
   @InstanceCheck()
   remove(): void {
     this._objectInstance.set('_overlays', undefined);
-    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    delete this._objectInstance.getMap().get('_overlays')[this.getId()];
     this._objectInstance.remove();
     this.destroy();
   }
@@ -2380,7 +2381,7 @@ export class Polygon extends BaseClass {
    */
   @InstanceCheck()
   remove(): void {
-    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    delete this._objectInstance.getMap().get('_overlays')[this.getId()];
     this._objectInstance.remove();
     this.destroy();
   }
@@ -2541,7 +2542,7 @@ export class Polyline extends BaseClass {
    */
   @InstanceCheck()
   remove(): void {
-    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    delete this._objectInstance.getMap().get('_overlays')[this.getId()];
     this._objectInstance.remove();
     this.destroy();
   }
@@ -2640,7 +2641,7 @@ export class TileOverlay extends BaseClass {
    */
   @CordovaCheck()
   remove(): void {
-    this._objectInstance.getMap().get('_overlays').set(this.getId(), undefined);
+    delete this._objectInstance.getMap().get('_overlays')[this.getId()];
     this._objectInstance.remove();
     this.destroy();
   }
