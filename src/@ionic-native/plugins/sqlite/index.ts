@@ -20,6 +20,10 @@ export interface SQLiteDatabaseConfig {
   * support opening pre-filled databases with https://github.com/litehelpers/cordova-sqlite-ext
   */
   createFromLocation?: number;
+  /**
+   * support encrypted databases with https://github.com/litehelpers/Cordova-sqlcipher-adapter
+   */
+  key?: string;
 }
 
 /**
@@ -95,11 +99,11 @@ export class SQLiteObject {
   executeSql(statement: string, params: any): Promise<any> { return; }
 
   /**
-   * @param sqlStatements {Array<string | string[]>}
+   * @param sqlStatements {Array<string | string[] | any>}
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  sqlBatch(sqlStatements: Array<string | string[]>): Promise<any> { return; }
+  sqlBatch(sqlStatements: Array<string | string[] | any>): Promise<any> { return; }
 
   @CordovaInstance({
     sync: true

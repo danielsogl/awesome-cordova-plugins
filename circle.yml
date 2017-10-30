@@ -35,6 +35,9 @@ jobs:
           name: Build Ionic Native
           command: npm run build:core && ./node_modules/.bin/tsc
       - run:
+          name: Generate README files to ensure docs are valid
+          command: npm run readmes
+      - run:
           name: Run tests
           command: npm test
       - add_ssh_keys

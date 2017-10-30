@@ -31,8 +31,8 @@ import { Injectable } from '@angular/core';
  *         console.log(libraryItem.albumIds);    // array of ids of appropriate AlbumItem, only of includeAlbumsData was used
  *       });
  *     },
- *     error: err => {},
- *     complete: () => { console.log('could not get photos'); }
+ *     error: err => { console.log('could not get photos'); },
+ *     complete: () => { console.log('done getting photos'); }
  *   });
  * })
  * .catch(err => console.log('permissions weren\'t granted'));

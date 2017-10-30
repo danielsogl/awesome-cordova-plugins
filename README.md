@@ -52,38 +52,28 @@ import { NgZone } from '@angular/core';
 @Component({ ... })
 export class MyComponent {
 
-  constructor(private geolocation: Geolocation, private platform: Platform, private ngZone: NgZone) {
+  constructor(private geolocation: Geolocation, private platform: Platform) {
 
     platform.ready().then(() => {
 
       // get position
       geolocation.getCurrentPosition().then(pos => {
-
         console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
-
       });
 
 
       // watch position
       const watch = geolocation.watchPosition().subscribe(pos => {
-
         console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
-
-        // Currently, observables from Ionic Native plugins
-        // need to run inside of zone to trigger change detection
-        ngZone.run(() => {
-          this.position = pos;
-        })
-
+        this.position = pos;
       });
 
       // to stop watching
       watch.unsubscribe();
-
     });
-
+    
   }
-
+  
 }
 ```
 
@@ -171,9 +161,9 @@ Spent way too long diagnosing an issue only to realize a plugin wasn't firing or
 ## Plugin Missing?
 Let us know or submit a PR! Take a look at [the Developer Guide](https://github.com/ionic-team/ionic-native/blob/master/DEVELOPER.md) for more on how to contribute. :heart:
 
-## Ionic V1/Angular 1 support
+## Ionic v1 (AngularJS, Angular 1.x) support
 
-For Ionic V1/Angular 1 support, please use version 2 of Ionic Native. See the [2.x README](https://github.com/ionic-team/ionic-native/blob/8cd648db5cddd7bdbe2bd78839b19c620cc8c04c/README.md) for usage information.
+For Ionic v1 (AngularJS, Angular 1.x) support, please use version 2 of Ionic Native. See the [2.x README](https://github.com/ionic-team/ionic-native/blob/v2.x/README.md) for usage information.
 
 # Credits
 

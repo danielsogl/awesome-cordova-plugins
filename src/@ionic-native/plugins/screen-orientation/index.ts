@@ -5,8 +5,7 @@ import { Observable } from 'rxjs/Observable';
 /**
  * @name Screen Orientation
  * @description
- * Cordova plugin to set/lock the screen orientation in a common way for iOS, Android, WP8 and Blackberry 10.
- * This plugin is based on an early version of Screen Orientation API so the api does not currently match the current spec.
+ * Cordova plugin to set/lock the screen orientation in a common way.
  *
  * Requires Cordova plugin: `cordova-plugin-screen-orientation`. For more info, please see the [Screen Orientation plugin docs](https://github.com/apache/cordova-plugin-screen-orientation).
  *
@@ -27,8 +26,16 @@ import { Observable } from 'rxjs/Observable';
  *
  * // allow user rotate
  * this.screenOrientation.unlock();
- * ```
  *
+ * // detect orientation changes
+ * this.screenOrientation.onChange().subscribe(
+ *    () => {
+ *        console.log("Orientation Changed");
+ *    }
+ * );
+ *
+ * ```
+ * 
  * @advanced
  *
  * Accepted orientation values:

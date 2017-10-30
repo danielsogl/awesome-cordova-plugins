@@ -32,7 +32,7 @@ export interface AdMobOptions {
   overlap?: boolean;
 
   /**
-   * Position of banner ad. Defaults to `TOP_CENTER`. You can use the `AdMob.AD_POSITION` property to select other values.
+   * Position of banner ad. Defaults to `TOP_CENTER`. You can use the `AdMobPro.AD_POSITION` property to select other values.
    */
   position?: number;
 
@@ -90,17 +90,18 @@ export interface AdExtras {
 }
 
 /**
- * @name AdMob
+ * @paid
+ * @name AdMob Pro
  * @description
- * Plugin for Google Ads, including AdMob / DFP (doubleclick for publisher) and mediations to other Ad networks.
+ * Plugin for Google Ads, including AdMob / DFP (DoubleClick for publisher) and mediations to other Ad networks.
  *
- * IMPORTANT NOTICE: this plugin takes a percentage out of your earnings if you profit more than $1,000. Read more about this on the plugin's repo. For a completely free alternative, see [AdMob Free](../admob-free).
+ * IMPORTANT NOTICE: this plugin takes a percentage out of your earnings if you profit more than $1,000. Read more about this on the plugin's repo. For a completely free alternative, see [AdMobPro Free](../admob-free).
  * @usage
  * ```typescript
- * import { AdMob } from '@ionic-native/admob';
+ * import { AdMobPro } from '@ionic-native/admob-pro';
  * import { Platform } from 'ionic-angular';
  *
- * constructor(private admob: AdMob, private platform: Platform ) { }
+ * constructor(private admob: AdMobPro, private platform: Platform ) { }
  *
  * ionViewDidLoad() {
  *   this.admob.onAdDismiss()
@@ -125,14 +126,14 @@ export interface AdExtras {
  * AdExtras
  */
 @Plugin({
-  pluginName: 'AdMob',
+  pluginName: 'AdMob Pro',
   plugin: 'cordova-plugin-admobpro',
   pluginRef: 'AdMob',
   repo: 'https://github.com/floatinghotpot/cordova-admob-pro',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
-export class AdMob extends IonicNativePlugin {
+export class AdMobPro extends IonicNativePlugin {
 
   AD_POSITION: {
     NO_CHANGE: number;
@@ -178,7 +179,7 @@ export class AdMob extends IonicNativePlugin {
 
   /**
    * Show banner at position
-   * @param position {number} Position. Use `AdMob.AD_POSITION` to set values.
+   * @param position {number} Position. Use `AdMobPro.AD_POSITION` to set values.
    */
   @Cordova({
     sync: true

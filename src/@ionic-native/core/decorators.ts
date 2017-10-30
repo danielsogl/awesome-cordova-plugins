@@ -37,6 +37,7 @@ export interface PluginConfig {
 }
 
 export interface CordovaOptions {
+  destruct?: boolean;
   /**
    * Set to true if the wrapped method is a sync function
    */
@@ -252,7 +253,7 @@ export function Cordova(opts: CordovaOptions = {}) {
  *
  * Wrap an instance method
  */
-export function CordovaInstance(opts: any = {}) {
+export function CordovaInstance(opts: CordovaOptions = {}) {
   return (target: Object, methodName: string) => {
     return {
       value: function(...args: any[]) {

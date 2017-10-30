@@ -57,10 +57,10 @@ export interface ImagePickerOptions {
  */
 @Plugin({
   pluginName: 'ImagePicker',
-  plugin: 'https://github.com/Telerik-Verified-Plugins/ImagePicker.git',
+  plugin: 'cordova-plugin-telerik-imagepicker',
   pluginRef: 'window.imagePicker',
   repo: 'https://github.com/Telerik-Verified-Plugins/ImagePicker',
-  install: 'ionic cordova plugin add https://github.com/Telerik-Verified-Plugins/ImagePicker.git --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="your usage message"',
+  install: 'ionic cordova plugin add cordova-plugin-telerik-imagepicker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="your usage message"',
   installVariables: ['PHOTO_LIBRARY_USAGE_DESCRIPTION'],
   platforms: ['Android', 'iOS']
 })
