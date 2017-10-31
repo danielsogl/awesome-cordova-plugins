@@ -51,7 +51,7 @@ export interface MusicControlsOptions {
  *   hasClose  : true,       // show close button, optional, default: false
  *
  * // iOS only, optional
- *   album       : 'Absolution'     // optional, default: ''
+ *   album       : 'Absolution',     // optional, default: ''
  *   duration : 60, // optional, default: 0
  *   elapsed : 10, // optional, default: 0
  *   hasSkipForward : true,  // show skip forward button, optional, default: false
