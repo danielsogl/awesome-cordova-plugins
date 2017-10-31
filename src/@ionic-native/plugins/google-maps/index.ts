@@ -865,26 +865,65 @@ export class BaseArrayClass<T> extends BaseClass {
    * @param callback? {Function}
    */
   @CordovaInstance({ sync: true })
-  forEach(fn: ((element: T, index?: number) => void) | ((element: T, callback: () => void) => void), callback?: () => void): void {}
+  forEach(fn: (element: T, index?: number) => void): void {}
 
   /**
    * Iterate over each element, calling the provided callback.
+   * @param fn {Function}
+   * @return {Promise<any>}
+   */
+  @CordovaCheck()
+  forEachAsync(fn: ((element: T, callback: () => void) => void)): Promise<void> {
+    return new Promise<void>((resolve) => {
+      this._objectInstance.forEach(fn, resolve);
+    });
+  }
+
+  /**
+   * Iterate over each element, then return a new value.
    * Then you can get the results of each callback.
    * @param fn {Function}
    * @param callback? {Function}
    * @return {Array<Object>} returns a new array with the results
    */
   @CordovaInstance({ sync: true })
-  map(fn: Function, callback?: ((element: T, index: number) => T) | ((element: T, callback: (newElement: T) => void) => void)): T[] { return; }
+  map(fn: (element: T, index: number) => any): any[] { return; }
+
+  /**
+   * Iterate over each element, calling the provided callback.
+   * Then you can get the results of each callback.
+   * @param fn {Function}
+   * @param callback? {Function}
+   * @return {Promise<any>} returns a new array with the results
+   */
+  @CordovaCheck()
+  mapAsync(fn: ((element: T, callback: (newElement: any) => void) => void)): Promise<any[]> {
+    return new Promise<any[]>((resolve) => {
+      this._objectInstance.map(fn, resolve);
+    });
+  }
 
   /**
    * The filter() method creates a new array with all elements that pass the test implemented by the provided function.
    * @param fn {Function}
    * @param callback? {Function}
-   * @return {Array<Object>} returns a new array with the results
+   * @return {Array<Object>} returns a new filtered array
    */
   @CordovaInstance({ sync: true })
-  filter(fn: Function, callback?: ((element: T, index: number) => T) | ((element: T, callback: (newElement: T) => void) => void)): T[] { return; }
+  filter(fn: (element: T, index: number) => boolean): T[] { return; }
+
+  /**
+   * The filterAsync() method creates a new array with all elements that pass the test implemented by the provided function.
+   * @param fn {Function}
+   * @param callback? {Function}
+   * @return {Promise<any>} returns a new filtered array
+   */
+  @CordovaCheck()
+  filterAsync(fn: (element: T, callback: (result: boolean) => void) => void): Promise<T[]> {
+    return new Promise<any[]>((resolve) => {
+      this._objectInstance.filter(fn, resolve);
+    });
+  }
 
   /**
    * Returns a reference to the underlying Array.
