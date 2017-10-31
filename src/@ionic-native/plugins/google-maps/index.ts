@@ -623,8 +623,17 @@ export class GoogleMaps extends IonicNativePlugin {
    * @param options {any} Options
    * @return {GoogleMap}
    */
-  create(element: string | HTMLElement, options?: GoogleMapOptions): GoogleMap {
-    let googleMap: GoogleMap = new GoogleMap(element, options);
+  create(element: string | HTMLElement | GoogleMapOptions, options?: GoogleMapOptions): GoogleMap {
+    if (element instanceof HTMLElement) {
+      if (element.getAttribute('__pluginMapId')) {
+        console.error('GoogleMaps', element.tagName + '[__pluginMapId=\'' + element.getAttribute('__pluginMapId') +  '\'] has already map.');
+        return;
+      }
+    } else if (typeof element === 'object') {
+      options = <GoogleMapOptions>element;
+      element = null;
+    }
+    let googleMap: GoogleMap = new GoogleMap(<HTMLElement>element, options);
     googleMap.set('_overlays', {});
     return googleMap;
   }
@@ -1380,10 +1389,25 @@ export class GoogleMap extends BaseClass {
   constructor(element: string | HTMLElement, options?: GoogleMapOptions) {
     super();
     if (checkAvailability(GoogleMaps.getPluginRef(), null, GoogleMaps.getPluginName()) === true) {
-      if (typeof element === 'string') {
-        element = document.getElementById(<string>element);
+      if (element instanceof HTMLElement) {
+        this._objectInstance = GoogleMaps.getPlugin().Map.getMap(element, options);
+      } else if (typeof element === 'string') {
+        let count = 0;
+        let timer = setInterval(() => {
+          let target: any = document.querySelector('.show-page #' + element);
+          if (target) {
+            this._objectInstance = GoogleMaps.getPlugin().Map.getMap(target, options);
+            clearInterval(timer);
+            return;
+          }
+          if (count++ >= 10) {
+            console.error('Can not find the element [#' + element + ']');
+            clearInterval(timer);
+          }
+        }, 100);
+      } else if (element === null && options) {
+        this._objectInstance = GoogleMaps.getPlugin().Map.getMap(null, options);
       }
-      this._objectInstance = GoogleMaps.getPlugin().Map.getMap(element, options);
     }
   }
 
@@ -1391,8 +1415,14 @@ export class GoogleMap extends BaseClass {
    * Changes the map div
    * @param domNode
    */
-  @CordovaInstance({ sync: true })
-  setDiv(domNode?: HTMLElement): void { }
+  @InstanceCheck()
+  setDiv(domNode?: HTMLElement | string): void {
+    if (typeof domNode === 'string') {
+      this._objectInstance.setDiv(document.querySelector('.show-page #' + domNode));
+    } else {
+      this._objectInstance.setDiv(domNode);
+    }
+  }
 
   /**
    * Returns the map HTML element
