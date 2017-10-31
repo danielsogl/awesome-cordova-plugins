@@ -1971,9 +1971,10 @@ export class HtmlInfoWindow extends BaseClass {
   /**
    * Set your HTML contents.
    * @param content {any} String containing text or HTML element
+   * @param cssOptions? {any} CSS styles for the container element of HTMLInfoWindow
    */
   @CordovaInstance()
-  setContent(content: string | Element): void {}
+  setContent(content: string | Element, cssOptions?: any): void {}
 
   /**
    * Open the htmlInfoWindow
