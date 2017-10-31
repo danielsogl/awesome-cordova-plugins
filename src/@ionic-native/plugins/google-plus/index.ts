@@ -69,6 +69,5 @@ export class GooglePlus extends IonicNativePlugin {
    */
   @Cordova()
   getSigningCertificateFingerprint(): Promise<any> { return; }
-  
-  
+
 }
