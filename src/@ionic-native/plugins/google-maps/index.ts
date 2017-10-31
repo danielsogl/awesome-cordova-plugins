@@ -2290,8 +2290,10 @@ export class Polygon extends BaseClass {
    * You can modify the points.
    * @return {BaseArrayClass<ILatLng>}
    */
-  @CordovaInstance({ sync: true })
-  getPoints(): BaseArrayClass<ILatLng> { return; }
+  @CordovaCheck()
+  getPoints(): BaseArrayClass<ILatLng> {
+    return new BaseArrayClass<ILatLng>(this._objectInstance.getPoints());
+  }
 
   /**
    * Change the polygon holes.
@@ -2305,8 +2307,15 @@ export class Polygon extends BaseClass {
    * You can modify the holes.
    * @return {BaseArrayClass<ILatLng[]>}
    */
-  @CordovaInstance({ sync: true })
-  getHoles(): BaseArrayClass<ILatLng[]> { return; }
+  @CordovaCheck()
+  getHoles(): BaseArrayClass<ILatLng[]> {
+    let holes: ILatLng[][] = this._objectInstance.getPoints();
+    let results: BaseArrayClass<ILatLng[]> = new BaseArrayClass<ILatLng[]>();
+    holes.forEach((hole: ILatLng[]) => {
+      results.push(hole);
+    });
+    return results;
+ }
 
   /**
    * Change the filling color (inner color)
@@ -2451,9 +2460,12 @@ export class Polyline extends BaseClass {
   /**
    * Return an instance of the BaseArrayClass
    * You can modify the points.
+   * @return {BaseArrayClass<ILatLng>}
    */
-  @CordovaInstance({ sync: true })
-  getPoints(): BaseArrayClass<ILatLng> { return; }
+  @CordovaCheck()
+  getPoints(): BaseArrayClass<ILatLng> {
+    return new BaseArrayClass<ILatLng>(this._objectInstance.getPoints());
+  }
 
   /**
    * When true, edges of the polyline are interpreted as geodesic and will follow the curvature of the Earth.
