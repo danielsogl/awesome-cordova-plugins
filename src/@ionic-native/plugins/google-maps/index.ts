@@ -375,6 +375,7 @@ export interface PolygonOptions {
   visible?: boolean;
   zIndex?: number;
   addHole?: Array<Array<ILatLng>>;
+  clickable?: boolean;
 }
 
 export interface PolylineOptions {
@@ -384,6 +385,7 @@ export interface PolylineOptions {
   color?: string;
   width?: number;
   zIndex?: number;
+  clickable?: boolean;
 }
 
 export interface TileOverlayOptions {
