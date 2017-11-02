@@ -26,7 +26,7 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-country',
   pluginRef: 'plugins.country',
   repo: 'https://github.com/cloakedninjas/cordova-plugin-country',
-  platforms: ["Android"]
+  platforms: ['Android']
 })
 @Injectable()
 export class Country extends IonicNativePlugin {
