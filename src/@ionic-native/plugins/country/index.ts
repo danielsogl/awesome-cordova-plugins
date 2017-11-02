@@ -32,7 +32,7 @@ import { Injectable } from '@angular/core';
 export class Country extends IonicNativePlugin {
   /**
    * Get the 2-letter ISO code from Android's Locale package.
-   * @returns {Promise<string>} Returns a promise that resolves with the new image path, or rejects if failed to crop.
+   * @returns {Promise<string>} Returns a promise that resolves with the 2-letter ISO code.
    */
   @Cordova()
   get(): Promise<string> { return; }
