@@ -2,18 +2,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
-/**
- * Filter options
- */
-export enum DocumentPickerOptions {
-  /** Show only PDF files */
-  PDF = 'pdf',
-  /** show only image files */
-  IMAGE = 'image',
-  /** show all files */
-  ALL = 'all'
-}
-
 
 /**
  * @name DocumentPicker
@@ -24,13 +12,13 @@ export enum DocumentPickerOptions {
  *
  * @usage
  * ```typescript
- * import { DocumentPicker, DocumentPickerOptions } from '@ionic-native/document-picker';
+ * import { DocumentPicker } from '@ionic-native/document-picker';
  *
  * constructor(private docPicker: DocumentPicker) { }
  *
  * ...
  *
- * this.docPicker.getFile(DocumentPickerOptions.ALL)
+ * this.docPicker.getFile('all')
  *   .then(uri => console.log(uri))
  *   .catch(e => console.log(e));
  *
@@ -48,10 +36,10 @@ export class DocumentPicker extends IonicNativePlugin {
 
   /**
    * Open a file
-   * @param {DocumentPickerOptions} filters files between 'image', 'pdf' or 'all'
+   * @param {string} filters files between 'image', 'pdf' or 'all'
    * @returns {Promise<string>}
    */
   @Cordova()
-  getFile(options?: DocumentPickerOptions | string): Promise<string> { return; }
+  getFile(options?: string): Promise<string> { return; }
 
 }
