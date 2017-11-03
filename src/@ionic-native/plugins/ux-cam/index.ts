@@ -1,15 +1,3 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Add this file to /src/index.ts (follow style of other plugins)
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
@@ -29,7 +17,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  *
- * this.uXCam.functionName('Hello', 123)
+ * this.uXCam.startWithKey('3jkhg3j4h5g')
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
@@ -51,7 +39,6 @@ export class UXCam extends IonicNativePlugin {
    * 
    * @param {string} key 
    * @returns {Promise<any>} 
-   * @memberof UXCam
    */
   @Cordova()
   startWithKey(key: string): Promise<any> {
@@ -64,7 +51,6 @@ export class UXCam extends IonicNativePlugin {
    * @param {string} key 
    * @param {string} appVariant 
    * @returns {Promise<any>} 
-   * @memberof UXCam
    */
   @Cordova()
   startWithKeyAndAppVariant(key: string, appVariant: string): Promise<any> {
@@ -75,7 +61,6 @@ export class UXCam extends IonicNativePlugin {
    * Stops the faceCamera video recording if your application uses camera
    * 
    * @returns {Promise<any>} 
-   * @memberof UXCam
    */
   @Cordova()
   stopUXCamCameraVideo(): Promise<any> {
@@ -86,7 +71,6 @@ export class UXCam extends IonicNativePlugin {
    * Stops the UXCam application and sends captured data to the server. Use this to start sending the data on UXCam server without waiting for the app going into the background.
    * 
    * @returns {Promise<any>} 
-   * @memberof UXCam
    */
   @Cordova()
   stopApplicationAndUploadData(): Promise<any> {
@@ -97,7 +81,6 @@ export class UXCam extends IonicNativePlugin {
    * You can mark a user specifically if certain condition are met making them a good user for further testing. You can then filter these users and perform further test.
    * 
    * @returns {Promise<any>} 
-   * @memberof UXCam
    */
   @Cordova()
   markUserAsFavorite(): Promise<any> {
@@ -114,7 +97,6 @@ export class UXCam extends IonicNativePlugin {
    * 
    * @param {string} screenName 
    * @returns {Promise<any>} 
-   * @memberof UXCam
    */
   @Cordova()
   tagScreenName(screenName: string): Promise<any> {
@@ -126,7 +108,6 @@ export class UXCam extends IonicNativePlugin {
    * 
    * @param {string} userName 
    * @returns {Promise<any>} 
-   * @memberof UXCam
    */
   @Cordova()
   tagUsersName(userName: string): Promise<any> {
@@ -138,7 +119,6 @@ export class UXCam extends IonicNativePlugin {
    * 
    * @param {string} eventName 
    * @returns {Promise<any>} 
-   * @memberof UXCam
    */
   @Cordova()
   addTag(eventName: string): Promise<any> {
@@ -151,7 +131,6 @@ export class UXCam extends IonicNativePlugin {
    * @param {string} eventName 
    * @param {*} properties 
    * @returns {Promise<any>} 
-   * @memberof UXCam
    */
   @Cordova()
   addTagWithProperties(eventName: string, properties: any): Promise<any> {
@@ -162,8 +141,7 @@ export class UXCam extends IonicNativePlugin {
  * Hide / un-hide the screen from being recorded. Call once with 'true' to start hiding the screen and later with 'false' to record normal contents again. Useful to hide sensitive entry fields that you would not want to record the contents of.
  * 
  * @param {boolean} occludeSensitiveScreen 
- * @returns {Promise<any>} 
- * @memberof UXCam
+ * @returns {Promise<any>}
  */
   @Cordova()
   occludeSensitiveScreen(occludeSensitiveScreen: boolean): Promise<any> {
