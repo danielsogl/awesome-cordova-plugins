@@ -198,6 +198,22 @@ export class NFC extends IonicNativePlugin {
   @Cordova({ sync: true })
   bytesToHexString(bytes: number[]): string { return; };
 
+  /**
+  * Starts the NFCNDEFReaderSession allowing iOS to scan NFC tags.
+  * 
+  * @returns {Promise<any>} 
+  */
+  @Cordova()
+  beginSession(): Promise<any> { return; }
+
+  /**
+   * Stops the NFCNDEFReaderSession returning control to your app.
+   * 
+   * @returns {Promise<any>} 
+   */
+  @Cordova()
+  invalidateSession(): Promise<any> { return; }
+
 }
 /**
  * @hidden
