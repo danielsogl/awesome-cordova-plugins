@@ -76,7 +76,7 @@ export interface PrintOptions {
 export class Printer extends IonicNativePlugin {
 
   /**
-   * Checks whether to device is capable of printing.
+   * Checks whether the device is capable of printing (uses `check()` internally)
    * @returns {Promise<boolean>}
    */
   isAvailable(): Promise<boolean> {

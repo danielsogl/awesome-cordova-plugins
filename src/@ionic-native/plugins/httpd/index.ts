@@ -49,7 +49,7 @@ export interface HttpdOptions {
  */
 @Plugin({
   pluginName: 'Httpd',
-  plugin: 'https://github.com/floatinghotpot/cordova-httpd.git',
+  plugin: 'cordova-plugin-httpd',
   pluginRef: 'cordova.plugins.CorHttpd',
   repo: 'https://github.com/floatinghotpot/cordova-httpd',
   platforms: ['Android', 'iOS', 'macOS']

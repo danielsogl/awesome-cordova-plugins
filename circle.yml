@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-         key: ionic-site-{{ .Branch }}
+         key: ionic-site-{{ checksum "package.json" }}
       - run:
          name: Prepare ionic-site repo
          command: |
@@ -15,7 +15,7 @@ jobs:
              ./scripts/docs/prepare.sh
            fi
       - save_cache:
-         key: ionic-site-{{ .Branch }}
+         key: ionic-site-{{ checksum "package.json" }}
          paths:
          - ~/ionic-site/
       - restore_cache:
@@ -32,8 +32,11 @@ jobs:
           command: npm run lint
       - run: bash ./scripts/git/config.sh
       - run:
-          name: Build changed plugins
-          command: node scripts/ci-tests.js
+          name: Build Ionic Native
+          command: npm run build:core && ./node_modules/.bin/tsc
+      - run:
+          name: Generate README files to ensure docs are valid
+          command: npm run readmes
       - run:
           name: Run tests
           command: npm test

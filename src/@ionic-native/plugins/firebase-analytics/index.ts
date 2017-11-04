@@ -7,7 +7,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * @description
  * Cordova plugin for Firebase Analytics
  *
- * Go yo firebase console and export google-services.json and GoogleService-Info.plist. Put those files into the root of your cordova app folder.
+ * Go to firebase console and export google-services.json and GoogleService-Info.plist. Put those files into the root of your cordova app folder.
  *
  * NOTE: on iOS in order to collect demographic, age, gender data etc. you should additionally include AdSupport.framework into your project.
  *
@@ -49,7 +49,7 @@ export class FirebaseAnalytics extends IonicNativePlugin {
   /**
    * Sets the user ID property.
    * This feature must be used in accordance with Google's Privacy Policy.
-   * @param id {string} THe user ID
+   * @param id {string} The user ID
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()

@@ -4,6 +4,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * @name Call Number
  * @description
  * Call a number directly from your Cordova/Ionic application.
+ * **NOTE**: The iOS Simulator (and maybe Android Simulators) do not provide access to the phone subsystem.
  *
  * @usage
  * ```typescript
@@ -14,7 +15,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  *
- * this.callNumber.callNumber(18001010101, true)
+ * this.callNumber.callNumber("18001010101", true)
  *   .then(() => console.log('Launched dialer!'))
  *   .catch(() => console.log('Error launching dialer'));
  *

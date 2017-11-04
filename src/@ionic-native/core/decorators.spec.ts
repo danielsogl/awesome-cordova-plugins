@@ -2,6 +2,7 @@ import 'core-js';
 import { Plugin, Cordova, CordovaProperty, CordovaCheck, CordovaInstance, InstanceProperty } from './decorators';
 import { IonicNativePlugin } from './ionic-native-plugin';
 import { ERR_CORDOVA_NOT_AVAILABLE, ERR_PLUGIN_NOT_INSTALLED } from './plugin';
+import { Observable } from 'rxjs/Observable';
 
 declare const window: any;
 
@@ -47,6 +48,17 @@ class TestPlugin extends IonicNativePlugin {
     return new TestObject(TestPlugin.getPlugin().create());
   }
 
+  @Cordova({
+    destruct: true
+  })
+  destructPromise(): Promise<any> { return; }
+
+  @Cordova({
+    destruct: true,
+    observable: true
+  })
+  destructObservable(): Observable<any> { return; }
+
 }
 
 function definePlugin() {
@@ -59,7 +71,9 @@ function definePlugin() {
       this.ping = (success: Function, error: Function) => success('pong');
       this.name = 'John Smith';
       return this;
-    }
+    },
+    destructPromise: (success: Function) => success('hello', 'world'),
+    destructObservable: (success: Function) => success('hello', 'world')
   };
 }
 
@@ -173,6 +187,30 @@ describe('Regular Decorators', () => {
           expect(e).toEqual(ERR_PLUGIN_NOT_INSTALLED.error);
           done();
         });
+    });
+
+  });
+
+  describe('CordovaOptions', () => {
+
+    describe('destruct', () => {
+
+      it('should destruct values returned by a Promise', (done) => {
+        plugin.destructPromise()
+          .then((args: any[]) => {
+            expect(args).toEqual(['hello', 'world']);
+            done();
+          });
+      });
+
+      it('should destruct values returned by an Observable', (done) => {
+        plugin.destructObservable()
+          .subscribe((args: any[]) => {
+            expect(args).toEqual(['hello', 'world']);
+            done();
+          });
+      });
+
     });
 
   });

@@ -72,7 +72,7 @@ declare const window: any;
  * ### Troubleshooting ###
  * #### I get compile errors when I run `ionic build ios` or `ionic run ios`. ####
  * This could be caused by the Cordova project directory in `/platforms/ios` not being named correctly.
- * Try running `ionic platform rm <platform>` then run `ionic platform add <platform>` to recreate the
+ * Try running `ionic cordova platform rm <platform>` then run `ionic cordova platform add <platform>` to recreate the
  * platform directories.
  */
 @Plugin({
@@ -85,7 +85,7 @@ declare const window: any;
 @Injectable()
 export class Geofence extends IonicNativePlugin {
 
-  public TransitionType = {
+  TransitionType = {
     ENTER: 1,
     EXIT: 2,
     BOTH: 3
@@ -96,7 +96,7 @@ export class Geofence extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @CordovaFunctionOverride()
-  onTrasitionReceived(): Observable<any> { return; };
+  onTransitionReceived(): Observable<any> { return; };
 
   /**
    * Initializes the plugin. User will be prompted to allow the app to use location and notifications.
@@ -138,20 +138,6 @@ export class Geofence extends IonicNativePlugin {
    */
   @Cordova()
   getWatched(): Promise<string> { return; };
-
-  /**
-   * Called when a geofence is crossed in the direction specified by `TransitType`.
-   *
-   * @returns {Observable<any>}
-   */
-  onTransitionReceived(): Observable<any> {
-
-    return new Observable<any>((observer) => {
-      window && window.geofence && (window.geofence.onTransitionReceived = observer.next.bind(observer));
-      return () => window.geofence.onTransitionReceived = () => { };
-    });
-
-  }
 
   /**
    * Called when the user clicks a geofence notification. iOS and Android only.

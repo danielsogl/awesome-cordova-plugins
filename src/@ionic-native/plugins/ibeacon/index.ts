@@ -16,7 +16,7 @@ export interface Beacon {
   major: number;
 
   /**
-   * The beacon's major identifier number.
+   * The beacon's minor identifier number.
    */
   minor: number;
 
@@ -636,7 +636,7 @@ export class IBeacon extends IonicNativePlugin {
    * native layer acknowledged the dispatch of the advertising request.
    */
   @Cordova({ otherPromise: true })
-  startAdvertising(region: Region, measuredPower: number): Promise<void> { return; }
+  startAdvertising(region: Region, measuredPower?: number): Promise<void> { return; }
 
   /**
    * Stop advertising as a beacon.

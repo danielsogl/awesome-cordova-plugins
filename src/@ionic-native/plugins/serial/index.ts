@@ -12,6 +12,12 @@ export interface SerialPermissionOptions {
 
 export interface SerialOpenOptions {
   baudRate: number;
+  dataBits: number;
+  stopBits: number;
+  parity: number;
+  dtr: boolean;
+  rts: boolean;
+  sleepOnPause: boolean;
 }
 
 /**
@@ -29,7 +35,13 @@ export interface SerialOpenOptions {
  *
  * this.serial.requestPermission().then(() => {
  *   this.serial.open({
- *     baudRate: 9800
+ *     baudRate: 9800,
+ *     dataBits: 4,
+ *     stopBits: 1,
+ *     parity: 0,
+ *     dtr: true,
+ *     rts: true,
+ *     sleepOnPause: false
  *   }).then(() => {
  *     console.log('Serial connection opened');
  *   });

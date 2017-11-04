@@ -5,8 +5,6 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  * @description
  * Clipboard management plugin for Cordova that supports iOS, Android, and Windows Phone 8.
  *
- * Requires Cordova plugin: https://github.com/VersoSolutions/CordovaClipboard
- * For more info, please see the [Clipboard plugin docs](https://github.com/VersoSolutions/CordovaClipboard.git).
  *
  * @usage
  * ```typescript
@@ -31,10 +29,10 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'Clipboard',
-  plugin: 'danielsogl-cordova-plugin-clipboard',
+  plugin: 'cordova-clipboard',
   pluginRef: 'cordova.plugins.clipboard',
-  repo: 'https://github.com/danielsogl/cordova-plugin-clipboard',
-  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
+  repo: 'https://github.com/ihadeed/cordova-clipboard',
+  platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
 @Injectable()
 export class Clipboard extends IonicNativePlugin {

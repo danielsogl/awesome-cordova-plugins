@@ -22,8 +22,8 @@ import { Injectable } from '@angular/core';
  */
 @Plugin({
   pluginName: 'MobileAccessibility',
-  plugin: 'https://github.com/phonegap/phonegap-mobile-accessibility.git',
-  pluginRef: 'MobileAccessibilityNotifications',
+  plugin: 'phonegap-plugin-mobile-accessibility',
+  pluginRef: 'MobileAccessibility',
   repo: 'https://github.com/phonegap/phonegap-mobile-accessibility',
   platforms: ['Android Fire OS', 'Android', 'iOS', 'Windows']
 })
@@ -179,7 +179,7 @@ export class MobileAccessibility extends IonicNativePlugin {
   getTextZoomCallback(): Promise<number> { return; }
 
   /**
-   * @param textZoom {nuber} A percentage value by which text in the WebView should be scaled.
+   * @param textZoom {number} A percentage value by which text in the WebView should be scaled.
    */
   @Cordova({ sync: true })
   setTextZoom(textZoom: number): void { }

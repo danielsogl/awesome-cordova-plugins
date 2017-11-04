@@ -3,6 +3,9 @@ import { Cordova, CordovaInstance, Plugin, IonicNativePlugin, checkAvailability 
 
 declare const Notification: any;
 
+/**
+ * @hidden
+ */
 export class PLNObject {
 
   private _objectInstance: any;
@@ -84,7 +87,7 @@ export interface LocalNotificationOptions {
  */
 @Plugin({
   pluginName: 'Phonegap Local Notifications',
-  plugin: 'phonegap-local-notifications',
+  plugin: 'phonegap-plugin-local-notification',
   pluginRef: 'Notification',
   repo: 'https://github.com/phonegap/phonegap-plugin-local-notification',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']

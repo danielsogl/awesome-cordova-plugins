@@ -192,7 +192,7 @@ export class AndroidFingerprintAuth extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves if fingerprint auth is available on the device
    */
   @Cordova()
-  isAvailable(): Promise<{ isAvailable: boolean }> { return; }
+  isAvailable(): Promise<{ isAvailable: boolean, isHardwareDetected: boolean, hasEnrolledFingerprints: boolean }> { return; }
 
   /**
    * Delete the cipher used for encryption and decryption by username

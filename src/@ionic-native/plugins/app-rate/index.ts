@@ -61,6 +61,10 @@ export interface AppRateCallbacks {
    * call back function. called when rate-dialog showing
    */
   onRateDialogShow?: Function;
+  /**
+   * call back function. called when user clicked on negative feedback
+   */
+  handleNegativeFeedback?: Function;
 
 }
 
@@ -158,5 +162,11 @@ export class AppRate extends IonicNativePlugin {
    */
   @Cordova()
   promptForRating(immediately: boolean): void { };
+
+  /**
+   * Immediately send the user to the app store rating page
+   */
+  @Cordova()
+  navigateToAppStore(): void { };
 
 }

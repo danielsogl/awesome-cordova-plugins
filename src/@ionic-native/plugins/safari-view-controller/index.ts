@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Observable } from 'rxjs/Observable';
 
 export interface SafariViewControllerOptions {
   animated?: boolean;
@@ -37,7 +38,7 @@ export interface SafariViewControllerOptions {
  *           enterReaderModeIfAvailable: true,
  *           tintColor: '#ff0000'
  *         })
- *         .then((result: any) => {
+ *         .subscribe((result: any) => {
  *             if(result.event === 'opened') console.log('Opened');
  *             else if(result.event === 'loaded') console.log('Loaded');
  *             else if(result.event === 'closed') console.log('Closed');
@@ -74,13 +75,14 @@ export class SafariViewController extends IonicNativePlugin {
   /**
    * Shows Safari View Controller
    * @param options {SafariViewControllerOptions} optional
-   * @returns {Promise<any>}
+   * @returns {Observable<any>}
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
+    observable: true
   })
-  show(options?: SafariViewControllerOptions): Promise<any> { return; }
+  show(options?: SafariViewControllerOptions): Observable<any> { return; }
 
   /**
    * Hides Safari View Controller

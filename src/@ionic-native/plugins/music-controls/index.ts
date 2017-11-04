@@ -10,6 +10,10 @@ export interface MusicControlsOptions {
   dismissable: boolean;
   hasPrev: boolean;
   hasNext: boolean;
+  hasSkipForward: boolean;
+  hasSkipBackward: boolean;
+  skipForwardInterval: number;
+  skipBackwardInterval: number;
   hasClose: boolean;
   album: string;
   duration: number;
@@ -50,6 +54,10 @@ export interface MusicControlsOptions {
  *   album       : 'Absolution'     // optional, default: ''
  *   duration : 60, // optional, default: 0
  *   elapsed : 10, // optional, default: 0
+ *   hasSkipForward : true,  // show skip forward button, optional, default: false
+ *   hasSkipBackward : true, // show skip backward button, optional, default: false
+ *   skipForwardInterval: 15, // display number for skip forward, optional, default: 0
+ *   skipBackwardInterval: 15, // display number for skip backward, optional, default: 0
  *
  *   // Android only, optional
  *   // text displayed in the status bar when the notification (and the ticker) are updated
@@ -58,38 +66,59 @@ export interface MusicControlsOptions {
  *
  *  this.musicControls.subscribe().subscribe(action => {
  *
- *    switch(action) {
- *        case 'music-controls-next':
+ *    function events(action) {
+ *      const message = JSON.parse(action).message;
+ *      	switch(message) {
+ *      		case 'music-controls-next':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-previous':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-pause':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-play':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-destroy':
+ *      			// Do something
+ *      			break;
+ *
+ *          // External controls (iOS only)
+ *          case 'music-controls-toggle-play-pause' :
+ *      			// Do something
+ *      			break;
+ *          case 'music-controls-seek-to':
+ *            const seekToInSeconds = JSON.parse(action).position;
+ *            MusicControls.updateElapsed({
+ *              elapsed: seekToInSeconds,
+ *              isPlaying: true
+ *            });
  *            // Do something
  *            break;
- *        case 'music-controls-previous':
+ *          case 'music-controls-skip-forward':
  *            // Do something
  *            break;
- *        case 'music-controls-pause':
- *            // Do something
- *            break;
- *        case 'music-controls-play':
- *            // Do something
- *            break;
- *        case 'music-controls-destroy':
+ *          case 'music-controls-skip-backward':
  *            // Do something
  *            break;
  *
- *        // Headset events (Android only)
- *        case 'music-controls-media-button' :
- *            // Do something
- *            break;
- *        case 'music-controls-headset-unplugged':
- *            // Do something
- *            break;
- *        case 'music-controls-headset-plugged':
- *            // Do something
- *            break;
- *        default:
- *            break;
- *    }
- *
- *  });
+ *      		// Headset events (Android only)
+ *      		// All media button events are listed below
+ *      		case 'music-controls-media-button' :
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-headset-unplugged':
+ *      			// Do something
+ *      			break;
+ *      		case 'music-controls-headset-plugged':
+ *      			// Do something
+ *      			break;
+ *      		default:
+ *      			break;
+ *      	}
+ *      }
  *
  *  this.musicControls.listen(); // activates the observable above
  *
@@ -146,6 +175,15 @@ export class MusicControls extends IonicNativePlugin {
    */
   @Cordova()
   updateIsPlaying(isPlaying: boolean): void { }
+
+  /**
+  * Update elapsed time, optionally toggle play/pause:
+  * @param args {Object}
+  */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  updateElapsed(args: { elapsed: string; isPlaying: boolean; }): void { }
 
   /**
    * Toggle dismissable:
