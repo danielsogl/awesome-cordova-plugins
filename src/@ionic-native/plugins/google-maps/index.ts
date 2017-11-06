@@ -93,6 +93,9 @@ export class LatLngBounds implements ILatLngBounds {
 
 export interface GoogleMapOptions {
 
+  /**
+   * MapType
+   */
   mapType?: MapType;
 
   controls?: {
@@ -124,9 +127,25 @@ export interface GoogleMapOptions {
   };
 
   gestures?: {
+
+    /**
+     * Set false to disable the scroll gesture (default: true)
+     */
     scroll?: boolean;
+
+    /**
+     * Set false to disable the tilt gesture (default: true)
+     */
     tilt?: boolean;
+
+    /**
+     * Set false to disable the zoom gesture (default: true)
+     */
     zoom?: boolean;
+
+    /**
+     * Set false to disable the rotate gesture (default: true)
+     */
     rotate?: boolean;
   };
 
@@ -171,6 +190,23 @@ export interface GoogleMapOptions {
 export interface CameraPosition<T> {
   /**
    * The center location of the camera view.
+   *
+   * [usage 1]
+   *
+   * let cameraPos: CameraPosition<ILatLng> = {
+   *   target: {lat: ..., lng: ...},
+   *   zoom: 10
+   * }
+   *
+   * [usage 2] The zoom property is ignored when you specify multiple position
+   *
+   * let cameraPos: CameraPosition<ILatLng[]> = {
+   *   target: [
+   *      {lat: ..., lng: ...},
+   *      {lat: ..., lng: ...},
+   *      {lat: ..., lng: ...}
+   *   ]
+   * }
    */
   target?: T;
   /**
@@ -196,18 +232,91 @@ export interface CameraPosition<T> {
 }
 
 export interface CircleOptions {
-  center?: ILatLng;
-  radius?: number;
+  /**
+   * Center position of circle
+   */
+  center: ILatLng;
+
+  /**
+   * Radius of circle in meter
+   */
+  radius: number;
+
+  /**
+   * Set the stroke color
+   * (rgb, rgba, #RRGGBB, "colorname", ...etc)
+   */
   strokeColor?: string;
+
+  /**
+   * Set the stroke width in pixel
+   */
   strokeWidth?: number;
+  /**
+   * Set the inside color of polygon
+   * (rgb, rgba, #RRGGBB, "colorname", ...etc)
+   */
   fillColor?: string;
+
+  /**
+   * Set to true to receive the CIRCLE_CLICK event
+   * (default: false)
+   */
   clickable?: boolean;
+
+  /**
+   * Set to false to hide
+   */
   visible?: boolean;
+
+  /**
+   * Z-index
+   */
   zIndex?: number;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface GeocoderRequest {
+
+  /**
+   * The address property or position property is required.
+   * You can not specify both property at the same time.
+   *
+   * [geocoding usage1]
+   * let request: GeocoderRequest = {
+   *   address: "Los Angeles, California, USA"
+   * };
+   *
+   * [geocoding usage2]
+   * let request: GeocoderRequest = {
+   *   address: [
+   *    "Los Angeles, California, USA",
+   *    "San Francisco, California, USA",
+   *   ]
+   * };
+   */
   address?: string | string[];
+
+  /**
+   *
+   * [reverse-geocoding usage1]
+   * let request: GeocoderRequest = {
+   *   position: {"lat": 37.421655, "lng": -122.085637}
+   * };
+   *
+   * [reverse-geocoding usage2]
+   * let request: GeocoderRequest = {
+   *   address: [
+   *    {"lat": 37.421655, "lng": -122.085637},
+   *    {"lat": 37.332, "lng": -122.030781}
+   *   ]
+   * };
+   */
   position?: ILatLng | ILatLng[];
 }
 
@@ -236,31 +345,44 @@ export interface GroundOverlayOptions {
   /**
    * URL of overlay
    */
-  url?: string;
+  url: string;
+
   /**
    * Bounds, array of ILatLng
    */
-  bounds?: Array<ILatLng>;
+  bounds: Array<ILatLng>;
+
   /**
-   * Set to false to ignore click event
+   * Set to true to receive the GROUND_OVERLAY_CLICK event
+   * (default: false)
    */
   clickable?: boolean;
+
   /**
    * Set to false to hide
    */
   visible?: boolean;
+
   /**
    * Opacity. From 0.0 to 1.0 .
    */
   opacity?: number;
+
   /**
    * Bearing
    */
   bearing?: number;
+
   /**
    * Z-index
    */
   zIndex?: number;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface ILatLng {
@@ -341,13 +463,52 @@ export interface MarkerOptions {
    * Set to true to disable auto panning when the marker is clicked.
    */
   disableAutoPan?: boolean;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface MarkerClusterOptions {
+  /**
+   * Maximum zoom level of clustering
+   * (default: 15, max: 18)
+   */
   maxZoomLevel?: number;
+
+  /**
+   * Draw a rectangle that contains all locations of clustered when you tap on a clister marker.
+   * (default: true)
+   */
   boundsDraw?: boolean;
+
+  /**
+   * Position list
+   * [
+   *   {title: "store A", position: {lat: ..., lng: ...}},
+   *   {title: "store B", position: {lat: ..., lng: ...}},
+   *   {title: "store C", position: {lat: ..., lng: ...}}
+   * ]
+   */
   markers: MarkerOptions[];
+
+  /**
+   * Conditions of clustering
+   * [
+   *   {icon: "assets/small.png", min: 2, max: 10},
+   *   {icon: "assets/middle.png", min: 11, max: 30},
+   *   {icon: "assets/large.png", min: 31},
+   * ]
+   */
   icons: any[];
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface MyLocation {
@@ -363,38 +524,159 @@ export interface MyLocation {
 }
 
 export interface MyLocationOptions {
+  /**
+   * Set true if you want to try to use GPS mandatory.
+   * (In false, the plugin try to use GPS and network)
+   * (default: false)
+   */
   enableHighAccuracy?: boolean;
 }
 
 export interface PolygonOptions {
-  points?: Array<ILatLng>;
+  /**
+   * Pass ILatLng[] to specify the vertixes.
+   * You need to contain two points at least.
+   */
+  points: Array<ILatLng>;
+
+  /**
+   * Set true if you want to draw the curve polygon based on the earth
+   * (default: false)
+   */
   geodesic?: boolean;
+
+  /**
+   * Set the stroke color
+   * (rgb, rgba, #RRGGBB, "colorname", ...etc)
+   */
   strokeColor?: string;
+
+  /**
+   * Set the stroke width in pixel
+   */
   strokeWidth?: number;
+
+  /**
+   * Set the inside color of polygon
+   * (rgb, rgba, #RRGGBB, "colorname", ...etc)
+   */
   fillColor?: string;
+
+  /**
+   * Set false if you want to create invisible polygon
+   * (Invisible polygon is not clickable, default true)
+   */
   visible?: boolean;
+
+  /**
+   * Hierarchy z-index
+   */
   zIndex?: number;
+
+  /**
+   * Pass ILatLng[][] to create holes in polygon
+   */
   addHole?: Array<Array<ILatLng>>;
+
+  /**
+   * Set true if you want to receive the POLYGON_CLICK event
+   * (default: false)
+   */
   clickable?: boolean;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface PolylineOptions {
-  points?: Array<ILatLng>;
+  /**
+   * Pass ILatLng[] to specify the vertixes.
+   * You need to contain two points at least.
+   */
+  points: Array<ILatLng>;
+
+  /**
+   * Set false if you want to create invisible polyline
+   * (Invisible polyline is not clickable, default true)
+   */
   visible?: boolean;
+
+  /**
+   * Set true if you want to draw the curve polyline based on the earth
+   * (default: false)
+   */
   geodesic?: boolean;
+
+  /**
+   * Set the stroke color
+   * (rgb, rgba, #RRGGBB, "colorname", ...etc)
+   */
   color?: string;
+
+  /**
+   * Set the stroke width in pixel
+   */
   width?: number;
+
+  /**
+   * Hierarchy z-index
+   */
   zIndex?: number;
+
+  /**
+   * Set true if you want to receive the POLYLINE_CLICK event
+   * (default: false)
+   */
   clickable?: boolean;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface TileOverlayOptions {
+  /**
+   * This callback must return string of image URL.
+   * If no tile, you need to return null.
+   */
   getTile: (x: number, y: number, zoom: number) => string;
+
+  /**
+   * Set false if you want to create invisible tilelayer
+   * (default true)
+   */
   visible?: boolean;
+
+  /**
+   * Hierarchy z-index of tilelayer
+   */
   zIndex?: number;
+
+  /**
+   * Default: 512px
+   */
   tileSize?: number;
+
+  /**
+   * Default: 1.0
+   */
   opacity?: number;
+
+  /**
+   * Set true if you want to display the tile information over the tile images.
+   */
   debug?: boolean;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 
