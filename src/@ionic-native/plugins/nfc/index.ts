@@ -1,7 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin, CordovaProperty } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 declare let window: any;
+
+export interface NdefEvent {
+  tag: NdefTag;
+}
+
+export interface NdefRecord {
+  id: any[];
+  payload: number[];
+  tnf: number;
+  type: number[];
+}
+
+export interface NdefTag {
+  canMakeReadOnly: boolean;
+  id: number[];
+  isWriteable: boolean;
+  maxSize: number;
+  ndefMessage: NdefRecord[];
+  techTypes: string[];
+  type: string;
+}
+
 /**
  * @name NFC
  * @description
@@ -62,7 +84,7 @@ export class NFC extends IonicNativePlugin {
     clearFunction: 'removeNdefListener',
     clearWithArgs: true
   })
-  addNdefListener(onSuccess?: Function, onFailure?: Function): Observable<any> { return; }
+  addNdefListener(onSuccess?: Function, onFailure?: Function): Observable<NdefEvent> { return; }
 
   /**
    * Registers an event listener for tags matching any tag type.
@@ -218,15 +240,90 @@ export class NFC extends IonicNativePlugin {
 @Injectable()
 export class Ndef extends IonicNativePlugin {
 
-  @Cordova({ sync: true })
-  uriRecord(uri: string): any { return; }
+  @CordovaProperty
+  TNF_EMPTY: number;
+  @CordovaProperty
+  TNF_WELL_KNOWN: number;
+  @CordovaProperty
+  TNF_MIME_MEDIA: number;
+  @CordovaProperty
+  TNF_ABSOLUTE_URI: number;
+  @CordovaProperty
+  TNF_EXTERNAL_TYPE: number;
+  @CordovaProperty
+  TNF_UNKNOWN: number;
+  @CordovaProperty
+  TNF_UNCHANGED: number;
+  @CordovaProperty
+  TNF_RESERVED: number;
+
+  @CordovaProperty
+  RTD_TEXT: number[];
+  @CordovaProperty
+  RTD_URI: number[];
+  @CordovaProperty
+  RTD_SMART_POSTER: number[];
+  @CordovaProperty
+  RTD_ALTERNATIVE_CARRIER: number[];
+  @CordovaProperty
+  RTD_HANDOVER_CARRIER: number[];
+  @CordovaProperty
+  RTD_HANDOVER_REQUEST: number[];
+  @CordovaProperty
+  RTD_HANDOVER_SELECT: number[];
 
   @Cordova({ sync: true })
-  textRecord(text: string): any { return; }
+  record(tnf: number, type: number[] | string, id: number[] | string, payload: number[] | string): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  mimeMediaRecord(mimeType: string, payload: string): any { return; }
+  textRecord(text: string, languageCode: string, id: number[] | string): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  androidApplicationRecord(packageName: string): any { return; }
+  uriRecord(uri: string, id: number[] | string): NdefRecord { return; }
+
+  @Cordova({ sync: true })
+  absoluteUriRecord(uri: string, payload: number[] | string, id: number[] | string): NdefRecord { return; }
+
+  @Cordova({ sync: true })
+  mimeMediaRecord(mimeType: string, payload: string): NdefRecord { return; }
+
+  @Cordova({ sync: true })
+  smartPoster(ndefRecords: any[], id?: number[] | string ): NdefRecord { return; }
+
+  @Cordova({ sync: true })
+  emptyRecord(): NdefRecord { return; }
+
+  @Cordova({ sync: true })
+  androidApplicationRecord(packageName: string): NdefRecord { return; }
+
+  @Cordova({ sync: true })
+  encodeMessage(ndefRecords: any): any { return; }
+
+  @Cordova({ sync: true })
+  decodeMessage(bytes: any): any { return; }
+
+  @Cordova({ sync: true })
+  docodeTnf(tnf_byte: any): any { return; }
+
+  @Cordova({ sync: true })
+  encodeTnf(mb: any, me: any, cf: any, sr: any, il: any, tnf: any): any { return; }
+
+  @Cordova({ sync: true })
+  tnfToString(tnf: any): string { return; }
+
+  @CordovaProperty
+  textHelper: TextHelper;
+
+  @CordovaProperty
+  uriHelper: UriHelper;
+}
+
+export class TextHelper extends IonicNativePlugin {
+  decodePayload(data: number[]): string { return; }
+  encodePayload(text: string, lang: string): number[] { return; }
+}
+
+export class UriHelper extends IonicNativePlugin {
+  decodePayload(data: number[]): string { return; }
+  encodePayload(uri: string): number[] { return; }
 }
