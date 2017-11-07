@@ -2,6 +2,28 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 declare let window: any;
+
+export interface NdefEvent {
+  tag: NdefTag;
+}
+
+export interface NdefRecord {
+  id: any[];
+  payload: number[];
+  tnf: number;
+  type: number[];
+}
+
+export interface NdefTag {
+  canMakeReadOnly: boolean;
+  id: number[];
+  isWriteable: boolean;
+  maxSize: number;
+  ndefMessage: NdefRecord[];
+  techTypes: string[];
+  type: string;
+}
+
 /**
  * @name NFC
  * @description
@@ -62,7 +84,7 @@ export class NFC extends IonicNativePlugin {
     clearFunction: 'removeNdefListener',
     clearWithArgs: true
   })
-  addNdefListener(onSuccess?: Function, onFailure?: Function): Observable<any> { return; }
+  addNdefListener(onSuccess?: Function, onFailure?: Function): Observable<NdefEvent> { return; }
 
   /**
    * Registers an event listener for tags matching any tag type.
