@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaCheck, CordovaInstance, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
+import { CordovaCheck, CordovaInstance, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
@@ -905,7 +905,7 @@ export class GoogleMaps extends IonicNativePlugin {
    * @param options {any} Options
    * @return {GoogleMap}
    */
-  create(element: string | HTMLElement | GoogleMapOptions, options?: GoogleMapOptions): GoogleMap {
+  static create(element: string | HTMLElement | GoogleMapOptions, options?: GoogleMapOptions): GoogleMap {
     if (element instanceof HTMLElement) {
       if (element.getAttribute('__pluginMapId')) {
         console.error('GoogleMaps', element.tagName + '[__pluginMapId=\'' + element.getAttribute('__pluginMapId') +  '\'] has already map.');
@@ -918,6 +918,15 @@ export class GoogleMaps extends IonicNativePlugin {
     let googleMap: GoogleMap = new GoogleMap(<HTMLElement>element, options);
     googleMap.set('_overlays', {});
     return googleMap;
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  create(element: string | HTMLElement | GoogleMapOptions, options?: GoogleMapOptions): GoogleMap {
+    console.error('GoogleMaps', '[deprecated] Please use GoogleMaps.create()');
+    return GoogleMaps.create(element, options);
   }
 
 }
@@ -1470,20 +1479,37 @@ export class Environment {
    * Get the open source software license information for Google Maps SDK for iOS.
    * @return {Promise<any>}
    */
-  getLicenseInfo(): Promise<any> {
+  static getLicenseInfo(): Promise<any> {
     return new Promise<any>((resolve) => {
       GoogleMaps.getPlugin().environment.getLicenseInfo((text: string) => resolve(text));
     });
   }
 
   /**
+   * @deprecation
+   * @hidden
+   */
+  getLicenseInfo(): Promise<any> {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Environment.getLicenseInfo()');
+    return Environment.getLicenseInfo();
+  }
+
+  /**
    * Specifies the background color of the app.
    * @param color
    */
-  setBackgroundColor(color: string): void {
+  static setBackgroundColor(color: string): void {
     GoogleMaps.getPlugin().environment.setBackgroundColor(color);
   }
 
+  /**
+   * @deprecation
+   * @hidden
+   */
+  setBackgroundColor(color: string): void {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Environment.setBackgroundColor()');
+    Environment.setBackgroundColor(color);
+  }
 }
 
 /**
@@ -1496,12 +1522,22 @@ export class Environment {
   repo: ''
 })
 export class Geocoder {
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  geocode(request: GeocoderRequest): Promise<GeocoderResult[] | BaseArrayClass<GeocoderResult>> {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Geocoder.geocode()');
+    return Geocoder.geocode(request);
+  }
+
   /**
    * Converts position to address and vice versa
    * @param {GeocoderRequest} request Request object with either an address or a position
    * @return {Promise<GeocoderResult[] | BaseArrayClass<GeocoderResult>>}
    */
-  geocode(request: GeocoderRequest): Promise<GeocoderResult[] | BaseArrayClass<GeocoderResult>> {
+  static geocode(request: GeocoderRequest): Promise<GeocoderResult[] | BaseArrayClass<GeocoderResult>> {
 
     if (request.address instanceof Array || Array.isArray(request.address) ||
       request.position instanceof Array || Array.isArray(request.position)) {
@@ -1551,22 +1587,38 @@ export class Geocoder {
   repo: ''
 })
 export class Encoding {
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  decodePath(encoded: string, precision?: number): LatLng {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Encoding.decodePath()');
+    return Encoding.decodePath(encoded, precision);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  encodePath(path: Array<ILatLng> | BaseArrayClass<ILatLng>): string {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Encoding.encodePath()');
+    return Encoding.encodePath(path);
+  }
+
   /**
    * Decodes an encoded path string into a sequence of LatLngs.
    * @param encoded {string} an encoded path string
    * @param precision? {number} default: 5
    * @return {LatLng}
    */
-  @Cordova({ sync: true })
-  decodePath(encoded: string, precision?: number): LatLng { return; }
+  static decodePath(encoded: string, precision?: number): LatLng { return; }
 
   /**
    * Encodes a sequence of LatLngs into an encoded path string.
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>} a sequence of LatLngs
    * @return {string}
    */
-  @Cordova({ sync: true })
-  encodePath(path: Array<ILatLng> | BaseArrayClass<ILatLng>): string { return; }
 }
 
 /**
@@ -1579,13 +1631,92 @@ export class Encoding {
   repo: ''
 })
 export class Spherical {
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeDistanceBetween(from: ILatLng, to: ILatLng): number {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeDistanceBetween()');
+    return Spherical.computeDistanceBetween(from, to);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeOffset(from: ILatLng, distance: number, heading: number): LatLng {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeOffset()');
+    return Spherical.computeOffset(from, distance, heading);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeOffsetOrigin()');
+    return Spherical.computeOffsetOrigin(to, distance, heading);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeLength()');
+    return Spherical.computeLength(path);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeArea()');
+    return Spherical.computeArea(path);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeSignedArea()');
+    return Spherical.computeSignedArea(path);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeHeading(from: ILatLng, to: ILatLng): number {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeHeading()');
+    return Spherical.computeHeading(from, to);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.interpolate()');
+    return Spherical.interpolate(from, to, fraction);
+  }
+
+
+
+
+
+
+
   /**
    * Returns the distance, in meters, between two LatLngs.
    * @param locationA {ILatLng}
    * @param locationB {ILatLng}
    * @return {number}
    */
-  computeDistanceBetween(from: ILatLng, to: ILatLng): number {
+  static computeDistanceBetween(from: ILatLng, to: ILatLng): number {
     return GoogleMaps.getPlugin().geometry.spherical.computeDistanceBetween(from, to);
   }
 
@@ -1596,7 +1727,7 @@ export class Spherical {
    * @param heading {number}
    * @return {LatLng}
    */
-  computeOffset(from: ILatLng, distance: number, heading: number): LatLng {
+  static computeOffset(from: ILatLng, distance: number, heading: number): LatLng {
     return GoogleMaps.getPlugin().geometry.spherical.computeOffset(from, distance, heading);
   }
 
@@ -1607,7 +1738,7 @@ export class Spherical {
    * @param heading {number} The heading in degrees clockwise from north.
    * @return {LatLng}
    */
-  computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng {
+  static computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng {
     return GoogleMaps.getPlugin().geometry.spherical.computeOffsetOrigin(to, distance, heading);
   }
 
@@ -1616,7 +1747,7 @@ export class Spherical {
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}
    * @return {number}
    */
-  computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+  static computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
     return GoogleMaps.getPlugin().geometry.spherical.computeLength(path);
   }
 
@@ -1625,7 +1756,7 @@ export class Spherical {
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
    * @return {number}
    */
-  computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+  static computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
     return GoogleMaps.getPlugin().geometry.spherical.computeArea(path);
   }
 
@@ -1634,7 +1765,7 @@ export class Spherical {
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
    * @return {number}
    */
-  computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+  static computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
     return GoogleMaps.getPlugin().geometry.spherical.computeSignedArea(path);
   }
 
@@ -1644,7 +1775,7 @@ export class Spherical {
    * @param to {ILatLng}
    * @return {number}
    */
-  computeHeading(from: ILatLng, to: ILatLng): number {
+  static computeHeading(from: ILatLng, to: ILatLng): number {
     return GoogleMaps.getPlugin().geometry.spherical.computeHeading(from, to);
   }
 
@@ -1655,7 +1786,7 @@ export class Spherical {
    * @param fraction {number}  A fraction of the distance to travel from 0.0 to 1.0 .
    * @return {LatLng}
    */
-  interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng {
+  static interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng {
     return GoogleMaps.getPlugin().geometry.spherical.interpolate(from, to, fraction);
   }
 }
