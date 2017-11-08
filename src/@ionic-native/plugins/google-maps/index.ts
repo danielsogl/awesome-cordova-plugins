@@ -865,6 +865,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * Polygon
  * Polyline
  * Spherical
+ * Poly
  * TileOverlay
  * BaseClass
  * BaseArrayClass
@@ -1619,6 +1620,39 @@ export class Encoding {
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>} a sequence of LatLngs
    * @return {string}
    */
+  static encodePath(path: Array<ILatLng> | BaseArrayClass<ILatLng>): string { return; }
+}
+
+/**
+ * @hidden
+ */
+@Plugin({
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.geometry.poly',
+  plugin: 'cordova-plugin-googlemaps',
+  repo: ''
+})
+export class Poly {
+
+  /**
+   * Returns true if the speicified location is in the polygon path
+   * @param location {ILatLng}
+   * @param path {ILatLng[]}
+   * @return {boolean}
+   */
+  static containsLocation(location: ILatLng, path: ILatLng[]): boolean {
+    return GoogleMaps.getPlugin().geometry.poly.containsLocation(location, path);
+  }
+
+  /**
+   * Returns true if the speicified location is on the polyline path
+   * @param location {ILatLng}
+   * @param path {ILatLng[]}
+   * @return {boolean}
+   */
+  static isLocationOnEdge(location: ILatLng, path: ILatLng[]): boolean {
+    return GoogleMaps.getPlugin().geometry.poly.isLocationOnEdge(location, path);
+  }
 }
 
 /**
