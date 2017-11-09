@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaCheck, CordovaInstance, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
+import { CordovaCheck, CordovaInstance, Plugin, InstanceProperty, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
@@ -93,6 +93,9 @@ export class LatLngBounds implements ILatLngBounds {
 
 export interface GoogleMapOptions {
 
+  /**
+   * MapType
+   */
   mapType?: MapType;
 
   controls?: {
@@ -124,9 +127,25 @@ export interface GoogleMapOptions {
   };
 
   gestures?: {
+
+    /**
+     * Set false to disable the scroll gesture (default: true)
+     */
     scroll?: boolean;
+
+    /**
+     * Set false to disable the tilt gesture (default: true)
+     */
     tilt?: boolean;
+
+    /**
+     * Set false to disable the zoom gesture (default: true)
+     */
     zoom?: boolean;
+
+    /**
+     * Set false to disable the rotate gesture (default: true)
+     */
     rotate?: boolean;
   };
 
@@ -171,6 +190,23 @@ export interface GoogleMapOptions {
 export interface CameraPosition<T> {
   /**
    * The center location of the camera view.
+   *
+   * [usage 1]
+   *
+   * let cameraPos: CameraPosition<ILatLng> = {
+   *   target: {lat: ..., lng: ...},
+   *   zoom: 10
+   * }
+   *
+   * [usage 2] The zoom property is ignored when you specify multiple position
+   *
+   * let cameraPos: CameraPosition<ILatLng[]> = {
+   *   target: [
+   *      {lat: ..., lng: ...},
+   *      {lat: ..., lng: ...},
+   *      {lat: ..., lng: ...}
+   *   ]
+   * }
    */
   target?: T;
   /**
@@ -196,18 +232,91 @@ export interface CameraPosition<T> {
 }
 
 export interface CircleOptions {
-  center?: ILatLng;
-  radius?: number;
+  /**
+   * Center position of circle
+   */
+  center: ILatLng;
+
+  /**
+   * Radius of circle in meter
+   */
+  radius: number;
+
+  /**
+   * Set the stroke color
+   * (rgb, rgba, #RRGGBB, "colorname", ...etc)
+   */
   strokeColor?: string;
+
+  /**
+   * Set the stroke width in pixel
+   */
   strokeWidth?: number;
+  /**
+   * Set the inside color of polygon
+   * (rgb, rgba, #RRGGBB, "colorname", ...etc)
+   */
   fillColor?: string;
+
+  /**
+   * Set to true to receive the CIRCLE_CLICK event
+   * (default: false)
+   */
   clickable?: boolean;
+
+  /**
+   * Set to false to hide
+   */
   visible?: boolean;
+
+  /**
+   * Z-index
+   */
   zIndex?: number;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface GeocoderRequest {
+
+  /**
+   * The address property or position property is required.
+   * You can not specify both property at the same time.
+   *
+   * [geocoding usage1]
+   * let request: GeocoderRequest = {
+   *   address: "Los Angeles, California, USA"
+   * };
+   *
+   * [geocoding usage2]
+   * let request: GeocoderRequest = {
+   *   address: [
+   *    "Los Angeles, California, USA",
+   *    "San Francisco, California, USA",
+   *   ]
+   * };
+   */
   address?: string | string[];
+
+  /**
+   *
+   * [reverse-geocoding usage1]
+   * let request: GeocoderRequest = {
+   *   position: {"lat": 37.421655, "lng": -122.085637}
+   * };
+   *
+   * [reverse-geocoding usage2]
+   * let request: GeocoderRequest = {
+   *   address: [
+   *    {"lat": 37.421655, "lng": -122.085637},
+   *    {"lat": 37.332, "lng": -122.030781}
+   *   ]
+   * };
+   */
   position?: ILatLng | ILatLng[];
 }
 
@@ -236,31 +345,44 @@ export interface GroundOverlayOptions {
   /**
    * URL of overlay
    */
-  url?: string;
+  url: string;
+
   /**
    * Bounds, array of ILatLng
    */
-  bounds?: Array<ILatLng>;
+  bounds: Array<ILatLng>;
+
   /**
-   * Set to false to ignore click event
+   * Set to true to receive the GROUND_OVERLAY_CLICK event
+   * (default: false)
    */
   clickable?: boolean;
+
   /**
    * Set to false to hide
    */
   visible?: boolean;
+
   /**
    * Opacity. From 0.0 to 1.0 .
    */
   opacity?: number;
+
   /**
    * Bearing
    */
   bearing?: number;
+
   /**
    * Z-index
    */
   zIndex?: number;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface ILatLng {
@@ -341,13 +463,52 @@ export interface MarkerOptions {
    * Set to true to disable auto panning when the marker is clicked.
    */
   disableAutoPan?: boolean;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface MarkerClusterOptions {
+  /**
+   * Maximum zoom level of clustering
+   * (default: 15, max: 18)
+   */
   maxZoomLevel?: number;
+
+  /**
+   * Draw a rectangle that contains all locations of clustered when you tap on a clister marker.
+   * (default: true)
+   */
   boundsDraw?: boolean;
+
+  /**
+   * Position list
+   * [
+   *   {title: "store A", position: {lat: ..., lng: ...}},
+   *   {title: "store B", position: {lat: ..., lng: ...}},
+   *   {title: "store C", position: {lat: ..., lng: ...}}
+   * ]
+   */
   markers: MarkerOptions[];
+
+  /**
+   * Conditions of clustering
+   * [
+   *   {icon: "assets/small.png", min: 2, max: 10},
+   *   {icon: "assets/middle.png", min: 11, max: 30},
+   *   {icon: "assets/large.png", min: 31},
+   * ]
+   */
   icons: any[];
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface MyLocation {
@@ -363,38 +524,159 @@ export interface MyLocation {
 }
 
 export interface MyLocationOptions {
+  /**
+   * Set true if you want to try to use GPS mandatory.
+   * (In false, the plugin try to use GPS and network)
+   * (default: false)
+   */
   enableHighAccuracy?: boolean;
 }
 
 export interface PolygonOptions {
-  points?: Array<ILatLng>;
+  /**
+   * Pass ILatLng[] to specify the vertixes.
+   * You need to contain two points at least.
+   */
+  points: Array<ILatLng>;
+
+  /**
+   * Set true if you want to draw the curve polygon based on the earth
+   * (default: false)
+   */
   geodesic?: boolean;
+
+  /**
+   * Set the stroke color
+   * (rgb, rgba, #RRGGBB, "colorname", ...etc)
+   */
   strokeColor?: string;
+
+  /**
+   * Set the stroke width in pixel
+   */
   strokeWidth?: number;
+
+  /**
+   * Set the inside color of polygon
+   * (rgb, rgba, #RRGGBB, "colorname", ...etc)
+   */
   fillColor?: string;
+
+  /**
+   * Set false if you want to create invisible polygon
+   * (Invisible polygon is not clickable, default true)
+   */
   visible?: boolean;
+
+  /**
+   * Hierarchy z-index
+   */
   zIndex?: number;
+
+  /**
+   * Pass ILatLng[][] to create holes in polygon
+   */
   addHole?: Array<Array<ILatLng>>;
+
+  /**
+   * Set true if you want to receive the POLYGON_CLICK event
+   * (default: false)
+   */
   clickable?: boolean;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface PolylineOptions {
-  points?: Array<ILatLng>;
+  /**
+   * Pass ILatLng[] to specify the vertixes.
+   * You need to contain two points at least.
+   */
+  points: Array<ILatLng>;
+
+  /**
+   * Set false if you want to create invisible polyline
+   * (Invisible polyline is not clickable, default true)
+   */
   visible?: boolean;
+
+  /**
+   * Set true if you want to draw the curve polyline based on the earth
+   * (default: false)
+   */
   geodesic?: boolean;
+
+  /**
+   * Set the stroke color
+   * (rgb, rgba, #RRGGBB, "colorname", ...etc)
+   */
   color?: string;
+
+  /**
+   * Set the stroke width in pixel
+   */
   width?: number;
+
+  /**
+   * Hierarchy z-index
+   */
   zIndex?: number;
+
+  /**
+   * Set true if you want to receive the POLYLINE_CLICK event
+   * (default: false)
+   */
   clickable?: boolean;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 export interface TileOverlayOptions {
+  /**
+   * This callback must return string of image URL.
+   * If no tile, you need to return null.
+   */
   getTile: (x: number, y: number, zoom: number) => string;
+
+  /**
+   * Set false if you want to create invisible tilelayer
+   * (default true)
+   */
   visible?: boolean;
+
+  /**
+   * Hierarchy z-index of tilelayer
+   */
   zIndex?: number;
+
+  /**
+   * Default: 512px
+   */
   tileSize?: number;
+
+  /**
+   * Default: 1.0
+   */
   opacity?: number;
+
+  /**
+   * Set true if you want to display the tile information over the tile images.
+   */
   debug?: boolean;
+
+  /**
+   * Accept own properties
+   * You can get the property later using `get()` method.
+   */
+  [key: string]: any;
 }
 
 
@@ -583,6 +865,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * Polygon
  * Polyline
  * Spherical
+ * Poly
  * TileOverlay
  * BaseClass
  * BaseArrayClass
@@ -623,7 +906,7 @@ export class GoogleMaps extends IonicNativePlugin {
    * @param options {any} Options
    * @return {GoogleMap}
    */
-  create(element: string | HTMLElement | GoogleMapOptions, options?: GoogleMapOptions): GoogleMap {
+  static create(element: string | HTMLElement | GoogleMapOptions, options?: GoogleMapOptions): GoogleMap {
     if (element instanceof HTMLElement) {
       if (element.getAttribute('__pluginMapId')) {
         console.error('GoogleMaps', element.tagName + '[__pluginMapId=\'' + element.getAttribute('__pluginMapId') +  '\'] has already map.');
@@ -636,6 +919,15 @@ export class GoogleMaps extends IonicNativePlugin {
     let googleMap: GoogleMap = new GoogleMap(<HTMLElement>element, options);
     googleMap.set('_overlays', {});
     return googleMap;
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  create(element: string | HTMLElement | GoogleMapOptions, options?: GoogleMapOptions): GoogleMap {
+    console.error('GoogleMaps', '[deprecated] Please use GoogleMaps.create()');
+    return GoogleMaps.create(element, options);
   }
 
 }
@@ -1188,20 +1480,37 @@ export class Environment {
    * Get the open source software license information for Google Maps SDK for iOS.
    * @return {Promise<any>}
    */
-  getLicenseInfo(): Promise<any> {
+  static getLicenseInfo(): Promise<any> {
     return new Promise<any>((resolve) => {
       GoogleMaps.getPlugin().environment.getLicenseInfo((text: string) => resolve(text));
     });
   }
 
   /**
+   * @deprecation
+   * @hidden
+   */
+  getLicenseInfo(): Promise<any> {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Environment.getLicenseInfo()');
+    return Environment.getLicenseInfo();
+  }
+
+  /**
    * Specifies the background color of the app.
    * @param color
    */
-  setBackgroundColor(color: string): void {
+  static setBackgroundColor(color: string): void {
     GoogleMaps.getPlugin().environment.setBackgroundColor(color);
   }
 
+  /**
+   * @deprecation
+   * @hidden
+   */
+  setBackgroundColor(color: string): void {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Environment.setBackgroundColor()');
+    Environment.setBackgroundColor(color);
+  }
 }
 
 /**
@@ -1214,12 +1523,22 @@ export class Environment {
   repo: ''
 })
 export class Geocoder {
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  geocode(request: GeocoderRequest): Promise<GeocoderResult[] | BaseArrayClass<GeocoderResult>> {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Geocoder.geocode()');
+    return Geocoder.geocode(request);
+  }
+
   /**
    * Converts position to address and vice versa
    * @param {GeocoderRequest} request Request object with either an address or a position
    * @return {Promise<GeocoderResult[] | BaseArrayClass<GeocoderResult>>}
    */
-  geocode(request: GeocoderRequest): Promise<GeocoderResult[] | BaseArrayClass<GeocoderResult>> {
+  static geocode(request: GeocoderRequest): Promise<GeocoderResult[] | BaseArrayClass<GeocoderResult>> {
 
     if (request.address instanceof Array || Array.isArray(request.address) ||
       request.position instanceof Array || Array.isArray(request.position)) {
@@ -1269,22 +1588,71 @@ export class Geocoder {
   repo: ''
 })
 export class Encoding {
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  decodePath(encoded: string, precision?: number): LatLng {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Encoding.decodePath()');
+    return Encoding.decodePath(encoded, precision);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  encodePath(path: Array<ILatLng> | BaseArrayClass<ILatLng>): string {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Encoding.encodePath()');
+    return Encoding.encodePath(path);
+  }
+
   /**
    * Decodes an encoded path string into a sequence of LatLngs.
    * @param encoded {string} an encoded path string
    * @param precision? {number} default: 5
    * @return {LatLng}
    */
-  @Cordova({ sync: true })
-  decodePath(encoded: string, precision?: number): LatLng { return; }
+  static decodePath(encoded: string, precision?: number): LatLng { return; }
 
   /**
    * Encodes a sequence of LatLngs into an encoded path string.
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>} a sequence of LatLngs
    * @return {string}
    */
-  @Cordova({ sync: true })
-  encodePath(path: Array<ILatLng> | BaseArrayClass<ILatLng>): string { return; }
+  static encodePath(path: Array<ILatLng> | BaseArrayClass<ILatLng>): string { return; }
+}
+
+/**
+ * @hidden
+ */
+@Plugin({
+  pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.geometry.poly',
+  plugin: 'cordova-plugin-googlemaps',
+  repo: ''
+})
+export class Poly {
+
+  /**
+   * Returns true if the speicified location is in the polygon path
+   * @param location {ILatLng}
+   * @param path {ILatLng[]}
+   * @return {boolean}
+   */
+  static containsLocation(location: ILatLng, path: ILatLng[]): boolean {
+    return GoogleMaps.getPlugin().geometry.poly.containsLocation(location, path);
+  }
+
+  /**
+   * Returns true if the speicified location is on the polyline path
+   * @param location {ILatLng}
+   * @param path {ILatLng[]}
+   * @return {boolean}
+   */
+  static isLocationOnEdge(location: ILatLng, path: ILatLng[]): boolean {
+    return GoogleMaps.getPlugin().geometry.poly.isLocationOnEdge(location, path);
+  }
 }
 
 /**
@@ -1297,13 +1665,92 @@ export class Encoding {
   repo: ''
 })
 export class Spherical {
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeDistanceBetween(from: ILatLng, to: ILatLng): number {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeDistanceBetween()');
+    return Spherical.computeDistanceBetween(from, to);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeOffset(from: ILatLng, distance: number, heading: number): LatLng {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeOffset()');
+    return Spherical.computeOffset(from, distance, heading);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeOffsetOrigin()');
+    return Spherical.computeOffsetOrigin(to, distance, heading);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeLength()');
+    return Spherical.computeLength(path);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeArea()');
+    return Spherical.computeArea(path);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeSignedArea()');
+    return Spherical.computeSignedArea(path);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  computeHeading(from: ILatLng, to: ILatLng): number {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.computeHeading()');
+    return Spherical.computeHeading(from, to);
+  }
+
+  /**
+   * @deprecation
+   * @hidden
+   */
+  interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng {
+    console.error('GoogleMaps', '[deprecated] This method is static. Please use Spherical.interpolate()');
+    return Spherical.interpolate(from, to, fraction);
+  }
+
+
+
+
+
+
+
   /**
    * Returns the distance, in meters, between two LatLngs.
    * @param locationA {ILatLng}
    * @param locationB {ILatLng}
    * @return {number}
    */
-  computeDistanceBetween(from: ILatLng, to: ILatLng): number {
+  static computeDistanceBetween(from: ILatLng, to: ILatLng): number {
     return GoogleMaps.getPlugin().geometry.spherical.computeDistanceBetween(from, to);
   }
 
@@ -1314,7 +1761,7 @@ export class Spherical {
    * @param heading {number}
    * @return {LatLng}
    */
-  computeOffset(from: ILatLng, distance: number, heading: number): LatLng {
+  static computeOffset(from: ILatLng, distance: number, heading: number): LatLng {
     return GoogleMaps.getPlugin().geometry.spherical.computeOffset(from, distance, heading);
   }
 
@@ -1325,7 +1772,7 @@ export class Spherical {
    * @param heading {number} The heading in degrees clockwise from north.
    * @return {LatLng}
    */
-  computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng {
+  static computeOffsetOrigin(to: ILatLng, distance: number, heading: number): LatLng {
     return GoogleMaps.getPlugin().geometry.spherical.computeOffsetOrigin(to, distance, heading);
   }
 
@@ -1334,7 +1781,7 @@ export class Spherical {
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}
    * @return {number}
    */
-  computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+  static computeLength(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
     return GoogleMaps.getPlugin().geometry.spherical.computeLength(path);
   }
 
@@ -1343,7 +1790,7 @@ export class Spherical {
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
    * @return {number}
    */
-  computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+  static computeArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
     return GoogleMaps.getPlugin().geometry.spherical.computeArea(path);
   }
 
@@ -1352,7 +1799,7 @@ export class Spherical {
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>}.
    * @return {number}
    */
-  computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
+  static computeSignedArea(path: Array<ILatLng> | BaseArrayClass<ILatLng>): number {
     return GoogleMaps.getPlugin().geometry.spherical.computeSignedArea(path);
   }
 
@@ -1362,7 +1809,7 @@ export class Spherical {
    * @param to {ILatLng}
    * @return {number}
    */
-  computeHeading(from: ILatLng, to: ILatLng): number {
+  static computeHeading(from: ILatLng, to: ILatLng): number {
     return GoogleMaps.getPlugin().geometry.spherical.computeHeading(from, to);
   }
 
@@ -1373,7 +1820,7 @@ export class Spherical {
    * @param fraction {number}  A fraction of the distance to travel from 0.0 to 1.0 .
    * @return {LatLng}
    */
-  interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng {
+  static interpolate(from: ILatLng, to: ILatLng, fraction: number): LatLng {
     return GoogleMaps.getPlugin().geometry.spherical.interpolate(from, to, fraction);
   }
 }
