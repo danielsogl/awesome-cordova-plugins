@@ -1,10 +1,26 @@
+<a name="4.4.0"></a>
+# [4.4.0](https://github.com/ionic-team/ionic-native/compare/v4.3.3...v4.4.0) (2017-11-09)
+
+
+### Features
+
+* **google-maps:** accept own properties for `addMarker()` and others ([#2093](https://github.com/ionic-team/ionic-native/issues/2093)) ([196be02](https://github.com/ionic-team/ionic-native/commit/196be02))
+* **http:** add support for new methods ([#2054](https://github.com/ionic-team/ionic-native/issues/2054)) ([d96d3ee](https://github.com/ionic-team/ionic-native/commit/d96d3ee))
+
+
+
 <a name="4.3.3"></a>
-## [4.3.3](https://github.com/ionic-team/ionic-native/compare/4.3.2...v4.3.3) (2017-11-01)
+## [4.3.3](https://github.com/ionic-team/ionic-native/compare/v4.3.2...v4.3.3) (2017-11-01)
 
 
 ### Bug Fixes
 
 * **google-maps:** HtmlInfoWindow should extend BaseClass [#2034](https://github.com/ionic-team/ionic-native/issues/2034)  ([#2035](https://github.com/ionic-team/ionic-native/issues/2035)) ([ce6e412](https://github.com/ionic-team/ionic-native/commit/ce6e412))
+
+
+
+<a name="4.3.2"></a>
+## [4.3.2](https://github.com/ionic-team/ionic-native/compare/4.3.2...v4.3.2) (2017-10-18)
 
 
 
@@ -24,17 +40,7 @@
 
 
 <a name="4.3.1"></a>
-## [4.3.1](https://github.com/ionic-team/ionic-native/compare/v4.3.1...4.3.1) (2017-10-06)
-
-
-### Features
-
-* **pro:** Add support for Ionic Pro by incorporating cordova-plugin-ionic ([465d551](https://github.com/ionic-team/ionic-native/commit/465d551))
-
-
-
-<a name="4.3.1"></a>
-## [4.3.1](https://github.com/ionic-team/ionic-native/compare/v4.3.0...v4.3.1) (2017-10-06)
+## [4.3.1](https://github.com/ionic-team/ionic-native/compare/v4.3.0...4.3.1) (2017-10-06)
 
 
 ### Bug Fixes
@@ -46,6 +52,7 @@
 
 ### Features
 
+* **pro:** Add support for Ionic Pro by incorporating cordova-plugin-ionic ([465d551](https://github.com/ionic-team/ionic-native/commit/465d551))
 * **regula-document-reader:** separate initialization and scanning, add android ([#2013](https://github.com/ionic-team/ionic-native/issues/2013)) ([2179699](https://github.com/ionic-team/ionic-native/commit/2179699))
 
 
@@ -58,7 +65,6 @@
 
 * **google-maps:** convert JS classes to Ionic Native ([#1956](https://github.com/ionic-team/ionic-native/issues/1956)) ([57af5c5](https://github.com/ionic-team/ionic-native/commit/57af5c5))
 * **google-maps:** fix icons property of MarkerClusterOptions ([#1937](https://github.com/ionic-team/ionic-native/issues/1937)) ([8004790](https://github.com/ionic-team/ionic-native/commit/8004790))
-* **google-maps:** fix issue when creating new instance of BaseArrayClass ([#1931](https://github.com/ionic-team/ionic-native/issues/1931)) ([957396b](https://github.com/ionic-team/ionic-native/commit/957396b))
 * **google-maps:** the zoom option is missing in the GoogleMapOptions class ([#1948](https://github.com/ionic-team/ionic-native/issues/1948)) ([ef898ef](https://github.com/ionic-team/ionic-native/commit/ef898ef))
 * **http:** fix plugin ref ([#1934](https://github.com/ionic-team/ionic-native/issues/1934)) ([3a1034e](https://github.com/ionic-team/ionic-native/commit/3a1034e))
 * **launch-navigator:** fix navigate method ([#1940](https://github.com/ionic-team/ionic-native/issues/1940)) ([a150d4d](https://github.com/ionic-team/ionic-native/commit/a150d4d))
@@ -80,6 +86,16 @@
 ### BREAKING CHANGES
 
 * **push:** this wrapper will work only with `phonegap-plugin-push@2.0.0`
+
+
+
+<a name="4.2.1"></a>
+## [4.2.1](https://github.com/ionic-team/ionic-native/compare/v4.2.0...v4.2.1) (2017-08-29)
+
+
+### Bug Fixes
+
+* **google-maps:** fix issue when creating new instance of BaseArrayClass ([#1931](https://github.com/ionic-team/ionic-native/issues/1931)) ([957396b](https://github.com/ionic-team/ionic-native/commit/957396b))
 
 
 
