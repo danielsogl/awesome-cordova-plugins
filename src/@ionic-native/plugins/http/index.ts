@@ -114,6 +114,13 @@ export class HTTP extends IonicNativePlugin {
   removeCookies(url: string, cb: () => void): void { }
 
   /**
+   * Disable following redirects automatically
+   * @param disable {boolean} Set to true to disable following redirects automatically
+   */
+  @Cordova({ sync: true })
+  disableRedirect(disable: boolean): void { }
+
+  /**
    * Set request timeout
    * @param timeout {number} The timeout in seconds. Default 60
    */
@@ -139,14 +146,6 @@ export class HTTP extends IonicNativePlugin {
    */
   @Cordova()
   acceptAllCerts(accept: boolean): Promise<void> { return; }
-
-  /**
-   * Whether or not to validate the domain name in the certificate. This defaults to true.
-   * @param validate {boolean} Set to true to validate
-   * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
-   */
-  @Cordova()
-  validateDomainName(validate: boolean): Promise<void> { return; }
 
   /**
    * Make a POST request
@@ -177,6 +176,16 @@ export class HTTP extends IonicNativePlugin {
    */
   @Cordova()
   put(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
+
+  /**
+   * Make a PATCH request
+   * @param url {string} The url to send the request to
+   * @param body {Object} The body of the request
+   * @param headers {Object} The headers to set for this request
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  patch(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
 
   /**
    * Make a DELETE request
