@@ -3,6 +3,9 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Injectable } from '@angular/core';
 
+/**
+ * @hidden
+ */
 export interface CordovaFiniteObservableOptions extends CordovaOptions {
   /**
    * Function that gets a result returned from plugin's success callback, and decides whether it is last value and observable should complete.
@@ -15,10 +18,9 @@ export interface CordovaFiniteObservableOptions extends CordovaOptions {
 }
 
 /**
- * @private
+ * @hidden
  *
  * Wraps method that returns an observable that can be completed. Provided opts.resultFinalPredicate dictates when the observable completes.
- *
  */
 export function CordovaFiniteObservable(opts: CordovaFiniteObservableOptions = {}) {
   opts.observable = true;
