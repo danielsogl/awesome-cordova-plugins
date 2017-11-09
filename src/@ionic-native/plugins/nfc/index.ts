@@ -318,6 +318,36 @@ export class Ndef extends IonicNativePlugin {
   uriHelper: UriHelper;
 }
 
+/**
+ * @hidden
+ */
+@Plugin({
+  pluginName: 'NFC',
+  plugin: 'phonegap-nfc',
+  pluginRef: 'util'
+})
+@Injectable()
+export class NfcUtil extends IonicNativePlugin {
+
+  @Cordova({ sync: true })
+  toHex(i: number): string { return; }
+
+  @Cordova({ sync: true })
+  toPrintable(i: number): string { return; }
+
+  @Cordova({ sync: true })
+  bytesToString(i: number[]): string { return; }
+
+  @Cordova({ sync: true })
+  stringToBytes(s: string): number[] { return; }
+
+  @Cordova({ sync: true })
+  bytesToHexString(bytes: number[]): string { return; }
+
+  @Cordova({ sync: true })
+  isType(record: NdefRecord, tnf: number, type: number[]|string): boolean { return; }
+}
+
 export class TextHelper extends IonicNativePlugin {
   decodePayload(data: number[]): string { return; }
   encodePayload(text: string, lang: string): number[] { return; }
