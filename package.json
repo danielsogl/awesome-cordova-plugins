@@ -6,9 +6,9 @@
   "author": "Ionic Team <hi@ionic.io> (https://ionic.io)",
   "license": "MIT",
   "devDependencies": {
-    "@angular/compiler": "5.0.1",
-    "@angular/compiler-cli": "5.0.1",
-    "@angular/core": "5.0.1",
+    "@angular/compiler": "4.4.4",
+    "@angular/compiler-cli": "4.4.4",
+    "@angular/core": "4.4.4",
     "@types/cordova": "0.0.34",
     "@types/jasmine": "^2.6.3",
     "@types/node": "^8.0.50",
@@ -43,7 +43,7 @@
     "semver": "5.3.0",
     "tslint": "3.15.1",
     "tslint-ionic-rules": "0.0.8",
-    "typescript": "2.4.2",
+    "typescript": "~2.4.2",
     "zone.js": "0.8.18"
   },
   "scripts": {
