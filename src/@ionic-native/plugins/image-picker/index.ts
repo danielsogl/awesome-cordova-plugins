@@ -34,7 +34,7 @@ export interface ImagePickerOptions {
  * Cordova Plugin For Multiple Image Selection
  *
  * Requires Cordova plugin: `cordova-plugin-image-picker`.
- * For more info, please see the https://github.com/wymsee/cordova-imagePicker
+ * For more info, please see the https://github.com/hiyali/cordova-plugin-image-picker
  *
  * @usage
  * ```typescript
@@ -59,8 +59,8 @@ export interface ImagePickerOptions {
   pluginName: 'ImagePicker',
   plugin: 'cordova-plugin-telerik-imagepicker',
   pluginRef: 'window.imagePicker',
-  repo: 'https://github.com/Telerik-Verified-Plugins/ImagePicker',
-  install: 'ionic cordova plugin add cordova-plugin-telerik-imagepicker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="your usage message"',
+  repo: 'https://github.com/hiyali/cordova-plugin-image-picker',
+  install: 'ionic cordova plugin add cordova-plugin-image-picker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="your usage message"',
   installVariables: ['PHOTO_LIBRARY_USAGE_DESCRIPTION'],
   platforms: ['Android', 'iOS']
 })
@@ -82,7 +82,6 @@ export class ImagePicker extends IonicNativePlugin {
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that indicates whether we have permission
    */
   @Cordova({
-    platforms: ['Android']
   })
   hasReadPermission(): Promise<boolean> { return; }
 
