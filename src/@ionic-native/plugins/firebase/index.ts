@@ -216,7 +216,7 @@ export class Firebase extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  setConfigSettings(settings: any): Promise<any> { return; }
+  setCosnfigSetting(settings: any): Promise<any> { return; }
 
   /**
    * Set defaults in the Remote Config
