@@ -11,6 +11,15 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
+ * // In your app.module.ts
+ * import { SocialSharing } from '@ionic-native/social-sharing';
+ *
+ * providers: [
+ *   SocialSharing,
+ * ]
+ * ````
+ *
+ * ```typescript
  * import { SocialSharing } from '@ionic-native/social-sharing';
  *
  * constructor(private socialSharing: SocialSharing) { }
