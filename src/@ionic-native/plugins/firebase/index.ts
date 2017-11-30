@@ -277,10 +277,27 @@ export class Firebase extends IonicNativePlugin {
   /**
    * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
    * @param phoneNumber {string}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({
+    platforms: ['iOS'],
+  })
   getVerificationID(phoneNumber: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
+   * @param phoneNumber {string} the phone number, including '+' and country code
+   * @param timeoutDuration {number} the timeout in sec - no more SMS will be sent to this number until this timeout expires
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    platforms: ['Android'],
+    successIndex: 2,
+    errorIndex: 3,
+  })
+  verifyPhoneNumber(phoneNumber: string, timeoutDuration: number): Promise<any> {
     return;
   }
 }
