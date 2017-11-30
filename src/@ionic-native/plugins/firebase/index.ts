@@ -30,51 +30,60 @@ import { Observable } from 'rxjs/Observable';
   plugin: 'cordova-plugin-firebase',
   pluginRef: 'FirebasePlugin',
   repo: 'https://github.com/arnesson/cordova-plugin-firebase',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Firebase extends IonicNativePlugin {
-
   /**
    * Get the device token
    * @return {Promise<any>}
    */
   @Cordova()
-  getToken(): Promise<any> { return; }
+  getToken(): Promise<any> {
+    return;
+  }
 
   /**
    * Get notified when a token is refreshed
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
-  onTokenRefresh(): Observable<any> { return; }
+  onTokenRefresh(): Observable<any> {
+    return;
+  }
 
   /**
    * Get notified when the user opens a notification
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
-  onNotificationOpen(): Observable<any> { return; }
+  onNotificationOpen(): Observable<any> {
+    return;
+  }
 
   /**
    * Grant permission to receive push notifications
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
-  grantPermission(): Promise<any> { return; }
+  grantPermission(): Promise<any> {
+    return;
+  }
 
   /**
- * Check permission to receive push notifications
- * @return {Promise<{isEnabled: boolean}>}
- */
+   * Check permission to receive push notifications
+   * @return {Promise<{isEnabled: boolean}>}
+   */
   @Cordova()
-  hasPermission(): Promise<{isEnabled: boolean}> { return; }
+  hasPermission(): Promise<{ isEnabled: boolean }> {
+    return;
+  }
 
   /**
    * Set icon badge number. Set to 0 to clear the badge.
@@ -82,14 +91,18 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  setBadgeNumber(badgeNumber: number): Promise<any> { return; }
+  setBadgeNumber(badgeNumber: number): Promise<any> {
+    return;
+  }
 
   /**
    * Get icon badge number
    * @return {Promise<any>}
    */
   @Cordova()
-  getBadgeNumber(): Promise<any> { return; }
+  getBadgeNumber(): Promise<any> {
+    return;
+  }
 
   /**
    * Subscribe to a topic
@@ -97,7 +110,9 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  subscribe(topic: string): Promise<any> { return; }
+  subscribe(topic: string): Promise<any> {
+    return;
+  }
 
   /**
    * Unsubscribe from a topic
@@ -105,14 +120,18 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  unsubscribe(topic: string): Promise<any> { return; }
+  unsubscribe(topic: string): Promise<any> {
+    return;
+  }
 
   /**
    * Unregister from firebase, used to stop receiving push notifications.
    * Call this when you logout user from your app.
    */
   @Cordova()
-  unregister(): Promise<any> { return; }
+  unregister(): Promise<any> {
+    return;
+  }
 
   /**
    * Log an event using Analytics
@@ -121,7 +140,9 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  logEvent(type: string, data: any): Promise<any> { return; }
+  logEvent(type: string, data: any): Promise<any> {
+    return;
+  }
 
   /**
    * Log an Error using FirebaseCrash
@@ -129,7 +150,9 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  logError(message: string): Promise<any> { return; }
+  logError(message: string): Promise<any> {
+    return;
+  }
 
   /**
    * Set the name of the current screen in Analytics
@@ -137,7 +160,9 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  setScreenName(name: string): Promise<any> { return; }
+  setScreenName(name: string): Promise<any> {
+    return;
+  }
 
   /**
    * Set a user id for use in Analytics
@@ -145,7 +170,9 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  setUserId(userId: string): Promise<any> { return; }
+  setUserId(userId: string): Promise<any> {
+    return;
+  }
 
   /**
    * Set a user property for use in Analytics
@@ -154,7 +181,9 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  setUserProperty(name: string, value: string): Promise<any> { return; }
+  setUserProperty(name: string, value: string): Promise<any> {
+    return;
+  }
 
   /**
    * Fetch Remote Config parameter values for your app
@@ -163,16 +192,20 @@ export class Firebase extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
-  fetch(cacheExpirationSeconds?: number): Promise<any> { return; }
+  fetch(cacheExpirationSeconds?: number): Promise<any> {
+    return;
+  }
 
   /**
    * Activate the Remote Config fetched config
    * @return {Promise<any>}
    */
   @Cordova()
-  activateFetched(): Promise<any> { return; }
+  activateFetched(): Promise<any> {
+    return;
+  }
 
   /**
    * Retrieve a Remote Config value
@@ -182,9 +215,11 @@ export class Firebase extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
-  getValue(key: string, namespace?: string): Promise<any> { return; }
+  getValue(key: string, namespace?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Retrieve a Remote Config byte array
@@ -195,18 +230,22 @@ export class Firebase extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android'],
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
-  getByteArray(key: string, namespace?: string): Promise<any> { return; }
+  getByteArray(key: string, namespace?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get the current state of the FirebaseRemoteConfig singleton object
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
-  getInfo(): Promise<any> { return; }
+  getInfo(): Promise<any> {
+    return;
+  }
 
   /**
    * Change the settings for the FirebaseRemoteConfig object's operations
@@ -214,9 +253,11 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
-  setConfigSettings(settings: any): Promise<any> { return; }
+  setConfigSettings(settings: any): Promise<any> {
+    return;
+  }
 
   /**
    * Set defaults in the Remote Config
@@ -227,8 +268,19 @@ export class Firebase extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android'],
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
-  setDefaults(defaults: any, namespace: string): Promise<any> { return; }
+  setDefaults(defaults: any, namespace: string): Promise<any> {
+    return;
+  }
 
+  /**
+   * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
+   * @param phoneNumber {string}
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getVerificationID(phoneNumber: string): Promise<any> {
+    return;
+  }
 }
