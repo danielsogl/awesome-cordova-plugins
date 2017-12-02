@@ -40,9 +40,7 @@ export class NetworkInterface extends IonicNativePlugin {
    * @param success {Function} Callback used when successful
    * @param error {Function} Callback used when failure
    */
-  @Cordova({
-    callbackOrder: 'reverse',
-  })
+  @Cordova()
   getWiFiIPAddress(): Promise<string> {
     return;
   }
@@ -52,9 +50,7 @@ export class NetworkInterface extends IonicNativePlugin {
    * @param success {Function} Callback used when successful
    * @param error {Function} Callback used when failure
    */
-  @Cordova({
-    callbackOrder: 'reverse',
-  })
+  @Cordova()
   getCarrierIPAddress(): Promise<string> {
     return;
   }
