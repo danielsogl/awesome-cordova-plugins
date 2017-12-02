@@ -31,7 +31,7 @@ export interface AppRatePreferences {
   /**
    * leave app or no when application page opened in app store (now supported only for iOS). Defaults to `false`
    */
-  openStoreInApp?: boolean;
+  inAppReview?: boolean;
 
   /**
    * use custom view for rate dialog. Defaults to `false`
