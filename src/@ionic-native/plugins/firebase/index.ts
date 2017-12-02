@@ -48,7 +48,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true,
+    observable: true
   })
   onTokenRefresh(): Observable<any> {
     return;
@@ -59,7 +59,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true,
+    observable: true
   })
   onNotificationOpen(): Observable<any> {
     return;
@@ -70,7 +70,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS'],
+    platforms: ['iOS']
   })
   grantPermission(): Promise<any> {
     return;
@@ -192,7 +192,7 @@ export class Firebase extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2,
+    errorIndex: 2
   })
   fetch(cacheExpirationSeconds?: number): Promise<any> {
     return;
@@ -215,7 +215,7 @@ export class Firebase extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3,
+    errorIndex: 3
   })
   getValue(key: string, namespace?: string): Promise<any> {
     return;
@@ -230,7 +230,7 @@ export class Firebase extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android'],
     successIndex: 2,
-    errorIndex: 3,
+    errorIndex: 3
   })
   getByteArray(key: string, namespace?: string): Promise<any> {
     return;
@@ -241,7 +241,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
+    platforms: ['Android']
   })
   getInfo(): Promise<any> {
     return;
@@ -253,7 +253,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
+    platforms: ['Android']
   })
   setConfigSettings(settings: any): Promise<any> {
     return;
@@ -268,7 +268,7 @@ export class Firebase extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android'],
     successIndex: 2,
-    errorIndex: 3,
+    errorIndex: 3
   })
   setDefaults(defaults: any, namespace: string): Promise<any> {
     return;
@@ -280,7 +280,7 @@ export class Firebase extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS'],
+    platforms: ['iOS']
   })
   getVerificationID(phoneNumber: string): Promise<any> {
     return;
@@ -295,7 +295,7 @@ export class Firebase extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android'],
     successIndex: 2,
-    errorIndex: 3,
+    errorIndex: 3
   })
   verifyPhoneNumber(phoneNumber: string, timeoutDuration: number): Promise<any> {
     return;
