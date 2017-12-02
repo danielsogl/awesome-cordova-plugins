@@ -24,6 +24,11 @@ export interface AppRatePreferences {
   usesUntilPrompt?: number;
 
   /**
+   * Simple Mode to display the rate dialog directly and bypass negative feedback filtering flow
+   */
+  simpleMode?: boolean;
+
+  /**
    * leave app or no when application page opened in app store (now supported only for iOS). Defaults to `false`
    */
   openStoreInApp?: boolean;
