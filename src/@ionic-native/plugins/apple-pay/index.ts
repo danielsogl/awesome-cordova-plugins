@@ -145,7 +145,7 @@ export interface IOrder {
  */
 @Plugin({
   pluginName: 'ApplePay',
-  plugin: '@ionic-native/cordova-plugin-applepay',
+  plugin: 'cordova-plugin-applepay',
   pluginRef: 'ApplePay',
   repo: 'https://github.com/trueflywood/cordova-plugin-applepay',
   platforms: ['iOS'],
