@@ -257,7 +257,7 @@ export type PushEvent = string;
  * }).then(() => console.log('Channel created'));
  *
  * // Delete a channel (Android O and above)
- * this.push.deleteChannel('testchannel1').then(() => console.log('Channel deleted));
+ * this.push.deleteChannel('testchannel1').then(() => console.log('Channel deleted'));
  *
  * // Return a list of currently configured channels
  * this.push.listChannels().then((channels) => console.log('List of channels', channels))
