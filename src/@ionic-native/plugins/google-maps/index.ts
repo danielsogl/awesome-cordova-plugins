@@ -777,13 +777,25 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
   NONE: 'MAP_TYPE_NONE'
 };
 
+/** From this YouTube link https://www.youtube.com/watch?v=DuUV4_YrZy4
+* <ion-content>
+*  <div #map id="map"></div>
+* </ion-content>
+*/
+
+/**
+* #map {
+*   height: 100%;
+* }
+*/
+
 /**
  * @name Google Maps
  * @description
  * This plugin uses the native Google Maps SDK
  * Note: As of Ionic native 4.0, this using the 2.0 version of the google maps plugin. Please make sure your plugin is updated
  * @usage
- * ```typescript
+ * ```typescript 
  * import {
  *  GoogleMaps,
  *  GoogleMap,
@@ -819,8 +831,8 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  *         tilt: 30
  *       }
  *     };
- *
- *     this.map = this.googleMaps.create('map_canvas', mapOptions);
+ *     let element: HTMLElement = document.getElementById('map');
+ *     this.map = this.googleMaps.create(element, mapOptions);
  *
  *     // Wait the MAP_READY before using any methods.
  *     this.map.one(GoogleMapsEvent.MAP_READY)
