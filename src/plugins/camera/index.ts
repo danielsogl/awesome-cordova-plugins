@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CameraOptions {
   /** Picture quality in range 0-100. Default is 50 */
@@ -33,7 +33,7 @@ export interface CameraOptions {
   /**
    * Width in pixels to scale image. Must be used with targetHeight.
    * Aspect ratio remains constant.
-  */
+   */
   targetWidth?: number;
   /**
    * Height in pixels to scale image. Must be used with targetWidth.
@@ -243,7 +243,9 @@ export class Camera extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getPicture(options?: CameraOptions): Promise<any> { return; }
+  getPicture(options?: CameraOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
@@ -253,6 +255,8 @@ export class Camera extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS']
   })
-  cleanup(): Promise<any> { return; };
+  cleanup(): Promise<any> {
+    return;
+  }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface MusicControlsOptions {
@@ -147,14 +147,18 @@ export class MusicControls extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  create(options: MusicControlsOptions): Promise<any> { return; }
+  create(options: MusicControlsOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Destroy the media controller
    * @returns {Promise<any>}
    */
   @Cordova()
-  destroy(): Promise<any> { return; }
+  destroy(): Promise<any> {
+    return;
+  }
 
   /**
    * Subscribe to the events of the media controller
@@ -163,34 +167,40 @@ export class MusicControls extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  subscribe(): Observable<any> { return; }
+  subscribe(): Observable<any> {
+    return;
+  }
 
   /**
    * Start listening for events, this enables the Observable from the subscribe method
    */
   @Cordova({ sync: true })
-  listen(): void { }
+  listen(): void {
+  }
 
   /**
    * Toggle play/pause:
    * @param isPlaying {boolean}
    */
   @Cordova()
-  updateIsPlaying(isPlaying: boolean): void { }
+  updateIsPlaying(isPlaying: boolean): void {
+  }
 
   /**
-  * Update elapsed time, optionally toggle play/pause:
-  * @param args {Object}
-  */
+   * Update elapsed time, optionally toggle play/pause:
+   * @param args {Object}
+   */
   @Cordova({
     platforms: ['iOS']
   })
-  updateElapsed(args: { elapsed: string; isPlaying: boolean; }): void { }
+  updateElapsed(args: { elapsed: string; isPlaying: boolean; }): void {
+  }
 
   /**
    * Toggle dismissable:
    * @param dismissable {boolean}
    */
   @Cordova()
-  updateDismissable(dismissable: boolean): void { }
+  updateDismissable(dismissable: boolean): void {
+  }
 }

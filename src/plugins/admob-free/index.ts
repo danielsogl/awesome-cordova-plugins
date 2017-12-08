@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
@@ -84,7 +84,7 @@ export interface AdMobFreeRewardVideoConfig {
  *  // for the sake of this example we will just use the test config
  *  isTesting: true,
  *  autoShow: true
- * };
+ * }
  * this.admobFree.banner.config(bannerConfig);
  *
  * this.admobFree.banner.prepare()
@@ -140,6 +140,21 @@ export class AdMobFree extends IonicNativePlugin {
     REWARD_VIDEO_START: 'admob.rewardvideo.events.START',
     REWARD_VIDEO_REWARD: 'admob.rewardvideo.events.REWARD'
   };
+  /**
+   * Returns the AdMobFreeBanner object
+   * @type {AdMobFreeBanner}
+   */
+  banner: AdMobFreeBanner = new AdMobFreeBanner();
+  /**
+   * Returns the AdMobFreeInterstitial object
+   * @type {AdMobFreeInterstitial}
+   */
+  interstitial: AdMobFreeInterstitial = new AdMobFreeInterstitial();
+  /**
+   * Returns the AdMobFreeRewardVideo object
+   * @type {AdMobFreeRewardVideo}
+   */
+  rewardVideo: AdMobFreeRewardVideo = new AdMobFreeRewardVideo();
 
   /**
    * Watch an event
@@ -149,24 +164,6 @@ export class AdMobFree extends IonicNativePlugin {
   on(event: string): Observable<any> {
     return Observable.fromEvent(document, event);
   }
-
-  /**
-   * Returns the AdMobFreeBanner object
-   * @type {AdMobFreeBanner}
-   */
-  banner: AdMobFreeBanner = new AdMobFreeBanner();
-
-  /**
-   * Returns the AdMobFreeInterstitial object
-   * @type {AdMobFreeInterstitial}
-   */
-  interstitial: AdMobFreeInterstitial = new AdMobFreeInterstitial();
-
-  /**
-   * Returns the AdMobFreeRewardVideo object
-   * @type {AdMobFreeRewardVideo}
-   */
-  rewardVideo: AdMobFreeRewardVideo = new AdMobFreeRewardVideo();
 
 }
 
@@ -186,35 +183,45 @@ export class AdMobFreeBanner {
    * @return {AdMobFreeBannerConfig}
    */
   @Cordova({ sync: true })
-  config(options: AdMobFreeBannerConfig): AdMobFreeBannerConfig { return; }
+  config(options: AdMobFreeBannerConfig): AdMobFreeBannerConfig {
+    return;
+  }
 
   /**
    * Hide the banner.
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  hide(): Promise<any> { return; }
+  hide(): Promise<any> {
+    return;
+  }
 
   /**
    * Create banner.
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  prepare(): Promise<any> { return; }
+  prepare(): Promise<any> {
+    return;
+  }
 
   /**
    * Remove the banner.
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  remove(): Promise<any> { return; }
+  remove(): Promise<any> {
+    return;
+  }
 
   /**
    * Show the banner.
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  show(): Promise<any> { return; }
+  show(): Promise<any> {
+    return;
+  }
 
 }
 
@@ -234,28 +241,36 @@ export class AdMobFreeInterstitial {
    * @return {AdMobFreeInterstitialConfig}
    */
   @Cordova({ sync: true })
-  config(options: AdMobFreeInterstitialConfig): AdMobFreeInterstitialConfig { return; }
+  config(options: AdMobFreeInterstitialConfig): AdMobFreeInterstitialConfig {
+    return;
+  }
 
   /**
    * Check if interstitial is ready
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  isReady(): Promise<any> { return; }
+  isReady(): Promise<any> {
+    return;
+  }
 
   /**
    * Prepare interstitial
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  prepare(): Promise<any> { return; }
+  prepare(): Promise<any> {
+    return;
+  }
 
   /**
    * Show the interstitial
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  show(): Promise<any> { return; }
+  show(): Promise<any> {
+    return;
+  }
 
 }
 
@@ -275,27 +290,35 @@ export class AdMobFreeRewardVideo {
    * @return {AdMobFreeRewardVideoConfig}
    */
   @Cordova({ sync: true })
-  config(options: AdMobFreeRewardVideoConfig): AdMobFreeRewardVideoConfig { return; }
+  config(options: AdMobFreeRewardVideoConfig): AdMobFreeRewardVideoConfig {
+    return;
+  }
 
   /**
    * Check if reward video is ready
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  isReady(): Promise<any> { return; }
+  isReady(): Promise<any> {
+    return;
+  }
 
   /**
    * Prepare reward video
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  prepare(): Promise<any> { return; }
+  prepare(): Promise<any> {
+    return;
+  }
 
   /**
    * Show the reward video
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  show(): Promise<any> { return; }
+  show(): Promise<any> {
+    return;
+  }
 
 }

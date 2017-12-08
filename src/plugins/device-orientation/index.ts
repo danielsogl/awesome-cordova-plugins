@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface DeviceOrientationCompassHeading {
@@ -87,7 +87,9 @@ export class DeviceOrientation extends IonicNativePlugin {
    * @returns {Promise<DeviceOrientationCompassHeading>}
    */
   @Cordova()
-  getCurrentHeading(): Promise<DeviceOrientationCompassHeading> { return; }
+  getCurrentHeading(): Promise<DeviceOrientationCompassHeading> {
+    return;
+  }
 
   /**
    * Get the device current heading at a regular interval
@@ -101,6 +103,8 @@ export class DeviceOrientation extends IonicNativePlugin {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  watchHeading(options?: DeviceOrientationCompassOptions): Observable<DeviceOrientationCompassHeading> { return; }
+  watchHeading(options?: DeviceOrientationCompassOptions): Observable<DeviceOrientationCompassHeading> {
+    return;
+  }
 
 }

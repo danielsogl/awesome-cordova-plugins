@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface AppRatePreferences {
 
@@ -121,7 +121,7 @@ export interface AppUrls {
  *   ios: '<app_id>',
  *   android: 'market://details?id=<package_name>',
  *   windows: 'ms-windows-store://review/?ProductId=<store_id>'
- * };
+ * }
  *
  * this.appRate.promptForRating(true);
  *
@@ -133,7 +133,7 @@ export interface AppUrls {
  *    android: 'market://details?id=<package_name>',
  *    windows: 'ms-windows-store://review/?ProductId=<store_id>'
  *   }
- * };
+ * }
  *
  * this.appRate.promptForRating(false);
  * ```
@@ -166,12 +166,14 @@ export class AppRate extends IonicNativePlugin {
    * @param {boolean} immediately  Show the rating prompt immediately.
    */
   @Cordova()
-  promptForRating(immediately: boolean): void { };
+  promptForRating(immediately: boolean): void {
+  }
 
   /**
    * Immediately send the user to the app store rating page
    */
   @Cordova()
-  navigateToAppStore(): void { };
+  navigateToAppStore(): void {
+  }
 
 }

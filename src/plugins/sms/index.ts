@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 
 /**
@@ -69,11 +69,11 @@ export class SMS extends IonicNativePlugin {
     successIndex: 3,
     errorIndex: 4
   })
-  send(
-    phoneNumber: string | string[],
-    message: string,
-    options?: SmsOptions
-    ): Promise<any> { return; }
+  send(phoneNumber: string | string[],
+       message: string,
+       options?: SmsOptions): Promise<any> {
+    return;
+  }
 
   /**
    * This function lets you know if the app has permission to send SMS
@@ -82,6 +82,8 @@ export class SMS extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  hasPermission(): Promise<boolean> { return; }
+  hasPermission(): Promise<boolean> {
+    return;
+  }
 
 }

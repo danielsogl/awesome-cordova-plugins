@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface ActionSheetOptions {
 
@@ -80,7 +80,7 @@ export interface ActionSheetOptions {
  *   addDestructiveButtonWithLabel: 'Delete',
  *   androidTheme: this.actionSheet.ANDROID_THEMES.THEME_HOLO_DARK,
  *   destructiveButtonLast: true
- * };
+ * }
  *
  * this.actionSheet.show(options).then((buttonIndex: number) => {
  *   console.log('Button pressed: ' + buttonIndex);
@@ -123,7 +123,9 @@ export class ActionSheet extends IonicNativePlugin {
    *   button pressed (1 based, so 1, 2, 3, etc.)
    */
   @Cordova()
-  show(options?: ActionSheetOptions): Promise<any> { return; }
+  show(options?: ActionSheetOptions): Promise<any> {
+    return;
+  }
 
 
   /**
@@ -131,5 +133,7 @@ export class ActionSheet extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves when the actionsheet is closed
    */
   @Cordova()
-  hide(options?: any): Promise<any> { return; }
+  hide(options?: any): Promise<any> {
+    return;
+  }
 }

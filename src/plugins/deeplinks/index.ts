@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface DeeplinkMatch {
@@ -105,7 +105,9 @@ export class Deeplinks extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  route(paths: any): Observable<DeeplinkMatch> { return; }
+  route(paths: any): Observable<DeeplinkMatch> {
+    return;
+  }
 
   /**
    *
@@ -123,7 +125,7 @@ export class Deeplinks extends IonicNativePlugin {
    * promise result which you can then use to navigate in the app as you see fit.
    *
    * @param {Object} paths
-   * 
+   *
    * @param {DeeplinkOptions} options
    *
    * @returns {Observable<DeeplinkMatch>} Returns an Observable that resolves each time a deeplink comes through, and
@@ -132,6 +134,8 @@ export class Deeplinks extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  routeWithNavController(navController: any, paths: any, options?: DeeplinkOptions): Observable<DeeplinkMatch> { return; }
+  routeWithNavController(navController: any, paths: any, options?: DeeplinkOptions): Observable<DeeplinkMatch> {
+    return;
+  }
 
 }

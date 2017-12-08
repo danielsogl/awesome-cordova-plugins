@@ -57,7 +57,6 @@ export function getDecoratorArgs(decorator: any) {
         break;
 
       default:
-        debugger;
         console.log(prop.initializer);
         throw 'Unexpected property value type << helpers.ts >>';
     }

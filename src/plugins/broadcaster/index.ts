@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -43,7 +43,9 @@ export class Broadcaster extends IonicNativePlugin {
     clearFunction: 'removeEventListener',
     clearWithArgs: true
   })
-  addEventListener(eventName: string): Observable<any> { return; }
+  addEventListener(eventName: string): Observable<any> {
+    return;
+  }
 
   /**
    * This function sends data to the native code
@@ -52,6 +54,8 @@ export class Broadcaster extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when an event is successfully fired
    */
   @Cordova()
-  fireNativeEvent(eventName: string, eventData: any): Promise<any> { return; }
+  fireNativeEvent(eventName: string, eventData: any): Promise<any> {
+    return;
+  }
 
 }

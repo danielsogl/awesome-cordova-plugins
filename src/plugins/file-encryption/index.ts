@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -38,7 +38,9 @@ export class FileEncryption extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  encrypt(file: string, key: string): Promise<any> { return; }
+  encrypt(file: string, key: string): Promise<any> {
+    return;
+  }
 
   /**
    * Decrypt a file
@@ -47,6 +49,8 @@ export class FileEncryption extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  decrypt(file: string, key: string): Promise<any> { return; }
+  decrypt(file: string, key: string): Promise<any> {
+    return;
+  }
 
 }

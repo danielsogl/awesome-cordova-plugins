@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CardIOOptions {
 
@@ -9,7 +9,7 @@ export interface CardIOOptions {
   requireExpiry?: boolean;
 
   /**
-   * 	The user will be prompted for the card CVV
+   *  The user will be prompted for the card CVV
    */
   requireCVV?: boolean;
 
@@ -19,7 +19,7 @@ export interface CardIOOptions {
   requirePostalCode?: boolean;
 
   /**
-   * 	Removes the keyboard button from the scan screen.
+   *  Removes the keyboard button from the scan screen.
    */
   supressManual?: boolean;
 
@@ -44,7 +44,7 @@ export interface CardIOOptions {
   scanInstructions?: string;
 
   /**
-   * 	If set, the card will not be scanned with the camera.
+   *  If set, the card will not be scanned with the camera.
    */
   noCamera?: boolean;
 
@@ -154,7 +154,7 @@ export interface CardIOResponse {
  *           requireExpiry: true,
  *           requireCVV: false,
  *           requirePostalCode: false
- *         };
+ *         }
  *         CardIO.scan(options);
  *       }
  *     }
@@ -181,7 +181,9 @@ export class CardIO extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  canScan(): Promise<boolean> { return; }
+  canScan(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Scan a credit card with card.io.
@@ -189,13 +191,17 @@ export class CardIO extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  scan(options?: CardIOOptions): Promise<CardIOResponse> { return; }
+  scan(options?: CardIOOptions): Promise<CardIOResponse> {
+    return;
+  }
 
   /**
    * Retrieve the version of the card.io library. Useful when contacting support.
    * @returns {Promise<string>}
    */
   @Cordova()
-  version(): Promise<string> { return; }
+  version(): Promise<string> {
+    return;
+  }
 
 }

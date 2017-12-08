@@ -1,4 +1,4 @@
-import { getPlugin, checkAvailability } from './common';
+import { checkAvailability, getPlugin } from './common';
 import { Observable } from 'rxjs/Observable';
 
 function overrideFunction(pluginObj: any, methodName: string): Observable<any> {

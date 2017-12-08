@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface BarcodeScannerOptions {
 
@@ -117,7 +117,9 @@ export class BarcodeScanner extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  scan(options?: BarcodeScannerOptions): Promise<BarcodeScanResult> { return; }
+  scan(options?: BarcodeScannerOptions): Promise<BarcodeScanResult> {
+    return;
+  }
 
   /**
    * Encodes data into a barcode.
@@ -127,6 +129,8 @@ export class BarcodeScanner extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  encode(type: string, data: any): Promise<any> { return; }
+  encode(type: string, data: any): Promise<any> {
+    return;
+  }
 
 }

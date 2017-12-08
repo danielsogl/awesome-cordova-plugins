@@ -1,4 +1,4 @@
-import { Plugin, Cordova, wrap, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaCheck, IonicNativePlugin, Plugin, wrap } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -64,13 +64,21 @@ export class PhotoLibrary extends IonicNativePlugin {
     return new Observable<any>((observer) => {
       let wrappedSubscription = wrappedObservable.subscribe({
         next: (x) => {
-          observer.next((result: { library: LibraryItem[] }) => { return result.library; });
-          if ((result: { isLastChunk: boolean }) => { return result.isLastChunk; }) {
+          observer.next((result: { library: LibraryItem[] }) => {
+            return result.library;
+          });
+          if ((result: { isLastChunk: boolean }) => {
+              return result.isLastChunk;
+            }) {
             observer.complete();
           }
         },
-        error: (err) => { observer.error(err); },
-        complete: () => { observer.complete(); }
+        error: (err) => {
+          observer.error(err);
+        },
+        complete: () => {
+          observer.complete();
+        }
       });
       return () => {
         wrappedSubscription.unsubscribe();
@@ -86,7 +94,9 @@ export class PhotoLibrary extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse',
   })
-  requestAuthorization(options?: RequestAuthorizationOptions): Promise<void> { return; }
+  requestAuthorization(options?: RequestAuthorizationOptions): Promise<void> {
+    return;
+  }
 
   /**
    * Returns list of photo albums on device.
@@ -95,7 +105,9 @@ export class PhotoLibrary extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse',
   })
-  getAlbums(): Promise<AlbumItem[]> { return; }
+  getAlbums(): Promise<AlbumItem[]> {
+    return;
+  }
 
   /**
    * Provides means to request URL of thumbnail, with specified size or quality.
@@ -107,7 +119,9 @@ export class PhotoLibrary extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  getThumbnailURL(photo: string | LibraryItem, options?: GetThumbnailOptions): Promise<string> { return; }
+  getThumbnailURL(photo: string | LibraryItem, options?: GetThumbnailOptions): Promise<string> {
+    return;
+  }
 
   /**
    * Provides means to request photo URL by id.
@@ -119,7 +133,9 @@ export class PhotoLibrary extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  getPhotoURL(photo: string | LibraryItem, options?: any): Promise<string> { return; }
+  getPhotoURL(photo: string | LibraryItem, options?: any): Promise<string> {
+    return;
+  }
 
   /**
    * Returns thumbnail as Blob.
@@ -131,7 +147,9 @@ export class PhotoLibrary extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  getThumbnail(photo: string | LibraryItem, options?: GetThumbnailOptions): Promise<Blob> { return; }
+  getThumbnail(photo: string | LibraryItem, options?: GetThumbnailOptions): Promise<Blob> {
+    return;
+  }
 
   /**
    * Returns photo as Blob.
@@ -143,7 +161,9 @@ export class PhotoLibrary extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  getPhoto(photo: string | LibraryItem, options?: any): Promise<Blob> { return; }
+  getPhoto(photo: string | LibraryItem, options?: any): Promise<Blob> {
+    return;
+  }
 
   /**
    * Saves image to specified album. Album will be created if not exists.
@@ -157,7 +177,9 @@ export class PhotoLibrary extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 3
   })
-  saveImage(url: string, album: AlbumItem | string, options?: GetThumbnailOptions): Promise<LibraryItem> { return; }
+  saveImage(url: string, album: AlbumItem | string, options?: GetThumbnailOptions): Promise<LibraryItem> {
+    return;
+  }
 
   /**
    * Saves video to specified album. Album will be created if not exists.
@@ -169,7 +191,9 @@ export class PhotoLibrary extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 3
   })
-  saveVideo(url: string, album: AlbumItem | string): Promise<void> { return; }
+  saveVideo(url: string, album: AlbumItem | string): Promise<void> {
+    return;
+  }
 
 }
 

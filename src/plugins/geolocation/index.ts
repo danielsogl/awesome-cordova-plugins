@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare const navigator: any;
@@ -169,7 +169,9 @@ export class Geolocation extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return; }
+  getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> {
+    return;
+  }
 
   /**
    * Watch the current device's position.  Clear the watch by unsubscribing from

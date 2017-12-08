@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, CordovaInstance, InstanceCheck, IonicNativePlugin } from '@ionic-native/core';
+import { CordovaInstance, InstanceCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 
@@ -54,6 +54,7 @@ export interface InAppBrowserOptions {
    */
   [key: string]: any;
 }
+
 export interface InAppBrowserEvent extends Event {
   /** the eventname, either loadstart, loadstop, loaderror, or exit. */
   type: string;
@@ -105,20 +106,23 @@ export class InAppBrowserObject {
    * if the InAppBrowser was already visible.
    */
   @CordovaInstance({ sync: true })
-  show(): void { }
+  show(): void {
+  }
 
   /**
    * Closes the InAppBrowser window.
    */
   @CordovaInstance({ sync: true })
-  close(): void { }
+  close(): void {
+  }
 
   /**
    * Hides an InAppBrowser window that is currently shown. Calling this has no effect
    * if the InAppBrowser was already hidden.
    */
   @CordovaInstance({ sync: true })
-  hide(): void { }
+  hide(): void {
+  }
 
   /**
    * Injects JavaScript code into the InAppBrowser window.
@@ -126,7 +130,9 @@ export class InAppBrowserObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  executeScript(script: { file?: string, code?: string }): Promise<any> { return; }
+  executeScript(script: { file?: string, code?: string }): Promise<any> {
+    return;
+  }
 
   /**
    * Injects CSS into the InAppBrowser window.
@@ -134,7 +140,9 @@ export class InAppBrowserObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  insertCSS(css: { file?: string, code?: string }): Promise<any> { return; }
+  insertCSS(css: { file?: string, code?: string }): Promise<any> {
+    return;
+  }
 
   /**
    * A method that allows you to listen to events happening in the browser.

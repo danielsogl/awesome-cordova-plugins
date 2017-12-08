@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -199,7 +199,9 @@ export class AndroidPermissions extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  checkPermission(permission: string): Promise<any> { return; }
+  checkPermission(permission: string): Promise<any> {
+    return;
+  }
 
   /**
    * Request permission
@@ -207,7 +209,9 @@ export class AndroidPermissions extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  requestPermission(permission: string): Promise<any> { return; }
+  requestPermission(permission: string): Promise<any> {
+    return;
+  }
 
   /**
    * Request permissions
@@ -215,7 +219,9 @@ export class AndroidPermissions extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  requestPermissions(permissions: string[]): Promise<any> { return; }
+  requestPermissions(permissions: string[]): Promise<any> {
+    return;
+  }
 
   /**
    * This function still works now, will not support in the future.
@@ -223,6 +229,8 @@ export class AndroidPermissions extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  hasPermission(permission: string): Promise<any> { return; }
+  hasPermission(permission: string): Promise<any> {
+    return;
+  }
 
 }

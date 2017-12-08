@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface TranscodeOptions {
 
@@ -177,7 +177,9 @@ export class VideoEditor extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  transcodeVideo(options: TranscodeOptions): Promise<string> { return; }
+  transcodeVideo(options: TranscodeOptions): Promise<string> {
+    return;
+  }
 
   /**
    * Trim a video
@@ -188,7 +190,9 @@ export class VideoEditor extends IonicNativePlugin {
     callbackOrder: 'reverse',
     platforms: ['iOS']
   })
-  trim(options: TrimOptions): Promise<string> { return; }
+  trim(options: TrimOptions): Promise<string> {
+    return;
+  }
 
   /**
    * Create a JPEG thumbnail from a video
@@ -198,7 +202,9 @@ export class VideoEditor extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  createThumbnail(options: CreateThumbnailOptions): Promise<string> { return; }
+  createThumbnail(options: CreateThumbnailOptions): Promise<string> {
+    return;
+  }
 
   /**
    * Get info on a video (width, height, orientation, duration, size, & bitrate)
@@ -208,6 +214,8 @@ export class VideoEditor extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getVideoInfo(options: GetVideoInfoOptions): Promise<VideoInfo> { return; }
+  getVideoInfo(options: GetVideoInfoOptions): Promise<VideoInfo> {
+    return;
+  }
 
 }

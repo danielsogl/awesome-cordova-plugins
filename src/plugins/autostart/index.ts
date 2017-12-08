@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -36,12 +36,14 @@ export class Autostart extends IonicNativePlugin {
    * Enable the automatic startup after the boot
    */
   @Cordova({ sync: true })
-  enable(): void { }
+  enable(): void {
+  }
 
   /**
    * Disable the automatic startup after the boot
    */
   @Cordova({ sync: true })
-  disable(): void { }
+  disable(): void {
+  }
 
 }

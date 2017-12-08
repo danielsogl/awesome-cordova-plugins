@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @beta
@@ -44,7 +44,9 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  logEvent(name: string, params: any): Promise<any> { return; }
+  logEvent(name: string, params: any): Promise<any> {
+    return;
+  }
 
   /**
    * Sets the user ID property.
@@ -53,7 +55,9 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  setUserId(id: string): Promise<any> { return; }
+  setUserId(id: string): Promise<any> {
+    return;
+  }
 
   /**
    * This feature must be used in accordance with Google's Privacy Policy.
@@ -63,7 +67,9 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  setUserProperty(name: string, value: string): Promise<any> { return; }
+  setUserProperty(name: string, value: string): Promise<any> {
+    return;
+  }
 
   /**
    * Sets whether analytics collection is enabled for this app on this device.
@@ -71,7 +77,9 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  setEnabled(enabled: boolean): Promise<any> { return; }
+  setEnabled(enabled: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Sets the current screen name, which specifies the current visual context in your app.
@@ -80,6 +88,8 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  setCurrentScreen(name: string): Promise<any> { return; }
+  setCurrentScreen(name: string): Promise<any> {
+    return;
+  }
 
 }

@@ -1,15 +1,22 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {
-  Plugin,
-  Cordova,
-  IonicNativePlugin
-} from '@ionic-native/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-export type IMakePayments = 'This device can make payments and has a supported card' | 'This device cannot make payments.' | 'This device can make payments but has no supported cards';
+export type IMakePayments =
+  'This device can make payments and has a supported card'
+  | 'This device cannot make payments.'
+  | 'This device can make payments but has no supported cards';
 export type IShippingType = 'shipping' | 'delivery' | 'store' | 'service';
-export type IBillingRequirement =  'none' | 'all' | 'postcode' | 'name' | 'email' | 'phone';
-export type ITransactionStatus = 'success' | 'failure' | 'invalid-billing-address' | 'invalid-shipping-address' | 'invalid-shipping-contact' | 'require-pin' | 'incorrect-pin' | 'locked-pin';
+export type IBillingRequirement = 'none' | 'all' | 'postcode' | 'name' | 'email' | 'phone';
+export type ITransactionStatus =
+  'success'
+  | 'failure'
+  | 'invalid-billing-address'
+  | 'invalid-shipping-address'
+  | 'invalid-shipping-contact'
+  | 'require-pin'
+  | 'incorrect-pin'
+  | 'locked-pin';
 export type ICompleteTransaction = 'Payment status applied.';
 export type IUpdateItemsAndShippingStatus = 'Updated List Info' | 'Did you make a payment request?';
 
@@ -50,12 +57,14 @@ export interface IOrderItem {
   label: string;
   amount: number;
 }
-export interface  IShippingMethod {
+
+export interface IShippingMethod {
   identifier: string;
   label: string;
   detail: string;
   amount: number;
 }
+
 export interface IOrderItemsAndShippingMethods {
   items: IOrderItem[];
   shippingMethods?: IShippingMethod[];
@@ -221,7 +230,7 @@ export class ApplePay extends IonicNativePlugin {
    *   this.paySheetItems.shippingCost = {
    *      label: 'Shipping Cost',
    *      amount: shippingMethod[0].amount
-   *   };
+   *   }
    *   this.applePay.updateItemsAndShippingMethods(this.paySheetItems, shippingMethods);
    * });
    */

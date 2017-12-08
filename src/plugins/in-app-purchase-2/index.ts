@@ -1,4 +1,4 @@
-import { Plugin, IonicNativePlugin, Cordova, CordovaProperty } from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -81,15 +81,15 @@ export type IAPProducts = Array<IAPProduct> & {
   /**
    * Get product by ID
    */
-  byId: { [id: string]: IAPProduct; };
+  byId: { [id: string]: IAPProduct; }
   /**
    * Get product by alias
    */
-  byAlias: { [alias: string]: IAPProduct; };
+  byAlias: { [alias: string]: IAPProduct; }
   /**
    * Remove all products (for testing only).
    */
-  reset: () => {};
+  reset: () => {}
 };
 
 export type IAPQueryCallback = ((product: IAPProduct) => void) | ((error: IAPError) => void);
@@ -370,21 +370,25 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * @param idOrAlias
    */
   @Cordova({ sync: true })
-  get(idOrAlias: string): IAPProduct { return; }
+  get(idOrAlias: string): IAPProduct {
+    return;
+  }
 
   /**
    * Register error handler
    * @param onError {Function} function to call on error
    */
   @Cordova({ sync: true })
-  error(onError: Function): void {}
+  error(onError: Function): void {
+  }
 
   /**
    * Add or register a product
    * @param product {IAPProductOptions}
    */
-  @Cordova({ sync: true})
-  register(product: IAPProductOptions): void {}
+  @Cordova({ sync: true })
+  register(product: IAPProductOptions): void {
+  }
 
   /**
    *
@@ -394,7 +398,9 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * @return {IAPProductEvents}
    */
   @Cordova({ sync: true })
-  when(query: string | IAPProduct, event?: string, callback?: IAPQueryCallback): IAPProductEvents { return; }
+  when(query: string | IAPProduct, event?: string, callback?: IAPQueryCallback): IAPProductEvents {
+    return;
+  }
 
   /**
    * Identical to `when`, but the callback will be called only once. After being called, the callback will be unregistered.
@@ -404,26 +410,34 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * @return {IAPProductEvents}
    */
   @Cordova({ sync: true })
-  once(query: string | IAPProduct, event?: string, callback?: IAPQueryCallback): IAPProductEvents { return; }
+  once(query: string | IAPProduct, event?: string, callback?: IAPQueryCallback): IAPProductEvents {
+    return;
+  }
 
   /**
    * Unregister a callback. Works for callbacks registered with ready, when, once and error.
    * @param callback {Function}
    */
   @Cordova({ sync: true })
-  off(callback: Function): void {}
+  off(callback: Function): void {
+  }
 
   @Cordova({ sync: true })
-  order(product: string | IAPProduct, additionalData?: any): { then: Function; error: Function; } { return; }
+  order(product: string | IAPProduct, additionalData?: any): { then: Function; error: Function; } {
+    return;
+  }
 
   /**
    *
    * @return {Promise<any>} returns a promise that resolves when the store is ready
    */
   @Cordova()
-  ready(): Promise<void> { return; }
+  ready(): Promise<void> {
+    return;
+  }
 
   @Cordova({ sync: true })
-  refresh(): void {}
+  refresh(): void {
+  }
 
 }

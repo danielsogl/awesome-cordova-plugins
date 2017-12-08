@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -47,7 +47,9 @@ export class BrowserTab extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when check is successful and returns true or false
    */
   @Cordova()
-  isAvailable(): Promise<any> { return; }
+  isAvailable(): Promise<any> {
+    return;
+  }
 
   /**
    * Opens the provided URL using a browser tab
@@ -55,12 +57,16 @@ export class BrowserTab extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when check open was successful
    */
   @Cordova()
-  openUrl(url: string): Promise<any> { return; }
+  openUrl(url: string): Promise<any> {
+    return;
+  }
 
   /**
    * Closes browser tab
    * @return {Promise<any>} Returns a promise that resolves when close was finished
    */
   @Cordova()
-  close(): Promise<any> { return; }
+  close(): Promise<any> {
+    return;
+  }
 }

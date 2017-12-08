@@ -4,6 +4,7 @@ import * as webpack from 'webpack';
 import * as uglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import { cleanEmittedData, EMIT_PATH, InjectableClassEntry } from '../build/transformers/extract-injectables';
 import { ROOT } from '../build/helpers';
+
 const DIST = path.resolve(ROOT, 'dist');
 const INDEX_PATH = path.resolve(DIST, 'index.js');
 const INJECTABLE_CLASSES = fs.readJSONSync(EMIT_PATH).map((item: InjectableClassEntry) => {
