@@ -40,7 +40,6 @@ module.exports = currentVersion => {
       computePathsProcessor.pathTemplates = [{
         docTypes: ['class'],
         getOutputPath: doc => doc.originalModule.replace(config.pluginDir + '/', '')
-          .replace('/plugins', '')
           .replace(/\/index$/, '/README.md')
       }];
 
