@@ -1,7 +1,3 @@
-/**
- * Network Interface Plugin
- *
- */
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
@@ -36,7 +32,9 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 export class NetworkInterface extends IonicNativePlugin {
 
   @Cordova()
-  getIPAddress(): Promise<string> { return; }
+  getIPAddress(): Promise<string> {
+    return;
+  }
 
   /**
    * Gets the WiFi IP address
