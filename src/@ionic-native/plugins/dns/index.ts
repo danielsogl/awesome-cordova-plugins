@@ -23,7 +23,7 @@ import { Injectable } from '@angular/core';
  */
 @Plugin({
   pluginName: 'DNS',
-  plugin: 'gulp plugin:create -n',
+  plugin: 'cordova-plugin-dns',
   pluginRef: 'cordova.plugins.dns',
   repo: 'https://bitbucket.org/zegeba/cordova-plugin-dns',
   platforms: ['Android']
