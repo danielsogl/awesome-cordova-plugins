@@ -10,15 +10,15 @@ export interface MusicControlsOptions {
   dismissable: boolean;
   hasPrev: boolean;
   hasNext: boolean;
-  hasSkipForward: boolean;
-  hasSkipBackward: boolean;
-  skipForwardInterval: number;
-  skipBackwardInterval: number;
+  hasSkipForward?: boolean; // iOS only
+  hasSkipBackward?: boolean; // iOS only
+  skipForwardInterval?: number; // iOS only
+  skipBackwardInterval?: number; // iOS only // iOS only
   hasClose: boolean;
-  album: string;
-  duration: number;
-  elapsed: number;
-  ticker: string;
+  album?: string; // iOS only
+  duration?: number; // iOS only
+  elapsed?: number; // iOS only
+  ticker?: string; // Android only
 }
 
 /**
