@@ -2,6 +2,7 @@ import * as fs from 'fs-extra';
 import * as path from 'path';
 import * as webpack from 'webpack';
 import * as uglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import * as unminifiedPlugin from 'unminified-webpack-plugin';
 import { cleanEmittedData, EMIT_PATH, InjectableClassEntry } from '../build/transformers/extract-injectables';
 import { ROOT } from '../build/helpers';
 
@@ -32,7 +33,8 @@ const webpackConfig: webpack.Configuration = {
     }),
     new uglifyJsPlugin({
       sourceMap: true
-    })
+    }),
+    new unminifiedPlugin()
   ]
 };
 
