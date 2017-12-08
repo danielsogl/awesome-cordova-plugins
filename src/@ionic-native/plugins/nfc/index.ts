@@ -72,6 +72,21 @@ export interface NdefTag {
 @Injectable()
 export class NFC extends IonicNativePlugin {
   /**
+   * Starts the NFCNDEFReaderSession allowing iOS to scan NFC tags.
+   * @param onSuccess
+   * @param onFailure
+   * @returns {Observable<any>}
+   */
+  @Cordova({
+    observable: true,
+    successIndex: 0,
+    errorIndex: 3,
+    clearFunction: 'invalidateSession',
+    clearWithArgs: true
+  })
+  beginSession(onSuccess?: Function, onFailure?: Function): Observable<any> { return; }
+
+  /**
    * Registers an event listener for any NDEF tag.
    * @param onSuccess
    * @param onFailure
