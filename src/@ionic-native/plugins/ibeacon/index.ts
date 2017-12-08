@@ -248,12 +248,12 @@ export interface IBeaconDelegate {
  * delegate.didRangeBeaconsInRegion()
  *   .subscribe(
  *     data => console.log('didRangeBeaconsInRegion: ', data),
- *     error => console.error();
+ *     error => console.error()
  *   );
  * delegate.didStartMonitoringForRegion()
  *   .subscribe(
  *     data => console.log('didStartMonitoringForRegion: ', data),
- *     error => console.error();
+ *     error => console.error()
  *   );
  * delegate.didEnterRegion()
  *   .subscribe(
