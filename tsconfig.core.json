@@ -8,21 +8,19 @@
     "noImplicitAny": true,
     "module": "es2015",
     "moduleResolution": "node",
-    "paths": {
-      "@ionic-native/core": ["./dist/core"]
-    },
     "outDir": "./dist",
     "rootDir": "src",
     "target": "es5",
     "skipLibCheck": true,
     "lib": ["es2017", "dom"],
     "inlineSources": true,
-    "inlineSourceMap": true
+    "sourceMap": true
   },
   "include": [
-    "src/plugins/**/*.ts"
+    "src/core/**/*.ts"
   ],
-  "angularCompilerOptions": {
-    "genDir": "aot"
-  }
+  "exclude": [
+    "node_modules",
+    "src/core/**/*.spec.ts"
+  ]
 }
