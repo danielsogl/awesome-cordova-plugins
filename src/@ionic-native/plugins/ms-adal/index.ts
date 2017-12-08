@@ -11,6 +11,7 @@ export interface AuthenticationResult {
   status: string;
   statusCode: number;
   tenantId: string;
+  userInfo: UserInfo;
 
   /**
    * Creates authorization header for web requests.
