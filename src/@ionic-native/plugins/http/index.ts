@@ -54,6 +54,7 @@ export interface HTTPResponse {
  *   });
  *
  * ```
+ * Note : Do not forget to add HTTP in the app.module.ts .
  * @interfaces
  * HTTPResponse
  */
