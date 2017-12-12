@@ -414,9 +414,11 @@ export class PushObject {
    * iOS only
    * Tells the OS that you are done processing a background push notification.
    * successHandler gets called when background push processing is successfully completed.
-   * @param id
+   * @param [id]
    */
-  @CordovaInstance()
+  @CordovaInstance({
+    callbackOrder: 'reverse'
+  })
   finish(id?: string): Promise<any> { return; }
 
   /**
