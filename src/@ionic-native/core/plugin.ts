@@ -230,7 +230,7 @@ export function wrapEventObservable(event: string, element: any = window): Obser
 export function overrideFunction(pluginObj: any, methodName: string, args: any[], opts: any = {}): Observable<any> {
   return new Observable(observer => {
 
-    const availabilityCheck = checkAvailability(pluginObj, methodName);
+    const availabilityCheck = checkAvailability(pluginObj, null, pluginObj.constructor.getPluginName());
 
     if (availabilityCheck === true) {
       const pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
