@@ -1,3 +1,13 @@
+<a name="4.5.1"></a>
+## [4.5.1](https://github.com/ionic-team/ionic-native/compare/v4.5.0...v4.5.1) (2017-12-12)
+
+
+### Bug Fixes
+
+* **core:** fix issue with CordovaFunctionOverride decorator ([6cd97ca](https://github.com/ionic-team/ionic-native/commit/6cd97ca))
+
+
+
 <a name="4.5.0"></a>
 # [4.5.0](https://github.com/ionic-team/ionic-native/compare/v4.4.2...v4.5.0) (2017-12-08)
 
