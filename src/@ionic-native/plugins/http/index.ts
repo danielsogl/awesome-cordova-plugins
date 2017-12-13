@@ -130,7 +130,7 @@ export class HTTP extends IonicNativePlugin {
   /**
    * Enable or disable SSL Pinning. This defaults to false.
    *
-   * To use SSL pinning you must include at least one .cer SSL certificate in your app project. You can pin to your server certificate or to one of the issuing CA certificates. For ios include your certificate in the root level of your bundle (just add the .cer file to your project/target at the root level). For android include your certificate in your project's platforms/android/assets folder. In both cases all .cer files found will be loaded automatically. If you only have a .pem certificate see this stackoverflow answer. You want to convert it to a DER encoded certificate with a .cer extension.
+   * To use SSL pinning you must include at least one .cer SSL certificate in your app project. You can pin to your server certificate or to one of the issuing CA certificates. For ios include your certificate in the root level of your bundle (just add the .cer file to your project/target at the root level). For android include your certificate in your project's platforms/android/assets folder. In both cases all .cer files found will be loaded automatically. If you only have a .pem certificate see this [stackoverflow answer](https://stackoverflow.com/questions/16583428/how-to-convert-an-ssl-certificate-in-linux/16583429#16583429). You want to convert it to a DER encoded certificate with a .cer extension.
    *
    * As an alternative, you can store your .cer files in the www/certificates folder.
    * @param enable {boolean} Set to true to enable
