@@ -801,7 +801,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * })
  * export class HomePage {
  *   map: GoogleMap;
- *   constructor(private googleMaps: GoogleMaps) { }
+ *   constructor() { }
  *
  *   ionViewDidLoad() {
  *    this.loadMap();
@@ -820,7 +820,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  *       }
  *     };
  *
- *     this.map = this.googleMaps.create('map_canvas', mapOptions);
+ *     this.map = GoogleMaps.create('map_canvas', mapOptions);
  *
  *     // Wait the MAP_READY before using any methods.
  *     this.map.one(GoogleMapsEvent.MAP_READY)
