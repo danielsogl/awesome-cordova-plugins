@@ -300,11 +300,11 @@ export class LocalNotifications extends IonicNativePlugin {
   getAllTriggered(): Promise<Array<ILocalNotification>> { return; }
 
   /**
-   * Register permission to show notifications if not already granted.
+   * Request permission to show notifications if not already granted.
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  registerPermission(): Promise<boolean> { return; }
+  requestPermission(): Promise<boolean> { return; }
 
   /**
    * Informs if the app has the permission to show notifications.
