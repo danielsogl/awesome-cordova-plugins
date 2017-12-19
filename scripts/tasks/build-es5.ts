@@ -15,6 +15,7 @@ const INJECTABLE_CLASSES = fs.readJSONSync(EMIT_PATH).map((item: InjectableClass
 
 const webpackConfig: webpack.Configuration = {
   entry: INDEX_PATH,
+  devtool: 'source-map',
   target: 'web',
   output: {
     path: DIST,
@@ -27,26 +28,37 @@ const webpackConfig: webpack.Configuration = {
       '@ionic-native/core': path.resolve(DIST, 'core/index.js')
     }
   },
+  module: {
+    rules: [{
+      test: /plugins/,
+      use: path.resolve(ROOT, 'scripts/build/plugin-loader.js')
+    }]
+  },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+    new webpack.ProvidePlugin({
+      '__extends': ['tslib', '__extends']
     }),
-    new uglifyJsPlugin({
-      sourceMap: true
-    }),
-    new unminifiedPlugin()
+    new webpack.optimize.OccurrenceOrderPlugin(true)
+    // new webpack.DefinePlugin({
+    //   'process.env.NODE_ENV': JSON.stringify('production')
+    // }),
+    // new uglifyJsPlugin(),
+    // new unminifiedPlugin()
   ]
 };
 
 function getPluginImport(entry: InjectableClassEntry) {
-  return `window['IonicNative']['${ entry.className }'] = require('${ entry.file }').${ entry.className };`;
+  return `import { ${ entry.className } } from '${ entry.file }';`;
 }
 
 function createIndexFile() {
-  let fileContent = `window['IonicNative'] = {};\n`;
+  let fileContent = '';
   fileContent += INJECTABLE_CLASSES.map(getPluginImport).join('\n');
-  fileContent += `\nrequire('./core/bootstrap').checkReady();\n`;
-  fileContent += `require('./core/ng1').initAngular1(window['IonicNative']);\n`;
+  fileContent += `\nwindow.IonicNative = {\n`;
+  fileContent += INJECTABLE_CLASSES.map(e => e.className).join(',\n');
+  fileContent += '\n};\n';
+  fileContent += `require('./core/bootstrap').checkReady();\n`;
+  fileContent += `require('./core/ng1').initAngular1(window.IonicNative);`;
 
   fs.writeFileSync(INDEX_PATH, fileContent, { encoding: 'utf-8' });
 }
@@ -55,7 +67,7 @@ function compile() {
   webpack(webpackConfig, (err, stats) => {
     if (err) console.log(err);
     else console.log(stats);
-    cleanEmittedData();
+    // cleanEmittedData();
   });
 }
 

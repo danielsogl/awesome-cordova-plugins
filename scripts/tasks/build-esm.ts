@@ -20,7 +20,7 @@ outDirs.forEach(dir => {
   classes.forEach(entry => {
     dtsFile = dtsFile.replace(`class ${ entry.className } `, 'class ' + entry.className + 'Original ');
     dtsFile += `\nexport declare const ${ entry.className }: ${ entry.className }Original;`;
-    jsFile = jsFile.replace(new RegExp(`[\\s\\(]${ entry.className }([\\s\\.;\\(])`, 'g'), ' ' + entry.className + 'Original$1');
+    jsFile = jsFile.replace(new RegExp(`([\\s\\(])${ entry.className }([\\s\\.;\\(,])`, 'g'), '$1' + entry.className + 'Original$2');
     jsFile = jsFile.replace(`export { ${ entry.className }Original }`, `var ${ entry.className } = new ${ entry.className }Original();\nexport { ${ entry.className } }`);
   });
 
