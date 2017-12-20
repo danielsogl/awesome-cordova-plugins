@@ -30,20 +30,21 @@ const webpackConfig: webpack.Configuration = {
   },
   module: {
     rules: [{
-      test: /plugins/,
-      use: path.resolve(ROOT, 'scripts/build/plugin-loader.js')
+      test: /\.js$/,
+      use: path.resolve(ROOT, 'scripts/build/remove-tslib-helpers.js')
     }]
   },
   plugins: [
     new webpack.ProvidePlugin({
       '__extends': ['tslib', '__extends']
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(true)
-    // new webpack.DefinePlugin({
-    //   'process.env.NODE_ENV': JSON.stringify('production')
-    // }),
-    // new uglifyJsPlugin(),
-    // new unminifiedPlugin()
+    new webpack.optimize.OccurrenceOrderPlugin(true),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new uglifyJsPlugin({
+      sourceMap: true
+    })
   ]
 };
 

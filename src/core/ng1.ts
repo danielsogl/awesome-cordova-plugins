@@ -16,7 +16,7 @@ export function initAngular1(plugins: any) {
       (function(serviceName, cls, name) {
         ngModule.service(serviceName, [function() {
           const funcs = window.angular.copy(cls);
-          funcs.prototype['name'] = name;
+          funcs.__proto__['name'] = name;
           return funcs;
         }]);
       })(serviceName, cls, name);
