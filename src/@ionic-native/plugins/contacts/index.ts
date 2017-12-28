@@ -261,6 +261,9 @@ export class ContactFindOptions implements IContactFindOptions {
  * @description
  * Access and manage Contacts on the device.
  *
+ * @deprecated
+ * This plugin has been deprecated: Use the W3C Contacts API instead
+ *
  * @usage
  *
  * ```typescript
