@@ -19,13 +19,15 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
 
   const decoratorRegex: RegExp = /@([a-zA-Z]+)\(/g;
 
+  const ignored: string [] = ['Plugin', 'Component'];
+
   let m;
 
   while ((m = decoratorRegex.exec(file.text)) !== null) {
     if (m.index === decoratorRegex.lastIndex) {
       decoratorRegex.lastIndex++;
     }
-    if (m && m[1] && decorators.indexOf(m[1]) === -1 && m[1] !== 'Plugin') decorators.push(m[1]);
+    if (m && m[1] && decorators.indexOf(m[1]) === -1 && ignored.indexOf(m[1]) === -1) decorators.push(m[1]);
   }
 
   if (decorators.length) {

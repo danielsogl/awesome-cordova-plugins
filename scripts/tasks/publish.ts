@@ -20,7 +20,7 @@ const PACKAGE_JSON_BASE = {
   }
 };
 
-const DIST = path.resolve(ROOT, 'dist');
+const DIST = path.resolve(ROOT, 'dist/@ionic-native');
 
 const PACKAGES = [];
 
@@ -66,8 +66,8 @@ function prepare() {
 function publish() {
   // TODO apply queue system so it doesn't publish everything at once
   PACKAGES.forEach((pkg: string) => {
-    // console.log('Going to run the following command: ', `npm publish ${ pkg } ${ FLAGS }`);
-    exec(`npm publish ${ pkg } ${ FLAGS }`);
+    console.log('Going to run the following command: ', `npm publish ${ pkg } ${ FLAGS }`);
+    // exec(`npm publish ${ pkg } ${ FLAGS }`);
   });
 }
 
