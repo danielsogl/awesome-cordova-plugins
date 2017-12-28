@@ -161,7 +161,7 @@ export enum Direction {
   plugin: 'cordova-plugin-camera',
   pluginRef: 'navigator.camera',
   repo: 'https://github.com/apache/cordova-plugin-camera',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
 export class Camera extends IonicNativePlugin {
