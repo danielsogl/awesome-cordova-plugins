@@ -9,7 +9,7 @@
     "module": "es2015",
     "moduleResolution": "node",
     "paths": {
-      "@ionic-native/core": ["./dist/core"]
+      "@ionic-native/core": ["./dist/@ionic-native/core"]
     },
     "outDir": "./dist",
     "rootDir": "src",
@@ -20,7 +20,7 @@
     "inlineSourceMap": true
   },
   "include": [
-    "src/plugins/**/*.ts"
+    "src/@ionic-native/plugins/**/*.ts"
   ],
   "angularCompilerOptions": {
     "genDir": "aot"

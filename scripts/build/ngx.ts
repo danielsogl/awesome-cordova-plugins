@@ -32,7 +32,7 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
 
 // hacky way to export metadata only for core package
 export function transpileNgxCore() {
-  getProgram([path.resolve(ROOT, 'src/core/index.ts')]).emit({
+  getProgram([path.resolve(ROOT, 'src/@ionic-native/core/index.ts')]).emit({
     emitFlags: EmitFlags.Metadata,
     emitCallback: ({ program, writeFile, customTransformers, cancellationToken, targetSourceFile }) =>
       program.emit(targetSourceFile, writeFile, cancellationToken, true, customTransformers)

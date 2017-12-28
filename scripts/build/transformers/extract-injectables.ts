@@ -23,7 +23,7 @@ export const EMIT_PATH = path.resolve(ROOT, 'injectable-classes.json');
 export function extractInjectables() {
   return (ctx: ts.TransformationContext) => {
     return tsSourceFile => {
-      if (tsSourceFile.fileName.indexOf('src/plugins') > -1) {
+      if (tsSourceFile.fileName.indexOf('src/@ionic-native/plugins') > -1) {
         ts.visitEachChild(tsSourceFile, node => {
           if (node.kind !== ts.SyntaxKind.ClassDeclaration) {
             return node;

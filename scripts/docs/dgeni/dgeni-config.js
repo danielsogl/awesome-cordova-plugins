@@ -54,7 +54,7 @@ module.exports = currentVersion => {
 
       readTypeScriptModules.basePath = path.resolve(__dirname, '../../..');
       readTypeScriptModules.sourceFiles = [
-        './src/plugins/**/*.ts'
+        './src/@ionic-native/plugins/**/*.ts'
       ];
     })
 

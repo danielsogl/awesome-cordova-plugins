@@ -9,7 +9,7 @@ import { ROOT } from '../build/helpers';
 const DIST = path.resolve(ROOT, 'dist');
 const INDEX_PATH = path.resolve(DIST, 'index.js');
 const INJECTABLE_CLASSES = fs.readJSONSync(EMIT_PATH).map((item: InjectableClassEntry) => {
-  item.file = './' + item.file.split(/[\/\\]+/).slice(-3, -1).join('/');
+  item.file = './' + item.file.split(/[\/\\]+/).slice(-4, -1).join('/');
   return item;
 });
 
@@ -58,8 +58,8 @@ function createIndexFile() {
   fileContent += `\nwindow.IonicNative = {\n`;
   fileContent += INJECTABLE_CLASSES.map(e => e.className).join(',\n');
   fileContent += '\n};\n';
-  fileContent += `require('./core/bootstrap').checkReady();\n`;
-  fileContent += `require('./core/ng1').initAngular1(window.IonicNative);`;
+  fileContent += `require('./@ionic-native/core/bootstrap').checkReady();\n`;
+  fileContent += `require('./@ionic-native/core/ng1').initAngular1(window.IonicNative);`;
 
   fs.writeFileSync(INDEX_PATH, fileContent, { encoding: 'utf-8' });
 }
@@ -68,7 +68,7 @@ function compile() {
   webpack(webpackConfig, (err, stats) => {
     if (err) console.log(err);
     else console.log(stats);
-    // cleanEmittedData();
+    cleanEmittedData();
   });
 }
 
