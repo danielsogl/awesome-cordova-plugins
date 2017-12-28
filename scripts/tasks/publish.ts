@@ -63,12 +63,18 @@ function prepare() {
   });
 }
 
-function publish() {
-  // TODO apply queue system so it doesn't publish everything at once
-  PACKAGES.forEach((pkg: string) => {
-    console.log('Going to run the following command: ', `npm publish ${ pkg } ${ FLAGS }`);
-    // exec(`npm publish ${ pkg } ${ FLAGS }`);
-  });
+async function publish() {
+  // TODO apply queue system to process them concurrently
+  for (let pkg of PACKAGES) {
+    // console.log('Going to run the following command: ', `npm publish ${ pkg } ${ FLAGS }`);
+    await new Promise<any>((resolve, reject) => {
+      exec(`npm publish ${ pkg } ${ FLAGS }`, (err, stdout, stderr) => {
+        if (err) reject(err);
+        if (stderr) reject(stderr);
+        if (stdout) resolve(stdout);
+      });
+    });
+  }
 }
 
 prepare();
