@@ -26,7 +26,8 @@ function getMethodBlock(method: ts.MethodDeclaration, decoratorName: string, dec
   switch (decoratorName) {
     case 'CordovaCheck':
     case 'InstanceCheck':
-      return ts.createImmediatelyInvokedFunctionExpression([ts.createIf(
+      // TODO remove function wrapper
+      return ts.createImmediatelyInvokedArrowFunction([ts.createIf(
         ts.createBinary(
           ts.createCall(ts.createIdentifier(decoratorMethod), undefined, [ts.createThis()]),
           ts.SyntaxKind.EqualsEqualsEqualsToken,
