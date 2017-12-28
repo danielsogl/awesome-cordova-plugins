@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @beta
@@ -40,6 +40,8 @@ export class Base64 extends IonicNativePlugin {
    * @return {Promise<string>} Returns a promise that resolves when the file is successfully encoded
    */
   @Cordova()
-  encodeFile(filePath: string): Promise<string> { return; }
+  encodeFile(filePath: string): Promise<string> {
+    return;
+  }
 
 }

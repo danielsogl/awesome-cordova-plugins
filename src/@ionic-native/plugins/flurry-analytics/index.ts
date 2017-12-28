@@ -1,4 +1,4 @@
-import { Plugin, CordovaInstance, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
+import { checkAvailability, CordovaInstance, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 export interface FlurryAnalyticsOptions {
@@ -73,11 +73,12 @@ export interface FlurryAnalyticsLocation {
 }
 
 /**
-* @hidden
-*/
+ * @hidden
+ */
 export class FlurryAnalyticsObject {
 
-  constructor(private _objectInstance: any) { }
+  constructor(private _objectInstance: any) {
+  }
 
   /**
    * This function set the Event
@@ -192,7 +193,7 @@ export class FlurryAnalyticsObject {
  *  appKey: '<your app key>', // REQUIRED
  *  reportSessionsOnClose: true,
  *  enableLogging: true
- * };
+ * }
  *
  * let fa: FlurryAnalyticsObject = this.flurryAnalytics.create(options);
  *

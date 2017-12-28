@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaCheck, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
 
@@ -62,14 +62,14 @@ export class Network extends IonicNativePlugin {
    * Connection type
    * @return {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   type: string;
 
   /**
    * Downlink Max Speed
    * @return {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   downlinkMax: string;
 
   /**
@@ -89,7 +89,9 @@ export class Network extends IonicNativePlugin {
     eventObservable: true,
     event: 'offline'
   })
-  onDisconnect(): Observable<any> { return; }
+  onDisconnect(): Observable<any> {
+    return;
+  }
 
   /**
    * Get notified when the device goes online
@@ -99,6 +101,8 @@ export class Network extends IonicNativePlugin {
     eventObservable: true,
     event: 'online'
   })
-  onConnect(): Observable<any> { return; }
+  onConnect(): Observable<any> {
+    return;
+  }
 
 }

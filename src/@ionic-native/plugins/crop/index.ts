@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Crop
@@ -38,6 +38,8 @@ export class Crop extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  crop(pathToImage: string, options?: { quality: number }): Promise<string> { return; }
+  crop(pathToImage: string, options?: { quality: number }): Promise<string> {
+    return;
+  }
 
 }

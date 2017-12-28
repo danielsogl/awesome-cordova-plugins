@@ -9,12 +9,20 @@
     "module": "es2015",
     "moduleResolution": "node",
     "paths": {
-      "@ionic-native/core": ["./dist/@ionic-native/core"]
+      "@ionic-native/core": ["./dist/core"]
     },
-    "outDir": "dist",
-    "rootDir": ".",
+    "outDir": "./dist",
+    "rootDir": "src",
     "target": "es5",
     "skipLibCheck": true,
-    "lib": ["es2015", "dom"]
+    "lib": ["es2017", "dom"],
+    "inlineSources": true,
+    "inlineSourceMap": true
+  },
+  "include": [
+    "src/plugins/**/*.ts"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "aot"
   }
 }

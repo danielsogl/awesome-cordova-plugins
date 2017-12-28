@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, CordovaProperty, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Diagnostic
@@ -14,7 +14,7 @@ import { Cordova, Plugin, CordovaProperty, IonicNativePlugin } from '@ionic-nati
  *
  * ...
  *
- * let successCallback = (isAvailable) => { console.log('Is available? ' + isAvailable); };
+ * let successCallback = (isAvailable) => { console.log('Is available? ' + isAvailable); }
  * let errorCallback = (e) => console.error(e);
  *
  * this.diagnostic.isCameraAvailable().then(successCallback).catch(errorCallback);
@@ -71,7 +71,7 @@ export class Diagnostic extends IonicNativePlugin {
     BODY_SENSORS: 'BODY_SENSORS'
   };
 
-  @CordovaProperty
+  @CordovaProperty()
   permissionStatus: {
     GRANTED: string;
     DENIED: string;
@@ -116,7 +116,7 @@ export class Diagnostic extends IonicNativePlugin {
     POWERING_ON: 'powering_on'
   };
 
-  @CordovaProperty
+  @CordovaProperty()
   NFCState: {
     UNKNOWN: string;
     POWERED_OFF: string;
@@ -125,7 +125,7 @@ export class Diagnostic extends IonicNativePlugin {
     POWERING_OFF: string;
   };
 
-  @CordovaProperty
+  @CordovaProperty()
   motionStatus: {
     NOT_REQUESTED: string;
     GRANTED: string;
@@ -141,7 +141,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  isLocationAvailable(): Promise<any> { return; }
+  isLocationAvailable(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if Wifi is connected/enabled. On iOS this returns true if the device is connected to a network by WiFi. On Android and Windows 10 Mobile this returns true if the WiFi setting is set to enabled.
@@ -149,17 +151,21 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  isWifiAvailable(): Promise<any> { return; }
+  isWifiAvailable(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if the device has a camera. On Android this returns true if the device has a camera. On iOS this returns true if both the device has a camera AND the application is authorized to use it. On Windows 10 Mobile this returns true if both the device has a rear-facing camera AND the
    * application is authorized to use it.
    * @param {boolean} [externalStorage] Android only: If true, checks permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
-   *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.   
+   *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  isCameraAvailable( externalStorage?: boolean ): Promise<any> { return; }
+  isCameraAvailable(externalStorage?: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if the device has Bluetooth capabilities and if so that Bluetooth is switched on (same on Android, iOS and Windows 10 Mobile)
@@ -167,38 +173,46 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  isBluetoothAvailable(): Promise<any> { return; }
+  isBluetoothAvailable(): Promise<any> {
+    return;
+  }
 
   /**
    * Displays the device location settings to allow user to enable location services/change location mode.
    */
   @Cordova({ sync: true, platforms: ['Android', 'Windows 10', 'iOS'] })
-  switchToLocationSettings(): void { }
+  switchToLocationSettings(): void {
+  }
 
   /**
    * Displays mobile settings to allow user to enable mobile data.
    */
   @Cordova({ sync: true, platforms: ['Android', 'Windows 10'] })
-  switchToMobileDataSettings(): void { }
+  switchToMobileDataSettings(): void {
+  }
 
   /**
    * Displays Bluetooth settings to allow user to enable Bluetooth.
    */
   @Cordova({ sync: true, platforms: ['Android', 'Windows 10'] })
-  switchToBluetoothSettings(): void { }
+  switchToBluetoothSettings(): void {
+  }
 
   /**
    * Displays WiFi settings to allow user to enable WiFi.
    */
   @Cordova({ sync: true, platforms: ['Android', 'Windows 10'] })
-  switchToWifiSettings(): void { }
+  switchToWifiSettings(): void {
+  }
 
   /**
    * Returns true if the WiFi setting is set to enabled, and is the same as `isWifiAvailable()`
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'Windows 10'] })
-  isWifiEnabled(): Promise<boolean> { return; }
+  isWifiEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Enables/disables WiFi on the device.
@@ -207,7 +221,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ callbackOrder: 'reverse', platforms: ['Android', 'Windows 10'] })
-  setWifiState(state: boolean): Promise<any> { return; }
+  setWifiState(state: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Enables/disables Bluetooth on the device.
@@ -216,7 +232,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ callbackOrder: 'reverse', platforms: ['Android', 'Windows 10'] })
-  setBluetoothState(state: boolean): Promise<any> { return; }
+  setBluetoothState(state: boolean): Promise<any> {
+    return;
+  }
 
 
   // ANDROID AND IOS ONLY
@@ -226,7 +244,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  isLocationEnabled(): Promise<boolean> { return; }
+  isLocationEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if the application is authorized to use location.
@@ -234,14 +254,18 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  isLocationAuthorized(): Promise<any> { return; }
+  isLocationAuthorized(): Promise<any> {
+    return;
+  }
 
   /**
    * Returns the location authorization status for the application.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  getLocationAuthorizationStatus(): Promise<any> { return; }
+  getLocationAuthorizationStatus(): Promise<any> {
+    return;
+  }
 
   /**
    * Returns the location authorization status for the application.
@@ -251,14 +275,18 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
-  requestLocationAuthorization(mode?: string): Promise<any> { return; }
+  requestLocationAuthorization(mode?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if camera hardware is present on device.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  isCameraPresent(): Promise<any> { return; }
+  isCameraPresent(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if the application is authorized to use the camera.
@@ -268,7 +296,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
-  isCameraAuthorized( externalStorage?: boolean ): Promise<any> { return; }
+  isCameraAuthorized(externalStorage?: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Returns the camera authorization status for the application.
@@ -277,7 +307,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
-  getCameraAuthorizationStatus( externalStorage?: boolean ): Promise<any> { return; }
+  getCameraAuthorizationStatus(externalStorage?: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Requests camera authorization for the application.
@@ -286,49 +318,63 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
-  requestCameraAuthorization( externalStorage?: boolean ): Promise<any> { return; }
+  requestCameraAuthorization(externalStorage?: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if the application is authorized to use the microphone.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  isMicrophoneAuthorized(): Promise<boolean> { return; }
+  isMicrophoneAuthorized(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Returns the microphone authorization status for the application.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  getMicrophoneAuthorizationStatus(): Promise<any> { return; }
+  getMicrophoneAuthorizationStatus(): Promise<any> {
+    return;
+  }
 
   /**
    * Requests microphone authorization for the application.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  requestMicrophoneAuthorization(): Promise<any> { return; }
+  requestMicrophoneAuthorization(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if the application is authorized to use contacts (address book).
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  isContactsAuthorized(): Promise<boolean> { return; }
+  isContactsAuthorized(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Returns the contacts authorization status for the application.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  getContactsAuthorizationStatus(): Promise<any> { return; }
+  getContactsAuthorizationStatus(): Promise<any> {
+    return;
+  }
 
   /**
    * Requests contacts authorization for the application.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  requestContactsAuthorization(): Promise<any> { return; }
+  requestContactsAuthorization(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if the application is authorized to use the calendar.
@@ -341,7 +387,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  isCalendarAuthorized(): Promise<boolean> { return; }
+  isCalendarAuthorized(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Returns the calendar authorization status for the application.
@@ -355,7 +403,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  getCalendarAuthorizationStatus(): Promise<any> { return; }
+  getCalendarAuthorizationStatus(): Promise<any> {
+    return;
+  }
 
   /**
    * Requests calendar authorization for the application.
@@ -372,7 +422,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  requestCalendarAuthorization(): Promise<any> { return; }
+  requestCalendarAuthorization(): Promise<any> {
+    return;
+  }
 
   /**
    * Opens settings page for this app.
@@ -381,28 +433,34 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  switchToSettings(): Promise<any> { return; }
+  switchToSettings(): Promise<any> {
+    return;
+  }
 
   /**
    * Returns the state of Bluetooth on the device.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
-  getBluetoothState(): Promise<any> { return; }
+  getBluetoothState(): Promise<any> {
+    return;
+  }
 
   /**
    * Registers a function to be called when a change in Bluetooth state occurs.
    * @param handler
    */
   @Cordova({ platforms: ['Android', 'iOS'], sync: true })
-  registerBluetoothStateChangeHandler(handler: Function): void { }
+  registerBluetoothStateChangeHandler(handler: Function): void {
+  }
 
   /**
    * Registers a function to be called when a change in Location state occurs.
    * @param handler
    */
   @Cordova({ platforms: ['Android', 'iOS'], sync: true })
-  registerLocationStateChangeHandler(handler: Function): void { }
+  registerLocationStateChangeHandler(handler: Function): void {
+  }
 
 
   // ANDROID ONLY
@@ -413,7 +471,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  isGpsLocationAvailable(): Promise<boolean> { return; }
+  isGpsLocationAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if location mode is set to return high-accuracy locations from GPS hardware.
@@ -423,7 +483,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
-  isGpsLocationEnabled(): Promise<any> { return; }
+  isGpsLocationEnabled(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if low-accuracy locations are available to the app from network triangulation/WiFi access points.
@@ -431,7 +493,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
-  isNetworkLocationAvailable(): Promise<any> { return; }
+  isNetworkLocationAvailable(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if location mode is set to return low-accuracy locations from network triangulation/WiFi access points.
@@ -441,14 +505,18 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
-  isNetworkLocationEnabled(): Promise<any> { return; }
+  isNetworkLocationEnabled(): Promise<any> {
+    return;
+  }
 
   /**
    * Returns the current location mode setting for the device.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
-  getLocationMode(): Promise<any> { return; }
+  getLocationMode(): Promise<any> {
+    return;
+  }
 
   /**
    * Returns the current authorisation status for a given permission.
@@ -457,7 +525,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'], callbackOrder: 'reverse' })
-  getPermissionAuthorizationStatus(permission: any): Promise<any> { return; }
+  getPermissionAuthorizationStatus(permission: any): Promise<any> {
+    return;
+  }
 
   /**
    * Returns the current authorisation status for multiple permissions.
@@ -466,7 +536,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'], callbackOrder: 'reverse' })
-  getPermissionsAuthorizationStatus(permissions: any[]): Promise<any> { return; }
+  getPermissionsAuthorizationStatus(permissions: any[]): Promise<any> {
+    return;
+  }
 
   /**
    * Requests app to be granted authorisation for a runtime permission.
@@ -475,7 +547,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'], callbackOrder: 'reverse' })
-  requestRuntimePermission(permission: any): Promise<any> { return; }
+  requestRuntimePermission(permission: any): Promise<any> {
+    return;
+  }
 
   /**
    * Requests app to be granted authorisation for multiple runtime permissions.
@@ -484,7 +558,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'], callbackOrder: 'reverse' })
-  requestRuntimePermissions(permissions: any[]): Promise<any> { return; }
+  requestRuntimePermissions(permissions: any[]): Promise<any> {
+    return;
+  }
 
   /**
    * Indicates if the plugin is currently requesting a runtime permission via the native API.
@@ -494,7 +570,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {boolean}
    */
   @Cordova({ sync: true })
-  isRequestingPermission(): boolean { return; }
+  isRequestingPermission(): boolean {
+    return;
+  }
 
   /**
    * Registers a function to be called when a runtime permission request has completed.
@@ -502,7 +580,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @param handler {Function}
    */
   @Cordova({ sync: true })
-  registerPermissionRequestCompleteHandler(handler: Function): void { return; }
+  registerPermissionRequestCompleteHandler(handler: Function): void {
+    return;
+  }
 
   /**
    * Checks if the device setting for Bluetooth is switched on.
@@ -510,49 +590,63 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  isBluetoothEnabled(): Promise<boolean> { return; }
+  isBluetoothEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if the device has Bluetooth capabilities.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  hasBluetoothSupport(): Promise<boolean> { return; }
+  hasBluetoothSupport(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if the device has Bluetooth Low Energy (LE) capabilities.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  hasBluetoothLESupport(): Promise<boolean> { return; }
+  hasBluetoothLESupport(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if the device supports Bluetooth Low Energy (LE) Peripheral mode.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  hasBluetoothLEPeripheralSupport(): Promise<boolean> { return; }
+  hasBluetoothLEPeripheralSupport(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if the application is authorized to use external storage.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  isExternalStorageAuthorized(): Promise<boolean> { return; }
+  isExternalStorageAuthorized(): Promise<boolean> {
+    return;
+  }
 
   /**
    * CReturns the external storage authorization status for the application.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  getExternalStorageAuthorizationStatus(): Promise<any> { return; }
+  getExternalStorageAuthorizationStatus(): Promise<any> {
+    return;
+  }
 
   /**
    * Requests external storage authorization for the application.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
-  requestExternalStorageAuthorization(): Promise<any> { return; }
+  requestExternalStorageAuthorization(): Promise<any> {
+    return;
+  }
 
   /**
    * Returns details of external SD card(s): absolute path, is writable, free space.
@@ -565,7 +659,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
-  getExternalSdCardDetails(): Promise<any> { return; }
+  getExternalSdCardDetails(): Promise<any> {
+    return;
+  }
 
   /**
    * Switches to the wireless settings page in the Settings app. Allows configuration of wireless controls such as Wi-Fi, Bluetooth and Mobile networks.
@@ -574,7 +670,8 @@ export class Diagnostic extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  switchToWirelessSettings(): void { }
+  switchToWirelessSettings(): void {
+  }
 
   /**
    * Displays NFC settings to allow user to enable NFC.
@@ -583,14 +680,17 @@ export class Diagnostic extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  switchToNFCSettings(): void { }
+  switchToNFCSettings(): void {
+  }
 
   /**
    * Checks if NFC hardware is present on device.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  isNFCPresent(): Promise<boolean> { return; }
+  isNFCPresent(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if the device setting for NFC is switched on.
@@ -598,7 +698,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  isNFCEnabled(): Promise<boolean> { return; }
+  isNFCEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if NFC is available to the app. Returns true if the device has NFC capabilities AND if NFC setting is switched on.
@@ -606,7 +708,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
-  isNFCAvailable(): Promise<boolean> { return; }
+  isNFCAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Registers a function to be called when a change in NFC state occurs. Pass in a falsey value to de-register the currently registered function.
@@ -617,28 +721,35 @@ export class Diagnostic extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  registerNFCStateChangeHandler(handler: Function): void { }
+  registerNFCStateChangeHandler(handler: Function): void {
+  }
 
   /**
    * Checks if the device data roaming setting is enabled.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  isDataRoamingEnabled(): Promise<boolean> { return; }
+  isDataRoamingEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if the device setting for ADB(debug) is switched on.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  isADBModeEnabled(): Promise<boolean> { return; }
+  isADBModeEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if the device is rooted.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
-  isDeviceRooted(): Promise<boolean> { return; }
+  isDeviceRooted(): Promise<boolean> {
+    return;
+  }
 
   // IOS ONLY
 
@@ -647,14 +758,18 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
-  isCameraRollAuthorized(): Promise<boolean> { return; }
+  isCameraRollAuthorized(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Returns the authorization status for the application to use the Camera Roll in Photos app.
    * @returns {Promise<string>}
    */
   @Cordova({ platforms: ['iOS'] })
-  getCameraRollAuthorizationStatus(): Promise<string> { return; }
+  getCameraRollAuthorizationStatus(): Promise<string> {
+    return;
+  }
 
   /**
    * Requests camera roll authorization for the application.
@@ -663,21 +778,27 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
-  requestCameraRollAuthorization(): Promise<any> { return; }
+  requestCameraRollAuthorization(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if remote (push) notifications are enabled.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS', 'Android'] })
-  isRemoteNotificationsEnabled(): Promise<boolean> { return; }
+  isRemoteNotificationsEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Indicates if the app is registered for remote (push) notifications on the device.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
-  isRegisteredForRemoteNotifications(): Promise<boolean> { return; }
+  isRegisteredForRemoteNotifications(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Returns the authorization status for the application to use Remote Notifications.
@@ -685,7 +806,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<string>}
    */
   @Cordova({ platforms: ['iOS'] })
-  getRemoteNotificationsAuthorizationStatus(): Promise<string> { return; }
+  getRemoteNotificationsAuthorizationStatus(): Promise<string> {
+    return;
+  }
 
   /**
    * Indicates the current setting of notification types for the app in the Settings app.
@@ -693,42 +816,54 @@ export class Diagnostic extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
-  getRemoteNotificationTypes(): Promise<any> { return; }
+  getRemoteNotificationTypes(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if the application is authorized to use reminders.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
-  isRemindersAuthorized(): Promise<boolean> { return; }
+  isRemindersAuthorized(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Returns the reminders authorization status for the application.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
-  getRemindersAuthorizationStatus(): Promise<any> { return; }
+  getRemindersAuthorizationStatus(): Promise<any> {
+    return;
+  }
 
   /**
    * Requests reminders authorization for the application.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
-  requestRemindersAuthorization(): Promise<any> { return; }
+  requestRemindersAuthorization(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if the application is authorized for background refresh.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
-  isBackgroundRefreshAuthorized(): Promise<boolean> { return; }
+  isBackgroundRefreshAuthorized(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Returns the background refresh authorization status for the application.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
-  getBackgroundRefreshStatus(): Promise<any> { return; }
+  getBackgroundRefreshStatus(): Promise<any> {
+    return;
+  }
 
   /**
    * Requests Bluetooth authorization for the application.
@@ -737,14 +872,18 @@ export class Diagnostic extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
-  requestBluetoothAuthorization(): Promise<any> { return; }
+  requestBluetoothAuthorization(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if motion tracking is available on the current device.
    * @return {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
-  isMotionAvailable(): Promise<boolean> { return; }
+  isMotionAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if it's possible to determine the outcome of a motion authorization request on the current device.
@@ -754,7 +893,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @return {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
-  isMotionRequestOutcomeAvailable(): Promise<boolean> { return; }
+  isMotionRequestOutcomeAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Requests motion tracking authorization for the application.
@@ -764,7 +905,9 @@ export class Diagnostic extends IonicNativePlugin {
    * @return {Promise<string>}
    */
   @Cordova({ platforms: ['iOS'] })
-  requestMotionAuthorization(): Promise<string> { return; }
+  requestMotionAuthorization(): Promise<string> {
+    return;
+  }
 
   /**
    * Checks motion authorization status for the application.
@@ -774,6 +917,8 @@ export class Diagnostic extends IonicNativePlugin {
    * @return {Promise<string>}
    */
   @Cordova({ platforms: ['iOS'] })
-  getMotionAuthorizationStatus(): Promise<string> { return; }
+  getMotionAuthorizationStatus(): Promise<string> {
+    return;
+  }
 
 }

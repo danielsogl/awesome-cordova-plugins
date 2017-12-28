@@ -1,4 +1,4 @@
-import { Plugin, IonicNativePlugin, Cordova, CordovaProperty } from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -81,15 +81,15 @@ export type IAPProducts = Array<IAPProduct> & {
   /**
    * Get product by ID
    */
-  byId: { [id: string]: IAPProduct; };
+  byId: { [id: string]: IAPProduct; }
   /**
    * Get product by alias
    */
-  byAlias: { [alias: string]: IAPProduct; };
+  byAlias: { [alias: string]: IAPProduct; }
   /**
    * Remove all products (for testing only).
    */
-  reset: () => {};
+  reset: () => {}
 };
 
 export type IAPQueryCallback = ((product: IAPProduct) => void) | ((error: IAPError) => void);
@@ -204,160 +204,160 @@ export class IAPError {
 @Injectable()
 export class InAppPurchase2 extends IonicNativePlugin {
 
-  @CordovaProperty
+  @CordovaProperty()
   QUIET: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERROR: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   WARNING: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   INFO: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   DEBUG: number;
 
   /**
    * Debug level. Use QUIET, ERROR, WARNING, INFO or DEBUG constants
    */
-  @CordovaProperty
+  @CordovaProperty()
   verbosity: number;
 
   /**
    * Set to true to invoke the platform purchase sandbox. (Windows only)
    */
-  @CordovaProperty
+  @CordovaProperty()
   sandbox: boolean;
 
-  @CordovaProperty
+  @CordovaProperty()
   FREE_SUBSCRIPTION: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   PAID_SUBSCRIPTION: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   NON_RENEWING_SUBSCRIPTION: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   CONSUMABLE: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   NON_CONSUMABLE: string;
 
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_SETUP: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_LOAD: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_PURCHASE: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_LOAD_RECEIPTS: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_CLIENT_INVALID: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_PAYMENT_CANCELLED: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_PAYMENT_INVALID: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_PAYMENT_NOT_ALLOWED: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_UNKNOWN: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_REFRESH_RECEIPTS: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_INVALID_PRODUCT_ID: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_FINISH: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_COMMUNICATION: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_SUBSCRIPTIONS_NOT_AVAILABLE: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_MISSING_TOKEN: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_VERIFICATION_FAILED: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_BAD_RESPONSE: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_REFRESH: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_PAYMENT_EXPIRED: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_DOWNLOAD: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   ERR_SUBSCRIPTION_UPDATE_NOT_AVAILABLE: number;
 
 
-  @CordovaProperty
+  @CordovaProperty()
   REGISTERED: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   INVALID: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   VALID: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   REQUESTED: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   INITIATED: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   APPROVED: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   FINISHED: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   OWNED: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   DOWNLOADING: string;
 
-  @CordovaProperty
+  @CordovaProperty()
   DOWNLOADED: string;
 
 
-  @CordovaProperty
+  @CordovaProperty()
   INVALID_PAYLOAD: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   CONNECTION_FAILED: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   PURCHASE_EXPIRED: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   products: IAPProducts;
 
-  @CordovaProperty
+  @CordovaProperty()
   validator: string | ((product: string | IAPProduct, callback: Function) => void);
 
-  @CordovaProperty
+  @CordovaProperty()
   log: {
     error: (message: string) => void;
     warn: (message: string) => void;
@@ -370,21 +370,25 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * @param idOrAlias
    */
   @Cordova({ sync: true })
-  get(idOrAlias: string): IAPProduct { return; }
+  get(idOrAlias: string): IAPProduct {
+    return;
+  }
 
   /**
    * Register error handler
    * @param onError {Function} function to call on error
    */
   @Cordova({ sync: true })
-  error(onError: Function): void {}
+  error(onError: Function): void {
+  }
 
   /**
    * Add or register a product
    * @param product {IAPProductOptions}
    */
-  @Cordova({ sync: true})
-  register(product: IAPProductOptions): void {}
+  @Cordova({ sync: true })
+  register(product: IAPProductOptions): void {
+  }
 
   /**
    *
@@ -394,7 +398,9 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * @return {IAPProductEvents}
    */
   @Cordova({ sync: true })
-  when(query: string | IAPProduct, event?: string, callback?: IAPQueryCallback): IAPProductEvents { return; }
+  when(query: string | IAPProduct, event?: string, callback?: IAPQueryCallback): IAPProductEvents {
+    return;
+  }
 
   /**
    * Identical to `when`, but the callback will be called only once. After being called, the callback will be unregistered.
@@ -404,26 +410,34 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * @return {IAPProductEvents}
    */
   @Cordova({ sync: true })
-  once(query: string | IAPProduct, event?: string, callback?: IAPQueryCallback): IAPProductEvents { return; }
+  once(query: string | IAPProduct, event?: string, callback?: IAPQueryCallback): IAPProductEvents {
+    return;
+  }
 
   /**
    * Unregister a callback. Works for callbacks registered with ready, when, once and error.
    * @param callback {Function}
    */
   @Cordova({ sync: true })
-  off(callback: Function): void {}
+  off(callback: Function): void {
+  }
 
   @Cordova({ sync: true })
-  order(product: string | IAPProduct, additionalData?: any): { then: Function; error: Function; } { return; }
+  order(product: string | IAPProduct, additionalData?: any): { then: Function; error: Function; } {
+    return;
+  }
 
   /**
    *
    * @return {Promise<any>} returns a promise that resolves when the store is ready
    */
   @Cordova()
-  ready(): Promise<void> { return; }
+  ready(): Promise<void> {
+    return;
+  }
 
   @Cordova({ sync: true })
-  refresh(): void {}
+  refresh(): void {
+  }
 
 }

@@ -1,5 +1,5 @@
 "use strict";
-const config = require('../config.json'),
+const config = require('./config.json'),
   projectPackage = require('../../package.json'),
   path = require('path'),
   fs = require('fs-extra-promise').useFs(require('fs-extra')),
@@ -10,7 +10,7 @@ module.exports = gulp => {
 
     try {
 
-      const ionicPackage = require('./dgeni-config')(projectPackage.version),
+      const ionicPackage = require('./dgeni/dgeni-config')(projectPackage.version),
         dgeni = new Dgeni([ionicPackage]);
 
       return dgeni.generate().then(docs => console.log(docs.length + ' docs generated'));
@@ -27,7 +27,7 @@ module.exports = gulp => {
 
     try {
 
-      const ionicPackage = require('./dgeni-readmes-config')(projectPackage.version),
+      const ionicPackage = require('./dgeni/dgeni-readmes-config')(projectPackage.version),
         dgeni = new Dgeni([ionicPackage]);
       return dgeni.generate().then(docs => console.log(docs.length + ' README files generated'));
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 
 /**
@@ -53,7 +53,9 @@ export class SocialSharing extends IonicNativePlugin {
     successIndex: 4,
     errorIndex: 5
   })
-  share(message?: string, subject?: string, file?: string | string[], url?: string): Promise<any> { return; }
+  share(message?: string, subject?: string, file?: string | string[], url?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Shares using the share sheet with additional options and returns a result object or an error message (requires plugin version 5.1.0+)
@@ -63,7 +65,9 @@ export class SocialSharing extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  shareWithOptions(options: { message?: string, subject?: string, files?: string | string[], url?: string, chooserTitle?: string }): Promise<any> { return; }
+  shareWithOptions(options: { message?: string, subject?: string, files?: string | string[], url?: string, chooserTitle?: string }): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if you can share via a specific app.
@@ -79,7 +83,9 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 6,
     platforms: ['iOS', 'Android']
   })
-  canShareVia(appName: string, message?: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
+  canShareVia(appName: string, message?: string, subject?: string, image?: string, url?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Shares directly to Twitter
@@ -93,7 +99,9 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 4,
     platforms: ['iOS', 'Android']
   })
-  shareViaTwitter(message: string, image?: string, url?: string): Promise<any> { return; }
+  shareViaTwitter(message: string, image?: string, url?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Shares directly to Facebook
@@ -107,7 +115,9 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 4,
     platforms: ['iOS', 'Android']
   })
-  shareViaFacebook(message: string, image?: string, url?: string): Promise<any> { return; }
+  shareViaFacebook(message: string, image?: string, url?: string): Promise<any> {
+    return;
+  }
 
 
   /**
@@ -123,7 +133,9 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 5,
     platforms: ['iOS', 'Android']
   })
-  shareViaFacebookWithPasteMessageHint(message: string, image?: string, url?: string, pasteMessageHint?: string): Promise<any> { return; }
+  shareViaFacebookWithPasteMessageHint(message: string, image?: string, url?: string, pasteMessageHint?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Shares directly to Instagram
@@ -134,7 +146,9 @@ export class SocialSharing extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  shareViaInstagram(message: string, image: string): Promise<any> { return; }
+  shareViaInstagram(message: string, image: string): Promise<any> {
+    return;
+  }
 
   /**
    * Shares directly to WhatsApp
@@ -148,7 +162,9 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 4,
     platforms: ['iOS', 'Android']
   })
-  shareViaWhatsApp(message: string, image?: string, url?: string): Promise<any> { return; }
+  shareViaWhatsApp(message: string, image?: string, url?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Shares directly to a WhatsApp Contact
@@ -163,7 +179,9 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 5,
     platforms: ['iOS', 'Android']
   })
-  shareViaWhatsAppToReceiver(receiver: string, message: string, image?: string, url?: string): Promise<any> { return; }
+  shareViaWhatsAppToReceiver(receiver: string, message: string, image?: string, url?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Share via SMS
@@ -174,7 +192,9 @@ export class SocialSharing extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  shareViaSMS(messge: string, phoneNumber: string): Promise<any> { return; }
+  shareViaSMS(messge: string, phoneNumber: string): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if you can share via email
@@ -183,7 +203,9 @@ export class SocialSharing extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  canShareViaEmail(): Promise<any> { return; }
+  canShareViaEmail(): Promise<any> {
+    return;
+  }
 
   /**
    * Share via Email
@@ -200,7 +222,9 @@ export class SocialSharing extends IonicNativePlugin {
     successIndex: 6,
     errorIndex: 7
   })
-  shareViaEmail(message: string, subject: string, to: string[], cc?: string[], bcc?: string[], files?: string | string[]): Promise<any> { return; }
+  shareViaEmail(message: string, subject: string, to: string[], cc?: string[], bcc?: string[], files?: string | string[]): Promise<any> {
+    return;
+  }
 
   /**
    * Share via AppName
@@ -216,7 +240,9 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 6,
     platforms: ['iOS', 'Android']
   })
-  shareVia(appName: string, message: string, subject?: string, image?: string, url?: string): Promise<any> { return; }
+  shareVia(appName: string, message: string, subject?: string, image?: string, url?: string): Promise<any> {
+    return;
+  }
 
   /**
    * defines the popup position before call the share method.
@@ -226,5 +252,6 @@ export class SocialSharing extends IonicNativePlugin {
     sync: true,
     platforms: ['iOS']
   })
-  setIPadPopupCoordinates(targetBounds: string): void { }
+  setIPadPopupCoordinates(targetBounds: string): void {
+  }
 }

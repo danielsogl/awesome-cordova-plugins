@@ -1,10 +1,47 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, InstanceProperty, Plugin, getPromise, InstanceCheck, checkAvailability, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
+import {
+  checkAvailability,
+  CordovaCheck,
+  CordovaInstance,
+  getPromise,
+  InstanceCheck,
+  InstanceProperty,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 
 declare const window: any,
   navigator: any;
 
-export type ContactFieldType = '*' | 'addresses' | 'birthday' | 'categories' | 'country' | 'department' | 'displayName' | 'emails' | 'familyName' | 'formatted' | 'givenName' | 'honorificPrefix' | 'honorificSuffix' | 'id' | 'ims' | 'locality' | 'middleName' | 'name' | 'nickname' | 'note' | 'organizations' | 'phoneNumbers' | 'photos' | 'postalCode' | 'region' | 'streetAddress' | 'title' | 'urls';
+export type ContactFieldType =
+  '*'
+  | 'addresses'
+  | 'birthday'
+  | 'categories'
+  | 'country'
+  | 'department'
+  | 'displayName'
+  | 'emails'
+  | 'familyName'
+  | 'formatted'
+  | 'givenName'
+  | 'honorificPrefix'
+  | 'honorificSuffix'
+  | 'id'
+  | 'ims'
+  | 'locality'
+  | 'middleName'
+  | 'name'
+  | 'nickname'
+  | 'note'
+  | 'organizations'
+  | 'phoneNumbers'
+  | 'photos'
+  | 'postalCode'
+  | 'region'
+  | 'streetAddress'
+  | 'title'
+  | 'urls';
 
 export interface IContactProperties {
 
@@ -56,21 +93,21 @@ export interface IContactProperties {
  * @hidden
  */
 export class Contact implements IContactProperties {
+  @InstanceProperty() id: string;
+  @InstanceProperty() displayName: string;
+  @InstanceProperty() name: IContactName;
+  @InstanceProperty() nickname: string;
+  @InstanceProperty() phoneNumbers: IContactField[];
+  @InstanceProperty() emails: IContactField[];
+  @InstanceProperty() addresses: IContactAddress[];
+  @InstanceProperty() ims: IContactField[];
+  @InstanceProperty() organizations: IContactOrganization[];
+  @InstanceProperty() birthday: Date;
+  @InstanceProperty() note: string;
+  @InstanceProperty() photos: IContactField[];
+  @InstanceProperty() categories: IContactField[];
+  @InstanceProperty() urls: IContactField[];
   private _objectInstance: any;
-  @InstanceProperty id: string;
-  @InstanceProperty displayName: string;
-  @InstanceProperty name: IContactName;
-  @InstanceProperty nickname: string;
-  @InstanceProperty phoneNumbers: IContactField[];
-  @InstanceProperty emails: IContactField[];
-  @InstanceProperty addresses: IContactAddress[];
-  @InstanceProperty ims: IContactField[];
-  @InstanceProperty organizations: IContactOrganization[];
-  @InstanceProperty birthday: Date;
-  @InstanceProperty note: string;
-  @InstanceProperty photos: IContactField[];
-  @InstanceProperty categories: IContactField[];
-  @InstanceProperty urls: IContactField[];
 
   [key: string]: any;
 
@@ -91,7 +128,9 @@ export class Contact implements IContactProperties {
   }
 
   @CordovaInstance()
-  remove(): Promise<any> { return; }
+  remove(): Promise<any> {
+    return;
+  }
 
   @InstanceCheck()
   save(): Promise<any> {
@@ -148,11 +187,12 @@ export interface IContactName {
  */
 export class ContactName implements IContactName {
   constructor(public formatted?: string,
-    public familyName?: string,
-    public givenName?: string,
-    public middleName?: string,
-    public honorificPrefix?: string,
-    public honorificSuffix?: string) { }
+              public familyName?: string,
+              public givenName?: string,
+              public middleName?: string,
+              public honorificPrefix?: string,
+              public honorificSuffix?: string) {
+  }
 }
 
 export interface IContactField {
@@ -169,8 +209,9 @@ export interface IContactField {
  */
 export class ContactField implements IContactField {
   constructor(public type?: string,
-    public value?: string,
-    public pref?: boolean) { }
+              public value?: string,
+              public pref?: boolean) {
+  }
 }
 
 export interface IContactAddress {
@@ -197,13 +238,14 @@ export interface IContactAddress {
  */
 export class ContactAddress implements IContactAddress {
   constructor(public pref?: boolean,
-    public type?: string,
-    public formatted?: string,
-    public streetAddress?: string,
-    public locality?: string,
-    public region?: string,
-    public postalCode?: string,
-    public country?: string) { }
+              public type?: string,
+              public formatted?: string,
+              public streetAddress?: string,
+              public locality?: string,
+              public region?: string,
+              public postalCode?: string,
+              public country?: string) {
+  }
 }
 
 export interface IContactOrganization {
@@ -223,13 +265,12 @@ export interface IContactOrganization {
  * @hidden
  */
 export class ContactOrganization implements IContactOrganization {
-  constructor(
-    public type?: string,
-    public name?: string,
-    public department?: string,
-    public title?: string,
-    public pref?: boolean
-  ) { }
+  constructor(public type?: string,
+              public name?: string,
+              public department?: string,
+              public title?: string,
+              public pref?: boolean) {
+  }
 }
 
 /** Search options to filter navigator.contacts.  */
@@ -251,9 +292,10 @@ export interface IContactFindOptions {
  */
 export class ContactFindOptions implements IContactFindOptions {
   constructor(public filter?: string,
-    public multiple?: boolean,
-    public desiredFields?: string[],
-    public hasPhoneNumber?: boolean) { }
+              public multiple?: boolean,
+              public desiredFields?: string[],
+              public hasPhoneNumber?: boolean) {
+  }
 }
 
 /**

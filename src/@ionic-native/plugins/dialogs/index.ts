@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 
 export interface DialogsPromptCallback {
@@ -62,7 +62,9 @@ export class Dialogs extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 4
   })
-  alert(message: string, title?: string, buttonName?: string): Promise<any> { return; }
+  alert(message: string, title?: string, buttonName?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Displays a customizable confirmation dialog box.
@@ -75,7 +77,9 @@ export class Dialogs extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 4
   })
-  confirm(message: string, title?: string, buttonLabels?: string[]): Promise<number> { return; }
+  confirm(message: string, title?: string, buttonLabels?: string[]): Promise<number> {
+    return;
+  }
 
   /**
    * Displays a native dialog box that is more customizable than the browser's prompt function.
@@ -89,7 +93,9 @@ export class Dialogs extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 5
   })
-  prompt(message?: string, title?: string, buttonLabels?: string[], defaultText?: string): Promise<DialogsPromptCallback> { return; }
+  prompt(message?: string, title?: string, buttonLabels?: string[], defaultText?: string): Promise<DialogsPromptCallback> {
+    return;
+  }
 
 
   /**
@@ -99,6 +105,7 @@ export class Dialogs extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  beep(times: number): void { }
+  beep(times: number): void {
+  }
 
 }

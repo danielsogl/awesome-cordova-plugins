@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 declare var mixpanel: any;
 
@@ -41,20 +41,26 @@ export class Mixpanel extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  alias(aliasId: string, originalId: string): Promise<any> { return; }
+  alias(aliasId: string, originalId: string): Promise<any> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<any>}
    */
   @Cordova()
-  distinctId(): Promise<any> { return; }
+  distinctId(): Promise<any> {
+    return;
+  }
 
   /**
    * @returns {Promise<any>}
    */
   @Cordova()
-  flush(): Promise<any> { return; }
+  flush(): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -62,7 +68,9 @@ export class Mixpanel extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  identify(distinctId: string): Promise<any> { return; }
+  identify(distinctId: string): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -70,7 +78,9 @@ export class Mixpanel extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  init(token: string): Promise<any> { return; }
+  init(token: string): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -78,14 +88,18 @@ export class Mixpanel extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  registerSuperProperties(superProperties: any): Promise<any> { return; }
+  registerSuperProperties(superProperties: any): Promise<any> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<any>}
    */
   @Cordova()
-  reset(): Promise<any> { return; }
+  reset(): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -93,7 +107,9 @@ export class Mixpanel extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  timeEvent(eventName: string): Promise<any> { return; }
+  timeEvent(eventName: string): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -105,9 +121,12 @@ export class Mixpanel extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 3
   })
-  track(eventName: string, eventProperties?: any): Promise<any> { return; }
+  track(eventName: string, eventProperties?: any): Promise<any> {
+    return;
+  }
 
 }
+
 /**
  * @hidden
  */
@@ -125,7 +144,9 @@ export class MixpanelPeople extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  identify(distinctId: string): Promise<any> { return; }
+  identify(distinctId: string): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -133,7 +154,9 @@ export class MixpanelPeople extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  increment(peopleProperties: any): Promise<any> { return; }
+  increment(peopleProperties: any): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -141,7 +164,9 @@ export class MixpanelPeople extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  setPushId(pushId: string): Promise<any> { return; }
+  setPushId(pushId: string): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -149,7 +174,9 @@ export class MixpanelPeople extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  set(peopleProperties: any): Promise<any> { return; }
+  set(peopleProperties: any): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -157,6 +184,8 @@ export class MixpanelPeople extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  setOnce(peopleProperties: any): Promise<any> { return; }
+  setOnce(peopleProperties: any): Promise<any> {
+    return;
+  }
 
 }

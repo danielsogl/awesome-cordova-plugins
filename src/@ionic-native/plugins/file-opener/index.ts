@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name File Opener
@@ -41,7 +41,9 @@ export class FileOpener extends IonicNativePlugin {
     successName: 'success',
     errorName: 'error'
   })
-  open(filePath: string, fileMIMEType: string): Promise<any> { return; }
+  open(filePath: string, fileMIMEType: string): Promise<any> {
+    return;
+  }
 
   /**
    * Uninstalls a package
@@ -53,7 +55,9 @@ export class FileOpener extends IonicNativePlugin {
     successName: 'success',
     errorName: 'error'
   })
-  uninstall(packageId: string): Promise<any> { return; }
+  uninstall(packageId: string): Promise<any> {
+    return;
+  }
 
   /**
    * Check if an app is already installed
@@ -65,6 +69,8 @@ export class FileOpener extends IonicNativePlugin {
     successName: 'success',
     errorName: 'error'
   })
-  appIsInstalled(packageId: string): Promise<any> { return; }
+  appIsInstalled(packageId: string): Promise<any> {
+    return;
+  }
 
 }

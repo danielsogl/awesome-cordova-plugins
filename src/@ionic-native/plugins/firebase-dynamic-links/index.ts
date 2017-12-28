@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface DynamicLinksOptions {
   title: string;
@@ -78,7 +78,9 @@ export class FirebaseDynamicLinks extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  onDynamicLink(): Promise<any> { return; }
+  onDynamicLink(): Promise<any> {
+    return;
+  }
 
   /**
    * Display invitation dialog.
@@ -86,6 +88,8 @@ export class FirebaseDynamicLinks extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  sendInvitation(options: DynamicLinksOptions): Promise<any> { return; }
+  sendInvitation(options: DynamicLinksOptions): Promise<any> {
+    return;
+  }
 
 }

@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -36,5 +36,7 @@ export class DNS extends IonicNativePlugin {
    * @returns {Promise<string>} Returns a promise that resolves with the resolution.
    */
   @Cordova()
-  resolve(hostname: string): Promise<string> { return; }
+  resolve(hostname: string): Promise<string> {
+    return;
+  }
 }

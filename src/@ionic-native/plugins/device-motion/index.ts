@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface DeviceMotionAccelerationData {
@@ -82,7 +82,9 @@ export class DeviceMotion extends IonicNativePlugin {
    * @returns {Promise<DeviceMotionAccelerationData>} Returns object with x, y, z, and timestamp properties
    */
   @Cordova()
-  getCurrentAcceleration(): Promise<DeviceMotionAccelerationData> { return; }
+  getCurrentAcceleration(): Promise<DeviceMotionAccelerationData> {
+    return;
+  }
 
   /**
    * Watch the device acceleration. Clear the watch by unsubscribing from the observable.
@@ -94,6 +96,8 @@ export class DeviceMotion extends IonicNativePlugin {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  watchAcceleration(options?: DeviceMotionAccelerometerOptions): Observable<DeviceMotionAccelerationData> { return; }
+  watchAcceleration(options?: DeviceMotionAccelerometerOptions): Observable<DeviceMotionAccelerationData> {
+    return;
+  }
 
 }

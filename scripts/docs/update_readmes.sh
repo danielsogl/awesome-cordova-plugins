@@ -31,7 +31,7 @@ function run {
 
     # git push origin master || :
 
-    echo "-- Updated docs for $VERSION_NAME succesfully!"
+    echo "-- Updated docs for $VERSION_NAME successfully!"
   fi
 }
 
