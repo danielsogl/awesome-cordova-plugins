@@ -58,7 +58,7 @@ export function getDecoratorArgs(decorator: any) {
         break;
 
       default:
-        Logger.error('Unexpected property value type: ', prop.initializer.kind);
+        Logger.debug('Unexpected property value type: ' + prop.initializer.kind);
         throw 'Unexpected property value type << helpers.ts >>';
     }
 

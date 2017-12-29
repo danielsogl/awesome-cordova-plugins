@@ -1,24 +1,13 @@
-import * as winston from 'winston';
-import { isEmpty } from 'lodash';
+import { createLogger, transports, format } from 'winston';
+const { label, printf, prettyPrint, combine, colorize, simple } = format;
 
-const LOG_LEVEL = 'debug';
+const LOG_LEVEL = 'silly';
 
-export const Logger = new winston.Logger({
+export const Logger = createLogger({
   level: LOG_LEVEL,
-  transports: [
-    new winston.transports.Console({
-      level: 'debug',
-      formatter: (opts: any) => {
-        if (opts.meta) {
-          if (typeof opts.meta['durationMs'] === 'number') {
-            opts.message += ' ' + opts.meta['durationMs'] + 'ms';
-            delete opts.meta['durationMs'];
-          }
-          if (!isEmpty(opts.meta)) console.log(opts.meta);
-        }
-        return winston.config.colorize(opts.level, opts.level.toUpperCase()) + ' ' + opts.message;
-      }
-    })
-  ]
+  format: combine(
+    colorize(),
+    simple(),
+  ),
+  transports: [new transports.Console({ level: LOG_LEVEL })]
 });
-

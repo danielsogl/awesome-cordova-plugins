@@ -5,7 +5,7 @@ import { transformMembers } from './members';
 
 function transformClass(cls: any, ngcBuild?: boolean) {
 
-  Logger.profile((ngcBuild ? '[ngc]' : '[esm]') + 'transformClass: ' + cls.name.text);
+  Logger.profile('transformClass: ' + cls.name.text);
 
     const pluginStatics = [];
     const dec: any = getDecorator(cls);
@@ -38,17 +38,16 @@ function transformClass(cls: any, ngcBuild?: boolean) {
       ]
     );
 
-    Logger.profile((ngcBuild ? '[ngc]' : '[esm]') + 'transformClass' + cls.name.text);
+    Logger.profile('transformClass: ' + cls.name.text, { level: 'verbose' });
     return cls;
 }
 
 function transformClasses(file: ts.SourceFile, ctx: ts.TransformationContext, ngcBuild?: boolean) {
-  // console.log('Transforming file: ' + file.fileName);
+  Logger.silly('Transforming file: ' + file.fileName);
   return ts.visitEachChild(file, node => {
     if (node.kind !== ts.SyntaxKind.ClassDeclaration) {
       return node;
     }
-
     return transformClass(node, ngcBuild);
   }, ctx);
 }
@@ -58,8 +57,7 @@ export function pluginClassTransformer(ngcBuild?: boolean): ts.TransformerFactor
     return tsSourceFile => {
       if (tsSourceFile.fileName.indexOf('src/@ionic-native/plugins') > -1)
         return transformClasses(tsSourceFile, ctx, ngcBuild);
-
       return tsSourceFile;
-    }
+    };
   };
 }

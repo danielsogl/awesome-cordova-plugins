@@ -33,7 +33,6 @@
     "@types/node": "8.0.47",
     "@types/rimraf": "^2.0.2",
     "@types/webpack": "^3.8.1",
-    "@types/winston": "2.3.7",
     "async-promise-queue": "^1.0.4",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -67,7 +66,7 @@
     "uglifyjs-webpack-plugin": "^1.1.2",
     "unminified-webpack-plugin": "^1.4.2",
     "webpack": "^3.9.1",
-    "winston": "2.4.0"
+    "winston": "^3.0.0-rc1"
   },
   "jest": {
     "transform": {
