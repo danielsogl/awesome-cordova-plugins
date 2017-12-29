@@ -18,7 +18,8 @@
     "lint": "gulp lint",
     "readmes": "gulp readmes",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "postchangelog": "git commit -am \"chore(): update changelog\""
+    "postchangelog": "git commit -am \"chore(): update changelog\"",
+    "shipit": "npm run build && npm run readmes && npm run npmpub"
   },
   "devDependencies": {
     "@angular/common": "latest",
@@ -32,6 +33,7 @@
     "@types/node": "8.0.47",
     "@types/rimraf": "^2.0.2",
     "@types/webpack": "^3.8.1",
+    "async-promise-queue": "^1.0.4",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",

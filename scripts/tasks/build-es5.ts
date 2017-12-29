@@ -25,7 +25,7 @@ const webpackConfig: webpack.Configuration = {
     modules: ['node_modules'],
     extensions: ['.js'],
     alias: {
-      '@ionic-native/core': path.resolve(DIST, 'core/index.js')
+      '@ionic-native/core': path.resolve(DIST, '@ionic-native/core/index.js')
     }
   },
   module: {
@@ -44,7 +44,8 @@ const webpackConfig: webpack.Configuration = {
     }),
     new uglifyJsPlugin({
       sourceMap: true
-    })
+    }),
+
   ]
 };
 

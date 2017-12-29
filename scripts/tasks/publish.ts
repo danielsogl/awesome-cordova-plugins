@@ -3,20 +3,22 @@ import * as path from 'path';
 import { merge } from 'lodash';
 import { exec } from 'child_process';
 import { PLUGIN_PATHS, ROOT } from '../build/helpers';
+import { cpus } from 'os';
+import * as Queue from 'async-promise-queue';
 
 const MAIN_PACKAGE_JSON = require('../../package.json');
 const VERSION = MAIN_PACKAGE_JSON.version;
 const FLAGS = '--access public --tag beta';
 
 const PACKAGE_JSON_BASE = {
-  "description": "Ionic Native - Native plugins for ionic apps",
-  "module": "index.js",
-  "typings": "index.d.ts",
-  "author": "ionic",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ionic-team/ionic-native.git"
+  'description': 'Ionic Native - Native plugins for ionic apps',
+  'module': 'index.js',
+  'typings': 'index.d.ts',
+  'author': 'ionic',
+  'license': 'MIT',
+  'repository': {
+    'type': 'git',
+    'url': 'https://github.com/ionic-team/ionic-native.git'
   }
 };
 
@@ -63,17 +65,34 @@ function prepare() {
   });
 }
 
-async function publish() {
-  // TODO apply queue system to process them concurrently
-  for (let pkg of PACKAGES) {
-    // console.log('Going to run the following command: ', `npm publish ${ pkg } ${ FLAGS }`);
-    await new Promise<any>((resolve, reject) => {
-      exec(`npm publish ${ pkg } ${ FLAGS }`, (err, stdout, stderr) => {
-        if (err) reject(err);
-        if (stderr) reject(stderr);
-        if (stdout) resolve(stdout);
+async function publish(ignoreErrors: boolean = false) {
+  // upload 1 package per CPU thread at a time
+  const worker = Queue.async.asyncify((pkg: any) => {
+    new Promise<any>((resolve, reject) => {
+      exec(`npm publish ${ pkg } ${ FLAGS }`, (err, stdout) => {
+        if (stdout) {
+          console.log(stdout);
+          resolve(stdout);
+        }
+        if (err) {
+          if (!ignoreErrors) {
+            if (err.message.includes('You cannot publish over the previously published version')) {
+              console.log('Ignoring duplicate version error.');
+              return resolve();
+            }
+            reject(err);
+          }
+        }
       });
     });
+  });
+
+  try {
+    await Queue(worker, PACKAGES, cpus().length);
+    console.log('Done publishing!');
+  } catch (e) {
+    console.log('Error publishing!');
+    console.log(e);
   }
 }
 

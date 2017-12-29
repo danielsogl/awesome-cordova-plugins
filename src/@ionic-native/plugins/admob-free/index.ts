@@ -72,7 +72,7 @@ export interface AdMobFreeRewardVideoConfig {
   plugin: 'cordova-plugin-admob-free',
   pluginRef: 'admob.banner',
 })
-export class AdMobFreeBanner {
+export class AdMobFreeBanner extends IonicNativePlugin {
 
   /**
    * Update config.
@@ -130,7 +130,7 @@ export class AdMobFreeBanner {
   plugin: 'cordova-plugin-admob-free',
   pluginRef: 'admob.interstitial',
 })
-export class AdMobFreeInterstitial {
+export class AdMobFreeInterstitial extends IonicNativePlugin {
 
   /**
    * Update config.
@@ -179,7 +179,7 @@ export class AdMobFreeInterstitial {
   plugin: 'cordova-plugin-admob-free',
   pluginRef: 'admob.rewardvideo',
 })
-export class AdMobFreeRewardVideo {
+export class AdMobFreeRewardVideo extends IonicNativePlugin {
 
   /**
    * Update config.
