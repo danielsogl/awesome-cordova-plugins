@@ -219,6 +219,7 @@ export interface Channel {
   id: string;
   description: string;
   importance: Priority;
+  sound?: string;
 }
 
 export type PushEvent = string;
@@ -332,17 +333,21 @@ export class Push extends IonicNativePlugin {
 
   /**
    * Create a new notification channel for Android O and above.
-   * @param channel {Channel}
+   * @param [channel] {Channel}
    */
-  @Cordova()
-  createChannel(channel: Channel): Promise<any> { return; }
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  createChannel(channel?: Channel): Promise<any> { return; }
 
   /**
    * Delete a notification channel for Android O and above.
-   * @param id
+   * @param [id]
    */
-  @Cordova()
-  deleteChannel(id: string): Promise<any> { return; }
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  deleteChannel(id?: string): Promise<any> { return; }
 
   /**
    * Returns a list of currently configured channels.
