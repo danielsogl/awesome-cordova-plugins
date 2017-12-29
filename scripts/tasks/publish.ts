@@ -5,6 +5,7 @@ import { exec } from 'child_process';
 import { PLUGIN_PATHS, ROOT } from '../build/helpers';
 import { cpus } from 'os';
 import * as Queue from 'async-promise-queue';
+import { Logger } from '../logger';
 
 const MAIN_PACKAGE_JSON = require('../../package.json');
 const VERSION = MAIN_PACKAGE_JSON.version;
@@ -66,18 +67,19 @@ function prepare() {
 }
 
 async function publish(ignoreErrors: boolean = false) {
+  Logger.profile('Publishing');
   // upload 1 package per CPU thread at a time
   const worker = Queue.async.asyncify((pkg: any) => {
     new Promise<any>((resolve, reject) => {
       exec(`npm publish ${ pkg } ${ FLAGS }`, (err, stdout) => {
         if (stdout) {
-          console.log(stdout);
+          Logger.log(stdout.trim());
           resolve(stdout);
         }
         if (err) {
           if (!ignoreErrors) {
             if (err.message.includes('You cannot publish over the previously published version')) {
-              console.log('Ignoring duplicate version error.');
+              Logger.verbose('Ignoring duplicate version error.');
               return resolve();
             }
             reject(err);
@@ -89,10 +91,12 @@ async function publish(ignoreErrors: boolean = false) {
 
   try {
     await Queue(worker, PACKAGES, cpus().length);
-    console.log('Done publishing!');
+    Logger.log('Done publishing!');
   } catch (e) {
-    console.log('Error publishing!');
-    console.log(e);
+    Logger.error('Error publishing!');
+    Logger.error(e);
+  } finally {
+    Logger.profile('Publishing');
   }
 }
 

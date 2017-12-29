@@ -5,6 +5,7 @@ import * as uglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import * as unminifiedPlugin from 'unminified-webpack-plugin';
 import { cleanEmittedData, EMIT_PATH, InjectableClassEntry } from '../build/transformers/extract-injectables';
 import { ROOT } from '../build/helpers';
+import { Logger } from '../logger';
 
 const DIST = path.resolve(ROOT, 'dist');
 const INDEX_PATH = path.resolve(DIST, 'index.js');
@@ -45,7 +46,7 @@ const webpackConfig: webpack.Configuration = {
     new uglifyJsPlugin({
       sourceMap: true
     }),
-
+    new unminifiedPlugin()
   ]
 };
 
@@ -66,9 +67,14 @@ function createIndexFile() {
 }
 
 function compile() {
+  Logger.profile('build-es5');
   webpack(webpackConfig, (err, stats) => {
-    if (err) console.log(err);
-    else console.log(stats);
+    Logger.profile('build-es5');
+    if (err) Logger.error('Error occurred while compiling with Webpack', err);
+    else {
+      Logger.info('Compiled ES5 file with Webpack successfully.');
+      // Logger.verbose('Webpack complete', stats, () => {});
+    }
     cleanEmittedData();
   });
 }

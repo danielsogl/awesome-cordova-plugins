@@ -1,10 +1,11 @@
 import * as ts from 'typescript';
+import { Logger } from '../../logger';
 import { convertValueToLiteral, getDecorator, getDecoratorArgs, getDecoratorName } from '../helpers';
 import { transformMembers } from './members';
 
 function transformClass(cls: any, ngcBuild?: boolean) {
 
-  console.time('~ transformClass: ' + cls.name.text);
+  Logger.profile((ngcBuild ? '[ngc]' : '[esm]') + 'transformClass: ' + cls.name.text);
 
     const pluginStatics = [];
     const dec: any = getDecorator(cls);
@@ -37,7 +38,7 @@ function transformClass(cls: any, ngcBuild?: boolean) {
       ]
     );
 
-    console.timeEnd('~ transformClass: ' + cls.name.text);
+    Logger.profile((ngcBuild ? '[ngc]' : '[esm]') + 'transformClass' + cls.name.text);
     return cls;
 }
 

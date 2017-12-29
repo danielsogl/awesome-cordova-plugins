@@ -1,4 +1,5 @@
 import * as ts from 'typescript';
+import { Logger } from '../../logger';
 import { convertValueToLiteral, getDecorator, getDecoratorArgs, getDecoratorName, getMethodsForDecorator } from '../helpers';
 
 export function transformMethod(method: ts.MethodDeclaration) {
@@ -15,8 +16,8 @@ export function transformMethod(method: ts.MethodDeclaration) {
       )
     ]));
   } catch (e) {
-    console.log('Error transforming method: ', (method.name as any).text);
-    console.log(e.message);
+    Logger.error('Error transforming method: ' + (method.name as any).text);
+    Logger.error(e.message);
   }
 }
 

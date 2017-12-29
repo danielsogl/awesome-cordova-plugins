@@ -2,6 +2,7 @@ import * as ts from 'typescript';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import { camelCase, clone } from 'lodash';
+import { Logger } from '../logger';
 
 export const ROOT = path.resolve(__dirname, '../../');
 export const TS_CONFIG = clone(require(path.resolve(ROOT, 'tsconfig.json')));
@@ -57,7 +58,7 @@ export function getDecoratorArgs(decorator: any) {
         break;
 
       default:
-        console.log(prop.initializer);
+        Logger.error('Unexpected property value type: ', prop.initializer.kind);
         throw 'Unexpected property value type << helpers.ts >>';
     }
 
