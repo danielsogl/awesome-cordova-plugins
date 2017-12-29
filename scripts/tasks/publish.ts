@@ -91,13 +91,12 @@ async function publish(ignoreErrors: boolean = false) {
 
   try {
     await Queue(worker, PACKAGES, cpus().length);
-    Logger.log('Done publishing!');
+    Logger.info('Done publishing!');
   } catch (e) {
     Logger.error('Error publishing!');
     Logger.error(e);
-  } finally {
-    Logger.profile('Publishing');
   }
+  Logger.profile('Publishing', { level: 'verbose' });
 }
 
 prepare();
