@@ -2,19 +2,32 @@ import { CordovaOptions } from './interfaces';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
+declare const window: any;
+
 export const ERR_CORDOVA_NOT_AVAILABLE = { error: 'cordova_not_available' };
 export const ERR_PLUGIN_NOT_INSTALLED = { error: 'plugin_not_installed' };
 
-export function getPromise(callback: Function) {
+export function getPromise<T>(callback: (resolve: Function, reject?: Function) => any): Promise<T> {
   const tryNativePromise = () => {
     if (Promise) {
-      return new Promise((resolve, reject) => {
+      return new Promise<T>((resolve, reject) => {
         callback(resolve, reject);
       });
     } else {
       console.error('No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular or on a recent browser.');
     }
   };
+
+  if (window.angular) {
+    const injector = window.angular.element(document.querySelector('[ng-app]') || document.body).injector();
+    if (injector) {
+      let $q = injector.get('$q');
+      return $q((resolve: Function, reject: Function) => {
+        callback(resolve, reject);
+      });
+    }
+    console.warn('Angular 1 was detected but $q couldn\'t be retrieved. This is usually when the app is not bootstrapped on the html or body tag. Falling back to native promises which won\'t trigger an automatic digest when promises resolve.');
+  }
 
   return tryNativePromise();
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaCheck, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { CordovaCheck, CordovaProperty, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
 
 export interface IFile extends Blob {
   /**
@@ -715,7 +715,7 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   getFreeDiskSpace(): Promise<number> {
-    return new Promise<any>((resolve, reject) => {
+    return getPromise<any>((resolve, reject) => {
       cordova.exec(resolve, reject, 'File', 'getFreeDiskSpace', []);
     });
   }
@@ -1150,7 +1150,7 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   resolveLocalFilesystemUrl(fileUrl: string): Promise<Entry> {
-    return new Promise<Entry>((resolve, reject) => {
+    return getPromise<Entry>((resolve, reject) => {
       try {
         window.resolveLocalFileSystemURL(fileUrl, (entry: Entry) => {
           resolve(entry);
@@ -1193,7 +1193,7 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   getDirectory(directoryEntry: DirectoryEntry, directoryName: string, flags: Flags): Promise<DirectoryEntry> {
-    return new Promise<DirectoryEntry>((resolve, reject) => {
+    return getPromise<DirectoryEntry>((resolve, reject) => {
       try {
         directoryEntry.getDirectory(directoryName, flags, (de) => {
           resolve(de);
@@ -1217,7 +1217,7 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   getFile(directoryEntry: DirectoryEntry, fileName: string, flags: Flags): Promise<FileEntry> {
-    return new Promise<FileEntry>((resolve, reject) => {
+    return getPromise<FileEntry>((resolve, reject) => {
       try {
         directoryEntry.getFile(fileName, flags, resolve, (err) => {
           this.fillErrorMessage(err);
@@ -1267,7 +1267,7 @@ export class File extends IonicNativePlugin {
       })
       .then((fileEntry: FileEntry) => {
         const reader = new FileReader();
-        return new Promise<T>((resolve, reject) => {
+        return getPromise<T>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
               resolve(<T><any>reader.result);
@@ -1302,7 +1302,7 @@ export class File extends IonicNativePlugin {
    * @hidden
    */
   private remove(fe: Entry): Promise<RemoveResult> {
-    return new Promise<RemoveResult>((resolve, reject) => {
+    return getPromise<RemoveResult>((resolve, reject) => {
       fe.remove(() => {
         resolve({ success: true, fileRemoved: fe });
       }, (err) => {
@@ -1316,7 +1316,7 @@ export class File extends IonicNativePlugin {
    * @hidden
    */
   private move(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
-    return new Promise<Entry>((resolve, reject) => {
+    return getPromise<Entry>((resolve, reject) => {
       srce.moveTo(destdir, newName, (deste) => {
         resolve(deste);
       }, (err) => {
@@ -1330,7 +1330,7 @@ export class File extends IonicNativePlugin {
    * @hidden
    */
   private copy(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
-    return new Promise<Entry>((resolve, reject) => {
+    return getPromise<Entry>((resolve, reject) => {
       srce.copyTo(destdir, newName, (deste) => {
         resolve(deste);
       }, (err) => {
@@ -1344,7 +1344,7 @@ export class File extends IonicNativePlugin {
    * @hidden
    */
   private readEntries(dr: DirectoryReader): Promise<Entry[]> {
-    return new Promise<Entry[]>((resolve, reject) => {
+    return getPromise<Entry[]>((resolve, reject) => {
       dr.readEntries((entries) => {
         resolve(entries);
       }, (err) => {
@@ -1358,7 +1358,7 @@ export class File extends IonicNativePlugin {
    * @hidden
    */
   private rimraf(de: DirectoryEntry): Promise<RemoveResult> {
-    return new Promise<RemoveResult>((resolve, reject) => {
+    return getPromise<RemoveResult>((resolve, reject) => {
       de.removeRecursively(() => {
         resolve({ success: true, fileRemoved: de });
       }, (err) => {
@@ -1372,7 +1372,7 @@ export class File extends IonicNativePlugin {
    * @hidden
    */
   private createWriter(fe: FileEntry): Promise<FileWriter> {
-    return new Promise<FileWriter>((resolve, reject) => {
+    return getPromise<FileWriter>((resolve, reject) => {
       fe.createWriter((writer) => {
         resolve(writer);
       }, (err) => {
@@ -1390,7 +1390,7 @@ export class File extends IonicNativePlugin {
       return this.writeFileInChunks(writer, gu);
     }
 
-    return new Promise<any>((resolve, reject) => {
+    return getPromise<any>((resolve, reject) => {
       writer.onwriteend = (evt) => {
         if (writer.error) {
           reject(writer.error);
@@ -1417,7 +1417,7 @@ export class File extends IonicNativePlugin {
       writer.write(chunk);
     }
 
-    return new Promise<any>((resolve, reject) => {
+    return getPromise<any>((resolve, reject) => {
       writer.onerror = reject;
       writer.onwrite = () => {
         if (writtenSize < file.size) {

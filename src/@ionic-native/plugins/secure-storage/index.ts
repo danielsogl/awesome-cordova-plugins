@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaCheck, CordovaInstance, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { CordovaCheck, CordovaInstance, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
 
 /**
  * @hidden
@@ -142,7 +142,7 @@ export class SecureStorage extends IonicNativePlugin {
    */
   @CordovaCheck()
   create(store: string): Promise<SecureStorageObject> {
-    return new Promise((res: Function, rej: Function) => {
+    return getPromise<SecureStorageObject>((res: Function, rej: Function) => {
       const instance = new (SecureStorage.getPlugin())(() => res(new SecureStorageObject(instance)), rej, store);
     });
   }

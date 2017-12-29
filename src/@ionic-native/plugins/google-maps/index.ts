@@ -6,7 +6,8 @@ import {
   InstanceCheck,
   InstanceProperty,
   IonicNativePlugin,
-  Plugin
+  Plugin,
+  getPromise
 } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
@@ -1013,7 +1014,7 @@ export class BaseClass {
    */
   @InstanceCheck()
   addListenerOnce(eventName: string): Promise<any> {
-    return new Promise<any>((resolve) => {
+    return getPromise<any>((resolve) => {
       this._objectInstance.one(eventName, (...args: any[]) => {
         if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
           if (args[args.length - 1].type === 'Map') {
@@ -1110,7 +1111,7 @@ export class BaseClass {
    */
   @InstanceCheck()
   one(eventName: string): Promise<any> {
-    return new Promise<any>((resolve) => {
+    return getPromise<any>((resolve) => {
       this._objectInstance.one(eventName, (...args: any[]) => {
         if (args[args.length - 1] instanceof GoogleMaps.getPlugin().BaseClass) {
           if (args[args.length - 1].type === 'Map') {
@@ -1210,7 +1211,7 @@ export class BaseArrayClass<T> extends BaseClass {
    */
   @CordovaCheck()
   forEachAsync(fn: ((element: T, callback: () => void) => void)): Promise<void> {
-    return new Promise<void>((resolve) => {
+    return getPromise<void>((resolve) => {
       this._objectInstance.forEach(fn, resolve);
     });
   }
@@ -1236,7 +1237,7 @@ export class BaseArrayClass<T> extends BaseClass {
    */
   @CordovaCheck()
   mapAsync(fn: ((element: T, callback: (newElement: any) => void) => void)): Promise<any[]> {
-    return new Promise<any[]>((resolve) => {
+    return getPromise<any[]>((resolve) => {
       this._objectInstance.map(fn, resolve);
     });
   }
@@ -1260,7 +1261,7 @@ export class BaseArrayClass<T> extends BaseClass {
    */
   @CordovaCheck()
   filterAsync(fn: (element: T, callback: (result: boolean) => void) => void): Promise<T[]> {
-    return new Promise<any[]>((resolve) => {
+    return getPromise<any[]>((resolve) => {
       this._objectInstance.filter(fn, resolve);
     });
   }
@@ -1566,7 +1567,7 @@ export class Environment {
    * @return {Promise<any>}
    */
   static getLicenseInfo(): Promise<any> {
-    return new Promise<any>((resolve) => {
+    return getPromise<any>((resolve) => {
       GoogleMaps.getPlugin().environment.getLicenseInfo((text: string) => resolve(text));
     });
   }
@@ -1626,7 +1627,7 @@ export class Geocoder {
       //   ]
       // })
       // -------------------------
-      return new Promise<BaseArrayClass<GeocoderResult>>((resolve, reject) => {
+      return getPromise<BaseArrayClass<GeocoderResult>>((resolve, reject) => {
         GoogleMaps.getPlugin().Geocoder.geocode(request, (mvcArray: any) => {
           if (mvcArray) {
             resolve(new BaseArrayClass(mvcArray));
@@ -1641,7 +1642,7 @@ export class Geocoder {
       //   address: "Kyoto, Japan"
       // })
       // -------------------------
-      return new Promise<GeocoderResult[]>((resolve, reject) => {
+      return getPromise<GeocoderResult[]>((resolve, reject) => {
         GoogleMaps.getPlugin().Geocoder.geocode(request, (results: GeocoderResult[]) => {
           if (results) {
             resolve(results);
@@ -1945,7 +1946,7 @@ export class GoogleMap extends BaseClass {
           }
         };
         this._objectInstance.one = this._objectInstance.addEventListenerOnce;
-        (new Promise<any>((resolve, reject) => {
+        (getPromise<any>((resolve, reject) => {
           let count: number = 0;
           let timer: any = setInterval(() => {
             let target = document.querySelector('.show-page #' + element);
@@ -2193,7 +2194,7 @@ export class GoogleMap extends BaseClass {
         delete this.get('_overlays')[overlayId];
       });
     }
-    return new Promise<any>((resolve) => {
+    return getPromise<any>((resolve) => {
       this._objectInstance.remove(() => resolve());
     });
   }
@@ -2210,7 +2211,7 @@ export class GoogleMap extends BaseClass {
         delete this.get('_overlays')[overlayId];
       });
     }
-    return new Promise<any>((resolve) => {
+    return getPromise<any>((resolve) => {
       this._objectInstance.clear(() => resolve());
     });
   }
@@ -2315,7 +2316,7 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addMarker(options: MarkerOptions): Promise<Marker | any> {
-    return new Promise<Marker>((resolve, reject) => {
+    return getPromise<Marker>((resolve, reject) => {
       this._objectInstance.addMarker(options, (marker: any) => {
         if (marker) {
           let overlayId: string = marker.getId();
@@ -2337,7 +2338,7 @@ export class GoogleMap extends BaseClass {
 
   @InstanceCheck()
   addMarkerCluster(options: MarkerClusterOptions): Promise<MarkerCluster | any> {
-    return new Promise<MarkerCluster>((resolve, reject) => {
+    return getPromise<MarkerCluster>((resolve, reject) => {
       this._objectInstance.addMarkerCluster(options, (markerCluster: any) => {
         if (markerCluster) {
           let overlayId = markerCluster.getId();
@@ -2364,7 +2365,7 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addCircle(options: CircleOptions): Promise<Circle | any> {
-    return new Promise<Circle>((resolve, reject) => {
+    return getPromise<Circle>((resolve, reject) => {
       this._objectInstance.addCircle(options, (circle: any) => {
         if (circle) {
           let overlayId: string = circle.getId();
@@ -2390,7 +2391,7 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addPolygon(options: PolygonOptions): Promise<Polygon | any> {
-    return new Promise<Polygon>((resolve, reject) => {
+    return getPromise<Polygon>((resolve, reject) => {
       this._objectInstance.addPolygon(options, (polygon: any) => {
         if (polygon) {
           let overlayId: string = polygon.getId();
@@ -2416,7 +2417,7 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addPolyline(options: PolylineOptions): Promise<Polyline | any> {
-    return new Promise<Polyline>((resolve, reject) => {
+    return getPromise<Polyline>((resolve, reject) => {
       this._objectInstance.addPolyline(options, (polyline: any) => {
         if (polyline) {
           let overlayId: string = polyline.getId();
@@ -2441,7 +2442,7 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addTileOverlay(options: TileOverlayOptions): Promise<TileOverlay | any> {
-    return new Promise<TileOverlay>((resolve, reject) => {
+    return getPromise<TileOverlay>((resolve, reject) => {
       this._objectInstance.addTileOverlay(options, (tileOverlay: any) => {
         if (tileOverlay) {
           let overlayId: string = tileOverlay.getId();
@@ -2466,7 +2467,7 @@ export class GoogleMap extends BaseClass {
    */
   @InstanceCheck()
   addGroundOverlay(options: GroundOverlayOptions): Promise<GroundOverlay | any> {
-    return new Promise<GroundOverlay>((resolve, reject) => {
+    return getPromise<GroundOverlay>((resolve, reject) => {
       this._objectInstance.addGroundOverlay(options, (groundOverlay: any) => {
         if (groundOverlay) {
           let overlayId: string = groundOverlay.getId();
@@ -2507,7 +2508,7 @@ export class GoogleMap extends BaseClass {
   //  */
   // @InstanceCheck()
   // addKmlOverlay(options: KmlOverlayOptions): Promise<KmlOverlay | any> {
-  //   return new Promise<KmlOverlay>((resolve, reject) => {
+  //   return getPromise<KmlOverlay>((resolve, reject) => {
   //     this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
   //       if (kmlOverlay) {
   //         resolve(new KmlOverlay(kmlOverlay));
@@ -3530,7 +3531,7 @@ export class TileOverlay extends BaseClass {
 //     if (!this._objectInstance) {
 //       return Promise.reject({ error: 'plugin_not_installed' });
 //     }
-//     return new Promise<any>(
+//     return getPromise<any>(
 //       resolve => this._objectInstance.addListenerOnce(eventName, resolve)
 //     );
 //   }
@@ -3579,7 +3580,7 @@ export class TileOverlay extends BaseClass {
 //     if (!this._objectInstance) {
 //       return Promise.reject({ error: 'plugin_not_installed' });
 //     }
-//     return new Promise<any>(
+//     return getPromise<any>(
 //       resolve => this._objectInstance.one(eventName, resolve)
 //     );
 //   }

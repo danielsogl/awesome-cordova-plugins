@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, CordovaCheck, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
 
 export interface PrintOptions {
   /**
@@ -90,7 +90,7 @@ export class Printer extends IonicNativePlugin {
    */
   @CordovaCheck()
   check(): Promise<any> {
-    return new Promise<any>((resolve: Function) => {
+    return getPromise<any>((resolve: Function) => {
       Printer.getPlugin()
         .check((avail: boolean, count: any) => {
           resolve({ avail, count });

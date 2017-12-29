@@ -5,7 +5,8 @@ import {
   CordovaInstance,
   InstanceProperty,
   IonicNativePlugin,
-  Plugin
+  Plugin,
+  getPromise
 } from '@ionic-native/core';
 
 declare const sqlitePlugin: any;
@@ -192,7 +193,7 @@ export class SQLite extends IonicNativePlugin {
    */
   @CordovaCheck()
   create(config: SQLiteDatabaseConfig): Promise<SQLiteObject> {
-    return new Promise((resolve, reject) => {
+    return getPromise<SQLiteObject>((resolve, reject) => {
       sqlitePlugin.openDatabase(config, (db: any) => resolve(new SQLiteObject(db)), reject);
     });
   }
