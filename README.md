@@ -24,7 +24,7 @@ For the full Ionic Native documentation, please visit [https://ionicframework.co
 
 ### Basic Usage
 
-#### Angular/Ionic apps
+#### Ionic/Angular apps
 To use a plugin, import and add the plugin provider to your `@NgModule`, and then inject it where you wish to use it. 
 Make sure to import the injectable class from the `/ngx` directory as shown in the following examples:
 
@@ -79,7 +79,7 @@ export class MyComponent {
 }
 ```
 
-#### ES2015 Modules
+#### ES2015+/TypeScript
 These modules can work in any ES2015+/TypeScript app (including Angular/Ionic apps). To use any plugin, import the class from the appropriate package, and use it's static methods.
 ```js
 import { Camera } from '@ionic-native/camera';
@@ -114,7 +114,7 @@ angular.module('myApp', ['ionic.native'])
 ```
 
 #### Vanilla JS
-To use Ionic Native in other environments:
+To use Ionic Native in any other setup:
 1. Download the latest bundle from the [Github releases](https://github.com/ionic-team/ionic-native/releases) page.
 2. Include it in `index.html` before your app's code.
 3. Access any plugin using the global `IonicNative` variable.
@@ -134,7 +134,7 @@ document.addEventListener('deviceready', function() {
 ```
 
 
-### Mocking and Browser Development (Angular apps only)
+### Mocking and Browser Development (Ionic/Angular apps only)
 
 Ionic Native makes it possible to mock plugins and develop nearly the entirety of your app in the browser or in `ionic serve`.
 
