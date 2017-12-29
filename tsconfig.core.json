@@ -5,19 +5,22 @@
     "stripInternal": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "noImplicitAny": true,
     "module": "es2015",
     "moduleResolution": "node",
-    "outDir": "../../../dist/@ionic-native/",
-    "paths": {
-      "@ionic-native/core": ["../../../dist/@ionic-native/core"]
-    },
-    "rootDir": "../../../src/@ionic-native/plugins/",
+    "outDir": "./dist",
+    "rootDir": "src",
     "target": "es5",
     "skipLibCheck": true,
-    "lib": ["es2015", "dom"],
-    "sourceMap": true,
+    "lib": ["es2017", "dom"],
     "inlineSources": true,
-    "noImplicitAny": true
+    "sourceMap": true
   },
-  "files": []
+  "include": [
+    "src/@ionic-native/core/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/@ionic-native/core/**/*.spec.ts"
+  ]
 }

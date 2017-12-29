@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
+import { checkAvailability, CordovaInstance, InstanceCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface FileUploadOptions {
 
@@ -241,7 +241,9 @@ export class FileTransferObject {
     successIndex: 2,
     errorIndex: 3
   })
-  upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult> { return; }
+  upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult> {
+    return;
+  }
 
   /**
    * Downloads a file from server.
@@ -256,7 +258,9 @@ export class FileTransferObject {
     successIndex: 2,
     errorIndex: 3
   })
-  download(source: string, target: string, trustAllHosts?: boolean, options?: { [s: string]: any; }): Promise<any> { return; }
+  download(source: string, target: string, trustAllHosts?: boolean, options?: { [s: string]: any; }): Promise<any> {
+    return;
+  }
 
   /**
    * Registers a listener that gets called whenever a new chunk of data is transferred.
@@ -274,5 +278,6 @@ export class FileTransferObject {
   @CordovaInstance({
     sync: true
   })
-  abort(): void {}
+  abort(): void {
+  }
 }

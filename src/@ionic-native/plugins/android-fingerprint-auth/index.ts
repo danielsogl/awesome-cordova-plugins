@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 
 export interface AFAAuthOptions {
@@ -177,7 +177,9 @@ export class AndroidFingerprintAuth extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  encrypt(options: AFAAuthOptions): Promise<AFAEncryptResponse> { return; }
+  encrypt(options: AFAAuthOptions): Promise<AFAEncryptResponse> {
+    return;
+  }
 
   /**
    * Opens a native dialog fragment to use the device hardware fingerprint scanner to authenticate against fingerprints registered for the device.
@@ -185,19 +187,25 @@ export class AndroidFingerprintAuth extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  decrypt(options: AFAAuthOptions): Promise<AFADecryptOptions> { return; }
+  decrypt(options: AFAAuthOptions): Promise<AFADecryptOptions> {
+    return;
+  }
 
   /**
    * Check if service is available
    * @returns {Promise<any>} Returns a Promise that resolves if fingerprint auth is available on the device
    */
   @Cordova()
-  isAvailable(): Promise<{ isAvailable: boolean, isHardwareDetected: boolean, hasEnrolledFingerprints: boolean }> { return; }
+  isAvailable(): Promise<{ isAvailable: boolean, isHardwareDetected: boolean, hasEnrolledFingerprints: boolean }> {
+    return;
+  }
 
   /**
    * Delete the cipher used for encryption and decryption by username
    * @returns {Promise<any>} Returns a Promise that resolves if the cipher was successfully deleted
    */
   @Cordova()
-  delete(options: { clientId: string; username: string; }): Promise<{ deleted: boolean }> { return; }
+  delete(options: { clientId: string; username: string; }): Promise<{ deleted: boolean }> {
+    return;
+  }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaProperty, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
+import { CordovaCheck, CordovaProperty, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
 
 export interface IFile extends Blob {
   /**
@@ -25,6 +25,7 @@ export interface IFile extends Blob {
   localURL: string;
   start: number;
   end: number;
+
   /**
    * Returns a "slice" of the file. Since Cordova Files don't contain the actual
    * content, this really returns a File with adjusted start and end.
@@ -129,6 +130,22 @@ export interface Entry {
    * Entry is a directory.
    */
   isDirectory: boolean;
+  /**
+   * The name of the entry, excluding the path leading to it.
+   */
+  name: string;
+  /**
+   * The full absolute path from the root to the entry.
+   */
+  fullPath: string;
+  /**
+   * The file system on which the entry resides.
+   */
+  filesystem: FileSystem;
+  /**
+   * an alternate URL which can be used by native webview controls, for example media players.
+   */
+  nativeURL: string;
 
   /**
    * Look up metadata about this entry.
@@ -144,26 +161,6 @@ export interface Entry {
    * @param metadataObject {Metadata} keys and values to set
    */
   setMetadata(successCallback: MetadataCallback, errorCallback: ErrorCallback, metadataObject: Metadata): void;
-
-  /**
-   * The name of the entry, excluding the path leading to it.
-   */
-  name: string;
-
-  /**
-   * The full absolute path from the root to the entry.
-   */
-  fullPath: string;
-
-  /**
-   * The file system on which the entry resides.
-   */
-  filesystem: FileSystem;
-
-  /**
-   * an alternate URL which can be used by native webview controls, for example media players.
-   */
-  nativeURL: string;
 
   /**
    * Move an entry to a different location on the file system. It is an error to try to:
@@ -286,6 +283,7 @@ export interface DirectoryEntry extends Entry {
 export interface DirectoryReader {
   localURL: string;
   hasReadEntries: boolean;
+
   /**
    * Read the next block of entries from this directory.
    * @param successCallback Called once per successful call to readEntries to deliver the next previously-unreported set of Entries in the associated Directory. If all Entries have already been returned from previous invocations of readEntries, successCallback must be called with a zero-length array as an argument.
@@ -403,6 +401,61 @@ export interface RemoveResult {
 /** @hidden */
 export declare class FileSaver extends EventTarget {
   /**
+   * The blob is being written.
+   * @readonly
+   */
+  INIT: number;
+  /**
+   * The object has been constructed, but there is no pending write.
+   * @readonly
+   */
+  WRITING: number;
+  /**
+   * The entire Blob has been written to the file, an error occurred during the write, or the write was aborted using abort(). The FileSaver is no longer writing the blob.
+   * @readonly
+   */
+  DONE: number;
+  /**
+   * The FileSaver object can be in one of 3 states. The readyState attribute, on getting, must return the current state, which must be one of the following values:
+   * <ul>
+   * <li>INIT</li>
+   * <li>WRITING</li>
+   * <li>DONE</li>
+   * <ul>
+   * @readonly
+   */
+  readyState: number;
+  /**
+   * The last error that occurred on the FileSaver.
+   * @readonly
+   */
+  error: Error;
+  /**
+   * Handler for writestart events
+   */
+  onwritestart: (event: ProgressEvent) => void;
+  /**
+   * Handler for progress events.
+   */
+  onprogress: (event: ProgressEvent) => void;
+  /**
+   * Handler for write events.
+   */
+  onwrite: (event: ProgressEvent) => void;
+  /**
+   * Handler for abort events.
+   */
+  onabort: (event: ProgressEvent) => void;
+  /**
+   * Handler for error events.
+   */
+  onerror: (event: ProgressEvent) => void;
+  /**
+   * Handler for writeend events.
+   */
+  onwriteend: (event: ProgressEvent) => void;
+
+  /**
    * When the FileSaver constructor is called, the user agent must return a new FileSaver object with readyState set to INIT.
    * This constructor must be visible when the script's global object is either a Window object or an object implementing the WorkerUtils interface.
    */
@@ -422,71 +475,6 @@ export declare class FileSaver extends EventTarget {
    * </ol>
    */
   abort(): void;
-
-  /**
-   * The blob is being written.
-   * @readonly
-   */
-  INIT: number;
-
-  /**
-   * The object has been constructed, but there is no pending write.
-   * @readonly
-   */
-  WRITING: number;
-
-  /**
-   * The entire Blob has been written to the file, an error occurred during the write, or the write was aborted using abort(). The FileSaver is no longer writing the blob.
-   * @readonly
-   */
-  DONE: number;
-
-  /**
-   * The FileSaver object can be in one of 3 states. The readyState attribute, on getting, must return the current state, which must be one of the following values:
-   * <ul>
-   * <li>INIT</li>
-   * <li>WRITING</li>
-   * <li>DONE</li>
-   * <ul>
-   * @readonly
-   */
-  readyState: number;
-
-  /**
-   * The last error that occurred on the FileSaver.
-   * @readonly
-   */
-  error: Error;
-
-  /**
-   * Handler for writestart events
-   */
-  onwritestart: (event: ProgressEvent) => void;
-
-  /**
-   * Handler for progress events.
-   */
-  onprogress: (event: ProgressEvent) => void;
-
-  /**
-   * Handler for write events.
-   */
-  onwrite: (event: ProgressEvent) => void;
-
-  /**
-   * Handler for abort events.
-   */
-  onabort: (event: ProgressEvent) => void;
-
-  /**
-   * Handler for error events.
-   */
-  onerror: (event: ProgressEvent) => void;
-
-  /**
-   * Handler for writeend events.
-   */
-  onwriteend: (event: ProgressEvent) => void;
 }
 
 /**
@@ -532,7 +520,6 @@ export interface IWriteOptions {
 
 /** @hidden */
 export declare class FileError {
-  constructor(code: number);
   static NOT_FOUND_ERR: number;
   static SECURITY_ERR: number;
   static ABORT_ERR: number;
@@ -548,6 +535,8 @@ export declare class FileError {
   /** Error code */
   code: number;
   message: string;
+
+  constructor(code: number);
 }
 
 /** @hidden */
@@ -569,9 +558,13 @@ export declare class FileReader {
   onabort: (evt: ProgressEvent) => void;
 
   abort(): void;
+
   readAsText(fe: IFile, encoding?: string): void;
+
   readAsDataURL(fe: IFile): void;
+
   readAsBinaryString(fe: IFile): void;
+
   readAsArrayBuffer(fe: IFile): void;
 
   /**
@@ -581,7 +574,8 @@ export declare class FileReader {
 
 }
 
-interface Window extends LocalFileSystem {}
+interface Window extends LocalFileSystem {
+}
 
 declare const window: Window;
 
@@ -628,74 +622,74 @@ export class File extends IonicNativePlugin {
   /**
    *  Read-only directory where the application is installed.
    */
-  @CordovaProperty
+  @CordovaProperty()
   applicationDirectory: string;
 
   /**
    *  Read-only directory where the application is installed.
    */
-  @CordovaProperty
+  @CordovaProperty()
   applicationStorageDirectory: string;
 
   /**
    * Where to put app-specific data files.
    */
-  @CordovaProperty
+  @CordovaProperty()
   dataDirectory: string;
 
   /**
    * Cached files that should survive app restarts.
    * Apps should not rely on the OS to delete files in here.
    */
-  @CordovaProperty
+  @CordovaProperty()
   cacheDirectory: string;
 
   /**
    * Android: the application space on external storage.
    */
-  @CordovaProperty
+  @CordovaProperty()
   externalApplicationStorageDirectory: string;
 
   /**
    *  Android: Where to put app-specific data files on external storage.
    */
-  @CordovaProperty
+  @CordovaProperty()
   externalDataDirectory: string;
 
   /**
    * Android: the application cache on external storage.
    */
-  @CordovaProperty
+  @CordovaProperty()
   externalCacheDirectory: string;
 
   /**
    * Android: the external storage (SD card) root.
    */
-  @CordovaProperty
+  @CordovaProperty()
   externalRootDirectory: string;
 
   /**
    * iOS: Temp directory that the OS can clear at will.
    */
-  @CordovaProperty
+  @CordovaProperty()
   tempDirectory: string;
 
   /**
    * iOS: Holds app-specific files that should be synced (e.g. to iCloud).
    */
-  @CordovaProperty
+  @CordovaProperty()
   syncedDataDirectory: string;
 
   /**
    * iOS: Files private to the app, but that are meaningful to other applications (e.g. Office files)
    */
-  @CordovaProperty
+  @CordovaProperty()
   documentsDirectory: string;
 
   /**
    * BlackBerry10: Files globally available to all apps
    */
-  @CordovaProperty
+  @CordovaProperty()
   sharedDirectory: string;
 
   cordovaFileError: any = {
@@ -721,7 +715,7 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   getFreeDiskSpace(): Promise<number> {
-    return new Promise<any>((resolve, reject) => {
+    return getPromise<any>((resolve, reject) => {
       cordova.exec(resolve, reject, 'File', 'getFreeDiskSpace', []);
     });
   }
@@ -1027,31 +1021,6 @@ export class File extends IonicNativePlugin {
       });
   }
 
-  /** Write content to FileEntry.
-   *
-   * @hidden
-   * @param {FileEntry} fe file entry object
-   * @param {string | Blob} text content or blob to write
-   * @param {IWriteOptions} options replace file if set to true. See WriteOptions for more information.
-   * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
-   */
-  private writeFileEntry(fe: FileEntry, text: string | Blob | ArrayBuffer, options: IWriteOptions) {
-    return this.createWriter(fe)
-      .then((writer) => {
-        if (options.append) {
-          writer.seek(writer.length);
-        }
-
-        if (options.truncate) {
-          writer.truncate(options.truncate);
-        }
-
-        return this.write(writer, text);
-      })
-      .then(() => fe);
-  }
-
-
   /** Write to an existing file.
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
@@ -1110,40 +1079,6 @@ export class File extends IonicNativePlugin {
   @CordovaCheck()
   readAsArrayBuffer(path: string, file: string): Promise<ArrayBuffer> {
     return this.readFile<ArrayBuffer>(path, file, 'ArrayBuffer');
-  }
-
-  private readFile<T>(path: string, file: string, readAs: 'ArrayBuffer' | 'BinaryString' | 'DataURL' | 'Text'): Promise<T> {
-    if ((/^\//.test(file))) {
-      let err = new FileError(5);
-      err.message = 'file-name cannot start with \/';
-      return Promise.reject<any>(err);
-    }
-
-    return this.resolveDirectoryUrl(path)
-      .then((directoryEntry: DirectoryEntry) => {
-        return this.getFile(directoryEntry, file, { create: false });
-      })
-      .then((fileEntry: FileEntry) => {
-        const reader = new FileReader();
-        return new Promise<T>((resolve, reject) => {
-          reader.onloadend = () => {
-            if (reader.result !== undefined || reader.result !== null) {
-              resolve(<T><any>reader.result);
-            } else if (reader.error !== undefined || reader.error !== null) {
-              reject(reader.error);
-            } else {
-              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
-            }
-          };
-
-          fileEntry.file(file => {
-            reader[`readAs${readAs}`].call(reader, file);
-          }, error => {
-            reject(error);
-          });
-
-        });
-      });
   }
 
   /**
@@ -1209,22 +1144,13 @@ export class File extends IonicNativePlugin {
   }
 
   /**
-   * @hidden
-   */
-  private fillErrorMessage(err: FileError): void {
-    try {
-      err.message = this.cordovaFileError[err.code];
-    } catch (e) { }
-  }
-
-  /**
    * Resolves a local file system URL
    * @param fileUrl {string} file system url
    * @returns {Promise<Entry>}
    */
   @CordovaCheck()
   resolveLocalFilesystemUrl(fileUrl: string): Promise<Entry> {
-    return new Promise<Entry>((resolve, reject) => {
+    return getPromise<Entry>((resolve, reject) => {
       try {
         window.resolveLocalFileSystemURL(fileUrl, (entry: Entry) => {
           resolve(entry);
@@ -1267,7 +1193,7 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   getDirectory(directoryEntry: DirectoryEntry, directoryName: string, flags: Flags): Promise<DirectoryEntry> {
-    return new Promise<DirectoryEntry>((resolve, reject) => {
+    return getPromise<DirectoryEntry>((resolve, reject) => {
       try {
         directoryEntry.getDirectory(directoryName, flags, (de) => {
           resolve(de);
@@ -1291,7 +1217,7 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   getFile(directoryEntry: DirectoryEntry, fileName: string, flags: Flags): Promise<FileEntry> {
-    return new Promise<FileEntry>((resolve, reject) => {
+    return getPromise<FileEntry>((resolve, reject) => {
       try {
         directoryEntry.getFile(fileName, flags, resolve, (err) => {
           this.fillErrorMessage(err);
@@ -1304,11 +1230,79 @@ export class File extends IonicNativePlugin {
     });
   }
 
+  /** Write content to FileEntry.
+   *
+   * @hidden
+   * @param {FileEntry} fe file entry object
+   * @param {string | Blob} text content or blob to write
+   * @param {IWriteOptions} options replace file if set to true. See WriteOptions for more information.
+   * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
+   */
+  private writeFileEntry(fe: FileEntry, text: string | Blob | ArrayBuffer, options: IWriteOptions) {
+    return this.createWriter(fe)
+      .then((writer) => {
+        if (options.append) {
+          writer.seek(writer.length);
+        }
+
+        if (options.truncate) {
+          writer.truncate(options.truncate);
+        }
+
+        return this.write(writer, text);
+      })
+      .then(() => fe);
+  }
+
+  private readFile<T>(path: string, file: string, readAs: 'ArrayBuffer' | 'BinaryString' | 'DataURL' | 'Text'): Promise<T> {
+    if ((/^\//.test(file))) {
+      let err = new FileError(5);
+      err.message = 'file-name cannot start with \/';
+      return Promise.reject<any>(err);
+    }
+
+    return this.resolveDirectoryUrl(path)
+      .then((directoryEntry: DirectoryEntry) => {
+        return this.getFile(directoryEntry, file, { create: false });
+      })
+      .then((fileEntry: FileEntry) => {
+        const reader = new FileReader();
+        return getPromise<T>((resolve, reject) => {
+          reader.onloadend = () => {
+            if (reader.result !== undefined || reader.result !== null) {
+              resolve(<T><any>reader.result);
+            } else if (reader.error !== undefined || reader.error !== null) {
+              reject(reader.error);
+            } else {
+              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
+            }
+          };
+
+          fileEntry.file(file => {
+            reader[`readAs${readAs}`].call(reader, file);
+          }, error => {
+            reject(error);
+          });
+
+        });
+      });
+  }
+
+  /**
+   * @hidden
+   */
+  private fillErrorMessage(err: FileError): void {
+    try {
+      err.message = this.cordovaFileError[err.code];
+    } catch (e) {
+    }
+  }
+
   /**
    * @hidden
    */
   private remove(fe: Entry): Promise<RemoveResult> {
-    return new Promise<RemoveResult>((resolve, reject) => {
+    return getPromise<RemoveResult>((resolve, reject) => {
       fe.remove(() => {
         resolve({ success: true, fileRemoved: fe });
       }, (err) => {
@@ -1322,7 +1316,7 @@ export class File extends IonicNativePlugin {
    * @hidden
    */
   private move(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
-    return new Promise<Entry>((resolve, reject) => {
+    return getPromise<Entry>((resolve, reject) => {
       srce.moveTo(destdir, newName, (deste) => {
         resolve(deste);
       }, (err) => {
@@ -1336,7 +1330,7 @@ export class File extends IonicNativePlugin {
    * @hidden
    */
   private copy(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
-    return new Promise<Entry>((resolve, reject) => {
+    return getPromise<Entry>((resolve, reject) => {
       srce.copyTo(destdir, newName, (deste) => {
         resolve(deste);
       }, (err) => {
@@ -1350,7 +1344,7 @@ export class File extends IonicNativePlugin {
    * @hidden
    */
   private readEntries(dr: DirectoryReader): Promise<Entry[]> {
-    return new Promise<Entry[]>((resolve, reject) => {
+    return getPromise<Entry[]>((resolve, reject) => {
       dr.readEntries((entries) => {
         resolve(entries);
       }, (err) => {
@@ -1364,7 +1358,7 @@ export class File extends IonicNativePlugin {
    * @hidden
    */
   private rimraf(de: DirectoryEntry): Promise<RemoveResult> {
-    return new Promise<RemoveResult>((resolve, reject) => {
+    return getPromise<RemoveResult>((resolve, reject) => {
       de.removeRecursively(() => {
         resolve({ success: true, fileRemoved: de });
       }, (err) => {
@@ -1378,7 +1372,7 @@ export class File extends IonicNativePlugin {
    * @hidden
    */
   private createWriter(fe: FileEntry): Promise<FileWriter> {
-    return new Promise<FileWriter>((resolve, reject) => {
+    return getPromise<FileWriter>((resolve, reject) => {
       fe.createWriter((writer) => {
         resolve(writer);
       }, (err) => {
@@ -1396,7 +1390,7 @@ export class File extends IonicNativePlugin {
       return this.writeFileInChunks(writer, gu);
     }
 
-    return new Promise<any>((resolve, reject) => {
+    return getPromise<any>((resolve, reject) => {
       writer.onwriteend = (evt) => {
         if (writer.error) {
           reject(writer.error);
@@ -1423,7 +1417,7 @@ export class File extends IonicNativePlugin {
       writer.write(chunk);
     }
 
-    return new Promise<any>((resolve, reject) => {
+    return getPromise<any>((resolve, reject) => {
       writer.onerror = reject;
       writer.onwrite = () => {
         if (writtenSize < file.size) {

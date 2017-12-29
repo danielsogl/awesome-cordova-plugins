@@ -1,4 +1,4 @@
-import { Plugin, IonicNativePlugin, checkAvailability, InstanceProperty, CordovaInstance } from '@ionic-native/core';
+import { checkAvailability, CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 export interface AuthenticationResult {
@@ -23,7 +23,9 @@ export interface AuthenticationResult {
 
 export interface TokenCache {
   clear(): void;
+
   readItems(): Promise<TokenCacheItem[]>;
+
   deleteItem(item: TokenCacheItem): void;
 }
 
@@ -112,16 +114,17 @@ export class MSAdal extends IonicNativePlugin {
  */
 export class AuthenticationContext {
 
-  @InstanceProperty
+  @InstanceProperty()
   authority: string;
 
-  @InstanceProperty
+  @InstanceProperty()
   validateAuthority: boolean;
 
-  @InstanceProperty
+  @InstanceProperty()
   tokenCache: any;
 
-  constructor(private _objectInstance: any) {}
+  constructor(private _objectInstance: any) {
+  }
 
   /**
    * Acquires token using interactive flow. It always shows UI and skips token from cache.
@@ -138,7 +141,9 @@ export class AuthenticationContext {
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any): Promise<AuthenticationResult> { return; }
+  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any): Promise<AuthenticationResult> {
+    return;
+  }
 
   /**
    * Acquires token WITHOUT using interactive flow. It checks the cache to return existing result
@@ -153,6 +158,8 @@ export class AuthenticationContext {
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenSilentAsync(resourceUrl: string, clientId: string, userId?: string): Promise<AuthenticationResult> { return; }
+  acquireTokenSilentAsync(resourceUrl: string, clientId: string, userId?: string): Promise<AuthenticationResult> {
+    return;
+  }
 
 }

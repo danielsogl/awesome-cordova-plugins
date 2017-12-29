@@ -1,4 +1,4 @@
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -39,7 +39,9 @@ export class TapticEngine extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  selection(): Promise<any> { return; }
+  selection(): Promise<any> {
+    return;
+  }
 
   /**
    * Use this to indicate success/failure/warning to the user.
@@ -48,7 +50,9 @@ export class TapticEngine extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  notification(options: { type: string }): Promise<any> { return; }
+  notification(options: { type: string }): Promise<any> {
+    return;
+  }
 
   /**
    * Use this to indicate success/failure/warning to the user.
@@ -57,6 +61,8 @@ export class TapticEngine extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  impact(options: { style: string }): Promise<any> { return; }
+  impact(options: { style: string }): Promise<any> {
+    return;
+  }
 
 }

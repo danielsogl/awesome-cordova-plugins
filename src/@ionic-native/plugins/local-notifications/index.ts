@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface ILocalNotification {
 
@@ -67,10 +67,10 @@ export interface ILocalNotification {
   smallIcon?: string;
 
   /**
-  * ANDROID ONLY
-  * RGB value for the background color of the smallIcon.
-  * Default: Androids COLOR_DEFAULT, which will vary based on Android version.
-  */
+   * ANDROID ONLY
+   * RGB value for the background color of the smallIcon.
+   * Default: Androids COLOR_DEFAULT, which will vary based on Android version.
+   */
   color?: string;
 
 
@@ -91,8 +91,8 @@ export interface ILocalNotification {
   led?: string;
 
   /**
-  * Notification priority.
-  */
+   * Notification priority.
+   */
   priority?: number;
 }
 
@@ -162,7 +162,8 @@ export class LocalNotifications extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  schedule(options?: ILocalNotification | Array<ILocalNotification>): void { }
+  schedule(options?: ILocalNotification | Array<ILocalNotification>): void {
+  }
 
   /**
    * Updates a previously scheduled notification. Must include the id in the options parameter.
@@ -171,7 +172,8 @@ export class LocalNotifications extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  update(options?: ILocalNotification): void { }
+  update(options?: ILocalNotification): void {
+  }
 
   /**
    * Clears single or multiple notifications
@@ -179,7 +181,9 @@ export class LocalNotifications extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise when the notification had been cleared
    */
   @Cordova()
-  clear(notificationId: any): Promise<any> { return; }
+  clear(notificationId: any): Promise<any> {
+    return;
+  }
 
   /**
    * Clears all notifications
@@ -189,7 +193,9 @@ export class LocalNotifications extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 2
   })
-  clearAll(): Promise<any> { return; }
+  clearAll(): Promise<any> {
+    return;
+  }
 
   /**
    * Cancels single or multiple notifications
@@ -197,7 +203,9 @@ export class LocalNotifications extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise when the notification is canceled
    */
   @Cordova()
-  cancel(notificationId: any): Promise<any> { return; }
+  cancel(notificationId: any): Promise<any> {
+    return;
+  }
 
   /**
    * Cancels all notifications
@@ -207,7 +215,9 @@ export class LocalNotifications extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 2
   })
-  cancelAll(): Promise<any> { return; }
+  cancelAll(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks presence of a notification
@@ -215,7 +225,9 @@ export class LocalNotifications extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isPresent(notificationId: number): Promise<boolean> { return; }
+  isPresent(notificationId: number): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks is a notification is scheduled
@@ -223,7 +235,9 @@ export class LocalNotifications extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isScheduled(notificationId: number): Promise<boolean> { return; }
+  isScheduled(notificationId: number): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if a notification is triggered
@@ -231,28 +245,36 @@ export class LocalNotifications extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isTriggered(notificationId: number): Promise<boolean> { return; }
+  isTriggered(notificationId: number): Promise<boolean> {
+    return;
+  }
 
   /**
    * Get all the notification ids
    * @returns {Promise<Array<number>>}
    */
   @Cordova()
-  getAllIds(): Promise<Array<number>> { return; }
+  getAllIds(): Promise<Array<number>> {
+    return;
+  }
 
   /**
    * Get the ids of triggered notifications
    * @returns {Promise<Array<number>>}
    */
   @Cordova()
-  getTriggeredIds(): Promise<Array<number>> { return; }
+  getTriggeredIds(): Promise<Array<number>> {
+    return;
+  }
 
   /**
    * Get the ids of scheduled notifications
    * @returns {Promise<Array<number>>} Returns a promise
    */
   @Cordova()
-  getScheduledIds(): Promise<Array<number>> { return; }
+  getScheduledIds(): Promise<Array<number>> {
+    return;
+  }
 
   /**
    * Get a notification object
@@ -260,7 +282,9 @@ export class LocalNotifications extends IonicNativePlugin {
    * @returns {Promise<ILocalNotification>}
    */
   @Cordova()
-  get(notificationId: any): Promise<ILocalNotification> { return; }
+  get(notificationId: any): Promise<ILocalNotification> {
+    return;
+  }
 
   /**
    * Get a scheduled notification object
@@ -268,7 +292,9 @@ export class LocalNotifications extends IonicNativePlugin {
    * @returns {Promise<ILocalNotification>}
    */
   @Cordova()
-  getScheduled(notificationId: any): Promise<ILocalNotification> { return; }
+  getScheduled(notificationId: any): Promise<ILocalNotification> {
+    return;
+  }
 
   /**
    * Get a triggered notification object
@@ -276,42 +302,54 @@ export class LocalNotifications extends IonicNativePlugin {
    * @returns {Promise<ILocalNotification>}
    */
   @Cordova()
-  getTriggered(notificationId: any): Promise<ILocalNotification> { return; }
+  getTriggered(notificationId: any): Promise<ILocalNotification> {
+    return;
+  }
 
   /**
    * Get all notification objects
    * @returns {Promise<Array<ILocalNotification>>}
    */
   @Cordova()
-  getAll(): Promise<Array<ILocalNotification>> { return; }
+  getAll(): Promise<Array<ILocalNotification>> {
+    return;
+  }
 
   /**
    * Get all scheduled notification objects
    * @returns {Promise<Array<ILocalNotification>>}
    */
   @Cordova()
-  getAllScheduled(): Promise<Array<ILocalNotification>> { return; }
+  getAllScheduled(): Promise<Array<ILocalNotification>> {
+    return;
+  }
 
   /**
    * Get all triggered notification objects
    * @returns {Promise<Array<ILocalNotification>>}
    */
   @Cordova()
-  getAllTriggered(): Promise<Array<ILocalNotification>> { return; }
+  getAllTriggered(): Promise<Array<ILocalNotification>> {
+    return;
+  }
 
   /**
    * Register permission to show notifications if not already granted.
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  registerPermission(): Promise<boolean> { return; }
+  registerPermission(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Informs if the app has the permission to show notifications.
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  hasPermission(): Promise<boolean> { return; }
+  hasPermission(): Promise<boolean> {
+    return;
+  }
 
 
   /**
@@ -322,7 +360,8 @@ export class LocalNotifications extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  on(eventName: string, callback: any): void { }
+  on(eventName: string, callback: any): void {
+  }
 
   /**
    * Removes a callback of a specific event
@@ -332,7 +371,8 @@ export class LocalNotifications extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  un(eventName: string, callback: any): void { }
+  un(eventName: string, callback: any): void {
+  }
 
 
 }

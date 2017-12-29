@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 declare const window: any;
 
@@ -39,6 +39,8 @@ export class FilePath extends IonicNativePlugin {
    * @returns {Promise<string>}
    */
   @Cordova()
-  resolveNativePath(path: string): Promise<string> { return; }
+  resolveNativePath(path: string): Promise<string> {
+    return;
+  }
 
 }

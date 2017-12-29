@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare const navigator: any;
@@ -101,7 +101,7 @@ export interface ConfigurationData {
   /**
    * The ASCII-encoded lowercase string representing the media type.
    */
-    type: string;
+  type: string;
   /**
    * The height of the image or video in pixels. The value is zero for sound clips.
    */
@@ -125,7 +125,7 @@ export interface ConfigurationData {
  * ...
  *
  *
- * let options: CaptureImageOptions = { limit: 3 };
+ * let options: CaptureImageOptions = { limit: 3 }
  * this.mediaCapture.captureImage(options)
  *   .then(
  *     (data: MediaFile[]) => console.log(data),
@@ -155,21 +155,21 @@ export class MediaCapture extends IonicNativePlugin {
    * The recording image sizes and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty
+  @CordovaProperty()
   supportedImageModes: ConfigurationData[];
 
   /**
    * The audio recording formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty
+  @CordovaProperty()
   supportedAudioModes: ConfigurationData[];
 
   /**
    * The recording video resolutions and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty
+  @CordovaProperty()
   supportedVideoModes: ConfigurationData[];
 
   /**

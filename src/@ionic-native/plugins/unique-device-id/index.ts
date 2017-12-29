@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -35,6 +35,8 @@ export class UniqueDeviceID extends IonicNativePlugin {
    * @return {Promise<string>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  get(): Promise<string> { return; }
+  get(): Promise<string> {
+    return;
+  }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare const cordova: any;
@@ -49,7 +49,10 @@ export class JinsMeme extends IonicNativePlugin {
    *@returns {Promise<any>}
    */
   @Cordova()
-  setAppClientID(appClientId: string, clientSecret: string): Promise<any> { return; }
+  setAppClientID(appClientId: string, clientSecret: string): Promise<any> {
+    return;
+  }
+
   /**
    * Starts scanning for JINS MEME.
    * @returns {Observable<any>}
@@ -59,13 +62,19 @@ export class JinsMeme extends IonicNativePlugin {
     clearFunction: 'stopScan',
     clearWithArgs: true
   })
-  startScan(): Observable<any> { return; }
+  startScan(): Observable<any> {
+    return;
+  }
+
   /**
    * Stops scanning JINS MEME.
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopScan(): Promise<any> { return; }
+  stopScan(): Promise<any> {
+    return;
+  }
+
   /**
    * Establishes connection to JINS MEME.
    * @param {string} target
@@ -80,25 +89,35 @@ export class JinsMeme extends IonicNativePlugin {
       return () => console.log(data);
     });
   }
+
   /**
    * Set auto connection mode.
    *@param {Boolean} flag
    *@returns {Promise<any>}
    */
   @Cordova()
-  setAutoConnect(flag: boolean): Promise<any> { return; }
+  setAutoConnect(flag: boolean): Promise<any> {
+    return;
+  }
+
   /**
    * Returns whether a connection to JINS MEME has been established.
    *@returns {Promise<any>}
    */
   @Cordova()
-  isConnected(): Promise<any> { return; }
+  isConnected(): Promise<any> {
+    return;
+  }
+
   /**
    * Disconnects from JINS MEME.
    *@returns {Promise<any>}
    */
   @Cordova()
-  disconnect(): Promise<any> { return; }
+  disconnect(): Promise<any> {
+    return;
+  }
+
   /**
    * Starts receiving realtime data.
    * @returns {Observable<any>}
@@ -108,60 +127,89 @@ export class JinsMeme extends IonicNativePlugin {
     clearFunction: 'stopDataReport',
     clearWithArgs: true
   })
-  startDataReport(): Observable<any> { return; }
+  startDataReport(): Observable<any> {
+    return;
+  }
+
   /**
-  * Stops receiving data.
-  *@returns {Promise<any>}
-  */
+   * Stops receiving data.
+   *@returns {Promise<any>}
+   */
   @Cordova()
-  stopDataReport(): Promise<any> { return; }
+  stopDataReport(): Promise<any> {
+    return;
+  }
+
   /**
    * Returns SDK version.
    *
    *@returns {Promise<any>}
    */
   @Cordova()
-  getSDKVersion(): Promise<any> { return; }
+  getSDKVersion(): Promise<any> {
+    return;
+  }
+
   /**
    * Returns JINS MEME connected with other apps.
    *@returns {Promise<any>}
    */
   @Cordova()
-  getConnectedByOthers(): Promise<any> { return; }
+  getConnectedByOthers(): Promise<any> {
+    return;
+  }
+
   /**
    * Returns calibration status
    *@returns {Promise<any>}
    */
   @Cordova()
-  isCalibrated(): Promise<any> { return; }
+  isCalibrated(): Promise<any> {
+    return;
+  }
+
   /**
    * Returns device type.
    *@returns {Promise<any>}
    */
   @Cordova()
-  getConnectedDeviceType(): Promise<any> { return; }
+  getConnectedDeviceType(): Promise<any> {
+    return;
+  }
+
   /**
    * Returns hardware version.
    *@returns {Promise<any>}
    */
   @Cordova()
-  getConnectedDeviceSubType(): Promise<any> { return; }
+  getConnectedDeviceSubType(): Promise<any> {
+    return;
+  }
+
   /**
    * Returns FW Version.
    *@returns {Promise<any>}
    */
   @Cordova()
-  getFWVersion(): Promise<any> { return; }
+  getFWVersion(): Promise<any> {
+    return;
+  }
+
   /**
    * Returns HW Version.
    *@returns {Promise<any>}
    */
   @Cordova()
-  getHWVersion(): Promise<any> { return; }
+  getHWVersion(): Promise<any> {
+    return;
+  }
+
   /**
    * Returns response about whether data was received or not.
    *@returns {Promise<any>}
    */
   @Cordova()
-  isDataReceiving(): Promise<any> { return; }
+  isDataReceiving(): Promise<any> {
+    return;
+  }
 }

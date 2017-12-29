@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Plugin, CordovaInstance, InstanceCheck, IonicNativePlugin } from '@ionic-native/core';
+import { CordovaInstance, InstanceCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-declare var cordova: any;
+declare const cordova: any;
 
 export interface ThemeableBrowserButton {
   wwwImage?: string;
@@ -88,19 +88,22 @@ export class ThemeableBrowserObject {
    * if the browser was already visible.
    */
   @CordovaInstance({ sync: true })
-  show(): void { }
+  show(): void {
+  }
 
   /**
    * Closes the browser window.
    */
   @CordovaInstance({ sync: true })
-  close(): void { }
+  close(): void {
+  }
 
   /**
    * Reloads the current page
    */
   @CordovaInstance({ sync: true })
-  reload(): void { }
+  reload(): void {
+  }
 
   /**
    * Injects JavaScript code into the browser window.
@@ -108,7 +111,9 @@ export class ThemeableBrowserObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  executeScript(script: { file?: string, code?: string }): Promise<any> { return; }
+  executeScript(script: { file?: string, code?: string }): Promise<any> {
+    return;
+  }
 
   /**
    * Injects CSS into the browser window.
@@ -116,7 +121,9 @@ export class ThemeableBrowserObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  insertCss(css: { file?: string, code?: string }): Promise<any> { return; }
+  insertCss(css: { file?: string, code?: string }): Promise<any> {
+    return;
+  }
 
   /**
    * A method that allows you to listen to events happening in the browser.
@@ -207,7 +214,7 @@ export class ThemeableBrowserObject {
  *          ]
  *      },
  *      backButtonCanClose: true
- * };
+ * }
  *
  * const browser: ThemeableBrowserObject = this.themeableBrowser.create('https://ionic.io', '_blank', options);
  *

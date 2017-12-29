@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -54,7 +54,7 @@ export interface GyroscopeOptions {
  *
  * let options: GyroscopeOptions = {
  *    frequency: 1000
- * };
+ * }
  *
  * this.gyroscope.getCurrent(options)
  *   .then((orientation: GyroscopeOrientation) => {
@@ -105,5 +105,7 @@ export class Gyroscope extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getCurrent(options?: GyroscopeOptions): Promise<GyroscopeOrientation> { return; }
+  getCurrent(options?: GyroscopeOptions): Promise<GyroscopeOrientation> {
+    return;
+  }
 }

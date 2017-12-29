@@ -9,19 +9,20 @@ const Package = require('dgeni').Package,
 
 module.exports = currentVersion => {
 
-  return new Package('ionic-native-readmes', [jsdocPackage, nunjucksPackage, typescriptPackage, linksPackage])
+  return new Package('ionic-native-docs', [jsdocPackage, nunjucksPackage, typescriptPackage, linksPackage])
 
-    .processor(require('./processors/readmes'))
     .processor(require('./processors/remove-private-members'))
     .processor(require('./processors/hide-private-api'))
+    .processor(require('./processors/parse-optional'))
+    .processor(require('./processors/mark-properties'))
     .processor(require('./processors/npm-id'))
+    .processor(require('./processors/jekyll'))
 
     .config(require('./configs/log'))
     .config(require('./configs/template-filters'))
     .config(require('./configs/template-tags'))
     .config(require('./configs/tag-defs'))
     .config(require('./configs/links'))
-
 
     .config(function(renderDocsProcessor, computePathsProcessor) {
 
@@ -39,37 +40,39 @@ module.exports = currentVersion => {
 
       computePathsProcessor.pathTemplates = [{
         docTypes: ['class'],
-        getOutputPath: doc => doc.originalModule.replace(config.pluginDir + '/', '')
-          .replace('/plugins', '')
-          .replace(/\/index$/, '/README.md')
+        getOutputPath: doc => 'content/' + config.v2DocsDir + '/' +  doc.name + '/index.md'
       }];
 
     })
 
     //configure file reading
     .config(function(readFilesProcessor, readTypeScriptModules) {
+
       // Don't run unwanted processors since we are not using the normal file reading processor
       readFilesProcessor.$enabled = false;
-      readFilesProcessor.basePath = path.resolve(__dirname, '../..');
+      readFilesProcessor.basePath = path.resolve(__dirname, '../../..');
 
-      readTypeScriptModules.basePath = path.resolve(path.resolve(__dirname, '../..'));
-      readTypeScriptModules.sourceFiles = ['./src/@ionic-native/plugins/**/*.ts'];
+      readTypeScriptModules.basePath = path.resolve(__dirname, '../../..');
+      readTypeScriptModules.sourceFiles = [
+        './src/@ionic-native/plugins/**/*.ts'
+      ];
     })
 
     // Configure file writing
     .config(function(writeFilesProcessor) {
-      writeFilesProcessor.outputFolder  = './dist/';
+      writeFilesProcessor.outputFolder  = '../ionic-site/';
     })
 
     // Configure rendering
     .config(function(templateFinder) {
+
       templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
 
       // Specify how to match docs to templates.
       templateFinder.templatePatterns = [
         '${ doc.template }',
-        '${ doc.docType }.template.md',
-        'readme.template.md'
+        '${ doc.docType }.template.html',
+        'common.template.html'
       ];
     });
 

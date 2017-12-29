@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, checkAvailability, IonicNativePlugin, InstanceProperty } from '@ionic-native/core';
+import { checkAvailability, CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 
@@ -26,35 +26,38 @@ export class MediaObject {
   /**
    * @hidden
    */
-  @InstanceProperty
+  @InstanceProperty()
   successCallback: Function;
 
   /**
    * @hidden
    */
-  @InstanceProperty
+  @InstanceProperty()
   errorCallback: Function;
 
   /**
    * @hidden
    */
-  @InstanceProperty
+  @InstanceProperty()
   statusCallback: Function;
 
   constructor(private _objectInstance: any) {
     this.onSuccess = new Observable<any>((observer: Observer<any>) => {
       this.successCallback = observer.next.bind(observer);
-      return () => this.successCallback = () => {};
+      return () => this.successCallback = () => {
+      };
     });
 
     this.onError = new Observable<MEDIA_ERROR>((observer: Observer<MEDIA_ERROR>) => {
       this.errorCallback = observer.next.bind(observer);
-      return () => this.errorCallback = () => {};
+      return () => this.errorCallback = () => {
+      };
     });
 
     this.onStatusUpdate = new Observable<MEDIA_STATUS>((observer: Observer<MEDIA_STATUS>) => {
       this.statusCallback = observer.next.bind(observer);
-      return () => this.statusCallback = () => {};
+      return () => this.statusCallback = () => {
+      };
     });
   }
 
@@ -63,21 +66,27 @@ export class MediaObject {
    * @returns {Promise<any>} Returns a promise with the amplitude of the current recording
    */
   @CordovaInstance()
-  getCurrentAmplitude(): Promise<any> { return; }
+  getCurrentAmplitude(): Promise<any> {
+    return;
+  }
 
   /**
    * Get the current position within an audio file. Also updates the Media object's position parameter.
    * @returns {Promise<any>} Returns a promise with the position of the current recording
    */
   @CordovaInstance()
-  getCurrentPosition(): Promise<any> { return; }
+  getCurrentPosition(): Promise<any> {
+    return;
+  }
 
   /**
    * Get the duration of an audio file in seconds. If the duration is unknown, it returns a value of -1.
    * @returns {number} Returns a promise with the duration of the current recording
    */
   @CordovaInstance({ sync: true })
-  getDuration(): number { return; }
+  getDuration(): number {
+    return;
+  }
 
   /**
    * Starts or resumes playing an audio file.
@@ -86,66 +95,77 @@ export class MediaObject {
   play(iosOptions?: {
     numberOfLoops?: number,
     playAudioWhenScreenIsLocked?: boolean
-  }): void { }
+  }): void {
+  }
 
   /**
    * Pauses playing an audio file.
    */
   @CordovaInstance({ sync: true })
-  pause(): void { }
+  pause(): void {
+  }
 
   /**
    * Releases the underlying operating system's audio resources. This is particularly important for Android, since there are a finite amount of OpenCore instances for media playback. Applications should call the release function for any Media resource that is no longer needed.
    */
   @CordovaInstance({ sync: true })
-  release(): void { }
+  release(): void {
+  }
 
   /**
    * Sets the current position within an audio file.
    * @param {number} milliseconds The time position you want to set for the current audio file
    */
   @CordovaInstance({ sync: true })
-  seekTo(milliseconds: number): void { }
+  seekTo(milliseconds: number): void {
+  }
 
   /**
    * Set the volume for an audio file.
    * @param volume {number} The volume to set for playback. The value must be within the range of 0.0 to 1.0.
    */
   @CordovaInstance({ sync: true })
-  setVolume(volume: number): void { }
+  setVolume(volume: number): void {
+  }
 
   @CordovaInstance({ sync: true })
-  setRate(speedRate: number): void {}
+  setRate(speedRate: number): void {
+  }
 
   /**
    * Starts recording an audio file.
    */
   @CordovaInstance({ sync: true })
-  startRecord(): void { }
+  startRecord(): void {
+  }
 
   /**
    * Stops recording
    */
   @CordovaInstance({ sync: true })
-  stopRecord(): void { }
+  stopRecord(): void {
+  }
 
   /**
    * Pauses recording
    */
   @CordovaInstance({ sync: true })
-  pauseRecord(): void { }
+  pauseRecord(): void {
+  }
 
   /**
    * Resumes recording
    */
   @CordovaInstance({ sync: true })
-  resumeRecord(): void { }
+  resumeRecord(): void {
+  }
 
   /**
    * Stops playing an audio file.
    */
   @CordovaInstance({ sync: true })
-  stop(): void { }
+  stop(): void {
+  }
 
 }
 

@@ -1,4 +1,4 @@
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -40,7 +40,9 @@ export class AppPreferences extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  fetch(dict: string, key?: string): Promise<any> { return; }
+  fetch(dict: string, key?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Set a preference value
@@ -67,7 +69,9 @@ export class AppPreferences extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  remove(dict: string, key?: string): Promise<any> { return; }
+  remove(dict: string, key?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Clear preferences
@@ -77,7 +81,9 @@ export class AppPreferences extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  clearAll(): Promise<any> { return; }
+  clearAll(): Promise<any> {
+    return;
+  }
 
   /**
    * Show native preferences interface
@@ -87,7 +93,9 @@ export class AppPreferences extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  show(): Promise<any> { return; }
+  show(): Promise<any> {
+    return;
+  }
 
   /**
    * Show native preferences interface
@@ -98,7 +106,9 @@ export class AppPreferences extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  watch(subscribe: boolean): Observable<any> { return; }
+  watch(subscribe: boolean): Observable<any> {
+    return;
+  }
 
   /**
    * Return named configuration context
@@ -111,13 +121,17 @@ export class AppPreferences extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  suite(suiteName: string): any { return; }
+  suite(suiteName: string): any {
+    return;
+  }
 
   @Cordova({
     platforms: ['iOS'],
     sync: true
   })
-  iosSuite(suiteName: string): any { return; }
+  iosSuite(suiteName: string): any {
+    return;
+  }
 
   /**
    * Return cloud synchronized configuration context
@@ -127,7 +141,9 @@ export class AppPreferences extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS', 'Windows', 'Windows Phone 8']
   })
-  cloudSync(): Object { return; }
+  cloudSync(): Object {
+    return;
+  }
 
   /**
    * Return default configuration context
@@ -137,6 +153,8 @@ export class AppPreferences extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS', 'Windows', 'Windows Phone 8']
   })
-  defaults(): Object { return; }
+  defaults(): Object {
+    return;
+  }
 
 }

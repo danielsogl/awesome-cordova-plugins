@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaInstance, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaInstance, IonicNativePlugin, Plugin, CordovaCheck } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -36,14 +36,17 @@ export interface DeployConfig {
  */
 export class ProDeploy {
 
-  constructor(private _objectInstance: any) { }
+  constructor(private _objectInstance: any) {
+  }
 
   /**
    * Re-initialize Deploy plugin with a new App ID and host.  Not used in most cases.
    * @param config A valid Deploy config object
    */
   @CordovaInstance()
-  init(config: DeployConfig): Promise<any> { return; }
+  init(config: DeployConfig): Promise<any> {
+    return;
+  }
 
   /**
    * Check a channel for an available update
@@ -52,7 +55,9 @@ export class ProDeploy {
   @CordovaInstance({
     observable: true
   })
-  check(): Promise<string> { return; }
+  check(): Promise<string> {
+    return;
+  }
 
   /**
    * Download an available version
@@ -61,40 +66,52 @@ export class ProDeploy {
   @CordovaInstance({
     observable: true
   })
-  download(): Observable<any> { return; }
+  download(): Observable<any> {
+    return;
+  }
 
   /**
    * Unzip the latest downloaded version
    * @return {Observable<any>} Updates with percent completion, or errors with a message.
    */
   @CordovaInstance()
-  extract(): Observable<any> { return; }
+  extract(): Observable<any> {
+    return;
+  }
 
   /**
    * Reload app with the deployed version
    */
   @CordovaInstance()
-  redirect(): Promise<any> { return; }
+  redirect(): Promise<any> {
+    return;
+  }
 
   /**
    * Get info about the version running on the device
    * @return {Promise<DeployInfo>} Information about the current version running on the app.
    */
   @CordovaInstance()
-  info(): Promise<DeployInfo> { return; }
+  info(): Promise<DeployInfo> {
+    return;
+  }
 
   /**
    * List versions stored on the device
    */
   @CordovaInstance()
-  getVersions(): Promise<any> { return; }
+  getVersions(): Promise<any> {
+    return;
+  }
 
   /**
    * Delete a version stored on the device by UUID
    * @param version A version UUID
    */
   @CordovaInstance()
-  deleteVersion(version: string): Promise<any> { return; }
+  deleteVersion(version: string): Promise<any> {
+    return;
+  }
 }
 
 /**
@@ -108,17 +125,17 @@ export class ProDeploy {
  *
  *
  * constructor(private pro: Pro) { }
- * 
+ *
  * // Get app info
  * this.pro.getAppInfo().then((res: AppInfo) => {
  *   console.log(res)
  * })
- * 
+ *
  * // Get live update info
  * this.pro.deploy.info().then((res: DeployInfo) => {
  *   console.log(res)
  * })
- * ``` 
+ * ```
  */
 @Plugin({
   pluginName: 'Pro',
@@ -130,44 +147,60 @@ export class ProDeploy {
 })
 @Injectable()
 export class Pro extends IonicNativePlugin {
+  _deploy: ProDeploy;
+
   /**
    * Ionic Pro Deploy .js API.
    */
-  deploy: ProDeploy = new ProDeploy(Pro.getPlugin().deploy);
+  @CordovaCheck()
+  deploy(): ProDeploy {
+    if (this._deploy) return this._deploy;
+    else return this._deploy = new ProDeploy(Pro.getPlugin().deploy);
+  }
 
   /**
    * Not yet implemented
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  enableCrashLogging(): Promise<any> { return; }
+  enableCrashLogging(): Promise<any> {
+    return;
+  }
 
   /**
    * Not yet implemented
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  checkForPendingCrash(): Promise<any> { return; }
+  checkForPendingCrash(): Promise<any> {
+    return;
+  }
 
   /**
    * Not yet implemented
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  loadPendingCrash(): Promise<any> { return; }
+  loadPendingCrash(): Promise<any> {
+    return;
+  }
 
   /**
    * Not yet implemented
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  forceCrash(): Promise<any> { return; }
+  forceCrash(): Promise<any> {
+    return;
+  }
 
   /**
    * Get information about the currently running app
    * @return {Promise<any>} Returns a promise that resolves with current app info
    */
   @Cordova()
-  getAppInfo(): Promise<AppInfo> { return; }
+  getAppInfo(): Promise<AppInfo> {
+    return;
+  }
 }
 

@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -6,13 +6,13 @@ import { Injectable } from '@angular/core';
  */
 export interface HealthDataType {
   /**
-  * Read only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
-  */
+   * Read only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
+   */
   read?: string[];
 
   /**
-  * Write only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
-  */
+   * Write only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
+   */
   write?: string[];
 }
 
@@ -210,7 +210,9 @@ export class Health extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  isAvailable(): Promise<boolean> { return; }
+  isAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if recent Google Play Services and Google Fit are installed. If the play services are not installed,
@@ -226,7 +228,9 @@ export class Health extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  promptInstallFit(): Promise<any> { return; }
+  promptInstallFit(): Promise<any> {
+    return;
+  }
 
   /**
    * Requests read and/or write access to a set of data types. It is recommendable to always explain why the app
@@ -248,7 +252,9 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  requestAuthorization(datatypes: Array<string | HealthDataType>): Promise<any> { return; }
+  requestAuthorization(datatypes: Array<string | HealthDataType>): Promise<any> {
+    return;
+  }
 
   /**
    * Check if the app has authorization to read/write a set of datatypes.
@@ -262,7 +268,9 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<boolean>} Returns a promise that resolves with a boolean that indicates the authorization status
    */
   @Cordova()
-  isAuthorized(datatypes: Array<string | HealthDataType>): Promise<boolean> { return; }
+  isAuthorized(datatypes: Array<string | HealthDataType>): Promise<boolean> {
+    return;
+  }
 
   /**
    * Gets all the data points of a certain data type within a certain time window.
@@ -296,7 +304,9 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<HealthData>}
    */
   @Cordova()
-  query(queryOptions: HealthQueryOptions): Promise<HealthData> { return; }
+  query(queryOptions: HealthQueryOptions): Promise<HealthData> {
+    return;
+  }
 
   /**
    * Gets aggregated data in a certain time window. Usually the sum is returned for the given quantity.
@@ -320,7 +330,9 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<HealthData[]>}
    */
   @Cordova()
-  queryAggregated(queryOptionsAggregated: HealthQueryOptionsAggregated): Promise<HealthData[]> { return; }
+  queryAggregated(queryOptionsAggregated: HealthQueryOptionsAggregated): Promise<HealthData[]> {
+    return;
+  }
 
   /**
    * Stores a data point.
@@ -337,6 +349,8 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  store(storeOptions: HealthStoreOptions): Promise<any> { return; }
+  store(storeOptions: HealthStoreOptions): Promise<any> {
+    return;
+  }
 
 }

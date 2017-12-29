@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
 
 declare const navigator: any;
 
@@ -42,7 +42,7 @@ export class Screenshot extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   save(format?: string, quality?: number, filename?: string): Promise<any> {
-    return new Promise<any>(
+    return getPromise<any>(
       (resolve, reject) => {
         navigator.screenshot.save(
           (error: any, result: any) => {
@@ -68,7 +68,7 @@ export class Screenshot extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   URI(quality?: number): Promise<any> {
-    return new Promise<any>(
+    return getPromise<any>(
       (resolve, reject) => {
         navigator.screenshot.URI(
           (error: any, result: any) => {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
+
 namespace Http {
   export const enum Verb {
     GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT, PATCH
@@ -13,6 +14,7 @@ namespace Http {
 
   export interface Requester {
     request(verb: Verb, url: string, callback: Callback<Response>): void;
+
     request(verb: Verb, url: string, requestBody: string, callback: Callback<Response>): void;
   }
 }
@@ -93,20 +95,24 @@ export interface ILocalPackage extends IPackage {
  * Decomposed static side of RemotePackage.
  * For Class Decomposition guidelines see http://www.typescriptlang.org/Handbook#writing-dts-files-guidelines-and-specifics
  */
+
 /* tslint:disable */
 interface RemotePackage_Static {
   new (): IRemotePackage;
 }
+
 /* tslint:enable */
 
 /**
  * Decomposed static side of LocalPackage.
  * For Class Decomposition guidelines see http://www.typescriptlang.org/Handbook#writing-dts-files-guidelines-and-specifics
  */
+
 /* tslint:disable */
 interface LocalPackage_Static {
   new (): ILocalPackage;
 }
+
 /* tslint:enable */
 
 declare const RemotePackage: RemotePackage_Static;
@@ -127,9 +133,17 @@ interface NativeUpdateNotification {
   appVersion: string;
 }
 
-export interface Callback<T> { (error: Error, parameter: T): void; }
-export interface SuccessCallback<T> { (result?: T): void; }
-export interface ErrorCallback { (error?: Error): void; }
+export interface Callback<T> {
+  (error: Error, parameter: T): void;
+}
+
+export interface SuccessCallback<T> {
+  (result?: T): void;
+}
+
+export interface ErrorCallback {
+  (error?: Error): void;
+}
 
 interface Configuration {
   appVersion: string;
@@ -146,8 +160,11 @@ declare class AcquisitionStatus {
 
 declare class AcquisitionManager {
   constructor(httpRequester: Http.Requester, configuration: Configuration);
+
   public queryUpdateWithCurrentPackage(currentPackage: IPackage, callback?: Callback<IRemotePackage | NativeUpdateNotification>): void;
+
   public reportStatusDeploy(pkg?: IPackage, status?: string, previousLabelOrAppVersion?: string, previousDeploymentKey?: string, callback?: Callback<void>): void;
+
   public reportStatusDownload(pkg: IPackage, callback?: Callback<void>): void;
 }
 

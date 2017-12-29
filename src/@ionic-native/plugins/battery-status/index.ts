@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface BatteryStatusResponse {
@@ -62,7 +62,9 @@ export class BatteryStatus extends IonicNativePlugin {
     eventObservable: true,
     event: 'batterystatus'
   })
-  onChange(): Observable<BatteryStatusResponse> { return; }
+  onChange(): Observable<BatteryStatusResponse> {
+    return;
+  }
 
   /**
    * Watch when the battery level goes low
@@ -72,7 +74,9 @@ export class BatteryStatus extends IonicNativePlugin {
     eventObservable: true,
     event: 'batterylow'
   })
-  onLow(): Observable<BatteryStatusResponse> { return; }
+  onLow(): Observable<BatteryStatusResponse> {
+    return;
+  }
 
   /**
    * Watch when the battery level goes to critial
@@ -82,6 +86,8 @@ export class BatteryStatus extends IonicNativePlugin {
     eventObservable: true,
     event: 'batterycritical'
   })
-  onCritical(): Observable<BatteryStatusResponse> { return; }
+  onCritical(): Observable<BatteryStatusResponse> {
+    return;
+  }
 
 }

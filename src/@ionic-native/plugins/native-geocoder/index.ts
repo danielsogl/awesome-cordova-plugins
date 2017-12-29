@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Native Geocoder
@@ -45,7 +45,9 @@ export class NativeGeocoder extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  reverseGeocode(latitude: number, longitude: number): Promise<NativeGeocoderReverseResult> { return; }
+  reverseGeocode(latitude: number, longitude: number): Promise<NativeGeocoderReverseResult> {
+    return;
+  }
 
   /**
    * Forward geocode a given address to find coordinates
@@ -55,12 +57,14 @@ export class NativeGeocoder extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  forwardGeocode(addressString: string): Promise<NativeGeocoderForwardResult> { return; }
+  forwardGeocode(addressString: string): Promise<NativeGeocoderForwardResult> {
+    return;
+  }
 }
 
 /**
  * Encapsulates format information about a reverse geocoding result.
- * more Info: 
+ * more Info:
  *  - https://developer.apple.com/documentation/corelocation/clplacemark
  *  - https://developer.android.com/reference/android/location/Address.html
  */

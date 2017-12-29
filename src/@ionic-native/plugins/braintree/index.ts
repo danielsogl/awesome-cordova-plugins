@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * Options for the setupApplePay method.
@@ -116,8 +116,7 @@ export interface PaymentUIResult {
   /**
    * Information about the Apple Pay card used to complete a payment (if Apple Pay was used).
    */
-  applePaycard: {
-  };
+  applePaycard: {};
 
   /**
    * Information about 3D Secure card used to complete a payment (if 3D Secure was used).
@@ -167,12 +166,12 @@ export interface PaymentUIResult {
  *   merchantId: '<YOUR MERCHANT ID>',
  *   currency: 'USD',
  *   country: 'US'
- * };
+ * }
  *
  * const paymentOptions: PaymentUIOptions = {
  *   amount: '14.99',
  *   primaryDescription: 'Your product or service (per /item, /month, /week, etc)',
- * };
+ * }
  *
  * this.braintree.initialize(BRAINTREE_TOKEN)
  *   .then(() => this.braintree.setupApplePay(appleOptions))
@@ -217,7 +216,9 @@ export class Braintree extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS'],
   })
-  initialize(token: string): Promise<undefined | string> { return; }
+  initialize(token: string): Promise<undefined | string> {
+    return;
+  }
 
   /**
    * Used to configure Apple Pay on iOS.
@@ -234,7 +235,9 @@ export class Braintree extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS'],
   })
-  setupApplePay(options: ApplePayOptions): Promise<undefined | string> { return; }
+  setupApplePay(options: ApplePayOptions): Promise<undefined | string> {
+    return;
+  }
 
   /**
    * Shows Braintree's Drop-In Payments UI.
@@ -246,5 +249,7 @@ export class Braintree extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS'],
   })
-  presentDropInPaymentUI(options?: PaymentUIOptions): Promise<PaymentUIResult | string> { return; }
+  presentDropInPaymentUI(options?: PaymentUIOptions): Promise<PaymentUIResult | string> {
+    return;
+  }
 }

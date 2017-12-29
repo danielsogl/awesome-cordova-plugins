@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaFunctionOverride, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface ThreeDeeTouchQuickAction {
@@ -134,7 +134,9 @@ export class ThreeDeeTouch extends IonicNativePlugin {
    * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates whether the plugin is available or not
    */
   @Cordova()
-  isAvailable(): Promise<boolean> { return; }
+  isAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * You can get a notification when the user force touches the webview. The plugin defines a Force Touch when at least 75% of the maximum force is applied to the screen. Your app will receive the x and y coordinates, so you have to figure out which UI element was touched.
@@ -143,7 +145,9 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  watchForceTouches(): Observable<ThreeDeeTouchForceTouch> { return; }
+  watchForceTouches(): Observable<ThreeDeeTouchForceTouch> {
+    return;
+  }
 
   /**
    * setup the 3D-touch actions, takes an array of objects with the following
@@ -156,14 +160,17 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  configureQuickActions(quickActions: Array<ThreeDeeTouchQuickAction>): void { }
+  configureQuickActions(quickActions: Array<ThreeDeeTouchQuickAction>): void {
+  }
 
   /**
    * When a home icon is pressed, your app launches and this JS callback is invoked.
    * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
    */
   @CordovaFunctionOverride()
-  onHomeIconPressed(): Observable<any> { return; }
+  onHomeIconPressed(): Observable<any> {
+    return;
+  }
 
   /**
    * Enable Link Preview.
@@ -172,7 +179,8 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  enableLinkPreview(): void { }
+  enableLinkPreview(): void {
+  }
 
   /**
    * Disabled the link preview feature, if enabled.
@@ -180,6 +188,7 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  disableLinkPreview(): void { }
+  disableLinkPreview(): void {
+  }
 
 }

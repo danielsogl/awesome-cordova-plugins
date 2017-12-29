@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, Plugin, IonicNativePlugin, checkAvailability } from '@ionic-native/core';
+import { checkAvailability, Cordova, CordovaInstance, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 declare const Notification: any;
 
@@ -17,7 +17,8 @@ export class PLNObject {
   }
 
   @CordovaInstance({ sync: true })
-  close(): void { }
+  close(): void {
+  }
 
 }
 
@@ -101,13 +102,17 @@ export class PhonegapLocalNotification extends IonicNativePlugin {
    * @param Options {LocalNotificationOptions} An object containing optional property/value pairs.
    * @returns {PLNObject}
    */
-  create(title: string, options: LocalNotificationOptions) { return new PLNObject(title, options); }
+  create(title: string, options: LocalNotificationOptions) {
+    return new PLNObject(title, options);
+  }
 
   /**
-  * requests permission from the user to show a local notification.
-  * @returns {Promise<any>}
-  */
+   * requests permission from the user to show a local notification.
+   * @returns {Promise<any>}
+   */
   @Cordova()
-  requestPermission(): Promise<any> { return; }
+  requestPermission(): Promise<any> {
+    return;
+  }
 
 }
