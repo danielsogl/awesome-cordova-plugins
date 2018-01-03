@@ -83,13 +83,13 @@ export class HTTP extends IonicNativePlugin {
    * @param password 
    */
   @Cordova()
-  setX509AuthClientCredentials(pkcs10Container: ArrayBuffer, password?: ArrayBuffer): void{ return; }
+  setX509AuthClientCredentials(pkcs10Container: ArrayBuffer, password?: ArrayBuffer): void { return; }
 
   /**
    * This resets the given Credentials for X509 client Authentication
    */
   @Cordova()
-  resetX509AuthClientCredentials(): void{ return; }
+  resetX509AuthClientCredentials(): void { return; }
   /**
    * This sets up all future requests to use Basic HTTP authentication with the given username and password.
    * @param username {string} Username
