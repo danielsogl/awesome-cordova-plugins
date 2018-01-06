@@ -679,6 +679,12 @@ export interface TileOverlayOptions {
   [key: string]: any;
 }
 
+export interface ToDataUrlOptions {
+  /**
+   * True if you want get high quality map snapshot
+   */
+  uncompress?: boolean;
+}
 
 /**
  * @hidden
@@ -2365,7 +2371,7 @@ export class GoogleMap extends BaseClass {
    * @return {Promise<any>}
    */
   @CordovaInstance()
-  toDataURL(): Promise<any> { return; }
+  toDataURL(params?: ToDataUrlOptions): Promise<any> { return; }
 
   // /**
   //  * @return {Promise<KmlOverlay | any>}
