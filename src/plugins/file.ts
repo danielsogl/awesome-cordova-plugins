@@ -794,10 +794,10 @@ export class File {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName path relative to base path
-   * @param {string | Blob} text content or blob to write
+   * @param {string | Blob | ArrayBuffer} text content, ArrayBuffer or blob to write
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
-  static writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
+  static writeExistingFile(path: string, fileName: string, text: string | Blob | ArrayBuffer): Promise<void> {
     return File.writeFile(path, fileName, text, { replace: true });
   }
 
