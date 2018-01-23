@@ -63,14 +63,14 @@ export class MobileAccessibility extends IonicNativePlugin {
    * @returns {Promise<boolean>} A result method to receive the boolean result asynchronously from the native MobileAccessibility plugin.
    */
   @Cordova({ platforms: ['iOS'] })
-  isVoiceOverRunningCallback(): Promise<boolean> { return; }
+  isVoiceOverRunning(): Promise<boolean> { return; }
 
   /**
    * An Android/Amazon Fire OS-specific proxy for the MobileAccessibility.isScreenReaderRunning method.
    * @returns {Promise<boolean>}  A result method to receive the boolean result asynchronously from the native MobileAccessibility plugin.
    */
   @Cordova({ platforms: ['Amazon Fire OS', 'Android'] })
-  isTalkBackRunningCallback(): Promise<boolean> { return; }
+  isTalkBackRunning(): Promise<boolean> { return; }
 
   /**
    * On Android, this method returns true if ChromeVox is active and properly initialized with access to the text to speech API in the WebView.
@@ -85,98 +85,98 @@ export class MobileAccessibility extends IonicNativePlugin {
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isBoldTextEnabledCallback(): Promise<boolean> { return; }
+  isBoldTextEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova()
-  isClosedCaptioningEnabledCallback(): Promise<boolean> { return; }
+  isClosedCaptioningEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isDarkerSystemColorsEnabledCallback(): Promise<boolean> { return; }
+  isDarkerSystemColorsEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isGrayscaleEnabledCallback(): Promise<boolean> { return; }
+  isGrayscaleEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isGuidedAccessEnabledCallback(): Promise<boolean> { return; }
+  isGuidedAccessEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isInvertColorsEnabledCallback(): Promise<boolean> { return; }
+  isInvertColorsEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isMonoAudioEnabledCallback(): Promise<boolean> { return; }
+  isMonoAudioEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isReduceMotionEnabledCallback(): Promise<boolean> { return; }
+  isReduceMotionEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isReduceTransparencyEnabledCallback(): Promise<boolean> { return; }
+  isReduceTransparencyEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isSpeakScreenEnabledCallback(): Promise<boolean> { return; }
+  isSpeakScreenEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isSpeakSelectionEnabledCallback(): Promise<boolean> { return; }
+  isSpeakSelectionEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isSwitchControlRunningCallback(): Promise<boolean> { return; }
+  isSwitchControlRunning(): Promise<boolean> { return; }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['Amazon Fire OS', 'Android'] })
-  isTouchExplorationEnabledCallback(): Promise<boolean> { return; }
+  isTouchExplorationEnabled(): Promise<boolean> { return; }
 
   /**
    *
    * * @returns {Promise<number>} Returns the result
    */
   @Cordova()
-  getTextZoomCallback(): Promise<number> { return; }
+  getTextZoom(): Promise<number> { return; }
 
   /**
    * @param textZoom {number} A percentage value by which text in the WebView should be scaled.

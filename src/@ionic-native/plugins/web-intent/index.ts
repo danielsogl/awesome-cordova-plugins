@@ -29,7 +29,7 @@ import { Observable } from 'rxjs/Observable';
 @Plugin({
   pluginName: 'WebIntent',
   plugin: 'com-darryncampbell-cordova-plugin-intent',
-  pluginRef: 'intentShim',
+  pluginRef: 'plugins.intentShim',
   repo: 'https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent',
   platforms: ['Android']
 })

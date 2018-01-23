@@ -3,22 +3,23 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface MusicControlsOptions {
-  track: string;
-  artist: string;
-  cover: string;
-  isPlaying: boolean;
-  dismissable: boolean;
-  hasPrev: boolean;
-  hasNext: boolean;
-  hasSkipForward: boolean;
-  hasSkipBackward: boolean;
-  skipForwardInterval: number;
-  skipBackwardInterval: number;
-  hasClose: boolean;
-  album: string;
-  duration: number;
-  elapsed: number;
-  ticker: string;
+  track?: string;
+  artist?: string;
+  cover?: string;
+  isPlaying?: boolean;
+  dismissable?: boolean;
+  hasPrev?: boolean;
+  hasNext?: boolean;
+  hasSkipForward?: boolean;
+  hasSkipBackward?: boolean;
+  skipForwardInterval?: number;
+  skipBackwardInterval?: number;
+  hasScrubbing?: boolean;
+  hasClose?: boolean;
+  album?: string;
+  duration?: number;
+  elapsed?: number;
+  ticker?: string;
 }
 
 /**
@@ -51,16 +52,17 @@ export interface MusicControlsOptions {
  *   hasClose  : true,       // show close button, optional, default: false
  *
  * // iOS only, optional
- *   album       : 'Absolution'     // optional, default: ''
+ *   album       : 'Absolution',     // optional, default: ''
  *   duration : 60, // optional, default: 0
  *   elapsed : 10, // optional, default: 0
  *   hasSkipForward : true,  // show skip forward button, optional, default: false
  *   hasSkipBackward : true, // show skip backward button, optional, default: false
  *   skipForwardInterval: 15, // display number for skip forward, optional, default: 0
  *   skipBackwardInterval: 15, // display number for skip backward, optional, default: 0
+ *   hasScrubbing: false, // enable scrubbing from control center and lockscreen progress bar, optional
  *
  *   // Android only, optional
- *   // text displayed in the status bar when the notification (and the ticker) are updated
+ *   // text displayed in the status bar when the notification (and the ticker) are updated, optional
  *   ticker    : 'Now playing "Time is Running Out"'
  *  });
  *
@@ -91,7 +93,7 @@ export interface MusicControlsOptions {
  *      			break;
  *          case 'music-controls-seek-to':
  *            const seekToInSeconds = JSON.parse(action).position;
- *            MusicControls.updateElapsed({
+ *            this.musicControls.updateElapsed({
  *              elapsed: seekToInSeconds,
  *              isPlaying: true
  *            });

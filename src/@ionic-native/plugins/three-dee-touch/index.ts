@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaFunctionOverride, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-
-
-declare var window: any;
 
 export interface ThreeDeeTouchQuickAction {
 
@@ -165,16 +162,8 @@ export class ThreeDeeTouch extends IonicNativePlugin {
    * When a home icon is pressed, your app launches and this JS callback is invoked.
    * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
    */
-  onHomeIconPressed(): Observable<any> {
-    return new Observable(observer => {
-      if (window.ThreeDeeTouch) {
-        window.ThreeDeeTouch.onHomeIconPressed = observer.next.bind(observer);
-      } else {
-        observer.error('3dTouch plugin is not available.');
-        observer.complete();
-      }
-    });
-  }
+  @CordovaFunctionOverride()
+  onHomeIconPressed(): Observable<any> { return; }
 
   /**
    * Enable Link Preview.
