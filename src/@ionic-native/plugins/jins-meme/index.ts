@@ -77,7 +77,7 @@ export class JinsMeme extends IonicNativePlugin {
   connect(target: string): Observable<any> {
     return new Observable<any>((observer: any) => {
       let data = cordova.plugins.JinsMemePlugin.connect(target, observer.next.bind(observer), observer.complete.bind(observer), observer.error.bind(observer));
-      return () => console.log(data);
+      return () => console.log('@ionic-native/jins-meme: '+data);
     });
   }
   /**
