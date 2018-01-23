@@ -215,6 +215,17 @@ export interface BackgroundGeolocationConfig {
    */
   httpHeaders?: any;
 
+   /** 
+   * Custom post template
+   * With option.postTemplate is possible to specify which location properties should be posted to url or syncUrl.
+   * This can be usefull to reduce number of bytes sent over "wire"
+   * All wanted location properties has to be prefixed with @. For all available properties check Location event.
+   * Two forms are supported: jsonObject or jsonArray
+   * Note: only string keys and values are supported.
+   * Note: Keep in mind that all locations (even single one) will be sent as array of object(s), when postTemplate is jsonObject and array of array(s) for jsonArray!
+   */
+  postTemplate?: any;
+
   /**
    * IOS ONLY 
    * Switch to less accurate significant changes and region monitory when in background (default)
