@@ -125,6 +125,16 @@ export class Diagnostic extends IonicNativePlugin {
     POWERING_OFF: string;
   };
 
+  @CordovaProperty
+  motionStatus: {
+    NOT_REQUESTED: string;
+    GRANTED: string;
+    DENIED: string;
+    RESTRICTED: string;
+    NOT_AVAILABLE: string;
+    NOT_DETERMINED: string;
+    UNKNOWN: string;
+  };
 
   /**
    * Checks if app is able to access device location.
@@ -162,7 +172,7 @@ export class Diagnostic extends IonicNativePlugin {
   /**
    * Displays the device location settings to allow user to enable location services/change location mode.
    */
-  @Cordova({ sync: true, platforms: ['Android', 'Windows 10'] })
+  @Cordova({ sync: true, platforms: ['Android', 'Windows 10', 'iOS'] })
   switchToLocationSettings(): void { }
 
   /**
@@ -609,7 +619,26 @@ export class Diagnostic extends IonicNativePlugin {
   })
   registerNFCStateChangeHandler(handler: Function): void { }
 
+  /**
+   * Checks if the device data roaming setting is enabled.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  isDataRoamingEnabled(): Promise<boolean> { return; }
 
+  /**
+   * Checks if the device setting for ADB(debug) is switched on.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  isADBModeEnabled(): Promise<boolean> { return; }
+
+  /**
+   * Checks if the device is rooted.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  isDeviceRooted(): Promise<boolean> { return; }
 
   // IOS ONLY
 
@@ -640,7 +669,7 @@ export class Diagnostic extends IonicNativePlugin {
    * Checks if remote (push) notifications are enabled.
    * @returns {Promise<boolean>}
    */
-  @Cordova({ platforms: ['iOS'] })
+  @Cordova({ platforms: ['iOS', 'Android'] })
   isRemoteNotificationsEnabled(): Promise<boolean> { return; }
 
   /**
@@ -649,6 +678,14 @@ export class Diagnostic extends IonicNativePlugin {
    */
   @Cordova({ platforms: ['iOS'] })
   isRegisteredForRemoteNotifications(): Promise<boolean> { return; }
+
+  /**
+   * Returns the authorization status for the application to use Remote Notifications.
+   * Note: Works on iOS 10+ only (iOS 9 and below will invoke the error callback).
+   * @returns {Promise<string>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  getRemoteNotificationsAuthorizationStatus(): Promise<string> { return; }
 
   /**
    * Indicates the current setting of notification types for the app in the Settings app.
@@ -720,13 +757,23 @@ export class Diagnostic extends IonicNativePlugin {
   isMotionRequestOutcomeAvailable(): Promise<boolean> { return; }
 
   /**
-   * Requests and checks motion authorization for the application: there is no way to independently request only or check only, so both must be done in one operation.
+   * Requests motion tracking authorization for the application.
    *
-   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#requestandcheckmotionauthorization)
+   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#requestmotionauthorization)
    *
-   * @return {Promise<any>}
+   * @return {Promise<string>}
    */
   @Cordova({ platforms: ['iOS'] })
-  requestAndCheckMotionAuthorization(): Promise<any> { return; }
+  requestMotionAuthorization(): Promise<string> { return; }
+
+  /**
+   * Checks motion authorization status for the application.
+   *
+   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#getmotionauthorizationstatus)
+   *
+   * @return {Promise<string>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  getMotionAuthorizationStatus(): Promise<string> { return; }
 
 }

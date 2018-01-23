@@ -63,4 +63,11 @@ export class GooglePlus extends IonicNativePlugin {
   @Cordova()
   disconnect(): Promise<any> { return; }
 
+  /**
+   * This will retrieve the Android signing certificate fingerprint which is required in the Google Developer Console.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getSigningCertificateFingerprint(): Promise<any> { return; }
+
 }
