@@ -446,6 +446,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
   onStationary(): Promise<any> { return; }
 
   /**
+   * Deprecated: This method is deprecated and will be removed in next major version. Use checkStatus as replacement.
    * Check if location is enabled on the device
    * @returns {Promise<number>} Returns a promise with int argument that takes values 0, 1 (true).
    */
@@ -453,6 +454,15 @@ export class BackgroundGeolocation extends IonicNativePlugin {
     platforms: ['Android']
   })
   isLocationEnabled(): Promise<number> { return; }
+
+  /**
+   * Check Check status of the service * @returns {Promise<number>} Returns a promise object with the following attributes:
+   * isRunning	boolean	true/false (true if service is running)
+   * hasPermissions	boolean	true/false (true if service has permissions)
+   * authorization	number	0/1
+   */
+  @Cordova()
+  checkStatus(): Promise<any> { return; }
 
   /**
    * Display app settings to change permissions
