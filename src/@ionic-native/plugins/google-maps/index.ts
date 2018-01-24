@@ -1593,7 +1593,7 @@ export class Encoding {
    * @deprecation
    * @hidden
    */
-  decodePath(encoded: string, precision?: number): LatLng {
+  decodePath(encoded: string, precision?: number): Array<ILatLng> {
     console.error('GoogleMaps', '[deprecated] This method is static. Please use Encoding.decodePath()');
     return Encoding.decodePath(encoded, precision);
   }
@@ -1611,16 +1611,20 @@ export class Encoding {
    * Decodes an encoded path string into a sequence of LatLngs.
    * @param encoded {string} an encoded path string
    * @param precision? {number} default: 5
-   * @return {LatLng}
+   * @return {ILatLng[]}
    */
-  static decodePath(encoded: string, precision?: number): LatLng { return; }
+  static decodePath(encoded: string, precision?: number): Array<ILatLng> {
+    return GoogleMaps.getPlugin().geometry.encoding.decodePath(encoded, precision);
+  }
 
   /**
    * Encodes a sequence of LatLngs into an encoded path string.
    * @param path {Array<ILatLng> | BaseArrayClass<ILatLng>} a sequence of LatLngs
    * @return {string}
    */
-  static encodePath(path: Array<ILatLng> | BaseArrayClass<ILatLng>): string { return; }
+  static encodePath(path: Array<ILatLng> | BaseArrayClass<ILatLng>): string {
+    return GoogleMaps.getPlugin().geometry.encoding.encodePath(path);
+  }
 }
 
 /**
