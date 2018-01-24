@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 /**
  * @name FTP
@@ -95,24 +96,28 @@ export class FTP extends IonicNativePlugin {
    *
    * @param localFile {string} The file (with full path) you want to upload. e.g. "/local/path/to/localFile".
    * @param remoteFile {string} The file (with full path) you want to located on the ftp server. e.g. "/adf/123/newDir/remoteFile".
-   * @return {Promise<any>} Returns a promise.
+   * @return {Observable<any>} Returns an observable.
    *                        It will be triggered many times according the file's size.
    *                        The arg `0`, `0.1xx`, `0.2xx` ... `1` means the upload percent. When it reach `1`, means success.
    */
-  @Cordova()
-  upload(localFile: string, remoteFile: string): Promise<any> { return; }
+  @Cordova({
+    observable: true
+  })
+  upload(localFile: string, remoteFile: string): Observable<any> { return; }
 
   /**
    * Download one remote file on the ftp server to local path.
    *
    * @param localFile {string} The file (with full path) you want to upload. e.g. "/local/path/to/localFile".
    * @param remoteFile {string} The file (with full path) you want to located on the ftp server. e.g. "/adf/123/newDir/remoteFile".
-   * @return {Promise<any>} Returns a promise.
+   * @return {Observable<any>} Returns an observable.
    *                        It will be triggered many times according the file's size.
    *                        The arg `0`, `0.1xx`, `0.2xx` ... `1` means the upload percent. When it reach `1`, means success.
    */
-  @Cordova()
-  download(localFile: string, remoteFile: string): Promise<any> { return; }
+  @Cordova({
+    observable: true
+  })
+  download(localFile: string, remoteFile: string): Observable<any> { return; }
 
   /**
    * Cancel all requests. Always success.

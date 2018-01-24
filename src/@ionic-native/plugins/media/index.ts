@@ -284,7 +284,7 @@ export type MediaErrorCallback = (error: MediaError) => void;
   repo: 'https://github.com/apache/cordova-plugin-media',
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
 export class Media extends IonicNativePlugin {

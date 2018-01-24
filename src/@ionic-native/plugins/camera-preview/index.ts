@@ -36,6 +36,9 @@ export interface CameraPreviewOptions {
 
   /** Alpha channel of the preview box, float, [0,1], default 1 */
   alpha?: number;
+
+  /** Tap to set specific focus point. Note, this assumes the camera is full-screen. default false */
+  tapToFocus?: boolean;
 }
 
 export interface CameraPreviewPictureOptions {

@@ -418,6 +418,33 @@ export class BLE extends IonicNativePlugin {
   isEnabled(): Promise<void> { return; }
 
   /**
+   * Register to be notified when Bluetooth state changes on the device.
+   *
+   * @usage
+   * ```
+   * BLE.startStateNotifications().subscribe(state => {
+   *   console.log("Bluetooth is " + state);
+   * });
+   * ```
+   *
+   * @return Returns an Observable that notifies when the Bluetooth is enabled or disabled on the device.
+   */
+  @Cordova({
+    observable: true,
+    clearFunction: 'stopStateNotifications',
+    clearWithArgs: false
+  })
+  startStateNotifications(): Observable<any> { return; }
+
+  /**
+   * Stop state notifications.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  stopStateNotifications(): Promise<any> { return; }
+
+  /**
    * Open System Bluetooth settings (Android only).
    *
    * @returns {Promise<any>}

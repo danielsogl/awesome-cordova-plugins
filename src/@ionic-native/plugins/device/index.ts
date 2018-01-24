@@ -24,7 +24,7 @@ declare const window: any;
   plugin: 'cordova-plugin-device',
   pluginRef: 'device',
   repo: 'https://github.com/apache/cordova-plugin-device',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'macOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows']
 })
 @Injectable()
 export class Device extends IonicNativePlugin {

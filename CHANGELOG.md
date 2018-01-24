@@ -1,10 +1,86 @@
+<a name="4.5.1"></a>
+## [4.5.1](https://github.com/ionic-team/ionic-native/compare/v4.5.0...v4.5.1) (2017-12-12)
+
+
+### Bug Fixes
+
+* **core:** fix issue with CordovaFunctionOverride decorator ([6cd97ca](https://github.com/ionic-team/ionic-native/commit/6cd97ca))
+
+
+
+<a name="4.5.0"></a>
+# [4.5.0](https://github.com/ionic-team/ionic-native/compare/v4.4.2...v4.5.0) (2017-12-08)
+
+
+### Bug Fixes
+
+* **alipay:** add 'string' as an alternative type for 'pay()' input parameter; ([#2172](https://github.com/ionic-team/ionic-native/issues/2172)) ([d43fe72](https://github.com/ionic-team/ionic-native/commit/d43fe72))
+* **app-rate:** add simpleMode ([#2155](https://github.com/ionic-team/ionic-native/issues/2155)) ([9844274](https://github.com/ionic-team/ionic-native/commit/9844274))
+* **app-rate:** change openStoreInApp to inAppReview ([#2097](https://github.com/ionic-team/ionic-native/issues/2097)) ([d95ae68](https://github.com/ionic-team/ionic-native/commit/d95ae68))
+* **camera-preview:** add missing `tapToFocus` camera option ([#2046](https://github.com/ionic-team/ionic-native/issues/2046)) ([b9b781d](https://github.com/ionic-team/ionic-native/commit/b9b781d))
+* **deeplinks:** add options parameter([#1601](https://github.com/ionic-team/ionic-native/issues/1601)) ([#2141](https://github.com/ionic-team/ionic-native/issues/2141)) ([bb2291c](https://github.com/ionic-team/ionic-native/commit/bb2291c))
+* **ftp:** return observable (not promise) for upload and download method ([#2174](https://github.com/ionic-team/ionic-native/issues/2174)) ([5159367](https://github.com/ionic-team/ionic-native/commit/5159367))
+* **indexappcontent:** Return observable for onItemPressed ([#2006](https://github.com/ionic-team/ionic-native/issues/2006)) ([9a52110](https://github.com/ionic-team/ionic-native/commit/9a52110))
+* **mobile-accessibility:** change signature references to the correct names ([#2139](https://github.com/ionic-team/ionic-native/issues/2139)) ([b2c873c](https://github.com/ionic-team/ionic-native/commit/b2c873c))
+* **ms-adal:** add userInfo in the AuthenticationResult ([#2160](https://github.com/ionic-team/ionic-native/issues/2160)) ([c038c63](https://github.com/ionic-team/ionic-native/commit/c038c63))
+* **music-controls:** various fixes ([#2094](https://github.com/ionic-team/ionic-native/issues/2094)) ([afca876](https://github.com/ionic-team/ionic-native/commit/afca876))
+* **push:** add senderID to AndroidPushOptions ([#2060](https://github.com/ionic-team/ionic-native/issues/2060)) ([4694c42](https://github.com/ionic-team/ionic-native/commit/4694c42))
+* **web-intent:** fix false negative of plugin installation ([#2062](https://github.com/ionic-team/ionic-native/issues/2062)) ([ae94c71](https://github.com/ionic-team/ionic-native/commit/ae94c71))
+
+
+### Features
+
+* **android exoplayer:** add cordova-plugin-exoplayer ([#2180](https://github.com/ionic-team/ionic-native/issues/2180)) ([d06fa48](https://github.com/ionic-team/ionic-native/commit/d06fa48))
+* **android-fingerprint:** add getSigningCertificateFingerprint() method ([#2076](https://github.com/ionic-team/ionic-native/issues/2076)) ([bd5bcdc](https://github.com/ionic-team/ionic-native/commit/bd5bcdc))
+* **apple-pay:** add cordova-plugin-applepay ([#2081](https://github.com/ionic-team/ionic-native/issues/2081)) ([784f948](https://github.com/ionic-team/ionic-native/commit/784f948))
+* **apple-pay:** update for version 3 of the Apple Pay plugin. ([#2177](https://github.com/ionic-team/ionic-native/issues/2177)) ([bf41506](https://github.com/ionic-team/ionic-native/commit/bf41506))
+* **ble:** support startStateNotifications & stopStateNotifications ([#2085](https://github.com/ionic-team/ionic-native/issues/2085)) ([2a4bcee](https://github.com/ionic-team/ionic-native/commit/2a4bcee))
+* **braintree:** add support for cordova-plugin-braintree to [@ionic-native](https://github.com/ionic-native) ([#2073](https://github.com/ionic-team/ionic-native/issues/2073)) ([091ac7a](https://github.com/ionic-team/ionic-native/commit/091ac7a))
+* **call-number:** add isCallSupported method  ([#2051](https://github.com/ionic-team/ionic-native/issues/2051)) ([6053296](https://github.com/ionic-team/ionic-native/commit/6053296))
+* **dns:** add cordova-plugin-dns plugin ([#2083](https://github.com/ionic-team/ionic-native/issues/2083)) ([212bd63](https://github.com/ionic-team/ionic-native/commit/212bd63))
+* **firebase:** add new Firebase phone verification methods ([#2157](https://github.com/ionic-team/ionic-native/issues/2157)) ([86181af](https://github.com/ionic-team/ionic-native/commit/86181af))
+* **GooglePlayGamesServices:** add plugin ([#1904](https://github.com/ionic-team/ionic-native/issues/1904)) ([03f5789](https://github.com/ionic-team/ionic-native/commit/03f5789))
+* **network-interface:** add plugin support ([#2063](https://github.com/ionic-team/ionic-native/issues/2063)) ([86b2a2c](https://github.com/ionic-team/ionic-native/commit/86b2a2c))
+* **nfc:** add interfaces and missing references to UriHelper and TextHelper ([#2104](https://github.com/ionic-team/ionic-native/issues/2104)) ([8b78644](https://github.com/ionic-team/ionic-native/commit/8b78644))
+* **nfc:** add support for iOS ([#2050](https://github.com/ionic-team/ionic-native/issues/2050)) ([9f72592](https://github.com/ionic-team/ionic-native/commit/9f72592))
+* **push:** add support for version 2.1.0 ([#2064](https://github.com/ionic-team/ionic-native/issues/2064)) ([c1ce5da](https://github.com/ionic-team/ionic-native/commit/c1ce5da))
+* **zeroconf:** add reInit() method ([#2144](https://github.com/ionic-team/ionic-native/issues/2144)) ([7255795](https://github.com/ionic-team/ionic-native/commit/7255795))
+
+
+
+<a name="4.4.2"></a>
+## [4.4.2](https://github.com/ionic-team/ionic-native/compare/v4.4.1...v4.4.2) (2017-11-15)
+
+
+
+<a name="4.4.1"></a>
+## [4.4.1](https://github.com/ionic-team/ionic-native/compare/v4.4.0...v4.4.1) (2017-11-13)
+
+
+
+<a name="4.4.0"></a>
+# [4.4.0](https://github.com/ionic-team/ionic-native/compare/v4.3.3...v4.4.0) (2017-11-09)
+
+
+### Features
+
+* **google-maps:** accept own properties for `addMarker()` and others ([#2093](https://github.com/ionic-team/ionic-native/issues/2093)) ([196be02](https://github.com/ionic-team/ionic-native/commit/196be02))
+* **http:** add support for new methods ([#2054](https://github.com/ionic-team/ionic-native/issues/2054)) ([d96d3ee](https://github.com/ionic-team/ionic-native/commit/d96d3ee))
+
+
+
 <a name="4.3.3"></a>
-## [4.3.3](https://github.com/ionic-team/ionic-native/compare/4.3.2...v4.3.3) (2017-11-01)
+## [4.3.3](https://github.com/ionic-team/ionic-native/compare/v4.3.2...v4.3.3) (2017-11-01)
 
 
 ### Bug Fixes
 
 * **google-maps:** HtmlInfoWindow should extend BaseClass [#2034](https://github.com/ionic-team/ionic-native/issues/2034)  ([#2035](https://github.com/ionic-team/ionic-native/issues/2035)) ([ce6e412](https://github.com/ionic-team/ionic-native/commit/ce6e412))
+
+
+
+<a name="4.3.2"></a>
+## [4.3.2](https://github.com/ionic-team/ionic-native/compare/4.3.2...v4.3.2) (2017-10-18)
 
 
 
@@ -24,17 +100,7 @@
 
 
 <a name="4.3.1"></a>
-## [4.3.1](https://github.com/ionic-team/ionic-native/compare/v4.3.1...4.3.1) (2017-10-06)
-
-
-### Features
-
-* **pro:** Add support for Ionic Pro by incorporating cordova-plugin-ionic ([465d551](https://github.com/ionic-team/ionic-native/commit/465d551))
-
-
-
-<a name="4.3.1"></a>
-## [4.3.1](https://github.com/ionic-team/ionic-native/compare/v4.3.0...v4.3.1) (2017-10-06)
+## [4.3.1](https://github.com/ionic-team/ionic-native/compare/v4.3.0...4.3.1) (2017-10-06)
 
 
 ### Bug Fixes
@@ -46,6 +112,7 @@
 
 ### Features
 
+* **pro:** Add support for Ionic Pro by incorporating cordova-plugin-ionic ([465d551](https://github.com/ionic-team/ionic-native/commit/465d551))
 * **regula-document-reader:** separate initialization and scanning, add android ([#2013](https://github.com/ionic-team/ionic-native/issues/2013)) ([2179699](https://github.com/ionic-team/ionic-native/commit/2179699))
 
 
@@ -58,7 +125,6 @@
 
 * **google-maps:** convert JS classes to Ionic Native ([#1956](https://github.com/ionic-team/ionic-native/issues/1956)) ([57af5c5](https://github.com/ionic-team/ionic-native/commit/57af5c5))
 * **google-maps:** fix icons property of MarkerClusterOptions ([#1937](https://github.com/ionic-team/ionic-native/issues/1937)) ([8004790](https://github.com/ionic-team/ionic-native/commit/8004790))
-* **google-maps:** fix issue when creating new instance of BaseArrayClass ([#1931](https://github.com/ionic-team/ionic-native/issues/1931)) ([957396b](https://github.com/ionic-team/ionic-native/commit/957396b))
 * **google-maps:** the zoom option is missing in the GoogleMapOptions class ([#1948](https://github.com/ionic-team/ionic-native/issues/1948)) ([ef898ef](https://github.com/ionic-team/ionic-native/commit/ef898ef))
 * **http:** fix plugin ref ([#1934](https://github.com/ionic-team/ionic-native/issues/1934)) ([3a1034e](https://github.com/ionic-team/ionic-native/commit/3a1034e))
 * **launch-navigator:** fix navigate method ([#1940](https://github.com/ionic-team/ionic-native/issues/1940)) ([a150d4d](https://github.com/ionic-team/ionic-native/commit/a150d4d))
@@ -80,6 +146,16 @@
 ### BREAKING CHANGES
 
 * **push:** this wrapper will work only with `phonegap-plugin-push@2.0.0`
+
+
+
+<a name="4.2.1"></a>
+## [4.2.1](https://github.com/ionic-team/ionic-native/compare/v4.2.0...v4.2.1) (2017-08-29)
+
+
+### Bug Fixes
+
+* **google-maps:** fix issue when creating new instance of BaseArrayClass ([#1931](https://github.com/ionic-team/ionic-native/issues/1931)) ([957396b](https://github.com/ionic-team/ionic-native/commit/957396b))
 
 
 
@@ -1832,13 +1908,13 @@ The whole implementation has changed now. You must update your code.
 * **geolocation:** call correct clearFunction ([9e86a40](https://github.com/ionic-team/ionic-native/commit/9e86a40))
 * **plugin:** return originalMethod return value ([240f0f8](https://github.com/ionic-team/ionic-native/commit/240f0f8))
 * **plugin:** use call for id based clearFunction ([c2fdf39](https://github.com/ionic-team/ionic-native/commit/c2fdf39))
-* datepicker plugin, pluginref, and [@Cordova](https://github.com/Cordova) wrapper ([499ead3](https://github.com/ionic-team/ionic-native/commit/499ead3))
+* datepicker plugin, pluginref, and @Cordova wrapper ([499ead3](https://github.com/ionic-team/ionic-native/commit/499ead3))
 
 
 ### Features
 
 * **DatePicker:** Added DatePicker ([5afa58f](https://github.com/ionic-team/ionic-native/commit/5afa58f))
-* **plugin:** add sync option to [@Cordova](https://github.com/Cordova) for sync functions ([17e3827](https://github.com/ionic-team/ionic-native/commit/17e3827))
+* **plugin:** add sync option to @Cordova for sync functions ([17e3827](https://github.com/ionic-team/ionic-native/commit/17e3827))
 * **plugin:** call clearFunction with original fn args ([8f27fc9](https://github.com/ionic-team/ionic-native/commit/8f27fc9))
 * add app version plugin ([20cb01f](https://github.com/ionic-team/ionic-native/commit/20cb01f))
 * add app version plugin ([8b78521](https://github.com/ionic-team/ionic-native/commit/8b78521))

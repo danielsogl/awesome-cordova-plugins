@@ -23,6 +23,13 @@ export interface DeeplinkMatch {
 
 }
 
+export interface DeeplinkOptions {
+  /**
+   * Set the matched route as root page using `navCtrl.setRoot()` method.
+   */
+  root: boolean;
+}
+
 /**
  * @name Deeplinks
  * @description This plugin handles deeplinks on iOS and Android for both custom URL scheme links
@@ -116,6 +123,8 @@ export class Deeplinks extends IonicNativePlugin {
    * promise result which you can then use to navigate in the app as you see fit.
    *
    * @param {Object} paths
+   * 
+   * @param {DeeplinkOptions} options
    *
    * @returns {Observable<DeeplinkMatch>} Returns an Observable that resolves each time a deeplink comes through, and
    * errors if a deeplink comes through that does not match a given path.
@@ -123,6 +132,6 @@ export class Deeplinks extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  routeWithNavController(navController: any, paths: any): Observable<DeeplinkMatch> { return; }
+  routeWithNavController(navController: any, paths: any, options?: DeeplinkOptions): Observable<DeeplinkMatch> { return; }
 
 }

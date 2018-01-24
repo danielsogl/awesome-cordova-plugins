@@ -132,6 +132,11 @@ export interface CategoryActionData {
 
 export interface AndroidPushOptions {
   /**
+   * Maps to the project number in the Google Developer Console.
+   */
+  senderID: string;
+
+  /**
    * The name of a drawable resource to use as the small-icon. The name should
    * not include the extension.
    */
@@ -208,7 +213,15 @@ export interface PushOptions {
   browser?: BrowserPushOptions;
 }
 
-export type PushEvent = 'registration' | 'error' | 'notification';
+export type Priority = 1 | 2 | 3 | 4 | 5;
+
+export interface Channel {
+  id: string;
+  description: string;
+  importance: Priority;
+}
+
+export type PushEvent = string;
 
 /**
  * @name Push
@@ -240,6 +253,20 @@ export type PushEvent = 'registration' | 'error' | 'notification';
  *
  *   });
  *
+ * // Create a channel (Android O and above). You'll need to provide the id, description and importance properties.
+ * this.push.createChannel({
+ *  id: "testchannel1",
+ *  description: "My first test channel",
+ *  // The importance property goes from 1 = Lowest, 2 = Low, 3 = Normal, 4 = High and 5 = Highest.
+ *  importance: 3
+ * }).then(() => console.log('Channel created'));
+ *
+ * // Delete a channel (Android O and above)
+ * this.push.deleteChannel('testchannel1').then(() => console.log('Channel deleted'));
+ *
+ * // Return a list of currently configured channels
+ * this.push.listChannels().then((channels) => console.log('List of channels', channels))
+ *
  * // to initialize push notifications
  *
  * const options: PushOptions = {
@@ -256,6 +283,7 @@ export type PushEvent = 'registration' | 'error' | 'notification';
  * };
  *
  * const pushObject: PushObject = this.push.init(options);
+ *
  *
  * pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
  *
@@ -301,6 +329,27 @@ export class Push extends IonicNativePlugin {
    */
   @Cordova()
   hasPermission(): Promise<{ isEnabled: boolean }> { return; }
+
+  /**
+   * Create a new notification channel for Android O and above.
+   * @param channel {Channel}
+   */
+  @Cordova()
+  createChannel(channel: Channel): Promise<any> { return; }
+
+  /**
+   * Delete a notification channel for Android O and above.
+   * @param id
+   */
+  @Cordova()
+  deleteChannel(id: string): Promise<any> { return; }
+
+  /**
+   * Returns a list of currently configured channels.
+   * @return {Promise<Channel[]>}
+   */
+  @Cordova()
+  listChannels(): Promise<Channel[]> { return; }
 
 }
 
@@ -365,9 +414,12 @@ export class PushObject {
    * iOS only
    * Tells the OS that you are done processing a background push notification.
    * successHandler gets called when background push processing is successfully completed.
+   * @param [id]
    */
-  @CordovaInstance()
-  finish(): Promise<any> { return; }
+  @CordovaInstance({
+    callbackOrder: 'reverse'
+  })
+  finish(id?: string): Promise<any> { return; }
 
   /**
    * Tells the OS to clear all notifications from the Notification Center

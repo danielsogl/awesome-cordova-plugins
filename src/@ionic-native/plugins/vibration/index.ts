@@ -33,7 +33,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-vibration',
   pluginRef: 'navigator',
   repo: 'https://github.com/apache/cordova-plugin-vibration',
-  platforms: ['Android', 'BlackBerry 10', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
 export class Vibration extends IonicNativePlugin {
