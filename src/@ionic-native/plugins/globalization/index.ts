@@ -4,6 +4,12 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Globalization
  * @description
+ * This plugin obtains information and performs operations specific to the user's locale, language, and timezone.
+ *
+ * @deprecated
+ * With the [ECMA Internationalization API](https://www.ecma-international.org/ecma-402/1.0/) now supported on iOS, Android and Windows devices, this plugin is not required any more.
+ * Migrating from this plugin to the [ECMA Internationalization API](https://www.ecma-international.org/ecma-402/1.0/) is explained in this [Cordova blog post](https://cordova.apache.org/news/2017/11/20/migrate-from-cordova-globalization-plugin.html).
+ *
  * @usage
  * ```typescript
  * import { Globalization } from '@ionic-native/globalization';
@@ -26,7 +32,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-globalization',
   pluginRef: 'navigator.globalization',
   repo: 'https://github.com/apache/cordova-plugin-globalization',
-  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
 export class Globalization extends IonicNativePlugin {

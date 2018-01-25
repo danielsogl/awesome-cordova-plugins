@@ -261,6 +261,10 @@ export class ContactFindOptions implements IContactFindOptions {
  * @description
  * Access and manage Contacts on the device.
  *
+ * @deprecated
+ * This plugin is being deprecated. No more work will be done on this plugin by the Cordova development community.
+ *  You can continue to use this plugin and it should work as-is in the future but any more arising issues will not be fixed by the Cordova community.
+ *
  * @usage
  *
  * ```typescript
@@ -294,7 +298,7 @@ export class ContactFindOptions implements IContactFindOptions {
   plugin: 'cordova-plugin-contacts',
   pluginRef: 'navigator.contacts',
   repo: 'https://github.com/apache/cordova-plugin-contacts',
-  platforms: ['Android', 'BlackBerry 10', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
 export class Contacts extends IonicNativePlugin {
