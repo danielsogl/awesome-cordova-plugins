@@ -36,28 +36,21 @@ export interface DeployConfig {
  */
 export class ProDeploy {
 
-  constructor(private _objectInstance: any) {
-  }
+  constructor(private _objectInstance: any) { }
 
   /**
    * Re-initialize Deploy plugin with a new App ID and host.  Not used in most cases.
    * @param config A valid Deploy config object
    */
   @CordovaInstance()
-  init(config: DeployConfig): Promise<any> {
-    return;
-  }
+  init(config: DeployConfig): Promise<any> { return; }
 
   /**
    * Check a channel for an available update
    * @return {Promise<string>} Resolves with 'true' or 'false', or rejects with an error.
    */
-  @CordovaInstance({
-    observable: true
-  })
-  check(): Promise<string> {
-    return;
-  }
+  @CordovaInstance()
+  check(): Promise<string> { return; }
 
   /**
    * Download an available version
@@ -66,18 +59,16 @@ export class ProDeploy {
   @CordovaInstance({
     observable: true
   })
-  download(): Observable<any> {
-    return;
-  }
+  download(): Observable<any> { return; }
 
   /**
    * Unzip the latest downloaded version
    * @return {Observable<any>} Updates with percent completion, or errors with a message.
    */
-  @CordovaInstance()
-  extract(): Observable<any> {
-    return;
-  }
+  @CordovaInstance({
+    observable: true
+  })
+  extract(): Observable<any> { return; }
 
   /**
    * Reload app with the deployed version
