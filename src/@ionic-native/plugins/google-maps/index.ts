@@ -1590,6 +1590,28 @@ export class Geocoder {
  */
 @Plugin({
   pluginName: 'GoogleMaps',
+  pluginRef: 'plugin.google.maps.Geolocation',
+  plugin: 'cordova-plugin-googlemaps',
+  repo: ''
+})
+export class Geolocation {
+
+  /**
+   * Get the current device location
+   * @return {Promise<MyLocation>}
+   */
+  static getMyLocation(options?: MyLocationOptions): Promise<MyLocation> {
+    return new Promise<MyLocation>((resolve, reject) => {
+      GoogleMaps.getPlugin().Geolocation.getMyLocation(options, resolve);
+    });
+  }
+}
+
+/**
+ * @hidden
+ */
+@Plugin({
+  pluginName: 'GoogleMaps',
   pluginRef: 'plugin.google.maps.geometry.encoding',
   plugin: 'cordova-plugin-googlemaps',
   repo: ''
