@@ -135,7 +135,7 @@ export class Pro extends IonicNativePlugin {
   /**
    * Ionic Pro Deploy .js API.
    */
-  @CordovaCheck()
+  @CordovaCheck({ sync: true })
   deploy(): ProDeploy {
     if (this._deploy) return this._deploy;
     else return this._deploy = new ProDeploy(Pro.getPlugin().deploy);
