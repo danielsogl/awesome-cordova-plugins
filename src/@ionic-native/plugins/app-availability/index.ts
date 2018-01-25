@@ -27,8 +27,8 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * this.appAvailability.check(app)
  *   .then(
- *     (yes: string) => console.log(app + ' is available'),
- *     (no: string) => console.log(app + ' is NOT available')
+ *     (yes: boolean) => console.log(app + ' is available'),
+ *     (no: boolean) => console.log(app + ' is NOT available')
  *   );
  * ```
  */
