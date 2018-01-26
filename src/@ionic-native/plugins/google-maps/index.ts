@@ -106,9 +106,14 @@ export interface GoogleMapOptions {
     compass?: boolean;
 
     /**
-     * Turns the myLocation picker on or off. If turns on this button, the application displays a permission dialog to obtain the geolocation data.
+     * Turns the myLocation button on or off. If turns on this button, the application displays a permission dialog to obtain the geolocation data.
      */
     myLocationButton?: boolean;
+
+    /**
+     * Turns the myLocation control(blue dot) on or off. If turns on this control, the application displays a permission dialog to obtain the geolocation data.
+     */
+    myLocation?: boolean;
 
     /**
      * Turns the indoor picker on or off.
@@ -2145,11 +2150,18 @@ export class GoogleMap extends BaseClass {
   fromPointToLatLng(point: any): Promise<LatLng> { return; }
 
   /**
-   * Set true if you want to show the MyLocation button
+   * Set true if you want to show the MyLocation control (blue dot)
    * @param enabled {boolean}
    */
   @CordovaInstance({ sync: true })
   setMyLocationEnabled(enabled: boolean): void {}
+
+  /**
+   * Set true if you want to show the MyLocation button
+   * @param enabled {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setMyLocationButtonEnabled(enabled: boolean): void {}
 
   /**
    * Get the currently focused building
