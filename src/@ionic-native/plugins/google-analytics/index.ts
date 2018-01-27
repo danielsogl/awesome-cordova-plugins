@@ -210,4 +210,22 @@ export class GoogleAnalytics extends IonicNativePlugin {
   @Cordova()
   enableUncaughtExceptionReporting(shouldEnable: boolean): Promise<any> { return; }
 
+  /**
+   * Set a parameter
+   * https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#cs
+   * @param {string} key
+   * @param {string} value
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setVar(key: string, value: string): Promise<any> { return; }
+
+  /**
+   * Get a parameter
+   * https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#cs
+   * @param {string} key
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getVar(key: string): Promise<any> { return; }
 }
