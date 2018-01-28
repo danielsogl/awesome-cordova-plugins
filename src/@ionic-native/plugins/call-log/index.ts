@@ -27,9 +27,9 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 export class CallLog extends IonicNativePlugin {
 
   /**
-   * This function does something
-   * @param dateFrom {string} get call logs from this date (format yyyy-dd-mm)
-   * @param dateTo {string} get call logs until this date (format yyyy-dd-mm)
+   * This function return the call logs
+   * @param dateFrom {string} get logs from this date (format yyyy-MM-dd)
+   * @param dateTo {string} get logs until this date (format yyyy-MM-dd)
    * @param filters {object[]} array of object to filter the query
    * Object must respect this structure {'name':'...', 'value': '...', 'operator': '=='}
    * (see https://github.com/creacore-team/cordova-plugin-calllog for more details)
