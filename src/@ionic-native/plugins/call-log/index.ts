@@ -28,15 +28,13 @@ export class CallLog extends IonicNativePlugin {
 
   /**
    * This function return the call logs
-   * @param dateFrom {string} get logs from this date (format yyyy-MM-dd)
-   * @param dateTo {string} get logs until this date (format yyyy-MM-dd)
    * @param filters {object[]} array of object to filter the query
    * Object must respect this structure {'name':'...', 'value': '...', 'operator': '=='}
    * (see https://github.com/creacore-team/cordova-plugin-calllog for more details)
    * @return {Promise<any>}
    */
   @Cordova()
-  getCallLog(dateFrom: string, dateTo: string, filters: object[]): Promise<any> { return; }
+  getCallLog(filters: object[]): Promise<any> { return; }
 
   /**
    * Check permission
