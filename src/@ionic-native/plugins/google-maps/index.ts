@@ -1188,7 +1188,7 @@ export class BaseArrayClass<T> extends BaseClass {
   @CordovaCheck()
   forEachAsync(fn: ((element: T, callback: () => void) => void)): Promise<void> {
     return new Promise<void>((resolve) => {
-      this._objectInstance.forEach(fn, resolve);
+      this._objectInstance.forEachAsync(fn, resolve);
     });
   }
 
@@ -1212,7 +1212,20 @@ export class BaseArrayClass<T> extends BaseClass {
   @CordovaCheck()
   mapAsync(fn: ((element: T, callback: (newElement: any) => void) => void)): Promise<any[]> {
     return new Promise<any[]>((resolve) => {
-      this._objectInstance.map(fn, resolve);
+      this._objectInstance.mapAsync(fn, resolve);
+    });
+  }
+
+  /**
+   * Same as `mapAsync`, but keep the execution order
+   * @param fn {Function}
+   * @param callback? {Function}
+   * @return {Promise<any>} returns a new array with the results
+   */
+  @CordovaCheck()
+  mapSeries(fn: ((element: T, callback: (newElement: any) => void) => void)): Promise<any[]> {
+    return new Promise<any[]>((resolve) => {
+      this._objectInstance.mapSeries(fn, resolve);
     });
   }
 
@@ -1234,7 +1247,7 @@ export class BaseArrayClass<T> extends BaseClass {
   @CordovaCheck()
   filterAsync(fn: (element: T, callback: (result: boolean) => void) => void): Promise<T[]> {
     return new Promise<any[]>((resolve) => {
-      this._objectInstance.filter(fn, resolve);
+      this._objectInstance.filterAsync(fn, resolve);
     });
   }
 
