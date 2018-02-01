@@ -1608,11 +1608,11 @@ export class Geocoder {
  */
 @Plugin({
   pluginName: 'GoogleMaps',
-  pluginRef: 'plugin.google.maps.Geolocation',
+  pluginRef: 'plugin.google.maps.LocationService',
   plugin: 'cordova-plugin-googlemaps',
   repo: ''
 })
-export class Geolocation {
+export class LocationService {
 
   /**
    * Get the current device location
@@ -1620,7 +1620,7 @@ export class Geolocation {
    */
   static getMyLocation(options?: MyLocationOptions): Promise<MyLocation> {
     return new Promise<MyLocation>((resolve, reject) => {
-      GoogleMaps.getPlugin().Geolocation.getMyLocation(options, resolve);
+      GoogleMaps.getPlugin().LocationService.getMyLocation(options, resolve);
     });
   }
 }
