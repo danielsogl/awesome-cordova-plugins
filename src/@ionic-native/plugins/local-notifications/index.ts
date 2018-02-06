@@ -147,7 +147,7 @@ export interface ILocalNotification {
  */
 @Plugin({
   pluginName: 'LocalNotifications',
-  plugin: 'de.appplant.cordova.plugin.local-notification',
+  plugin: 'cordova-plugin-local-notification',
   pluginRef: 'cordova.plugins.notification.local',
   repo: 'https://github.com/katzer/cordova-plugin-local-notifications',
   platforms: ['Android', 'iOS', 'Windows']
@@ -323,6 +323,16 @@ export class LocalNotifications extends IonicNativePlugin {
     sync: true
   })
   on(eventName: string, callback: any): void { }
+
+  /**
+   * Removes a callback of a specific event
+   * @param eventName The name of the event. Available events: schedule, trigger, click, update, clear, clearall, cancel, cancelall
+   * @param callback Call back function. All events return notification and state parameter. clear and clearall return state parameter only.
+   */
+  @Cordova({
+    sync: true
+  })
+  un(eventName: string, callback: any): void { }
 
 
 }

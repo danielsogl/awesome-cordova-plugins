@@ -38,6 +38,6 @@ export class Crop extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  crop(pathToImage: string, options?: { quality: number }): Promise<string> { return; }
+  crop(pathToImage: string, options?: { quality: number, targetHeight: number, targetWidth: number  }): Promise<string> { return; }
 
 }

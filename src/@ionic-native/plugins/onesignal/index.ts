@@ -165,7 +165,7 @@ export interface OSNotificationPayload {
   /**
    * URL to open when opening the notification.
    */
-  launchUrl?: string;
+  launchURL?: string;
   /**
    * Sound resource to play when the notification is shown.
    */
@@ -301,7 +301,8 @@ export enum OSActionType {
  * The OneSignal plugin is an client implementation for using the [OneSignal](https://onesignal.com/) Service.
  * OneSignal is a simple implementation for delivering push notifications.
  *
- * Requires Cordova plugin: `onesignal-cordova-plugin`. For more info, please see the [OneSignal Cordova Docs](https://documentation.onesignal.com/docs/phonegap-sdk-installation).
+ * Please view the official [OneSignal Ionic SDK Installation](https://documentation.onesignal.com/docs/ionic-sdk-setup) guide
+ * for more information.
  *
  * #### Icons
  * If you want to use generated icons with command `ionic cordova resources`:

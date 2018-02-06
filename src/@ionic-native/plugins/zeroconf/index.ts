@@ -14,7 +14,7 @@ export interface ZeroconfService {
 }
 
 export interface ZeroconfResult {
-  action: 'registered' | 'added' | 'removed';
+  action: 'registered' | 'added' | 'removed' | 'resolved';
   service: ZeroconfService;
 }
 
@@ -124,4 +124,11 @@ export class Zeroconf extends IonicNativePlugin {
    */
   @Cordova()
   close(): Promise<void> { return; }
+
+  /**
+   * Re-initializes the plugin to clean service & browser state.
+   * @return {Promise<void>}
+   */
+  @Cordova()
+  reInit(): Promise<void> { return; }
 }

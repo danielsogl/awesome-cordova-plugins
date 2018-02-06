@@ -29,7 +29,7 @@ export interface SpinnerDialogIOSOptions {
 @Plugin({
   pluginName: 'SpinnerDialog',
   plugin: 'cordova-plugin-native-spinner',
-  pluginRef: 'window.plugins.spinnerDialog',
+  pluginRef: 'SpinnerDialog',
   repo: 'https://github.com/greybax/cordova-plugin-native-spinner',
   platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows']
 })

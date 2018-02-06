@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, CordovaInstance, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-declare var window: any;
+declare const window: any;
 
 export type EventResponse = RegistrationEventResponse & NotificationEventResponse & Error;
 
@@ -63,15 +63,9 @@ export interface NotificationEventAdditionalData {
 
 export interface IOSPushOptions {
   /**
-   * Maps to the project number in the Google Developer Console. Setting this
-   * uses GCM for notifications instead of native.
-   */
-  senderID?: string;
-
-  /**
    * Whether to use prod or sandbox GCM setting.
    */
-  gcmSandbox?: boolean | string;
+  fcmSandbox?: boolean | string;
 
   /**
    * If true the device shows an alert on receipt of notification.
@@ -186,15 +180,48 @@ export interface AndroidPushOptions {
    * subscribe to a GcmPubSub topic.
    */
   topics?: string[];
+
+  /**
+   * The key to search for text of notification.
+   */
+  messageKey?: string;
+
+  /**
+   * The key to search for title of notification.
+   */
+  titleKey?: string;
+}
+
+export interface BrowserPushOptions {
+  /**
+   * Optional. Your GCM API key if you are using VAPID keys.
+   */
+  applicationServerKey?: string;
+
+  /**
+   * URL for the push server you want to use.
+   * Default: http://push.api.phonegap.com/v1/push	Optional.
+   */
+  pushServiceURL?: string;
+
 }
 
 export interface PushOptions {
   ios?: IOSPushOptions;
   android?: AndroidPushOptions;
   windows?: any;
+  browser?: BrowserPushOptions;
 }
 
-export type PushEvent = 'registration' | 'error' | 'notification';
+export type Priority = 1 | 2 | 3 | 4 | 5;
+
+export interface Channel {
+  id: string;
+  description: string;
+  importance: Priority;
+}
+
+export type PushEvent = string;
 
 /**
  * @name Push
@@ -226,21 +253,37 @@ export type PushEvent = 'registration' | 'error' | 'notification';
  *
  *   });
  *
+ * // Create a channel (Android O and above). You'll need to provide the id, description and importance properties.
+ * this.push.createChannel({
+ *  id: "testchannel1",
+ *  description: "My first test channel",
+ *  // The importance property goes from 1 = Lowest, 2 = Low, 3 = Normal, 4 = High and 5 = Highest.
+ *  importance: 3
+ * }).then(() => console.log('Channel created'));
+ *
+ * // Delete a channel (Android O and above)
+ * this.push.deleteChannel('testchannel1').then(() => console.log('Channel deleted'));
+ *
+ * // Return a list of currently configured channels
+ * this.push.listChannels().then((channels) => console.log('List of channels', channels))
+ *
  * // to initialize push notifications
  *
  * const options: PushOptions = {
- *    android: {
- *        senderID: '12345679'
- *    },
+ *    android: {},
  *    ios: {
  *        alert: 'true',
  *        badge: true,
  *        sound: 'false'
  *    },
- *    windows: {}
+ *    windows: {},
+ *    browser: {
+ *        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+ *    }
  * };
  *
  * const pushObject: PushObject = this.push.init(options);
+ *
  *
  * pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
  *
@@ -257,6 +300,7 @@ export type PushEvent = 'registration' | 'error' | 'notification';
  * NotificationEventAdditionalData
  * IOSPushOptions
  * AndroidPushOptions
+ * BrowserPushOptions
  * PushOptions
  */
 @Plugin({
@@ -264,8 +308,7 @@ export type PushEvent = 'registration' | 'error' | 'notification';
   plugin: 'phonegap-plugin-push',
   pluginRef: 'PushNotification',
   repo: 'https://github.com/phonegap/phonegap-plugin-push',
-  install: 'ionic cordova plugin add phonegap-plugin-push --variable SENDER_ID=XXXXXXXXX',
-  installVariables: ['SENDER_ID'],
+  install: 'ionic cordova plugin add phonegap-plugin-push',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
@@ -286,6 +329,27 @@ export class Push extends IonicNativePlugin {
    */
   @Cordova()
   hasPermission(): Promise<{ isEnabled: boolean }> { return; }
+
+  /**
+   * Create a new notification channel for Android O and above.
+   * @param channel {Channel}
+   */
+  @Cordova()
+  createChannel(channel: Channel): Promise<any> { return; }
+
+  /**
+   * Delete a notification channel for Android O and above.
+   * @param id
+   */
+  @Cordova()
+  deleteChannel(id: string): Promise<any> { return; }
+
+  /**
+   * Returns a list of currently configured channels.
+   * @return {Promise<Channel[]>}
+   */
+  @Cordova()
+  listChannels(): Promise<Channel[]> { return; }
 
 }
 
@@ -350,9 +414,12 @@ export class PushObject {
    * iOS only
    * Tells the OS that you are done processing a background push notification.
    * successHandler gets called when background push processing is successfully completed.
+   * @param [id]
    */
-  @CordovaInstance()
-  finish(): Promise<any> { return; }
+  @CordovaInstance({
+    callbackOrder: 'reverse'
+  })
+  finish(id?: string): Promise<any> { return; }
 
   /**
    * Tells the OS to clear all notifications from the Notification Center

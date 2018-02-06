@@ -59,9 +59,9 @@ export interface HTTPResponse {
  */
 @Plugin({
   pluginName: 'HTTP',
-  plugin: 'cordova-plugin-http',
-  pluginRef: 'cordovaHTTP',
-  repo: 'https://github.com/wymsee/cordova-HTTP',
+  plugin: 'cordova-plugin-advanced-http',
+  pluginRef: 'cordova.plugin.http',
+  repo: 'https://github.com/silkimen/cordova-plugin-advanced-http',
   platforms: ['Android', 'iOS']
 })
 @Injectable()
@@ -93,6 +93,41 @@ export class HTTP extends IonicNativePlugin {
   setHeader(header: string, value: string): void { }
 
   /**
+   * Set the data serializer which will be used for all future POST and PUT requests. Takes a string representing the name of the serializer.
+   * @param serializer {string} The name of the serializer. Can be urlencoded or json
+   */
+  @Cordova({ sync: true })
+  setDataSerializer(serializer: string): void { }
+
+  /**
+   * Clear all cookies
+   */
+  @Cordova({ sync: true })
+  clearCookies(): void { }
+
+  /**
+   * Remove cookies
+   * @param url {string}
+   * @param cb
+   */
+  @Cordova({ sync: true })
+  removeCookies(url: string, cb: () => void): void { }
+
+  /**
+   * Disable following redirects automatically
+   * @param disable {boolean} Set to true to disable following redirects automatically
+   */
+  @Cordova({ sync: true })
+  disableRedirect(disable: boolean): void { }
+
+  /**
+   * Set request timeout
+   * @param timeout {number} The timeout in seconds. Default 60
+   */
+  @Cordova({ sync: true })
+  setRequestTimeout(timeout: number): void { }
+
+  /**
    * Enable or disable SSL Pinning. This defaults to false.
    *
    * To use SSL pinning you must include at least one .cer SSL certificate in your app project. You can pin to your server certificate or to one of the issuing CA certificates. For ios include your certificate in the root level of your bundle (just add the .cer file to your project/target at the root level). For android include your certificate in your project's platforms/android/assets folder. In both cases all .cer files found will be loaded automatically. If you only have a .pem certificate see this stackoverflow answer. You want to convert it to a DER encoded certificate with a .cer extension.
@@ -113,14 +148,6 @@ export class HTTP extends IonicNativePlugin {
   acceptAllCerts(accept: boolean): Promise<void> { return; }
 
   /**
-   * Whether or not to validate the domain name in the certificate. This defaults to true.
-   * @param validate {boolean} Set to true to validate
-   * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
-   */
-  @Cordova()
-  validateDomainName(validate: boolean): Promise<void> { return; }
-
-  /**
    * Make a POST request
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
@@ -131,7 +158,7 @@ export class HTTP extends IonicNativePlugin {
   post(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
 
   /**
-   *
+   * Make a GET request
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
@@ -139,6 +166,46 @@ export class HTTP extends IonicNativePlugin {
    */
   @Cordova()
   get(url: string, parameters: any, headers: any): Promise<HTTPResponse> { return; }
+
+  /**
+   * Make a PUT request
+   * @param url {string} The url to send the request to
+   * @param body {Object} The body of the request
+   * @param headers {Object} The headers to set for this request
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  put(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
+
+  /**
+   * Make a PATCH request
+   * @param url {string} The url to send the request to
+   * @param body {Object} The body of the request
+   * @param headers {Object} The headers to set for this request
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  patch(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
+
+  /**
+   * Make a DELETE request
+   * @param url {string} The url to send the request to
+   * @param parameters {Object} Parameters to send with the request
+   * @param headers {Object} The headers to set for this request
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  delete(url: string, parameters: any, headers: any): Promise<HTTPResponse> { return; }
+
+  /**
+   * Make a HEAD request
+   * @param url {string} The url to send the request to
+   * @param parameters {Object} Parameters to send with the request
+   * @param headers {Object} The headers to set for this request
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  head(url: string, parameters: any, headers: any): Promise<HTTPResponse> { return; }
 
   /**
    *

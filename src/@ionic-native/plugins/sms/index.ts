@@ -29,7 +29,7 @@ export interface SmsOptionsAndroid {
  * @name SMS
  * @description
  *
- * Requires Cordova plugin: cordova-plugin-sms. For more info, please see the [SMS plugin docs](https://github.com/cordova-sms/cordova-sms-plugin).
+ * Requires Cordova plugin: cordova-sms-plugin. For more info, please see the [SMS plugin docs](https://github.com/cordova-sms/cordova-sms-plugin).
  *
  * @usage
  * ```typescript
