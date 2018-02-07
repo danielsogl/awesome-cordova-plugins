@@ -2413,6 +2413,31 @@ export class GoogleMap extends BaseClass {
   }
 
   /**
+   * @return {Promise<KmlOverlay | any>}
+   */
+  @InstanceCheck()
+  addKmlOverlay(options: KmlOverlayOptions): Promise<KmlOverlay | any> {
+    return new Promise<KmlOverlay>((resolve, reject) => {
+      this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
+        if (kmlOverlay) {
+          let overlayId: string = kmlOverlay.getId();
+          const overlay = new KmlOverlay(this, kmlOverlay);
+          this.get('_overlays')[overlayId] = overlay;
+          kmlOverlay.one(overlayId + '_remove', () => {
+            if (this.get('_overlays')) {
+              this.get('_overlays')[overlayId] = null;
+              overlay.destroy();
+            }
+          });
+          resolve(overlay);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
+  /**
    * Refreshes layout.
    * You can execute it, but you don't need to do that. The plugin does this automatically.
    */
@@ -2424,22 +2449,6 @@ export class GoogleMap extends BaseClass {
    */
   @CordovaInstance()
   toDataURL(params?: ToDataUrlOptions): Promise<any> { return; }
-
-  // /**
-  //  * @return {Promise<KmlOverlay | any>}
-  //  */
-  // @InstanceCheck()
-  // addKmlOverlay(options: KmlOverlayOptions): Promise<KmlOverlay | any> {
-  //   return new Promise<KmlOverlay>((resolve, reject) => {
-  //     this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
-  //       if (kmlOverlay) {
-  //         resolve(new KmlOverlay(kmlOverlay));
-  //       } else {
-  //         reject();
-  //       }
-  //     });
-  //   });
-  // }
 
 }
 
@@ -3278,102 +3287,92 @@ export class TileOverlay extends BaseClass {
   }
 }
 
-// /**
-//  * @hidden
-//  */
-// export interface KmlOverlayOptions {
-//   url?: string;
-//   preserveViewport?: boolean;
-//   animation?: boolean;
-// }
-// /**
-//  * @hidden
-//  */
-// export class KmlOverlay {
-//
-//   constructor(private _objectInstance: any) { }
-//
-//   /**
-//    * Adds an event listener.
-//    *
-//    * @return {Observable<any>}
-//    */
-//   addEventListener(eventName: string): Observable<any> {
-//     return Observable.fromEvent(this._objectInstance, eventName);
-//   }
-//
-//   /**
-//    * Adds an event listener that works once.
-//    *
-//    * @return {Promise<any>}
-//    */
-//   addListenerOnce(eventName: string): Promise<any> {
-//     if (!this._objectInstance) {
-//       return Promise.reject({ error: 'plugin_not_installed' });
-//     }
-//     return new Promise<any>(
-//       resolve => this._objectInstance.addListenerOnce(eventName, resolve)
-//     );
-//   }
-//
-//   /**
-//    * Gets a value
-//    * @param key
-//    */
-//   @CordovaInstance({ sync: true })
-//   get(key: string): any { return; }
-//
-//   /**
-//    * Sets a value
-//    * @param key
-//    * @param value
-//    */
-//   @CordovaInstance({ sync: true })
-//   set(key: string, value: any): void { }
-//
-//   /**
-//    * Listen to a map event.
-//    *
-//    * @return {Observable<any>}
-//    */
-//   on(eventName: string): Observable<any> {
-//     if (!this._objectInstance) {
-//       return new Observable((observer) => {
-//         observer.error({ error: 'plugin_not_installed' });
-//       });
-//     }
-//
-//     return new Observable(
-//       (observer) => {
-//         this._objectInstance.on(eventName, observer.next.bind(observer));
-//         return () => this._objectInstance.off(event);
-//       }
-//     );
-//   }
-//
-//   /**
-//    * Listen to a map event only once.
-//    *
-//    * @return {Promise<any>}
-//    */
-//   one(eventName: string): Promise<any> {
-//     if (!this._objectInstance) {
-//       return Promise.reject({ error: 'plugin_not_installed' });
-//     }
-//     return new Promise<any>(
-//       resolve => this._objectInstance.one(eventName, resolve)
-//     );
-//   }
-//
-//   /**
-//    * Clears all stored values
-//    */
-//   @CordovaInstance({ sync: true })
-//   empty(): void { }
-//
-//   @CordovaInstance({ sync: true })
-//   remove(): void { }
-//
-//   @CordovaInstance({ sync: true })
-//   getOverlays(): Array<Polyline | Polygon | Marker> { return; }
-// }
+/**
+ * @hidden
+ */
+export interface KmlOverlayOptions {
+  url: string;
+  clickable?: boolean;
+  suppressInfoWindows?: boolean;
+}
+
+
+/**
+ * @hidden
+ */
+export class KmlOverlay extends BaseClass {
+
+  private _map: GoogleMap;
+
+  constructor(_map: GoogleMap, _objectInstance: any) {
+    super();
+    this._map = _map;
+    this._objectInstance = _objectInstance;
+
+    Object.defineProperty(self, 'camera', {
+        value: this._objectInstance.camera,
+        writable: false
+    });
+    Object.defineProperty(self, 'kmlData', {
+        value: this._objectInstance.kmlData,
+        writable: false
+    });
+  }
+
+  /**
+   * Clears all stored values
+   */
+  @CordovaInstance({ sync: true })
+  getDefaultViewport(): CameraPosition<ILatLng|ILatLng[]> { return; }
+
+  /**
+   * Return the ID of instance.
+   * @return {string}
+   */
+  @CordovaInstance({ sync: true })
+  getId(): string { return; }
+
+  /**
+   * Return the map instance.
+   * @return {GoogleMap}
+   */
+  getMap(): any { return this._map; }
+
+  /**
+   * Change visibility of the polyline
+   * @param visible {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setVisible(visible: boolean): void {}
+
+  /**
+   * Return true if the polyline is visible
+   * @return {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  getVisible(): boolean { return; }
+
+  /**
+   * Change clickablity of the KmlOverlay
+   * @param clickable {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  setClickable(clickable: boolean): void {}
+
+  /**
+   * Return true if the KmlOverlay is clickable
+   * @return {boolean}
+   */
+  @CordovaInstance({ sync: true })
+  getClickable(): boolean { return; }
+
+  /**
+   * Remove the KmlOverlay
+   */
+  @InstanceCheck()
+  remove(): void {
+    delete this._objectInstance.getMap().get('_overlays')[this.getId()];
+    this._objectInstance.remove();
+    this.destroy();
+  }
+}
