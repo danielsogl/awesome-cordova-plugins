@@ -181,7 +181,7 @@ export interface AndroidExoPlayerControllerConfig {
   platforms: ['Android']
 })
 @Injectable()
-export class AndroidExoplayer extends IonicNativePlugin {
+export class AndroidExoPlayer extends IonicNativePlugin {
   /**
    * Show the player.
    * @param parameters {AndroidExoPlayerParams} Parameters
