@@ -91,105 +91,146 @@ export class LatLngBounds implements ILatLngBounds {
   getCenter(): LatLng { return; }
 }
 
+export interface GoogleMapControlOptions {
+
+  /**
+   * Turns the compass on or off.
+   */
+  compass?: boolean;
+
+  /**
+   * Turns the myLocation button on or off. If turns on this button, the application displays a permission dialog to obtain the geolocation data.
+   */
+  myLocationButton?: boolean;
+
+  /**
+   * Turns the myLocation control(blue dot) on or off. If turns on this control, the application displays a permission dialog to obtain the geolocation data.
+   */
+  myLocation?: boolean;
+
+  /**
+   * Turns the indoor picker on or off.
+   */
+  indoorPicker?: boolean;
+
+  /**
+   * **Android**
+   * Turns the map toolbar on or off.
+   */
+  mapToolbar?: boolean;
+
+  /**
+   * **Android**
+   * Turns the zoom controller on or off.
+   */
+  zoom?: boolean;
+
+  /**
+   * Accept extra properties for future updates
+   */
+  [key: string]: any;
+}
+
+export interface GoogleMapGestureOptions {
+
+  /**
+   * Set false to disable the scroll gesture (default: true)
+   */
+  scroll?: boolean;
+
+  /**
+   * Set false to disable the tilt gesture (default: true)
+   */
+  tilt?: boolean;
+
+  /**
+   * Set false to disable the zoom gesture (default: true)
+   */
+  zoom?: boolean;
+
+  /**
+   * Set false to disable the rotate gesture (default: true)
+   */
+  rotate?: boolean;
+
+  /**
+   * Accept extra properties for future updates
+   */
+  [key: string]: any;
+}
+
+export interface GoogleMapZoomOptions {
+  minZoom?: number;
+  maxZoom?: number;
+}
+
+export interface GoogleMapPaddingOptions {
+  left?: number;
+  top?: number;
+  bottom?: number;
+  right?: number;
+}
+
+export interface GoogleMapPreferenceOptions {
+
+  /**
+   * Minimum and maximum zoom levels for zooming gestures.
+   */
+  zoom?: GoogleMapZoomOptions;
+
+  /**
+   * Paddings of controls.
+   */
+  padding?: GoogleMapPaddingOptions;
+
+  /**
+   * Turns the 3D buildings layer on or off.
+   */
+  building?: boolean;
+
+  /**
+   * Accept extra properties for future updates
+   */
+  [key: string]: any;
+}
+
 export interface GoogleMapOptions {
 
   /**
-   * MapType
+   * mapType [options]
    */
   mapType?: MapType;
 
-  controls?: {
-
-    /**
-     * Turns the compass on or off.
-     */
-    compass?: boolean;
-
-    /**
-     * Turns the myLocation button on or off. If turns on this button, the application displays a permission dialog to obtain the geolocation data.
-     */
-    myLocationButton?: boolean;
-
-    /**
-     * Turns the myLocation control(blue dot) on or off. If turns on this control, the application displays a permission dialog to obtain the geolocation data.
-     */
-    myLocation?: boolean;
-
-    /**
-     * Turns the indoor picker on or off.
-     */
-    indoorPicker?: boolean;
-
-    /**
-     * Turns the map toolbar on or off. This option is for Android only.
-     */
-    mapToolbar?: boolean;
-
-    /**
-     * Turns the zoom controller on or off. This option is for Android only.
-     */
-    zoom?: boolean;
-  };
-
-  gestures?: {
-
-    /**
-     * Set false to disable the scroll gesture (default: true)
-     */
-    scroll?: boolean;
-
-    /**
-     * Set false to disable the tilt gesture (default: true)
-     */
-    tilt?: boolean;
-
-    /**
-     * Set false to disable the zoom gesture (default: true)
-     */
-    zoom?: boolean;
-
-    /**
-     * Set false to disable the rotate gesture (default: true)
-     */
-    rotate?: boolean;
-  };
+  /**
+   * controls [options]
+   */
+  controls?: GoogleMapControlOptions;
 
   /**
-   * Map styles
+   * gestures [options]
+   */
+  gestures?: GoogleMapGestureOptions;
+
+  /**
+   * Map styles [options]
    * @ref https://developers.google.com/maps/documentation/javascript/style-reference
    */
   styles?: any[];
 
   /**
-   * Initial camera position
+   * Initial camera position [options]
    */
   camera?: CameraPosition<any>;
 
-  preferences?: {
+  /**
+   * preferences [options]
+   */
+  preferences?: GoogleMapPreferenceOptions;
 
-    /**
-     * Minimum and maximum zoom levels for zooming gestures.
-     */
-    zoom?: {
-      minZoom?: number;
-      maxZoom?: number;
-    };
-
-    /**
-     * Paddings of controls.
-     */
-    padding?: {
-      left?: number;
-      top?: number;
-      bottom?: number;
-      right?: number;
-    };
-
-    /**
-     * Turns the 3D buildings layer on or off.
-     */
-    building?: boolean
-  };
+  /**
+   * Accept extra properties for future updates
+   */
+  [key: string]: any;
 }
 
 export interface CameraPosition<T> {
@@ -691,18 +732,74 @@ export interface ToDataUrlOptions {
   uncompress?: boolean;
 }
 
+
+/**
+ * Options for map.addKmlOverlay() method
+ */
+export interface KmlOverlayOptions {
+  /*
+   * The url or file path of KML file. KMZ format is not supported.
+   */
+  url: string;
+
+  /*
+   * Do not fire the KML_CLICK event if false. Default is true.
+   */
+  clickable?: boolean;
+
+  /*
+   * Do not display the default infoWindow if true. Default is false.
+   */
+  suppressInfoWindows?: boolean;
+
+  /**
+   * Accept own properties for future update
+   */
+  [key: string]: any;
+}
+
+
 /**
  * @hidden
  */
 export class VisibleRegion implements ILatLngBounds {
   private _objectInstance: any;
 
+  /**
+   * The northeast of the bounds that contains the farLeft, farRight, nearLeft and nearRight.
+   * Since the map view is able to rotate, the farRight is not the same as the northeast.
+   */
   @InstanceProperty northeast: ILatLng;
+
+  /**
+   * The southwest of the bounds that contains the farLeft, farRight, nearLeft and nearRight.
+   * Since the map view is able to rotate, the nearLeft is not the same as the southwest.
+   */
   @InstanceProperty southwest: ILatLng;
+
+  /**
+   * The nearRight indicates the lat/lng of the top-left of the map view.
+   */
   @InstanceProperty farLeft: ILatLng;
+
+  /**
+   * The nearRight indicates the lat/lng of the top-right of the map view.
+   */
   @InstanceProperty farRight: ILatLng;
+
+  /**
+   * The nearRight indicates the lat/lng of the bottom-left of the map view.
+   */
   @InstanceProperty nearLeft: ILatLng;
+
+  /**
+   * The nearRight indicates the lat/lng of the bottom-right of the map view.
+   */
   @InstanceProperty nearRight: ILatLng;
+
+  /**
+   * constant value : `VisibleRegion`
+   */
   @InstanceProperty type: string;
 
   constructor(southwest: LatLngBounds, northeast: LatLngBounds, farLeft: ILatLng, farRight: ILatLng, nearLeft: ILatLng, nearRight: ILatLng) {
@@ -877,6 +974,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * Polygon
  * Polyline
  * Spherical
+ * KmlOverlay
  * Poly
  * TileOverlay
  * BaseClass
@@ -898,6 +996,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * PolygonOptions
  * PolylineOptions
  * TileOverlayOptions
+ * KmlOverlayOptions
  * VisibleRegion
  */
 @Plugin({
@@ -905,6 +1004,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
   pluginRef: 'plugin.google.maps',
   plugin: 'cordova-plugin-googlemaps',
   repo: 'https://github.com/mapsplugin/cordova-plugin-googlemaps',
+  document: 'https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.0.0/README.md',
   install: 'ionic cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_ANDROID_API_KEY_IS_HERE" --variable API_KEY_FOR_IOS="YOUR_IOS_API_KEY_IS_HERE"',
   installVariables: ['API_KEY_FOR_ANDROID', 'API_KEY_FOR_IOS'],
   platforms: ['Android', 'iOS']
@@ -915,7 +1015,7 @@ export class GoogleMaps extends IonicNativePlugin {
   /**
    * Creates a new GoogleMap instance
    * @param element {string | HTMLElement} Element ID or reference to attach the map to
-   * @param options {any} Options
+   * @param options {GoogleMapOptions} [options] Options
    * @return {GoogleMap}
    */
   static create(element: string | HTMLElement | GoogleMapOptions, options?: GoogleMapOptions): GoogleMap {
@@ -959,7 +1059,7 @@ export class BaseClass {
 
   /**
    * Adds an event listener.
-   *
+   * @param eventName {string} event name you want to observe.
    * @return {Observable<any>}
    */
   @InstanceCheck({ observable: true })
@@ -993,7 +1093,7 @@ export class BaseClass {
 
   /**
    * Adds an event listener that works once.
-   *
+   * @param eventName {string} event name you want to observe.
    * @return {Promise<any>}
    */
   @InstanceCheck()
@@ -1027,32 +1127,33 @@ export class BaseClass {
 
   /**
    * Gets a value
-   * @param key
+   * @param key {any}
    */
   @CordovaInstance({ sync: true })
   get(key: string): any { return; }
 
   /**
    * Sets a value
-   * @param key
-   * @param value
+   * @param key {string} The key name for the value. `(key)_changed` will be fired when you set value through this method.
+   * @param value {any}
+   * @param noNotify {boolean} [options] True if you want to prevent firing the `(key)_changed` event.
    */
   @CordovaInstance({ sync: true })
   set(key: string, value: any, noNotify?: boolean): void { }
 
   /**
    * Bind a key to another object
-   * @param key {string}
-   * @param target {any}
-   * @param targetKey? {string}
-   * @param noNotify? {boolean}
+   * @param key {string} The property name you want to observe.
+   * @param target {any} The target object you want to observe.
+   * @param targetKey? {string} [options]  The property name you want to observe. If you omit this, the `key` argument is used.
+   * @param noNotify? {boolean} [options] True if you want to prevent `(key)_changed` event when you bind first time, because the internal status is changed from `undefined` to something.
    */
   @CordovaInstance({ sync: true })
   bindTo(key: string, target: any, targetKey?: string, noNotify?: boolean): void { }
 
   /**
-   * Listen to a map event.
-   *
+   * Alias of `addEventListener`
+   * @param key {string} The property name you want to observe.
    * @return {Observable<any>}
    */
   @InstanceCheck({ observable: true })
@@ -1085,8 +1186,8 @@ export class BaseClass {
   }
 
   /**
-   * Listen to a map event only once.
-   *
+   * Alias of `addEventListenerOnce`
+   * @param key {string} The property name you want to observe.
    * @return {Promise<any>}
    */
   @InstanceCheck()
@@ -1126,6 +1227,8 @@ export class BaseClass {
 
   /**
    * Dispatch event.
+   * @param eventName {string} Event name
+   * @param parameters {any} [options] The data you want to pass to event listerners.
    */
   @CordovaInstance({ sync: true })
   trigger(eventName: string, ...parameters: any[]): void {}
@@ -1142,6 +1245,32 @@ export class BaseClass {
     }
     this._objectInstance.remove();
   }
+
+  /**
+   * Remove event listener(s)
+   * The `removeEventListener()` has three usages:
+   *  - removeEventListener("eventName", listenerFunction);
+   *     This removes one particular event listener
+   *  - removeEventListener("eventName");
+   *     This removes the event listeners that added for the event name.
+   *  - removeEventListener();
+   *     This removes all listeners.
+   *
+   * @param eventName {string} [options] Event name
+   * @param listener {Function} [options] Event listener
+   */
+  @CordovaInstance({ sync: true })
+  removeEventListener(eventName?: string, listener?: (...parameters: any[]) => void): void {}
+
+  /**
+   * Alias of `removeEventListener`
+   *
+   * @param eventName {string} [options] Event name
+   * @param listener {Function} [options] Event listener
+   */
+  @CordovaInstance({ sync: true })
+  off(eventName?: string, listener?: (...parameters: any[]) => void): void {}
+
 }
 
 /**
@@ -1167,7 +1296,7 @@ export class BaseArrayClass<T> extends BaseClass {
 
   /**
    * Removes all elements from the array.
-   * @param noNotify? {boolean} Set true to prevent remove_at events.
+   * @param noNotify? {boolean} [options] Set true to prevent remove_at events.
    */
   @CordovaInstance({ sync: true })
   empty(noNotify?: boolean): void {}
@@ -1175,7 +1304,6 @@ export class BaseArrayClass<T> extends BaseClass {
   /**
    * Iterate over each element, calling the provided callback.
    * @param fn {Function}
-   * @param callback? {Function}
    */
   @CordovaInstance({ sync: true })
   forEach(fn: (element: T, index?: number) => void): void {}
@@ -1196,7 +1324,6 @@ export class BaseArrayClass<T> extends BaseClass {
    * Iterate over each element, then return a new value.
    * Then you can get the results of each callback.
    * @param fn {Function}
-   * @param callback? {Function}
    * @return {Array<Object>} returns a new array with the results
    */
   @CordovaInstance({ sync: true })
@@ -1206,7 +1333,7 @@ export class BaseArrayClass<T> extends BaseClass {
    * Iterate over each element, calling the provided callback.
    * Then you can get the results of each callback.
    * @param fn {Function}
-   * @param callback? {Function}
+   * @param callback {Function}
    * @return {Promise<any>} returns a new array with the results
    */
   @CordovaCheck()
@@ -1219,7 +1346,7 @@ export class BaseArrayClass<T> extends BaseClass {
   /**
    * Same as `mapAsync`, but keep the execution order
    * @param fn {Function}
-   * @param callback? {Function}
+   * @param callback {Function}
    * @return {Promise<any>} returns a new array with the results
    */
   @CordovaCheck()
@@ -1232,7 +1359,6 @@ export class BaseArrayClass<T> extends BaseClass {
   /**
    * The filter() method creates a new array with all elements that pass the test implemented by the provided function.
    * @param fn {Function}
-   * @param callback? {Function}
    * @return {Array<Object>} returns a new filtered array
    */
   @CordovaInstance({ sync: true })
@@ -1241,7 +1367,7 @@ export class BaseArrayClass<T> extends BaseClass {
   /**
    * The filterAsync() method creates a new array with all elements that pass the test implemented by the provided function.
    * @param fn {Function}
-   * @param callback? {Function}
+   * @param callback {Function}
    * @return {Promise<any>} returns a new filtered array
    */
   @CordovaCheck()
@@ -1297,7 +1423,7 @@ export class BaseArrayClass<T> extends BaseClass {
    * Inserts an element at the specified index.
    * @param index {number}
    * @param element {Object}
-   * @param noNotify? {boolean} Set true to prevent insert_at events.
+   * @param noNotify? {boolean} [options] Set true to prevent insert_at events.
    * @return {Object}
    */
   @CordovaInstance({ sync: true })
@@ -1305,7 +1431,7 @@ export class BaseArrayClass<T> extends BaseClass {
 
   /**
    * Removes the last element of the array and returns that element.
-   * @param noNotify? {boolean} Set true to prevent remove_at events.
+   * @param noNotify? {boolean} [options] Set true to prevent remove_at events.
    * @return {Object}
    */
   @CordovaInstance({ sync: true })
@@ -1322,7 +1448,7 @@ export class BaseArrayClass<T> extends BaseClass {
   /**
    * Removes an element from the specified index.
    * @param index {number}
-   * @param noNotify? {boolean} Set true to prevent insert_at events.
+   * @param noNotify? {boolean} [options] Set true to prevent remove_at events.
    */
   @CordovaInstance({ sync: true })
   removeAt(index: number, noNotify?: boolean): void {}
@@ -1331,7 +1457,7 @@ export class BaseArrayClass<T> extends BaseClass {
    * Sets an element at the specified index.
    * @param index {number}
    * @param element {object}
-   * @param noNotify? {boolean} Set true to prevent set_at events.
+   * @param noNotify? {boolean} [options] Set true to prevent set_at events.
    */
   @CordovaInstance({ sync: true })
   setAt(index: number, element: T, noNotify?: boolean): void {}
@@ -1362,7 +1488,7 @@ export class Circle extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  getMap(): any { return this._map; }
+  getMap(): GoogleMap { return this._map; }
 
   /**
    * Change the center position.
@@ -1615,7 +1741,7 @@ export class Geocoder {
 export class LocationService {
 
   /**
-   * Get the current device location
+   * Get the current device location without map
    * @return {Promise<MyLocation>}
    */
   static getMyLocation(options?: MyLocationOptions): Promise<MyLocation> {
@@ -1955,7 +2081,7 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Changes the map div
-   * @param domNode
+   * @param domNode {HTMLElement | string} [options] If you want to display the map in an html element, you need to specify an element or id. If omit this argument, the map is detached from webview.
    */
   @InstanceCheck()
   setDiv(domNode?: HTMLElement | string): void {
@@ -2237,6 +2363,7 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Adds a marker
+   * @param options {MarkerOptions} options
    * @return {Promise<Marker | any>}
    */
   @InstanceCheck()
@@ -2261,6 +2388,11 @@ export class GoogleMap extends BaseClass {
     });
   }
 
+  /**
+   * Adds a marker cluster
+   * @param options {MarkerClusterOptions} options
+   * @return {Promise<MarkerCluster | any>}
+   */
   @InstanceCheck()
   addMarkerCluster(options: MarkerClusterOptions): Promise<MarkerCluster | any> {
     return new Promise<MarkerCluster>((resolve, reject) => {
@@ -2286,6 +2418,7 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Adds a circle
+   * @param options {CircleOptions} options
    * @return {Promise<Circle | any>}
    */
   @InstanceCheck()
@@ -2312,6 +2445,7 @@ export class GoogleMap extends BaseClass {
 
   /**
    * Adds a polygon
+   * @param options {PolygonOptions} options
    * @return {Promise<Polygon | any>}
    */
   @InstanceCheck()
@@ -2337,7 +2471,8 @@ export class GoogleMap extends BaseClass {
   }
 
   /**
-   *
+   * Adds a polyline
+   * @param options {PolylineOptions} options
    * @return {Promise<Polyline | any>}
    */
   @InstanceCheck()
@@ -2363,6 +2498,8 @@ export class GoogleMap extends BaseClass {
   }
 
   /**
+   * Adds a tile overlay
+   * @param options {TileOverlayOptions} options
    * @return {Promise<TileOverlay | any>}
    */
   @InstanceCheck()
@@ -2388,6 +2525,8 @@ export class GoogleMap extends BaseClass {
   }
 
   /**
+   * Adds a ground overlay
+   * @param options {GroundOverlayOptions} options
    * @return {Promise<GroundOverlay | any>}
    */
   @InstanceCheck()
@@ -2413,6 +2552,8 @@ export class GoogleMap extends BaseClass {
   }
 
   /**
+   * Adds a kml overlay
+   * @param options {KmlOverlayOptions} options
    * @return {Promise<KmlOverlay | any>}
    */
   @InstanceCheck()
@@ -2438,17 +2579,12 @@ export class GoogleMap extends BaseClass {
   }
 
   /**
-   * Refreshes layout.
-   * You can execute it, but you don't need to do that. The plugin does this automatically.
-   */
-  @CordovaInstance({ sync: true })
-  refreshLayout(): void {}
-
-  /**
-   * @return {Promise<any>}
+   * Returns the base64 encoded screen capture of the map.
+   * @param options {ToDataUrlOptions} [options] options
+   * @return {Promise<string>}
    */
   @CordovaInstance()
-  toDataURL(params?: ToDataUrlOptions): Promise<any> { return; }
+  toDataURL(params?: ToDataUrlOptions): Promise<string> { return; }
 
 }
 
@@ -2476,7 +2612,7 @@ export class GroundOverlay extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  getMap(): any { return this._map; }
+  getMap(): GoogleMap { return this._map; }
 
   /**
    * Change the bounds of the GroundOverlay
@@ -2642,7 +2778,7 @@ export class Marker extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  getMap(): any { return this._map; }
+  getMap(): GoogleMap { return this._map; }
 
   /**
    * Set the marker position.
@@ -2857,12 +2993,24 @@ export class MarkerCluster extends BaseClass {
   @CordovaInstance({ sync: true })
   getId(): string { return; }
 
+  /**
+   * Add one marker location
+   * @param marker {MarkerOptions} one location
+   * @param skipRedraw? {boolean} marker cluster does not redraw the marker cluster if true.
+   */
   @CordovaInstance({ sync: true })
-  addMarker(marker: MarkerOptions): void {}
+  addMarker(marker: MarkerOptions, skipRedraw?: boolean): void {}
 
+  /**
+   * Add marker locations
+   * @param markers {MarkerOptions[]} multiple locations
+   */
   @CordovaInstance({ sync: true })
   addMarkers(markers: MarkerOptions[]): void {}
 
+  /**
+   * Remove the marker cluster
+   */
   @InstanceCheck()
   remove(): void {
     this._objectInstance.set('_overlays', undefined);
@@ -2875,7 +3023,7 @@ export class MarkerCluster extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  getMap(): any { return this._map; }
+  getMap(): GoogleMap { return this._map; }
 
 }
 
@@ -2903,7 +3051,7 @@ export class Polygon extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  getMap(): any { return this._map; }
+  getMap(): GoogleMap { return this._map; }
 
   /**
    * Change the polygon points.
@@ -3075,7 +3223,7 @@ export class Polyline extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  getMap(): any { return this._map; }
+  getMap(): GoogleMap { return this._map; }
 
   /**
    * Change the polyline points.
@@ -3212,7 +3360,7 @@ export class TileOverlay extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  getMap(): any { return this._map; }
+  getMap(): GoogleMap { return this._map; }
 
   /**
    * Set whether the tiles should fade in.
@@ -3290,16 +3438,6 @@ export class TileOverlay extends BaseClass {
 /**
  * @hidden
  */
-export interface KmlOverlayOptions {
-  url: string;
-  clickable?: boolean;
-  suppressInfoWindows?: boolean;
-}
-
-
-/**
- * @hidden
- */
 export class KmlOverlay extends BaseClass {
 
   private _map: GoogleMap;
@@ -3320,7 +3458,7 @@ export class KmlOverlay extends BaseClass {
   }
 
   /**
-   * Clears all stored values
+   * Returns the viewport to contains all overlays
    */
   @CordovaInstance({ sync: true })
   getDefaultViewport(): CameraPosition<ILatLng|ILatLng[]> { return; }
@@ -3336,7 +3474,7 @@ export class KmlOverlay extends BaseClass {
    * Return the map instance.
    * @return {GoogleMap}
    */
-  getMap(): any { return this._map; }
+  getMap(): GoogleMap { return this._map; }
 
   /**
    * Change visibility of the polyline
