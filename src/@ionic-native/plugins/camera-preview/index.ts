@@ -121,7 +121,9 @@ export interface CameraPreviewPictureOptions {
  * this.cameraPreview.stopCamera();
  *
  * ```
- *
+ * @Important
+ * Must add this to .scss in order for toBack to work correctly
+ 
  * @interfaces
  * CameraPreviewOptions
  * CameraPreviewPictureOptions
