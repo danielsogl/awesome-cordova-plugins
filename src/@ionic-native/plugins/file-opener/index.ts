@@ -44,6 +44,19 @@ export class FileOpener extends IonicNativePlugin {
   open(filePath: string, fileMIMEType: string): Promise<any> { return; }
 
   /**
+   * Open a choose file dialog
+   * @param filePath {string} File Path
+   * @param fileMIMEType {string} File MIME Type
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    callbackStyle: 'object',
+    successName: 'success',
+    errorName: 'error'
+  })
+  showOpenWithDialog(filePath: string, fileMIMEType: string): Promise<any> { return; }
+  
+  /**
    * Uninstalls a package
    * @param packageId {string}  Package ID
    * @returns {Promise<any>}
