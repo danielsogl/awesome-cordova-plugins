@@ -83,7 +83,7 @@ export class Globalization extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getDatePattern(options: { formatLength: string, selector: string }): Promise<{ pattern: string, timezone: string, utf_offset: number, dst_offset: number }> { return; }
+  getDatePattern(options?: { formatLength: string, selector: string }): Promise<{ pattern: string, timezone: string, iana_timezone: string, utf_offset: number, dst_offset: number }> { return; }
 
   /**
    * Returns an array of the names of the months or days of the week, depending on the client's user preferences and calendar.
