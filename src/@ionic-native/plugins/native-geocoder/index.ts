@@ -136,6 +136,11 @@ export interface NativeGeocoderOptions {
    */
   useLocale: boolean;
   /**
+   * The default locale to use when returning the address information.
+   * e.g.: 'fa-IR' or 'de_DE'.
+   */
+  defaultLocale?: string;
+  /**
    * The maximum number of result to return (max is 5).
    * Default is 1
    */
