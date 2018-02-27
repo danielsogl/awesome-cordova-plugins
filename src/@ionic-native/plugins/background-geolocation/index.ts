@@ -253,6 +253,25 @@ export interface BackgroundGeolocationConfig {
   stopOnStillActivity?: boolean;
 }
 
+export interface CheckStatusResponse {
+
+  /**
+   * true if service is running
+   */
+  isRunning: boolean;
+
+  /**
+   * true if service has permissions
+   */
+  hasPermissions: boolean;
+
+  /**
+   * BackgroundGeolocation.Authorization.NOT_AUTHORIZED
+   * BackgroundGeolocation.Authorization.AUTHORIZED
+   */
+  authorization: number;
+}
+
 /**
  * @name Background Geolocation
  * @description
@@ -310,6 +329,20 @@ export interface BackgroundGeolocationConfig {
 })
 @Injectable()
 export class BackgroundGeolocation extends IonicNativePlugin {
+
+  /** 
+   * Returned by checkStatus function
+   *
+   * Possible values:
+   *  NOT_AUTHORIZED: 0, 
+   *  AUTHORIZED: 1 
+   *
+   * @enum {number} 
+   */
+  Authorization: any = {
+    NOT_AUTHORIZED: 0,
+    AUTHORIZED: 1
+  };
 
   /** 
    * Set location service provider @see https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-providers 
@@ -442,6 +475,13 @@ export class BackgroundGeolocation extends IonicNativePlugin {
     platforms: ['Android']
   })
   isLocationEnabled(): Promise<number> { return; }
+
+   /**
+   * Check status of the service
+   * @returns {Promise<CheckStatusResponse>} Returns a promise with the status of the service
+   */
+  @Cordova()
+  checkStatus(): Promise<CheckStatusResponse> { return; }
 
   /**
    * Display app settings to change permissions
