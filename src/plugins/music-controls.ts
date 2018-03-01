@@ -14,6 +14,12 @@ export interface MusicControlsOptions {
   duration: number;
   elapsed:number;
   ticker: string;
+  playIcon:string;
+  pauseIcon:string;
+  prevIcon:string;
+  nextIcon:string;
+  closeIcon:string;
+  notification:string;
 }
 
 /**
@@ -48,7 +54,15 @@ export interface MusicControlsOptions {
  * 
  *   // Android only, optional
  *   // text displayed in the status bar when the notification (and the ticker) are updated
- *   ticker    : 'Now playing "Time is Running Out"'
+ *   ticker    : 'Now playing "Time is Running Out"',
+ *   //All icons default to their built-in android equivalents
+ *   //The supplied drawable name, e.g. 'media_play', is the name of a drawable found under android/res/drawable* folders
+ *   playIcon: 'media_play',
+ *   pauseIcon: 'media_pause',
+ *   prevIcon: 'media_prev',
+ *   nextIcon: 'media_next',
+ *   closeIcon: 'media_close',
+ *   notificationIcon: 'notification'
  *  });
  *
  *  MusicControls.subscribe().subscribe(action => {
