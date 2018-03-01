@@ -31,13 +31,14 @@ export interface NotificationData {
  *
  * ...
  *
- * fcm.subscribeToTopic('marketing');
+ * this.fcm.subscribeToTopic('marketing');
  *
- * fcm.getToken().then(token=>{
+ * this.fcm.getToken().then(token=>{
+ *   /* save your token on backend */
  *   backend.registerToken(token);
  * })
  *
- * fcm.onNotification().subscribe(data=>{
+ * this.fcm.onNotification().subscribe(data=>{
  *   if(data.wasTapped){
  *     console.log("Received in background");
  *   } else {
@@ -45,11 +46,11 @@ export interface NotificationData {
  *   };
  * })
  *
- * fcm.onTokenRefresh().subscribe(token=>{
+ * this.fcm.onTokenRefresh().subscribe(token=>{
  *   backend.registerToken(token);
  * })
  *
- * fcm.unsubscribeFromTopic('marketing');
+ * this.fcm.unsubscribeFromTopic('marketing');
  *
  * ```
  * @interfaces
