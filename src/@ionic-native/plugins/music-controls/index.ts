@@ -20,12 +20,12 @@ export interface MusicControlsOptions {
   duration?: number;
   elapsed?: number;
   ticker?: string;
-  playIcon?:string;
-  pauseIcon?:string;
-  prevIcon?:string;
-  nextIcon?:string;
-  closeIcon?:string;
-  notificationIcon?:string;
+  playIcon?: string;
+  pauseIcon?: string;
+  prevIcon?: string;
+  nextIcon?: string;
+  closeIcon?: string;
+  notificationIcon?: string;
 }
 
 /**
