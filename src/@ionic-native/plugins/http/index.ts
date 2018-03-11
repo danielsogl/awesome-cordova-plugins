@@ -33,7 +33,7 @@ export interface HTTPResponse {
  * ```typescript
  * import { HTTP } from '@ionic-native/http';
  *
- * constructor(private http: HTTP) { }
+ * constructor(private http: HTTP) {}
  *
  * ...
  *
@@ -89,28 +89,56 @@ export class HTTP extends IonicNativePlugin {
   useBasicAuth(username: string, password: string): void {}
 
   /**
-   * Set a header for all future requests. Takes a header and a value.
+   * Get all headers defined for a given hostname.
+   * @param host {string} The hostname
+   * @returns {string} return all headers defined for the hostname
+   */
+  @Cordova({ sync: true })
+  getHeaders(host: string): string {
+    return;
+  }
+
+  /**
+   * Set a header for all future requests. Takes a hostname, a header and a value.
+   * @param host {string} The hostname to be used for scoping this header
    * @param header {string} The name of the header
    * @param value {string} The value of the header
    */
   @Cordova({ sync: true })
-  setHeader(header: string, value: string): void {}
+  setHeader(host: string, header: string, value: string): void {}
+
+  /**
+   * Get the name of the data serializer which will be used for all future POST and PUT requests.
+   * @returns {string} returns the name of the configured data serializer
+   */
+  @Cordova({ sync: true })
+  getDataSerializer(): string {
+    return;
+  }
 
   /**
    * Set the data serializer which will be used for all future POST and PUT requests. Takes a string representing the name of the serializer.
-   * @param serializer {string} The name of the serializer. Can be urlencoded or json
+   * @param serializer {string} The name of the serializer. Can be urlencoded, utf8 or json
    */
   @Cordova({ sync: true })
   setDataSerializer(serializer: string): void {}
 
   /**
-   * Clear all cookies
+   * Add a custom cookie.
+   * @param url {string} Scope of the cookie
+   * @param cookie {string} RFC compliant cookie string
+   */
+  @Cordova({ sync: true })
+  setCookie(url: string, cookie: string): void {}
+
+  /**
+   * Clear all cookies.
    */
   @Cordova({ sync: true })
   clearCookies(): void {}
 
   /**
-   * Remove cookies
+   * Remove cookies for given URL.
    * @param url {string}
    * @param cb
    */
@@ -118,14 +146,23 @@ export class HTTP extends IonicNativePlugin {
   removeCookies(url: string, cb: () => void): void {}
 
   /**
-   * Disable following redirects automatically
-   * @param disable {boolean} Set to true to disable following redirects automatically
+   * Resolve cookie string for given URL.
+   * @param url {string}
    */
   @Cordova({ sync: true })
-  disableRedirect(disable: boolean): void {}
+  getCookieString(url: string): string { return; }
 
   /**
-   * Set request timeout
+   * Get global request timeout value in seconds.
+   * @returns {number} returns the global request timeout value
+   */
+  @Cordova({ sync: true })
+  getRequestTimeout(): number {
+    return;
+  }
+
+  /**
+   * Set global request timeout value in seconds.
    * @param timeout {number} The timeout in seconds. Default 60
    */
   @Cordova({ sync: true })
@@ -154,6 +191,14 @@ export class HTTP extends IonicNativePlugin {
   acceptAllCerts(accept: boolean): Promise<void> {
     return;
   }
+
+  /**
+   * Disable following redirects automatically.
+   * @param disable {boolean} Set to true to disable following redirects automatically
+   * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
+   */
+  @Cordova()
+  disableRedirect(disable: boolean): Promise<void> { return; }
 
   /**
    * Make a POST request
