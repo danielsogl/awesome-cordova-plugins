@@ -70,8 +70,8 @@ export interface MusicControlsOptions {
  *   // Android only, optional
  *   // text displayed in the status bar when the notification (and the ticker) are updated, optional
  *   ticker    : 'Now playing "Time is Running Out"',
- *   //All icons default to their built-in android equivalents
- *	 //The supplied drawable name, e.g. 'media_play', is the name of a drawable found under android/res/drawable* folders
+ *   // All icons default to their built-in android equivalents
+ *	 // The supplied drawable name, e.g. 'media_play', is the name of a drawable found under android/res/drawable* folders
  *   playIcon: 'media_play',
  *   pauseIcon: 'media_pause',
  *   prevIcon: 'media_prev',
