@@ -69,6 +69,13 @@ export class Badge extends IonicNativePlugin {
    */
   @Cordova()
   decrease(decreaseBy: number): Promise<any> { return; }
+  
+  /**
+   * Check support to show badges.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  isSupported(): Promise<any> { return; }
 
   /**
    * Determine if the app has permission to show badges.
