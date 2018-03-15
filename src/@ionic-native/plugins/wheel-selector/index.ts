@@ -42,7 +42,7 @@ export interface WheelSelectorOptions {
    * Android only - theme color, 'light' or 'dark'.
    * Default: light
    */
-  theme?: 'light' | 'dark'
+  theme?: 'light' | 'dark';
 
   /**
    * Whether to have the wheels 'wrap' (Android only)
