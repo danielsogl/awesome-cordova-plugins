@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+
+export interface CallLogObject {
+  name: string;
+  value: string;
+  operator: '==' | '!=' | '>' | '>=' | '<' | '<=';
+}
 
 /**
  * @name Call Log
@@ -13,7 +19,9 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * constructor(private callLog: CallLog) { }
  *
- * ...
+ * ````
+ * @interfaces
+ * CallLogObject
  *
  */
 @Plugin({
@@ -25,16 +33,15 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class CallLog extends IonicNativePlugin {
-
   /**
    * This function return the call logs
-   * @param filters {object[]} array of object to filter the query
-   * Object must respect this structure {'name':'...', 'value': '...', 'operator': '=='}
-   * (see https://github.com/creacore-team/cordova-plugin-calllog for more details)
+   * @param filters {CallLogObject[]} array of object to filter the query
    * @return {Promise<any>}
    */
   @Cordova()
-  getCallLog(filters: object[]): Promise<any> { return; }
+  getCallLog(filters: CallLogObject[]): Promise<any> {
+    return;
+  }
 
   /**
    * Check permission
@@ -43,7 +50,9 @@ export class CallLog extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  hasReadPermission(): Promise<any> { return; }
+  hasReadPermission(): Promise<any> {
+    return;
+  }
 
   /**
    * Request permission
@@ -52,5 +61,7 @@ export class CallLog extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  requestReadPermission(): Promise<any> { return; }
+  requestReadPermission(): Promise<any> {
+    return;
+  }
 }
