@@ -21,7 +21,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * // Check if we are listening
  * this.dbMeter.isListening().then(
- *   (isListening: boolean) => console.log(isListening)
+ *   isListening => console.log(isListening)
  * );
  *
  * // Stop listening
@@ -43,7 +43,6 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class DBMeter extends IonicNativePlugin {
-
   /**
    * Starts listening
    * @returns {Observable<any>} Returns an observable. Subscribe to start listening. Unsubscribe to stop listening.
@@ -82,5 +81,4 @@ export class DBMeter extends IonicNativePlugin {
   delete(): Promise<any> {
     return;
   }
-
 }

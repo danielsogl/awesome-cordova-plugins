@@ -43,10 +43,8 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @param params {any} Some param to configure something
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
-  logEvent(name: string, params: any): Promise<any> {
-    return;
-  }
+  @Cordova({ sync: true })
+  logEvent(name: string, params: any): Promise<any> { return; }
 
   /**
    * Sets the user ID property.
@@ -54,10 +52,8 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @param id {string} The user ID
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
-  setUserId(id: string): Promise<any> {
-    return;
-  }
+  @Cordova({ sync: true })
+  setUserId(id: string): Promise<any> { return; }
 
   /**
    * This feature must be used in accordance with Google's Privacy Policy.
@@ -66,20 +62,16 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @param value {string} The property value
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
-  setUserProperty(name: string, value: string): Promise<any> {
-    return;
-  }
+  @Cordova({ sync: true })
+  setUserProperty(name: string, value: string): Promise<any> { return; }
 
   /**
    * Sets whether analytics collection is enabled for this app on this device.
    * @param enabled {boolean}
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
-  setEnabled(enabled: boolean): Promise<any> {
-    return;
-  }
+  @Cordova({ sync: true })
+  setEnabled(enabled: boolean): Promise<any> { return; }
 
   /**
    * Sets the current screen name, which specifies the current visual context in your app.
@@ -87,9 +79,7 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @param name {string} The name of the screen
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
-  setCurrentScreen(name: string): Promise<any> {
-    return;
-  }
+  @Cordova({ sync: true })
+  setCurrentScreen(name: string): Promise<any> { return; }
 
 }

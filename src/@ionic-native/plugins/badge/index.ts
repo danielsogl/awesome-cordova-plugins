@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * @name Badge
  * @description
@@ -31,7 +30,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class Badge extends IonicNativePlugin {
-
   /**
    * Clear the badge of the app icon.
    * @returns {Promise<boolean>}
@@ -81,6 +79,15 @@ export class Badge extends IonicNativePlugin {
   }
 
   /**
+   * Check support to show badges.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  isSupported(): Promise<any> {
+    return;
+  }
+
+  /**
    * Determine if the app has permission to show badges.
    * @returns {Promise<any>}
    */
@@ -97,5 +104,4 @@ export class Badge extends IonicNativePlugin {
   registerPermission(): Promise<any> {
     return;
   }
-
 }

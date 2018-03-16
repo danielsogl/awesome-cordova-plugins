@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, IonicNativePlugin, Plugin, CordovaCheck } from '@ionic-native/core';
+import { Plugin, Cordova, CordovaCheck, CordovaInstance, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -143,10 +143,14 @@ export class Pro extends IonicNativePlugin {
   /**
    * Ionic Pro Deploy .js API.
    */
-  @CordovaCheck()
+  @CordovaCheck({ sync: true })
   deploy(): ProDeploy {
-    if (this._deploy) return this._deploy;
-    else return this._deploy = new ProDeploy(Pro.getPlugin().deploy);
+    if (this._deploy) {
+      return this._deploy;
+    } else {
+      this._deploy = new ProDeploy(Pro.getPlugin().deploy);
+      return this._deploy;
+    }
   }
 
   /**

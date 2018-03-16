@@ -17,8 +17,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  *
  * this.callNumber.callNumber("18001010101", true)
- *   .then(() => console.log('Launched dialer!'))
- *   .catch(() => console.log('Error launching dialer'));
+ *   .then(res => console.log('Launched dialer!', res))
+ *   .catch(err => console.log('Error launching dialer', err));
  *
  * ```
  */
@@ -31,7 +31,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class CallNumber extends IonicNativePlugin {
-
   /**
    * Calls a phone number
    * @param numberToCall {string} The phone number to call as a string

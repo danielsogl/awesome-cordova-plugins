@@ -3,7 +3,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface BatteryStatusResponse {
-
   /**
    * The battery charge percentage
    */
@@ -13,7 +12,6 @@ export interface BatteryStatusResponse {
    * A boolean that indicates whether the device is plugged in
    */
   isPlugged: boolean;
-
 }
 
 /**
@@ -31,11 +29,9 @@ export interface BatteryStatusResponse {
  *
  *
  * // watch change in battery status
- * let subscription = this.batteryStatus.onChange().subscribe(
- *  (status: BatteryStatusResponse) => {
+ * const subscription = this.batteryStatus.onChange().subscribe(status => {
  *    console.log(status.level, status.isPlugged);
- *  }
- * );
+ * });
  *
  * // stop watch
  * subscription.unsubscribe();
@@ -53,7 +49,6 @@ export interface BatteryStatusResponse {
 })
 @Injectable()
 export class BatteryStatus extends IonicNativePlugin {
-
   /**
    * Watch the change in battery level
    * @returns {Observable<BatteryStatusResponse>} Returns an observable that pushes a status object
@@ -89,5 +84,4 @@ export class BatteryStatus extends IonicNativePlugin {
   onCritical(): Observable<BatteryStatusResponse> {
     return;
   }
-
 }

@@ -400,7 +400,6 @@ export enum OSActionType {
 })
 @Injectable()
 export class OneSignal extends IonicNativePlugin {
-
   /**
    * constants to use in inFocusDisplaying()
    */
@@ -517,7 +516,6 @@ export class OneSignal extends IonicNativePlugin {
   getIds(): Promise<{ userId: string; pushToken: string }> {
     return;
   }
-
 
   /**
    * Tag a user based on an app event of your choosing so later you can create segments on [onesignal.com](https://onesignal.com/) to target these users.
@@ -703,4 +701,9 @@ export class OneSignal extends IonicNativePlugin {
     return;
   }
 
+  /**
+   * Clears all OneSignla notifications
+   */
+  @Cordova({ sync: true })
+  clearOneSignalNotifications(): void {}
 }

@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
+export interface BLEScanOptions {
+  /** true if duplicate devices should be reported, false (default) if devices should only be reported once.  */
+  reportDuplicates?: boolean;
+}
+
 /**
  * @name BLE
  * @description
@@ -167,6 +172,8 @@ import { Observable } from 'rxjs/Observable';
  *
  * UUIDs are always strings and not numbers. Some 16-bit UUIDs, such as '2220' look like integers, but they're not. (The integer 2220 is 0x8AC in hex.) This isn't a problem with 128 bit UUIDs since they look like strings 82b9e6e1-593a-456f-be9b-9215160ebcac. All 16-bit UUIDs should also be passed to methods as strings.
  *
+ * @interfaces
+ * BLEScanOptions
  */
 @Plugin({
   pluginName: 'BLE',
@@ -177,7 +184,6 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class BLE extends IonicNativePlugin {
-
   /**
    * Scan and discover BLE peripherals for the specified amount of time.
    *
@@ -234,7 +240,10 @@ export class BLE extends IonicNativePlugin {
     clearFunction: 'stopScan',
     clearWithArgs: false
   })
-  startScanWithOptions(services: string[], options: { reportDuplicates?: boolean } | any): Observable<any> {
+  startScanWithOptions(
+    services: string[],
+    options: BLEScanOptions
+  ): Observable<any> {
     return;
   }
 
@@ -305,9 +314,11 @@ export class BLE extends IonicNativePlugin {
    * @return Returns a Promise
    */
   @Cordova()
-  read(deviceId: string,
-       serviceUUID: string,
-       characteristicUUID: string): Promise<any> {
+  read(
+    deviceId: string,
+    serviceUUID: string,
+    characteristicUUID: string
+  ): Promise<any> {
     return;
   }
 
@@ -340,10 +351,12 @@ export class BLE extends IonicNativePlugin {
    * @return Returns a Promise
    */
   @Cordova()
-  write(deviceId: string,
-        serviceUUID: string,
-        characteristicUUID: string,
-        value: ArrayBuffer): Promise<any> {
+  write(
+    deviceId: string,
+    serviceUUID: string,
+    characteristicUUID: string,
+    value: ArrayBuffer
+  ): Promise<any> {
     return;
   }
 
@@ -357,10 +370,12 @@ export class BLE extends IonicNativePlugin {
    * @return Returns a Promise
    */
   @Cordova()
-  writeWithoutResponse(deviceId: string,
-                       serviceUUID: string,
-                       characteristicUUID: string,
-                       value: ArrayBuffer): Promise<any> {
+  writeWithoutResponse(
+    deviceId: string,
+    serviceUUID: string,
+    characteristicUUID: string,
+    value: ArrayBuffer
+  ): Promise<any> {
     return;
   }
 
@@ -384,9 +399,11 @@ export class BLE extends IonicNativePlugin {
     clearFunction: 'stopNotification',
     clearWithArgs: true
   })
-  startNotification(deviceId: string,
-                    serviceUUID: string,
-                    characteristicUUID: string): Observable<any> {
+  startNotification(
+    deviceId: string,
+    serviceUUID: string,
+    characteristicUUID: string
+  ): Observable<any> {
     return;
   }
 
@@ -399,9 +416,11 @@ export class BLE extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopNotification(deviceId: string,
-                   serviceUUID: string,
-                   characteristicUUID: string): Promise<any> {
+  stopNotification(
+    deviceId: string,
+    serviceUUID: string,
+    characteristicUUID: string
+  ): Promise<any> {
     return;
   }
 

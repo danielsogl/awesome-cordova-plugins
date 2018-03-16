@@ -37,38 +37,30 @@ export class AppVersion extends IonicNativePlugin {
 
   /**
    * Returns the name of the app
-   * @returns {Promise<any>}
+   * @returns {Promise<string>}
    */
   @Cordova()
-  getAppName(): Promise<any> {
-    return;
-  }
+  getAppName(): Promise<string> { return; }
 
   /**
    * Returns the package name of the app
-   * @returns {Promise<any>}
+   * @returns {Promise<string>}
    */
   @Cordova()
-  getPackageName(): Promise<any> {
-    return;
-  }
+  getPackageName(): Promise<string> { return; }
 
   /**
    * Returns the build identifier of the app
-   * @returns {Promise<any>}
+   * @returns {Promise<string>}
    */
   @Cordova()
-  getVersionCode(): Promise<any> {
-    return;
-  }
+  getVersionCode(): Promise<string> { return; }
 
   /**
    * Returns the version of the app
-   * @returns {Promise<any>}
+   * @returns {Promise<string>}
    */
   @Cordova()
-  getVersionNumber(): Promise<any> {
-    return;
-  }
+  getVersionNumber(): Promise<string> { return; }
 
 }

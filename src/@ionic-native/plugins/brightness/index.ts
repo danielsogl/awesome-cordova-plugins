@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * @name Brightness
  * @description
@@ -17,7 +16,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * ...
  *
- * let brightnessValue: number = 0.8;
+ * let brightnessValue = 0.8;
  * this.brightness.setBrightness(brightnessValue);
  * ```
  *
@@ -31,11 +30,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class Brightness extends IonicNativePlugin {
-
   /**
    * Sets the brightness of the display.
    *
-   * @param {value} Floating number between 0 and 1 in which case 1 means 100% brightness and 0 means 0% brightness.
+   * @param value {number} Floating number between 0 and 1 in which case 1 means 100% brightness and 0 means 0% brightness.
    * @returns {Promise<any>} Returns a Promise that resolves if setting brightness was successful.
    */
   @Cordova()
@@ -58,7 +56,5 @@ export class Brightness extends IonicNativePlugin {
    * Keeps the screen on. Prevents the device from setting the screen to sleep.
    */
   @Cordova()
-  setKeepScreenOn(value: boolean): void {
-  }
-
+  setKeepScreenOn(value: boolean): void {}
 }

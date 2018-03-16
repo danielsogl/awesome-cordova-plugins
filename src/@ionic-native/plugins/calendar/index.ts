@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CalendarOptions {
-
   /**
    * Id
    */
@@ -47,7 +46,14 @@ export interface CalendarOptions {
    * URL
    */
   url?: string;
+}
 
+export interface NameOrOptions {
+  /** Calendar name */
+  calendarName?: string;
+
+  /** Calendar color as a HEX string */
+  calendarColor?: string;
 }
 
 /**
@@ -72,6 +78,7 @@ export interface CalendarOptions {
  * ```
  * @interfaces
  * CalendarOptions
+ * NameOrOptions
  */
 @Plugin({
   pluginName: 'Calendar',
@@ -82,7 +89,6 @@ export interface CalendarOptions {
 })
 @Injectable()
 export class Calendar extends IonicNativePlugin {
-
   /**
    * This function checks if we have permission to read/write from/to the calendar.
    * The promise will resolve with `true` when:
@@ -147,11 +153,11 @@ export class Calendar extends IonicNativePlugin {
   /**
    * Create a calendar. (iOS only)
    *
-   * @param {string | Object} nameOrOptions  either a string name or a options object. If string, provide the calendar name. IF an object, provide a calendar name as a string and a calendar color in hex format as a string
+   * @param {string | CalendarOptions} nameOrOptions  either a string name or a options object. If string, provide the calendar name. IF an object, provide a calendar name as a string and a calendar color in hex format as a string
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  createCalendar(nameOrOptions: string | any): Promise<any> {
+  createCalendar(nameOrOptions: string | CalendarOptions): Promise<any> {
     return;
   }
 
@@ -178,6 +184,18 @@ export class Calendar extends IonicNativePlugin {
   }
 
   /**
+   * Returns options for a custom calender with sepcific colord
+   *
+   * @return {NameOrOptions} Returns an object with the default options
+   */
+  @Cordova({
+    sync: true
+  })
+  getCreateCalendarOptions(): NameOrOptions {
+    return;
+  }
+
+  /**
    * Silently create an event.
    * @param {string} [title]  The event title
    * @param {string} [location]  The event location
@@ -187,11 +205,13 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  createEvent(title?: string,
-              location?: string,
-              notes?: string,
-              startDate?: Date,
-              endDate?: Date): Promise<any> {
+  createEvent(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date
+  ): Promise<any> {
     return;
   }
 
@@ -207,12 +227,14 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  createEventWithOptions(title?: string,
-                         location?: string,
-                         notes?: string,
-                         startDate?: Date,
-                         endDate?: Date,
-                         options?: CalendarOptions): Promise<any> {
+  createEventWithOptions(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date,
+    options?: CalendarOptions
+  ): Promise<any> {
     return;
   }
 
@@ -227,11 +249,13 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  createEventInteractively(title?: string,
-                           location?: string,
-                           notes?: string,
-                           startDate?: Date,
-                           endDate?: Date): Promise<any> {
+  createEventInteractively(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date
+  ): Promise<any> {
     return;
   }
 
@@ -247,12 +271,14 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  createEventInteractivelyWithOptions(title?: string,
-                                      location?: string,
-                                      notes?: string,
-                                      startDate?: Date,
-                                      endDate?: Date,
-                                      options?: CalendarOptions): Promise<any> {
+  createEventInteractivelyWithOptions(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date,
+    options?: CalendarOptions
+  ): Promise<any> {
     return;
   }
 
@@ -267,11 +293,13 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  findEvent(title?: string,
-            location?: string,
-            notes?: string,
-            startDate?: Date,
-            endDate?: Date): Promise<any> {
+  findEvent(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date
+  ): Promise<any> {
     return;
   }
 
@@ -286,12 +314,14 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the event, or rejects with an error.
    */
   @Cordova()
-  findEventWithOptions(title?: string,
-                       location?: string,
-                       notes?: string,
-                       startDate?: Date,
-                       endDate?: Date,
-                       options?: CalendarOptions): Promise<any> {
+  findEventWithOptions(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date,
+    options?: CalendarOptions
+  ): Promise<any> {
     return;
   }
 
@@ -347,16 +377,18 @@ export class Calendar extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS']
   })
-  modifyEvent(title?: string,
-              location?: string,
-              notes?: string,
-              startDate?: Date,
-              endDate?: Date,
-              newTitle?: string,
-              newLocation?: string,
-              newNotes?: string,
-              newStartDate?: Date,
-              newEndDate?: Date): Promise<any> {
+  modifyEvent(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date,
+    newTitle?: string,
+    newLocation?: string,
+    newNotes?: string,
+    newStartDate?: Date,
+    newEndDate?: Date
+  ): Promise<any> {
     return;
   }
 
@@ -380,18 +412,20 @@ export class Calendar extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS']
   })
-  modifyEventWithOptions(title?: string,
-                         location?: string,
-                         notes?: string,
-                         startDate?: Date,
-                         endDate?: Date,
-                         newTitle?: string,
-                         newLocation?: string,
-                         newNotes?: string,
-                         newStartDate?: Date,
-                         newEndDate?: Date,
-                         filterOptions?: CalendarOptions,
-                         newOptions?: CalendarOptions): Promise<any> {
+  modifyEventWithOptions(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date,
+    newTitle?: string,
+    newLocation?: string,
+    newNotes?: string,
+    newStartDate?: Date,
+    newEndDate?: Date,
+    filterOptions?: CalendarOptions,
+    newOptions?: CalendarOptions
+  ): Promise<any> {
     return;
   }
 
@@ -406,11 +440,13 @@ export class Calendar extends IonicNativePlugin {
    * @return Returns a Promise
    */
   @Cordova()
-  deleteEvent(title?: string,
-              location?: string,
-              notes?: string,
-              startDate?: Date,
-              endDate?: Date): Promise<any> {
+  deleteEvent(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date
+  ): Promise<any> {
     return;
   }
 
@@ -428,12 +464,14 @@ export class Calendar extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS']
   })
-  deleteEventFromNamedCalendar(title?: string,
-                               location?: string,
-                               notes?: string,
-                               startDate?: Date,
-                               endDate?: Date,
-                               calendarName?: string): Promise<any> {
+  deleteEventFromNamedCalendar(
+    title?: string,
+    location?: string,
+    notes?: string,
+    startDate?: Date,
+    endDate?: Date,
+    calendarName?: string
+  ): Promise<any> {
     return;
   }
 
@@ -446,5 +484,4 @@ export class Calendar extends IonicNativePlugin {
   openCalendar(date: Date): Promise<any> {
     return;
   }
-
 }

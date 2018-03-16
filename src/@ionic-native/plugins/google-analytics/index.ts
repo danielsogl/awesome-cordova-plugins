@@ -38,7 +38,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class GoogleAnalytics extends IonicNativePlugin {
-
   /**
    * In your 'deviceready' handler, set up your Analytics tracker.
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/
@@ -86,12 +85,33 @@ export class GoogleAnalytics extends IonicNativePlugin {
   }
 
   /**
-   * Sets the app version
+   * Set the app version
    * @param appVersion {string} App version
    * @returns {Promise<any>}
    */
   @Cordova()
   setAppVersion(appVersion: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get a variable
+   * @param key {string} Variable
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getVar(key: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Set a variable
+   * @param key {string} Variable
+   * @param value {string} Parameter
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setVar(key: string, value: string): Promise<any> {
     return;
   }
 
@@ -141,7 +161,11 @@ export class GoogleAnalytics extends IonicNativePlugin {
     successIndex: 3,
     errorIndex: 4
   })
-  trackView(title: string, campaignUrl?: string, newSession?: boolean): Promise<any> {
+  trackView(
+    title: string,
+    campaignUrl?: string,
+    newSession?: boolean
+  ): Promise<any> {
     return;
   }
 
@@ -171,7 +195,13 @@ export class GoogleAnalytics extends IonicNativePlugin {
     successIndex: 5,
     errorIndex: 6
   })
-  trackEvent(category: string, action: string, label?: string, value?: number, newSession?: boolean): Promise<any> {
+  trackEvent(
+    category: string,
+    action: string,
+    label?: string,
+    value?: number,
+    newSession?: boolean
+  ): Promise<any> {
     return;
   }
 
@@ -195,7 +225,12 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  trackTiming(category: string, intervalInMilliseconds: number, variable: string, label: string): Promise<any> {
+  trackTiming(
+    category: string,
+    intervalInMilliseconds: number,
+    variable: string,
+    label: string
+  ): Promise<any> {
     return;
   }
 
@@ -211,7 +246,14 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  addTransaction(id: string, affiliation: string, revenue: number, tax: number, shipping: number, currencyCode: string): Promise<any> {
+  addTransaction(
+    id: string,
+    affiliation: string,
+    revenue: number,
+    tax: number,
+    shipping: number,
+    currencyCode: string
+  ): Promise<any> {
     return;
   }
 
@@ -228,7 +270,15 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  addTransactionItem(id: string, name: string, sku: string, category: string, price: number, quantity: number, currencyCode: string): Promise<any> {
+  addTransactionItem(
+    id: string,
+    name: string,
+    sku: string,
+    category: string,
+    price: number,
+    quantity: number,
+    currencyCode: string
+  ): Promise<any> {
     return;
   }
 
@@ -242,4 +292,15 @@ export class GoogleAnalytics extends IonicNativePlugin {
     return;
   }
 
+  /**
+   * Manually dispatch any data
+   * @returns {Promise<any>}
+   * @platform
+   */
+  @Cordova({
+    platforms: ['Android', 'iOS', 'Windows']
+  })
+  dispatch(): Promise<any> {
+    return;
+  }
 }

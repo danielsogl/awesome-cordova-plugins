@@ -3,9 +3,9 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-nati
 import { Observable } from 'rxjs/Observable';
 
 /**
- * @beta
  * @name Web Intent
  * @description
+ * This Plugin provides a general purpose shim layer for the Android intent mechanism, exposing various ways to handle sending and receiving intents.
  * @usage
  * For usage information please refer to the plugin's Github repo.
  *
@@ -35,7 +35,6 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class WebIntent extends IonicNativePlugin {
-
   /**
    * Convenience constant for actions
    * @type {string}
@@ -106,7 +105,6 @@ export class WebIntent extends IonicNativePlugin {
   @CordovaProperty()
   ACTION_PICK: string;
 
-
   /**
    * Launches an Android intent
    * @param options {Object} { action: any, url: string, type?: string }
@@ -173,6 +171,19 @@ export class WebIntent extends IonicNativePlugin {
    */
   @Cordova()
   sendBroadcast(options: { action: string, extras?: { option: boolean } }): Promise<any> {
+    return;
+  }
+
+  /**
+   * Request that a given application service be started
+   * @param options {Object} { action: string, extras?: { option: boolean } }
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  startService(options: {
+    action: string;
+    extras?: { option: boolean };
+  }): Promise<any> {
     return;
   }
 

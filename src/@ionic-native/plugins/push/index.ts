@@ -134,7 +134,7 @@ export interface AndroidPushOptions {
   /**
    * Maps to the project number in the Google Developer Console.
    */
-  senderID: string;
+  senderID?: string;
 
   /**
    * The name of a drawable resource to use as the small-icon. The name should
