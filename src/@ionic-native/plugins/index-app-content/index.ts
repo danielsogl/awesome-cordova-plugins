@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaFunctionOverride, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface IndexItem {
@@ -72,7 +72,6 @@ export interface IndexItem {
 })
 @Injectable()
 export class IndexAppContent extends IonicNativePlugin {
-
   /**
    * The option to index app content might not be available at all due to device limitations or user settings.
    * Therefore it's highly recommended to check upfront if indexing is possible.
@@ -90,16 +89,6 @@ export class IndexAppContent extends IonicNativePlugin {
    */
   @Cordova()
   setItems(items: Array<IndexItem>): Promise<any> {
-    return;
-  }
-
-  /**
-   * If user taps on a search result in spotlight then the app will be launched.
-   * You can register a Javascript handler to get informed when this happens.
-   * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
-   */
-  @CordovaFunctionOverride()
-  onItemPressed(): Observable<any> {
     return;
   }
 
@@ -132,5 +121,4 @@ export class IndexAppContent extends IonicNativePlugin {
   setIndexingInterval(intervalMinutes: number) {
     return;
   }
-
 }
