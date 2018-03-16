@@ -333,7 +333,7 @@ export class Push extends IonicNativePlugin {
 
   /**
    * Create a new notification channel for Android O and above.
-   * @param [channel] {Channel}
+   * @param channel {Channel}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -342,7 +342,7 @@ export class Push extends IonicNativePlugin {
 
   /**
    * Delete a notification channel for Android O and above.
-   * @param [id]
+   * @param id {string}
    */
   @Cordova({
     callbackOrder: 'reverse'
