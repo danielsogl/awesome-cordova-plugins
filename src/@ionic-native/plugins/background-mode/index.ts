@@ -25,7 +25,7 @@ export interface BackgroundModeConfiguration {
   color?: string;
 
   /**
-   * By default the app will come to foreground when taping on the notification. If false, plugin won't come to foreground when tapped.
+   * By default the app will come to foreground when tapping on the notification. If false, plugin won't come to foreground when tapped.
    */
   resume?: boolean;
 
