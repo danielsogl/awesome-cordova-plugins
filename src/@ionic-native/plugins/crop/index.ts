@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface CropOptions {
-  quality: number;
-  targetHeight: number;
-  targetWidth: number;
+  quality?: number;
+  targetHeight?: number;
+  targetWidth?: number;
 }
 
 /**
