@@ -94,6 +94,11 @@ export interface ILocalNotification {
   * Notification priority.
   */
   priority?: number;
+
+  /**
+   * Is a silent notification
+   */
+  silent?: boolean;
 }
 
 /**
