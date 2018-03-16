@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @paid
@@ -25,11 +25,11 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   pluginRef: 'DocumentReader',
   repo: 'https://github.com/regulaforensics/cordova-plugin-documentreader.git',
   platforms: ['iOS', 'Android'],
-  install:
-    'ionic plugin add cordova-plugin-documentreader --variable CAMERA_USAGE_DESCRIPTION="To take photo"'
+  install: 'ionic plugin add cordova-plugin-documentreader --variable CAMERA_USAGE_DESCRIPTION="To take photo"',
 })
 @Injectable()
 export class RegulaDocumentReader extends IonicNativePlugin {
+
   /**
    * Initialize the scanner
    * @param license {any} License data
@@ -42,7 +42,5 @@ export class RegulaDocumentReader extends IonicNativePlugin {
    * @return {Promise<string[]>} Returns a promise that resolves when results was got, and fails when not
    */
   @Cordova()
-  scanDocument(): Promise<string[]> {
-    return;
-  }
+  scanDocument(): Promise<string[]> { return; }
 }

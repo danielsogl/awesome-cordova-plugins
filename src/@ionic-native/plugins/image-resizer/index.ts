@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface ImageResizerOptions {
   /**
@@ -80,7 +80,5 @@ export class ImageResizer extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  resize(options: ImageResizerOptions): Promise<any> {
-    return;
-  }
+  resize(options: ImageResizerOptions): Promise<any> { return; }
 }

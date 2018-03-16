@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Keychain Touch Id
@@ -32,6 +32,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class KeychainTouchId extends IonicNativePlugin {
+
   /**
    * Check if Touch ID / Fingerprint is supported by the device
    * @return {Promise<any>} Returns a promise that resolves when there is hardware support
@@ -49,9 +50,7 @@ export class KeychainTouchId extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when there is a result
    */
   @Cordova()
-  save(key: string, password: string): Promise<any> {
-    return;
-  }
+  save(key: string, password: string): Promise<any> { return; }
 
   /**
    * Opens the fingerprint dialog, for the given key, showing an additional message. Promise will resolve
@@ -61,9 +60,7 @@ export class KeychainTouchId extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when the key value is successfully retrieved or an error
    */
   @Cordova()
-  verify(key: string, message: string): Promise<any> {
-    return;
-  }
+  verify(key: string, message: string): Promise<any> { return; }
 
   /**
    * Checks if there is a password stored within the keychain for the given key.
@@ -71,9 +68,7 @@ export class KeychainTouchId extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves with success if the key is available or failure if key is not.
    */
   @Cordova()
-  has(key: string): Promise<any> {
-    return;
-  }
+  has(key: string): Promise<any> { return; }
 
   /**
    * Deletes the password stored under given key from the keychain.
@@ -81,9 +76,7 @@ export class KeychainTouchId extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves with success if the key is deleted or failure if key is not
    */
   @Cordova()
-  delete(key: string): Promise<any> {
-    return;
-  }
+  delete(key: string): Promise<any> { return; }
 
   /**
    * Sets the language of the fingerprint dialog
@@ -91,4 +84,5 @@ export class KeychainTouchId extends IonicNativePlugin {
    */
   @Cordova()
   setLocale(locale: string): void {}
+
 }

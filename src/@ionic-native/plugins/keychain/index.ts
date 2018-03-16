@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+
 
 /**
  * @name Keychain
@@ -35,6 +36,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class Keychain extends IonicNativePlugin {
+
   /**
    * Retrieves a value for a key
    *
@@ -44,9 +46,7 @@ export class Keychain extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  get(key: string, touchIDMessage?: string): Promise<any> {
-    return;
-  }
+  get(key: string, touchIDMessage?: string): Promise<any> { return; }
 
   /**
    * Sets a value for a key
@@ -58,13 +58,7 @@ export class Keychain extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  set(
-    key: string,
-    value: string | number | boolean,
-    useTouchID?: boolean
-  ): Promise<any> {
-    return;
-  }
+  set(key: string, value: string | number | boolean, useTouchID?: boolean): Promise<any> { return; }
 
   /**
    * Gets a JSON value for a key
@@ -75,9 +69,7 @@ export class Keychain extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getJson(key: string, touchIDMessage?: string): Promise<any> {
-    return;
-  }
+  getJson(key: string, touchIDMessage?: string): Promise<any> { return; }
 
   /**
    * Sets a JSON value for a key
@@ -89,9 +81,7 @@ export class Keychain extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  setJson(key: string, obj: any, useTouchId?: boolean): Promise<any> {
-    return;
-  }
+  setJson(key: string, obj: any, useTouchId?: boolean): Promise<any> { return; }
 
   /**
    * Removes a value for a key
@@ -101,7 +91,6 @@ export class Keychain extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  remove(key: string): Promise<any> {
-    return;
-  }
+  remove(key: string): Promise<any> { return; }
+
 }

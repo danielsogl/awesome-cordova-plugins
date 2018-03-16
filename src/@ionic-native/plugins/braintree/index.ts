@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * Options for the setupApplePay method.
@@ -116,7 +116,8 @@ export interface PaymentUIResult {
   /**
    * Information about the Apple Pay card used to complete a payment (if Apple Pay was used).
    */
-  applePaycard: {};
+  applePaycard: {
+  };
 
   /**
    * Information about 3D Secure card used to complete a payment (if 3D Secure was used).
@@ -200,12 +201,12 @@ export interface PaymentUIResult {
   pluginRef: 'BraintreePlugin',
   repo: 'https://github.com/taracque/cordova-plugin-braintree',
   platforms: ['Android', 'iOS'],
-  install:
-    'ionic cordova plugin add https://github.com/taracque/cordova-plugin-braintree',
-  installVariables: []
+  install: 'ionic cordova plugin add https://github.com/taracque/cordova-plugin-braintree',
+  installVariables: [],
 })
 @Injectable()
 export class Braintree extends IonicNativePlugin {
+
   /**
    * Used to initialize the Braintree client. This function must be called before other methods can be used.
    *  As the initialize code is async, be sure you call all Braintree related methods after the initialize promise has resolved.
@@ -214,11 +215,9 @@ export class Braintree extends IonicNativePlugin {
    * @return {Promise<undefined | string>} Returns a promise that resolves with undefined on successful initialization, or rejects with a string message describing the failure.
    */
   @Cordova({
-    platforms: ['Android', 'iOS']
+    platforms: ['Android', 'iOS'],
   })
-  initialize(token: string): Promise<undefined | string> {
-    return;
-  }
+  initialize(token: string): Promise<undefined | string> { return; }
 
   /**
    * Used to configure Apple Pay on iOS.
@@ -233,11 +232,9 @@ export class Braintree extends IonicNativePlugin {
    * @return {Promise<undefined | string>} Returns a promise that resolves with undefined on successful initialization, or rejects with a string message describing the failure.
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
-  setupApplePay(options: ApplePayOptions): Promise<undefined | string> {
-    return;
-  }
+  setupApplePay(options: ApplePayOptions): Promise<undefined | string> { return; }
 
   /**
    * Shows Braintree's Drop-In Payments UI.
@@ -247,11 +244,7 @@ export class Braintree extends IonicNativePlugin {
    * @return {Promise<PaymentUIResult | string>} Returns a promise that resolves with a PaymentUIResult object on successful payment (or the user cancels), or rejects with a string message describing the failure.
    */
   @Cordova({
-    platforms: ['Android', 'iOS']
+    platforms: ['Android', 'iOS'],
   })
-  presentDropInPaymentUI(
-    options?: PaymentUIOptions
-  ): Promise<PaymentUIResult | string> {
-    return;
-  }
+  presentDropInPaymentUI(options?: PaymentUIOptions): Promise<PaymentUIResult | string> { return; }
 }

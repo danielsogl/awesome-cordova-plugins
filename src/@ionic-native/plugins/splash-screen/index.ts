@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+
 
 /**
  * @name Splash Screen
@@ -26,13 +27,14 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class SplashScreen extends IonicNativePlugin {
+
   /**
    * Shows the splashscreen
    */
   @Cordova({
     sync: true
   })
-  show(): void {}
+  show(): void { }
 
   /**
    * Hides the splashscreen
@@ -40,5 +42,6 @@ export class SplashScreen extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  hide(): void {}
+  hide(): void { }
+
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -30,7 +30,7 @@ import { Observable } from 'rxjs/Observable';
   plugin: 'cordova-plugin-firebase',
   pluginRef: 'FirebasePlugin',
   repo: 'https://github.com/arnesson/cordova-plugin-firebase',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Firebase extends IonicNativePlugin {
@@ -297,10 +297,7 @@ export class Firebase extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 3
   })
-  verifyPhoneNumber(
-    phoneNumber: string,
-    timeoutDuration: number
-  ): Promise<any> {
+  verifyPhoneNumber(phoneNumber: string, timeoutDuration: number): Promise<any> {
     return;
   }
 

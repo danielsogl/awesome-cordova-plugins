@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+
+
 
 /**
  * @name App Version
@@ -33,39 +35,33 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class AppVersion extends IonicNativePlugin {
+
   /**
    * Returns the name of the app
    * @returns {Promise<string>}
    */
   @Cordova()
-  getAppName(): Promise<string> {
-    return;
-  }
+  getAppName(): Promise<string> { return; }
 
   /**
    * Returns the package name of the app
    * @returns {Promise<string>}
    */
   @Cordova()
-  getPackageName(): Promise<string> {
-    return;
-  }
+  getPackageName(): Promise<string> { return; }
 
   /**
    * Returns the build identifier of the app
    * @returns {Promise<string>}
    */
   @Cordova()
-  getVersionCode(): Promise<string> {
-    return;
-  }
+  getVersionCode(): Promise<string> { return; }
 
   /**
    * Returns the version of the app
    * @returns {Promise<string>}
    */
   @Cordova()
-  getVersionNumber(): Promise<string> {
-    return;
-  }
+  getVersionNumber(): Promise<string> { return; }
+
 }

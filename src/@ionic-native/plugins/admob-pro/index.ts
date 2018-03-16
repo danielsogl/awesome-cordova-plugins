@@ -1,17 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-export type AdSize =
-  | 'SMART_BANNER'
-  | 'BANNER'
-  | 'MEDIUM_RECTANGLE'
-  | 'FULL_BANNER'
-  | 'LEADERBOARD'
-  | 'SKYSCRAPER'
-  | 'CUSTOM';
+export type AdSize = 'SMART_BANNER' | 'BANNER' | 'MEDIUM_RECTANGLE' | 'FULL_BANNER' | 'LEADERBOARD' | 'SKYSCRAPER' | 'CUSTOM';
 
 export interface AdMobOptions {
+
   /**
    * Banner ad ID
    */
@@ -76,9 +70,11 @@ export interface AdMobOptions {
    * License key for the plugin
    */
   license?: any;
+
 }
 
 export interface AdExtras {
+
   color_bg: string;
 
   color_bg_top: string;
@@ -90,6 +86,7 @@ export interface AdExtras {
   color_text: string;
 
   color_url: string;
+
 }
 
 /**
@@ -137,6 +134,7 @@ export interface AdExtras {
 })
 @Injectable()
 export class AdMobPro extends IonicNativePlugin {
+
   AD_POSITION: {
     NO_CHANGE: number;
     TOP_LEFT: number;
@@ -169,9 +167,7 @@ export class AdMobPro extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves when the banner is created
    */
   @Cordova()
-  createBanner(adIdOrOptions: string | AdMobOptions): Promise<any> {
-    return;
-  }
+  createBanner(adIdOrOptions: string | AdMobOptions): Promise<any> { return; }
 
   /**
    * Destroy the banner, remove it from screen.
@@ -179,7 +175,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  removeBanner(): void {}
+  removeBanner(): void { }
 
   /**
    * Show banner at position
@@ -188,7 +184,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  showBanner(position: number): void {}
+  showBanner(position: number): void { }
 
   /**
    * Show banner at custom position
@@ -198,7 +194,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  showBannerAtXY(x: number, y: number): void {}
+  showBannerAtXY(x: number, y: number): void { }
 
   /**
    * Hide the banner, remove it from screen, but can show it later
@@ -206,7 +202,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  hideBanner(): void {}
+  hideBanner(): void { }
 
   /**
    * Prepare interstitial banner
@@ -214,9 +210,7 @@ export class AdMobPro extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves when interstitial is prepared
    */
   @Cordova()
-  prepareInterstitial(adIdOrOptions: string | AdMobOptions): Promise<any> {
-    return;
-  }
+  prepareInterstitial(adIdOrOptions: string | AdMobOptions): Promise<any> { return; }
 
   /**
    * Show interstitial ad when it's ready
@@ -224,7 +218,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  showInterstitial(): void {}
+  showInterstitial(): void { }
 
   /**
    * Prepare a reward video ad
@@ -232,9 +226,7 @@ export class AdMobPro extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves when the ad is prepared
    */
   @Cordova()
-  prepareRewardVideoAd(adIdOrOptions: string | AdMobOptions): Promise<any> {
-    return;
-  }
+  prepareRewardVideoAd(adIdOrOptions: string | AdMobOptions): Promise<any> { return; }
 
   /**
    * Show a reward video ad
@@ -242,7 +234,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  showRewardVideoAd(): void {}
+  showRewardVideoAd(): void { }
 
   /**
    * Sets the values for configuration and targeting
@@ -250,18 +242,14 @@ export class AdMobPro extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves when the options have been set
    */
   @Cordova()
-  setOptions(options: AdMobOptions): Promise<any> {
-    return;
-  }
+  setOptions(options: AdMobOptions): Promise<any> { return; }
 
   /**
    * Get user ad settings
    * @returns {Promise<any>} Returns a promise that resolves with the ad settings
    */
   @Cordova()
-  getAdSettings(): Promise<any> {
-    return;
-  }
+  getAdSettings(): Promise<any> { return; }
 
   /**
    * Triggered when failed to receive Ad
@@ -272,9 +260,7 @@ export class AdMobPro extends IonicNativePlugin {
     event: 'onAdFailLoad',
     element: document
   })
-  onAdFailLoad(): Observable<any> {
-    return;
-  }
+  onAdFailLoad(): Observable<any> { return; }
 
   /**
    * Triggered when Ad received
@@ -285,9 +271,7 @@ export class AdMobPro extends IonicNativePlugin {
     event: 'onAdLoaded',
     element: document
   })
-  onAdLoaded(): Observable<any> {
-    return;
-  }
+  onAdLoaded(): Observable<any> { return; }
 
   /**
    * Triggered when Ad will be showed on screen
@@ -298,9 +282,7 @@ export class AdMobPro extends IonicNativePlugin {
     event: 'onAdPresent',
     element: document
   })
-  onAdPresent(): Observable<any> {
-    return;
-  }
+  onAdPresent(): Observable<any> { return; }
 
   /**
    * Triggered when user click the Ad, and will jump out of your App
@@ -311,9 +293,7 @@ export class AdMobPro extends IonicNativePlugin {
     event: 'onAdLeaveApp',
     element: document
   })
-  onAdLeaveApp(): Observable<any> {
-    return;
-  }
+  onAdLeaveApp(): Observable<any> { return; }
 
   /**
    * Triggered when dismiss the Ad and back to your App
@@ -324,7 +304,6 @@ export class AdMobPro extends IonicNativePlugin {
     event: 'onAdDismiss',
     element: document
   })
-  onAdDismiss(): Observable<any> {
-    return;
-  }
+  onAdDismiss(): Observable<any> { return; }
+
 }

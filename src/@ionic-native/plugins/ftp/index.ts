@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 /**
  * @name FTP
@@ -32,19 +32,18 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class FTP extends IonicNativePlugin {
+
   /**
-   * Connect to one ftp server.
-   *
-   * Just need to init the connection once. If success, you can do any ftp actions later.
-   * @param hostname {string} The ftp server url. Like ip without protocol prefix, e.g. "192.168.1.1".
-   * @param username {string} The ftp login username. If it and `password` are all blank/undefined, the default username "anonymous" is used.
-   * @param password {string} The ftp login password. If it and `username` are all blank/undefined, the default password "anonymous@" is used.
-   * @return {Promise<any>} The success callback. Notice: For iOS, if triggered, means `init` success, but NOT means the later action, e.g. `ls`... `download` will success!
-   */
+  * Connect to one ftp server.
+  *
+  * Just need to init the connection once. If success, you can do any ftp actions later.
+  * @param hostname {string} The ftp server url. Like ip without protocol prefix, e.g. "192.168.1.1".
+  * @param username {string} The ftp login username. If it and `password` are all blank/undefined, the default username "anonymous" is used.
+  * @param password {string} The ftp login password. If it and `username` are all blank/undefined, the default password "anonymous@" is used.
+  * @return {Promise<any>} The success callback. Notice: For iOS, if triggered, means `init` success, but NOT means the later action, e.g. `ls`... `download` will success!
+  */
   @Cordova()
-  connect(hostname: string, username: string, password: string): Promise<any> {
-    return;
-  }
+  connect(hostname: string, username: string, password: string): Promise<any> { return; }
 
   /**
    * List files (with info of `name`, `type`, `link`, `size`, `modifiedDate`) under one directory on the ftp server.
@@ -61,9 +60,7 @@ export class FTP extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  ls(path: string): Promise<any> {
-    return;
-  }
+  ls(path: string): Promise<any> { return; }
 
   /**
    * Create one directory on the ftp server.
@@ -72,9 +69,7 @@ export class FTP extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  mkdir(path: string): Promise<any> {
-    return;
-  }
+  mkdir(path: string): Promise<any> { return; }
 
   /**
    * Delete one directory on the ftp server.
@@ -85,9 +80,7 @@ export class FTP extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  rmdir(path: string): Promise<any> {
-    return;
-  }
+  rmdir(path: string): Promise<any> { return; }
 
   /**
    * Delete one file on the ftp server.
@@ -96,9 +89,7 @@ export class FTP extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  rm(file: string): Promise<any> {
-    return;
-  }
+  rm(file: string): Promise<any> { return; }
 
   /**
    * Upload one local file to the ftp server.
@@ -112,9 +103,7 @@ export class FTP extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  upload(localFile: string, remoteFile: string): Observable<any> {
-    return;
-  }
+  upload(localFile: string, remoteFile: string): Observable<any> { return; }
 
   /**
    * Download one remote file on the ftp server to local path.
@@ -128,9 +117,7 @@ export class FTP extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  download(localFile: string, remoteFile: string): Observable<any> {
-    return;
-  }
+  download(localFile: string, remoteFile: string): Observable<any> { return; }
 
   /**
    * Cancel all requests. Always success.
@@ -138,9 +125,7 @@ export class FTP extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  cancel(): Promise<any> {
-    return;
-  }
+  cancel(): Promise<any> { return; }
 
   /**
    * Disconnect from ftp server.
@@ -148,7 +133,6 @@ export class FTP extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  disconnect(): Promise<any> {
-    return;
-  }
+  disconnect(): Promise<any> { return; }
+
 }

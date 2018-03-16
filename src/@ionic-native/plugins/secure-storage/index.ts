@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
-import {
-  CordovaCheck,
-  CordovaInstance,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { CordovaInstance, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @hidden
  */
 export class SecureStorageObject {
-  constructor(private _objectInstance: any) {}
+
+  constructor(private _objectInstance: any) { }
 
   /**
    * Gets a stored item
@@ -20,9 +16,7 @@ export class SecureStorageObject {
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  get(key: string): Promise<string> {
-    return;
-  }
+  get(key: string): Promise<string> { return; }
 
   /**
    * Stores a value
@@ -33,9 +27,7 @@ export class SecureStorageObject {
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  set(key: string, value: string): Promise<any> {
-    return;
-  }
+  set(key: string, value: string): Promise<any> { return; }
 
   /**
    * Removes a single stored item
@@ -45,9 +37,7 @@ export class SecureStorageObject {
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  remove(key: string): Promise<string> {
-    return;
-  }
+  remove(key: string): Promise<string> { return; }
 
   /**
    * Get all references from the storage.
@@ -56,9 +46,7 @@ export class SecureStorageObject {
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  keys(): Promise<string[]> {
-    return;
-  }
+  keys(): Promise<string[]> { return; }
 
   /**
    * Clear all references from the storage.
@@ -67,18 +55,15 @@ export class SecureStorageObject {
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  clear(): Promise<any> {
-    return;
-  }
+  clear(): Promise<any> { return; }
 
   /**
    * Brings up the screen-lock settings
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  secureDevice(): Promise<any> {
-    return;
-  }
+  secureDevice(): Promise<any> { return; }
+
 }
 
 /**
@@ -136,6 +121,7 @@ export class SecureStorageObject {
 })
 @Injectable()
 export class SecureStorage extends IonicNativePlugin {
+
   /**
    * Creates a namespaced storage.
    * @param store {string}
@@ -144,11 +130,8 @@ export class SecureStorage extends IonicNativePlugin {
   @CordovaCheck()
   create(store: string): Promise<SecureStorageObject> {
     return new Promise((res: Function, rej: Function) => {
-      const instance = new (SecureStorage.getPlugin())(
-        () => res(new SecureStorageObject(instance)),
-        rej,
-        store
-      );
+      const instance = new (SecureStorage.getPlugin())(() => res(new SecureStorageObject(instance)), rej, store);
     });
   }
+
 }

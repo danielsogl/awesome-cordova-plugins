@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface EstimoteBeaconRegion {
+
   state?: string;
 
   major: number;
@@ -12,6 +13,7 @@ export interface EstimoteBeaconRegion {
   identifier?: string;
 
   uuid: string;
+
 }
 
 /**
@@ -46,6 +48,7 @@ export interface EstimoteBeaconRegion {
 })
 @Injectable()
 export class EstimoteBeacons extends IonicNativePlugin {
+
   /** Proximity value */
   ProximityUnknown = 0;
 
@@ -121,9 +124,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  requestWhenInUseAuthorization(): Promise<any> {
-    return;
-  }
+  requestWhenInUseAuthorization(): Promise<any> { return; }
 
   /**
    * Ask the user for permission to use location services
@@ -144,9 +145,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  requestAlwaysAuthorization(): Promise<any> {
-    return;
-  }
+  requestAlwaysAuthorization(): Promise<any> { return; }
 
   /**
    * Get the current location authorization status.
@@ -165,9 +164,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  authorizationStatus(): Promise<any> {
-    return;
-  }
+  authorizationStatus(): Promise<any> { return; }
 
   /**
    * Start advertising as a beacon.
@@ -189,14 +186,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
   @Cordova({
     clearFunction: 'stopAdvertisingAsBeacon'
   })
-  startAdvertisingAsBeacon(
-    uuid: string,
-    major: number,
-    minor: number,
-    regionId: string
-  ): Promise<any> {
-    return;
-  }
+  startAdvertisingAsBeacon(uuid: string, major: number, minor: number, regionId: string): Promise<any> { return; }
 
   /**
    * Stop advertising as a beacon.
@@ -212,9 +202,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopAdvertisingAsBeacon(): Promise<any> {
-    return;
-  }
+  stopAdvertisingAsBeacon(): Promise<any> { return; }
 
   /**
    * Enable analytics.
@@ -229,14 +217,12 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  enableAnalytics(enable: boolean): Promise<any> {
-    return;
-  }
+  enableAnalytics(enable: boolean): Promise<any> { return; }
 
   /**
-   * Test if analytics is enabled.
-   *
-   * @see {@link http://estimote.github.io/iOS-SDK/Classes/ESTConfig.html|Further details}
+  * Test if analytics is enabled.
+  *
+  * @see {@link http://estimote.github.io/iOS-SDK/Classes/ESTConfig.html|Further details}
    *
    * @usage
    * ```
@@ -245,14 +231,12 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  isAnalyticsEnabled(): Promise<any> {
-    return;
-  }
+  isAnalyticsEnabled(): Promise<any> { return; }
 
   /**
-   * Test if App ID and App Token is set.
-   *
-   * @see {@link http://estimote.github.io/iOS-SDK/Classes/ESTConfig.html|Further details}
+  * Test if App ID and App Token is set.
+  *
+  * @see {@link http://estimote.github.io/iOS-SDK/Classes/ESTConfig.html|Further details}
    *
    * @usage
    * ```
@@ -261,14 +245,12 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  isAuthorized(): Promise<any> {
-    return;
-  }
+  isAuthorized(): Promise<any> { return; }
 
   /**
-   * Set App ID and App Token.
-   *
-   * @see {@link http://estimote.github.io/iOS-SDK/Classes/ESTConfig.html|Further details}
+  * Set App ID and App Token.
+  *
+  * @see {@link http://estimote.github.io/iOS-SDK/Classes/ESTConfig.html|Further details}
    *
    * @usage
    * ```
@@ -279,9 +261,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  setupAppIDAndAppToken(appID: string, appToken: string): Promise<any> {
-    return;
-  }
+  setupAppIDAndAppToken(appID: string, appToken: string): Promise<any> { return; }
 
   /**
    * Start scanning for all nearby beacons using CoreBluetooth (no region object is used).
@@ -302,9 +282,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
     observable: true,
     clearFunction: 'stopEstimoteBeaconDiscovery'
   })
-  startEstimoteBeaconDiscovery(): Observable<any> {
-    return;
-  }
+  startEstimoteBeaconDiscovery(): Observable<any> { return; }
 
   /**
    * Stop CoreBluetooth scan. Available on iOS.
@@ -321,9 +299,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopEstimoteBeaconDiscovery(): Promise<any> {
-    return;
-  }
+  stopEstimoteBeaconDiscovery(): Promise<any> { return; }
 
   /**
    * Start ranging beacons. Available on iOS and Android.
@@ -346,9 +322,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
     clearFunction: 'stopRangingBeaconsInRegion',
     clearWithArgs: true
   })
-  startRangingBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> {
-    return;
-  }
+  startRangingBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> { return; }
 
   /**
    * Stop ranging beacons. Available on iOS and Android.
@@ -367,9 +341,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopRangingBeaconsInRegion(region: EstimoteBeaconRegion): Promise<any> {
-    return;
-  }
+  stopRangingBeaconsInRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Start ranging secure beacons. Available on iOS.
@@ -384,11 +356,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
     clearFunction: 'stopRangingSecureBeaconsInRegion',
     clearWithArgs: true
   })
-  startRangingSecureBeaconsInRegion(
-    region: EstimoteBeaconRegion
-  ): Observable<any> {
-    return;
-  }
+  startRangingSecureBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> { return; }
 
   /**
    * Stop ranging secure beacons. Available on iOS.
@@ -397,9 +365,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopRangingSecureBeaconsInRegion(region: EstimoteBeaconRegion): Promise<any> {
-    return;
-  }
+  stopRangingSecureBeaconsInRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Start monitoring beacons. Available on iOS and Android.
@@ -425,12 +391,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  startMonitoringForRegion(
-    region: EstimoteBeaconRegion,
-    notifyEntryStateOnDisplay: boolean
-  ): Observable<any> {
-    return;
-  }
+  startMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> { return; }
 
   /**
    * Stop monitoring beacons. Available on iOS and Android.
@@ -444,9 +405,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopMonitoringForRegion(region: EstimoteBeaconRegion): Promise<any> {
-    return;
-  }
+  stopMonitoringForRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Start monitoring secure beacons. Available on iOS.
@@ -466,24 +425,17 @@ export class EstimoteBeacons extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  startSecureMonitoringForRegion(
-    region: EstimoteBeaconRegion,
-    notifyEntryStateOnDisplay: boolean
-  ): Observable<any> {
-    return;
-  }
+  startSecureMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> { return; }
 
   /**
-   * Stop monitoring secure beacons. Available on iOS.
-   * This function has the same parameters/behaviour as
-   * {@link EstimoteBeacons.stopMonitoringForRegion}.
-   * @param region {EstimoteBeaconRegion} Region
-   * @returns {Promise<any>}
-   */
+  * Stop monitoring secure beacons. Available on iOS.
+  * This function has the same parameters/behaviour as
+  * {@link EstimoteBeacons.stopMonitoringForRegion}.
+  * @param region {EstimoteBeaconRegion} Region
+  * @returns {Promise<any>}
+  */
   @Cordova()
-  stopSecureMonitoringForRegion(region: EstimoteBeaconRegion): Promise<any> {
-    return;
-  }
+  stopSecureMonitoringForRegion(region: EstimoteBeaconRegion): Promise<any> { return; }
 
   /**
    * Connect to Estimote Beacon. Available on Android.
@@ -503,9 +455,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  connectToBeacon(beacon: any): Promise<any> {
-    return;
-  }
+  connectToBeacon(beacon: any): Promise<any> { return; }
 
   /**
    * Disconnect from connected Estimote Beacon. Available on Android.
@@ -517,9 +467,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  disconnectConnectedBeacon(): Promise<any> {
-    return;
-  }
+  disconnectConnectedBeacon(): Promise<any> { return; }
 
   /**
    * Write proximity UUID to connected Estimote Beacon. Available on Android.
@@ -533,9 +481,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  writeConnectedProximityUUID(uuid: any): Promise<any> {
-    return;
-  }
+  writeConnectedProximityUUID(uuid: any): Promise<any> { return; }
 
   /**
    * Write major to connected Estimote Beacon. Available on Android.
@@ -549,9 +495,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  writeConnectedMajor(major: number): Promise<any> {
-    return;
-  }
+  writeConnectedMajor(major: number): Promise<any> { return; }
 
   /**
    * Write minor to connected Estimote Beacon. Available on Android.
@@ -565,7 +509,6 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  writeConnectedMinor(minor: number): Promise<any> {
-    return;
-  }
+  writeConnectedMinor(minor: number): Promise<any> { return; }
+
 }

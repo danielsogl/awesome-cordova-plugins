@@ -1,8 +1,7 @@
-import 'rxjs/add/observable/fromEvent';
-
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
 
 export interface AdMobFreeBannerConfig {
   /**
@@ -115,6 +114,7 @@ export interface AdMobFreeRewardVideoConfig {
 })
 @Injectable()
 export class AdMobFree extends IonicNativePlugin {
+
   /**
    * Convenience object to get event names
    * @type {Object}
@@ -167,6 +167,7 @@ export class AdMobFree extends IonicNativePlugin {
    * @type {AdMobFreeRewardVideo}
    */
   rewardVideo: AdMobFreeRewardVideo = new AdMobFreeRewardVideo();
+
 }
 
 /**
@@ -175,54 +176,46 @@ export class AdMobFree extends IonicNativePlugin {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.banner'
+  pluginRef: 'admob.banner',
 })
 export class AdMobFreeBanner {
+
   /**
    * Update config.
    * @param options
    * @return {AdMobFreeBannerConfig}
    */
   @Cordova({ sync: true })
-  config(options: AdMobFreeBannerConfig): AdMobFreeBannerConfig {
-    return;
-  }
+  config(options: AdMobFreeBannerConfig): AdMobFreeBannerConfig { return; }
 
   /**
    * Hide the banner.
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  hide(): Promise<any> {
-    return;
-  }
+  hide(): Promise<any> { return; }
 
   /**
    * Create banner.
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  prepare(): Promise<any> {
-    return;
-  }
+  prepare(): Promise<any> { return; }
 
   /**
    * Remove the banner.
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  remove(): Promise<any> {
-    return;
-  }
+  remove(): Promise<any> { return; }
 
   /**
    * Show the banner.
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  show(): Promise<any> {
-    return;
-  }
+  show(): Promise<any> { return; }
+
 }
 
 /**
@@ -231,45 +224,39 @@ export class AdMobFreeBanner {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.interstitial'
+  pluginRef: 'admob.interstitial',
 })
 export class AdMobFreeInterstitial {
+
   /**
    * Update config.
    * @param options
    * @return {AdMobFreeInterstitialConfig}
    */
   @Cordova({ sync: true })
-  config(options: AdMobFreeInterstitialConfig): AdMobFreeInterstitialConfig {
-    return;
-  }
+  config(options: AdMobFreeInterstitialConfig): AdMobFreeInterstitialConfig { return; }
 
   /**
    * Check if interstitial is ready
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  isReady(): Promise<any> {
-    return;
-  }
+  isReady(): Promise<any> { return; }
 
   /**
    * Prepare interstitial
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  prepare(): Promise<any> {
-    return;
-  }
+  prepare(): Promise<any> { return; }
 
   /**
    * Show the interstitial
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  show(): Promise<any> {
-    return;
-  }
+  show(): Promise<any> { return; }
+
 }
 
 /**
@@ -278,43 +265,37 @@ export class AdMobFreeInterstitial {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.rewardvideo'
+  pluginRef: 'admob.rewardvideo',
 })
 export class AdMobFreeRewardVideo {
+
   /**
    * Update config.
    * @param options
    * @return {AdMobFreeRewardVideoConfig}
    */
   @Cordova({ sync: true })
-  config(options: AdMobFreeRewardVideoConfig): AdMobFreeRewardVideoConfig {
-    return;
-  }
+  config(options: AdMobFreeRewardVideoConfig): AdMobFreeRewardVideoConfig { return; }
 
   /**
    * Check if reward video is ready
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  isReady(): Promise<any> {
-    return;
-  }
+  isReady(): Promise<any> { return; }
 
   /**
    * Prepare reward video
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  prepare(): Promise<any> {
-    return;
-  }
+  prepare(): Promise<any> { return; }
 
   /**
    * Show the reward video
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  show(): Promise<any> {
-    return;
-  }
+  show(): Promise<any> { return; }
+
 }

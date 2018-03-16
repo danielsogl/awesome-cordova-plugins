@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+
 
 export interface FingerprintOptions {
   /**
@@ -65,14 +66,13 @@ export interface FingerprintOptions {
 })
 @Injectable()
 export class FingerprintAIO extends IonicNativePlugin {
+
   /**
    * Check if fingerprint authentication is available
    * @return {Promise<any>} Returns a promise with result
    */
   @Cordova()
-  isAvailable(): Promise<any> {
-    return;
-  }
+  isAvailable(): Promise<any> { return; }
 
   /**
    * Show authentication dialogue
@@ -80,7 +80,6 @@ export class FingerprintAIO extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when authentication was successfull
    */
   @Cordova()
-  show(options: FingerprintOptions): Promise<any> {
-    return;
-  }
+  show(options: FingerprintOptions): Promise<any> { return; }
+
 }

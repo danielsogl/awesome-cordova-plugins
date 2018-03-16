@@ -1,5 +1,5 @@
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @beta
@@ -33,14 +33,13 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class NativeRingtones extends IonicNativePlugin {
+
   /**
    * Get the ringtone list of the device
    * @return {Promise<any>} Returns a promise that resolves when ringtones found successfully
    */
   @Cordova()
-  getRingtone(): Promise<any> {
-    return;
-  }
+  getRingtone(): Promise<any> { return; }
 
   /**
    * This function starts playing the ringtone
@@ -48,9 +47,7 @@ export class NativeRingtones extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  playRingtone(ringtoneUri: string): Promise<any> {
-    return;
-  }
+  playRingtone(ringtoneUri: string): Promise<any> { return; }
 
   /**
    * This function stops playing the ringtone
@@ -58,7 +55,5 @@ export class NativeRingtones extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  stopRingtone(ringtoneUri: string): Promise<any> {
-    return;
-  }
+  stopRingtone(ringtoneUri: string): Promise<any> { return; }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface TTSOptions {
   /** text to speak */
@@ -40,6 +40,7 @@ export interface TTSOptions {
 })
 @Injectable()
 export class TextToSpeech extends IonicNativePlugin {
+
   /**
    * This function speaks
    * @param textOrOptions {string | TTSOptions} Text to speak or TTSOptions
@@ -61,4 +62,5 @@ export class TextToSpeech extends IonicNativePlugin {
   stop(): Promise<any> {
     return;
   }
+
 }

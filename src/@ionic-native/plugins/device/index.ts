@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 declare const window: any;
 
@@ -28,30 +28,40 @@ declare const window: any;
 })
 @Injectable()
 export class Device extends IonicNativePlugin {
+
   /** Get the version of Cordova running on the device. */
-  @CordovaProperty cordova: string;
+  @CordovaProperty
+  cordova: string;
 
   /**
    * The device.model returns the name of the device's model or product. The value is set
    * by the device manufacturer and may be different across versions of the same product.
    */
-  @CordovaProperty model: string;
+  @CordovaProperty
+  model: string;
 
   /** Get the device's operating system name. */
-  @CordovaProperty platform: string;
+  @CordovaProperty
+  platform: string;
 
   /** Get the device's Universally Unique Identifier (UUID). */
-  @CordovaProperty uuid: string;
+  @CordovaProperty
+  uuid: string;
 
   /** Get the operating system version. */
-  @CordovaProperty version: string;
+  @CordovaProperty
+  version: string;
 
   /** Get the device's manufacturer. */
-  @CordovaProperty manufacturer: string;
+  @CordovaProperty
+  manufacturer: string;
 
   /** Whether the device is running on a simulator. */
-  @CordovaProperty isVirtual: boolean;
+  @CordovaProperty
+  isVirtual: boolean;
 
   /** Get the device hardware serial number. */
-  @CordovaProperty serial: string;
+  @CordovaProperty
+  serial: string;
+
 }

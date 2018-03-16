@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaProperty,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin, CordovaProperty } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-
 declare let window: any;
 
 export interface NdefEvent {
@@ -73,8 +67,8 @@ export interface NdefTag {
   platforms: ['Android', 'BlackBerry 10', 'Windows', 'Windows Phone 8']
 })
 /**
- *@{ NFC } class methods
- */
+*@{ NFC } class methods
+*/
 @Injectable()
 export class NFC extends IonicNativePlugin {
   /**
@@ -90,9 +84,7 @@ export class NFC extends IonicNativePlugin {
     clearFunction: 'invalidateSession',
     clearWithArgs: true
   })
-  beginSession(onSuccess?: Function, onFailure?: Function): Observable<any> {
-    return;
-  }
+  beginSession(onSuccess?: Function, onFailure?: Function): Observable<any> { return; }
 
   /**
    * Registers an event listener for any NDEF tag.
@@ -107,12 +99,7 @@ export class NFC extends IonicNativePlugin {
     clearFunction: 'removeNdefListener',
     clearWithArgs: true
   })
-  addNdefListener(
-    onSuccess?: Function,
-    onFailure?: Function
-  ): Observable<NdefEvent> {
-    return;
-  }
+  addNdefListener(onSuccess?: Function, onFailure?: Function): Observable<NdefEvent> { return; }
 
   /**
    * Registers an event listener for tags matching any tag type.
@@ -127,12 +114,7 @@ export class NFC extends IonicNativePlugin {
     clearFunction: 'removeTagDiscoveredListener',
     clearWithArgs: true
   })
-  addTagDiscoveredListener(
-    onSuccess?: Function,
-    onFailure?: Function
-  ): Observable<any> {
-    return;
-  }
+  addTagDiscoveredListener(onSuccess?: Function, onFailure?: Function): Observable<any> { return; }
 
   /**
    * Registers an event listener for NDEF tags matching a specified MIME type.
@@ -148,13 +130,7 @@ export class NFC extends IonicNativePlugin {
     clearFunction: 'removeMimeTypeListener',
     clearWithArgs: true
   })
-  addMimeTypeListener(
-    mimeType: string,
-    onSuccess?: Function,
-    onFailure?: Function
-  ): Observable<any> {
-    return;
-  }
+  addMimeTypeListener(mimeType: string, onSuccess?: Function, onFailure?: Function): Observable<any> { return; }
 
   /**
    * Registers an event listener for formatable NDEF tags.
@@ -167,12 +143,7 @@ export class NFC extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 3
   })
-  addNdefFormatableListener(
-    onSuccess?: Function,
-    onFailure?: Function
-  ): Observable<any> {
-    return;
-  }
+  addNdefFormatableListener(onSuccess?: Function, onFailure?: Function): Observable<any> { return; }
 
   /**
    * Writes an NdefMessage(array of ndef records) to a NFC tag.
@@ -180,17 +151,13 @@ export class NFC extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  write(message: any[]): Promise<any> {
-    return;
-  }
+  write(message: any[]): Promise<any> { return; }
   /**
    * Makes a NFC tag read only. **Warning** this is permanent.
    * @returns {Promise<any>}
    */
   @Cordova()
-  makeReadyOnly(): Promise<any> {
-    return;
-  }
+  makeReadyOnly(): Promise<any> { return; }
 
   /**
    * Shares an NDEF Message(array of ndef records) via peer-to-peer.
@@ -198,26 +165,20 @@ export class NFC extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  share(message: any[]): Promise<any> {
-    return;
-  }
+  share(message: any[]): Promise<any> { return; }
 
   /**
    * Stop sharing NDEF data via peer-to-peer.
    * @returns {Promise<any>}
    */
   @Cordova()
-  unshare(): Promise<any> {
-    return;
-  }
+  unshare(): Promise<any> { return; }
 
   /**
    * Erase a NDEF tag
    */
   @Cordova()
-  erase(): Promise<any> {
-    return;
-  }
+  erase(): Promise<any> { return; }
 
   /**
    * Send a file to another device via NFC handover.
@@ -225,58 +186,46 @@ export class NFC extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  handover(uris: string[]): Promise<any> {
-    return;
-  }
+  handover(uris: string[]): Promise<any> { return; }
 
   /**
    * Stop sharing NDEF data via NFC handover.
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopHandover(): Promise<any> {
-    return;
-  }
+  stopHandover(): Promise<any> { return; }
 
   /**
    * Opens the device's NFC settings.
    * @returns {Promise<any>}
    */
   @Cordova()
-  showSettings(): Promise<any> {
-    return;
-  }
+  showSettings(): Promise<any> { return; }
 
   /**
    * Check if NFC is available and enabled on this device.
    * @returns {Promise<any>}
    */
   @Cordova()
-  enabled(): Promise<any> {
-    return;
-  }
+  enabled(): Promise<any> { return; }
   /**
-   * @{ NFC } class utility methods
-   * for use with
-   */
+  * @{ NFC } class utility methods
+  * for use with
+  */
   /**
    * Convert byte array to string
    * @param bytes {number[]}
    * @returns {string}
    */
   @Cordova({ sync: true })
-  bytesToString(bytes: number[]): string {
-    return;
-  }
+  bytesToString(bytes: number[]): string { return; }
   /**
    * Convert string to byte array.
    * @param str {string}
    * @returns {number[]}
    */
   @Cordova({ sync: true })
-  stringToBytes(str: string): number[] {
-    return;
-  }
+  stringToBytes(str: string): number[] { return; };
   /**
    * Convert byte array to hex string
    *
@@ -284,9 +233,8 @@ export class NFC extends IonicNativePlugin {
    * @returns {string}
    */
   @Cordova({ sync: true })
-  bytesToHexString(bytes: number[]): string {
-    return;
-  }
+  bytesToHexString(bytes: number[]): string { return; };
+
 }
 /**
  * @hidden
@@ -297,113 +245,92 @@ export class NFC extends IonicNativePlugin {
   pluginRef: 'ndef'
 })
 /**
- *@{ Ndef } class methods
- *@description
- * Utility methods for creating ndef records for the ndef tag format.
- * Move records into array before usage. Then pass an array to methods as parameters.
- * Do not pass bytes as parameters for these methods, conversion is built in.
- * For usage with nfc.write() and nfc.share()
- */
+*@{ Ndef } class methods
+*@description
+* Utility methods for creating ndef records for the ndef tag format.
+* Move records into array before usage. Then pass an array to methods as parameters.
+* Do not pass bytes as parameters for these methods, conversion is built in.
+* For usage with nfc.write() and nfc.share()
+*/
 @Injectable()
 export class Ndef extends IonicNativePlugin {
-  @CordovaProperty TNF_EMPTY: number;
-  @CordovaProperty TNF_WELL_KNOWN: number;
-  @CordovaProperty TNF_MIME_MEDIA: number;
-  @CordovaProperty TNF_ABSOLUTE_URI: number;
-  @CordovaProperty TNF_EXTERNAL_TYPE: number;
-  @CordovaProperty TNF_UNKNOWN: number;
-  @CordovaProperty TNF_UNCHANGED: number;
-  @CordovaProperty TNF_RESERVED: number;
 
-  @CordovaProperty RTD_TEXT: number[];
-  @CordovaProperty RTD_URI: number[];
-  @CordovaProperty RTD_SMART_POSTER: number[];
-  @CordovaProperty RTD_ALTERNATIVE_CARRIER: number[];
-  @CordovaProperty RTD_HANDOVER_CARRIER: number[];
-  @CordovaProperty RTD_HANDOVER_REQUEST: number[];
-  @CordovaProperty RTD_HANDOVER_SELECT: number[];
+  @CordovaProperty
+  TNF_EMPTY: number;
+  @CordovaProperty
+  TNF_WELL_KNOWN: number;
+  @CordovaProperty
+  TNF_MIME_MEDIA: number;
+  @CordovaProperty
+  TNF_ABSOLUTE_URI: number;
+  @CordovaProperty
+  TNF_EXTERNAL_TYPE: number;
+  @CordovaProperty
+  TNF_UNKNOWN: number;
+  @CordovaProperty
+  TNF_UNCHANGED: number;
+  @CordovaProperty
+  TNF_RESERVED: number;
 
-  @Cordova({ sync: true })
-  record(
-    tnf: number,
-    type: number[] | string,
-    id: number[] | string,
-    payload: number[] | string
-  ): NdefRecord {
-    return;
-  }
-
-  @Cordova({ sync: true })
-  textRecord(
-    text: string,
-    languageCode: string,
-    id: number[] | string
-  ): NdefRecord {
-    return;
-  }
+  @CordovaProperty
+  RTD_TEXT: number[];
+  @CordovaProperty
+  RTD_URI: number[];
+  @CordovaProperty
+  RTD_SMART_POSTER: number[];
+  @CordovaProperty
+  RTD_ALTERNATIVE_CARRIER: number[];
+  @CordovaProperty
+  RTD_HANDOVER_CARRIER: number[];
+  @CordovaProperty
+  RTD_HANDOVER_REQUEST: number[];
+  @CordovaProperty
+  RTD_HANDOVER_SELECT: number[];
 
   @Cordova({ sync: true })
-  uriRecord(uri: string, id: number[] | string): NdefRecord {
-    return;
-  }
+  record(tnf: number, type: number[] | string, id: number[] | string, payload: number[] | string): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  absoluteUriRecord(
-    uri: string,
-    payload: number[] | string,
-    id: number[] | string
-  ): NdefRecord {
-    return;
-  }
+  textRecord(text: string, languageCode: string, id: number[] | string): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  mimeMediaRecord(mimeType: string, payload: string): NdefRecord {
-    return;
-  }
+  uriRecord(uri: string, id: number[] | string): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  smartPoster(ndefRecords: any[], id?: number[] | string): NdefRecord {
-    return;
-  }
+  absoluteUriRecord(uri: string, payload: number[] | string, id: number[] | string): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  emptyRecord(): NdefRecord {
-    return;
-  }
+  mimeMediaRecord(mimeType: string, payload: string): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  androidApplicationRecord(packageName: string): NdefRecord {
-    return;
-  }
+  smartPoster(ndefRecords: any[], id?: number[] | string ): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  encodeMessage(ndefRecords: any): any {
-    return;
-  }
+  emptyRecord(): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  decodeMessage(bytes: any): any {
-    return;
-  }
+  androidApplicationRecord(packageName: string): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  docodeTnf(tnf_byte: any): any {
-    return;
-  }
+  encodeMessage(ndefRecords: any): any { return; }
 
   @Cordova({ sync: true })
-  encodeTnf(mb: any, me: any, cf: any, sr: any, il: any, tnf: any): any {
-    return;
-  }
+  decodeMessage(bytes: any): any { return; }
 
   @Cordova({ sync: true })
-  tnfToString(tnf: any): string {
-    return;
-  }
+  docodeTnf(tnf_byte: any): any { return; }
 
-  @CordovaProperty textHelper: TextHelper;
+  @Cordova({ sync: true })
+  encodeTnf(mb: any, me: any, cf: any, sr: any, il: any, tnf: any): any { return; }
 
-  @CordovaProperty uriHelper: UriHelper;
+  @Cordova({ sync: true })
+  tnfToString(tnf: any): string { return; }
+
+  @CordovaProperty
+  textHelper: TextHelper;
+
+  @CordovaProperty
+  uriHelper: UriHelper;
 }
 
 /**
@@ -416,51 +343,32 @@ export class Ndef extends IonicNativePlugin {
 })
 @Injectable()
 export class NfcUtil extends IonicNativePlugin {
-  @Cordova({ sync: true })
-  toHex(i: number): string {
-    return;
-  }
 
   @Cordova({ sync: true })
-  toPrintable(i: number): string {
-    return;
-  }
+  toHex(i: number): string { return; }
 
   @Cordova({ sync: true })
-  bytesToString(i: number[]): string {
-    return;
-  }
+  toPrintable(i: number): string { return; }
 
   @Cordova({ sync: true })
-  stringToBytes(s: string): number[] {
-    return;
-  }
+  bytesToString(i: number[]): string { return; }
 
   @Cordova({ sync: true })
-  bytesToHexString(bytes: number[]): string {
-    return;
-  }
+  stringToBytes(s: string): number[] { return; }
 
   @Cordova({ sync: true })
-  isType(record: NdefRecord, tnf: number, type: number[] | string): boolean {
-    return;
-  }
+  bytesToHexString(bytes: number[]): string { return; }
+
+  @Cordova({ sync: true })
+  isType(record: NdefRecord, tnf: number, type: number[]|string): boolean { return; }
 }
 
 export class TextHelper extends IonicNativePlugin {
-  decodePayload(data: number[]): string {
-    return;
-  }
-  encodePayload(text: string, lang: string): number[] {
-    return;
-  }
+  decodePayload(data: number[]): string { return; }
+  encodePayload(text: string, lang: string): number[] { return; }
 }
 
 export class UriHelper extends IonicNativePlugin {
-  decodePayload(data: number[]): string {
-    return;
-  }
-  encodePayload(uri: string): number[] {
-    return;
-  }
+  decodePayload(data: number[]): string { return; }
+  encodePayload(uri: string): number[] { return; }
 }

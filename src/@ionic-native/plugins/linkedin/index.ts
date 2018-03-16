@@ -1,11 +1,7 @@
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-export type LinkedInLoginScopes =
-  | 'r_basicprofile'
-  | 'r_emailaddress'
-  | 'rw_company_admin'
-  | 'w_share';
+export type LinkedInLoginScopes = 'r_basicprofile' | 'r_emailaddress' | 'rw_company_admin' | 'w_share';
 
 /**
  * @name LinkedIn
@@ -57,13 +53,13 @@ export type LinkedInLoginScopes =
   plugin: 'cordova-plugin-linkedin',
   pluginRef: 'cordova.plugins.LinkedIn',
   repo: 'https://github.com/zyra/cordova-plugin-linkedin',
-  install:
-    'ionic cordova plugin add cordova-plugin-linkedin --variable APP_ID=YOUR_APP_ID',
+  install: 'ionic cordova plugin add cordova-plugin-linkedin --variable APP_ID=YOUR_APP_ID',
   installVariables: ['APP_ID'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class LinkedIn extends IonicNativePlugin {
+
   /**
    * Login with the LinkedIn App
    * @param scopes {string[]} Scopes to authorize
@@ -71,15 +67,13 @@ export class LinkedIn extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  login(scopes: LinkedInLoginScopes[], promptToInstall: boolean): Promise<any> {
-    return;
-  }
+  login(scopes: LinkedInLoginScopes[], promptToInstall: boolean): Promise<any> { return; }
 
   /**
    * Clears the current session
    */
   @Cordova({ sync: true })
-  logout(): void {}
+  logout(): void { }
 
   /**
    * Make a get request
@@ -87,9 +81,7 @@ export class LinkedIn extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  getRequest(path: string): Promise<any> {
-    return;
-  }
+  getRequest(path: string): Promise<any> { return; }
 
   /**
    * Make a post request
@@ -98,9 +90,7 @@ export class LinkedIn extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  postRequest(path: string, body: any): Promise<any> {
-    return;
-  }
+  postRequest(path: string, body: any): Promise<any> { return; }
 
   /**
    * Opens a member's profile
@@ -108,25 +98,20 @@ export class LinkedIn extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  openProfile(memberId: string): Promise<any> {
-    return;
-  }
+  openProfile(memberId: string): Promise<any> { return; }
 
   /**
    * Checks if there is already an existing active session. This should be used to avoid unnecessary login.
    * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates whether there is an active session
    */
   @Cordova()
-  hasActiveSession(): Promise<boolean> {
-    return;
-  }
+  hasActiveSession(): Promise<boolean> { return; }
 
   /**
    * Checks if there is an active session and returns the access token if it exists.
    * @return {Promise<any>} returns a promise that resolves with an object that contains an access token if there is an active session
    */
   @Cordova()
-  getActiveSession(): Promise<any> {
-    return;
-  }
+  getActiveSession(): Promise<any> { return; }
+
 }

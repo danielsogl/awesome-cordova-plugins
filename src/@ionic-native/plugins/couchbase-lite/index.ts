@@ -1,5 +1,6 @@
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+
 
 /**
  * @name Couchbase Lite
@@ -65,8 +66,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *        .catch((error:any) => {
  *           return Observable.throw(error.json() || 'Couchbase Lite error');
  *        })        .
- * }
- * createDocument(database_name:string,document){
+ * }      
+ * createDocument(database_name:string,document){   
  *      let url = this.getUrl();
  *      url = url + database_name;
  *      return this._http
@@ -83,9 +84,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * createDocument('justbe', document);
  * // successful response
  * { "id": "string","rev": "string","ok": true }
- * updateDocument(database_name:string,document){
+ * updateDocument(database_name:string,document){    
  *      let url = this.getUrl();
- *      url = url + database_name + '/' + document._id;
+ *      url = url + database_name + '/' + document._id;     
  *      return this._http
  *        .put(url,document)
  *        .map(data => { this.results = data['results'] })
@@ -120,6 +121,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class CouchbaseLite extends IonicNativePlugin {
+
   /**
    * Get the database url
    * @return {Promise<any>} Returns a promise that resolves with the local database url
@@ -127,7 +129,6 @@ export class CouchbaseLite extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'node'
   })
-  getURL(): Promise<any> {
-    return;
-  }
+  getURL(): Promise<any> { return; }
+
 }

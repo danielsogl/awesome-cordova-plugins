@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+
 
 export interface ImagePickerOptions {
   /**
@@ -59,8 +60,7 @@ export interface ImagePickerOptions {
   plugin: 'cordova-plugin-telerik-imagepicker',
   pluginRef: 'window.imagePicker',
   repo: 'https://github.com/Telerik-Verified-Plugins/ImagePicker',
-  install:
-    'ionic cordova plugin add cordova-plugin-telerik-imagepicker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="your usage message"',
+  install: 'ionic cordova plugin add cordova-plugin-telerik-imagepicker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="your usage message"',
   installVariables: ['PHOTO_LIBRARY_USAGE_DESCRIPTION'],
   platforms: ['Android', 'iOS']
 })
@@ -75,9 +75,7 @@ export class ImagePicker extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getPictures(options: ImagePickerOptions): Promise<any> {
-    return;
-  }
+  getPictures(options: ImagePickerOptions): Promise<any> { return; }
 
   /**
    * Check if we have permission to read images
@@ -86,9 +84,7 @@ export class ImagePicker extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  hasReadPermission(): Promise<boolean> {
-    return;
-  }
+  hasReadPermission(): Promise<boolean> { return; }
 
   /**
    * Request permission to read images
@@ -97,7 +93,6 @@ export class ImagePicker extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  requestReadPermission(): Promise<any> {
-    return;
-  }
+  requestReadPermission(): Promise<any> { return; }
+
 }

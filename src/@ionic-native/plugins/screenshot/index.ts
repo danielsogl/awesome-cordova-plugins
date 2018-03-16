@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 declare const navigator: any;
 
@@ -30,6 +30,7 @@ declare const navigator: any;
 })
 @Injectable()
 export class Screenshot extends IonicNativePlugin {
+
   /**
    *  Takes screenshot and saves the image
    *
@@ -41,20 +42,22 @@ export class Screenshot extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   save(format?: string, quality?: number, filename?: string): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      navigator.screenshot.save(
-        (error: any, result: any) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(result);
-          }
-        },
-        format,
-        quality,
-        filename
-      );
-    });
+    return new Promise<any>(
+      (resolve, reject) => {
+        navigator.screenshot.save(
+          (error: any, result: any) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(result);
+            }
+          },
+          format,
+          quality,
+          filename
+        );
+      }
+    );
   }
 
   /**
@@ -65,14 +68,19 @@ export class Screenshot extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   URI(quality?: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      navigator.screenshot.URI((error: any, result: any) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(result);
-        }
-      }, quality);
-    });
+    return new Promise<any>(
+      (resolve, reject) => {
+        navigator.screenshot.URI(
+          (error: any, result: any) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(result);
+            }
+          },
+          quality
+        );
+      }
+    );
   }
 }

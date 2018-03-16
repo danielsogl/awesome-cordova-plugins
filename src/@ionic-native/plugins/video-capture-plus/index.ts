@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface MediaFile {
   /**
@@ -30,10 +30,7 @@ export interface MediaFile {
    * @param {Function} successCallback
    * @param {Function} [errorCallback]
    */
-  getFormatData(
-    successCallback: (data: MediaFileData) => any,
-    errorCallback?: (err: any) => any
-  ): any;
+  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any): any;
 }
 
 export interface MediaFileData {
@@ -60,41 +57,43 @@ export interface MediaFileData {
 }
 
 export interface VideoCapturePlusOptions {
+
   /**
-   * The number of videos to record, default 1 (on iOS always 1)
-   */
+  * The number of videos to record, default 1 (on iOS always 1)
+  */
   limit?: number;
 
   /**
-   * Max duration in seconds, default 0, which is 'forever'
-   */
+  * Max duration in seconds, default 0, which is 'forever'
+  */
   duration?: number;
 
   /**
-   * Set to true to override the default low quality setting
-   */
+  * Set to true to override the default low quality setting
+  */
   highquality?: boolean;
 
   /**
-   * Set to true to override the default backfacing camera setting.
-   * You'll want to sniff the useragent/device and pass the best overlay based on that.. assuming iphone here
-   */
+  * Set to true to override the default backfacing camera setting.
+  * You'll want to sniff the useragent/device and pass the best overlay based on that.. assuming iphone here
+  */
   frontcamera?: boolean;
 
   /**
-   * put the png overlay in your assets folder
-   */
+  * put the png overlay in your assets folder
+  */
   portraitOverlay?: string;
 
   /**
-   *  not passing an overlay means no image is shown for the landscape orientation
-   */
+  *  not passing an overlay means no image is shown for the landscape orientation
+  */
   landscapeOverlay?: string;
 
   /**
-   * iOS only
-   */
+  * iOS only
+  */
   overlayText?: string;
+
 }
 
 /**
@@ -139,6 +138,7 @@ export interface VideoCapturePlusOptions {
 })
 @Injectable()
 export class VideoCapturePlus extends IonicNativePlugin {
+
   /**
    * Starts recordings
    * @param [options] {VideoCapturePlusOptions} Configure options
@@ -147,7 +147,6 @@ export class VideoCapturePlus extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  captureVideo(options?: VideoCapturePlusOptions): Promise<MediaFile[]> {
-    return;
-  }
+  captureVideo(options?: VideoCapturePlusOptions): Promise<MediaFile[]> { return; }
+
 }

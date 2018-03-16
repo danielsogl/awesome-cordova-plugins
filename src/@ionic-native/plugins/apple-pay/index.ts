@@ -1,32 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {
+  Plugin,
+  Cordova,
+  IonicNativePlugin
+} from '@ionic-native/core';
 
-export type IMakePayments =
-  | 'This device can make payments and has a supported card'
-  | 'This device cannot make payments.'
-  | 'This device can make payments but has no supported cards';
+export type IMakePayments = 'This device can make payments and has a supported card' | 'This device cannot make payments.' | 'This device can make payments but has no supported cards';
 export type IShippingType = 'shipping' | 'delivery' | 'store' | 'service';
-export type IBillingRequirement =
-  | 'none'
-  | 'all'
-  | 'postcode'
-  | 'name'
-  | 'email'
-  | 'phone';
-export type ITransactionStatus =
-  | 'success'
-  | 'failure'
-  | 'invalid-billing-address'
-  | 'invalid-shipping-address'
-  | 'invalid-shipping-contact'
-  | 'require-pin'
-  | 'incorrect-pin'
-  | 'locked-pin';
+export type IBillingRequirement =  'none' | 'all' | 'postcode' | 'name' | 'email' | 'phone';
+export type ITransactionStatus = 'success' | 'failure' | 'invalid-billing-address' | 'invalid-shipping-address' | 'invalid-shipping-contact' | 'require-pin' | 'incorrect-pin' | 'locked-pin';
 export type ICompleteTransaction = 'Payment status applied.';
-export type IUpdateItemsAndShippingStatus =
-  | 'Updated List Info'
-  | 'Did you make a payment request?';
+export type IUpdateItemsAndShippingStatus = 'Updated List Info' | 'Did you make a payment request?';
 
 export interface IPaymentResponse {
   billingNameFirst?: string;
@@ -65,7 +50,7 @@ export interface IOrderItem {
   label: string;
   amount: number;
 }
-export interface IShippingMethod {
+export interface  IShippingMethod {
   identifier: string;
   label: string;
   detail: string;
@@ -150,10 +135,11 @@ export interface ISelectedShippingContact {
   plugin: 'cordova-plugin-applepay',
   pluginRef: 'ApplePay',
   repo: 'https://github.com/samkelleher/cordova-plugin-applepay',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class ApplePay extends IonicNativePlugin {
+
   /**
    * Detects if the current device supports Apple Pay and has any capable cards registered.
    * @return {Promise<IMakePayments>} Returns a promise
@@ -188,9 +174,7 @@ export class ApplePay extends IonicNativePlugin {
     observable: true,
     clearFunction: 'stopListeningForShippingContactSelection'
   })
-  startListeningForShippingContactSelection(): Observable<
-    ISelectedShippingContact
-  > {
+  startListeningForShippingContactSelection(): Observable<ISelectedShippingContact> {
     return;
   }
 
@@ -244,9 +228,7 @@ export class ApplePay extends IonicNativePlugin {
   @Cordova({
     otherPromise: true
   })
-  updateItemsAndShippingMethods(
-    list: IOrderItemsAndShippingMethods
-  ): Promise<IUpdateItemsAndShippingStatus> {
+  updateItemsAndShippingMethods(list: IOrderItemsAndShippingMethods): Promise<IUpdateItemsAndShippingStatus> {
     return;
   }
 
@@ -339,9 +321,7 @@ export class ApplePay extends IonicNativePlugin {
   @Cordova({
     otherPromise: true
   })
-  completeLastTransaction(
-    complete: ITransactionStatus
-  ): Promise<ICompleteTransaction> {
+  completeLastTransaction(complete: ITransactionStatus): Promise<ICompleteTransaction> {
     return;
   }
 }

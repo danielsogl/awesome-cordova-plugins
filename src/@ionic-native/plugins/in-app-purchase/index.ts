@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+
 
 /**
  * @name In App Purchase
@@ -61,6 +62,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class InAppPurchase extends IonicNativePlugin {
+
   /**
    * Retrieves a list of full product data from Apple/Google. This method must be called before making purchases.
    * @param {array<string>} productId an array of product ids.
@@ -69,9 +71,7 @@ export class InAppPurchase extends IonicNativePlugin {
   @Cordova({
     otherPromise: true
   })
-  getProducts(productId: string[]): Promise<any> {
-    return;
-  }
+  getProducts(productId: string[]): Promise<any> { return; }
 
   /**
    * Buy a product that matches the productId.
@@ -81,16 +81,7 @@ export class InAppPurchase extends IonicNativePlugin {
   @Cordova({
     otherPromise: true
   })
-  buy(
-    productId: string
-  ): Promise<{
-    transactionId: string;
-    receipt: string;
-    signature: string;
-    productType: string;
-  }> {
-    return;
-  }
+  buy(productId: string): Promise<{ transactionId: string, receipt: string, signature: string, productType: string }> { return; }
 
   /**
    * Same as buy, but for subscription based products.
@@ -100,16 +91,7 @@ export class InAppPurchase extends IonicNativePlugin {
   @Cordova({
     otherPromise: true
   })
-  subscribe(
-    productId: string
-  ): Promise<{
-    transactionId: string;
-    receipt: string;
-    signature: string;
-    productType: string;
-  }> {
-    return;
-  }
+  subscribe(productId: string): Promise<{ transactionId: string, receipt: string, signature: string, productType: string }> { return; }
 
   /**
    * Call this function after purchasing a "consumable" product to mark it as consumed. On Android, you must consume products that you want to let the user purchase multiple times. If you will not consume the product after a purchase, the next time you will attempt to purchase it you will get the error message:
@@ -121,13 +103,7 @@ export class InAppPurchase extends IonicNativePlugin {
   @Cordova({
     otherPromise: true
   })
-  consume(
-    productType: string,
-    receipt: string,
-    signature: string
-  ): Promise<any> {
-    return;
-  }
+  consume(productType: string, receipt: string, signature: string): Promise<any> { return; }
 
   /**
    * Restore all purchases from the store
@@ -136,9 +112,7 @@ export class InAppPurchase extends IonicNativePlugin {
   @Cordova({
     otherPromise: true
   })
-  restorePurchases(): Promise<any> {
-    return;
-  }
+  restorePurchases(): Promise<any> { return; }
 
   /**
    * Get the receipt.
@@ -148,7 +122,6 @@ export class InAppPurchase extends IonicNativePlugin {
     otherPromise: true,
     platforms: ['iOS']
   })
-  getReceipt(): Promise<string> {
-    return;
-  }
+  getReceipt(): Promise<string> { return; }
+
 }

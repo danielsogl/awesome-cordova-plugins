@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
-import {
-  checkAvailability,
-  CordovaInstance,
-  InstanceCheck,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { CordovaInstance, Plugin, InstanceCheck, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 
 export interface FileUploadOptions {
+
   /**
    * The name of the form element.
    * Defaults to 'file'.
@@ -35,7 +30,7 @@ export interface FileUploadOptions {
   /**
    * A set of optional key/value pairs to pass in the HTTP request.
    */
-  params?: { [s: string]: any };
+  params?: { [s: string]: any; };
 
   /**
    * Whether to upload the data in chunked streaming mode.
@@ -48,10 +43,12 @@ export interface FileUploadOptions {
    * than one value. On iOS, FireOS, and Android, if a header named
    * Content-Type is present, multipart form data will NOT be used.
    */
-  headers?: { [s: string]: any };
+  headers?: { [s: string]: any; };
+
 }
 
 export interface FileUploadResult {
+
   /**
    * The number of bytes sent to the server as part of the upload.
    */
@@ -70,10 +67,12 @@ export interface FileUploadResult {
   /**
    * The HTTP response headers by the server.
    */
-  headers: { [s: string]: any };
+  headers: { [s: string]: any; };
+
 }
 
 export interface FileTransferError {
+
   /**
    * One of the predefined error codes listed below.
    */
@@ -104,6 +103,7 @@ export interface FileTransferError {
    * Either e.getMessage or e.toString.
    */
   exception: string;
+
 }
 
 /**
@@ -179,18 +179,11 @@ export interface FileTransferError {
   plugin: 'cordova-plugin-file-transfer',
   pluginRef: 'FileTransfer',
   repo: 'https://github.com/apache/cordova-plugin-file-transfer',
-  platforms: [
-    'Amazon Fire OS',
-    'Android',
-    'Browser',
-    'iOS',
-    'Ubuntu',
-    'Windows',
-    'Windows Phone'
-  ]
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
 })
 @Injectable()
 export class FileTransfer extends IonicNativePlugin {
+
   /**
    * Error code rejected from upload with FileTransferError
    * Defined in FileTransferError.
@@ -216,6 +209,7 @@ export class FileTransfer extends IonicNativePlugin {
   create(): FileTransferObject {
     return new FileTransferObject();
   }
+
 }
 
 /**
@@ -229,13 +223,7 @@ export class FileTransferObject {
   private _objectInstance: any;
 
   constructor() {
-    if (
-      checkAvailability(
-        FileTransfer.getPluginRef(),
-        null,
-        FileTransfer.getPluginName()
-      ) === true
-    ) {
+    if (checkAvailability(FileTransfer.getPluginRef(), null, FileTransfer.getPluginName()) === true) {
       this._objectInstance = new (FileTransfer.getPlugin())();
     }
   }
@@ -253,14 +241,7 @@ export class FileTransferObject {
     successIndex: 2,
     errorIndex: 3
   })
-  upload(
-    fileUrl: string,
-    url: string,
-    options?: FileUploadOptions,
-    trustAllHosts?: boolean
-  ): Promise<FileUploadResult> {
-    return;
-  }
+  upload(fileUrl: string, url: string, options?: FileUploadOptions, trustAllHosts?: boolean): Promise<FileUploadResult> { return; }
 
   /**
    * Downloads a file from server.
@@ -275,14 +256,7 @@ export class FileTransferObject {
     successIndex: 2,
     errorIndex: 3
   })
-  download(
-    source: string,
-    target: string,
-    trustAllHosts?: boolean,
-    options?: { [s: string]: any }
-  ): Promise<any> {
-    return;
-  }
+  download(source: string, target: string, trustAllHosts?: boolean, options?: { [s: string]: any; }): Promise<any> { return; }
 
   /**
    * Registers a listener that gets called whenever a new chunk of data is transferred.

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare const navigator: any;
 
 export interface Coordinates {
+
   /**
    * a double representing the position's latitude in decimal degrees.
    */
@@ -48,6 +49,7 @@ export interface Coordinates {
    * This value can be null.
    */
   speed: number;
+
 }
 
 export interface Geoposition {
@@ -63,6 +65,7 @@ export interface Geoposition {
 }
 
 export interface PositionError {
+
   /**
    * A code that indicates the error that occurred
    */
@@ -72,9 +75,11 @@ export interface PositionError {
    * A message that can describe the error that occurred
    */
   message: string;
+
 }
 
 export interface GeolocationOptions {
+
   /**
    * Is a positive long value indicating the maximum age in milliseconds of a
    * possible cached position that is acceptable to return. If set to 0, it
@@ -102,6 +107,7 @@ export interface GeolocationOptions {
    * @type {boolean}
    */
   enableHighAccuracy?: boolean;
+
 }
 
 /**
@@ -147,13 +153,13 @@ export interface GeolocationOptions {
   plugin: 'cordova-plugin-geolocation',
   pluginRef: 'navigator.geolocation',
   repo: 'https://github.com/apache/cordova-plugin-geolocation',
-  install:
-    'ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"',
+  install: 'ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"',
   installVariables: ['GEOLOCATION_USAGE_DESCRIPTION'],
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
 export class Geolocation extends IonicNativePlugin {
+
   /**
    * Get the device's current position.
    *
@@ -163,9 +169,7 @@ export class Geolocation extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> {
-    return;
-  }
+  getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return; }
 
   /**
    * Watch the current device's position.  Clear the watch by unsubscribing from
@@ -186,13 +190,12 @@ export class Geolocation extends IonicNativePlugin {
    * @returns {Observable<Geoposition>} Returns an Observable that notifies with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or errors.
    */
   watchPosition(options?: GeolocationOptions): Observable<Geoposition> {
-    return new Observable<Geoposition>((observer: any) => {
-      let watchId = navigator.geolocation.watchPosition(
-        observer.next.bind(observer),
-        observer.next.bind(observer),
-        options
-      );
-      return () => navigator.geolocation.clearWatch(watchId);
-    });
+    return new Observable<Geoposition>(
+      (observer: any) => {
+        let watchId = navigator.geolocation.watchPosition(observer.next.bind(observer), observer.next.bind(observer), options);
+        return () => navigator.geolocation.clearWatch(watchId);
+      }
+    );
   }
+
 }

@@ -33,14 +33,13 @@ import { Injectable } from '@angular/core';
 })
 @Injectable()
 export class TapticEngine extends IonicNativePlugin {
+
   /**
    * Use selection feedback generators to indicate a change in selection.
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  selection(): Promise<any> {
-    return;
-  }
+  selection(): Promise<any> { return; }
 
   /**
    * Use this to indicate success/failure/warning to the user.
@@ -49,9 +48,7 @@ export class TapticEngine extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  notification(options: { type: string }): Promise<any> {
-    return;
-  }
+  notification(options: { type: string }): Promise<any> { return; }
 
   /**
    * Use this to indicate success/failure/warning to the user.
@@ -60,7 +57,6 @@ export class TapticEngine extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  impact(options: { style: string }): Promise<any> {
-    return;
-  }
+  impact(options: { style: string }): Promise<any> { return; }
+
 }

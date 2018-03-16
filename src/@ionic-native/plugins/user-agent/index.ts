@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name User Agent
@@ -41,6 +41,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class UserAgent extends IonicNativePlugin {
+
   /**
    * Changes the current user-agent to the one sent by argument.
    * @param userAgent {string} User-Agent
@@ -68,4 +69,5 @@ export class UserAgent extends IonicNativePlugin {
   reset(): Promise<any> {
     return;
   }
+
 }

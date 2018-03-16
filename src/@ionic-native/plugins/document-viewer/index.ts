@@ -1,5 +1,5 @@
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface DocumentViewerOptions {
   title?: string;
@@ -62,15 +62,14 @@ export interface DocumentViewerOptions {
 })
 @Injectable()
 export class DocumentViewer extends IonicNativePlugin {
+
   /**
    * Displays the email composer pre-filled with data.
    *
    * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
    */
   @Cordova()
-  getSupportInfo(): Promise<any> {
-    return;
-  }
+  getSupportInfo(): Promise<any> { return; }
 
   /**
    * Check if the document can be shown
@@ -84,15 +83,7 @@ export class DocumentViewer extends IonicNativePlugin {
    * @param [onError] {Function}
    */
   @Cordova({ sync: true })
-  canViewDocument(
-    url: string,
-    contentType: string,
-    options: DocumentViewerOptions,
-    onPossible?: Function,
-    onMissingApp?: Function,
-    onImpossible?: Function,
-    onError?: Function
-  ): void {}
+  canViewDocument(url: string, contentType: string, options: DocumentViewerOptions, onPossible?: Function, onMissingApp?: Function, onImpossible?: Function, onError?: Function): void { }
 
   /**
    * Opens the file
@@ -106,13 +97,6 @@ export class DocumentViewer extends IonicNativePlugin {
    * @param [onError] {Function}
    */
   @Cordova({ sync: true })
-  viewDocument(
-    url: string,
-    contentType: string,
-    options: DocumentViewerOptions,
-    onShow?: Function,
-    onClose?: Function,
-    onMissingApp?: Function,
-    onError?: Function
-  ): void {}
+  viewDocument(url: string, contentType: string, options: DocumentViewerOptions, onShow?: Function, onClose?: Function, onMissingApp?: Function, onError?: Function): void { }
+
 }

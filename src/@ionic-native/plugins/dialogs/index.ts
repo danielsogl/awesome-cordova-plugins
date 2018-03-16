@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+
 
 export interface DialogsPromptCallback {
+
   /**
    * The index of the pressed button. (Number) Note that the index uses one-based indexing, so the value is 1, 2, 3, etc.
    */
@@ -11,7 +13,9 @@ export interface DialogsPromptCallback {
    * The text entered in the prompt dialog box. (String)
    */
   input1: string;
+
 }
+
 
 /**
  * @name Dialogs
@@ -46,6 +50,7 @@ export interface DialogsPromptCallback {
 })
 @Injectable()
 export class Dialogs extends IonicNativePlugin {
+
   /**
    * Shows a custom alert or dialog box.
    * @param {string} message Dialog message.
@@ -57,9 +62,7 @@ export class Dialogs extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 4
   })
-  alert(message: string, title?: string, buttonName?: string): Promise<any> {
-    return;
-  }
+  alert(message: string, title?: string, buttonName?: string): Promise<any> { return; }
 
   /**
    * Displays a customizable confirmation dialog box.
@@ -72,13 +75,7 @@ export class Dialogs extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 4
   })
-  confirm(
-    message: string,
-    title?: string,
-    buttonLabels?: string[]
-  ): Promise<number> {
-    return;
-  }
+  confirm(message: string, title?: string, buttonLabels?: string[]): Promise<number> { return; }
 
   /**
    * Displays a native dialog box that is more customizable than the browser's prompt function.
@@ -92,14 +89,8 @@ export class Dialogs extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 5
   })
-  prompt(
-    message?: string,
-    title?: string,
-    buttonLabels?: string[],
-    defaultText?: string
-  ): Promise<DialogsPromptCallback> {
-    return;
-  }
+  prompt(message?: string, title?: string, buttonLabels?: string[], defaultText?: string): Promise<DialogsPromptCallback> { return; }
+
 
   /**
    * The device plays a beep sound.
@@ -108,5 +99,6 @@ export class Dialogs extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  beep(times: number): void {}
+  beep(times: number): void { }
+
 }

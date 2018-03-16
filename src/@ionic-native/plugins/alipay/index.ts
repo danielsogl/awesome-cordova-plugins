@@ -1,5 +1,7 @@
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+
+
 
 export interface AlipayOrder {
   /**
@@ -99,8 +101,7 @@ export interface AlipayOrder {
   plugin: 'cordova-alipay-base',
   pluginRef: 'Alipay.Base',
   repo: 'https://github.com/xueron/cordova-alipay-base',
-  install:
-    'ionic cordova plugin add cordova-alipay-base --variable ALI_PID=your_app_id',
+  install: 'ionic cordova plugin add cordova-alipay-base --variable ALI_PID=your_app_id',
   installVariables: ['ALI_PID'],
   platforms: ['Android', 'iOS']
 })
@@ -112,7 +113,5 @@ export class Alipay extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the success return, or rejects with an error.
    */
   @Cordova()
-  pay(order: AlipayOrder | string): Promise<any> {
-    return;
-  }
+  pay(order: AlipayOrder | string): Promise<any> { return; }
 }

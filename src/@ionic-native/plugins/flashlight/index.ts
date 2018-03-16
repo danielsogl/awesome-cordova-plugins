@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Flashlight
@@ -28,41 +28,35 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class Flashlight extends IonicNativePlugin {
+
   /**
    * Checks if the flashlight is available
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean stating if the flashlight is available.
    */
   @Cordova()
-  available(): Promise<boolean> {
-    return;
-  }
+  available(): Promise<boolean> { return; }
 
   /**
    * Switches the flashlight on
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  switchOn(): Promise<boolean> {
-    return;
-  }
+  switchOn(): Promise<boolean> { return; }
 
   /**
    * Switches the flashlight off
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  switchOff(): Promise<boolean> {
-    return;
-  }
+  switchOff(): Promise<boolean> { return; }
 
   /**
    * Toggles the flashlight
    * @returns {Promise<any>}
    */
   @Cordova()
-  toggle(): Promise<any> {
-    return;
-  }
+  toggle(): Promise<any> { return; }
+
 
   /**
    * Checks if the flashlight is turned on.
@@ -71,7 +65,6 @@ export class Flashlight extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  isSwitchedOn(): boolean {
-    return;
-  }
+  isSwitchedOn(): boolean { return; }
+
 }

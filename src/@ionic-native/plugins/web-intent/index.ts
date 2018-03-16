@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaProperty,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -35,8 +30,7 @@ import { Observable } from 'rxjs/Observable';
   pluginName: 'WebIntent',
   plugin: 'com-darryncampbell-cordova-plugin-intent',
   pluginRef: 'plugins.intentShim',
-  repo:
-    'https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent',
+  repo: 'https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent',
   platforms: ['Android']
 })
 @Injectable()

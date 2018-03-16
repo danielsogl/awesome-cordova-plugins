@@ -1,22 +1,15 @@
 import { Injectable } from '@angular/core';
-import {
-  CordovaInstance,
-  InstanceCheck,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Plugin, CordovaInstance, InstanceCheck, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 
-declare const cordova: Cordova & { InAppBrowser: any };
+declare const cordova: Cordova & { InAppBrowser: any; };
 
 export interface InAppBrowserOptions {
   /** Set to yes or no to turn the InAppBrowser's location bar on or off. */
   location?: 'yes' | 'no';
-  /**
-   * Set to yes to create the browser and load the page, but not show it. The loadstop event fires when loading is complete.
-   * Omit or set to no (default) to have the browser open and load normally.
-   **/
+  /** Set to yes to create the browser and load the page, but not show it. The loadstop event fires when loading is complete.
+   * Omit or set to no (default) to have the browser open and load normally. */
   hidden?: 'yes' | 'no';
   /** Set to yes to have the browser's cookie cache cleared before the new window is opened. */
   clearcache?: 'yes';
@@ -24,10 +17,8 @@ export interface InAppBrowserOptions {
   clearsessioncache?: 'yes';
   /** (Android Only) set to yes to show Android browser's zoom controls, set to no to hide them. Default value is yes. */
   zoom?: 'yes' | 'no';
-  /**
-   * Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
-   * If there is no previous page, the InAppBrowser will close. The default value is yes, so you must set it to no if you want the back button to simply close the InAppBrowser.
-   **/
+  /** Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
+   * If there is no previous page, the InAppBrowser will close. The default value is yes, so you must set it to no if you want the back button to simply close the InAppBrowser. */
   hardwareback?: 'yes' | 'no';
   /** Set to yes to prevent HTML5 audio or video from autoplaying (defaults to no). */
   mediaPlaybackRequiresUserAction?: 'yes' | 'no';
@@ -54,10 +45,8 @@ export interface InAppBrowserOptions {
   transitionstyle?: 'fliphorizontal' | 'crossdissolve' | 'coververtical';
   /** (iOS Only) Set to top or bottom (default is bottom). Causes the toolbar to be at the top or bottom of the window. */
   toolbarposition?: 'top' | 'bottom';
-  /**
-   * (Windows only) Set to yes to create the browser control without a border around it.
-   * Please note that if location=no is also specified, there will be no control presented to user to close IAB window.
-   **/
+  /** (Windows only) Set to yes to create the browser control without a border around it.
+   * Please note that if location=no is also specified, there will be no control presented to user to close IAB window. */
   fullscreen?: 'yes';
 
   /**
@@ -80,6 +69,7 @@ export interface InAppBrowserEvent extends Event {
  * @hidden
  */
 export class InAppBrowserObject {
+
   private _objectInstance: any;
 
   /**
@@ -93,24 +83,20 @@ export class InAppBrowserObject {
    *                 The options string must not contain any blank space, and each feature's
    *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
    */
-  constructor(
-    url: string,
-    target?: string,
-    options?: string | InAppBrowserOptions
-  ) {
+  constructor(url: string, target?: string, options?: string | InAppBrowserOptions) {
     try {
+
       if (options && typeof options !== 'string') {
-        options = Object.keys(options)
-          .map((key: string) => `${key}=${(<InAppBrowserOptions>options)[key]}`)
-          .join(',');
+        options = Object.keys(options).map((key: string) => `${key}=${(<InAppBrowserOptions>options)[key]}`).join(',');
       }
 
       this._objectInstance = cordova.InAppBrowser.open(url, target, options);
+
     } catch (e) {
+
       window.open(url, target);
-      console.warn(
-        'Native: InAppBrowser is not installed or you are running on a browser. Falling back to window.open.'
-      );
+      console.warn('Native: InAppBrowser is not installed or you are running on a browser. Falling back to window.open.');
+
     }
   }
 
@@ -119,20 +105,20 @@ export class InAppBrowserObject {
    * if the InAppBrowser was already visible.
    */
   @CordovaInstance({ sync: true })
-  show(): void {}
+  show(): void { }
 
   /**
    * Closes the InAppBrowser window.
    */
   @CordovaInstance({ sync: true })
-  close(): void {}
+  close(): void { }
 
   /**
    * Hides an InAppBrowser window that is currently shown. Calling this has no effect
    * if the InAppBrowser was already hidden.
    */
   @CordovaInstance({ sync: true })
-  hide(): void {}
+  hide(): void { }
 
   /**
    * Injects JavaScript code into the InAppBrowser window.
@@ -140,9 +126,7 @@ export class InAppBrowserObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  executeScript(script: { file?: string; code?: string }): Promise<any> {
-    return;
-  }
+  executeScript(script: { file?: string, code?: string }): Promise<any> { return; }
 
   /**
    * Injects CSS into the InAppBrowser window.
@@ -150,9 +134,7 @@ export class InAppBrowserObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  insertCSS(css: { file?: string; code?: string }): Promise<any> {
-    return;
-  }
+  insertCSS(css: { file?: string, code?: string }): Promise<any> { return; }
 
   /**
    * A method that allows you to listen to events happening in the browser.
@@ -161,19 +143,10 @@ export class InAppBrowserObject {
    */
   @InstanceCheck()
   on(event: string): Observable<InAppBrowserEvent> {
-    return new Observable<InAppBrowserEvent>(
-      (observer: Observer<InAppBrowserEvent>) => {
-        this._objectInstance.addEventListener(
-          event,
-          observer.next.bind(observer)
-        );
-        return () =>
-          this._objectInstance.removeEventListener(
-            event,
-            observer.next.bind(observer)
-          );
-      }
-    );
+    return new Observable<InAppBrowserEvent>((observer: Observer<InAppBrowserEvent>) => {
+      this._objectInstance.addEventListener(event, observer.next.bind(observer));
+      return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
+    });
   }
 }
 
@@ -212,6 +185,7 @@ export class InAppBrowserObject {
 })
 @Injectable()
 export class InAppBrowser extends IonicNativePlugin {
+
   /**
    * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.
    * @param  url {string}     The URL to load.
@@ -221,11 +195,8 @@ export class InAppBrowser extends IonicNativePlugin {
    *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
    * @returns {InAppBrowserObject}
    */
-  create(
-    url: string,
-    target?: string,
-    options?: string | InAppBrowserOptions
-  ): InAppBrowserObject {
+  create(url: string, target?: string, options?: string | InAppBrowserOptions): InAppBrowserObject {
     return new InAppBrowserObject(url, target, options);
   }
+
 }

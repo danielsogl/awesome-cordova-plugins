@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Launch Review
@@ -35,6 +35,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class LaunchReview extends IonicNativePlugin {
+
   /**
    * Launches App Store on current platform in order to leave a review for given app.
    * @param appId {string} - (optional) the platform-specific app ID to use to open the page in the store app.
@@ -44,9 +45,7 @@ export class LaunchReview extends IonicNativePlugin {
    * @returns {Promise<void>}
    */
   @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
-  launch(appId?: string): Promise<void> {
-    return;
-  }
+  launch(appId?: string): Promise<void> { return; }
 
   /**
    * Invokes the native in-app rating dialog which allows a user to rate your app without needing to open the App Store.
@@ -58,9 +57,7 @@ export class LaunchReview extends IonicNativePlugin {
    * @returns {Promise<string>}
    */
   @Cordova({ platforms: ['iOS'] })
-  rating(): Promise<string> {
-    return;
-  }
+  rating(): Promise<string> { return; }
 
   /**
    * Indicates if the current platform/version supports in-app ratings dialog, i.e. calling LaunchReview.rating().
@@ -68,7 +65,6 @@ export class LaunchReview extends IonicNativePlugin {
    * @returns {boolean}
    */
   @Cordova({ platforms: ['Android', 'iOS'], sync: true })
-  isRatingSupported(): boolean {
-    return;
-  }
+  isRatingSupported(): boolean { return; }
+
 }
