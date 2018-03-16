@@ -43,7 +43,7 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @param params {any} Some param to configure something
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
+  @Cordova({ sync: true })
   logEvent(name: string, params: any): Promise<any> { return; }
 
   /**
@@ -52,7 +52,7 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @param id {string} The user ID
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
+  @Cordova({ sync: true })
   setUserId(id: string): Promise<any> { return; }
 
   /**
@@ -62,7 +62,7 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @param value {string} The property value
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
+  @Cordova({ sync: true })
   setUserProperty(name: string, value: string): Promise<any> { return; }
 
   /**
@@ -70,7 +70,7 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @param enabled {boolean}
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
+  @Cordova({ sync: true })
   setEnabled(enabled: boolean): Promise<any> { return; }
 
   /**
@@ -79,7 +79,7 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    * @param name {string} The name of the screen
    * @return {Promise<any>} Returns a promise
    */
-  @Cordova()
+  @Cordova({ sync: true })
   setCurrentScreen(name: string): Promise<any> { return; }
 
 }
