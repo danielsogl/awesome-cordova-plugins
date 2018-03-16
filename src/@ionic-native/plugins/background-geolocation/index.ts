@@ -215,6 +215,17 @@ export interface BackgroundGeolocationConfig {
    */
   httpHeaders?: any;
 
+   /** 
+   * Custom post template
+   * With option.postTemplate is possible to specify which location properties should be posted to url or syncUrl.
+   * This can be usefull to reduce number of bytes sent over "wire"
+   * All wanted location properties has to be prefixed with @. For all available properties check Location event.
+   * Two forms are supported: jsonObject or jsonArray
+   * Note: only string keys and values are supported.
+   * Note: Keep in mind that all locations (even single one) will be sent as array of object(s), when postTemplate is jsonObject and array of array(s) for jsonArray!
+   */
+  postTemplate?: any;
+
   /**
    * IOS ONLY 
    * Switch to less accurate significant changes and region monitory when in background (default)
@@ -435,6 +446,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
   onStationary(): Promise<any> { return; }
 
   /**
+   * Deprecated: This method is deprecated and will be removed in next major version. Use checkStatus as replacement.
    * Check if location is enabled on the device
    * @returns {Promise<number>} Returns a promise with int argument that takes values 0, 1 (true).
    */
@@ -442,6 +454,15 @@ export class BackgroundGeolocation extends IonicNativePlugin {
     platforms: ['Android']
   })
   isLocationEnabled(): Promise<number> { return; }
+
+  /**
+   * Check Check status of the service * @returns {Promise<number>} Returns a promise object with the following attributes:
+   * isRunning	boolean	true/false (true if service is running)
+   * hasPermissions	boolean	true/false (true if service has permissions)
+   * authorization	number	0/1
+   */
+  @Cordova()
+  checkStatus(): Promise<any> { return; }
 
   /**
    * Display app settings to change permissions
