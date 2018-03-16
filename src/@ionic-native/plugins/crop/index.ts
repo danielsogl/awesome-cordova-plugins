@@ -24,7 +24,7 @@ export interface CropOptions {
  *     error => console.error('Error cropping image', error)
  *   );
  * ```
- * @classes
+ * @interfaces
  * CropOptions
  */
 @Plugin({
