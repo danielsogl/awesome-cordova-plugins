@@ -1,8 +1,7 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface QQShareOptions {
-
   /**
    * The clinet type, QQ or TIM
    * Default is QQ
@@ -158,12 +157,12 @@ export interface QQShareOptions {
   pluginRef: 'QQSDK',
   repo: 'https://github.com/iVanPan/Cordova_QQ',
   platforms: ['Android', 'iOS'],
-  install: 'ionic cordova plugin add cordova-plugin-qqsdk --variable QQ_APP_ID=YOUR_QQ_APPID',
-  installVariables: ['QQ_APP_ID'],
+  install:
+    'ionic cordova plugin add cordova-plugin-qqsdk --variable QQ_APP_ID=YOUR_QQ_APPID',
+  installVariables: ['QQ_APP_ID']
 })
 @Injectable()
 export class QQSDK extends IonicNativePlugin {
-
   /**
    * QQ Share Scene
    */

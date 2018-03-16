@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
+import {
+  Cordova,
+  CordovaCheck,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 
 export interface EmailComposerOptions {
-
   /**
    * App to send the email with
    */
@@ -42,9 +46,7 @@ export interface EmailComposerOptions {
    * Indicates if the body is HTML or plain text
    */
   isHtml?: boolean;
-
 }
-
 
 /**
  * @name Email Composer
@@ -110,7 +112,6 @@ export interface EmailComposerOptions {
 })
 @Injectable()
 export class EmailComposer extends IonicNativePlugin {
-
   /**
    * Verifies if sending emails is supported on the device.
    *
@@ -148,7 +149,9 @@ export class EmailComposer extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 2
   })
-  requestPermission(): Promise<boolean> { return; }
+  requestPermission(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if the app has a permission to access email accounts information
@@ -158,7 +161,9 @@ export class EmailComposer extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 2
   })
-  hasPermission(): Promise<boolean> { return; }
+  hasPermission(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Adds a new mail app alias.
@@ -167,7 +172,7 @@ export class EmailComposer extends IonicNativePlugin {
    * @param packageName {string} The package name
    */
   @Cordova()
-  addAlias(alias: string, packageName: string): void { }
+  addAlias(alias: string, packageName: string): void {}
 
   /**
    * Displays the email composer pre-filled with data.
@@ -180,6 +185,7 @@ export class EmailComposer extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 3
   })
-  open(options: EmailComposerOptions, scope?: any): Promise<any> { return; }
-
+  open(options: EmailComposerOptions, scope?: any): Promise<any> {
+    return;
+  }
 }

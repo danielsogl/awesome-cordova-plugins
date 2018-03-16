@@ -1,5 +1,5 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name SQLite Porter
@@ -43,11 +43,19 @@ import { Injectable } from '@angular/core';
   plugin: 'uk.co.workingedge.cordova.plugin.sqliteporter',
   pluginRef: 'cordova.plugins.sqlitePorter',
   repo: 'https://github.com/dpa99c/cordova-sqlite-porter',
-  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'iOS', 'Tizen', 'Windows', 'Windows Phone']
+  platforms: [
+    'Amazon Fire OS',
+    'Android',
+    'BlackBerry 10',
+    'Browser',
+    'iOS',
+    'Tizen',
+    'Windows',
+    'Windows Phone'
+  ]
 })
 @Injectable()
 export class SQLitePorter extends IonicNativePlugin {
-
   /**
    * Executes a set of SQL statements against the defined database. Can be used to import data defined in the SQL statements into the database, and may additionally include commands to create the table structure.
    * @param db {Object} Database object
@@ -59,7 +67,9 @@ export class SQLitePorter extends IonicNativePlugin {
     successName: 'successFn',
     errorName: 'errorFn'
   })
-  importSqlToDb(db: any, sql: string): Promise<any> { return; }
+  importSqlToDb(db: any, sql: string): Promise<any> {
+    return;
+  }
 
   /**
    * Exports a SQLite DB as a set of SQL statements.
@@ -71,7 +81,9 @@ export class SQLitePorter extends IonicNativePlugin {
     successName: 'successFn',
     errorName: 'errorFn'
   })
-  exportDbToSql(db: any): Promise<any> { return; }
+  exportDbToSql(db: any): Promise<any> {
+    return;
+  }
 
   /**
    * Converts table structure and/or row data contained within a JSON structure into SQL statements that can be executed against a SQLite database. Can be used to import data into the database and/or create the table structure.
@@ -84,7 +96,9 @@ export class SQLitePorter extends IonicNativePlugin {
     successName: 'successFn',
     errorName: 'errorFn'
   })
-  importJsonToDb(db: any, json: any): Promise<any> { return; }
+  importJsonToDb(db: any, json: any): Promise<any> {
+    return;
+  }
 
   /**
    * Exports a SQLite DB as a JSON structure
@@ -96,7 +110,9 @@ export class SQLitePorter extends IonicNativePlugin {
     successName: 'successFn',
     errorName: 'errorFn'
   })
-  exportDbToJson(db: any): Promise<any> { return; }
+  exportDbToJson(db: any): Promise<any> {
+    return;
+  }
 
   /**
    * Wipes all data from a database by dropping all existing tables
@@ -108,6 +124,7 @@ export class SQLitePorter extends IonicNativePlugin {
     successName: 'successFn',
     errorName: 'errorFn'
   })
-  wipeDb(db: any): Promise<any> { return; }
-
+  wipeDb(db: any): Promise<any> {
+    return;
+  }
 }

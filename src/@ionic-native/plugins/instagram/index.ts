@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Instagram
@@ -28,7 +28,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class Instagram extends IonicNativePlugin {
-
   /**
    * Detect if the Instagram application is installed on the device.
    *
@@ -37,7 +36,9 @@ export class Instagram extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'node'
   })
-  isInstalled(): Promise<boolean | string> { return; }
+  isInstalled(): Promise<boolean | string> {
+    return;
+  }
 
   /**
    * Share an image on Instagram
@@ -50,7 +51,9 @@ export class Instagram extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'node'
   })
-  share(canvasIdOrDataUrl: string, caption?: string): Promise<any> { return; }
+  share(canvasIdOrDataUrl: string, caption?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Share a library asset or video
@@ -60,6 +63,7 @@ export class Instagram extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  shareAsset(assetLocalIdentifier: string): Promise<any> { return; }
-
+  shareAsset(assetLocalIdentifier: string): Promise<any> {
+    return;
+  }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface StripeCardTokenParams {
   /**
@@ -80,28 +80,28 @@ export interface StripeBankAccountParams {
 }
 
 export interface StripeCardTokenRes {
-    /**
-     * Card Object.
-     */
-    card: {
-        brand: string,
-        exp_month: number,
-        exp_year: number,
-        funding: string,
-        last4: string
-    };
-    /**
-     * Token Request Date Time.
-     */
-    created: string;
-    /**
-     * Card Token.
-     */
-    id: string;
-    /**
-     * Source Type (card or account).
-     */
-    type: string;
+  /**
+   * Card Object.
+   */
+  card: {
+    brand: string;
+    exp_month: number;
+    exp_year: number;
+    funding: string;
+    last4: string;
+  };
+  /**
+   * Token Request Date Time.
+   */
+  created: string;
+  /**
+   * Card Token.
+   */
+  id: string;
+  /**
+   * Source Type (card or account).
+   */
+  type: string;
 }
 
 /**
@@ -144,14 +144,15 @@ export interface StripeCardTokenRes {
 })
 @Injectable()
 export class Stripe extends IonicNativePlugin {
-
   /**
    * Set publishable key
    * @param publishableKey {string} Publishable key
    * @return {Promise<void>}
    */
   @Cordova()
-  setPublishableKey(publishableKey: string): Promise<void> { return; }
+  setPublishableKey(publishableKey: string): Promise<void> {
+    return;
+  }
 
   /**
    * Create Credit Card Token
@@ -159,7 +160,9 @@ export class Stripe extends IonicNativePlugin {
    * @return {Promise<StripeCardTokenRes>} returns a promise that resolves with the token object, or rejects with an error
    */
   @Cordova()
-  createCardToken(params: StripeCardTokenParams): Promise<StripeCardTokenRes> { return; }
+  createCardToken(params: StripeCardTokenParams): Promise<StripeCardTokenRes> {
+    return;
+  }
 
   /**
    * Create a bank account token
@@ -167,7 +170,9 @@ export class Stripe extends IonicNativePlugin {
    * @return {Promise<string>} returns a promise that resolves with the token, or rejects with an error
    */
   @Cordova()
-  createBankAccountToken(params: StripeBankAccountParams): Promise<string> { return; }
+  createBankAccountToken(params: StripeBankAccountParams): Promise<string> {
+    return;
+  }
 
   /**
    * Validates a credit card number
@@ -175,7 +180,9 @@ export class Stripe extends IonicNativePlugin {
    * @return {Promise<any>} returns a promise that resolves if the number is valid, and rejects if it's invalid
    */
   @Cordova()
-  validateCardNumber(cardNumber: string): Promise<any> { return; }
+  validateCardNumber(cardNumber: string): Promise<any> {
+    return;
+  }
 
   /**
    * Validates a CVC number
@@ -183,7 +190,9 @@ export class Stripe extends IonicNativePlugin {
    * @return {Promise<any>} returns a promise that resolves if the number is valid, and rejects if it's invalid
    */
   @Cordova()
-  validateCVC(cvc: string): Promise<any> { return; }
+  validateCVC(cvc: string): Promise<any> {
+    return;
+  }
 
   /**
    * Validates an expiry date
@@ -192,7 +201,9 @@ export class Stripe extends IonicNativePlugin {
    * @return {Promise<any>} returns a promise that resolves if the date is valid, and rejects if it's invalid
    */
   @Cordova()
-  validateExpiryDate(expMonth: string, expYear: string): Promise<any> { return; }
+  validateExpiryDate(expMonth: string, expYear: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get a card type from card number
@@ -200,6 +211,7 @@ export class Stripe extends IonicNativePlugin {
    * @return {Promise<string>} returns a promise that resolves with the credit card type
    */
   @Cordova()
-  getCardType(cardNumber: string): Promise<string> { return; }
-
+  getCardType(cardNumber: string): Promise<string> {
+    return;
+  }
 }

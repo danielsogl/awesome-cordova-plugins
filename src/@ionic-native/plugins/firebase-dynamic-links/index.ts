@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface DynamicLinksOptions {
   title: string;
@@ -66,19 +66,21 @@ export interface DynamicLinksOptions {
   plugin: ' cordova-plugin-firebase-dynamiclinks',
   pluginRef: 'cordova.plugins.firebase.dynamiclinks',
   repo: 'https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks',
-  install: 'ionic cordova plugin add cordova-plugin-firebase-dynamiclinks --save --variable APP_DOMAIN="example.com" --variable APP_PATH="/"',
+  install:
+    'ionic cordova plugin add cordova-plugin-firebase-dynamiclinks --save --variable APP_DOMAIN="example.com" --variable APP_PATH="/"',
   installVariables: ['APP_DOMAIN', 'APP_PATH'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class FirebaseDynamicLinks extends IonicNativePlugin {
-
   /**
    * Registers callback that is triggered on each dynamic link click.
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  onDynamicLink(): Promise<any> { return; }
+  onDynamicLink(): Promise<any> {
+    return;
+  }
 
   /**
    * Display invitation dialog.
@@ -86,6 +88,7 @@ export class FirebaseDynamicLinks extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  sendInvitation(options: DynamicLinksOptions): Promise<any> { return; }
-
+  sendInvitation(options: DynamicLinksOptions): Promise<any> {
+    return;
+  }
 }

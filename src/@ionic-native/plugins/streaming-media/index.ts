@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface StreamingVideoOptions {
   successCallback?: Function;
@@ -55,7 +55,7 @@ export class StreamingMedia extends IonicNativePlugin {
    * @param options {StreamingVideoOptions} Options
    */
   @Cordova({ sync: true })
-  playVideo(videoUrl: string, options?: StreamingVideoOptions): void { }
+  playVideo(videoUrl: string, options?: StreamingVideoOptions): void {}
 
   /**
    * Streams an audio
@@ -63,24 +63,23 @@ export class StreamingMedia extends IonicNativePlugin {
    * @param options {StreamingAudioOptions} Options
    */
   @Cordova({ sync: true })
-  playAudio(audioUrl: string, options?: StreamingAudioOptions): void { }
+  playAudio(audioUrl: string, options?: StreamingAudioOptions): void {}
 
   /**
    * Stops streaming audio
    */
   @Cordova({ sync: true })
-  stopAudio(): void { }
+  stopAudio(): void {}
 
   /**
    * Pauses streaming audio
    */
   @Cordova({ sync: true, platforms: ['iOS'] })
-  pauseAudio(): void { }
+  pauseAudio(): void {}
 
   /**
    * Resumes streaming audio
    */
   @Cordova({ sync: true, platforms: ['iOS'] })
-  resumeAudio(): void { }
-
+  resumeAudio(): void {}
 }

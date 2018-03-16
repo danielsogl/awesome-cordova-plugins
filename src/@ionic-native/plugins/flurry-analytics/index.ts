@@ -1,5 +1,10 @@
-import { Plugin, CordovaInstance, checkAvailability, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import {
+  checkAvailability,
+  CordovaInstance,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 
 export interface FlurryAnalyticsOptions {
   /** Flurry API key is required */
@@ -73,11 +78,10 @@ export interface FlurryAnalyticsLocation {
 }
 
 /**
-* @hidden
-*/
+ * @hidden
+ */
 export class FlurryAnalyticsObject {
-
-  constructor(private _objectInstance: any) { }
+  constructor(private _objectInstance: any) {}
 
   /**
    * This function set the Event
@@ -149,7 +153,10 @@ export class FlurryAnalyticsObject {
    * @return {Promise<any>}
    */
   @CordovaInstance()
-  setLocation(location: FlurryAnalyticsLocation, message: string): Promise<any> {
+  setLocation(
+    location: FlurryAnalyticsLocation,
+    message: string
+  ): Promise<any> {
     return;
   }
 
@@ -172,7 +179,6 @@ export class FlurryAnalyticsObject {
   endSession(): Promise<any> {
     return;
   }
-
 }
 
 /**
@@ -216,22 +222,24 @@ export class FlurryAnalyticsObject {
 })
 @Injectable()
 export class FlurryAnalytics extends IonicNativePlugin {
-
   /**
    * Creates a new instance of FlurryAnalyticsObject
    * @param options {FlurryAnalyticsOptions} options
    * @return {FlurryAnalyticsObject}
    */
   create(options: FlurryAnalyticsOptions): FlurryAnalyticsObject {
-
     let instance: any;
 
-    if (checkAvailability(FlurryAnalytics.pluginRef, null, FlurryAnalytics.pluginName) === true) {
+    if (
+      checkAvailability(
+        FlurryAnalytics.pluginRef,
+        null,
+        FlurryAnalytics.pluginName
+      ) === true
+    ) {
       instance = new (window as any).FlurryAnalytics(options);
     }
 
     return new FlurryAnalyticsObject(instance);
-
   }
-
 }

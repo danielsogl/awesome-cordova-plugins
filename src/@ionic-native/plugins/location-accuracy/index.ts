@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Location Accuracy
@@ -42,14 +42,18 @@ export class LocationAccuracy extends IonicNativePlugin {
    * @returns {Promise<boolean>} Returns a promise that resovles with a boolean that indicates if you can request accurate location
    */
   @Cordova()
-  canRequest(): Promise<boolean> { return; }
+  canRequest(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Indicates if a request is currently in progress
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that indicates if a request is currently in progress
    */
   @Cordova()
-  isRequesting(): Promise<boolean> { return; }
+  isRequesting(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Requests accurate location
@@ -57,7 +61,9 @@ export class LocationAccuracy extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects if an error occurred
    */
   @Cordova({ callbackOrder: 'reverse' })
-  request(accuracy: number): Promise<any> { return; }
+  request(accuracy: number): Promise<any> {
+    return;
+  }
 
   /**
    * Convenience constant
@@ -136,5 +142,4 @@ export class LocationAccuracy extends IonicNativePlugin {
    * @type {number}
    */
   ERROR_GOOGLE_API_CONNECTION_FAILED = 4;
-
 }

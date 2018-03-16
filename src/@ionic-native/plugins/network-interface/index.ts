@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Network Interface
@@ -26,11 +26,17 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-networkinterface',
   pluginRef: 'networkinterface',
   repo: 'https://github.com/salbahra/cordova-plugin-networkinterface',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Windows', 'Windows Phone'],
+  platforms: [
+    'Android',
+    'BlackBerry 10',
+    'Browser',
+    'iOS',
+    'Windows',
+    'Windows Phone'
+  ]
 })
 @Injectable()
 export class NetworkInterface extends IonicNativePlugin {
-
   @Cordova()
   getIPAddress(): Promise<string> {
     return;

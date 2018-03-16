@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaFunctionOverride, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import {
+  Cordova,
+  CordovaFunctionOverride,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface ThreeDeeTouchQuickAction {
-
   /**
    * Type that can be used in the onHomeIconPressed callback
    */
@@ -28,11 +32,9 @@ export interface ThreeDeeTouchQuickAction {
    * Icon template
    */
   iconTemplate?: string;
-
 }
 
 export interface ThreeDeeTouchForceTouch {
-
   /**
    * Touch force
    */
@@ -52,7 +54,6 @@ export interface ThreeDeeTouchForceTouch {
    * Y coordinate of action
    */
   y: number;
-
 }
 
 /**
@@ -128,13 +129,14 @@ export interface ThreeDeeTouchForceTouch {
 })
 @Injectable()
 export class ThreeDeeTouch extends IonicNativePlugin {
-
   /**
    * You need an iPhone 6S or some future tech to use the features of this plugin, so you can check at runtime if the user's device is supported.
    * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates whether the plugin is available or not
    */
   @Cordova()
-  isAvailable(): Promise<boolean> { return; }
+  isAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * You can get a notification when the user force touches the webview. The plugin defines a Force Touch when at least 75% of the maximum force is applied to the screen. Your app will receive the x and y coordinates, so you have to figure out which UI element was touched.
@@ -143,7 +145,9 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  watchForceTouches(): Observable<ThreeDeeTouchForceTouch> { return; }
+  watchForceTouches(): Observable<ThreeDeeTouchForceTouch> {
+    return;
+  }
 
   /**
    * setup the 3D-touch actions, takes an array of objects with the following
@@ -156,14 +160,16 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  configureQuickActions(quickActions: Array<ThreeDeeTouchQuickAction>): void { }
+  configureQuickActions(quickActions: Array<ThreeDeeTouchQuickAction>): void {}
 
   /**
    * When a home icon is pressed, your app launches and this JS callback is invoked.
    * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
    */
   @CordovaFunctionOverride()
-  onHomeIconPressed(): Observable<any> { return; }
+  onHomeIconPressed(): Observable<any> {
+    return;
+  }
 
   /**
    * Enable Link Preview.
@@ -172,7 +178,7 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  enableLinkPreview(): void { }
+  enableLinkPreview(): void {}
 
   /**
    * Disabled the link preview feature, if enabled.
@@ -180,6 +186,5 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  disableLinkPreview(): void { }
-
+  disableLinkPreview(): void {}
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name App Availability
@@ -41,13 +41,13 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class AppAvailability extends IonicNativePlugin {
-
   /**
    * Checks if an app is available on device
    * @param {string} app Package name on android, or URI scheme on iOS
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  check(app: string): Promise<boolean> { return; }
-
+  check(app: string): Promise<boolean> {
+    return;
+  }
 }

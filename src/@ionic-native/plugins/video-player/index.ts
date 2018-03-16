@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * Options for the video playback using the `play` function.
  */
 export interface VideoOptions {
   /**
- * Set the initial volume of the video playback, where 0.0 is 0% volume and 1.0 is 100%.
- * For example: for a volume of 30% set the value to 0.3.
- */
+   * Set the initial volume of the video playback, where 0.0 is 0% volume and 1.0 is 100%.
+   * For example: for a volume of 30% set the value to 0.3.
+   */
   volume?: number;
   /**
    * There are two options for the scaling mode. SCALE_TO_FIT which is default and SCALE_TO_FIT_WITH_CROPPING.
@@ -52,7 +52,6 @@ export interface VideoOptions {
 })
 @Injectable()
 export class VideoPlayer extends IonicNativePlugin {
-
   /**
    * Plays the video from the passed url.
    * @param fileUrl {string} File url to the video.
@@ -60,11 +59,13 @@ export class VideoPlayer extends IonicNativePlugin {
    * @returns {Promise<any>} Resolves promise when the video was played successfully.
    */
   @Cordova()
-  play(fileUrl: string, options?: VideoOptions): Promise<any> { return; }
+  play(fileUrl: string, options?: VideoOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Stops the video playback immediatly.
    */
   @Cordova({ sync: true })
-  close(): void { }
+  close(): void {}
 }

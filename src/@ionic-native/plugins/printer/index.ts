@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaCheck, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import {
+  Cordova,
+  CordovaCheck,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 
 export interface PrintOptions {
   /**
@@ -74,14 +79,12 @@ export interface PrintOptions {
 })
 @Injectable()
 export class Printer extends IonicNativePlugin {
-
   /**
    * Checks whether the device is capable of printing (uses `check()` internally)
    * @returns {Promise<boolean>}
    */
   isAvailable(): Promise<boolean> {
-    return this.check()
-      .then((res: any) => Promise.resolve(res.avail));
+    return this.check().then((res: any) => Promise.resolve(res.avail));
   }
 
   /**
@@ -91,10 +94,9 @@ export class Printer extends IonicNativePlugin {
   @CordovaCheck()
   check(): Promise<any> {
     return new Promise<any>((resolve: Function) => {
-      Printer.getPlugin()
-        .check((avail: boolean, count: any) => {
-          resolve({ avail, count });
-        });
+      Printer.getPlugin().check((avail: boolean, count: any) => {
+        resolve({ avail, count });
+      });
     });
   }
 
@@ -103,7 +105,9 @@ export class Printer extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  pick(): Promise<any> { return; }
+  pick(): Promise<any> {
+    return;
+  }
 
   /**
    * Sends content to the printer.
@@ -115,6 +119,7 @@ export class Printer extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 4
   })
-  print(content: string | HTMLElement, options?: PrintOptions): Promise<any> { return; }
-
+  print(content: string | HTMLElement, options?: PrintOptions): Promise<any> {
+    return;
+  }
 }

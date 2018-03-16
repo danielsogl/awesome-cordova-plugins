@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface ActionSheetOptions {
-
   /**
    * The labels for the buttons. Uses the index x
    */
@@ -98,7 +97,6 @@ export interface ActionSheetOptions {
 })
 @Injectable()
 export class ActionSheet extends IonicNativePlugin {
-
   /**
    * Convenience property to select an Android theme value
    */
@@ -123,13 +121,16 @@ export class ActionSheet extends IonicNativePlugin {
    *   button pressed (1 based, so 1, 2, 3, etc.)
    */
   @Cordova()
-  show(options?: ActionSheetOptions): Promise<number> { return; }
-
+  show(options?: ActionSheetOptions): Promise<number> {
+    return;
+  }
 
   /**
    * Progamtically hide the native ActionSheet
    * @returns {Promise<any>} Returns a Promise that resolves when the actionsheet is closed
    */
   @Cordova()
-  hide(options?: any): Promise<any> { return; }
+  hide(options?: any): Promise<any> {
+    return;
+  }
 }
