@@ -181,6 +181,13 @@ export class SQLite extends IonicNativePlugin {
    */
   @Cordova()
   echoTest(): Promise<any> { return; }
+  
+  /**
+   * Automatically verify basic database access operations including opening a database
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  selfTest(): Promise<any> { return; }
 
   /**
    * Deletes a database
