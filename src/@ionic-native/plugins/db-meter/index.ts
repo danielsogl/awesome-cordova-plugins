@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -21,7 +21,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * // Check if we are listening
  * this.dbMeter.isListening().then(
- *   (isListening: boolean) => console.log(isListening)
+ *   isListening => console.log(isListening)
  * );
  *
  * // Stop listening
@@ -43,7 +43,6 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class DBMeter extends IonicNativePlugin {
-
   /**
    * Starts listening
    * @returns {Observable<any>} Returns an observable. Subscribe to start listening. Unsubscribe to stop listening.
@@ -52,27 +51,34 @@ export class DBMeter extends IonicNativePlugin {
     observable: true,
     clearFunction: 'stop'
   })
-  start(): Observable<any> { return; }
+  start(): Observable<any> {
+    return;
+  }
 
   /**
    * Stops listening
    * @hidden
    */
   @Cordova()
-  stop(): Promise<any> { return; }
+  stop(): Promise<any> {
+    return;
+  }
 
   /**
    * Check if the DB Meter is listening
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that tells us whether the DB meter is listening
    */
   @Cordova()
-  isListening(): Promise<boolean> { return; }
+  isListening(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Delete the DB Meter instance
    * @returns {Promise<any>} Returns a promise that will resolve if the instance has been deleted, and rejects if errors occur.
    */
   @Cordova()
-  delete(): Promise<any> { return; }
-
+  delete(): Promise<any> {
+    return;
+  }
 }

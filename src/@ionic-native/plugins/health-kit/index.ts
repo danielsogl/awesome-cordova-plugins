@@ -6,7 +6,7 @@ export interface HealthKitOptions {
   * HKWorkoutActivityType constant
   * Read more here: https://developer.apple.com/library/ios/documentation/HealthKit/Reference/HKWorkout_Class/#//apple_ref/c/tdef/HKWorkoutActivityType
   */
-  activityType?: string; //
+  activityType?: string;
 
   /**
   * 'hour', 'week', 'year' or 'day', default 'day'
@@ -17,6 +17,12 @@ export interface HealthKitOptions {
   *
   */
   amount?: number;
+
+  /**
+  * specifies if the data returned by querySampleType() should be sorted by
+  * end date in ascending order, default is false
+  */
+  ascending?: boolean;
 
   /**
   *
@@ -62,6 +68,11 @@ export interface HealthKitOptions {
   *
   */
   extraData?: any;
+
+  /**
+  * limits the maximum number of records returned by querySampleType()
+  */
+  limit?: number;
 
   /**
   *

@@ -38,7 +38,6 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class GoogleAnalytics extends IonicNativePlugin {
-
   /**
    * In your 'deviceready' handler, set up your Analytics tracker.
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/
@@ -50,7 +49,9 @@ export class GoogleAnalytics extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 3
   })
-  startTrackerWithId(id: string, interval?: number): Promise<any> { return; }
+  startTrackerWithId(id: string, interval?: number): Promise<any> {
+    return;
+  }
 
   /**
    * Enabling Advertising Features in Google Analytics allows you to take advantage of Remarketing, Demographics & Interests reports, and more
@@ -58,7 +59,9 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  setAllowIDFACollection(allow: boolean): Promise<any> { return; }
+  setAllowIDFACollection(allow: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Set a UserId
@@ -67,7 +70,9 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  setUserId(id: string): Promise<any> { return; }
+  setUserId(id: string): Promise<any> {
+    return;
+  }
 
   /**
    * Set a anonymize Ip address
@@ -75,15 +80,40 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  setAnonymizeIp(anonymize: boolean): Promise<any> { return; }
+  setAnonymizeIp(anonymize: boolean): Promise<any> {
+    return;
+  }
 
   /**
-   * Sets the app version
+   * Set the app version
    * @param appVersion {string} App version
    * @returns {Promise<any>}
    */
   @Cordova()
-  setAppVersion(appVersion: string): Promise<any> { return; }
+  setAppVersion(appVersion: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get a variable
+   * @param key {string} Variable
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getVar(key: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Set a variable
+   * @param key {string} Variable
+   * @param value {string} Parameter
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setVar(key: string, value: string): Promise<any> {
+    return;
+  }
 
   /**
    * Set OptOut
@@ -91,14 +121,18 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  setOptOut(optout: boolean): Promise<any> { return; }
+  setOptOut(optout: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Enable verbose logging
    * @returns {Promise<any>}
    */
   @Cordova()
-  debugMode(): Promise<any> { return; }
+  debugMode(): Promise<any> {
+    return;
+  }
 
   /**
    * Track custom metric
@@ -110,7 +144,9 @@ export class GoogleAnalytics extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 3
   })
-  trackMetric(key: number, value?: number): Promise<any> { return; }
+  trackMetric(key: number, value?: number): Promise<any> {
+    return;
+  }
 
   /**
    * Track a screen
@@ -125,7 +161,13 @@ export class GoogleAnalytics extends IonicNativePlugin {
     successIndex: 3,
     errorIndex: 4
   })
-  trackView(title: string, campaignUrl?: string, newSession?: boolean): Promise<any> { return; }
+  trackView(
+    title: string,
+    campaignUrl?: string,
+    newSession?: boolean
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Add a Custom Dimension
@@ -135,7 +177,9 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  addCustomDimension(key: number, value: string): Promise<any> { return; }
+  addCustomDimension(key: number, value: string): Promise<any> {
+    return;
+  }
 
   /**
    * Track an event
@@ -151,7 +195,15 @@ export class GoogleAnalytics extends IonicNativePlugin {
     successIndex: 5,
     errorIndex: 6
   })
-  trackEvent(category: string, action: string, label?: string, value?: number, newSession?: boolean): Promise<any> { return; }
+  trackEvent(
+    category: string,
+    action: string,
+    label?: string,
+    value?: number,
+    newSession?: boolean
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Track an exception
@@ -160,7 +212,9 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  trackException(description: string, fatal: boolean): Promise<any> { return; }
+  trackException(description: string, fatal: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Track User Timing (App Speed)
@@ -171,7 +225,14 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  trackTiming(category: string, intervalInMilliseconds: number, variable: string, label: string): Promise<any> { return; }
+  trackTiming(
+    category: string,
+    intervalInMilliseconds: number,
+    variable: string,
+    label: string
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Add a Transaction (Ecommerce)
@@ -185,7 +246,16 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  addTransaction(id: string, affiliation: string, revenue: number, tax: number, shipping: number, currencyCode: string): Promise<any> { return; }
+  addTransaction(
+    id: string,
+    affiliation: string,
+    revenue: number,
+    tax: number,
+    shipping: number,
+    currencyCode: string
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Add a Transaction Item (Ecommerce)
@@ -200,7 +270,17 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  addTransactionItem(id: string, name: string, sku: string, category: string, price: number, quantity: number, currencyCode: string): Promise<any> { return; }
+  addTransactionItem(
+    id: string,
+    name: string,
+    sku: string,
+    category: string,
+    price: number,
+    quantity: number,
+    currencyCode: string
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Enable/disable automatic reporting of uncaught exceptions
@@ -208,6 +288,19 @@ export class GoogleAnalytics extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  enableUncaughtExceptionReporting(shouldEnable: boolean): Promise<any> { return; }
+  enableUncaughtExceptionReporting(shouldEnable: boolean): Promise<any> {
+    return;
+  }
 
+  /**
+   * Manually dispatch any data
+   * @returns {Promise<any>}
+   * @platform
+   */
+  @Cordova({
+    platforms: ['Android', 'iOS', 'Windows']
+  })
+  dispatch(): Promise<any> {
+    return;
+  }
 }
