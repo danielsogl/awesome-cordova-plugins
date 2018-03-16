@@ -300,4 +300,14 @@ export class Firebase extends IonicNativePlugin {
   verifyPhoneNumber(phoneNumber: string, timeoutDuration: number): Promise<any> {
     return;
   }
+
+  /**
+   * Allows the user to enable/disable analytics collection
+   * @param enabled {booleab} value to set collection
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setAnalyticsCollectionEnabled(enabled: boolean): Promise<any> {
+    return;
+  }
 }
