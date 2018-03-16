@@ -67,7 +67,7 @@ export interface PrintOptions {
  */
 @Plugin({
   pluginName: 'Printer',
-  plugin: 'de.appplant.cordova.plugin.printer',
+  plugin: 'cordova-plugin-printer',
   pluginRef: 'cordova.plugins.printer',
   repo: 'https://github.com/katzer/cordova-plugin-printer',
   platforms: ['Android', 'iOS', 'Windows']
