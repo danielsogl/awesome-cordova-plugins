@@ -74,11 +74,34 @@ export class Mixpanel extends IonicNativePlugin {
 
   /**
    *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getSuperProperties(): Promise<any> { return; }
+
+  /**
+   *
    * @param superProperties {any}
    * @returns {Promise<any>}
    */
   @Cordova()
   registerSuperProperties(superProperties: any): Promise<any> { return; }
+
+  /**
+   *
+   * @param superProperties {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerSuperPropertiesOnce(superProperties: any): Promise<any> { return; }
+
+  /**
+   *
+   * @param superPropertyName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  unregisterSuperProperty(superPropertyName: string): Promise<any> { return; }
 
   /**
    *
