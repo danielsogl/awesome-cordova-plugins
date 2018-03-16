@@ -16,7 +16,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * ...
  *
- * let brightnessValue: number = 0.8;
+ * let brightnessValue = 0.8;
  * this.brightness.setBrightness(brightnessValue);
  * ```
  *
