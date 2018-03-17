@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
-
 /**
  * @name Badge
  * @description
@@ -31,13 +30,14 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class Badge extends IonicNativePlugin {
-
   /**
    * Clear the badge of the app icon.
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  clear(): Promise<boolean> { return; }
+  clear(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Set the badge of the app icon.
@@ -45,14 +45,18 @@ export class Badge extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  set(badgeNumber: number): Promise<any> { return; }
+  set(badgeNumber: number): Promise<any> {
+    return;
+  }
 
   /**
    * Get the badge of the app icon.
    * @returns {Promise<any>}
    */
   @Cordova()
-  get(): Promise<any> { return; }
+  get(): Promise<any> {
+    return;
+  }
 
   /**
    * Increase the badge number.
@@ -60,7 +64,9 @@ export class Badge extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  increase(increaseBy: number): Promise<any> { return; }
+  increase(increaseBy: number): Promise<any> {
+    return;
+  }
 
   /**
    * Decrease the badge number.
@@ -68,20 +74,34 @@ export class Badge extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  decrease(decreaseBy: number): Promise<any> { return; }
+  decrease(decreaseBy: number): Promise<any> {
+    return;
+  }
+
+  /**
+   * Check support to show badges.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  isSupported(): Promise<any> {
+    return;
+  }
 
   /**
    * Determine if the app has permission to show badges.
    * @returns {Promise<any>}
    */
   @Cordova()
-  hasPermission(): Promise<any> { return; }
+  hasPermission(): Promise<any> {
+    return;
+  }
 
   /**
    * Register permission to set badge notifications
    * @returns {Promise<any>}
    */
   @Cordova()
-  registerPermission(): Promise<any> { return; }
-
+  requestPermission(): Promise<any> {
+    return;
+  }
 }

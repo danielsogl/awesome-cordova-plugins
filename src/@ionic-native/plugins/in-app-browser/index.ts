@@ -24,6 +24,10 @@ export interface InAppBrowserOptions {
   mediaPlaybackRequiresUserAction?: 'yes' | 'no';
   /** (Android Only) Set to yes to make InAppBrowser WebView to pause/resume with the app to stop background audio (this may be required to avoid Google Play issues) */
   shouldPauseOnSuspend?: 'yes' | 'no';
+  /** (Android Only) Set to yes to show a close button in the footer similar to the iOS Done button. The close button will appear the same as for the header hence use closebuttoncaption and closebuttoncolor to set its properties */
+  footer?: 'yes' | 'no';
+  /** (Android Only) Set to a valid hex color string, for example #00ff00 or #CC00ff00 (#aarrggbb) , and it will change the footer color from default. Only has effect if user has footer set to yes */
+  footercolor?: string;
   /** (iOS Only) Set to a string to use as the Done button's caption. Note that you need to localize this value yourself. */
   closebuttoncaption?: string;
   /** (iOS Only) Set to yes or no (default is no). Turns on/off the UIWebViewBounce property. */
@@ -166,7 +170,12 @@ export class InAppBrowserObject {
  * const browser = this.iab.create('https://ionicframework.com/');
  *
  * browser.executeScript(...);
+ *
  * browser.insertCSS(...);
+ * browser.on('loadstop').subscribe(event => {
+ *    browser.insertCSS({ code: "body{color: red;" });
+ * });
+ *
  * browser.close();
  *
  * ```

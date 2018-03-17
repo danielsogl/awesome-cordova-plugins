@@ -28,7 +28,7 @@ import { Observable } from 'rxjs/Observable';
   plugin: 'cordova-plugin-broadcaster',
   pluginRef: 'broadcaster',
   repo: 'https://github.com/bsorrentino/cordova-broadcaster',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS', 'Browser']
 })
 @Injectable()
 export class Broadcaster extends IonicNativePlugin {

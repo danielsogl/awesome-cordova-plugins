@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
+
+export interface BLEScanOptions {
+  /** true if duplicate devices should be reported, false (default) if devices should only be reported once.  */
+  reportDuplicates?: boolean;
+}
 
 /**
  * @name BLE
@@ -167,6 +172,8 @@ import { Observable } from 'rxjs/Observable';
  *
  * UUIDs are always strings and not numbers. Some 16-bit UUIDs, such as '2220' look like integers, but they're not. (The integer 2220 is 0x8AC in hex.) This isn't a problem with 128 bit UUIDs since they look like strings 82b9e6e1-593a-456f-be9b-9215160ebcac. All 16-bit UUIDs should also be passed to methods as strings.
  *
+ * @interfaces
+ * BLEScanOptions
  */
 @Plugin({
   pluginName: 'BLE',
@@ -177,7 +184,6 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class BLE extends IonicNativePlugin {
-
   /**
    * Scan and discover BLE peripherals for the specified amount of time.
    *
@@ -194,7 +200,9 @@ export class BLE extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  scan(services: string[], seconds: number): Observable<any> { return; }
+  scan(services: string[], seconds: number): Observable<any> {
+    return;
+  }
 
   /**
    * Scan and discover BLE peripherals until `stopScan` is called.
@@ -217,7 +225,9 @@ export class BLE extends IonicNativePlugin {
     clearFunction: 'stopScan',
     clearWithArgs: false
   })
-  startScan(services: string[]): Observable<any> { return; }
+  startScan(services: string[]): Observable<any> {
+    return;
+  }
 
   /**
    * Scans for BLE devices. This function operates similarly to the `startScan` function, but allows you to specify extra options (like allowing duplicate device reports).
@@ -230,7 +240,12 @@ export class BLE extends IonicNativePlugin {
     clearFunction: 'stopScan',
     clearWithArgs: false
   })
-  startScanWithOptions(services: string[], options: { reportDuplicates?: boolean } | any): Observable<any> { return; }
+  startScanWithOptions(
+    services: string[],
+    options: BLEScanOptions
+  ): Observable<any> {
+    return;
+  }
 
   /**
    * Stop a scan started by `startScan`.
@@ -247,7 +262,9 @@ export class BLE extends IonicNativePlugin {
    * @return returns a Promise.
    */
   @Cordova()
-  stopScan(): Promise<any> { return; }
+  stopScan(): Promise<any> {
+    return;
+  }
 
   /**
    * Connect to a peripheral.
@@ -268,7 +285,9 @@ export class BLE extends IonicNativePlugin {
     clearFunction: 'disconnect',
     clearWithArgs: true
   })
-  connect(deviceId: string): Observable<any> { return; }
+  connect(deviceId: string): Observable<any> {
+    return;
+  }
 
   /**
    * Disconnect from a peripheral.
@@ -282,7 +301,9 @@ export class BLE extends IonicNativePlugin {
    * @return Returns a Promise
    */
   @Cordova()
-  disconnect(deviceId: string): Promise<any> { return; }
+  disconnect(deviceId: string): Promise<any> {
+    return;
+  }
 
   /**
    * Read the value of a characteristic.
@@ -297,7 +318,9 @@ export class BLE extends IonicNativePlugin {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-    ): Promise<any> { return; };
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Write the value of a characteristic.
@@ -333,7 +356,9 @@ export class BLE extends IonicNativePlugin {
     serviceUUID: string,
     characteristicUUID: string,
     value: ArrayBuffer
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Write the value of a characteristic without waiting for confirmation from the peripheral.
@@ -350,7 +375,9 @@ export class BLE extends IonicNativePlugin {
     serviceUUID: string,
     characteristicUUID: string,
     value: ArrayBuffer
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Register to be notified when the value of a characteristic changes.
@@ -376,7 +403,9 @@ export class BLE extends IonicNativePlugin {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-    ): Observable<any> { return; }
+  ): Observable<any> {
+    return;
+  }
 
   /**
    * Stop being notified when the value of a characteristic changes.
@@ -391,7 +420,9 @@ export class BLE extends IonicNativePlugin {
     deviceId: string,
     serviceUUID: string,
     characteristicUUID: string
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Report the connection status.
@@ -407,7 +438,9 @@ export class BLE extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  isConnected(deviceId: string): Promise<any> { return; }
+  isConnected(deviceId: string): Promise<any> {
+    return;
+  }
 
   /**
    * Report if bluetooth is enabled.
@@ -415,7 +448,9 @@ export class BLE extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a Promise that resolves if Bluetooth is enabled, and rejects if disabled.
    */
   @Cordova()
-  isEnabled(): Promise<void> { return; }
+  isEnabled(): Promise<void> {
+    return;
+  }
 
   /**
    * Register to be notified when Bluetooth state changes on the device.
@@ -434,7 +469,9 @@ export class BLE extends IonicNativePlugin {
     clearFunction: 'stopStateNotifications',
     clearWithArgs: false
   })
-  startStateNotifications(): Observable<any> { return; }
+  startStateNotifications(): Observable<any> {
+    return;
+  }
 
   /**
    * Stop state notifications.
@@ -442,7 +479,9 @@ export class BLE extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopStateNotifications(): Promise<any> { return; }
+  stopStateNotifications(): Promise<any> {
+    return;
+  }
 
   /**
    * Open System Bluetooth settings (Android only).
@@ -450,7 +489,9 @@ export class BLE extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  showBluetoothSettings(): Promise<any> { return; }
+  showBluetoothSettings(): Promise<any> {
+    return;
+  }
 
   /**
    * Enable Bluetooth on the device (Android only).
@@ -458,7 +499,9 @@ export class BLE extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  enable(): Promise<any> { return; }
+  enable(): Promise<any> {
+    return;
+  }
 
   /**
    * Read the RSSI value on the device connection.
@@ -468,7 +511,7 @@ export class BLE extends IonicNativePlugin {
    *@returns {Promise<any>}
    */
   @Cordova()
-  readRSSI(
-    deviceId: string,
-  ): Promise<any> { return; }
+  readRSSI(deviceId: string): Promise<any> {
+    return;
+  }
 }
