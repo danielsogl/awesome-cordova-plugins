@@ -307,13 +307,23 @@ export enum OSActionType {
  * #### Icons
  * If you want to use generated icons with command `ionic cordova resources`:
  *
- * 1. Add a file to your `hooks` directory inside the `after_prepare` folder called `030_copy_android_notification_icons.js`
+ * 1. Add a file to your `hooks` directory called `copy_android_notification_icons.js`
  *
- * 2. Put the following code in it:
+ * 2. Configure the hook in your config.xml
+ * ```
+ *     <platform name="android">
+ *         <hook type="after_prepare" src="hooks/copy_android_notification_icons.js" />
+ *     </platform>
+ * ```
+ *
+ * 3. Put the following code in it:
  *
  * ```
  * #!/usr/bin/env node
- *
+
+ * var fs = require('fs');
+ * var path = require('path');
+
  * var filestocopy = [{
  *     "resources/android/icon/drawable-hdpi-icon.png":
  *         "platforms/android/res/drawable-hdpi/ic_stat_onesignal_default.png"
@@ -330,26 +340,27 @@ export enum OSActionType {
  *     "resources/android/icon/drawable-xxxhdpi-icon.png":
  *         "platforms/android/res/drawable-xxxhdpi/ic_stat_onesignal_default.png"
  * } ];
- *
- * var fs = require('fs');
- * var path = require('path');
- *
- * // no need to configure below
- * var rootdir = process.argv[2];
- *
- * filestocopy.forEach(function(obj) {
- *     Object.keys(obj).forEach(function(key) {
- *         var val = obj[key];
- *         var srcfile = path.join(rootdir, key);
- *         var destfile = path.join(rootdir, val);
- *         //console.log("copying "+srcfile+" to "+destfile);
- *         var destdir = path.dirname(destfile);
- *         if (fs.existsSync(srcfile) && fs.existsSync(destdir)) {
- *             fs.createReadStream(srcfile).pipe(
- *                 fs.createWriteStream(destfile));
- *         }
+
+ * module.exports = function(context) {
+
+ *     // no need to configure below
+ *     var rootdir = context.opts.projectRoot;
+
+ *     filestocopy.forEach(function(obj) {
+ *         Object.keys(obj).forEach(function(key) {
+ *             var val = obj[key];
+ *             var srcfile = path.join(rootdir, key);
+ *             var destfile = path.join(rootdir, val);
+ *             console.log("copying "+srcfile+" to "+destfile);
+ *             var destdir = path.dirname(destfile);
+ *             if (fs.existsSync(srcfile) && fs.existsSync(destdir)) {
+ *                 fs.createReadStream(srcfile).pipe(
+ *                     fs.createWriteStream(destfile));
+ *             }
+ *         });
  *     });
- * });
+
+ * };
  * ```
  *
  * 3. From the root of your project make the file executable:
