@@ -70,6 +70,11 @@ export interface AdMobOptions {
    * License key for the plugin
    */
   license?: any;
+  
+ /**
+  * Set offset
+  */
+  offsetTopBar?: boolean;
 
 }
 
