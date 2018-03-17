@@ -21,7 +21,9 @@ export interface BackgroundModeConfiguration {
    */
   icon?: string;
 
-  /** Color */
+ /**
+  * Set the background color of the notification circle
+  */
   color?: string;
 
   /**
@@ -29,7 +31,9 @@ export interface BackgroundModeConfiguration {
    */
   resume?: boolean;
 
-  /** Hidden */
+ /**
+  * When set to false makes the notifications visible on lockscreen (Android 5.0+)
+  */
   hidden?: boolean;
 
   /** Big text */
