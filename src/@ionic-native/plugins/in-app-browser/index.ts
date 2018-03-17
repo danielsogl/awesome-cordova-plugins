@@ -155,7 +155,7 @@ export class InAppBrowserObject {
  * @description Launches in app Browser
  * @usage
  * ```typescript
- * import { InAppBrowser, InAppBrowserEvent } from '@ionic-native/in-app-browser';
+ * import { InAppBrowser } from '@ionic-native/in-app-browser';
  *
  * constructor(private iab: InAppBrowser) { }
  *
@@ -168,7 +168,7 @@ export class InAppBrowserObject {
  * browser.executeScript(...);
  *
  * browser.insertCSS(...);
- * browser.on('loadstop').subscribe((event: InAppBrowserEvent) => {
+ * browser.on('loadstop').subscribe(event => {
  *    browser.insertCSS({ code: "body{color: red;" });
  * });
  *
