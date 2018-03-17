@@ -170,7 +170,12 @@ export class InAppBrowserObject {
  * const browser = this.iab.create('https://ionicframework.com/');
  *
  * browser.executeScript(...);
+ *
  * browser.insertCSS(...);
+ * browser.on('loadstop').subscribe(event => {
+ *    browser.insertCSS({ code: "body{color: red;" });
+ * });
+ *
  * browser.close();
  *
  * ```
