@@ -394,5 +394,12 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova()
   tapToFocus(xPoint: number, yPoint: number): Promise<any> { return; }
+  
+ /**
+  * Add a listener for the back event for the preview
+  * @return {Promise<any>} if backbutton pressed
+  */
+  @Cordova()
+  onBackButton(): Promise<any> { return; }
 
 }
