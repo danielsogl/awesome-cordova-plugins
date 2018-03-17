@@ -33,6 +33,8 @@ export interface OpenALPRResult {
  *    amount: 3
  * }
  *
+ * // To get imageData, you can use the @ionic-native/camera module for example. It works with DestinationType.FILE_URI and DATA_URL
+ * 
  * this.openALPR.scan(imageData, scanOptions)
  *   .then((res: [OpenALPRResult]) => console.log(res))
  *   .catch((error: Error) => console.error(error));
