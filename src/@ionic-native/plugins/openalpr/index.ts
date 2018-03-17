@@ -53,19 +53,22 @@ export interface OpenALPRResult {
 export class OpenALPR extends IonicNativePlugin {
 
   Country = {
-    EU: 'eu',
-    US: 'us',
     AU: 'au',
     BR: 'br',
-    KR2: 'kr2'
+    BR2: 'br2',
+    EU: 'eu',
+    IN: 'in',
+    KR2: 'kr2',
+    US: 'us',
+    VN2: 'vn2'
   };
 
-   /**
-   * This function does something
-   * @param imageData {any} Base64 encoding of the image data or the image file URI
-   * @param options {OpenALPROptions} Options to pass to the OpenALPR scanner
-   * @return {Promise<any>} Returns a promise that resolves when something happens
-   */
+  /**
+  * This function does something
+  * @param imageData {any} Base64 encoding of the image data or the image file URI
+  * @param options {OpenALPROptions} Options to pass to the OpenALPR scanner
+  * @return {Promise<any>} Returns a promise that resolves when something happens
+  */
   @Cordova()
   scan(imageData: any, options?: OpenALPROptions): Promise<any> { return; }
 }
