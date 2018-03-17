@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
+export interface GlobalizationOptions {
+  formatLength: string;
+  selector: string;
+}
+
 /**
  * @name Globalization
  * @description
@@ -26,6 +31,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  *
  * ```
+ * @interfaces
+ * GlobalizationOptions
  */
 @Plugin({
   pluginName: 'Globalization',
@@ -36,7 +43,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class Globalization extends IonicNativePlugin {
-
   /**
    * Returns the BCP-47 compliant language identifier tag to the successCallback with a properties object as a parameter. That object should have a value property with a String value.
    * @returns {Promise<{value: string}>}
@@ -65,7 +71,10 @@ export class Globalization extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  dateToString(date: Date, options: { formatLength: string, selector: string }): Promise<{ value: string }> {
+  dateToString(
+    date: Date,
+    options: GlobalizationOptions
+  ): Promise<{ value: string }> {
     return;
   }
 
@@ -79,7 +88,18 @@ export class Globalization extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  stringToDate(dateString: string, options: { formatLength: string, selector: string }): Promise<{ year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number }> {
+  stringToDate(
+    dateString: string,
+    options: GlobalizationOptions
+  ): Promise<{
+    year: number;
+    month: number;
+    day: number;
+    hour: number;
+    minute: number;
+    second: number;
+    millisecond: number;
+  }> {
     return;
   }
 
@@ -91,7 +111,15 @@ export class Globalization extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getDatePattern(options: { formatLength: string, selector: string }): Promise<{ pattern: string, timezone: string, utf_offset: number, dst_offset: number }> {
+  getDatePattern(
+    options: GlobalizationOptions
+  ): Promise<{
+    pattern: string;
+    timezone: string;
+    iana_timezone: string;
+    utf_offset: number;
+    dst_offset: number;
+  }> {
     return;
   }
 
@@ -103,7 +131,10 @@ export class Globalization extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getDateNames(options: { type: string, item: string }): Promise<{ value: Array<string> }> {
+  getDateNames(options: {
+    type: string;
+    item: string;
+  }): Promise<{ value: Array<string> }> {
     return;
   }
 
@@ -135,7 +166,10 @@ export class Globalization extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  numberToString(numberToConvert: number, options: { type: string }): Promise<{ value: string }> {
+  numberToString(
+    numberToConvert: number,
+    options: { type: string }
+  ): Promise<{ value: string }> {
     return;
   }
 
@@ -149,7 +183,10 @@ export class Globalization extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  stringToNumber(stringToConvert: string, options: { type: string }): Promise<{ value: number | string }> {
+  stringToNumber(
+    stringToConvert: string,
+    options: { type: string }
+  ): Promise<{ value: number | string }> {
     return;
   }
 
@@ -161,7 +198,18 @@ export class Globalization extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getNumberPattern(options: { type: string }): Promise<{ pattern: string, symbol: string, fraction: number, rounding: number, positive: string, negative: string, decimal: string, grouping: string }> {
+  getNumberPattern(options: {
+    type: string;
+  }): Promise<{
+    pattern: string;
+    symbol: string;
+    fraction: number;
+    rounding: number;
+    positive: string;
+    negative: string;
+    decimal: string;
+    grouping: string;
+  }> {
     return;
   }
 
@@ -171,8 +219,16 @@ export class Globalization extends IonicNativePlugin {
    * @returns {Promise<{ pattern: string, code: string, fraction: number, rounding: number, decimal: number, grouping: string }>}
    */
   @Cordova()
-  getCurrencyPattern(currencyCode: string): Promise<{ pattern: string, code: string, fraction: number, rounding: number, decimal: number, grouping: string }> {
+  getCurrencyPattern(
+    currencyCode: string
+  ): Promise<{
+    pattern: string;
+    code: string;
+    fraction: number;
+    rounding: number;
+    decimal: number;
+    grouping: string;
+  }> {
     return;
   }
-
 }

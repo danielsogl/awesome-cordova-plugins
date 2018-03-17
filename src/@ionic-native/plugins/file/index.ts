@@ -994,7 +994,7 @@ export class File extends IonicNativePlugin {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName path relative to base path
-   * @param {string | Blob} text content or blob to write
+   * @param {string | Blob | ArrayBuffer} text content, blob or ArrayBuffer to write
    * @param {IWriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */

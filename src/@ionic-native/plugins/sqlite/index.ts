@@ -5,8 +5,7 @@ import {
   CordovaInstance,
   InstanceProperty,
   IonicNativePlugin,
-  Plugin,
-  getPromise
+  Plugin
 } from '@ionic-native/core';
 
 declare const sqlitePlugin: any;
@@ -39,8 +38,18 @@ export interface SQLiteDatabaseConfig {
  */
 export interface SQLiteTransaction {
   start: () => void;
-  executeSql: (sql: any, values: any, success: Function, error: Function) => void;
-  addStatement: (sql: any, values: any, success: Function, error: Function) => void;
+  executeSql: (
+    sql: any,
+    values: any,
+    success: Function,
+    error: Function
+  ) => void;
+  addStatement: (
+    sql: any,
+    values: any,
+    success: Function,
+    error: Function
+  ) => void;
   handleStatementSuccess: (handler: Function, response: any) => void;
   handleStatementFailure: (handler: Function, response: any) => void;
   run: () => void;
@@ -53,18 +62,14 @@ export interface SQLiteTransaction {
  * @hidden
  */
 export class SQLiteObject {
+  constructor(public _objectInstance: any) {}
 
-  @InstanceProperty() databaseFeatures: { isSQLitePluginDatabase: boolean };
-  @InstanceProperty() openDBs: any;
-
-  constructor(public _objectInstance: any) {
-  }
+  @InstanceProperty databaseFeatures: { isSQLitePluginDatabase: boolean };
 
   @CordovaInstance({
     sync: true
   })
-  addTransaction(transaction: (tx: SQLiteTransaction) => void): void {
-  }
+  addTransaction(transaction: (tx: SQLiteTransaction) => void): void {}
 
   /**
    * @param fn {any}
@@ -90,8 +95,7 @@ export class SQLiteObject {
   @CordovaInstance({
     sync: true
   })
-  startNextTransaction(): void {
-  }
+  startNextTransaction(): void {}
 
   /**
    * @returns {Promise<any>}
@@ -130,9 +134,7 @@ export class SQLiteObject {
   @CordovaInstance({
     sync: true
   })
-  abortallPendingTransactions(): void {
-  }
-
+  abortallPendingTransactions(): void {}
 }
 
 /**
@@ -182,7 +184,6 @@ export class SQLiteObject {
 })
 @Injectable()
 export class SQLite extends IonicNativePlugin {
-
   /**
    * Open or create a SQLite database file.
    *
@@ -193,8 +194,12 @@ export class SQLite extends IonicNativePlugin {
    */
   @CordovaCheck()
   create(config: SQLiteDatabaseConfig): Promise<SQLiteObject> {
-    return getPromise<SQLiteObject>((resolve, reject) => {
-      sqlitePlugin.openDatabase(config, (db: any) => resolve(new SQLiteObject(db)), reject);
+    return new Promise((resolve, reject) => {
+      sqlitePlugin.openDatabase(
+        config,
+        (db: any) => resolve(new SQLiteObject(db)),
+        reject
+      );
     });
   }
 
@@ -208,6 +213,15 @@ export class SQLite extends IonicNativePlugin {
   }
 
   /**
+   * Automatically verify basic database access operations including opening a database
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  selfTest(): Promise<any> {
+    return;
+  }
+
+  /**
    * Deletes a database
    * @param config {SQLiteDatabaseConfig} database configuration
    * @returns {Promise<any>}
@@ -216,5 +230,4 @@ export class SQLite extends IonicNativePlugin {
   deleteDatabase(config: SQLiteDatabaseConfig): Promise<any> {
     return;
   }
-
 }

@@ -21,15 +21,19 @@ export interface BackgroundModeConfiguration {
    */
   icon?: string;
 
-  /** Color */
+ /**
+  * Set the background color of the notification circle
+  */
   color?: string;
 
   /**
-   * By default the app will come to foreground when taping on the notification. If false, plugin won't come to foreground when tapped.
+   * By default the app will come to foreground when tapping on the notification. If false, plugin won't come to foreground when tapped.
    */
   resume?: boolean;
 
-  /** Hidden */
+ /**
+  * When set to false makes the notifications visible on lockscreen (Android 5.0+)
+  */
   hidden?: boolean;
 
   /** Big text */

@@ -94,6 +94,11 @@ export interface ILocalNotification {
    * Notification priority.
    */
   priority?: number;
+
+  /**
+   * Is a silent notification
+   */
+  silent?: boolean;
 }
 
 /**
@@ -334,13 +339,11 @@ export class LocalNotifications extends IonicNativePlugin {
   }
 
   /**
-   * Register permission to show notifications if not already granted.
+   * Request permission to show notifications if not already granted.
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  registerPermission(): Promise<boolean> {
-    return;
-  }
+  requestPermission(): Promise<boolean> { return; }
 
   /**
    * Informs if the app has the permission to show notifications.
