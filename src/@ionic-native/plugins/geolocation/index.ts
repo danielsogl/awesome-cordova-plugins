@@ -117,6 +117,14 @@ export interface GeolocationOptions {
  *
  *  This API is based on the W3C Geolocation API Specification, and only executes on devices that don't already provide an implementation.
  *
+ * For iOS you have to add this configuration to your configuration.xml file
+ * ```xml
+ * <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+ *    <string>We want your location! Best regards NSA</string>
+ * </edit-config>
+ * ```
+ *
+ *
  * @usage
  *
  * ```typescript
