@@ -33,22 +33,21 @@ export interface NotificationData {
  *
  * this.fcm.subscribeToTopic('marketing');
  *
- * this.fcm.getToken().then(token=>{
- *   /* save your token on backend */
+ * this.fcm.getToken().then(token => {
  *   backend.registerToken(token);
- * })
+ * });
  *
- * this.fcm.onNotification().subscribe(data=>{
+ * this.fcm.onNotification().subscribe(data => {
  *   if(data.wasTapped){
  *     console.log("Received in background");
  *   } else {
  *     console.log("Received in foreground");
  *   };
- * })
+ * });
  *
- * this.fcm.onTokenRefresh().subscribe(token=>{
+ * this.fcm.onTokenRefresh().subscribe(token => {
  *   backend.registerToken(token);
- * })
+ * });
  *
  * this.fcm.unsubscribeFromTopic('marketing');
  *
