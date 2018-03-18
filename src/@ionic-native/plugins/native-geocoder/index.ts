@@ -52,7 +52,7 @@ export class NativeGeocoder extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  reverseGeocode(latitude: number, longitude: number, options: NativeGeocoderOptions): Promise<NativeGeocoderReverseResult[]> { return; }
+  reverseGeocode(latitude: number, longitude: number, options?: NativeGeocoderOptions): Promise<NativeGeocoderReverseResult[]> { return; }
 
   /**
    * Forward geocode a given address to find coordinates
@@ -63,7 +63,7 @@ export class NativeGeocoder extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  forwardGeocode(addressString: string, options: NativeGeocoderOptions): Promise<NativeGeocoderForwardResult[]> { return; }
+  forwardGeocode(addressString: string, options?: NativeGeocoderOptions): Promise<NativeGeocoderForwardResult[]> { return; }
 }
 
 /**
