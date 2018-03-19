@@ -15,6 +15,7 @@ const INJECTABLE_CLASSES = fs.readJSONSync(EMIT_PATH).map((item: InjectableClass
 });
 
 const webpackConfig: webpack.Configuration = {
+  mode: 'production',
   entry: INDEX_PATH,
   devtool: 'source-map',
   target: 'web',
