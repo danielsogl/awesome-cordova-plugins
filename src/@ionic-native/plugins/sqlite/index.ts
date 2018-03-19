@@ -64,7 +64,8 @@ export interface SQLiteTransaction {
 export class SQLiteObject {
   constructor(public _objectInstance: any) {}
 
-  @InstanceProperty databaseFeatures: { isSQLitePluginDatabase: boolean };
+  @InstanceProperty() databaseFeatures: { isSQLitePluginDatabase: boolean };
+  @InstanceProperty() openDBs: any;
 
   @CordovaInstance({
     sync: true
