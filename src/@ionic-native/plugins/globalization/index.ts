@@ -106,7 +106,7 @@ export class Globalization extends IonicNativePlugin {
   /**
    * Returns a pattern string to format and parse dates according to the client's user preferences.
    * @param options Object with the format length and selector
-   * @returns {Promise<{ pattern: string, timezone: string, utf_offset: number, dst_offset: number }>} Returns a promise.
+   * @returns {Promise<{ pattern: string, timezone: string, utc_offset: number, dst_offset: number }>} Returns a promise.
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -117,7 +117,7 @@ export class Globalization extends IonicNativePlugin {
     pattern: string;
     timezone: string;
     iana_timezone: string;
-    utf_offset: number;
+    utc_offset: number;
     dst_offset: number;
   }> {
     return;

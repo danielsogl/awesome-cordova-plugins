@@ -111,7 +111,12 @@ export class WebIntent extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  startActivity(options: { action: any, url: string, type?: string }): Promise<any> {
+  startActivity(options: {
+    action: any;
+    extras?: any;
+    url: string;
+    type?: string;
+  }): Promise<any> {
     return;
   }
 

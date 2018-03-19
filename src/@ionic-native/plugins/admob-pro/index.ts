@@ -3,7 +3,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export type AdSize =
-  'SMART_BANNER'
+  | 'SMART_BANNER'
   | 'BANNER'
   | 'MEDIUM_RECTANGLE'
   | 'FULL_BANNER'
@@ -12,7 +12,6 @@ export type AdSize =
   | 'CUSTOM';
 
 export interface AdMobOptions {
-
   /**
    * Banner ad ID
    */
@@ -78,10 +77,13 @@ export interface AdMobOptions {
    */
   license?: any;
 
+  /**
+   * Set offset
+   */
+  offsetTopBar?: boolean;
 }
 
 export interface AdExtras {
-
   color_bg: string;
 
   color_bg_top: string;
@@ -93,7 +95,6 @@ export interface AdExtras {
   color_text: string;
 
   color_url: string;
-
 }
 
 /**
@@ -141,7 +142,6 @@ export interface AdExtras {
 })
 @Injectable()
 export class AdMobPro extends IonicNativePlugin {
-
   AD_POSITION: {
     NO_CHANGE: number;
     TOP_LEFT: number;
@@ -184,8 +184,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  removeBanner(): void {
-  }
+  removeBanner(): void {}
 
   /**
    * Show banner at position
@@ -194,8 +193,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  showBanner(position: number): void {
-  }
+  showBanner(position: number): void {}
 
   /**
    * Show banner at custom position
@@ -205,8 +203,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  showBannerAtXY(x: number, y: number): void {
-  }
+  showBannerAtXY(x: number, y: number): void {}
 
   /**
    * Hide the banner, remove it from screen, but can show it later
@@ -214,8 +211,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  hideBanner(): void {
-  }
+  hideBanner(): void {}
 
   /**
    * Prepare interstitial banner
@@ -233,8 +229,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  showInterstitial(): void {
-  }
+  showInterstitial(): void {}
 
   /**
    * Prepare a reward video ad
@@ -252,8 +247,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  showRewardVideoAd(): void {
-  }
+  showRewardVideoAd(): void {}
 
   /**
    * Sets the values for configuration and targeting
@@ -338,5 +332,4 @@ export class AdMobPro extends IonicNativePlugin {
   onAdDismiss(): Observable<any> {
     return;
   }
-
 }

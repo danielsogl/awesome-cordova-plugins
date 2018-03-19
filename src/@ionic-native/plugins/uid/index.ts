@@ -38,7 +38,7 @@ import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'Uid',
-  plugin: 'https://github.com/hygieiasoft/cordova-plugin-uid',
+  plugin: 'cordova-plugin-uid',
   pluginRef: 'cordova.plugins.uid',
   repo: 'https://github.com/hygieiasoft/cordova-plugin-uid',
   platforms: ['Android']

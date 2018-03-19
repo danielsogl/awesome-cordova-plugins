@@ -131,12 +131,12 @@ export interface CameraPreviewPictureOptions {
   pluginName: 'CameraPreview',
   plugin: 'cordova-plugin-camera-preview',
   pluginRef: 'CameraPreview',
-  repo: 'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
+  repo:
+    'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
   platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class CameraPreview extends IonicNativePlugin {
-
   FOCUS_MODE = {
     FIXED: 'fixed',
     AUTO: 'auto',
@@ -445,4 +445,12 @@ export class CameraPreview extends IonicNativePlugin {
     return;
   }
 
+  /**
+   * Add a listener for the back event for the preview
+   * @return {Promise<any>} if backbutton pressed
+   */
+  @Cordova()
+  onBackButton(): Promise<any> {
+    return;
+  }
 }

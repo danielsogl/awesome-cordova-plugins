@@ -101,7 +101,7 @@ export class Badge extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  registerPermission(): Promise<any> {
+  requestPermission(): Promise<any> {
     return;
   }
 }

@@ -157,17 +157,6 @@ export class Facebook extends IonicNativePlugin {
   };
 
   /**
-   * Browser wrapper
-   * @param {number} appId Your Facebook AppID from their dashboard
-   * @param {string} version The version of API you may want to use. Optional
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  browserInit(appId: number, version?: string): Promise<any> {
-    return;
-  }
-
-  /**
    * Login to Facebook to authenticate this app.
    *
    * ```typescript
