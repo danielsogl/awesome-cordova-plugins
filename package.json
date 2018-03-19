@@ -22,12 +22,12 @@
     "shipit": "npm run build && npm run readmes && npm run npmpub"
   },
   "devDependencies": {
-    "@angular/common": "latest",
-    "@angular/compiler": "latest",
-    "@angular/compiler-cli": "latest",
-    "@angular/core": "latest",
+    "@angular/common": "^5.2.9",
+    "@angular/compiler": "^5.2.9",
+    "@angular/compiler-cli": "^5.2.9",
+    "@angular/core": "^5.2.9",
     "@types/cordova": "0.0.34",
-    "@types/fs-extra": "^4.0.5",
+    "@types/fs-extra": "^5.0.1",
     "@types/jest": "^22.2.0",
     "@types/lodash": "4.14.85",
     "@types/node": "8.0.47",
@@ -45,7 +45,7 @@
     "decamelize": "1.2.0",
     "dgeni": "0.4.7",
     "dgeni-packages": "0.16.10",
-    "fs-extra": "^4.0.3",
+    "fs-extra": "^5.0.0",
     "fs-extra-promise": "^1.0.1",
     "gulp": "3.9.1",
     "gulp-rename": "1.2.2",
@@ -66,7 +66,8 @@
     "uglifyjs-webpack-plugin": "^1.1.2",
     "unminified-webpack-plugin": "^1.4.2",
     "webpack": "^3.9.1",
-    "winston": "^3.0.0-rc1"
+    "winston": "^3.0.0-rc1",
+    "zone.js": "^0.8.20"
   },
   "jest": {
     "transform": {
