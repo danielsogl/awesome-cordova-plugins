@@ -154,12 +154,13 @@ export class WebIntent extends IonicNativePlugin {
   }
 
   /**
+   * Returns the content of the intent used whenever the application activity is launched
    * @returns {Observable<string>}
    */
   @Cordova({
     observable: true
   })
-  onNewIntent(): Observable<string> {
+  onIntent(): Observable<string> {
     return;
   }
 
@@ -201,18 +202,6 @@ export class WebIntent extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   unregisterBroadcastReceiver(): void {}
-
-  /**
-   * Returns the content of the intent used whenever the application activity is launched
-   */
-  @Cordova({ sync: true })
-  onIntent(): void {}
-
-  /**
-   *
-   */
-  @Cordova({ sync: true })
-  onActivityResult(): void {}
 
   /**
    * @returns {Promise<any>}
