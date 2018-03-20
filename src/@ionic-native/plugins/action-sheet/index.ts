@@ -21,7 +21,7 @@ export interface ActionSheetOptions {
   /**
    * Theme to be used on Android
    */
-  androidTheme?: number;
+  androidTheme?: 1 | 2 | 3 | 4 | 5;
 
   /**
    * Enable a cancel on Android
@@ -46,7 +46,7 @@ export interface ActionSheetOptions {
   /**
    * On an iPad, set the X,Y position
    */
-  position?: number[];
+  position?: [number, number];
 
   /**
    * Choose if destructive button will be the last
@@ -123,7 +123,7 @@ export class ActionSheet extends IonicNativePlugin {
    *   button pressed (1 based, so 1, 2, 3, etc.)
    */
   @Cordova()
-  show(options?: ActionSheetOptions): Promise<any> { return; }
+  show(options?: ActionSheetOptions): Promise<number> { return; }
 
 
   /**

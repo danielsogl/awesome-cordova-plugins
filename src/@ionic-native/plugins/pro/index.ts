@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaInstance, IonicNativePlugin } from '@ionic-native/core';
+import { Plugin, Cordova, CordovaCheck, CordovaInstance, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -49,9 +49,7 @@ export class ProDeploy {
    * Check a channel for an available update
    * @return {Promise<string>} Resolves with 'true' or 'false', or rejects with an error.
    */
-  @CordovaInstance({
-    observable: true
-  })
+  @CordovaInstance()
   check(): Promise<string> { return; }
 
   /**
@@ -67,7 +65,9 @@ export class ProDeploy {
    * Unzip the latest downloaded version
    * @return {Observable<any>} Updates with percent completion, or errors with a message.
    */
-  @CordovaInstance()
+  @CordovaInstance({
+    observable: true
+  })
   extract(): Observable<any> { return; }
 
   /**
@@ -130,10 +130,20 @@ export class ProDeploy {
 })
 @Injectable()
 export class Pro extends IonicNativePlugin {
+  _deploy: ProDeploy;
+
   /**
    * Ionic Pro Deploy .js API.
    */
-  deploy: ProDeploy = new ProDeploy(Pro.getPlugin().deploy);
+  @CordovaCheck({ sync: true })
+  deploy(): ProDeploy {
+    if (this._deploy) {
+      return this._deploy;
+    } else {
+      this._deploy = new ProDeploy(Pro.getPlugin().deploy);
+      return this._deploy;
+    }
+  }
 
   /**
    * Not yet implemented

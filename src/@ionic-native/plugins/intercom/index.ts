@@ -60,6 +60,7 @@ export class Intercom extends IonicNativePlugin {
    * @param secureHash {string}
    * @param secureData {any}
    * @return {Promise<any>} Returns a promise
+   * @deprecated Use setUserHash instead as of Intercom Cordova 4.0.0 and higher https://github.com/intercom/intercom-cordova/blob/master/CHANGELOG.md#400-2017-08-29
    */
   @Cordova()
   setSecureMode(secureHash: string, secureData: any): Promise<any> { return; }

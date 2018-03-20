@@ -31,8 +31,7 @@ export interface ImageResizerOptions {
   quality?: number;
 
   /**
-   * A custom name for the file. Default name is a timestamp
-   * (Android and Windows only)
+   * A custom name for the file. Default name is a timestamp. You have to set this value on iOS
    */
   fileName?: string;
 }

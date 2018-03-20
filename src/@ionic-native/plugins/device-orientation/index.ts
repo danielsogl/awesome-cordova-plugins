@@ -22,7 +22,7 @@ export interface DeviceOrientationCompassHeading {
   /**
    * The time at which this heading was determined. (DOMTimeStamp)
    */
-  timestamp: any;
+  timestamp: number;
 
 }
 

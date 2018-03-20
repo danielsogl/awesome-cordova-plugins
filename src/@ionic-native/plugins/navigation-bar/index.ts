@@ -17,7 +17,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  * let autoHide: boolean = true;
- * this.navigationBar.hide(autoHide);
+ * this.navigationBar.setUp(autoHide);
  * ```
  */
 @Plugin({

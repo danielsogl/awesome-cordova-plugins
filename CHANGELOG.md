@@ -1,5 +1,71 @@
+<a name="4.6.0"></a>
+# [4.6.0](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.3...v4.6.0) (2018-03-19)
+
+
+### Bug Fixes
+
+* **badge:** add correct requestPermission function ([586c7e5](https://github.com/ionic-team/ionic-native/commit/586c7e5))
+* **call-log:** comments erratum ([4b9cf17](https://github.com/ionic-team/ionic-native/commit/4b9cf17))
+* **call-log:** update getCallLog signature ([61c0ecf](https://github.com/ionic-team/ionic-native/commit/61c0ecf))
+* **contacts:** refactor wrong ContactFieldTypes ([f607a03](https://github.com/ionic-team/ionic-native/commit/f607a03))
+* **facebook:** remove browserInit function ([f718432](https://github.com/ionic-team/ionic-native/commit/f718432))
+* **firebase-analytics:** add `sync` option for all methods ([42fd1f2](https://github.com/ionic-team/ionic-native/commit/42fd1f2))
+* **google-maps:** wrong decorators ([e5b9d53](https://github.com/ionic-team/ionic-native/commit/e5b9d53))
+* **health-kit:** add missing properties to HealthKitOptions ([f8e79ce](https://github.com/ionic-team/ionic-native/commit/f8e79ce))
+* **index-app-content:** remove onItemPressed function ([270678f](https://github.com/ionic-team/ionic-native/commit/270678f))
+* **printer:** add correct npm repository ([4bf55d3](https://github.com/ionic-team/ionic-native/commit/4bf55d3))
+* **pro:** proper callback type and guard for plugin instantiate. [#2136](https://github.com/ionic-team/ionic-native/issues/2136) [#2127](https://github.com/ionic-team/ionic-native/issues/2127) ([61293c3](https://github.com/ionic-team/ionic-native/commit/61293c3))
+* **pro:** Tweak to pro plugin. [#2136](https://github.com/ionic-team/ionic-native/issues/2136) [#2127](https://github.com/ionic-team/ionic-native/issues/2127) ([c8ecee0](https://github.com/ionic-team/ionic-native/commit/c8ecee0))
+* **Pro:** CordovaCheck should sync. [#2136](https://github.com/ionic-team/ionic-native/issues/2136) [#2127](https://github.com/ionic-team/ionic-native/issues/2127) ([f419db5](https://github.com/ionic-team/ionic-native/commit/f419db5))
+* **push:** Android senderID as optional ([1b237aa](https://github.com/ionic-team/ionic-native/commit/1b237aa))
+* **Radmob-pro:** add offsetTopBar option ([4948640](https://github.com/ionic-team/ionic-native/commit/4948640))
+* **sqlite:** remove trailing whitespaces ([7547a94](https://github.com/ionic-team/ionic-native/commit/7547a94))
+* **web-intent:** allow extras ([8dc5ad2](https://github.com/ionic-team/ionic-native/commit/8dc5ad2))
+
+
+### Features
+
+* **app-rate:** add custom locale interface ([2a18dbc](https://github.com/ionic-team/ionic-native/commit/2a18dbc))
+* **app-update:** add app update options ([0f325ed](https://github.com/ionic-team/ionic-native/commit/0f325ed))
+* **appodeal:** add new functions ([247a1a1](https://github.com/ionic-team/ionic-native/commit/247a1a1))
+* **base64-to-gallery:** add options interface ([11d516f](https://github.com/ionic-team/ionic-native/commit/11d516f))
+* **ble:** add scan options interface ([e345fed](https://github.com/ionic-team/ionic-native/commit/e345fed))
+* **calendar:** add getCreateCalendarOptions function ([13765d2](https://github.com/ionic-team/ionic-native/commit/13765d2))
+* **call-log:** add plugin ([76a644d](https://github.com/ionic-team/ionic-native/commit/76a644d))
+* **camera-preview:** add onBackButton function ([a345e2c](https://github.com/ionic-team/ionic-native/commit/a345e2c))
+* **device-accounts:** add android account interface ([d2261b6](https://github.com/ionic-team/ionic-native/commit/d2261b6))
+* **device-feedback:** add feedback interface ([7cafebd](https://github.com/ionic-team/ionic-native/commit/7cafebd))
+* **google-analytics:** add missing functions ([ff0008e](https://github.com/ionic-team/ionic-native/commit/ff0008e))
+* **google-maps:** update to match latest plugin version ([#2320](https://github.com/ionic-team/ionic-native/issues/2320)) ([f11be24](https://github.com/ionic-team/ionic-native/commit/f11be24))
+* **hot code push:** add cordova-hot-code-push ([e7968da](https://github.com/ionic-team/ionic-native/commit/e7968da))
+* **hot code push:** add update events ([04bdade](https://github.com/ionic-team/ionic-native/commit/04bdade))
+* **jins-meme:** enable background mode data collection ([1932f2d](https://github.com/ionic-team/ionic-native/commit/1932f2d))
+* **local-notifications:** added a new param to specify if the notification will be silent ([6e58192](https://github.com/ionic-team/ionic-native/commit/6e58192))
+* **one-signal:** add clearOneSignalNotifications function ([fc0338a](https://github.com/ionic-team/ionic-native/commit/fc0338a))
+* **plugin:** add iOS File Picker ([571df3a](https://github.com/ionic-team/ionic-native/commit/571df3a))
+* **speechkit:** plugin implementation ([41e5a0f](https://github.com/ionic-team/ionic-native/commit/41e5a0f))
+* **sqlite:** add selfTest function ([241f073](https://github.com/ionic-team/ionic-native/commit/241f073))
+* **web-intent:** add startService function ([15bb350](https://github.com/ionic-team/ionic-native/commit/15bb350))
+
+
+
+<a name="5.0.0-beta.3"></a>
+# [5.0.0-beta.3](https://github.com/ionic-team/ionic-native/compare/v4.5.1...v5.0.0-beta.3) (2017-12-29)
+
+
+### Bug Fixes
+
+* **push:** fix finish method ([995fd56](https://github.com/ionic-team/ionic-native/commit/995fd56))
+
+
+### Features
+
+* **crop:** add targetHeight and targetWidth options ([#2213](https://github.com/ionic-team/ionic-native/issues/2213)) ([9990df8](https://github.com/ionic-team/ionic-native/commit/9990df8))
+
+
+
 <a name="4.5.1"></a>
-## [4.5.1](https://github.com/ionic-team/ionic-native/compare/v4.5.0...v4.5.1) (2017-12-12)
+## [4.5.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.0...v4.5.1) (2017-12-12)
 
 
 ### Bug Fixes
@@ -8,8 +74,8 @@
 
 
 
-<a name="4.5.0"></a>
-# [4.5.0](https://github.com/ionic-team/ionic-native/compare/v4.4.2...v4.5.0) (2017-12-08)
+<a name="5.0.0-beta.0"></a>
+# [5.0.0-beta.0](https://github.com/ionic-team/ionic-native/compare/v4.5.0...v5.0.0-beta.0) (2017-12-08)
 
 
 ### Bug Fixes
@@ -70,17 +136,12 @@
 
 
 <a name="4.3.3"></a>
-## [4.3.3](https://github.com/ionic-team/ionic-native/compare/v4.3.2...v4.3.3) (2017-11-01)
+## [4.3.3](https://github.com/ionic-team/ionic-native/compare/4.3.2...v4.3.3) (2017-11-01)
 
 
 ### Bug Fixes
 
 * **google-maps:** HtmlInfoWindow should extend BaseClass [#2034](https://github.com/ionic-team/ionic-native/issues/2034)  ([#2035](https://github.com/ionic-team/ionic-native/issues/2035)) ([ce6e412](https://github.com/ionic-team/ionic-native/commit/ce6e412))
-
-
-
-<a name="4.3.2"></a>
-## [4.3.2](https://github.com/ionic-team/ionic-native/compare/4.3.2...v4.3.2) (2017-10-18)
 
 
 
@@ -125,6 +186,7 @@
 
 * **google-maps:** convert JS classes to Ionic Native ([#1956](https://github.com/ionic-team/ionic-native/issues/1956)) ([57af5c5](https://github.com/ionic-team/ionic-native/commit/57af5c5))
 * **google-maps:** fix icons property of MarkerClusterOptions ([#1937](https://github.com/ionic-team/ionic-native/issues/1937)) ([8004790](https://github.com/ionic-team/ionic-native/commit/8004790))
+* **google-maps:** fix issue when creating new instance of BaseArrayClass ([#1931](https://github.com/ionic-team/ionic-native/issues/1931)) ([957396b](https://github.com/ionic-team/ionic-native/commit/957396b))
 * **google-maps:** the zoom option is missing in the GoogleMapOptions class ([#1948](https://github.com/ionic-team/ionic-native/issues/1948)) ([ef898ef](https://github.com/ionic-team/ionic-native/commit/ef898ef))
 * **http:** fix plugin ref ([#1934](https://github.com/ionic-team/ionic-native/issues/1934)) ([3a1034e](https://github.com/ionic-team/ionic-native/commit/3a1034e))
 * **launch-navigator:** fix navigate method ([#1940](https://github.com/ionic-team/ionic-native/issues/1940)) ([a150d4d](https://github.com/ionic-team/ionic-native/commit/a150d4d))
@@ -146,16 +208,6 @@
 ### BREAKING CHANGES
 
 * **push:** this wrapper will work only with `phonegap-plugin-push@2.0.0`
-
-
-
-<a name="4.2.1"></a>
-## [4.2.1](https://github.com/ionic-team/ionic-native/compare/v4.2.0...v4.2.1) (2017-08-29)
-
-
-### Bug Fixes
-
-* **google-maps:** fix issue when creating new instance of BaseArrayClass ([#1931](https://github.com/ionic-team/ionic-native/issues/1931)) ([957396b](https://github.com/ionic-team/ionic-native/commit/957396b))
 
 
 
