@@ -7,13 +7,17 @@ export interface HTTPResponse {
    */
   status: number;
   /**
-   * The data that is in the response. This property usually exists when a promise returned by a request method resolves.
-   */
-  data?: any;
-  /**
    * The headers of the response
    */
   headers: any;
+  /**
+   * The URL of the response. This property will be the final URL obtained after any redirects.
+   */
+  url: string;
+  /**
+   * The data that is in the response. This property usually exists when a promise returned by a request method resolves.
+   */
+  data?: any;
   /**
    * Error response from the server. This property usually exists when a promise returned by a request method rejects.
    */
