@@ -41,8 +41,8 @@ export interface SmsOptionsAndroid {
  * ...
  *
  *
- * // Send a text message using default options
- * this.sms.send('416123456', 'Hello world!');
+ * // Send a text message using default options. Needs an 'n' before the 10-digit phone number
+ * this.sms.send('n0123456789', 'Hello world!');
  * ```
  * @interfaces
  * SmsOptions
