@@ -46,10 +46,13 @@ export interface ILocalNotificationTrigger {
   count?: number;
 
   /**
-   * Unit
+   * The unit
    */
   every?: ELocalNotificationTriggerUnit;
 
+  /**
+   * The end of the repeating notification
+   */
   before?: Date;
 
   /**
