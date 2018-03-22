@@ -677,5 +677,5 @@ export class LocalNotifications extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  fireQueuedEvents(): Promise<any>{ return; }
+  fireQueuedEvents(): Promise<any> { return; }
 }
