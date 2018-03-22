@@ -115,11 +115,11 @@ You need to run `npm run build` in the `ionic-native` project, this will create 
 
 ### Cleaning the code
 
-You need to run `npm run lint` to analyze the code and ensure it's consistency with the repository style. Fix any errors before submitting a PR.
+You need to run `npm run lint` to analyze the code and ensure its consistency with the repository style. Fix any errors before submitting a PR.
 
 ### 'Wrapping' Up
 
-That's it! The only thing left to do is rigorously document the plugin and it's usage. Take a look at some of the other plugins for good documentation styles.
+That's it! The only thing left to do is rigorously document the plugin and its usage. Take a look at some of the other plugins for good documentation styles.
 
 ## Commit Message Format
 
