@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
- * @name File Chooser
+ * @name iOS File Picker
  * @description
  *
  * Opens the file picker on iOS for the user to select a file, returns a file URI.
