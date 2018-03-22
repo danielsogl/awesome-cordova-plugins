@@ -3,8 +3,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CallLogObject {
   name: string;
-  value: string;
-  operator: '==' | '!=' | '>' | '>=' | '<' | '<=';
+  value: string|Array<string>;
+  operator: '==' | '!=' | '>' | '>=' | '<' | '<=' | 'like';
 }
 
 /**
