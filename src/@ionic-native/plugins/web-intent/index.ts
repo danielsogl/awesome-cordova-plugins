@@ -160,12 +160,13 @@ export class WebIntent extends IonicNativePlugin {
   }
 
   /**
+   * Returns the content of the intent used whenever the application activity is launched
    * @returns {Observable<string>}
    */
   @Cordova({
     observable: true
   })
-  onNewIntent(): Observable<string> {
+  onIntent(): Observable<string> {
     return;
   }
 
