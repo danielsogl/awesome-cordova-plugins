@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface OpenALPROptions {
   /** Country used for scanning the license plate */
@@ -19,7 +19,7 @@ export interface OpenALPRResult {
 /**
  * @name OpenALPR
  * @description
- * This Cordova plugin adds support for the OpenALPR (Automatic License Plate Recognition) library, which provides support for retrieving the license plate from a picture. 
+ * This Cordova plugin adds support for the OpenALPR (Automatic License Plate Recognition) library, which provides support for retrieving the license plate from a picture.
  *
  * @usage
  * ```typescript
@@ -34,7 +34,7 @@ export interface OpenALPRResult {
  * }
  *
  * // To get imageData, you can use the @ionic-native/camera module for example. It works with DestinationType.FILE_URI and DATA_URL
- * 
+ *
  * this.openALPR.scan(imageData, scanOptions)
  *   .then((res: [OpenALPRResult]) => console.log(res))
  *   .catch((error: Error) => console.error(error));
@@ -48,10 +48,8 @@ export interface OpenALPRResult {
   repo: 'https://github.com/iMicknl/cordova-plugin-openalpr',
   platforms: ['Android', 'iOS']
 })
-
 @Injectable()
 export class OpenALPR extends IonicNativePlugin {
-
   Country = {
     AU: 'au',
     BR: 'br',
@@ -64,11 +62,13 @@ export class OpenALPR extends IonicNativePlugin {
   };
 
   /**
-  * This function does something
-  * @param imageData {any} Base64 encoding of the image data or the image file URI
-  * @param options {OpenALPROptions} Options to pass to the OpenALPR scanner
-  * @return {Promise<any>} Returns a promise that resolves when something happens
-  */
+   * This function does something
+   * @param imageData {any} Base64 encoding of the image data or the image file URI
+   * @param options {OpenALPROptions} Options to pass to the OpenALPR scanner
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
   @Cordova()
-  scan(imageData: any, options?: OpenALPROptions): Promise<any> { return; }
+  scan(imageData: any, options?: OpenALPROptions): Promise<any> {
+    return;
+  }
 }
