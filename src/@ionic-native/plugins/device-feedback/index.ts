@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-export interface DeviceFeedbackEnabled {
+export interface DeviceFeedbackStatus {
   /** Haptic Feedback */
   haptic: boolean;
 
@@ -67,7 +67,7 @@ export class DeviceFeedback extends IonicNativePlugin {
    * @returns {Promise<DeviceFeedbackEnabled>}
    */
   @Cordova()
-  isFeedbackEnabled(): Promise<DeviceFeedbackEnabled> {
+  isFeedbackEnabled(): Promise<DeviceFeedbackStatus> {
     return;
   }
 }
