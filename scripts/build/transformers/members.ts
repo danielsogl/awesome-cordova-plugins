@@ -5,7 +5,7 @@ import { transformProperty } from './properties';
 export function transformMembers(cls: ts.ClassDeclaration) {
   const propertyIndices: number[] = [];
 
-  let members = cls.members.map((member: any, index: number) => {
+  const members = cls.members.map((member: any, index: number) => {
     // only process decorated members
     if (!member.decorators || !member.decorators.length) return member;
 

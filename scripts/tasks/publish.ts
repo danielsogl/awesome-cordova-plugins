@@ -1,25 +1,27 @@
-import * as fs from 'fs-extra';
-import * as path from 'path';
-import { merge } from 'lodash';
-import { exec } from 'child_process';
-import { PLUGIN_PATHS, ROOT } from '../build/helpers';
-import { cpus } from 'os';
 import * as Queue from 'async-promise-queue';
+import { exec } from 'child_process';
+import * as fs from 'fs-extra';
+import { merge } from 'lodash';
+import { cpus } from 'os';
+import * as path from 'path';
+
+import { PLUGIN_PATHS, ROOT } from '../build/helpers';
 import { Logger } from '../logger';
 
+// tslint:disable-next-line:no-var-requires
 const MAIN_PACKAGE_JSON = require('../../package.json');
 const VERSION = MAIN_PACKAGE_JSON.version;
 const FLAGS = '--access public --tag beta';
 
 const PACKAGE_JSON_BASE = {
-  'description': 'Ionic Native - Native plugins for ionic apps',
-  'module': 'index.js',
-  'typings': 'index.d.ts',
-  'author': 'ionic',
-  'license': 'MIT',
-  'repository': {
-    'type': 'git',
-    'url': 'https://github.com/ionic-team/ionic-native.git'
+  description: 'Ionic Native - Native plugins for ionic apps',
+  module: 'index.js',
+  typings: 'index.d.ts',
+  author: 'ionic',
+  license: 'MIT',
+  repository: {
+    type: 'git',
+    url: 'https://github.com/ionic-team/ionic-native.git'
   }
 };
 
@@ -32,7 +34,7 @@ const CORE_VERSION = '^5.0.0';
 
 const PLUGIN_PEER_DEPENDENCIES = {
   '@ionic-native/core': VERSION, // TODO change this in production
-  'rxjs': RXJS_VEERSION
+  rxjs: RXJS_VEERSION
 };
 
 function getPackageJsonContent(name, peerDependencies = {}) {
@@ -52,33 +54,40 @@ function writePackageJson(data: any, dir: string) {
 function prepare() {
   // write @ionic-native/core package.json
   writePackageJson(
-    getPackageJsonContent('core', { 'rxjs': RXJS_VEERSION }),
+    getPackageJsonContent('core', { rxjs: RXJS_VEERSION }),
     path.resolve(DIST, 'core')
   );
 
   // write plugin package.json files
   PLUGIN_PATHS.forEach((pluginPath: string) => {
     const pluginName = pluginPath.split(/[\/\\]+/).slice(-2)[0];
-    const packageJsonContents = getPackageJsonContent(pluginName, PLUGIN_PEER_DEPENDENCIES);
+    const packageJsonContents = getPackageJsonContent(
+      pluginName,
+      PLUGIN_PEER_DEPENDENCIES
+    );
     const dir = path.resolve(DIST, 'plugins', pluginName);
 
     writePackageJson(packageJsonContents, dir);
   });
 }
 
-async function publish(ignoreErrors: boolean = false) {
+async function publish(ignoreErrors = false) {
   Logger.profile('Publishing');
   // upload 1 package per CPU thread at a time
   const worker = Queue.async.asyncify((pkg: any) => {
     new Promise<any>((resolve, reject) => {
-      exec(`npm publish ${ pkg } ${ FLAGS }`, (err, stdout) => {
+      exec(`npm publish ${pkg} ${FLAGS}`, (err, stdout) => {
         if (stdout) {
           Logger.log(stdout.trim());
           resolve(stdout);
         }
         if (err) {
           if (!ignoreErrors) {
-            if (err.message.includes('You cannot publish over the previously published version')) {
+            if (
+              err.message.includes(
+                'You cannot publish over the previously published version'
+              )
+            ) {
               Logger.verbose('Ignoring duplicate version error.');
               return resolve();
             }

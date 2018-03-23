@@ -1,18 +1,30 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import * as webpack from 'webpack';
 import * as uglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import * as unminifiedPlugin from 'unminified-webpack-plugin';
-import { cleanEmittedData, EMIT_PATH, InjectableClassEntry } from '../build/transformers/extract-injectables';
+import * as webpack from 'webpack';
+
 import { ROOT } from '../build/helpers';
+import {
+  cleanEmittedData,
+  EMIT_PATH,
+  InjectableClassEntry
+} from '../build/transformers/extract-injectables';
 import { Logger } from '../logger';
 
 const DIST = path.resolve(ROOT, 'dist');
 const INDEX_PATH = path.resolve(DIST, 'index.js');
-const INJECTABLE_CLASSES = fs.readJSONSync(EMIT_PATH).map((item: InjectableClassEntry) => {
-  item.file = './' + item.file.split(/[\/\\]+/).slice(-4, -1).join('/');
-  return item;
-});
+const INJECTABLE_CLASSES = fs
+  .readJSONSync(EMIT_PATH)
+  .map((item: InjectableClassEntry) => {
+    item.file =
+      './' +
+      item.file
+        .split(/[\/\\]+/)
+        .slice(-4, -1)
+        .join('/');
+    return item;
+  });
 
 const webpackConfig: webpack.Configuration = {
   mode: 'production',
@@ -31,14 +43,16 @@ const webpackConfig: webpack.Configuration = {
     }
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      use: path.resolve(ROOT, 'scripts/build/remove-tslib-helpers.js')
-    }]
+    rules: [
+      {
+        test: /\.js$/,
+        use: path.resolve(ROOT, 'scripts/build/remove-tslib-helpers.js')
+      }
+    ]
   },
   plugins: [
     new webpack.ProvidePlugin({
-      '__extends': ['tslib', '__extends']
+      __extends: ['tslib', '__extends']
     }),
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.DefinePlugin({
@@ -52,7 +66,7 @@ const webpackConfig: webpack.Configuration = {
 };
 
 function getPluginImport(entry: InjectableClassEntry) {
-  return `import { ${ entry.className } } from '${ entry.file }';`;
+  return `import { ${entry.className} } from '${entry.file}';`;
 }
 
 function createIndexFile() {

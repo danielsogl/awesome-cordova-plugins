@@ -15,7 +15,7 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
   // we're only interested in files containing @ionic-native/core import statement
   if (!importStatement) return file;
 
-  let decorators: string[] = [];
+  const decorators: string[] = [];
 
   const decoratorRegex: RegExp = /@([a-zA-Z]+)\(/g;
 
@@ -48,6 +48,6 @@ export function importsTransformer(ngcBuild?: boolean) {
   return (ctx: ts.TransformationContext) => {
     return tsSourceFile => {
       return transformImports(tsSourceFile, ctx, ngcBuild);
-    }
+    };
   };
 }

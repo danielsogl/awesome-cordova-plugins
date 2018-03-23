@@ -12,7 +12,7 @@ export function getCompilerHost() {
   return host;
 }
 
-export function getProgram(declaration: boolean = false, pluginPaths: string[] = PLUGIN_PATHS) {
+export function getProgram(declaration = false, pluginPaths: string[] = PLUGIN_PATHS) {
     const compilerOptions: ts.CompilerOptions = clone(COMPILER_OPTIONS);
     compilerOptions.declaration = declaration;
     compilerOptions.moduleResolution = ts.ModuleResolutionKind.NodeJs;
