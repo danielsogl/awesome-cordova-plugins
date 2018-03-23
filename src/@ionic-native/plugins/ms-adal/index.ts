@@ -99,7 +99,7 @@ export interface UserInfo {
 @Injectable()
 export class MSAdal extends IonicNativePlugin {
 
-  createAuthenticationContext(authority: string, validateAuthority: boolean = true) {
+  createAuthenticationContext(authority: string, validateAuthority = true) {
     let authContext: any;
     if (checkAvailability(MSAdal.getPluginRef(), null, MSAdal.getPluginName()) === true) {
       authContext = new (MSAdal.getPlugin()).AuthenticationContext(authority);

@@ -508,7 +508,7 @@ export class BLE extends IonicNativePlugin {
    *
    * @param {string} deviceId  UUID or MAC address of the peripheral
    *
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   readRSSI(deviceId: string): Promise<any> {

@@ -152,7 +152,7 @@ export interface FileTransferError {
  *      // error
  *    })
  * }
- **
+ *
  * download() {
  *   const url = 'http://www.example.com/file.pdf';
  *   fileTransfer.download(url, this.file.dataDirectory + 'file.pdf').then((entry) => {

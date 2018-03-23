@@ -6,7 +6,7 @@ declare const window: any;
 export function get(element: Element | Window, path: string) {
   const paths: string[] = path.split('.');
   let obj: any = element;
-  for (let i: number = 0; i < paths.length; i++) {
+  for (let i = 0; i < paths.length; i++) {
     if (!obj) { return null; }
     obj = obj[paths[i]];
   }

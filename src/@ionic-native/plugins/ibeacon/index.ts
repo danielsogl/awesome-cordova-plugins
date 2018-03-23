@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import {
+  Cordova,
+  CordovaCheck,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare const cordova: any;
@@ -29,7 +34,11 @@ export interface Beacon {
    * ProximityFar
    * ProximityUnknown
    */
-  proximity: 'ProximityImmediate' | 'ProximityNear' | 'ProximityFar' | 'ProximityUnknown';
+  proximity:
+    | 'ProximityImmediate'
+    | 'ProximityNear'
+    | 'ProximityFar'
+    | 'ProximityUnknown';
 
   /**
    * Transmission Power of the beacon. A constant emitted by the beacon which indicates what's the expected RSSI at a distance of 1 meter to the beacon.
@@ -46,7 +55,6 @@ export interface Beacon {
    * The accuracy of the ranging.
    */
   accuracy: number;
-
 }
 
 export interface BeaconRegion {
@@ -104,7 +112,6 @@ export interface CircularRegion {
 export type Region = BeaconRegion | CircularRegion;
 
 export interface IBeaconPluginResult {
-
   /**
    * The name of the delegate function that produced the PluginResult object.
    */
@@ -287,7 +294,6 @@ export interface IBeaconDelegate {
 })
 @Injectable()
 export class IBeacon extends IonicNativePlugin {
-
   /**
    * Instances of this class are delegates between the {@link LocationManager} and
    * the code that consumes the messages generated on in the native layer.
@@ -296,87 +302,81 @@ export class IBeacon extends IonicNativePlugin {
    */
   @CordovaCheck({ sync: true })
   Delegate(): IBeaconDelegate {
-    let delegate = new cordova.plugins.locationManager.Delegate();
+    const delegate = new cordova.plugins.locationManager.Delegate();
 
-    delegate.didChangeAuthorizationStatus = (pluginResult?: IBeaconPluginResult) => {
-      return new Observable<IBeaconPluginResult>(
-        (observer: any) => {
-          let cb = (data: IBeaconPluginResult) => observer.next(data);
-          return delegate.didChangeAuthorizationStatus = cb;
-        }
-      );
+    delegate.didChangeAuthorizationStatus = (
+      pluginResult?: IBeaconPluginResult
+    ) => {
+      return new Observable<IBeaconPluginResult>((observer: any) => {
+        const cb = (data: IBeaconPluginResult) => observer.next(data);
+        return (delegate.didChangeAuthorizationStatus = cb);
+      });
     };
 
-    delegate.didDetermineStateForRegion = (pluginResult?: IBeaconPluginResult) => {
-      return new Observable<IBeaconPluginResult>(
-        (observer: any) => {
-          let cb = (data: IBeaconPluginResult) => observer.next(data);
-          return delegate.didDetermineStateForRegion = cb;
-        }
-      );
+    delegate.didDetermineStateForRegion = (
+      pluginResult?: IBeaconPluginResult
+    ) => {
+      return new Observable<IBeaconPluginResult>((observer: any) => {
+        const cb = (data: IBeaconPluginResult) => observer.next(data);
+        return (delegate.didDetermineStateForRegion = cb);
+      });
     };
 
     delegate.didEnterRegion = (pluginResult?: IBeaconPluginResult) => {
-      return new Observable<IBeaconPluginResult>(
-        (observer: any) => {
-          let cb = (data: IBeaconPluginResult) => observer.next(data);
-          return delegate.didEnterRegion = cb;
-        }
-      );
+      return new Observable<IBeaconPluginResult>((observer: any) => {
+        const cb = (data: IBeaconPluginResult) => observer.next(data);
+        return (delegate.didEnterRegion = cb);
+      });
     };
 
     delegate.didExitRegion = (pluginResult?: IBeaconPluginResult) => {
-      return new Observable<IBeaconPluginResult>(
-        (observer: any) => {
-          let cb = (data: IBeaconPluginResult) => observer.next(data);
-          return delegate.didExitRegion = cb;
-        }
-      );
+      return new Observable<IBeaconPluginResult>((observer: any) => {
+        const cb = (data: IBeaconPluginResult) => observer.next(data);
+        return (delegate.didExitRegion = cb);
+      });
     };
 
     delegate.didRangeBeaconsInRegion = (pluginResult?: IBeaconPluginResult) => {
-      return new Observable<IBeaconPluginResult>(
-        (observer: any) => {
-          let cb = (data: IBeaconPluginResult) => observer.next(data);
-          return delegate.didRangeBeaconsInRegion = cb;
-        }
-      );
+      return new Observable<IBeaconPluginResult>((observer: any) => {
+        const cb = (data: IBeaconPluginResult) => observer.next(data);
+        return (delegate.didRangeBeaconsInRegion = cb);
+      });
     };
 
-    delegate.didStartMonitoringForRegion = (pluginResult?: IBeaconPluginResult) => {
-      return new Observable<IBeaconPluginResult>(
-        (observer: any) => {
-          let cb = (data: IBeaconPluginResult) => observer.next(data);
-          return delegate.didStartMonitoringForRegion = cb;
-        }
-      );
+    delegate.didStartMonitoringForRegion = (
+      pluginResult?: IBeaconPluginResult
+    ) => {
+      return new Observable<IBeaconPluginResult>((observer: any) => {
+        const cb = (data: IBeaconPluginResult) => observer.next(data);
+        return (delegate.didStartMonitoringForRegion = cb);
+      });
     };
 
-    delegate.monitoringDidFailForRegionWithError = (pluginResult?: IBeaconPluginResult) => {
-      return new Observable<IBeaconPluginResult>(
-        (observer: any) => {
-          let cb = (data: IBeaconPluginResult) => observer.next(data);
-          return delegate.monitoringDidFailForRegionWithError = cb;
-        }
-      );
+    delegate.monitoringDidFailForRegionWithError = (
+      pluginResult?: IBeaconPluginResult
+    ) => {
+      return new Observable<IBeaconPluginResult>((observer: any) => {
+        const cb = (data: IBeaconPluginResult) => observer.next(data);
+        return (delegate.monitoringDidFailForRegionWithError = cb);
+      });
     };
 
-    delegate.peripheralManagerDidStartAdvertising = (pluginResult?: IBeaconPluginResult) => {
-      return new Observable<IBeaconPluginResult>(
-        (observer: any) => {
-          let cb = (data: IBeaconPluginResult) => observer.next(data);
-          return delegate.peripheralManagerDidStartAdvertising = cb;
-        }
-      );
+    delegate.peripheralManagerDidStartAdvertising = (
+      pluginResult?: IBeaconPluginResult
+    ) => {
+      return new Observable<IBeaconPluginResult>((observer: any) => {
+        const cb = (data: IBeaconPluginResult) => observer.next(data);
+        return (delegate.peripheralManagerDidStartAdvertising = cb);
+      });
     };
 
-    delegate.peripheralManagerDidUpdateState = (pluginResult?: IBeaconPluginResult) => {
-      return new Observable<IBeaconPluginResult>(
-        (observer: any) => {
-          let cb = (data: IBeaconPluginResult) => observer.next(data);
-          return delegate.peripheralManagerDidUpdateState = cb;
-        }
-      );
+    delegate.peripheralManagerDidUpdateState = (
+      pluginResult?: IBeaconPluginResult
+    ) => {
+      return new Observable<IBeaconPluginResult>((observer: any) => {
+        const cb = (data: IBeaconPluginResult) => observer.next(data);
+        return (delegate.peripheralManagerDidUpdateState = cb);
+      });
     };
 
     cordova.plugins.locationManager.setDelegate(delegate);
@@ -396,8 +396,20 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {BeaconRegion} Returns the BeaconRegion that was created
    */
   @CordovaCheck({ sync: true })
-  BeaconRegion(identifer: string, uuid: string, major?: number, minor?: number, notifyEntryStateOnDisplay?: boolean): BeaconRegion {
-    return new cordova.plugins.locationManager.BeaconRegion(identifer, uuid, major, minor, notifyEntryStateOnDisplay);
+  BeaconRegion(
+    identifer: string,
+    uuid: string,
+    major?: number,
+    minor?: number,
+    notifyEntryStateOnDisplay?: boolean
+  ): BeaconRegion {
+    return new cordova.plugins.locationManager.BeaconRegion(
+      identifer,
+      uuid,
+      major,
+      minor,
+      notifyEntryStateOnDisplay
+    );
   }
 
   /**
@@ -534,7 +546,6 @@ export class IBeacon extends IonicNativePlugin {
     return;
   }
 
-
   /**
    * Start ranging the specified beacon region.
    *
@@ -597,7 +608,6 @@ export class IBeacon extends IonicNativePlugin {
   requestWhenInUseAuthorization(): Promise<void> {
     return;
   }
-
 
   /**
    * See the documentation of {@code requestWhenInUseAuthorization} for further details.
@@ -772,5 +782,4 @@ export class IBeacon extends IonicNativePlugin {
   appendToDeviceLog(message: string): Promise<void> {
     return;
   }
-
 }

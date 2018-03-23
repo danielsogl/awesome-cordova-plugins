@@ -85,7 +85,7 @@ export interface HotCodePushEventData {
   details?: {
     error?: HotCodePushError;
   };
-};
+}
 
 /**
  * @name Hot Code Push

@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 
 export interface HealthKitOptions {
   /**
-  * HKWorkoutActivityType constant
-  * Read more here: https://developer.apple.com/library/ios/documentation/HealthKit/Reference/HKWorkout_Class/#//apple_ref/c/tdef/HKWorkoutActivityType
-  */
+   * HKWorkoutActivityType constant
+   * Read more here: https://developer.apple.com/library/ios/documentation/HealthKit/Reference/HKWorkout_Class/#//apple_ref/c/tdef/HKWorkoutActivityType
+   */
   activityType?: string;
 
   /**
@@ -19,14 +19,14 @@ export interface HealthKitOptions {
   amount?: number;
 
   /**
-  * specifies if the data returned by querySampleType() should be sorted by
-  * end date in ascending order, default is false
-  */
+   * specifies if the data returned by querySampleType() should be sorted by
+   * end date in ascending order, default is false
+   */
   ascending?: boolean;
 
   /**
-  *
-  */
+   *
+   */
   correlationType?: string;
 
   /**
@@ -70,13 +70,13 @@ export interface HealthKitOptions {
   extraData?: any;
 
   /**
-  * limits the maximum number of records returned by querySampleType()
-  */
+   * limits the maximum number of records returned by querySampleType()
+   */
   limit?: number;
 
   /**
-  *
-  */
+   *
+   */
   metadata?: any;
 
   /**
@@ -153,7 +153,6 @@ export interface HealthKitOptions {
 })
 @Injectable()
 export class HealthKit extends IonicNativePlugin {
-
   /**
    * Check if HealthKit is supported (iOS8+, not on iPad)
    * @returns {Promise<any>}
@@ -357,6 +356,4 @@ export class HealthKit extends IonicNativePlugin {
   queryCorrelationType(options: HealthKitOptions): Promise<any> {
     return;
   }
-
-
 }

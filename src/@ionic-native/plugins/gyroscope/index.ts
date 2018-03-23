@@ -91,7 +91,7 @@ export class Gyroscope extends IonicNativePlugin {
   watch(options?: GyroscopeOptions): Observable<GyroscopeOrientation> {
     return new Observable<GyroscopeOrientation>(
       (observer: any) => {
-        let watchId = navigator.gyroscope.watch(observer.next.bind(observer), observer.next.bind(observer), options);
+        const watchId = navigator.gyroscope.watch(observer.next.bind(observer), observer.next.bind(observer), options);
         return () => navigator.gyroscope.clearWatch(watchId);
       }
     );

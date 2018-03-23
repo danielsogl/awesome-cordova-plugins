@@ -189,7 +189,7 @@ export class PayPalPayment {
    * Optional Build Notation code ("BN code"), obtained from partnerprogram@paypal.com,
    * for your tracking purposes.
    */
-  bnCode: string = 'PhoneGap_SP';
+  bnCode = 'PhoneGap_SP';
   /**
    * Optional invoice number, for your tracking purposes. (up to 256 characters)
    */
@@ -417,7 +417,7 @@ export class PayPalConfiguration implements PayPalConfigurationOptions {
    */
   constructor(options?: PayPalConfigurationOptions) {
 
-    let defaults: PayPalConfigurationOptions = {
+    const defaults: PayPalConfigurationOptions = {
       defaultUserEmail: null,
       defaultUserPhoneCountryCode: null,
       defaultUserPhoneNumber: null,
@@ -436,7 +436,7 @@ export class PayPalConfiguration implements PayPalConfigurationOptions {
     };
 
     if (options && typeof options === 'object') {
-      for (let i in options) {
+      for (const i in options) {
         if (defaults.hasOwnProperty(i)) {
           defaults[i] = options[i];
         }

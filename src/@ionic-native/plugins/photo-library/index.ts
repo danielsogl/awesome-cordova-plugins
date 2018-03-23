@@ -60,9 +60,9 @@ export class PhotoLibrary extends IonicNativePlugin {
     observable: true
   })
   getLibrary(options?: GetLibraryOptions): Observable<LibraryItem[]> {
-    let wrappedObservable: Observable<any> = wrap(this, 'getLibrary', { callbackOrder: 'reverse' }).apply(this, [options]);
+    const wrappedObservable: Observable<any> = wrap(this, 'getLibrary', { callbackOrder: 'reverse' }).apply(this, [options]);
     return new Observable<any>((observer) => {
-      let wrappedSubscription = wrappedObservable.subscribe({
+      const wrappedSubscription = wrappedObservable.subscribe({
         next: (x) => {
           observer.next((result: { library: LibraryItem[] }) => {
             return result.library;

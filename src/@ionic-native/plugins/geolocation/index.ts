@@ -202,7 +202,7 @@ export class Geolocation extends IonicNativePlugin {
   watchPosition(options?: GeolocationOptions): Observable<Geoposition> {
     return new Observable<Geoposition>(
       (observer: any) => {
-        let watchId = navigator.geolocation.watchPosition(observer.next.bind(observer), observer.next.bind(observer), options);
+        const watchId = navigator.geolocation.watchPosition(observer.next.bind(observer), observer.next.bind(observer), options);
         return () => navigator.geolocation.clearWatch(watchId);
       }
     );

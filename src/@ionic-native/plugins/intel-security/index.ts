@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 declare const window: any;
 
 export interface IntelSecurityDataOptions {
-  /** Non-empty string. **/
+  /* Non-empty string. **/
   data: String;
   /** Tag text.  */
   tag?: String;

@@ -323,10 +323,10 @@ export enum OSActionType {
  *
  * ```
  * #!/usr/bin/env node
-
+ *
  * var fs = require('fs');
  * var path = require('path');
-
+ *
  * var filestocopy = [{
  *     "resources/android/icon/drawable-hdpi-icon.png":
  *         "platforms/android/res/drawable-hdpi/ic_stat_onesignal_default.png"
@@ -343,12 +343,12 @@ export enum OSActionType {
  *     "resources/android/icon/drawable-xxxhdpi-icon.png":
  *         "platforms/android/res/drawable-xxxhdpi/ic_stat_onesignal_default.png"
  * } ];
-
+ *
  * module.exports = function(context) {
-
+ *
  *     // no need to configure below
  *     var rootdir = context.opts.projectRoot;
-
+ *
  *     filestocopy.forEach(function(obj) {
  *         Object.keys(obj).forEach(function(key) {
  *             var val = obj[key];
@@ -362,7 +362,7 @@ export enum OSActionType {
  *             }
  *         });
  *     });
-
+ *
  * };
  * ```
  *
@@ -536,8 +536,7 @@ export class OneSignal extends IonicNativePlugin {
    * @param {string} Value to set on the key. NOTE: Passing in a blank String deletes the key, you can also call deleteTag.
    */
   @Cordova({ sync: true })
-  sendTag(key: string, value: string): void {
-  }
+  sendTag(key: string, value: string): void {}
 
   /**
    * Tag a user based on an app event of your choosing so later you can create segments on [onesignal.com](https://onesignal.com/) to target these users.
@@ -546,8 +545,7 @@ export class OneSignal extends IonicNativePlugin {
    * @param {string} Pass a json object with key/value pairs like: {key: "value", key2: "value2"}
    */
   @Cordova({ sync: true })
-  sendTags(json: any): void {
-  }
+  sendTags(json: any): void {}
 
   /**
    * Deletes a tag that was previously set on a user with `sendTag` or `sendTags`. Use `deleteTags` if you need to delete more than one.
@@ -555,8 +553,7 @@ export class OneSignal extends IonicNativePlugin {
    * @param {string} Key to remove.
    */
   @Cordova({ sync: true })
-  deleteTag(key: string): void {
-  }
+  deleteTag(key: string): void {}
 
   /**
    * Deletes tags that were previously set on a user with `sendTag` or `sendTags`.
@@ -564,16 +561,14 @@ export class OneSignal extends IonicNativePlugin {
    * @param {Array<string>} Keys to remove.
    */
   @Cordova({ sync: true })
-  deleteTags(keys: string[]): void {
-  }
+  deleteTags(keys: string[]): void {}
 
   /**
    * Call this when you would like to prompt an iOS user to accept push notifications with the default system prompt.
    * Only works if you set `kOSSettingsAutoPrompt` to `false` in `iOSSettings`
    */
   @Cordova({ sync: true })
-  registerForPushNotifications(): void {
-  }
+  registerForPushNotifications(): void {}
 
   /**
    * Warning:
@@ -585,8 +580,7 @@ export class OneSignal extends IonicNativePlugin {
    * @param {boolean} false to disable vibrate, true to re-enable it.
    */
   @Cordova({ sync: true })
-  enableVibrate(enable: boolean): void {
-  }
+  enableVibrate(enable: boolean): void {}
 
   /**
    * Warning:
@@ -598,8 +592,7 @@ export class OneSignal extends IonicNativePlugin {
    * @param {boolean} false to disable sound, true to re-enable it.
    */
   @Cordova({ sync: true })
-  enableSound(enable: boolean): void {
-  }
+  enableSound(enable: boolean): void {}
 
   /**
    *
@@ -620,8 +613,7 @@ export class OneSignal extends IonicNativePlugin {
    * @param {boolean} enable
    */
   @Cordova({ sync: true })
-  setSubscription(enable: boolean): void {
-  }
+  setSubscription(enable: boolean): void {}
 
   /**
    * Get the current notification and permission state. Returns a OSPermissionSubscriptionState type described below.
@@ -648,38 +640,31 @@ export class OneSignal extends IonicNativePlugin {
    * @param notificationId {string}
    */
   @Cordova({ sync: true })
-  cancelNotification(notificationId: string): void {
-  }
+  cancelNotification(notificationId: string): void {}
 
   /**
    * Prompts the user for location permission to allow geotagging based on the "Location radius" filter on the OneSignal dashboard.
    */
   @Cordova({ sync: true })
-  promptLocation(): void {
-  }
+  promptLocation(): void {}
 
   /**
    *
    * @param email {string}
    */
   @Cordova({ sync: true })
-  syncHashedEmail(email: string): void {
-  }
+  syncHashedEmail(email: string): void {}
 
   /**
    * Enable logging to help debug if you run into an issue setting up OneSignal.
    * The logging levels are as follows: 0 = None, 1= Fatal, 2 = Errors, 3 = Warnings, 4 = Info, 5 = Debug, 6 = Verbose
-
+   *
    * The higher the value the more information is shown.
    *
    * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
    */
   @Cordova({ sync: true })
-  setLogLevel(logLevel: {
-    logLevel: number,
-    visualLevel: number
-  }): void {
-  }
+  setLogLevel(logLevel: { logLevel: number; visualLevel: number }): void {}
 
   /**
    * The passed in function will be fired when a notification permission setting changes.

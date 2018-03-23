@@ -239,7 +239,7 @@ export class Health extends IonicNativePlugin {
    * been given at some point in the past.
    *
    * Quirks of requestAuthorization()
-
+   *
    * In Android, it will try to get authorization from the Google Fit APIs.
    * It is necessary that the app's package name and the signing key are registered in the Google API console.
    * In Android, be aware that if the activity is destroyed (e.g. after a rotation) or is put in background,

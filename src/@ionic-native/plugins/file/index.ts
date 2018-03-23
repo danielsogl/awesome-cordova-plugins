@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CordovaCheck, CordovaProperty, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
+import {
+  CordovaCheck,
+  CordovaProperty,
+  IonicNativePlugin,
+  Plugin,
+  getPromise
+} from '@ionic-native/core';
 
 export interface IFile extends Blob {
   /**
@@ -37,7 +43,6 @@ export interface IFile extends Blob {
 }
 
 export interface LocalFileSystem {
-
   /**
    * Used for storage with no guarantee of persistence.
    */
@@ -55,7 +60,12 @@ export interface LocalFileSystem {
    * @param successCallback The callback that is called when the user agent provides a filesystem.
    * @param errorCallback A callback that is called when errors happen, or when the request to obtain the filesystem is denied.
    */
-  requestFileSystem(type: number, size: number, successCallback: FileSystemCallback, errorCallback?: ErrorCallback): void;
+  requestFileSystem(
+    type: number,
+    size: number,
+    successCallback: FileSystemCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 
   /**
    * Allows the user to look up the Entry for a file or directory referred to by a local URL.
@@ -63,12 +73,21 @@ export interface LocalFileSystem {
    * @param successCallback A callback that is called to report the Entry to which the supplied URL refers.
    * @param errorCallback A callback that is called when errors happen, or when the request to obtain the Entry is denied.
    */
-  resolveLocalFileSystemURL(url: string, successCallback: EntryCallback, errorCallback?: ErrorCallback): void;
+  resolveLocalFileSystemURL(
+    url: string,
+    successCallback: EntryCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 
   /**
    * see requestFileSystem.
    */
-  webkitRequestFileSystem(type: number, size: number, successCallback: FileSystemCallback, errorCallback?: ErrorCallback): void;
+  webkitRequestFileSystem(
+    type: number,
+    size: number,
+    successCallback: FileSystemCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 }
 
 export interface Metadata {
@@ -116,11 +135,9 @@ export interface FileSystem {
   toJSON(): string;
 
   encodeURIPath(path: string): string;
-
 }
 
 export interface Entry {
-
   /**
    * Entry is a file.
    */
@@ -152,7 +169,10 @@ export interface Entry {
    * @param successCallback A callback that is called with the time of the last modification.
    * @param errorCallback ErrorCallback A callback that is called when errors happen.
    */
-  getMetadata(successCallback: MetadataCallback, errorCallback?: ErrorCallback): void;
+  getMetadata(
+    successCallback: MetadataCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 
   /**
    * Set the metadata of the entry.
@@ -160,7 +180,11 @@ export interface Entry {
    * @param errorCallback {Function} is called with a FileError
    * @param metadataObject {Metadata} keys and values to set
    */
-  setMetadata(successCallback: MetadataCallback, errorCallback: ErrorCallback, metadataObject: Metadata): void;
+  setMetadata(
+    successCallback: MetadataCallback,
+    errorCallback: ErrorCallback,
+    metadataObject: Metadata
+  ): void;
 
   /**
    * Move an entry to a different location on the file system. It is an error to try to:
@@ -176,7 +200,12 @@ export interface Entry {
    * A move of a file on top of an existing file must attempt to delete and replace that file.
    * A move of a directory on top of an existing empty directory must attempt to delete and replace that directory.
    */
-  moveTo(parent: DirectoryEntry, newName?: string, successCallback?: EntryCallback, errorCallback?: ErrorCallback): void;
+  moveTo(
+    parent: DirectoryEntry,
+    newName?: string,
+    successCallback?: EntryCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 
   /**
    * Copy an entry to a different location on the file system. It is an error to try to:
@@ -193,7 +222,12 @@ export interface Entry {
    *
    * Directory copies are always recursive--that is, they copy all contents of the directory.
    */
-  copyTo(parent: DirectoryEntry, newName?: string, successCallback?: EntryCallback, errorCallback?: ErrorCallback): void;
+  copyTo(
+    parent: DirectoryEntry,
+    newName?: string,
+    successCallback?: EntryCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 
   /**
    * Returns a URL that can be used to identify this entry. Unlike the URN defined in [FILE-API-ED], it has no specific expiration; as it describes a location on disk, it should be valid at least as long as that location exists.
@@ -218,7 +252,10 @@ export interface Entry {
    * @param successCallback A callback that is called to return the parent Entry.
    * @param errorCallback A callback that is called when errors happen.
    */
-  getParent(successCallback: DirectoryEntryCallback, errorCallback?: ErrorCallback): void;
+  getParent(
+    successCallback: DirectoryEntryCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 }
 
 /**
@@ -244,7 +281,12 @@ export interface DirectoryEntry extends Entry {
    * @param successCallback A callback that is called to return the File selected or created.
    * @param errorCallback A callback that is called when errors happen.
    */
-  getFile(path: string, options?: Flags, successCallback?: FileEntryCallback, errorCallback?: ErrorCallback): void;
+  getFile(
+    path: string,
+    options?: Flags,
+    successCallback?: FileEntryCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 
   /**
    * Creates or looks up a directory.
@@ -261,14 +303,22 @@ export interface DirectoryEntry extends Entry {
    * @param errorCallback A callback that is called when errors happen.
    *
    */
-  getDirectory(path: string, options?: Flags, successCallback?: DirectoryEntryCallback, errorCallback?: ErrorCallback): void;
+  getDirectory(
+    path: string,
+    options?: Flags,
+    successCallback?: DirectoryEntryCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 
   /**
    * Deletes a directory and all of its contents, if any. In the event of an error [e.g. trying to delete a directory that contains a file that cannot be removed], some of the contents of the directory may be deleted. It is an error to attempt to delete the root directory of a filesystem.
    * @param successCallback A callback that is called on success.
    * @param errorCallback A callback that is called when errors happen.
    */
-  removeRecursively(successCallback: VoidCallback, errorCallback?: ErrorCallback): void;
+  removeRecursively(
+    successCallback: VoidCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 }
 
 /**
@@ -289,7 +339,10 @@ export interface DirectoryReader {
    * @param successCallback Called once per successful call to readEntries to deliver the next previously-unreported set of Entries in the associated Directory. If all Entries have already been returned from previous invocations of readEntries, successCallback must be called with a zero-length array as an argument.
    * @param errorCallback A callback indicating that there was an error reading from the Directory.
    */
-  readEntries(successCallback: EntriesCallback, errorCallback?: ErrorCallback): void;
+  readEntries(
+    successCallback: EntriesCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 }
 
 /**
@@ -301,7 +354,10 @@ export interface FileEntry extends Entry {
    * @param successCallback A callback that is called with the new FileWriter.
    * @param errorCallback A callback that is called when errors happen.
    */
-  createWriter(successCallback: FileWriterCallback, errorCallback?: ErrorCallback): void;
+  createWriter(
+    successCallback: FileWriterCallback,
+    errorCallback?: ErrorCallback
+  ): void;
 
   /**
    * Returns a File that represents the current state of the file that this FileEntry represents.
@@ -571,11 +627,9 @@ export declare class FileReader {
    * @hidden
    */
   [key: string]: any;
-
 }
 
-interface Window extends LocalFileSystem {
-}
+interface Window extends LocalFileSystem {}
 
 declare const window: Window;
 
@@ -618,79 +672,66 @@ declare const window: Window;
 })
 @Injectable()
 export class File extends IonicNativePlugin {
+  /**
+   *  Read-only directory where the application is installed.
+   */
+  @CordovaProperty() applicationDirectory: string;
 
   /**
    *  Read-only directory where the application is installed.
    */
-  @CordovaProperty()
-  applicationDirectory: string;
-
-  /**
-   *  Read-only directory where the application is installed.
-   */
-  @CordovaProperty()
-  applicationStorageDirectory: string;
+  @CordovaProperty() applicationStorageDirectory: string;
 
   /**
    * Where to put app-specific data files.
    */
-  @CordovaProperty()
-  dataDirectory: string;
+  @CordovaProperty() dataDirectory: string;
 
   /**
    * Cached files that should survive app restarts.
    * Apps should not rely on the OS to delete files in here.
    */
-  @CordovaProperty()
-  cacheDirectory: string;
+  @CordovaProperty() cacheDirectory: string;
 
   /**
    * Android: the application space on external storage.
    */
-  @CordovaProperty()
-  externalApplicationStorageDirectory: string;
+  @CordovaProperty() externalApplicationStorageDirectory: string;
 
   /**
    *  Android: Where to put app-specific data files on external storage.
    */
-  @CordovaProperty()
-  externalDataDirectory: string;
+  @CordovaProperty() externalDataDirectory: string;
 
   /**
    * Android: the application cache on external storage.
    */
-  @CordovaProperty()
-  externalCacheDirectory: string;
+  @CordovaProperty() externalCacheDirectory: string;
 
   /**
    * Android: the external storage (SD card) root.
    */
-  @CordovaProperty()
-  externalRootDirectory: string;
+  @CordovaProperty() externalRootDirectory: string;
 
   /**
    * iOS: Temp directory that the OS can clear at will.
    */
-  @CordovaProperty()
-  tempDirectory: string;
+  @CordovaProperty() tempDirectory: string;
 
   /**
    * iOS: Holds app-specific files that should be synced (e.g. to iCloud).
    */
-  @CordovaProperty()
-  syncedDataDirectory: string;
+  @CordovaProperty() syncedDataDirectory: string;
 
   /**
    * iOS: Files private to the app, but that are meaningful to other applications (e.g. Office files)
    */
-  @CordovaProperty()
-  documentsDirectory: string;
+  @CordovaProperty() documentsDirectory: string;
 
   /**
    * BlackBerry10: Files globally available to all apps
    */
-  @CordovaProperty()
-  sharedDirectory: string;
+  @CordovaProperty() sharedDirectory: string;
 
   cordovaFileError: any = {
     1: 'NOT_FOUND_ERR',
@@ -706,7 +747,7 @@ export class File extends IonicNativePlugin {
     11: 'TYPE_MISMATCH_ERR',
     12: 'PATH_EXISTS_ERR',
     13: 'WRONG_ENTRY_TYPE',
-    14: 'DIR_READ_ERR',
+    14: 'DIR_READ_ERR'
   };
 
   /**
@@ -729,17 +770,16 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   checkDir(path: string, dir: string): Promise<boolean> {
-    if ((/^\//.test(dir))) {
-      let err = new FileError(5);
-      err.message = 'directory cannot start with \/';
+    if (/^\//.test(dir)) {
+      const err = new FileError(5);
+      err.message = 'directory cannot start with /';
       return Promise.reject<any>(err);
     }
 
-    let fullpath = path + dir;
-    return this.resolveDirectoryUrl(fullpath)
-      .then(() => {
-        return true;
-      });
+    const fullpath = path + dir;
+    return this.resolveDirectoryUrl(fullpath).then(() => {
+      return true;
+    });
   }
 
   /**
@@ -753,14 +793,18 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<DirectoryEntry>} Returns a Promise that resolves with a DirectoryEntry or rejects with an error.
    */
   @CordovaCheck()
-  createDir(path: string, dirName: string, replace: boolean): Promise<DirectoryEntry> {
-    if ((/^\//.test(dirName))) {
-      let err = new FileError(5);
-      err.message = 'directory cannot start with \/';
+  createDir(
+    path: string,
+    dirName: string,
+    replace: boolean
+  ): Promise<DirectoryEntry> {
+    if (/^\//.test(dirName)) {
+      const err = new FileError(5);
+      err.message = 'directory cannot start with /';
       return Promise.reject<any>(err);
     }
 
-    let options: Flags = {
+    const options: Flags = {
       create: true
     };
 
@@ -768,10 +812,9 @@ export class File extends IonicNativePlugin {
       options.exclusive = true;
     }
 
-    return this.resolveDirectoryUrl(path)
-      .then((fse) => {
-        return this.getDirectory(fse, dirName, options);
-      });
+    return this.resolveDirectoryUrl(path).then(fse => {
+      return this.getDirectory(fse, dirName, options);
+    });
   }
 
   /**
@@ -783,17 +826,17 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   removeDir(path: string, dirName: string): Promise<RemoveResult> {
-    if ((/^\//.test(dirName))) {
-      let err = new FileError(5);
-      err.message = 'directory cannot start with \/';
+    if (/^\//.test(dirName)) {
+      const err = new FileError(5);
+      err.message = 'directory cannot start with /';
       return Promise.reject<any>(err);
     }
 
     return this.resolveDirectoryUrl(path)
-      .then((fse) => {
+      .then(fse => {
         return this.getDirectory(fse, dirName, { create: false });
       })
-      .then((de) => {
+      .then(de => {
         return this.remove(de);
       });
   }
@@ -808,24 +851,28 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<DirectoryEntry|Entry>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
    */
   @CordovaCheck()
-  moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry | Entry> {
+  moveDir(
+    path: string,
+    dirName: string,
+    newPath: string,
+    newDirName: string
+  ): Promise<DirectoryEntry | Entry> {
     newDirName = newDirName || dirName;
 
-    if ((/^\//.test(newDirName))) {
-      let err = new FileError(5);
-      err.message = 'directory cannot start with \/';
+    if (/^\//.test(newDirName)) {
+      const err = new FileError(5);
+      err.message = 'directory cannot start with /';
       return Promise.reject<any>(err);
     }
 
     return this.resolveDirectoryUrl(path)
-      .then((fse) => {
+      .then(fse => {
         return this.getDirectory(fse, dirName, { create: false });
       })
-      .then((srcde) => {
-        return this.resolveDirectoryUrl(newPath)
-          .then((deste) => {
-            return this.move(srcde, deste, newDirName);
-          });
+      .then(srcde => {
+        return this.resolveDirectoryUrl(newPath).then(deste => {
+          return this.move(srcde, deste, newDirName);
+        });
       });
   }
 
@@ -839,22 +886,26 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<Entry>} Returns a Promise that resolves to the new Entry object or rejects with an error.
    */
   @CordovaCheck()
-  copyDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<Entry> {
-    if ((/^\//.test(newDirName))) {
-      let err = new FileError(5);
-      err.message = 'directory cannot start with \/';
+  copyDir(
+    path: string,
+    dirName: string,
+    newPath: string,
+    newDirName: string
+  ): Promise<Entry> {
+    if (/^\//.test(newDirName)) {
+      const err = new FileError(5);
+      err.message = 'directory cannot start with /';
       return Promise.reject<any>(err);
     }
 
     return this.resolveDirectoryUrl(path)
-      .then((fse) => {
+      .then(fse => {
         return this.getDirectory(fse, dirName, { create: false });
       })
-      .then((srcde) => {
-        return this.resolveDirectoryUrl(newPath)
-          .then((deste) => {
-            return this.copy(srcde, deste, newDirName);
-          });
+      .then(srcde => {
+        return this.resolveDirectoryUrl(newPath).then(deste => {
+          return this.copy(srcde, deste, newDirName);
+        });
       });
   }
 
@@ -867,18 +918,21 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   listDir(path: string, dirName: string): Promise<Entry[]> {
-    if ((/^\//.test(dirName))) {
-      let err = new FileError(5);
-      err.message = 'directory cannot start with \/';
+    if (/^\//.test(dirName)) {
+      const err = new FileError(5);
+      err.message = 'directory cannot start with /';
       return Promise.reject<Entry[]>(err);
     }
 
     return this.resolveDirectoryUrl(path)
-      .then((fse) => {
-        return this.getDirectory(fse, dirName, { create: false, exclusive: false });
+      .then(fse => {
+        return this.getDirectory(fse, dirName, {
+          create: false,
+          exclusive: false
+        });
       })
-      .then((de) => {
-        let reader = de.createReader();
+      .then(de => {
+        const reader = de.createReader();
         return this.readEntries(reader);
       });
   }
@@ -892,17 +946,17 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   removeRecursively(path: string, dirName: string): Promise<RemoveResult> {
-    if ((/^\//.test(dirName))) {
-      let err = new FileError(5);
-      err.message = 'directory cannot start with \/';
+    if (/^\//.test(dirName)) {
+      const err = new FileError(5);
+      err.message = 'directory cannot start with /';
       return Promise.reject<RemoveResult>(err);
     }
 
     return this.resolveDirectoryUrl(path)
-      .then((fse) => {
+      .then(fse => {
         return this.getDirectory(fse, dirName, { create: false });
       })
-      .then((de) => {
+      .then(de => {
         return this.rimraf(de);
       });
   }
@@ -916,22 +970,21 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   checkFile(path: string, file: string): Promise<boolean> {
-    if ((/^\//.test(file))) {
-      let err = new FileError(5);
-      err.message = 'file cannot start with \/';
+    if (/^\//.test(file)) {
+      const err = new FileError(5);
+      err.message = 'file cannot start with /';
       return Promise.reject<any>(err);
     }
 
-    return this.resolveLocalFilesystemUrl(path + file)
-      .then((fse) => {
-        if (fse.isFile) {
-          return true;
-        } else {
-          let err = new FileError(13);
-          err.message = 'input is not a file';
-          return Promise.reject<boolean>(err);
-        }
-      });
+    return this.resolveLocalFilesystemUrl(path + file).then(fse => {
+      if (fse.isFile) {
+        return true;
+      } else {
+        const err = new FileError(13);
+        err.message = 'input is not a file';
+        return Promise.reject<boolean>(err);
+      }
+    });
   }
 
   /**
@@ -945,14 +998,18 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<FileEntry>} Returns a Promise that resolves to a FileEntry or rejects with an error.
    */
   @CordovaCheck()
-  createFile(path: string, fileName: string, replace: boolean): Promise<FileEntry> {
-    if ((/^\//.test(fileName))) {
-      let err = new FileError(5);
-      err.message = 'file-name cannot start with \/';
+  createFile(
+    path: string,
+    fileName: string,
+    replace: boolean
+  ): Promise<FileEntry> {
+    if (/^\//.test(fileName)) {
+      const err = new FileError(5);
+      err.message = 'file-name cannot start with /';
       return Promise.reject<any>(err);
     }
 
-    let options: Flags = {
+    const options: Flags = {
       create: true
     };
 
@@ -960,10 +1017,9 @@ export class File extends IonicNativePlugin {
       options.exclusive = true;
     }
 
-    return this.resolveDirectoryUrl(path)
-      .then((fse) => {
-        return this.getFile(fse, fileName, options);
-      });
+    return this.resolveDirectoryUrl(path).then(fse => {
+      return this.getFile(fse, fileName, options);
+    });
   }
 
   /**
@@ -975,22 +1031,22 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   removeFile(path: string, fileName: string): Promise<RemoveResult> {
-    if ((/^\//.test(fileName))) {
-      let err = new FileError(5);
-      err.message = 'file-name cannot start with \/';
+    if (/^\//.test(fileName)) {
+      const err = new FileError(5);
+      err.message = 'file-name cannot start with /';
       return Promise.reject<any>(err);
     }
 
     return this.resolveDirectoryUrl(path)
-      .then((fse) => {
+      .then(fse => {
         return this.getFile(fse, fileName, { create: false });
       })
-      .then((fe) => {
+      .then(fe => {
         return this.remove(fe);
       });
   }
 
-  /** Write a new file to the desired location.
+  /* Write a new file to the desired location.
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName path relative to base path
@@ -999,11 +1055,15 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   @CordovaCheck()
-  writeFile(path: string, fileName: string,
-            text: string | Blob | ArrayBuffer, options: IWriteOptions = {}): Promise<any> {
-    if ((/^\//.test(fileName))) {
+  writeFile(
+    path: string,
+    fileName: string,
+    text: string | Blob | ArrayBuffer,
+    options: IWriteOptions = {}
+  ): Promise<any> {
+    if (/^\//.test(fileName)) {
       const err = new FileError(5);
-      err.message = 'file-name cannot start with \/';
+      err.message = 'file-name cannot start with /';
       return Promise.reject(err);
     }
 
@@ -1021,7 +1081,7 @@ export class File extends IonicNativePlugin {
       });
   }
 
-  /** Write to an existing file.
+  /* Write to an existing file.
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName path relative to base path
@@ -1029,7 +1089,11 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
   @CordovaCheck()
-  writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
+  writeExistingFile(
+    path: string,
+    fileName: string,
+    text: string | Blob
+  ): Promise<void> {
     return this.writeFile(path, fileName, text, { replace: true });
   }
 
@@ -1049,7 +1113,7 @@ export class File extends IonicNativePlugin {
    * Read file and return data as a base64 encoded data url.
    * A data url is of the form:
    *      data: [<mediatype>][;base64],<data>
-
+   *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as data URL or rejects with an error.
@@ -1091,24 +1155,28 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<Entry>} Returns a Promise that resolves to the new Entry or rejects with an error.
    */
   @CordovaCheck()
-  moveFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry> {
+  moveFile(
+    path: string,
+    fileName: string,
+    newPath: string,
+    newFileName: string
+  ): Promise<Entry> {
     newFileName = newFileName || fileName;
 
-    if ((/^\//.test(newFileName))) {
-      let err = new FileError(5);
-      err.message = 'file name cannot start with \/';
+    if (/^\//.test(newFileName)) {
+      const err = new FileError(5);
+      err.message = 'file name cannot start with /';
       return Promise.reject<any>(err);
     }
 
     return this.resolveDirectoryUrl(path)
-      .then((fse) => {
+      .then(fse => {
         return this.getFile(fse, fileName, { create: false });
       })
-      .then((srcfe) => {
-        return this.resolveDirectoryUrl(newPath)
-          .then((deste) => {
-            return this.move(srcfe, deste, newFileName);
-          });
+      .then(srcfe => {
+        return this.resolveDirectoryUrl(newPath).then(deste => {
+          return this.move(srcfe, deste, newFileName);
+        });
       });
   }
 
@@ -1122,24 +1190,28 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<Entry>} Returns a Promise that resolves to an Entry or rejects with an error.
    */
   @CordovaCheck()
-  copyFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry> {
+  copyFile(
+    path: string,
+    fileName: string,
+    newPath: string,
+    newFileName: string
+  ): Promise<Entry> {
     newFileName = newFileName || fileName;
 
-    if ((/^\//.test(newFileName))) {
-      let err = new FileError(5);
-      err.message = 'file name cannot start with \/';
+    if (/^\//.test(newFileName)) {
+      const err = new FileError(5);
+      err.message = 'file name cannot start with /';
       return Promise.reject<any>(err);
     }
 
     return this.resolveDirectoryUrl(path)
-      .then((fse) => {
+      .then(fse => {
         return this.getFile(fse, fileName, { create: false });
       })
-      .then((srcfe) => {
-        return this.resolveDirectoryUrl(newPath)
-          .then((deste) => {
-            return this.copy(srcfe, deste, newFileName);
-          });
+      .then(srcfe => {
+        return this.resolveDirectoryUrl(newPath).then(deste => {
+          return this.copy(srcfe, deste, newFileName);
+        });
       });
   }
 
@@ -1152,12 +1224,16 @@ export class File extends IonicNativePlugin {
   resolveLocalFilesystemUrl(fileUrl: string): Promise<Entry> {
     return getPromise<Entry>((resolve, reject) => {
       try {
-        window.resolveLocalFileSystemURL(fileUrl, (entry: Entry) => {
-          resolve(entry);
-        }, (err) => {
-          this.fillErrorMessage(err);
-          reject(err);
-        });
+        window.resolveLocalFileSystemURL(
+          fileUrl,
+          (entry: Entry) => {
+            resolve(entry);
+          },
+          err => {
+            this.fillErrorMessage(err);
+            reject(err);
+          }
+        );
       } catch (xc) {
         this.fillErrorMessage(xc);
         reject(xc);
@@ -1172,16 +1248,15 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   resolveDirectoryUrl(directoryUrl: string): Promise<DirectoryEntry> {
-    return this.resolveLocalFilesystemUrl(directoryUrl)
-      .then((de) => {
-        if (de.isDirectory) {
-          return <DirectoryEntry>de;
-        } else {
-          const err = new FileError(13);
-          err.message = 'input is not a directory';
-          return Promise.reject<DirectoryEntry>(err);
-        }
-      });
+    return this.resolveLocalFilesystemUrl(directoryUrl).then(de => {
+      if (de.isDirectory) {
+        return <DirectoryEntry>de;
+      } else {
+        const err = new FileError(13);
+        err.message = 'input is not a directory';
+        return Promise.reject<DirectoryEntry>(err);
+      }
+    });
   }
 
   /**
@@ -1192,15 +1267,24 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<DirectoryEntry>}
    */
   @CordovaCheck()
-  getDirectory(directoryEntry: DirectoryEntry, directoryName: string, flags: Flags): Promise<DirectoryEntry> {
+  getDirectory(
+    directoryEntry: DirectoryEntry,
+    directoryName: string,
+    flags: Flags
+  ): Promise<DirectoryEntry> {
     return getPromise<DirectoryEntry>((resolve, reject) => {
       try {
-        directoryEntry.getDirectory(directoryName, flags, (de) => {
-          resolve(de);
-        }, (err) => {
-          this.fillErrorMessage(err);
-          reject(err);
-        });
+        directoryEntry.getDirectory(
+          directoryName,
+          flags,
+          de => {
+            resolve(de);
+          },
+          err => {
+            this.fillErrorMessage(err);
+            reject(err);
+          }
+        );
       } catch (xc) {
         this.fillErrorMessage(xc);
         reject(xc);
@@ -1216,10 +1300,14 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<FileEntry>}
    */
   @CordovaCheck()
-  getFile(directoryEntry: DirectoryEntry, fileName: string, flags: Flags): Promise<FileEntry> {
+  getFile(
+    directoryEntry: DirectoryEntry,
+    fileName: string,
+    flags: Flags
+  ): Promise<FileEntry> {
     return getPromise<FileEntry>((resolve, reject) => {
       try {
-        directoryEntry.getFile(fileName, flags, resolve, (err) => {
+        directoryEntry.getFile(fileName, flags, resolve, err => {
           this.fillErrorMessage(err);
           reject(err);
         });
@@ -1230,7 +1318,7 @@ export class File extends IonicNativePlugin {
     });
   }
 
-  /** Write content to FileEntry.
+  /* Write content to FileEntry.
    *
    * @hidden
    * @param {FileEntry} fe file entry object
@@ -1238,9 +1326,13 @@ export class File extends IonicNativePlugin {
    * @param {IWriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
-  private writeFileEntry(fe: FileEntry, text: string | Blob | ArrayBuffer, options: IWriteOptions) {
+  private writeFileEntry(
+    fe: FileEntry,
+    text: string | Blob | ArrayBuffer,
+    options: IWriteOptions
+  ) {
     return this.createWriter(fe)
-      .then((writer) => {
+      .then(writer => {
         if (options.append) {
           writer.seek(writer.length);
         }
@@ -1254,10 +1346,14 @@ export class File extends IonicNativePlugin {
       .then(() => fe);
   }
 
-  private readFile<T>(path: string, file: string, readAs: 'ArrayBuffer' | 'BinaryString' | 'DataURL' | 'Text'): Promise<T> {
-    if ((/^\//.test(file))) {
-      let err = new FileError(5);
-      err.message = 'file-name cannot start with \/';
+  private readFile<T>(
+    path: string,
+    file: string,
+    readAs: 'ArrayBuffer' | 'BinaryString' | 'DataURL' | 'Text'
+  ): Promise<T> {
+    if (/^\//.test(file)) {
+      const err = new FileError(5);
+      err.message = 'file-name cannot start with /';
       return Promise.reject<any>(err);
     }
 
@@ -1270,7 +1366,7 @@ export class File extends IonicNativePlugin {
         return getPromise<T>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
-              resolve(<T><any>reader.result);
+              resolve(<T>(<any>reader.result));
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {
@@ -1278,12 +1374,14 @@ export class File extends IonicNativePlugin {
             }
           };
 
-          fileEntry.file(file => {
-            reader[`readAs${readAs}`].call(reader, file);
-          }, error => {
-            reject(error);
-          });
-
+          fileEntry.file(
+            file => {
+              reader[`readAs${readAs}`].call(reader, file);
+            },
+            error => {
+              reject(error);
+            }
+          );
         });
       });
   }
@@ -1294,8 +1392,7 @@ export class File extends IonicNativePlugin {
   private fillErrorMessage(err: FileError): void {
     try {
       err.message = this.cordovaFileError[err.code];
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   /**
@@ -1303,40 +1400,61 @@ export class File extends IonicNativePlugin {
    */
   private remove(fe: Entry): Promise<RemoveResult> {
     return getPromise<RemoveResult>((resolve, reject) => {
-      fe.remove(() => {
-        resolve({ success: true, fileRemoved: fe });
-      }, (err) => {
-        this.fillErrorMessage(err);
-        reject(err);
-      });
+      fe.remove(
+        () => {
+          resolve({ success: true, fileRemoved: fe });
+        },
+        err => {
+          this.fillErrorMessage(err);
+          reject(err);
+        }
+      );
     });
   }
 
   /**
    * @hidden
    */
-  private move(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
+  private move(
+    srce: Entry,
+    destdir: DirectoryEntry,
+    newName: string
+  ): Promise<Entry> {
     return getPromise<Entry>((resolve, reject) => {
-      srce.moveTo(destdir, newName, (deste) => {
-        resolve(deste);
-      }, (err) => {
-        this.fillErrorMessage(err);
-        reject(err);
-      });
+      srce.moveTo(
+        destdir,
+        newName,
+        deste => {
+          resolve(deste);
+        },
+        err => {
+          this.fillErrorMessage(err);
+          reject(err);
+        }
+      );
     });
   }
 
   /**
    * @hidden
    */
-  private copy(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
+  private copy(
+    srce: Entry,
+    destdir: DirectoryEntry,
+    newName: string
+  ): Promise<Entry> {
     return getPromise<Entry>((resolve, reject) => {
-      srce.copyTo(destdir, newName, (deste) => {
-        resolve(deste);
-      }, (err) => {
-        this.fillErrorMessage(err);
-        reject(err);
-      });
+      srce.copyTo(
+        destdir,
+        newName,
+        deste => {
+          resolve(deste);
+        },
+        err => {
+          this.fillErrorMessage(err);
+          reject(err);
+        }
+      );
     });
   }
 
@@ -1345,12 +1463,15 @@ export class File extends IonicNativePlugin {
    */
   private readEntries(dr: DirectoryReader): Promise<Entry[]> {
     return getPromise<Entry[]>((resolve, reject) => {
-      dr.readEntries((entries) => {
-        resolve(entries);
-      }, (err) => {
-        this.fillErrorMessage(err);
-        reject(err);
-      });
+      dr.readEntries(
+        entries => {
+          resolve(entries);
+        },
+        err => {
+          this.fillErrorMessage(err);
+          reject(err);
+        }
+      );
     });
   }
 
@@ -1359,12 +1480,15 @@ export class File extends IonicNativePlugin {
    */
   private rimraf(de: DirectoryEntry): Promise<RemoveResult> {
     return getPromise<RemoveResult>((resolve, reject) => {
-      de.removeRecursively(() => {
-        resolve({ success: true, fileRemoved: de });
-      }, (err) => {
-        this.fillErrorMessage(err);
-        reject(err);
-      });
+      de.removeRecursively(
+        () => {
+          resolve({ success: true, fileRemoved: de });
+        },
+        err => {
+          this.fillErrorMessage(err);
+          reject(err);
+        }
+      );
     });
   }
 
@@ -1373,25 +1497,31 @@ export class File extends IonicNativePlugin {
    */
   private createWriter(fe: FileEntry): Promise<FileWriter> {
     return getPromise<FileWriter>((resolve, reject) => {
-      fe.createWriter((writer) => {
-        resolve(writer);
-      }, (err) => {
-        this.fillErrorMessage(err);
-        reject(err);
-      });
+      fe.createWriter(
+        writer => {
+          resolve(writer);
+        },
+        err => {
+          this.fillErrorMessage(err);
+          reject(err);
+        }
+      );
     });
   }
 
   /**
    * @hidden
    */
-  private write(writer: FileWriter, gu: string | Blob | ArrayBuffer): Promise<any> {
+  private write(
+    writer: FileWriter,
+    gu: string | Blob | ArrayBuffer
+  ): Promise<any> {
     if (gu instanceof Blob) {
       return this.writeFileInChunks(writer, gu);
     }
 
     return getPromise<any>((resolve, reject) => {
-      writer.onwriteend = (evt) => {
+      writer.onwriteend = evt => {
         if (writer.error) {
           reject(writer.error);
         } else {

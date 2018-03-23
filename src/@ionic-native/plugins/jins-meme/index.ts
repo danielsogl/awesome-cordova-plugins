@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import {
+  Cordova,
+  CordovaCheck,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare const cordova: any;
@@ -44,9 +49,9 @@ export class JinsMeme extends IonicNativePlugin {
    * Must call this method first.
    * Sign up for an app ID (and get an app/client secret) at developers.jins.com
    *
-   *@param {string} setAppClientID
-   *@param {string} clientSecret
-   *@returns {Promise<any>}
+   * @param {string} setAppClientID
+   * @param {string} clientSecret
+   * @returns {Promise<any>}
    */
   @Cordova()
   setAppClientID(appClientId: string, clientSecret: string): Promise<any> {
@@ -85,15 +90,20 @@ export class JinsMeme extends IonicNativePlugin {
   })
   connect(target: string): Observable<any> {
     return new Observable<any>((observer: any) => {
-      let data = cordova.plugins.JinsMemePlugin.connect(target, observer.next.bind(observer), observer.complete.bind(observer), observer.error.bind(observer));
+      const data = cordova.plugins.JinsMemePlugin.connect(
+        target,
+        observer.next.bind(observer),
+        observer.complete.bind(observer),
+        observer.error.bind(observer)
+      );
       return data;
     });
   }
 
   /**
    * Set auto connection mode.
-   *@param {Boolean} flag
-   *@returns {Promise<any>}
+   * @param {Boolean} flag
+   * @returns {Promise<any>}
    */
   @Cordova()
   setAutoConnect(flag: boolean): Promise<any> {
@@ -102,7 +112,7 @@ export class JinsMeme extends IonicNativePlugin {
 
   /**
    * Returns whether a connection to JINS MEME has been established.
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   isConnected(): Promise<any> {
@@ -111,7 +121,7 @@ export class JinsMeme extends IonicNativePlugin {
 
   /**
    * Disconnects from JINS MEME.
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   disconnect(): Promise<any> {
@@ -133,7 +143,7 @@ export class JinsMeme extends IonicNativePlugin {
 
   /**
    * Stops receiving data.
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   stopDataReport(): Promise<any> {
@@ -143,7 +153,7 @@ export class JinsMeme extends IonicNativePlugin {
   /**
    * Returns SDK version.
    *
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   getSDKVersion(): Promise<any> {
@@ -152,7 +162,7 @@ export class JinsMeme extends IonicNativePlugin {
 
   /**
    * Returns JINS MEME connected with other apps.
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   getConnectedByOthers(): Promise<any> {
@@ -161,7 +171,7 @@ export class JinsMeme extends IonicNativePlugin {
 
   /**
    * Returns calibration status
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   isCalibrated(): Promise<any> {
@@ -170,7 +180,7 @@ export class JinsMeme extends IonicNativePlugin {
 
   /**
    * Returns device type.
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   getConnectedDeviceType(): Promise<any> {
@@ -179,7 +189,7 @@ export class JinsMeme extends IonicNativePlugin {
 
   /**
    * Returns hardware version.
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   getConnectedDeviceSubType(): Promise<any> {
@@ -188,7 +198,7 @@ export class JinsMeme extends IonicNativePlugin {
 
   /**
    * Returns FW Version.
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   getFWVersion(): Promise<any> {
@@ -197,7 +207,7 @@ export class JinsMeme extends IonicNativePlugin {
 
   /**
    * Returns HW Version.
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   getHWVersion(): Promise<any> {
@@ -206,7 +216,7 @@ export class JinsMeme extends IonicNativePlugin {
 
   /**
    * Returns response about whether data was received or not.
-   *@returns {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   isDataReceiving(): Promise<any> {

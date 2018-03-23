@@ -10,8 +10,8 @@ export function initAngular1(plugins: any) {
     const ngModule = window.angular.module('ionic.native', []);
 
     for (const name in plugins) {
-      let serviceName = '$cordova' + name;
-      let cls = plugins[name];
+      const serviceName = '$cordova' + name;
+      const cls = plugins[name];
 
       (function(serviceName, cls, name) {
         ngModule.service(serviceName, [function() {

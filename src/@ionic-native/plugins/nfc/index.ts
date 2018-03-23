@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import {
+  Cordova,
+  CordovaProperty,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare let window: any;
@@ -68,7 +73,7 @@ export interface NdefTag {
   platforms: ['Android', 'BlackBerry 10', 'Windows', 'Windows Phone 8']
 })
 /**
- *@{ NFC } class methods
+ * @{ NFC } class methods
  */
 @Injectable()
 export class NFC extends IonicNativePlugin {
@@ -102,7 +107,10 @@ export class NFC extends IonicNativePlugin {
     clearFunction: 'removeNdefListener',
     clearWithArgs: true
   })
-  addNdefListener(onSuccess?: Function, onFailure?: Function): Observable<NdefEvent> {
+  addNdefListener(
+    onSuccess?: Function,
+    onFailure?: Function
+  ): Observable<NdefEvent> {
     return;
   }
 
@@ -119,7 +127,10 @@ export class NFC extends IonicNativePlugin {
     clearFunction: 'removeTagDiscoveredListener',
     clearWithArgs: true
   })
-  addTagDiscoveredListener(onSuccess?: Function, onFailure?: Function): Observable<any> {
+  addTagDiscoveredListener(
+    onSuccess?: Function,
+    onFailure?: Function
+  ): Observable<any> {
     return;
   }
 
@@ -137,7 +148,11 @@ export class NFC extends IonicNativePlugin {
     clearFunction: 'removeMimeTypeListener',
     clearWithArgs: true
   })
-  addMimeTypeListener(mimeType: string, onSuccess?: Function, onFailure?: Function): Observable<any> {
+  addMimeTypeListener(
+    mimeType: string,
+    onSuccess?: Function,
+    onFailure?: Function
+  ): Observable<any> {
     return;
   }
 
@@ -152,7 +167,10 @@ export class NFC extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 3
   })
-  addNdefFormatableListener(onSuccess?: Function, onFailure?: Function): Observable<any> {
+  addNdefFormatableListener(
+    onSuccess?: Function,
+    onFailure?: Function
+  ): Observable<any> {
     return;
   }
 
@@ -273,7 +291,6 @@ export class NFC extends IonicNativePlugin {
   bytesToHexString(bytes: number[]): string {
     return;
   }
-
 }
 
 /**
@@ -285,8 +302,8 @@ export class NFC extends IonicNativePlugin {
   pluginRef: 'ndef'
 })
 /**
- *@{ Ndef } class methods
- *@description
+ * @{ Ndef } class methods
+ * @description
  * Utility methods for creating ndef records for the ndef tag format.
  * Move records into array before usage. Then pass an array to methods as parameters.
  * Do not pass bytes as parameters for these methods, conversion is built in.
@@ -294,50 +311,41 @@ export class NFC extends IonicNativePlugin {
  */
 @Injectable()
 export class Ndef extends IonicNativePlugin {
+  @CordovaProperty() TNF_EMPTY: number;
+  @CordovaProperty() TNF_WELL_KNOWN: number;
+  @CordovaProperty() TNF_MIME_MEDIA: number;
+  @CordovaProperty() TNF_ABSOLUTE_URI: number;
+  @CordovaProperty() TNF_EXTERNAL_TYPE: number;
+  @CordovaProperty() TNF_UNKNOWN: number;
+  @CordovaProperty() TNF_UNCHANGED: number;
+  @CordovaProperty() TNF_RESERVED: number;
 
-  @CordovaProperty()
-  TNF_EMPTY: number;
-  @CordovaProperty()
-  TNF_WELL_KNOWN: number;
-  @CordovaProperty()
-  TNF_MIME_MEDIA: number;
-  @CordovaProperty()
-  TNF_ABSOLUTE_URI: number;
-  @CordovaProperty()
-  TNF_EXTERNAL_TYPE: number;
-  @CordovaProperty()
-  TNF_UNKNOWN: number;
-  @CordovaProperty()
-  TNF_UNCHANGED: number;
-  @CordovaProperty()
-  TNF_RESERVED: number;
-
-  @CordovaProperty()
-  RTD_TEXT: number[];
-  @CordovaProperty()
-  RTD_URI: number[];
-  @CordovaProperty()
-  RTD_SMART_POSTER: number[];
-  @CordovaProperty()
-  RTD_ALTERNATIVE_CARRIER: number[];
-  @CordovaProperty()
-  RTD_HANDOVER_CARRIER: number[];
-  @CordovaProperty()
-  RTD_HANDOVER_REQUEST: number[];
-  @CordovaProperty()
-  RTD_HANDOVER_SELECT: number[];
-  @CordovaProperty()
-  textHelper: TextHelper;
-  @CordovaProperty()
-  uriHelper: UriHelper;
+  @CordovaProperty() RTD_TEXT: number[];
+  @CordovaProperty() RTD_URI: number[];
+  @CordovaProperty() RTD_SMART_POSTER: number[];
+  @CordovaProperty() RTD_ALTERNATIVE_CARRIER: number[];
+  @CordovaProperty() RTD_HANDOVER_CARRIER: number[];
+  @CordovaProperty() RTD_HANDOVER_REQUEST: number[];
+  @CordovaProperty() RTD_HANDOVER_SELECT: number[];
+  @CordovaProperty() textHelper: TextHelper;
+  @CordovaProperty() uriHelper: UriHelper;
 
   @Cordova({ sync: true })
-  record(tnf: number, type: number[] | string, id: number[] | string, payload: number[] | string): NdefRecord {
+  record(
+    tnf: number,
+    type: number[] | string,
+    id: number[] | string,
+    payload: number[] | string
+  ): NdefRecord {
     return;
   }
 
   @Cordova({ sync: true })
-  textRecord(text: string, languageCode: string, id: number[] | string): NdefRecord {
+  textRecord(
+    text: string,
+    languageCode: string,
+    id: number[] | string
+  ): NdefRecord {
     return;
   }
 
@@ -347,7 +355,11 @@ export class Ndef extends IonicNativePlugin {
   }
 
   @Cordova({ sync: true })
-  absoluteUriRecord(uri: string, payload: number[] | string, id: number[] | string): NdefRecord {
+  absoluteUriRecord(
+    uri: string,
+    payload: number[] | string,
+    id: number[] | string
+  ): NdefRecord {
     return;
   }
 
@@ -407,7 +419,6 @@ export class Ndef extends IonicNativePlugin {
 })
 @Injectable()
 export class NfcUtil extends IonicNativePlugin {
-
   @Cordova({ sync: true })
   toHex(i: number): string {
     return;

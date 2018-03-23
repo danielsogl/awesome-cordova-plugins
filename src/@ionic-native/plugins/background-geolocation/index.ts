@@ -3,7 +3,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface BackgroundGeolocationResponse {
-
   /**
    * ID of location as stored in DB (or null)
    */
@@ -71,7 +70,6 @@ export interface BackgroundGeolocationResponse {
 }
 
 export interface BackgroundGeolocationConfig {
-
   /**
    * Desired accuracy in meters. Possible values [0, 10, 100, 1000]. The lower
    * the number, the more power devoted to GeoLocation resulting in higher
@@ -108,19 +106,19 @@ export interface BackgroundGeolocationConfig {
    */
   stopOnTerminate?: boolean;
 
-  /** 
-   * ANDROID ONLY 
-   * Start background service on device boot. 
+  /**
+   * ANDROID ONLY
+   * Start background service on device boot.
    *
-   * Defaults to false 
+   * Defaults to false
    */
   startOnBoot?: boolean;
 
-  /** 
-   * ANDROID ONLY 
+  /**
+   * ANDROID ONLY
    * If false location service will not be started in foreground and no notification will be shown.
    *
-   * Defaults to true 
+   * Defaults to true
    */
   startForeground?: boolean;
 
@@ -155,17 +153,17 @@ export interface BackgroundGeolocationConfig {
    */
   notificationIconColor?: string;
 
-  /** 
-   * ANDROID ONLY 
-   * The filename of a custom notification icon. See android quirks. 
-   * NOTE: Only available for API Level >=21. 
+  /**
+   * ANDROID ONLY
+   * The filename of a custom notification icon. See android quirks.
+   * NOTE: Only available for API Level >=21.
    */
   notificationIconLarge?: string;
 
-  /** 
-   * ANDROID ONLY 
-   * The filename of a custom notification icon. See android quirks. 
-   * NOTE: Only available for API Level >=21. 
+  /**
+   * ANDROID ONLY
+   * The filename of a custom notification icon. See android quirks.
+   * NOTE: Only available for API Level >=21.
    */
   notificationIconSmall?: string;
 
@@ -183,50 +181,50 @@ export interface BackgroundGeolocationConfig {
    */
   activityType?: string;
 
-  /** 
-   * IOS ONLY 
-   * Pauses location updates when app is paused 
+  /**
+   * IOS ONLY
+   * Pauses location updates when app is paused
    *
-   * Defaults to true 
+   * Defaults to true
    */
   pauseLocationUpdates?: boolean;
 
-  /** 
-   * Server url where to send HTTP POST with recorded locations 
-   * @see https://github.com/mauron85/cordova-plugin-background-geolocation#http-locations-posting 
+  /**
+   * Server url where to send HTTP POST with recorded locations
+   * @see https://github.com/mauron85/cordova-plugin-background-geolocation#http-locations-posting
    */
   url?: string;
 
-  /** 
-   * Server url where to send fail to post locations 
-   * @see https://github.com/mauron85/cordova-plugin-background-geolocation#http-locations-posting 
+  /**
+   * Server url where to send fail to post locations
+   * @see https://github.com/mauron85/cordova-plugin-background-geolocation#http-locations-posting
    */
   syncUrl?: string;
 
   /**
-   * Specifies how many previously failed locations will be sent to server at once 
+   * Specifies how many previously failed locations will be sent to server at once
    *
-   * Defaults to 100 
+   * Defaults to 100
    */
   syncThreshold?: number;
 
-  /** 
-   * Optional HTTP headers sent along in HTTP request 
+  /**
+   * Optional HTTP headers sent along in HTTP request
    */
   httpHeaders?: any;
 
   /**
-   * IOS ONLY 
+   * IOS ONLY
    * Switch to less accurate significant changes and region monitory when in background (default)
    *
-   * Defaults to 100 
+   * Defaults to 100
    */
   saveBatteryOnBackground?: boolean;
 
-  /** 
-   * Limit maximum number of locations stored into db 
+  /**
+   * Limit maximum number of locations stored into db
    *
-   * Defaults to 10000 
+   * Defaults to 10000
    */
   maxLocations?: number;
 
@@ -310,15 +308,14 @@ export interface BackgroundGeolocationConfig {
 })
 @Injectable()
 export class BackgroundGeolocation extends IonicNativePlugin {
-
-  /** 
-   * Set location service provider @see https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-providers 
+  /**
+   * Set location service provider @see https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-providers
    *
    * Possible values:
-   *  ANDROID_DISTANCE_FILTER_PROVIDER: 0, 
-   *  ANDROID_ACTIVITY_PROVIDER: 1 
+   *  ANDROID_DISTANCE_FILTER_PROVIDER: 0,
+   *  ANDROID_ACTIVITY_PROVIDER: 1
    *
-   * @enum {number} 
+   * @enum {number}
    */
   LocationProvider: any = {
     ANDROID_DISTANCE_FILTER_PROVIDER: 0,
@@ -326,17 +323,17 @@ export class BackgroundGeolocation extends IonicNativePlugin {
   };
 
   /**
-   * Desired accuracy in meters. Possible values [0, 10, 100, 1000]. 
-   * The lower the number, the more power devoted to GeoLocation resulting in higher accuracy readings. 
-   * 1000 results in lowest power drain and least accurate readings. 
+   * Desired accuracy in meters. Possible values [0, 10, 100, 1000].
+   * The lower the number, the more power devoted to GeoLocation resulting in higher accuracy readings.
+   * 1000 results in lowest power drain and least accurate readings.
    *
    * Possible values:
-   *  HIGH: 0 
-   *  MEDIUM: 10 
-   *  LOW: 100 
+   *  HIGH: 0
+   *  MEDIUM: 10
+   *  LOW: 100
    *  PASSIVE: 1000
    *
-   * enum {number} 
+   * enum {number}
    */
   Accuracy: any = {
     HIGH: 0,
@@ -345,14 +342,14 @@ export class BackgroundGeolocation extends IonicNativePlugin {
     PASSIVE: 1000
   };
 
-  /** 
-   * Used in the switchMode function 
+  /**
+   * Used in the switchMode function
    *
    * Possible values:
    *  BACKGROUND: 0
-   *  FOREGROUND: 1 
+   *  FOREGROUND: 1
    *
-   * @enum {number} 
+   * @enum {number}
    */
   Mode: any = {
     BACKGROUND: 0,
@@ -369,7 +366,9 @@ export class BackgroundGeolocation extends IonicNativePlugin {
     callbackOrder: 'reverse',
     observable: true
   })
-  configure(options: BackgroundGeolocationConfig): Observable<BackgroundGeolocationResponse> {
+  configure(
+    options: BackgroundGeolocationConfig
+  ): Observable<BackgroundGeolocationResponse> {
     return;
   }
 
@@ -465,15 +464,13 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * Display app settings to change permissions
    */
   @Cordova({ sync: true })
-  showAppSettings(): void {
-  }
+  showAppSettings(): void {}
 
   /**
    * Display device location settings
    */
   @Cordova({ sync: true })
-  showLocationSettings(): void {
-  }
+  showLocationSettings(): void {}
 
   /**
    * Method can be used to detect user changes in location services settings.
@@ -515,8 +512,8 @@ export class BackgroundGeolocation extends IonicNativePlugin {
     return;
   }
 
-  /** 
-   * Method will return locations, which has not been yet posted to server. NOTE: Locations does contain locationId. 
+  /**
+   * Method will return locations, which has not been yet posted to server. NOTE: Locations does contain locationId.
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -552,11 +549,11 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * Calling switchMode you can override plugin behavior and force plugin to switch into other mode.
    *
    * In FOREGROUND mode plugin uses iOS local manager to receive locations and behavior is affected by option.desiredAccuracy and option.distanceFilter.
-   * In BACKGROUND mode plugin uses significant changes and region monitoring to receive locations and uses option.stationaryRadius only. 
+   * In BACKGROUND mode plugin uses significant changes and region monitoring to receive locations and uses option.stationaryRadius only.
    *
    * BackgroundGeolocation.Mode.FOREGROUND
-   * BackgroundGeolocation.Mode.BACKGROUND 
-   **
+   * BackgroundGeolocation.Mode.BACKGROUND
+   *
    * @param modeId {number}
    * @returns {Promise<any>}
    */
@@ -567,16 +564,15 @@ export class BackgroundGeolocation extends IonicNativePlugin {
     return;
   }
 
-  /** 
-   * Return all logged events. Useful for plugin debugging. Parameter limit limits number of returned entries. 
-   * @see https://github.com/mauron85/cordova-plugin-background-geolocation/tree/v2.2.1#debugging for more information. 
+  /**
+   * Return all logged events. Useful for plugin debugging. Parameter limit limits number of returned entries.
+   * @see https://github.com/mauron85/cordova-plugin-background-geolocation/tree/v2.2.1#debugging for more information.
    *
-   * @param limit {number} Limits the number of entries 
+   * @param limit {number} Limits the number of entries
    * @returns {Promise<any>}
    */
   @Cordova()
   getLogEntries(limit: number): Promise<any> {
     return;
   }
-
 }

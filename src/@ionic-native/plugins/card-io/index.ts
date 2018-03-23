@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CardIOOptions {
-
   /**
    * Set to true to require expiry date
    */
@@ -82,11 +81,9 @@ export interface CardIOOptions {
    * Once a card image has been captured but before it has been processed, this value will determine whether to continue processing as usual.
    */
   supressScan?: boolean;
-
 }
 
 export interface CardIOResponse {
-
   /**
    * Card type
    */
@@ -126,7 +123,6 @@ export interface CardIOResponse {
    * Cardholder name
    */
   cardholderName: string;
-
 }
 
 /**
@@ -135,9 +131,9 @@ export interface CardIOResponse {
  * @usage
  * Note: For use with iOS 10 + When building your app with the iOS 10 SDK +, you have to add some info to the info.plist file. This is due to increased security in iOS 10. Go to your app directory and search for the <your app name>Info.plist file. Add the following lines in the main <dict> element.
  * ```xml
- *<key>NSCameraUsageDescription</key>
- *<string>To scan credit cards.</string>
- *```
+ * <key>NSCameraUsageDescription</key>
+ * <string>To scan credit cards.</string>
+ * ```
  * ```typescript
  * import { CardIO } from '@ionic-native/card-io';
  *
@@ -173,7 +169,6 @@ export interface CardIOResponse {
 })
 @Injectable()
 export class CardIO extends IonicNativePlugin {
-
   /**
    * Check whether card scanning is currently available. (May vary by
    * device, OS version, network connectivity, etc.)
@@ -203,5 +198,4 @@ export class CardIO extends IonicNativePlugin {
   version(): Promise<string> {
     return;
   }
-
 }
