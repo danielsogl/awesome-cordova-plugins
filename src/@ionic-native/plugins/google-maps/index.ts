@@ -2584,7 +2584,23 @@ export class GoogleMap extends BaseClass {
    * @return {Promise<string>}
    */
   @CordovaInstance()
-  toDataURL(params?: ToDataUrlOptions): Promise<string> { return; }
+  toDataURL(params?: ToDataUrlOptions): Promise<any> { return; }
+
+  // /**
+  //  * @return {Promise<KmlOverlay | any>}
+  //  */
+  // @InstanceCheck()
+  // addKmlOverlay(options: KmlOverlayOptions): Promise<KmlOverlay | any> {
+  //   return new Promise<KmlOverlay>((resolve, reject) => {
+  //     this._objectInstance.addKmlOverlay(options, (kmlOverlay: any) => {
+  //       if (kmlOverlay) {
+  //         resolve(new KmlOverlay(kmlOverlay));
+  //       } else {
+  //         reject();
+  //       }
+  //     });
+  //   });
+  // }
 
 }
 
