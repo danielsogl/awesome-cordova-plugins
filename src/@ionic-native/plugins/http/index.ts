@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface HTTPResponse {
   /**
@@ -7,13 +7,17 @@ export interface HTTPResponse {
    */
   status: number;
   /**
-   * The data that is in the response. This property usually exists when a promise returned by a request method resolves.
-   */
-  data?: any;
-  /**
    * The headers of the response
    */
   headers: any;
+  /**
+   * The URL of the response. This property will be the final URL obtained after any redirects.
+   */
+  url: string;
+  /**
+   * The data that is in the response. This property usually exists when a promise returned by a request method resolves.
+   */
+  data?: any;
   /**
    * Error response from the server. This property usually exists when a promise returned by a request method rejects.
    */
@@ -33,7 +37,7 @@ export interface HTTPResponse {
  * ```typescript
  * import { HTTP } from '@ionic-native/http';
  *
- * constructor(private http: HTTP) { }
+ * constructor(private http: HTTP) {}
  *
  * ...
  *
@@ -66,7 +70,6 @@ export interface HTTPResponse {
 })
 @Injectable()
 export class HTTP extends IonicNativePlugin {
-
   /**
    * This returns an object representing a basic HTTP Authorization header of the form.
    * @param username {string} Username
@@ -74,7 +77,12 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Object} an object representing a basic HTTP Authorization header of the form {'Authorization': 'Basic base64encodedusernameandpassword'}
    */
   @Cordova({ sync: true })
-  getBasicAuthHeader(username: string, password: string): { Authorization: string; } { return; }
+  getBasicAuthHeader(
+    username: string,
+    password: string
+  ): { Authorization: string } {
+    return;
+  }
 
   /**
    * This sets up all future requests to use Basic HTTP authentication with the given username and password.
@@ -82,55 +90,101 @@ export class HTTP extends IonicNativePlugin {
    * @param password {string} Password
    */
   @Cordova({ sync: true })
-  useBasicAuth(username: string, password: string): void { }
+  useBasicAuth(username: string, password: string): void {}
 
   /**
-   * Set a header for all future requests. Takes a header and a value.
+   * Get all headers defined for a given hostname.
+   * @param host {string} The hostname
+   * @returns {string} return all headers defined for the hostname
+   */
+  @Cordova({ sync: true })
+  getHeaders(host: string): string {
+    return;
+  }
+
+  /**
+   * Set a header for all future requests. Takes a hostname, a header and a value.
+   * @param host {string} The hostname to be used for scoping this header
    * @param header {string} The name of the header
    * @param value {string} The value of the header
    */
   @Cordova({ sync: true })
-  setHeader(header: string, value: string): void { }
+  setHeader(host: string, header: string, value: string): void {}
+
+  /**
+   * Get the name of the data serializer which will be used for all future POST and PUT requests.
+   * @returns {string} returns the name of the configured data serializer
+   */
+  @Cordova({ sync: true })
+  getDataSerializer(): string {
+    return;
+  }
 
   /**
    * Set the data serializer which will be used for all future POST and PUT requests. Takes a string representing the name of the serializer.
-   * @param serializer {string} The name of the serializer. Can be urlencoded or json
+   * @param serializer {string} The name of the serializer. Can be urlencoded, utf8 or json
    */
   @Cordova({ sync: true })
-  setDataSerializer(serializer: string): void { }
+  setDataSerializer(serializer: string): void {}
 
   /**
-   * Clear all cookies
+   * Add a custom cookie.
+   * @param url {string} Scope of the cookie
+   * @param cookie {string} RFC compliant cookie string
    */
   @Cordova({ sync: true })
-  clearCookies(): void { }
+  setCookie(url: string, cookie: string): void {}
 
   /**
-   * Remove cookies
+   * Clear all cookies.
+   */
+  @Cordova({ sync: true })
+  clearCookies(): void {}
+
+  /**
+   * Remove cookies for given URL.
    * @param url {string}
    * @param cb
    */
   @Cordova({ sync: true })
-  removeCookies(url: string, cb: () => void): void { }
+  removeCookies(url: string, cb: () => void): void {}
 
   /**
-   * Set request timeout
+   * Resolve cookie string for given URL.
+   * @param url {string}
+   */
+  @Cordova({ sync: true })
+  getCookieString(url: string): string { return; }
+
+  /**
+   * Get global request timeout value in seconds.
+   * @returns {number} returns the global request timeout value
+   */
+  @Cordova({ sync: true })
+  getRequestTimeout(): number {
+    return;
+  }
+
+  /**
+   * Set global request timeout value in seconds.
    * @param timeout {number} The timeout in seconds. Default 60
    */
   @Cordova({ sync: true })
-  setRequestTimeout(timeout: number): void { }
+  setRequestTimeout(timeout: number): void {}
 
   /**
    * Enable or disable SSL Pinning. This defaults to false.
    *
-   * To use SSL pinning you must include at least one .cer SSL certificate in your app project. You can pin to your server certificate or to one of the issuing CA certificates. For ios include your certificate in the root level of your bundle (just add the .cer file to your project/target at the root level). For android include your certificate in your project's platforms/android/assets folder. In both cases all .cer files found will be loaded automatically. If you only have a .pem certificate see this stackoverflow answer. You want to convert it to a DER encoded certificate with a .cer extension.
+   * To use SSL pinning you must include at least one .cer SSL certificate in your app project. You can pin to your server certificate or to one of the issuing CA certificates. For ios include your certificate in the root level of your bundle (just add the .cer file to your project/target at the root level). For android include your certificate in your project's platforms/android/assets folder. In both cases all .cer files found will be loaded automatically. If you only have a .pem certificate see this [stackoverflow answer](https://stackoverflow.com/questions/16583428/how-to-convert-an-ssl-certificate-in-linux/16583429#16583429). You want to convert it to a DER encoded certificate with a .cer extension.
    *
    * As an alternative, you can store your .cer files in the www/certificates folder.
    * @param enable {boolean} Set to true to enable
    * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
-  enableSSLPinning(enable: boolean): Promise<void> { return; }
+  enableSSLPinning(enable: boolean): Promise<void> {
+    return;
+  }
 
   /**
    * Accept all SSL certificates. Or disabled accepting all certificates. Defaults to false.
@@ -138,15 +192,17 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
-  acceptAllCerts(accept: boolean): Promise<void> { return; }
+  acceptAllCerts(accept: boolean): Promise<void> {
+    return;
+  }
 
   /**
-   * Whether or not to validate the domain name in the certificate. This defaults to true.
-   * @param validate {boolean} Set to true to validate
+   * Disable following redirects automatically.
+   * @param disable {boolean} Set to true to disable following redirects automatically
    * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
-  validateDomainName(validate: boolean): Promise<void> { return; }
+  disableRedirect(disable: boolean): Promise<void> { return; }
 
   /**
    * Make a POST request
@@ -156,7 +212,9 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  post(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
+  post(url: string, body: any, headers: any): Promise<HTTPResponse> {
+    return;
+  }
 
   /**
    * Make a GET request
@@ -166,7 +224,9 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  get(url: string, parameters: any, headers: any): Promise<HTTPResponse> { return; }
+  get(url: string, parameters: any, headers: any): Promise<HTTPResponse> {
+    return;
+  }
 
   /**
    * Make a PUT request
@@ -176,7 +236,21 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  put(url: string, body: any, headers: any): Promise<HTTPResponse> { return; }
+  put(url: string, body: any, headers: any): Promise<HTTPResponse> {
+    return;
+  }
+
+  /**
+   * Make a PATCH request
+   * @param url {string} The url to send the request to
+   * @param body {Object} The body of the request
+   * @param headers {Object} The headers to set for this request
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  patch(url: string, body: any, headers: any): Promise<HTTPResponse> {
+    return;
+  }
 
   /**
    * Make a DELETE request
@@ -186,7 +260,9 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  delete(url: string, parameters: any, headers: any): Promise<HTTPResponse> { return; }
+  delete(url: string, parameters: any, headers: any): Promise<HTTPResponse> {
+    return;
+  }
 
   /**
    * Make a HEAD request
@@ -196,7 +272,9 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  head(url: string, parameters: any, headers: any): Promise<HTTPResponse> { return; }
+  head(url: string, parameters: any, headers: any): Promise<HTTPResponse> {
+    return;
+  }
 
   /**
    *
@@ -208,7 +286,15 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  uploadFile(url: string, body: any, headers: any, filePath: string, name: string): Promise<HTTPResponse> { return; }
+  uploadFile(
+    url: string,
+    body: any,
+    headers: any,
+    filePath: string,
+    name: string
+  ): Promise<HTTPResponse> {
+    return;
+  }
 
   /**
    *
@@ -219,5 +305,12 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
-  downloadFile(url: string, body: any, headers: any, filePath: string): Promise<HTTPResponse> { return; }
+  downloadFile(
+    url: string,
+    body: any,
+    headers: any,
+    filePath: string
+  ): Promise<HTTPResponse> {
+    return;
+  }
 }

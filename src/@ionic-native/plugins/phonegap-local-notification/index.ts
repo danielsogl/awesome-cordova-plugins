@@ -61,7 +61,7 @@ export interface LocalNotificationOptions {
  * import { PhonegapLocalNotification } from '@ionic-native/phonegap-local-notification';
  *
  *
- * constructor(private localNotification: PhonegapLocalNotifications) { }
+ * constructor(private localNotification: PhonegapLocalNotification) { }
  *
  * ...
  *

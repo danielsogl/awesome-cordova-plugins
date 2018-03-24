@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface DatePickerOptions {
   /**
@@ -21,13 +21,13 @@ export interface DatePickerOptions {
 
   /**
    * Maximum date
-   * Default?: empty String
+   * Default: empty String
    */
   maxDate?: Date | string | number;
 
   /**
    * Label for the dialog title. If empty, uses android default (Set date/Set time).
-   * Default?: empty String
+   * Default: empty String
    */
   titleText?: string;
 
@@ -116,7 +116,6 @@ export interface DatePickerOptions {
    * Force locale for datePicker.
    */
   locale?: string;
-
 }
 
 /**
@@ -155,7 +154,6 @@ export interface DatePickerOptions {
 })
 @Injectable()
 export class DatePicker extends IonicNativePlugin {
-
   /**
    * @hidden
    */
@@ -176,5 +174,4 @@ export class DatePicker extends IonicNativePlugin {
   show(options: DatePickerOptions): Promise<Date> {
     return;
   }
-
 }

@@ -29,7 +29,7 @@ import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-nati
   plugin: 'cordova-plugin-statusbar',
   pluginRef: 'StatusBar',
   repo: 'https://github.com/apache/cordova-plugin-statusbar',
-  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone']
+  platforms: ['Android', 'iOS', 'Windows']
 })
 @Injectable()
 export class StatusBar extends IonicNativePlugin {

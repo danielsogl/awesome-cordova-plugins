@@ -620,7 +620,7 @@ declare const window: Window;
   plugin: 'cordova-plugin-file',
   pluginRef: 'cordova.file',
   repo: 'https://github.com/apache/cordova-plugin-file',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'macOS', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows']
 })
 @Injectable()
 export class File extends IonicNativePlugin {
@@ -1000,7 +1000,7 @@ export class File extends IonicNativePlugin {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystems above
    * @param {string} fileName path relative to base path
-   * @param {string | Blob} text content or blob to write
+   * @param {string | Blob | ArrayBuffer} text content, blob or ArrayBuffer to write
    * @param {IWriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */

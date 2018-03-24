@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface MusicControlsOptions {
-  track: string;
-  artist: string;
-  cover: string;
-  isPlaying: boolean;
-  dismissable: boolean;
-  hasPrev: boolean;
-  hasNext: boolean;
-  hasSkipForward: boolean;
-  hasSkipBackward: boolean;
-  skipForwardInterval: number;
-  skipBackwardInterval: number;
-  hasClose: boolean;
-  album: string;
-  duration: number;
-  elapsed: number;
-  ticker: string;
+  track?: string;
+  artist?: string;
+  cover?: string;
+  isPlaying?: boolean;
+  dismissable?: boolean;
+  hasPrev?: boolean;
+  hasNext?: boolean;
+  hasSkipForward?: boolean;
+  hasSkipBackward?: boolean;
+  skipForwardInterval?: number;
+  skipBackwardInterval?: number;
+  hasScrubbing?: boolean;
+  hasClose?: boolean;
+  album?: string;
+  duration?: number;
+  elapsed?: number;
+  ticker?: string;
+  playIcon?: string;
+  pauseIcon?: string;
+  prevIcon?: string;
+  nextIcon?: string;
+  closeIcon?: string;
+  notificationIcon?: string;
 }
 
 /**
@@ -51,17 +58,26 @@ export interface MusicControlsOptions {
  *   hasClose  : true,       // show close button, optional, default: false
  *
  * // iOS only, optional
- *   album       : 'Absolution'     // optional, default: ''
+ *   album       : 'Absolution',     // optional, default: ''
  *   duration : 60, // optional, default: 0
  *   elapsed : 10, // optional, default: 0
  *   hasSkipForward : true,  // show skip forward button, optional, default: false
  *   hasSkipBackward : true, // show skip backward button, optional, default: false
  *   skipForwardInterval: 15, // display number for skip forward, optional, default: 0
  *   skipBackwardInterval: 15, // display number for skip backward, optional, default: 0
+ *   hasScrubbing: false, // enable scrubbing from control center and lockscreen progress bar, optional
  *
  *   // Android only, optional
- *   // text displayed in the status bar when the notification (and the ticker) are updated
- *   ticker    : 'Now playing "Time is Running Out"'
+ *   // text displayed in the status bar when the notification (and the ticker) are updated, optional
+ *   ticker    : 'Now playing "Time is Running Out"',
+ *   // All icons default to their built-in android equivalents
+ *	 // The supplied drawable name, e.g. 'media_play', is the name of a drawable found under android/res/drawable* folders
+ *   playIcon: 'media_play',
+ *   pauseIcon: 'media_pause',
+ *   prevIcon: 'media_prev',
+ *   nextIcon: 'media_next',
+ *   closeIcon: 'media_close',
+ *   notificationIcon: 'notification'
  *  });
  *
  *  this.musicControls.subscribe().subscribe(action => {
@@ -91,7 +107,7 @@ export interface MusicControlsOptions {
  *      			break;
  *          case 'music-controls-seek-to':
  *            const seekToInSeconds = JSON.parse(action).position;
- *            MusicControls.updateElapsed({
+ *            this.musicControls.updateElapsed({
  *              elapsed: seekToInSeconds,
  *              isPlaying: true
  *            });
@@ -138,21 +154,24 @@ export interface MusicControlsOptions {
 })
 @Injectable()
 export class MusicControls extends IonicNativePlugin {
-
   /**
    * Create the media controls
    * @param options {MusicControlsOptions}
    * @returns {Promise<any>}
    */
   @Cordova()
-  create(options: MusicControlsOptions): Promise<any> { return; }
+  create(options: MusicControlsOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Destroy the media controller
    * @returns {Promise<any>}
    */
   @Cordova()
-  destroy(): Promise<any> { return; }
+  destroy(): Promise<any> {
+    return;
+  }
 
   /**
    * Subscribe to the events of the media controller
@@ -161,34 +180,36 @@ export class MusicControls extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  subscribe(): Observable<any> { return; }
+  subscribe(): Observable<any> {
+    return;
+  }
 
   /**
    * Start listening for events, this enables the Observable from the subscribe method
    */
   @Cordova({ sync: true })
-  listen(): void { }
+  listen(): void {}
 
   /**
    * Toggle play/pause:
    * @param isPlaying {boolean}
    */
   @Cordova()
-  updateIsPlaying(isPlaying: boolean): void { }
+  updateIsPlaying(isPlaying: boolean): void {}
 
   /**
-  * Update elapsed time, optionally toggle play/pause:
-  * @param args {Object}
-  */
+   * Update elapsed time, optionally toggle play/pause:
+   * @param args {Object}
+   */
   @Cordova({
     platforms: ['iOS']
   })
-  updateElapsed(args: { elapsed: string; isPlaying: boolean; }): void { }
+  updateElapsed(args: { elapsed: string; isPlaying: boolean }): void {}
 
   /**
    * Toggle dismissable:
    * @param dismissable {boolean}
    */
   @Cordova()
-  updateDismissable(dismissable: boolean): void { }
+  updateDismissable(dismissable: boolean): void {}
 }

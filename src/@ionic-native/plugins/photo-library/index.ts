@@ -1,6 +1,53 @@
-import { Plugin, Cordova, CordovaFiniteObservable, IonicNativePlugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin, CordovaOptions, wrap } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 import { Injectable } from '@angular/core';
+
+/**
+ * @hidden
+ */
+export interface CordovaFiniteObservableOptions extends CordovaOptions {
+  /**
+   * Function that gets a result returned from plugin's success callback, and decides whether it is last value and observable should complete.
+   */
+  resultFinalPredicate?: string;
+  /**
+   * Function that gets called after resultFinalPredicate, and removes service data that indicates end of stream from the result.
+   */
+  resultTransform?: string;
+}
+
+/**
+ * @hidden
+ *
+ * Wraps method that returns an observable that can be completed. Provided opts.resultFinalPredicate dictates when the observable completes.
+ */
+export function CordovaFiniteObservable(opts: CordovaFiniteObservableOptions = {}) {
+  opts.observable = true;
+  return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
+    return {
+      value: function(...args: any[]) {
+        const wrappedObservable: Observable<any> = wrap(this, methodName, opts).apply(this, args);
+        return new Observable<any>((observer: Observer<any>) => {
+          const wrappedSubscription = wrappedObservable.subscribe({
+            next: (x: any) => {
+              observer.next(opts.resultTransform ? x[opts.resultTransform] : x);
+              if (opts.resultFinalPredicate && x[opts.resultFinalPredicate]) {
+                observer.complete();
+              }
+            },
+            error: (err: any) => { observer.error(err); },
+            complete: () => { observer.complete(); }
+          });
+          return () => {
+            wrappedSubscription.unsubscribe();
+          };
+        });
+      },
+      enumerable: true
+    };
+  };
+}
 
 /**
  * @name Photo Library
@@ -58,8 +105,8 @@ export class PhotoLibrary extends IonicNativePlugin {
    */
   @CordovaFiniteObservable({
     callbackOrder: 'reverse',
-    resultFinalPredicate: (result: { isLastChunk: boolean }) => { return result.isLastChunk; },
-    resultTransform: (result: { library: LibraryItem[] }) => { return result.library; },
+    resultFinalPredicate: 'isLastChunk',
+    resultTransform: 'library'
   })
   getLibrary(options?: GetLibraryOptions): Observable<LibraryItem[]> { return; }
 
@@ -69,7 +116,7 @@ export class PhotoLibrary extends IonicNativePlugin {
    * @return { Promise<void>} Returns a promise that resolves when permissions are granted, and fails when not.
    */
   @Cordova({
-    callbackOrder: 'reverse',
+    callbackOrder: 'reverse'
   })
   requestAuthorization(options?: RequestAuthorizationOptions): Promise<void> { return; }
 
@@ -78,7 +125,7 @@ export class PhotoLibrary extends IonicNativePlugin {
    * @return {Promise<AlbumItem[]>} Resolves to list of albums.
    */
   @Cordova({
-    callbackOrder: 'reverse',
+    callbackOrder: 'reverse'
   })
   getAlbums(): Promise<AlbumItem[]> { return; }
 

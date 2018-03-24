@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface IndexItem {
   domain: string;
@@ -71,7 +71,6 @@ export interface IndexItem {
 })
 @Injectable()
 export class IndexAppContent extends IonicNativePlugin {
-
   /**
    * The option to index app content might not be available at all due to device limitations or user settings.
    * Therefore it's highly recommended to check upfront if indexing is possible.
@@ -89,17 +88,6 @@ export class IndexAppContent extends IonicNativePlugin {
    */
   @Cordova()
   setItems(items: Array<IndexItem>): Promise<any> {
-    return;
-  }
-
-  /**
-   * If user taps on a search result in spotlight then the app will be launched.
-   * You can register a Javascript handler to get informed when this happens.
-   * @param {IndexItem} Clicked Item
-   * @return {Promise<any>} Returns promise
-   */
-  @Cordova()
-  onItemPressed(payload: IndexItem) {
     return;
   }
 
@@ -132,5 +120,4 @@ export class IndexAppContent extends IonicNativePlugin {
   setIndexingInterval(intervalMinutes: number) {
     return;
   }
-
 }

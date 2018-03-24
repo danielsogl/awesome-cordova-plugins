@@ -1,5 +1,11 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+
+export interface AppUpdateOptions {
+  authType: string;
+  username?: string;
+  password?: string;
+}
 
 /**
  * @name App Update
@@ -24,13 +30,15 @@ import { Injectable } from '@angular/core';
  *
  * constructor(private appUpdate: AppUpdate) {
  *
- *    const updateUrl = 'http://your-remote-api.com/update.xml';
- *    this.appUpdate.checkAppUpdate(updateUrl);
+ *    const updateUrl = 'https://your-remote-api.com/update.xml';
+ *    this.appUpdate.checkAppUpdate(updateUrl).then(() => { console.log('Update available') });
  *
  * }
  * ```
  *
  * The plugin will compare the app version and update it automatically if the API has a newer version to install.
+ * @interfaces
+ * AppUpdateOptions
  */
 @Plugin({
   pluginName: 'AppUpdate',
@@ -49,5 +57,7 @@ export class AppUpdate extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  checkAppUpdate(updateUrl: string): Promise<any> { return; }
+  checkAppUpdate(updateUrl: string, options?: AppUpdateOptions): Promise<any> {
+    return;
+  }
 }

@@ -117,6 +117,14 @@ export interface GeolocationOptions {
  *
  *  This API is based on the W3C Geolocation API Specification, and only executes on devices that don't already provide an implementation.
  *
+ * For iOS you have to add this configuration to your configuration.xml file
+ * ```xml
+ * <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+ *    <string>We want your location! Best regards NSA</string>
+ * </edit-config>
+ * ```
+ *
+ *
  * @usage
  *
  * ```typescript
@@ -155,7 +163,7 @@ export interface GeolocationOptions {
   repo: 'https://github.com/apache/cordova-plugin-geolocation',
   install: 'ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"',
   installVariables: ['GEOLOCATION_USAGE_DESCRIPTION'],
-  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()
 export class Geolocation extends IonicNativePlugin {

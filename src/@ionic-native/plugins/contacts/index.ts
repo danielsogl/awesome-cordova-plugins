@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
 import { CordovaInstance, InstanceProperty, Plugin, getPromise, InstanceCheck, checkAvailability, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
 
 declare const window: any,
   navigator: any;
 
-export type ContactFieldType = '*' | 'addresses' | 'birthday' | 'categories' | 'country' | 'department' | 'displayName' | 'emails' | 'familyName' | 'formatted' | 'givenName' | 'honorificPrefix' | 'honorificSuffix' | 'id' | 'ims' | 'locality' | 'middleName' | 'name' | 'nickname' | 'note' | 'organizations' | 'phoneNumbers' | 'photos' | 'postalCode' | 'region' | 'streetAddress' | 'title' | 'urls';
+export type ContactFieldType = '*' | 'addresses' | 'birthday' | 'categories' | 'country' | 'department' | 'displayName' | 'emails' | 'name.familyName' | 'name.formatted' | 'name.givenName' | 'name.honorificPrefix' | 'name.honorificSuffix' | 'id' | 'ims' | 'locality' | 'name.middleName' | 'name' | 'nickname' | 'note' | 'organizations' | 'phoneNumbers' | 'photos' | 'postalCode' | 'region' | 'streetAddress' | 'title' | 'urls';
 
 export interface IContactProperties {
 
@@ -294,9 +293,8 @@ export class ContactFindOptions implements IContactFindOptions {
   plugin: 'cordova-plugin-contacts',
   pluginRef: 'navigator.contacts',
   repo: 'https://github.com/apache/cordova-plugin-contacts',
-  platforms: ['Android', 'BlackBerry 10', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Ubuntu', 'Windows', 'Windows 8', 'Windows Phone']
 })
-@Injectable()
 export class Contacts extends IonicNativePlugin {
 
   /**

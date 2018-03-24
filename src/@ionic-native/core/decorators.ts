@@ -105,17 +105,6 @@ export interface CordovaCheckOptions {
   observable?: boolean;
 }
 
-export interface CordovaFiniteObservableOptions extends CordovaOptions {
-  /**
-   * Function that gets a result returned from plugin's success callback, and decides whether it is last value and observable should complete.
-   */
-  resultFinalPredicate?: (result: any) => boolean;
-  /**
-   * Function that gets called after resultFinalPredicate, and removes service data that indicates end of stream from the result.
-   */
-  resultTransform?: (result: any) => any;
-}
-
 /**
  * @private
  */
@@ -166,7 +155,6 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
     };
   };
 }
-
 
 /**
  * @private
@@ -323,39 +311,3 @@ export function CordovaFunctionOverride(opts: any = {}) {
   };
 }
 
-
-/**
- * @private
- *
- * Wraps method that returns an observable that can be completed. Provided opts.resultFinalPredicate dictates when the observable completes.
- *
- */
-export function CordovaFiniteObservable(opts: CordovaFiniteObservableOptions = {}) {
-  if (opts.observable === false) {
-    throw new Error('CordovaFiniteObservable decorator can only be used on methods that returns observable. Please provide correct option.');
-  }
-  opts.observable = true;
-  return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
-    return {
-      value: function(...args: any[]) {
-        let wrappedObservable: Observable<any> = wrap(this, methodName, opts).apply(this, args);
-        return new Observable<any>((observer) => {
-          let wrappedSubscription = wrappedObservable.subscribe({
-            next: (x) => {
-              observer.next(opts.resultTransform ? opts.resultTransform(x) : x);
-              if (opts.resultFinalPredicate && opts.resultFinalPredicate(x)) {
-                observer.complete();
-              }
-            },
-            error: (err) => { observer.error(err); },
-            complete: () => { observer.complete(); }
-          });
-          return () => {
-            wrappedSubscription.unsubscribe();
-          };
-        });
-      },
-      enumerable: true
-    };
-  };
-}

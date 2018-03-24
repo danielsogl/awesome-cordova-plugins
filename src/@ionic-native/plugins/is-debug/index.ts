@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Is Debug
@@ -16,8 +16,8 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  * this.isDebug.getIsDebug()
- *   .then((isDebug: boolean) => console.log('Is debug:', isDebug))
- *   .catch((error: any) => console.error(error));
+ *   .then(isDebug => console.log('Is debug:', isDebug))
+ *   .catch(err => console.error(err));
  *
  * ```
  */
@@ -30,7 +30,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class IsDebug extends IonicNativePlugin {
-
   /**
    * Determine if an app was installed via xcode / eclipse / the ionic CLI etc
    * @returns {Promise<boolean>} Returns a promise that resolves with true if the app was installed via xcode / eclipse / the ionic CLI etc. It will resolve to false if the app was downloaded from the app / play store by the end user.
@@ -39,5 +38,4 @@ export class IsDebug extends IonicNativePlugin {
   getIsDebug(): Promise<boolean> {
     return;
   }
-
 }

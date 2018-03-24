@@ -31,10 +31,10 @@ declare const cordova: any;
  * ```
  */
 @Plugin({
-  pluginName: 'Jins Meme',
-  plugin: 'JinsMemeSDK-Plugin-Cordova',
-  pluginRef: 'cordova.plugins.JinsMemePlugin',
-  repo: 'https://github.com/jins-meme/JinsMemeSDK-Plugin-Cordova',
+  pluginName: 'JINS MEME',
+  plugin: 'cordova-plugin-jins-meme',
+  pluginRef: 'JinsMemePlugin',
+  repo: 'https://github.com/BlyncSync/cordova-plugin-jins-meme',
   platforms: ['Android', 'iOS']
 })
 @Injectable()
@@ -77,7 +77,7 @@ export class JinsMeme extends IonicNativePlugin {
   connect(target: string): Observable<any> {
     return new Observable<any>((observer: any) => {
       let data = cordova.plugins.JinsMemePlugin.connect(target, observer.next.bind(observer), observer.complete.bind(observer), observer.error.bind(observer));
-      return () => console.log(data);
+      return data;
     });
   }
   /**

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface AppRatePreferences {
-
   /**
    * Custom BCP 47 language tag
    */
@@ -24,9 +23,14 @@ export interface AppRatePreferences {
   usesUntilPrompt?: number;
 
   /**
+   * Simple Mode to display the rate dialog directly and bypass negative feedback filtering flow
+   */
+  simpleMode?: boolean;
+
+  /**
    * leave app or no when application page opened in app store (now supported only for iOS). Defaults to `false`
    */
-  openStoreInApp?: boolean;
+  inAppReview?: boolean;
 
   /**
    * use custom view for rate dialog. Defaults to `false`
@@ -36,7 +40,7 @@ export interface AppRatePreferences {
   /**
    * Custom locale object
    */
-  customLocale?: any;
+  customLocale?: AppRateCustomLocale;
 
   /**
    * Callbacks for events
@@ -47,11 +51,38 @@ export interface AppRatePreferences {
    * App Store URLS
    */
   storeAppURL?: AppUrls;
+}
 
+export interface AppRateCustomLocale {
+  /** Title */
+  title?: string;
+
+  /** Message */
+  message?: string;
+
+  /** Cancel button label */
+  cancelButtonLabel?: string;
+
+  /** Later button label */
+  laterButtonLabel?: string;
+
+  /** Rate button label */
+  rateButtonLabel?: string;
+
+  /** Yes button label */
+  yesButtonLabel?: string;
+
+  /** No button label */
+  noButtonLabel?: string;
+
+  /** App rate promt title */
+  appRatePromptTitle?: string;
+
+  /** Feedback prompt title */
+  feedbackPromptTitle?: string;
 }
 
 export interface AppRateCallbacks {
-
   /**
    * call back function. called when user clicked on rate-dialog buttons
    */
@@ -65,11 +96,9 @@ export interface AppRateCallbacks {
    * call back function. called when user clicked on negative feedback
    */
   handleNegativeFeedback?: Function;
-
 }
 
 export interface AppUrls {
-
   /**
    * application id in AppStore
    */
@@ -94,7 +123,6 @@ export interface AppUrls {
    * application URL in WindowsStore
    */
   windows8?: string;
-
 }
 
 /**
@@ -137,6 +165,7 @@ export interface AppUrls {
  * AppRatePreferences
  * AppUrls
  * AppRateCallbacks
+ * AppRateCustomLocal
  *
  */
 @Plugin({
@@ -148,25 +177,22 @@ export interface AppUrls {
 })
 @Injectable()
 export class AppRate extends IonicNativePlugin {
-
   /**
    * Configure various settings for the Rating View.
    * See table below for options
    */
-  @CordovaProperty
-  preferences: AppRatePreferences;
+  @CordovaProperty preferences: AppRatePreferences;
 
   /**
    * Prompts the user for rating
    * @param {boolean} immediately  Show the rating prompt immediately.
    */
   @Cordova()
-  promptForRating(immediately: boolean): void { };
+  promptForRating(immediately: boolean): void {}
 
   /**
    * Immediately send the user to the app store rating page
    */
   @Cordova()
-  navigateToAppStore(): void { };
-
+  navigateToAppStore(): void {}
 }
