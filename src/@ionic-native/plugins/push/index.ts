@@ -270,7 +270,7 @@ export type PushEvent = string;
  *
  * // to initialize push notifications
  *
- * const options: PushOptions = {
+ * const options: any = {
  *    android: {},
  *    ios: {
  *        alert: 'true',
