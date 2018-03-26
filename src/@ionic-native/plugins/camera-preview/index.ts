@@ -39,6 +39,9 @@ export interface CameraPreviewOptions {
 
   /** Tap to set specific focus point. Note, this assumes the camera is full-screen. default false */
   tapToFocus?: boolean;
+
+  /** On Android disable automatic rotation of the image and stripping of Exif header. default false */
+  disableExifHeaderStripping?: boolean;
 }
 
 export interface CameraPreviewPictureOptions {
