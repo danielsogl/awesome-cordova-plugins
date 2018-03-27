@@ -101,7 +101,7 @@ export interface BLEScanOptions {
  * ```
  *
  * ## Advertising Data
- * Bluetooth advertising data is returned in when scanning for devices. The format format varies depending on your platform. On Android advertising data will be the raw advertising bytes. iOS does not allow access to raw advertising data, so a dictionary of data is returned.
+ * Bluetooth advertising data is returned in when scanning for devices. The format varies depending on your platform. On Android advertising data will be the raw advertising bytes. iOS does not allow access to raw advertising data, so a dictionary of data is returned.
  *
  * The advertising information for both Android and iOS appears to be a combination of advertising data and scan response data.
  *
