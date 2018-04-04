@@ -22,7 +22,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * if(this.launchReview.isRatingSupported()){
  *   this.launchReview.rating()
- *     .then(() => console.log('Successfully launched rating dialog');
+ *     .then(() => console.log('Successfully launched rating dialog'));
  * }
  * ```
  */

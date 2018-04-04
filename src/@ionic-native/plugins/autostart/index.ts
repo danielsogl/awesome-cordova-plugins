@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 /**
  * @name Autostart
  * @description
- * This plugin will start automatically your Android app after the every boot or the auto-update of your application.
+ * This plugin automatically starts your Android app after every boot or auto-update.
  * You can enable or disable the autostart function in your app.
  *
  * @usage

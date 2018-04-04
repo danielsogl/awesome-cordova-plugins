@@ -20,7 +20,7 @@ export interface CardIOOptions {
   /**
    *  Removes the keyboard button from the scan screen.
    */
-  supressManual?: boolean;
+  suppressManual?: boolean;
 
   /**
    * The postal code will only collect numeric input. Set this if you know the expected country's postal code has only numeric postal codes.

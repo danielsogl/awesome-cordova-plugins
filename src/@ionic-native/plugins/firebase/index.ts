@@ -187,7 +187,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Fetch Remote Config parameter values for your app
-   * @param cacheExpirationSeconds
+   * @param cacheExpirationSeconds {number}
    * @return {Promise<any>}
    */
   @Cordova({
@@ -210,7 +210,7 @@ export class Firebase extends IonicNativePlugin {
   /**
    * Retrieve a Remote Config value
    * @param key {string}
-   * @param namespace {string}
+   * @param [namespace] {string}
    * @return {Promise<any>}
    */
   @Cordova({
@@ -224,13 +224,11 @@ export class Firebase extends IonicNativePlugin {
   /**
    * Retrieve a Remote Config byte array
    * @param key {string}
-   * @param namespace {string}
+   * @param [namespace] {string}
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
-    successIndex: 2,
-    errorIndex: 3
+    platforms: ['Android']
   })
   getByteArray(key: string, namespace?: string): Promise<any> {
     return;
@@ -262,15 +260,13 @@ export class Firebase extends IonicNativePlugin {
   /**
    * Set defaults in the Remote Config
    * @param defaults {Object}
-   * @param namespace {string}
+   * @param [namespace] {string}
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
-    successIndex: 2,
-    errorIndex: 3
+    platforms: ['Android']
   })
-  setDefaults(defaults: any, namespace: string): Promise<any> {
+  setDefaults(defaults: any, namespace?: string): Promise<any> {
     return;
   }
 

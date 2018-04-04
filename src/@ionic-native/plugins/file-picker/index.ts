@@ -24,7 +24,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 @Plugin({
   pluginName: 'iOS File Picker',
   plugin: 'cordova-plugin-filepicker',
-  pluginRef: 'filePicker',
+  pluginRef: 'FilePicker',
   repo: 'https://github.com/jcesarmobile/FilePicker-Phonegap-iOS-Plugin',
   platforms: ['iOS']
 })
