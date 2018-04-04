@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
+export interface StringMap {
+  [s: string]: string;
+}
+
 /**
  * @name App Center Analytics
  * @description
@@ -27,6 +31,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * });
  *
  * ```
+ * @interfaces
+ * StringMap
  */
 @Plugin({
   pluginName: 'AppCenterAnalytics',
@@ -41,14 +47,11 @@ export class AppCenterAnalytics extends IonicNativePlugin {
   /**
    * Tracks an custom event
    * @param  {string} eventName Event name
-   * @param  {{[s:string]:string}} properties Event properties
+   * @param  {StringMap} properties Event properties
    * @returns {Promise<void>}
    */
   @Cordova()
-  trackEvent(
-    eventName: string,
-    properties: { [s: string]: string }
-  ): Promise<void> {
+  trackEvent(eventName: string, properties: StringMap): Promise<void> {
     return;
   }
 
