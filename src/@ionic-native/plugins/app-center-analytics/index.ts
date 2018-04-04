@@ -45,7 +45,9 @@ export interface StringMap {
 @Injectable()
 export class AppCenterAnalytics extends IonicNativePlugin {
   /**
-   * Tracks an custom event
+   * Tracks an custom event.
+   * You can send up to 200 distinct event names. Also, there is a maximum limit of 256 characters per event name
+   * and 64 characters per event property name and event property value.
    * @param  {string} eventName Event name
    * @param  {StringMap} properties Event properties
    * @returns {Promise<void>}
@@ -56,7 +58,7 @@ export class AppCenterAnalytics extends IonicNativePlugin {
   }
 
   /**
-   * Returns true if anayltics are enabled and false if not
+   * Check if App Center Analytics is enabled
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -65,12 +67,12 @@ export class AppCenterAnalytics extends IonicNativePlugin {
   }
 
   /**
-   * Enables or disables analytics
-   * @param  {boolean} value Set value
+   * Enable or disable App Center Analytics at runtime
+   * @param  {boolean} shouldEnable Set value
    * @returns {Promise<void>}
    */
   @Cordova()
-  setEnabled(value: boolean): Promise<void> {
+  setEnabled(shouldEnable: boolean): Promise<void> {
     return;
   }
 }
