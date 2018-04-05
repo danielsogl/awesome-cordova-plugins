@@ -1,5 +1,5 @@
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 /**
@@ -43,7 +43,6 @@ export interface IPedometerData {
 })
 @Injectable()
 export class Pedometer extends IonicNativePlugin {
-
   /**
    * Checks if step counting is available. Only works on iOS.
    * @return {Promise<boolean>} Returns a promise that resolves when feature is supported (true) or not supported (false)
@@ -110,8 +109,10 @@ export class Pedometer extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  queryData(options: { startDate: Date, endDate: Date }): Promise<IPedometerData> {
+  queryData(options: {
+    startDate: Date;
+    endDate: Date;
+  }): Promise<IPedometerData> {
     return;
   }
-
 }

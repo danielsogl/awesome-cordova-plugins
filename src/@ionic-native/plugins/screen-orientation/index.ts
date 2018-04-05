@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import {
+  Cordova,
+  CordovaProperty,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 /**
  * @name Screen Orientation
@@ -59,7 +64,6 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class ScreenOrientation extends IonicNativePlugin {
-
   /**
    * Convenience enum for possible orientations
    */
@@ -75,8 +79,7 @@ export class ScreenOrientation extends IonicNativePlugin {
   /**
    * Get the current orientation of the device.
    */
-  @CordovaProperty()
-  type: string;
+  @CordovaProperty() type: string;
 
   /**
    * Listen to orientation change event
@@ -105,7 +108,5 @@ export class ScreenOrientation extends IonicNativePlugin {
    * Unlock and allow all orientations.
    */
   @Cordova({ sync: true })
-  unlock(): void {
-  }
-
+  unlock(): void {}
 }

@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import {
+  Cordova,
+  CordovaProperty,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 /**
  * @name Web Intent
@@ -30,7 +35,8 @@ import { Observable } from 'rxjs/Observable';
   pluginName: 'WebIntent',
   plugin: 'com-darryncampbell-cordova-plugin-intent',
   pluginRef: 'plugins.intentShim',
-  repo: 'https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent',
+  repo:
+    'https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent',
   platforms: ['Android']
 })
 @Injectable()
@@ -39,71 +45,61 @@ export class WebIntent extends IonicNativePlugin {
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty()
-  ACTION_SEND: string;
+  @CordovaProperty() ACTION_SEND: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty()
-  ACTION_VIEW: string;
+  @CordovaProperty() ACTION_VIEW: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty()
-  EXTRA_TEXT: string;
+  @CordovaProperty() EXTRA_TEXT: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty()
-  EXTRA_SUBJECT: string;
+  @CordovaProperty() EXTRA_SUBJECT: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty()
-  EXTRA_STREAM: string;
+  @CordovaProperty() EXTRA_STREAM: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty()
-  EXTRA_EMAIL: string;
+  @CordovaProperty() EXTRA_EMAIL: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty()
-  ACTION_CALL: string;
+  @CordovaProperty() ACTION_CALL: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty()
-  ACTION_SENDTO: string;
+  @CordovaProperty() ACTION_SENDTO: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty()
-  ACTION_GET_CONTENT: string;
+  @CordovaProperty() ACTION_GET_CONTENT: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty()
-  ACTION_PICK: string;
+  @CordovaProperty() ACTION_PICK: string;
 
   /**
    * Launches an Android intent
@@ -126,7 +122,11 @@ export class WebIntent extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  startActivityForResult(options: { action: any, url: string, type?: string }): Promise<any> {
+  startActivityForResult(options: {
+    action: any;
+    url: string;
+    type?: string;
+  }): Promise<any> {
     return;
   }
 
@@ -176,7 +176,10 @@ export class WebIntent extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  sendBroadcast(options: { action: string, extras?: { option: boolean } }): Promise<any> {
+  sendBroadcast(options: {
+    action: string;
+    extras?: { option: boolean };
+  }): Promise<any> {
     return;
   }
 
@@ -198,29 +201,25 @@ export class WebIntent extends IonicNativePlugin {
    * @param filters {any}
    */
   @Cordova({ sync: true })
-  registerBroadcastReceiver(filters: any): void {
-  }
+  registerBroadcastReceiver(filters: any): void {}
 
   /**
    * Unregisters a broadcast receiver
    */
   @Cordova({ sync: true })
-  unregisterBroadcastReceiver(): void {
-  }
+  unregisterBroadcastReceiver(): void {}
 
   /**
    * Returns the content of the intent used whenever the application activity is launched
    */
   @Cordova({ sync: true })
-  onIntent(): void {
-  }
+  onIntent(): void {}
 
   /**
    *
    */
   @Cordova({ sync: true })
-  onActivityResult(): void {
-  }
+  onActivityResult(): void {}
 
   /**
    * @returns {Promise<any>}
@@ -229,5 +228,4 @@ export class WebIntent extends IonicNativePlugin {
   getIntent(): Promise<any> {
     return;
   }
-
 }

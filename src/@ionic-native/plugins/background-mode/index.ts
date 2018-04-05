@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * Configurations items that can be updated.
@@ -21,9 +21,9 @@ export interface BackgroundModeConfiguration {
    */
   icon?: string;
 
- /**
-  * Set the background color of the notification circle
-  */
+  /**
+   * Set the background color of the notification circle
+   */
   color?: string;
 
   /**
@@ -31,9 +31,9 @@ export interface BackgroundModeConfiguration {
    */
   resume?: boolean;
 
- /**
-  * When set to false makes the notifications visible on lockscreen (Android 5.0+)
-  */
+  /**
+   * When set to false makes the notifications visible on lockscreen (Android 5.0+)
+   */
   hidden?: boolean;
 
   /** Big text */
@@ -139,8 +139,7 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  configure(options?: BackgroundModeConfiguration): void {
-  }
+  configure(options?: BackgroundModeConfiguration): void {}
 
   /**
    * Listen for events that the plugin fires. Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.

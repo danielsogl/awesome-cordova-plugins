@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import {
+  Cordova,
+  CordovaFunctionOverride,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 declare const window: any;
 
@@ -84,7 +89,6 @@ declare const window: any;
 })
 @Injectable()
 export class Geofence extends IonicNativePlugin {
-
   TransitionType = {
     ENTER: 1,
     EXIT: 2,
@@ -157,13 +161,11 @@ export class Geofence extends IonicNativePlugin {
    * @returns {Observable<any>}
    */
   onNotificationClicked(): Observable<any> {
-
-    return new Observable<any>((observer) => {
-      window && window.geofence && (window.geofence.onNotificationClicked = observer.next.bind(observer));
-      return () => window.geofence.onNotificationClicked = () => {
-      };
+    return new Observable<any>(observer => {
+      window &&
+        window.geofence &&
+        (window.geofence.onNotificationClicked = observer.next.bind(observer));
+      return () => (window.geofence.onNotificationClicked = () => {});
     });
-
   }
-
 }

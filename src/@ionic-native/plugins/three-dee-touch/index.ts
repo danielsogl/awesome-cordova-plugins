@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import {
+  Cordova,
+  CordovaFunctionOverride,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 export interface ThreeDeeTouchQuickAction {
-
   /**
    * Type that can be used in the onHomeIconPressed callback
    */
@@ -28,11 +32,9 @@ export interface ThreeDeeTouchQuickAction {
    * Icon template
    */
   iconTemplate?: string;
-
 }
 
 export interface ThreeDeeTouchForceTouch {
-
   /**
    * Touch force
    */
@@ -52,7 +54,6 @@ export interface ThreeDeeTouchForceTouch {
    * Y coordinate of action
    */
   y: number;
-
 }
 
 /**
@@ -128,7 +129,6 @@ export interface ThreeDeeTouchForceTouch {
 })
 @Injectable()
 export class ThreeDeeTouch extends IonicNativePlugin {
-
   /**
    * You need an iPhone 6S or some future tech to use the features of this plugin, so you can check at runtime if the user's device is supported.
    * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates whether the plugin is available or not
@@ -160,8 +160,7 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  configureQuickActions(quickActions: Array<ThreeDeeTouchQuickAction>): void {
-  }
+  configureQuickActions(quickActions: Array<ThreeDeeTouchQuickAction>): void {}
 
   /**
    * When a home icon is pressed, your app launches and this JS callback is invoked.
@@ -179,8 +178,7 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  enableLinkPreview(): void {
-  }
+  enableLinkPreview(): void {}
 
   /**
    * Disabled the link preview feature, if enabled.
@@ -188,7 +186,5 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  disableLinkPreview(): void {
-  }
-
+  disableLinkPreview(): void {}
 }

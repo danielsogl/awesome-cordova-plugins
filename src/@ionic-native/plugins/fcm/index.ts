@@ -1,9 +1,8 @@
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface NotificationData {
-
   /**
    * Determines whether the notification was pressed or not
    */
@@ -15,7 +14,6 @@ export interface NotificationData {
    */
 
   [name: string]: any;
-
 }
 
 /**
@@ -64,7 +62,6 @@ export interface NotificationData {
 })
 @Injectable()
 export class FCM extends IonicNativePlugin {
-
   /**
    * Get's device's current registration id
    *
@@ -124,5 +121,4 @@ export class FCM extends IonicNativePlugin {
   onNotification(): Observable<NotificationData> {
     return;
   }
-
 }

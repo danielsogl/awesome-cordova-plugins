@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface ToastOptions {
   /**
@@ -69,7 +69,6 @@ export interface ToastOptions {
 })
 @Injectable()
 export class Toast extends IonicNativePlugin {
-
   /**
    * Show a native toast for the given duration at the specified position.
    *
@@ -140,7 +139,6 @@ export class Toast extends IonicNativePlugin {
     return;
   }
 
-
   /**
    * Shorthand for `show(message, 'short', 'bottom')`.
    * @param message {string}
@@ -153,7 +151,6 @@ export class Toast extends IonicNativePlugin {
   showShortBottom(message: string): Observable<any> {
     return;
   }
-
 
   /**
    * Shorthand for `show(message, 'long', 'top')`.
@@ -168,7 +165,6 @@ export class Toast extends IonicNativePlugin {
     return;
   }
 
-
   /**
    * Shorthand for `show(message, 'long', 'center')`.
    * @param message {string}
@@ -182,7 +178,6 @@ export class Toast extends IonicNativePlugin {
     return;
   }
 
-
   /**
    * Shorthand for `show(message, 'long', 'bottom')`.
    * @param message {string}
@@ -195,5 +190,4 @@ export class Toast extends IonicNativePlugin {
   showLongBottom(message: string): Observable<any> {
     return;
   }
-
 }

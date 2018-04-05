@@ -1,6 +1,6 @@
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface QRScannerStatus {
   /**
@@ -115,7 +115,6 @@ export interface QRScannerStatus {
 })
 @Injectable()
 export class QRScanner extends IonicNativePlugin {
-
   /**
    * Request permission to use QR scanner.
    * @return {Promise<QRScannerStatus>}
@@ -256,7 +255,5 @@ export class QRScanner extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  openSettings(): void {
-  }
-
+  openSettings(): void {}
 }

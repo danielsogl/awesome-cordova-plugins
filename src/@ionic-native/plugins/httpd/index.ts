@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface HttpdOptions {
   /**
@@ -56,7 +56,6 @@ export interface HttpdOptions {
 })
 @Injectable()
 export class Httpd extends IonicNativePlugin {
-
   /**
    * Starts a web server.
    * @param options {HttpdOptions}
@@ -87,5 +86,4 @@ export class Httpd extends IonicNativePlugin {
   getLocalPath(): Promise<string> {
     return;
   }
-
 }

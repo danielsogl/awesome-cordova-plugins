@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface EstimoteBeaconRegion {
-
   state?: string;
 
   major: number;
@@ -13,7 +12,6 @@ export interface EstimoteBeaconRegion {
   identifier?: string;
 
   uuid: string;
-
 }
 
 /**
@@ -48,7 +46,6 @@ export interface EstimoteBeaconRegion {
 })
 @Injectable()
 export class EstimoteBeacons extends IonicNativePlugin {
-
   /** Proximity value */
   ProximityUnknown = 0;
 
@@ -192,7 +189,12 @@ export class EstimoteBeacons extends IonicNativePlugin {
   @Cordova({
     clearFunction: 'stopAdvertisingAsBeacon'
   })
-  startAdvertisingAsBeacon(uuid: string, major: number, minor: number, regionId: string): Promise<any> {
+  startAdvertisingAsBeacon(
+    uuid: string,
+    major: number,
+    minor: number,
+    regionId: string
+  ): Promise<any> {
     return;
   }
 
@@ -382,7 +384,9 @@ export class EstimoteBeacons extends IonicNativePlugin {
     clearFunction: 'stopRangingSecureBeaconsInRegion',
     clearWithArgs: true
   })
-  startRangingSecureBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> {
+  startRangingSecureBeaconsInRegion(
+    region: EstimoteBeaconRegion
+  ): Observable<any> {
     return;
   }
 
@@ -421,7 +425,10 @@ export class EstimoteBeacons extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  startMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> {
+  startMonitoringForRegion(
+    region: EstimoteBeaconRegion,
+    notifyEntryStateOnDisplay: boolean
+  ): Observable<any> {
     return;
   }
 
@@ -459,7 +466,10 @@ export class EstimoteBeacons extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  startSecureMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> {
+  startSecureMonitoringForRegion(
+    region: EstimoteBeaconRegion,
+    notifyEntryStateOnDisplay: boolean
+  ): Observable<any> {
     return;
   }
 
@@ -558,5 +568,4 @@ export class EstimoteBeacons extends IonicNativePlugin {
   writeConnectedMinor(minor: number): Promise<any> {
     return;
   }
-
 }

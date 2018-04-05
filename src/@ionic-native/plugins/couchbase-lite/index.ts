@@ -1,6 +1,5 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Couchbase Lite
@@ -11,7 +10,7 @@ import { Injectable } from '@angular/core';
  * ```typescript
  * import { CouchbaseLite } from '@ionic-native/couchbase-lite';
  * import { Http } from '@angular/http';
- * import { Observable } from 'rxjs/Observable'
+ * import { Observable } from 'rxjs'
  * constructor(private couchbase: CouchbaseLite, private platform:Platform,private _http:Http) {
  *    this.initMethod();
  * }
@@ -121,7 +120,6 @@ import { Injectable } from '@angular/core';
 })
 @Injectable()
 export class CouchbaseLite extends IonicNativePlugin {
-
   /**
    * Get the database url
    * @return {Promise<any>} Returns a promise that resolves with the local database url
@@ -132,5 +130,4 @@ export class CouchbaseLite extends IonicNativePlugin {
   getURL(): Promise<any> {
     return;
   }
-
 }

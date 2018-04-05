@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export type SpeechRecognitionListeningOptions =
-  SpeechRecognitionListeningOptionsIOS
+  | SpeechRecognitionListeningOptionsIOS
   | SpeechRecognitionListeningOptionsAndroid;
 
 export interface SpeechRecognitionListeningOptionsIOS {
@@ -103,7 +103,6 @@ export interface SpeechRecognitionListeningOptionsAndroid {
 })
 @Injectable()
 export class SpeechRecognition extends IonicNativePlugin {
-
   /**
    * Check feature available
    * @return {Promise<boolean>}
@@ -119,10 +118,11 @@ export class SpeechRecognition extends IonicNativePlugin {
    */
   @Cordova({
     callbackOrder: 'reverse',
-    observable: true,
-
+    observable: true
   })
-  startListening(options?: SpeechRecognitionListeningOptions): Observable<Array<string>> {
+  startListening(
+    options?: SpeechRecognitionListeningOptions
+  ): Observable<Array<string>> {
     return;
   }
 
@@ -162,5 +162,4 @@ export class SpeechRecognition extends IonicNativePlugin {
   requestPermission(): Promise<void> {
     return;
   }
-
 }

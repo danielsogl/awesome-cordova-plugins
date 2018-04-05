@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
-import { checkAvailability, Cordova, CordovaInstance, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import {
+  checkAvailability,
+  Cordova,
+  CordovaInstance,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 declare const window: any;
 
-export type EventResponse = RegistrationEventResponse & NotificationEventResponse & Error;
+export type EventResponse = RegistrationEventResponse &
+  NotificationEventResponse &
+  Error;
 
 export interface RegistrationEventResponse {
   /**
@@ -12,7 +20,6 @@ export interface RegistrationEventResponse {
    */
   registrationId: string;
 }
-
 
 export interface NotificationEventResponse {
   /**
@@ -203,7 +210,6 @@ export interface BrowserPushOptions {
    * Default: http://push.api.phonegap.com/v1/push  Optional.
    */
   pushServiceURL?: string;
-
 }
 
 export interface PushOptions {
@@ -314,7 +320,6 @@ export type PushEvent = string;
 })
 @Injectable()
 export class Push extends IonicNativePlugin {
-
   /**
    * Init push notifications
    * @param options {PushOptions}
@@ -340,7 +345,9 @@ export class Push extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  createChannel(channel?: Channel): Promise<any> { return; }
+  createChannel(channel?: Channel): Promise<any> {
+    return;
+  }
 
   /**
    * Delete a notification channel for Android O and above.
@@ -349,7 +356,9 @@ export class Push extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  deleteChannel(id?: string): Promise<any> { return; }
+  deleteChannel(id?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Returns a list of currently configured channels.
@@ -359,7 +368,6 @@ export class Push extends IonicNativePlugin {
   listChannels(): Promise<Channel[]> {
     return;
   }
-
 }
 
 /**
@@ -371,11 +379,12 @@ export class Push extends IonicNativePlugin {
   pluginRef: 'PushNotification'
 })
 export class PushObject {
-
   private _objectInstance: any;
 
   constructor(options: PushOptions) {
-    if (checkAvailability('PushNotification', 'init', 'PushNotification') === true) {
+    if (
+      checkAvailability('PushNotification', 'init', 'PushNotification') === true
+    ) {
       this._objectInstance = window.PushNotification.init(options);
     }
   }
@@ -437,7 +446,9 @@ export class PushObject {
   @CordovaInstance({
     callbackOrder: 'reverse'
   })
-  finish(id?: string): Promise<any> { return; }
+  finish(id?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Tells the OS to clear all notifications from the Notification Center
@@ -466,5 +477,4 @@ export class PushObject {
   unsubscribe(topic: string): Promise<any> {
     return;
   }
-
 }

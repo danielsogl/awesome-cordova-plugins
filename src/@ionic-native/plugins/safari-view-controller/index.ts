@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface SafariViewControllerOptions {
   animated?: boolean;
@@ -64,7 +64,6 @@ export interface SafariViewControllerOptions {
 })
 @Injectable()
 export class SafariViewController extends IonicNativePlugin {
-
   /**
    * Checks if SafariViewController is available
    * @returns {Promise<boolean>}
@@ -123,5 +122,4 @@ export class SafariViewController extends IonicNativePlugin {
   mayLaunchUrl(url: string): Promise<any> {
     return;
   }
-
 }

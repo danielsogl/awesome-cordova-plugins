@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaCheck, CordovaInstance, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import {
+  Plugin,
+  Cordova,
+  CordovaCheck,
+  CordovaInstance,
+  IonicNativePlugin
+} from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 /**
  * Information about the currently running app
@@ -35,22 +41,25 @@ export interface DeployConfig {
  * @hidden
  */
 export class ProDeploy {
-
-  constructor(private _objectInstance: any) { }
+  constructor(private _objectInstance: any) {}
 
   /**
    * Re-initialize Deploy plugin with a new App ID and host.  Not used in most cases.
    * @param config A valid Deploy config object
    */
   @CordovaInstance()
-  init(config: DeployConfig): Promise<any> { return; }
+  init(config: DeployConfig): Promise<any> {
+    return;
+  }
 
   /**
    * Check a channel for an available update
    * @return {Promise<string>} Resolves with 'true' or 'false', or rejects with an error.
    */
   @CordovaInstance()
-  check(): Promise<string> { return; }
+  check(): Promise<string> {
+    return;
+  }
 
   /**
    * Download an available version
@@ -59,7 +68,9 @@ export class ProDeploy {
   @CordovaInstance({
     observable: true
   })
-  download(): Observable<any> { return; }
+  download(): Observable<any> {
+    return;
+  }
 
   /**
    * Unzip the latest downloaded version
@@ -68,7 +79,9 @@ export class ProDeploy {
   @CordovaInstance({
     observable: true
   })
-  extract(): Observable<any> { return; }
+  extract(): Observable<any> {
+    return;
+  }
 
   /**
    * Reload app with the deployed version
@@ -134,7 +147,8 @@ export class ProDeploy {
   pluginRef: 'IonicCordova',
   repo: 'https://github.com/ionic-team/cordova-plugin-ionic',
   platforms: ['Android', 'iOS'],
-  install: 'ionic cordova plugin add cordova-plugin-ionic --save --variable APP_ID="XXXXXXXX" --variable CHANNEL_NAME="Channel"'
+  install:
+    'ionic cordova plugin add cordova-plugin-ionic --save --variable APP_ID="XXXXXXXX" --variable CHANNEL_NAME="Channel"'
 })
 @Injectable()
 export class Pro extends IonicNativePlugin {
@@ -198,4 +212,3 @@ export class Pro extends IonicNativePlugin {
     return;
   }
 }
-

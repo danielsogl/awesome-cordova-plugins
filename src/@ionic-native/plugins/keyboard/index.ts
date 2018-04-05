@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
-
+import { Observable } from 'rxjs';
 
 /**
  * @name Keyboard
@@ -29,14 +28,12 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class Keyboard extends IonicNativePlugin {
-
   /**
    * Hide the keyboard accessory bar with the next, previous and done buttons.
    * @param hide {boolean}
    */
   @Cordova({ sync: true })
-  hideKeyboardAccessoryBar(hide: boolean): void {
-  }
+  hideKeyboardAccessoryBar(hide: boolean): void {}
 
   /**
    * Force keyboard to be shown.
@@ -45,8 +42,7 @@ export class Keyboard extends IonicNativePlugin {
     sync: true,
     platforms: ['Android', 'BlackBerry 10', 'Windows']
   })
-  show(): void {
-  }
+  show(): void {}
 
   /**
    * Close the keyboard if open.
@@ -55,8 +51,7 @@ export class Keyboard extends IonicNativePlugin {
     sync: true,
     platforms: ['iOS', 'Android', 'BlackBerry 10', 'Windows']
   })
-  close(): void {
-  }
+  close(): void {}
 
   /**
    * Prevents the native UIScrollView from moving when an input is focused.
@@ -66,8 +61,7 @@ export class Keyboard extends IonicNativePlugin {
     sync: true,
     platforms: ['iOS', 'Windows']
   })
-  disableScroll(disable: boolean): void {
-  }
+  disableScroll(disable: boolean): void {}
 
   /**
    * Creates an observable that notifies you when the keyboard is shown. Unsubscribe to observable to cancel event watch.
@@ -94,5 +88,4 @@ export class Keyboard extends IonicNativePlugin {
   onKeyboardHide(): Observable<any> {
     return;
   }
-
 }

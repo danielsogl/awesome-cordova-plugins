@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name Broadcaster
@@ -32,7 +32,6 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class Broadcaster extends IonicNativePlugin {
-
   /**
    * This function listen to an event sent from the native code
    * @param eventName {string}
@@ -57,5 +56,4 @@ export class Broadcaster extends IonicNativePlugin {
   fireNativeEvent(eventName: string, eventData: any): Promise<any> {
     return;
   }
-
 }

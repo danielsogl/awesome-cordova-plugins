@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface DeeplinkMatch {
-
   /**
    * The route info for the matched route
    */
@@ -20,7 +19,6 @@ export interface DeeplinkMatch {
    * the route was matched (for example, Facebook sometimes adds extra data)
    */
   $link: any;
-
 }
 
 export interface DeeplinkOptions {
@@ -85,13 +83,18 @@ export interface DeeplinkOptions {
   plugin: 'ionic-plugin-deeplinks',
   pluginRef: 'IonicDeeplink',
   repo: 'https://github.com/ionic-team/ionic-plugin-deeplinks',
-  install: 'ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/',
-  installVariables: ['URL_SCHEME', 'DEEPLINK_SCHEME', 'DEEPLINK_HOST', 'ANDROID_PATH_PREFIX'],
+  install:
+    'ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/',
+  installVariables: [
+    'URL_SCHEME',
+    'DEEPLINK_SCHEME',
+    'DEEPLINK_HOST',
+    'ANDROID_PATH_PREFIX'
+  ],
   platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()
 export class Deeplinks extends IonicNativePlugin {
-
   /**
    * Define a set of paths to match against incoming deeplinks.
    *
@@ -134,8 +137,11 @@ export class Deeplinks extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  routeWithNavController(navController: any, paths: any, options?: DeeplinkOptions): Observable<DeeplinkMatch> {
+  routeWithNavController(
+    navController: any,
+    paths: any,
+    options?: DeeplinkOptions
+  ): Observable<DeeplinkMatch> {
     return;
   }
-
 }

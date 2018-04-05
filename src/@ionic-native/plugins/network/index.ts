@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaCheck, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/merge';
-
+import {
+  Cordova,
+  CordovaCheck,
+  CordovaProperty,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
+import { merge, Observable } from 'rxjs';
 
 declare const navigator: any;
 
@@ -57,20 +61,17 @@ declare const navigator: any;
 })
 @Injectable()
 export class Network extends IonicNativePlugin {
-
   /**
    * Connection type
    * @return {string}
    */
-  @CordovaProperty()
-  type: string;
+  @CordovaProperty() type: string;
 
   /**
    * Downlink Max Speed
    * @return {string}
    */
-  @CordovaProperty()
-  downlinkMax: string;
+  @CordovaProperty() downlinkMax: string;
 
   /**
    * Returns an observable to watch connection changes
@@ -78,7 +79,7 @@ export class Network extends IonicNativePlugin {
    */
   @CordovaCheck()
   onchange(): Observable<any> {
-    return Observable.merge(this.onConnect(), this.onDisconnect());
+    return merge(this.onConnect(), this.onDisconnect());
   }
 
   /**
@@ -104,5 +105,4 @@ export class Network extends IonicNativePlugin {
   onConnect(): Observable<any> {
     return;
   }
-
 }

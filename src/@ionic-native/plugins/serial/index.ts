@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 declare var serial: any;
 
@@ -58,7 +58,6 @@ export interface SerialOpenOptions {
 })
 @Injectable()
 export class Serial extends IonicNativePlugin {
-
   /**
    * Request permission to connect to a serial device
    *
@@ -137,5 +136,4 @@ export class Serial extends IonicNativePlugin {
   close(): Promise<any> {
     return;
   }
-
 }

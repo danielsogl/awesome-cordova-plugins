@@ -1,5 +1,5 @@
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 /**
@@ -25,11 +25,18 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-app-preferences',
   pluginRef: 'plugins.appPreferences',
   repo: 'https://github.com/apla/me.apla.cordova.app-preferences',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'macOS', 'Windows 8', 'Windows Phone']
+  platforms: [
+    'Android',
+    'BlackBerry 10',
+    'Browser',
+    'iOS',
+    'macOS',
+    'Windows 8',
+    'Windows Phone'
+  ]
 })
 @Injectable()
 export class AppPreferences extends IonicNativePlugin {
-
   /**
    * Get a preference value
    *
@@ -156,5 +163,4 @@ export class AppPreferences extends IonicNativePlugin {
   defaults(): Object {
     return;
   }
-
 }

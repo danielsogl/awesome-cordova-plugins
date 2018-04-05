@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import {
+  Cordova,
+  CordovaProperty,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 declare const navigator: any;
 
@@ -33,7 +38,10 @@ export interface MediaFile {
    * @param {Function} successCallback
    * @param {Function} errorCallback
    */
-  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any): void;
+  getFormatData(
+    successCallback: (data: MediaFileData) => any,
+    errorCallback?: (err: any) => any
+  ): void;
 }
 
 export interface MediaFileData {
@@ -155,22 +163,19 @@ export class MediaCapture extends IonicNativePlugin {
    * The recording image sizes and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty()
-  supportedImageModes: ConfigurationData[];
+  @CordovaProperty() supportedImageModes: ConfigurationData[];
 
   /**
    * The audio recording formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty()
-  supportedAudioModes: ConfigurationData[];
+  @CordovaProperty() supportedAudioModes: ConfigurationData[];
 
   /**
    * The recording video resolutions and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty()
-  supportedVideoModes: ConfigurationData[];
+  @CordovaProperty() supportedVideoModes: ConfigurationData[];
 
   /**
    * Start the audio recorder application and return information about captured audio clip files.
@@ -180,7 +185,9 @@ export class MediaCapture extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  captureAudio(options?: CaptureAudioOptions): Promise<MediaFile[] | CaptureError> {
+  captureAudio(
+    options?: CaptureAudioOptions
+  ): Promise<MediaFile[] | CaptureError> {
     return;
   }
 
@@ -192,7 +199,9 @@ export class MediaCapture extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  captureImage(options?: CaptureImageOptions): Promise<MediaFile[] | CaptureError> {
+  captureImage(
+    options?: CaptureImageOptions
+  ): Promise<MediaFile[] | CaptureError> {
     return;
   }
 
@@ -204,7 +213,9 @@ export class MediaCapture extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  captureVideo(options?: CaptureVideoOptions): Promise<MediaFile[] | CaptureError> {
+  captureVideo(
+    options?: CaptureVideoOptions
+  ): Promise<MediaFile[] | CaptureError> {
     return;
   }
 
@@ -231,5 +242,4 @@ export class MediaCapture extends IonicNativePlugin {
   onPendingCaptureError(): Observable<CaptureError> {
     return;
   }
-
 }

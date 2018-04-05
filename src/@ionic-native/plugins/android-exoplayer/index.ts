@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export type AndroidExoPlayerAspectRatio = 'FILL_SCREEN' | 'FIT_SCREEN';
 
@@ -205,7 +205,10 @@ export class AndroidExoplayer extends IonicNativePlugin {
    * @return {Promise<void>}
    */
   @Cordova()
-  setStream(url: string, controller: AndroidExoPlayerControllerConfig): Promise<void> {
+  setStream(
+    url: string,
+    controller: AndroidExoPlayerControllerConfig
+  ): Promise<void> {
     return;
   }
 

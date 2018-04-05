@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name Shake
@@ -43,5 +43,4 @@ export class Shake extends IonicNativePlugin {
   startWatch(sensitivity?: number): Observable<any> {
     return;
   }
-
 }

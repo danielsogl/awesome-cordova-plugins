@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface ZeroconfService {
   domain: string;
@@ -79,7 +79,13 @@ export class Zeroconf extends IonicNativePlugin {
    * @return {Promise<ZeroconfResult>} Returns a Promise that resolves with the registered service.
    */
   @Cordova()
-  register(type: string, domain: string, name: string, port: number, txtRecord: any): Promise<ZeroconfResult> {
+  register(
+    type: string,
+    domain: string,
+    name: string,
+    port: number,
+    txtRecord: any
+  ): Promise<ZeroconfResult> {
     return;
   }
 
@@ -144,7 +150,9 @@ export class Zeroconf extends IonicNativePlugin {
    * @return {Promise<void>}
    */
   @Cordova()
-  reInit(): Promise<void> { return; }
+  reInit(): Promise<void> {
+    return;
+  }
   /**
    * Family of addresses to register: ipv4, ipv6 or any.
    */

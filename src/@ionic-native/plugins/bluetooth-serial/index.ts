@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name Bluetooth Serial
@@ -39,7 +39,6 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class BluetoothSerial extends IonicNativePlugin {
-
   /**
    * Connect to a Bluetooth device
    * @param {string} macAddress_or_uuid Identifier of the remote device
@@ -259,8 +258,7 @@ export class BluetoothSerial extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  setName(newName: string): void {
-  }
+  setName(newName: string): void {}
 
   /**
    * Makes the device discoverable by other devices
@@ -270,7 +268,5 @@ export class BluetoothSerial extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  setDiscoverable(discoverableDuration: number): void {
-  }
-
+  setDiscoverable(discoverableDuration: number): void {}
 }

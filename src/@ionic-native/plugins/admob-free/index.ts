@@ -1,7 +1,6 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromEvent';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { fromEvent, Observable } from 'rxjs';
 
 export interface AdMobFreeBannerConfig {
   /**
@@ -70,10 +69,9 @@ export interface AdMobFreeRewardVideoConfig {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.banner',
+  pluginRef: 'admob.banner'
 })
 export class AdMobFreeBanner extends IonicNativePlugin {
-
   /**
    * Update config.
    * @param options
@@ -119,7 +117,6 @@ export class AdMobFreeBanner extends IonicNativePlugin {
   show(): Promise<any> {
     return;
   }
-
 }
 
 /**
@@ -128,10 +125,9 @@ export class AdMobFreeBanner extends IonicNativePlugin {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.interstitial',
+  pluginRef: 'admob.interstitial'
 })
 export class AdMobFreeInterstitial extends IonicNativePlugin {
-
   /**
    * Update config.
    * @param options
@@ -168,7 +164,6 @@ export class AdMobFreeInterstitial extends IonicNativePlugin {
   show(): Promise<any> {
     return;
   }
-
 }
 
 /**
@@ -177,10 +172,9 @@ export class AdMobFreeInterstitial extends IonicNativePlugin {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.rewardvideo',
+  pluginRef: 'admob.rewardvideo'
 })
 export class AdMobFreeRewardVideo extends IonicNativePlugin {
-
   /**
    * Update config.
    * @param options
@@ -217,7 +211,6 @@ export class AdMobFreeRewardVideo extends IonicNativePlugin {
   show(): Promise<any> {
     return;
   }
-
 }
 
 /**
@@ -270,7 +263,6 @@ export class AdMobFreeRewardVideo extends IonicNativePlugin {
 })
 @Injectable()
 export class AdMobFree extends IonicNativePlugin {
-
   /**
    * Convenience object to get event names
    * @type {Object}
@@ -318,7 +310,6 @@ export class AdMobFree extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   on(event: string): Observable<any> {
-    return Observable.fromEvent(document, event);
+    return fromEvent(document, event);
   }
-
 }
