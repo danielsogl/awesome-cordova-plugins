@@ -1,5 +1,5 @@
 import { callCordovaPlugin, wrapInstance, wrapPromise } from './common';
-import 'rxjs/add/observable/of';
+import { of } from 'rxjs';
 
 declare const window: any;
 
@@ -33,14 +33,16 @@ class MockCordovaPlugin {
   static ping = jest.fn((arg: string) => 'pong');
   ping = jest.fn((arg: string) => 'pong');
 
-  static pingAsync = jest.fn((arg: string, success: Function, error: Function) => success('pong'));
-  pingAsync = jest.fn((arg: string, success: Function, error: Function) => success('pong'));
+  static pingAsync = jest.fn(
+    (arg: string, success: Function, error: Function) => success('pong')
+  );
+  pingAsync = jest.fn((arg: string, success: Function, error: Function) =>
+    success('pong')
+  );
 }
 
 describe('Common decorator functions', () => {
-
-  let plugin: MockPlugin,
-    instancePluginObject: MockInstancePluginObject;
+  let plugin: MockPlugin, instancePluginObject: MockInstancePluginObject;
 
   beforeAll(() => {
     window.mockPlugin = MockCordovaPlugin;
@@ -73,15 +75,17 @@ describe('Common decorator functions', () => {
 
     test('original method should have received args', () => {
       expect(MockCordovaPlugin.pingAsync.mock.calls[0][0]).toBe('pingpong');
-      expect(typeof MockCordovaPlugin.pingAsync.mock.calls[0][1]).toBe('function');
-      expect(typeof MockCordovaPlugin.pingAsync.mock.calls[0][2]).toBe('function');
+      expect(typeof MockCordovaPlugin.pingAsync.mock.calls[0][1]).toBe(
+        'function'
+      );
+      expect(typeof MockCordovaPlugin.pingAsync.mock.calls[0][2]).toBe(
+        'function'
+      );
     });
   });
 
   describe('wrapObservable', () => {
-    test('should return an observable that emits a value', async () => {
-
-    });
+    test('should return an observable that emits a value', async () => {});
 
     test('original method should have been called', () => {});
 
@@ -93,8 +97,7 @@ describe('Common decorator functions', () => {
   });
 
   describe('callInstance', () => {
-    test('should call an instance method', async () => {
-    });
+    test('should call an instance method', async () => {});
 
     test('original method should have been called', () => {
       // expect(instancePluginObject._pluginInstance.ping.mock.calls.length).toBe(1);
@@ -104,5 +107,4 @@ describe('Common decorator functions', () => {
       // expect(instancePluginObject._pluginInstance.ping.mock.calls[0][0]).toBe('pingpong');
     });
   });
-
 });

@@ -1,7 +1,5 @@
-import 'rxjs/add/observable/fromEvent';
-
 import * as _ from 'lodash';
-import { Observable } from 'rxjs/Observable';
+import { Observable, fromEvent } from 'rxjs';
 
 import { CordovaOptions } from './interfaces';
 
@@ -175,7 +173,7 @@ function wrapEventObservable(event: string, element: any): Observable<any> {
   } else {
     element = window;
   }
-  return Observable.fromEvent(element, event);
+  return fromEvent(element, event);
 }
 
 /**
@@ -288,7 +286,7 @@ export function setIndex(
     };
 
     const setErrorIndex = () => {
-      // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behaviour.
+      // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behavior.
       if (opts.errorIndex > args.length) {
         args[opts.errorIndex] = reject; // insert the reject fn at the correct specific index
       } else {
