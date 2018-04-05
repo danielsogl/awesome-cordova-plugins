@@ -903,6 +903,7 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  *  Marker
  * } from '@ionic-native/google-maps';
  * import { Component } from "@angular/core/";
+ * import {Platform} from 'ionic-angular';
  *
  * @Component({
  *   selector: 'page-home',
@@ -910,10 +911,12 @@ export const GoogleMapsMapTypeId: { [mapType: string]: MapType; } = {
  * })
  * export class HomePage {
  *   map: GoogleMap;
- *   constructor() { }
+ *   constructor( private platform : Platform) { }
  *
  *   ionViewDidLoad() {
- *    this.loadMap();
+ *      this.platform.ready().then(() => {
+ *         this.loadMap();
+ *     });
  *   }
  *
  *  loadMap() {
