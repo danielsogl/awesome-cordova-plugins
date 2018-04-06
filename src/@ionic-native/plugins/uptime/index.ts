@@ -23,24 +23,23 @@ import {Plugin, Cordova, IonicNativePlugin} from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'Uptime',
-  plugin: 'cordova-plugin-uptime', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'Uptime', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/s1lviu/cordova-plugin-uptime', // the github repository URL for the plugin
-  install: '', // OPTIONAL install command, in case the plugin requires variables
-  installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['Android'] // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'cordova-plugin-uptime',
+  pluginRef: 'Uptime',
+  repo: 'https://github.com/s1lviu/cordova-plugin-uptime',
+  install: '',
+  installVariables: [],
+  platforms: ['Android']
 })
 @Injectable()
 export class Uptime extends IonicNativePlugin {
 
   /**
    * This function return system uptime
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @return {Promise<string>} Returns a promise that return the uptime in milliseconds
    */
   @Cordova()
-  getUptime(): Promise<any> {
+  getUptime(): Promise<string> {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
 }
-
