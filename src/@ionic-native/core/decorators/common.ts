@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { Observable, fromEvent } from 'rxjs';
+import { fromEvent, Observable } from 'rxjs';
 
 import { CordovaOptions } from './interfaces';
 

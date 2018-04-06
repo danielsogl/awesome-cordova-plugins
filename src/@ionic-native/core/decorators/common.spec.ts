@@ -1,6 +1,4 @@
 import { callCordovaPlugin, wrapInstance, wrapPromise } from './common';
-import { of } from 'rxjs';
-
 declare const window: any;
 
 class MockPlugin {
