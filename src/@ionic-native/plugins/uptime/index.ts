@@ -1,6 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Plugin, Cordova, IonicNativePlugin} from '@ionic-native/core';
-
+import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Uptime
@@ -32,14 +31,12 @@ import {Plugin, Cordova, IonicNativePlugin} from '@ionic-native/core';
 })
 @Injectable()
 export class Uptime extends IonicNativePlugin {
-
   /**
    * This function return system uptime
    * @return {Promise<string>} Returns a promise that return the uptime in milliseconds
    */
   @Cordova()
   getUptime(): Promise<string> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
-
 }
