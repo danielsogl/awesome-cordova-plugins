@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * @name Social Sharing
  * @description
@@ -53,7 +52,12 @@ export class SocialSharing extends IonicNativePlugin {
     successIndex: 4,
     errorIndex: 5
   })
-  share(message?: string, subject?: string, file?: string | string[], url?: string): Promise<any> {
+  share(
+    message?: string,
+    subject?: string,
+    file?: string | string[],
+    url?: string
+  ): Promise<any> {
     return;
   }
 
@@ -65,7 +69,13 @@ export class SocialSharing extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS', 'Android']
   })
-  shareWithOptions(options: { message?: string, subject?: string, files?: string | string[], url?: string, chooserTitle?: string }): Promise<any> {
+  shareWithOptions(options: {
+    message?: string;
+    subject?: string;
+    files?: string | string[];
+    url?: string;
+    chooserTitle?: string;
+  }): Promise<any> {
     return;
   }
 
@@ -83,7 +93,13 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 6,
     platforms: ['iOS', 'Android']
   })
-  canShareVia(appName: string, message?: string, subject?: string, image?: string, url?: string): Promise<any> {
+  canShareVia(
+    appName: string,
+    message?: string,
+    subject?: string,
+    image?: string,
+    url?: string
+  ): Promise<any> {
     return;
   }
 
@@ -115,10 +131,13 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 4,
     platforms: ['iOS', 'Android']
   })
-  shareViaFacebook(message: string, image?: string, url?: string): Promise<any> {
+  shareViaFacebook(
+    message: string,
+    image?: string,
+    url?: string
+  ): Promise<any> {
     return;
   }
-
 
   /**
    * Shares directly to Facebook with a paste message hint
@@ -133,7 +152,12 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 5,
     platforms: ['iOS', 'Android']
   })
-  shareViaFacebookWithPasteMessageHint(message: string, image?: string, url?: string, pasteMessageHint?: string): Promise<any> {
+  shareViaFacebookWithPasteMessageHint(
+    message: string,
+    image?: string,
+    url?: string,
+    pasteMessageHint?: string
+  ): Promise<any> {
     return;
   }
 
@@ -162,7 +186,11 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 4,
     platforms: ['iOS', 'Android']
   })
-  shareViaWhatsApp(message: string, image?: string, url?: string): Promise<any> {
+  shareViaWhatsApp(
+    message: string,
+    image?: string,
+    url?: string
+  ): Promise<any> {
     return;
   }
 
@@ -179,7 +207,12 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 5,
     platforms: ['iOS', 'Android']
   })
-  shareViaWhatsAppToReceiver(receiver: string, message: string, image?: string, url?: string): Promise<any> {
+  shareViaWhatsAppToReceiver(
+    receiver: string,
+    message: string,
+    image?: string,
+    url?: string
+  ): Promise<any> {
     return;
   }
 
@@ -222,7 +255,14 @@ export class SocialSharing extends IonicNativePlugin {
     successIndex: 6,
     errorIndex: 7
   })
-  shareViaEmail(message: string, subject: string, to: string[], cc?: string[], bcc?: string[], files?: string | string[]): Promise<any> {
+  shareViaEmail(
+    message: string,
+    subject: string,
+    to: string[],
+    cc?: string[],
+    bcc?: string[],
+    files?: string | string[]
+  ): Promise<any> {
     return;
   }
 
@@ -240,7 +280,13 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 6,
     platforms: ['iOS', 'Android']
   })
-  shareVia(appName: string, message: string, subject?: string, image?: string, url?: string): Promise<any> {
+  shareVia(
+    appName: string,
+    message: string,
+    subject?: string,
+    image?: string,
+    url?: string
+  ): Promise<any> {
     return;
   }
 
@@ -252,6 +298,17 @@ export class SocialSharing extends IonicNativePlugin {
     sync: true,
     platforms: ['iOS']
   })
-  setIPadPopupCoordinates(targetBounds: string): void {
+  setIPadPopupCoordinates(targetBounds: string): void {}
+
+  /**
+   * Save an array of images to the camera roll
+   * @param  {string|string[]} fileOrFileArray Single or multiple files
+   * @returns {Promise<any> }
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  saveToPhotoAlbum(fileOrFileArray: string | string[]): Promise<any> {
+    return;
   }
 }

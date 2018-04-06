@@ -43,6 +43,11 @@ export interface SpeechRecognitionListeningOptionsAndroid {
    * display listener popup window with prompt (default `true`)
    */
   showPopup?: boolean;
+
+  /**
+   * Allow partial results to be returned (default `false`)
+   */
+  showPartial?: boolean;
 }
 
 /**
@@ -129,9 +134,7 @@ export class SpeechRecognition extends IonicNativePlugin {
   /**
    * Stop the recognition process
    */
-  @Cordova({
-    platforms: ['iOS']
-  })
+  @Cordova()
   stopListening(): Promise<void> {
     return;
   }

@@ -1,5 +1,6 @@
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 export interface QRScannerStatus {
@@ -85,11 +86,6 @@ export interface QRScannerStatus {
  *          this.qrScanner.hide(); // hide camera preview
  *          scanSub.unsubscribe(); // stop scanning
  *        });
- *
- *        // show camera preview
- *        this.qrScanner.show();
- *
- *        // wait for user to scan something, then the observable callback will be called
  *
  *      } else if (status.denied) {
  *        // camera permission was permanently denied

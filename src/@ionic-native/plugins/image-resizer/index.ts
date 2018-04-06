@@ -8,6 +8,24 @@ export interface ImageResizerOptions {
   uri: string;
 
   /**
+   * The name of the folder the image should be put
+   * (Android only)
+   */
+  folderName?: string;
+
+  /**
+   * A custom name for the file. Default name is a timestamp. You have to set this value on iOS
+   */
+  fileName?: string;
+
+  /**
+   *
+   * Quality given as Number for the quality of the new image
+   * (Android and iOS only)
+   */
+  quality?: number;
+
+  /**
    * The width of the new image
    */
   width: number;
@@ -18,22 +36,10 @@ export interface ImageResizerOptions {
   height: number;
 
   /**
-   * The name of the folder the image should be put
-   * (Android only)
+   * Whether or not to return a base64 encoded image string instead of the path to the resized image.
+   * iOS only
    */
-  folderName?: string;
-
-  /**
-   *
-   * Quality given as Number for the quality of the new image
-   * (Android and iOS only)
-   */
-  quality?: number;
-
-  /**
-   * A custom name for the file. Default name is a timestamp. You have to set this value on iOS
-   */
-  fileName?: string;
+  base64?: boolean;
 }
 
 /**

@@ -1,28 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * Options for sending an SMS
  */
 export interface SmsOptions {
-
   /**
    * Set to true to replace \n by a new line. Default: false
    */
   replaceLineBreaks?: boolean;
 
   android?: SmsOptionsAndroid;
-
 }
 
 export interface SmsOptionsAndroid {
-
   /**
    * Set to "INTENT" to send SMS with the native android SMS messaging. Leaving it empty will send the SMS without opening any app.
    */
   intent?: string;
-
 }
 
 /**
@@ -57,7 +52,6 @@ export interface SmsOptionsAndroid {
 })
 @Injectable()
 export class SMS extends IonicNativePlugin {
-
   /**
    * Sends sms to a number
    * @param phoneNumber {string|Array<string>} Phone number
@@ -69,9 +63,11 @@ export class SMS extends IonicNativePlugin {
     successIndex: 3,
     errorIndex: 4
   })
-  send(phoneNumber: string | string[],
-       message: string,
-       options?: SmsOptions): Promise<any> {
+  send(
+    phoneNumber: string | string[],
+    message: string,
+    options?: SmsOptions
+  ): Promise<any> {
     return;
   }
 
@@ -85,5 +81,4 @@ export class SMS extends IonicNativePlugin {
   hasPermission(): Promise<boolean> {
     return;
   }
-
 }
