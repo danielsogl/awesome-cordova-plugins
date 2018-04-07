@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Cordova, IonicNativePlugin, Plugin} from '@ionic-native/core';
+import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Uptime
@@ -15,8 +15,8 @@ import {Cordova, IonicNativePlugin, Plugin} from '@ionic-native/core';
  * ...
  *
  * this.uptime.getUptime()
- *   .then((uptime: string) => console.log(uptime))
- *   .catch((error: any) => console.log(error));
+ *   .then(uptime => console.log(uptime))
+ *   .catch(error => console.log(error));
  *
  * ```
  */
