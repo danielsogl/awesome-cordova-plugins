@@ -73,7 +73,7 @@ export interface AdMobFreeRewardVideoConfig {
 })
 export class AdMobFreeBanner extends IonicNativePlugin {
   /**
-   * Update config.
+   * Update config
    * @param options
    * @return {AdMobFreeBannerConfig}
    */
@@ -83,7 +83,7 @@ export class AdMobFreeBanner extends IonicNativePlugin {
   }
 
   /**
-   * Hide the banner.
+   * Hide the banner
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
@@ -92,7 +92,7 @@ export class AdMobFreeBanner extends IonicNativePlugin {
   }
 
   /**
-   * Create banner.
+   * Create banner
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
@@ -101,7 +101,7 @@ export class AdMobFreeBanner extends IonicNativePlugin {
   }
 
   /**
-   * Remove the banner.
+   * Remove the banner
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
@@ -110,7 +110,7 @@ export class AdMobFreeBanner extends IonicNativePlugin {
   }
 
   /**
-   * Show the banner.
+   * Show the banner
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
@@ -129,7 +129,7 @@ export class AdMobFreeBanner extends IonicNativePlugin {
 })
 export class AdMobFreeInterstitial extends IonicNativePlugin {
   /**
-   * Update config.
+   * Update config
    * @param options
    * @return {AdMobFreeInterstitialConfig}
    */
@@ -176,8 +176,8 @@ export class AdMobFreeInterstitial extends IonicNativePlugin {
 })
 export class AdMobFreeRewardVideo extends IonicNativePlugin {
   /**
-   * Update config.
-   * @param options
+   * Update config
+   * @param {AdMobFreeRewardVideoConfig} options Admob reward config
    * @return {AdMobFreeRewardVideoConfig}
    */
   @Cordova({ sync: true })

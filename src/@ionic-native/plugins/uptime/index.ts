@@ -15,8 +15,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * ...
  *
  * this.uptime.getUptime()
- *   .then((uptime: any) => console.log(uptime))
- *   .catch((error: any) => console.log(error));
+ *   .then(uptime => console.log(uptime))
+ *   .catch(error => console.log(error));
  *
  * ```
  */
@@ -25,9 +25,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-uptime',
   pluginRef: 'Uptime',
   repo: 'https://github.com/s1lviu/cordova-plugin-uptime',
-  install: '',
-  installVariables: [],
-  platforms: ['Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Uptime extends IonicNativePlugin {

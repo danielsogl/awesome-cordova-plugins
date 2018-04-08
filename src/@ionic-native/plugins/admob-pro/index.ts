@@ -170,7 +170,7 @@ export class AdMobPro extends IonicNativePlugin {
 
   /**
    * Create a banner
-   * @param adIdOrOptions {string | AdMobOptions} Ad ID or Options
+   * @param {string | AdMobOptions} adIdOrOptions Ad ID or Options
    * @returns {Promise<any>} Returns a Promise that resolves when the banner is created
    */
   @Cordova()
@@ -188,7 +188,7 @@ export class AdMobPro extends IonicNativePlugin {
 
   /**
    * Show banner at position
-   * @param position {number} Position. Use `AdMobPro.AD_POSITION` to set values.
+   * @param {number} position Position. Use `AdMobPro.AD_POSITION` to set values.
    */
   @Cordova({
     sync: true
@@ -197,8 +197,8 @@ export class AdMobPro extends IonicNativePlugin {
 
   /**
    * Show banner at custom position
-   * @param x {number} Offset from screen left.
-   * @param y {number} Offset from screen top.
+   * @param {number} x Offset from screen left.
+   * @param {number} y Offset from screen top.
    */
   @Cordova({
     sync: true
@@ -215,7 +215,7 @@ export class AdMobPro extends IonicNativePlugin {
 
   /**
    * Prepare interstitial banner
-   * @param adIdOrOptions {string | AdMobOptions} Ad ID or Options
+   * @param {string | AdMobOptions} adIdOrOptions Ad ID or Options
    * @returns {Promise<any>} Returns a Promise that resolves when interstitial is prepared
    */
   @Cordova()
@@ -233,7 +233,7 @@ export class AdMobPro extends IonicNativePlugin {
 
   /**
    * Prepare a reward video ad
-   * @param adIdOrOptions {string | AdMobOptions} Ad ID or Options
+   * @param {string | AdMobOptions} adIdOrOptions Ad ID or Options
    * @returns {Promise<any>} Returns a Promise that resolves when the ad is prepared
    */
   @Cordova()
@@ -251,7 +251,7 @@ export class AdMobPro extends IonicNativePlugin {
 
   /**
    * Sets the values for configuration and targeting
-   * @param options {AdMobOptions} Options
+   * @param {AdMobOptions} options Options
    * @returns {Promise<any>} Returns a Promise that resolves when the options have been set
    */
   @Cordova()
