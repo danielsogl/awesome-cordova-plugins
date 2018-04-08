@@ -37,14 +37,14 @@ import { Observable } from 'rxjs/Observable';
 export class AppCenterPush extends IonicNativePlugin {
   /**
    * Subscribe to an event
-   * @param  {string} eventname Event name
+   * @param  {string} eventName Event name
    * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,
     clearFunction: 'removeEventListener'
   })
-  addEventListener(eventname: string): Observable<any> {
+  addEventListener(eventName: string): Observable<any> {
     return;
   }
   /**
