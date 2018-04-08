@@ -33,7 +33,7 @@ export class Brightness extends IonicNativePlugin {
   /**
    * Sets the brightness of the display.
    *
-   * @param value {number} Floating number between 0 and 1 in which case 1 means 100% brightness and 0 means 0% brightness.
+   * @param {number} value Floating number between 0 and 1 in which case 1 means 100% brightness and 0 means 0% brightness.
    * @returns {Promise<any>} Returns a Promise that resolves if setting brightness was successful.
    */
   @Cordova()
@@ -54,6 +54,7 @@ export class Brightness extends IonicNativePlugin {
 
   /**
    * Keeps the screen on. Prevents the device from setting the screen to sleep.
+   * @param {boolean} value
    */
   @Cordova()
   setKeepScreenOn(value: boolean): void {}
