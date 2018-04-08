@@ -120,7 +120,7 @@ export class EmailComposer extends IonicNativePlugin {
   /**
    * Verifies if sending emails is supported on the device.
    *
-   * @param [app] {string} App id or uri scheme.
+   * @param {string} [app] App id or uri scheme.
    * @returns {Promise<any>} Resolves if available, rejects if not available
    */
   @CordovaCheck()
@@ -173,8 +173,8 @@ export class EmailComposer extends IonicNativePlugin {
   /**
    * Adds a new mail app alias.
    *
-   * @param alias {string} The alias name
-   * @param packageName {string} The package name
+   * @param {string} alias The alias name
+   * @param {string} packageName The package name
    */
   @Cordova()
   addAlias(alias: string, packageName: string): void {}
@@ -182,8 +182,8 @@ export class EmailComposer extends IonicNativePlugin {
   /**
    * Displays the email composer pre-filled with data.
    *
-   * @param options {EmailComposerOptions} Email
-   * @param [scope] {any} Scope for the promise
+   * @param {EmailComposerOptions} options Email
+   * @param {any} [scope] Scope for the promise
    * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
    */
   @Cordova({
