@@ -33,8 +33,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 export class CallNumber extends IonicNativePlugin {
   /**
    * Calls a phone number
-   * @param numberToCall {string} The phone number to call as a string
-   * @param bypassAppChooser {boolean} Set to true to bypass the app chooser and go directly to dialer
+   * @param {string} numberToCall The phone number to call as a string
+   * @param {boolean} bypassAppChooser Set to true to bypass the app chooser and go directly to dialer
    * @return {Promise<any>}
    */
   @Cordova({
