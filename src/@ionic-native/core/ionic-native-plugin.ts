@@ -2,7 +2,6 @@ import { checkAvailability } from './decorators/common';
 import { get } from './util';
 
 export class IonicNativePlugin {
-
   static pluginName: string;
 
   static pluginRef: string;

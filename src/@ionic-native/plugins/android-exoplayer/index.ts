@@ -138,7 +138,7 @@ export interface AndroidExoPlayerControllerConfig {
     exo_play: string;
 
     /**
-     * Payse button icon.
+     * Pause button icon.
      */
     exo_pause: string;
 
@@ -184,7 +184,7 @@ export interface AndroidExoPlayerControllerConfig {
 export class AndroidExoplayer extends IonicNativePlugin {
   /**
    * Show the player.
-   * @param parameters {AndroidExoPlayerParams} Parameters
+   * @param {AndroidExoPlayerParams} parameters Parameters
    * @return {Observable<AndroidExoplayerState>}
    */
   @Cordova({
@@ -200,8 +200,8 @@ export class AndroidExoplayer extends IonicNativePlugin {
 
   /**
    * Switch stream without disposing of the player.
-   * @param url {string} The url of the new stream.
-   * @param controller {AndroidExoPlayerControllerConfig} Configuration of the controller.
+   * @param {string} url The url of the new stream.
+   * @param {AndroidExoPlayerControllerConfig} controller Configuration of the controller.
    * @return {Promise<void>}
    */
   @Cordova()
@@ -232,7 +232,7 @@ export class AndroidExoplayer extends IonicNativePlugin {
 
   /**
    * Jump to a particular position.
-   * @param milliseconds {number} Position in stream in milliseconds
+   * @param {number} milliseconds Position in stream in milliseconds
    * @return {Promise<void>}
    */
   @Cordova()
@@ -242,7 +242,7 @@ export class AndroidExoplayer extends IonicNativePlugin {
 
   /**
    * Jump to a particular time relative to the current position.
-   * @param milliseconds {number} Time in milliseconds
+   * @param {number} milliseconds Time in milliseconds
    * @return {Promise<void>}
    */
   @Cordova()
@@ -279,7 +279,7 @@ export class AndroidExoplayer extends IonicNativePlugin {
 
   /**
    * Update the controller configuration.
-   * @param controller {AndroidExoPlayerControllerConfig} Configuration of the controller.
+   * @param {AndroidExoPlayerControllerConfig} controller Configuration of the controller.
    * @return {Promise<void>}
    */
   @Cordova()
