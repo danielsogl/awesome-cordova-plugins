@@ -127,11 +127,11 @@ export class ActionSheet extends IonicNativePlugin {
 
   /**
    * Programmatically hide the native ActionSheet
-   * @param  {any} options?
+   * @param  {ActionSheetOptions} [options] Options See table below
    * @returns {Promise<any>} Returns a Promise that resolves when the actionsheet is closed
    */
   @Cordova()
-  hide(options?: any): Promise<any> {
+  hide(options?: ActionSheetOptions): Promise<any> {
     return;
   }
 }
