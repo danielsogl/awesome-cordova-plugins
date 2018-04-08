@@ -51,7 +51,8 @@ export interface AppUpdateOptions {
 export class AppUpdate extends IonicNativePlugin {
   /**
    * Check and update
-   * @param updateUrl {string} update api url
+   * @param {string} updateUrl update api url
+   * @param {AppUpdateOptions} [options] options
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova({
