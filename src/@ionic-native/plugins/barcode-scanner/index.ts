@@ -124,7 +124,7 @@ export class BarcodeScanner extends IonicNativePlugin {
 
   /**
    * Open the barcode scanner.
-   * @param options {BarcodeScannerOptions} Optional options to pass to the scanner
+   * @param {BarcodeScannerOptions} [options] Optional options to pass to the scanner
    * @returns {Promise<any>} Returns a Promise that resolves with scanner data, or rejects with an error.
    */
   @Cordova({
@@ -137,8 +137,8 @@ export class BarcodeScanner extends IonicNativePlugin {
   /**
    * Encodes data into a barcode.
    * NOTE: not well supported on Android
-   * @param type {string} Type of encoding
-   * @param data {any} Data to encode
+   * @param {string} type Type of encoding
+   * @param {any} data Data to encode
    * @returns {Promise<any>}
    */
   @Cordova()
