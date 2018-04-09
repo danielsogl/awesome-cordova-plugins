@@ -39,6 +39,17 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
       ts.createIdentifier('IonicNativePlugin'),
       ...methods.map(m => ts.createIdentifier(m))
     ];
+
+    if (ngcBuild) {
+      importStatement.importClause.namedBindings.elements = importStatement.importClause.namedBindings.elements.map(
+        binding => {
+          binding.name = {
+            text: binding.escapedText
+          };
+          return binding;
+        }
+      );
+    }
   }
 
   return file;
