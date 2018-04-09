@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { checkAvailability, getPlugin } from './common';
 
 function overrideFunction(pluginObj: any, methodName: string): Observable<any> {
-  return new Observable(observer => {
+  return new Observable((observer: Observer<any>) => {
     const availabilityCheck = checkAvailability(pluginObj, methodName);
 
     if (availabilityCheck === true) {

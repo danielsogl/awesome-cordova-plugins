@@ -1,5 +1,5 @@
-import * as _ from 'lodash';
-import { fromEvent, Observable } from 'rxjs';
+import { isUndefined } from 'lodash';
+import { Observable, fromEvent } from 'rxjs';
 
 import { CordovaOptions } from './interfaces';
 
@@ -525,7 +525,7 @@ export function wrapInstance(
             reject
           );
         }
-        if (result && !_.isUndefined(result.then)) {
+        if (result && !isUndefined(result.then)) {
           result.then(resolve, reject);
         } else {
           reject();
