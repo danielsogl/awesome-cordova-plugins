@@ -22,15 +22,15 @@
     "shipit": "npm run build && npm run readmes && npm run npmpub"
   },
   "devDependencies": {
-    "@angular/common": "^5.2.9",
-    "@angular/compiler": "^5.2.9",
-    "@angular/compiler-cli": "^5.2.9",
-    "@angular/core": "^5.2.9",
+    "@angular/common": "6.0.0-rc.1",
+    "@angular/compiler": "6.0.0-rc.1",
+    "@angular/compiler-cli": "6.0.0-rc.1",
+    "@angular/core": "6.0.0-rc.1",
     "@types/cordova": "0.0.34",
     "@types/fs-extra": "^5.0.1",
     "@types/jest": "^22.2.2",
     "@types/lodash": "^4.14.106",
-    "@types/node": "8.0.47",
+    "@types/node": "^9.6.2",
     "@types/rimraf": "^2.0.2",
     "@types/webpack": "^4.1.3",
     "async-promise-queue": "^1.0.4",
@@ -56,10 +56,10 @@
     "minimist": "1.2.0",
     "nodemon": "^1.17.3",
     "rimraf": "^2.6.2",
-    "rxjs": "6.0.0-rc.1",
+    "rxjs": "6.0.0-rc.0",
     "string-replace-webpack-plugin": "^0.1.3",
     "ts-jest": "^22.4.2",
-    "ts-node": "^4.1.0",
+    "ts-node": "^5.0.1",
     "tslint": "^5.9.1",
     "tslint-ionic-rules": "0.0.14",
     "typescript": "~2.7.2",
@@ -67,7 +67,7 @@
     "unminified-webpack-plugin": "^2.0.0",
     "webpack": "^4.5.0",
     "winston": "3.0.0-rc3",
-    "zone.js": "^0.8.26"
+    "zone.js": "latest"
   },
   "jest": {
     "transform": {
