@@ -14,7 +14,7 @@
     "build:ngx": "ts-node -P scripts/tsconfig.json scripts/tasks/build-ngx",
     "build": "npm run build:core && npm run build:esm && npm run build:ngx && npm run build:es5",
     "prebuild": "rm -rf dist",
-    "npmpub": "ts-node -P scripts scripts/tasks/publish",
+    "npmpub": "ts-node -P scripts/tsconfig.json scripts/tasks/publish",
     "lint": "gulp lint",
     "readmes": "gulp readmes",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
