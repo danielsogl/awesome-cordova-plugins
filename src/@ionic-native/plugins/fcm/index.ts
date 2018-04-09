@@ -1,5 +1,6 @@
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 export interface NotificationData {
@@ -63,7 +64,7 @@ export interface NotificationData {
 @Injectable()
 export class FCM extends IonicNativePlugin {
   /**
-   * Get's device's current registration id
+   * Gets device's current registration id
    *
    * @returns {Promise<string>} Returns a Promise that resolves with the registration id token
    */
@@ -97,7 +98,7 @@ export class FCM extends IonicNativePlugin {
   }
 
   /**
-   * Unubscribes you from a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
+   * Unsubscribes you from a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
    *
    * @param {string} topic Topic to be unsubscribed from
    *

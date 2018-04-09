@@ -101,7 +101,7 @@ export class DeviceOrientation extends IonicNativePlugin {
    * Get the device current heading at a regular interval
    *
    * Stop the watch by unsubscribing from the observable
-   * @param {DeviceOrientationCompassOptions} options Options for compass. Frequency and Filter. Optional
+   * @param {DeviceOrientationCompassOptions} [options] Options for compass. Frequency and Filter. Optional
    * @returns {Observable<DeviceOrientationCompassHeading>} Returns an observable that contains the compass heading
    */
   @Cordova({

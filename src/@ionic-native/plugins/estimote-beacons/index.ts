@@ -180,10 +180,10 @@ export class EstimoteBeacons extends IonicNativePlugin {
    *   EstimoteBeacons.stopAdvertisingAsBeacon().then((result) => { console.log('Beacon stopped'); });
    * }, 5000);
    * ```
-   * @param uuid {string} UUID string the beacon should advertise (mandatory).
-   * @param major {number} Major value to advertise (mandatory).
-   * @param minor {number} Minor value to advertise (mandatory).
-   * @param regionId {string} Identifier of the region used to advertise (mandatory).
+   * @param {string} uuid UUID string the beacon should advertise (mandatory).
+   * @param {number} major Major value to advertise (mandatory).
+   * @param {number} minor Minor value to advertise (mandatory).
+   * @param {string} regionId Identifier of the region used to advertise (mandatory).
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -225,7 +225,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * ```
    * EstimoteBeacons.enableAnalytics(true).then(() => { console.log('Analytics enabled'); });
    * ```
-   * @param enable {number} Boolean value to turn analytics on or off (mandatory).
+   * @param {number} enable Boolean value to turn analytics on or off (mandatory).
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -274,8 +274,8 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * ```
    * EstimoteBeacons.setupAppIDAndAppToken('MyAppID', 'MyAppToken').then(() => { console.log('AppID and AppToken configured!'); });
    * ```
-   * @param appID {string} The App ID (mandatory).
-   * @param appToken {string} The App Token (mandatory).
+   * @param {string} appID The App ID (mandatory).
+   * @param {string} appToken The App Token (mandatory).
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -338,7 +338,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    *   EstimoteBeacons.stopRangingBeaconsInRegion(region).then(() => { console.log('scan stopped'); });
    * }, 5000);
    * ```
-   * @param region {EstimoteBeaconRegion} Dictionary with region properties (mandatory).
+   * @param {EstimoteBeaconRegion} region Dictionary with region properties (mandatory).
    * @returns {Observable<any>} Returns an Observable that notifies of each beacon discovered.
    */
   @Cordova({
@@ -363,7 +363,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    *   EstimoteBeacons.stopRangingBeaconsInRegion(region).then(() => { console.log('scan stopped'); });
    * }, 5000);
    * ```
-   * @param region {EstimoteBeaconRegion} Dictionary with region properties (mandatory).
+   * @param {EstimoteBeaconRegion} region Dictionary with region properties (mandatory).
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -373,7 +373,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
 
   /**
    * Start ranging secure beacons. Available on iOS.
-   * This function has the same parameters/behaviour as
+   * This function has the same parameters/behavior as
    * {@link EstimoteBeacons.startRangingBeaconsInRegion}.
    * To use secure beacons set the App ID and App Token using
    * {@link EstimoteBeacons.setupAppIDAndAppToken}.
@@ -392,7 +392,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
 
   /**
    * Stop ranging secure beacons. Available on iOS.
-   * This function has the same parameters/behaviour as
+   * This function has the same parameters/behavior as
    * {@link EstimoteBeacons.stopRangingBeaconsInRegion}.
    * @returns {Promise<any>}
    */
@@ -411,8 +411,8 @@ export class EstimoteBeacons extends IonicNativePlugin {
    *   console.log('Region state: ' + JSON.stringify(state));
    * });
    * ```
-   * @param region {EstimoteBeaconRegion} Dictionary with region properties (mandatory).
-   * @param [notifyEntryStateOnDisplay=false] {boolean} Set to true to detect if you
+   * @param {EstimoteBeaconRegion} region Dictionary with region properties (mandatory).
+   * @param {boolean} [notifyEntryStateOnDisplay] Set to true to detect if you
    * are inside a region when the user turns display on, see
    * {@link https://developer.apple.com/library/prerelease/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/instp/CLBeaconRegion/notifyEntryStateOnDisplay|iOS documentation}
    * for further details (iOS only).
@@ -440,7 +440,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * let region: EstimoteBeaconRegion = {} // Empty region matches all beacons.
    * EstimoteBeacons.stopMonitoringForRegion(region).then(() => { console.log('monitoring is stopped'); });
    * ```
-   * @param region {EstimoteBeaconRegion} Dictionary with region properties (mandatory).
+   * @param {EstimoteBeaconRegion} region Dictionary with region properties (mandatory).
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -450,13 +450,13 @@ export class EstimoteBeacons extends IonicNativePlugin {
 
   /**
    * Start monitoring secure beacons. Available on iOS.
-   * This function has the same parameters/behaviour as
+   * This function has the same parameters/behavior as
    * EstimoteBeacons.startMonitoringForRegion.
    * To use secure beacons set the App ID and App Token using
    * {@link EstimoteBeacons.setupAppIDAndAppToken}.
    * @see {@link EstimoteBeacons.startMonitoringForRegion}
-   * @param region {EstimoteBeaconRegion} Region
-   * @param notifyEntryStateOnDisplay {boolean}
+   * @param {EstimoteBeaconRegion} region Region
+   * @param {boolean} notifyEntryStateOnDisplay
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -499,7 +499,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    *     minor: 1
    *   });
    * ```
-   * @param beacon {Beacon} Beacon to connect to.
+   * @param {Beacon} beacon Beacon to connect to.
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -529,7 +529,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * // Example that writes constant ESTIMOTE_PROXIMITY_UUID
    * EstimoteBeacons.writeConnectedProximityUUID(ESTIMOTE_PROXIMITY_UUID);
    *
-   * @param uuid {string} String to write as new UUID
+   * @param {string} uuid String to write as new UUID
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -545,7 +545,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * // Example that writes 1
    * EstimoteBeacons.writeConnectedMajor(1);
    *
-   * @param major {number} number to write as new major
+   * @param {number} major number to write as new major
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -561,7 +561,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * // Example that writes 1
    * EstimoteBeacons.writeConnectedMinor(1);
    *
-   * @param minor {number} number to write as new minor
+   * @param {number} minor number to write as new minor
    * @returns {Promise<any>}
    */
   @Cordova()

@@ -74,7 +74,7 @@ export class BatteryStatus extends IonicNativePlugin {
   }
 
   /**
-   * Watch when the battery level goes to critial
+   * Watch when the battery level goes to critical
    * @returns {Observable<BatteryStatusResponse>} Returns an observable that pushes a status object
    */
   @Cordova({

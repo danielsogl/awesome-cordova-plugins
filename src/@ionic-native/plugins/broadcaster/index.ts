@@ -34,7 +34,7 @@ import { Observable } from 'rxjs';
 export class Broadcaster extends IonicNativePlugin {
   /**
    * This function listen to an event sent from the native code
-   * @param eventName {string}
+   * @param {string} eventName
    * @return {Observable<any>} Returns an observable to watch when an event is received
    */
   @Cordova({
@@ -48,8 +48,8 @@ export class Broadcaster extends IonicNativePlugin {
 
   /**
    * This function sends data to the native code
-   * @param eventName {string}
-   * @param eventData {any}
+   * @param {string} eventName
+   * @param {any} eventData
    * @return {Promise<any>} Returns a promise that resolves when an event is successfully fired
    */
   @Cordova()

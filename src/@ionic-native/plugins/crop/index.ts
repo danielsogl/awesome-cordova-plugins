@@ -38,8 +38,8 @@ export interface CropOptions {
 export class Crop extends IonicNativePlugin {
   /**
    * Crops an image
-   * @param pathToImage
-   * @param options
+   * @param {string} pathToImage
+   * @param {CropOptions} [options]
    * @returns {Promise<string>} Returns a promise that resolves with the new image path, or rejects if failed to crop.
    */
   @Cordova({

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 export interface DialogsPromptCallback {
-
   /**
    * The index of the pressed button. (Number) Note that the index uses one-based indexing, so the value is 1, 2, 3, etc.
    */
@@ -13,9 +11,7 @@ export interface DialogsPromptCallback {
    * The text entered in the prompt dialog box. (String)
    */
   input1: string;
-
 }
-
 
 /**
  * @name Dialogs
@@ -50,12 +46,11 @@ export interface DialogsPromptCallback {
 })
 @Injectable()
 export class Dialogs extends IonicNativePlugin {
-
   /**
    * Shows a custom alert or dialog box.
    * @param {string} message Dialog message.
-   * @param {string} title Dialog title. (Optional, defaults to Alert)
-   * @param {string} buttonName Button name. (Optional, defaults to OK)
+   * @param {string} [title] Dialog title. (Optional, defaults to Alert)
+   * @param {string} [buttonName] Button name. (Optional, defaults to OK)
    * @returns {Promise<any>} Returns a blank promise once the user has dismissed the alert.
    */
   @Cordova({
@@ -69,34 +64,42 @@ export class Dialogs extends IonicNativePlugin {
   /**
    * Displays a customizable confirmation dialog box.
    * @param {string} message Dialog message.
-   * @param {string} title Dialog title. (Optional, defaults to Confirm)
-   * @param {Array<string>} buttonLabels Array of strings specifying button labels. (Optional, defaults to [OK,Cancel])
+   * @param {string} [title] Dialog title. (Optional, defaults to Confirm)
+   * @param {Array<string>} [buttonLabels] Array of strings specifying button labels. (Optional, defaults to [OK,Cancel])
    * @returns {Promise<number>} Returns a promise that resolves the button index that was clicked, or 0 if the user has dismissed the dialog by clicking outside the dialog box. Note that the index use one-based indexing.
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 4
   })
-  confirm(message: string, title?: string, buttonLabels?: string[]): Promise<number> {
+  confirm(
+    message: string,
+    title?: string,
+    buttonLabels?: string[]
+  ): Promise<number> {
     return;
   }
 
   /**
    * Displays a native dialog box that is more customizable than the browser's prompt function.
-   * @param {string} message Dialog message.
-   * @param {string} title Dialog title. (Optional, defaults to Prompt)
-   * @param {Array<string>} buttonLabels  Array of strings specifying button labels. (Optional, defaults to ["OK","Cancel"])
-   * @param {string} defaultText Default textbox input value.  (Optional, Default: empty string)
+   * @param {string} [message] Dialog message.
+   * @param {string} [title] Dialog title. (Optional, defaults to Prompt)
+   * @param {Array<string>} [buttonLabels]  Array of strings specifying button labels. (Optional, defaults to ["OK","Cancel"])
+   * @param {string} [defaultText] Default text box input value.  (Optional, Default: empty string)
    * @returns {Promise<DialogsPromptCallback>} Returns a promise that resolves an object with the button index clicked and the text entered
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 5
   })
-  prompt(message?: string, title?: string, buttonLabels?: string[], defaultText?: string): Promise<DialogsPromptCallback> {
+  prompt(
+    message?: string,
+    title?: string,
+    buttonLabels?: string[],
+    defaultText?: string
+  ): Promise<DialogsPromptCallback> {
     return;
   }
-
 
   /**
    * The device plays a beep sound.
@@ -105,7 +108,5 @@ export class Dialogs extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  beep(times: number): void {
-  }
-
+  beep(times: number): void {}
 }

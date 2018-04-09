@@ -22,7 +22,6 @@ namespace Http {
 
   export interface Requester {
     request(verb: Verb, url: string, callback: Callback<Response>): void;
-
     request(
       verb: Verb,
       url: string,
@@ -160,6 +159,12 @@ interface NativeUpdateNotification {
 export interface Callback<T> {
   (error: Error, parameter: T): void;
 }
+export interface SuccessCallback<T> {
+  (result?: T): void;
+}
+export interface ErrorCallback {
+  (error?: Error): void;
+}
 
 export interface SuccessCallback<T> {
   (result?: T): void;
@@ -184,12 +189,10 @@ declare class AcquisitionStatus {
 
 declare class AcquisitionManager {
   constructor(httpRequester: Http.Requester, configuration: Configuration);
-
   public queryUpdateWithCurrentPackage(
     currentPackage: IPackage,
     callback?: Callback<IRemotePackage | NativeUpdateNotification>
   ): void;
-
   public reportStatusDeploy(
     pkg?: IPackage,
     status?: string,
@@ -197,7 +200,6 @@ declare class AcquisitionManager {
     previousDeploymentKey?: string,
     callback?: Callback<void>
   ): void;
-
   public reportStatusDownload(pkg: IPackage, callback?: Callback<void>): void;
 }
 

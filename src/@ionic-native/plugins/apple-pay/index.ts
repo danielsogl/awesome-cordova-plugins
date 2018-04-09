@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
@@ -65,7 +68,6 @@ export interface IOrderItem {
   label: string;
   amount: number;
 }
-
 export interface IShippingMethod {
   identifier: string;
   label: string;
@@ -214,9 +216,9 @@ export class ApplePay extends IonicNativePlugin {
    * any shipping contact selection event or else the user will not be able
    * to complete a transaction on the pay sheet. Do not call without
    * subscribing to shipping contact selection events first
-   * @returns {Promise}
    *
-   * @param {Object} including `items` and `shippingMethods` properties.
+   * @param {IOrderItemsAndShippingMethods} list `items` and `shippingMethods` properties.
+   * @returns {Promise<IUpdateItemsAndShippingStatus>}
    *
    * @usage
    * this.applePay.startListeningForShippingContactSelection().pluck('shippingAddressState').subscribe(shippingAddressState => {
@@ -254,9 +256,9 @@ export class ApplePay extends IonicNativePlugin {
 
   /**
    * Request a payment with Apple Pay
-   * @return {Promise<IPaymentResponse>} Returns a promise that resolves when something happens
    *
-   * @param order {IOrder}
+   * @param {IOrder} order
+   * @return {Promise<IPaymentResponse>} Returns a promise that resolves when something happens
    *
    * @usage
    * try {
@@ -331,11 +333,11 @@ export class ApplePay extends IonicNativePlugin {
 
   /**
    * Once the makePaymentRequest has been resolved successfully, the device will be waiting for a completion event.
-   * This means, that the application must proceed with the token authorisation and return a success, failure,
+   * This means, that the application must proceed with the token authorization and return a success, failure,
    * or other validation error. Once this has been passed back, the Apple Pay sheet will be dismissed via an animation.
-   * @return {Promise<ICompleteTransaction>} Returns a promise that resolves after confirmation of payment authorization completion
    *
-   * @param complete {ITransactionStatus}
+   * @param {ITransactionStatus} complete
+   * @return {Promise<ICompleteTransaction>} Returns a promise that resolves after confirmation of payment authorization completion
    *
    */
   @Cordova({

@@ -232,7 +232,7 @@ export class BLE extends IonicNativePlugin {
   /**
    * Scans for BLE devices. This function operates similarly to the `startScan` function, but allows you to specify extra options (like allowing duplicate device reports).
    * @param {string[]} services  List of service UUIDs to discover, or `[]` to find all devices
-   * @param options {any}
+   * @param {BLEScanOptions} options Options
    * @returns {Observable<any>} Returns an Observable that notifies of each peripheral discovered.
    */
   @Cordova({
@@ -259,7 +259,7 @@ export class BLE extends IonicNativePlugin {
    *   BLE.stopScan().then(() => { console.log('scan stopped'); });
    * }, 5000);
    * ```
-   * @return returns a Promise.
+   * @returns {Promise<any>}
    */
   @Cordova()
   stopScan(): Promise<any> {
@@ -277,8 +277,8 @@ export class BLE extends IonicNativePlugin {
    *     console.log('disconnected');
    *   });
    * ```
-   * @param deviceId {string}  UUID or MAC address of the peripheral
-   * @return Returns an Observable that notifies of connect/disconnect.
+   * @param {string} deviceId UUID or MAC address of the peripheral
+   * @return {Observable<any>} Returns an Observable that notifies of connect/disconnect.
    */
   @Cordova({
     observable: true,
@@ -297,8 +297,8 @@ export class BLE extends IonicNativePlugin {
    *     console.log('Disconnected');
    *   });
    * ```
-   * @param deviceId {string}  UUID or MAC address of the peripheral
-   * @return Returns a Promise
+   * @param {string} deviceId  UUID or MAC address of the peripheral
+   * @return {Promise<any>} Returns a Promise
    */
   @Cordova()
   disconnect(deviceId: string): Promise<any> {
@@ -311,7 +311,7 @@ export class BLE extends IonicNativePlugin {
    * @param {string} deviceId  UUID or MAC address of the peripheral
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
-   * @return Returns a Promise
+   * @return {Promise<any>} Returns a Promise
    */
   @Cordova()
   read(
@@ -348,7 +348,7 @@ export class BLE extends IonicNativePlugin {
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
    * @param {ArrayBuffer} value  Data to write to the characteristic, as an ArrayBuffer.
-   * @return Returns a Promise
+   * @return {Promise<any>} Returns a Promise
    */
   @Cordova()
   write(
@@ -367,7 +367,7 @@ export class BLE extends IonicNativePlugin {
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
    * @param {ArrayBuffer} value  Data to write to the characteristic, as an ArrayBuffer.
-   * @return Returns a Promise
+   * @return {Promise<any>} Returns a Promise
    */
   @Cordova()
   writeWithoutResponse(
@@ -392,7 +392,7 @@ export class BLE extends IonicNativePlugin {
    * @param {string} deviceId  UUID or MAC address of the peripheral
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
-   * @return Returns an Observable that notifies of characteristic changes.
+   * @return {Observable<any>} Returns an Observable that notifies of characteristic changes.
    */
   @Cordova({
     observable: true,
@@ -462,7 +462,7 @@ export class BLE extends IonicNativePlugin {
    * });
    * ```
    *
-   * @return Returns an Observable that notifies when the Bluetooth is enabled or disabled on the device.
+   * @return {Observable<any>} Returns an Observable that notifies when the Bluetooth is enabled or disabled on the device.
    */
   @Cordova({
     observable: true,

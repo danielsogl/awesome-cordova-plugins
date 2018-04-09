@@ -182,7 +182,7 @@ export class CardIO extends IonicNativePlugin {
 
   /**
    * Scan a credit card with card.io.
-   * @param {CardIOOptions} options Options for configuring the plugin
+   * @param {CardIOOptions} [options] Options for configuring the plugin
    * @returns {Promise<any>}
    */
   @Cordova()

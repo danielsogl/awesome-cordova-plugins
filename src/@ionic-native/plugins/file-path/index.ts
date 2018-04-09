@@ -32,15 +32,13 @@ declare const window: any;
 })
 @Injectable()
 export class FilePath extends IonicNativePlugin {
-
   /**
    * Resolve native path for given content URL/path.
-   * @param {String} path  Content URL/path.
+   * @param {string} path  Content URL/path.
    * @returns {Promise<string>}
    */
   @Cordova()
   resolveNativePath(path: string): Promise<string> {
     return;
   }
-
 }

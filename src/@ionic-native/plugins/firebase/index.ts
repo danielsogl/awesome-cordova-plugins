@@ -87,7 +87,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Set icon badge number. Set to 0 to clear the badge.
-   * @param badgeNumber {number}
+   * @param {number} badgeNumber
    * @return {Promise<any>}
    */
   @Cordova()
@@ -106,7 +106,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Subscribe to a topic
-   * @param topic {string}
+   * @param {string} topic
    * @return {Promise<any>}
    */
   @Cordova()
@@ -116,7 +116,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Unsubscribe from a topic
-   * @param topic {string}
+   * @param {string} topic
    * @return {Promise<any>}
    */
   @Cordova()
@@ -135,8 +135,8 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Log an event using Analytics
-   * @param type {string}
-   * @param data {Object}
+   * @param {string} type
+   * @param {Object} data
    * @return {Promise<any>}
    */
   @Cordova()
@@ -146,7 +146,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Log an Error using FirebaseCrash
-   * @param message {string}
+   * @param {string} message
    * @return {Promise<any>}
    */
   @Cordova()
@@ -156,7 +156,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Set the name of the current screen in Analytics
-   * @param name {string} Screen name
+   * @param {string} name Screen name
    * @return {Promise<any>}
    */
   @Cordova()
@@ -166,7 +166,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Set a user id for use in Analytics
-   * @param userId {string}
+   * @param {string} userId
    * @return {Promise<any>}
    */
   @Cordova()
@@ -176,8 +176,8 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Set a user property for use in Analytics
-   * @param name {string}
-   * @param value {string}
+   * @param {string} name
+   * @param {string} value
    * @return {Promise<any>}
    */
   @Cordova()
@@ -187,7 +187,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Fetch Remote Config parameter values for your app
-   * @param cacheExpirationSeconds {number}
+   * @param {number} [cacheExpirationSeconds]
    * @return {Promise<any>}
    */
   @Cordova({
@@ -209,8 +209,8 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Retrieve a Remote Config value
-   * @param key {string}
-   * @param [namespace] {string}
+   * @param {string} key
+   * @param {string} [namespace]
    * @return {Promise<any>}
    */
   @Cordova({
@@ -223,8 +223,8 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Retrieve a Remote Config byte array
-   * @param key {string}
-   * @param [namespace] {string}
+   * @param {string} key
+   * @param {string} [namespace]
    * @return {Promise<any>}
    */
   @Cordova({
@@ -247,7 +247,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Change the settings for the FirebaseRemoteConfig object's operations
-   * @param settings {Object}
+   * @param {Object} settings
    * @return {Promise<any>}
    */
   @Cordova({
@@ -259,8 +259,8 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Set defaults in the Remote Config
-   * @param defaults {Object}
-   * @param [namespace] {string}
+   * @param {Object} defaults
+   * @param {string} [namespace]
    * @return {Promise<any>}
    */
   @Cordova({
@@ -272,7 +272,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
-   * @param phoneNumber {string}
+   * @param {string} phoneNumber
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -284,8 +284,8 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
-   * @param phoneNumber {string} the phone number, including '+' and country code
-   * @param timeoutDuration {number} the timeout in sec - no more SMS will be sent to this number until this timeout expires
+   * @param {string} phoneNumber The phone number, including '+' and country code
+   * @param {number} timeoutDuration The timeout in sec - no more SMS will be sent to this number until this timeout expires
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -302,7 +302,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Allows the user to enable/disable analytics collection
-   * @param enabled {booleab} value to set collection
+   * @param {boolean} enabled value to set collection
    * @returns {Promise<any>}
    */
   @Cordova()

@@ -32,14 +32,13 @@ import { Observable } from 'rxjs';
 })
 @Injectable()
 export class FTP extends IonicNativePlugin {
-
   /**
    * Connect to one ftp server.
    *
    * Just need to init the connection once. If success, you can do any ftp actions later.
-   * @param hostname {string} The ftp server url. Like ip without protocol prefix, e.g. "192.168.1.1".
-   * @param username {string} The ftp login username. If it and `password` are all blank/undefined, the default username "anonymous" is used.
-   * @param password {string} The ftp login password. If it and `username` are all blank/undefined, the default password "anonymous@" is used.
+   * @param {string} hostname The ftp server url. Like ip without protocol prefix, e.g. "192.168.1.1".
+   * @param {string} username The ftp login username. If it and `password` are all blank/undefined, the default username "anonymous" is used.
+   * @param {string} password The ftp login password. If it and `username` are all blank/undefined, the default password "anonymous@" is used.
    * @return {Promise<any>} The success callback. Notice: For iOS, if triggered, means `init` success, but NOT means the later action, e.g. `ls`... `download` will success!
    */
   @Cordova()
@@ -58,7 +57,7 @@ export class FTP extends IonicNativePlugin {
    * - size: file size in bytes.
    * - modifiedDate: modified date of this file. date format is `yyyy-MM-dd HH:mm:ss zzz`, e.g "2015-12-01 20:45:00 GMT+8".
    *
-   * @param path {string} The path on the ftp server. e.g. "/adf/123/".
+   * @param {string} path The path on the ftp server. e.g. "/adf/123/".
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -69,7 +68,7 @@ export class FTP extends IonicNativePlugin {
   /**
    * Create one directory on the ftp server.
    *
-   * @param path {string} The path on the ftp server. e.g. "/adf/123/".
+   * @param {string} path The path on the ftp server. e.g. "/adf/123/".
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -82,7 +81,7 @@ export class FTP extends IonicNativePlugin {
    *
    * Tip: As many ftp server could not rm dir when it's not empty, so rm all files under the dir at first is recommended.
    *
-   * @param path {string} The file (with full path) you want to delete. e.g. "/adf/123/newDir/myFile".
+   * @param {string} path The file (with full path) you want to delete. e.g. "/adf/123/newDir/myFile".
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -93,7 +92,7 @@ export class FTP extends IonicNativePlugin {
   /**
    * Delete one file on the ftp server.
    *
-   * @param file {string} The file (with full path) you want to delete. e.g. "/adf/123/newDir/myFile".
+   * @param {string} file The file (with full path) you want to delete. e.g. "/adf/123/newDir/myFile".
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -104,8 +103,8 @@ export class FTP extends IonicNativePlugin {
   /**
    * Upload one local file to the ftp server.
    *
-   * @param localFile {string} The file (with full path) you want to upload. e.g. "/local/path/to/localFile".
-   * @param remoteFile {string} The file (with full path) you want to located on the ftp server. e.g. "/adf/123/newDir/remoteFile".
+   * @param {string} localFile The file (with full path) you want to upload. e.g. "/local/path/to/localFile".
+   * @param {string} remoteFile The file (with full path) you want to located on the ftp server. e.g. "/adf/123/newDir/remoteFile".
    * @return {Observable<any>} Returns an observable.
    *                        It will be triggered many times according the file's size.
    *                        The arg `0`, `0.1xx`, `0.2xx` ... `1` means the upload percent. When it reach `1`, means success.
@@ -120,8 +119,8 @@ export class FTP extends IonicNativePlugin {
   /**
    * Download one remote file on the ftp server to local path.
    *
-   * @param localFile {string} The file (with full path) you want to upload. e.g. "/local/path/to/localFile".
-   * @param remoteFile {string} The file (with full path) you want to located on the ftp server. e.g. "/adf/123/newDir/remoteFile".
+   * @param {string} localFile The file (with full path) you want to upload. e.g. "/local/path/to/localFile".
+   * @param {string} remoteFile The file (with full path) you want to located on the ftp server. e.g. "/adf/123/newDir/remoteFile".
    * @return {Observable<any>} Returns an observable.
    *                        It will be triggered many times according the file's size.
    *                        The arg `0`, `0.1xx`, `0.2xx` ... `1` means the upload percent. When it reach `1`, means success.
@@ -152,5 +151,4 @@ export class FTP extends IonicNativePlugin {
   disconnect(): Promise<any> {
     return;
   }
-
 }

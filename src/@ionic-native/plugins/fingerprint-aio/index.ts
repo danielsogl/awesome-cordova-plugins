@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 export interface FingerprintOptions {
   /**
    * Key for platform keychain
@@ -66,7 +65,6 @@ export interface FingerprintOptions {
 })
 @Injectable()
 export class FingerprintAIO extends IonicNativePlugin {
-
   /**
    * Check if fingerprint authentication is available
    * @return {Promise<any>} Returns a promise with result
@@ -78,12 +76,11 @@ export class FingerprintAIO extends IonicNativePlugin {
 
   /**
    * Show authentication dialogue
-   * @param options {FingerprintOptions} options for platform specific fingerprint API
-   * @return {Promise<any>} Returns a promise that resolves when authentication was successfull
+   * @param {FingerprintOptions} options Options for platform specific fingerprint API
+   * @return {Promise<any>} Returns a promise that resolves when authentication was successful
    */
   @Cordova()
   show(options: FingerprintOptions): Promise<any> {
     return;
   }
-
 }

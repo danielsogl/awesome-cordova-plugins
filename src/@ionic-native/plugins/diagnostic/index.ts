@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import {
+  Cordova,
+  CordovaProperty,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 
 /**
  * @name Diagnostic
@@ -43,7 +48,6 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-nati
 })
 @Injectable()
 export class Diagnostic extends IonicNativePlugin {
-
   permission = {
     READ_CALENDAR: 'READ_CALENDAR',
     WRITE_CALENDAR: 'WRITE_CALENDAR',
@@ -92,9 +96,23 @@ export class Diagnostic extends IonicNativePlugin {
     CONTACTS: ['READ_CONTACTS', 'WRITE_CONTACTS', 'GET_ACCOUNTS'],
     LOCATION: ['ACCESS_FINE_LOCATION', 'ACCESS_COARSE_LOCATION'],
     MICROPHONE: ['RECORD_AUDIO'],
-    PHONE: ['READ_PHONE_STATE', 'CALL_PHONE', 'ADD_VOICEMAIL', 'USE_SIP', 'PROCESS_OUTGOING_CALLS', 'READ_CALL_LOG', 'WRITE_CALL_LOG'],
+    PHONE: [
+      'READ_PHONE_STATE',
+      'CALL_PHONE',
+      'ADD_VOICEMAIL',
+      'USE_SIP',
+      'PROCESS_OUTGOING_CALLS',
+      'READ_CALL_LOG',
+      'WRITE_CALL_LOG'
+    ],
     SENSORS: ['BODY_SENSORS'],
-    SMS: ['SEND_SMS', 'RECEIVE_SMS', 'READ_SMS', 'RECEIVE_WAP_PUSH', 'RECEIVE_MMS'],
+    SMS: [
+      'SEND_SMS',
+      'RECEIVE_SMS',
+      'READ_SMS',
+      'RECEIVE_WAP_PUSH',
+      'RECEIVE_MMS'
+    ],
     STORAGE: ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']
   };
 
@@ -181,29 +199,25 @@ export class Diagnostic extends IonicNativePlugin {
    * Displays the device location settings to allow user to enable location services/change location mode.
    */
   @Cordova({ sync: true, platforms: ['Android', 'Windows 10', 'iOS'] })
-  switchToLocationSettings(): void {
-  }
+  switchToLocationSettings(): void {}
 
   /**
    * Displays mobile settings to allow user to enable mobile data.
    */
   @Cordova({ sync: true, platforms: ['Android', 'Windows 10'] })
-  switchToMobileDataSettings(): void {
-  }
+  switchToMobileDataSettings(): void {}
 
   /**
    * Displays Bluetooth settings to allow user to enable Bluetooth.
    */
   @Cordova({ sync: true, platforms: ['Android', 'Windows 10'] })
-  switchToBluetoothSettings(): void {
-  }
+  switchToBluetoothSettings(): void {}
 
   /**
    * Displays WiFi settings to allow user to enable WiFi.
    */
   @Cordova({ sync: true, platforms: ['Android', 'Windows 10'] })
-  switchToWifiSettings(): void {
-  }
+  switchToWifiSettings(): void {}
 
   /**
    * Returns true if the WiFi setting is set to enabled, and is the same as `isWifiAvailable()`
@@ -217,7 +231,7 @@ export class Diagnostic extends IonicNativePlugin {
   /**
    * Enables/disables WiFi on the device.
    * Requires `ACCESS_WIFI_STATE` and `CHANGE_WIFI_STATE` permissions on Android
-   * @param state {boolean}
+   * @param {boolean} state
    * @returns {Promise<any>}
    */
   @Cordova({ callbackOrder: 'reverse', platforms: ['Android', 'Windows 10'] })
@@ -228,14 +242,13 @@ export class Diagnostic extends IonicNativePlugin {
   /**
    * Enables/disables Bluetooth on the device.
    * Requires `BLUETOOTH` and `BLUETOOTH_ADMIN` permissions on Android
-   * @param state {boolean}
+   * @param {boolean} state
    * @returns {Promise<any>}
    */
   @Cordova({ callbackOrder: 'reverse', platforms: ['Android', 'Windows 10'] })
   setBluetoothState(state: boolean): Promise<any> {
     return;
   }
-
 
   // ANDROID AND IOS ONLY
 
@@ -448,26 +461,23 @@ export class Diagnostic extends IonicNativePlugin {
 
   /**
    * Registers a function to be called when a change in Bluetooth state occurs.
-   * @param handler
+   * @param {Function} handler
    */
   @Cordova({ platforms: ['Android', 'iOS'], sync: true })
-  registerBluetoothStateChangeHandler(handler: Function): void {
-  }
+  registerBluetoothStateChangeHandler(handler: Function): void {}
 
   /**
    * Registers a function to be called when a change in Location state occurs.
-   * @param handler
+   * @param {Function} handler
    */
   @Cordova({ platforms: ['Android', 'iOS'], sync: true })
-  registerLocationStateChangeHandler(handler: Function): void {
-  }
-
+  registerLocationStateChangeHandler(handler: Function): void {}
 
   // ANDROID ONLY
 
   /**
    * Checks if high-accuracy locations are available to the app from GPS hardware.
-   * Returns true if Location mode is enabled and is set to "Device only" or "High accuracy" AND if the app is authorised to use location.
+   * Returns true if Location mode is enabled and is set to "Device only" or "High accuracy" AND if the app is authorized to use location.
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -489,7 +499,7 @@ export class Diagnostic extends IonicNativePlugin {
 
   /**
    * Checks if low-accuracy locations are available to the app from network triangulation/WiFi access points.
-   * Returns true if Location mode is enabled and is set to "Battery saving" or "High accuracy" AND if the app is authorised to use location.
+   * Returns true if Location mode is enabled and is set to "Battery saving" or "High accuracy" AND if the app is authorized to use location.
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -519,7 +529,7 @@ export class Diagnostic extends IonicNativePlugin {
   }
 
   /**
-   * Returns the current authorisation status for a given permission.
+   * Returns the current authorization status for a given permission.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
    * @param permission
    * @returns {Promise<any>}
@@ -530,9 +540,9 @@ export class Diagnostic extends IonicNativePlugin {
   }
 
   /**
-   * Returns the current authorisation status for multiple permissions.
+   * Returns the current authorization status for multiple permissions.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
-   * @param permissions
+   * @param {any[]} permissions
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'], callbackOrder: 'reverse' })
@@ -541,7 +551,7 @@ export class Diagnostic extends IonicNativePlugin {
   }
 
   /**
-   * Requests app to be granted authorisation for a runtime permission.
+   * Requests app to be granted authorization for a runtime permission.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will have no effect as the permissions are already granted at installation time.
    * @param permission
    * @returns {Promise<any>}
@@ -552,9 +562,9 @@ export class Diagnostic extends IonicNativePlugin {
   }
 
   /**
-   * Requests app to be granted authorisation for multiple runtime permissions.
+   * Requests app to be granted authorization for multiple runtime permissions.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
-   * @param permissions
+   * @param {any[]} permissions
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'], callbackOrder: 'reverse' })
@@ -576,8 +586,8 @@ export class Diagnostic extends IonicNativePlugin {
 
   /**
    * Registers a function to be called when a runtime permission request has completed.
-   * Pass in a falsey value to de-register the currently registered function.
-   * @param handler {Function}
+   * Pass in a falsy value to de-register the currently registered function.
+   * @param {Function} handler
    */
   @Cordova({ sync: true })
   registerPermissionRequestCompleteHandler(handler: Function): void {
@@ -670,8 +680,7 @@ export class Diagnostic extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  switchToWirelessSettings(): void {
-  }
+  switchToWirelessSettings(): void {}
 
   /**
    * Displays NFC settings to allow user to enable NFC.
@@ -680,8 +689,7 @@ export class Diagnostic extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  switchToNFCSettings(): void {
-  }
+  switchToNFCSettings(): void {}
 
   /**
    * Checks if NFC hardware is present on device.
@@ -713,16 +721,15 @@ export class Diagnostic extends IonicNativePlugin {
   }
 
   /**
-   * Registers a function to be called when a change in NFC state occurs. Pass in a falsey value to de-register the currently registered function.
-   * @param hander {Function} callback function to be called when NFC state changes
+   * Registers a function to be called when a change in NFC state occurs. Pass in a falsy value to de-register the currently registered function.
+   * @param {Function} hander callback function to be called when NFC state changes
    * @returns {Promise<any>}
    */
   @Cordova({
     platforms: ['Android'],
     sync: true
   })
-  registerNFCStateChangeHandler(handler: Function): void {
-  }
+  registerNFCStateChangeHandler(handler: Function): void {}
 
   /**
    * Checks if the device data roaming setting is enabled.
@@ -920,5 +927,4 @@ export class Diagnostic extends IonicNativePlugin {
   getMotionAuthorizationStatus(): Promise<string> {
     return;
   }
-
 }

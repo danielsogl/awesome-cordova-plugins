@@ -16,7 +16,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * this.fileOpener.open('path/to/file.pdf', 'application/pdf')
  *   .then(() => console.log('File is opened'))
- *   .catch(e => console.log('Error openening file', e));
+ *   .catch(e => console.log('Error opening file', e));
  *
  * ```
  */
@@ -29,11 +29,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class FileOpener extends IonicNativePlugin {
-
   /**
    * Open an file
-   * @param filePath {string} File Path
-   * @param fileMIMEType {string} File MIME Type
+   * @param {string} filePath File Path
+   * @param {string} fileMIMEType File MIME Type
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -47,7 +46,7 @@ export class FileOpener extends IonicNativePlugin {
 
   /**
    * Uninstalls a package
-   * @param packageId {string}  Package ID
+   * @param {string} packageId Package ID
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -61,7 +60,7 @@ export class FileOpener extends IonicNativePlugin {
 
   /**
    * Check if an app is already installed
-   * @param packageId {string} Package ID
+   * @param {string} packageId Package ID
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -72,5 +71,4 @@ export class FileOpener extends IonicNativePlugin {
   appIsInstalled(packageId: string): Promise<any> {
     return;
   }
-
 }

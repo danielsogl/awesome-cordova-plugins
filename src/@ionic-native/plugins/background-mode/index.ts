@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs/Observable';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -32,7 +34,7 @@ export interface BackgroundModeConfiguration {
   resume?: boolean;
 
   /**
-   * When set to false makes the notifications visible on lockscreen (Android 5.0+)
+   * When set to false makes the notifications visible on lock screen (Android 5.0+)
    */
   hidden?: boolean;
 
@@ -122,6 +124,7 @@ export class BackgroundMode extends IonicNativePlugin {
    * Override the default title, ticker and text.
    * Available only for Android platform.
    * @param {BackgroundModeConfiguration} options List of option to configure. See table below
+   * @returns {Promise<any>}
    */
   @Cordova({
     platforms: ['Android']
@@ -133,7 +136,7 @@ export class BackgroundMode extends IonicNativePlugin {
   /**
    * Modify the displayed information.
    * Available only for Android platform.
-   * @param {BackgroundModeConfiguration} options Any options you want to update. See table below.
+   * @param {BackgroundModeConfiguration} [options] Any options you want to update. See table below.
    */
   @Cordova({
     platforms: ['Android'],
@@ -202,6 +205,7 @@ export class BackgroundMode extends IonicNativePlugin {
 
   /**
    * The method works async instead of isActive() or isEnabled().
+   * @returns {Promise<boolean>}
    */
   @Cordova({
     platforms: ['Android']
