@@ -1,4 +1,5 @@
-import { callCordovaPlugin, wrapInstance, wrapPromise } from './common';
+import { callCordovaPlugin, wrapPromise } from './common';
+
 declare const window: any;
 
 class MockPlugin {
@@ -29,11 +30,10 @@ class MockInstancePluginObject {
 
 class MockCordovaPlugin {
   static ping = jest.fn((arg: string) => 'pong');
-  ping = jest.fn((arg: string) => 'pong');
-
   static pingAsync = jest.fn(
     (arg: string, success: Function, error: Function) => success('pong')
   );
+  ping = jest.fn((arg: string) => 'pong');
   pingAsync = jest.fn((arg: string, success: Function, error: Function) =>
     success('pong')
   );

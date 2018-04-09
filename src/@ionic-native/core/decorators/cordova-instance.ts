@@ -1,5 +1,5 @@
-import { CordovaOptions } from './interfaces';
 import { wrapInstance } from './common';
+import { CordovaOptions } from './interfaces';
 
 export function cordovaInstance(pluginObj: any, methodName: string, config: CordovaOptions, args: IArguments | Array<any>) {
   args = Array.from(args);

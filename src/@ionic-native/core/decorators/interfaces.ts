@@ -38,7 +38,8 @@ export interface CordovaOptions {
    */
   sync?: boolean;
   /**
-   * Callback order. Set to reverse if the success/error callbacks are the first 2 arguments that the wrapped method takes.
+   * Callback order. Set to reverse if the success/error callbacks are the first 2 arguments that the wrapped method
+   * takes.
    */
   callbackOrder?: 'reverse';
   /**
@@ -70,7 +71,8 @@ export interface CordovaOptions {
    */
   clearFunction?: string;
   /**
-   * This can be used if clearFunction is set. Set this to true to call the clearFunction with the same arguments used in the initial function.
+   * This can be used if clearFunction is set. Set this to true to call the clearFunction with the same arguments used
+   * in the initial function.
    */
   clearWithArgs?: boolean;
   /**

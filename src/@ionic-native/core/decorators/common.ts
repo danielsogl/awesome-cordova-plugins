@@ -286,7 +286,8 @@ export function setIndex(
     };
 
     const setErrorIndex = () => {
-      // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behavior.
+      // We don't want that the reject cb gets spliced into the position of an optional argument that has not been
+      // defined and thus causing non expected behavior.
       if (opts.errorIndex > args.length) {
         args[opts.errorIndex] = reject; // insert the reject fn at the correct specific index
       } else {
@@ -374,12 +375,12 @@ export function pluginWarn(
   if (method) {
     console.warn(
       'Native: tried calling ' +
-        pluginName +
-        '.' +
-        method +
-        ', but the ' +
-        pluginName +
-        ' plugin is not installed.'
+      pluginName +
+      '.' +
+      method +
+      ', but the ' +
+      pluginName +
+      ' plugin is not installed.'
     );
   } else {
     console.warn(
@@ -402,16 +403,16 @@ export function cordovaWarn(pluginName: string, method?: string): void {
   if (method) {
     console.warn(
       'Native: tried calling ' +
-        pluginName +
-        '.' +
-        method +
-        ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
+      pluginName +
+      '.' +
+      method +
+      ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
     );
   } else {
     console.warn(
       'Native: tried accessing the ' +
-        pluginName +
-        ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
+      pluginName +
+      ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
     );
   }
 }
@@ -419,7 +420,7 @@ export function cordovaWarn(pluginName: string, method?: string): void {
 /**
  * @private
  */
-export const wrap = function(
+export const wrap = function (
   pluginObj: any,
   methodName: string,
   opts: CordovaOptions = {}
