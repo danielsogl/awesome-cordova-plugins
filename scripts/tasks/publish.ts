@@ -78,7 +78,7 @@ async function publish(ignoreErrors = false) {
     new Promise<any>((resolve, reject) => {
       exec(`npm publish ${pkg} ${FLAGS}`, (err, stdout) => {
         if (stdout) {
-          Logger.log(stdout.trim());
+          Logger.verbose(stdout.trim());
           resolve(stdout);
         }
         if (err) {
