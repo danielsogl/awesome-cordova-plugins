@@ -1,3 +1,8 @@
+<a name="5.0.0-beta.9"></a>
+# [5.0.0-beta.9](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.8...v5.0.0-beta.9) (2018-04-11)
+
+
+
 <a name="5.0.0-beta.8"></a>
 # [5.0.0-beta.8](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.7...v5.0.0-beta.8) (2018-04-11)
 
