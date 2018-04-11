@@ -424,7 +424,7 @@ export const wrap = function (
   pluginObj: any,
   methodName: string,
   opts: CordovaOptions = {}
-) {
+): Function {
   return (...args: any[]) => {
     if (opts.sync) {
       // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
@@ -448,7 +448,7 @@ export function wrapInstance(
   pluginObj: any,
   methodName: string,
   opts: any = {}
-) {
+): Function {
   return (...args: any[]) => {
     if (opts.sync) {
       return callInstance(pluginObj, methodName, args, opts);
