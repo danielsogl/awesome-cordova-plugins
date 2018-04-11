@@ -75,7 +75,7 @@ function prepare() {
 async function publish(ignoreErrors = false) {
   Logger.profile('Publishing');
   // upload 1 package per CPU thread at a time
-  const worker = Queue.async.asyncify((pkg: any) => {
+  const worker = Queue.async.asyncify((pkg: any) =>
     new Promise<any>((resolve, reject) => {
       exec(`npm publish ${pkg} ${FLAGS}`, (err, stdout) => {
         if (stdout) {
@@ -96,8 +96,8 @@ async function publish(ignoreErrors = false) {
           }
         }
       });
-    });
-  });
+    })
+  );
 
   try {
     await Queue(worker, PACKAGES, cpus().length);
