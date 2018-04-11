@@ -29,7 +29,7 @@ const DIST = path.resolve(ROOT, 'dist/@ionic-native');
 
 const PACKAGES = [];
 
-const RXJS_VEERSION = '^5.0.1';
+const RXJS_VEERSION = '*';
 const CORE_VERSION = '^5.0.0';
 
 const PLUGIN_PEER_DEPENDENCIES = {
