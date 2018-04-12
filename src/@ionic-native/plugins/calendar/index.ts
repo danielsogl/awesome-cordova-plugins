@@ -153,11 +153,11 @@ export class Calendar extends IonicNativePlugin {
   /**
    * Create a calendar. (iOS only)
    *
-   * @param {string | CalendarOptions} nameOrOptions  either a string name or a options object. If string, provide the calendar name. IF an object, provide a calendar name as a string and a calendar color in hex format as a string
+   * @param {string | NameOrOptions} nameOrOptions  either a string name or a options object. If string, provide the calendar name. IF an object, provide a calendar name as a string and a calendar color in hex format as a string
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  createCalendar(nameOrOptions: string | CalendarOptions): Promise<any> {
+  createCalendar(nameOrOptions: string | NameOrOptions): Promise<any> {
     return;
   }
 
