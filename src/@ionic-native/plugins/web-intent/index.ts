@@ -39,6 +39,8 @@ export interface IntentOptions {
  * this.webIntent.startActivity(options).then(onSuccess, onError);
  *
  * ```
+ * @interfaces
+ * IntentOptions
  */
 @Plugin({
   pluginName: 'WebIntent',
