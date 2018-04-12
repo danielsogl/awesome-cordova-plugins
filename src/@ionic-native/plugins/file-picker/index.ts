@@ -34,8 +34,10 @@ export class IOSFilePicker extends IonicNativePlugin {
    * Open a file
    * @returns {Promise<string>}
    */
-  @Cordova()
-  pickFile(): Promise<string> {
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  pickFile(utis?: string | string[]): Promise<string> {
     return;
   }
 }
