@@ -6,7 +6,7 @@ export interface IOSFilePickerPosition {
   y: number;
   width: number;
   height: number;
-};
+}
 
 /**
  * @name iOS File Picker

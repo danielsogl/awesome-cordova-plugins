@@ -19,7 +19,7 @@ export interface IntentOptions {
     class: string;
   };
   flags?: number[];
-};
+}
 
 /**
  * @name Web Intent
