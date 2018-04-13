@@ -3,7 +3,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CallLogObject {
   name: string;
-  value: string|Array<string>;
+  value: string | Array<string>;
   operator: '==' | '!=' | '>' | '>=' | '<' | '<=' | 'like';
 }
 
@@ -35,7 +35,7 @@ export interface CallLogObject {
 export class CallLog extends IonicNativePlugin {
   /**
    * This function return the call logs
-   * @param filters {CallLogObject[]} array of object to filter the query
+   * @param {CallLogObject[]} filters array of object to filter the query
    * @return {Promise<any>}
    */
   @Cordova()

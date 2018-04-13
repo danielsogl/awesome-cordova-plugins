@@ -57,7 +57,7 @@ export class DeviceFeedback extends IonicNativePlugin {
 
   /**
    * Provide vibrate feedback to user, nevertheless respect user's tactile feedback setting as native feedback do.
-   * @param type {number} Specify type of vibration feedback. 0 for long press, 1 for virtual key, or 3 for keyboard tap.
+   * @param {number} type Specify type of vibration feedback. 0 for long press, 1 for virtual key, or 3 for keyboard tap.
    */
   @Cordova({ sync: true })
   haptic(type: number): void {}

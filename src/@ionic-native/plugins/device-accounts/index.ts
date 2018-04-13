@@ -53,6 +53,7 @@ export class DeviceAccounts extends IonicNativePlugin {
 
   /**
    *  Get all accounts registered on Android device for requested type
+   * @param {string} type
    * @returns {Promise<AndroidAccount[]>}
    */
   @Cordova()

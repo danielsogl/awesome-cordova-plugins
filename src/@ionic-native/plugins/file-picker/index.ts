@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
+export interface IOSFilePickerPosition {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
 /**
  * @name iOS File Picker
  * @description
@@ -20,6 +27,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *   .catch(err => console.log('Error', err));
  *
  * ```
+ * @interfaces
+ * IOSFilePickerPosition
  */
 @Plugin({
   pluginName: 'iOS File Picker',
@@ -32,10 +41,17 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 export class IOSFilePicker extends IonicNativePlugin {
   /**
    * Open a file
+   * @params {string | string[]} [utis]
+   * @params {IOSFilePickerPosition} [position] Set the position of the rectangle where the file picker should show up.
    * @returns {Promise<string>}
    */
-  @Cordova()
-  pickFile(): Promise<string> {
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  pickFile(
+    utis?: string | string[],
+    position?: IOSFilePickerPosition
+  ): Promise<string> {
     return;
   }
 }
