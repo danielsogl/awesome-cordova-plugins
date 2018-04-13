@@ -7,6 +7,20 @@ import {
 } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
+export interface IntentOptions {
+  requestCode?: number;
+  type?: string;
+  package?: string;
+  url?: string;
+  extras?: object;
+  action?: string;
+  component?: {
+    package: string;
+    class: string;
+  };
+  flags?: number[];
+};
+
 /**
  * @name Web Intent
  * @description
@@ -30,6 +44,8 @@ import { Observable } from 'rxjs';
  * this.webIntent.startActivity(options).then(onSuccess, onError);
  *
  * ```
+ * @interfaces
+ * IntentOptions
  */
 @Plugin({
   pluginName: 'WebIntent',
@@ -103,30 +119,21 @@ export class WebIntent extends IonicNativePlugin {
 
   /**
    * Launches an Android intent
-   * @param options {Object} { action: any, url: string, type?: string }
+   * @param options {IntentOptions}
    * @returns {Promise<any>}
    */
   @Cordova()
-  startActivity(options: {
-    action: any;
-    extras?: any;
-    url: string;
-    type?: string;
-  }): Promise<any> {
+  startActivity(options: IntentOptions): Promise<any> {
     return;
   }
 
   /**
    * Starts a new activity and return the result to the application
-   * @param options {Object} { action: any, url: string, type?: string }
+   * @param options {IntentOptions}
    * @returns {Promise<any>}
    */
   @Cordova()
-  startActivityForResult(options: {
-    action: any;
-    url: string;
-    type?: string;
-  }): Promise<any> {
+  startActivityForResult(options: IntentOptions): Promise<any> {
     return;
   }
 
@@ -172,27 +179,21 @@ export class WebIntent extends IonicNativePlugin {
 
   /**
    * Sends a custom intent passing optional extras
-   * @param options {Object} { action: string, extras?: { option: boolean } }
+   * @param options {IntentOptions}
    * @returns {Promise<any>}
    */
   @Cordova()
-  sendBroadcast(options: {
-    action: string;
-    extras?: { option: boolean };
-  }): Promise<any> {
+  sendBroadcast(options: IntentOptions): Promise<any> {
     return;
   }
 
   /**
    * Request that a given application service be started
-   * @param options {Object} { action: string, extras?: { option: boolean } }
+   * @param options {IntentOptions}
    * @returns {Promise<any>}
    */
   @Cordova()
-  startService(options: {
-    action: string;
-    extras?: { option: boolean };
-  }): Promise<any> {
+  startService(options: IntentOptions): Promise<any> {
     return;
   }
 
