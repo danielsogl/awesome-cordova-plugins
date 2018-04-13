@@ -1,5 +1,3 @@
-import * as _ from 'lodash';
-
 export function checkReady() {
   const DEVICE_READY_TIMEOUT = 5000;
 
@@ -18,7 +16,7 @@ export function checkReady() {
   });
 
   setTimeout(() => {
-    if (!didFireReady && !_.isUndefined(window.cordova)) {
+    if (!didFireReady && window.cordova) {
       console.warn(
         `Ionic Native: deviceready did not fire within ${DEVICE_READY_TIMEOUT}ms. This can happen when plugins are in an inconsistent state. Try removing plugins from plugins/ and reinstalling them.`
       );
