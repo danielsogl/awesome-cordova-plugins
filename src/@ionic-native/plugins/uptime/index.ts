@@ -32,7 +32,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 export class Uptime extends IonicNativePlugin {
   /**
    * This function return system uptime
-   * @param includeDeepSleep {boolean} Set to true to include system deep sleep
+   * @param {boolean} includeDeepSleep Set to true to include system deep sleep
    * @return {Promise<string>} Returns a promise that return the uptime in milliseconds
    */
   @Cordova()
