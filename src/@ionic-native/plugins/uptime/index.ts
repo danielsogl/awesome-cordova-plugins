@@ -4,17 +4,18 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 /**
  * @name Uptime
  * @description
- * This plugin return the device uptime, without sleep time.
+ * This plugin provides the time spent in milliseconds since boot (uptime).
  *
  * @usage
  * ```typescript
+ * ionic cordova plugin add cordova-plugin-uptime
  * import { Uptime } from '@ionic-native/uptime';
  *
  * constructor(private uptime: Uptime) { }
  *
  * ...
  *
- * this.uptime.getUptime()
+ * this.uptime.getUptime(includeDeepSleep)
  *   .then(uptime => console.log(uptime))
  *   .catch(error => console.log(error));
  *
@@ -31,10 +32,11 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 export class Uptime extends IonicNativePlugin {
   /**
    * This function return system uptime
+   * @param {boolean} includeDeepSleep Set to true to include system deep sleep
    * @return {Promise<string>} Returns a promise that return the uptime in milliseconds
    */
   @Cordova()
-  getUptime(): Promise<string> {
+  getUptime(includeDeepSleep: boolean): Promise<string> {
     return;
   }
 }
