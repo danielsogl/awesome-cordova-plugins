@@ -48,9 +48,7 @@ export class CallNumber extends IonicNativePlugin {
    * Check if call feature is available
    * @return {Promise<any>}
    */
-  @Cordova({
-    callbackOrder: 'reverse'
-  })
+  @Cordova()
   isCallSupported(): Promise<any> {
     return;
   }

@@ -55,7 +55,9 @@ export interface InAppBrowserOptions {
   transitionstyle?: 'fliphorizontal' | 'crossdissolve' | 'coververtical';
   /** (iOS Only) Set to top or bottom (default is bottom). Causes the toolbar to be at the top or bottom of the window. */
   toolbarposition?: 'top' | 'bottom';
-  /* (Windows only) Set to yes to create the browser control without a border around it.
+  /** (iOS Only) Set to yes or no to change the visibility of the loading indicator (defaults to no). */
+  hidespinner?: 'yes' | 'no';
+  /** (Windows only) Set to yes to create the browser control without a border around it.
    * Please note that if location=no is also specified, there will be no control presented to user to close IAB window. */
   fullscreen?: 'yes';
 
