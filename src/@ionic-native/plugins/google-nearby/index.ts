@@ -3,7 +3,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
- * @name google-nearby
+ * @name Google Nearby
  * @description
  * This plugin adds support for the Google Nearby Messages API.
  *
