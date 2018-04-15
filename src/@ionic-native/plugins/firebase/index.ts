@@ -35,10 +35,10 @@ import { Observable } from 'rxjs/Observable';
 export class Firebase extends IonicNativePlugin {
   /**
    * Get the device token
-   * @return {Promise<any>}
+   * @return {Promise<null | string>} Note that token will be null if it has not been established yet
    */
   @Cordova()
-  getToken(): Promise<any> {
+  getToken(): Promise<null | string> {
     return;
   }
 
@@ -270,6 +270,44 @@ export class Firebase extends IonicNativePlugin {
   }
 
   /**
+   * Start a trace.
+   * @param trace Trace name
+   */
+  @Cordova()
+  startTrace(trace: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * To count the performance-related events that occur in your app (such as cache hits or retries), add a line of code
+   * similar to the following whenever the event occurs, using a string other than retry to name that event if you are
+   * counting a different type of event:
+   * @param trace Trace name
+   * @param counter Counter
+   */
+  @Cordova()
+  incrementCounter(trace: string, counter: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Stop the trace
+   * @param trace Trace name
+   */
+  @Cordova()
+  stopTrace(trace: string): void {}
+
+  /**
+   * Allows the user to enable/disable analytics collection
+   * @param {boolean} enabled value to set collection
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setAnalyticsCollectionEnabled(enabled: boolean): Promise<any> {
+    return;
+  }
+
+  /**
    * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
    * @param {string} phoneNumber
    * @returns {Promise<any>}
@@ -296,16 +334,6 @@ export class Firebase extends IonicNativePlugin {
     phoneNumber: string,
     timeoutDuration: number
   ): Promise<any> {
-    return;
-  }
-
-  /**
-   * Allows the user to enable/disable analytics collection
-   * @param {boolean} enabled value to set collection
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  setAnalyticsCollectionEnabled(enabled: boolean): Promise<any> {
     return;
   }
 }
