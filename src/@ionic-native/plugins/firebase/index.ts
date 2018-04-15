@@ -271,7 +271,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Start a trace.
-   * @param trace Trace name
+   * @param {string} trace Trace name
    */
   @Cordova()
   startTrace(trace: string): Promise<any> {
@@ -282,8 +282,8 @@ export class Firebase extends IonicNativePlugin {
    * To count the performance-related events that occur in your app (such as cache hits or retries), add a line of code
    * similar to the following whenever the event occurs, using a string other than retry to name that event if you are
    * counting a different type of event:
-   * @param trace Trace name
-   * @param counter Counter
+   * @param {string} trace Trace name
+   * @param {string} counter Counter
    */
   @Cordova()
   incrementCounter(trace: string, counter: string): Promise<any> {
@@ -292,7 +292,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Stop the trace
-   * @param trace Trace name
+   * @param {string} trace Trace name
    */
   @Cordova()
   stopTrace(trace: string): void {}
