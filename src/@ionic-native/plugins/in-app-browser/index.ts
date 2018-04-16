@@ -1,18 +1,11 @@
-import { Injectable } from '@angular/core';
-import {
-  CordovaInstance,
-  InstanceCheck,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
-import { Observable, Observer } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 declare const cordova: Cordova & { InAppBrowser: any };
 
 export interface InAppBrowserOptions {
   /** Set to yes or no to turn the InAppBrowser's location bar on or off. */
   location?: 'yes' | 'no';
-  /*Set to yes to create the browser and load the page, but not show it. The loadstop event fires when loading is complete.
+  /** Set to yes to create the browser and load the page, but not show it. The loadstop event fires when loading is complete.
    * Omit or set to no (default) to have the browser open and load normally. */
   hidden?: 'yes' | 'no';
   /** Set to yes to have the browser's cookie cache cleared before the new window is opened. */
@@ -21,7 +14,7 @@ export interface InAppBrowserOptions {
   clearsessioncache?: 'yes';
   /** (Android Only) set to yes to show Android browser's zoom controls, set to no to hide them. Default value is yes. */
   zoom?: 'yes' | 'no';
-  /*Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
+  /** Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
    * If there is no previous page, the InAppBrowser will close. The default value is yes, so you must set it to no if you want the back button to simply close the InAppBrowser. */
   hardwareback?: 'yes' | 'no';
   /** Set to yes to prevent HTML5 audio or video from autoplaying (defaults to no). */
@@ -40,10 +33,8 @@ export interface InAppBrowserOptions {
   toolbar?: 'yes' | 'no';
   /** (iOS Only)  Set to yes or no to prevent viewport scaling through a meta tag (defaults to no). */
   enableViewportScale?: 'yes' | 'no';
-  /*
-   * (iOS Only) Set to yes or no to allow in-line HTML5 media playback, displaying within the browser window rather than a device-specific playback interface.
-   * The HTML's video element must also include the webkit-playsinline attribute (defaults to no)
-   */
+  /** (iOS Only) Set to yes or no to allow in-line HTML5 media playback, displaying within the browser window rather than a device-specific playback interface.
+   * The HTML's video element must also include the webkit-playsinline attribute (defaults to no) */
   allowInlineMediaPlayback?: 'yes' | 'no';
   /** (iOS Only) Set to yes or no to open the keyboard when form elements receive focus via JavaScript's focus() call (defaults to yes). */
   keyboardDisplayRequiresUserAction?: 'yes' | 'no';
@@ -55,10 +46,14 @@ export interface InAppBrowserOptions {
   transitionstyle?: 'fliphorizontal' | 'crossdissolve' | 'coververtical';
   /** (iOS Only) Set to top or bottom (default is bottom). Causes the toolbar to be at the top or bottom of the window. */
   toolbarposition?: 'top' | 'bottom';
-  /** (iOS Only) Set to yes or no to change the visibility of the loading indicator (defaults to no). */
+  /**
+   *  (iOS Only) Set to yes or no to change the visibility of the loading indicator (defaults to no).
+   */
   hidespinner?: 'yes' | 'no';
-  /** (Windows only) Set to yes to create the browser control without a border around it.
-   * Please note that if location=no is also specified, there will be no control presented to user to close IAB window. */
+  /**
+   * (Windows only) Set to yes to create the browser control without a border around it.
+   * Please note that if location=no is also specified, there will be no control presented to user to close IAB window.
+   */
   fullscreen?: 'yes';
 
   /**
@@ -66,7 +61,6 @@ export interface InAppBrowserOptions {
    */
   [key: string]: any;
 }
-
 export interface InAppBrowserEvent extends Event {
   /** the eventname, either loadstart, loadstop, loaderror, or exit. */
   type: string;
