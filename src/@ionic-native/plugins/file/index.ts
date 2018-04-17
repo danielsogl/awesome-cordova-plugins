@@ -271,7 +271,8 @@ export interface DirectoryEntry extends Entry {
 
   /**
    * Creates or looks up a file.
-   * @param path Either an absolute path or a relative path from this DirectoryEntry to the file to be looked up or created. It is an error to attempt to create a file whose immediate parent does not yet exist.
+   * @param path Either an absolute path or a relative path from this DirectoryEntry to the file to be looked up or created. It is an error to attempt to create a file whose immediate parent 
+   not yet exist.
    * @param options
    *     <ul>
    *     <li>If create and exclusive are both true, and the path already exists, getFile must fail.</li>
@@ -654,7 +655,7 @@ declare const window: Window;
  *
  * ...
  *
- * this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Directory exists')).catch(err => console.log('Directory doesn't exist'));
+ * this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Directory exists')).catch(err => console.log(`Directory doesn't exist`));
  *
  * ```
  *
