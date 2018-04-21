@@ -1,5 +1,5 @@
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/observable';
 import { Injectable } from '@angular/core';
 
 /**
