@@ -26,6 +26,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *       alert('Error: ' + reject);
  *     }
  *   );
+ * 
+ * this.clipboard.clear();
  * ```
  */
 @Plugin({
@@ -56,5 +58,12 @@ export class Clipboard extends IonicNativePlugin {
   paste(): Promise<any> {
     return;
   }
+
+  /**
+   * Clear the text stored in clipboard
+   * @returns {Promise<any>} Returns a promise after the text has been cleaned
+   */
+  @Cordova()
+  clear(): Promise<any> { return; }
 
 }
