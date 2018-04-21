@@ -1,6 +1,5 @@
-import 'rxjs/add/observable/fromEvent';
-
 import { Observable } from 'rxjs/Observable';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
 import { checkReady } from './bootstrap';
 import { CordovaOptions } from './decorators';
@@ -318,7 +317,7 @@ export function wrapEventObservable(
   event: string,
   element: any = window
 ): Observable<any> {
-  return Observable.fromEvent(element, event);
+  return fromEvent(element, event);
 }
 
 /**
