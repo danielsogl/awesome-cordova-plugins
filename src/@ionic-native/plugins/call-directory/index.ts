@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CallDirectoryItem {
   label: string;
@@ -9,7 +9,7 @@ export interface CallDirectoryItem {
 /**
  * @name Call Directory
  * @description
- * This plugin can add phone numbers to an Callkit call diretory extension. Call `reloadExtension` after using `addentIfication` and `removeIdentification`
+ * This plugin can add phone numbers to an Callkit call directory extension. Call `reloadExtension` after using `addentIfication` and `removeIdentification`
  * to process the changes in the call directory extension.
  *
  * @usage
@@ -52,7 +52,7 @@ export class CallDirectory extends IonicNativePlugin {
 
   /**
    * Add identification numbers
-   * @param items {Array<CallDirectoryItem>} Set of numbers with labels
+   * @param {Array<CallDirectoryItem>} items Set of numbers with labels
    * @return {Promise<any>} Returns a promise that resolves when numbers are added
    */
   @Cordova()
@@ -62,7 +62,7 @@ export class CallDirectory extends IonicNativePlugin {
 
   /**
    * Remove identification numbers
-   * @param items {Array<CallDirectoryItem>} Set of numbers with arbitrary label
+   * @param {Array<CallDirectoryItem>} items Set of numbers with arbitrary label
    * @return {Promise<any>} Returns a promise that resolves when numbers are removed
    */
   @Cordova()
@@ -71,7 +71,7 @@ export class CallDirectory extends IonicNativePlugin {
   }
 
   /**
-   * Remove all items from call directory. Refreshes immediatly.
+   * Remove all items from call directory. Refreshes immediately.
    * @return {Promise<any>} Returns a promise after refresh with message
    */
   @Cordova()
