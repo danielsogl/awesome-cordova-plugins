@@ -650,8 +650,8 @@ export class StarPRNT extends IonicNativePlugin {
   };
 
   /**
-   * Find printers available
-   * @param type {string} Iterface Type: All, LAN, Bluetooth, USB
+   * Find available printers
+   * @param {string} type  Interface Type: All, LAN, Bluetooth, USB
    * @return {Promise<Printers>} Returns a promise that resolves with an array of printers
    */
   @Cordova()
@@ -661,8 +661,8 @@ export class StarPRNT extends IonicNativePlugin {
 
   /**
    * Checks the status of the printer
-   * @param port {string} printer name i.e BT:StarMicronics
-   * @param emulation {string} StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
+   * @param {string} port  Printer name i.e BT:StarMicronics
+   * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
    * @return {Promise<PrinterStatus>} Returns a promise that resolves with the PrinterStatus object
    */
   @Cordova()
@@ -672,9 +672,9 @@ export class StarPRNT extends IonicNativePlugin {
 
   /**
    * Prints plain text
-   * @param port {string} printer name i.e BT:StarMicronics. Send null to use a printer connected via StarIOExtManager using the connect() function
-   * @param emulation {string} StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
-   * @param printObj {PrintObj} text:string, cutReceipt?:boolean, openCashDrawer?:boolean
+   * @param {string} port  Printer name i.e BT:StarMicronics. Send null to use a printer connected via StarIOExtManager using the connect() function
+   * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
+   * @param {PrintObj} printObj  text:string, cutReceipt?:boolean, openCashDrawer?:boolean
    * @return {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
@@ -688,9 +688,9 @@ export class StarPRNT extends IonicNativePlugin {
 
   /**
    * Converts the text into a bitmap image and sends it to the printer
-   * @param port {string} printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
-   * @param emulation {string} StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
-   * @param rasterObj {RasterObj} text:string, cutReceipt?:boolean, openCashDrawer?:boolean, fontSize:number, paperWidth:number
+   * @param {string} port  Printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
+   * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
+   * @param {RasterObj} rasterObj  text:string, cutReceipt?:boolean, openCashDrawer?:boolean, fontSize:number, paperWidth:number
    * @return {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
@@ -704,9 +704,9 @@ export class StarPRNT extends IonicNativePlugin {
 
   /**
    * Gets an image from a string URI and converts it to bitmap to send it to the printer
-   * @param port {string} printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
-   * @param emulation {string} StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
-   * @param imageObj {ImageObj} uri:string, paperWidth?:number, cutReceipt?:boolean, openCashDrawer?:boolean
+   * @param {string} port Printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
+   * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
+   * @param {ImageObj} imageObj  uri:string, paperWidth?:number, cutReceipt?:boolean, openCashDrawer?:boolean
    * @return {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
@@ -720,8 +720,8 @@ export class StarPRNT extends IonicNativePlugin {
 
   /**
    * sends an appendPeripheral command to the printer for channels No1 and No2
-   * @param port {string} printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
-   * @param emulation {string} StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
+   * @param {string} port  Printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
+   * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
    * @return {Promise<any>} Success! if opened or error message string returned by the SDK.
    */
   @Cordova()
@@ -731,9 +731,9 @@ export class StarPRNT extends IonicNativePlugin {
 
   /**
    * Sends an Array of commands to the command buffer using the Android ICommandBuilderInterface or iOS ISCBBuilderInterface
-   * @param port {string} printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
-   * @param emulation {string} StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
-   * @param commandsArray {CommandsArray} each command in the array should be an instance of the PrintCommand object. Example [{append:"text"}, {"openCashDrawer: 1"}]
+   * @param {string} port  Printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
+   * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
+   * @param {CommandsArray} commandsArray  each command in the array should be an instance of the PrintCommand object. Example [{append:"text"}, {"openCashDrawer: 1"}]
    * @return {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
@@ -747,8 +747,8 @@ export class StarPRNT extends IonicNativePlugin {
 
   /**
    * Allows you to connect to the printer, keep the connection alive and receive status updates through an observable
-   * @param port {string} printer name i.e BT:StarMicronics.
-   * @param emulation {string} StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
+   * @param {string} port  printer name i.e BT:StarMicronics.
+   * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
    * @return {Observable<any>} Success! if connected or error message string returned by the SDK.
    */
   @Cordova({
