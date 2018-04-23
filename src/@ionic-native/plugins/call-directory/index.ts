@@ -36,6 +36,7 @@ export interface CallDirectoryItem {
   repo: 'https://github.com/GEDYSIntraWare/cordova-plugin-call-directory',
   install: 'cordova plugin add cordova-plugin-call-directory --variable EXT_NAME="Cordova-Directory" --variable ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES="NO"',
   installVariables: ['EXT_NAME', 'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'],
+  platforms: ['iOS']
 })
 @Injectable()
 export class CallDirectory extends IonicNativePlugin {
@@ -55,7 +56,7 @@ export class CallDirectory extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when numbers are added
    */
   @Cordova()
-  addIdentification(items: string): Promise<any> {
+  addIdentification(items: Array<CallDirectoryItem>): Promise<any> {
     return;
   }
 
@@ -65,7 +66,7 @@ export class CallDirectory extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when numbers are removed
    */
   @Cordova()
-  removeIdentification(items: string): Promise<any> {
+  removeIdentification(items: Array<CallDirectoryItem>): Promise<any> {
     return;
   }
 
