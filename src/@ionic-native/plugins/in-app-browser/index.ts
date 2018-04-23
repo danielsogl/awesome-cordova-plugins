@@ -1,12 +1,21 @@
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
+import { Injectable } from '@angular/core';
+import {
+  CordovaInstance,
+  InstanceCheck,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 
 declare const cordova: Cordova & { InAppBrowser: any };
 
 export interface InAppBrowserOptions {
   /** Set to yes or no to turn the InAppBrowser's location bar on or off. */
   location?: 'yes' | 'no';
-  /** Set to yes to create the browser and load the page, but not show it. The loadstop event fires when loading is complete.
-   * Omit or set to no (default) to have the browser open and load normally. */
+  /**
+   * Set to yes to create the browser and load the page, but not show it. The loadstop event fires when loading is complete.
+   * Omit or set to no (default) to have the browser open and load normally.
+   */
   hidden?: 'yes' | 'no';
   /** Set to yes to have the browser's cookie cache cleared before the new window is opened. */
   clearcache?: 'yes';
@@ -14,8 +23,10 @@ export interface InAppBrowserOptions {
   clearsessioncache?: 'yes';
   /** (Android Only) set to yes to show Android browser's zoom controls, set to no to hide them. Default value is yes. */
   zoom?: 'yes' | 'no';
-  /** Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
-   * If there is no previous page, the InAppBrowser will close. The default value is yes, so you must set it to no if you want the back button to simply close the InAppBrowser. */
+  /**
+   * Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
+   * If there is no previous page, the InAppBrowser will close. The default value is yes, so you must set it to no if you want the back button to simply close the InAppBrowser.
+   */
   hardwareback?: 'yes' | 'no';
   /** Set to yes to prevent HTML5 audio or video from autoplaying (defaults to no). */
   mediaPlaybackRequiresUserAction?: 'yes' | 'no';
@@ -33,7 +44,8 @@ export interface InAppBrowserOptions {
   toolbar?: 'yes' | 'no';
   /** (iOS Only)  Set to yes or no to prevent viewport scaling through a meta tag (defaults to no). */
   enableViewportScale?: 'yes' | 'no';
-  /** (iOS Only) Set to yes or no to allow in-line HTML5 media playback, displaying within the browser window rather than a device-specific playback interface.
+  /*
+   * (iOS Only) Set to yes or no to allow in-line HTML5 media playback, displaying within the browser window rather than a device-specific playback interface.
    * The HTML's video element must also include the webkit-playsinline attribute (defaults to no) */
   allowInlineMediaPlayback?: 'yes' | 'no';
   /** (iOS Only) Set to yes or no to open the keyboard when form elements receive focus via JavaScript's focus() call (defaults to yes). */

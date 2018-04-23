@@ -125,7 +125,7 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @CordovaCheck()
   isAvailable(app?: string): Promise<any> {
-    return getPromise<boolean>((resolve, reject) => {
+    return new Promise<boolean>((resolve, reject) => {
       if (app) {
         EmailComposer.getPlugin().isAvailable(app, (isAvailable: boolean) => {
           if (isAvailable) {
