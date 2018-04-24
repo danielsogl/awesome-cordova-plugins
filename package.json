@@ -39,12 +39,12 @@
     "q": "1.5.0",
     "queue": "4.2.1",
     "rimraf": "2.6.1",
-    "rxjs": "5.5.2",
+    "rxjs": "^5.5.10",
     "semver": "5.3.0",
     "tslint": "3.15.1",
     "tslint-ionic-rules": "0.0.8",
     "typescript": "~2.4.2",
-    "zone.js": "0.8.18"
+    "zone.js": "^0.8.26"
   },
   "scripts": {
     "start": "npm run test:watch",

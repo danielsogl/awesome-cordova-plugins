@@ -1,8 +1,7 @@
-import 'rxjs/add/observable/fromEvent';
-
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
 export interface AdMobFreeBannerConfig {
   /**
@@ -147,7 +146,7 @@ export class AdMobFree extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   on(event: string): Observable<any> {
-    return Observable.fromEvent(document, event);
+    return fromEvent(document, event);
   }
 
   /**
