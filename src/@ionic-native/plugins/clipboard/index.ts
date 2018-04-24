@@ -26,7 +26,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *       alert('Error: ' + reject);
  *     }
  *   );
- * 
+ *
  * this.clipboard.clear();
  * ```
  */
