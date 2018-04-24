@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   Cordova,
   CordovaCheck,
+  getPromise,
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
@@ -125,7 +126,7 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @CordovaCheck()
   isAvailable(app?: string): Promise<any> {
-    return new Promise<boolean>((resolve, reject) => {
+    return getPromise<boolean>((resolve, reject) => {
       if (app) {
         EmailComposer.getPlugin().isAvailable(app, (isAvailable: boolean) => {
           if (isAvailable) {
