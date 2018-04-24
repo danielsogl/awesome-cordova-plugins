@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   Cordova,
   CordovaCheck,
+  getPromise,
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';

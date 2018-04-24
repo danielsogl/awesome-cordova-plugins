@@ -211,12 +211,6 @@ export class WebIntent extends IonicNativePlugin {
   unregisterBroadcastReceiver(): void {}
 
   /**
-   * Returns the content of the intent used whenever the application activity is launched
-   */
-  @Cordova({ sync: true })
-  onIntent(): void {}
-
-  /**
    *
    */
   @Cordova({ sync: true })
