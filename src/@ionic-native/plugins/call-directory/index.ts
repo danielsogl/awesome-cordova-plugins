@@ -9,7 +9,7 @@ export interface CallDirectoryItem {
 /**
  * @name Call Directory
  * @description
- * This plugin can add phone numbers to an Callkit call directory extension. Call `reloadExtension` after using `addentIfication` and `removeIdentification`
+ * This plugin can add phone numbers to an Callkit call directory extension. Call `reloadExtension` after using `addIdentification` and `removeIdentification`
  * to process the changes in the call directory extension.
  *
  * @usage
@@ -19,14 +19,15 @@ export interface CallDirectoryItem {
  *
  * constructor(private callDirectory: CallDirectory) { }
  *
- * ...
- *
  *
  * let items = [{label: "Hello", number: "123"}];
  * this.callDirectory.addIdentification(items)
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
+ * this.callDirectory.reloadExtension()
+ *   .then(res: string) => console.log(res))
+ *   .catch((error: any) => console.error(error));
  * ```
  */
 @Plugin({
