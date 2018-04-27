@@ -1,5 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+
+export interface AndroidAccount {
+  /** Account creator */
+  CREATOR: AndroidAccount;
+
+  /** Account name */
+  name: string;
+
+  /** Account type */
+  type: string;
+}
 
 /**
  * @name Device Accounts
@@ -19,6 +30,8 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *   .catch(error => console.error(error));
  *
  * ```
+ * @interfaces
+ * AndroidAccount
  */
 @Plugin({
   pluginName: 'DeviceAccounts',
@@ -29,33 +42,40 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class DeviceAccounts extends IonicNativePlugin {
-
   /**
    *  Gets all accounts registered on the Android Device
-   * @returns {Promise<any>}
+   * @returns {Promise<AndroidAccount[]>}
    */
   @Cordova()
-  get(): Promise<any> { return; }
+  get(): Promise<AndroidAccount[]> {
+    return;
+  }
 
   /**
    *  Get all accounts registered on Android device for requested type
-   * @returns {Promise<any>}
+   * @param {string} type
+   * @returns {Promise<AndroidAccount[]>}
    */
   @Cordova()
-  getByType(type: string): Promise<any> { return; }
+  getByType(type: string): Promise<AndroidAccount[]> {
+    return;
+  }
 
   /**
    *  Get all emails registered on Android device (accounts with 'com.google' type)
-   * @returns {Promise<any>}
+   * @returns {Promise<string[]>}
    */
   @Cordova()
-  getEmails(): Promise<any> { return; }
+  getEmails(): Promise<string[]> {
+    return;
+  }
 
   /**
    *  Get the first email registered on Android device
-   * @returns {Promise<any>}
+   * @returns {Promise<string>}
    */
   @Cordova()
-  getEmail(): Promise<any> { return; }
-
+  getEmail(): Promise<string> {
+    return;
+  }
 }

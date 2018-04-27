@@ -134,7 +134,7 @@ export interface AndroidPushOptions {
   /**
    * Maps to the project number in the Google Developer Console.
    */
-  senderID: string;
+  senderID?: string;
 
   /**
    * The name of a drawable resource to use as the small-icon. The name should
@@ -219,6 +219,7 @@ export interface Channel {
   id: string;
   description: string;
   importance: Priority;
+  sound?: string;
 }
 
 export type PushEvent = string;
@@ -334,15 +335,19 @@ export class Push extends IonicNativePlugin {
    * Create a new notification channel for Android O and above.
    * @param channel {Channel}
    */
-  @Cordova()
-  createChannel(channel: Channel): Promise<any> { return; }
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  createChannel(channel?: Channel): Promise<any> { return; }
 
   /**
    * Delete a notification channel for Android O and above.
-   * @param id
+   * @param id {string}
    */
-  @Cordova()
-  deleteChannel(id: string): Promise<any> { return; }
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
+  deleteChannel(id?: string): Promise<any> { return; }
 
   /**
    * Returns a list of currently configured channels.

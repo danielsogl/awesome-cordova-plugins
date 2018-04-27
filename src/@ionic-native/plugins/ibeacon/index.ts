@@ -481,7 +481,7 @@ export class IBeacon extends IonicNativePlugin {
    * native layer acknowledged the dispatch of the monitoring request.
    */
   @Cordova({ otherPromise: true })
-  startMonitoringForRegion(region: BeaconRegion): Promise<string> { return; }
+  startMonitoringForRegion(region: Region): Promise<string> { return; }
 
   /**
    * Stop monitoring the specified region.  It is valid to call
@@ -498,7 +498,7 @@ export class IBeacon extends IonicNativePlugin {
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
   @Cordova({ otherPromise: true })
-  stopMonitoringForRegion(region: BeaconRegion): Promise<void> { return; }
+  stopMonitoringForRegion(region: Region): Promise<void> { return; }
 
   /**
    * Request state the for specified region. When result is ready
@@ -532,7 +532,7 @@ export class IBeacon extends IonicNativePlugin {
    * native layer acknowledged the dispatch of the monitoring request.
    */
   @Cordova({ otherPromise: true })
-  startRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
+  startRangingBeaconsInRegion(region: Region): Promise<void> { return; }
 
   /**
    * Stop ranging the specified region.  It is valid to call
@@ -549,7 +549,7 @@ export class IBeacon extends IonicNativePlugin {
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
   @Cordova({ otherPromise: true })
-  stopRangingBeaconsInRegion(region: BeaconRegion): Promise<void> { return; }
+  stopRangingBeaconsInRegion(region: Region): Promise<void> { return; }
 
   /**
    * Queries the native layer to determine the current authorization in effect.

@@ -131,4 +131,12 @@ export class Zeroconf extends IonicNativePlugin {
    */
   @Cordova()
   reInit(): Promise<void> { return; }
+  /**
+   * Family of addresses to register: ipv4, ipv6 or any.
+   */
+  registerAddressFamily: 'ipv4' | 'ipv6' | 'any';
+  /**
+   * Family of addresses to watch for: ipv4, ipv6 or any.
+   */
+  watchAddressFamily: 'ipv4' | 'ipv6' | 'any';
 }

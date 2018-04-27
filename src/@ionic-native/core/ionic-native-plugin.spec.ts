@@ -1,8 +1,7 @@
 // This is to verify that new (FileTransfer.getPlugin)() works
-
-import { Plugin, CordovaInstance } from './decorators';
-import { checkAvailability } from './plugin';
+import { CordovaInstance, Plugin } from './decorators';
 import { IonicNativePlugin } from './ionic-native-plugin';
+import { checkAvailability } from './plugin';
 
 class FT {
   hello(): string {
@@ -21,7 +20,13 @@ class FT {
 export class FileTransfer extends IonicNativePlugin {
   create(): FileTransferObject {
     let instance: any;
-    if (checkAvailability(FileTransfer.getPluginRef(), null, FileTransfer.getPluginName()) === true) {
+    if (
+      checkAvailability(
+        FileTransfer.getPluginRef(),
+        null,
+        FileTransfer.getPluginName()
+      ) === true
+    ) {
       instance = new (FileTransfer.getPlugin())();
     }
     return new FileTransferObject(instance);
@@ -29,20 +34,21 @@ export class FileTransfer extends IonicNativePlugin {
 }
 
 export class FileTransferObject {
-
   constructor(public _objectInstance: any) {
-    console.info('Creating a new FileTransferObject with instance: ', _objectInstance);
+    console.info(
+      'Creating a new FileTransferObject with instance: ',
+      _objectInstance
+    );
   }
 
   @CordovaInstance({ sync: true })
-  hello(): string { return; }
-
+  hello(): string {
+    return;
+  }
 }
 
 describe('Mock FileTransfer Plugin', () => {
-
-  let plugin: FileTransfer,
-    instance: FileTransferObject;
+  let plugin: FileTransfer, instance: FileTransferObject;
 
   beforeAll(() => {
     plugin = new FileTransfer();
@@ -65,5 +71,4 @@ describe('Mock FileTransfer Plugin', () => {
     console.info('instance hello is', instance.hello());
     expect(instance.hello()).toEqual('world');
   });
-
 });

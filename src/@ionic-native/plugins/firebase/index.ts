@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
- * @beta
  * @name Firebase
  * @description
  * This plugin brings push notifications, analytics, event tracking, crash reporting and more from Google Firebase to your Cordova project! Android and iOS supported (including iOS 10).
@@ -30,16 +29,16 @@ import { Observable } from 'rxjs/Observable';
   plugin: 'cordova-plugin-firebase',
   pluginRef: 'FirebasePlugin',
   repo: 'https://github.com/arnesson/cordova-plugin-firebase',
-  platforms: ['Android', 'iOS'],
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Firebase extends IonicNativePlugin {
   /**
    * Get the device token
-   * @return {Promise<any>}
+   * @return {Promise<null | string>} Note that token will be null if it has not been established yet
    */
   @Cordova()
-  getToken(): Promise<any> {
+  getToken(): Promise<null | string> {
     return;
   }
 
@@ -87,7 +86,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Set icon badge number. Set to 0 to clear the badge.
-   * @param badgeNumber {number}
+   * @param {number} badgeNumber
    * @return {Promise<any>}
    */
   @Cordova()
@@ -106,7 +105,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Subscribe to a topic
-   * @param topic {string}
+   * @param {string} topic
    * @return {Promise<any>}
    */
   @Cordova()
@@ -116,7 +115,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Unsubscribe from a topic
-   * @param topic {string}
+   * @param {string} topic
    * @return {Promise<any>}
    */
   @Cordova()
@@ -135,8 +134,8 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Log an event using Analytics
-   * @param type {string}
-   * @param data {Object}
+   * @param {string} type
+   * @param {Object} data
    * @return {Promise<any>}
    */
   @Cordova()
@@ -146,7 +145,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Log an Error using FirebaseCrash
-   * @param message {string}
+   * @param {string} message
    * @return {Promise<any>}
    */
   @Cordova()
@@ -156,7 +155,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Set the name of the current screen in Analytics
-   * @param name {string} Screen name
+   * @param {string} name Screen name
    * @return {Promise<any>}
    */
   @Cordova()
@@ -166,7 +165,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Set a user id for use in Analytics
-   * @param userId {string}
+   * @param {string} userId
    * @return {Promise<any>}
    */
   @Cordova()
@@ -176,8 +175,8 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Set a user property for use in Analytics
-   * @param name {string}
-   * @param value {string}
+   * @param {string} name
+   * @param {string} value
    * @return {Promise<any>}
    */
   @Cordova()
@@ -187,7 +186,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Fetch Remote Config parameter values for your app
-   * @param cacheExpirationSeconds
+   * @param {number} [cacheExpirationSeconds]
    * @return {Promise<any>}
    */
   @Cordova({
@@ -209,8 +208,8 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Retrieve a Remote Config value
-   * @param key {string}
-   * @param namespace {string}
+   * @param {string} key
+   * @param {string} [namespace]
    * @return {Promise<any>}
    */
   @Cordova({
@@ -223,14 +222,12 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Retrieve a Remote Config byte array
-   * @param key {string}
-   * @param namespace {string}
+   * @param {string} key
+   * @param {string} [namespace]
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
-    successIndex: 2,
-    errorIndex: 3
+    platforms: ['Android']
   })
   getByteArray(key: string, namespace?: string): Promise<any> {
     return;
@@ -249,7 +246,7 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Change the settings for the FirebaseRemoteConfig object's operations
-   * @param settings {Object}
+   * @param {Object} settings
    * @return {Promise<any>}
    */
   @Cordova({
@@ -261,43 +258,70 @@ export class Firebase extends IonicNativePlugin {
 
   /**
    * Set defaults in the Remote Config
-   * @param defaults {Object}
-   * @param namespace {string}
+   * @param {Object} defaults
+   * @param {string} [namespace]
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android'],
-    successIndex: 2,
-    errorIndex: 3
+    platforms: ['Android']
   })
-  setDefaults(defaults: any, namespace: string): Promise<any> {
+  setDefaults(defaults: any, namespace?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Start a trace.
+   * @param {string} trace Trace name
+   */
+  @Cordova()
+  startTrace(trace: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * To count the performance-related events that occur in your app (such as cache hits or retries), add a line of code
+   * similar to the following whenever the event occurs, using a string other than retry to name that event if you are
+   * counting a different type of event:
+   * @param {string} trace Trace name
+   * @param {string} counter Counter
+   */
+  @Cordova()
+  incrementCounter(trace: string, counter: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Stop the trace
+   * @param {string} trace Trace name
+   */
+  @Cordova()
+  stopTrace(trace: string): void {}
+
+  /**
+   * Allows the user to enable/disable analytics collection
+   * @param {boolean} enabled value to set collection
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setAnalyticsCollectionEnabled(enabled: boolean): Promise<any> {
     return;
   }
 
   /**
    * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
-   * @param phoneNumber {string}
+   * @param {string} phoneNumber The phone number, including '+' and country code
+   * @param {number} timeoutDuration (Android only) The timeout in sec - no more SMS will be sent to this number until this timeout expires
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS']
-  })
-  getVerificationID(phoneNumber: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
-   * @param phoneNumber {string} the phone number, including '+' and country code
-   * @param timeoutDuration {number} the timeout in sec - no more SMS will be sent to this number until this timeout expires
-   * @returns {Promise<any>}
-   */
-  @Cordova({
-    platforms: ['Android'],
+    platforms: ['Android', 'iOS'],
     successIndex: 2,
     errorIndex: 3
   })
-  verifyPhoneNumber(phoneNumber: string, timeoutDuration: number): Promise<any> {
+  verifyPhoneNumber(
+    phoneNumber: string,
+    timeoutDuration: number = 0
+  ): Promise<any> {
     return;
   }
 }

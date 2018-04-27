@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CardIOOptions {
-
   /**
    * Set to true to require expiry date
    */
@@ -21,7 +20,7 @@ export interface CardIOOptions {
   /**
    * 	Removes the keyboard button from the scan screen.
    */
-  supressManual?: boolean;
+  suppressManual?: boolean;
 
   /**
    * The postal code will only collect numeric input. Set this if you know the expected country's postal code has only numeric postal codes.
@@ -82,11 +81,9 @@ export interface CardIOOptions {
    * Once a card image has been captured but before it has been processed, this value will determine whether to continue processing as usual.
    */
   supressScan?: boolean;
-
 }
 
 export interface CardIOResponse {
-
   /**
    * Card type
    */
@@ -126,7 +123,6 @@ export interface CardIOResponse {
    * Cardholder name
    */
   cardholderName: string;
-
 }
 
 /**
@@ -173,7 +169,6 @@ export interface CardIOResponse {
 })
 @Injectable()
 export class CardIO extends IonicNativePlugin {
-
   /**
    * Check whether card scanning is currently available. (May vary by
    * device, OS version, network connectivity, etc.)
@@ -181,21 +176,26 @@ export class CardIO extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  canScan(): Promise<boolean> { return; }
+  canScan(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Scan a credit card with card.io.
-   * @param {CardIOOptions} options Options for configuring the plugin
+   * @param {CardIOOptions} [options] Options for configuring the plugin
    * @returns {Promise<any>}
    */
   @Cordova()
-  scan(options?: CardIOOptions): Promise<CardIOResponse> { return; }
+  scan(options?: CardIOOptions): Promise<CardIOResponse> {
+    return;
+  }
 
   /**
    * Retrieve the version of the card.io library. Useful when contacting support.
    * @returns {Promise<string>}
    */
   @Cordova()
-  version(): Promise<string> { return; }
-
+  version(): Promise<string> {
+    return;
+  }
 }
