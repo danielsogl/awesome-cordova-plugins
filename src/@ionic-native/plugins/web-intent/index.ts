@@ -196,7 +196,7 @@ export class WebIntent extends IonicNativePlugin {
    * @param filters {any}
    * @returns {Observable<any>}
    */
-  @Cordova({ 
+  @Cordova({
     observable: true
   })
   registerBroadcastReceiver(filters: any): Observable<any> {
