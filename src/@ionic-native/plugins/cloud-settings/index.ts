@@ -1,16 +1,5 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Cloud Settings
@@ -44,13 +33,13 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-cloud-settings',
   pluginRef: 'cordova.plugin.cloudsettings',
   repo: 'https://github.com/dpa99c/cordova-plugin-cloud-settings',
-  install: 'ionic cordova plugin add cordova-plugin-cloud-settings --variable ANDROID_BACKUP_SERVICE_KEY=myapikey',
+  install:
+    'ionic cordova plugin add cordova-plugin-cloud-settings --variable ANDROID_BACKUP_SERVICE_KEY=myapikey',
   installVariables: ['ANDROID_BACKUP_SERVICE_KEY'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class CloudSettings extends IonicNativePlugin {
-
   /**
    * Indicates if any stored cloud settings currently exist for the current user.
    * @return {Promise<boolean>} Will be passed a boolean flag which indicates whether an store settings exist for the user.
@@ -63,8 +52,8 @@ export class CloudSettings extends IonicNativePlugin {
   /**
    * Saves the settings to cloud backup.
    * @param {object} settings - a JSON structure representing the user settings to save to cloud backup.
-   * @param {boolean} overwrite - (optional) if true, existing settings will be replaced rather than updated. Defaults to false.
-   - If false, existing settings will be merged with the new settings passed to this function.
+   * @param {boolean} [overwrite] - (optional) if true, existing settings will be replaced rather than updated. Defaults to false.
+   * If false, existing settings will be merged with the new settings passed to this function.
    * @return {Promise<any>} Will be passed a single object argument which contains the saved settings as a JSON object.
    */
   @Cordova({
@@ -88,7 +77,7 @@ export class CloudSettings extends IonicNativePlugin {
    * Registers a function which will be called if/when settings on the device have been updated from the cloud.
    * @param {Function} handler - callback function to invoke when device settings have been updated from the cloud.
    */
-  @Cordova({sync: true })
+  @Cordova({ sync: true })
   onRestore(handler: Function): void {}
 
   /**
