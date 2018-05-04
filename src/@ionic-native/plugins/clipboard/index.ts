@@ -26,7 +26,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *       alert('Error: ' + reject);
  *     }
  *   );
- * 
+ *
  * this.clipboard.clear();
  * ```
  */
@@ -39,7 +39,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class Clipboard extends IonicNativePlugin {
-
   /**
    * Copies the given text
    * @param {string} text Text that gets copied on the system clipboard
@@ -64,6 +63,7 @@ export class Clipboard extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise after the text has been cleaned
    */
   @Cordova()
-  clear(): Promise<any> { return; }
-
+  clear(): Promise<any> {
+    return;
+  }
 }
