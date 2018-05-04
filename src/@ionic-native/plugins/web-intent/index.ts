@@ -200,9 +200,14 @@ export class WebIntent extends IonicNativePlugin {
   /**
    * Registers a broadcast receiver for the specified filters
    * @param filters {any}
+   * @returns {Observable<any>}
    */
-  @Cordova({ sync: true })
-  registerBroadcastReceiver(filters: any): void {}
+  @Cordova({
+    observable: true
+  })
+  registerBroadcastReceiver(filters: any): Observable<any> {
+    return;
+  }
 
   /**
    * Unregisters a broadcast receiver

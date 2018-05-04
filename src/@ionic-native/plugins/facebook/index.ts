@@ -302,26 +302,4 @@ export class Facebook extends IonicNativePlugin {
     return;
   }
 
-  /**
-   * Open App Invite dialog. Does not require login.
-   *
-   * For more information see:
-   *
-   *   the App Invites Overview - https://developers.facebook.com/docs/app-invites/overview
-   *   the App Links docs - https://developers.facebook.com/docs/applinks
-   *
-   *
-   * @param {Object}  options An object containing an [App Link](https://developers.facebook.com/docs/applinks) URL to your app and an optional image URL.
-   * @param {string} options.url [App Link](https://developers.facebook.com/docs/applinks) to your app
-   * @param {string} [options.picture] image to be displayed in the App Invite dialog
-   * @returns {Promise<any>} Returns a Promise that resolves with the result data, or rejects with an error
-   */
-  @Cordova()
-  appInvite(options: {
-    url: string,
-    picture: string
-  }): Promise<any> {
-    return;
-  }
-
 }

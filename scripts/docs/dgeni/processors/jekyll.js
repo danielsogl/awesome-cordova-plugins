@@ -10,6 +10,12 @@ module.exports = function jekyll(renderDocsProcessor) {
       // pretty up and sort the docs object for menu generation
       docs = docs.filter(doc => (!!doc.name && !!doc.outputPath) || doc.docType === 'index-page');
 
+      docs.push({
+        docType: 'class',
+        URL: 'https://github.com/ionic-team/ionic-native-google-maps/blob/master/documents/README.md',
+        name: 'Google Maps',
+      });
+
       docs.sort((a, b) => {
         const textA = a.name ? a.name.toUpperCase() : '',
           textB = b.name ? b.name.toUpperCase() : '';
@@ -18,14 +24,20 @@ module.exports = function jekyll(renderDocsProcessor) {
       });
 
       docs.forEach(doc => {
+        if (!doc.outputPath) {
+          return;
+        }
+
         doc.outputPath = doc.outputPath.toLowerCase().replace(/\s/g, '-');
         doc.URL = doc.outputPath.replace('docs//', 'docs/')
           .replace('/index.md', '')
           .replace('content/', '');
         // add trailing slash to plugin pages
         if(!doc.URL.endsWith("/") && !doc.URL.endsWith(".html")) {
-          doc.URL = doc.URL+'/'; 
+          doc.URL = doc.URL + '/';
         }
+
+        doc.URL = '/' + doc.URL;
       });
 
       const betaDocs = [];

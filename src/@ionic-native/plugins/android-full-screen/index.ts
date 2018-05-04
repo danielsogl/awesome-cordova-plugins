@@ -44,7 +44,7 @@ export enum AndroidSystemUiFlags {
  *
  * this.androidFullScreen.isImmersiveModeSupported()
  *   .then(() => console.log('Immersive mode supported'))
- *   .catch(err => console.log(error));
+ *   .catch(err => console.log(err));
  *
  * ```
  */
