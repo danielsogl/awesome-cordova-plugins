@@ -30,7 +30,7 @@
     "@types/fs-extra": "^5.0.2",
     "@types/jest": "^22.2.3",
     "@types/lodash": "^4.14.108",
-    "@types/node": "^9.6.11",
+    "@types/node": "^9.6.12",
     "@types/rimraf": "^2.0.2",
     "@types/webpack": "^4.1.4",
     "async-promise-queue": "^1.0.4",
@@ -66,7 +66,7 @@
     "typescript": "~2.7.2",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "unminified-webpack-plugin": "^2.0.0",
-    "webpack": "^4.6.0",
+    "webpack": "^4.7.0",
     "winston": "^3.0.0-rc5",
     "zone.js": "latest"
   },
