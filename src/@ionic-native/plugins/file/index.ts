@@ -654,7 +654,7 @@ declare const window: Window;
  *
  * ...
  *
- * this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Directory exists')).catch(err => console.log('Directory doesn't exist'));
+ * this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Directory exists')).catch(err => console.log('Directory doesn\'t exist'));
  *
  * ```
  *
