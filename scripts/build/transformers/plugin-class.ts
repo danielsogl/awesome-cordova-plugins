@@ -57,7 +57,8 @@ function transformClasses(
   return ts.visitEachChild(
     file,
     node => {
-      if (node.kind !== ts.SyntaxKind.ClassDeclaration) {
+      if (node.kind !== ts.SyntaxKind.ClassDeclaration
+          || (node.modifiers && node.modifiers.find(v => v.kind === ts.SyntaxKind.DeclareKeyword))) {
         return node;
       }
       return transformClass(node, ngcBuild);
