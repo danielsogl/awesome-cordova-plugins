@@ -60,7 +60,7 @@ export interface OSNotification {
   wp_wns_sound?: string;
   data?: any;
   buttons?: any;
-  collapse_id?:string;
+  collapse_id?: string;
   small_icon?: string;
   large_icon?: string;
   big_picture?: string;
