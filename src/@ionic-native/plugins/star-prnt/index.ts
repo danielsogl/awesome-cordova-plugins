@@ -134,13 +134,13 @@ export interface PrintCommand {
   appendRaw?: string;
 
   /**
-   * Data (Command) is added to the command buffer. Takes an array of bytes. 
+   * Data (Command) is added to the command buffer. Takes an array of bytes.
    * Example: {appendBytes:[0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x2e]}
    */
   appendBytes?: Array<number>;
 
   /**
-   * Data (Command) is added to the command buffer. Takes an array of bytes. 
+   * Data (Command) is added to the command buffer. Takes an array of bytes.
    * Example: {appendRawBytes:[0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x2e]}
    */
   appendRawBytes?: Array<number>;
@@ -951,13 +951,14 @@ export class StarPRNT extends IonicNativePlugin {
    * Allows you to connect to the printer, keep the connection alive and receive status updates through an observable
    * @param {string} port  printer name i.e BT:StarMicronics.
    * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
+   * @param {boolean} hasBarcodeReader  Set to true if the device has a barcode reader (e.g. mPop)
    * @return {Observable<any>} Success! if connected or error message string returned by the SDK.
    */
   @Cordova({
     observable: true,
     callbackStyle: 'node'
   })
-  connect(port: string, emulation: string): Observable<any> {
+  connect(port: string, emulation: string, hasBarcodeReader: boolean): Observable<any> {
     return;
   }
 
