@@ -123,8 +123,9 @@ export interface ILocalNotificationAction {
   title?: string;
 
   /**
-   * Specifies whether the action causes the app to launch in the foreground
+   * Specifies whether the action causes the app to launch in the foreground. Keeping both parameters for backward compatability
    */
+  launch?: boolean;
   foreground?: boolean;
 
   /**
