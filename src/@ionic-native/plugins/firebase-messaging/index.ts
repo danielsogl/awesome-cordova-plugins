@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface IFirebaseMessage {
@@ -28,6 +28,8 @@ export interface IFirebaseMessage {
  *   .catch((error: any) => console.error(error));
  *
  * ```
+ * @interfaces
+ * IFirebaseMessage
  */
 @Plugin({
   pluginName: 'FirebaseMessaging',
@@ -38,7 +40,6 @@ export interface IFirebaseMessage {
 })
 @Injectable()
 export class FirebaseMessaging extends IonicNativePlugin {
-
   /**
    * Called when a push message received while app is in foreground.
    *
@@ -132,5 +133,4 @@ export class FirebaseMessaging extends IonicNativePlugin {
   setBadge(value: number): Promise<null> {
     return;
   }
-
 }
