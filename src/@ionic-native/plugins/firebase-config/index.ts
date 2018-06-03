@@ -39,7 +39,7 @@ export class FirebaseConfig extends IonicNativePlugin {
    * @returns {Promise<null>}
    */
   @Cordova({ sync: true })
-  update(ttlSeconds: number, namespace?: string): Promise<null> {
+  update(ttlSeconds: number): Promise<null> {
     return;
   }
 
@@ -47,6 +47,7 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches a boolean configuration value from RemoteConfig
    *
    * @param {string} key
+   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
@@ -58,6 +59,7 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches a string configuration value from RemoteConfig
    *
    * @param {string} key
+   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
@@ -69,6 +71,7 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches a numeric configuration value from RemoteConfig
    *
    * @param {string} key
+   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
@@ -80,6 +83,7 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches an array of bytes configuration value from RemoteConfig
    *
    * @param {string} key
+   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
