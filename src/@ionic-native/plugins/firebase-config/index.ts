@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @beta
@@ -32,7 +32,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class FirebaseConfig extends IonicNativePlugin {
-
   /**
    * Fetches remote config values with appropriate TTL and then activates them.
    *
@@ -87,5 +86,4 @@ export class FirebaseConfig extends IonicNativePlugin {
   getBytes(key: string, namespace?: string): Promise<any[]> {
     return;
   }
-
 }
