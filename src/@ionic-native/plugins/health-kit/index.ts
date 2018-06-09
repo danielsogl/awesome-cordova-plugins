@@ -87,6 +87,11 @@ export interface HealthKitOptions {
   /**
   *
   */
+  type?: string;
+  
+  /**
+  *
+  */
   readTypes?: any;
 
   /**
