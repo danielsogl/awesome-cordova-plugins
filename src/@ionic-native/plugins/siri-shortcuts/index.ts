@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface SiriShortcut {
     persistentIdentifier: string;
@@ -14,6 +14,7 @@ export interface SiriShortcutOptions extends SiriShortcut {
 }
 
 /**
+ * @beta
  * @name Siri Shortcuts
  * @description
  * This plugin only works when your app is built with XCode 10 Beta. Shortcuts will only appear on iOS-versions >= 12.0
