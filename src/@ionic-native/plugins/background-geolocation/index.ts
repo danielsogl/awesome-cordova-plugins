@@ -459,12 +459,13 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * Method can be used to detect user changes in location services settings.
    * If user enable or disable location services then success callback will be executed.
    * In case or error (SettingNotFoundException) fail callback will be executed.
-   * @returns {Promise<boolean>}
+   * @returns {Observable<number>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
+    observable: true
   })
-  watchLocationMode(): Promise<boolean> { return; }
+  watchLocationMode(): Observable<number> { return; }
 
   /**
    * Stop watching for location mode changes.
