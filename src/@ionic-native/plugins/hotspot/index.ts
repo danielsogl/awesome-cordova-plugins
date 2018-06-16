@@ -105,6 +105,10 @@ export interface HotspotDevice {
  * @beta
  * @name Hotspot
  * @description
+ * A Cordova plugin for managing Hotspot networks on Android.
+ *
+ * Requires Cordova plugin: `cordova-plugin-hotspot`. For more info, please see the [Hotspot plugin docs](https://github.com/hypery2k/cordova-hotspot-plugin).
+ *
  * @usage
  * ```typescript
  * import { Hotspot, HotspotNetwork } from '@ionic-native/hotspot';
