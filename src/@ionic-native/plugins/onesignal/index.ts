@@ -229,9 +229,13 @@ export interface OSPermissionState {
    */
   hasPrompted: boolean;
   /**
-   * Permissions Status
+   * Permissions Status (iOS Only)
    */
   status: any;
+  /**
+   * Permissions State (Android Only)
+   */
+  state: any;
 }
 /**
  * OSSubscriptionState
