@@ -157,7 +157,7 @@ export interface CardIOResponse {
  *           requireCVV: false,
  *           requirePostalCode: false
  *         };
- *         CardIO.scan(options);
+ *         this.cardIO.scan(options);
  *       }
  *     }
  *   );
