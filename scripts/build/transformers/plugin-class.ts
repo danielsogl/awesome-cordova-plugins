@@ -44,7 +44,7 @@ function transformClass(cls: any, ngcBuild?: boolean) {
     [...transformMembers(cls), ...pluginStatics]
   );
 
-  Logger.profile('transformClass: ' + cls.name.text, { level: 'verbose' });
+  Logger.profile('transformClass: ' + cls.name.text);
   return cls;
 }
 

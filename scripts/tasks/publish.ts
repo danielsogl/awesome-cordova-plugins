@@ -106,7 +106,7 @@ async function publish(ignoreErrors = false) {
     Logger.error('Error publishing!');
     Logger.error(e);
   }
-  Logger.profile('Publishing', { level: 'verbose' });
+  Logger.profile('Publishing');
 }
 
 prepare();

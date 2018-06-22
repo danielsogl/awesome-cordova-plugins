@@ -1,8 +1,8 @@
 import { createLogger, format, transports } from 'winston';
 
-const { label, printf, prettyPrint, combine, colorize, simple } = format;
+const { combine, colorize, simple } = format;
 
-const LOG_LEVEL = 'silly';
+const LOG_LEVEL = 'verbose';
 
 export const Logger = createLogger({
   level: LOG_LEVEL,

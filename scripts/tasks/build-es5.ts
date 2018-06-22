@@ -84,7 +84,7 @@ function createIndexFile() {
 function compile() {
   Logger.profile('build-es5');
   webpack(webpackConfig, (err, stats) => {
-    Logger.profile('build-es5', { level: 'verbose' });
+    Logger.profile('build-es5');
     if (err) Logger.error('Error occurred while compiling with Webpack', err);
     else {
       Logger.info('Compiled ES5 file with Webpack successfully.');
