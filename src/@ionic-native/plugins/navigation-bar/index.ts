@@ -6,7 +6,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * @beta
  * @name Navigation Bar
  * @description
- * The NavigationBar plugin can you to hide and auto hide the android navigation bar.
+ * The NavigationBar plugin allows you to hide and auto hide the android navigation bar.
  *
  * @usage
  * ```typescript

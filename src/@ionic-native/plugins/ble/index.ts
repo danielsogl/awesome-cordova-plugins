@@ -290,6 +290,71 @@ export class BLE extends IonicNativePlugin {
   }
 
   /**
+   * Establish an automatic connection to a peripheral.
+   * @usage
+   * ```
+   *   BLE.autoConnect('12:34:56:78:9A:BC').subscribe(peripheralData => {
+   *     console.log(peripheralData);
+   *   },
+   *   peripheralData => {
+   *     console.log('disconnected');
+   *   });
+   * ```
+   * @param {string} deviceId UUID or MAC address of the peripheral
+   * @return {Observable<any>} Returns an Observable that notifies of connect/disconnect.
+   */
+  @Cordova({
+    observable: true,
+    clearFunction: 'disconnect',
+    clearWithArgs: true
+  })
+  autoConnect(deviceId: string): Observable<any> {
+    return;
+  }
+
+  /**
+   * Request MTU size.
+   * May be used to fix the Error 14 "Unlikely" on write requests with more than 20 bytes.
+   * @usage
+   * ```
+   *   BLE.requestMtu('12:34:56:78:9A:BC', 512).then(() => {
+   *     console.log('MTU Size Accepted');
+   *   }, error => {
+   *     console.log('MTU Size Failed');
+   *   });
+   * ```
+   * @param {string} deviceId UUID or MAC address of the peripheral
+   * @param {number} mtuSize The new MTU size. (23 - 517, default is usually 23. Max recommended: 512)
+   * @return {Promise<any>} Returns a Promise.
+   */
+  @Cordova()
+  requestMtu(deviceId: string, mtuSize: number): Promise<any> {
+    return;
+  }
+
+  /**
+   * Refresh Device Cache
+   * This method may fix a issue of old cached services and characteristics.
+   * NOTE Since this uses an undocumented API it's not guaranteed to work.
+   * If you choose a too low delay time (timeoutMillis) the method could fail.
+   * @usage
+   * ```
+   *   BLE.refreshDeviceCache('12:34:56:78:9A:BC', 10000).then(discoveredServices => {
+   *     console.log('The new discovered services after the clean: ', discoveredServices);
+   *   }, error => {
+   *     console.log('Refresh device cache failed.');
+   *   });
+   * ```
+   * @param {string} deviceId UUID or MAC address of the peripheral
+   * @param {number} timeoutMillis Delay in milliseconds after refresh before discovering services.
+   * @return {Promise<any>} Returns a Promise.
+   */
+  @Cordova()
+  refreshDeviceCache(deviceId: string, timeoutMillis: number): Promise<any> {
+    return;
+  }
+
+  /**
    * Disconnect from a peripheral.
    * @usage
    * ```

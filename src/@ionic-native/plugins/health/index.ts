@@ -76,6 +76,12 @@ export interface HealthQueryOptionsAggregated {
    * supported values are: 'hour', 'day', 'week', 'month', 'year'.
    */
   bucket: string;
+
+  /**
+   * In Android, it is possible to query for "raw" steps or to select those as filtered by the Google Fit app.
+   * In the latter case the query object must contain the field filtered: true.
+   */
+  filtered?: boolean;
 }
 
 /**

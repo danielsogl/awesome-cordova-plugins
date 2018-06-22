@@ -263,6 +263,7 @@ export interface GetLibraryOptions {
   chunkTimeSec?: number;
   useOriginalFileNames?: boolean;
   includeAlbumData?: boolean;
+  maxItems?: number;
 }
 
 /**

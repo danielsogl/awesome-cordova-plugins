@@ -53,9 +53,9 @@ export interface ThemeableBrowserOptions {
 
   // inAppBrowser options
   location?: string;
-  hidden?: string;
-  clearcache?: string;
-  clearsessioncache?: string;
+  hidden?: boolean;
+  clearcache?: boolean;
+  clearsessioncache?: boolean;
   zoom?: string;
   hardwareback?: string;
   mediaPlaybackRequiresUserAction?: string;

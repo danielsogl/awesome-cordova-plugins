@@ -63,7 +63,6 @@ export class Clipboard extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise after the text has been cleaned
    */
   @Cordova()
-  clear(): Promise<any> {
-    return;
-  }
+  clear(): Promise<any> { return; }
+
 }

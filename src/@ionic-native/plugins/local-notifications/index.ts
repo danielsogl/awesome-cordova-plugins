@@ -124,7 +124,7 @@ export interface ILocalNotificationAction {
   /**
    * Specifies whether the action causes the app to launch in the foreground
    */
-  launch?: boolean;
+  foreground?: boolean;
 
   /**
    * If the value is 'decline' the action is displayed with special highlighting to indicate that it performs a destructive task

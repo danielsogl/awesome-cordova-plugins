@@ -228,4 +228,14 @@ export class WebIntent extends IonicNativePlugin {
   getIntent(): Promise<any> {
     return;
   }
+
+  /**
+   * Send a result back to the Intent that started this Activity.
+   * The data can be passed using 'extras'.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  sendResult({ extras: {}}): Promise<any> {
+    return;
+  }
 }
