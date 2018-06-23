@@ -21,7 +21,7 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
 
   const ignored: string [] = ['Plugin', 'Component', 'Injectable'];
 
-  const keep: string [] = ['getPromise'];
+  const keep: string [] = ['getPromise', 'checkAvailability'];
 
   let m;
 
