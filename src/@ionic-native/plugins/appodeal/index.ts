@@ -1,6 +1,6 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * @name Appodeal
@@ -46,14 +46,16 @@ export class Appodeal extends IonicNativePlugin {
    * @param {number} adType
    */
   @Cordova()
-  initialize(appKey: string, adType: number): void { };
+  initialize(appKey: string, adType: number): void {}
 
   /**
    * check if SDK has been initialized
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isInitialized(): Promise<any> { return; };
+  isInitialized(): Promise<any> {
+    return;
+  }
 
   /**
    * show ad of specified type
@@ -61,7 +63,9 @@ export class Appodeal extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  show(adType: number): Promise<any> { return; };
+  show(adType: number): Promise<any> {
+    return;
+  }
 
   /**
    * show ad of specified type with placement options
@@ -70,24 +74,26 @@ export class Appodeal extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  showWithPlacement(
-    adType: number,
-    placement: any
-    ): Promise<any> { return; };
+  showWithPlacement(adType: number, placement: any): Promise<any> {
+    return;
+  }
 
   /**
    * hide ad of specified type
    * @param {number} adType
    */
   @Cordova()
-  hide(adType: number): void { };
+  hide(adType: number): void {}
 
   /**
    * confirm use of ads of specified type
    * @param {number} adType
+   * @returns {Promise<any>}
    */
   @Cordova()
-  confirm(adType: number): void { };
+  canShow(adType: number): Promise<any> {
+    return;
+  }
 
   /**
    * check if ad of specified type has been loaded
@@ -95,7 +101,9 @@ export class Appodeal extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isLoaded(adType: number): Promise<any> { return; };
+  isLoaded(adType: number): Promise<any> {
+    return;
+  }
 
   /**
    * check if ad of specified
@@ -103,7 +111,9 @@ export class Appodeal extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isPrecache(adType: number): Promise<any> { return; };
+  isPrecache(adType: number): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -111,75 +121,77 @@ export class Appodeal extends IonicNativePlugin {
    * @param autoCache
    */
   @Cordova()
-  setAutoCache(adType: number, autoCache: any): void { };
+  setAutoCache(adType: number, autoCache: any): void {}
 
   /**
    * forcefully cache an ad by type
    * @param {number} adType
    */
   @Cordova()
-  cache(adType: number): void { };
+  cache(adType: number): void {}
 
   /**
    *
    * @param {boolean} set
    */
   @Cordova()
-  setOnLoadedTriggerBoth(set: boolean): void { };
+  setTriggerOnLoadedOnPrecache(set: boolean): void {}
 
   /**
    * enable or disable Smart Banners
    * @param {boolean} enabled
    */
   @Cordova()
-  setSmartBanners(enabled: boolean): void { };
+  setSmartBanners(enabled: boolean): void {}
 
   /**
    * enable or disable banner backgrounds
    * @param {boolean} enabled
    */
   @Cordova()
-  setBannerBackground(enabled: boolean): void { };
+  setBannerBackground(enabled: boolean): void {}
 
   /**
    * enable or disable banner animations
    * @param {boolean} enabled
    */
   @Cordova()
-  setBannerAnimation(enabled: boolean): void { };
+  setBannerAnimation(enabled: boolean): void {}
 
   /**
    *
    * @param value
    */
   @Cordova()
-  set728x90Banners(value: any): void { };
+  set728x90Banners(value: any): void {}
 
   /**
    * enable or disable logging
    * @param {boolean} logging
    */
   @Cordova()
-  setLogging(logging: boolean): void { };
+  setLogLevel(logging: boolean): void {}
 
   /**
    * enable or disable testing mode
    * @param {boolean} testing
    */
   @Cordova()
-  setTesting(testing: boolean): void { };
+  setTesting(testing: boolean): void {}
 
   /**
    * reset device ID
    */
   @Cordova()
-  resetUUID(): void { };
+  resetUUID(): void {}
 
   /**
    * get version of Appdeal SDK
    */
   @Cordova()
-  getVersion(): Promise<any> { return; };
+  getVersion(): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -187,7 +199,7 @@ export class Appodeal extends IonicNativePlugin {
    * @param {number} adType
    */
   @Cordova()
-  disableNetwork(network?: string, adType?: number): void { };
+  disableNetwork(network?: string, adType?: number): void {}
 
   /**
    *
@@ -195,54 +207,54 @@ export class Appodeal extends IonicNativePlugin {
    * @param {number} adType
    */
   @Cordova()
-  disableNetworkType(network?: string, adType?: number): void { };
+  disableNetworkType(network?: string, adType?: number): void {}
 
   /**
    * disable Location permissions for Appodeal SDK
    */
   @Cordova()
-  disableLocationPermissionCheck(): void { };
+  disableLocationPermissionCheck(): void {}
 
   /**
    * disable Storage permissions for Appodeal SDK
    */
   @Cordova()
-  disableWriteExternalStoragePermissionCheck(): void { };
+  disableWriteExternalStoragePermissionCheck(): void {}
 
   /**
    * enable event listeners
    * @param {boolean} enabled
    */
   @Cordova()
-  enableInterstitialCallbacks(enabled: boolean): void { };
+  enableInterstitialCallbacks(enabled: boolean): void {}
 
   /**
    * enable event listeners
    * @param {boolean} enabled
    */
   @Cordova()
-  enableSkippableVideoCallbacks(enabled: boolean): void { };
+  enableSkippableVideoCallbacks(enabled: boolean): void {}
 
   /**
    * enable event listeners
    * @param {boolean} enabled
    */
   @Cordova()
-  enableNonSkippableVideoCallbacks(enabled: boolean): void { };
+  enableNonSkippableVideoCallbacks(enabled: boolean): void {}
 
   /**
    * enable event listeners
    * @param {boolean} enabled
    */
   @Cordova()
-  enableBannerCallbacks(enabled: boolean): void { };
+  enableBannerCallbacks(enabled: boolean): void {}
 
   /**
    * enable event listeners
    * @param {boolean} enabled
    */
   @Cordova()
-  enableRewardedVideoCallbacks(enabled: boolean): void { };
+  enableRewardedVideoCallbacks(enabled: boolean): void {}
 
   /**
    *
@@ -250,7 +262,7 @@ export class Appodeal extends IonicNativePlugin {
    * @param {boolean} value
    */
   @Cordova()
-  setCustomBooleanRule(name: string, value: boolean): void { };
+  setCustomBooleanRule(name: string, value: boolean): void {}
 
   /**
    *
@@ -258,7 +270,7 @@ export class Appodeal extends IonicNativePlugin {
    * @param {number} value
    */
   @Cordova()
-  setCustomIntegerRule(name: string, value: number): void { };
+  setCustomIntegerRule(name: string, value: number): void {}
 
   /**
    * set rule with float value
@@ -266,7 +278,7 @@ export class Appodeal extends IonicNativePlugin {
    * @param {number} value
    */
   @Cordova()
-  setCustomDoubleRule(name: string, value: number): void { };
+  setCustomDoubleRule(name: string, value: number): void {}
 
   /**
    * set rule with string value
@@ -274,243 +286,321 @@ export class Appodeal extends IonicNativePlugin {
    * @param {string} value
    */
   @Cordova()
-  setCustomStringRule(name: string, value: string): void { };
+  setCustomStringRule(name: string, value: string): void {}
 
   /**
    * set ID preference in Appodeal for current user
    * @param id
    */
   @Cordova()
-  setUserId(id: any): void { };
+  setUserId(id: any): void {}
 
   /**
    * set Email preference in Appodeal for current user
    * @param email
    */
   @Cordova()
-  setEmail(email: any): void { };
+  setEmail(email: any): void {}
 
   /**
    * set Birthday preference in Appodeal for current user
    * @param birthday
    */
   @Cordova()
-  setBirthday(birthday: any): void { };
+  setBirthday(birthday: any): void {}
 
   /**
    * et Age preference in Appodeal for current user
    * @param age
    */
   @Cordova()
-  setAge(age: any): void { };
+  setAge(age: any): void {}
 
   /**
    * set Gender preference in Appodeal for current user
    * @param gender
    */
   @Cordova()
-  setGender(gender: any): void { };
+  setGender(gender: any): void {}
 
   /**
    * set Occupation preference in Appodeal for current user
    * @param occupation
    */
   @Cordova()
-  setOccupation(occupation: any): void { };
+  setOccupation(occupation: any): void {}
 
   /**
    * set Relation preference in Appodeal for current user
    * @param relation
    */
   @Cordova()
-  setRelation(relation: any): void { };
+  setRelation(relation: any): void {}
 
   /**
    * set Smoking preference in Appodeal for current user
    * @param smoking
    */
   @Cordova()
-  setSmoking(smoking: any): void { };
+  setSmoking(smoking: any): void {}
 
   /**
    * set Alcohol preference in Appodeal for current user
    * @param alcohol
    */
   @Cordova()
-  setAlcohol(alcohol: any): void { };
+  setAlcohol(alcohol: any): void {}
 
   /**
    * set Interests preference in Appodeal for current user
    * @param interests
    */
   @Cordova()
-  setInterests(interests: any): void { };
+  setInterests(interests: any): void {}
 
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialLoaded',
     element: document
   })
-  onInterstitialLoaded(): Observable<any> { return; }
+  onInterstitialLoaded(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialFailedToLoad',
     element: document
   })
-  onInterstitialFailedToLoad(): Observable<any> { return; }
+  onInterstitialFailedToLoad(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialShown',
     element: document
   })
-  onInterstitialShown(): Observable<any> { return; }
+  onInterstitialShown(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialClicked',
     element: document
   })
-  onInterstitialClicked(): Observable<any> { return; }
+  onInterstitialClicked(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onInterstitialClosed',
     element: document
   })
-  onInterstitialClosed(): Observable<any> { return; }
+  onInterstitialClosed(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onSkippableVideoLoaded',
     element: document
   })
-  onSkippableVideoLoaded(): Observable<any> { return; }
+  onSkippableVideoLoaded(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onSkippableVideoFailedToLoad',
     element: document
   })
-  onSkippableVideoFailedToLoad(): Observable<any> { return; }
+  onSkippableVideoFailedToLoad(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onSkippableVideoShown',
     element: document
   })
-  onSkippableVideoShown(): Observable<any> { return; }
+  onSkippableVideoShown(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onSkippableVideoFinished',
     element: document
   })
-  onSkippableVideoFinished(): Observable<any> { return; }
+  onSkippableVideoFinished(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onSkippableVideoClosed',
     element: document
   })
-  onSkippableVideoClosed(): Observable<any> { return; }
+  onSkippableVideoClosed(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onRewardedVideoLoaded',
     element: document
   })
-  onRewardedVideoLoaded(): Observable<any> { return; }
+  onRewardedVideoLoaded(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onRewardedVideoFailedToLoad',
     element: document
   })
-  onRewardedVideoFailedToLoad(): Observable<any> { return; }
+  onRewardedVideoFailedToLoad(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onRewardedVideoShown',
     element: document
   })
-  onRewardedVideoShown(): Observable<any> { return; }
+  onRewardedVideoShown(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onRewardedVideoFinished',
     element: document
   })
-  onRewardedVideoFinished(): Observable<any> { return; }
+  onRewardedVideoFinished(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onRewardedVideoClosed',
     element: document
   })
-  onRewardedVideoClosed(): Observable<any> { return; }
+  onRewardedVideoClosed(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onNonSkippableVideoLoaded',
     element: document
   })
-  onNonSkippableVideoLoaded(): Observable<any> { return; }
+  onNonSkippableVideoLoaded(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onNonSkippableVideoFailedToLoad',
     element: document
   })
-  onNonSkippableVideoFailedToLoad(): Observable<any> { return; }
+  onNonSkippableVideoFailedToLoad(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onNonSkippableVideoShown',
     element: document
   })
-  onNonSkippableVideoShown(): Observable<any> { return; }
+  onNonSkippableVideoShown(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onNonSkippableVideoFinished',
     element: document
   })
-  onNonSkippableVideoFinished(): Observable<any> { return; }
+  onNonSkippableVideoFinished(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onNonSkippableVideoClosed',
     element: document
   })
-  onNonSkippableVideoClosed(): Observable<any> { return; }
+  onNonSkippableVideoClosed(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onBannerClicked',
     element: document
   })
-  onBannerClicked(): Observable<any> { return; }
+  onBannerClicked(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onBannerFailedToLoad',
     element: document
   })
-  onBannerFailedToLoad(): Observable<any> { return; }
+  onBannerFailedToLoad(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onBannerLoaded',
     element: document
   })
-  onBannerLoaded(): Observable<any> { return; }
+  onBannerLoaded(): Observable<any> {
+    return;
+  }
 
   @Cordova({
     eventObservable: true,
     event: 'onBannerShown',
     element: document
   })
-  onBannerShown(): Observable<any> { return; }
+  onBannerShown(): Observable<any> {
+    return;
+  }
+
+  @Cordova()
+  getRewardParametersForPlacement(placement: string): Promise<any> {
+    return;
+  }
+
+  @Cordova()
+  getRewardParameters(): Promise<any> {
+    return;
+  }
+
+  @Cordova()
+  canShowWithPlacement(adType: string, placement: string): Promise<any> {
+    return;
+  }
+
+  @Cordova({
+    platforms: ['Android']
+  })
+  showTestScreen(value: any): void {}
+
+  @Cordova()
+  muteVideosIfCallsMuted(value: any): Promise<any> {
+    return;
+  }
+
+  @Cordova()
+  setChildDirectedTreatment(value: boolean): Promise<any> {
+    return;
+  }
 }

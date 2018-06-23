@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export type AndroidExoPlayerAspectRatio = 'FILL_SCREEN' | 'FIT_SCREEN';
@@ -138,7 +138,7 @@ export interface AndroidExoPlayerControllerConfig {
     exo_play: string;
 
     /**
-     * Payse button icon.
+     * Pause button icon.
      */
     exo_pause: string;
 
@@ -184,90 +184,115 @@ export interface AndroidExoPlayerControllerConfig {
 export class AndroidExoplayer extends IonicNativePlugin {
   /**
    * Show the player.
-   * @param parameters {AndroidExoPlayerParams} Parameters
+   * @param {AndroidExoPlayerParams} parameters Parameters
    * @return {Observable<AndroidExoplayerState>}
    */
-   @Cordova({
-     observable: true,
-     clearFunction: 'close',
-     clearWithArgs: false,
-     successIndex: 1,
-     errorIndex: 2
-   })
-  show(parameters: AndroidExoPlayerParams): Observable<AndroidExoplayerState> { return; }
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+    clearWithArgs: false,
+    successIndex: 1,
+    errorIndex: 2
+  })
+  show(parameters: AndroidExoPlayerParams): Observable<AndroidExoplayerState> {
+    return;
+  }
 
   /**
    * Switch stream without disposing of the player.
-   * @param url {string} The url of the new stream.
-   * @param controller {AndroidExoPlayerControllerConfig} Configuration of the controller.
+   * @param {string} url The url of the new stream.
+   * @param {AndroidExoPlayerControllerConfig} controller Configuration of the controller.
    * @return {Promise<void>}
    */
   @Cordova()
-  setStream(url: string, controller: AndroidExoPlayerControllerConfig): Promise<void> { return; }
+  setStream(
+    url: string,
+    controller: AndroidExoPlayerControllerConfig
+  ): Promise<void> {
+    return;
+  }
 
   /**
    * Will pause if playing and play if paused
    * @return {Promise<void>}
    */
   @Cordova()
-  playPause(): Promise<void> { return; }
+  playPause(): Promise<void> {
+    return;
+  }
 
   /**
    * Stop playing.
    * @return {Promise<void>}
    */
   @Cordova()
-  stop(): Promise<void> { return; }
+  stop(): Promise<void> {
+    return;
+  }
 
   /**
    * Jump to a particular position.
-   * @param milliseconds {number} Position in stream in milliseconds
+   * @param {number} milliseconds Position in stream in milliseconds
    * @return {Promise<void>}
    */
   @Cordova()
-  seekTo(milliseconds: number): Promise<void> { return; }
+  seekTo(milliseconds: number): Promise<void> {
+    return;
+  }
 
   /**
    * Jump to a particular time relative to the current position.
-   * @param milliseconds {number} Time in milliseconds
+   * @param {number} milliseconds Time in milliseconds
    * @return {Promise<void>}
    */
   @Cordova()
-  seekBy(milliseconds: number): Promise<void> { return; }
+  seekBy(milliseconds: number): Promise<void> {
+    return;
+  }
 
   /**
    * Get the current player state.
    * @return {Promise<AndroidExoplayerState>}
    */
   @Cordova()
-  getState(): Promise<AndroidExoplayerState> { return; }
+  getState(): Promise<AndroidExoplayerState> {
+    return;
+  }
 
   /**
    * Show the controller.
    * @return {Promise<void>}
    */
   @Cordova()
-  showController(): Promise<void> { return; }
+  showController(): Promise<void> {
+    return;
+  }
 
   /**
    * Hide the controller.
    * @return {Promise<void>}
    */
   @Cordova()
-  hideController(): Promise<void> { return; }
+  hideController(): Promise<void> {
+    return;
+  }
 
   /**
    * Update the controller configuration.
-   * @param controller {AndroidExoPlayerControllerConfig} Configuration of the controller.
+   * @param {AndroidExoPlayerControllerConfig} controller Configuration of the controller.
    * @return {Promise<void>}
    */
   @Cordova()
-  setController(controller: AndroidExoPlayerControllerConfig): Promise<void> { return; }
+  setController(controller: AndroidExoPlayerControllerConfig): Promise<void> {
+    return;
+  }
 
   /**
    * Close and dispose of player, call before destroy.
    * @return {Promise<void>}
    */
   @Cordova()
-  close(): Promise<void> { return; }
+  close(): Promise<void> {
+    return;
+  }
 }

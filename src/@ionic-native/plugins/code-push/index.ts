@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
+
 namespace Http {
   export const enum Verb {
-    GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT, PATCH
+    GET,
+    HEAD,
+    POST,
+    PUT,
+    DELETE,
+    TRACE,
+    OPTIONS,
+    CONNECT,
+    PATCH
   }
 
   export interface Response {
@@ -13,7 +22,12 @@ namespace Http {
 
   export interface Requester {
     request(verb: Verb, url: string, callback: Callback<Response>): void;
-    request(verb: Verb, url: string, requestBody: string, callback: Callback<Response>): void;
+    request(
+      verb: Verb,
+      url: string,
+      requestBody: string,
+      callback: Callback<Response>
+    ): void;
   }
 }
 
@@ -46,19 +60,26 @@ export interface IRemotePackage extends IPackage {
   /**
    * Downloads the package update from the CodePush service.
    *
-   * @param downloadSuccess Called with one parameter, the downloaded package information, once the download completed successfully.
-   * @param downloadError Optional callback invoked in case of an error.
-   * @param downloadProgress Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
+   * @param {SuccessCallback} downloadSuccess Called with one parameter, the downloaded package information, once the download completed successfully.
+   * @param {ErrorCallback} [downloadError] Optional callback invoked in case of an error.
+   * @param {SuccessCallback<DownloadProgress>} [downloadProgress] Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
    */
-  download(downloadSuccess: SuccessCallback<ILocalPackage>, downloadError?: ErrorCallback, downloadProgress?: SuccessCallback<DownloadProgress>): void;
+  download(
+    downloadSuccess: SuccessCallback<ILocalPackage>,
+    downloadError?: ErrorCallback,
+    downloadProgress?: SuccessCallback<DownloadProgress>
+  ): void;
 
   /**
    * Aborts the current download session, previously started with download().
    *
-   * @param abortSuccess Optional callback invoked if the abort operation succeeded.
-   * @param abortError Optional callback invoked in case of an error.
+   * @param {SuccessCallback<void>} [abortSuccess] Optional callback invoked if the abort operation succeeded.
+   * @param {ErrorCallback} [abortError] Optional callback invoked in case of an error.
    */
-  abortDownload(abortSuccess?: SuccessCallback<void>, abortError?: ErrorCallback): void;
+  abortDownload(
+    abortSuccess?: SuccessCallback<void>,
+    abortError?: ErrorCallback
+  ): void;
 }
 
 /**
@@ -82,11 +103,15 @@ export interface ILocalPackage extends IPackage {
    * On the first run after the update, the application will wait for a codePush.notifyApplicationReady() call. Once this call is made, the install operation is considered a success.
    * Otherwise, the install operation will be marked as failed, and the application is reverted to its previous version on the next run.
    *
-   * @param installSuccess Callback invoked if the install operation succeeded.
-   * @param installError Optional callback inovoked in case of an error.
-   * @param installOptions Optional parameter used for customizing the installation behavior.
+   * @param {SuccessCallback<InstallMode>} installSuccess Callback invoked if the install operation succeeded.
+   * @param {ErrorCallback} [installError] Optional callback invoked in case of an error.
+   * @param {InstallOptions} [installOptions] Optional parameter used for customizing the installation behavior.
    */
-  install(installSuccess: SuccessCallback<InstallMode>, errorCallback?: ErrorCallback, installOptions?: InstallOptions): void;
+  install(
+    installSuccess: SuccessCallback<InstallMode>,
+    errorCallback?: ErrorCallback,
+    installOptions?: InstallOptions
+  ): void;
 }
 
 /**
@@ -123,13 +148,19 @@ interface IPackageInfoMetadata extends ILocalPackage {
 }
 
 interface NativeUpdateNotification {
-  updateAppVersion: boolean;   // Always true
+  updateAppVersion: boolean; // Always true
   appVersion: string;
 }
 
-export interface Callback<T> { (error: Error, parameter: T): void; }
-export interface SuccessCallback<T> { (result?: T): void; }
-export interface ErrorCallback { (error?: Error): void; }
+export interface Callback<T> {
+  (error: Error, parameter: T): void;
+}
+export interface SuccessCallback<T> {
+  (result?: T): void;
+}
+export interface ErrorCallback {
+  (error?: Error): void;
+}
 
 interface Configuration {
   appVersion: string;
@@ -146,53 +177,80 @@ declare class AcquisitionStatus {
 
 declare class AcquisitionManager {
   constructor(httpRequester: Http.Requester, configuration: Configuration);
-  public queryUpdateWithCurrentPackage(currentPackage: IPackage, callback?: Callback<IRemotePackage | NativeUpdateNotification>): void;
-  public reportStatusDeploy(pkg?: IPackage, status?: string, previousLabelOrAppVersion?: string, previousDeploymentKey?: string, callback?: Callback<void>): void;
+  public queryUpdateWithCurrentPackage(
+    currentPackage: IPackage,
+    callback?: Callback<IRemotePackage | NativeUpdateNotification>
+  ): void;
+  public reportStatusDeploy(
+    pkg?: IPackage,
+    status?: string,
+    previousLabelOrAppVersion?: string,
+    previousDeploymentKey?: string,
+    callback?: Callback<void>
+  ): void;
   public reportStatusDownload(pkg: IPackage, callback?: Callback<void>): void;
 }
 
 interface CodePushCordovaPlugin {
-
   /**
    * Get the current package information.
    *
    * @param packageSuccess Callback invoked with the currently deployed package information.
    * @param packageError Optional callback invoked in case of an error.
    */
-  getCurrentPackage(packageSuccess: SuccessCallback<ILocalPackage>, packageError?: ErrorCallback): void;
+  getCurrentPackage(
+    packageSuccess: SuccessCallback<ILocalPackage>,
+    packageError?: ErrorCallback
+  ): void;
 
   /**
    * Gets the pending package information, if any. A pending package is one that has been installed but the application still runs the old code.
-   * This happends only after a package has been installed using ON_NEXT_RESTART or ON_NEXT_RESUME mode, but the application was not restarted/resumed yet.
+   * This happens only after a package has been installed using ON_NEXT_RESTART or ON_NEXT_RESUME mode, but the application was not restarted/resumed yet.
    */
-  getPendingPackage(packageSuccess: SuccessCallback<ILocalPackage>, packageError?: ErrorCallback): void;
+  getPendingPackage(
+    packageSuccess: SuccessCallback<ILocalPackage>,
+    packageError?: ErrorCallback
+  ): void;
 
   /**
    * Checks with the CodePush server if an update package is available for download.
    *
-   * @param querySuccess Callback invoked in case of a successful response from the server.
+   * @param {SuccessCallback<IRemotePackage>} querySuccess Callback invoked in case of a successful response from the server.
    *                     The callback takes one RemotePackage parameter. A non-null package is a valid update.
    *                     A null package means the application is up to date for the current native application version.
-   * @param queryError Optional callback invoked in case of an error.
-   * @param deploymentKey Optional deployment key that overrides the config.xml setting.
+   * @param {ErrorCallback} [queryError] Optional callback invoked in case of an error.
+   * @param {string} [deploymentKey] Optional deployment key that overrides the config.xml setting.
    */
-  checkForUpdate(querySuccess: SuccessCallback<IRemotePackage>, queryError?: ErrorCallback, deploymentKey?: string): void;
+  checkForUpdate(
+    querySuccess: SuccessCallback<IRemotePackage>,
+    queryError?: ErrorCallback,
+    deploymentKey?: string
+  ): void;
 
   /**
    * Notifies the plugin that the update operation succeeded and that the application is ready.
    * Calling this function is required on the first run after an update. On every subsequent application run, calling this function is a noop.
    * If using sync API, calling this function is not required since sync calls it internally.
    *
-   * @param notifySucceeded Optional callback invoked if the plugin was successfully notified.
-   * @param notifyFailed Optional callback invoked in case of an error during notifying the plugin.
+   * @param {SuccessCallback<void>} [notifySucceeded] Optional callback invoked if the plugin was successfully notified.
+   * @param {ErrorCallback} [notifyFailed] Optional callback invoked in case of an error during notifying the plugin.
    */
-  notifyApplicationReady(notifySucceeded?: SuccessCallback<void>, notifyFailed?: ErrorCallback): void;
+  notifyApplicationReady(
+    notifySucceeded?: SuccessCallback<void>,
+    notifyFailed?: ErrorCallback
+  ): void;
 
   /**
    * Reloads the application. If there is a pending update package installed using ON_NEXT_RESTART or ON_NEXT_RESUME modes, the update
    * will be immediately visible to the user. Otherwise, calling this function will simply reload the current version of the application.
+   *
+   * @param {SuccessCallback<void>} installSuccess
+   * @param {ErrorCallback} [errorCallback]
    */
-  restartApplication(installSuccess: SuccessCallback<void>, errorCallback?: ErrorCallback): void;
+  restartApplication(
+    installSuccess: SuccessCallback<void>,
+    errorCallback?: ErrorCallback
+  ): void;
 
   /**
    * Convenience method for installing updates in one method call.
@@ -209,13 +267,17 @@ interface CodePushCordovaPlugin {
    * - If no update is available on the server, or if a previously rolled back update is available and the ignoreFailedUpdates is set to true, the syncCallback will be invoked with the SyncStatus.UP_TO_DATE.
    * - If an error occurs during checking for update, downloading or installing it, the syncCallback will be invoked with the SyncStatus.ERROR.
    *
-   * @param syncCallback Optional callback to be called with the status of the sync operation.
+   * @param {SuccessCallback<SyncStatus>} [syncCallback] Optional callback to be called with the status of the sync operation.
    *                     The callback will be called only once, and the possible statuses are defined by the SyncStatus enum.
-   * @param syncOptions Optional SyncOptions parameter configuring the behavior of the sync operation.
-   * @param downloadProgress Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
+   * @param {SyncOptions} [syncOptions] Optional SyncOptions parameter configuring the behavior of the sync operation.
+   * @param {SuccessCallback<DownloadProgress>} [downloadProgress] Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
    *
    */
-  sync(syncCallback?: SuccessCallback<SyncStatus>, syncOptions?: SyncOptions, downloadProgress?: SuccessCallback<DownloadProgress>): void;
+  sync(
+    syncCallback?: SuccessCallback<SyncStatus>,
+    syncOptions?: SyncOptions,
+    downloadProgress?: SuccessCallback<DownloadProgress>
+  ): void;
 }
 
 /**
@@ -400,7 +462,7 @@ export interface DownloadProgress {
  * @description
  * CodePush plugin for Cordova by Microsoft that supports iOS and Android.
  *
- * For more info, please see https://github.com/ksachdeva/ionic2-code-push-example
+ * For more info, please see https://github.com/Dellos7/example-cordova-code-push-plugin
  *
  * @usage
  * ```typescript
@@ -428,12 +490,9 @@ export interface DownloadProgress {
 })
 @Injectable()
 export class CodePush extends IonicNativePlugin {
-
   /**
    * Get the current package information.
    *
-   * @param packageSuccess Callback invoked with the currently deployed package information.
-   * @param packageError Optional callback invoked in case of an error.
    * @returns {Promise<ILocalPackage>}
    */
   @Cordova()
@@ -443,7 +502,7 @@ export class CodePush extends IonicNativePlugin {
 
   /**
    * Gets the pending package information, if any. A pending package is one that has been installed but the application still runs the old code.
-   * This happends only after a package has been installed using ON_NEXT_RESTART or ON_NEXT_RESUME mode, but the application was not restarted/resumed yet.
+   * This happens only after a package has been installed using ON_NEXT_RESTART or ON_NEXT_RESUME mode, but the application was not restarted/resumed yet.
    * @returns {Promise<ILocalPackage>}
    */
   @Cordova()
@@ -454,11 +513,7 @@ export class CodePush extends IonicNativePlugin {
   /**
    * Checks with the CodePush server if an update package is available for download.
    *
-   * @param querySuccess Callback invoked in case of a successful response from the server.
-   *                     The callback takes one RemotePackage parameter. A non-null package is a valid update.
-   *                     A null package means the application is up to date for the current native application version.
-   * @param queryError Optional callback invoked in case of an error.
-   * @param deploymentKey Optional deployment key that overrides the config.xml setting.
+   * @param {string} [deploymentKey] Optional deployment key that overrides the config.xml setting.
    * @returns {Promise<IRemotePackage>}
    */
   @Cordova({
@@ -473,8 +528,6 @@ export class CodePush extends IonicNativePlugin {
    * Calling this function is required on the first run after an update. On every subsequent application run, calling this function is a noop.
    * If using sync API, calling this function is not required since sync calls it internally.
    *
-   * @param notifySucceeded Optional callback invoked if the plugin was successfully notified.
-   * @param notifyFailed Optional callback invoked in case of an error during notifying the plugin.
    * @returns {Promise<void>}
    */
   @Cordova()
@@ -507,9 +560,8 @@ export class CodePush extends IonicNativePlugin {
    * - If no update is available on the server, or if a previously rolled back update is available and the ignoreFailedUpdates is set to true, the syncCallback will be invoked with the SyncStatus.UP_TO_DATE.
    * - If an error occurs during checking for update, downloading or installing it, the syncCallback will be invoked with the SyncStatus.ERROR.
    *
-   * @param syncCallback Optional callback to be called with the status of the sync operation.
-   * @param syncOptions Optional SyncOptions parameter configuring the behavior of the sync operation.
-   * @param downloadProgress Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
+   * @param {SyncOptions} [syncOptions] Optional SyncOptions parameter configuring the behavior of the sync operation.
+   * @param {SuccessCallback<DownloadProgress>} [downloadProgress] Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
    * @returns {Observable<SyncStatus>}
    *
    */
@@ -518,8 +570,10 @@ export class CodePush extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 3 // we don't need this, so we set it to a value higher than # of args
   })
-  sync(syncOptions?: SyncOptions, downloadProgress?: SuccessCallback<DownloadProgress>): Observable<SyncStatus> {
+  sync(
+    syncOptions?: SyncOptions,
+    downloadProgress?: SuccessCallback<DownloadProgress>
+  ): Observable<SyncStatus> {
     return;
   }
-
 }

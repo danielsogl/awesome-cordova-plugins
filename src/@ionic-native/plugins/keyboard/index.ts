@@ -6,6 +6,10 @@ import { Observable } from 'rxjs/Observable';
 /**
  * @name Keyboard
  * @description
+ * Keyboard plugin for Cordova.
+ * 
+ * Requires Cordova plugin: `ionic-plugin-keyboard`. For more info, please see the [Keyboard plugin docs](https://github.com/ionic-team/ionic-plugin-keyboard).
+ *
  * @usage
  * ```typescript
  * import { Keyboard } from '@ionic-native/keyboard';

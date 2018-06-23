@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CalendarOptions {
-
   /**
    * Id
    */
@@ -47,7 +46,14 @@ export interface CalendarOptions {
    * URL
    */
   url?: string;
+}
 
+export interface NameOrOptions {
+  /** Calendar name */
+  calendarName?: string;
+
+  /** Calendar color as a HEX string */
+  calendarColor?: string;
 }
 
 /**
@@ -72,6 +78,7 @@ export interface CalendarOptions {
  * ```
  * @interfaces
  * CalendarOptions
+ * NameOrOptions
  */
 @Plugin({
   pluginName: 'Calendar',
@@ -82,12 +89,11 @@ export interface CalendarOptions {
 })
 @Injectable()
 export class Calendar extends IonicNativePlugin {
-
   /**
    * This function checks if we have permission to read/write from/to the calendar.
    * The promise will resolve with `true` when:
    * - You're running on iOS, or
-   * - You're targetting API level lower than 23, or
+   * - You're targeting API level lower than 23, or
    * - You're using Android < 6, or
    * - You've already granted permission
    *
@@ -95,51 +101,65 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  hasReadWritePermission(): Promise<boolean> { return; }
+  hasReadWritePermission(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Check if we have read permission
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  hasReadPermission(): Promise<boolean> { return; }
+  hasReadPermission(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Check if we have write permission
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  hasWritePermission(): Promise<boolean> { return; }
+  hasWritePermission(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Request write permission
    * @returns {Promise<any>}
    */
   @Cordova()
-  requestWritePermission(): Promise<any> { return; }
+  requestWritePermission(): Promise<any> {
+    return;
+  }
 
   /**
    * Request read permission
    * @returns {Promise<any>}
    */
   @Cordova()
-  requestReadPermission(): Promise<any> { return; }
+  requestReadPermission(): Promise<any> {
+    return;
+  }
 
   /**
    * Requests read/write permissions
    * @returns {Promise<any>}
    */
   @Cordova()
-  requestReadWritePermission(): Promise<any> { return; }
+  requestReadWritePermission(): Promise<any> {
+    return;
+  }
 
   /**
    * Create a calendar. (iOS only)
    *
-   * @param {string | Object} nameOrOptions  either a string name or a options object. If string, provide the calendar name. IF an object, provide a calendar name as a string and a calendar color in hex format as a string
+   * @param {string | NameOrOptions} nameOrOptions  either a string name or a options object. If string, provide the calendar name. IF an object, provide a calendar name as a string and a calendar color in hex format as a string
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  createCalendar(nameOrOptions: string | any): Promise<any> { return; }
+  createCalendar(nameOrOptions: string | NameOrOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Delete a calendar. (iOS only)
@@ -147,7 +167,9 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  deleteCalendar(name: string): Promise<any> { return; }
+  deleteCalendar(name: string): Promise<any> {
+    return;
+  }
 
   /**
    * Returns the default calendar options.
@@ -157,7 +179,21 @@ export class Calendar extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  getCalendarOptions(): CalendarOptions { return; }
+  getCalendarOptions(): CalendarOptions {
+    return;
+  }
+
+  /**
+   * Returns options for a custom calender with specific color
+   *
+   * @return {NameOrOptions} Returns an object with the default options
+   */
+  @Cordova({
+    sync: true
+  })
+  getCreateCalendarOptions(): NameOrOptions {
+    return;
+  }
 
   /**
    * Silently create an event.
@@ -175,7 +211,9 @@ export class Calendar extends IonicNativePlugin {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Silently create an event with additional options.
@@ -196,7 +234,9 @@ export class Calendar extends IonicNativePlugin {
     startDate?: Date,
     endDate?: Date,
     options?: CalendarOptions
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Interactively create an event.
@@ -215,7 +255,9 @@ export class Calendar extends IonicNativePlugin {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Interactively create an event with additional options.
@@ -236,7 +278,9 @@ export class Calendar extends IonicNativePlugin {
     startDate?: Date,
     endDate?: Date,
     options?: CalendarOptions
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Find an event.
@@ -255,7 +299,9 @@ export class Calendar extends IonicNativePlugin {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Find an event with additional options.
@@ -275,7 +321,9 @@ export class Calendar extends IonicNativePlugin {
     startDate?: Date,
     endDate?: Date,
     options?: CalendarOptions
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Find a list of events within the specified date range. (Android only)
@@ -287,14 +335,18 @@ export class Calendar extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  listEventsInRange(startDate: Date, endDate: Date): Promise<any> { return; }
+  listEventsInRange(startDate: Date, endDate: Date): Promise<any> {
+    return;
+  }
 
   /**
    * Get a list of all calendars.
    * @returns {Promise<any>} A Promise that resolves with the list of calendars, or rejects with an error.
    */
   @Cordova()
-  listCalendars(): Promise<any> { return; }
+  listCalendars(): Promise<any> {
+    return;
+  }
 
   /**
    * Get a list of all future events in the specified calendar. (iOS only)
@@ -303,7 +355,9 @@ export class Calendar extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS']
   })
-  findAllEventsInNamedCalendar(calendarName: string): Promise<any> { return; }
+  findAllEventsInNamedCalendar(calendarName: string): Promise<any> {
+    return;
+  }
 
   /**
    * Modify an event. (iOS only)
@@ -334,7 +388,9 @@ export class Calendar extends IonicNativePlugin {
     newNotes?: string,
     newStartDate?: Date,
     newEndDate?: Date
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Modify an event with additional options. (iOS only)
@@ -369,7 +425,9 @@ export class Calendar extends IonicNativePlugin {
     newEndDate?: Date,
     filterOptions?: CalendarOptions,
     newOptions?: CalendarOptions
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Delete an event.
@@ -388,7 +446,9 @@ export class Calendar extends IonicNativePlugin {
     notes?: string,
     startDate?: Date,
     endDate?: Date
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Delete an event from the specified Calendar. (iOS only)
@@ -411,7 +471,9 @@ export class Calendar extends IonicNativePlugin {
     startDate?: Date,
     endDate?: Date,
     calendarName?: string
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Open the calendar at the specified date.
@@ -419,6 +481,7 @@ export class Calendar extends IonicNativePlugin {
    * @return {Promise<any>} Promise returns a promise
    */
   @Cordova()
-  openCalendar(date: Date): Promise<any> { return; }
-
+  openCalendar(date: Date): Promise<any> {
+    return;
+  }
 }

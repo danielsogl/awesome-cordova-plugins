@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CardIOOptions {
-
   /**
    * Set to true to require expiry date
    */
@@ -21,7 +20,7 @@ export interface CardIOOptions {
   /**
    * 	Removes the keyboard button from the scan screen.
    */
-  supressManual?: boolean;
+  suppressManual?: boolean;
 
   /**
    * The postal code will only collect numeric input. Set this if you know the expected country's postal code has only numeric postal codes.
@@ -82,11 +81,9 @@ export interface CardIOOptions {
    * Once a card image has been captured but before it has been processed, this value will determine whether to continue processing as usual.
    */
   supressScan?: boolean;
-
 }
 
 export interface CardIOResponse {
-
   /**
    * Card type
    */
@@ -126,13 +123,18 @@ export interface CardIOResponse {
    * Cardholder name
    */
   cardholderName: string;
-
 }
 
 /**
  * @name Card IO
  * @description
  * @usage
+ * This plug-in exposes card.io credit card scanning.
+ * 
+ * **NOTE**: If you would like to actually process a credit card charge, you might be interested in the [PayPal Cordova Plug-in](https://github.com/paypal/PayPal-Cordova-Plugin).
+ * 
+ * Requires Cordova plugin: `card.io.cordova.mobilesdk`. For more info, please see the [Card IO plugin docs](https://github.com/card-io/card.io-Cordova-Plugin).
+ * 
  * Note: For use with iOS 10 + When building your app with the iOS 10 SDK +, you have to add some info to the info.plist file. This is due to increased security in iOS 10. Go to your app directory and search for the <your app name>Info.plist file. Add the following lines in the main <dict> element.
  * ```xml
  *<key>NSCameraUsageDescription</key>
@@ -155,7 +157,7 @@ export interface CardIOResponse {
  *           requireCVV: false,
  *           requirePostalCode: false
  *         };
- *         CardIO.scan(options);
+ *         this.cardIO.scan(options);
  *       }
  *     }
  *   );
@@ -173,7 +175,6 @@ export interface CardIOResponse {
 })
 @Injectable()
 export class CardIO extends IonicNativePlugin {
-
   /**
    * Check whether card scanning is currently available. (May vary by
    * device, OS version, network connectivity, etc.)
@@ -181,21 +182,26 @@ export class CardIO extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  canScan(): Promise<boolean> { return; }
+  canScan(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Scan a credit card with card.io.
-   * @param {CardIOOptions} options Options for configuring the plugin
+   * @param {CardIOOptions} [options] Options for configuring the plugin
    * @returns {Promise<any>}
    */
   @Cordova()
-  scan(options?: CardIOOptions): Promise<CardIOResponse> { return; }
+  scan(options?: CardIOOptions): Promise<CardIOResponse> {
+    return;
+  }
 
   /**
    * Retrieve the version of the card.io library. Useful when contacting support.
    * @returns {Promise<string>}
    */
   @Cordova()
-  version(): Promise<string> { return; }
-
+  version(): Promise<string> {
+    return;
+  }
 }

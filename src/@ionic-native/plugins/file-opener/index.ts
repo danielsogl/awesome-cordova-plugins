@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name File Opener
@@ -16,7 +16,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * this.fileOpener.open('path/to/file.pdf', 'application/pdf')
  *   .then(() => console.log('File is opened'))
- *   .catch(e => console.log('Error openening file', e));
+ *   .catch(e => console.log('Error opening file', e));
  *
  * ```
  */
@@ -29,11 +29,10 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class FileOpener extends IonicNativePlugin {
-
   /**
    * Open an file
-   * @param filePath {string} File Path
-   * @param fileMIMEType {string} File MIME Type
+   * @param {string} filePath File Path
+   * @param {string} fileMIMEType File MIME Type
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -41,11 +40,13 @@ export class FileOpener extends IonicNativePlugin {
     successName: 'success',
     errorName: 'error'
   })
-  open(filePath: string, fileMIMEType: string): Promise<any> { return; }
+  open(filePath: string, fileMIMEType: string): Promise<any> {
+    return;
+  }
 
   /**
    * Uninstalls a package
-   * @param packageId {string}  Package ID
+   * @param {string} packageId Package ID
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -53,11 +54,13 @@ export class FileOpener extends IonicNativePlugin {
     successName: 'success',
     errorName: 'error'
   })
-  uninstall(packageId: string): Promise<any> { return; }
+  uninstall(packageId: string): Promise<any> {
+    return;
+  }
 
   /**
    * Check if an app is already installed
-   * @param packageId {string} Package ID
+   * @param {string} packageId Package ID
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -65,6 +68,7 @@ export class FileOpener extends IonicNativePlugin {
     successName: 'success',
     errorName: 'error'
   })
-  appIsInstalled(packageId: string): Promise<any> { return; }
-
+  appIsInstalled(packageId: string): Promise<any> {
+    return;
+  }
 }
