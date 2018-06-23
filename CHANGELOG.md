@@ -1,20 +1,29 @@
-<a name="5.0.0-beta.9"></a>
-# [5.0.0-beta.9](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.8...v5.0.0-beta.9) (2018-04-11)
-
-
-
-<a name="5.0.0-beta.8"></a>
-# [5.0.0-beta.8](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.7...v5.0.0-beta.8) (2018-04-11)
-
-
-
-<a name="5.0.0-beta.7"></a>
-# [5.0.0-beta.7](https://github.com/ionic-team/ionic-native/compare/v4.7.0...v5.0.0-beta.7) (2018-04-09)
+<a name="5.0.0-beta.12"></a>
+# [5.0.0-beta.12](https://github.com/ionic-team/ionic-native/compare/v4.7.0...v5.0.0-beta.12) (2018-06-23)
 
 
 ### Bug Fixes
 
+* **call-number:** fix isCallSupported function ([f49d2a9](https://github.com/ionic-team/ionic-native/commit/f49d2a9)), closes [#2428](https://github.com/ionic-team/ionic-native/issues/2428)
 * build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea))
+* **calendar:** Fixes createCalendar parameter typing ([84e0aa1](https://github.com/ionic-team/ionic-native/commit/84e0aa1))
+* **ibeacon:** correct Type {Region} in some params ([#2453](https://github.com/ionic-team/ionic-native/issues/2453)) ([300db62](https://github.com/ionic-team/ionic-native/commit/300db62))
+* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9))
+* **linting:** Fixing misc linting errors that typedoc complains about ([#2476](https://github.com/ionic-team/ionic-native/issues/2476)) ([d3c2859](https://github.com/ionic-team/ionic-native/commit/d3c2859))
+* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d7))
+* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234))
+* **web-intent:** fix options param ([#2450](https://github.com/ionic-team/ionic-native/issues/2450)) ([23b760b](https://github.com/ionic-team/ionic-native/commit/23b760b))
+* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299))
+* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b0687))
+* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6))
+
+
+### Features
+
+* **file-picker:** add missing options ([1d9c449](https://github.com/ionic-team/ionic-native/commit/1d9c449))
+* **firebase:** add new functions ([36450e1](https://github.com/ionic-team/ionic-native/commit/36450e1))
+* **ionic-webview:** plugin for cordova-plugin-ionic-webview 2.0 ([8beb177](https://github.com/ionic-team/ionic-native/commit/8beb177))
+* **uptime:** add deep sleep parameter ([#2456](https://github.com/ionic-team/ionic-native/issues/2456)) ([91d22c5](https://github.com/ionic-team/ionic-native/commit/91d22c5))
 
 
 
