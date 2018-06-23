@@ -42,7 +42,7 @@ export interface WheelSelectorOptions {
    * Android only - theme color, 'light' or 'dark'.
    * Default: light
    */
-  theme?: string;
+  theme?: 'light' | 'dark';
 
   /**
    * Whether to have the wheels 'wrap' (Android only)
@@ -76,7 +76,7 @@ export interface WheelSelectorData {
  *
  * ...
  *
- * let jsonData = {
+ * const jsonData = {
  *   numbers: [
  *    { description: "1" },
  *     { description: "2" },
@@ -105,7 +105,7 @@ export interface WheelSelectorData {
  *
  * ...
  *
- * //basic number selection, index is always returned in the result
+ * // basic number selection, index is always returned in the result
  *  selectANumber() {
  *    this.selector.show({
  *      title: "How Many?",
@@ -122,7 +122,7 @@ export interface WheelSelectorData {
  *
  *  ...
  *
- *  //basic selection, setting initial displayed default values: '3' 'Banana'
+ *  // basic selection, setting initial displayed default values: '3' 'Banana'
  *  selectFruit() {
  *    this.selector.show({
  *      title: "How Much?",
@@ -145,8 +145,8 @@ export interface WheelSelectorData {
  *
  *  ...
  *
- *  //more complex as overrides which key to display
- *  //then retrieve properties from original data
+ *  // more complex as overrides which key to display
+ *  // then retrieve properties from original data
  *  selectNamesUsingDisplayKey() {
  *    this.selector.show({
  *      title: "Who?",

@@ -45,7 +45,7 @@ export interface StripeCardTokenParams {
   /**
    * Postal code / ZIP Code
    */
-  postal_code?: string;
+  postalCode?: string;
   /**
    * 3-letter ISO code for currency
    */

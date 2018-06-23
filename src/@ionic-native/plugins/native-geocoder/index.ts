@@ -8,23 +8,29 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
+ * import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
  *
  * constructor(private nativeGeocoder: NativeGeocoder) { }
  *
  * ...
  *
- * this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818)
- *   .then((result: NativeGeocoderReverseResult) => console.log(JSON.stringify(result)))
+ * let options: NativeGeocoderOptions = {
+ *     useLocale: true,
+ *     maxResults: 5
+ * };
+ * 
+ * this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818, options)
+ *   .then((result: NativeGeocoderReverseResult[]) => console.log(JSON.stringify(result[0])))
  *   .catch((error: any) => console.log(error));
  *
- * this.nativeGeocoder.forwardGeocode('Berlin')
- *   .then((coordinates: NativeGeocoderForwardResult) => console.log('The coordinates are latitude=' + coordinates.latitude + ' and longitude=' + coordinates.longitude))
+ * this.nativeGeocoder.forwardGeocode('Berlin', options)
+ *   .then((coordinates: NativeGeocoderForwardResult[]) => console.log('The coordinates are latitude=' + coordinates[0].latitude + ' and longitude=' + coordinates[0].longitude))
  *   .catch((error: any) => console.log(error));
  * ```
  * @interfaces
  * NativeGeocoderReverseResult
  * NativeGeocoderForwardResult
+ * NativeGeocoderOptions
  */
 @Plugin({
   pluginName: 'NativeGeocoder',
@@ -40,22 +46,24 @@ export class NativeGeocoder extends IonicNativePlugin {
    * Reverse geocode a given latitude and longitude to find location address
    * @param latitude {number} The latitude
    * @param longitude {number} The longitude
-   * @return {Promise<NativeGeocoderReverseResult>}
+   * @param options {NativeGeocoderOptions} The options
+   * @return {Promise<NativeGeocoderReverseResult[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  reverseGeocode(latitude: number, longitude: number): Promise<NativeGeocoderReverseResult> { return; }
+  reverseGeocode(latitude: number, longitude: number, options?: NativeGeocoderOptions): Promise<NativeGeocoderReverseResult[]> { return; }
 
   /**
    * Forward geocode a given address to find coordinates
    * @param addressString {string} The address to be geocoded
-   * @return {Promise<NativeGeocoderForwardResult>}
+   * @param options {NativeGeocoderOptions} The options
+   * @return {Promise<NativeGeocoderForwardResult[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  forwardGeocode(addressString: string): Promise<NativeGeocoderForwardResult> { return; }
+  forwardGeocode(addressString: string, options?: NativeGeocoderOptions): Promise<NativeGeocoderForwardResult[]> { return; }
 }
 
 /**
@@ -115,4 +123,26 @@ export interface NativeGeocoderForwardResult {
    * The longitude.
    */
   longitude: string;
+}
+
+/**
+ * Options for reverse and forward geocoding.
+ */
+export interface NativeGeocoderOptions {
+  /**
+   * The locale to use when returning the address information.
+   * If set to 'false' the locale will always be 'en_US'.
+   * Default is 'true'
+   */
+  useLocale: boolean;
+  /**
+   * The default locale to use when returning the address information.
+   * e.g.: 'fa-IR' or 'de_DE'.
+   */
+  defaultLocale?: string;
+  /**
+   * The maximum number of result to return (max is 5).
+   * Default is 1
+   */
+  maxResults: number;
 }

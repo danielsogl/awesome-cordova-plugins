@@ -2,15 +2,34 @@ import { Injectable } from '@angular/core';
 import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 
 export interface SpinnerDialogIOSOptions {
+  /**
+   * Opacity of the overlay, between 0 (transparent) and 1 (opaque). Default: 0.35
+   */
   overlayOpacity?: number;
+
+  /**
+   * Red component of the text color, between 0 and 1. Default: 1
+   */
   textColorRed?: number;
+
+  /**
+   * Green component of the text color, between 0 and 1. Default: 1
+   */
   textColorGreen?: number;
+
+  /**
+   * Blue component of the text color, between 0 and 1. Default: 1
+   */
   textColorBlue?: number;
 }
 
 /**
  * @name Spinner Dialog
  * @description
+ * Cordova plugin for showing a native spinner based on Paldom/SpinnerDialog.
+ *
+ * Requires Cordova plugin: `cordova-plugin-native-spinner`. For more info, please see the [Spinner Dialog plugin docs](https://github.com/greybax/cordova-plugin-native-spinner).
+ *
  * @usage
  * ```typescript
  * import { SpinnerDialog } from '@ionic-native/spinner-dialog';

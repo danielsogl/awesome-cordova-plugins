@@ -158,7 +158,7 @@ export interface Player {
   pluginRef: 'plugins.playGamesServices',
   repo: 'https://github.com/artberri/cordova-plugin-play-games-services',
   platforms: ['Android'],
-  install: 'ionic cordova plugin add cordova-plugin-play-games-service --variable APP_ID="YOUR_APP_ID',
+  install: 'ionic cordova plugin add cordova-plugin-play-games-services --variable APP_ID="YOUR_APP_ID',
 })
 @Injectable()
 export class GooglePlayGamesServices extends IonicNativePlugin {

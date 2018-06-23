@@ -1,9 +1,8 @@
-import { Plugin, IonicNativePlugin, Cordova } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface NotificationData {
-
   /**
    * Determines whether the notification was pressed or not
    */
@@ -15,7 +14,6 @@ export interface NotificationData {
    */
 
   [name: string]: any;
-
 }
 
 /**
@@ -31,25 +29,25 @@ export interface NotificationData {
  *
  * ...
  *
- * fcm.subscribeToTopic('marketing');
+ * this.fcm.subscribeToTopic('marketing');
  *
- * fcm.getToken().then(token=>{
+ * this.fcm.getToken().then(token => {
  *   backend.registerToken(token);
- * })
+ * });
  *
- * fcm.onNotification().subscribe(data=>{
+ * this.fcm.onNotification().subscribe(data => {
  *   if(data.wasTapped){
  *     console.log("Received in background");
  *   } else {
  *     console.log("Received in foreground");
  *   };
- * })
+ * });
  *
- * fcm.onTokenRefresh().subscribe(token=>{
+ * this.fcm.onTokenRefresh().subscribe(token => {
  *   backend.registerToken(token);
- * })
+ * });
  *
- * fcm.unsubscribeFromTopic('marketing');
+ * this.fcm.unsubscribeFromTopic('marketing');
  *
  * ```
  * @interfaces
@@ -64,14 +62,15 @@ export interface NotificationData {
 })
 @Injectable()
 export class FCM extends IonicNativePlugin {
-
   /**
-   * Get's device's current registration id
+   * Gets device's current registration id
    *
    * @returns {Promise<string>} Returns a Promise that resolves with the registration id token
    */
   @Cordova()
-  getToken(): Promise<string> { return; }
+  getToken(): Promise<string> {
+    return;
+  }
 
   /**
    * Event firing on the token refresh
@@ -81,7 +80,9 @@ export class FCM extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  onTokenRefresh(): Observable<string> { return; }
+  onTokenRefresh(): Observable<string> {
+    return;
+  }
 
   /**
    * Subscribes you to a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
@@ -91,17 +92,21 @@ export class FCM extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise resolving in result of subscribing to a topic
    */
   @Cordova()
-  subscribeToTopic(topic: string): Promise<any> { return; }
+  subscribeToTopic(topic: string): Promise<any> {
+    return;
+  }
 
   /**
-   * Unubscribes you from a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
+   * Unsubscribes you from a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
    *
    * @param {string} topic Topic to be unsubscribed from
    *
    * @returns {Promise<any>} Returns a promise resolving in result of unsubscribing from a topic
    */
   @Cordova()
-  unsubscribeFromTopic(topic: string): Promise<any> { return; }
+  unsubscribeFromTopic(topic: string): Promise<any> {
+    return;
+  }
 
   /**
    * Watch for incoming notifications
@@ -113,6 +118,7 @@ export class FCM extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 2
   })
-  onNotification(): Observable<NotificationData> { return; }
-
+  onNotification(): Observable<NotificationData> {
+    return;
+  }
 }

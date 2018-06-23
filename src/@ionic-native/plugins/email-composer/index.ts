@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
+import {
+  Cordova,
+  CordovaCheck,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 
 export interface EmailComposerOptions {
-
   /**
    * App to send the email with
    */
@@ -43,8 +47,11 @@ export interface EmailComposerOptions {
    */
   isHtml?: boolean;
 
+  /**
+   *  Content type of the email (Android only)
+   */
+  type?: string;
 }
-
 
 /**
  * @name Email Composer
@@ -106,15 +113,14 @@ export interface EmailComposerOptions {
   plugin: 'cordova-plugin-email-composer',
   pluginRef: 'cordova.plugins.email',
   repo: 'https://github.com/katzer/cordova-plugin-email-composer',
-  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows', 'macOS']
 })
 @Injectable()
 export class EmailComposer extends IonicNativePlugin {
-
   /**
    * Verifies if sending emails is supported on the device.
    *
-   * @param [app] {string} App id or uri scheme.
+   * @param {string} [app] App id or uri scheme.
    * @returns {Promise<any>} Resolves if available, rejects if not available
    */
   @CordovaCheck()
@@ -148,7 +154,9 @@ export class EmailComposer extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 2
   })
-  requestPermission(): Promise<boolean> { return; }
+  requestPermission(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if the app has a permission to access email accounts information
@@ -158,28 +166,31 @@ export class EmailComposer extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 2
   })
-  hasPermission(): Promise<boolean> { return; }
+  hasPermission(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Adds a new mail app alias.
    *
-   * @param alias {string} The alias name
-   * @param packageName {string} The package name
+   * @param {string} alias The alias name
+   * @param {string} packageName The package name
    */
   @Cordova()
-  addAlias(alias: string, packageName: string): void { }
+  addAlias(alias: string, packageName: string): void {}
 
   /**
    * Displays the email composer pre-filled with data.
    *
-   * @param options {EmailComposerOptions} Email
-   * @param [scope] {any} Scope for the promise
+   * @param {EmailComposerOptions} options Email
+   * @param {any} [scope] Scope for the promise
    * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 3
   })
-  open(options: EmailComposerOptions, scope?: any): Promise<any> { return; }
-
+  open(options: EmailComposerOptions, scope?: any): Promise<any> {
+    return;
+  }
 }

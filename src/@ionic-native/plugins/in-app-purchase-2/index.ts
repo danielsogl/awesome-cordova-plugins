@@ -46,7 +46,7 @@ import { Injectable } from '@angular/core';
  *       alert('Store Error ' + JSON.stringify(err));
  *     });
  *
- *     this.store.ready().then((status) => {
+ *     this.store.ready(() =>  {
  *       console.log(JSON.stringify(this.store.get(productId)));
  *       console.log('Store is Ready: ' + JSON.stringify(status));
  *       console.log('Products: ' + JSON.stringify(this.store.products));
@@ -416,12 +416,8 @@ export class InAppPurchase2 extends IonicNativePlugin {
   @Cordova({ sync: true })
   order(product: string | IAPProduct, additionalData?: any): { then: Function; error: Function; } { return; }
 
-  /**
-   *
-   * @return {Promise<any>} returns a promise that resolves when the store is ready
-   */
   @Cordova()
-  ready(): Promise<void> { return; }
+  ready(callback: Function): void { return; }
 
   @Cordova({ sync: true })
   refresh(): void {}

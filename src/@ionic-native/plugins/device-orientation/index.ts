@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface DeviceOrientationCompassHeading {
-
   /**
    * The heading in degrees from 0-359.99 at a single moment in time. (Number)
    */
@@ -22,12 +21,10 @@ export interface DeviceOrientationCompassHeading {
   /**
    * The time at which this heading was determined. (DOMTimeStamp)
    */
-  timestamp: any;
-
+  timestamp: number;
 }
 
 export interface DeviceOrientationCompassOptions {
-
   /**
    * How often to retrieve the compass heading in milliseconds. (Number) (Default: 100)
    */
@@ -37,7 +34,6 @@ export interface DeviceOrientationCompassOptions {
    * The change in degrees required to initiate a watchHeading success callback. When this value is set, frequency is ignored. (Number)
    */
   filter?: number;
-
 }
 
 /**
@@ -77,23 +73,35 @@ export interface DeviceOrientationCompassOptions {
   plugin: 'cordova-plugin-device-orientation',
   pluginRef: 'navigator.compass',
   repo: 'https://github.com/apache/cordova-plugin-device-orientation',
-  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone']
+  platforms: [
+    'Amazon Fire OS',
+    'Android',
+    'BlackBerry 10',
+    'Browser',
+    'Firefox OS',
+    'iOS',
+    'Tizen',
+    'Ubuntu',
+    'Windows',
+    'Windows Phone'
+  ]
 })
 @Injectable()
 export class DeviceOrientation extends IonicNativePlugin {
-
   /**
    * Get the current compass heading.
    * @returns {Promise<DeviceOrientationCompassHeading>}
    */
   @Cordova()
-  getCurrentHeading(): Promise<DeviceOrientationCompassHeading> { return; }
+  getCurrentHeading(): Promise<DeviceOrientationCompassHeading> {
+    return;
+  }
 
   /**
    * Get the device current heading at a regular interval
    *
    * Stop the watch by unsubscribing from the observable
-   * @param {DeviceOrientationCompassOptions} options Options for compass. Frequency and Filter. Optional
+   * @param {DeviceOrientationCompassOptions} [options] Options for compass. Frequency and Filter. Optional
    * @returns {Observable<DeviceOrientationCompassHeading>} Returns an observable that contains the compass heading
    */
   @Cordova({
@@ -101,6 +109,9 @@ export class DeviceOrientation extends IonicNativePlugin {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  watchHeading(options?: DeviceOrientationCompassOptions): Observable<DeviceOrientationCompassHeading> { return; }
-
+  watchHeading(
+    options?: DeviceOrientationCompassOptions
+  ): Observable<DeviceOrientationCompassHeading> {
+    return;
+  }
 }

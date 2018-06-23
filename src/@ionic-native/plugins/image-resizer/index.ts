@@ -1,11 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface ImageResizerOptions {
   /**
    * The URI for the image on the device to get scaled
    */
   uri: string;
+
+  /**
+   * The name of the folder the image should be put
+   * (Android only)
+   */
+  folderName?: string;
+
+  /**
+   * A custom name for the file. Default name is a timestamp. You have to set this value on iOS
+   */
+  fileName?: string;
+
+  /**
+   *
+   * Quality given as Number for the quality of the new image
+   * (Android and iOS only)
+   */
+  quality?: number;
 
   /**
    * The width of the new image
@@ -18,23 +36,10 @@ export interface ImageResizerOptions {
   height: number;
 
   /**
-   * The name of the folder the image should be put
-   * (Android only)
+   * Whether or not to return a base64 encoded image string instead of the path to the resized image.
+   * iOS only
    */
-  folderName?: string;
-
-  /**
-   *
-   * Quality given as Number for the quality of the new image
-   * (Android and iOS only)
-   */
-  quality?: number;
-
-  /**
-   * A custom name for the file. Default name is a timestamp
-   * (Android and Windows only)
-   */
-  fileName?: string;
+  base64?: boolean;
 }
 
 /**
@@ -80,5 +85,7 @@ export class ImageResizer extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  resize(options: ImageResizerOptions): Promise<any> { return; }
+  resize(options: ImageResizerOptions): Promise<any> {
+    return;
+  }
 }

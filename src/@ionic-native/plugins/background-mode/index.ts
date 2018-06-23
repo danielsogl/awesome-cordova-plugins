@@ -1,49 +1,53 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-
 
 /**
  * Configurations items that can be updated.
  */
 export interface BackgroundModeConfiguration {
-
   /**
    * Title of the background task
    */
-  title?: String;
+  title?: string;
 
   /**
    * Description of background task
    */
-  text?: String;
+  text?: string;
 
   /**
    * This will look for `<icon name>.png` in platforms/android/res/drawable|mipmap
    */
   icon?: string;
 
+  /**
+   * Set the background color of the notification circle
+   */
   color?: string;
 
   /**
-   * By default the app will come to foreground when taping on the notification. If false, plugin won't come to foreground when tapped.
+   * By default the app will come to foreground when tapping on the notification. If false, plugin won't come to foreground when tapped.
    */
   resume?: boolean;
 
+  /**
+   * When set to false makes the notifications visible on lock screen (Android 5.0+)
+   */
   hidden?: boolean;
 
+  /** Big text */
   bigText?: boolean;
 
   /**
    * The text that scrolls itself on statusbar
    */
-  ticker?: String;
+  ticker?: string;
 
   /**
    * if true plugin will not display a notification. Default is false.
    */
   silent?: boolean;
-
 }
 
 /**
@@ -74,7 +78,6 @@ export interface BackgroundModeConfiguration {
 })
 @Injectable()
 export class BackgroundMode extends IonicNativePlugin {
-
   /**
    * Enable the background mode.
    * Once called, prevents the app from being paused while in background.
@@ -82,14 +85,16 @@ export class BackgroundMode extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  enable(): void { }
+  enable(): void {}
 
   /**
    * Disable the background mode.
    * Once the background mode has been disabled, the app will be paused when in background.
    */
   @Cordova()
-  disable(): Promise<any> { return; }
+  disable(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if background mode is enabled or not.
@@ -98,7 +103,9 @@ export class BackgroundMode extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  isEnabled(): boolean { return; }
+  isEnabled(): boolean {
+    return;
+  }
 
   /**
    * Can be used to get the information if the background mode is active.
@@ -107,22 +114,27 @@ export class BackgroundMode extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  isActive(): boolean { return; }
+  isActive(): boolean {
+    return;
+  }
 
   /**
    * Override the default title, ticker and text.
    * Available only for Android platform.
    * @param {BackgroundModeConfiguration} options List of option to configure. See table below
+   * @returns {Promise<any>}
    */
   @Cordova({
     platforms: ['Android']
   })
-  setDefaults(options?: BackgroundModeConfiguration): Promise<any> { return; }
+  setDefaults(options?: BackgroundModeConfiguration): Promise<any> {
+    return;
+  }
 
   /**
    * Modify the displayed information.
    * Available only for Android platform.
-   * @param {BackgroundModeConfiguration} options Any options you want to update. See table below.
+   * @param {BackgroundModeConfiguration} [options] Any options you want to update. See table below.
    */
   @Cordova({
     platforms: ['Android'],
@@ -140,7 +152,9 @@ export class BackgroundMode extends IonicNativePlugin {
     clearFunction: 'un',
     clearWithArgs: true
   })
-  on(event: string): Observable<any> { return; }
+  on(event: string): Observable<any> {
+    return;
+  }
 
   /**
    * Android allows to programmatically move from foreground to background.
@@ -149,7 +163,7 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  moveToBackground(): void { }
+  moveToBackground(): void {}
 
   /**
    * Enable GPS-tracking in background (Android).
@@ -158,7 +172,7 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  disableWebViewOptimizations (): void { }
+  disableWebViewOptimizations(): void {}
 
   /**
    * Android allows to programmatically move from background to foreground.
@@ -167,7 +181,7 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  moveToForeground(): void { }
+  moveToForeground(): void {}
 
   /**
    * Override the back button on Android to go to background instead of closing the app.
@@ -176,7 +190,7 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  overrideBackButton(): void { }
+  overrideBackButton(): void {}
 
   /**
    * Exclude the app from the recent task list. Works on Android 5.0+.
@@ -185,15 +199,18 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  excludeFromTaskList(): void { }
+  excludeFromTaskList(): void {}
 
   /**
    * The method works async instead of isActive() or isEnabled().
+   * @returns {Promise<boolean>}
    */
   @Cordova({
     platforms: ['Android']
   })
-  isScreenOff(): Promise<boolean> { return; }
+  isScreenOff(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Turn screen on
@@ -202,7 +219,7 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  wakeUp(): void { }
+  wakeUp(): void {}
 
   /**
    * Turn screen on and show app even locked
@@ -211,6 +228,5 @@ export class BackgroundMode extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  unlock(): void { }
-
+  unlock(): void {}
 }

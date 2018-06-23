@@ -14,8 +14,6 @@ export enum AndroidSystemUiFlags {
   HideNavigation = 2,
   /** View has requested to go into the normal fullscreen mode so that its content can take over the screen while still allowing the user to interact with the application. SYSTEM_UI_FLAG_FULLSCREEN */
   Fullscreen = 4,
-  /** Requests the navigation bar to draw in a mode that is compatible with light navigation bar backgrounds. SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR */
-  LightNavigationBar = 16,
   /** When using other layout flags, we would like a stable view of the content insets given to fitSystemWindows(Rect). SYSTEM_UI_FLAG_LAYOUT_STABLE */
   LayoutStable = 256,
   /** View would like its window to be laid out as if it has requested SYSTEM_UI_FLAG_HIDE_NAVIGATION, even if it currently hasn't. SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION */
@@ -45,8 +43,8 @@ export enum AndroidSystemUiFlags {
  * ...
  *
  * this.androidFullScreen.isImmersiveModeSupported()
- *   .then(() => this.androidFullScreen.immersiveMode())
- *   .catch((error: any) => console.log(error));
+ *   .then(() => console.log('Immersive mode supported'))
+ *   .catch(err => console.log(err));
  *
  * ```
  */
