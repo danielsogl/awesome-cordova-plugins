@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name AES256
@@ -19,11 +19,11 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  *
  * this.aES256.encrypt('12345678123456781234567812345678', '1234567812345678', 'testdata')
- *   .then((res: string) => console.log('Encrypted Data: ',res))
+ *   .then(res => console.log('Encrypted Data: ',res))
  *   .catch((error: any) => console.error(error));
  *
  * this.aES256.decrypt('12345678123456781234567812345678', '1234567812345678', 'encryptedData')
- *   .then((res: string) => console.log('Decrypted Data : ',res))
+ *   .then(res => console.log('Decrypted Data : ',res))
  *   .catch((error: any) => console.error(error));
  *
  * ```
@@ -41,25 +41,25 @@ export class AES256 extends IonicNativePlugin {
 
   /**
    * This function used to perform the aes256 encryption
-   * @param secureKey {string} A 32 bytes string, which will used as input key for AES256 encryption.
-   * @param secureIV {string} A 16 bytes string, which will used as initial vector for AES256 encryption.
-   * @param data {string} A string which will be encrypted
-   * @return {Promise<any>} Returns a promise that resolves when encryption happens. The success response will returns encrypted data.
+   * @param {string} secureKey A 32 bytes string, which will used as input key for AES256 encryption.
+   * @param {string} secureIV A 16 bytes string, which will used as initial vector for AES256 encryption.
+   * @param {string} data A string which will be encrypted
+   * @return {Promise<string>} Returns a promise that resolves when encryption happens. The success response will returns encrypted data.
    */
   @Cordova()
-  encrypt(secureKey: string, secureIV: string, data: string): Promise<any> {
+  encrypt(secureKey: string, secureIV: string, data: string): Promise<string> {
     return;
   }
 
   /**
    * This function used to perform the aes256 decryption
-   * @param secureKey {string} A 32 bytes string, which will used as input key for AES256 decryption.
-   * @param secureIV {string} A 16 bytes string, which will used as initial vector for AES256 decryption.
-   * @param data {string} An AES256 encrypted data which will be decrypted.
-   * @return {Promise<any>} Returns a promise that resolves when decryption happens. The success response will returns decrypted data.
+   * @param {string} secureKey A 32 bytes string, which will used as input key for AES256 decryption.
+   * @param {string} secureIV A 16 bytes string, which will used as initial vector for AES256 decryption.
+   * @param {string} data An AES256 encrypted data which will be decrypted.
+   * @return {Promise<string>} Returns a promise that resolves when decryption happens. The success response will returns decrypted data.
    */
   @Cordova()
-  decrypt(secureKey: string, secureIV: string, data: string): Promise<any> {
+  decrypt(secureKey: string, secureIV: string, data: string): Promise<string> {
     return;
   }
 
