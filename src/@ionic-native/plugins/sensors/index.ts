@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export const enum TYPE_SENSOR {
   PROXIMITY = 'PROXIMITY',
@@ -30,7 +29,7 @@ export const enum TYPE_SENSOR {
  *
  * @usage
  * ```typescript
- * import { Sensors } from '@ionic-native/sensors';
+ * import { Sensors, TYPE_SENSOR } from '@ionic-native/sensors';
  *
  *
  * constructor(private sensors: Sensors) { }
@@ -38,7 +37,7 @@ export const enum TYPE_SENSOR {
  * ...
  *
  *
- * this.sensors.enableSensor(LIGHT);
+ * this.sensors.enableSensor(TYPE_SENSOR.LIGHT);
  *
  * ```
  */
@@ -54,7 +53,7 @@ export class Sensors extends IonicNativePlugin {
 
   /**
    * This function enables the sensor
-   * @param TYPE_SENSOR {string} Specify the sensor to enable
+   * @param {string} TYPE_SENSOR Specify the sensor to enable
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
@@ -73,11 +72,10 @@ export class Sensors extends IonicNativePlugin {
 
   /**
    * This function calls the success callback
-   * @param successCallBack {function} Function to call on success
-   * @return {Observable<any>} Returns a promise that resolves when something happens
+   * @return {Promise<any>} Returns sensor state
    */
   @Cordova()
-  getState(successCallBack: any): Observable<any> {
+  getState():Promise<any> {
     return;
   }
 
