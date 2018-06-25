@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs/Observable';
 
 export interface IndexItem {
   domain: string;
@@ -108,6 +109,16 @@ export class IndexAppContent extends IonicNativePlugin {
    */
   @Cordova()
   clearItemsForIdentifiers(identifiers: Array<string>): Promise<any> {
+    return;
+  }
+  
+ /**
+   * If user taps on a search result in spotlight then the app will be launched.
+   * You can register a Javascript handler to get informed when this happens.
+   * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
+   */
+  @CordovaFunctionOverride()
+  onItemPressed(): Observable<any> {
     return;
   }
 
