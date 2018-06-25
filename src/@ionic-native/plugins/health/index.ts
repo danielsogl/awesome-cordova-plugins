@@ -299,10 +299,10 @@ export class Health extends IonicNativePlugin {
    * Automatic conversion is not trivial and depends on the actual substance.
    *
    * @param queryOptions {HealthQueryOptions}
-   * @return {Promise<HealthData>}
+   * @return {Promise<HealthData[]>}
    */
   @Cordova()
-  query(queryOptions: HealthQueryOptions): Promise<HealthData> { return; }
+  query(queryOptions: HealthQueryOptions): Promise<HealthData[]> { return; }
 
   /**
    * Gets aggregated data in a certain time window. Usually the sum is returned for the given quantity.
