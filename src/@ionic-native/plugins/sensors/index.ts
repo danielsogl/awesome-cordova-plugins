@@ -75,7 +75,7 @@ export class Sensors extends IonicNativePlugin {
    * @return {Promise<any>} Returns sensor state
    */
   @Cordova()
-  getState():Promise<any> {
+  getState(): Promise<any> {
     return;
   }
 
