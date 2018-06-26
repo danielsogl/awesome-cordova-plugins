@@ -45,12 +45,12 @@ export interface DeeplinkOptions {
  *      '/about-us': AboutPage,
  *      '/universal-links-test': AboutPage,
  *      '/products/:productId': ProductPage
- *    }).subscribe((match) => {
+ *    }).subscribe(match => {
  *      // match.$route - the route we matched, which is the matched entry from the arguments to route()
  *      // match.$args - the args passed in the link
  *      // match.$link - the full link data
  *      console.log('Successfully matched route', match);
- *    }, (nomatch) => {
+ *    }, nomatch => {
  *      // nomatch.$link - the full link data
  *      console.error('Got a deeplink that didn\'t match', nomatch);
  *    });
@@ -63,12 +63,12 @@ export interface DeeplinkOptions {
  * this.deeplinks.routeWithNavController(this.navController, {
  *   '/about-us': AboutPage,
  *   '/products/:productId': ProductPage
- * }).subscribe((match) => {
+ * }).subscribe(match => {
  *     // match.$route - the route we matched, which is the matched entry from the arguments to route()
  *     // match.$args - the args passed in the link
  *     // match.$link - the full link data
  *     console.log('Successfully matched route', match);
- *   }, (nomatch) => {
+ *   }, nomatch => {
  *     // nomatch.$link - the full link data
  *     console.error('Got a deeplink that didn\'t match', nomatch);
  *   });
