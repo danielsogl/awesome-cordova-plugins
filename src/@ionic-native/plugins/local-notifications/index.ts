@@ -394,7 +394,8 @@ export interface ILocalNotification {
    * ANDROID ONLY
    * Set the token for the media session
    */
-  mediaSession?: string;
+   mediaSession?: string;
+
 }
 
 /**

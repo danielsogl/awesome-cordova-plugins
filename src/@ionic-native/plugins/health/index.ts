@@ -306,13 +306,11 @@ export class Health extends IonicNativePlugin {
    * nutrition.vitamin_a is given in micrograms in HealthKit and International Unit in Google Fit.
    * Automatic conversion is not trivial and depends on the actual substance.
    *
-   * @param queryOptions {HealthQueryOptions}
-   * @return {Promise<HealthData>}
+   * @param {HealthQueryOptions} queryOptions
+   * @return {Promise<HealthData[]>}
    */
   @Cordova()
-  query(queryOptions: HealthQueryOptions): Promise<HealthData> {
-    return;
-  }
+  query(queryOptions: HealthQueryOptions): Promise<HealthData[]> { return; }
 
   /**
    * Gets aggregated data in a certain time window. Usually the sum is returned for the given quantity.
@@ -332,7 +330,7 @@ export class Health extends IonicNativePlugin {
    * To be sure to get all the stored quantities, it's better to query single nutrients.
    * nutrition.vitamin_a is given in micrograms in HealthKit and International Unit in Google Fit.
    *
-   * @param queryOptionsAggregated {HealthQueryOptionsAggregated}
+   * @param {HealthQueryOptionsAggregated} queryOptionsAggregated
    * @return {Promise<HealthData[]>}
    */
   @Cordova()

@@ -318,7 +318,10 @@ export class Firebase extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 3
   })
-  verifyPhoneNumber(phoneNumber: string, timeoutDuration = 0): Promise<any> {
+  verifyPhoneNumber(
+    phoneNumber: string,
+    timeoutDuration = 0
+  ): Promise<any> {
     return;
   }
 }

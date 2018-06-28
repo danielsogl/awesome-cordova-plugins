@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 export interface IndexItem {
   domain: string;
@@ -15,7 +16,7 @@ export interface IndexItem {
   /**
    * Item keywords
    */
-  keywords?: Array<string>;
+  keywords?: Array < string > ;
 
   /**
    * Lifetime in minutes
@@ -77,44 +78,54 @@ export class IndexAppContent extends IonicNativePlugin {
    * @return {Promise<boolean>} Returns a promise that resolves with true if indexing is available, false if not
    */
   @Cordova()
-  isIndexingAvailable(): Promise<boolean> {
+  isIndexingAvailable(): Promise <boolean> {
     return;
   }
 
   /**
    * Add or change items to spotlight index
-   * @param {Array<IndexItem>} Array of items to index
+   * @param {Array<IndexItem>} items Array of items to index
    * @return {Promise<any>} Returns if index set was successfull
    */
   @Cordova()
-  setItems(items: Array<IndexItem>): Promise<any> {
+  setItems(items: Array <IndexItem> ): Promise < any > {
     return;
   }
 
   /**
    * Clear all items stored for a given array of domains
-   * @param {Array<string>} Array of domains to clear
+   * @param {Array<string>} domains Array of domains to clear
    * @return {Promise<any>} Resolve if successfull
    */
   @Cordova()
-  clearItemsForDomains(domains: Array<string>): Promise<any> {
+  clearItemsForDomains(domains: Array <string> ): Promise < any > {
     return;
   }
 
   /**
    * Clear all items stored for a given array of identifiers
-   * @param {Array<string>} Array of identifiers to clear
+   * @param {Array<string>} identifiers Array of identifiers to clear
    * @return {Promise<any>} Resolve if successfull
    */
   @Cordova()
-  clearItemsForIdentifiers(identifiers: Array<string>): Promise<any> {
+  clearItemsForIdentifiers(identifiers: Array < string > ): Promise < any > {
+    return;
+  }
+
+  /**
+   * If user taps on a search result in spotlight then the app will be launched.
+   * You can register a Javascript handler to get informed when this happens.
+   * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
+   */
+  @CordovaFunctionOverride()
+  onItemPressed(): Observable < any > {
     return;
   }
 
   /**
    * You might want to avoid to update spotlight index too frequently.
    * Without calling this function a subsequent call to manipulate the index is only possible after 1440 minutes (= 24 hours)!
-   * @param {number} Numeric value => 0
+   * @param {number} intervalMinutes value => 0
    */
   @Cordova()
   setIndexingInterval(intervalMinutes: number) {

@@ -3,8 +3,6 @@
   "rules": {
     "ordered-imports": false,
     "no-empty": false,
-    "no-import-side-effect": false,
-    "rxjs-add": { "severity": "error" },
-    "rxjs-no-unused-add": { "severity": "error" }
+    "no-import-side-effect": false
   }
 }

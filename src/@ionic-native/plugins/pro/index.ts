@@ -37,6 +37,8 @@ export interface DeployConfig {
   channel?: string;
 }
 
+export type ProgressMessage = number | string;
+
 /**
  * @hidden
  */
@@ -48,9 +50,7 @@ export class ProDeploy {
    * @param config A valid Deploy config object
    */
   @CordovaInstance()
-  init(config: DeployConfig): Promise<any> {
-    return;
-  }
+  init(config: DeployConfig): Promise<void> { return; }
 
   /**
    * Check a channel for an available update
@@ -63,33 +63,27 @@ export class ProDeploy {
 
   /**
    * Download an available version
-   * @return {Observable<any>} Updates with percent completion, or errors with a message.
+   * @return {Observable<ProgressMessage>} Updates with percent completion, or errors with a message.
    */
   @CordovaInstance({
     observable: true
   })
-  download(): Observable<any> {
-    return;
-  }
+  download(): Observable<ProgressMessage> { return; }
 
   /**
    * Unzip the latest downloaded version
-   * @return {Observable<any>} Updates with percent completion, or errors with a message.
+   * @return {Observable<ProgressMessage>} Updates with percent completion, or errors with a message.
    */
   @CordovaInstance({
     observable: true
   })
-  extract(): Observable<any> {
-    return;
-  }
+  extract(): Observable<ProgressMessage> { return; }
 
   /**
    * Reload app with the deployed version
    */
   @CordovaInstance()
-  redirect(): Promise<any> {
-    return;
-  }
+  redirect(): Promise<void> { return; }
 
   /**
    * Get info about the version running on the device
@@ -104,18 +98,14 @@ export class ProDeploy {
    * List versions stored on the device
    */
   @CordovaInstance()
-  getVersions(): Promise<any> {
-    return;
-  }
+  getVersions(): Promise<string[]> { return; }
 
   /**
    * Delete a version stored on the device by UUID
    * @param version A version UUID
    */
   @CordovaInstance()
-  deleteVersion(version: string): Promise<any> {
-    return;
-  }
+  deleteVersion(version: string): Promise<void> { return; }
 }
 
 /**
