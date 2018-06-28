@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * Requires Cordova plugin: `cordova-plugin-pin-dialog`. For more info, please see the [Pin Dialog plugin docs](https://github.com/Paldom/PinDialog).
  *
- * Requires Cordova plugin: `cordova-plugin-pin-dialog`. For more info, please see the [Pin Dialog plugin docs](https://github.com/Paldom/PinDialog).
+ *
  *
  * @usage
  * ```typescript
