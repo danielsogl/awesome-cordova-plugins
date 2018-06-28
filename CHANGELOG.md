@@ -1,12 +1,6 @@
 <a name="5.0.0-beta.13"></a>
 # [5.0.0-beta.13](https://github.com/ionic-team/ionic-native/compare/v4.9.0...v5.0.0-beta.13) (2018-06-28)
 
-
-
-<a name="4.9.0"></a>
-# [4.9.0](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.12...v4.9.0) (2018-06-28)
-
-
 ### Bug Fixes
 
 * **appodeal:** removed bad imports ([7d5e7aa](https://github.com/ionic-team/ionic-native/commit/7d5e7aa))
