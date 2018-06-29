@@ -68,7 +68,7 @@ export interface BarcodeScanResult {
     | 'ITF'
     | 'RSS14'
     | 'RSS_EXPANDED'
-    | 'PDF417'
+    | 'PDF_417'
     | 'AZTEC'
     | 'MSI';
   cancelled: boolean;
