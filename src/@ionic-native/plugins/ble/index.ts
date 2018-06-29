@@ -579,4 +579,41 @@ export class BLE extends IonicNativePlugin {
   readRSSI(deviceId: string): Promise<any> {
     return;
   }
+
+
+  /**
+   * Retrieves a list of the peripherals (containing any of the specified services)
+   * currently connected to the system. The peripheral list is sent to the success callback.
+   * iOS only
+   *
+   * @param {string[]} services List of services to discover
+   * @returns {Promise<any>} Returns a promise with a list of peripheral objects
+   */
+  @Cordova()
+  connectedPeripheralsWithServices (services: string[]): Promise<any[]> {
+    return;
+  }
+
+  /**
+   * Find the connected peripherals offering the listed service UUIDs.
+   * iOS only
+   *
+   * @param {string[]} uuids List of peripheral UUIDs
+   * @returns {Promise<any>} Returns a promise with a list of peripheral objects
+   */
+  @Cordova()
+  peripheralsWithIdentifiers (uuids: string[]): Promise<any[]> {
+    return;
+  }
+
+  /**
+   * Find the bonded devices
+   * Android only
+   *
+   * @returns {Promise<any>} Returns a promise with a list of peripheral objects
+   */
+  @Cordova()
+  bondedDevices (): Promise<any[]> {
+    return;
+  }
 }
