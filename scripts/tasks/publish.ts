@@ -29,12 +29,11 @@ const DIST = path.resolve(ROOT, 'dist/@ionic-native');
 
 const PACKAGES = [];
 
-const RXJS_VEERSION = '*';
-const CORE_VERSION = '^5.0.0';
+const RXJS_VERSION = '*';
 
 const PLUGIN_PEER_DEPENDENCIES = {
   '@ionic-native/core': VERSION, // TODO change this in production
-  rxjs: RXJS_VEERSION
+  rxjs: RXJS_VERSION
 };
 
 function getPackageJsonContent(name, peerDependencies = {}, dependencies = {}) {
@@ -55,7 +54,7 @@ function writePackageJson(data: any, dir: string) {
 function prepare() {
   // write @ionic-native/core package.json
   writePackageJson(
-    getPackageJsonContent('core', { rxjs: RXJS_VEERSION }, { '@types/cordova': 'latest' }),
+    getPackageJsonContent('core', { rxjs: RXJS_VERSION }, { '@types/cordova': 'latest' }),
     path.resolve(DIST, 'core')
   );
 
