@@ -47,17 +47,15 @@ export class AppModule { }
 import { Geolocation } from '@ionic-native/geolocation';
 import { Platform } from 'ionic-angular';
 
-import { NgZone } from '@angular/core';
-
 @Component({ ... })
 export class MyComponent {
 
   constructor(private geolocation: Geolocation, private platform: Platform) {
 
-    platform.ready().then(() => {
+    this.platform.ready().then(() => {
 
       // get position
-      geolocation.getCurrentPosition().then(pos => {
+      this.geolocation.getCurrentPosition().then(pos => {
         console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
       });
 
@@ -65,7 +63,6 @@ export class MyComponent {
       // watch position
       const watch = geolocation.watchPosition().subscribe(pos => {
         console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
-        this.position = pos;
       });
 
       // to stop watching
@@ -112,42 +109,43 @@ providers: [
 Here's the full example:
 
 ```typescript
-import { NgModule, ErrorHandler } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-
 import { Camera } from '@ionic-native/camera';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+
+import { HomePage } from '../pages/home/home';
+import { MyApp } from './app.component';
 
 class CameraMock extends Camera {
   getPicture(options) {
     return new Promise((resolve, reject) => {
-      resolve("BASE_64_ENCODED_DATA_GOES_HERE");
-    })
+      resolve('BASE_64_ENCODED_DATA_GOES_HERE');
+    });
   }
 }
 
 @NgModule({
   declarations: [
-    MyApp,
+    MyApp, 
     HomePage
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, 
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    MyApp, 
     HomePage
   ],
   providers: [
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     { provide: Camera, useClass: CameraMock }
   ]
 })
 export class AppModule {}
+
 ```
 
 
@@ -168,6 +166,8 @@ For Ionic v1 (AngularJS, Angular 1.x) support, please use version 2 of Ionic Nat
 # Credits
 
 Ibby Hadeed - [@ihadeed](https://github.com/ihadeed)
+
+Daniel Sogl - [@sogldaniel](https://twitter.com/sogldaniel)
 
 Tim Lancina - [@timlancina](https://twitter.com/timlancina)
 
