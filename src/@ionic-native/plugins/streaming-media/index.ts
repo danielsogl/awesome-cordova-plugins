@@ -1,18 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
+/**
+ * Object of options to pass into the playVideo method.
+ */
 export interface StreamingVideoOptions {
+  /** Executes after success playing audio. */
   successCallback?: Function;
+  /** Executes after error playing video. */
   errorCallback?: Function;
+  /** Force one orientation for playing video. */
   orientation?: string;
+  /** Should the video close after it's over. Defaults to true. */
+  shouldAutoClose?: boolean;
+  /** Should the video have controls. Defaults to true. Android only. */
+  controls?: boolean;
 }
 
+/**
+ * Object of options to pass into the playAudio method.
+ */
 export interface StreamingAudioOptions {
+  /** Background color for audio player. */
   bgColor?: string;
+  /** Background image for audio player. */
   bgImage?: string;
+  /** 
+   * Background image scale for audio player.
+   * Valid values are: 
+   * fit
+   * stretch
+   * aspectStretch.
+   */
   bgImageScale?: string;
+  /** Start audio player in full screen. iOS only. */
   initFullscreen?: boolean;
+  /** 
+   * Keeps the screen lit and stops it from locking 
+   * while audio is playing. Android only. 
+   */
+  keepAwake?: boolean;
+  /** Executes after success playing audio. */
   successCallback?: Function;
+  /** Executes after error playing audio. */
   errorCallback?: Function;
 }
 
@@ -30,7 +60,9 @@ export interface StreamingAudioOptions {
  * let options: StreamingVideoOptions = {
  *   successCallback: () => { console.log('Video played') },
  *   errorCallback: (e) => { console.log('Error streaming') },
- *   orientation: 'landscape'
+ *   orientation: 'landscape',
+ *   shouldAutoClose: true,
+ *   controls: false
  * };
  *
  * this.streamingMedia.playVideo('https://path/to/video/stream', options);
