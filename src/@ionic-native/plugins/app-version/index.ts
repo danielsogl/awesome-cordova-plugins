@@ -37,28 +37,28 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 export class AppVersion extends IonicNativePlugin {
 
   /**
-   * Returns the name of the app
+   * Returns the name of the app, e.g.: "My Awesome App"
    * @returns {Promise<string>}
    */
   @Cordova()
   getAppName(): Promise<string> { return; }
 
   /**
-   * Returns the package name of the app
+   * Returns the package name of the app, e.g.: "com.example.myawesomeapp"
    * @returns {Promise<string>}
    */
   @Cordova()
   getPackageName(): Promise<string> { return; }
 
   /**
-   * Returns the build identifier of the app
-   * @returns {Promise<string>}
+   * Returns the build identifier of the app, e.g.: 10203
+   * @returns {Promise<number>}
    */
   @Cordova()
-  getVersionCode(): Promise<string> { return; }
+  getVersionCode(): Promise<number> { return; }
 
   /**
-   * Returns the version of the app
+   * Returns the version of the app, e.g.: "1.2.3"
    * @returns {Promise<string>}
    */
   @Cordova()
