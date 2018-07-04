@@ -51,11 +51,13 @@ export class AppVersion extends IonicNativePlugin {
   getPackageName(): Promise<string> { return; }
 
   /**
-   * Returns the build identifier of the app, e.g.: 10203
-   * @returns {Promise<number>}
+   * Returns the build identifier of the app.
+   * In iOS a string with the build version like "1.6095"
+   * In Android a number generated from the version string, like 10203 for version "1.2.3"
+   * @returns {Promise<string | number>}
    */
   @Cordova()
-  getVersionCode(): Promise<number> { return; }
+  getVersionCode(): Promise<string | number> { return; }
 
   /**
    * Returns the version of the app, e.g.: "1.2.3"
