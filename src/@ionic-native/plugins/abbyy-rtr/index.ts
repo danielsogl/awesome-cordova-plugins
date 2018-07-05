@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { CordovaCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 declare const AbbyyRtrSdk: any;
 
@@ -303,6 +303,7 @@ export class AbbyyRTR extends IonicNativePlugin {
    * @param {TextCaptureOptions} options
    * @return {Promise<TextCaptureResult>}
    */
+  @CordovaCheck()
   startTextCapture(options: TextCaptureOptions): Promise<TextCaptureResult> {
     return new Promise<any>((resolve, reject) => {
       AbbyyRtrSdk.startTextCapture((result: DataCaptureResult) => {
@@ -320,6 +321,7 @@ export class AbbyyRTR extends IonicNativePlugin {
    * @param {DataCaptureOptions} options
    * @return {Promise<DataCaptureResult>}
    */
+  @CordovaCheck()
   startDataCapture(options: DataCaptureOptions): Promise<DataCaptureResult> {
     return new Promise<any>((resolve, reject) => {
       AbbyyRtrSdk.startDataCapture((result: DataCaptureResult) => {
