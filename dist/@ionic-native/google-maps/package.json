@@ -1,0 +1,18 @@
+{
+  "name": "@ionic-native/google-maps",
+  "version": "3.14.0",
+  "description": "Ionic Native - Native plugins for ionic apps",
+  "module": "index.js",
+  "typings": "index.d.ts",
+  "author": "ionic",
+  "license": "MIT",
+  "peerDependencies": {
+    "@ionic-native/core": "^3.6.0",
+    "@angular/core": "*",
+    "rxjs": "^5.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ionic-team/ionic-native.git"
+  }
+}
