@@ -24,7 +24,7 @@ export type LinkedInLoginScopes = 'r_basicprofile' | 'r_emailaddress' | 'rw_comp
  * // login
  * const scopes = ['r_basicprofile', 'r_emailaddress', 'rw_company_admin', 'w_share'];
  * this.linkedin.login(scopes, true)
- *   .then(() => console.log('Logged in!')
+ *   .then(() => console.log('Logged in!'))
  *   .catch(e => console.log('Error logging in', e));
  *
  *
