@@ -1,5 +1,23 @@
-<a name="4.9.0"></a>
-# [4.9.0](https://github.com/ionic-team/ionic-native/compare/v4.8.0...v4.9.0) (2018-06-28)
+<a name="4.9.1"></a>
+## [4.9.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.13...v4.9.1) (2018-07-09)
+
+
+### Bug Fixes
+
+* **barcode-scanner:** wrong barcode format identifier PDF417 -> PDF_417 ([#2574](https://github.com/ionic-team/ionic-native/issues/2574)) ([61714ff](https://github.com/ionic-team/ionic-native/commit/61714ff))
+* **health-kit:** add missing checkAuthStatus param ([#2544](https://github.com/ionic-team/ionic-native/issues/2544)) ([956e644](https://github.com/ionic-team/ionic-native/commit/956e644))
+
+
+### Features
+
+* **ble:** add missing functions ([#2572](https://github.com/ionic-team/ionic-native/issues/2572)) ([9f9a346](https://github.com/ionic-team/ionic-native/commit/9f9a346))
+* **network-interface:** match latest plugin release ([#2587](https://github.com/ionic-team/ionic-native/issues/2587)) ([4f41589](https://github.com/ionic-team/ionic-native/commit/4f41589))
+* **streaming-media:** add new parameters & docs ([#2576](https://github.com/ionic-team/ionic-native/issues/2576)) ([f62a123](https://github.com/ionic-team/ionic-native/commit/f62a123))
+
+
+
+<a name="5.0.0-beta.13"></a>
+# [5.0.0-beta.13](https://github.com/ionic-team/ionic-native/compare/v4.9.0...v5.0.0-beta.13) (2018-06-28)
 
 
 ### Bug Fixes
