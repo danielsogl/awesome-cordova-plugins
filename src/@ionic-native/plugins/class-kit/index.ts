@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CCKContext {
   /**
@@ -129,17 +129,17 @@ export interface CCKQuantityItem {
  * @name Class Kit
  * @description Plugin for using Apple's ClassKit framework.
  *
- * 
+ *
  * Prerequisites:
- * Only works with Xcode 9.4 and iOS 11.4. Your Provisioning Profile must include the ClassKit capability. Read more about how to Request ClassKit Resources (https://developer.apple.com/contact/classkit/) in here: https://developer.apple.com/documentation/classkit/enabling_classkit_in_your_app. 
+ * Only works with Xcode 9.4 and iOS 11.4. Your Provisioning Profile must include the ClassKit capability. Read more about how to Request ClassKit Resources (https://developer.apple.com/contact/classkit/) in here: https://developer.apple.com/documentation/classkit/enabling_classkit_in_your_app.
  * Also note that you can’t test ClassKit behavior in Simulator because Schoolwork isn’t available in that environment.
- * 
+ *
  * @usage
  * ```typescript
  * import { ClassKit, CCKContext, CCKBinaryItem, CCKQuantityItem, CCKScoreItem, CCKContextTopic, CCKContextType, CCKBinaryType } from '@ionic-native/class-kit';
  *
  * // Init contexts defined in XML file 'CCK-contexts.xml'
- * constructor( ..., private classKit: ClassKit) { 
+ * constructor( ..., private classKit: ClassKit) {
  *   platform.ready().then(() => {
  *     classKit.initContextsFromXml("classkitplugin://")
  *       .then(() => console.log("success"))
@@ -157,42 +157,42 @@ export interface CCKQuantityItem {
  *   topic: CCKContextTopic.science,
  *   displayOrder: 0
  * };
- *    
+ *
  * this.classKit.addContext("classkitplugin://", context)
  *    .then(() => console.log("success"))
  *    .catch(e => console.log("error: ", e));
- * 
- * 
+ *
+ *
  * // Remove all contexts
  * this.classKit.removeContexts()
  *    .then(() => console.log("success"))
  *    .catch(e => console.log("error: ", e));
- * 
- * 
+ *
+ *
  * // Remove context with identifier path
  * this.classKit.removeContext(["parent_title_one", "child_one", "child_one_correct_quiz"])
  *    .then(() => console.log("success"))
  *    .catch(e => console.log("error: ", e));
- * 
- * 
+ *
+ *
  * // Begin a new activity or restart an activity for a given context
  * this.classKit.beginActivity(["parent_title_one", "child_two", "child_two_quiz"], false)
  *    .then(() => console.log("success"))
  *    .catch(e => console.log("error: ", e));
- * 
- * 
+ *
+ *
  * // Adds a progress range to the active given activity
  * this.classKit.setProgressRange(0, 0.66)
  *    .then(() => console.log("success"))
  *    .catch(e => console.log("error: ", e));
- * 
- * 
+ *
+ *
  * // Adds a progress to the active given activity
  * this.classKit.setProgress(0.66)
  *    .then(() => console.log("success"))
  *    .catch(e => console.log("error: ", e));
- * 
- * 
+ *
+ *
  * // Adds activity information that is true or false, pass or fail, yes or no
  * const binaryItem: CCKBinaryItem = {
  *   identifier: "child_two_quiz_IDENTIFIER_1",
@@ -205,8 +205,8 @@ export interface CCKQuantityItem {
  * this.classKit.setBinaryItem(binaryItem)
  *    .then(() => console.log("success"))
  *    .catch(e => console.log("error: ", e));
- * 
- * 
+ *
+ *
  * // Adds activity information that signifies a score out of a possible maximum
  * const scoreItem: CCKScoreItem = {
  *   identifier: "total_score",
@@ -215,12 +215,12 @@ export interface CCKQuantityItem {
  *   maxScore: 1.0,
  *   isPrimaryActivityItem: true
  * };
- * 
+ *
  * this.classKit.setScoreItem(scoreItem)
  *    .then(() => console.log("success"))
  *    .catch(e => console.log("error: ", e));
- * 
- * 
+ *
+ *
  * // Activity information that signifies a quantity
  * const quantityItem: CCKQuantityItem = {
  *    identifier: "quantity_item_hints",
@@ -228,13 +228,13 @@ export interface CCKQuantityItem {
  *    quantity: 12,
  *    isPrimaryActivityItem: false
  * };
- * 
+ *
  * this.classKit.setQuantityItem(quantityItem)
  *    .then(() => console.log("success"))
  *    .catch(e => console.log("error: ", e));
  *
  * ```
- * 
+ *
  * @interfaces
  * CCKContext
  * CCKContextType
@@ -253,93 +253,114 @@ export interface CCKQuantityItem {
 })
 @Injectable()
 export class ClassKit extends IonicNativePlugin {
-
   /**
    * Init contexts defined in XML file 'CCK-contexts.xml'
-   * @param urlPrefix {string} URL prefix to use for custom URLs to locate activities (deeplink).
+   * @param {string} urlPrefix URL prefix to use for custom URLs to locate activities (deeplink).
    * @return {Promise<any>}
    */
   @Cordova()
-  initContextsFromXml(urlPrefix: string): Promise<any> { return; }
+  initContextsFromXml(urlPrefix: string): Promise<any> {
+    return;
+  }
 
   /**
    * Init context with identifier path
-   * @param urlPrefix {string} URL prefix to use for custom URLs to locate activities (deeplink).
-   * @param context {CCKContext} Context to initialize.
+   * @param {string} urlPrefix URL prefix to use for custom URLs to locate activities (deeplink).
+   * @param {CCKContext} context Context to initialize.
    * @return {Promise<any>}
    */
   @Cordova()
-  addContext(urlPrefix: string, context: CCKContext): Promise<any> { return; }
+  addContext(urlPrefix: string, context: CCKContext): Promise<any> {
+    return;
+  }
 
   /**
    * Remove all contexts
    * @return {Promise<any>}
    */
   @Cordova()
-  removeContexts(): Promise<any> { return; }
+  removeContexts(): Promise<any> {
+    return;
+  }
 
   /**
    * Remove context with identifier path
-   * @param identifierPath {string[]} Full identifier path from root, including the context identifier itself.
+   * @param {string[]} identifierPath Full identifier path from root, including the context identifier itself.
    * @return {Promise<any>}
    */
   @Cordova()
-  removeContext(identifierPath: string[]): Promise<any> { return; }
+  removeContext(identifierPath: string[]): Promise<any> {
+    return;
+  }
 
   /**
    * Begin a new activity or restart an activity for a given context
-   * @param identifierPath {string[]} Full identifier path from root, including the context identifier itself.
-   * @param asNew {boolean} Should a new activity be created (or an old activity be restarted).
+   * @param {string[]} identifierPath Full identifier path from root, including the context identifier itself.
+   * @param {boolean} asNew Should a new activity be created (or an old activity be restarted).
    * @return {Promise<any>}
    */
   @Cordova()
-  beginActivity(identifierPath: string[], asNew: boolean): Promise<any> { return; }
+  beginActivity(identifierPath: string[], asNew: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * End the active activity
    * @return {Promise<any>}
    */
   @Cordova()
-  endActivity(): Promise<any> { return; }
+  endActivity(): Promise<any> {
+    return;
+  }
 
   /**
    * Adds a progress range to the active given activity
-   * @param fromStart {number} The beginning of the new range to add. This should be fractional value between 0 and 1, inclusive.
-   * @param toEnd {number} The end of the new range to add. This should be larger than the start value and less than or equal to one.
+   * @param {number} fromStart The beginning of the new range to add. This should be fractional value between 0 and 1, inclusive.
+   * @param {number} toEnd The end of the new range to add. This should be larger than the start value and less than or equal to one.
    * @return {Promise<any>}
    */
   @Cordova()
-  setProgressRange(fromStart: number, toEnd: number): Promise<any> { return; }
+  setProgressRange(fromStart: number, toEnd: number): Promise<any> {
+    return;
+  }
 
   /**
    * Adds a progress to the active given activity
-   * @param progress {number} A measure of progress through the task, given as a fraction in the range [0, 1].
+   * @param {number} progress A measure of progress through the task, given as a fraction in the range [0, 1].
    * @return {Promise<any>}
    */
   @Cordova()
-  setProgress(progress: number): Promise<any> { return; }
+  setProgress(progress: number): Promise<any> {
+    return;
+  }
 
   /**
    * Adds activity information that is true or false, pass or fail, yes or no
-   * @param binaryItem {CCKBinaryItem} The binary item to add to the activity.
+   * @param {CCKBinaryItem} binaryItem The binary item to add to the activity.
    * @return {Promise<any>}
    */
   @Cordova()
-  setBinaryItem(binaryItem: CCKBinaryItem): Promise<any> { return; }
+  setBinaryItem(binaryItem: CCKBinaryItem): Promise<any> {
+    return;
+  }
 
   /**
    * Adds activity information that signifies a score out of a possible maximum
-   * @param scoreItem {CCKScoreItem} The score item to add to the activity.
+   * @param {CCKScoreItem} scoreItem The score item to add to the activity.
    * @return {Promise<any>}
    */
   @Cordova()
-  setScoreItem(scoreItem: CCKScoreItem): Promise<any> { return; }
+  setScoreItem(scoreItem: CCKScoreItem): Promise<any> {
+    return;
+  }
 
   /**
    * Activity information that signifies a quantity.
-   * @param quantityItem {CCKQuantityItem} The quantity item to add to the activity.
+   * @param {CCKQuantityItem} quantityItem The quantity item to add to the activity.
    * @return {Promise<any>}
    */
   @Cordova()
-  setQuantityItem(quantityItem: CCKQuantityItem): Promise<any> { return; }
+  setQuantityItem(quantityItem: CCKQuantityItem): Promise<any> {
+    return;
+  }
 }
