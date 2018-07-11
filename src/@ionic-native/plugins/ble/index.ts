@@ -300,7 +300,7 @@ export class BLE extends IonicNativePlugin {
    * @usage
    * ```
    *  someFunction() {
-   *    ble.autoConnect(deviceId, onConnected, onDisconnected);
+   *    this.ble.autoConnect(deviceId, onConnected.bind(this), onDisconnected.bind(this));
    *  }
    *
    *  onConnected(peripheral) {
