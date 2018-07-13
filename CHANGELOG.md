@@ -1,3 +1,14 @@
+<a name="4.9.2"></a>
+## [4.9.2](https://github.com/ionic-team/ionic-native/compare/v4.9.1...v4.9.2) (2018-07-13)
+
+
+### Bug Fixes
+
+* **ble:** change signature for autoConnect ([#2594](https://github.com/ionic-team/ionic-native/issues/2594)) ([d95a359](https://github.com/ionic-team/ionic-native/commit/d95a359))
+* **sqlite:** mark optional arguments for executeSql ([#2592](https://github.com/ionic-team/ionic-native/issues/2592)) ([565c766](https://github.com/ionic-team/ionic-native/commit/565c766))
+
+
+
 <a name="4.9.1"></a>
 ## [4.9.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.13...v4.9.1) (2018-07-09)
 
