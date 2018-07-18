@@ -16,7 +16,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *     .then(address => console.info(`IP: ${address.ip}, Subnet: ${address.subnet}`))
  *     .catch(error => console.error(`Unable to get IP: ${error}`));
  *
- *   this.networkInterface.getCarrierIPAddress() {
+ *   this.networkInterface.getCarrierIPAddress()
  *     .then(address => console.info(`IP: ${address.ip}, Subnet: ${address.subnet}`))
  *     .catch(error => console.error(`Unable to get IP: ${error}`));
  *
