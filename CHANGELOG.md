@@ -1,5 +1,58 @@
+<a name="5.0.0-beta.14"></a>
+# [5.0.0-beta.14](https://github.com/ionic-team/ionic-native/compare/v4.10.0...v5.0.0-beta.14) (2018-07-18)
+
+
+
+<a name="4.10.0"></a>
+# [4.10.0](https://github.com/ionic-team/ionic-native/compare/v4.9.2...v4.10.0) (2018-07-18)
+
+
+### Features
+
+* **abbyy-rtr:** add ABBYY Real-Time Recognition plugin ([#2580](https://github.com/ionic-team/ionic-native/issues/2580)) ([ecc698e](https://github.com/ionic-team/ionic-native/commit/ecc698e))
+* **alipay:** replace plugin ([#2591](https://github.com/ionic-team/ionic-native/issues/2591)) ([e640983](https://github.com/ionic-team/ionic-native/commit/e640983))
+* **ccm:** replace plugin source ([#2601](https://github.com/ionic-team/ionic-native/issues/2601)) ([b581a5b](https://github.com/ionic-team/ionic-native/commit/b581a5b))
+* **classkit:** add ClassKit plugin ([#2590](https://github.com/ionic-team/ionic-native/issues/2590)) ([a6c8045](https://github.com/ionic-team/ionic-native/commit/a6c8045))
+
+
+### BREAKING CHANGES
+
+* **alipay:** Replaced plugin with maintained Cordova plugin
+
+
+
+<a name="4.9.2"></a>
+## [4.9.2](https://github.com/ionic-team/ionic-native/compare/v4.9.1...v4.9.2) (2018-07-13)
+
+
+### Bug Fixes
+
+* **ble:** change signature for autoConnect ([#2594](https://github.com/ionic-team/ionic-native/issues/2594)) ([d95a359](https://github.com/ionic-team/ionic-native/commit/d95a359)), closes [#2573](https://github.com/ionic-team/ionic-native/issues/2573) [#2573](https://github.com/ionic-team/ionic-native/issues/2573)
+* **sqlite:** mark optional arguments for executeSql ([#2592](https://github.com/ionic-team/ionic-native/issues/2592)) ([565c766](https://github.com/ionic-team/ionic-native/commit/565c766))
+
+
+
+<a name="4.9.1"></a>
+## [4.9.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.13...v4.9.1) (2018-07-09)
+
+
+### Bug Fixes
+
+* **barcode-scanner:** wrong barcode format identifier PDF417 -> PDF_417 ([#2574](https://github.com/ionic-team/ionic-native/issues/2574)) ([61714ff](https://github.com/ionic-team/ionic-native/commit/61714ff))
+* **health-kit:** add missing checkAuthStatus param ([#2544](https://github.com/ionic-team/ionic-native/issues/2544)) ([956e644](https://github.com/ionic-team/ionic-native/commit/956e644))
+
+
+### Features
+
+* **ble:** add missing functions ([#2572](https://github.com/ionic-team/ionic-native/issues/2572)) ([9f9a346](https://github.com/ionic-team/ionic-native/commit/9f9a346))
+* **network-interface:** match latest plugin release ([#2587](https://github.com/ionic-team/ionic-native/issues/2587)) ([4f41589](https://github.com/ionic-team/ionic-native/commit/4f41589))
+* **streaming-media:** add new parameters & docs ([#2576](https://github.com/ionic-team/ionic-native/issues/2576)) ([f62a123](https://github.com/ionic-team/ionic-native/commit/f62a123))
+
+
+
 <a name="5.0.0-beta.13"></a>
 # [5.0.0-beta.13](https://github.com/ionic-team/ionic-native/compare/v4.9.0...v5.0.0-beta.13) (2018-06-28)
+
 
 ### Bug Fixes
 
