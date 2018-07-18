@@ -36,20 +36,21 @@ export interface SQLiteDatabaseConfig {
 /**
  * @hidden
  */
-export interface SQLiteTransaction {
-  start: () => void;
+export interface DbTransaction {
   executeSql: (
     sql: any,
-    values: any,
-    success: Function,
-    error: Function
+    values?: any[],
+    success?: Function,
+    error?: Function
   ) => void;
-  addStatement: (
-    sql: any,
-    values: any,
-    success: Function,
-    error: Function
-  ) => void;
+}
+
+/**
+ * @hidden
+ */
+export interface SQLiteTransaction extends DbTransaction {
+  start: () => void;
+  addStatement: DbTransaction['executeSql'];
   handleStatementSuccess: (handler: Function, response: any) => void;
   handleStatementFailure: (handler: Function, response: any) => void;
   run: () => void;
@@ -73,14 +74,14 @@ export class SQLiteObject {
   addTransaction(transaction: (tx: SQLiteTransaction) => void): void {}
 
   /**
-   * @param fn {any}
+   * @param fn {Function}
    * @returns {Promise<any>}
    */
   @CordovaInstance({
     successIndex: 2,
     errorIndex: 1
   })
-  transaction(fn: any): Promise<any> {
+  transaction(fn: (tx: DbTransaction) => void): Promise<any> {
     return;
   }
 
@@ -119,7 +120,7 @@ export class SQLiteObject {
    * ensure it resolved and successfully opened the database.
    */
   @CordovaInstance()
-  executeSql(statement: string, params: any): Promise<any> {
+  executeSql(statement: string, params?: any[]): Promise<any> {
     return;
   }
 

@@ -4,7 +4,6 @@ const gulp = require('gulp'),
   minimist = require('minimist'),
   rename = require("gulp-rename"),
   tslint = require('gulp-tslint'),
-  decamelize = require('decamelize'),
   replace = require('gulp-replace'),
   _ = require('lodash');
 

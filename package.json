@@ -42,7 +42,6 @@
     "conventional-changelog-cli": "^2.0.1",
     "cpr": "^3.0.1",
     "cz-conventional-changelog": "^2.1.0",
-    "decamelize": "^2.0.0",
     "dgeni": "^0.4.9",
     "dgeni-packages": "0.16.10",
     "fs-extra": "^6.0.1",

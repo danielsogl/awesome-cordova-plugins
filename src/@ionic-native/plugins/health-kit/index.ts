@@ -1,5 +1,5 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface HealthKitOptions {
   /**
@@ -13,9 +13,6 @@ export interface HealthKitOptions {
    */
   aggregation?: string;
 
-  /**
-   *
-   */
   amount?: number;
 
   /**
@@ -24,19 +21,10 @@ export interface HealthKitOptions {
    */
   ascending?: boolean;
 
-  /**
-   *
-   */
   correlationType?: string;
 
-  /**
-   *
-   */
   date?: any;
 
-  /**
-   *
-   */
   distance?: number;
 
   /**
@@ -49,14 +37,8 @@ export interface HealthKitOptions {
    */
   duration?: number;
 
-  /**
-   *
-   */
   endDate?: any;
 
-  /**
-   *
-   */
   energy?: number;
 
   /**
@@ -64,9 +46,6 @@ export interface HealthKitOptions {
    */
   energyUnit?: string;
 
-  /**
-   *
-   */
   extraData?: any;
 
   /**
@@ -74,39 +53,20 @@ export interface HealthKitOptions {
    */
   limit?: number;
 
-  /**
-   *
-   */
   metadata?: any;
 
-  /**
-   *
-   */
   quantityType?: string;
 
-  /**
-   *
-   */
+  type?: string;
+
   readTypes?: any;
 
-  /**
-   *
-   */
   requestWritePermission?: boolean;
 
-  /**
-   *
-   */
   samples?: any;
 
-  /**
-   *
-   */
   sampleType?: string;
 
-  /**
-   *
-   */
   startDate?: any;
 
   /**
@@ -114,14 +74,8 @@ export interface HealthKitOptions {
    */
   unit?: string;
 
-  /**
-   *
-   */
   requestReadPermission?: boolean;
 
-  /**
-   *
-   */
   writeTypes?: any;
 }
 
