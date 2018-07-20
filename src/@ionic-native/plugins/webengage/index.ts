@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Webengage
@@ -29,7 +29,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class Webengage extends IonicNativePlugin {
-
   /**
    * Initializes WebEngage SDK
    * @return {Promise<any>}
@@ -41,8 +40,8 @@ export class Webengage extends IonicNativePlugin {
 
   /**
    * Sets WebEngage SDK configuration
-   * @param key {string}
-   * @param value {any}
+   * @param {string} key
+   * @param {any} value
    * @return {Promise<any>}
    */
   @Cordova()
@@ -52,8 +51,8 @@ export class Webengage extends IonicNativePlugin {
 
   /**
    * Tracks event
-   * @param eventName {string}
-   * @param attributes {any}
+   * @param {string} eventName
+   * @param {any} attributes
    * @return {Promise<any>}
    */
   @Cordova()
@@ -63,17 +62,15 @@ export class Webengage extends IonicNativePlugin {
 
   /**
    * Tracks screen
-   * @param eventName {string}
-   * @param screenData {any}
+   * @param {string} eventName
+   * @param {any} screenData
    * @return {Promise<any>}
    */
   @Cordova()
   screen(screenName: string, screenData: any): Promise<any> {
     return;
   }
-
 }
-
 
 @Plugin({
   pluginName: 'Webengage',
@@ -86,10 +83,9 @@ export class Webengage extends IonicNativePlugin {
 })
 @Injectable()
 export class WebengageUser extends IonicNativePlugin {
-
   /**
    * Logs user in
-   * @param userId {string}
+   * @param {string} userId
    * @return {Promise<any>}
    */
   @Cordova()
@@ -108,17 +104,15 @@ export class WebengageUser extends IonicNativePlugin {
 
   /**
    * Sets user attribute
-   * @param key {string}
-   * @param value {any}
+   * @param {string} key
+   * @param {any} value
    * @return {Promise<any>}
    */
   @Cordova()
   setAttribute(key: string, value: any): Promise<any> {
     return;
   }
-
 }
-
 
 @Plugin({
   pluginName: 'Webengage',
@@ -131,10 +125,9 @@ export class WebengageUser extends IonicNativePlugin {
 })
 @Injectable()
 export class WebengagePush extends IonicNativePlugin {
-
   /**
    * Callback function is invoked when a push notification is clicked
-   * @param callback {amy}
+   * @param {any} callback
    * @return {Promise<any>}
    */
   @Cordova()
@@ -144,17 +137,15 @@ export class WebengagePush extends IonicNativePlugin {
 
   /**
    * Sets push notification configuration
-   * @param key {string}
-   * @param value {any}
+   * @param {string} key
+   * @param {any} value
    * @return {Promise<any>}
    */
   @Cordova()
   options(key: string, value: any): Promise<any> {
     return;
   }
-
 }
-
 
 @Plugin({
   pluginName: 'Webengage',
@@ -167,10 +158,9 @@ export class WebengagePush extends IonicNativePlugin {
 })
 @Injectable()
 export class WebengageNotification extends IonicNativePlugin {
-
   /**
    * Callback function is invoked when a in-app notification is shown
-   * @param callback {amy}
+   * @param {any} callback
    * @return {Promise<any>}
    */
   @Cordova()
@@ -180,7 +170,7 @@ export class WebengageNotification extends IonicNativePlugin {
 
   /**
    * Callback function is invoked when a in-app notification is clicked
-   * @param callback {amy}
+   * @param {any} callback
    * @return {Promise<any>}
    */
   @Cordova()
@@ -190,7 +180,7 @@ export class WebengageNotification extends IonicNativePlugin {
 
   /**
    * Callback function is invoked when a in-app notification is dismissed
-   * @param callback {amy}
+   * @param {any} callback
    * @return {Promise<any>}
    */
   @Cordova()
@@ -200,13 +190,12 @@ export class WebengageNotification extends IonicNativePlugin {
 
   /**
    * Sets in-app notification configuration
-   * @param key {string}
-   * @param value {any}
+   * @param {string} key
+   * @param {any} value
    * @return {Promise<any>}
    */
   @Cordova()
   options(key: string, value: any): Promise<any> {
     return;
   }
-
 }
