@@ -32,7 +32,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-adam-alipay',
   pluginRef: 'Alipay',
   repo: 'https://github.com/adam198824/cordova-plugin-alipay',
-  install: 'ionic cordova plugin add cordova-plugin-alipay-v2 --variable APP_ID=your_app_id',
+  install: 'ionic cordova plugin add cordova-plugin-adam-alipay --variable APP_ID=your_app_id',
   installVariables: ['APP_ID'],
   platforms: ['Android', 'iOS']
 })
