@@ -6,7 +6,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * @description
  * This plugin facilitates the usage of Alipay 支付宝 in an Ionic apps with the integrated AlipaySDK dated on 20180601.
  *
- * Requires Cordova plugin: `cordova-plugin-alipay-v2`. For more info, please see https://github.com/adam198824/cordova-plugin-alipay .
+ * Requires Cordova plugin: `cordova-plugin-adam-alipay`. For more info, please see https://github.com/adam198824/cordova-plugin-alipay .
  *
  * @usage
  * ```typescript
@@ -29,7 +29,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'Alipay',
-  plugin: 'cordova-plugin-alipay-v2',
+  plugin: 'cordova-plugin-adam-alipay',
   pluginRef: 'Alipay',
   repo: 'https://github.com/adam198824/cordova-plugin-alipay',
   install: 'ionic cordova plugin add cordova-plugin-alipay-v2 --variable APP_ID=your_app_id',
