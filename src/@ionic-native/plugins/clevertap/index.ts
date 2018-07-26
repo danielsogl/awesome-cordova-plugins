@@ -466,5 +466,4 @@ export class CleverTap extends IonicNativePlugin {
    */
   @Cordova()
   setDebugLevel(level: number): Promise<any> { return; }
-  
 }
