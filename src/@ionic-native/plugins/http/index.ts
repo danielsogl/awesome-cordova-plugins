@@ -283,7 +283,7 @@ export class HTTP extends IonicNativePlugin {
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The local path of the file to upload
    * @param name {string} The name of the parameter to pass the file along as
-   * @returns {Promise<FileEntry>} returns a promise that resolve on success, and reject on failure
+   * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
    */
   @Cordova()
   uploadFile(
@@ -292,7 +292,7 @@ export class HTTP extends IonicNativePlugin {
     headers: any,
     filePath: string,
     name: string
-  ): Promise<FileEntry> {
+  ): Promise<any> {
     return;
   }
 
@@ -302,7 +302,7 @@ export class HTTP extends IonicNativePlugin {
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The path to download the file to, including the file name.
-   * @returns {Promise<FileEntry>} returns a promise that resolve on success, and reject on failure
+   * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
    */
   @Cordova()
   downloadFile(
@@ -310,7 +310,7 @@ export class HTTP extends IonicNativePlugin {
     body: any,
     headers: any,
     filePath: string
-  ): Promise<FileEntry> {
+  ): Promise<any> {
     return;
   }
 }
