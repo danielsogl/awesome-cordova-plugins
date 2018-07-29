@@ -74,7 +74,7 @@ export class HTTP extends IonicNativePlugin {
    * This returns an object representing a basic HTTP Authorization header of the form.
    * @param username {string} Username
    * @param password {string} Password
-   * @returns {Object} an object representing a basic HTTP Authorization header of the form {'Authorization': 'Basic base64encodedusernameandpassword'}
+   * @returns {Object} an object representing a basic HTTP Authorization header of the form {'Authorization': 'Basic base64EncodedUsernameAndPassword'}
    */
   @Cordova({ sync: true })
   getBasicAuthHeader(
@@ -283,7 +283,7 @@ export class HTTP extends IonicNativePlugin {
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The local path of the file to upload
    * @param name {string} The name of the parameter to pass the file along as
-   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   * @returns {Promise<FileEntry>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
   uploadFile(
@@ -292,7 +292,7 @@ export class HTTP extends IonicNativePlugin {
     headers: any,
     filePath: string,
     name: string
-  ): Promise<HTTPResponse> {
+  ): Promise<FileEntry> {
     return;
   }
 
@@ -301,8 +301,8 @@ export class HTTP extends IonicNativePlugin {
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
-   * @param filePath {string} The path to donwload the file to, including the file name.
-   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   * @param filePath {string} The path to download the file to, including the file name.
+   * @returns {Promise<FileEntry>} returns a promise that resolve on success, and reject on failure
    */
   @Cordova()
   downloadFile(
@@ -310,7 +310,7 @@ export class HTTP extends IonicNativePlugin {
     body: any,
     headers: any,
     filePath: string
-  ): Promise<HTTPResponse> {
+  ): Promise<FileEntry> {
     return;
   }
 }
