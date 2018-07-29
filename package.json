@@ -6,9 +6,9 @@
   "author": "Ionic Team <hi@ionic.io> (https://ionic.io)",
   "license": "MIT",
   "devDependencies": {
-    "@angular/compiler": "4.4.4",
-    "@angular/compiler-cli": "4.4.4",
-    "@angular/core": "4.4.4",
+    "@angular/compiler": "^5.2.11",
+    "@angular/compiler-cli": "^5.2.11",
+    "@angular/core": "^5.2.11",
     "@types/cordova": "0.0.34",
     "@types/jasmine": "^2.8.8",
     "@types/node": "^8.10.20",
