@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 declare var clevertap: any;
 
@@ -25,45 +25,50 @@ declare var clevertap: any;
 })
 @Injectable()
 export class CleverTap extends IonicNativePlugin {
+  /**
+   * notify device ready
+   * NOTE: in iOS use to be notified of launch Push Notification or Deep Link
+   * in Android use only in android phonegap build projects
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  notifyDeviceReady(): Promise<any> {
+    return;
+  }
 
-/**
- * notify device ready
- * NOTE: in iOS use to be notified of launch Push Notification or Deep Link
- * in Android use only in android phonegap build projects
- * @returns {Promise<any>}
- */
- @Cordova()
- notifyDeviceReady(): Promise<any> { return; }
+  /*******************
+   * Personalization
+   ******************/
 
+  /**
+   * Personalization
+   * Enables the Personalization API
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  enablePersonalization(): Promise<any> {
+    return;
+  }
 
- /*******************
-  * Personalization
-  ******************/
+  /**
+   * Enables tracking opt out for the currently active user.
+   * @param optOut {boolean}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setOptOut(optOut: boolean): Promise<any> {
+    return;
+  }
 
- /**
-  * Personalization
-  * Enables the Personalization API
-  * @returns {Promise<any>}
-  */
- @Cordova()
- enablePersonalization(): Promise<any> { return; }
-
- /**
-  * Enables tracking opt out for the currently active user.
-  * @param optOut {boolean}
-  * @returns {Promise<any>}
-  */
- @Cordova()
- setOptOut(optOut: boolean): Promise<any> { return; }
-
- /**
-  * Enables the reporting of device network related information, including IP address.  This reporting is disabled by default.
-  * @param enable {boolean}
-  * @returns {Promise<any>}
-  */
- @Cordova()
- enableDeviceNetworkInfoReporting(enable: boolean): Promise<any> { return; }
-
+  /**
+   * Enables the reporting of device network related information, including IP address.  This reporting is disabled by default.
+   * @param enable {boolean}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  enableDeviceNetworkInfoReporting(enable: boolean): Promise<any> {
+    return;
+  }
 
   /*******************
    * Push
@@ -74,7 +79,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  registerPush(): Promise<any> { return; }
+  registerPush(): Promise<any> {
+    return;
+  }
 
   /**
    * Sets the device's push token
@@ -82,7 +89,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  setPushToken(token: string): Promise<any> { return; }
+  setPushToken(token: string): Promise<any> {
+    return;
+  }
 
   /**
    * Create Notification Channel for Android O+
@@ -94,7 +103,15 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  createNotificationChannel(channelID: string, channelName: string, channelDescription: string, importance: number, showBadge: boolean): Promise<any> { return; }
+  createNotificationChannel(
+    channelID: string,
+    channelName: string,
+    channelDescription: string,
+    importance: number,
+    showBadge: boolean
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Create Notification Channel for Android O+
@@ -107,7 +124,16 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  createNotificationChannelWithSound(channelID: string, channelName: string, channelDescription: string, importance: number, showBadge: boolean, sound: string): Promise<any> { return; }
+  createNotificationChannelWithSound(
+    channelID: string,
+    channelName: string,
+    channelDescription: string,
+    importance: number,
+    showBadge: boolean,
+    sound: string
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Create Notification Channel with Group ID for Android O+
@@ -121,7 +147,16 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  createNotificationChannelWithGroupId(channelID: string, channelName: string, channelDescription: string, importance: number, groupId: string, showBadge: boolean): Promise<any> { return; }
+  createNotificationChannelWithGroupId(
+    channelID: string,
+    channelName: string,
+    channelDescription: string,
+    importance: number,
+    groupId: string,
+    showBadge: boolean
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Create Notification Channel with Group ID for Android O+
@@ -134,7 +169,17 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  createNotificationChannelWithGroupIdAndSound(channelID: string, channelName: string, channelDescription: string, importance: number, groupId: string, showBadge: boolean, sound: string): Promise<any> { return; }
+  createNotificationChannelWithGroupIdAndSound(
+    channelID: string,
+    channelName: string,
+    channelDescription: string,
+    importance: number,
+    groupId: string,
+    showBadge: boolean,
+    sound: string
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Create Notification Channel Group for Android O+
@@ -143,7 +188,12 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  createNotificationChannelGroup(groupID: string, groupName: string): Promise<any> { return; }
+  createNotificationChannelGroup(
+    groupID: string,
+    groupName: string
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Delete Notification Channel for Android O+
@@ -151,7 +201,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  deleteNotificationChannel(channelID: string): Promise<any> { return; }
+  deleteNotificationChannel(channelID: string): Promise<any> {
+    return;
+  }
 
   /**
    * Delete Notification Group for Android O+
@@ -159,12 +211,13 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  deleteNotificationChannelGroup(groupID: string): Promise<any> { return; }
-
+  deleteNotificationChannelGroup(groupID: string): Promise<any> {
+    return;
+  }
 
   /*******************
-  * Events
-  ******************/
+   * Events
+   ******************/
 
   /**
    * Record Screen View
@@ -172,7 +225,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  recordScreenView(screenName: string): Promise<any> { return; }
+  recordScreenView(screenName: string): Promise<any> {
+    return;
+  }
 
   /**
    * Record Event with Name
@@ -180,7 +235,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  recordEventWithName(eventName: string): Promise<any> { return; }
+  recordEventWithName(eventName: string): Promise<any> {
+    return;
+  }
 
   /**
    *  Record Event with Name and Event properties
@@ -189,7 +246,12 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  recordEventWithNameAndProps(eventName: string, eventProps: any): Promise<any> { return; }
+  recordEventWithNameAndProps(
+    eventName: string,
+    eventProps: any
+  ): Promise<any> {
+    return;
+  }
 
   /**
    *  Record Charged Event with Details and Items
@@ -198,7 +260,12 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  recordChargedEventWithDetailsAndItems(details: any, items: any): Promise<any> { return; }
+  recordChargedEventWithDetailsAndItems(
+    details: any,
+    items: any
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Get Event First Time
@@ -207,7 +274,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  eventGetFirstTime(eventName: string): Promise<any> { return; }
+  eventGetFirstTime(eventName: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get Event Last Time
@@ -216,7 +285,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  eventGetLastTime(eventName: string): Promise<any> { return; }
+  eventGetLastTime(eventName: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get Event Number of Occurrences
@@ -225,7 +296,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  eventGetOccurrences(eventName: string): Promise<any> { return; }
+  eventGetOccurrences(eventName: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get Event Details
@@ -234,7 +307,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  eventGetDetails(eventName: string): Promise<any> { return; }
+  eventGetDetails(eventName: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get Event History
@@ -242,11 +317,13 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getEventHistory(): Promise<any> { return; }
+  getEventHistory(): Promise<any> {
+    return;
+  }
 
   /*******************
-  * Profiles
-  ******************/
+   * Profiles
+   ******************/
 
   /**
    * Get the device location if available.
@@ -264,7 +341,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getLocation(): Promise<any> { return; }
+  getLocation(): Promise<any> {
+    return;
+  }
 
   /**
    * Set location
@@ -273,7 +352,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  setLocation(lat: number, lon: number): Promise<any> { return; }
+  setLocation(lat: number, lon: number): Promise<any> {
+    return;
+  }
 
   /**
    * Creates a separate and distinct user profile identified by one or more of Identity, Email, FBID or GPID values,
@@ -296,7 +377,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  onUserLogin(profile: any): Promise<any> { return; }
+  onUserLogin(profile: any): Promise<any> {
+    return;
+  }
 
   /**
    * Set profile attributes
@@ -304,7 +387,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileSet(profile: any): Promise<any> { return; }
+  profileSet(profile: any): Promise<any> {
+    return;
+  }
 
   /**
    * Set profile attributes from facebook user
@@ -312,7 +397,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileSetGraphUser(profile: any): Promise<any> { return; }
+  profileSetGraphUser(profile: any): Promise<any> {
+    return;
+  }
 
   /**
    * Set profile attributes rom google plus user
@@ -320,7 +407,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileGooglePlusUser(profile: any): Promise<any> { return; }
+  profileGooglePlusUser(profile: any): Promise<any> {
+    return;
+  }
 
   /**
    * Get User Profile Property
@@ -329,7 +418,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileGetProperty(propertyName: string): Promise<any> { return; }
+  profileGetProperty(propertyName: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get a unique CleverTap identifier suitable for use with install attribution providers.
@@ -337,7 +428,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileGetCleverTapAttributionIdentifier(): Promise<any> { return; }
+  profileGetCleverTapAttributionIdentifier(): Promise<any> {
+    return;
+  }
 
   /**
    * Get User Profile CleverTapID
@@ -345,7 +438,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileGetCleverTapID(): Promise<any> { return; }
+  profileGetCleverTapID(): Promise<any> {
+    return;
+  }
 
   /**
    * Remove the property specified by key from the user profile
@@ -353,7 +448,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileRemoveValueForKey(key: string): Promise<any> { return; }
+  profileRemoveValueForKey(key: string): Promise<any> {
+    return;
+  }
 
   /**
    * Method for setting a multi-value user profile property
@@ -362,7 +459,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileSetMultiValues(key: string, values: any): Promise<any> { return; }
+  profileSetMultiValues(key: string, values: any): Promise<any> {
+    return;
+  }
 
   /**
    * Method for adding a value to a multi-value user profile property
@@ -371,7 +470,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileAddMultiValue(key: string, value: string): Promise<any> { return; }
+  profileAddMultiValue(key: string, value: string): Promise<any> {
+    return;
+  }
 
   /**
    * Method for adding values to a multi-value user profile property
@@ -380,7 +481,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileAddMultiValues(key: string, values: any): Promise<any> { return; }
+  profileAddMultiValues(key: string, values: any): Promise<any> {
+    return;
+  }
 
   /**
    * Method for removing a value from a multi-value user profile property
@@ -389,7 +492,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileRemoveMultiValue(key: string, value: string): Promise<any> { return; }
+  profileRemoveMultiValue(key: string, value: string): Promise<any> {
+    return;
+  }
 
   /**
    * Method for removing a value from a multi-value user profile property
@@ -398,12 +503,13 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileRemoveMultiValues(key: string, values: any): Promise<any> { return; }
-
+  profileRemoveMultiValues(key: string, values: any): Promise<any> {
+    return;
+  }
 
   /*******************
-  * Session
-  ******************/
+   * Session
+   ******************/
 
   /**
    * Get Session Elapsed Time
@@ -411,7 +517,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  sessionGetTimeElapsed(): Promise<any> { return; }
+  sessionGetTimeElapsed(): Promise<any> {
+    return;
+  }
 
   /**
    * Get Session Total Visits
@@ -419,7 +527,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  sessionGetTotalVisits(): Promise<any> { return; }
+  sessionGetTotalVisits(): Promise<any> {
+    return;
+  }
 
   /**
    * Get Session Screen Count
@@ -427,7 +537,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  sessionGetScreenCount(): Promise<any> { return; }
+  sessionGetScreenCount(): Promise<any> {
+    return;
+  }
 
   /**
    * Get Session Previous Visit Time
@@ -435,7 +547,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  sessionGetPreviousVisitTime(): Promise<any> { return; }
+  sessionGetPreviousVisitTime(): Promise<any> {
+    return;
+  }
 
   /**
    * Get Sesssion Referrer UTM details
@@ -443,7 +557,9 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  sessionGetUTMDetails(): Promise<any> { return; }
+  sessionGetUTMDetails(): Promise<any> {
+    return;
+  }
 
   /**
    * Call this to manually track the utm details for an incoming install referrer
@@ -453,17 +569,24 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  pushInstallReferrer(source: string, medium: string, campaign: string): Promise<any> { return; }
-
+  pushInstallReferrer(
+    source: string,
+    medium: string,
+    campaign: string
+  ): Promise<any> {
+    return;
+  }
 
   /*******************
    * Developer Options
-  ******************/
+   ******************/
   /**
    * 0 is off, 1 is info, 2 is debug, default is 1
    * @param level {number}
    * @returns {Promise<any>}
    */
   @Cordova()
-  setDebugLevel(level: number): Promise<any> { return; }
+  setDebugLevel(level: number): Promise<any> {
+    return;
+  }
 }
