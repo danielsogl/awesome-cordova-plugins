@@ -1,6 +1,6 @@
 "use strict";
 // Node module dependencies
-const fs = require('fs-extra-promise').useFs(require('fs-extra')),
+const fs = require('fs-extra'),
   queue = require('queue'),
   path = require('path'),
   exec = require('child_process').exec;
@@ -84,8 +84,8 @@ const addPluginToQueue = pluginName => {
 
     let tsConfigPath;
 
-    fs.mkdirpAsync(PLUGIN_BUILD_DIR) // create tmp build dir
-      .then(() => fs.mkdirpAsync(path.resolve(BUILD_DIST_ROOT, pluginName))) // create dist dir
+    fs.mkdirp(PLUGIN_BUILD_DIR) // create tmp build dir
+      .then(() => fs.mkdirs(path.resolve(BUILD_DIST_ROOT, pluginName))) // create dist dir
       .then(() => {
 
         // Write tsconfig.json
@@ -95,7 +95,7 @@ const addPluginToQueue = pluginName => {
 
         tsConfigPath = path.resolve(PLUGIN_BUILD_DIR, 'tsconfig.json');
 
-        return fs.writeJsonAsync(tsConfigPath, tsConfig);
+        return fs.writeJson(tsConfigPath, tsConfig);
       })
       .then(() => {
         // clone package.json
@@ -104,7 +104,7 @@ const addPluginToQueue = pluginName => {
         packageJson.name = `@ionic-native/${pluginName}`;
         packageJson.version = IONIC_NATIVE_VERSION;
 
-        return fs.writeJsonAsync(path.resolve(BUILD_DIST_ROOT, pluginName, 'package.json'), packageJson);
+        return fs.writeJson(path.resolve(BUILD_DIST_ROOT, pluginName, 'package.json'), packageJson);
       })
       .then(() => {
 

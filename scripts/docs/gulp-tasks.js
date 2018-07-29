@@ -2,7 +2,7 @@
 const config = require('../config.json'),
   projectPackage = require('../../package.json'),
   path = require('path'),
-  fs = require('fs-extra-promise').useFs(require('fs-extra')),
+  fs = require('fs-extra'),
   Dgeni = require('dgeni');
 
 module.exports = gulp => {
