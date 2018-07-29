@@ -1,6 +1,5 @@
 [![Circle CI](https://circleci.com/gh/ionic-team/ionic-native.svg?style=shield)](https://circleci.com/gh/ionic-team/ionic-native) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![](https://img.shields.io/npm/v/@ionic-native/core.svg)
 
-
 # Ionic Native
 
 Ionic Native is a curated set of wrappers for Cordova plugins that make adding any native functionality you need to your [Ionic](https://ionicframework.com/) mobile app easy.
@@ -10,8 +9,9 @@ Ionic Native wraps plugin callbacks in a Promise or Observable, providing a comm
 ## Installation
 
 Run following command to install Ionic Native in your project.
+
 ```bash
-npm install @ionic-native/core --save
+npm install @ionic-native/core
 ```
 
 You also need to install the Ionic Native package for each plugin you want to add. Please see the [Ionic Native documentation](https://ionicframework.com/docs/native/) for complete instructions on how to add and use the plugins.
@@ -68,9 +68,9 @@ export class MyComponent {
       // to stop watching
       watch.unsubscribe();
     });
-    
+
   }
-  
+
 }
 ```
 
@@ -92,8 +92,8 @@ Then create a new class that extends the `Camera` class with a mock implementati
 class CameraMock extends Camera {
   getPicture(options) {
     return new Promise((resolve, reject) => {
-      resolve("BASE_64_ENCODED_DATA_GOES_HERE");
-    })
+      resolve('BASE_64_ENCODED_DATA_GOES_HERE');
+    });
   }
 }
 ```
@@ -101,9 +101,7 @@ class CameraMock extends Camera {
 Finally, override the previous `Camera` class in your `providers` for this module:
 
 ```typescript
-providers: [
-  { provide: Camera, useClass: CameraMock }
-]
+providers: [{ provide: Camera, useClass: CameraMock }];
 ```
 
 Here's the full example:
@@ -126,28 +124,17 @@ class CameraMock extends Camera {
 }
 
 @NgModule({
-  declarations: [
-    MyApp, 
-    HomePage
-  ],
-  imports: [
-    BrowserModule, 
-    IonicModule.forRoot(MyApp)
-  ],
+  declarations: [MyApp, HomePage],
+  imports: [BrowserModule, IonicModule.forRoot(MyApp)],
   bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp, 
-    HomePage
-  ],
+  entryComponents: [MyApp, HomePage],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     { provide: Camera, useClass: CameraMock }
   ]
 })
 export class AppModule {}
-
 ```
-
 
 ### Runtime Diagnostics
 
@@ -155,8 +142,8 @@ Spent way too long diagnosing an issue only to realize a plugin wasn't firing or
 
 ![img](https://ionic-io-assets.s3.amazonaws.com/ionic-native-console.png)
 
-
 ## Plugin Missing?
+
 Let us know or submit a PR! Take a look at [the Developer Guide](https://github.com/ionic-team/ionic-native/blob/master/DEVELOPER.md) for more on how to contribute. :heart:
 
 ## Ionic v1 (AngularJS, Angular 1.x) support
