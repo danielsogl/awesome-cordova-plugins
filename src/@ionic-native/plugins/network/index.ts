@@ -89,7 +89,8 @@ export class Network extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'offline'
+    event: 'offline',
+    element: document
   })
   onDisconnect(): Observable<any> {
     return;
@@ -101,7 +102,8 @@ export class Network extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'online'
+    event: 'online',
+    element: document
   })
   onConnect(): Observable<any> {
     return;

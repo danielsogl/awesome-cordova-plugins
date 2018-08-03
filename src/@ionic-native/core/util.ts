@@ -53,7 +53,7 @@ export const pluginWarn = (
 ): void => {
   if (method) {
     console.warn(
-      'Native: tried calling ' +
+      'Ionic Native: tried calling ' +
         pluginName +
         '.' +
         method +
@@ -63,12 +63,12 @@ export const pluginWarn = (
     );
   } else {
     console.warn(
-      `'Native: tried accessing the ${pluginName} plugin but it's not installed.`
+      `'Ionic Native: tried accessing the ${pluginName} plugin but it's not installed.`
     );
   }
   if (plugin) {
     console.warn(
-      `Install the ${pluginName}  plugin: 'ionic cordova plugin add ${plugin}'`
+      `Install the ${pluginName} plugin: 'ionic cordova plugin add ${plugin}'`
     );
   }
 };
@@ -81,17 +81,17 @@ export const pluginWarn = (
 export const cordovaWarn = (pluginName: string, method?: string): void => {
   if (method) {
     console.warn(
-      'Native: tried calling ' +
+      'Ionic Native: tried calling ' +
         pluginName +
         '.' +
         method +
-        ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
+        ', but Cordova is not available. Make sure to a) run in a real device or simulator and b) include cordova.js in your index.html'
     );
   } else {
     console.warn(
       'Native: tried accessing the ' +
         pluginName +
-        ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
+        ' plugin but Cordova is not available. Make sure to a) run in a real device or simulator and b) include cordova.js in your index.html'
     );
   }
 };

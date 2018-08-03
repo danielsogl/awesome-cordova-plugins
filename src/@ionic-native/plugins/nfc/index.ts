@@ -291,13 +291,13 @@ export class Ndef extends IonicNativePlugin {
   record(tnf: number, type: number[] | string, id: number[] | string, payload: number[] | string): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  textRecord(text: string, languageCode: string, id: number[] | string): NdefRecord { return; }
+  textRecord(text: string, languageCode?: string, id?: number[] | string): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  uriRecord(uri: string, id: number[] | string): NdefRecord { return; }
+  uriRecord(uri: string, id?: number[] | string): NdefRecord { return; }
 
   @Cordova({ sync: true })
-  absoluteUriRecord(uri: string, payload: number[] | string, id: number[] | string): NdefRecord { return; }
+  absoluteUriRecord(uri: string, payload: number[] | string, id?: number[] | string): NdefRecord { return; }
 
   @Cordova({ sync: true })
   mimeMediaRecord(mimeType: string, payload: string): NdefRecord { return; }

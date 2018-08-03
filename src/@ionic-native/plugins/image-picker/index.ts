@@ -23,9 +23,17 @@ export interface ImagePickerOptions {
   quality?: number;
 
   /**
-   * Output type, defaults to 0  (FILE_URI).
+   * Choose the format of the return value.
+   * Defined in ImagePicker.OutputType. Default is FILE_URI.
+   *      FILE_URI : 0,   Return image file URI,
+   *      DATA_URL : 1,   Return image as base64-encoded string
    */
   outputType?: number;
+}
+
+export enum OutputType {
+  FILE_URL = 0,
+  DATA_URL
 }
 
 /**
