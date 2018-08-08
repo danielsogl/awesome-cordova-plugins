@@ -397,7 +397,11 @@ export interface ILocalNotification {
    * Set the token for the media session
    */
    mediaSession?: string;
-
+  
+  /**
+   * Make this notification show when app in foreground.
+   */
+  foreground?: boolean;
 }
 
 /**
