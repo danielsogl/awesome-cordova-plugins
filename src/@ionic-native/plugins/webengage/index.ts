@@ -31,10 +31,11 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 export class Webengage extends IonicNativePlugin {
   /**
    * Initializes WebEngage SDK
+   * @param {any} config
    * @return {Promise<any>}
    */
   @Cordova()
-  engage(): Promise<any> {
+  engage(config?: any): Promise<any> {
     return;
   }
 
@@ -56,7 +57,7 @@ export class Webengage extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  track(eventName: string, attributes: any): Promise<any> {
+  track(eventName: string, attributes?: any): Promise<any> {
     return;
   }
 
@@ -67,19 +68,18 @@ export class Webengage extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  screen(screenName: string, screenData: any): Promise<any> {
+  screen(screenName: string, screenData?: any): Promise<any> {
     return;
   }
 }
 
+/**
+ * @hidden
+ */
 @Plugin({
   pluginName: 'Webengage',
   plugin: 'cordova-plugin-webengage',
-  pluginRef: 'webengage.user',
-  repo: 'https://github.com/WebEngage/cordova-plugin',
-  install: '',
-  installVariables: [],
-  platforms: ['Android', 'iOS']
+  pluginRef: 'webengage.user'
 })
 @Injectable()
 export class WebengageUser extends IonicNativePlugin {
@@ -114,14 +114,13 @@ export class WebengageUser extends IonicNativePlugin {
   }
 }
 
+/**
+ * @hidden
+ */
 @Plugin({
   pluginName: 'Webengage',
   plugin: 'cordova-plugin-webengage',
-  pluginRef: 'webengage.push',
-  repo: 'https://github.com/WebEngage/cordova-plugin',
-  install: '',
-  installVariables: [],
-  platforms: ['Android', 'iOS']
+  pluginRef: 'webengage.push'
 })
 @Injectable()
 export class WebengagePush extends IonicNativePlugin {
@@ -147,14 +146,13 @@ export class WebengagePush extends IonicNativePlugin {
   }
 }
 
+/**
+ * @hidden
+ */
 @Plugin({
   pluginName: 'Webengage',
   plugin: 'cordova-plugin-webengage',
-  pluginRef: 'webengage.notification',
-  repo: 'https://github.com/WebEngage/cordova-plugin',
-  install: '',
-  installVariables: [],
-  platforms: ['Android', 'iOS']
+  pluginRef: 'webengage.notification'
 })
 @Injectable()
 export class WebengageNotification extends IonicNativePlugin {
