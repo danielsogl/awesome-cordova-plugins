@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface Attributes {
   [index: string]: String;
@@ -314,7 +314,11 @@ export class Answers extends IonicNativePlugin {
    * @param attributes Any additional user-defined attributes to be logged.
    */
   @Cordova({ sync: true })
-  sendSignUp(method?: string, success?: boolean, attributes?: Attributes): void {
+  sendSignUp(
+    method?: string,
+    success?: boolean,
+    attributes?: Attributes
+  ): void {
     return;
   }
 
@@ -392,7 +396,12 @@ export class Answers extends IonicNativePlugin {
    * https://docs.fabric.io/android/answers/answers-events.html#content-view
    */
   @Cordova({ sync: true })
-  sendContentView(name: string, type?: string, id?: string, attributes?: Attributes): void {
+  sendContentView(
+    name: string,
+    type?: string,
+    id?: string,
+    attributes?: Attributes
+  ): void {
     return;
   }
 
