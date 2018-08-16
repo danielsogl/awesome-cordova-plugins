@@ -24,7 +24,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-tslint": "6.1.2",
-    "jasmine-core": "^3.1.0",
+    "jasmine-core": "^3.2.1",
     "karma": "^2.0.5",
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.1.2",
