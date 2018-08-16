@@ -23,15 +23,13 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-webengage',
   pluginRef: 'webengage',
   repo: 'https://github.com/WebEngage/cordova-plugin',
-  install: '',
-  installVariables: [],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Webengage extends IonicNativePlugin {
   /**
    * Initializes WebEngage SDK
-   * @param {any} config
+   * @param {any} [config]
    * @return {Promise<any>}
    */
   @Cordova()
@@ -53,7 +51,7 @@ export class Webengage extends IonicNativePlugin {
   /**
    * Tracks event
    * @param {string} eventName
-   * @param {any} attributes
+   * @param {any} [attributes]
    * @return {Promise<any>}
    */
   @Cordova()
@@ -64,7 +62,7 @@ export class Webengage extends IonicNativePlugin {
   /**
    * Tracks screen
    * @param {string} eventName
-   * @param {any} screenData
+   * @param {any} [screenData]
    * @return {Promise<any>}
    */
   @Cordova()
