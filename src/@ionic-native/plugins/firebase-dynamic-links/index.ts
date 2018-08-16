@@ -38,10 +38,9 @@ export interface IDynamicLink {
  * constructor(private firebaseDynamicLinks: FirebaseDynamicLinks) { }
  *
  * ...
- *
+ * //Handle the logic here after opening the app with the Dynamic link
  * this.firebaseDynamicLinks.onDynamicLink()
- *   .then((res: any) => console.log(res)) //Handle the logic here after opening the app with the Dynamic link
- *   .catch((error:any) => console.log(error));
+ *   .subscribe((res: any) => console.log(res), (error:any) => console.log(error));
  * ```
  *
  * @interfaces
