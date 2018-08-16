@@ -55,6 +55,4 @@ export class ExtendedDeviceInformation extends IonicNativePlugin {
    */
   @CordovaProperty
   freestorage: number;
-
-
 }
