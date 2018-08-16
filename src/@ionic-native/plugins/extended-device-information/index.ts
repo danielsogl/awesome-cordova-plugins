@@ -26,12 +26,12 @@ import { CordovaProperty, Plugin, IonicNativePlugin } from '@ionic-native/core';
   pluginName: 'ExtendedDeviceInformation',
   plugin: 'cordova-plugin-extended-device-information',
   pluginRef: 'extended-device-information',
-  repo: 'https://github.com/danielehrhardt/cordova-plugin-extended-device-information',
+  repo:
+    'https://github.com/danielehrhardt/cordova-plugin-extended-device-information',
   platforms: ['Android']
 })
 @Injectable()
 export class ExtendedDeviceInformation extends IonicNativePlugin {
-
   /**
    * Get the device's memory size
    */
