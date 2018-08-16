@@ -1,22 +1,3 @@
-<a name="4.12.0"></a>
-# [4.12.0](https://github.com/ionic-team/ionic-native/compare/v4.11.0...v4.12.0) (2018-08-16)
-
-
-### Bug Fixes
-
-* **extended-device-information:** Fixed Memory Display Bug ([#2641](https://github.com/ionic-team/ionic-native/issues/2641)) ([2ac5282](https://github.com/ionic-team/ionic-native/commit/2ac5282))
-* **network:** bind listener to document instead of window ([#2622](https://github.com/ionic-team/ionic-native/issues/2622)) ([d10777a](https://github.com/ionic-team/ionic-native/commit/d10777a))
-* **photo-library:** interface missing includeVideos ([3f415f9](https://github.com/ionic-team/ionic-native/commit/3f415f9)), closes [#2624](https://github.com/ionic-team/ionic-native/issues/2624)
-
-
-### Features
-
-* **fabric:** add fabric plugin ([#2618](https://github.com/ionic-team/ionic-native/issues/2618)) ([9b4fd02](https://github.com/ionic-team/ionic-native/commit/9b4fd02))
-* **local-notifications:** add new foreground property ([#2633](https://github.com/ionic-team/ionic-native/issues/2633)) ([229b62c](https://github.com/ionic-team/ionic-native/commit/229b62c))
-* **webengage:** add optional config with initialization ([#2637](https://github.com/ionic-team/ionic-native/issues/2637)) ([ca9a702](https://github.com/ionic-team/ionic-native/commit/ca9a702))
-
-
-
 <a name="4.11.0"></a>
 # [4.11.0](https://github.com/ionic-team/ionic-native/compare/v4.10.1...v4.11.0) (2018-07-29)
 
