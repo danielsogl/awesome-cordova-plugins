@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 // Node module dependencies
 const fs = require('fs-extra-promise').useFs(require('fs-extra')),
   queue = require('queue'),
@@ -15,22 +15,21 @@ const ROOT = path.resolve(path.join(__dirname, '../../')), // root ionic-native 
   BUILD_DIST_ROOT = path.resolve(ROOT, 'dist/@ionic-native'), // dist directory root path
   BUILD_CORE_DIST = path.resolve(BUILD_DIST_ROOT, 'core'); // core dist directory path
 
-
 // dependency versions
 const ANGULAR_VERSION = '*',
-  RXJS_VERSION = '^5.0.1',
-  MIN_CORE_VERSION = '^4.2.0',
+  RXJS_VERSION = '^5.5.11',
+  MIN_CORE_VERSION = '^4.11.0',
   IONIC_NATIVE_VERSION = require(path.resolve(ROOT, 'package.json')).version;
 
 // package dependencies
 const CORE_PEER_DEPS = {
-  'rxjs': RXJS_VERSION
+  rxjs: RXJS_VERSION
 };
 
 const PLUGIN_PEER_DEPS = {
   '@ionic-native/core': MIN_CORE_VERSION,
   '@angular/core': ANGULAR_VERSION,
-  'rxjs': RXJS_VERSION
+  rxjs: RXJS_VERSION
 };
 
 // set peer dependencies for all plugins
@@ -44,8 +43,10 @@ fs.mkdirpSync(BUILD_TMP);
 console.log('Preparing core module package.json');
 CORE_PACKAGE_JSON.version = IONIC_NATIVE_VERSION;
 CORE_PACKAGE_JSON.peerDependencies = CORE_PEER_DEPS;
-fs.writeJsonSync(path.resolve(BUILD_CORE_DIST, 'package.json'), CORE_PACKAGE_JSON);
-
+fs.writeJsonSync(
+  path.resolve(BUILD_CORE_DIST, 'package.json'),
+  CORE_PACKAGE_JSON
+);
 
 // Fetch a list of the plugins
 const PLUGINS = fs.readdirSync(PLUGINS_PATH);
@@ -59,7 +60,9 @@ const index = pluginsToBuild.indexOf('ignore-errors');
 if (index > -1) {
   ignoreErrors = true;
   pluginsToBuild.splice(index, 1);
-  console.log('Build will continue even if errors were thrown. Errors will be printed when build finishes.');
+  console.log(
+    'Build will continue even if errors were thrown. Errors will be printed when build finishes.'
+  );
 }
 
 if (!pluginsToBuild.length) {
@@ -71,12 +74,9 @@ const QUEUE = queue({
   concurrency: require('os').cpus().length
 });
 
-
 // Function to process a single plugin
 const addPluginToQueue = pluginName => {
-
-  QUEUE.push((callback) => {
-
+  QUEUE.push(callback => {
     console.log(`Building plugin: ${pluginName}`);
 
     const PLUGIN_BUILD_DIR = path.resolve(BUILD_TMP, 'plugins', pluginName),
@@ -87,7 +87,6 @@ const addPluginToQueue = pluginName => {
     fs.mkdirpAsync(PLUGIN_BUILD_DIR) // create tmp build dir
       .then(() => fs.mkdirpAsync(path.resolve(BUILD_DIST_ROOT, pluginName))) // create dist dir
       .then(() => {
-
         // Write tsconfig.json
         const tsConfig = JSON.parse(JSON.stringify(PLUGIN_TS_CONFIG));
         tsConfig.files = [PLUGIN_SRC_PATH];
@@ -104,42 +103,39 @@ const addPluginToQueue = pluginName => {
         packageJson.name = `@ionic-native/${pluginName}`;
         packageJson.version = IONIC_NATIVE_VERSION;
 
-        return fs.writeJsonAsync(path.resolve(BUILD_DIST_ROOT, pluginName, 'package.json'), packageJson);
+        return fs.writeJsonAsync(
+          path.resolve(BUILD_DIST_ROOT, pluginName, 'package.json'),
+          packageJson
+        );
       })
       .then(() => {
-
         // compile the plugin
-        exec(`${ROOT}/node_modules/.bin/ngc -p ${tsConfigPath}`, (err, stdout, stderr) => {
-
-          if (err) {
-
-            if (!ignoreErrors) {
-              // oops! something went wrong.
-              console.log(err);
-              callback(`\n\nBuilding ${pluginName} failed.`);
-              return;
-            } else {
-              errors.push(err);
+        exec(
+          `${ROOT}/node_modules/.bin/ngc -p ${tsConfigPath}`,
+          (err, stdout, stderr) => {
+            if (err) {
+              if (!ignoreErrors) {
+                // oops! something went wrong.
+                console.log(err);
+                callback(`\n\nBuilding ${pluginName} failed.`);
+                return;
+              } else {
+                errors.push(err);
+              }
             }
 
+            // we're done with this plugin!
+            callback();
           }
-
-          // we're done with this plugin!
-          callback();
-
-        });
-
+        );
       })
       .catch(callback);
-
   }); // QUEUE.push end
-
 };
 
 pluginsToBuild.forEach(addPluginToQueue);
 
-QUEUE.start((err) => {
-
+QUEUE.start(err => {
   if (err) {
     console.log('Error building plugins.');
     console.log(err);
@@ -155,5 +151,4 @@ QUEUE.start((err) => {
   } else {
     console.log('Done processing plugins!');
   }
-
 });
