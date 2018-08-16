@@ -1,14 +1,7 @@
+import { Observable } from 'rxjs/Observable';
 import { _throw } from 'rxjs/observable/throw';
 
-import { Observable } from 'rxjs/Observable';
-
-import {
-  checkAvailability,
-  instanceAvailability,
-  overrideFunction,
-  wrap,
-  wrapInstance
-} from './plugin';
+import { checkAvailability, instanceAvailability, overrideFunction, wrap, wrapInstance } from './plugin';
 import { getPlugin, getPromise } from './util';
 
 export interface PluginConfig {

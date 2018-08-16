@@ -2,14 +2,7 @@ import 'core-js';
 
 import { Observable } from 'rxjs/Observable';
 
-import {
-  Cordova,
-  CordovaCheck,
-  CordovaInstance,
-  CordovaProperty,
-  InstanceProperty,
-  Plugin
-} from './decorators';
+import { Cordova, CordovaCheck, CordovaInstance, CordovaProperty, InstanceProperty, Plugin } from './decorators';
 import { IonicNativePlugin } from './ionic-native-plugin';
 import { ERR_CORDOVA_NOT_AVAILABLE, ERR_PLUGIN_NOT_INSTALLED } from './plugin';
 
