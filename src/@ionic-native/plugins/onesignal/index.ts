@@ -703,7 +703,7 @@ export class OneSignal extends IonicNativePlugin {
   }
 
   /**
-   * Clears all OneSignla notifications
+   * Clears all OneSignal notifications
    */
   @Cordova({ sync: true })
   clearOneSignalNotifications(): void {}

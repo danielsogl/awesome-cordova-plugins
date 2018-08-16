@@ -2,6 +2,53 @@
 # [5.0.0-beta.14](https://github.com/ionic-team/ionic-native/compare/v4.10.0...v5.0.0-beta.14) (2018-07-18)
 
 
+### Bug Fixes
+
+* **extended-device-information:** Fixed Memory Display Bug ([#2641](https://github.com/ionic-team/ionic-native/issues/2641)) ([2ac5282](https://github.com/ionic-team/ionic-native/commit/2ac5282))
+* **network:** bind listener to document instead of window ([#2622](https://github.com/ionic-team/ionic-native/issues/2622)) ([d10777a](https://github.com/ionic-team/ionic-native/commit/d10777a))
+* **photo-library:** interface missing includeVideos ([3f415f9](https://github.com/ionic-team/ionic-native/commit/3f415f9)), closes [#2624](https://github.com/ionic-team/ionic-native/issues/2624)
+
+
+### Features
+
+* **fabric:** add fabric plugin ([#2618](https://github.com/ionic-team/ionic-native/issues/2618)) ([9b4fd02](https://github.com/ionic-team/ionic-native/commit/9b4fd02))
+* **local-notifications:** add new foreground property ([#2633](https://github.com/ionic-team/ionic-native/issues/2633)) ([229b62c](https://github.com/ionic-team/ionic-native/commit/229b62c))
+* **webengage:** add optional config with initialization ([#2637](https://github.com/ionic-team/ionic-native/issues/2637)) ([ca9a702](https://github.com/ionic-team/ionic-native/commit/ca9a702))
+
+
+
+<a name="4.11.0"></a>
+# [4.11.0](https://github.com/ionic-team/ionic-native/compare/v4.10.1...v4.11.0) (2018-07-29)
+
+
+### Bug Fixes
+
+* **http:** add correct return types for downloadFile and uploadFile ([4092831](https://github.com/ionic-team/ionic-native/commit/4092831)), closes [#2615](https://github.com/ionic-team/ionic-native/issues/2615)
+
+
+### Features
+
+* **clevertap:** add CleverTap plugin ([#2609](https://github.com/ionic-team/ionic-native/issues/2609)) ([27d380e](https://github.com/ionic-team/ionic-native/commit/27d380e))
+* **facebook:** add getDeferredApplink function ([3b32e19](https://github.com/ionic-team/ionic-native/commit/3b32e19)), closes [#2510](https://github.com/ionic-team/ionic-native/issues/2510)
+* **webengage:** add webengage plugin ([#2604](https://github.com/ionic-team/ionic-native/issues/2604)) ([bd5bd7e](https://github.com/ionic-team/ionic-native/commit/bd5bd7e))
+
+
+
+<a name="4.10.1"></a>
+## [4.10.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.14...v4.10.1) (2018-07-25)
+
+
+### Bug Fixes
+
+* **nfs:** Optional arguments for records like textRecord ([#2605](https://github.com/ionic-team/ionic-native/issues/2605)) ([b635ba9](https://github.com/ionic-team/ionic-native/commit/b635ba9))
+* **user-agent:** Plugin not installed ([#2607](https://github.com/ionic-team/ionic-native/issues/2607)) ([79cb478](https://github.com/ionic-team/ionic-native/commit/79cb478))
+
+
+
+<a name="5.0.0-beta.14"></a>
+# [5.0.0-beta.14](https://github.com/ionic-team/ionic-native/compare/v4.10.0...v5.0.0-beta.14) (2018-07-18)
+
+
 ### Features
 
 * **abbyy-rtr:** add ABBYY Real-Time Recognition plugin ([#2580](https://github.com/ionic-team/ionic-native/issues/2580)) ([ecc698e](https://github.com/ionic-team/ionic-native/commit/ecc698e))
