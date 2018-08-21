@@ -53,6 +53,6 @@ export class ExtendedDeviceInformation extends IonicNativePlugin {
   /**
    * Get the total storage
    */
-  @CordovaProperty
+  @CordovaProperty()
   freestorage: number;
 }
