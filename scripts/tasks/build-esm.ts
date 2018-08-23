@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
-import { PLUGIN_PATHS } from '../build/helpers';
+import { PLUGIN_PATHS, ROOT } from '../build/helpers';
 import { EMIT_PATH } from '../build/transformers/extract-injectables';
 import { generateDeclarations, transpile } from '../build/transpile';
 
@@ -9,7 +9,7 @@ generateDeclarations();
 transpile();
 
 const outDirs = PLUGIN_PATHS.map(p =>
-  p.replace('src', 'dist').replace(/[\\/]index.ts/, '')
+  p.replace(path.join(ROOT, 'src'), path.join(ROOT, 'dist')).replace(/[\\/]index.ts/, '')
 );
 const injectableClasses = fs.readJSONSync(EMIT_PATH);
 
