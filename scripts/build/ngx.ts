@@ -57,7 +57,7 @@ export function generateDeclarationFiles() {
 
 // remove reference to @ionic-native/core decorators
 export function modifyMetadata() {
-  PLUGIN_PATHS.map(p => p.replace('src', 'dist').replace('index.ts', 'ngx/index.metadata.json'))
+  PLUGIN_PATHS.map(p => p.replace(path.join(ROOT, 'src'), path.join(ROOT, 'dist')).replace('index.ts', 'ngx/index.metadata.json'))
     .forEach(p => {
       const content = fs.readJSONSync(p);
       let _prop;
