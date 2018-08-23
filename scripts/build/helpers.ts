@@ -38,8 +38,8 @@ export function getDecoratorArgs(decorator: any) {
 
     switch (prop.initializer.kind) {
       case ts.SyntaxKind.StringLiteral:
+      case ts.SyntaxKind.Identifier:
         val = prop.initializer.text;
-        // args[prop.name.escapedText] = val;
         break;
 
       case ts.SyntaxKind.ArrayLiteralExpression:
