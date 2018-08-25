@@ -1,17 +1,46 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, IonicNativePlugin } from '@ionic-native/core';
-
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /* Available status of device */
-export type Status = 'scanStarted' | 'scanStopped' | 'scanResult' | 'connected' | 'disconnected'
-    | 'bonding' | 'bonded' | 'unbonded' | 'closed' | 'services' | 'discovered'
-    | 'characteristics' | 'descriptors' | 'read' | 'subscribed' | 'unsubscribed'
-    | 'subscribedResult' | 'written' | 'readDescriptor' | 'writeDescriptor'
-    | 'rssi' | 'mtu' | 'connectionPriorityRequested' |'enabled' | 'disabled'
-    | 'readRequested' | 'writeRequested' | 'mtuChanged' | 'notifyReady' | 'notifySent'
-    | 'serviceAdded' | 'serviceRemoved' | 'allServicesRemoved' | 'advertisingStarted'
-    | 'advertisingStopped' | 'responded' | 'notified';
+export type Status =
+  | 'scanStarted'
+  | 'scanStopped'
+  | 'scanResult'
+  | 'connected'
+  | 'disconnected'
+  | 'bonding'
+  | 'bonded'
+  | 'unbonded'
+  | 'closed'
+  | 'services'
+  | 'discovered'
+  | 'characteristics'
+  | 'descriptors'
+  | 'read'
+  | 'subscribed'
+  | 'unsubscribed'
+  | 'subscribedResult'
+  | 'written'
+  | 'readDescriptor'
+  | 'writeDescriptor'
+  | 'rssi'
+  | 'mtu'
+  | 'connectionPriorityRequested'
+  | 'enabled'
+  | 'disabled'
+  | 'readRequested'
+  | 'writeRequested'
+  | 'mtuChanged'
+  | 'notifyReady'
+  | 'notifySent'
+  | 'serviceAdded'
+  | 'serviceRemoved'
+  | 'allServicesRemoved'
+  | 'advertisingStarted'
+  | 'advertisingStopped'
+  | 'responded'
+  | 'notified';
 
 /** Available connection priorities */
 export type ConnectionPriority = 'low' | 'balanced' | 'high';
@@ -31,8 +60,8 @@ export interface InitPeripheralParams {
 }
 
 export interface InitParams extends InitPeripheralParams {
-    /** Should change in Bluetooth status notifications be sent */
-    statusReceiver?: boolean;
+  /** Should change in Bluetooth status notifications be sent */
+  statusReceiver?: boolean;
 }
 
 export interface ScanParams {
@@ -78,7 +107,7 @@ export interface DescriptorParams extends Params {
   characteristic: string;
 }
 
-export interface OperationDescriptorParams  extends DescriptorParams {
+export interface OperationDescriptorParams extends DescriptorParams {
   /** The descriptor's ID */
   descriptor: string;
 }
@@ -97,7 +126,7 @@ export interface WriteDescriptorParams extends DescriptorParams {
   value: string;
 }
 
-export  type AdvertisingParams = AdvertisingParamsAndroid | AdvertisingParamsIOS;
+export type AdvertisingParams = AdvertisingParamsAndroid | AdvertisingParamsIOS;
 export type AdvertiseMode = 'balanced' | 'lowLatency' | 'lowPower';
 export type TxPowerLevel = 'high' | 'low' | 'ultralow' | 'medium';
 
@@ -179,26 +208,27 @@ export interface ScanStatus extends DeviceInfo {
    * advertisement hash with the keys (iOS)
    * empty (Windows)
    */
-  advertisement: {
-      /** An array of service UUIDs */
-      serviceUuids: string[];
-      /** A string representing the name of the manufacturer of the device */
-      manufacturerData: string;
-      /** A number containing the transmit power of a peripheral */
-      txPowerLevel: number;
-      /** An array of one or more CBUUID objects, representing CBService UUIDs that were found in the “overflow” area of the advertisement data */
-      overflowServiceUuids: string[];
-      /** A boolean value that indicates whether the advertising event type is connectable */
-      isConnectable: boolean;
-      /** An array of one or more CBUUID objects, representing CBService UUIDs */
-      solicitedServiceUuids: string[];
-      /* A dictionary containing service-specific advertisement data */
-      serviceData: any;
-      /* A string containing the local name of a peripheral */
-      localName: string;
-  } | string;
+  advertisement:
+    | {
+        /** An array of service UUIDs */
+        serviceUuids: string[];
+        /** A string representing the name of the manufacturer of the device */
+        manufacturerData: string;
+        /** A number containing the transmit power of a peripheral */
+        txPowerLevel: number;
+        /** An array of one or more CBUUID objects, representing CBService UUIDs that were found in the “overflow” area of the advertisement data */
+        overflowServiceUuids: string[];
+        /** A boolean value that indicates whether the advertising event type is connectable */
+        isConnectable: boolean;
+        /** An array of one or more CBUUID objects, representing CBService UUIDs */
+        solicitedServiceUuids: string[];
+        /* A dictionary containing service-specific advertisement data */
+        serviceData: any;
+        /* A string containing the local name of a peripheral */
+        localName: string;
+      }
+    | string;
 }
-
 
 export interface Service {
   /** Service's uuid */
@@ -217,32 +247,32 @@ export interface Characteristic {
    *  If the property is defined as a key, the characteristic has that property
    */
   properties?: {
-      write?: boolean;
-      broadcast?: boolean;
-      extendedProps?: boolean;
-      writeWithoutResponse?: boolean;
-      writeNoResponse?: boolean;
-      signedWrite?: boolean;
-      read?: boolean;
-      notify?: boolean;
-      indicate?: boolean;
-      authenticatedSignedWrites?: boolean;
-      notifyEncryptionRequired?: boolean;
-      indicateEncryptionRequired?: boolean
+    write?: boolean;
+    broadcast?: boolean;
+    extendedProps?: boolean;
+    writeWithoutResponse?: boolean;
+    writeNoResponse?: boolean;
+    signedWrite?: boolean;
+    read?: boolean;
+    notify?: boolean;
+    indicate?: boolean;
+    authenticatedSignedWrites?: boolean;
+    notifyEncryptionRequired?: boolean;
+    indicateEncryptionRequired?: boolean;
   };
   /**
    *  If the permission is defined as a key, the character has that permission
    */
   permissions?: {
-      read?: boolean;
-      readEncrypted?: boolean;
-      readEncryptedMITM?: boolean
-      write?: boolean;
-      writeSigned?: boolean;
-      writeSignedMITM?: boolean;
-      writeEncryptedMITM?: boolean;
-      readEncryptionRequired?: boolean;
-      writeEncryptionRequired?: boolean;
+    read?: boolean;
+    readEncrypted?: boolean;
+    readEncryptedMITM?: boolean;
+    write?: boolean;
+    writeSigned?: boolean;
+    writeSignedMITM?: boolean;
+    writeEncryptedMITM?: boolean;
+    readEncryptionRequired?: boolean;
+    writeEncryptionRequired?: boolean;
   };
 }
 
@@ -296,7 +326,7 @@ export interface Characteristics extends DeviceInfo {
   characteristics: Characteristic[];
 }
 
-export interface  InitializeResult {
+export interface InitializeResult {
   /** Device's status */
   status: Status;
   /** The address/identifier provided by the scan's return object */
@@ -344,7 +374,6 @@ export interface Error {
   message: string;
 }
 
-
 /**
  * @name BluetoothLE
  * @description
@@ -369,9 +398,9 @@ export interface Error {
  *
  *   });
  * }
- * 
+ *
  * ```
- * 
+ *
  */
 @Plugin({
   pluginName: 'BluetoothLE',
@@ -382,20 +411,16 @@ export interface Error {
   installVariables: [], // OPTIONAL the plugin requires variables
   platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
 })
-
-
 @Injectable()
 export class BluetoothLE extends IonicNativePlugin {
-
   /**
    * @name initialize
    * @description Initialize Bluetooth on the device
    * @param {InitParams} [params]
    * @returns {(Promise<{ status: 'enabled' | 'disabled'}>)} The callback that is passed initialize status (enabled/disabled)
    */
-  @Cordova({callbackOrder: 'reverse'})
-  initialize(params?: InitParams):
-  Promise<{ status: 'enabled' | 'disabled'}> {
+  @Cordova({ callbackOrder: 'reverse' })
+  initialize(params?: InitParams): Promise<{ status: 'enabled' | 'disabled' }> {
     return;
   }
 
@@ -404,9 +429,8 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description Enable Bluetooth on the device. Android support only
    * @returns {Promise<{ status: boolean }>}
    */
-  @Cordova({callbackOrder: 'reverse', sync: true})
-  enable():
-  Promise<{ status: boolean }> {
+  @Cordova({ callbackOrder: 'reverse', sync: true })
+  enable(): Promise<{ status: boolean }> {
     return;
   }
 
@@ -415,7 +439,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description Disable Bluetooth on the device. Android support only
    * @returns void
    */
-  @Cordova({callbackOrder: 'reverse', sync: true})
+  @Cordova({ callbackOrder: 'reverse', sync: true })
   disable() {
     return;
   }
@@ -425,14 +449,14 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description @todo
    * @returns {Promise<{ name: string, address: string, isInitialized: boolean, isEnabled: boolean, isScanning: boolean, isDiscoverable: boolean}>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   getAdapterInfo(): Promise<{
-    name: string
-    address: string
-    isInitialized: boolean
-    isEnabled: boolean
-    isScanning: boolean
-    isDiscoverable: boolean
+    name: string;
+    address: string;
+    isInitialized: boolean;
+    isEnabled: boolean;
+    isScanning: boolean;
+    isDiscoverable: boolean;
   }> {
     return;
   }
@@ -448,9 +472,8 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param params Scan params
    * @returns {(Observable<{ status: ScanStatus }>)}
    */
-  @Cordova({callbackOrder: 'reverse', observable: true})
-  startScan(params: ScanParams):
-  Observable<{ status: ScanStatus }> {
+  @Cordova({ callbackOrder: 'reverse', observable: true })
+  startScan(params: ScanParams): Observable<{ status: ScanStatus }> {
     return;
   }
 
@@ -460,7 +483,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * The app should use a timer to limit the scanning time.
    * @returns {Promise<{status: 'scanStopped'}>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   stopScan(): Promise<{ status: 'scanStopped' }> {
     return;
   }
@@ -472,8 +495,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{ services: string[] }} An array of service IDs to filter the retrieval by. If no service IDs are specified, no devices will be returned.
    * @returns {Promise<{ devices: DeviceInfo[] }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
-  retrieveConnected(params?: { services?: string[] }): Promise<{ devices: DeviceInfo[] }> {
+  @Cordova({ callbackOrder: 'reverse' })
+  retrieveConnected(params?: {
+    services?: string[];
+  }): Promise<{ devices: DeviceInfo[] }> {
     return;
   }
 
@@ -483,14 +508,14 @@ export class BluetoothLE extends IonicNativePlugin {
    * The device doesn't need to be connected to initiate bonding. Android support only.
    * @param {{ address: string }} params The address/identifier provided by the scan's return object
    * @returns {(Observable<{ status: DeviceInfo }>)}
-   * success: 
+   * success:
    *    The first success callback should always return with status == bonding.
    *    If the bond is created, the callback will return again with status == bonded.
    *    If the bonding popup is canceled or the wrong code is entered, the callback will return again with status == unbonded.
    * error:
    *    The callback that will be triggered when the bond operation fails
    */
-  @Cordova({callbackOrder: 'reverse', observable: true})
+  @Cordova({ callbackOrder: 'reverse', observable: true })
   bond(params: { address: string }): Observable<{ status: DeviceInfo }> {
     return;
   }
@@ -503,8 +528,8 @@ export class BluetoothLE extends IonicNativePlugin {
    *    success: The success callback should always return with status == unbonded, that is passed with device object
    *    error: The callback that will be triggered when the unbond operation fails
    */
-  @Cordova({callbackOrder: 'reverse'})
-  unbond(params: {address: string}): Promise<{ status: DeviceInfo }> {
+  @Cordova({ callbackOrder: 'reverse' })
+  unbond(params: { address: string }): Promise<{ status: DeviceInfo }> {
     return;
   }
 
@@ -520,8 +545,11 @@ export class BluetoothLE extends IonicNativePlugin {
    *    success: device object with status
    *    error: The callback that will be triggered when the unbond operation fails
    */
-  @Cordova({callbackOrder: 'reverse', observable: true})
-  connect(params: {address: string, autoConnect?: boolean}): Observable<{ status: DeviceInfo }> {
+  @Cordova({ callbackOrder: 'reverse', observable: true })
+  connect(params: {
+    address: string;
+    autoConnect?: boolean;
+  }): Observable<{ status: DeviceInfo }> {
     return;
   }
 
@@ -531,7 +559,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{address: string}} params The address/identifier
    * @returns {(Observable<{ status: DeviceInfo }>)}
    */
-  @Cordova({callbackOrder: 'reverse', observable: true})
+  @Cordova({ callbackOrder: 'reverse', observable: true })
   reconnect(params: { address: string }): Observable<{ status: DeviceInfo }> {
     return;
   }
@@ -543,7 +571,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{address: string}} params The address/identifier
    * @returns {Promise<{ status: DeviceInfo }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   disconnect(params: { address: string }): Promise<{ status: DeviceInfo }> {
     return;
   }
@@ -556,7 +584,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{ address: string }} params The address/identifier
    * @returns {Promise<{ status: DeviceInfo }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   close(params: { address: string }): Promise<{ status: DeviceInfo }> {
     return;
   }
@@ -575,8 +603,11 @@ export class BluetoothLE extends IonicNativePlugin {
    *    success: device object (contains array of service objects)
    *    error: The callback that will be triggered when the unbond operation fails
    */
-  @Cordova({callbackOrder: 'reverse'})
-  discover(params: { address: string, clearCache?: boolean }): Promise<{ device: Device }> {
+  @Cordova({ callbackOrder: 'reverse' })
+  discover(params: {
+    address: string;
+    clearCache?: boolean;
+  }): Promise<{ device: Device }> {
     return;
   }
 
@@ -587,8 +618,11 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{address: string, services: string[]}} params
    * @returns {Promise<{ services: Services }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
-  services(params: { address: string, services?: string[] }): Promise<{ services: Services }> {
+  @Cordova({ callbackOrder: 'reverse' })
+  services(params: {
+    address: string;
+    services?: string[];
+  }): Promise<{ services: Services }> {
     return;
   }
 
@@ -599,8 +633,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {CharacteristicParams} params Characteristic params
    * @returns {Promise<{ characteristics: Characteristics }>} The service id and an Array of characteristics
    */
-  @Cordova({callbackOrder: 'reverse'})
-  characteristics(params: CharacteristicParams): Promise<{ characteristics: Characteristics }> {
+  @Cordova({ callbackOrder: 'reverse' })
+  characteristics(
+    params: CharacteristicParams
+  ): Promise<{ characteristics: Characteristics }> {
     return;
   }
 
@@ -610,7 +646,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {DescriptorParams} params
    * @returns {Promise<{ descriptors: Descriptors }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   descriptors(params: DescriptorParams): Promise<{ descriptors: Descriptors }> {
     return;
   }
@@ -621,7 +657,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {DescriptorParams} params
    * @returns {Promise<OperationResult>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   read(params: DescriptorParams): Promise<OperationResult> {
     return;
   }
@@ -634,7 +670,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {DescriptorParams} params
    * @returns {Promise<OperationResult>}
    */
-  @Cordova({callbackOrder: 'reverse', observable: true})
+  @Cordova({ callbackOrder: 'reverse', observable: true })
   subscribe(params: DescriptorParams): Observable<OperationResult> {
     return;
   }
@@ -645,7 +681,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {DescriptorParams} params
    * @returns {Promise<UnsubscribeResult>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   unsubscribe(params: DescriptorParams): Promise<UnsubscribeResult> {
     return;
   }
@@ -657,7 +693,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {WriteCharacteristicParams} params
    * @returns {Promise<OperationResult>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   write(params: WriteCharacteristicParams): Promise<OperationResult> {
     return;
   }
@@ -669,11 +705,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {WriteCharacteristicParams} params
    * @returns {Promise<OperationResult>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   writeQ(params: WriteCharacteristicParams): Promise<OperationResult> {
     return;
   }
-
 
   /**
    * @name readDescriptor
@@ -681,7 +716,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {OperationDescriptorParams} params
    * @returns {Promise<DescriptorResult>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   readDescriptor(params: OperationDescriptorParams): Promise<DescriptorResult> {
     return;
   }
@@ -693,7 +728,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {WriteDescriptorParams} params
    * @returns {Promise<DescriptorResult>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   writeDescriptor(params: WriteDescriptorParams): Promise<DescriptorResult> {
     return;
   }
@@ -704,7 +739,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{ address: string }} params
    * @returns {Promise<{ rssi: RSSI }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   rssi(params: { address: string }): Promise<{ rssi: RSSI }> {
     return;
   }
@@ -715,8 +750,8 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{ address: string, mtu: number }} params
    * @returns {Promise<{ mtu: MTU }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
-  mtu(params: { address: string, mtu?: number }): Promise<{ mtu: MTU }> {
+  @Cordova({ callbackOrder: 'reverse' })
+  mtu(params: { address: string; mtu?: number }): Promise<{ mtu: MTU }> {
     return;
   }
 
@@ -727,8 +762,11 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{ address: string, connectionPriority: ConnectionPriority }} params
    * @returns {Promise<DeviceInfo>}
    */
-  @Cordova({callbackOrder: 'reverse'})
-  requestConnectionPriority(params: { address: string, connectionPriority: ConnectionPriority }): Promise<DeviceInfo> {
+  @Cordova({ callbackOrder: 'reverse' })
+  requestConnectionPriority(params: {
+    address: string;
+    connectionPriority: ConnectionPriority;
+  }): Promise<DeviceInfo> {
     return;
   }
 
@@ -737,7 +775,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description Determine whether the adapter is initialized. No error callback. Returns true or false
    * @returns {Promise<{ isInitialized: boolean }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   isInitialized(): Promise<{ isInitialized: boolean }> {
     return;
   }
@@ -747,7 +785,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description Determine whether the adapter is enabled. No error callback
    * @returns {Promise<{ isEnabled: boolean }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   isEnabled(): Promise<{ isEnabled: boolean }> {
     return;
   }
@@ -757,7 +795,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description Determine whether the adapter is scanning. No error callback. Returns true or false
    * @returns {Promise<{ isScanning: boolean }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   isScanning(): Promise<{ isScanning: boolean }> {
     return;
   }
@@ -768,7 +806,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{ address: string }} params
    * @returns {Promise<BondedStatus>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   isBonded(params: { address: string }): Promise<BondedStatus> {
     return;
   }
@@ -779,7 +817,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{ address: string }} params
    * @returns {Promise<PrevConnectionStatus>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   wasConnected(params: { address: string }): Promise<PrevConnectionStatus> {
     return;
   }
@@ -790,7 +828,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{ address: string }} params
    * @returns {Promise<CurrConnectionStatus>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   isConnected(params: { address: string }): Promise<CurrConnectionStatus> {
     return;
   }
@@ -801,7 +839,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{ address: string }} params
    * @returns {Promise<DiscoverStatus>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   isDiscovered(params: { address: string }): Promise<DiscoverStatus> {
     return;
   }
@@ -811,7 +849,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description Determine whether coarse location privileges are granted since scanning for unpaired devices requires it in Android API 23
    * @returns {Promise<{ hasPermission: boolean }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   hasPermission(): Promise<{ hasPermission: boolean }> {
     return;
   }
@@ -822,7 +860,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * Will return an error if called on iOS or Android versions prior to 6.0.
    * @returns {Promise<{ requestPermission: boolean }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   requestPermission(): Promise<{ requestPermission: boolean }> {
     return;
   }
@@ -832,7 +870,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description Determine if location services are enabled or not. Location Services are required to find devices in Android API 23
    * @returns {Promise<{ isLocationEnabled: boolean }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   isLocationEnabled(): Promise<{ isLocationEnabled: boolean }> {
     return;
   }
@@ -843,7 +881,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * Location Services are required to find devices in Android API 23.
    * @returns {Promise<{ requestLocation: boolean }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   requestLocation(): Promise<{ requestLocation: boolean }> {
     return;
   }
@@ -855,8 +893,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {InitPeripheralParams} [params]
    * @returns {Observable<InitializeResult>}
    */
-  @Cordova({callbackOrder: 'reverse'})
-  initializePeripheral(params?: InitPeripheralParams ): Observable<InitializeResult> {
+  @Cordova({ callbackOrder: 'reverse' })
+  initializePeripheral(
+    params?: InitPeripheralParams
+  ): Observable<InitializeResult> {
     return;
   }
 
@@ -866,8 +906,11 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{ service: string, characteristics: Characteristic[] }} params
    * @returns {Promise<{ service: string, status: Status }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
-  addService(params: { service: string, characteristics: Characteristic[] }): Promise<{ service: string, status: Status }> {
+  @Cordova({ callbackOrder: 'reverse' })
+  addService(params: {
+    service: string;
+    characteristics: Characteristic[];
+  }): Promise<{ service: string; status: Status }> {
     return;
   }
 
@@ -877,8 +920,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {{ service: string }} params
    * @returns {Promise<{ service: string, status: Status }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
-  removeService(params: { service: string }): Promise<{ service: string, status: Status }> {
+  @Cordova({ callbackOrder: 'reverse' })
+  removeService(params: {
+    service: string;
+  }): Promise<{ service: string; status: Status }> {
     return;
   }
 
@@ -887,20 +932,20 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description Remove all services
    * @returns {Promise<{ status: Status }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   removeAllServices(): Promise<{ status: Status }> {
     return;
   }
 
   /**
    * @name startAdvertising (different behavior on Android/iOS, read below)
-   * @description Start advertising as a BLE device. 
+   * @description Start advertising as a BLE device.
    * Note: This needs to be improved so services can be used for both Android and iOS.
    * On iOS, the advertising devices likes to rename itself back to the name of the device, i.e. Rand' iPhone
    * @param {AdvertisingParams} params
    * @returns {Promise<{ status: Status }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   startAdvertising(params: AdvertisingParams): Promise<{ status: Status }> {
     return;
   }
@@ -910,7 +955,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description Stop advertising
    * @returns {Promise<{ status: Status }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   stopAdvertising(): Promise<{ status: Status }> {
     return;
   }
@@ -920,7 +965,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description Determine if app is advertising or not.
    * @returns {Promise<{ status: boolean }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   isAdvertising(): Promise<{ status: boolean }> {
     return;
   }
@@ -931,7 +976,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {RespondParams} params
    * @returns {Promise<{ status: Status }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
+  @Cordova({ callbackOrder: 'reverse' })
   respond(params: RespondParams): Promise<{ status: Status }> {
     return;
   }
@@ -944,8 +989,8 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {NotifyParams} params
    * @returns {Promise<{ status: Status, sent: boolean }>}
    */
-  @Cordova({callbackOrder: 'reverse'})
-  notify(params: NotifyParams): Promise<{ status: Status, sent: boolean }> {
+  @Cordova({ callbackOrder: 'reverse' })
+  notify(params: NotifyParams): Promise<{ status: Status; sent: boolean }> {
     return;
   }
 
@@ -955,7 +1000,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {string} str
    * @returns {Uint8Array}
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   encodedStringToBytes(value: string): Uint8Array {
     return;
   }
@@ -966,7 +1011,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {Uint8Array} bytes
    * @returns {string}
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   bytesToEncodedString(value: Uint8Array): string {
     return;
   }
@@ -977,7 +1022,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {Uint8Array} value
    * @returns {string}
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   stringToBytes(value: Uint8Array): string {
     return;
   }
@@ -988,7 +1033,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param {Uint8Array} value
    * @returns {string}
    */
-  @Cordova({sync: true})
+  @Cordova({ sync: true })
   bytesToString(value: Uint8Array): string {
     return;
   }
