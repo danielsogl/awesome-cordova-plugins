@@ -67,7 +67,7 @@ export interface InitParams extends InitPeripheralParams {
 export interface ScanParams {
   /* An array of service IDs to filter the scan or empty array / null. This parameter is not supported on Windows platform yet */
   services?: string[];
-  /** True/false to allow duplicate advertisement packets, defaults to false (iOS)*/
+  /** True/false to allow duplicate advertisement packets, defaults to false (iOS) */
   allowDuplicates?: boolean;
   /** Defaults to Low Power. Available from API21 / API 23 (Android) */
   scanMode?: BluetoothScanMode;
@@ -181,7 +181,7 @@ export interface MTU extends DeviceInfo {
 }
 
 export interface BondedStatus extends CommonInfo {
-  /** Bonded status*/
+  /** Bonded status */
   isBonded: boolean;
 }
 
@@ -322,7 +322,7 @@ export interface DescriptorResult extends OperationResult {
 export interface Characteristics extends DeviceInfo {
   /** Service's id */
   service: string;
-  /** Array of characteristic objects*/
+  /** Array of characteristic objects */
   characteristics: Characteristic[];
 }
 
