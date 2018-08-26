@@ -167,11 +167,7 @@ function wrapObservable(
  * @returns {Observable}
  */
 function wrapEventObservable(event: string, element: any): Observable<any> {
-  if (element) {
-    element = get(window, element);
-  } else {
-    element = window;
-  }
+  element = element ? get(window, element) : window;
   return fromEvent(element, event);
 }
 
