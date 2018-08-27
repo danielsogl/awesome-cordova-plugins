@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 /**
  * @name Open Native Settings
  * @description
- * Plugin to open native screens of iOS/android settings 
- * @usage 
+ * Plugin to open native screens of iOS/android settings
+ * @usage
  * You can open any of these settings:
  * ```
  * "about", // ios
@@ -78,7 +78,7 @@ import { Injectable } from '@angular/core';
     "wifi_ip", // android
     "wifi", // ios, android
     "wireless" // android
-    ``` 
+    ```
  * ```typescript
  * import { OpenNativeSettings } from '@ionic-native/open-native-settings';
  *
@@ -102,10 +102,10 @@ export class OpenNativeSettings extends IonicNativePlugin {
 
   /**
    * Opens a setting dialog
-   * @param setting {string} setting name
+   * @param setting {string|array} setting name
    * @return {Promise<any>}
    */
   @Cordova()
-  open(setting: string): Promise<any> { return; }
+  open(setting: string | [string, boolean]): Promise<any> { return; }
 
 }
