@@ -63,4 +63,25 @@ export class AES256 extends IonicNativePlugin {
     return;
   }
 
+  /**
+   * This function can be used to generate a secure key based on an password. Perfect if you want to delegate the key generation for encryption to the plugin.
+   * Make sure to save the return value of this function somewhere so your encrypted data can be decrypted in the future.
+   * @param {string} password A random string, which will be used as input for a PBKDF2 function
+   * @return {Promise<string>} Returns a promise that resolves when key is generated.
+   */
+  @Cordova()
+  generateSecureKey(password: string): Promise<string> {
+    return;
+  }
+
+  /**
+   * This function can be used to generate a secure IV based on an password. Perfect if you want to delegate the IV generation for encryption to the plugin.
+   * Make sure to save the return value of this function somewhere so your encrypted data can be decrypted in the future.
+   * @param {string} password A random string, which will be used as input for a PBKDF2 function
+   * @return {Promise<string>} Returns a promise that resolves when IV is generated.
+   */
+  @Cordova()
+  generateSecureIV(password: string): Promise<string> {
+    return;
+  }
 }
