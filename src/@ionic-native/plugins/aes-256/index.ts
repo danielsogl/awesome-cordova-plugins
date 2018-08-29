@@ -17,12 +17,14 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * ...
  *
+ * const secureKey: string = await this.aES256.generateSecureKey((new Date()).toString() + 'secure_key_postfix'); // Returns a 32 bytes string
+ * const secureIV: string = await this.aES256.generateSecureIV((new Date()).toString() + 'secure_iv_postfix'); // Returns a 16 bytes string
  *
- * this.aES256.encrypt('12345678123456781234567812345678', '1234567812345678', 'testdata')
+ * this.aES256.encrypt(secureKey, secureIV, 'testdata')
  *   .then(res => console.log('Encrypted Data: ',res))
  *   .catch((error: any) => console.error(error));
  *
- * this.aES256.decrypt('12345678123456781234567812345678', '1234567812345678', 'encryptedData')
+ * this.aES256.decrypt(secureKey, secureIV, 'encryptedData')
  *   .then(res => console.log('Decrypted Data : ',res))
  *   .catch((error: any) => console.error(error));
  *
@@ -63,4 +65,25 @@ export class AES256 extends IonicNativePlugin {
     return;
   }
 
+  /**
+   * This function can be used to generate a secure key based on an password. Perfect if you want to delegate the key generation for encryption to the plugin.
+   * Make sure to save the return value of this function somewhere so your encrypted data can be decrypted in the future.
+   * @param {string} password A random string, which will be used as input for a PBKDF2 function
+   * @return {Promise<string>} Returns a promise that resolves when key is generated.
+   */
+  @Cordova()
+  generateSecureKey(password: string): Promise<string> {
+    return;
+  }
+
+  /**
+   * This function can be used to generate a secure IV based on an password. Perfect if you want to delegate the IV generation for encryption to the plugin.
+   * Make sure to save the return value of this function somewhere so your encrypted data can be decrypted in the future.
+   * @param {string} password A random string, which will be used as input for a PBKDF2 function
+   * @return {Promise<string>} Returns a promise that resolves when IV is generated.
+   */
+  @Cordova()
+  generateSecureIV(password: string): Promise<string> {
+    return;
+  }
 }
