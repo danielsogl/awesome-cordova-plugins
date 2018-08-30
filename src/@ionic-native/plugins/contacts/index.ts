@@ -1,4 +1,5 @@
 import {
+  checkAvailability,
   CordovaCheck,
   CordovaInstance,
   getPromise,
