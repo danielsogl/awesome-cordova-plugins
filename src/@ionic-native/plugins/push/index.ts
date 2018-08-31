@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  checkAvailability,
-  Cordova,
-  CordovaInstance,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { checkAvailability, Cordova, CordovaInstance, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 declare const window: any;
@@ -118,6 +112,13 @@ export interface IOSPushOptions {
    * Action Buttons on iOS - https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/PAYLOAD.md#action-buttons-1
    */
   categories?: CategoryArray;
+
+  /**
+   * If true the device will be set up to receive VoIP Push notifications and the
+   * other options will be ignored since VoIP notifications are silent
+   * notifications that should be handled in the "notification" event.
+   */
+  voip?: boolean | string;
 }
 
 export interface CategoryArray {

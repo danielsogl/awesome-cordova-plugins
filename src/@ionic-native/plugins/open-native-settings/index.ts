@@ -1,5 +1,5 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Open Native Settings
@@ -101,11 +101,11 @@ import { Injectable } from '@angular/core';
 export class OpenNativeSettings extends IonicNativePlugin {
   /**
    * Opens a setting dialog
-   * @param setting {string} setting name
+   * @param setting {string|array} setting name
    * @return {Promise<any>}
    */
   @Cordova()
-  open(setting: string): Promise<any> {
+  open(setting: string | [string, boolean]): Promise<any> {
     return;
   }
 }
