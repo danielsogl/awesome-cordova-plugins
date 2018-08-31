@@ -1,82 +1,14 @@
-<a name="5.0.0-beta.15"></a>
-# [5.0.0-beta.15](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.14...v5.0.0-beta.15) (2018-08-25)
+<a name="5.0.0-beta.16"></a>
+# [5.0.0-beta.16](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.14...v5.0.0-beta.16) (2018-08-31)
 
 
 ### Bug Fixes
 
+* **camera:** fixing builds ([c8d25a1](https://github.com/ionic-team/ionic-native/commit/c8d25a1))
 * **clevertap:** fix jsdoc ([e47a3e1](https://github.com/ionic-team/ionic-native/commit/e47a3e1))
 * **contacts:** remove double import of checkAvailability ([#2659](https://github.com/ionic-team/ionic-native/issues/2659)) ([1ad4cc1](https://github.com/ionic-team/ionic-native/commit/1ad4cc1))
+* **core:** wrapEventObservable ([#2660](https://github.com/ionic-team/ionic-native/issues/2660)) ([bd34581](https://github.com/ionic-team/ionic-native/commit/bd34581))
 * **extended-device-information:** fix wrong decorator ([5e9c92a](https://github.com/ionic-team/ionic-native/commit/5e9c92a))
-
-
-
-<a name="5.0.0-beta.14"></a>
-# [5.0.0-beta.14](https://github.com/ionic-team/ionic-native/compare/v4.10.0...v5.0.0-beta.14) (2018-07-18)
-
-
-### Features
-
-* **aes256:** Added new utility methods to generate secure key and secure IV ([#2675](https://github.com/ionic-team/ionic-native/issues/2675)) ([a731466](https://github.com/ionic-team/ionic-native/commit/a731466))
-* **in-app-browser:** Add missing InAppBrowserOptions-properties ([#2669](https://github.com/ionic-team/ionic-native/issues/2669)) ([d90724e](https://github.com/ionic-team/ionic-native/commit/d90724e))
-* **push:** Added voip property to IOSPushOptions ([#2681](https://github.com/ionic-team/ionic-native/issues/2681)) ([03e4f0e](https://github.com/ionic-team/ionic-native/commit/03e4f0e))
-
-
-
-<a name="5.0.0-beta.15"></a>
-# [5.0.0-beta.15](https://github.com/ionic-team/ionic-native/compare/v4.12.0...v5.0.0-beta.15) (2018-08-25)
-
-
-### Features
-
-* **bluetooth-le:** add bluetooth-le plugin ([#2651](https://github.com/ionic-team/ionic-native/issues/2651)) ([591ee87](https://github.com/ionic-team/ionic-native/commit/591ee87))
-* **http:** add setSSLCertMode function ([8db1dbe](https://github.com/ionic-team/ionic-native/commit/8db1dbe))
-
-
-
-<a name="4.12.0"></a>
-# [4.12.0](https://github.com/ionic-team/ionic-native/compare/v4.11.0...v4.12.0) (2018-08-16)
-
-
-### Bug Fixes
-
-* **extended-device-information:** Fixed Memory Display Bug ([#2641](https://github.com/ionic-team/ionic-native/issues/2641)) ([2ac5282](https://github.com/ionic-team/ionic-native/commit/2ac5282))
-* **network:** bind listener to document instead of window ([#2622](https://github.com/ionic-team/ionic-native/issues/2622)) ([d10777a](https://github.com/ionic-team/ionic-native/commit/d10777a))
-* **photo-library:** interface missing includeVideos ([3f415f9](https://github.com/ionic-team/ionic-native/commit/3f415f9)), closes [#2624](https://github.com/ionic-team/ionic-native/issues/2624)
-
-
-### Features
-
-* **fabric:** add fabric plugin ([#2618](https://github.com/ionic-team/ionic-native/issues/2618)) ([9b4fd02](https://github.com/ionic-team/ionic-native/commit/9b4fd02))
-* **local-notifications:** add new foreground property ([#2633](https://github.com/ionic-team/ionic-native/issues/2633)) ([229b62c](https://github.com/ionic-team/ionic-native/commit/229b62c))
-* **webengage:** add optional config with initialization ([#2637](https://github.com/ionic-team/ionic-native/issues/2637)) ([ca9a702](https://github.com/ionic-team/ionic-native/commit/ca9a702))
-
-
-
-<a name="4.11.0"></a>
-# [4.11.0](https://github.com/ionic-team/ionic-native/compare/v4.10.1...v4.11.0) (2018-07-29)
-
-
-### Bug Fixes
-
-* **http:** add correct return types for downloadFile and uploadFile ([4092831](https://github.com/ionic-team/ionic-native/commit/4092831)), closes [#2615](https://github.com/ionic-team/ionic-native/issues/2615)
-
-
-### Features
-
-* **clevertap:** add CleverTap plugin ([#2609](https://github.com/ionic-team/ionic-native/issues/2609)) ([27d380e](https://github.com/ionic-team/ionic-native/commit/27d380e))
-* **facebook:** add getDeferredApplink function ([3b32e19](https://github.com/ionic-team/ionic-native/commit/3b32e19)), closes [#2510](https://github.com/ionic-team/ionic-native/issues/2510)
-* **webengage:** add webengage plugin ([#2604](https://github.com/ionic-team/ionic-native/issues/2604)) ([bd5bd7e](https://github.com/ionic-team/ionic-native/commit/bd5bd7e))
-
-
-
-<a name="4.10.1"></a>
-## [4.10.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.14...v4.10.1) (2018-07-25)
-
-
-### Bug Fixes
-
-* **nfs:** Optional arguments for records like textRecord ([#2605](https://github.com/ionic-team/ionic-native/issues/2605)) ([b635ba9](https://github.com/ionic-team/ionic-native/commit/b635ba9))
-* **user-agent:** Plugin not installed ([#2607](https://github.com/ionic-team/ionic-native/issues/2607)) ([79cb478](https://github.com/ionic-team/ionic-native/commit/79cb478))
 
 
 
