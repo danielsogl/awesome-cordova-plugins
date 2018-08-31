@@ -12,20 +12,38 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * ```typescript
  * import { AES256 } from '@ionic-native/aes-256';
  *
- *
- * constructor(private aES256: AES256) { }
+ * private secureKey: string;
+ * private secureIV: string;
+ * 
+ * constructor(private aes256: AES256) { 
+ *    this.generateSecureKeyAndIV(); // To generate the random secureKey and secureIV
+ * }
  *
  * ...
  *
+ * async generateSecureKeyAndIV() {
+ *    this.secureKey = await this.aes256.generateSecureKey('random password 12345'); // Returns a 32 bytes string
+ *    this.secureIV = await this.aes256.generateSecureIV('random password 12345'); // Returns a 16 bytes string
+ * }
  *
- * this.aES256.encrypt('12345678123456781234567812345678', '1234567812345678', 'testdata')
+ * this.aes256.encrypt(this.secureKey, this.secureIV, 'testdata')
  *   .then(res => console.log('Encrypted Data: ',res))
  *   .catch((error: any) => console.error(error));
  *
- * this.aES256.decrypt('12345678123456781234567812345678', '1234567812345678', 'encryptedData')
+ * this.aes256.decrypt(this.secureKey, this.secureIV, 'encryptedData')
  *   .then(res => console.log('Decrypted Data : ',res))
  *   .catch((error: any) => console.error(error));
  *
+ * 
+ * * this.aes256.generateSecureKey('random password 12345')
+ *   .then(res => console.log('Secure Key : ',res))
+ *   .catch((error: any) => console.error(error));
+ * 
+ * 
+ * * this.aes256.generateSecureIV('random password 12345')
+ *   .then(res => console.log('Secure IV : ',res))
+ *   .catch((error: any) => console.error(error));
+ * 
  * ```
  */
 @Plugin({
@@ -60,6 +78,28 @@ export class AES256 extends IonicNativePlugin {
    */
   @Cordova()
   decrypt(secureKey: string, secureIV: string, data: string): Promise<string> {
+    return;
+  }
+
+  /**
+   * This function used to generate a secure key based on an password. Perfect if you want to delegate the key generation for encryption to the plugin.
+   * Make sure to save the return value of this function somewhere so your encrypted data can be decrypted in the future.
+   * @param {string} password A random string, which will be used as input for a PBKDF2 function
+   * @return {Promise<string>} Returns a promise that resolves when key is generated.
+   */
+  @Cordova()
+  generateSecureKey(password: string): Promise<string> {
+    return;
+  }
+
+  /**
+   * This function used to generate a secure IV based on an password. Perfect if you want to delegate the IV generation for encryption to the plugin.
+   * Make sure to save the return value of this function somewhere so your encrypted data can be decrypted in the future.
+   * @param {string} password A random string, which will be used as input for a PBKDF2 function
+   * @return {Promise<string>} Returns a promise that resolves when IV is generated.
+   */
+  @Cordova()
+  generateSecureIV(password: string): Promise<string> {
     return;
   }
 
