@@ -1,3 +1,13 @@
+<a name="4.12.2"></a>
+## [4.12.2](https://github.com/ionic-team/ionic-native/compare/v4.12.1...v4.12.2) (2018-08-31)
+
+
+### Bug Fixes
+
+* **in-app-browser:** fix mandatory options ([#2684](https://github.com/ionic-team/ionic-native/issues/2684)) ([d82e675](https://github.com/ionic-team/ionic-native/commit/d82e675))
+
+
+
 <a name="4.12.1"></a>
 ## [4.12.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.15...v4.12.1) (2018-08-31)
 
