@@ -48,7 +48,7 @@ export interface AppsflyerInviteOptions {
 /**
  * @name Appsflyer
  * @description
- * This plugin does something
+ * Appsflyer Cordova SDK support for Attribution
  *
  * @usage
  * ```typescript
