@@ -78,7 +78,6 @@ export class Appsflyer extends IonicNativePlugin {
   /**
    * initialize the SDK
    */
-  //@Cordova({ otherPromise: true })
   @Cordova()
   initSdk(options: AppsflyerOptions): Promise<any> { return; }
 
@@ -107,14 +106,14 @@ export class Appsflyer extends IonicNativePlugin {
   /**
    * Get the data from Attribution
    */
-  @Cordova({ otherPromise: true })
+  @Cordova()
   registerOnAppOpenAttribution(): Promise<any> { return; }
 
   /**
   * Enables app uninstall tracking
   * @param token GCM/FCM ProjectNumber
   */
-  @Cordova({ otherPromise: true })
+  @Cordova()
   enableUninstallTracking(token: string): Promise<any> { return; }
 
   /**
@@ -127,7 +126,7 @@ export class Appsflyer extends IonicNativePlugin {
   /**
   * Get AppsFlyer’s proprietary Device ID. The AppsFlyer Device ID is the main ID used by AppsFlyer in Reports and APIs.
   */
-  @Cordova({ otherPromise: true })
+  @Cordova()
   getAppsFlyerUID(): Promise<any> { return; }
 
   /**
@@ -148,7 +147,7 @@ export class Appsflyer extends IonicNativePlugin {
    * Allowing your existing users to invite their friends and contacts as new users to your app can be a key growth factor for your app. AppsFlyer allows you to track and attribute new installs originating from user invites within your app.
    * @param options Parameters for Invite link
    */
-  @Cordova({ otherPromise: true })
+  @Cordova()
   generateInviteLink(options: AppsflyerInviteOptions): Promise<any> { return; }
 
   /**
