@@ -42,7 +42,7 @@ export interface AppsflyerInviteOptions {
   campaign?: string;
   userParams?: {
     [x: string]: any;
-  }
+  };
 }
 
 /**
