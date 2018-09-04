@@ -35,13 +35,13 @@ declare var mixpanel: any;
 export class Mixpanel extends IonicNativePlugin {
 
   /**
-   *
+   * If originalId is omitted, aliasId will be used as originalId.
    * @param aliasId {string}
    * @param originalId {string}
    * @returns {Promise<any>}
    */
   @Cordova()
-  alias(aliasId: string, originalId: string): Promise<any> { return; }
+  alias(aliasId: string, originalId?: string): Promise<any> { return; }
 
   /**
    *
@@ -57,12 +57,13 @@ export class Mixpanel extends IonicNativePlugin {
   flush(): Promise<any> { return; }
 
   /**
-   *
+   * The usePeople parameter is used for the iOS Mixpanel SDK.
    * @param distinctId {string}
+   * @param usePeople {boolean}
    * @returns {Promise<any>}
    */
   @Cordova()
-  identify(distinctId: string): Promise<any> { return; }
+  identify(distinctId: string, usePeople?: boolean): Promise<any> { return; }
 
   /**
    *
@@ -144,6 +145,21 @@ export class MixpanelPeople extends IonicNativePlugin {
 
   /**
    *
+   * @param appendObject {any}
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  append(appendObject: any): Promise<any> { return; }
+
+  /**
+   *
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  deleteUser(): Promise<any> { return; }
+
+  /**
+   *
    * @param distinctId {string}
    * @return {Promise<any>}
    */
@@ -176,10 +192,34 @@ export class MixpanelPeople extends IonicNativePlugin {
 
   /**
    *
-   * @param peopleProperties
+   * @param peopleProperties {any}
    * @return {Promise<any>}
    */
   @Cordova()
   setOnce(peopleProperties: any): Promise<any> { return; }
 
+  /**
+   *
+   * @param amount {number}
+   * @param chargeProperties
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  trackCharge(amount: number, chargeProperties: any): Promise<any> { return; }
+
+  /**
+   *
+   * @param propertiesArray
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  unset(propertiesArray: Array<string>): Promise<any> { return; }
+
+  /**
+   *
+   * @param unionObject {any}
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  union(unionObject: any): Promise<any> { return; }
 }
