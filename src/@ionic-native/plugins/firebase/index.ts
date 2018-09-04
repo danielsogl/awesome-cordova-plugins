@@ -77,7 +77,7 @@ export class Firebase extends IonicNativePlugin {
    * Get verification ID
    */
   @Cordova()
-  getVerificationID(number: any): Promise<any> {
+  getVerificationID(num: any): Promise<any> {
     return;
   }
 
