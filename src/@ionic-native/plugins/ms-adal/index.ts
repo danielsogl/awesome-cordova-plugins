@@ -100,7 +100,7 @@ export class MSAdal extends IonicNativePlugin {
   createAuthenticationContext(authority: string, validateAuthority: boolean = true) {
     let authContext: any;
     if (checkAvailability(MSAdal.getPluginRef(), null, MSAdal.getPluginName()) === true) {
-      authContext = new (MSAdal.getPlugin()).AuthenticationContext(authority);
+      authContext = new (MSAdal.getPlugin()).AuthenticationContext(authority,validateAuthority);
     }
     return new AuthenticationContext(authContext);
   }
