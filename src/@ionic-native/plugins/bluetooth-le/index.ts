@@ -374,6 +374,15 @@ export interface Error {
   message: string;
 }
 
+export interface AdapterInfo {
+  name: string;
+  address: string;
+  isInitialized: boolean;
+  isEnabled: boolean;
+  isScanning: boolean;
+  isDiscoverable: boolean;
+}
+
 /**
  * @name BluetoothLE
  * @description
@@ -449,15 +458,8 @@ export class BluetoothLE extends IonicNativePlugin {
    * @description @todo
    * @returns {Promise<{ name: string, address: string, isInitialized: boolean, isEnabled: boolean, isScanning: boolean, isDiscoverable: boolean}>}
    */
-  @Cordova({ callbackOrder: 'reverse' })
-  getAdapterInfo(): Promise<{
-    name: string;
-    address: string;
-    isInitialized: boolean;
-    isEnabled: boolean;
-    isScanning: boolean;
-    isDiscoverable: boolean;
-  }> {
+  @Cordova({ callbackOrder: 'reverse', observable: true })
+  getAdapterInfo(): Observable<AdapterInfo> {
     return;
   }
 
