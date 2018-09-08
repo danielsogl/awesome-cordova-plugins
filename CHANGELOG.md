@@ -1,3 +1,41 @@
+<a name="4.12.2"></a>
+## [4.12.2](https://github.com/ionic-team/ionic-native/compare/v4.12.1...v4.12.2) (2018-08-31)
+
+
+### Bug Fixes
+
+* **in-app-browser:** fix mandatory options ([#2684](https://github.com/ionic-team/ionic-native/issues/2684)) ([d82e675](https://github.com/ionic-team/ionic-native/commit/d82e675))
+
+
+
+<a name="4.12.1"></a>
+## [4.12.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.15...v4.12.1) (2018-08-31)
+
+
+### Bug Fixes
+
+* **open-native-settings:** allow supported input ([#2666](https://github.com/ionic-team/ionic-native/issues/2666)) ([be0dc3d](https://github.com/ionic-team/ionic-native/commit/be0dc3d))
+
+
+### Features
+
+* **aes256:** Added new utility methods to generate secure key and secure IV ([#2675](https://github.com/ionic-team/ionic-native/issues/2675)) ([a731466](https://github.com/ionic-team/ionic-native/commit/a731466))
+* **in-app-browser:** Add missing InAppBrowserOptions-properties ([#2669](https://github.com/ionic-team/ionic-native/issues/2669)) ([d90724e](https://github.com/ionic-team/ionic-native/commit/d90724e))
+* **push:** Added voip property to IOSPushOptions ([#2681](https://github.com/ionic-team/ionic-native/issues/2681)) ([03e4f0e](https://github.com/ionic-team/ionic-native/commit/03e4f0e))
+
+
+
+<a name="5.0.0-beta.15"></a>
+# [5.0.0-beta.15](https://github.com/ionic-team/ionic-native/compare/v4.12.0...v5.0.0-beta.15) (2018-08-25)
+
+
+### Features
+
+* **bluetooth-le:** add bluetooth-le plugin ([#2651](https://github.com/ionic-team/ionic-native/issues/2651)) ([591ee87](https://github.com/ionic-team/ionic-native/commit/591ee87))
+* **http:** add setSSLCertMode function ([8db1dbe](https://github.com/ionic-team/ionic-native/commit/8db1dbe))
+
+
+
 <a name="4.12.0"></a>
 # [4.12.0](https://github.com/ionic-team/ionic-native/compare/v4.11.0...v4.12.0) (2018-08-16)
 
