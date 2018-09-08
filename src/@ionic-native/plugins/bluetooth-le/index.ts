@@ -1019,11 +1019,11 @@ export class BluetoothLE extends IonicNativePlugin {
   /**
    * @name stringToBytes
    * @description Helper function to convert a string to bytes
-   * @param {Uint8Array} value
-   * @returns {string}
+   * @param {string} value
+   * @returns {Uint8Array}
    */
   @Cordova({ sync: true })
-  stringToBytes(value: Uint8Array): string {
+  stringToBytes(value: string): Uint8Array {
     return;
   }
 
