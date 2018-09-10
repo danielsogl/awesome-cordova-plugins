@@ -33,13 +33,6 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class Firebase extends IonicNativePlugin {
-  /**
-   * Run first to init Firebase
-   */
-  @Cordova()
-  initFirebase(): Promise<any> {
-    return;
-  }
 
   /**
    * Run first to init Crashlytics
@@ -62,14 +55,6 @@ export class Firebase extends IonicNativePlugin {
    */
   @Cordova()
   initPerformance(): Promise<any> {
-    return;
-  }
-
-  /**
-   * Run first to init RemoteConfig
-   */
-  @Cordova()
-  initRemoteConfig(): Promise<any> {
     return;
   }
 
