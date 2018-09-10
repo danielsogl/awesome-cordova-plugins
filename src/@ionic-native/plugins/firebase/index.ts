@@ -33,6 +33,48 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class Firebase extends IonicNativePlugin {
+
+  /**
+   * Run first to init Crashlytics
+   */
+  @Cordova()
+  initCrashlytics(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Run first to init Analytics
+   */
+  @Cordova()
+  initAnalytics(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Run first to init Performance
+   */
+  @Cordova()
+  initPerformance(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get verification ID
+   */
+  @Cordova()
+  getVerificationID(num: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get instance ID
+   */
+  @Cordova()
+  getInstanceId(): Promise<any> {
+    return;
+  }
+
+
   /**
    * Get the device token
    * @return {Promise<null | string>} Note that token will be null if it has not been established yet
@@ -295,7 +337,7 @@ export class Firebase extends IonicNativePlugin {
    * @param {string} trace Trace name
    */
   @Cordova()
-  stopTrace(trace: string): void {}
+  stopTrace(trace: string): void { }
 
   /**
    * Allows the user to enable/disable analytics collection
