@@ -459,10 +459,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * This can be very useful when the general state of the adapter has been lost, and we would otherwise need to go through a series of callbacks to get the correct state (first initialized, then enabled, then isScanning, and so forth).
    * The result of this method allows us to take business logic decisions while avoiding a large part of the callback hell.
    * Currently the discoverable state does not have any relevance because there is no "setDiscoverable" functionality in place. That may change in the future.
-   * @returns {(Observable<{ adapterInfo: AdapterInfo }>)}
+   * @returns {Promise<AdapterInfo>}
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  getAdapterInfo(): Observable<{ adapterInfo: AdapterInfo }> {
+  getAdapterInfo(): Promise<AdapterInfo> {
     return;
   }
 
