@@ -122,9 +122,14 @@ export interface ILocalNotificationAction {
   title?: string;
 
   /**
-   * Specifies whether the action causes the app to launch in the foreground
+   * Make this notification show when app in foreground.
    */
   foreground?: boolean;
+
+  /**
+   * Specifies whether the action causes the app to launch in the foreground
+   */
+  launch?: boolean;
 
   /**
    * If the value is 'decline' the action is displayed with special highlighting to indicate that it performs a destructive task
@@ -142,6 +147,24 @@ export interface ILocalNotificationAction {
    * The resource path of the action icon
    */
   icon?: string;
+
+  /**
+   * ANDROID ONLY
+   * An array of pre-defined choices for users input
+   */
+  choices?: string[];
+
+  /**
+   * ANDROID ONLY
+   * Specifies whether the user can provide arbitrary text values
+   */
+  editable?: boolean;
+
+  /**
+   * IOS ONLY
+   * The title of the text input button that is displayed to the user.
+   */
+  submitTitle?: string;
 
   /**
    * The type of the action. If omitted 'button' is used.
