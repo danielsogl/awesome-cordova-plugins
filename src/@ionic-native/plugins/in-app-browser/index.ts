@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, InstanceCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import {
+  CordovaInstance,
+  InstanceCheck,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 import { Observable, Observer } from 'rxjs';
 
 declare const cordova: Cordova & { InAppBrowser: any };
@@ -16,30 +21,37 @@ export interface InAppBrowserOptions {
   clearcache?: 'yes';
   /** Set to yes to have the session cookie cache cleared before the new window is opened. */
   clearsessioncache?: 'yes';
-  /* (Android) Set to a string to use as the close button's caption instead of a X. Note that you need to localize this value yourself.
+  /*
+   * (Android) Set to a string to use as the close button's caption instead of a X. Note that you need to localize this value yourself.
    *  (iOS) Set to a string to use as the Done button's caption. Note that you need to localize this value yourself. */
   closebuttoncaption?: string;
-  /* (Android) Set to a valid hex color string, for example: #00ff00, and it will change the close button color from default, regardless of being a text or default X. Only has effect if user has location set to yes.
+  /*
+   * (Android) Set to a valid hex color string, for example: #00ff00, and it will change the close button color from default, regardless of being a text or default X. Only has effect if user has location set to yes.
    *  (iOS) Set as a valid hex color string, for example: #00ff00, to change from the default Done button's color. Only applicable if toolbar is not disabled. */
   closebuttoncolor?: string;
-  /** (Android Only) Set to yes to show Android browser's zoom controls, set to no to hide them. Default value is yes. */
+  /*
+   * (Android Only) Set to yes to show Android browser's zoom controls, set to no to hide them. Default value is yes. */
   zoom?: 'yes' | 'no';
-  /**
-   * Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
-   * If there is no previous page, the InAppBrowser will close. The default value is yes, so you must set it to no if you want the back button to simply close the InAppBrowser.
-   */
+  /*
+   *  (Android & Windows Phone Only) Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
+   * If there is no previous page, the InAppBrowser will close. The default value is yes, so you must set it to no if you want the back button to simply close the InAppBrowser. */
   hardwareback?: 'yes' | 'no';
-  /** Set to yes to prevent HTML5 audio or video from autoplaying (defaults to no). */
+  /*
+   *  Set to yes to prevent HTML5 audio or video from autoplaying (defaults to no). */
   mediaPlaybackRequiresUserAction?: 'yes' | 'no';
-  /* (Android) Set to yes to hide the navigation buttons on the location toolbar, only has effect if user has location set to yes. The default value is no.
+  /*
+   *  (Android) Set to yes to hide the navigation buttons on the location toolbar, only has effect if user has location set to yes. The default value is no.
    *  (iOS) Set to yes or no to turn the toolbar navigation buttons on or off (defaults to no). Only applicable if toolbar is not disabled.*/
   hidenavigationbuttons?: 'yes' | 'no';
-  /* (Android) Set to yes to hide the url bar on the location toolbar, only has effect if user has location set to yes. The default value is no.*/
+  /*
+   *  (Android) Set to yes to hide the url bar on the location toolbar, only has effect if user has location set to yes. The default value is no.*/
   hideurlbar?: 'yes' | 'no';
-  /* (Android) Set to a valid hex color string, for example: #00ff00, and it will change the color of both navigation buttons from default. Only has effect if user has location set to yes and not hidenavigationbuttons set to yes.
+  /*
+   * (Android) Set to a valid hex color string, for example: #00ff00, and it will change the color of both navigation buttons from default. Only has effect if user has location set to yes and not hidenavigationbuttons set to yes.
    *  (iOS) Set as a valid hex color string, for example: #00ff00, to change from the default color. Only applicable if navigation buttons are visible. */
   navigationbuttoncolor?: string;
-  /* (Android) Set to a valid hex color string, for example: #00ff00, and it will change the color the toolbar from default. Only has effect if user has location set to yes.
+  /*
+   *  (Android) Set to a valid hex color string, for example: #00ff00, and it will change the color the toolbar from default. Only has effect if user has location set to yes.
    *  (iOS) Set as a valid hex color string, for example: #00ff00, to change from the default color of the toolbar. Only applicable if toolbar is not disabled.*/
   toolbarcolor?: string;
   /** (Android Only) Set to yes to make InAppBrowser WebView to pause/resume with the app to stop background audio (this may be required to avoid Google Play issues) */

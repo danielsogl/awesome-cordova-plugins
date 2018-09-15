@@ -1,8 +1,8 @@
 import { checkAvailability, CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { checkAvailability, CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface AuthenticationResult {
-
   accessToken: string;
   accesSTokenType: string;
   expiresOn: Date;
@@ -18,7 +18,6 @@ export interface AuthenticationResult {
    * @returns {String} The authorization header.
    */
   createAuthorizationHeader(): string;
-
 }
 
 export interface TokenCache {
@@ -51,7 +50,6 @@ export interface UserInfo {
   passwordExpiresOn: Date;
   uniqueId: string;
 }
-
 
 /**
  * @name MS ADAL
@@ -101,12 +99,17 @@ export class MSAdal extends IonicNativePlugin {
 
   createAuthenticationContext(authority: string, validateAuthority = true) {
     let authContext: any;
-    if (checkAvailability(MSAdal.getPluginRef(), null, MSAdal.getPluginName()) === true) {
-      authContext = new (MSAdal.getPlugin()).AuthenticationContext(authority);
+    if (
+      checkAvailability(MSAdal.getPluginRef(), null, MSAdal.getPluginName()) ===
+      true
+    ) {
+      authContext = new (MSAdal.getPlugin()).AuthenticationContext(
+        authority,
+        validateAuthority
+      );
     }
     return new AuthenticationContext(authContext);
   }
-
 }
 
 /**
