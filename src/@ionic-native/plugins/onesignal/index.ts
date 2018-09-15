@@ -369,7 +369,7 @@ export enum OSActionType {
  * ```
  *
  * 3. From the root of your project make the file executable:
- * `$ chmod +x hooks/after_prepare/030_copy_android_notification_icons.js`
+ * `$ chmod +x hooks/copy_android_notification_icons.js`
  *
  *
  * @usage
