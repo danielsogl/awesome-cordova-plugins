@@ -4,7 +4,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 /**
  * @name Wechat
  * @description
- * This plugin does something
+ * A cordova plugin, a JS version of Wechat SDK
  *
  * @usage
  * ```typescript
