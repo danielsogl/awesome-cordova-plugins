@@ -34,6 +34,10 @@ export interface CallDirectoryLog {
  *   .then(res: string) => console.log(res))
  *   .catch((error: any) => console.error(error));
  * ```
+ *
+ * @Interfaces
+ * CallDirectoryItem
+ * CallDirectoryLog
  */
 @Plugin({
   pluginName: 'CallDirectory',
