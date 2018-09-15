@@ -6,6 +6,11 @@ export interface CallDirectoryItem {
   number: string;
 }
 
+export interface CallDirectoryLog {
+  plugin: Array<string>;
+  extension: Array<string>;
+}
+
 /**
  * @name Call Directory
  * @description
@@ -29,6 +34,10 @@ export interface CallDirectoryItem {
  *   .then(res: string) => console.log(res))
  *   .catch((error: any) => console.error(error));
  * ```
+ *
+ * @Interfaces
+ * CallDirectoryItem
+ * CallDirectoryLog
  */
 @Plugin({
   pluginName: 'CallDirectory',
@@ -95,6 +104,15 @@ export class CallDirectory extends IonicNativePlugin {
    */
   @Cordova()
   reloadExtension(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Get log from plugin and call directory extension
+   * @return {Promise<CallDirectoryLog>} Returns a promise with an object of log messages
+   */
+  @Cordova()
+  getLog(): Promise<CallDirectoryLog> {
     return;
   }
 }
