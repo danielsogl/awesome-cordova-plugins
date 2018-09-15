@@ -51,7 +51,7 @@ export class Wechat extends IonicNativePlugin {
 
   @Cordova()
   isInstalled(): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   /**
@@ -81,7 +81,7 @@ export class Wechat extends IonicNativePlugin {
    */
   @Cordova()
   share(params: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   /**
@@ -93,7 +93,7 @@ export class Wechat extends IonicNativePlugin {
    * </code>
    */
   auth(scope: any, state: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   /**
@@ -117,7 +117,7 @@ export class Wechat extends IonicNativePlugin {
    * </code>
    */
   sendPaymentRequest(params: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   /**
@@ -144,7 +144,7 @@ export class Wechat extends IonicNativePlugin {
    * </code>
    */
   jumpToWechat(url: string): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   /**
@@ -161,6 +161,6 @@ export class Wechat extends IonicNativePlugin {
    * </code>
    */
   chooseInvoiceFromWX(params: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 }
