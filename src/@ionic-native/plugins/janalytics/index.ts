@@ -1,16 +1,6 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+
 /**
  * @name jAnalytics
  * @description
@@ -34,72 +24,72 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'JAnalytics',
-  plugin: 'cordova-plugin-janalytics', // npm package name, example: cordova-plugin-janalytics
-  pluginRef: 'JAnalytics', // the variable reference to call the plugin, example: navigator.janalytics
-  repo: 'https://github.com/jpush/cordova-plugin-janalytics', // the github repository URL for the plugin
-  install: 'ionic cordova plugin add cordova-plugin-janalytics --variable APP_KEY=YOUR_APP_KEY', // OPTIONAL install command, in case the plugin requires variables
-  installVariables: ['APP_KEY'], // OPTIONAL the plugin requires variables
-  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'cordova-plugin-janalytics',
+  pluginRef: 'JAnalytics',
+  repo: 'https://github.com/jpush/cordova-plugin-janalytics',
+  install:
+    'ionic cordova plugin add cordova-plugin-janalytics --variable APP_KEY=YOUR_APP_KEY',
+  installVariables: ['APP_KEY'],
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class JAnalytics extends IonicNativePlugin {
-
   /**
    * This function does something
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   init(): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   @Cordova()
   initCrashHandler(): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   @Cordova()
   stopCrashHandler(): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   @Cordova()
   onPageStart(params: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   @Cordova()
   onPageEnd(params: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   @Cordova()
   addCountEvent(params: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   @Cordova()
   addCalculateEvent(params: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   @Cordova()
   addLoginEvent(params: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   @Cordova()
   addRegisterEvent(params: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   @Cordova()
   addBrowseEvent(params: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   @Cordova()
   addPurchaseEvent(params: any): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 }
