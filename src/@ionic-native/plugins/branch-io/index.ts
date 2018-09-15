@@ -1,15 +1,15 @@
-import { Plugin, IonicNativePlugin, Cordova } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface BranchIoPromise {
-  '$identity_id'?: number;
-  '$one_time_use'?: boolean;
+  $identity_id?: number;
+  $one_time_use?: boolean;
   '+click_timestamp'?: number;
   '+clicked_branch_link'?: boolean;
   '+is_first_session'?: boolean;
   '+match_guaranteed'?: boolean;
-  'contentMetadata'?: string;
-  'source'?: string;
+  contentMetadata?: string;
+  source?: string;
   '~campaign'?: string;
   '~channel'?: string;
   '~creation_source'?: string;
@@ -36,7 +36,10 @@ export interface BranchIoProperties {
 }
 
 export interface BranchUniversalObject {
-  generateShortUrl(analytics: BranchIoAnalytics, properties: BranchIoProperties): Promise<any>;
+  generateShortUrl(
+    analytics: BranchIoAnalytics,
+    properties: BranchIoProperties
+  ): Promise<any>;
   registerView(): Promise<any>;
   showShareSheet(
     analytics: BranchIoAnalytics,
@@ -52,9 +55,9 @@ export interface BranchUniversalObject {
 
 /**
  * @name BranchIo
- * @description 
+ * @description
  * Branch.io is an attribution service for deeplinking and invitation links
- * 
+ *
  * @usage
  * ```
  * import { BranchIo } from '@ionic-native/branch-io';
@@ -62,110 +65,171 @@ export interface BranchUniversalObject {
  *
  * constructor(private branch: BranchIo) { }
  *
+ * ```
+ *
+ * @interfaces
+ * BranchIoPromise
+ * BranchIoAnalytics
+ * BranchIoProperties
+ * BranchUniversalObject
+ *
  */
 @Plugin({
   pluginName: 'BranchIo',
   plugin: 'branch-cordova-sdk',
   pluginRef: 'Branch',
-  repo: 'https://github.com/BranchMetrics/cordova-ionic-phonegap-branch-deep-linking',
+  repo:
+    'https://github.com/BranchMetrics/cordova-ionic-phonegap-branch-deep-linking',
   platforms: ['iOS', 'Android']
 })
 @Injectable()
 export class BranchIo extends IonicNativePlugin {
   /**
    * for development and debugging only
-   * @param enable Enable debug
+   * @param {boolean} enable Enable debug
+   * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  setDebug(enable: boolean): Promise<any> { return; }
+  setDebug(enable: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Disable tracking
-   * @param disable disable tracking
+   * @param {boolean} disable disable tracking
+   * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  disableTracking(disable: boolean): Promise<any> { return; }
+  disableTracking(disable: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Initializes Branch
+   * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  initSession(): Promise<BranchIoPromise> { return; }
+  initSession(): Promise<BranchIoPromise> {
+    return;
+  }
 
   /**
    * Set Request Metadata
+   * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  setRequestMetadata(): Promise<any> { return; }
+  setRequestMetadata(): Promise<any> {
+    return;
+  }
 
   /**
    * for better Android matching
-   * @param linkDomain LinkDomain at branch
+   * @param {string} linkDomain LinkDomain at branch
+   * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  setCookieBasedMatching(linkDomain: string): Promise<any> { return; }
+  setCookieBasedMatching(linkDomain: string): Promise<any> {
+    return;
+  }
 
   /**
    * First data
+   * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  getFirstReferringParams(): Promise<any> { return; }
+  getFirstReferringParams(): Promise<any> {
+    return;
+  }
 
   /**
    * Latest data
+   * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  getLatestReferringParams(): Promise<any> { return; }
+  getLatestReferringParams(): Promise<any> {
+    return;
+  }
 
   /**
-  * Set identy of user
-  * @return {Promise<any>}
-  */
+   * Set identy of user
+   * @param {string} userId
+   * @return {Promise<any>}
+   */
   @Cordova({ otherPromise: true })
-  setIdentity(userId: string): Promise<any> { return; }
-
+  setIdentity(userId: string): Promise<any> {
+    return;
+  }
 
   /**
-  * Logout user
-  * @return {Promise<any>}
-  */
+   * Logout user
+   * @return {Promise<any>}
+   */
   @Cordova({ otherPromise: true })
-  logout(): Promise<any> { return; }
+  logout(): Promise<any> {
+    return;
+  }
 
   /**
    * Registers a custom event
+   * @param {string} eventName
+   * @param {any} metaData
+   * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  userCompletedAction(eventName: string, metaData: any): Promise<any> { return; }
+  userCompletedAction(eventName: string, metaData: any): Promise<any> {
+    return;
+  }
 
   /**
- * Send Commerce Event
- */
+   * Send Commerce Event
+   * @param {string} event
+   * @param {any} metaData
+   * @return {Promise<any>}
+   */
   @Cordova({ otherPromise: true })
-  sendCommerceEvent(event: string, metaData: any): Promise<any> { return; }
+  sendCommerceEvent(event: string, metaData: any): Promise<any> {
+    return;
+  }
 
   /**
    * create a branchUniversalObj variable to reference with other Branch methods
+   * @param {BranchIoProperties} properties
+   * @return {Promise<BranchUniversalObject>}
    */
   @Cordova({ otherPromise: true })
-  createBranchUniversalObject(properties: BranchIoProperties): Promise<BranchUniversalObject> { return; }
+  createBranchUniversalObject(
+    properties: BranchIoProperties
+  ): Promise<BranchUniversalObject> {
+    return;
+  }
 
   /**
    * Load credits
+   * @param {any} bucket
+   * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  loadRewards(bucket: any): Promise<any> { return; }
+  loadRewards(bucket: any): Promise<any> {
+    return;
+  }
 
   /**
    * Redeem Rewards
+   * @param {string} value
+   * @param {any} bucket
+   * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  redeemRewards(value: string, bucket: any): Promise<any> { return; }
+  redeemRewards(value: string, bucket: any): Promise<any> {
+    return;
+  }
 
   /**
- * Show credit history
- */
+   * Show credit history
+   * @return {Promise<any>}
+   */
   @Cordova({ otherPromise: true })
-  creditHistory(): Promise<any> { return; }
-
+  creditHistory(): Promise<any> {
+    return;
+  }
 }
