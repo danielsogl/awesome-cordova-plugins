@@ -1,5 +1,28 @@
-<a name="4.12.2"></a>
-## [4.12.2](https://github.com/ionic-team/ionic-native/compare/v4.12.1...v4.12.2) (2018-08-31)
+<a name="4.13.0"></a>
+# [4.13.0](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.17...v4.13.0) (2018-09-15)
+
+
+### Bug Fixes
+
+* **bluetooth-le:** Various methods fixes  ([#2707](https://github.com/ionic-team/ionic-native/issues/2707)) ([7047920](https://github.com/ionic-team/ionic-native/commit/7047920))
+* **in-app-review:** Transfer Plugin to the correct folder ([#2688](https://github.com/ionic-team/ionic-native/issues/2688)) ([22fd49b](https://github.com/ionic-team/ionic-native/commit/22fd49b))
+* **ms-adal:** Update createAuthenticationContext ([#2705](https://github.com/ionic-team/ionic-native/issues/2705)) ([890129b](https://github.com/ionic-team/ionic-native/commit/890129b))
+
+
+### Features
+
+* **appsflyer:** Added Appsflyer Cordova SDK as ionic native plugin ([#2690](https://github.com/ionic-team/ionic-native/issues/2690)) ([3b3f942](https://github.com/ionic-team/ionic-native/commit/3b3f942))
+* **branch-io:** Add branch.io attribution and invitation plugin ([#2691](https://github.com/ionic-team/ionic-native/issues/2691)) ([90d75af](https://github.com/ionic-team/ionic-native/commit/90d75af))
+* **calldirectory:** add log function ([#2708](https://github.com/ionic-team/ionic-native/issues/2708)) ([9601a64](https://github.com/ionic-team/ionic-native/commit/9601a64))
+* **janalytics:** add  plugin ([#2711](https://github.com/ionic-team/ionic-native/issues/2711)) ([0b97176](https://github.com/ionic-team/ionic-native/commit/0b97176))
+* **local-notifications:** Added local additional local notification action fields ([#2713](https://github.com/ionic-team/ionic-native/issues/2713)) ([267149b](https://github.com/ionic-team/ionic-native/commit/267149b))
+* **mixpanel:** Update/add functions ([#2697](https://github.com/ionic-team/ionic-native/issues/2697)) ([ac467c5](https://github.com/ionic-team/ionic-native/commit/ac467c5))
+* **wechat:** add plugin ([#2716](https://github.com/ionic-team/ionic-native/issues/2716)) ([10ac9ff](https://github.com/ionic-team/ionic-native/commit/10ac9ff))
+
+
+
+<a name="5.0.0-beta.17"></a>
+# [5.0.0-beta.17](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.16...v5.0.0-beta.17) (2018-08-31)
 
 
 ### Bug Fixes
