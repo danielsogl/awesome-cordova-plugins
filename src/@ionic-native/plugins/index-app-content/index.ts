@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import {
+  Cordova,
+  CordovaFunctionOverride,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 export interface IndexItem {
@@ -16,7 +21,7 @@ export interface IndexItem {
   /**
    * Item keywords
    */
-  keywords?: Array < string > ;
+  keywords?: Array<string>;
 
   /**
    * Lifetime in minutes
@@ -78,7 +83,7 @@ export class IndexAppContent extends IonicNativePlugin {
    * @return {Promise<boolean>} Returns a promise that resolves with true if indexing is available, false if not
    */
   @Cordova()
-  isIndexingAvailable(): Promise <boolean> {
+  isIndexingAvailable(): Promise<boolean> {
     return;
   }
 
@@ -88,7 +93,7 @@ export class IndexAppContent extends IonicNativePlugin {
    * @return {Promise<any>} Returns if index set was successfull
    */
   @Cordova()
-  setItems(items: Array <IndexItem> ): Promise < any > {
+  setItems(items: Array<IndexItem>): Promise<any> {
     return;
   }
 
@@ -98,7 +103,7 @@ export class IndexAppContent extends IonicNativePlugin {
    * @return {Promise<any>} Resolve if successfull
    */
   @Cordova()
-  clearItemsForDomains(domains: Array <string> ): Promise < any > {
+  clearItemsForDomains(domains: Array<string>): Promise<any> {
     return;
   }
 
@@ -108,7 +113,7 @@ export class IndexAppContent extends IonicNativePlugin {
    * @return {Promise<any>} Resolve if successfull
    */
   @Cordova()
-  clearItemsForIdentifiers(identifiers: Array < string > ): Promise < any > {
+  clearItemsForIdentifiers(identifiers: Array<string>): Promise<any> {
     return;
   }
 
@@ -118,7 +123,7 @@ export class IndexAppContent extends IonicNativePlugin {
    * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
    */
   @CordovaFunctionOverride()
-  onItemPressed(): Observable < any > {
+  onItemPressed(): Observable<any> {
     return;
   }
 
