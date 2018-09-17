@@ -6,8 +6,6 @@
     "no-redundant-jsdoc": false,
     "ban-types": false,
     "no-shadowed-variable": false,
-    "ter-no-proto": false,
-    "adjacent-overload-signatures": false,
     "no-constant-condition": false,
     "no-extra-boolean-cast": false
   }
