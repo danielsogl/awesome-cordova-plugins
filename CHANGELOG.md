@@ -1,5 +1,10 @@
 <a name="4.13.0"></a>
-# [4.13.0](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.17...v4.13.0) (2018-09-15)
+# [4.13.0](https://github.com/ionic-team/ionic-native/compare/v4.12.3...v4.13.0) (2018-09-15)
+
+
+
+<a name="4.12.3"></a>
+## [4.12.3](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.17...v4.12.3) (2018-09-15)
 
 
 ### Bug Fixes
