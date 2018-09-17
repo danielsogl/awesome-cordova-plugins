@@ -54,7 +54,7 @@ export interface SmsOptionsAndroid {
 export class SMS extends IonicNativePlugin {
   /**
    * Sends sms to a number
-   * @param phoneNumber {string|Array<string>} Phone number
+   * @param phoneNumber {string|string[]} Phone number
    * @param message {string} Message
    * @param options {SmsOptions} Options
    * @returns {Promise<any>} Resolves promise when the SMS has been sent

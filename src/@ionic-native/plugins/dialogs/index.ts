@@ -65,7 +65,7 @@ export class Dialogs extends IonicNativePlugin {
    * Displays a customizable confirmation dialog box.
    * @param {string} message Dialog message.
    * @param {string} [title] Dialog title. (Optional, defaults to Confirm)
-   * @param {Array<string>} [buttonLabels] Array of strings specifying button labels. (Optional, defaults to [OK,Cancel])
+   * @param {string[]} [buttonLabels] Array of strings specifying button labels. (Optional, defaults to [OK,Cancel])
    * @returns {Promise<number>} Returns a promise that resolves the button index that was clicked, or 0 if the user has dismissed the dialog by clicking outside the dialog box. Note that the index use one-based indexing.
    */
   @Cordova({
@@ -84,7 +84,7 @@ export class Dialogs extends IonicNativePlugin {
    * Displays a native dialog box that is more customizable than the browser's prompt function.
    * @param {string} [message] Dialog message.
    * @param {string} [title] Dialog title. (Optional, defaults to Prompt)
-   * @param {Array<string>} [buttonLabels]  Array of strings specifying button labels. (Optional, defaults to ["OK","Cancel"])
+   * @param {string[]} [buttonLabels]  Array of strings specifying button labels. (Optional, defaults to ["OK","Cancel"])
    * @param {string} [defaultText] Default text box input value.  (Optional, Default: empty string)
    * @returns {Promise<DialogsPromptCallback>} Returns a promise that resolves an object with the button index clicked and the text entered
    */

@@ -136,13 +136,13 @@ export interface PrintCommand {
    * Data (Command) is added to the command buffer. Takes an array of bytes.
    * Example: {appendBytes:[0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x2e]}
    */
-  appendBytes?: Array<number>;
+  appendBytes?: number[];
 
   /**
    * Data (Command) is added to the command buffer. Takes an array of bytes.
    * Example: {appendRawBytes:[0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x2e]}
    */
-  appendRawBytes?: Array<number>;
+  appendRawBytes?: number[];
 
   /**
    * Set command of the character space is generated and added to the command buffer. Character Spacs (Unit: Dots) Example: 4
@@ -241,7 +241,7 @@ export interface PrintCommand {
    * Example: {appendHorizontalTabPosition:[15, 35]}
    * Delete positions Example: {appendHorizontalTabPosition:[]}
    */
-  appendHorizontalTabPosition?: Array<number>;
+  appendHorizontalTabPosition?: number[];
 
   /**
    * Print command of the logo is generated and added to the command buffer. The logo has to be uploaded to the printer using the Star Print utility.

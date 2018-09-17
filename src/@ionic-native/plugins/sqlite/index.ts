@@ -125,11 +125,11 @@ export class SQLiteObject {
   }
 
   /**
-   * @param sqlStatements {Array<string | string[] | any>}
+   * @param sqlStatements {string[] | string[][] | any[]}
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  sqlBatch(sqlStatements: Array<string | string[] | any>): Promise<any> {
+  sqlBatch(sqlStatements: string[] | string[][] | any[]): Promise<any> {
     return;
   }
 

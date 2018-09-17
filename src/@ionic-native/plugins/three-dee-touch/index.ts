@@ -85,7 +85,7 @@ export interface ThreeDeeTouchForceTouch {
  *   );
  *
  *
- * let actions: Array<ThreeDeeTouchQuickAction> = [
+ * let actions: ThreeDeeTouchQuickAction[] = [
  *   {
  *     type: 'checkin',
  *     title: 'Check in',
@@ -164,7 +164,7 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  configureQuickActions(quickActions: Array<ThreeDeeTouchQuickAction>): void {}
+  configureQuickActions(quickActions: ThreeDeeTouchQuickAction[]): void {}
 
   /**
    * When a home icon is pressed, your app launches and this JS callback is invoked.

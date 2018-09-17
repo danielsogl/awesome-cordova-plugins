@@ -563,7 +563,7 @@ export class OneSignal extends IonicNativePlugin {
   /**
    * Deletes tags that were previously set on a user with `sendTag` or `sendTags`.
    *
-   * @param {Array<string>} Keys to remove.
+   * @param {string[]} Keys to remove.
    */
   @Cordova({ sync: true })
   deleteTags(keys: string[]): void {}

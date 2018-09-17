@@ -78,7 +78,7 @@ export class DocumentViewer extends IonicNativePlugin {
    *
    * @param url {string} Url to the file
    * @param contentType {string} Content type of the file
-   * @param options {Array<DocumentViewerOptions>} options
+   * @param options {DocumentViewerOptions} options
    * @param [onPossible] {Function}
    * @param [onMissingApp] {Function}
    * @param [onImpossible] {Function}

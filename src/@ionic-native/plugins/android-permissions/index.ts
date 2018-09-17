@@ -223,7 +223,7 @@ export class AndroidPermissions extends IonicNativePlugin {
 
   /**
    * Request permissions
-   * @param {Array<string>} permissions An array with permissions
+   * @param {string[]} permissions An array with permissions
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()

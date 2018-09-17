@@ -21,7 +21,7 @@ export interface IndexItem {
   /**
    * Item keywords
    */
-  keywords?: Array<string>;
+  keywords?: string[];
 
   /**
    * Lifetime in minutes
@@ -89,31 +89,31 @@ export class IndexAppContent extends IonicNativePlugin {
 
   /**
    * Add or change items to spotlight index
-   * @param {Array<IndexItem>} items Array of items to index
-   * @return {Promise<any>} Returns if index set was successfull
+   * @param {IndexItem[]} items Array of items to index
+   * @return {Promise<any>} Returns if index set was successfully
    */
   @Cordova()
-  setItems(items: Array<IndexItem>): Promise<any> {
+  setItems(items: IndexItem[]): Promise<any> {
     return;
   }
 
   /**
    * Clear all items stored for a given array of domains
-   * @param {Array<string>} domains Array of domains to clear
-   * @return {Promise<any>} Resolve if successfull
+   * @param {string[]} domains Array of domains to clear
+   * @return {Promise<any>} Resolve if successfully
    */
   @Cordova()
-  clearItemsForDomains(domains: Array<string>): Promise<any> {
+  clearItemsForDomains(domains: string[]): Promise<any> {
     return;
   }
 
   /**
    * Clear all items stored for a given array of identifiers
-   * @param {Array<string>} identifiers Array of identifiers to clear
-   * @return {Promise<any>} Resolve if successfull
+   * @param {string[]} identifiers Array of identifiers to clear
+   * @return {Promise<any>} Resolve if successfully
    */
   @Cordova()
-  clearItemsForIdentifiers(identifiers: Array<string>): Promise<any> {
+  clearItemsForIdentifiers(identifiers: string[]): Promise<any> {
     return;
   }
 

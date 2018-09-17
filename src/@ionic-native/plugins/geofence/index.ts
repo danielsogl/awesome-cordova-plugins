@@ -120,7 +120,7 @@ export class Geofence extends IonicNativePlugin {
    * @returns {Promise<void>}
    */
   @Cordova()
-  addOrUpdate(geofences: Object | Array<Object>): Promise<void> {
+  addOrUpdate(geofences: Object | Object[]): Promise<void> {
     return;
   }
 
@@ -131,7 +131,7 @@ export class Geofence extends IonicNativePlugin {
    * @returns {Promise<void>}
    */
   @Cordova()
-  remove(geofenceId: string | Array<string>): Promise<void> {
+  remove(geofenceId: string | string[]): Promise<void> {
     return;
   }
 
@@ -148,7 +148,7 @@ export class Geofence extends IonicNativePlugin {
   /**
    * Returns an array of geofences currently being monitored.
    *
-   * @returns {Promise<Array<string>>}
+   * @returns {Promise<string[]>}
    */
   @Cordova()
   getWatched(): Promise<string> {

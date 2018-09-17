@@ -19,12 +19,12 @@ export interface WheelSelectorOptions {
   /**
    * The items to display (array of items).
    */
-  items: Array<Array<WheelSelectorItem>>;
+  items: WheelSelectorItem[][];
 
   /**
    * Which items to display by default.
    */
-  defaultItems?: Array<DefaultItem>;
+  defaultItems?: DefaultItem[];
 
   /**
    * The 'ok' button text

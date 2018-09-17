@@ -77,7 +77,7 @@ export interface IAPProductOptions {
   type: string;
 }
 
-export type IAPProducts = Array<IAPProduct> & {
+export type IAPProducts = IAPProduct[] & {
   /**
    * Get product by ID
    */

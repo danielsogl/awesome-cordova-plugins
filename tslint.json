@@ -6,7 +6,6 @@
     "no-import-side-effect": false,
     "no-redundant-jsdoc": false,
     // TODO: Activate rules step by step
-    "array-type": false,
     "ban-types": false,
     "no-shadowed-variable": false,
     "only-arrow-functions": false,

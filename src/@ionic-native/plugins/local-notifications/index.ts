@@ -485,12 +485,12 @@ export interface ILocalNotification {
 export class LocalNotifications extends IonicNativePlugin {
   /**
    * Schedules a single or multiple notifications
-   * @param options {Notification | Array<ILocalNotification>} optional
+   * @param options {Notification | ILocalNotification[]} optional
    */
   @Cordova({
     sync: true
   })
-  schedule(options?: ILocalNotification | Array<ILocalNotification>): void {}
+  schedule(options?: ILocalNotification | ILocalNotification[]): void {}
 
   /**
    * Updates a previously scheduled notification. Must include the id in the options parameter.
@@ -571,28 +571,28 @@ export class LocalNotifications extends IonicNativePlugin {
 
   /**
    * Get all the notification ids
-   * @returns {Promise<Array<number>>}
+   * @returns {Promise<number[]>}
    */
   @Cordova()
-  getIds(): Promise<Array<number>> {
+  getIds(): Promise<number[]> {
     return;
   }
 
   /**
    * Get the ids of triggered notifications
-   * @returns {Promise<Array<number>>}
+   * @returns {Promise<number[]>}
    */
   @Cordova()
-  getTriggeredIds(): Promise<Array<number>> {
+  getTriggeredIds(): Promise<number[]> {
     return;
   }
 
   /**
    * Get the ids of scheduled notifications
-   * @returns {Promise<Array<number>>} Returns a promise
+   * @returns {Promise<number[]>} Returns a promise
    */
   @Cordova()
-  getScheduledIds(): Promise<Array<number>> {
+  getScheduledIds(): Promise<number[]> {
     return;
   }
 
@@ -628,28 +628,28 @@ export class LocalNotifications extends IonicNativePlugin {
 
   /**
    * Get all notification objects
-   * @returns {Promise<Array<ILocalNotification>>}
+   * @returns {Promise<ILocalNotification[]>}
    */
   @Cordova()
-  getAll(): Promise<Array<ILocalNotification>> {
+  getAll(): Promise<ILocalNotification[]> {
     return;
   }
 
   /**
    * Get all scheduled notification objects
-   * @returns {Promise<Array<ILocalNotification>>}
+   * @returns {Promise<ILocalNotification[]>}
    */
   @Cordova()
-  getAllScheduled(): Promise<Array<ILocalNotification>> {
+  getAllScheduled(): Promise<ILocalNotification[]> {
     return;
   }
 
   /**
    * Get all triggered notification objects
-   * @returns {Promise<Array<ILocalNotification>>}
+   * @returns {Promise<ILocalNotification[]>}
    */
   @Cordova()
-  getAllTriggered(): Promise<Array<ILocalNotification>> {
+  getAllTriggered(): Promise<ILocalNotification[]> {
     return;
   }
 
@@ -680,7 +680,7 @@ export class LocalNotifications extends IonicNativePlugin {
   @Cordova()
   addActions(
     groupId: any,
-    actions: Array<ILocalNotificationAction>
+    actions: ILocalNotificationAction[]
   ): Promise<any> {
     return;
   }

@@ -150,7 +150,7 @@ export class PayPal extends IonicNativePlugin {
   /**
    * Please Read Docs on Profile Sharing at https://github.com/paypal/PayPal-iOS-SDK#profile-sharing
    *
-   * @param {Array<string>} scopes scopes Set of requested scope-values. Accepted scopes are: openid, profile, address, email, phone, futurepayments and paypalattributes
+   * @param {string[]} scopes scopes Set of requested scope-values. Accepted scopes are: openid, profile, address, email, phone, futurepayments and paypalattributes
    * See https://developer.paypal.com/docs/integration/direct/identity/attributes/ for more details
    * @returns {Promise<any>}
    */
@@ -205,7 +205,7 @@ export class PayPalPayment {
   /**
    * Optional array of PayPalItem objects.
    */
-  items: Array<PayPalItem>;
+  items: PayPalItem[];
   /**
    * Optional payee email, if your app is paying a third-party merchant.
    * The payee's email. It must be a valid PayPal email address.

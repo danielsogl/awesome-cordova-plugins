@@ -72,7 +72,7 @@ export interface SpeechRecognitionListeningOptionsAndroid {
  * // Start the recognition process
  * this.speechRecognition.startListening(options)
  *   .subscribe(
- *     (matches: Array<string>) => console.log(matches),
+ *     (matches: string[]) => console.log(matches),
  *     (onerror) => console.log('error:', onerror)
  *   )
  *
@@ -82,7 +82,7 @@ export interface SpeechRecognitionListeningOptionsAndroid {
  * // Get the list of supported languages
  * this.speechRecognition.getSupportedLanguages()
  *   .then(
- *     (languages: Array<string>) => console.log(languages),
+ *     (languages: string[]) => console.log(languages),
  *     (error) => console.log(error)
  *   )
  *
@@ -119,7 +119,7 @@ export class SpeechRecognition extends IonicNativePlugin {
 
   /**
    * Start the recognition process
-   * @return {Promise< Array<string> >} list of recognized terms
+   * @return {Promise< string[] >} list of recognized terms
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -127,7 +127,7 @@ export class SpeechRecognition extends IonicNativePlugin {
   })
   startListening(
     options?: SpeechRecognitionListeningOptions
-  ): Observable<Array<string>> {
+  ): Observable<string[]> {
     return;
   }
 
@@ -141,10 +141,10 @@ export class SpeechRecognition extends IonicNativePlugin {
 
   /**
    * Get the list of supported languages
-   * @return {Promise< Array<string> >} list of languages
+   * @return {Promise< string[] >} list of languages
    */
   @Cordova()
-  getSupportedLanguages(): Promise<Array<string>> {
+  getSupportedLanguages(): Promise<string[]> {
     return;
   }
 

@@ -105,7 +105,7 @@ export class IntelSecurityData {
    * @returns {Promise<Array>} Returns a promise that resolves to an array of owners' unique IDs, or rejects with an error.
    */
   @Cordova({ otherPromise: true })
-  getOwners(instanceID: any): Promise<Array<any>> {
+  getOwners(instanceID: any): Promise<any[]> {
     return;
   }
 
@@ -125,7 +125,7 @@ export class IntelSecurityData {
    * @returns {Promise<Array>} Returns a promise that resolves to a list of web owners, or rejects with an error.
    */
   @Cordova({ otherPromise: true })
-  getWebOwners(instanceID: any): Promise<Array<any>> {
+  getWebOwners(instanceID: any): Promise<any[]> {
     return;
   }
 

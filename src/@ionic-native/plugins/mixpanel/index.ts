@@ -251,7 +251,7 @@ export class MixpanelPeople extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  unset(propertiesArray: Array<string>): Promise<any> {
+  unset(propertiesArray: string[]): Promise<any> {
     return;
   }
 

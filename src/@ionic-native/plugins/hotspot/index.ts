@@ -119,7 +119,7 @@ export interface HotspotDevice {
  * ...
  *
  *
- * this.hotspot.scanWifi().then((networks: Array<HotspotNetwork>) => {
+ * this.hotspot.scanWifi().then((networks: HotspotNetwork[]) => {
  *     console.log(networks);
  * });
  *
@@ -215,10 +215,10 @@ export class Hotspot extends IonicNativePlugin {
   }
 
   /**
-   * @returns {Promise<Array<HotspotDevice>>}
+   * @returns {Promise<HotspotDevice[]>}
    */
   @Cordova()
-  getAllHotspotDevices(): Promise<Array<HotspotDevice>> {
+  getAllHotspotDevices(): Promise<HotspotDevice[]> {
     return;
   }
 
@@ -254,7 +254,7 @@ export class Hotspot extends IonicNativePlugin {
    *      Promise that connection to the WiFi network was successfull, rejected if unsuccessful
    */
   @Cordova()
-  connectToWifiAuthEncrypt(ssid: string, password: string, authentication: string, encryption: Array<string>): Promise<void> {
+  connectToWifiAuthEncrypt(ssid: string, password: string, authentication: string, encryption: string[]): Promise<void> {
     return;
   }
 
@@ -331,18 +331,18 @@ export class Hotspot extends IonicNativePlugin {
   }
 
   /**
-   * @returns {Promise<Array<HotspotNetwork>>}
+   * @returns {Promise<HotspotNetwork[]>}
    */
   @Cordova()
-  scanWifi(): Promise<Array<HotspotNetwork>> {
+  scanWifi(): Promise<HotspotNetwork[]> {
     return;
   }
 
   /**
-   * @returns {Promise<Array<HotspotNetwork>>}
+   * @returns {Promise<HotspotNetwork[]>}
    */
   @Cordova()
-  scanWifiByLevel(): Promise<Array<HotspotNetwork>> {
+  scanWifiByLevel(): Promise<HotspotNetwork[]> {
     return;
   }
 
