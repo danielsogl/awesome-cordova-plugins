@@ -589,7 +589,6 @@ export class BLE extends IonicNativePlugin {
     return;
   }
 
-
   /**
    * Retrieves a list of the peripherals (containing any of the specified services)
    * currently connected to the system. The peripheral list is sent to the success callback.
@@ -599,7 +598,7 @@ export class BLE extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise with a list of peripheral objects
    */
   @Cordova()
-  connectedPeripheralsWithServices (services: string[]): Promise<any[]> {
+  connectedPeripheralsWithServices(services: string[]): Promise<any[]> {
     return;
   }
 
@@ -611,7 +610,7 @@ export class BLE extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise with a list of peripheral objects
    */
   @Cordova()
-  peripheralsWithIdentifiers (uuids: string[]): Promise<any[]> {
+  peripheralsWithIdentifiers(uuids: string[]): Promise<any[]> {
     return;
   }
 
@@ -622,7 +621,7 @@ export class BLE extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise with a list of peripheral objects
    */
   @Cordova()
-  bondedDevices (): Promise<any[]> {
+  bondedDevices(): Promise<any[]> {
     return;
   }
 }

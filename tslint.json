@@ -10,7 +10,6 @@
     "no-shadowed-variable": false,
     "only-arrow-functions": false,
     "ter-no-proto": false,
-    "space-before-function-paren": false,
     "callable-types": false,
     "member-access": false,
     "adjacent-overload-signatures": false,
