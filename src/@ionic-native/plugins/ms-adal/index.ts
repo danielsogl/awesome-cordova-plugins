@@ -1,4 +1,3 @@
-import { checkAvailability, CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 import { checkAvailability, CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
