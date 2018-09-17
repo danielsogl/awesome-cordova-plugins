@@ -482,7 +482,9 @@ export class BackgroundGeolocation extends IonicNativePlugin {
     platforms: ['Android'],
     observable: true
   })
-  watchLocationMode(): Observable<number> { return; }
+  watchLocationMode(): Observable<number> {
+    return;
+  }
 
   /**
    * Stop watching for location mode changes.

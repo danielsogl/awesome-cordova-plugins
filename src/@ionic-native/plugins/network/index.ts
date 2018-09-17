@@ -6,7 +6,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { merge, Observable } from 'rxjs';
+import { Observable, merge } from 'rxjs';
 
 declare const navigator: any;
 
@@ -36,7 +36,7 @@ declare const navigator: any;
  * let connectSubscription = this.network.onConnect().subscribe(() => {
  *   console.log('network connected!');
  *   // We just got a connection but we need to wait briefly
- *   // before we determine the connection type. Might need to wait.
+ *    // before we determine the connection type. Might need to wait.
  *   // prior to doing any api requests as well.
  *   setTimeout(() => {
  *     if (this.network.type === 'wifi') {

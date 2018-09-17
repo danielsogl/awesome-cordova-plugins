@@ -101,4 +101,5 @@ export class AES256 extends IonicNativePlugin {
   generateSecureIV(password: string): Promise<string> {
     return;
   }
+
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { checkAvailability, CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin, checkAvailability } from '@ionic-native/core';
 
 export interface AuthenticationResult {
   accessToken: string;

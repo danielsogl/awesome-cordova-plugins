@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import {
+  Cordova,
+  CordovaProperty,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
 
 export interface PinterestUser {
   /**
@@ -172,13 +177,13 @@ export interface PinterestPin {
   plugin: 'cordova-plugin-pinterest',
   pluginRef: 'cordova.plugins.Pinterest',
   repo: 'https://github.com/zyramedia/cordova-plugin-pinterest',
-  install: 'ionic cordova plugin add cordova-plugin-pinterest --variable APP_ID=YOUR_APP_ID',
+  install:
+    'ionic cordova plugin add cordova-plugin-pinterest --variable APP_ID=YOUR_APP_ID',
   installVariables: ['APP_ID'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Pinterest extends IonicNativePlugin {
-
   /**
    * Convenience constant for authentication scopes
    */
@@ -260,7 +265,10 @@ export class Pinterest extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getMyFollowers(fields?: string, limit?: number): Promise<PinterestUser[]> {
+  getMyFollowers(
+    fields?: string,
+    limit?: number
+  ): Promise<PinterestUser[]> {
     return;
   }
 
@@ -273,7 +281,10 @@ export class Pinterest extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getMyFollowedBoards(fields?: string, limit?: number): Promise<PinterestBoard[]> {
+  getMyFollowedBoards(
+    fields?: string,
+    limit?: number
+  ): Promise<PinterestBoard[]> {
     return;
   }
 
@@ -329,7 +340,11 @@ export class Pinterest extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  getBoardPins(boardId: string, fields?: string, limit?: number): Promise<PinterestPin[]> {
+  getBoardPins(
+    boardId: string,
+    fields?: string,
+    limit?: number
+  ): Promise<PinterestPin[]> {
     return;
   }
 
@@ -393,8 +408,12 @@ export class Pinterest extends IonicNativePlugin {
     successIndex: 4,
     errorIndex: 5
   })
-  createPin(note: string, boardId: string, imageUrl: string, link?: string): Promise<PinterestPin> {
+  createPin(
+    note: string,
+    boardId: string,
+    imageUrl: string,
+    link?: string
+  ): Promise<PinterestPin> {
     return;
   }
-
 }

@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import {
   Cordova,
   CordovaCheck,
-  getPromise,
   IonicNativePlugin,
-  Plugin
+  Plugin,
+  getPromise
 } from '@ionic-native/core';
 
 export interface EmailComposerOptions {

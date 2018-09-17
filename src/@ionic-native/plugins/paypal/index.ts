@@ -106,7 +106,10 @@ export class PayPal extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  prepareToRender(environment: string, configuration: PayPalConfiguration): Promise<any> {
+  prepareToRender(
+    environment: string,
+    configuration: PayPalConfiguration
+  ): Promise<any> {
     return;
   }
 
@@ -169,6 +172,20 @@ export interface PayPalEnvironment {
  * @hidden
  */
 export class PayPalPayment {
+  constructor(
+    amount: string,
+    currency: string,
+    shortDescription: string,
+    intent: string,
+    details?: PayPalPaymentDetails
+  ) {
+    this.amount = amount;
+    this.currency = currency;
+    this.shortDescription = shortDescription;
+    this.intent = intent;
+    this.details = details;
+  }
+
   /**
    * The amount of the payment.
    */
@@ -206,6 +223,7 @@ export class PayPalPayment {
    * Optional array of PayPalItem objects.
    */
   items: PayPalItem[];
+
   /**
    * Optional payee email, if your app is paying a third-party merchant.
    * The payee's email. It must be a valid PayPal email address.
@@ -233,6 +251,29 @@ export class PayPalPayment {
  * @hidden
  */
 export class PayPalItem {
+  /**
+   * The PayPalItem class defines an optional itemization for a payment.
+   * @see https://developer.paypal.com/docs/api/#item-object for more details.
+   * @param {String} name: Name of the item. 127 characters max
+   * @param {Number} quantity: Number of units. 10 characters max.
+   * @param {String} price: Unit price for this item 10 characters max.
+   * May be negative for "coupon" etc
+   * @param {String} currency: ISO standard currency code.
+   * @param {String} sku: The stock keeping unit for this item. 50 characters max (optional)
+   */
+  constructor(
+    name: string,
+    quantity: number,
+    price: string,
+    currency: string,
+    sku?: string
+  ) {
+    this.name = name;
+    this.quantity = quantity;
+    this.price = price;
+    this.currency = currency;
+    this.sku = sku;
+  }
   /**
    * Name of the item. 127 characters max
    */
@@ -416,7 +457,6 @@ export class PayPalConfiguration implements PayPalConfigurationOptions {
    * see defaults for options available
    */
   constructor(options?: PayPalConfigurationOptions) {
-
     const defaults: PayPalConfigurationOptions = {
       defaultUserEmail: null,
       defaultUserPhoneCountryCode: null,
@@ -451,6 +491,33 @@ export class PayPalConfiguration implements PayPalConfigurationOptions {
  * @hidden
  */
 export class PayPalShippingAddress {
+  /**
+   * See the documentation of the individual properties for more detail.
+   * @param {String} recipientName: Name of the recipient at this address. 50 characters max.
+   * @param {String} line1: Line 1 of the address (e.g., Number, street, etc). 100 characters max.
+   * @param {String} line2: Line 2 of the address (e.g., Suite, apt #, etc). 100 characters max. Optional.
+   * @param {String} city: City name. 50 characters max.
+   * @param {String} state: 2-letter code for US states, and the equivalent for other countries. 100 characters max. Required in certain countries.
+   * @param {String} postalCode: ZIP code or equivalent is usually required for countries that have them. 20 characters max. Required in certain countries.
+   * @param {String} countryCode: 2-letter country code. 2 characters max.
+   */
+  constructor(
+    recipientName: string,
+    line1: string,
+    line2: string,
+    city: string,
+    state: string,
+    postalCode: string,
+    countryCode: string
+  ) {
+    this.recipientName = recipientName;
+    this.line1 = line1;
+    this.line2 = line2;
+    this.city = city;
+    this.state = state;
+    this.postalCode = postalCode;
+    this.countryCode = countryCode;
+  }
   /**
    * Name of the recipient at this address. 50 characters max.
    */

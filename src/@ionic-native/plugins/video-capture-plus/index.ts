@@ -30,7 +30,10 @@ export interface MediaFile {
    * @param {Function} successCallback
    * @param {Function} [errorCallback]
    */
-  getFormatData(successCallback: (data: MediaFileData) => any, errorCallback?: (err: any) => any): any;
+  getFormatData(
+    successCallback: (data: MediaFileData) => any,
+    errorCallback?: (err: any) => any
+  ): any;
 }
 
 export interface MediaFileData {
@@ -57,7 +60,6 @@ export interface MediaFileData {
 }
 
 export interface VideoCapturePlusOptions {
-
   /**
    * The number of videos to record, default 1 (on iOS always 1)
    */
@@ -93,7 +95,6 @@ export interface VideoCapturePlusOptions {
    * iOS only
    */
   overlayText?: string;
-
 }
 
 /**
@@ -138,7 +139,6 @@ export interface VideoCapturePlusOptions {
 })
 @Injectable()
 export class VideoCapturePlus extends IonicNativePlugin {
-
   /**
    * Starts recordings
    * @param [options] {VideoCapturePlusOptions} Configure options
@@ -150,5 +150,4 @@ export class VideoCapturePlus extends IonicNativePlugin {
   captureVideo(options?: VideoCapturePlusOptions): Promise<MediaFile[]> {
     return;
   }
-
 }

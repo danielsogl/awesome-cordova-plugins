@@ -77,11 +77,6 @@ export class ScreenOrientation extends IonicNativePlugin {
     ANY: 'any'
   };
   /**
-   * Get the current orientation of the device.
-   */
-  @CordovaProperty() type: string;
-
-  /**
    * Listen to orientation change event
    * @return {Observable<void>}
    */
@@ -109,4 +104,10 @@ export class ScreenOrientation extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   unlock(): void {}
+
+  /**
+   * Get the current orientation of the device.
+   */
+  @CordovaProperty()
+  type: string;
 }

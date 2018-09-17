@@ -12,8 +12,9 @@ export const PLUGINS_ROOT = path.join(ROOT, 'src/@ionic-native/plugins/');
 export const PLUGIN_PATHS = fs.readdirSync(PLUGINS_ROOT).map(d => path.join(PLUGINS_ROOT, d, 'index.ts'));
 
 export function getDecorator(node: ts.Node, index = 0): ts.Decorator {
-  if (node.decorators && node.decorators[index])
+  if (node.decorators && node.decorators[index]) {
     return node.decorators[index];
+  }
 }
 
 export function hasDecorator(decoratorName: string, node: ts.Node): boolean {
@@ -43,7 +44,7 @@ export function getDecoratorArgs(decorator: any) {
         break;
 
       case ts.SyntaxKind.ArrayLiteralExpression:
-        val = prop.initializer.elements.map(e => e.text);
+        val = prop.initializer.elements.map((e: any) => e.text);
         break;
 
       case ts.SyntaxKind.TrueKeyword:

@@ -6,7 +6,6 @@ import {
   Plugin
 } from '@ionic-native/core';
 import { Observable } from 'rxjs';
-
 declare let window: any;
 
 export interface NdefEvent {
@@ -183,7 +182,6 @@ export class NFC extends IonicNativePlugin {
   write(message: any[]): Promise<any> {
     return;
   }
-
   /**
    * Makes a NFC tag read only. **Warning** this is permanent.
    * @returns {Promise<any>}
@@ -256,7 +254,6 @@ export class NFC extends IonicNativePlugin {
   enabled(): Promise<any> {
     return;
   }
-
   /**
    * @{ NFC } class utility methods
    * for use with
@@ -270,7 +267,6 @@ export class NFC extends IonicNativePlugin {
   bytesToString(bytes: number[]): string {
     return;
   }
-
   /**
    * Convert string to byte array.
    * @param str {string}
@@ -280,7 +276,6 @@ export class NFC extends IonicNativePlugin {
   stringToBytes(str: string): number[] {
     return;
   }
-
   /**
    * Convert byte array to hex string
    *
@@ -292,7 +287,6 @@ export class NFC extends IonicNativePlugin {
     return;
   }
 }
-
 /**
  * @hidden
  */
@@ -302,7 +296,6 @@ export class NFC extends IonicNativePlugin {
   pluginRef: 'ndef'
 })
 /**
- * @{ Ndef } class methods
  * @description
  * Utility methods for creating ndef records for the ndef tag format.
  * Move records into array before usage. Then pass an array to methods as parameters.
@@ -311,24 +304,22 @@ export class NFC extends IonicNativePlugin {
  */
 @Injectable()
 export class Ndef extends IonicNativePlugin {
-  @CordovaProperty() TNF_EMPTY: number;
-  @CordovaProperty() TNF_WELL_KNOWN: number;
-  @CordovaProperty() TNF_MIME_MEDIA: number;
-  @CordovaProperty() TNF_ABSOLUTE_URI: number;
-  @CordovaProperty() TNF_EXTERNAL_TYPE: number;
-  @CordovaProperty() TNF_UNKNOWN: number;
-  @CordovaProperty() TNF_UNCHANGED: number;
-  @CordovaProperty() TNF_RESERVED: number;
-
-  @CordovaProperty() RTD_TEXT: number[];
-  @CordovaProperty() RTD_URI: number[];
-  @CordovaProperty() RTD_SMART_POSTER: number[];
-  @CordovaProperty() RTD_ALTERNATIVE_CARRIER: number[];
-  @CordovaProperty() RTD_HANDOVER_CARRIER: number[];
-  @CordovaProperty() RTD_HANDOVER_REQUEST: number[];
-  @CordovaProperty() RTD_HANDOVER_SELECT: number[];
-  @CordovaProperty() textHelper: TextHelper;
-  @CordovaProperty() uriHelper: UriHelper;
+  @CordovaProperty()
+  TNF_EMPTY: number;
+  @CordovaProperty()
+  TNF_WELL_KNOWN: number;
+  @CordovaProperty()
+  TNF_MIME_MEDIA: number;
+  @CordovaProperty()
+  TNF_ABSOLUTE_URI: number;
+  @CordovaProperty()
+  TNF_EXTERNAL_TYPE: number;
+  @CordovaProperty()
+  TNF_UNKNOWN: number;
+  @CordovaProperty()
+  TNF_UNCHANGED: number;
+  @CordovaProperty()
+  TNF_RESERVED: number;
 
   @Cordova({ sync: true })
   record(
@@ -341,13 +332,27 @@ export class Ndef extends IonicNativePlugin {
   }
 
   @Cordova({ sync: true })
-  textRecord(text: string, languageCode?: string, id?: number[] | string): NdefRecord { return; }
+  textRecord(
+    text: string,
+    languageCode?: string,
+    id?: number[] | string
+  ): NdefRecord {
+    return;
+  }
 
   @Cordova({ sync: true })
-  uriRecord(uri: string, id?: number[] | string): NdefRecord { return; }
+  uriRecord(uri: string, id?: number[] | string): NdefRecord {
+    return;
+  }
 
   @Cordova({ sync: true })
-  absoluteUriRecord(uri: string, payload: number[] | string, id?: number[] | string): NdefRecord { return; }
+  absoluteUriRecord(
+    uri: string,
+    payload: number[] | string,
+    id?: number[] | string
+  ): NdefRecord {
+    return;
+  }
 
   @Cordova({ sync: true })
   mimeMediaRecord(mimeType: string, payload: string): NdefRecord {
@@ -393,6 +398,12 @@ export class Ndef extends IonicNativePlugin {
   tnfToString(tnf: any): string {
     return;
   }
+
+  @CordovaProperty()
+  textHelper: TextHelper;
+
+  @CordovaProperty()
+  uriHelper: UriHelper;
 }
 
 /**
@@ -440,7 +451,6 @@ export class TextHelper extends IonicNativePlugin {
   decodePayload(data: number[]): string {
     return;
   }
-
   encodePayload(text: string, lang: string): number[] {
     return;
   }
@@ -450,7 +460,6 @@ export class UriHelper extends IonicNativePlugin {
   decodePayload(data: number[]): string {
     return;
   }
-
   encodePayload(uri: string): number[] {
     return;
   }

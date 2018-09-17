@@ -165,7 +165,6 @@ export enum Direction {
 })
 @Injectable()
 export class Camera extends IonicNativePlugin {
-
   /**
    * Constant for possible destination types
    */
@@ -200,7 +199,6 @@ export class Camera extends IonicNativePlugin {
     ALLMEDIA: 2
   };
 
-
   /**
    * Convenience constant
    */
@@ -212,7 +210,6 @@ export class Camera extends IonicNativePlugin {
     /** Choose image from picture library (same as PHOTOLIBRARY for Android) */
     SAVEDPHOTOALBUM: 2
   };
-
 
   /**
    * Convenience constant
@@ -258,5 +255,4 @@ export class Camera extends IonicNativePlugin {
   cleanup(): Promise<any> {
     return;
   }
-
 }

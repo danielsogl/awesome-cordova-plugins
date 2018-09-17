@@ -955,7 +955,11 @@ export class StarPRNT extends IonicNativePlugin {
     observable: true,
     callbackStyle: 'node'
   })
-  connect(port: string, emulation: string): Observable<any> {
+  connect(
+    port: string,
+    emulation: string,
+    hasBarcodeReader: boolean
+  ): Observable<any> {
     return;
   }
 

@@ -75,7 +75,7 @@ export interface AppRateCustomLocale {
   /** No button label */
   noButtonLabel?: string;
 
-  /** App rate promt title */
+  /** App rate prompt title */
   appRatePromptTitle?: string;
 
   /** Feedback prompt title */

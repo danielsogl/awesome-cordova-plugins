@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaCheck, CordovaProperty, getPromise, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { CordovaCheck, CordovaProperty, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
 
 export interface IFile extends Blob {
   /**
@@ -1086,8 +1086,8 @@ export class File extends IonicNativePlugin {
       });
   }
 
-  /* Write a new file to the desired location.
-   *
+  /**
+   * Write a new file to the desired location.
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} fileName path relative to base path
    * @param {string | Blob | ArrayBuffer} text content, blob or ArrayBuffer to write
@@ -1122,6 +1122,7 @@ export class File extends IonicNativePlugin {
   }
 
   /**
+   * Write content to FileEntry.
    * @hidden
    * Write to an existing file.
    * @param {FileEntry} fe file entry object
@@ -1181,6 +1182,7 @@ export class File extends IonicNativePlugin {
    * Read file and return data as a base64 encoded data url.
    * A data url is of the form:
    *      data: [<mediatype>][;base64],<data>
+   *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as data URL or rejects
@@ -1213,6 +1215,46 @@ export class File extends IonicNativePlugin {
   @CordovaCheck()
   readAsArrayBuffer(path: string, file: string): Promise<ArrayBuffer> {
     return this.readFile<ArrayBuffer>(path, file, 'ArrayBuffer');
+  }
+
+  private readFile<T>(
+    path: string,
+    file: string,
+    readAs: 'ArrayBuffer' | 'BinaryString' | 'DataURL' | 'Text'
+  ): Promise<T> {
+    if (/^\//.test(file)) {
+      const err = new FileError(5);
+      err.message = 'file-name cannot start with /';
+      return Promise.reject<any>(err);
+    }
+
+    return this.resolveDirectoryUrl(path)
+      .then((directoryEntry: DirectoryEntry) => {
+        return this.getFile(directoryEntry, file, { create: false });
+      })
+      .then((fileEntry: FileEntry) => {
+        const reader = new FileReader();
+        return new Promise<T>((resolve, reject) => {
+          reader.onloadend = () => {
+            if (reader.result !== undefined || reader.result !== null) {
+              resolve((reader.result as any) as T);
+            } else if (reader.error !== undefined || reader.error !== null) {
+              reject(reader.error);
+            } else {
+              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
+            }
+          };
+
+          fileEntry.file(
+            file => {
+              reader[`readAs${readAs}`].call(reader, file);
+            },
+            error => {
+              reject(error);
+            }
+          );
+        });
+      });
   }
 
   /**

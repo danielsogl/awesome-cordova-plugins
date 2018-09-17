@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { checkAvailability, Cordova, CordovaInstance, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, CordovaInstance, IonicNativePlugin, Plugin, checkAvailability } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 declare const window: any;
@@ -428,7 +428,6 @@ export class PushObject {
   setApplicationIconBadgeNumber(count?: number): Promise<any> {
     return;
   }
-
   /**
    * Get the current badge count visible when the app is not running
    * successHandler gets called with an integer which is the current badge count

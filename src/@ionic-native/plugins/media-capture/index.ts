@@ -167,19 +167,22 @@ export class MediaCapture extends IonicNativePlugin {
    * The recording image sizes and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty() supportedImageModes: ConfigurationData[];
+  @CordovaProperty()
+  supportedImageModes: ConfigurationData[];
 
   /**
    * The audio recording formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty() supportedAudioModes: ConfigurationData[];
+  @CordovaProperty()
+  supportedAudioModes: ConfigurationData[];
 
   /**
    * The recording video resolutions and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty() supportedVideoModes: ConfigurationData[];
+  @CordovaProperty()
+  supportedVideoModes: ConfigurationData[];
 
   /**
    * Start the audio recorder application and return information about captured audio clip files.

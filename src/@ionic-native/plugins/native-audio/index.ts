@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-
 /**
  * @name Native Audio
  * @description Native Audio Playback

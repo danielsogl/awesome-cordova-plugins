@@ -1,12 +1,72 @@
 import {
   Cordova,
-  CordovaCheck,
+  CordovaOptions,
   IonicNativePlugin,
   Plugin,
   wrap
 } from '@ionic-native/core';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { Injectable } from '@angular/core';
+
+/**
+ * @hidden
+ */
+export interface CordovaFiniteObservableOptions extends CordovaOptions {
+  /**
+   * Function that gets a result returned from plugin's success callback, and decides whether it is last value and observable should complete.
+   */
+  resultFinalPredicate?: string;
+  /**
+   * Function that gets called after resultFinalPredicate, and removes service data that indicates end of stream from the result.
+   */
+  resultTransform?: string;
+}
+
+/**
+ * @hidden
+ *
+ * Wraps method that returns an observable that can be completed. Provided opts.resultFinalPredicate dictates when the observable completes.
+ */
+export function CordovaFiniteObservable(
+  opts: CordovaFiniteObservableOptions = {}
+) {
+  opts.observable = true;
+  return (
+    target: Object,
+    methodName: string,
+    descriptor: TypedPropertyDescriptor<any>
+  ) => {
+    return {
+      value(...args: any[]) {
+        const wrappedObservable: Observable<any> = wrap(
+          this,
+          methodName,
+          opts
+        ).apply(this, args);
+        return new Observable<any>((observer: Observer<any>) => {
+          const wrappedSubscription = wrappedObservable.subscribe({
+            next: (x: any) => {
+              observer.next(opts.resultTransform ? x[opts.resultTransform] : x);
+              if (opts.resultFinalPredicate && x[opts.resultFinalPredicate]) {
+                observer.complete();
+              }
+            },
+            error: (err: any) => {
+              observer.error(err);
+            },
+            complete: () => {
+              observer.complete();
+            }
+          });
+          return () => {
+            wrappedSubscription.unsubscribe();
+          };
+        });
+      },
+      enumerable: true
+    };
+  };
+}
 
 /**
  * @name Photo Library
@@ -66,34 +126,7 @@ export class PhotoLibrary extends IonicNativePlugin {
     observable: true
   })
   getLibrary(options?: GetLibraryOptions): Observable<LibraryItem[]> {
-    const wrappedObservable: Observable<any> = wrap(this, 'getLibrary', {
-      callbackOrder: 'reverse'
-    }).apply(this, [options]);
-    return new Observable<any>(observer => {
-      const wrappedSubscription = wrappedObservable.subscribe({
-        next: x => {
-          observer.next((result: { library: LibraryItem[] }) => {
-            return result.library;
-          });
-          if (
-            (result: { isLastChunk: boolean }) => {
-              return result.isLastChunk;
-            }
-          ) {
-            observer.complete();
-          }
-        },
-        error: err => {
-          observer.error(err);
-        },
-        complete: () => {
-          observer.complete();
-        }
-      });
-      return () => {
-        wrappedSubscription.unsubscribe();
-      };
-    });
+    return;
   }
 
   /**

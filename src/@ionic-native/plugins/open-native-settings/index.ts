@@ -8,31 +8,31 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * @usage
  * You can open any of these settings:
  * ```
- * "about", // ios
- * "accessibility", // ios, android
- * "account", // ios, android
- * "airplane_mode", // ios, android
- * "apn", // android
- * "application_details", // ios, android
- * "application_development", // android
- * "application", // android
- * "autolock", // ios
- * "battery_optimization", // android
- * "bluetooth", // ios, android
- * "castle", // ios
- * "captioning", // android
- * "cast", // android
- * "cellular_usage", // ios
- * "configuration_list", // ios
- * "data_roaming", // android
- * "date", // ios, android
- * "display", // ios, android
- * "dream", // android
- * "facetime", // ios
- * "home", // android
- * "keyboard", // ios, android
- * "keyboard_subtype", // android
- * "locale", // ios, android
+ *  "about", // ios
+ *  "accessibility", // ios, android
+ *  "account", // ios, android
+ *  "airplane_mode", // ios, android
+ *  "apn", // android
+ *  "application_details", // ios, android
+ *  "application_development", // android
+ *  "application", // android
+ *  "autolock", // ios
+ *  "battery_optimization", // android
+ *  "bluetooth", // ios, android
+ *  "castle", // ios
+ *  "captioning", // android
+ *  "cast", // android
+ *  "cellular_usage", // ios
+ *  "configuration_list", // ios
+ *  "data_roaming", // android
+ *  "date", // ios, android
+ *  "display", // ios, android
+ *  "dream", // android
+ *  "facetime", // ios
+ *  "home", // android
+ *  "keyboard", // ios, android
+ *  "keyboard_subtype", // android
+ *  "locale", // ios, android
  * "location", // ios, android
  * "locations", // ios
  * "manage_all_applications", // android
@@ -78,7 +78,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * "wifi_ip", // android
  * "wifi", // ios, android
  * "wireless" // android
- * ```
+ *  ```
  * ```typescript
  * import { OpenNativeSettings } from '@ionic-native/open-native-settings';
  *

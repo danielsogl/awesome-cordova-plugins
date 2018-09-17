@@ -1,15 +1,14 @@
 {
-  "extends": ["tslint-ionic-rules", "rxjs-tslint-rules"],
+  "extends": ["tslint-ionic-rules"],
   "rules": {
-    "ordered-imports": false,
     "no-empty": false,
     "no-import-side-effect": false,
     "no-redundant-jsdoc": false,
     "ban-types": false,
     "no-shadowed-variable": false,
-    "only-arrow-functions": false,
-    "ter-no-proto": false,
+    "no-constant-condition": false,
+    "no-extra-boolean-cast": false,
     "adjacent-overload-signatures": false,
-    "no-constant-condition": false
+    "ter-no-proto": false
   }
 }

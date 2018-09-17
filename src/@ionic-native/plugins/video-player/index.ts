@@ -52,7 +52,6 @@ export interface VideoOptions {
 })
 @Injectable()
 export class VideoPlayer extends IonicNativePlugin {
-
   /**
    * Plays the video from the passed url.
    * @param fileUrl {string} File url to the video.
@@ -68,6 +67,5 @@ export class VideoPlayer extends IonicNativePlugin {
    * Stops the video playback immediatly.
    */
   @Cordova({ sync: true })
-  close(): void {
-  }
+  close(): void {}
 }

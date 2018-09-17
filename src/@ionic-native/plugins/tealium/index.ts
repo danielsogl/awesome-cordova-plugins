@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Injectable } from '@angular/core';
 
 export interface TealConfig {
   /**
@@ -198,7 +198,6 @@ export class Tealium extends IonicNativePlugin {
   ): Promise<any> {
     return;
   }
-
   /**
    * This function retrieves a value from the Tealium Volatile data store
    * @param keyName {string} The key name that this data will retrieved from the Tealium data store

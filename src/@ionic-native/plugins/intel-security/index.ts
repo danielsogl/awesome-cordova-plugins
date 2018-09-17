@@ -29,6 +29,67 @@ export interface IntelSecurityDataOptions {
 }
 
 /**
+ * @name Intel Security
+ * @description
+ * The App Security API enables the use of security properties and capabilities on the platform, using a new set of API defined for application developers. You are not required to be a security expert to make good use of the API. Key elements, such as encryption of data and establishments of capabilities, is abstracted and done by the API implementation, for you.
+ *
+ * For example:
+ * - Use the API to store (E.g. cache) data locally, using the device non-volatile storage. Data protection/encryption will be done for you by the API implementation
+ * - Establish a connection with remote server (E.g. XHR) using a protected channel. SSL/TLS establishment and usage will be done for you by the API implementation
+ *
+ * For more information please visit the [API documentation](https://software.intel.com/en-us/app-security-api/api).
+ *
+ * @usage
+ * ```typescript
+ * import { IntelSecurity } from '@ionic-native/intel-security';
+ * ...
+ * constructor(private intelSecurity: IntelSecurity) { }
+ * ...
+ *
+ * let storageID = 'id';
+ *
+ * this.intelSecurity.data.createFromData({ data: 'Sample Data' })
+ *   .then((instanceID: Number) => this.intelSecurity.storage.write({ id: storageId, instanceID: instanceID }))
+ *   .catch((error: any) => console.log(error));
+ *
+ * this.intelSecurity.storage.read({id: storageID })
+ *   .then((instanceID: number) => this.intelSecurity.data.getData(instanceID))
+ *   .then((data: string) => console.log(data)) // Resolves to 'Sample Data'
+ *   .catch((error: any) => console.log(error));
+ *
+ * this.intelSecurity.storage.delete({ id: storageID })
+ *   .then(() => console.log('Deleted Successfully'))
+ *   .catch((error: any) => console.log(error));
+ * ```
+ * @classes
+ * IntelSecurityData
+ * IntelSecurityStorage
+ * @interfaces
+ * IntelSecurityDataOptions
+ */
+@Plugin({
+  pluginName: 'IntelSecurity',
+  plugin: 'com-intel-security-cordova-plugin',
+  pluginRef: 'intel.security',
+  repo: 'https://github.com/AppSecurityApi/com-intel-security-cordova-plugin',
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
+})
+@Injectable()
+export class IntelSecurity extends IonicNativePlugin {
+  /**
+   * returns an IntelSecurityStorage object
+   * @type {IntelSecurityStorage}
+   */
+  storage: IntelSecurityStorage = new IntelSecurityStorage();
+
+  /**
+   * Returns an IntelSecurityData object
+   * @type {IntelSecurityData}
+   */
+  data: IntelSecurityData = new IntelSecurityData();
+}
+
+/**
  * @hidden
  */
 @Plugin({
@@ -37,7 +98,6 @@ export interface IntelSecurityDataOptions {
   pluginRef: 'intel.security.secureData'
 })
 export class IntelSecurityData {
-
   /**
    * This creates a new instance of secure data using plain-text data.
    * @param options {IntelSecurityDataOptions}
@@ -150,7 +210,6 @@ export class IntelSecurityData {
   destroy(instanceID: any): Promise<any> {
     return;
   }
-
 }
 
 /**
@@ -162,7 +221,6 @@ export class IntelSecurityData {
   pluginRef: 'intel.security.secureStorage'
 })
 export class IntelSecurityStorage {
-
   /**
    * This deletes a secure storage resource (indicated by id).
    * @param options {Object}
@@ -171,10 +229,7 @@ export class IntelSecurityStorage {
    * @returns {Promise<any>} Returns a Promise that resolves with no parameters, or rejects with an error.
    */
   @Cordova({ otherPromise: true })
-  delete(options: {
-    id: string,
-    storageType?: Number
-  }): Promise<any> {
+  delete(options: { id: string; storageType?: Number }): Promise<any> {
     return;
   }
 
@@ -188,9 +243,9 @@ export class IntelSecurityStorage {
    */
   @Cordova({ otherPromise: true })
   read(options: {
-    id: string,
-    storageType?: Number,
-    extraKey?: Number
+    id: string;
+    storageType?: Number;
+    extraKey?: Number;
   }): Promise<Number> {
     return;
   }
@@ -205,13 +260,12 @@ export class IntelSecurityStorage {
    */
   @Cordova({ otherPromise: true })
   write(options: {
-    id: String,
-    instanceID: Number,
-    storageType?: Number
+    id: String;
+    instanceID: Number;
+    storageType?: Number;
   }): Promise<any> {
     return;
   }
-
 }
 
 /**

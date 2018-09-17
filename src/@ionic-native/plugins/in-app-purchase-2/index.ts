@@ -387,8 +387,7 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * @param product {IAPProductOptions}
    */
   @Cordova({ sync: true })
-  register(product: IAPProductOptions): void {
-  }
+  register(product: IAPProductOptions): void {}
 
   /**
    *

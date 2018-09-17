@@ -13,9 +13,9 @@ export function initAngular1(plugins: any) {
       const serviceName = '$cordova' + name;
       const cls = plugins[name];
 
-      (function(serviceName, cls, name) {
+      ((serviceName, cls, name) => {
         ngModule.service(serviceName, [
-          function() {
+          () => {
             const funcs = window.angular.copy(cls);
             funcs.__proto__['name'] = name;
             return funcs;

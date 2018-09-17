@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaFunctionOverride,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 export interface ThreeDeeTouchQuickAction {
@@ -164,7 +159,7 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  configureQuickActions(quickActions: ThreeDeeTouchQuickAction[]): void {}
+  configureQuickActions(quickActions: ThreeDeeTouchQuickAction[]): void { }
 
   /**
    * When a home icon is pressed, your app launches and this JS callback is invoked.

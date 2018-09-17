@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-
-/* tslint:disable:no-irregular-whitespace */
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+/* tslint:disable */
 /**
  * @name In App Review
  * @description
@@ -26,6 +25,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * ```
  */
+/* tslint:enable */
 @Plugin({
   pluginName: 'InAppReview',
   plugin: 'com.omarben.inappreview',

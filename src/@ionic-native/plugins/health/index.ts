@@ -257,7 +257,7 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  requestAuthorization(datatypes: string[] | HealthDataType[]): Promise<any> {
+  requestAuthorization(datatypes: (string | HealthDataType)[]): Promise<any> {
     return;
   }
 
@@ -273,7 +273,7 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<boolean>} Returns a promise that resolves with a boolean that indicates the authorization status
    */
   @Cordova()
-  isAuthorized(datatypes: string[] | HealthDataType[]): Promise<boolean> {
+  isAuthorized(datatypes: (string | HealthDataType)[]): Promise<boolean> {
     return;
   }
 

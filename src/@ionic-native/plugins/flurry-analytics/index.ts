@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
-  checkAvailability,
   CordovaInstance,
   IonicNativePlugin,
-  Plugin
+  Plugin,
+  checkAvailability
 } from '@ionic-native/core';
 
 export interface FlurryAnalyticsOptions {

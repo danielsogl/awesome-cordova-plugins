@@ -57,7 +57,6 @@ export class JinsMeme extends IonicNativePlugin {
   setAppClientID(appClientId: string, clientSecret: string): Promise<any> {
     return;
   }
-
   /**
    * Starts scanning for JINS MEME.
    * @returns {Observable<any>}
@@ -70,7 +69,6 @@ export class JinsMeme extends IonicNativePlugin {
   startScan(): Observable<any> {
     return;
   }
-
   /**
    * Stops scanning JINS MEME.
    * @returns {Promise<any>}
@@ -79,7 +77,6 @@ export class JinsMeme extends IonicNativePlugin {
   stopScan(): Promise<any> {
     return;
   }
-
   /**
    * Establishes connection to JINS MEME.
    * @param {string} target
@@ -109,7 +106,6 @@ export class JinsMeme extends IonicNativePlugin {
   setAutoConnect(flag: boolean): Promise<any> {
     return;
   }
-
   /**
    * Returns whether a connection to JINS MEME has been established.
    * @returns {Promise<any>}
@@ -118,7 +114,6 @@ export class JinsMeme extends IonicNativePlugin {
   isConnected(): Promise<any> {
     return;
   }
-
   /**
    * Disconnects from JINS MEME.
    * @returns {Promise<any>}
@@ -127,7 +122,6 @@ export class JinsMeme extends IonicNativePlugin {
   disconnect(): Promise<any> {
     return;
   }
-
   /**
    * Starts receiving realtime data.
    * @returns {Observable<any>}
@@ -140,7 +134,6 @@ export class JinsMeme extends IonicNativePlugin {
   startDataReport(): Observable<any> {
     return;
   }
-
   /**
    * Stops receiving data.
    * @returns {Promise<any>}
@@ -149,7 +142,6 @@ export class JinsMeme extends IonicNativePlugin {
   stopDataReport(): Promise<any> {
     return;
   }
-
   /**
    * Returns SDK version.
    *
@@ -159,7 +151,6 @@ export class JinsMeme extends IonicNativePlugin {
   getSDKVersion(): Promise<any> {
     return;
   }
-
   /**
    * Returns JINS MEME connected with other apps.
    * @returns {Promise<any>}
@@ -168,7 +159,6 @@ export class JinsMeme extends IonicNativePlugin {
   getConnectedByOthers(): Promise<any> {
     return;
   }
-
   /**
    * Returns calibration status
    * @returns {Promise<any>}
@@ -177,7 +167,6 @@ export class JinsMeme extends IonicNativePlugin {
   isCalibrated(): Promise<any> {
     return;
   }
-
   /**
    * Returns device type.
    * @returns {Promise<any>}
@@ -186,7 +175,6 @@ export class JinsMeme extends IonicNativePlugin {
   getConnectedDeviceType(): Promise<any> {
     return;
   }
-
   /**
    * Returns hardware version.
    * @returns {Promise<any>}
@@ -195,7 +183,6 @@ export class JinsMeme extends IonicNativePlugin {
   getConnectedDeviceSubType(): Promise<any> {
     return;
   }
-
   /**
    * Returns FW Version.
    * @returns {Promise<any>}
@@ -204,7 +191,6 @@ export class JinsMeme extends IonicNativePlugin {
   getFWVersion(): Promise<any> {
     return;
   }
-
   /**
    * Returns HW Version.
    * @returns {Promise<any>}
@@ -213,7 +199,6 @@ export class JinsMeme extends IonicNativePlugin {
   getHWVersion(): Promise<any> {
     return;
   }
-
   /**
    * Returns response about whether data was received or not.
    * @returns {Promise<any>}

@@ -38,7 +38,7 @@ export interface TranscodeOptions {
   /** Number of audio channels. iOS only. Defaults to 2. */
   audioChannels?: number;
 
-  /** Sample rate for the audio. iOS only. Defaults to 44100 */
+  /* Sample rate for the audio. iOS only. Defaults to 44100*/
   audioSampleRate?: number;
 
   /** Sample rate for the audio. iOS only. Defaults to 128 kilobits (128000). */

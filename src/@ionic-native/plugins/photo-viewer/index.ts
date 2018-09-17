@@ -40,6 +40,5 @@ export class PhotoViewer extends IonicNativePlugin {
    * @param options {PhotoViewerOptions}
    */
   @Cordova({ sync: true })
-  show(url: string, title?: string, options?: PhotoViewerOptions): void {
-  }
+  show(url: string, title?: string, options?: PhotoViewerOptions): void {}
 }
