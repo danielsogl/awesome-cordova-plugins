@@ -16,7 +16,6 @@
     "member-access": false,
     "adjacent-overload-signatures": false,
     "no-angle-bracket-type-assertion": false,
-    "no-irregular-whitespace": false,
     "no-constant-condition": false
   }
 }
