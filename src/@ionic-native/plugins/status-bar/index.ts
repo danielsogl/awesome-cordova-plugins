@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {
   Cordova,
   CordovaProperty,
-  Plugin,
-  IonicNativePlugin
+  IonicNativePlugin,
+  Plugin
 } from '@ionic-native/core';
 
 /**

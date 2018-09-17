@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
-  Plugin,
   Cordova,
+  CordovaProperty,
   IonicNativePlugin,
-  CordovaProperty
+  Plugin
 } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 declare let window: any;

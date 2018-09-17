@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin, CordovaCheck } from '@ionic-native/core';
+import { Cordova, CordovaCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var chcp: any;

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
-  Plugin,
   Cordova,
   CordovaProperty,
-  IonicNativePlugin
+  IonicNativePlugin,
+  Plugin
 } from '@ionic-native/core';
 
 export interface PinterestUser {

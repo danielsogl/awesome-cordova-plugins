@@ -1,12 +1,12 @@
 import {
-  checkAvailability,
   CordovaCheck,
   CordovaInstance,
-  getPromise,
   InstanceCheck,
   InstanceProperty,
   IonicNativePlugin,
-  Plugin
+  Plugin,
+  checkAvailability,
+  getPromise
 } from '@ionic-native/core';
 
 declare const window: any, navigator: any;

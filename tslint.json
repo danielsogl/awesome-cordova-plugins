@@ -1,7 +1,6 @@
 {
   "extends": ["tslint-ionic-rules"],
   "rules": {
-    "ordered-imports": false,
     "no-empty": false,
     "no-import-side-effect": false,
     "no-redundant-jsdoc": false,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export type IMakePayments =
   | 'This device can make payments and has a supported card'

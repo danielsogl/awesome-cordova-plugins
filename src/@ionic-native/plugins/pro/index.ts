@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaCheck, CordovaInstance, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaCheck, CordovaInstance, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**

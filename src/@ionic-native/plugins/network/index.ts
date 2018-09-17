@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
   Cordova,
-  CordovaProperty,
-  Plugin,
   CordovaCheck,
-  IonicNativePlugin
+  CordovaProperty,
+  IonicNativePlugin,
+  Plugin
 } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { merge } from 'rxjs/observable/merge';

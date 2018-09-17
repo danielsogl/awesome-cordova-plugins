@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, CordovaProperty, IonicNativePlugin } from '@ionic-native/core';
+import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Uid
