@@ -183,41 +183,41 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
  * ```
  */
 export function Plugin(config: PluginConfig): ClassDecorator {
-  return function(cls: any) {
+  return (cls: any) => {
     // Add these fields to the class
     for (const prop in config) {
       cls[prop] = config[prop];
     }
 
-    cls['installed'] = function(printWarning?: boolean) {
+    cls['installed'] = (printWarning?: boolean) => {
       return !!getPlugin(config.pluginRef);
     };
 
-    cls['getPlugin'] = function() {
+    cls['getPlugin'] = () => {
       return getPlugin(config.pluginRef);
     };
 
-    cls['checkInstall'] = function() {
+    cls['checkInstall'] = () => {
       return checkAvailability(cls) === true;
     };
 
-    cls['getPluginName'] = function() {
+    cls['getPluginName'] = () => {
       return config.pluginName;
     };
 
-    cls['getPluginRef'] = function() {
+    cls['getPluginRef'] = () => {
       return config.pluginRef;
     };
 
-    cls['getPluginInstallName'] = function() {
+    cls['getPluginInstallName'] = () => {
       return config.plugin;
     };
 
-    cls['getPluginRepo'] = function() {
+    cls['getPluginRepo'] = () => {
       return config.repo;
     };
 
-    cls['getSupportedPlatforms'] = function() {
+    cls['getSupportedPlatforms'] = () => {
       return config.platforms;
     };
 
