@@ -61,61 +61,71 @@ export class WebIntent extends IonicNativePlugin {
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty() ACTION_SEND: string;
+  @CordovaProperty()
+  ACTION_SEND: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty() ACTION_VIEW: string;
+  @CordovaProperty()
+  ACTION_VIEW: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty() EXTRA_TEXT: string;
+  @CordovaProperty()
+  EXTRA_TEXT: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty() EXTRA_SUBJECT: string;
+  @CordovaProperty()
+  EXTRA_SUBJECT: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty() EXTRA_STREAM: string;
+  @CordovaProperty()
+  EXTRA_STREAM: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty() EXTRA_EMAIL: string;
+  @CordovaProperty()
+  EXTRA_EMAIL: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty() ACTION_CALL: string;
+  @CordovaProperty()
+  ACTION_CALL: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty() ACTION_SENDTO: string;
+  @CordovaProperty()
+  ACTION_SENDTO: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty() ACTION_GET_CONTENT: string;
+  @CordovaProperty()
+  ACTION_GET_CONTENT: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty() ACTION_PICK: string;
+  @CordovaProperty()
+  ACTION_PICK: string;
 
   /**
    * Launches an Android intent
@@ -235,7 +245,7 @@ export class WebIntent extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  sendResult({ extras: {}}): Promise<any> {
+  sendResult({ extras: {} }): Promise<any> {
     return;
   }
 }
