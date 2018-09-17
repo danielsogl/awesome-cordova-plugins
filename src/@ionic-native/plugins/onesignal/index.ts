@@ -669,6 +669,13 @@ export class OneSignal extends IonicNativePlugin {
   setLogLevel(logLevel: { logLevel: number; visualLevel: number }): void {}
 
   /**
+   * Disable or enable location collection (Defaults to enabled) if your app has location permission.
+   * @param shared {boolean}
+   */
+  @Cordova({ sync: true })
+  setLocationShared(shared: boolean): void {}
+
+  /**
    * The passed in function will be fired when a notification permission setting changes.
    * This includes the following events:
    * - Notification permission prompt shown
