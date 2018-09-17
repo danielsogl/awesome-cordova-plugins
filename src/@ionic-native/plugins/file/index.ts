@@ -1361,7 +1361,7 @@ export class File extends IonicNativePlugin {
   resolveDirectoryUrl(directoryUrl: string): Promise<DirectoryEntry> {
     return this.resolveLocalFilesystemUrl(directoryUrl).then(de => {
       if (de.isDirectory) {
-        return <DirectoryEntry>de;
+        return de as DirectoryEntry;
       } else {
         const err = new FileError(13);
         err.message = 'input is not a directory';
@@ -1449,6 +1449,7 @@ export class File extends IonicNativePlugin {
         return getPromise<T>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
+              /* tslint:disable:no-angle-bracket-type-assertion */
               resolve(<T>(<any>reader.result));
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);

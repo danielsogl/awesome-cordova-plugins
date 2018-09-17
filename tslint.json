@@ -12,7 +12,6 @@
     "ter-no-proto": false,
     "callable-types": false,
     "adjacent-overload-signatures": false,
-    "no-angle-bracket-type-assertion": false,
     "no-constant-condition": false
   }
 }

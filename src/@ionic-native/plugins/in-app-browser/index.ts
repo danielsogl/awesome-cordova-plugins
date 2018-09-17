@@ -134,7 +134,7 @@ export class InAppBrowserObject {
     try {
       if (options && typeof options !== 'string') {
         options = Object.keys(options)
-          .map((key: string) => `${key}=${(<InAppBrowserOptions>options)[key]}`)
+          .map((key: string) => `${key}=${(options as InAppBrowserOptions)[key]}`)
           .join(',');
       }
 
