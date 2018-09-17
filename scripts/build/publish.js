@@ -1,6 +1,6 @@
 'use strict';
 // Node module dependencies
-const fs = require('fs-extra-promise').useFs(require('fs-extra')),
+const fs = require('fs-extra'),
   queue = require('queue'),
   path = require('path'),
   exec = require('child-process-promise').exec;
@@ -10,7 +10,7 @@ const ROOT = path.resolve(path.join(__dirname, '../../')),
 
 const FLAGS = '--access public'; // add any flags here if you want... (example: --tag alpha)
 
-const PACKAGES = fs.readdirSync(DIST);
+const PACKAGES = fs.readdir(DIST);
 
 const failedPackages = [];
 
