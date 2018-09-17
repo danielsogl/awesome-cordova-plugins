@@ -17,7 +17,7 @@
 
 ```
 $ <@ if prop.install @><$ prop.install $><@ else @>ionic cordova plugin add <$ prop.plugin $><@ endif @>
-$ npm install --save @ionic-native/<$ doc.npmId $>
+$ npm install @ionic-native/<$ doc.npmId $>@beta
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/native/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/')|replace('index.ts','')|replace('src/@ionic-native/plugins/','') $>)
