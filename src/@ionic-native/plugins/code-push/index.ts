@@ -189,18 +189,18 @@ declare class AcquisitionStatus {
 
 declare class AcquisitionManager {
   constructor(httpRequester: Http.Requester, configuration: Configuration);
-  public queryUpdateWithCurrentPackage(
+  queryUpdateWithCurrentPackage(
     currentPackage: IPackage,
     callback?: Callback<IRemotePackage | NativeUpdateNotification>
   ): void;
-  public reportStatusDeploy(
+  reportStatusDeploy(
     pkg?: IPackage,
     status?: string,
     previousLabelOrAppVersion?: string,
     previousDeploymentKey?: string,
     callback?: Callback<void>
   ): void;
-  public reportStatusDownload(pkg: IPackage, callback?: Callback<void>): void;
+  reportStatusDownload(pkg: IPackage, callback?: Callback<void>): void;
 }
 
 interface CodePushCordovaPlugin {
