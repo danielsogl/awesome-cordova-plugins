@@ -45,7 +45,6 @@
     "dgeni": "^0.4.10",
     "dgeni-packages": "0.16.10",
     "fs-extra": "^7.0.0",
-    "fs-extra-promise": "^1.0.1",
     "gulp": "3.9.1",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
