@@ -43,13 +43,14 @@ export interface IPedometerData {
 })
 @Injectable()
 export class Pedometer extends IonicNativePlugin {
-
   /**
    * Checks if step counting is available. Only works on iOS.
    * @return {Promise<boolean>} Returns a promise that resolves when feature is supported (true) or not supported (false)
    */
   @Cordova()
-  isStepCountingAvailable(): Promise<boolean> { return; }
+  isStepCountingAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Distance estimation indicates the ability to use step information to supply the approximate distance travelled by the user.
@@ -58,7 +59,9 @@ export class Pedometer extends IonicNativePlugin {
    * @return {Promise<boolean>} Returns a promise that resolves when feature is supported (true) or not supported (false)
    */
   @Cordova()
-  isDistanceAvailable(): Promise<boolean> { return; }
+  isDistanceAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Floor counting indicates the ability to count the number of floors the user walks up or down using stairs.
@@ -67,27 +70,33 @@ export class Pedometer extends IonicNativePlugin {
    * @return {Promise<boolean>} Returns a promise that resolves when feature is supported (true) or not supported (false)
    */
   @Cordova()
-  isFloorCountingAvailable(): Promise<boolean> { return; }
+  isFloorCountingAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
-  * Starts the delivery of recent pedestrian-related data to your Cordova app.
-  *
-  * When the app is suspended, the delivery of updates stops temporarily.
-  * Upon returning to foreground or background execution, the pedometer object begins updates again.
-  * @return {Observable<IPedometerData>} Returns a Observable that recieves repeatly data from pedometer in background.
-  */
+   * Starts the delivery of recent pedestrian-related data to your Cordova app.
+   *
+   * When the app is suspended, the delivery of updates stops temporarily.
+   * Upon returning to foreground or background execution, the pedometer object begins updates again.
+   * @return {Observable<IPedometerData>} Returns a Observable that recieves repeatly data from pedometer in background.
+   */
   @Cordova({
     observable: true,
     clearFunction: 'stopPedometerUpdates'
   })
-  startPedometerUpdates(): Observable<IPedometerData> { return; }
+  startPedometerUpdates(): Observable<IPedometerData> {
+    return;
+  }
 
   /**
    * Stops the delivery of recent pedestrian data updates to your Cordova app.
    * @return {Promise<boolean>} Returns a promise that resolves when pedometer watching was stopped
    */
   @Cordova()
-  stopPedometerUpdates(): Promise<any> { return; }
+  stopPedometerUpdates(): Promise<any> {
+    return;
+  }
 
   /**
    * Retrieves the data between the specified start and end dates.
@@ -100,6 +109,10 @@ export class Pedometer extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  queryData(options: { startDate: Date, endDate: Date }): Promise<IPedometerData> { return; }
-
+  queryData(options: {
+    startDate: Date;
+    endDate: Date;
+  }): Promise<IPedometerData> {
+    return;
+  }
 }

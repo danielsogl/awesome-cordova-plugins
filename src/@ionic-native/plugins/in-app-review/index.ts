@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-
+/* tslint:disable */
 /**
  * @name In App Review
  * @description
@@ -25,6 +25,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * ```
  */
+/* tslint:enable */
 @Plugin({
   pluginName: 'InAppReview',
   plugin: 'com.omarben.inappreview',
@@ -34,7 +35,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class InAppReview extends IonicNativePlugin {
-
   /**
    * Open the inApp review popup
    * @return {Promise<any>} Returns a promise that resolves when something happens
@@ -43,5 +43,4 @@ export class InAppReview extends IonicNativePlugin {
   requestReview(): Promise<any> {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
-
 }

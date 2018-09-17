@@ -45,6 +45,6 @@ export class Vibration extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  vibrate(time: number | Array<number>) { }
+  vibrate(time: number | number[]) { }
 
 }

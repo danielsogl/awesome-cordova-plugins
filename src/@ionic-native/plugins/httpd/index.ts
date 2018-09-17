@@ -56,7 +56,6 @@ export interface HttpdOptions {
 })
 @Injectable()
 export class Httpd extends IonicNativePlugin {
-
   /**
    * Starts a web server.
    * @param options {HttpdOptions}
@@ -66,20 +65,25 @@ export class Httpd extends IonicNativePlugin {
     observable: true,
     clearFunction: 'stopServer'
   })
-  startServer(options?: HttpdOptions): Observable<string> { return; }
+  startServer(options?: HttpdOptions): Observable<string> {
+    return;
+  }
 
   /**
    * Gets the URL of the running server
    * @returns {Promise<string>} Returns a promise that resolves with the URL of the web server.
    */
   @Cordova()
-  getUrl(): Promise<string> { return; }
+  getUrl(): Promise<string> {
+    return;
+  }
 
   /**
    * Get the local path of the running webserver
    * @returns {Promise<string>} Returns a promise that resolves with the local path of the web server.
-    */
+   */
   @Cordova()
-  getLocalPath(): Promise<string> { return; }
-
+  getLocalPath(): Promise<string> {
+    return;
+  }
 }

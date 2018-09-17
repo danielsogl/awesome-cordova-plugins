@@ -63,7 +63,7 @@ export interface AppsflyerInviteOptions {
  * this.appsflyer.initSdk(options);
  *
  * ```
- * 
+ *
  * @interfaces
  * AppsflyerOptions
  * AppsflyerEvent

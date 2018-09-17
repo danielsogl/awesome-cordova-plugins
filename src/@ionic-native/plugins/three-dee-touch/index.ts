@@ -59,9 +59,9 @@ export interface ThreeDeeTouchForceTouch {
  * @name 3D Touch
  * @description
  * The 3D Touch plugin adds 3D Touch capabilities to your Cordova app.
- * 
+ *
  * Requires Cordova plugin: `cordova-plugin-3dtouch`. For more info, please see the [3D Touch plugin docs](https://github.com/EddyVerbruggen/cordova-plugin-3dtouch).
- * 
+ *
  * @usage
  * Please do refer to the original plugin's repo for detailed usage. The usage example here might not be sufficient.
  * ```typescript
@@ -160,7 +160,7 @@ export class ThreeDeeTouch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  configureQuickActions(quickActions: Array<ThreeDeeTouchQuickAction>): void { }
+  configureQuickActions(quickActions: ThreeDeeTouchQuickAction[]): void { }
 
   /**
    * When a home icon is pressed, your app launches and this JS callback is invoked.

@@ -133,7 +133,7 @@ describe('Regular Decorators', () => {
       delete window.testPlugin;
       window.cordova = true;
 
-      expect(<any>plugin.pingSync()).toEqual(ERR_PLUGIN_NOT_INSTALLED);
+      expect(plugin.pingSync() as any).toEqual(ERR_PLUGIN_NOT_INSTALLED);
 
       plugin.ping().catch(e => {
         expect(e).toEqual(ERR_PLUGIN_NOT_INSTALLED.error);
@@ -145,7 +145,7 @@ describe('Regular Decorators', () => {
     it('should throw cordova_not_available error', (done: Function) => {
       delete window.testPlugin;
 
-      expect(<any>plugin.pingSync()).toEqual(ERR_CORDOVA_NOT_AVAILABLE);
+      expect(plugin.pingSync() as any).toEqual(ERR_CORDOVA_NOT_AVAILABLE);
 
       plugin.ping().catch(e => {
         expect(e).toEqual(ERR_CORDOVA_NOT_AVAILABLE.error);

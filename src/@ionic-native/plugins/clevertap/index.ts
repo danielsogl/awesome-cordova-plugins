@@ -11,7 +11,7 @@ declare var clevertap: any;
  * @usage
  * ```typescript
  * import { CleverTap } from '@ionic-native/clevertap';
-
+ *
  * constructor(private clevertap: CleverTap) { }
  *
  * ```

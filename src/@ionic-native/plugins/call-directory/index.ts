@@ -7,8 +7,8 @@ export interface CallDirectoryItem {
 }
 
 export interface CallDirectoryLog {
-  plugin: Array<string>;
-  extension: Array<string>;
+  plugin: string[];
+  extension: string[];
 }
 
 /**
@@ -66,7 +66,7 @@ export class CallDirectory extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when numbers are added
    */
   @Cordova()
-  addIdentification(items: Array<CallDirectoryItem>): Promise<any> {
+  addIdentification(items: CallDirectoryItem[]): Promise<any> {
     return;
   }
 
@@ -76,7 +76,7 @@ export class CallDirectory extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when numbers are removed
    */
   @Cordova()
-  removeIdentification(items: Array<CallDirectoryItem>): Promise<any> {
+  removeIdentification(items: CallDirectoryItem[]): Promise<any> {
     return;
   }
 
@@ -94,7 +94,7 @@ export class CallDirectory extends IonicNativePlugin {
    * @return {Array<CallDirectoryItem>} Returns a promise that resolves with an array of all items
    */
   @Cordova()
-  getAllItems(): Promise<Array<CallDirectoryItem>> {
+  getAllItems(): Promise<CallDirectoryItem[]> {
     return;
   }
 

@@ -95,7 +95,7 @@ export interface UserInfo {
 export class MSAdal extends IonicNativePlugin {
   createAuthenticationContext(
     authority: string,
-    validateAuthority: boolean = true
+    validateAuthority = true
   ) {
     let authContext: any;
     if (

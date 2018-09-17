@@ -14,8 +14,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * private secureKey: string;
  * private secureIV: string;
- * 
- * constructor(private aes256: AES256) { 
+ *
+ * constructor(private aes256: AES256) {
  *    this.generateSecureKeyAndIV(); // To generate the random secureKey and secureIV
  * }
  *
@@ -34,16 +34,16 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *   .then(res => console.log('Decrypted Data : ',res))
  *   .catch((error: any) => console.error(error));
  *
- * 
+ *
  * * this.aes256.generateSecureKey('random password 12345')
  *   .then(res => console.log('Secure Key : ',res))
  *   .catch((error: any) => console.error(error));
- * 
- * 
+ *
+ *
  * * this.aes256.generateSecureIV('random password 12345')
  *   .then(res => console.log('Secure IV : ',res))
  *   .catch((error: any) => console.error(error));
- * 
+ *
  * ```
  */
 @Plugin({

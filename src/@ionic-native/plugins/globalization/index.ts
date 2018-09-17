@@ -134,7 +134,7 @@ export class Globalization extends IonicNativePlugin {
   getDateNames(options: {
     type: string;
     item: string;
-  }): Promise<{ value: Array<string> }> {
+  }): Promise<{ value: string[] }> {
     return;
   }
 

@@ -21,12 +21,12 @@ export interface TextCaptureOptions {
    * for example: ["English", "French", "German"]. Empty array
    * disables language selection.
    */
-  selectableRecognitionLanguages?: Array<string>;
+  selectableRecognitionLanguages?: string[];
 
   /**
    * Recognition language selected by default.
    */
-  recognitionLanguages?: Array<string>;
+  recognitionLanguages?: string[];
 
   /**
    * Width and height of the recognition area, separated by a
@@ -75,7 +75,7 @@ export interface TextCaptureResult {
    * · rect (string): position and size of the bounding rectangle,
    *   a string of 4 integers separated with whitespaces ("x y width height").
    */
-  textLines: Array<{ text: string, quadrangle: string, rect?: string }>;
+  textLines: { text: string, quadrangle: string, rect?: string }[];
 
   /**
    * Additional information. This object has the following keys:
@@ -94,7 +94,7 @@ export interface TextCaptureResult {
     stabilityStatus: string,
     userAction: string,
     frameSize: string,
-    recognitionLanguages: Array<string>
+    recognitionLanguages: string[]
   };
 
   /**
@@ -136,8 +136,8 @@ export interface DataCaptureOptions {
   customDataCaptureScenario?: {
     name: string,
     description: string,
-    recognitionLanguages: Array<string>,
-    fields: Array<{ regEx: string }>
+    recognitionLanguages: string[],
+    fields: { regEx: string }[]
   };
 
   /**

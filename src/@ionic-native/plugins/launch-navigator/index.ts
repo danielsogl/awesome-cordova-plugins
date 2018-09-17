@@ -223,13 +223,13 @@ export interface UserPrompted {
    * Sets flag indicating user has already been prompted whether to remember their choice a preferred navigator app.
    * @param callback - function to call once operation is complete.
    */
-  set: ( callback: () => void) => void;
+  set: (callback: () => void) => void;
 
   /**
    * Clears flag which indicates if user has already been prompted whether to remember their choice a preferred navigator app.
    * @param callback - function to call once operation is complete.
    */
-  clear: ( callback: () => void) => void;
+  clear: (callback: () => void) => void;
 }
 
 export interface AppSelection {

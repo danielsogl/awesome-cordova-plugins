@@ -105,7 +105,7 @@ function setIndex(
     opts.successName &&
     opts.errorName
   ) {
-    let obj: any = {};
+    const obj: any = {};
     obj[opts.successName] = resolve;
     obj[opts.errorName] = reject;
     args.push(obj);

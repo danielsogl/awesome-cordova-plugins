@@ -110,17 +110,17 @@ export class ProDeploy {
  *
  *
  * constructor(private pro: Pro) { }
- * 
+ *
  * // Get app info
  * this.pro.getAppInfo().then((res: AppInfo) => {
  *   console.log(res)
  * })
- * 
+ *
  * // Get live update info
  * this.pro.deploy.info().then((res: DeployInfo) => {
  *   console.log(res)
  * })
- * ``` 
+ * ```
  */
 @Plugin({
   pluginName: 'Pro',

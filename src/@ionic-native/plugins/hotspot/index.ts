@@ -203,7 +203,7 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<Array<HotspotDevice>>}
    */
   @Cordova()
-  getAllHotspotDevices(): Promise<Array<HotspotDevice>> { return; }
+  getAllHotspotDevices(): Promise<HotspotDevice[]> { return; }
 
   /**
    * Connect to a WiFi network
@@ -235,7 +235,7 @@ export class Hotspot extends IonicNativePlugin {
    *      Promise that connection to the WiFi network was successfull, rejected if unsuccessful
    */
   @Cordova()
-  connectToWifiAuthEncrypt(ssid: string, password: string, authentication: string, encryption: Array<string>): Promise<void> { return; }
+  connectToWifiAuthEncrypt(ssid: string, password: string, authentication: string, encryption: string[]): Promise<void> { return; }
 
   /**
    * Add a WiFi network
@@ -299,13 +299,13 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<Array<HotspotNetwork>>}
    */
   @Cordova()
-  scanWifi(): Promise<Array<HotspotNetwork>> { return; }
+  scanWifi(): Promise<HotspotNetwork[]> { return; }
 
   /**
    * @returns {Promise<Array<HotspotNetwork>>}
    */
   @Cordova()
-  scanWifiByLevel(): Promise<Array<HotspotNetwork>> { return; }
+  scanWifiByLevel(): Promise<HotspotNetwork[]> { return; }
 
   /**
    * @returns {Promise<any>}

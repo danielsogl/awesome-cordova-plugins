@@ -33,7 +33,7 @@ export interface CameraOptions {
   /**
    * Width in pixels to scale image. Must be used with targetHeight.
    * Aspect ratio remains constant.
-  */
+   */
   targetWidth?: number;
   /**
    * Height in pixels to scale image. Must be used with targetWidth.
@@ -165,7 +165,6 @@ export enum Direction {
 })
 @Injectable()
 export class Camera extends IonicNativePlugin {
-
   /**
    * Constant for possible destination types
    */
@@ -200,7 +199,6 @@ export class Camera extends IonicNativePlugin {
     ALLMEDIA: 2
   };
 
-
   /**
    * Convenience constant
    */
@@ -212,7 +210,6 @@ export class Camera extends IonicNativePlugin {
     /** Choose image from picture library (same as PHOTOLIBRARY for Android) */
     SAVEDPHOTOALBUM: 2
   };
-
 
   /**
    * Convenience constant
@@ -243,7 +240,9 @@ export class Camera extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getPicture(options?: CameraOptions): Promise<any> { return; }
+  getPicture(options?: CameraOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
@@ -253,6 +252,7 @@ export class Camera extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS']
   })
-  cleanup(): Promise<any> { return; };
-
+  cleanup(): Promise<any> {
+    return;
+  }
 }

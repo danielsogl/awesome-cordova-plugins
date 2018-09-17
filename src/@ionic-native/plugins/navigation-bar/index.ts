@@ -32,7 +32,7 @@ export class NavigationBar extends IonicNativePlugin {
 
   /**
    * hide automatically (or not) the navigation bar.
-   * @param autohide {boolean}  
+   * @param autohide {boolean}
    * @return {Promise<any>}
    */
   @Cordova({
@@ -43,7 +43,7 @@ export class NavigationBar extends IonicNativePlugin {
   setUp(autohide?: boolean): Promise<any> { return; }
 
   /**
-   * Hide the navigation bar. 
+   * Hide the navigation bar.
    * @return {Promise<any>}
    */
   @Cordova({

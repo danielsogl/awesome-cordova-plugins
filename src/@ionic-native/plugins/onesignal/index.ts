@@ -325,10 +325,10 @@ export enum OSActionType {
  *
  * ```
  * #!/usr/bin/env node
-
+ *
  * var fs = require('fs');
  * var path = require('path');
-
+ *
  * var filestocopy = [{
  *     "resources/android/icon/drawable-hdpi-icon.png":
  *         "platforms/android/res/drawable-hdpi/ic_stat_onesignal_default.png"
@@ -345,12 +345,12 @@ export enum OSActionType {
  *     "resources/android/icon/drawable-xxxhdpi-icon.png":
  *         "platforms/android/res/drawable-xxxhdpi/ic_stat_onesignal_default.png"
  * } ];
-
+ *
  * module.exports = function(context) {
-
+ *
  *     // no need to configure below
  *     var rootdir = context.opts.projectRoot;
-
+ *
  *     filestocopy.forEach(function(obj) {
  *         Object.keys(obj).forEach(function(key) {
  *             var val = obj[key];
@@ -364,7 +364,7 @@ export enum OSActionType {
  *             }
  *         });
  *     });
-
+ *
  * };
  * ```
  *
@@ -660,7 +660,7 @@ export class OneSignal extends IonicNativePlugin {
   /**
    * Enable logging to help debug if you run into an issue setting up OneSignal.
    * The logging levels are as follows: 0 = None, 1= Fatal, 2 = Errors, 3 = Warnings, 4 = Info, 5 = Debug, 6 = Verbose
-
+   *
    * The higher the value the more information is shown.
    *
    * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)

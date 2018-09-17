@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, IonicNativePlugin } from '@ionic-native/core';
+import {
+  Plugin,
+  Cordova,
+  CordovaProperty,
+  IonicNativePlugin
+} from '@ionic-native/core';
 
 export interface PinterestUser {
   /**
@@ -172,13 +177,13 @@ export interface PinterestPin {
   plugin: 'cordova-plugin-pinterest',
   pluginRef: 'cordova.plugins.Pinterest',
   repo: 'https://github.com/zyramedia/cordova-plugin-pinterest',
-  install: 'ionic cordova plugin add cordova-plugin-pinterest --variable APP_ID=YOUR_APP_ID',
+  install:
+    'ionic cordova plugin add cordova-plugin-pinterest --variable APP_ID=YOUR_APP_ID',
   installVariables: ['APP_ID'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Pinterest extends IonicNativePlugin {
-
   /**
    * Convenience constant for authentication scopes
    */
@@ -196,7 +201,9 @@ export class Pinterest extends IonicNativePlugin {
    * @returns {Promise<any>} The response object will contain the user's profile data, as well as the access token (if you need to use it elsewhere, example: send it to your server and perform actions on behalf of the user).
    */
   @Cordova()
-  login(scopes: string[]): Promise<any> { return; }
+  login(scopes: string[]): Promise<any> {
+    return;
+  }
 
   /**
    * Gets the authenticated user's profile
@@ -206,7 +213,9 @@ export class Pinterest extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getMe(fields?: string): Promise<PinterestUser> { return; }
+  getMe(fields?: string): Promise<PinterestUser> {
+    return;
+  }
 
   /**
    *
@@ -217,7 +226,9 @@ export class Pinterest extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getMyPins(fields?: string, limit?: number): Promise<Array<PinterestPin>> { return; }
+  getMyPins(fields?: string, limit?: number): Promise<PinterestPin[]> {
+    return;
+  }
 
   /**
    *
@@ -228,7 +239,9 @@ export class Pinterest extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getMyBoards(fields?: string, limit?: number): Promise<Array<PinterestBoard>> { return; }
+  getMyBoards(fields?: string, limit?: number): Promise<PinterestBoard[]> {
+    return;
+  }
 
   /**
    * Get the authenticated user's likes.
@@ -239,7 +252,9 @@ export class Pinterest extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getMyLikes(fields?: string, limit?: number): Promise<Array<PinterestPin>> { return; }
+  getMyLikes(fields?: string, limit?: number): Promise<PinterestPin[]> {
+    return;
+  }
 
   /**
    * Get the authenticated user's followers.
@@ -250,7 +265,12 @@ export class Pinterest extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getMyFollowers(fields?: string, limit?: number): Promise<Array<PinterestUser>> { return; }
+  getMyFollowers(
+    fields?: string,
+    limit?: number
+  ): Promise<PinterestUser[]> {
+    return;
+  }
 
   /**
    * Get the authenticated user's followed boards.
@@ -261,7 +281,12 @@ export class Pinterest extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getMyFollowedBoards(fields?: string, limit?: number): Promise<Array<PinterestBoard>> { return; }
+  getMyFollowedBoards(
+    fields?: string,
+    limit?: number
+  ): Promise<PinterestBoard[]> {
+    return;
+  }
 
   /**
    * Get the authenticated user's followed interests.
@@ -272,7 +297,9 @@ export class Pinterest extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getMyFollowedInterests(fields?: string, limit?: number): Promise<any> { return; }
+  getMyFollowedInterests(fields?: string, limit?: number): Promise<any> {
+    return;
+  }
 
   /**
    * Get a user's profile.
@@ -284,7 +311,9 @@ export class Pinterest extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  getUser(username: string, fields?: string): Promise<PinterestUser> { return; }
+  getUser(username: string, fields?: string): Promise<PinterestUser> {
+    return;
+  }
 
   /**
    * Get a board's data.
@@ -296,7 +325,9 @@ export class Pinterest extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  getBoard(boardId: string, fields?: string): Promise<PinterestBoard> { return; }
+  getBoard(boardId: string, fields?: string): Promise<PinterestBoard> {
+    return;
+  }
 
   /**
    * Get Pins of a specific board.
@@ -309,7 +340,13 @@ export class Pinterest extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  getBoardPins(boardId: string, fields?: string, limit?: number): Promise<Array<PinterestPin>> { return; }
+  getBoardPins(
+    boardId: string,
+    fields?: string,
+    limit?: number
+  ): Promise<PinterestPin[]> {
+    return;
+  }
 
   /**
    * Delete a board.
@@ -317,7 +354,9 @@ export class Pinterest extends IonicNativePlugin {
    * @returns {Promise<PinterestUser>}
    */
   @Cordova()
-  deleteBoard(boardId: string): Promise<any> { return; }
+  deleteBoard(boardId: string): Promise<any> {
+    return;
+  }
 
   /**
    * Create a new board for the authenticated user.
@@ -329,7 +368,9 @@ export class Pinterest extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 3
   })
-  createBoard(name: string, desc?: string): Promise<PinterestBoard> { return; }
+  createBoard(name: string, desc?: string): Promise<PinterestBoard> {
+    return;
+  }
 
   /**
    * Get a Pin by ID.
@@ -341,7 +382,9 @@ export class Pinterest extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  getPin(pinId: string, fields?: string): Promise<PinterestPin> { return; }
+  getPin(pinId: string, fields?: string): Promise<PinterestPin> {
+    return;
+  }
 
   /**
    * Deletes a pin
@@ -349,7 +392,9 @@ export class Pinterest extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  deletePin(pinId: string): Promise<any> { return; }
+  deletePin(pinId: string): Promise<any> {
+    return;
+  }
 
   /**
    * Creates a Pin
@@ -363,6 +408,12 @@ export class Pinterest extends IonicNativePlugin {
     successIndex: 4,
     errorIndex: 5
   })
-  createPin(note: string, boardId: string, imageUrl: string, link?: string): Promise<PinterestPin> { return; }
-
+  createPin(
+    note: string,
+    boardId: string,
+    imageUrl: string,
+    link?: string
+  ): Promise<PinterestPin> {
+    return;
+  }
 }

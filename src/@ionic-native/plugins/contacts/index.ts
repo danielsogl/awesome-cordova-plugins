@@ -117,8 +117,8 @@ export class Contact implements IContactProperties {
 
   @InstanceCheck()
   clone(): Contact {
-    let newContact: any = new Contact();
-    for (let prop in this) {
+    const newContact: any = new Contact();
+    for (const prop in this) {
       if (prop === 'id') return;
       newContact[prop] = this[prop];
     }
@@ -403,8 +403,8 @@ export class Contacts extends IonicNativePlugin {
  * @hidden
  */
 function processContact(contact: any) {
-  let newContact = new Contact();
-  for (let prop in contact) {
+  const newContact = new Contact();
+  for (const prop in contact) {
     if (typeof contact[prop] === 'function') continue;
     newContact[prop] = contact[prop];
   }

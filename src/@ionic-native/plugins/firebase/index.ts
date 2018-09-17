@@ -320,7 +320,7 @@ export class Firebase extends IonicNativePlugin {
   })
   verifyPhoneNumber(
     phoneNumber: string,
-    timeoutDuration: number = 0
+    timeoutDuration = 0
   ): Promise<any> {
     return;
   }

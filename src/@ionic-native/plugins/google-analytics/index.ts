@@ -20,7 +20,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  * this.ga.startTrackerWithId('YOUR_TRACKER_ID')
  *    .then(() => {
  *      console.log('Google analytics is ready now');
-        this.ga.trackView('test');
+ *       this.ga.trackView('test');
  *      // Tracker is ready
  *      // You can now track pages or set additional information such as AppVersion or UserId
  *    })

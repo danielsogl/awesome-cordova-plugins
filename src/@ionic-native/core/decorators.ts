@@ -116,7 +116,7 @@ export function InstanceCheck(opts: CordovaCheckOptions = {}) {
     descriptor: TypedPropertyDescriptor<any>
   ): TypedPropertyDescriptor<any> => {
     return {
-      value: function(...args: any[]): any {
+      value(...args: any[]): any {
         if (instanceAvailability(this)) {
           return descriptor.value.apply(this, args);
         } else {
@@ -145,7 +145,7 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
     descriptor: TypedPropertyDescriptor<any>
   ): TypedPropertyDescriptor<any> => {
     return {
-      value: function(...args: any[]): any {
+      value(...args: any[]): any {
         const check = checkAvailability(pluginObj);
         if (check === true) {
           return descriptor.value.apply(this, args);
@@ -185,7 +185,7 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
 export function Plugin(config: PluginConfig): ClassDecorator {
   return function(cls: any) {
     // Add these fields to the class
-    for (let prop in config) {
+    for (const prop in config) {
       cls[prop] = config[prop];
     }
 
@@ -238,7 +238,7 @@ export function Cordova(opts: CordovaOptions = {}) {
     descriptor: TypedPropertyDescriptor<any>
   ) => {
     return {
-      value: function(...args: any[]) {
+      value(...args: any[]) {
         return wrap(this, methodName, opts).apply(this, args);
       },
       enumerable: true
@@ -254,7 +254,7 @@ export function Cordova(opts: CordovaOptions = {}) {
 export function CordovaInstance(opts: CordovaOptions = {}) {
   return (target: Object, methodName: string) => {
     return {
-      value: function(...args: any[]) {
+      value(...args: any[]) {
         return wrapInstance(this, methodName, opts).apply(this, args);
       },
       enumerable: true
@@ -295,10 +295,10 @@ export function CordovaProperty(target: any, key: string) {
 export function InstanceProperty(target: any, key: string) {
   Object.defineProperty(target, key, {
     enumerable: true,
-    get: function() {
+    get() {
       return this._objectInstance[key];
     },
-    set: function(value) {
+    set(value) {
       this._objectInstance[key] = value;
     }
   });
@@ -317,7 +317,7 @@ export function CordovaFunctionOverride(opts: any = {}) {
     descriptor: TypedPropertyDescriptor<any>
   ) => {
     return {
-      value: function(...args: any[]) {
+      value(...args: any[]) {
         return overrideFunction(this, methodName, opts);
       },
       enumerable: true

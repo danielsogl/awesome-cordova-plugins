@@ -108,7 +108,6 @@ export interface ImageObj {
   openCashDrawer?: boolean;
 }
 export interface PrintCommand {
-
   /**
    * Characther encoding is used to getByte data from all subsequent commands. Default 'US-ASCII'
    * Choose the format of the return value Defined in StarPRNT.Encoding or the Encoding enum.
@@ -137,13 +136,13 @@ export interface PrintCommand {
    * Data (Command) is added to the command buffer. Takes an array of bytes.
    * Example: {appendBytes:[0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x2e]}
    */
-  appendBytes?: Array<number>;
+  appendBytes?: number[];
 
   /**
    * Data (Command) is added to the command buffer. Takes an array of bytes.
    * Example: {appendRawBytes:[0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x2e]}
    */
-  appendRawBytes?: Array<number>;
+  appendRawBytes?: number[];
 
   /**
    * Set command of the character space is generated and added to the command buffer. Character Spacs (Unit: Dots) Example: 4
@@ -156,7 +155,7 @@ export interface PrintCommand {
   appendEmphasis?: string;
 
   /**
-    *  Enable emphasis mode is generated and added to the command buffer. Example: {enableEmphasis:true}
+   *  Enable emphasis mode is generated and added to the command buffer. Example: {enableEmphasis:true}
    */
   enableEmphasis?: boolean;
 
@@ -242,7 +241,7 @@ export interface PrintCommand {
    * Example: {appendHorizontalTabPosition:[15, 35]}
    * Delete positions Example: {appendHorizontalTabPosition:[]}
    */
-  appendHorizontalTabPosition?: Array<number>;
+  appendHorizontalTabPosition?: number[];
 
   /**
    * Print command of the logo is generated and added to the command buffer. The logo has to be uploaded to the printer using the Star Print utility.
@@ -335,7 +334,7 @@ export interface PrintCommand {
    * Example: {enableMultiple:true, width:2, height:2}
    * Disable Example: {enableMultiple:false}
    */
-   enableMultiple?: boolean;
+  enableMultiple?: boolean;
 
   /**
    * Print command of the QR code is generated and added to the command buffer.
@@ -420,7 +419,7 @@ export enum Emulation {
   /** SM-S210i, SM-S220i, SM-S230i, SM-T300i/T300, SM-T400i */
   EscPosMobile = 'EscPosMobile',
   /** SP700 */
-  StarDotImpact = 'StarDotImpact',
+  StarDotImpact = 'StarDotImpact'
 }
 
 /**
@@ -651,18 +650,17 @@ export interface CommandsArray extends Array<PrintCommand> {}
 })
 @Injectable()
 export class StarPRNT extends IonicNativePlugin {
-
   /**
    * Constant for Emulation
    */
-  Emulation  = {
+  Emulation = {
     StarPRNT: 'StarPRNT',
     StarPRNTL: 'StarPRNTL',
     StarLine: 'StarLine',
     StarGraphic: 'StarGraphic',
     EscPos: 'EscPos',
     EscPosMobile: 'EscPosMobile',
-    StarDotImpact: 'StarDotImpact',
+    StarDotImpact: 'StarDotImpact'
   };
 
   /**
@@ -958,7 +956,11 @@ export class StarPRNT extends IonicNativePlugin {
     observable: true,
     callbackStyle: 'node'
   })
-  connect(port: string, emulation: string, hasBarcodeReader: boolean): Observable<any> {
+  connect(
+    port: string,
+    emulation: string,
+    hasBarcodeReader: boolean
+  ): Observable<any> {
     return;
   }
 

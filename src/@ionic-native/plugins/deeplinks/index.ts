@@ -123,7 +123,7 @@ export class Deeplinks extends IonicNativePlugin {
    * promise result which you can then use to navigate in the app as you see fit.
    *
    * @param {Object} paths
-   * 
+   *
    * @param {DeeplinkOptions} options
    *
    * @returns {Observable<DeeplinkMatch>} Returns an Observable that resolves each time a deeplink comes through, and

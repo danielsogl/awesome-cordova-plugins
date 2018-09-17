@@ -21,7 +21,7 @@ export interface IDynamicLink {
  * Preferences GoogleIOSClientId and GoogleAndroidClientId are used to setup dynamic links when you have an app for several platforms.
  * You can find values at your GoogleService-Info.plist (key ANDROID_CLIENT_ID) and google-services.json (key client[0].oauth_client[0].client_id).
  *
- *config.xml:
+ * config.xml:
  * ```xml
  * <platform name="ios">
  *     <preference name="GoogleIOSClientId" value="..." />

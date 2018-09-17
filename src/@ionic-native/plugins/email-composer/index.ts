@@ -15,17 +15,17 @@ export interface EmailComposerOptions {
   /**
    * Email address(es) for To field
    */
-  to?: string | Array<string>;
+  to?: string | string[];
 
   /**
    * Email address(es) for CC field
    */
-  cc?: string | Array<string>;
+  cc?: string | string[];
 
   /**
    * Email address(es) for BCC field
    */
-  bcc?: string | Array<string>;
+  bcc?: string | string[];
 
   /**
    * File paths or base64 data streams
