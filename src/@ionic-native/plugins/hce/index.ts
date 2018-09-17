@@ -77,9 +77,5 @@ export class HCE extends IonicNativePlugin {
   }
 }
 
-export interface HCECommandEvent {
-  (command: Uint8Array): void;
-}
-export interface HCEDeactivatedEvent {
-  (command: number): void;
-}
+export type HCECommandEvent = (command: Uint8Array) => void;
+export type HCEDeactivatedEvent = (command: number) => void;

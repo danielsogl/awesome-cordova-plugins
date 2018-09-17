@@ -405,84 +405,52 @@ export interface FileEntry extends Entry {
 /**
  * When requestFileSystem() succeeds, the following callback is made.
  */
-export interface FileSystemCallback {
-  /**
-   * @param filesystem The file systems to which the app is granted access.
-   */
-  (filesystem: FileSystem): void;
-}
+export type FileSystemCallback = (filesystem: FileSystem) => void;
 
 /**
  * This export interface is the callback used to look up Entry objects.
  */
-export interface EntryCallback {
-  /**
-   * @param entry
-   */
-  (entry: Entry): void;
-}
+export type EntryCallback = (entry: Entry) => void;
 
 /**
  * This export interface is the callback used to look up FileEntry objects.
  */
-export interface FileEntryCallback {
-  /**
-   * @param entry
-   */
-  (entry: FileEntry): void;
-}
+export type FileEntryCallback = (entry: FileEntry) => void;
 
 /**
  * This export interface is the callback used to look up DirectoryEntry objects.
  */
-export interface DirectoryEntryCallback {
-  /**
-   * @param entry
-   */
-  (entry: DirectoryEntry): void;
-}
+export type DirectoryEntryCallback = (entry: DirectoryEntry) => void;
 
 /**
  * When readEntries() succeeds, the following callback is made.
  */
-export interface EntriesCallback {
-  (entries: Entry[]): void;
-}
+export type EntriesCallback = (entries: Entry[]) => void;
 
 /**
  * This export interface is the callback used to look up file and directory metadata.
  */
-export interface MetadataCallback {
-  (metadata: Metadata): void;
-}
+export type MetadataCallback = (metadata: Metadata) => void;
 
 /**
  * This export interface is the callback used to create a FileWriter.
  */
-export interface FileWriterCallback {
-  (fileWriter: FileWriter): void;
-}
+export type FileWriterCallback = (fileWriter: FileWriter) => void;
 
 /**
  * This export interface is the callback used to obtain a File.
  */
-export interface FileCallback {
-  (file: IFile): void;
-}
+export type FileCallback = (file: IFile) => void;
 
 /**
  * This export interface is the generic callback used to indicate success of an asynchronous method.
  */
-export interface VoidCallback {
-  (): void;
-}
+export type VoidCallback = () => void;
 
 /**
  * When an error occurs, the following callback is made.
  */
-export interface ErrorCallback {
-  (err: FileError): void;
-}
+export type ErrorCallback = (err: FileError) => void;
 
 export interface RemoveResult {
   success: boolean;
@@ -1449,8 +1417,7 @@ export class File extends IonicNativePlugin {
         return getPromise<T>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
-              /* tslint:disable:no-angle-bracket-type-assertion */
-              resolve(<T>(<any>reader.result));
+              resolve((reader.result as any) as T);
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {

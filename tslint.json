@@ -10,7 +10,6 @@
     "no-shadowed-variable": false,
     "only-arrow-functions": false,
     "ter-no-proto": false,
-    "callable-types": false,
     "adjacent-overload-signatures": false,
     "no-constant-condition": false
   }

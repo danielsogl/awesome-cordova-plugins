@@ -156,23 +156,9 @@ interface NativeUpdateNotification {
   appVersion: string;
 }
 
-export interface Callback<T> {
-  (error: Error, parameter: T): void;
-}
-export interface SuccessCallback<T> {
-  (result?: T): void;
-}
-export interface ErrorCallback {
-  (error?: Error): void;
-}
-
-export interface SuccessCallback<T> {
-  (result?: T): void;
-}
-
-export interface ErrorCallback {
-  (error?: Error): void;
-}
+export type Callback<T> = (error: Error, parameter: T) => void;
+export type SuccessCallback<T> = (result?: T) => void;
+export type ErrorCallback = (error?: Error) => void;
 
 interface Configuration {
   appVersion: string;
