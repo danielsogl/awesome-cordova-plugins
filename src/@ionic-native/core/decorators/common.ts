@@ -412,6 +412,10 @@ export function cordovaWarn(pluginName: string, method?: string): void {
   }
 }
 
+// Fixes a bug in TypeScript 2.9.2 where the ...args is being converted into args: {} and
+// causing compilation issues
+export type WrapFn = (...args: any[]) => any;
+
 /**
  * @private
  */
@@ -419,7 +423,7 @@ export const wrap = (
   pluginObj: any,
   methodName: string,
   opts: CordovaOptions = {}
-) => {
+): WrapFn => {
   return (...args: any[]) => {
     if (opts.sync) {
       // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
