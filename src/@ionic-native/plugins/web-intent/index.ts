@@ -128,6 +128,20 @@ export class WebIntent extends IonicNativePlugin {
   ACTION_PICK: string;
 
   /**
+   * Convenience constant for actions
+   * @type {string}
+   */
+  @CordovaProperty()
+  ACTION_INSTALL_PACKAGE: string;
+
+  /**
+   * Convenience constant for actions
+   * @type {string}
+   */
+  @CordovaProperty()
+  ACTION_UNINSTALL_PACKAGE: string;
+
+  /**
    * Launches an Android intent
    * @param options {IntentOptions}
    * @returns {Promise<any>}

@@ -221,12 +221,15 @@ export interface PushOptions {
 }
 
 export type Priority = 1 | 2 | 3 | 4 | 5;
+export type Visibility = 0 | 1 | -1;
 
 export interface Channel {
   id: string;
   description: string;
   importance: Priority;
   sound?: string;
+  vibration?: boolean | number[];
+  visibility?: Visibility;
 }
 
 export type PushEvent = string;

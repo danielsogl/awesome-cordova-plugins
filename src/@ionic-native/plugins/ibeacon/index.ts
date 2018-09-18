@@ -268,7 +268,7 @@ export interface IBeaconDelegate {
  *
  * this.ibeacon.startMonitoringForRegion(beaconRegion)
  *   .then(
- *     () => console.log('Native layer recieved the request to monitoring'),
+ *     () => console.log('Native layer received the request to monitoring'),
  *     error => console.error('Native layer failed to begin monitoring: ', error)
  *   );
  * ```
