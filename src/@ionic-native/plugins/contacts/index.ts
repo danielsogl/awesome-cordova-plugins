@@ -1,12 +1,12 @@
 import {
-  checkAvailability,
   CordovaCheck,
   CordovaInstance,
-  getPromise,
   InstanceCheck,
   InstanceProperty,
   IonicNativePlugin,
-  Plugin
+  Plugin,
+  checkAvailability,
+  getPromise
 } from '@ionic-native/core';
 
 declare const window: any, navigator: any;
@@ -117,8 +117,8 @@ export class Contact implements IContactProperties {
 
   @InstanceCheck()
   clone(): Contact {
-    let newContact: any = new Contact();
-    for (let prop in this) {
+    const newContact: any = new Contact();
+    for (const prop in this) {
       if (prop === 'id') return;
       newContact[prop] = this[prop];
     }
@@ -306,6 +306,7 @@ export class ContactFindOptions implements IContactFindOptions {
  * @description
  * Access and manage Contacts on the device.
  *
+ * @deprecated
  * @usage
  *
  * ```typescript
@@ -402,8 +403,8 @@ export class Contacts extends IonicNativePlugin {
  * @hidden
  */
 function processContact(contact: any) {
-  let newContact = new Contact();
-  for (let prop in contact) {
+  const newContact = new Contact();
+  for (const prop in contact) {
     if (typeof contact[prop] === 'function') continue;
     newContact[prop] = contact[prop];
   }

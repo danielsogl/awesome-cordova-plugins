@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface DeeplinkMatch {
@@ -45,12 +45,12 @@ export interface DeeplinkOptions {
  *      '/about-us': AboutPage,
  *      '/universal-links-test': AboutPage,
  *      '/products/:productId': ProductPage
- *    }).subscribe((match) => {
+ *    }).subscribe(match => {
  *      // match.$route - the route we matched, which is the matched entry from the arguments to route()
  *      // match.$args - the args passed in the link
  *      // match.$link - the full link data
  *      console.log('Successfully matched route', match);
- *    }, (nomatch) => {
+ *    }, nomatch => {
  *      // nomatch.$link - the full link data
  *      console.error('Got a deeplink that didn\'t match', nomatch);
  *    });
@@ -63,12 +63,12 @@ export interface DeeplinkOptions {
  * this.deeplinks.routeWithNavController(this.navController, {
  *   '/about-us': AboutPage,
  *   '/products/:productId': ProductPage
- * }).subscribe((match) => {
+ * }).subscribe(match => {
  *     // match.$route - the route we matched, which is the matched entry from the arguments to route()
  *     // match.$args - the args passed in the link
  *     // match.$link - the full link data
  *     console.log('Successfully matched route', match);
- *   }, (nomatch) => {
+ *   }, nomatch => {
  *     // nomatch.$link - the full link data
  *     console.error('Got a deeplink that didn\'t match', nomatch);
  *   });
@@ -123,7 +123,7 @@ export class Deeplinks extends IonicNativePlugin {
    * promise result which you can then use to navigate in the app as you see fit.
    *
    * @param {Object} paths
-   * 
+   *
    * @param {DeeplinkOptions} options
    *
    * @returns {Observable<DeeplinkMatch>} Returns an Observable that resolves each time a deeplink comes through, and

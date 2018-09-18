@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface BackgroundGeolocationResponse {
@@ -393,7 +393,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
   stop(): Promise<any> {
     return;
   }
-
+  
   /**
    * Starts a task
    * @returns {Promise<any>}
@@ -497,7 +497,9 @@ export class BackgroundGeolocation extends IonicNativePlugin {
     platforms: ['Android'],
     observable: true
   })
-  watchLocationMode(): Observable<number> { return; }
+  watchLocationMode(): Observable<number> {
+    return;
+  }
 
   /**
    * Stop watching for location mode changes.
@@ -567,7 +569,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    *
    * BackgroundGeolocation.Mode.FOREGROUND
    * BackgroundGeolocation.Mode.BACKGROUND
-   **
+   *
    * @param modeId {number}
    * @returns {Promise<any>}
    */

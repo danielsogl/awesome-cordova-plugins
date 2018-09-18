@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name hce
@@ -45,7 +45,7 @@ export class HCE extends IonicNativePlugin {
    * Registers command receiver.
    * @param onCommand {HCECommandEvent} The event handler.
    * @param fail {Function} Error event handler.
-   * 
+   *
    */
   @Cordova()
   registerCommandCallback(onCommand: HCECommandEvent, fail?: Function): void {
@@ -55,7 +55,7 @@ export class HCE extends IonicNativePlugin {
    * Registers Deactivated receiver.
    * @param ok {HCEDeactivatedEvent} Success event handler.
    * @param fail {Function} Error event handler.
-   * 
+   *
    */
   @Cordova()
   registerDeactivatedCallback(ok: HCEDeactivatedEvent, fail?: Function): void {
@@ -68,7 +68,7 @@ export class HCE extends IonicNativePlugin {
    * @param response {Uint8Array} Response
    * @param success {string} Success Callback.
    * @param success {string} Failure Callback.
-   * 
+   *
    */
   @Cordova()
   sendResponse(response: Uint8Array, success?: Function, failure?: Function): void {
@@ -76,5 +76,5 @@ export class HCE extends IonicNativePlugin {
   }
 }
 
-export interface HCECommandEvent { (command: Uint8Array): void; }
-export interface HCEDeactivatedEvent { (command: number): void; }
+export type HCECommandEvent = (command: Uint8Array) => void;
+export type HCEDeactivatedEvent = (command: number) => void;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface IDynamicLink {
@@ -21,7 +21,7 @@ export interface IDynamicLink {
  * Preferences GoogleIOSClientId and GoogleAndroidClientId are used to setup dynamic links when you have an app for several platforms.
  * You can find values at your GoogleService-Info.plist (key ANDROID_CLIENT_ID) and google-services.json (key client[0].oauth_client[0].client_id).
  *
- *config.xml:
+ * config.xml:
  * ```xml
  * <platform name="ios">
  *     <preference name="GoogleIOSClientId" value="..." />
@@ -38,10 +38,9 @@ export interface IDynamicLink {
  * constructor(private firebaseDynamicLinks: FirebaseDynamicLinks) { }
  *
  * ...
- *
+ * // Handle the logic here after opening the app with the Dynamic link
  * this.firebaseDynamicLinks.onDynamicLink()
- *   .then((res: any) => console.log(res)) //Handle the logic here after opening the app with the Dynamic link
- *   .catch((error:any) => console.log(error));
+ *   .subscribe((res: any) => console.log(res), (error:any) => console.log(error));
  * ```
  *
  * @interfaces

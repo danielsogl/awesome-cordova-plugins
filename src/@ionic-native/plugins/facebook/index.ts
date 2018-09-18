@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface FacebookLoginResponse {
-
   status: string;
 
   authResponse: {
-
     session_key: boolean;
 
     accessToken: string;
@@ -18,9 +16,7 @@ export interface FacebookLoginResponse {
     secret: string;
 
     userID: string;
-
   };
-
 }
 
 /**
@@ -114,46 +110,46 @@ export interface FacebookLoginResponse {
   plugin: 'cordova-plugin-facebook4',
   pluginRef: 'facebookConnectPlugin',
   repo: 'https://github.com/jeduan/cordova-plugin-facebook4',
-  install: 'ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"',
+  install:
+    'ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"',
   installVariables: ['APP_ID', 'APP_NAME'],
   platforms: ['Android', 'iOS', 'Browser']
 })
 @Injectable()
 export class Facebook extends IonicNativePlugin {
-
   EVENTS: {
-    EVENT_NAME_ACTIVATED_APP: 'fb_mobile_activate_app',
-    EVENT_NAME_DEACTIVATED_APP: 'fb_mobile_deactivate_app',
-    EVENT_NAME_SESSION_INTERRUPTIONS: 'fb_mobile_app_interruptions',
-    EVENT_NAME_TIME_BETWEEN_SESSIONS: 'fb_mobile_time_between_sessions',
-    EVENT_NAME_COMPLETED_REGISTRATION: 'fb_mobile_complete_registration',
-    EVENT_NAME_VIEWED_CONTENT: 'fb_mobile_content_view',
-    EVENT_NAME_SEARCHED: 'fb_mobile_search',
-    EVENT_NAME_RATED: 'fb_mobile_rate',
-    EVENT_NAME_COMPLETED_TUTORIAL: 'fb_mobile_tutorial_completion',
-    EVENT_NAME_PUSH_TOKEN_OBTAINED: 'fb_mobile_obtain_push_token',
-    EVENT_NAME_ADDED_TO_CART: 'fb_mobile_add_to_cart',
-    EVENT_NAME_ADDED_TO_WISHLIST: 'fb_mobile_add_to_wishlist',
-    EVENT_NAME_INITIATED_CHECKOUT: 'fb_mobile_initiated_checkout',
-    EVENT_NAME_ADDED_PAYMENT_INFO: 'fb_mobile_add_payment_info',
-    EVENT_NAME_PURCHASED: 'fb_mobile_purchase',
-    EVENT_NAME_ACHIEVED_LEVEL: 'fb_mobile_level_achieved',
-    EVENT_NAME_UNLOCKED_ACHIEVEMENT: 'fb_mobile_achievement_unlocked',
-    EVENT_NAME_SPENT_CREDITS: 'fb_mobile_spent_credits',
-    EVENT_PARAM_CURRENCY: 'fb_currency',
-    EVENT_PARAM_REGISTRATION_METHOD: 'fb_registration_method',
-    EVENT_PARAM_CONTENT_TYPE: 'fb_content_type',
-    EVENT_PARAM_CONTENT_ID: 'fb_content_id',
-    EVENT_PARAM_SEARCH_STRING: 'fb_search_string',
-    EVENT_PARAM_SUCCESS: 'fb_success',
-    EVENT_PARAM_MAX_RATING_VALUE: 'fb_max_rating_value',
-    EVENT_PARAM_PAYMENT_INFO_AVAILABLE: 'fb_payment_info_available',
-    EVENT_PARAM_NUM_ITEMS: 'fb_num_items',
-    EVENT_PARAM_LEVEL: 'fb_level',
-    EVENT_PARAM_DESCRIPTION: 'fb_description',
-    EVENT_PARAM_SOURCE_APPLICATION: 'fb_mobile_launch_source',
-    EVENT_PARAM_VALUE_YES: '1',
-    EVENT_PARAM_VALUE_NO: '0'
+    EVENT_NAME_ACTIVATED_APP: 'fb_mobile_activate_app';
+    EVENT_NAME_DEACTIVATED_APP: 'fb_mobile_deactivate_app';
+    EVENT_NAME_SESSION_INTERRUPTIONS: 'fb_mobile_app_interruptions';
+    EVENT_NAME_TIME_BETWEEN_SESSIONS: 'fb_mobile_time_between_sessions';
+    EVENT_NAME_COMPLETED_REGISTRATION: 'fb_mobile_complete_registration';
+    EVENT_NAME_VIEWED_CONTENT: 'fb_mobile_content_view';
+    EVENT_NAME_SEARCHED: 'fb_mobile_search';
+    EVENT_NAME_RATED: 'fb_mobile_rate';
+    EVENT_NAME_COMPLETED_TUTORIAL: 'fb_mobile_tutorial_completion';
+    EVENT_NAME_PUSH_TOKEN_OBTAINED: 'fb_mobile_obtain_push_token';
+    EVENT_NAME_ADDED_TO_CART: 'fb_mobile_add_to_cart';
+    EVENT_NAME_ADDED_TO_WISHLIST: 'fb_mobile_add_to_wishlist';
+    EVENT_NAME_INITIATED_CHECKOUT: 'fb_mobile_initiated_checkout';
+    EVENT_NAME_ADDED_PAYMENT_INFO: 'fb_mobile_add_payment_info';
+    EVENT_NAME_PURCHASED: 'fb_mobile_purchase';
+    EVENT_NAME_ACHIEVED_LEVEL: 'fb_mobile_level_achieved';
+    EVENT_NAME_UNLOCKED_ACHIEVEMENT: 'fb_mobile_achievement_unlocked';
+    EVENT_NAME_SPENT_CREDITS: 'fb_mobile_spent_credits';
+    EVENT_PARAM_CURRENCY: 'fb_currency';
+    EVENT_PARAM_REGISTRATION_METHOD: 'fb_registration_method';
+    EVENT_PARAM_CONTENT_TYPE: 'fb_content_type';
+    EVENT_PARAM_CONTENT_ID: 'fb_content_id';
+    EVENT_PARAM_SEARCH_STRING: 'fb_search_string';
+    EVENT_PARAM_SUCCESS: 'fb_success';
+    EVENT_PARAM_MAX_RATING_VALUE: 'fb_max_rating_value';
+    EVENT_PARAM_PAYMENT_INFO_AVAILABLE: 'fb_payment_info_available';
+    EVENT_PARAM_NUM_ITEMS: 'fb_num_items';
+    EVENT_PARAM_LEVEL: 'fb_level';
+    EVENT_PARAM_DESCRIPTION: 'fb_description';
+    EVENT_PARAM_SOURCE_APPLICATION: 'fb_mobile_launch_source';
+    EVENT_PARAM_VALUE_YES: '1';
+    EVENT_PARAM_VALUE_NO: '0';
   };
 
   /**
@@ -178,7 +174,9 @@ export class Facebook extends IonicNativePlugin {
    * @returns {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
    */
   @Cordova()
-  login(permissions: string[]): Promise<FacebookLoginResponse> { return; }
+  login(permissions: string[]): Promise<FacebookLoginResponse> {
+    return;
+  }
 
   /**
    * Logout of Facebook.
@@ -187,7 +185,9 @@ export class Facebook extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves on a successful logout, and rejects if logout fails.
    */
   @Cordova()
-  logout(): Promise<any> { return; }
+  logout(): Promise<any> {
+    return;
+  }
 
   /**
    * Determine if a user is logged in to Facebook and has authenticated your app.  There are three possible states for a user:
@@ -216,7 +216,9 @@ export class Facebook extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with a status, or rejects with an error
    */
   @Cordova()
-  getLoginStatus(): Promise<any> { return; }
+  getLoginStatus(): Promise<any> {
+    return;
+  }
 
   /**
    * Get a Facebook access token for using Facebook services.
@@ -224,7 +226,9 @@ export class Facebook extends IonicNativePlugin {
    * @returns {Promise<string>} Returns a Promise that resolves with an access token, or rejects with an error
    */
   @Cordova()
-  getAccessToken(): Promise<string> { return; }
+  getAccessToken(): Promise<string> {
+    return;
+  }
 
   /**
    * Show one of various Facebook dialogs. Example of options for a Share dialog:
@@ -244,7 +248,9 @@ export class Facebook extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with success data, or rejects with an error
    */
   @Cordova()
-  showDialog(options: any): Promise<any> { return; }
+  showDialog(options: any): Promise<any> {
+    return;
+  }
 
   /**
    * Make a call to Facebook Graph API. Can take additional permissions beyond those granted on login.
@@ -260,7 +266,9 @@ export class Facebook extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the result of the request, or rejects with an error
    */
   @Cordova()
-  api(requestPath: string, permissions: string[]): Promise<any> { return; }
+  api(requestPath: string, permissions: string[]): Promise<any> {
+    return;
+  }
 
   /**
    * Log an event.  For more information see the Events section above.
@@ -274,7 +282,9 @@ export class Facebook extends IonicNativePlugin {
     successIndex: 3,
     errorIndex: 4
   })
-  logEvent(name: string, params?: Object, valueToSum?: number): Promise<any> { return; }
+  logEvent(name: string, params?: Object, valueToSum?: number): Promise<any> {
+    return;
+  }
 
   /**
    * Log a purchase. For more information see the Events section above.
@@ -284,6 +294,16 @@ export class Facebook extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  logPurchase(value: number, currency: string): Promise<any> { return; }
+  logPurchase(value: number, currency: string): Promise<any> {
+    return;
+  }
 
+  /**
+   * Returns the deferred app link
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getDeferredApplink(): Promise<string> {
+    return;
+  }
 }

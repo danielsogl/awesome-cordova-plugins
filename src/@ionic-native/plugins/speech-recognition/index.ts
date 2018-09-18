@@ -127,7 +127,7 @@ export class SpeechRecognition extends IonicNativePlugin {
   })
   startListening(
     options?: SpeechRecognitionListeningOptions
-  ): Observable<Array<string>> {
+  ): Observable<string[]> {
     return;
   }
 
@@ -144,7 +144,7 @@ export class SpeechRecognition extends IonicNativePlugin {
    * @return {Promise< Array<string> >} list of languages
    */
   @Cordova()
-  getSupportedLanguages(): Promise<Array<string>> {
+  getSupportedLanguages(): Promise<string[]> {
     return;
   }
 

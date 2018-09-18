@@ -290,25 +290,34 @@ export class BLE extends IonicNativePlugin {
   }
 
   /**
-   * Establish an automatic connection to a peripheral.
+   * Establish an automatic connection to a peripheral. The phone will automatically connect to the Bluetooth peripheral
+   * whenever it is in range. The autoConnect function uses callbacks instead of observables because connect and
+   * disconnect can each be called many times as a devices connects and disconnects.
+   *
+   * On Android you can pass a MAC address directly to autoConnect. With iOS, you need to get a device id by scanning,
+   * calling ble.peripheralsWithIdentifiers, or calling ble.connectedPeripheralsWithServices.
+   *
    * @usage
    * ```
-   *   BLE.autoConnect('12:34:56:78:9A:BC').subscribe(peripheralData => {
-   *     console.log(peripheralData);
-   *   },
-   *   peripheralData => {
-   *     console.log('disconnected');
-   *   });
+   *  someFunction() {
+   *    this.ble.autoConnect(deviceId, onConnected.bind(this), onDisconnected.bind(this));
+   *  }
+   *
+   *  onConnected(peripheral) {
+   *    console.log(`Connected to ${peripheral.id}`)l
+   *  }
+   *
+   *  onDisconnected(peripheral) {
+   *    console.log(`Disconnected from ${peripheral.id}`)l
+   *  }
+   *
    * ```
    * @param {string} deviceId UUID or MAC address of the peripheral
-   * @return {Observable<any>} Returns an Observable that notifies of connect/disconnect.
+   * @param {function} connectCallback function that is called with peripheral data when the devices connects
+   * @param {function} disconnectCallback  function that is called with peripheral data when the devices disconnects
    */
-  @Cordova({
-    observable: true,
-    clearFunction: 'disconnect',
-    clearWithArgs: true
-  })
-  autoConnect(deviceId: string): Observable<any> {
+  @Cordova({ sync: true })
+  autoConnect(deviceId: string, connectCallback: any, disconnectCallback: any) {
     return;
   }
 
@@ -577,6 +586,42 @@ export class BLE extends IonicNativePlugin {
    */
   @Cordova()
   readRSSI(deviceId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Retrieves a list of the peripherals (containing any of the specified services)
+   * currently connected to the system. The peripheral list is sent to the success callback.
+   * iOS only
+   *
+   * @param {string[]} services List of services to discover
+   * @returns {Promise<any>} Returns a promise with a list of peripheral objects
+   */
+  @Cordova()
+  connectedPeripheralsWithServices(services: string[]): Promise<any[]> {
+    return;
+  }
+
+  /**
+   * Find the connected peripherals offering the listed service UUIDs.
+   * iOS only
+   *
+   * @param {string[]} uuids List of peripheral UUIDs
+   * @returns {Promise<any>} Returns a promise with a list of peripheral objects
+   */
+  @Cordova()
+  peripheralsWithIdentifiers(uuids: string[]): Promise<any[]> {
+    return;
+  }
+
+  /**
+   * Find the bonded devices
+   * Android only
+   *
+   * @returns {Promise<any>} Returns a promise with a list of peripheral objects
+   */
+  @Cordova()
+  bondedDevices(): Promise<any[]> {
     return;
   }
 }

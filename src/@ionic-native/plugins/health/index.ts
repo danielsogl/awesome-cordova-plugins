@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -6,13 +6,13 @@ import { Injectable } from '@angular/core';
  */
 export interface HealthDataType {
   /**
-  * Read only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
-  */
+   * Read only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
+   */
   read?: string[];
 
   /**
-  * Write only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
-  */
+   * Write only date types (see https://github.com/dariosalvi78/cordova-plugin-health#supported-data-types)
+   */
   write?: string[];
 }
 
@@ -207,7 +207,6 @@ export interface HealthData {
 })
 @Injectable()
 export class Health extends IonicNativePlugin {
-
   /**
    * Tells if either Google Fit or HealthKit are available.
    *
@@ -216,7 +215,9 @@ export class Health extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  isAvailable(): Promise<boolean> { return; }
+  isAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if recent Google Play Services and Google Fit are installed. If the play services are not installed,
@@ -232,7 +233,9 @@ export class Health extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  promptInstallFit(): Promise<any> { return; }
+  promptInstallFit(): Promise<any> {
+    return;
+  }
 
   /**
    * Requests read and/or write access to a set of data types. It is recommendable to always explain why the app
@@ -241,7 +244,7 @@ export class Health extends IonicNativePlugin {
    * been given at some point in the past.
    *
    * Quirks of requestAuthorization()
-
+   *
    * In Android, it will try to get authorization from the Google Fit APIs.
    * It is necessary that the app's package name and the signing key are registered in the Google API console.
    * In Android, be aware that if the activity is destroyed (e.g. after a rotation) or is put in background,
@@ -254,7 +257,9 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  requestAuthorization(datatypes: Array<string | HealthDataType>): Promise<any> { return; }
+  requestAuthorization(datatypes: (string | HealthDataType)[]): Promise<any> {
+    return;
+  }
 
   /**
    * Check if the app has authorization to read/write a set of datatypes.
@@ -268,7 +273,9 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<boolean>} Returns a promise that resolves with a boolean that indicates the authorization status
    */
   @Cordova()
-  isAuthorized(datatypes: Array<string | HealthDataType>): Promise<boolean> { return; }
+  isAuthorized(datatypes: (string | HealthDataType)[]): Promise<boolean> {
+    return;
+  }
 
   /**
    * Gets all the data points of a certain data type within a certain time window.
@@ -298,11 +305,13 @@ export class Health extends IonicNativePlugin {
    * nutrition.vitamin_a is given in micrograms in HealthKit and International Unit in Google Fit.
    * Automatic conversion is not trivial and depends on the actual substance.
    *
-   * @param queryOptions {HealthQueryOptions}
-   * @return {Promise<HealthData>}
+   * @param {HealthQueryOptions} queryOptions
+   * @return {Promise<HealthData[]>}
    */
   @Cordova()
-  query(queryOptions: HealthQueryOptions): Promise<HealthData> { return; }
+  query(queryOptions: HealthQueryOptions): Promise<HealthData[]> {
+    return;
+  }
 
   /**
    * Gets aggregated data in a certain time window. Usually the sum is returned for the given quantity.
@@ -322,11 +331,15 @@ export class Health extends IonicNativePlugin {
    * To be sure to get all the stored quantities, it's better to query single nutrients.
    * nutrition.vitamin_a is given in micrograms in HealthKit and International Unit in Google Fit.
    *
-   * @param queryOptionsAggregated {HealthQueryOptionsAggregated}
+   * @param {HealthQueryOptionsAggregated} queryOptionsAggregated
    * @return {Promise<HealthData[]>}
    */
   @Cordova()
-  queryAggregated(queryOptionsAggregated: HealthQueryOptionsAggregated): Promise<HealthData[]> { return; }
+  queryAggregated(
+    queryOptionsAggregated: HealthQueryOptionsAggregated
+  ): Promise<HealthData[]> {
+    return;
+  }
 
   /**
    * Stores a data point.
@@ -343,6 +356,7 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  store(storeOptions: HealthStoreOptions): Promise<any> { return; }
-
+  store(storeOptions: HealthStoreOptions): Promise<any> {
+    return;
+  }
 }

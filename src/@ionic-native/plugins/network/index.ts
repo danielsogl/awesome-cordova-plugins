@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
   Cordova,
-  CordovaProperty,
-  Plugin,
   CordovaCheck,
-  IonicNativePlugin
+  CordovaProperty,
+  IonicNativePlugin,
+  Plugin
 } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { merge } from 'rxjs/observable/merge';
@@ -37,7 +37,7 @@ declare const navigator: any;
  * let connectSubscription = this.network.onConnect().subscribe(() => {
  *   console.log('network connected!');
  *   // We just got a connection but we need to wait briefly
- *    // before we determine the connection type. Might need to wait.
+ *    // before we determine the connection type. Might need to wait.
  *   // prior to doing any api requests as well.
  *   setTimeout(() => {
  *     if (this.network.type === 'wifi') {
@@ -89,7 +89,8 @@ export class Network extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'offline'
+    event: 'offline',
+    element: document
   })
   onDisconnect(): Observable<any> {
     return;
@@ -101,7 +102,8 @@ export class Network extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'online'
+    event: 'online',
+    element: document
   })
   onConnect(): Observable<any> {
     return;

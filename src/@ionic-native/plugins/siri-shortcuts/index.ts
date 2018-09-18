@@ -119,7 +119,7 @@ export class SiriShortcuts extends IonicNativePlugin {
      * @return Promise<void>
      */
     @Cordova()
-    remove(persistentIdentifiers: string|string[]): Promise<void> {
+    remove(persistentIdentifiers: string | string[]): Promise<void> {
         return;
     }
 
@@ -137,7 +137,7 @@ export class SiriShortcuts extends IonicNativePlugin {
      * @return Promise<SiriShortcut|null>
      */
     @Cordova()
-    getActivatedShortcut(): Promise<SiriShortcut|null> {
+    getActivatedShortcut(): Promise<SiriShortcut | null> {
         return;
     }
 }

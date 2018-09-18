@@ -1,4 +1,4 @@
-import { Plugin, IonicNativePlugin, Cordova, CordovaProperty } from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -77,7 +77,7 @@ export interface IAPProductOptions {
   type: string;
 }
 
-export type IAPProducts = Array<IAPProduct> & {
+export type IAPProducts = IAPProduct[] & {
   /**
    * Get product by ID
    */
@@ -383,7 +383,7 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * Add or register a product
    * @param product {IAPProductOptions}
    */
-  @Cordova({ sync: true})
+  @Cordova({ sync: true })
   register(product: IAPProductOptions): void {}
 
   /**

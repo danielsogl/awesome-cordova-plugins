@@ -105,7 +105,7 @@ function setIndex(
     opts.successName &&
     opts.errorName
   ) {
-    let obj: any = {};
+    const obj: any = {};
     obj[opts.successName] = resolve;
     obj[opts.errorName] = reject;
     args.push(obj);
@@ -355,11 +355,11 @@ export function overrideFunction(
 /**
  * @private
  */
-export const wrap = function(
+export const wrap = (
   pluginObj: any,
   methodName: string,
   opts: CordovaOptions = {}
-) {
+) => {
   return (...args: any[]) => {
     if (opts.sync) {
       // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is

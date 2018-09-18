@@ -1,39 +1,39 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 export interface TealConfig {
-    /**
-     * Your Tealium account name
-     */
-    account: string;
-    /**
-     * Your Tealium profile name
-     */
-    profile: string;
-    /**
-     * Your Tealium environment name (dev, qa, prod)
-     */
-    environment: string;
-    /**
-     * Arbitrary instance name string. Must be consistent for all calls to Tealium API.
-     */
-    instance: string;
-    /**
-     * Enables ("true") or disables ("false") lifecycle reporting. Default true if omitted.
-     */
-    isLifecycleEnabled?: string;
-    /**
-     * Not usually required. Sets a custom URL override for dispatches to UDH.
-     */
-    collectDispatchURL?: string;
-    /**
-     * Your Tealium UDH profile. Only active if you do not have collectDispatchURL set.
-     */
-    collectDispatchProfile?: string;
-    /**
-     * Enables ("true") or disables ("false") Crash Reporter module for Android. Default false if omitted.
-     */
-    isCrashReporterEnabled?: string;
+  /**
+   * Your Tealium account name
+   */
+  account: string;
+  /**
+   * Your Tealium profile name
+   */
+  profile: string;
+  /**
+   * Your Tealium environment name (dev, qa, prod)
+   */
+  environment: string;
+  /**
+   * Arbitrary instance name string. Must be consistent for all calls to Tealium API.
+   */
+  instance: string;
+  /**
+   * Enables ("true") or disables ("false") lifecycle reporting. Default true if omitted.
+   */
+  isLifecycleEnabled?: string;
+  /**
+   * Not usually required. Sets a custom URL override for dispatches to UDH.
+   */
+  collectDispatchURL?: string;
+  /**
+   * Your Tealium UDH profile. Only active if you do not have collectDispatchURL set.
+   */
+  collectDispatchProfile?: string;
+  /**
+   * Enables ("true") or disables ("false") Crash Reporter module for Android. Default false if omitted.
+   */
+  isCrashReporterEnabled?: string;
 }
 
 /**
@@ -76,14 +76,12 @@ export interface TealConfig {
   pluginRef: 'window.tealium', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/Tealium/cordova-plugin', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
-  install: '', // OPTIONAL install command, in case the plugin requires variables
+  install: '' // OPTIONAL install command, in case the plugin requires variables
 })
-
 @Injectable()
 export class Tealium extends IonicNativePlugin {
-
   /**
-   * This function initializes the Tealium Cordova plugin. 
+   * This function initializes the Tealium Cordova plugin.
    * This should usually be done inside the "deviceReady" handler.
    * @param config {TealConfig}
    * @return {Promise<any>} Returns a promise that resolves when something happens
@@ -123,7 +121,11 @@ export class Tealium extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  track(eventType: string, dataObject: any, instanceName: string): Promise<any> {
+  track(
+    eventType: string,
+    dataObject: any,
+    instanceName: string
+  ): Promise<any> {
     return;
   }
 
@@ -135,7 +137,11 @@ export class Tealium extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  addPersistent(keyName: string, value: string | string[] | any, instanceName: string): Promise<any> {
+  addPersistent(
+    keyName: string,
+    value: string | string[] | any,
+    instanceName: string
+  ): Promise<any> {
     return;
   }
 
@@ -147,7 +153,11 @@ export class Tealium extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  addVolatile(keyName: string, value: string | string[], instanceName: string): Promise<any> {
+  addVolatile(
+    keyName: string,
+    value: string | string[],
+    instanceName: string
+  ): Promise<any> {
     return;
   }
 
@@ -181,10 +191,14 @@ export class Tealium extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  getPersistent(keyName: string, instanceName: string, callback: any): Promise<any> {
+  getPersistent(
+    keyName: string,
+    instanceName: string,
+    callback: any
+  ): Promise<any> {
     return;
   }
-/**
+  /**
    * This function retrieves a value from the Tealium Volatile data store
    * @param keyName {string} The key name that this data will retrieved from the Tealium data store
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
@@ -192,19 +206,27 @@ export class Tealium extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  getVolatile(keyName: string, instanceName: string, callback: any): Promise<any> {
+  getVolatile(
+    keyName: string,
+    instanceName: string,
+    callback: any
+  ): Promise<any> {
     return;
   }
 
-   /**
-   * This function adds a remote command for later execution 
+  /**
+   * This function adds a remote command for later execution
    * @param commandName {string} The command name for this Remote Command
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
    * @param callback {any} A callback function that will be called when the data has been retrieved
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  addRemoteCommand(commandName: string, instanceName: string, callback: any): Promise<any> {
+  addRemoteCommand(
+    commandName: string,
+    instanceName: string,
+    callback: any
+  ): Promise<any> {
     return;
   }
 
@@ -216,5 +238,4 @@ export class Tealium extends IonicNativePlugin {
   getVisitorId(): Promise<any> {
     return;
   }
-
 }

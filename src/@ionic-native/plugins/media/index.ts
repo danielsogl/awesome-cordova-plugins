@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, Plugin, checkAvailability, IonicNativePlugin, InstanceProperty } from '@ionic-native/core';
+import { CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin, checkAvailability } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 
@@ -293,41 +293,41 @@ export class Media extends IonicNativePlugin {
   /**
    * @hidden
    */
-  MEDIA_NONE: number = 0;
+  MEDIA_NONE = 0;
   /**
    * @hidden
    */
-  MEDIA_STARTING: number = 1;
+  MEDIA_STARTING = 1;
   /**
    * @hidden
    */
-  MEDIA_RUNNING: number = 2;
+  MEDIA_RUNNING = 2;
   /**
    * @hidden
    */
-  MEDIA_PAUSED: number = 3;
+  MEDIA_PAUSED = 3;
   /**
    * @hidden
    */
-  MEDIA_STOPPED: number = 4;
+  MEDIA_STOPPED = 4;
 
   // error codes
   /**
    * @hidden
    */
-  MEDIA_ERR_ABORTED: number = 1;
+  MEDIA_ERR_ABORTED = 1;
   /**
    * @hidden
    */
-  MEDIA_ERR_NETWORK: number = 2;
+  MEDIA_ERR_NETWORK = 2;
   /**
    * @hidden
    */
-  MEDIA_ERR_DECODE: number = 3;
+  MEDIA_ERR_DECODE = 3;
   /**
    * @hidden
    */
-  MEDIA_ERR_NONE_SUPPORTED: number = 4;
+  MEDIA_ERR_NONE_SUPPORTED = 4;
 
   /**
    * Open a media file

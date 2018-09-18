@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Network Interface
@@ -10,15 +10,21 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ```typescript
  * import { NetworkInterface } from '@ionic-native/network-interface';
  *
+ * constructor( private networkInterface: NetworkInterface ) {
  *
- * constructor(private networkInterface: NetworkInterface) { }
+ *   this.networkInterface.getWiFiIPAddress()
+ *     .then(address => console.info(`IP: ${address.ip}, Subnet: ${address.subnet}`))
+ *     .catch(error => console.error(`Unable to get IP: ${error}`));
  *
- * ...
+ *   this.networkInterface.getCarrierIPAddress()
+ *     .then(address => console.info(`IP: ${address.ip}, Subnet: ${address.subnet}`))
+ *     .catch(error => console.error(`Unable to get IP: ${error}`));
  *
- * this.networkInterface.getWiFiIPAddress(function (ip) { alert(ip); });
- * this.networkInterface.getCarrierIPAddress(function (ip) { alert(ip); });
- *
- *
+ *   const url = 'www.github.com';
+ *   this.networkInterface.getHttpProxyInformation(url)
+ *     .then(proxy => console.info(`Type: ${proxy.type}, Host: ${proxy.host}, Port: ${proxy.port}`))
+ *     .catch(error => console.error(`Unable to get proxy info: ${error}`));
+ * }
  * ```
  */
 @Plugin({
@@ -31,28 +37,32 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 @Injectable()
 export class NetworkInterface extends IonicNativePlugin {
 
-  @Cordova()
-  getIPAddress(): Promise<string> {
-    return;
-  }
-
   /**
    * Gets the WiFi IP address
-   * @param success {Function} Callback used when successful
-   * @param error {Function} Callback used when failure
+   * @return {Promise<any>} Returns a Promise that resolves with the IP address information.
    */
   @Cordova()
-  getWiFiIPAddress(): Promise<string> {
+  getWiFiIPAddress(): Promise<any> {
     return;
   }
 
   /**
    * Gets the wireless carrier IP address
-   * @param success {Function} Callback used when successful
-   * @param error {Function} Callback used when failure
+   * @return {Promise<any>} Returns a Promise that resolves with the IP address information.
    */
   @Cordova()
-  getCarrierIPAddress(): Promise<string> {
+  getCarrierIPAddress(): Promise<any> {
     return;
   }
+
+  /**
+   * Gets the relevant proxies for the passed URL in order of application
+   * @param {url} message  The message to display.
+   * @return {Promise<any>} Returns a Promise that resolves with the proxy information.
+   */
+  @Cordova()
+  getHttpProxyInformation(url: string): Promise<any> {
+    return;
+  }
+
 }

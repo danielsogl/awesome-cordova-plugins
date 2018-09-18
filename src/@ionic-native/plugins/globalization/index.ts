@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface GlobalizationOptions {
   formatLength: string;
@@ -134,7 +134,7 @@ export class Globalization extends IonicNativePlugin {
   getDateNames(options: {
     type: string;
     item: string;
-  }): Promise<{ value: Array<string> }> {
+  }): Promise<{ value: string[] }> {
     return;
   }
 

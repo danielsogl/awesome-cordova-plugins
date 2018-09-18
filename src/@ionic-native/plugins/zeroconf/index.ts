@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface ZeroconfService {
@@ -8,8 +8,8 @@ export interface ZeroconfService {
   name: string;
   port: number;
   hostname: string;
-  ipv4Addresses: Array<string>;
-  ipv6Addresses: Array<string>;
+  ipv4Addresses: string[];
+  ipv6Addresses: string[];
   txtRecord: any;
 }
 

@@ -74,7 +74,7 @@ export class HTTP extends IonicNativePlugin {
    * This returns an object representing a basic HTTP Authorization header of the form.
    * @param username {string} Username
    * @param password {string} Password
-   * @returns {Object} an object representing a basic HTTP Authorization header of the form {'Authorization': 'Basic base64encodedusernameandpassword'}
+   * @returns {Object} an object representing a basic HTTP Authorization header of the form {'Authorization': 'Basic base64EncodedUsernameAndPassword'}
    */
   @Cordova({ sync: true })
   getBasicAuthHeader(
@@ -154,7 +154,9 @@ export class HTTP extends IonicNativePlugin {
    * @param url {string}
    */
   @Cordova({ sync: true })
-  getCookieString(url: string): string { return; }
+  getCookieString(url: string): string {
+    return;
+  }
 
   /**
    * Get global request timeout value in seconds.
@@ -173,26 +175,15 @@ export class HTTP extends IonicNativePlugin {
   setRequestTimeout(timeout: number): void {}
 
   /**
-   * Enable or disable SSL Pinning. This defaults to false.
-   *
-   * To use SSL pinning you must include at least one .cer SSL certificate in your app project. You can pin to your server certificate or to one of the issuing CA certificates. For ios include your certificate in the root level of your bundle (just add the .cer file to your project/target at the root level). For android include your certificate in your project's platforms/android/assets folder. In both cases all .cer files found will be loaded automatically. If you only have a .pem certificate see this [stackoverflow answer](https://stackoverflow.com/questions/16583428/how-to-convert-an-ssl-certificate-in-linux/16583429#16583429). You want to convert it to a DER encoded certificate with a .cer extension.
-   *
-   * As an alternative, you can store your .cer files in the www/certificates folder.
-   * @param enable {boolean} Set to true to enable
-   * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
+   * Set SSL Cert handling mode, being one of the following values
+   * default: default SSL cert handling using system's CA certs
+   * nocheck: disable SSL cert checking, trusting all certs (meant to be used only for testing purposes)
+   * pinned: trust only provided certs
+   * @see https://github.com/silkimen/cordova-plugin-advanced-http#setsslcertmode
+   * @param {'default' | 'nocheck' | 'pinned'} mode SSL Cert handling mode
    */
   @Cordova()
-  enableSSLPinning(enable: boolean): Promise<void> {
-    return;
-  }
-
-  /**
-   * Accept all SSL certificates. Or disabled accepting all certificates. Defaults to false.
-   * @param accept {boolean} Set to true to accept
-   * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
-   */
-  @Cordova()
-  acceptAllCerts(accept: boolean): Promise<void> {
+  setSSLCertMode(mode: 'default' | 'nocheck' | 'pinned'): Promise<void> {
     return;
   }
 
@@ -202,7 +193,9 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
-  disableRedirect(disable: boolean): Promise<void> { return; }
+  disableRedirect(disable: boolean): Promise<void> {
+    return;
+  }
 
   /**
    * Make a POST request
@@ -283,7 +276,7 @@ export class HTTP extends IonicNativePlugin {
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The local path of the file to upload
    * @param name {string} The name of the parameter to pass the file along as
-   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
    */
   @Cordova()
   uploadFile(
@@ -292,7 +285,7 @@ export class HTTP extends IonicNativePlugin {
     headers: any,
     filePath: string,
     name: string
-  ): Promise<HTTPResponse> {
+  ): Promise<any> {
     return;
   }
 
@@ -301,8 +294,8 @@ export class HTTP extends IonicNativePlugin {
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
-   * @param filePath {string} The path to donwload the file to, including the file name.
-   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   * @param filePath {string} The path to download the file to, including the file name.
+   * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
    */
   @Cordova()
   downloadFile(
@@ -310,7 +303,7 @@ export class HTTP extends IonicNativePlugin {
     body: any,
     headers: any,
     filePath: string
-  ): Promise<HTTPResponse> {
+  ): Promise<any> {
     return;
   }
 }

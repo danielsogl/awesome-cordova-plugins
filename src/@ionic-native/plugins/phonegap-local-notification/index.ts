@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, Plugin, IonicNativePlugin, checkAvailability } from '@ionic-native/core';
+import {
+  Cordova,
+  CordovaInstance,
+  IonicNativePlugin,
+  Plugin,
+  checkAvailability
+} from '@ionic-native/core';
 
 declare const Notification: any;
 
@@ -7,22 +13,25 @@ declare const Notification: any;
  * @hidden
  */
 export class PLNObject {
-
   private _objectInstance: any;
 
   constructor(title: string, options: LocalNotificationOptions) {
-    if (checkAvailability(PhonegapLocalNotification.pluginRef, null, PhonegapLocalNotification.pluginName) === true) {
+    if (
+      checkAvailability(
+        PhonegapLocalNotification.pluginRef,
+        null,
+        PhonegapLocalNotification.pluginName
+      ) === true
+    ) {
       this._objectInstance = new Notification(title, options);
     }
   }
 
   @CordovaInstance({ sync: true })
-  close(): void { }
-
+  close(): void {}
 }
 
 export interface LocalNotificationOptions {
-
   /**
    * Sets the direction of the notification. One of "auto", "ltr" or "rtl"
    */
@@ -47,7 +56,6 @@ export interface LocalNotificationOptions {
    * Sets the icon of the notification
    */
   icon?: string;
-
 }
 
 /**
@@ -94,20 +102,22 @@ export interface LocalNotificationOptions {
 })
 @Injectable()
 export class PhonegapLocalNotification extends IonicNativePlugin {
-
   /**
    * A global object that lets you interact with the Notification API.
    * @param title {string} Title of the local notification.
    * @param Options {LocalNotificationOptions} An object containing optional property/value pairs.
    * @returns {PLNObject}
    */
-  create(title: string, options: LocalNotificationOptions) { return new PLNObject(title, options); }
+  create(title: string, options: LocalNotificationOptions) {
+    return new PLNObject(title, options);
+  }
 
   /**
-  * requests permission from the user to show a local notification.
-  * @returns {Promise<any>}
-  */
+   * requests permission from the user to show a local notification.
+   * @returns {Promise<any>}
+   */
   @Cordova()
-  requestPermission(): Promise<any> { return; }
-
+  requestPermission(): Promise<any> {
+    return;
+  }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface ScoreData {
 
@@ -67,10 +67,10 @@ export interface Player {
    * The title of the player based on their gameplay activity. Not
    * all players have this and it may change over time.
    */
-  title: string|null;
+  title: string | null;
 
   /**
-   * Retrieves the URI for loading this player's icon-size profile image. 
+   * Retrieves the URI for loading this player's icon-size profile image.
    * Returns null if the player has no profile image.
    */
   iconImageUrl: string;
@@ -101,12 +101,12 @@ export interface Player {
  * this.googlePlayGamesServices.auth()
  *     .then(() => console.log('Logged in to Play Games Services'))
  *     .catch(e) => console.log('Error logging in Play Games Services', e);
- * 
+ *
  * // Sign out of Play Games Services.
  * this.googlePlayGamesServices.signOut()
  *     .then(() => console.log('Logged out of Play Games Services'))
  *     .catch(e => console.log('Error logging out of Play Games Services', e);
- * 
+ *
  * // Check auth status.
  * this.googlePlayGamesServices.isSignedIn()
  *     .then((signedIn: SignedInResponse) => {
@@ -114,38 +114,38 @@ export interface Player {
  *             hideLoginButton();
  *         }
  *     });
- * 
+ *
  * // Fetch currently authenticated user's data.
  * this.googlePlayGamesServices.showPlayer().then((data: Player) => {
  *    console.log('Player data', data);
  * });
- * 
+ *
  * // Submit a score.
  * this.googlePlayGamesServices.submitScore({
  *     score: 100,
  *     leaderboardId: 'SomeLeaderboardId'
  * });
- * 
+ *
  * // Show the native leaderboards window.
  * this.googlePlayGamesServices.showAllLeaderboards()
  *     .then(() => console.log('The leaderboard window is visible.'));
- * 
+ *
  * // Show a signle native leaderboard window.
  * this.googlePlayGamesServices.showLeaderboard({
  *     leaderboardId: 'SomeLeaderBoardId'
  * }).then(() => console.log('The leaderboard window is visible.'));
- * 
+ *
  * // Unlock an achievement.
  * this.googlePlayGamesServices.unlockAchievement({
  *     achievementId: 'SomeAchievementId'
  * }).then(() => console.log('Achievement unlocked'));
- * 
+ *
  * // Incremement an achievement.
  * this.googlePlayGamesServices.incrementAchievement({
  *     step: 1,
  *     achievementId: 'SomeAchievementId'
  * }).then(() => console.log('Achievement incremented'));
- * 
+ *
  * // Show the native achievements window.
  * this.googlePlayGamesServices.showAchivements()
  *    .then(() => console.log('The achievements window is visible.'));
@@ -165,7 +165,7 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
 
   /**
    * Initialise native Play Games Service login procedure.
-   * 
+   *
    * @return {Promise<any>} Returns a promise that resolves when the player
    * is authenticated with Play Games Services.
    */
@@ -174,7 +174,7 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
 
   /**
    * Sign out of Google Play Games Services.
-   * 
+   *
    * @return {Promise<any>} Returns a promise that resolve when the player
    * successfully signs out.
    */
@@ -183,7 +183,7 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
 
   /**
    * Check if the user is signed in.
-   * 
+   *
    * @return {Promise<SignedInResponse>} Returns a promise that resolves with
    * the signed in response.
    */
@@ -192,8 +192,8 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
 
   /**
    * Show the currently authenticated player.
-   * 
-   * @return {Promise<Player>} Returns a promise that resolves when Play 
+   *
+   * @return {Promise<Player>} Returns a promise that resolves when Play
    * Games Services returns the authenticated player.
    */
   @Cordova()
@@ -202,7 +202,7 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
   /**
    * Submit a score to a leaderboard. You should ensure that you have a
    * successful return from auth() before submitting a score.
-   * 
+   *
    * @param data {ScoreData} The score data you want to submit.
    * @return {Promise<any>} Returns a promise that resolves when the
    * score is submitted.
@@ -213,7 +213,7 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
   /**
    * Launches the native Play Games leaderboard view controller to show all the
    * leaderboards.
-   * 
+   *
    * @return {Promise<any>} Returns a promise that resolves when the native
    * leaderboards window opens.
    */
@@ -223,7 +223,7 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
   /**
    * Launches the native Play Games leaderboard view controll to show the
    * specified leaderboard.
-   * 
+   *
    * @param data {LeaderboardData} The leaderboard you want to show.
    * @return {Promise<any>} Returns a promise that resolves when the native
    * leaderboard window opens.
@@ -233,7 +233,7 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
 
   /**
    * Unlock an achievement.
-   * 
+   *
    * @param data {AchievementData}
    * @return {Promise<any>} Returns a promise that resolves when the
    * achievement is unlocked.
@@ -243,7 +243,7 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
 
   /**
    * Increment an achievement.
-   * 
+   *
    * @param data {IncrementableAchievementData}
    * @return {Promise<any>} Returns a promise that resolves when the
    * achievement is incremented.
@@ -254,7 +254,7 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
   /**
    * Lauches the native Play Games achievements view controller to show
    * achievements.
-   * 
+   *
    * @return {Promise<any>} Returns a promise that resolves when the
    * achievement window opens.
    */

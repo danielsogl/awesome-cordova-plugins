@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface OSNotification {
@@ -325,10 +325,10 @@ export enum OSActionType {
  *
  * ```
  * #!/usr/bin/env node
-
+ *
  * var fs = require('fs');
  * var path = require('path');
-
+ *
  * var filestocopy = [{
  *     "resources/android/icon/drawable-hdpi-icon.png":
  *         "platforms/android/res/drawable-hdpi/ic_stat_onesignal_default.png"
@@ -345,12 +345,12 @@ export enum OSActionType {
  *     "resources/android/icon/drawable-xxxhdpi-icon.png":
  *         "platforms/android/res/drawable-xxxhdpi/ic_stat_onesignal_default.png"
  * } ];
-
+ *
  * module.exports = function(context) {
-
+ *
  *     // no need to configure below
  *     var rootdir = context.opts.projectRoot;
-
+ *
  *     filestocopy.forEach(function(obj) {
  *         Object.keys(obj).forEach(function(key) {
  *             var val = obj[key];
@@ -364,12 +364,12 @@ export enum OSActionType {
  *             }
  *         });
  *     });
-
+ *
  * };
  * ```
  *
  * 3. From the root of your project make the file executable:
- * `$ chmod +x hooks/after_prepare/030_copy_android_notification_icons.js`
+ * `$ chmod +x hooks/copy_android_notification_icons.js`
  *
  *
  * @usage
@@ -415,6 +415,7 @@ export enum OSActionType {
 export class OneSignal extends IonicNativePlugin {
   /**
    * constants to use in inFocusDisplaying()
+   * @hidden
    */
   OSInFocusDisplayOption = {
     None: 0,
@@ -660,13 +661,20 @@ export class OneSignal extends IonicNativePlugin {
   /**
    * Enable logging to help debug if you run into an issue setting up OneSignal.
    * The logging levels are as follows: 0 = None, 1= Fatal, 2 = Errors, 3 = Warnings, 4 = Info, 5 = Debug, 6 = Verbose
-
+   *
    * The higher the value the more information is shown.
    *
    * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
    */
   @Cordova({ sync: true })
   setLogLevel(logLevel: { logLevel: number; visualLevel: number }): void {}
+
+  /**
+   * Disable or enable location collection (Defaults to enabled) if your app has location permission.
+   * @param shared {boolean}
+   */
+  @Cordova({ sync: true })
+  setLocationShared(shared: boolean): void {}
 
   /**
    * The passed in function will be fired when a notification permission setting changes.
@@ -700,8 +708,65 @@ export class OneSignal extends IonicNativePlugin {
   }
 
   /**
-   * Clears all OneSignla notifications
+   * Allows you to set the user's email address with the OneSignal SDK.
+   * @param {string} email Email address
+   * @param {string} [emailAuthToken] Email auth token
+   */
+  @Cordova()
+  setEmail(email: string, emailAuthToken?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * If your app implements logout functionality, you can call logoutEmail to dissociate the email from the device
+   */
+  @Cordova()
+  logoutEmail(): Promise<any> {
+    return;
+  }
+
+  /**
+   * The passed in function will be fired when a notification subscription property changes.
+   * This includes the following events:
+   * - Getting a push token from Apple / Google.
+   * - Getting a player / user id from OneSignal
+   * - OneSignal.setSubscription is called
+   * - User disables or enables notifications
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  addEmailSubscriptionObserver(): Observable<any> {
+    return;
+  }
+
+  /**
+   * Clears all OneSignal notifications
    */
   @Cordova({ sync: true })
   clearOneSignalNotifications(): void {}
+
+  /**
+   * Allows you to delay the initialization of the SDK until the user provides privacy consent.
+   * The SDK will not be fully initialized until the provideUserConsent(true) method is called.
+   * @param {boolean} required
+   */
+  @Cordova()
+  setRequiresUserPrivacyConsent(required: boolean): void {}
+
+  /**
+   * If your application is set to require the user's privacy consent, you can provide this consent using this method.
+   * Until you call provideUserConsent(true), the SDK will not fully initialize and will not send any data to OneSignal.
+   * @param {boolean} granted
+   */
+  @Cordova()
+  provideUserConsent(granted: boolean): void {}
+
+  /**
+   * Accepts a callback, which returns a boolean variable indicating if the user has given privacy consent yet.
+   * @param {Function} callback
+   */
+  @Cordova()
+  userProvidedPrivacyConsent(callback: Function): void {}
 }

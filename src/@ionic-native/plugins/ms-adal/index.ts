@@ -1,8 +1,7 @@
-import { Plugin, IonicNativePlugin, checkAvailability, InstanceProperty, CordovaInstance } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin, checkAvailability } from '@ionic-native/core';
 
 export interface AuthenticationResult {
-
   accessToken: string;
   accesSTokenType: string;
   expiresOn: Date;
@@ -18,7 +17,6 @@ export interface AuthenticationResult {
    * @returns {String} The authorization header.
    */
   createAuthorizationHeader(): string;
-
 }
 
 export interface TokenCache {
@@ -49,7 +47,6 @@ export interface UserInfo {
   passwordExpiresOn: Date;
   uniqueId: string;
 }
-
 
 /**
  * @name MS ADAL
@@ -96,22 +93,28 @@ export interface UserInfo {
 })
 @Injectable()
 export class MSAdal extends IonicNativePlugin {
-
-  createAuthenticationContext(authority: string, validateAuthority: boolean = true) {
+  createAuthenticationContext(
+    authority: string,
+    validateAuthority = true
+  ) {
     let authContext: any;
-    if (checkAvailability(MSAdal.getPluginRef(), null, MSAdal.getPluginName()) === true) {
-      authContext = new (MSAdal.getPlugin()).AuthenticationContext(authority);
+    if (
+      checkAvailability(MSAdal.getPluginRef(), null, MSAdal.getPluginName()) ===
+      true
+    ) {
+      authContext = new (MSAdal.getPlugin()).AuthenticationContext(
+        authority,
+        validateAuthority
+      );
     }
     return new AuthenticationContext(authContext);
   }
-
 }
 
 /**
  * @hidden
  */
 export class AuthenticationContext {
-
   @InstanceProperty
   authority: string;
 
@@ -138,7 +141,15 @@ export class AuthenticationContext {
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any): Promise<AuthenticationResult> { return; }
+  acquireTokenAsync(
+    resourceUrl: string,
+    clientId: string,
+    redirectUrl: string,
+    userId?: string,
+    extraQueryParameters?: any
+  ): Promise<AuthenticationResult> {
+    return;
+  }
 
   /**
    * Acquires token WITHOUT using interactive flow. It checks the cache to return existing result
@@ -153,6 +164,11 @@ export class AuthenticationContext {
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenSilentAsync(resourceUrl: string, clientId: string, userId?: string): Promise<AuthenticationResult> { return; }
-
+  acquireTokenSilentAsync(
+    resourceUrl: string,
+    clientId: string,
+    userId?: string
+  ): Promise<AuthenticationResult> {
+    return;
+  }
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
-  checkAvailability,
   CordovaInstance,
   InstanceCheck,
   IonicNativePlugin,
-  Plugin
+  Plugin,
+  checkAvailability
 } from '@ionic-native/core';
 
 export interface FileUploadOptions {
@@ -152,7 +152,7 @@ export interface FileTransferError {
  *      // error
  *    })
  * }
- **
+ *
  * download() {
  *   const url = 'http://www.example.com/file.pdf';
  *   fileTransfer.download(url, this.file.dataDirectory + 'file.pdf').then((entry) => {

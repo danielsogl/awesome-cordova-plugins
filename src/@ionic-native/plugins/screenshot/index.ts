@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 declare const navigator: any;
 

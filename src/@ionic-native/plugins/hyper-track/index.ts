@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @beta
@@ -56,8 +56,8 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *   this.hyperTrack.stopTracking().then(success => {
  *     // Handle success (String). Should be "OK".
  *   }, error => {});
- * 
- * }, error => {});* 
+ *
+ * }, error => {});*
  * ```
  */
 @Plugin({
