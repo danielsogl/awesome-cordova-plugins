@@ -10,7 +10,7 @@ const ROOT = path.resolve(path.join(__dirname, '../../')),
 
 const FLAGS = '--access public'; // add any flags here if you want... (example: --tag alpha)
 
-const PACKAGES = fs.readdir(DIST);
+const PACKAGES = fs.readdirSync(DIST);
 
 const failedPackages = [];
 

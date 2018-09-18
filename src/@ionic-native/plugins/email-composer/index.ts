@@ -118,6 +118,30 @@ export interface EmailComposerOptions {
 @Injectable()
 export class EmailComposer extends IonicNativePlugin {
   /**
+   * Checks if the app has a permission to access email accounts information
+   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
+   */
+  @Cordova({
+    successIndex: 0,
+    errorIndex: 2
+  })
+  hasPermission(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Request permission to access email accounts information
+   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
+   */
+  @Cordova({
+    successIndex: 0,
+    errorIndex: 2
+  })
+  requestPermission(): Promise<boolean> {
+    return;
+  }
+
+  /**
    * Verifies if sending emails is supported on the device.
    *
    * @param {string} [app] App id or uri scheme.
@@ -147,39 +171,6 @@ export class EmailComposer extends IonicNativePlugin {
   }
 
   /**
-   * Request permission to access email accounts information
-   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
-   */
-  @Cordova({
-    successIndex: 0,
-    errorIndex: 2
-  })
-  requestPermission(): Promise<boolean> {
-    return;
-  }
-
-  /**
-   * Checks if the app has a permission to access email accounts information
-   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
-   */
-  @Cordova({
-    successIndex: 0,
-    errorIndex: 2
-  })
-  hasPermission(): Promise<boolean> {
-    return;
-  }
-
-  /**
-   * Adds a new mail app alias.
-   *
-   * @param {string} alias The alias name
-   * @param {string} packageName The package name
-   */
-  @Cordova()
-  addAlias(alias: string, packageName: string): void {}
-
-  /**
    * Displays the email composer pre-filled with data.
    *
    * @param {EmailComposerOptions} options Email
@@ -193,4 +184,13 @@ export class EmailComposer extends IonicNativePlugin {
   open(options: EmailComposerOptions, scope?: any): Promise<any> {
     return;
   }
+
+  /**
+   * Adds a new mail app alias.
+   *
+   * @param {string} alias The alias name
+   * @param {string} packageName The package name
+   */
+  @Cordova()
+  addAlias(alias: string, packageName: string): void {}
 }
