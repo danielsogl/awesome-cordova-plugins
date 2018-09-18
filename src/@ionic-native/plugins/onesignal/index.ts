@@ -415,6 +415,7 @@ export enum OSActionType {
 export class OneSignal extends IonicNativePlugin {
   /**
    * constants to use in inFocusDisplaying()
+   * @hidden
    */
   OSInFocusDisplayOption = {
     None: 0,
