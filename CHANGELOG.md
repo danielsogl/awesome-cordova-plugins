@@ -1,3 +1,13 @@
+<a name="5.0.0-beta.20"></a>
+# [5.0.0-beta.20](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.19...v5.0.0-beta.20) (2018-09-18)
+
+
+### Bug Fixes
+
+* **build:** Fix TypeScript bug, wrong type exported for wrap fn ([c433317](https://github.com/ionic-team/ionic-native/commit/c433317))
+
+
+
 <a name="5.0.0-beta.19"></a>
 # [5.0.0-beta.19](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.18...v5.0.0-beta.19) (2018-09-18)
 
