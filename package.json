@@ -58,9 +58,9 @@
     "tslint": "^5.11.0",
     "tslint-ionic-rules": "0.0.19",
     "typescript": "2.9.2",
-    "uglifyjs-webpack-plugin": "^2.0.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
     "unminified-webpack-plugin": "^2.0.0",
-    "webpack": "^4.19.0",
+    "webpack": "^4.19.1",
     "winston": "^3.1.0",
     "zone.js": "latest"
   },
