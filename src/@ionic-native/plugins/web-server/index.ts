@@ -56,12 +56,10 @@ export interface Request {
  */
 @Plugin({
   pluginName: 'WebServer',
-  plugin: 'cordova-plugin-webserver', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'window.webserver', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/bykof/cordova-plugin-webserver.git', // the github repository URL for the plugin
-  install: '', // OPTIONAL install command, in case the plugin requires variables
-  installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'cordova-plugin-webserver',
+  pluginRef: 'window.webserver',
+  repo: 'https://github.com/bykof/cordova-plugin-webserver.git',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class WebServer extends IonicNativePlugin {
@@ -74,7 +72,7 @@ export class WebServer extends IonicNativePlugin {
     callbackOrder: 'reverse',
   })
   start(port?: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   /**
@@ -82,7 +80,7 @@ export class WebServer extends IonicNativePlugin {
    */
   @Cordova()
   stop(): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   /**
@@ -95,7 +93,7 @@ export class WebServer extends IonicNativePlugin {
     clearFunction: 'stop'
   })
   onRequest(): Observable<Request> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
   /**
@@ -106,7 +104,7 @@ export class WebServer extends IonicNativePlugin {
    */
   @Cordova()
   sendResponse(requestId: string, responseObject: Response): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 
 }
