@@ -45,7 +45,10 @@ export class SqliteDbCopy extends IonicNativePlugin {
    * @param location {number} Location where to copy the database for app (only applicable for ios).For Android pass 0.
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 2,
+    errorIndex: 3
+  })
   copy(dbname: string, location: number): Promise<any> {
     return;
   }
@@ -55,7 +58,10 @@ export class SqliteDbCopy extends IonicNativePlugin {
    * @param source {string} Full native path for the folder in which db file is present. The "/" must be added at the end of path. For.eg. /sdcard/mydb/. Should not include dbname.
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 2,
+    errorIndex: 3
+  })
   checkDbOnStorage(dbname: string, source: string): Promise<any> {
     return;
   }
@@ -73,7 +79,10 @@ export class SqliteDbCopy extends IonicNativePlugin {
    * @param deleteolddb {boolean} A boolean value if set to true, will delete the existing db from the local app database folder before copying the new db. Please provide proper boolean value true or false;
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 4,
+    errorIndex: 5
+  })
   copyDbFromStorage(
     dbname: string,
     location: number,
@@ -96,7 +105,10 @@ export class SqliteDbCopy extends IonicNativePlugin {
    * @param overwrite {boolean}  If set to true, then will replace the file at the destination. Otherwise will throw an error, if destination file already exists.
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 4,
+    errorIndex: 5
+  })
   copyDbToStorage(
     dbname: string,
     location: number,
@@ -117,7 +129,10 @@ export class SqliteDbCopy extends IonicNativePlugin {
    * @param location {number} Location where to copy the database for app (only applicable for ios).For Android pass 0.
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
-  @Cordova()
+  @Cordova({
+    successIndex: 2,
+    errorIndex: 3
+  })
   remove(dbname: string, location: number): Promise<any> {
     return;
   }
