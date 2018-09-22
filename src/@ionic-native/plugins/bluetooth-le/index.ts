@@ -466,7 +466,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * Currently the discoverable state does not have any relevance because there is no "setDiscoverable" functionality in place. That may change in the future.
    * @returns {Promise<AdapterInfo>}
    */
-  @Cordova({ callbackOrder: 'reverse', observable: true })
+  @Cordova({ callbackOrder: 'reverse' })
   getAdapterInfo(): Promise<AdapterInfo> {
     return;
   }
