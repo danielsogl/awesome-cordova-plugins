@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CordovaCheck, CordovaInstance, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { CordovaCheck, CordovaInstance, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
 
 /**
  * @hidden
  */
 export class SecureStorageObject {
-
-  constructor(private _objectInstance: any) {
-  }
+  constructor(private _objectInstance: any) {}
 
   /**
    * Gets a stored item
@@ -76,7 +74,6 @@ export class SecureStorageObject {
   secureDevice(): Promise<any> {
     return;
   }
-
 }
 
 /**
@@ -134,7 +131,6 @@ export class SecureStorageObject {
 })
 @Injectable()
 export class SecureStorage extends IonicNativePlugin {
-
   /**
    * Creates a namespaced storage.
    * @param store {string}
@@ -143,8 +139,11 @@ export class SecureStorage extends IonicNativePlugin {
   @CordovaCheck()
   create(store: string): Promise<SecureStorageObject> {
     return getPromise<SecureStorageObject>((res: Function, rej: Function) => {
-      const instance = new (SecureStorage.getPlugin())(() => res(new SecureStorageObject(instance)), rej, store);
+      const instance = new (SecureStorage.getPlugin())(
+        () => res(new SecureStorageObject(instance)),
+        rej,
+        store
+      );
     });
   }
-
 }
