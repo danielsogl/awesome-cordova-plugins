@@ -6,8 +6,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
-import { merge } from 'rxjs/observable/merge';
+import { Observable, merge } from 'rxjs';
 
 declare const navigator: any;
 
@@ -66,13 +65,13 @@ export class Network extends IonicNativePlugin {
    * Connection type
    * @return {string}
    */
-  @CordovaProperty type: string;
+  @CordovaProperty() type: string;
 
   /**
    * Downlink Max Speed
    * @return {string}
    */
-  @CordovaProperty downlinkMax: string;
+  @CordovaProperty() downlinkMax: string;
 
   /**
    * Returns an observable to watch connection changes

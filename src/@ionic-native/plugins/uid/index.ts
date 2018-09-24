@@ -46,22 +46,22 @@ import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 @Injectable()
 export class Uid extends IonicNativePlugin {
   /** Get the device Universally Unique Identifier (UUID). */
-  @CordovaProperty
+  @CordovaProperty()
   UUID: string;
 
   /** Get the device International Mobile Station Equipment Identity (IMEI). */
-  @CordovaProperty
+  @CordovaProperty()
   IMEI: string;
 
   /** Get the device International mobile Subscriber Identity (IMSI). */
-  @CordovaProperty
+  @CordovaProperty()
   IMSI: string;
 
   /** Get the sim Integrated Circuit Card Identifier (ICCID). */
-  @CordovaProperty
+  @CordovaProperty()
   ICCID: string;
 
   /** Get the Media Access Control address (MAC). */
-  @CordovaProperty
+  @CordovaProperty()
   MAC: string;
 }

@@ -125,6 +125,6 @@ export class StatusBar extends IonicNativePlugin {
   /**
    * Whether the StatusBar is currently visible or not.
    */
-  @CordovaProperty
+  @CordovaProperty()
   isVisible: boolean;
 }

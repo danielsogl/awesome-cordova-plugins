@@ -5,7 +5,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface IntentOptions {
   requestCode?: number;
@@ -61,84 +61,84 @@ export class WebIntent extends IonicNativePlugin {
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_SEND: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_VIEW: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   EXTRA_TEXT: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   EXTRA_SUBJECT: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   EXTRA_STREAM: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   EXTRA_EMAIL: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_CALL: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_SENDTO: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_GET_CONTENT: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_PICK: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_INSTALL_PACKAGE: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_UNINSTALL_PACKAGE: string;
 
   /**

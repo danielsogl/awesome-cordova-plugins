@@ -90,20 +90,20 @@ export interface IContactProperties {
  */
 export class Contact implements IContactProperties {
   private _objectInstance: any;
-  @InstanceProperty id: string;
-  @InstanceProperty displayName: string;
-  @InstanceProperty name: IContactName;
-  @InstanceProperty nickname: string;
-  @InstanceProperty phoneNumbers: IContactField[];
-  @InstanceProperty emails: IContactField[];
-  @InstanceProperty addresses: IContactAddress[];
-  @InstanceProperty ims: IContactField[];
-  @InstanceProperty organizations: IContactOrganization[];
-  @InstanceProperty birthday: Date;
-  @InstanceProperty note: string;
-  @InstanceProperty photos: IContactField[];
-  @InstanceProperty categories: IContactField[];
-  @InstanceProperty urls: IContactField[];
+  @InstanceProperty() id: string;
+  @InstanceProperty() displayName: string;
+  @InstanceProperty() name: IContactName;
+  @InstanceProperty() nickname: string;
+  @InstanceProperty() phoneNumbers: IContactField[];
+  @InstanceProperty() emails: IContactField[];
+  @InstanceProperty() addresses: IContactAddress[];
+  @InstanceProperty() ims: IContactField[];
+  @InstanceProperty() organizations: IContactOrganization[];
+  @InstanceProperty() birthday: Date;
+  @InstanceProperty() note: string;
+  @InstanceProperty() photos: IContactField[];
+  @InstanceProperty() categories: IContactField[];
+  @InstanceProperty() urls: IContactField[];
 
   [key: string]: any;
 

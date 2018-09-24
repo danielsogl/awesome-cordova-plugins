@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Observable, fromEvent } from 'rxjs';
 
 export interface AdMobFreeBannerConfig {
   /**

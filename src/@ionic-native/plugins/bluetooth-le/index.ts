@@ -5,7 +5,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /* Available status of device */
 export type Status =
@@ -1048,28 +1048,28 @@ export class BluetoothLE extends IonicNativePlugin {
     return;
   }
 
-  @CordovaProperty
+  @CordovaProperty()
   SCAN_MODE_OPPORTUNISTIC: number;
-  @CordovaProperty
+  @CordovaProperty()
   SCAN_MODE_LOW_POWER: number;
-  @CordovaProperty
+  @CordovaProperty()
   SCAN_MODE_BALANCED: number;
-  @CordovaProperty
+  @CordovaProperty()
   SCAN_MODE_LOW_LATENCY: number;
-  @CordovaProperty
+  @CordovaProperty()
   MATCH_MODE_AGRESSIVE: number;
-  @CordovaProperty
+  @CordovaProperty()
   MATCH_MODE_STICKY: number;
-  @CordovaProperty
+  @CordovaProperty()
   MATCH_NUM_ONE_ADVERTISEMENT: number;
-  @CordovaProperty
+  @CordovaProperty()
   MATCH_NUM_FEW_ADVERTISEMENT: number;
-  @CordovaProperty
+  @CordovaProperty()
   MATCH_NUM_MAX_ADVERTISEMENT: number;
-  @CordovaProperty
+  @CordovaProperty()
   CALLBACK_TYPE_ALL_MATCHES: number;
-  @CordovaProperty
+  @CordovaProperty()
   CALLBACK_TYPE_FIRST_MATCH: number;
-  @CordovaProperty
+  @CordovaProperty()
   CALLBACK_TYPE_MATCH_LOST: number;
 }

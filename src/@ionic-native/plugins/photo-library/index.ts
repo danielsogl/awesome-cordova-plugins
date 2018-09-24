@@ -5,8 +5,7 @@ import {
   Plugin,
   wrap
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
+import { Observable, Observer } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 /**
