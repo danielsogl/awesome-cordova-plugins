@@ -668,7 +668,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {Promise<OperationResult>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  read(params: DescriptorParams): Promise<{ result: OperationResult }> {
+  read(params: DescriptorParams): Promise<OperationResult> {
     return;
   }
 
@@ -678,10 +678,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * Once a subscription is no longer needed, execute unsubscribe in a similar fashion.
    * The Client Configuration descriptor will automatically be written to enable notification/indication based on the characteristic's properties.
    * @param {DescriptorParams} params
-   * @returns {(Observable<{ result: OperationResult }>)}
+   * @returns {Observable<OperationResult>}
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  subscribe(params: DescriptorParams): Observable<{ result: OperationResult }> {
+  subscribe(params: DescriptorParams): Observable<OperationResult> {
     return;
   }
 
