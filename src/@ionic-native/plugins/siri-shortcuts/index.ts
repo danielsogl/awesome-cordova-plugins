@@ -75,6 +75,7 @@ export interface ActivatedShortcutOptions {
  * @interfaces
  * SiriShortcut
  * SiriShortcutOptions
+ * ActivatedShortcutOptions
  */
 @Plugin({
   pluginName: 'SiriShortcuts',
