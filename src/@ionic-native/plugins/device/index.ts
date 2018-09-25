@@ -30,38 +30,38 @@ declare const window: any;
 export class Device extends IonicNativePlugin {
 
   /** Get the version of Cordova running on the device. */
-  @CordovaProperty
+  @CordovaProperty()
   cordova: string;
 
   /**
    * The device.model returns the name of the device's model or product. The value is set
    * by the device manufacturer and may be different across versions of the same product.
    */
-  @CordovaProperty
+  @CordovaProperty()
   model: string;
 
   /** Get the device's operating system name. */
-  @CordovaProperty
+  @CordovaProperty()
   platform: string;
 
   /** Get the device's Universally Unique Identifier (UUID). */
-  @CordovaProperty
+  @CordovaProperty()
   uuid: string;
 
   /** Get the operating system version. */
-  @CordovaProperty
+  @CordovaProperty()
   version: string;
 
   /** Get the device's manufacturer. */
-  @CordovaProperty
+  @CordovaProperty()
   manufacturer: string;
 
   /** Whether the device is running on a simulator. */
-  @CordovaProperty
+  @CordovaProperty()
   isVirtual: boolean;
 
   /** Get the device hardware serial number. */
-  @CordovaProperty
+  @CordovaProperty()
   serial: string;
 
 }

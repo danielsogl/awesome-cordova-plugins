@@ -1,6 +1,6 @@
 import 'core-js';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { Cordova, CordovaCheck, CordovaInstance, CordovaProperty, InstanceProperty, Plugin } from './decorators';
 import { IonicNativePlugin } from './ionic-native-plugin';
@@ -11,7 +11,7 @@ declare const window: any;
 class TestObject {
   constructor(public _objectInstance: any) {}
 
-  @InstanceProperty name: string;
+  @InstanceProperty() name: string;
 
   @CordovaInstance({ sync: true })
   pingSync(): string {
@@ -32,7 +32,7 @@ class TestObject {
   platforms: ['Android', 'iOS']
 })
 class TestPlugin extends IonicNativePlugin {
-  @CordovaProperty name: string;
+  @CordovaProperty() name: string;
 
   @Cordova({ sync: true })
   pingSync(): string {

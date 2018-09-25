@@ -649,74 +649,74 @@ export class File extends IonicNativePlugin {
   /**
    *  Read-only directory where the application is installed.
    */
-  @CordovaProperty
+  @CordovaProperty()
   applicationDirectory: string;
 
   /**
    *  Read-only directory where the application is installed.
    */
-  @CordovaProperty
+  @CordovaProperty()
   applicationStorageDirectory: string;
 
   /**
    * Where to put app-specific data files.
    */
-  @CordovaProperty
+  @CordovaProperty()
   dataDirectory: string;
 
   /**
    * Cached files that should survive app restarts.
    * Apps should not rely on the OS to delete files in here.
    */
-  @CordovaProperty
+  @CordovaProperty()
   cacheDirectory: string;
 
   /**
    * Android: the application space on external storage.
    */
-  @CordovaProperty
+  @CordovaProperty()
   externalApplicationStorageDirectory: string;
 
   /**
    *  Android: Where to put app-specific data files on external storage.
    */
-  @CordovaProperty
+  @CordovaProperty()
   externalDataDirectory: string;
 
   /**
    * Android: the application cache on external storage.
    */
-  @CordovaProperty
+  @CordovaProperty()
   externalCacheDirectory: string;
 
   /**
    * Android: the external storage (SD card) root.
    */
-  @CordovaProperty
+  @CordovaProperty()
   externalRootDirectory: string;
 
   /**
    * iOS: Temp directory that the OS can clear at will.
    */
-  @CordovaProperty
+  @CordovaProperty()
   tempDirectory: string;
 
   /**
    * iOS: Holds app-specific files that should be synced (e.g. to iCloud).
    */
-  @CordovaProperty
+  @CordovaProperty()
   syncedDataDirectory: string;
 
   /**
    * iOS: Files private to the app, but that are meaningful to other applications (e.g. Office files)
    */
-  @CordovaProperty
+  @CordovaProperty()
   documentsDirectory: string;
 
   /**
    * BlackBerry10: Files globally available to all apps
    */
-  @CordovaProperty
+  @CordovaProperty()
   sharedDirectory: string;
 
   cordovaFileError: any = {

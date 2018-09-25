@@ -5,7 +5,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 declare let window: any;
 
 export interface NdefEvent {
@@ -304,36 +304,36 @@ export class NFC extends IonicNativePlugin {
  */
 @Injectable()
 export class Ndef extends IonicNativePlugin {
-  @CordovaProperty
+  @CordovaProperty()
   TNF_EMPTY: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_WELL_KNOWN: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_MIME_MEDIA: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_ABSOLUTE_URI: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_EXTERNAL_TYPE: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_UNKNOWN: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_UNCHANGED: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_RESERVED: number;
 
-  @CordovaProperty
+  @CordovaProperty()
   RTD_TEXT: number[];
-  @CordovaProperty
+  @CordovaProperty()
   RTD_URI: number[];
-  @CordovaProperty
+  @CordovaProperty()
   RTD_SMART_POSTER: number[];
-  @CordovaProperty
+  @CordovaProperty()
   RTD_ALTERNATIVE_CARRIER: number[];
-  @CordovaProperty
+  @CordovaProperty()
   RTD_HANDOVER_CARRIER: number[];
-  @CordovaProperty
+  @CordovaProperty()
   RTD_HANDOVER_REQUEST: number[];
-  @CordovaProperty
+  @CordovaProperty()
   RTD_HANDOVER_SELECT: number[];
 
   @Cordova({ sync: true })
@@ -414,10 +414,10 @@ export class Ndef extends IonicNativePlugin {
     return;
   }
 
-  @CordovaProperty
+  @CordovaProperty()
   textHelper: TextHelper;
 
-  @CordovaProperty
+  @CordovaProperty()
   uriHelper: UriHelper;
 }
 

@@ -70,7 +70,7 @@ export class Diagnostic extends IonicNativePlugin {
     BODY_SENSORS: 'BODY_SENSORS'
   };
 
-  @CordovaProperty
+  @CordovaProperty()
   permissionStatus: {
     GRANTED: string;
     DENIED: string;
@@ -129,7 +129,7 @@ export class Diagnostic extends IonicNativePlugin {
     POWERING_ON: 'powering_on'
   };
 
-  @CordovaProperty
+  @CordovaProperty()
   NFCState: {
     UNKNOWN: string;
     POWERED_OFF: string;
@@ -138,7 +138,7 @@ export class Diagnostic extends IonicNativePlugin {
     POWERING_OFF: string;
   };
 
-  @CordovaProperty
+  @CordovaProperty()
   motionStatus: {
     NOT_REQUESTED: string;
     GRANTED: string;

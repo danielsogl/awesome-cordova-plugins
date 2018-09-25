@@ -115,13 +115,13 @@ export class MSAdal extends IonicNativePlugin {
  * @hidden
  */
 export class AuthenticationContext {
-  @InstanceProperty
+  @InstanceProperty()
   authority: string;
 
-  @InstanceProperty
+  @InstanceProperty()
   validateAuthority: boolean;
 
-  @InstanceProperty
+  @InstanceProperty()
   tokenCache: any;
 
   constructor(private _objectInstance: any) {}

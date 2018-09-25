@@ -181,7 +181,7 @@ export class AppRate extends IonicNativePlugin {
    * Configure various settings for the Rating View.
    * See table below for options
    */
-  @CordovaProperty preferences: AppRatePreferences;
+  @CordovaProperty() preferences: AppRatePreferences;
 
   /**
    * Prompts the user for rating

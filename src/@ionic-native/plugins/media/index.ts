@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin, checkAvailability } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
+import { Observable, Observer } from 'rxjs';
+
 
 /**
  * @hidden
@@ -26,19 +26,19 @@ export class MediaObject {
   /**
    * @hidden
    */
-  @InstanceProperty
+  @InstanceProperty()
   successCallback: Function;
 
   /**
    * @hidden
    */
-  @InstanceProperty
+  @InstanceProperty()
   errorCallback: Function;
 
   /**
    * @hidden
    */
-  @InstanceProperty
+  @InstanceProperty()
   statusCallback: Function;
 
   constructor(private _objectInstance: any) {

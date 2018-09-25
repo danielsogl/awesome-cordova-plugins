@@ -187,7 +187,7 @@ export class Pinterest extends IonicNativePlugin {
   /**
    * Convenience constant for authentication scopes
    */
-  @CordovaProperty
+  @CordovaProperty()
   SCOPES: {
     READ_PUBLIC: string;
     WRITE_PUBLIC: string;

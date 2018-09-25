@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 declare const navigator: any;
 
@@ -159,21 +159,21 @@ export class MediaCapture extends IonicNativePlugin {
    * The recording image sizes and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty
+  @CordovaProperty()
   supportedImageModes: ConfigurationData[];
 
   /**
    * The audio recording formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty
+  @CordovaProperty()
   supportedAudioModes: ConfigurationData[];
 
   /**
    * The recording video resolutions and formats supported by the device.
    * @returns {ConfigurationData[]}
    */
-  @CordovaProperty
+  @CordovaProperty()
   supportedVideoModes: ConfigurationData[];
 
   /**

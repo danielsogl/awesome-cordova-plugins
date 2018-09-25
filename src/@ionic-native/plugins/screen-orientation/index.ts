@@ -5,7 +5,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name Screen Orientation
@@ -109,6 +109,6 @@ export class ScreenOrientation extends IonicNativePlugin {
   /**
    * Get the current orientation of the device.
    */
-  @CordovaProperty
+  @CordovaProperty()
   type: string;
 }
