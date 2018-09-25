@@ -57,7 +57,7 @@
     "typescript": "2.9.2",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "unminified-webpack-plugin": "^2.0.0",
-    "webpack": "^4.20.0",
+    "webpack": "^4.20.1",
     "winston": "^3.1.0",
     "zone.js": "^0.8.26"
   },
