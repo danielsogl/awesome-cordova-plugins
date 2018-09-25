@@ -37,16 +37,23 @@ export interface DocumentViewerOptions {
  * @usage
  * ```typescript
  * import { DocumentViewer } from '@ionic-native/document-viewer';
+ * import { Platform } from 'ionic-angular';
  *
- *
- * constructor(private document: DocumentViewer) { }
+ * constructor(private document: DocumentViewer, public platform: Platform) { }
  *
  * ...
  * const options: DocumentViewerOptions = {
  *   title: 'My PDF'
  * }
  *
- * this.document.viewDocument('assets/myFile.pdf', 'application/pdf', options)
+ * // since Relative URIs are not supported you need to specify the path for each platform,
+ * let baseUrl = 'file:///android_asset/www';
+ *
+ * if(this.platform.is('ios')) {
+ *    baseUrl = location.href.replace("/index.html", ""); 
+ * }
+ *
+ * this.document.viewDocument(baseUrl + '/assets/myFile.pdf', 'application/pdf', options)
  *
  * ```
  *
