@@ -59,12 +59,13 @@ export class Keyboard extends IonicNativePlugin {
 
   /**
    * Programatically set the resize mode
+   * @param mode {string}
    */
   @Cordova({
     sync: true,
     platforms: ['iOS']
   })
-  setResizeMode(): void {}
+  setResizeMode(mode: string): void {}
 
   /**
    * Creates an observable that notifies you when the keyboard is shown. Unsubscribe to observable to cancel event watch.
