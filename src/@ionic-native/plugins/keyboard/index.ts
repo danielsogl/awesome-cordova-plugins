@@ -58,7 +58,7 @@ export class Keyboard extends IonicNativePlugin {
   show(): void {}
 
   /**
-   * Programatically set the resize mode
+   * Programmatically set the resize mode
    */
   @Cordova({
     sync: true,
