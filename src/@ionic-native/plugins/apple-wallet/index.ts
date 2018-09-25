@@ -17,7 +17,7 @@ export interface CardData {
 /**
  * @name Apple Wallet
  * @description
- * This plugin does something
+ * A Cordova plugin that enables users from Add Payment Cards to their Apple Wallet.
  *
  * @usage
  * ```typescript
