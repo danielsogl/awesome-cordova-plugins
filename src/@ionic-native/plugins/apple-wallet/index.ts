@@ -1,18 +1,5 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
-
 
 export interface EncryptedCardData {
   activationData: string;
@@ -26,7 +13,6 @@ export interface CardData {
   localizedDescription?: string;
   paymentNetwork: string;
 }
-
 
 /**
  * @name Apple Wallet
@@ -86,26 +72,27 @@ export interface CardData {
  *  });
  *
  * ```
+ * @Interfaces
+ * EncryptedCardData
+ * CardData
  */
 @Plugin({
   pluginName: 'AppleWallet',
-  plugin: 'cordova-apple-wallet', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'AppleWallet', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/tomavic/cordova-apple-wallet', // the github repository URL for the plugin
-  platforms: ['iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'cordova-apple-wallet',
+  pluginRef: 'AppleWallet',
+  repo: 'https://github.com/tomavic/cordova-apple-wallet',
+  platforms: ['iOS']
 })
 @Injectable()
 export class AppleWallet extends IonicNativePlugin {
-
   /**
    * Detects if the current device supports Apple Wallet
    * @return {Promise<boolean>} Returns a promise
    */
   @Cordova()
   available(): Promise<boolean> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
-
 
   /**
    * Simple call with the configuration data needed to instantiate a new PKAddPaymentPassViewController object.
@@ -114,9 +101,8 @@ export class AppleWallet extends IonicNativePlugin {
    */
   @Cordova()
   startAddPaymentPass(data: CardData): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
-
 
   /**
    * Simple call contains the card data needed to add a card to Apple Pay.
@@ -125,8 +111,6 @@ export class AppleWallet extends IonicNativePlugin {
    */
   @Cordova()
   completeAddPaymentPass(data: EncryptedCardData): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
-
 }
-
