@@ -45,12 +45,12 @@ export interface DocumentViewerOptions {
  * const options: DocumentViewerOptions = {
  *   title: 'My PDF'
  * }
- * 
+ *
  * // since Relative URIs are not supported you need to specify the path for each platform,
  * let baseUrl = 'file:///android_asset/www';
- * 
+ *
  * if(this.platform.is('ios')) {
- *   baseUrl = location.href.replace("/index.html", ""); 
+ *    baseUrl = location.href.replace("/index.html", ""); 
  * }
  *
  * this.document.viewDocument(baseUrl + '/assets/myFile.pdf', 'application/pdf', options)
