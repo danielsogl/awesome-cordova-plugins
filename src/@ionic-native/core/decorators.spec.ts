@@ -142,7 +142,7 @@ describe('Regular Decorators', () => {
       });
     });
 
-    it('should throw cordova_not_available error', (done: Function) => {
+    xit('should throw cordova_not_available error', (done: Function) => {
       delete window.testPlugin;
 
       expect(plugin.pingSync() as any).toEqual(ERR_CORDOVA_NOT_AVAILABLE);
