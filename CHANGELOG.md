@@ -1,3 +1,21 @@
+<a name="5.0.0-beta.21"></a>
+# [5.0.0-beta.21](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.20...v5.0.0-beta.21) (2018-09-25)
+
+
+### Bug Fixes
+
+* **admob-free:** fix duplicated class ([95b9262](https://github.com/ionic-team/ionic-native/commit/95b9262))
+* **bluetooth-le:** Removed a wrong cordova decorator param ([#2733](https://github.com/ionic-team/ionic-native/issues/2733)) ([cbeb413](https://github.com/ionic-team/ionic-native/commit/cbeb413))
+* **build:** fix macos mojave build errors ([358474d](https://github.com/ionic-team/ionic-native/commit/358474d))
+* **keyboard:** include the mode parameter in setResizeMode() ([8d57df3](https://github.com/ionic-team/ionic-native/commit/8d57df3))
+* **keyboard:** use cordova-plugin-ionic-keyboard ([#2743](https://github.com/ionic-team/ionic-native/issues/2743)) ([fbf7463](https://github.com/ionic-team/ionic-native/commit/fbf7463)), closes [#2306](https://github.com/ionic-team/ionic-native/issues/2306)
+* **printer:** import getPromise ([15cd285](https://github.com/ionic-team/ionic-native/commit/15cd285))
+* **screenshot:** import getPromise ([e661f2e](https://github.com/ionic-team/ionic-native/commit/e661f2e))
+* **secure-storage:** add missing "getPromise" import ([#2727](https://github.com/ionic-team/ionic-native/issues/2727)) ([457d47c](https://github.com/ionic-team/ionic-native/commit/457d47c))
+* **secure-storage:** import getPromise ([653f5a2](https://github.com/ionic-team/ionic-native/commit/653f5a2))
+
+
+
 <a name="5.0.0-beta.20"></a>
 # [5.0.0-beta.20](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.19...v5.0.0-beta.20) (2018-09-18)
 
