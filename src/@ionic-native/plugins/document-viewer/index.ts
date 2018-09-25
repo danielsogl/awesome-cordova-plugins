@@ -47,7 +47,6 @@ export interface DocumentViewerOptions {
  * }
  * 
  * // since Relative URIs are not supported you need to specify the path for each platform,
- * 
  * let baseUrl = 'file:///android_asset/www';
  * 
  * if(this.platform.is('ios')) {
