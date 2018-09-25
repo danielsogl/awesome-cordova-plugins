@@ -13,11 +13,15 @@ export interface SiriShortcutOptions extends SiriShortcut {
   isEligibleForPrediction?: boolean;
 }
 
+export interface ActivatedShortcutOptions {
+  clear?: boolean;
+}
+
 /**
  * @beta
  * @name Siri Shortcuts
  * @description
- * This plugin only works when your app is built with XCode 10 Beta. Shortcuts will only appear on iOS-versions >= 12.0
+ * This plugin only works when your app is built with XCode 10. Shortcuts will only appear on iOS-versions >= 12.0
  *
  * This plugin enables the use of Siri shortcuts in Cordova. Siri Shortcuts enable the user to perform certain actions by adding them to Siri.
  * After you have donated a shortcut to Siri, it will appear in the settings menu, after which the user is able to add the action. You can check
@@ -71,6 +75,7 @@ export interface SiriShortcutOptions extends SiriShortcut {
  * @interfaces
  * SiriShortcut
  * SiriShortcutOptions
+ * ActivatedShortcutOptions
  */
 @Plugin({
   pluginName: 'SiriShortcuts',
@@ -134,10 +139,12 @@ export class SiriShortcuts extends IonicNativePlugin {
 
   /**
    * Get the current clicked user activity, and return `null` if none
+   * @param {ActivatedShortcutOptions|null} options Options to specify for getting the shortcut
+   * @param {boolean} options.clear Clear the currently activated shortcut, defaults to true
    * @return Promise<SiriShortcut|null>
    */
   @Cordova()
-  getActivatedShortcut(): Promise<SiriShortcut | null> {
+  getActivatedShortcut(options?: ActivatedShortcutOptions): Promise<SiriShortcut | null> {
     return;
   }
 }
