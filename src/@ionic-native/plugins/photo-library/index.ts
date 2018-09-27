@@ -122,7 +122,7 @@ export class PhotoLibrary extends IonicNativePlugin {
    * @param options {GetLibraryOptions} Optional, like thumbnail size and chunks settings.
    * @return {Observable<LibraryItem[]>} Returns library items. If appropriate option was set, will be returned by chunks.
    */
-  @CordovaCheck({
+  @Cordova({
     observable: true
   })
   getLibrary(options?: GetLibraryOptions): Observable<LibraryItem[]> {

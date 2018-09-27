@@ -1217,46 +1217,6 @@ export class File extends IonicNativePlugin {
     return this.readFile<ArrayBuffer>(path, file, 'ArrayBuffer');
   }
 
-  private readFile<T>(
-    path: string,
-    file: string,
-    readAs: 'ArrayBuffer' | 'BinaryString' | 'DataURL' | 'Text'
-  ): Promise<T> {
-    if (/^\//.test(file)) {
-      const err = new FileError(5);
-      err.message = 'file-name cannot start with /';
-      return Promise.reject<any>(err);
-    }
-
-    return this.resolveDirectoryUrl(path)
-      .then((directoryEntry: DirectoryEntry) => {
-        return this.getFile(directoryEntry, file, { create: false });
-      })
-      .then((fileEntry: FileEntry) => {
-        const reader = new FileReader();
-        return new Promise<T>((resolve, reject) => {
-          reader.onloadend = () => {
-            if (reader.result !== undefined || reader.result !== null) {
-              resolve((reader.result as any) as T);
-            } else if (reader.error !== undefined || reader.error !== null) {
-              reject(reader.error);
-            } else {
-              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
-            }
-          };
-
-          fileEntry.file(
-            file => {
-              reader[`readAs${readAs}`].call(reader, file);
-            },
-            error => {
-              reject(error);
-            }
-          );
-        });
-      });
-  }
-
   /**
    * Move a file to a given path.
    *
