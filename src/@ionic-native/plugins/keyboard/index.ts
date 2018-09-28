@@ -39,7 +39,7 @@ export class Keyboard extends IonicNativePlugin {
    */
   @CordovaProperty
   isVisible: boolean;
-  
+
   /**
    * Hide the keyboard accessory bar with the next, previous and done buttons.
    * @param hide {boolean}
