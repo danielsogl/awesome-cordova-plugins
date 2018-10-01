@@ -11,6 +11,17 @@ import { merge } from 'rxjs/observable/merge';
 
 declare const navigator: any;
 
+export enum Connection {
+  UNKNOWN = 0,
+  ETHERNET,
+  WIFI,
+  CELL_2G,
+  CELL_3G ,
+  CELL_4G,
+  CELL,
+  NONE
+}
+
 /**
  * @name Network
  * @description
@@ -62,6 +73,21 @@ declare const navigator: any;
 })
 @Injectable()
 export class Network extends IonicNativePlugin {
+
+  /**
+   * Constants for possible connection types
+   */
+  Connection = {
+    UNKNOWN: 'unknown',
+    ETHERNET: 'ethernet',
+    WIFI: 'wifi',
+    CELL_2G: '2g',
+    CELL_3G: '3g',
+    CELL_4G: '4g',
+    CELL: 'cellular',
+    NONE: 'none'
+  };
+
   /**
    * Connection type
    * @return {string}
