@@ -1,3 +1,21 @@
+<a name="4.15.0"></a>
+# [4.15.0](https://github.com/ionic-team/ionic-native/compare/v4.14.0...v4.15.0) (2018-09-25)
+
+
+### Bug Fixes
+
+* **keyboard:** use cordova-plugin-ionic-keyboard ([#2743](https://github.com/ionic-team/ionic-native/issues/2743)) ([1457a16](https://github.com/ionic-team/ionic-native/commit/1457a16)), closes [#2306](https://github.com/ionic-team/ionic-native/issues/2306)
+
+
+### Features
+
+* **plugins:** add AppleWallet ([#2740](https://github.com/ionic-team/ionic-native/issues/2740)) ([307477d](https://github.com/ionic-team/ionic-native/commit/307477d))
+* **plugins:** add web-server plugin ([#2726](https://github.com/ionic-team/ionic-native/issues/2726)) ([8116ddd](https://github.com/ionic-team/ionic-native/commit/8116ddd))
+* **siri-shortcuts:** Add clear option for the activated shortcut ([#2734](https://github.com/ionic-team/ionic-native/issues/2734)) ([3eff280](https://github.com/ionic-team/ionic-native/commit/3eff280))
+* **taptic-engine:** add missing functions and types ([a6bcc9a](https://github.com/ionic-team/ionic-native/commit/a6bcc9a))
+
+
+
 <a name="4.14.0"></a>
 # [4.14.0](https://github.com/ionic-team/ionic-native/compare/v4.13.0...v4.14.0) (2018-09-18)
 
@@ -19,12 +37,7 @@
 
 
 <a name="4.13.0"></a>
-# [4.13.0](https://github.com/ionic-team/ionic-native/compare/v4.12.3...v4.13.0) (2018-09-15)
-
-
-
-<a name="4.12.3"></a>
-## [4.12.3](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.17...v4.12.3) (2018-09-15)
+# [4.13.0](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.17...v4.13.0) (2018-09-15)
 
 
 ### Bug Fixes
