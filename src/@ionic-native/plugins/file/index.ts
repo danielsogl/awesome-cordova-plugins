@@ -1037,7 +1037,7 @@ export class File extends IonicNativePlugin {
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} fileName path relative to base path
    * @param {string | Blob | ArrayBuffer} text content, blob or ArrayBuffer to write
-   * @param {IWriteOptions} options replace file if set to true. See WriteOptions for more information.
+   * @param {IWriteOptions} whether to replace/append to an existing file. See IWriteOptions for more information.
    * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   @CordovaCheck()
@@ -1045,7 +1045,7 @@ export class File extends IonicNativePlugin {
     path: string,
     fileName: string,
     text: string | Blob | ArrayBuffer,
-    options: IWriteOptions = {}
+    options: IWriteOptions = {replace?: boolean, append?: boolean, truncate?: number}
   ): Promise<any> {
     if (/^\//.test(fileName)) {
       const err = new FileError(5);
