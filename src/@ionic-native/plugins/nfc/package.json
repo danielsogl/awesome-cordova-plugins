@@ -1,0 +1,53 @@
+{
+  "_args": [
+    [
+      "@ionic-native/nfc@4.15.0",
+      "/Users/stephen/Documents/Development/qoin/merchant_app/qoin-app"
+    ]
+  ],
+  "_from": "@ionic-native/nfc@4.15.0",
+  "_id": "@ionic-native/nfc@4.15.0",
+  "_inBundle": false,
+  "_integrity": "sha512-UpbkCViwFXUid+9qFQdYcIxTim25EicUMHU/TmE6v5nq2S0MuPs4JSkXbaXjIFs+YT8yPFk79OLibaKFVNzhoA==",
+  "_location": "/@ionic-native/nfc",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@ionic-native/nfc@4.15.0",
+    "name": "@ionic-native/nfc",
+    "escapedName": "@ionic-native%2fnfc",
+    "scope": "@ionic-native",
+    "rawSpec": "4.15.0",
+    "saveSpec": null,
+    "fetchSpec": "4.15.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@ionic-native/nfc/-/nfc-4.15.0.tgz",
+  "_spec": "4.15.0",
+  "_where": "/Users/stephen/Documents/Development/qoin/merchant_app/qoin-app",
+  "author": {
+    "name": "ionic"
+  },
+  "bugs": {
+    "url": "https://github.com/ionic-team/ionic-native/issues"
+  },
+  "description": "Ionic Native - Native plugins for ionic apps",
+  "homepage": "https://github.com/ionic-team/ionic-native#readme",
+  "license": "MIT",
+  "module": "index.js",
+  "name": "@ionic-native/nfc",
+  "peerDependencies": {
+    "@ionic-native/core": "^4.11.0",
+    "@angular/core": "*",
+    "rxjs": "^5.5.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/ionic-native.git"
+  },
+  "typings": "index.d.ts",
+  "version": "4.15.0"
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"index.ngfactory.js","sourceRoot":"","sources":["../../../src/@ionic-native/plugins/nfc/index.ngfactory.ts"],"names":[],"mappings":"","sourcesContent":["import * as i0 from '@angular/core';\ni0.ComponentFactory;\n"]}

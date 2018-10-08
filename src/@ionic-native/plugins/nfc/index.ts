@@ -286,6 +286,34 @@ export class NFC extends IonicNativePlugin {
   bytesToHexString(bytes: number[]): string {
     return;
   }
+
+  /**
+   * Android NfcAdapter.enableReaderMode flags
+   */
+//  let FLAG_READER_NFC_A: number = 0x1;
+//  const FLAG_READER_NFC_B: 0x2,
+//  const FLAG_READER_NFC_F: 0x4,
+//  const FLAG_READER_NFC_V: 0x8,
+//  const FLAG_READER_NFC_BARCODE: 0x10,
+//  const FLAG_READER_SKIP_NDEF_CHECK: 0x80,
+//  const FLAG_READER_NO_PLATFORM_SOUNDS: 0x100,
+
+  // Android NfcAdapter.enabledReaderMode
+
+  @Cordova({
+    observable: true,
+    successIndex: 1,
+    errorIndex: 4,
+    clearFunction: 'disableReaderMode',
+    clearWithArgs: true
+  })
+  readerMode(
+    flags: string,
+    readCallback?: Function,
+    errorCallback?: Function
+  ): Observable<any> {
+    return;
+  }
 }
 /**
  * @hidden
