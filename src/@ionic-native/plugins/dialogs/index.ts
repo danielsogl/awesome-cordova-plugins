@@ -22,7 +22,7 @@ export interface DialogsPromptCallback {
  *
  * @usage
  * ```typescript
- * import { Dialogs } from '@ionic-native/dialogs';
+ * import { Dialogs } from '@ionic-native/dialogs/ngx';
  *
  * constructor(private dialogs: Dialogs) { }
  *

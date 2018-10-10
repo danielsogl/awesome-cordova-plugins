@@ -12,7 +12,7 @@ export type LinkedInLoginScopes = 'r_basicprofile' | 'r_emailaddress' | 'rw_comp
  *
  * @usage
  * ```typescript
- * import { LinkedIn } from '@ionic-native/linkedin';
+ * import { LinkedIn } from '@ionic-native/linkedin/ngx';
  *
  * constructor(private linkedin: LinkedIn) { }
  *

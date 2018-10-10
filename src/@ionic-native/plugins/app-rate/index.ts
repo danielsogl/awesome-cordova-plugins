@@ -134,7 +134,7 @@ export interface AppUrls {
  *
  * @usage
  * ```typescript
- * import { AppRate } from '@ionic-native/app-rate';
+ * import { AppRate } from '@ionic-native/app-rate/ngx';
  *
  * constructor(private appRate: AppRate) { }
  *

@@ -377,7 +377,7 @@ export enum OSActionType {
  *
  * @usage
  * ```typescript
- * import { OneSignal } from '@ionic-native/onesignal';
+ * import { OneSignal } from '@ionic-native/onesignal/ngx';
  *
  * constructor(private oneSignal: OneSignal) { }
  *

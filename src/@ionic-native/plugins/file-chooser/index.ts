@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { FileChooser } from '@ionic-native/file-chooser';
+ * import { FileChooser } from '@ionic-native/file-chooser/ngx';
  *
  * constructor(private fileChooser: FileChooser) { }
  *

@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { FileOpener } from '@ionic-native/file-opener';
+ * import { FileOpener } from '@ionic-native/file-opener/ngx';
  *
  * constructor(private fileOpener: FileOpener) { }
  *

@@ -38,7 +38,7 @@ export interface IndexItem {
  *
  * @usage
  * ```typescript
- * import { IndexAppContent } from '@ionic-native/index-app-content';
+ * import { IndexAppContent } from '@ionic-native/index-app-content/ngx';
  *
  *
  * constructor(private indexAppContent: IndexAppContent) { }

@@ -44,7 +44,7 @@ export interface NdefTag {
  *
  * @usage
  * ```typescript
- * import { NFC, Ndef } from '@ionic-native/nfc';
+ * import { NFC, Ndef } from '@ionic-native/nfc/ngx';
  *
  * constructor(private nfc: NFC, private ndef: Ndef) { }
  *

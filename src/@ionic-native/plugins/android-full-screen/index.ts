@@ -36,7 +36,7 @@ export enum AndroidSystemUiFlags {
  * In Android 4.4+, however, you can now enter true full screen, fully interactive immersive mode. In this mode, your app will remain in true full screen until you choose otherwise; users can swipe down from the top of the screen to temporarily display the system UI.
  * @usage
  * ```typescript
- * import { AndroidFullScreen } from '@ionic-native/android-full-screen';
+ * import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx';
  *
  * constructor(private androidFullScreen: AndroidFullScreen) { }
  *

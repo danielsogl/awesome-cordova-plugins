@@ -26,7 +26,7 @@ export interface HttpdOptions {
  * Embedded httpd for Cordova apps. Light weight HTTP server.
  * @usage
  * ```typescript
- * import { Httpd, HttpdOptions } from '@ionic-native/httpd';
+ * import { Httpd, HttpdOptions } from '@ionic-native/httpd/ngx';
  *
  * constructor(private httpd: Httpd) { }
  *

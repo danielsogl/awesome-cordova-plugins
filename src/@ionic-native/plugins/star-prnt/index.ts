@@ -627,7 +627,7 @@ export interface CommandsArray extends Array<PrintCommand> {}
  *
  * @usage
  * ```typescript
- * import { StarPRNT } from '@ionic-native/star-prnt';
+ * import { StarPRNT } from '@ionic-native/star-prnt/ngx';
  *
  *
  * constructor(private starprnt: StarPRNT) { }

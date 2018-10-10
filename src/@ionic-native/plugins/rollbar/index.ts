@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Rollbar } from '@ionic-native/rollbar';
+ * import { Rollbar } from '@ionic-native/rollbar/ngx';
  *
  * constructor(private rollbar: Rollbar) { }
  *

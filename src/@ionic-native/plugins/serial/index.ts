@@ -27,7 +27,7 @@ export interface SerialOpenOptions {
  *
  * @usage
  * ```typescript
- * import { Serial } from '@ionic-native/serial';
+ * import { Serial } from '@ionic-native/serial/ngx';
  *
  * constructor(private serial: Serial) { }
  *

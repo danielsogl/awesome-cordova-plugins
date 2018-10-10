@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+ * import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
  *
  * constructor(private payPal: PayPal) { }
  *

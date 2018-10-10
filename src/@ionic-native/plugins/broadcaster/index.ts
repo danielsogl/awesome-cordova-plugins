@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
  *
  * @usage
  * ```typescript
- * import { Broadcaster } from '@ionic-native/broadcaster';
+ * import { Broadcaster } from '@ionic-native/broadcaster/ngx';
  *
  * constructor(private broadcaster: Broadcaster) { }
  *

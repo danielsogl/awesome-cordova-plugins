@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { UniqueDeviceID } from '@ionic-native/unique-device-id';
+ * import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
  *
  * constructor(private uniqueDeviceID: UniqueDeviceID) { }
  *

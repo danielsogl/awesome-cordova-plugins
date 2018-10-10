@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { AppPreferences } from '@ionic-native/app-preferences';
+ * import { AppPreferences } from '@ionic-native/app-preferences/ngx';
  *
  * constructor(private appPreferences: AppPreferences) { }
  *

@@ -96,7 +96,7 @@ export interface HotCodePushEventData {
  *
  * @usage
  * ```typescript
- * import { HotCodePush } from '@ionic-native/hot-code-push';
+ * import { HotCodePush } from '@ionic-native/hot-code-push/ngx';
  *
  * constructor(private hotCodePush: HotCodePush) { }
  *

@@ -109,7 +109,7 @@ export class ProDeploy {
  *
  * @usage
  * ```typescript
- * import { Pro, AppInfo, DeployInfo } from '@ionic-native/pro';
+ * import { Pro, AppInfo, DeployInfo } from '@ionic-native/pro/ngx';
  *
  *
  * constructor(private pro: Pro) { }

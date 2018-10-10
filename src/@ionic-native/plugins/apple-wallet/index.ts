@@ -21,7 +21,7 @@ export interface CardData {
  *
  * @usage
  * ```typescript
- * import { AppleWallet } from '@ionic-native/apple-wallet';
+ * import { AppleWallet } from '@ionic-native/apple-wallet/ngx';
  *
  *
  * constructor(private appleWallet: AppleWallet) { }

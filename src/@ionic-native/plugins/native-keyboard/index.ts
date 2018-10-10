@@ -180,7 +180,7 @@ export interface NativeKeyboardUpdateMessengerOptions {
  *
  * @usage
  * ```
- * import { NativeKeyboard } from '@ionic-native/native-keyboard';
+ * import { NativeKeyboard } from '@ionic-native/native-keyboard/ngx';
  *
  *
  * constructor(private nativeKeyboard: NativeKeyboard) { }

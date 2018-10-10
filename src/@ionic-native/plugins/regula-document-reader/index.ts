@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { RegulaDocumentReader } from '@ionic-native/regula-document-reader';
+ * import { RegulaDocumentReader } from '@ionic-native/regula-document-reader/ngx';
  *
  * let license; // read regula.license file
  * RegulaDocumentReader.initReader(license); // initialize reader

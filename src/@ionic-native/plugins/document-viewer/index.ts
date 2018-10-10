@@ -36,7 +36,7 @@ export interface DocumentViewerOptions {
  *
  * @usage
  * ```typescript
- * import { DocumentViewer } from '@ionic-native/document-viewer';
+ * import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
  *
  *
  * constructor(private document: DocumentViewer) { }

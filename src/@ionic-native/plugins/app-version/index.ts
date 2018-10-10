@@ -11,7 +11,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { AppVersion } from '@ionic-native/app-version';
+ * import { AppVersion } from '@ionic-native/app-version/ngx';
  *
  * constructor(private appVersion: AppVersion) { }
  *

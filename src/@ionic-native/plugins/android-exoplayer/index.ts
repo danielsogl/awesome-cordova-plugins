@@ -158,7 +158,7 @@ export interface AndroidExoPlayerControllerConfig {
  *
  * @usage
  * ```typescript
- * import { AndroidExoPlayer } from '@ionic-native/android-exoplayer';
+ * import { AndroidExoPlayer } from '@ionic-native/android-exoplayer/ngx';
  *
  * constructor(private androidExoPlayer: AndroidExoPlayer) { }
  *

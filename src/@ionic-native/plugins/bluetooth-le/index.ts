@@ -397,7 +397,7 @@ export interface AdapterInfo {
  *
  * @usage
  * ```typescript
- * import { BluetoothLE } from '@ionic-native/bluetooth-le';
+ * import { BluetoothLE } from '@ionic-native/bluetooth-le/ngx';
  *
  *
  * constructor(public bluetoothle: BluetoothLE, public plt: Platform) {

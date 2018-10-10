@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Base64 } from '@ionic-native/base64';
+ * import { Base64 } from '@ionic-native/base64/ngx';
  *
  * constructor(private base64: Base64) { }
  *

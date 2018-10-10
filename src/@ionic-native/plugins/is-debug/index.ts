@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { IsDebug } from '@ionic-native/is-debug';
+ * import { IsDebug } from '@ionic-native/is-debug/ngx';
  *
  * constructor(private isDebug: IsDebug) { }
  *

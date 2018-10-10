@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
  * @description This plugin defines a global DBMeter object, which permits to get the decibel values from the microphone.
  * @usage
  * ```typescript
- * import { DBMeter } from '@ionic-native/db-meter';
+ * import { DBMeter } from '@ionic-native/db-meter/ngx';
  *
  * constructor(private dbMeter: DBMeter) { }
  *

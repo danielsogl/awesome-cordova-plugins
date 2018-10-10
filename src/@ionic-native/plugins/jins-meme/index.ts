@@ -16,7 +16,7 @@ declare const cordova: any;
  *
  * @usage
  * ```typescript
- * import { JinsMeme } from '@ionic-native/jins-meme';
+ * import { JinsMeme } from '@ionic-native/jins-meme/ngx';
  *
  * constructor(private jinsMeme: JinsMeme) { }
  *

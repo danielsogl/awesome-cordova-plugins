@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
  *
  * @usage
  * ```typescript
- * import { ScreenOrientation } from '@ionic-native/screen-orientation';
+ * import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
  *
  * constructor(private screenOrientation: ScreenOrientation) { }
  *

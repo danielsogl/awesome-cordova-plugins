@@ -191,7 +191,7 @@ export type MediaErrorCallback = (error: MediaError) => void;
  *
  * @usage
  * ```typescript
- * import { Media, MediaObject } from '@ionic-native/media';
+ * import { Media, MediaObject } from '@ionic-native/media/ngx';
  *
  *
  * constructor(private media: Media) { }
@@ -259,8 +259,8 @@ export type MediaErrorCallback = (error: MediaError) => void;
  * 2.) If that's not working, too, create the file before using.
  * Example:
  * ```typescript
- * import { Media, MediaObject } from '@ionic-native/media';
- * import { File } from '@ionic-native/file';
+ * import { Media, MediaObject } from '@ionic-native/media/ngx';
+ * import { File } from '@ionic-native/file/ngx';
  *
  * ...
  *

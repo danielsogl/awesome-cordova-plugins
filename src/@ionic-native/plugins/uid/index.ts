@@ -8,8 +8,8 @@ import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Uid } from '@ionic-native/uid';
- * import { AndroidPermissions } from '@ionic-native/android-permissions';
+ * import { Uid } from '@ionic-native/uid/ngx';
+ * import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
  *
  * constructor(private uid: Uid, private androidPermissions: AndroidPermissions) { }
  *

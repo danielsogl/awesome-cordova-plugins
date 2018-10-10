@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { InAppPurchase } from '@ionic-native/in-app-purchase';
+ * import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
  *
  * constructor(private iap: InAppPurchase) { }
  *

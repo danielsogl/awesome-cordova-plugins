@@ -432,7 +432,7 @@ export interface ILocalNotification {
  *
  * @usage
  * ```typescript
- * import { LocalNotifications } from '@ionic-native/local-notifications';
+ * import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
  *
  *
  * constructor(private localNotifications: LocalNotifications) { }

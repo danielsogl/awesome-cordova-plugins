@@ -188,7 +188,7 @@ export class FlurryAnalyticsObject {
  *
  * @usage
  * ```typescript
- * import { FlurryAnalytics, FlurryAnalyticsObject, FlurryAnalyticsOptions } from '@ionic-native/flurry-analytics';
+ * import { FlurryAnalytics, FlurryAnalyticsObject, FlurryAnalyticsOptions } from '@ionic-native/flurry-analytics/ngx';
  *
  * constructor(private flurryAnalytics: FlurryAnalytics) { }
  *

@@ -17,7 +17,7 @@ export interface GlobalizationOptions {
  *
  * @usage
  * ```typescript
- * import { Globalization } from '@ionic-native/globalization';
+ * import { Globalization } from '@ionic-native/globalization/ngx';
  *
  * constructor(private globalization: Globalization) { }
  *

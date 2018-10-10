@@ -23,7 +23,7 @@ export interface NativeTransitionOptions {
  *
  * @usage
  * ```typescript
- * import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
+ * import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
  *
  * constructor(private nativePageTransitions: NativePageTransitions) { }
  *

@@ -57,7 +57,7 @@ export interface SpeechRecognitionListeningOptionsAndroid {
  *
  * @usage
  * ```typescript
- * import { SpeechRecognition } from '@ionic-native/speech-recognition';
+ * import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
  *
  * constructor(private speechRecognition: SpeechRecognition) { }
  *

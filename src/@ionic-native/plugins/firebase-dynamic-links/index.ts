@@ -32,7 +32,7 @@ export interface IDynamicLink {
  * ```
  * @usage
  * ```typescript
- * import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links';
+ * import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links/ngx';
  *
  *
  * constructor(private firebaseDynamicLinks: FirebaseDynamicLinks) { }

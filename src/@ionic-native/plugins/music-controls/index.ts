@@ -37,7 +37,7 @@ export interface MusicControlsOptions {
  *
  * @usage
  * ```typescript
- * import { MusicControls } from '@ionic-native/music-controls';
+ * import { MusicControls } from '@ionic-native/music-controls/ngx';
  *
  * constructor(private musicControls: MusicControls) { }
  *

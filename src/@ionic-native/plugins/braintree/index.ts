@@ -148,7 +148,7 @@ export interface PaymentUIResult {
  *
  * @usage
  * ```typescript
- * import { Braintree, ApplePayOptions, PaymentUIOptions } from '@ionic-native/braintree';
+ * import { Braintree, ApplePayOptions, PaymentUIOptions } from '@ionic-native/braintree/ngx';
  *
  * constructor(private braintree: Braintree) { }
  *

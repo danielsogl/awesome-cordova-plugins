@@ -139,7 +139,7 @@ export interface PinterestPin {
  *
  * @usage
  * ```typescript
- * import { Pinterest, PinterestUser, PinterestPin, PinterestBoard } from '@ionic-native/pinterest';
+ * import { Pinterest, PinterestUser, PinterestPin, PinterestBoard } from '@ionic-native/pinterest/ngx';
  *
  * constructor(private pinterest: Pinterest) { }
  *

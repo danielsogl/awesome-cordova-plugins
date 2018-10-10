@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { InAppPurchase2 } from '@ionic-native/in-app-purchase-2';
+ * import { InAppPurchase2 } from '@ionic-native/in-app-purchase-2/ngx';
  *
  * constructor(private store: InAppPurchase2) { }
  *
@@ -183,7 +183,7 @@ export class IAPError {
  *
  * @usage
  * ```
- * import { InAppPurchase2 } from '@ionic-native/in-app-purchase-2';
+ * import { InAppPurchase2 } from '@ionic-native/in-app-purchase-2/ngx';
  *
  *
  * constructor(private inAppPurchase2: InAppPurchase2) { }

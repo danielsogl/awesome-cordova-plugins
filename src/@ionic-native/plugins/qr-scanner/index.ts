@@ -67,7 +67,7 @@ export interface QRScannerStatus {
  *
  * @usage
  * ```typescript
- * import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+ * import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
  *
  *
  * constructor(private qrScanner: QRScanner) { }

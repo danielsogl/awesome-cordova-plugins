@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
  *
  * @usage
  * ```typescript
- * import { FTP } from '@ionic-native/ftp';
+ * import { FTP } from '@ionic-native/ftp/ngx';
  *
  *
  * constructor(private fTP: FTP) { }

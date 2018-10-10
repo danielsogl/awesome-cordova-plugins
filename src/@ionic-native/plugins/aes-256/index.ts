@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { AES256 } from '@ionic-native/aes-256';
+ * import { AES256 } from '@ionic-native/aes-256/ngx';
  *
  * private secureKey: string;
  * private secureIV: string;

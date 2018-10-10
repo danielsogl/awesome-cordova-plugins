@@ -28,7 +28,7 @@ export interface BLEScanOptions {
  *
  * ```typescript
  *
- * import { BLE } from '@ionic-native/ble';
+ * import { BLE } from '@ionic-native/ble/ngx';
  *
  * constructor(private ble: BLE) { }
  *

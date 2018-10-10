@@ -464,7 +464,7 @@ export interface DownloadProgress {
  *
  * @usage
  * ```typescript
- * import { CodePush } from '@ionic-native/code-push';
+ * import { CodePush } from '@ionic-native/code-push/ngx';
  *
  * constructor(private codePush: CodePush) { }
  *

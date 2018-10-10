@@ -6,7 +6,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * @description
  * @usage
  * ```typescript
- * import { GooglePlus } from '@ionic-native/google-plus';
+ * import { GooglePlus } from '@ionic-native/google-plus/ngx';
  *
  * constructor(private googlePlus: GooglePlus) { }
  *

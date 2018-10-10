@@ -62,7 +62,7 @@ export interface ActionSheetOptions {
  *
  * @usage
  * ```typescript
- * import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
+ * import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet/ngx';
  *
  * constructor(private actionSheet: ActionSheet) { }
  *

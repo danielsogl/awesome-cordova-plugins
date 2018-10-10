@@ -30,7 +30,7 @@ export interface ActivatedShortcutOptions {
  *
  * @usage
  * ```typescript
- * import { SiriShortcuts } from '@ionic-native/siri-shortcuts';
+ * import { SiriShortcuts } from '@ionic-native/siri-shortcuts/ngx';
  *
  *
  * constructor(private siriShortcuts: SiriShortcuts) { }

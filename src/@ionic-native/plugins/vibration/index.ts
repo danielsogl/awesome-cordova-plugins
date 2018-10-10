@@ -7,7 +7,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * @description Vibrates the device
  * @usage
  * ```typescript
- * import { Vibration } from '@ionic-native/vibration';
+ * import { Vibration } from '@ionic-native/vibration/ngx';
  *
  * constructor(private vibration: Vibration) { }
  *

@@ -160,7 +160,7 @@ export class ThemeableBrowserObject {
  *
  * @usage
  * ```typescript
- * import { ThemeableBrowser, ThemeableBrowserOptions, ThemeableBrowserObject } from '@ionic-native/themeable-browser';
+ * import { ThemeableBrowser, ThemeableBrowserOptions, ThemeableBrowserObject } from '@ionic-native/themeable-browser/ngx';
  *
  * constructor(private themeableBrowser: ThemeableBrowser) { }
  *

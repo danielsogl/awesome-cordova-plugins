@@ -13,7 +13,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Keychain } from '@ionic-native/keychain';
+ * import { Keychain } from '@ionic-native/keychain/ngx';
  *
  * constructor(private keychain: Keychain) { }
  *

@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```
- * import { TealiumAdIdentifier } from '@ionic-native/tealium-adidentifier';
+ * import { TealiumAdIdentifier } from '@ionic-native/tealium-adidentifier/ngx';
  *
  *
  * constructor(private adIdentifier: TealiumAdIdentifier) { }

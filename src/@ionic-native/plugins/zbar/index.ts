@@ -44,7 +44,7 @@ export interface ZBarOptions {
  *
  * @usage
  * ```typescript
- * import { ZBar, ZBarOptions } from '@ionic-native/zbar';
+ * import { ZBar, ZBarOptions } from '@ionic-native/zbar/ngx';
  *
  * constructor(private zbar: ZBar) { }
  *

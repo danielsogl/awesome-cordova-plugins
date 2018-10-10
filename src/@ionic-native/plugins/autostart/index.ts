@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Autostart } from '@ionic-native/autostart';
+ * import { Autostart } from '@ionic-native/autostart/ngx';
  *
  *
  * constructor(private autostart: Autostart) { }

@@ -38,7 +38,7 @@ export interface DeviceMotionAccelerometerOptions {
  *
  * @usage
  * ```typescript
- * import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion';
+ * import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
  *
  * constructor(private deviceMotion: DeviceMotion) { }
  *

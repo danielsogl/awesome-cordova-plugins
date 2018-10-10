@@ -35,7 +35,7 @@ export interface DeeplinkOptions {
  *
  * @usage
  * ```typescript
- * import { Deeplinks } from '@ionic-native/deeplinks';
+ * import { Deeplinks } from '@ionic-native/deeplinks/ngx';
  *
  * constructor(private deeplinks: Deeplinks) { }
  *

@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { FirebaseConfig } from '@ionic-native/firebase-config';
+ * import { FirebaseConfig } from '@ionic-native/firebase-config/ngx';
  *
  *
  * constructor(private firebaseConfig: FirebaseConfig) { }

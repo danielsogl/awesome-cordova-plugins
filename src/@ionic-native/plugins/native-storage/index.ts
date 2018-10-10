@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { NativeStorage } from '@ionic-native/native-storage';
+ * import { NativeStorage } from '@ionic-native/native-storage/ngx';
  *
  * constructor(private nativeStorage: NativeStorage) { }
  *

@@ -246,7 +246,7 @@ export interface AppSelection {
  * Please refer to the plugin's repo for detailed usage. This docs page only explains the Native wrapper.
  *
  * ```typescript
- * import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+ * import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
  *
  * constructor(private launchNavigator: LaunchNavigator) { }
  *

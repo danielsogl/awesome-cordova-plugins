@@ -17,7 +17,7 @@ declare const navigator: any;
  *
  * @usage
  * ```typescript
- * import { Network } from '@ionic-native/network';
+ * import { Network } from '@ionic-native/network/ngx';
  *
  * constructor(private network: Network) { }
  *

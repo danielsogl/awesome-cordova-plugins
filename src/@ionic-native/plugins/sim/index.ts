@@ -11,7 +11,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Sim } from '@ionic-native/sim';
+ * import { Sim } from '@ionic-native/sim/ngx';
  *
  *
  * constructor(private sim: Sim) { }

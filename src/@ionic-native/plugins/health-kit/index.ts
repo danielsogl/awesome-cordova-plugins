@@ -87,7 +87,7 @@ export interface HealthKitOptions {
  *
  * @usage
  * ```typescript
- * import { HealthKit } from '@ionic-native/health-kit';
+ * import { HealthKit } from '@ionic-native/health-kit/ngx';
  *
  *
  * constructor(private healthKit: HealthKit) { }

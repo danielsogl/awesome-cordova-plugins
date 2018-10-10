@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
  *
  * @usage
  * ```typescript
- * import { Firebase } from '@ionic-native/firebase';
+ * import { Firebase } from '@ionic-native/firebase/ngx';
  *
  * constructor(private firebase: Firebase) { }
  *

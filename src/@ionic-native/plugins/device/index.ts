@@ -10,7 +10,7 @@ declare const window: any;
  *
  * @usage
  * ```typescript
- * import { Device } from '@ionic-native/device';
+ * import { Device } from '@ionic-native/device/ngx';
  *
  * constructor(private device: Device) { }
  *

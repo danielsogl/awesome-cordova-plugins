@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
  *
  * @usage
  * ```typescript
- * import { Keyboard } from '@ionic-native/keyboard';
+ * import { Keyboard } from '@ionic-native/keyboard/ngx';
  *
  * constructor(private keyboard: Keyboard) { }
  *

@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { Intercom } from '@ionic-native/intercom';
+ * import { Intercom } from '@ionic-native/intercom/ngx';
  *
  *
  * constructor(private intercom: Intercom) { }

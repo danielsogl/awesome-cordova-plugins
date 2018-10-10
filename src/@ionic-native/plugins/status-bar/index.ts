@@ -15,7 +15,7 @@ import {
  *
  * @usage
  * ```typescript
- * import { StatusBar } from '@ionic-native/status-bar';
+ * import { StatusBar } from '@ionic-native/status-bar/ngx';
  *
  * constructor(private statusBar: StatusBar) { }
  *

@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```
- * import { NativeRingtones } from '@ionic-native/native-ringtones';
+ * import { NativeRingtones } from '@ionic-native/native-ringtones/ngx';
  *
  *
  * constructor(private ringtones: NativeRingtones) { }

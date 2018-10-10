@@ -11,7 +11,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { LaunchReview } from '@ionic-native/launch-review';
+ * import { LaunchReview } from '@ionic-native/launch-review/ngx';
  *
  * constructor(private launchReview: LaunchReview) { }
  *

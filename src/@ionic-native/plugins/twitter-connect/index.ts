@@ -26,7 +26,7 @@ export interface TwitterConnectResponse {
  * Plugin to use Twitter Single Sign On
  * Uses Twitter's Fabric SDK
  * ```typescript
- * import { TwitterConnect } from '@ionic-native/twitter-connect';
+ * import { TwitterConnect } from '@ionic-native/twitter-connect/ngx';
  *
  * constructor(private twitter: TwitterConnect) { }
  *

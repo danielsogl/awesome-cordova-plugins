@@ -77,7 +77,7 @@ export function CordovaFiniteObservable(
  *
  * @usage
  * ```typescript
- * import { PhotoLibrary } from '@ionic-native/photo-library';
+ * import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
  *
  * constructor(private photoLibrary: PhotoLibrary) { }
  *

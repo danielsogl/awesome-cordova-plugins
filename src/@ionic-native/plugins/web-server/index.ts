@@ -24,7 +24,7 @@ export interface Request {
  *
  * @usage
  * ```typescript
- * import { WebServer } from '@ionic-native/web-server';
+ * import { WebServer } from '@ionic-native/web-server/ngx';
  *
  *
  * constructor(private webServer: WebServer) { }

@@ -5,7 +5,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * @description Native Audio Playback
  * @usage
  * ```typescript
- * import { NativeAudio } from '@ionic-native/native-audio';
+ * import { NativeAudio } from '@ionic-native/native-audio/ngx';
  *
  * constructor(private nativeAudio: NativeAudio) { }
  *

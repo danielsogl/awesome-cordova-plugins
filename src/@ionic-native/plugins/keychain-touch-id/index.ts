@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
+ * import { KeychainTouchId } from '@ionic-native/keychain-touch-id/ngx';
  *
  *
  * constructor(private keychainTouchId: KeychainTouchId) { }

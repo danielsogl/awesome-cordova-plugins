@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { JAnalytics } from '@ionic-native/JAnalytics';
+ * import { JAnalytics } from '@ionic-native/JAnalytics/ngx';
  *
  *
  * constructor(private jAnalytics: JAnalytics) { }

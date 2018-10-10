@@ -44,7 +44,7 @@ export interface PrintOptions {
  * @description Prints documents or HTML rendered content
  * @usage
  * ```typescript
- * import { Printer, PrintOptions } from '@ionic-native/printer';
+ * import { Printer, PrintOptions } from '@ionic-native/printer/ngx';
  *
  * constructor(private printer: Printer) { }
  *

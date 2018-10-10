@@ -7,7 +7,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Instagram } from '@ionic-native/instagram';
+ * import { Instagram } from '@ionic-native/instagram/ngx';
  *
  * constructor(private instagram: Instagram) { }
  *

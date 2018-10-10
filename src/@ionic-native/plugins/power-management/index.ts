@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { PowerManagement } from '@ionic-native/power-management';
+ * import { PowerManagement } from '@ionic-native/power-management/ngx';
  *
  * constructor(private powerManagement: PowerManagement) { }
  *

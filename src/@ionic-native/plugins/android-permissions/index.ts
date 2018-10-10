@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import { AndroidPermissions } from '@ionic-native/android-permissions';
+ * import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
  *
  *
  * constructor(private androidPermissions: AndroidPermissions) { }

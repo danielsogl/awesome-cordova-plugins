@@ -100,7 +100,7 @@ export interface ISelectedShippingContact {
  *
  * @usage
  * ```typescript
- * import { ApplePay } from '@ionic-native/apple-pay';
+ * import { ApplePay } from '@ionic-native/apple-pay/ngx';
  *
  *
  * constructor(private applePay: ApplePay) { }

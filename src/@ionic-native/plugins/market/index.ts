@@ -7,7 +7,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Market } from '@ionic-native/market';
+ * import { Market } from '@ionic-native/market/ngx';
  *
  * constructor(private market: Market) { }
  *

@@ -52,7 +52,7 @@ export interface AppsflyerInviteOptions {
  *
  * @usage
  * ```typescript
- * import { Appsflyer } from '@ionic-native/appsflyer';
+ * import { Appsflyer } from '@ionic-native/appsflyer/ngx';
  *
  *
  * constructor(private appsflyer: Appsflyer) { }

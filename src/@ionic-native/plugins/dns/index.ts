@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { DNS } from '@ionic-native/dns';
+ * import { DNS } from '@ionic-native/dns/ngx';
  *
  *
  * constructor(private dns: DNS) { }

@@ -310,7 +310,7 @@ export class ContactFindOptions implements IContactFindOptions {
  * @usage
  *
  * ```typescript
- * import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+ * import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
  *
  * constructor(private contacts: Contacts) { }
  *

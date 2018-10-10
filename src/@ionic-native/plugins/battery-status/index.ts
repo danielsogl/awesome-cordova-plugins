@@ -21,7 +21,7 @@ export interface BatteryStatusResponse {
  *
  * @usage
  * ```typescript
- * import { BatteryStatus } from '@ionic-native/battery-status';
+ * import { BatteryStatus } from '@ionic-native/battery-status/ngx';
  *
  * constructor(private batteryStatus: BatteryStatus) { }
  *

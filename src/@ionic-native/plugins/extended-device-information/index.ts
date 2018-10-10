@@ -12,7 +12,7 @@ import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { ExtendedDeviceInformation } from '@ionic-native/extended-device-information';
+ * import { ExtendedDeviceInformation } from '@ionic-native/extended-device-information/ngx';
  *
  *
  * constructor(private extendedDeviceInformation: ExtendedDeviceInformation) { }

@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Insomnia } from '@ionic-native/insomnia';
+ * import { Insomnia } from '@ionic-native/insomnia/ngx';
  *
  * constructor(private insomnia: Insomnia) { }
  *

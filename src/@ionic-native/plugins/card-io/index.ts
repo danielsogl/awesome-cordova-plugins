@@ -141,7 +141,7 @@ export interface CardIOResponse {
  * <string>To scan credit cards.</string>
  * ```
  * ```typescript
- * import { CardIO } from '@ionic-native/card-io';
+ * import { CardIO } from '@ionic-native/card-io/ngx';
  *
  * constructor(private cardIO: CardIO) { }
  *

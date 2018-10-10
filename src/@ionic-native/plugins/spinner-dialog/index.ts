@@ -32,7 +32,7 @@ export interface SpinnerDialogIOSOptions {
  *
  * @usage
  * ```typescript
- * import { SpinnerDialog } from '@ionic-native/spinner-dialog';
+ * import { SpinnerDialog } from '@ionic-native/spinner-dialog/ngx';
  *
  * constructor(private spinnerDialog: SpinnerDialog) { }
  *

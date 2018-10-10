@@ -90,7 +90,7 @@ export interface Player {
  *
  * @usage
  * ```typescript
- * import { GooglePlayGamesServices } from '@ionic-native/google-play-games-services';
+ * import { GooglePlayGamesServices } from '@ionic-native/google-play-games-services/ngx';
  *
  *
  * constructor(private googlePlayGamesServices: GooglePlayGamesServices) { }

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
  *
  * @usage
  * ```typescript
- * import { Appodeal } from '@ionic-native/appodeal';
+ * import { Appodeal } from '@ionic-native/appodeal/ngx';
  *
  * constructor(private appodeal: Appodeal) {
  *

@@ -11,7 +11,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { TouchID } from '@ionic-native/touch-id';
+ * import { TouchID } from '@ionic-native/touch-id/ngx';
  *
  * constructor(private touchId: TouchID) { }
  *

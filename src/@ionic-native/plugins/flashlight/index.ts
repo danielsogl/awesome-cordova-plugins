@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Flashlight } from '@ionic-native/flashlight';
+ * import { Flashlight } from '@ionic-native/flashlight/ngx';
  *
  * constructor(private flashlight: Flashlight) { }
  *

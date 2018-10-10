@@ -245,7 +245,7 @@ export type PushEvent = string;
  *
  * @usage
  * ```typescript
- * import { Push, PushObject, PushOptions } from '@ionic-native/push';
+ * import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
  *
  * constructor(private push: Push) { }
  *

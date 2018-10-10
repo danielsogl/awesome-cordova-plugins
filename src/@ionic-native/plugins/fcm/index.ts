@@ -23,7 +23,7 @@ export interface NotificationData {
  *
  * @usage
  * ```typescript
- * import { FCM } from '@ionic-native/fcm';
+ * import { FCM } from '@ionic-native/fcm/ngx';
  *
  * constructor(private fcm: FCM) {}
  *

@@ -11,7 +11,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Stepcounter } from '@ionic-native/stepcounter';
+ * import { Stepcounter } from '@ionic-native/stepcounter/ngx';
  *
  * constructor(private stepcounter: Stepcounter) { }
  *

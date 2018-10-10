@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Alipay } from '@ionic-native/alipay';
+ * import { Alipay } from '@ionic-native/alipay/ngx';
  *
  * constructor(private alipay: Alipay) {
  *

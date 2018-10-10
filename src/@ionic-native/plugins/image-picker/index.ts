@@ -46,7 +46,7 @@ export enum OutputType {
  *
  * @usage
  * ```typescript
- * import { ImagePicker } from '@ionic-native/image-picker';
+ * import { ImagePicker } from '@ionic-native/image-picker/ngx';
  *
  *
  * constructor(private imagePicker: ImagePicker) { }

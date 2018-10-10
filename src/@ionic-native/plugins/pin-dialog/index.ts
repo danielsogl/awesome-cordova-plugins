@@ -12,7 +12,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { PinDialog } from '@ionic-native/pin-dialog';
+ * import { PinDialog } from '@ionic-native/pin-dialog/ngx';
  *
  *
  * constructor(private pinDialog: PinDialog) { }

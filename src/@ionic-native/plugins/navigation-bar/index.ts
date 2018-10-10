@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { NavigationBar } from '@ionic-native/navigation-bar';
+ * import { NavigationBar } from '@ionic-native/navigation-bar/ngx';
  *
  * constructor(private navigationBar: NavigationBar) { }
  *

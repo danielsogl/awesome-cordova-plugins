@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { DocumentPicker } from '@ionic-native/document-picker';
+ * import { DocumentPicker } from '@ionic-native/document-picker/ngx';
  *
  * constructor(private docPicker: DocumentPicker) { }
  *

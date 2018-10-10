@@ -24,7 +24,7 @@ export interface SafariViewControllerOptions {
  *
  * @usage
  * ```typescript
- * import { SafariViewController } from '@ionic-native/safari-view-controller';
+ * import { SafariViewController } from '@ionic-native/safari-view-controller/ngx';
  *
  * constructor(private safariViewController: SafariViewController) { }
  *

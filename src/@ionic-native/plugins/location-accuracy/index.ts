@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { LocationAccuracy } from '@ionic-native/location-accuracy';
+ * import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
  *
  * constructor(private locationAccuracy: LocationAccuracy) { }
  *

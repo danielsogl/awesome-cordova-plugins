@@ -24,7 +24,7 @@ export interface ZeroconfResult {
  * This plugin allows you to browse and publish Zeroconf/Bonjour/mDNS services.
  * @usage
  * ```typescript
- * import { Zeroconf } from '@ionic-native/zeroconf';
+ * import { Zeroconf } from '@ionic-native/zeroconf/ngx';
  *
  * constructor(private zeroconf: Zeroconf) { }
  *

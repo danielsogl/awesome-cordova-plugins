@@ -129,7 +129,7 @@ export interface ConfigurationData {
  *
  * @usage
  * ```typescript
- * import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
+ * import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture/ngx';
  *
  *
  * constructor(private mediaCapture: MediaCapture) { }

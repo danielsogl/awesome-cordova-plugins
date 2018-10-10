@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { HyperTrack } from '@ionic-native/hyper-track';
+ * import { HyperTrack } from '@ionic-native/hyper-track/ngx';
  *
  * constructor(private hyperTrack: HyperTrack) { }
  *

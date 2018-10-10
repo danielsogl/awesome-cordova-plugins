@@ -45,7 +45,7 @@ export interface ToastOptions {
  *
  * @usage
  * ```typescript
- * import { Toast } from '@ionic-native/toast';
+ * import { Toast } from '@ionic-native/toast/ngx';
  *
  * constructor(private toast: Toast) { }
  *

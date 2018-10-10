@@ -112,7 +112,7 @@ export interface HotspotDevice {
  *
  * @usage
  * ```typescript
- * import { Hotspot, HotspotNetwork } from '@ionic-native/hotspot';
+ * import { Hotspot, HotspotNetwork } from '@ionic-native/hotspot/ngx';
  *
  * constructor(private hotspot: Hotspot) { }
  *

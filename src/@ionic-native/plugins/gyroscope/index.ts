@@ -44,7 +44,7 @@ export interface GyroscopeOptions {
  * @description Read Gyroscope sensor data
  * @usage
  * ```typescript
- * import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope';
+ * import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
  *
  *
  * constructor(private gyroscope: Gyroscope) { }

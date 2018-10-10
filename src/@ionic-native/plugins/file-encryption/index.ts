@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { FileEncryption } from '@ionic-native/file-encryption';
+ * import { FileEncryption } from '@ionic-native/file-encryption/ngx';
  *
  *
  * constructor(private fileEncryption: FileEncryption) { }

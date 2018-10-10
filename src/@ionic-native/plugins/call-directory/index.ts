@@ -19,7 +19,7 @@ export interface CallDirectoryLog {
  *
  * @usage
  * ```typescript
- * import { CallDirectory } from '@ionic-native/call-directory';
+ * import { CallDirectory } from '@ionic-native/call-directory/ngx';
  *
  *
  * constructor(private callDirectory: CallDirectory) { }

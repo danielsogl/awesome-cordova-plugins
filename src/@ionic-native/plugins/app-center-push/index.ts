@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
  *
  * @usage
  * ```typescript
- * import { AppCenterPush } from '@ionic-native/app-center-push';
+ * import { AppCenterPush } from '@ionic-native/app-center-push/ngx';
  *
  *
  * constructor(private appCenterPush: AppCenterPush) { }

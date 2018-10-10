@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
  *
  * @usage
  * ```typescript
- * import { GoogleNearby } from '@ionic-native/google-nearby';
+ * import { GoogleNearby } from '@ionic-native/google-nearby/ngx';
  *
  *
  * constructor(private googleNearby: GoogleNearby) { }

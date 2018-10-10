@@ -38,7 +38,7 @@ export interface BlinkUpWPSOptions {
  *
  * @usage
  * ```typescript
- * import { BlinkUp } from '@ionic-native/blinkup';
+ * import { BlinkUp } from '@ionic-native/blinkup/ngx';
  *
  * const options = <BlinkUpWifiOptions>{
  *    apiKey: 'API_KEY',

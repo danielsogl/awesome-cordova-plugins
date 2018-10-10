@@ -28,7 +28,7 @@ export interface SmsOptionsAndroid {
  *
  * @usage
  * ```typescript
- * import { SMS } from '@ionic-native/sms';
+ * import { SMS } from '@ionic-native/sms/ngx';
  *
  * constructor(private sms: SMS) { }
  *

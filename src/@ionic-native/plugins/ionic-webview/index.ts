@@ -10,7 +10,7 @@ import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { WebView } from '@ionic-native/ionic-webview';
+ * import { WebView } from '@ionic-native/ionic-webview/ngx';
  *
  *
  * constructor(private webview: WebView) { }

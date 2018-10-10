@@ -167,7 +167,7 @@ export interface HealthData {
  *
  * @usage
  * ```typescript
- * import { Health } from '@ionic-native/health';
+ * import { Health } from '@ionic-native/health/ngx';
  *
  *
  * constructor(private health: Health) { }

@@ -59,7 +59,7 @@ export interface QQShareOptions {
  *
  * @usage
  * ```typescript
- * import { QQSDK, QQShareOptions } from '@ionic-native/qqsdk';
+ * import { QQSDK, QQShareOptions } from '@ionic-native/qqsdk/ngx';
  *
  * constructor(private qq: QQSDK) { }
  *

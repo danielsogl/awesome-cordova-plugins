@@ -59,7 +59,7 @@ export interface UserInfo {
  * Windows Server Active Directory and Windows Azure Active Directory. Here you can find the source code for the library.
  * @usage
  * ```typescript
- * import { MSAdal, AuthenticationContext, AuthenticationResult } from '@ionic-native/ms-adal';
+ * import { MSAdal, AuthenticationContext, AuthenticationResult } from '@ionic-native/ms-adal/ngx';
  *
  *
  * constructor(private msAdal: MSAdal) {}

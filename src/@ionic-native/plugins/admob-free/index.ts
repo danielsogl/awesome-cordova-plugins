@@ -72,7 +72,7 @@ export interface AdMobFreeRewardVideoConfig {
  *
  * @usage
  * ```typescript
- * import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+ * import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
  *
  *
  * constructor(private admobFree: AdMobFree) { }

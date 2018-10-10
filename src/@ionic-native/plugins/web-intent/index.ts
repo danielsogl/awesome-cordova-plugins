@@ -29,7 +29,7 @@ export interface IntentOptions {
  * For usage information please refer to the plugin's Github repo.
  *
  * ```typescript
- * import { WebIntent } from '@ionic-native/web-intent';
+ * import { WebIntent } from '@ionic-native/web-intent/ngx';
  *
  * constructor(private webIntent: WebIntent) { }
  *

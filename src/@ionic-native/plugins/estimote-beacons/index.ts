@@ -22,7 +22,7 @@ export interface EstimoteBeaconRegion {
  *
  * @usage
  * ```typescript
- * import { EstimoteBeacons } from '@ionic-native/estimote-beacons';
+ * import { EstimoteBeacons } from '@ionic-native/estimote-beacons/ngx';
  *
  * constructor(private eb: EstimoteBeacons) { }
  *

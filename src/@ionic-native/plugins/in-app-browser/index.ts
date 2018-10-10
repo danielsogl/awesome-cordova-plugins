@@ -204,7 +204,7 @@ export class InAppBrowserObject {
  * @description Launches in app Browser
  * @usage
  * ```typescript
- * import { InAppBrowser } from '@ionic-native/in-app-browser';
+ * import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
  *
  * constructor(private iab: InAppBrowser) { }
  *

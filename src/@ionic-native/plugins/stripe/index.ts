@@ -111,7 +111,7 @@ export interface StripeCardTokenRes {
  *
  * @usage
  * ```typescript
- * import { Stripe } from '@ionic-native/stripe';
+ * import { Stripe } from '@ionic-native/stripe/ngx';
  *
  * constructor(private stripe: Stripe) { }
  *

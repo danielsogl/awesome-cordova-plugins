@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Backlight } from '@ionic-native/backlight';
+ * import { Backlight } from '@ionic-native/backlight/ngx';
  *
  * constructor(private backlight: Backlight) { }
  *

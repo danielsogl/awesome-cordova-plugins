@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { CouchbaseLite } from '@ionic-native/couchbase-lite';
+ * import { CouchbaseLite } from '@ionic-native/couchbase-lite/ngx';
  * import { Http } from '@angular/http';
  * import { Observable } from 'rxjs'
  * constructor(private couchbase: CouchbaseLite, private platform:Platform,private _http:Http) {

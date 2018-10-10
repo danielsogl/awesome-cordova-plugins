@@ -63,7 +63,7 @@ export interface EmailComposerOptions {
  *
  * @usage
  * ```typescript
- * import { EmailComposer } from '@ionic-native/email-composer';
+ * import { EmailComposer } from '@ionic-native/email-composer/ngx';
  *
  * constructor(private emailComposer: EmailComposer) { }
  *

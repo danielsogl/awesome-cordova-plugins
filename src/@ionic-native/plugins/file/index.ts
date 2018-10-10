@@ -678,7 +678,7 @@ declare const window: Window;
  *
  * Example:
  * ```
- * import { File } from '@ionic-native/file';
+ * import { File } from '@ionic-native/file/ngx';
  *
  * constructor(private file: File) { }
  *

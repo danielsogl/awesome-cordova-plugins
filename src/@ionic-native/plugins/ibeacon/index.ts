@@ -234,7 +234,7 @@ export interface IBeaconDelegate {
  * @usage
  *
  * ```typescript
- * import { IBeacon } from '@ionic-native/ibeacon';
+ * import { IBeacon } from '@ionic-native/ibeacon/ngx';
  *
  * constructor(private ibeacon: IBeacon) { }
  *

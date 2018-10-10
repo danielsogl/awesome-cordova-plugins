@@ -10,7 +10,7 @@ declare var mixpanel: any;
  *
  * @usage
  * ```typescript
- * import { Mixpanel } from '@ionic-native/mixpanel';
+ * import { Mixpanel } from '@ionic-native/mixpanel/ngx';
  *
  * constructor(private mixpanel: Mixpanel, private mixpanelPeople: MixpanelPeople) { }
  *

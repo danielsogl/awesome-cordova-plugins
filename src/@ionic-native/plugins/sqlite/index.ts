@@ -148,7 +148,7 @@ export class SQLiteObject {
  * @usage
  *
  * ```typescript
- * import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+ * import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
  *
  * constructor(private sqlite: SQLite) { }
  *

@@ -106,8 +106,8 @@ export interface AdExtras {
  * IMPORTANT NOTICE: this plugin takes a percentage out of your earnings if you profit more than $1,000. Read more about this on the plugin's repo. For a completely free alternative, see [AdMobPro Free](../admob-free).
  * @usage
  * ```typescript
- * import { AdMobPro } from '@ionic-native/admob-pro';
- * import { Platform } from 'ionic-angular';
+ * import { AdMobPro } from '@ionic-native/admob-pro/ngx';
+ * import { Platform } from '@ionic/angular';
  *
  * constructor(private admob: AdMobPro, private platform: Platform ) { }
  *

@@ -17,7 +17,7 @@ export interface DeviceFeedbackStatus {
  *
  * @usage
  * ```typescript
- * import { DeviceFeedback } from '@ionic-native/device-feedback';
+ * import { DeviceFeedback } from '@ionic-native/device-feedback/ngx';
  *
  * constructor(private deviceFeedback: DeviceFeedback) { }
  *

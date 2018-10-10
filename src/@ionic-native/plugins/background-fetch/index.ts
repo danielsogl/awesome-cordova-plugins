@@ -20,7 +20,7 @@ export interface BackgroundFetchConfig {
  * @usage
  *
  * ```typescript
- * import { BackgroundFetch, BackgroundFetchConfig } from '@ionic-native/background-fetch';
+ * import { BackgroundFetch, BackgroundFetchConfig } from '@ionic-native/background-fetch/ngx';
  *
  *
  * constructor(private backgroundFetch: BackgroundFetch) {

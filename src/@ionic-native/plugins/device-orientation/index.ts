@@ -44,7 +44,7 @@ export interface DeviceOrientationCompassOptions {
  * @usage
  * ```typescript
  * // DeviceOrientationCompassHeading is an interface for compass
- * import { DeviceOrientation, DeviceOrientationCompassHeading } from '@ionic-native/device-orientation';
+ * import { DeviceOrientation, DeviceOrientationCompassHeading } from '@ionic-native/device-orientation/ngx';
  *
  * constructor(private deviceOrientation: DeviceOrientation) { }
  *

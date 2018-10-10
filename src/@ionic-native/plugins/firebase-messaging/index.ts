@@ -15,7 +15,7 @@ export interface IFirebaseMessage {
  *
  * @usage
  * ```typescript
- * import { FirebaseMessaging } from '@ionic-native/firebase-messaging';
+ * import { FirebaseMessaging } from '@ionic-native/firebase-messaging/ngx';
  *
  *
  * constructor(private firebaseMessaging: FirebaseMessaging) { }

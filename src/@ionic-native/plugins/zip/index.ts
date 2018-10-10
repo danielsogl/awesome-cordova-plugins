@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Zip } from '@ionic-native/zip';
+ * import { Zip } from '@ionic-native/zip/ngx';
  *
  * constructor(private zip: Zip) { }
  *

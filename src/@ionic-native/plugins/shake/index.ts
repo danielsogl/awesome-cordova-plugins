@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
  * @description Handles shake gesture
  * @usage
  * ```typescript
- * import { Shake } from '@ionic-native/shake';
+ * import { Shake } from '@ionic-native/shake/ngx';
  *
  * constructor(private shake: Shake) { }
  *

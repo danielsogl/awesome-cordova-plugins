@@ -8,7 +8,7 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-nati
  *
  * @usage
  * ```typescript
- * import { Diagnostic } from '@ionic-native/diagnostic';
+ * import { Diagnostic } from '@ionic-native/diagnostic/ngx';
  *
  * constructor(private diagnostic: Diagnostic) { }
  *

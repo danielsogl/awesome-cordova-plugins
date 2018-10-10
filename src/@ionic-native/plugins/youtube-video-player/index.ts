@@ -14,7 +14,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  *
  * ```typescript
- * import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+ * import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
  *
  * constructor(private youtube: YoutubeVideoPlayer) { }
  *

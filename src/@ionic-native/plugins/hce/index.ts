@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { hce } from '@ionic-native/hce';
+ * import { hce } from '@ionic-native/hce/ngx';
  *
  *
  * constructor(private hce: hce) { }

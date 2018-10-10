@@ -88,7 +88,7 @@ export class SecureStorageObject {
  * @usage
  *
  * ```typescript
- * import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
+ * import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage/ngx';
  *
  * constructor(private secureStorage: SecureStorage) { }
  *

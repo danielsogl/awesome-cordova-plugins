@@ -10,7 +10,7 @@ declare const window: any;
  * Geofences persist after device reboot. Geofences will be monitored even when the app is not running.
  * @usage
  * ```typescript
- * import { Geofence } from '@ionic-native/geofence';
+ * import { Geofence } from '@ionic-native/geofence/ngx';
  *
  * ...
  *
