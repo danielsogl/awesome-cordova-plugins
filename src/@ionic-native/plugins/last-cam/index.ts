@@ -2,12 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
-/*
- @Name: LastCam
- @Description: Last Cam is a Camera Preview plugin that allows you to take capture both Videos and images in a
-  custom html preview of your choice.
- */
-
 export interface LastCamStartupOptions {
   /** The left edge in pixels, default 0 */
   x?: number;
@@ -23,15 +17,22 @@ export interface LastCamStartupOptions {
 
   /** Choose the camera to use 'front' or 'back', default 'front' */
   camera?: string;
-
 }
 
+/**
+ * @name LastCam
+ * @description
+ * Last Cam is a Camera Preview plugin that allows you to take capture both Videos and images in a
+ * custom html preview of your choice.
+ *
+ * @interfaces
+ * LastCamStartupOptions
+ */
 @Plugin({
   pluginName: 'LastCam',
   plugin: 'cordova-plugin-last-cam',
   pluginRef: 'LastCam',
-  repo:
-    'https://github.com/bengejd/cordova-plugin-last-cam',
+  repo: 'https://github.com/bengejd/cordova-plugin-last-cam',
   platforms: ['iOS']
 })
 @Injectable()
@@ -114,8 +115,8 @@ export class LastCam extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    successIndex : 0,
-    errorIndex : 1,
+    successIndex: 0,
+    errorIndex: 1
   })
   recordingTimer(): Promise<any> {
     return;
@@ -126,8 +127,8 @@ export class LastCam extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    successIndex : 0,
-    errorIndex : 1,
+    successIndex: 0,
+    errorIndex: 1,
     observable: true
   })
   watchRecordingTimer(): Observable<any> {
