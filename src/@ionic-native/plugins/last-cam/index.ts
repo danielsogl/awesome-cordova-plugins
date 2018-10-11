@@ -120,4 +120,17 @@ export class LastCam extends IonicNativePlugin {
   recordingTimer(): Promise<any> {
     return;
   }
+
+  /**
+   * Observable of the recordingTimer.
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    successIndex : 0,
+    errorIndex : 1,
+    observable: true
+  })
+  watchRecordingTimer(): Observable<any> {
+    return;
+  }
 }
