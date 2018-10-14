@@ -133,4 +133,14 @@ export class FirebaseMessaging extends IonicNativePlugin {
   setBadge(value: number): Promise<null> {
     return;
   }
+
+  /**
+   * Revoke the current FCM token.
+   *
+   * @returns {Promise<null>}
+   */
+  @Cordova({ sync: true })
+  revokeToken(): Promise<null> {
+    return;
+  }
 }
