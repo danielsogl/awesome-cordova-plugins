@@ -76,6 +76,15 @@ export interface NdefTag {
  */
 @Injectable()
 export class NFC extends IonicNativePlugin {
+  FLAG_READER = {
+    NFC_A: 0,
+    NFC_B: 0x2,
+    NFC_F: 0x4,
+    NFC_V: 0x8,
+    NFC_BARCODE: 0x10,
+    SKIP_NDEF_CHECK: 0x80,
+    NO_PLATFORM_SOUNDS: 0x100,
+  };
   /**
    * Starts the NFCNDEFReaderSession allowing iOS to scan NFC tags.
    * @param onSuccess
