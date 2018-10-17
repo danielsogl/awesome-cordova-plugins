@@ -654,26 +654,6 @@ export class LocalNotifications extends IonicNativePlugin {
   }
 
   /**
-   * Get a scheduled notification object
-   * @param notificationId {any} The id of the notification to get
-   * @returns {Promise<ILocalNotification>}
-   */
-  @Cordova()
-  getScheduled(notificationId: any): Promise<ILocalNotification> {
-    return;
-  }
-
-  /**
-   * Get a triggered notification object
-   * @param notificationId The id of the notification to get
-   * @returns {Promise<ILocalNotification>}
-   */
-  @Cordova()
-  getTriggered(notificationId: any): Promise<ILocalNotification> {
-    return;
-  }
-
-  /**
    * Adds a group of actions
    * @param groupId The id of the action group
    * @param actions The actions of this group
@@ -727,20 +707,20 @@ export class LocalNotifications extends IonicNativePlugin {
   }
 
   /**
-   * Get all scheduled notification objects
+   * List of all scheduled notifications
    * @returns {Promise<Array<ILocalNotification>>}
    */
   @Cordova()
-  getAllScheduled(): Promise<ILocalNotification[]> {
+  getScheduled(): Promise<ILocalNotification[]> {
     return;
   }
 
   /**
-   * Get all triggered notification objects
+   * List of all triggered notifications
    * @returns {Promise<Array<ILocalNotification>>}
    */
   @Cordova()
-  getAllTriggered(): Promise<ILocalNotification[]> {
+  getTriggered(): Promise<ILocalNotification[]> {
     return;
   }
 
