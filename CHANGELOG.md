@@ -1,3 +1,23 @@
+<a name="4.16.0"></a>
+# [4.16.0](https://github.com/ionic-team/ionic-native/compare/v4.15.0...v4.16.0) (2018-10-17)
+
+
+### Bug Fixes
+
+* **keyboard:** add missing property ([fcd6d26](https://github.com/ionic-team/ionic-native/commit/fcd6d26))
+* **local-notifications:** add missing functions ([#2779](https://github.com/ionic-team/ionic-native/issues/2779)) ([336b3ff](https://github.com/ionic-team/ionic-native/commit/336b3ff)), closes [#2778](https://github.com/ionic-team/ionic-native/issues/2778)
+
+
+### Features
+
+* **admob-plus:** Add admob-plus ([#2753](https://github.com/ionic-team/ionic-native/issues/2753)) ([6c99ec8](https://github.com/ionic-team/ionic-native/commit/6c99ec8))
+* **firebase-messaging:** add revokeToken function ([#2763](https://github.com/ionic-team/ionic-native/issues/2763)) ([1a2dc3e](https://github.com/ionic-team/ionic-native/commit/1a2dc3e))
+* **lastCam:** add plugin ([#2759](https://github.com/ionic-team/ionic-native/issues/2759)) ([99cebcb](https://github.com/ionic-team/ionic-native/commit/99cebcb))
+* **nfc:** add NFC readerMode ([#2777](https://github.com/ionic-team/ionic-native/issues/2777)) ([2aa73b5](https://github.com/ionic-team/ionic-native/commit/2aa73b5))
+* **speechkit:** plugin updated with voice parameter ([#2761](https://github.com/ionic-team/ionic-native/issues/2761)) ([4468b52](https://github.com/ionic-team/ionic-native/commit/4468b52))
+
+
+
 <a name="4.15.0"></a>
 # [4.15.0](https://github.com/ionic-team/ionic-native/compare/v4.14.0...v4.15.0) (2018-09-25)
 
