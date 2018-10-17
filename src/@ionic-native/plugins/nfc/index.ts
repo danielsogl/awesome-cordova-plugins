@@ -308,12 +308,10 @@ export class NFC extends IonicNativePlugin {
     clearWithArgs: true
   })
   readerMode(
-    flags: string,
+    flags: number,
     readCallback?: Function,
     errorCallback?: Function
-  ): Observable<any> {
-    return;
-  }
+  ): void { return; }
 }
 /**
  * @hidden
