@@ -9,7 +9,7 @@ export type AdUnitIDOption = string | {
 };
 
 /**
- * @name AdMob Free
+ * @name AdMob Plus
  * @description
  * AdMob Plus is the successor of cordova-plugin-admob-free, which provides a cleaner API and build with modern tools.
  */
@@ -17,6 +17,8 @@ export type AdUnitIDOption = string | {
     plugin: 'cordova-admob-plus',
     pluginName: 'AdMob',
     pluginRef: 'admob.banner',
+    repo: 'https://github.com/admob-plus/admob-plus',
+    platforms: ['Android', 'iOS']
 })
 export class Banner {
     @Cordova({ otherPromise: true })
