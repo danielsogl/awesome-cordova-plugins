@@ -2,7 +2,7 @@ import { getPlugin, getPromise, cordovaWarn, pluginWarn } from './util';
 import { checkReady } from './bootstrap';
 import { CordovaOptions } from './decorators';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import 'rxjs/add/observable/fromEvent';
 
 checkReady();
