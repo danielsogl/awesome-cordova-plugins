@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { _throw } from 'rxjs/observable/throw';
 
 import { checkAvailability, instanceAvailability, overrideFunction, wrap, wrapInstance } from './plugin';
