@@ -5,7 +5,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /* Available status of device */
 export type Status =

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin, checkAvailability } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Observer } from 'rxjs/Observer';
 
 /**

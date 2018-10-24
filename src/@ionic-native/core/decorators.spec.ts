@@ -1,6 +1,6 @@
 import 'core-js';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { Cordova, CordovaCheck, CordovaInstance, CordovaProperty, InstanceProperty, Plugin } from './decorators';
 import { IonicNativePlugin } from './ionic-native-plugin';
