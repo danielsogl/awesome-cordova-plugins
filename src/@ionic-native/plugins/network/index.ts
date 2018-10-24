@@ -6,8 +6,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs';
-import { merge } from 'rxjs/observable/merge';
+import { Observable, merge } from 'rxjs';
 
 declare const navigator: any;
 
