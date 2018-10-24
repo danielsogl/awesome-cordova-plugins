@@ -42,7 +42,7 @@
     "tslint-ionic-rules": "0.0.19",
     "typescript": "~2.4.2",
     "zone.js": "^0.8.26",
-    "rxjs-compat": "^6.3.3"
+    "rxjs-compat": "~6.3.3"
   },
   "scripts": {
     "start": "npm run test:watch",
