@@ -59,6 +59,12 @@ export interface LineLoginAccessToken {
  *   .catch(error => console.log(error))
  *
  * ```
+ * 
+ * @interfaces
+ * LineLoginParams
+ * LineLoginProfile
+ * LineLoginAccessToken
+ * 
  */
 @Plugin({
   pluginName: 'LineLogin',
