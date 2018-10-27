@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, CordovaProperty, InstanceProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Line Login
@@ -36,7 +35,6 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class LineLogin extends IonicNativePlugin {
-
   /**
    * Initialize
    * @param param {any} {channel_id: "your_chanel_id"}
@@ -94,5 +92,4 @@ export class LineLogin extends IonicNativePlugin {
   refreshAccessToken(): Promise<any> {
     return;
   }
-
 }
