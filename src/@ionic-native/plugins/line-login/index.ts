@@ -1,10 +1,46 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
+export interface LineLoginParams {
+  /**
+   * Line Channel ID
+   */
+  channel_id: string;
+}
+
+export interface LineLoginProfile {
+  /**
+   * Line User ID
+   */
+  userID: string;
+
+  /**
+   * Line Profile Image URL
+   */
+  pictureURL: string;
+
+  /**
+   * Line Profile Name
+   */
+  displayName: string;
+}
+
+export interface LineLoginAccessToken {
+  /**
+   * Line Access Token
+   */
+  accessToken: string;
+
+  /**
+   * Line Access Token Expire Time
+   */
+  expireTime: string;
+}
+
 /**
  * @name Line Login
  * @description
- * This plugin does something
+ * The function login, logs out, acquires, verifies, and refreshes the access token. The version of LineSDK you are using is as follows.
  *
  * @usage
  * ```typescript
@@ -37,23 +73,23 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 export class LineLogin extends IonicNativePlugin {
   /**
    * Initialize
-   * @param param {any} {channel_id: "your_chanel_id"}
+   * @param param LineLoginParams
    * @return {Promise<any>}
    */
   @Cordova()
-  initialize(param: any): Promise<any> {
+  initialize(param: LineLoginParams): Promise<any> {
     return;
   }
 
   /**
    * Login
-   * @return {Promise<any>}
+   * @return {Promise<LineLoginProfile>}
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  login(): Promise<any> {
+  login(): Promise<LineLoginProfile> {
     return;
   }
 
@@ -68,10 +104,10 @@ export class LineLogin extends IonicNativePlugin {
 
   /**
    * Get Access Token
-   * @return {Promise<any>}
+   * @return {Promise<LineLoginAccessToken>}
    */
   @Cordova()
-  getAccessToken(): Promise<any> {
+  getAccessToken(): Promise<LineLoginAccessToken> {
     return;
   }
 
