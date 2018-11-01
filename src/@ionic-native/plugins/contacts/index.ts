@@ -44,6 +44,9 @@ export type ContactFieldType =
 export interface IContactProperties {
   /** A globally unique identifier. */
   id?: string;
+  
+  /** A globally unique identifier on Android. */
+  rawId?: string;
 
   /** The name of this Contact, suitable for display to end users. */
   displayName?: string;
@@ -91,6 +94,7 @@ export interface IContactProperties {
 export class Contact implements IContactProperties {
   private _objectInstance: any;
   @InstanceProperty id: string;
+  @InstanceProperty rawId: string;
   @InstanceProperty displayName: string;
   @InstanceProperty name: IContactName;
   @InstanceProperty nickname: string;
