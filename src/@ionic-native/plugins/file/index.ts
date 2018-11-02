@@ -1045,11 +1045,7 @@ export class File extends IonicNativePlugin {
     path: string,
     fileName: string,
     text: string | Blob | ArrayBuffer,
-    options: IWriteOptions = {
-      replace: boolean,
-      append: boolean,
-      truncate: number
-    }
+    options: IWriteOptions = {}
   ): Promise<any> {
     if (/^\//.test(fileName)) {
       const err = new FileError(5);
