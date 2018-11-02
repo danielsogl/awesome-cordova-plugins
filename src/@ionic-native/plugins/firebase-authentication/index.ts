@@ -87,7 +87,7 @@ export class FirebaseAuthentication extends IonicNativePlugin {
 
   /**
    * Starts the phone number verification process for the given phone number.
-   * NOTE: Android supports auto-verify and instant device verification. 
+   * NOTE: Android supports auto-verify and instant device verification.
    * Therefore in that cases it doesn't make sense to ask for sms code.
    * It's recommended to register onAuthStateChanged callback to be notified on auto sign-in.
    * timeout [milliseconds] is the maximum amount of time you are willing to wait for SMS auto-retrieval
@@ -116,7 +116,6 @@ export class FirebaseAuthentication extends IonicNativePlugin {
 
   /**
    * Create and use temporary anonymous account to authenticate with Firebase.
-   
    */
   @Cordova({ sync: true })
   signInAnonymously(): Promise<any> {
