@@ -162,7 +162,7 @@ export class SQLiteObject {
  *   .then((db: SQLiteObject) => {
  *
  *
- *     db.executeSql('create table danceMoves(name VARCHAR(32))', {})
+ *     db.executeSql('create table danceMoves(name VARCHAR(32))', [])
  *       .then(() => console.log('Executed SQL'))
  *       .catch(e => console.log(e));
  *
