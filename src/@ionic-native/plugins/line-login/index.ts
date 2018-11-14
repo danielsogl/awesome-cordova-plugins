@@ -100,6 +100,19 @@ export class LineLogin extends IonicNativePlugin {
   }
 
   /**
+   * Login with Web
+   * (iOS only)
+   * @return {Promise<LineLoginProfile>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2
+  })
+  loginWeb(): Promise<LineLoginProfile> {
+    return;
+  }
+
+  /**
    * Logout
    * @return {Promise<any>}
    */
