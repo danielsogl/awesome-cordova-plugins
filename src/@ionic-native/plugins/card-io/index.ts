@@ -60,7 +60,7 @@ export interface CardIOOptions {
   /**
    * Changes the color of the guide overlay on the camera. The color is provided in hexadecimal format (e.g. `#FFFFFF`)
    */
-  guideColor?: string;
+  guideColor?: string | number;
 
   /**
    * The user will not be prompted to confirm their card number after processing.
