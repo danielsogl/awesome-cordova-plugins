@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
@@ -9,12 +8,12 @@ export enum NotificationVisibility {
   VisibleNotifyOnlyCompletion = 3
 }
 
-interface Header {
+export interface DownloadHttpHeader {
   header: string;
   value: string;
 }
 
-interface DestinationDirectory {
+export interface DestinationDirectory {
   dirType: string;
   subPath: string;
 }
@@ -62,7 +61,7 @@ export interface DownloadRequest {
   /**
    * Add an HTTP header to be included with the download request. The header will be added to the end of the list.
    */
-  headers?: Header[];
+  headers?: DownloadHttpHeader[];
 }
 
 /**
@@ -99,6 +98,11 @@ export interface DownloadRequest {
  *   			.catch((error: any) => console.error(error));
  *
  * ```
+ * @interfaces
+ * NotificationVisibility
+ * Header
+ * DestinationDirectory
+ * DownloadHttpHeader
  */
 @Plugin({
   pluginName: 'Downloader',
@@ -112,7 +116,6 @@ export class Downloader extends IonicNativePlugin {
   /**
    *  Starts a new download and returns location of the downloaded file on completion
    *  @param request {DownloadRequest}
-   *  @returns {Promise<string>}
    */
   @Cordova()
   download(request: DownloadRequest): Promise<string> {
