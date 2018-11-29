@@ -35,7 +35,7 @@ export enum Connection {
  *
  * ...
  *
- * // watch network for a disconnect
+ * // watch network for a disconnection
  * let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
  *   console.log('network was disconnected :-(');
  * });
