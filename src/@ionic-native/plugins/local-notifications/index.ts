@@ -16,6 +16,58 @@ export enum ELocalNotificationTriggerUnit {
   WEEK_OF_MONTH = 'weekOfMonth'
 }
 
+export interface ILocalNotificationEvery {
+    /**
+     * The minute.
+     */
+    minute?: number;
+
+    /**
+     * The hour.
+     */
+    hour?: number;
+
+    /**
+     * The day.
+     */
+    day?: number;
+
+    /**
+     * The day of week.
+     */
+    weekday?: number;
+
+    /**
+     * The week of yeaday of the ardinal week.
+     */
+    week?: number;
+
+    /**
+     * The day of the ordinal week.
+     */
+    weekdayOrdinal?: number;
+
+    /**
+     * The week of month.
+     */
+    weekOfMonth?: number;
+
+    /**
+     * The month.
+     */
+    month?: number;
+
+    /**
+     * The quarter.
+     */
+    quarter?: number;
+
+    /**
+     * The year.
+     */
+    year?: number;
+}
+
 export interface ILocalNotificationTrigger {
   /** ***** FIX ***** */
 
@@ -47,7 +99,7 @@ export interface ILocalNotificationTrigger {
   /**
    * The unit
    */
-  every?: ELocalNotificationTriggerUnit;
+  every?: ELocalNotificationTriggerUnit | ILocalNotificationEvery;
 
   /**
    * The end of the repeating notification
