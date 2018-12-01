@@ -114,7 +114,7 @@ export interface GeolocationOptions {
  * For iOS you have to add this configuration to your configuration.xml file
  * ```xml
  * <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
- *    <string>We want your location! Best regards NSA</string>
+ *    <string>We use your location for full functionality of certain app features.</string>
  * </edit-config>
  * ```
  *

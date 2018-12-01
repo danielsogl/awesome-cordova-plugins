@@ -49,7 +49,9 @@ export class TapticEngine extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  notification(options: { type: string }): Promise<any> {
+  notification(options: {
+    type: 'success' | 'warning' | 'error';
+  }): Promise<any> {
     return;
   }
 
@@ -60,7 +62,7 @@ export class TapticEngine extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  impact(options: { style: string }): Promise<any> {
+  impact(options: { style: 'light' | 'medium' | 'heavy' }): Promise<any> {
     return;
   }
 

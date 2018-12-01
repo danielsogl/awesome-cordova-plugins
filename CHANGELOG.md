@@ -58,6 +58,188 @@
 
 ### Features
 
+* **downloader:** add plugin ([#2820](https://github.com/ionic-team/ionic-native/issues/2820)) ([0065704](https://github.com/ionic-team/ionic-native/commit/0065704))
+* **line-login:** add loginWeb function ([#2810](https://github.com/ionic-team/ionic-native/issues/2810)) ([7145afa](https://github.com/ionic-team/ionic-native/commit/7145afa))
+
+
+
+# [4.17.0](https://github.com/ionic-team/ionic-native/compare/v4.16.0...v4.17.0) (2018-11-02)
+
+
+### Bug Fixes
+
+* **contacts plugin:** add the rawId parameter ([#2799](https://github.com/ionic-team/ionic-native/issues/2799)) ([b61b339](https://github.com/ionic-team/ionic-native/commit/b61b339))
+
+
+### Features
+
+* **crashlytics:** allow user to set userIdentifier for crashlytics ([#2792](https://github.com/ionic-team/ionic-native/issues/2792)) ([a3bd197](https://github.com/ionic-team/ionic-native/commit/a3bd197))
+* **firebase-authentication:** add plugin ([#2797](https://github.com/ionic-team/ionic-native/issues/2797)) ([43bfeb4](https://github.com/ionic-team/ionic-native/commit/43bfeb4))
+* **line-login:** add plugin ([#2782](https://github.com/ionic-team/ionic-native/issues/2782)) ([dc4183d](https://github.com/ionic-team/ionic-native/commit/dc4183d))
+
+
+
+# [4.16.0](https://github.com/ionic-team/ionic-native/compare/v4.15.0...v4.16.0) (2018-10-17)
+
+
+### Bug Fixes
+
+* **keyboard:** add missing property ([fcd6d26](https://github.com/ionic-team/ionic-native/commit/fcd6d26))
+* **local-notifications:** add missing functions ([#2779](https://github.com/ionic-team/ionic-native/issues/2779)) ([336b3ff](https://github.com/ionic-team/ionic-native/commit/336b3ff)), closes [#2778](https://github.com/ionic-team/ionic-native/issues/2778)
+
+
+### Features
+
+* **admob-plus:** Add admob-plus ([#2753](https://github.com/ionic-team/ionic-native/issues/2753)) ([6c99ec8](https://github.com/ionic-team/ionic-native/commit/6c99ec8))
+* **firebase-messaging:** add revokeToken function ([#2763](https://github.com/ionic-team/ionic-native/issues/2763)) ([1a2dc3e](https://github.com/ionic-team/ionic-native/commit/1a2dc3e))
+* **lastCam:** add plugin ([#2759](https://github.com/ionic-team/ionic-native/issues/2759)) ([99cebcb](https://github.com/ionic-team/ionic-native/commit/99cebcb))
+* **nfc:** add NFC readerMode ([#2777](https://github.com/ionic-team/ionic-native/issues/2777)) ([2aa73b5](https://github.com/ionic-team/ionic-native/commit/2aa73b5))
+* **speechkit:** plugin updated with voice parameter ([#2761](https://github.com/ionic-team/ionic-native/issues/2761)) ([4468b52](https://github.com/ionic-team/ionic-native/commit/4468b52))
+
+
+
+# [4.15.0](https://github.com/ionic-team/ionic-native/compare/v4.14.0...v4.15.0) (2018-09-25)
+
+
+### Bug Fixes
+
+* **keyboard:** use cordova-plugin-ionic-keyboard ([#2743](https://github.com/ionic-team/ionic-native/issues/2743)) ([1457a16](https://github.com/ionic-team/ionic-native/commit/1457a16)), closes [#2306](https://github.com/ionic-team/ionic-native/issues/2306)
+
+
+### Features
+
+* **plugins:** add AppleWallet ([#2740](https://github.com/ionic-team/ionic-native/issues/2740)) ([307477d](https://github.com/ionic-team/ionic-native/commit/307477d))
+* **plugins:** add web-server plugin ([#2726](https://github.com/ionic-team/ionic-native/issues/2726)) ([8116ddd](https://github.com/ionic-team/ionic-native/commit/8116ddd))
+* **siri-shortcuts:** Add clear option for the activated shortcut ([#2734](https://github.com/ionic-team/ionic-native/issues/2734)) ([3eff280](https://github.com/ionic-team/ionic-native/commit/3eff280))
+* **taptic-engine:** add missing functions and types ([a6bcc9a](https://github.com/ionic-team/ionic-native/commit/a6bcc9a))
+
+
+
+# [4.14.0](https://github.com/ionic-team/ionic-native/compare/v4.13.0...v4.14.0) (2018-09-18)
+
+
+### Bug Fixes
+
+* **mobile-accessibility:** add correct pluginRef ([3699fa9](https://github.com/ionic-team/ionic-native/commit/3699fa9)), closes [#1860](https://github.com/ionic-team/ionic-native/issues/1860)
+* **onesignal:** add missing setLocationShared method ([#2723](https://github.com/ionic-team/ionic-native/issues/2723)) ([8bab321](https://github.com/ionic-team/ionic-native/commit/8bab321))
+* **push:** add missing Chanel options ([3ef9593](https://github.com/ionic-team/ionic-native/commit/3ef9593)), closes [#2712](https://github.com/ionic-team/ionic-native/issues/2712)
+* **web-intent:** add missing properties ([d077c48](https://github.com/ionic-team/ionic-native/commit/d077c48)), closes [#2701](https://github.com/ionic-team/ionic-native/issues/2701)
+
+
+### Features
+
+* **chooster:** add plugin ([04db233](https://github.com/ionic-team/ionic-native/commit/04db233)), closes [#2612](https://github.com/ionic-team/ionic-native/issues/2612)
+* **local-notifications:** add missing functions ([10d222d](https://github.com/ionic-team/ionic-native/commit/10d222d))
+* **onesignal:** add missing functions ([51006a7](https://github.com/ionic-team/ionic-native/commit/51006a7)), closes [#2504](https://github.com/ionic-team/ionic-native/issues/2504)
+
+
+
+# [4.13.0](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.17...v4.13.0) (2018-09-15)
+
+
+### Bug Fixes
+
+* **bluetooth-le:** Various methods fixes  ([#2707](https://github.com/ionic-team/ionic-native/issues/2707)) ([7047920](https://github.com/ionic-team/ionic-native/commit/7047920))
+* **in-app-review:** Transfer Plugin to the correct folder ([#2688](https://github.com/ionic-team/ionic-native/issues/2688)) ([22fd49b](https://github.com/ionic-team/ionic-native/commit/22fd49b))
+* **ms-adal:** Update createAuthenticationContext ([#2705](https://github.com/ionic-team/ionic-native/issues/2705)) ([890129b](https://github.com/ionic-team/ionic-native/commit/890129b))
+
+
+### Features
+
+* **appsflyer:** Added Appsflyer Cordova SDK as ionic native plugin ([#2690](https://github.com/ionic-team/ionic-native/issues/2690)) ([3b3f942](https://github.com/ionic-team/ionic-native/commit/3b3f942))
+* **branch-io:** Add branch.io attribution and invitation plugin ([#2691](https://github.com/ionic-team/ionic-native/issues/2691)) ([90d75af](https://github.com/ionic-team/ionic-native/commit/90d75af))
+* **calldirectory:** add log function ([#2708](https://github.com/ionic-team/ionic-native/issues/2708)) ([9601a64](https://github.com/ionic-team/ionic-native/commit/9601a64))
+* **janalytics:** add  plugin ([#2711](https://github.com/ionic-team/ionic-native/issues/2711)) ([0b97176](https://github.com/ionic-team/ionic-native/commit/0b97176))
+* **local-notifications:** Added local additional local notification action fields ([#2713](https://github.com/ionic-team/ionic-native/issues/2713)) ([267149b](https://github.com/ionic-team/ionic-native/commit/267149b))
+* **mixpanel:** Update/add functions ([#2697](https://github.com/ionic-team/ionic-native/issues/2697)) ([ac467c5](https://github.com/ionic-team/ionic-native/commit/ac467c5))
+* **wechat:** add plugin ([#2716](https://github.com/ionic-team/ionic-native/issues/2716)) ([10ac9ff](https://github.com/ionic-team/ionic-native/commit/10ac9ff))
+
+
+
+# [5.0.0-beta.17](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.16...v5.0.0-beta.17) (2018-08-31)
+
+
+### Bug Fixes
+
+* **in-app-browser:** fix mandatory options ([#2684](https://github.com/ionic-team/ionic-native/issues/2684)) ([d82e675](https://github.com/ionic-team/ionic-native/commit/d82e675))
+
+
+
+## [4.12.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.15...v4.12.1) (2018-08-31)
+
+
+### Bug Fixes
+
+* **open-native-settings:** allow supported input ([#2666](https://github.com/ionic-team/ionic-native/issues/2666)) ([be0dc3d](https://github.com/ionic-team/ionic-native/commit/be0dc3d))
+
+
+### Features
+
+* **aes256:** Added new utility methods to generate secure key and secure IV ([#2675](https://github.com/ionic-team/ionic-native/issues/2675)) ([a731466](https://github.com/ionic-team/ionic-native/commit/a731466))
+* **in-app-browser:** Add missing InAppBrowserOptions-properties ([#2669](https://github.com/ionic-team/ionic-native/issues/2669)) ([d90724e](https://github.com/ionic-team/ionic-native/commit/d90724e))
+* **push:** Added voip property to IOSPushOptions ([#2681](https://github.com/ionic-team/ionic-native/issues/2681)) ([03e4f0e](https://github.com/ionic-team/ionic-native/commit/03e4f0e))
+
+
+
+# [5.0.0-beta.15](https://github.com/ionic-team/ionic-native/compare/v4.12.0...v5.0.0-beta.15) (2018-08-25)
+
+
+### Features
+
+* **bluetooth-le:** add bluetooth-le plugin ([#2651](https://github.com/ionic-team/ionic-native/issues/2651)) ([591ee87](https://github.com/ionic-team/ionic-native/commit/591ee87))
+* **http:** add setSSLCertMode function ([8db1dbe](https://github.com/ionic-team/ionic-native/commit/8db1dbe))
+
+
+
+# [4.12.0](https://github.com/ionic-team/ionic-native/compare/v4.11.0...v4.12.0) (2018-08-16)
+
+
+### Bug Fixes
+
+* **extended-device-information:** Fixed Memory Display Bug ([#2641](https://github.com/ionic-team/ionic-native/issues/2641)) ([2ac5282](https://github.com/ionic-team/ionic-native/commit/2ac5282))
+* **network:** bind listener to document instead of window ([#2622](https://github.com/ionic-team/ionic-native/issues/2622)) ([d10777a](https://github.com/ionic-team/ionic-native/commit/d10777a))
+* **photo-library:** interface missing includeVideos ([3f415f9](https://github.com/ionic-team/ionic-native/commit/3f415f9)), closes [#2624](https://github.com/ionic-team/ionic-native/issues/2624)
+
+
+### Features
+
+* **fabric:** add fabric plugin ([#2618](https://github.com/ionic-team/ionic-native/issues/2618)) ([9b4fd02](https://github.com/ionic-team/ionic-native/commit/9b4fd02))
+* **local-notifications:** add new foreground property ([#2633](https://github.com/ionic-team/ionic-native/issues/2633)) ([229b62c](https://github.com/ionic-team/ionic-native/commit/229b62c))
+* **webengage:** add optional config with initialization ([#2637](https://github.com/ionic-team/ionic-native/issues/2637)) ([ca9a702](https://github.com/ionic-team/ionic-native/commit/ca9a702))
+
+
+
+# [4.11.0](https://github.com/ionic-team/ionic-native/compare/v4.10.1...v4.11.0) (2018-07-29)
+
+
+### Bug Fixes
+
+* **http:** add correct return types for downloadFile and uploadFile ([4092831](https://github.com/ionic-team/ionic-native/commit/4092831)), closes [#2615](https://github.com/ionic-team/ionic-native/issues/2615)
+
+
+### Features
+
+* **clevertap:** add CleverTap plugin ([#2609](https://github.com/ionic-team/ionic-native/issues/2609)) ([27d380e](https://github.com/ionic-team/ionic-native/commit/27d380e))
+* **facebook:** add getDeferredApplink function ([3b32e19](https://github.com/ionic-team/ionic-native/commit/3b32e19)), closes [#2510](https://github.com/ionic-team/ionic-native/issues/2510)
+* **webengage:** add webengage plugin ([#2604](https://github.com/ionic-team/ionic-native/issues/2604)) ([bd5bd7e](https://github.com/ionic-team/ionic-native/commit/bd5bd7e))
+
+
+
+## [4.10.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.14...v4.10.1) (2018-07-25)
+
+
+### Bug Fixes
+
+* **nfs:** Optional arguments for records like textRecord ([#2605](https://github.com/ionic-team/ionic-native/issues/2605)) ([b635ba9](https://github.com/ionic-team/ionic-native/commit/b635ba9))
+* **user-agent:** Plugin not installed ([#2607](https://github.com/ionic-team/ionic-native/issues/2607)) ([79cb478](https://github.com/ionic-team/ionic-native/commit/79cb478))
+
+
+
+# [5.0.0-beta.14](https://github.com/ionic-team/ionic-native/compare/v4.10.0...v5.0.0-beta.14) (2018-07-18)
+
+
+### Features
+
 * **abbyy-rtr:** add ABBYY Real-Time Recognition plugin ([#2580](https://github.com/ionic-team/ionic-native/issues/2580)) ([ecc698e](https://github.com/ionic-team/ionic-native/commit/ecc698e))
 * **alipay:** replace plugin ([#2591](https://github.com/ionic-team/ionic-native/issues/2591)) ([e640983](https://github.com/ionic-team/ionic-native/commit/e640983))
 * **ccm:** replace plugin source ([#2601](https://github.com/ionic-team/ionic-native/issues/2601)) ([b581a5b](https://github.com/ionic-team/ionic-native/commit/b581a5b))
@@ -70,7 +252,6 @@
 
 
 
-<a name="4.9.2"></a>
 ## [4.9.2](https://github.com/ionic-team/ionic-native/compare/v4.9.1...v4.9.2) (2018-07-13)
 
 
@@ -81,7 +262,6 @@
 
 
 
-<a name="4.9.1"></a>
 ## [4.9.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.13...v4.9.1) (2018-07-09)
 
 
@@ -99,7 +279,6 @@
 
 
 
-<a name="5.0.0-beta.13"></a>
 # [5.0.0-beta.13](https://github.com/ionic-team/ionic-native/compare/v4.9.0...v5.0.0-beta.13) (2018-06-28)
 
 
@@ -176,7 +355,6 @@
 
 
 
-<a name="4.7.0"></a>
 # [4.7.0](https://github.com/ionic-team/ionic-native/compare/v4.6.0...v4.7.0) (2018-04-09)
 
 
@@ -271,7 +449,6 @@
 
 
 
-<a name="4.5.1"></a>
 ## [4.5.1](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.0...v4.5.1) (2017-12-12)
 
 
@@ -281,7 +458,6 @@
 
 
 
-<a name="5.0.0-beta.0"></a>
 # [5.0.0-beta.0](https://github.com/ionic-team/ionic-native/compare/v4.5.0...v5.0.0-beta.0) (2017-12-08)
 
 
@@ -321,17 +497,14 @@
 
 
 
-<a name="4.4.2"></a>
 ## [4.4.2](https://github.com/ionic-team/ionic-native/compare/v4.4.1...v4.4.2) (2017-11-15)
 
 
 
-<a name="4.4.1"></a>
 ## [4.4.1](https://github.com/ionic-team/ionic-native/compare/v4.4.0...v4.4.1) (2017-11-13)
 
 
 
-<a name="4.4.0"></a>
 # [4.4.0](https://github.com/ionic-team/ionic-native/compare/v4.3.3...v4.4.0) (2017-11-09)
 
 
@@ -342,7 +515,6 @@
 
 
 
-<a name="4.3.3"></a>
 ## [4.3.3](https://github.com/ionic-team/ionic-native/compare/4.3.2...v4.3.3) (2017-11-01)
 
 
@@ -352,7 +524,6 @@
 
 
 
-<a name="4.3.2"></a>
 ## [4.3.2](https://github.com/ionic-team/ionic-native/compare/4.3.1...4.3.2) (2017-10-17)
 
 
@@ -367,7 +538,6 @@
 
 
 
-<a name="4.3.1"></a>
 ## [4.3.1](https://github.com/ionic-team/ionic-native/compare/v4.3.0...4.3.1) (2017-10-06)
 
 
@@ -385,7 +555,6 @@
 
 
 
-<a name="4.3.0"></a>
 # [4.3.0](https://github.com/ionic-team/ionic-native/compare/v4.2.1...v4.3.0) (2017-09-27)
 
 
@@ -418,7 +587,6 @@
 
 
 
-<a name="4.2.0"></a>
 # [4.2.0](https://github.com/ionic-team/ionic-native/compare/v4.1.0...v4.2.0) (2017-08-26)
 
 
@@ -445,7 +613,6 @@
 
 
 
-<a name="4.1.0"></a>
 # [4.1.0](https://github.com/ionic-team/ionic-native/compare/v4.0.1...v4.1.0) (2017-07-21)
 
 
@@ -463,7 +630,6 @@
 
 
 
-<a name="4.0.1"></a>
 ## [4.0.1](https://github.com/ionic-team/ionic-native/compare/v4.0.0...v4.0.1) (2017-07-15)
 
 
@@ -481,7 +647,6 @@
 
 
 
-<a name="4.0.0"></a>
 # [4.0.0](https://github.com/ionic-team/ionic-native/compare/v3.14.0...v4.0.0) (2017-07-11)
 
 
@@ -524,7 +689,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.14.0"></a>
 # [3.14.0](https://github.com/ionic-team/ionic-native/compare/v3.13.1...v3.14.0) (2017-07-07)
 
 
@@ -534,7 +698,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.13.1"></a>
 ## [3.13.1](https://github.com/ionic-team/ionic-native/compare/v3.13.0...v3.13.1) (2017-07-05)
 
 
@@ -550,7 +713,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.13.0"></a>
 # [3.13.0](https://github.com/ionic-team/ionic-native/compare/v3.12.2...v3.13.0) (2017-07-03)
 
 
@@ -561,7 +723,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.12.2"></a>
 ## [3.12.2](https://github.com/ionic-team/ionic-native/compare/v3.12.1...v3.12.2) (2017-07-03)
 
 
@@ -582,7 +743,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.12.1"></a>
 ## [3.12.1](https://github.com/ionic-team/ionic-native/compare/v3.12.0...v3.12.1) (2017-06-03)
 
 
@@ -597,7 +757,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.12.0"></a>
 # [3.12.0](https://github.com/ionic-team/ionic-native/compare/v3.11.0...v3.12.0) (2017-06-03)
 
 
@@ -609,7 +768,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.11.0"></a>
 # [3.11.0](https://github.com/ionic-team/ionic-native/compare/v3.10.2...v3.11.0) (2017-06-01)
 
 
@@ -626,7 +784,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.10.2"></a>
 ## [3.10.2](https://github.com/ionic-team/ionic-native/compare/v3.10.1...v3.10.2) (2017-05-20)
 
 
@@ -636,7 +793,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.10.0"></a>
 # [3.10.0](https://github.com/ionic-team/ionic-native/compare/v3.9.2...v3.10.0) (2017-05-19)
 
 
@@ -652,7 +808,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.9.2"></a>
 ## [3.9.2](https://github.com/ionic-team/ionic-native/compare/v3.9.1...v3.9.2) (2017-05-17)
 
 
@@ -663,7 +818,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.9.1"></a>
 ## [3.9.1](https://github.com/ionic-team/ionic-native/compare/v3.9.0...v3.9.1) (2017-05-17)
 
 
@@ -673,7 +827,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.9.0"></a>
 # [3.9.0](https://github.com/ionic-team/ionic-native/compare/v3.8.1...v3.9.0) (2017-05-17)
 
 
@@ -697,7 +850,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.8.1"></a>
 ## [3.8.1](https://github.com/ionic-team/ionic-native/compare/v3.8.0...v3.8.1) (2017-05-16)
 
 
@@ -716,7 +868,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.8.0"></a>
 # [3.8.0](https://github.com/ionic-team/ionic-native/compare/v3.7.0...v3.8.0) (2017-05-14)
 
 
@@ -735,7 +886,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.7.0"></a>
 # [3.7.0](https://github.com/ionic-team/ionic-native/compare/v3.6.0...v3.7.0) (2017-05-09)
 
 
@@ -780,7 +930,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.6.0"></a>
 # [3.6.0](https://github.com/ionic-team/ionic-native/compare/v3.5.0...v3.6.0) (2017-04-27)
 
 
@@ -796,7 +945,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.5.0"></a>
 # [3.5.0](https://github.com/ionic-team/ionic-native/compare/v3.4.4...v3.5.0) (2017-04-18)
 
 
@@ -814,7 +962,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.4.4"></a>
 ## [3.4.4](https://github.com/ionic-team/ionic-native/compare/v3.4.3...v3.4.4) (2017-03-30)
 
 
@@ -824,7 +971,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.4.3"></a>
 ## [3.4.3](https://github.com/ionic-team/ionic-native/compare/v3.4.2...v3.4.3) (2017-03-29)
 
 
@@ -842,7 +988,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.4.1"></a>
 ## [3.4.1](https://github.com/ionic-team/ionic-native/compare/v3.4.0...v3.4.1) (2017-03-28)
 
 
@@ -854,7 +999,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.4.0"></a>
 # [3.4.0](https://github.com/ionic-team/ionic-native/compare/v3.3.1...v3.4.0) (2017-03-28)
 
 
@@ -872,7 +1016,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.3.1"></a>
 ## [3.3.1](https://github.com/ionic-team/ionic-native/compare/v3.3.0...v3.3.1) (2017-03-28)
 
 
@@ -892,7 +1035,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.3.0"></a>
 # [3.3.0](https://github.com/ionic-team/ionic-native/compare/v3.2.3...v3.3.0) (2017-03-27)
 
 
@@ -903,7 +1045,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.2.3"></a>
 ## [3.2.3](https://github.com/ionic-team/ionic-native/compare/v3.2.2...v3.2.3) (2017-03-24)
 
 
@@ -914,12 +1055,10 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.2.2"></a>
 ## [3.2.2](https://github.com/ionic-team/ionic-native/compare/v3.2.1...v3.2.2) (2017-03-23)
 
 
 
-<a name="3.2.1"></a>
 ## [3.2.1](https://github.com/ionic-team/ionic-native/compare/v3.2.0...v3.2.1) (2017-03-23)
 
 
@@ -929,7 +1068,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.2.0"></a>
 # [3.2.0](https://github.com/ionic-team/ionic-native/compare/v3.1.1...v3.2.0) (2017-03-22)
 
 
@@ -944,7 +1082,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.1.1"></a>
 ## [3.1.1](https://github.com/ionic-team/ionic-native/compare/v3.1.0...v3.1.1) (2017-03-21)
 
 
@@ -954,7 +1091,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="3.1.0"></a>
 # [3.1.0](https://github.com/ionic-team/ionic-native/compare/v2.9.0...v3.1.0) (2017-03-20)
 
 
@@ -964,7 +1100,7 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 * **music-controls:** fix return types for methods ([f3407e5](https://github.com/ionic-team/ionic-native/commit/f3407e5))
 
 
-### Chores
+### chore
 
 * merge v3-injectable into master ([#1203](https://github.com/ionic-team/ionic-native/issues/1203)) ([2f2d55f](https://github.com/ionic-team/ionic-native/commit/2f2d55f)), closes [#250](https://github.com/ionic-team/ionic-native/issues/250) [#861](https://github.com/ionic-team/ionic-native/issues/861) [#1059](https://github.com/ionic-team/ionic-native/issues/1059) [#1145](https://github.com/ionic-team/ionic-native/issues/1145) [#1146](https://github.com/ionic-team/ionic-native/issues/1146) [#1049](https://github.com/ionic-team/ionic-native/issues/1049) [#1072](https://github.com/ionic-team/ionic-native/issues/1072) [#1071](https://github.com/ionic-team/ionic-native/issues/1071) [#1076](https://github.com/ionic-team/ionic-native/issues/1076) [#1065](https://github.com/ionic-team/ionic-native/issues/1065) [#1089](https://github.com/ionic-team/ionic-native/issues/1089) [#1087](https://github.com/ionic-team/ionic-native/issues/1087) [#1096](https://github.com/ionic-team/ionic-native/issues/1096) [#1098](https://github.com/ionic-team/ionic-native/issues/1098) [#1088](https://github.com/ionic-team/ionic-native/issues/1088) [#1099](https://github.com/ionic-team/ionic-native/issues/1099) [#1101](https://github.com/ionic-team/ionic-native/issues/1101) [#1103](https://github.com/ionic-team/ionic-native/issues/1103) [#1106](https://github.com/ionic-team/ionic-native/issues/1106) [#1107](https://github.com/ionic-team/ionic-native/issues/1107) [#1108](https://github.com/ionic-team/ionic-native/issues/1108) [#1109](https://github.com/ionic-team/ionic-native/issues/1109) [#1110](https://github.com/ionic-team/ionic-native/issues/1110) [#1122](https://github.com/ionic-team/ionic-native/issues/1122) [#1129](https://github.com/ionic-team/ionic-native/issues/1129) [#1125](https://github.com/ionic-team/ionic-native/issues/1125) [#1128](https://github.com/ionic-team/ionic-native/issues/1128) [#1126](https://github.com/ionic-team/ionic-native/issues/1126) [#1115](https://github.com/ionic-team/ionic-native/issues/1115) [#1077](https://github.com/ionic-team/ionic-native/issues/1077) [#1118](https://github.com/ionic-team/ionic-native/issues/1118) [#1093](https://github.com/ionic-team/ionic-native/issues/1093) [#1116](https://github.com/ionic-team/ionic-native/issues/1116) [#1001](https://github.com/ionic-team/ionic-native/issues/1001) [#1105](https://github.com/ionic-team/ionic-native/issues/1105) [#1097](https://github.com/ionic-team/ionic-native/issues/1097) [#1095](https://github.com/ionic-team/ionic-native/issues/1095) [#1086](https://github.com/ionic-team/ionic-native/issues/1086) [#1082](https://github.com/ionic-team/ionic-native/issues/1082) [#1079](https://github.com/ionic-team/ionic-native/issues/1079) [#1064](https://github.com/ionic-team/ionic-native/issues/1064) [#1063](https://github.com/ionic-team/ionic-native/issues/1063) [#1031](https://github.com/ionic-team/ionic-native/issues/1031) [#1025](https://github.com/ionic-team/ionic-native/issues/1025) [#990](https://github.com/ionic-team/ionic-native/issues/990) [#1013](https://github.com/ionic-team/ionic-native/issues/1013) [#990](https://github.com/ionic-team/ionic-native/issues/990) [#1004](https://github.com/ionic-team/ionic-native/issues/1004) [#1130](https://github.com/ionic-team/ionic-native/issues/1130) [#1043](https://github.com/ionic-team/ionic-native/issues/1043) [#1044](https://github.com/ionic-team/ionic-native/issues/1044) [#1045](https://github.com/ionic-team/ionic-native/issues/1045) [#1078](https://github.com/ionic-team/ionic-native/issues/1078) [#1084](https://github.com/ionic-team/ionic-native/issues/1084) [#1102](https://github.com/ionic-team/ionic-native/issues/1102) [#1132](https://github.com/ionic-team/ionic-native/issues/1132) [#1039](https://github.com/ionic-team/ionic-native/issues/1039) [#1138](https://github.com/ionic-team/ionic-native/issues/1138) [#1139](https://github.com/ionic-team/ionic-native/issues/1139) [#1142](https://github.com/ionic-team/ionic-native/issues/1142) [#1171](https://github.com/ionic-team/ionic-native/issues/1171) [#1193](https://github.com/ionic-team/ionic-native/issues/1193)
 
@@ -1020,7 +1156,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.9.0"></a>
 # [2.9.0](https://github.com/ionic-team/ionic-native/compare/v2.8.1...v2.9.0) (2017-03-18)
 
 
@@ -1035,7 +1170,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.8.1"></a>
 ## [2.8.1](https://github.com/ionic-team/ionic-native/compare/v2.8.0...v2.8.1) (2017-03-10)
 
 
@@ -1053,7 +1187,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.8.0"></a>
 # [2.8.0](https://github.com/ionic-team/ionic-native/compare/v2.7.0...v2.8.0) (2017-03-04)
 
 
@@ -1070,7 +1203,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.7.0"></a>
 # [2.7.0](https://github.com/ionic-team/ionic-native/compare/v2.6.0...v2.7.0) (2017-03-02)
 
 
@@ -1088,7 +1220,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.6.0"></a>
 # [2.6.0](https://github.com/ionic-team/ionic-native/compare/v2.5.1...v2.6.0) (2017-03-02)
 
 
@@ -1128,7 +1259,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.5.1"></a>
 ## [2.5.1](https://github.com/ionic-team/ionic-native/compare/v2.5.0...v2.5.1) (2017-02-07)
 
 
@@ -1138,7 +1268,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.5.0"></a>
 # [2.5.0](https://github.com/ionic-team/ionic-native/compare/v2.4.1...v2.5.0) (2017-02-07)
 
 
@@ -1157,7 +1286,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.4.1"></a>
 ## [2.4.1](https://github.com/ionic-team/ionic-native/compare/v2.4.0...v2.4.1) (2017-01-24)
 
 
@@ -1173,12 +1301,10 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.3.2"></a>
 ## [2.3.2](https://github.com/ionic-team/ionic-native/compare/v2.3.1...v2.3.2) (2017-01-24)
 
 
 
-<a name="2.3.1"></a>
 ## [2.3.1](https://github.com/ionic-team/ionic-native/compare/v2.3.0...v2.3.1) (2017-01-24)
 
 
@@ -1199,7 +1325,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.3.0"></a>
 # [2.3.0](https://github.com/ionic-team/ionic-native/compare/v2.2.17...v2.3.0) (2017-01-20)
 
 
@@ -1224,7 +1349,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.17"></a>
 ## [2.2.17](https://github.com/ionic-team/ionic-native/compare/v2.2.16...v2.2.17) (2017-01-20)
 
 
@@ -1235,7 +1359,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.16"></a>
 ## [2.2.16](https://github.com/ionic-team/ionic-native/compare/v2.2.15...v2.2.16) (2017-01-11)
 
 
@@ -1245,7 +1368,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.15"></a>
 ## [2.2.15](https://github.com/ionic-team/ionic-native/compare/v2.2.14...v2.2.15) (2017-01-11)
 
 
@@ -1257,7 +1379,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.14"></a>
 ## [2.2.14](https://github.com/ionic-team/ionic-native/compare/v2.2.13...v2.2.14) (2017-01-07)
 
 
@@ -1278,7 +1399,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.13"></a>
 ## [2.2.13](https://github.com/ionic-team/ionic-native/compare/v2.2.12...v2.2.13) (2016-12-27)
 
 
@@ -1299,7 +1419,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.12"></a>
 ## [2.2.12](https://github.com/ionic-team/ionic-native/compare/v2.2.11...v2.2.12) (2016-12-18)
 
 
@@ -1317,7 +1436,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.11"></a>
 ## [2.2.11](https://github.com/ionic-team/ionic-native/compare/v2.2.10...v2.2.11) (2016-12-06)
 
 
@@ -1333,7 +1451,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.10"></a>
 ## [2.2.10](https://github.com/ionic-team/ionic-native/compare/v2.2.8...v2.2.10) (2016-12-04)
 
 
@@ -1351,7 +1468,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.8"></a>
 ## [2.2.8](https://github.com/ionic-team/ionic-native/compare/v2.2.7...v2.2.8) (2016-12-01)
 
 
@@ -1369,7 +1485,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.7"></a>
 ## [2.2.7](https://github.com/ionic-team/ionic-native/compare/v2.2.5...v2.2.7) (2016-11-24)
 
 
@@ -1396,7 +1511,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.5"></a>
 ## [2.2.5](https://github.com/ionic-team/ionic-native/compare/v2.2.4...v2.2.5) (2016-10-27)
 
 
@@ -1419,7 +1533,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.4"></a>
 ## [2.2.4](https://github.com/ionic-team/ionic-native/compare/v2.2.3...v2.2.4) (2016-10-15)
 
 
@@ -1436,7 +1549,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.3"></a>
 ## [2.2.3](https://github.com/ionic-team/ionic-native/compare/v2.2.2...v2.2.3) (2016-10-14)
 
 
@@ -1447,7 +1559,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.2"></a>
 ## [2.2.2](https://github.com/ionic-team/ionic-native/compare/v2.2.1...v2.2.2) (2016-10-12)
 
 
@@ -1463,7 +1574,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.1"></a>
 ## [2.2.1](https://github.com/ionic-team/ionic-native/compare/v2.2.0...v2.2.1) (2016-10-12)
 
 
@@ -1483,7 +1593,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.2.0"></a>
 # [2.2.0](https://github.com/ionic-team/ionic-native/compare/v2.1.9...v2.2.0) (2016-10-11)
 
 
@@ -1499,7 +1608,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.1.9"></a>
 ## [2.1.9](https://github.com/ionic-team/ionic-native/compare/v2.1.7...v2.1.9) (2016-10-09)
 
 
@@ -1512,7 +1620,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.1.7"></a>
 ## [2.1.7](https://github.com/ionic-team/ionic-native/compare/v2.1.6...v2.1.7) (2016-10-07)
 
 
@@ -1522,7 +1629,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.1.6"></a>
 ## [2.1.6](https://github.com/ionic-team/ionic-native/compare/v2.1.3...v2.1.6) (2016-10-06)
 
 
@@ -1533,7 +1639,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.1.3"></a>
 ## [2.1.3](https://github.com/ionic-team/ionic-native/compare/v2.1.2...v2.1.3) (2016-10-06)
 
 
@@ -1545,7 +1650,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.1.2"></a>
 ## [2.1.2](https://github.com/ionic-team/ionic-native/compare/v2.1.0...v2.1.2) (2016-10-06)
 
 
@@ -1560,7 +1664,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.1.0"></a>
 # [2.1.0](https://github.com/ionic-team/ionic-native/compare/v2.0.3...v2.1.0) (2016-10-03)
 
 
@@ -1590,7 +1693,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="2.0.3"></a>
 ## [2.0.3](https://github.com/ionic-team/ionic-native/compare/v1.3.21...v2.0.3) (2016-09-24)
 
 
@@ -1620,7 +1722,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.21"></a>
 ## [1.3.21](https://github.com/ionic-team/ionic-native/compare/v1.3.20...v1.3.21) (2016-09-07)
 
 
@@ -1652,7 +1753,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.20"></a>
 ## [1.3.20](https://github.com/ionic-team/ionic-native/compare/v1.3.19...v1.3.20) (2016-08-27)
 
 
@@ -1671,7 +1771,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.19"></a>
 ## [1.3.19](https://github.com/ionic-team/ionic-native/compare/v1.3.18...v1.3.19) (2016-08-27)
 
 
@@ -1693,7 +1792,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.18"></a>
 ## [1.3.18](https://github.com/ionic-team/ionic-native/compare/v1.3.17...v1.3.18) (2016-08-26)
 
 
@@ -1714,7 +1812,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.17"></a>
 ## [1.3.17](https://github.com/ionic-team/ionic-native/compare/v1.3.16...v1.3.17) (2016-08-23)
 
 
@@ -1734,7 +1831,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.16"></a>
 ## [1.3.16](https://github.com/ionic-team/ionic-native/compare/v1.3.15...v1.3.16) (2016-08-15)
 
 
@@ -1744,7 +1840,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.15"></a>
 ## [1.3.15](https://github.com/ionic-team/ionic-native/compare/v1.3.14...v1.3.15) (2016-08-15)
 
 
@@ -1755,7 +1850,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.14"></a>
 ## [1.3.14](https://github.com/ionic-team/ionic-native/compare/v1.3.12...v1.3.14) (2016-08-15)
 
 
@@ -1773,7 +1867,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.12"></a>
 ## [1.3.12](https://github.com/ionic-team/ionic-native/compare/v1.3.11...v1.3.12) (2016-08-13)
 
 
@@ -1783,7 +1876,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.11"></a>
 ## [1.3.11](https://github.com/ionic-team/ionic-native/compare/v1.3.10...v1.3.11) (2016-08-11)
 
 
@@ -1808,7 +1900,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.10"></a>
 ## [1.3.10](https://github.com/ionic-team/ionic-native/compare/v1.3.9...v1.3.10) (2016-08-01)
 
 
@@ -1827,7 +1918,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.9"></a>
 ## [1.3.9](https://github.com/ionic-team/ionic-native/compare/v1.3.8...v1.3.9) (2016-07-23)
 
 
@@ -1843,7 +1933,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.8"></a>
 ## [1.3.8](https://github.com/ionic-team/ionic-native/compare/v1.3.7...v1.3.8) (2016-07-20)
 
 
@@ -1862,7 +1951,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.7"></a>
 ## [1.3.7](https://github.com/ionic-team/ionic-native/compare/v1.3.6...v1.3.7) (2016-07-18)
 
 
@@ -1878,7 +1966,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.6"></a>
 ## [1.3.6](https://github.com/ionic-team/ionic-native/compare/v1.3.5...v1.3.6) (2016-07-17)
 
 
@@ -1895,7 +1982,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.5"></a>
 ## [1.3.5](https://github.com/ionic-team/ionic-native/compare/v1.3.4...v1.3.5) (2016-07-17)
 
 
@@ -1915,7 +2001,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.4"></a>
 ## [1.3.4](https://github.com/ionic-team/ionic-native/compare/v1.3.3...v1.3.4) (2016-07-14)
 
 
@@ -1930,7 +2015,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.3"></a>
 ## [1.3.3](https://github.com/ionic-team/ionic-native/compare/v1.3.2...v1.3.3) (2016-07-11)
 
 
@@ -1952,7 +2036,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.2"></a>
 ## [1.3.2](https://github.com/ionic-team/ionic-native/compare/v1.3.1...v1.3.2) (2016-06-27)
 
 
@@ -1962,7 +2045,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.1"></a>
 ## [1.3.1](https://github.com/ionic-team/ionic-native/compare/v1.3.0...v1.3.1) (2016-06-26)
 
 
@@ -1979,7 +2061,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.3.0"></a>
 # [1.3.0](https://github.com/ionic-team/ionic-native/compare/v1.2.3...v1.3.0) (2016-06-13)
 
 
@@ -2003,12 +2084,10 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.2.3"></a>
 ## [1.2.3](https://github.com/ionic-team/ionic-native/compare/v1.2.2...v1.2.3) (2016-06-01)
 
 
 
-<a name="1.2.2"></a>
 ## [1.2.2](https://github.com/ionic-team/ionic-native/compare/v1.2.1...v1.2.2) (2016-05-20)
 
 
@@ -2020,7 +2099,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.2.1"></a>
 ## [1.2.1](https://github.com/ionic-team/ionic-native/compare/v1.2.0...v1.2.1) (2016-05-11)
 
 
@@ -2035,7 +2113,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.2.0"></a>
 # [1.2.0](https://github.com/ionic-team/ionic-native/compare/v1.1.0...v1.2.0) (2016-04-30)
 
 
@@ -2077,7 +2154,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.1.0"></a>
 # [1.1.0](https://github.com/ionic-team/ionic-native/compare/v1.0.9...v1.1.0) (2016-03-17)
 
 
@@ -2139,7 +2215,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 
 
-<a name="1.0.9"></a>
 ## [1.0.9](https://github.com/ionic-team/ionic-native/compare/8f27fc9...v1.0.9) (2016-02-18)
 
 
