@@ -7,7 +7,6 @@
     "ban-types": false,
     "no-shadowed-variable": false,
     "no-constant-condition": false,
-    "no-extra-boolean-cast": false,
-    "linebreak-style": false
+    "no-extra-boolean-cast": false
   }
 }
