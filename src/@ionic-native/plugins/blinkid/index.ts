@@ -1799,18 +1799,18 @@ export interface PaymentCardFrontRecognizerCtor extends RecognizerCtor<PaymentCa
 
 export interface Pdf417RecognizerResult extends RecognizerResult {
   barcodeType: string;
-  rawDate: string;
+  rawData: string;
   stringData: string;
   uncertain: boolean;
 }
-export interface Pdf417RecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface Pdf417RecognizerResultCtor extends RecognizerResultCtor<Pdf417RecognizerResult> {}
 
-export interface Pdf417Recognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface Pdf417Recognizer extends Recognizer<Pdf417RecognizerResult> {
   nullQuietZoneAllowed: boolean;
   scanInverse: boolean;
   scanUncertain: boolean;
 }
-export interface Pdf417RecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface Pdf417RecognizerCtor extends RecognizerCtor<Pdf417Recognizer> {}
 
 export interface PolandCombinedRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1833,9 +1833,9 @@ export interface PolandCombinedRecognizerResult extends RecognizerResult {
   sex: string;
   surname: string;
 }
-export interface PolandCombinedRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface PolandCombinedRecognizerResultCtor extends RecognizerResultCtor<PolandCombinedRecognizerResult> {}
 
-export interface PolandCombinedRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface PolandCombinedRecognizer extends Recognizer<PolandCombinedRecognizerResult> {
   detectGlare: boolean;
   extractDateOfBirth: boolean;
   extractFamilyName: boolean;
@@ -1847,7 +1847,7 @@ export interface PolandCombinedRecognizer extends Recognizer<PaymentCardFrontRec
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface PolandCombinedRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface PolandCombinedRecognizerCtor extends RecognizerCtor<PolandCombinedRecognizer> {}
 
 export interface PolandIdBackRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1866,13 +1866,13 @@ export interface PolandIdBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: string;
 }
-export interface PolandIdBackRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface PolandIdBackRecognizerResultCtor extends RecognizerResultCtor<PolandIdBackRecognizerResult> {}
 
-export interface PolandIdBackRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface PolandIdBackRecognizer extends Recognizer<PolandIdBackRecognizerResult> {
   detectGlare: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface PolandIdBackRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface PolandIdBackRecognizerCtor extends RecognizerCtor<PolandIdBackRecognizer> {}
 
 export interface PolandIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1884,9 +1884,9 @@ export interface PolandIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   surname: string;
 }
-export interface PolandIdFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface PolandIdFrontRecognizerResultCtor extends RecognizerResultCtor<PolandIdFrontRecognizerResult> {}
 
-export interface PolandIdFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface PolandIdFrontRecognizer extends Recognizer<PolandIdFrontRecognizerResult> {
   detectGlare: boolean;
   extractDateOfBirth: boolean;
   extractFamilyName: boolean;
@@ -1897,7 +1897,7 @@ export interface PolandIdFrontRecognizer extends Recognizer<PaymentCardFrontReco
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface PolandIdFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface PolandIdFrontRecognizerCtor extends RecognizerCtor<PolandIdFrontRecognizer> {}
 
 export interface RomaniaIdFrontRecognizerResult extends RecognizerResult {
   address: string;
@@ -1930,9 +1930,9 @@ export interface RomaniaIdFrontRecognizerResult extends RecognizerResult {
   validFrom: Date;
   validUntil: Date;
 }
-export interface RomaniaIdFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface RomaniaIdFrontRecognizerResultCtor extends RecognizerResultCtor<RomaniaIdFrontRecognizerResult> {}
 
-export interface RomaniaIdFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface RomaniaIdFrontRecognizer extends Recognizer<RomaniaIdFrontRecognizerResult> {
   detectGlare: boolean;
   extractAddress: boolean;
   extractFirstName: boolean;
@@ -1945,7 +1945,7 @@ export interface RomaniaIdFrontRecognizer extends Recognizer<PaymentCardFrontRec
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface RomaniaIdFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface RomaniaIdFrontRecognizerCtor extends RecognizerCtor<RomaniaIdFrontRecognizer> {}
 
 export interface SerbiaCombinedRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1968,16 +1968,16 @@ export interface SerbiaCombinedRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface SerbiaCombinedRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SerbiaCombinedRecognizerResultCtor extends RecognizerResultCtor<SerbiaCombinedRecognizerResult> {}
 
-export interface SerbiaCombinedRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SerbiaCombinedRecognizer extends Recognizer<SerbiaCombinedRecognizerResult> {
   detectGlare: boolean;
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
   signResult: boolean;
 }
-export interface SerbiaCombinedRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SerbiaCombinedRecognizerCtor extends RecognizerCtor<SerbiaCombinedRecognizer> {}
 
 export interface SerbiaIdBackRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1996,13 +1996,13 @@ export interface SerbiaIdBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: string;
 }
-export interface SerbiaIdBackRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SerbiaIdBackRecognizerResultCtor extends RecognizerResultCtor<SerbiaIdBackRecognizerResult> {}
 
-export interface SerbiaIdBackRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SerbiaIdBackRecognizer extends Recognizer<SerbiaIdBackRecognizerResult> {
   detectGlare: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SerbiaIdBackRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SerbiaIdBackRecognizerCtor extends RecognizerCtor<SerbiaIdBackRecognizer> {}
 
 export interface SerbiaIdFrontRecognizerResult extends RecognizerResult {
   documentNumber: string;
@@ -2013,9 +2013,9 @@ export interface SerbiaIdFrontRecognizerResult extends RecognizerResult {
   validThru: Date;
   validUntil: Date;
 }
-export interface SerbiaIdFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SerbiaIdFrontRecognizerResultCtor extends RecognizerResultCtor<SerbiaIdFrontRecognizerResult> {}
 
-export interface SerbiaIdFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SerbiaIdFrontRecognizer extends Recognizer<SerbiaIdFrontRecognizerResult> {
   detectGlare: boolean;
   extractIssuingDate: boolean;
   extractValidUntil: boolean;
@@ -2023,15 +2023,15 @@ export interface SerbiaIdFrontRecognizer extends Recognizer<PaymentCardFrontReco
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface SerbiaIdFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SerbiaIdFrontRecognizerCtor extends RecognizerCtor<SerbiaIdFrontRecognizer> {}
 
 export interface SimNumberRecognizerResult extends RecognizerResult {
   simNumber: string;
 }
-export interface SimNumberRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SimNumberRecognizerResultCtor extends RecognizerResultCtor<SimNumberRecognizerResult> {}
 
-export interface SimNumberRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {}
-export interface SimNumberRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SimNumberRecognizer extends Recognizer<SimNumberRecognizerResult> {}
+export interface SimNumberRecognizerCtor extends RecognizerCtor<SimNumberRecognizer> {}
 
 export interface SingaporeChangiEmployeeIdRecognizerResult extends RecognizerResult {
   companyName: string;
@@ -2041,9 +2041,9 @@ export interface SingaporeChangiEmployeeIdRecognizerResult extends RecognizerRes
   fullDocumentImage: string;
   name: string;
 }
-export interface SingaporeChangiEmployeeIdRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SingaporeChangiEmployeeIdRecognizerResultCtor extends RecognizerResultCtor<SingaporeChangiEmployeeIdRecognizerResult> {}
 
-export interface SingaporeChangiEmployeeIdRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SingaporeChangiEmployeeIdRecognizer extends Recognizer<SingaporeChangiEmployeeIdRecognizerResult> {
   detectGlare: boolean;
   extractCompanyName: boolean;
   extractDateOfExpiry: boolean;
@@ -2054,7 +2054,7 @@ export interface SingaporeChangiEmployeeIdRecognizer extends Recognizer<PaymentC
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SingaporeChangiEmployeeIdRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SingaporeChangiEmployeeIdRecognizerCtor extends RecognizerCtor<SingaporeChangiEmployeeIdRecognizer> {}
 
 export interface SingaporeCombinedRecognizerResult extends RecognizerResult {
   address: string;
@@ -2075,9 +2075,9 @@ export interface SingaporeCombinedRecognizerResult extends RecognizerResult {
   scanningFirstSideDone: string;
   sex: string;
 }
-export interface SingaporeCombinedRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SingaporeCombinedRecognizerResultCtor extends RecognizerResultCtor<SingaporeCombinedRecognizerResult> {}
 
-export interface SingaporeCombinedRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SingaporeCombinedRecognizer extends Recognizer<SingaporeCombinedRecognizerResult> {
   detectGlare: boolean;
   extractAddress: boolean;
   extractAddressChangeDate: boolean;
@@ -2095,7 +2095,7 @@ export interface SingaporeCombinedRecognizer extends Recognizer<PaymentCardFront
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface SingaporeCombinedRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SingaporeCombinedRecognizerCtor extends RecognizerCtor<SingaporeCombinedRecognizer> {}
 
 export interface SingaporeDlFrontRecognizerResult extends RecognizerResult {
   birthData: Date;
@@ -2106,9 +2106,9 @@ export interface SingaporeDlFrontRecognizerResult extends RecognizerResult {
   name: string;
   validTill: Date;
 }
-export interface SingaporeDlFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SingaporeDlFrontRecognizerResultCtor extends RecognizerResultCtor<SingaporeDlFrontRecognizerResult> {}
 
-export interface SingaporeDlFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SingaporeDlFrontRecognizer extends Recognizer<SingaporeDlFrontRecognizerResult> {
   detectGlare: boolean;
   extractBirthDate: boolean;
   extractIssueDate: boolean;
@@ -2120,7 +2120,7 @@ export interface SingaporeDlFrontRecognizer extends Recognizer<PaymentCardFrontR
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SingaporeDlFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SingaporeDlFrontRecognizerCtor extends RecognizerCtor<SingaporeDlFrontRecognizer> {}
 
 export interface SingaporeIdBackRecognizerResult extends RecognizerResult {
   address: string;
@@ -2130,9 +2130,9 @@ export interface SingaporeIdBackRecognizerResult extends RecognizerResult {
   dateOfIssue: Date;
   fullDocumentImage: string;
 }
-export interface SingaporeIdBackRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SingaporeIdBackRecognizerResultCtor extends RecognizerResultCtor<SingaporeIdBackRecognizerResult> {}
 
-export interface SingaporeIdBackRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SingaporeIdBackRecognizer extends Recognizer<SingaporeIdBackRecognizerResult> {
   detectGlare: boolean;
   extractAddress: boolean;
   extractAddressChangeDate: boolean;
@@ -2142,7 +2142,7 @@ export interface SingaporeIdBackRecognizer extends Recognizer<PaymentCardFrontRe
   fullDocumentImageExtensionFactors: ImageExtensionFactors;
   returnFullDocumentImage: boolean;
 }
-export interface SingaporeIdBackRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SingaporeIdBackRecognizerCtor extends RecognizerCtor<SingaporeIdBackRecognizer> {}
 
 export interface SingaporeIdFrontRecognizerResult extends RecognizerResult {
   countryOfBirth: string;
@@ -2154,9 +2154,9 @@ export interface SingaporeIdFrontRecognizerResult extends RecognizerResult {
   race: string;
   sex: string;
 }
-export interface SingaporeIdFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SingaporeIdFrontRecognizerResultCtor extends RecognizerResultCtor<SingaporeIdFrontRecognizerResult> {}
 
-export interface SingaporeIdFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SingaporeIdFrontRecognizer extends Recognizer<SingaporeIdFrontRecognizerResult> {
   detectGlare: boolean;
   extractCountryOfBirth: boolean;
   extractDateOfBirth: boolean;
@@ -2169,7 +2169,7 @@ export interface SingaporeIdFrontRecognizer extends Recognizer<PaymentCardFrontR
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SingaporeIdFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SingaporeIdFrontRecognizerCtor extends RecognizerCtor<SingaporeIdFrontRecognizer> {}
 
 export interface SlovakiaCombinedRecognizerResult extends RecognizerResult {
   address: string;
@@ -2196,9 +2196,9 @@ export interface SlovakiaCombinedRecognizerResult extends RecognizerResult {
   specialRemarks: string;
   surnameAtBirth: string;
 }
-export interface SlovakiaCombinedRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SlovakiaCombinedRecognizerResultCtor extends RecognizerResultCtor<SlovakiaCombinedRecognizerResult> {}
 
-export interface SlovakiaCombinedRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SlovakiaCombinedRecognizer extends Recognizer<SlovakiaCombinedRecognizerResult> {
   detectGlare: boolean;
   extractDateOfBirth: boolean;
   extractDateOfExpiry: boolean;
@@ -2214,7 +2214,7 @@ export interface SlovakiaCombinedRecognizer extends Recognizer<PaymentCardFrontR
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface SlovakiaCombinedRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SlovakiaCombinedRecognizerCtor extends RecognizerCtor<SlovakiaCombinedRecognizer> {}
 
 export interface SlovakiaIdBackRecognizerResult extends RecognizerResult {
   address: string;
@@ -2236,16 +2236,16 @@ export interface SlovakiaIdBackRecognizerResult extends RecognizerResult {
   specialRemarks: string;
   surnameAtBirth: string;
 }
-export interface SlovakiaIdBackRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SlovakiaIdBackRecognizerResultCtor extends RecognizerResultCtor<SlovakiaIdBackRecognizerResult> {}
 
-export interface SlovakiaIdBackRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SlovakiaIdBackRecognizer extends Recognizer<SlovakiaIdBackRecognizerResult> {
   detectGlare: boolean;
   extractPlaceOfBirth: boolean;
   extractSpecialRemarks: boolean;
   extractSurnameAtBirth: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SlovakiaIdBackRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SlovakiaIdBackRecognizerCtor extends RecognizerCtor<SlovakiaIdBackRecognizer> {}
 
 export interface SlovakiaIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2262,9 +2262,9 @@ export interface SlovakiaIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface SlovakiaIdFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SlovakiaIdFrontRecognizerResultCtor extends RecognizerResultCtor<SlovakiaIdFrontRecognizerResult> {}
 
-export interface SlovakiaIdFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SlovakiaIdFrontRecognizer extends Recognizer<SlovakiaIdFrontRecognizerResult> {
   detectGlare: boolean;
   extractPlaceOfBirth: boolean;
   extractDateOfExpiry: boolean;
@@ -2277,7 +2277,7 @@ export interface SlovakiaIdFrontRecognizer extends Recognizer<PaymentCardFrontRe
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface SlovakiaIdFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SlovakiaIdFrontRecognizerCtor extends RecognizerCtor<SlovakiaIdFrontRecognizer> {}
 
 export interface SloveniaCombinedRecognizerResult extends RecognizerResult {
   address: string;
@@ -2301,16 +2301,16 @@ export interface SloveniaCombinedRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface SloveniaCombinedRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SloveniaCombinedRecognizerResultCtor extends RecognizerResultCtor<SloveniaCombinedRecognizerResult> {}
 
-export interface SloveniaCombinedRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SloveniaCombinedRecognizer extends Recognizer<SloveniaCombinedRecognizerResult> {
   detectGlare: boolean;
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
   signResult: boolean;
 }
-export interface SloveniaCombinedRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SloveniaCombinedRecognizerCtor extends RecognizerCtor<SloveniaCombinedRecognizer> {}
 
 export interface SloveniaIdBackRecognizerResult extends RecognizerResult {
   address: string;
@@ -2331,15 +2331,15 @@ export interface SloveniaIdBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: string;
 }
-export interface SloveniaIdBackRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SloveniaIdBackRecognizerResultCtor extends RecognizerResultCtor<SloveniaIdBackRecognizerResult> {}
 
-export interface SloveniaIdBackRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SloveniaIdBackRecognizer extends Recognizer<SloveniaIdBackRecognizerResult> {
   detectGlare: boolean;
   extractAuthority: boolean;
   extractDateOfIssue: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SloveniaIdBackRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SloveniaIdBackRecognizerCtor extends RecognizerCtor<SloveniaIdBackRecognizer> {}
 
 export interface SloveniaIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2352,9 +2352,9 @@ export interface SloveniaIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface SloveniaIdFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SloveniaIdFrontRecognizerResultCtor extends RecognizerResultCtor<SloveniaIdFrontRecognizerResult> {}
 
-export interface SloveniaIdFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SloveniaIdFrontRecognizer extends Recognizer<SloveniaIdFrontRecognizerResult> {
   detectGlare: boolean;
   extractDateOfBirth: boolean;
   extractDateOfExpiry: boolean;
@@ -2364,7 +2364,7 @@ export interface SloveniaIdFrontRecognizer extends Recognizer<PaymentCardFrontRe
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface SloveniaIdFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SloveniaIdFrontRecognizerCtor extends RecognizerCtor<SloveniaIdFrontRecognizer> {}
 
 export interface SpainDlFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2380,9 +2380,9 @@ export interface SpainDlFrontRecognizerResult extends RecognizerResult {
   validFrom: Date;
   validUntil: Date;
 }
-export interface SpainDlFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SpainDlFrontRecognizerResultCtor extends RecognizerResultCtor<SpainDlFrontRecognizerResult> {}
 
-export interface SpainDlFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SpainDlFrontRecognizer extends Recognizer<SpainDlFrontRecognizerResult> {
   detectGlare: boolean;
   extractDateOfBirth: boolean;
   extractFirstName: boolean;
@@ -2400,7 +2400,7 @@ export interface SpainDlFrontRecognizer extends Recognizer<PaymentCardFrontRecog
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface SpainDlFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SpainDlFrontRecognizerCtor extends RecognizerCtor<SpainDlFrontRecognizer> {}
 
 export interface SwedenDlFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2416,9 +2416,9 @@ export interface SwedenDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface SwedenDlFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SwedenDlFrontRecognizerResultCtor extends RecognizerResultCtor<SwedenDlFrontRecognizerResult> {}
 
-export interface SwedenDlFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SwedenDlFrontRecognizer extends Recognizer<SwedenDlFrontRecognizerResult> {
   detectGlare: boolean;
   extractDateOfBirth: boolean;
   extractDateOfExpiry: boolean;
@@ -2434,7 +2434,7 @@ export interface SwedenDlFrontRecognizer extends Recognizer<PaymentCardFrontReco
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface SwedenDlFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SwedenDlFrontRecognizerCtor extends RecognizerCtor<SwedenDlFrontRecognizer> {}
 
 export interface SwitzerlandDlFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2451,9 +2451,9 @@ export interface SwitzerlandDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   vehicleCategories: string;
 }
-export interface SwitzerlandDlFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface SwitzerlandDlFrontRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandDlFrontRecognizerResult> {}
 
-export interface SwitzerlandDlFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface SwitzerlandDlFrontRecognizer extends Recognizer<SwitzerlandDlFrontRecognizerResult> {
   detectGlare: boolean;
   extractDateOfBirth: boolean;
   extractDateOfExpiry: boolean;
@@ -2471,7 +2471,7 @@ export interface SwitzerlandDlFrontRecognizer extends Recognizer<PaymentCardFron
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface SwitzerlandDlFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface SwitzerlandDlFrontRecognizerCtor extends RecognizerCtor<SwitzerlandDlFrontRecognizer> {}
 
 export interface SwitzerlandDlBackRecognizerResult extends RecognizerResult {
   authority: string;
@@ -2496,9 +2496,9 @@ export interface SwitzerlandDlBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: String;
 }
-export interface SwitzerlandDlBackRecognizerResultCtor extends RecognizerResultCtor<PaymentCardBackRecognizerResult> {}
+export interface SwitzerlandDlBackRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandDlBackRecognizerResult> {}
 
-export interface SwitzerlandDlBackRecognizer extends Recognizer<PaymentCardBackRecognizerResult> {
+export interface SwitzerlandDlBackRecognizer extends Recognizer<SwitzerlandDlBackRecognizerResult> {
   detectGlare: boolean;
   extractAuthority: boolean;
   extractDateOfExpiry: boolean;
@@ -2508,7 +2508,7 @@ export interface SwitzerlandDlBackRecognizer extends Recognizer<PaymentCardBackR
   extractSex: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SwitzerlandDlBackRecognizerCtor extends RecognizerCtor<PaymentCardBackRecognizer> {}
+export interface SwitzerlandDlBackRecognizerCtor extends RecognizerCtor<SwitzerlandDlBackRecognizer> {}
 
 export interface SwitzerlandIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2518,9 +2518,9 @@ export interface SwitzerlandIdFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface SwitzerlandIdFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardBackRecognizerResult> {}
+export interface SwitzerlandIdFrontRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandIdFrontRecognizerResult> {}
 
-export interface SwitzerlandIdFrontRecognizer extends Recognizer<PaymentCardBackRecognizerResult> {
+export interface SwitzerlandIdFrontRecognizer extends Recognizer<SwitzerlandIdFrontRecognizerResult> {
   detectGlare: boolean;
   extractGivenName: boolean;
   extractSurname: boolean;
@@ -2532,7 +2532,7 @@ export interface SwitzerlandIdFrontRecognizer extends Recognizer<PaymentCardBack
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface SwitzerlandIdFrontRecognizerCtor extends RecognizerCtor<PaymentCardBackRecognizer> {}
+export interface SwitzerlandIdFrontRecognizerCtor extends RecognizerCtor<SwitzerlandIdFrontRecognizer> {}
 
 export interface SwitzerlandPassportRecognizerResult extends RecognizerResult {
   authority: string;
@@ -2562,9 +2562,9 @@ export interface SwitzerlandPassportRecognizerResult extends RecognizerResult {
   sex: string;
   surname: string;
 }
-export interface SwitzerlandPassportRecognizerResultCtor extends RecognizerResultCtor<PaymentCardBackRecognizerResult> {}
+export interface SwitzerlandPassportRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandPassportRecognizerResult> {}
 
-export interface SwitzerlandPassportRecognizer extends Recognizer<PaymentCardBackRecognizerResult> {
+export interface SwitzerlandPassportRecognizer extends Recognizer<SwitzerlandPassportRecognizerResult> {
   detectGlare: boolean;
   extractAuthority: boolean;
   extractDateOfBirth: boolean;
@@ -2579,7 +2579,7 @@ export interface SwitzerlandPassportRecognizer extends Recognizer<PaymentCardBac
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SwitzerlandPassportRecognizerCtor extends RecognizerCtor<PaymentCardBackRecognizer> {}
+export interface SwitzerlandPassportRecognizerCtor extends RecognizerCtor<SwitzerlandPassportRecognizer> {}
 
 export interface UnitedArabEmiratesDlFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2593,9 +2593,9 @@ export interface UnitedArabEmiratesDlFrontRecognizerResult extends RecognizerRes
   nationality: string;
   placeOfIssue: string;
 }
-export interface UnitedArabEmiratesDlFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardBackRecognizerResult> {}
+export interface UnitedArabEmiratesDlFrontRecognizerResultCtor extends RecognizerResultCtor<UnitedArabEmiratesDlFrontRecognizerResult> {}
 
-export interface UnitedArabEmiratesDlFrontRecognizer extends Recognizer<PaymentCardBackRecognizerResult> {
+export interface UnitedArabEmiratesDlFrontRecognizer extends Recognizer<UnitedArabEmiratesDlFrontRecognizerResult> {
   detectGlare: boolean;
   extractDateOfBirth: boolean;
   extractDateOfIssue: boolean;
@@ -2610,21 +2610,21 @@ export interface UnitedArabEmiratesDlFrontRecognizer extends Recognizer<PaymentC
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface UnitedArabEmiratesDlFrontRecognizerCtor extends RecognizerCtor<PaymentCardBackRecognizer> {}
+export interface UnitedArabEmiratesDlFrontRecognizerCtor extends RecognizerCtor<UnitedArabEmiratesDlFrontRecognizer> {}
 
 export interface UnitedArabEmiratesIdBackRecognizerResult extends RecognizerResult {
   fullDocumentImage: string;
   mrzResult: MrzResult;
 }
-export interface UnitedArabEmiratesIdBackRecognizerResultCtor extends RecognizerResultCtor<PaymentCardBackRecognizerResult> {}
+export interface UnitedArabEmiratesIdBackRecognizerResultCtor extends RecognizerResultCtor<UnitedArabEmiratesIdBackRecognizerResult> {}
 
-export interface UnitedArabEmiratesIdBackRecognizer extends Recognizer<PaymentCardBackRecognizerResult> {
+export interface UnitedArabEmiratesIdBackRecognizer extends Recognizer<UnitedArabEmiratesIdBackRecognizerResult> {
   detectGlare: boolean;
   fullDocumentImageDpi: number;
   fullDocumentImageExtensionFactors: ImageExtensionFactors;
   returnFullDocumentImage: boolean;
 }
-export interface UnitedArabEmiratesIdBackRecognizerCtor extends RecognizerCtor<PaymentCardBackRecognizer> {}
+export interface UnitedArabEmiratesIdBackRecognizerCtor extends RecognizerCtor<UnitedArabEmiratesIdBackRecognizer> {}
 
 export interface UnitedArabEmiratesIdFrontRecognizerResult extends RecognizerResult {
   faceImage: string;
@@ -2633,9 +2633,9 @@ export interface UnitedArabEmiratesIdFrontRecognizerResult extends RecognizerRes
   name: string;
   nationality: string;
 }
-export interface UnitedArabEmiratesIdFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface UnitedArabEmiratesIdFrontRecognizerResultCtor extends RecognizerResultCtor<UnitedArabEmiratesIdFrontRecognizerResult> {}
 
-export interface UnitedArabEmiratesIdFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
+export interface UnitedArabEmiratesIdFrontRecognizer extends Recognizer<UnitedArabEmiratesIdFrontRecognizerResult> {
   detectGlare: boolean;
   extractName: boolean;
   extractNationality: boolean;
@@ -2645,15 +2645,15 @@ export interface UnitedArabEmiratesIdFrontRecognizer extends Recognizer<PaymentC
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface UnitedArabEmiratesIdFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface UnitedArabEmiratesIdFrontRecognizerCtor extends RecognizerCtor<UnitedArabEmiratesIdFrontRecognizer> {}
 
 export interface VinRecognizerResult extends RecognizerResult {
   vin: string;
 }
-export interface VinRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
+export interface VinRecognizerResultCtor extends RecognizerResultCtor<VinRecognizerResult> {}
 
-export interface VinRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {}
-export interface VinRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface VinRecognizer extends Recognizer<VinRecognizerResult> {}
+export interface VinRecognizerCtor extends RecognizerCtor<VinRecognizer> {}
 
 export interface UsdlRecognizerResult extends RecognizerResult {
   optionalElements: any[];
