@@ -3,19 +3,75 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 declare const baiduPush: any;
 
-export interface RegistrationData {
+export interface BaiduResponse<T> {
   /**
    * The corresponding Baidu SDK method called.
    */
   type: string;
   /**
+   * The error code corresponding to Baidu's request.
+   */
+  errorCode?: string;
+  /**
    * Registration data revelvant to subsequent actions.
    */
-  data: {
-    appId: string,
-    userId: string,
-    channelId: string
-  };
+  data: T;
+}
+
+export interface RegistrationData {
+  /**
+   * The ID registered to Baidu for the app.
+   */
+  appId: string;
+  /**
+   * The ID registered to Baidu for the device.
+   */
+  userId: string;
+  /**
+   * The channel ID registered to Baidu for the app.
+   */
+  channelId: string;
+}
+
+export interface UnregistrationData {
+  /**
+   * The ID corresponding to the Baidu request.
+   */
+  requestId: string;
+}
+
+export interface TagData {
+  /**
+   * The ID corresponding to the Baidu request.
+   */
+  requestId: string;
+  /**
+   * The channel ID registered to Baidu for the app.
+   */
+  channelId: string;
+  /**
+   * The list of successfully set/deleted tags.
+   */
+  sucessTags: string[];
+  /**
+   * The list of unsuccessfully set/deleted tags.
+   */
+  failTags: string[];
+}
+
+export interface NotificationData {
+  /**
+   * The title of the notification.
+   */
+  title: string;
+  /**
+   * The description of the notification.
+   */
+  description: string;
+  /**
+   * Custom content for the notification.
+   */
+  customContentString?: string;
 }
 
 /**
@@ -38,7 +94,11 @@ export interface RegistrationData {
  *
  * ```
  * @interfaces
+ * BaiduResponse
  * RegistrationData
+ * UnregistrationData
+ * TagData
+ * NotificationData
  */
 @Plugin({
   pluginName: 'BaiduPush',
@@ -53,11 +113,75 @@ export class BaiduPush extends IonicNativePlugin {
   /**
    * This method registers the device to Baidu Cloud Push services.
    * @param {string} apiKey Baidu Cloud Push API key.
-   * @return {Promise<RegistrationData>} Returns a Promise that resolves with RegistrationData.
+   * @return {Promise<BaiduResponse<RegistrationData>>} Returns a Promise that resolves with a BaiduResponse.
    */
   @Cordova()
-  startWork(apiKey: string): Promise<RegistrationData> {
-    console.log(apiKey);
+  startWork(apiKey: string): Promise<BaiduResponse<RegistrationData>> {
+    return;
+  }
+
+  /**
+   * This method unregisters the device to Baidu Cloud Push services.
+   * @return {Promise<BaiduResponse<UnregistrationData>} Returns a Promise that resolves with a BaiduResponse.
+   */
+  @Cordova()
+  stopWork(): Promise<BaiduResponse<UnregistrationData>> {
+    return;
+  }
+
+  /**
+   * This method re-binds the device to Baidu Cloud Push services.
+   * @return {Promise<BaiduResponse<RegistrationData>>} Returns a Promise that resolves with a BaiduResponse.
+   */
+  @Cordova()
+  resumeWork(): Promise<BaiduResponse<RegistrationData>> {
+    return;
+  }
+
+  /**
+   * This sets tags in the Baidu Cloud Push services.
+   * @param tags {any} tags The tags to set.
+   * @return {Promise<BaiduResponse<TagData>>} Returns a Promise that resolves with a BaiduResponse.
+   */
+  @Cordova()
+  setTags(tags: any): Promise<BaiduResponse<TagData>> {
+    return;
+  }
+
+  /**
+   * This sets tags in the Baidu Cloud Push services.
+   * @param tags {any} tags The tags to set.
+   * @return {Promise<BaiduResponse<TagData>>} Returns a Promise that resolves with a BaiduResponse.
+   */
+  @Cordova()
+  delTags(tags: any): Promise<BaiduResponse<TagData>> {
+    return;
+  }
+
+  /**
+   * This method is called when a notification is recieved on the foreground.
+   * @return {Promise<BaiduResponse<TagData>>} Returns a Promise that resolves with a BaiduResponse.
+   */
+  @Cordova()
+  onMessage(): Promise<BaiduResponse<NotificationData>> {
+    return;
+  }
+
+  /**
+   * This method is called when the user taps a notification.
+   * @return {Promise<BaiduResponse<TagData>>} Returns a Promise that resolves with a BaiduResponse.
+   */
+  @Cordova()
+  onNotificationClicked(): Promise<BaiduResponse<NotificationData>> {
+    return;
+  }
+
+  /**
+   * This method is called when a notification is recieved.
+   * @return {Promise<BaiduResponse<TagData>>} Returns a Promise that resolves with a BaiduResponse.
+   */
+  @Cordova()
+  onNotificationArrived(): Promise<BaiduResponse<NotificationData>> {
     return;
   }
 
