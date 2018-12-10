@@ -1,22 +1,27 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+
+declare const baiduPush: any;
+
+export interface RegistrationData {
+  /**
+   * The corresponding Baidu SDK method called.
+   */
+  type: string;
+  /**
+   * Registration data revelvant to subsequent actions.
+   */
+  data: {
+    appId: string,
+    userId: string,
+    channelId: string
+  };
+}
 
 /**
  * @name Baidu Push
  * @description
- * This plugin does something
+ * This plugin faciliates the use of Baidu Push notifications.
  *
  * @usage
  * ```typescript
@@ -27,34 +32,33 @@ import { Observable } from 'rxjs/Observable';
  *
  * ...
  *
- *
- * this.baiduPush.functionName('Hello', 123)
+ * this.baiduPush.startWork('xxxxxx')
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
  * ```
+ * @interfaces
+ * RegistrationData
  */
 @Plugin({
   pluginName: 'BaiduPush',
-  plugin: '', // npm package name, example: cordova-plugin-camera
-  pluginRef: '', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: '', // the github repository URL for the plugin
-  install: '', // OPTIONAL install command, in case the plugin requires variables
-  installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: [] // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'cordova-plugin-push-baidu',
+  pluginRef: 'baiduPush',
+  repo: 'https://github.com/Ti-webdev/cordova-plugin-push-baidu.git',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class BaiduPush extends IonicNativePlugin {
 
   /**
-   * This function does something
-   * @param arg1 {string} Some param to configure something
-   * @param arg2 {number} Another param to configure something
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * This method registers the device to Baidu Cloud Push services.
+   * @param {string} apiKey Baidu Cloud Push API key.
+   * @return {Promise<RegistrationData>} Returns a Promise that resolves with RegistrationData.
    */
   @Cordova()
-  functionName(arg1: string, arg2: number): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+  startWork(apiKey: string): Promise<RegistrationData> {
+    console.log(apiKey);
+    return;
   }
 
 }
