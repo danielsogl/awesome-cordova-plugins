@@ -9,7 +9,6 @@
     "ban-types": false,
     "no-shadowed-variable": false,
     "no-constant-condition": false,
-    "no-extra-boolean-cast": false,
-    "ordered-imports": false
+    "no-extra-boolean-cast": false
   }
 }
