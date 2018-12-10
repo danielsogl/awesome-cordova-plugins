@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs/Observable';
 
 declare const baiduPush: any;
 
@@ -162,8 +163,8 @@ export class BaiduPush extends IonicNativePlugin {
    * This method is called when a notification is recieved on the foreground.
    * @return {Promise<BaiduResponse<TagData>>} Returns a Promise that resolves with a BaiduResponse.
    */
-  @Cordova()
-  onMessage(): Promise<BaiduResponse<NotificationData>> {
+  @Cordova({ observable: true })
+  onMessage(): Observable<BaiduResponse<NotificationData>> {
     return;
   }
 
@@ -171,17 +172,17 @@ export class BaiduPush extends IonicNativePlugin {
    * This method is called when the user taps a notification.
    * @return {Promise<BaiduResponse<TagData>>} Returns a Promise that resolves with a BaiduResponse.
    */
-  @Cordova()
-  onNotificationClicked(): Promise<BaiduResponse<NotificationData>> {
+  @Cordova({ observable: true })
+  onNotificationClicked(): Observable<BaiduResponse<NotificationData>> {
     return;
   }
 
   /**
    * This method is called when a notification is recieved.
-   * @return {Promise<BaiduResponse<TagData>>} Returns a Promise that resolves with a BaiduResponse.
+   * @return {Promise<BaiduResponse<NotificationData>>} Returns a Promise that resolves with a BaiduResponse.
    */
-  @Cordova()
-  onNotificationArrived(): Promise<BaiduResponse<NotificationData>> {
+  @Cordova({ observable: true })
+  onNotificationArrived(): Observable<BaiduResponse<NotificationData>> {
     return;
   }
 
