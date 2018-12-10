@@ -123,7 +123,7 @@ export class BaiduPush extends IonicNativePlugin {
 
   /**
    * This method unregisters the device to Baidu Cloud Push services.
-   * @return {Promise<BaiduResponse<UnregistrationData>} Returns a Promise that resolves with a BaiduResponse.
+   * @return {Promise<BaiduResponse<UnregistrationData>>} Returns a Promise that resolves with a BaiduResponse.
    */
   @Cordova()
   stopWork(): Promise<BaiduResponse<UnregistrationData>> {
@@ -161,7 +161,7 @@ export class BaiduPush extends IonicNativePlugin {
 
   /**
    * This method is called when a notification is recieved on the foreground.
-   * @return {Promise<BaiduResponse<TagData>>} Returns a Promise that resolves with a BaiduResponse.
+   * @return {Promise<BaiduResponse<NotificationData>>} Returns a Promise that resolves with a BaiduResponse.
    */
   @Cordova({ observable: true })
   onMessage(): Observable<BaiduResponse<NotificationData>> {
@@ -170,7 +170,7 @@ export class BaiduPush extends IonicNativePlugin {
 
   /**
    * This method is called when the user taps a notification.
-   * @return {Promise<BaiduResponse<TagData>>} Returns a Promise that resolves with a BaiduResponse.
+   * @return {Promise<BaiduResponse<NotificationData>>} Returns a Promise that resolves with a BaiduResponse.
    */
   @Cordova({ observable: true })
   onNotificationClicked(): Observable<BaiduResponse<NotificationData>> {
