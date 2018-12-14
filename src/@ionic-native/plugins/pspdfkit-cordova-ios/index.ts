@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaInstance, CordovaProperty, InstanceProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
  * @name PSPDFKit Cordova iOS
  * @description
- * 
- * The PSPDFKit SDK is a framework that allows you to view, annotate, sign, and fill PDF forms on iOS, Android, Windows, macOS, and Web. 
+ *
+ * The PSPDFKit SDK is a framework that allows you to view, annotate, sign, and fill PDF forms on iOS, Android, Windows, macOS, and Web.
  * PSPDFKit Instant adds real-time collaboration features to seamlessly share, edit, and annotate PDF documents.
  *
  * Copyright 2011-2018 PSPDFKit GmbH. All rights reserved.
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs/Observable';
  * http://pspdfkit.com/license.html
  *
  * Please download PSPDFKit from your customer portal: https://customers.pspdfkit.com
- * 
+ *
  * @usage
  * ```typescript
  * import { PSPDFKitCordovaiOS } from '@ionic-native/pspdfkit-cordova-ios';
@@ -50,7 +50,7 @@ export class PSPDFKitCordovaiOS extends IonicNativePlugin {
   setLicenseKey(licenseKey: string): Promise<any> {
     return;
   }
-    
+
   /**
    * Presents the PDF view.
    * @param path {string} Path to the PDF document
@@ -63,7 +63,7 @@ export class PSPDFKitCordovaiOS extends IonicNativePlugin {
   present(path: string, options?: any): Promise<any> {
     return;
   }
-  
+
   /**
    * Dismisses the PDF view
    * @return {Promise<any>} Returns a promise that resolves when something happens
@@ -81,7 +81,7 @@ export class PSPDFKitCordovaiOS extends IonicNativePlugin {
   reload(): Promise<any> {
     return;
   }
-    
+
   /**
    * Saves annotations
    * @return {Promise<any>} Returns a promise that resolves when something happens
