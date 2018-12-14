@@ -62,7 +62,7 @@ export class PSPDFKitCordovaAndroid extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  showDocument(path: uri, options?: any): Promise<any> {
+  showDocument(uri: string, options?: any): Promise<any> {
     return;
   }
 
@@ -75,7 +75,7 @@ export class PSPDFKitCordovaAndroid extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  showDocumentFromAssets(path: assetFile, options?: any): Promise<any> {
+  showDocumentFromAssets(assetFile: string, options?: any): Promise<any> {
     return;
   }
 }
