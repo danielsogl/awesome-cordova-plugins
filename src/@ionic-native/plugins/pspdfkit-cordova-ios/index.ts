@@ -17,10 +17,10 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```typescript
- * import { PSPDFKitCordovaiOS } from '@ionic-native/pspdfkit-cordova-ios';
+ * import { PSPDFKitCordovaIOS } from '@ionic-native/pspdfkit-cordova-ios';
  *
  *
- * constructor(private pspdfkit: PSPDFKitCordovaiOS) { }
+ * constructor(private pspdfkit: PSPDFKitCordovaIOS) { }
  *
  * ...
  *
@@ -32,14 +32,14 @@ import { Observable } from 'rxjs/Observable';
  * ```
  */
 @Plugin({
-  pluginName: 'PSPDFKitCordovaiOS',
+  pluginName: 'PSPDFKitCordovaIOS',
   plugin: 'pspdfkit-cordova-ios',
   pluginRef: 'PSPDFKit',
   repo: 'https://github.com/PSPDFKit/Cordova-iOS',
   platforms: ['iOS']
 })
 @Injectable()
-export class PSPDFKitCordovaiOS extends IonicNativePlugin {
+export class PSPDFKitCordovaIOS extends IonicNativePlugin {
 
   /**
    * Sets the license key for PSPDFKit.
