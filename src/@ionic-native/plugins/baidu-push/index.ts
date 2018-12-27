@@ -110,7 +110,6 @@ export interface NotificationData {
 })
 @Injectable()
 export class BaiduPush extends IonicNativePlugin {
-
   /**
    * This method registers the device to Baidu Cloud Push services.
    * @param {string} apiKey Baidu Cloud Push API key.
@@ -185,5 +184,4 @@ export class BaiduPush extends IonicNativePlugin {
   onNotificationArrived(): Observable<BaiduResponse<NotificationData>> {
     return;
   }
-
 }
