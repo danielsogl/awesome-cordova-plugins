@@ -14,7 +14,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * constructor(private gaoDeLocation: GaoDeLocation) { }
  *
- * //Getting Location Information
  * this.gaoDeLocation.getCurrentPosition()
  * .then((res: PositionOptions) => console.log(res))
  * .catch((error) => console.error(error));
