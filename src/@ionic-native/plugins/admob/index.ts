@@ -241,7 +241,6 @@ export interface AdmobOptions {
 })
 @Injectable()
 export class Admob extends IonicNativePlugin {
-
   /**
    * This enum represents AdMob's supported ad sizes.
    * Use one of these constants as adSize option when calling createBannerView
@@ -303,8 +302,7 @@ export class Admob extends IonicNativePlugin {
    * It is not necessary to call this method when the app closed, as it will be automatically called by the plugin
    */
   @Cordova()
-  destroyBannerView() {
-  }
+  destroyBannerView() {}
 
   /**
    * Request an interstitial ad
