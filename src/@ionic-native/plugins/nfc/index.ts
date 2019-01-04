@@ -22,7 +22,7 @@ export interface NdefRecord {
 export interface NdefTag {
   canMakeReadOnly: boolean;
   id: number[];
-  isWriteable: boolean;
+  isWritable: boolean;
   maxSize: number;
   ndefMessage: NdefRecord[];
   techTypes: string[];
@@ -196,7 +196,7 @@ export class NFC extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  makeReadyOnly(): Promise<any> {
+  makeReadOnly(): Promise<any> {
     return;
   }
 
