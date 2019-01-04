@@ -78,6 +78,8 @@ export interface InAppBrowserOptions {
   fullscreen?: 'yes';
   /** (Android Only) Sets whether the WebView should enable support for the "viewport" HTML meta tag or should use a wide viewport. When the value of the setting is no, the layout width is always set to the width of the WebView control in device-independent (CSS) pixels. When the value is yes and the page contains the viewport meta tag, the value of the width specified in the tag is used. If the page does not contain the tag or does not provide a width, then a wide viewport will be used. (defaults to yes). */
   useWideViewPort?: 'yes' | 'no';
+  /** Allows for latest 'beforeload' feature of Cordova InAppBrowser to be registered as an option if using plugin's latest github master (1/4/2019) instead of npm. Post is currently not supported but will be. */
+  beforeload?: 'yes' | 'post' | 'get';
   /**
    * @hidden
    */
