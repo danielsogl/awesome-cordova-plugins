@@ -62,7 +62,6 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-nati
 })
 @Injectable()
 export class AnalyticsFirebase extends IonicNativePlugin {
-
   /**
    * This enum represents AnalyticsFirebase default events.
    * Use one of these default events or a custom event
@@ -70,37 +69,37 @@ export class AnalyticsFirebase extends IonicNativePlugin {
    */
   @CordovaProperty
   readonly DEFAULT_EVENTS: {
-    ADD_PAYMENT_INFO: string,
-    ADD_TO_CART: string,
-    ADD_TO_WISHLIST: string,
-    APP_OPEN: string,
-    BEGIN_CHECKOUT: string,
-    CAMPAIGN_DETAILS: string,
-    CHECKOUT_PROGRESS: string,
-    EARN_VIRTUAL_CURRENCY: string,
-    ECOMMERCE_PURCHASE: string,
-    GENERATE_LEAD: string,
-    JOIN_GROUP: string,
-    LEVEL_END: string,
-    LEVEL_START: string,
-    LEVEL_UP: string,
-    LOGIN: string,
-    POST_SCORE: string,
-    PRESENT_OFFER: string,
-    PURCHASE_REFUND: string,
-    REMOVE_FROM_CART: string,
-    SEARCH: string,
-    SELECT_CONTENT: string,
-    SET_CHECKOUT_OPTION: string,
-    SHARE: string,
-    SIGN_UP: string,
-    SPEND_VIRTUAL_CURRENCY: string,
-    TUTORIAL_BEGIN: string,
-    TUTORIAL_COMPLETE: string,
-    UNLOCK_ACHIEVEMENT: string,
-    VIEW_ITEM: string,
-    VIEW_ITEM_LIST: string,
-    VIEW_SEARCH_RESULTS: string
+    ADD_PAYMENT_INFO: string;
+    ADD_TO_CART: string;
+    ADD_TO_WISHLIST: string;
+    APP_OPEN: string;
+    BEGIN_CHECKOUT: string;
+    CAMPAIGN_DETAILS: string;
+    CHECKOUT_PROGRESS: string;
+    EARN_VIRTUAL_CURRENCY: string;
+    ECOMMERCE_PURCHASE: string;
+    GENERATE_LEAD: string;
+    JOIN_GROUP: string;
+    LEVEL_END: string;
+    LEVEL_START: string;
+    LEVEL_UP: string;
+    LOGIN: string;
+    POST_SCORE: string;
+    PRESENT_OFFER: string;
+    PURCHASE_REFUND: string;
+    REMOVE_FROM_CART: string;
+    SEARCH: string;
+    SELECT_CONTENT: string;
+    SET_CHECKOUT_OPTION: string;
+    SHARE: string;
+    SIGN_UP: string;
+    SPEND_VIRTUAL_CURRENCY: string;
+    TUTORIAL_BEGIN: string;
+    TUTORIAL_COMPLETE: string;
+    UNLOCK_ACHIEVEMENT: string;
+    VIEW_ITEM: string;
+    VIEW_ITEM_LIST: string;
+    VIEW_SEARCH_RESULTS: string;
   };
 
   /**
@@ -110,55 +109,55 @@ export class AnalyticsFirebase extends IonicNativePlugin {
    */
   @CordovaProperty
   readonly DEFAULT_PARAMS: {
-    ACHIEVEMENT_ID: string,
-    ACLID: string,
-    AFFILIATION: string,
-    CAMPAIGN: string,
-    CHARACTER: string,
-    CHECKOUT_OPTION: string,
-    CHECKOUT_STEP: string,
-    CONTENT: string,
-    CONTENT_TYPE: string,
-    COUPON: string,
-    CP1: string,
-    CREATIVE_NAME: string,
-    CREATIVE_SLOT: string,
-    CURRENCY: string,
-    DESTINATION: string,
-    END_DATE: string,
-    FLIGHT_NUMBER: string,
-    GROUP_ID: string,
-    INDEX: string,
-    ITEM_BRAND: string,
-    ITEM_CATEGORY: string,
-    ITEM_ID: string,
-    ITEM_LIST: string,
-    ITEM_LOCATION_ID: string,
-    ITEM_NAME: string,
-    ITEM_VARIANT: string,
-    LEVEL: string,
-    LEVEL_NAME: string,
-    LOCATION: string,
-    MEDIUM: string,
-    METHOD: string,
-    NUMBER_OF_NIGHTS: string,
-    NUMBER_OF_PASSENGERS: string,
-    NUMBER_OF_ROOMS: string,
-    ORIGIN: string,
-    PRICE: string,
-    QUANTITY: string,
-    SCORE: string,
-    SEARCH_TERM: string,
-    SHIPPING: string,
-    SOURCE: string,
-    START_DATE: string,
-    SUCCESS: string,
-    TAX: string,
-    TERM: string,
-    TRANSACTION_ID: string,
-    TRAVEL_CLASS: string,
-    VALUE: string,
-    VIRTUAL_CURRENCY_NAME: string
+    ACHIEVEMENT_ID: string;
+    ACLID: string;
+    AFFILIATION: string;
+    CAMPAIGN: string;
+    CHARACTER: string;
+    CHECKOUT_OPTION: string;
+    CHECKOUT_STEP: string;
+    CONTENT: string;
+    CONTENT_TYPE: string;
+    COUPON: string;
+    CP1: string;
+    CREATIVE_NAME: string;
+    CREATIVE_SLOT: string;
+    CURRENCY: string;
+    DESTINATION: string;
+    END_DATE: string;
+    FLIGHT_NUMBER: string;
+    GROUP_ID: string;
+    INDEX: string;
+    ITEM_BRAND: string;
+    ITEM_CATEGORY: string;
+    ITEM_ID: string;
+    ITEM_LIST: string;
+    ITEM_LOCATION_ID: string;
+    ITEM_NAME: string;
+    ITEM_VARIANT: string;
+    LEVEL: string;
+    LEVEL_NAME: string;
+    LOCATION: string;
+    MEDIUM: string;
+    METHOD: string;
+    NUMBER_OF_NIGHTS: string;
+    NUMBER_OF_PASSENGERS: string;
+    NUMBER_OF_ROOMS: string;
+    ORIGIN: string;
+    PRICE: string;
+    QUANTITY: string;
+    SCORE: string;
+    SEARCH_TERM: string;
+    SHIPPING: string;
+    SOURCE: string;
+    START_DATE: string;
+    SUCCESS: string;
+    TAX: string;
+    TERM: string;
+    TRANSACTION_ID: string;
+    TRAVEL_CLASS: string;
+    VALUE: string;
+    VIRTUAL_CURRENCY_NAME: string;
   };
 
   /**
@@ -246,5 +245,4 @@ export class AnalyticsFirebase extends IonicNativePlugin {
   setUserProperty(userPropertyName: string, userPropertyValue: string): Promise<any> {
     return;
   }
-
 }
