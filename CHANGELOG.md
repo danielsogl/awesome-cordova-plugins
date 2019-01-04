@@ -1,3 +1,21 @@
+# [4.19.0](https://github.com/ionic-team/ionic-native/compare/v4.18.0...v4.19.0) (2019-01-04)
+
+
+### Bug Fixes
+
+* **health:** fix typos ([#2831](https://github.com/ionic-team/ionic-native/issues/2831)) ([ea3150e](https://github.com/ionic-team/ionic-native/commit/ea3150e))
+
+
+### Features
+
+* **admob:** add plugin ([#2864](https://github.com/ionic-team/ionic-native/issues/2864)) ([707ce1c](https://github.com/ionic-team/ionic-native/commit/707ce1c))
+* **analytics-firebase:** add plugin ([#2862](https://github.com/ionic-team/ionic-native/issues/2862)) ([5df3de7](https://github.com/ionic-team/ionic-native/commit/5df3de7))
+* **baidu-push:** add plugin ([#2838](https://github.com/ionic-team/ionic-native/issues/2838)) ([c3de8df](https://github.com/ionic-team/ionic-native/commit/c3de8df))
+* **gao-de-location:** add plugin ([#2857](https://github.com/ionic-team/ionic-native/issues/2857)) ([e2b25de](https://github.com/ionic-team/ionic-native/commit/e2b25de))
+* **in-app-browser:** add 'beforeload' as option ([#2863](https://github.com/ionic-team/ionic-native/issues/2863)) ([d33bcb0](https://github.com/ionic-team/ionic-native/commit/d33bcb0))
+
+
+
 # [4.18.0](https://github.com/ionic-team/ionic-native/compare/v4.17.0...v4.18.0) (2018-12-01)
 
 
