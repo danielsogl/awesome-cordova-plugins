@@ -338,4 +338,13 @@ export class Firebase extends IonicNativePlugin {
   ): Promise<any> {
     return;
   }
+  
+  /**
+   * Clear all pending notifications from the drawer
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  clearAllNotifications(): Promise<any> {
+    return;
+  }
 }
