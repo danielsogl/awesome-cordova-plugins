@@ -25,12 +25,10 @@ import { Observable } from 'rxjs/Observable';
  *
  *
  * this.browserTabs.openTab('www.example.url', '#ffffff')
- *   .then((res: any) => console.log(res))
- *   .catch((error: any) => console.error(error));
+ *   .subscribe()
  *
  * this.browserTabs.openTabWithAnimation('www.example.url', 'slide_x', '#ffffff')
- *   .then((res: any) => console.log(res))
- *   .catch((error: any) => console.error(error));
+ *   .subscribe()
  *
  * ```
  */
