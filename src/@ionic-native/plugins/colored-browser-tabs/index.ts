@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 /**
  * @name ColoredBrowserTabs
  * @description
- * This plugin does something
+ * This plugin opens Chrome Custom Tabs on Android or SafariViewController on iOS
  *
  * @usage
  * ```typescript
@@ -34,10 +34,10 @@ import { Observable } from 'rxjs/Observable';
  */
 @Plugin({
   pluginName: 'ColoredBrowserTabs',
-  plugin: 'cordova-plugin-colored-browser-tabs', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'ColoredBrowserTabs', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/TobyEb/cordova-plugin-colored-browser-tabs', // the github repository URL for the plugin
-  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'cordova-plugin-colored-browser-tabs',
+  pluginRef: 'ColoredBrowserTabs',
+  repo: 'https://github.com/TobyEb/cordova-plugin-colored-browser-tabs',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class ColoredBrowserTabs extends IonicNativePlugin {
@@ -49,12 +49,13 @@ export class ColoredBrowserTabs extends IonicNativePlugin {
    */
   @Cordova({ observable: true, successIndex: 2, errorIndex: 3 })
   openTab(url: string, color?: string): Observable<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
   /**
    * Call this method to open the tab
    * @param url - the url you want to open
    * @param anim - the animation you want for enter and exit, you can choose between slide_x / slide_y and fade
+   *        only works in Android, iOS just shows the default animation
    * @param color - the color with which you want to define the toolbar color
    * @return {Observable<any>} Returns a Observable that resolves when something happens
    */
