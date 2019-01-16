@@ -339,7 +339,7 @@ export interface InitializeResult {
   /** Service's UUID */
   service: string;
   /** Characteristic UUID */
-  characterisitc: string;
+  characteristic: string;
   /** This integer value will be incremented every read/writeRequested */
   requestId: number;
   /** Offset value */
