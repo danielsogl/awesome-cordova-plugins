@@ -92,6 +92,12 @@ export interface BackgroundGeolocation {
   message: string;
 }
 
+export interface BackgroundGeolocationCurrentPositionConfig {
+  timeout: number;
+  maximumAge: number;
+  enableHighAccuracy: boolean;
+}
+
 export interface BackgroundGeolocationResponse {
   /** ID of location as stored in DB (or null) */
   id: number;
@@ -777,13 +783,13 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * maximumAge: Maximum age in milliseconds of a possible cached location that is acceptable to return;
    * enableHighAccuracy: if true and if the device is able to provide a more accurate position, it will do so}
    *
-   * @param {timeout: number, maximumAge: number, enableHighAccuracy: boolean} options
+   * @param {BackgroundGeolocationCurrentPositionConfig} options
    * @returns {Promise<any>}
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getCurrentLocation(options?: {timeout: number, maximumAge: number, enableHighAccuracy: boolean}): Promise<BackgroundGeolocationResponse> {
+  getCurrentLocation(options?: BackgroundGeolocationCurrentPositionConfig): Promise<BackgroundGeolocationResponse> {
     return;
   }
 
