@@ -548,13 +548,10 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @param options {BackgroundGeolocationConfig} options An object of type Config
    * @return {Observable<BackgroundGeolocationResponse>}
    */
-  @Cordova({
-    callbackOrder: 'reverse',
-    observable: true
-  })
+  @Cordova()
   configure(
     options: BackgroundGeolocationConfig
-  ): Observable<BackgroundGeolocationResponse> {
+  ): Promise<any> {
     return;
   }
 
@@ -869,8 +866,10 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @param event
    * @param callbackFn
    */
-  @Cordova()
-  on(event: BackgroundGeolocationEvents, callbackFn: any): Promise<any> {
+  @Cordova({
+    observable: true
+  })
+  on(event: BackgroundGeolocationEvents): Observable<BackgroundGeolocationResponse> {
     return;
   }
 
