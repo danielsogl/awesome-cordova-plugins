@@ -1,14 +1,3 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
@@ -42,10 +31,10 @@ export interface IOSFilePickerPosition {
  */
 @Plugin({
   pluginName: 'AdvanceFilePicker',
-  plugin: 'cordova-plugin-advance-filepicker', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'AdvanceFilePicker', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/ankurkapil8/AdvanceFilePicker-Phonegap-iOS-Plugin', // the github repository URL for the plugin
-  platforms: ['iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'cordova-plugin-advance-filepicker',
+  pluginRef: 'AdvanceFilePicker',
+  repo: 'https://github.com/ankurkapil8/AdvanceFilePicker-Phonegap-iOS-Plugin',
+  platforms: ['iOS']
 })
 @Injectable()
 export class AdvanceFilePicker extends IonicNativePlugin {
