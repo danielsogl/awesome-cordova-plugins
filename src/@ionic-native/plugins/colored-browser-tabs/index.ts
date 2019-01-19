@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaInstance,
-  CordovaProperty,
-  InstanceProperty,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -60,11 +53,7 @@ export class ColoredBrowserTabs extends IonicNativePlugin {
    * @return {Observable<any>} Returns a Observable that resolves when something happens
    */
   @Cordova({ observable: true, successIndex: 3, errorIndex: 4 })
-  openTabWithAnimation(
-    url: string,
-    anim: string,
-    color?: string
-  ): Observable<any> {
+  openTabWithAnimation(url: string, anim: string, color?: string): Observable<any> {
     return;
   }
 }
