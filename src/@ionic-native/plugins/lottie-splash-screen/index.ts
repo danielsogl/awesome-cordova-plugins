@@ -43,12 +43,7 @@ export class LottieSplashScreen extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  show(
-    location?: string,
-    remote?: boolean,
-    width?: number,
-    height?: number
-  ): void {}
+  show(location?: string, remote?: boolean, width?: number, height?: number): void {}
 
   /**
    * This methods hides the current active Lottie splashscreen and destroys the views.
