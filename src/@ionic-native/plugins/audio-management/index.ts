@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
- * @name AudioManagement
+ * @name Audio Management
  * @description
  * A Cordova plugin to manage volume of audio streams for: ring, music, notification and system. Possible
  * ringer values for those streams are: silent, vibrate and normal.
@@ -49,7 +49,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class AudioManagement extends IonicNativePlugin {
-
   /**
    * Sets the `AudioManagement.AudioMode` for the device.
    *
