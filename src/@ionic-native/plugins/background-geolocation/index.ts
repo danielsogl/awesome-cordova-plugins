@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 export enum BackgroundGeolocationLocationCode {
   PERMISSION_DENIED = 1,
   LOCATION_UNAVAILABLE = 2,
-  TIMEOUT = 3,
+  TIMEOUT = 3
 }
 
 export enum BackgroundGeolocationNativeProvider {
@@ -38,8 +38,7 @@ export enum BackgroundGeolocationEvents {
 export enum BackgroundGeolocationAuthorizationStatus {
   NOT_AUTHORIZED = 0,
   AUTHORIZED = 1,
-  AUTHORIZED_FOREGROUND = 2,
-
+  AUTHORIZED_FOREGROUND = 2
 }
 
 export enum BackgroundGeolocationLogLevel {
@@ -66,7 +65,6 @@ export interface BackgroundGeolocationLogEntry {
   /** Recorded stacktrace. (Android only, on iOS part of message) */
   stackTrace: string;
 }
-
 
 export interface ServiceStatus {
   /** TRUE if service is running. */
@@ -487,7 +485,7 @@ export declare enum BackgroundGeolocationIOSActivity {
   AutomotiveNavigation = 'AutomotiveNavigation',
   OtherNavigation = 'OtherNavigation',
   Fitness = 'Fitness',
-  Other = 'Other',
+  Other = 'Other'
 }
 
 /**
@@ -547,7 +545,6 @@ export declare enum BackgroundGeolocationIOSActivity {
 })
 @Injectable()
 export class BackgroundGeolocation extends IonicNativePlugin {
-
   /**
    * Configure the plugin.
    *
@@ -555,9 +552,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @return {Observable<BackgroundGeolocationResponse>}
    */
   @Cordova()
-  configure(
-    options: BackgroundGeolocationConfig
-  ): Promise<any> {
+  configure(options: BackgroundGeolocationConfig): Promise<any> {
     return;
   }
 
@@ -762,7 +757,11 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getLogEntries(limit: number, fromId: number, minLevel: BackgroundGeolocationLogLevel): Promise<BackgroundGeolocationLogEntry[]> {
+  getLogEntries(
+    limit: number,
+    fromId: number,
+    minLevel: BackgroundGeolocationLogLevel
+  ): Promise<BackgroundGeolocationLogEntry[]> {
     return;
   }
 
@@ -789,7 +788,9 @@ export class BackgroundGeolocation extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getCurrentLocation(options?: BackgroundGeolocationCurrentPositionConfig): Promise<BackgroundGeolocationResponse> {
+  getCurrentLocation(
+    options?: BackgroundGeolocationCurrentPositionConfig
+  ): Promise<BackgroundGeolocationResponse> {
     return;
   }
 
