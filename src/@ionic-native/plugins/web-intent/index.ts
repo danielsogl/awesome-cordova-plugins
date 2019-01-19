@@ -7,6 +7,27 @@ import {
 } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
+export interface IntentClipItem {
+  uri: string;
+  type?: string;
+  extension?: string;
+}
+
+export interface Intent {
+  action: string;
+  clipItems: IntentClipItem[];
+  component: string;
+  extras: object;
+  flags: number;
+  type: string;
+}
+
+export interface RegisterBroadcastReceiverOptions {
+  filterActions?: string[];
+  filterCategories?: string[];
+  filterDataSchemes?: string[];
+}
+
 export interface IntentOptions {
   requestCode?: number;
   type?: string;
@@ -192,12 +213,12 @@ export class WebIntent extends IonicNativePlugin {
 
   /**
    * Returns the content of the intent used whenever the application activity is launched
-   * @returns {Observable<string>}
+   * @returns {Observable<Intent>}
    */
   @Cordova({
     observable: true
   })
-  onIntent(): Observable<string> {
+  onIntent(): Observable<Intent> {
     return;
   }
 
@@ -223,13 +244,13 @@ export class WebIntent extends IonicNativePlugin {
 
   /**
    * Registers a broadcast receiver for the specified filters
-   * @param filters {any}
+   * @param filters {RegisterBroadcastReceiverOptions}
    * @returns {Observable<any>}
    */
   @Cordova({
     observable: true
   })
-  registerBroadcastReceiver(filters: any): Observable<any> {
+  registerBroadcastReceiver(filters: RegisterBroadcastReceiverOptions): Observable<any> {
     return;
   }
 
@@ -240,10 +261,10 @@ export class WebIntent extends IonicNativePlugin {
   unregisterBroadcastReceiver(): void {}
 
   /**
-   * @returns {Promise<any>}
+   * @returns {Promise<Intent>}
    */
   @Cordova()
-  getIntent(): Promise<any> {
+  getIntent(): Promise<Intent> {
     return;
   }
 
