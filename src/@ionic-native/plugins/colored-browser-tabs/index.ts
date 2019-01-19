@@ -3,7 +3,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 /**
- * @name ColoredBrowserTabs
+ * @name Colored Browser Tabs
  * @description
  * This plugin opens Chrome Custom Tabs on Android or SafariViewController on iOS
  *
