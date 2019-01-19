@@ -117,19 +117,27 @@ export class AdjustConfig {
     this.attributionCallback = attributionCallback;
   }
 
-  setEventTrackingSucceededCallbackListener(eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void) {
+  setEventTrackingSucceededCallbackListener(
+    eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void
+  ) {
     this.eventTrackingSucceededCallback = eventTrackingSucceededCallback;
   }
 
-  setEventTrackingFailedCallbackListener(eventTrackingFailedCallback: (event: AdjustEventFailure) => void) {
+  setEventTrackingFailedCallbackListener(
+    eventTrackingFailedCallback: (event: AdjustEventFailure) => void
+  ) {
     this.eventTrackingFailedCallback = eventTrackingFailedCallback;
   }
 
-  setSessionTrackingSucceededCallbackListener(sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void) {
+  setSessionTrackingSucceededCallbackListener(
+    sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void
+  ) {
     this.sessionTrackingSucceededCallback = sessionTrackingSucceededCallback;
   }
 
-  setSessionTrackingFailedCallbackListener(sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void) {
+  setSessionTrackingFailedCallbackListener(
+    sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void
+  ) {
     this.sessionTrackingFailedCallback = sessionTrackingFailedCallback;
   }
 
@@ -289,7 +297,6 @@ export enum AdjustLogLevel {
 })
 @Injectable()
 export class Adjust extends IonicNativePlugin {
-
   /**
    * This method initializes Adjust SDK
    * @param {AdjustConig} config Adjust config object used as starting options
@@ -338,7 +345,9 @@ export class Adjust extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isEnabled(): Promise<boolean> { return; }
+  isEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    * In accordance with article 17 of the EU's General Data Protection Regulation (GDPR), you can notify Adjust when a user has exercised their right to be forgotten.
@@ -352,21 +361,27 @@ export class Adjust extends IonicNativePlugin {
    * @return {Promise<string>} Returns a promise with google AdId value
    */
   @Cordova()
-  getGoogleAdId(): Promise<string> { return; }
+  getGoogleAdId(): Promise<string> {
+    return;
+  }
 
   /**
    * If you need to obtain the Amazon Advertising ID, you can make a call to this function.
    * @return {Promise<string>} Returns a promise with anazib adv. ID
    */
   @Cordova()
-  getAmazonAdId(): Promise<string> { return; }
+  getAmazonAdId(): Promise<string> {
+    return;
+  }
 
   /**
    * To obtain the IDFA, call this function
    * @return {Promise<string>} Returns a promise with IDFA string value
    */
   @Cordova()
-  getIdfa(): Promise<string> { return; }
+  getIdfa(): Promise<string> {
+    return;
+  }
 
   /**
    * For every device with your app installed on it, the Adjust backend generates a unique Adjust device identifier (adid).
@@ -374,21 +389,27 @@ export class Adjust extends IonicNativePlugin {
    * @return {Promise<string>} Returns a promise with adid value
    */
   @Cordova()
-  getAdid(): Promise<string> { return; }
+  getAdid(): Promise<string> {
+    return;
+  }
 
   /**
    * If you want to access information about a user's current attribution whenever you need it, you can make a call to this function
    * @return {Promise<AdjustAttribution>} Returns a promise with AdjustAttribution object
    */
   @Cordova()
-  getAttribution(): Promise<AdjustAttribution> { return; }
+  getAttribution(): Promise<AdjustAttribution> {
+    return;
+  }
 
   /**
    * Get the information about version of the SDK used
    * @return {Promise<string>} Returns a promise with sdk version information
    */
   @Cordova()
-  getSdkVersion(): Promise<string> { return; }
+  getSdkVersion(): Promise<string> {
+    return;
+  }
 
   /**
    * Method used to add session callback parameters
