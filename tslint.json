@@ -9,6 +9,7 @@
     "no-constant-condition": false,
     "no-extra-boolean-cast": false,
     "adjacent-overload-signatures": false,
-    "ter-no-proto": false
+    "ter-no-proto": false,
+    "callable-types": false
   }
 }
