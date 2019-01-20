@@ -37,10 +37,10 @@
     "rimraf": "^2.6.3",
     "rxjs": "^5.5.12",
     "semver": "^5.6.0",
-    "tslint": "^5.12.0",
+    "tslint": "^5.12.1",
     "tslint-ionic-rules": "0.0.21",
     "typescript": "~2.4.2",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.28"
   },
   "scripts": {
     "start": "npm run test:watch",
