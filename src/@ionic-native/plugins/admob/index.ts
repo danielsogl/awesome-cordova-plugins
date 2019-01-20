@@ -246,7 +246,7 @@ export class Admob extends IonicNativePlugin {
    * Use one of these constants as adSize option when calling createBannerView
    * @readonly
    */
-  @CordovaProperty
+  @CordovaProperty()
   readonly AD_SIZE: {
     BANNER: string;
     IAB_MRECT: string;
@@ -259,7 +259,7 @@ export class Admob extends IonicNativePlugin {
    * This enum represents AdMob's supported ad types
    * @readonly
    */
-  @CordovaProperty
+  @CordovaProperty()
   readonly AD_TYPE: {
     BANNER: string;
     INTERSTITIAL: string;
