@@ -1,3 +1,7 @@
+# [5.0.0-beta.24](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.23...v5.0.0-beta.24) (2019-01-20)
+
+
+
 # [5.0.0-beta.23](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.22...v5.0.0-beta.23) (2019-01-19)
 
 
