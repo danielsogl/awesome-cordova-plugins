@@ -1,18 +1,24 @@
-# [4.19.0](https://github.com/ionic-team/ionic-native/compare/v4.18.0...v4.19.0) (2019-01-04)
+# [4.20.0](https://github.com/ionic-team/ionic-native/compare/v4.18.0...v4.20.0) (2019-01-20)
 
 
 ### Bug Fixes
 
+* **bluetooth-le:** Fix typo in interface definition ([#2881](https://github.com/ionic-team/ionic-native/issues/2881)) ([c2f4561](https://github.com/ionic-team/ionic-native/commit/c2f4561))
 * **health:** fix typos ([#2831](https://github.com/ionic-team/ionic-native/issues/2831)) ([ea3150e](https://github.com/ionic-team/ionic-native/commit/ea3150e))
 
 
 ### Features
 
+* **adjust:** add adjust sdk plugin ([#2872](https://github.com/ionic-team/ionic-native/issues/2872)) ([9e6705d](https://github.com/ionic-team/ionic-native/commit/9e6705d))
 * **admob:** add plugin ([#2864](https://github.com/ionic-team/ionic-native/issues/2864)) ([707ce1c](https://github.com/ionic-team/ionic-native/commit/707ce1c))
 * **analytics-firebase:** add plugin ([#2862](https://github.com/ionic-team/ionic-native/issues/2862)) ([5df3de7](https://github.com/ionic-team/ionic-native/commit/5df3de7))
+* **background-geolocation:** add v3 functions and interfaces ([#2393](https://github.com/ionic-team/ionic-native/issues/2393)) ([1ba6f97](https://github.com/ionic-team/ionic-native/commit/1ba6f97))
 * **baidu-push:** add plugin ([#2838](https://github.com/ionic-team/ionic-native/issues/2838)) ([c3de8df](https://github.com/ionic-team/ionic-native/commit/c3de8df))
+* **firebase:** add clearAllNotifications method ([#2867](https://github.com/ionic-team/ionic-native/issues/2867)) ([7c46d8c](https://github.com/ionic-team/ionic-native/commit/7c46d8c))
 * **gao-de-location:** add plugin ([#2857](https://github.com/ionic-team/ionic-native/issues/2857)) ([e2b25de](https://github.com/ionic-team/ionic-native/commit/e2b25de))
 * **in-app-browser:** add 'beforeload' as option ([#2863](https://github.com/ionic-team/ionic-native/issues/2863)) ([d33bcb0](https://github.com/ionic-team/ionic-native/commit/d33bcb0))
+* **lottie-splash-screen:** add new plugin ([#2880](https://github.com/ionic-team/ionic-native/issues/2880)) ([603d694](https://github.com/ionic-team/ionic-native/commit/603d694))
+* **web-intent:** Add missing type info ([#2878](https://github.com/ionic-team/ionic-native/issues/2878)) ([3226f76](https://github.com/ionic-team/ionic-native/commit/3226f76))
 
 
 
