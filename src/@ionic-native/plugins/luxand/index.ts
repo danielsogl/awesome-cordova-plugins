@@ -86,9 +86,7 @@ export interface OMLFacialData {
   pluginName: 'Luxand',
   plugin: 'codova-plugin-luxand',
   pluginRef: 'window.Luxand',
-  repo: '',
-  install: '',
-  installVariables: [],
+  repo: 'https://github.com/molobala/cordova-plugin-luxand',
   platforms: ['Android', 'iOS']
 })
 @Injectable()
