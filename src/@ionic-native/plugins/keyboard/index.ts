@@ -33,6 +33,13 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class Keyboard extends IonicNativePlugin {
   /**
+   * Check keyboard status visible or not.
+   * @returns {boolean}
+   */
+  @CordovaProperty()
+  isVisible: boolean;
+
+  /**
    * Hide the keyboard accessory bar with the next, previous and done buttons.
    * @param hide {boolean}
    */

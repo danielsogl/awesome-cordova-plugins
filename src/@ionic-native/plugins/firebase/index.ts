@@ -19,6 +19,9 @@ import { Observable } from 'rxjs';
  *   .then(token => console.log(`The token is ${token}`)) // save the token server-side and use it to push notifications to this device
  *   .catch(error => console.error('Error getting token', error));
  *
+ * this.firebase.onNotificationOpen()
+ *    .subscribe(data => console.log(`User opened a notification ${data}`));
+ *
  * this.firebase.onTokenRefresh()
  *   .subscribe((token: string) => console.log(`Got a new token ${token}`));
  *
@@ -333,6 +336,14 @@ export class Firebase extends IonicNativePlugin {
     phoneNumber: string,
     timeoutDuration = 0
   ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Clear all pending notifications from the drawer
+   * @return {Promise<any>}
+   */
+  clearAllNotifications(): Promise<any> {
     return;
   }
 }

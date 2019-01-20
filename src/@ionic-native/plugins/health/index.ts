@@ -266,7 +266,7 @@ export class Health extends IonicNativePlugin {
    *
    * Quirks of isAuthorized()
    *
-   * In iOS, this function will only check authorization status for writeable data.
+   * In iOS, this function will only check authorization status for writable data.
    * Read-only data will always be considered as not authorized. This is an intended behaviour of HealthKit.
    *
    * @param {string[] | HealthDataType[]} datatypes a list of data types you want to check access of, same as in requestAuthorization

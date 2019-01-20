@@ -22,7 +22,7 @@ export interface NdefRecord {
 export interface NdefTag {
   canMakeReadOnly: boolean;
   id: number[];
-  isWriteable: boolean;
+  isWritable: boolean;
   maxSize: number;
   ndefMessage: NdefRecord[];
   techTypes: string[];
