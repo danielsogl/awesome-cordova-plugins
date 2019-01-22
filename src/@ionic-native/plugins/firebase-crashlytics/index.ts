@@ -38,7 +38,6 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * Simply add the plugin to get the default Crashlytics functionality. Note that crashes and logged exceptions will only be reported when the application restarts. In order to log caught exceptions the following can be used:
    *
    * @returns {void}
-   * @memberof FirebaseCrashlytics
    */
   @Cordova({
     sync: true
@@ -51,7 +50,6 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * Generate a forced crash. Visible in console after restart of application.
    *
    * @returns {void}
-   * @memberof FirebaseCrashlytics
    */
   @Cordova({
     sync: true
@@ -67,7 +65,6 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @param {string} tag
    * @param {string} message
    * @returns {void}
-   * @memberof FirebaseCrashlytics
    */
   @Cordova({
     sync: true
@@ -81,7 +78,6 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    *
    * @param {string} message
    * @returns {void}
-   * @memberof FirebaseCrashlytics
    */
   @Cordova({
     sync: true
@@ -95,7 +91,6 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    *
    * @param {string} message
    * @returns {void}
-   * @memberof FirebaseCrashlytics
    */
   @Cordova({
     sync: true
@@ -110,7 +105,6 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @param {string} key
    * @param {string} value
    * @returns {void}
-   * @memberof FirebaseCrashlytics
    */
   @Cordova({
     sync: true
@@ -125,7 +119,6 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @param {string} key
    * @param {boolean} value
    * @returns {void}
-   * @memberof FirebaseCrashlytics
    */
   @Cordova({
     sync: true
@@ -140,7 +133,6 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @param {string} key
    * @param {number} value
    * @returns {void}
-   * @memberof FirebaseCrashlytics
    */
   @Cordova({
     sync: true
@@ -155,7 +147,6 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @param {string} key
    * @param {number} value
    * @returns {void}
-   * @memberof FirebaseCrashlytics
    */
   @Cordova({
     sync: true
@@ -170,7 +161,6 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @param {string} key
    * @param {number} value
    * @returns {void}
-   * @memberof FirebaseCrashlytics
    */
   @Cordova({
     sync: true
@@ -184,7 +174,6 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    *
    * @param {string} identifier
    * @returns {void}
-   * @memberof FirebaseCrashlytics
    */
   @Cordova({
     sync: true
