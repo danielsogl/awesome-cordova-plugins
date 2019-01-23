@@ -4,14 +4,14 @@ import * as fs from 'fs-extra';
 import { merge } from 'lodash';
 import { cpus } from 'os';
 import * as path from 'path';
-
 import { PLUGIN_PATHS, ROOT } from '../build/helpers';
 import { Logger } from '../logger';
+
 
 // tslint:disable-next-line:no-var-requires
 const MAIN_PACKAGE_JSON = require('../../package.json');
 const VERSION = MAIN_PACKAGE_JSON.version;
-const FLAGS = '--access public --tag beta';
+const FLAGS = '--access public';
 
 const PACKAGE_JSON_BASE = {
   description: 'Ionic Native - Native plugins for ionic apps',
