@@ -113,11 +113,11 @@ export interface ConfigurationData {
   /**
    * The height of the image or video in pixels. The value is zero for sound clips.
    */
-    height: number;
+  height: number;
   /**
    * The width of the image or video in pixels. The value is zero for sound clips.
    */
-    width: number;
+  width: number;
 }
 
 /**
