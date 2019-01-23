@@ -36,7 +36,7 @@ export interface DocumentViewerOptions {
  *
  * @usage
  * ```typescript
- * import { DocumentViewer } from '@ionic-native/document-viewer';
+ * import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
  *
  *
  * constructor(private document: DocumentViewer) { }
@@ -69,21 +69,24 @@ export class DocumentViewer extends IonicNativePlugin {
    * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
    */
   @Cordova()
-  getSupportInfo(): Promise<any> { return; }
+  getSupportInfo(): Promise<any> {
+    return;
+  }
 
   /**
    * Check if the document can be shown
    *
    * @param url {string} Url to the file
    * @param contentType {string} Content type of the file
-   * @param options {Array<DocumentViewerOptions>} options
+   * @param options {DocumentViewerOptions} options
    * @param [onPossible] {Function}
    * @param [onMissingApp] {Function}
    * @param [onImpossible] {Function}
    * @param [onError] {Function}
    */
   @Cordova({ sync: true })
-  canViewDocument(url: string, contentType: string, options: DocumentViewerOptions, onPossible?: Function, onMissingApp?: Function, onImpossible?: Function, onError?: Function): void { }
+  canViewDocument(url: string, contentType: string, options: DocumentViewerOptions, onPossible?: Function, onMissingApp?: Function, onImpossible?: Function, onError?: Function): void {
+  }
 
   /**
    * Opens the file
@@ -97,6 +100,7 @@ export class DocumentViewer extends IonicNativePlugin {
    * @param [onError] {Function}
    */
   @Cordova({ sync: true })
-  viewDocument(url: string, contentType: string, options: DocumentViewerOptions, onShow?: Function, onClose?: Function, onMissingApp?: Function, onError?: Function): void { }
+  viewDocument(url: string, contentType: string, options: DocumentViewerOptions, onShow?: Function, onClose?: Function, onMissingApp?: Function, onError?: Function): void {
+  }
 
 }

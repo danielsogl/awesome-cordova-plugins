@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { DNS } from '@ionic-native/dns';
+ * import { DNS } from '@ionic-native/dns/ngx';
  *
  *
  * constructor(private dns: DNS) { }
@@ -36,5 +36,7 @@ export class DNS extends IonicNativePlugin {
    * @returns {Promise<string>} Returns a promise that resolves with the resolution.
    */
   @Cordova()
-  resolve(hostname: string): Promise<string> { return; }
+  resolve(hostname: string): Promise<string> {
+    return;
+  }
 }

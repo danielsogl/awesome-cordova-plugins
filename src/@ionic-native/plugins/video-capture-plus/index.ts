@@ -108,7 +108,7 @@ export interface VideoCapturePlusOptions {
  *
  * @usage
  * ```typescript
- * import { VideoCapturePlus, VideoCapturePlusOptions, MediaFile } from '@ionic-native/video-capture-plus';
+ * import { VideoCapturePlus, VideoCapturePlusOptions, MediaFile } from '@ionic-native/video-capture-plus/ngx';
  *
  *
  * constructor(private videoCapturePlus: VideoCapturePlus) { }

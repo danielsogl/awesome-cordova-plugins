@@ -90,7 +90,7 @@ export interface Player {
  *
  * @usage
  * ```typescript
- * import { GooglePlayGamesServices } from '@ionic-native/google-play-games-services';
+ * import { GooglePlayGamesServices } from '@ionic-native/google-play-games-services/ngx';
  *
  *
  * constructor(private googlePlayGamesServices: GooglePlayGamesServices) { }
@@ -170,7 +170,9 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    * is authenticated with Play Games Services.
    */
   @Cordova()
-  auth(): Promise<any> { return; }
+  auth(): Promise<any> {
+    return;
+  }
 
   /**
    * Sign out of Google Play Games Services.
@@ -179,7 +181,9 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    * successfully signs out.
    */
   @Cordova()
-  signOut(): Promise<any> { return; }
+  signOut(): Promise<any> {
+    return;
+  }
 
   /**
    * Check if the user is signed in.
@@ -188,7 +192,9 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    * the signed in response.
    */
   @Cordova()
-  isSignedIn(): Promise<SignedInResponse> { return; }
+  isSignedIn(): Promise<SignedInResponse> {
+    return;
+  }
 
   /**
    * Show the currently authenticated player.
@@ -197,7 +203,9 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    * Games Services returns the authenticated player.
    */
   @Cordova()
-  showPlayer(): Promise<Player> { return; }
+  showPlayer(): Promise<Player> {
+    return;
+  }
 
   /**
    * Submit a score to a leaderboard. You should ensure that you have a
@@ -208,7 +216,9 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    * score is submitted.
    */
   @Cordova()
-  submitScore(data: ScoreData): Promise<string> { return; }
+  submitScore(data: ScoreData): Promise<string> {
+    return;
+  }
 
   /**
    * Launches the native Play Games leaderboard view controller to show all the
@@ -218,7 +228,9 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    * leaderboards window opens.
    */
   @Cordova()
-  showAllLeaderboards(): Promise<any> { return; }
+  showAllLeaderboards(): Promise<any> {
+    return;
+  }
 
   /**
    * Launches the native Play Games leaderboard view controll to show the
@@ -229,7 +241,9 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    * leaderboard window opens.
    */
   @Cordova()
-  showLeaderboard(data: LeaderboardData): Promise<any> { return; }
+  showLeaderboard(data: LeaderboardData): Promise<any> {
+    return;
+  }
 
   /**
    * Unlock an achievement.
@@ -239,7 +253,9 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    * achievement is unlocked.
    */
   @Cordova()
-  unlockAchievement(data: AchievementData): Promise<string> { return; }
+  unlockAchievement(data: AchievementData): Promise<string> {
+    return;
+  }
 
   /**
    * Increment an achievement.
@@ -249,7 +265,9 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    * achievement is incremented.
    */
   @Cordova()
-  incrementAchievement(data: IncrementableAchievementData): Promise<string> { return; }
+  incrementAchievement(data: IncrementableAchievementData): Promise<string> {
+    return;
+  }
 
   /**
    * Lauches the native Play Games achievements view controller to show
@@ -259,6 +277,8 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    * achievement window opens.
    */
   @Cordova()
-  showAchievements(): Promise<any> { return; }
+  showAchievements(): Promise<any> {
+    return;
+  }
 
 }

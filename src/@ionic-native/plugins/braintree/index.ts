@@ -148,7 +148,7 @@ export interface PaymentUIResult {
  *
  * @usage
  * ```typescript
- * import { Braintree, ApplePayOptions, PaymentUIOptions } from '@ionic-native/braintree';
+ * import { Braintree, ApplePayOptions, PaymentUIOptions } from '@ionic-native/braintree/ngx';
  *
  * constructor(private braintree: Braintree) { }
  *
@@ -166,12 +166,12 @@ export interface PaymentUIResult {
  *   merchantId: '<YOUR MERCHANT ID>',
  *   currency: 'USD',
  *   country: 'US'
- * };
+ * }
  *
  * const paymentOptions: PaymentUIOptions = {
  *   amount: '14.99',
  *   primaryDescription: 'Your product or service (per /item, /month, /week, etc)',
- * };
+ * }
  *
  * this.braintree.initialize(BRAINTREE_TOKEN)
  *   .then(() => this.braintree.setupApplePay(appleOptions))

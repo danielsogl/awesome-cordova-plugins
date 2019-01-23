@@ -1,5 +1,5 @@
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 /**
@@ -22,7 +22,7 @@ export interface IPedometerData {
  *
  * @usage
  * ```typescript
- * import { Pedometer } from '@ionic-native/pedometer';
+ * import { Pedometer } from '@ionic-native/pedometer/ngx';
  *
  * Pedometer.isDistanceAvailable()
  *   .then((available: boolean) => console.log(available))

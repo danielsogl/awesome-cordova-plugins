@@ -13,7 +13,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
+ * import { FirebaseAnalytics } from '@ionic-native/firebase-analytics/ngx';
  *
  *
  * constructor(private firebaseAnalytics: FirebaseAnalytics) { }

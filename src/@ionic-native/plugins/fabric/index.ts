@@ -14,7 +14,7 @@ export interface Attributes {
  *
  * @usage
  * ```typescript
- * import { Crashlytics } from '@ionic-native/fabric';
+ * import { Crashlytics } from '@ionic-native/fabric/ngx';
  *
  *
  * constructor(private crashlytics: Crashlytics) { }
@@ -142,7 +142,7 @@ export class Crashlytics extends IonicNativePlugin {
  *
  * @usage
  * ```typescript
- * import { Answers } from '@ionic-native/fabric';
+ * import { Answers } from '@ionic-native/fabric/ngx';
  *
  *
  * constructor(private answers: Answers) { }

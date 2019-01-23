@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 declare var serial: any;
 
@@ -27,7 +27,7 @@ export interface SerialOpenOptions {
  *
  * @usage
  * ```typescript
- * import { Serial } from '@ionic-native/serial';
+ * import { Serial } from '@ionic-native/serial/ngx';
  *
  * constructor(private serial: Serial) { }
  *
@@ -58,7 +58,6 @@ export interface SerialOpenOptions {
 })
 @Injectable()
 export class Serial extends IonicNativePlugin {
-
   /**
    * Request permission to connect to a serial device
    *
@@ -69,7 +68,9 @@ export class Serial extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  requestPermission(options?: SerialPermissionOptions): Promise<any> { return; }
+  requestPermission(options?: SerialPermissionOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Open connection to a serial device
@@ -78,7 +79,9 @@ export class Serial extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when the serial connection is opened
    */
   @Cordova()
-  open(options: SerialOpenOptions): Promise<any> { return; }
+  open(options: SerialOpenOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Write to a serial connection
@@ -87,7 +90,9 @@ export class Serial extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when the write is complete
    */
   @Cordova()
-  write(data: any): Promise<any> { return; }
+  write(data: any): Promise<any> {
+    return;
+  }
 
   /**
    * Write hex to a serial connection
@@ -96,7 +101,9 @@ export class Serial extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when the write is complete
    */
   @Cordova()
-  writeHex(data: any): Promise<any> { return; }
+  writeHex(data: any): Promise<any> {
+    return;
+  }
 
   /**
    * Read from a serial connection
@@ -104,7 +111,9 @@ export class Serial extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves with data read from the serial connection
    */
   @Cordova()
-  read(): Promise<any> { return; }
+  read(): Promise<any> {
+    return;
+  }
 
   /**
    * Watch the incoming data from the serial connection. Clear the watch by unsubscribing from the observable
@@ -114,7 +123,9 @@ export class Serial extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  registerReadCallback(): Observable<any> { return; }
+  registerReadCallback(): Observable<any> {
+    return;
+  }
 
   /**
    * Close the serial connection
@@ -122,6 +133,7 @@ export class Serial extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when the serial connection is closed
    */
   @Cordova()
-  close(): Promise<any> { return; }
-
+  close(): Promise<any> {
+    return;
+  }
 }

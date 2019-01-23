@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name Firebase
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```typescript
- * import { Firebase } from '@ionic-native/firebase';
+ * import { Firebase } from '@ionic-native/firebase/ngx';
  *
  * constructor(private firebase: Firebase) { }
  *

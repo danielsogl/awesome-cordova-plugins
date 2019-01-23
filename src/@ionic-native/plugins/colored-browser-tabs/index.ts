@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name Colored Browser Tabs
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```typescript
- * import { ColoredBrowserTabs } from '@ionic-native/colored-browser-tabs';
+ * import { ColoredBrowserTabs } from '@ionic-native/colored-browser-tabs/ngx';
  *
  *
  * constructor(private browserTabs: ColoredBrowserTabs) { }

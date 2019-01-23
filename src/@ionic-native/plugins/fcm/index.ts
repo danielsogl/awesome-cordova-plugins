@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export interface NotificationData {
   /**
@@ -23,7 +23,7 @@ export interface NotificationData {
  *
  * @usage
  * ```typescript
- * import { FCM } from '@ionic-native/fcm';
+ * import { FCM } from '@ionic-native/fcm/ngx';
  *
  * constructor(private fcm: FCM) {}
  *

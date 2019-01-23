@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Uptime } from '@ionic-native/uptime';
+ * import { Uptime } from '@ionic-native/uptime/ngx';
  *
  * constructor(private uptime: Uptime) { }
  *

@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { SqliteDbCopy } from '@ionic-native/sqlite-db-copy';
+ * import { SqliteDbCopy } from '@ionic-native/sqlite-db-copy/ngx';
  *
  *
  * constructor(private sqliteDbCopy: SqliteDbCopy) { }

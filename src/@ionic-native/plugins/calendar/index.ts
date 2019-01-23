@@ -66,7 +66,7 @@ export interface NameOrOptions {
  *
  * @usage
  * ```typescript
- * import { Calendar } from '@ionic-native/calendar';
+ * import { Calendar } from '@ionic-native/calendar/ngx';
  *
  * constructor(private calendar: Calendar) { }
  *

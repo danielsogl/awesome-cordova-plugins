@@ -69,7 +69,7 @@ export interface WheelSelectorData {
  *
  * @usage
  * ```
- * import { WheelSelector } from '@ionic-native/wheel-selector';
+ * import { WheelSelector } from '@ionic-native/wheel-selector/ngx';
  *
  *
  * constructor(private selector: WheelSelector) { }
@@ -101,7 +101,7 @@ export interface WheelSelectorData {
  *     { name: "Gordon", id: '103' },
  *     { name: "Smith", id: '104' }
  *   ]
- * };
+ * }
  *
  * ...
  *
@@ -200,5 +200,7 @@ export class WheelSelector extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS']
   })
-  hideSelector(): Promise<void> { return; }
+  hideSelector(): Promise<void> {
+    return;
+  }
 }

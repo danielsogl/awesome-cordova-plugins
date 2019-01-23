@@ -26,7 +26,7 @@ export interface AppUpdateOptions {
  * Then use the following code:
  *
  * ```typescript
- * import { AppUpdate } from '@ionic-native/app-update';
+ * import { AppUpdate } from '@ionic-native/app-update/ngx';
  *
  * constructor(private appUpdate: AppUpdate) {
  *

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 namespace Http {
   export const enum Verb {
@@ -118,20 +118,24 @@ export interface ILocalPackage extends IPackage {
  * Decomposed static side of RemotePackage.
  * For Class Decomposition guidelines see http://www.typescriptlang.org/Handbook#writing-dts-files-guidelines-and-specifics
  */
+
 /* tslint:disable */
 interface RemotePackage_Static {
   new (): IRemotePackage;
 }
+
 /* tslint:enable */
 
 /**
  * Decomposed static side of LocalPackage.
  * For Class Decomposition guidelines see http://www.typescriptlang.org/Handbook#writing-dts-files-guidelines-and-specifics
  */
+
 /* tslint:disable */
 interface LocalPackage_Static {
   new (): ILocalPackage;
 }
+
 /* tslint:enable */
 
 declare const RemotePackage: RemotePackage_Static;
@@ -460,7 +464,7 @@ export interface DownloadProgress {
  *
  * @usage
  * ```typescript
- * import { CodePush } from '@ionic-native/code-push';
+ * import { CodePush } from '@ionic-native/code-push/ngx';
  *
  * constructor(private codePush: CodePush) { }
  *

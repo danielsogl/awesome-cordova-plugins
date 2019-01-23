@@ -5,7 +5,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name Screen Orientation
@@ -16,7 +16,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```typescript
- * import { ScreenOrientation } from '@ionic-native/screen-orientation';
+ * import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
  *
  * constructor(private screenOrientation: ScreenOrientation) { }
  *
@@ -76,7 +76,6 @@ export class ScreenOrientation extends IonicNativePlugin {
     LANDSCAPE: 'landscape',
     ANY: 'any'
   };
-
   /**
    * Listen to orientation change event
    * @return {Observable<void>}
@@ -109,6 +108,6 @@ export class ScreenOrientation extends IonicNativePlugin {
   /**
    * Get the current orientation of the device.
    */
-  @CordovaProperty
+  @CordovaProperty()
   type: string;
 }

@@ -268,7 +268,7 @@ export interface DataCaptureResult {
  *
  * @usage
  * ```typescript
- * import { AbbyyRTR } from '@ionic-native/abbyy-rtr';
+ * import { AbbyyRTR } from '@ionic-native/abbyy-rtr/ngx';
  *
  *
  * constructor(private abbyyRTR: AbbyyRTR) { }

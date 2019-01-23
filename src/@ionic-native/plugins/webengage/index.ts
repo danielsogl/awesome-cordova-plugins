@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Webengage, WebengageUser, WebengagePush, WebengageNotification } from '@ionic-native/webengage';
+ * import { Webengage, WebengageUser, WebengagePush, WebengageNotification } from '@ionic-native/webengage/ngx';
  *
  *
  * constructor(private webengage: Webengage, private webengageUser: WebengageUser, private webengagePush: WebengagePush, private webengageNotification: WebengageNotification ) { }

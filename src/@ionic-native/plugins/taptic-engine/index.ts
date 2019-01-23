@@ -1,3 +1,4 @@
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
@@ -8,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { TapticEngine } from '@ionic-native/taptic-engine';
+ * import { TapticEngine } from '@ionic-native/taptic-engine/ngx';
  *
  * ...
  *

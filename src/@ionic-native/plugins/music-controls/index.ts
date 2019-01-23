@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface MusicControlsOptions {
   track?: string;
@@ -37,7 +37,7 @@ export interface MusicControlsOptions {
  *
  * @usage
  * ```typescript
- * import { MusicControls } from '@ionic-native/music-controls';
+ * import { MusicControls } from '@ionic-native/music-controls/ngx';
  *
  * constructor(private musicControls: MusicControls) { }
  *

@@ -92,22 +92,21 @@ export interface IContactProperties {
  * @hidden
  */
 export class Contact implements IContactProperties {
+  @InstanceProperty() id: string;
+  @InstanceProperty() displayName: string;
+  @InstanceProperty() name: IContactName;
+  @InstanceProperty() nickname: string;
+  @InstanceProperty() phoneNumbers: IContactField[];
+  @InstanceProperty() emails: IContactField[];
+  @InstanceProperty() addresses: IContactAddress[];
+  @InstanceProperty() ims: IContactField[];
+  @InstanceProperty() organizations: IContactOrganization[];
+  @InstanceProperty() birthday: Date;
+  @InstanceProperty() note: string;
+  @InstanceProperty() photos: IContactField[];
+  @InstanceProperty() categories: IContactField[];
+  @InstanceProperty() urls: IContactField[];
   private _objectInstance: any;
-  @InstanceProperty id: string;
-  @InstanceProperty rawId: string;
-  @InstanceProperty displayName: string;
-  @InstanceProperty name: IContactName;
-  @InstanceProperty nickname: string;
-  @InstanceProperty phoneNumbers: IContactField[];
-  @InstanceProperty emails: IContactField[];
-  @InstanceProperty addresses: IContactAddress[];
-  @InstanceProperty ims: IContactField[];
-  @InstanceProperty organizations: IContactOrganization[];
-  @InstanceProperty birthday: Date;
-  @InstanceProperty note: string;
-  @InstanceProperty photos: IContactField[];
-  @InstanceProperty categories: IContactField[];
-  @InstanceProperty urls: IContactField[];
 
   [key: string]: any;
 
@@ -314,7 +313,7 @@ export class ContactFindOptions implements IContactFindOptions {
  * @usage
  *
  * ```typescript
- * import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+ * import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
  *
  * constructor(private contacts: Contacts) { }
  *

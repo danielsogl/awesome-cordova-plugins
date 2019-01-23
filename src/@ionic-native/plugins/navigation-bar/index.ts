@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { NavigationBar } from '@ionic-native/navigation-bar';
+ * import { NavigationBar } from '@ionic-native/navigation-bar/ngx';
  *
  * constructor(private navigationBar: NavigationBar) { }
  *
@@ -40,7 +40,9 @@ export class NavigationBar extends IonicNativePlugin {
     successName: 'success',
     errorName: 'failure'
   })
-  setUp(autohide?: boolean): Promise<any> { return; }
+  setUp(autohide?: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Hide the navigation bar.
@@ -51,6 +53,8 @@ export class NavigationBar extends IonicNativePlugin {
     successName: 'success',
     errorName: 'failure'
   })
-  hideNavigationBar(): Promise<any> { return; }
+  hideNavigationBar(): Promise<any> {
+    return;
+  }
 
 }

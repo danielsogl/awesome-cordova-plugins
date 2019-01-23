@@ -194,7 +194,7 @@ Checks if the plugin and property exist before getting/setting the property's va
 
 Example:
 ```ts
-@CordovaProperty
+@CordovaProperty()
 someProperty: string;
 ```
 

@@ -5,7 +5,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 declare let window: any;
 
 export interface NdefEvent {
@@ -44,7 +44,7 @@ export interface NdefTag {
  *
  * @usage
  * ```typescript
- * import { NFC, Ndef } from '@ionic-native/nfc';
+ * import { NFC, Ndef } from '@ionic-native/nfc/ngx';
  *
  * constructor(private nfc: NFC, private ndef: Ndef) { }
  *
@@ -196,7 +196,7 @@ export class NFC extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  makeReadOnly(): Promise<any> {
+  makeReadyOnly(): Promise<any> {
     return;
   }
 
@@ -295,22 +295,6 @@ export class NFC extends IonicNativePlugin {
   bytesToHexString(bytes: number[]): string {
     return;
   }
-
-  /**
-   * Read NFC tags sending the tag data to the success callback.
-   */
-  @Cordova({
-    observable: true,
-    successIndex: 1,
-    errorIndex: 4,
-    clearFunction: 'disableReaderMode',
-    clearWithArgs: true
-  })
-  readerMode(
-    flags: number,
-    readCallback?: Function,
-    errorCallback?: Function
-  ): void { return; }
 }
 /**
  * @hidden
@@ -329,37 +313,22 @@ export class NFC extends IonicNativePlugin {
  */
 @Injectable()
 export class Ndef extends IonicNativePlugin {
-  @CordovaProperty
+  @CordovaProperty()
   TNF_EMPTY: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_WELL_KNOWN: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_MIME_MEDIA: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_ABSOLUTE_URI: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_EXTERNAL_TYPE: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_UNKNOWN: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_UNCHANGED: number;
-  @CordovaProperty
+  @CordovaProperty()
   TNF_RESERVED: number;
-
-  @CordovaProperty
-  RTD_TEXT: number[];
-  @CordovaProperty
-  RTD_URI: number[];
-  @CordovaProperty
-  RTD_SMART_POSTER: number[];
-  @CordovaProperty
-  RTD_ALTERNATIVE_CARRIER: number[];
-  @CordovaProperty
-  RTD_HANDOVER_CARRIER: number[];
-  @CordovaProperty
-  RTD_HANDOVER_REQUEST: number[];
-  @CordovaProperty
-  RTD_HANDOVER_SELECT: number[];
 
   @Cordova({ sync: true })
   record(
@@ -439,10 +408,10 @@ export class Ndef extends IonicNativePlugin {
     return;
   }
 
-  @CordovaProperty
+  @CordovaProperty()
   textHelper: TextHelper;
 
-  @CordovaProperty
+  @CordovaProperty()
   uriHelper: UriHelper;
 }
 

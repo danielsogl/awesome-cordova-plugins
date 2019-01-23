@@ -5,8 +5,7 @@ import {
   Plugin,
   wrap
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
+import { Observable, Observer } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 /**
@@ -78,7 +77,7 @@ export function CordovaFiniteObservable(
  *
  * @usage
  * ```typescript
- * import { PhotoLibrary } from '@ionic-native/photo-library';
+ * import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
  *
  * constructor(private photoLibrary: PhotoLibrary) { }
  *
@@ -123,10 +122,8 @@ export class PhotoLibrary extends IonicNativePlugin {
    * @param options {GetLibraryOptions} Optional, like thumbnail size and chunks settings.
    * @return {Observable<LibraryItem[]>} Returns library items. If appropriate option was set, will be returned by chunks.
    */
-  @CordovaFiniteObservable({
-    callbackOrder: 'reverse',
-    resultFinalPredicate: 'isLastChunk',
-    resultTransform: 'library'
+  @Cordova({
+    observable: true
   })
   getLibrary(options?: GetLibraryOptions): Observable<LibraryItem[]> {
     return;

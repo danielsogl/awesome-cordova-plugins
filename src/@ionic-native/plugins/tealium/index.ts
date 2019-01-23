@@ -45,7 +45,7 @@ export interface TealConfig {
  * For full documentation, see [https://community.tealiumiq.com/t5/Mobile-Libraries/Tealium-for-Cordova/ta-p/17618](https://community.tealiumiq.com/t5/Mobile-Libraries/Tealium-for-Cordova/ta-p/17618)
  * @usage
  * ```
- * import { Tealium, TealConfig } from '@ionic-native/tealium';
+ * import { Tealium, TealConfig } from '@ionic-native/tealium/ngx';
  *
  *
  * constructor(private tealium: Tealium) { }

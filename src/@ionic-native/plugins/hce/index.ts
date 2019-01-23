@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
@@ -9,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { hce } from '@ionic-native/hce';
+ * import { hce } from '@ionic-native/hce/ngx';
  *
  *
  * constructor(private hce: hce) { }
@@ -40,7 +39,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class HCE extends IonicNativePlugin {
-
   /**
    * Registers command receiver.
    * @param onCommand {HCECommandEvent} The event handler.
@@ -62,7 +60,6 @@ export class HCE extends IonicNativePlugin {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
-
   /**
    * Sends response APDU.
    * @param response {Uint8Array} Response
@@ -71,7 +68,11 @@ export class HCE extends IonicNativePlugin {
    *
    */
   @Cordova()
-  sendResponse(response: Uint8Array, success?: Function, failure?: Function): void {
+  sendResponse(
+    response: Uint8Array,
+    success?: Function,
+    failure?: Function
+  ): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 }

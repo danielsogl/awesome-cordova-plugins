@@ -8,7 +8,7 @@ export interface CardIOOptions {
   requireExpiry?: boolean;
 
   /**
-   * 	The user will be prompted for the card CVV
+   *  The user will be prompted for the card CVV
    */
   requireCVV?: boolean;
 
@@ -18,7 +18,7 @@ export interface CardIOOptions {
   requirePostalCode?: boolean;
 
   /**
-   * 	Removes the keyboard button from the scan screen.
+   *  Removes the keyboard button from the scan screen.
    */
   suppressManual?: boolean;
 
@@ -43,7 +43,7 @@ export interface CardIOOptions {
   scanInstructions?: string;
 
   /**
-   * 	If set, the card will not be scanned with the camera.
+   *  If set, the card will not be scanned with the camera.
    */
   noCamera?: boolean;
 
@@ -141,7 +141,7 @@ export interface CardIOResponse {
  * <string>To scan credit cards.</string>
  * ```
  * ```typescript
- * import { CardIO } from '@ionic-native/card-io';
+ * import { CardIO } from '@ionic-native/card-io/ngx';
  *
  * constructor(private cardIO: CardIO) { }
  *

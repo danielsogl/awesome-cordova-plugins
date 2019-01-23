@@ -5,7 +5,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface IndexItem {
   domain: string;
@@ -38,7 +38,7 @@ export interface IndexItem {
  *
  * @usage
  * ```typescript
- * import { IndexAppContent } from '@ionic-native/index-app-content';
+ * import { IndexAppContent } from '@ionic-native/index-app-content/ngx';
  *
  *
  * constructor(private indexAppContent: IndexAppContent) { }
@@ -89,8 +89,8 @@ export class IndexAppContent extends IonicNativePlugin {
 
   /**
    * Add or change items to spotlight index
-   * @param {Array<IndexItem>} Array of items to index
-   * @return {Promise<any>} Returns if index set was successful
+   * @param {IndexItem[]} items Array of items to index
+   * @return {Promise<any>} Returns if index set was successfully
    */
   @Cordova()
   setItems(items: IndexItem[]): Promise<any> {
@@ -99,8 +99,8 @@ export class IndexAppContent extends IonicNativePlugin {
 
   /**
    * Clear all items stored for a given array of domains
-   * @param {Array<string>} Array of domains to clear
-   * @return {Promise<any>} Resolve if successful
+   * @param {string[]} domains Array of domains to clear
+   * @return {Promise<any>} Resolve if successfully
    */
   @Cordova()
   clearItemsForDomains(domains: string[]): Promise<any> {
@@ -109,8 +109,8 @@ export class IndexAppContent extends IonicNativePlugin {
 
   /**
    * Clear all items stored for a given array of identifiers
-   * @param {Array<string>} Array of identifiers to clear
-   * @return {Promise<any>} Resolve if successful
+   * @param {string[]} identifiers Array of identifiers to clear
+   * @return {Promise<any>} Resolve if successfully
    */
   @Cordova()
   clearItemsForIdentifiers(identifiers: string[]): Promise<any> {
@@ -130,7 +130,7 @@ export class IndexAppContent extends IonicNativePlugin {
   /**
    * You might want to avoid to update spotlight index too frequently.
    * Without calling this function a subsequent call to manipulate the index is only possible after 1440 minutes (= 24 hours)!
-   * @param {number} Numeric value => 0
+   * @param {number} intervalMinutes value => 0
    */
   @Cordova()
   setIndexingInterval(intervalMinutes: number) {

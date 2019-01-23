@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+ * import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
  *
  * constructor(private payPal: PayPal) { }
  *
@@ -153,7 +153,7 @@ export class PayPal extends IonicNativePlugin {
   /**
    * Please Read Docs on Profile Sharing at https://github.com/paypal/PayPal-iOS-SDK#profile-sharing
    *
-   * @param {Array<string>} scopes scopes Set of requested scope-values. Accepted scopes are: openid, profile, address, email, phone, futurepayments and paypalattributes
+   * @param {string[]} scopes scopes Set of requested scope-values. Accepted scopes are: openid, profile, address, email, phone, futurepayments and paypalattributes
    * See https://developer.paypal.com/docs/integration/direct/identity/attributes/ for more details
    * @returns {Promise<any>}
    */
@@ -211,17 +211,14 @@ export class PayPalPayment {
    * Optional invoice number, for your tracking purposes. (up to 256 characters)
    */
   invoiceNumber: string;
-
   /**
    * Optional text, for your tracking purposes. (up to 256 characters)
    */
   custom: string;
-
   /**
    * Optional text which will appear on the customer's credit card statement. (up to 22 characters)
    */
   softDescriptor: string;
-
   /**
    * Optional array of PayPalItem objects.
    */
@@ -232,12 +229,10 @@ export class PayPalPayment {
    * The payee's email. It must be a valid PayPal email address.
    */
   payeeEmail: string;
-
   /**
    * Optional customer shipping address, if your app wishes to provide this to the SDK.
    */
   shippingAddress: string;
-
   /**
    * Optional PayPalPaymentDetails object
    */
@@ -298,17 +293,6 @@ export class PayPalItem {
  */
 export class PayPalPaymentDetails {
   /**
-   * The PayPalPaymentDetails class defines optional amount details.
-   * @param {String} subtotal: Sub-total (amount) of items being paid for. 10 characters max with support for 2 decimal places.
-   * @param {String} shipping: Amount charged for shipping. 10 characters max with support for 2 decimal places.
-   * @param {String} tax: Amount charged for tax. 10 characters max with support for 2 decimal places.
-   */
-  constructor(subtotal: string, shipping: string, tax: string) {
-    this.subtotal = subtotal;
-    this.shipping = shipping;
-    this.tax = tax;
-  }
-  /**
    * Sub-total (amount) of items being paid for. 10 characters max with support for 2 decimal places.
    */
   subtotal: string;
@@ -320,6 +304,18 @@ export class PayPalPaymentDetails {
    * Amount charged for tax. 10 characters max with support for 2 decimal places.
    */
   tax: string;
+
+  /**
+   * The PayPalPaymentDetails class defines optional amount details.
+   * @param {String} subtotal: Sub-total (amount) of items being paid for. 10 characters max with support for 2 decimal places.
+   * @param {String} shipping: Amount charged for shipping. 10 characters max with support for 2 decimal places.
+   * @param {String} tax: Amount charged for tax. 10 characters max with support for 2 decimal places.
+   */
+  constructor(subtotal: string, shipping: string, tax: string) {
+    this.subtotal = subtotal;
+    this.shipping = shipping;
+    this.tax = tax;
+  }
 }
 
 /**
@@ -425,6 +421,7 @@ export interface PayPalConfigurationOptions {
    */
   [key: string]: any;
 }
+
 /**
  * @hidden
  */

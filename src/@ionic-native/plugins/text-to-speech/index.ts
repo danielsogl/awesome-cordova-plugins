@@ -17,7 +17,7 @@ export interface TTSOptions {
  *
  * @usage
  * ```typescript
- * import { TextToSpeech } from '@ionic-native/text-to-speech';
+ * import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
  *
  * constructor(private tts: TextToSpeech) { }
  *

@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { CloudSettings } from '@ionic-native/cloud-settings';
+ * import { CloudSettings } from '@ionic-native/cloud-settings/ngx';
  *
  *
  * constructor(private cloudSettings: CloudSettings) { }

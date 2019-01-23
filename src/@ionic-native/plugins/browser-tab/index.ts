@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { BrowserTab } from '@ionic-native/browser-tab';
+ * import { BrowserTab } from '@ionic-native/browser-tab/ngx';
  *
  * constructor(private browserTab: BrowserTab) {
  *

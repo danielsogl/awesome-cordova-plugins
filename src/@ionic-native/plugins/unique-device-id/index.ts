@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { UniqueDeviceID } from '@ionic-native/unique-device-id';
+ * import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
  *
  * constructor(private uniqueDeviceID: UniqueDeviceID) { }
  *
@@ -35,6 +35,8 @@ export class UniqueDeviceID extends IonicNativePlugin {
    * @return {Promise<string>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  get(): Promise<string> { return; }
+  get(): Promise<string> {
+    return;
+  }
 
 }

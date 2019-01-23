@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 declare const navigator: any;
 
@@ -122,7 +122,7 @@ export interface GeolocationOptions {
  * @usage
  *
  * ```typescript
- * import { Geolocation } from '@ionic-native/geolocation';
+ * import { Geolocation } from '@ionic-native/geolocation/ngx';
  *
  * ...
  *

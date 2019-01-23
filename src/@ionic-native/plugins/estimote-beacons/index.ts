@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface EstimoteBeaconRegion {
   state?: string;
@@ -22,7 +22,7 @@ export interface EstimoteBeaconRegion {
  *
  * @usage
  * ```typescript
- * import { EstimoteBeacons } from '@ionic-native/estimote-beacons';
+ * import { EstimoteBeacons } from '@ionic-native/estimote-beacons/ngx';
  *
  * constructor(private eb: EstimoteBeacons) { }
  *
@@ -475,9 +475,9 @@ export class EstimoteBeacons extends IonicNativePlugin {
 
   /**
    * Stop monitoring secure beacons. Available on iOS.
-   * This function has the same parameters/behavior as
+   * This function has the same parameters/behaviour as
    * {@link EstimoteBeacons.stopMonitoringForRegion}.
-   * @param {EstimoteBeaconRegion} region Region
+   * @param region {EstimoteBeaconRegion} Region
    * @returns {Promise<any>}
    */
   @Cordova()

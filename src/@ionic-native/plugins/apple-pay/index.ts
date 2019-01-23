@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export type IMakePayments =
   | 'This device can make payments and has a supported card'
@@ -71,6 +71,7 @@ export interface IShippingMethod {
   detail: string;
   amount: number;
 }
+
 export interface IOrderItemsAndShippingMethods {
   items: IOrderItem[];
   shippingMethods?: IShippingMethod[];
@@ -99,7 +100,7 @@ export interface ISelectedShippingContact {
  *
  * @usage
  * ```typescript
- * import { ApplePay } from '@ionic-native/apple-pay';
+ * import { ApplePay } from '@ionic-native/apple-pay/ngx';
  *
  *
  * constructor(private applePay: ApplePay) { }
@@ -237,7 +238,7 @@ export class ApplePay extends IonicNativePlugin {
    *   this.paySheetItems.shippingCost = {
    *      label: 'Shipping Cost',
    *      amount: shippingMethod[0].amount
-   *   };
+   *   }
    *   this.applePay.updateItemsAndShippingMethods(this.paySheetItems, shippingMethods);
    * });
    */

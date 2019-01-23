@@ -15,7 +15,7 @@ import {
  *
  * @usage
  * ```typescript
- * import { StatusBar } from '@ionic-native/status-bar';
+ * import { StatusBar } from '@ionic-native/status-bar/ngx';
  *
  * constructor(private statusBar: StatusBar) { }
  *
@@ -38,6 +38,12 @@ import {
 })
 @Injectable()
 export class StatusBar extends IonicNativePlugin {
+  /**
+   * Whether the StatusBar is currently visible or not.
+   */
+  @CordovaProperty()
+  isVisible: boolean;
+
   /**
    * Set whether the status bar overlays the main app view. The default
    * is true.
@@ -121,10 +127,4 @@ export class StatusBar extends IonicNativePlugin {
     sync: true
   })
   show() {}
-
-  /**
-   * Whether the StatusBar is currently visible or not.
-   */
-  @CordovaProperty
-  isVisible: boolean;
 }

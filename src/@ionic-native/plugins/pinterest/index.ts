@@ -139,7 +139,7 @@ export interface PinterestPin {
  *
  * @usage
  * ```typescript
- * import { Pinterest, PinterestUser, PinterestPin, PinterestBoard } from '@ionic-native/pinterest';
+ * import { Pinterest, PinterestUser, PinterestPin, PinterestBoard } from '@ionic-native/pinterest/ngx';
  *
  * constructor(private pinterest: Pinterest) { }
  *
@@ -157,14 +157,14 @@ export interface PinterestPin {
  *   .catch(err => console.error('Error loggin in', err));
  *
  * this.pinterest.getMyPins()
- *   .then((pins: Array<PinterestPin>) => console.log(pins))
+ *   .then((pins: PinterestPin[]) => console.log(pins))
  *   .catch(err => console.error(err));
  *
  * this.pinterest.getMe()
  *   .then((user: PinterestUser) => console.log(user));
  *
  * this.pinterest.getMyBoards()
- *   .then((boards: Array<PinterestBoard>) => console.log(boards));
+ *   .then((boards: PinterestBoard[]) => console.log(boards));
  *
  * ```
  * @interfaces
@@ -187,7 +187,7 @@ export class Pinterest extends IonicNativePlugin {
   /**
    * Convenience constant for authentication scopes
    */
-  @CordovaProperty
+  @CordovaProperty()
   SCOPES: {
     READ_PUBLIC: string;
     WRITE_PUBLIC: string;
@@ -197,7 +197,7 @@ export class Pinterest extends IonicNativePlugin {
 
   /**
    * Logs the user in using their Pinterest account.
-   * @param scopes {Array<string>} Array of scopes that you need access to. You can use Pinterest.SCOPES constant for convenience.
+   * @param scopes {string[]} Array of scopes that you need access to. You can use Pinterest.SCOPES constant for convenience.
    * @returns {Promise<any>} The response object will contain the user's profile data, as well as the access token (if you need to use it elsewhere, example: send it to your server and perform actions on behalf of the user).
    */
   @Cordova()
@@ -221,7 +221,7 @@ export class Pinterest extends IonicNativePlugin {
    *
    * @param fields {string} Optional fields separated by comma
    * @param limit {number} Optional limit, defaults to 100, maximum is 100.
-   * @returns {Promise<Array<PinterestPin>>}
+   * @returns {Promise<PinterestPin[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -234,7 +234,7 @@ export class Pinterest extends IonicNativePlugin {
    *
    * @param fields {string} Optional fields separated by comma
    * @param limit {number} Optional limit, defaults to 100, maximum is 100.
-   * @returns {Promise<Array<PinterestBoard>>}
+   * @returns {Promise<PinterestBoard[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -247,7 +247,7 @@ export class Pinterest extends IonicNativePlugin {
    * Get the authenticated user's likes.
    * @param fields {string} Optional fields separated by comma
    * @param limit {number} Optional limit, defaults to 100, maximum is 100.
-   * @returns {Promise<Array<PinterestPin>>}
+   * @returns {Promise<PinterestPin[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -260,7 +260,7 @@ export class Pinterest extends IonicNativePlugin {
    * Get the authenticated user's followers.
    * @param fields {string} Optional fields separated by comma
    * @param limit {number} Optional limit, defaults to 100, maximum is 100.
-   * @returns {Promise<Array<PinterestUser>>}
+   * @returns {Promise<PinterestUser[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -276,7 +276,7 @@ export class Pinterest extends IonicNativePlugin {
    * Get the authenticated user's followed boards.
    * @param fields {string} Optional fields separated by comma
    * @param limit {number} Optional limit, defaults to 100, maximum is 100.
-   * @returns {Promise<Array<PinterestBoard>>}
+   * @returns {Promise<PinterestBoard[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -334,7 +334,7 @@ export class Pinterest extends IonicNativePlugin {
    * @param boardId {string} The ID of the board
    * @param fields {string} Optional fields separated by comma
    * @param limit {number} Optional limit, defaults to 100, maximum is 100.
-   * @returns {Promise<Array<PinterestPin>>}
+   * @returns {Promise<PinterestPin[]>}
    */
   @Cordova({
     successIndex: 1,

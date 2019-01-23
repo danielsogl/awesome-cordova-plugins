@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name App Center Push
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```typescript
- * import { AppCenterPush } from '@ionic-native/app-center-push';
+ * import { AppCenterPush } from '@ionic-native/app-center-push/ngx';
  *
  *
  * constructor(private appCenterPush: AppCenterPush) { }

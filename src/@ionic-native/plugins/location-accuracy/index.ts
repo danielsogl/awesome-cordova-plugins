@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { LocationAccuracy } from '@ionic-native/location-accuracy';
+ * import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
  *
  * constructor(private locationAccuracy: LocationAccuracy) { }
  *
@@ -38,18 +38,88 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 @Injectable()
 export class LocationAccuracy extends IonicNativePlugin {
   /**
+   * Convenience constant
+   * @type {number}
+   */
+  REQUEST_PRIORITY_NO_POWER = 0;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  REQUEST_PRIORITY_LOW_POWER = 1;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  REQUEST_PRIORITY_BALANCED_POWER_ACCURACY = 2;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  REQUEST_PRIORITY_HIGH_ACCURACY = 3;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  SUCCESS_SETTINGS_SATISFIED = 0;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  SUCCESS_USER_AGREED = 1;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_ALREADY_REQUESTING = -1;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_INVALID_ACTION = 0;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_INVALID_ACCURACY = 1;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_EXCEPTION = 1;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_CANNOT_CHANGE_ACCURACY = 3;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_USER_DISAGREED = 4;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  ERROR_GOOGLE_API_CONNECTION_FAILED = 4;
+
+  /**
    * Indicates if you can request accurate location
    * @returns {Promise<boolean>} Returns a promise that resovles with a boolean that indicates if you can request accurate location
    */
   @Cordova()
-  canRequest(): Promise<boolean> { return; }
+  canRequest(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Indicates if a request is currently in progress
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that indicates if a request is currently in progress
    */
   @Cordova()
-  isRequesting(): Promise<boolean> { return; }
+  isRequesting(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Requests accurate location
@@ -57,84 +127,8 @@ export class LocationAccuracy extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects if an error occurred
    */
   @Cordova({ callbackOrder: 'reverse' })
-  request(accuracy: number): Promise<any> { return; }
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  REQUEST_PRIORITY_NO_POWER = 0;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  REQUEST_PRIORITY_LOW_POWER = 1;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  REQUEST_PRIORITY_BALANCED_POWER_ACCURACY = 2;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  REQUEST_PRIORITY_HIGH_ACCURACY = 3;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  SUCCESS_SETTINGS_SATISFIED = 0;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  SUCCESS_USER_AGREED = 1;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  ERROR_ALREADY_REQUESTING = -1;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  ERROR_INVALID_ACTION = 0;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  ERROR_INVALID_ACCURACY = 1;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  ERROR_EXCEPTION = 1;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  ERROR_CANNOT_CHANGE_ACCURACY = 3;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  ERROR_USER_DISAGREED = 4;
-
-  /**
-   * Convenience constant
-   * @type {number}
-   */
-  ERROR_GOOGLE_API_CONNECTION_FAILED = 4;
+  request(accuracy: number): Promise<any> {
+    return;
+  }
 
 }

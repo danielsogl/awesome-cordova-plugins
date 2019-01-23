@@ -10,7 +10,7 @@ module.exports = function readmes(renderDocsProcessor) {
       docs = docs.filter(doc => (!!doc.name && !!doc.outputPath) || doc.docType === 'index-page');
 
       docs.forEach(doc => {
-        doc.outputPath = doc.outputPath.replace('src/', '');
+        doc.outputPath = doc.outputPath.replace('src/@ionic-native/', '');
       });
 
       return docs;

@@ -3,7 +3,8 @@ import {
   Cordova,
   CordovaCheck,
   IonicNativePlugin,
-  Plugin
+  Plugin,
+  getPromise
 } from '@ionic-native/core';
 
 export interface EmailComposerOptions {
@@ -62,7 +63,7 @@ export interface EmailComposerOptions {
  *
  * @usage
  * ```typescript
- * import { EmailComposer } from '@ionic-native/email-composer';
+ * import { EmailComposer } from '@ionic-native/email-composer/ngx';
  *
  * constructor(private emailComposer: EmailComposer) { }
  *
@@ -88,7 +89,7 @@ export interface EmailComposerOptions {
  *   subject: 'Cordova Icons',
  *   body: 'How are you? Nice greetings from Leipzig',
  *   isHtml: true
- * };
+ * }
  *
  * // Send a text message using default options
  * this.emailComposer.open(email);
@@ -149,7 +150,7 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @CordovaCheck()
   isAvailable(app?: string): Promise<any> {
-    return new Promise<boolean>((resolve, reject) => {
+    return getPromise<boolean>((resolve, reject) => {
       if (app) {
         EmailComposer.getPlugin().isAvailable(app, (isAvailable: boolean) => {
           if (isAvailable) {

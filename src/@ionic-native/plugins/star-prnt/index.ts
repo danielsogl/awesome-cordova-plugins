@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface Printer {
   /**
@@ -627,7 +627,7 @@ export interface CommandsArray extends Array<PrintCommand> {}
  *
  * @usage
  * ```typescript
- * import { StarPRNT } from '@ionic-native/star-prnt';
+ * import { StarPRNT } from '@ionic-native/star-prnt/ngx';
  *
  *
  * constructor(private starprnt: StarPRNT) { }
@@ -949,7 +949,6 @@ export class StarPRNT extends IonicNativePlugin {
    * Allows you to connect to the printer, keep the connection alive and receive status updates through an observable
    * @param {string} port  printer name i.e BT:StarMicronics.
    * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
-   * @param {boolean} hasBarcodeReader  Set to true if the device has a barcode reader (e.g. mPop)
    * @return {Observable<any>} Success! if connected or error message string returned by the SDK.
    */
   @Cordova({

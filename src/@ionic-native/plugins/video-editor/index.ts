@@ -116,7 +116,7 @@ export interface VideoInfo {
  *
  * @usage
  * ```typescript
- * import { VideoEditor } from '@ionic-native/video-editor';
+ * import { VideoEditor } from '@ionic-native/video-editor/ngx';
  *
  * constructor(private videoEditor: VideoEditor) { }
  *

@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { SocialSharing } from '@ionic-native/social-sharing';
+ * import { SocialSharing } from '@ionic-native/social-sharing/ngx';
  *
  * constructor(private socialSharing: SocialSharing) { }
  *

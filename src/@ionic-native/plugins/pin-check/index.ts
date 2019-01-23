@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { PinCheck } from '@ionic-native/pin-check';
+ * import { PinCheck } from '@ionic-native/pin-check/ngx';
  * import { Platform } from 'ionic-angular';
  *
  * constructor(private pinCheck: PinCheck, private platform: Platform) { }

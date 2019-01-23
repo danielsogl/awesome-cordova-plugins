@@ -40,7 +40,7 @@ export interface AppCenterCrashReportDevice {
  *
  * @usage
  * ```typescript
- * import { AppCenterCrashes } from '@ionic-native/app-center-crashes';
+ * import { AppCenterCrashes } from '@ionic-native/app-center-crashes/ngx';
  *
  *
  * constructor(private AppCenterCrashes: AppCenterCrashes) { }

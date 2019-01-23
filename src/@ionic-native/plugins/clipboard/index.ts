@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Clipboard } from '@ionic-native/clipboard';
+ * import { Clipboard } from '@ionic-native/clipboard/ngx';
  *
  * constructor(private clipboard: Clipboard) { }
  *

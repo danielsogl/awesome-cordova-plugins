@@ -60,7 +60,7 @@ export interface BranchUniversalObject {
  *
  * @usage
  * ```
- * import { BranchIo } from '@ionic-native/branch-io';
+ * import { BranchIo } from '@ionic-native/branch-io/ngx';
  *
  *
  * constructor(private branch: BranchIo) { }

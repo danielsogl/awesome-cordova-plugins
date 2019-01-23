@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Autostart } from '@ionic-native/autostart';
+ * import { Autostart } from '@ionic-native/autostart/ngx';
  *
  *
  * constructor(private autostart: Autostart) { }
@@ -36,12 +36,14 @@ export class Autostart extends IonicNativePlugin {
    * Enable the automatic startup after the boot
    */
   @Cordova({ sync: true })
-  enable(): void { }
+  enable(): void {
+  }
 
   /**
    * Disable the automatic startup after the boot
    */
   @Cordova({ sync: true })
-  disable(): void { }
+  disable(): void {
+  }
 
 }

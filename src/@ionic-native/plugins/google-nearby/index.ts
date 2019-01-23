@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name Google Nearby
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```typescript
- * import { GoogleNearby } from '@ionic-native/google-nearby';
+ * import { GoogleNearby } from '@ionic-native/google-nearby/ngx';
  *
  *
  * constructor(private googleNearby: GoogleNearby) { }

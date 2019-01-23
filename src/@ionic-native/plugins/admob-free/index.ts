@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Observable, fromEvent } from 'rxjs';
 
 export interface AdMobFreeBannerConfig {
   /**
@@ -73,7 +72,7 @@ export interface AdMobFreeRewardVideoConfig {
  *
  * @usage
  * ```typescript
- * import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+ * import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
  *
  *
  * constructor(private admobFree: AdMobFree) { }
@@ -179,7 +178,7 @@ export class AdMobFree extends IonicNativePlugin {
   plugin: 'cordova-plugin-admob-free',
   pluginRef: 'admob.banner'
 })
-export class AdMobFreeBanner {
+export class AdMobFreeBanner extends IonicNativePlugin {
   /**
    * Update config
    * @param options
@@ -235,7 +234,7 @@ export class AdMobFreeBanner {
   plugin: 'cordova-plugin-admob-free',
   pluginRef: 'admob.interstitial'
 })
-export class AdMobFreeInterstitial {
+export class AdMobFreeInterstitial extends IonicNativePlugin {
   /**
    * Update config
    * @param options
@@ -282,7 +281,7 @@ export class AdMobFreeInterstitial {
   plugin: 'cordova-plugin-admob-free',
   pluginRef: 'admob.rewardvideo'
 })
-export class AdMobFreeRewardVideo {
+export class AdMobFreeRewardVideo extends IonicNativePlugin {
   /**
    * Update config
    * @param {AdMobFreeRewardVideoConfig} options Admob reward config

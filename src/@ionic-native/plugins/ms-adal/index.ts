@@ -21,7 +21,9 @@ export interface AuthenticationResult {
 
 export interface TokenCache {
   clear(): void;
+
   readItems(): Promise<TokenCacheItem[]>;
+
   deleteItem(item: TokenCacheItem): void;
 }
 
@@ -57,7 +59,7 @@ export interface UserInfo {
  * Windows Server Active Directory and Windows Azure Active Directory. Here you can find the source code for the library.
  * @usage
  * ```typescript
- * import { MSAdal, AuthenticationContext, AuthenticationResult } from '@ionic-native/ms-adal';
+ * import { MSAdal, AuthenticationContext, AuthenticationResult } from '@ionic-native/ms-adal/ngx';
  *
  *
  * constructor(private msAdal: MSAdal) {}
@@ -93,10 +95,8 @@ export interface UserInfo {
 })
 @Injectable()
 export class MSAdal extends IonicNativePlugin {
-  createAuthenticationContext(
-    authority: string,
-    validateAuthority = true
-  ) {
+
+  createAuthenticationContext(authority: string, validateAuthority = true) {
     let authContext: any;
     if (
       checkAvailability(MSAdal.getPluginRef(), null, MSAdal.getPluginName()) ===
@@ -115,16 +115,18 @@ export class MSAdal extends IonicNativePlugin {
  * @hidden
  */
 export class AuthenticationContext {
-  @InstanceProperty
+
+  @InstanceProperty()
   authority: string;
 
-  @InstanceProperty
+  @InstanceProperty()
   validateAuthority: boolean;
 
-  @InstanceProperty
+  @InstanceProperty()
   tokenCache: any;
 
-  constructor(private _objectInstance: any) {}
+  constructor(private _objectInstance: any) {
+  }
 
   /**
    * Acquires token using interactive flow. It always shows UI and skips token from cache.
@@ -141,13 +143,7 @@ export class AuthenticationContext {
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenAsync(
-    resourceUrl: string,
-    clientId: string,
-    redirectUrl: string,
-    userId?: string,
-    extraQueryParameters?: any
-  ): Promise<AuthenticationResult> {
+  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any): Promise<AuthenticationResult> {
     return;
   }
 
@@ -164,11 +160,8 @@ export class AuthenticationContext {
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenSilentAsync(
-    resourceUrl: string,
-    clientId: string,
-    userId?: string
-  ): Promise<AuthenticationResult> {
+  acquireTokenSilentAsync(resourceUrl: string, clientId: string, userId?: string): Promise<AuthenticationResult> {
     return;
   }
+
 }
