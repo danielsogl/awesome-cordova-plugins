@@ -28,7 +28,7 @@ export interface PhotoViewerOptions {
  *
  * this.photoViewer.show('https://mysite.com/path/to/image.jpg', 'My image title', {share: false});
  *
- * this.photoViewer.show('https://mysecuresite.com/path/to/image.jpg', 'My image title', {share: false, headers: '{headers:{username:foo,password:bar}}'});
+ * this.photoViewer.show('https://mysecuresite.com/path/to/image.jpg', 'My image title', {share: false, headers: '{username:foo,password:bar}'});
  * ```
  */
 @Plugin({
