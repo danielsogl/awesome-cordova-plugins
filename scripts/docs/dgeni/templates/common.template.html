@@ -187,7 +187,7 @@ docType: "<$ doc.docType $>"
 <ol class="installation">
   <li>Install the Cordova and Ionic Native plugins:<br>
     <pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install | replace('<', '&lt;').replace('>', '&gt;') $><@ else @>ionic cordova plugin add <$ prop.plugin $><@ endif @>
-$ npm install @ionic-native/<$ doc.npmId $>@beta
+$ npm install @ionic-native/<$ doc.npmId $>
 </code></pre>
   </li>
   <li><a href="https://ionicframework.com/docs/native/#Add_Plugins_to_Your_App_Module">Add this plugin to your app's module</a></li>
