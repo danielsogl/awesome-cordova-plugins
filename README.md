@@ -11,12 +11,10 @@ Ionic Native wraps plugin callbacks in a Promise or Observable, providing a comm
 Run following command to install Ionic Native in your project.
 
 ```bash
-npm install @ionic-native/core@beta --save
+npm install @ionic-native/core --save
 ```
 
 You also need to install the Ionic Native package for each plugin you want to add. Please see the [Ionic Native documentation](https://ionicframework.com/docs/native/) for complete instructions on how to add and use the plugins.
-
-**NOTE: to use Ionic Native v5, you must use the `@beta` tag when installing any NPM package.**
 
 ## Documentation
 
