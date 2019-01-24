@@ -11,6 +11,22 @@ export interface PhotoViewerOptions {
    * The value is a string in a JSON format.  Default: ''
    */
   headers?: string;
+  /**
+   * Option for close button visibility when share false [ONLY FOR iOS]
+   */
+  closeButton?: boolean;
+  /**
+   * If you need to copy image to reference before show then set it true [ONLY FOR iOS]
+   */
+  copyToReference?: boolean;
+  /**
+   * Enable or Disable Picasso Options ( Only Android ): fit, centerInside, centerCrop.
+   */
+  piccasoOptions?: {
+    fit?: boolean;
+    centerInside?: boolean;
+    centerCrop?: boolean;
+  };
 }
 
 /**
