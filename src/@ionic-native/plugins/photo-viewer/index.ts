@@ -6,6 +6,11 @@ export interface PhotoViewerOptions {
    * Set to false to disable the share button (Android only). Default: true
    */
   share?: boolean;
+  /**
+   * Add HTTP headers to the request.  Useful for authenticated pages.
+   * The value is a string in a JSON format.  Default: ''
+   */
+  headers?: string;
 }
 
 /**
@@ -22,6 +27,8 @@ export interface PhotoViewerOptions {
  * this.photoViewer.show('https://mysite.com/path/to/image.jpg');
  *
  * this.photoViewer.show('https://mysite.com/path/to/image.jpg', 'My image title', {share: false});
+ *
+ * this.photoViewer.show('https://mysecuresite.com/path/to/image.jpg', 'My image title', {share: false, headers: '{headers:{username:foo,password:bar}}'});
  * ```
  */
 @Plugin({
