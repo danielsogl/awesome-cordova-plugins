@@ -9,9 +9,7 @@ export function checkReady() {
 
   let didFireReady = false;
   document.addEventListener('deviceready', () => {
-    console.log(
-      `Ionic Native: deviceready event fired after ${Date.now() - before} ms`
-    );
+    console.log(`Ionic Native: deviceready event fired after ${Date.now() - before} ms`);
     didFireReady = true;
   });
 

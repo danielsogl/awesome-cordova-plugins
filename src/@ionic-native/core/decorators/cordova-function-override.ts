@@ -1,4 +1,5 @@
 import { Observable, Observer } from 'rxjs';
+
 import { checkAvailability, getPlugin } from './common';
 
 function overrideFunction(pluginObj: any, methodName: string): Observable<any> {

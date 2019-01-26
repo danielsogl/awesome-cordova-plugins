@@ -18,31 +18,42 @@ export class IonicNativePlugin {
    * Returns a boolean that indicates whether the plugin is installed
    * @return {boolean}
    */
-  static installed(): boolean { return checkAvailability(this.pluginRef) === true; }
+  static installed(): boolean {
+    return checkAvailability(this.pluginRef) === true;
+  }
 
   /**
    * Returns the original plugin object
    */
-  static getPlugin(): any { return get(window, this.pluginRef); }
+  static getPlugin(): any {
+    return get(window, this.pluginRef);
+  }
 
   /**
    * Returns the plugin's name
    */
-  static getPluginName(): string { return this.pluginName; }
+  static getPluginName(): string {
+    return this.pluginName;
+  }
 
   /**
    * Returns the plugin's reference
    */
-  static getPluginRef(): string { return this.pluginRef; }
+  static getPluginRef(): string {
+    return this.pluginRef;
+  }
 
   /**
    * Returns the plugin's install name
    */
-  static getPluginInstallName(): string { return this.plugin; }
+  static getPluginInstallName(): string {
+    return this.plugin;
+  }
 
   /**
    * Returns the plugin's supported platforms
    */
-  static getSupportedPlatforms(): string[] { return this.platforms || []; }
-
+  static getSupportedPlatforms(): string[] {
+    return this.platforms || [];
+  }
 }

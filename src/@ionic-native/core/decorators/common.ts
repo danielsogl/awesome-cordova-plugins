@@ -1,4 +1,4 @@
-import { Observable, fromEvent } from 'rxjs';
+import { fromEvent, Observable } from 'rxjs';
 
 import { CordovaOptions } from './interfaces';
 
@@ -7,9 +7,7 @@ declare const window: any;
 export const ERR_CORDOVA_NOT_AVAILABLE = { error: 'cordova_not_available' };
 export const ERR_PLUGIN_NOT_INSTALLED = { error: 'plugin_not_installed' };
 
-export function getPromise<T>(
-  callback: (resolve: Function, reject?: Function) => any
-): Promise<T> {
+export function getPromise<T>(callback: (resolve: Function, reject?: Function) => any): Promise<T> {
   const tryNativePromise = () => {
     if (Promise) {
       return new Promise<T>((resolve, reject) => {
@@ -58,14 +56,7 @@ export function wrapPromise(
         (...args: any[]) => reject(args)
       );
     } else {
-      pluginResult = callCordovaPlugin(
-        pluginObj,
-        methodName,
-        args,
-        opts,
-        resolve,
-        reject
-      );
+      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
     }
     rej = reject;
   });
@@ -79,12 +70,7 @@ export function wrapPromise(
   return p;
 }
 
-function wrapOtherPromise(
-  pluginObj: any,
-  methodName: string,
-  args: any[],
-  opts: any = {}
-) {
+function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
   return getPromise((resolve: Function, reject: Function) => {
     const pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts);
     if (pluginResult) {
@@ -99,12 +85,7 @@ function wrapOtherPromise(
   });
 }
 
-function wrapObservable(
-  pluginObj: any,
-  methodName: string,
-  args: any[],
-  opts: any = {}
-) {
+function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
   return new Observable(observer => {
     let pluginResult;
 
@@ -203,10 +184,7 @@ export function checkAvailability(
 
   pluginInstance = getPlugin(pluginRef);
 
-  if (
-    !pluginInstance ||
-    (!!methodName && typeof pluginInstance[methodName] === 'undefined')
-  ) {
+  if (!pluginInstance || (!!methodName && typeof pluginInstance[methodName] === 'undefined')) {
     if (!window.cordova) {
       cordovaWarn(pluginName, methodName);
       return ERR_CORDOVA_NOT_AVAILABLE;
@@ -223,23 +201,14 @@ export function checkAvailability(
  * Checks if _objectInstance exists and has the method/property
  * @private
  */
-export function instanceAvailability(
-  pluginObj: any,
-  methodName?: string
-): boolean {
+export function instanceAvailability(pluginObj: any, methodName?: string): boolean {
   return (
     pluginObj._objectInstance &&
-    (!methodName ||
-      typeof pluginObj._objectInstance[methodName] !== 'undefined')
+    (!methodName || typeof pluginObj._objectInstance[methodName] !== 'undefined')
   );
 }
 
-export function setIndex(
-  args: any[],
-  opts: any = {},
-  resolve?: Function,
-  reject?: Function
-): any {
+export function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Function): any {
   // ignore resolve and reject in case sync
   if (opts.sync) {
     return args;
@@ -258,19 +227,12 @@ export function setIndex(
         resolve(result);
       }
     });
-  } else if (
-    opts.callbackStyle === 'object' &&
-    opts.successName &&
-    opts.errorName
-  ) {
+  } else if (opts.callbackStyle === 'object' && opts.successName && opts.errorName) {
     const obj: any = {};
     obj[opts.successName] = resolve;
     obj[opts.errorName] = reject;
     args.push(obj);
-  } else if (
-    typeof opts.successIndex !== 'undefined' ||
-    typeof opts.errorIndex !== 'undefined'
-  ) {
+  } else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
     const setSuccessIndex = () => {
       // If we've specified a success/error index
       if (opts.successIndex > args.length) {
@@ -339,10 +301,7 @@ export function callInstance(
   args = setIndex(args, opts, resolve, reject);
 
   if (instanceAvailability(pluginObj, methodName)) {
-    return pluginObj._objectInstance[methodName].apply(
-      pluginObj._objectInstance,
-      args
-    );
+    return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
   }
 }
 
@@ -362,11 +321,7 @@ export function get(element: Element | Window, path: string) {
   return obj;
 }
 
-export function pluginWarn(
-  pluginName: string,
-  plugin?: string,
-  method?: string
-): void {
+export function pluginWarn(pluginName: string, plugin?: string, method?: string): void {
   if (method) {
     console.warn(
       'Native: tried calling ' +
@@ -378,14 +333,10 @@ export function pluginWarn(
         ' plugin is not installed.'
     );
   } else {
-    console.warn(
-      `Native: tried accessing the ${pluginName} plugin but it's not installed.`
-    );
+    console.warn(`Native: tried accessing the ${pluginName} plugin but it's not installed.`);
   }
   if (plugin) {
-    console.warn(
-      `Install the ${pluginName} plugin: 'ionic cordova plugin add ${plugin}'`
-    );
+    console.warn(`Install the ${pluginName} plugin: 'ionic cordova plugin add ${plugin}'`);
   }
 }
 
@@ -419,11 +370,7 @@ export type WrapFn = (...args: any[]) => any;
 /**
  * @private
  */
-export const wrap = (
-  pluginObj: any,
-  methodName: string,
-  opts: CordovaOptions = {}
-): WrapFn => {
+export const wrap = (pluginObj: any, methodName: string, opts: CordovaOptions = {}): WrapFn => {
   return (...args: any[]) => {
     if (opts.sync) {
       // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
@@ -443,11 +390,7 @@ export const wrap = (
 /**
  * @private
  */
-export function wrapInstance(
-  pluginObj: any,
-  methodName: string,
-  opts: any = {}
-): Function {
+export function wrapInstance(pluginObj: any, methodName: string, opts: any = {}): Function {
   return (...args: any[]) => {
     if (opts.sync) {
       return callInstance(pluginObj, methodName, args, opts);
@@ -515,14 +458,7 @@ export function wrapInstance(
             (...args: any[]) => reject(args)
           );
         } else {
-          result = callInstance(
-            pluginObj,
-            methodName,
-            args,
-            opts,
-            resolve,
-            reject
-          );
+          result = callInstance(pluginObj, methodName, args, opts, resolve, reject);
         }
         if (result && result.then) {
           result.then(resolve, reject);
@@ -543,14 +479,7 @@ export function wrapInstance(
             (...args: any[]) => reject(args)
           );
         } else {
-          pluginResult = callInstance(
-            pluginObj,
-            methodName,
-            args,
-            opts,
-            resolve,
-            reject
-          );
+          pluginResult = callInstance(pluginObj, methodName, args, opts, resolve, reject);
         }
         rej = reject;
       });

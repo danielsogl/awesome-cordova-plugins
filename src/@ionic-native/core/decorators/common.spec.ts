@@ -30,13 +30,9 @@ class MockInstancePluginObject {
 
 class MockCordovaPlugin {
   static ping = jest.fn((arg: string) => 'pong');
-  static pingAsync = jest.fn(
-    (arg: string, success: Function, error: Function) => success('pong')
-  );
+  static pingAsync = jest.fn((arg: string, success: Function, error: Function) => success('pong'));
   ping = jest.fn((arg: string) => 'pong');
-  pingAsync = jest.fn((arg: string, success: Function, error: Function) =>
-    success('pong')
-  );
+  pingAsync = jest.fn((arg: string, success: Function, error: Function) => success('pong'));
 }
 
 describe('Common decorator functions', () => {
@@ -73,12 +69,8 @@ describe('Common decorator functions', () => {
 
     test('original method should have received args', () => {
       expect(MockCordovaPlugin.pingAsync.mock.calls[0][0]).toBe('pingpong');
-      expect(typeof MockCordovaPlugin.pingAsync.mock.calls[0][1]).toBe(
-        'function'
-      );
-      expect(typeof MockCordovaPlugin.pingAsync.mock.calls[0][2]).toBe(
-        'function'
-      );
+      expect(typeof MockCordovaPlugin.pingAsync.mock.calls[0][1]).toBe('function');
+      expect(typeof MockCordovaPlugin.pingAsync.mock.calls[0][2]).toBe('function');
     });
   });
 
