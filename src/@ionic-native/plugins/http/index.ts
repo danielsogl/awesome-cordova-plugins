@@ -181,7 +181,7 @@ export class HTTP extends IonicNativePlugin {
    * nocheck: disable SSL cert checking, trusting all certs (meant to be used only for testing purposes)
    * pinned: trust only provided certs
    * @see https://github.com/silkimen/cordova-plugin-advanced-http#setsslcertmode
-   * @param {'default' | 'nocheck' | 'pinned'} mode SSL Cert handling mode
+   * @param {'default' | 'legacy' | 'nocheck' | 'pinned'} mode SSL Cert handling mode
    */
   @Cordova()
   setSSLCertMode(mode: 'default' | 'legacy' | 'nocheck' | 'pinned'): Promise<void> {
