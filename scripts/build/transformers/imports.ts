@@ -37,10 +37,15 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
 
     decorators.forEach(d => methods = getMethodsForDecorator(d).concat(methods));
 
+    const methodElements = methods.map(m => ts.createIdentifier(m));
+    const methodNames = methodElements.map((el) => el.escapedText);
+
     importStatement.importClause.namedBindings.elements = [
       ts.createIdentifier('IonicNativePlugin'),
-      ...methods.map(m => ts.createIdentifier(m)),
-      ...importStatement.importClause.namedBindings.elements.filter(el => keep.indexOf(el.name.text) !== -1)
+      ...methodElements,
+      ...importStatement.importClause.namedBindings.elements.filter(
+        el => keep.indexOf(el.name.text) !== -1 && methodNames.indexOf(el.name.text) === -1
+      )
     ];
 
     if (ngcBuild) {
