@@ -9,7 +9,6 @@ declare const AbbyyRtrSdk: any;
  * default setting will be used.
  */
 export interface TextCaptureOptions {
-
   /**
    * The name of the license file. This file must be located in the
    * www/rtr_assets/ directory in your project.
@@ -57,7 +56,7 @@ export interface TextCaptureOptions {
    * the latest recognition result.
    */
   isStopButtonVisible?: boolean;
-  
+
   /**
    * Specify the orientation, possible values 'landscape' or 'portrait'.
    */
@@ -69,7 +68,6 @@ export interface TextCaptureOptions {
  * The callback you implement should parse this object and show results to user.
  */
 export interface TextCaptureResult {
-
   /**
    * An array of objects representing recognized lines of text.
    * These objects have the following keys:
@@ -80,7 +78,7 @@ export interface TextCaptureResult {
    * · rect (string): position and size of the bounding rectangle,
    *   a string of 4 integers separated with whitespaces ("x y width height").
    */
-  textLines: { text: string, quadrangle: string, rect?: string }[];
+  textLines: { text: string; quadrangle: string; rect?: string }[];
 
   /**
    * Additional information. This object has the following keys:
@@ -96,10 +94,10 @@ export interface TextCaptureResult {
    *   the array contains language identifiers (["English", "French", "German"]).
    */
   resultInfo: {
-    stabilityStatus: string,
-    userAction: string,
-    frameSize: string,
-    recognitionLanguages: string[]
+    stabilityStatus: string;
+    userAction: string;
+    frameSize: string;
+    recognitionLanguages: string[];
   };
 
   /**
@@ -119,7 +117,6 @@ export interface TextCaptureResult {
  * keys: you must specify either one of them, but not both at the same time.
  */
 export interface DataCaptureOptions {
-
   /**
    * The predefined data capture profile to use, for example: "MRZ".
    * Note: For the list of supported documents, see Specifications — Data
@@ -139,10 +136,10 @@ export interface DataCaptureOptions {
    *   the regular expression that should be matched when capturing a field.
    */
   customDataCaptureScenario?: {
-    name: string,
-    description: string,
-    recognitionLanguages: string[],
-    fields: { regEx: string }[]
+    name: string;
+    description: string;
+    recognitionLanguages: string[];
+    fields: { regEx: string }[];
   };
 
   /**
@@ -180,7 +177,7 @@ export interface DataCaptureOptions {
    * the latest recognition result.
    */
   isStopButtonVisible?: boolean;
-  
+
   /**
    * Specify the orientation, possible values 'landscape' or 'portrait'.
    */
@@ -192,7 +189,6 @@ export interface DataCaptureOptions {
  * implement should parse this object and show results to user.
  */
 export interface DataCaptureResult {
-
   /**
    * The data scheme which was applied during data capture.
    * The value is an object which has two keys:
@@ -205,8 +201,8 @@ export interface DataCaptureResult {
    * present in the result.
    */
   dataScheme?: {
-    id: string,
-    name: string
+    id: string;
+    name: string;
   };
 
   /**
@@ -232,15 +228,15 @@ export interface DataCaptureResult {
    *   of 4 integers separated with whitespaces ("x y width height").
    */
   dataFields: {
-    id: string,
-    name: string,
-    text: string,
-    quadrangle: string,
+    id: string;
+    name: string;
+    text: string;
+    quadrangle: string;
     components: {
-      text: string,
-      quadrangle: string,
-      rect: string
-    }
+      text: string;
+      quadrangle: string;
+      rect: string;
+    };
   };
 
   /**
@@ -255,9 +251,9 @@ export interface DataCaptureResult {
    *   with 2 integers separated with a whitespace ("720 1280").
    */
   resultInfo: {
-    stabilityStatus: string,
-    userAction: string,
-    frameSize: string
+    stabilityStatus: string;
+    userAction: string;
+    frameSize: string;
   };
 
   /**
@@ -307,7 +303,6 @@ export interface DataCaptureResult {
 })
 @Injectable()
 export class AbbyyRTR extends IonicNativePlugin {
-
   /**
    * Opens a modal dialog with controls for the Text Capture scenario.
    * @param {TextCaptureOptions} options
