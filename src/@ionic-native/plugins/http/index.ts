@@ -77,10 +77,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Object} an object representing a basic HTTP Authorization header of the form {'Authorization': 'Basic base64EncodedUsernameAndPassword'}
    */
   @Cordova({ sync: true })
-  getBasicAuthHeader(
-    username: string,
-    password: string
-  ): { Authorization: string } {
+  getBasicAuthHeader(username: string, password: string): { Authorization: string } {
     return;
   }
 
@@ -280,13 +277,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
    */
   @Cordova()
-  uploadFile(
-    url: string,
-    body: any,
-    headers: any,
-    filePath: string,
-    name: string
-  ): Promise<any> {
+  uploadFile(url: string, body: any, headers: any, filePath: string, name: string): Promise<any> {
     return;
   }
 
@@ -299,12 +290,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
    */
   @Cordova()
-  downloadFile(
-    url: string,
-    body: any,
-    headers: any,
-    filePath: string
-  ): Promise<any> {
+  downloadFile(url: string, body: any, headers: any, filePath: string): Promise<any> {
     return;
   }
 }
