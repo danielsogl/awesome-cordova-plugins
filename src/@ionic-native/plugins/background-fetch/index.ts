@@ -20,14 +20,14 @@ export interface BackgroundFetchConfig {
  * @usage
  *
  * ```typescript
- * import { BackgroundFetch, BackgroundFetchConfig } from '@ionic-native/background-fetch';
+ * import { BackgroundFetch, BackgroundFetchConfig } from '@ionic-native/background-fetch/ngx';
  *
  *
  * constructor(private backgroundFetch: BackgroundFetch) {
  *
  *   const config: BackgroundFetchConfig = {
  *     stopOnTerminate: false, // Set true to cease background-fetch from operating after user "closes" the app. Defaults to true.
- *   };
+ *   }
  *
  *   backgroundFetch.configure(config)
  *      .then(() => {
@@ -72,7 +72,9 @@ export class BackgroundFetch extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  configure(config: BackgroundFetchConfig): Promise<any> { return; }
+  configure(config: BackgroundFetchConfig): Promise<any> {
+    return;
+  }
 
   /**
    * Start the background-fetch API.
@@ -80,14 +82,18 @@ export class BackgroundFetch extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  start(): Promise<any> { return; }
+  start(): Promise<any> {
+    return;
+  }
 
   /**
    * Stop the background-fetch API from firing fetch events. Your callbackFn provided to #configure will no longer be executed.
    * @returns {Promise<any>}
    */
   @Cordova()
-  stop(): Promise<any> { return; }
+  stop(): Promise<any> {
+    return;
+  }
 
   /**
    * You MUST call this method in your fetch callbackFn provided to #configure in order to signal to iOS that your fetch action is complete. iOS provides only 30s of background-time for a fetch-event -- if you exceed this 30s, iOS will kill your app.
@@ -95,13 +101,16 @@ export class BackgroundFetch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  finish(): void { }
+  finish(): void {
+  }
 
   /**
    * Return the status of the background-fetch
    * @returns {Promise<any>}
    */
   @Cordova()
-  status(): Promise<any> { return; }
+  status(): Promise<any> {
+    return;
+  }
 
 }

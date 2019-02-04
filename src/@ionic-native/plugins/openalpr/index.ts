@@ -23,7 +23,7 @@ export interface OpenALPRResult {
  *
  * @usage
  * ```typescript
- * import { OpenALPR, OpenALPROptions, OpenALPRResult } from '@ionic-native/openalpr';
+ * import { OpenALPR, OpenALPROptions, OpenALPRResult } from '@ionic-native/openalpr/ngx';
  *
  *
  * constructor(private openALPR: OpenALPR) { }

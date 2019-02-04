@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 declare const cordova: any;
 
@@ -29,7 +29,11 @@ export interface Beacon {
    * ProximityFar
    * ProximityUnknown
    */
-  proximity: 'ProximityImmediate' | 'ProximityNear' | 'ProximityFar' | 'ProximityUnknown';
+  proximity:
+    | 'ProximityImmediate'
+    | 'ProximityNear'
+    | 'ProximityFar'
+    | 'ProximityUnknown';
 
   /**
    * Transmission Power of the beacon. A constant emitted by the beacon which indicates what's the expected RSSI at a distance of 1 meter to the beacon.
@@ -46,7 +50,6 @@ export interface Beacon {
    * The accuracy of the ranging.
    */
   accuracy: number;
-
 }
 
 export interface BeaconRegion {
@@ -104,7 +107,6 @@ export interface CircularRegion {
 export type Region = BeaconRegion | CircularRegion;
 
 export interface IBeaconPluginResult {
-
   /**
    * The name of the delegate function that produced the PluginResult object.
    */
@@ -232,7 +234,7 @@ export interface IBeaconDelegate {
  * @usage
  *
  * ```typescript
- * import { IBeacon } from '@ionic-native/ibeacon';
+ * import { IBeacon } from '@ionic-native/ibeacon/ngx';
  *
  * constructor(private ibeacon: IBeacon) { }
  *
@@ -287,7 +289,6 @@ export interface IBeaconDelegate {
 })
 @Injectable()
 export class IBeacon extends IonicNativePlugin {
-
   /**
    * Instances of this class are delegates between the {@link LocationManager} and
    * the code that consumes the messages generated on in the native layer.
@@ -396,15 +397,29 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {BeaconRegion} Returns the BeaconRegion that was created
    */
   @CordovaCheck({ sync: true })
-  BeaconRegion(identifer: string, uuid: string, major?: number, minor?: number, notifyEntryStateOnDisplay?: boolean): BeaconRegion {
-    return new cordova.plugins.locationManager.BeaconRegion(identifer, uuid, major, minor, notifyEntryStateOnDisplay);
+  BeaconRegion(
+    identifer: string,
+    uuid: string,
+    major?: number,
+    minor?: number,
+    notifyEntryStateOnDisplay?: boolean
+  ): BeaconRegion {
+    return new cordova.plugins.locationManager.BeaconRegion(
+      identifer,
+      uuid,
+      major,
+      minor,
+      notifyEntryStateOnDisplay
+    );
   }
 
   /**
    * @returns {IBeaconDelegate} Returns the IBeaconDelegate
    */
   @Cordova()
-  getDelegate(): IBeaconDelegate { return; }
+  getDelegate(): IBeaconDelegate {
+    return;
+  }
 
   /**
    * @param {IBeaconDelegate} delegate An instance of a delegate to register with the native layer.
@@ -412,7 +427,9 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {IBeaconDelegate} Returns the IBeaconDelegate
    */
   @Cordova()
-  setDelegate(delegate: IBeaconDelegate): IBeaconDelegate { return; }
+  setDelegate(delegate: IBeaconDelegate): IBeaconDelegate {
+    return;
+  }
 
   /**
    * Signals the native layer that the client side is ready to consume messages.
@@ -435,7 +452,9 @@ export class IBeacon extends IonicNativePlugin {
    * native layer acknowledged the request and started to send events.
    */
   @Cordova({ otherPromise: true })
-  onDomDelegateReady(): Promise<void> { return; }
+  onDomDelegateReady(): Promise<void> {
+    return;
+  }
 
   /**
    * Determines if bluetooth is switched on, according to the native layer.
@@ -443,7 +462,9 @@ export class IBeacon extends IonicNativePlugin {
    * indicating whether bluetooth is active.
    */
   @Cordova({ otherPromise: true })
-  isBluetoothEnabled(): Promise<boolean> { return; }
+  isBluetoothEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Enables Bluetooth using the native Layer. (ANDROID ONLY)
@@ -452,7 +473,9 @@ export class IBeacon extends IonicNativePlugin {
    * could be enabled. If not, the promise will be rejected with an error.
    */
   @Cordova({ otherPromise: true })
-  enableBluetooth(): Promise<void> { return; }
+  enableBluetooth(): Promise<void> {
+    return;
+  }
 
   /**
    * Disables Bluetooth using the native Layer. (ANDROID ONLY)
@@ -461,7 +484,9 @@ export class IBeacon extends IonicNativePlugin {
    * could be enabled. If not, the promise will be rejected with an error.
    */
   @Cordova({ otherPromise: true })
-  disableBluetooth(): Promise<void> { return; }
+  disableBluetooth(): Promise<void> {
+    return;
+  }
 
   /**
    * Start monitoring the specified region.
@@ -514,8 +539,9 @@ export class IBeacon extends IonicNativePlugin {
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
   @Cordova({ otherPromise: true })
-  requestStateForRegion(region: Region): Promise<void> { return; }
-
+  requestStateForRegion(region: Region): Promise<void> {
+    return;
+  }
 
   /**
    * Start ranging the specified beacon region.
@@ -558,7 +584,9 @@ export class IBeacon extends IonicNativePlugin {
    * requested authorization status.
    */
   @Cordova({ otherPromise: true })
-  getAuthorizationStatus(): Promise<IBeaconPluginResult> { return; }
+  getAuthorizationStatus(): Promise<IBeaconPluginResult> {
+    return;
+  }
 
   /**
    * For iOS 8 and above only. The permission model has changed by Apple in iOS 8, making it necessary for apps to
@@ -570,8 +598,9 @@ export class IBeacon extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a promise that is resolved when the request dialog is shown.
    */
   @Cordova({ otherPromise: true })
-  requestWhenInUseAuthorization(): Promise<void> { return; }
-
+  requestWhenInUseAuthorization(): Promise<void> {
+    return;
+  }
 
   /**
    * See the documentation of {@code requestWhenInUseAuthorization} for further details.
@@ -580,7 +609,9 @@ export class IBeacon extends IonicNativePlugin {
    * shows the request dialog.
    */
   @Cordova({ otherPromise: true })
-  requestAlwaysAuthorization(): Promise<void> { return; }
+  requestAlwaysAuthorization(): Promise<void> {
+    return;
+  }
 
   /**
    *
@@ -588,7 +619,9 @@ export class IBeacon extends IonicNativePlugin {
    * of {Region} instances that are being monitored by the native layer.
    */
   @Cordova({ otherPromise: true })
-  getMonitoredRegions(): Promise<Region[]> { return; }
+  getMonitoredRegions(): Promise<Region[]> {
+    return;
+  }
 
   /**
    *
@@ -596,7 +629,9 @@ export class IBeacon extends IonicNativePlugin {
    * of {Region} instances that are being ranged by the native layer.
    */
   @Cordova({ otherPromise: true })
-  getRangedRegions(): Promise<Region[]> { return; }
+  getRangedRegions(): Promise<Region[]> {
+    return;
+  }
 
   /**
    * Determines if ranging is available or not, according to the native layer.
@@ -604,7 +639,9 @@ export class IBeacon extends IonicNativePlugin {
    * indicating whether ranging is available or not.
    */
   @Cordova({ otherPromise: true })
-  isRangingAvailable(): Promise<boolean> { return; }
+  isRangingAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Determines if region type is supported or not, according to the native layer.
@@ -616,7 +653,9 @@ export class IBeacon extends IonicNativePlugin {
    * indicating whether the region type is supported or not.
    */
   @Cordova({ otherPromise: true })
-  isMonitoringAvailableForClass(region: Region): Promise<boolean> { return; }
+  isMonitoringAvailableForClass(region: Region): Promise<boolean> {
+    return;
+  }
 
   /**
    * Start advertising the specified region.
@@ -636,7 +675,9 @@ export class IBeacon extends IonicNativePlugin {
    * native layer acknowledged the dispatch of the advertising request.
    */
   @Cordova({ otherPromise: true })
-  startAdvertising(region: Region, measuredPower?: number): Promise<void> { return; }
+  startAdvertising(region: Region, measuredPower?: number): Promise<void> {
+    return;
+  }
 
   /**
    * Stop advertising as a beacon.
@@ -647,7 +688,9 @@ export class IBeacon extends IonicNativePlugin {
    * native layer acknowledged the dispatch of the request to stop advertising.
    */
   @Cordova({ otherPromise: true })
-  stopAdvertising(region: Region): Promise<void> { return; }
+  stopAdvertising(region: Region): Promise<void> {
+    return;
+  }
 
   /**
    * Determines if advertising is available or not, according to the native layer.
@@ -655,7 +698,9 @@ export class IBeacon extends IonicNativePlugin {
    * indicating whether advertising is available or not.
    */
   @Cordova({ otherPromise: true })
-  isAdvertisingAvailable(): Promise<boolean> { return; }
+  isAdvertisingAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Determines if advertising is currently active, according to the native layer.
@@ -663,7 +708,9 @@ export class IBeacon extends IonicNativePlugin {
    * indicating whether advertising is active.
    */
   @Cordova({ otherPromise: true })
-  isAdvertising(): Promise<boolean> { return; }
+  isAdvertising(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Disables debug logging in the native layer. Use this method if you want
@@ -673,7 +720,9 @@ export class IBeacon extends IonicNativePlugin {
    * native layer has set the logging level accordingly.
    */
   @Cordova({ otherPromise: true })
-  disableDebugLogs(): Promise<void> { return; }
+  disableDebugLogs(): Promise<void> {
+    return;
+  }
 
   /**
    * Enables the posting of debug notifications in the native layer. Use this method if you want
@@ -684,7 +733,9 @@ export class IBeacon extends IonicNativePlugin {
    * native layer has set the flag to enabled.
    */
   @Cordova({ otherPromise: true })
-  enableDebugNotifications(): Promise<void> { return; }
+  enableDebugNotifications(): Promise<void> {
+    return;
+  }
 
   /**
    * Disables the posting of debug notifications in the native layer. Use this method if you want
@@ -694,7 +745,9 @@ export class IBeacon extends IonicNativePlugin {
    * native layer has set the flag to disabled.
    */
   @Cordova({ otherPromise: true })
-  disableDebugNotifications(): Promise<void> { return; }
+  disableDebugNotifications(): Promise<void> {
+    return;
+  }
 
   /**
    * Enables debug logging in the native layer. Use this method if you want
@@ -704,7 +757,9 @@ export class IBeacon extends IonicNativePlugin {
    * native layer has set the logging level accordingly.
    */
   @Cordova({ otherPromise: true })
-  enableDebugLogs(): Promise<void> { return; }
+  enableDebugLogs(): Promise<void> {
+    return;
+  }
 
   /**
    * Appends the provided [message] to the device logs.
@@ -717,6 +772,7 @@ export class IBeacon extends IonicNativePlugin {
    * is expected to be equivalent to the one provided in the original call.
    */
   @Cordova({ otherPromise: true })
-  appendToDeviceLog(message: string): Promise<void> { return; }
-
+  appendToDeviceLog(message: string): Promise<void> {
+    return;
+  }
 }

@@ -63,7 +63,7 @@ export interface CameraPreviewPictureOptions {
  *
  * @usage
  * ```typescript
- * import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+ * import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview/ngx';
  *
  * constructor(private cameraPreview: CameraPreview) { }
  *
@@ -80,7 +80,7 @@ export interface CameraPreviewPictureOptions {
  *   previewDrag: true,
  *   toBack: true,
  *   alpha: 1
- * };
+ * }
  *
  * // start camera
  * this.cameraPreview.startCamera(cameraPreviewOpts).then(

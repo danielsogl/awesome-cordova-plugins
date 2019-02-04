@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { NetworkInterface } from '@ionic-native/network-interface';
+ * import { NetworkInterface } from '@ionic-native/network-interface/ngx';
  *
  * constructor( private networkInterface: NetworkInterface ) {
  *

@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { LottieSplashScreen } from '@ionic-native/lottie-splash-screen';
+ * import { LottieSplashScreen } from '@ionic-native/lottie-splash-screen/ngx';
  *
  *
  * constructor(private lottieSplashScreen: LottieSplashScreen) { }

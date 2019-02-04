@@ -32,9 +32,7 @@ gulp.task('lint', () => {
 
 gulp.task('plugin:create', () => {
   if (flags.n && flags.n !== '') {
-    const src = flags.m
-        ? './scripts/templates/wrap-min.tmpl'
-        : './scripts/templates/wrap.tmpl',
+    const src = flags.m ? './scripts/templates/wrap-min.tmpl' : './scripts/templates/wrap.tmpl',
       pluginName = flags.n,
       spaced = pluginName.replace(/(?!^)([A-Z])/g, ' $1'),
       kebabCase = _.kebabCase(pluginName);

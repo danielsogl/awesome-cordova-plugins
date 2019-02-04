@@ -1,5 +1,4 @@
 # bash utils from angularjs
-
 # This file provides:
 # - a default control flow
 #   * initializes the environment
@@ -36,7 +35,6 @@
 # Special arguments that are always available:
 # - "--action=.*": This parameter will be used to dispatch to a function with that name when the
 #   script is started
-
 # - "--verbose=true": This will set the `-x` flag in bash so that all calls will be logged
 #
 # Utility functions:
@@ -46,7 +44,6 @@
 # - getVar
 # - serVar
 # - isFunction
-
 # always stop on errors
 set -e
 

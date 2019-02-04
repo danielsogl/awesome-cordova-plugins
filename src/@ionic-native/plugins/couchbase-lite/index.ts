@@ -1,5 +1,5 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Couchbase Lite
@@ -8,9 +8,9 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { CouchbaseLite } from '@ionic-native/couchbase-lite';
+ * import { CouchbaseLite } from '@ionic-native/couchbase-lite/ngx';
  * import { Http } from '@angular/http';
- * import { Observable } from 'rxjs/Observable'
+ * import { Observable } from 'rxjs'
  * constructor(private couchbase: CouchbaseLite, private platform:Platform,private _http:Http) {
  *    this.initMethod();
  * }

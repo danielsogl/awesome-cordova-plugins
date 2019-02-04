@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface Response {
   status: number;
@@ -24,7 +24,7 @@ export interface Request {
  *
  * @usage
  * ```typescript
- * import { WebServer } from '@ionic-native/web-server';
+ * import { WebServer } from '@ionic-native/web-server/ngx';
  *
  *
  * constructor(private webServer: WebServer) { }

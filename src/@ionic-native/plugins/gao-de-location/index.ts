@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { GaoDeLocation } from '@ionic-native/gao-de-location';
+ * import { GaoDeLocation } from '@ionic-native/gao-de-location/ngx';
  *
  *
  * constructor(private gaoDeLocation: GaoDeLocation) { }

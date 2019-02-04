@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface DeviceMotionAccelerationData {
-
   /**
    * Amount of acceleration on the x-axis. (in m/s^2)
    */
@@ -23,16 +22,13 @@ export interface DeviceMotionAccelerationData {
    * Creation timestamp in milliseconds.
    */
   timestamp: any;
-
 }
 
 export interface DeviceMotionAccelerometerOptions {
-
   /**
    * Requested period of calls to accelerometerSuccess with acceleration data in Milliseconds. Default: 10000
    */
   frequency?: number;
-
 }
 
 /**
@@ -42,7 +38,7 @@ export interface DeviceMotionAccelerometerOptions {
  *
  * @usage
  * ```typescript
- * import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion';
+ * import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
  *
  * constructor(private deviceMotion: DeviceMotion) { }
  *
@@ -72,17 +68,28 @@ export interface DeviceMotionAccelerometerOptions {
   plugin: 'cordova-plugin-device-motion',
   pluginRef: 'navigator.accelerometer',
   repo: 'https://github.com/apache/cordova-plugin-device-motion',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'Firefox OS', 'iOS', 'Tizen', 'Ubuntu', 'Windows', 'Windows Phone 8']
+  platforms: [
+    'Android',
+    'BlackBerry 10',
+    'Browser',
+    'Firefox OS',
+    'iOS',
+    'Tizen',
+    'Ubuntu',
+    'Windows',
+    'Windows Phone 8'
+  ]
 })
 @Injectable()
 export class DeviceMotion extends IonicNativePlugin {
-
   /**
    * Get the current acceleration along the x, y, and z axes.
    * @returns {Promise<DeviceMotionAccelerationData>} Returns object with x, y, z, and timestamp properties
    */
   @Cordova()
-  getCurrentAcceleration(): Promise<DeviceMotionAccelerationData> { return; }
+  getCurrentAcceleration(): Promise<DeviceMotionAccelerationData> {
+    return;
+  }
 
   /**
    * Watch the device acceleration. Clear the watch by unsubscribing from the observable.
@@ -94,6 +101,9 @@ export class DeviceMotion extends IonicNativePlugin {
     observable: true,
     clearFunction: 'clearWatch'
   })
-  watchAcceleration(options?: DeviceMotionAccelerometerOptions): Observable<DeviceMotionAccelerationData> { return; }
-
+  watchAcceleration(
+    options?: DeviceMotionAccelerometerOptions
+  ): Observable<DeviceMotionAccelerationData> {
+    return;
+  }
 }

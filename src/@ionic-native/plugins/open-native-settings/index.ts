@@ -80,7 +80,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * "wireless" // android
  *  ```
  * ```typescript
- * import { OpenNativeSettings } from '@ionic-native/open-native-settings';
+ * import { OpenNativeSettings } from '@ionic-native/open-native-settings/ngx';
  *
  *
  * constructor(private openNativeSettings: OpenNativeSettings) { }

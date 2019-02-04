@@ -67,7 +67,7 @@ export class AnalyticsFirebase extends IonicNativePlugin {
    * Use one of these default events or a custom event
    * @readonly
    */
-  @CordovaProperty
+  @CordovaProperty()
   readonly DEFAULT_EVENTS: {
     ADD_PAYMENT_INFO: string;
     ADD_TO_CART: string;
@@ -107,7 +107,7 @@ export class AnalyticsFirebase extends IonicNativePlugin {
    * Use one of these default params or a custom param
    * @readonly
    */
-  @CordovaProperty
+  @CordovaProperty()
   readonly DEFAULT_PARAMS: {
     ACHIEVEMENT_ID: string;
     ACLID: string;

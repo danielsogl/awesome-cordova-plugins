@@ -44,7 +44,7 @@ export interface LineLoginAccessToken {
  *
  * @usage
  * ```typescript
- * import { LineLogin } from '@ionic-native/line-login';
+ * import { LineLogin } from '@ionic-native/line-login/ngx';
  *
  *
  * constructor(private lineLogin: LineLogin) { }

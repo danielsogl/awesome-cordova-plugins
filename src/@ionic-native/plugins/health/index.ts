@@ -167,7 +167,7 @@ export interface HealthData {
  *
  * @usage
  * ```typescript
- * import { Health } from '@ionic-native/health';
+ * import { Health } from '@ionic-native/health/ngx';
  *
  *
  * constructor(private health: Health) { }
@@ -253,7 +253,7 @@ export class Health extends IonicNativePlugin {
    * In Android 6 and over, this function will also ask for some dynamic permissions if needed
    * (e.g. in the case of "distance", it will need access to ACCESS_FINE_LOCATION).
    *
-   * @param {Array<string | HealthDataType>} datatypes a list of data types you want to be granted access to.
+   * @param {string[] | HealthDataType[]} datatypes a list of data types you want to be granted access to.
    * @return {Promise<any>}
    */
   @Cordova()
@@ -269,7 +269,7 @@ export class Health extends IonicNativePlugin {
    * In iOS, this function will only check authorization status for writable data.
    * Read-only data will always be considered as not authorized. This is an intended behaviour of HealthKit.
    *
-   * @param {Array<string | HealthDataType>} datatypes a list of data types you want to check access of, same as in requestAuthorization
+   * @param {string[] | HealthDataType[]} datatypes a list of data types you want to check access of, same as in requestAuthorization
    * @return {Promise<boolean>} Returns a promise that resolves with a boolean that indicates the authorization status
    */
   @Cordova()

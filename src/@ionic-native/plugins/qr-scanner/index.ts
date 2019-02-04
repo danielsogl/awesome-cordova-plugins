@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface QRScannerStatus {
   /**
@@ -67,7 +67,7 @@ export interface QRScannerStatus {
  *
  * @usage
  * ```typescript
- * import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+ * import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
  *
  *
  * constructor(private qrScanner: QRScanner) { }

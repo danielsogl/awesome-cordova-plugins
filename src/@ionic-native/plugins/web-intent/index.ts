@@ -5,7 +5,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface IntentClipItem {
   uri: string;
@@ -50,7 +50,7 @@ export interface IntentOptions {
  * For usage information please refer to the plugin's Github repo.
  *
  * ```typescript
- * import { WebIntent } from '@ionic-native/web-intent';
+ * import { WebIntent } from '@ionic-native/web-intent/ngx';
  *
  * constructor(private webIntent: WebIntent) { }
  *
@@ -60,7 +60,7 @@ export interface IntentOptions {
  *   action: this.webIntent.ACTION_VIEW,
  *   url: 'path/to/file',
  *   type: 'application/vnd.android.package-archive'
- * };
+ * }
  *
  * this.webIntent.startActivity(options).then(onSuccess, onError);
  *
@@ -82,84 +82,84 @@ export class WebIntent extends IonicNativePlugin {
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_SEND: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_VIEW: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   EXTRA_TEXT: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   EXTRA_SUBJECT: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   EXTRA_STREAM: string;
 
   /**
    * Convenience constant for extras
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   EXTRA_EMAIL: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_CALL: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_SENDTO: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_GET_CONTENT: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_PICK: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_INSTALL_PACKAGE: string;
 
   /**
    * Convenience constant for actions
    * @type {string}
    */
-  @CordovaProperty
+  @CordovaProperty()
   ACTION_UNINSTALL_PACKAGE: string;
 
   /**
@@ -261,7 +261,13 @@ export class WebIntent extends IonicNativePlugin {
   unregisterBroadcastReceiver(): void {}
 
   /**
-   * @returns {Promise<Intent>}
+   *
+   */
+  @Cordova({ sync: true })
+  onActivityResult(): void {}
+
+  /**
+   * @returns {Promise<any>}
    */
   @Cordova()
   getIntent(): Promise<Intent> {

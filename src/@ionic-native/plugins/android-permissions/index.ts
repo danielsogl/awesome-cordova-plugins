@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import { AndroidPermissions } from '@ionic-native/android-permissions';
+ * import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
  *
  *
  * constructor(private androidPermissions: AndroidPermissions) { }
@@ -223,7 +223,7 @@ export class AndroidPermissions extends IonicNativePlugin {
 
   /**
    * Request permissions
-   * @param {Array<string>} permissions An array with permissions
+   * @param {string[]} permissions An array with permissions
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()

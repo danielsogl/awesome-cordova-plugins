@@ -32,7 +32,7 @@ export interface SpinnerDialogIOSOptions {
  *
  * @usage
  * ```typescript
- * import { SpinnerDialog } from '@ionic-native/spinner-dialog';
+ * import { SpinnerDialog } from '@ionic-native/spinner-dialog/ngx';
  *
  * constructor(private spinnerDialog: SpinnerDialog) { }
  *
@@ -65,7 +65,8 @@ export class SpinnerDialog extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void { }
+  show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void {
+  }
 
   /**
    * Hides the spinner dialog if visible
@@ -73,6 +74,7 @@ export class SpinnerDialog extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  hide(): void { }
+  hide(): void {
+  }
 
 }

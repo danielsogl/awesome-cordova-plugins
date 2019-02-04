@@ -19,7 +19,7 @@ export interface CallDirectoryLog {
  *
  * @usage
  * ```typescript
- * import { CallDirectory } from '@ionic-native/call-directory';
+ * import { CallDirectory } from '@ionic-native/call-directory/ngx';
  *
  *
  * constructor(private callDirectory: CallDirectory) { }
@@ -62,7 +62,7 @@ export class CallDirectory extends IonicNativePlugin {
 
   /**
    * Add identification numbers
-   * @param {Array<CallDirectoryItem>} items Set of numbers with labels
+   * @param {CallDirectoryItem[]} items Set of numbers with labels
    * @return {Promise<any>} Returns a promise that resolves when numbers are added
    */
   @Cordova()
@@ -72,7 +72,7 @@ export class CallDirectory extends IonicNativePlugin {
 
   /**
    * Remove identification numbers
-   * @param {Array<CallDirectoryItem>} items Set of numbers with arbitrary label
+   * @param {CallDirectoryItem[]} items Set of numbers with arbitrary label
    * @return {Promise<any>} Returns a promise that resolves when numbers are removed
    */
   @Cordova()
@@ -91,7 +91,7 @@ export class CallDirectory extends IonicNativePlugin {
 
   /**
    * Get all numbers and labels in call directory
-   * @return {Array<CallDirectoryItem>} Returns a promise that resolves with an array of all items
+   * @return {CallDirectoryItem[]} Returns a promise that resolves with an array of all items
    */
   @Cordova()
   getAllItems(): Promise<CallDirectoryItem[]> {

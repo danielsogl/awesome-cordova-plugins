@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { UserAgent } from '@ionic-native/user-agent';
+ * import { UserAgent } from '@ionic-native/user-agent/ngx';
  *
  *
  * constructor(private userAgent: UserAgent) { }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name Firebase Authentication
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```typescript
- * import { FirebaseAuthentication } from '@ionic-native/firebase-authentication';
+ * import { FirebaseAuthentication } from '@ionic-native/firebase-authentication/ngx';
  *
  *
  * constructor(private firebaseAuthentication: FirebaseAuthentication) { }

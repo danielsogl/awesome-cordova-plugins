@@ -11,7 +11,7 @@ Ionic Native wraps plugin callbacks in a Promise or Observable, providing a comm
 Run following command to install Ionic Native in your project.
 
 ```bash
-npm install @ionic-native/core
+npm install @ionic-native/core --save
 ```
 
 You also need to install the Ionic Native package for each plugin you want to add. Please see the [Ionic Native documentation](https://ionicframework.com/docs/native/) for complete instructions on how to add and use the plugins.
@@ -22,11 +22,13 @@ For the full Ionic Native documentation, please visit [https://ionicframework.co
 
 ### Basic Usage
 
-To use a plugin, import and add the plugin provider to your `@NgModule`, and then inject it where you wish to use it.
+#### Ionic/Angular apps
+To use a plugin, import and add the plugin provider to your `@NgModule`, and then inject it where you wish to use it. 
+Make sure to import the injectable class from the `/ngx` directory as shown in the following examples:
 
 ```typescript
 // app.module.ts
-import { Camera } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera/ngx';
 
 ...
 
@@ -44,7 +46,7 @@ export class AppModule { }
 ```
 
 ```typescript
-import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Platform } from 'ionic-angular';
 
 @Component({ ... })
@@ -74,16 +76,71 @@ export class MyComponent {
 }
 ```
 
-### Mocking and Browser Development
+#### ES2015+/TypeScript
+These modules can work in any ES2015+/TypeScript app (including Angular/Ionic apps). To use any plugin, import the class from the appropriate package, and use it's static methods.
+```js
+import { Camera } from '@ionic-native/camera';
 
-Ionic Native 3.x makes it possible to mock plugins and develop nearly the entirety of your app in the browser or in `ionic serve`.
+document.addEventListener('deviceready', () => {
+  Camera.getPicture()
+    .then((data) => console.log('Took a picture!',  data))
+    .catch((e) => console.log('Error occurred while taking a picture', e));
+});
+```
+
+#### AngularJS
+Ionic Native generates an AngularJS module in runtime and prepares a service for each plugin. To use the plugins in your AngularJS app:
+1. Download the latest bundle from the [Github releases](https://github.com/ionic-team/ionic-native/releases) page.
+2. Include it in `index.html` before your app's code.
+3. Inject `ionic.native` module in your app.
+4. Inject any plugin you would like to use with a `$cordova` prefix.
+
+```js
+angular.module('myApp', ['ionic.native'])
+  .controller('MyPageController', function($cordovaCamera) {
+    $cordovaCamera.getPicture()
+      .then(
+        function(data) {
+          console.log('Took a picture!', data);
+        },
+        function(err) {
+          console.log('Error occurred while taking a picture', err);
+        }
+      );
+  });
+```
+
+#### Vanilla JS
+To use Ionic Native in any other setup:
+1. Download the latest bundle from the [Github releases](https://github.com/ionic-team/ionic-native/releases) page.
+2. Include it in `index.html` before your app's code.
+3. Access any plugin using the global `IonicNative` variable.
+
+```js
+document.addEventListener('deviceready', function() {
+  IonicNative.Camera.getPicture()
+    .then(
+      function(data) {
+        console.log('Took a picture!', data);
+      },
+      function(err) {
+        console.log('Error occurred while taking a picture', err);
+      }
+    );
+});
+```
+
+
+### Mocking and Browser Development (Ionic/Angular apps only)
+
+Ionic Native makes it possible to mock plugins and develop nearly the entirety of your app in the browser or in `ionic serve`.
 
 To do this, you need to provide a mock implementation of the plugins you wish to use. Here's an example of mocking the `Camera` plugin to return a stock image while in development:
 
 First import the `Camera` class in your `src/app/app.module.ts` file:
 
 ```typescript
-import { Camera } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera/ngx';
 ```
 
 Then create a new class that extends the `Camera` class with a mock implementation:
@@ -109,8 +166,11 @@ Here's the full example:
 ```typescript
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Camera } from '@ionic-native/camera';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+
+import { Camera } from '@ionic-native/camera/ngx';
 
 import { HomePage } from '../pages/home/home';
 import { MyApp } from './app.component';
@@ -146,9 +206,6 @@ Spent way too long diagnosing an issue only to realize a plugin wasn't firing or
 
 Let us know or submit a PR! Take a look at [the Developer Guide](https://github.com/ionic-team/ionic-native/blob/master/DEVELOPER.md) for more on how to contribute. :heart:
 
-## Ionic v1 (AngularJS, Angular 1.x) support
-
-For Ionic v1 (AngularJS, Angular 1.x) support, please use version 2 of Ionic Native. See the [2.x README](https://github.com/ionic-team/ionic-native/blob/v2.x/README.md) for usage information.
 
 # Credits
 

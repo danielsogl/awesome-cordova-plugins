@@ -12,7 +12,7 @@ export interface CropOptions {
  * @description Crops images
  * @usage
  * ```typescript
- * import { Crop } from '@ionic-native/crop';
+ * import { Crop } from '@ionic-native/crop/ngx';
  *
  * constructor(private crop: Crop) { }
  *

@@ -28,7 +28,7 @@ export interface ChooserResult {
  *
  * @usage
  * ```typescript
- * import { Chooser } from '@ionic-native/chooser';
+ * import { Chooser } from '@ionic-native/chooser/ngx';
  *
  *
  * constructor(private chooser: Chooser) { }

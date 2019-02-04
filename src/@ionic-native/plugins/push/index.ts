@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaInstance, IonicNativePlugin, Plugin, checkAvailability } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 declare const window: any;
 
@@ -50,8 +50,6 @@ export interface NotificationEventResponse {
  * so that he could specify any custom code without having to use array notation (map['prop']) for all of them.
  */
 export interface NotificationEventAdditionalData {
-  [name: string]: any;
-
   /**
    * Whether the notification was received while the app was in the foreground
    */
@@ -60,6 +58,8 @@ export interface NotificationEventAdditionalData {
   coldstart?: boolean;
   from?: string;
   notId?: string;
+
+  [name: string]: any;
 }
 
 export interface IOSPushOptions {
@@ -208,7 +208,7 @@ export interface BrowserPushOptions {
 
   /**
    * URL for the push server you want to use.
-   * Default: http://push.api.phonegap.com/v1/push	Optional.
+   * Default: http://push.api.phonegap.com/v1/push  Optional.
    */
   pushServiceURL?: string;
 }
@@ -245,7 +245,7 @@ export type PushEvent = string;
  *
  * @usage
  * ```typescript
- * import { Push, PushObject, PushOptions } from '@ionic-native/push';
+ * import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
  *
  * constructor(private push: Push) { }
  *
@@ -291,7 +291,7 @@ export type PushEvent = string;
  *    browser: {
  *        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
  *    }
- * };
+ * }
  *
  * const pushObject: PushObject = this.push.init(options);
  *

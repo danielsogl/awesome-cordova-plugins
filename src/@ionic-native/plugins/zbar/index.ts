@@ -44,7 +44,7 @@ export interface ZBarOptions {
  *
  * @usage
  * ```typescript
- * import { ZBar, ZBarOptions } from '@ionic-native/zbar';
+ * import { ZBar, ZBarOptions } from '@ionic-native/zbar/ngx';
  *
  * constructor(private zbar: ZBar) { }
  *
@@ -53,7 +53,7 @@ export interface ZBarOptions {
  * let options: ZBarOptions = {
  *       flash: 'off',
  *       drawSight: false
- *     };
+ *     }
  *
  * this.zbar.scan(options)
  *    .then(result => {
@@ -84,6 +84,8 @@ export class ZBar extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the scanned string, or rejects with an error.
    */
   @Cordova()
-  scan(options: ZBarOptions): Promise<any> { return; }
+  scan(options: ZBarOptions): Promise<any> {
+    return;
+  }
 
 }

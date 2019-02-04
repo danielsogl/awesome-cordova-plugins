@@ -110,7 +110,7 @@ export interface AFADeleteOptions {
  * This plugin will open a native dialog fragment prompting the user to authenticate using their fingerprint. If the device has a secure lockscreen (pattern, PIN, or password), the user may opt to authenticate using that method as a backup.
  * @usage
  * ```typescript
- * import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth';
+ * import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth/ngx';
  *
  * constructor(private androidFingerprintAuth: AndroidFingerprintAuth) { }
  *

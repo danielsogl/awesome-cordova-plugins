@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 declare const baiduPush: any;
 
@@ -82,7 +82,7 @@ export interface NotificationData {
  *
  * @usage
  * ```typescript
- * import { BaiduPush } from '@ionic-native/baidu-push';
+ * import { BaiduPush } from '@ionic-native/baidu-push/ngx';
  *
  *
  * constructor(private baiduPush: BaiduPush) { }

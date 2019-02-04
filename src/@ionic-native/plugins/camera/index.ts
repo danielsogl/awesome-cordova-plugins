@@ -138,7 +138,7 @@ export enum Direction {
  *
  * @usage
  * ```typescript
- * import { Camera, CameraOptions } from '@ionic-native/camera';
+ * import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
  *
  * constructor(private camera: Camera) { }
  *

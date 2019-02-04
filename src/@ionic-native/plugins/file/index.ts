@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  CordovaCheck,
-  CordovaProperty,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { CordovaCheck, CordovaProperty, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
 
 export interface IFile extends Blob {
   /**
@@ -30,6 +25,7 @@ export interface IFile extends Blob {
   localURL: string;
   start: number;
   end: number;
+
   /**
    * Returns a "slice" of the file. Since Cordova Files don't contain the actual
    * content, this really returns a File with adjusted start and end.
@@ -53,10 +49,12 @@ export interface LocalFileSystem {
 
   /**
    * Requests a filesystem in which to store application data.
-   * @param type Whether the filesystem requested should be persistent, as defined above. Use one of TEMPORARY or PERSISTENT.
+   * @param type Whether the filesystem requested should be persistent, as defined above. Use one of TEMPORARY or
+   *   PERSISTENT.
    * @param size This is an indicator of how much storage space, in bytes, the application expects to need.
    * @param successCallback The callback that is called when the user agent provides a filesystem.
-   * @param errorCallback A callback that is called when errors happen, or when the request to obtain the filesystem is denied.
+   * @param errorCallback A callback that is called when errors happen, or when the request to obtain the filesystem is
+   *   denied.
    */
   requestFileSystem(
     type: number,
@@ -69,7 +67,8 @@ export interface LocalFileSystem {
    * Allows the user to look up the Entry for a file or directory referred to by a local URL.
    * @param url A URL referring to a local file in a filesystem accessable via this API.
    * @param successCallback A callback that is called to report the Entry to which the supplied URL refers.
-   * @param errorCallback A callback that is called when errors happen, or when the request to obtain the Entry is denied.
+   * @param errorCallback A callback that is called when errors happen, or when the request to obtain the Entry is
+   *   denied.
    */
   resolveLocalFileSystemURL(
     url: string,
@@ -109,7 +108,8 @@ export interface Flags {
   create?: boolean;
 
   /**
-   * By itself, exclusive must have no effect. Used with create, it must cause getFile and getDirectory to fail if the target path already exists.
+   * By itself, exclusive must have no effect. Used with create, it must cause getFile and getDirectory to fail if the
+   * target path already exists.
    */
   exclusive?: boolean;
 }
@@ -119,7 +119,8 @@ export interface Flags {
  */
 export interface FileSystem {
   /**
-   * This is the name of the file system. The specifics of naming filesystems is unspecified, but a name must be unique across the list of exposed file systems.
+   * This is the name of the file system. The specifics of naming filesystems is unspecified, but a name must be unique
+   * across the list of exposed file systems.
    * @readonly
    */
   name: string;
@@ -172,21 +173,40 @@ export interface Entry {
    * The name of the entry, excluding the path leading to it.
    */
   name: string;
-
   /**
    * The full absolute path from the root to the entry.
    */
   fullPath: string;
-
   /**
    * The file system on which the entry resides.
    */
   filesystem: FileSystem;
-
   /**
    * an alternate URL which can be used by native webview controls, for example media players.
    */
   nativeURL: string;
+
+  /**
+   * Look up metadata about this entry.
+   * @param successCallback A callback that is called with the time of the last modification.
+   * @param errorCallback ErrorCallback A callback that is called when errors happen.
+   */
+  getMetadata(
+    successCallback: MetadataCallback,
+    errorCallback?: ErrorCallback
+  ): void;
+
+  /**
+   * Set the metadata of the entry.
+   * @param successCallback {Function} is called with a Metadata object
+   * @param errorCallback {Function} is called with a FileError
+   * @param metadataObject {Metadata} keys and values to set
+   */
+  setMetadata(
+    successCallback: MetadataCallback,
+    errorCallback: ErrorCallback,
+    metadataObject: Metadata
+  ): void;
 
   /**
    * Move an entry to a different location on the file system. It is an error to try to:
@@ -219,7 +239,8 @@ export interface Entry {
    * <li> copy a directory to a path occupied by a file;</li>
    * <li> copy any element to a path occupied by a directory which is not empty.</li>
    * <li> A copy of a file on top of an existing file must attempt to delete and replace that file.</li>
-   * <li> A copy of a directory on top of an existing empty directory must attempt to delete and replace that directory.</li>
+   * <li> A copy of a directory on top of an existing empty directory must attempt to delete and replace that
+   * directory.</li>
    * </ul>
    *
    * Directory copies are always recursive--that is, they copy all contents of the directory.
@@ -232,7 +253,8 @@ export interface Entry {
   ): void;
 
   /**
-   * Returns a URL that can be used to identify this entry. Unlike the URN defined in [FILE-API-ED], it has no specific expiration; as it describes a location on disk, it should be valid at least as long as that location exists.
+   * Returns a URL that can be used to identify this entry. Unlike the URN defined in [FILE-API-ED], it has no specific
+   * expiration; as it describes a location on disk, it should be valid at least as long as that location exists.
    */
   toURL(): string;
 
@@ -243,14 +265,16 @@ export interface Entry {
   toInternalURL(): string;
 
   /**
-   * Deletes a file or directory. It is an error to attempt to delete a directory that is not empty. It is an error to attempt to delete the root directory of a filesystem.
+   * Deletes a file or directory. It is an error to attempt to delete a directory that is not empty. It is an error to
+   * attempt to delete the root directory of a filesystem.
    * @param successCallback A callback that is called on success.
    * @param errorCallback A callback that is called when errors happen.
    */
   remove(successCallback: VoidCallback, errorCallback?: ErrorCallback): void;
 
   /**
-   * Look up the parent DirectoryEntry containing this Entry. If this Entry is the root of its filesystem, its parent is itself.
+   * Look up the parent DirectoryEntry containing this Entry. If this Entry is the root of its filesystem, its parent
+   * is itself.
    * @param successCallback A callback that is called to return the parent Entry.
    * @param errorCallback A callback that is called when errors happen.
    */
@@ -271,11 +295,13 @@ export interface DirectoryEntry extends Entry {
 
   /**
    * Creates or looks up a file.
-   * @param path Either an absolute path or a relative path from this DirectoryEntry to the file to be looked up or created. It is an error to attempt to create a file whose immediate parent does not yet exist.
+   * @param path Either an absolute path or a relative path from this DirectoryEntry to the file to be looked up or
+   *   created. It is an error to attempt to create a file whose immediate parent does not yet exist.
    * @param options
    *     <ul>
    *     <li>If create and exclusive are both true, and the path already exists, getFile must fail.</li>
-   *     <li>If create is true, the path doesn't exist, and no other error occurs, getFile must create it as a zero-length file and return a corresponding FileEntry.</li>
+   *     <li>If create is true, the path doesn't exist, and no other error occurs, getFile must create it as a
+   *   zero-length file and return a corresponding FileEntry.</li>
    *     <li>If create is not true and the path doesn't exist, getFile must fail.</li>
    *     <li>If create is not true and the path exists, but is a directory, getFile must fail.</li>
    *     <li>Otherwise, if no other error occurs, getFile must return a FileEntry corresponding to path.</li>
@@ -292,11 +318,13 @@ export interface DirectoryEntry extends Entry {
 
   /**
    * Creates or looks up a directory.
-   * @param path Either an absolute path or a relative path from this DirectoryEntry to the directory to be looked up or created. It is an error to attempt to create a directory whose immediate parent does not yet exist.
+   * @param path Either an absolute path or a relative path from this DirectoryEntry to the directory to be looked up
+   *   or created. It is an error to attempt to create a directory whose immediate parent does not yet exist.
    * @param options
    *     <ul>
    *     <li>If create and exclusive are both true and the path already exists, getDirectory must fail.</li>
-   *     <li>If create is true, the path doesn't exist, and no other error occurs, getDirectory must create and return a corresponding DirectoryEntry.</li>
+   *     <li>If create is true, the path doesn't exist, and no other error occurs, getDirectory must create and return
+   *   a corresponding DirectoryEntry.</li>
    *     <li>If create is not true and the path doesn't exist, getDirectory must fail.</li>
    *     <li>If create is not true and the path exists, but is a file, getDirectory must fail.</li>
    *     <li>Otherwise, if no other error occurs, getDirectory must return a DirectoryEntry corresponding to path.</li>
@@ -313,7 +341,9 @@ export interface DirectoryEntry extends Entry {
   ): void;
 
   /**
-   * Deletes a directory and all of its contents, if any. In the event of an error [e.g. trying to delete a directory that contains a file that cannot be removed], some of the contents of the directory may be deleted. It is an error to attempt to delete the root directory of a filesystem.
+   * Deletes a directory and all of its contents, if any. In the event of an error [e.g. trying to delete a directory
+   * that contains a file that cannot be removed], some of the contents of the directory may be deleted. It is an error
+   * to attempt to delete the root directory of a filesystem.
    * @param successCallback A callback that is called on success.
    * @param errorCallback A callback that is called when errors happen.
    */
@@ -324,7 +354,8 @@ export interface DirectoryEntry extends Entry {
 }
 
 /**
- * This export interface lets a user list files and directories in a directory. If there are no additions to or deletions from a directory between the first and last call to readEntries, and no errors occur, then:
+ * This export interface lets a user list files and directories in a directory. If there are no additions to or
+ * deletions from a directory between the first and last call to readEntries, and no errors occur, then:
  * <ul>
  * <li> A series of calls to readEntries must return each entry in the directory exactly once.</li>
  * <li> Once all entries have been returned, the next call to readEntries must produce an empty array.</li>
@@ -335,9 +366,12 @@ export interface DirectoryEntry extends Entry {
 export interface DirectoryReader {
   localURL: string;
   hasReadEntries: boolean;
+
   /**
    * Read the next block of entries from this directory.
-   * @param successCallback Called once per successful call to readEntries to deliver the next previously-unreported set of Entries in the associated Directory. If all Entries have already been returned from previous invocations of readEntries, successCallback must be called with a zero-length array as an argument.
+   * @param successCallback Called once per successful call to readEntries to deliver the next previously-unreported
+   *   set of Entries in the associated Directory. If all Entries have already been returned from previous invocations
+   *   of readEntries, successCallback must be called with a zero-length array as an argument.
    * @param errorCallback A callback indicating that there was an error reading from the Directory.
    */
   readEntries(
@@ -426,17 +460,20 @@ export interface RemoveResult {
 /** @hidden */
 export declare class FileSaver extends EventTarget {
   /**
-   * When the FileSaver constructor is called, the user agent must return a new FileSaver object with readyState set to INIT.
-   * This constructor must be visible when the script's global object is either a Window object or an object implementing the WorkerUtils interface.
+   * When the FileSaver constructor is called, the user agent must return a new FileSaver object with readyState set to
+   * INIT. This constructor must be visible when the script's global object is either a Window object or an object
+   * implementing the WorkerUtils interface.
    */
   constructor(data: Blob);
 
   /**
    * When the abort method is called, user agents must run the steps below:
    * <ol>
-   * <li> If readyState == DONE or readyState == INIT, terminate this overall series of steps without doing anything else. </li>
+   * <li> If readyState == DONE or readyState == INIT, terminate this overall series of steps without doing anything
+   * else. </li>
    * <li> Set readyState to DONE. </li>
-   * <li> If there are any tasks from the object's FileSaver task source in one of the task queues, then remove those tasks. </li>
+   * <li> If there are any tasks from the object's FileSaver task source in one of the task queues, then remove those
+   * tasks. </li>
    * <li> Terminate the write algorithm being processed. </li>
    * <li> Set the error attribute to a DOMError object of type "AbortError". </li>
    * <li> Fire a progress event called abort </li>
@@ -451,21 +488,20 @@ export declare class FileSaver extends EventTarget {
    * @readonly
    */
   INIT: number;
-
   /**
    * The object has been constructed, but there is no pending write.
    * @readonly
    */
   WRITING: number;
-
   /**
-   * The entire Blob has been written to the file, an error occurred during the write, or the write was aborted using abort(). The FileSaver is no longer writing the blob.
+   * The entire Blob has been written to the file, an error occurred during the write, or the write was aborted using
+   * abort(). The FileSaver is no longer writing the blob.
    * @readonly
    */
   DONE: number;
-
   /**
-   * The FileSaver object can be in one of 3 states. The readyState attribute, on getting, must return the current state, which must be one of the following values:
+   * The FileSaver object can be in one of 3 states. The readyState attribute, on getting, must return the current
+   * state, which must be one of the following values:
    * <ul>
    * <li>INIT</li>
    * <li>WRITING</li>
@@ -474,47 +510,65 @@ export declare class FileSaver extends EventTarget {
    * @readonly
    */
   readyState: number;
-
   /**
    * The last error that occurred on the FileSaver.
    * @readonly
    */
   error: Error;
-
   /**
    * Handler for write start events
    */
   onwritestart: (event: ProgressEvent) => void;
-
   /**
    * Handler for progress events.
    */
   onprogress: (event: ProgressEvent) => void;
-
   /**
    * Handler for write events.
    */
   onwrite: (event: ProgressEvent) => void;
-
   /**
    * Handler for abort events.
    */
   onabort: (event: ProgressEvent) => void;
-
   /**
    * Handler for error events.
    */
   onerror: (event: ProgressEvent) => void;
-
   /**
    * Handler for write end events.
    */
   onwriteend: (event: ProgressEvent) => void;
+
+  /**
+   * When the FileSaver constructor is called, the user agent must return a new FileSaver object with readyState set to
+   * INIT. This constructor must be visible when the script's global object is either a Window object or an object
+   * implementing the WorkerUtils interface.
+   */
+  constructor(data: Blob);
+
+  /**
+   * When the abort method is called, user agents must run the steps below:
+   * <ol>
+   * <li> If readyState == DONE or readyState == INIT, terminate this overall series of steps without doing anything
+   * else. </li>
+   * <li> Set readyState to DONE. </li>
+   * <li> If there are any tasks from the object's FileSaver task source in one of the task queues, then remove those
+   * tasks. </li>
+   * <li> Terminate the write algorithm being processed. </li>
+   * <li> Set the error attribute to a DOMError object of type "AbortError". </li>
+   * <li> Fire a progress event called abort </li>
+   * <li> Fire a progress event called writeend </li>
+   * <li> Terminate this algorithm. </li>
+   * </ol>
+   */
+  abort(): void;
 }
 
 /**
  * @hidden
- * This interface expands on the FileSaver interface to allow for multiple write actions, rather than just saving a single Blob.
+ * This interface expands on the FileSaver interface to allow for multiple write actions, rather than just saving a
+ *   single Blob.
  */
 export declare class FileWriter extends FileSaver {
   /**
@@ -524,7 +578,8 @@ export declare class FileWriter extends FileSaver {
   position: number;
 
   /**
-   * The length of the file. If the user does not have read access to the file, this must be the highest byte offset at which the user has written.
+   * The length of the file. If the user does not have read access to the file, this must be the highest byte offset at
+   * which the user has written.
    */
   length: number;
 
@@ -536,12 +591,14 @@ export declare class FileWriter extends FileSaver {
 
   /**
    * Seek sets the file position at which the next write will occur.
-   * @param offset If nonnegative, an absolute byte offset into the file. If negative, an offset back from the end of the file.
+   * @param offset If nonnegative, an absolute byte offset into the file. If negative, an offset back from the end of
+   *   the file.
    */
   seek(offset: number): void;
 
   /**
-   * Changes the length of the file to that specified. If shortening the file, data beyond the new length must be discarded. If extending the file, the existing data must be zero-padded up to the new length.
+   * Changes the length of the file to that specified. If shortening the file, data beyond the new length must be
+   * discarded. If extending the file, the existing data must be zero-padded up to the new length.
    * @param size The size to which the length of the file is to be adjusted, measured in bytes.
    */
   truncate(size: number): void;
@@ -555,7 +612,6 @@ export interface IWriteOptions {
 
 /** @hidden */
 export declare class FileError {
-  constructor(code: number);
   static NOT_FOUND_ERR: number;
   static SECURITY_ERR: number;
   static ABORT_ERR: number;
@@ -571,6 +627,8 @@ export declare class FileError {
   /** Error code */
   code: number;
   message: string;
+
+  constructor(code: number);
 }
 
 /** @hidden */
@@ -592,9 +650,13 @@ export declare class FileReader {
   onabort: (evt: ProgressEvent) => void;
 
   abort(): void;
+
   readAsText(fe: IFile, encoding?: string): void;
+
   readAsDataURL(fe: IFile): void;
+
   readAsBinaryString(fe: IFile): void;
+
   readAsArrayBuffer(fe: IFile): void;
 
   /**
@@ -616,20 +678,22 @@ declare const window: Window;
  *
  * Example:
  * ```
- * import { File } from '@ionic-native/file';
+ * import { File } from '@ionic-native/file/ngx';
  *
  * constructor(private file: File) { }
  *
  * ...
  *
- * this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Directory exists')).catch(err => console.log('Directory doesn\'t exist'));
+ * this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Directory exists')).catch(err =>
+ *   console.log('Directory doesn't exist'));
  *
  * ```
  *
  *  This plugin is based on several specs, including : The HTML5 File API http: //www.w3.org/TR/FileAPI/
  *  The (now-defunct) Directories and System extensions Latest: http: //www.w3.org/TR/2012/WD-file-system-api-20120417/
- *  Although most of the plugin code was written when an earlier spec was current: http: //www.w3.org/TR/2011/WD-file-system-api-20110419/
- *  It also implements the FileWriter spec : http: //dev.w3.org/2009/dap/file-system/file-writer.html
+ *  Although most of the plugin code was written when an earlier spec was current: http:
+ *   //www.w3.org/TR/2011/WD-file-system-api-20110419/ It also implements the FileWriter spec : http:
+ *   //dev.w3.org/2009/dap/file-system/file-writer.html
  *  @interfaces
  *  IFile
  *  Entry
@@ -649,75 +713,63 @@ export class File extends IonicNativePlugin {
   /**
    *  Read-only directory where the application is installed.
    */
-  @CordovaProperty
-  applicationDirectory: string;
+  @CordovaProperty() applicationDirectory: string;
 
   /**
    *  Read-only directory where the application is installed.
    */
-  @CordovaProperty
-  applicationStorageDirectory: string;
+  @CordovaProperty() applicationStorageDirectory: string;
 
   /**
    * Where to put app-specific data files.
    */
-  @CordovaProperty
-  dataDirectory: string;
+  @CordovaProperty() dataDirectory: string;
 
   /**
    * Cached files that should survive app restarts.
    * Apps should not rely on the OS to delete files in here.
    */
-  @CordovaProperty
-  cacheDirectory: string;
+  @CordovaProperty() cacheDirectory: string;
 
   /**
    * Android: the application space on external storage.
    */
-  @CordovaProperty
-  externalApplicationStorageDirectory: string;
+  @CordovaProperty() externalApplicationStorageDirectory: string;
 
   /**
    *  Android: Where to put app-specific data files on external storage.
    */
-  @CordovaProperty
-  externalDataDirectory: string;
+  @CordovaProperty() externalDataDirectory: string;
 
   /**
    * Android: the application cache on external storage.
    */
-  @CordovaProperty
-  externalCacheDirectory: string;
+  @CordovaProperty() externalCacheDirectory: string;
 
   /**
    * Android: the external storage (SD card) root.
    */
-  @CordovaProperty
-  externalRootDirectory: string;
+  @CordovaProperty() externalRootDirectory: string;
 
   /**
    * iOS: Temp directory that the OS can clear at will.
    */
-  @CordovaProperty
-  tempDirectory: string;
+  @CordovaProperty() tempDirectory: string;
 
   /**
    * iOS: Holds app-specific files that should be synced (e.g. to iCloud).
    */
-  @CordovaProperty
-  syncedDataDirectory: string;
+  @CordovaProperty() syncedDataDirectory: string;
 
   /**
    * iOS: Files private to the app, but that are meaningful to other applications (e.g. Office files)
    */
-  @CordovaProperty
-  documentsDirectory: string;
+  @CordovaProperty() documentsDirectory: string;
 
   /**
    * BlackBerry10: Files globally available to all apps
    */
-  @CordovaProperty
-  sharedDirectory: string;
+  @CordovaProperty() sharedDirectory: string;
 
   cordovaFileError: any = {
     1: 'NOT_FOUND_ERR',
@@ -742,8 +794,8 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   getFreeDiskSpace(): Promise<number> {
-    return new Promise<any>((resolve, reject) => {
-      cordova.exec(resolve, reject, 'File', 'getFreeDiskSpace', []);
+    return getPromise<any>((resolve, reject) => {
+      cordova.exec(resolve as (data: any) => any, reject as (data: any) => any, 'File', 'getFreeDiskSpace', []);
     });
   }
 
@@ -752,7 +804,8 @@ export class File extends IonicNativePlugin {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} dir Name of directory to check
-   * @returns {Promise<boolean>} Returns a Promise that resolves to true if the directory exists or rejects with an error.
+   * @returns {Promise<boolean>} Returns a Promise that resolves to true if the directory exists or rejects with an
+   *   error.
    */
   @CordovaCheck()
   checkDir(path: string, dir: string): Promise<boolean> {
@@ -834,7 +887,8 @@ export class File extends IonicNativePlugin {
    * @param {string} dirName The source directory name
    * @param {string} newPath The destination path to the directory
    * @param {string} newDirName The destination directory name
-   * @returns {Promise<DirectoryEntry|Entry>} Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
+   * @returns {Promise<DirectoryEntry|Entry>} Returns a Promise that resolves to the new DirectoryEntry object or
+   *   rejects with an error.
    */
   @CordovaCheck()
   moveDir(
@@ -1070,10 +1124,11 @@ export class File extends IonicNativePlugin {
   /**
    * Write content to FileEntry.
    * @hidden
+   * Write to an existing file.
    * @param {FileEntry} fe file entry object
-   * @param {string | Blob} text content or blob to write
+   * @param {string | Blob | ArrayBuffer} text text content or blob to write
    * @param {IWriteOptions} options replace file if set to true. See WriteOptions for more information.
-   * @returns {Promise<FileEntry>} Returns a Promise that resolves to updated file entry or rejects with an error.
+   * @returns {Promise<FileEntry>}  Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   private writeFileEntry(
     fe: FileEntry,
@@ -1113,10 +1168,10 @@ export class File extends IonicNativePlugin {
 
   /**
    * Read the contents of a file as text.
-   *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} file Name of file, relative to path.
-   * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as string or rejects with an error.
+   * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as string or rejects with
+   *   an error.
    */
   @CordovaCheck()
   readAsText(path: string, file: string): Promise<string> {
@@ -1130,7 +1185,8 @@ export class File extends IonicNativePlugin {
    *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} file Name of file, relative to path.
-   * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as data URL or rejects with an error.
+   * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as data URL or rejects
+   *   with an error.
    */
   @CordovaCheck()
   readAsDataURL(path: string, file: string): Promise<string> {
@@ -1141,7 +1197,8 @@ export class File extends IonicNativePlugin {
    * Read file and return data as a binary data.
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} file Name of file, relative to path.
-   * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as string rejects with an error.
+   * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as string rejects with an
+   *   error.
    */
   @CordovaCheck()
   readAsBinaryString(path: string, file: string): Promise<string> {
@@ -1152,51 +1209,12 @@ export class File extends IonicNativePlugin {
    * Read file and return data as an ArrayBuffer.
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} file Name of file, relative to path.
-   * @returns {Promise<ArrayBuffer>} Returns a Promise that resolves with the contents of the file as ArrayBuffer or rejects with an error.
+   * @returns {Promise<ArrayBuffer>} Returns a Promise that resolves with the contents of the file as ArrayBuffer or
+   *   rejects with an error.
    */
   @CordovaCheck()
   readAsArrayBuffer(path: string, file: string): Promise<ArrayBuffer> {
     return this.readFile<ArrayBuffer>(path, file, 'ArrayBuffer');
-  }
-
-  private readFile<T>(
-    path: string,
-    file: string,
-    readAs: 'ArrayBuffer' | 'BinaryString' | 'DataURL' | 'Text'
-  ): Promise<T> {
-    if (/^\//.test(file)) {
-      const err = new FileError(5);
-      err.message = 'file-name cannot start with /';
-      return Promise.reject<any>(err);
-    }
-
-    return this.resolveDirectoryUrl(path)
-      .then((directoryEntry: DirectoryEntry) => {
-        return this.getFile(directoryEntry, file, { create: false });
-      })
-      .then((fileEntry: FileEntry) => {
-        const reader = new FileReader();
-        return new Promise<T>((resolve, reject) => {
-          reader.onloadend = () => {
-            if (reader.result !== undefined || reader.result !== null) {
-              resolve((reader.result as any) as T);
-            } else if (reader.error !== undefined || reader.error !== null) {
-              reject(reader.error);
-            } else {
-              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
-            }
-          };
-
-          fileEntry.file(
-            file => {
-              reader[`readAs${readAs}`].call(reader, file);
-            },
-            error => {
-              reject(error);
-            }
-          );
-        });
-      });
   }
 
   /**
@@ -1285,7 +1303,7 @@ export class File extends IonicNativePlugin {
    */
   @CordovaCheck()
   resolveLocalFilesystemUrl(fileUrl: string): Promise<Entry> {
-    return new Promise<Entry>((resolve, reject) => {
+    return getPromise<Entry>((resolve, reject) => {
       try {
         window.resolveLocalFileSystemURL(
           fileUrl,
@@ -1379,6 +1397,46 @@ export class File extends IonicNativePlugin {
         reject(xc);
       }
     });
+  }
+
+  private readFile<T>(
+    path: string,
+    file: string,
+    readAs: 'ArrayBuffer' | 'BinaryString' | 'DataURL' | 'Text'
+  ): Promise<T> {
+    if (/^\//.test(file)) {
+      const err = new FileError(5);
+      err.message = 'file-name cannot start with /';
+      return Promise.reject<any>(err);
+    }
+
+    return this.resolveDirectoryUrl(path)
+      .then((directoryEntry: DirectoryEntry) => {
+        return this.getFile(directoryEntry, file, { create: false });
+      })
+      .then((fileEntry: FileEntry) => {
+        const reader = new FileReader();
+        return getPromise<T>((resolve, reject) => {
+          reader.onloadend = () => {
+            if (reader.result !== undefined || reader.result !== null) {
+              resolve((reader.result as any) as T);
+            } else if (reader.error !== undefined || reader.error !== null) {
+              reject(reader.error);
+            } else {
+              reject({ code: null, message: 'READER_ONLOADEND_ERR' });
+            }
+          };
+
+          fileEntry.file(
+            file => {
+              reader[`readAs${readAs}`].call(reader, file);
+            },
+            error => {
+              reject(error);
+            }
+          );
+        });
+      });
   }
 
   /**
@@ -1533,8 +1591,8 @@ export class File extends IonicNativePlugin {
       writer.write(chunk);
     }
 
-    return new Promise<any>((resolve, reject) => {
-      writer.onerror = reject;
+    return getPromise<any>((resolve, reject) => {
+      writer.onerror = reject as (event: ProgressEvent) => void;
       writer.onwrite = () => {
         if (writtenSize < file.size) {
           writeNextChunk();

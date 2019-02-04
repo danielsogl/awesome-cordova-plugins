@@ -65,9 +65,8 @@ export interface SQLiteTransaction extends DbTransaction {
 export class SQLiteObject {
   constructor(public _objectInstance: any) {}
 
-  @InstanceProperty databaseFeatures: { isSQLitePluginDatabase: boolean };
-
-  @InstanceProperty openDBs: any;
+  @InstanceProperty() databaseFeatures: { isSQLitePluginDatabase: boolean };
+  @InstanceProperty() openDBs: any;
 
   @CordovaInstance({
     sync: true
@@ -126,7 +125,7 @@ export class SQLiteObject {
   }
 
   /**
-   * @param sqlStatements {Array<string | string[] | any>}
+   * @param sqlStatements {string[] | string[][] | any[]}
    * @returns {Promise<any>}
    */
   @CordovaInstance()
@@ -149,7 +148,7 @@ export class SQLiteObject {
  * @usage
  *
  * ```typescript
- * import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+ * import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
  *
  * constructor(private sqlite: SQLite) { }
  *

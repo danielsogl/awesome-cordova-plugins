@@ -53,7 +53,7 @@ export interface StreamingAudioOptions {
  *
  * @usage
  * ```typescript
- * import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
+ * import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media/ngx';
  *
  * constructor(private streamingMedia: StreamingMedia) { }
  *

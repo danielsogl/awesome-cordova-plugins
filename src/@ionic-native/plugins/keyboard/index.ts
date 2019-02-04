@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 /**
  * @name Keyboard
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```typescript
- * import { Keyboard } from '@ionic-native/keyboard';
+ * import { Keyboard } from '@ionic-native/keyboard/ngx';
  *
  * constructor(private keyboard: Keyboard) { }
  *
@@ -32,12 +32,11 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class Keyboard extends IonicNativePlugin {
-
   /**
    * Check keyboard status visible or not.
    * @returns {boolean}
    */
-  @CordovaProperty
+  @CordovaProperty()
   isVisible: boolean;
 
   /**
@@ -66,14 +65,14 @@ export class Keyboard extends IonicNativePlugin {
   show(): void {}
 
   /**
-   * Programmatically set the resize mode
+   * Programatically set the resize mode
    * @param mode {string}
    */
   @Cordova({
     sync: true,
     platforms: ['iOS']
   })
-  setResizeMode(mode: 'native' | 'body' | 'ionic'): void {}
+  setResizeMode(mode: string): void {}
 
   /**
    * Creates an observable that notifies you when the keyboard is shown. Unsubscribe to observable to cancel event watch.

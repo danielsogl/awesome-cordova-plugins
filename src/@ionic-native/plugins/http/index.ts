@@ -35,7 +35,7 @@ export interface HTTPResponse {
  *
  * @usage
  * ```typescript
- * import { HTTP } from '@ionic-native/http';
+ * import { HTTP } from '@ionic-native/http/ngx';
  *
  * constructor(private http: HTTP) {}
  *

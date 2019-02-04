@@ -11,7 +11,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { InAppReview } from '@ionic-native/in-app-review';
+ * import { InAppReview } from '@ionic-native/in-app-review/ngx';
  *
  *
  * constructor(private inAppReview: InAppReview) { }

@@ -11,7 +11,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * - (Android) Google Play Services SDK installed via [Android SDK Manager](https://developer.android.com/sdk/installing/adding-packages.html)
  * @usage
  * ```typescript
- * import { GoogleAnalytics } from '@ionic-native/google-analytics';
+ * import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
  *
  * constructor(private ga: GoogleAnalytics) { }
  *

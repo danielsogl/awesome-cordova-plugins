@@ -84,7 +84,7 @@ export interface BarcodeScanResult {
  *
  * @usage
  * ```typescript
- * import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+ * import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
  *
  * constructor(private barcodeScanner: BarcodeScanner) { }
  *

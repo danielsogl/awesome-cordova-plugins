@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { AES256 } from '@ionic-native/aes-256';
+ * import { AES256 } from '@ionic-native/aes-256/ngx';
  *
  * private secureKey: string;
  * private secureIV: string;
@@ -56,7 +56,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class AES256 extends IonicNativePlugin {
-
   /**
    * This function used to perform the aes256 encryption
    * @param {string} secureKey A 32 bytes string, which will used as input key for AES256 encryption.

@@ -16,7 +16,7 @@ export interface IOSFilePickerPosition {
  *
  * @usage
  * ```typescript
- * import { IOSFilePicker } from '@ionic-native/file-picker';
+ * import { IOSFilePicker } from '@ionic-native/file-picker/ngx';
  *
  * constructor(private filePicker: IOSFilePicker) { }
  *

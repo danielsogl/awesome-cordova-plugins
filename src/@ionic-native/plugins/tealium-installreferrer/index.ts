@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```
- * import { TealiumInstallReferrer } from '@ionic-native/tealium-installreferrer';
+ * import { TealiumInstallReferrer } from '@ionic-native/tealium-installreferrer/ngx';
  *
  *
  * constructor(private installReferrer: TealiumInstallReferrer) { }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 declare const window: any;
 
@@ -10,7 +10,7 @@ declare const window: any;
  * Geofences persist after device reboot. Geofences will be monitored even when the app is not running.
  * @usage
  * ```typescript
- * import { Geofence } from '@ionic-native/geofence';
+ * import { Geofence } from '@ionic-native/geofence/ngx';
  *
  * ...
  *
@@ -84,7 +84,6 @@ declare const window: any;
 })
 @Injectable()
 export class Geofence extends IonicNativePlugin {
-
   TransitionType = {
     ENTER: 1,
     EXIT: 2,
@@ -134,7 +133,7 @@ export class Geofence extends IonicNativePlugin {
   /**
    * Returns an array of geofences currently being monitored.
    *
-   * @returns {Promise<Array<string>>}
+   * @returns {Promise<string[]>}
    */
   @Cordova()
   getWatched(): Promise<string> { return; }
@@ -145,12 +144,11 @@ export class Geofence extends IonicNativePlugin {
    * @returns {Observable<any>}
    */
   onNotificationClicked(): Observable<any> {
-
-    return new Observable<any>((observer) => {
-      window && window.geofence && (window.geofence.onNotificationClicked = observer.next.bind(observer));
-      return () => window.geofence.onNotificationClicked = () => { };
+    return new Observable<any>(observer => {
+      window &&
+        window.geofence &&
+        (window.geofence.onNotificationClicked = observer.next.bind(observer));
+      return () => (window.geofence.onNotificationClicked = () => {});
     });
-
   }
-
 }

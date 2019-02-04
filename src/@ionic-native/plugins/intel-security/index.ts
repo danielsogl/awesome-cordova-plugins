@@ -41,7 +41,7 @@ export interface IntelSecurityDataOptions {
  *
  * @usage
  * ```typescript
- * import { IntelSecurity } from '@ionic-native/intel-security';
+ * import { IntelSecurity } from '@ionic-native/intel-security/ngx';
  * ...
  * constructor(private intelSecurity: IntelSecurity) { }
  * ...

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 
-
 /**
  * @name App Version
  * @description
@@ -12,7 +11,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { AppVersion } from '@ionic-native/app-version';
+ * import { AppVersion } from '@ionic-native/app-version/ngx';
  *
  * constructor(private appVersion: AppVersion) { }
  *

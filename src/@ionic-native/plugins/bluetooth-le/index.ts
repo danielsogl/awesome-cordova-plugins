@@ -5,7 +5,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /* Available status of device */
 export type Status =
@@ -397,7 +397,7 @@ export interface AdapterInfo {
  *
  * @usage
  * ```typescript
- * import { BluetoothLE } from '@ionic-native/bluetooth-le';
+ * import { BluetoothLE } from '@ionic-native/bluetooth-le/ngx';
  *
  *
  * constructor(public bluetoothle: BluetoothLE, public plt: Platform) {
@@ -466,7 +466,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * Currently the discoverable state does not have any relevance because there is no "setDiscoverable" functionality in place. That may change in the future.
    * @returns {Promise<AdapterInfo>}
    */
-  @Cordova({ callbackOrder: 'reverse', observable: true })
+  @Cordova({ callbackOrder: 'reverse' })
   getAdapterInfo(): Promise<AdapterInfo> {
     return;
   }
@@ -668,7 +668,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {Promise<OperationResult>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  read(params: DescriptorParams): Promise<{ result: OperationResult }> {
+  read(params: DescriptorParams): Promise<OperationResult> {
     return;
   }
 
@@ -678,10 +678,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * Once a subscription is no longer needed, execute unsubscribe in a similar fashion.
    * The Client Configuration descriptor will automatically be written to enable notification/indication based on the characteristic's properties.
    * @param {DescriptorParams} params
-   * @returns {(Observable<{ result: OperationResult }>)}
+   * @returns {Observable<OperationResult>}
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  subscribe(params: DescriptorParams): Observable<{ result: OperationResult }> {
+  subscribe(params: DescriptorParams): Observable<OperationResult> {
     return;
   }
 
@@ -1048,28 +1048,28 @@ export class BluetoothLE extends IonicNativePlugin {
     return;
   }
 
-  @CordovaProperty
+  @CordovaProperty()
   SCAN_MODE_OPPORTUNISTIC: number;
-  @CordovaProperty
+  @CordovaProperty()
   SCAN_MODE_LOW_POWER: number;
-  @CordovaProperty
+  @CordovaProperty()
   SCAN_MODE_BALANCED: number;
-  @CordovaProperty
+  @CordovaProperty()
   SCAN_MODE_LOW_LATENCY: number;
-  @CordovaProperty
+  @CordovaProperty()
   MATCH_MODE_AGRESSIVE: number;
-  @CordovaProperty
+  @CordovaProperty()
   MATCH_MODE_STICKY: number;
-  @CordovaProperty
+  @CordovaProperty()
   MATCH_NUM_ONE_ADVERTISEMENT: number;
-  @CordovaProperty
+  @CordovaProperty()
   MATCH_NUM_FEW_ADVERTISEMENT: number;
-  @CordovaProperty
+  @CordovaProperty()
   MATCH_NUM_MAX_ADVERTISEMENT: number;
-  @CordovaProperty
+  @CordovaProperty()
   CALLBACK_TYPE_ALL_MATCHES: number;
-  @CordovaProperty
+  @CordovaProperty()
   CALLBACK_TYPE_FIRST_MATCH: number;
-  @CordovaProperty
+  @CordovaProperty()
   CALLBACK_TYPE_MATCH_LOST: number;
 }

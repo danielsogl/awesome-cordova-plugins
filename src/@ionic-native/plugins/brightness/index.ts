@@ -10,7 +10,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Brightness } from '@ionic-native/brightness';
+ * import { Brightness } from '@ionic-native/brightness/ngx';
  *
  * constructor(private brightness: Brightness) { }
  *

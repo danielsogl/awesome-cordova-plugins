@@ -14,7 +14,7 @@ export interface CallLogObject {
  *
  * @usage
  * ```typescript
- * import { CallLog } from '@ionic-native/call-log';
+ * import { CallLog } from '@ionic-native/call-log/ngx';
  *
  *
  * constructor(private callLog: CallLog) { }

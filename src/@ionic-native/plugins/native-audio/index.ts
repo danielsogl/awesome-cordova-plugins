@@ -5,7 +5,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * @description Native Audio Playback
  * @usage
  * ```typescript
- * import { NativeAudio } from '@ionic-native/native-audio';
+ * import { NativeAudio } from '@ionic-native/native-audio/ngx';
  *
  * constructor(private nativeAudio: NativeAudio) { }
  *
@@ -45,7 +45,9 @@ export class NativeAudio extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  preloadSimple(id: string, assetPath: string): Promise<any> {return; }
+  preloadSimple(id: string, assetPath: string): Promise<any> {
+    return;
+  }
 
   /**
    * Loads an audio file into memory. Optimized for background music / ambient sound. Uses highlevel native APIs with a larger footprint. (iOS: AVAudioPlayer). Can be stopped / looped and used with multiple voices. Can be faded in and out using the delay parameter.
@@ -57,7 +59,9 @@ export class NativeAudio extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  preloadComplex(id: string, assetPath: string, volume: number, voices: number, delay: number): Promise<any> {return; }
+  preloadComplex(id: string, assetPath: string, volume: number, voices: number, delay: number): Promise<any> {
+    return;
+  }
 
   /**
    * Plays an audio asset
@@ -69,7 +73,9 @@ export class NativeAudio extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  play(id: string, completeCallback?: Function): Promise<any> {return; }
+  play(id: string, completeCallback?: Function): Promise<any> {
+    return;
+  }
 
   /**
    * Stops playing an audio
@@ -77,7 +83,9 @@ export class NativeAudio extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  stop(id: string): Promise<any> {return; }
+  stop(id: string): Promise<any> {
+    return;
+  }
 
   /**
    * Loops an audio asset infinitely, this only works for complex assets
@@ -85,7 +93,9 @@ export class NativeAudio extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  loop(id: string): Promise<any> {return; }
+  loop(id: string): Promise<any> {
+    return;
+  }
 
   /**
    * Unloads an audio file from memory
@@ -93,7 +103,9 @@ export class NativeAudio extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  unload(id: string): Promise<any> {return; }
+  unload(id: string): Promise<any> {
+    return;
+  }
 
   /**
    * Changes the volume for preloaded complex assets.
@@ -102,6 +114,8 @@ export class NativeAudio extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  setVolumeForComplexAsset(id: string, volume: number): Promise<any> {return; }
+  setVolumeForComplexAsset(id: string, volume: number): Promise<any> {
+    return;
+  }
 
 }

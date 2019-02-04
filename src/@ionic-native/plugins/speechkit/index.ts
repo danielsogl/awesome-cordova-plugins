@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { SpeechKit } from '@ionic-native/speechkit';
+ * import { SpeechKit } from '@ionic-native/speechkit/ngx';
  *
  * constructor(private speechkit: SpeechKit) { }
  *

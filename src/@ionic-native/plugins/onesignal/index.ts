@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface OSNotification {
   /**
@@ -220,6 +220,7 @@ export interface OSActionButton {
    */
   icon: string;
 }
+
 /**
  * OSPermissionState
  */
@@ -237,6 +238,7 @@ export interface OSPermissionState {
    */
   state: any;
 }
+
 /**
  * OSSubscriptionState
  */
@@ -246,6 +248,7 @@ export interface OSSubscriptionState {
   userId: any;
   pushToken: any;
 }
+
 /**
  * Subscription and permissions status
  */
@@ -374,7 +377,7 @@ export enum OSActionType {
  *
  * @usage
  * ```typescript
- * import { OneSignal } from '@ionic-native/onesignal';
+ * import { OneSignal } from '@ionic-native/onesignal/ngx';
  *
  * constructor(private oneSignal: OneSignal) { }
  *
@@ -561,7 +564,7 @@ export class OneSignal extends IonicNativePlugin {
   /**
    * Deletes tags that were previously set on a user with `sendTag` or `sendTags`.
    *
-   * @param {Array<string>} Keys to remove.
+   * @param {string[]} Keys to remove.
    */
   @Cordova({ sync: true })
   deleteTags(keys: string[]): void {}
@@ -708,9 +711,7 @@ export class OneSignal extends IonicNativePlugin {
   }
 
   /**
-   * Allows you to set the user's email address with the OneSignal SDK.
-   * @param {string} email Email address
-   * @param {string} [emailAuthToken] Email auth token
+   * Clears all OneSignal notifications
    */
   @Cordova()
   setEmail(email: string, emailAuthToken?: string): Promise<any> {

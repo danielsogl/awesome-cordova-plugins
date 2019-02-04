@@ -49,7 +49,7 @@ export interface ImageResizerOptions {
  *
  * @usage
  * ```typescript
- * import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
+ * import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer/ngx';
  *
  * constructor(private imageResizer: ImageResizer) { }
  *

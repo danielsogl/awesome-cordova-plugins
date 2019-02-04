@@ -19,7 +19,7 @@ export interface AndroidAccount {
  *
  * @usage
  * ```typescript
- * import { DeviceAccounts } from '@ionic-native/device-accounts';
+ * import { DeviceAccounts } from '@ionic-native/device-accounts/ngx';
  *
  * constructor(private deviceAccounts: DeviceAccounts) { }
  *

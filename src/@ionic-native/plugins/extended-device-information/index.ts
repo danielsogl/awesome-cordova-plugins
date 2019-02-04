@@ -12,7 +12,7 @@ import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { ExtendedDeviceInformation } from '@ionic-native/extended-device-information';
+ * import { ExtendedDeviceInformation } from '@ionic-native/extended-device-information/ngx';
  *
  *
  * constructor(private extendedDeviceInformation: ExtendedDeviceInformation) { }
@@ -35,24 +35,24 @@ export class ExtendedDeviceInformation extends IonicNativePlugin {
   /**
    * Get the device's memory size
    */
-  @CordovaProperty
-  memory: string;
+  @CordovaProperty()
+  memory: number;
 
   /**
    * Get the device's CPU mhz
    */
-  @CordovaProperty
-  cpumhz: number;
+  @CordovaProperty()
+  cpumhz: string;
 
   /**
    * Get the total storage
    */
-  @CordovaProperty
+  @CordovaProperty()
   totalstorage: string;
 
   /**
    * Get the total storage
    */
-  @CordovaProperty
+  @CordovaProperty()
   freestorage: number;
 }

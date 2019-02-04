@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export type AdSize =
   | 'SMART_BANNER'
@@ -106,8 +106,8 @@ export interface AdExtras {
  * IMPORTANT NOTICE: this plugin takes a percentage out of your earnings if you profit more than $1,000. Read more about this on the plugin's repo. For a completely free alternative, see [AdMobPro Free](../admob-free).
  * @usage
  * ```typescript
- * import { AdMobPro } from '@ionic-native/admob-pro';
- * import { Platform } from 'ionic-angular';
+ * import { AdMobPro } from '@ionic-native/admob-pro/ngx';
+ * import { Platform } from '@ionic/angular';
  *
  * constructor(private admob: AdMobPro, private platform: Platform ) { }
  *
@@ -275,7 +275,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onAdFailLoad',
-    element: document
+    element: 'document'
   })
   onAdFailLoad(): Observable<any> {
     return;
@@ -288,7 +288,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onAdLoaded',
-    element: document
+    element: 'document'
   })
   onAdLoaded(): Observable<any> {
     return;
@@ -301,7 +301,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onAdPresent',
-    element: document
+    element: 'document'
   })
   onAdPresent(): Observable<any> {
     return;
@@ -314,7 +314,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onAdLeaveApp',
-    element: document
+    element: 'document'
   })
   onAdLeaveApp(): Observable<any> {
     return;
@@ -327,7 +327,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onAdDismiss',
-    element: document
+    element: 'document'
   })
   onAdDismiss(): Observable<any> {
     return;

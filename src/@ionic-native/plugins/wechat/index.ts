@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Wechat } from '@ionic-native/wechat';
+ * import { Wechat } from '@ionic-native/wechat/ngx';
  *
  *
  * constructor(private wechat: Wechat) { }

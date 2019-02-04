@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface IFirebaseMessage {
   aps: any;
@@ -15,7 +15,7 @@ export interface IFirebaseMessage {
  *
  * @usage
  * ```typescript
- * import { FirebaseMessaging } from '@ionic-native/firebase-messaging';
+ * import { FirebaseMessaging } from '@ionic-native/firebase-messaging/ngx';
  *
  *
  * constructor(private firebaseMessaging: FirebaseMessaging) { }

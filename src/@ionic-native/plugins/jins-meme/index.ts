@@ -5,7 +5,7 @@ import {
   IonicNativePlugin,
   Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 declare const cordova: any;
 
@@ -16,7 +16,7 @@ declare const cordova: any;
  *
  * @usage
  * ```typescript
- * import { JinsMeme } from '@ionic-native/jins-meme';
+ * import { JinsMeme } from '@ionic-native/jins-meme/ngx';
  *
  * constructor(private jinsMeme: JinsMeme) { }
  *
@@ -96,6 +96,7 @@ export class JinsMeme extends IonicNativePlugin {
       return data;
     });
   }
+
   /**
    * Set auto connection mode.
    * @param {Boolean} flag

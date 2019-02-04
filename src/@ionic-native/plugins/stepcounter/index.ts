@@ -11,7 +11,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Stepcounter } from '@ionic-native/stepcounter';
+ * import { Stepcounter } from '@ionic-native/stepcounter/ngx';
  *
  * constructor(private stepcounter: Stepcounter) { }
  *
@@ -41,40 +41,52 @@ export class Stepcounter extends IonicNativePlugin {
    * @returns {Promise<any | number>} Returns a Promise that resolves on success or rejects on failure
    */
   @Cordova()
-  start(startingOffset: number): Promise<number | any> { return; }
+  start(startingOffset: number): Promise<number | any> {
+    return;
+  }
 
   /**
    * Stop the step counter
    * @returns {Promise<any | number>} Returns a Promise that resolves on success with the amount of steps since the start command has been called, or rejects on failure
    */
   @Cordova()
-  stop(): Promise<number | any> { return; }
+  stop(): Promise<number | any> {
+    return;
+  }
 
   /**
    * Get the amount of steps for today (or -1 if it no data given)
    * @returns {Promise<any | number>} Returns a Promise that resolves on success with the amount of steps today, or rejects on failure
    */
   @Cordova()
-  getTodayStepCount(): Promise<number | any> { return; }
+  getTodayStepCount(): Promise<number | any> {
+    return;
+  }
 
   /**
    * Get the amount of steps since the start command has been called
    * @returns {Promise<any | number>} Returns a Promise that resolves on success with the amount of steps since the start command has been called, or rejects on failure
    */
   @Cordova()
-  getStepCount(): Promise<number | any> { return; }
+  getStepCount(): Promise<number | any> {
+    return;
+  }
 
   /**
    * Returns true/false if Android device is running >API level 19 && has the step counter API available
    * @returns {Promise<any | boolean>} Returns a Promise that resolves on success, or rejects on failure
    */
   @Cordova()
-  deviceCanCountSteps(): Promise<boolean | any> { return; }
+  deviceCanCountSteps(): Promise<boolean | any> {
+    return;
+  }
 
   /**
    * Get the step history (JavaScript object)
    * @returns {Promise<any>} Returns a Promise that resolves on success, or rejects on failure
    */
   @Cordova()
-  getHistory(): Promise<any> { return; }
+  getHistory(): Promise<any> {
+    return;
+  }
 }

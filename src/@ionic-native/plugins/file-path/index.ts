@@ -11,7 +11,7 @@ declare const window: any;
  *
  * @usage
  * ```typescript
- * import { FilePath } from '@ionic-native/file-path';
+ * import { FilePath } from '@ionic-native/file-path/ngx';
  *
  * constructor(private filePath: FilePath) { }
  *

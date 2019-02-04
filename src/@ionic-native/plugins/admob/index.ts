@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface AdmobOptions {
   /**
@@ -93,7 +93,7 @@ export interface AdmobOptions {
  *
  * @usage
  * ```typescript
- * import { Admob, AdmobOptions } from '@ionic-native/admob';
+ * import { Admob, AdmobOptions } from '@ionic-native/admob/ngx';
  *
  *
  * constructor(private admob: Admob) {
@@ -246,7 +246,7 @@ export class Admob extends IonicNativePlugin {
    * Use one of these constants as adSize option when calling createBannerView
    * @readonly
    */
-  @CordovaProperty
+  @CordovaProperty()
   readonly AD_SIZE: {
     BANNER: string;
     IAB_MRECT: string;
@@ -259,7 +259,7 @@ export class Admob extends IonicNativePlugin {
    * This enum represents AdMob's supported ad types
    * @readonly
    */
-  @CordovaProperty
+  @CordovaProperty()
   readonly AD_TYPE: {
     BANNER: string;
     INTERSTITIAL: string;
