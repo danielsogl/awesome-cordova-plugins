@@ -1,4 +1,4 @@
-import { fromEvent, Observable } from 'rxjs';
+import { Observable, fromEvent } from 'rxjs';
 
 import { CordovaOptions } from './interfaces';
 
