@@ -154,7 +154,7 @@ export interface Player {
  */
 @Plugin({
   pluginName: 'GooglePlayGamesServices',
-  plugin: 'cordova-plugin-play-games-service',
+  plugin: 'cordova-plugin-play-games-services',
   pluginRef: 'plugins.playGamesServices',
   repo: 'https://github.com/artberri/cordova-plugin-play-games-services',
   platforms: ['Android'],
