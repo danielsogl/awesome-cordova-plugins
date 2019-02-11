@@ -514,15 +514,17 @@ export declare enum BackgroundGeolocationIOSActivity {
  *     };
  *
  * this.backgroundGeolocation.configure(config)
- *   .subscribe((location: BackgroundGeolocationResponse) => {
+ *   .then(() => {
  *
- *     console.log(location);
+ *     this.backgroundGeolocation.on('location').subscribe((location: BackgroundGeolocationResponse) => {
+ *       console.log(location);
  *
- *     // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
- *     // and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
- *     // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
- *     this.backgroundGeolocation.finish(); // FOR IOS ONLY
- *
+ *       // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
+ *       // and the background-task may be completed.  You must do this regardless if your operations are successful or not.
+ *       // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
+ *       this.backgroundGeolocation.finish(); // FOR IOS ONLY
+ *     });
+ *     
  *   });
  *
  * // start recording location
@@ -549,7 +551,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * Configure the plugin.
    *
    * @param options {BackgroundGeolocationConfig} options An object of type Config
-   * @return {Observable<BackgroundGeolocationResponse>}
+   * @return {Promise<any>}
    */
   @Cordova()
   configure(options: BackgroundGeolocationConfig): Promise<any> {
