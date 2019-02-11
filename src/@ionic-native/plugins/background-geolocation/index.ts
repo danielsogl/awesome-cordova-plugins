@@ -524,7 +524,7 @@ export declare enum BackgroundGeolocationIOSActivity {
  *       // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
  *       this.backgroundGeolocation.finish(); // FOR IOS ONLY
  *     });
- *     
+ *
  *   });
  *
  * // start recording location
