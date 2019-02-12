@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export type AndroidExoPlayerAspectRatio = 'FILL_SCREEN' | 'FIT_SCREEN';
 
@@ -158,7 +158,7 @@ export interface AndroidExoPlayerControllerConfig {
  *
  * @usage
  * ```typescript
- * import { AndroidExoPlayer } from '@ionic-native/android-exoplayer';
+ * import { AndroidExoPlayer } from '@ionic-native/android-exoplayer/ngx';
  *
  * constructor(private androidExoPlayer: AndroidExoPlayer) { }
  *

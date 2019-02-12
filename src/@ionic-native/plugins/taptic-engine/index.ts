@@ -1,4 +1,4 @@
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { TapticEngine } from '@ionic-native/taptic-engine';
+ * import { TapticEngine } from '@ionic-native/taptic-engine/ngx';
  *
  * ...
  *
@@ -33,30 +33,63 @@ import { Injectable } from '@angular/core';
 })
 @Injectable()
 export class TapticEngine extends IonicNativePlugin {
-
   /**
    * Use selection feedback generators to indicate a change in selection.
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  selection(): Promise<any> { return; }
+  selection(): Promise<any> {
+    return;
+  }
 
   /**
    * Use this to indicate success/failure/warning to the user.
    * @param options {Object} should be of the type { type: 'success' } (or 'warning'/'error')
-   * @param options.type {string}
+   * @param {'success' | 'warning' | 'error'} options.type
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  notification(options: { type: string }): Promise<any> { return; }
+  notification(options: {
+    type: 'success' | 'warning' | 'error';
+  }): Promise<any> {
+    return;
+  }
 
   /**
    * Use this to indicate success/failure/warning to the user.
    * @param options {Object} should be of the type { style: 'light' } (or 'medium'/'heavy')
-   * @param options.type {string}
+   * @param {'light' | 'medium' | 'heavy'} options.type
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  impact(options: { style: string }): Promise<any> { return; }
+  impact(options: { style: 'light' | 'medium' | 'heavy' }): Promise<any> {
+    return;
+  }
 
+  /**
+   * Tell the taptic engine that a gesture for a selection change is starting.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  gestureSelectionStart(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Tell the taptic engine that a selection changed during a gesture.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  gestureSelectionChanged(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Tell the taptic engine we are done with a gesture. This needs to be called lest resources are not properly recycled.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  gestureSelectionEnd(): Promise<any> {
+    return;
+  }
 }

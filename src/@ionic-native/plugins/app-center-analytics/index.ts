@@ -17,7 +17,7 @@ export interface StringMap {
  *
  * @usage
  * ```typescript
- * import { AppCenterAnalytics } from '@ionic-native/app-center-analytics';
+ * import { AppCenterAnalytics } from '@ionic-native/app-center-analytics/ngx';
  *
  *
  * constructor(private appCenterAnalytics: AppCenterAnalytics) { }

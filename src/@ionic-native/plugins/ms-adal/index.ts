@@ -1,8 +1,7 @@
-import { Plugin, IonicNativePlugin, checkAvailability, InstanceProperty, CordovaInstance } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin, checkAvailability } from '@ionic-native/core';
 
 export interface AuthenticationResult {
-
   accessToken: string;
   accesSTokenType: string;
   expiresOn: Date;
@@ -18,12 +17,13 @@ export interface AuthenticationResult {
    * @returns {String} The authorization header.
    */
   createAuthorizationHeader(): string;
-
 }
 
 export interface TokenCache {
   clear(): void;
+
   readItems(): Promise<TokenCacheItem[]>;
+
   deleteItem(item: TokenCacheItem): void;
 }
 
@@ -50,7 +50,6 @@ export interface UserInfo {
   uniqueId: string;
 }
 
-
 /**
  * @name MS ADAL
  * @description
@@ -60,7 +59,7 @@ export interface UserInfo {
  * Windows Server Active Directory and Windows Azure Active Directory. Here you can find the source code for the library.
  * @usage
  * ```typescript
- * import { MSAdal, AuthenticationContext, AuthenticationResult } from '@ionic-native/ms-adal';
+ * import { MSAdal, AuthenticationContext, AuthenticationResult } from '@ionic-native/ms-adal/ngx';
  *
  *
  * constructor(private msAdal: MSAdal) {}
@@ -97,14 +96,19 @@ export interface UserInfo {
 @Injectable()
 export class MSAdal extends IonicNativePlugin {
 
-  createAuthenticationContext(authority: string, validateAuthority: boolean = true) {
+  createAuthenticationContext(authority: string, validateAuthority = true) {
     let authContext: any;
-    if (checkAvailability(MSAdal.getPluginRef(), null, MSAdal.getPluginName()) === true) {
-      authContext = new (MSAdal.getPlugin()).AuthenticationContext(authority);
+    if (
+      checkAvailability(MSAdal.getPluginRef(), null, MSAdal.getPluginName()) ===
+      true
+    ) {
+      authContext = new (MSAdal.getPlugin()).AuthenticationContext(
+        authority,
+        validateAuthority
+      );
     }
     return new AuthenticationContext(authContext);
   }
-
 }
 
 /**
@@ -112,16 +116,17 @@ export class MSAdal extends IonicNativePlugin {
  */
 export class AuthenticationContext {
 
-  @InstanceProperty
+  @InstanceProperty()
   authority: string;
 
-  @InstanceProperty
+  @InstanceProperty()
   validateAuthority: boolean;
 
-  @InstanceProperty
+  @InstanceProperty()
   tokenCache: any;
 
-  constructor(private _objectInstance: any) {}
+  constructor(private _objectInstance: any) {
+  }
 
   /**
    * Acquires token using interactive flow. It always shows UI and skips token from cache.
@@ -138,7 +143,9 @@ export class AuthenticationContext {
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any): Promise<AuthenticationResult> { return; }
+  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any): Promise<AuthenticationResult> {
+    return;
+  }
 
   /**
    * Acquires token WITHOUT using interactive flow. It checks the cache to return existing result
@@ -153,6 +160,8 @@ export class AuthenticationContext {
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenSilentAsync(resourceUrl: string, clientId: string, userId?: string): Promise<AuthenticationResult> { return; }
+  acquireTokenSilentAsync(resourceUrl: string, clientId: string, userId?: string): Promise<AuthenticationResult> {
+    return;
+  }
 
 }

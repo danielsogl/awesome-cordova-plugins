@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { Intercom } from '@ionic-native/intercom';
+ * import { Intercom } from '@ionic-native/intercom/ngx';
  *
  *
  * constructor(private intercom: Intercom) { }
@@ -38,7 +38,9 @@ export class Intercom extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  registerIdentifiedUser(options: any): Promise<any> { return; }
+  registerIdentifiedUser(options: any): Promise<any> {
+    return;
+  }
 
   /**
    * Register a unidentified user
@@ -46,14 +48,18 @@ export class Intercom extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  registerUnidentifiedUser(options: any): Promise<any> { return; }
+  registerUnidentifiedUser(options: any): Promise<any> {
+    return;
+  }
 
   /**
    * This resets the Intercom integration's cache of your user's identity and wipes the slate clean.
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  reset(): Promise<any> { return; }
+  reset(): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -63,7 +69,9 @@ export class Intercom extends IonicNativePlugin {
    * @deprecated Use setUserHash instead as of Intercom Cordova 4.0.0 and higher https://github.com/intercom/intercom-cordova/blob/master/CHANGELOG.md#400-2017-08-29
    */
   @Cordova()
-  setSecureMode(secureHash: string, secureData: any): Promise<any> { return; }
+  setSecureMode(secureHash: string, secureData: any): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -71,7 +79,9 @@ export class Intercom extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  setUserHash(secureHash: string): Promise<any> { return; }
+  setUserHash(secureHash: string): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -79,7 +89,9 @@ export class Intercom extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  updateUser(attributes: any): Promise<any> { return; }
+  updateUser(attributes: any): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -88,21 +100,27 @@ export class Intercom extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  logEvent(eventName: string, metaData: any): Promise<any> { return; }
+  logEvent(eventName: string, metaData: any): Promise<any> {
+    return;
+  }
 
   /**
    *
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  displayMessenger(): Promise<any> { return; }
+  displayMessenger(): Promise<any> {
+    return;
+  }
 
   /**
    *
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  displayMessageComposer(): Promise<any> { return; }
+  displayMessageComposer(): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -110,21 +128,27 @@ export class Intercom extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  displayMessageComposerWithInitialMessage(initialMessage: string): Promise<any> { return; }
+  displayMessageComposerWithInitialMessage(initialMessage: string): Promise<any> {
+    return;
+  }
 
   /**
    *
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  displayConversationsList(): Promise<any> { return; }
+  displayConversationsList(): Promise<any> {
+    return;
+  }
 
   /**
    *
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  unreadConversationCount(): Promise<any> { return; }
+  unreadConversationCount(): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -132,7 +156,9 @@ export class Intercom extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  setLauncherVisibility(visibility: string): Promise<any> { return; }
+  setLauncherVisibility(visibility: string): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -140,20 +166,26 @@ export class Intercom extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  setInAppMessageVisibility(visibility: string): Promise<any> { return; }
+  setInAppMessageVisibility(visibility: string): Promise<any> {
+    return;
+  }
 
   /**
    *
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  hideMessenger(): Promise<any> { return; }
+  hideMessenger(): Promise<any> {
+    return;
+  }
 
   /**
    *
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  registerForPush(): Promise<any> { return; }
+  registerForPush(): Promise<any> {
+    return;
+  }
 
 }

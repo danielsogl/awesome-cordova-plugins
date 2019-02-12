@@ -5,3 +5,7 @@ node_modules/
 aot/
 scripts/ionic-native-bower
 dist/
+src/@ionic-native/plugins/**/ngx
+*.d.ts
+injectable-classes.json
+

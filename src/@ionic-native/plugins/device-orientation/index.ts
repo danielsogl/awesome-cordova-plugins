@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface DeviceOrientationCompassHeading {
   /**
@@ -44,7 +44,7 @@ export interface DeviceOrientationCompassOptions {
  * @usage
  * ```typescript
  * // DeviceOrientationCompassHeading is an interface for compass
- * import { DeviceOrientation, DeviceOrientationCompassHeading } from '@ionic-native/device-orientation';
+ * import { DeviceOrientation, DeviceOrientationCompassHeading } from '@ionic-native/device-orientation/ngx';
  *
  * constructor(private deviceOrientation: DeviceOrientation) { }
  *

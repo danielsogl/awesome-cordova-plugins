@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 namespace Http {
   export const enum Verb {
@@ -118,20 +118,24 @@ export interface ILocalPackage extends IPackage {
  * Decomposed static side of RemotePackage.
  * For Class Decomposition guidelines see http://www.typescriptlang.org/Handbook#writing-dts-files-guidelines-and-specifics
  */
+
 /* tslint:disable */
 interface RemotePackage_Static {
   new (): IRemotePackage;
 }
+
 /* tslint:enable */
 
 /**
  * Decomposed static side of LocalPackage.
  * For Class Decomposition guidelines see http://www.typescriptlang.org/Handbook#writing-dts-files-guidelines-and-specifics
  */
+
 /* tslint:disable */
 interface LocalPackage_Static {
   new (): ILocalPackage;
 }
+
 /* tslint:enable */
 
 declare const RemotePackage: RemotePackage_Static;
@@ -152,15 +156,9 @@ interface NativeUpdateNotification {
   appVersion: string;
 }
 
-export interface Callback<T> {
-  (error: Error, parameter: T): void;
-}
-export interface SuccessCallback<T> {
-  (result?: T): void;
-}
-export interface ErrorCallback {
-  (error?: Error): void;
-}
+export type Callback<T> = (error: Error, parameter: T) => void;
+export type SuccessCallback<T> = (result?: T) => void;
+export type ErrorCallback = (error?: Error) => void;
 
 interface Configuration {
   appVersion: string;
@@ -177,18 +175,18 @@ declare class AcquisitionStatus {
 
 declare class AcquisitionManager {
   constructor(httpRequester: Http.Requester, configuration: Configuration);
-  public queryUpdateWithCurrentPackage(
+  queryUpdateWithCurrentPackage(
     currentPackage: IPackage,
     callback?: Callback<IRemotePackage | NativeUpdateNotification>
   ): void;
-  public reportStatusDeploy(
+  reportStatusDeploy(
     pkg?: IPackage,
     status?: string,
     previousLabelOrAppVersion?: string,
     previousDeploymentKey?: string,
     callback?: Callback<void>
   ): void;
-  public reportStatusDownload(pkg: IPackage, callback?: Callback<void>): void;
+  reportStatusDownload(pkg: IPackage, callback?: Callback<void>): void;
 }
 
 interface CodePushCordovaPlugin {
@@ -466,7 +464,7 @@ export interface DownloadProgress {
  *
  * @usage
  * ```typescript
- * import { CodePush } from '@ionic-native/code-push';
+ * import { CodePush } from '@ionic-native/code-push/ngx';
  *
  * constructor(private codePush: CodePush) { }
  *

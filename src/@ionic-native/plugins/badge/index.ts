@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Badge
@@ -10,7 +10,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Badge } from '@ionic-native/badge';
+ * import { Badge } from '@ionic-native/badge/ngx';
  *
  * constructor(private badge: Badge) { }
  *

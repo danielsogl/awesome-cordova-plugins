@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 
 export interface ImagePickerOptions {
@@ -46,7 +46,7 @@ export enum OutputType {
  *
  * @usage
  * ```typescript
- * import { ImagePicker } from '@ionic-native/image-picker';
+ * import { ImagePicker } from '@ionic-native/image-picker/ngx';
  *
  *
  * constructor(private imagePicker: ImagePicker) { }
@@ -83,7 +83,9 @@ export class ImagePicker extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getPictures(options: ImagePickerOptions): Promise<any> { return; }
+  getPictures(options: ImagePickerOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Check if we have permission to read images
@@ -92,7 +94,9 @@ export class ImagePicker extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  hasReadPermission(): Promise<boolean> { return; }
+  hasReadPermission(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Request permission to read images
@@ -101,6 +105,8 @@ export class ImagePicker extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  requestReadPermission(): Promise<any> { return; }
+  requestReadPermission(): Promise<any> {
+    return;
+  }
 
 }

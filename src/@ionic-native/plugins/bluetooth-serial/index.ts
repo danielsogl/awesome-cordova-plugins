@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 /**
  * @name Bluetooth Serial
  * @description This plugin enables serial communication over Bluetooth. It was written for communicating between Android or iOS and an Arduino (not Android to Android or iOS to iOS).
  * @usage
  * ```typescript
- * import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+ * import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
  *
  * constructor(private bluetoothSerial: BluetoothSerial) { }
  *
@@ -39,7 +39,6 @@ import { Observable } from 'rxjs/Observable';
 })
 @Injectable()
 export class BluetoothSerial extends IonicNativePlugin {
-
   /**
    * Connect to a Bluetooth device
    * @param {string} macAddress_or_uuid Identifier of the remote device
@@ -50,7 +49,9 @@ export class BluetoothSerial extends IonicNativePlugin {
     observable: true,
     clearFunction: 'disconnect'
   })
-  connect(macAddress_or_uuid: string): Observable<any> { return; }
+  connect(macAddress_or_uuid: string): Observable<any> {
+    return;
+  }
 
   /**
    * Connect insecurely to a Bluetooth device
@@ -62,14 +63,18 @@ export class BluetoothSerial extends IonicNativePlugin {
     observable: true,
     clearFunction: 'disconnect'
   })
-  connectInsecure(macAddress: string): Observable<any> { return; }
+  connectInsecure(macAddress: string): Observable<any> {
+    return;
+  }
 
   /**
    * Disconnect from the connected device
    * @returns {Promise<any>}
    */
   @Cordova()
-  disconnect(): Promise<any> { return; }
+  disconnect(): Promise<any> {
+    return;
+  }
 
   /**
    * Writes data to the serial port
@@ -79,7 +84,9 @@ export class BluetoothSerial extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  write(data: any): Promise<any> { return; }
+  write(data: any): Promise<any> {
+    return;
+  }
 
   /**
    * Gets the number of bytes of data available
@@ -87,7 +94,10 @@ export class BluetoothSerial extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
-  }) available(): Promise<any> { return; }
+  })
+  available(): Promise<any> {
+    return;
+  }
 
   /**
    * Reads data from the buffer
@@ -96,7 +106,9 @@ export class BluetoothSerial extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  read(): Promise<any> { return; }
+  read(): Promise<any> {
+    return;
+  }
 
   /**
    * Reads data from the buffer until it reaches a delimiter
@@ -106,7 +118,9 @@ export class BluetoothSerial extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  readUntil(delimiter: string): Promise<any> { return; }
+  readUntil(delimiter: string): Promise<any> {
+    return;
+  }
 
   /**
    * Subscribe to be notified when data is received
@@ -118,7 +132,9 @@ export class BluetoothSerial extends IonicNativePlugin {
     observable: true,
     clearFunction: 'unsubscribe'
   })
-  subscribe(delimiter: string): Observable<any> { return; }
+  subscribe(delimiter: string): Observable<any> {
+    return;
+  }
 
   /**
    * Subscribe to be notified when data is received
@@ -129,7 +145,9 @@ export class BluetoothSerial extends IonicNativePlugin {
     observable: true,
     clearFunction: 'unsubscribeRawData'
   })
-  subscribeRawData(): Observable<any> { return; }
+  subscribeRawData(): Observable<any> {
+    return;
+  }
 
   /**
    * Clears data in buffer
@@ -138,7 +156,9 @@ export class BluetoothSerial extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  clear(): Promise<any> { return; }
+  clear(): Promise<any> {
+    return;
+  }
 
   /**
    * Lists bonded devices
@@ -147,7 +167,9 @@ export class BluetoothSerial extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  list(): Promise<any> { return; }
+  list(): Promise<any> {
+    return;
+  }
 
   /**
    * Reports if bluetooth is enabled
@@ -156,7 +178,9 @@ export class BluetoothSerial extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  isEnabled(): Promise<any> { return; }
+  isEnabled(): Promise<any> {
+    return;
+  }
 
   /**
    * Reports the connection status
@@ -165,7 +189,9 @@ export class BluetoothSerial extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  isConnected(): Promise<any> { return; }
+  isConnected(): Promise<any> {
+    return;
+  }
 
   /**
    * Reads the RSSI from the connected peripheral
@@ -174,7 +200,9 @@ export class BluetoothSerial extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  readRSSI(): Promise<any> { return; }
+  readRSSI(): Promise<any> {
+    return;
+  }
 
   /**
    * Show the Bluetooth settings on the device
@@ -183,7 +211,9 @@ export class BluetoothSerial extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  showBluetoothSettings(): Promise<any> { return; }
+  showBluetoothSettings(): Promise<any> {
+    return;
+  }
 
   /**
    * Enable Bluetooth on the device
@@ -192,7 +222,9 @@ export class BluetoothSerial extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  enable(): Promise<any> { return; }
+  enable(): Promise<any> {
+    return;
+  }
 
   /**
    * Discover unpaired devices
@@ -201,7 +233,9 @@ export class BluetoothSerial extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Windows Phone']
   })
-  discoverUnpaired(): Promise<any> { return; }
+  discoverUnpaired(): Promise<any> {
+    return;
+  }
 
   /**
    * Subscribe to be notified on Bluetooth device discovery. Discovery process must be initiated with the `discoverUnpaired` function.
@@ -212,7 +246,9 @@ export class BluetoothSerial extends IonicNativePlugin {
     observable: true,
     clearFunction: 'clearDeviceDiscoveredListener'
   })
-  setDeviceDiscoveredListener(): Observable<any> { return; }
+  setDeviceDiscoveredListener(): Observable<any> {
+    return;
+  }
 
   /**
    * Sets the human readable device name that is broadcasted to other devices
@@ -222,7 +258,7 @@ export class BluetoothSerial extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  setName(newName: string): void { }
+  setName(newName: string): void {}
 
   /**
    * Makes the device discoverable by other devices
@@ -232,6 +268,5 @@ export class BluetoothSerial extends IonicNativePlugin {
     platforms: ['Android'],
     sync: true
   })
-  setDiscoverable(discoverableDuration: number): void { }
-
+  setDiscoverable(discoverableDuration: number): void {}
 }

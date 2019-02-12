@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface GlobalizationOptions {
   formatLength: string;
@@ -17,7 +17,7 @@ export interface GlobalizationOptions {
  *
  * @usage
  * ```typescript
- * import { Globalization } from '@ionic-native/globalization';
+ * import { Globalization } from '@ionic-native/globalization/ngx';
  *
  * constructor(private globalization: Globalization) { }
  *
@@ -126,7 +126,7 @@ export class Globalization extends IonicNativePlugin {
   /**
    * Returns an array of the names of the months or days of the week, depending on the client's user preferences and calendar.
    * @param options Object with type (narrow or wide) and item (month or days).
-   * @returns {Promise<{value: Array<string>}>} Returns a promise.
+   * @returns {Promise<{value: string[]}>} Returns a promise.
    */
   @Cordova({
     callbackOrder: 'reverse'
@@ -134,7 +134,7 @@ export class Globalization extends IonicNativePlugin {
   getDateNames(options: {
     type: string;
     item: string;
-  }): Promise<{ value: Array<string> }> {
+  }): Promise<{ value: string[] }> {
     return;
   }
 

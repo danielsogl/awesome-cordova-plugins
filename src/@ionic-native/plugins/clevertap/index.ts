@@ -10,8 +10,8 @@ declare var clevertap: any;
  *
  * @usage
  * ```typescript
- * import { CleverTap } from '@ionic-native/clevertap';
-
+ * import { CleverTap } from '@ionic-native/clevertap/ngx';
+ *
  * constructor(private clevertap: CleverTap) { }
  *
  * ```

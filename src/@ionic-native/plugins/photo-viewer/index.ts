@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface PhotoViewerOptions {
   /**
@@ -13,7 +13,7 @@ export interface PhotoViewerOptions {
  * @description This plugin can display your image in full screen with the ability to pan, zoom, and share the image.
  * @usage
  * ```typescript
- * import { PhotoViewer } from '@ionic-native/photo-viewer';
+ * import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
  *
  * constructor(private photoViewer: PhotoViewer) { }
  *
@@ -39,6 +39,6 @@ export class PhotoViewer extends IonicNativePlugin {
    * @param title {string}
    * @param options {PhotoViewerOptions}
    */
-  @Cordova({sync: true})
-  show(url: string, title?: string, options?: PhotoViewerOptions): void { }
+  @Cordova({ sync: true })
+  show(url: string, title?: string, options?: PhotoViewerOptions): void {}
 }

@@ -47,4 +47,4 @@ function run {
   fi
 }
 
-source $(dirname $0)/../utils.inc.sh
+source $(dirname $0)/utils.inc.sh

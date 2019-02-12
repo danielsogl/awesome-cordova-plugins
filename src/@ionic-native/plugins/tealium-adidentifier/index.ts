@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -7,10 +7,10 @@ import { Injectable } from '@angular/core';
  * @description
  * This module depends on the [Tealium Cordova Plugin](https://github.com/tealium/cordova-plugin). Without it, this module will not do anything.
  * Makes the IDFA and Google Ad Identifier available in the Tealium data layer.
- * 
+ *
  * @usage
  * ```
- * import { TealiumAdIdentifier } from '@ionic-native/tealium-adidentifier';
+ * import { TealiumAdIdentifier } from '@ionic-native/tealium-adidentifier/ngx';
  *
  *
  * constructor(private adIdentifier: TealiumAdIdentifier) { }
@@ -30,12 +30,10 @@ import { Injectable } from '@angular/core';
   pluginRef: 'window.tealiumAdIdentifier', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/Tealium/cordova-plugin', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
-  install: '', // OPTIONAL install command, in case the plugin requires variables
+  install: '' // OPTIONAL install command, in case the plugin requires variables
 })
-
 @Injectable()
 export class TealiumAdIdentifier extends IonicNativePlugin {
-
   /**
    * This function stores the ad identifier information as persistent data
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
@@ -55,5 +53,4 @@ export class TealiumAdIdentifier extends IonicNativePlugin {
   setVolatile(instanceName: string): Promise<any> {
     return;
   }
-
 }

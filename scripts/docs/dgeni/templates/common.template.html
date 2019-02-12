@@ -1,0 +1,299 @@
+---
+layout: "fluid/docs_base"
+version: "<$ version.current.name $>"
+versionHref: "<$ version.current.href.replace('content/','') $>"
+path: "<$ doc.path $>"
+category: native
+id: "<$ doc.name|lower|replace(' ','-') $>"
+title: "<@ if doc.docType == "directive" @><$ doc.name | dashCase $><@ else @><$ doc.name $><@ endif @>"
+header_sub_title: "<$ doc.docType | capital $> in module <$ doc.module $>"
+doc: "<$ doc.name $>"
+docType: "<$ doc.docType $>"
+---
+
+<@- macro interfaceTable(interface) -@>
+<@ for export in doc.moduleDoc.exports -@>
+<@ if export.name == interface @>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <@ for param in export.members @>
+  <tr>
+    <td>
+      <$ param.name $>
+    </td>
+    <td>
+      <code><$ param.returnType | escape $></code>
+    </td>
+    <td>
+      <$ param.description | marked $>
+      <@ if param.optional @><em>(optional)</em><@ endif @>
+    </td>
+  </tr>
+  <@ endfor @>
+  </tbody>
+</table>
+<@ endif @>
+<@- endfor @>
+<@- endmacro -@>
+
+<@- macro githubViewLink(doc) -@>
+<a href="https://github.com/ionic-team/ionic-native/tree/master/<$ doc.fileInfo.relativePath $>#L<$ doc.location.start.line+1 $>-L<$ doc.location.end.line+1 $>"><$ doc.fileInfo.relativePath $> (line <$ doc.location.start.line+1 $>)</a>
+<@- endmacro -@>
+
+<@- macro paramTable(params, isDirective) -@>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th><@ if isDirective @>Attr<@ else @>Param<@ endif @></th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <@- for param in params @>
+  <tr>
+    <td>
+      <$ param.name $>
+      <@- if param.alias @>| <$ param.alias $><@ endif -@>
+    </td>
+    <td>
+      <$ typeList(param.typeList) $>
+    </td>
+    <td>
+      <$ param.description | marked $>
+      <@- if param.defaultValue @><p><em>(default: <$ param.defaultValue $>)</em></p><@ endif -@>
+    </td>
+  </tr>
+  <@ endfor -@>
+  </tbody>
+</table>
+<@- endmacro -@>
+
+<@- macro functionSyntax(fn) @>
+  <@- set sep = joiner(',&nbsp;') -@>
+  <code><$ fn.name $><@- if not fn.isProperty @>(<@ endif -@><@- for param in fn.params @><$ sep() $>
+  <@- if param.type.optional @>[<@- endif -@>
+  <$ param.name $>
+  <@- if param.type.optional -@>]<@- endif -@>
+  <@- endfor -@><@- if not fn.isProperty @>)<@- endif -@></code>
+<@- endmacro -@>
+
+<@- macro typeList(types) -@>
+<@ set separator = joiner("|") @>
+<@- for type in types @><$ separator() $><$ type | code $><@ endfor -@>
+<@- endmacro -@>
+
+<@- macro typeInfo(fn) -@>
+<$ typeList(fn.typeList) $> <$ fn.description $>
+<@- endmacro -@>
+
+<@- macro documentPlatforms(method) -@>
+<@- if method.decorators @>
+<@ for prop in method.decorators[0].argumentInfo @>
+<@ if prop.platforms @>
+<p>
+  <strong>Platforms:</strong>
+  <@- for platform in prop.platforms -@>
+  <strong class="tag"><$ platform $></strong>&nbsp;
+  <@- endfor -@>
+</p>
+<@ endif @>
+<@ endfor @>
+<@- endif @>
+<@- endmacro -@>
+
+<@ macro documentMethod(method) -@>
+<h3><a class="anchor" name="<$ method.name $>" href="#<$ method.name $>"></a><$ functionSyntax(method) $></h3>
+<$ documentPlatforms(method) $>
+<$ method.description $>
+<@ if method.params -@>
+<$ paramTable(method.params) $>
+<@- endif @>
+
+<@ if method.returns -@>
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <$ typeInfo(method.returns) $>
+</div>
+<@- endif @>
+<@- endmacro -@>
+
+<@- macro documentClass(doc) @>
+<@- if doc.statics.length -@>
+<h2><a class="anchor" name="static-members" href="#static-members"></a>Static Members</h2>
+<@ for method in doc.statics -@>
+<$ documentMethod(method) $>
+<@ endfor -@>
+<@ endif @>
+
+<# --- methods in class --- #>
+<@- if doc.members and doc.members.length @>
+
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
+<@ for method in doc.members -@>
+<$ documentMethod(method) $>
+<@- endfor @>
+<@- endif -@>
+<@ endmacro @>
+
+<h1 class="api-title"><$ doc.name $>
+  <@- if doc.beta == true -@>
+    <span class="beta" title="beta">&beta;</span>
+  <@- endif -@>
+  <@- if doc.paid == true -@>
+    <span class="paid" title="paid">Paid</span>
+  <@- endif -@>
+</h1>
+
+<a class="improve-v2-docs" href="http://github.com/ionic-team/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
+  Improve this doc
+</a>
+
+<# --- Decorators --- #>
+<@- if doc.decorators @>
+<@ for prop in doc.decorators[0].argumentInfo @>
+<@ if doc.beta == true @>
+<p class="beta-notice">
+  This plugin is still in beta stage and may not work as expected. Please
+  submit any issues to the <a target="_blank"
+  href="<$ prop.repo $>/issues">plugin repo</a>.
+</p>
+<@ endif @>
+<@ if doc.paid == true @>
+<p class="paid-notice">
+  This plugin might require a paid license, or might take a share of your app's earnings.
+  Check the <a target="_blank" rel="nofollow" href="<$ prop.repo $>">plugin's repo</a> for more information.
+</p>
+<@ endif @>
+
+<# --- Plugin description --- #>
+<$ doc.description | marked $>
+
+<p>Repo:
+  <a href="<$ prop.repo $>">
+    <$ prop.repo $>
+  </a>
+</p>
+
+<# --- Install commands --- #>
+<h2><a class="anchor" name="installation" href="#installation"></a>Installation</h2>
+<ol class="installation">
+  <li>Install the Cordova and Ionic Native plugins:<br>
+    <pre><code class="nohighlight">$ <@ if prop.install @><$ prop.install | replace('<', '&lt;').replace('>', '&gt;') $><@ else @>ionic cordova plugin add <$ prop.plugin $><@ endif @>
+$ npm install @ionic-native/<$ doc.npmId $>
+</code></pre>
+  </li>
+  <li><a href="https://ionicframework.com/docs/native/#Add_Plugins_to_Your_App_Module">Add this plugin to your app's module</a></li>
+</ol>
+
+<# --- Plugin supported platforms --- #>
+<@ if prop.platforms @>
+<h2><a class="anchor" name="platforms" href="#platforms"></a>Supported platforms</h2>
+<ul>
+  <@ for platform in prop.platforms -@>
+  <li><$ platform $></li>
+  <@- endfor @>
+</ul>
+<@ endif @>
+<@ endfor @>
+<@ endif -@> <# --- end of: if doc.decorators --- #>
+
+<# --- Plugin usage --- #>
+<@ if doc.usage @>
+<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
+<$ doc.usage | marked $>
+<@ endif @>
+
+<# --- Plugin attributes --- #>
+<@- if doc.properties -@>
+<h2><a class="anchor" name="attributes" href="#attributes"></a>Attributes:</h2>
+<table class="table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Attribute</th>
+    <@ set hasTypes = false @>
+    <@ for prop in doc.properties @>
+    <@ if prop.type @>
+    <@ set hasTypes = true @>
+    <@ endif @>
+    <@ endfor @>
+    <@ if hasTypes @>
+    <th>Type</th>
+    <@ endif @>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <@- for prop in doc.properties -@>
+  <tr>
+    <td>
+      <$ prop.name $>
+    </td>
+    <@ if hasTypes @>
+    <td>
+      <$ prop.type.name $>
+    </td>
+    <@ endif @>
+    <td>
+      <$ prop.description $>
+    </td>
+  </tr>
+  <@ endfor -@>
+  </tbody>
+</table>
+<@- endif -@>
+
+<# --- Plugin class documentation --- #>
+<$ documentClass(doc) $>
+
+<# --- Advanced usage --- #>
+<@- if doc.advanced -@>
+<h2><a class="anchor" name="advanced" href="#advanced"></a>Advanced</h2>
+<$ doc.advanced | marked $>
+<@- endif -@>
+
+<# --- Other classes --- #>
+<@- for tag in doc.tags.tags -@>
+<@- if tag.tagName == 'classes' -@>
+<@- set classes = tag.description.split('\n') -@>
+<@- for item in classes -@>
+<@- if item.length > 1 -@>
+<@- for export in doc.moduleDoc.exports -@>
+<@- if export.name == item -@>
+<h2><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h2>
+<$ documentClass(export) $>
+<@- endif -@>
+<@- endfor -@>
+<@- endif -@>
+<@- endfor -@>
+<@- endif -@>
+<@- endfor -@>
+
+<# --- Other interfaces --- #>
+<@ for tag in doc.tags.tags -@>
+<@ if tag.tagName == 'interfaces' @>
+<@ set interfaces = tag.description.split('\n') @>
+<@ for item in interfaces -@>
+<@ if item.length > 1 @>
+<h2><a class="anchor" name="<$ item $>" href="#<$ item $>"></a><$ item $></h2>
+<$ interfaceTable(item) $>
+<@ endif @>
+<@- endfor @>
+<@ endif @>
+<@- endfor @>
+
+
+<# --- Related links --- #>
+<@- if doc.see @>
+<h2><a class="anchor" name="related" href="#related"></a>Related</h2>
+<@ for s in doc.see @>
+<$ s | safe $>
+<@- endfor -@>
+<@- endif -@>

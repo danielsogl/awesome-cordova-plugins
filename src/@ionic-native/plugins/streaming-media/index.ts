@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * Object of options to pass into the playVideo method.
@@ -25,9 +25,9 @@ export interface StreamingAudioOptions {
   bgColor?: string;
   /** Background image for audio player. */
   bgImage?: string;
-  /** 
+  /**
    * Background image scale for audio player.
-   * Valid values are: 
+   * Valid values are:
    * fit
    * stretch
    * aspectStretch.
@@ -35,9 +35,9 @@ export interface StreamingAudioOptions {
   bgImageScale?: string;
   /** Start audio player in full screen. iOS only. */
   initFullscreen?: boolean;
-  /** 
-   * Keeps the screen lit and stops it from locking 
-   * while audio is playing. Android only. 
+  /**
+   * Keeps the screen lit and stops it from locking
+   * while audio is playing. Android only.
    */
   keepAwake?: boolean;
   /** Executes after success playing audio. */
@@ -53,7 +53,7 @@ export interface StreamingAudioOptions {
  *
  * @usage
  * ```typescript
- * import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
+ * import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media/ngx';
  *
  * constructor(private streamingMedia: StreamingMedia) { }
  *
@@ -87,7 +87,7 @@ export class StreamingMedia extends IonicNativePlugin {
    * @param options {StreamingVideoOptions} Options
    */
   @Cordova({ sync: true })
-  playVideo(videoUrl: string, options?: StreamingVideoOptions): void { }
+  playVideo(videoUrl: string, options?: StreamingVideoOptions): void {}
 
   /**
    * Streams an audio
@@ -95,24 +95,23 @@ export class StreamingMedia extends IonicNativePlugin {
    * @param options {StreamingAudioOptions} Options
    */
   @Cordova({ sync: true })
-  playAudio(audioUrl: string, options?: StreamingAudioOptions): void { }
+  playAudio(audioUrl: string, options?: StreamingAudioOptions): void {}
 
   /**
    * Stops streaming audio
    */
   @Cordova({ sync: true })
-  stopAudio(): void { }
+  stopAudio(): void {}
 
   /**
    * Pauses streaming audio
    */
   @Cordova({ sync: true, platforms: ['iOS'] })
-  pauseAudio(): void { }
+  pauseAudio(): void {}
 
   /**
    * Resumes streaming audio
    */
   @Cordova({ sync: true, platforms: ['iOS'] })
-  resumeAudio(): void { }
-
+  resumeAudio(): void {}
 }

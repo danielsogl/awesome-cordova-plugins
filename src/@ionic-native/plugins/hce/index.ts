@@ -1,6 +1,5 @@
-
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name hce
@@ -9,7 +8,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { hce } from '@ionic-native/hce';
+ * import { hce } from '@ionic-native/hce/ngx';
  *
  *
  * constructor(private hce: hce) { }
@@ -40,12 +39,11 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class HCE extends IonicNativePlugin {
-
   /**
    * Registers command receiver.
    * @param onCommand {HCECommandEvent} The event handler.
    * @param fail {Function} Error event handler.
-   * 
+   *
    */
   @Cordova()
   registerCommandCallback(onCommand: HCECommandEvent, fail?: Function): void {
@@ -55,26 +53,29 @@ export class HCE extends IonicNativePlugin {
    * Registers Deactivated receiver.
    * @param ok {HCEDeactivatedEvent} Success event handler.
    * @param fail {Function} Error event handler.
-   * 
+   *
    */
   @Cordova()
   registerDeactivatedCallback(ok: HCEDeactivatedEvent, fail?: Function): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
-
   /**
    * Sends response APDU.
    * @param response {Uint8Array} Response
    * @param success {string} Success Callback.
    * @param success {string} Failure Callback.
-   * 
+   *
    */
   @Cordova()
-  sendResponse(response: Uint8Array, success?: Function, failure?: Function): void {
+  sendResponse(
+    response: Uint8Array,
+    success?: Function,
+    failure?: Function
+  ): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 }
 
-export interface HCECommandEvent { (command: Uint8Array): void; }
-export interface HCEDeactivatedEvent { (command: number): void; }
+export type HCECommandEvent = (command: Uint8Array) => void;
+export type HCEDeactivatedEvent = (command: number) => void;

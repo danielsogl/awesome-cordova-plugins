@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * Configurations items that can be updated.
@@ -55,9 +55,9 @@ export interface BackgroundModeConfiguration {
  * @description
  * Cordova plugin to prevent the app from going to sleep while in background.
  * Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, visit: https://github.com/katzer/cordova-plugin-background-mode
- *@usage
+ * @usage
  * ```typescript
- * import { BackgroundMode } from '@ionic-native/background-mode';
+ * import { BackgroundMode } from '@ionic-native/background-mode/ngx';
  *
  * constructor(private backgroundMode: BackgroundMode) { }
  *

@@ -136,7 +136,7 @@ export interface CCKQuantityItem {
  *
  * @usage
  * ```typescript
- * import { ClassKit, CCKContext, CCKBinaryItem, CCKQuantityItem, CCKScoreItem, CCKContextTopic, CCKContextType, CCKBinaryType } from '@ionic-native/class-kit';
+ * import { ClassKit, CCKContext, CCKBinaryItem, CCKQuantityItem, CCKScoreItem, CCKContextTopic, CCKContextType, CCKBinaryType } from '@ionic-native/class-kit/ngx';
  *
  * // Init contexts defined in XML file 'CCK-contexts.xml'
  * constructor( ..., private classKit: ClassKit) {

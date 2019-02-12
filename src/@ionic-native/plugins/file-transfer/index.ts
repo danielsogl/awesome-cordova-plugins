@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
-  checkAvailability,
   CordovaInstance,
   InstanceCheck,
   IonicNativePlugin,
-  Plugin
+  Plugin,
+  checkAvailability
 } from '@ionic-native/core';
 
 export interface FileUploadOptions {
@@ -118,7 +118,7 @@ export interface FileTransferError {
  *
  * @usage
  * ```typescript
- * import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+ * import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
  * import { File } from '@ionic-native/file';
  *
  * constructor(private transfer: FileTransfer, private file: File) { }
@@ -152,7 +152,7 @@ export interface FileTransferError {
  *      // error
  *    })
  * }
- **
+ *
  * download() {
  *   const url = 'http://www.example.com/file.pdf';
  *   fileTransfer.download(url, this.file.dataDirectory + 'file.pdf').then((entry) => {
@@ -300,5 +300,6 @@ export class FileTransferObject {
   @CordovaInstance({
     sync: true
   })
-  abort(): void {}
+  abort(): void {
+  }
 }

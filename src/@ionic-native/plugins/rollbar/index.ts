@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @beta
@@ -9,7 +9,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Rollbar } from '@ionic-native/rollbar';
+ * import { Rollbar } from '@ionic-native/rollbar/ngx';
  *
  * constructor(private rollbar: Rollbar) { }
  *
@@ -36,6 +36,8 @@ export class Rollbar extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when the plugin successfully initializes
    */
   @Cordova()
-  init(): Promise<any> { return; }
+  init(): Promise<any> {
+    return;
+  }
 
 }

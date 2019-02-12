@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, CordovaFunctionOverride, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 declare const window: any;
 
@@ -10,7 +10,7 @@ declare const window: any;
  * Geofences persist after device reboot. Geofences will be monitored even when the app is not running.
  * @usage
  * ```typescript
- * import { Geofence } from '@ionic-native/geofence';
+ * import { Geofence } from '@ionic-native/geofence/ngx';
  *
  * ...
  *
@@ -84,7 +84,6 @@ declare const window: any;
 })
 @Injectable()
 export class Geofence extends IonicNativePlugin {
-
   TransitionType = {
     ENTER: 1,
     EXIT: 2,
@@ -96,7 +95,7 @@ export class Geofence extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @CordovaFunctionOverride()
-  onTransitionReceived(): Observable<any> { return; };
+  onTransitionReceived(): Observable<any> { return; }
 
   /**
    * Initializes the plugin. User will be prompted to allow the app to use location and notifications.
@@ -104,7 +103,7 @@ export class Geofence extends IonicNativePlugin {
    * @returns {Promise<void>}
    */
   @Cordova()
-  initialize(): Promise<void> { return; };
+  initialize(): Promise<void> { return; }
 
   /**
    * Adds a new geofence or array of geofences. For geofence object, see above.
@@ -112,7 +111,7 @@ export class Geofence extends IonicNativePlugin {
    * @returns {Promise<void>}
    */
   @Cordova()
-  addOrUpdate(geofences: Object | Array<Object>): Promise<void> { return; };
+  addOrUpdate(geofences: Object | Object[]): Promise<void> { return; }
 
   /**
    * Removes a geofence or array of geofences. `geofenceID` corresponds to one or more IDs specified when the
@@ -121,7 +120,7 @@ export class Geofence extends IonicNativePlugin {
    * @returns {Promise<void>}
    */
   @Cordova()
-  remove(geofenceId: string | Array<string>): Promise<void> { return; };
+  remove(geofenceId: string | string[]): Promise<void> { return; }
 
   /**
    * Removes all geofences.
@@ -129,15 +128,15 @@ export class Geofence extends IonicNativePlugin {
    * @returns {Promise<void>}
    */
   @Cordova()
-  removeAll(): Promise<void> { return; };
+  removeAll(): Promise<void> { return; }
 
   /**
    * Returns an array of geofences currently being monitored.
    *
-   * @returns {Promise<Array<string>>}
+   * @returns {Promise<string[]>}
    */
   @Cordova()
-  getWatched(): Promise<string> { return; };
+  getWatched(): Promise<string> { return; }
 
   /**
    * Called when the user clicks a geofence notification. iOS and Android only.
@@ -145,12 +144,11 @@ export class Geofence extends IonicNativePlugin {
    * @returns {Observable<any>}
    */
   onNotificationClicked(): Observable<any> {
-
-    return new Observable<any>((observer) => {
-      window && window.geofence && (window.geofence.onNotificationClicked = observer.next.bind(observer));
-      return () => window.geofence.onNotificationClicked = () => { };
+    return new Observable<any>(observer => {
+      window &&
+        window.geofence &&
+        (window.geofence.onNotificationClicked = observer.next.bind(observer));
+      return () => (window.geofence.onNotificationClicked = () => {});
     });
-
   }
-
 }

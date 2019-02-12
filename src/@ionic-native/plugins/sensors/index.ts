@@ -29,7 +29,7 @@ export const enum TYPE_SENSOR {
  *
  * @usage
  * ```typescript
- * import { Sensors, TYPE_SENSOR } from '@ionic-native/sensors';
+ * import { Sensors, TYPE_SENSOR } from '@ionic-native/sensors/ngx';
  *
  *
  * constructor(private sensors: Sensors) { }

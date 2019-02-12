@@ -16,7 +16,7 @@ export interface Base64ToGalleryOptions {
  * @description This plugin allows you to save base64 data as a png image into the device
  * @usage
  * ```typescript
- * import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
+ * import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
  *
  * constructor(private base64ToGallery: Base64ToGallery) { }
  *

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
-  checkAvailability,
   CordovaInstance,
   IonicNativePlugin,
-  Plugin
+  Plugin,
+  checkAvailability
 } from '@ionic-native/core';
 
 export interface FlurryAnalyticsOptions {
@@ -188,7 +188,7 @@ export class FlurryAnalyticsObject {
  *
  * @usage
  * ```typescript
- * import { FlurryAnalytics, FlurryAnalyticsObject, FlurryAnalyticsOptions } from '@ionic-native/flurry-analytics';
+ * import { FlurryAnalytics, FlurryAnalyticsObject, FlurryAnalyticsOptions } from '@ionic-native/flurry-analytics/ngx';
  *
  * constructor(private flurryAnalytics: FlurryAnalytics) { }
  *
@@ -198,7 +198,7 @@ export class FlurryAnalyticsObject {
  *  appKey: '<your app key>', // REQUIRED
  *  reportSessionsOnClose: true,
  *  enableLogging: true
- * };
+ * }
  *
  * let fa: FlurryAnalyticsObject = this.flurryAnalytics.create(options);
  *

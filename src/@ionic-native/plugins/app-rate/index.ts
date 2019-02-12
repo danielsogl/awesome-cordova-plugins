@@ -75,7 +75,7 @@ export interface AppRateCustomLocale {
   /** No button label */
   noButtonLabel?: string;
 
-  /** App rate promt title */
+  /** App rate prompt title */
   appRatePromptTitle?: string;
 
   /** Feedback prompt title */
@@ -134,7 +134,7 @@ export interface AppUrls {
  *
  * @usage
  * ```typescript
- * import { AppRate } from '@ionic-native/app-rate';
+ * import { AppRate } from '@ionic-native/app-rate/ngx';
  *
  * constructor(private appRate: AppRate) { }
  *
@@ -144,7 +144,7 @@ export interface AppUrls {
  *   ios: '<app_id>',
  *   android: 'market://details?id=<package_name>',
  *   windows: 'ms-windows-store://review/?ProductId=<store_id>'
- * };
+ * }
  *
  * this.appRate.promptForRating(true);
  *
@@ -156,7 +156,7 @@ export interface AppUrls {
  *    android: 'market://details?id=<package_name>',
  *    windows: 'ms-windows-store://review/?ProductId=<store_id>'
  *   }
- * };
+ * }
  *
  * this.appRate.promptForRating(false);
  * ```
@@ -181,7 +181,8 @@ export class AppRate extends IonicNativePlugin {
    * Configure various settings for the Rating View.
    * See table below for options
    */
-  @CordovaProperty preferences: AppRatePreferences;
+  @CordovaProperty()
+  preferences: AppRatePreferences;
 
   /**
    * Prompts the user for rating

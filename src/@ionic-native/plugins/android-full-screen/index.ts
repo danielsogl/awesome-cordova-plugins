@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * Bit flag values for setSystemUiVisibility()
- * @see	https://developer.android.com/reference/android/view/View.html#setSystemUiVisibility(int)
+ * @see  https://developer.android.com/reference/android/view/View.html#setSystemUiVisibility(int)
  */
 export enum AndroidSystemUiFlags {
   /** View has requested the system UI (status bar) to be visible (the default). SYSTEM_UI_FLAG_VISIBLE */
@@ -36,7 +36,7 @@ export enum AndroidSystemUiFlags {
  * In Android 4.4+, however, you can now enter true full screen, fully interactive immersive mode. In this mode, your app will remain in true full screen until you choose otherwise; users can swipe down from the top of the screen to temporarily display the system UI.
  * @usage
  * ```typescript
- * import { AndroidFullScreen } from '@ionic-native/android-full-screen';
+ * import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx';
  *
  * constructor(private androidFullScreen: AndroidFullScreen) { }
  *
@@ -62,63 +62,81 @@ export class AndroidFullScreen extends IonicNativePlugin {
    * @return {Promise<void>}
    */
   @Cordova()
-  isSupported(): Promise<void> { return; }
+  isSupported(): Promise<void> {
+    return;
+  }
 
   /**
    * Is immersive mode supported?
    * @return {Promise<void>}
    */
   @Cordova()
-  isImmersiveModeSupported(): Promise<void> { return; }
+  isImmersiveModeSupported(): Promise<void> {
+    return;
+  }
 
   /**
    * The width of the screen in immersive mode.
    * @return {Promise<number>}
    */
   @Cordova()
-  immersiveWidth(): Promise<number> { return; }
+  immersiveWidth(): Promise<number> {
+    return;
+  }
 
   /**
    * The height of the screen in immersive mode.
    * @return {Promise<number>}
    */
   @Cordova()
-  immersiveHeight(): Promise<number> { return; }
+  immersiveHeight(): Promise<number> {
+    return;
+  }
 
   /**
    * Hide system UI until user interacts.
    * @return {Promise<void>}
    */
   @Cordova()
-  leanMode(): Promise<void> { return; }
+  leanMode(): Promise<void> {
+    return;
+  }
 
   /**
    * Show system UI.
    * @return {Promise<void>}
    */
   @Cordova()
-  showSystemUI(): Promise<void> { return; }
+  showSystemUI(): Promise<void> {
+    return;
+  }
 
   /**
    * Extend your app underneath the status bar (Android 4.4+ only).
    * @return {Promise<void>}
    */
   @Cordova()
-  showUnderStatusBar(): Promise<void> { return; }
+  showUnderStatusBar(): Promise<void> {
+    return;
+  }
 
   /**
    * Extend your app underneath the system UI (Android 4.4+ only).
    * @return {Promise<void>}
    */
   @Cordova()
-  showUnderSystemUI(): Promise<void> { return; }
+  showUnderSystemUI(): Promise<void> {
+    return;
+  }
 
   /**
    * Hide system UI and keep it hidden (Android 4.4+ only).
    * @return {Promise<void>}
    */
   @Cordova()
-  immersiveMode(): Promise<void> { return; }
+  immersiveMode(): Promise<void> {
+    return;
+  }
 
   /**
    * Manually set the the system UI to a custom mode. This mirrors the Android method of the same name. (Android 4.4+ only).
@@ -127,5 +145,7 @@ export class AndroidFullScreen extends IonicNativePlugin {
    * @return {Promise<void>}
    */
   @Cordova()
-  setSystemUiVisibility(visibility: AndroidSystemUiFlags): Promise<void> { return; }
+  setSystemUiVisibility(visibility: AndroidSystemUiFlags): Promise<void> {
+    return;
+  }
 }

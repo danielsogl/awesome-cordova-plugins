@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @beta
@@ -10,7 +10,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { HyperTrack } from '@ionic-native/hyper-track';
+ * import { HyperTrack } from '@ionic-native/hyper-track/ngx';
  *
  * constructor(private hyperTrack: HyperTrack) { }
  *
@@ -56,8 +56,8 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *   this.hyperTrack.stopTracking().then(success => {
  *     // Handle success (String). Should be "OK".
  *   }, error => {});
- * 
- * }, error => {});* 
+ *
+ * }, error => {});*
  * ```
  */
 @Plugin({
@@ -75,7 +75,9 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the result text (which is the same as the given text) if successful, or it gets rejected if an error ocurred.
    */
   @Cordova()
-  helloWorld(text: String): Promise<String> { return; }
+  helloWorld(text: String): Promise<String> {
+    return;
+  }
 
   /**
    * Create a new user to identify the current device or get a user from a lookup id.
@@ -86,7 +88,9 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with a string representation of the User's JSON, or it gets rejected if an error ocurred.
    */
   @Cordova()
-  getOrCreateUser(name: String, phone: String, photo: String, lookupId: String): Promise<any> { return; }
+  getOrCreateUser(name: String, phone: String, photo: String, lookupId: String): Promise<any> {
+    return;
+  }
 
   /**
    * Set UserId for the SDK created using HyperTrack APIs. This is useful if you already have a user previously created.
@@ -94,14 +98,18 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with an "OK" string if successful, or it gets rejected if an error ocurred. An "OK" response doesn't necessarily mean that the userId was found. It just means that it was set correctly.
    */
   @Cordova()
-  setUserId(userId: String): Promise<any> { return; }
+  setUserId(userId: String): Promise<any> {
+    return;
+  }
 
   /**
    * Enable the SDK and start tracking. This will fail if there is no user set.
    * @returns {Promise<any>} Returns a Promise that resolves with the userId (String) of the User being tracked if successful, or it gets rejected if an error ocurred. One example of an error is not setting a User with getOrCreateUser() or setUserId() before calling this function.
    */
   @Cordova()
-  startTracking(): Promise<any> { return; }
+  startTracking(): Promise<any> {
+    return;
+  }
 
   /**
    * Create and assign an action to the current user using specified parameters
@@ -113,7 +121,9 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with a string representation of the Action's JSON, or it gets rejected if an error ocurred.
    */
   @Cordova()
-  createAndAssignAction(type: String, lookupId: String, expectedPlaceAddress: String, expectedPlaceLatitude: Number, expectedPlaceLongitude: Number): Promise<any> { return; }
+  createAndAssignAction(type: String, lookupId: String, expectedPlaceAddress: String, expectedPlaceLatitude: Number, expectedPlaceLongitude: Number): Promise<any> {
+    return;
+  }
 
   /**
    * Complete an action from the SDK by its ID
@@ -121,7 +131,9 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with an "OK" string if successful, or it gets rejected if an error ocurred.
    */
   @Cordova()
-  completeAction(actionId: String): Promise<any> { return; }
+  completeAction(actionId: String): Promise<any> {
+    return;
+  }
 
   /**
    * Complete an action from the SDK using Action's lookupId as parameter
@@ -129,7 +141,9 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with an "OK" string if successful, or it gets rejected if an error ocurred.
    */
   @Cordova()
-  completeActionWithLookupId(lookupId: String): Promise<any> { return; }
+  completeActionWithLookupId(lookupId: String): Promise<any> {
+    return;
+  }
 
   /**
    * Disable the SDK and stop tracking.
@@ -137,14 +151,18 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the an "OK" string if successful, or it gets rejected if an error ocurred. One example of an error is not setting a User with getOrCreateUser() or setUserId() before calling this function.
    */
   @Cordova()
-  stopTracking(): Promise<any> { return; }
+  stopTracking(): Promise<any> {
+    return;
+  }
 
   /**
    * Get user's current location from the SDK
    * @returns {Promise<any>} Returns a Promise that resolves with a string representation of the Location's JSON, or it gets rejected if an error ocurred.
    */
   @Cordova()
-  getCurrentLocation(): Promise<any> { return; }
+  getCurrentLocation(): Promise<any> {
+    return;
+  }
 
   /**
    * Check if Location permission has been granted to the app (for Android).
@@ -152,7 +170,9 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if location permission was granted, or it gets rejected if an error ocurred.
    */
   @Cordova()
-  checkLocationPermission(): Promise<any> { return; }
+  checkLocationPermission(): Promise<any> {
+    return;
+  }
 
   /**
    * Request user to grant Location access to the app (for Anrdoid).
@@ -160,7 +180,9 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if Location access was given to the app, or it gets rejected if an error ocurred.
    */
   @Cordova()
-  requestPermissions(): Promise<any> { return; }
+  requestPermissions(): Promise<any> {
+    return;
+  }
 
   /**
    * Check if Location services are enabled on the device (for Android).
@@ -168,7 +190,9 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if location services are enabled, or it gets rejected if an error ocurred.
    */
   @Cordova()
-  checkLocationServices(): Promise<any> { return; }
+  checkLocationServices(): Promise<any> {
+    return;
+  }
 
   /**
    * Request user to enable Location services on the device.
@@ -176,5 +200,7 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if Location services were enabled, or it gets rejected if an error ocurred.
    */
   @Cordova()
-  requestLocationServices(): Promise<any> { return; }
+  requestLocationServices(): Promise<any> {
+    return;
+  }
 }
