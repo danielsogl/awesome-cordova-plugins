@@ -77,10 +77,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Object} an object representing a basic HTTP Authorization header of the form {'Authorization': 'Basic base64EncodedUsernameAndPassword'}
    */
   @Cordova({ sync: true })
-  getBasicAuthHeader(
-    username: string,
-    password: string
-  ): { Authorization: string } {
+  getBasicAuthHeader(username: string, password: string): { Authorization: string } {
     return;
   }
 
@@ -177,13 +174,14 @@ export class HTTP extends IonicNativePlugin {
   /**
    * Set SSL Cert handling mode, being one of the following values
    * default: default SSL cert handling using system's CA certs
+   * legacy: use legacy default behavior (< 2.0.3), excluding user installed CA certs (only for Android)
    * nocheck: disable SSL cert checking, trusting all certs (meant to be used only for testing purposes)
    * pinned: trust only provided certs
    * @see https://github.com/silkimen/cordova-plugin-advanced-http#setsslcertmode
-   * @param {'default' | 'nocheck' | 'pinned'} mode SSL Cert handling mode
+   * @param {'default' | 'legacy' | 'nocheck' | 'pinned'} mode SSL Cert handling mode
    */
   @Cordova()
-  setSSLCertMode(mode: 'default' | 'nocheck' | 'pinned'): Promise<void> {
+  setSSLCertMode(mode: 'default' | 'legacy' | 'nocheck' | 'pinned'): Promise<void> {
     return;
   }
 
@@ -279,13 +277,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
    */
   @Cordova()
-  uploadFile(
-    url: string,
-    body: any,
-    headers: any,
-    filePath: string,
-    name: string
-  ): Promise<any> {
+  uploadFile(url: string, body: any, headers: any, filePath: string, name: string): Promise<any> {
     return;
   }
 
@@ -298,12 +290,39 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
    */
   @Cordova()
-  downloadFile(
+  downloadFile(url: string, body: any, headers: any, filePath: string): Promise<any> {
+    return;
+  }
+
+  /**
+   *
+   * @param url {string} The url to send the request to
+   * @param options {Object} options for individual request
+   * @param options.method {string} request method
+   * @param options.data {Object} payload to be send to the server (only applicable on post, put or patch methods)
+   * @param options.params {Object} query params to be appended to the URL (only applicable on get, head, delete, upload or download methods)
+   * @param options.serializer {string} data serializer to be used (only applicable on post, put or patch methods), defaults to global serializer value, see setDataSerializer for supported values
+   * @param options.timeout {number} timeout value for the request in seconds, defaults to global timeout value
+   * @param options.headers {Object} headers object (key value pair), will be merged with global values
+   * @param options.filePath {string} filePath to be used during upload and download see uploadFile and downloadFile for detailed information
+   * @param options.name {string} name to be used during upload see uploadFile for detailed information
+   *
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  sendRequest(
     url: string,
-    body: any,
-    headers: any,
-    filePath: string
-  ): Promise<any> {
+    options: {
+      method: 'get' | 'post' | 'put' | 'patch' | 'head' | 'delete' | 'upload' | 'download';
+      data?: { [index: string]: any };
+      params?: { [index: string]: string | number };
+      serializer?: 'json' | 'urlencoded' | 'utf8';
+      timeout?: number;
+      headers?: { [index: string]: string };
+      filePath?: string;
+      name?: string;
+    }
+  ): Promise<HTTPResponse> {
     return;
   }
 }
