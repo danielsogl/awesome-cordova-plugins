@@ -13,18 +13,20 @@ export interface AppLauncherOptions {
  *
  * @usage
  * ```typescript
- * import { AppLauncher, AppLauncherOptions } from '@ionic-native/app-launcher';
- * import { Platform } from 'ionic-angular';
+ * import { AppLauncher, AppLauncherOptions } from '@ionic-native/app-launcher/ngx';
+ * import { Platform } from '@ionic/angular';
  *
  * constructor(private appLauncher: AppLauncher, private platform: Platform) { }
  *
  * ...
+ *
  * const options: AppLauncherOptions = {
  * }
- * if (this.platform.is('ios')) {
- *  options.uri = 'fb://'
- * }else{
- * options.packageName = 'com.facebook.katana'
+ *
+ * if(this.platform.is('ios')) {
+ *   options.uri = 'fb://'
+ * } else {
+ *   options.packageName = 'com.facebook.katana'
  * }
  *
  * this.appLauncher.canLaunch(options)
@@ -44,7 +46,7 @@ export interface AppLauncherOptions {
 export class AppLauncher extends IonicNativePlugin {
   /**
    * Check if any apps are installed that can launch via a specified URI or Package Name.
-   * @param options {AppLauncherOptions} App Launcher options
+   * @param options App Launcher options
    * @return {Promise<any>} Returns a promise that resolves if the app is installed
    */
   @Cordova()
@@ -54,7 +56,7 @@ export class AppLauncher extends IonicNativePlugin {
 
   /**
    * Launches the app via a specified URI or Package Name
-   * @param options {AppLauncherOptions} App Launcher options
+   * @param options App Launcher options
    * @return {Promise<any>} Returns a promise that resolves the launched app
    */
   @Cordova()

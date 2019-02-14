@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics';
+ * import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
  *
  *
  * constructor(private firebaseCrashlytics: FirebaseCrashlytics) { }
@@ -25,10 +25,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   pluginName: 'FirebaseCrashlytics',
   plugin: 'cordova-plugin-firebase-crashlytics',
   pluginRef: 'FirebaseCrashlytics',
-  repo:
-    'https://github.com/ReallySmallSoftware/cordova-plugin-firebase-crashlytics',
-  install:
-    'ionic cordova plugin add cordova-plugin-firebase-crashlytics --variable ANDROID_FIREBASE_CORE_VERSION=16.0.0',
+  repo: 'https://github.com/ReallySmallSoftware/cordova-plugin-firebase-crashlytics',
+  install: 'ionic cordova plugin add cordova-plugin-firebase-crashlytics --variable ANDROID_FIREBASE_CORE_VERSION=16.0.0',
   installVariables: ['ANDROID_FIREBASE_CORE_VERSION'],
   platforms: ['Android', 'iOS']
 })
