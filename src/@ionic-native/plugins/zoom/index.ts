@@ -124,7 +124,7 @@ export class Zoom extends IonicNativePlugin {
    * @param meetingNo       meeting number.
    * @param meetingPassword meeting password.
    * @param options meeting options.
-   * @return {Promise<any>>}
+   * @return {Promise<any>}
    */
   @Cordova()
   joinMeeting(meetingNo: string, meetingPassword: string, displayName: string, options: any): Promise<any> { return; }
