@@ -577,6 +577,43 @@ export class CleverTap extends IonicNativePlugin {
     return;
   }
 
+  /****************************
+  * Notification Inbox methods
+  ****************************/
+  /**
+   * Call this method to initialize the App Inbox
+   */
+  @Cordova()
+  initializeInbox(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this method to get the count of unread Inbox messages
+   */
+  @Cordova()
+  getInboxMessageUnreadCount(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this method to get the count of total Inbox messages
+   */
+  @Cordova()
+  getInboxMessageCount(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this method to open the App Inbox
+   * @param styleConfig : any or empty object
+   */
+  @Cordova()
+  showInbox(styleConfig: any): Promise<any> {
+    return;
+  }
+
+
   /*******************
    * Developer Options
    ******************/
