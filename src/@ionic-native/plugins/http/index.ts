@@ -77,10 +77,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Object} an object representing a basic HTTP Authorization header of the form {'Authorization': 'Basic base64EncodedUsernameAndPassword'}
    */
   @Cordova({ sync: true })
-  getBasicAuthHeader(
-    username: string,
-    password: string
-  ): { Authorization: string } {
+  getBasicAuthHeader(username: string, password: string): { Authorization: string } {
     return;
   }
 
@@ -177,13 +174,14 @@ export class HTTP extends IonicNativePlugin {
   /**
    * Set SSL Cert handling mode, being one of the following values
    * default: default SSL cert handling using system's CA certs
+   * legacy: use legacy default behavior (< 2.0.3), excluding user installed CA certs (only for Android)
    * nocheck: disable SSL cert checking, trusting all certs (meant to be used only for testing purposes)
    * pinned: trust only provided certs
    * @see https://github.com/silkimen/cordova-plugin-advanced-http#setsslcertmode
-   * @param {'default' | 'nocheck' | 'pinned'} mode SSL Cert handling mode
+   * @param {'default' | 'legacy' | 'nocheck' | 'pinned'} mode SSL Cert handling mode
    */
   @Cordova()
-  setSSLCertMode(mode: 'default' | 'nocheck' | 'pinned'): Promise<void> {
+  setSSLCertMode(mode: 'default' | 'legacy' | 'nocheck' | 'pinned'): Promise<void> {
     return;
   }
 
@@ -279,13 +277,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
    */
   @Cordova()
-  uploadFile(
-    url: string,
-    body: any,
-    headers: any,
-    filePath: string,
-    name: string
-  ): Promise<any> {
+  uploadFile(url: string, body: any, headers: any, filePath: string, name: string): Promise<any> {
     return;
   }
 
@@ -298,12 +290,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
    */
   @Cordova()
-  downloadFile(
-    url: string,
-    body: any,
-    headers: any,
-    filePath: string
-  ): Promise<any> {
+  downloadFile(url: string, body: any, headers: any, filePath: string): Promise<any> {
     return;
   }
 }
