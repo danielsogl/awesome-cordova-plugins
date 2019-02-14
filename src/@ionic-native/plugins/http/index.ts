@@ -293,4 +293,36 @@ export class HTTP extends IonicNativePlugin {
   downloadFile(url: string, body: any, headers: any, filePath: string): Promise<any> {
     return;
   }
+
+  /**
+   *
+   * @param url {string} The url to send the request to
+   * @param options {Object} options for individual request
+   * @param options.method {string} request method
+   * @param options.data {Object} payload to be send to the server (only applicable on post, put or patch methods)
+   * @param options.params {Object} query params to be appended to the URL (only applicable on get, head, delete, upload or download methods)
+   * @param options.serializer {string} data serializer to be used (only applicable on post, put or patch methods), defaults to global serializer value, see setDataSerializer for supported values
+   * @param options.timeout {number} timeout value for the request in seconds, defaults to global timeout value
+   * @param options.headers {Object} headers object (key value pair), will be merged with global values
+   * @param options.filePath {string} filePath to be used during upload and download see uploadFile and downloadFile for detailed information
+   * @param options.name {string} name to be used during upload see uploadFile for detailed information
+   *
+   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   */
+  @Cordova()
+  sendRequest(
+    url: string,
+    options: {
+      method: 'get' | 'post' | 'put' | 'patch' | 'head' | 'delete' | 'upload' | 'download';
+      data?: { [index: string]: any };
+      params?: { [index: string]: string | number };
+      serializer?: 'json' | 'urlencoded' | 'utf8';
+      timeout?: number;
+      headers?: { [index: string]: string };
+      filePath?: string;
+      name?: string;
+    }
+  ): Promise<HTTPResponse> {
+    return;
+  }
 }
