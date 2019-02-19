@@ -60,10 +60,10 @@ export interface CardPrimarySuffixData {
  *    // Catch {{err}} here
  *  });
  *
- * 
+ *
  * ...
  *
- * 
+ *
  * // Simple call to check existence and ellibagility to add a card
  * this.appleWallet.isCardExistInWalletOrWatch(data: CardPrimarySuffixData)
  *  .then((res: EligibilityData) => {
@@ -73,10 +73,10 @@ export interface CardPrimarySuffixData {
  *    // Catch {{err}} here
  *  });
  *
- * 
+ *
  * ...
  *
- * 
+ *
  * // Simple call to check out if there is any paired Watches so that you can toggle visibility of 'Add to Watch' button
  * this.appleWallet.isPairedWatchExist()
  *  .then((res: WatchExistData) => {
@@ -89,7 +89,7 @@ export interface CardPrimarySuffixData {
  *
  * ...
  *
- * 
+ *
  * // Simple call with the configuration data needed to instantiate a new PKAddPaymentPassViewController object.
  * // This method provides the data needed to create a request to add your payment pass (credit/debit card). After a successful callback, pass the certificate chain to your issuer server-side using our callback delegate method `AppleWallet.completeAddPaymentPass`. The issuer server-side should returns an encrypted JSON payload containing the encrypted card data, which is required to be get the final response
  *
