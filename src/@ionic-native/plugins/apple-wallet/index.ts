@@ -28,7 +28,7 @@ export interface EligibilityData {
 }
 
 export interface WatchExistData {
-  isWatchPaired: boolean
+  isWatchPaired: boolean;
 }
 
 export interface CardPrimarySuffixData {
