@@ -87,7 +87,9 @@ export interface NameOrOptions {
   repo: 'https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Calendar extends IonicNativePlugin {
   /**
    * This function checks if we have permission to read/write from/to the calendar.

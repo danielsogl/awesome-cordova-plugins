@@ -201,7 +201,9 @@ export class IAPError {
   platforms: ['iOS', 'Android', 'Windows'],
   install: 'ionic cordova plugin add cc.fovea.cordova.purchase --variable BILLING_KEY="<ANDROID_BILLING_KEY>"'
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class InAppPurchase2 extends IonicNativePlugin {
 
   @CordovaProperty()

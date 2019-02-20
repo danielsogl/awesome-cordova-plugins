@@ -31,7 +31,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   installVariables: [],
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LottieSplashScreen extends IonicNativePlugin {
   /**
    * This function shows a Lottie splash screen. If no arguments are given, it defaults to the config.xml values, however you can pass (new) options here to change the behavior on runtime. (For easier reading the TypeScript notation is used)

@@ -184,7 +184,9 @@ export class SQLiteObject {
   repo: 'https://github.com/litehelpers/Cordova-sqlite-storage',
   platforms: ['Android', 'iOS', 'macOS', 'Windows']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SQLite extends IonicNativePlugin {
   /**
    * Open or create a SQLite database file.

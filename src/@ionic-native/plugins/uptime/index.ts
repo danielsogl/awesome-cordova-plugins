@@ -27,7 +27,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/s1lviu/cordova-plugin-uptime',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Uptime extends IonicNativePlugin {
   /**
    * This function return system uptime

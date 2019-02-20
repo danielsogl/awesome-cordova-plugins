@@ -31,7 +31,9 @@ declare var mixpanel: any;
   repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin',
   platforms: ['Android', 'Browser', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Mixpanel extends IonicNativePlugin {
   /**
    * If originalId is omitted, aliasId will be used as originalId.
@@ -163,7 +165,9 @@ export class Mixpanel extends IonicNativePlugin {
   pluginRef: 'mixpanel.people',
   pluginName: 'Mixpanel'
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MixpanelPeople extends IonicNativePlugin {
   /**
    *

@@ -31,7 +31,9 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/TongZhangzt/cordova-plugin-native-ringtones',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NativeRingtones extends IonicNativePlugin {
 
   /**

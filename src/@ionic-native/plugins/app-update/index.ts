@@ -47,7 +47,9 @@ export interface AppUpdateOptions {
   repo: 'https://github.com/vaenow/cordova-plugin-app-update',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppUpdate extends IonicNativePlugin {
   /**
    * Check and update

@@ -114,7 +114,9 @@ export interface AdMobFreeRewardVideoConfig {
   repo: 'https://github.com/ratson/cordova-plugin-admob-free',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AdMobFree extends IonicNativePlugin {
   /**
    * Convenience object to get event names

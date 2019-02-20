@@ -35,7 +35,9 @@ import { Injectable } from '@angular/core';
     'Windows Phone'
   ]
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppPreferences extends IonicNativePlugin {
   /**
    * Get a preference value

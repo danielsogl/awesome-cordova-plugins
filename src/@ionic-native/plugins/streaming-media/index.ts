@@ -79,7 +79,9 @@ export interface StreamingAudioOptions {
   repo: 'https://github.com/nchutchind/cordova-plugin-streaming-media',
   platforms: ['Amazon Fire OS', 'Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class StreamingMedia extends IonicNativePlugin {
   /**
    * Streams a video

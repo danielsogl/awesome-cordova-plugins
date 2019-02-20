@@ -93,7 +93,9 @@ export interface DeeplinkOptions {
   ],
   platforms: ['Android', 'Browser', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Deeplinks extends IonicNativePlugin {
   /**
    * Define a set of paths to match against incoming deeplinks.

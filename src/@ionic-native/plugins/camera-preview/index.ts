@@ -138,7 +138,9 @@ export interface CameraPreviewPictureOptions {
     'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CameraPreview extends IonicNativePlugin {
   FOCUS_MODE = {
     FIXED: 'fixed',

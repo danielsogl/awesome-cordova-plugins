@@ -61,7 +61,9 @@ export interface Request {
   repo: 'https://github.com/bykof/cordova-plugin-webserver.git',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class WebServer extends IonicNativePlugin {
 
   /**

@@ -486,7 +486,9 @@ export interface DownloadProgress {
   repo: 'https://github.com/Microsoft/cordova-plugin-code-push',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CodePush extends IonicNativePlugin {
   /**
    * Get the current package information.

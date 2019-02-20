@@ -60,7 +60,9 @@ export interface TwitterConnectResponse {
   installVariables: ['FABRIC_KEY', 'TWITTER_KEY', 'TWITTER_SECRET'],
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TwitterConnect extends IonicNativePlugin {
   /**
    * Logs in

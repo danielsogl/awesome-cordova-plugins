@@ -26,7 +26,9 @@ import { Observable } from 'rxjs';
   repo: 'https://github.com/leecrossley/cordova-plugin-shake',
   platforms: ['iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Shake extends IonicNativePlugin {
   /**
    * Watch for shake gesture

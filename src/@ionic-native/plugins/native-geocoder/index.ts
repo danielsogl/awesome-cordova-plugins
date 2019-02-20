@@ -39,7 +39,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/sebastianbaar/cordova-plugin-nativegeocoder',
   platforms: ['iOS', 'Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NativeGeocoder extends IonicNativePlugin {
 
   /**

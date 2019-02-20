@@ -39,7 +39,9 @@ export interface Base64ToGalleryOptions {
   repo: 'https://github.com/Nexxa/cordova-base64-to-gallery',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Base64ToGallery extends IonicNativePlugin {
   /**
    * Converts a base64 string to an image file in the device gallery

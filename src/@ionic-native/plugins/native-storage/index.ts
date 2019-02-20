@@ -34,7 +34,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/TheCocoaProject/cordova-plugin-nativestorage',
   platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NativeStorage extends IonicNativePlugin {
   /**
    * Stores a value

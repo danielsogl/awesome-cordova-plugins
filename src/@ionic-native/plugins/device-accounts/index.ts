@@ -40,7 +40,9 @@ export interface AndroidAccount {
   repo: 'https://github.com/danielsogl/cordova-device-accounts',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DeviceAccounts extends IonicNativePlugin {
   /**
    *  Gets all accounts registered on the Android Device

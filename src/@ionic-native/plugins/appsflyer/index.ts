@@ -77,7 +77,9 @@ export interface AppsflyerInviteOptions {
   platforms: ['iOS', 'Android'],
   install: 'Add to config.xml like stated on github and then start'
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Appsflyer extends IonicNativePlugin {
   /**
    * initialize the SDK

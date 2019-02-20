@@ -322,7 +322,9 @@ export type PushEvent = string;
   install: 'ionic cordova plugin add phonegap-plugin-push',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Push extends IonicNativePlugin {
   /**
    * Init push notifications

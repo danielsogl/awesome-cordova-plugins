@@ -25,7 +25,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/WebEngage/cordova-plugin',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Webengage extends IonicNativePlugin {
   /**
    * Initializes WebEngage SDK
@@ -79,7 +81,9 @@ export class Webengage extends IonicNativePlugin {
   plugin: 'cordova-plugin-webengage',
   pluginRef: 'webengage.user'
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class WebengageUser extends IonicNativePlugin {
   /**
    * Logs user in
@@ -120,7 +124,9 @@ export class WebengageUser extends IonicNativePlugin {
   plugin: 'cordova-plugin-webengage',
   pluginRef: 'webengage.push'
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class WebengagePush extends IonicNativePlugin {
   /**
    * Callback function is invoked when a push notification is clicked
@@ -152,7 +158,9 @@ export class WebengagePush extends IonicNativePlugin {
   plugin: 'cordova-plugin-webengage',
   pluginRef: 'webengage.notification'
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class WebengageNotification extends IonicNativePlugin {
   /**
    * Callback function is invoked when a in-app notification is shown

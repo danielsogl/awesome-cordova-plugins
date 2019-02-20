@@ -48,7 +48,9 @@ export const enum TYPE_SENSOR {
   repo: 'https://github.com/fabiorogeriosj/cordova-plugin-sensors.git',
   platforms: ['Android'],
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Sensors extends IonicNativePlugin {
 
   /**

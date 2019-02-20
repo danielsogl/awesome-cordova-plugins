@@ -32,7 +32,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   installVariables: ['APP_KEY'],
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class JAnalytics extends IonicNativePlugin {
   /**
    * This function does something

@@ -59,7 +59,9 @@ export interface BackgroundFetchConfig {
   repo: 'https://github.com/transistorsoft/cordova-plugin-background-fetch',
   platforms: ['iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BackgroundFetch extends IonicNativePlugin {
 
 

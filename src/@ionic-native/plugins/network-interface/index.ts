@@ -34,7 +34,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/salbahra/cordova-plugin-networkinterface',
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Windows', 'Windows Phone'],
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NetworkInterface extends IonicNativePlugin {
 
   /**

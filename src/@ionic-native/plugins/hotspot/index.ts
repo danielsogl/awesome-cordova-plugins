@@ -137,7 +137,9 @@ export interface HotspotDevice {
   repo: 'https://github.com/hypery2k/cordova-hotspot-plugin',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Hotspot extends IonicNativePlugin {
 
   /**

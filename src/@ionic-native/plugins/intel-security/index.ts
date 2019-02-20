@@ -74,7 +74,9 @@ export interface IntelSecurityDataOptions {
   repo: 'https://github.com/AppSecurityApi/com-intel-security-cordova-plugin',
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class IntelSecurity extends IonicNativePlugin {
   /**
    * returns an IntelSecurityStorage object

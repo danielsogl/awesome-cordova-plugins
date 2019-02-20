@@ -425,7 +425,9 @@ export interface AdapterInfo {
   installVariables: [], // OPTIONAL the plugin requires variables
   platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BluetoothLE extends IonicNativePlugin {
   /**
    * @name initialize

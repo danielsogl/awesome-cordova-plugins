@@ -30,7 +30,9 @@ declare const window: any;
   repo: 'https://github.com/hiddentao/cordova-plugin-filepath',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FilePath extends IonicNativePlugin {
   /**
    * Resolve native path for given content URL/path.

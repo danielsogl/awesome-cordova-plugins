@@ -29,7 +29,9 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/intercom/intercom-cordova',
   platforms: ['Android', 'iOS'],
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Intercom extends IonicNativePlugin {
 
   /**

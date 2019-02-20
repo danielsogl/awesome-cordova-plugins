@@ -31,7 +31,9 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/shangyilim/cordova-plugin-pincheck',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class PinCheck extends IonicNativePlugin {
   /**
    *  check whether pin/keyguard or passcode is setup

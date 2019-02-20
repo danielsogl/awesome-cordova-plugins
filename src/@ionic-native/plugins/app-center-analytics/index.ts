@@ -42,7 +42,9 @@ export interface StringMap {
     'https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-analytics',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppCenterAnalytics extends IonicNativePlugin {
   /**
    * Tracks an custom event.

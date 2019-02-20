@@ -60,7 +60,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/AlexDisler/cordova-plugin-inapppurchase',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class InAppPurchase extends IonicNativePlugin {
 
   /**

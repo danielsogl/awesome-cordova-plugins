@@ -26,7 +26,9 @@ declare const window: any;
   repo: 'https://github.com/apache/cordova-plugin-device',
   platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Device extends IonicNativePlugin {
 
   /** Get the version of Cordova running on the device. */

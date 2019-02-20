@@ -111,7 +111,9 @@ export interface DownloadRequest {
   repo: 'https://github.com/Luka313/integrator-cordova-plugin-downloader.git',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Downloader extends IonicNativePlugin {
   /**
    *  Starts a new download and returns location of the downloaded file on completion

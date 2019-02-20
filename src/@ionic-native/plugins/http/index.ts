@@ -68,7 +68,9 @@ export interface HTTPResponse {
   repo: 'https://github.com/silkimen/cordova-plugin-advanced-http',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HTTP extends IonicNativePlugin {
   /**
    * This returns an object representing a basic HTTP Authorization header of the form.

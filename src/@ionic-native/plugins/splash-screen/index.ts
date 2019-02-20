@@ -25,7 +25,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/apache/cordova-plugin-splashscreen',
   platforms: ['Amazon Fire OS', 'Android', 'iOS', 'Windows']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SplashScreen extends IonicNativePlugin {
 
   /**

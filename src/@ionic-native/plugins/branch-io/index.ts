@@ -82,7 +82,9 @@ export interface BranchUniversalObject {
     'https://github.com/BranchMetrics/cordova-ionic-phonegap-branch-deep-linking',
   platforms: ['iOS', 'Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BranchIo extends IonicNativePlugin {
   /**
    * for development and debugging only

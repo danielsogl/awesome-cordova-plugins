@@ -97,7 +97,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/guyromb/Cordova-open-native-settings',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class OpenNativeSettings extends IonicNativePlugin {
   /**
    * Opens a setting dialog

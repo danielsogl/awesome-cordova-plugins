@@ -33,7 +33,9 @@ import { Observable } from 'rxjs';
     'https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-push',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppCenterPush extends IonicNativePlugin {
   /**
    * Subscribe to an event

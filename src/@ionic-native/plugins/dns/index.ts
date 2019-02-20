@@ -28,7 +28,9 @@ import { Injectable } from '@angular/core';
   repo: 'https://bitbucket.org/zegeba/cordova-plugin-dns',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DNS extends IonicNativePlugin {
   /**
    * Resolve hostnames into an underlying network address.

@@ -72,7 +72,9 @@ export class RewardVideo {
     pluginRef: 'admob',
     repo: 'https://github.com/admob-plus/admob-plus',
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AdMob extends IonicNativePlugin {
     banner = new Banner();
     interstitial = new Interstitial();

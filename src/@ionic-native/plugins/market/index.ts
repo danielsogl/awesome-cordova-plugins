@@ -24,7 +24,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/xmartlabs/cordova-plugin-market',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Market extends IonicNativePlugin {
 
   /**

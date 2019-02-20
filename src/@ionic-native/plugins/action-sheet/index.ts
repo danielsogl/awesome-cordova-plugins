@@ -95,7 +95,9 @@ export interface ActionSheetOptions {
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet',
   platforms: ['Android', 'Browser', 'iOS', 'Windows', 'Windows Phone 8']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ActionSheet extends IonicNativePlugin {
   /**
    * Convenience property to select an Android theme value

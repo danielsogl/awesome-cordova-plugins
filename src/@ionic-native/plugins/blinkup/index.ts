@@ -59,7 +59,9 @@ export interface BlinkUpWPSOptions {
   repo: 'https://github.com/SensorShare/cordova-plugin-blinkup',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BlinkUp extends IonicNativePlugin {
   /**
    * startBlinkUp - starts the blinkup process

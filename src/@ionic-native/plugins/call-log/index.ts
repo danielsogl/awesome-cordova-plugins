@@ -31,7 +31,9 @@ export interface CallLogObject {
   repo: 'https://github.com/creacore-team/cordova-plugin-calllog',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CallLog extends IonicNativePlugin {
   /**
    * This function return the call logs

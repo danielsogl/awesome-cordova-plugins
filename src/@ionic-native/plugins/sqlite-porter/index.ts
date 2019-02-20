@@ -45,7 +45,9 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/dpa99c/cordova-sqlite-porter',
   platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'iOS', 'Tizen', 'Windows', 'Windows Phone']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SQLitePorter extends IonicNativePlugin {
 
   /**

@@ -279,7 +279,9 @@ export interface AppSelection {
   repo: 'https://github.com/dpa99c/phonegap-launch-navigator',
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LaunchNavigator extends IonicNativePlugin {
 
   APP: any = {

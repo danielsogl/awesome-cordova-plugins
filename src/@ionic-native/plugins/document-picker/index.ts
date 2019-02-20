@@ -29,7 +29,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/iampossible/Cordova-DocPicker',
   platforms: ['iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DocumentPicker extends IonicNativePlugin {
   /**
    * Open a file

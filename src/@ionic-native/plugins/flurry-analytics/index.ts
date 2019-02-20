@@ -220,7 +220,9 @@ export class FlurryAnalyticsObject {
   repo: 'https://github.com/blakgeek/cordova-plugin-flurryanalytics',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FlurryAnalytics extends IonicNativePlugin {
   /**
    * Creates a new instance of FlurryAnalyticsObject

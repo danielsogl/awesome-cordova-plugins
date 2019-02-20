@@ -30,7 +30,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/sjhoeksma/cordova-plugin-keychain-touch-id',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class KeychainTouchId extends IonicNativePlugin {
 
   /**

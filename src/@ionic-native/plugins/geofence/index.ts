@@ -82,7 +82,9 @@ declare const window: any;
   repo: 'https://github.com/cowbell/cordova-plugin-geofence',
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Geofence extends IonicNativePlugin {
   TransitionType = {
     ENTER: 1,

@@ -42,7 +42,9 @@ declare const cordova: any;
   repo: 'https://github.com/BlyncSync/cordova-plugin-jins-meme',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class JinsMeme extends IonicNativePlugin {
   /**
    * Authentication and authorization of App and SDK.

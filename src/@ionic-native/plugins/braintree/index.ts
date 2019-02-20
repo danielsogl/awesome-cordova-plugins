@@ -204,7 +204,9 @@ export interface PaymentUIResult {
     'ionic cordova plugin add https://github.com/taracque/cordova-plugin-braintree',
   installVariables: []
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Braintree extends IonicNativePlugin {
   /**
    * Used to initialize the Braintree client. This function must be called before other methods can be used.

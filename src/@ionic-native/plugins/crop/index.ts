@@ -34,7 +34,9 @@ export interface CropOptions {
   repo: 'https://github.com/jeduan/cordova-plugin-crop',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Crop extends IonicNativePlugin {
   /**
    * Crops an image

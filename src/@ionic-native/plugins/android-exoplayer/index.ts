@@ -180,7 +180,9 @@ export interface AndroidExoPlayerControllerConfig {
   repo: 'https://github.com/frontyard/cordova-plugin-exoplayer',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AndroidExoplayer extends IonicNativePlugin {
   /**
    * Show the player.

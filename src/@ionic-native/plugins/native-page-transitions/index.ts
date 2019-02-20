@@ -68,7 +68,9 @@ export interface NativeTransitionOptions {
   repo: 'https://github.com/Telerik-Verified-Plugins/NativePageTransitions',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NativePageTransitions extends IonicNativePlugin {
   /**
    * Perform a slide animation

@@ -27,7 +27,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   installVariables: ['REVERSED_CLIENT_ID'],
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class GooglePlus extends IonicNativePlugin {
 
   /**

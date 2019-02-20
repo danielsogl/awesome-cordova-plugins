@@ -160,7 +160,9 @@ export interface Player {
   platforms: ['Android'],
   install: 'ionic cordova plugin add cordova-plugin-play-games-services --variable APP_ID="YOUR_APP_ID',
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class GooglePlayGamesServices extends IonicNativePlugin {
 
   /**

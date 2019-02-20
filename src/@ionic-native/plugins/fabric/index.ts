@@ -40,7 +40,9 @@ export interface Attributes {
   installVariables: ['FABRIC_API_KEY', 'FABRIC_API_SECRET'],
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Crashlytics extends IonicNativePlugin {
   /**
    * Add logging that will be sent with your crash data. This logging will not show up
@@ -163,7 +165,9 @@ export class Crashlytics extends IonicNativePlugin {
   installVariables: ['FABRIC_API_KEY', 'FABRIC_API_SECRET'],
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Answers extends IonicNativePlugin {
   /**
    * Sends the Purchase tracking event.

@@ -36,7 +36,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/danwilson/google-analytics-plugin',
   platforms: ['Android', 'Browser', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class GoogleAnalytics extends IonicNativePlugin {
   /**
    * In your 'deviceready' handler, set up your Analytics tracker.

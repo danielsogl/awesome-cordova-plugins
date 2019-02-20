@@ -39,7 +39,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/ohh2ahh/AppAvailability',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppAvailability extends IonicNativePlugin {
 
   /**

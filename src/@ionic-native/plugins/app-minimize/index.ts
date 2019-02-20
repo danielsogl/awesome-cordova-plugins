@@ -29,7 +29,9 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/tomloprod/cordova-plugin-appminimize',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppMinimize extends IonicNativePlugin {
 
   /**

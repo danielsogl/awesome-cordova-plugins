@@ -41,7 +41,9 @@ export interface IPedometerData {
   repo: 'https://github.com/leecrossley/cordova-plugin-pedometer',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Pedometer extends IonicNativePlugin {
   /**
    * Checks if step counting is available. Only works on iOS.

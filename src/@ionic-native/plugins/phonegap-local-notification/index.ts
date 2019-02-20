@@ -100,7 +100,9 @@ export interface LocalNotificationOptions {
   repo: 'https://github.com/phonegap/phonegap-plugin-local-notification',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class PhonegapLocalNotification extends IonicNativePlugin {
   /**
    * A global object that lets you interact with the Notification API.

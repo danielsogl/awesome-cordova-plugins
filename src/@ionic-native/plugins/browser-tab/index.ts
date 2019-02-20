@@ -31,7 +31,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/google/cordova-plugin-browsertab',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BrowserTab extends IonicNativePlugin {
   /**
    * Check if BrowserTab option is available

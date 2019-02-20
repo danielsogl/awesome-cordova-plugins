@@ -37,7 +37,9 @@ export interface IOSFilePickerPosition {
   repo: 'https://github.com/jcesarmobile/FilePicker-Phonegap-iOS-Plugin',
   platforms: ['iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class IOSFilePicker extends IonicNativePlugin {
   /**
    * Open a file

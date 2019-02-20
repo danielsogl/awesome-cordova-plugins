@@ -27,7 +27,9 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/Paldom/UniqueDeviceID',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UniqueDeviceID extends IonicNativePlugin {
 
   /**

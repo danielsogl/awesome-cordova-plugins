@@ -287,7 +287,9 @@ export interface IBeaconDelegate {
   repo: 'https://github.com/petermetz/cordova-plugin-ibeacon',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class IBeacon extends IonicNativePlugin {
   /**
    * Instances of this class are delegates between the {@link LocationManager} and

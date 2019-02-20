@@ -239,7 +239,9 @@ export interface AdmobOptions {
   repo: 'https://github.com/appfeel/admob-google-cordova',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Admob extends IonicNativePlugin {
   /**
    * This enum represents AdMob's supported ad sizes.

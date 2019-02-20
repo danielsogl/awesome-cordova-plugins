@@ -115,7 +115,9 @@ export interface FacebookLoginResponse {
   installVariables: ['APP_ID', 'APP_NAME'],
   platforms: ['Android', 'iOS', 'Browser']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Facebook extends IonicNativePlugin {
   EVENTS: {
     EVENT_NAME_ACTIVATED_APP: 'fb_mobile_activate_app';

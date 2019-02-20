@@ -29,7 +29,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/ToniKorin/cordova-plugin-autostart',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Autostart extends IonicNativePlugin {
 
   /**

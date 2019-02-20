@@ -161,7 +161,9 @@ export interface QQShareOptions {
   install: 'ionic cordova plugin add cordova-plugin-qqsdk --variable QQ_APP_ID=YOUR_QQ_APPID',
   installVariables: ['QQ_APP_ID'],
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class QQSDK extends IonicNativePlugin {
 
   /**

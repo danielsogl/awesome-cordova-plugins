@@ -29,7 +29,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   installVariables: ['ANDROID_API_KEY', 'IOS_API_KEY'],
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class GaoDeLocation extends IonicNativePlugin {
   /**
    * Get longitude and latitude, country, province, city, postal code, specific address, region

@@ -108,7 +108,9 @@ export interface NotificationData {
   repo: 'https://github.com/Ti-webdev/cordova-plugin-push-baidu.git',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BaiduPush extends IonicNativePlugin {
   /**
    * This method registers the device to Baidu Cloud Push services.

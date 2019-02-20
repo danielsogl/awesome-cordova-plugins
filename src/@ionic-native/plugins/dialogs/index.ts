@@ -44,7 +44,9 @@ export interface DialogsPromptCallback {
   repo: 'https://github.com/apache/cordova-plugin-dialogs',
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Dialogs extends IonicNativePlugin {
   /**
    * Shows a custom alert or dialog box.

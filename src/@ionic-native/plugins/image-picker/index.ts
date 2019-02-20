@@ -72,7 +72,9 @@ export enum OutputType {
   installVariables: ['PHOTO_LIBRARY_USAGE_DESCRIPTION'],
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ImagePicker extends IonicNativePlugin {
   /**
    * Pick pictures from the library.

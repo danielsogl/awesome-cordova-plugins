@@ -44,7 +44,9 @@ export interface EstimoteBeaconRegion {
   repo: 'https://github.com/evothings/phonegap-estimotebeacons',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class EstimoteBeacons extends IonicNativePlugin {
   /** Proximity value */
   ProximityUnknown = 0;

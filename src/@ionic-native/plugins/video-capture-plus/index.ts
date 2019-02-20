@@ -137,7 +137,9 @@ export interface VideoCapturePlusOptions {
   repo: 'https://github.com/danielsogl/cordova-plugin-video-capture-plus',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class VideoCapturePlus extends IonicNativePlugin {
   /**
    * Starts recordings

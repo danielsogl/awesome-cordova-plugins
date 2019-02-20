@@ -70,7 +70,9 @@ export enum Connection {
   repo: 'https://github.com/apache/cordova-plugin-network-information',
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Network extends IonicNativePlugin {
 
   /**

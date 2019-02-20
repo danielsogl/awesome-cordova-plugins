@@ -140,7 +140,9 @@ export interface AdExtras {
   repo: 'https://github.com/floatinghotpot/cordova-admob-pro',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AdMobPro extends IonicNativePlugin {
   AD_POSITION: {
     NO_CHANGE: number;

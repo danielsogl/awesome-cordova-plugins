@@ -83,7 +83,9 @@ export interface CardData {
   repo: 'https://github.com/tomavic/cordova-apple-wallet',
   platforms: ['iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppleWallet extends IonicNativePlugin {
   /**
    * Detects if the current device supports Apple Wallet

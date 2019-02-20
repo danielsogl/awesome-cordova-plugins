@@ -76,7 +76,9 @@ export interface IntentOptions {
     'https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class WebIntent extends IonicNativePlugin {
   /**
    * Convenience constant for actions

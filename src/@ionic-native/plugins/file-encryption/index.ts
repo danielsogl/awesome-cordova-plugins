@@ -28,7 +28,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/disusered/cordova-safe',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FileEncryption extends IonicNativePlugin {
   /**
    * Encrypt a file

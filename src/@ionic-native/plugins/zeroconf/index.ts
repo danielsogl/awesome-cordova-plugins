@@ -58,7 +58,9 @@ export interface ZeroconfResult {
   repo: 'https://github.com/becvert/cordova-plugin-zeroconf',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Zeroconf extends IonicNativePlugin {
   /**
    * Returns this device's hostname.

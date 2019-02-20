@@ -153,7 +153,9 @@ export interface ISelectedShippingContact {
   repo: 'https://github.com/samkelleher/cordova-plugin-applepay',
   platforms: ['iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ApplePay extends IonicNativePlugin {
   /**
    * Detects if the current device supports Apple Pay and has any capable cards registered.

@@ -84,7 +84,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/zoom/zoom-sdk-ionic', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Zoom extends IonicNativePlugin {
 
   /**

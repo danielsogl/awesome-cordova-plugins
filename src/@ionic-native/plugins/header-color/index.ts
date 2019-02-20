@@ -24,7 +24,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/tomloprod/cordova-plugin-headercolor',
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HeaderColor extends IonicNativePlugin {
 
   /**

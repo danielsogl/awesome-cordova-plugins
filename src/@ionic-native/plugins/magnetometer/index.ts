@@ -66,7 +66,9 @@ export interface MagnetometerReading {
     'iOS',
   ]
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Magnetometer extends IonicNativePlugin {
   /**
    * Get the current compass reading.

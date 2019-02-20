@@ -27,7 +27,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   platforms: ['iOS', 'Android'],
   install: 'ionic plugin add cordova-plugin-documentreader --variable CAMERA_USAGE_DESCRIPTION="To take photo"',
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RegulaDocumentReader extends IonicNativePlugin {
 
   /**

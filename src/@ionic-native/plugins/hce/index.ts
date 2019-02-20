@@ -37,7 +37,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   installVariables: ['AID_FILTER'],
   platforms: ['Android']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HCE extends IonicNativePlugin {
   /**
    * Registers command receiver.

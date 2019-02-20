@@ -301,7 +301,9 @@ export interface DataCaptureResult {
   install: 'ionic cordova plugin add cordova-plugin-abbyy-rtr-sdk',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AbbyyRTR extends IonicNativePlugin {
   /**
    * Opens a modal dialog with controls for the Text Capture scenario.

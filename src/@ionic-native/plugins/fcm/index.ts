@@ -60,7 +60,9 @@ export interface NotificationData {
   repo: 'https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated',
   platforms: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FCM extends IonicNativePlugin {
   /**
    * Gets device's current registration id
