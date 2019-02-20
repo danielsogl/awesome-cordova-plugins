@@ -1,3 +1,23 @@
+# [5.2.0](https://github.com/ionic-team/ionic-native/compare/v5.1.0...v5.2.0) (2019-02-20)
+
+
+### Code Refactoring
+
+* optimize plugins for angular treeshaking ([8b53c04](https://github.com/ionic-team/ionic-native/commit/8b53c04))
+
+
+### Features
+
+* **apple-wallet:** update wrapper to release 2.0 ([#2935](https://github.com/ionic-team/ionic-native/issues/2935)) ([7ae2ad4](https://github.com/ionic-team/ionic-native/commit/7ae2ad4))
+* **linkedin:** delete plugin ([6423031](https://github.com/ionic-team/ionic-native/commit/6423031)), closes [#2925](https://github.com/ionic-team/ionic-native/issues/2925)
+
+
+### BREAKING CHANGES
+
+* You can remove the plugin import from the app.module.ts because of the changed Inject decorator
+
+
+
 # [5.1.0](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.24...v5.1.0) (2019-02-14)
 
 
