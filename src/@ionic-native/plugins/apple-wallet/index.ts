@@ -7,11 +7,32 @@ export interface EncryptedCardData {
   wrappedKey: string;
 }
 
+export interface SignatureCertificatesData {
+  certificateSubCA: string;
+  certificateLeaf: string;
+  nonce: string;
+  nonceSignature: string;
+}
+
 export interface CardData {
   cardholderName: string;
   primaryAccountNumberSuffix: string;
   localizedDescription?: string;
-  paymentNetwork: string;
+  paymentNetwork?: string;
+}
+
+export interface EligibilityData {
+  isInWallet: boolean;
+  isInWatch: boolean;
+  FPANID: string;
+}
+
+export interface WatchExistData {
+  isWatchPaired: boolean;
+}
+
+export interface CardPrimarySuffixData {
+  primaryAccountSuffix: string;
 }
 
 /**
@@ -26,55 +47,83 @@ export interface CardData {
  *
  * constructor(private appleWallet: AppleWallet) { }
  *
+ *
  * ...
  *
  *
- * this.appleWallet.available()
- *  .then((res) => {
- *    // res is a boolean value, either true or false
- *    console.log("Is Apple Wallet available? ", res);
+ * // Simple call to determine if the current device supports Apple Pay and has a supported card installed.
+ * this.appleWallet.isAvailable()
+ *  .then((res: boolean) => {
+ *    // Expect res to be boolean
  *   })
- *  .catch((message) => {
- *    console.error("ERROR AVAILBLE>> ", message);
+ *  .catch((err) => {
+ *    // Catch {{err}} here
  *  });
  *
+ *
  * ...
  *
- * let data: cardData = {
- *    cardholderName: 'Test User',
- *    primaryAccountNumberSuffix: '1234',
- *    localizedDescription: 'Description of payment card',
- *    paymentNetwork: 'VISA'
- *  }
+ *
+ * // Simple call to check existence and ellibagility to add a card
+ * this.appleWallet.isCardExistInWalletOrWatch(data: CardPrimarySuffixData)
+ *  .then((res: EligibilityData) => {
+ *    // object contains boolean values that ensure that card is already exists in wallet or paired-watch
+ *   })
+ *  .catch((err) => {
+ *    // Catch {{err}} here
+ *  });
+ *
+ *
+ * ...
+ *
+ *
+ * // Simple call to check out if there is any paired Watches so that you can toggle visibility of 'Add to Watch' button
+ * this.appleWallet.isPairedWatchExist()
+ *  .then((res: WatchExistData) => {
+ *    // object contains boolean value that ensure that there is already a paired Watch
+ *   })
+ *  .catch((err) => {
+ *    // Catch {{err}} here
+ *  });
+ *
+ *
+ * ...
+ *
+ *
+ * // Simple call with the configuration data needed to instantiate a new PKAddPaymentPassViewController object.
+ * // This method provides the data needed to create a request to add your payment pass (credit/debit card). After a successful callback, pass the certificate chain to your issuer server-side using our callback delegate method `AppleWallet.completeAddPaymentPass`. The issuer server-side should returns an encrypted JSON payload containing the encrypted card data, which is required to be get the final response
  *
  * this.appleWallet.startAddPaymentPass(data: cardData)
- *  .then((res) => {
- *    console.log("startAddPaymentPass success response ", res);
+ *  .then((res: SignatureCertificatesData) => {
+ *    // User proceed and successfully asked to add card to his wallet
+ *    // Use the callback response JSON payload to complete addition process
  *   })
  *  .catch((err) => {
- *    console.error("startAddPaymentPass ERROR response", err);
+ *    // Catch {{err}} here
  *  });
+ *
  *
  * ...
  *
- * let data: encryptedCardData = {
- *    activationData: 'encoded Base64 activationData from your server',
- *    encryptedPassData: 'encoded Base64 encryptedPassData from your server',
- *    wrappedKey: 'encoded Base64 wrappedKey from your server',
- *  }
  *
- * this.appleWallet.encryptedCardData(data: encryptedCardData)
- *  .then((res) => {
- *    console.log("completeAddCardToAppleWallet success response ", res);
+ * this.appleWallet.completeAddPaymentPass(data: encryptedCardData)
+ *  .then((res: string) => {
+ *    // Expect res to be string either 'success' or 'error'
  *   })
  *  .catch((err) => {
- *    console.error("completeAddCardToAppleWallet ERROR response", err);
+ *    // Catch {{err}} here
+ *    // Error and can not add the card, or something wrong happend
+ *    // PKAddPaymentPassViewController will be dismissed
  *  });
  *
  * ```
  * @Interfaces
  * EncryptedCardData
+ * SignatureCertificatesData
  * CardData
+ * EligibilityData
+ * WatchExistData
+ * CardPrimarySuffixData
  */
 @Plugin({
   pluginName: 'AppleWallet',
@@ -88,31 +137,50 @@ export interface CardData {
 })
 export class AppleWallet extends IonicNativePlugin {
   /**
-   * Detects if the current device supports Apple Wallet
-   * @return {Promise<boolean>} Returns a promise
+   * Simple call to determine if the current device supports Apple Pay and has a supported card installed.
+   * @return {Promise<boolean>}
    */
   @Cordova()
-  available(): Promise<boolean> {
+  isAvailable(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Simple call to check existence and ellibagility to add a card
+   * @param {CardPrimarySuffixData} data
+   * @return {Promise<EligibilityData>}
+   */
+  @Cordova()
+  isCardExistInWalletOrWatch(data: CardPrimarySuffixData): Promise<EligibilityData> {
+    return;
+  }
+
+  /**
+   * Simple call to check out if there is any paired Watches so that you can toggle visibility of 'Add to Watch' button
+   * @return {Promise<WatchExistData>}
+   */
+  @Cordova()
+  isPairedWatchExist(): Promise<WatchExistData> {
     return;
   }
 
   /**
    * Simple call with the configuration data needed to instantiate a new PKAddPaymentPassViewController object.
    * @param {cardData} data
-   * @return {Promise<any>} Returns a promise
+   * @return {Promise<SignatureCertificatesData>}
    */
   @Cordova()
-  startAddPaymentPass(data: CardData): Promise<any> {
+  startAddPaymentPass(data: CardData): Promise<SignatureCertificatesData> {
     return;
   }
 
   /**
-   * Simple call contains the card data needed to add a card to Apple Pay.
+   * Simple completion handler that takes encrypted card data returned from your server side, in order to get the final response from Apple to know if the card is added succesfully or not.
    * @param {encryptedCardData} data
-   * @return {Promise<any>} Returns a promise
+   * @return {Promise<string>}
    */
   @Cordova()
-  completeAddPaymentPass(data: EncryptedCardData): Promise<any> {
+  completeAddPaymentPass(data: EncryptedCardData): Promise<string> {
     return;
   }
 }
