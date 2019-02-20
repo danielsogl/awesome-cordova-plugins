@@ -43,7 +43,9 @@ import { Observable } from 'rxjs';
   installVariables: [], // OPTIONAL the plugin requires variables
   platforms: [] // Array of platforms supported, example: ['Android', 'iOS']
 })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class {{ PluginName }} extends IonicNativePlugin {
 
   /**
