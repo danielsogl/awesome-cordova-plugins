@@ -54,9 +54,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   platforms: ['Android', 'iOS'],
   install: 'ionic cordova plugin add cordova-plugin-aes256-encryption'
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AES256 extends IonicNativePlugin {
   /**
    * This function used to perform the aes256 encryption

@@ -27,9 +27,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/Viras-/cordova-plugin-powermanagement',
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PowerManagement extends IonicNativePlugin {
   /**
    * Acquire a wakelock by calling this.

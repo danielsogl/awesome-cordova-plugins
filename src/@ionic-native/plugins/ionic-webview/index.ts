@@ -29,9 +29,7 @@ import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
   platforms: ['Android', 'iOS'],
   install: 'ionic cordova plugin add cordova-plugin-ionic-webview'
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class WebView extends IonicNativePlugin {
 
   /**

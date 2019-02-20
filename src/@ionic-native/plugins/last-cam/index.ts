@@ -35,9 +35,7 @@ export interface LastCamStartupOptions {
   repo: 'https://github.com/bengejd/cordova-plugin-last-cam',
   platforms: ['iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LastCam extends IonicNativePlugin {
   /**
    * Starts the camera preview instance.

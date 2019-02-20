@@ -55,9 +55,7 @@ export enum AndroidSystemUiFlags {
   repo: 'https://github.com/mesmotronic/cordova-plugin-fullscreen',
   platforms: ['Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AndroidFullScreen extends IonicNativePlugin {
   /**
    * Is this plugin supported?

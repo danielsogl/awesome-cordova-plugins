@@ -32,9 +32,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
   install: '' // OPTIONAL install command, in case the plugin requires variables
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TealiumAdIdentifier extends IonicNativePlugin {
   /**
    * This function stores the ad identifier information as persistent data

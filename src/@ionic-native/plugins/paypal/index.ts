@@ -71,9 +71,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/paypal/PayPal-Cordova-Plugin',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PayPal extends IonicNativePlugin {
   /**
    * Retrieve the version of the PayPal iOS SDK library. Useful when contacting support.

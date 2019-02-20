@@ -171,9 +171,7 @@ export enum Direction {
   repo: 'https://github.com/apache/cordova-plugin-camera',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Camera extends IonicNativePlugin {
   /**
    * Constant for possible destination types

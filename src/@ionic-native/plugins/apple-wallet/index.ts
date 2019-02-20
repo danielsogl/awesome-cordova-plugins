@@ -132,9 +132,7 @@ export interface CardPrimarySuffixData {
   repo: 'https://github.com/tomavic/cordova-apple-wallet',
   platforms: ['iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AppleWallet extends IonicNativePlugin {
   /**
    * Simple call to determine if the current device supports Apple Pay and has a supported card installed.

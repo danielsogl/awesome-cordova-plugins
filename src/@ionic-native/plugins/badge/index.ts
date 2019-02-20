@@ -28,9 +28,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/katzer/cordova-plugin-badge',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Badge extends IonicNativePlugin {
   /**
    * Clear the badge of the app icon.

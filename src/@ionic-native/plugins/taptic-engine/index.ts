@@ -31,9 +31,7 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-taptic-engine',
   platforms: ['iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TapticEngine extends IonicNativePlugin {
   /**
    * Use selection feedback generators to indicate a change in selection.

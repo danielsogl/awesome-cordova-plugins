@@ -173,9 +173,7 @@ export interface CardIOResponse {
   repo: 'https://github.com/card-io/card.io-Cordova-Plugin',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CardIO extends IonicNativePlugin {
   /**
    * Check whether card scanning is currently available. (May vary by

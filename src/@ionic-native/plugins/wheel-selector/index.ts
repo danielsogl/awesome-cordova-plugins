@@ -180,9 +180,7 @@ export interface WheelSelectorData {
   platforms: ['Android', 'iOS']
 })
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class WheelSelector extends IonicNativePlugin {
 
   /**

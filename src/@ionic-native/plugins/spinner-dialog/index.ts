@@ -52,9 +52,7 @@ export interface SpinnerDialogIOSOptions {
   repo: 'https://github.com/greybax/cordova-plugin-native-spinner',
   platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SpinnerDialog extends IonicNativePlugin {
 
   /**

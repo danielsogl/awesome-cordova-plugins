@@ -63,9 +63,7 @@ export interface FingerprintOptions {
   repo: 'https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FingerprintAIO extends IonicNativePlugin {
   /**
    * Check if fingerprint authentication is available

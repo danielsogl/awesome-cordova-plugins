@@ -35,9 +35,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/NeoLSN/cordova-plugin-android-permissions',
   platforms: ['Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AndroidPermissions extends IonicNativePlugin {
   PERMISSION: any = {
     ACCESS_CHECKIN_PROPERTIES: 'android.permission.ACCESS_CHECKIN_PROPERTIES',

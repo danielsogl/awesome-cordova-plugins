@@ -48,9 +48,7 @@ export interface CallDirectoryLog {
   installVariables: ['EXT_NAME', 'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'],
   platforms: ['iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CallDirectory extends IonicNativePlugin {
 
   /**

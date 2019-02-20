@@ -38,9 +38,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   installVariables: ['ANDROID_BACKUP_SERVICE_KEY'],
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CloudSettings extends IonicNativePlugin {
   /**
    * Indicates if any stored cloud settings currently exist for the current user.

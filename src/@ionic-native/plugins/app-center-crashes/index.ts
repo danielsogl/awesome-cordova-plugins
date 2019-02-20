@@ -66,9 +66,7 @@ export interface AppCenterCrashReportDevice {
     'https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-crashes',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AppCenterCrashes extends IonicNativePlugin {
   /**
    * App Center Crashes provides you with an API to generate a test crash for easy testing of the SDK.

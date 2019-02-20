@@ -27,9 +27,7 @@ import { Injectable } from '@angular/core';
   repo: 'https://github.com/phonegap/phonegap-mobile-accessibility',
   platforms: ['Android Fire OS', 'Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MobileAccessibility extends IonicNativePlugin {
 
   MobileAccessibilityNotifications: {

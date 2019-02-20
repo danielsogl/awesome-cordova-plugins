@@ -36,9 +36,7 @@ import {
   repo: 'https://github.com/apache/cordova-plugin-statusbar',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class StatusBar extends IonicNativePlugin {
   /**
    * Whether the StatusBar is currently visible or not.

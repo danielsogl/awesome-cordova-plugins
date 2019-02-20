@@ -32,9 +32,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/whiteoctober/cordova-plugin-app-version',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AppVersion extends IonicNativePlugin {
 
   /**

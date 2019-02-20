@@ -80,9 +80,7 @@ export interface DeviceMotionAccelerometerOptions {
     'Windows Phone 8'
   ]
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DeviceMotion extends IonicNativePlugin {
   /**
    * Get the current acceleration along the x, y, and z axes.

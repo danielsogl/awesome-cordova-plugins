@@ -38,9 +38,7 @@ export interface TTSOptions {
   repo: 'https://github.com/vilic/cordova-plugin-tts',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TextToSpeech extends IonicNativePlugin {
 
   /**

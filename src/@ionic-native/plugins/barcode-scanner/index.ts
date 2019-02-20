@@ -108,9 +108,7 @@ export interface BarcodeScanResult {
   repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner',
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BarcodeScanner extends IonicNativePlugin {
   Encode: {
     TEXT_TYPE: string;

@@ -56,9 +56,7 @@ export interface SerialOpenOptions {
   repo: 'https://github.com/xseignard/cordovarduino',
   platforms: ['Android', 'Ubuntu']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Serial extends IonicNativePlugin {
   /**
    * Request permission to connect to a serial device

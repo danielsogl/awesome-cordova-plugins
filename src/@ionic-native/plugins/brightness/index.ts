@@ -28,9 +28,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/mgcrea/cordova-plugin-brightness',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Brightness extends IonicNativePlugin {
   /**
    * Sets the brightness of the display.

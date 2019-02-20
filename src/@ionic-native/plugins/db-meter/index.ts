@@ -41,9 +41,7 @@ import { Observable } from 'rxjs';
   repo: 'https://github.com/akofman/cordova-plugin-dbmeter',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DBMeter extends IonicNativePlugin {
   /**
    * Starts listening

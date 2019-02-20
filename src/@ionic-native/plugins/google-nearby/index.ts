@@ -33,9 +33,7 @@ import { Observable } from 'rxjs';
   installVariables: ['API_KEY'],
   platforms: ['Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class GoogleNearby extends IonicNativePlugin {
   /**
    * Publish a message

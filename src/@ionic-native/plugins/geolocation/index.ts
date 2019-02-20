@@ -160,9 +160,7 @@ export interface GeolocationOptions {
   installVariables: ['GEOLOCATION_USAGE_DESCRIPTION'],
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Geolocation extends IonicNativePlugin {
   /**
    * Get the device's current position.

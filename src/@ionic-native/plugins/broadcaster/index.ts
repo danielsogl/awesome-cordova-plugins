@@ -30,9 +30,7 @@ import { Observable } from 'rxjs';
   repo: 'https://github.com/bsorrentino/cordova-broadcaster',
   platforms: ['Android', 'iOS', 'Browser']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Broadcaster extends IonicNativePlugin {
   /**
    * This function listen to an event sent from the native code

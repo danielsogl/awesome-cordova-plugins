@@ -38,9 +38,7 @@ export interface IFirebaseMessage {
   repo: 'https://github.com/chemerisuk/cordova-plugin-firebase-messaging',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FirebaseMessaging extends IonicNativePlugin {
   /**
    * Called when a push message received while app is in foreground.

@@ -47,9 +47,7 @@ export interface DeviceFeedbackStatus {
   repo: 'https://github.com/VVelda/device-feedback',
   platforms: ['Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DeviceFeedback extends IonicNativePlugin {
   /**
    * Provide sound feedback to user, nevertheless respect user's settings and current active device profile as native feedback do.

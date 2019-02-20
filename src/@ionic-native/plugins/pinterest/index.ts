@@ -182,9 +182,7 @@ export interface PinterestPin {
   installVariables: ['APP_ID'],
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Pinterest extends IonicNativePlugin {
   /**
    * Convenience constant for authentication scopes

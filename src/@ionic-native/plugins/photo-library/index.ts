@@ -115,9 +115,7 @@ export function CordovaFiniteObservable(
   installVariables: ['PHOTO_LIBRARY_USAGE_DESCRIPTION'],
   platforms: ['Android', 'Browser', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PhotoLibrary extends IonicNativePlugin {
   /**
    * Retrieves library items. Library item contains photo metadata like width and height, as well as photoURL and thumbnailURL.

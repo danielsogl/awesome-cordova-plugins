@@ -27,9 +27,7 @@ import { Observable } from 'rxjs';
   repo: 'https://github.com/appodeal/appodeal-cordova-plugin',
   platforms: ['iOS', 'Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Appodeal extends IonicNativePlugin {
   // available types of advertisements
   readonly AD_TYPES = {

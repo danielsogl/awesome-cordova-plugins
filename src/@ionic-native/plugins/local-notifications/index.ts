@@ -533,9 +533,7 @@ export interface ILocalNotification {
   repo: 'https://github.com/katzer/cordova-plugin-local-notifications',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LocalNotifications extends IonicNativePlugin {
   /**
    * Informs if the app has the permission to show notifications.

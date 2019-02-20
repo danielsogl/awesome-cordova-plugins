@@ -29,9 +29,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/an-rahulpandey/cordova-plugin-dbcopy',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SqliteDbCopy extends IonicNativePlugin {
   /**
    * Copy database from www directory to device SQLite DB location

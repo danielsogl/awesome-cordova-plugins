@@ -74,9 +74,7 @@ export interface NdefTag {
 /**
  * @{ NFC } class methods
  */
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class NFC extends IonicNativePlugin {
   FLAG_READER = {
     NFC_A: 0,
@@ -313,9 +311,7 @@ export class NFC extends IonicNativePlugin {
  * Do not pass bytes as parameters for these methods, conversion is built in.
  * For usage with nfc.write() and nfc.share()
  */
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Ndef extends IonicNativePlugin {
   @CordovaProperty()
   TNF_EMPTY: number;
@@ -427,9 +423,7 @@ export class Ndef extends IonicNativePlugin {
   plugin: 'phonegap-nfc',
   pluginRef: 'util'
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class NfcUtil extends IonicNativePlugin {
   @Cordova({ sync: true })
   toHex(i: number): string {

@@ -41,9 +41,7 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-nati
   repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Diagnostic extends IonicNativePlugin {
   permission = {
     READ_CALENDAR: 'READ_CALENDAR',

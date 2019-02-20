@@ -67,9 +67,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/hypertrack/hypertrack-cordova',
   platforms: ['Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HyperTrack extends IonicNativePlugin {
   /**
    * Returns given text. For testing purposes.

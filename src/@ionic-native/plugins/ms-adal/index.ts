@@ -93,9 +93,7 @@ export interface UserInfo {
   repo: 'https://github.com/AzureAD/azure-activedirectory-library-for-cordova',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MSAdal extends IonicNativePlugin {
 
   createAuthenticationContext(authority: string, validateAuthority = true) {

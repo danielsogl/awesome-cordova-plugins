@@ -79,9 +79,7 @@ export interface ImageResizerOptions {
   repo: 'https://github.com/JoschkaSchulz/cordova-plugin-image-resizer',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ImageResizer extends IonicNativePlugin {
   /**
    * @returns {Promise<any>}

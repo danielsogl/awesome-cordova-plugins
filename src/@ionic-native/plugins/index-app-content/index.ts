@@ -75,9 +75,7 @@ export interface IndexItem {
   repo: 'https://github.com/johanblomgren/cordova-plugin-indexappcontent',
   platforms: ['iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class IndexAppContent extends IonicNativePlugin {
   /**
    * The option to index app content might not be available at all due to device limitations or user settings.

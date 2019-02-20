@@ -30,9 +30,7 @@ import { Observable } from 'rxjs';
   repo: 'https://github.com/ionic-team/cordova-plugin-ionic-keyboard',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Keyboard extends IonicNativePlugin {
   /**
    * Check keyboard status visible or not.

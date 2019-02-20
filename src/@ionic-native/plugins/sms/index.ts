@@ -50,9 +50,7 @@ export interface SmsOptionsAndroid {
   repo: 'https://github.com/cordova-sms/cordova-sms-plugin',
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SMS extends IonicNativePlugin {
   /**
    * Sends sms to a number

@@ -288,9 +288,7 @@ export type MediaErrorCallback = (error: MediaError) => void;
   pluginRef: 'Media',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Media extends IonicNativePlugin {
   // Constants
   /**

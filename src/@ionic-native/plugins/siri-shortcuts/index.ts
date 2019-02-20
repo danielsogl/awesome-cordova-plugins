@@ -84,9 +84,7 @@ export interface ActivatedShortcutOptions {
   repo: 'https://github.com/bartwesselink/cordova-plugin-siri-shortcuts',
   platforms: ['iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SiriShortcuts extends IonicNativePlugin {
   /**
    * Donate shortcut to Siri

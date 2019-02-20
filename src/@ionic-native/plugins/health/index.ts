@@ -205,9 +205,7 @@ export interface HealthData {
   repo: 'https://github.com/dariosalvi78/cordova-plugin-health',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Health extends IonicNativePlugin {
   /**
    * Tells if either Google Fit or HealthKit are available.

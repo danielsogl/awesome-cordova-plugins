@@ -145,9 +145,7 @@ export interface VideoInfo {
   repo: 'https://github.com/jbavari/cordova-plugin-video-editor',
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class VideoEditor extends IonicNativePlugin {
   OptimizeForNetworkUse = {
     NO: 0,

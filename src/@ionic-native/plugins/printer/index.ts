@@ -72,9 +72,7 @@ export interface PrintOptions {
   repo: 'https://github.com/katzer/cordova-plugin-printer',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Printer extends IonicNativePlugin {
 
   /**

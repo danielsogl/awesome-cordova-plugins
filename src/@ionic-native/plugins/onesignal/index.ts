@@ -414,9 +414,7 @@ export enum OSActionType {
   repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK',
   platforms: ['Amazon Fire OS', 'Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class OneSignal extends IonicNativePlugin {
   /**
    * constants to use in inFocusDisplaying()

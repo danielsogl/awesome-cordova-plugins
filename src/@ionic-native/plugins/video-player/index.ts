@@ -50,9 +50,7 @@ export interface VideoOptions {
   repo: 'https://github.com/moust/cordova-plugin-videoplayer',
   platforms: ['Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class VideoPlayer extends IonicNativePlugin {
   /**
    * Plays the video from the passed url.

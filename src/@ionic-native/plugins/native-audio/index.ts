@@ -36,9 +36,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/floatinghotpot/cordova-plugin-nativeaudio',
   platforms: ['Android', 'Browser', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class NativeAudio extends IonicNativePlugin {
   /**
    * Loads an audio file into memory. Optimized for short clips / single shots (up to five seconds). Cannot be stopped / looped.

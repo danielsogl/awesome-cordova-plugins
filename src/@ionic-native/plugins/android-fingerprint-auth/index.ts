@@ -157,9 +157,7 @@ export interface AFADeleteOptions {
   repo: 'https://github.com/mjwheatley/cordova-plugin-android-fingerprint-auth',
   platforms: ['Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AndroidFingerprintAuth extends IonicNativePlugin {
   /**
    * Convenience property containing all possible errors

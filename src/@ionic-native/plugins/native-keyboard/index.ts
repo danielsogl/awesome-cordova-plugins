@@ -202,9 +202,7 @@ export interface NativeKeyboardUpdateMessengerOptions {
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-native-keyboard',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class NativeKeyboard extends IonicNativePlugin {
 
   /**

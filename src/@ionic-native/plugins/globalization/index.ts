@@ -41,9 +41,7 @@ export interface GlobalizationOptions {
   repo: 'https://github.com/apache/cordova-plugin-globalization',
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Globalization extends IonicNativePlugin {
   /**
    * Returns the BCP-47 compliant language identifier tag to the successCallback with a properties object as a parameter. That object should have a value property with a String value.

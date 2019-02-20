@@ -545,9 +545,7 @@ export declare enum BackgroundGeolocationIOSActivity {
   repo: 'https://github.com/mauron85/cordova-plugin-background-geolocation',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BackgroundGeolocation extends IonicNativePlugin {
   /**
    * Configure the plugin.

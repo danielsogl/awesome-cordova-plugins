@@ -257,9 +257,7 @@ export class ThemeableBrowserObject {
     'Windows Phone'
   ]
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ThemeableBrowser extends IonicNativePlugin {
   /**
    * Creates a browser instance

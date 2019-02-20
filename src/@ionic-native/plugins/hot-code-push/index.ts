@@ -113,9 +113,7 @@ export interface HotCodePushEventData {
   repo: 'https://github.com/nordnet/cordova-hot-code-push',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HotCodePush extends IonicNativePlugin {
   /**
    * Show dialog with the request to update application through the Store (App Store or Google Play).

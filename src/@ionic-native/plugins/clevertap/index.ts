@@ -23,9 +23,7 @@ declare var clevertap: any;
   repo: 'https://github.com/CleverTap/clevertap-cordova',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CleverTap extends IonicNativePlugin {
   /**
    * notify device ready

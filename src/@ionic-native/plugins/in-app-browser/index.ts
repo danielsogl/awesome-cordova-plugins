@@ -239,9 +239,7 @@ export class InAppBrowserObject {
   repo: 'https://github.com/apache/cordova-plugin-inappbrowser',
   platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'macOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class InAppBrowser extends IonicNativePlugin {
   /**
    * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.

@@ -161,9 +161,7 @@ export interface ConfigurationData {
   repo: 'https://github.com/apache/cordova-plugin-media-capture',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MediaCapture extends IonicNativePlugin {
   /**
    * The recording image sizes and formats supported by the device.

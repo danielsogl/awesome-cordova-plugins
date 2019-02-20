@@ -134,9 +134,7 @@ export class ProDeploy {
   install:
     'ionic cordova plugin add cordova-plugin-ionic --save --variable APP_ID="XXXXXXXX" --variable CHANNEL_NAME="Channel"'
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Pro extends IonicNativePlugin {
   _deploy: ProDeploy;
 

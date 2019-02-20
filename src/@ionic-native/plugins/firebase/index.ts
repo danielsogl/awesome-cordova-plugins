@@ -34,9 +34,7 @@ import { Observable } from 'rxjs';
   repo: 'https://github.com/arnesson/cordova-plugin-firebase',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Firebase extends IonicNativePlugin {
   /**
    * Get the device token

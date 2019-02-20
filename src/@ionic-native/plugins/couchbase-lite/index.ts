@@ -118,9 +118,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CouchbaseLite extends IonicNativePlugin {
   /**
    * Get the database url

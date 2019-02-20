@@ -54,9 +54,7 @@ export interface HttpdOptions {
   repo: 'https://github.com/floatinghotpot/cordova-httpd',
   platforms: ['Android', 'iOS', 'macOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Httpd extends IonicNativePlugin {
   /**
    * Starts a web server.

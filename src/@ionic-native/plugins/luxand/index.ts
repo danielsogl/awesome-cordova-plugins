@@ -89,9 +89,7 @@ export interface OMLFacialData {
   repo: 'https://github.com/molobala/cordova-plugin-luxand',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Luxand extends IonicNativePlugin {
 
   /**

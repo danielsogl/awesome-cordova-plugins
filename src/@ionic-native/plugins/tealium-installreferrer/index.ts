@@ -32,9 +32,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android'], // Array of platforms supported, example: ['Android', 'iOS']
   install: '' // OPTIONAL install command, in case the plugin requires variables
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TealiumInstallReferrer extends IonicNativePlugin {
   /**
    * This function stores the install referrer information as persistent data

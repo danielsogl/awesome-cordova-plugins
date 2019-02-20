@@ -67,9 +67,7 @@ export interface ToastOptions {
   repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin',
   platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows', 'Windows Phone 8']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Toast extends IonicNativePlugin {
   /**
    * Show a native toast for the given duration at the specified position.

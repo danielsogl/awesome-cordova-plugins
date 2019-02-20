@@ -78,9 +78,7 @@ export interface TealConfig {
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
   install: '' // OPTIONAL install command, in case the plugin requires variables
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Tealium extends IonicNativePlugin {
   /**
    * This function initializes the Tealium Cordova plugin.

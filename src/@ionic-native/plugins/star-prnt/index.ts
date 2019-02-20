@@ -648,9 +648,7 @@ export interface CommandsArray extends Array<PrintCommand> {}
   repo: 'https://github.com/auctifera-josed/starprnt', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class StarPRNT extends IonicNativePlugin {
   /**
    * Constant for Emulation

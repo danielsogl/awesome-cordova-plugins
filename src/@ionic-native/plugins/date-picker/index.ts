@@ -152,9 +152,7 @@ export interface DatePickerOptions {
   repo: 'https://github.com/VitaliiBlagodir/cordova-plugin-datepicker',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DatePicker extends IonicNativePlugin {
   /**
    * @hidden

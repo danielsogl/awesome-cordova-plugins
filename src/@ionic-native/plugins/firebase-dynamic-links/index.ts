@@ -56,9 +56,7 @@ export interface IDynamicLink {
   installVariables: ['APP_DOMAIN', 'APP_PATH'],
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FirebaseDynamicLinks extends IonicNativePlugin {
   /**
    * Registers callback that is triggered on each dynamic link click.

@@ -28,9 +28,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   installVariables: ['ROLLBAR_ACCESS_TOKEN', 'ROLLBAR_ENVIRONMENT'],
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Rollbar extends IonicNativePlugin {
 
   /**

@@ -27,9 +27,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/Shmarkus/cordova-plugin-nuance-speechkit',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SpeechKit extends IonicNativePlugin {
 
   /**

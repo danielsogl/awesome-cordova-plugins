@@ -189,9 +189,7 @@ export interface FileTransferError {
     'Windows Phone'
   ]
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FileTransfer extends IonicNativePlugin {
   /**
    * Error code rejected from upload with FileTransferError

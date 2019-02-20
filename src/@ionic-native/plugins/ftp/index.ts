@@ -30,9 +30,7 @@ import { Observable } from 'rxjs';
   repo: 'https://github.com/xfally/cordova-plugin-ftp',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FTP extends IonicNativePlugin {
   /**
    * Connect to one ftp server.

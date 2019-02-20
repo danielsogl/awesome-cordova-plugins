@@ -33,9 +33,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/omaxlive/com.omarben.inappreview',
   platforms: ['iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class InAppReview extends IonicNativePlugin {
   /**
    * Open the inApp review popup

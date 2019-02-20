@@ -31,9 +31,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   installVariables: ['wechatappid'],
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Wechat extends IonicNativePlugin {
   Scene: {
     SESSION: 0; // 聊天界面

@@ -60,9 +60,7 @@ export interface DocumentViewerOptions {
   repo: 'https://github.com/sitewaerts/cordova-plugin-document-viewer',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DocumentViewer extends IonicNativePlugin {
 
   /**

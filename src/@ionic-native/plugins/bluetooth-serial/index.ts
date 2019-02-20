@@ -37,9 +37,7 @@ import { Observable } from 'rxjs';
   pluginRef: 'bluetoothSerial',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BluetoothSerial extends IonicNativePlugin {
   /**
    * Connect to a Bluetooth device

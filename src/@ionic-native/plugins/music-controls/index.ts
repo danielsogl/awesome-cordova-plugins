@@ -151,9 +151,7 @@ export interface MusicControlsOptions {
   repo: 'https://github.com/homerours/cordova-music-controls-plugin',
   platforms: ['Android', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MusicControls extends IonicNativePlugin {
   /**
    * Create the media controls

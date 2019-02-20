@@ -175,9 +175,7 @@ export interface AppUrls {
   repo: 'https://github.com/pushandplay/cordova-plugin-apprate',
   platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AppRate extends IonicNativePlugin {
   /**
    * Configure various settings for the Rating View.

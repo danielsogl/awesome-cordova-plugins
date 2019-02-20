@@ -708,9 +708,7 @@ declare const window: Window;
   repo: 'https://github.com/apache/cordova-plugin-file',
   platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class File extends IonicNativePlugin {
   /**
    *  Read-only directory where the application is installed.

@@ -42,9 +42,7 @@ export interface AppLauncherOptions {
   repo: 'https://github.com/nchutchind/cordova-plugin-app-launcher',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AppLauncher extends IonicNativePlugin {
   /**
    * Check if any apps are installed that can launch via a specified URI or Package Name.

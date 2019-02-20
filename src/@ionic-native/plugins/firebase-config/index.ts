@@ -30,9 +30,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/chemerisuk/cordova-plugin-firebase-config',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FirebaseConfig extends IonicNativePlugin {
   /**
    * Fetches remote config values with appropriate TTL and then activates them.

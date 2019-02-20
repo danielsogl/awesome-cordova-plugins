@@ -36,9 +36,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/ihadeed/cordova-clipboard',
   platforms: ['Android', 'iOS', 'Windows Phone 8']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Clipboard extends IonicNativePlugin {
   /**
    * Copies the given text

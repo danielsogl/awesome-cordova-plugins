@@ -106,9 +106,7 @@ export interface SpeechRecognitionListeningOptionsAndroid {
   repo: 'https://github.com/pbakondy/cordova-plugin-speechrecognition',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SpeechRecognition extends IonicNativePlugin {
   /**
    * Check feature available

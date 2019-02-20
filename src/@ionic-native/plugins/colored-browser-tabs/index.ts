@@ -32,9 +32,7 @@ import { Observable } from 'rxjs';
   repo: 'https://github.com/TobyEb/cordova-plugin-colored-browser-tabs',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ColoredBrowserTabs extends IonicNativePlugin {
   /**
    * Call this method to open the tab

@@ -142,9 +142,7 @@ export interface StripeCardTokenRes {
   repo: 'https://github.com/zyramedia/cordova-plugin-stripe',
   platforms: ['Android', 'Browser', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Stripe extends IonicNativePlugin {
 
   /**

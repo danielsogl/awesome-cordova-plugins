@@ -54,9 +54,7 @@ export interface PhotoViewerOptions {
   repo: 'https://github.com/sarriaroman/photoviewer',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PhotoViewer extends IonicNativePlugin {
   /**
    * Shows an image in full screen

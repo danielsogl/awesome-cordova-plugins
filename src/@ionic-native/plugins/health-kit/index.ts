@@ -105,9 +105,7 @@ export interface HealthKitOptions {
   repo: 'https://github.com/Telerik-Verified-Plugins/HealthKit',
   platforms: ['iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HealthKit extends IonicNativePlugin {
   /**
    * Check if HealthKit is supported (iOS8+, not on iPad)

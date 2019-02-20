@@ -129,9 +129,7 @@ export class SecureStorageObject {
   repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SecureStorage extends IonicNativePlugin {
   /**
    * Creates a namespaced storage.

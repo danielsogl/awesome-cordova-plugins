@@ -47,9 +47,7 @@ export interface BatteryStatusResponse {
   repo: 'https://github.com/apache/cordova-plugin-battery-status',
   platforms: ['iOS', 'Android', 'Windows', 'Browser']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BatteryStatus extends IonicNativePlugin {
   /**
    * Watch the change in battery level

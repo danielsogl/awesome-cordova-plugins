@@ -295,9 +295,7 @@ export enum AdjustLogLevel {
   repo: 'https://github.com/adjust/cordova_sdk',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Adjust extends IonicNativePlugin {
   /**
    * This method initializes Adjust SDK

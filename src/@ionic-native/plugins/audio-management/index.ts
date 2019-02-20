@@ -47,9 +47,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/clovelCed/cordova-plugin-audiomanagement',
   platforms: ['Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AudioManagement extends IonicNativePlugin {
   /**
    * Sets the `AudioManagement.AudioMode` for the device.

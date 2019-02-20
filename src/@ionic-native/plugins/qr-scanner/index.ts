@@ -111,9 +111,7 @@ export interface QRScannerStatus {
   repo: 'https://github.com/bitpay/cordova-plugin-qrscanner',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class QRScanner extends IonicNativePlugin {
   /**
    * Request permission to use QR scanner.

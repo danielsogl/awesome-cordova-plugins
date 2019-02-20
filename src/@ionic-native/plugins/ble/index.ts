@@ -182,9 +182,7 @@ export interface BLEScanOptions {
   repo: 'https://github.com/don/cordova-plugin-ble-central',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BLE extends IonicNativePlugin {
   /**
    * Scan and discover BLE peripherals for the specified amount of time.

@@ -60,9 +60,7 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-nati
   repo: 'https://github.com/appfeel/analytics-google',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AnalyticsFirebase extends IonicNativePlugin {
   /**
    * This enum represents AnalyticsFirebase default events.

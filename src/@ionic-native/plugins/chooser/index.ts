@@ -52,9 +52,7 @@ export interface ChooserResult {
   repo: 'https://github.com/cyph/cordova-plugin-chooser',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Chooser extends IonicNativePlugin {
   /**
    * Displays native prompt for user to select a file.

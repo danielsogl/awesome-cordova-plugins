@@ -75,9 +75,7 @@ export interface ZBarOptions {
   repo: 'https://github.com/tjwoon/csZBar',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ZBar extends IonicNativePlugin {
 
   /**

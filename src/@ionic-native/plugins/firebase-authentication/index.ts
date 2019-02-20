@@ -32,9 +32,7 @@ import { Observable } from 'rxjs';
   installVariables: ['FIREBASE_AUTH_VERSION'],
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FirebaseAuthentication extends IonicNativePlugin {
   /**
    * Returns a JWT token used to identify the user to a Firebase service.

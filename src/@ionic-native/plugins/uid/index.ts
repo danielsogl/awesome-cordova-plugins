@@ -43,9 +43,7 @@ import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/lionelhe/cordova-plugin-uid',
   platforms: ['Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Uid extends IonicNativePlugin {
   /** Get the device Universally Unique Identifier (UUID). */
   @CordovaProperty()

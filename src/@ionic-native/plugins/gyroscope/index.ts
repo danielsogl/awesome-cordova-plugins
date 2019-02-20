@@ -80,9 +80,7 @@ export interface GyroscopeOptions {
   repo: 'https://github.com/NeoLSN/cordova-plugin-gyroscope',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Gyroscope extends IonicNativePlugin {
   /**
    * Watching for gyroscope sensor changes

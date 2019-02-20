@@ -116,9 +116,7 @@ export interface EmailComposerOptions {
   repo: 'https://github.com/katzer/cordova-plugin-email-composer',
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows', 'macOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EmailComposer extends IonicNativePlugin {
   /**
    * Checks if the app has a permission to access email accounts information

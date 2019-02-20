@@ -86,9 +86,7 @@ export interface DeviceOrientationCompassOptions {
     'Windows Phone'
   ]
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DeviceOrientation extends IonicNativePlugin {
   /**
    * Get the current compass heading.

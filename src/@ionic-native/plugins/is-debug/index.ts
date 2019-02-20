@@ -28,9 +28,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/mattlewis92/cordova-plugin-is-debug',
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class IsDebug extends IonicNativePlugin {
   /**
    * Determine if an app was installed via xcode / eclipse / the ionic CLI etc

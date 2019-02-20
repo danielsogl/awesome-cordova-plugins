@@ -251,9 +251,7 @@ export interface CCKQuantityItem {
   repo: 'https://github.com/sebastianbaar/cordova-plugin-classkit.git',
   platforms: ['iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ClassKit extends IonicNativePlugin {
   /**
    * Init contexts defined in XML file 'CCK-contexts.xml'

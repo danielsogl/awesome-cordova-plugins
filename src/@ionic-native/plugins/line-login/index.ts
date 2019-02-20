@@ -75,9 +75,7 @@ export interface LineLoginAccessToken {
   installVariables: ['LINE_CHANNEL_ID'],
   platforms: ['Android', 'iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LineLogin extends IonicNativePlugin {
   /**
    * Initialize

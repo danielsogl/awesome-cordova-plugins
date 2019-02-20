@@ -2749,9 +2749,7 @@ export interface UsdlCombinedRecognizerCtor extends RecognizerCtor<UsdlCombinedR
     'ionic cordova plugin add blinkid-cordova --variable CAMERA_USAGE_DESCRIPTION="Enable your camera so that you can scan your ID to validate your account"',
   platforms: ['iOS', 'Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BlinkId extends IonicNativePlugin {
   /**
    * Opens the camera dialog and attempts to scan a barcode/document

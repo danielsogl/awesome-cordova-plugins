@@ -126,9 +126,7 @@ export interface ThreeDeeTouchForceTouch {
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-3dtouch',
   platforms: ['iOS']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ThreeDeeTouch extends IonicNativePlugin {
   /**
    * You need an iPhone 6S or some future tech to use the features of this plugin, so you can check at runtime if the user's device is supported.
