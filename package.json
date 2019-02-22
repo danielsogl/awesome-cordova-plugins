@@ -54,6 +54,7 @@
     "ts-node": "^8.0.2",
     "tslint": "^5.12.1",
     "tslint-ionic-rules": "0.0.21",
+    "typedoc": "^0.14.2",
     "typescript": "3.2.4",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "unminified-webpack-plugin": "^2.0.0",
