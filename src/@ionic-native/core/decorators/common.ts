@@ -20,9 +20,10 @@ export function getPromise<T>(callback: (resolve: Function, reject?: Function) =
     }
   };
 
-  if (window.angular) {
+  if (typeof window !== 'undefined' && window.angular) {
+    const doc = window.document;
     const injector = window.angular
-      .element(document.querySelector('[ng-app]') || document.body)
+      .element(doc.querySelector('[ng-app]') || doc.body)
       .injector();
     if (injector) {
       const $q = injector.get('$q');
