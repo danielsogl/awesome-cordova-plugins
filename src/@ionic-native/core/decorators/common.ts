@@ -186,7 +186,7 @@ export function checkAvailability(
   pluginInstance = getPlugin(pluginRef);
 
   if (!pluginInstance || (!!methodName && typeof pluginInstance[methodName] === 'undefined')) {
-    if (!window.cordova) {
+    if (typeof window === 'undefined' || !window.cordova) {
       cordovaWarn(pluginName, methodName);
       return ERR_CORDOVA_NOT_AVAILABLE;
     }

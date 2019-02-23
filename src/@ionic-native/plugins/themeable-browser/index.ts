@@ -85,7 +85,9 @@ export class ThemeableBrowserObject {
         styleOptions
       );
     } catch (e) {
-      window.open(url);
+      if (typeof window !== 'undefined') {
+        window.open(url);
+      }
       console.warn(
         'Native: ThemeableBrowser is not installed or you are running on a browser. Falling back to window.open.'
       );

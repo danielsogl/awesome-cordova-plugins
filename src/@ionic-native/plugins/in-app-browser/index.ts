@@ -129,7 +129,9 @@ export class InAppBrowserObject {
 
       this._objectInstance = cordova.InAppBrowser.open(url, target, options);
     } catch (e) {
-      window.open(url, target);
+      if (typeof window !== 'undefined') {
+        window.open(url, target);
+      }
       console.warn(
         'Native: InAppBrowser is not installed or you are running on a browser. Falling back to window.open.'
       );
