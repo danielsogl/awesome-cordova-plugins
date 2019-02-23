@@ -26,7 +26,10 @@ export class IonicNativePlugin {
    * Returns the original plugin object
    */
   static getPlugin(): any {
-    return get(window, this.pluginRef);
+    if (typeof window !== 'undefined') {
+      return get(window, this.pluginRef);
+    }
+    return null;
   }
 
   /**
