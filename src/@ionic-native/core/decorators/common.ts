@@ -354,20 +354,22 @@ export function pluginWarn(pluginName: string, plugin?: string, method?: string)
  * @param method
  */
 export function cordovaWarn(pluginName: string, method?: string): void {
-  if (method) {
-    console.warn(
-      'Native: tried calling ' +
-        pluginName +
-        '.' +
-        method +
-        ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
-    );
-  } else {
-    console.warn(
-      'Native: tried accessing the ' +
-        pluginName +
-        ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
-    );
+  if (typeof process === 'undefined') {
+    if (method) {
+      console.warn(
+        'Native: tried calling ' +
+          pluginName +
+          '.' +
+          method +
+          ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
+      );
+    } else {
+      console.warn(
+        'Native: tried accessing the ' +
+          pluginName +
+          ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
+      );
+    }
   }
 }
 
