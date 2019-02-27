@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { Plugin, Cordova, IonicNativePlugin } from "@ionic-native/core";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 /**
  * @name Purchases
@@ -187,14 +187,14 @@ import { Observable } from "rxjs";
  * RCError
  */
 @Plugin({
-  pluginName: "Purchases",
-  plugin: "cordova-plugin-purchases",
-  pluginRef: "Purchases", // the variable reference to call the plugin, example: navigator.geolocation
-  repo: "https://github.com/RevenueCat/cordova-plugin-purchases", // the github repository URL for the plugin
-  platforms: ["Android", "iOS"] // Array of platforms supported, example: ['Android', 'iOS']
+  pluginName: 'Purchases',
+  plugin: 'cordova-plugin-purchases',
+  pluginRef: 'Purchases', // the variable reference to call the plugin, example: navigator.geolocation
+  repo: 'https://github.com/RevenueCat/cordova-plugin-purchases', // the github repository URL for the plugin
+  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class Purchases extends IonicNativePlugin {
   /**
@@ -345,8 +345,8 @@ export class Purchases extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: "onPurchaserInfoUpdated",
-    element: "window"
+    event: 'onPurchaserInfoUpdated',
+    element: 'window'
   })
   onPurchaserInfoUpdated(): Observable<RCPurchaserInfo> {
     return;
@@ -361,8 +361,8 @@ export class Purchases extends IonicNativePlugin {
 }
 
 export enum ProductType {
-  SUBS = "subs",
-  INAPP = "inapp"
+  SUBS = 'subs',
+  INAPP = 'inapp'
 }
 
 export enum ATTRIBUTION_NETWORKS {
