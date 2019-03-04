@@ -73,7 +73,7 @@ import { Injectable } from '@angular/core';
 
 export interface IAPProductOptions {
   id: string;
-  alias: string;
+  alias?: string;
   type: string;
 }
 
