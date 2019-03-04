@@ -46,9 +46,9 @@ function processPlugin(pluginModule): Plugin {
   const pluginClass = pluginModule.children.find(isPlugin);
   const decorator = getPluginDecorator(pluginClass);
   const packageName = `@ionic-native/${basename(dirname(pluginModule.originalName))}`;
-  const displayName = getPluginTag(pluginClass, 'name');
-  const usage = getPluginTag(pluginClass, 'usage');
-  const description = getPluginTag(pluginClass, 'description');
+  const displayName = getTag(pluginClass, 'name');
+  const usage = getTag(pluginClass, 'usage');
+  const description = getTag(pluginClass, 'description');
   return {
     packageName,
     displayName,
@@ -74,10 +74,12 @@ const getPluginDecorator = (child: any) => {
   }
 };
 
-const getPluginTag = (child: any, tag: string): string => {
+const getTag = (child: any, tagName: string): string => {
   if (hasTags(child)) {
-    const { text } = child.comment.tags.find(t => t.tag === tag);
-    return text;
+    const tag = child.comment.tags.find(t => t.tag === tagName);
+    if (tag) {
+      return tag.text;
+    }
   }
 };
 
