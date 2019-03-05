@@ -17,6 +17,7 @@
     "npmpub": "ts-node -P scripts/tsconfig.json scripts/tasks/publish",
     "lint": "gulp lint",
     "readmes": "gulp readmes",
+    "docs-json": "ts-node -P scripts/tsconfig.json scripts/docs-json",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "postchangelog": "git commit -am \"chore(): update changelog\"",
     "shipit": "npm run build && npm run readmes && npm run npmpub"
@@ -54,6 +55,7 @@
     "ts-node": "^8.0.2",
     "tslint": "^5.12.1",
     "tslint-ionic-rules": "0.0.21",
+    "typedoc": "^0.14.2",
     "typescript": "3.2.4",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "unminified-webpack-plugin": "^2.0.0",
