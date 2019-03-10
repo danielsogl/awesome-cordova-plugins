@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name Native Geocoder
@@ -8,7 +8,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+ * import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
  *
  * constructor(private nativeGeocoder: NativeGeocoder) { }
  *
@@ -18,18 +18,17 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *     useLocale: true,
  *     maxResults: 5
  * };
- *
+ * 
  * this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818, options)
- *   .then((result: NativeGeocoderReverseResult[]) => console.log(JSON.stringify(result[0])))
+ *   .then((result: NativeGeocoderResult[]) => console.log(JSON.stringify(result[0])))
  *   .catch((error: any) => console.log(error));
  *
  * this.nativeGeocoder.forwardGeocode('Berlin', options)
- *   .then((coordinates: NativeGeocoderForwardResult[]) => console.log('The coordinates are latitude=' + coordinates[0].latitude + ' and longitude=' + coordinates[0].longitude))
+ *   .then((result: NativeGeocoderResult[]) => console.log('The coordinates are latitude=' + result[0].latitude + ' and longitude=' + result[0].longitude))
  *   .catch((error: any) => console.log(error));
  * ```
  * @interfaces
- * NativeGeocoderReverseResult
- * NativeGeocoderForwardResult
+ * NativeGeocoderResult
  * NativeGeocoderOptions
  */
 @Plugin({
@@ -39,9 +38,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/sebastianbaar/cordova-plugin-nativegeocoder',
   platforms: ['iOS', 'Android']
 })
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class NativeGeocoder extends IonicNativePlugin {
 
   /**
@@ -49,32 +46,40 @@ export class NativeGeocoder extends IonicNativePlugin {
    * @param latitude {number} The latitude
    * @param longitude {number} The longitude
    * @param options {NativeGeocoderOptions} The options
-   * @return {Promise<NativeGeocoderReverseResult[]>}
+   * @return {Promise<NativeGeocoderResult[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  reverseGeocode(latitude: number, longitude: number, options?: NativeGeocoderOptions): Promise<NativeGeocoderReverseResult[]> { return; }
+  reverseGeocode(latitude: number, longitude: number, options?: NativeGeocoderOptions): Promise<NativeGeocoderResult[]> { return; }
 
   /**
    * Forward geocode a given address to find coordinates
    * @param addressString {string} The address to be geocoded
    * @param options {NativeGeocoderOptions} The options
-   * @return {Promise<NativeGeocoderForwardResult[]>}
+   * @return {Promise<NativeGeocoderResult[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  forwardGeocode(addressString: string, options?: NativeGeocoderOptions): Promise<NativeGeocoderForwardResult[]> { return; }
+  forwardGeocode(addressString: string, options?: NativeGeocoderOptions): Promise<NativeGeocoderResult[]> { return; }
 }
 
 /**
- * Encapsulates format information about a reverse geocoding result.
- * more Info:
+ * Encapsulates format information about a geocoding result.
+ * more Info: 
  *  - https://developer.apple.com/documentation/corelocation/clplacemark
  *  - https://developer.android.com/reference/android/location/Address.html
  */
-export interface NativeGeocoderReverseResult {
+export interface NativeGeocoderResult {
+  /**
+   * The latitude.
+   */
+  latitude: string;
+  /**
+   * The longitude.
+   */
+  longitude: string;
   /**
    * The country code.
    */
@@ -111,20 +116,10 @@ export interface NativeGeocoderReverseResult {
    * The subThoroughfare.
    */
   subThoroughfare: string;
-}
-
-/**
- * Encapsulates format information about a forward geocoding result.
- */
-export interface NativeGeocoderForwardResult {
   /**
-   * The latitude.
+   * The areasOfInterest
    */
-  latitude: string;
-  /**
-   * The longitude.
-   */
-  longitude: string;
+  areasOfInterest: string[];
 }
 
 /**
