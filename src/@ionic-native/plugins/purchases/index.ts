@@ -227,7 +227,7 @@ export class Purchases extends IonicNativePlugin {
 
   /**
    * Add a dict of attribution information
-   * @param data { {[key: string]: any} } Attribution data from any of the attribution networks in ATTRIBUTION_NETWORKS
+   * @param data { Object.<string, any> } Attribution data from any of the attribution networks in ATTRIBUTION_NETWORKS
    * @param network {ATTRIBUTION_NETWORKS} Which network, see ATTRIBUTION_NETWORKS
    */
   @Cordova({ sync: true })
@@ -251,7 +251,7 @@ export class Purchases extends IonicNativePlugin {
    * @param productIdentifiers {string[]} Array of product identifiers
    * @param type {ProductType} Optional type of products to fetch, can be inapp or subs. Subs by default
    *
-   * @return {Observable<[Product]>} Will return an [RCError] if the products are not properly configured in RevenueCat or if there is another error retrieving them.
+   * @return {Observable<Array>} Will return an [RCError] if the products are not properly configured in RevenueCat or if there is another error retrieving them.
    */
   @Cordova({
     successIndex: 1,
