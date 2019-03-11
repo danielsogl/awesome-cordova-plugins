@@ -153,6 +153,17 @@ import { Observable } from 'rxjs';
  *
  * We've added an [example](https://github.com/RevenueCat/purchases-ionic-example) showing a simple example using _Purchases_ with the RevenueCat backend. Note that the pre-registered in app purchases in the demo apps are for illustration purposes only and may not be valid in App Store Connect. [Set up your own purchases](https://docs.revenuecat.com/docs/entitlements) with RevenueCat when running the example.
  *
+ * #### Additional iOS Setup
+ * 
+ * ##### Add Strip Frameworks Phase
+ * The App Store, in it's infinite wisdom, still rejects fat frameworks, so we need to strip our framework before it is deployed. To do this, add the following script phase to your build.
+ * 1. In Xcode, in project manager, select your app target.
+ * 2. Open the `Build Phases` tab
+ * 3. Add a new `Run Script`, name it `Strip Frameworks`
+ * 4. Add the following command `"${PROJECT_DIR}/../../node_modules/cordova-plugin-purchases/src/ios/strip-frameworks.sh"` (quotes included)
+ * 
+ * ![](https://media.giphy.com/media/39zTmnsW1CIrJNk5AM/giphy.gif)
+ * 
  * ## Next Steps
  * - Head over to our **[online documentation](https://docs.revenuecat.com/docs)** for complete setup guides
  * - If you haven't already, make sure your products are configured correctly in the RevenueCat dashboard by checking out our [guide on entitlements](https://docs.revenuecat.com/docs/entitlements)
