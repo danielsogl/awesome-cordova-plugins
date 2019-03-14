@@ -228,6 +228,13 @@ export class InAppPurchase2 extends IonicNativePlugin {
   verbosity: number;
 
   /**
+   * Set to true to clear the transaction queue. Not recommended for production.
+   * https://github.com/j3k0/cordova-plugin-purchase/blob/master/doc/api.md#random-tips
+   */
+  @CordovaProperty()
+  autoFinishTransactions: boolean;
+
+  /**
    * Set to true to invoke the platform purchase sandbox. (Windows only)
    */
   @CordovaProperty()
