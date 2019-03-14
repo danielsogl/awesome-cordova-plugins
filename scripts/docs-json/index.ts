@@ -90,7 +90,7 @@ const isClass = (child: any): boolean =>
   child.kind === 128;
 
 const isPlugin = (child: any): boolean =>
-  isClass(child) && Array.isArray(child.decorators) && child.decorators.some(d => d.name === 'Plugin');
+  isClass(child) && hasTags(child) && Array.isArray(child.decorators) && child.decorators.some(d => d.name === 'Plugin');
 
 const hasPlugin = (child: any): boolean =>
   child.children.some(isPlugin);
