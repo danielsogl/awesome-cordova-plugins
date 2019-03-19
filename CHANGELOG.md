@@ -1,3 +1,29 @@
+# [5.3.0](https://github.com/ionic-team/ionic-native/compare/v5.2.0...v5.3.0) (2019-03-19)
+
+
+* Revert "refactor(template): update Inject decorator" ([d827db2](https://github.com/ionic-team/ionic-native/commit/d827db2))
+
+
+### Bug Fixes
+
+* **scripts:** check for TypeDoc tags when selecting plugin class ([#2963](https://github.com/ionic-team/ionic-native/issues/2963)) ([06654af](https://github.com/ionic-team/ionic-native/commit/06654af))
+* **ssr:** check for window and document ([e3e8c85](https://github.com/ionic-team/ionic-native/commit/e3e8c85))
+* **ssr:** fix window references ([c2029f7](https://github.com/ionic-team/ionic-native/commit/c2029f7))
+* **ssr:** fix window references ([5b1bdc3](https://github.com/ionic-team/ionic-native/commit/5b1bdc3))
+* **ssr:** remove cordova warning during ssr ([7e090cc](https://github.com/ionic-team/ionic-native/commit/7e090cc))
+
+
+### Features
+
+* **scripts:** add docs-json script ([#2947](https://github.com/ionic-team/ionic-native/issues/2947)) ([b0dea6d](https://github.com/ionic-team/ionic-native/commit/b0dea6d))
+
+
+### BREAKING CHANGES
+
+* This reverts commit c5ae6362d7771b62ae35a6b8ddc6e866aa9964a9.
+
+
+
 # [5.2.0](https://github.com/ionic-team/ionic-native/compare/v5.1.0...v5.2.0) (2019-02-20)
 
 
