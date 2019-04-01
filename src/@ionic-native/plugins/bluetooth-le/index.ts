@@ -431,20 +431,20 @@ export class BluetoothLE extends IonicNativePlugin {
    * @name initialize
    * Initialize Bluetooth on the device
    * @param {InitParams} [params]
-   * @returns {(Promise<{ status: 'enabled' | 'disabled'}>)} The callback that is passed initialize status (enabled/disabled)
+   * @returns {(Observable<{ status: 'enabled' | 'disabled'}>)} The callback that is passed initialize status (enabled/disabled)
    */
-  @Cordova({ callbackOrder: 'reverse' })
-  initialize(params?: InitParams): Promise<{ status: 'enabled' | 'disabled' }> {
+  @Cordova({ successIndex: 0, errorIndex: 2, observable: true })
+  initialize(params?: InitParams): Observable<{ status: 'enabled' | 'disabled' }> {
     return;
   }
 
   /**
    * @name enable (Android)
    * Enable Bluetooth on the device. Android support only
-   * @returns {Promise<{ status: boolean }>}
+   * @returns void
    */
   @Cordova({ callbackOrder: 'reverse', sync: true })
-  enable(): Promise<{ status: boolean }> {
+  enable() {
     return;
   }
 
