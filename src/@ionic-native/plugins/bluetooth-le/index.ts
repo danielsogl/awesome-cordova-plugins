@@ -1057,7 +1057,7 @@ export class BluetoothLE extends IonicNativePlugin {
   @CordovaProperty()
   SCAN_MODE_LOW_LATENCY: number;
   @CordovaProperty()
-  MATCH_MODE_AGRESSIVE: number;
+  MATCH_MODE_AGGRESSIVE: number;
   @CordovaProperty()
   MATCH_MODE_STICKY: number;
   @CordovaProperty()
