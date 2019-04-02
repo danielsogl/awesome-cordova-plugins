@@ -559,7 +559,7 @@ export class BluetoothLE extends IonicNativePlugin {
   connect(params: {
     address: string;
     autoConnect?: boolean;
-  }): Observable<{ status: DeviceInfo }> {
+  }): Observable< DeviceInfo > {
     return;
   }
 
