@@ -480,10 +480,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * Android API >= 23 also requires location services to be enabled. Use isLocationEnabled to determine whether location services are enabled.
    * If not enabled, use requestLocation to prompt the location services settings page.
    * @param {ScanParams} params Scan params
-   * @returns {(Observable<{ status: ScanStatus }>)}
+   * @returns {(Observable< ScanStatus >)}
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  startScan(params: ScanParams): Observable<{ status: ScanStatus }> {
+  startScan(params: ScanParams): Observable< ScanStatus > {
     return;
   }
 
