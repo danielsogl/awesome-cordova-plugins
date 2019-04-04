@@ -750,7 +750,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {Promise<{ rssi: RSSI }>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  rssi(params: { address: string }): Promise<{ rssi: RSSI }> {
+  rssi(params: { address: string }): Promise< RSSI > {
     return;
   }
 
