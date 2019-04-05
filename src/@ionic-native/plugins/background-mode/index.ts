@@ -91,8 +91,37 @@ export class BackgroundMode extends IonicNativePlugin {
    * Disable the background mode.
    * Once the background mode has been disabled, the app will be paused when in background.
    */
-  @Cordova()
-  disable(): Promise<any> {
+  @Cordova({
+    sync: true
+  })
+  disable(): void {
+    return;
+  }
+
+  /**
+   * Enable or disable the background mode.
+   *
+   * @param enable {boolean} The status to set for.
+   *
+   * @return {void}
+   */
+  @Cordova({
+    sync: true
+  })
+  setEnabled(enable: boolean): void {}
+
+  /**
+   * Fire event with given arguments.
+   *
+   * @param event {string} event The event's name.
+   * @param args {array} The callback's arguments.
+   *
+   * @return {string}
+   */
+  @Cordova({
+    sync: true
+  })
+  fireEvent(event: string, ...args: any[]): string {
     return;
   }
 
@@ -119,17 +148,15 @@ export class BackgroundMode extends IonicNativePlugin {
   }
 
   /**
-   * Override the default title, ticker and text.
+   * Overwrite the default settings.
    * Available only for Android platform.
-   * @param {BackgroundModeConfiguration} options List of option to configure. See table below
+   * @param overrides {BackgroundModeConfiguration} Dict of options to be overridden.
    * @returns {Promise<any>}
    */
   @Cordova({
     platforms: ['Android']
   })
-  setDefaults(options?: BackgroundModeConfiguration): Promise<any> {
-    return;
-  }
+  setDefaults(overrides?: BackgroundModeConfiguration): void {}
 
   /**
    * Modify the displayed information.
@@ -143,8 +170,11 @@ export class BackgroundMode extends IonicNativePlugin {
   configure(options?: BackgroundModeConfiguration): void {}
 
   /**
-   * Listen for events that the plugin fires. Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
+   * Register callback for given event.
+   * > Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
    * @param event {string} Event name
+   * @param callback {function} The function to be exec as callback.
+   * @param scope {object} The callback function's scope.
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -152,7 +182,18 @@ export class BackgroundMode extends IonicNativePlugin {
     clearFunction: 'un',
     clearWithArgs: true
   })
-  on(event: string): Observable<any> {
+  on(event: string, callback: (...args: any[]) => void, scope?: object): Observable<any> {
+    return;
+  }
+
+  /**
+   * Listen for events that the plugin fires. Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
+   * @param event {string} Event name
+   * @param callback {function} The function to be exec as callback.
+   * @returns {Observable<any>}
+   */
+  @Cordova()
+  un(event: string, callback: (...args: any[]) => void): void {
     return;
   }
 
@@ -202,15 +243,14 @@ export class BackgroundMode extends IonicNativePlugin {
   excludeFromTaskList(): void {}
 
   /**
-   * The method works async instead of isActive() or isEnabled().
+   * If the screen is off.
+   * @param fn {function} Callback function to invoke with boolean arg.
    * @returns {Promise<boolean>}
    */
   @Cordova({
     platforms: ['Android']
   })
-  isScreenOff(): Promise<boolean> {
-    return;
-  }
+  isScreenOff(fn: (arg0: boolean) => void): void {}
 
   /**
    * Turn screen on
