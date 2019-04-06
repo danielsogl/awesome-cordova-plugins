@@ -78,4 +78,13 @@ export class DeviceAccounts extends IonicNativePlugin {
   getEmail(): Promise<string> {
     return;
   }
+
+  /**
+   *  Get permissions for access to email registered on Android device 8.0+
+   * @returns {Promise<string>}
+   */
+  @Cordova()
+  getPermissions(): Promise<string> {
+    return;
+  }
 }
