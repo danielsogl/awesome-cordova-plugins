@@ -440,4 +440,7 @@ export class InAppPurchase2 extends IonicNativePlugin {
   refresh(): void {
   }
 
+  @Cordova({ sync: true })
+  manageSubscriptions(): void {}
+
 }
