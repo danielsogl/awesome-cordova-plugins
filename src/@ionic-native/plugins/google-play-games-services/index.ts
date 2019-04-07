@@ -15,6 +15,13 @@ export interface ScoreData {
 
 }
 
+export interface PlayerScoreData {
+  /**
+   * The player score.
+   */
+  playerScore: number;
+}
+
 export interface LeaderboardData {
 
   /**
@@ -126,6 +133,13 @@ export interface Player {
  *     leaderboardId: 'SomeLeaderboardId'
  * });
  *
+ * // Get the player score on a leaderboard.
+ * this.googlePlayGamesServices.getPlayerScore({
+ *     leaderboardId: 'SomeLeaderBoardId'
+ * }).then((data: PlayerScoreData) => {
+ *    console.log('Player score', data);
+ * });
+ *
  * // Show the native leaderboards window.
  * this.googlePlayGamesServices.showAllLeaderboards()
  *     .then(() => console.log('The leaderboard window is visible.'));
@@ -217,6 +231,19 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    */
   @Cordova()
   submitScore(data: ScoreData): Promise<string> {
+    return;
+  }
+
+  /**
+   * Get the player score on a leaderboard. You should ensure that you have a
+   * successful return from auth() before requesting a score.
+   *
+   * @param data {LeaderboardData} The leaderboard score you want to request.
+   * @return {Promise<PlayerScoreData>} Returns a promise that resolves when Play
+   * Games Services returns the player score.
+   */
+  @Cordova()
+  getPlayerScore(data: LeaderboardData): Promise<PlayerScoreData> {
     return;
   }
 
