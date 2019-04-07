@@ -18,7 +18,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *     useLocale: true,
  *     maxResults: 5
  * };
- * 
+ *
  * this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818, options)
  *   .then((result: NativeGeocoderResult[]) => console.log(JSON.stringify(result[0])))
  *   .catch((error: any) => console.log(error));
@@ -67,7 +67,7 @@ export class NativeGeocoder extends IonicNativePlugin {
 
 /**
  * Encapsulates format information about a geocoding result.
- * more Info: 
+ * more Info:
  *  - https://developer.apple.com/documentation/corelocation/clplacemark
  *  - https://developer.android.com/reference/android/location/Address.html
  */
