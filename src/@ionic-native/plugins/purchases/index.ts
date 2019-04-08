@@ -414,5 +414,5 @@ export interface RCMakePurchaseResponse {
 export interface RCError {
   code: number;
   message: string;
-  underlyingErrorMessage: string;
+  underlyingErrorMessage?: string;
 }
