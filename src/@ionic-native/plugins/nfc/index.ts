@@ -196,7 +196,7 @@ export class NFC extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  makeReadyOnly(): Promise<any> {
+  makeReadOnly(): Promise<any> {
     return;
   }
 
