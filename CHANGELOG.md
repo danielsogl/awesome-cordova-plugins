@@ -1,3 +1,22 @@
+# [5.5.0](https://github.com/ionic-team/ionic-native/compare/v5.4.0...v5.5.0) (2019-04-19)
+
+
+### Bug Fixes
+
+* **background-mode:** update types definitions ([#2997](https://github.com/ionic-team/ionic-native/issues/2997)) ([c0ce17b](https://github.com/ionic-team/ionic-native/commit/c0ce17b))
+* **firebase-messaging:** fix the typings of the FCM message payload ([#2998](https://github.com/ionic-team/ionic-native/issues/2998)) ([e47774b](https://github.com/ionic-team/ionic-native/commit/e47774b))
+* **google-plus:** mark login param as required ([#2996](https://github.com/ionic-team/ionic-native/issues/2996)) ([c518c81](https://github.com/ionic-team/ionic-native/commit/c518c81))
+* **nfc:** rename `makeReadyOnly` to `makeReadOnly` ([9024ea5](https://github.com/ionic-team/ionic-native/commit/9024ea5)), closes [#2985](https://github.com/ionic-team/ionic-native/issues/2985)
+
+
+### Features
+
+* **device-accounts:** update plugin source ([#2976](https://github.com/ionic-team/ionic-native/issues/2976)) ([c063652](https://github.com/ionic-team/ionic-native/commit/c063652))
+* **purchases:** update plugin to v0.0.5 ([#2988](https://github.com/ionic-team/ionic-native/issues/2988)) ([7ea51fc](https://github.com/ionic-team/ionic-native/commit/7ea51fc))
+* **spotify-auth:** add Spotify OAuth plugin ([#2989](https://github.com/ionic-team/ionic-native/issues/2989)) ([21dc1f9](https://github.com/ionic-team/ionic-native/commit/21dc1f9))
+
+
+
 # [5.4.0](https://github.com/ionic-team/ionic-native/compare/v5.3.0...v5.4.0) (2019-04-07)
 
 
