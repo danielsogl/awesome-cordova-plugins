@@ -173,8 +173,6 @@ export class BackgroundMode extends IonicNativePlugin {
    * Register callback for given event.
    * > Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
    * @param event {string} Event name
-   * @param callback {function} The function to be exec as callback.
-   * @param scope {object} The callback function's scope.
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -182,7 +180,7 @@ export class BackgroundMode extends IonicNativePlugin {
     clearFunction: 'un',
     clearWithArgs: true
   })
-  on(event: string, callback: (...args: any[]) => void, scope?: object): Observable<any> {
+  on(event: string): Observable<any> {
     return;
   }
 
