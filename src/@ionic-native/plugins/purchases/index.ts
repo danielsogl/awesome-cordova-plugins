@@ -52,7 +52,7 @@ import { Observable } from 'rxjs';
  *
  * ```typescript
  * this.purchases.getEntitlements()
- *      .subscribe(entitlements => )
+ *      .subscribe(entitlements => ,
  *                 error => );
  * ```
  *
@@ -67,7 +67,7 @@ import { Observable } from 'rxjs';
  *              // Unlock content
  *          }
  *      },
- *      error => // Error making purchase. You can check error.userCancelled to check if user cancelled the purchase
+ *      ({ error, userCancelled }) => // Error making purchase. You can check error.userCancelled to check if user cancelled the purchase
  *      );
  *
  * ```
@@ -271,7 +271,7 @@ export class Purchases extends IonicNativePlugin {
    * @param oldSkus {string[]} Optional array of skus you wish to upgrade from.
    * @param type {String} Optional type of product, can be inapp or subs. Subs by default
    *
-   * @return {Observable<MakePurchaseResponse>} An [RCError] is thrown when user cancels. error.usercancelled will be true if user cancelled
+   * @return {Observable<MakePurchaseResponse>} An [RCError] is thrown when user cancels. On error `usercancelled` will be true if user cancelled
    */
   @Cordova({
     successIndex: 1,
@@ -413,7 +413,6 @@ export interface RCMakePurchaseResponse {
 
 export interface RCError {
   code: number;
-  domain: string;
   message: string;
-  userCancelled?: string;
+  underlyingErrorMessage?: string;
 }
