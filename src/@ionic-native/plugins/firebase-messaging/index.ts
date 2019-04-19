@@ -2,10 +2,34 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
-export interface IFirebaseMessage {
-  aps: any;
-  gcm: any;
+export interface IFirebaseGCMMessage {
+  gcm: {
+    body: string;
+    title: string;
+    sound: string;
+    icon: string;
+    tag: string;
+    color: string;
+    clickAction: string;
+  };
+  'google.message_id': string;
+  'google.sent_time': number;
+  [key: string]: any;
 }
+
+export interface IFirebaseAPSMessage {
+  aps: {
+    alert: {
+      title: string;
+      body: string;
+    };
+    badge?: number;
+  };
+  'gcm.message_id': 'string';
+  [key: string]: any;
+}
+
+export type IFirebaseMessage = IFirebaseAPSMessage | IFirebaseGCMMessage;
 
 /**
  * @beta
@@ -36,7 +60,7 @@ export interface IFirebaseMessage {
   plugin: 'cordova-plugin-firebase-messaging',
   pluginRef: 'cordova.plugins.firebase.messaging',
   repo: 'https://github.com/chemerisuk/cordova-plugin-firebase-messaging',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseMessaging extends IonicNativePlugin {
