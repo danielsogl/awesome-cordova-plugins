@@ -39,7 +39,7 @@ export class GooglePlus extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  login(options?: any): Promise<any> {
+  login(options: any): Promise<any> {
     return;
   }
 
