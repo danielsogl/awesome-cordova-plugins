@@ -37,7 +37,7 @@ export interface AndroidAccount {
   pluginName: 'DeviceAccounts',
   plugin: 'cordova-device-accounts',
   pluginRef: 'plugins.DeviceAccounts',
-  repo: 'https://github.com/danielsogl/cordova-device-accounts',
+  repo: 'https://github.com/xUnholy/cordova-device-accounts',
   platforms: ['Android']
 })
 @Injectable()
@@ -76,6 +76,15 @@ export class DeviceAccounts extends IonicNativePlugin {
    */
   @Cordova()
   getEmail(): Promise<string> {
+    return;
+  }
+
+  /**
+   *  Get permissions for access to email registered on Android device 8.0+
+   * @returns {Promise<string>}
+   */
+  @Cordova()
+  getPermissions(): Promise<string> {
     return;
   }
 }
