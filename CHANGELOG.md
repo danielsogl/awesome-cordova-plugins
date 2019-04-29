@@ -1,3 +1,17 @@
+## [5.5.1](https://github.com/ionic-team/ionic-native/compare/v5.5.0...v5.5.1) (2019-04-29)
+
+
+### Bug Fixes
+
+* **background-geolocation:** update source ([e288a5d](https://github.com/ionic-team/ionic-native/commit/e288a5d)), closes [#2979](https://github.com/ionic-team/ionic-native/issues/2979)
+
+
+### Features
+
+* **CameraPreview:** add getHorizontalFOV callback ([#3000](https://github.com/ionic-team/ionic-native/issues/3000)) ([9800271](https://github.com/ionic-team/ionic-native/commit/9800271))
+
+
+
 # [5.5.0](https://github.com/ionic-team/ionic-native/compare/v5.4.0...v5.5.0) (2019-04-19)
 
 
