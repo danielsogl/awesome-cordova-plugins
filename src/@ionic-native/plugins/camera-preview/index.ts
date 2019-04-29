@@ -456,4 +456,13 @@ export class CameraPreview extends IonicNativePlugin {
   onBackButton(): Promise<any> {
     return;
   }
+
+  /**
+   * Return in use device camera fov
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getHorizontalFOV(): Promise<any> {
+    return;
+  }
 }
