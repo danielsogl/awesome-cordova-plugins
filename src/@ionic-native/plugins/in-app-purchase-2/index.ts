@@ -73,7 +73,7 @@ import { Injectable } from '@angular/core';
 
 export interface IAPProductOptions {
   id: string;
-  alias: string;
+  alias?: string;
   type: string;
 }
 
@@ -224,6 +224,13 @@ export class InAppPurchase2 extends IonicNativePlugin {
    */
   @CordovaProperty()
   verbosity: number;
+
+  /**
+   * Set to true to clear the transaction queue. Not recommended for production.
+   * https://github.com/j3k0/cordova-plugin-purchase/blob/master/doc/api.md#random-tips
+   */
+  @CordovaProperty()
+  autoFinishTransactions: boolean;
 
   /**
    * Set to true to invoke the platform purchase sandbox. (Windows only)
@@ -432,5 +439,8 @@ export class InAppPurchase2 extends IonicNativePlugin {
   @Cordova({ sync: true })
   refresh(): void {
   }
+
+  @Cordova({ sync: true })
+  manageSubscriptions(): void {}
 
 }
