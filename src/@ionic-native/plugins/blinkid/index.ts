@@ -837,47 +837,26 @@ export interface EgyptIdFrontRecognizer extends Recognizer<EgyptIdFrontRecognize
 }
 export interface EgyptIdFrontRecognizerCtor extends RecognizerCtor<EgyptIdFrontRecognizer> {}
 
-export interface BlinkCardEliteBackRecognizerResult extends RecognizerResult {
-  cardNumber: string;
-  cvv: string;
-  fullDocumentImage: string;
-  inventoryNumber: string;
-  validThru: Date;
-}
-export interface BlinkCardEliteBackRecognizerResultCtor extends RecognizerResultCtor<BlinkCardEliteBackRecognizerResult> {}
-
-export interface BlinkCardEliteBackRecognizer extends Recognizer<BlinkCardEliteBackRecognizerResult> {
-  anonymizeCardNumber: boolean;
-  anonymizeCvv: boolean;
-  detectGlare: boolean;
-  extractCvv: boolean;
-  extractInventoryNumber: boolean;
-  extractValidThru: boolean;
-  fullDocumentImageDpi: number;
-  fullDocumentImageExtensionFactors: ImageExtensionFactors;
-  returnFullDocumentImage: boolean;
-}
-
-export interface BlinkCardEliteCombinedRecognizerResult extends RecognizerResult {
+export interface BlinkCardEliteRecognizerResult extends RecognizerResult {
   cardNumber: string;
   cvv: string;
   digitalSignature: string;
   digitalSignatureVersion: string;
   documentDataMatch: boolean;
-  fullDocumentImage: string;
+  fullDocumentBackImage: string;
   fullDocumentFrontImage: string;
   inventoryNumber: string;
   owner: string;
   scanningFirstSideDone: boolean;
   validThru: Date;
 }
-export interface BlinkCardEliteCombinedRecognizerResultCtor extends RecognizerResultCtor<BlinkCardEliteCombinedRecognizerResult> {}
+export interface BlinkCardEliteRecognizerResultCtor extends RecognizerResultCtor<BlinkCardEliteRecognizerResult> {}
 
-export interface BlinkCardEliteCombinedRecognizer extends Recognizer<BlinkCardEliteCombinedRecognizerResult> {
+export interface BlinkCardEliteRecognizer extends Recognizer<BlinkCardEliteRecognizerResult> {
   anonymizeCardNumber: boolean;
   anonymizeCvv: boolean;
+  anonymizeOwner: boolean;
   detectGlare: boolean;
-  extractCvv: boolean;
   extractInventoryNumber: boolean;
   extractOwner: boolean;
   extractValidThru: boolean;
@@ -886,20 +865,7 @@ export interface BlinkCardEliteCombinedRecognizer extends Recognizer<BlinkCardEl
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-
-export interface BlinkCardEliteFrontRecognizerResult extends RecognizerResult {
-  fullDocumentImage: string;
-  owner: string;
-}
-export interface BlinkCardEliteFrontRecognizerResultCtor extends RecognizerResultCtor<BlinkCardEliteFrontRecognizerResult> {}
-
-export interface BlinkCardEliteFrontRecognizer extends Recognizer<BlinkCardEliteFrontRecognizerResult> {
-  anonymizeOwner: boolean;
-  detectGlare: boolean;
-  extractOwner: boolean;
-  fullDocumentImageDpi: number;
-  fullDocumentImageExtensionFactors: ImageExtensionFactors;
-}
+export interface BlinkCardEliteRecognizerCtor extends RecognizerCtor<BlinkCardEliteRecognizer> {}
 
 export interface EudlRecognizerResult extends RecognizerResult {
   address: string;
@@ -2761,6 +2727,10 @@ export class BlinkId extends IonicNativePlugin {
   @CordovaProperty() AustriaIdFrontRecognizer: AustriaIdFrontRecognizerCtor;
   @CordovaProperty() AustriaPassportRecognizerResult: AustriaPassportRecognizerResultCtor;
   @CordovaProperty() AustriaPassportRecognizer: AustriaPassportRecognizerCtor;
+  @CordovaProperty() BlinkCardEliteRecognizer: BlinkCardEliteRecognizerCtor;
+  @CordovaProperty() BlinkCardEliteRecognizerResult: BlinkCardEliteRecognizerResultCtor;
+  @CordovaProperty() BlinkCardRecognizerResult: BlinkCardRecognizerResultCtor;
+  @CordovaProperty() BlinkCardRecognizer: BlinkCardRecognizerCtor;
   @CordovaProperty() ColombiaDlFrontRecognizerResult: ColombiaDlFrontRecognizerResultCtor;
   @CordovaProperty() ColombiaIdBackRecognizerResult: ColombiaIdBackRecognizerResultCtor;
   @CordovaProperty() ColombiaIdBackRecognizer: ColombiaIdBackRecognizerCtor;
@@ -2778,9 +2748,6 @@ export class BlinkId extends IonicNativePlugin {
   @CordovaProperty() DocumentFaceRecognizerResult: DocumentFaceRecognizerResultCtor;
   @CordovaProperty() EgyptIdFrontRecognizerResult: EgyptIdFrontRecognizerResultCtor;
   @CordovaProperty() EgyptIdFrontRecognizer: EgyptIdFrontRecognizerCtor;
-  @CordovaProperty() BlinkCardEliteBackRecognizerResult: BlinkCardEliteBackRecognizerResultCtor;
-  @CordovaProperty() BlinkCardEliteCombinedRecognizerResult: BlinkCardEliteCombinedRecognizerResultCtor;
-  @CordovaProperty() BlinkCardEliteFrontRecognizerResult: BlinkCardEliteFrontRecognizerResultCtor;
   @CordovaProperty() EudlRecognizerResult: EudlRecognizerResultCtor;
   @CordovaProperty() GermanyCombinedRecognizerResult: GermanyCombinedRecognizerResultCtor;
   @CordovaProperty() GermanyCombinedRecognizer: GermanyCombinedRecognizerCtor;
@@ -2834,8 +2801,6 @@ export class BlinkId extends IonicNativePlugin {
   @CordovaProperty() MyKadFrontRecognizer: MyKadFrontRecognizerCtor;
   @CordovaProperty() NewZealandDlFrontRecognizerResult: NewZealandDlFrontRecognizerResultCtor;
   @CordovaProperty() NewZealandDlFrontRecognizer: NewZealandDlFrontRecognizerCtor;
-  @CordovaProperty() BlinkCardRecognizerResult: BlinkCardRecognizerResultCtor;
-  @CordovaProperty() BlinkCardRecognizer: BlinkCardRecognizerCtor;
   @CordovaProperty() Pdf417RecognizerResult: Pdf417RecognizerResultCtor;
   @CordovaProperty() Pdf417Recognizer: Pdf417RecognizerCtor;
   @CordovaProperty() PolandCombinedRecognizerResult: PolandCombinedRecognizerResultCtor;
