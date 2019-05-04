@@ -837,16 +837,16 @@ export interface EgyptIdFrontRecognizer extends Recognizer<EgyptIdFrontRecognize
 }
 export interface EgyptIdFrontRecognizerCtor extends RecognizerCtor<EgyptIdFrontRecognizer> {}
 
-export interface ElitePaymentCardBackRecognizerResult extends RecognizerResult {
+export interface BlinkCardEliteBackRecognizerResult extends RecognizerResult {
   cardNumber: string;
   cvv: string;
   fullDocumentImage: string;
   inventoryNumber: string;
   validThru: Date;
 }
-export interface ElitePaymentCardBackRecognizerResultCtor extends RecognizerResultCtor<ElitePaymentCardBackRecognizerResult> {}
+export interface BlinkCardEliteBackRecognizerResultCtor extends RecognizerResultCtor<BlinkCardEliteBackRecognizerResult> {}
 
-export interface ElitePaymentCardBackRecognizer extends Recognizer<ElitePaymentCardBackRecognizerResult> {
+export interface BlinkCardEliteBackRecognizer extends Recognizer<BlinkCardEliteBackRecognizerResult> {
   anonymizeCardNumber: boolean;
   anonymizeCvv: boolean;
   detectGlare: boolean;
@@ -858,7 +858,7 @@ export interface ElitePaymentCardBackRecognizer extends Recognizer<ElitePaymentC
   returnFullDocumentImage: boolean;
 }
 
-export interface ElitePaymentCardCombinedRecognizerResult extends RecognizerResult {
+export interface BlinkCardEliteCombinedRecognizerResult extends RecognizerResult {
   cardNumber: string;
   cvv: string;
   digitalSignature: string;
@@ -871,9 +871,9 @@ export interface ElitePaymentCardCombinedRecognizerResult extends RecognizerResu
   scanningFirstSideDone: boolean;
   validThru: Date;
 }
-export interface ElitePaymentCardCombinedRecognizerResultCtor extends RecognizerResultCtor<ElitePaymentCardCombinedRecognizerResult> {}
+export interface BlinkCardEliteCombinedRecognizerResultCtor extends RecognizerResultCtor<BlinkCardEliteCombinedRecognizerResult> {}
 
-export interface ElitePaymentCardCombinedRecognizer extends Recognizer<ElitePaymentCardCombinedRecognizerResult> {
+export interface BlinkCardEliteCombinedRecognizer extends Recognizer<BlinkCardEliteCombinedRecognizerResult> {
   anonymizeCardNumber: boolean;
   anonymizeCvv: boolean;
   detectGlare: boolean;
@@ -887,13 +887,13 @@ export interface ElitePaymentCardCombinedRecognizer extends Recognizer<ElitePaym
   signResult: boolean;
 }
 
-export interface ElitePaymentCardFrontRecognizerResult extends RecognizerResult {
+export interface BlinkCardEliteFrontRecognizerResult extends RecognizerResult {
   fullDocumentImage: string;
   owner: string;
 }
-export interface ElitePaymentCardFrontRecognizerResultCtor extends RecognizerResultCtor<ElitePaymentCardFrontRecognizerResult> {}
+export interface BlinkCardEliteFrontRecognizerResultCtor extends RecognizerResultCtor<BlinkCardEliteFrontRecognizerResult> {}
 
-export interface ElitePaymentCardFrontRecognizer extends Recognizer<ElitePaymentCardFrontRecognizerResult> {
+export interface BlinkCardEliteFrontRecognizer extends Recognizer<BlinkCardEliteFrontRecognizerResult> {
   anonymizeOwner: boolean;
   detectGlare: boolean;
   extractOwner: boolean;
@@ -1731,24 +1731,7 @@ export interface NewZealandDlFrontRecognizer extends Recognizer<NewZealandDlFron
 }
 export interface NewZealandDlFrontRecognizerCtor extends RecognizerCtor<NewZealandDlFrontRecognizer> {}
 
-export interface PaymentCardBackRecognizerResult extends RecognizerResult {
-  cvv: string;
-  fullDocumentImage: string;
-  inventoryNumber: string;
-}
-export interface PaymentCardBackRecognizerResultCtor extends RecognizerResultCtor<PaymentCardBackRecognizerResult> {}
-
-export interface PaymentCardBackRecognizer extends Recognizer<PaymentCardBackRecognizerResult> {
-  anonymizeCvv: boolean;
-  detectGlare: boolean;
-  extractInventoryNumber: boolean;
-  fullDocumentImageDpi: number;
-  fullDocumentImageExtensionFactors: ImageExtensionFactors;
-  returnFullDocumentImage: boolean;
-}
-export interface PaymentCardBackRecognizerCtor extends RecognizerCtor<PaymentCardBackRecognizer> {}
-
-export interface PaymentCardCombinedRecognizerResult extends RecognizerResult {
+export interface BlinkCardRecognizerResult extends RecognizerResult {
   cardNumber: string;
   cvv: string;
   digitalSignature: string;
@@ -1757,16 +1740,19 @@ export interface PaymentCardCombinedRecognizerResult extends RecognizerResult {
   fullDocumentBackImage: string;
   fullDocumentFrontImage: string;
   inventoryNumber: string;
+  issuer: string;
   owner: string;
   scanningFirstSideDone: boolean;
   validThru: Date;
 }
-export interface PaymentCardCombinedRecognizerResultCtor extends RecognizerResultCtor<PaymentCardCombinedRecognizerResult> {}
+export interface BlinkCardRecognizerResultCtor extends RecognizerResultCtor<BlinkCardRecognizerResult> {}
 
-export interface PaymentCardCombinedRecognizer extends Recognizer<PaymentCardCombinedRecognizerResult> {
+export interface BlinkCardRecognizer extends Recognizer<BlinkCardRecognizerResult> {
   anonymizeCardNumber: boolean;
   anonymizeCvv: boolean;
+  anonymizeOwner: boolean;
   detectGlare: boolean;
+  extractCvv: boolean;
   extractInventoryNumber: boolean;
   extractOwner: boolean;
   extractValidThru: boolean;
@@ -1775,27 +1761,7 @@ export interface PaymentCardCombinedRecognizer extends Recognizer<PaymentCardCom
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface PaymentCardCombinedRecognizerCtor extends RecognizerCtor<PaymentCardCombinedRecognizer> {}
-
-export interface PaymentCardFrontRecognizerResult extends RecognizerResult {
-  cardNumber: string;
-  fullDocumentImage: string;
-  owner: string;
-  validThru: Date;
-}
-export interface PaymentCardFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
-
-export interface PaymentCardFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
-  anonymizeCardNumber: boolean;
-  anonymizeOwner: boolean;
-  detectGlare: boolean;
-  extractOwner: boolean;
-  extractValidThru: boolean;
-  fullDocumentImageDpi: number;
-  fullDocumentImageExtensionFactors: ImageExtensionFactors;
-  returnFullDocumentImage: boolean;
-}
-export interface PaymentCardFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface BlinkCardRecognizerCtor extends RecognizerCtor<BlinkCardRecognizer> {}
 
 export interface Pdf417RecognizerResult extends RecognizerResult {
   barcodeType: string;
@@ -2812,9 +2778,9 @@ export class BlinkId extends IonicNativePlugin {
   @CordovaProperty() DocumentFaceRecognizerResult: DocumentFaceRecognizerResultCtor;
   @CordovaProperty() EgyptIdFrontRecognizerResult: EgyptIdFrontRecognizerResultCtor;
   @CordovaProperty() EgyptIdFrontRecognizer: EgyptIdFrontRecognizerCtor;
-  @CordovaProperty() ElitePaymentCardBackRecognizerResult: ElitePaymentCardBackRecognizerResultCtor;
-  @CordovaProperty() ElitePaymentCardCombinedRecognizerResult: ElitePaymentCardCombinedRecognizerResultCtor;
-  @CordovaProperty() ElitePaymentCardFrontRecognizerResult: ElitePaymentCardFrontRecognizerResultCtor;
+  @CordovaProperty() BlinkCardEliteBackRecognizerResult: BlinkCardEliteBackRecognizerResultCtor;
+  @CordovaProperty() BlinkCardEliteCombinedRecognizerResult: BlinkCardEliteCombinedRecognizerResultCtor;
+  @CordovaProperty() BlinkCardEliteFrontRecognizerResult: BlinkCardEliteFrontRecognizerResultCtor;
   @CordovaProperty() EudlRecognizerResult: EudlRecognizerResultCtor;
   @CordovaProperty() GermanyCombinedRecognizerResult: GermanyCombinedRecognizerResultCtor;
   @CordovaProperty() GermanyCombinedRecognizer: GermanyCombinedRecognizerCtor;
@@ -2868,12 +2834,8 @@ export class BlinkId extends IonicNativePlugin {
   @CordovaProperty() MyKadFrontRecognizer: MyKadFrontRecognizerCtor;
   @CordovaProperty() NewZealandDlFrontRecognizerResult: NewZealandDlFrontRecognizerResultCtor;
   @CordovaProperty() NewZealandDlFrontRecognizer: NewZealandDlFrontRecognizerCtor;
-  @CordovaProperty() PaymentCardBackRecognizerResult: PaymentCardBackRecognizerResultCtor;
-  @CordovaProperty() PaymentCardBackRecognizer: PaymentCardBackRecognizerCtor;
-  @CordovaProperty() PaymentCardCombinedRecognizerResult: PaymentCardCombinedRecognizerResultCtor;
-  @CordovaProperty() PaymentCardCombinedRecognizer: PaymentCardCombinedRecognizerCtor;
-  @CordovaProperty() PaymentCardFrontRecognizerResult: PaymentCardFrontRecognizerResultCtor;
-  @CordovaProperty() PaymentCardFrontRecognizer: PaymentCardFrontRecognizerCtor;
+  @CordovaProperty() BlinkCardRecognizerResult: BlinkCardRecognizerResultCtor;
+  @CordovaProperty() BlinkCardRecognizer: BlinkCardRecognizerCtor;
   @CordovaProperty() Pdf417RecognizerResult: Pdf417RecognizerResultCtor;
   @CordovaProperty() Pdf417Recognizer: Pdf417RecognizerCtor;
   @CordovaProperty() PolandCombinedRecognizerResult: PolandCombinedRecognizerResultCtor;
