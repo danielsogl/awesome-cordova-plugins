@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
- * @name Biocatch
+ * @name BioCatch
  * @description
- * Biocatch SDK Cordova support
+ * BioCatch SDK Cordova support
  *
  * @usage
  * ```typescript
- * import { Biocatch } from '@ionic-native/biocatch';
+ * import { BioCatch } from '@ionic-native/biocatch';
  *
  *
- * constructor(private biocatch: Biocatch) { }
+ * constructor(private biocatch: BioCatch) { }
  *
  * ...
  *
@@ -23,14 +23,14 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * ```
  */
 @Plugin({
-  pluginName: 'Biocatch',
+  pluginName: 'BioCatch',
   plugin: 'cordova-plugin-biocatch',
   pluginRef: 'BioCatch',
   repo: 'https://bitbucket.org/whisprnd/biocatch-cordova-plugin',
   platforms: ['iOS'],
 })
 @Injectable()
-export class Biocatch extends IonicNativePlugin {
+export class BioCatch extends IonicNativePlugin {
 
   /**
    * Start a session
