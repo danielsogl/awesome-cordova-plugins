@@ -40,7 +40,7 @@ export class BioCatch extends IonicNativePlugin {
    * @return {Promise<void>} Returns a promise
    */
   @Cordova()
-  start(customerSessionID: string | null, wupUrl: string, publicKey?: string | null): Promise<void> {
+  start(customerSessionID: string | null, wupUrl: string, publicKey: string | null): Promise<void> {
     return;
   }
 
