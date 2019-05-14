@@ -96,7 +96,7 @@ export class BioCatch extends IonicNativePlugin {
    * @return {Promise<void>} Returns a promise
    */
   @Cordova()
-  updateCustomerSessionID(customerSessionID: string): Promise<void> {
+  updateCustomerSessionID(customerSessionID: string | null): Promise<void> {
     return;
   }
 }
