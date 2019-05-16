@@ -35,8 +35,8 @@ export interface AndroidAccount {
  */
 @Plugin({
   pluginName: 'DeviceAccounts',
-  plugin: 'cordova-device-accounts',
-  pluginRef: 'plugins.DeviceAccounts',
+  plugin: 'cordova-device-accounts-v2',
+  pluginRef: 'DeviceAccounts',
   repo: 'https://github.com/xUnholy/cordova-device-accounts',
   platforms: ['Android']
 })
