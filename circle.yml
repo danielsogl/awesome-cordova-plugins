@@ -22,7 +22,7 @@ jobs:
          key: node_modules_{{ checksum "package.json" }}
       - run:
          name: Install node modules
-         command: npm i
+         command: npm ci
       - save_cache:
          key: node_modules_{{ checksum "package.json" }}
          paths:
