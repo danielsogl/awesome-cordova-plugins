@@ -1,3 +1,25 @@
+# [5.6.0](https://github.com/ionic-team/ionic-native/compare/v5.5.1...v5.6.0) (2019-05-16)
+
+
+### Bug Fixes
+
+* **biocatch:** start publicKey is now required even if null ([7afed90](https://github.com/ionic-team/ionic-native/commit/7afed90))
+* **biocatch:** updateCustomerSessionID argument can be null ([9804476](https://github.com/ionic-team/ionic-native/commit/9804476))
+* **blinkid:** correct issue with blink card ([4601ea3](https://github.com/ionic-team/ionic-native/commit/4601ea3))
+* **blinkid:** resolve issues with blink card ([1f31954](https://github.com/ionic-team/ionic-native/commit/1f31954))
+* **firebase-crashlytics:** update initialise method ([#2990](https://github.com/ionic-team/ionic-native/issues/2990)) ([#2991](https://github.com/ionic-team/ionic-native/issues/2991)) ([e363d98](https://github.com/ionic-team/ionic-native/commit/e363d98))
+
+
+### Features
+
+* **biocatch:** add Biocatch plugin ([a42e7b8](https://github.com/ionic-team/ionic-native/commit/a42e7b8))
+* **camera-preview:** add wrapper for camera preview snapshot ([7903774](https://github.com/ionic-team/ionic-native/commit/7903774))
+* **FileOpener:** Added method showOpenWithDialog ([ed36dc4](https://github.com/ionic-team/ionic-native/commit/ed36dc4))
+* **firebase-crash:** add plugin ([66b9d1a](https://github.com/ionic-team/ionic-native/commit/66b9d1a))
+* **foreground-service:** allows background services ([5b5c6e6](https://github.com/ionic-team/ionic-native/commit/5b5c6e6))
+
+
+
 ## [5.5.1](https://github.com/ionic-team/ionic-native/compare/v5.5.0...v5.5.1) (2019-04-29)
 
 
@@ -44,6 +66,7 @@
 
 ### Features
 
+* updating device account wrapper with maintained fork with android 8.0 compatibility ([354af9f](https://github.com/ionic-team/ionic-native/commit/354af9f))
 * **google-play-games-services:** add getPlayerScore function ([#2949](https://github.com/ionic-team/ionic-native/issues/2949)) ([767d3b3](https://github.com/ionic-team/ionic-native/commit/767d3b3))
 * **in-app-purchase-2:** add manageSubscriptions() ([#2980](https://github.com/ionic-team/ionic-native/issues/2980)) ([f874185](https://github.com/ionic-team/ionic-native/commit/f874185))
 * **in-app-purchase-2:** add missing property ([#2961](https://github.com/ionic-team/ionic-native/issues/2961)) ([029f82f](https://github.com/ionic-team/ionic-native/commit/029f82f))
