@@ -113,6 +113,14 @@ export interface CameraPreviewPictureOptions {
  *   this.picture = 'assets/img/test.jpg';
  * });
  *
+ * // take a snap shot
+ * this.cameraPreview.takeSnapshot(this.pictureOpts).then((imageData) => {
+ *   this.picture = 'data:image/jpeg;base64,' + imageData;
+ * }, (err) => {
+ *   console.log(err);
+ *   this.picture = 'assets/img/test.jpg';
+ * });
+ *
  *
  * // Switch camera
  * this.cameraPreview.switchCamera();
@@ -242,6 +250,20 @@ export class CameraPreview extends IonicNativePlugin {
     errorIndex: 2
   })
   takePicture(options?: CameraPreviewPictureOptions): Promise<any> {
+    return;
+  }
+
+
+  /**
+   * Take a snapshot of preview window (size specified in startCamera options)
+   * @param {CameraPreviewPictureOptions} [options] quality of the picture to take
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2
+  })
+  takeSnapshot(options?: CameraPreviewPictureOptions): Promise<any> {
     return;
   }
 
