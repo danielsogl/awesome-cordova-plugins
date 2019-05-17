@@ -28,7 +28,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-firebase-config',
   pluginRef: 'cordova.plugins.firebase.config',
   repo: 'https://github.com/chemerisuk/cordova-plugin-firebase-config',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseConfig extends IonicNativePlugin {
@@ -47,11 +47,10 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches a boolean configuration value from RemoteConfig
    *
    * @param {string} key
-   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
-  getBoolean(key: string, namespace?: string): Promise<boolean> {
+  getBoolean(key: string): Promise<boolean> {
     return;
   }
 
@@ -59,11 +58,10 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches a string configuration value from RemoteConfig
    *
    * @param {string} key
-   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
-  getString(key: string, namespace?: string): Promise<string> {
+  getString(key: string): Promise<string> {
     return;
   }
 
@@ -71,11 +69,10 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches a numeric configuration value from RemoteConfig
    *
    * @param {string} key
-   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
-  getNumber(key: string, namespace?: string): Promise<number> {
+  getNumber(key: string): Promise<number> {
     return;
   }
 
@@ -83,11 +80,10 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches an array of bytes configuration value from RemoteConfig
    *
    * @param {string} key
-   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
-  getBytes(key: string, namespace?: string): Promise<any[]> {
+  getBytes(key: string): Promise<any[]> {
     return;
   }
 }
