@@ -33,13 +33,33 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 @Injectable()
 export class FirebaseConfig extends IonicNativePlugin {
   /**
-   * Fetches remote config values with appropriate TTL and then activates them.
+   * Starts fetching configs, adhering to the specified minimum fetch interval.
    *
-   * @param {number} ttlSeconds
+   * @param {number} expirationDuration
    * @returns {Promise<null>}
    */
   @Cordova({ sync: true })
-  update(ttlSeconds: number): Promise<null> {
+  fetch(expirationDuration?: number): Promise<null> {
+    return;
+  }
+
+  /**
+   * Asynchronously activates the most recently fetched configs, so that the fetched key value pairs take effect.
+   *
+   * @returns {Promise<null>}
+   */
+  @Cordova({ sync: true })
+  activate(): Promise<null> {
+    return;
+  }
+
+  /**
+   * Asynchronously fetches and then activates the fetched configs.
+   *
+   * @returns {Promise<null>}
+   */
+  @Cordova({ sync: true })
+  fetchAndActivate(): Promise<null> {
     return;
   }
 
