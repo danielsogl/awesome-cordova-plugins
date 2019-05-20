@@ -8,10 +8,10 @@ import { Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativ
  *
  * @usage
  * ```typescript
- * import { android-fcm } from '@ionic-native/android-fcm';
+ * import { AndroidFcm } from '@ionic-native/android-fcm';
  *
  *
- * constructor(private androidfcm: android-fcm) { }
+ * constructor(private androidfcm: AndroidFcm) { }
  *
  * ...
  * ```
