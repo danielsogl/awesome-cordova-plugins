@@ -134,6 +134,7 @@ export interface MusicControlsOptions {
  *      			break;
  *      	}
  *      }
+ *     });
  *
  *  this.musicControls.listen(); // activates the observable above
  *
