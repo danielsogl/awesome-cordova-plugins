@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 /**
  * @name In App Purchase 2
  * @description
- * In-App Purchase for Cordova on iOS, Android and Windows
+ * In-App Purchase for Cordova on iOS, Android, Windows, macOS and XBox.
  *
  * @usage
  * ```typescript
@@ -33,17 +33,17 @@ import { Injectable } from '@angular/core';
  *
  *    // Updated
  *    this.store.when(productId).updated( (product: IAPProduct) => {
- *      console.log('Loaded' + JSON.stringify(product));
+ *      console.log('Updated' + JSON.stringify(product));
  *    });
  *
  *    // Issue with buying
  *     this.store.when(productId).cancelled( (product) => {
- *         alert('Purchase was Cancelled');
+ *         console.error('Purchase was Cancelled');
  *     });
  *
  *      // Track All Store Errors
  *     this.store.error( (err) => {
- *       alert('Store Error ' + JSON.stringify(err));
+ *       console.error('Store Error ' + JSON.stringify(err));
  *     });
  *
  *     this.store.ready(() =>  {
@@ -56,7 +56,7 @@ import { Injectable } from '@angular/core';
  *     // Errors
  *     this.store.when(productId).error( (error) => {
  *       this.loader.dismiss();
- *       alert('An Error Occured' + JSON.stringify(error));
+ *       console.error('An Error Occured' + JSON.stringify(error));
  *     });
  *     // Refresh Starts Handlers
  *     console.log('Refresh Store');
@@ -125,6 +125,30 @@ export interface IAPProduct {
   downloading: boolean;
 
   downloaded: boolean;
+
+  lastRenewalDate: Date;
+
+  expiryDate: Date;
+
+  introPrice: string;
+
+  introPriceMicros: number;
+
+  introPriceNumberOfPeriods: number;
+
+  introPriceSubscriptionPeriod: string;
+
+  introPricePaymentMode: string;
+
+  ineligibleForIntroPrice: boolean;
+
+  billingPeriod: number;
+
+  billingPeriodUnit: string;
+
+  trialPeriod: number;
+
+  trialPeriodUnit: string;
 
   additionalData: any;
 
