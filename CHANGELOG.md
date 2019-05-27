@@ -1,3 +1,7 @@
+## [5.6.1](https://github.com/ionic-team/ionic-native/compare/v5.6.0...v5.6.1) (2019-05-27)
+
+
+
 # [5.6.0](https://github.com/ionic-team/ionic-native/compare/v5.5.1...v5.6.0) (2019-05-16)
 
 
