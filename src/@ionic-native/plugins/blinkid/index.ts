@@ -198,6 +198,13 @@ export interface DocumentVerificationOverlaySettingsCtor {
   new(): DocumentVerificationOverlaySettings;
 }
 
+export interface BlinkCardOverlaySettings extends OverlaySettings {
+  glareMessage: string;
+}
+export interface BlinkCardOverlaySettingsCtor {
+  new(): BlinkCardOverlaySettings;
+}
+
 export interface RecognizerResult {
   resultState: RecognizerResultState;
 }
@@ -2670,6 +2677,40 @@ export interface UsdlCombinedRecognizerCtor extends RecognizerCtor<UsdlCombinedR
  *     this.barcodeStringData = barcodeRecognizer.result.stringData;
  *   }
  * }
+ *
+ * ...
+ *
+ * const overlaySettings = new this.blinkId.BlinkCardOverlaySettings();
+ * const recognizer = new this.blinkId.BlinkCardRecognizer();
+ * recognizer.returnFullDocumentImage = false;
+ * recognizer.detectGlare = true;
+ * recognizer.extractCvv = true;
+ * recognizer.extractValidThru = true;
+ * recognizer.extractOwner = true;
+ *
+ * const recognizerCollection = new this.blinkId.RecognizerCollection([recognizer]);
+ * const canceled = await this.blinkId.scanWithCamera(
+ *   overlaySettings,
+ *   recognizerCollection,
+ *   {
+ *     ios: '', //iOS License Key
+ *     android: '' //Android License Key
+ *   },
+ * );
+ *
+ * if (!canceled) {
+ *   if (recognizer.result.resultState === RecognizerResultState.valid) {
+ *     const results = recognizer.result;
+ *
+ *     if (results.resultState === RecognizerResultState.valid) {
+ *       const ccInfo = {
+ *         cardNumber: Number(results.cardNumber),
+ *         expirationMonth: Number(results.validThru.month),
+ *         expirationYear: Number(results.validThru.year),
+ *         cvv: Number(results.cvv)
+ *       };
+ *     }
+ *   }
  * ```
  */
 @Plugin({
@@ -2685,7 +2726,7 @@ export interface UsdlCombinedRecognizerCtor extends RecognizerCtor<UsdlCombinedR
 export class BlinkId extends IonicNativePlugin {
   /**
    * Opens the camera dialog and attempts to scan a barcode/document
-   * @param overlaySettings {OverlaySettings} for camera overla customization
+   * @param overlaySettings {OverlaySettings} for camera overlay customization
    * @param recognizerCollection {RecognizerCollection} collection of recognizers to scan with
    * @returns {Promise<boolean>}
    */
@@ -2705,6 +2746,7 @@ export class BlinkId extends IonicNativePlugin {
   @CordovaProperty() BarcodeOverlaySettings: BarcodeOverlaySettingsCtor;
   @CordovaProperty() DocumentOverlaySettings: DocumentOverlaySettingsCtor;
   @CordovaProperty() DocumentVerificationOverlaySettings: DocumentVerificationOverlaySettingsCtor;
+  @CordovaProperty() BlinkCardOverlaySettings: BlinkCardOverlaySettingsCtor;
 
   @CordovaProperty() RecognizerCollection: RecognizerCollectionCtor;
 
