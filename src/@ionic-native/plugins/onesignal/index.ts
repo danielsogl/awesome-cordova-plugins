@@ -770,4 +770,18 @@ export class OneSignal extends IonicNativePlugin {
    */
   @Cordova()
   userProvidedPrivacyConsent(callback: Function): void {}
+  
+  /**
+   * Allows you to use your own system's user ID's to send push notifications to your users.
+   * To tie a user to a given user ID, you can use this method.
+   * @param {string} externalId
+   */
+  @Cordova()
+  setExternalUserId(externalId: string): void {}
+  
+  /**
+  * Removes whatever was set as the current user's external user ID.
+  */
+  @Cordova()
+  removeExternalUserId(): void {}
 }
