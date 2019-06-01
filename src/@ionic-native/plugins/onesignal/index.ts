@@ -780,8 +780,9 @@ export class OneSignal extends IonicNativePlugin {
   setExternalUserId(externalId: string): void {}
   
   /**
-  * Removes whatever was set as the current user's external user ID.
-  */
+   * Removes whatever was set as the current user's external user ID.
+   */
   @Cordova()
   removeExternalUserId(): void {}
+  
 }
