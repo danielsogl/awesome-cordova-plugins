@@ -1,3 +1,19 @@
+# [5.7.0](https://github.com/ionic-team/ionic-native/compare/v5.6.1...v5.7.0) (2019-06-03)
+
+
+### Features
+
+* **biometric-wrapper:** add plugin ([#3025](https://github.com/ionic-team/ionic-native/issues/3025)) ([c0b092b](https://github.com/ionic-team/ionic-native/commit/c0b092b))
+* **blinkid:** added support for card overlay ([#3041](https://github.com/ionic-team/ionic-native/issues/3041)) ([2942ebf](https://github.com/ionic-team/ionic-native/commit/2942ebf))
+* **device-accounts:** add "getPermissionsByType" function ([#3048](https://github.com/ionic-team/ionic-native/issues/3048)) ([dfb0aa3](https://github.com/ionic-team/ionic-native/commit/dfb0aa3))
+* **document-scanner:** add plugin ([#3043](https://github.com/ionic-team/ionic-native/issues/3043)) ([49e81cc](https://github.com/ionic-team/ionic-native/commit/49e81cc))
+* **full-screen-image:** add plugin ([#3026](https://github.com/ionic-team/ionic-native/issues/3026)) ([bb7b516](https://github.com/ionic-team/ionic-native/commit/bb7b516))
+* **in-app-purchase-2:** update TypeScript definitions ([#3037](https://github.com/ionic-team/ionic-native/issues/3037)) ([4ae35cb](https://github.com/ionic-team/ionic-native/commit/4ae35cb))
+* **ocr:** add plugin ([#3044](https://github.com/ionic-team/ionic-native/issues/3044)) ([b79c8b1](https://github.com/ionic-team/ionic-native/commit/b79c8b1))
+* **onesignal:** add missing "setExternalUserId"  and "removeExternalUserId" functions ([#3049](https://github.com/ionic-team/ionic-native/issues/3049)) ([a0ec125](https://github.com/ionic-team/ionic-native/commit/a0ec125)), closes [#2909](https://github.com/ionic-team/ionic-native/issues/2909)
+
+
+
 ## [5.6.1](https://github.com/ionic-team/ionic-native/compare/v5.6.0...v5.6.1) (2019-05-27)
 
 
