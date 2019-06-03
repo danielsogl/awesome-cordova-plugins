@@ -8,13 +8,17 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { FileOpener } from '@ionic-native/file-opener';
+ * import { FileOpener } from '@ionic-native/file-opener/ngx';
  *
  * constructor(private fileOpener: FileOpener) { }
  *
  * ...
  *
  * this.fileOpener.open('path/to/file.pdf', 'application/pdf')
+ *   .then(() => console.log('File is opened'))
+ *   .catch(e => console.log('Error opening file', e));
+ *
+ * this.fileOpener.showOpenWithDialog('path/to/file.pdf', 'application/pdf')
  *   .then(() => console.log('File is opened'))
  *   .catch(e => console.log('Error opening file', e));
  *
@@ -69,6 +73,21 @@ export class FileOpener extends IonicNativePlugin {
     errorName: 'error'
   })
   appIsInstalled(packageId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Opens with system modal to open file with an already installed app.
+   * @param {string} filePath File Path
+   * @param {string} fileMIMEType File MIME Type
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    callbackStyle: 'object',
+    successName: 'success',
+    errorName: 'error'
+  })
+  showOpenWithDialog(filePath: string, fileMIMEType: string): Promise<any> {
     return;
   }
 }

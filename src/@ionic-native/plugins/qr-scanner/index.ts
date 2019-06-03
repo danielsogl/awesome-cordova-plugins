@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface QRScannerStatus {
   /**
@@ -61,10 +61,13 @@ export interface QRScannerStatus {
 /**
  * @name QR Scanner
  * @description
+ * A fast, energy efficient, highly-configurable QR code scanner for Cordova apps.
+ *
+ * Requires Cordova plugin: `cordova-plugin-qrscanner`. For more info, please see the [QR Scanner plugin docs](https://github.com/bitpay/cordova-plugin-qrscanner).
  *
  * @usage
  * ```typescript
- * import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+ * import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
  *
  *
  * constructor(private qrScanner: QRScanner) { }

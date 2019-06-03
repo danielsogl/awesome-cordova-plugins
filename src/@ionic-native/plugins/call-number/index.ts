@@ -9,7 +9,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { CallNumber } from '@ionic-native/call-number';
+ * import { CallNumber } from '@ionic-native/call-number/ngx';
  *
  * constructor(private callNumber: CallNumber) { }
  *

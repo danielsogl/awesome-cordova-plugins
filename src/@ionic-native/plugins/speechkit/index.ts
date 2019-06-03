@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name SpeechKit
@@ -8,12 +8,13 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { SpeechKit } from '@ionic-native/speechkit';
+ * import { SpeechKit } from '@ionic-native/speechkit/ngx';
  *
  * constructor(private speechkit: SpeechKit) { }
  *
  *
- * this.speechkit.tts('Text to be read out loud', 'ENG-GBR').then(
+ * // find voice names that match language from: https://developer.nuance.com/public/index.php?task=supportedLanguages
+ * this.speechkit.tts('Text to be read out loud', 'ENG-GBR', 'Serena').then(
  *   (msg) => { console.log(msg); },
  *   (err) => { console.log(err); }
  * );
@@ -36,7 +37,8 @@ export class SpeechKit extends IonicNativePlugin {
   @Cordova()
   tts(
     text: string,
-    language: string
+    language: string,
+    voice: string
   ): Promise<string> { return; }
 
   /**

@@ -68,7 +68,7 @@ export interface BarcodeScanResult {
     | 'ITF'
     | 'RSS14'
     | 'RSS_EXPANDED'
-    | 'PDF417'
+    | 'PDF_417'
     | 'AZTEC'
     | 'MSI';
   cancelled: boolean;
@@ -84,7 +84,7 @@ export interface BarcodeScanResult {
  *
  * @usage
  * ```typescript
- * import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+ * import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
  *
  * constructor(private barcodeScanner: BarcodeScanner) { }
  *

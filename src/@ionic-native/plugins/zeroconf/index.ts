@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 export interface ZeroconfService {
   domain: string;
@@ -8,8 +8,8 @@ export interface ZeroconfService {
   name: string;
   port: number;
   hostname: string;
-  ipv4Addresses: Array<string>;
-  ipv6Addresses: Array<string>;
+  ipv4Addresses: string[];
+  ipv6Addresses: string[];
   txtRecord: any;
 }
 
@@ -24,7 +24,7 @@ export interface ZeroconfResult {
  * This plugin allows you to browse and publish Zeroconf/Bonjour/mDNS services.
  * @usage
  * ```typescript
- * import { Zeroconf } from '@ionic-native/zeroconf';
+ * import { Zeroconf } from '@ionic-native/zeroconf/ngx';
  *
  * constructor(private zeroconf: Zeroconf) { }
  *
@@ -65,7 +65,9 @@ export class Zeroconf extends IonicNativePlugin {
    * @return {Promise<string>}
    */
   @Cordova()
-  getHostname(): Promise<string> { return; }
+  getHostname(): Promise<string> {
+    return;
+  }
 
   /**
    * Publishes a new service.
@@ -77,7 +79,15 @@ export class Zeroconf extends IonicNativePlugin {
    * @return {Promise<ZeroconfResult>} Returns a Promise that resolves with the registered service.
    */
   @Cordova()
-  register(type: string, domain: string, name: string, port: number, txtRecord: any): Promise<ZeroconfResult> { return; }
+  register(
+    type: string,
+    domain: string,
+    name: string,
+    port: number,
+    txtRecord: any
+  ): Promise<ZeroconfResult> {
+    return;
+  }
 
   /**
    * Unregisters a service.
@@ -87,14 +97,18 @@ export class Zeroconf extends IonicNativePlugin {
    * @return {Promise<void>}
    */
   @Cordova()
-  unregister(type: string, domain: string, name: string): Promise<void> { return; }
+  unregister(type: string, domain: string, name: string): Promise<void> {
+    return;
+  }
 
   /**
    * Unregisters all published services.
    * @return {Promise<void>}
    */
   @Cordova()
-  stop(): Promise<void> { return; }
+  stop(): Promise<void> {
+    return;
+  }
 
   /**
    * Starts watching for services of the specified type.
@@ -107,7 +121,9 @@ export class Zeroconf extends IonicNativePlugin {
     clearFunction: 'unwatch',
     clearWithArgs: true
   })
-  watch(type: string, domain: string): Observable<ZeroconfResult> { return; }
+  watch(type: string, domain: string): Observable<ZeroconfResult> {
+    return;
+  }
 
   /**
    * Stops watching for services of the specified type.
@@ -116,21 +132,27 @@ export class Zeroconf extends IonicNativePlugin {
    * @return {Promise<void>}
    */
   @Cordova()
-  unwatch(type: string, domain: string): Promise<void> { return; }
+  unwatch(type: string, domain: string): Promise<void> {
+    return;
+  }
 
   /**
    * Closes the service browser and stops watching.
    * @return {Promise<void>}
    */
   @Cordova()
-  close(): Promise<void> { return; }
+  close(): Promise<void> {
+    return;
+  }
 
   /**
    * Re-initializes the plugin to clean service & browser state.
    * @return {Promise<void>}
    */
   @Cordova()
-  reInit(): Promise<void> { return; }
+  reInit(): Promise<void> {
+    return;
+  }
   /**
    * Family of addresses to register: ipv4, ipv6 or any.
    */

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface BatteryStatusResponse {
   /**
@@ -21,7 +21,7 @@ export interface BatteryStatusResponse {
  *
  * @usage
  * ```typescript
- * import { BatteryStatus } from '@ionic-native/battery-status';
+ * import { BatteryStatus } from '@ionic-native/battery-status/ngx';
  *
  * constructor(private batteryStatus: BatteryStatus) { }
  *

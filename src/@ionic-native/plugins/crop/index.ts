@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CropOptions {
   quality?: number;
@@ -12,7 +12,7 @@ export interface CropOptions {
  * @description Crops images
  * @usage
  * ```typescript
- * import { Crop } from '@ionic-native/crop';
+ * import { Crop } from '@ionic-native/crop/ngx';
  *
  * constructor(private crop: Crop) { }
  *

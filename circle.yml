@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/ionic-native/
     docker:
-      - image: node:7
+      - image: node:10
     steps:
       - checkout
       - restore_cache:
@@ -22,7 +22,7 @@ jobs:
          key: node_modules_{{ checksum "package.json" }}
       - run:
          name: Install node modules
-         command: npm i
+         command: npm ci
       - save_cache:
          key: node_modules_{{ checksum "package.json" }}
          paths:
@@ -33,7 +33,7 @@ jobs:
       - run: bash ./scripts/git/config.sh
       - run:
           name: Build Ionic Native
-          command: npm run build:core && ./node_modules/.bin/tsc
+          command: npm run build
       - run:
           name: Generate README files to ensure docs are valid
           command: npm run readmes

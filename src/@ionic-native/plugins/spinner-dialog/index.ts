@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface SpinnerDialogIOSOptions {
   /**
@@ -26,9 +26,13 @@ export interface SpinnerDialogIOSOptions {
 /**
  * @name Spinner Dialog
  * @description
+ * Cordova plugin for showing a native spinner based on Paldom/SpinnerDialog.
+ *
+ * Requires Cordova plugin: `cordova-plugin-native-spinner`. For more info, please see the [Spinner Dialog plugin docs](https://github.com/greybax/cordova-plugin-native-spinner).
+ *
  * @usage
  * ```typescript
- * import { SpinnerDialog } from '@ionic-native/spinner-dialog';
+ * import { SpinnerDialog } from '@ionic-native/spinner-dialog/ngx';
  *
  * constructor(private spinnerDialog: SpinnerDialog) { }
  *
@@ -61,7 +65,8 @@ export class SpinnerDialog extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void { }
+  show(title?: string, message?: string, cancelCallback?: any, iOSOptions?: SpinnerDialogIOSOptions): void {
+  }
 
   /**
    * Hides the spinner dialog if visible
@@ -69,6 +74,7 @@ export class SpinnerDialog extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  hide(): void { }
+  hide(): void {
+  }
 
 }

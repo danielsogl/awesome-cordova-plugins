@@ -36,15 +36,15 @@ export interface FingerprintOptions {
  *
  * @usage
  * ```typescript
- * import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
+ * import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
  *
  * constructor(private faio: FingerprintAIO) { }
  *
  * ...
  *
  * this.faio.show({
- *     clientId: 'Fingerprint-Demo',
- *     clientSecret: 'password', //Only necessary for Android
+ *     clientId: 'Fingerprint-Demo', //Android: Used for encryption. iOS: used for dialogue if no `localizedReason` is given.
+ *     clientSecret: 'o7aoOMYUbyxaD23oFAnJ' //Necessary for Android encrpytion of keys. Use random secret key.
  *     disableBackup:true,  //Only for Android(optional)
  *     localizedFallbackTitle: 'Use Pin', //Only for iOS
  *     localizedReason: 'Please authenticate' //Only for iOS

@@ -62,7 +62,7 @@ export interface ActionSheetOptions {
  *
  * @usage
  * ```typescript
- * import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
+ * import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet/ngx';
  *
  * constructor(private actionSheet: ActionSheet) { }
  *
@@ -79,7 +79,7 @@ export interface ActionSheetOptions {
  *   addDestructiveButtonWithLabel: 'Delete',
  *   androidTheme: this.actionSheet.ANDROID_THEMES.THEME_HOLO_DARK,
  *   destructiveButtonLast: true
- * };
+ * }
  *
  * this.actionSheet.show(options).then((buttonIndex: number) => {
  *   console.log('Button pressed: ' + buttonIndex);

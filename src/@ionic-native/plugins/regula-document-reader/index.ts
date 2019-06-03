@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @paid
@@ -10,7 +10,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { RegulaDocumentReader } from '@ionic-native/regula-document-reader';
+ * import { RegulaDocumentReader } from '@ionic-native/regula-document-reader/ngx';
  *
  * let license; // read regula.license file
  * RegulaDocumentReader.initReader(license); // initialize reader
@@ -35,12 +35,15 @@ export class RegulaDocumentReader extends IonicNativePlugin {
    * @param license {any} License data
    */
   @Cordova()
-  initReader(license: any): void {}
+  initReader(license: any): void {
+  }
 
   /**
    * Run the scanner
    * @return {Promise<string[]>} Returns a promise that resolves when results was got, and fails when not
    */
   @Cordova()
-  scanDocument(): Promise<string[]> { return; }
+  scanDocument(): Promise<string[]> {
+    return;
+  }
 }

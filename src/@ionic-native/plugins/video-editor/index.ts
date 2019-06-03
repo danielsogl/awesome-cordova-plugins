@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface TranscodeOptions {
-
   /** The path to the video on the device. */
   fileUri: string;
 
@@ -39,7 +38,7 @@ export interface TranscodeOptions {
   /** Number of audio channels. iOS only. Defaults to 2. */
   audioChannels?: number;
 
-  /** Sample rate for the audio. iOS only. Defaults to 44100*/
+  /* Sample rate for the audio. iOS only. Defaults to 44100*/
   audioSampleRate?: number;
 
   /** Sample rate for the audio. iOS only. Defaults to 128 kilobits (128000). */
@@ -50,7 +49,6 @@ export interface TranscodeOptions {
 }
 
 export interface TrimOptions {
-
   /** Path to input video. */
   fileUri: string;
 
@@ -65,11 +63,9 @@ export interface TrimOptions {
 
   /** Progress on transcode. info will be a number from 0 to 100 */
   progress?: (info: any) => void;
-
 }
 
 export interface CreateThumbnailOptions {
-
   /** The path to the video on the device */
   fileUri: string;
 
@@ -87,18 +83,14 @@ export interface CreateThumbnailOptions {
 
   /** Quality of the thumbnail (between 1 and 100). */
   quality?: number;
-
 }
 
 export interface GetVideoInfoOptions {
-
   /** The path to the video on the device. */
   fileUri: string;
-
 }
 
 export interface VideoInfo {
-
   /** Width of the video in pixels. */
   width: number;
 
@@ -116,7 +108,6 @@ export interface VideoInfo {
 
   /** Bitrate of the video in bits per second. */
   bitrate: number;
-
 }
 
 /**
@@ -125,7 +116,7 @@ export interface VideoInfo {
  *
  * @usage
  * ```typescript
- * import { VideoEditor } from '@ionic-native/video-editor';
+ * import { VideoEditor } from '@ionic-native/video-editor/ngx';
  *
  * constructor(private videoEditor: VideoEditor) { }
  *
@@ -156,7 +147,6 @@ export interface VideoInfo {
 })
 @Injectable()
 export class VideoEditor extends IonicNativePlugin {
-
   OptimizeForNetworkUse = {
     NO: 0,
     YES: 1
@@ -177,7 +167,9 @@ export class VideoEditor extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  transcodeVideo(options: TranscodeOptions): Promise<string> { return; }
+  transcodeVideo(options: TranscodeOptions): Promise<string> {
+    return;
+  }
 
   /**
    * Trim a video
@@ -188,7 +180,9 @@ export class VideoEditor extends IonicNativePlugin {
     callbackOrder: 'reverse',
     platforms: ['iOS']
   })
-  trim(options: TrimOptions): Promise<string> { return; }
+  trim(options: TrimOptions): Promise<string> {
+    return;
+  }
 
   /**
    * Create a JPEG thumbnail from a video
@@ -198,7 +192,9 @@ export class VideoEditor extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  createThumbnail(options: CreateThumbnailOptions): Promise<string> { return; }
+  createThumbnail(options: CreateThumbnailOptions): Promise<string> {
+    return;
+  }
 
   /**
    * Get info on a video (width, height, orientation, duration, size, & bitrate)
@@ -208,6 +204,7 @@ export class VideoEditor extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getVideoInfo(options: GetVideoInfoOptions): Promise<VideoInfo> { return; }
-
+  getVideoInfo(options: GetVideoInfoOptions): Promise<VideoInfo> {
+    return;
+  }
 }

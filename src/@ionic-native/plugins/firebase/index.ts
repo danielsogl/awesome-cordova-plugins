@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name Firebase
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```typescript
- * import { Firebase } from '@ionic-native/firebase';
+ * import { Firebase } from '@ionic-native/firebase/ngx';
  *
  * constructor(private firebase: Firebase) { }
  *
@@ -18,6 +18,9 @@ import { Observable } from 'rxjs/Observable';
  * this.firebase.getToken()
  *   .then(token => console.log(`The token is ${token}`)) // save the token server-side and use it to push notifications to this device
  *   .catch(error => console.error('Error getting token', error));
+ *
+ * this.firebase.onNotificationOpen()
+ *    .subscribe(data => console.log(`User opened a notification ${data}`));
  *
  * this.firebase.onTokenRefresh()
  *   .subscribe((token: string) => console.log(`Got a new token ${token}`));
@@ -308,6 +311,17 @@ export class Firebase extends IonicNativePlugin {
   }
 
   /**
+   * Allows the user to set User Identifier for crashlytics reporting
+   * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#set_user_ids
+   * @param {string} userId value to set the userId
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setCrashlyticsUserId(userId: string): Promise<any> {
+    return;
+  }
+
+  /**
    * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
    * @param {string} phoneNumber The phone number, including '+' and country code
    * @param {number} timeoutDuration (Android only) The timeout in sec - no more SMS will be sent to this number until this timeout expires
@@ -320,8 +334,16 @@ export class Firebase extends IonicNativePlugin {
   })
   verifyPhoneNumber(
     phoneNumber: string,
-    timeoutDuration: number = 0
+    timeoutDuration = 0
   ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Clear all pending notifications from the drawer
+   * @return {Promise<any>}
+   */
+  clearAllNotifications(): Promise<any> {
     return;
   }
 }

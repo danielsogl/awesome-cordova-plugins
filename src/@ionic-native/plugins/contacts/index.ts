@@ -1,12 +1,12 @@
 import {
-  checkAvailability,
   CordovaCheck,
   CordovaInstance,
-  getPromise,
   InstanceCheck,
   InstanceProperty,
   IonicNativePlugin,
-  Plugin
+  Plugin,
+  checkAvailability,
+  getPromise
 } from '@ionic-native/core';
 
 declare const window: any, navigator: any;
@@ -44,6 +44,9 @@ export type ContactFieldType =
 export interface IContactProperties {
   /** A globally unique identifier. */
   id?: string;
+
+  /** A globally unique identifier on Android. */
+  rawId?: string;
 
   /** The name of this Contact, suitable for display to end users. */
   displayName?: string;
@@ -89,21 +92,21 @@ export interface IContactProperties {
  * @hidden
  */
 export class Contact implements IContactProperties {
+  @InstanceProperty() id: string;
+  @InstanceProperty() displayName: string;
+  @InstanceProperty() name: IContactName;
+  @InstanceProperty() nickname: string;
+  @InstanceProperty() phoneNumbers: IContactField[];
+  @InstanceProperty() emails: IContactField[];
+  @InstanceProperty() addresses: IContactAddress[];
+  @InstanceProperty() ims: IContactField[];
+  @InstanceProperty() organizations: IContactOrganization[];
+  @InstanceProperty() birthday: Date;
+  @InstanceProperty() note: string;
+  @InstanceProperty() photos: IContactField[];
+  @InstanceProperty() categories: IContactField[];
+  @InstanceProperty() urls: IContactField[];
   private _objectInstance: any;
-  @InstanceProperty id: string;
-  @InstanceProperty displayName: string;
-  @InstanceProperty name: IContactName;
-  @InstanceProperty nickname: string;
-  @InstanceProperty phoneNumbers: IContactField[];
-  @InstanceProperty emails: IContactField[];
-  @InstanceProperty addresses: IContactAddress[];
-  @InstanceProperty ims: IContactField[];
-  @InstanceProperty organizations: IContactOrganization[];
-  @InstanceProperty birthday: Date;
-  @InstanceProperty note: string;
-  @InstanceProperty photos: IContactField[];
-  @InstanceProperty categories: IContactField[];
-  @InstanceProperty urls: IContactField[];
 
   [key: string]: any;
 
@@ -117,8 +120,8 @@ export class Contact implements IContactProperties {
 
   @InstanceCheck()
   clone(): Contact {
-    let newContact: any = new Contact();
-    for (let prop in this) {
+    const newContact: any = new Contact();
+    for (const prop in this) {
       if (prop === 'id') return;
       newContact[prop] = this[prop];
     }
@@ -306,10 +309,11 @@ export class ContactFindOptions implements IContactFindOptions {
  * @description
  * Access and manage Contacts on the device.
  *
+ * @deprecated
  * @usage
  *
  * ```typescript
- * import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+ * import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
  *
  * constructor(private contacts: Contacts) { }
  *
@@ -402,8 +406,8 @@ export class Contacts extends IonicNativePlugin {
  * @hidden
  */
 function processContact(contact: any) {
-  let newContact = new Contact();
-  for (let prop in contact) {
+  const newContact = new Contact();
+  for (const prop in contact) {
     if (typeof contact[prop] === 'function') continue;
     newContact[prop] = contact[prop];
   }

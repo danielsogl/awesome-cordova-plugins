@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Header Color
@@ -8,7 +8,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { HeaderColor } from '@ionic-native/header-color';
+ * import { HeaderColor } from '@ionic-native/header-color/ngx';
  *
  * constructor(private headerColor: HeaderColor) { }
  *
@@ -37,6 +37,8 @@ export class HeaderColor extends IonicNativePlugin {
     successName: 'success',
     errorName: 'failure'
   })
-  tint(color: string): Promise<any> { return; }
+  tint(color: string): Promise<any> {
+    return;
+  }
 
 }

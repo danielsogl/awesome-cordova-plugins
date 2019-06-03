@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CameraOptions {
   /** Picture quality in range 0-100. Default is 50 */
@@ -7,7 +7,7 @@ export interface CameraOptions {
   /**
    * Choose the format of the return value.
    * Defined in Camera.DestinationType. Default is FILE_URI.
-   *      DATA_URL : 0,   Return image as base64-encoded string,
+   *      DATA_URL : 0,   Return image as base64-encoded string (DATA_URL can be very memory intensive and cause app crashes or out of memory errors. Use FILE_URI or NATIVE_URI if possible),
    *      FILE_URI : 1,   Return image file URI,
    *      NATIVE_URI : 2  Return image native URI
    *          (e.g., assets-library:// on iOS or content:// on Android)
@@ -33,7 +33,7 @@ export interface CameraOptions {
   /**
    * Width in pixels to scale image. Must be used with targetHeight.
    * Aspect ratio remains constant.
-  */
+   */
   targetWidth?: number;
   /**
    * Height in pixels to scale image. Must be used with targetWidth.
@@ -128,9 +128,17 @@ export enum Direction {
  *
  * Requires the Cordova plugin: `cordova-plugin-camera`. For more info, please see the [Cordova Camera Plugin Docs](https://github.com/apache/cordova-plugin-camera).
  *
+ * [Warning] Since IOS 10 the camera requires permissions to be placed in your config.xml add
+ * ```xml
+ * <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
+ *  <string>You can take photos</string>
+ * </config-file>
+ * ```
+ * inside of the <platform name='ios> section
+ *
  * @usage
  * ```typescript
- * import { Camera, CameraOptions } from '@ionic-native/camera';
+ * import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
  *
  * constructor(private camera: Camera) { }
  *
@@ -139,14 +147,14 @@ export enum Direction {
  *
  * const options: CameraOptions = {
  *   quality: 100,
- *   destinationType: this.camera.DestinationType.DATA_URL,
+ *   destinationType: this.camera.DestinationType.FILE_URI,
  *   encodingType: this.camera.EncodingType.JPEG,
  *   mediaType: this.camera.MediaType.PICTURE
  * }
  *
  * this.camera.getPicture(options).then((imageData) => {
  *  // imageData is either a base64 encoded string or a file URI
- *  // If it's base64:
+ *  // If it's base64 (DATA_URL):
  *  let base64Image = 'data:image/jpeg;base64,' + imageData;
  * }, (err) => {
  *  // Handle error
@@ -165,7 +173,6 @@ export enum Direction {
 })
 @Injectable()
 export class Camera extends IonicNativePlugin {
-
   /**
    * Constant for possible destination types
    */
@@ -200,7 +207,6 @@ export class Camera extends IonicNativePlugin {
     ALLMEDIA: 2
   };
 
-
   /**
    * Convenience constant
    */
@@ -212,7 +218,6 @@ export class Camera extends IonicNativePlugin {
     /** Choose image from picture library (same as PHOTOLIBRARY for Android) */
     SAVEDPHOTOALBUM: 2
   };
-
 
   /**
    * Convenience constant
@@ -243,7 +248,9 @@ export class Camera extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getPicture(options?: CameraOptions): Promise<any> { return; }
+  getPicture(options?: CameraOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
@@ -253,6 +260,7 @@ export class Camera extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS']
   })
-  cleanup(): Promise<any> { return; };
-
+  cleanup(): Promise<any> {
+    return;
+  }
 }

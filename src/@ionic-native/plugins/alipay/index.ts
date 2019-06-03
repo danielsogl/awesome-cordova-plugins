@@ -1,83 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-export interface AlipayOrder {
-  /**
-   * appId assigned by Alipay
-   */
-  app_id: string;
-
-  /**
-   * Api name.
-   * Should be: alipay.trade.app.pay
-   */
-  method: string;
-
-  /**
-   * Data format
-   * Default: "JSON"
-   */
-  format?: string;
-
-  /**
-   * Charset
-   * Possible values: "UTF-8", "GBK"
-   * Default: "UTF-8"
-   */
-  charset: string;
-
-  /**
-   * Sign method
-   * Default: 'RSA'
-   */
-  sign_type: string;
-
-  /**
-   * Sign value. Should be got from server side.
-   * Default: 'RSA'
-   */
-  sign: string;
-
-  /**
-   * Timestamp, formated like "yyyy-MM-dd HH:mm:ss", e.g. 2014-07-24 03:07:50
-   */
-  timestamp: string;
-
-  /**
-   * Api version. Fixed value '1.0'
-   */
-  version: string;
-
-  /**
-   * Notify url.
-   */
-  notify_url: string;
-
-  /**
-   * biz content. formated in json. see alipay doc for detail.
-   */
-  biz_content: string;
-}
-
 /**
  * @name Alipay
  * @description
- * This plugin is used for Alipay APP support. Integrated with the latest SDK.
+ * This plugin facilitates the usage of Alipay 支付宝 in an Ionic apps with the integrated AlipaySDK dated on 20180601.
  *
- * Requires Cordova plugin: `cordova-alipay-base`. For more info, please see the [Alipay plugin docs](https://github.com/xueron/cordova-alipay-base).
+ * Requires Cordova plugin: `cordova-plugin-gubnoi-alipay`. For more info, please see https://github.com/jing-zhou/cordova-plugin-alipay .
  *
  * @usage
  * ```typescript
- * import { Alipay, AlipayOrder } from '@ionic-native/alipay';
+ * import { Alipay } from '@ionic-native/alipay/ngx';
  *
  * constructor(private alipay: Alipay) {
  *
- * // Should get from server side with sign.
- * const alipayOrder: AlipayOrder = {
- *       ...
- *     };
- *
- *
+ * //alipayOrder is a string that has been generated and signed by the server side.
  * this.alipay.pay(alipayOrder)
  *    .then(result => {
  *       console.log(result); // Success
@@ -88,31 +25,26 @@ export interface AlipayOrder {
  *
  * }
  *
- *
  * ```
- *
- * @interfaces
- * AlipayOrder
  */
 @Plugin({
   pluginName: 'Alipay',
-  plugin: 'cordova-alipay-base',
-  pluginRef: 'Alipay.Base',
-  repo: 'https://github.com/xueron/cordova-alipay-base',
-  install:
-    'ionic cordova plugin add cordova-alipay-base --variable ALI_PID=your_app_id',
-  installVariables: ['ALI_PID'],
+  plugin: 'cordova-plugin-gubnoi-alipay',
+  pluginRef: 'Alipay',
+  repo: 'https://github.com/jing-zhou/cordova-plugin-alipay',
+  install: 'ionic cordova plugin add cordova-plugin-gubnoi-alipay --variable APP_ID=your_app_id',
+  installVariables: ['APP_ID'],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Alipay extends IonicNativePlugin {
   /**
    * Open Alipay to perform App pay
-   * @param { AlipayOrder | string } order alipay options
+   * @param {string} order alipay order string
    * @returns {Promise<any>} Returns a Promise that resolves with the success return, or rejects with an error.
    */
   @Cordova()
-  pay(order: AlipayOrder | string): Promise<any> {
+  pay(order: string): Promise<any> {
     return;
   }
 }

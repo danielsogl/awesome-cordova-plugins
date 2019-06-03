@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface MusicControlsOptions {
   track?: string;
@@ -37,7 +37,7 @@ export interface MusicControlsOptions {
  *
  * @usage
  * ```typescript
- * import { MusicControls } from '@ionic-native/music-controls';
+ * import { MusicControls } from '@ionic-native/music-controls/ngx';
  *
  * constructor(private musicControls: MusicControls) { }
  *
@@ -71,7 +71,6 @@ export interface MusicControlsOptions {
  *   // text displayed in the status bar when the notification (and the ticker) are updated, optional
  *   ticker    : 'Now playing "Time is Running Out"',
  *   // All icons default to their built-in android equivalents
- *	 // The supplied drawable name, e.g. 'media_play', is the name of a drawable found under android/res/drawable* folders
  *   playIcon: 'media_play',
  *   pauseIcon: 'media_pause',
  *   prevIcon: 'media_prev',
@@ -135,6 +134,7 @@ export interface MusicControlsOptions {
  *      			break;
  *      	}
  *      }
+ *     });
  *
  *  this.musicControls.listen(); // activates the observable above
  *

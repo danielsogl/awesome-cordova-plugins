@@ -36,20 +36,21 @@ export interface SQLiteDatabaseConfig {
 /**
  * @hidden
  */
-export interface SQLiteTransaction {
-  start: () => void;
+export interface DbTransaction {
   executeSql: (
     sql: any,
-    values: any,
-    success: Function,
-    error: Function
+    values?: any[],
+    success?: Function,
+    error?: Function
   ) => void;
-  addStatement: (
-    sql: any,
-    values: any,
-    success: Function,
-    error: Function
-  ) => void;
+}
+
+/**
+ * @hidden
+ */
+export interface SQLiteTransaction extends DbTransaction {
+  start: () => void;
+  addStatement: DbTransaction['executeSql'];
   handleStatementSuccess: (handler: Function, response: any) => void;
   handleStatementFailure: (handler: Function, response: any) => void;
   run: () => void;
@@ -64,9 +65,8 @@ export interface SQLiteTransaction {
 export class SQLiteObject {
   constructor(public _objectInstance: any) {}
 
-  @InstanceProperty databaseFeatures: { isSQLitePluginDatabase: boolean };
-
-  @InstanceProperty openDBs: any;
+  @InstanceProperty() databaseFeatures: { isSQLitePluginDatabase: boolean };
+  @InstanceProperty() openDBs: any;
 
   @CordovaInstance({
     sync: true
@@ -74,14 +74,14 @@ export class SQLiteObject {
   addTransaction(transaction: (tx: SQLiteTransaction) => void): void {}
 
   /**
-   * @param fn {any}
+   * @param fn {Function}
    * @returns {Promise<any>}
    */
   @CordovaInstance({
     successIndex: 2,
     errorIndex: 1
   })
-  transaction(fn: any): Promise<any> {
+  transaction(fn: (tx: DbTransaction) => void): Promise<any> {
     return;
   }
 
@@ -120,16 +120,16 @@ export class SQLiteObject {
    * ensure it resolved and successfully opened the database.
    */
   @CordovaInstance()
-  executeSql(statement: string, params: any): Promise<any> {
+  executeSql(statement: string, params?: any[]): Promise<any> {
     return;
   }
 
   /**
-   * @param sqlStatements {Array<string | string[] | any>}
+   * @param sqlStatements {string[] | string[][] | any[]}
    * @returns {Promise<any>}
    */
   @CordovaInstance()
-  sqlBatch(sqlStatements: Array<string | string[] | any>): Promise<any> {
+  sqlBatch(sqlStatements: (string | string[] | any)[]): Promise<any> {
     return;
   }
 
@@ -148,7 +148,7 @@ export class SQLiteObject {
  * @usage
  *
  * ```typescript
- * import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+ * import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
  *
  * constructor(private sqlite: SQLite) { }
  *
@@ -161,7 +161,7 @@ export class SQLiteObject {
  *   .then((db: SQLiteObject) => {
  *
  *
- *     db.executeSql('create table danceMoves(name VARCHAR(32))', {})
+ *     db.executeSql('create table danceMoves(name VARCHAR(32))', [])
  *       .then(() => console.log('Executed SQL'))
  *       .catch(e => console.log(e));
  *

@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
 import {
   Cordova,
-  CordovaProperty,
-  Plugin,
   CordovaCheck,
-  IonicNativePlugin
+  CordovaProperty,
+  IonicNativePlugin,
+  Plugin
 } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
-import { merge } from 'rxjs/observable/merge';
+import { Observable, merge } from 'rxjs';
 
 declare const navigator: any;
+
+export enum Connection {
+  UNKNOWN = 0,
+  ETHERNET,
+  WIFI,
+  CELL_2G,
+  CELL_3G ,
+  CELL_4G,
+  CELL,
+  NONE
+}
 
 /**
  * @name Network
@@ -18,13 +28,13 @@ declare const navigator: any;
  *
  * @usage
  * ```typescript
- * import { Network } from '@ionic-native/network';
+ * import { Network } from '@ionic-native/network/ngx';
  *
  * constructor(private network: Network) { }
  *
  * ...
  *
- * // watch network for a disconnect
+ * // watch network for a disconnection
  * let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
  *   console.log('network was disconnected :-(');
  * });
@@ -37,7 +47,7 @@ declare const navigator: any;
  * let connectSubscription = this.network.onConnect().subscribe(() => {
  *   console.log('network connected!');
  *   // We just got a connection but we need to wait briefly
- *    // before we determine the connection type. Might need to wait.
+ *    // before we determine the connection type. Might need to wait.
  *   // prior to doing any api requests as well.
  *   setTimeout(() => {
  *     if (this.network.type === 'wifi') {
@@ -62,17 +72,32 @@ declare const navigator: any;
 })
 @Injectable()
 export class Network extends IonicNativePlugin {
+
+  /**
+   * Constants for possible connection types
+   */
+  Connection = {
+    UNKNOWN: 'unknown',
+    ETHERNET: 'ethernet',
+    WIFI: 'wifi',
+    CELL_2G: '2g',
+    CELL_3G: '3g',
+    CELL_4G: '4g',
+    CELL: 'cellular',
+    NONE: 'none'
+  };
+
   /**
    * Connection type
    * @return {string}
    */
-  @CordovaProperty type: string;
+  @CordovaProperty() type: string;
 
   /**
    * Downlink Max Speed
    * @return {string}
    */
-  @CordovaProperty downlinkMax: string;
+  @CordovaProperty() downlinkMax: string;
 
   /**
    * Returns an observable to watch connection changes
@@ -89,7 +114,8 @@ export class Network extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'offline'
+    event: 'offline',
+    element: document
   })
   onDisconnect(): Observable<any> {
     return;
@@ -101,7 +127,8 @@ export class Network extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'online'
+    event: 'online',
+    element: document
   })
   onConnect(): Observable<any> {
     return;

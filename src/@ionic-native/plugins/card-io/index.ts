@@ -8,7 +8,7 @@ export interface CardIOOptions {
   requireExpiry?: boolean;
 
   /**
-   * 	The user will be prompted for the card CVV
+   *  The user will be prompted for the card CVV
    */
   requireCVV?: boolean;
 
@@ -18,7 +18,7 @@ export interface CardIOOptions {
   requirePostalCode?: boolean;
 
   /**
-   * 	Removes the keyboard button from the scan screen.
+   *  Removes the keyboard button from the scan screen.
    */
   suppressManual?: boolean;
 
@@ -43,7 +43,7 @@ export interface CardIOOptions {
   scanInstructions?: string;
 
   /**
-   * 	If set, the card will not be scanned with the camera.
+   *  If set, the card will not be scanned with the camera.
    */
   noCamera?: boolean;
 
@@ -60,7 +60,7 @@ export interface CardIOOptions {
   /**
    * Changes the color of the guide overlay on the camera. The color is provided in hexadecimal format (e.g. `#FFFFFF`)
    */
-  guideColor?: string;
+  guideColor?: string | number;
 
   /**
    * The user will not be prompted to confirm their card number after processing.
@@ -129,13 +129,19 @@ export interface CardIOResponse {
  * @name Card IO
  * @description
  * @usage
+ * This plug-in exposes card.io credit card scanning.
+ *
+ * **NOTE**: If you would like to actually process a credit card charge, you might be interested in the [PayPal Cordova Plug-in](https://github.com/paypal/PayPal-Cordova-Plugin).
+ *
+ * Requires Cordova plugin: `card.io.cordova.mobilesdk`. For more info, please see the [Card IO plugin docs](https://github.com/card-io/card.io-Cordova-Plugin).
+ *
  * Note: For use with iOS 10 + When building your app with the iOS 10 SDK +, you have to add some info to the info.plist file. This is due to increased security in iOS 10. Go to your app directory and search for the <your app name>Info.plist file. Add the following lines in the main <dict> element.
  * ```xml
- *<key>NSCameraUsageDescription</key>
- *<string>To scan credit cards.</string>
- *```
+ * <key>NSCameraUsageDescription</key>
+ * <string>To scan credit cards.</string>
+ * ```
  * ```typescript
- * import { CardIO } from '@ionic-native/card-io';
+ * import { CardIO } from '@ionic-native/card-io/ngx';
  *
  * constructor(private cardIO: CardIO) { }
  *
@@ -151,7 +157,7 @@ export interface CardIOResponse {
  *           requireCVV: false,
  *           requirePostalCode: false
  *         };
- *         CardIO.scan(options);
+ *         this.cardIO.scan(options);
  *       }
  *     }
  *   );

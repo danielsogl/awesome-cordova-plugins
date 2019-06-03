@@ -63,7 +63,7 @@ export interface CameraPreviewPictureOptions {
  *
  * @usage
  * ```typescript
- * import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+ * import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview/ngx';
  *
  * constructor(private cameraPreview: CameraPreview) { }
  *
@@ -80,7 +80,7 @@ export interface CameraPreviewPictureOptions {
  *   previewDrag: true,
  *   toBack: true,
  *   alpha: 1
- * };
+ * }
  *
  * // start camera
  * this.cameraPreview.startCamera(cameraPreviewOpts).then(
@@ -107,6 +107,14 @@ export interface CameraPreviewPictureOptions {
  *
  * // take a picture
  * this.cameraPreview.takePicture(this.pictureOpts).then((imageData) => {
+ *   this.picture = 'data:image/jpeg;base64,' + imageData;
+ * }, (err) => {
+ *   console.log(err);
+ *   this.picture = 'assets/img/test.jpg';
+ * });
+ *
+ * // take a snap shot
+ * this.cameraPreview.takeSnapshot(this.pictureOpts).then((imageData) => {
  *   this.picture = 'data:image/jpeg;base64,' + imageData;
  * }, (err) => {
  *   console.log(err);
@@ -242,6 +250,20 @@ export class CameraPreview extends IonicNativePlugin {
     errorIndex: 2
   })
   takePicture(options?: CameraPreviewPictureOptions): Promise<any> {
+    return;
+  }
+
+
+  /**
+   * Take a snapshot of preview window (size specified in startCamera options)
+   * @param {CameraPreviewPictureOptions} [options] quality of the picture to take
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2
+  })
+  takeSnapshot(options?: CameraPreviewPictureOptions): Promise<any> {
     return;
   }
 
@@ -454,6 +476,15 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova()
   onBackButton(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Return in use device camera fov
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getHorizontalFOV(): Promise<any> {
     return;
   }
 }

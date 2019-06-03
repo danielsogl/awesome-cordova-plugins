@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 export interface OSNotification {
   /**
    * Was app in focus.
    */
-  isAppInFocus: boolean;
+  isAppInFocus?: boolean;
   /**
    * Was notification shown to the user. Will be false for silent notifications.
    */
-  shown: boolean;
+  shown?: boolean;
   /**
    * **ANDROID** - Android Notification assigned to the notification. Can be used to cancel or replace the notification.
    */
@@ -18,17 +18,17 @@ export interface OSNotification {
   /**
    * Payload received from OneSignal.
    */
-  payload: OSNotificationPayload;
+  payload?: OSNotificationPayload;
   /**
    * How the notification was displayed to the user. Can be set to `Notification`, `InAppAlert`, or `None` if it was not displayed.
    */
-  displayType: OSDisplayType;
+  displayType?: OSDisplayType;
   /**
    * **ANDROID** - Notification is a summary notification for a group this will contain all notification payloads it was created from.
    */
   groupedNotifications?: OSNotificationPayload[];
   app_id?: string;
-  contents: any;
+  contents?: any;
   headings?: any;
   isIos?: boolean;
   isAndroid?: boolean;
@@ -60,6 +60,7 @@ export interface OSNotification {
   wp_wns_sound?: string;
   data?: any;
   buttons?: any;
+  collapse_id?: string;
   small_icon?: string;
   large_icon?: string;
   big_picture?: string;
@@ -219,6 +220,7 @@ export interface OSActionButton {
    */
   icon: string;
 }
+
 /**
  * OSPermissionState
  */
@@ -228,10 +230,15 @@ export interface OSPermissionState {
    */
   hasPrompted: boolean;
   /**
-   * Permissions Status
+   * Permissions Status (iOS Only)
    */
   status: any;
+  /**
+   * Permissions State (Android Only)
+   */
+  state: any;
 }
+
 /**
  * OSSubscriptionState
  */
@@ -241,6 +248,7 @@ export interface OSSubscriptionState {
   userId: any;
   pushToken: any;
 }
+
 /**
  * Subscription and permissions status
  */
@@ -320,32 +328,32 @@ export enum OSActionType {
  *
  * ```
  * #!/usr/bin/env node
-
+ *
  * var fs = require('fs');
  * var path = require('path');
-
+ *
  * var filestocopy = [{
  *     "resources/android/icon/drawable-hdpi-icon.png":
- *         "platforms/android/res/drawable-hdpi/ic_stat_onesignal_default.png"
+ *         "platforms/android/app/src/main/res/drawable-hdpi/ic_stat_onesignal_default.png"
  * }, {
  *     "resources/android/icon/drawable-mdpi-icon.png":
- *         "platforms/android/res/drawable-mdpi/ic_stat_onesignal_default.png"
+ *         "platforms/android/app/src/main/res/drawable-mdpi/ic_stat_onesignal_default.png"
  * }, {
  *     "resources/android/icon/drawable-xhdpi-icon.png":
- *         "platforms/android/res/drawable-xhdpi/ic_stat_onesignal_default.png"
+ *         "platforms/android/app/src/main/res/drawable-xhdpi/ic_stat_onesignal_default.png"
  * }, {
  *     "resources/android/icon/drawable-xxhdpi-icon.png":
- *         "platforms/android/res/drawable-xxhdpi/ic_stat_onesignal_default.png"
+ *         "platforms/android/app/src/main/res/drawable-xxhdpi/ic_stat_onesignal_default.png"
  * }, {
  *     "resources/android/icon/drawable-xxxhdpi-icon.png":
- *         "platforms/android/res/drawable-xxxhdpi/ic_stat_onesignal_default.png"
+ *         "platforms/android/app/src/main/res/drawable-xxxhdpi/ic_stat_onesignal_default.png"
  * } ];
-
+ *
  * module.exports = function(context) {
-
+ *
  *     // no need to configure below
  *     var rootdir = context.opts.projectRoot;
-
+ *
  *     filestocopy.forEach(function(obj) {
  *         Object.keys(obj).forEach(function(key) {
  *             var val = obj[key];
@@ -359,17 +367,17 @@ export enum OSActionType {
  *             }
  *         });
  *     });
-
+ *
  * };
  * ```
  *
  * 3. From the root of your project make the file executable:
- * `$ chmod +x hooks/after_prepare/030_copy_android_notification_icons.js`
+ * `$ chmod +x hooks/copy_android_notification_icons.js`
  *
  *
  * @usage
  * ```typescript
- * import { OneSignal } from '@ionic-native/onesignal';
+ * import { OneSignal } from '@ionic-native/onesignal/ngx';
  *
  * constructor(private oneSignal: OneSignal) { }
  *
@@ -410,6 +418,7 @@ export enum OSActionType {
 export class OneSignal extends IonicNativePlugin {
   /**
    * constants to use in inFocusDisplaying()
+   * @hidden
    */
   OSInFocusDisplayOption = {
     None: 0,
@@ -555,7 +564,7 @@ export class OneSignal extends IonicNativePlugin {
   /**
    * Deletes tags that were previously set on a user with `sendTag` or `sendTags`.
    *
-   * @param {Array<string>} Keys to remove.
+   * @param {string[]} Keys to remove.
    */
   @Cordova({ sync: true })
   deleteTags(keys: string[]): void {}
@@ -655,13 +664,20 @@ export class OneSignal extends IonicNativePlugin {
   /**
    * Enable logging to help debug if you run into an issue setting up OneSignal.
    * The logging levels are as follows: 0 = None, 1= Fatal, 2 = Errors, 3 = Warnings, 4 = Info, 5 = Debug, 6 = Verbose
-
+   *
    * The higher the value the more information is shown.
    *
    * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
    */
   @Cordova({ sync: true })
   setLogLevel(logLevel: { logLevel: number; visualLevel: number }): void {}
+
+  /**
+   * Disable or enable location collection (Defaults to enabled) if your app has location permission.
+   * @param shared {boolean}
+   */
+  @Cordova({ sync: true })
+  setLocationShared(shared: boolean): void {}
 
   /**
    * The passed in function will be fired when a notification permission setting changes.
@@ -695,8 +711,78 @@ export class OneSignal extends IonicNativePlugin {
   }
 
   /**
-   * Clears all OneSignla notifications
+   * Clears all OneSignal notifications
+   */
+  @Cordova()
+  setEmail(email: string, emailAuthToken?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * If your app implements logout functionality, you can call logoutEmail to dissociate the email from the device
+   */
+  @Cordova()
+  logoutEmail(): Promise<any> {
+    return;
+  }
+
+  /**
+   * The passed in function will be fired when a notification subscription property changes.
+   * This includes the following events:
+   * - Getting a push token from Apple / Google.
+   * - Getting a player / user id from OneSignal
+   * - OneSignal.setSubscription is called
+   * - User disables or enables notifications
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  addEmailSubscriptionObserver(): Observable<any> {
+    return;
+  }
+
+  /**
+   * Clears all OneSignal notifications
    */
   @Cordova({ sync: true })
   clearOneSignalNotifications(): void {}
+
+  /**
+   * Allows you to delay the initialization of the SDK until the user provides privacy consent.
+   * The SDK will not be fully initialized until the provideUserConsent(true) method is called.
+   * @param {boolean} required
+   */
+  @Cordova()
+  setRequiresUserPrivacyConsent(required: boolean): void {}
+
+  /**
+   * If your application is set to require the user's privacy consent, you can provide this consent using this method.
+   * Until you call provideUserConsent(true), the SDK will not fully initialize and will not send any data to OneSignal.
+   * @param {boolean} granted
+   */
+  @Cordova()
+  provideUserConsent(granted: boolean): void {}
+
+  /**
+   * Accepts a callback, which returns a boolean variable indicating if the user has given privacy consent yet.
+   * @param {Function} callback
+   */
+  @Cordova()
+  userProvidedPrivacyConsent(callback: Function): void {}
+
+  /**
+   * Allows you to use your own system's user ID's to send push notifications to your users.
+   * To tie a user to a given user ID, you can use this method.
+   * @param {string} externalId
+   */
+  @Cordova()
+  setExternalUserId(externalId: string): void {}
+
+  /**
+   * Removes whatever was set as the current user's external user ID.
+   */
+  @Cordova()
+  removeExternalUserId(): void {}
+
 }

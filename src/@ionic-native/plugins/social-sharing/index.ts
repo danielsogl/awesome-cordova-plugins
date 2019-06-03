@@ -6,11 +6,11 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * @description
  * Share text, files, images, and links via social networks, sms, and email.
  *
- * For Browser usage check out the Web Share API docs: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin#web-share-api
+ * For Browser usage check out the Web Share API docs: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin#5-web-share-api
  *
  * @usage
  * ```typescript
- * import { SocialSharing } from '@ionic-native/social-sharing';
+ * import { SocialSharing } from '@ionic-native/social-sharing/ngx';
  *
  * constructor(private socialSharing: SocialSharing) { }
  *

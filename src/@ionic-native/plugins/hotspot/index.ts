@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface HotspotConnectionInfo {
 
@@ -63,6 +63,7 @@ export interface HotspotNetwork {
   capabilities: string;
 
 }
+
 export interface HotspotNetworkConfig {
 
   /**
@@ -105,16 +106,20 @@ export interface HotspotDevice {
  * @beta
  * @name Hotspot
  * @description
+ * A Cordova plugin for managing Hotspot networks on Android.
+ *
+ * Requires Cordova plugin: `cordova-plugin-hotspot`. For more info, please see the [Hotspot plugin docs](https://github.com/hypery2k/cordova-hotspot-plugin).
+ *
  * @usage
  * ```typescript
- * import { Hotspot, HotspotNetwork } from '@ionic-native/hotspot';
+ * import { Hotspot, HotspotNetwork } from '@ionic-native/hotspot/ngx';
  *
  * constructor(private hotspot: Hotspot) { }
  *
  * ...
  *
  *
- * this.hotspot.scanWifi().then((networks: Array<HotspotNetwork>) => {
+ * this.hotspot.scanWifi().then((networks: HotspotNetwork[]) => {
  *     console.log(networks);
  * });
  *
@@ -139,13 +144,17 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isAvailable(): Promise<boolean> { return; }
+  isAvailable(): Promise<boolean> {
+    return;
+  }
 
   /**
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  toggleWifi(): Promise<boolean> { return; }
+  toggleWifi(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Configures and starts hotspot with SSID and Password
@@ -157,7 +166,9 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<void>}        - Promise to call once hotspot is started, or reject upon failure
    */
   @Cordova()
-  createHotspot(ssid: string, mode: string, password: string): Promise<void> { return; }
+  createHotspot(ssid: string, mode: string, password: string): Promise<void> {
+    return;
+  }
 
   /**
    * Turns on Access Point
@@ -165,7 +176,9 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<boolean>} - true if AP is started
    */
   @Cordova()
-  startHotspot(): Promise<boolean> { return; }
+  startHotspot(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Configures hotspot with SSID and Password
@@ -177,7 +190,9 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<void>}        - Promise to call when hotspot is configured, or reject upon failure
    */
   @Cordova()
-  configureHotspot(ssid: string, mode: string, password: string): Promise<void> { return; }
+  configureHotspot(ssid: string, mode: string, password: string): Promise<void> {
+    return;
+  }
 
   /**
    * Turns off Access Point
@@ -185,7 +200,9 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<boolean>} - Promise to turn off the hotspot, true on success, false on failure
    */
   @Cordova()
-  stopHotspot(): Promise<boolean> { return; }
+  stopHotspot(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if hotspot is enabled
@@ -193,13 +210,15 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<void>}    - Promise that hotspot is enabled, rejected if it is not enabled
    */
   @Cordova()
-  isHotspotEnabled(): Promise<void> { return; }
+  isHotspotEnabled(): Promise<void> {
+    return;
+  }
 
   /**
-   * @returns {Promise<Array<HotspotDevice>>}
+   * @returns {Promise<HotspotDevice[]>}
    */
   @Cordova()
-  getAllHotspotDevices(): Promise<Array<HotspotDevice>> { return; }
+  getAllHotspotDevices(): Promise<HotspotDevice[]> { return; }
 
   /**
    * Connect to a WiFi network
@@ -213,7 +232,9 @@ export class Hotspot extends IonicNativePlugin {
    *      Promise that connection to the WiFi network was successfull, rejected if unsuccessful
    */
   @Cordova()
-  connectToWifi(ssid: string, password: string): Promise<void> { return; }
+  connectToWifi(ssid: string, password: string): Promise<void> {
+    return;
+  }
 
   /**
    * Connect to a WiFi network
@@ -231,7 +252,7 @@ export class Hotspot extends IonicNativePlugin {
    *      Promise that connection to the WiFi network was successfull, rejected if unsuccessful
    */
   @Cordova()
-  connectToWifiAuthEncrypt(ssid: string, password: string, authentication: string, encryption: Array<string>): Promise<void> { return; }
+  connectToWifiAuthEncrypt(ssid: string, password: string, authentication: string, encryption: string[]): Promise<void> { return; }
 
   /**
    * Add a WiFi network
@@ -247,7 +268,9 @@ export class Hotspot extends IonicNativePlugin {
    *      Promise that adding the WiFi network was successfull, rejected if unsuccessful
    */
   @Cordova()
-  addWifiNetwork(ssid: string, mode: string, password: string): Promise<void> { return; }
+  addWifiNetwork(ssid: string, mode: string, password: string): Promise<void> {
+    return;
+  }
 
   /**
    * Remove a WiFi network
@@ -259,79 +282,101 @@ export class Hotspot extends IonicNativePlugin {
    *      Promise that removing the WiFi network was successfull, rejected if unsuccessful
    */
   @Cordova()
-  removeWifiNetwork(ssid: string): Promise<void> { return; }
+  removeWifiNetwork(ssid: string): Promise<void> {
+    return;
+  }
 
   /**
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isConnectedToInternet(): Promise<boolean> { return; }
+  isConnectedToInternet(): Promise<boolean> {
+    return;
+  }
 
   /**
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isConnectedToInternetViaWifi(): Promise<boolean> { return; }
+  isConnectedToInternetViaWifi(): Promise<boolean> {
+    return;
+  }
 
   /**
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isWifiOn(): Promise<boolean> { return; }
+  isWifiOn(): Promise<boolean> {
+    return;
+  }
 
   /**
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isWifiSupported(): Promise<boolean> { return; }
+  isWifiSupported(): Promise<boolean> {
+    return;
+  }
 
   /**
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isWifiDirectSupported(): Promise<boolean> { return; }
+  isWifiDirectSupported(): Promise<boolean> {
+    return;
+  }
 
   /**
-   * @returns {Promise<Array<HotspotNetwork>>}
+   * @returns {Promise<HotspotNetwork[]>}
    */
   @Cordova()
-  scanWifi(): Promise<Array<HotspotNetwork>> { return; }
+  scanWifi(): Promise<HotspotNetwork[]> { return; }
 
   /**
-   * @returns {Promise<Array<HotspotNetwork>>}
+   * @returns {Promise<HotspotNetwork[]>}
    */
   @Cordova()
-  scanWifiByLevel(): Promise<Array<HotspotNetwork>> { return; }
+  scanWifiByLevel(): Promise<HotspotNetwork[]> { return; }
 
   /**
    * @returns {Promise<any>}
    */
   @Cordova()
-  startWifiPeriodicallyScan(interval: number, duration: number): Promise<any> { return; }
+  startWifiPeriodicallyScan(interval: number, duration: number): Promise<any> {
+    return;
+  }
 
   /**
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopWifiPeriodicallyScan(): Promise<any> { return; }
+  stopWifiPeriodicallyScan(): Promise<any> {
+    return;
+  }
 
   /**
    * @returns {Promise<HotspotNetworkConfig>}
    */
   @Cordova()
-  getNetConfig(): Promise<HotspotNetworkConfig> { return; }
+  getNetConfig(): Promise<HotspotNetworkConfig> {
+    return;
+  }
 
   /**
    * @returns {Promise<HotspotConnectionInfo>}
    */
   @Cordova()
-  getConnectionInfo(): Promise<HotspotConnectionInfo> { return; }
+  getConnectionInfo(): Promise<HotspotConnectionInfo> {
+    return;
+  }
 
   /**
    * @returns {Promise<string>}
    */
   @Cordova()
-  pingHost(ip: string): Promise<string> { return; }
+  pingHost(ip: string): Promise<string> {
+    return;
+  }
 
   /**
    * Gets MAC Address associated with IP Address from ARP File
@@ -341,7 +386,9 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<string>}  - A Promise for the MAC Address
    */
   @Cordova()
-  getMacAddressOfHost(ip: string): Promise<string> { return; }
+  getMacAddressOfHost(ip: string): Promise<string> {
+    return;
+  }
 
   /**
    * Checks if IP is live using DNS
@@ -351,7 +398,9 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<boolean>} - A Promise for whether the IP Address is reachable
    */
   @Cordova()
-  isDnsLive(ip: string): Promise<boolean> { return; }
+  isDnsLive(ip: string): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if IP is live using socket And PORT
@@ -361,7 +410,9 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<boolean>} - A Promise for whether the IP Address is reachable
    */
   @Cordova()
-  isPortLive(ip: string): Promise<boolean> { return; }
+  isPortLive(ip: string): Promise<boolean> {
+    return;
+  }
 
   /**
    * Checks if device is rooted
@@ -369,6 +420,8 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<boolean>} - A Promise for whether the device is rooted
    */
   @Cordova()
-  isRooted(): Promise<boolean> { return; }
+  isRooted(): Promise<boolean> {
+    return;
+  }
 
 }

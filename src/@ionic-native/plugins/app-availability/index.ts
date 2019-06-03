@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name App Availability
@@ -10,7 +10,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { AppAvailability } from '@ionic-native/app-availability';
+ * import { AppAvailability } from '@ionic-native/app-availability/ngx';
  * import { Platform } from 'ionic-angular';
  *
  * constructor(private appAvailability: AppAvailability, private platform: Platform) { }
@@ -48,6 +48,8 @@ export class AppAvailability extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  check(app: string): Promise<boolean> { return; }
+  check(app: string): Promise<boolean> {
+    return;
+  }
 
 }

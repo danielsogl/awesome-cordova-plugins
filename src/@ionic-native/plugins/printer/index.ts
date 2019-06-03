@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaCheck, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, CordovaCheck, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
 
 export interface PrintOptions {
   /**
@@ -44,7 +44,7 @@ export interface PrintOptions {
  * @description Prints documents or HTML rendered content
  * @usage
  * ```typescript
- * import { Printer, PrintOptions } from '@ionic-native/printer';
+ * import { Printer, PrintOptions } from '@ionic-native/printer/ngx';
  *
  * constructor(private printer: Printer) { }
  *
@@ -58,7 +58,7 @@ export interface PrintOptions {
  *      duplex: true,
  *      landscape: true,
  *      grayscale: true
- *    };
+ *    }
  *
  * this.printer.print(content, options).then(onSuccess, onError);
  * ```
@@ -90,7 +90,7 @@ export class Printer extends IonicNativePlugin {
    */
   @CordovaCheck()
   check(): Promise<any> {
-    return new Promise<any>((resolve: Function) => {
+    return getPromise<any>((resolve: Function) => {
       Printer.getPlugin()
         .check((avail: boolean, count: any) => {
           resolve({ avail, count });
@@ -103,7 +103,9 @@ export class Printer extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  pick(): Promise<any> { return; }
+  pick(): Promise<any> {
+    return;
+  }
 
   /**
    * Sends content to the printer.
@@ -115,6 +117,8 @@ export class Printer extends IonicNativePlugin {
     successIndex: 2,
     errorIndex: 4
   })
-  print(content: string | HTMLElement, options?: PrintOptions): Promise<any> { return; }
+  print(content: string | HTMLElement, options?: PrintOptions): Promise<any> {
+    return;
+  }
 
 }

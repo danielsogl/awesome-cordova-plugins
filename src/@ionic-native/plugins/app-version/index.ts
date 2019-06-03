@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
-
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 
 /**
@@ -12,7 +11,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { AppVersion } from '@ionic-native/app-version';
+ * import { AppVersion } from '@ionic-native/app-version/ngx';
  *
  * constructor(private appVersion: AppVersion) { }
  *
@@ -37,28 +36,30 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 export class AppVersion extends IonicNativePlugin {
 
   /**
-   * Returns the name of the app
+   * Returns the name of the app, e.g.: "My Awesome App"
    * @returns {Promise<string>}
    */
   @Cordova()
   getAppName(): Promise<string> { return; }
 
   /**
-   * Returns the package name of the app
+   * Returns the package name of the app, e.g.: "com.example.myawesomeapp"
    * @returns {Promise<string>}
    */
   @Cordova()
   getPackageName(): Promise<string> { return; }
 
   /**
-   * Returns the build identifier of the app
-   * @returns {Promise<string>}
+   * Returns the build identifier of the app.
+   * In iOS a string with the build version like "1.6095"
+   * In Android a number generated from the version string, like 10203 for version "1.2.3"
+   * @returns {Promise<string | number>}
    */
   @Cordova()
-  getVersionCode(): Promise<string> { return; }
+  getVersionCode(): Promise<string | number> { return; }
 
   /**
-   * Returns the version of the app
+   * Returns the version of the app, e.g.: "1.2.3"
    * @returns {Promise<string>}
    */
   @Cordova()

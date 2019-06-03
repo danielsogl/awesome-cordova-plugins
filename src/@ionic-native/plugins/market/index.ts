@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 /**
  * @name Market
  * @description
@@ -7,7 +7,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Market } from '@ionic-native/market';
+ * import { Market } from '@ionic-native/market/ngx';
  *
  * constructor(private market: Market) { }
  *
@@ -37,7 +37,9 @@ export class Market extends IonicNativePlugin {
     successName: 'success',
     errorName: 'failure'
   })
-  open(appId: string): Promise<any> { return; }
+  open(appId: string): Promise<any> {
+    return;
+  }
 
   /**
    * Search apps by keyword
@@ -50,6 +52,8 @@ export class Market extends IonicNativePlugin {
     errorName: 'failure',
     platforms: ['Android']
   })
-  search(keyword: string): Promise<any> { return; }
+  search(keyword: string): Promise<any> {
+    return;
+  }
 
 }

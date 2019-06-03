@@ -6,7 +6,7 @@ export interface IOSFilePickerPosition {
   y: number;
   width: number;
   height: number;
-};
+}
 
 /**
  * @name iOS File Picker
@@ -16,7 +16,7 @@ export interface IOSFilePickerPosition {
  *
  * @usage
  * ```typescript
- * import { IOSFilePicker } from '@ionic-native/file-picker';
+ * import { IOSFilePicker } from '@ionic-native/file-picker/ngx';
  *
  * constructor(private filePicker: IOSFilePicker) { }
  *

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name Broadcaster
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```typescript
- * import { Broadcaster } from '@ionic-native/broadcaster';
+ * import { Broadcaster } from '@ionic-native/broadcaster/ngx';
  *
  * constructor(private broadcaster: Broadcaster) { }
  *
