@@ -21,7 +21,7 @@ export interface CardData {
   paymentNetwork?: string;
 }
 
-export interface EligibilityData {
+export interface PairedDevicesFlags {
   isInWallet: boolean;
   isInWatch: boolean;
   FPANID: string;
@@ -29,10 +29,6 @@ export interface EligibilityData {
 
 export interface WatchExistData {
   isWatchPaired: boolean;
-}
-
-export interface CardPrimarySuffixData {
-  primaryAccountSuffix: string;
 }
 
 /**
@@ -59,15 +55,14 @@ export interface CardPrimarySuffixData {
  *  .catch((err) => {
  *    // Catch {{err}} here
  *  });
- *
- *
+ * 
  * ...
  *
  *
- * // Simple call to check existence and ellibagility to add a card
- * this.appleWallet.isCardExistInWalletOrWatch(data: CardPrimarySuffixData)
- *  .then((res: EligibilityData) => {
- *    // object contains boolean values that ensure that card is already exists in wallet or paired-watch
+ * // Simple call to check Card Eligibility
+ * this.appleWallet.checkCardEligibility(primaryAccountIdentifier: string)
+ *  .then((res: boolean) => {
+ *    // Expect res to be boolean
  *   })
  *  .catch((err) => {
  *    // Catch {{err}} here
@@ -77,10 +72,36 @@ export interface CardPrimarySuffixData {
  * ...
  *
  *
+ * // Simple call to checkCardEligibilityBySuffix
+ * this.appleWallet.checkCardEligibilityBySuffix(cardSuffix: string)
+ *  .then((res: boolean) => {
+ *    // Expect res to be boolean
+ *   })
+ *  .catch((err) => {
+ *    // Catch {{err}} here
+ *  });
+ *
+ *
+ * ...
+ *
  * // Simple call to check out if there is any paired Watches so that you can toggle visibility of 'Add to Watch' button
- * this.appleWallet.isPairedWatchExist()
+ * this.appleWallet.checkPairedDevices()
  *  .then((res: WatchExistData) => {
- *    // object contains boolean value that ensure that there is already a paired Watch
+ *    // object contains boolean flags showing paired devices
+ *   })
+ *  .catch((err) => {
+ *    // Catch {{err}} here
+ *  });
+ *
+ *
+ * ...
+ *
+ *
+ *
+ * // Simple call to check paired devices with a card by its suffix
+ * this.appleWallet.checkPairedDevicesBySuffix(cardSuffix: string)
+ *  .then((res: PairedDevicesFlags) => {
+ *    // object contains boolean values that ensure that card is already exists in wallet or paired-watch
  *   })
  *  .catch((err) => {
  *    // Catch {{err}} here
@@ -121,9 +142,8 @@ export interface CardPrimarySuffixData {
  * EncryptedCardData
  * SignatureCertificatesData
  * CardData
- * EligibilityData
+ * PairedDevicesFlags
  * WatchExistData
- * CardPrimarySuffixData
  */
 @Plugin({
   pluginName: 'AppleWallet',
@@ -144,12 +164,22 @@ export class AppleWallet extends IonicNativePlugin {
   }
 
   /**
-   * Simple call to check existence and ellibagility to add a card
-   * @param {CardPrimarySuffixData} data
-   * @return {Promise<EligibilityData>}
+   * Simple call to check Card Eligibility
+   * @param {string} primaryAccountIdentifier
+   * @return {Promise<boolean>}
    */
   @Cordova()
-  isCardExistInWalletOrWatch(data: CardPrimarySuffixData): Promise<EligibilityData> {
+  checkCardEligibility(primaryAccountIdentifier: string): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Simple call to checkCardEligibilityBySuffix
+   * @param {string} cardSuffix
+   * @return {Promise<PairedDevicesFlags>}
+   */
+  @Cordova()
+  checkCardEligibilityBySuffix(cardSuffix: string): Promise<boolean> {
     return;
   }
 
@@ -158,7 +188,17 @@ export class AppleWallet extends IonicNativePlugin {
    * @return {Promise<WatchExistData>}
    */
   @Cordova()
-  isPairedWatchExist(): Promise<WatchExistData> {
+  checkPairedDevices(): Promise<WatchExistData> {
+    return;
+  }
+
+  /**
+   * Simple call to check paired devices with a card by its suffix
+   * @param {string} cardSuffix
+   * @return {Promise<PairedDevicesFlags>}
+   */
+  @Cordova()
+  checkPairedDevicesBySuffix(cardSuffix: string): Promise<PairedDevicesFlags> {
     return;
   }
 
