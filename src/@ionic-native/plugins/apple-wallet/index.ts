@@ -50,7 +50,7 @@ export interface WatchExistData {
  * // Simple call to determine if the current device supports Apple Pay and has a supported card installed.
  * this.appleWallet.isAvailable()
  *  .then((res: boolean) => {
- *  // Expect res to be boolean
+ *    // Expect res to be boolean
  *   })
  *  .catch((err) => {
  *    // Catch {{err}} here
