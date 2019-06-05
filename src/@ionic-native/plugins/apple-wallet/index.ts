@@ -55,7 +55,7 @@ export interface WatchExistData {
  *  .catch((err) => {
  *    // Catch {{err}} here
  *  });
- * 
+ *
  * ...
  *
  *
