@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+
 /**
  * @name Sms Retriever
  * @description
@@ -27,12 +27,12 @@ import { Observable } from 'rxjs';
  */
 @Plugin({
   pluginName: 'SmsRetriever',
-  plugin: 'cordova-plugin-sms-retriever-manager', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'cordova.plugins.smsRetriever', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/hanatharesh2712/ionic-native-sms-retriever-plugin-master', // the github repository URL for the plugin
+  plugin: 'cordova-plugin-sms-retriever-manager',
+  pluginRef: 'cordova.plugins.smsRetriever',
+  repo: 'https://github.com/hanatharesh2712/ionic-native-sms-retriever-plugin-master',
   install: 'ionic cordova plugin add cordova-plugin-sms-retriever-manager --variable PLAY_SERVICES_VERSION="15.0.1"',
   installVariables: ['PLAY_SERVICES_VERSION'],
-  platforms: ['Android'] // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['Android']
 })
 @Injectable()
 export class SmsRetriever extends IonicNativePlugin {
@@ -42,14 +42,15 @@ export class SmsRetriever extends IonicNativePlugin {
   */
   @Cordova()
   startWatching(): Promise<string> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
+  
  /**
   * This function is to get hash string of APP.
   * @return {Promise<string>} Returns a promise that resolves when successfully generate hash of APP.
   */
   @Cordova()
   getAppHash(): Promise<string> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+    return;
   }
 }
