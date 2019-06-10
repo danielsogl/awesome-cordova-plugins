@@ -204,7 +204,7 @@ export class MusicControls extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS']
   })
-  updateElapsed(args: { elapsed: string; isPlaying: boolean }): void {}
+  updateElapsed(args: { elapsed: number; isPlaying: boolean }): void {}
 
   /**
    * Toggle dismissable:
