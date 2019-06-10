@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
  * ```typescript
  * import { FirebaseLib } from '@ionic-native/firebase-lib';
  *
- * constructor(private firebaseLib: FirebaseLib) { }
+ * constructor(private firebaseLib: FirebaseLib) {}
  *
  * ...
  *
