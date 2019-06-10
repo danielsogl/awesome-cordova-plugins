@@ -44,7 +44,7 @@ export class SmsRetriever extends IonicNativePlugin {
   startWatching(): Promise<string> {
     return;
   }
-  
+
  /**
   * This function is to get hash string of APP.
   * @return {Promise<string>} Returns a promise that resolves when successfully generate hash of APP.
