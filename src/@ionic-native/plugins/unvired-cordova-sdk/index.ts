@@ -1,16 +1,10 @@
 /**
  * @name Unvired Cordova S D K
  * @description
- * This plugin can be used to connect to UMP ( Unvired Mobile Platform ).
- * 
- * iOS Notes
- * -
- * This plugin has a dependency on the following Cocoapod. In your iOS project, first install the dependent pod and then install the plugin.
+ * This plugin can be used to connect to UMP ( Unvired Mobile Platform ). This plugin has a dependency on the following Cocoapod. In your iOS project, first install the dependent pod and then install the plugin.
  * ```
  * pod 'UnviredCordovaSDK'
  * ```
- * 
- *
  * @usage
  * ```typescript
  * import { UnviredCordovaSDK } from '@ionic-native/unvired-cordova-sdk/ngx';
@@ -19,7 +13,6 @@
  * constructor(private unviredCordovaSDK: UnviredCordovaSDK) { }
  *
  * ...
- * 
  * // Login
  * let loginParameters = new LoginParameters()
  * loginParameters.appName = 'UNVIRED_DIGITAL_FORMS'
@@ -27,13 +20,10 @@
  *
  * // Make a Sync call.
  * let result = await this.unviredCordovaSDK.syncForeground(RequestType.QUERY, null, inputObj, 'UNVIRED_DIGITAL_FORMS_PA_MOBILE_GET_USERS', true)
- * 
  * // Make Async call.
  * let result = await this.unviredCordovaSDK.syncBackground(RequestType.QUERY, null, inputObj, 'UNVIRED_DIGITAL_FORMS_PA_MOBILE_GET_USERS', 'INPUT_GET_USERS', 'GUID', false)
- *
  *  // Write Logs
  *  this.unviredCordovaSDK.logInfo("AppComponent", "Initialize", " Some String")
- *
  * ```
  */
 
@@ -52,10 +42,10 @@ export enum LoginListenerType {
 }
 
 export enum LoginType {
-  unvired = "UNVIRED_ID",
-  ads = "ADS",
-  sap = "SAP",
-  custom = "CUSTOM"
+  unvired = 'UNVIRED_ID',
+  ads = 'ADS',
+  sap = 'SAP',
+  custom = 'CUSTOM'
 }
 
 export enum ResultType {
@@ -77,8 +67,8 @@ export enum NotificationListenerType {
   dataReceived = 2, // Notify data receive completion on receive of all BusinessEntity
   appReset = 3, // Notify application data reset.
   attachmentDownloadSuccess = 4, //  Notify application with error message and attchment item on attachment download error
-  attachmentDownloadError = 5, // Notify application with error message and attchment item on attachment download success 
-  incomingDataProcessingFinished = 6, // Notify application when incoming data handling finished 
+  attachmentDownloadError = 5, // Notify application with error message and attchment item on attachment download success
+  incomingDataProcessingFinished = 6, // Notify application when incoming data handling finished
   attachmentDownloadWaiting = 7, // Notify application when attachment download is waiting on the server
   infoMessage = 8, // Notify application with any InfoMessages
   serverError = 9, // Notify application with Server errors
@@ -98,59 +88,59 @@ export enum AttachmentItemStatus {
 }
 
 export class Settings {
-  loginType: LoginType
-  ADS_DOMAIN: string
-  SAP_PORT_NAME: string
-  EMAIL: string
-  ADS_USER_ID: string
-  SAP_USER_ID: string
-  FULL_NAME: string
-  URL: string
-  USER_ID: string
+  loginType: LoginType;
+  ADS_DOMAIN: string;
+  SAP_PORT_NAME: string;
+  EMAIL: string;
+  ADS_USER_ID: string;
+  SAP_USER_ID: string;
+  FULL_NAME: string;
+  URL: string;
+  USER_ID: string;
 }
 
 export class UnviredResult {
-  data: any
-  message: string
-  type: number
-  error: string
-  errorDetail: string
+  data: any;
+  message: string;
+  type: number;
+  error: string;
+  errorDetail: string;
 }
 
 export class NotifResult extends UnviredResult {
-  type: NotificationListenerType
+  type: NotificationListenerType;
 }
 
 export class SettingsResult extends UnviredResult {
-  data: Settings
-  type: ResultType
+  data: Settings;
+  type: ResultType;
 }
 
 export class SyncResult extends UnviredResult {
-  type: ResultType
+  type: ResultType;
 }
 
 export class DbResult extends UnviredResult {
-  type: ResultType
+  type: ResultType;
 }
 
 export class LoginParameters {
-  appName: string
-  company: string
-  username: string
-  password: string
-  url: string
-  domain: string
-  loginType: LoginType
-  feUserId: string
-  port: string
-  metadataPath: string
-  isRequiredAttachmentBase64: boolean
-  autoSendTime: string
-  autoSyncTime: string
+  appName: string;
+  company: string;
+  username: string;
+  password: string;
+  url: string;
+  domain: string;
+  loginType: LoginType;
+  feUserId: string;
+  port: string;
+  metadataPath: string;
+  isRequiredAttachmentBase64: boolean;
+  autoSendTime: string;
+  autoSyncTime: string;
 }
 export class LoginResult extends UnviredResult {
-  type: LoginListenerType
+  type: LoginListenerType;
 }
 @Plugin({
   pluginName: 'UnviredCordovaSDK',
@@ -202,8 +192,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * This api initiatilizes the Unvired Application. 
-   * @param loginParameters 
+   * This api initiatilizes the Unvired Application.
+   * @param loginParameters
    */
   @Cordova()
   login(loginParameters: LoginParameters): Promise<LoginResult> {
