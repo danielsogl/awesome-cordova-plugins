@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { Plugin, Cordova, IonicNativePlugin } from "@ionic-native/core";
+import { Injectable } from '@angular/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 export interface SumUpResponse {
   // Code to identify the message
@@ -99,14 +99,14 @@ export interface SumUpPayment {
  * ```
  */
 @Plugin({
-  pluginName: "SumUp",
-  plugin: "cordova-sumup-plugin", // npm package name, example: cordova-plugin-camera
-  pluginRef: "window.SumUp", // the variable reference to call the plugin, example: navigator.geolocation
-  repo: "https://github.com/mariusbackes/cordova-plugin-sumup", // the github repository URL for the plugin
+  pluginName: 'SumUp',
+  plugin: 'cordova-sumup-plugin', // npm package name, example: cordova-plugin-camera
+  pluginRef: 'window.SumUp', // the variable reference to call the plugin, example: navigator.geolocation
+  repo: 'https://github.com/mariusbackes/cordova-plugin-sumup', // the github repository URL for the plugin
   install:
-    "cordova plugin add cordova-sumup-plugin --variable SUMUP_API_KEY=INSERT_YOUR_KEY", // OPTIONAL install command, in case the plugin requires variables
-  installVariables: ["SUMUP_API_KEY"], // OPTIONAL the plugin requires variables
-  platforms: ["Android", "iOS"] // Array of platforms supported, example: ['Android', 'iOS']
+    'cordova plugin add cordova-sumup-plugin --variable SUMUP_API_KEY=INSERT_YOUR_KEY', // OPTIONAL install command, in case the plugin requires variables
+  installVariables: ['SUMUP_API_KEY'], // OPTIONAL the plugin requires variables
+  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
 export class SumUp extends IonicNativePlugin {
