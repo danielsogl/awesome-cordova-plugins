@@ -4,7 +4,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 /**
  * @name Couchbase Lite
  * @description
- * Plugin to install Couchbase Lite in your PhoneGap app on iOS or Android
+ * Plugin to install Couchbase Lite in your PhoneGap app on iOS or Android <docs-card href="https://ionicframework.com/integrations/couchbase-lite" ionicon="alert">This Plugin is no longer supported by Couchbase. Please see our Couchbase Lite Integration</docs-card>
  *
  * @usage
  * ```typescript
