@@ -18,7 +18,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * ...
  *
  * this.launchReview.launch()
- *   .then(() => console.log('Successfully launched store app');
+ *   .then(() => console.log('Successfully launched store app'));
  *
  * if(this.launchReview.isRatingSupported()){
  *   this.launchReview.rating()
