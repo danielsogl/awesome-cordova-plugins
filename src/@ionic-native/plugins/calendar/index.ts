@@ -474,6 +474,21 @@ export class Calendar extends IonicNativePlugin {
   ): Promise<any> {
     return;
   }
+  
+  /**
+   * Delete an event by id.
+   *
+   * @param {string} [id]  The event id
+   * @param {Date} [fromDate]  The date where it start deleting from
+   * @return Returns a Promise
+   */
+  @Cordova()
+  deleteEventById(
+    id: string,
+    fromDate?: Date
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Open the calendar at the specified date.
