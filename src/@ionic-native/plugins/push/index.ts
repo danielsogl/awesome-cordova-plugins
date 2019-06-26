@@ -389,7 +389,9 @@ export class PushObject {
     if (
       checkAvailability('PushNotification', 'init', 'PushNotification') === true
     ) {
-      this._objectInstance = window.PushNotification.init(options);
+      if (typeof window !== 'undefined') {
+        this._objectInstance = window.PushNotification.init(options);
+      }
     }
   }
 

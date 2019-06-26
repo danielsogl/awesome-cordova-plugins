@@ -20,9 +20,10 @@ export function getPromise<T>(callback: (resolve: Function, reject?: Function) =
     }
   };
 
-  if (window.angular) {
+  if (typeof window !== 'undefined' && window.angular) {
+    const doc = window.document;
     const injector = window.angular
-      .element(document.querySelector('[ng-app]') || document.body)
+      .element(doc.querySelector('[ng-app]') || doc.body)
       .injector();
     if (injector) {
       const $q = injector.get('$q');
@@ -143,12 +144,12 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
 /**
  * Wrap the event with an observable
  * @private
- * @param event even name
+ * @param event event name
  * @param element The element to attach the event listener to
  * @returns {Observable}
  */
 function wrapEventObservable(event: string, element: any): Observable<any> {
-  element = element ? get(window, element) : window;
+  element = (typeof window !== 'undefined' && element) ? get(window, element) : element || typeof window !== 'undefined' || {};
   return fromEvent(element, event);
 }
 
@@ -185,7 +186,7 @@ export function checkAvailability(
   pluginInstance = getPlugin(pluginRef);
 
   if (!pluginInstance || (!!methodName && typeof pluginInstance[methodName] === 'undefined')) {
-    if (!window.cordova) {
+    if (typeof window === 'undefined' || !window.cordova) {
       cordovaWarn(pluginName, methodName);
       return ERR_CORDOVA_NOT_AVAILABLE;
     }
@@ -306,7 +307,10 @@ export function callInstance(
 }
 
 export function getPlugin(pluginRef: string): any {
-  return get(window, pluginRef);
+  if (typeof window !== 'undefined') {
+    return get(window, pluginRef);
+  }
+  return null;
 }
 
 export function get(element: Element | Window, path: string) {
@@ -346,20 +350,22 @@ export function pluginWarn(pluginName: string, plugin?: string, method?: string)
  * @param method
  */
 export function cordovaWarn(pluginName: string, method?: string): void {
-  if (method) {
-    console.warn(
-      'Native: tried calling ' +
-        pluginName +
-        '.' +
-        method +
-        ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
-    );
-  } else {
-    console.warn(
-      'Native: tried accessing the ' +
-        pluginName +
-        ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
-    );
+  if (typeof process === 'undefined') {
+    if (method) {
+      console.warn(
+        'Native: tried calling ' +
+          pluginName +
+          '.' +
+          method +
+          ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
+      );
+    } else {
+      console.warn(
+        'Native: tried accessing the ' +
+          pluginName +
+          ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
+      );
+    }
   }
 }
 

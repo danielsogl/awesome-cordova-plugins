@@ -30,7 +30,7 @@ const DIST = path.resolve(ROOT, 'dist/@ionic-native');
 const PACKAGES = [];
 
 const MIN_CORE_VERSION = '^5.1.0';
-const RXJS_VERSION = '^6.3.0';
+const RXJS_VERSION = '^6.5.0';
 
 const PLUGIN_PEER_DEPENDENCIES = {
   '@ionic-native/core': MIN_CORE_VERSION,

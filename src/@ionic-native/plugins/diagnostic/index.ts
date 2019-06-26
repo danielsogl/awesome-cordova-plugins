@@ -813,6 +813,15 @@ export class Diagnostic extends IonicNativePlugin {
   }
 
   /**
+   * Requests reminders authorization for the application.
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  requestRemoteNotificationsAuthorization(types?: string[], omitRegistration?: boolean): Promise<string> {
+    return;
+  }
+
+  /**
    * Indicates the current setting of notification types for the app in the Settings app.
    * Note: on iOS 8+, if "Allow Notifications" switch is OFF, all types will be returned as disabled.
    * @returns {Promise<any>}

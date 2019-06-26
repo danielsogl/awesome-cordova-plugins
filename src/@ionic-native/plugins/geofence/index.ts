@@ -145,7 +145,7 @@ export class Geofence extends IonicNativePlugin {
    */
   onNotificationClicked(): Observable<any> {
     return new Observable<any>(observer => {
-      window &&
+      typeof window !== 'undefined' &&
         window.geofence &&
         (window.geofence.onNotificationClicked = observer.next.bind(observer));
       return () => (window.geofence.onNotificationClicked = () => {});

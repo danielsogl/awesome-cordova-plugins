@@ -40,7 +40,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  initialize(): void {
+  initialise(): any {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
