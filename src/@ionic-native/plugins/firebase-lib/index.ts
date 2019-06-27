@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 /**
  * @name FirebaseLib
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
  * ```typescript
  * import { FirebaseLib } from '@ionic-native/firebase-lib';
  *
- * constructor(private firebaseLib: FirebaseLib) {}
+ * constructor(private firebaseLib: FirebaseLib) { }
  *
  * ...
  *
@@ -308,7 +308,7 @@ export class FirebaseLib extends IonicNativePlugin {
    * @param {string} trace Trace name
    */
   @Cordova()
-  stopTrace(trace: string): void {}
+  stopTrace(trace: string): void { }
 
   /**
    * Allows the user to enable/disable analytics collection
