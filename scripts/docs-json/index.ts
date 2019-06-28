@@ -10,6 +10,7 @@ interface Plugin {
   platforms: string[];
   usage: string;
   repo: string;
+  installVariables: string[];
   cordovaPlugin: {
     name: string;
   };
@@ -56,6 +57,7 @@ function processPlugin(pluginModule): Plugin {
     usage,
     platforms: decorator.platforms,
     repo: decorator.repo,
+    installVariables: decorator.installVariables,
     cordovaPlugin: {
       name: decorator.plugin
     }
