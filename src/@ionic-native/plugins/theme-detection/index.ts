@@ -61,7 +61,7 @@ export class ThemeDetection extends IonicNativePlugin {
 
   /**
    *
-   * @return {Promise<ThemeDetectionResponse>} 
+   * @return {Promise<ThemeDetectionResponse>}
    *  Returns a promise with an object that has a boolean property which gives information if dark mode is enabled or not
    */
   @Cordova()
