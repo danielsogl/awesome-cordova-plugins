@@ -41,7 +41,7 @@ export interface ThemeDetectionResponse {
   pluginName: 'ThemeDetection',
   plugin: 'cordova-plugin-theme-detection',
   pluginRef: 'cordova.plugins.ThemeDetection',
-  repo: 'https://github.com/mariusbackes/cordova-plugin-theme-detection', 
+  repo: 'https://github.com/mariusbackes/cordova-plugin-theme-detection',
   install: 'cordova plugin add cordova-plugin-theme-detection',
   installVariables: [],
   platforms: ['iOS']
@@ -50,8 +50,8 @@ export interface ThemeDetectionResponse {
 export class ThemeDetection extends IonicNativePlugin {
 
   /**
-   * 
-   * @return {Promise<ThemeDetectionResponse>} 
+   *
+   * @return {Promise<ThemeDetectionResponse>}
    *  Returns a promise with an object that has a boolean property which gives information if the detection is available or not
    */
   @Cordova()
@@ -60,7 +60,7 @@ export class ThemeDetection extends IonicNativePlugin {
   }
 
   /**
-   * 
+   *
    * @return {Promise<ThemeDetectionResponse>} 
    *  Returns a promise with an object that has a boolean property which gives information if dark mode is enabled or not
    */
