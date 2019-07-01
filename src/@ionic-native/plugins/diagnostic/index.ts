@@ -73,7 +73,11 @@ export class Diagnostic extends IonicNativePlugin {
   @CordovaProperty()
   permissionStatus: {
     GRANTED: string;
+    /**
+     * @deprecated cordova.plugins.diagnostic@5.0.0 uses DENIED_ONCE to unify DENIED* statuses across iOS/Android
+     */
     DENIED: string;
+    DENIED_ONCE: string;
     NOT_REQUESTED: string;
     DENIED_ALWAYS: string;
     RESTRICTED: string;
