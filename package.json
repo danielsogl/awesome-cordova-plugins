@@ -31,7 +31,7 @@
     "@types/fs-extra": "^7.0.0",
     "@types/jest": "^24.0.15",
     "@types/lodash": "^4.14.135",
-    "@types/node": "^12.0.10",
+    "@types/node": "^10.14.10",
     "@types/rimraf": "^2.0.2",
     "@types/webpack": "^4.4.34",
     "ajv": "^6.10.0",
