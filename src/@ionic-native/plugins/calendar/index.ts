@@ -474,7 +474,7 @@ export class Calendar extends IonicNativePlugin {
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Delete an event by id.
    *
