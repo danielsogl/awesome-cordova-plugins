@@ -26,8 +26,8 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   pluginName: 'BioCatch',
   plugin: 'cordova-plugin-biocatch',
   pluginRef: 'BioCatch',
-  repo: 'https://bitbucket.org/whisprnd/biocatch-cordova-plugin',
-  platforms: ['iOS'],
+  repo: 'https://bitbucket.org/carlos_orellana/ionic-plugin',
+  platforms: ['iOS', 'Android'],
 })
 @Injectable()
 export class BioCatch extends IonicNativePlugin {
