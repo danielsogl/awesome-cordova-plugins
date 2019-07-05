@@ -16,7 +16,7 @@
  * // Login
  * let loginParameters = new LoginParameters()
  * loginParameters.appName = 'UNVIRED_DIGITAL_FORMS'
- * loginParameters.metadataPath = '../assets/metadata.json'  
+ * loginParameters.metadataPath = '../assets/metadata.json'
  * loginParameters.loginType = LoginType.unvired
  * let loginResult: LoginResult = await this.unviredCordovaSDK.login(loginParameters)
  *
@@ -80,40 +80,40 @@ export enum LoginListenerType {
 export enum LoginType {
   /**
    * This value represents authentication using Unvired ID.
-   * Example: 
+   * Example:
    * If you plan to authenticate using Unvired ID, you need to send the following parameters:
    * ```
    * loginParameters.username = 'USER_NAME'
-     loginParameters.password = 'password'
-     loginParameters.company = 'unvired'
-     loginParameters.loginType = LoginType.unvired
+   * loginParameters.password = 'password'
+   * loginParameters.company = 'unvired'
+   * loginParameters.loginType = LoginType.unvired
    * ```
    */
   unvired = 'UNVIRED_ID',
   /**
    * This value represents authentication using Active Directory Service (ADS).
-   * Example: 
+   * Example:
    * If you plan to authenticate using Unvired ID, you need to send the following parameters:
    * ```
-     loginParameters.username = 'USER_NAME'
-     loginParameters.password = 'password'
-     loginParameters.company = 'unvired'
-     loginParameters.domain = 'ADS_DOMAIN'
-     loginParameters.loginType = LoginType.ads
+   * loginParameters.username = 'USER_NAME'
+   * loginParameters.password = 'password'
+   * loginParameters.company = 'unvired'
+   * loginParameters.domain = 'ADS_DOMAIN'
+   * loginParameters.loginType = LoginType.ads
    * ```
    */
   ads = 'ADS',
   /**
    * This value represents authentication using SAP ID.
-   * Example: 
+   * Example:
    * If you plan to authenticate using Unvired ID, you need to send the following parameters:
    * ```
    * loginParameters.username = 'USER_NAME'
-     loginParameters.password = 'password'
-     loginParameters.company = 'unvired'
-     loginParameters.port = 'SAP_PORT_NAME'
-     loginParameters.domain = 'SAP_DOMAIN'
-     loginParameters.loginType = LoginType.sap
+   * loginParameters.password = 'password'
+   * loginParameters.company = 'unvired'
+   * loginParameters.port = 'SAP_PORT_NAME'
+   * loginParameters.domain = 'SAP_DOMAIN'
+   * loginParameters.loginType = LoginType.sap
    * ```
    */
   sap = 'SAP',
@@ -320,7 +320,7 @@ export class LoginParameters {
   port: string;
 
   /**
-   * Required for Browser Platform. 
+   * Required for Browser Platform.
    * For iOS Platform include the metadata.xml file as part of App Bundle
    * For Android Platform include the metadata.xml file in src > res > raw
    */
@@ -369,13 +369,15 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * Write debug logs.
-   * @param sourceClass 
-   * @param method 
-   * @param message 
+   * @param sourceClass Name of the class
+   * @param method Name of the method
+   * @param message The actual message
    * Example:
-   * this.unviredSDK.logDebug("Class Name", "Method Name", "Log Message") 
+   * ```
+   * this.unviredSDK.logDebug("Class Name", "Method Name", "Log Message")
+   * ```
    * would produce the log message like this
-   * 01-07-2019 15:52 | DEBUG | Class Name | Method Name | Log Message 
+   * 01-07-2019 15:52 | DEBUG | Class Name | Method Name | Log Message
    */
   @Cordova()
   logDebug(sourceClass: string, method: string, message: string): Promise<any> {
@@ -384,13 +386,13 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * Write error logs.
-   * @param sourceClass 
-   * @param method 
-   * @param message 
+   * @param sourceClass Name of the class
+   * @param method Name of the method
+   * @param message The actual message
    * Example:
-   * this.unviredSDK.logError("Class Name", "Method Name", "Log Message") 
+   * this.unviredSDK.logError("Class Name", "Method Name", "Log Message")
    * would produce the log message like this
-   * 01-07-2019 15:52 | ERROR | Class Name | Method Name | Log Message 
+   * 01-07-2019 15:52 | ERROR | Class Name | Method Name | Log Message
    */
   @Cordova()
   logError(sourceClass: string, method: string, message: string): Promise<any> {
@@ -399,13 +401,13 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * Write Info logs.
-   * @param sourceClass 
-   * @param method 
-   * @param message 
+   * @param sourceClass Name of the class
+   * @param method Name of the method
+   * @param message The actual message
    * Example:
-   * this.unviredSDK.logInfo("Class Name", "Method Name", "Log Message") 
+   * this.unviredSDK.logInfo("Class Name", "Method Name", "Log Message")
    * would produce the log message like this
-   * 01-07-2019 15:52 | IMPORTANT | Class Name | Method Name | Log Message 
+   * 01-07-2019 15:52 | IMPORTANT | Class Name | Method Name | Log Message
    */
   @Cordova()
   logInfo(sourceClass: string, method: string, message: string): Promise<any> {
@@ -445,16 +447,16 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-  * This api initializes the Unvired Application.
-  * @param loginParameters Set of parameters to be passed the login()
-  * For Example: 
-  * ```
-  * let loginParameters = new LoginParameters()
-  * loginParameters.appName = 'UNVIRED_DIGITAL_FORMS'
-  * loginParameters.metadataPath = '../assets/metadata.json'
-  * loginParameters.loginType = LoginType.unvired
-  * ```
-  */
+   * This api initializes the Unvired Application.
+   * @param loginParameters Set of parameters to be passed the login()
+   * For Example:
+   * ```
+   * let loginParameters = new LoginParameters()
+   * loginParameters.appName = 'UNVIRED_DIGITAL_FORMS'
+   * loginParameters.metadataPath = '../assets/metadata.json'
+   * loginParameters.loginType = LoginType.unvired
+   * ```
+   */
   @Cordova()
   login(loginParameters: LoginParameters): Promise<LoginResult> {
     return;
@@ -470,7 +472,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * Authenticates ( With the Unvired Server ) & activates ( Receives Framework Settings ) the app against UMP
-   *  Example: 
+   *  Example:
    *  ```
    *  let loginParameters = new LoginParameters()
    *  loginParameters.username = 'MY_USERNAME'
@@ -488,7 +490,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Authenticates the user against the previously saved username & password.
    * For ADS Login, authentication is performed with the ADS Server.
    * @param loginParameters Send username & Password through LoginParameters
-   * Example: 
+   * Example:
    *  ```
    *  let loginParameters = new LoginParameters()
    *  loginParameters.username = 'MY_USERNAME'
@@ -501,8 +503,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Returns all the accounts configured on the device.
-   * TODO
+   * Get all the accounts configured on the device.
    */
   @Cordova()
   getAllAccounts(): Promise<any> {
@@ -510,7 +511,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Switch account
+   * @param account The account to switch to
    */
   @Cordova()
   switchAccount(account: any): Promise<any> {
@@ -518,7 +520,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Delete account
+   * @param account The account to delete
    */
   @Cordova()
   deleteAccount(account: any): Promise<any> {
@@ -526,7 +529,9 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Get all InfoMessages linked to the header.
+   * @param headerName Name of the header. Example: CUSTOMER_HEADER
+   * @param lid LID of the header.
    */
   @Cordova()
   getInfoMessages(headerName: string, lid: string): Promise<any> {
@@ -534,7 +539,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Supported for iOS, Android & Windows Platforms.
+   * Display framework settings.
    */
   @Cordova()
   showSettings(): Promise<any> {
@@ -542,7 +548,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Get User settings.
    */
   @Cordova()
   userSettings(): Promise<any> {
@@ -550,7 +556,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Update System Credential
+   * @param credentials The credential to update to
    */
   @Cordova()
   updateSystemCredentials(credentials: any): Promise<any> {
@@ -558,7 +565,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Get all system credentials.
    */
   @Cordova()
   getSystemCredentials(): Promise<any> {
@@ -566,7 +573,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Get version number of unvired-cordova-sdk.
    */
   @Cordova()
   getVersionNumbers(): Promise<any> {
@@ -574,7 +581,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Delete all data from the device.
    */
   @Cordova()
   clearData(): Promise<any> {
@@ -582,7 +589,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Check whether the device has internet.
    */
   @Cordova()
   hasInternet(): Promise<any> {
@@ -590,7 +597,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Get a random id to use as guid.
    */
   @Cordova()
   guid() {
@@ -602,7 +609,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    */
   @Cordova()
   pullDb(): Promise<any> {
-    return
+    return;
   }
 
   /**
@@ -610,25 +617,30 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    */
   @Cordova()
   pushDb(): Promise<any> {
-    return
+    return;
   }
 
   /**
    * Select records from Database
    * @param tableName table name. Example: CUSTOMER_HEADER
-   * @param whereClause JSON object containing name-value pairs. 
+   * @param whereClause JSON object containing name-value pairs.
    * Example:
    * ```
    * {'F_NAME':'TARAK','EMP_NO':'0039'}
    * ```
-  */
+   */
   @Cordova()
-  dbSelect(tableName: string, whereClause: string): Promise<DbResult> {
+  dbSelect(tableName: string, whereClause: any): Promise<DbResult> {
     return;
   }
 
   /**
-   * TODO
+   * Insert record into database.
+   * In browser platform this function always inserts or updates based on GID.
+   * Example - this.unviredsdk.dbInsert("CUSTOMER_HEADER",{"NAME":"TARAK","NO":"0039"....},true);
+   * @param tableName Name of the table.
+   * @param structureObject - JSON object containing name-value pairs.
+   * @param isHeader - is DataStructure a header or item?
    */
   @Cordova()
   dbInsert(tableName: string, structureObject: any, isHeader: boolean): Promise<DbResult> {
@@ -636,10 +648,12 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
-   * @param tableName 
-   * @param structureObject 
-   * @param isHeader 
+   * insert or update the record ( if record exists ) into database.
+   * In browser insert always inserts or updates based on gid
+   * Example - this.unviredsdk.dbInsertOrUpdate("CUSTOMER_HEADER",{"NAME":"TARAK","NO":"0039"....},true);
+   * @param tableName Name of the table
+   * @param structureObject - JSON object containing name-value pairs.
+   * @param isHeader - is DataStructure a header or item?
    */
   @Cordova()
   dbInsertOrUpdate(tableName: string, structureObject: any, isHeader: boolean): Promise<DbResult> {
@@ -647,23 +661,31 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
-   * @param tableName 
-   * @param whereClause 
+   * Delete records from the database.
+   * @param tableName Name of the table
+   * @param whereClause JSON object containing name-value pairs.
+   * Example:
+   * ```
+   * {'F_NAME':'TARAK','EMP_NO':'0039'}
+   * ```
    */
   @Cordova()
-  dbDelete(tableName: string, whereClause: string): Promise<DbResult> {
+  dbDelete(tableName: string, whereClause: any): Promise<DbResult> {
     return;
   }
 
   /**
-   * TODO
-   * @param tableName 
-   * @param updatedObject 
-   * @param whereClause 
+   * Update records in database.
+   * @param tableName Name of the table
+   * @param updatedObject JSON object containing name-value pairs.
+   * @param whereClause JSON object containing name-value pairs.
+   * Example:
+   * ```
+   * {'F_NAME':'TARAK','EMP_NO':'0039'}
+   * ```
    */
   @Cordova()
-  dbUpdate(tableName: string, updatedObject: any, whereClause: string): Promise<DbResult> {
+  dbUpdate(tableName: string, updatedObject: any, whereClause: any): Promise<DbResult> {
     return;
   }
 
@@ -678,8 +700,9 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
-   * @param savePoint 
+   * Supported in iOS, Android & Windows only.
+   * Create Savepoint
+   * @param savePoint Name of savepoint
    */
   @Cordova()
   dbCreateSavePoint(savePoint: string): Promise<DbResult> {
@@ -687,8 +710,9 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
-   * @param savePoint 
+   * Supported in iOS, Android & Windows only.
+   * Release Savepoint
+   * @param savePoint Name of savepoint
    */
   @Cordova()
   dbReleaseSavePoint(savePoint: string): Promise<DbResult> {
@@ -696,8 +720,9 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
-   * @param savePoint 
+   * Supported in iOS, Android & Windows only.
+   * Rollback Savepoint
+   * @param savePoint Name of the savepoint
    */
   @Cordova()
   dbRollbackToSavePoint(savePoint: string): Promise<DbResult> {
@@ -705,7 +730,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Begin database transaction.
    */
   @Cordova()
   dbBeginTransaction(): Promise<any> {
@@ -713,7 +738,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * End database transaction.
    */
   @Cordova()
   dbEndTransaction(): Promise<any> {
@@ -721,7 +746,9 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Supported in Android & Windows only.
+   * Launch a file from a file path
+   * @param filePath file path
    */
   @Cordova()
   launchFile(filePath: string): Promise<any> {
@@ -729,7 +756,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Supported in Android & Windows only.
+   * Write Base64 string to a file and launch.
    */
   @Cordova()
   launchBase64(base64string: string, fileName: string, extension: string): Promise<any> {
@@ -737,7 +765,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Supported in Windows Only
+   * Unzip file.
    */
   @Cordova()
   unzip(srcPath: string, destPath: string) {
@@ -745,7 +774,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Get the path for the folder where attachments are stored.
+   * Apps can combine this with the attachment filename to construct absolute path to an attachment file.
    */
   @Cordova()
   getAttachmentFolderPath(): Promise<any> {
@@ -753,7 +783,13 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Copy attachment file to application folder and insert attachment item to database with updated local path.
+   * @param tableName Table name of attachment item.
+   * @param structureObject JSON object containing name-value pairs.
+   * Example:
+   * ```
+   * {'F_NAME':'TARAK','EMP_NO':'0039'}
+   * ```
    */
   @Cordova()
   createAttachmentItem(tableName: string, structureObject: any): Promise<any> {
@@ -761,7 +797,10 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Upload attachment item to server.
+   * @param tableName Table name of attachment item.
+   * @param structureObject JSON object containing name-value pairs.
+   * @param isAsync Flag which indicates whether the upload should happen in async.
    */
   @Cordova()
   uploadAttachment(tableName: string, structureObject: any, isAsync: boolean): Promise<any> {
@@ -769,7 +808,9 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO
+   * Download attachment from server.
+   * @param tableName Table name of attachment item.
+   * @param structureObject JSON object containing name-value pairs.
    */
   @Cordova()
   downloadAttachment(tableName: string, structureObject: any): Promise<any> {
@@ -780,7 +821,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Sends data to UMP in SYNC mode. This means user has to wait until the duration of SYNC call. Only one SYNC call can be active at any point of time. Once the call completes, the result data would be available in the Promise.
    * Apps typically block UI during a SYNC call so that there are user-actions when the SYNC call is active.
    * @param reqype RequestType for the message. Please check RequestType to select the right request type.
-   * @param header Header datastructure to be sent to UMP. Header datastructure is mandatory of the request type is RQST. 
+   * @param header Header datastructure to be sent to UMP. Header datastructure is mandatory of the request type is RQST.
    * For PA functions which do not accept any input, set an empty string for this parameter.
    * Example: If Header datastructure needs to be sent, make sure the header datastructure is in the following format:
    * ```
@@ -789,11 +830,11 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param customData This depends on the PA function. This is useful if you want to send custom data to a PA function.
    * Example: You can also use this parameter to send header datastrucrture provided the data structure is formatted like this.
    * ```
-    {
-      "CATEGORY_BE": [{
-        "CATEGORY_HEADER": {field_name : field_value,...}
-      }]
-    }
+   * {
+   *   "CATEGORY_BE": [{
+   *     "CATEGORY_HEADER": {field_name : field_value,...}
+   *   }]
+   * }
    * ```
    * @param paFunction Name of the Process Agent function to be executed. Example: PA_MOBILE_EXECUTE_SALES_ORDER.
    * @param autoSave This defines whether to save the response to database.
@@ -807,7 +848,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Sends data to UMP in ASYNC mode. This means user can make this call and continue with other program execution.
    * The result of the call would be notified through the observable returned for the function registerNotifListener().
    * @param reqype RequestType for the message. Please check RequestType to select the right request type.
-   * @param header Header datastructure to be sent to UMP. Header datastructure is mandatory of the request type is RQST. 
+   * @param header Header datastructure to be sent to UMP. Header datastructure is mandatory of the request type is RQST.
    * For PA functions which do not accept any input, set an empty string for this parameter.
    * Example: If Header datastructure needs to be sent, make sure the header datastructure is in the following format:
    * ```
@@ -815,17 +856,17 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * ```
    * @param customData This depends on the PA function. This is useful if you want to send custom data to a PA function.
    * Example: You can also use this parameter to send header datastrucrture provided the data structure is formatted like this.
-    ```
-    {
-      "CATEGORY_BE": [{
-        "CATEGORY_HEADER": {field_name : field_value,...}
-      }]
-    }
+   * ```
+   * {
+   *   "CATEGORY_BE": [{
+   *     "CATEGORY_HEADER": {field_name : field_value,...}
+   *   }]
+   * }
    * ```
    * @param paFunction Name of the Process Agent function to be executed. Example: PA_MOBILE_EXECUTE_SALES_ORDER.
-   * @param beName 
-   * @param belid 
-   * @param bypassAttachment 
+   * @param beName Name of the Business Entity
+   * @param belid LID of the Header datastructure
+   * @param bypassAttachment Set this flag to false if you want to upload attachments first and then make the server call.
    */
   @Cordova()
   syncBackground(reqype: RequestType, header: any, customData: any, paFunction: string, beName: string, belid: string, bypassAttachment: boolean): Promise<SyncResult> {
@@ -835,11 +876,10 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * For Browser platform only.
    * Reinitialize web db. Use this api to initialize db from persisted local storage db
-   * TODO: 
    */
   @Cordova()
   dbReload() {
-    return
+    return;
   }
 
   /**
@@ -857,9 +897,9 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * For Browser platform only.
-  * parseRawUBJson - Parse response json returned from syncForeground api.
-  * @param json JSON string
-  */
+   * parseRawUBJson - Parse response json returned from syncForeground api.
+   * @param json JSON string
+   */
   @Cordova()
   parseRawUBJson(json: string) {
     return;
@@ -887,7 +927,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * Subscribe to this observable to listen for life-cyle events in the case of an async message.
    * Only one class can subscribe to notifications are any point of time.
-   */  
+   */
   @Cordova({
     observable: true,
     clearFunction: 'unRegisterNotifListener'
@@ -927,7 +967,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Supported in iOS, Android & Windows only
    * Checks whether a Header datastructure is in sent and is waiting for response.
    * Typically you would use before allowing the user to update the Header datastructure.
-   * @param beLid 
+   * @param beLid LID of the Business Entity
    */
   @Cordova()
   isInSentItem(beLid: string): Promise<UnviredResult> {
@@ -955,7 +995,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * Supported in iOS, Android & Windows only
    * Delete outbox entry for a Header datastructure.
-   * @param beLid 
+   * @param beLid LID of the Business Entity
    */
   @Cordova()
   deleteOutBoxEntry(beLid: string): Promise<any> {
