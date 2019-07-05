@@ -360,7 +360,7 @@ export class AuthenticateLocalResult extends UnviredResult {
   repo: 'https://github.com/unvired/cordova-plugin-unvired-sdk/', // the github repository URL for the plugin
   install: 'ionic cordova plugin add @ionic-native/unvired-cordova-sdk', // OPTIONAL install command, in case the plugin requires variables
   installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['iOS', 'Android', 'Browser'] // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['iOS', 'Android', 'Windows', 'Browser'] // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
 export class UnviredCordovaSDK extends IonicNativePlugin {
@@ -623,7 +623,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * Select records from Database
    * @param tableName table name. Example: CUSTOMER_HEADER
-   * @param whereClause JSON object containing name-value pairs.
+   * @param whereClause {Object} JSON object containing name-value pairs.
    * Example:
    * ```
    * {'F_NAME':'TARAK','EMP_NO':'0039'}
@@ -663,7 +663,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * Delete records from the database.
    * @param tableName Name of the table
-   * @param whereClause JSON object containing name-value pairs.
+   * @param whereClause {Object} JSON object containing name-value pairs.
    * Example:
    * ```
    * {'F_NAME':'TARAK','EMP_NO':'0039'}
@@ -678,7 +678,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Update records in database.
    * @param tableName Name of the table
    * @param updatedObject JSON object containing name-value pairs.
-   * @param whereClause JSON object containing name-value pairs.
+   * @param whereClause {Object} JSON object containing name-value pairs.
    * Example:
    * ```
    * {'F_NAME':'TARAK','EMP_NO':'0039'}
@@ -785,7 +785,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * Copy attachment file to application folder and insert attachment item to database with updated local path.
    * @param tableName Table name of attachment item.
-   * @param structureObject JSON object containing name-value pairs.
+   * @param structureObject {Object} JSON object containing name-value pairs.
    * Example:
    * ```
    * {'F_NAME':'TARAK','EMP_NO':'0039'}
@@ -821,13 +821,13 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Sends data to UMP in SYNC mode. This means user has to wait until the duration of SYNC call. Only one SYNC call can be active at any point of time. Once the call completes, the result data would be available in the Promise.
    * Apps typically block UI during a SYNC call so that there are user-actions when the SYNC call is active.
    * @param reqype RequestType for the message. Please check RequestType to select the right request type.
-   * @param header Header datastructure to be sent to UMP. Header datastructure is mandatory of the request type is RQST.
+   * @param header {Object} Header datastructure to be sent to UMP. Header datastructure is mandatory of the request type is RQST.
    * For PA functions which do not accept any input, set an empty string for this parameter.
    * Example: If Header datastructure needs to be sent, make sure the header datastructure is in the following format:
    * ```
    * {"CUSTOMER_HEADER": {field_name : field_value,...}}
    * ```
-   * @param customData This depends on the PA function. This is useful if you want to send custom data to a PA function.
+   * @param customData {Object} This depends on the PA function. This is useful if you want to send custom data to a PA function.
    * Example: You can also use this parameter to send header datastrucrture provided the data structure is formatted like this.
    * ```
    * {
@@ -848,13 +848,13 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Sends data to UMP in ASYNC mode. This means user can make this call and continue with other program execution.
    * The result of the call would be notified through the observable returned for the function registerNotifListener().
    * @param reqype RequestType for the message. Please check RequestType to select the right request type.
-   * @param header Header datastructure to be sent to UMP. Header datastructure is mandatory of the request type is RQST.
+   * @param header {Object} Header datastructure to be sent to UMP. Header datastructure is mandatory of the request type is RQST.
    * For PA functions which do not accept any input, set an empty string for this parameter.
    * Example: If Header datastructure needs to be sent, make sure the header datastructure is in the following format:
    * ```
    * {"CUSTOMER_HEADER": {field_name : field_value,...}}
    * ```
-   * @param customData This depends on the PA function. This is useful if you want to send custom data to a PA function.
+   * @param customData {Object} This depends on the PA function. This is useful if you want to send custom data to a PA function.
    * Example: You can also use this parameter to send header datastrucrture provided the data structure is formatted like this.
    * ```
    * {
