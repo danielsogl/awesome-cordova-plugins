@@ -598,6 +598,22 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * For Debugging Only. pull database file to "temp" folder for development purpose only.
+   */
+  @Cordova()
+  pullDb(): Promise<any> {
+    return
+  }
+
+  /**
+   * For Debugging Only. ush updated database file from "temp" folder to application directory for development purpose only
+   */
+  @Cordova()
+  pushDb(): Promise<any> {
+    return
+  }
+
+  /**
    * Select records from Database
    * @param tableName table name. Example: CUSTOMER_HEADER
    * @param whereClause JSON object containing name-value pairs. 
@@ -889,6 +905,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * Supported in iOS, Android & Windows only
    * Check whether a Header datastructure is in outbox.
    * @param beLid LID of the Header datastructure.
    */
@@ -898,6 +915,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * Supported in iOS, Android & Windows only
    * Returns the count of outbox items.
    */
   @Cordova()
@@ -906,6 +924,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * Supported in iOS, Android & Windows only
    * Checks whether a Header datastructure is in sent and is waiting for response.
    * Typically you would use before allowing the user to update the Header datastructure.
    * @param beLid 
@@ -916,6 +935,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * Supported in iOS, Android & Windows only
    * Returns the count of sent items.
    */
   @Cordova()
@@ -924,6 +944,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * Supported in iOS, Android & Windows only
    * Returns the count of Inbox items.
    */
   @Cordova()
@@ -932,6 +953,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * Supported in iOS, Android & Windows only
    * Delete outbox entry for a Header datastructure.
    * @param beLid 
    */
