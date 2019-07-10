@@ -28,8 +28,8 @@ export interface BarcodeScannerOptions {
   disableSuccessBeep?: boolean;
 
   /**
-  * Disable or enable Autorotate. Supported on IOS only.
-  */
+   * Disable or enable Autorotate. Supported on IOS only.
+   */
   shouldAutorotate?: boolean;
 
   /**
