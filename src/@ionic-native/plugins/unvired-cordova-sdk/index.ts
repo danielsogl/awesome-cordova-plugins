@@ -390,7 +390,9 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param method Name of the method
    * @param message The actual message
    * Example:
+   * ```
    * this.unviredSDK.logError("Class Name", "Method Name", "Log Message")
+   * ```
    * would produce the log message like this
    * 01-07-2019 15:52 | ERROR | Class Name | Method Name | Log Message
    */
@@ -405,7 +407,9 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param method Name of the method
    * @param message The actual message
    * Example:
+   * ```
    * this.unviredSDK.logInfo("Class Name", "Method Name", "Log Message")
+   * ```
    * would produce the log message like this
    * 01-07-2019 15:52 | IMPORTANT | Class Name | Method Name | Log Message
    */
@@ -626,7 +630,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param whereClause {Object} JSON object containing name-value pairs.
    * Example:
    * ```
-   * {'F_NAME':'TARAK','EMP_NO':'0039'}
+   * # Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
+   * this.unviredSDK.dbSelect('FORM_HEADER', {"FORM_ID": "5caed815892215034dacad56"})
    * ```
    */
   @Cordova()
@@ -637,10 +642,14 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * Insert record into database.
    * In browser platform this function always inserts or updates based on GID.
-   * Example - this.unviredsdk.dbInsert("CUSTOMER_HEADER",{"NAME":"TARAK","NO":"0039"....},true);
    * @param tableName Name of the table.
    * @param structureObject - JSON object containing name-value pairs.
-   * @param isHeader - is DataStructure a header or item?
+   * @param isHeader {boolean} - is DataStructure a header or item?
+   * Example:
+   * ```
+   * # Insert CUSTOMER_HEADER Datastructure into DB.
+   * this.unviredsdk.dbInsert("CUSTOMER_HEADER", {"NAME":"TARAK","NO":"0039"}, true);
+   * ```
    */
   @Cordova()
   dbInsert(tableName: string, structureObject: any, isHeader: boolean): Promise<DbResult> {
@@ -650,10 +659,14 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * insert or update the record ( if record exists ) into database.
    * In browser insert always inserts or updates based on gid
-   * Example - this.unviredsdk.dbInsertOrUpdate("CUSTOMER_HEADER",{"NAME":"TARAK","NO":"0039"....},true);
    * @param tableName Name of the table
    * @param structureObject - JSON object containing name-value pairs.
-   * @param isHeader - is DataStructure a header or item?
+   * @param isHeader {boolean}  - is DataStructure a header or item?
+   * Example:
+   * ```
+   * # Insert or update a CUSTOMER_HEADER with NAME as TARAK and NO as '0039'
+   * this.unviredsdk.dbInsertOrUpdate("CUSTOMER_HEADER",{"NAME":"TARAK","NO":"0039"},true);
+   * ```
    */
   @Cordova()
   dbInsertOrUpdate(tableName: string, structureObject: any, isHeader: boolean): Promise<DbResult> {
@@ -666,7 +679,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param whereClause {Object} JSON object containing name-value pairs.
    * Example:
    * ```
-   * {'F_NAME':'TARAK','EMP_NO':'0039'}
+   * # Delete CUSTOMER_HEADER where F_NAME equals TARAK
+   * this.unviredSDK.dbDelete('CUSTOMER_HEADER', {'F_NAME':'TARAK'})
    * ```
    */
   @Cordova()
@@ -681,7 +695,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param whereClause {Object} JSON object containing name-value pairs.
    * Example:
    * ```
-   * {'F_NAME':'TARAK','EMP_NO':'0039'}
+   * # Update TEAM_NAME of TEAMS_HEADER for team matching TEAM_ID = 8B75B4DB7F134DE08CF446889433B9CC
+   * this.unviredSDK.dbUpdate('TEAMS_HEADER', {'TEAM_NAME': 'SUPPORT'}, {'TEAM_ID': '8B75B4DB7F134DE08CF446889433B9CC' })
    * ```
    */
   @Cordova()
@@ -692,7 +707,11 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * Supported in iOS, Android & Windows only.
    * Execute SQL Statement
-   * @param query SQL Statement. Example: SELECT * FROM CUSTOMER_HEADER WHERE CUSTOMER_ID = 39
+   * @param query {string} SQL Statement.
+   * Example:
+   * ```
+   * this.unviredSDK.dbExecuteStatement('SELECT * FROM CUSTOMER_HEADER WHERE CUSTOMER_ID = 39')
+   * ```
    */
   @Cordova()
   dbExecuteStatement(query: string): Promise<DbResult> {
@@ -701,8 +720,12 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * Supported in iOS, Android & Windows only.
-   * Create Savepoint
-   * @param savePoint Name of savepoint
+   * Create Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
+   * @param savePoint {string} Name of savepoint
+   * Example:
+   * ```
+   * this.unviredSDK.dbCreateSavePoint('MySavePointName')
+   * ```
    */
   @Cordova()
   dbCreateSavePoint(savePoint: string): Promise<DbResult> {
@@ -711,8 +734,11 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * Supported in iOS, Android & Windows only.
-   * Release Savepoint
-   * @param savePoint Name of savepoint
+   * Release Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
+   * @param savePoint {string} Name of savepoint
+   * ```
+   * this.unviredSDK.dbReleaseSavePoint('MySavePointName')
+   * ```
    */
   @Cordova()
   dbReleaseSavePoint(savePoint: string): Promise<DbResult> {
@@ -721,8 +747,12 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * Supported in iOS, Android & Windows only.
-   * Rollback Savepoint
-   * @param savePoint Name of the savepoint
+   * Rollback Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
+   * @param savePoint {string} Name of the savepoint
+   * Example:
+   * ```
+   * this.unviredSDK.dbRollbackToSavePoint('MySavePointName')
+   * ```
    */
   @Cordova()
   dbRollbackToSavePoint(savePoint: string): Promise<DbResult> {
@@ -730,7 +760,13 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * Supported in iOS, Android & Windows only.
    * Begin database transaction.
+   * For more info, consult SQLite documentation ( https://www.sqlite.org/lang_transaction.html )
+   * Example:
+   * ```
+   * this.unviredSDK.dbBeginTransaction()
+   * ```
    */
   @Cordova()
   dbBeginTransaction(): Promise<any> {
@@ -738,7 +774,13 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * Supported in iOS, Android & Windows only.
    * End database transaction.
+   * For more info, consult SQLite documentation ( https://www.sqlite.org/lang_transaction.html )
+   * Example:
+   * ```
+   * this.unviredSDK.dbEndTransaction()
+   * ```
    */
   @Cordova()
   dbEndTransaction(): Promise<any> {
