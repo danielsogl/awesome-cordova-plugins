@@ -16,7 +16,7 @@ const flagConfig = {
   flags = minimist(process.argv.slice(2), flagConfig);
 
 /* Docs tasks */
-require('./scripts/docs/gulp-tasks')(gulp, flags);
+require('./scripts/docs/gulp-tasks').default(gulp, flags);
 
 gulp.task('lint', () => {
   return gulp
