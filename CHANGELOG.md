@@ -1,3 +1,20 @@
+# [5.10.0](https://github.com/ionic-team/ionic-native/compare/v5.9.0...v5.10.0) (2019-07-12)
+
+
+### Bug Fixes
+
+* **barcode-scanner:** add missing shouldAutorotate property ([#3096](https://github.com/ionic-team/ionic-native/issues/3096)) ([8ce541f](https://github.com/ionic-team/ionic-native/commit/8ce541f))
+* **biocatch:** added android platform and updated repo ([#3086](https://github.com/ionic-team/ionic-native/issues/3086)) ([717f686](https://github.com/ionic-team/ionic-native/commit/717f686))
+* **line-login:** add missing email prop ([#3098](https://github.com/ionic-team/ionic-native/issues/3098)) ([7aa0810](https://github.com/ionic-team/ionic-native/commit/7aa0810))
+
+
+### Features
+
+* **anyline:** add plugin ([#3101](https://github.com/ionic-team/ionic-native/issues/3101)) ([8badd29](https://github.com/ionic-team/ionic-native/commit/8badd29)), closes [#3074](https://github.com/ionic-team/ionic-native/issues/3074)
+* **theme-detection:** add plugin ([#3082](https://github.com/ionic-team/ionic-native/issues/3082)) ([e9fa3ee](https://github.com/ionic-team/ionic-native/commit/e9fa3ee))
+
+
+
 # [5.9.0](https://github.com/ionic-team/ionic-native/compare/v5.8.0...v5.9.0) (2019-07-01)
 
 
