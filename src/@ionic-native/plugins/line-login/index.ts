@@ -23,6 +23,11 @@ export interface LineLoginProfile {
    * Line Profile Name
    */
   displayName: string;
+
+  /**
+   * Email
+   */
+  email?: string;
 }
 
 export interface LineLoginAccessToken {
