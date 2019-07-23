@@ -980,18 +980,9 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Only one class can subscribe to notifications are any point of time.
    */
   @Cordova({
-    observable: true,
-    clearFunction: 'unRegisterNotifListener'
+    observable: true
   })
   registerNotifListener(): Observable<NotifResult> {
-    return;
-  }
-
-  /**
-   * Unregister the notification listener previously registered.
-   */
-  @Cordova()
-  unRegisterNotifListener(): Promise<any> {
     return;
   }
 
