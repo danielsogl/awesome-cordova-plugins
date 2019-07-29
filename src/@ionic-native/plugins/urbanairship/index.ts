@@ -58,8 +58,7 @@ export enum PresentationOptions {
   pluginRef: 'window.UAirship',
   repo: 'https://www.npmjs.com/package/urbanairship-cordova',
   install: 'ionic cordova plugin add urbanairship-cordova',
-  installVariables: [],
-  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class UrbanAirShip extends IonicNativePlugin {
