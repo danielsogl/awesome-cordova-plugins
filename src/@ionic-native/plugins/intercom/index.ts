@@ -63,6 +63,15 @@ export class Intercom extends IonicNativePlugin {
 
   /**
    *
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  logout(): Promise<any> {
+    return;
+  }
+
+  /**
+   *
    * @param secureHash {string}
    * @param secureData {any}
    * @return {Promise<any>} Returns a promise
@@ -146,6 +155,15 @@ export class Intercom extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
+  displayHelpCenter(): Promise<any> {
+    return;
+  }
+
+  /**
+   *
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
   unreadConversationCount(): Promise<any> {
     return;
   }
@@ -187,5 +205,16 @@ export class Intercom extends IonicNativePlugin {
   registerForPush(): Promise<any> {
     return;
   }
+
+  /**
+   *
+   * @param token {string}
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  sendPushTokenToIntercom(token: string): Promise<any> {
+    return;
+  }
+
 
 }
