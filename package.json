@@ -10,7 +10,7 @@
     "@angular/compiler-cli": "4.1.3",
     "@angular/core": "4.1.3",
     "@types/cordova": "0.0.34",
-    "@types/jasmine": "^2.5.51",
+    "@types/jasmine": "^2.8.6",
     "@types/node": "^7.0.27",
     "canonical-path": "0.0.2",
     "child-process-promise": "2.2.1",
@@ -35,6 +35,7 @@
     "karma-typescript-es6-transform": "^1.0.0",
     "lodash": "4.17.4",
     "minimist": "1.2.0",
+    "natives": "^1.1.6",
     "node-html-encoder": "0.0.2",
     "q": "1.5.0",
     "queue": "4.2.1",
@@ -43,7 +44,7 @@
     "semver": "5.3.0",
     "tslint": "3.15.1",
     "tslint-ionic-rules": "0.0.8",
-    "typescript": "2.3.3",
+    "typescript": "^2.9.2",
     "zone.js": "0.8.12"
   },
   "scripts": {
