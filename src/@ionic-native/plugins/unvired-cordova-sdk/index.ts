@@ -608,8 +608,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * Get a random id to use as guid.
    */
-  @Cordova()
-  guid() {
+  @Cordova({ sync: true })
+  guid(): string {
     return;
   }
 
