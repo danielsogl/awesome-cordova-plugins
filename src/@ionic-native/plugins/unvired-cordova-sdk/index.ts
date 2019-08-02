@@ -560,7 +560,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Get User settings.
    */
   @Cordova()
-  userSettings(): Promise<any> {
+  userSettings(): Promise<SettingsResult> {
     return;
   }
 
