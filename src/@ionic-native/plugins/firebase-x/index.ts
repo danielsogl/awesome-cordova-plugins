@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface IChannelOptions {
@@ -101,7 +101,7 @@ export interface IChannelOptions {
   plugin: 'cordova-plugin-firebasex',
   pluginRef: 'FirebasePlugin',
   repo: 'https://github.com/dpa99c/cordova-plugin-firebasex',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseX extends IonicNativePlugin {
@@ -119,7 +119,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   onTokenRefresh(): Observable<any> {
     return;
@@ -132,7 +132,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   onMessageReceived(): Observable<any> {
     return;
@@ -143,7 +143,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   grantPermission(): Promise<any> {
     return;
@@ -190,7 +190,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   clearAllNotifications(): Promise<any> {
     return;
@@ -418,10 +418,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  verifyPhoneNumber(
-    phoneNumber: string,
-    timeoutDuration = 0
-  ): Promise<any> {
+  verifyPhoneNumber(phoneNumber: string, timeoutDuration = 0): Promise<any> {
     return;
   }
 
