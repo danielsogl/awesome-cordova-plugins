@@ -1,3 +1,14 @@
+# [5.11.0](https://github.com/ionic-team/ionic-native/compare/v5.10.0...v5.11.0) (2019-07-29)
+
+
+### Features
+
+* **cordova-plugin-firebasex:** Add plugin ([#3106](https://github.com/ionic-team/ionic-native/issues/3106)) ([de83edb](https://github.com/ionic-team/ionic-native/commit/de83edb))
+* **urbanship:** add plugin ([9c9ed35](https://github.com/ionic-team/ionic-native/commit/9c9ed35))
+* **wonderpush:** add plugin ([#3107](https://github.com/ionic-team/ionic-native/issues/3107)) ([7e08680](https://github.com/ionic-team/ionic-native/commit/7e08680))
+
+
+
 # [5.10.0](https://github.com/ionic-team/ionic-native/compare/v5.9.0...v5.10.0) (2019-07-12)
 
 
@@ -30,6 +41,7 @@
 * **calendar:** add deleteEventById function ([#3075](https://github.com/ionic-team/ionic-native/issues/3075)) ([5857b96](https://github.com/ionic-team/ionic-native/commit/5857b96))
 * **diagnostic:** add DENIED_ONCE introduced by diagnostic v5 ([#3071](https://github.com/ionic-team/ionic-native/issues/3071)) ([54ac2bf](https://github.com/ionic-team/ionic-native/commit/54ac2bf))
 * **sum-up:** add plugin ([#3080](https://github.com/ionic-team/ionic-native/issues/3080)) ([a4db080](https://github.com/ionic-team/ionic-native/commit/a4db080))
+* **unvired-cordova-sdk:** add plugin ([b75f40c](https://github.com/ionic-team/ionic-native/commit/b75f40c))
 * **unvired-cordova-sdk:** add plugin ([#3061](https://github.com/ionic-team/ionic-native/issues/3061)) ([9274083](https://github.com/ionic-team/ionic-native/commit/9274083))
 
 
