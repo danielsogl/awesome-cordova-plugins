@@ -118,6 +118,11 @@ export enum LoginType {
    */
   sap = 'SAP',
   /**
+   * EMAIL
+   * Set the type to email to login based on email id.
+   */
+  email = 'EMAIL',
+  /**
    * TODO:
    */
   custom = 'CUSTOM'
