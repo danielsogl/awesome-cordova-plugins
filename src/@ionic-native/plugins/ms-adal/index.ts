@@ -3,7 +3,7 @@ import { CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin, checkAvai
 
 export interface AuthenticationResult {
   accessToken: string;
-  accesSTokenType: string;
+  accessTokenType: string;
   expiresOn: Date;
   idToken: string;
   isMultipleResourceRefreshToken: boolean;
