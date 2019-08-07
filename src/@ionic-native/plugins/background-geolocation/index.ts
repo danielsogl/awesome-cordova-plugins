@@ -499,7 +499,7 @@ export declare enum BackgroundGeolocationIOSActivity {
  * BackgroundGeolocation must be called within app.ts and or before Geolocation. Otherwise the platform will not ask you for background tracking permission.
  *
  * ```typescript
- * import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
+ * import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationEvents, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
  *
  * constructor(private backgroundGeolocation: BackgroundGeolocation) { }
  *
@@ -516,7 +516,7 @@ export declare enum BackgroundGeolocationIOSActivity {
  * this.backgroundGeolocation.configure(config)
  *   .then(() => {
  *
- *     this.backgroundGeolocation.on('location').subscribe((location: BackgroundGeolocationResponse) => {
+ *     this.backgroundGeolocation.on(BackgroundGeolocationEvents.location).subscribe((location: BackgroundGeolocationResponse) => {
  *       console.log(location);
  *
  *       // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
