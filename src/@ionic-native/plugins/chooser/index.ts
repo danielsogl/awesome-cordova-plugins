@@ -61,7 +61,7 @@ export class Chooser extends IonicNativePlugin {
    * base64-encoded data: URI, MIME type, display name, and original URI.
    */
   @Cordova()
-  getFile(accept: string): Promise<ChooserResult | undefined> {
+  getFile(accept?: string): Promise<ChooserResult | undefined> {
     return;
   }
 }
