@@ -118,6 +118,11 @@ export enum LoginType {
    */
   sap = 'SAP',
   /**
+   * EMAIL
+   * Set the type to email to login based on email id.
+   */
+  email = 'EMAIL',
+  /**
    * TODO:
    */
   custom = 'CUSTOM'
@@ -555,7 +560,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Get User settings.
    */
   @Cordova()
-  userSettings(): Promise<any> {
+  userSettings(): Promise<SettingsResult> {
     return;
   }
 
@@ -603,8 +608,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * Get a random id to use as guid.
    */
-  @Cordova()
-  guid() {
+  @Cordova({ sync: true })
+  guid(): string {
     return;
   }
 
@@ -683,10 +688,11 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Mobile: Or a Sqlite whereClause ( without the 'where' keyword )
    * Example:
    * ```
-   * # Mobile: Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
-   * this.unviredSDK.dbSelect('FORM_HEADER', "FORM_ID = '5caed815892215034dacad56'")
-   * # Browser & Mobile: Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
-   * this.unviredSDK.dbSelect('FORM_HEADER', {"FORM_ID": "5caed815892215034dacad56"})
+   * Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
+   * # Mobile
+   * this.unviredSDK.dbDelete('FORM_HEADER', "FORM_ID = '5caed815892215034dacad56'")
+   * # Browser & Mobile
+   * this.unviredSDK.dbDelete('FORM_HEADER', {"FORM_ID": "5caed815892215034dacad56"})
    * ```
    */
   @Cordova()
@@ -697,15 +703,16 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * Update records in database.
    * @param tableName Name of the table
-   * @param updatedObject JSON object containing name-value pairs.
+   * @param updatedObject JSON object containing updateds name-value pairs.
    * @param whereClause {Object} Browser: JSON object containing name-value pairs.
    * Mobile: Or a Sqlite where Clause ( without the 'where' keyword )
    * Example:
    * ```
-   * # Mobile: Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
-   * this.unviredSDK.dbSelect('FORM_HEADER', "FORM_ID = '5caed815892215034dacad56'")
-   * # Mobile & Browser: Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
-   * this.unviredSDK.dbSelect('FORM_HEADER', {"FORM_ID": "5caed815892215034dacad56"})
+   * Update NAME & NO from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
+   * # Mobile
+   * this.unviredSDK.dbUpdate('FORM_HEADER', {"NAME":"TARAK","NO":"0039"}, "FORM_ID = '5caed815892215034dacad56'")
+   * # Mobile & Browser
+   * this.unviredSDK.dbUpdate('FORM_HEADER', {"NAME":"TARAK","NO":"0039"}, {"FORM_ID": "5caed815892215034dacad56"})
    * ```
    */
   @Cordova()
@@ -876,14 +883,14 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * For PA functions which do not accept any input, set an empty string for this parameter.
    * Example: If Header datastructure needs to be sent, make sure the header datastructure is in the following format:
    * ```
-   * {"CUSTOMER_HEADER": {field_name : field_value,...}}
+   * {"CUSTOMER_HEADER": {"field1" : "value1", "field2" : "value2"}}
    * ```
    * @param customData {Object} This depends on the PA function. This is useful if you want to send custom data to a PA function.
    * Example: You can also use this parameter to send header datastrucrture provided the data structure is formatted like this.
    * ```
    * {
    *   "CATEGORY_BE": [{
-   *     "CATEGORY_HEADER": {field_name : field_value,...}
+   *     "CATEGORY_HEADER": {"field1" : "value1", "field2" : "value2"}
    *   }]
    * }
    * ```
@@ -903,14 +910,14 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * For PA functions which do not accept any input, set an empty string for this parameter.
    * Example: If Header datastructure needs to be sent, make sure the header datastructure is in the following format:
    * ```
-   * {"CUSTOMER_HEADER": {field_name : field_value,...}}
+   * {"CUSTOMER_HEADER": {"field1" : "value1", "field2" : "value2"}}
    * ```
    * @param customData {Object} This depends on the PA function. This is useful if you want to send custom data to a PA function.
    * Example: You can also use this parameter to send header datastrucrture provided the data structure is formatted like this.
    * ```
    * {
    *   "CATEGORY_BE": [{
-   *     "CATEGORY_HEADER": {field_name : field_value,...}
+   *     "CATEGORY_HEADER": {"field1" : "value1", "field2" : "value2"}
    *   }]
    * }
    * ```
