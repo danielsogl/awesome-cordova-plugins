@@ -1,3 +1,22 @@
+# [5.12.0](https://github.com/ionic-team/ionic-native/compare/v5.11.0...v5.12.0) (2019-08-09)
+
+
+### Bug Fixes
+
+* **background-geolocation:** enum not string ([#3131](https://github.com/ionic-team/ionic-native/issues/3131)) ([5cc91bc](https://github.com/ionic-team/ionic-native/commit/5cc91bc)), closes [/stackoverflow.com/questions/57293829/argument-of-type-location-is-not-assignable-to-parameter-of-type-backgroundge/57302110#57302110](https://github.com//stackoverflow.com/questions/57293829/argument-of-type-location-is-not-assignable-to-parameter-of-type-backgroundge/57302110/issues/57302110)
+* **chooser:** [@param](https://github.com/param) accept is supposed to be optional ([#3134](https://github.com/ionic-team/ionic-native/issues/3134)) ([f3b8e34](https://github.com/ionic-team/ionic-native/commit/f3b8e34))
+* **intercom:** added logout, displayHelpCenter, sendPushTokenToIntercom ([3bb6b59](https://github.com/ionic-team/ionic-native/commit/3bb6b59))
+* **ms-adal:** use correct accessTokenType prop ([#3128](https://github.com/ionic-team/ionic-native/issues/3128)) ([016023a](https://github.com/ionic-team/ionic-native/commit/016023a))
+
+
+### Features
+
+* **file-chooser:** add missing options param ([#3136](https://github.com/ionic-team/ionic-native/issues/3136)) ([fd81a5e](https://github.com/ionic-team/ionic-native/commit/fd81a5e))
+* **http:** add sendRequest responseType option ([#3120](https://github.com/ionic-team/ionic-native/issues/3120)) ([7696706](https://github.com/ionic-team/ionic-native/commit/7696706))
+* **smartlook:** add plugin ([#3117](https://github.com/ionic-team/ionic-native/issues/3117)) ([8bcbc95](https://github.com/ionic-team/ionic-native/commit/8bcbc95))
+
+
+
 # [5.11.0](https://github.com/ionic-team/ionic-native/compare/v5.10.0...v5.11.0) (2019-07-29)
 
 
