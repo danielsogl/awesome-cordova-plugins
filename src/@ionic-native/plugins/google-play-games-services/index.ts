@@ -90,6 +90,40 @@ export interface Player {
 
 }
 
+export interface SubmittedScoreData {
+
+  /**
+   * The leaderboard ID from Goole Play Developer console.
+   */
+  leaderboardId: string;
+
+  /**
+   * The player ID from Goole Play Developer console.
+   */
+  playerId: string;
+
+  /**
+   * The score data in a display-appropriate format.
+   */
+  formattedScore: string;
+
+  /**
+   * Whether or not this score was the player's new best score.
+   */
+  newBest: boolean;
+
+  /**
+   * The raw score value of this score result.
+   */
+  rawScore: number;
+
+  /**
+   * The score tag associated with this result, if any.
+   */
+  scoreTag: string;
+
+}
+
 /**
  * @name Google Play Games Services
  * @description
@@ -133,11 +167,19 @@ export interface Player {
  *     leaderboardId: 'SomeLeaderboardId'
  * });
  *
+ * // Submit a score and wait for reponse.
+ * this.googlePlayGamesServices.submitScoreNow({
+ *     score: 100,
+ *     leaderboardId: 'SomeLeaderboardId'
+ * }).then((data: SubmittedScoreData) => {
+ *    console.log('Score related data', data);
+ * });
+ *
  * // Get the player score on a leaderboard.
  * this.googlePlayGamesServices.getPlayerScore({
  *     leaderboardId: 'SomeLeaderBoardId'
  * }).then((data: PlayerScoreData) => {
- *    console.log('Player score', data);
+ *     console.log('Player score', data);
  * });
  *
  * // Show the native leaderboards window.
@@ -152,10 +194,21 @@ export interface Player {
  * // Unlock an achievement.
  * this.googlePlayGamesServices.unlockAchievement({
  *     achievementId: 'SomeAchievementId'
+ * }).then(() => console.log('Achievement sent'));
+ *
+ * // Unlock an achievement and wait for response.
+ * this.googlePlayGamesServices.unlockAchievementNow({
+ *     achievementId: 'SomeAchievementId'
  * }).then(() => console.log('Achievement unlocked'));
  *
  * // Incremement an achievement.
  * this.googlePlayGamesServices.incrementAchievement({
+ *     step: 1,
+ *     achievementId: 'SomeAchievementId'
+ * }).then(() => console.log('Achievement increment sent'));
+ *
+ * // Incremement an achievement and wait for response.
+ * this.googlePlayGamesServices.incrementAchievementNow({
  *     step: 1,
  *     achievementId: 'SomeAchievementId'
  * }).then(() => console.log('Achievement incremented'));
@@ -235,6 +288,20 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
   }
 
   /**
+   * Submit a score to a leaderboard and waits for the response from
+   * Google Play Games. You should ensure that you have a
+   * successful return from auth() before submitting a score.
+   *
+   * @param data {ScoreData} The score data you want to submit.
+   * @return {Promise<SubmittedScoreData>} Returns a promise that resolves when Play
+   * Games Services returns the score information.
+   */
+  @Cordova()
+  submitScoreNow(data: ScoreData): Promise<SubmittedScoreData> {
+    return;
+  }
+
+  /**
    * Get the player score on a leaderboard. You should ensure that you have a
    * successful return from auth() before requesting a score.
    *
@@ -277,10 +344,22 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    *
    * @param data {AchievementData}
    * @return {Promise<any>} Returns a promise that resolves when the
-   * achievement is unlocked.
+   * achievement is sent.
    */
   @Cordova()
   unlockAchievement(data: AchievementData): Promise<string> {
+    return;
+  }
+
+  /**
+   * Unlock an achievement and wait for response.
+   *
+   * @param data {AchievementData}
+   * @return {Promise<any>} Returns a promise that resolves when the Play
+   * Games Services returns that the achievement is unlocked.
+   */
+  @Cordova()
+  unlockAchievementNow(data: AchievementData): Promise<string> {
     return;
   }
 
@@ -289,10 +368,22 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
    *
    * @param data {IncrementableAchievementData}
    * @return {Promise<any>} Returns a promise that resolves when the
-   * achievement is incremented.
+   * achievement is sent.
    */
   @Cordova()
   incrementAchievement(data: IncrementableAchievementData): Promise<string> {
+    return;
+  }
+
+  /**
+   * Increment an achievement and wait for response.
+   *
+   * @param data {IncrementableAchievementData}
+   * @return {Promise<any>} Returns a promise that resolves when the Play
+   * Games Services returns that the achievement has been incremented.
+   */
+  @Cordova()
+  incrementAchievementNow(data: IncrementableAchievementData): Promise<string> {
     return;
   }
 
