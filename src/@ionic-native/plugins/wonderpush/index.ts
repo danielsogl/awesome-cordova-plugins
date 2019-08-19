@@ -191,7 +191,6 @@ export class UserPreferencesMethods extends NestedObject {
  * 1. set REQUIRES_USER_CONSENT=true to enable GDPR compliance.
  * 2. WonderPush doesn't start until setUserConsent(true) is called.
  * const onClick = (userConsent: boolean) => this.wonderPush.setUserConsent(userConsent);
- * ```
  *
  * // Listen to notification clicks
  * document.addEventListener('wonderpush.notificationOpen', function(event) {
@@ -200,6 +199,7 @@ export class UserPreferencesMethods extends NestedObject {
  *     console.log('Silent notification', event.notification);
  *   }
  * });
+ * ```
  *
  * @interfaces
  * WonderPushChannel

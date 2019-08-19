@@ -306,6 +306,7 @@ export class HTTP extends IonicNativePlugin {
    * @param options.headers {Object} headers object (key value pair), will be merged with global values
    * @param options.filePath {string} filePath to be used during upload and download see uploadFile and downloadFile for detailed information
    * @param options.name {string} name to be used during upload see uploadFile for detailed information
+   * @param options.responseType {string} response type, defaults to text
    *
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
    */
@@ -321,6 +322,7 @@ export class HTTP extends IonicNativePlugin {
       headers?: { [index: string]: string };
       filePath?: string;
       name?: string;
+      responseType?: 'text' | 'arraybuffer' | 'blob';
     }
   ): Promise<HTTPResponse> {
     return;
