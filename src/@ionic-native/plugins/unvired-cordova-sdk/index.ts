@@ -317,6 +317,11 @@ export class LoginParameters {
    * TODO:
    */
   autoSyncTime: string;
+
+  /**
+   * Specify the metadata as a JSON string. This will override metadata.xml set at platform level.
+   */
+  metadataJSON: string;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
