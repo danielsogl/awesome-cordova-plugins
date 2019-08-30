@@ -204,20 +204,20 @@ export class AndroidPermissions extends IonicNativePlugin {
   /**
    * Check permission
    * @param {string} permission The name of the permission
-   * @return {Promise<any>} Returns a promise
+   * @return {Promise<AndroidPermissionResponse>} Returns a promise
    */
   @Cordova()
-  checkPermission(permission: string): Promise<any> {
+  checkPermission(permission: string): Promise<AndroidPermissionResponse> {
     return;
   }
 
   /**
    * Request permission
    * @param {string} permission The name of the permission to request
-   * @return {Promise<any>}
+   * @return {Promise<AndroidPermissionResponse>}
    */
   @Cordova()
-  requestPermission(permission: string): Promise<any> {
+  requestPermission(permission: string): Promise<AndroidPermissionResponse> {
     return;
   }
 
@@ -234,10 +234,14 @@ export class AndroidPermissions extends IonicNativePlugin {
   /**
    * This function still works now, will not support in the future.
    * @param {string} permission The name of the permission
-   * @return {Promise<any>} Returns a promise
+   * @return {Promise<AndroidPermissionResponse>} Returns a promise
    */
   @Cordova()
-  hasPermission(permission: string): Promise<any> {
+  hasPermission(permission: string): Promise<AndroidPermissionResponse> {
     return;
   }
+}
+
+export interface AndroidPermissionResponse {
+  hasPermission: boolean;
 }
