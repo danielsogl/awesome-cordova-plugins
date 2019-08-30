@@ -44,7 +44,7 @@ export enum LoginListenerType {
    */
   login_success = 4,
   /**
-   * TODO
+   * If there are multiple accounts active & no account is specified in the login(), then this value is returned indicating that a current account needs to be specified for the login().
    */
   app_requires_current_account = 6
 }
@@ -53,7 +53,6 @@ export enum LoginType {
   /**
    * This value represents authentication using Unvired ID.
    * Example:
-   * If you plan to authenticate using Unvired ID, you need to send the following parameters:
    * ```
    * loginParameters.username = 'USER_NAME'
    * loginParameters.password = 'password'
@@ -65,7 +64,6 @@ export enum LoginType {
   /**
    * This value represents authentication using Active Directory Service (ADS).
    * Example:
-   * If you plan to authenticate using Unvired ID, you need to send the following parameters:
    * ```
    * loginParameters.username = 'USER_NAME'
    * loginParameters.password = 'password'
@@ -78,7 +76,6 @@ export enum LoginType {
   /**
    * This value represents authentication using SAP ID.
    * Example:
-   * If you plan to authenticate using Unvired ID, you need to send the following parameters:
    * ```
    * loginParameters.username = 'USER_NAME'
    * loginParameters.password = 'password'
@@ -309,12 +306,20 @@ export class LoginParameters {
   isRequiredAttachmentBase64: boolean;
 
   /**
-   * TODO:
+   * Set an interval in seconds at which the framework has to make an attempt to send data from outbox.
+   * If the data-sender fails for reason, then the framework does not restart even if there are outbox items.
+   * In those cases, you will have to set this value, so that the framework always makes an attempt to send from outbox.
+   * Example:
+   * loginParameters.autoSendTime = '5' // Make an attempt to send data every 5 seconds.
    */
   autoSendTime: string;
 
   /**
-   * TODO:
+   * Set the number of seconds at which GetMessage should automatically run. When this value is set, GetMessage would run in a interval as long as there are entries in Sent Items.
+   * You may need to set this value if your app doesn't support Push Notifications.
+   * By default, the framework does not do GetMessage automatically.
+   * Example:
+   * loginParameters.autoSyncTime = '5' // Make an attempt to receive data (GetMessage) every 5 seconds.
    */
   autoSyncTime: string;
 
@@ -322,6 +327,17 @@ export class LoginParameters {
    * Specify the metadata as a JSON string. This will override metadata.xml set at platform level.
    */
   metadataJSON: string;
+
+   /*
+    * Set this value to true to persist web application database. By default, this value is false.
+    */
+  persistWebDb: boolean;
+   /*
+   * Optional jwt token parameter. Please check with your Unvired Admin for this value.
+   * For Example:
+   * loginParameters.jwtOptions = {"app": "myapp"};
+   */
+  jwtOptions: object;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
@@ -531,7 +547,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO:
+   * Returns the contents of the log file as a string.
    */
   @Cordova()
   logRead(): Promise<any> {
@@ -539,7 +555,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO:
+   * Resets the log file.
    */
   @Cordova()
   logDelete(): Promise<any> {
@@ -547,7 +563,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO:
+   * Sends log file to server. The log file can be viewed under Settings > Device & Data in UMP Admin Cockpit.
    */
   @Cordova()
   sendLogToServer(): Promise<any> {
@@ -555,7 +571,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO:
+   * Send logs via email interface. Calling this function opens up the default email interface with the log file as an attachment.
    */
   @Cordova()
   sendLogViaEmail(): Promise<any> {
@@ -579,7 +595,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO:
+   * Logs out the last active user.
    */
   @Cordova()
   logout(): Promise<any> {
@@ -1081,7 +1097,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Places a request to download all pending messages for the logged in user in UMP.
+   * Make a GetMessage call.
+   * A GetMessage call is a network request to download all ready messages for the user.
    * To keep track of returned data, you would need to register a notification listener (registerNotifListener()) & subscribe to the observable.
    */
   @Cordova()
