@@ -23,10 +23,10 @@
     "shipit": "npm run build && npm run readmes && npm run npmpub"
   },
   "devDependencies": {
-    "@angular/common": "^7.2.15",
-    "@angular/compiler": "^7.2.15",
-    "@angular/compiler-cli": "^7.2.15",
-    "@angular/core": "^7.2.15",
+    "@angular/common": "^8.2.4",
+    "@angular/compiler": "^8.2.4",
+    "@angular/compiler-cli": "^8.2.4",
+    "@angular/core": "^8.2.4",
     "@types/cordova": "0.0.34",
     "@types/fs-extra": "^8.0.0",
     "@types/jest": "^24.0.18",
@@ -49,19 +49,19 @@
     "lodash": "^4.17.15",
     "minimist": "1.2.0",
     "natives": "^1.1.6",
-    "rimraf": "^2.7.1",
+    "rimraf": "^3.0.0",
     "rxjs": "^6.5.2",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
     "tslint": "^5.19.0",
     "tslint-ionic-rules": "0.0.21",
     "typedoc": "^0.15.0",
-    "typescript": "3.2.4",
+    "typescript": "~3.5.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "unminified-webpack-plugin": "^2.0.0",
     "webpack": "^4.39.3",
     "winston": "^3.2.1",
-    "zone.js": "^0.8.29"
+    "zone.js": "^0.9.1"
   },
   "jest": {
     "transform": {
