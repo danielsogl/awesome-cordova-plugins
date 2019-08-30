@@ -1,38 +1,10 @@
-/**
- * @name Unvired Cordova S D K
- * @description
- * This plugin can be used to connect to UMP ( Unvired Mobile Platform ). This plugin has a dependency on the following Cocoapod. In your iOS project, first install the dependent pod and then install the plugin.
- * ```
- * pod 'UnviredCordovaSDK'
- * ```
- * @usage
- * ```typescript
- * import { UnviredCordovaSDK } from '@ionic-native/unvired-cordova-sdk/ngx';
- *
- *
- * constructor(private unviredCordovaSDK: UnviredCordovaSDK) { }
- *
- * ...
- * // Login
- * let loginParameters = new LoginParameters()
- * loginParameters.appName = 'UNVIRED_DIGITAL_FORMS'
- * loginParameters.metadataPath = '../assets/metadata.json'
- * loginParameters.loginType = LoginType.unvired
- * let loginResult: LoginResult = await this.unviredCordovaSDK.login(loginParameters)
- *
- * // Make a Sync call.
- * let result = await this.unviredCordovaSDK.syncForeground(RequestType.QUERY, null, inputObj, 'UNVIRED_DIGITAL_FORMS_PA_MOBILE_GET_USERS', true)
- * // Make Async call.
- * let result = await this.unviredCordovaSDK.syncBackground(RequestType.QUERY, null, inputObj, 'UNVIRED_DIGITAL_FORMS_PA_MOBILE_GET_USERS', 'INPUT_GET_USERS', 'GUID', false)
- *  // Write Logs
- *  this.unviredCordovaSDK.logInfo("AppComponent", "Initialize", " Some String")
- * ```
- */
-
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
+/**
+ * AuthenticateAndActivateResultType Some Documentation
+ */
 export enum AuthenticateAndActivateResultType {
   /**
    * This value indicates that UMP was able to validate users credentials & activation of the user is complete.
@@ -72,7 +44,7 @@ export enum LoginListenerType {
    */
   login_success = 4,
   /**
-   * TODO
+   * If there are multiple accounts active & no account is specified in the login(), then this value is returned indicating that a current account needs to be specified for the login().
    */
   app_requires_current_account = 6
 }
@@ -81,7 +53,6 @@ export enum LoginType {
   /**
    * This value represents authentication using Unvired ID.
    * Example:
-   * If you plan to authenticate using Unvired ID, you need to send the following parameters:
    * ```
    * loginParameters.username = 'USER_NAME'
    * loginParameters.password = 'password'
@@ -93,7 +64,6 @@ export enum LoginType {
   /**
    * This value represents authentication using Active Directory Service (ADS).
    * Example:
-   * If you plan to authenticate using Unvired ID, you need to send the following parameters:
    * ```
    * loginParameters.username = 'USER_NAME'
    * loginParameters.password = 'password'
@@ -106,7 +76,6 @@ export enum LoginType {
   /**
    * This value represents authentication using SAP ID.
    * Example:
-   * If you plan to authenticate using Unvired ID, you need to send the following parameters:
    * ```
    * loginParameters.username = 'USER_NAME'
    * loginParameters.password = 'password'
@@ -144,26 +113,26 @@ export enum RequestType {
    * Set this type if the data exchange with UMP is 1:1. The header datastructure needs to be sent which also should be present in database prior to the call.
    * You can use UnviredCordovaSDK's db methods to insert data into database.
    */
-  RQST = 0,
+  RQST = 'RQST',
   /**
    * Set this type if the data exchange with UMP is 1:N pr 0:N. Sending a datastructure is optional and is dependent on the process agent function.
    * If the process agent function is marked with metadata delete flag, then server data replaces the data in database.
    * If the process agent function is NOT marked with metadata delete flag, then this request type behaves the same as QUERY
    */
-  PULL,
+  PULL = 'PULL',
   /**
    * This request type is for those message which are initiated by the server. You typically do not set this request type in sync.. methods.
    */
-  PUSH,
+  PUSH = 'PUSH',
   /**
    * Set this type if the data exchange with UMP is 1:N pr 0:N. Sending a datastructure is optional and is dependent on the process agent function.
    * Unlike PULL, this request type updates the data in database without deleting existing entries.
    */
-  QUERY,
+  QUERY = 'QUERY',
   /**
    * Set this type if the data exchange with UMP is 1:0. This handles the case where no server response is expected.
    */
-  REQ
+  REQ = 'REQ'
 }
 
 export enum NotificationListenerType {
@@ -337,14 +306,38 @@ export class LoginParameters {
   isRequiredAttachmentBase64: boolean;
 
   /**
-   * TODO:
+   * Set an interval in seconds at which the framework has to make an attempt to send data from outbox.
+   * If the data-sender fails for reason, then the framework does not restart even if there are outbox items.
+   * In those cases, you will have to set this value, so that the framework always makes an attempt to send from outbox.
+   * Example:
+   * loginParameters.autoSendTime = '5' // Make an attempt to send data every 5 seconds.
    */
   autoSendTime: string;
 
   /**
-   * TODO:
+   * Set the number of seconds at which GetMessage should automatically run. When this value is set, GetMessage would run in a interval as long as there are entries in Sent Items.
+   * You may need to set this value if your app doesn't support Push Notifications.
+   * By default, the framework does not do GetMessage automatically.
+   * Example:
+   * loginParameters.autoSyncTime = '5' // Make an attempt to receive data (GetMessage) every 5 seconds.
    */
   autoSyncTime: string;
+
+  /**
+   * Specify the metadata as a JSON string. This will override metadata.xml set at platform level.
+   */
+  metadataJSON: string;
+
+   /*
+    * Set this value to true to persist web application database. By default, this value is false.
+    */
+  persistWebDb: boolean;
+   /*
+   * Optional jwt token parameter. Please check with your Unvired Admin for this value.
+   * For Example:
+   * loginParameters.jwtOptions = {"app": "myapp"};
+   */
+  jwtOptions: object;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
@@ -358,9 +351,139 @@ export class AuthenticateLocalResult extends UnviredResult {
   type: AuthenticateLocalResultType;
 }
 
+/**
+ * @name Unvired Cordova SDK
+ * @description
+ * This plugin lets you build apps which connect to Unvired Mobile Platform (UMP).
+ * -
+ * iOS Requirements
+ * -
+ * This plugin uses Cocoapods to install dependent libraries. Please make sure you have a valid Cocoapods installation.
+ * Once you have it ready, do update the cocoapods repo by running the following command before you install this plugin.
+ * ```
+ * pod repo update
+ * ```
+ * @usage
+ * ```typescript
+ * import { UnviredCordovaSDK } from '@ionic-native/unvired-cordova-sdk/ngx';
+ *
+ *
+ * constructor(private unviredSDK: UnviredCordovaSDK) { }
+ *
+ * ...
+ * // This is usually done in app.component.ts of your app.
+ * // Before you can interact with UMP, you need to initialize the SDK and authenticate with UMP.
+ * // SDK Initialization
+ * let loginParameters = new LoginParameters()
+ * loginParameters.appName = 'UNVIRED_DIGITAL_FORMS'
+ * loginParameters.metadataPath = '../assets/metadata.json'
+ * let loginResult: LoginResult
+ * try {
+ *   loginResult = await this.unviredSDK.login(loginParameters)
+ * }
+ * catch (error) {
+ *   this.unviredSDK.logError("AppComponent", "Initialize", "Error during login: " + error)
+ * }
+ *
+ *
+ * switch (loginResult.type) {
+ * case LoginListenerType.auth_activation_required:
+ * // App is not activated. i.e, User is using the app for the very first time.
+ * // App needs to be activated before it can interact with UMP.
+ * // At this point of time, you basically navigate to a login screen & accept username / password from the user.
+ * // Set the username & password to loginParameters object and call authenticateAndActivate
+ * try {
+ *  // Execute this block of code in a login screen.
+ * let loginParameters = new LoginParameters();
+ * loginParameters.url = '<UMP_URL>';
+ * loginParameters.company = '<Company>';
+ * loginParameters.username = '<Username>';
+ * loginParameters.password = '<Password>';
+ * loginParameters.loginType = LoginType.unvired;
+ * let authenticateActivateResult: AuthenticateActivateResult = await this.unviredSDK.authenticateAndActivate(loginParameters);
+ * if (authenticateActivateResult.type === AuthenticateAndActivateResultType.auth_activation_success) {
+ * // App is fully setup. Navigate to your app's home screen.
+ * } else if (authenticateActivateResult.type === AuthenticateAndActivateResultType.auth_activation_error) {
+ * console.log("Error during login: " + authenticateActivateResult.error)
+ * } catch (error) {
+ * this.unviredSDK.logError('LoginPage', 'auth_activation_required', 'ERROR: ' + error);
+ * }
+ * break;
+ *
+ *
+ *
+ * case LoginListenerType.app_requires_login:
+ * // App is already activated. But, the user needs to enter credentials because the setting LOCAL_PASSWORD is set to YES in Unvired Admin Cockpit.
+ * // To set LOCAL_PASSWORD property for your app, contact your administrator.
+ * try {
+ *  // Execute this block of code in a login screen.
+ *  let loginParameters = new LoginParameters()
+ *  loginParameters.username = '<Username>';
+ *  loginParameters.password = '<Password>';
+ *  let authenticateLocalResult: AuthenticateLocalResult = await this.unviredSDK.authenticateLocal(loginParameters);
+ *  if (authenticateLocalResult.type === AuthenticateLocalResultType.login_success) {
+ *  // App is fully setup. Navigate to your app's home screen.
+ *  } else if (authenticateLocalResult.type === AuthenticateLocalResultType.login_error) {
+ *   console.log("Error during local login: " + authenticateActivateResult.error)
+ *  } catch (error) {
+ *   this.unviredSDK.logError('LoginPage', 'app_requires_login', 'ERROR: ' + error);
+ * }
+ * break;
+ *
+ *
+ *
+ * case login_success:
+ * // The setting LOCAL_PASSWORD is set to false.
+ * // App is fully initialized. Users can interact with the UMP
+ * // Navigate to Home screen
+ * break;
+ * }
+ *
+ *
+ *
+ *
+ *
+ * // Synchronization APIs
+ * // Make sync call.
+ * let result = await this.unviredSDK.syncForeground(RequestType.QUERY, null, {"CUSTOMER_HEADER": {"field1" : "value1", "field2" : "value2"}}, 'UNVIRED_DIGITAL_FORMS_PA_MOBILE_GET_USERS', true)
+ *
+ * // Make async call.
+ * let result = await this.unviredSDK.syncBackground(RequestType.QUERY, null, inputObj, 'UNVIRED_DIGITAL_FORMS_PA_MOBILE_GET_USERS', 'INPUT_GET_USERS', 'GUID', false)
+ * // Note: Subscribe to NotificationListener to get updates on data processing in background
+ * // However, only one screen can listen to background data updates at any point of time.
+ * this.unviredSDK.registerNotifListener().subscribe( data => {
+ * switch (data.type) {
+ * case NotificationListenerType.dataSend:
+ * break;
+ * case NotificationListenerType.dataChanged:
+ * break;
+ * case NotificationListenerType.dataReceived:
+ * break;
+ * .
+ * .
+ * .
+ * }})
+ *
+ *
+ *
+ *
+ *
+ * // Database APIs
+ * // Insert a record onto database
+ * this.unviredsdk.dbInsert("CUSTOMER_HEADER", {"NAME":"USER","NO":"0039"}, true);
+ *
+ * // Update a record in database
+ * this.unviredSDK.dbUpdate('CUSTOMER_HEADER', {"NAME":"UPDATED_USER","NO":"UPDATED_NO"}, "FORM_ID = '5caed815892215034dacad56'")
+ *
+ * // Delete a record in database
+ * this.unviredSDK.dbDelete('CUSTOMER_HEADER', "FORM_ID = '5caed815892215034dacad56'")
+ *
+ * // Execute a SQL Query
+ * this.unviredSDK.dbExecuteStatement('SELECT * FROM CUSTOMER_HEADER WHERE CUSTOMER_ID = "0039"')
+ */
 @Plugin({
   pluginName: 'UnviredCordovaSDK',
-  plugin: 'cordova-plugin-unvired-sdk', // npm package name, example: cordova-plugin-camera
+  plugin: 'https://github.com/unvired/cordova-plugin-unvired-sdk', // npm package name, example: cordova-plugin-camera
   pluginRef: 'ump', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/unvired/cordova-plugin-unvired-sdk/', // the github repository URL for the plugin
   install: 'ionic cordova plugin add @ionic-native/unvired-cordova-sdk', // OPTIONAL install command, in case the plugin requires variables
@@ -424,7 +547,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO:
+   * Returns the contents of the log file as a string.
    */
   @Cordova()
   logRead(): Promise<any> {
@@ -432,7 +555,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO:
+   * Resets the log file.
    */
   @Cordova()
   logDelete(): Promise<any> {
@@ -440,7 +563,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO:
+   * Sends log file to server. The log file can be viewed under Settings > Device & Data in UMP Admin Cockpit.
    */
   @Cordova()
   sendLogToServer(): Promise<any> {
@@ -448,7 +571,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO:
+   * Send logs via email interface. Calling this function opens up the default email interface with the log file as an attachment.
    */
   @Cordova()
   sendLogViaEmail(): Promise<any> {
@@ -472,7 +595,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * TODO:
+   * Logs out the last active user.
    */
   @Cordova()
   logout(): Promise<any> {
@@ -656,7 +779,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Example:
    * ```
    * # Insert CUSTOMER_HEADER Datastructure into DB.
-   * this.unviredsdk.dbInsert("CUSTOMER_HEADER", {"NAME":"TARAK","NO":"0039"}, true);
+   * this.unviredsdk.dbInsert("CUSTOMER_HEADER", {"NAME":"USER","NO":"0039"}, true);
    * ```
    */
   @Cordova()
@@ -672,8 +795,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param isHeader {boolean}  - is DataStructure a header or item?
    * Example:
    * ```
-   * # Insert or update a CUSTOMER_HEADER with NAME as TARAK and NO as '0039'
-   * this.unviredsdk.dbInsertOrUpdate("CUSTOMER_HEADER",{"NAME":"TARAK","NO":"0039"},true);
+   * # Insert or update a CUSTOMER_HEADER with NAME as USER and NO as '0039'
+   * this.unviredsdk.dbInsertOrUpdate("CUSTOMER_HEADER",{"NAME":"UPDATED_USER","UPDATED_NO":"0039"},true);
    * ```
    */
   @Cordova()
@@ -703,16 +826,16 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   /**
    * Update records in database.
    * @param tableName Name of the table
-   * @param updatedObject JSON object containing updateds name-value pairs.
+   * @param updatedObject JSON object containing updated name-value pairs.
    * @param whereClause {Object} Browser: JSON object containing name-value pairs.
    * Mobile: Or a Sqlite where Clause ( without the 'where' keyword )
    * Example:
    * ```
    * Update NAME & NO from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
    * # Mobile
-   * this.unviredSDK.dbUpdate('FORM_HEADER', {"NAME":"TARAK","NO":"0039"}, "FORM_ID = '5caed815892215034dacad56'")
+   * this.unviredSDK.dbUpdate('FORM_HEADER', {"NAME":"UPDATED_USER","UPDATED_NO":"0039"}, "FORM_ID = '5caed815892215034dacad56'")
    * # Mobile & Browser
-   * this.unviredSDK.dbUpdate('FORM_HEADER', {"NAME":"TARAK","NO":"0039"}, {"FORM_ID": "5caed815892215034dacad56"})
+   * this.unviredSDK.dbUpdate('FORM_HEADER', {"NAME":"UPDATED_USER","UPDATED_NO":"0039"}, {"FORM_ID": "5caed815892215034dacad56"})
    * ```
    */
   @Cordova()
@@ -846,7 +969,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param structureObject {Object} JSON object containing name-value pairs.
    * Example:
    * ```
-   * {'F_NAME':'TARAK','EMP_NO':'0039'}
+   * {'F_NAME':'USER','EMP_NO':'0039'}
    * ```
    */
   @Cordova()
@@ -974,7 +1097,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Places a request to download all pending messages for the logged in user in UMP.
+   * Make a GetMessage call.
+   * A GetMessage call is a network request to download all ready messages for the user.
    * To keep track of returned data, you would need to register a notification listener (registerNotifListener()) & subscribe to the observable.
    */
   @Cordova()
