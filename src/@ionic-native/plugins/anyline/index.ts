@@ -32,9 +32,9 @@ export interface AnylineOptions {
  */
 @Plugin({
   pluginName: 'Anyline',
-  plugin: 'cordova-plugin-anyline',
+  plugin: 'io-anyline-cordova',
   pluginRef: 'Anyline',
-  repo: 'https://github.com/niconaso/anyline-ocr-cordova-module',
+  repo: 'https://github.com/Anyline/anyline-ocr-cordova-module',
   platforms: ['Android', 'iOS']
 })
 @Injectable()
