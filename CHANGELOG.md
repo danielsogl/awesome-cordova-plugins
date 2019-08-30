@@ -1,3 +1,20 @@
+# [5.13.0](https://github.com/ionic-team/ionic-native/compare/v5.12.0...v5.13.0) (2019-08-30)
+
+
+### Bug Fixes
+
+* **anyline:** added official plugin ([#3144](https://github.com/ionic-team/ionic-native/issues/3144)) ([26447d2](https://github.com/ionic-team/ionic-native/commit/26447d2))
+* **in-app-browser:** update types to match cordova-plugin-inappbrowser 3.1.0  ([#3142](https://github.com/ionic-team/ionic-native/issues/3142)) ([4d1e0e6](https://github.com/ionic-team/ionic-native/commit/4d1e0e6))
+* **network:** rename onchange method name ([#3146](https://github.com/ionic-team/ionic-native/issues/3146)) ([73493e2](https://github.com/ionic-team/ionic-native/commit/73493e2))
+* **theme-detection:** added android platform ([#3143](https://github.com/ionic-team/ionic-native/issues/3143)) ([a55bb60](https://github.com/ionic-team/ionic-native/commit/a55bb60))
+
+
+### Features
+
+* **google-play-games-services:** add new synchronous methods ([#3138](https://github.com/ionic-team/ionic-native/issues/3138)) ([189570d](https://github.com/ionic-team/ionic-native/commit/189570d))
+
+
+
 # [5.12.0](https://github.com/ionic-team/ionic-native/compare/v5.11.0...v5.12.0) (2019-08-09)
 
 
