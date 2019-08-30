@@ -44,7 +44,7 @@ export interface ThemeDetectionResponse {
   repo: 'https://github.com/mariusbackes/cordova-plugin-theme-detection',
   install: 'cordova plugin add cordova-plugin-theme-detection',
   installVariables: [],
-  platforms: ['iOS']
+  platforms: ['iOS', 'Android']
 })
 @Injectable()
 export class ThemeDetection extends IonicNativePlugin {
