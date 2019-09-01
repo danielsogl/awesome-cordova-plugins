@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-
 /**
  * @name Preview Any File
  * @description
@@ -33,15 +32,13 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class PreviewAnyFile extends IonicNativePlugin {
-
   /**
    * This function does something
-   * @param arg1 {string} full absolute URL for the file 
+   * @param url {string} full absolute URL for the file
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  preview(arg1: string): Promise<any> {
+  preview(url: string): Promise<any> {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
-
 }
