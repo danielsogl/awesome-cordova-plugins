@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 /**
- * @name Preview Any File
+ * @name PreviewAnyFile
  * @description
- * This plugin does something
+ * Whatever the file is PDF document, Word document, Excel, office document,zip archive file, image, text, html or anything else, you can perform a preview by this cordova Plugin to preview any file in native mode by providing the local or external URL.
  *
  * @usage
  * ```typescript
@@ -33,12 +33,12 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 @Injectable()
 export class PreviewAnyFile extends IonicNativePlugin {
   /**
-   * This function does something
-   * @param url {string} full absolute URL for the file
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * this function return SUCCESS in success callback if the file successfully opened, if the content is base64 you have to write it into file by cordova-plugin-file
+   * @param url {string} full absolute URL for the file, if the path is content:// you need to resolve the native url, if the path is https:// it may not work in android
+   * @return {Promise<any>} Returns a promise that resolves if the file opened reject if not;
    */
   @Cordova()
-  preview(url: string): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+  preview(url: string): Promise<string> {
+    return;
   }
 }
