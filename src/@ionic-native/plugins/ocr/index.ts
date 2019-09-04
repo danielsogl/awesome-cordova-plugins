@@ -116,7 +116,7 @@ export interface OCRResult {
 }
 
 /**
- * @name MobileOCR
+ * @name OCR
  * @description
  * This plugin attempts to identify and extract text from an image.
  *
@@ -125,7 +125,7 @@ export interface OCRResult {
  * import { OCR, OCRSourceType } from '@ionic-native/ocr/ngx';
  *
  *
- * constructor(private ocr: MobileOCR) { }
+ * constructor(private ocr: OCR) { }
  *
  * ...
  *
