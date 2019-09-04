@@ -122,7 +122,7 @@ export interface OCRResult {
  *
  * @usage
  * ```typescript
- * import { MobileOCR, OCRSourceType } from '@ionic-native/ocr/ngx';
+ * import { OCR, OCRSourceType } from '@ionic-native/ocr/ngx';
  *
  *
  * constructor(private ocr: MobileOCR) { }
