@@ -151,10 +151,10 @@ export class FirebaseX extends IonicNativePlugin {
 
   /**
    * Check permission to receive push notifications and return hasPermission: true. iOS only (Android will always return true).
-   * @return {Promise<{isEnabled: boolean}>}
+   * @return {Promise<boolean>}
    */
   @Cordova()
-  hasPermission(): Promise<{ isEnabled: boolean }> {
+  hasPermission(): Promise<boolean> {
     return;
   }
 
