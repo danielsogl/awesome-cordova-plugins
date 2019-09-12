@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
  * @name SignInWithApple
