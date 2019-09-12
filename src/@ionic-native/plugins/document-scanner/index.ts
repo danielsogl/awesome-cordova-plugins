@@ -38,7 +38,7 @@ export interface DocumentScannerOptions {
 
   /**
    * If the image should be returned as a base64 encoding instead of as a file URL.
-   * If true, the plugin will return the scanned image as base64. If false, 
+   * If true, the plugin will return the scanned image as base64. If false,
    * the plugin will return the image URL of the image.
    */
   returnBase64?: boolean;
