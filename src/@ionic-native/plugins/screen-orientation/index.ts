@@ -82,7 +82,8 @@ export class ScreenOrientation extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'orientationchange'
+    event: 'orientationchange',
+    element: 'window'
   })
   onChange(): Observable<void> {
     return;
