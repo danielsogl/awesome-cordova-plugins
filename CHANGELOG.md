@@ -1,3 +1,25 @@
+# [5.14.0](https://github.com/ionic-team/ionic-native/compare/v5.13.0...v5.14.0) (2019-09-13)
+
+
+### Bug Fixes
+
+* **core:** Return the window object as default instead of the boolean from the typeof comparison ([#3160](https://github.com/ionic-team/ionic-native/issues/3160)) ([8b3b2a4](https://github.com/ionic-team/ionic-native/commit/8b3b2a4)), closes [#2972](https://github.com/ionic-team/ionic-native/issues/2972)
+* **firebase-x:** adjust typings for hasPermission ([#3161](https://github.com/ionic-team/ionic-native/issues/3161)) ([a46e308](https://github.com/ionic-team/ionic-native/commit/a46e308))
+* **screen-orientation:** add window element to eventObservable ([#3166](https://github.com/ionic-team/ionic-native/issues/3166)) ([199380c](https://github.com/ionic-team/ionic-native/commit/199380c))
+* **screen-orientation:** add window element to eventObservable ([#3166](https://github.com/ionic-team/ionic-native/issues/3166)) ([6bc1b93](https://github.com/ionic-team/ionic-native/commit/6bc1b93))
+
+
+### Features
+
+* **document-scanner:** add quality and base64 ([#3168](https://github.com/ionic-team/ionic-native/issues/3168)) ([141f0e6](https://github.com/ionic-team/ionic-native/commit/141f0e6))
+* **document-scanner:** add quality and base64 ([#3168](https://github.com/ionic-team/ionic-native/issues/3168)) ([cfcd8d1](https://github.com/ionic-team/ionic-native/commit/cfcd8d1))
+* **preview-any-file:** add new plugin to preview the … ([#3156](https://github.com/ionic-team/ionic-native/issues/3156)) ([fcec2d1](https://github.com/ionic-team/ionic-native/commit/fcec2d1))
+* **preview-any-file:** add new plugin to preview the … ([#3156](https://github.com/ionic-team/ionic-native/issues/3156)) ([1b6506f](https://github.com/ionic-team/ionic-native/commit/1b6506f))
+* **ssh-connect:** add new plugin for ssh connection ([#3169](https://github.com/ionic-team/ionic-native/issues/3169)) ([d9ded4d](https://github.com/ionic-team/ionic-native/commit/d9ded4d))
+* **ssh-connect:** add new plugin for ssh connection ([#3169](https://github.com/ionic-team/ionic-native/issues/3169)) ([d539eb4](https://github.com/ionic-team/ionic-native/commit/d539eb4))
+
+
+
 # [5.13.0](https://github.com/ionic-team/ionic-native/compare/v5.12.0...v5.13.0) (2019-08-30)
 
 
