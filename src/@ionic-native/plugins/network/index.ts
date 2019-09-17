@@ -104,7 +104,7 @@ export class Network extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @CordovaCheck()
-  onchange(): Observable<any> {
+  onChange(): Observable<any> {
     return merge(this.onConnect(), this.onDisconnect());
   }
 

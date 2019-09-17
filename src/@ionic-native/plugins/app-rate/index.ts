@@ -80,6 +80,12 @@ export interface AppRateCustomLocale {
 
   /** Feedback prompt title */
   feedbackPromptTitle?: string;
+
+  /** Feedback prompt message */
+  appRatePromptMessage?: string;
+
+  /** Feedback prompt message */
+  feedbackPromptMessage?: string;
 }
 
 export interface AppRateCallbacks {

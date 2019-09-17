@@ -149,7 +149,7 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
  * @returns {Observable}
  */
 function wrapEventObservable(event: string, element: any): Observable<any> {
-  element = (typeof window !== 'undefined' && element) ? get(window, element) : element || typeof window !== 'undefined' || {};
+  element = (typeof window !== 'undefined' && element) ? get(window, element) : element || (typeof window !== 'undefined' ? window : {});
   return fromEvent(element, event);
 }
 

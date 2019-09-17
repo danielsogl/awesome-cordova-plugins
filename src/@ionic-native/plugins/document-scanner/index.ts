@@ -27,6 +27,21 @@ export interface DocumentScannerOptions {
    * which is "image".
    */
   fileName?: string;
+
+  /**
+   * Quality to use when capturing the image, must be a float value
+   * from 1.0(default - Highest quality) to 5.0(Lowest Quality). Any value
+   * in between will be accepted. Any value not equal to or not between these values
+   *  will default to the highest quality of 1.0.
+   */
+  quality?: number;
+
+  /**
+   * If the image should be returned as a base64 encoding instead of as a file URL.
+   * If true, the plugin will return the scanned image as base64. If false,
+   * the plugin will return the image URL of the image.
+   */
+  returnBase64?: boolean;
 }
 
 /**
