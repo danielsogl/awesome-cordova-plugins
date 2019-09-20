@@ -1155,14 +1155,14 @@ export class File extends IonicNativePlugin {
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} fileName path relative to base path
    * @param {string | Blob} text content or blob to write
-   * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
+   * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   @CordovaCheck()
   writeExistingFile(
     path: string,
     fileName: string,
     text: string | Blob
-  ): Promise<void> {
+  ): Promise<any> {
     return this.writeFile(path, fileName, text, { replace: true });
   }
 
