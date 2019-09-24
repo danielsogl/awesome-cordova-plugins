@@ -151,7 +151,7 @@ export class UserPreferencesMethods extends NestedObject {
  *
  * Requires the Cordova plugin `wonderpush-cordova-sdk`.
  *
- * [WonderPush](https://www.wonderpush.com) is the most effective way
+ * [WonderPush push notifications](https://www.wonderpush.com) are the most effective way
  * to retain your users and grow your audience while remaining fully GDPR compliant.
  *
  * @usage
@@ -179,17 +179,17 @@ export class UserPreferencesMethods extends NestedObject {
  * this.wonderPush.addTag('customer');
  *
  * // Personalize
- * 1. Store user details.
- * 2. Use those details to create segments.
- * 3. Include those details in your notifications.
+ * // 1. Store user details.
+ * // 2. Use those details to create segments.
+ * // 3. Include those details in your notifications.
  * this.wonderPush.putProperties({
  *   string_name: 'John D.',
  *   int_age: 24
  * });
  *
  * // GDPR
- * 1. set REQUIRES_USER_CONSENT=true to enable GDPR compliance.
- * 2. WonderPush doesn't start until setUserConsent(true) is called.
+ * // 1. set REQUIRES_USER_CONSENT=true to enable GDPR compliance.
+ * // 2. WonderPush doesn't start until setUserConsent(true) is called.
  * const onClick = (userConsent: boolean) => this.wonderPush.setUserConsent(userConsent);
  *
  * // Listen to notification clicks
