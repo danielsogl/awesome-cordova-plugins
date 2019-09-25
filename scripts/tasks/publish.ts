@@ -37,6 +37,8 @@ const PLUGIN_PEER_DEPENDENCIES = {
   rxjs: RXJS_VERSION
 };
 
+const ngCCConfig = `module.exports={entryPoints:{"./index.js":{override:{main:"./ngx/index.js",typings:"./ngx/index.d.ts"}}}};`
+
 function getPackageJsonContent(name: string, peerDependencies = {}, dependencies = {}) {
   return merge(PACKAGE_JSON_BASE, {
     name: '@ionic-native/' + name,
@@ -52,6 +54,11 @@ function writePackageJson(data: any, dir: string) {
   PACKAGES.push(dir);
 }
 
+function writeNgcConfig(dir: string){
+  const filePath = path.resolve(dir, 'ngcc-config.js');
+  fs.writeFileSync(filePath, ngCCConfig);
+}
+
 function prepare() {
   // write @ionic-native/core package.json
   writePackageJson(
@@ -65,6 +72,7 @@ function prepare() {
     const packageJsonContents = getPackageJsonContent(pluginName, PLUGIN_PEER_DEPENDENCIES);
     const dir = path.resolve(DIST, 'plugins', pluginName);
 
+    writeNgcConfig(dir)
     writePackageJson(packageJsonContents, dir);
   });
 }
@@ -106,4 +114,4 @@ async function publish(ignoreErrors = false) {
 }
 
 prepare();
-publish();
+// publish();
