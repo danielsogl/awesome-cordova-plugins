@@ -69,17 +69,23 @@ export class WebSocketServer extends IonicNativePlugin {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+      observable: true,
+  })
   onMessage(): Observable<WebSocketMessage> {
       return;
   }
 
-  @Cordova()
+  @Cordova({
+      observable: true,
+  })
   onOpen(): Observable<WebSocketConnection> {
       return;
   }
 
-  @Cordova()
+  @Cordova({
+      observable: true,
+  })
   onClose(): Observable<WebSocketClose> {
       return;
   }
