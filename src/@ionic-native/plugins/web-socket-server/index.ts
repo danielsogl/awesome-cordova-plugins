@@ -10,20 +10,74 @@
  *
  */
 import { Injectable } from "@angular/core";
-import {
-  Plugin,
-  Cordova,
-  CordovaProperty,
-  CordovaInstance,
-  InstanceProperty,
-  IonicNativePlugin
-} from "@ionic-native/core";
+import { Plugin, Cordova, IonicNativePlugin } from "@ionic-native/core";
 import { Observable } from "rxjs";
-import { HttpdOptions } from "../httpd";
-import { Http2ServerRequest } from "http2";
-import { HTTPResponse } from "../http";
-import { DownloadHttpHeader } from "../downloader";
-import { UniqueDeviceID } from "../unique-device-id";
+
+declare const window: any;
+
+export type WebSocketInterfaces = {
+  [key: string]: WebSocketInterface;
+};
+
+export interface WebSocketInterface {
+  ipv4Addresses: string[];
+  ipv6Addresses: string[];
+}
+
+export interface WebSocketOptions {
+  origins?: string[];
+  protocols?: string[];
+  tcpNoDelay?: boolean;
+}
+
+export interface WebSocketIdentifier {
+  uuid: string;
+}
+
+export interface WebSocketServerDetails {
+  addr: string;
+  port: number;
+}
+
+export interface WebSocketFailure {
+  addr: string;
+  port: number;
+  reason: string;
+}
+
+export interface WebSocketMessage {
+  conn: WebSocketConnection;
+  msg: string;
+}
+
+export interface WebSocketClose {
+  conn: WebSocketConnection;
+  code: number;
+  reason: string;
+  wasClean: boolean;
+}
+
+export interface WebSocketConnection extends WebSocketIdentifier {
+  remoteAttr: string;
+  state: "open" | "closed";
+  httpFields: HttpFields;
+  resource: string;
+}
+
+export interface HttpFields {
+  "Accept-Encoding": string;
+  "Accept-Language": string;
+  "Cache-Control": string;
+  Connection: string;
+  Host: string;
+  Origin: string;
+  Pragma: string;
+  "Sec-WebSocket-Extensions": string;
+  "Sec-WebSocket-Key": string;
+  "Sec-WebSocket-Version": string;
+  Upgrade: string;
+  "User-Agent": string;
+}
 
 /**
  * @name WebSocket Server
@@ -55,7 +109,6 @@ import { UniqueDeviceID } from "../unique-device-id";
 })
 @Injectable()
 export class WebSocketServer extends IonicNativePlugin {
-
   @Cordova()
   getInterfaces(): Promise<WebSocketInterfaces> {
     return;
@@ -63,31 +116,37 @@ export class WebSocketServer extends IonicNativePlugin {
 
   @Cordova({
     observable: true,
-    clearFunction: "stop",
+    clearFunction: "stop"
   })
   start(port: number, options: WebSocketOptions): Observable<WebSocketServerDetails> {
     return;
   }
 
-  @Cordova({
-      observable: true,
-  })
-  onMessage(): Observable<WebSocketMessage> {
-      return;
+  private onFunctionToObservable<T>(fnName: string) {
+    return new Observable<T>(observer => {
+      const id = window.cordova.plugins.wsserver[fnName](
+        observer.next.bind(observer),
+        observer.error.bind(observer)
+      );
+
+      return () => window.cordova.plugins.wsserver.removeCallback(id);
+    });
   }
 
-  @Cordova({
-      observable: true,
-  })
-  onOpen(): Observable<WebSocketConnection> {
-      return;
+  watchMessage(): Observable<WebSocketMessage> {
+    return this.onFunctionToObservable("onMessage");
   }
 
-  @Cordova({
-      observable: true,
-  })
-  onClose(): Observable<WebSocketClose> {
-      return;
+  watchOpen(): Observable<WebSocketConnection> {
+    return this.onFunctionToObservable("onOpen");
+  }
+
+  watchClose(): Observable<WebSocketClose> {
+    return this.onFunctionToObservable("onClose");
+  }
+
+  watchFailure(): Observable<WebSocketFailure> {
+    return this.onFunctionToObservable("onFailure");
   }
 
   @Cordova()
@@ -96,70 +155,12 @@ export class WebSocketServer extends IonicNativePlugin {
   }
 
   @Cordova()
-  send(conn: WebSocketIdentifier, msg: string): Promise<any> {
+  send(conn: WebSocketIdentifier, msg: string): Promise<void> {
     return;
   }
 
   @Cordova()
-  close(conn: WebSocketIdentifier, code: number, reason: string): Promise<any> {
+  close(conn: WebSocketIdentifier, code: number, reason: string): Promise<void> {
     return;
   }
-}
-
-export type WebSocketInterfaces = {
-  [key: string]: WebSocketInterface;
-};
-
-export interface WebSocketInterface {
-  ipv4Addresses: string[];
-  ipv6Addresses: string[];
-}
-
-export interface WebSocketOptions {
-  origins?: string[];
-  protocols?: string[];
-  tcpNoDelay?: boolean;
-}
-
-export interface WebSocketIdentifier {
-    uuid: string;
-}
-
-export interface WebSocketServerDetails {
-    addr: string;
-    port: number;
-}
-
-export interface WebSocketMessage {
-    conn: WebSocketConnection;
-    msg: string;
-}
-
-export interface WebSocketClose {
-    conn: WebSocketConnection;
-    code: number;
-    reason: string;
-    wasClean: boolean;
-}
-
-export interface WebSocketConnection extends WebSocketIdentifier {
-    remoteAttr: string;
-    state: 'open' | 'closed';
-    httpFields: HttpFields;
-    resource: string;
-}
-
-export interface HttpFields {
-    'Accept-Encoding': string;
-    'Accept-Language': string;
-    'Cache-Control': string;
-    Connection: string;
-    Host: string;
-    Origin: string;
-    Pragma: string;
-    'Sec-WebSocket-Extensions': string;
-    'Sec-WebSocket-Key': string;
-    'Sec-WebSocket-Version': string;
-    Upgrade: string;
-    'User-Agent': string;
 }
