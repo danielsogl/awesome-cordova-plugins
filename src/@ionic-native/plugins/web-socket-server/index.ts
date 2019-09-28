@@ -178,7 +178,7 @@ export class WebSocketServer extends IonicNativePlugin {
 
   /**
    * Stop websocket server and closes all connections
-   * @return {Promise<WebSocketServerDetails}
+   * @return {Promise<WebSocketServerDetails>}
    */
   @Cordova()
   stop(): Promise<WebSocketServerDetails> {
