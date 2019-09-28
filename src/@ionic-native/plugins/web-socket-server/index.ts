@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 
 declare const window: any;
 
-export type WebSocketInterfaces = {
+export interface WebSocketInterfaces {
   [key: string]: WebSocketInterface;
-};
+}
 
 export interface WebSocketInterface {
   ipv4Addresses: string[];
@@ -84,15 +84,15 @@ export interface HttpFields {
  *   next: server => console.log(`Listening on ${server.addr}:${server.port}`),
  *   error: error => console.log(`Unexpected error`, error);
  * });
- * 
+ *
  * // watch for any messages
  * this.wsserver.watchMessage().subscribe(result => {
  *   console.log(`Received message ${result.msg} from ${result.conn.uuid}`);
  * });
- * 
+ *
  * // send message to connection with specified uuid
  * this.wsserver.send({ uuid: '8e7c4f48-de68-4b6f-8fca-1067a353968d' }, 'Hello World');
- * 
+ *
  * // stop websocket server
  * this.wsserver.stop().then(server => {
  *   console.log(`Stop listening on ${server.addr}:${server.port}`);
