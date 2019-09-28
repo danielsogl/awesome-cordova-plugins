@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { Plugin, Cordova, IonicNativePlugin } from "@ionic-native/core";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 declare const window: any;
 
@@ -46,24 +46,24 @@ export interface WebSocketClose {
 
 export interface WebSocketConnection extends WebSocketIdentifier {
   remoteAttr: string;
-  state: "open" | "closed";
+  state: 'open' | 'closed';
   httpFields: HttpFields;
   resource: string;
 }
 
 export interface HttpFields {
-  "Accept-Encoding": string;
-  "Accept-Language": string;
-  "Cache-Control": string;
+  'Accept-Encoding': string;
+  'Accept-Language': string;
+  'Cache-Control': string;
   Connection: string;
   Host: string;
   Origin: string;
   Pragma: string;
-  "Sec-WebSocket-Extensions": string;
-  "Sec-WebSocket-Key": string;
-  "Sec-WebSocket-Version": string;
+  'Sec-WebSocket-Extensions': string;
+  'Sec-WebSocket-Key': string;
+  'Sec-WebSocket-Version': string;
   Upgrade: string;
-  "User-Agent": string;
+  'User-Agent': string;
 }
 
 /**
@@ -101,11 +101,11 @@ export interface HttpFields {
  * ```
  */
 @Plugin({
-  pluginName: "WebSocketServer",
-  plugin: "cordova-plugin-websocket-server",
-  pluginRef: "cordova.plugins.wsserver",
-  repo: "https://github.com/becvert/cordova-plugin-websocket-server",
-  platforms: ["Android", "iOS"]
+  pluginName: 'WebSocketServer',
+  plugin: 'cordova-plugin-websocket-server',
+  pluginRef: 'cordova.plugins.wsserver',
+  repo: 'https://github.com/becvert/cordova-plugin-websocket-server',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class WebSocketServer extends IonicNativePlugin {
@@ -127,7 +127,7 @@ export class WebSocketServer extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: "stop"
+    clearFunction: 'stop'
   })
   start(port: number, options: WebSocketOptions): Observable<WebSocketServerDetails> {
     return;
@@ -149,7 +149,7 @@ export class WebSocketServer extends IonicNativePlugin {
    * @return {Observable<WebSocketMessage>}
    */
   watchMessage(): Observable<WebSocketMessage> {
-    return this.onFunctionToObservable("onMessage");
+    return this.onFunctionToObservable('onMessage');
   }
 
   /**
@@ -157,7 +157,7 @@ export class WebSocketServer extends IonicNativePlugin {
    * @return {Observable<WebSocketConnection>}
    */
   watchOpen(): Observable<WebSocketConnection> {
-    return this.onFunctionToObservable("onOpen");
+    return this.onFunctionToObservable('onOpen');
   }
 
   /**
@@ -165,7 +165,7 @@ export class WebSocketServer extends IonicNativePlugin {
    * @return {Observable<WebSocketClose>}
    */
   watchClose(): Observable<WebSocketClose> {
-    return this.onFunctionToObservable("onClose");
+    return this.onFunctionToObservable('onClose');
   }
 
   /**
@@ -173,7 +173,7 @@ export class WebSocketServer extends IonicNativePlugin {
    * @return {Observable<WebSocketFailure>}
    */
   watchFailure(): Observable<WebSocketFailure> {
-    return this.onFunctionToObservable("onFailure");
+    return this.onFunctionToObservable('onFailure');
   }
 
   /**
