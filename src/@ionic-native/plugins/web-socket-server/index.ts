@@ -1,14 +1,3 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from "@angular/core";
 import { Plugin, Cordova, IonicNativePlugin } from "@ionic-native/core";
 import { Observable } from "rxjs";
@@ -39,9 +28,7 @@ export interface WebSocketServerDetails {
   port: number;
 }
 
-export interface WebSocketFailure {
-  addr: string;
-  port: number;
+export interface WebSocketFailure extends WebSocketServerDetails {
   reason: string;
 }
 
@@ -82,21 +69,34 @@ export interface HttpFields {
 /**
  * @name WebSocket Server
  * @description
- * This plugin does something
+ * This plugin allows you to run a single, lightweight, barebone WebSocket Server.
  *
  * @usage
  * ```typescript
- * import { WSServer } from '@ionic-native/ws-server';
+ * import { WebSocketServer } from '@ionic-native/web-socket-server';
  *
- *
- * constructor(private wSServer: WSServer) { }
+ * constructor(private wsserver: WebSocketServer) { }
  *
  * ...
  *
- *
- * this.wSServer.functionName('Hello', 123)
- *   .then((res: any) => console.log(res))
- *   .catch((error: any) => console.error(error));
+ * // start websocket server
+ * this.wsserver.start(8888, {}).subscribe({
+ *   next: server => console.log(`Listening on ${server.addr}:${server.port}`),
+ *   error: error => console.log(`Unexpected error`, error);
+ * });
+ * 
+ * // watch for any messages
+ * this.wsserver.watchMessage().subscribe(result => {
+ *   console.log(`Received message ${result.msg} from ${result.conn.uuid}`);
+ * });
+ * 
+ * // send message to connection with specified uuid
+ * this.wsserver.send({ uuid: '8e7c4f48-de68-4b6f-8fca-1067a353968d' }, 'Hello World');
+ * 
+ * // stop websocket server
+ * this.wsserver.stop().then(server => {
+ *   console.log(`Stop listening on ${server.addr}:${server.port}`);
+ * });
  *
  * ```
  */
@@ -109,11 +109,22 @@ export interface HttpFields {
 })
 @Injectable()
 export class WebSocketServer extends IonicNativePlugin {
+
+  /**
+   * Return this device's interfaces
+   * @return {Promise<WebSocketInterfaces>}
+   */
   @Cordova()
   getInterfaces(): Promise<WebSocketInterfaces> {
     return;
   }
 
+  /**
+   * Start websocket server
+   * @param port {number} Local port on which the service runs. (0 means any free port)
+   * @param options {WebSocketOptions} Additional options for websocket
+   * @return {Observable<WebSocketServerDetails>} Returns Observable where all generic error can be catched (mostly JSONExceptions)
+   */
   @Cordova({
     observable: true,
     clearFunction: "stop"
@@ -133,32 +144,65 @@ export class WebSocketServer extends IonicNativePlugin {
     });
   }
 
+  /**
+   * Watches for new messages
+   * @return {Observable<WebSocketMessage>}
+   */
   watchMessage(): Observable<WebSocketMessage> {
     return this.onFunctionToObservable("onMessage");
   }
 
+  /**
+   * Watches for new opened connections
+   * @return {Observable<WebSocketConnection>}
+   */
   watchOpen(): Observable<WebSocketConnection> {
     return this.onFunctionToObservable("onOpen");
   }
 
+  /**
+   * Watches for closed connections
+   * @return {Observable<WebSocketClose>}
+   */
   watchClose(): Observable<WebSocketClose> {
     return this.onFunctionToObservable("onClose");
   }
 
+  /**
+   * Watches for any websocket failures
+   * @return {Observable<WebSocketFailure>}
+   */
   watchFailure(): Observable<WebSocketFailure> {
     return this.onFunctionToObservable("onFailure");
   }
 
+  /**
+   * Stop websocket server and closes all connections
+   * @return {Promise<WebSocketServerDetails}
+   */
   @Cordova()
   stop(): Promise<WebSocketServerDetails> {
     return;
   }
 
+  /**
+   * Send Message to a connected device
+   * @param conn {WebSocketIdentifier} Connection to send message to
+   * @param msg {string} Message to send
+   * @return {Promise<void>}
+   */
   @Cordova()
   send(conn: WebSocketIdentifier, msg: string): Promise<void> {
     return;
   }
 
+  /**
+   * Close specific connection using uuid
+   * @param conn {WebSocketIdentifier} Connection to close
+   * @param code {number} Close code, determines if it was clean
+   * @param reason {string} Reason for closing
+   * @return {Promise<void>}
+   */
   @Cordova()
   close(conn: WebSocketIdentifier, code: number, reason: string): Promise<void> {
     return;
