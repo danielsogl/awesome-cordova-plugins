@@ -964,12 +964,29 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Copy attachment file to application folder and insert attachment item to database with updated local path.
-   * @param tableName Table name of attachment item.
-   * @param structureObject {Object} JSON object containing name-value pairs.
+   * Saves attachment item in database and prepares it for uploading to server. This api is required to associate attachment file to a Business Entity.
+   * This api copies the attachment file to a new path, links the attachment with the header in database.
+   * To send the attachment item, just send the header using either syncForeground / syncBackground api and sdk will upload all the linked attachments.
+   * @param tableName Table name of attachment item structure. This usually ends with _ATTACHMENT.
+   * @param structureObject {Object} attachment item as a JSON object. Please check the example below.
    * Example:
    * ```
-   * {'F_NAME':'USER','EMP_NO':'0039'}
+   * // Steps to upload attachment.
+   * // 1. Store the file to be attached in device's path.
+   * // 2. Create an attachment item to send this file.
+   * var attachmentObject = new INSPECTION_ATTACHMENT()
+   * attachmentObject.LID = guid(); // Random id
+   * attachmentObject.FID = lid  // LID of the header.
+   * attachmentObject.UID = guid(); // Random id
+   * attachmentObject.EXTERNAL_URL = ""; // Optional: Check with your Unvired Process agent developer.
+   * attachmentObject.FILE_NAME = 'myfile.jpg'; // Name of the file as stored in the device.
+   * attachmentObject.LOCAL_PATH = /<folder_location>/myfile.jpg // File path. Please make sure that the path starts with a '/'
+   * attachmentObject.TAG1 = '' // Optional: Check with your Unvired Process agent developer.
+   * attachmentObject.TAG2 = '' // Optional: Check with your Unvired Process agent developer.
+   * attachmentObject.TAG2 = '' // Optional: Check with your Unvired Process agent developer.
+   * attachmentObject.TAG4 = '' // Optional: Check with your Unvired Process agent developer.
+   * attachmentObject.TAG5 = '' // Optional: Check with your Unvired Process agent developer.
+   * await this.unviredCordovaSDK.createAttachmentItem('INSPECTION_ATTACHMENT', attachmentObject)
    * ```
    */
   @Cordova()
