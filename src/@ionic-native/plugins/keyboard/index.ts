@@ -2,6 +2,19 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
+export enum KeyboardStyle {
+  Light = 'light',
+  Dark = 'dark'
+}
+
+export enum KeyboardResizeMode {
+  Native = 'native',
+  Ionic = 'ionic',
+  Body = 'body',
+  None = 'none'
+}
+
+
 /**
  * @name Keyboard
  * @description
@@ -43,7 +56,10 @@ export class Keyboard extends IonicNativePlugin {
    * Hide the keyboard accessory bar with the next, previous and done buttons.
    * @param hide {boolean}
    */
-  @Cordova({ sync: true })
+  @Cordova({
+    sync: true,
+    platforms: ['iOS']
+  })
   hideFormAccessoryBar(hide: boolean): void {}
 
   /**
@@ -72,7 +88,27 @@ export class Keyboard extends IonicNativePlugin {
     sync: true,
     platforms: ['iOS']
   })
-  setResizeMode(mode: string): void {}
+  setResizeMode(mode: KeyboardResizeMode): void {}
+
+  /**
+   * Programatically set Keyboard style
+   * @param mode {string}
+   */
+  @Cordova({
+    sync: true,
+    platforms: ['iOS']
+  })
+  setKeyboardStyle(style: KeyboardStyle): void {}
+
+  /**
+   * Programatically enable or disable the WebView scroll
+   * @param mode {string}
+   */
+  @Cordova({
+    sync: true,
+    platforms: ['iOS']
+  })
+  disableScroll(disable: boolean): void {}
 
   /**
    * Creates an observable that notifies you when the keyboard is shown. Unsubscribe to observable to cancel event watch.
@@ -101,6 +137,19 @@ export class Keyboard extends IonicNativePlugin {
   }
 
   /**
+   * Creates an observable that notifies you when the keyboard did show. Unsubscribe to observable to cancel event watch.
+   * @returns {Observable<any>}
+   */
+  @Cordova({
+    eventObservable: true,
+    event: 'keyboardDidShow',
+    platforms: ['iOS', 'Android']
+  })
+  onKeyboardDidShow(): Observable<any> {
+    return;
+  }
+
+  /**
    * Creates an observable that notifies you when the keyboard is hidden. Unsubscribe to observable to cancel event watch.
    * @returns {Observable<any>}
    */
@@ -123,6 +172,19 @@ export class Keyboard extends IonicNativePlugin {
     platforms: ['iOS', 'Android']
   })
   onKeyboardWillHide(): Observable<any> {
+    return;
+  }
+
+  /**
+   * Creates an observable that notifies you when the keyboard did hide. Unsubscribe to observable to cancel event watch.
+   * @returns {Observable<any>}
+   */
+  @Cordova({
+    eventObservable: true,
+    event: 'keyboardDidHide',
+    platforms: ['iOS', 'Android']
+  })
+  onKeyboardDidHide(): Observable<any> {
     return;
   }
 }
