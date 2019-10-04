@@ -3,7 +3,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 /**
- * @name EmmAppConfig
+ * @name Emm App Config
  * @description
  * This plugin provides information on EMM application configuration
  *
