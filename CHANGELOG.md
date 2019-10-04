@@ -1,3 +1,22 @@
+# [5.15.0](https://github.com/ionic-team/ionic-native/compare/v5.14.0...v5.15.0) (2019-10-04)
+
+
+### Bug Fixes
+
+* **keyboard:** Update types with new 2.2.0 methods ([#3187](https://github.com/ionic-team/ionic-native/issues/3187)) ([a1fb937](https://github.com/ionic-team/ionic-native/commit/a1fb937))
+* **line-login:** adjustment parameter ([#3172](https://github.com/ionic-team/ionic-native/issues/3172)) ([cb543b9](https://github.com/ionic-team/ionic-native/commit/cb543b9))
+* **pro:** Removing Pro native wrapper ([#3186](https://github.com/ionic-team/ionic-native/issues/3186)) ([a575233](https://github.com/ionic-team/ionic-native/commit/a575233))
+* **web-server:** add path to response ([#3184](https://github.com/ionic-team/ionic-native/issues/3184)) ([acec6cf](https://github.com/ionic-team/ionic-native/commit/acec6cf))
+
+
+### Features
+
+* **emm-app-config:** add plugin ([#3181](https://github.com/ionic-team/ionic-native/issues/3181)) ([5f16fcd](https://github.com/ionic-team/ionic-native/commit/5f16fcd))
+* **http:** add type definitions for new features available in v2.2.0 ([#3185](https://github.com/ionic-team/ionic-native/issues/3185)) ([fc6d1d0](https://github.com/ionic-team/ionic-native/commit/fc6d1d0))
+* **web-socket-server:** Add cordova plugin websocket server ([#3183](https://github.com/ionic-team/ionic-native/issues/3183)) ([66f2e15](https://github.com/ionic-team/ionic-native/commit/66f2e15))
+
+
+
 # [5.14.0](https://github.com/ionic-team/ionic-native/compare/v5.13.0...v5.14.0) (2019-09-13)
 
 
