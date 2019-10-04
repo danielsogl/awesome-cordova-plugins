@@ -211,11 +211,11 @@ export class Camera extends IonicNativePlugin {
    * Convenience constant
    */
   PictureSourceType = {
-    /** Choose image from picture library (same as SAVEDPHOTOALBUM for Android) */
+    /** Choose image from picture library (same as PHOTOLIBRARY for Android) */
     PHOTOLIBRARY: 0,
     /** Take picture from camera */
     CAMERA: 1,
-    /** Choose image from picture library (same as PHOTOLIBRARY for Android) */
+    /** Choose image from picture library (same as SAVEDPHOTOALBUM for Android) */
     SAVEDPHOTOALBUM: 2
   };
 
