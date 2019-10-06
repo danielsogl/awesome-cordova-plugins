@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 /**
  * @name Kommunicate
  * @description
- * The plugin for the Kommunicate SDK. 
+ * The plugin for the Kommunicate SDK.
  * With the help of this plugin, you can easily add human + bot chat support functionality to you app.
  * Refer to: TODO: insert site link
- * For documentation: TODO: insert link  
+ * For documentation: TODO: insert link
  *
  * @usage
  * ```typescript
@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
  *
  * constructor(private kommunicate: Kommunicate) { }
  * //also add [..., Kommunicate, ... ] inside the providers array, if required
- * 
+ *
  * var kmUser = {
  *    userId : 'randomstring',
  *    authenticationTypeId : 1
@@ -25,11 +25,11 @@ import { Observable } from 'rxjs';
  * this.kommunicate.login(kmUser)
  *   .then((res: any) => console.log("Sucessfully logged in." + res))
  *   .catch((error: any) => console.error("Error logging in." + error));
- * 
+ *
  * var conversationObject = {
  *    isUnique : false
  * };
- * 
+ *
  * this.kommunicate.conversationBuilder(converationObject)
  *   .then((clientChannelKey: any) => console.log("Kommunicate create conversation successful the clientChannelKey is : " + clientChannelKey))
  *   .catch((error: any) => console.error("Error creating conversation." + error));
@@ -49,17 +49,17 @@ export class Kommunicate extends IonicNativePlugin {
   /**
    * Login the user with the details passed in
    * Creates a new user with the details provided there is no existing user
-   * 
+   *
    * var kmUser = {
    *    'userId' : 'userId',   //Replace it with the userId of the logged in user
-   *    'password' : 'password',  //Put password here
+   *    'password' : 'password',  //replace with password
    *    'authenticationTypeId' : 1,
    *    'imageLink' : <image-link-for-user>
    *    'applicationId' : '<APP_ID>',  //replace this with your APP_ID from Applozic Dashboard
    *    'deviceApnsType' : 0    //Set 0 for Development and 1 for Distribution (Release)
    * };
-   * 
-   * @param kmUser {any} the user details 
+   *
+   * @param kmUser {any} the user details
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -67,7 +67,7 @@ export class Kommunicate extends IonicNativePlugin {
 
   /**
    * Register for push notification
-   * 
+   *
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -75,7 +75,7 @@ export class Kommunicate extends IonicNativePlugin {
 
   /**
    * Check if any user is logged in or not
-   *  
+   *
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -83,16 +83,16 @@ export class Kommunicate extends IonicNativePlugin {
 
   /**
    * Update the token for push notifications
-   * 
-   * @param token {any} the user details 
+   *
+   * @param token {string} the user details
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  updatePushNotificationToken(token: any): Promise<any> { return; }
+  updatePushNotificationToken(token: string): Promise<any> { return; }
 
   /**
    * Launch the conversation screen (it contains all the existing conversations)
-   * 
+   *
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -100,13 +100,13 @@ export class Kommunicate extends IonicNativePlugin {
 
   /**
    * Launch the conversation identified by the given channel(conversation) key
-   * 
+   *
    * let convObj = {
    *   'clientChannelKey' : clientChannelKey, //pass the clientChannelKey here
    *   'takeOrder' : true //skip chat list on back press, pass false if you want to show chat list on back press
    * };
-   * 
-   * @param conversationObject {any} the channel key and other information 
+   *
+   * @param conversationObject {any} the channel key and other information
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -114,9 +114,9 @@ export class Kommunicate extends IonicNativePlugin {
 
   /**
    * Start a new conversation, details about the conversation to be passed as parameters
-   * 
+   *
    * @deprecated
-   * @param converationParams {any} the user details 
+   * @param converationParams {any} the user details
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -124,16 +124,16 @@ export class Kommunicate extends IonicNativePlugin {
 
   /**
    * Process push notifications
-   * 
-   * @param data {any} the user details 
-   * @return {Promise<any>} Returns a promise
+   *
+   * @param data {any} the user details
+   * @return {boolean} Returns true/false
    */
-  @Cordova()
-  processPushNotification(data: any): Promise<any> { return; }
+  @Cordova({ sync: true })
+  processPushNotification(data: any): boolean { return; }
 
   /**
    * Logout the current user
-   * 
+   *
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -141,9 +141,9 @@ export class Kommunicate extends IonicNativePlugin {
 
   /**
    * Start a single chat (conversation)
-   * 
+   *
    * @deprecated
-   * @param data {any} the user details 
+   * @param data {any} the user details
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -151,14 +151,14 @@ export class Kommunicate extends IonicNativePlugin {
 
   /**
    * Launches a conversation with the properties passed in the conversation param
-   * 
+   *
    * var conversationObject = {
    *   'isUnique' : false,
    *   'agentIds':['<AGENT_ID>'],  //List of agentIds. AGENT_ID is the emailID used to signup on Kommunicate
    *   'botIds': ['<BOT_ID>']  //List of botIds. Go to Manage Bots(https://dashboard.kommunicate.io/bots/manage-bots) -> Copy botID
-   * }; 
-   * 
-   * @param conversationObject {any} the user details 
+   * };
+   *
+   * @param conversationObject {any} the user details
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
