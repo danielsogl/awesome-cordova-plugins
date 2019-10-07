@@ -28,11 +28,6 @@ export interface BarcodeScannerOptions {
   disableSuccessBeep?: boolean;
 
   /**
-   * Disable or enable Autorotate. Supported on IOS only.
-   */
-  shouldAutorotate?: boolean;
-
-  /**
    * Prompt text. Supported on Android only.
    */
   prompt?: string;
@@ -60,22 +55,22 @@ export interface BarcodeScannerOptions {
 
 export interface BarcodeScanResult {
   format:
-  | 'QR_CODE'
-  | 'DATA_MATRIX'
-  | 'UPC_E'
-  | 'UPC_A'
-  | 'EAN_8'
-  | 'EAN_13'
-  | 'CODE_128'
-  | 'CODE_39'
-  | 'CODE_93'
-  | 'CODABAR'
-  | 'ITF'
-  | 'RSS14'
-  | 'RSS_EXPANDED'
-  | 'PDF_417'
-  | 'AZTEC'
-  | 'MSI';
+    | 'QR_CODE'
+    | 'DATA_MATRIX'
+    | 'UPC_E'
+    | 'UPC_A'
+    | 'EAN_8'
+    | 'EAN_13'
+    | 'CODE_128'
+    | 'CODE_39'
+    | 'CODE_93'
+    | 'CODABAR'
+    | 'ITF'
+    | 'RSS14'
+    | 'RSS_EXPANDED'
+    | 'PDF_417'
+    | 'AZTEC'
+    | 'MSI';
   cancelled: boolean;
   text: string;
 }
@@ -121,11 +116,11 @@ export class BarcodeScanner extends IonicNativePlugin {
     PHONE_TYPE: string;
     SMS_TYPE: string;
   } = {
-      TEXT_TYPE: 'TEXT_TYPE',
-      EMAIL_TYPE: 'EMAIL_TYPE',
-      PHONE_TYPE: 'PHONE_TYPE',
-      SMS_TYPE: 'SMS_TYPE'
-    };
+    TEXT_TYPE: 'TEXT_TYPE',
+    EMAIL_TYPE: 'EMAIL_TYPE',
+    PHONE_TYPE: 'PHONE_TYPE',
+    SMS_TYPE: 'SMS_TYPE'
+  };
 
   /**
    * Open the barcode scanner.
