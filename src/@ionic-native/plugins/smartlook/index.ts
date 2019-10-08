@@ -92,7 +92,7 @@ export class SmartlookGlobalEventPropertyKey {
   plugin: 'https://github.com/smartlook/cordova-smartlook.git',
   pluginRef: 'cordova.plugins.SmartlookPlugin',
   repo: 'https://github.com/smartlook/cordova-smartlook.git',
-  platforms: ['Android']
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Smartlook extends IonicNativePlugin {
