@@ -1,83 +1,107 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
+/**
+ * @see https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1412193-phoneticrepresentation
+ */
+export interface NSPersonNameComponents {
+  /**
+   * The portion of a name’s full form of address that precedes the name itself (for example, "Dr.," "Mr.," "Ms.")
+   */
+  namePrefix?: string;
+
+  /**
+   * Name bestowed upon an individual to differentiate them from other members of a group that share a family name (for example, "Johnathan")
+   */
+  givenName?: string;
+
+  /**
+   * Secondary name bestowed upon an individual to differentiate them from others that have the same given name (for example, "Maple")
+   */
+  middleName?: string;
+
+  /**
+   * Name bestowed upon an individual to denote membership in a group or family. (for example, "Appleseed")
+   */
+  familyName?: string;
+
+  /**
+   * The portion of a name’s full form of address that follows the name itself (for example, "Esq.," "Jr.," "Ph.D.")
+   */
+  nameSuffix?: string;
+
+  /**
+   * Name substituted for the purposes of familiarity (for example, "Johnny")
+   */
+  nickname?: string;
+
+  /**
+   * The phonetic representation name components of the receiver
+   */
+  phoneticRepresentation?: NSPersonNameComponents;
+}
+
+/**
+ * @see https://developer.apple.com/documentation/authenticationservices/asauthorizationappleidcredential
+ */
 export interface AppleSignInResponse {
   /**
-   * E-Mail address i.e. abc@privaterelay.appleid.com
+   * The user’s email address i.e. abc@privaterelay.appleid.com
    */
   email?: string;
 
   /**
-   * The state (could be empty)
+   * An arbitrary string that your app provided to the request that generated the credential
    */
   state?: string;
 
   /**
-   * The identity token
+   * A JSON Web Token (JWT) that securely communicates information about the user to your app
    */
   identityToken: string;
 
   /**
-   * Name details of the user
+   * A short-lived token used by your app for proof of authorization when interacting with the app's server counterpart
    */
-  fullName?: {
-    /**
-     * The nickname of the user (could be empty)
-     */
-    nickname?: string;
-
-    /**
-     * The phonetic representation of the user (could be an empty object)
-     */
-    phoneticRepresentation?: {};
-
-    /**
-     * The family name of the user (i.e. Doe)
-     */
-    familyName?: string;
-
-    /**
-     * The name prefix of the user (could be an empty object)
-     */
-    namePrefix?: string;
-
-    /**
-     * The given name of the user (i.e. John)
-     */
-    givenName?: string;
-
-    /**
-     * The name suffix of the user (could be an empty object)
-     */
-    nameSuffix?: string;
-  };
+  authorizationCode: string;
 
   /**
-   * The user i.e. 001234.1a11b111c1111d111111e111111f1111.1234
+   * The user's name
+   * @see https://developer.apple.com/documentation/foundation/nspersonnamecomponents?language=objc
+   */
+  fullName?: NSPersonNameComponents;
+
+  /**
+   * An identifier associated with the authenticated user
    */
   user?: string;
 }
 
-export interface AppleSignInErrorResponse {
+/**
+ * @see https://developer.apple.com/documentation/foundation/nserror
+ */
+export interface NSError {
   /**
-   * Error code i.e. 1000
+   * The error code
    */
   code?: number;
 
   /**
-   * The localized failure reason, could be empty
+   * A string containing the localized description of the error
+   */
+  localizedDescription?: string;
+
+  /**
+   * A string containing the localized explanation of the reason for the error
    */
   localizedFailureReason?: string;
+}
 
+export interface AppleSignInErrorResponse extends NSError {
   /**
    * The error i.e. "ASAUTHORIZATION_ERROR"
    */
   error?: string;
-
-  /**
-   * The localized description of the error
-   */
-  localizedDescription?: string;
 }
 
 /**
