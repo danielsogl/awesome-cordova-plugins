@@ -125,7 +125,7 @@ export class PhotoLibrary extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  getLibrary(options?: GetLibraryOptions): Observable<LibraryItem[]> {
+  getLibrary(success?: (res?: any) => void, error?: (err?: any) => void, options?: GetLibraryOptions): Observable<LibraryItem[]> {
     return;
   }
 
