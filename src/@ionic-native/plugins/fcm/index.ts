@@ -71,6 +71,19 @@ export class FCM extends IonicNativePlugin {
   getToken(): Promise<string> {
     return;
   }
+  
+  /**
+   * Checking for permissions. Useful for IOS. On android, it will always return true.
+   *
+   * @returns {Promise<boolean | null>} Returns a Promise: 
+   * - true: push was allowed
+   * - false: push will not be available
+   * - null: still not answered, recommended checking again later.
+   */
+  @Cordova()
+  hasPermission(): Promise<boolean | null> {
+    return;
+  }
 
   /**
    * Event firing on the token refresh
