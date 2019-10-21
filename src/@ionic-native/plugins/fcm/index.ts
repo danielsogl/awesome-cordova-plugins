@@ -89,6 +89,16 @@ export class FCM extends IonicNativePlugin {
   getToken(): Promise<string> {
     return;
   }
+  
+  /**
+   * Gets ios device's current APNS registration id
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with the APNS registration id token
+   */
+  @Cordova()
+  getAPNSToken(): Promise<string> {
+    return;
+  }
 
   /**
    * Event firing on the token refresh
