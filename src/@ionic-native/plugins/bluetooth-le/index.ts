@@ -82,6 +82,8 @@ export interface ScanParams {
   matchNum?: BluetoothMatchNum;
   /** Defaults to All Matches. Available from API21 / API 23. (Android) */
   callbackType?: BluetoothCallbackType;
+  /** True/false to show only connectable devices, rather than all devices ever seen, defaults to false (Windows) */
+  isConnectable?: boolean;
 }
 
 export interface NotifyParams {
