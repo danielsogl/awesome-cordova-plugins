@@ -92,6 +92,7 @@ export class Wechat extends IonicNativePlugin {
    * this.wechat.auth.then((res) => { alert(res.code); });
    * </code>
    */
+  @Cordova()
   auth(scope: any, state: any): Promise<any> {
     return;
   }
@@ -116,6 +117,7 @@ export class Wechat extends IonicNativePlugin {
    * });
    * </code>
    */
+  @Cordova()
   sendPaymentRequest(params: any): Promise<any> {
     return;
   }
@@ -143,6 +145,7 @@ export class Wechat extends IonicNativePlugin {
    * });
    * </code>
    */
+  @Cordova()
   jumpToWechat(url: string): Promise<any> {
     return;
   }
@@ -160,6 +163,7 @@ export class Wechat extends IonicNativePlugin {
    * });
    * </code>
    */
+  @Cordova()
   chooseInvoiceFromWX(params: any): Promise<any> {
     return;
   }

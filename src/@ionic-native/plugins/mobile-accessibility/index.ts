@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { MobileAccessibility } from '@ionic-native/mobile-ccessibility/ngx';
+ * import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
  *
  *
  * constructor(private mobileAccessibility: MobileAccessibility) { }

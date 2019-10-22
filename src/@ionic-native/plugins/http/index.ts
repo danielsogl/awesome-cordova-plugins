@@ -272,12 +272,12 @@ export class HTTP extends IonicNativePlugin {
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
-   * @param filePath {string} The local path of the file to upload
-   * @param name {string} The name of the parameter to pass the file along as
+   * @param filePath {string} The local path(s) of the file(s) to upload
+   * @param name {string} The name(s) of the parameter to pass the file(s) along as
    * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
    */
   @Cordova()
-  uploadFile(url: string, body: any, headers: any, filePath: string, name: string): Promise<any> {
+  uploadFile(url: string, body: any, headers: any, filePath: string | string[], name: string | string[]): Promise<any> {
     return;
   }
 
@@ -304,8 +304,8 @@ export class HTTP extends IonicNativePlugin {
    * @param options.serializer {string} data serializer to be used (only applicable on post, put or patch methods), defaults to global serializer value, see setDataSerializer for supported values
    * @param options.timeout {number} timeout value for the request in seconds, defaults to global timeout value
    * @param options.headers {Object} headers object (key value pair), will be merged with global values
-   * @param options.filePath {string} filePath to be used during upload and download see uploadFile and downloadFile for detailed information
-   * @param options.name {string} name to be used during upload see uploadFile for detailed information
+   * @param options.filePath {string} file path(s) to be used during upload and download see uploadFile and downloadFile for detailed information
+   * @param options.name {string} name(s) to be used during upload see uploadFile for detailed information
    * @param options.responseType {string} response type, defaults to text
    *
    * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
@@ -320,9 +320,9 @@ export class HTTP extends IonicNativePlugin {
       serializer?: 'json' | 'urlencoded' | 'utf8';
       timeout?: number;
       headers?: { [index: string]: string };
-      filePath?: string;
-      name?: string;
-      responseType?: 'text' | 'arraybuffer' | 'blob';
+      filePath?: string | string[];
+      name?: string | string[];
+      responseType?: 'text' | 'arraybuffer' | 'blob' | 'json';
     }
   ): Promise<HTTPResponse> {
     return;

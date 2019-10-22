@@ -96,10 +96,7 @@ export class LineLogin extends IonicNativePlugin {
    * Login
    * @return {Promise<LineLoginProfile>}
    */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 2
-  })
+  @Cordova()
   login(): Promise<LineLoginProfile> {
     return;
   }
@@ -109,10 +106,7 @@ export class LineLogin extends IonicNativePlugin {
    * (iOS only)
    * @return {Promise<LineLoginProfile>}
    */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 2
-  })
+  @Cordova()
   loginWeb(): Promise<LineLoginProfile> {
     return;
   }

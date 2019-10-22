@@ -124,9 +124,9 @@ export class SecureStorageObject {
  */
 @Plugin({
   pluginName: 'SecureStorage',
-  plugin: 'cordova-plugin-secure-storage',
+  plugin: 'cordova-plugin-secure-storage-echo',
   pluginRef: 'cordova.plugins.SecureStorage',
-  repo: 'https://github.com/Crypho/cordova-plugin-secure-storage',
+  repo: 'https://github.com/mibrito707/cordova-plugin-secure-storage-echo',
   platforms: ['Android', 'Browser', 'iOS', 'Windows']
 })
 @Injectable()

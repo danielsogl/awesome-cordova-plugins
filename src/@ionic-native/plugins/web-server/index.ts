@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 
 export interface Response {
   status: number;
-  body: string;
+  body?: string;
+  path?: string;
   headers: { [key: string]: string};
 }
 
