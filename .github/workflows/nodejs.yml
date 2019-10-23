@@ -24,7 +24,7 @@ jobs:
     - name: Build
       run: npm run build
     - name: Test
-      run: npm run test:ci
+      run: npm run test
     - name: Readmes
       run: npm run readmes
       env:
