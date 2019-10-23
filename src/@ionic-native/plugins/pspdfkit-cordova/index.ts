@@ -222,7 +222,7 @@ export class PSPDFKit extends IonicNativePlugin {
  /**
   * Gets several document or view controller options in a single call.
   *
-  * @param names {[any]} array of option names
+  * @param names {any} array of option names
   * @return {Promise<any>} callback Success (or result) and error callback function.
   *
   * __Supported Platforms__
@@ -230,7 +230,7 @@ export class PSPDFKit extends IonicNativePlugin {
   * -iOS
   */
   @Cordova()
-  getOptions(names: [any]): Promise<any> {
+  getOptions(names: any): Promise<any> {
     return;
   }
 
