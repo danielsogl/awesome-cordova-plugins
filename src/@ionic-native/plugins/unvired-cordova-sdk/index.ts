@@ -238,6 +238,11 @@ export class UnviredResult {
   errorDetail: string;
 }
 
+export class LogResult extends UnviredResult {
+  type: ResultType;
+  data: LogLevel;
+}
+
 export class NotifResult extends UnviredResult {
   type: NotificationListenerType;
 }
@@ -591,7 +596,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Returns the current log level.
    */
   @Cordova()
-  getLogLevel(): Promise<LogLevel> {
+  getLogLevel(): Promise<LogResult> {
     return;
   }
 
