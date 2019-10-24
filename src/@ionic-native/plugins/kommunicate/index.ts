@@ -41,7 +41,7 @@ import { Observable } from 'rxjs';
   plugin: 'kommunicate-cordova-plugin',
   pluginRef: 'kommunicate',
   repo: 'https://github.com/Kommunicate-io/Kommunicate-Cordova-Ionic-PhoneGap-Chat-Plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'Browser', 'iOS']
 })
 @Injectable()
 export class Kommunicate extends IonicNativePlugin {
