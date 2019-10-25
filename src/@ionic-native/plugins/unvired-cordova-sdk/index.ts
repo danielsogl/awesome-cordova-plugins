@@ -1273,4 +1273,13 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   startDataSender(): Promise<any> {
     return;
   }
+
+  /**
+   * Returns platform name
+   * Ex: ios, android, windows, browser
+   */
+  @Cordova()
+  platform(): Promise<string> {
+    return;
+  }
 }
