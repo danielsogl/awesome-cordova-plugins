@@ -1,3 +1,23 @@
+# [5.16.0](https://github.com/ionic-team/ionic-native/compare/v5.15.1...v5.16.0) (2019-10-30)
+
+
+### Bug Fixes
+
+* **bluetooth-le:** add isConnectable to ScanParams interface ([#3204](https://github.com/ionic-team/ionic-native/issues/3204)) ([00ef998](https://github.com/ionic-team/ionic-native/commit/00ef998ee58c8ec021c9488d6226605996963090))
+
+
+### Features
+
+* **cordova-plugin-getuisdk:** Add GeTuiSdkPlugin plugin ([#3212](https://github.com/ionic-team/ionic-native/issues/3212)) ([f81e181](https://github.com/ionic-team/ionic-native/commit/f81e1815884e78c9c8f67738d259ea6104c4d30b))
+* **fcm:** add getAPNSToken and hasPermission methods ([#3211](https://github.com/ionic-team/ionic-native/issues/3211)) ([08332b7](https://github.com/ionic-team/ionic-native/commit/08332b7c0208e7bc5ad6af8b9f3df91e3f240a50))
+* **kommunicate:** plugin for the kommunicate sdk ([#3191](https://github.com/ionic-team/ionic-native/issues/3191)) ([eae8c10](https://github.com/ionic-team/ionic-native/commit/eae8c1000c29e3b88004566b16315207ffdf81e6))
+* **pspdfkit-cordova:** add PSPDFKit-Cordova plugin ([#3210](https://github.com/ionic-team/ionic-native/issues/3210)) ([86cca49](https://github.com/ionic-team/ionic-native/commit/86cca4923645a768607f045ac98e6529830de772))
+* **secure-storage-echo:** added wrapper for newest plugin ([#3190](https://github.com/ionic-team/ionic-native/issues/3190)) ([509bd72](https://github.com/ionic-team/ionic-native/commit/509bd72ddee81a680e470e2b490139e243900171))
+* **sign-in-with-apple:** Added Sign in with Apple ([#3200](https://github.com/ionic-team/ionic-native/issues/3200)) ([ec93301](https://github.com/ionic-team/ionic-native/commit/ec933011e64d43eae4d8933542f4dc482041c1be))
+* **unvired-cordova-sdk:** add methods to get and set log level and other functions. ([#3207](https://github.com/ionic-team/ionic-native/issues/3207)) ([042e36d](https://github.com/ionic-team/ionic-native/commit/042e36de08e8b101cd95fc5fca6d511295535a1a))
+
+
+
 ## [5.15.1](https://github.com/ionic-team/ionic-native/compare/v5.15.0...v5.15.1) (2019-10-18)
 
 
