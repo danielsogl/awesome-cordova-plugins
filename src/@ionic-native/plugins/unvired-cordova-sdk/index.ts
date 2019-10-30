@@ -3,6 +3,15 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 /**
+ * Log levels supported in the sdk.
+ */
+export enum LogLevel {
+  important = 7,
+  error = 8,
+  debug = 9
+}
+
+/**
  * AuthenticateAndActivateResultType Some Documentation
  */
 export enum AuthenticateAndActivateResultType {
@@ -227,6 +236,11 @@ export class UnviredResult {
    * Contains the detailed error information which the apps can convey to the users.
    */
   errorDetail: string;
+}
+
+export class LogResult extends UnviredResult {
+  type: ResultType;
+  data: LogLevel;
 }
 
 export class NotifResult extends UnviredResult {
@@ -575,6 +589,23 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    */
   @Cordova()
   sendLogViaEmail(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Returns the current log level.
+   */
+  @Cordova()
+  getLogLevel(): Promise<LogResult> {
+    return;
+  }
+
+  /**
+   * Set the log level of the app.
+   * @param logLevel The log level to set
+   */
+  @Cordova()
+  setLogLevel(logLevel: LogLevel): Promise<any> {
     return;
   }
 
@@ -1072,6 +1103,21 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * Returns an observable containing the state of the synchronisation along with count (if applicable). Possible values are as follows:
+   * 1. Sending (count) // Ex: sending(3), there are 3 items in outbox and device is online. i.e datasender thread running
+   * 2. Receiving // There are items to be received from server & device is online
+   * 3. Processing (count) // Ex: processing (5), there are 5 items in inbox and they are being processed.
+   * 4. Waiting to connect // The device is offline & there are items in outbox
+   * 5. Idle // there is no synchronisation activity going on.
+   */
+  @Cordova({
+    observable: true
+  })
+  getSynchronizationState(): Observable<string> {
+    return;
+  }
+
+  /**
    * For Browser platform only.
    * Reinitialize web db. Use this api to initialize db from persisted local storage db
    */
@@ -1205,7 +1251,35 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * For Browser platform only
    * Helps in updating application database without reauthenticating with server which requires to drop both app and framework database.
    */
+  @Cordova()
   reCreateAppDB(): Promise<any> {
+    return;
+  }
+
+  /**
+   * For Mobile platform only
+   * Starts Inbox handler if there are items in inbox.
+   */
+  @Cordova()
+  startInboxHandler(): Promise<any> {
+    return;
+  }
+
+  /**
+   * For Mobile platform only
+   * Starts DataSender if there are items in outbox.
+   */
+  @Cordova()
+  startDataSender(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Returns platform name
+   * Ex: ios, android, windows, browser
+   */
+  @Cordova()
+  platform(): Promise<string> {
     return;
   }
 }
