@@ -47,6 +47,12 @@ export interface NotificationData {
  *   backend.registerToken(token);
  * });
  *
+ * this.fcm.hasPermission().then(hasPermission => {
+ *   if (hasPermission) {
+ *     console.log("Has permission!");
+ *   }
+ * })
+ *
  * this.fcm.unsubscribeFromTopic('marketing');
  *
  * ```
@@ -62,6 +68,16 @@ export interface NotificationData {
 })
 @Injectable()
 export class FCM extends IonicNativePlugin {
+  /**
+   * Gets ios device's current APNS token
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with the APNS token
+   */
+  @Cordova()
+  getAPNSToken(): Promise<string> {
+    return;
+  }
+
   /**
    * Gets device's current registration id
    *
@@ -105,6 +121,19 @@ export class FCM extends IonicNativePlugin {
    */
   @Cordova()
   unsubscribeFromTopic(topic: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Checking for permissions on iOS. On android, it always returns `true`.
+   *
+   * @returns {Promise<boolean | null>} Returns a Promise:
+   * - true: push was allowed (or platform is android)
+   * - false: push will not be available
+   * - null: still not answered, recommended checking again later.
+   */
+  @Cordova()
+  hasPermission(): Promise<boolean | null> {
     return;
   }
 
