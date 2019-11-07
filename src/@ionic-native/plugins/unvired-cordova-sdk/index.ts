@@ -601,6 +601,14 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * Returns the path of the log file.
+   */
+  @Cordova()
+  getLogFilePath(): Promise<string> {
+    return;
+  }
+
+  /**
    * Set the log level of the app.
    * @param logLevel The log level to set
    */
