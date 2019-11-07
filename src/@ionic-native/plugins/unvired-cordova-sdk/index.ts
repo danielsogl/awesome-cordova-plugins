@@ -1290,4 +1290,13 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   platform(): Promise<string> {
     return;
   }
+
+  /**
+   * Mobile Platform only.
+   * Test whether push notifications can be received on the device
+   */
+  @Cordova()
+  testPushNotification(): Promise<any> {
+    return;
+  }
 }
