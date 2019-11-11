@@ -243,6 +243,11 @@ export class LogResult extends UnviredResult {
   data: LogLevel;
 }
 
+export class LogDataResult extends UnviredResult {
+  type: ResultType;
+  data: string;
+}
+
 export class NotifResult extends UnviredResult {
   type: NotificationListenerType;
 }
@@ -564,7 +569,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Returns the contents of the log file as a string.
    */
   @Cordova()
-  logRead(): Promise<any> {
+  logRead(): Promise<LogDataResult> {
     return;
   }
 
