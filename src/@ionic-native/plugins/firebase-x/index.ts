@@ -106,7 +106,7 @@ export interface IChannelOptions {
 @Injectable()
 export class FirebaseX extends IonicNativePlugin {
   /**
-   * Get the device token.
+   * Get the current FCM token.
    * @return {Promise<null | string>} Note that token will be null if it has not been established yet
    */
   @Cordova()
@@ -122,6 +122,29 @@ export class FirebaseX extends IonicNativePlugin {
     observable: true
   })
   onTokenRefresh(): Observable<any> {
+    return;
+  }
+  
+  /**
+   * iOS only.
+   * Get the APNS token allocated for this app install.
+   * @return {Promise<null | string>} Note that token will be null if it has not been established yet
+   */
+  @Cordova()
+  getAPNSToken(): Promise<null | string> {
+    return;
+  }
+
+  /**
+   * iOS only.
+   * Registers a handler to call when the APNS token is allocated.
+   * This will be called once when remote notifications permission has been granted by the user at runtime.
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  onApnsTokenReceived(): Observable<any> {
     return;
   }
 
