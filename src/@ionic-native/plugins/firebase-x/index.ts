@@ -124,7 +124,7 @@ export class FirebaseX extends IonicNativePlugin {
   onTokenRefresh(): Observable<any> {
     return;
   }
-  
+
   /**
    * iOS only.
    * Get the APNS token allocated for this app install.
@@ -409,7 +409,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {string} phoneNumber - phone number to verify
    * @param {integer} timeOutDuration - (optional) time to wait in seconds before timing out
    * @param {string} fakeVerificationCode - (optional) to test instant verification on Android ,specify a fake verification code to return for whitelisted phone numbers.
-   *  
+   *
    * The success callback will be passed a credential object with the following properties:
    *   instantVerification {boolean} - true if the Android device supports instant verification, in which case the verification code will be included in the credential object. If this is false, the device will be sent an SMS containing the verification code for the user to manually enter into your app. Always false on iOS.
    *   verificationId {string} - the verification ID you'll need to pass along with the verification code to sign the user in. Always returned on both Android & iOS.
@@ -424,7 +424,7 @@ export class FirebaseX extends IonicNativePlugin {
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Signs the user into Firebase with credentials obtained using verifyPhoneNumber().
    * See the Android- and iOS-specific Firebase documentation for more info.
@@ -442,7 +442,7 @@ export class FirebaseX extends IonicNativePlugin {
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Links the user account to an existing Firebase user account with credentials obtained using verifyPhoneNumber().
    * See the Android- and iOS-specific Firebase documentation for more info.
@@ -457,7 +457,9 @@ export class FirebaseX extends IonicNativePlugin {
     code: string,
     success: () => void,
     error: (err: string) => void
-  )
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Fetch Remote Config parameter values for your app.
