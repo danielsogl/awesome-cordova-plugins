@@ -12,6 +12,11 @@ export interface IChannelOptions {
    * Channel name. Default: empty string
    */
   name?: string;
+  
+  /**
+   * Channel description. Default: empty string
+   */
+  description?: string;
 
   /**
    * The sound to play once a push comes. Default value: 'default'
@@ -29,7 +34,7 @@ export interface IChannelOptions {
    * Boolean - vibrate or not
    * Array - vibration pattern - e.g. [500, 200, 500] - milliseconds vibrate, milliseconds pause, vibrate, pause, etc.
    */
-  vibration?: boolean;
+  vibration?: boolean | number[];
 
   /**
    * Whether to blink the LED
