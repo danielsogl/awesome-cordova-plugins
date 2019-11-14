@@ -12,7 +12,7 @@ export interface IChannelOptions {
    * Channel name. Default: empty string
    */
   name?: string;
-  
+
   /**
    * Channel description. Default: empty string
    */
