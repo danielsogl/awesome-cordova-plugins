@@ -214,8 +214,8 @@ export class BackgroundMode extends IonicNativePlugin {
   disableWebViewOptimizations(): void {}
 
    /**
-   * Disables battery optimazation mode for the app.
-   */
+    * Disables battery optimazation mode for the app.
+    */
   @Cordova({
     platforms: ['Android'],
     sync: true
