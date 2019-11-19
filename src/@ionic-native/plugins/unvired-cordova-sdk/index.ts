@@ -243,6 +243,11 @@ export class LogResult extends UnviredResult {
   data: LogLevel;
 }
 
+export class LogDataResult extends UnviredResult {
+  type: ResultType;
+  data: string;
+}
+
 export class NotifResult extends UnviredResult {
   type: NotificationListenerType;
 }
@@ -564,7 +569,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Returns the contents of the log file as a string.
    */
   @Cordova()
-  logRead(): Promise<any> {
+  logRead(): Promise<LogDataResult> {
     return;
   }
 
@@ -597,6 +602,14 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    */
   @Cordova()
   getLogLevel(): Promise<LogResult> {
+    return;
+  }
+
+  /**
+   * Returns the path of the log file.
+   */
+  @Cordova()
+  getLogFilePath(): Promise<string> {
     return;
   }
 
@@ -1280,6 +1293,15 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    */
   @Cordova()
   platform(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Mobile Platform only.
+   * Test whether push notifications can be received on the device
+   */
+  @Cordova()
+  testPushNotification(): Promise<any> {
     return;
   }
 }
