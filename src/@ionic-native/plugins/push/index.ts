@@ -136,6 +136,7 @@ export interface CategoryActionData {
   title: string;
   foreground: boolean;
   destructive: boolean;
+  inline?: boolean;
 }
 
 export interface AndroidPushOptions {
