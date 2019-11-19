@@ -221,7 +221,7 @@ export class BackgroundMode extends IonicNativePlugin {
     sync: true
   })
   disableBatteryOptimizations(): void {}
-  
+
   /**
    * Android allows to programmatically move from background to foreground.
    */
