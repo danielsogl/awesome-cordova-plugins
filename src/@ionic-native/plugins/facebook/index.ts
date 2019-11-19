@@ -306,4 +306,13 @@ export class Facebook extends IonicNativePlugin {
   getDeferredApplink(): Promise<string> {
     return;
   }
+
+  /**
+   * Manually log activation events
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  activateApp(): Promise<any> {
+    return;
+  }
 }
