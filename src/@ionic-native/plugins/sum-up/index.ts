@@ -82,14 +82,14 @@ export class SumUpKeys {
  * constructor(private sumUp: SumUp) { }
  *
  * const sumUpKeys: SumUpKeys = new SumUpKeys();
- * sumUpKeys.affiliateKey = "YOUR_API_KEY"; // if not provided in installation
- * sumUpKeys.accessToken = "YOUR_ACCESS_TOKEN";
+ * sumUpKeys.affiliateKey = 'YOUR_API_KEY'; // if not provided in installation
+ * sumUpKeys.accessToken = 'YOUR_ACCESS_TOKEN';
  *
  * this.sumUp.login(sumUpKeys)
  *   .then((res: SumUpResponse) => console.log(res))
  *   .catch((error: SumUpResponse) => console.error(error));
  *
- *  this.sumUp.auth("YOUR_ACCESS_TOKEN")
+ *  this.sumUp.auth('YOUR_ACCESS_TOKEN')
  *   .then((res: SumUpResponse) => console.log(res))
  *   .catch((error: SumUpResponse) => console.error(error));
  *
@@ -113,7 +113,7 @@ export class SumUpKeys {
  *   .then((res: SumUpResponse) => console.log(res))
  *   .catch((error: SumUpResponse) => console.error(error));
  *
- * this.sumUp.pay(10.0, "EUR")
+ * this.sumUp.pay(10.0, 'EUR')
  *   .then((res: SumUpPayment) => console.log(res))
  *   .catch((error: SumUpPayment) => console.error(error));
  *
