@@ -1,3 +1,14 @@
+## [5.17.1](https://github.com/ionic-team/ionic-native/compare/v5.17.0...v5.17.1) (2019-11-26)
+
+
+### Bug Fixes
+
+* **email-composer:** Aligned function calls with Cordova plugin ([9057dc2](https://github.com/ionic-team/ionic-native/commit/9057dc2c934f5f8e804da84348d353a3234742a4)), closes [#3220](https://github.com/ionic-team/ionic-native/issues/3220)
+* **purchases:** changed optional parameter oldSku ([#3238](https://github.com/ionic-team/ionic-native/issues/3238)) ([bb77620](https://github.com/ionic-team/ionic-native/commit/bb77620d0d27ebbd9831bdd025256a41d2fda188))
+* **push:** add showBadge to android channel ([8e79890](https://github.com/ionic-team/ionic-native/commit/8e79890251ecdb8d41207cfaff862dba5d0ae28a))
+
+
+
 # [5.17.0](https://github.com/ionic-team/ionic-native/compare/v5.16.0...v5.17.0) (2019-11-19)
 
 
