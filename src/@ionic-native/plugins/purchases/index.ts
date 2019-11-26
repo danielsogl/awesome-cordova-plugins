@@ -268,7 +268,7 @@ export class Purchases extends IonicNativePlugin {
   /**
    * Make a purchase
    * @param productIdentifier {string} The product identifier of the product you want to purchase.
-   * @param oldSkus {string[]} Optional array of skus you wish to upgrade from.
+   * @param oldSku {string} Optional sku you wish to upgrade from.
    * @param type {String} Optional type of product, can be inapp or subs. Subs by default
    *
    * @return {Observable<MakePurchaseResponse>} An [RCError] is thrown when user cancels. On error `usercancelled` will be true if user cancelled
@@ -280,7 +280,7 @@ export class Purchases extends IonicNativePlugin {
   })
   makePurchase(
     productIdentifier: string,
-    oldSkus: string[] = [],
+    oldSku?: string = null,
     type: ProductType = ProductType.SUBS
   ): Observable<RCMakePurchaseResponse> {
     return;
