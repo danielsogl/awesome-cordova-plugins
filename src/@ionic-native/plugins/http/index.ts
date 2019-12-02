@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface HTTPResponse {
   /**
-   * The status number of the response
+   * The HTTP status number of the response or a negative internal error code.
    */
   status: number;
   /**
-   * The headers of the response
+   * The headers of the response.
    */
-  headers: any;
+  headers: {[ key: string ]: string };
   /**
    * The URL of the response. This property will be the final URL obtained after any redirects.
    */
@@ -30,8 +30,9 @@ export interface HTTPResponse {
  * Cordova / Phonegap plugin for communicating with HTTP servers. Supports iOS and Android.
  *
  * Advantages over Javascript requests:
- * - Background threading - all requests are done in a background thread
- * - SSL Pinning
+ * - SSL / TLS Pinning
+ * - CORS restrictions do not apply
+ * - Handling of HTTP code 401 - read more at [Issue CB-2415](https://issues.apache.org/jira/browse/CB-2415)
  *
  * @usage
  * ```typescript
@@ -70,6 +71,21 @@ export interface HTTPResponse {
 })
 @Injectable()
 export class HTTP extends IonicNativePlugin {
+  /**
+   * This enum represents the internal error codes which can be returned in a HTTPResponse object.
+   * @readonly
+   */
+  @CordovaProperty()
+  readonly ErrorCode: {
+    GENERIC: number;
+    SSL_EXCEPTION: number;
+    SERVER_NOT_FOUND: number;
+    TIMEOUT: number;
+    UNSUPPORTED_URL: number;
+    NOT_CONNECTED: number;
+    POST_PROCESSING_FAILED: number;
+  };
+
   /**
    * This returns an object representing a basic HTTP Authorization header of the form.
    * @param username {string} Username
@@ -118,11 +134,12 @@ export class HTTP extends IonicNativePlugin {
   }
 
   /**
-   * Set the data serializer which will be used for all future POST and PUT requests. Takes a string representing the name of the serializer.
-   * @param serializer {string} The name of the serializer. Can be urlencoded, utf8 or json
+   * Set the data serializer which will be used for all future POST, PUT and PATCH requests. Takes a string representing the name of the serializer.
+   * @param serializer {string} The name of the serializer.
+   * @see https://github.com/silkimen/cordova-plugin-advanced-http#setdataserializer
    */
   @Cordova({ sync: true })
-  setDataSerializer(serializer: string): void {}
+  setDataSerializer(serializer: 'urlencoded' | 'json' | 'utf8' | 'multipart'): void {}
 
   /**
    * Add a custom cookie.
@@ -172,26 +189,32 @@ export class HTTP extends IonicNativePlugin {
   setRequestTimeout(timeout: number): void {}
 
   /**
-   * Set SSL Cert handling mode, being one of the following values
-   * default: default SSL cert handling using system's CA certs
-   * legacy: use legacy default behavior (< 2.0.3), excluding user installed CA certs (only for Android)
-   * nocheck: disable SSL cert checking, trusting all certs (meant to be used only for testing purposes)
-   * pinned: trust only provided certs
-   * @see https://github.com/silkimen/cordova-plugin-advanced-http#setsslcertmode
-   * @param {'default' | 'legacy' | 'nocheck' | 'pinned'} mode SSL Cert handling mode
+   * Resolve if it should follow redirects automatically.
+   * @returns {boolean} returns true if it is configured to follow redirects automatically
    */
-  @Cordova()
-  setSSLCertMode(mode: 'default' | 'legacy' | 'nocheck' | 'pinned'): Promise<void> {
+  @Cordova({ sync: true })
+  getFollowRedirect(): boolean {
     return;
   }
 
   /**
-   * Disable following redirects automatically.
-   * @param disable {boolean} Set to true to disable following redirects automatically
-   * @returns {Promise<void>} returns a promise that will resolve on success, and reject on failure
+   * Configure if it should follow redirects automatically.
+   * @param follow {boolean} Set to false to disable following redirects automatically
+   */
+  @Cordova({ sync: true })
+  setFollowRedirect(follow: boolean): void {}
+
+  /**
+   * Set server trust mode, being one of the following values:
+   * default: default SSL trustship and hostname verification handling using system's CA certs;
+   * legacy: use legacy default behavior (< 2.0.3), excluding user installed CA certs (only for Android);
+   * nocheck: disable SSL certificate checking and hostname verification, trusting all certs (meant to be used only for testing purposes);
+   * pinned: trust only provided certificates;
+   * @see https://github.com/silkimen/cordova-plugin-advanced-http#setservertrustmode
+   * @param {string} mode server trust mode
    */
   @Cordova()
-  disableRedirect(disable: boolean): Promise<void> {
+  setServerTrustMode(mode: 'default' | 'legacy' | 'nocheck' | 'pinned'): Promise<void> {
     return;
   }
 
@@ -200,7 +223,7 @@ export class HTTP extends IonicNativePlugin {
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
-   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   * @returns {Promise<HTTPResponse>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
   post(url: string, body: any, headers: any): Promise<HTTPResponse> {
@@ -212,7 +235,7 @@ export class HTTP extends IonicNativePlugin {
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
-   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   * @returns {Promise<HTTPResponse>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
   get(url: string, parameters: any, headers: any): Promise<HTTPResponse> {
@@ -224,7 +247,7 @@ export class HTTP extends IonicNativePlugin {
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
-   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   * @returns {Promise<HTTPResponse>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
   put(url: string, body: any, headers: any): Promise<HTTPResponse> {
@@ -236,7 +259,7 @@ export class HTTP extends IonicNativePlugin {
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
-   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   * @returns {Promise<HTTPResponse>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
   patch(url: string, body: any, headers: any): Promise<HTTPResponse> {
@@ -248,7 +271,7 @@ export class HTTP extends IonicNativePlugin {
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
-   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   * @returns {Promise<HTTPResponse>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
   delete(url: string, parameters: any, headers: any): Promise<HTTPResponse> {
@@ -260,7 +283,7 @@ export class HTTP extends IonicNativePlugin {
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
-   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   * @returns {Promise<HTTPResponse>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
   head(url: string, parameters: any, headers: any): Promise<HTTPResponse> {
@@ -274,7 +297,7 @@ export class HTTP extends IonicNativePlugin {
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The local path(s) of the file(s) to upload
    * @param name {string} The name(s) of the parameter to pass the file(s) along as
-   * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
+   * @returns {Promise<any>} returns a FileEntry promise that will resolve on success, and reject on failure
    */
   @Cordova()
   uploadFile(url: string, body: any, headers: any, filePath: string | string[], name: string | string[]): Promise<any> {
@@ -287,7 +310,7 @@ export class HTTP extends IonicNativePlugin {
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The path to download the file to, including the file name.
-   * @returns {Promise<any>} returns a FileEntry promise that resolve on success, and reject on failure
+   * @returns {Promise<any>} returns a FileEntry promise that will resolve on success, and reject on failure
    */
   @Cordova()
   downloadFile(url: string, body: any, headers: any, filePath: string): Promise<any> {
@@ -308,7 +331,7 @@ export class HTTP extends IonicNativePlugin {
    * @param options.name {string} name(s) to be used during upload see uploadFile for detailed information
    * @param options.responseType {string} response type, defaults to text
    *
-   * @returns {Promise<HTTPResponse>} returns a promise that resolve on success, and reject on failure
+   * @returns {Promise<HTTPResponse>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
   sendRequest(
@@ -317,7 +340,7 @@ export class HTTP extends IonicNativePlugin {
       method: 'get' | 'post' | 'put' | 'patch' | 'head' | 'delete' | 'upload' | 'download';
       data?: { [index: string]: any };
       params?: { [index: string]: string | number };
-      serializer?: 'json' | 'urlencoded' | 'utf8';
+      serializer?: 'json' | 'urlencoded' | 'utf8' | 'multipart';
       timeout?: number;
       headers?: { [index: string]: string };
       filePath?: string | string[];
