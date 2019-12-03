@@ -144,6 +144,13 @@ export class InAppBrowserObject {
   _loadAfterBeforeload(strUrl: string): void {}
 
   /**
+   * Displays an InAppBrowser window that was opened hidden. Calling this has no effect
+   * if the InAppBrowser was already visible.
+   */
+  @CordovaInstance({ sync: true })
+  show(): void {}
+
+  /**
    * Closes the InAppBrowser window.
    */
   @CordovaInstance({ sync: true })
