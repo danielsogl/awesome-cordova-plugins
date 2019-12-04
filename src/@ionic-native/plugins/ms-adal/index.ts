@@ -138,6 +138,7 @@ export class AuthenticationContext {
    * @param   {String}  extraQueryParameters
    *                                Extra query parameters (optional)
    *                                Parameters should be escaped before passing to this method (e.g. using 'encodeURI()')
+   * @param   {String}  claims      Claim parameter. Parameter should be used under conditional access scenarios (optional)
    * @returns {Promise} Promise either fulfilled with AuthenticationResult object or rejected with error
    */
   @CordovaInstance({
