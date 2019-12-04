@@ -143,7 +143,7 @@ export class AuthenticationContext {
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any): Promise<AuthenticationResult> {
+  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any, claims?: string): Promise<AuthenticationResult> {
     return;
   }
 
