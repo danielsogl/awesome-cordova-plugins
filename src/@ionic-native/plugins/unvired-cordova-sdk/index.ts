@@ -803,10 +803,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Mobile: Or a Sqlite whereClause ( without the 'where' keyword )
    * Example:
    * ```
-   * # Mobile: Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
+   * # Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
    * this.unviredSDK.dbSelect('FORM_HEADER', "FORM_ID = '5caed815892215034dacad56'")
-   * # Mobile & Browser: Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
-   * this.unviredSDK.dbSelect('FORM_HEADER', {"FORM_ID": "5caed815892215034dacad56"})
    * ```
    */
   @Cordova()
@@ -855,11 +853,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Mobile: Or a Sqlite whereClause ( without the 'where' keyword )
    * Example:
    * ```
-   * Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
-   * # Mobile
+   * # Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
    * this.unviredSDK.dbDelete('FORM_HEADER', "FORM_ID = '5caed815892215034dacad56'")
-   * # Browser & Mobile
-   * this.unviredSDK.dbDelete('FORM_HEADER', {"FORM_ID": "5caed815892215034dacad56"})
    * ```
    */
   @Cordova()
@@ -875,11 +870,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Mobile: Or a Sqlite where Clause ( without the 'where' keyword )
    * Example:
    * ```
-   * Update NAME & NO from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
-   * # Mobile
+   * # Update NAME & NO from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
    * this.unviredSDK.dbUpdate('FORM_HEADER', {"NAME":"UPDATED_USER","UPDATED_NO":"0039"}, "FORM_ID = '5caed815892215034dacad56'")
-   * # Mobile & Browser
-   * this.unviredSDK.dbUpdate('FORM_HEADER', {"NAME":"UPDATED_USER","UPDATED_NO":"0039"}, {"FORM_ID": "5caed815892215034dacad56"})
    * ```
    */
   @Cordova()
@@ -888,12 +880,11 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
-   * Execute SQL Statement
+   * Execute a SQL statement
    * @param query {string} SQL Statement.
    * Example:
    * ```
-   * this.unviredSDK.dbExecuteStatement('SELECT * FROM CUSTOMER_HEADER WHERE CUSTOMER_ID = 39')
+   * this.unviredSDK.dbExecuteStatement("SELECT * FROM CUSTOMER_HEADER WHERE CUSTOMER_ID = '39'")
    * ```
    */
   @Cordova()
@@ -902,7 +893,6 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
    * Create Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
    * @param savePoint {string} Name of savepoint
    * Example:
@@ -916,7 +906,6 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
    * Release Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
    * @param savePoint {string} Name of savepoint
    * ```
@@ -929,7 +918,6 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
    * Rollback Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
    * @param savePoint {string} Name of the savepoint
    * Example:
@@ -943,7 +931,6 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
    * Begin database transaction.
    * For more info, consult SQLite documentation ( https://www.sqlite.org/lang_transaction.html )
    * Example:
@@ -957,7 +944,6 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
    * End database transaction.
    * For more info, consult SQLite documentation ( https://www.sqlite.org/lang_transaction.html )
    * Example:
