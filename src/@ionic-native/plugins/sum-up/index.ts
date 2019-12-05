@@ -53,6 +53,23 @@ export interface SumUpPayment {
 }
 
 /**
+ * @hidden
+ */
+export class SumUpKeys {
+
+  // The generated accessToken, to automate the login process
+  accessToken: string;
+
+  // affiliateKey can also be set in the object, if it has to be changed on runtime
+  affiliateKey: string;
+
+  constructor() {
+    this.accessToken = '';
+    this.affiliateKey = '';
+  }
+}
+
+/**
  * @name SumUp
  * @description
  * Plugin to communicate with a SumUp payment terminal
@@ -64,11 +81,15 @@ export interface SumUpPayment {
  *
  * constructor(private sumUp: SumUp) { }
  *
- * this.sumUp.login("ACCESS_TOKEN")
+ * const sumUpKeys: SumUpKeys = new SumUpKeys();
+ * sumUpKeys.affiliateKey = 'YOUR_API_KEY'; // if not provided in installation
+ * sumUpKeys.accessToken = 'YOUR_ACCESS_TOKEN';
+ *
+ * this.sumUp.login(sumUpKeys)
  *   .then((res: SumUpResponse) => console.log(res))
  *   .catch((error: SumUpResponse) => console.error(error));
  *
- *  this.sumUp.auth("ACCESS_TOKEN")
+ *  this.sumUp.auth('YOUR_ACCESS_TOKEN')
  *   .then((res: SumUpResponse) => console.log(res))
  *   .catch((error: SumUpResponse) => console.error(error));
  *
@@ -92,7 +113,7 @@ export interface SumUpPayment {
  *   .then((res: SumUpResponse) => console.log(res))
  *   .catch((error: SumUpResponse) => console.error(error));
  *
- * this.sumUp.pay(10.0, "EUR")
+ * this.sumUp.pay(10.0, 'EUR')
  *   .then((res: SumUpPayment) => console.log(res))
  *   .catch((error: SumUpPayment) => console.error(error));
  *
@@ -114,11 +135,11 @@ export class SumUp extends IonicNativePlugin {
    * Login a user with an optional access token.
    * If the access token is provided and valid, the user is logged in autmatically.
    * Otherwise the user has to type in the credentials
-   * @param accessToken {string}
+   * @param sumUpKeys {SumUpKeys}
    * @return {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
-  login(accessToken?: string): Promise<SumUpResponse> {
+  login(sumUpKeys: SumUpKeys): Promise<SumUpResponse> {
     return;
   }
 

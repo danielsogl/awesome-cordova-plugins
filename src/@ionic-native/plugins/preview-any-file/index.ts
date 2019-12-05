@@ -9,7 +9,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { PreviewAnyFile } from '@ionic-native/preview-any-file';
+ * import { PreviewAnyFile } from '@ionic-native/preview-any-file/ngx';
  *
  *
  * constructor(private previewAnyFile: PreviewAnyFile) { }

@@ -136,6 +136,7 @@ export interface CategoryActionData {
   title: string;
   foreground: boolean;
   destructive: boolean;
+  inline?: boolean;
 }
 
 export interface AndroidPushOptions {
@@ -230,6 +231,7 @@ export interface Channel {
   sound?: string;
   vibration?: boolean | number[];
   visibility?: Visibility;
+  badge?: boolean;
 }
 
 export type PushEvent = string;
@@ -269,7 +271,11 @@ export type PushEvent = string;
  *  id: "testchannel1",
  *  description: "My first test channel",
  *  // The importance property goes from 1 = Lowest, 2 = Low, 3 = Normal, 4 = High and 5 = Highest.
- *  importance: 3
+ *  importance: 3,
+ *  //badge is used to if badge appears on the app icon see https://developer.android.com/reference/android/app/NotificationChannel.html#setShowBadge(boolean).
+ *  //false = no badge on app icon.
+ *  //true = badge on app icon
+ *  badge: false
  * }).then(() => console.log('Channel created'));
  *
  * // Delete a channel (Android O and above)

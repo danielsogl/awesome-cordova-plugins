@@ -66,13 +66,13 @@ export interface LocalFileSystem {
   /**
    * Allows the user to look up the Entry for a file or directory referred to by a local URL.
    * @param url A URL referring to a local file in a filesystem accessable via this API.
-   * @param successCallback A callback that is called to report the Entry to which the supplied URL refers.
+   * @param successCallback A callback that is called to report the FileEntry to which the supplied URL refers.
    * @param errorCallback A callback that is called when errors happen, or when the request to obtain the Entry is
    *   denied.
    */
   resolveLocalFileSystemURL(
     url: string,
-    successCallback: EntryCallback,
+    successCallback: FileEntryCallback,
     errorCallback?: ErrorCallback
   ): void;
 

@@ -1,3 +1,50 @@
+## [5.17.1](https://github.com/ionic-team/ionic-native/compare/v5.17.0...v5.17.1) (2019-11-26)
+
+
+### Bug Fixes
+
+* **email-composer:** Aligned function calls with Cordova plugin ([9057dc2](https://github.com/ionic-team/ionic-native/commit/9057dc2c934f5f8e804da84348d353a3234742a4)), closes [#3220](https://github.com/ionic-team/ionic-native/issues/3220)
+* **purchases:** changed optional parameter oldSku ([#3238](https://github.com/ionic-team/ionic-native/issues/3238)) ([bb77620](https://github.com/ionic-team/ionic-native/commit/bb77620d0d27ebbd9831bdd025256a41d2fda188))
+* **push:** add showBadge to android channel ([8e79890](https://github.com/ionic-team/ionic-native/commit/8e79890251ecdb8d41207cfaff862dba5d0ae28a))
+
+
+
+# [5.17.0](https://github.com/ionic-team/ionic-native/compare/v5.16.0...v5.17.0) (2019-11-19)
+
+
+### Bug Fixes
+
+* **file:** Changed resolveLocalFileSystemURL to FileEntryCallback instead of EntryCallback ([#3231](https://github.com/ionic-team/ionic-native/issues/3231)) ([499cc5c](https://github.com/ionic-team/ionic-native/commit/499cc5c075a6eb7d9793081046523df270352fa2))
+* **firebase-x:** adjust typings ([#3228](https://github.com/ionic-team/ionic-native/issues/3228)) ([f2961fb](https://github.com/ionic-team/ionic-native/commit/f2961fb4bb93da2aee321b2c69e834266e17241c))
+* **firebase-x:** update types to match cordova-plugin-firebasex 7.0.0 ([#3226](https://github.com/ionic-team/ionic-native/issues/3226)) ([2fd4885](https://github.com/ionic-team/ionic-native/commit/2fd4885fb1d4e2a79566b1f7244a51b5f3c7de0d))
+* **push:** add inline reply property ([#3221](https://github.com/ionic-team/ionic-native/issues/3221)) ([01bfa5c](https://github.com/ionic-team/ionic-native/commit/01bfa5cc5ebf5e26fb63014ce9614561f1747785))
+
+
+### Features
+
+* **background-mode:** add disableBatteryOptimizations function ([#3235](https://github.com/ionic-team/ionic-native/issues/3235)) ([d2e4d3e](https://github.com/ionic-team/ionic-native/commit/d2e4d3e5cec7a3a08c2d4222600c623527075de5)), closes [#3085](https://github.com/ionic-team/ionic-native/issues/3085)
+* **cordova-plugin-fingerprint-aio:** change interface to support v3.0.0 release of plugin update index.ts ([#3227](https://github.com/ionic-team/ionic-native/issues/3227)) ([48082ee](https://github.com/ionic-team/ionic-native/commit/48082eeaef608779f91880c71c338ce3830eb373))
+* **facebook:** add activateApp function ([#3234](https://github.com/ionic-team/ionic-native/issues/3234)) ([3440dca](https://github.com/ionic-team/ionic-native/commit/3440dca70f8c25c3864cb7f472b47f7f7c074356)), closes [#3218](https://github.com/ionic-team/ionic-native/issues/3218)
+* **printer:** add v0.8.0 support ([#3225](https://github.com/ionic-team/ionic-native/issues/3225)) ([7d75639](https://github.com/ionic-team/ionic-native/commit/7d756394ddca926fa11d19374862fb0d5f63e3d2))
+* **sum-up:** change affiliate key on runtime ([#3223](https://github.com/ionic-team/ionic-native/issues/3223)) ([4c56d22](https://github.com/ionic-team/ionic-native/commit/4c56d227a8bf2fc57431aaadf03d2492263bce6c))
+* **unvired-cordova-sdk:** add method to get log file path ([#3222](https://github.com/ionic-team/ionic-native/issues/3222)) ([f4b03bc](https://github.com/ionic-team/ionic-native/commit/f4b03bcce4e2370392aa3aa8546ef81e317f5379))
+
+
+### BREAKING CHANGES
+
+* **firebase-x:** update firebase-x-cordova plugin to version 7
+
+* fix(firebase-x): update types to match cordova-plugin-firebasex 7.0.0
+
+* fix(firebase-x): Add getAPNSToken(), add `onApnsTokenReceived()`
+
+* Add getAPNSToken() plugin API method to get the APNS token on iOS.
+* (iOS) Add `onApnsTokenReceived()` to register a callback function to be invoked when the APNS token is allocated.
+
+* fix lint errors
+
+
+
 # [5.16.0](https://github.com/ionic-team/ionic-native/compare/v5.15.1...v5.16.0) (2019-10-30)
 
 
@@ -26,6 +73,11 @@
 * **alipay:** adjust pay function properties ([#3197](https://github.com/ionic-team/ionic-native/issues/3197)) ([fb5d47b](https://github.com/ionic-team/ionic-native/commit/fb5d47bff2b5db006aba12455eea6466e3cc7d17)), closes [#158](https://github.com/ionic-team/ionic-native/issues/158)
 * **keyboard:** add missing CordovaProperty import ([#3201](https://github.com/ionic-team/ionic-native/issues/3201)) ([7033a18](https://github.com/ionic-team/ionic-native/commit/7033a1822ec2b12a2491d046b38ff4c0b83c71f6))
 * **wechat:** add missing cordova decorators ([#3195](https://github.com/ionic-team/ionic-native/issues/3195)) ([0b43c69](https://github.com/ionic-team/ionic-native/commit/0b43c6999372f5eb49506b5782229eda08833c59))
+
+
+### Reverts
+
+* Revert "fix(barcode-scanner): add missing shouldAutorotate property (#3096)" (#3192) ([4c5d70e](https://github.com/ionic-team/ionic-native/commit/4c5d70eacd3a811e328d625fbe81dc23ee195b2d)), closes [#3096](https://github.com/ionic-team/ionic-native/issues/3096) [#3192](https://github.com/ionic-team/ionic-native/issues/3192)
 
 
 
@@ -153,6 +205,11 @@
 * **unvired-cordova-sdk:** add plugin ([#3061](https://github.com/ionic-team/ionic-native/issues/3061)) ([9274083](https://github.com/ionic-team/ionic-native/commit/9274083b248a7a90651d1f9aa353c684aa8b8179))
 
 
+### Reverts
+
+* Revert "chore(build): use node 12" ([a0f5254](https://github.com/ionic-team/ionic-native/commit/a0f52549886cb064475457be7a2791617ed926fe))
+
+
 
 # [5.8.0](https://github.com/ionic-team/ionic-native/compare/v5.7.0...v5.8.0) (2019-06-10)
 
@@ -271,9 +328,6 @@
 # [5.3.0](https://github.com/ionic-team/ionic-native/compare/v5.2.0...v5.3.0) (2019-03-19)
 
 
-* Revert "refactor(template): update Inject decorator" ([d827db2](https://github.com/ionic-team/ionic-native/commit/d827db27b00aa84c60f42836da5250b8e56f1adb))
-
-
 ### Bug Fixes
 
 * **scripts:** check for TypeDoc tags when selecting plugin class ([#2963](https://github.com/ionic-team/ionic-native/issues/2963)) ([06654af](https://github.com/ionic-team/ionic-native/commit/06654afae3f84267b50e2faf1e9b9e08783f0279))
@@ -287,6 +341,13 @@
 
 * **nativegeocoder:** update plugin to v3.2.0 ([cd97375](https://github.com/ionic-team/ionic-native/commit/cd97375e6335503d1b9ace876872fe6a515d46fa))
 * **scripts:** add docs-json script ([#2947](https://github.com/ionic-team/ionic-native/issues/2947)) ([b0dea6d](https://github.com/ionic-team/ionic-native/commit/b0dea6dc58c4ec6294cb3c59faabe7674c0ffe7f))
+
+
+### Reverts
+
+* Revert "refactor(template): update Inject decorator" ([d827db2](https://github.com/ionic-team/ionic-native/commit/d827db27b00aa84c60f42836da5250b8e56f1adb))
+* Revert "refactor(template): update Inject decorator" ([b9e4673](https://github.com/ionic-team/ionic-native/commit/b9e46730e3f3844937f6c7b3b4c095405ba03c81))
+* Revert "refactor: optimize plugins for angular treeshaking" ([fcda5ff](https://github.com/ionic-team/ionic-native/commit/fcda5ffcab1034e83319f2f1ebaf808c756bdd1e))
 
 
 ### BREAKING CHANGES
@@ -415,6 +476,11 @@
 * **line-login:** add loginWeb function ([#2810](https://github.com/ionic-team/ionic-native/issues/2810)) ([7145afa](https://github.com/ionic-team/ionic-native/commit/7145afa24f2db5c820c6d8272257b50659aa6863))
 
 
+### Reverts
+
+* Revert "bump deps" ([543fa64](https://github.com/ionic-team/ionic-native/commit/543fa64b35dac69a0571ed726bfd49278b4817da))
+
+
 
 # [4.17.0](https://github.com/ionic-team/ionic-native/compare/v4.16.0...v4.17.0) (2018-11-02)
 
@@ -484,6 +550,11 @@
 * **taptic-engine:** add missing functions and types ([a6bcc9a](https://github.com/ionic-team/ionic-native/commit/a6bcc9affd2248df68a17e323b3e1c4aad689492))
 
 
+### Reverts
+
+* Revert "chore(pacakge): bump deps" ([d3af519](https://github.com/ionic-team/ionic-native/commit/d3af51915efab8d7e051e1c72ec087d4eb8710d8))
+
+
 
 # [5.0.0-beta.20](https://github.com/ionic-team/ionic-native/compare/v5.0.0-beta.19...v5.0.0-beta.20) (2018-09-18)
 
@@ -543,6 +614,12 @@
 * **local-notifications:** Added local additional local notification action fields ([#2713](https://github.com/ionic-team/ionic-native/issues/2713)) ([267149b](https://github.com/ionic-team/ionic-native/commit/267149b16fdb2701b48a47741627cc784fa5c6e9))
 * **mixpanel:** Update/add functions ([#2697](https://github.com/ionic-team/ionic-native/issues/2697)) ([ac467c5](https://github.com/ionic-team/ionic-native/commit/ac467c50ac30e5e5c6da2349b314b0f8049a7d5d))
 * **wechat:** add plugin ([#2716](https://github.com/ionic-team/ionic-native/issues/2716)) ([10ac9ff](https://github.com/ionic-team/ionic-native/commit/10ac9ff9de6541bbd1a2709850cdb6205b8b4049))
+
+
+### Reverts
+
+* Revert "chore(): update changelog" ([667de5b](https://github.com/ionic-team/ionic-native/commit/667de5ba264194e0da383d5efcb65a2821949b46))
+* Revert "4.12.3" ([2dc7ee8](https://github.com/ionic-team/ionic-native/commit/2dc7ee8916396132a8ab30f682f88c4793760e11))
 
 
 
@@ -607,6 +684,11 @@
 * **webengage:** add optional config with initialization ([#2637](https://github.com/ionic-team/ionic-native/issues/2637)) ([ca9a702](https://github.com/ionic-team/ionic-native/commit/ca9a70280845ae533e4bce32280bc185f2d0eef2))
 
 
+### Reverts
+
+* Revert "4.12.0" ([0764e28](https://github.com/ionic-team/ionic-native/commit/0764e2840837704f0791b74d15daa5fb56325b59))
+
+
 
 # [4.11.0](https://github.com/ionic-team/ionic-native/compare/v4.10.1...v4.11.0) (2018-07-29)
 
@@ -621,6 +703,11 @@
 * **clevertap:** add CleverTap plugin ([#2609](https://github.com/ionic-team/ionic-native/issues/2609)) ([27d380e](https://github.com/ionic-team/ionic-native/commit/27d380ef4b8fda754bd05a3b57f2a814a80f8f97))
 * **facebook:** add getDeferredApplink function ([3b32e19](https://github.com/ionic-team/ionic-native/commit/3b32e19bf17d0fb9ced6b15b0a7bc0c89b55e22d)), closes [#2510](https://github.com/ionic-team/ionic-native/issues/2510)
 * **webengage:** add webengage plugin ([#2604](https://github.com/ionic-team/ionic-native/issues/2604)) ([bd5bd7e](https://github.com/ionic-team/ionic-native/commit/bd5bd7ea9df69676a837853c532fbb9613bfd247))
+
+
+### Reverts
+
+* Revert "chore(package): upgrade fs-extra" ([83194f6](https://github.com/ionic-team/ionic-native/commit/83194f616b91752153cf113d9024dd24168f88c4))
 
 
 
@@ -675,6 +762,11 @@
 * **ble:** add missing functions ([#2572](https://github.com/ionic-team/ionic-native/issues/2572)) ([9f9a346](https://github.com/ionic-team/ionic-native/commit/9f9a3461f7e50f038945ba75ddf6bf9a5b3d7777))
 * **network-interface:** match latest plugin release ([#2587](https://github.com/ionic-team/ionic-native/issues/2587)) ([4f41589](https://github.com/ionic-team/ionic-native/commit/4f415892b1ca65488a2ed4d49a19c5da495c1aeb))
 * **streaming-media:** add new parameters & docs ([#2576](https://github.com/ionic-team/ionic-native/issues/2576)) ([f62a123](https://github.com/ionic-team/ionic-native/commit/f62a123a3410daeb67abd4af121ecb6b7f5a3a07))
+
+
+### Reverts
+
+* Revert "chore(package): bump deps" ([f1d8d3b](https://github.com/ionic-team/ionic-native/commit/f1d8d3b2557d64099e5ed85a9291fbc4d3d86a3e))
 
 
 
@@ -767,7 +859,6 @@
 * **email-composer:** add missing options ([4399600](https://github.com/ionic-team/ionic-native/commit/439960092e8f9a86bf0dc760ae6727a0b24ca466)), closes [#175](https://github.com/ionic-team/ionic-native/issues/175)
 * **facebook:** remove browserInit function ([f718432](https://github.com/ionic-team/ionic-native/commit/f7184325a7567968eede72d59566c34d999ded24)), closes [#1901](https://github.com/ionic-team/ionic-native/issues/1901)
 * **firebase-analytics:** add `sync` option for all methods ([42fd1f2](https://github.com/ionic-team/ionic-native/commit/42fd1f2400780a248a8d8ab40c2c51107160236e))
-* **google-maps:** wrong decorators ([e5b9d53](https://github.com/ionic-team/ionic-native/commit/e5b9d53b179fedb939911753076e579ab7c12748))
 * **health-kit:** add missing properties to HealthKitOptions ([f8e79ce](https://github.com/ionic-team/ionic-native/commit/f8e79cec5fa28388df9bda5b79988332ace0f53a))
 * **image-resizer:** add missing option ([859cbfc](https://github.com/ionic-team/ionic-native/commit/859cbfcfc6cecbf02cf6b6093fc3160fb5da7853))
 * **index-app-content:** remove onItemPressed function ([270678f](https://github.com/ionic-team/ionic-native/commit/270678fb55dc85e7ce681c4c225cba5853ce0d77))
@@ -824,6 +915,11 @@
 * **sqlite:** add selfTest function ([241f073](https://github.com/ionic-team/ionic-native/commit/241f0733ee69809846f62384e961b6bc3c8e9773)), closes [#963](https://github.com/ionic-team/ionic-native/issues/963)
 * **uptime:** add iOS support ([e6f6158](https://github.com/ionic-team/ionic-native/commit/e6f6158b437d972952aa538b0af6d19ce2d45576))
 * **web-intent:** add startService function ([15bb350](https://github.com/ionic-team/ionic-native/commit/15bb350d8e346a035bfbfb0ab4f4370b5f4a3980))
+
+
+### Reverts
+
+* Revert "chore(package): bump dependencies and lint rules" ([6c938bf](https://github.com/ionic-team/ionic-native/commit/6c938bfdb7e41997efcb419b05e701fc98d8f141))
 
 
 
@@ -2115,6 +2211,11 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 * **plugin:** cordova function override. fixes [#437](https://github.com/ionic-team/ionic-native/issues/437) ([f60d08b](https://github.com/ionic-team/ionic-native/commit/f60d08b7a4110d7e183a36df5f0dadf412726ca5))
 * **push:** add coldstart property. Fixes [#559](https://github.com/ionic-team/ionic-native/issues/559) ([48196da](https://github.com/ionic-team/ionic-native/commit/48196da28194db7b3ff50f2089304e6679939510))
 * **scripts:** publish script with npm and bower. Fixes [#448](https://github.com/ionic-team/ionic-native/issues/448) ([3903fee](https://github.com/ionic-team/ionic-native/commit/3903fee2bff1e86a59acc2d378ea194b70d8296f))
+
+
+### Reverts
+
+* Revert "Bump to 2.0.0 typescript" ([2f20dea](https://github.com/ionic-team/ionic-native/commit/2f20deacf286eb5ae2e831352548ad78e1778817))
 
 
 

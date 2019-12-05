@@ -14,6 +14,11 @@ export interface IChannelOptions {
   name?: string;
 
   /**
+   * Channel description. Default: empty string
+   */
+  description?: string;
+
+  /**
    * The sound to play once a push comes. Default value: 'default'
    * Values allowed:
    * 'default' - plays the default notification sound
@@ -29,7 +34,7 @@ export interface IChannelOptions {
    * Boolean - vibrate or not
    * Array - vibration pattern - e.g. [500, 200, 500] - milliseconds vibrate, milliseconds pause, vibrate, pause, etc.
    */
-  vibration?: boolean;
+  vibration?: boolean | number[];
 
   /**
    * Whether to blink the LED
@@ -106,7 +111,7 @@ export interface IChannelOptions {
 @Injectable()
 export class FirebaseX extends IonicNativePlugin {
   /**
-   * Get the device token.
+   * Get the current FCM token.
    * @return {Promise<null | string>} Note that token will be null if it has not been established yet
    */
   @Cordova()
@@ -122,6 +127,29 @@ export class FirebaseX extends IonicNativePlugin {
     observable: true
   })
   onTokenRefresh(): Observable<any> {
+    return;
+  }
+
+  /**
+   * iOS only.
+   * Get the APNS token allocated for this app install.
+   * @return {Promise<null | string>} Note that token will be null if it has not been established yet
+   */
+  @Cordova()
+  getAPNSToken(): Promise<null | string> {
+    return;
+  }
+
+  /**
+   * iOS only.
+   * Registers a handler to call when the APNS token is allocated.
+   * This will be called once when remote notifications permission has been granted by the user at runtime.
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  onApnsTokenReceived(): Observable<any> {
     return;
   }
 
@@ -367,60 +395,73 @@ export class FirebaseX extends IonicNativePlugin {
   }
 
   /**
-   * Request a verification ID and send a SMS with a verification code. Use them to construct a credential to sign in the user (in your app).
+   * Requests verification of a phone number in order to authenticate a user and sign then into Firebase in your app.
    *
-   * More info:
-   * https://github.com/dpa99c/cordova-plugin-firebasex#verifyphonenumber
-   * https://firebase.google.com/docs/auth/android/phone-auth
-   * https://firebase.google.com/docs/reference/js/firebase.auth.Auth#signInWithCredential
-   * https://firebase.google.com/docs/reference/js/firebase.User#linkWithCredential
+   * NOTE: This will only work on physical devices with a SIM card (not iOS Simulator or Android Emulator)
    *
-   * NOTE: This will only work on physical devices.
+   * In response to your request, you'll receive a verification ID which you can use in conjunction with the verification code
+   * to sign the user in.
    *
-   * iOS will return: credential (string)
+   * On iOS and some Android devices, the user will receive and SMS containing the verification code which they must manually enter
+   * into your app.
    *
-   * Android will return:
-   * credential.verificationId (object and with key verificationId)
-   * credential.instantVerification (boolean) credential.code (string)
-   * (note that this key only exists if instantVerification is true)
+   * Some Android devices support "instant verfication", in which case an SMS will not be send and you will be returned
+   * the verification code along with the verification ID. In this case, the user doesn't need to do anything in order for you
+   * to sign them in.
    *
-   * You need to use device plugin in order to access the right key.
-   * IMPORTANT NOTE: Android supports auto-verify and instant device verification.
-   * Therefore in that case it doesn't make sense to ask for an sms code as you won't receive one.
-   * In this case you'll get a credential.verificationId and a credential.code where code is the auto received verification code
-   * that would normally be sent via sms. To log in using this procedure you must pass this code to
-   * PhoneAuthProvider.credential(verificationId, code). You'll find an implementation example further below.
+   * @param {function} success - callback function to pass {object} credentials to as an argument
+   * @param {function} error - callback function which will be passed a {string} error message as an argument
+   * @param {string} phoneNumber - phone number to verify
+   * @param {integer} timeOutDuration - (optional) time to wait in seconds before timing out
+   * @param {string} fakeVerificationCode - (optional) to test instant verification on Android ,specify a fake verification code to return for whitelisted phone numbers.
    *
-   * When using node.js Firebase Admin-SDK, follow this tutorial:
-   * https://firebase.google.com/docs/auth/admin/create-custom-tokens
-   *
-   * Pass back your custom generated token and call
-   * firebase.auth().signInWithCustomToken(customTokenFromYourServer);
-   * instead of
-   * firebase.auth().signInWithCredential(credential)
-   *
-   * YOU HAVE TO COVER THIS PROCESS, OR YOU WILL HAVE ABOUT 5% OF USERS STICKING ON YOUR SCREEN, NOT RECEIVING ANYTHING
-   * If this process is too complex for you, use this awesome plugin
-   * https://github.com/chemerisuk/cordova-plugin-firebase-authentication
-   * It's not perfect but it fits for the most use cases and doesn't require calling your endpoint, as it has native phone auth support.
-   *
-   * Android
-   * To use this auth you need to configure your app SHA hash in the android app configuration in the firebase console.
-   * See https://developers.google.com/android/guides/client-auth to know how to get SHA app hash.
-   *
-   * iOS
-   * Setup your push notifications first, and verify that they are arriving on your physical device before you test this method.
-   * Use the APNs auth key to generate the .p8 file and upload it to firebase. When you call this method,
-   * FCM sends a silent push to the device to verify it.
-   *
-   * @param {string} phoneNumber The phone number, including '+' and country code
-   * @param {number} timeoutDuration (Android only) The timeout in sec - no more SMS will be sent to this number until this timeout expires
-   * @returns {Promise<any>}
+   * The success callback will be passed a credential object with the following properties:
+   *   instantVerification {boolean} - true if the Android device supports instant verification, in which case the verification code will be included in the credential object. If this is false, the device will be sent an SMS containing the verification code for the user to manually enter into your app. Always false on iOS.
+   *   verificationId {string} - the verification ID you'll need to pass along with the verification code to sign the user in. Always returned on both Android & iOS.
+   *   code {string} - verification code. Will only be present if instantVerification is true. Always undefined on iOS.
    */
   @Cordova()
   verifyPhoneNumber(
+    success: (value: string | object) => void,
+    error: (err: string) => void,
     phoneNumber: string,
     timeoutDuration = 0
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Signs the user into Firebase with credentials obtained using verifyPhoneNumber().
+   * See the Android- and iOS-specific Firebase documentation for more info.
+   * @param {string} verificationId - the verification ID returned in the credentials object to the verifyPhoneNumber() success callback.
+   * @param {string} code - the activation code, either returned in the credentials object to the verifyPhoneNumber() success callback if using Instant Verification on Android, or the activation code as entered by the user from the received SMS message.
+   * @param {function} success - callback function to call on successful sign-in using credentials
+   * @param {function} error - callback function which will be passed a {string} error message as an argument
+   */
+  @Cordova()
+  signInWithCredential(
+    verificationId: string,
+    code: string,
+    success: () => void,
+    error: (err: string) => void
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Links the user account to an existing Firebase user account with credentials obtained using verifyPhoneNumber().
+   * See the Android- and iOS-specific Firebase documentation for more info.
+   * @param {string} verificationId - the verification ID returned in the credentials object to the verifyPhoneNumber() success callback.
+   * @param {string} code - the activation code, either returned in the credentials object to the verifyPhoneNumber() success callback if using Instant Verification on Android, or the activation code as entered by the user from the received SMS message.
+   * @param {function} success - callback function to call on successful sign-in using credentials
+   * @param {function} error - callback function which will be passed a {string} error message as an argument
+   */
+  @Cordova()
+  linkUserWithCredential(
+    verificationId: string,
+    code: string,
+    success: () => void,
+    error: (err: string) => void
   ): Promise<any> {
     return;
   }
