@@ -179,6 +179,13 @@ export class InAppBrowserObject {
   }
 
   /**
+   * Method to be called after the "beforeload" event to continue the script
+   * @param strUrl {String} The URL the InAppBrowser should navigate to.
+   */
+  @CordovaInstance({ sync: true })
+  _loadAfterBeforeload(strUrl: string): void {}
+
+  /**
    * Displays an InAppBrowser window that was opened hidden. Calling this has no effect
    * if the InAppBrowser was already visible.
    */
