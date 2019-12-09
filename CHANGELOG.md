@@ -1,3 +1,24 @@
+# [5.18.0](https://github.com/ionic-team/ionic-native/compare/v5.17.1...v5.18.0) (2019-12-09)
+
+
+### Bug Fixes
+
+* **ms-adal:** add missing "claims" parameter to "acquireTokenAsync" function ([#3250](https://github.com/ionic-team/ionic-native/issues/3250)) ([ecd451c](https://github.com/ionic-team/ionic-native/commit/ecd451ceb35119fbd62665e850e89f999f4aab7d))
+
+
+### Features
+
+* **http:** update declaration for cordova plugin version 2.3.0 ([#3247](https://github.com/ionic-team/ionic-native/issues/3247)) ([bddc221](https://github.com/ionic-team/ionic-native/commit/bddc221b6014b3523c2bf519f74300ebc4b1a6a5))
+* **in-app-browser:** add "beforeload" callback method ([#3249](https://github.com/ionic-team/ionic-native/issues/3249)) ([a22ee6e](https://github.com/ionic-team/ionic-native/commit/a22ee6ed2bdcad7f39859a63558eeb41e2bfa02c)), closes [issue#3152](https://github.com/issue/issues/3152)
+* **ms-adal:** add authentication settings ([#3252](https://github.com/ionic-team/ionic-native/issues/3252)) ([1aa89ae](https://github.com/ionic-team/ionic-native/commit/1aa89ae31110e595de070f19c21ce11899891979))
+
+
+### BREAKING CHANGES
+
+* **http:** you have to update to cordova-plugin-advanced-http@2.3 or later
+
+
+
 ## [5.17.1](https://github.com/ionic-team/ionic-native/compare/v5.17.0...v5.17.1) (2019-11-26)
 
 
