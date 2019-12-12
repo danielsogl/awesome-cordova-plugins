@@ -352,6 +352,18 @@ export class LoginParameters {
    */
   metadataJSON: string;
 
+  /**
+   * Specify the demo data xml string for demo mode.
+   */
+  demoData: string;
+
+
+  /**
+   * Set 'true' if the application supports demo mode otherwise set 'false'.
+   */
+  demoModeRequired: boolean;
+
+
    /*
     * Set this value to true to persist web application database. By default, this value is false.
     */
