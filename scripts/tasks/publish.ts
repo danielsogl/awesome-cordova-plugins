@@ -11,7 +11,7 @@ import { Logger } from '../logger';
 // tslint:disable-next-line:no-var-requires
 const MAIN_PACKAGE_JSON = require('../../package.json');
 const VERSION = MAIN_PACKAGE_JSON.version;
-const FLAGS = '--access public';
+const FLAGS = '--access public --tag beta';
 
 const PACKAGE_JSON_BASE = {
   description: 'Ionic Native - Native plugins for ionic apps',
@@ -37,7 +37,7 @@ const PLUGIN_PEER_DEPENDENCIES = {
   rxjs: RXJS_VERSION
 };
 
-const ngCCConfig = `module.exports={entryPoints:{"./index.js":{override:{main:"./ngx/index.js",typings:"./ngx/index.d.ts"}}}};`
+const ngccConfig = `module.exports = { entryPoints: { ".": { override: { main: "./ngx/index.js", typings: "./ngx/index.d.ts", }, }, }, };`
 
 function getPackageJsonContent(name: string, peerDependencies = {}, dependencies = {}) {
   return merge(PACKAGE_JSON_BASE, {
@@ -55,8 +55,8 @@ function writePackageJson(data: any, dir: string) {
 }
 
 function writeNgcConfig(dir: string){
-  const filePath = path.resolve(dir, 'ngcc-config.js');
-  fs.writeFileSync(filePath, ngCCConfig);
+  const filePath = path.resolve(dir, 'ngcc.config.js');
+  fs.writeFileSync(filePath, ngccConfig);
 }
 
 function prepare() {

@@ -1,6 +1,10 @@
 {
   "name": "ionic-native",
+<<<<<<< HEAD
   "version": "5.19.1",
+=======
+  "version": "5.18.1-beta.1",
+>>>>>>> updates
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "homepage": "https://ionicframework.com/",
   "author": "Ionic Team <hi@ionic.io> (https://ionic.io)",
@@ -53,9 +57,11 @@
     "ts-jest": "^24.2.0",
     "ts-node": "^8.5.2",
     "tslint": "^5.20.1",
+    "tslint-angular": "3.0.2",
     "tslint-ionic-rules": "0.0.21",
     "typedoc": "^0.15.6",
     "typescript": "~3.5.3",
+    "typescript-tslint-plugin": "0.5.5",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "unminified-webpack-plugin": "^2.0.0",
     "webpack": "^4.41.5",
