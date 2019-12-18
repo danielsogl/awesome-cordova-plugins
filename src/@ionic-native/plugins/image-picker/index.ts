@@ -12,6 +12,7 @@ export interface ImagePickerOptions {
    * Max width to allow images to be
    */
   width?: number;
+
   /**
    * Max height to allow images to be
    */
@@ -23,12 +24,32 @@ export interface ImagePickerOptions {
   quality?: number;
 
   /**
+   * Videos allowed?
+   */
+  allow_video?: boolean;
+
+  /**
+   * the default is the message of the old plugin impl
+   */
+  title?: string;
+
+  /**
+   * the old plugin impl didn't have it, so passing null by default
+   */
+  message?: string;
+
+  /**
    * Choose the format of the return value.
    * Defined in ImagePicker.OutputType. Default is FILE_URI.
    *      FILE_URI : 0,   Return image file URI,
    *      DATA_URL : 1,   Return image as base64-encoded string
    */
   outputType?: number;
+
+  /**
+   * Disable the iOS popover as seen on iPad
+   */
+  disable_popover?: boolean;
 }
 
 export enum OutputType {
@@ -42,7 +63,7 @@ export enum OutputType {
  * Cordova Plugin For Multiple Image Selection
  *
  * Requires Cordova plugin: `cordova-plugin-image-picker`.
- * For more info, please see the https://github.com/wymsee/cordova-imagePicker
+ * For more info, please see the https://github.com/Telerik-Verified-Plugins/ImagePicker
  *
  * @usage
  * ```typescript
@@ -83,7 +104,9 @@ export class ImagePicker extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getPictures(options: ImagePickerOptions): Promise<any> { return; }
+  getPictures(options: ImagePickerOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Check if we have permission to read images
@@ -92,7 +115,9 @@ export class ImagePicker extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  hasReadPermission(): Promise<boolean> { return; }
+  hasReadPermission(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Request permission to read images
@@ -101,6 +126,8 @@ export class ImagePicker extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  requestReadPermission(): Promise<any> { return; }
+  requestReadPermission(): Promise<any> {
+    return;
+  }
 
 }
