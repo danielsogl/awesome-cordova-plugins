@@ -17,14 +17,13 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
   options.target = ts.ScriptTarget.ES5;
   options.lib = ['dom', 'es2017'];
   options.inlineSourceMap = true;
+  options.importHelpers = true;
   options.inlineSources = true;
   options.enableIvy = false;
+
   delete options.baseUrl;
 
   const host: CompilerHost = createCompilerHost({ options });
-  console.warn(rootNames);
-  console.warn(options);
-  console.warn(host);
   return createProgram({
     rootNames,
     options,
@@ -36,8 +35,9 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
 export function transpileNgxCore() {
   getProgram([path.resolve(ROOT, 'src/@ionic-native/core/index.ts')]).emit({
     emitFlags: EmitFlags.Metadata,
-    emitCallback: ({ program, writeFile, customTransformers, cancellationToken, targetSourceFile }) =>
-      program.emit(targetSourceFile, writeFile, cancellationToken, true, customTransformers)
+    emitCallback: ({ program, writeFile, customTransformers, cancellationToken, targetSourceFile }) => {
+      return program.emit(targetSourceFile, writeFile, cancellationToken, true, customTransformers);
+    }
   });
 }
 
@@ -59,6 +59,7 @@ export function generateDeclarationFiles() {
 
 // remove reference to @ionic-native/core decorators
 export function modifyMetadata() {
+  debugger;
   PLUGIN_PATHS.map(p => p.replace(path.join(ROOT, 'src'), path.join(ROOT, 'dist')).replace('index.ts', 'ngx/index.metadata.json'))
     .forEach(p => {
       const content = fs.readJSONSync(p);

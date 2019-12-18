@@ -114,4 +114,4 @@ async function publish(ignoreErrors = false) {
 }
 
 prepare();
-// publish();
+publish();
