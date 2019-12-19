@@ -487,7 +487,7 @@ export class CameraPreview extends IonicNativePlugin {
   getHorizontalFOV(): Promise<any> {
     return;
   }
-  
+
   /**
    * Get the characteristics of all available cameras
    * @return {Promise<any>}
