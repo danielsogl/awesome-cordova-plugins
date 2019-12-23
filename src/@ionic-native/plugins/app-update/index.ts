@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface AppUpdateOptions {
-  authType: string;
+  authType?: string;
   username?: string;
   password?: string;
+  skipPromptDialog?: boolean;
+  skipProgressDialog?: boolean;
 }
 
 /**
