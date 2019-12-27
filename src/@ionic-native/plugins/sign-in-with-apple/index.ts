@@ -2,6 +2,16 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 /**
+ * @see https://developer.apple.com/documentation/authenticationservices/asauthorizationappleidrequest
+ */
+export class ASAuthorizationAppleIDRequest {
+  static readonly ASAuthorizationScopeFullName = 0;
+  static readonly ASAuthorizationScopeEmail = 1;
+
+  requestedScopes?: number[];
+}
+
+/**
  * @see https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1412193-phoneticrepresentation
  */
 export interface NSPersonNameComponents {
@@ -116,7 +126,7 @@ export interface AppleSignInErrorResponse extends NSError {
  *
  * @usage
  * ```typescript
- * import { SignInWithApple, AppleSignInResponse, AppleSignInErrorResponse } from '@ionic-native/sign-in-with-apple/ngx';
+ * import { SignInWithApple, AppleSignInResponse, AppleSignInErrorResponse, ASAuthorizationAppleIDRequest } from '@ionic-native/sign-in-with-apple/ngx';
  *
  *
  * constructor(private signInWithApple: SignInWithApple) { }
@@ -124,7 +134,12 @@ export interface AppleSignInErrorResponse extends NSError {
  * ...
  *
  *
- * this.signInWithApple.signin()
+ *   this.signInWithApple.signin({
+ *     requestedScopes: [
+ *       ASAuthorizationAppleIDRequest.ASAuthorizationScopeFullName,
+ *       ASAuthorizationAppleIDRequest.ASAuthorizationScopeEmail
+ *     ]
+ *   })
  *   .then((res: AppleSignInResponse) => {
  *     // https://developer.apple.com/documentation/signinwithapplerestapi/verifying_a_user
  *     alert('Send token to apple for verification: ' + res.identityToken);
@@ -151,11 +166,11 @@ export class SignInWithApple extends IonicNativePlugin {
    * Starts the authorization flows named during controller initialization
    * @see https://developer.apple.com/documentation/authenticationservices/asauthorizationcontroller/3153047-performrequests
    * @return {Promise<AppleSignInResponse>} Returns a promise when authorization succeeds
-   * @param arg0
+   * @param {ASAuthorizationAppleIDRequest} options
    * @throws AppleSignInErrorResponse
    */
   @Cordova()
-  signin(arg0: object = null): Promise<AppleSignInResponse> {
+  signin(options: ASAuthorizationAppleIDRequest = {}): Promise<AppleSignInResponse> {
     return;
   }
 
