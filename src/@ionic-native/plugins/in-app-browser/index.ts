@@ -134,6 +134,8 @@ export interface InAppBrowserEvent extends Event {
   code: number;
   /** the error message, only in the case of loaderror. */
   message: string;
+  /** the postMessage data, only in the case of message. */
+  data: any;
 }
 
 /**
