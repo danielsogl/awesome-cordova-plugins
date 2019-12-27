@@ -56,6 +56,11 @@ export enum LoginListenerType {
    * If there are multiple accounts active & no account is specified in the login(), then this value is returned indicating that a current account needs to be specified for the login().
    */
   app_requires_current_account = 6
+
+  /**
+   * This value indicates app can proceed with demo mode.
+   */
+  login_demo = 7
 }
 
 export enum LoginType {
@@ -347,6 +352,18 @@ export class LoginParameters {
    */
   metadataJSON: string;
 
+  /**
+   * Specify the demo data xml string for demo mode.
+   */
+  demoData: string;
+
+
+  /**
+   * Set 'true' if the application supports demo mode otherwise set 'false'.
+   */
+  demoModeRequired: boolean;
+
+
    /*
     * Set this value to true to persist web application database. By default, this value is false.
     */
@@ -635,6 +652,23 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    */
   @Cordova()
   login(loginParameters: LoginParameters): Promise<LoginResult> {
+    return;
+  }
+
+  /**
+   * This api initializes the Unvired Application.
+   * @param loginParameters Set of parameters to be passed the loginWithDemoData()
+   * For Example:
+   * ```
+   * let loginParameters = new LoginParameters()
+   * loginParameters.appName = 'UNVIRED_DIGITAL_FORMS'
+   * loginParameters.metadataPath = '../assets/metadata.json'
+   * loginParameters.loginType = LoginType.unvired
+   * loginParameters.demoData = "<tag></tag>"
+   * ```
+   */
+  @Cordova()
+  loginWithDemoData(loginParameters: LoginParameters): Promise<LoginResult> {
     return;
   }
 
