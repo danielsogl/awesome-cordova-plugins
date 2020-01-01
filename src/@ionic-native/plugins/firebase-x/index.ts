@@ -301,7 +301,7 @@ export class FirebaseX extends IonicNativePlugin {
   setAnalyticsCollectionEnabled(enabled: boolean): Promise<any> {
     return;
   }
-  
+
   /**
    * Enable/disable Crashlytics collection.
    * @param {boolean} enabled
@@ -311,7 +311,7 @@ export class FirebaseX extends IonicNativePlugin {
   setCrashlyticsCollectionEnabled(enabled: boolean): Promise<any> {
     return;
   }
-  
+
   /**
    * Enable/disable performance collection.
    * @param {boolean} enabled
