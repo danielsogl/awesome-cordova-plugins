@@ -301,6 +301,26 @@ export class FirebaseX extends IonicNativePlugin {
   setAnalyticsCollectionEnabled(enabled: boolean): Promise<any> {
     return;
   }
+  
+  /**
+   * Enable/disable Crashlytics collection.
+   * @param {boolean} enabled
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setCrashlyticsCollectionEnabled(enabled: boolean): Promise<any> {
+    return;
+  }
+  
+  /**
+   * Enable/disable performance collection.
+   * @param {boolean} enabled
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setPerformanceCollectionEnabled(enabled: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Log an event using Analytics
