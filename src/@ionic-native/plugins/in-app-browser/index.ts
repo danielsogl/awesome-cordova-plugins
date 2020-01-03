@@ -123,11 +123,11 @@ export interface InAppBrowserOptions {
   [key: string]: any;
 }
 
-export type InAppBrowserEventType = 'loadstart' | 'loadstop' | 'loaderror' | 'exit' | 'beforeload' | 'message';
+export type InAppBrowserEventType = 'loadstart' | 'loadstop' | 'loaderror' | 'exit' | 'beforeload' | 'message' | 'customscheme';
 
 export interface InAppBrowserEvent extends Event {
   /** the event name */
-  type: InAppBrowserEventType;
+  type: string;
   /** the URL that was loaded. */
   url: string;
   /** the error code, only in the case of loaderror. */
@@ -234,6 +234,28 @@ export class InAppBrowserObject {
    */
   @InstanceCheck()
   on(event: InAppBrowserEventType): Observable<InAppBrowserEvent> {
+    return new Observable<InAppBrowserEvent>(
+      (observer: Observer<InAppBrowserEvent>) => {
+        this._objectInstance.addEventListener(
+          event,
+          observer.next.bind(observer)
+        );
+        return () =>
+          this._objectInstance.removeEventListener(
+            event,
+            observer.next.bind(observer)
+          );
+      }
+    );
+  }
+
+  /**
+   * A method that allows you to listen to events happening in the browser.
+   * @param event {string} Name of the event
+   * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
+   */
+  @InstanceCheck()
+  on(event: string): Observable<InAppBrowserEvent> {
     return new Observable<InAppBrowserEvent>(
       (observer: Observer<InAppBrowserEvent>) => {
         this._objectInstance.addEventListener(
