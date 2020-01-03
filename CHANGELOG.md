@@ -1,3 +1,17 @@
+## [5.19.1](https://github.com/ionic-team/ionic-native/compare/v5.19.0...v5.19.1) (2020-01-03)
+
+
+### Bug Fixes
+
+* **in-app-browser:** adds missing customscheme type ([#3276](https://github.com/ionic-team/ionic-native/issues/3276)) ([240feba](https://github.com/ionic-team/ionic-native/commit/240feba76babb715dc08cb9c3f1fe3cea6447b9a))
+
+
+### Features
+
+* **firebase-x:** add missing methods, parameter ([#3273](https://github.com/ionic-team/ionic-native/issues/3273)) ([e55a1e1](https://github.com/ionic-team/ionic-native/commit/e55a1e1117f8e9291fbbb088b9c09bb4c5d8f673))
+
+
+
 # [5.19.0](https://github.com/ionic-team/ionic-native/compare/v5.18.0...v5.19.0) (2019-12-27)
 
 
