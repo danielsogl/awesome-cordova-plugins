@@ -79,7 +79,7 @@ export interface IChannelOptions {
  *
  * @usage
  * ```typescript
- * import { FirebaseX } from '@ionic-native/firebase-x';
+ * import { FirebaseX } from '@ionic-native/firebase-x/ngx';
  *
  *
  * constructor(private firebaseX: FirebaseX) { }
