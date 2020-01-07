@@ -64,20 +64,41 @@ export class SmartlookGlobalEventPropertyKey {
 /**
  * @name Smartlook
  * @description
- * Official Smartlook SDK plugin. For more information visit (www.smartlook.com).
+ * Official Smartlook SDK plugin.
+ * Full documentation can be found here: https://smartlook.github.io/docs/sdk/ionic/
  *
  * @usage
+ * in `app.module`:
+ *
  * ```typescript
  * import { Smartlook } from '@ionic-native/smartlook/ngx';
  *
+ * ...
  *
- * constructor(private smartlook: Smartlook) { }
+ * @NgModule({
+ * providers: [Smartlook, ...]
+ *
+ * ...
+ * 
+ * })
+ * export class AppModule {}
+ * ```
+ *
+ * - `app.component`
+ *
+ * ```typescript
+ * import { Smartlook, SmartlookSetupConfig } from '@ionic-native/smartlook/ngx';
  *
  * ...
  *
- *
- * this.smartlook.setupAndStartRecording(new SmartlookSetupConfig("key"));
- *
+ * @Component( ... )
+ * export class AppComponent {
+ *     constructor(private smartlook: Smartlook) {
+ *        this.platform.ready().then(() => {
+ *            this.smartlook.setupAndStartRecording(new SmartlookSetupConfig("YOUR API KEY"));
+ *        }
+ *     }
+ * }
  * ```
  * @classes
  * SmartlookSetupConfig
