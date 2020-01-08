@@ -79,7 +79,7 @@ export class SmartlookGlobalEventPropertyKey {
  * providers: [Smartlook, ...]
  *
  * ...
- * 
+ *
  * })
  * export class AppModule {}
  * ```
