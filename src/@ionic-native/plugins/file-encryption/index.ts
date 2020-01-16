@@ -24,7 +24,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 @Plugin({
   pluginName: 'FileEncryption',
   plugin: 'cordova-safe',
-  pluginRef: 'cordova.plugins.disusered',
+  pluginRef: 'cordova.plugins.disusered.safe',
   repo: 'https://github.com/disusered/cordova-safe',
   platforms: ['Android', 'iOS']
 })
