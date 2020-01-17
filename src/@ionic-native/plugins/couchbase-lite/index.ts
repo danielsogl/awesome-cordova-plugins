@@ -1,17 +1,16 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Couchbase Lite
  * @description
- * Plugin to install Couchbase Lite in your PhoneGap app on iOS or Android
+ * Plugin to install Couchbase Lite in your PhoneGap app on iOS or Android <docs-card href="https://ionicframework.com/integrations/couchbase-lite" ionicon="alert">This Plugin is no longer supported by Couchbase. Please see our Couchbase Lite Integration</docs-card>
  *
  * @usage
  * ```typescript
- * import { CouchbaseLite } from '@ionic-native/couchbase-lite';
+ * import { CouchbaseLite } from '@ionic-native/couchbase-lite/ngx';
  * import { Http } from '@angular/http';
- * import { Observable } from 'rxjs/Observable'
+ * import { Observable } from 'rxjs'
  * constructor(private couchbase: CouchbaseLite, private platform:Platform,private _http:Http) {
  *    this.initMethod();
  * }
@@ -66,8 +65,8 @@ import { Injectable } from '@angular/core';
  *        .catch((error:any) => {
  *           return Observable.throw(error.json() || 'Couchbase Lite error');
  *        })        .
- * }      
- * createDocument(database_name:string,document){   
+ * }
+ * createDocument(database_name:string,document){
  *      let url = this.getUrl();
  *      url = url + database_name;
  *      return this._http
@@ -84,9 +83,9 @@ import { Injectable } from '@angular/core';
  * createDocument('justbe', document);
  * // successful response
  * { "id": "string","rev": "string","ok": true }
- * updateDocument(database_name:string,document){    
+ * updateDocument(database_name:string,document){
  *      let url = this.getUrl();
- *      url = url + database_name + '/' + document._id;     
+ *      url = url + database_name + '/' + document._id;
  *      return this._http
  *        .put(url,document)
  *        .map(data => { this.results = data['results'] })
@@ -121,7 +120,6 @@ import { Injectable } from '@angular/core';
 })
 @Injectable()
 export class CouchbaseLite extends IonicNativePlugin {
-
   /**
    * Get the database url
    * @return {Promise<any>} Returns a promise that resolves with the local database url
@@ -129,6 +127,7 @@ export class CouchbaseLite extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'node'
   })
-  getURL(): Promise<any> { return; }
-
+  getURL(): Promise<any> {
+    return;
+  }
 }

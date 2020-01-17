@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface TwitterConnectResponse {
   /**
@@ -26,7 +26,7 @@ export interface TwitterConnectResponse {
  * Plugin to use Twitter Single Sign On
  * Uses Twitter's Fabric SDK
  * ```typescript
- * import { TwitterConnect } from '@ionic-native/twitter-connect';
+ * import { TwitterConnect } from '@ionic-native/twitter-connect/ngx';
  *
  * constructor(private twitter: TwitterConnect) { }
  *
@@ -67,18 +67,25 @@ export class TwitterConnect extends IonicNativePlugin {
    * @returns {Promise<TwitterConnectResponse>} returns a promise that resolves if logged in and rejects if failed to login
    */
   @Cordova()
-  login(): Promise<TwitterConnectResponse> { return; }
+  login(): Promise<TwitterConnectResponse> {
+    return;
+  }
+
   /**
    * Logs out
    * @returns {Promise<any>} returns a promise that resolves if logged out and rejects if failed to logout
    */
   @Cordova()
-  logout(): Promise<any> { return; }
+  logout(): Promise<any> {
+    return;
+  }
 
   /**
    * Returns user's profile information
    * @returns {Promise<any>} returns a promise that resolves if user profile is successfully retrieved and rejects if request fails
    */
   @Cordova()
-  showUser(): Promise<any> { return; }
+  showUser(): Promise<any> {
+    return;
+  }
 }

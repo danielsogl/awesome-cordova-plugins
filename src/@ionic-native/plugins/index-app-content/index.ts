@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaFunctionOverride, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import {
+  Cordova,
+  CordovaFunctionOverride,
+  IonicNativePlugin,
+  Plugin
+} from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 export interface IndexItem {
   domain: string;
@@ -16,7 +21,7 @@ export interface IndexItem {
   /**
    * Item keywords
    */
-  keywords?: Array<string>;
+  keywords?: string[];
 
   /**
    * Lifetime in minutes
@@ -33,7 +38,7 @@ export interface IndexItem {
  *
  * @usage
  * ```typescript
- * import { IndexAppContent } from '@ionic-native/index-app-content';
+ * import { IndexAppContent } from '@ionic-native/index-app-content/ngx';
  *
  *
  * constructor(private indexAppContent: IndexAppContent) { }
@@ -72,7 +77,6 @@ export interface IndexItem {
 })
 @Injectable()
 export class IndexAppContent extends IonicNativePlugin {
-
   /**
    * The option to index app content might not be available at all due to device limitations or user settings.
    * Therefore it's highly recommended to check upfront if indexing is possible.
@@ -85,11 +89,31 @@ export class IndexAppContent extends IonicNativePlugin {
 
   /**
    * Add or change items to spotlight index
-   * @param {Array<IndexItem>} Array of items to index
-   * @return {Promise<any>} Returns if index set was successfull
+   * @param {IndexItem[]} items Array of items to index
+   * @return {Promise<any>} Returns if index set was successfully
    */
   @Cordova()
-  setItems(items: Array<IndexItem>): Promise<any> {
+  setItems(items: IndexItem[]): Promise<any> {
+    return;
+  }
+
+  /**
+   * Clear all items stored for a given array of domains
+   * @param {string[]} domains Array of domains to clear
+   * @return {Promise<any>} Resolve if successfully
+   */
+  @Cordova()
+  clearItemsForDomains(domains: string[]): Promise<any> {
+    return;
+  }
+
+  /**
+   * Clear all items stored for a given array of identifiers
+   * @param {string[]} identifiers Array of identifiers to clear
+   * @return {Promise<any>} Resolve if successfully
+   */
+  @Cordova()
+  clearItemsForIdentifiers(identifiers: string[]): Promise<any> {
     return;
   }
 
@@ -104,33 +128,12 @@ export class IndexAppContent extends IonicNativePlugin {
   }
 
   /**
-   * Clear all items stored for a given array of domains
-   * @param {Array<string>} Array of domains to clear
-   * @return {Promise<any>} Resolve if successfull
-   */
-  @Cordova()
-  clearItemsForDomains(domains: Array<string>): Promise<any> {
-    return;
-  }
-
-  /**
-   * Clear all items stored for a given array of identifiers
-   * @param {Array<string>} Array of identifiers to clear
-   * @return {Promise<any>} Resolve if successfull
-   */
-  @Cordova()
-  clearItemsForIdentifiers(identifiers: Array<string>): Promise<any> {
-    return;
-  }
-
-  /**
    * You might want to avoid to update spotlight index too frequently.
    * Without calling this function a subsequent call to manipulate the index is only possible after 1440 minutes (= 24 hours)!
-   * @param {number} Numeric value => 0
+   * @param {number} intervalMinutes value => 0
    */
   @Cordova()
   setIndexingInterval(intervalMinutes: number) {
     return;
   }
-
 }

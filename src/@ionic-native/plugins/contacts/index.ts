@@ -1,15 +1,52 @@
-import { Injectable } from '@angular/core';
-import { CordovaInstance, InstanceProperty, Plugin, getPromise, InstanceCheck, checkAvailability, CordovaCheck, IonicNativePlugin } from '@ionic-native/core';
+import {
+  CordovaCheck,
+  CordovaInstance,
+  InstanceCheck,
+  InstanceProperty,
+  IonicNativePlugin,
+  Plugin,
+  checkAvailability,
+  getPromise
+} from '@ionic-native/core';
 
-declare const window: any,
-  navigator: any;
+declare const window: any, navigator: any;
 
-export type ContactFieldType = '*' | 'addresses' | 'birthday' | 'categories' | 'country' | 'department' | 'displayName' | 'emails' | 'familyName' | 'formatted' | 'givenName' | 'honorificPrefix' | 'honorificSuffix' | 'id' | 'ims' | 'locality' | 'middleName' | 'name' | 'nickname' | 'note' | 'organizations' | 'phoneNumbers' | 'photos' | 'postalCode' | 'region' | 'streetAddress' | 'title' | 'urls';
+export type ContactFieldType =
+  | '*'
+  | 'addresses'
+  | 'birthday'
+  | 'categories'
+  | 'country'
+  | 'department'
+  | 'displayName'
+  | 'emails'
+  | 'name.familyName'
+  | 'name.formatted'
+  | 'name.givenName'
+  | 'name.honorificPrefix'
+  | 'name.honorificSuffix'
+  | 'id'
+  | 'ims'
+  | 'locality'
+  | 'name.middleName'
+  | 'name'
+  | 'nickname'
+  | 'note'
+  | 'organizations'
+  | 'phoneNumbers'
+  | 'photos'
+  | 'postalCode'
+  | 'region'
+  | 'streetAddress'
+  | 'title'
+  | 'urls';
 
 export interface IContactProperties {
-
   /** A globally unique identifier. */
   id?: string;
+
+  /** A globally unique identifier on Android. */
+  rawId?: string;
 
   /** The name of this Contact, suitable for display to end users. */
   displayName?: string;
@@ -49,41 +86,42 @@ export interface IContactProperties {
 
   /** An array of web pages associated with the contact. */
   urls?: IContactField[];
-
 }
 
 /**
  * @hidden
  */
 export class Contact implements IContactProperties {
+  @InstanceProperty() id: string;
+  @InstanceProperty() displayName: string;
+  @InstanceProperty() name: IContactName;
+  @InstanceProperty() nickname: string;
+  @InstanceProperty() phoneNumbers: IContactField[];
+  @InstanceProperty() emails: IContactField[];
+  @InstanceProperty() addresses: IContactAddress[];
+  @InstanceProperty() ims: IContactField[];
+  @InstanceProperty() organizations: IContactOrganization[];
+  @InstanceProperty() birthday: Date;
+  @InstanceProperty() note: string;
+  @InstanceProperty() photos: IContactField[];
+  @InstanceProperty() categories: IContactField[];
+  @InstanceProperty() urls: IContactField[];
   private _objectInstance: any;
-  @InstanceProperty id: string;
-  @InstanceProperty displayName: string;
-  @InstanceProperty name: IContactName;
-  @InstanceProperty nickname: string;
-  @InstanceProperty phoneNumbers: IContactField[];
-  @InstanceProperty emails: IContactField[];
-  @InstanceProperty addresses: IContactAddress[];
-  @InstanceProperty ims: IContactField[];
-  @InstanceProperty organizations: IContactOrganization[];
-  @InstanceProperty birthday: Date;
-  @InstanceProperty note: string;
-  @InstanceProperty photos: IContactField[];
-  @InstanceProperty categories: IContactField[];
-  @InstanceProperty urls: IContactField[];
 
   [key: string]: any;
 
   constructor() {
-    if (checkAvailability('navigator.contacts', 'create', 'Contacts') === true) {
+    if (
+      checkAvailability('navigator.contacts', 'create', 'Contacts') === true
+    ) {
       this._objectInstance = navigator.contacts.create();
     }
   }
 
   @InstanceCheck()
   clone(): Contact {
-    let newContact: any = new Contact();
-    for (let prop in this) {
+    const newContact: any = new Contact();
+    for (const prop in this) {
       if (prop === 'id') return;
       newContact[prop] = this[prop];
     }
@@ -91,7 +129,9 @@ export class Contact implements IContactProperties {
   }
 
   @CordovaInstance()
-  remove(): Promise<any> { return; }
+  remove(): Promise<any> {
+    return;
+  }
 
   @InstanceCheck()
   save(): Promise<any> {
@@ -125,7 +165,7 @@ export declare const ContactError: {
   PENDING_OPERATION_ERROR: number;
   IO_ERROR: number;
   NOT_SUPPORTED_ERROR: number;
-  PERMISSION_DENIED_ERROR: number
+  PERMISSION_DENIED_ERROR: number;
 };
 
 export interface IContactName {
@@ -147,12 +187,14 @@ export interface IContactName {
  * @hidden
  */
 export class ContactName implements IContactName {
-  constructor(public formatted?: string,
+  constructor(
+    public formatted?: string,
     public familyName?: string,
     public givenName?: string,
     public middleName?: string,
     public honorificPrefix?: string,
-    public honorificSuffix?: string) { }
+    public honorificSuffix?: string
+  ) {}
 }
 
 export interface IContactField {
@@ -168,9 +210,11 @@ export interface IContactField {
  * @hidden
  */
 export class ContactField implements IContactField {
-  constructor(public type?: string,
+  constructor(
+    public type?: string,
     public value?: string,
-    public pref?: boolean) { }
+    public pref?: boolean
+  ) {}
 }
 
 export interface IContactAddress {
@@ -196,14 +240,16 @@ export interface IContactAddress {
  * @hidden
  */
 export class ContactAddress implements IContactAddress {
-  constructor(public pref?: boolean,
+  constructor(
+    public pref?: boolean,
     public type?: string,
     public formatted?: string,
     public streetAddress?: string,
     public locality?: string,
     public region?: string,
     public postalCode?: string,
-    public country?: string) { }
+    public country?: string
+  ) {}
 }
 
 export interface IContactOrganization {
@@ -229,7 +275,7 @@ export class ContactOrganization implements IContactOrganization {
     public department?: string,
     public title?: string,
     public pref?: boolean
-  ) { }
+  ) {}
 }
 
 /** Search options to filter navigator.contacts.  */
@@ -250,10 +296,12 @@ export interface IContactFindOptions {
  * @hidden
  */
 export class ContactFindOptions implements IContactFindOptions {
-  constructor(public filter?: string,
+  constructor(
+    public filter?: string,
     public multiple?: boolean,
     public desiredFields?: string[],
-    public hasPhoneNumber?: boolean) { }
+    public hasPhoneNumber?: boolean
+  ) {}
 }
 
 /**
@@ -262,13 +310,10 @@ export class ContactFindOptions implements IContactFindOptions {
  * Access and manage Contacts on the device.
  *
  * @deprecated
- * This plugin is being deprecated. No more work will be done on this plugin by the Cordova development community.
- *  You can continue to use this plugin and it should work as-is in the future but any more arising issues will not be fixed by the Cordova community.
- *
  * @usage
  *
  * ```typescript
- * import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+ * import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
  *
  * constructor(private contacts: Contacts) { }
  *
@@ -298,11 +343,19 @@ export class ContactFindOptions implements IContactFindOptions {
   plugin: 'cordova-plugin-contacts',
   pluginRef: 'navigator.contacts',
   repo: 'https://github.com/apache/cordova-plugin-contacts',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: [
+    'Android',
+    'BlackBerry 10',
+    'Browser',
+    'Firefox OS',
+    'iOS',
+    'Ubuntu',
+    'Windows',
+    'Windows 8',
+    'Windows Phone'
+  ]
 })
-@Injectable()
 export class Contacts extends IonicNativePlugin {
-
   /**
    * Create a single contact.
    * @returns {Contact} Returns a Contact object
@@ -313,16 +366,24 @@ export class Contacts extends IonicNativePlugin {
 
   /**
    * Search for contacts in the Contacts list.
-   * @param fields {ContactFieldType[]}  Contact fields to be used as a search qualifier
-   * @param options {IContactFindOptions} Optional options for the query
+   * @param {ContactFieldType[]} fields Contact fields to be used as a search qualifier
+   * @param {IContactFindOptions} [options] Optional options for the query
    * @returns {Promise<Contact[]>} Returns a Promise that resolves with the search results (an array of Contact objects)
    */
   @CordovaCheck()
-  find(fields: ContactFieldType[], options?: IContactFindOptions): Promise<Contact[]> {
+  find(
+    fields: ContactFieldType[],
+    options?: IContactFindOptions
+  ): Promise<Contact[]> {
     return getPromise((resolve: Function, reject: Function) => {
-      navigator.contacts.find(fields, (contacts: any[]) => {
-        resolve(contacts.map(processContact));
-      }, reject, options);
+      navigator.contacts.find(
+        fields,
+        (contacts: any[]) => {
+          resolve(contacts.map(processContact));
+        },
+        reject,
+        options
+      );
     });
   }
 
@@ -333,18 +394,20 @@ export class Contacts extends IonicNativePlugin {
   @CordovaCheck()
   pickContact(): Promise<Contact> {
     return getPromise((resolve: Function, reject: Function) => {
-      navigator.contacts.pickContact((contact: any) => resolve(processContact(contact)), reject);
+      navigator.contacts.pickContact(
+        (contact: any) => resolve(processContact(contact)),
+        reject
+      );
     });
   }
-
 }
 
 /**
  * @hidden
  */
 function processContact(contact: any) {
-  let newContact = new Contact();
-  for (let prop in contact) {
+  const newContact = new Contact();
+  for (const prop in contact) {
     if (typeof contact[prop] === 'function') continue;
     newContact[prop] = contact[prop];
   }

@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { Platfrom } from 'ionic-angular';
- * import { AppMinimize } from '@ionic-native/app-minimize';
+ * import { Platfrom } from '@ionic/angular';
+ * import { AppMinimize } from '@ionic-native/app-minimize/ngx';
  *
  *
  * constructor(private platform: Platform, private appMinimize: AppMinimize) { }
@@ -37,6 +37,8 @@ export class AppMinimize extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  minimize(): Promise<any> { return; }
+  minimize(): Promise<any> {
+    return;
+  }
 
 }

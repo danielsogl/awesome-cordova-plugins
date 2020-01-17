@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+
+export interface CropOptions {
+  quality?: number;
+  targetHeight?: number;
+  targetWidth?: number;
+}
 
 /**
  * @name Crop
  * @description Crops images
  * @usage
  * ```typescript
- * import { Crop } from '@ionic-native/crop';
+ * import { Crop } from '@ionic-native/crop/ngx';
  *
  * constructor(private crop: Crop) { }
  *
@@ -18,6 +24,8 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *     error => console.error('Error cropping image', error)
  *   );
  * ```
+ * @interfaces
+ * CropOptions
  */
 @Plugin({
   pluginName: 'Crop',
@@ -28,16 +36,16 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class Crop extends IonicNativePlugin {
-
   /**
    * Crops an image
-   * @param pathToImage
-   * @param options
+   * @param {string} pathToImage
+   * @param {CropOptions} [options]
    * @returns {Promise<string>} Returns a promise that resolves with the new image path, or rejects if failed to crop.
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  crop(pathToImage: string, options?: { quality: number, targetHeight: number, targetWidth: number  }): Promise<string> { return; }
-
+  crop(pathToImage: string, options?: CropOptions): Promise<string> {
+    return;
+  }
 }

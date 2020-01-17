@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 export interface OSNotification {
   /**
    * Was app in focus.
    */
-  isAppInFocus: boolean;
+  isAppInFocus?: boolean;
   /**
    * Was notification shown to the user. Will be false for silent notifications.
    */
-  shown: boolean;
+  shown?: boolean;
   /**
    * **ANDROID** - Android Notification assigned to the notification. Can be used to cancel or replace the notification.
    */
@@ -18,17 +18,17 @@ export interface OSNotification {
   /**
    * Payload received from OneSignal.
    */
-  payload: OSNotificationPayload;
+  payload?: OSNotificationPayload;
   /**
    * How the notification was displayed to the user. Can be set to `Notification`, `InAppAlert`, or `None` if it was not displayed.
    */
-  displayType: OSDisplayType;
+  displayType?: OSDisplayType;
   /**
    * **ANDROID** - Notification is a summary notification for a group this will contain all notification payloads it was created from.
    */
   groupedNotifications?: OSNotificationPayload[];
   app_id?: string;
-  contents: any;
+  contents?: any;
   headings?: any;
   isIos?: boolean;
   isAndroid?: boolean;
@@ -60,6 +60,7 @@ export interface OSNotification {
   wp_wns_sound?: string;
   data?: any;
   buttons?: any;
+  collapse_id?: string;
   small_icon?: string;
   large_icon?: string;
   big_picture?: string;
@@ -97,13 +98,13 @@ export enum OSLockScreenVisibility {
    * Fully visible (default)
    */
   Public = 1,
-    /**
-     * Contents are hidden
-     */
+  /**
+   * Contents are hidden
+   */
   Private = 0,
-    /**
-     * Not shown
-     */
+  /**
+   * Not shown
+   */
   Secret = -1
 }
 
@@ -115,13 +116,13 @@ export enum OSDisplayType {
    * notification is silent, or inFocusDisplaying is disabled.
    */
   None = 0,
-    /**
-     * (**DEFAULT**) - native alert dialog display.
-     */
+  /**
+   * (**DEFAULT**) - native alert dialog display.
+   */
   InAppAlert = 1,
-    /**
-     * native notification display.
-     */
+  /**
+   * native notification display.
+   */
   Notification = 2
 }
 
@@ -219,6 +220,7 @@ export interface OSActionButton {
    */
   icon: string;
 }
+
 /**
  * OSPermissionState
  */
@@ -228,10 +230,15 @@ export interface OSPermissionState {
    */
   hasPrompted: boolean;
   /**
-   * Permissions Status
+   * Permissions Status (iOS Only)
    */
   status: any;
+  /**
+   * Permissions State (Android Only)
+   */
+  state: any;
 }
+
 /**
  * OSSubscriptionState
  */
@@ -241,6 +248,7 @@ export interface OSSubscriptionState {
   userId: any;
   pushToken: any;
 }
+
 /**
  * Subscription and permissions status
  */
@@ -307,58 +315,69 @@ export enum OSActionType {
  * #### Icons
  * If you want to use generated icons with command `ionic cordova resources`:
  *
- * 1. Add a file to your `hooks` directory inside the `after_prepare` folder called `030_copy_android_notification_icons.js`
+ * 1. Add a file to your `hooks` directory called `copy_android_notification_icons.js`
  *
- * 2. Put the following code in it:
+ * 2. Configure the hook in your config.xml
+ * ```
+ *     <platform name="android">
+ *         <hook type="after_prepare" src="hooks/copy_android_notification_icons.js" />
+ *     </platform>
+ * ```
+ *
+ * 3. Put the following code in it:
  *
  * ```
  * #!/usr/bin/env node
  *
- * var filestocopy = [{
- *     "resources/android/icon/drawable-hdpi-icon.png":
- *         "platforms/android/res/drawable-hdpi/ic_stat_onesignal_default.png"
- * }, {
- *     "resources/android/icon/drawable-mdpi-icon.png":
- *         "platforms/android/res/drawable-mdpi/ic_stat_onesignal_default.png"
- * }, {
- *     "resources/android/icon/drawable-xhdpi-icon.png":
- *         "platforms/android/res/drawable-xhdpi/ic_stat_onesignal_default.png"
- * }, {
- *     "resources/android/icon/drawable-xxhdpi-icon.png":
- *         "platforms/android/res/drawable-xxhdpi/ic_stat_onesignal_default.png"
- * }, {
- *     "resources/android/icon/drawable-xxxhdpi-icon.png":
- *         "platforms/android/res/drawable-xxxhdpi/ic_stat_onesignal_default.png"
- * } ];
- *
  * var fs = require('fs');
  * var path = require('path');
  *
- * // no need to configure below
- * var rootdir = process.argv[2];
+ * var filestocopy = [{
+ *     "resources/android/icon/drawable-hdpi-icon.png":
+ *         "platforms/android/app/src/main/res/drawable-hdpi/ic_stat_onesignal_default.png"
+ * }, {
+ *     "resources/android/icon/drawable-mdpi-icon.png":
+ *         "platforms/android/app/src/main/res/drawable-mdpi/ic_stat_onesignal_default.png"
+ * }, {
+ *     "resources/android/icon/drawable-xhdpi-icon.png":
+ *         "platforms/android/app/src/main/res/drawable-xhdpi/ic_stat_onesignal_default.png"
+ * }, {
+ *     "resources/android/icon/drawable-xxhdpi-icon.png":
+ *         "platforms/android/app/src/main/res/drawable-xxhdpi/ic_stat_onesignal_default.png"
+ * }, {
+ *     "resources/android/icon/drawable-xxxhdpi-icon.png":
+ *         "platforms/android/app/src/main/res/drawable-xxxhdpi/ic_stat_onesignal_default.png"
+ * } ];
  *
- * filestocopy.forEach(function(obj) {
- *     Object.keys(obj).forEach(function(key) {
- *         var val = obj[key];
- *         var srcfile = path.join(rootdir, key);
- *         var destfile = path.join(rootdir, val);
- *         //console.log("copying "+srcfile+" to "+destfile);
- *         var destdir = path.dirname(destfile);
- *         if (fs.existsSync(srcfile) && fs.existsSync(destdir)) {
- *             fs.createReadStream(srcfile).pipe(
- *                 fs.createWriteStream(destfile));
- *         }
+ * module.exports = function(context) {
+ *
+ *     // no need to configure below
+ *     var rootdir = context.opts.projectRoot;
+ *
+ *     filestocopy.forEach(function(obj) {
+ *         Object.keys(obj).forEach(function(key) {
+ *             var val = obj[key];
+ *             var srcfile = path.join(rootdir, key);
+ *             var destfile = path.join(rootdir, val);
+ *             console.log("copying "+srcfile+" to "+destfile);
+ *             var destdir = path.dirname(destfile);
+ *             if (fs.existsSync(srcfile) && fs.existsSync(destdir)) {
+ *                 fs.createReadStream(srcfile).pipe(
+ *                     fs.createWriteStream(destfile));
+ *             }
+ *         });
  *     });
- * });
+ *
+ * };
  * ```
  *
  * 3. From the root of your project make the file executable:
- * `$ chmod +x hooks/after_prepare/030_copy_android_notification_icons.js`
+ * `$ chmod +x hooks/copy_android_notification_icons.js`
  *
  *
  * @usage
  * ```typescript
- * import { OneSignal } from '@ionic-native/onesignal';
+ * import { OneSignal } from '@ionic-native/onesignal/ngx';
  *
  * constructor(private oneSignal: OneSignal) { }
  *
@@ -397,14 +416,14 @@ export enum OSActionType {
 })
 @Injectable()
 export class OneSignal extends IonicNativePlugin {
-
   /**
    * constants to use in inFocusDisplaying()
+   * @hidden
    */
   OSInFocusDisplayOption = {
     None: 0,
-    InAppAlert : 1,
-    Notification : 2
+    InAppAlert: 1,
+    Notification: 2
   };
 
   /**
@@ -415,7 +434,9 @@ export class OneSignal extends IonicNativePlugin {
    * @returns {any}
    */
   @Cordova({ sync: true })
-  startInit(appId: string, googleProjectNumber?: string): any { return; }
+  startInit(appId: string, googleProjectNumber?: string): any {
+    return;
+  }
 
   /**
    * Callback to run when a notification is received, whether it was displayed or not.
@@ -425,7 +446,9 @@ export class OneSignal extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  handleNotificationReceived(): Observable<OSNotification> { return; }
+  handleNotificationReceived(): Observable<OSNotification> {
+    return;
+  }
 
   /**
    * Callback to run when a notification is tapped on from the notification shade (**ANDROID**) or notification
@@ -437,7 +460,9 @@ export class OneSignal extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  handleNotificationOpened(): Observable<OSNotificationOpenedResult> { return; }
+  handleNotificationOpened(): Observable<OSNotificationOpenedResult> {
+    return;
+  }
 
   /**
    * **iOS** - Settings for iOS apps
@@ -457,7 +482,9 @@ export class OneSignal extends IonicNativePlugin {
   iOSSettings(settings: {
     kOSSettingsKeyAutoPrompt: boolean;
     kOSSettingsKeyInAppLaunchURL: boolean;
-  }): any { return; }
+  }): any {
+    return;
+  }
 
   /**
    * Must be called after `startInit` to complete initialization of OneSignal.
@@ -465,7 +492,9 @@ export class OneSignal extends IonicNativePlugin {
    * @returns {any}
    */
   @Cordova({ sync: true })
-  endInit(): any { return; }
+  endInit(): any {
+    return;
+  }
 
   /**
    * Prompt the user for notification permissions. Callback fires as soon as the user accepts or declines notifications.
@@ -474,7 +503,9 @@ export class OneSignal extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS']
   })
-  promptForPushNotificationsWithUserResponse(): Promise<boolean> { return; }
+  promptForPushNotificationsWithUserResponse(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Retrieve a list of tags that have been set on the user from the OneSignal server.
@@ -484,7 +515,9 @@ export class OneSignal extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves when tags are recieved.
    */
   @Cordova()
-  getTags(): Promise<any> { return; }
+  getTags(): Promise<any> {
+    return;
+  }
 
   /**
    * Lets you retrieve the OneSignal user id and device token.
@@ -497,8 +530,9 @@ export class OneSignal extends IonicNativePlugin {
    *  pushToken {string} A push token is a Google/Apple assigned identifier(unique per device per app).
    */
   @Cordova()
-  getIds(): Promise<{userId: string; pushToken: string}> { return; }
-
+  getIds(): Promise<{ userId: string; pushToken: string }> {
+    return;
+  }
 
   /**
    * Tag a user based on an app event of your choosing so later you can create segments on [onesignal.com](https://onesignal.com/) to target these users.
@@ -508,7 +542,7 @@ export class OneSignal extends IonicNativePlugin {
    * @param {string} Value to set on the key. NOTE: Passing in a blank String deletes the key, you can also call deleteTag.
    */
   @Cordova({ sync: true })
-  sendTag(key: string, value: string): void { }
+  sendTag(key: string, value: string): void {}
 
   /**
    * Tag a user based on an app event of your choosing so later you can create segments on [onesignal.com](https://onesignal.com/) to target these users.
@@ -517,7 +551,7 @@ export class OneSignal extends IonicNativePlugin {
    * @param {string} Pass a json object with key/value pairs like: {key: "value", key2: "value2"}
    */
   @Cordova({ sync: true })
-  sendTags(json: any): void { }
+  sendTags(json: any): void {}
 
   /**
    * Deletes a tag that was previously set on a user with `sendTag` or `sendTags`. Use `deleteTags` if you need to delete more than one.
@@ -525,22 +559,22 @@ export class OneSignal extends IonicNativePlugin {
    * @param {string} Key to remove.
    */
   @Cordova({ sync: true })
-  deleteTag(key: string): void { }
+  deleteTag(key: string): void {}
 
   /**
    * Deletes tags that were previously set on a user with `sendTag` or `sendTags`.
    *
-   * @param {Array<string>} Keys to remove.
+   * @param {string[]} Keys to remove.
    */
   @Cordova({ sync: true })
-  deleteTags(keys: string[]): void { }
+  deleteTags(keys: string[]): void {}
 
   /**
    * Call this when you would like to prompt an iOS user to accept push notifications with the default system prompt.
    * Only works if you set `kOSSettingsAutoPrompt` to `false` in `iOSSettings`
    */
   @Cordova({ sync: true })
-  registerForPushNotifications(): void { }
+  registerForPushNotifications(): void {}
 
   /**
    * Warning:
@@ -552,7 +586,7 @@ export class OneSignal extends IonicNativePlugin {
    * @param {boolean} false to disable vibrate, true to re-enable it.
    */
   @Cordova({ sync: true })
-  enableVibrate(enable: boolean): void { }
+  enableVibrate(enable: boolean): void {}
 
   /**
    * Warning:
@@ -564,7 +598,7 @@ export class OneSignal extends IonicNativePlugin {
    * @param {boolean} false to disable sound, true to re-enable it.
    */
   @Cordova({ sync: true })
-  enableSound(enable: boolean): void { }
+  enableSound(enable: boolean): void {}
 
   /**
    *
@@ -574,7 +608,9 @@ export class OneSignal extends IonicNativePlugin {
    * @returns {any}
    */
   @Cordova({ sync: true })
-  inFocusDisplaying(displayOption: OSDisplayType): any { return; }
+  inFocusDisplaying(displayOption: OSDisplayType): any {
+    return;
+  }
 
   /**
    * You can call this method with false to opt users out of receiving all notifications through OneSignal.
@@ -583,7 +619,7 @@ export class OneSignal extends IonicNativePlugin {
    * @param {boolean} enable
    */
   @Cordova({ sync: true })
-  setSubscription(enable: boolean): void { }
+  setSubscription(enable: boolean): void {}
 
   /**
    * Get the current notification and permission state. Returns a OSPermissionSubscriptionState type described below.
@@ -591,7 +627,9 @@ export class OneSignal extends IonicNativePlugin {
    * @returns {Promise<OSPermissionSubscriptionState>}
    */
   @Cordova()
-  getPermissionSubscriptionState(): Promise<OSPermissionSubscriptionState> { return; }
+  getPermissionSubscriptionState(): Promise<OSPermissionSubscriptionState> {
+    return;
+  }
 
   /**
    *
@@ -599,7 +637,9 @@ export class OneSignal extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves if the notification was send successfully.
    */
   @Cordova()
-  postNotification(notificationObj: OSNotification): Promise<any> { return; }
+  postNotification(notificationObj: OSNotification): Promise<any> {
+    return;
+  }
 
   /**
    * Cancels a single OneSignal notification based on its Android notification integer id. Use instead of NotificationManager.cancel(id); otherwise the notification will be restored when your app is restarted.
@@ -612,28 +652,32 @@ export class OneSignal extends IonicNativePlugin {
    * Prompts the user for location permission to allow geotagging based on the "Location radius" filter on the OneSignal dashboard.
    */
   @Cordova({ sync: true })
-  promptLocation(): void { }
+  promptLocation(): void {}
 
   /**
    *
    * @param email {string}
    */
   @Cordova({ sync: true })
-  syncHashedEmail(email: string): void { }
+  syncHashedEmail(email: string): void {}
 
   /**
    * Enable logging to help debug if you run into an issue setting up OneSignal.
    * The logging levels are as follows: 0 = None, 1= Fatal, 2 = Errors, 3 = Warnings, 4 = Info, 5 = Debug, 6 = Verbose
-
+   *
    * The higher the value the more information is shown.
    *
    * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
    */
   @Cordova({ sync: true })
-  setLogLevel(logLevel: {
-    logLevel: number,
-    visualLevel: number
-  }): void { }
+  setLogLevel(logLevel: { logLevel: number; visualLevel: number }): void {}
+
+  /**
+   * Disable or enable location collection (Defaults to enabled) if your app has location permission.
+   * @param shared {boolean}
+   */
+  @Cordova({ sync: true })
+  setLocationShared(shared: boolean): void {}
 
   /**
    * The passed in function will be fired when a notification permission setting changes.
@@ -646,7 +690,9 @@ export class OneSignal extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  addPermissionObserver(): Observable<any> { return; }
+  addPermissionObserver(): Observable<any> {
+    return;
+  }
 
   /**
    * The passed in function will be fired when a notification subscription property changes.
@@ -660,6 +706,83 @@ export class OneSignal extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  addSubscriptionObserver(): Observable<any> { return; }
+  addSubscriptionObserver(): Observable<any> {
+    return;
+  }
+
+  /**
+   * Clears all OneSignal notifications
+   */
+  @Cordova()
+  setEmail(email: string, emailAuthToken?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * If your app implements logout functionality, you can call logoutEmail to dissociate the email from the device
+   */
+  @Cordova()
+  logoutEmail(): Promise<any> {
+    return;
+  }
+
+  /**
+   * The passed in function will be fired when a notification subscription property changes.
+   * This includes the following events:
+   * - Getting a push token from Apple / Google.
+   * - Getting a player / user id from OneSignal
+   * - OneSignal.setSubscription is called
+   * - User disables or enables notifications
+   * @return {Observable<any>}
+   */
+  @Cordova({
+    observable: true
+  })
+  addEmailSubscriptionObserver(): Observable<any> {
+    return;
+  }
+
+  /**
+   * Clears all OneSignal notifications
+   */
+  @Cordova({ sync: true })
+  clearOneSignalNotifications(): void {}
+
+  /**
+   * Allows you to delay the initialization of the SDK until the user provides privacy consent.
+   * The SDK will not be fully initialized until the provideUserConsent(true) method is called.
+   * @param {boolean} required
+   */
+  @Cordova()
+  setRequiresUserPrivacyConsent(required: boolean): void {}
+
+  /**
+   * If your application is set to require the user's privacy consent, you can provide this consent using this method.
+   * Until you call provideUserConsent(true), the SDK will not fully initialize and will not send any data to OneSignal.
+   * @param {boolean} granted
+   */
+  @Cordova()
+  provideUserConsent(granted: boolean): void {}
+
+  /**
+   * Accepts a callback, which returns a boolean variable indicating if the user has given privacy consent yet.
+   * @param {Function} callback
+   */
+  @Cordova()
+  userProvidedPrivacyConsent(callback: Function): void {}
+
+  /**
+   * Allows you to use your own system's user ID's to send push notifications to your users.
+   * To tie a user to a given user ID, you can use this method.
+   * @param {string} externalId
+   */
+  @Cordova()
+  setExternalUserId(externalId: string): void {}
+
+  /**
+   * Removes whatever was set as the current user's external user ID.
+   */
+  @Cordova()
+  removeExternalUserId(): void {}
 
 }

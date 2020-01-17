@@ -1,15 +1,15 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Autostart
  * @description
- * This plugin will start automatically your Android app after the every boot or the auto-update of your application.
+ * This plugin automatically starts your Android app after every boot or auto-update.
  * You can enable or disable the autostart function in your app.
  *
  * @usage
  * ```typescript
- * import { Autostart } from '@ionic-native/autostart';
+ * import { Autostart } from '@ionic-native/autostart/ngx';
  *
  *
  * constructor(private autostart: Autostart) { }
@@ -36,12 +36,14 @@ export class Autostart extends IonicNativePlugin {
    * Enable the automatic startup after the boot
    */
   @Cordova({ sync: true })
-  enable(): void { }
+  enable(): void {
+  }
 
   /**
    * Disable the automatic startup after the boot
    */
   @Cordova({ sync: true })
-  disable(): void { }
+  disable(): void {
+  }
 
 }

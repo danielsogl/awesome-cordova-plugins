@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface WheelSelectorItem {
   description?: string;
@@ -19,12 +19,12 @@ export interface WheelSelectorOptions {
   /**
    * The items to display (array of items).
    */
-  items: Array<Array<WheelSelectorItem>>;
+  items: WheelSelectorItem[][];
 
   /**
    * Which items to display by default.
    */
-  defaultItems?: Array<DefaultItem>;
+  defaultItems?: DefaultItem[];
 
   /**
    * The 'ok' button text
@@ -42,7 +42,7 @@ export interface WheelSelectorOptions {
    * Android only - theme color, 'light' or 'dark'.
    * Default: light
    */
-  theme?: string;
+  theme?: 'light' | 'dark';
 
   /**
    * Whether to have the wheels 'wrap' (Android only)
@@ -55,7 +55,7 @@ export interface WheelSelectorOptions {
    * key/value to be displayed
    * Default: description
    */
-   displayKey?: string;
+  displayKey?: string;
 }
 
 export interface WheelSelectorData {
@@ -69,14 +69,14 @@ export interface WheelSelectorData {
  *
  * @usage
  * ```
- * import { WheelSelector } from '@ionic-native/wheel-selector';
+ * import { WheelSelector } from '@ionic-native/wheel-selector/ngx';
  *
  *
  * constructor(private selector: WheelSelector) { }
  *
  * ...
  *
- * let jsonData = {
+ * const jsonData = {
  *   numbers: [
  *    { description: "1" },
  *     { description: "2" },
@@ -101,11 +101,11 @@ export interface WheelSelectorData {
  *     { name: "Gordon", id: '103' },
  *     { name: "Smith", id: '104' }
  *   ]
- * };
+ * }
  *
  * ...
  *
- * //basic number selection, index is always returned in the result
+ * // basic number selection, index is always returned in the result
  *  selectANumber() {
  *    this.selector.show({
  *      title: "How Many?",
@@ -122,7 +122,7 @@ export interface WheelSelectorData {
  *
  *  ...
  *
- *  //basic selection, setting initial displayed default values: '3' 'Banana'
+ *  // basic selection, setting initial displayed default values: '3' 'Banana'
  *  selectFruit() {
  *    this.selector.show({
  *      title: "How Much?",
@@ -145,8 +145,8 @@ export interface WheelSelectorData {
  *
  *  ...
  *
- *  //more complex as overrides which key to display
- *  //then retrieve properties from original data
+ *  // more complex as overrides which key to display
+ *  // then retrieve properties from original data
  *  selectNamesUsingDisplayKey() {
  *    this.selector.show({
  *      title: "Who?",
@@ -155,7 +155,7 @@ export interface WheelSelectorData {
  *      ],
  *      displayKey: 'name',
  *      defaultItems: [
- *  	  {index:0, value: this.jsonData.firstNames[2].name}, 
+ *  	  {index:0, value: this.jsonData.firstNames[2].name},
  *        {index: 0, value: this.jsonData.lastNames[3].name}
  *      ]
  *    }).then(
@@ -200,5 +200,7 @@ export class WheelSelector extends IonicNativePlugin {
   @Cordova({
     platforms: ['iOS']
   })
-  hideSelector(): Promise<void> { return; }
+  hideSelector(): Promise<void> {
+    return;
+  }
 }

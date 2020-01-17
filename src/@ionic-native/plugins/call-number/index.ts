@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+
 /**
  * @name Call Number
  * @description
@@ -8,7 +9,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { CallNumber } from '@ionic-native/call-number';
+ * import { CallNumber } from '@ionic-native/call-number/ngx';
  *
  * constructor(private callNumber: CallNumber) { }
  *
@@ -16,8 +17,8 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  *
  * this.callNumber.callNumber("18001010101", true)
- *   .then(() => console.log('Launched dialer!'))
- *   .catch(() => console.log('Error launching dialer'));
+ *   .then(res => console.log('Launched dialer!', res))
+ *   .catch(err => console.log('Error launching dialer', err));
  *
  * ```
  */
@@ -30,11 +31,10 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class CallNumber extends IonicNativePlugin {
-
   /**
    * Calls a phone number
-   * @param numberToCall {string} The phone number to call as a string
-   * @param bypassAppChooser {boolean} Set to true to bypass the app chooser and go directly to dialer
+   * @param {string} numberToCall The phone number to call as a string
+   * @param {boolean} bypassAppChooser Set to true to bypass the app chooser and go directly to dialer
    * @return {Promise<any>}
    */
   @Cordova({
@@ -48,9 +48,7 @@ export class CallNumber extends IonicNativePlugin {
    * Check if call feature is available
    * @return {Promise<any>}
    */
-  @Cordova({
-    callbackOrder: 'reverse'
-  })
+  @Cordova()
   isCallSupported(): Promise<any> {
     return;
   }

@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+
+export interface GlobalizationOptions {
+  formatLength: string;
+  selector: string;
+}
 
 /**
  * @name Globalization
@@ -12,7 +17,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { Globalization } from '@ionic-native/globalization';
+ * import { Globalization } from '@ionic-native/globalization/ngx';
  *
  * constructor(private globalization: Globalization) { }
  *
@@ -26,6 +31,8 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  *
  * ```
+ * @interfaces
+ * GlobalizationOptions
  */
 @Plugin({
   pluginName: 'Globalization',
@@ -36,20 +43,23 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
 })
 @Injectable()
 export class Globalization extends IonicNativePlugin {
-
   /**
    * Returns the BCP-47 compliant language identifier tag to the successCallback with a properties object as a parameter. That object should have a value property with a String value.
    * @returns {Promise<{value: string}>}
    */
   @Cordova()
-  getPreferredLanguage(): Promise<{ value: string }> { return; }
+  getPreferredLanguage(): Promise<{ value: string }> {
+    return;
+  }
 
   /**
    * Returns the BCP 47 compliant locale identifier string to the successCallback with a properties object as a parameter.
    * @returns {Promise<{value: string}>}
    */
   @Cordova()
-  getLocaleName(): Promise<{ value: string }> { return; }
+  getLocaleName(): Promise<{ value: string }> {
+    return;
+  }
 
   /**
    * Converts date to string
@@ -61,7 +71,12 @@ export class Globalization extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  dateToString(date: Date, options: { formatLength: string, selector: string }): Promise<{ value: string }> { return; }
+  dateToString(
+    date: Date,
+    options: GlobalizationOptions
+  ): Promise<{ value: string }> {
+    return;
+  }
 
   /**
    * Parses a date formatted as a string, according to the client's user preferences and calendar using the time zone of the client, and returns the corresponding date object.
@@ -73,27 +88,55 @@ export class Globalization extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  stringToDate(dateString: string, options: { formatLength: string, selector: string }): Promise<{ year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number }> { return; }
+  stringToDate(
+    dateString: string,
+    options: GlobalizationOptions
+  ): Promise<{
+    year: number;
+    month: number;
+    day: number;
+    hour: number;
+    minute: number;
+    second: number;
+    millisecond: number;
+  }> {
+    return;
+  }
 
   /**
    * Returns a pattern string to format and parse dates according to the client's user preferences.
    * @param options Object with the format length and selector
-   * @returns {Promise<{ pattern: string, timezone: string, utf_offset: number, dst_offset: number }>} Returns a promise.
+   * @returns {Promise<{ pattern: string, timezone: string, utc_offset: number, dst_offset: number }>} Returns a promise.
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getDatePattern(options: { formatLength: string, selector: string }): Promise<{ pattern: string, timezone: string, utf_offset: number, dst_offset: number }> { return; }
+  getDatePattern(
+    options: GlobalizationOptions
+  ): Promise<{
+    pattern: string;
+    timezone: string;
+    iana_timezone: string;
+    utc_offset: number;
+    dst_offset: number;
+  }> {
+    return;
+  }
 
   /**
    * Returns an array of the names of the months or days of the week, depending on the client's user preferences and calendar.
    * @param options Object with type (narrow or wide) and item (month or days).
-   * @returns {Promise<{value: Array<string>}>} Returns a promise.
+   * @returns {Promise<{value: string[]}>} Returns a promise.
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getDateNames(options: { type: string, item: string }): Promise<{ value: Array<string> }> { return; }
+  getDateNames(options: {
+    type: string;
+    item: string;
+  }): Promise<{ value: string[] }> {
+    return;
+  }
 
   /**
    * Indicates whether daylight savings time is in effect for a given date using the client's time zone and calendar.
@@ -101,14 +144,18 @@ export class Globalization extends IonicNativePlugin {
    * @returns {Promise<{dst: string}>} reutrns a promise with the value
    */
   @Cordova()
-  isDayLightSavingsTime(date: Date): Promise<{ dst: string }> { return; }
+  isDayLightSavingsTime(date: Date): Promise<{ dst: string }> {
+    return;
+  }
 
   /**
    * Returns the first day of the week according to the client's user preferences and calendar.
    * @returns {Promise<{value: string}>} returns a promise with the value
    */
   @Cordova()
-  getFirstDayOfWeek(): Promise<{ value: string }> { return; }
+  getFirstDayOfWeek(): Promise<{ value: string }> {
+    return;
+  }
 
   /**
    * Returns a number formatted as a string according to the client's user preferences.
@@ -119,7 +166,12 @@ export class Globalization extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  numberToString(numberToConvert: number, options: { type: string }): Promise<{ value: string }> { return; }
+  numberToString(
+    numberToConvert: number,
+    options: { type: string }
+  ): Promise<{ value: string }> {
+    return;
+  }
 
   /**
    *
@@ -131,7 +183,12 @@ export class Globalization extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  stringToNumber(stringToConvert: string, options: { type: string }): Promise<{ value: number | string }> { return; }
+  stringToNumber(
+    stringToConvert: string,
+    options: { type: string }
+  ): Promise<{ value: number | string }> {
+    return;
+  }
 
   /**
    * Returns a pattern string to format and parse numbers according to the client's user preferences.
@@ -141,7 +198,20 @@ export class Globalization extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse'
   })
-  getNumberPattern(options: { type: string }): Promise<{ pattern: string, symbol: string, fraction: number, rounding: number, positive: string, negative: string, decimal: string, grouping: string }> { return; }
+  getNumberPattern(options: {
+    type: string;
+  }): Promise<{
+    pattern: string;
+    symbol: string;
+    fraction: number;
+    rounding: number;
+    positive: string;
+    negative: string;
+    decimal: string;
+    grouping: string;
+  }> {
+    return;
+  }
 
   /**
    * Returns a pattern string to format and parse currency values according to the client's user preferences and ISO 4217 currency code.
@@ -149,6 +219,16 @@ export class Globalization extends IonicNativePlugin {
    * @returns {Promise<{ pattern: string, code: string, fraction: number, rounding: number, decimal: number, grouping: string }>}
    */
   @Cordova()
-  getCurrencyPattern(currencyCode: string): Promise<{ pattern: string, code: string, fraction: number, rounding: number, decimal: number, grouping: string }> { return; }
-
+  getCurrencyPattern(
+    currencyCode: string
+  ): Promise<{
+    pattern: string;
+    code: string;
+    fraction: number;
+    rounding: number;
+    decimal: number;
+    grouping: string;
+  }> {
+    return;
+  }
 }

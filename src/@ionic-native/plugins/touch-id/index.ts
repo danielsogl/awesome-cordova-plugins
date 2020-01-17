@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 
 /**
@@ -11,7 +11,7 @@ import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { TouchID } from '@ionic-native/touch-id';
+ * import { TouchID } from '@ionic-native/touch-id/ngx';
  *
  * constructor(private touchId: TouchID) { }
  *
@@ -59,7 +59,9 @@ export class TouchID extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves if yes, rejects if no.
    */
   @Cordova()
-  isAvailable(): Promise<any> { return; }
+  isAvailable(): Promise<any> {
+    return;
+  }
 
   /**
    * Show TouchID dialog and wait for a fingerprint scan. If user taps 'Enter Password' button, brings up standard system passcode screen.
@@ -68,7 +70,9 @@ export class TouchID extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
-  verifyFingerprint(message: string): Promise<any> { return; }
+  verifyFingerprint(message: string): Promise<any> {
+    return;
+  }
 
   /**
    * Show TouchID dialog and wait for a fingerprint scan. If user taps 'Enter Password' button, rejects with code '-3' (see above).
@@ -77,7 +81,9 @@ export class TouchID extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
-  verifyFingerprintWithCustomPasswordFallback(message: string): Promise<any> { return; }
+  verifyFingerprintWithCustomPasswordFallback(message: string): Promise<any> {
+    return;
+  }
 
   /**
    * Show TouchID dialog with custom 'Enter Password' message and wait for a fingerprint scan. If user taps 'Enter Password' button, rejects with code '-3' (see above).
@@ -87,7 +93,9 @@ export class TouchID extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
-  verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string): Promise<any> { return; }
+  verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if the fingerprint database changed.
@@ -95,6 +103,8 @@ export class TouchID extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves if yes, rejects if no.
    */
   @Cordova()
-  didFingerprintDatabaseChange(): Promise<any> { return; }
+  didFingerprintDatabaseChange(): Promise<any> {
+    return;
+  }
 
 }

@@ -1,4 +1,4 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { MobileAccessibility } from 'ionic-native';
+ * import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
  *
  *
  * constructor(private mobileAccessibility: MobileAccessibility) { }
@@ -23,7 +23,7 @@ import { Injectable } from '@angular/core';
 @Plugin({
   pluginName: 'MobileAccessibility',
   plugin: 'phonegap-plugin-mobile-accessibility',
-  pluginRef: 'MobileAccessibility',
+  pluginRef: 'window.MobileAccessibility',
   repo: 'https://github.com/phonegap/phonegap-mobile-accessibility',
   platforms: ['Android Fire OS', 'Android', 'iOS', 'Windows']
 })
@@ -56,21 +56,27 @@ export class MobileAccessibility extends IonicNativePlugin {
    * @returns {Promise<boolean>}  A result method to receive the boolean result asynchronously from the native MobileAccessibility plugin.
    */
   @Cordova()
-  isScreenReaderRunning(): Promise<boolean> { return; }
+  isScreenReaderRunning(): Promise<boolean> {
+    return;
+  }
 
   /**
    * An iOS-specific proxy for the MobileAccessibility.isScreenReaderRunning method
    * @returns {Promise<boolean>} A result method to receive the boolean result asynchronously from the native MobileAccessibility plugin.
    */
   @Cordova({ platforms: ['iOS'] })
-  isVoiceOverRunning(): Promise<boolean> { return; }
+  isVoiceOverRunning(): Promise<boolean> {
+    return;
+  }
 
   /**
    * An Android/Amazon Fire OS-specific proxy for the MobileAccessibility.isScreenReaderRunning method.
    * @returns {Promise<boolean>}  A result method to receive the boolean result asynchronously from the native MobileAccessibility plugin.
    */
   @Cordova({ platforms: ['Amazon Fire OS', 'Android'] })
-  isTalkBackRunning(): Promise<boolean> { return; }
+  isTalkBackRunning(): Promise<boolean> {
+    return;
+  }
 
   /**
    * On Android, this method returns true if ChromeVox is active and properly initialized with access to the text to speech API in the WebView.
@@ -78,124 +84,157 @@ export class MobileAccessibility extends IonicNativePlugin {
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['Amazon Fire OS', 'Android'] })
-  isChromeVoxActive(): Promise<boolean> { return; }
+  isChromeVoxActive(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isBoldTextEnabled(): Promise<boolean> { return; }
+  isBoldTextEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova()
-  isClosedCaptioningEnabled(): Promise<boolean> { return; }
+  isClosedCaptioningEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isDarkerSystemColorsEnabled(): Promise<boolean> { return; }
+  isDarkerSystemColorsEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isGrayscaleEnabled(): Promise<boolean> { return; }
+  isGrayscaleEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isGuidedAccessEnabled(): Promise<boolean> { return; }
+  isGuidedAccessEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isInvertColorsEnabled(): Promise<boolean> { return; }
+  isInvertColorsEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isMonoAudioEnabled(): Promise<boolean> { return; }
+  isMonoAudioEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isReduceMotionEnabled(): Promise<boolean> { return; }
+  isReduceMotionEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isReduceTransparencyEnabled(): Promise<boolean> { return; }
+  isReduceTransparencyEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isSpeakScreenEnabled(): Promise<boolean> { return; }
+  isSpeakScreenEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isSpeakSelectionEnabled(): Promise<boolean> { return; }
+  isSpeakSelectionEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  isSwitchControlRunning(): Promise<boolean> { return; }
+  isSwitchControlRunning(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['Amazon Fire OS', 'Android'] })
-  isTouchExplorationEnabled(): Promise<boolean> { return; }
+  isTouchExplorationEnabled(): Promise<boolean> {
+    return;
+  }
 
   /**
    *
    * * @returns {Promise<number>} Returns the result
    */
   @Cordova()
-  getTextZoom(): Promise<number> { return; }
+  getTextZoom(): Promise<number> {
+    return;
+  }
 
   /**
    * @param textZoom {number} A percentage value by which text in the WebView should be scaled.
    */
   @Cordova({ sync: true })
-  setTextZoom(textZoom: number): void { }
+  setTextZoom(textZoom: number): void {
+  }
 
   /**
    *
    */
   @Cordova({ sync: true })
-  updateTextZoom(): void { }
+  updateTextZoom(): void {
+  }
 
   /**
    * A Boolean value which specifies whether to use the preferred text zoom of a default percent value of 100.
    * @param value {boolean} Returns the result
    */
   @Cordova({ sync: true })
-  usePreferredTextZoom(value: boolean): void { }
+  usePreferredTextZoom(value: boolean): void {
+  }
 
   /**
    * Posts a notification with a string for the screen reader to announce if it is running.
@@ -204,7 +243,9 @@ export class MobileAccessibility extends IonicNativePlugin {
    * @returns {Promise<boolean>} Returns the result
    */
   @Cordova({ platforms: ['iOS'] })
-  postNotification(mobileAccessibilityNotification: any, value: string): Promise<boolean> { return; }
+  postNotification(mobileAccessibilityNotification: any, value: string): Promise<boolean> {
+    return;
+  }
 
   /**
    * Speaks a given string through the screenreader. On Android, if ChromeVox is active, it will use the specified queueMode and properties.
@@ -213,12 +254,14 @@ export class MobileAccessibility extends IonicNativePlugin {
    * @param properties {any}
    */
   @Cordova({ sync: true })
-  speak(value: string, queueMode?: number, properties?: any): void { }
+  speak(value: string, queueMode?: number, properties?: any): void {
+  }
 
   /**
    * Stops speech.
    */
   @Cordova({ sync: true })
-  stop(): void { }
+  stop(): void {
+  }
 
 }

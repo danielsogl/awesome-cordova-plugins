@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 /**
  * @name Broadcaster
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
  *
  * @usage
  * ```typescript
- * import { Broadcaster } from '@ionic-native/broadcaster';
+ * import { Broadcaster } from '@ionic-native/broadcaster/ngx';
  *
  * constructor(private broadcaster: Broadcaster) { }
  *
@@ -28,14 +28,13 @@ import { Observable } from 'rxjs/Observable';
   plugin: 'cordova-plugin-broadcaster',
   pluginRef: 'broadcaster',
   repo: 'https://github.com/bsorrentino/cordova-broadcaster',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS', 'Browser']
 })
 @Injectable()
 export class Broadcaster extends IonicNativePlugin {
-
   /**
    * This function listen to an event sent from the native code
-   * @param eventName {string}
+   * @param {string} eventName
    * @return {Observable<any>} Returns an observable to watch when an event is received
    */
   @Cordova({
@@ -43,15 +42,18 @@ export class Broadcaster extends IonicNativePlugin {
     clearFunction: 'removeEventListener',
     clearWithArgs: true
   })
-  addEventListener(eventName: string): Observable<any> { return; }
+  addEventListener(eventName: string): Observable<any> {
+    return;
+  }
 
   /**
    * This function sends data to the native code
-   * @param eventName {string}
-   * @param eventData {any}
+   * @param {string} eventName
+   * @param {any} eventData
    * @return {Promise<any>} Returns a promise that resolves when an event is successfully fired
    */
   @Cordova()
-  fireNativeEvent(eventName: string, eventData: any): Promise<any> { return; }
-
+  fireNativeEvent(eventName: string, eventData: any): Promise<any> {
+    return;
+  }
 }

@@ -1,8 +1,8 @@
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
- * @name Pin Check 
+ * @name Pin Check
  * @description
  * This plugin is for use with Apache Cordova and allows your application to check whether pin/keyguard or passcode is setup on iOS and Android phones.
  *
@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
  *
  * @usage
  * ```typescript
- * import { PinCheck } from '@ionic-native/pin-check';
+ * import { PinCheck } from '@ionic-native/pin-check/ngx';
  * import { Platform } from 'ionic-angular';
  *
  * constructor(private pinCheck: PinCheck, private platform: Platform) { }
@@ -34,7 +34,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class PinCheck extends IonicNativePlugin {
   /**
-   *  check whether pin/keyguard or passcode is setup    
+   *  check whether pin/keyguard or passcode is setup
    * @returns {Promise<boolean>}
    */
   @Cordova()

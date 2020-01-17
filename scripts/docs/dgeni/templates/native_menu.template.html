@@ -1,0 +1,10 @@
+<li class="capitalize {% if page.id == 'overview' %}active{% endif %}">
+  <a href="/docs/native/">Overview</a>
+</li>
+<li class="capitalize {% if page.id == 'mocking' %}active{% endif %}">
+  <a href="/docs/native/browser.html">Browser Usage</a>
+</li>
+<@- for doc in docs @><@ if doc.URL and doc.private != true @>
+<li class="capitalize {% if page.id == '<$ doc.name|lower|dashify $>' %}active{% endif %}">
+  <a href="<$ doc.URL $>"><$ doc.name $><@ if doc.paid == true @> <span class="paid">Paid</span><@ endif @><@ if doc.beta == true @> <span class="beta">&beta;</span><@ endif @></a>
+</li><@ endif @><@ endfor @>

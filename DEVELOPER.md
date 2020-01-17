@@ -88,8 +88,6 @@ It's just a stub. The `return` is only there to keep the TypeScript type-checker
 
 By default, the `@Cordova` decorator wraps the plugin callbacks in a Promise that resolves when the success callback is called and rejects when the error callback is called.  It also ensures that Cordova and the underlying plugin are available, and prints helpful diagnostics if they aren't.
 
-You'll also notice that `getCurrentPosition` is a static method. That's because the plugin class is just a utility class to call the underlying Cordova plugin methods, it's not an instance and has no state.
-
 Next, let's look at the `watchPosition` method.
 
 ```
@@ -115,11 +113,11 @@ You need to run `npm run build` in the `ionic-native` project, this will create 
 
 ### Cleaning the code
 
-You need to run `npm run lint` to analyze the code and ensure it's consistency with the repository style. Fix any errors before submitting a PR.
+You need to run `npm run lint` to analyze the code and ensure its consistency with the repository style. Fix any errors before submitting a PR.
 
 ### 'Wrapping' Up
 
-That's it! The only thing left to do is rigorously document the plugin and it's usage. Take a look at some of the other plugins for good documentation styles.
+That's it! The only thing left to do is rigorously document the plugin and its usage. Take a look at some of the other plugins for good documentation styles.
 
 ## Commit Message Format
 
@@ -194,7 +192,7 @@ Checks if the plugin and property exist before getting/setting the property's va
 
 Example:
 ```ts
-@CordovaProperty
+@CordovaProperty()
 someProperty: string;
 ```
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 export interface HttpdOptions {
   /**
@@ -26,7 +26,7 @@ export interface HttpdOptions {
  * Embedded httpd for Cordova apps. Light weight HTTP server.
  * @usage
  * ```typescript
- * import { Httpd, HttpdOptions } from '@ionic-native/httpd';
+ * import { Httpd, HttpdOptions } from '@ionic-native/httpd/ngx';
  *
  * constructor(private httpd: Httpd) { }
  *
@@ -37,7 +37,7 @@ export interface HttpdOptions {
  *      www_root: 'httpd_root', // relative path to app's www directory
  *      port: 80,
  *      localhost_only: false
- *  };
+ *  }
  *
  * this.httpd.startServer(options).subscribe((data) => {
  *  console.log('Server is live');
@@ -56,7 +56,6 @@ export interface HttpdOptions {
 })
 @Injectable()
 export class Httpd extends IonicNativePlugin {
-
   /**
    * Starts a web server.
    * @param options {HttpdOptions}
@@ -66,20 +65,25 @@ export class Httpd extends IonicNativePlugin {
     observable: true,
     clearFunction: 'stopServer'
   })
-  startServer(options?: HttpdOptions): Observable<string> { return; }
+  startServer(options?: HttpdOptions): Observable<string> {
+    return;
+  }
 
   /**
    * Gets the URL of the running server
    * @returns {Promise<string>} Returns a promise that resolves with the URL of the web server.
    */
   @Cordova()
-  getUrl(): Promise<string> { return; }
+  getUrl(): Promise<string> {
+    return;
+  }
 
   /**
    * Get the local path of the running webserver
    * @returns {Promise<string>} Returns a promise that resolves with the local path of the web server.
-    */
+   */
   @Cordova()
-  getLocalPath(): Promise<string> { return; }
-
+  getLocalPath(): Promise<string> {
+    return;
+  }
 }

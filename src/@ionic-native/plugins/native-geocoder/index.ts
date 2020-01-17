@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Native Geocoder
@@ -8,23 +8,28 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
+ * import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
  *
  * constructor(private nativeGeocoder: NativeGeocoder) { }
  *
  * ...
  *
- * this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818)
- *   .then((result: NativeGeocoderReverseResult) => console.log(JSON.stringify(result)))
+ * let options: NativeGeocoderOptions = {
+ *     useLocale: true,
+ *     maxResults: 5
+ * };
+ *
+ * this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818, options)
+ *   .then((result: NativeGeocoderResult[]) => console.log(JSON.stringify(result[0])))
  *   .catch((error: any) => console.log(error));
  *
- * this.nativeGeocoder.forwardGeocode('Berlin')
- *   .then((coordinates: NativeGeocoderForwardResult) => console.log('The coordinates are latitude=' + coordinates.latitude + ' and longitude=' + coordinates.longitude))
+ * this.nativeGeocoder.forwardGeocode('Berlin', options)
+ *   .then((result: NativeGeocoderResult[]) => console.log('The coordinates are latitude=' + result[0].latitude + ' and longitude=' + result[0].longitude))
  *   .catch((error: any) => console.log(error));
  * ```
  * @interfaces
- * NativeGeocoderReverseResult
- * NativeGeocoderForwardResult
+ * NativeGeocoderResult
+ * NativeGeocoderOptions
  */
 @Plugin({
   pluginName: 'NativeGeocoder',
@@ -40,31 +45,41 @@ export class NativeGeocoder extends IonicNativePlugin {
    * Reverse geocode a given latitude and longitude to find location address
    * @param latitude {number} The latitude
    * @param longitude {number} The longitude
-   * @return {Promise<NativeGeocoderReverseResult>}
+   * @param options {NativeGeocoderOptions} The options
+   * @return {Promise<NativeGeocoderResult[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  reverseGeocode(latitude: number, longitude: number): Promise<NativeGeocoderReverseResult> { return; }
+  reverseGeocode(latitude: number, longitude: number, options?: NativeGeocoderOptions): Promise<NativeGeocoderResult[]> { return; }
 
   /**
    * Forward geocode a given address to find coordinates
    * @param addressString {string} The address to be geocoded
-   * @return {Promise<NativeGeocoderForwardResult>}
+   * @param options {NativeGeocoderOptions} The options
+   * @return {Promise<NativeGeocoderResult[]>}
    */
   @Cordova({
     callbackOrder: 'reverse'
   })
-  forwardGeocode(addressString: string): Promise<NativeGeocoderForwardResult> { return; }
+  forwardGeocode(addressString: string, options?: NativeGeocoderOptions): Promise<NativeGeocoderResult[]> { return; }
 }
 
 /**
- * Encapsulates format information about a reverse geocoding result.
- * more Info: 
+ * Encapsulates format information about a geocoding result.
+ * more Info:
  *  - https://developer.apple.com/documentation/corelocation/clplacemark
  *  - https://developer.android.com/reference/android/location/Address.html
  */
-export interface NativeGeocoderReverseResult {
+export interface NativeGeocoderResult {
+  /**
+   * The latitude.
+   */
+  latitude: string;
+  /**
+   * The longitude.
+   */
+  longitude: string;
   /**
    * The country code.
    */
@@ -101,18 +116,30 @@ export interface NativeGeocoderReverseResult {
    * The subThoroughfare.
    */
   subThoroughfare: string;
+  /**
+   * The areasOfInterest
+   */
+  areasOfInterest: string[];
 }
 
 /**
- * Encapsulates format information about a forward geocoding result.
+ * Options for reverse and forward geocoding.
  */
-export interface NativeGeocoderForwardResult {
+export interface NativeGeocoderOptions {
   /**
-   * The latitude.
+   * The locale to use when returning the address information.
+   * If set to 'false' the locale will always be 'en_US'.
+   * Default is 'true'
    */
-  latitude: string;
+  useLocale: boolean;
   /**
-   * The longitude.
+   * The default locale to use when returning the address information.
+   * e.g.: 'fa-IR' or 'de_DE'.
    */
-  longitude: string;
+  defaultLocale?: string;
+  /**
+   * The maximum number of result to return (max is 5).
+   * Default is 1
+   */
+  maxResults: number;
 }

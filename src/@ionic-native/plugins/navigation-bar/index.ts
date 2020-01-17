@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 
 /**
  * @beta
  * @name Navigation Bar
  * @description
- * The NavigationBar plugin can you to hide and auto hide the android navigation bar.
+ * The NavigationBar plugin allows you to hide and auto hide the android navigation bar.
  *
  * @usage
  * ```typescript
- * import { NavigationBar } from '@ionic-native/navigation-bar';
+ * import { NavigationBar } from '@ionic-native/navigation-bar/ngx';
  *
  * constructor(private navigationBar: NavigationBar) { }
  *
  * ...
  *
  * let autoHide: boolean = true;
- * this.navigationBar.hide(autoHide);
+ * this.navigationBar.setUp(autoHide);
  * ```
  */
 @Plugin({
@@ -32,7 +32,7 @@ export class NavigationBar extends IonicNativePlugin {
 
   /**
    * hide automatically (or not) the navigation bar.
-   * @param autohide {boolean}  
+   * @param autohide {boolean}
    * @return {Promise<any>}
    */
   @Cordova({
@@ -40,10 +40,12 @@ export class NavigationBar extends IonicNativePlugin {
     successName: 'success',
     errorName: 'failure'
   })
-  setUp(autohide?: boolean): Promise<any> { return; }
+  setUp(autohide?: boolean): Promise<any> {
+    return;
+  }
 
   /**
-   * Hide the navigation bar. 
+   * Hide the navigation bar.
    * @return {Promise<any>}
    */
   @Cordova({
@@ -51,6 +53,8 @@ export class NavigationBar extends IonicNativePlugin {
     successName: 'success',
     errorName: 'failure'
   })
-  hideNavigationBar(): Promise<any> { return; }
+  hideNavigationBar(): Promise<any> {
+    return;
+  }
 
 }

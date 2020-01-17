@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface CameraPreviewDimensions {
   /** The width of the camera preview, default to window.screen.width */
@@ -39,6 +39,9 @@ export interface CameraPreviewOptions {
 
   /** Tap to set specific focus point. Note, this assumes the camera is full-screen. default false */
   tapToFocus?: boolean;
+
+  /** On Android disable automatic rotation of the image and stripping of Exit header. default false */
+  disableExifHeaderStripping?: boolean;
 }
 
 export interface CameraPreviewPictureOptions {
@@ -60,7 +63,7 @@ export interface CameraPreviewPictureOptions {
  *
  * @usage
  * ```typescript
- * import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+ * import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview/ngx';
  *
  * constructor(private cameraPreview: CameraPreview) { }
  *
@@ -77,7 +80,7 @@ export interface CameraPreviewPictureOptions {
  *   previewDrag: true,
  *   toBack: true,
  *   alpha: 1
- * };
+ * }
  *
  * // start camera
  * this.cameraPreview.startCamera(cameraPreviewOpts).then(
@@ -110,6 +113,14 @@ export interface CameraPreviewPictureOptions {
  *   this.picture = 'assets/img/test.jpg';
  * });
  *
+ * // take a snap shot
+ * this.cameraPreview.takeSnapshot(this.pictureOpts).then((imageData) => {
+ *   this.picture = 'data:image/jpeg;base64,' + imageData;
+ * }, (err) => {
+ *   console.log(err);
+ *   this.picture = 'assets/img/test.jpg';
+ * });
+ *
  *
  * // Switch camera
  * this.cameraPreview.switchCamera();
@@ -131,12 +142,12 @@ export interface CameraPreviewPictureOptions {
   pluginName: 'CameraPreview',
   plugin: 'cordova-plugin-camera-preview',
   pluginRef: 'CameraPreview',
-  repo: 'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
+  repo:
+    'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
   platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class CameraPreview extends IonicNativePlugin {
-
   FOCUS_MODE = {
     FIXED: 'fixed',
     AUTO: 'auto',
@@ -189,46 +200,72 @@ export class CameraPreview extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  startCamera(options: CameraPreviewOptions): Promise<any> { return; }
+  startCamera(options: CameraPreviewOptions): Promise<any> {
+    return;
+  }
 
   /**
    * Stops the camera preview instance. (iOS & Android)
    * @return {Promise<any>}
    */
   @Cordova()
-  stopCamera(): Promise<any> { return; }
+  stopCamera(): Promise<any> {
+    return;
+  }
 
   /**
    * Switch from the rear camera and front camera, if available.
    * @return {Promise<any>}
    */
   @Cordova()
-  switchCamera(): Promise<any> { return; }
+  switchCamera(): Promise<any> {
+    return;
+  }
 
   /**
    * Hide the camera preview box.
    * @return {Promise<any>}
    */
   @Cordova()
-  hide(): Promise<any> { return; }
+  hide(): Promise<any> {
+    return;
+  }
 
   /**
    * Show the camera preview box.
    * @return {Promise<any>}
    */
   @Cordova()
-  show(): Promise<any> { return; }
+  show(): Promise<any> {
+    return;
+  }
 
   /**
    * Take the picture (base64)
-   * @param [options] {CameraPreviewPictureOptions} size and quality of the picture to take
+   * @param {CameraPreviewPictureOptions} [options] size and quality of the picture to take
    * @return {Promise<any>}
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  takePicture(options?: CameraPreviewPictureOptions): Promise<any> { return; }
+  takePicture(options?: CameraPreviewPictureOptions): Promise<any> {
+    return;
+  }
+
+
+  /**
+   * Take a snapshot of preview window (size specified in startCamera options)
+   * @param {CameraPreviewPictureOptions} [options] quality of the picture to take
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2
+  })
+  takeSnapshot(options?: CameraPreviewPictureOptions): Promise<any> {
+    return;
+  }
 
   /**
    *
@@ -241,7 +278,9 @@ export class CameraPreview extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  setColorEffect(effect: string): Promise<any> { return; }
+  setColorEffect(effect: string): Promise<any> {
+    return;
+  }
 
   /**
    * Set the zoom (Android)
@@ -252,147 +291,209 @@ export class CameraPreview extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 2
   })
-  setZoom(zoom?: number): Promise<any> { return; }
+  setZoom(zoom?: number): Promise<any> {
+    return;
+  }
 
   /**
-     * Get the maximum zoom (Android)
-     * @return {Promise<any>}
-     */
+   * Get the maximum zoom (Android)
+   * @return {Promise<any>}
+   */
   @Cordova()
-  getMaxZoom(): Promise<any> { return; }
+  getMaxZoom(): Promise<any> {
+    return;
+  }
 
   /**
    * Get current zoom (Android)
    * @return {Promise<any>}
    */
   @Cordova()
-  getZoom(): Promise<any> { return; }
+  getZoom(): Promise<any> {
+    return;
+  }
 
   /**
    * Set the preview Size
-   * @param [dimensions] {CameraPreviewDimensions}
+   * @param {CameraPreviewDimensions} [dimensions]
    * @return {Promise<any>}
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  setPreviewSize(dimensions?: CameraPreviewDimensions): Promise<any> { return; }
+  setPreviewSize(dimensions?: CameraPreviewDimensions): Promise<any> {
+    return;
+  }
 
   /**
    * Get focus mode
    * @return {Promise<any>}
    */
   @Cordova()
-  getFocusMode(): Promise<any> { return; }
+  getFocusMode(): Promise<any> {
+    return;
+  }
 
   /**
    * Set the focus mode
-   * @param [focusMode] {string} 'fixed', 'auto', 'continuous-picture', 'continuous-video' (iOS & Android), 'edof', 'infinity', 'macro' (Android Only)
+   * @param {string} [focusMode] 'fixed', 'auto', 'continuous-picture', 'continuous-video' (iOS & Android), 'edof', 'infinity', 'macro' (Android Only)
    * @return {Promise<any>}
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  setFocusMode(focusMode?: string): Promise<any> { return; }
+  setFocusMode(focusMode?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get supported focus modes
    * @return {Promise<any>}
    */
   @Cordova()
-  getSupportedFocusModes(): Promise<any> { return; }
+  getSupportedFocusModes(): Promise<any> {
+    return;
+  }
 
   /**
    * Get the current flash mode
    * @return {Promise<any>}
    */
   @Cordova()
-  getFlashMode(): Promise<any> { return; }
+  getFlashMode(): Promise<any> {
+    return;
+  }
 
   /**
-   * Set the flashmode
-   * @param [flashMode] {string} 'off' (iOS & Android), 'on' (iOS & Android), 'auto' (iOS & Android), 'torch' (Android)
+   * Set the flash mode
+   * @param {string} [flashMode] 'off' (iOS & Android), 'on' (iOS & Android), 'auto' (iOS & Android), 'torch' (Android)
    * @return {Promise<any>}
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  setFlashMode(flashMode?: string): Promise<any> { return; }
+  setFlashMode(flashMode?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get supported flash modes
    * @return {Promise<any>}
    */
   @Cordova()
-  getSupportedFlashModes(): Promise<any> { return; }
+  getSupportedFlashModes(): Promise<any> {
+    return;
+  }
 
   /**
    * Get supported picture sizes
    * @return {Promise<any>}
    */
   @Cordova()
-  getSupportedPictureSizes(): Promise<any> { return; }
+  getSupportedPictureSizes(): Promise<any> {
+    return;
+  }
 
   /**
    * Get exposure mode
    * @return {Promise<any>}
    */
   @Cordova()
-  getExposureMode(): Promise<any> { return; }
+  getExposureMode(): Promise<any> {
+    return;
+  }
 
   /**
    * Get exposure modes
    * @return {Promise<any>}
    */
   @Cordova()
-  getExposureModes(): Promise<any> { return; }
+  getExposureModes(): Promise<any> {
+    return;
+  }
 
   /**
    * Set exposure mode
-   * @param [lock] {string}
+   * @param {string} [lock]
    * @return {Promise<any>}
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  setExposureMode(lock?: string): Promise<any> { return; }
+  setExposureMode(lock?: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get exposure compensation (Android)
    * @return {Promise<any>}
    */
   @Cordova()
-  getExposureCompensation(): Promise<any> { return; }
+  getExposureCompensation(): Promise<any> {
+    return;
+  }
 
   /**
    * Set exposure compensation (Android)
-   * @param [exposureCompensation] {number}
+   * @param {number} [exposureCompensation]
    * @return {Promise<any>}
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  setExposureCompensation(exposureCompensation?: number): Promise<any> { return; }
+  setExposureCompensation(exposureCompensation?: number): Promise<any> {
+    return;
+  }
 
   /**
    * Get exposure compensation range (Android)
    * @return {Promise<any>}
    */
   @Cordova()
-  getExposureCompensationRange(): Promise<any> { return; }
+  getExposureCompensationRange(): Promise<any> {
+    return;
+  }
 
   /**
    * Set specific focus point. Note, this assumes the camera is full-screen.
-   * @param xPoint {number}
-   * @param yPoint {number}
+   * @param {number} xPoint
+   * @param {number} yPoint
    * @return {Promise<any>}
    */
   @Cordova()
-  tapToFocus(xPoint: number, yPoint: number): Promise<any> { return; }
+  tapToFocus(xPoint: number, yPoint: number): Promise<any> {
+    return;
+  }
 
+  /**
+   * Add a listener for the back event for the preview
+   * @return {Promise<any>} if back button pressed
+   */
+  @Cordova()
+  onBackButton(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Return in use device camera fov
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getHorizontalFOV(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get the characteristics of all available cameras
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  getCameraCharacteristics(): Promise<any> {
+    return;
+  }
 }

@@ -1,28 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Cordova, Plugin, IonicNativePlugin } from '@ionic-native/core';
-
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * Options for sending an SMS
  */
 export interface SmsOptions {
-
   /**
    * Set to true to replace \n by a new line. Default: false
    */
   replaceLineBreaks?: boolean;
 
   android?: SmsOptionsAndroid;
-
 }
 
 export interface SmsOptionsAndroid {
-
   /**
    * Set to "INTENT" to send SMS with the native android SMS messaging. Leaving it empty will send the SMS without opening any app.
    */
   intent?: string;
-
 }
 
 /**
@@ -33,7 +28,7 @@ export interface SmsOptionsAndroid {
  *
  * @usage
  * ```typescript
- * import { SMS } from '@ionic-native/sms';
+ * import { SMS } from '@ionic-native/sms/ngx';
  *
  * constructor(private sms: SMS) { }
  *
@@ -57,10 +52,9 @@ export interface SmsOptionsAndroid {
 })
 @Injectable()
 export class SMS extends IonicNativePlugin {
-
   /**
    * Sends sms to a number
-   * @param phoneNumber {string|Array<string>} Phone number
+   * @param phoneNumber {string|string[]} Phone number
    * @param message {string} Message
    * @param options {SmsOptions} Options
    * @returns {Promise<any>} Resolves promise when the SMS has been sent
@@ -73,7 +67,9 @@ export class SMS extends IonicNativePlugin {
     phoneNumber: string | string[],
     message: string,
     options?: SmsOptions
-    ): Promise<any> { return; }
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * This function lets you know if the app has permission to send SMS
@@ -82,6 +78,7 @@ export class SMS extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android']
   })
-  hasPermission(): Promise<boolean> { return; }
-
+  hasPermission(): Promise<boolean> {
+    return;
+  }
 }

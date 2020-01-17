@@ -1,7 +1,6 @@
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromEvent';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable, fromEvent } from 'rxjs';
 
 export interface AdMobFreeBannerConfig {
   /**
@@ -67,10 +66,13 @@ export interface AdMobFreeRewardVideoConfig {
 /**
  * @name AdMob Free
  * @description
+ * A free, no ad-sharing version of Google AdMob plugin for Cordova.
+ *
+ * Requires Cordova plugin: `cordova-plugin-admob-free`. For more info, please see the [AdMob Free plugin docs](https://github.com/ratson/cordova-plugin-admob-free).
  *
  * @usage
  * ```typescript
- * import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+ * import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
  *
  *
  * constructor(private admobFree: AdMobFree) { }
@@ -114,12 +116,11 @@ export interface AdMobFreeRewardVideoConfig {
 })
 @Injectable()
 export class AdMobFree extends IonicNativePlugin {
-
   /**
    * Convenience object to get event names
    * @type {Object}
    */
-  events: any = {
+  events = {
     BANNER_LOAD: 'admob.banner.events.LOAD',
     BANNER_LOAD_FAIL: 'admob.banner.events.LOAD_FAIL',
     BANNER_OPEN: 'admob.banner.events.OPEN',
@@ -147,7 +148,7 @@ export class AdMobFree extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   on(event: string): Observable<any> {
-    return Observable.fromEvent(document, event);
+    return fromEvent(document, event);
   }
 
   /**
@@ -167,7 +168,6 @@ export class AdMobFree extends IonicNativePlugin {
    * @type {AdMobFreeRewardVideo}
    */
   rewardVideo: AdMobFreeRewardVideo = new AdMobFreeRewardVideo();
-
 }
 
 /**
@@ -176,46 +176,54 @@ export class AdMobFree extends IonicNativePlugin {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.banner',
+  pluginRef: 'admob.banner'
 })
-export class AdMobFreeBanner {
-
+export class AdMobFreeBanner extends IonicNativePlugin {
   /**
-   * Update config.
+   * Update config
    * @param options
    * @return {AdMobFreeBannerConfig}
    */
   @Cordova({ sync: true })
-  config(options: AdMobFreeBannerConfig): AdMobFreeBannerConfig { return; }
+  config(options: AdMobFreeBannerConfig): AdMobFreeBannerConfig {
+    return;
+  }
 
   /**
-   * Hide the banner.
+   * Hide the banner
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  hide(): Promise<any> { return; }
+  hide(): Promise<any> {
+    return;
+  }
 
   /**
-   * Create banner.
+   * Create banner
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  prepare(): Promise<any> { return; }
+  prepare(): Promise<any> {
+    return;
+  }
 
   /**
-   * Remove the banner.
+   * Remove the banner
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  remove(): Promise<any> { return; }
+  remove(): Promise<any> {
+    return;
+  }
 
   /**
-   * Show the banner.
+   * Show the banner
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  show(): Promise<any> { return; }
-
+  show(): Promise<any> {
+    return;
+  }
 }
 
 /**
@@ -224,39 +232,45 @@ export class AdMobFreeBanner {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.interstitial',
+  pluginRef: 'admob.interstitial'
 })
-export class AdMobFreeInterstitial {
-
+export class AdMobFreeInterstitial extends IonicNativePlugin {
   /**
-   * Update config.
+   * Update config
    * @param options
    * @return {AdMobFreeInterstitialConfig}
    */
   @Cordova({ sync: true })
-  config(options: AdMobFreeInterstitialConfig): AdMobFreeInterstitialConfig { return; }
+  config(options: AdMobFreeInterstitialConfig): AdMobFreeInterstitialConfig {
+    return;
+  }
 
   /**
    * Check if interstitial is ready
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  isReady(): Promise<any> { return; }
+  isReady(): Promise<any> {
+    return;
+  }
 
   /**
    * Prepare interstitial
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  prepare(): Promise<any> { return; }
+  prepare(): Promise<any> {
+    return;
+  }
 
   /**
    * Show the interstitial
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  show(): Promise<any> { return; }
-
+  show(): Promise<any> {
+    return;
+  }
 }
 
 /**
@@ -265,37 +279,43 @@ export class AdMobFreeInterstitial {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.rewardvideo',
+  pluginRef: 'admob.rewardvideo'
 })
-export class AdMobFreeRewardVideo {
-
+export class AdMobFreeRewardVideo extends IonicNativePlugin {
   /**
-   * Update config.
-   * @param options
+   * Update config
+   * @param {AdMobFreeRewardVideoConfig} options Admob reward config
    * @return {AdMobFreeRewardVideoConfig}
    */
   @Cordova({ sync: true })
-  config(options: AdMobFreeRewardVideoConfig): AdMobFreeRewardVideoConfig { return; }
+  config(options: AdMobFreeRewardVideoConfig): AdMobFreeRewardVideoConfig {
+    return;
+  }
 
   /**
    * Check if reward video is ready
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  isReady(): Promise<any> { return; }
+  isReady(): Promise<any> {
+    return;
+  }
 
   /**
    * Prepare reward video
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  prepare(): Promise<any> { return; }
+  prepare(): Promise<any> {
+    return;
+  }
 
   /**
    * Show the reward video
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  show(): Promise<any> { return; }
-
+  show(): Promise<any> {
+    return;
+  }
 }
