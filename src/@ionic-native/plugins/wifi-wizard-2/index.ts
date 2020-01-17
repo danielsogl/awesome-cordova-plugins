@@ -1,5 +1,5 @@
-import {Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin} from '@ionic-native/core';
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface WifiConfig {
   SSID: string;
