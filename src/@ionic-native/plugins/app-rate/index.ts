@@ -53,8 +53,8 @@ export interface AppRatePreferences {
   storeAppURL?: AppUrls;
   
   /**
-  * Open Store URL
-  */
+   * Open Store URL
+   */
   openUrl?: (url: string) => void;
 }
 
