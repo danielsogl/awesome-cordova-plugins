@@ -12,6 +12,7 @@ export interface ImagePickerOptions {
    * Max width to allow images to be
    */
   width?: number;
+
   /**
    * Max height to allow images to be
    */
@@ -23,12 +24,32 @@ export interface ImagePickerOptions {
   quality?: number;
 
   /**
+   * Videos allowed?
+   */
+  allow_video?: boolean;
+
+  /**
+   * the default is the message of the old plugin impl
+   */
+  title?: string;
+
+  /**
+   * the old plugin impl didn't have it, so passing null by default
+   */
+  message?: string;
+
+  /**
    * Choose the format of the return value.
    * Defined in ImagePicker.OutputType. Default is FILE_URI.
    *      FILE_URI : 0,   Return image file URI,
    *      DATA_URL : 1,   Return image as base64-encoded string
    */
   outputType?: number;
+
+  /**
+   * Disable the iOS popover as seen on iPad
+   */
+  disable_popover?: boolean;
 }
 
 export enum OutputType {

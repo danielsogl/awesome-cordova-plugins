@@ -56,6 +56,11 @@ export enum LoginListenerType {
    * If there are multiple accounts active & no account is specified in the login(), then this value is returned indicating that a current account needs to be specified for the login().
    */
   app_requires_current_account = 6
+
+  /**
+   * This value indicates app can proceed with demo mode.
+   */
+  login_demo = 7
 }
 
 export enum LoginType {
@@ -346,6 +351,18 @@ export class LoginParameters {
    * Specify the metadata as a JSON string. This will override metadata.xml set at platform level.
    */
   metadataJSON: string;
+
+  /**
+   * Specify the demo data xml string for demo mode.
+   */
+  demoData: string;
+
+
+  /**
+   * Set 'true' if the application supports demo mode otherwise set 'false'.
+   */
+  demoModeRequired: boolean;
+
 
    /*
     * Set this value to true to persist web application database. By default, this value is false.
@@ -639,6 +656,23 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
+   * This api initializes the Unvired Application.
+   * @param loginParameters Set of parameters to be passed the loginWithDemoData()
+   * For Example:
+   * ```
+   * let loginParameters = new LoginParameters()
+   * loginParameters.appName = 'UNVIRED_DIGITAL_FORMS'
+   * loginParameters.metadataPath = '../assets/metadata.json'
+   * loginParameters.loginType = LoginType.unvired
+   * loginParameters.demoData = "<tag></tag>"
+   * ```
+   */
+  @Cordova()
+  loginWithDemoData(loginParameters: LoginParameters): Promise<LoginResult> {
+    return;
+  }
+
+  /**
    * Logs out the last active user.
    */
   @Cordova()
@@ -803,10 +837,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Mobile: Or a Sqlite whereClause ( without the 'where' keyword )
    * Example:
    * ```
-   * # Mobile: Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
+   * # Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
    * this.unviredSDK.dbSelect('FORM_HEADER', "FORM_ID = '5caed815892215034dacad56'")
-   * # Mobile & Browser: Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
-   * this.unviredSDK.dbSelect('FORM_HEADER', {"FORM_ID": "5caed815892215034dacad56"})
    * ```
    */
   @Cordova()
@@ -855,11 +887,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Mobile: Or a Sqlite whereClause ( without the 'where' keyword )
    * Example:
    * ```
-   * Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
-   * # Mobile
+   * # Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
    * this.unviredSDK.dbDelete('FORM_HEADER', "FORM_ID = '5caed815892215034dacad56'")
-   * # Browser & Mobile
-   * this.unviredSDK.dbDelete('FORM_HEADER', {"FORM_ID": "5caed815892215034dacad56"})
    * ```
    */
   @Cordova()
@@ -875,11 +904,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Mobile: Or a Sqlite where Clause ( without the 'where' keyword )
    * Example:
    * ```
-   * Update NAME & NO from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
-   * # Mobile
+   * # Update NAME & NO from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
    * this.unviredSDK.dbUpdate('FORM_HEADER', {"NAME":"UPDATED_USER","UPDATED_NO":"0039"}, "FORM_ID = '5caed815892215034dacad56'")
-   * # Mobile & Browser
-   * this.unviredSDK.dbUpdate('FORM_HEADER', {"NAME":"UPDATED_USER","UPDATED_NO":"0039"}, {"FORM_ID": "5caed815892215034dacad56"})
    * ```
    */
   @Cordova()
@@ -888,12 +914,11 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
-   * Execute SQL Statement
+   * Execute a SQL statement
    * @param query {string} SQL Statement.
    * Example:
    * ```
-   * this.unviredSDK.dbExecuteStatement('SELECT * FROM CUSTOMER_HEADER WHERE CUSTOMER_ID = 39')
+   * this.unviredSDK.dbExecuteStatement("SELECT * FROM CUSTOMER_HEADER WHERE CUSTOMER_ID = '39'")
    * ```
    */
   @Cordova()
@@ -902,7 +927,6 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
    * Create Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
    * @param savePoint {string} Name of savepoint
    * Example:
@@ -916,7 +940,6 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
    * Release Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
    * @param savePoint {string} Name of savepoint
    * ```
@@ -929,7 +952,6 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
    * Rollback Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
    * @param savePoint {string} Name of the savepoint
    * Example:
@@ -943,7 +965,6 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
    * Begin database transaction.
    * For more info, consult SQLite documentation ( https://www.sqlite.org/lang_transaction.html )
    * Example:
@@ -957,7 +978,6 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Supported in mobile only.
    * End database transaction.
    * For more info, consult SQLite documentation ( https://www.sqlite.org/lang_transaction.html )
    * Example:

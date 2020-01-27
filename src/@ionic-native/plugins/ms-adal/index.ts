@@ -138,12 +138,13 @@ export class AuthenticationContext {
    * @param   {String}  extraQueryParameters
    *                                Extra query parameters (optional)
    *                                Parameters should be escaped before passing to this method (e.g. using 'encodeURI()')
+   * @param   {String}  claims      Claim parameter. Parameter should be used under conditional access scenarios (optional)
    * @returns {Promise} Promise either fulfilled with AuthenticationResult object or rejected with error
    */
   @CordovaInstance({
     otherPromise: true
   })
-  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any): Promise<AuthenticationResult> {
+  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any, claims?: string): Promise<AuthenticationResult> {
     return;
   }
 
@@ -164,4 +165,21 @@ export class AuthenticationContext {
     return;
   }
 
+}
+
+export class AuthenticationSettings {
+  /**
+   * Sets flag to use or skip authentication broker.
+   * By default, the flag value is false and ADAL will not talk to broker.
+   *
+   * @param useBroker Flag to use or skip authentication broker
+   *
+   * @returns {Promise} Promise either fulfilled or rejected with error
+   */
+  @CordovaInstance({
+    otherPromise: true
+  })
+  static setUseBroker(useBroker: boolean): Promise<void> {
+    return;
+  }
 }
