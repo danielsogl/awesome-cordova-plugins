@@ -68,24 +68,6 @@ export class SmartlookGlobalEventPropertyKey {
  * Full documentation can be found here: https://smartlook.github.io/docs/sdk/ionic/
  *
  * @usage
- * in `app.module`:
- *
- * ```typescript
- * import { Smartlook } from '@ionic-native/smartlook/ngx';
- *
- * ...
- *
- * @NgModule({
- * providers: [Smartlook, ...]
- *
- * ...
- *
- * })
- * export class AppModule {}
- * ```
- *
- * - `app.component`
- *
  * ```typescript
  * import { Smartlook, SmartlookSetupConfig } from '@ionic-native/smartlook/ngx';
  *
