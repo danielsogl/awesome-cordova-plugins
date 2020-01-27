@@ -1,3 +1,14 @@
+# [5.20.0](https://github.com/ionic-team/ionic-native/compare/v5.19.1...v5.20.0) (2020-01-27)
+
+
+### Features
+
+* **cordova-secure-storage-echo:** add extra options interface ([#3295](https://github.com/ionic-team/ionic-native/issues/3295)) ([95a67a8](https://github.com/ionic-team/ionic-native/commit/95a67a813d299de513ec592b082501a2e1c06783))
+* **http:** update declaration for cordova plugin version 2.4.0 ([#3298](https://github.com/ionic-team/ionic-native/issues/3298)) ([799cf94](https://github.com/ionic-team/ionic-native/commit/799cf9467486f98d836c740e0defe789ce448b7e))
+* **wifiwizard2:** add cordova-plugin-wifiwizard2 typescript definitions ([#3288](https://github.com/ionic-team/ionic-native/issues/3288)) ([41895c1](https://github.com/ionic-team/ionic-native/commit/41895c165cadbd8f859777c12bd8467c904eb12f))
+
+
+
 ## [5.19.1](https://github.com/ionic-team/ionic-native/compare/v5.19.0...v5.19.1) (2020-01-03)
 
 
