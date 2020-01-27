@@ -1,14 +1,3 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
@@ -79,7 +68,7 @@ export interface CertificationData {
  *
  * @usage
  * ```typescript
- * import { IamportCordova } from '@ionic-native/iamport-cordova';
+ * import { IamportCordova } from '@ionic-native/iamport-cordova/ngx';
  *
  *
  * constructor(private iamportCordova: IamportCordova) { }
@@ -95,12 +84,10 @@ export interface CertificationData {
  */
 @Plugin({
   pluginName: 'IamportCordova',
-  plugin: 'iamport-cordova', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'cordova.plugins.IamportCordova', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/iamport/iamport-cordova', // the github repository URL for the plugin
-  install: '', // OPTIONAL install command, in case the plugin requires variables
-  installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['ios', 'android'] // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'iamport-cordova',
+  pluginRef: 'cordova.plugins.IamportCordova',
+  repo: 'https://github.com/iamport/iamport-cordova',
+  platforms: ['ios', 'android']
 })
 @Injectable()
 export class IamportCordova extends IonicNativePlugin {
