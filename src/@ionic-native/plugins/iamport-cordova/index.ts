@@ -1,64 +1,63 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
-import { Observable } from 'rxjs';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
 declare const cordova: Cordova & { plugins: any };
 
 export interface PaymentObject {
-  title?: TitleData;
-  userCode: string;
-  data: PaymentData;
-  callback: any;
+  title?: TitleData;        // webview title data
+  userCode: string;         // user identification code
+  data: PaymentData;        // payment data
+  callback: any;            // callback function after payment
 }
 
 export interface CertificationObject {
-  title?: TitleData;
-  userCode: string;
-  data: CertificationData;
-  callback: any;
+  title?: TitleData;        // webview title data
+  userCode: string;         // user identification code
+  data: CertificationData;  // certification data
+  callback: any;            // callback function after certification
 }
 
 export interface TitleData {
-  name?: string;
-  color?: string;
+  name?: string;            // webview title name
+  color?: string;           // webview title background color
 }
 
 export interface PaymentData {
-  pg?: string;
-  pay_method?: string;
-  name: string;
-  merchant_uid?: string;
-  amount: string;
-  buyer_name?: string;
-  buyer_tel?: string;
-  buyer_email?: string;
-  buyer_addr?: string;
-  buyer_postcode?: string;
-  app_scheme: string;
-  custom_data?: any;
-  notice_url?: string;
-  escrow?: boolean;
-  digital?: boolean;
+  pg?: string;              // payment gateway type
+  pay_method?: string;      // payment method
+  name: string;             // name of order
+  merchant_uid?: string;    // unique merchant id
+  amount: string;           // payment amount
+  buyer_name?: string;      // buyer name
+  buyer_tel?: string;       // buyer contact
+  buyer_email?: string;     // buyer email address
+  buyer_addr?: string;      // buyer address
+  buyer_postcode?: string;  // buyer postcode
+  app_scheme: string;       // custom app url scheme
+  custom_data?: any;        // custom data
+  notice_url?: string;      // notification url
+  escrow?: boolean;         // whether the type of this order is escrow
+  digital?: boolean;        // whether this order is for real products or contents
   display?: {
-    card_quota?: [number];
+    card_quota?: [number];  // credit card installment setting value
   };
-  currency?: string;
-  customer_uid?: string;
-  tax_free?: string;
-  language?: string;
-  vbank_due?: string;
-  biz_num?: string;
+  currency?: string;        // payment currency
+  customer_uid?: string;    // unique customer id for subscription payments
+  tax_free?: string;        // tax amount
+  language?: string;        // language type
+  vbank_due?: string;       // vbank due date
+  biz_num?: string;         // business number
 }
 
 export interface CertificationData {
-  company?: string;
-  phone?: string;
-  name?: string;
-  carrier?: string;
-  birth?: string;
-  merchant_uid?: string;
-  min_age?: string;
-  popup?: boolean;
+  company?: string;         // company name
+  phone?: string;           // cell phone number
+  name?: string;            // name
+  carrier?: string;         // carrier code
+  birth?: string;           // birth date
+  merchant_uid?: string;    // unique merchant id
+  min_age?: string;         // minimum age to allow certification
+  popup?: boolean;          // whether the webview is popup
 }
 
 /**
@@ -100,11 +99,21 @@ export class IamportCordova extends IonicNativePlugin {
    */
   @Cordova()
   payment(paymentObject: PaymentObject): Promise<any> {
-    return cordova.plugins.IamportCordova.payment(paymentObject); // We add return; here to avoid any IDE / Compiler errors
+    /**
+     * This function is to load a webview of a payment gateway to pay for something.
+     * The first parameter is payment data to set the payment webview.
+     * A callback function of the payment data is triggered when the webview is closed.
+    */
+    return cordova.plugins.IamportCordova.payment(paymentObject);
   }
 
   @Cordova()
   certification(certificationObject: CertificationObject): Promise<any> {
-    return cordova.plugins.IamportCordova.certification(certificationObject); // We add return; here to avoid any IDE / Compiler errors
+    /**
+     * This function is to load a webview for identification with carrier type(like Verizon), name and phone number.
+     * The first parameter is certification data to set the certification webview.
+     * * A callback function of the certification data is triggered when the webview is closed.
+    */
+    return cordova.plugins.IamportCordova.certification(certificationObject);
   }
 }
