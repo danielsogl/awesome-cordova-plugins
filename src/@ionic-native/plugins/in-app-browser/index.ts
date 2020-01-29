@@ -123,17 +123,19 @@ export interface InAppBrowserOptions {
   [key: string]: any;
 }
 
-export type InAppBrowserEventType = 'loadstart' | 'loadstop' | 'loaderror' | 'exit' | 'beforeload' | 'message';
+export type InAppBrowserEventType = 'loadstart' | 'loadstop' | 'loaderror' | 'exit' | 'beforeload' | 'message' | 'customscheme';
 
 export interface InAppBrowserEvent extends Event {
   /** the event name */
-  type: InAppBrowserEventType;
+  type: string;
   /** the URL that was loaded. */
   url: string;
   /** the error code, only in the case of loaderror. */
   code: number;
   /** the error message, only in the case of loaderror. */
   message: string;
+  /** the postMessage data, only in the case of message. */
+  data: any;
 }
 
 /**
@@ -177,6 +179,13 @@ export class InAppBrowserObject {
       );
     }
   }
+
+  /**
+   * Method to be called after the "beforeload" event to continue the script
+   * @param strUrl {String} The URL the InAppBrowser should navigate to.
+   */
+  @CordovaInstance({ sync: true })
+  _loadAfterBeforeload(strUrl: string): void {}
 
   /**
    * Displays an InAppBrowser window that was opened hidden. Calling this has no effect
@@ -225,6 +234,28 @@ export class InAppBrowserObject {
    */
   @InstanceCheck()
   on(event: InAppBrowserEventType): Observable<InAppBrowserEvent> {
+    return new Observable<InAppBrowserEvent>(
+      (observer: Observer<InAppBrowserEvent>) => {
+        this._objectInstance.addEventListener(
+          event,
+          observer.next.bind(observer)
+        );
+        return () =>
+          this._objectInstance.removeEventListener(
+            event,
+            observer.next.bind(observer)
+          );
+      }
+    );
+  }
+
+  /**
+   * A method that allows you to listen to events happening in the browser.
+   * @param event {string} Name of the event
+   * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
+   */
+  @InstanceCheck()
+  on(event: string): Observable<InAppBrowserEvent> {
     return new Observable<InAppBrowserEvent>(
       (observer: Observer<InAppBrowserEvent>) => {
         this._objectInstance.addEventListener(

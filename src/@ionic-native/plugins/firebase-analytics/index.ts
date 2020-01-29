@@ -90,4 +90,13 @@ export class FirebaseAnalytics extends IonicNativePlugin {
   setCurrentScreen(name: string): Promise<any> {
     return;
   }
+
+  /**
+   * Clears all analytics data for this instance from the device and resets the app instance ID
+   * @return {Promise<void>} Returns a promise
+   */
+  @Cordova({ sync: true })
+  resetAnalyticsData(): Promise<void> {
+    return;
+  }
 }

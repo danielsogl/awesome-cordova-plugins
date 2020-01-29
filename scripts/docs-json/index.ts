@@ -1,7 +1,9 @@
 import * as fs from 'fs-extra';
-import { Application } from 'typedoc';
 import { basename, dirname, resolve } from 'path';
+import { Application } from 'typedoc';
 import { runInNewContext } from 'vm';
+
+import TypeDoc = require('typedoc');
 
 interface Plugin {
   packageName: string;
@@ -19,9 +21,13 @@ interface Plugin {
 const rootDir = resolve(__dirname, '../..');
 const typedocTmp = resolve(__dirname, 'typedoc.tmp.json');
 const pluginsDir = resolve(rootDir, 'src/@ionic-native/plugins');
-const typedoc = new Application({
+const typedoc = new Application();
+
+typedoc.options.addReader(new TypeDoc.TSConfigReader());
+typedoc.options.addReader(new TypeDoc.TypeDocReader());
+
+typedoc.bootstrap({
   mode: 'modules',
-  tsconfig: resolve(rootDir, 'tsconfig.json'),
   ignoreCompilerErrors: true
 });
 
@@ -46,7 +52,9 @@ async function generateTypedoc(root: string, outputPath = typedocTmp) {
 function processPlugin(pluginModule): Plugin {
   const pluginClass = pluginModule.children.find(isPlugin);
   const decorator = getPluginDecorator(pluginClass);
-  const packageName = `@ionic-native/${basename(dirname(pluginModule.originalName))}`;
+  const packageName = `@ionic-native/${basename(
+    dirname(pluginModule.originalName)
+  )}`;
   const displayName = getTag(pluginClass, 'name');
   const usage = getTag(pluginClass, 'usage');
   const description = getTag(pluginClass, 'description');
@@ -85,17 +93,17 @@ const getTag = (child: any, tagName: string): string => {
   }
 };
 
-const isModule = (child: any): boolean =>
-  child.kind === 1;
+const isModule = (child: any): boolean => child.kind === 1;
 
-const isClass = (child: any): boolean =>
-  child.kind === 128;
+const isClass = (child: any): boolean => child.kind === 128;
 
 const isPlugin = (child: any): boolean =>
-  isClass(child) && hasTags(child) && Array.isArray(child.decorators) && child.decorators.some(d => d.name === 'Plugin');
+  isClass(child) &&
+  hasTags(child) &&
+  Array.isArray(child.decorators) &&
+  child.decorators.some(d => d.name === 'Plugin');
 
-const hasPlugin = (child: any): boolean =>
-  child.children.some(isPlugin);
+const hasPlugin = (child: any): boolean => child.children.some(isPlugin);
 
 const hasTags = (child: any): boolean =>
   child.comment && Array.isArray(child.comment.tags);
