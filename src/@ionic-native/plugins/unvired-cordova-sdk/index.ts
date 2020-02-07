@@ -264,6 +264,10 @@ export class SettingsResult extends UnviredResult {
 
 export class SyncResult extends UnviredResult {
   type: ResultType;
+  /**
+   * This code refers to the HTTP status code obtained during the network call.
+   */
+  code: number;
 }
 
 export class DbResult extends UnviredResult {
