@@ -2,24 +2,20 @@ import { checkAvailability } from './decorators/common';
 import { get } from './util';
 
 export class IonicNativePlugin {
-  static pluginName: string;
-
-  static pluginRef: string;
-
-  static plugin: string;
-
-  static repo: string;
-
-  static platforms: string[];
-
-  static install: string;
+  static pluginName = '';
+  static pluginRef = '';
+  static plugin = '';
+  static repo = '';
+  static platforms: string[] = [];
+  static install = '';
 
   /**
    * Returns a boolean that indicates whether the plugin is installed
    * @return {boolean}
    */
   static installed(): boolean {
-    return checkAvailability(this.pluginRef) === true;
+    const isAvailable = checkAvailability(this.pluginRef) === true;
+    return isAvailable;
   }
 
   /**
@@ -36,27 +32,31 @@ export class IonicNativePlugin {
    * Returns the plugin's name
    */
   static getPluginName(): string {
-    return this.pluginName;
+    const pluginName = this.pluginName;
+    return pluginName;
   }
 
   /**
    * Returns the plugin's reference
    */
   static getPluginRef(): string {
-    return this.pluginRef;
+    const pluginRef = this.pluginRef;
+    return pluginRef;
   }
 
   /**
    * Returns the plugin's install name
    */
   static getPluginInstallName(): string {
-    return this.plugin;
+    const plugin = this.plugin;
+    return plugin;
   }
 
   /**
    * Returns the plugin's supported platforms
    */
   static getSupportedPlatforms(): string[] {
-    return this.platforms || [];
+    const platform = this.platforms;
+    return platform;
   }
 }

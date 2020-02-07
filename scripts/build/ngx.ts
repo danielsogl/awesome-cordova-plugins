@@ -1,29 +1,30 @@
 import * as ts from 'typescript';
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import * as ngc from '@angular/compiler-cli';
 import * as rimraf from 'rimraf';
 import { generateDeclarations } from './transpile';
 import { clone } from 'lodash';
-import { EmitFlags } from '@angular/compiler-cli';
+import { EmitFlags, createCompilerHost, CompilerOptions, CompilerHost, createProgram } from '@angular/compiler-cli';
 import { importsTransformer } from './transformers/imports';
 import { pluginClassTransformer } from './transformers/plugin-class';
 import { COMPILER_OPTIONS, PLUGIN_PATHS, ROOT } from './helpers';
 
 export function getProgram(rootNames: string[] = createSourceFiles()) {
-  const options: ngc.CompilerOptions = clone(COMPILER_OPTIONS);
+  const options: CompilerOptions = clone(COMPILER_OPTIONS);
   options.basePath = ROOT;
   options.moduleResolution = ts.ModuleResolutionKind.NodeJs;
   options.module = ts.ModuleKind.ES2015;
   options.target = ts.ScriptTarget.ES5;
   options.lib = ['dom', 'es2017'];
   options.inlineSourceMap = true;
+  options.importHelpers = true;
   options.inlineSources = true;
+  options.enableIvy = false;
+
   delete options.baseUrl;
 
-  const host: ngc.CompilerHost = ngc.createCompilerHost({ options });
-
-  return ngc.createProgram({
+  const host: CompilerHost = createCompilerHost({ options });
+  return createProgram({
     rootNames,
     options,
     host
@@ -34,8 +35,9 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
 export function transpileNgxCore() {
   getProgram([path.resolve(ROOT, 'src/@ionic-native/core/index.ts')]).emit({
     emitFlags: EmitFlags.Metadata,
-    emitCallback: ({ program, writeFile, customTransformers, cancellationToken, targetSourceFile }) =>
-      program.emit(targetSourceFile, writeFile, cancellationToken, true, customTransformers)
+    emitCallback: ({ program, writeFile, customTransformers, cancellationToken, targetSourceFile }) => {
+      return program.emit(targetSourceFile, writeFile, cancellationToken, true, customTransformers);
+    }
   });
 }
 
@@ -57,10 +59,11 @@ export function generateDeclarationFiles() {
 
 // remove reference to @ionic-native/core decorators
 export function modifyMetadata() {
+  debugger;
   PLUGIN_PATHS.map(p => p.replace(path.join(ROOT, 'src'), path.join(ROOT, 'dist')).replace('index.ts', 'ngx/index.metadata.json'))
     .forEach(p => {
       const content = fs.readJSONSync(p);
-      let _prop;
+      let _prop: { members: { [x: string]: any[]; }; };
       for (const prop in content[0].metadata) {
         _prop = content[0].metadata[prop];
         removeIonicNativeDecorators(_prop);
@@ -78,7 +81,7 @@ export function modifyMetadata() {
 
 function removeIonicNativeDecorators(node: any) {
   if (node.decorators && node.decorators.length) {
-    node.decorators = node.decorators.filter((d, i) => d.expression.module !== '@ionic-native/core');
+    node.decorators = node.decorators.filter((d: { expression: { module: string; }; }) => d.expression.module !== '@ionic-native/core');
   }
 
   if (node.decorators && !node.decorators.length) delete node.decorators;

@@ -37,6 +37,7 @@ const PLUGIN_PEER_DEPENDENCIES = {
   rxjs: RXJS_VERSION
 };
 
+
 function getPackageJsonContent(name: string, peerDependencies = {}, dependencies = {}) {
   return merge(PACKAGE_JSON_BASE, {
     name: '@ionic-native/' + name,
@@ -64,8 +65,9 @@ function prepare() {
     const pluginName = pluginPath.split(/[\/\\]+/).slice(-2)[0];
     const packageJsonContents = getPackageJsonContent(pluginName, PLUGIN_PEER_DEPENDENCIES);
     const dir = path.resolve(DIST, 'plugins', pluginName);
-
+    const ngxDir = path.join(dir, 'ngx');
     writePackageJson(packageJsonContents, dir);
+    writePackageJson(packageJsonContents, ngxDir);
   });
 }
 

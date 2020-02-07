@@ -35,7 +35,7 @@ export function getDecoratorArgs(decorator: any) {
   const args = {};
 
   properties.forEach(prop => {
-    let val;
+    let val: number | boolean;
 
     switch (prop.initializer.kind) {
       case ts.SyntaxKind.StringLiteral:

@@ -19,10 +19,9 @@
     "inlineSources": true,
     "inlineSourceMap": true
   },
-  "include": [
-    "src/@ionic-native/plugins/**/*.ts"
-  ],
+  "include": ["src/@ionic-native/plugins/**/*.ts"],
   "angularCompilerOptions": {
     "genDir": "aot"
-  }
+  },
+  "plugins": [{ "name": "typescript-tslint-plugin" }]
 }

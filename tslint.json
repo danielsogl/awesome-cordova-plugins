@@ -12,6 +12,7 @@
     "ter-no-proto": false,
     "callable-types": false,
     "ordered-imports": false,
-    "prefer-conditional-expression": false
+    "prefer-conditional-expression": false,
+    "max-classes-per-file": true
   }
 }
