@@ -1,3 +1,19 @@
+# [5.21.0](https://github.com/ionic-team/ionic-native/compare/v5.20.0...v5.21.0) (2020-02-07)
+
+
+### Bug Fixes
+
+* **background-geolocation:** change syncThreshold type to number ([#3299](https://github.com/ionic-team/ionic-native/issues/3299)) ([817f0d1](https://github.com/ionic-team/ionic-native/commit/817f0d11b957d9a1f92a0d5916a274a8fb7d80c3))
+* **purchases:** update to cordova-plugin-purchases@1.0.4 ([#3301](https://github.com/ionic-team/ionic-native/issues/3301)) ([c8d3afc](https://github.com/ionic-team/ionic-native/commit/c8d3afc91d85d4a46ea103e02c3f74d391c80be3))
+
+
+### Features
+
+* **unvired-cordova-sdk:** add new property containing HTTP status code ([#3302](https://github.com/ionic-team/ionic-native/issues/3302)) ([3b18135](https://github.com/ionic-team/ionic-native/commit/3b18135ebffe382fe3b7752a9e8e4957105fd52d))
+* angular ivy support ([#3309](https://github.com/ionic-team/ionic-native/issues/3309)) ([614ade4](https://github.com/ionic-team/ionic-native/commit/614ade447f30f59665599229b2a3250db53a6493))
+
+
+
 # [5.20.0](https://github.com/ionic-team/ionic-native/compare/v5.19.1...v5.20.0) (2020-01-27)
 
 
