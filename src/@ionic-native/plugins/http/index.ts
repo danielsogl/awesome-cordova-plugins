@@ -139,7 +139,7 @@ export class HTTP extends IonicNativePlugin {
    * @see https://github.com/silkimen/cordova-plugin-advanced-http#setdataserializer
    */
   @Cordova({ sync: true })
-  setDataSerializer(serializer: 'urlencoded' | 'json' | 'utf8' | 'multipart'): void {}
+  setDataSerializer(serializer: 'urlencoded' | 'json' | 'utf8' | 'multipart' | 'raw'): void {}
 
   /**
    * Add a custom cookie.
@@ -291,6 +291,18 @@ export class HTTP extends IonicNativePlugin {
   }
 
   /**
+   * Make an OPTIONS request
+   * @param url {string} The url to send the request to
+   * @param parameters {Object} Parameters to send with the request
+   * @param headers {Object} The headers to set for this request
+   * @returns {Promise<HTTPResponse>} returns a promise that will resolve on success, and reject on failure
+   */
+  @Cordova()
+  options(url: string, parameters: any, headers: any): Promise<HTTPResponse> {
+    return;
+  }
+
+  /**
    *
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
@@ -337,7 +349,7 @@ export class HTTP extends IonicNativePlugin {
   sendRequest(
     url: string,
     options: {
-      method: 'get' | 'post' | 'put' | 'patch' | 'head' | 'delete' | 'upload' | 'download';
+      method: 'get' | 'post' | 'put' | 'patch' | 'head' | 'delete' | 'options' | 'upload' | 'download';
       data?: { [index: string]: any };
       params?: { [index: string]: string | number };
       serializer?: 'json' | 'urlencoded' | 'utf8' | 'multipart';

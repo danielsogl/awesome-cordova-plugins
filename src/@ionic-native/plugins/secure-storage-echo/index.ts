@@ -1,5 +1,28 @@
 import { Injectable } from '@angular/core';
-import { CordovaCheck, CordovaInstance, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
+import { CordovaCheck, CordovaInstance, getPromise, IonicNativePlugin, Plugin } from '@ionic-native/core';
+
+export interface SecureStorageEchoOptions {
+  android: {
+    /**
+     * See https://github.com/mibrito707/cordova-plugin-secure-storage-echo#sharing-data-android
+     */
+    packageName?: string;
+    /**
+     * Sets the duration of time (seconds) for which the Private Encryption Key is authorized to be used after the user is successfully authenticated.
+     * See https://developer.android.com/reference/android/security/keystore/KeyGenParameterSpec.Builder.html#setUserAuthenticationValidityDurationSeconds(int)
+     */
+    userAuthenticationValidityDuration?: number;
+    /**
+     * Custom title for Confirm Credentials screen.
+     * See https://developer.android.com/reference/android/app/KeyguardManager.html#createConfirmDeviceCredentialIntent(java.lang.CharSequence,%20java.lang.CharSequence)
+     */
+    unlockCredentialsTitle?: string;
+    /**
+     * Custom description for Confirm Credentials screen.
+     */
+    unlockCredentialsDescription?: string;
+  };
+}
 
 /**
  * @hidden
@@ -137,13 +160,14 @@ export class SecureStorageEcho extends IonicNativePlugin {
    * @returns {Promise<SecureStorageEchoObject>}
    */
   @CordovaCheck()
-  create(store: string): Promise<SecureStorageEchoObject> {
+  create(store: string, options?: SecureStorageEchoOptions): Promise<SecureStorageEchoObject> {
     return getPromise<SecureStorageEchoObject>((res: Function, rej: Function) => {
-      const instance = new (SecureStorageEcho.getPlugin())(
-        () => res(new SecureStorageEchoObject(instance)),
-        rej,
-        store
-      );
-    });
+        const instance = new (SecureStorageEcho.getPlugin())(
+          () => res(new SecureStorageEchoObject(instance)),
+          rej,
+          store,
+          options
+        );
+      });
   }
 }
