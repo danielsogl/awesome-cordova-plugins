@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint-ionic-rules", "tslint-angular"],
+  "extends": ["tslint-ionic-rules"],
   "rules": {
     "no-empty": false,
     "no-import-side-effect": false,

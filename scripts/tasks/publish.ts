@@ -11,7 +11,7 @@ import { Logger } from '../logger';
 // tslint:disable-next-line:no-var-requires
 const MAIN_PACKAGE_JSON = require('../../package.json');
 const VERSION = MAIN_PACKAGE_JSON.version;
-const FLAGS = '--access public --tag beta';
+const FLAGS = '--access public';
 
 const PACKAGE_JSON_BASE = {
   description: 'Ionic Native - Native plugins for ionic apps',
