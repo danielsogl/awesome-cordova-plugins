@@ -92,28 +92,24 @@ export interface CertificationData {
 export class IamportCordova extends IonicNativePlugin {
 
   /**
-   * This function does something
-   * @param arg1 {string} Some param to configure something
-   * @param arg2 {number} Another param to configure something
+   * This function is to load a webview of a payment gateway to pay for something
+   * @param paymentObject {PaymentObject} Payment data to set the payment webview
    * @return {Promise<any>} Returns a promise that resolves when something happens
+   * A callback function of the payment data is triggered when the webview is closed
    */
   @Cordova()
   payment(paymentObject: PaymentObject): Promise<any> {
-    /**
-     * This function is to load a webview of a payment gateway to pay for something.
-     * The first parameter is payment data to set the payment webview.
-     * A callback function of the payment data is triggered when the webview is closed.
-     */
     return cordova.plugins.IamportCordova.payment(paymentObject);
   }
 
+  /**
+   * This function is to load a webview for identification with carrier type(like Verizon), name and phone number
+   * @param certificationObject {CertificationObject} Certification data to set the certification webview
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * A callback function of the certification data is triggered when the webview is closed
+   */
   @Cordova()
   certification(certificationObject: CertificationObject): Promise<any> {
-    /**
-     * This function is to load a webview for identification with carrier type(like Verizon), name and phone number.
-     * The first parameter is certification data to set the certification webview.
-     * * A callback function of the certification data is triggered when the webview is closed.
-     */
     return cordova.plugins.IamportCordova.certification(certificationObject);
   }
 }
