@@ -1,3 +1,13 @@
+## [5.21.3](https://github.com/ionic-team/ionic-native/compare/v5.21.2...v5.21.3) (2020-02-10)
+
+
+### Reverts
+
+* Revert "chore(package): compile with angular 9" ([2913a68](https://github.com/ionic-team/ionic-native/commit/2913a68d8ff3625271500aa3df265aa5bf236665))
+* Revert "chore(package): refresh package-lock" ([4d34643](https://github.com/ionic-team/ionic-native/commit/4d346437f0fe94f7bfefa944c12587ade48d8aeb))
+
+
+
 ## [5.21.2](https://github.com/ionic-team/ionic-native/compare/v5.21.1...v5.21.2) (2020-02-09)
 
 
