@@ -52,7 +52,10 @@ function writePackageJson(data: any, dir: string) {
   fs.writeJSONSync(filePath, data);
   PACKAGES.push(dir);
 }
-
+function writeNGXPackageJson(data: any, dir: string){
+  const filePath = path.resolve(dir, 'package.json');
+  fs.writeJSONSync(filePath, data);
+}
 function prepare() {
   // write @ionic-native/core package.json
   writePackageJson(
@@ -67,7 +70,7 @@ function prepare() {
     const dir = path.resolve(DIST, 'plugins', pluginName);
     const ngxDir = path.join(dir, 'ngx');
     writePackageJson(packageJsonContents, dir);
-    writePackageJson(packageJsonContents, ngxDir);
+    writeNGXPackageJson(packageJsonContents, ngxDir);
   });
 }
 
