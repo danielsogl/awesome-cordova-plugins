@@ -1,3 +1,12 @@
+## [5.21.4](https://github.com/ionic-team/ionic-native/compare/v5.21.3...v5.21.4) (2020-02-11)
+
+
+### Bug Fixes
+
+* **build:** corrects npm publishing task ([df5f832](https://github.com/ionic-team/ionic-native/commit/df5f8326643b209e68446159e79fc2528d2d3a80)), closes [#3311](https://github.com/ionic-team/ionic-native/issues/3311)
+
+
+
 ## [5.21.3](https://github.com/ionic-team/ionic-native/compare/v5.21.2...v5.21.3) (2020-02-10)
 
 
@@ -27,8 +36,8 @@
 
 ### Features
 
-* **unvired-cordova-sdk:** add new property containing HTTP status code ([#3302](https://github.com/ionic-team/ionic-native/issues/3302)) ([3b18135](https://github.com/ionic-team/ionic-native/commit/3b18135ebffe382fe3b7752a9e8e4957105fd52d))
 * angular ivy support ([#3309](https://github.com/ionic-team/ionic-native/issues/3309)) ([614ade4](https://github.com/ionic-team/ionic-native/commit/614ade447f30f59665599229b2a3250db53a6493))
+* **unvired-cordova-sdk:** add new property containing HTTP status code ([#3302](https://github.com/ionic-team/ionic-native/issues/3302)) ([3b18135](https://github.com/ionic-team/ionic-native/commit/3b18135ebffe382fe3b7752a9e8e4957105fd52d))
 
 
 
@@ -356,12 +365,12 @@
 
 ### Features
 
+* updating device account wrapper with maintained fork with android 8.0 compatibility ([354af9f](https://github.com/ionic-team/ionic-native/commit/354af9fe6f67b3abaf43de21e6ecb83f4fcd5ee5))
 * **biocatch:** add Biocatch plugin ([a42e7b8](https://github.com/ionic-team/ionic-native/commit/a42e7b82589a84cfefea1c0bdbdfe49a7c46ffa9))
 * **camera-preview:** add wrapper for camera preview snapshot ([7903774](https://github.com/ionic-team/ionic-native/commit/79037743b894704d4a6da5cff9e5bc19c9b81804))
 * **FileOpener:** Added method showOpenWithDialog ([ed36dc4](https://github.com/ionic-team/ionic-native/commit/ed36dc492d16cb66e530484395b90c6071c5e806))
 * **firebase-crash:** add plugin ([66b9d1a](https://github.com/ionic-team/ionic-native/commit/66b9d1a011943a45abf05632a03e4f308477c615))
 * **foreground-service:** allows background services ([5b5c6e6](https://github.com/ionic-team/ionic-native/commit/5b5c6e61ac46d1d46634bef838ba46b60475c69e))
-* updating device account wrapper with maintained fork with android 8.0 compatibility ([354af9f](https://github.com/ionic-team/ionic-native/commit/354af9fe6f67b3abaf43de21e6ecb83f4fcd5ee5))
 
 
 
@@ -738,8 +747,8 @@
 
 ### Features
 
-* **audio-management:** add plugin for audio streams ([#2877](https://github.com/ionic-team/ionic-native/issues/2877)) ([34ecd29](https://github.com/ionic-team/ionic-native/commit/34ecd29d9f2be84864c0ac5cf2c5c208a9bbe112))
 * add analytics-firebase plugin ([e374b52](https://github.com/ionic-team/ionic-native/commit/e374b52c59dafb523643edfe752107c1083753c6))
+* **audio-management:** add plugin for audio streams ([#2877](https://github.com/ionic-team/ionic-native/issues/2877)) ([34ecd29](https://github.com/ionic-team/ionic-native/commit/34ecd29d9f2be84864c0ac5cf2c5c208a9bbe112))
 * **blinkid:** add plugin ([#2833](https://github.com/ionic-team/ionic-native/issues/2833)) ([8e405cc](https://github.com/ionic-team/ionic-native/commit/8e405cc3d3529486d49511b85153756c82f83cc7))
 
 
@@ -830,17 +839,17 @@
 
 ### Bug Fixes
 
-* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
-* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
-* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
-* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
-* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
-* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
-* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 * **build:** fix ngx build errors ([cc9a980](https://github.com/ionic-team/ionic-native/commit/cc9a980dc3d8ccb5bf13aa1c7bb91dbb31b0e50e))
 * **core:** fix rxjs 6 build errors ([48b0f16](https://github.com/ionic-team/ionic-native/commit/48b0f16ed9cef7ff10cff6f729d2221d1ee7bf1b)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
 * **linting:** Fixing misc linting errors that typedoc complains about ([#2476](https://github.com/ionic-team/ionic-native/issues/2476)) ([d3c2859](https://github.com/ionic-team/ionic-native/commit/d3c2859d3865539dffb2d8039da0f216ada007f3))
 * **plugins:** fix rxjs 6 build errors ([3ced31e](https://github.com/ionic-team/ionic-native/commit/3ced31ed2aef7325a515649f28674c6083f15d67)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
+* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
+* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
+* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
+* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
+* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
+* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
+* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 
 
 ### Features
@@ -1090,8 +1099,8 @@
 
 ### Features
 
-* **audio-management:** add plugin for audio streams ([#2877](https://github.com/ionic-team/ionic-native/issues/2877)) ([34ecd29](https://github.com/ionic-team/ionic-native/commit/34ecd29d9f2be84864c0ac5cf2c5c208a9bbe112))
 * add analytics-firebase plugin ([e374b52](https://github.com/ionic-team/ionic-native/commit/e374b52c59dafb523643edfe752107c1083753c6))
+* **audio-management:** add plugin for audio streams ([#2877](https://github.com/ionic-team/ionic-native/issues/2877)) ([34ecd29](https://github.com/ionic-team/ionic-native/commit/34ecd29d9f2be84864c0ac5cf2c5c208a9bbe112))
 * **blinkid:** add plugin ([#2833](https://github.com/ionic-team/ionic-native/issues/2833)) ([8e405cc](https://github.com/ionic-team/ionic-native/commit/8e405cc3d3529486d49511b85153756c82f83cc7))
 
 
@@ -1182,17 +1191,17 @@
 
 ### Bug Fixes
 
-* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
-* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
-* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
-* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
-* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
-* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
-* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 * **build:** fix ngx build errors ([cc9a980](https://github.com/ionic-team/ionic-native/commit/cc9a980dc3d8ccb5bf13aa1c7bb91dbb31b0e50e))
 * **core:** fix rxjs 6 build errors ([48b0f16](https://github.com/ionic-team/ionic-native/commit/48b0f16ed9cef7ff10cff6f729d2221d1ee7bf1b)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
 * **linting:** Fixing misc linting errors that typedoc complains about ([#2476](https://github.com/ionic-team/ionic-native/issues/2476)) ([d3c2859](https://github.com/ionic-team/ionic-native/commit/d3c2859d3865539dffb2d8039da0f216ada007f3))
 * **plugins:** fix rxjs 6 build errors ([3ced31e](https://github.com/ionic-team/ionic-native/commit/3ced31ed2aef7325a515649f28674c6083f15d67)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
+* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
+* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
+* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
+* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
+* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
+* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
+* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 
 
 ### Features
@@ -1475,17 +1484,17 @@
 
 ### Bug Fixes
 
-* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
-* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
-* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
-* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
-* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
-* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
-* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 * **build:** fix ngx build errors ([cc9a980](https://github.com/ionic-team/ionic-native/commit/cc9a980dc3d8ccb5bf13aa1c7bb91dbb31b0e50e))
 * **core:** fix rxjs 6 build errors ([48b0f16](https://github.com/ionic-team/ionic-native/commit/48b0f16ed9cef7ff10cff6f729d2221d1ee7bf1b)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
 * **linting:** Fixing misc linting errors that typedoc complains about ([#2476](https://github.com/ionic-team/ionic-native/issues/2476)) ([d3c2859](https://github.com/ionic-team/ionic-native/commit/d3c2859d3865539dffb2d8039da0f216ada007f3))
 * **plugins:** fix rxjs 6 build errors ([3ced31e](https://github.com/ionic-team/ionic-native/commit/3ced31ed2aef7325a515649f28674c6083f15d67)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
+* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
+* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
+* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
+* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
+* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
+* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
+* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 
 
 ### Features
@@ -1691,17 +1700,17 @@
 
 ### Bug Fixes
 
-* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
-* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
-* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
-* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
-* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
-* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
-* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 * **build:** fix ngx build errors ([cc9a980](https://github.com/ionic-team/ionic-native/commit/cc9a980dc3d8ccb5bf13aa1c7bb91dbb31b0e50e))
 * **core:** fix rxjs 6 build errors ([48b0f16](https://github.com/ionic-team/ionic-native/commit/48b0f16ed9cef7ff10cff6f729d2221d1ee7bf1b)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
 * **linting:** Fixing misc linting errors that typedoc complains about ([#2476](https://github.com/ionic-team/ionic-native/issues/2476)) ([d3c2859](https://github.com/ionic-team/ionic-native/commit/d3c2859d3865539dffb2d8039da0f216ada007f3))
 * **plugins:** fix rxjs 6 build errors ([3ced31e](https://github.com/ionic-team/ionic-native/commit/3ced31ed2aef7325a515649f28674c6083f15d67)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
+* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
+* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
+* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
+* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
+* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
+* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
+* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 
 
 ### Features
@@ -1870,17 +1879,17 @@
 
 ### Bug Fixes
 
-* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
-* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
-* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
-* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
-* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
-* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
-* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 * **build:** fix ngx build errors ([cc9a980](https://github.com/ionic-team/ionic-native/commit/cc9a980dc3d8ccb5bf13aa1c7bb91dbb31b0e50e))
 * **core:** fix rxjs 6 build errors ([48b0f16](https://github.com/ionic-team/ionic-native/commit/48b0f16ed9cef7ff10cff6f729d2221d1ee7bf1b)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
 * **linting:** Fixing misc linting errors that typedoc complains about ([#2476](https://github.com/ionic-team/ionic-native/issues/2476)) ([d3c2859](https://github.com/ionic-team/ionic-native/commit/d3c2859d3865539dffb2d8039da0f216ada007f3))
 * **plugins:** fix rxjs 6 build errors ([3ced31e](https://github.com/ionic-team/ionic-native/commit/3ced31ed2aef7325a515649f28674c6083f15d67)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
+* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
+* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
+* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
+* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
+* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
+* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
+* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 
 
 ### Features
@@ -2109,17 +2118,17 @@
 
 ### Bug Fixes
 
-* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
-* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
-* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
-* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
-* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
-* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
-* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 * **build:** fix ngx build errors ([cc9a980](https://github.com/ionic-team/ionic-native/commit/cc9a980dc3d8ccb5bf13aa1c7bb91dbb31b0e50e))
 * **core:** fix rxjs 6 build errors ([48b0f16](https://github.com/ionic-team/ionic-native/commit/48b0f16ed9cef7ff10cff6f729d2221d1ee7bf1b)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
 * **linting:** Fixing misc linting errors that typedoc complains about ([#2476](https://github.com/ionic-team/ionic-native/issues/2476)) ([d3c2859](https://github.com/ionic-team/ionic-native/commit/d3c2859d3865539dffb2d8039da0f216ada007f3))
 * **plugins:** fix rxjs 6 build errors ([3ced31e](https://github.com/ionic-team/ionic-native/commit/3ced31ed2aef7325a515649f28674c6083f15d67)), closes [#2439](https://github.com/ionic-team/ionic-native/issues/2439)
+* build errors ([f70eaea](https://github.com/ionic-team/ionic-native/commit/f70eaea71ebcaa832eb6c48a3fdc382d7703ee6c))
+* fix lint ([b36a1f9](https://github.com/ionic-team/ionic-native/commit/b36a1f9df6427e50037782a5f7b51ec39d895f03))
+* **str-prnt:** rxjs 6 import ([48714d7](https://github.com/ionic-team/ionic-native/commit/48714d72d663dc4f29851ac601e6c8cbbc320ec0))
+* **v5-builder:** stop transforming "declare" classes ([#2503](https://github.com/ionic-team/ionic-native/issues/2503)) ([6662234](https://github.com/ionic-team/ionic-native/commit/6662234894c461a4051305841ceb623f23f4d1f2))
+* fix more lint errors ([0b3d299](https://github.com/ionic-team/ionic-native/commit/0b3d299a963d2873375a2d6fb933b5555fc0e5a4))
+* fix rxjs 6 imports ([e0b0687](https://github.com/ionic-team/ionic-native/commit/e0b068700490a9408b7de98970c16fba7b0d5017))
+* fix tealium jsdoc ([f34b6e6](https://github.com/ionic-team/ionic-native/commit/f34b6e6664fb2bdca70f28e0c3c1dea2c62934f8))
 
 
 ### Features
@@ -2229,9 +2238,9 @@
 * **one-signal:** add clearOneSignalNotifications function ([fc0338a](https://github.com/ionic-team/ionic-native/commit/fc0338a1c5901f55c79016aa3f633954b1e3b33e))
 * **plugin:** Add google nearby plugin ([eb1bcdd](https://github.com/ionic-team/ionic-native/commit/eb1bcdd078f3300eb167e7a3c0413857766b0dfa))
 * **plugin:** add iOS File Picker ([571df3a](https://github.com/ionic-team/ionic-native/commit/571df3a2513f49abfdc879bbe6aecce15d73265c))
-* **plugin:** add Microdoft App Center Analytics plugin ([b65946b](https://github.com/ionic-team/ionic-native/commit/b65946b1a8e11fc8a950eb39d00fbea1107256f3))
 * **plugin:** add Microdoft App Center Analytics plugin ([7a5bee9](https://github.com/ionic-team/ionic-native/commit/7a5bee914f757c95946c3f03c83b3398b487df50))
 * **plugin:** add Microdoft App Center Analytics plugin ([84c9bfb](https://github.com/ionic-team/ionic-native/commit/84c9bfbca3f8bc8f0f079e59236f2e835117b15e))
+* **plugin:** add Microdoft App Center Analytics plugin ([b65946b](https://github.com/ionic-team/ionic-native/commit/b65946b1a8e11fc8a950eb39d00fbea1107256f3))
 * **plugin:** add Microsoft App Center Crashes plugin ([44e0e24](https://github.com/ionic-team/ionic-native/commit/44e0e2483a6ee9ead4a143213137ad8fb0fc1d7a))
 * **plugin:** add Microsoft App Center Push plugin ([cdabebd](https://github.com/ionic-team/ionic-native/commit/cdabebd487c01329fb19a7f68c048a32a23ca746))
 * **plugin:** add OpenALPR plugin ([e27fbf4](https://github.com/ionic-team/ionic-native/commit/e27fbf47bd87047a3e565f164eca8391d49f9009))
@@ -2758,8 +2767,8 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 ### Features
 
-* add IonicNativePlugin base class ([#1425](https://github.com/ionic-team/ionic-native/issues/1425)) ([17366a2](https://github.com/ionic-team/ionic-native/commit/17366a29daa0672f2f04e192ccb5cedb8bb01cd7))
 * **keychain:** add Keychain plugin ([#1420](https://github.com/ionic-team/ionic-native/issues/1420)) ([16dc71a](https://github.com/ionic-team/ionic-native/commit/16dc71ab71413a4d9576ae2c98e91d78c331caf9))
+* add IonicNativePlugin base class ([#1425](https://github.com/ionic-team/ionic-native/issues/1425)) ([17366a2](https://github.com/ionic-team/ionic-native/commit/17366a29daa0672f2f04e192ccb5cedb8bb01cd7))
 
 
 
@@ -3124,12 +3133,12 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 ### Bug Fixes
 
+* add clearAllNotifications() ([8c021bc](https://github.com/ionic-team/ionic-native/commit/8c021bcaa04b39950132ef29afb802f71ac1fc49))
 * **battery-status:** add missing pluginRef ([3da0efe](https://github.com/ionic-team/ionic-native/commit/3da0efe38e4d430d3cc46426ee9b52f983be2706))
 * **core:** fix exception in CordovaProperty ([#998](https://github.com/ionic-team/ionic-native/issues/998)) ([cb29363](https://github.com/ionic-team/ionic-native/commit/cb293639bc867776bebcf6c54dd872971b023473)), closes [#992](https://github.com/ionic-team/ionic-native/issues/992)
 * **core:** fix plugin check ([da7a370](https://github.com/ionic-team/ionic-native/commit/da7a3707fa1bc736b47cc3e831d614ab2426d989))
 * **googlemaps:** fix GoogleMapsLaLngBounds ([c3127d3](https://github.com/ionic-team/ionic-native/commit/c3127d35bbc7d732f07fa96302975281af91b5fc)), closes [#972](https://github.com/ionic-team/ionic-native/issues/972)
 * **plugin:** adds subscribe() and unsubscribe() ([94025a7](https://github.com/ionic-team/ionic-native/commit/94025a7fd27266758d1e6109869a99d1e1a58113))
-* add clearAllNotifications() ([8c021bc](https://github.com/ionic-team/ionic-native/commit/8c021bcaa04b39950132ef29afb802f71ac1fc49))
 
 
 ### Features
@@ -3144,9 +3153,9 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 ### Bug Fixes
 
-* **native-geocoder:** fix callback order ([dbf95ea](https://github.com/ionic-team/ionic-native/commit/dbf95ea4bd612636c80281c926c1d3bc4db1b93c))
-* add return ([3fdc4a8](https://github.com/ionic-team/ionic-native/commit/3fdc4a8acd9fbe4468e8d4c4bd1a40a6619a2882))
 * **headercolor:** solve typo in usage and chore ([bab2971](https://github.com/ionic-team/ionic-native/commit/bab2971c58149ee605cb8ad2aaed86620c040297))
+* add return ([3fdc4a8](https://github.com/ionic-team/ionic-native/commit/3fdc4a8acd9fbe4468e8d4c4bd1a40a6619a2882))
+* **native-geocoder:** fix callback order ([dbf95ea](https://github.com/ionic-team/ionic-native/commit/dbf95ea4bd612636c80281c926c1d3bc4db1b93c))
 
 
 ### Features
@@ -3543,7 +3552,6 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 ### Bug Fixes
 
-* remove CanvasCamera plugin ([c75f898](https://github.com/ionic-team/ionic-native/commit/c75f89894ae245cc239e0f6e36cb52869ec847bf))
 * **base64togallery:** fixes callbacks ([#513](https://github.com/ionic-team/ionic-native/issues/513)) ([1db1374](https://github.com/ionic-team/ionic-native/commit/1db13742260c18ceff79c12852fb16fdc8b22492))
 * **diagnostic:** Add DENIED_ALWAYS to permissionStatus, also some code formatting ([9d573a9](https://github.com/ionic-team/ionic-native/commit/9d573a92cec05922ee69db9e6b390a36e973f148))
 * **diagnostic:** Fix diagnostic objects ([cb176aa](https://github.com/ionic-team/ionic-native/commit/cb176aae90fb3d5caea3d7cc43bb089c0fb7d5b7))
@@ -3556,6 +3564,7 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 * **media:** nest the constructor logic ([a566240](https://github.com/ionic-team/ionic-native/commit/a566240266a077be0964c879a0e1ffea746aa9dd))
 * **mixpanel:** Make eventProperties optional ([#501](https://github.com/ionic-team/ionic-native/issues/501)) ([51364f8](https://github.com/ionic-team/ionic-native/commit/51364f8edde821164778a525415258e5b4227527))
 * **ng1:** grab injector from app. [#451](https://github.com/ionic-team/ionic-native/issues/451) ([2dc68a4](https://github.com/ionic-team/ionic-native/commit/2dc68a4785b7d9218a0d5bb936efd35cbb554e1b))
+* remove CanvasCamera plugin ([c75f898](https://github.com/ionic-team/ionic-native/commit/c75f89894ae245cc239e0f6e36cb52869ec847bf))
 * **social-sharing:** shareViaEmail now resolves/rejects when not providing optional args ([c76de34](https://github.com/ionic-team/ionic-native/commit/c76de34b9718144a76ee48919bb94bda956a1902))
 * **social-sharing:** various fixes ([#520](https://github.com/ionic-team/ionic-native/issues/520)) ([4f97164](https://github.com/ionic-team/ionic-native/commit/4f9716415b17737170ba11d815d54f4a7b9067bc))
 
@@ -3633,11 +3642,11 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 ### Bug Fixes
 
+* add the reject function at the expected errorIndex position in the args array ([#436](https://github.com/ionic-team/ionic-native/issues/436)) ([4e87ac7](https://github.com/ionic-team/ionic-native/commit/4e87ac72eabfe4da38124b9025d4b71325999855))
 * **camera-preview:** changes implementation to match Cordova plugin ([#441](https://github.com/ionic-team/ionic-native/issues/441)) ([55ba65a](https://github.com/ionic-team/ionic-native/commit/55ba65ac684c59e224d5fd857593962a83dec5c5))
 * **file:** fixes exclusive option ([#459](https://github.com/ionic-team/ionic-native/issues/459)) ([14e41a3](https://github.com/ionic-team/ionic-native/commit/14e41a31ef043b94e5404939de6cd279b03b68ab))
 * **file:** initialize writeFile options ([#468](https://github.com/ionic-team/ionic-native/issues/468)) ([16628a4](https://github.com/ionic-team/ionic-native/commit/16628a49f7ee1304b136db6796d10234c79a37d7))
 * **nativeaudio:** fix plugin reference ([2510c5f](https://github.com/ionic-team/ionic-native/commit/2510c5fd4aacd5d4b088a947d29a8458ad8c8ff7))
-* add the reject function at the expected errorIndex position in the args array ([#436](https://github.com/ionic-team/ionic-native/issues/436)) ([4e87ac7](https://github.com/ionic-team/ionic-native/commit/4e87ac72eabfe4da38124b9025d4b71325999855))
 
 
 ### Features
@@ -3835,12 +3844,12 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 ### Bug Fixes
 
+* remove unnecessary decorator ([#257](https://github.com/ionic-team/ionic-native/issues/257)) ([25fab64](https://github.com/ionic-team/ionic-native/commit/25fab64e3fffb086dc73478e8e58bdb8b637d08e))
 * **actionsheet:** add missing optional parameter for hide function ([#262](https://github.com/ionic-team/ionic-native/issues/262)) ([644e999](https://github.com/ionic-team/ionic-native/commit/644e999d1e7906caf5d2adb761a842c68024d7e3))
 * **background-geolocation:** fix pluginref again ([b8a5133](https://github.com/ionic-team/ionic-native/commit/b8a513301ea9e58691f98ae27e0d89e7e9b1eacd))
 * **geolocation:** fix plugin reference ([4f0cd24](https://github.com/ionic-team/ionic-native/commit/4f0cd244765518b88c472fe22a366411fa8a4217)), closes [#258](https://github.com/ionic-team/ionic-native/issues/258)
 * **googlemaps:** use correct methods for addGroundOverlay and addKmlOverlay ([#268](https://github.com/ionic-team/ionic-native/issues/268)) ([b8be1de](https://github.com/ionic-team/ionic-native/commit/b8be1de06843b839885a6fcb95d99e63fa7a6029))
 * **socialsharing:** all methods return Promises now ([e150224](https://github.com/ionic-team/ionic-native/commit/e150224cda22815abf23b254309469c5038e43c5)), closes [#275](https://github.com/ionic-team/ionic-native/issues/275)
-* remove unnecessary decorator ([#257](https://github.com/ionic-team/ionic-native/issues/257)) ([25fab64](https://github.com/ionic-team/ionic-native/commit/25fab64e3fffb086dc73478e8e58bdb8b637d08e))
 
 
 ### Features
@@ -3970,11 +3979,14 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 
 ### Bug Fixes
 
+* added dummy boolean ([2caa151](https://github.com/ionic-team/ionic-native/commit/2caa1516ab6f52da212dded63ccfd3c1b67588c4))
+* datepicker plugin, pluginref, and @Cordova wrapper ([499ead3](https://github.com/ionic-team/ionic-native/commit/499ead3aae5df2de29da1eccfb6d663ee3d9f418))
 * **datepicker:** datepicker options are optional ([c3cfd14](https://github.com/ionic-team/ionic-native/commit/c3cfd14c5e15a6bef546e00500a2cba91777f515))
 * **datepicker:** dates are Dates ([ce6adcc](https://github.com/ionic-team/ionic-native/commit/ce6adccb9a2c95b772f63790c959b8dcb16ef875))
-* **datepicker:** fix plugin functionality ([1a778e7](https://github.com/ionic-team/ionic-native/commit/1a778e7f10ff383eabf32495845d12c07530a373))
 * **datepicker:** fix plugin functionality ([91de971](https://github.com/ionic-team/ionic-native/commit/91de9715fed2bbaa8ac0889689ee30e74187cd4e))
+* **datepicker:** fix plugin functionality ([1a778e7](https://github.com/ionic-team/ionic-native/commit/1a778e7f10ff383eabf32495845d12c07530a373))
 * **devicemotion:** combine watch and clear into one function ([d17f62d](https://github.com/ionic-team/ionic-native/commit/d17f62d82f29528ccbafc00ed2d38c6e0e3462ed))
+* remove confirm callback, not needed. ([662d8ce](https://github.com/ionic-team/ionic-native/commit/662d8ce079207e4c4a46f998ef122ab57cfbddcd))
 * **geolocation:** set callback order to reverse on getCurrentPosition ([1fac387](https://github.com/ionic-team/ionic-native/commit/1fac3873841488cf519c83bd469983e81a3e818a))
 * **imagepicker:** pluginRef ([01d7972](https://github.com/ionic-team/ionic-native/commit/01d797261b411c317d5d06a8d0da779bafec1287))
 * **interface:** params are optional ([e708bc6](https://github.com/ionic-team/ionic-native/commit/e708bc6be71a3d82f2395db63c728d7c9742a913))
@@ -3986,12 +3998,9 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 * **plugin:** fix types ([c86e135](https://github.com/ionic-team/ionic-native/commit/c86e135096ae10678a3e4c4c77530d89990c0746))
 * **plugins:** cleanup and add new plugins to index ([1771f7b](https://github.com/ionic-team/ionic-native/commit/1771f7bfe1f13bab59f9bbb3064d85b8df5da516))
 * **plugins:** fix optional options ([9ef850c](https://github.com/ionic-team/ionic-native/commit/9ef850c66a1b7a54c6e5479910ecf8c74d9e2f50))
-* added dummy boolean ([2caa151](https://github.com/ionic-team/ionic-native/commit/2caa1516ab6f52da212dded63ccfd3c1b67588c4))
-* datepicker plugin, pluginref, and @Cordova wrapper ([499ead3](https://github.com/ionic-team/ionic-native/commit/499ead3aae5df2de29da1eccfb6d663ee3d9f418))
-* fix callback order ([5fda6d4](https://github.com/ionic-team/ionic-native/commit/5fda6d49cc6ccb6be3772522b356bc87ec957fad))
 * fix callback order ([5944bd1](https://github.com/ionic-team/ionic-native/commit/5944bd13d31bc137457496ac0e604eefbb4529a0))
+* fix callback order ([5fda6d4](https://github.com/ionic-team/ionic-native/commit/5fda6d49cc6ccb6be3772522b356bc87ec957fad))
 * fix options params ([c71f8d4](https://github.com/ionic-team/ionic-native/commit/c71f8d49e1dace06dd60855c2b53f40be7fe4e17))
-* remove confirm callback, not needed. ([662d8ce](https://github.com/ionic-team/ionic-native/commit/662d8ce079207e4c4a46f998ef122ab57cfbddcd))
 
 
 ### Features
@@ -4014,24 +4023,24 @@ renamed to `FileTransfer`. Also, `TransferObject` class has been renamed to `Fil
 * **plugin:** add globalization ([90cc36b](https://github.com/ionic-team/ionic-native/commit/90cc36b453f29f0f0960823155d2e3a8a44665bc))
 * **plugin:** add imagePicker plugin ([287d129](https://github.com/ionic-team/ionic-native/commit/287d1291378a0cd4caa0d9a583c7d134bb72fa72))
 * **plugin:** add keyboard ([a80c4ee](https://github.com/ionic-team/ionic-native/commit/a80c4ee2bf47feec4bd1e00c484350a5257cc107))
-* **plugin:** add launch navigator ([984e7fc](https://github.com/ionic-team/ionic-native/commit/984e7fc9d1fcde19682bad7d7fe49c2668710bdf))
 * **plugin:** add launch navigator ([18df9a5](https://github.com/ionic-team/ionic-native/commit/18df9a5aeb436ade2676c20137353fee58afd1d9))
+* **plugin:** add launch navigator ([984e7fc](https://github.com/ionic-team/ionic-native/commit/984e7fc9d1fcde19682bad7d7fe49c2668710bdf))
 * **plugin:** add local notifications ([66df0a6](https://github.com/ionic-team/ionic-native/commit/66df0a67a64cd23f051b8617b72e29d20c1de9cd))
 * **plugin:** add sms ([6843177](https://github.com/ionic-team/ionic-native/commit/6843177377608baf74894d43bb3f9bc3fc8c6211))
 * **plugin:** add sms plugin ([aa7e04c](https://github.com/ionic-team/ionic-native/commit/aa7e04c2e70cd360cb4ca89ffdaa428dfc5ad80d))
+* add clipboard plugin ([fa4c266](https://github.com/ionic-team/ionic-native/commit/fa4c266cb7ef5860999a8b5352b5de0c2c49651d))
 * **plugin:** add splashscreen ([0f3c188](https://github.com/ionic-team/ionic-native/commit/0f3c1886d33359f5085162c76721a583fe7d404c))
 * **plugin:** add vibration ([3cc4ee4](https://github.com/ionic-team/ionic-native/commit/3cc4ee4196edbaaf8298719ffdda1d7ff0cd17b4))
 * **plugin:** proxy plugin properties ([fc54fef](https://github.com/ionic-team/ionic-native/commit/fc54fefde55b17b1c2877ff605d021a0ecd94390))
 * **plugin:** show instructions if plugin not installed ([c48a851](https://github.com/ionic-team/ionic-native/commit/c48a851d877f1ca6a8252e2af36e00f9717993f4))
+* add badge plugin ([7f01fb2](https://github.com/ionic-team/ionic-native/commit/7f01fb2b2a94c827878ab069e7b0f3516cba4975))
 * **plugins:** add new plugins to index ([4d8dc1b](https://github.com/ionic-team/ionic-native/commit/4d8dc1b9dc8e9191b32db17471dfc27932123aca))
 * **plugins:** add platforms info ([9826dfd](https://github.com/ionic-team/ionic-native/commit/9826dfd026bc48f95ef44ecc3c5f0dd9e982a467))
 * add app version plugin ([20cb01f](https://github.com/ionic-team/ionic-native/commit/20cb01fd9e83b0a4328c3904fc1ad48c1921370d))
 * add app version plugin ([8b78521](https://github.com/ionic-team/ionic-native/commit/8b7852129b186e6a14a42eaac92def8a35a94936))
 * add apprate ([0dd4fec](https://github.com/ionic-team/ionic-native/commit/0dd4fecc062fb78eac8a328a60dfa4d7b0cab0ee))
-* add badge plugin ([7f01fb2](https://github.com/ionic-team/ionic-native/commit/7f01fb2b2a94c827878ab069e7b0f3516cba4975))
 * add badge plugin ([3088df4](https://github.com/ionic-team/ionic-native/commit/3088df441ba903ec5eb3e7171621844d7ced578e))
 * add clipboard plugin ([0b6cca7](https://github.com/ionic-team/ionic-native/commit/0b6cca7a286c8b1413c692b2d8cc131d21709209))
-* add clipboard plugin ([fa4c266](https://github.com/ionic-team/ionic-native/commit/fa4c266cb7ef5860999a8b5352b5de0c2c49651d))
 
 
 
