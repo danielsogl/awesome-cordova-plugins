@@ -27,6 +27,8 @@ export type ICompleteTransaction = 'Payment status applied.';
 export type IUpdateItemsAndShippingStatus =
   | 'Updated List Info'
   | 'Did you make a payment request?';
+export type IMerchantCapabilities = '3ds' | 'credit' | 'debit' | 'emv';
+export type ISupportedNetworks = 'visa' | 'amex' | 'discover' | 'masterCard';
 
 export interface IPaymentResponse {
   billingNameFirst?: string;
@@ -84,6 +86,8 @@ export interface IOrder extends IOrderItemsAndShippingMethods {
   billingAddressRequirement?: IBillingRequirement | IBillingRequirement[];
   shippingAddressRequirement?: IBillingRequirement | IBillingRequirement[];
   shippingType?: IShippingType;
+  merchantCapabilities?: IMerchantCapabilities | IMerchantCapabilities[];
+  supportedNetworks?: ISupportedNetworks | ISupportedNetworks[];
 }
 
 export interface ISelectedShippingContact {
