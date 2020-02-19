@@ -732,6 +732,14 @@ export class InAppPurchase2 extends IonicNativePlugin {
   validator: string | ((url: string | IAPProduct, callback: Function) => void);
 
   @CordovaProperty()
+  applicationUsername: string | (() => string);
+
+  @Cordova({ sync: true })
+  getApplicationUsername(): string {
+    return;
+  }
+
+  @CordovaProperty()
   log: {
     error: (message: string) => void;
     warn: (message: string) => void;
