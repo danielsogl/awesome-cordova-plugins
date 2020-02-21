@@ -141,7 +141,7 @@ export class SecureStorage extends IonicNativePlugin {
     return getPromise<SecureStorageObject>((res: Function, rej: Function) => {
       const instance = new (SecureStorage.getPlugin())(
         () => res(new SecureStorageObject(instance)),
-        rej,
+        () => rej(new SecureStorageObject(instance)),
         store
       );
     });
