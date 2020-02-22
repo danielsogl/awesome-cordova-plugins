@@ -1,3 +1,18 @@
+## [5.21.6](https://github.com/ionic-team/ionic-native/compare/v5.21.5...v5.21.6) (2020-02-22)
+
+
+### Bug Fixes
+
+* **apple-pay:** fix PKPaymentRequest must have valid merchantCapabilities in iOS 12 & 13 [#3314](https://github.com/ionic-team/ionic-native/issues/3314) ([a8eebb9](https://github.com/ionic-team/ionic-native/commit/a8eebb9212b23fb1fe9ba00a5981a81e46dcdbad))
+* **secure-storage:** method is inaccessible when device is not secure [#3322](https://github.com/ionic-team/ionic-native/issues/3322) ([300f75e](https://github.com/ionic-team/ionic-native/commit/300f75ef929688783563d0070e723f23bd76c728))
+
+
+### Features
+
+* **keychain-touch-id:** added userAuthenticationRequired parameter to save method ([#3324](https://github.com/ionic-team/ionic-native/issues/3324)) ([4521810](https://github.com/ionic-team/ionic-native/commit/45218102f3d9e9d5b3e9f53ba85af2f9d9926ec1))
+
+
+
 ## [5.21.5](https://github.com/ionic-team/ionic-native/compare/v5.21.4...v5.21.5) (2020-02-12)
 
 
