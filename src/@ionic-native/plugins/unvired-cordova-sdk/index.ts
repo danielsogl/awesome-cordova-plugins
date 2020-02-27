@@ -3,6 +3,15 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 /**
+ * Outbox Lock Result States
+ */
+export enum OutboxLockStatus {
+  LockApplied = 0,
+  DataBeingSent = 1,
+  DataNotInQueue = 2
+}
+
+/**
  * Log levels supported in the sdk.
  */
 export enum LogLevel {
@@ -241,6 +250,10 @@ export class UnviredResult {
    * Contains the detailed error information which the apps can convey to the users.
    */
   errorDetail: string;
+}
+
+export class OutboxLockResult extends UnviredResult {
+  type: OutboxLockStatus;
 }
 
 export class LogResult extends UnviredResult {
@@ -1335,7 +1348,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param beLid LID of the Business Entity
    */
   @Cordova()
-  lockDataSender(beLid: string): Promise<UnviredResult> {
+  lockDataSender(beLid: string): Promise<OutboxLockResult> {
     return;
   }
 
