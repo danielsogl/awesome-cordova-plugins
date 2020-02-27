@@ -1335,7 +1335,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param beLid LID of the Business Entity
    */
   @Cordova()
-  lockDataSender(beLid: string): Promise<any> {
+  lockDataSender(beLid: string): Promise<UnviredResult> {
     return;
   }
 
@@ -1344,7 +1344,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Release any locks applied for sending data (DataSender Thread) to the server.
    */
   @Cordova()
-  unlockDataSender(): Promise<any> {
+  unlockDataSender(): Promise<UnviredResult> {
     return;
   }
 }
