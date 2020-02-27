@@ -1328,4 +1328,23 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   testPushNotification(): Promise<any> {
     return;
   }
+
+  /**
+   * Mobile Platform only.
+   * Lock sending of data for this BE.
+   * @param beLid LID of the Business Entity
+   */
+  @Cordova()
+  lockDataSender(beLid: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Mobile Platform only.
+   * Release any locks applied for sending data (DataSender Thread) to the server.
+   */
+  @Cordova()
+  unlockDataSender(): Promise<any> {
+    return;
+  }
 }
