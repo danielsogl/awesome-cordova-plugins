@@ -50,7 +50,7 @@ export class KeychainTouchId extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when there is a result
    */
   @Cordova()
-  save(key: string, password: string): Promise<any> {
+  save(key: string, password: string, userAuthenticationRequired: boolean): Promise<any> {
     return;
   }
 

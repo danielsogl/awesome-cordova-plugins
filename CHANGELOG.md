@@ -1,3 +1,65 @@
+## [5.21.6](https://github.com/ionic-team/ionic-native/compare/v5.21.5...v5.21.6) (2020-02-22)
+
+
+### Bug Fixes
+
+* **apple-pay:** fix PKPaymentRequest must have valid merchantCapabilities in iOS 12 & 13 [#3314](https://github.com/ionic-team/ionic-native/issues/3314) ([a8eebb9](https://github.com/ionic-team/ionic-native/commit/a8eebb9212b23fb1fe9ba00a5981a81e46dcdbad))
+* **secure-storage:** method is inaccessible when device is not secure [#3322](https://github.com/ionic-team/ionic-native/issues/3322) ([300f75e](https://github.com/ionic-team/ionic-native/commit/300f75ef929688783563d0070e723f23bd76c728))
+
+
+### Features
+
+* **keychain-touch-id:** added userAuthenticationRequired parameter to save method ([#3324](https://github.com/ionic-team/ionic-native/issues/3324)) ([4521810](https://github.com/ionic-team/ionic-native/commit/45218102f3d9e9d5b3e9f53ba85af2f9d9926ec1))
+
+
+
+## [5.21.5](https://github.com/ionic-team/ionic-native/compare/v5.21.4...v5.21.5) (2020-02-12)
+
+
+
+## [5.21.4](https://github.com/ionic-team/ionic-native/compare/v5.21.3...v5.21.4) (2020-02-11)
+
+
+### Bug Fixes
+
+* **build:** corrects npm publishing task ([df5f832](https://github.com/ionic-team/ionic-native/commit/df5f8326643b209e68446159e79fc2528d2d3a80)), closes [#3311](https://github.com/ionic-team/ionic-native/issues/3311)
+
+
+
+## [5.21.3](https://github.com/ionic-team/ionic-native/compare/v5.21.2...v5.21.3) (2020-02-10)
+
+
+### Reverts
+
+* Revert "chore(package): compile with angular 9" ([2913a68](https://github.com/ionic-team/ionic-native/commit/2913a68d8ff3625271500aa3df265aa5bf236665))
+* Revert "chore(package): refresh package-lock" ([4d34643](https://github.com/ionic-team/ionic-native/commit/4d346437f0fe94f7bfefa944c12587ade48d8aeb))
+
+
+
+## [5.21.2](https://github.com/ionic-team/ionic-native/compare/v5.21.1...v5.21.2) (2020-02-09)
+
+
+
+## [5.21.1](https://github.com/ionic-team/ionic-native/compare/v5.21.0...v5.21.1) (2020-02-09)
+
+
+
+# [5.21.0](https://github.com/ionic-team/ionic-native/compare/v5.20.0...v5.21.0) (2020-02-07)
+
+
+### Bug Fixes
+
+* **background-geolocation:** change syncThreshold type to number ([#3299](https://github.com/ionic-team/ionic-native/issues/3299)) ([817f0d1](https://github.com/ionic-team/ionic-native/commit/817f0d11b957d9a1f92a0d5916a274a8fb7d80c3))
+* **purchases:** update to cordova-plugin-purchases@1.0.4 ([#3301](https://github.com/ionic-team/ionic-native/issues/3301)) ([c8d3afc](https://github.com/ionic-team/ionic-native/commit/c8d3afc91d85d4a46ea103e02c3f74d391c80be3))
+
+
+### Features
+
+* **unvired-cordova-sdk:** add new property containing HTTP status code ([#3302](https://github.com/ionic-team/ionic-native/issues/3302)) ([3b18135](https://github.com/ionic-team/ionic-native/commit/3b18135ebffe382fe3b7752a9e8e4957105fd52d))
+* angular ivy support ([#3309](https://github.com/ionic-team/ionic-native/issues/3309)) ([614ade4](https://github.com/ionic-team/ionic-native/commit/614ade447f30f59665599229b2a3250db53a6493))
+
+
+
 # [5.20.0](https://github.com/ionic-team/ionic-native/compare/v5.19.1...v5.20.0) (2020-01-27)
 
 
