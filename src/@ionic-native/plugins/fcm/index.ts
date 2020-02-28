@@ -53,6 +53,8 @@ export interface NotificationData {
  *   }
  * })
  *
+ * this.fcm.clearAllNotifications();
+ *
  * this.fcm.unsubscribeFromTopic('marketing');
  *
  * ```
@@ -148,6 +150,16 @@ export class FCM extends IonicNativePlugin {
     errorIndex: 2
   })
   onNotification(): Observable<NotificationData> {
+    return;
+  }
+
+  /**
+   * Removes existing push notifications from the notifications center
+   *
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  clearAllNotifications(): void {
     return;
   }
 }
