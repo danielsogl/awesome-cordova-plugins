@@ -253,7 +253,8 @@ export class UnviredResult {
 }
 
 export class OutboxLockResult extends UnviredResult {
-  type: OutboxLockStatus;
+  type: ResultType;
+  data: OutboxLockStatus;
 }
 
 export class LogResult extends UnviredResult {
