@@ -31,7 +31,7 @@ export interface AdMobFreeBannerConfig {
    * Location targeting. It accept an array in the form of `[latitude, longitude]`.
    * Android-only. Default is not calling `setLatitude` and `setLongitude`.
    */
-  location?: Array<number> | null;
+  location?: (number)[] | null
   /**
    * Set to true, to put banner at top
    */
@@ -79,7 +79,7 @@ export interface AdMobFreeInterstitialConfig {
    * Location targeting. It accept an array in the form of `[latitude, longitude]`.
    * Android-only. Default is not calling `setLatitude` and `setLongitude`.
    */
-  location?: Array<number> | null;
+  location?: (number)[] | null
 }
 
 export interface AdMobFreeRewardVideoConfig {
@@ -111,7 +111,7 @@ export interface AdMobFreeRewardVideoConfig {
    * Location targeting. It accept an array in the form of `[latitude, longitude]`.
    * Android-only. Default is not calling `setLatitude` and `setLongitude`.
    */
-  location?: Array<number> | null;
+  location?: (number)[] | null
 }
 
 /**
