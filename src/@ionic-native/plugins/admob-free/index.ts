@@ -16,14 +16,14 @@ export interface AdMobFreeBannerConfig {
    */
   autoShow?: boolean;
   /**
-   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.  
-   * Set to `true` for `tagForChildDirectedTreatment(true)`.  
+   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.
+   * Set to `true` for `tagForChildDirectedTreatment(true)`.
    * Set to `false` for `tagForChildDirectedTreatment(false)`.
    */
   forChild?: boolean | null;
   /**
-   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.  
-   * Set to `true` for `setIsDesignedForFamilies(true)`.  
+   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.
+   * Set to `true` for `setIsDesignedForFamilies(true)`.
    * Set to `false` for `setIsDesignedForFamilies(false)`.
    */
   forFamily?: boolean | null;
@@ -31,7 +31,7 @@ export interface AdMobFreeBannerConfig {
    * Location targeting. It accept an array in the form of `[latitude, longitude]`.
    * Android-only. Default is not calling `setLatitude` and `setLongitude`.
    */
-  location?: (number)[] | null
+  location?: (number)[] | null;
   /**
    * Set to true, to put banner at top
    */
@@ -64,14 +64,14 @@ export interface AdMobFreeInterstitialConfig {
    */
   autoShow?: boolean;
   /**
-   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.  
-   * Set to `true` for `tagForChildDirectedTreatment(true)`.  
+   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.
+   * Set to `true` for `tagForChildDirectedTreatment(true)`.
    * Set to `false` for `tagForChildDirectedTreatment(false)`.
    */
   forChild?: boolean | null;
   /**
-   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.  
-   * Set to `true` for `setIsDesignedForFamilies(true)`.  
+   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.
+   * Set to `true` for `setIsDesignedForFamilies(true)`.
    * Set to `false` for `setIsDesignedForFamilies(false)`.
    */
   forFamily?: boolean | null;
@@ -79,7 +79,7 @@ export interface AdMobFreeInterstitialConfig {
    * Location targeting. It accept an array in the form of `[latitude, longitude]`.
    * Android-only. Default is not calling `setLatitude` and `setLongitude`.
    */
-  location?: (number)[] | null
+  location?: (number)[] | null;
 }
 
 export interface AdMobFreeRewardVideoConfig {
@@ -96,14 +96,14 @@ export interface AdMobFreeRewardVideoConfig {
    */
   autoShow?: boolean;
   /**
-   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.  
-   * Set to `true` for `tagForChildDirectedTreatment(true)`.  
+   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.
+   * Set to `true` for `tagForChildDirectedTreatment(true)`.
    * Set to `false` for `tagForChildDirectedTreatment(false)`.
    */
   forChild?: boolean | null;
   /**
-   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.  
-   * Set to `true` for `setIsDesignedForFamilies(true)`.  
+   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.
+   * Set to `true` for `setIsDesignedForFamilies(true)`.
    * Set to `false` for `setIsDesignedForFamilies(false)`.
    */
   forFamily?: boolean | null;
@@ -111,7 +111,7 @@ export interface AdMobFreeRewardVideoConfig {
    * Location targeting. It accept an array in the form of `[latitude, longitude]`.
    * Android-only. Default is not calling `setLatitude` and `setLongitude`.
    */
-  location?: (number)[] | null
+  location?: (number)[] | null;
 }
 
 /**
