@@ -11,7 +11,7 @@ export interface AdmobOptions {
   /**
    * (Optional) Your interstitial id code from your AdMob account. Defaults to publisherId
    */
-  interstitialAdId?: string;
+  interstitiaAdlId?: string;
 
   /**
    * (Optional) Your rewarded id code from your AdMob account. Defaults to publisherId
@@ -19,7 +19,27 @@ export interface AdmobOptions {
   rewardedAdId?: string;
 
   /**
-   * (Optional) Your tappx id for iOS apps. If Admob is configured, it is also used to backfill your lost inventory when there are no Admob ads available
+   * (Optional) Your ad slot code from your AdSense account. Only for browser platform
+   */
+  adSlot?: string;
+
+  /**
+   * (Optional) Indicates if show a close button on interstitial browser ads. Only for browser platform
+   */
+  interstitialShowCloseButton?: boolean;
+
+  /**
+   * (Optional) Indicates the number of seconds that the interstitial ad waits before show the close button. Only for browser platform
+   */
+  secondsToShowCloseButton?: number;
+
+  /**
+   * (Optional) Indicates the number of seconds that the interstitial ad waits before close the ad. Only for browser platform
+   */
+  secondsToCloseInterstitial?: number;
+
+  /**
+   * (Optional) Your tappx id for iOS apps. If Admob is configured, it is also used to backfill your lost inventory (when there are no Admob ads available)
    */
   tappxIdiOS?: string;
 
@@ -100,7 +120,7 @@ export interface AdmobOptions {
  *     // Admob options config
  *     const admobOptions: AdmobOptions = {
  *       publisherId: 'XXX-XXXX-XXXX',
- *       interstitialAdId: 'XXX-XXXX-XXXX',
+ *       interstitialId: 'XXX-XXXX-XXXX',
  *       rewardedAdId: 'XXX-XXXX-XXXX',
  *       isTesting: true,
  *       autoShowBanner: false,
