@@ -16,6 +16,23 @@ export interface AdMobFreeBannerConfig {
    */
   autoShow?: boolean;
   /**
+   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.
+   * Set to `true` for `tagForChildDirectedTreatment(true)`.
+   * Set to `false` for `tagForChildDirectedTreatment(false)`.
+   */
+  forChild?: boolean | null;
+  /**
+   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.
+   * Set to `true` for `setIsDesignedForFamilies(true)`.
+   * Set to `false` for `setIsDesignedForFamilies(false)`.
+   */
+  forFamily?: boolean | null;
+  /**
+   * Location targeting. It accept an array in the form of `[latitude, longitude]`.
+   * Android-only. Default is not calling `setLatitude` and `setLongitude`.
+   */
+  location?: (number)[] | null;
+  /**
    * Set to true, to put banner at top
    */
   bannerAtTop?: boolean;
@@ -46,6 +63,23 @@ export interface AdMobFreeInterstitialConfig {
    * Auto show ad when loaded
    */
   autoShow?: boolean;
+  /**
+   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.
+   * Set to `true` for `tagForChildDirectedTreatment(true)`.
+   * Set to `false` for `tagForChildDirectedTreatment(false)`.
+   */
+  forChild?: boolean | null;
+  /**
+   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.
+   * Set to `true` for `setIsDesignedForFamilies(true)`.
+   * Set to `false` for `setIsDesignedForFamilies(false)`.
+   */
+  forFamily?: boolean | null;
+  /**
+   * Location targeting. It accept an array in the form of `[latitude, longitude]`.
+   * Android-only. Default is not calling `setLatitude` and `setLongitude`.
+   */
+  location?: (number)[] | null;
 }
 
 export interface AdMobFreeRewardVideoConfig {
@@ -61,6 +95,23 @@ export interface AdMobFreeRewardVideoConfig {
    * Auto show ad when loaded
    */
   autoShow?: boolean;
+  /**
+   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.
+   * Set to `true` for `tagForChildDirectedTreatment(true)`.
+   * Set to `false` for `tagForChildDirectedTreatment(false)`.
+   */
+  forChild?: boolean | null;
+  /**
+   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.
+   * Set to `true` for `setIsDesignedForFamilies(true)`.
+   * Set to `false` for `setIsDesignedForFamilies(false)`.
+   */
+  forFamily?: boolean | null;
+  /**
+   * Location targeting. It accept an array in the form of `[latitude, longitude]`.
+   * Android-only. Default is not calling `setLatitude` and `setLongitude`.
+   */
+  location?: (number)[] | null;
 }
 
 /**
