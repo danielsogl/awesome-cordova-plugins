@@ -1,3 +1,22 @@
+# [5.23.0](https://github.com/ionic-team/ionic-native/compare/v5.22.0...v5.23.0) (2020-03-22)
+
+
+### Bug Fixes
+
+* **admob:** fix interstitialAdId parameter typo ([#3348](https://github.com/ionic-team/ionic-native/issues/3348)) ([fe89f2b](https://github.com/ionic-team/ionic-native/commit/fe89f2bf96ae4acf85edbff22ea2b0f4c69206a2))
+* **cordova-firebase-x:** updated methods ([#3339](https://github.com/ionic-team/ionic-native/issues/3339)) ([5471696](https://github.com/ionic-team/ionic-native/commit/5471696664b82ee4c42614927717dc664aafae6c))
+* **email-composer:** fix error when no mail apps ([#3347](https://github.com/ionic-team/ionic-native/issues/3347)) ([7bcbca7](https://github.com/ionic-team/ionic-native/commit/7bcbca7696af7020191ed36c814aefde28398bd0))
+* **unvired-cordova-sdk:** fix the data type for ResultType and OutboxLockStatus ([#3334](https://github.com/ionic-team/ionic-native/issues/3334)) ([2d1e2db](https://github.com/ionic-team/ionic-native/commit/2d1e2db9cdc885cda3fe2fe448857bb148efe219))
+
+
+### Features
+
+* **admob-free:** add missing config properties ([#3344](https://github.com/ionic-team/ionic-native/issues/3344)) ([a0f9163](https://github.com/ionic-team/ionic-native/commit/a0f91635fc4091af9dcb9b245041cdd7eea86a60))
+* **in-app-purchase-2): feat(in-app-purchase-2:** update types and add getApplicationUsername function ([#3320](https://github.com/ionic-team/ionic-native/issues/3320)) ([664e257](https://github.com/ionic-team/ionic-native/commit/664e2574424930c3220ee579a657bda226a0c2e9))
+* **mobile-messaging:** add plugin ([#3338](https://github.com/ionic-team/ionic-native/issues/3338)) ([96e6711](https://github.com/ionic-team/ionic-native/commit/96e6711776cc5a774d4e32abd1fd752fa20f4881))
+
+
+
 # [5.22.0](https://github.com/ionic-team/ionic-native/compare/v5.21.6...v5.22.0) (2020-02-28)
 
 
