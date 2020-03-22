@@ -442,48 +442,51 @@ export class FirebaseX extends IonicNativePlugin {
    *   code {string} - verification code. Will only be present if instantVerification is true. Always undefined on iOS.
    */
   @Cordova()
-  verifyPhoneNumber(
-    success: (value: string | object) => void,
-    error: (err: string) => void,
-    phoneNumber: string,
-    timeoutDuration = 0
-  ): Promise<any> {
+  verifyPhoneNumber(success: (value: string | object) => void, error: (err: string) => void, phoneNumber: string, timeoutDuration = 0): Promise<any> {
     return;
   }
 
   /**
    * Signs the user into Firebase with credentials obtained using verifyPhoneNumber().
    * See the Android- and iOS-specific Firebase documentation for more info.
-   * @param {string} verificationId - the verification ID returned in the credentials object to the verifyPhoneNumber() success callback.
-   * @param {string} code - the activation code, either returned in the credentials object to the verifyPhoneNumber() success callback if using Instant Verification on Android, or the activation code as entered by the user from the received SMS message.
+   * @param {object} credential - a credential object returned by the success callback of an authentication method
    * @param {function} success - callback function to call on successful sign-in using credentials
    * @param {function} error - callback function which will be passed a {string} error message as an argument
    */
   @Cordova()
-  signInWithCredential(
-    verificationId: string,
-    code: string,
-    success: () => void,
-    error: (err: string) => void
-  ): Promise<any> {
+  signInWithCredential(credential: object, success: () => void, error: (err: string) => void): Promise<any> {
     return;
   }
 
   /**
    * Links the user account to an existing Firebase user account with credentials obtained using verifyPhoneNumber().
    * See the Android- and iOS-specific Firebase documentation for more info.
-   * @param {string} verificationId - the verification ID returned in the credentials object to the verifyPhoneNumber() success callback.
-   * @param {string} code - the activation code, either returned in the credentials object to the verifyPhoneNumber() success callback if using Instant Verification on Android, or the activation code as entered by the user from the received SMS message.
+   * @param {object} credential - a credential object returned by the success callback of an authentication method
    * @param {function} success - callback function to call on successful sign-in using credentials
    * @param {function} error - callback function which will be passed a {string} error message as an argument
    */
   @Cordova()
-  linkUserWithCredential(
-    verificationId: string,
-    code: string,
-    success: () => void,
-    error: (err: string) => void
-  ): Promise<any> {
+  linkUserWithCredential(credential: object, success: () => void, error: (err: string) => void): Promise<any> {
+    return;
+  }
+
+  /**
+   * Reauthenticates the currently signed in user with credentials obtained via an authentication method such as verifyPhoneNumber() or authenticateUserWithGoogle().
+   * @param {Object} credential - a credential object returned by the success callback of an authentication method
+   * @param {function} success - callback function to call on successful sign-in using credentials
+   * @param {function} error - callback function which will be passed a {string} error message as an argument
+   */
+  @Cordova()
+  reauthenticateWithCredential(credential: any, success: () => void, error: (err: string) => void): Promise<any> {
+    return;
+  }
+
+  /**
+   * Registers a Javascript function to invoke when Firebase Authentication state changes between user signed in/signed out.
+   * @param {function} fn - callback function to invoke when authentication state changes
+   */
+  @Cordova()
+  registerAuthStateChangeListener(fn: any): Promise<any> {
     return;
   }
 
@@ -584,6 +587,84 @@ export class FirebaseX extends IonicNativePlugin {
    */
   @Cordova()
   stopTrace(name: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Adds a new document to a Firestore collection, which will be allocated an auto-generated document ID.
+   * @param {object} document - document object to add to collection
+   * @param {string} collection - name of top-level collection to add document to.
+   * @param {function} success - callback function to call on successfully adding the document. Will be passed a {string} argument containing the auto-generated document ID that the document was stored against.
+   * @param {function} error - callback function which will be passed a {string} error message as an argument.
+   */
+  @Cordova()
+  addDocumentToFirestoreCollection(document: object, collection: string, success: () => void, error: (err: string) => void): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets (adds/replaces) a document with the given ID in a Firestore collection.
+   * @param {string} documentId - document ID to use when setting document in the collection.
+   * @param {object} document - document object to set in collection.
+   * @param {string} collection - name of top-level collection to set document in.
+   * @param {function} success - callback function to call on successfully setting the document.
+   * @param {function} error - callback function which will be passed a {string} error message as an argument.
+   */
+  @Cordova()
+  setDocumentInFirestoreCollection(documentId: string, document: object, collection: string, success: () => void, error: (err: string) => void): Promise<any> {
+    return;
+  }
+
+  /**
+   * Updates an existing document with the given ID in a Firestore collection. This is a non-destructive update that will only
+   * overwrite existing keys in the existing document or add new ones if they don't already exist. If the no document with the
+   * specified ID exists in the collection, an error will be raised.
+   * @param {string} documentId - document ID of the document to update.
+   * @param {object} document - entire document or document fragment to update existing document with.
+   * @param {string} collection - name of top-level collection to update document in.
+   * @param {function} success - callback function to call on successfully updating the document.
+   * @param {function} error - callback function which will be passed a {string} error message as an argument.
+   */
+  @Cordova()
+  updateDocumentInFirestoreCollection(documentId: string, document: object, collection: string, success: () => void, error: (err: string) => void): Promise<any> {
+    return;
+  }
+
+  /**
+   * Deletes an existing document with the given ID in a Firestore collection.
+   * - Note: If the no document with the specified ID exists in the collection, the Firebase SDK will still return a successful outcome.
+   * @param {string} documentId - document ID of the document to delete.
+   * @param {string} collection - name of top-level collection to delete document in.
+   * @param {function} success - callback function to call on successfully deleting the document.
+   * @param {function} error -  callback function which will be passed a {string} error message as an argument.
+   */
+  @Cordova()
+  deleteDocumentFromFirestoreCollection(documentId: string, collection: string, success: () => void, error: (err: string) => void): Promise<any> {
+    return;
+  }
+
+  /**
+   * Fetches an existing document with the given ID from a Firestore collection.
+   * -Note: If the no document with the specified ID exists in the collection, the error callback will be invoked.
+   * @param {string} documentId - document ID of the document to fetch.
+   * @param {string} collection - name of top-level collection to fetch document from.
+   * @param {function} success - callback function to call on successfully fetching the document. Will be passed an {object} contain the document contents.
+   * @param {function} error - callback function which will be passed a {string} error message as an argument.
+   */
+  @Cordova()
+  fetchDocumentInFirestoreCollection(documentId: string, collection: string, success: () => void, error: (err: string) => void): Promise<any> {
+    return;
+  }
+
+  /**
+   * Fetches all the documents in the specific collection.
+   * @param {string} collection - name of top-level collection to fetch.
+   * @param {function} success - callback function to call on successfully deleting the document. Will be passed an {object} containing all the documents in the collection,
+   * indexed by document ID. If a Firebase collection with that name does not exist or it contains no documents, the object will be empty.
+   * @param {function} error - callback function which will be passed a {string} error message as an argument.
+   */
+  @Cordova()
+  fetchFirestoreCollection(collection: string, success: () => void, error: (err: string) => void): Promise<any> {
     return;
   }
 }
