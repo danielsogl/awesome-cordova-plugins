@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
-export type OS = 'Android' | 'iOS';
-export type Gender = 'Male' | 'Female';
-export type Event = 'messageReceived' |
-  'notificationTapped' |
-  'tokenReceived' |
-  'registrationUpdated' |
-  'geofenceEntered' |
-  'actionTapped' |
-  'installationUpdated' |
-  'userUpdated' |
-  'personalized' |
-  'depersonalized';
+export type OS = "Android" | "iOS";
+export type Gender = "Male" | "Female";
+export type Event =
+  | "messageReceived"
+  | "notificationTapped"
+  | "tokenReceived"
+  | "registrationUpdated"
+  | "geofenceEntered"
+  | "actionTapped"
+  | "installationUpdated"
+  | "userUpdated"
+  | "personalized"
+  | "depersonalized";
 
 export interface Configuration {
   /**
@@ -29,7 +30,7 @@ export interface Configuration {
   ios?: {
     notificationTypes?: string[];
     forceCleanup?: boolean;
-    logging?: boolean
+    logging?: boolean;
   };
   android?: {
     notificationIcon: string; // a resource name for a status bar icon (without extension), located in '/platforms/android/app/src/main/res/mipmap'
@@ -40,7 +41,7 @@ export interface Configuration {
     applicationCodePersistingDisabled?: boolean;
     userDataPersistingDisabled?: boolean;
     carrierInfoSendingDisabled?: boolean;
-    systemInfoSendingDisabled?: boolean
+    systemInfoSendingDisabled?: boolean;
   };
   notificationCategories?: [
     {
@@ -55,10 +56,11 @@ export interface Configuration {
           destructive?: boolean;
           icon?: string;
           textInputActionButtonTitle?: string;
-          textInputPlaceholder?: string
+          textInputPlaceholder?: string;
         }
-        ]
-    }];
+      ];
+    }
+  ];
 }
 
 export interface UserData {
@@ -130,7 +132,6 @@ export interface MobileMessagingError {
 }
 
 export class DefaultMessageStorage {
-
   @Cordova({ sync: true })
   find(messageId: string, callback: (message: Message) => void) {
     return;
@@ -163,7 +164,7 @@ export class DefaultMessageStorage {
  *
  * @usage
  * ```typescript
- * import { MobileMessaging } from '@ionic-native/mobile-messaging';
+ * import { MobileMessaging } from '@ionic-native/mobile-messaging/ngx';
  *
  *
  * constructor(private mobileMessaging: MobileMessaging) { }
@@ -193,15 +194,14 @@ export class DefaultMessageStorage {
  * ```
  */
 @Plugin({
-  pluginName: 'MobileMessaging',
-  plugin: 'com-infobip-plugins-mobilemessaging',
-  pluginRef: 'MobileMessaging',
-  repo: 'https://github.com/infobip/mobile-messaging-cordova-plugin',
-  platforms: ['Android', 'iOS']
+  pluginName: "MobileMessaging",
+  plugin: "com-infobip-plugins-mobilemessaging",
+  pluginRef: "MobileMessaging",
+  repo: "https://github.com/infobip/mobile-messaging-cordova-plugin",
+  platforms: ["Android", "iOS"]
 })
 @Injectable()
 export class MobileMessaging extends IonicNativePlugin {
-
   /**
    * Starts a new Mobile Messaging session.
    *
@@ -210,7 +210,10 @@ export class MobileMessaging extends IonicNativePlugin {
    * @param {Function} onInitError. Error callback
    */
   @Cordova({ sync: true })
-  init(config: Configuration, onInitError?: (error: MobileMessagingError) => void) {
+  init(
+    config: Configuration,
+    onInitError?: (error: MobileMessagingError) => void
+  ) {
     return;
   }
 
@@ -254,7 +257,6 @@ export class MobileMessaging extends IonicNativePlugin {
   off(event: Event): Observable<Message> {
     return;
   }
-
 
   /**
    * Saves user data to the server.
@@ -326,8 +328,10 @@ export class MobileMessaging extends IonicNativePlugin {
    * @param {Boolean} primary or not
    */
   @Cordova()
-  setInstallationAsPrimary(pushRegistrationId: string,
-                           primary: boolean): Promise<any> {
+  setInstallationAsPrimary(
+    pushRegistrationId: string,
+    primary: boolean
+  ): Promise<any> {
     return;
   }
 
@@ -389,5 +393,3 @@ export class MobileMessaging extends IonicNativePlugin {
     return;
   }
 }
-
-
