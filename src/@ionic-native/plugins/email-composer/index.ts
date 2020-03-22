@@ -198,7 +198,7 @@ export class EmailComposer extends IonicNativePlugin {
         });
       } else {
         EmailComposer.getPlugin().getClients((apps: string[]) => {
-          resolve(apps.length && apps.length > 0);
+          resolve(apps && apps.length > 0);
         });
       }
     });
