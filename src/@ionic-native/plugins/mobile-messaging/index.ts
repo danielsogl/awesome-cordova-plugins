@@ -2,19 +2,19 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
-export type OS = "Android" | "iOS";
-export type Gender = "Male" | "Female";
+export type OS = 'Android' | 'iOS';
+export type Gender = 'Male' | 'Female';
 export type Event =
-  | "messageReceived"
-  | "notificationTapped"
-  | "tokenReceived"
-  | "registrationUpdated"
-  | "geofenceEntered"
-  | "actionTapped"
-  | "installationUpdated"
-  | "userUpdated"
-  | "personalized"
-  | "depersonalized";
+  | 'messageReceived'
+  | 'notificationTapped'
+  | 'tokenReceived'
+  | 'registrationUpdated'
+  | 'geofenceEntered'
+  | 'actionTapped'
+  | 'installationUpdated'
+  | 'userUpdated'
+  | 'personalized'
+  | 'depersonalized';
 
 export interface Configuration {
   /**
@@ -194,11 +194,11 @@ export class DefaultMessageStorage {
  * ```
  */
 @Plugin({
-  pluginName: "MobileMessaging",
-  plugin: "com-infobip-plugins-mobilemessaging",
-  pluginRef: "MobileMessaging",
-  repo: "https://github.com/infobip/mobile-messaging-cordova-plugin",
-  platforms: ["Android", "iOS"]
+  pluginName: 'MobileMessaging',
+  plugin: 'com-infobip-plugins-mobilemessaging',
+  pluginRef: 'MobileMessaging',
+  repo: 'https://github.com/infobip/mobile-messaging-cordova-plugin',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class MobileMessaging extends IonicNativePlugin {
