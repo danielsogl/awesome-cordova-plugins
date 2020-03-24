@@ -197,7 +197,7 @@ export class Stripe extends IonicNativePlugin {
 
   /**
    * Validates an expiry date
-   * @param expMonth {string} expiry month
+   * @param expMonth {string} expiry month (0 - 11)
    * @param expYear {string} expiry year
    * @return {Promise<any>} returns a promise that resolves if the date is valid, and rejects if it's invalid
    */
