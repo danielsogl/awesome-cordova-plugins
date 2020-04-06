@@ -16,6 +16,18 @@ export type Event =
   | 'personalized'
   | 'depersonalized';
 
+export interface CustomAttributes {
+  stringAttribute: string;
+  numberAttribute: number;
+  dateAttribute: Date;
+  booleanAttribute: boolean;
+}
+
+export interface CustomEvent {
+  definitionId: string;
+  properties: CustomAttributes;
+}
+
 export interface Configuration {
   /**
    * The application code of your Application from Push Portal website
@@ -255,6 +267,53 @@ export class MobileMessaging extends IonicNativePlugin {
     observable: true
   })
   off(event: Event): Observable<Message> {
+    return;
+  }
+
+  /**
+   * Sends an event to the server eventually, handles possible errors and do retries for you.
+   *
+   * @name submitEvent
+   * @param {Object} eventData. An object containing event data
+   * {
+   *   definitionId: "eventDefinitionId"
+   *   properties: {
+   *     "stringAttribute": "string",
+   *     "numberAttribute": 1,
+   *     "dateAttribute": "2020-02-26T09:41:57Z",
+   *     "booleanAttribute": true
+   *   }
+   * }
+   */
+  @Cordova({
+    observable: true
+  })
+  submitEvent(event: CustomEvent): Observable<void> {
+    return;
+  }
+
+
+  /**
+   * Sends an event to the server immediately.
+   * You have to handle possible connection or server errors, do retries yourself.
+   *
+   * @name submitEventImmediately
+   * @param {Object} eventData. An object containing event data
+   * {
+   *   definitionId: "eventDefinitionId"
+   *   properties: {
+   *     "stringAttribute": "string",
+   *     "numberAttribute": 1,
+   *     "dateAttribute": "2020-02-26T09:41:57Z",
+   *     "booleanAttribute": true
+   *   }
+   * }
+   * @param {Function} callback will be called on result, you have to handle error and do retries yourself
+   */
+  @Cordova({
+    observable: true
+  })
+  submitEventImmediately(event: CustomEvent): Observable<void> {
     return;
   }
 
