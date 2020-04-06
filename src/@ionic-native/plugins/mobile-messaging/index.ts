@@ -16,16 +16,9 @@ export type Event =
   | 'personalized'
   | 'depersonalized';
 
-export interface CustomAttributes {
-  stringAttribute: string;
-  numberAttribute: number;
-  dateAttribute: Date;
-  booleanAttribute: boolean;
-}
-
 export interface CustomEvent {
   definitionId: string;
-  properties: CustomAttributes;
+  properties: Record<string, string | number | boolean>;
 }
 
 export interface Configuration {
@@ -85,7 +78,7 @@ export interface UserData {
   phones?: string[];
   emails?: string[];
   tags?: string[];
-  customAttributes?: Record<string, string>;
+  customAttributes?: Record<string, string | number | boolean>;
 }
 
 export interface Installation {
@@ -104,7 +97,7 @@ export interface Installation {
   deviceTimezoneId?: string;
   applicationUserId?: string;
   deviceName?: string;
-  customAttributes?: Record<string, string>;
+  customAttributes?: Record<string, string | number | boolean>;
 }
 
 export interface UserIdentity {
