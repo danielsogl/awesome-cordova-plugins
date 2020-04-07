@@ -75,7 +75,7 @@ export interface HealthQueryOptionsAggregated {
    * if specified, aggregation is grouped an array of "buckets" (windows of time),
    * supported values are: 'hour', 'day', 'week', 'month', 'year'.
    */
-  bucket: string;
+  bucket?: string;
 
   /**
    * In Android, it is possible to query for "raw" steps or to select those as filtered by the Google Fit app.
