@@ -190,7 +190,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
  * Please follow the [Quickstart Guide](https://docs.revenuecat.com/docs/) for more information on how to use the SDK
  *
  * ### Requirements
- * Requires XCode 10.2+ and minimum targets iOS 9.0+ and macOS 10.12+
+ * Requires XCode 11.0+ and minimum target iOS 9.0+
  * This plugin has been tested with cordova-plugin-purchases@
  *
  * @interfaces
@@ -208,7 +208,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
  */
 @Plugin({
   pluginName: 'Purchases',
-  plugin: 'cordova-plugin-purchases@1.0.4',
+  plugin: 'cordova-plugin-purchases@1.1.0',
   pluginRef: 'Purchases', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/RevenueCat/cordova-plugin-purchases', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
@@ -527,6 +527,81 @@ export class Purchases extends IonicNativePlugin {
   ): Promise<{ [productId: string]: IntroEligibility; }> {
     return;
   }
+
+  /**
+   * Sets a function to be called on purchases initiated on the Apple App Store. This is only used in iOS.
+   * @param {ShouldPurchasePromoProductListener} shouldPurchasePromoProductListener Called when a user initiates a
+   * promotional in-app purchase from the App Store. If your app is able to handle a purchase at the current time, run
+   * the deferredPurchase function. If the app is not in a state to make a purchase: cache the deferredPurchase, then
+   * call the deferredPurchase when the app is ready to make the promotional purchase.
+   * If the purchase should never be made, you don't need to ever call the deferredPurchase and the app will not
+   * proceed with promotional purchases.
+   */
+  @Cordova({ sync: true })
+  addShouldPurchasePromoProductListener(shouldPurchasePromoProductListener: ShouldPurchasePromoProductListener): void {}
+
+  /**
+   * Removes a given ShouldPurchasePromoProductListener
+   * @param {ShouldPurchasePromoProductListener} listenerToRemove ShouldPurchasePromoProductListener reference of the listener to remove
+   * @returns {boolean} True if listener was removed, false otherwise
+   */
+  @Cordova({ sync: true })
+  removeShouldPurchasePromoProductListener(listenerToRemove: ShouldPurchasePromoProductListener): boolean {
+    return;
+  }
+
+  /**
+   * Invalidates the cache for purchaser information.
+   * This is useful for cases where purchaser information might have been updated outside of the app, like if a
+   * promotional subscription is granted through the RevenueCat dashboard.
+   */
+  @Cordova({ sync: true })
+  invalidatePurchaserInfoCache(): void {}
+
+  /**
+   * Subscriber attributes are useful for storing additional, structured information on a user.
+   * Since attributes are writable using a public key they should not be used for
+   * managing secure or sensitive information such as subscription status, coins, etc.
+   *
+   * Key names starting with "$" are reserved names used by RevenueCat. For a full list of key
+   * restrictions refer to our guide: https://docs.revenuecat.com/docs/subscriber-attributes
+   *
+   * @param attributes Map of attributes by key. Set the value as an empty string to delete an attribute.
+   */
+  @Cordova({ sync: true })
+  setAttributes(attributes: { [key: string]: string | null }): void {}
+
+  /**
+   * Subscriber attribute associated with the email address for the user
+   *
+   * @param email Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setEmail(email: string | null): void {}
+  /**
+   * Subscriber attribute associated with the phone number for the user
+   *
+   * @param phoneNumber Empty String or null will delete the subscriber attribute.
+   */
+
+  @Cordova({ sync: true })
+  setPhoneNumber(phoneNumber: string | null): void {}
+  /**
+   * Subscriber attribute associated with the display name for the user
+   *
+   * @param displayName Empty String or null will delete the subscriber attribute.
+   */
+
+  @Cordova({ sync: true })
+  setDisplayName(displayName: string | null): void {}
+  /**
+   * Subscriber attribute associated with the push token for the user
+   *
+   * @param pushToken null will delete the subscriber attribute.
+   */
+
+  @Cordova({ sync: true })
+  setPushToken(pushToken: string | null): void {}
 }
 
 /**
@@ -840,3 +915,5 @@ export interface IntroEligibility {
    */
   readonly description: string;
 }
+
+export type ShouldPurchasePromoProductListener = (deferredPurchase: () => void) => void;
