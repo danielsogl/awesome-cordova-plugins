@@ -39,7 +39,7 @@ export interface PaymentData {
   escrow?: boolean;         // whether the type of this order is escrow
   digital?: boolean;        // whether this order is for real products or contents
   display?: {
-    card_quota?: [number];  // credit card installment setting value
+    card_quota?: number[],  // credit card installment setting value
   };
   currency?: string;        // payment currency
   customer_uid?: string;    // unique customer id for subscription payments
