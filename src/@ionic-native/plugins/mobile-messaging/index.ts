@@ -16,6 +16,11 @@ export type Event =
   | 'personalized'
   | 'depersonalized';
 
+export interface CustomEvent {
+  definitionId: string;
+  properties: Record<string, string | number | boolean>;
+}
+
 export interface Configuration {
   /**
    * The application code of your Application from Push Portal website
@@ -73,7 +78,7 @@ export interface UserData {
   phones?: string[];
   emails?: string[];
   tags?: string[];
-  customAttributes?: Record<string, string>;
+  customAttributes?: Record<string, string | number | boolean>;
 }
 
 export interface Installation {
@@ -92,7 +97,7 @@ export interface Installation {
   deviceTimezoneId?: string;
   applicationUserId?: string;
   deviceName?: string;
-  customAttributes?: Record<string, string>;
+  customAttributes?: Record<string, string | number | boolean>;
 }
 
 export interface UserIdentity {
@@ -255,6 +260,53 @@ export class MobileMessaging extends IonicNativePlugin {
     observable: true
   })
   off(event: Event): Observable<Message> {
+    return;
+  }
+
+  /**
+   * Sends an event to the server eventually, handles possible errors and do retries for you.
+   *
+   * @name submitEvent
+   * @param {Object} eventData. An object containing event data
+   * {
+   *   definitionId: "eventDefinitionId"
+   *   properties: {
+   *     "stringAttribute": "string",
+   *     "numberAttribute": 1,
+   *     "dateAttribute": "2020-02-26T09:41:57Z",
+   *     "booleanAttribute": true
+   *   }
+   * }
+   */
+  @Cordova({
+    sync: true
+  })
+  submitEvent(event: CustomEvent): void {
+    return;
+  }
+
+
+  /**
+   * Sends an event to the server immediately.
+   * You have to handle possible connection or server errors, do retries yourself.
+   *
+   * @name submitEventImmediately
+   * @param {Object} eventData. An object containing event data
+   * {
+   *   definitionId: "eventDefinitionId"
+   *   properties: {
+   *     "stringAttribute": "string",
+   *     "numberAttribute": 1,
+   *     "dateAttribute": "2020-02-26T09:41:57Z",
+   *     "booleanAttribute": true
+   *   }
+   * }
+   * @param {Function} callback will be called on result, you have to handle error and do retries yourself
+   */
+  @Cordova({
+    observable: true
+  })
+  submitEventImmediately(event: CustomEvent): Promise<void> {
     return;
   }
 
