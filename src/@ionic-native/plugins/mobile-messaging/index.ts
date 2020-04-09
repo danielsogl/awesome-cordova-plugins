@@ -279,9 +279,9 @@ export class MobileMessaging extends IonicNativePlugin {
    * }
    */
   @Cordova({
-    observable: true
+    sync: true
   })
-  submitEvent(event: CustomEvent): Observable<void> {
+  submitEvent(event: CustomEvent): void {
     return;
   }
 
@@ -306,7 +306,7 @@ export class MobileMessaging extends IonicNativePlugin {
   @Cordova({
     observable: true
   })
-  submitEventImmediately(event: CustomEvent): Observable<void> {
+  submitEventImmediately(event: CustomEvent): Promise<void> {
     return;
   }
 
