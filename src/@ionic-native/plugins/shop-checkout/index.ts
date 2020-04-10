@@ -9,7 +9,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { ShopCheckout } from '@ionic-native/shop-checkout';
+ * import { ShopCheckout } from '@ionic-native/shop-checkout/ngx';
  *
  *
  * constructor(private shopCheckout: ShopCheckout) { }
@@ -24,57 +24,57 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'ShopCheckout',
-  plugin: 'cordova-plugin-shop-checkout', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'shopCheckout', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/tradedepot/cordova-shop-checkout', // the github repository URL for the plugin
-  platforms: ['Android'] // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'cordova-plugin-shop-checkout',
+  pluginRef: 'shopCheckout',
+  repo: 'https://github.com/tradedepot/cordova-shop-checkout',
+  platforms: ['Android']
 })
 @Injectable()
 export class ShopCheckout extends IonicNativePlugin {
   /**
    * Register an agent
    * @param options {any} Options
-   * @return {Promise<any>} Returns a promise
+   * @return {Promise<void>} Returns a promise
    */
   @Cordova()
-  registerAgent(options: any): Promise<any> {
+  registerAgent(options: any): Promise<void> {
     return;
   }
 
   /**
    * Open products view
    * @param options {any} Options
-   * @return {Promise<any>} Returns a promise
+   * @return {Promise<void>} Returns a promise
    */
   @Cordova()
-  openProducts(options: any): Promise<any> {
+  openProducts(options: any): Promise<void> {
     return;
   }
 
   /**
    * Open trannsactions view
    * @param options {any} Options
-   * @return {Promise<any>} Returns a promise
+   * @return {Promise<void>} Returns a promise
    */
   @Cordova()
-  openTransactions(options: any): Promise<any> {
+  openTransactions(options: any): Promise<void> {
     return;
   }
 
 
   /**
-   * @return {Promise<any>} Returns a promise
+   * @return {Promise<void>} Returns a promise
    */
   @Cordova()
-  logout(options: any): Promise<any> {
+  logout(options: any): Promise<void> {
     return;
   }
 
   /**
-   * @return {Promise<any>} Returns a promise
+   * @return {Promise<boolean>} Returns a promise
    */
   @Cordova()
-  isInitialized(): Promise<any> {
+  isInitialized(): Promise<boolean> {
     return;
   }
 }
