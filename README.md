@@ -6,6 +6,10 @@ Ionic Native is a curated set of wrappers for Cordova plugins that make adding a
 
 Ionic Native wraps plugin callbacks in a Promise or Observable, providing a common interface for all plugins and making it easy to use plugins with Angular change detection.
 
+## Capacitor Support
+
+In addition to Cordova, Ionic Native also works with [Capacitor](https://capacitor.ionicframework.com), Ionic's official native runtime. Basic usage below. For complete details, [see the Capacitor documentation](https://capacitor.ionicframework.com/docs/cordova/using-cordova-plugins).
+
 ## Installation
 
 Run following command to install Ionic Native in your project.
@@ -74,6 +78,49 @@ export class MyComponent {
   }
 
 }
+```
+
+#### Ionic/React apps
+
+React apps must use Capacitor to build native mobile apps. However, Ionic Native (and therefore, Cordova plugins) can still be used.
+
+```bash
+# Install Core library (once per project)
+npm install @ionic-native/core
+
+# Install Ionic Native TypeScript wrapper
+npm install @ionic-native/barcode-scanner
+
+# Install Cordova plugin
+npm install phonegap-plugin-barcodescanner
+
+# Update native platform project(s) to include newly added plugin
+ionic cap sync
+```
+
+Import the plugin object then use its static methods: 
+
+```typescript
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+
+const Tab1: React.FC = () => {
+  const openScanner = async () => {
+    const data = await BarcodeScanner.scan();
+    console.log(`Barcode data: ${data.text}`);
+  };
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Tab 1</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        <IonButton onClick={openScanner}>Scan barcode</IonButton>
+      </IonContent>
+    </IonPage>
+  );
+};
 ```
 
 #### ES2015+/TypeScript
