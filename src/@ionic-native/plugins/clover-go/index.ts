@@ -1,14 +1,3 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
@@ -16,7 +5,7 @@ import { Observable } from 'rxjs';
 /**
  * @name Clover Go
  * @description
- * This plugin does something
+ * This plugin connect to Clover Go payment device and process payments.
  *
  * @usage
  * ```typescript
@@ -28,7 +17,19 @@ import { Observable } from 'rxjs';
  * ...
  *
  *
- * this.cloverGo.functionName('Hello', 123)
+ * this.cloverGo.init(configuration)
+ *   .then((res: any) => console.log(res))
+ *   .catch((error: any) => console.error(error));
+ *
+ * this.cloverGo.connect()
+ *   .then((res: any) => console.log(res))
+ *   .catch((error: any) => console.error(error));
+ *
+ * this.cloverGo.disconnect()
+ *   .then((res: any) => console.log(res))
+ *   .catch((error: any) => console.error(error));
+ *
+ * this.cloverGo.sale(saleInfo)
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
