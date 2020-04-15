@@ -102,6 +102,14 @@ export class FirebaseMessaging extends IonicNativePlugin {
   }
 
   /**
+   * Returns a promise thaf fulfills with the device instance ID
+   */
+  @Cordova({ sync: true })
+  getInstanceId(): Promise<string> {
+    return;
+  }
+
+  /**
    * Returns a promise that fulfills with the current FCM token
    *
    * This method also accepts optional argument type.
