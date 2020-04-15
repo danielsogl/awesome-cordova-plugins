@@ -22,14 +22,14 @@ export interface InAppBrowserOptions {
    */
   beforeload?: 'yes' | 'get' | 'post';
   /** Set to yes to have the browser's cookie cache cleared before the new window is opened. */
-  clearcache?: 'yes';
+  clearcache?: 'yes' | 'no';
   /**  set to yes to have the browser's entire local storage cleared (cookies, HTML5 local storage, IndexedDB, etc.) before the new window is opened */
-  cleardata?: 'yes';
+  cleardata?: 'yes' | 'no';
   /**
    * Set to yes to have the session cookie cache cleared before the new window is opened.
    * For WKWebView, requires iOS 11+ on target device.
    */
-  clearsessioncache?: 'yes';
+  clearsessioncache?: 'yes' | 'no';
   /**
    * (Android) Set to a string to use as the close button's caption instead of a X. Note that you need to localize this value yourself.
    * (iOS) Set to a string to use as the Done button's caption. Note that you need to localize this value yourself.
@@ -52,7 +52,7 @@ export interface InAppBrowserOptions {
    * (Windows only) Set to yes to create the browser control without a border around it.
    * Please note that if location=no is also specified, there will be no control presented to user to close IAB window.
    */
-  fullscreen?: 'yes';
+  fullscreen?: 'yes' | 'no';
   /**
    * (Android & Windows Only) Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
    * If there is no previous page, the InAppBrowser will close. The default value is yes, so you must set it to no if you want the back button to simply close the InAppBrowser.
