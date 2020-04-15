@@ -109,7 +109,7 @@ export class FirebaseAuthentication extends IonicNativePlugin {
   @Cordova({ sync: true })
   signInWithVerificationId(
     verificationId: string,
-    smsCode: number
+    smsCode: string
   ): Promise<any> {
     return;
   }
