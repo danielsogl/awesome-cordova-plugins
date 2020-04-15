@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 /**
  * @name Gao De Location
@@ -14,9 +15,42 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *
  * constructor(private gaoDeLocation: GaoDeLocation) { }
  *
- * this.gaoDeLocation.getCurrentPosition()
- * .then((res: PositionOptions) => console.log(res))
- * .catch((error) => console.error(error));
+ *
+ * const positionOptions: PositionOptions = {
+ *     androidOption: {
+ *      locationMode: LocationModeEnum.Hight_Accuracy,
+ *      gpsFirst: false,
+ *       HttpTimeOut: 30000,
+ *       interval: 2000,
+ *       needAddress: true,
+ *       onceLocation: false,
+ *       onceLocationLatest: false,
+ *       locationProtocol: LocationProtocolEnum.HTTP,
+ *       sensorEnable: false,
+ *       wifiScan: true,
+ *       locationCacheEnable: true
+ *     }, iosOption: {
+ *       desiredAccuracy: DesiredAccuracyEnum.kCLLocationAccuracyBest,
+ *       pausesLocationUpdatesAutomatically: 'YES',
+ *       allowsBackgroundLocationUpdates: 'NO',
+ *       locationTimeout: 10,
+ *       reGeocodeTimeout: 5,
+ *     }
+ *   };
+ * const positionRes: PositionRes = await this.gaoDeLocation.getCurrentPosition(positionOptions).catch((e: any) => {
+ *     console.log(e);
+ *   }) || null;
+ * console.log(JSON.stringify(positionRes));
+ *
+ *
+ * this.gaoDeLocation.startSerialLocation(positionOptions).subscribe((positionRes: PositionRes) => {
+ *    console.log(JSON.stringify(positionRes));
+ * });
+ *
+ * const positionRes: any = this.gaoDeLocation.stopSerialLocation().catch((e) => {
+ *     console.log(e);
+ *   }) || null;
+ * console.log(JSON.stringify(positionRes));
  *
  * ```
  */
@@ -32,83 +66,288 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 @Injectable()
 export class GaoDeLocation extends IonicNativePlugin {
   /**
-   * Get longitude and latitude, country, province, city, postal code, specific address, region
-   * @returns {Promise<PositionOptions>}
+   * Single location
+   * @param positionOptions
+   * @return Promise<PositionRes>
    */
-  @Cordova()
-  getCurrentPosition(): Promise<PositionOptions> {
+  @Cordova(
+    {
+      callbackOrder: 'reverse',
+    }
+  )
+  getCurrentPosition(positionOptions: PositionOptions): Promise<PositionRes> {
     return;
   }
 
+  /**
+   * Start serial location
+   * @param positionOptions
+   * @return Promise<PositionRes>
+   */
+  @Cordova({
+    callbackOrder: 'reverse',
+    observable: true
+  })
+  startSerialLocation(positionOptions: PositionOptions): Observable<PositionRes> {
+    return;
+  }
+
+  /**
+   * Stop Serial Location
+   * @return Promise<any>
+   */
+  @Cordova({
+    callbackOrder: 'reverse',
+  })
+  stopSerialLocation(): Promise<any> {
+    return;
+  }
 }
 
+/**
+ * Location parameter
+ */
 export interface PositionOptions {
-  /*
-  * latitude
-  * */
-  latitude: number;
-  /*
+  /**
+   * android options
+   */
+  androidOption: AndroidOptions;
+  /**
+   * ios options
+   */
+  iosOption: IosOptions;
+}
+
+/**
+ * android positioning accuracy
+ */
+export interface AndroidOptions {
+  /**
+   * location mode
+   */
+  locationMode: LocationModeEnum;
+  /**
+   * gps first
+   */
+  gpsFirst: boolean;
+  /**
+   * Http timeOut
+   */
+  HttpTimeOut: number;
+  /**
+   * Location interval
+   */
+  interval: number;
+  /**
+   * Open reverse address
+   */
+  needAddress: boolean;
+  /**
+   * once location
+   */
+  onceLocation: boolean;
+  /**
+   * once location latest
+   */
+  onceLocationLatest: boolean;
+  /**
+   * location protocol
+   */
+  locationProtocol: LocationProtocolEnum;
+  /**
+   * sensor enable
+   */
+  sensorEnable: boolean;
+  /**
+   * wifi scan
+   */
+  wifiScan: boolean;
+  /**
+   * location cache enable
+   */
+  locationCacheEnable: boolean;
+}
+
+
+/**
+ *
+ * IOS positioning parameters
+ *
+ */
+export interface IosOptions {
+  /**
+   * desired accuracy
+   */
+  desiredAccuracy?: DesiredAccuracyEnum;
+  /**
+   * pauses location updates automatically
+   */
+  pausesLocationUpdatesAutomatically: IosBoolean;
+  /**
+   * allows background location updates
+   */
+  allowsBackgroundLocationUpdates: IosBoolean;
+  /**
+   * location timeout
+   */
+  locationTimeout: number;
+  /**
+   * re geocode timeout
+   */
+  reGeocodeTimeout?: number;
+  /**
+   * locating with re geocode
+   */
+  locatingWithReGeocode?: IosBoolean;
+}
+
+/**
+ * ios positioning accuracy
+ * https://developer.apple.com/documentation/corelocation/kcllocationaccuracybestfornavigation
+ */
+export enum DesiredAccuracyEnum {
+  /**
+   * The highest possible accuracy that uses additional sensor data to facilitate navigation apps.
+   */
+  kCLLocationAccuracyBestForNavigation = 1,
+  /**
+   * The best level of accuracy available.
+   */
+  kCLLocationAccuracyBest = 2,
+  /**
+   * Accurate to within ten meters of the desired target.
+   */
+  kCLLocationAccuracyNearestTenMeters = 3,
+  /**
+   * Accurate to within one hundred meters.
+   */
+  kCLLocationAccuracyHundredMeters = 4,
+  /**
+   * Accurate to the nearest kilometer.
+   */
+  kCLLocationAccuracyKilometer = 5,
+  /**
+   * Accurate to the nearest three kilometers.
+   */
+  kCLLocationAccuracyThreeKilometers = 6
+}
+
+/**
+ * locationModeEnum
+ */
+export enum LocationModeEnum {
+  Hight_Accuracy = 1,
+  Battery_Saving = 2,
+  Device_Sensors = 3,
+}
+
+/**
+ * locationProtocolEnum
+ */
+export enum LocationProtocolEnum {
+  HTTP = 1,
+  HTTPS = 2
+}
+
+/**
+ * ios boolean
+ */
+export declare type IosBoolean = 'YES' | 'NO';
+
+/**
+ * Positioning return result
+ */
+export interface PositionRes {
+  /**
+   * Status code
+   */
+  code: number;
+  /**
+   * latitude
+   */
+  latitude: string;
+  /**
    * longitude
-   * */
-  longitude: number;
-  /*
-   * ios Horizontal accuracy,android accuracy
-   * */
+   */
+  longitude: string;
+  /**
+   * accuracy
+   */
   accuracy: string;
-  /*
-   * Postal Code
-   * */
-  adcode: string;
-  /*
-   * Detailed address
-   * */
-  address: string;
-  /*
-   * city
-   * */
-  city: string;
-  /*
-   * city Code
-   * */
-  citycode: string;
-  /*
+  /**
+   * address
+   */
+  formattedAddress: string;
+  /**
    * country
-   * */
+   */
   country: string;
-  /*
-  * district
-  * */
-  district: string;
-  /*
-  * Address name
-  * */
-  poi: string;
-  /*
-  * province
-  * */
+  /**
+   * province
+   */
   province: string;
-  /*
-  * The state of the calling plug-in
-  * */
-  status: string;
-  /*
-  * Location type
-  * */
-  type: string;
-  /*
-  * Android Location time, ios void
-  * **/
-  time?: string;
-  /*
-  * backtime, ios void
-  * **/
-  backtime?: string;
-  /*
-  * angle
-  * */
+  /**
+   * city
+   */
+  city: string;
+  /**
+   * district
+   */
+  district: string;
+  /**
+   * citycode
+   */
+  citycode: string;
+  /**
+   * adcode
+   */
+  adcode: string;
+  /**
+   * street
+   */
+  street: string;
+  /**
+   * Street number information
+   */
+  number: string;
+  /**
+   * POI name
+   */
+  POIName: string;
+  /**
+   * AOI Name
+   */
+  AOIName: string;
+  /**
+   * altitude
+   */
+  altitude?: string;
+  /**
+   * speed
+   */
+  speed?: string;
+  /**
+   * bearing
+   */
   bearing?: string;
-  /*
-   * Number of satellites, ios void
-   * */
-  satellites?: string;
+  /**
+   * building id
+   */
+  buildingId?: string;
+  /**
+   * floor
+   */
+  floor?: string;
+  /**
+   * gps accuracy status
+   */
+  gpsAccuracyStatus?: string;
+  /**
+   * Get location result source
+   */
+  locationType?: string;
+  /**
+   * Location detail
+   */
+  locationDetail?: string;
 }
