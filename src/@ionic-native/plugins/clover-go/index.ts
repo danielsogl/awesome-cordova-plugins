@@ -2,6 +2,22 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
+export interface Response {
+  type?: string;
+  message?: string;
+  reason?: string;
+}
+export interface InitResponse extends Response {
+  merchantName?: string;
+}
+export interface SaleResponse extends Response {
+  paymentId?: string;
+  transactionType?: string;
+  entryType?: string;
+  cardFirst6?: string;
+  cardLast4?: string;
+}
+
 /**
  * @name Clover Go
  * @description
@@ -9,7 +25,7 @@ import { Observable } from 'rxjs';
  *
  * @usage
  * ```typescript
- * import { CloverGo } from '@ionic-native/clover-go';
+ * import { CloverGo } from '@ionic-native/clover-go/ngx';
  *
  *
  * constructor(private cloverGo: CloverGo) { }
@@ -37,12 +53,11 @@ import { Observable } from 'rxjs';
  */
 @Plugin({
   pluginName: 'CloverGo',
-  plugin: 'cordova-plugin-clovergo', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'clovergo', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/hotwax/cordova-plugin-clovergo', // the github repository URL for the plugin
-  install: 'ionic plugin add cordova-plugin-clovergo', // OPTIONAL install command, in case the plugin requires variables
-  installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'cordova-plugin-clovergo',
+  pluginRef: 'clovergo',
+  repo: 'https://github.com/hotwax/cordova-plugin-clovergo',
+  install: 'ionic plugin add cordova-plugin-clovergo',
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class CloverGo extends IonicNativePlugin {
@@ -50,41 +65,41 @@ export class CloverGo extends IonicNativePlugin {
   /**
    * This function initialises Clover Go SDK
    * @param configuration {object}
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @return {Promise<any>}
    */
   @Cordova()
-  init(configuration: object, success?: (res?: any) => void, error?: (err?: any) => void): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+  init(configuration: object): Promise<InitResponse> {
+    return;
   }
 
   /**
    * This function connects to available clover go device
    *
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @return {Promise<any>}
    */
   @Cordova()
-  connect(success?: (res?: any) => void, error?: (err?: any) => void): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+  connect(): Promise<Response> {
+    return;
   }
 
   /**
    * This function disconnects to available clover go device
    *
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @return {Promise<any>}
    */
   @Cordova()
-  disconnect(success?: (res?: any) => void, error?: (err?: any) => void): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+  disconnect(): Promise<Response> {
+    return;
   }
 
   /**
    * This function initiate sale for Clover Go device
    * @param saleInfo {object}
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @return {Promise<SaleResponse>}
    */
   @Cordova()
-  sale(saleInfo: object, success?: (res?: any) => void, error?: (err?: any) => void): Promise<any> {
-    return; // We add return; here to avoid any IDE / Compiler errors
+  sale(saleInfo: object): Promise<SaleResponse> {
+    return;
   }
 
 }
