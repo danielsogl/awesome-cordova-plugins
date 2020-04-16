@@ -49,6 +49,12 @@ export class Wechat extends IonicNativePlugin {
     WEBPAGE: 7;
   };
 
+  Mini: {
+    RELEASE: 0; // 正式版
+    TEST: 1, // 测试版
+    PREVIEW: 2; // 体验版
+  };
+
   @Cordova()
   isInstalled(): Promise<any> {
     return;
@@ -165,6 +171,24 @@ export class Wechat extends IonicNativePlugin {
    */
   @Cordova()
   chooseInvoiceFromWX(params: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * openMiniProgram exq:app opens wechat mini program
+   *
+   * @example
+   * <code>
+   * params: userName, path, miniprogramType  all required
+   * Wechat.openMiniProgram(params, function (data) {
+   *     alert(data.extMsg);
+   * }, function (reason) {
+   *     alert("Failed: " + reason);
+   * });
+   * </code>
+   */
+  @Cordova()
+  openMiniProgram(params: any): Promise<any> {
     return;
   }
 }
