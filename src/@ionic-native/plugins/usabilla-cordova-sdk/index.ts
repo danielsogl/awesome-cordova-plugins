@@ -1,6 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
+export interface UsabillaResult {
+  completed: boolean | string;
+}
+
+export interface UbCampaignResult {
+  completed: {
+    result: UbResult;
+    isRedirectToAppStoreEnabled?: boolean;
+  };
+}
+
+export interface UbResult {
+  rating: number;
+  abandonedPageIndex: number;
+  sent: boolean;
+}
+
+
 /**
  * @name Usabilla
  * @description
@@ -54,7 +72,7 @@ export class Usabilla extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 1
   })
-  initialize(appId: string, customVars: any): Promise<any> {
+  initialize(appId: string, customVars: any): Promise<UsabillaResult> {
     return;
   }
 
@@ -96,7 +114,7 @@ export class Usabilla extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 1
   })
-  sendEvent(eventId: string): Promise<any> {
+  sendEvent(eventId: string): Promise<UbCampaignResult> {
     return;
   }
 
@@ -110,7 +128,7 @@ export class Usabilla extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 1
   })
-  resetCampaignData(): Promise<any> {
+  resetCampaignData(): Promise<UsabillaResult> {
     return;
   }
 
@@ -124,7 +142,7 @@ export class Usabilla extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 1
   })
-  dismiss(): Promise<any> {
+  dismiss(): Promise<UsabillaResult> {
     return;
   }
 
@@ -137,7 +155,7 @@ export class Usabilla extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 1
   })
-  getDefaultDataMasks(): Promise<any> {
+  getDefaultDataMasks(): Promise<UsabillaResult> {
     return;
   }
 
@@ -152,7 +170,7 @@ export class Usabilla extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 1
   })
-  setDataMasking(masks: any, maskCharacter: string): Promise<any> {
+  setDataMasking(masks: any, maskCharacter: string): Promise<UsabillaResult> {
     return;
   }
 
