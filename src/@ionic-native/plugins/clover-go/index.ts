@@ -65,7 +65,7 @@ export class CloverGo extends IonicNativePlugin {
   /**
    * This function initialises Clover Go SDK
    * @param configuration {object}
-   * @return {Promise<any>}
+   * @return {Promise<InitResponse>}
    */
   @Cordova()
   init(configuration: object): Promise<InitResponse> {
@@ -75,7 +75,7 @@ export class CloverGo extends IonicNativePlugin {
   /**
    * This function connects to available clover go device
    *
-   * @return {Promise<any>}
+   * @return {Promise<Response>}
    */
   @Cordova()
   connect(): Promise<Response> {
@@ -85,7 +85,7 @@ export class CloverGo extends IonicNativePlugin {
   /**
    * This function disconnects to available clover go device
    *
-   * @return {Promise<any>}
+   * @return {Promise<Response>}
    */
   @Cordova()
   disconnect(): Promise<Response> {
