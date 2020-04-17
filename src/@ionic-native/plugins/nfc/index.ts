@@ -8,6 +8,7 @@ import {
 import { Observable } from 'rxjs';
 declare let window: any;
 
+// tag should be NfcTag, but keeping as NdefTag to avoid breaking existing code
 export interface NdefEvent {
   tag: NdefTag;
 }
@@ -19,6 +20,9 @@ export interface NdefRecord {
   type: number[];
 }
 
+/**
+ * @deprecated use NfcTag
+ */
 export interface NdefTag {
   canMakeReadOnly: boolean;
   id: number[];
@@ -27,6 +31,16 @@ export interface NdefTag {
   ndefMessage: NdefRecord[];
   techTypes: string[];
   type: string;
+}
+
+export interface NfcTag {
+  id?: number[];
+  canMakeReadOnly?: boolean;
+  isWritable?: boolean;
+  maxSize?: number;
+  ndefMessage?: NdefRecord[];
+  techTypes?: string[];
+  type?: string;
 }
 
 /**
@@ -50,43 +64,140 @@ export interface NdefTag {
  *
  * ...
  *
- * this.nfc.addNdefListener(() => {
- *   console.log('successfully attached ndef listener');
- * }, (err) => {
- *   console.log('error attaching ndef listener', err);
- * }).subscribe((event) => {
- *   console.log('received ndef message. the tag contains: ', event.tag);
- *   console.log('decoded tag id', this.nfc.bytesToHexString(event.tag.id));
+ * // Read NFC Tag - Android
+ * // Once the reader mode is enabled, any tags that are scanned are sent to the subscriber
+ *  let flags = this.nfc.FLAG_READER_NFC_A | this.nfc.FLAG_READER_NFC_V;
+ *  this.readerMode$ = this.nfc.readerMode(flags).subscribe(
+ *      tag => console.log(JSON.stringify(tag)),
+ *      err => console.log('Error reading tag', err)
+ *  );
  *
- *   let message = this.ndef.textRecord('Hello world');
- *   this.nfc.share([message]).then(onSuccess).catch(onError);
- * });
+ * // Read NFC Tag - iOS
+ * // On iOS, a NFC reader session takes control from your app while scanning tags then returns a tag
+ * try {
+ *     let tag = await this.nfc.scanNdef();
+ *     console.log(JSON.stringify(tag));
+ *  } catch (err) {
+ *      console.log('Error reading tag', err);
+ *  }
  *
  * ```
+ *
+ * For more details on NFC tag operations see https://github.com/chariotsolutions/phonegap-nfc
  */
 @Plugin({
   pluginName: 'NFC',
   plugin: 'phonegap-nfc',
   pluginRef: 'nfc',
   repo: 'https://github.com/chariotsolutions/phonegap-nfc',
-  platforms: ['Android', 'BlackBerry 10', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'BlackBerry 10', 'Windows', 'Windows Phone 8', 'iOS']
 })
 /**
  * @{ NFC } class methods
  */
 @Injectable()
 export class NFC extends IonicNativePlugin {
-  FLAG_READER = {
-    NFC_A: 0,
-    NFC_B: 0x2,
-    NFC_F: 0x4,
-    NFC_V: 0x8,
-    NFC_BARCODE: 0x10,
-    SKIP_NDEF_CHECK: 0x80,
-    NO_PLATFORM_SOUNDS: 0x100,
-  };
+
+  // Flags for readerMode
+  // https://developer.android.com/reference/android/nfc/NfcAdapter#FLAG_READER_NFC_A
+  @CordovaProperty()
+  FLAG_READER_NFC_A: number;
+  @CordovaProperty()
+  FLAG_READER_NFC_B: number;
+  @CordovaProperty()
+  FLAG_READER_NFC_F: number;
+  @CordovaProperty()
+  FLAG_READER_NFC_V: number;
+  @CordovaProperty()
+  FLAG_READER_NFC_BARCODE: number;
+  @CordovaProperty()
+  FLAG_READER_SKIP_NDEF_CHECK: number;
+  @CordovaProperty()
+  FLAG_READER_NO_PLATFORM_SOUNDS: number;
+
+  /**
+   * Read NFC tags sending the tag data to the success callback.
+   * See https://github.com/chariotsolutions/phonegap-nfc#nfcreadermode
+   *
+   * @param flags
+   * @returns {Observable<any>}
+   */
+  @Cordova({
+    observable: true,
+    clearFunction: 'disableReaderMode',
+    clearWithArgs: false
+  })
+  readerMode(flags: number): Observable<NfcTag> {
+    return;
+  }
+
+  /**
+   * Function scanNdef starts the NFCNDEFReaderSession allowing iOS to scan NFC tags.
+   * https://github.com/chariotsolutions/phonegap-nfc#nfcscanndef
+   */
+  @Cordova({ sync: true })
+  scanNdef(): Promise<NfcTag> {
+    return;
+  }
+
+  /**
+   * Function scanTag starts the NFCTagReaderSession allowing iOS to scan NFC tags.
+   *
+   * You probably want *scanNdef* for reading NFC tags on iOS. Only use scanTag if you need the tag UID.
+   * https://github.com/chariotsolutions/phonegap-nfc#nfcscantag
+   */
+  @Cordova({ sync: true })
+  scanTag(): Promise<NfcTag> {
+    return;
+  }
+
+  /**
+   * Function cancelScan stops the NFCReaderSession returning control to your app.
+   * https://github.com/chariotsolutions/phonegap-nfc#nfccancelscan
+   */
+  @Cordova({ sync: true })
+  cancelScan(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Connect to the tag and enable I/O operations to the tag from this TagTechnology object.
+   * https://github.com/chariotsolutions/phonegap-nfc#nfcconnect
+   *
+   * @param tech The tag technology class name e.g. android.nfc.tech.IsoDep
+   * @param timeout The transceive(byte[]) timeout in milliseconds [optional]
+   */
+  @Cordova({ sync: true })
+  connect(tech: string, timeout?: number): Promise<any> {
+    return;
+  }
+
+  /**
+   * Close TagTechnology connection.
+   * https://github.com/chariotsolutions/phonegap-nfc#nfcclose
+   */
+  @Cordova({ sync: true })
+  close(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Send raw command to the tag and receive the response.
+   * https://github.com/chariotsolutions/phonegap-nfc#nfctransceive
+   *
+   * Example code https://github.com/chariotsolutions/phonegap-nfc#tag-technology-functions-1
+   *
+   * @param data an ArrayBuffer or string of hex data e.g. '00 A4 04 00 07 D2 76 00 00 85 01 00'
+   */
+  @Cordova({ sync: true })
+  transceive(data: string | ArrayBuffer): Promise<ArrayBuffer> {
+    return;
+  }
+
   /**
    * Starts the NFCNDEFReaderSession allowing iOS to scan NFC tags.
+   * @deprecated use scanNdef or scanTag
+   *
    * @param onSuccess
    * @param onFailure
    * @returns {Observable<any>}
@@ -394,7 +505,7 @@ export class Ndef extends IonicNativePlugin {
   }
 
   @Cordova({ sync: true })
-  docodeTnf(tnf_byte: any): any {
+  decodeTnf(tnf_byte: any): any {
     return;
   }
 
@@ -452,6 +563,16 @@ export class NfcUtil extends IonicNativePlugin {
 
   @Cordova({ sync: true })
   isType(record: NdefRecord, tnf: number, type: number[] | string): boolean {
+    return;
+  }
+
+  @Cordova({ sync: true })
+  arrayBufferToHexString(buffer: ArrayBuffer): string {
+    return;
+  }
+
+  @Cordova({ sync: true })
+  hexStringToArrayBuffer(hexString: string): ArrayBuffer {
     return;
   }
 }
