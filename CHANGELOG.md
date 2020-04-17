@@ -1,3 +1,27 @@
+# [5.24.0](https://github.com/ionic-team/ionic-native/compare/v5.23.0...v5.24.0) (2020-04-17)
+
+
+### Bug Fixes
+
+* **health:** HealthQueryOptionsAggregated bucket optional ([#3370](https://github.com/ionic-team/ionic-native/issues/3370)) ([96e9b19](https://github.com/ionic-team/ionic-native/commit/96e9b19732f4bc59c7525a12083e002ee2f75616))
+* **iamport-cordova:** fix data type of card_quota([#3372](https://github.com/ionic-team/ionic-native/issues/3372)) ([47b85a8](https://github.com/ionic-team/ionic-native/commit/47b85a80a9fa8d22804f1dae78b6a15a31307f17))
+* **in-app-browser:** add missing 'no' type ([#3359](https://github.com/ionic-team/ionic-native/issues/3359)) ([83bb4a9](https://github.com/ionic-team/ionic-native/commit/83bb4a96f940d162233807f4f3312b00b7243e41))
+
+
+### Features
+
+* **clover-go:** add CloverGo plugin ([#3376](https://github.com/ionic-team/ionic-native/issues/3376)) ([be05235](https://github.com/ionic-team/ionic-native/commit/be05235a6e206e25b2d6f1af4bb9bf1ef832bbf8))
+* **firebase-messaging:** add getInstanceId ([#3364](https://github.com/ionic-team/ionic-native/issues/3364)) ([e1350a2](https://github.com/ionic-team/ionic-native/commit/e1350a2e7ea7bcab1ffd27d2f5508b46c47e31b9))
+* **gao-de-location:** update wrapper to match version 2.0.5 ([#3358](https://github.com/ionic-team/ionic-native/issues/3358)) ([bfee712](https://github.com/ionic-team/ionic-native/commit/bfee712cdcc844554524b332d2f65678b1b0992d))
+* **MobileMessaging:** add support for CustomEvents  ([#3373](https://github.com/ionic-team/ionic-native/issues/3373)) ([3af9c48](https://github.com/ionic-team/ionic-native/commit/3af9c48f05d81050c9794da09f720587ebc40f65))
+* **nfc:** update to phonegap-nfc@1.1.1 ([#3381](https://github.com/ionic-team/ionic-native/issues/3381)) ([8c25d1e](https://github.com/ionic-team/ionic-native/commit/8c25d1e311d29394eb1cf86b65fcc11aa4ea8804))
+* **purchases:** update to the latest plugin version ([#3371](https://github.com/ionic-team/ionic-native/issues/3371)) ([739fe89](https://github.com/ionic-team/ionic-native/commit/739fe8940000ddbe843ca821dbcc2c928850cf48))
+* **shop-checkout:** add plugin ([#3337](https://github.com/ionic-team/ionic-native/issues/3337)) ([83196bc](https://github.com/ionic-team/ionic-native/commit/83196bc947f18f1c3ffd7f7b6ad4431e05516527))
+* **usabilla-cordova-sdk:** add plugin ([#3362](https://github.com/ionic-team/ionic-native/issues/3362)) ([9e2f670](https://github.com/ionic-team/ionic-native/commit/9e2f670d9d43a2cb63ec400b6c8e0f45b3a6991a))
+* **wechat:** add openMiniProgram method ([#3380](https://github.com/ionic-team/ionic-native/issues/3380)) ([6458640](https://github.com/ionic-team/ionic-native/commit/6458640ba7c0af5c4a16ad3bfbdc78447719f147))
+
+
+
 # [5.23.0](https://github.com/ionic-team/ionic-native/compare/v5.22.0...v5.23.0) (2020-03-22)
 
 
