@@ -71,6 +71,48 @@ export interface IChannelOptions {
   visibility?: -1 | 0 | 1;
 }
 
+export interface FirebaseUser {
+    /**
+     * ID token
+     */
+    idToken?: string;
+  
+    /**
+     * Provider ID
+     */
+    providerId?: string;
+
+    /**
+     * UID
+     */
+    uid?: string;
+
+    /**
+     * photo url
+     */
+    photoUrl?: string;
+
+    /**
+     * phone number
+     */
+    phoneNumber?: string;
+
+    /**
+     * is email verified
+     */
+    emailIsVerified?: boolean;
+
+    /**
+     * email
+     */
+    email?: string;
+
+    /**
+     * name
+     */
+    name?: string;
+  }
+
 /**
  * @name Firebase X
  * @description
@@ -116,6 +158,15 @@ export class FirebaseX extends IonicNativePlugin {
    */
   @Cordova()
   getToken(): Promise<null | string> {
+    return;
+  }
+
+  /**
+   * Get the current FCM user.
+   * @return {Promise<FirebaseUser | string>}
+   */
+  @Cordova()
+  getCurrentUser(): Promise<FirebaseUser | string> {
     return;
   }
 
