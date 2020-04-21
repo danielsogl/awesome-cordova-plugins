@@ -76,7 +76,7 @@ export interface FirebaseUser {
      * ID token
      */
     idToken?: string;
-  
+
     /**
      * Provider ID
      */
