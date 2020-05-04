@@ -90,12 +90,41 @@ export class Appsflyer extends IonicNativePlugin {
   }
 
   /**
-   * These in-app events help you track how loyal users discover your app, and attribute them to specific campaigns/media-sources. Please take the time define the event/s you want to measure to allow you to track ROI (Return on Investment) and LTV (Lifetime Value).
-   * @param {string} eventName custom event name, is presented in your dashboard
-   * @param {AppsflyerEvent} eventValues event details
+     * These in-app events help you track how loyal users discover your app, and attribute them to specific campaigns/media-sources. Please take the time define the event/s you want to measure to allow you to track ROI (Return on Investment) and LTV (Lifetime Value).
+     * @param {string} eventName custom event name, is presented in your dashboard
+     * @param {AppsflyerEvent} eventValues event details
+     * @returns {Promise<any>}
+     */
+    @Cordova()
+    trackEvent(eventName: string, eventValues: AppsflyerEvent): Promise<any> {
+      return;
+    }
+
+    /**
+   * Set the currency code to use in the app according to the symbols here: https://www.xe.com/iso4217.php
+   * @param {string} currencyCode
    */
   @Cordova({ sync: true })
-  trackEvent(eventName: string, eventValues: AppsflyerEvent): void {}
+  setCurrencyCode(currencyCode: string): void{}
+
+  /**
+ * (iOS) Allows to pass APN Tokens that where collected by third party plugins to the AppsFlyer server. Can be used for Uninstall Tracking.
+ * @param token
+ * @returns {Promise<any>}
+ */
+@Cordova()
+registerUninstall(token: string): Promise<any>{
+  return;
+}
+
+/**
+   * Get the current SDK version
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getSdkVersion(): Promise<any> {
+    return;
+  }
 
   /**
    * Setting your own Custom ID enables you to cross-reference your own unique ID with AppsFlyer’s user ID and the other devices’ IDs. This ID is available in AppsFlyer CSV reports along with postbacks APIs for cross-referencing with you internal IDs.
