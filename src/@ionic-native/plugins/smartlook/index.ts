@@ -21,12 +21,79 @@ export class SmartlookUserIdentifier {
   }
 }
 
+export class SmartlookEventTrackingMode {
+  private eventTrackingMode: string;
+
+  static FULL_TRACKING(): SmartlookEventTrackingMode {
+    return new SmartlookEventTrackingMode('full_tracking');
+  }
+
+  static IGNORE_USER_INTERACTION(): SmartlookEventTrackingMode {
+    return new SmartlookEventTrackingMode('ignore_user_interaction');
+  }
+
+  static NO_TRACKING(): SmartlookEventTrackingMode {
+    return new SmartlookEventTrackingMode('no_tracking');
+  }
+
+  constructor(eventTrackingMode: string) {
+    this.eventTrackingMode = eventTrackingMode;
+  }
+}
+
+export class SmartlookViewState {
+  static START = 'start';
+  static STOP = 'stop';
+}
+
+export class SmartlookNavigationEvent {
+  private name: string;
+  private viewState: string;
+
+  constructor(name: string, viewState?: string) {
+    this.name = name;
+    this.viewState = this.viewState;
+  }
+}
+
 export class SmartlookCustomEvent {
   private name: string;
   private eventProperties: {};
 
   constructor(name: string, eventProperties?: {}) {
     this.name = name;
+    this.eventProperties = eventProperties;
+  }
+}
+
+export class SmartlookTimedCustomEventStart {
+  private name: string;
+  private eventProperties: {};
+
+  constructor(name: string, eventProperties?: {}) {
+    this.name = name;
+    this.eventProperties = eventProperties;
+  }
+}
+
+export class SmartlookTimedCustomEventStop {
+  private eventId: string;
+  private eventProperties: {};
+
+  constructor(eventId: string, eventProperties?: {}) {
+    this.eventId = eventId;
+    this.eventProperties = eventProperties;
+  }
+}
+
+export class SmartlookTimedCustomEventCancel {
+  private eventId: string;
+  private reason: string;
+  private eventProperties: {};
+
+  constructor(eventId: string, reason: string, eventProperties?: {}) {
+    this.eventId = eventId;
+    this.reason = reason;
     this.eventProperties = eventProperties;
   }
 }
@@ -61,6 +128,32 @@ export class SmartlookGlobalEventPropertyKey {
   }
 }
 
+export class SmartlookReferrer {
+  private referrer: string;
+  private source: string;
+
+  constructor(referrer: string, source: string) {
+    this.referrer = referrer;
+    this.source = source;
+  }
+}
+
+export class SmartlookRenderingMode {
+  private renderingMode: string;
+
+  static NO_RENDERING(): SmartlookRenderingMode {
+    return new SmartlookRenderingMode('no_rendering');
+  }
+
+  static NATIVE(): SmartlookRenderingMode {
+    return new SmartlookRenderingMode('native');
+  }
+
+  constructor(renderingMode: string) {
+    this.renderingMode = renderingMode;
+  }
+}
+
 /**
  * @name Smartlook
  * @description
@@ -85,10 +178,18 @@ export class SmartlookGlobalEventPropertyKey {
  * @classes
  * SmartlookSetupConfig
  * SmartlookUserIdentifier
+ * SmartlookEventTrackingMode
+ * SmartlookNavigationEvent
+ * SmartlookViewState
  * SmartlookCustomEvent
+ * SmartlookTimedCustomEventStart
+ * SmartlookTimedCustomEventStop
+ * SmartlookTimedCustomEventCancel
  * SmartlookGlobalEventProperties
  * SmartlookGlobalEventProperty
  * SmartlookGlobalEventPropertyKey
+ * SmartlookReferrer
+ * SmartlookRenderingMode
  */
 @Plugin({
   pluginName: 'Smartlook',
@@ -185,6 +286,68 @@ export class Smartlook extends IonicNativePlugin {
   }
 
   /**
+   * You can configure which events are being tracked by setting eventTrackingMode.
+   * @param eventTrackingMode Can be on of:
+   *                          - SmartlookEventTrackingMode.FULL_TRACKING() tracks everything.
+   *                          - SmartlookEventTrackingMode.IGNORE_USER_INTERACTION() will not track touches,
+   *                            focus, keyboard, selector events.
+   *                          - SmartlookEventTrackingMode.NO_TRACKING() not gonna track any events .
+   */
+  @Cordova({ sync: true })
+  setEventTrackingMode(eventTrackingMode: SmartlookEventTrackingMode): void {
+    return;
+  }
+
+  /**
+   * Track custom navigation event.
+   * @param navigationEvent SmartlookNavigationEvent object.
+   * @param navigationEvent.name Controler/Activity/Page name.
+   * @param navigationEvent.viewState One of SmartlookViewState.START or SmartlookViewState.STOP.
+   */
+  @Cordova({ sync: true })
+  trackNavigationEvent(navigationEvent: SmartlookNavigationEvent) {
+    return;
+  }
+
+  /**
+   * Track custom event.
+   * @param timedEvent SmartlookTimedCustomEventStart object.
+   * @param timedEvent.name (required) string used to identify event in dashboard.
+   * @param timedEvent.eventProperties (optional) timed event properties object. These properties
+   *                                    are going to be merged with properties passed in stop/cancel.
+   * @return {Promise<string>} Returns a promise with eventId string (@see stopTimedCustomEvent(), @see cancelTimedCustomEvent()).
+   */
+  @Cordova()
+  startTimedCustomEvent(timedEvent: SmartlookTimedCustomEventStart): Promise<string> {
+    return;
+  }
+
+  /**
+   * Stops timed event. Duration from according start is calculated and send with the event.
+   * @param timedEvent SmartlookTimedCustomEventStop object.
+   * @param timedEvent.eventId (required) Unique event id that is used to identify this event.
+   * @param timedEvent.eventProperties (optional) timed event properties object. These properties
+   *                                    are going to be merged with properties passed in start.
+   */
+  @Cordova({ sync: true })
+  stopTimedCustomEvent(timedEvent: SmartlookTimedCustomEventStop): void {
+    return;
+  }
+
+  /**
+   * Cancels timed event. It calculates event duration and notes that this event has failed.
+   * @param timedEvent SmartlookTimedCustomEventCancel object.
+   * @param timedEvent.eventId (required) Unique event id that is used to identify this event.
+   * @param timedEvent.reason (required) Short string description explaining why the event was canceled.
+   * @param timedEvent.eventProperties (optional) timed event properties object. These properties
+   *                                    are going to be merged with properties passed in start.
+   */
+  @Cordova({ sync: true })
+  cancelTimedCustomEvent(timedEvent: SmartlookTimedCustomEventCancel): void {
+    return;
+  }
+
+  /**
    * Track custom event.
    * @param event SmartlookCustomEvent object.
    * @param event.name (required) string used to identify event.
@@ -192,18 +355,6 @@ export class Smartlook extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   trackCustomEvent(event: SmartlookCustomEvent): void {
-    return;
-  }
-
-  /**
-   * Track custom event.
-   * @param timedEvent SmartlookCustomEvent object.
-   * @param timedEvent.name (required) string used to identify timed event.
-   * @param timedEvent.eventProperties (optional) timed event properties object. These properties will
-   *                                   be merged with properties of tracked event (with lower priority).
-   */
-  @Cordova({ sync: true })
-  startTimedCustomEvent(timedEvent: SmartlookCustomEvent): void {
     return;
   }
 
@@ -222,8 +373,8 @@ export class Smartlook extends IonicNativePlugin {
   /**
    * Check if SDK is currently recording.
    * @param property SmartlookGlobalEventProperty object.
-   * @param property.key global property key.
-   * @param property.value global property value.
+   * @param property.key (required) global property key.
+   * @param property.value (required) global property value.
    * @param property.immutable (required) If set to TRUE these properties have higher priority
    *                           than mutable ones and also they cannot be changed (only removed).
    */
@@ -235,7 +386,7 @@ export class Smartlook extends IonicNativePlugin {
   /**
    * Remove property from global event properties.
    * @param property SmartlookGlobalEventPropertyKey object.
-   * @param property.key global property key.
+   * @param property.key (required) Global property key.
    */
   @Cordova({ sync: true })
   removeGlobalEventProperty(property: SmartlookGlobalEventPropertyKey): void {
@@ -247,6 +398,37 @@ export class Smartlook extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   removeAllGlobalEventProperties(): void {
+    return;
+  }
+
+  /**
+   * Possibility to manually set referrer and source of the installation visible in dashboard
+   * and accessible via filters.
+   * @param referrer SmartlookReferrer object.
+   * @param referrer.referrer (required) Desired referrer value.
+   * @param referrer.source (required) Desired source, i.e. com.android.vending or com.amazon.venezia.
+   */
+  @Cordova({ sync: true })
+  setReferrer(referrer: SmartlookReferrer): void {
+    return;
+  }
+
+  /**
+   * Obtain sharable url to user's session leading to our dashboard.
+   * @return {Promise<string>} Returns a promise with dashboard URL string.
+   */
+  @Cordova()
+  getDashboardSessionUrl(): Promise<string> {
+    return;
+  }
+
+  /**
+   * By changing rendering mode you can adjust the way we render the application for recordings.
+   * @param options.renderingMode Mode defining the video output of recording. Curently only
+   *                              SmartlookRenderingMode.NO_RENDERING() and SmartlookRenderingMode.NATIVE() available.
+   */
+  @Cordova({ sync: true })
+  setRenderingMode(renderingMode: SmartlookRenderingMode): void {
     return;
   }
 }
