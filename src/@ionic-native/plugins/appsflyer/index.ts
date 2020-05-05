@@ -138,6 +138,13 @@ export class Appsflyer extends IonicNativePlugin {
   updateServerUninstallToken(token: string): void {}
 
   /**
+   * (iOS) Allows to pass APN Tokens that where collected by third party plugins to the AppsFlyer server. Can be used for Uninstall Tracking.
+   * @param {string} token APN Token
+   */
+  @Cordova({ sync: true })
+  registerUninstall(token: string): void {}
+
+  /**
    * Get AppsFlyer’s proprietary Device ID. The AppsFlyer Device ID is the main ID used by AppsFlyer in Reports and APIs.
    */
   @Cordova()
