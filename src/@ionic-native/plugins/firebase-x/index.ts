@@ -120,6 +120,15 @@ export class FirebaseX extends IonicNativePlugin {
   }
 
   /**
+   * Get the app instance ID (an constant ID which persists as long as the app is not uninstalled/reinstalled)
+   * @return {Promise<null | string>} Note that ID will be null if it has not been established yet
+   */
+  @Cordova()
+  getId(): Promise<null | string> {
+    return;
+  }
+
+  /**
    * Get notified when a token is refreshed.
    * @return {Observable<any>}
    */
