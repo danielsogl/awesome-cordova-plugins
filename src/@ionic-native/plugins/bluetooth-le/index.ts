@@ -569,10 +569,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * @name reconnect
    * Reconnect to a previously connected Bluetooth device
    * @param {{address: string}} params The address/identifier
-   * @returns {(Observable<{ status: DeviceInfo }>)}
+   * @returns {(Observable<DeviceInfo>)}
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  reconnect(params: { address: string }): Observable<{ status: DeviceInfo }> {
+  reconnect(params: { address: string }): Observable<DeviceInfo> {
     return;
   }
 
