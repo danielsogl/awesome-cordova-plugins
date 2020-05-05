@@ -1,3 +1,26 @@
+# [5.25.0](https://github.com/ionic-team/ionic-native/compare/v5.24.0...v5.25.0) (2020-05-05)
+
+
+### Bug Fixes
+
+* **bluetooth-le:** change reconnect return signature to Observable<DeviceInfo> fixes [#3374](https://github.com/ionic-team/ionic-native/issues/3374) ([#3394](https://github.com/ionic-team/ionic-native/issues/3394)) ([8eacf88](https://github.com/ionic-team/ionic-native/commit/8eacf8817cbd718f8286d81c4de96860b959866d))
+* **firebase-x:** return document id ([#3386](https://github.com/ionic-team/ionic-native/issues/3386)) ([61bbe39](https://github.com/ionic-team/ionic-native/commit/61bbe3980ce8f13a92ea5c9f4eaee8311ef5c23b)), closes [#3385](https://github.com/ionic-team/ionic-native/issues/3385)
+
+
+### Features
+
+* **admob-plus:** add setDevMode ([#3387](https://github.com/ionic-team/ionic-native/issues/3387)) ([e09592d](https://github.com/ionic-team/ionic-native/commit/e09592d2b94332ba1932cac125c0b8c4ce457ac7)), closes [#3384](https://github.com/ionic-team/ionic-native/issues/3384)
+* **appsflyer:** added registerUninstall function ([#3401](https://github.com/ionic-team/ionic-native/issues/3401)) ([c403330](https://github.com/ionic-team/ionic-native/commit/c403330c0a1e8b2fa7cb53b3dfe4dd66f2b29d24))
+* **background-fetch:** add taskId to finish method ([#3390](https://github.com/ionic-team/ionic-native/issues/3390)) ([eceb7ca](https://github.com/ionic-team/ionic-native/commit/eceb7ca1fcc8516ff3ede2115a5fadcfc47a0601)), closes [#3361](https://github.com/ionic-team/ionic-native/issues/3361)
+* **firebase-vision:** add plugin ([#3400](https://github.com/ionic-team/ionic-native/issues/3400)) ([a3d54a3](https://github.com/ionic-team/ionic-native/commit/a3d54a34b83d1c0515839cfbc39021dedccb3454))
+* **firebase-x:** add getId ([#3388](https://github.com/ionic-team/ionic-native/issues/3388)) ([3d46715](https://github.com/ionic-team/ionic-native/commit/3d46715b9c2427b7b5277bd13c780cb1f87df727)), closes [#3378](https://github.com/ionic-team/ionic-native/issues/3378)
+* **native-storage:** add initWithSuiteName ([#3365](https://github.com/ionic-team/ionic-native/issues/3365)) ([a391e37](https://github.com/ionic-team/ionic-native/commit/a391e37f9045769219883688023de8d14181c04f))
+* **pushape-push:** add plugin ([#3405](https://github.com/ionic-team/ionic-native/issues/3405)) ([825b2d6](https://github.com/ionic-team/ionic-native/commit/825b2d6970c40e473b3db8f774bb6a8c3acb41cb))
+* **smartlook:** new api methods ([#3402](https://github.com/ionic-team/ionic-native/issues/3402)) ([ea053cc](https://github.com/ionic-team/ionic-native/commit/ea053ccbe63308a6d9cd9fd6b84a7bfaf188f487))
+* **vibes-push-plugin:** add Vibes Push plugin wrapper ([#3368](https://github.com/ionic-team/ionic-native/issues/3368)) ([1db0ff7](https://github.com/ionic-team/ionic-native/commit/1db0ff741f17f87a583e5c84307ef63efdf82c76))
+
+
+
 # [5.24.0](https://github.com/ionic-team/ionic-native/compare/v5.23.0...v5.24.0) (2020-04-17)
 
 
