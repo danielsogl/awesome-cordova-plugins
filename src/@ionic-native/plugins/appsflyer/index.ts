@@ -107,16 +107,6 @@ export class Appsflyer extends IonicNativePlugin {
   @Cordova({ sync: true })
   setCurrencyCode(currencyCode: string): void{}
 
-  /**
- * (iOS) Allows to pass APN Tokens that where collected by third party plugins to the AppsFlyer server. Can be used for Uninstall Tracking.
- * @param token
- * @returns {Promise<any>}
- */
-@Cordova()
-registerUninstall(token: string): Promise<any>{
-  return;
-}
-
 /**
    * Get the current SDK version
    * @returns {Promise<any>}
