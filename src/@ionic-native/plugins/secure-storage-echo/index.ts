@@ -164,7 +164,7 @@ export class SecureStorageEcho extends IonicNativePlugin {
     return getPromise<SecureStorageEchoObject>((res: Function, rej: Function) => {
         const instance = new (SecureStorageEcho.getPlugin())(
           () => res(new SecureStorageEchoObject(instance)),
-          rej,
+          () => rej(new SecureStorageEchoObject(instance)),
           store,
           options
         );
