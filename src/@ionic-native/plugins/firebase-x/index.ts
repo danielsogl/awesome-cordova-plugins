@@ -658,7 +658,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {function} error - callback function which will be passed a {string} error message as an argument.
    */
   @Cordova()
-  addDocumentToFirestoreCollection(document: object, collection: string, success: () => void, error: (err: string) => void): Promise<any> {
+  addDocumentToFirestoreCollection(document: object, collection: string, success: (id: string) => void, error: (err: string) => void): Promise<any> {
     return;
   }
 
@@ -712,7 +712,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {function} error - callback function which will be passed a {string} error message as an argument.
    */
   @Cordova()
-  fetchDocumentInFirestoreCollection(documentId: string, collection: string, success: () => void, error: (err: string) => void): Promise<any> {
+  fetchDocumentInFirestoreCollection(documentId: string, collection: string, success: (doc: any) => void, error: (err: string) => void): Promise<any> {
     return;
   }
 
@@ -724,7 +724,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {function} error - callback function which will be passed a {string} error message as an argument.
    */
   @Cordova()
-  fetchFirestoreCollection(collection: string, success: () => void, error: (err: string) => void): Promise<any> {
+  fetchFirestoreCollection(collection: string, success: (docs: any) => void, error: (err: string) => void): Promise<any> {
     return;
   }
 }
