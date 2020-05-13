@@ -109,7 +109,6 @@ export class NativeView extends IonicNativePlugin {
    * @param {Function} [success] Callback when success. Use `.then()` Promise method, instead
    * @param {Function} [error] Callback callbed when an error happens. Use `.catch()` Promise method, instead
    * @returns {Promise<ResultAppInstalled>} Returns data information about the installed app
-   * @memberof NativeView
    */
   @Cordova()
   checkIfAppInstalled(
@@ -127,7 +126,6 @@ export class NativeView extends IonicNativePlugin {
    * @param {Function} [success] Callback when success. Use `.then()` Promise method, instead
    * @param {Function} [error] Callback callbed when an error happens. Use `.catch()` Promise method, instead
    * @returns {Promise<ResultView>}
-   * @memberof NativeView
    */
   @Cordova()
   showMarket(
@@ -144,11 +142,10 @@ export class NativeView extends IonicNativePlugin {
    * Get the **Android** current build variant FLAVOR
    * This is great if you change the FLAVOR in compile time
    *
-   * @param {{catchError?: boolean}} config `config.catchError` True, if you wish catch a JSON with error information
+   * @param {Boolean} [config.catchError] `config.catchError` True, if you wish catch a JSON with error information
    * @param {Function} [success] Callback when success. Use `.then()` Promise method, instead
    * @param {Function} [error] Callback callbed when an error happens. Use `.catch()` Promise method, instead
    * @returns {Promise<string>} Returns a current FLAVOR string
-   * @memberof NativeView
    */
   @Cordova({
     platforms: ['android']
