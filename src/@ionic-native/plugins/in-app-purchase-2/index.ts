@@ -874,7 +874,7 @@ export class InAppPurchase2 extends IonicNativePlugin {
   @Cordova({ sync: true })
   refresh(): void {
   }
-  
+
   /** Lightweight method like refresh but do not relogin user */
   @Cordova({ sync: true })
   update(): void {
