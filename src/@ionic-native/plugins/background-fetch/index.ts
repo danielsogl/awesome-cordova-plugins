@@ -101,7 +101,7 @@ export class BackgroundFetch extends IonicNativePlugin {
   @Cordova({
     sync: true
   })
-  finish(): void {
+  finish(taskId: string): void {
   }
 
   /**

@@ -37,6 +37,18 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 @Injectable()
 export class NativeStorage extends IonicNativePlugin {
   /**
+   * Initialises shared storage with the suite name when using app groups in iOS
+   * @param reference {string}
+   * @returns {Promise<void>}
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  initWithSuiteName(reference: string): Promise<void> {
+    return;
+  }
+
+  /**
    * Stores a value
    * @param reference {string}
    * @param value
