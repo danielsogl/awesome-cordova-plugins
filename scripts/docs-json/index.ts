@@ -1,9 +1,8 @@
 import * as fs from 'fs-extra';
 import { basename, dirname, resolve } from 'path';
 import { Application } from 'typedoc';
-import { runInNewContext } from 'vm';
-
 import TypeDoc = require('typedoc');
+import { runInNewContext } from 'vm';
 
 interface Plugin {
   packageName: string;
@@ -28,7 +27,7 @@ typedoc.options.addReader(new TypeDoc.TypeDocReader());
 
 typedoc.bootstrap({
   mode: 'modules',
-  ignoreCompilerErrors: true
+  ignoreCompilerErrors: true,
 });
 
 run(pluginsDir);
@@ -38,13 +37,13 @@ async function run(pluginsDir: string) {
   const modules = typedocData.children.filter(isModule);
   const plugins = modules.filter(hasPlugin).map(processPlugin);
   await fs.outputJson(resolve(__dirname, 'plugins.json'), plugins, {
-    spaces: 2
+    spaces: 2,
   });
 }
 
 async function generateTypedoc(root: string, outputPath = typedocTmp) {
   const pluginDirs = await fs.readdir(root);
-  const paths = pluginDirs.map(dir => resolve(root, dir, 'index.ts'));
+  const paths = pluginDirs.map((dir) => resolve(root, dir, 'index.ts'));
   typedoc.generateJson(paths, outputPath);
   return fs.readJson(outputPath);
 }
@@ -67,8 +66,8 @@ function processPlugin(pluginModule): Plugin {
     repo: decorator.repo,
     installVariables: decorator.installVariables,
     cordovaPlugin: {
-      name: decorator.plugin
-    }
+      name: decorator.plugin,
+    },
   };
 }
 
@@ -79,14 +78,14 @@ function processPlugin(pluginModule): Plugin {
  */
 const getPluginDecorator = (child: any) => {
   if (isPlugin(child)) {
-    const decorator = child.decorators.find(d => d.name === 'Plugin');
+    const decorator = child.decorators.find((d) => d.name === 'Plugin');
     return runInNewContext(`(${decorator.arguments.config})`);
   }
 };
 
 const getTag = (child: any, tagName: string): string => {
   if (hasTags(child)) {
-    const tag = child.comment.tags.find(t => t.tag === tagName);
+    const tag = child.comment.tags.find((t) => t.tag === tagName);
     if (tag) {
       return tag.text;
     }
@@ -101,7 +100,7 @@ const isPlugin = (child: any): boolean =>
   isClass(child) &&
   hasTags(child) &&
   Array.isArray(child.decorators) &&
-  child.decorators.some(d => d.name === 'Plugin');
+  child.decorators.some((d) => d.name === 'Plugin');
 
 const hasPlugin = (child: any): boolean => child.children.some(isPlugin);
 
