@@ -1,3 +1,3 @@
-module.exports = function(getLinkInfo) {
+module.exports = function (getLinkInfo) {
   getLinkInfo.useFirstAmbiguousLink = false;
 };

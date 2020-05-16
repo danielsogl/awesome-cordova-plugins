@@ -27,7 +27,8 @@ For the full Ionic Native documentation, please visit [https://ionicframework.co
 ### Basic Usage
 
 #### Ionic/Angular apps
-To use a plugin, import and add the plugin provider to your `@NgModule`, and then inject it where you wish to use it. 
+
+To use a plugin, import and add the plugin provider to your `@NgModule`, and then inject it where you wish to use it.
 Make sure to import the injectable class from the `/ngx` directory as shown in the following examples:
 
 ```typescript
@@ -98,7 +99,7 @@ npm install phonegap-plugin-barcodescanner
 ionic cap sync
 ```
 
-Import the plugin object then use its static methods: 
+Import the plugin object then use its static methods:
 
 ```typescript
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -124,59 +125,61 @@ const Tab1: React.FC = () => {
 ```
 
 #### ES2015+/TypeScript
+
 These modules can work in any ES2015+/TypeScript app (including Angular/Ionic apps). To use any plugin, import the class from the appropriate package, and use it's static methods.
+
 ```js
 import { Camera } from '@ionic-native/camera';
 
 document.addEventListener('deviceready', () => {
   Camera.getPicture()
-    .then((data) => console.log('Took a picture!',  data))
-    .catch((e) => console.log('Error occurred while taking a picture', e));
+    .then(data => console.log('Took a picture!', data))
+    .catch(e => console.log('Error occurred while taking a picture', e));
 });
 ```
 
 #### AngularJS
+
 Ionic Native generates an AngularJS module in runtime and prepares a service for each plugin. To use the plugins in your AngularJS app:
+
 1. Download the latest bundle from the [Github releases](https://github.com/ionic-team/ionic-native/releases) page.
 2. Include it in `index.html` before your app's code.
 3. Inject `ionic.native` module in your app.
 4. Inject any plugin you would like to use with a `$cordova` prefix.
 
 ```js
-angular.module('myApp', ['ionic.native'])
-  .controller('MyPageController', function($cordovaCamera) {
-    $cordovaCamera.getPicture()
-      .then(
-        function(data) {
-          console.log('Took a picture!', data);
-        },
-        function(err) {
-          console.log('Error occurred while taking a picture', err);
-        }
-      );
-  });
+angular.module('myApp', ['ionic.native']).controller('MyPageController', function ($cordovaCamera) {
+  $cordovaCamera.getPicture().then(
+    function (data) {
+      console.log('Took a picture!', data);
+    },
+    function (err) {
+      console.log('Error occurred while taking a picture', err);
+    }
+  );
+});
 ```
 
 #### Vanilla JS
+
 To use Ionic Native in any other setup:
+
 1. Download the latest bundle from the [Github releases](https://github.com/ionic-team/ionic-native/releases) page.
 2. Include it in `index.html` before your app's code.
 3. Access any plugin using the global `IonicNative` variable.
 
 ```js
-document.addEventListener('deviceready', function() {
-  IonicNative.Camera.getPicture()
-    .then(
-      function(data) {
-        console.log('Took a picture!', data);
-      },
-      function(err) {
-        console.log('Error occurred while taking a picture', err);
-      }
-    );
+document.addEventListener('deviceready', function () {
+  IonicNative.Camera.getPicture().then(
+    function (data) {
+      console.log('Took a picture!', data);
+    },
+    function (err) {
+      console.log('Error occurred while taking a picture', err);
+    }
+  );
 });
 ```
-
 
 ### Mocking and Browser Development (Ionic/Angular apps only)
 
@@ -237,8 +240,8 @@ class CameraMock extends Camera {
   entryComponents: [MyApp, HomePage],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    { provide: Camera, useClass: CameraMock }
-  ]
+    { provide: Camera, useClass: CameraMock },
+  ],
 })
 export class AppModule {}
 ```
@@ -252,7 +255,6 @@ Spent way too long diagnosing an issue only to realize a plugin wasn't firing or
 ## Plugin Missing?
 
 Let us know or submit a PR! Take a look at [the Developer Guide](https://github.com/ionic-team/ionic-native/blob/master/DEVELOPER.md) for more on how to contribute. :heart:
-
 
 # Credits
 

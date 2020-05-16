@@ -58,11 +58,10 @@ export interface DocumentViewerOptions {
   plugin: 'cordova-plugin-document-viewer',
   pluginRef: 'SitewaertsDocumentViewer',
   repo: 'https://github.com/sitewaerts/cordova-plugin-document-viewer',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class DocumentViewer extends IonicNativePlugin {
-
   /**
    * Displays the email composer pre-filled with data.
    *
@@ -85,8 +84,15 @@ export class DocumentViewer extends IonicNativePlugin {
    * @param [onError] {Function}
    */
   @Cordova({ sync: true })
-  canViewDocument(url: string, contentType: string, options: DocumentViewerOptions, onPossible?: Function, onMissingApp?: Function, onImpossible?: Function, onError?: Function): void {
-  }
+  canViewDocument(
+    url: string,
+    contentType: string,
+    options: DocumentViewerOptions,
+    onPossible?: Function,
+    onMissingApp?: Function,
+    onImpossible?: Function,
+    onError?: Function
+  ): void {}
 
   /**
    * Opens the file
@@ -100,7 +106,13 @@ export class DocumentViewer extends IonicNativePlugin {
    * @param [onError] {Function}
    */
   @Cordova({ sync: true })
-  viewDocument(url: string, contentType: string, options: DocumentViewerOptions, onShow?: Function, onClose?: Function, onMissingApp?: Function, onError?: Function): void {
-  }
-
+  viewDocument(
+    url: string,
+    contentType: string,
+    options: DocumentViewerOptions,
+    onShow?: Function,
+    onClose?: Function,
+    onMissingApp?: Function,
+    onError?: Function
+  ): void {}
 }

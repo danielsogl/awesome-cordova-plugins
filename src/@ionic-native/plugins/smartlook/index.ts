@@ -196,11 +196,10 @@ export class SmartlookRenderingMode {
   plugin: 'https://github.com/smartlook/cordova-smartlook.git',
   pluginRef: 'cordova.plugins.SmartlookPlugin',
   repo: 'https://github.com/smartlook/cordova-smartlook.git',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Smartlook extends IonicNativePlugin {
-
   /**
    * Setup and start Smartlook SDK recording.
    * @param config SmartlookSetupConfig object.

@@ -28,7 +28,7 @@ import { Observable } from 'rxjs';
   plugin: 'cordova-plugin-broadcaster',
   pluginRef: 'broadcaster',
   repo: 'https://github.com/bsorrentino/cordova-broadcaster',
-  platforms: ['Android', 'iOS', 'Browser']
+  platforms: ['Android', 'iOS', 'Browser'],
 })
 @Injectable()
 export class Broadcaster extends IonicNativePlugin {
@@ -40,7 +40,7 @@ export class Broadcaster extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'removeEventListener',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   addEventListener(eventName: string): Observable<any> {
     return;

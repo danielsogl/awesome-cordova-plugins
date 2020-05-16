@@ -5,7 +5,7 @@ export enum NotificationVisibility {
   Visible = 0,
   VisibleNotifyCompleted = 1,
   VisibilityHidden = 2,
-  VisibleNotifyOnlyCompletion = 3
+  VisibleNotifyOnlyCompletion = 3,
 }
 
 export interface DownloadHttpHeader {
@@ -109,7 +109,7 @@ export interface DownloadRequest {
   plugin: 'integrator-cordova-plugin-downloader',
   pluginRef: 'cordova.plugins.Downloader',
   repo: 'https://github.com/Luka313/integrator-cordova-plugin-downloader.git',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class Downloader extends IonicNativePlugin {
@@ -119,6 +119,6 @@ export class Downloader extends IonicNativePlugin {
    */
   @Cordova()
   download(request: DownloadRequest): Promise<string> {
-  return;
+    return;
   }
 }

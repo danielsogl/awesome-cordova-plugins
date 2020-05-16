@@ -171,7 +171,7 @@ export interface CardIOResponse {
   plugin: 'card.io.cordova.mobilesdk',
   pluginRef: 'CardIO',
   repo: 'https://github.com/card-io/card.io-Cordova-Plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class CardIO extends IonicNativePlugin {

@@ -22,11 +22,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-market',
   pluginRef: 'cordova.plugins.market',
   repo: 'https://github.com/xmartlabs/cordova-plugin-market',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Market extends IonicNativePlugin {
-
   /**
    * Opens an app in Google Play / App Store
    * @param appId {string} Package name
@@ -35,7 +34,7 @@ export class Market extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'success',
-    errorName: 'failure'
+    errorName: 'failure',
   })
   open(appId: string): Promise<any> {
     return;
@@ -50,10 +49,9 @@ export class Market extends IonicNativePlugin {
     callbackStyle: 'object',
     successName: 'success',
     errorName: 'failure',
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   search(keyword: string): Promise<any> {
     return;
   }
-
 }

@@ -32,11 +32,10 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'es.keensoft.fullscreenimage',
   pluginRef: 'FullScreenImage',
   repo: 'https://github.com/keensoft/FullScreenImage-Cordova-Plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FullScreenImage extends IonicNativePlugin {
-
   /**
    * Opens an image from a URL or path
    * @param url {string} url or image path

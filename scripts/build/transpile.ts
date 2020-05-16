@@ -13,22 +13,16 @@ export function getCompilerHost() {
 }
 
 export function getProgram(declaration = false, pluginPaths: string[] = PLUGIN_PATHS) {
-    const compilerOptions: ts.CompilerOptions = clone(COMPILER_OPTIONS);
-    compilerOptions.declaration = declaration;
-    compilerOptions.moduleResolution = ts.ModuleResolutionKind.NodeJs;
-    compilerOptions.target = ts.ScriptTarget.ES5;
-    compilerOptions.module = ts.ModuleKind.ES2015;
-    compilerOptions.inlineSourceMap = true;
-    compilerOptions.inlineSources = true;
-    compilerOptions.lib = [
-      'lib.dom.d.ts',
-      'lib.es5.d.ts',
-      'lib.es2015.d.ts',
-      'lib.es2016.d.ts',
-      'lib.es2017.d.ts'
-    ];
+  const compilerOptions: ts.CompilerOptions = clone(COMPILER_OPTIONS);
+  compilerOptions.declaration = declaration;
+  compilerOptions.moduleResolution = ts.ModuleResolutionKind.NodeJs;
+  compilerOptions.target = ts.ScriptTarget.ES5;
+  compilerOptions.module = ts.ModuleKind.ES2015;
+  compilerOptions.inlineSourceMap = true;
+  compilerOptions.inlineSources = true;
+  compilerOptions.lib = ['lib.dom.d.ts', 'lib.es5.d.ts', 'lib.es2015.d.ts', 'lib.es2016.d.ts', 'lib.es2017.d.ts'];
 
-    return ts.createProgram(pluginPaths, compilerOptions, getCompilerHost());
+  return ts.createProgram(pluginPaths, compilerOptions, getCompilerHost());
 }
 
 export function generateDeclarations(sourceFiles?: string[]) {
@@ -37,15 +31,10 @@ export function generateDeclarations(sourceFiles?: string[]) {
 
 export function transpile() {
   const emitResult = getProgram().emit(undefined, getCompilerHost().writeFile, undefined, false, {
-    before: [
-      extractInjectables(),
-      importsTransformer(),
-      pluginClassTransformer(),
-    ]
+    before: [extractInjectables(), importsTransformer(), pluginClassTransformer()],
   });
 
   emitInjectableClasses();
 
   return emitResult;
 }
-

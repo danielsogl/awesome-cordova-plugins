@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaProperty,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 declare let window: any;
 
@@ -90,14 +85,13 @@ export interface NfcTag {
   plugin: 'phonegap-nfc',
   pluginRef: 'nfc',
   repo: 'https://github.com/chariotsolutions/phonegap-nfc',
-  platforms: ['Android', 'BlackBerry 10', 'Windows', 'Windows Phone 8', 'iOS']
+  platforms: ['Android', 'BlackBerry 10', 'Windows', 'Windows Phone 8', 'iOS'],
 })
 /**
  * @{ NFC } class methods
  */
 @Injectable()
 export class NFC extends IonicNativePlugin {
-
   // Flags for readerMode
   // https://developer.android.com/reference/android/nfc/NfcAdapter#FLAG_READER_NFC_A
   @CordovaProperty()
@@ -125,7 +119,7 @@ export class NFC extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'disableReaderMode',
-    clearWithArgs: false
+    clearWithArgs: false,
   })
   readerMode(flags: number): Observable<NfcTag> {
     return;
@@ -207,7 +201,7 @@ export class NFC extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 3,
     clearFunction: 'invalidateSession',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   beginSession(onSuccess?: Function, onFailure?: Function): Observable<any> {
     return;
@@ -224,12 +218,9 @@ export class NFC extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 3,
     clearFunction: 'removeNdefListener',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
-  addNdefListener(
-    onSuccess?: Function,
-    onFailure?: Function
-  ): Observable<NdefEvent> {
+  addNdefListener(onSuccess?: Function, onFailure?: Function): Observable<NdefEvent> {
     return;
   }
 
@@ -244,12 +235,9 @@ export class NFC extends IonicNativePlugin {
     successIndex: 0,
     errorIndex: 3,
     clearFunction: 'removeTagDiscoveredListener',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
-  addTagDiscoveredListener(
-    onSuccess?: Function,
-    onFailure?: Function
-  ): Observable<any> {
+  addTagDiscoveredListener(onSuccess?: Function, onFailure?: Function): Observable<any> {
     return;
   }
 
@@ -265,13 +253,9 @@ export class NFC extends IonicNativePlugin {
     successIndex: 1,
     errorIndex: 4,
     clearFunction: 'removeMimeTypeListener',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
-  addMimeTypeListener(
-    mimeType: string,
-    onSuccess?: Function,
-    onFailure?: Function
-  ): Observable<any> {
+  addMimeTypeListener(mimeType: string, onSuccess?: Function, onFailure?: Function): Observable<any> {
     return;
   }
 
@@ -284,12 +268,9 @@ export class NFC extends IonicNativePlugin {
   @Cordova({
     observable: true,
     successIndex: 0,
-    errorIndex: 3
+    errorIndex: 3,
   })
-  addNdefFormatableListener(
-    onSuccess?: Function,
-    onFailure?: Function
-  ): Observable<any> {
+  addNdefFormatableListener(onSuccess?: Function, onFailure?: Function): Observable<any> {
     return;
   }
 
@@ -413,7 +394,7 @@ export class NFC extends IonicNativePlugin {
 @Plugin({
   pluginName: 'NFC',
   plugin: 'phonegap-nfc',
-  pluginRef: 'ndef'
+  pluginRef: 'ndef',
 })
 /**
  * @description
@@ -442,21 +423,12 @@ export class Ndef extends IonicNativePlugin {
   TNF_RESERVED: number;
 
   @Cordova({ sync: true })
-  record(
-    tnf: number,
-    type: number[] | string,
-    id: number[] | string,
-    payload: number[] | string
-  ): NdefRecord {
+  record(tnf: number, type: number[] | string, id: number[] | string, payload: number[] | string): NdefRecord {
     return;
   }
 
   @Cordova({ sync: true })
-  textRecord(
-    text: string,
-    languageCode?: string,
-    id?: number[] | string
-  ): NdefRecord {
+  textRecord(text: string, languageCode?: string, id?: number[] | string): NdefRecord {
     return;
   }
 
@@ -466,11 +438,7 @@ export class Ndef extends IonicNativePlugin {
   }
 
   @Cordova({ sync: true })
-  absoluteUriRecord(
-    uri: string,
-    payload: number[] | string,
-    id?: number[] | string
-  ): NdefRecord {
+  absoluteUriRecord(uri: string, payload: number[] | string, id?: number[] | string): NdefRecord {
     return;
   }
 
@@ -532,7 +500,7 @@ export class Ndef extends IonicNativePlugin {
 @Plugin({
   pluginName: 'NFC',
   plugin: 'phonegap-nfc',
-  pluginRef: 'util'
+  pluginRef: 'util',
 })
 @Injectable()
 export class NfcUtil extends IonicNativePlugin {

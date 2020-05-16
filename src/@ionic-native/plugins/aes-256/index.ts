@@ -52,7 +52,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   pluginRef: 'cordova.plugins.AES256',
   repo: 'https://github.com/Ideas2IT/cordova-aes256',
   platforms: ['Android', 'iOS'],
-  install: 'ionic cordova plugin add cordova-plugin-aes256-encryption'
+  install: 'ionic cordova plugin add cordova-plugin-aes256-encryption',
 })
 @Injectable()
 export class AES256 extends IonicNativePlugin {
@@ -101,5 +101,4 @@ export class AES256 extends IonicNativePlugin {
   generateSecureIV(password: string): Promise<string> {
     return;
   }
-
 }

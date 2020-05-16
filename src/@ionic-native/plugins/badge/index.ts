@@ -26,7 +26,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-badge',
   pluginRef: 'cordova.plugins.notification.badge',
   repo: 'https://github.com/katzer/cordova-plugin-badge',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
 export class Badge extends IonicNativePlugin {

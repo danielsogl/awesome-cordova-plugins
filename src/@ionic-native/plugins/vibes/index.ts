@@ -50,16 +50,13 @@ export interface PersonResponse {
   plugin: 'vibes-cordova',
   pluginRef: 'Vibes',
   repo: 'https://github.com/vibes/vibes-cordova.git',
-  install: 'ionic cordova plugin add vibes-cordova --variable VIBES_APP_ID=MY_APP_ID --variable VIBES_API_URL=MY_ENVIRONMENT_URL',
-  installVariables: [
-    'VIBES_APP_ID',
-    'VIBES_API_URL'
-  ],
-  platforms: ['Android', 'iOS']
+  install:
+    'ionic cordova plugin add vibes-cordova --variable VIBES_APP_ID=MY_APP_ID --variable VIBES_API_URL=MY_ENVIRONMENT_URL',
+  installVariables: ['VIBES_APP_ID', 'VIBES_API_URL'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Vibes extends IonicNativePlugin {
-
   /**
    * Register device
    * @return {Promise<DeviceResponse>}
@@ -128,7 +125,7 @@ export class Vibes extends IonicNativePlugin {
    * @return {Observable<void>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   onNotificationOpened(): Observable<void> {
     return;

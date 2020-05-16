@@ -4,7 +4,9 @@ import { getMethodsForDecorator } from '../helpers';
 function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ngcBuild?: boolean) {
   // remove angular imports
   if (!ngcBuild) {
-    file.statements = (file.statements as any).filter((s: any) => !(s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@angular/core'));
+    file.statements = (file.statements as any).filter(
+      (s: any) => !(s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@angular/core')
+    );
   }
 
   // find the @ionic-native/core import statement
@@ -19,9 +21,9 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
 
   const decoratorRegex: RegExp = /@([a-zA-Z]+)\(/g;
 
-  const ignored: string [] = ['Plugin', 'Component', 'Injectable'];
+  const ignored: string[] = ['Plugin', 'Component', 'Injectable'];
 
-  const keep: string [] = ['getPromise', 'checkAvailability'];
+  const keep: string[] = ['getPromise', 'checkAvailability'];
 
   let m;
 
@@ -35,17 +37,17 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
   if (decorators.length) {
     let methods = [];
 
-    decorators.forEach(d => methods = getMethodsForDecorator(d).concat(methods));
+    decorators.forEach(d => (methods = getMethodsForDecorator(d).concat(methods)));
 
     const methodElements = methods.map(m => ts.createIdentifier(m));
-    const methodNames = methodElements.map((el) => el.escapedText);
+    const methodNames = methodElements.map(el => el.escapedText);
 
     importStatement.importClause.namedBindings.elements = [
       ts.createIdentifier('IonicNativePlugin'),
       ...methodElements,
       ...importStatement.importClause.namedBindings.elements.filter(
         el => keep.indexOf(el.name.text) !== -1 && methodNames.indexOf(el.name.text) === -1
-      )
+      ),
     ];
 
     if (ngcBuild) {
@@ -53,7 +55,7 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
         binding => {
           if (binding.escapedText) {
             binding.name = {
-              text: binding.escapedText
+              text: binding.escapedText,
             };
           }
           return binding;

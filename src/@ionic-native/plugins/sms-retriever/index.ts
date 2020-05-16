@@ -32,23 +32,23 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/hanatharesh2712/ionic-native-sms-retriever-plugin-master',
   install: 'ionic cordova plugin add cordova-plugin-sms-retriever-manager --variable PLAY_SERVICES_VERSION="15.0.1"',
   installVariables: ['PLAY_SERVICES_VERSION'],
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class SmsRetriever extends IonicNativePlugin {
- /**
-  * This function start wathching message arrive event and retrive message text.
-  * @return {Promise<string>} Returns a promise that resolves when retrives SMS text or TIMEOUT after 5 min.
-  */
+  /**
+   * This function start wathching message arrive event and retrive message text.
+   * @return {Promise<string>} Returns a promise that resolves when retrives SMS text or TIMEOUT after 5 min.
+   */
   @Cordova()
   startWatching(): Promise<string> {
     return;
   }
 
- /**
-  * This function is to get hash string of APP.
-  * @return {Promise<string>} Returns a promise that resolves when successfully generate hash of APP.
-  */
+  /**
+   * This function is to get hash string of APP.
+   * @return {Promise<string>} Returns a promise that resolves when successfully generate hash of APP.
+   */
   @Cordova()
   getAppHash(): Promise<string> {
     return;

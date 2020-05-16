@@ -44,10 +44,9 @@ class NestedObject {
       });
     }
     return getPromise<T>((res, rej) => {
-      userPreferences[functionName].apply(userPreferences, [ ...args, res]);
+      userPreferences[functionName].apply(userPreferences, [...args, res]);
     });
   }
-
 }
 
 export class UserPreferencesMethods extends NestedObject {
@@ -212,13 +211,13 @@ export class UserPreferencesMethods extends NestedObject {
   plugin: 'wonderpush-cordova-sdk',
   pluginRef: 'WonderPush',
   repo: 'https://github.com/wonderpush/wonderpush-cordova-sdk',
-  install: 'ionic cordova plugin add wonderpush-cordova-sdk --variable CLIENT_ID=YOUR_CLIENT_ID --variable CLIENT_SECRET=YOUR_CLIENT_SECRET ',
+  install:
+    'ionic cordova plugin add wonderpush-cordova-sdk --variable CLIENT_ID=YOUR_CLIENT_ID --variable CLIENT_SECRET=YOUR_CLIENT_SECRET ',
   installVariables: ['CLIENT_ID', 'CLIENT_SECRET'],
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class WonderPush extends IonicNativePlugin {
-
   /**
    * Sets the user id, used to identify a single identity across multiple devices,
    * and to correctly identify multiple users on a single device.
@@ -285,7 +284,7 @@ export class WonderPush extends IonicNativePlugin {
    * @returns {Promise<string | null>} A promise with the user ID or null
    */
   @Cordova()
-  getUserId(): Promise<string | null > {
+  getUserId(): Promise<string | null> {
     return;
   }
 
@@ -487,7 +486,7 @@ export class WonderPush extends IonicNativePlugin {
    * @returns {Promise<{[p: string]: any}>}
    */
   @Cordova()
-  getProperties(): Promise<{[key: string]: any}> {
+  getProperties(): Promise<{ [key: string]: any }> {
     return;
   }
 
@@ -500,7 +499,7 @@ export class WonderPush extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  putProperties(properties: {[key: string]: any}): Promise<any> {
+  putProperties(properties: { [key: string]: any }): Promise<any> {
     return;
   }
 

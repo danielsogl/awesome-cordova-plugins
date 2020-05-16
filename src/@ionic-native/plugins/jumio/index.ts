@@ -73,22 +73,24 @@ export class JumioNetverifyConfig {
   watchlistSearchProfile: string;
 
   constructor(config?: {
-    enableVerification?: boolean,
-    callbackUrl?: string,
-    enableIdentityVerification?: boolean,
-    preselectedCountry?: string,
-    customerInternalReference?: string,
-    reportingCriteria?: string,
-    userReference?: string,
-    sendDebugInfoToJumio?: boolean,
-    dataExtractionOnMobileOnly?: boolean,
-    cameraPosition?: string,
-    preselectedDocumentVariant?: string,
-    documentTypes?: string[],
-    enableWatchlistScreening?: string,
-    watchlistSearchProfile?: string
+    enableVerification?: boolean;
+    callbackUrl?: string;
+    enableIdentityVerification?: boolean;
+    preselectedCountry?: string;
+    customerInternalReference?: string;
+    reportingCriteria?: string;
+    userReference?: string;
+    sendDebugInfoToJumio?: boolean;
+    dataExtractionOnMobileOnly?: boolean;
+    cameraPosition?: string;
+    preselectedDocumentVariant?: string;
+    documentTypes?: string[];
+    enableWatchlistScreening?: string;
+    watchlistSearchProfile?: string;
   }) {
-    if (config) { Object.assign(this, config); }
+    if (config) {
+      Object.assign(this, config);
+    }
   }
 }
 
@@ -144,18 +146,20 @@ export class JumioDocVerificationConfig {
   enableExtraction: boolean;
 
   constructor(config?: {
-    type: string,
-    userReference: string,
-    country: string,
-    customerInternalReference: string,
-    reportingCriteria?: string,
-    callbackUrl?: string,
-    documentName?: string,
-    customDocumentCode?: string,
-    cameraPosition?: string,
-    enableExtraction?: boolean
+    type: string;
+    userReference: string;
+    country: string;
+    customerInternalReference: string;
+    reportingCriteria?: string;
+    callbackUrl?: string;
+    documentName?: string;
+    customDocumentCode?: string;
+    cameraPosition?: string;
+    enableExtraction?: boolean;
   }) {
-    if (config) { Object.assign(this, config); }
+    if (config) {
+      Object.assign(this, config);
+    }
   }
 }
 
@@ -178,12 +182,14 @@ class JumioAuthenticationConfig {
   callbackUrl: string;
 
   constructor(config?: {
-    enrollmentTransactionReference: string,
-    authenticationTransactionReference: string,
-    userReference: string,
-    callbackUrl?: string
+    enrollmentTransactionReference: string;
+    authenticationTransactionReference: string;
+    userReference: string;
+    callbackUrl?: string;
   }) {
-    if (config) { Object.assign(this, config); }
+    if (config) {
+      Object.assign(this, config);
+    }
   }
 }
 
@@ -230,7 +236,9 @@ class BAMConfig {
     cameraPosition?: string;
     cardTypes?: string[];
   }) {
-    if (config) { Object.assign(this, config); }
+    if (config) {
+      Object.assign(this, config);
+    }
   }
 }
 
@@ -441,11 +449,10 @@ export class BAMCardInformation {
   pluginRef: 'Jumio',
   repo: 'https://github.com/Jumio/mobile-cordova',
   install: 'npm install git://github.com/Jumio/mobile-cordova.git',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Jumio extends IonicNativePlugin {
-
   /**
    * Initialize Netverify
    * @param apiToken Specifies the API token of the Jumio merchant account
@@ -455,7 +462,12 @@ export class Jumio extends IonicNativePlugin {
    * @return Returns a promise that resolves when something happens
    */
   @Cordova()
-  initNetverify(apiToken: string, apiSecret: string, dataCenter: string, netverifyConfig: JumioNetverifyConfig): Promise<any> {
+  initNetverify(
+    apiToken: string,
+    apiSecret: string,
+    dataCenter: string,
+    netverifyConfig: JumioNetverifyConfig
+  ): Promise<any> {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
@@ -477,8 +489,12 @@ export class Jumio extends IonicNativePlugin {
    * @return Returns a promise that resolves when something happens
    */
   @Cordova()
-  initDocumentVerification(apiToken: string, apiSecret: string, dataCenter: string, docVerificationConfig: JumioDocVerificationConfig):
-    Promise<any> {
+  initDocumentVerification(
+    apiToken: string,
+    apiSecret: string,
+    dataCenter: string,
+    docVerificationConfig: JumioDocVerificationConfig
+  ): Promise<any> {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
@@ -500,8 +516,12 @@ export class Jumio extends IonicNativePlugin {
    * @return Returns a promise that resolves when something happens
    */
   @Cordova()
-  initAuthentication(apiToken: string, apiSecret: string, dataCenter: string, authenticationConfig: JumioAuthenticationConfig):
-    Promise<any> {
+  initAuthentication(
+    apiToken: string,
+    apiSecret: string,
+    dataCenter: string,
+    authenticationConfig: JumioAuthenticationConfig
+  ): Promise<any> {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
@@ -523,8 +543,7 @@ export class Jumio extends IonicNativePlugin {
    * @return Returns a promise that resolves when something happens
    */
   @Cordova()
-  initBAM(apiToken: string, apiSecret: string, dataCenter: string, bamConfig: BAMConfig):
-    Promise<any> {
+  initBAM(apiToken: string, apiSecret: string, dataCenter: string, bamConfig: BAMConfig): Promise<any> {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 

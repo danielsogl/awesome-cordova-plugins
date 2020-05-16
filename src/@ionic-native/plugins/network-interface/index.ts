@@ -36,7 +36,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class NetworkInterface extends IonicNativePlugin {
-
   /**
    * Gets the WiFi IP address
    * @return {Promise<any>} Returns a Promise that resolves with the IP address information.
@@ -64,5 +63,4 @@ export class NetworkInterface extends IonicNativePlugin {
   getHttpProxyInformation(url: string): Promise<any> {
     return;
   }
-
 }

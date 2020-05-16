@@ -34,7 +34,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/jing-zhou/cordova-plugin-alipay',
   install: 'ionic cordova plugin add cordova-plugin-gubnoi-alipay --variable APP_ID=your_app_id',
   installVariables: ['APP_ID'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Alipay extends IonicNativePlugin {

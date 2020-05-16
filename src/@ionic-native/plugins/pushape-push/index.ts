@@ -237,7 +237,6 @@ export interface Channel {
 
 export type PushEvent = 'registration' | 'notification' | 'error';
 
-
 /** Extended Pushape types */
 
 export interface PushapePushOptions {
@@ -302,7 +301,6 @@ export interface PushapeRegistrationEventResponse extends RegistrationEventRespo
 })
 @Injectable()
 export class PushapePush extends IonicNativePlugin {
-
   /**
    * Init push notifications
    * @param options {PushapeOptions}
@@ -326,7 +324,7 @@ export class PushapePush extends IonicNativePlugin {
    * @param channel {Channel}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   createChannel(channel?: Channel): Promise<any> {
     return;
@@ -337,7 +335,7 @@ export class PushapePush extends IonicNativePlugin {
    * @param id {string}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   deleteChannel(id?: string): Promise<any> {
     return;
@@ -351,7 +349,6 @@ export class PushapePush extends IonicNativePlugin {
   listChannels(): Promise<Channel[]> {
     return;
   }
-
 }
 
 /**
@@ -360,15 +357,13 @@ export class PushapePush extends IonicNativePlugin {
 @Plugin({
   pluginName: 'PushapePush',
   plugin: 'pushape-cordova-push',
-  pluginRef: 'PushNotification'
+  pluginRef: 'PushNotification',
 })
 export class PushObject {
   private _objectInstance: any;
 
   constructor(options: PushapeOptions) {
-    if (
-      checkAvailability('PushNotification', 'init', 'PushNotification') === true
-    ) {
+    if (checkAvailability('PushNotification', 'init', 'PushNotification') === true) {
       if (typeof window !== 'undefined') {
         this._objectInstance = window.PushNotification.init(options);
       }
@@ -429,7 +424,7 @@ export class PushObject {
    * @param [id]
    */
   @CordovaInstance({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   finish(id?: string): Promise<any> {
     return;

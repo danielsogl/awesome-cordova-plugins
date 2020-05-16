@@ -72,46 +72,46 @@ export interface IChannelOptions {
 }
 
 export interface FirebaseUser {
-    /**
-     * ID token
-     */
-    idToken?: string;
+  /**
+   * ID token
+   */
+  idToken?: string;
 
-    /**
-     * Provider ID
-     */
-    providerId?: string;
+  /**
+   * Provider ID
+   */
+  providerId?: string;
 
-    /**
-     * UID
-     */
-    uid?: string;
+  /**
+   * UID
+   */
+  uid?: string;
 
-    /**
-     * photo url
-     */
-    photoUrl?: string;
+  /**
+   * photo url
+   */
+  photoUrl?: string;
 
-    /**
-     * phone number
-     */
-    phoneNumber?: string;
+  /**
+   * phone number
+   */
+  phoneNumber?: string;
 
-    /**
-     * is email verified
-     */
-    emailIsVerified?: boolean;
+  /**
+   * is email verified
+   */
+  emailIsVerified?: boolean;
 
-    /**
-     * email
-     */
-    email?: string;
+  /**
+   * email
+   */
+  email?: string;
 
-    /**
-     * name
-     */
-    name?: string;
-  }
+  /**
+   * name
+   */
+  name?: string;
+}
 
 /**
  * @name Firebase X
@@ -148,7 +148,7 @@ export interface FirebaseUser {
   plugin: 'cordova-plugin-firebasex',
   pluginRef: 'FirebasePlugin',
   repo: 'https://github.com/dpa99c/cordova-plugin-firebasex',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseX extends IonicNativePlugin {
@@ -184,7 +184,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   onTokenRefresh(): Observable<any> {
     return;
@@ -207,7 +207,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   onApnsTokenReceived(): Observable<any> {
     return;
@@ -220,7 +220,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   onMessageReceived(): Observable<any> {
     return;
@@ -231,7 +231,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   grantPermission(): Promise<any> {
     return;
@@ -278,7 +278,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   clearAllNotifications(): Promise<any> {
     return;
@@ -502,7 +502,12 @@ export class FirebaseX extends IonicNativePlugin {
    *   code {string} - verification code. Will only be present if instantVerification is true. Always undefined on iOS.
    */
   @Cordova()
-  verifyPhoneNumber(success: (value: string | object) => void, error: (err: string) => void, phoneNumber: string, timeoutDuration = 0): Promise<any> {
+  verifyPhoneNumber(
+    success: (value: string | object) => void,
+    error: (err: string) => void,
+    phoneNumber: string,
+    timeoutDuration = 0
+  ): Promise<any> {
     return;
   }
 
@@ -658,7 +663,12 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {function} error - callback function which will be passed a {string} error message as an argument.
    */
   @Cordova()
-  addDocumentToFirestoreCollection(document: object, collection: string, success: (id: string) => void, error: (err: string) => void): Promise<any> {
+  addDocumentToFirestoreCollection(
+    document: object,
+    collection: string,
+    success: (id: string) => void,
+    error: (err: string) => void
+  ): Promise<any> {
     return;
   }
 
@@ -671,7 +681,13 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {function} error - callback function which will be passed a {string} error message as an argument.
    */
   @Cordova()
-  setDocumentInFirestoreCollection(documentId: string, document: object, collection: string, success: () => void, error: (err: string) => void): Promise<any> {
+  setDocumentInFirestoreCollection(
+    documentId: string,
+    document: object,
+    collection: string,
+    success: () => void,
+    error: (err: string) => void
+  ): Promise<any> {
     return;
   }
 
@@ -686,7 +702,13 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {function} error - callback function which will be passed a {string} error message as an argument.
    */
   @Cordova()
-  updateDocumentInFirestoreCollection(documentId: string, document: object, collection: string, success: () => void, error: (err: string) => void): Promise<any> {
+  updateDocumentInFirestoreCollection(
+    documentId: string,
+    document: object,
+    collection: string,
+    success: () => void,
+    error: (err: string) => void
+  ): Promise<any> {
     return;
   }
 
@@ -699,7 +721,12 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {function} error -  callback function which will be passed a {string} error message as an argument.
    */
   @Cordova()
-  deleteDocumentFromFirestoreCollection(documentId: string, collection: string, success: () => void, error: (err: string) => void): Promise<any> {
+  deleteDocumentFromFirestoreCollection(
+    documentId: string,
+    collection: string,
+    success: () => void,
+    error: (err: string) => void
+  ): Promise<any> {
     return;
   }
 
@@ -712,7 +739,12 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {function} error - callback function which will be passed a {string} error message as an argument.
    */
   @Cordova()
-  fetchDocumentInFirestoreCollection(documentId: string, collection: string, success: (doc: any) => void, error: (err: string) => void): Promise<any> {
+  fetchDocumentInFirestoreCollection(
+    documentId: string,
+    collection: string,
+    success: (doc: any) => void,
+    error: (err: string) => void
+  ): Promise<any> {
     return;
   }
 
@@ -724,7 +756,11 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {function} error - callback function which will be passed a {string} error message as an argument.
    */
   @Cordova()
-  fetchFirestoreCollection(collection: string, success: (docs: any) => void, error: (err: string) => void): Promise<any> {
+  fetchFirestoreCollection(
+    collection: string,
+    success: (docs: any) => void,
+    error: (err: string) => void
+  ): Promise<any> {
     return;
   }
 }

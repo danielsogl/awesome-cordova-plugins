@@ -45,7 +45,7 @@ export interface DeviceFeedbackStatus {
   plugin: 'cordova-plugin-velda-devicefeedback',
   pluginRef: 'plugins.deviceFeedback',
   repo: 'https://github.com/VVelda/device-feedback',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class DeviceFeedback extends IonicNativePlugin {

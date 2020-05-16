@@ -29,11 +29,10 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-native-ringtones',
   pluginRef: 'cordova.plugins.NativeRingtones',
   repo: 'https://github.com/TongZhangzt/cordova-plugin-native-ringtones',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class NativeRingtones extends IonicNativePlugin {
-
   /**
    * Get the ringtone list of the device
    * @return {Promise<any>} Returns a promise that resolves when ringtones found successfully

@@ -38,7 +38,7 @@ export interface Attributes {
   install:
     'ionic cordova plugin add cordova-fabric-plugin --variable FABRIC_API_KEY=XXX --variable FABRIC_API_SECRET=xxx',
   installVariables: ['FABRIC_API_KEY', 'FABRIC_API_SECRET'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Crashlytics extends IonicNativePlugin {
@@ -161,7 +161,7 @@ export class Crashlytics extends IonicNativePlugin {
   install:
     'ionic cordova plugin add cordova-fabric-plugin --variable FABRIC_API_KEY=XXX --variable FABRIC_API_SECRET=xxx',
   installVariables: ['FABRIC_API_KEY', 'FABRIC_API_SECRET'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Answers extends IonicNativePlugin {
@@ -232,12 +232,7 @@ export class Answers extends IonicNativePlugin {
    * @param attributes Any additional user-defined attributes to be logged.
    */
   @Cordova({ sync: true })
-  sendStartCheckout(
-    totalPrice?: number,
-    currency?: string,
-    itemCount?: number,
-    attributes?: Attributes
-  ): void {
+  sendStartCheckout(totalPrice?: number, currency?: string, itemCount?: number, attributes?: Attributes): void {
     return;
   }
 
@@ -314,11 +309,7 @@ export class Answers extends IonicNativePlugin {
    * @param attributes Any additional user-defined attributes to be logged.
    */
   @Cordova({ sync: true })
-  sendSignUp(
-    method?: string,
-    success?: boolean,
-    attributes?: Attributes
-  ): void {
+  sendSignUp(method?: string, success?: boolean, attributes?: Attributes): void {
     return;
   }
 
@@ -381,12 +372,7 @@ export class Answers extends IonicNativePlugin {
    * @param attributes Any additional user-defined attributes to be logged.
    */
   @Cordova({ sync: true })
-  sendLevelEnd(
-    levelName?: string,
-    score?: number,
-    success?: boolean,
-    attributes?: Attributes
-  ): void {
+  sendLevelEnd(levelName?: string, score?: number, success?: boolean, attributes?: Attributes): void {
     return;
   }
 
@@ -396,12 +382,7 @@ export class Answers extends IonicNativePlugin {
    * https://docs.fabric.io/android/answers/answers-events.html#content-view
    */
   @Cordova({ sync: true })
-  sendContentView(
-    name: string,
-    type?: string,
-    id?: string,
-    attributes?: Attributes
-  ): void {
+  sendContentView(name: string, type?: string, id?: string, attributes?: Attributes): void {
     return;
   }
 

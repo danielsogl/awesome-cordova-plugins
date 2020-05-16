@@ -143,20 +143,20 @@ export interface VideoInfo {
   plugin: 'cordova-plugin-video-editor',
   pluginRef: 'VideoEditor',
   repo: 'https://github.com/jbavari/cordova-plugin-video-editor',
-  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
 export class VideoEditor extends IonicNativePlugin {
   OptimizeForNetworkUse = {
     NO: 0,
-    YES: 1
+    YES: 1,
   };
 
   OutputFileType = {
     M4V: 0,
     MPEG4: 1,
     M4A: 2,
-    QUICK_TIME: 3
+    QUICK_TIME: 3,
   };
 
   /**
@@ -165,7 +165,7 @@ export class VideoEditor extends IonicNativePlugin {
    * @returns {Promise<string>} Returns a promise that resolves to the path of the transcoded video
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   transcodeVideo(options: TranscodeOptions): Promise<string> {
     return;
@@ -178,7 +178,7 @@ export class VideoEditor extends IonicNativePlugin {
    */
   @Cordova({
     callbackOrder: 'reverse',
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   trim(options: TrimOptions): Promise<string> {
     return;
@@ -190,7 +190,7 @@ export class VideoEditor extends IonicNativePlugin {
    * @returns {Promise<string>} Returns a promise that resolves to the path to the jpeg image on the device
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   createThumbnail(options: CreateThumbnailOptions): Promise<string> {
     return;
@@ -202,7 +202,7 @@ export class VideoEditor extends IonicNativePlugin {
    * @returns {Promise<VideoInfo>} Returns a promise that resolves to an object containing info on the video
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   getVideoInfo(options: GetVideoInfoOptions): Promise<VideoInfo> {
     return;

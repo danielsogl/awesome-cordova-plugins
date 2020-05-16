@@ -178,7 +178,7 @@ export interface AndroidExoPlayerControllerConfig {
   plugin: 'cordova-plugin-exoplayer',
   pluginRef: 'ExoPlayer',
   repo: 'https://github.com/frontyard/cordova-plugin-exoplayer',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class AndroidExoplayer extends IonicNativePlugin {
@@ -192,7 +192,7 @@ export class AndroidExoplayer extends IonicNativePlugin {
     clearFunction: 'close',
     clearWithArgs: false,
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   show(parameters: AndroidExoPlayerParams): Observable<AndroidExoplayerState> {
     return;
@@ -205,10 +205,7 @@ export class AndroidExoplayer extends IonicNativePlugin {
    * @return {Promise<void>}
    */
   @Cordova()
-  setStream(
-    url: string,
-    controller: AndroidExoPlayerControllerConfig
-  ): Promise<void> {
+  setStream(url: string, controller: AndroidExoPlayerControllerConfig): Promise<void> {
     return;
   }
 

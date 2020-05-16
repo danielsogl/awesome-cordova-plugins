@@ -11,11 +11,12 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-quikkly',
   pluginRef: 'cordova.plugins.quikkly',
   repo: 'https://github.com/quikkly/cordova-plugin-quikkly.git',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class QuikklyPlugin extends IonicNativePlugin {
   @Cordova()
-  openScanner(): Promise<string[]> { return ; }
+  openScanner(): Promise<string[]> {
+    return;
+  }
 }
-

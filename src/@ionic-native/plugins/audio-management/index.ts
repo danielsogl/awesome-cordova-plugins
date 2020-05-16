@@ -45,7 +45,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'clovelced-plugin-audiomanagement',
   pluginRef: 'AudioManagement',
   repo: 'https://github.com/clovelCed/cordova-plugin-audiomanagement',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class AudioManagement extends IonicNativePlugin {
@@ -57,7 +57,7 @@ export class AudioManagement extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   setAudioMode(mode: AudioManagement.AudioMode): Promise<void> {
     return;
@@ -83,7 +83,7 @@ export class AudioManagement extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   setVolume(type: AudioManagement.VolumeType, volume: number): Promise<void> {
     return;
@@ -98,7 +98,7 @@ export class AudioManagement extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   getVolume(type: AudioManagement.VolumeType): Promise<{ volume: number }> {
     return;
@@ -113,7 +113,7 @@ export class AudioManagement extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   getMaxVolume(type: AudioManagement.VolumeType): Promise<{ maxVolume: number }> {
     return;
@@ -124,14 +124,14 @@ export namespace AudioManagement {
   export enum AudioMode {
     SILENT = 0,
     VIBRATE,
-    NORMAL
+    NORMAL,
   }
 
   export enum VolumeType {
     RING = 0,
     MUSIC,
     NOTIFICATION,
-    SYSTEM
+    SYSTEM,
   }
 
   export interface AudioModeReturn {

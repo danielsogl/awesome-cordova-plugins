@@ -44,11 +44,10 @@ export interface ThemeDetectionResponse {
   repo: 'https://github.com/mariusbackes/cordova-plugin-theme-detection',
   install: 'cordova plugin add cordova-plugin-theme-detection',
   installVariables: [],
-  platforms: ['iOS', 'Android']
+  platforms: ['iOS', 'Android'],
 })
 @Injectable()
 export class ThemeDetection extends IonicNativePlugin {
-
   /**
    *
    * @return {Promise<ThemeDetectionResponse>}
@@ -68,5 +67,4 @@ export class ThemeDetection extends IonicNativePlugin {
   isDarkModeEnabled(): Promise<ThemeDetectionResponse> {
     return;
   }
-
 }

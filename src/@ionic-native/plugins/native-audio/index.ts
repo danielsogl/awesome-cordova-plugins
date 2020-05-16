@@ -34,7 +34,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-nativeaudio',
   pluginRef: 'plugins.NativeAudio',
   repo: 'https://github.com/floatinghotpot/cordova-plugin-nativeaudio',
-  platforms: ['Android', 'Browser', 'iOS']
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class NativeAudio extends IonicNativePlugin {
@@ -71,7 +71,7 @@ export class NativeAudio extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   play(id: string, completeCallback?: Function): Promise<any> {
     return;
@@ -117,5 +117,4 @@ export class NativeAudio extends IonicNativePlugin {
   setVolumeForComplexAsset(id: string, volume: number): Promise<any> {
     return;
   }
-
 }

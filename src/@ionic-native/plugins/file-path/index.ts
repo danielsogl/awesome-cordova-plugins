@@ -28,7 +28,7 @@ declare const window: any;
   plugin: 'cordova-plugin-filepath',
   pluginRef: 'window.FilePath',
   repo: 'https://github.com/hiddentao/cordova-plugin-filepath',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class FilePath extends IonicNativePlugin {

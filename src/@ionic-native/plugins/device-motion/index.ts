@@ -77,8 +77,8 @@ export interface DeviceMotionAccelerometerOptions {
     'Tizen',
     'Ubuntu',
     'Windows',
-    'Windows Phone 8'
-  ]
+    'Windows Phone 8',
+  ],
 })
 @Injectable()
 export class DeviceMotion extends IonicNativePlugin {
@@ -99,11 +99,9 @@ export class DeviceMotion extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
-    clearFunction: 'clearWatch'
+    clearFunction: 'clearWatch',
   })
-  watchAcceleration(
-    options?: DeviceMotionAccelerometerOptions
-  ): Observable<DeviceMotionAccelerationData> {
+  watchAcceleration(options?: DeviceMotionAccelerometerOptions): Observable<DeviceMotionAccelerationData> {
     return;
   }
 }

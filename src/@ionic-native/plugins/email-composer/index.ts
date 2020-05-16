@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaCheck,
-  IonicNativePlugin,
-  Plugin,
-  getPromise
-} from '@ionic-native/core';
+import { Cordova, CordovaCheck, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
 
 export interface EmailComposerOptions {
   /**
@@ -132,7 +126,7 @@ export interface EmailComposerOptions {
   plugin: 'cordova-plugin-email-composer',
   pluginRef: 'cordova.plugins.email',
   repo: 'https://github.com/katzer/cordova-plugin-email-composer',
-  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows', 'macOS']
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows', 'macOS'],
 })
 @Injectable()
 export class EmailComposer extends IonicNativePlugin {
@@ -142,7 +136,7 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 2
+    errorIndex: 2,
   })
   hasPermission(): Promise<boolean> {
     return;
@@ -154,7 +148,7 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 2
+    errorIndex: 2,
   })
   requestPermission(): Promise<boolean> {
     return;
@@ -167,7 +161,7 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @CordovaCheck()
   hasAccount(): Promise<any> {
-    return getPromise<boolean>((resolve) => {
+    return getPromise<boolean>(resolve => {
       EmailComposer.getPlugin().hasAccount((result: boolean) => {
         if (result) {
           resolve(true);
@@ -187,7 +181,7 @@ export class EmailComposer extends IonicNativePlugin {
 
   @CordovaCheck()
   hasClient(app?: string): Promise<any> {
-    return getPromise<boolean>((resolve) => {
+    return getPromise<boolean>(resolve => {
       if (app) {
         EmailComposer.getPlugin().hasClient(app, (result: boolean) => {
           if (result) {
@@ -216,7 +210,7 @@ export class EmailComposer extends IonicNativePlugin {
       EmailComposer.getPlugin().getClients((apps: any) => {
         if (Object.prototype.toString.call(apps) === '[object String]') {
           apps = [apps];
-      }
+        }
         resolve(apps);
       });
     });
@@ -230,11 +224,10 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @CordovaCheck()
   isAvailable(app?: string): Promise<any> {
-    return getPromise<boolean>((resolve) => {
-      Promise.all([this.hasAccount, this.hasClient(app)])
-        .then((results) => {
-          return resolve(results.length === 2 && results[0] && results[1]);
-        });
+    return getPromise<boolean>(resolve => {
+      Promise.all([this.hasAccount, this.hasClient(app)]).then(results => {
+        return resolve(results.length === 2 && results[0] && results[1]);
+      });
     });
   }
 
@@ -247,7 +240,7 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 3
+    errorIndex: 3,
   })
   open(options: EmailComposerOptions, scope?: any): Promise<any> {
     return;

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 const encoder = new require('node-html-encoder').Encoder();
 
 function code(str, inline, lang) {
@@ -20,5 +20,5 @@ function code(str, inline, lang) {
 
 module.exports = {
   name: 'code',
-  process: (str, lang) => code(str, true, lang)
+  process: (str, lang) => code(str, true, lang),
 };

@@ -54,7 +54,7 @@ export interface NativeMarketParams extends NativeParams {
   plugin: 'cordova-plugin-nativeview',
   pluginRef: 'cordova.plugins.NativeView',
   repo: 'https://github.com/mfdeveloper/cordova-plugin-nativeview',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class NativeView extends IonicNativePlugin {
@@ -111,11 +111,7 @@ export class NativeView extends IonicNativePlugin {
    * @returns {Promise<ResultAppInstalled>} Returns data information about the installed app
    */
   @Cordova()
-  checkIfAppInstalled(
-    config: NativeParams,
-    success?: Function,
-    error?: Function
-  ): Promise<ResultAppInstalled> {
+  checkIfAppInstalled(config: NativeParams, success?: Function, error?: Function): Promise<ResultAppInstalled> {
     return;
   }
 
@@ -128,11 +124,7 @@ export class NativeView extends IonicNativePlugin {
    * @returns {Promise<ResultView>}
    */
   @Cordova()
-  showMarket(
-    config: NativeMarketParams,
-    success?: Function,
-    error?: Function
-  ): Promise<ResultView> {
+  showMarket(config: NativeMarketParams, success?: Function, error?: Function): Promise<ResultView> {
     return;
   }
 
@@ -148,13 +140,9 @@ export class NativeView extends IonicNativePlugin {
    * @returns {Promise<string>} Returns a current FLAVOR string
    */
   @Cordova({
-    platforms: ['android']
+    platforms: ['android'],
   })
-  getBuildVariant(
-    config: { catchError?: boolean },
-    success?: Function,
-    error?: Function
-  ): Promise<string> {
+  getBuildVariant(config: { catchError?: boolean }, success?: Function, error?: Function): Promise<string> {
     return;
   }
 }

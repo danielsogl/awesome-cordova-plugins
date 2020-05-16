@@ -31,7 +31,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-firebase-analytics',
   pluginRef: 'cordova.plugins.firebase.analytics',
   repo: 'https://github.com/chemerisuk/cordova-plugin-firebase-analytics',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseAnalytics extends IonicNativePlugin {

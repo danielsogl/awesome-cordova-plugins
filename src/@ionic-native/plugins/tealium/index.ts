@@ -76,7 +76,7 @@ export interface TealConfig {
   pluginRef: 'window.tealium', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/Tealium/cordova-plugin', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
-  install: '' // OPTIONAL install command, in case the plugin requires variables
+  install: '', // OPTIONAL install command, in case the plugin requires variables
 })
 @Injectable()
 export class Tealium extends IonicNativePlugin {
@@ -121,11 +121,7 @@ export class Tealium extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  track(
-    eventType: string,
-    dataObject: any,
-    instanceName: string
-  ): Promise<any> {
+  track(eventType: string, dataObject: any, instanceName: string): Promise<any> {
     return;
   }
 
@@ -137,11 +133,7 @@ export class Tealium extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  addPersistent(
-    keyName: string,
-    value: string | string[] | any,
-    instanceName: string
-  ): Promise<any> {
+  addPersistent(keyName: string, value: string | string[] | any, instanceName: string): Promise<any> {
     return;
   }
 
@@ -153,11 +145,7 @@ export class Tealium extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  addVolatile(
-    keyName: string,
-    value: string | string[],
-    instanceName: string
-  ): Promise<any> {
+  addVolatile(keyName: string, value: string | string[], instanceName: string): Promise<any> {
     return;
   }
 
@@ -191,11 +179,7 @@ export class Tealium extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  getPersistent(
-    keyName: string,
-    instanceName: string,
-    callback: any
-  ): Promise<any> {
+  getPersistent(keyName: string, instanceName: string, callback: any): Promise<any> {
     return;
   }
   /**
@@ -206,11 +190,7 @@ export class Tealium extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  getVolatile(
-    keyName: string,
-    instanceName: string,
-    callback: any
-  ): Promise<any> {
+  getVolatile(keyName: string, instanceName: string, callback: any): Promise<any> {
     return;
   }
 
@@ -222,11 +202,7 @@ export class Tealium extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  addRemoteCommand(
-    commandName: string,
-    instanceName: string,
-    callback: any
-  ): Promise<any> {
+  addRemoteCommand(commandName: string, instanceName: string, callback: any): Promise<any> {
     return;
   }
 

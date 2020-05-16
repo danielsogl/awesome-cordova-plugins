@@ -24,7 +24,7 @@ import { Observable } from 'rxjs';
   plugin: 'cordova-plugin-shake',
   pluginRef: 'shake',
   repo: 'https://github.com/leecrossley/cordova-plugin-shake',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class Shake extends IonicNativePlugin {
@@ -37,7 +37,7 @@ export class Shake extends IonicNativePlugin {
     observable: true,
     clearFunction: 'stopWatch',
     successIndex: 0,
-    errorIndex: 2
+    errorIndex: 2,
   })
   startWatch(sensitivity?: number): Observable<any> {
     return;

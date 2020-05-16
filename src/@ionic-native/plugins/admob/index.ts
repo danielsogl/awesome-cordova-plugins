@@ -257,7 +257,7 @@ export interface AdmobOptions {
   plugin: 'cordova-admob',
   pluginRef: 'admob',
   repo: 'https://github.com/appfeel/admob-google-cordova',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Admob extends IonicNativePlugin {
@@ -375,7 +375,7 @@ export class Admob extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onAdLoaded',
-    element: document
+    element: document,
   })
   onAdLoaded(): Observable<any> {
     return;
@@ -388,7 +388,7 @@ export class Admob extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onAdFailedToLoad',
-    element: document
+    element: document,
   })
   onAdFailedToLoad(): Observable<any> {
     return;
@@ -402,7 +402,7 @@ export class Admob extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onAdOpened',
-    element: document
+    element: document,
   })
   onAdOpened(): Observable<any> {
     return;
@@ -416,7 +416,7 @@ export class Admob extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onAdClosed',
-    element: document
+    element: document,
   })
   onAdClosed(): Observable<any> {
     return;
@@ -429,7 +429,7 @@ export class Admob extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onAdLeftApplication',
-    element: document
+    element: document,
   })
   onAdLeftApplication(): Observable<any> {
     return;
@@ -442,7 +442,7 @@ export class Admob extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onRewardedAd',
-    element: document
+    element: document,
   })
   onRewardedAd(): Observable<any> {
     return;
@@ -455,7 +455,7 @@ export class Admob extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onRewardedAdVideoStarted',
-    element: document
+    element: document,
   })
   onRewardedAdVideoStarted(): Observable<any> {
     return;
@@ -468,7 +468,7 @@ export class Admob extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onRewardedAdVideoCompleted',
-    element: document
+    element: document,
   })
   onRewardedAdVideoCompleted(): Observable<any> {
     return;
