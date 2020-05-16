@@ -441,7 +441,6 @@ export class BAMCardInformation {
   pluginRef: 'Jumio',
   repo: 'https://github.com/Jumio/mobile-cordova',
   install: 'npm install git://github.com/Jumio/mobile-cordova.git',
-  installVariables: [],
   platforms: ['Android', 'iOS']
 })
 @Injectable()
