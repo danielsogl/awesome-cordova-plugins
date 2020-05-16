@@ -8,7 +8,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { IosASWebauthenticationSession } from '@ionic-native/ios-aswebauthenticationsession-api';
+ * import { IosASWebauthenticationSession } from '@ionic-native/ios-aswebauthenticationsession-api/ngx';
  *
  *
  * constructor(private IosASWebauthenticationSession: ios-aswebauthenticationsession-api) { }
