@@ -19,7 +19,8 @@
     "readmes": "gulp readmes",
     "docs-json": "ts-node -P scripts/tsconfig.json scripts/docs-json",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
-    "shipit": "npm run build && npm run readmes && npm run npmpub"
+    "shipit": "npm run build && npm run readmes && npm run npmpub",
+    "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\""
   },
   "devDependencies": {
     "@angular/common": "^9.1.7",
@@ -44,15 +45,19 @@
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
     "gulp-tslint": "^8.1.4",
+    "husky": "^4.2.5",
     "jest": "^26.0.1",
+    "lint-staged": "^10.2.2",
     "lodash": "^4.17.15",
     "minimist": "^1.2.5",
     "natives": "^1.1.6",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.5",
     "ts-jest": "^26.0.0",
     "ts-node": "^8.10.1",
     "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-ionic-rules": "0.0.21",
     "typedoc": "^0.17.6",
     "typescript": "~3.8.3",
@@ -90,5 +95,15 @@
   },
   "dependencies": {
     "tslib": "^1.13.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,ts}": [
+      "prettier --write"
+    ]
   }
 }
