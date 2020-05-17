@@ -444,7 +444,7 @@ export class BAMCardInformation {
  */
 @Plugin({
   pluginName: 'Jumio',
-  plugin: 'jumio-cordova ',
+  plugin: 'jumio-cordova',
   pluginRef: 'Jumio',
   repo: 'https://github.com/danielzen/jumio-cordova',
   platforms: ['Android', 'iOS'],
