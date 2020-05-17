@@ -29,7 +29,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/timbru31/cordova-plugin-lottie-splashscreen',
   install: '',
   installVariables: [],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class LottieSplashScreen extends IonicNativePlugin {
@@ -41,7 +41,7 @@ export class LottieSplashScreen extends IonicNativePlugin {
    * @param height {number} Height of the container that's rendering the Lottie animation
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   show(location?: string, remote?: boolean, width?: number, height?: number): void {}
 

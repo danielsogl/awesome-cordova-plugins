@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface ScoreData {
-
   /**
    * The score to submit.
    */
@@ -12,7 +11,6 @@ export interface ScoreData {
    * The leaderboard ID from Google Play Developer console.
    */
   leaderboardId: string;
-
 }
 
 export interface PlayerScoreData {
@@ -23,43 +21,34 @@ export interface PlayerScoreData {
 }
 
 export interface LeaderboardData {
-
   /**
    * The leaderboard ID from Goole Play Developer console.
    */
   leaderboardId: string;
-
 }
 
 export interface AchievementData {
-
   /**
    * The achievement ID from Google Play Developer console.
    */
   achievementId: string;
-
 }
 
 export interface IncrementableAchievementData extends AchievementData {
-
   /**
    * The amount to increment the achievement by.
    */
   numSteps: number;
-
 }
 
 export interface SignedInResponse {
-
   /**
    * True or false is the use is signed in.
    */
   isSignedIn: boolean;
-
 }
 
 export interface Player {
-
   /**
    * The players display name.
    */
@@ -87,11 +76,9 @@ export interface Player {
    * null if the player has no profile image.
    */
   hiResIconImageUrl: string;
-
 }
 
 export interface SubmittedScoreData {
-
   /**
    * The leaderboard ID from Goole Play Developer console.
    */
@@ -121,7 +108,6 @@ export interface SubmittedScoreData {
    * The score tag associated with this result, if any.
    */
   scoreTag: string;
-
 }
 
 /**
@@ -229,7 +215,6 @@ export interface SubmittedScoreData {
 })
 @Injectable()
 export class GooglePlayGamesServices extends IonicNativePlugin {
-
   /**
    * Initialise native Play Games Service login procedure.
    *
@@ -398,5 +383,4 @@ export class GooglePlayGamesServices extends IonicNativePlugin {
   showAchievements(): Promise<any> {
     return;
   }
-
 }

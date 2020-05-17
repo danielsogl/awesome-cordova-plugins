@@ -105,11 +105,10 @@ export interface HttpFields {
   plugin: 'cordova-plugin-websocket-server',
   pluginRef: 'cordova.plugins.wsserver',
   repo: 'https://github.com/becvert/cordova-plugin-websocket-server',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class WebSocketServer extends IonicNativePlugin {
-
   /**
    * Return this device's interfaces
    * @return {Promise<WebSocketInterfaces>}
@@ -127,7 +126,7 @@ export class WebSocketServer extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'stop'
+    clearFunction: 'stop',
   })
   start(port: number, options: WebSocketOptions): Observable<WebSocketServerDetails> {
     return;
@@ -135,10 +134,7 @@ export class WebSocketServer extends IonicNativePlugin {
 
   private onFunctionToObservable<T>(fnName: string) {
     return new Observable<T>(observer => {
-      const id = window.cordova.plugins.wsserver[fnName](
-        observer.next.bind(observer),
-        observer.error.bind(observer)
-      );
+      const id = window.cordova.plugins.wsserver[fnName](observer.next.bind(observer), observer.error.bind(observer));
 
       return () => window.cordova.plugins.wsserver.removeCallback(id);
     });

@@ -66,7 +66,7 @@ export interface NotificationData {
   plugin: 'cordova-plugin-fcm-with-dependecy-updated',
   pluginRef: 'FCMPlugin',
   repo: 'https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FCM extends IonicNativePlugin {
@@ -96,7 +96,7 @@ export class FCM extends IonicNativePlugin {
    * @returns {Observable<string>} Returns an Observable that notifies with the change of device's registration id
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   onTokenRefresh(): Observable<string> {
     return;
@@ -147,7 +147,7 @@ export class FCM extends IonicNativePlugin {
   @Cordova({
     observable: true,
     successIndex: 0,
-    errorIndex: 2
+    errorIndex: 2,
   })
   onNotification(): Observable<NotificationData> {
     return;

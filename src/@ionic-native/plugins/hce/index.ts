@@ -35,7 +35,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/don/cordova-plugin-hce',
   install: '',
   installVariables: ['AID_FILTER'],
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class HCE extends IonicNativePlugin {
@@ -68,11 +68,7 @@ export class HCE extends IonicNativePlugin {
    *
    */
   @Cordova()
-  sendResponse(
-    response: Uint8Array,
-    success?: Function,
-    failure?: Function
-  ): void {
+  sendResponse(response: Uint8Array, success?: Function, failure?: Function): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 }

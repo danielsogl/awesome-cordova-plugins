@@ -203,7 +203,7 @@ export interface HealthData {
   plugin: 'cordova-plugin-health',
   pluginRef: 'navigator.health',
   repo: 'https://github.com/dariosalvi78/cordova-plugin-health',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Health extends IonicNativePlugin {
@@ -213,7 +213,7 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<boolean>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   isAvailable(): Promise<boolean> {
     return;
@@ -231,7 +231,7 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   promptInstallFit(): Promise<any> {
     return;
@@ -335,9 +335,7 @@ export class Health extends IonicNativePlugin {
    * @return {Promise<HealthData[]>}
    */
   @Cordova()
-  queryAggregated(
-    queryOptionsAggregated: HealthQueryOptionsAggregated
-  ): Promise<HealthData[]> {
+  queryAggregated(queryOptionsAggregated: HealthQueryOptionsAggregated): Promise<HealthData[]> {
     return;
   }
 

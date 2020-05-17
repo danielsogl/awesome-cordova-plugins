@@ -7,13 +7,7 @@ export type IMakePayments =
   | 'This device cannot make payments.'
   | 'This device can make payments but has no supported cards';
 export type IShippingType = 'shipping' | 'delivery' | 'store' | 'service';
-export type IBillingRequirement =
-  | 'none'
-  | 'all'
-  | 'postcode'
-  | 'name'
-  | 'email'
-  | 'phone';
+export type IBillingRequirement = 'none' | 'all' | 'postcode' | 'name' | 'email' | 'phone';
 export type ITransactionStatus =
   | 'success'
   | 'failure'
@@ -24,9 +18,7 @@ export type ITransactionStatus =
   | 'incorrect-pin'
   | 'locked-pin';
 export type ICompleteTransaction = 'Payment status applied.';
-export type IUpdateItemsAndShippingStatus =
-  | 'Updated List Info'
-  | 'Did you make a payment request?';
+export type IUpdateItemsAndShippingStatus = 'Updated List Info' | 'Did you make a payment request?';
 export type IMerchantCapabilities = '3ds' | 'credit' | 'debit' | 'emv';
 export type ISupportedNetworks = 'visa' | 'amex' | 'discover' | 'masterCard';
 
@@ -155,7 +147,7 @@ export interface ISelectedShippingContact {
   plugin: 'cordova-plugin-applepay',
   pluginRef: 'ApplePay',
   repo: 'https://github.com/samkelleher/cordova-plugin-applepay',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class ApplePay extends IonicNativePlugin {
@@ -175,7 +167,7 @@ export class ApplePay extends IonicNativePlugin {
    * }
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   canMakePayments(): Promise<IMakePayments> {
     return;
@@ -191,11 +183,9 @@ export class ApplePay extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'stopListeningForShippingContactSelection'
+    clearFunction: 'stopListeningForShippingContactSelection',
   })
-  startListeningForShippingContactSelection(): Observable<
-    ISelectedShippingContact
-  > {
+  startListeningForShippingContactSelection(): Observable<ISelectedShippingContact> {
     return;
   }
 
@@ -205,7 +195,7 @@ export class ApplePay extends IonicNativePlugin {
    *   really only fail if this is called without starting listening
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   stopListeningForShippingContactSelection(): Promise<boolean> {
     return;
@@ -247,11 +237,9 @@ export class ApplePay extends IonicNativePlugin {
    * });
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
-  updateItemsAndShippingMethods(
-    list: IOrderItemsAndShippingMethods
-  ): Promise<IUpdateItemsAndShippingStatus> {
+  updateItemsAndShippingMethods(list: IOrderItemsAndShippingMethods): Promise<IUpdateItemsAndShippingStatus> {
     return;
   }
 
@@ -326,7 +314,7 @@ export class ApplePay extends IonicNativePlugin {
    * }
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   makePaymentRequest(order: IOrder): Promise<IPaymentResponse> {
     return;
@@ -342,11 +330,9 @@ export class ApplePay extends IonicNativePlugin {
    *
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
-  completeLastTransaction(
-    complete: ITransactionStatus
-  ): Promise<ICompleteTransaction> {
+  completeLastTransaction(complete: ITransactionStatus): Promise<ICompleteTransaction> {
     return;
   }
 }

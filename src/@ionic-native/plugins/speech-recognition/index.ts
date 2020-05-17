@@ -104,7 +104,7 @@ export interface SpeechRecognitionListeningOptionsAndroid {
   plugin: 'cordova-plugin-speechrecognition',
   pluginRef: 'plugins.speechRecognition',
   repo: 'https://github.com/pbakondy/cordova-plugin-speechrecognition',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class SpeechRecognition extends IonicNativePlugin {
@@ -123,11 +123,9 @@ export class SpeechRecognition extends IonicNativePlugin {
    */
   @Cordova({
     callbackOrder: 'reverse',
-    observable: true
+    observable: true,
   })
-  startListening(
-    options?: SpeechRecognitionListeningOptions
-  ): Observable<string[]> {
+  startListening(options?: SpeechRecognitionListeningOptions): Observable<string[]> {
     return;
   }
 

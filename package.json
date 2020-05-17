@@ -1,6 +1,6 @@
 {
   "name": "ionic-native",
-  "version": "5.25.0",
+  "version": "5.26.0",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "homepage": "https://ionicframework.com/",
   "author": "Ionic Team <hi@ionic.io> (https://ionic.io)",
@@ -19,23 +19,24 @@
     "readmes": "gulp readmes",
     "docs-json": "ts-node -P scripts/tsconfig.json scripts/docs-json",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
-    "shipit": "npm run build && npm run readmes && npm run npmpub"
+    "shipit": "npm run build && npm run readmes && npm run npmpub",
+    "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\""
   },
   "devDependencies": {
-    "@angular/common": "^9.1.4",
-    "@angular/compiler": "^9.1.4",
-    "@angular/compiler-cli": "^9.1.4",
-    "@angular/core": "^9.1.4",
+    "@angular/common": "^9.1.7",
+    "@angular/compiler": "^9.1.7",
+    "@angular/compiler-cli": "^9.1.7",
+    "@angular/core": "^9.1.7",
     "@types/cordova": "0.0.34",
-    "@types/fs-extra": "^8.1.0",
-    "@types/jest": "^25.2.1",
-    "@types/lodash": "^4.14.150",
-    "@types/node": "^12.12.37",
+    "@types/fs-extra": "^9.0.0",
+    "@types/jest": "^25.2.2",
+    "@types/lodash": "^4.14.151",
+    "@types/node": "^12.12.39",
     "@types/rimraf": "^3.0.0",
-    "@types/webpack": "^4.41.12",
+    "@types/webpack": "^4.41.13",
     "ajv": "^6.12.2",
     "async-promise-queue": "^1.0.5",
-    "conventional-changelog-cli": "^2.0.31",
+    "conventional-changelog-cli": "^2.0.34",
     "cz-conventional-changelog": "^3.2.0",
     "dgeni": "^0.4.12",
     "dgeni-packages": "0.16.10",
@@ -44,17 +45,21 @@
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
     "gulp-tslint": "^8.1.4",
-    "jest": "^25.5.4",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "lint-staged": "^10.2.2",
     "lodash": "^4.17.15",
     "minimist": "^1.2.5",
     "natives": "^1.1.6",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.5",
-    "ts-jest": "^25.4.0",
+    "ts-jest": "^26.0.0",
     "ts-node": "^8.10.1",
     "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-ionic-rules": "0.0.21",
-    "typedoc": "^0.16.11",
+    "typedoc": "^0.17.6",
     "typescript": "~3.8.3",
     "typescript-tslint-plugin": "0.5.5",
     "uglifyjs-webpack-plugin": "^2.2.0",
@@ -89,6 +94,16 @@
     }
   },
   "dependencies": {
-    "tslib": "^1.11.1"
+    "tslib": "^1.13.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write"
+    ]
   }
 }

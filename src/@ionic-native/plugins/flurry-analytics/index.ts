@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  CordovaInstance,
-  IonicNativePlugin,
-  Plugin,
-  checkAvailability
-} from '@ionic-native/core';
+import { CordovaInstance, IonicNativePlugin, Plugin, checkAvailability } from '@ionic-native/core';
 
 export interface FlurryAnalyticsOptions {
   /** Flurry API key is required */
@@ -91,7 +86,7 @@ export class FlurryAnalyticsObject {
    */
   @CordovaInstance({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   logEvent(eventName: string, params?: any): Promise<any> {
     return;
@@ -105,7 +100,7 @@ export class FlurryAnalyticsObject {
    */
   @CordovaInstance({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   startTimedEvent(eventName: string, params?: Object): Promise<any> {
     return;
@@ -119,7 +114,7 @@ export class FlurryAnalyticsObject {
    */
   @CordovaInstance({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   endTimedEvent(eventName: string, params?: Object): Promise<any> {
     return;
@@ -153,10 +148,7 @@ export class FlurryAnalyticsObject {
    * @return {Promise<any>}
    */
   @CordovaInstance()
-  setLocation(
-    location: FlurryAnalyticsLocation,
-    message: string
-  ): Promise<any> {
+  setLocation(location: FlurryAnalyticsLocation, message: string): Promise<any> {
     return;
   }
 
@@ -218,7 +210,7 @@ export class FlurryAnalyticsObject {
   plugin: 'cordova-plugin-flurryanalytics',
   pluginRef: 'FlurryAnalytics',
   repo: 'https://github.com/blakgeek/cordova-plugin-flurryanalytics',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FlurryAnalytics extends IonicNativePlugin {
@@ -230,13 +222,7 @@ export class FlurryAnalytics extends IonicNativePlugin {
   create(options: FlurryAnalyticsOptions): FlurryAnalyticsObject {
     let instance: any;
 
-    if (
-      checkAvailability(
-        FlurryAnalytics.pluginRef,
-        null,
-        FlurryAnalytics.pluginName
-      ) === true
-    ) {
+    if (checkAvailability(FlurryAnalytics.pluginRef, null, FlurryAnalytics.pluginName) === true) {
       instance = new (window as any).FlurryAnalytics(options);
     }
 

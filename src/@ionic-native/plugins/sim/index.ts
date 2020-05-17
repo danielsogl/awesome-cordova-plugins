@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * @name Sim
  * @description
@@ -38,7 +37,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-sim',
   pluginRef: 'plugins.sim',
   repo: 'https://github.com/pbakondy/cordova-plugin-sim',
-  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone'],
 })
 @Injectable()
 export class Sim extends IonicNativePlugin {
@@ -56,7 +55,7 @@ export class Sim extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   hasReadPermission(): Promise<any> {
     return;
@@ -67,7 +66,7 @@ export class Sim extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   requestReadPermission(): Promise<any> {
     return;

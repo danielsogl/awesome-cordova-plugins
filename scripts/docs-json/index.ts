@@ -1,9 +1,8 @@
 import * as fs from 'fs-extra';
 import { basename, dirname, resolve } from 'path';
 import { Application } from 'typedoc';
-import { runInNewContext } from 'vm';
-
 import TypeDoc = require('typedoc');
+import { runInNewContext } from 'vm';
 
 interface Plugin {
   packageName: string;
@@ -28,7 +27,7 @@ typedoc.options.addReader(new TypeDoc.TypeDocReader());
 
 typedoc.bootstrap({
   mode: 'modules',
-  ignoreCompilerErrors: true
+  ignoreCompilerErrors: true,
 });
 
 run(pluginsDir);
@@ -38,7 +37,7 @@ async function run(pluginsDir: string) {
   const modules = typedocData.children.filter(isModule);
   const plugins = modules.filter(hasPlugin).map(processPlugin);
   await fs.outputJson(resolve(__dirname, 'plugins.json'), plugins, {
-    spaces: 2
+    spaces: 2,
   });
 }
 
@@ -52,9 +51,7 @@ async function generateTypedoc(root: string, outputPath = typedocTmp) {
 function processPlugin(pluginModule): Plugin {
   const pluginClass = pluginModule.children.find(isPlugin);
   const decorator = getPluginDecorator(pluginClass);
-  const packageName = `@ionic-native/${basename(
-    dirname(pluginModule.originalName)
-  )}`;
+  const packageName = `@ionic-native/${basename(dirname(pluginModule.originalName))}`;
   const displayName = getTag(pluginClass, 'name');
   const usage = getTag(pluginClass, 'usage');
   const description = getTag(pluginClass, 'description');
@@ -67,8 +64,8 @@ function processPlugin(pluginModule): Plugin {
     repo: decorator.repo,
     installVariables: decorator.installVariables,
     cordovaPlugin: {
-      name: decorator.plugin
-    }
+      name: decorator.plugin,
+    },
   };
 }
 
@@ -105,5 +102,4 @@ const isPlugin = (child: any): boolean =>
 
 const hasPlugin = (child: any): boolean => child.children.some(isPlugin);
 
-const hasTags = (child: any): boolean =>
-  child.comment && Array.isArray(child.comment.tags);
+const hasTags = (child: any): boolean => child.comment && Array.isArray(child.comment.tags);

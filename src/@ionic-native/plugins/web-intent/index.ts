@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaProperty,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 export interface IntentClipItem {
@@ -72,9 +67,8 @@ export interface IntentOptions {
   pluginName: 'WebIntent',
   plugin: 'com-darryncampbell-cordova-plugin-intent',
   pluginRef: 'plugins.intentShim',
-  repo:
-    'https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent',
-  platforms: ['Android']
+  repo: 'https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent',
+  platforms: ['Android'],
 })
 @Injectable()
 export class WebIntent extends IonicNativePlugin {
@@ -216,7 +210,7 @@ export class WebIntent extends IonicNativePlugin {
    * @returns {Observable<Intent>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   onIntent(): Observable<Intent> {
     return;
@@ -248,7 +242,7 @@ export class WebIntent extends IonicNativePlugin {
    * @returns {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   registerBroadcastReceiver(filters: RegisterBroadcastReceiverOptions): Observable<any> {
     return;

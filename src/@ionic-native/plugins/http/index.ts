@@ -9,7 +9,7 @@ export interface HTTPResponse {
   /**
    * The headers of the response.
    */
-  headers: {[ key: string ]: string };
+  headers: { [key: string]: string };
   /**
    * The URL of the response. This property will be the final URL obtained after any redirects.
    */
@@ -67,7 +67,7 @@ export interface HTTPResponse {
   plugin: 'cordova-plugin-advanced-http',
   pluginRef: 'cordova.plugin.http',
   repo: 'https://github.com/silkimen/cordova-plugin-advanced-http',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class HTTP extends IonicNativePlugin {

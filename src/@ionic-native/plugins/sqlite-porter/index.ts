@@ -43,11 +43,10 @@ import { Injectable } from '@angular/core';
   plugin: 'uk.co.workingedge.cordova.plugin.sqliteporter',
   pluginRef: 'cordova.plugins.sqlitePorter',
   repo: 'https://github.com/dpa99c/cordova-sqlite-porter',
-  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'iOS', 'Tizen', 'Windows', 'Windows Phone']
+  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'iOS', 'Tizen', 'Windows', 'Windows Phone'],
 })
 @Injectable()
 export class SQLitePorter extends IonicNativePlugin {
-
   /**
    * Executes a set of SQL statements against the defined database. Can be used to import data defined in the SQL statements into the database, and may additionally include commands to create the table structure.
    * @param db {Object} Database object
@@ -57,7 +56,7 @@ export class SQLitePorter extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'successFn',
-    errorName: 'errorFn'
+    errorName: 'errorFn',
   })
   importSqlToDb(db: any, sql: string): Promise<any> {
     return;
@@ -71,7 +70,7 @@ export class SQLitePorter extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'successFn',
-    errorName: 'errorFn'
+    errorName: 'errorFn',
   })
   exportDbToSql(db: any): Promise<any> {
     return;
@@ -86,7 +85,7 @@ export class SQLitePorter extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'successFn',
-    errorName: 'errorFn'
+    errorName: 'errorFn',
   })
   importJsonToDb(db: any, json: any): Promise<any> {
     return;
@@ -100,7 +99,7 @@ export class SQLitePorter extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'successFn',
-    errorName: 'errorFn'
+    errorName: 'errorFn',
   })
   exportDbToJson(db: any): Promise<any> {
     return;
@@ -114,10 +113,9 @@ export class SQLitePorter extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'successFn',
-    errorName: 'errorFn'
+    errorName: 'errorFn',
   })
   wipeDb(db: any): Promise<any> {
     return;
   }
-
 }

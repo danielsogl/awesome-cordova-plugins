@@ -25,30 +25,29 @@ import { Injectable } from '@angular/core';
   plugin: 'phonegap-plugin-mobile-accessibility',
   pluginRef: 'window.MobileAccessibility',
   repo: 'https://github.com/phonegap/phonegap-mobile-accessibility',
-  platforms: ['Android Fire OS', 'Android', 'iOS', 'Windows']
+  platforms: ['Android Fire OS', 'Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class MobileAccessibility extends IonicNativePlugin {
-
   MobileAccessibilityNotifications: {
-    ANNOUNCEMENT: 'ANNOUNCEMENT',
-    BOLD_TEXT_STATUS_CHANGED: 'BOLD_TEXT_STATUS_CHANGED',
-    CLOSED_CAPTIONING_STATUS_CHANGED: 'CLOSED_CAPTIONING_STATUS_CHANGED',
-    DARKER_SYSTEM_COLORS_STATUS_CHANGED: 'DARKER_SYSTEM_COLORS_STATUS_CHANGED',
-    GRAYSCALE_STATUS_CHANGED: 'GRAYSCALE_STATUS_CHANGED',
-    GUIDED_ACCESS_STATUS_CHANGED: 'GUIDED_ACCESS_STATUS_CHANGED',
-    INVERT_COLORS_STATUS_CHANGED: 'INVERT_COLORS_STATUS_CHANGED',
-    LAYOUT_CHANGED: 'LAYOUT_CHANGED',
-    MONO_AUDIO_STATUS_CHANGED: 'MONO_AUDIO_STATUS_CHANGED',
-    PAGE_SCROLLED: 'PAGE_SCROLLED',
-    REDUCE_MOTION_STATUS_CHANGED: 'REDUCE_MOTION_STATUS_CHANGED',
-    REDUCE_TRANSPARENCY_STATUS_CHANGED: 'REDUCE_TRANSPARENCY_STATUS_CHANGED',
-    SCREEN_CHANGED: 'SCREEN_CHANGED',
-    SCREEN_READER_STATUS_CHANGED: 'SCREEN_READER_STATUS_CHANGED',
-    SPEAK_SCREEN_STATUS_CHANGED: 'SPEAK_SCREEN_STATUS_CHANGED',
-    SPEAK_SELECTION_STATUS_CHANGED: 'SPEAK_SELECTION_STATUS_CHANGED',
-    SWITCH_CONTROL_STATUS_CHANGED: 'SWITCH_CONTROL_STATUS_CHANGED',
-    TOUCH_EXPLORATION_STATUS_CHANGED: 'TOUCH_EXPLORATION_STATUS_CHANGED'
+    ANNOUNCEMENT: 'ANNOUNCEMENT';
+    BOLD_TEXT_STATUS_CHANGED: 'BOLD_TEXT_STATUS_CHANGED';
+    CLOSED_CAPTIONING_STATUS_CHANGED: 'CLOSED_CAPTIONING_STATUS_CHANGED';
+    DARKER_SYSTEM_COLORS_STATUS_CHANGED: 'DARKER_SYSTEM_COLORS_STATUS_CHANGED';
+    GRAYSCALE_STATUS_CHANGED: 'GRAYSCALE_STATUS_CHANGED';
+    GUIDED_ACCESS_STATUS_CHANGED: 'GUIDED_ACCESS_STATUS_CHANGED';
+    INVERT_COLORS_STATUS_CHANGED: 'INVERT_COLORS_STATUS_CHANGED';
+    LAYOUT_CHANGED: 'LAYOUT_CHANGED';
+    MONO_AUDIO_STATUS_CHANGED: 'MONO_AUDIO_STATUS_CHANGED';
+    PAGE_SCROLLED: 'PAGE_SCROLLED';
+    REDUCE_MOTION_STATUS_CHANGED: 'REDUCE_MOTION_STATUS_CHANGED';
+    REDUCE_TRANSPARENCY_STATUS_CHANGED: 'REDUCE_TRANSPARENCY_STATUS_CHANGED';
+    SCREEN_CHANGED: 'SCREEN_CHANGED';
+    SCREEN_READER_STATUS_CHANGED: 'SCREEN_READER_STATUS_CHANGED';
+    SPEAK_SCREEN_STATUS_CHANGED: 'SPEAK_SCREEN_STATUS_CHANGED';
+    SPEAK_SELECTION_STATUS_CHANGED: 'SPEAK_SELECTION_STATUS_CHANGED';
+    SWITCH_CONTROL_STATUS_CHANGED: 'SWITCH_CONTROL_STATUS_CHANGED';
+    TOUCH_EXPLORATION_STATUS_CHANGED: 'TOUCH_EXPLORATION_STATUS_CHANGED';
   };
 
   /**
@@ -218,23 +217,20 @@ export class MobileAccessibility extends IonicNativePlugin {
    * @param textZoom {number} A percentage value by which text in the WebView should be scaled.
    */
   @Cordova({ sync: true })
-  setTextZoom(textZoom: number): void {
-  }
+  setTextZoom(textZoom: number): void {}
 
   /**
    *
    */
   @Cordova({ sync: true })
-  updateTextZoom(): void {
-  }
+  updateTextZoom(): void {}
 
   /**
    * A Boolean value which specifies whether to use the preferred text zoom of a default percent value of 100.
    * @param value {boolean} Returns the result
    */
   @Cordova({ sync: true })
-  usePreferredTextZoom(value: boolean): void {
-  }
+  usePreferredTextZoom(value: boolean): void {}
 
   /**
    * Posts a notification with a string for the screen reader to announce if it is running.
@@ -254,14 +250,11 @@ export class MobileAccessibility extends IonicNativePlugin {
    * @param properties {any}
    */
   @Cordova({ sync: true })
-  speak(value: string, queueMode?: number, properties?: any): void {
-  }
+  speak(value: string, queueMode?: number, properties?: any): void {}
 
   /**
    * Stops speech.
    */
   @Cordova({ sync: true })
-  stop(): void {
-  }
-
+  stop(): void {}
 }

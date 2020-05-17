@@ -30,7 +30,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: 'https://github.com/mostafa-mansour1/previewAnyFile', // the github repository URL for the plugin
   install: '', // OPTIONAL install command, in case the plugin requires variables
   installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
 export class PreviewAnyFile extends IonicNativePlugin {

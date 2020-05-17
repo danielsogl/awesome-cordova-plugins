@@ -5,26 +5,20 @@ import * as unminifiedPlugin from 'unminified-webpack-plugin';
 import * as webpack from 'webpack';
 
 import { ROOT } from '../build/helpers';
-import {
-  cleanEmittedData,
-  EMIT_PATH,
-  InjectableClassEntry
-} from '../build/transformers/extract-injectables';
+import { cleanEmittedData, EMIT_PATH, InjectableClassEntry } from '../build/transformers/extract-injectables';
 import { Logger } from '../logger';
 
 const DIST = path.resolve(ROOT, 'dist');
 const INDEX_PATH = path.resolve(DIST, 'index.js');
-const INJECTABLE_CLASSES = fs
-  .readJSONSync(EMIT_PATH)
-  .map((item: InjectableClassEntry) => {
-    item.file =
-      './' +
-      item.file
-        .split(/[\/\\]+/)
-        .slice(-4, -1)
-        .join('/');
-    return item;
-  });
+const INJECTABLE_CLASSES = fs.readJSONSync(EMIT_PATH).map((item: InjectableClassEntry) => {
+  item.file =
+    './' +
+    item.file
+      .split(/[\/\\]+/)
+      .slice(-4, -1)
+      .join('/');
+  return item;
+});
 
 const webpackConfig: webpack.Configuration = {
   mode: 'production',
@@ -33,36 +27,36 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   output: {
     path: DIST,
-    filename: 'ionic-native.min.js'
+    filename: 'ionic-native.min.js',
   },
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js'],
     alias: {
-      '@ionic-native/core': path.resolve(DIST, '@ionic-native/core/index.js')
-    }
+      '@ionic-native/core': path.resolve(DIST, '@ionic-native/core/index.js'),
+    },
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: path.resolve(ROOT, 'scripts/build/remove-tslib-helpers.js')
-      }
-    ]
+        use: path.resolve(ROOT, 'scripts/build/remove-tslib-helpers.js'),
+      },
+    ],
   },
   plugins: [
     new webpack.ProvidePlugin({
-      __extends: ['tslib', '__extends']
+      __extends: ['tslib', '__extends'],
     }),
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     new uglifyJsPlugin({
-      sourceMap: true
+      sourceMap: true,
     }),
-    new unminifiedPlugin()
-  ]
+    new unminifiedPlugin(),
+  ],
 };
 
 function getPluginImport(entry: InjectableClassEntry) {

@@ -18,7 +18,6 @@ export interface UbResult {
   sent: boolean;
 }
 
-
 /**
  * @name Usabilla
  * @description
@@ -55,12 +54,10 @@ export interface UbResult {
   plugin: 'usabilla-cordova',
   pluginRef: 'Usabilla',
   repo: 'https://github.com/usabilla/usabilla-u4a-cordova',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
-
 @Injectable()
 export class Usabilla extends IonicNativePlugin {
-
   /**
    * Initializes Usabilla sdk for capturing feedbacks.
    *
@@ -70,7 +67,7 @@ export class Usabilla extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 1
+    errorIndex: 1,
   })
   initialize(appId: string, customVars: any): Promise<UsabillaResult> {
     return;
@@ -84,7 +81,7 @@ export class Usabilla extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 1
+    errorIndex: 1,
   })
   loadFeedbackForm(formId: string): Promise<any> {
     return;
@@ -98,7 +95,7 @@ export class Usabilla extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 1
+    errorIndex: 1,
   })
   loadFeedbackFormWithCurrentViewScreenshot(formId: string): Promise<any> {
     return;
@@ -112,7 +109,7 @@ export class Usabilla extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 1
+    errorIndex: 1,
   })
   sendEvent(eventId: string): Promise<UbCampaignResult> {
     return;
@@ -126,7 +123,7 @@ export class Usabilla extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 1
+    errorIndex: 1,
   })
   resetCampaignData(): Promise<UsabillaResult> {
     return;
@@ -140,7 +137,7 @@ export class Usabilla extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 1
+    errorIndex: 1,
   })
   dismiss(): Promise<UsabillaResult> {
     return;
@@ -153,7 +150,7 @@ export class Usabilla extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 1
+    errorIndex: 1,
   })
   getDefaultDataMasks(): Promise<UsabillaResult> {
     return;
@@ -168,10 +165,9 @@ export class Usabilla extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 1
+    errorIndex: 1,
   })
   setDataMasking(masks: any, maskCharacter: string): Promise<UsabillaResult> {
     return;
   }
-
 }

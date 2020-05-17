@@ -203,7 +203,7 @@ export class DefaultMessageStorage {
   plugin: 'com-infobip-plugins-mobilemessaging',
   pluginRef: 'MobileMessaging',
   repo: 'https://github.com/infobip/mobile-messaging-cordova-plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class MobileMessaging extends IonicNativePlugin {
@@ -215,10 +215,7 @@ export class MobileMessaging extends IonicNativePlugin {
    * @param {Function} onInitError. Error callback
    */
   @Cordova({ sync: true })
-  init(
-    config: Configuration,
-    onInitError?: (error: MobileMessagingError) => void
-  ) {
+  init(config: Configuration, onInitError?: (error: MobileMessagingError) => void) {
     return;
   }
 
@@ -229,14 +226,14 @@ export class MobileMessaging extends IonicNativePlugin {
    * @param event
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   register(event: Event): Observable<Message> {
     return;
   }
 
   @Cordova({
-    observable: true
+    observable: true,
   })
   on(event: Event): Observable<Message> {
     return;
@@ -250,14 +247,14 @@ export class MobileMessaging extends IonicNativePlugin {
    * @param {Function} handler will be unregistered from event
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   unregister(event: Event): Observable<Message> {
     return;
   }
 
   @Cordova({
-    observable: true
+    observable: true,
   })
   off(event: Event): Observable<Message> {
     return;
@@ -279,12 +276,11 @@ export class MobileMessaging extends IonicNativePlugin {
    * }
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   submitEvent(event: CustomEvent): void {
     return;
   }
-
 
   /**
    * Sends an event to the server immediately.
@@ -304,7 +300,7 @@ export class MobileMessaging extends IonicNativePlugin {
    * @param {Function} callback will be called on result, you have to handle error and do retries yourself
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   submitEventImmediately(event: CustomEvent): Promise<void> {
     return;
@@ -380,10 +376,7 @@ export class MobileMessaging extends IonicNativePlugin {
    * @param {Boolean} primary or not
    */
   @Cordova()
-  setInstallationAsPrimary(
-    pushRegistrationId: string,
-    primary: boolean
-  ): Promise<any> {
+  setInstallationAsPrimary(pushRegistrationId: string, primary: boolean): Promise<any> {
     return;
   }
 

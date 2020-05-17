@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * @name App Version
  * @description
@@ -30,24 +29,27 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-app-version',
   pluginRef: 'cordova.getAppVersion',
   repo: 'https://github.com/whiteoctober/cordova-plugin-app-version',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class AppVersion extends IonicNativePlugin {
-
   /**
    * Returns the name of the app, e.g.: "My Awesome App"
    * @returns {Promise<string>}
    */
   @Cordova()
-  getAppName(): Promise<string> { return; }
+  getAppName(): Promise<string> {
+    return;
+  }
 
   /**
    * Returns the package name of the app, e.g.: "com.example.myawesomeapp"
    * @returns {Promise<string>}
    */
   @Cordova()
-  getPackageName(): Promise<string> { return; }
+  getPackageName(): Promise<string> {
+    return;
+  }
 
   /**
    * Returns the build identifier of the app.
@@ -56,13 +58,16 @@ export class AppVersion extends IonicNativePlugin {
    * @returns {Promise<string | number>}
    */
   @Cordova()
-  getVersionCode(): Promise<string | number> { return; }
+  getVersionCode(): Promise<string | number> {
+    return;
+  }
 
   /**
    * Returns the version of the app, e.g.: "1.2.3"
    * @returns {Promise<string>}
    */
   @Cordova()
-  getVersionNumber(): Promise<string> { return; }
-
+  getVersionNumber(): Promise<string> {
+    return;
+  }
 }

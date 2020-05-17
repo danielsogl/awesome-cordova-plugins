@@ -27,11 +27,10 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-discovery',
   pluginRef: 'serviceDiscovery',
   repo: 'https://github.com/scottdermott/cordova-plugin-discovery',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class ServiceDiscovery extends IonicNativePlugin {
-
   /**
    * Finds and returns metadata about devices discovered on the network via SSDP / UPnP / DLNA
    * @param service {string} The service name to discover
@@ -41,5 +40,4 @@ export class ServiceDiscovery extends IonicNativePlugin {
   getNetworkServices(service: string): Promise<any> {
     return;
   }
-
 }

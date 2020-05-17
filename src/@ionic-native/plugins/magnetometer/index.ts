@@ -22,7 +22,6 @@ export interface MagnetometerReading {
    * Calculated total - always positive of magnetometer. (Number)
    */
   magnitude: number;
-
 }
 
 /**
@@ -61,10 +60,7 @@ export interface MagnetometerReading {
   plugin: 'cordova-plugin-magnetometer',
   pluginRef: 'cordova.plugins.magnetometer',
   repo: 'https://github.com/sdesalas/cordova-plugin-magnetometer',
-  platforms: [
-    'Android',
-    'iOS',
-  ]
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Magnetometer extends IonicNativePlugin {
@@ -87,10 +83,9 @@ export class Magnetometer extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
-    clearFunction: 'stop'
+    clearFunction: 'stop',
   })
-  watchReadings(
-  ): Observable<MagnetometerReading> {
+  watchReadings(): Observable<MagnetometerReading> {
     return;
   }
 }

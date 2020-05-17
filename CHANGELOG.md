@@ -1,3 +1,23 @@
+# [5.26.0](https://github.com/ionic-team/ionic-native/compare/v5.25.0...v5.26.0) (2020-05-16)
+
+
+### Bug Fixes
+
+* **secure-storage-echo:** method is inaccessible when device is not secure [#3322](https://github.com/ionic-team/ionic-native/issues/3322) ([#3413](https://github.com/ionic-team/ionic-native/issues/3413)) ([e715498](https://github.com/ionic-team/ionic-native/commit/e715498d3323975ea34951c933d4ad6b0b8f3b10))
+* **secure-storage-echo:** method is inaccessible when device is not secure [#3322](https://github.com/ionic-team/ionic-native/issues/3322) ([#3424](https://github.com/ionic-team/ionic-native/issues/3424)) ([e59a989](https://github.com/ionic-team/ionic-native/commit/e59a989fab7abfc08d8cafdd3151ec0d9f868a2b))
+
+
+### Features
+
+* **firebase-x:** add getCurrentUser ([#3389](https://github.com/ionic-team/ionic-native/issues/3389)) ([809e5ac](https://github.com/ionic-team/ionic-native/commit/809e5ac14d3f08b51884d846f7de1d731b8b9c0a)), closes [#3356](https://github.com/ionic-team/ionic-native/issues/3356)
+* **in-app-purchase-2:** add update function ([#3416](https://github.com/ionic-team/ionic-native/issues/3416)) ([9892ce7](https://github.com/ionic-team/ionic-native/commit/9892ce7a615d68dc33126705fd6211c0ce2d4fef)), closes [#3411](https://github.com/ionic-team/ionic-native/issues/3411)
+* **jumio:** add plugin ([#3423](https://github.com/ionic-team/ionic-native/issues/3423)) ([13a8a6f](https://github.com/ionic-team/ionic-native/commit/13a8a6f1d9c23fdff9421a7f851ba0e8f4f3e1e6))
+* **lib:** add prettier ([f5133c6](https://github.com/ionic-team/ionic-native/commit/f5133c691dc3803542a42e47ac0ca78b95d38a54))
+* **metrix:** add plugin ([#3419](https://github.com/ionic-team/ionic-native/issues/3419)) ([26c9120](https://github.com/ionic-team/ionic-native/commit/26c912092c571aa7ffd31a8303f3819e8780644b))
+* **native-view:** add plugin ([#3418](https://github.com/ionic-team/ionic-native/issues/3418)) ([180b665](https://github.com/ionic-team/ionic-native/commit/180b665c4b2071233b50de0c5e792df09f17e36f))
+
+
+
 # [5.25.0](https://github.com/ionic-team/ionic-native/compare/v5.24.0...v5.25.0) (2020-05-05)
 
 

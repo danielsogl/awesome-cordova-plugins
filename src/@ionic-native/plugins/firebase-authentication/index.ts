@@ -30,7 +30,7 @@ import { Observable } from 'rxjs';
   repo: 'https://github.com/chemerisuk/cordova-plugin-firebase-authentication',
   install: 'ionic cordova plugin add cordova-plugin-firebase-authentication --variable FIREBASE_AUTH_VERSION=version',
   installVariables: ['FIREBASE_AUTH_VERSION'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseAuthentication extends IonicNativePlugin {
@@ -50,10 +50,7 @@ export class FirebaseAuthentication extends IonicNativePlugin {
    * @param password Password
    */
   @Cordova({ sync: true })
-  createUserWithEmailAndPassword(
-    email: string,
-    password: string
-  ): Promise<any> {
+  createUserWithEmailAndPassword(email: string, password: string): Promise<any> {
     return;
   }
 
@@ -107,10 +104,7 @@ export class FirebaseAuthentication extends IonicNativePlugin {
    * @param smsCode SMS code
    */
   @Cordova({ sync: true })
-  signInWithVerificationId(
-    verificationId: string,
-    smsCode: string
-  ): Promise<any> {
+  signInWithVerificationId(verificationId: string, smsCode: string): Promise<any> {
     return;
   }
 

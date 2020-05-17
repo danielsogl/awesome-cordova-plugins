@@ -83,8 +83,8 @@ export interface DeviceOrientationCompassOptions {
     'Tizen',
     'Ubuntu',
     'Windows',
-    'Windows Phone'
-  ]
+    'Windows Phone',
+  ],
 })
 @Injectable()
 export class DeviceOrientation extends IonicNativePlugin {
@@ -107,11 +107,9 @@ export class DeviceOrientation extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
-    clearFunction: 'clearWatch'
+    clearFunction: 'clearWatch',
   })
-  watchHeading(
-    options?: DeviceOrientationCompassOptions
-  ): Observable<DeviceOrientationCompassHeading> {
+  watchHeading(options?: DeviceOrientationCompassOptions): Observable<DeviceOrientationCompassHeading> {
     return;
   }
 }

@@ -148,11 +148,10 @@ export interface OCRResult {
   plugin: 'cordova-plugin-mobile-ocr',
   pluginRef: 'textocr',
   repo: 'https://github.com/NeutrinosPlatform/cordova-plugin-mobile-ocr',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class OCR extends IonicNativePlugin {
-
   /**
    * Extract text from image
    * @param sourceType {OCRSourceType} type of image source
@@ -163,5 +162,4 @@ export class OCR extends IonicNativePlugin {
   recText(sourceType: OCRSourceType, source: string): Promise<OCRResult> {
     return;
   }
-
 }

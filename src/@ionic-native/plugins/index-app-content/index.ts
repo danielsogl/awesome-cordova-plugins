@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaFunctionOverride,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 export interface IndexItem {
@@ -73,7 +68,7 @@ export interface IndexItem {
   plugin: 'cordova-plugin-indexappcontent',
   pluginRef: 'window.plugins.indexAppContent',
   repo: 'https://github.com/johanblomgren/cordova-plugin-indexappcontent',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class IndexAppContent extends IonicNativePlugin {

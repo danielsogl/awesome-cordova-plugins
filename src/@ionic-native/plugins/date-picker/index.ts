@@ -150,7 +150,7 @@ export interface DatePickerOptions {
   plugin: 'cordova-plugin-datepicker',
   pluginRef: 'datePicker',
   repo: 'https://github.com/VitaliiBlagodir/cordova-plugin-datepicker',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class DatePicker extends IonicNativePlugin {
@@ -162,7 +162,7 @@ export class DatePicker extends IonicNativePlugin {
     THEME_HOLO_DARK: 2,
     THEME_HOLO_LIGHT: 3,
     THEME_DEVICE_DEFAULT_DARK: 4,
-    THEME_DEVICE_DEFAULT_LIGHT: 5
+    THEME_DEVICE_DEFAULT_LIGHT: 5,
   };
 
   /**

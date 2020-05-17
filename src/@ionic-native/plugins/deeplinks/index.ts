@@ -88,13 +88,8 @@ export interface DeeplinkOptions {
   repo: 'https://github.com/ionic-team/ionic-plugin-deeplinks',
   install:
     'ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/',
-  installVariables: [
-    'URL_SCHEME',
-    'DEEPLINK_SCHEME',
-    'DEEPLINK_HOST',
-    'ANDROID_PATH_PREFIX'
-  ],
-  platforms: ['Android', 'Browser', 'iOS']
+  installVariables: ['URL_SCHEME', 'DEEPLINK_SCHEME', 'DEEPLINK_HOST', 'ANDROID_PATH_PREFIX'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class Deeplinks extends IonicNativePlugin {
@@ -109,7 +104,7 @@ export class Deeplinks extends IonicNativePlugin {
    * errors if a deeplink comes through that does not match a given path.
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   route(paths: any): Observable<DeeplinkMatch> {
     return;
@@ -138,13 +133,9 @@ export class Deeplinks extends IonicNativePlugin {
    * errors if a deeplink comes through that does not match a given path.
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
-  routeWithNavController(
-    navController: any,
-    paths: any,
-    options?: DeeplinkOptions
-  ): Observable<DeeplinkMatch> {
+  routeWithNavController(navController: any, paths: any, options?: DeeplinkOptions): Observable<DeeplinkMatch> {
     return;
   }
 }

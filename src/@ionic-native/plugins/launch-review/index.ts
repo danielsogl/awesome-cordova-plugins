@@ -31,11 +31,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-launch-review',
   pluginRef: 'LaunchReview',
   repo: 'https://github.com/dpa99c/cordova-launch-review',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class LaunchReview extends IonicNativePlugin {
-
   /**
    * Launches App Store on current platform in order to leave a review for given app.
    * @param appId {string} - (optional) the platform-specific app ID to use to open the page in the store app.
@@ -72,5 +71,4 @@ export class LaunchReview extends IonicNativePlugin {
   isRatingSupported(): boolean {
     return;
   }
-
 }

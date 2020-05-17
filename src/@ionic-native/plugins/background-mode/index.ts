@@ -74,7 +74,7 @@ export interface BackgroundModeConfiguration {
   plugin: 'cordova-plugin-background-mode',
   pluginRef: 'cordova.plugins.backgroundMode',
   repo: 'https://github.com/katzer/cordova-plugin-background-mode',
-  platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'Windows']
+  platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
 export class BackgroundMode extends IonicNativePlugin {
@@ -83,7 +83,7 @@ export class BackgroundMode extends IonicNativePlugin {
    * Once called, prevents the app from being paused while in background.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   enable(): void {}
 
@@ -92,7 +92,7 @@ export class BackgroundMode extends IonicNativePlugin {
    * Once the background mode has been disabled, the app will be paused when in background.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   disable(): void {
     return;
@@ -106,7 +106,7 @@ export class BackgroundMode extends IonicNativePlugin {
    * @return {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   setEnabled(enable: boolean): void {}
 
@@ -119,7 +119,7 @@ export class BackgroundMode extends IonicNativePlugin {
    * @return {string}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   fireEvent(event: string, ...args: any[]): string {
     return;
@@ -130,7 +130,7 @@ export class BackgroundMode extends IonicNativePlugin {
    * @returns {boolean} returns a boolean that indicates if the background mode is enabled.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   isEnabled(): boolean {
     return;
@@ -141,7 +141,7 @@ export class BackgroundMode extends IonicNativePlugin {
    * @returns {boolean} returns a boolean that indicates if the background mode is active.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   isActive(): boolean {
     return;
@@ -154,7 +154,7 @@ export class BackgroundMode extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   setDefaults(overrides?: BackgroundModeConfiguration): void {}
 
@@ -165,7 +165,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   configure(options?: BackgroundModeConfiguration): void {}
 
@@ -178,7 +178,7 @@ export class BackgroundMode extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'un',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   on(event: string): Observable<any> {
     return;
@@ -200,7 +200,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   moveToBackground(): void {}
 
@@ -209,7 +209,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   disableWebViewOptimizations(): void {}
 
@@ -218,7 +218,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   moveToForeground(): void {}
 
@@ -227,7 +227,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   overrideBackButton(): void {}
 
@@ -236,7 +236,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   excludeFromTaskList(): void {}
 
@@ -246,7 +246,7 @@ export class BackgroundMode extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   isScreenOff(fn: (arg0: boolean) => void): void {}
 
@@ -255,7 +255,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   wakeUp(): void {}
 
@@ -264,7 +264,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   unlock(): void {}
 
@@ -273,7 +273,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   disableBatteryOptimizations(): void {}
 }

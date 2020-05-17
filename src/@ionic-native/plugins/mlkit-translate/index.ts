@@ -44,7 +44,7 @@ export interface LanguageModel {
   plugin: 'cordova-plugin-mlkit-translate',
   pluginRef: 'MLKitTranslate',
   repo: 'https://github.com/rigelglen/cordova-plugin-mlkit-translate',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class MLKitTranslate extends IonicNativePlugin {
@@ -57,11 +57,7 @@ export class MLKitTranslate extends IonicNativePlugin {
    * @return {Promise<string>} Returns a promise that resolves with the translated text
    */
   @Cordova()
-  translate(
-    text: string,
-    targetLanguage: string,
-    sourceLanguage?: string
-  ): Promise<string> {
+  translate(text: string, targetLanguage: string, sourceLanguage?: string): Promise<string> {
     return;
   }
 

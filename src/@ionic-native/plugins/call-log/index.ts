@@ -29,7 +29,7 @@ export interface CallLogObject {
   plugin: 'cordova-plugin-calllog',
   pluginRef: 'plugins.callLog',
   repo: 'https://github.com/creacore-team/cordova-plugin-calllog',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class CallLog extends IonicNativePlugin {
@@ -48,7 +48,7 @@ export class CallLog extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   hasReadPermission(): Promise<any> {
     return;
@@ -59,7 +59,7 @@ export class CallLog extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   requestReadPermission(): Promise<any> {
     return;

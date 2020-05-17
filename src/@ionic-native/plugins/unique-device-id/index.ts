@@ -25,11 +25,10 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-uniquedeviceid',
   pluginRef: 'window.plugins.uniqueDeviceID',
   repo: 'https://github.com/Paldom/UniqueDeviceID',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
 export class UniqueDeviceID extends IonicNativePlugin {
-
   /**
    * Gets a unique, cross-install, app-specific device id.
    * @return {Promise<string>} Returns a promise that resolves when something happens
@@ -38,5 +37,4 @@ export class UniqueDeviceID extends IonicNativePlugin {
   get(): Promise<string> {
     return;
   }
-
 }

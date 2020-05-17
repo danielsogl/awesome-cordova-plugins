@@ -29,7 +29,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-file-opener2',
   pluginRef: 'cordova.plugins.fileOpener2',
   repo: 'https://github.com/pwlin/cordova-plugin-file-opener2',
-  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
 export class FileOpener extends IonicNativePlugin {
@@ -42,7 +42,7 @@ export class FileOpener extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'success',
-    errorName: 'error'
+    errorName: 'error',
   })
   open(filePath: string, fileMIMEType: string): Promise<any> {
     return;
@@ -56,7 +56,7 @@ export class FileOpener extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'success',
-    errorName: 'error'
+    errorName: 'error',
   })
   uninstall(packageId: string): Promise<any> {
     return;
@@ -70,7 +70,7 @@ export class FileOpener extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'success',
-    errorName: 'error'
+    errorName: 'error',
   })
   appIsInstalled(packageId: string): Promise<any> {
     return;
@@ -85,7 +85,7 @@ export class FileOpener extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'success',
-    errorName: 'error'
+    errorName: 'error',
   })
   showOpenWithDialog(filePath: string, fileMIMEType: string): Promise<any> {
     return;

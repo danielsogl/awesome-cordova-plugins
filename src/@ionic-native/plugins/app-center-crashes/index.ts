@@ -62,9 +62,8 @@ export interface AppCenterCrashReportDevice {
   pluginName: 'AppCenterCrashes',
   plugin: 'cordova-plugin-appcenter-crashes',
   pluginRef: 'AppCenter.Crashes',
-  repo:
-    'https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-crashes',
-  platforms: ['Android', 'iOS']
+  repo: 'https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-crashes',
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class AppCenterCrashes extends IonicNativePlugin {

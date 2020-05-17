@@ -56,9 +56,10 @@ export interface TwitterConnectResponse {
   plugin: 'twitter-connect-plugin',
   pluginRef: 'TwitterConnect',
   repo: 'https://github.com/chroa/twitter-connect-plugin',
-  install: 'ionic cordova plugin add https://github.com/chroa/twitter-connect-plugin --variable FABRIC_KEY=<Fabric API Key> --variable TWITTER_KEY=<Twitter Consumer Key> --variable TWITTER_SECRET=<Twitter Consumer Secret>',
+  install:
+    'ionic cordova plugin add https://github.com/chroa/twitter-connect-plugin --variable FABRIC_KEY=<Fabric API Key> --variable TWITTER_KEY=<Twitter Consumer Key> --variable TWITTER_SECRET=<Twitter Consumer Secret>',
   installVariables: ['FABRIC_KEY', 'TWITTER_KEY', 'TWITTER_SECRET'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class TwitterConnect extends IonicNativePlugin {

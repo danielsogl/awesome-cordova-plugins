@@ -106,7 +106,7 @@ export interface BarcodeScanResult {
   plugin: 'phonegap-plugin-barcodescanner',
   pluginRef: 'cordova.plugins.barcodeScanner',
   repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Windows']
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
 export class BarcodeScanner extends IonicNativePlugin {
@@ -119,7 +119,7 @@ export class BarcodeScanner extends IonicNativePlugin {
     TEXT_TYPE: 'TEXT_TYPE',
     EMAIL_TYPE: 'EMAIL_TYPE',
     PHONE_TYPE: 'PHONE_TYPE',
-    SMS_TYPE: 'SMS_TYPE'
+    SMS_TYPE: 'SMS_TYPE',
   };
 
   /**
@@ -128,7 +128,7 @@ export class BarcodeScanner extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with scanner data, or rejects with an error.
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   scan(options?: BarcodeScannerOptions): Promise<BarcodeScanResult> {
     return;

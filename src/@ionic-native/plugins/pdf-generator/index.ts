@@ -57,10 +57,10 @@ export interface PDFGeneratorOptions {
   plugin: 'cordova-pdf-generator',
   pluginRef: 'cordova.plugins.pdf',
   repo: 'https://github.com/cesarvr/pdf-generator',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PDFGenerator extends IonicNativePlugin {
   /**

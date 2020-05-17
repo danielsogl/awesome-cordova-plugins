@@ -27,11 +27,10 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-firebase-mlvision',
   pluginRef: 'FirebaseVisionPlugin',
   repo: 'https://github.com/alon22/cordova-plugin-firebase-mlvision',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseVision extends IonicNativePlugin {
-
   /**
    * Recognize text in image
    * @param file_uri {string} Image URI

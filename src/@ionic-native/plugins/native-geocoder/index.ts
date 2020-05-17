@@ -36,11 +36,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-nativegeocoder',
   pluginRef: 'nativegeocoder',
   repo: 'https://github.com/sebastianbaar/cordova-plugin-nativegeocoder',
-  platforms: ['iOS', 'Android']
+  platforms: ['iOS', 'Android'],
 })
 @Injectable()
 export class NativeGeocoder extends IonicNativePlugin {
-
   /**
    * Reverse geocode a given latitude and longitude to find location address
    * @param latitude {number} The latitude
@@ -49,9 +48,15 @@ export class NativeGeocoder extends IonicNativePlugin {
    * @return {Promise<NativeGeocoderResult[]>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
-  reverseGeocode(latitude: number, longitude: number, options?: NativeGeocoderOptions): Promise<NativeGeocoderResult[]> { return; }
+  reverseGeocode(
+    latitude: number,
+    longitude: number,
+    options?: NativeGeocoderOptions
+  ): Promise<NativeGeocoderResult[]> {
+    return;
+  }
 
   /**
    * Forward geocode a given address to find coordinates
@@ -60,9 +65,11 @@ export class NativeGeocoder extends IonicNativePlugin {
    * @return {Promise<NativeGeocoderResult[]>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
-  forwardGeocode(addressString: string, options?: NativeGeocoderOptions): Promise<NativeGeocoderResult[]> { return; }
+  forwardGeocode(addressString: string, options?: NativeGeocoderOptions): Promise<NativeGeocoderResult[]> {
+    return;
+  }
 }
 
 /**

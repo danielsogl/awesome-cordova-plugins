@@ -25,15 +25,7 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-app-preferences',
   pluginRef: 'plugins.appPreferences',
   repo: 'https://github.com/apla/me.apla.cordova.app-preferences',
-  platforms: [
-    'Android',
-    'BlackBerry 10',
-    'Browser',
-    'iOS',
-    'macOS',
-    'Windows 8',
-    'Windows Phone'
-  ]
+  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'macOS', 'Windows 8', 'Windows Phone'],
 })
 @Injectable()
 export class AppPreferences extends IonicNativePlugin {
@@ -45,7 +37,7 @@ export class AppPreferences extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   fetch(dict: string, key?: string): Promise<any> {
     return;
@@ -60,7 +52,7 @@ export class AppPreferences extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   store(dict: string, key: string, value?: any): Promise<any> {
     return;
@@ -74,7 +66,7 @@ export class AppPreferences extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   remove(dict: string, key?: string): Promise<any> {
     return;
@@ -86,7 +78,7 @@ export class AppPreferences extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   clearAll(): Promise<any> {
     return;
@@ -98,7 +90,7 @@ export class AppPreferences extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   show(): Promise<any> {
     return;
@@ -111,7 +103,7 @@ export class AppPreferences extends IonicNativePlugin {
    * @return {Observable<any>} Returns an observable
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   watch(subscribe: boolean): Observable<any> {
     return;
@@ -126,7 +118,7 @@ export class AppPreferences extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   suite(suiteName: string): any {
     return;
@@ -134,7 +126,7 @@ export class AppPreferences extends IonicNativePlugin {
 
   @Cordova({
     platforms: ['iOS'],
-    sync: true
+    sync: true,
   })
   iosSuite(suiteName: string): any {
     return;
@@ -146,7 +138,7 @@ export class AppPreferences extends IonicNativePlugin {
    * @returns {Object} Custom object, bound to that suite
    */
   @Cordova({
-    platforms: ['iOS', 'Windows', 'Windows Phone 8']
+    platforms: ['iOS', 'Windows', 'Windows Phone 8'],
   })
   cloudSync(): Object {
     return;
@@ -158,7 +150,7 @@ export class AppPreferences extends IonicNativePlugin {
    * @returns {Object} Custom Object, bound to that suite
    */
   @Cordova({
-    platforms: ['iOS', 'Windows', 'Windows Phone 8']
+    platforms: ['iOS', 'Windows', 'Windows Phone 8'],
   })
   defaults(): Object {
     return;

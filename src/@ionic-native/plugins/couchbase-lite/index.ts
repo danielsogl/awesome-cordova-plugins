@@ -116,7 +116,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'couchbase-lite-phonegap-plugin',
   pluginRef: 'cblite',
   repo: 'https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class CouchbaseLite extends IonicNativePlugin {
@@ -125,7 +125,7 @@ export class CouchbaseLite extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves with the local database url
    */
   @Cordova({
-    callbackStyle: 'node'
+    callbackStyle: 'node',
   })
   getURL(): Promise<any> {
     return;

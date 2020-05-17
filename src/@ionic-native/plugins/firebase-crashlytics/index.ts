@@ -26,9 +26,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-firebase-crashlytics',
   pluginRef: 'FirebaseCrashlytics',
   repo: 'https://github.com/ReallySmallSoftware/cordova-plugin-firebase-crashlytics',
-  install: 'ionic cordova plugin add cordova-plugin-firebase-crashlytics --variable ANDROID_FIREBASE_CORE_VERSION=16.0.0',
+  install:
+    'ionic cordova plugin add cordova-plugin-firebase-crashlytics --variable ANDROID_FIREBASE_CORE_VERSION=16.0.0',
   installVariables: ['ANDROID_FIREBASE_CORE_VERSION'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseCrashlytics extends IonicNativePlugin {
@@ -38,7 +39,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @returns {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   initialise(): any {
     return; // We add return; here to avoid any IDE / Compiler errors
@@ -50,7 +51,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @returns {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   crash(): void {
     return; // We add return; here to avoid any IDE / Compiler errors
@@ -65,7 +66,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @returns {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   logPriority(priority: number, tag: string, message: string): void {
     return;
@@ -78,7 +79,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @returns {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   log(message: string): void {
     return;
@@ -91,7 +92,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @returns {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   logException(message: string): void {
     return;
@@ -105,7 +106,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @returns {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   setString(key: string, value: string): void {
     return;
@@ -119,7 +120,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @returns {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   setBool(key: string, value: boolean): void {
     return;
@@ -133,7 +134,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @returns {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   setDouble(key: string, value: number): void {
     return;
@@ -147,7 +148,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @returns {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   setFloat(key: string, value: number): void {
     return;
@@ -161,7 +162,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @returns {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   setInt(key: string, value: number): void {
     return;
@@ -174,7 +175,7 @@ export class FirebaseCrashlytics extends IonicNativePlugin {
    * @returns {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   setUserIdentifier(identifier: string): void {
     return;

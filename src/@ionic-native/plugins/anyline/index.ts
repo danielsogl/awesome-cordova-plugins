@@ -35,7 +35,7 @@ export interface AnylineOptions {
   plugin: 'io-anyline-cordova',
   pluginRef: 'Anyline',
   repo: 'https://github.com/Anyline/anyline-ocr-cordova-module',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Anyline extends IonicNativePlugin {

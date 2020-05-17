@@ -25,11 +25,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-googleplus',
   install: 'ionic cordova plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=myreversedclientid',
   installVariables: ['REVERSED_CLIENT_ID'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class GooglePlus extends IonicNativePlugin {
-
   /**
    * The login function walks the user through the Google Auth process.
    * @param options
@@ -37,7 +36,7 @@ export class GooglePlus extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   login(options: any): Promise<any> {
     return;
@@ -79,5 +78,4 @@ export class GooglePlus extends IonicNativePlugin {
   getSigningCertificateFingerprint(): Promise<any> {
     return;
   }
-
 }

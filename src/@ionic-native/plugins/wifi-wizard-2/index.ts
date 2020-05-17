@@ -433,11 +433,10 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
   plugin: 'cordova-plugin-wifiwizard2',
   pluginRef: 'WifiWizard2',
   repo: 'https://github.com/tripflex/WifiWizard2',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class WifiWizard2 extends IonicNativePlugin {
-
   /**
    * Connect to network on iOS device
    * @param ssid
@@ -446,7 +445,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    */
   @Cordova({
     otherPromise: true,
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   iOSConnectNetwork(ssid: string, ssidPassword: string): Promise<any> {
     return;
@@ -459,7 +458,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    */
   @Cordova({
     otherPromise: true,
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   iOSDisconnectNetwork(ssid: string): Promise<any> {
     return;
@@ -471,7 +470,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   add(wifiConfig: WifiConfig): Promise<any> {
     return;
@@ -483,7 +482,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   remove(ssid: string | number): Promise<any> {
     return;
@@ -502,7 +501,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    */
   @Cordova({
     otherPromise: true,
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   connect(ssid: string | number, bindAll?: boolean, password?: string, algorithm?: string): Promise<any> {
     return;
@@ -519,7 +518,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    */
   @Cordova({
     otherPromise: true,
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   disconnect(ssid: string | number): Promise<any> {
     return;
@@ -534,7 +533,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    */
   @Cordova({
     otherPromise: true,
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   enable(ssid: string | number, bindAll?: boolean, waitForConnection?: boolean): Promise<any> {
     return;
@@ -547,7 +546,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    */
   @Cordova({
     otherPromise: true,
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   disable(ssid: string | number): Promise<any> {
     return;
@@ -559,7 +558,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    */
   @Cordova({
     otherPromise: true,
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   reassociate(): Promise<any> {
     return;
@@ -571,7 +570,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    */
   @Cordova({
     otherPromise: true,
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   reconnect(): Promise<any> {
     return;
@@ -582,7 +581,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   listNetworks(): Promise<any> {
     return;
@@ -594,7 +593,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   scan(options?: WifiScanOptions): Promise<any> {
     return;
@@ -605,7 +604,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   startScan(): Promise<any> {
     return;
@@ -617,7 +616,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   getScanResults(options: WifiScanResultsOptions): Promise<any> {
     return;
@@ -628,7 +627,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   isWifiEnabled(): Promise<any> {
     return;
@@ -641,7 +640,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    */
   @Cordova({
     otherPromise: true,
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   setWifiEnabled(enabled: boolean): Promise<any> {
     return;
@@ -653,7 +652,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    */
   @Cordova({
     otherPromise: true,
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   enableWifi(): Promise<any> {
     return;
@@ -665,7 +664,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    */
   @Cordova({
     otherPromise: true,
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   disableWifi(): Promise<any> {
     return;
@@ -676,7 +675,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   resetBindAll(): Promise<any> {
     return;
@@ -687,7 +686,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   setBindAll(): Promise<any> {
     return;
@@ -698,7 +697,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   getWifiRouterIP(): Promise<any> {
     return;
@@ -709,7 +708,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   getWifiIP(): Promise<any> {
     return;
@@ -722,7 +721,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   getWifiIPInfo(): Promise<any> {
     return;
@@ -734,7 +733,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   getSSIDNetworkID(ssid: string | number): Promise<any> {
     return;
@@ -745,7 +744,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   getConnectedNetworkID(): Promise<any> {
     return;
@@ -756,7 +755,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   getConnectedSSID(): Promise<any> {
     return;
@@ -767,7 +766,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   getConnectedBSSID(): Promise<any> {
     return;
@@ -778,7 +777,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   isConnectedToInternet(): Promise<any> {
     return;
@@ -789,7 +788,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   canPingWifiRouter(): Promise<any> {
     return;
@@ -800,7 +799,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   canConnectToRouter(): Promise<any> {
     return;
@@ -811,7 +810,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   canConnectToInternet(): Promise<any> {
     return;
@@ -826,7 +825,7 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   requestPermission(): Promise<any> {
     return;
@@ -841,7 +840,12 @@ export class WifiWizard2 extends IonicNativePlugin {
    * @returns {WifiConfig|boolean}
    */
   @CordovaFunctionOverride()
-  formatWifiConfig(ssid: string | number, password: string, algorithm: string, isHiddenSSID: boolean): WifiConfig | boolean {
+  formatWifiConfig(
+    ssid: string | number,
+    password: string,
+    algorithm: string,
+    isHiddenSSID: boolean
+  ): WifiConfig | boolean {
     return;
   }
 

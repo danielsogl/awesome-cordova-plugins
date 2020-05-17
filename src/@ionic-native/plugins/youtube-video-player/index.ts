@@ -30,17 +30,14 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-youtube-video-player',
   pluginRef: 'YoutubeVideoPlayer',
   repo: 'https://github.com/ihadeed/CordovaYoutubeVideoPlayer',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class YoutubeVideoPlayer extends IonicNativePlugin {
-
   /**
    * Plays a YouTube video
    * @param videoId {string} Video ID
    */
   @Cordova({ sync: true })
-  openVideo(videoId: string): void {
-  }
-
+  openVideo(videoId: string): void {}
 }
