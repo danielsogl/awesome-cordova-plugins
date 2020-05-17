@@ -407,8 +407,7 @@ export class BAMCardInformation {
 
 /**
  * @name Jumio
- * @description
- * Check out [example with Angular 9.1 & Capacitor 2.1](https://github.com/zendigital/jumio-ionic-demo)
+ * @description Check out [example with Angular 9.1 & Capacitor 2.1](https://github.com/zendigital/jumio-ionic-demo)
  *
  * [Platform Customization](https://github.com/Jumio/mobile-cordova#customization) is possible
  *
