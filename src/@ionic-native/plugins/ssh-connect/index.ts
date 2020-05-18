@@ -35,11 +35,10 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-ssh-connect',
   pluginRef: 'cordova.plugins.sshConnect',
   repo: 'https://github.com/JosePerez27/cordova-plugin-ssh-connect',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class SSHConnect extends IonicNativePlugin {
-
   /**
    * Establish a remote ssh connection
    * @param {user} user  The remote host user

@@ -24,11 +24,10 @@ declare const window: any;
   plugin: 'cordova-plugin-device',
   pluginRef: 'device',
   repo: 'https://github.com/apache/cordova-plugin-device',
-  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows']
+  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows'],
 })
 @Injectable()
 export class Device extends IonicNativePlugin {
-
   /** Get the version of Cordova running on the device. */
   @CordovaProperty()
   cordova: string;
@@ -63,5 +62,4 @@ export class Device extends IonicNativePlugin {
   /** Get the device hardware serial number. */
   @CordovaProperty()
   serial: string;
-
 }

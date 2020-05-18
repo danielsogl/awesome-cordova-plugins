@@ -87,11 +87,10 @@ export interface OMLFacialData {
   plugin: 'codova-plugin-luxand',
   pluginRef: 'window.Luxand',
   repo: 'https://github.com/molobala/cordova-plugin-luxand',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Luxand extends IonicNativePlugin {
-
   /**
    * Initialize Luxand SDK
    * @param config {LuxandConfig} LuxandConfig configuration object to use to init the SDK
@@ -107,7 +106,7 @@ export class Luxand extends IonicNativePlugin {
    * @return {Promise<OMLFacialData>} // Returns a promise that resolve if a face has been detected and saved by the tracker in the internal database
    */
   @Cordova()
-  register(params: {timeout: number}): Promise<OMLFacialData> {
+  register(params: { timeout: number }): Promise<OMLFacialData> {
     return;
   }
   /**
@@ -116,7 +115,7 @@ export class Luxand extends IonicNativePlugin {
    * @return {Promise<OMLFacialData>}
    */
   @Cordova()
-  login(params: {timeout: number}): Promise<OMLFacialData> {
+  login(params: { timeout: number }): Promise<OMLFacialData> {
     return; // Returns a promise that resolve if a face is recognize successfully
   }
   /**
@@ -137,4 +136,3 @@ export class Luxand extends IonicNativePlugin {
     return;
   }
 }
-

@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
+import {
+  Plugin,
+  Cordova,
+  CordovaProperty,
+  CordovaInstance,
+  InstanceProperty,
+  IonicNativePlugin,
+} from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 export interface Response {
@@ -57,11 +64,10 @@ export interface SaleResponse extends Response {
   pluginRef: 'clovergo',
   repo: 'https://github.com/hotwax/cordova-plugin-clovergo',
   install: 'ionic plugin add cordova-plugin-clovergo',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class CloverGo extends IonicNativePlugin {
-
   /**
    * This function initialises Clover Go SDK
    * @param configuration {object}
@@ -101,5 +107,4 @@ export class CloverGo extends IonicNativePlugin {
   sale(saleInfo: object): Promise<SaleResponse> {
     return;
   }
-
 }

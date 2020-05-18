@@ -36,16 +36,9 @@ export interface BranchIoProperties {
 }
 
 export interface BranchUniversalObject {
-  generateShortUrl(
-    analytics: BranchIoAnalytics,
-    properties: BranchIoProperties
-  ): Promise<any>;
+  generateShortUrl(analytics: BranchIoAnalytics, properties: BranchIoProperties): Promise<any>;
   registerView(): Promise<any>;
-  showShareSheet(
-    analytics: BranchIoAnalytics,
-    properties: BranchIoProperties,
-    shareText: string
-  ): Promise<any>;
+  showShareSheet(analytics: BranchIoAnalytics, properties: BranchIoProperties, shareText: string): Promise<any>;
   onShareSheetLaunched(callback: any): void;
   onShareSheetDismissed(callback: any): void;
   onLinkShareResponse(callback: any): void;
@@ -78,9 +71,8 @@ export interface BranchUniversalObject {
   pluginName: 'BranchIo',
   plugin: 'branch-cordova-sdk',
   pluginRef: 'Branch',
-  repo:
-    'https://github.com/BranchMetrics/cordova-ionic-phonegap-branch-deep-linking',
-  platforms: ['iOS', 'Android']
+  repo: 'https://github.com/BranchMetrics/cordova-ionic-phonegap-branch-deep-linking',
+  platforms: ['iOS', 'Android'],
 })
 @Injectable()
 export class BranchIo extends IonicNativePlugin {
@@ -197,9 +189,7 @@ export class BranchIo extends IonicNativePlugin {
    * @return {Promise<BranchUniversalObject>}
    */
   @Cordova({ otherPromise: true })
-  createBranchUniversalObject(
-    properties: BranchIoProperties
-  ): Promise<BranchUniversalObject> {
+  createBranchUniversalObject(properties: BranchIoProperties): Promise<BranchUniversalObject> {
     return;
   }
 

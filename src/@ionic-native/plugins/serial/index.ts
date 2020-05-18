@@ -54,7 +54,7 @@ export interface SerialOpenOptions {
   plugin: 'cordovarduino',
   pluginRef: 'serial',
   repo: 'https://github.com/xseignard/cordovarduino',
-  platforms: ['Android', 'Ubuntu']
+  platforms: ['Android', 'Ubuntu'],
 })
 @Injectable()
 export class Serial extends IonicNativePlugin {
@@ -66,7 +66,7 @@ export class Serial extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   requestPermission(options?: SerialPermissionOptions): Promise<any> {
     return;
@@ -121,7 +121,7 @@ export class Serial extends IonicNativePlugin {
    * @returns {Observable<any>} Observable returns an observable that you can subscribe to
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   registerReadCallback(): Observable<any> {
     return;

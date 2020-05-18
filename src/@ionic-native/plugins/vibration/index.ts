@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * @name Vibration
  * @description Vibrates the device
@@ -33,18 +32,16 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-vibration',
   pluginRef: 'navigator',
   repo: 'https://github.com/apache/cordova-plugin-vibration',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class Vibration extends IonicNativePlugin {
-
   /**
    * Vibrates the device for given amount of time.
    * @param time {number|number[]} Milliseconds to vibrate the device. If passed an array of numbers, it will define a vibration pattern. Pass 0 to stop any vibration immediately.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
-  vibrate(time: number | number[]) { }
-
+  vibrate(time: number | number[]) {}
 }

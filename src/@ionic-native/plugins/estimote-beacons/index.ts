@@ -42,7 +42,7 @@ export interface EstimoteBeaconRegion {
   plugin: 'cordova-plugin-estimote',
   pluginRef: 'estimote.beacons',
   repo: 'https://github.com/evothings/phonegap-estimotebeacons',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class EstimoteBeacons extends IonicNativePlugin {
@@ -187,14 +187,9 @@ export class EstimoteBeacons extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    clearFunction: 'stopAdvertisingAsBeacon'
+    clearFunction: 'stopAdvertisingAsBeacon',
   })
-  startAdvertisingAsBeacon(
-    uuid: string,
-    major: number,
-    minor: number,
-    regionId: string
-  ): Promise<any> {
+  startAdvertisingAsBeacon(uuid: string, major: number, minor: number, regionId: string): Promise<any> {
     return;
   }
 
@@ -300,7 +295,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'stopEstimoteBeaconDiscovery'
+    clearFunction: 'stopEstimoteBeaconDiscovery',
   })
   startEstimoteBeaconDiscovery(): Observable<any> {
     return;
@@ -344,7 +339,7 @@ export class EstimoteBeacons extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'stopRangingBeaconsInRegion',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   startRangingBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> {
     return;
@@ -382,11 +377,9 @@ export class EstimoteBeacons extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'stopRangingSecureBeaconsInRegion',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
-  startRangingSecureBeaconsInRegion(
-    region: EstimoteBeaconRegion
-  ): Observable<any> {
+  startRangingSecureBeaconsInRegion(region: EstimoteBeaconRegion): Observable<any> {
     return;
   }
 
@@ -423,12 +416,9 @@ export class EstimoteBeacons extends IonicNativePlugin {
     clearFunction: 'stopMonitoringForRegion',
     clearWithArgs: true,
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
-  startMonitoringForRegion(
-    region: EstimoteBeaconRegion,
-    notifyEntryStateOnDisplay: boolean
-  ): Observable<any> {
+  startMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> {
     return;
   }
 
@@ -464,12 +454,9 @@ export class EstimoteBeacons extends IonicNativePlugin {
     clearFunction: 'stopSecureMonitoringForRegion',
     clearWithArgs: true,
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
-  startSecureMonitoringForRegion(
-    region: EstimoteBeaconRegion,
-    notifyEntryStateOnDisplay: boolean
-  ): Observable<any> {
+  startSecureMonitoringForRegion(region: EstimoteBeaconRegion, notifyEntryStateOnDisplay: boolean): Observable<any> {
     return;
   }
 

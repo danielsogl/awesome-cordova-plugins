@@ -48,7 +48,7 @@ export enum PURCHASE_TYPE {
  */
 export enum ProductType {
   SUBS = 'subs',
-  INAPP = 'inapp'
+  INAPP = 'inapp',
 }
 
 export enum PRORATION_MODE {
@@ -81,7 +81,6 @@ export enum PRORATION_MODE {
 }
 
 export enum PACKAGE_TYPE {
-
   /**
    * A package that was defined with a custom identifier.
    */
@@ -140,7 +139,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
   /**
    * The user is eligible for a free trial or intro pricing for this product.
    */
-  INTRO_ELIGIBILITY_STATUS_ELIGIBLE
+  INTRO_ELIGIBILITY_STATUS_ELIGIBLE,
 }
 
 /**
@@ -211,13 +210,12 @@ export enum INTRO_ELIGIBILITY_STATUS {
   plugin: 'cordova-plugin-purchases@1.1.0',
   pluginRef: 'Purchases', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/RevenueCat/cordova-plugin-purchases', // the github repository URL for the plugin
-  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class Purchases extends IonicNativePlugin {
-
   static ATTRIBUTION_NETWORKS = ATTRIBUTION_NETWORK;
   /**
    * Enum for attribution networks
@@ -263,11 +261,7 @@ export class Purchases extends IonicNativePlugin {
    * to acknowledge the purchases yourself.
    */
   @Cordova({ sync: true })
-  setup(
-    apiKey: string,
-    appUserID?: string | null,
-    observerMode = false
-  ): void {}
+  setup(apiKey: string, appUserID?: string | null, observerMode = false): void {}
 
   /**
    * Set this to true if you are passing in an appUserID but it is anonymous, this is true by default if you didn't pass an appUserID
@@ -285,11 +279,7 @@ export class Purchases extends IonicNativePlugin {
    * @param {string?} networkUserId An optional unique id for identifying the user. Needs to be a string.
    */
   @Cordova({ sync: true })
-  addAttributionData(
-    data: { [key: string]: any },
-    network: ATTRIBUTION_NETWORK,
-    networkUserId?: string
-  ): void {}
+  addAttributionData(data: { [key: string]: any }, network: ATTRIBUTION_NETWORK, networkUserId?: string): void {}
 
   /**
    * Gets the Offerings configured in the dashboard
@@ -310,12 +300,9 @@ export class Purchases extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
-  getProducts(
-    productIdentifiers: string[],
-    type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS
-  ): Promise<PurchasesProduct[]> {
+  getProducts(productIdentifiers: string[], type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS): Promise<PurchasesProduct[]> {
     return;
   }
 
@@ -340,13 +327,13 @@ export class Purchases extends IonicNativePlugin {
   @Cordova({
     successIndex: 1,
     errorIndex: 2,
-    observable: true
+    observable: true,
   })
   makePurchase(
     productIdentifier: string,
     oldSKU?: string | null,
     type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS
-  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo; }> {
+  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo }> {
     return;
   }
 
@@ -363,13 +350,13 @@ export class Purchases extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   purchaseProduct(
     productIdentifier: string,
     upgradeInfo?: UpgradeInfo | null,
     type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS
-  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo; }> {
+  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo }> {
     return;
   }
 
@@ -385,12 +372,12 @@ export class Purchases extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   purchasePackage(
     aPackage: PurchasesPackage,
     upgradeInfo?: UpgradeInfo | null
-  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo; }> {
+  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo }> {
     return;
   }
 
@@ -469,7 +456,7 @@ export class Purchases extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onPurchaserInfoUpdated',
-    element: 'window'
+    element: 'window',
   })
   onPurchaserInfoUpdated(): Observable<PurchaserInfo> {
     return;
@@ -524,7 +511,7 @@ export class Purchases extends IonicNativePlugin {
   @Cordova()
   checkTrialOrIntroductoryPriceEligibility(
     productIdentifiers: string[]
-  ): Promise<{ [productId: string]: IntroEligibility; }> {
+  ): Promise<{ [productId: string]: IntroEligibility }> {
     return;
   }
 
@@ -607,20 +594,17 @@ export class Purchases extends IonicNativePlugin {
 /**
  * @deprecated use PurchasesProduct instead
  */
-export interface RCProduct {
-}
+export interface RCProduct {}
 
 /**
  * @deprecated use PurchaserInfo instead
  */
-export interface RCPurchaserInfo {
-}
+export interface RCPurchaserInfo {}
 
 /**
  * @deprecated use PurchasesError instead
  */
-export interface RCError {
-}
+export interface RCError {}
 /**
  * The EntitlementInfo object gives you access to all of the information about the status of a user entitlement.
  */

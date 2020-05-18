@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaCheck,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Cordova, CordovaCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 declare const cordova: any;
@@ -40,7 +35,7 @@ declare const cordova: any;
   plugin: 'cordova-plugin-jins-meme',
   pluginRef: 'JinsMemePlugin',
   repo: 'https://github.com/BlyncSync/cordova-plugin-jins-meme',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class JinsMeme extends IonicNativePlugin {
@@ -64,7 +59,7 @@ export class JinsMeme extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'stopScan',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   startScan(): Observable<any> {
     return;
@@ -83,7 +78,7 @@ export class JinsMeme extends IonicNativePlugin {
    * @returns {Observable<any>}
    */
   @CordovaCheck({
-    observable: true
+    observable: true,
   })
   connect(target: string): Observable<any> {
     return new Observable<any>((observer: any) => {
@@ -129,7 +124,7 @@ export class JinsMeme extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'stopDataReport',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   startDataReport(): Observable<any> {
     return;

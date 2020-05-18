@@ -18,7 +18,11 @@ export function getDecorator(node: ts.Node, index = 0): ts.Decorator {
 }
 
 export function hasDecorator(decoratorName: string, node: ts.Node): boolean {
-  return node.decorators && node.decorators.length && node.decorators.findIndex(d => getDecoratorName(d) === decoratorName) > -1;
+  return (
+    node.decorators &&
+    node.decorators.length &&
+    node.decorators.findIndex(d => getDecoratorName(d) === decoratorName) > -1
+  );
 }
 
 export function getDecoratorName(decorator: any) {
@@ -96,9 +100,11 @@ export function convertValueToLiteral(val: any) {
  * @returns Typescript Object Literal Expression
  */
 function objectToObjectLiteral(obj: { [key: string]: any }): ts.ObjectLiteralExpression {
-  const newProperties: ts.ObjectLiteralElementLike[] = Object.keys(obj).map((key: string): ts.ObjectLiteralElementLike => {
-    return ts.createPropertyAssignment(ts.createLiteral(key), convertValueToLiteral(obj[key]) as ts.Expression);
-  });
+  const newProperties: ts.ObjectLiteralElementLike[] = Object.keys(obj).map(
+    (key: string): ts.ObjectLiteralElementLike => {
+      return ts.createPropertyAssignment(ts.createLiteral(key), convertValueToLiteral(obj[key]) as ts.Expression);
+    }
+  );
 
   return ts.createObjectLiteral(newProperties);
 }
@@ -116,10 +122,14 @@ function arrayToArrayLiteral(list: any[]): ts.ArrayLiteralExpression {
 
 export function getMethodsForDecorator(decoratorName: string) {
   switch (decoratorName) {
-    case 'CordovaProperty': return ['cordovaPropertyGet', 'cordovaPropertySet'];
-    case 'InstanceProperty': return ['instancePropertyGet', 'instancePropertySet'];
-    case 'CordovaCheck': return ['checkAvailability'];
-    case 'InstanceCheck': return ['instanceAvailability'];
+    case 'CordovaProperty':
+      return ['cordovaPropertyGet', 'cordovaPropertySet'];
+    case 'InstanceProperty':
+      return ['instancePropertyGet', 'instancePropertySet'];
+    case 'CordovaCheck':
+      return ['checkAvailability'];
+    case 'InstanceCheck':
+      return ['instanceAvailability'];
   }
 
   return [camelCase(decoratorName)];

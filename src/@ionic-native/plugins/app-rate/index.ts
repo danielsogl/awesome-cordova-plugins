@@ -179,7 +179,7 @@ export interface AppUrls {
   plugin: 'cordova-plugin-apprate',
   pluginRef: 'AppRate',
   repo: 'https://github.com/pushandplay/cordova-plugin-apprate',
-  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows']
+  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows'],
 })
 @Injectable()
 export class AppRate extends IonicNativePlugin {

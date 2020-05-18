@@ -21,8 +21,8 @@ const PACKAGE_JSON_BASE = {
   license: 'MIT',
   repository: {
     type: 'git',
-    url: 'https://github.com/ionic-team/ionic-native.git'
-  }
+    url: 'https://github.com/ionic-team/ionic-native.git',
+  },
 };
 
 const DIST = path.resolve(ROOT, 'dist/@ionic-native');
@@ -34,16 +34,15 @@ const RXJS_VERSION = '^5.5.0 || ^6.5.0';
 
 const PLUGIN_PEER_DEPENDENCIES = {
   '@ionic-native/core': MIN_CORE_VERSION,
-  rxjs: RXJS_VERSION
+  rxjs: RXJS_VERSION,
 };
-
 
 function getPackageJsonContent(name: string, peerDependencies = {}, dependencies = {}) {
   return merge(PACKAGE_JSON_BASE, {
     name: '@ionic-native/' + name,
     dependencies,
     peerDependencies,
-    version: VERSION
+    version: VERSION,
   });
 }
 
@@ -52,7 +51,7 @@ function writePackageJson(data: any, dir: string) {
   fs.writeJSONSync(filePath, data);
   PACKAGES.push(dir);
 }
-function writeNGXPackageJson(data: any, dir: string){
+function writeNGXPackageJson(data: any, dir: string) {
   const filePath = path.resolve(dir, 'package.json');
   fs.writeJSONSync(filePath, data);
 }
@@ -87,9 +86,7 @@ async function publish(ignoreErrors = false) {
           }
           if (err) {
             if (!ignoreErrors) {
-              if (
-                err.message.includes('You cannot publish over the previously published version')
-              ) {
+              if (err.message.includes('You cannot publish over the previously published version')) {
                 Logger.verbose('Ignoring duplicate version error.');
                 return resolve();
               }

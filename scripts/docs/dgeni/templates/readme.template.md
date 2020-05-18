@@ -5,13 +5,13 @@
 # <$ doc.name $>
 
 <@- if doc.beta == true @>
+
   <p style="color:orange">
     This plugin is still in beta stage and may not work as expected. Please
     submit any issues to the <a target="_blank"
     href="<$ prop.repo $>/issues">plugin repo</a>.
   </p>
 <@ endif -@>
-
 
 <@ for prop in doc.decorators[0].argumentInfo @>
 
@@ -29,9 +29,11 @@ Plugin Repo: [<$ prop.repo $>](<$ prop.repo $>)
 <@- if prop.platforms @>
 
 ## Supported platforms
+
 <@ for platform in prop.platforms -@>
+
 - <$ platform $>
-<@ endfor @>
+  <@ endfor @>
 
 <@ endif -@>
 

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 module.exports = function readmes(renderDocsProcessor) {
   return {
     name: 'readmes',
@@ -14,6 +14,6 @@ module.exports = function readmes(renderDocsProcessor) {
       });
 
       return docs;
-    }
+    },
   };
 };

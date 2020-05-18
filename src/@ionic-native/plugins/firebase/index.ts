@@ -32,7 +32,7 @@ import { Observable } from 'rxjs';
   plugin: 'cordova-plugin-firebase',
   pluginRef: 'FirebasePlugin',
   repo: 'https://github.com/arnesson/cordova-plugin-firebase',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Firebase extends IonicNativePlugin {
@@ -50,7 +50,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   onTokenRefresh(): Observable<any> {
     return;
@@ -61,7 +61,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   onNotificationOpen(): Observable<any> {
     return;
@@ -72,7 +72,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   grantPermission(): Promise<any> {
     return;
@@ -194,7 +194,7 @@ export class Firebase extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   fetch(cacheExpirationSeconds?: number): Promise<any> {
     return;
@@ -217,7 +217,7 @@ export class Firebase extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   getValue(key: string, namespace?: string): Promise<any> {
     return;
@@ -230,7 +230,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   getByteArray(key: string, namespace?: string): Promise<any> {
     return;
@@ -241,7 +241,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   getInfo(): Promise<any> {
     return;
@@ -253,7 +253,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   setConfigSettings(settings: any): Promise<any> {
     return;
@@ -266,7 +266,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   setDefaults(defaults: any, namespace?: string): Promise<any> {
     return;
@@ -330,12 +330,9 @@ export class Firebase extends IonicNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS'],
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
-  verifyPhoneNumber(
-    phoneNumber: string,
-    timeoutDuration = 0
-  ): Promise<any> {
+  verifyPhoneNumber(phoneNumber: string, timeoutDuration = 0): Promise<any> {
     return;
   }
 
@@ -344,7 +341,7 @@ export class Firebase extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   clearAllNotifications(): Promise<any> {
     return;

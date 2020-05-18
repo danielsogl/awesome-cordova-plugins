@@ -64,7 +64,7 @@ export interface SafariViewControllerOptions {
   plugin: 'cordova-plugin-safariviewcontroller',
   pluginRef: 'SafariViewController',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class SafariViewController extends IonicNativePlugin {
@@ -85,7 +85,7 @@ export class SafariViewController extends IonicNativePlugin {
   @Cordova({
     successIndex: 1,
     errorIndex: 2,
-    observable: true
+    observable: true,
   })
   show(options?: SafariViewControllerOptions): Observable<any> {
     return;

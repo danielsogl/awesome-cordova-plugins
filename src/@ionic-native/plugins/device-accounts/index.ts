@@ -38,7 +38,7 @@ export interface AndroidAccount {
   plugin: 'cordova-device-accounts-v2',
   pluginRef: 'DeviceAccounts',
   repo: 'https://github.com/xUnholy/cordova-device-accounts-v2',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class DeviceAccounts extends IonicNativePlugin {

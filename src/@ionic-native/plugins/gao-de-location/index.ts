@@ -59,9 +59,10 @@ import { Observable } from 'rxjs';
   plugin: 'cordova-plugin-gaodelocation-chenyu',
   pluginRef: 'GaoDe',
   repo: 'https://github.com/waliu/cordova-plugin-gaodelocation-chenyu.git',
-  install: 'ionic cordova plugin add cordova-plugin-gaodelocation-chenyu --variable  ANDROID_API_KEY=your android key --variable  IOS_API_KEY=your ios key',
+  install:
+    'ionic cordova plugin add cordova-plugin-gaodelocation-chenyu --variable  ANDROID_API_KEY=your android key --variable  IOS_API_KEY=your ios key',
   installVariables: ['ANDROID_API_KEY', 'IOS_API_KEY'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class GaoDeLocation extends IonicNativePlugin {
@@ -70,11 +71,9 @@ export class GaoDeLocation extends IonicNativePlugin {
    * @param positionOptions
    * @return Promise<PositionRes>
    */
-  @Cordova(
-    {
-      callbackOrder: 'reverse',
-    }
-  )
+  @Cordova({
+    callbackOrder: 'reverse',
+  })
   getCurrentPosition(positionOptions: PositionOptions): Promise<PositionRes> {
     return;
   }
@@ -86,7 +85,7 @@ export class GaoDeLocation extends IonicNativePlugin {
    */
   @Cordova({
     callbackOrder: 'reverse',
-    observable: true
+    observable: true,
   })
   startSerialLocation(positionOptions: PositionOptions): Observable<PositionRes> {
     return;
@@ -168,7 +167,6 @@ export interface AndroidOptions {
   locationCacheEnable: boolean;
 }
 
-
 /**
  *
  * IOS positioning parameters
@@ -229,7 +227,7 @@ export enum DesiredAccuracyEnum {
   /**
    * Accurate to the nearest three kilometers.
    */
-  kCLLocationAccuracyThreeKilometers = 6
+  kCLLocationAccuracyThreeKilometers = 6,
 }
 
 /**
@@ -246,7 +244,7 @@ export enum LocationModeEnum {
  */
 export enum LocationProtocolEnum {
   HTTP = 1,
-  HTTPS = 2
+  HTTPS = 2,
 }
 
 /**

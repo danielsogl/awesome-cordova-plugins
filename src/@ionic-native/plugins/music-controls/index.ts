@@ -150,7 +150,7 @@ export interface MusicControlsOptions {
   plugin: 'cordova-plugin-music-controls',
   pluginRef: 'MusicControls',
   repo: 'https://github.com/homerours/cordova-music-controls-plugin',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class MusicControls extends IonicNativePlugin {
@@ -178,7 +178,7 @@ export class MusicControls extends IonicNativePlugin {
    * @returns {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   subscribe(): Observable<any> {
     return;
@@ -202,7 +202,7 @@ export class MusicControls extends IonicNativePlugin {
    * @param args {Object}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   updateElapsed(args: { elapsed: number; isPlaying: boolean }): void {}
 

@@ -54,7 +54,7 @@ export interface IDynamicLink {
   install:
     'ionic cordova plugin add cordova-plugin-firebase-dynamiclinks --save --variable APP_DOMAIN="example.com" --variable APP_PATH="/"',
   installVariables: ['APP_DOMAIN', 'APP_PATH'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseDynamicLinks extends IonicNativePlugin {
@@ -64,7 +64,7 @@ export class FirebaseDynamicLinks extends IonicNativePlugin {
    */
   @Cordova({
     callbackOrder: 'reverse',
-    observable: true
+    observable: true,
   })
   onDynamicLink(): Observable<IDynamicLink> {
     return;

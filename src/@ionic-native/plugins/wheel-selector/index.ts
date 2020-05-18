@@ -177,12 +177,10 @@ export interface WheelSelectorData {
   plugin: 'cordova-wheel-selector-plugin',
   pluginRef: 'SelectorCordovaPlugin',
   repo: 'https://github.com/jasonmamy/cordova-wheel-selector-plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
-
 @Injectable()
 export class WheelSelector extends IonicNativePlugin {
-
   /**
    * Shows the wheel selector
    * @param {WheelSelectorOptions} options Options for the wheel selector
@@ -198,7 +196,7 @@ export class WheelSelector extends IonicNativePlugin {
    * @returns {Promise<void>}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   hideSelector(): Promise<void> {
     return;

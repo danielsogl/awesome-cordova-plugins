@@ -24,7 +24,6 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ```
  */
 
-
 @Plugin({
   pluginName: 'BiometricWrapper',
   plugin: 'cordova-plugin-biometric',
@@ -32,12 +31,10 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   repo: '',
   install: '',
   installVariables: [],
-  platforms: ['Android']
+  platforms: ['Android'],
 })
-
 @Injectable()
 export class BiometricWrapper extends IonicNativePlugin {
-
   /**
    * This function activate iris activity
    * @return {Promise<any>} Returns a promise that resolves when iris data captured
@@ -55,5 +52,4 @@ export class BiometricWrapper extends IonicNativePlugin {
   activateFingerprint(args: any): Promise<any> {
     return;
   }
-
 }

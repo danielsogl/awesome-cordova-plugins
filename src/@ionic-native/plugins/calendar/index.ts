@@ -85,7 +85,7 @@ export interface NameOrOptions {
   plugin: 'cordova-plugin-calendar',
   pluginRef: 'plugins.calendar',
   repo: 'https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Calendar extends IonicNativePlugin {
@@ -177,7 +177,7 @@ export class Calendar extends IonicNativePlugin {
    * @return {CalendarOptions} Returns an object with the default calendar options
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   getCalendarOptions(): CalendarOptions {
     return;
@@ -189,7 +189,7 @@ export class Calendar extends IonicNativePlugin {
    * @return {NameOrOptions} Returns an object with the default options
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   getCreateCalendarOptions(): NameOrOptions {
     return;
@@ -205,13 +205,7 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
-  createEvent(
-    title?: string,
-    location?: string,
-    notes?: string,
-    startDate?: Date,
-    endDate?: Date
-  ): Promise<any> {
+  createEvent(title?: string, location?: string, notes?: string, startDate?: Date, endDate?: Date): Promise<any> {
     return;
   }
 
@@ -293,13 +287,7 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  findEvent(
-    title?: string,
-    location?: string,
-    notes?: string,
-    startDate?: Date,
-    endDate?: Date
-  ): Promise<any> {
+  findEvent(title?: string, location?: string, notes?: string, startDate?: Date, endDate?: Date): Promise<any> {
     return;
   }
 
@@ -333,7 +321,7 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the list of events, or rejects with an error.
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   listEventsInRange(startDate: Date, endDate: Date): Promise<any> {
     return;
@@ -353,7 +341,7 @@ export class Calendar extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the list of events, or rejects with an error.
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   findAllEventsInNamedCalendar(calendarName: string): Promise<any> {
     return;
@@ -375,7 +363,7 @@ export class Calendar extends IonicNativePlugin {
    * @return Returns a Promise
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   modifyEvent(
     title?: string,
@@ -410,7 +398,7 @@ export class Calendar extends IonicNativePlugin {
    * @return Returns a Promise
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   modifyEventWithOptions(
     title?: string,
@@ -440,13 +428,7 @@ export class Calendar extends IonicNativePlugin {
    * @return Returns a Promise
    */
   @Cordova()
-  deleteEvent(
-    title?: string,
-    location?: string,
-    notes?: string,
-    startDate?: Date,
-    endDate?: Date
-  ): Promise<any> {
+  deleteEvent(title?: string, location?: string, notes?: string, startDate?: Date, endDate?: Date): Promise<any> {
     return;
   }
 
@@ -462,7 +444,7 @@ export class Calendar extends IonicNativePlugin {
    * @return Returns a Promise
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   deleteEventFromNamedCalendar(
     title?: string,
@@ -483,10 +465,7 @@ export class Calendar extends IonicNativePlugin {
    * @return Returns a Promise
    */
   @Cordova()
-  deleteEventById(
-    id: string,
-    fromDate?: Date
-  ): Promise<any> {
+  deleteEventById(id: string, fromDate?: Date): Promise<any> {
     return;
   }
 

@@ -52,7 +52,7 @@ export interface HttpdOptions {
   plugin: 'cordova-plugin-httpd',
   pluginRef: 'cordova.plugins.CorHttpd',
   repo: 'https://github.com/floatinghotpot/cordova-httpd',
-  platforms: ['Android', 'iOS', 'macOS']
+  platforms: ['Android', 'iOS', 'macOS'],
 })
 @Injectable()
 export class Httpd extends IonicNativePlugin {
@@ -63,7 +63,7 @@ export class Httpd extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'stopServer'
+    clearFunction: 'stopServer',
   })
   startServer(options?: HttpdOptions): Observable<string> {
     return;

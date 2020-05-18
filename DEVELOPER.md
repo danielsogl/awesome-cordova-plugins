@@ -2,15 +2,14 @@
 
 This is a short guide on creating new plugin wrappers for Ionic Native.
 
-
 ## Creating Plugin Wrappers
 
 First, let's start by creating a new plugin wrapper from template.
- 
+
 ```
 // Call this command, and replace PluginName with the name of the plugin you wish to add
 // Make sure to capitalize the first letter, or use CamelCase if necessary.
- 
+
 gulp plugin:create -n PluginName
 
 // add -m flag to get a minimal template to start with
@@ -71,7 +70,7 @@ export class Geolocation {
 
 Here, `plugin` is the name of the plugin package on npm and used when calling `cordova plugin add`.
 
-`pluginRef` refers to the where on `window` the underlying Cordova plugin is normally exposed.  For example, in the case of the Cordova Geolocation plugin, normally you would make calls like `window.navigator.geolocation.getCurrentPosition({}, success, error)`, so the `pluginRef` in this case is `navigator.geolocation`.
+`pluginRef` refers to the where on `window` the underlying Cordova plugin is normally exposed. For example, in the case of the Cordova Geolocation plugin, normally you would make calls like `window.navigator.geolocation.getCurrentPosition({}, success, error)`, so the `pluginRef` in this case is `navigator.geolocation`.
 
 #### Class Methods
 
@@ -86,7 +85,7 @@ Let's take a look at `getCurrentPosition` first.
 
 It's just a stub. The `return` is only there to keep the TypeScript type-checker from complaining since we indicate that `getCurrentPosition` returns a `Promise<Geoposition>`.
 
-By default, the `@Cordova` decorator wraps the plugin callbacks in a Promise that resolves when the success callback is called and rejects when the error callback is called.  It also ensures that Cordova and the underlying plugin are available, and prints helpful diagnostics if they aren't.
+By default, the `@Cordova` decorator wraps the plugin callbacks in a Promise that resolves when the success callback is called and rejects when the error callback is called. It also ensures that Cordova and the underlying plugin are available, and prints helpful diagnostics if they aren't.
 
 Next, let's look at the `watchPosition` method.
 
@@ -103,7 +102,7 @@ The `@Cordova` decorator has a few more options now.
 
 `observable` indicates that this method may call its callbacks multiple times, so `@Cordova` wraps it in an [`Observable`](https://github.com/ionic-team/ionic-native#promises-and-observables) instead of a Promise.
 
-`callbackOrder` refers to the method signature of the underlying Cordova plugin, and tells Ionic Native which arguments are the callbacks to map to the wrapping Promise or Observable.  In this case, the signature is [`watchPosition(success, error, options)`](https://github.com/apache/cordova-plugin-geolocation#navigatorgeolocationwatchposition), so we need to tell `@Cordova` that the callbacks are the first arguments, not the last arguments.  For rare cases, you can also specify the options `successIndex` and `errorIndex` to indicate where in the argument list the callbacks are located.
+`callbackOrder` refers to the method signature of the underlying Cordova plugin, and tells Ionic Native which arguments are the callbacks to map to the wrapping Promise or Observable. In this case, the signature is [`watchPosition(success, error, options)`](https://github.com/apache/cordova-plugin-geolocation#navigatorgeolocationwatchposition), so we need to tell `@Cordova` that the callbacks are the first arguments, not the last arguments. For rare cases, you can also specify the options `successIndex` and `errorIndex` to indicate where in the argument list the callbacks are located.
 
 `clearFunction` is used in conjunction with the `observable` option and indicates the function to be called when the Observable is disposed.
 
@@ -126,42 +125,48 @@ We have very precise rules over how our git commit messages can be formatted. Th
 `type(scope): subject`
 
 #### Type
+
 Must be one of the following:
 
-* **fix**: A bug fix
-* **feat**: A new feature
-* **docs**: Documentation only changes
-* **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-* **refactor**: A code change that neither fixes a bug nor adds a feature
-* **perf**: A code change that improves performance
-* **test**: Adding missing tests
-* **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
+- **fix**: A bug fix
+- **feat**: A new feature
+- **docs**: Documentation only changes
+- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- **refactor**: A code change that neither fixes a bug nor adds a feature
+- **perf**: A code change that improves performance
+- **test**: Adding missing tests
+- **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
 
 #### Scope
+
 The scope could be anything specifying place of the commit change. For example, the name of the plugin being changed
 
 #### Subject
+
 The subject contains succinct description of the change:
 
-* use the imperative, present tense: "change" not "changed" nor "changes"
-* do not capitalize first letter
-* do not place a period (.) at the end
-* entire length of the commit message must not go over 50 characters
-
+- use the imperative, present tense: "change" not "changed" nor "changes"
+- do not capitalize first letter
+- do not place a period (.) at the end
+- entire length of the commit message must not go over 50 characters
 
 ### Ionic Native Decorators
 
 #### Plugin
+
 A decorator to wrap the main plugin class, and any other classes that will use `@Cordova` or `@CordovaProperty` decorators. This decorator accepts the following configuration:
-- *pluginName*: Plugin name, this should match the class name
-- *plugin*: The plugin's NPM package, or Github URL if NPM is not available.
-- *pluginRef*: The plugin object reference. Example: 'cordova.file'.
-- *repo*: The plugin's Github Repository URL
-- *install*: (optional) Install command. This is used in case a plugin has a custom install command (takes variables).
-- *platforms*: An array of strings indicating the supported platforms. 
+
+- _pluginName_: Plugin name, this should match the class name
+- _plugin_: The plugin's NPM package, or Github URL if NPM is not available.
+- _pluginRef_: The plugin object reference. Example: 'cordova.file'.
+- _repo_: The plugin's Github Repository URL
+- _install_: (optional) Install command. This is used in case a plugin has a custom install command (takes variables).
+- _platforms_: An array of strings indicating the supported platforms.
 
 #### Cordova
+
 Checks if the plugin and the method are available before executing. By default, the decorator will wrap the callbacks of the function and return a Promise. This decorator takes the following configuration options:
+
 - **observable**: set to true to return an Observable
 - **clearFunction**: an optional name of a method to clear the observable we returned
 - **clearWithArgs**: This can be used if clearFunction is set. Set this to true to call the clearFunction with the same arguments used in the initial function.
@@ -179,6 +184,7 @@ Checks if the plugin and the method are available before executing. By default, 
 - **platforms**: array of strings indicating supported platforms. Specify this if the supported platforms doesn't match the plugin's supported platforms.
 
 Example:
+
 ```ts
 @Cordova()
 someMethod(): Promise<any> { return; }
@@ -188,20 +194,25 @@ syncMethod(): number { }
 ```
 
 #### CordovaProperty
+
 Checks if the plugin and property exist before getting/setting the property's value
 
 Example:
+
 ```ts
 @CordovaProperty()
 someProperty: string;
 ```
 
 #### CordovaCheck
-Checks if the plugin exists before performing a custom written method. By default, the method will return a promise that will reject with an error if the plugin is not available.  This wrapper accepts two optional configurations:
+
+Checks if the plugin exists before performing a custom written method. By default, the method will return a promise that will reject with an error if the plugin is not available. This wrapper accepts two optional configurations:
+
 - **observable**: set to true to return an empty Observable if the plugin isn't available
 - **sync**: set to true to return nothing if the plugin isn't available
 
 Example:
+
 ```ts
 @CordovaCheck()
 someMethod(): Promise<any> {
@@ -210,9 +221,11 @@ someMethod(): Promise<any> {
 ```
 
 #### CordovaFunctionOverride
+
 Wrap a stub function in a call to a Cordova plugin, checking if both Cordova and the required plugin are installed.
 
 Example:
+
 ```ts
 @CordovaFunctionOverride()
 someMethod(): Observable<any> { return; }

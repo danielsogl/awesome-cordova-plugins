@@ -5,20 +5,20 @@ import { Observable } from 'rxjs';
 export enum BackgroundGeolocationLocationCode {
   PERMISSION_DENIED = 1,
   LOCATION_UNAVAILABLE = 2,
-  TIMEOUT = 3
+  TIMEOUT = 3,
 }
 
 export enum BackgroundGeolocationNativeProvider {
   gps = 'gps',
   network = 'network',
   passive = 'passive',
-  fused = 'fused'
+  fused = 'fused',
 }
 
 export enum BackgroundGeolocationLocationProvider {
   DISTANCE_FILTER_PROVIDER = 0,
   ACTIVITY_PROVIDER = 1,
-  RAW_PROVIDER = 2
+  RAW_PROVIDER = 2,
 }
 
 export enum BackgroundGeolocationEvents {
@@ -32,13 +32,13 @@ export enum BackgroundGeolocationEvents {
   start = 'start', // Event is triggered when background service has been started succesfully.
   activity = 'activity', // Register activity monitoring listener.
   stationary = 'stationary', // Register stationary location event listener.
-  location = 'location' // Register location event listener.
+  location = 'location', // Register location event listener.
 }
 
 export enum BackgroundGeolocationAuthorizationStatus {
   NOT_AUTHORIZED = 0,
   AUTHORIZED = 1,
-  AUTHORIZED_FOREGROUND = 2
+  AUTHORIZED_FOREGROUND = 2,
 }
 
 export enum BackgroundGeolocationLogLevel {
@@ -46,7 +46,7 @@ export enum BackgroundGeolocationLogLevel {
   DEBUG = 'DEBUG',
   INFO = 'INFO',
   WARN = 'WARN',
-  ERROR = 'ERROR'
+  ERROR = 'ERROR',
 }
 
 export interface BackgroundGeolocationLogEntry {
@@ -444,7 +444,7 @@ export interface BackgroundGeolocationConfig {
  */
 export declare enum BackgroundGeolocationProvider {
   ANDROID_DISTANCE_FILTER_PROVIDER = 0,
-  ANDROID_ACTIVITY_PROVIDER = 1
+  ANDROID_ACTIVITY_PROVIDER = 1,
 }
 
 /**
@@ -464,7 +464,7 @@ export declare enum BackgroundGeolocationAccuracy {
   HIGH = 0,
   MEDIUM = 10,
   LOW = 100,
-  PASSIVE = 1000
+  PASSIVE = 1000,
 }
 
 /**
@@ -478,14 +478,14 @@ export declare enum BackgroundGeolocationAccuracy {
  */
 export declare enum BackgroundGeolocationMode {
   BACKGROUND = 0,
-  FOREGROUND = 1
+  FOREGROUND = 1,
 }
 
 export declare enum BackgroundGeolocationIOSActivity {
   AutomotiveNavigation = 'AutomotiveNavigation',
   OtherNavigation = 'OtherNavigation',
   Fitness = 'Fitness',
-  Other = 'Other'
+  Other = 'Other',
 }
 
 /**
@@ -543,7 +543,7 @@ export declare enum BackgroundGeolocationIOSActivity {
   plugin: '@mauron85/cordova-plugin-background-geolocation',
   pluginRef: 'BackgroundGeolocation',
   repo: 'https://github.com/mauron85/cordova-plugin-background-geolocation',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class BackgroundGeolocation extends IonicNativePlugin {
@@ -582,7 +582,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   finish(): Promise<any> {
     return;
@@ -594,7 +594,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   changePace(isMoving: boolean): Promise<any> {
     return;
@@ -606,7 +606,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   setConfig(options: BackgroundGeolocationConfig): Promise<any> {
     return;
@@ -617,7 +617,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<Location>}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   getStationaryLocation(): Promise<BackgroundGeolocationResponse> {
     return;
@@ -629,7 +629,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   onStationary(): Promise<any> {
     return;
@@ -640,7 +640,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<number>} Returns a promise with int argument that takes values 0, 1 (true).
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   isLocationEnabled(): Promise<number> {
     return;
@@ -666,7 +666,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    observable: true
+    observable: true,
   })
   watchLocationMode(): Observable<number> {
     return;
@@ -677,7 +677,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   stopWatchingLocationMode(): Promise<any> {
     return;
@@ -693,7 +693,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   getLocations(): Promise<any> {
     return;
@@ -714,7 +714,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   deleteLocation(locationId: number): Promise<any> {
     return;
@@ -725,7 +725,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   deleteAllLocations(): Promise<any> {
     return;
@@ -745,7 +745,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   switchMode(modeId: number): Promise<any> {
     return;
@@ -788,11 +788,9 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
-  getCurrentLocation(
-    options?: BackgroundGeolocationCurrentPositionConfig
-  ): Promise<BackgroundGeolocationResponse> {
+  getCurrentLocation(options?: BackgroundGeolocationCurrentPositionConfig): Promise<BackgroundGeolocationResponse> {
     return;
   }
 
@@ -814,7 +812,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @returns {Promise<number>} taskKey
    */
   @Cordova({
-    platforms: ['IOS']
+    platforms: ['IOS'],
   })
   startTask(): Promise<number> {
     return;
@@ -824,7 +822,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    *  End background task indentified by taskKey (iOS only)
    */
   @Cordova({
-    platforms: ['IOS']
+    platforms: ['IOS'],
   })
   endTask(taskKey: number): Promise<any> {
     return;
@@ -876,7 +874,7 @@ export class BackgroundGeolocation extends IonicNativePlugin {
    * @param callbackFn
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   on(event: BackgroundGeolocationEvents): Observable<BackgroundGeolocationResponse> {
     return;

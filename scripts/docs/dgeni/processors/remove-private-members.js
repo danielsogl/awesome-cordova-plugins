@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 module.exports = function removePrivateMembers() {
   return {
     name: 'remove-private-members',
@@ -7,7 +7,6 @@ module.exports = function removePrivateMembers() {
     $runBefore: ['rendering-docs'],
     $process: docs => {
       docs.forEach(doc => {
-
         if (doc.members) {
           doc.members = doc.members.filter(member => !member.tags.tagsByName.get('hidden'));
         }
@@ -15,10 +14,9 @@ module.exports = function removePrivateMembers() {
         if (doc.statics) {
           doc.statics = doc.statics.filter(staticMethod => !staticMethod.tags.tagsByName.get('hidden'));
         }
-
       });
 
       return docs;
-    }
+    },
   };
 };

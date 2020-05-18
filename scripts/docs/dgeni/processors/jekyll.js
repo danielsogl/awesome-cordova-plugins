@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 module.exports = function jekyll(renderDocsProcessor) {
   return {
     name: 'jekyll',
@@ -6,7 +6,6 @@ module.exports = function jekyll(renderDocsProcessor) {
     $runAfter: ['paths-computed'],
     $runBefore: ['rendering-docs'],
     $process: docs => {
-
       // pretty up and sort the docs object for menu generation
       docs = docs.filter(doc => (!!doc.name && !!doc.outputPath) || doc.docType === 'index-page');
 
@@ -20,7 +19,7 @@ module.exports = function jekyll(renderDocsProcessor) {
         const textA = a.name ? a.name.toUpperCase() : '',
           textB = b.name ? b.name.toUpperCase() : '';
 
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        return textA < textB ? -1 : textA > textB ? 1 : 0;
       });
 
       docs.forEach(doc => {
@@ -29,11 +28,9 @@ module.exports = function jekyll(renderDocsProcessor) {
         }
 
         doc.outputPath = doc.outputPath.toLowerCase().replace(/\s/g, '-');
-        doc.URL = doc.outputPath.replace('docs//', 'docs/')
-          .replace('/index.md', '')
-          .replace('content/', '');
+        doc.URL = doc.outputPath.replace('docs//', 'docs/').replace('/index.md', '').replace('content/', '');
         // add trailing slash to plugin pages
-        if(!doc.URL.endsWith("/") && !doc.URL.endsWith(".html")) {
+        if (!doc.URL.endsWith('/') && !doc.URL.endsWith('.html')) {
           doc.URL = doc.URL + '/';
         }
 
@@ -57,10 +54,10 @@ module.exports = function jekyll(renderDocsProcessor) {
         docType: 'nativeMenu',
         id: 'native_menu',
         template: 'native_menu.template.html',
-        outputPath: 'content/_includes/fluid/native_menu.html'
+        outputPath: 'content/_includes/fluid/native_menu.html',
       });
 
       return docs;
-    }
+    },
   };
 };

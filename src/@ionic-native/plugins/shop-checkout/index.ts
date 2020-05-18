@@ -27,7 +27,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-shop-checkout',
   pluginRef: 'shopCheckout',
   repo: 'https://github.com/tradedepot/cordova-shop-checkout',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class ShopCheckout extends IonicNativePlugin {
@@ -60,7 +60,6 @@ export class ShopCheckout extends IonicNativePlugin {
   openTransactions(options: any): Promise<void> {
     return;
   }
-
 
   /**
    * @return {Promise<void>} Returns a promise

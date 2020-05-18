@@ -50,7 +50,7 @@ export interface ChooserResult {
   plugin: 'cordova-plugin-chooser',
   pluginRef: 'chooser',
   repo: 'https://github.com/cyph/cordova-plugin-chooser',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Chooser extends IonicNativePlugin {

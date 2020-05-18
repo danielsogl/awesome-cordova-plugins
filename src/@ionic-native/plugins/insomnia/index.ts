@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * @name Insomnia
  * @description
@@ -34,11 +33,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-insomnia',
   pluginRef: 'plugins.insomnia',
   repo: 'https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin',
-  platforms: ['Android', 'Browser', 'Firefox OS', 'iOS', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'Browser', 'Firefox OS', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
 export class Insomnia extends IonicNativePlugin {
-
   /**
    * Keeps awake the application
    * @returns {Promise<any>}
@@ -56,5 +54,4 @@ export class Insomnia extends IonicNativePlugin {
   allowSleepAgain(): Promise<any> {
     return;
   }
-
 }

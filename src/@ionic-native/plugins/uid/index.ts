@@ -41,7 +41,7 @@ import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-uid',
   pluginRef: 'cordova.plugins.uid',
   repo: 'https://github.com/lionelhe/cordova-plugin-uid',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class Uid extends IonicNativePlugin {
@@ -64,5 +64,4 @@ export class Uid extends IonicNativePlugin {
   /** Get the Media Access Control address (MAC). */
   @CordovaProperty()
   MAC: string;
-
 }

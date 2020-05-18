@@ -17,10 +17,6 @@ function overrideFunction(pluginObj: any, methodName: string): Observable<any> {
   });
 }
 
-export function cordovaFunctionOverride(
-  pluginObj: any,
-  methodName: string,
-  args: IArguments | any[] = []
-) {
+export function cordovaFunctionOverride(pluginObj: any, methodName: string, args: IArguments | any[] = []) {
   return overrideFunction(pluginObj, methodName);
 }

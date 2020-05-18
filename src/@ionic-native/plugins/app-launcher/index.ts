@@ -40,7 +40,7 @@ export interface AppLauncherOptions {
   plugin: 'cordova-plugin-app-launcher',
   pluginRef: 'window.plugins.launcher',
   repo: 'https://github.com/nchutchind/cordova-plugin-app-launcher',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class AppLauncher extends IonicNativePlugin {

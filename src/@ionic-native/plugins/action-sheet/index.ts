@@ -93,7 +93,7 @@ export interface ActionSheetOptions {
   plugin: 'cordova-plugin-actionsheet',
   pluginRef: 'plugins.actionsheet',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
 export class ActionSheet extends IonicNativePlugin {
@@ -111,7 +111,7 @@ export class ActionSheet extends IonicNativePlugin {
     THEME_HOLO_DARK: 2,
     THEME_HOLO_LIGHT: 3,
     THEME_DEVICE_DEFAULT_DARK: 4,
-    THEME_DEVICE_DEFAULT_LIGHT: 5
+    THEME_DEVICE_DEFAULT_LIGHT: 5,
   };
 
   /**

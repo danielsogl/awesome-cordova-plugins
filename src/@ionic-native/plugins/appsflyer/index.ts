@@ -75,7 +75,7 @@ export interface AppsflyerInviteOptions {
   pluginRef: 'window.plugins.appsFlyer',
   repo: 'https://github.com/AppsFlyerSDK/cordova-plugin-appsflyer-sdk',
   platforms: ['iOS', 'Android'],
-  install: 'Add to config.xml like stated on github and then start'
+  install: 'Add to config.xml like stated on github and then start',
 })
 @Injectable()
 export class Appsflyer extends IonicNativePlugin {

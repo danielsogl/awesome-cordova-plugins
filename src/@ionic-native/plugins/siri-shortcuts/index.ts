@@ -82,7 +82,7 @@ export interface ActivatedShortcutOptions {
   plugin: 'cordova-plugin-siri-shortcuts',
   pluginRef: 'cordova.plugins.SiriShortcuts',
   repo: 'https://github.com/bartwesselink/cordova-plugin-siri-shortcuts',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class SiriShortcuts extends IonicNativePlugin {

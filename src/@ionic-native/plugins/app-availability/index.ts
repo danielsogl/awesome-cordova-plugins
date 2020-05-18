@@ -37,11 +37,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-appavailability',
   pluginRef: 'appAvailability',
   repo: 'https://github.com/ohh2ahh/AppAvailability',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class AppAvailability extends IonicNativePlugin {
-
   /**
    * Checks if an app is available on device
    * @param {string} app Package name on android, or URI scheme on iOS
@@ -51,5 +50,4 @@ export class AppAvailability extends IonicNativePlugin {
   check(app: string): Promise<boolean> {
     return;
   }
-
 }

@@ -31,7 +31,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'com.omarben.inappreview',
   pluginRef: 'inappreview',
   repo: 'https://github.com/omaxlive/com.omarben.inappreview',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class InAppReview extends IonicNativePlugin {
