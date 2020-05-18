@@ -8,7 +8,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { IosASWebauthenticationSession } from '@ionic-native/ios-aswebauthenticationsession-api';
+ * import { IosASWebauthenticationSession } from '@ionic-native/ios-aswebauthenticationsession-api/ngx';
  *
  *
  * constructor(private IosASWebauthenticationSession: ios-aswebauthenticationsession-api) { }
@@ -16,12 +16,13 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  * ...
  *
  *
- * this.IosASWebauthenticationSession.start(callbackUrl, authUrl)
- *   .then((res: any) => console.log(res))
+ * this.IosASWebauthenticationSession.start(callbackUrl, authorizeURL)
+ *   .then((redirectUrl: string) => console.log(redirectUrl))
  *   .catch((error: any) => console.error(error));
  *
  * ```
  */
+
 @Plugin({
   pluginName: 'IosASWebauthenticationSession',
   plugin: 'cordova-plugin-ios-aswebauthenticationsession-api',
@@ -36,10 +37,13 @@ export class IosASWebauthenticationSession extends IonicNativePlugin {
    * This function start an authentication flow in ASWebauthenticationSession
    * @param callbackUrl {string} Callback URL of your App
    * @param authorizeURL {number} Authorization URL
-   * @return {Promise<any>} Returns a promise that resolves after finishing ASWebauthenticationSession
+   * @return {Promise<string>} Returns a promise that resolves a string containing the redirect URL after finishing ASWebauthenticationSession
    */
   @Cordova()
-  start(callbackUrl: string, authorizeURL: string): Promise<any> {
+  start(
+    callbackUrl: string,
+    authorizeURL: string
+  ): Promise<string> {
     return;
   }
 }
