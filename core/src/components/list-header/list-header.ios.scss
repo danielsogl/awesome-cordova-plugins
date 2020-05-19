@@ -1,0 +1,50 @@
+@import "./list-header";
+@import "./list-header.ios.vars";
+
+// iOS List Header
+// --------------------------------------------------
+
+:host {
+  --background: #{$list-header-ios-background-color};
+  --color: #{$list-header-ios-color};
+  --border-color: #{$item-ios-border-bottom-color};
+
+  @include padding-horizontal(calc(var(--ion-safe-area-left, 0px) + #{$list-header-ios-padding-start}), null);
+
+  position: relative;
+
+  align-items: flex-end;
+
+  font-size: $list-header-ios-font-size;
+  font-weight: $list-header-ios-font-weight;
+
+  letter-spacing: $list-header-ios-letter-spacing;
+}
+
+// List Header: Slotted Components
+// --------------------------------------------------
+
+::slotted(ion-button),
+::slotted(ion-label) {
+  @include margin(29px, null, 6px);
+}
+
+::slotted(ion-button) {
+  @include margin(null, 3px);
+
+  height: 1.4em;
+}
+
+
+// List Header Lines
+// --------------------------------------------------
+
+// Full lines - apply the border to the list header
+// Inset lines - apply the border to the list header inner
+:host(.list-header-lines-full) {
+  --border-width: #{0 0 $item-ios-border-bottom-width 0};
+}
+
+:host(.list-header-lines-inset) {
+  --inner-border-width: #{0 0 $item-ios-border-bottom-width 0};
+}

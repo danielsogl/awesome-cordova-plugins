@@ -1,0 +1,17 @@
+@import "./segment";
+@import "./segment.md.vars";
+
+// Material Design Segment
+// --------------------------------------------------
+
+:host {
+  --background: transparent;
+}
+
+
+// Segment: Scrollable
+// --------------------------------------------------
+
+:host(.segment-scrollable) ::slotted(ion-segment-button) {
+  min-width: auto;
+}

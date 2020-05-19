@@ -1,222 +1,50 @@
-[![Circle CI](https://circleci.com/gh/ionic-team/ionic-native.svg?style=shield)](https://circleci.com/gh/ionic-team/ionic-native) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![](https://img.shields.io/npm/v/@ionic-native/core.svg)
+# Ionic
 
-# Ionic Native
+[Ionic](https://ionicframework.com/) is the open-source mobile app development framework that makes it easy to
+build top quality native and progressive web apps with web technologies.
 
-Ionic Native is a curated set of wrappers for Cordova plugins that make adding any native functionality you need to your [Ionic](https://ionicframework.com/) mobile app easy.
-
-Ionic Native wraps plugin callbacks in a Promise or Observable, providing a common interface for all plugins and making it easy to use plugins with Angular change detection.
-
-## Installation
-
-Run following command to install Ionic Native in your project.
-
-```bash
-npm install @ionic-native/core --save
-```
-
-You also need to install the Ionic Native package for each plugin you want to add. Please see the [Ionic Native documentation](https://ionicframework.com/docs/native/) for complete instructions on how to add and use the plugins.
-
-## Documentation
-
-For the full Ionic Native documentation, please visit [https://ionicframework.com/docs/native/](https://ionicframework.com/docs/native/).
-
-### Basic Usage
-
-#### Ionic/Angular apps
-To use a plugin, import and add the plugin provider to your `@NgModule`, and then inject it where you wish to use it. 
-Make sure to import the injectable class from the `/ngx` directory as shown in the following examples:
-
-```typescript
-// app.module.ts
-import { Camera } from '@ionic-native/camera/ngx';
-
-...
-
-@NgModule({
-  ...
-
-  providers: [
-    ...
-    Camera
-    ...
-  ]
-  ...
-})
-export class AppModule { }
-```
-
-```typescript
-import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { Platform } from 'ionic-angular';
-
-@Component({ ... })
-export class MyComponent {
-
-  constructor(private geolocation: Geolocation, private platform: Platform) {
-
-    this.platform.ready().then(() => {
-
-      // get position
-      this.geolocation.getCurrentPosition().then(pos => {
-        console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
-      });
+Ionic is based on [Web Components](https://www.webcomponents.org/introduction) and comes with many significant performance, usability, and feature improvements over the past versions.
 
 
-      // watch position
-      const watch = geolocation.watchPosition().subscribe(pos => {
-        console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
-      });
+### Packages
 
-      // to stop watching
-      watch.unsubscribe();
-    });
+| Project | Package | Version | Links |
+| ------- | ------- | ------- |:-----:|
+| **Core** | [`@ionic/core`](https://www.npmjs.com/package/@ionic/core) | [![version](https://img.shields.io/npm/v/@ionic/core/latest.svg)](https://www.npmjs.com/package/@ionic/core) | [`README.md`](core/README.md)
+| **Angular** | [`@ionic/angular`](https://www.npmjs.com/package/@ionic/angular) | [![version](https://img.shields.io/npm/v/@ionic/angular/latest.svg)](https://www.npmjs.com/package/@ionic/angular) | [`README.md`](angular/README.md)
+| **Vue** | [`@ionic/vue`](https://www.npmjs.com/package/@ionic/vue) | [![version](https://img.shields.io/npm/v/@ionic/vue/latest.svg)](https://www.npmjs.com/package/@ionic/vue) | [`README.md`](vue/README.md)
+| **React** | [`@ionic/react`](https://www.npmjs.com/package/@ionic/react) | [![version](https://img.shields.io/npm/v/@ionic/react/latest.svg)](https://www.npmjs.com/package/@ionic/react) | [`README.md`](packages/react/README.md)
 
-  }
+Looking for the `ionic-angular` package? Ionic 3 has been moved to the [`ionic-v3`](https://github.com/ionic-team/ionic-v3) repo. See [Earlier Versions](#earlier-versions).
 
-}
-```
+### Getting Started
 
-#### ES2015+/TypeScript
-These modules can work in any ES2015+/TypeScript app (including Angular/Ionic apps). To use any plugin, import the class from the appropriate package, and use it's static methods.
-```js
-import { Camera } from '@ionic-native/camera';
-
-document.addEventListener('deviceready', () => {
-  Camera.getPicture()
-    .then((data) => console.log('Took a picture!',  data))
-    .catch((e) => console.log('Error occurred while taking a picture', e));
-});
-```
-
-#### AngularJS
-Ionic Native generates an AngularJS module in runtime and prepares a service for each plugin. To use the plugins in your AngularJS app:
-1. Download the latest bundle from the [Github releases](https://github.com/ionic-team/ionic-native/releases) page.
-2. Include it in `index.html` before your app's code.
-3. Inject `ionic.native` module in your app.
-4. Inject any plugin you would like to use with a `$cordova` prefix.
-
-```js
-angular.module('myApp', ['ionic.native'])
-  .controller('MyPageController', function($cordovaCamera) {
-    $cordovaCamera.getPicture()
-      .then(
-        function(data) {
-          console.log('Took a picture!', data);
-        },
-        function(err) {
-          console.log('Error occurred while taking a picture', err);
-        }
-      );
-  });
-```
-
-#### Vanilla JS
-To use Ionic Native in any other setup:
-1. Download the latest bundle from the [Github releases](https://github.com/ionic-team/ionic-native/releases) page.
-2. Include it in `index.html` before your app's code.
-3. Access any plugin using the global `IonicNative` variable.
-
-```js
-document.addEventListener('deviceready', function() {
-  IonicNative.Camera.getPicture()
-    .then(
-      function(data) {
-        console.log('Took a picture!', data);
-      },
-      function(err) {
-        console.log('Error occurred while taking a picture', err);
-      }
-    );
-});
-```
+Start a new project by following our quick [Getting Started guide](https://ionicframework.com/getting-started/).
+We would love to hear from you! If you have any feedback or run into issues using our framework, please file
+an [issue](https://github.com/ionic-team/ionic/issues/new) on this repository.
 
 
-### Mocking and Browser Development (Ionic/Angular apps only)
+### Contributing
 
-Ionic Native makes it possible to mock plugins and develop nearly the entirety of your app in the browser or in `ionic serve`.
-
-To do this, you need to provide a mock implementation of the plugins you wish to use. Here's an example of mocking the `Camera` plugin to return a stock image while in development:
-
-First import the `Camera` class in your `src/app/app.module.ts` file:
-
-```typescript
-import { Camera } from '@ionic-native/camera/ngx';
-```
-
-Then create a new class that extends the `Camera` class with a mock implementation:
-
-```typescript
-class CameraMock extends Camera {
-  getPicture(options) {
-    return new Promise((resolve, reject) => {
-      resolve('BASE_64_ENCODED_DATA_GOES_HERE');
-    });
-  }
-}
-```
-
-Finally, override the previous `Camera` class in your `providers` for this module:
-
-```typescript
-providers: [{ provide: Camera, useClass: CameraMock }];
-```
-
-Here's the full example:
-
-```typescript
-import { ErrorHandler, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-
-import { Camera } from '@ionic-native/camera/ngx';
-
-import { HomePage } from '../pages/home/home';
-import { MyApp } from './app.component';
-
-class CameraMock extends Camera {
-  getPicture(options) {
-    return new Promise((resolve, reject) => {
-      resolve('BASE_64_ENCODED_DATA_GOES_HERE');
-    });
-  }
-}
-
-@NgModule({
-  declarations: [MyApp, HomePage],
-  imports: [BrowserModule, IonicModule.forRoot(MyApp)],
-  bootstrap: [IonicApp],
-  entryComponents: [MyApp, HomePage],
-  providers: [
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    { provide: Camera, useClass: CameraMock }
-  ]
-})
-export class AppModule {}
-```
-
-### Runtime Diagnostics
-
-Spent way too long diagnosing an issue only to realize a plugin wasn't firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.
-
-![img](https://ionic-io-assets.s3.amazonaws.com/ionic-native-console.png)
-
-## Plugin Missing?
-
-Let us know or submit a PR! Take a look at [the Developer Guide](https://github.com/ionic-team/ionic-native/blob/master/DEVELOPER.md) for more on how to contribute. :heart:
+Thanks for your interest in contributing! Read up on our guidelines for
+[contributing](https://github.com/ionic-team/ionic/blob/master/.github/CONTRIBUTING.md)
+and then look through our issues with a [help wanted](https://github.com/ionic-team/ionic/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
+label.
 
 
-# Credits
+### Examples
 
-Ibby Hadeed - [@ihadeed](https://github.com/ihadeed)
+The [Ionic Conference App](https://github.com/ionic-team/ionic-conference-app) is a full featured Ionic app.
+It is the perfect starting point for learning and building your own app.
 
-Daniel Sogl - [@sogldaniel](https://twitter.com/sogldaniel)
 
-Tim Lancina - [@timlancina](https://twitter.com/timlancina)
+### Future Goals
 
-Mike Hartington - [@mhartington](https://twitter.com/mhartington)
+As Ionic components migrate to the web component standard, a goal of ours is to have Ionic components easily work within all of the popular frameworks.
 
-Max Lynch - [@maxlynch](https://twitter.com/maxlynch)
+### Earlier Versions
 
-Rob Wormald - [@robwormald](https://twitter.com/robwormald)
+The source code for earlier versions of the Ionic Framework may exist in other repositories. Please open issues and pull requests in their respective repositories.
+
+* **Ionic 2/3**: Moved to [`ionic-team/ionic-v3`](https://github.com/ionic-team/ionic-v3)
+* **Ionic 1**: Moved to [`ionic-team/ionic-v1`](https://github.com/ionic-team/ionic-v1)

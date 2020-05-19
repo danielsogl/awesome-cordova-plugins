@@ -1,0 +1,84 @@
+@import "./toggle";
+@import "./toggle.md.vars";
+
+// Material Design Toggle
+// -----------------------------------------
+
+:host {
+  --background: #{$toggle-md-track-background-color-off};
+  --background-checked: #{ion-color(primary, base, $toggle-md-track-background-color-alpha-on)};
+  --border-radius: #{$toggle-md-track-height};
+  --handle-background: #{$toggle-md-handle-background-color-off};
+  --handle-background-checked: #{ion-color(primary, base)};
+  --handle-border-radius: #{$toggle-md-handle-border-radius};
+  --handle-box-shadow: #{$toggle-md-handle-box-shadow};
+  --handle-width: #{$toggle-md-handle-width};
+  --handle-height: #{$toggle-md-handle-height};
+  --handle-max-height: #{$toggle-md-handle-max-height};
+  --handle-spacing: 0;
+  --handle-transition: #{$toggle-md-transition};
+
+  @include padding($toggle-md-padding-top, $toggle-md-padding-end, $toggle-md-padding-bottom, $toggle-md-padding-start);
+
+  width: $toggle-md-track-width;
+  height: $toggle-md-track-height;
+
+  contain: strict;
+}
+
+:host(.ion-color.toggle-checked) .toggle-icon {
+  background: current-color(base, $toggle-md-track-background-color-alpha-on);
+}
+
+:host(.ion-color.toggle-checked) .toggle-inner {
+  background: current-color(base);
+}
+
+// Material Design Toggle Background Track: Unchecked
+// ----------------------------------------------------------
+
+.toggle-icon {
+  transition: background-color $toggle-md-transition-duration;
+}
+
+
+// Material Design Toggle Inner Knob: Unchecked
+// ----------------------------------------------------------
+
+.toggle-inner {
+  will-change: background-color, transform;
+}
+
+
+// Material Design Toggle: Disabled
+// ----------------------------------------------------------
+
+:host(.toggle-disabled) {
+  opacity: $toggle-md-disabled-opacity;
+}
+
+// TODO: move to item
+// .item-md.item-toggle-disabled ion-label {
+//   opacity: $toggle-md-disabled-opacity;
+
+//   pointer-events: none;
+// }
+
+// .toggle-md.toggle-disabled ion-radio {
+//   opacity: $toggle-md-disabled-opacity;
+// }
+
+
+// Material Design Toggle Within An Item
+// ----------------------------------------------------------
+
+:host(.in-item[slot]) {
+  @include margin($toggle-md-media-margin-top, $toggle-md-media-margin-end, $toggle-md-media-margin-bottom, $toggle-md-media-margin-start);
+  @include padding($toggle-md-item-end-padding-top, $toggle-md-item-end-padding-end, $toggle-md-item-end-padding-bottom, $toggle-md-item-end-padding-start);
+
+  cursor: pointer;
+}
+
+:host(.in-item[slot="start"]) {
+  @include padding($toggle-md-item-start-padding-top, $toggle-md-item-start-padding-end, $toggle-md-item-start-padding-bottom, $toggle-md-item-start-padding-start);
+}
