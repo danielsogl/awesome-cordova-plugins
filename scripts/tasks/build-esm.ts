@@ -14,30 +14,21 @@ const outDirs = PLUGIN_PATHS.map(p =>
 const injectableClasses = fs.readJSONSync(EMIT_PATH);
 
 outDirs.forEach(dir => {
-  const classes = injectableClasses.filter(
-    entry => entry.dirName === dir.split(/[\\/]+/).pop()
-  );
+  const classes = injectableClasses.filter(entry => entry.dirName === dir.split(/[\\/]+/).pop());
 
   let jsFile: string = fs.readFileSync(path.join(dir, 'index.js'), 'utf-8'),
     dtsFile: string = fs.readFileSync(path.join(dir, 'index.d.ts'), 'utf-8');
 
   classes.forEach(entry => {
-    dtsFile = dtsFile.replace(
-      `class ${entry.className} `,
-      'class ' + entry.className + 'Original '
-    );
-    dtsFile += `\nexport declare const ${entry.className}: ${
-      entry.className
-    }Original;`;
+    dtsFile = dtsFile.replace(`class ${entry.className} `, 'class ' + entry.className + 'Original ');
+    dtsFile += `\nexport declare const ${entry.className}: ${entry.className}Original;`;
     jsFile = jsFile.replace(
       new RegExp(`([\\s\\(])${entry.className}([\\s\\.;\\(,])`, 'g'),
       '$1' + entry.className + 'Original$2'
     );
     jsFile = jsFile.replace(
       `export { ${entry.className}Original }`,
-      `var ${entry.className} = new ${entry.className}Original();\nexport { ${
-        entry.className
-      } }`
+      `var ${entry.className} = new ${entry.className}Original();\nexport { ${entry.className} }`
     );
   });
 

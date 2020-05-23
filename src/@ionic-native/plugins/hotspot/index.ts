@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface HotspotConnectionInfo {
-
   /**
    *      The service set identifier (SSID) of the current 802.11 network.
    */
@@ -27,11 +26,9 @@ export interface HotspotConnectionInfo {
    *      Each configured network has a unique small integer ID, used to identify the network when performing operations on the supplicant.
    */
   networkID: string;
-
 }
 
 export interface HotspotNetwork {
-
   /**
    *      Human readable network name
    */
@@ -61,11 +58,9 @@ export interface HotspotNetwork {
    *      Describes the authentication, key management, and encryption schemes supported by the access point.
    */
   capabilities: string;
-
 }
 
 export interface HotspotNetworkConfig {
-
   /**
    *   Device IP Address
    */
@@ -85,11 +80,9 @@ export interface HotspotNetworkConfig {
    *   Gateway MAC Address
    */
   gatewayMacAddress: string;
-
 }
 
 export interface HotspotDevice {
-
   /**
    *      Hotspot IP Address
    */
@@ -99,7 +92,6 @@ export interface HotspotDevice {
    *      Hotspot MAC Address
    */
   mac: string;
-
 }
 
 /**
@@ -135,11 +127,10 @@ export interface HotspotDevice {
   plugin: 'cordova-plugin-hotspot',
   pluginRef: 'cordova.plugins.hotspot',
   repo: 'https://github.com/hypery2k/cordova-hotspot-plugin',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class Hotspot extends IonicNativePlugin {
-
   /**
    * @returns {Promise<boolean>}
    */
@@ -218,7 +209,9 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<HotspotDevice[]>}
    */
   @Cordova()
-  getAllHotspotDevices(): Promise<HotspotDevice[]> { return; }
+  getAllHotspotDevices(): Promise<HotspotDevice[]> {
+    return;
+  }
 
   /**
    * Connect to a WiFi network
@@ -252,7 +245,14 @@ export class Hotspot extends IonicNativePlugin {
    *      Promise that connection to the WiFi network was successfull, rejected if unsuccessful
    */
   @Cordova()
-  connectToWifiAuthEncrypt(ssid: string, password: string, authentication: string, encryption: string[]): Promise<void> { return; }
+  connectToWifiAuthEncrypt(
+    ssid: string,
+    password: string,
+    authentication: string,
+    encryption: string[]
+  ): Promise<void> {
+    return;
+  }
 
   /**
    * Add a WiFi network
@@ -330,13 +330,17 @@ export class Hotspot extends IonicNativePlugin {
    * @returns {Promise<HotspotNetwork[]>}
    */
   @Cordova()
-  scanWifi(): Promise<HotspotNetwork[]> { return; }
+  scanWifi(): Promise<HotspotNetwork[]> {
+    return;
+  }
 
   /**
    * @returns {Promise<HotspotNetwork[]>}
    */
   @Cordova()
-  scanWifiByLevel(): Promise<HotspotNetwork[]> { return; }
+  scanWifiByLevel(): Promise<HotspotNetwork[]> {
+    return;
+  }
 
   /**
    * @returns {Promise<any>}
@@ -423,5 +427,4 @@ export class Hotspot extends IonicNativePlugin {
   isRooted(): Promise<boolean> {
     return;
   }
-
 }

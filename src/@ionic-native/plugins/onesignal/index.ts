@@ -105,7 +105,7 @@ export enum OSLockScreenVisibility {
   /**
    * Not shown
    */
-  Secret = -1
+  Secret = -1,
 }
 
 /**
@@ -123,7 +123,7 @@ export enum OSDisplayType {
   /**
    * native notification display.
    */
-  Notification = 2
+  Notification = 2,
 }
 
 /**
@@ -300,7 +300,7 @@ export interface OSNotificationOpenedResult {
 
 export enum OSActionType {
   Opened = 0,
-  ActionTake = 1
+  ActionTake = 1,
 }
 
 /**
@@ -412,7 +412,7 @@ export enum OSActionType {
   plugin: 'onesignal-cordova-plugin',
   pluginRef: 'plugins.OneSignal',
   repo: 'https://github.com/OneSignal/OneSignal-Cordova-SDK',
-  platforms: ['Amazon Fire OS', 'Android', 'iOS', 'Windows']
+  platforms: ['Amazon Fire OS', 'Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class OneSignal extends IonicNativePlugin {
@@ -423,7 +423,7 @@ export class OneSignal extends IonicNativePlugin {
   OSInFocusDisplayOption = {
     None: 0,
     InAppAlert: 1,
-    Notification: 2
+    Notification: 2,
   };
 
   /**
@@ -444,7 +444,7 @@ export class OneSignal extends IonicNativePlugin {
    * @return {Observable<OneSignalReceivedNotification>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   handleNotificationReceived(): Observable<OSNotification> {
     return;
@@ -458,7 +458,7 @@ export class OneSignal extends IonicNativePlugin {
    * @return {Observable<OneSignalOpenedNotification>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   handleNotificationOpened(): Observable<OSNotificationOpenedResult> {
     return;
@@ -477,12 +477,9 @@ export class OneSignal extends IonicNativePlugin {
    */
   @Cordova({
     sync: true,
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
-  iOSSettings(settings: {
-    kOSSettingsKeyAutoPrompt: boolean;
-    kOSSettingsKeyInAppLaunchURL: boolean;
-  }): any {
+  iOSSettings(settings: { kOSSettingsKeyAutoPrompt: boolean; kOSSettingsKeyInAppLaunchURL: boolean }): any {
     return;
   }
 
@@ -501,7 +498,7 @@ export class OneSignal extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova({
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   promptForPushNotificationsWithUserResponse(): Promise<boolean> {
     return;
@@ -688,7 +685,7 @@ export class OneSignal extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   addPermissionObserver(): Observable<any> {
     return;
@@ -704,7 +701,7 @@ export class OneSignal extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   addSubscriptionObserver(): Observable<any> {
     return;
@@ -736,7 +733,7 @@ export class OneSignal extends IonicNativePlugin {
    * @return {Observable<any>}
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   addEmailSubscriptionObserver(): Observable<any> {
     return;
@@ -770,4 +767,18 @@ export class OneSignal extends IonicNativePlugin {
    */
   @Cordova()
   userProvidedPrivacyConsent(callback: Function): void {}
+
+  /**
+   * Allows you to use your own system's user ID's to send push notifications to your users.
+   * To tie a user to a given user ID, you can use this method.
+   * @param {string} externalId
+   */
+  @Cordova()
+  setExternalUserId(externalId: string): void {}
+
+  /**
+   * Removes whatever was set as the current user's external user ID.
+   */
+  @Cordova()
+  removeExternalUserId(): void {}
 }

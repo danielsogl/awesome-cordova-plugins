@@ -20,10 +20,9 @@ export function getPromise<T>(callback: (resolve: Function, reject?: Function) =
     }
   };
 
-  if (window.angular) {
-    const injector = window.angular
-      .element(document.querySelector('[ng-app]') || document.body)
-      .injector();
+  if (typeof window !== 'undefined' && window.angular) {
+    const doc = window.document;
+    const injector = window.angular.element(doc.querySelector('[ng-app]') || doc.body).injector();
     if (injector) {
       const $q = injector.get('$q');
       return $q((resolve: Function, reject: Function) => {
@@ -38,12 +37,7 @@ export function getPromise<T>(callback: (resolve: Function, reject?: Function) =
   return tryNativePromise();
 }
 
-export function wrapPromise(
-  pluginObj: any,
-  methodName: string,
-  args: any[],
-  opts: CordovaOptions = {}
-) {
+export function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: CordovaOptions = {}) {
   let pluginResult: any, rej: Function;
   const p = getPromise((resolve: Function, reject: Function) => {
     if (opts.destruct) {
@@ -143,12 +137,15 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
 /**
  * Wrap the event with an observable
  * @private
- * @param event even name
+ * @param event event name
  * @param element The element to attach the event listener to
  * @returns {Observable}
  */
 function wrapEventObservable(event: string, element: any): Observable<any> {
-  element = element ? get(window, element) : window;
+  element =
+    typeof window !== 'undefined' && element
+      ? get(window, element)
+      : element || (typeof window !== 'undefined' ? window : {});
   return fromEvent(element, event);
 }
 
@@ -167,11 +164,7 @@ export function checkAvailability(
   methodName?: string,
   pluginName?: string
 ): boolean | { error: string };
-export function checkAvailability(
-  plugin: any,
-  methodName?: string,
-  pluginName?: string
-): boolean | { error: string } {
+export function checkAvailability(plugin: any, methodName?: string, pluginName?: string): boolean | { error: string } {
   let pluginRef, pluginInstance, pluginPackage;
 
   if (typeof plugin === 'string') {
@@ -185,7 +178,7 @@ export function checkAvailability(
   pluginInstance = getPlugin(pluginRef);
 
   if (!pluginInstance || (!!methodName && typeof pluginInstance[methodName] === 'undefined')) {
-    if (!window.cordova) {
+    if (typeof window === 'undefined' || !window.cordova) {
       cordovaWarn(pluginName, methodName);
       return ERR_CORDOVA_NOT_AVAILABLE;
     }
@@ -202,10 +195,7 @@ export function checkAvailability(
  * @private
  */
 export function instanceAvailability(pluginObj: any, methodName?: string): boolean {
-  return (
-    pluginObj._objectInstance &&
-    (!methodName || typeof pluginObj._objectInstance[methodName] !== 'undefined')
-  );
+  return pluginObj._objectInstance && (!methodName || typeof pluginObj._objectInstance[methodName] !== 'undefined');
 }
 
 export function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Function): any {
@@ -306,7 +296,10 @@ export function callInstance(
 }
 
 export function getPlugin(pluginRef: string): any {
-  return get(window, pluginRef);
+  if (typeof window !== 'undefined') {
+    return get(window, pluginRef);
+  }
+  return null;
 }
 
 export function get(element: Element | Window, path: string) {
@@ -324,13 +317,7 @@ export function get(element: Element | Window, path: string) {
 export function pluginWarn(pluginName: string, plugin?: string, method?: string): void {
   if (method) {
     console.warn(
-      'Native: tried calling ' +
-        pluginName +
-        '.' +
-        method +
-        ', but the ' +
-        pluginName +
-        ' plugin is not installed.'
+      'Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.'
     );
   } else {
     console.warn(`Native: tried accessing the ${pluginName} plugin but it's not installed.`);
@@ -346,20 +333,22 @@ export function pluginWarn(pluginName: string, plugin?: string, method?: string)
  * @param method
  */
 export function cordovaWarn(pluginName: string, method?: string): void {
-  if (method) {
-    console.warn(
-      'Native: tried calling ' +
-        pluginName +
-        '.' +
-        method +
-        ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
-    );
-  } else {
-    console.warn(
-      'Native: tried accessing the ' +
-        pluginName +
-        ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
-    );
+  if (typeof process === 'undefined') {
+    if (method) {
+      console.warn(
+        'Native: tried calling ' +
+          pluginName +
+          '.' +
+          method +
+          ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
+      );
+    } else {
+      console.warn(
+        'Native: tried accessing the ' +
+          pluginName +
+          ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator'
+      );
+    }
   }
 }
 

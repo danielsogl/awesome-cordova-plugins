@@ -27,23 +27,19 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-autostart',
   pluginRef: 'cordova.plugins.autoStart',
   repo: 'https://github.com/ToniKorin/cordova-plugin-autostart',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class Autostart extends IonicNativePlugin {
-
   /**
    * Enable the automatic startup after the boot
    */
   @Cordova({ sync: true })
-  enable(): void {
-  }
+  enable(): void {}
 
   /**
    * Disable the automatic startup after the boot
    */
   @Cordova({ sync: true })
-  disable(): void {
-  }
-
+  disable(): void {}
 }

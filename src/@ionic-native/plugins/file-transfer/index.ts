@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  CordovaInstance,
-  InstanceCheck,
-  IonicNativePlugin,
-  Plugin,
-  checkAvailability
-} from '@ionic-native/core';
+import { CordovaInstance, InstanceCheck, IonicNativePlugin, Plugin, checkAvailability } from '@ionic-native/core';
 
 export interface FileUploadOptions {
   /**
@@ -179,15 +173,7 @@ export interface FileTransferError {
   plugin: 'cordova-plugin-file-transfer',
   pluginRef: 'FileTransfer',
   repo: 'https://github.com/apache/cordova-plugin-file-transfer',
-  platforms: [
-    'Amazon Fire OS',
-    'Android',
-    'Browser',
-    'iOS',
-    'Ubuntu',
-    'Windows',
-    'Windows Phone'
-  ]
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone'],
 })
 @Injectable()
 export class FileTransfer extends IonicNativePlugin {
@@ -206,7 +192,7 @@ export class FileTransfer extends IonicNativePlugin {
     INVALID_URL_ERR: 2,
     CONNECTION_ERR: 3,
     ABORT_ERR: 4,
-    NOT_MODIFIED_ERR: 5
+    NOT_MODIFIED_ERR: 5,
   };
 
   /**
@@ -223,19 +209,13 @@ export class FileTransfer extends IonicNativePlugin {
  */
 @Plugin({
   plugin: 'cordova-plugin-file-transfer',
-  pluginName: 'FileTransfer'
+  pluginName: 'FileTransfer',
 })
 export class FileTransferObject {
   private _objectInstance: any;
 
   constructor() {
-    if (
-      checkAvailability(
-        FileTransfer.getPluginRef(),
-        null,
-        FileTransfer.getPluginName()
-      ) === true
-    ) {
+    if (checkAvailability(FileTransfer.getPluginRef(), null, FileTransfer.getPluginName()) === true) {
       this._objectInstance = new (FileTransfer.getPlugin())();
     }
   }
@@ -251,7 +231,7 @@ export class FileTransferObject {
    */
   @CordovaInstance({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   upload(
     fileUrl: string,
@@ -273,14 +253,9 @@ export class FileTransferObject {
    */
   @CordovaInstance({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
-  download(
-    source: string,
-    target: string,
-    trustAllHosts?: boolean,
-    options?: { [s: string]: any }
-  ): Promise<any> {
+  download(source: string, target: string, trustAllHosts?: boolean, options?: { [s: string]: any }): Promise<any> {
     return;
   }
 
@@ -298,8 +273,7 @@ export class FileTransferObject {
    * object which has an error code of FileTransferError.ABORT_ERR.
    */
   @CordovaInstance({
-    sync: true
+    sync: true,
   })
-  abort(): void {
-  }
+  abort(): void {}
 }

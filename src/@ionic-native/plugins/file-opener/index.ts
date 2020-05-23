@@ -18,6 +18,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  *   .then(() => console.log('File is opened'))
  *   .catch(e => console.log('Error opening file', e));
  *
+ * this.fileOpener.showOpenWithDialog('path/to/file.pdf', 'application/pdf')
+ *   .then(() => console.log('File is opened'))
+ *   .catch(e => console.log('Error opening file', e));
+ *
  * ```
  */
 @Plugin({
@@ -25,7 +29,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-file-opener2',
   pluginRef: 'cordova.plugins.fileOpener2',
   repo: 'https://github.com/pwlin/cordova-plugin-file-opener2',
-  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
 export class FileOpener extends IonicNativePlugin {
@@ -38,7 +42,7 @@ export class FileOpener extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'success',
-    errorName: 'error'
+    errorName: 'error',
   })
   open(filePath: string, fileMIMEType: string): Promise<any> {
     return;
@@ -52,7 +56,7 @@ export class FileOpener extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'success',
-    errorName: 'error'
+    errorName: 'error',
   })
   uninstall(packageId: string): Promise<any> {
     return;
@@ -66,9 +70,24 @@ export class FileOpener extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'success',
-    errorName: 'error'
+    errorName: 'error',
   })
   appIsInstalled(packageId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Opens with system modal to open file with an already installed app.
+   * @param {string} filePath File Path
+   * @param {string} fileMIMEType File MIME Type
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    callbackStyle: 'object',
+    successName: 'success',
+    errorName: 'error',
+  })
+  showOpenWithDialog(filePath: string, fileMIMEType: string): Promise<any> {
     return;
   }
 }

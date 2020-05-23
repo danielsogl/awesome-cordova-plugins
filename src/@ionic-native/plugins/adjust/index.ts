@@ -117,15 +117,11 @@ export class AdjustConfig {
     this.attributionCallback = attributionCallback;
   }
 
-  setEventTrackingSucceededCallbackListener(
-    eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void
-  ) {
+  setEventTrackingSucceededCallbackListener(eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void) {
     this.eventTrackingSucceededCallback = eventTrackingSucceededCallback;
   }
 
-  setEventTrackingFailedCallbackListener(
-    eventTrackingFailedCallback: (event: AdjustEventFailure) => void
-  ) {
+  setEventTrackingFailedCallbackListener(eventTrackingFailedCallback: (event: AdjustEventFailure) => void) {
     this.eventTrackingFailedCallback = eventTrackingFailedCallback;
   }
 
@@ -135,9 +131,7 @@ export class AdjustConfig {
     this.sessionTrackingSucceededCallback = sessionTrackingSucceededCallback;
   }
 
-  setSessionTrackingFailedCallbackListener(
-    sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void
-  ) {
+  setSessionTrackingFailedCallbackListener(sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void) {
     this.sessionTrackingFailedCallback = sessionTrackingFailedCallback;
   }
 
@@ -241,7 +235,7 @@ export interface AdjustEventFailure {
 
 export enum AdjustEnvironment {
   Sandbox = 'sandbox',
-  Production = 'production'
+  Production = 'production',
 }
 
 export enum AdjustLogLevel {
@@ -251,7 +245,7 @@ export enum AdjustLogLevel {
   Warn = 'WARN',
   Error = 'ERROR',
   Assert = 'ASSERT',
-  Suppress = 'SUPPRESS'
+  Suppress = 'SUPPRESS',
 }
 
 /**
@@ -293,7 +287,7 @@ export enum AdjustLogLevel {
   plugin: 'com.adjust.sdk',
   pluginRef: 'Adjust',
   repo: 'https://github.com/adjust/cordova_sdk',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Adjust extends IonicNativePlugin {

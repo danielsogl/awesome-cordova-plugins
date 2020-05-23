@@ -29,7 +29,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-browsertab',
   pluginRef: 'cordova.plugins.browsertab',
   repo: 'https://github.com/google/cordova-plugin-browsertab',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class BrowserTab extends IonicNativePlugin {

@@ -18,13 +18,13 @@ export enum BarcodeType {
   Code39 = 9,
   ITF = 10,
   Aztec = 11,
-  PDF417 = 12
+  PDF417 = 12,
 }
 
 export enum RecognizerResultState {
   empty = 1,
   uncertain = 2,
-  valid = 3
+  valid = 3,
 }
 
 export enum MrtdDocumentType {
@@ -33,20 +33,20 @@ export enum MrtdDocumentType {
   Passport = 3,
   Visa = 4,
   GreenCard = 5,
-  MalaysianPassIMM13P = 6
+  MalaysianPassIMM13P = 6,
 }
 
 export enum EudlCountry {
   UK = 1,
   Germany = 2,
   Austria = 3,
-  Automatic = 4
+  Automatic = 4,
 }
 
 export enum DocumentFaceDetectorType {
   TD1 = 1,
   TD2 = 2,
-  PassportsAndVisas = 3
+  PassportsAndVisas = 3,
 }
 
 export enum UsdlKeys {
@@ -135,7 +135,7 @@ export enum UsdlKeys {
   DataDiscriminator = 82,
   DocumentExpirationMonth = 83,
   DocumentNonexpiring = 84,
-  SecurityVersion = 85
+  SecurityVersion = 85,
 }
 
 export interface ImageExtensionFactors {
@@ -178,12 +178,12 @@ export interface OverlaySettings {
 
 export interface BarcodeOverlaySettings extends OverlaySettings {}
 export interface BarcodeOverlaySettingsCtor {
-  new(): BarcodeOverlaySettings;
+  new (): BarcodeOverlaySettings;
 }
 
 export interface DocumentOverlaySettings extends OverlaySettings {}
 export interface DocumentOverlaySettingsCtor {
-  new(): DocumentOverlaySettings;
+  new (): DocumentOverlaySettings;
 }
 
 export interface DocumentVerificationOverlaySettings extends OverlaySettings {
@@ -195,7 +195,14 @@ export interface DocumentVerificationOverlaySettings extends OverlaySettings {
   glareMessage: string;
 }
 export interface DocumentVerificationOverlaySettingsCtor {
-  new(): DocumentVerificationOverlaySettings;
+  new (): DocumentVerificationOverlaySettings;
+}
+
+export interface BlinkCardOverlaySettings extends OverlaySettings {
+  glareMessage: string;
+}
+export interface BlinkCardOverlaySettingsCtor {
+  new (): BlinkCardOverlaySettings;
 }
 
 export interface RecognizerResult {
@@ -279,7 +286,8 @@ export interface MrzResult {
 export interface SuccessFrameGrabberRecognizerResult extends RecognizerResult {
   successFrame: string;
 }
-export interface SuccessFrameGrabberRecognizerResultCtor extends RecognizerResultCtor<SuccessFrameGrabberRecognizerResult> {}
+export interface SuccessFrameGrabberRecognizerResultCtor
+  extends RecognizerResultCtor<SuccessFrameGrabberRecognizerResult> {}
 
 export interface SuccessFrameGrabberRecognizer extends Recognizer<SuccessFrameGrabberRecognizerResult> {
   slaveRecognizer: Recognizer;
@@ -837,47 +845,26 @@ export interface EgyptIdFrontRecognizer extends Recognizer<EgyptIdFrontRecognize
 }
 export interface EgyptIdFrontRecognizerCtor extends RecognizerCtor<EgyptIdFrontRecognizer> {}
 
-export interface ElitePaymentCardBackRecognizerResult extends RecognizerResult {
-  cardNumber: string;
-  cvv: string;
-  fullDocumentImage: string;
-  inventoryNumber: string;
-  validThru: Date;
-}
-export interface ElitePaymentCardBackRecognizerResultCtor extends RecognizerResultCtor<ElitePaymentCardBackRecognizerResult> {}
-
-export interface ElitePaymentCardBackRecognizer extends Recognizer<ElitePaymentCardBackRecognizerResult> {
-  anonymizeCardNumber: boolean;
-  anonymizeCvv: boolean;
-  detectGlare: boolean;
-  extractCvv: boolean;
-  extractInventoryNumber: boolean;
-  extractValidThru: boolean;
-  fullDocumentImageDpi: number;
-  fullDocumentImageExtensionFactors: ImageExtensionFactors;
-  returnFullDocumentImage: boolean;
-}
-
-export interface ElitePaymentCardCombinedRecognizerResult extends RecognizerResult {
+export interface BlinkCardEliteRecognizerResult extends RecognizerResult {
   cardNumber: string;
   cvv: string;
   digitalSignature: string;
   digitalSignatureVersion: string;
   documentDataMatch: boolean;
-  fullDocumentImage: string;
+  fullDocumentBackImage: string;
   fullDocumentFrontImage: string;
   inventoryNumber: string;
   owner: string;
   scanningFirstSideDone: boolean;
   validThru: Date;
 }
-export interface ElitePaymentCardCombinedRecognizerResultCtor extends RecognizerResultCtor<ElitePaymentCardCombinedRecognizerResult> {}
+export interface BlinkCardEliteRecognizerResultCtor extends RecognizerResultCtor<BlinkCardEliteRecognizerResult> {}
 
-export interface ElitePaymentCardCombinedRecognizer extends Recognizer<ElitePaymentCardCombinedRecognizerResult> {
+export interface BlinkCardEliteRecognizer extends Recognizer<BlinkCardEliteRecognizerResult> {
   anonymizeCardNumber: boolean;
   anonymizeCvv: boolean;
+  anonymizeOwner: boolean;
   detectGlare: boolean;
-  extractCvv: boolean;
   extractInventoryNumber: boolean;
   extractOwner: boolean;
   extractValidThru: boolean;
@@ -886,20 +873,7 @@ export interface ElitePaymentCardCombinedRecognizer extends Recognizer<ElitePaym
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-
-export interface ElitePaymentCardFrontRecognizerResult extends RecognizerResult {
-  fullDocumentImage: string;
-  owner: string;
-}
-export interface ElitePaymentCardFrontRecognizerResultCtor extends RecognizerResultCtor<ElitePaymentCardFrontRecognizerResult> {}
-
-export interface ElitePaymentCardFrontRecognizer extends Recognizer<ElitePaymentCardFrontRecognizerResult> {
-  anonymizeOwner: boolean;
-  detectGlare: boolean;
-  extractOwner: boolean;
-  fullDocumentImageDpi: number;
-  fullDocumentImageExtensionFactors: ImageExtensionFactors;
-}
+export interface BlinkCardEliteRecognizerCtor extends RecognizerCtor<BlinkCardEliteRecognizer> {}
 
 export interface EudlRecognizerResult extends RecognizerResult {
   address: string;
@@ -1491,7 +1465,8 @@ export interface MalaysiaMyTenteraRecognizerResult extends RecognizerResult {
   street: string;
   zipcode: string;
 }
-export interface MalaysiaMyTenteraRecognizerResultCtor extends RecognizerResultCtor<MalaysiaMyTenteraRecognizerResult> {}
+export interface MalaysiaMyTenteraRecognizerResultCtor
+  extends RecognizerResultCtor<MalaysiaMyTenteraRecognizerResult> {}
 
 export interface MalaysiaMyTenteraRecognizer extends Recognizer<MalaysiaMyTenteraRecognizerResult> {
   detectGlare: boolean;
@@ -1516,7 +1491,8 @@ export interface MexicoVoterIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface MexicoVoterIdFrontRecognizerResultCtor extends RecognizerResultCtor<MexicoVoterIdFrontRecognizerResult> {}
+export interface MexicoVoterIdFrontRecognizerResultCtor
+  extends RecognizerResultCtor<MexicoVoterIdFrontRecognizerResult> {}
 
 export interface MexicoVoterIdFrontRecognizer extends Recognizer<MexicoVoterIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1710,7 +1686,8 @@ export interface NewZealandDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface NewZealandDlFrontRecognizerResultCtor extends RecognizerResultCtor<NewZealandDlFrontRecognizerResult> {}
+export interface NewZealandDlFrontRecognizerResultCtor
+  extends RecognizerResultCtor<NewZealandDlFrontRecognizerResult> {}
 
 export interface NewZealandDlFrontRecognizer extends Recognizer<NewZealandDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1731,24 +1708,7 @@ export interface NewZealandDlFrontRecognizer extends Recognizer<NewZealandDlFron
 }
 export interface NewZealandDlFrontRecognizerCtor extends RecognizerCtor<NewZealandDlFrontRecognizer> {}
 
-export interface PaymentCardBackRecognizerResult extends RecognizerResult {
-  cvv: string;
-  fullDocumentImage: string;
-  inventoryNumber: string;
-}
-export interface PaymentCardBackRecognizerResultCtor extends RecognizerResultCtor<PaymentCardBackRecognizerResult> {}
-
-export interface PaymentCardBackRecognizer extends Recognizer<PaymentCardBackRecognizerResult> {
-  anonymizeCvv: boolean;
-  detectGlare: boolean;
-  extractInventoryNumber: boolean;
-  fullDocumentImageDpi: number;
-  fullDocumentImageExtensionFactors: ImageExtensionFactors;
-  returnFullDocumentImage: boolean;
-}
-export interface PaymentCardBackRecognizerCtor extends RecognizerCtor<PaymentCardBackRecognizer> {}
-
-export interface PaymentCardCombinedRecognizerResult extends RecognizerResult {
+export interface BlinkCardRecognizerResult extends RecognizerResult {
   cardNumber: string;
   cvv: string;
   digitalSignature: string;
@@ -1757,16 +1717,19 @@ export interface PaymentCardCombinedRecognizerResult extends RecognizerResult {
   fullDocumentBackImage: string;
   fullDocumentFrontImage: string;
   inventoryNumber: string;
+  issuer: string;
   owner: string;
   scanningFirstSideDone: boolean;
   validThru: Date;
 }
-export interface PaymentCardCombinedRecognizerResultCtor extends RecognizerResultCtor<PaymentCardCombinedRecognizerResult> {}
+export interface BlinkCardRecognizerResultCtor extends RecognizerResultCtor<BlinkCardRecognizerResult> {}
 
-export interface PaymentCardCombinedRecognizer extends Recognizer<PaymentCardCombinedRecognizerResult> {
+export interface BlinkCardRecognizer extends Recognizer<BlinkCardRecognizerResult> {
   anonymizeCardNumber: boolean;
   anonymizeCvv: boolean;
+  anonymizeOwner: boolean;
   detectGlare: boolean;
+  extractCvv: boolean;
   extractInventoryNumber: boolean;
   extractOwner: boolean;
   extractValidThru: boolean;
@@ -1775,27 +1738,7 @@ export interface PaymentCardCombinedRecognizer extends Recognizer<PaymentCardCom
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface PaymentCardCombinedRecognizerCtor extends RecognizerCtor<PaymentCardCombinedRecognizer> {}
-
-export interface PaymentCardFrontRecognizerResult extends RecognizerResult {
-  cardNumber: string;
-  fullDocumentImage: string;
-  owner: string;
-  validThru: Date;
-}
-export interface PaymentCardFrontRecognizerResultCtor extends RecognizerResultCtor<PaymentCardFrontRecognizerResult> {}
-
-export interface PaymentCardFrontRecognizer extends Recognizer<PaymentCardFrontRecognizerResult> {
-  anonymizeCardNumber: boolean;
-  anonymizeOwner: boolean;
-  detectGlare: boolean;
-  extractOwner: boolean;
-  extractValidThru: boolean;
-  fullDocumentImageDpi: number;
-  fullDocumentImageExtensionFactors: ImageExtensionFactors;
-  returnFullDocumentImage: boolean;
-}
-export interface PaymentCardFrontRecognizerCtor extends RecognizerCtor<PaymentCardFrontRecognizer> {}
+export interface BlinkCardRecognizerCtor extends RecognizerCtor<BlinkCardRecognizer> {}
 
 export interface Pdf417RecognizerResult extends RecognizerResult {
   barcodeType: string;
@@ -2041,7 +1984,8 @@ export interface SingaporeChangiEmployeeIdRecognizerResult extends RecognizerRes
   fullDocumentImage: string;
   name: string;
 }
-export interface SingaporeChangiEmployeeIdRecognizerResultCtor extends RecognizerResultCtor<SingaporeChangiEmployeeIdRecognizerResult> {}
+export interface SingaporeChangiEmployeeIdRecognizerResultCtor
+  extends RecognizerResultCtor<SingaporeChangiEmployeeIdRecognizerResult> {}
 
 export interface SingaporeChangiEmployeeIdRecognizer extends Recognizer<SingaporeChangiEmployeeIdRecognizerResult> {
   detectGlare: boolean;
@@ -2075,7 +2019,8 @@ export interface SingaporeCombinedRecognizerResult extends RecognizerResult {
   scanningFirstSideDone: string;
   sex: string;
 }
-export interface SingaporeCombinedRecognizerResultCtor extends RecognizerResultCtor<SingaporeCombinedRecognizerResult> {}
+export interface SingaporeCombinedRecognizerResultCtor
+  extends RecognizerResultCtor<SingaporeCombinedRecognizerResult> {}
 
 export interface SingaporeCombinedRecognizer extends Recognizer<SingaporeCombinedRecognizerResult> {
   detectGlare: boolean;
@@ -2451,7 +2396,8 @@ export interface SwitzerlandDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   vehicleCategories: string;
 }
-export interface SwitzerlandDlFrontRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandDlFrontRecognizerResult> {}
+export interface SwitzerlandDlFrontRecognizerResultCtor
+  extends RecognizerResultCtor<SwitzerlandDlFrontRecognizerResult> {}
 
 export interface SwitzerlandDlFrontRecognizer extends Recognizer<SwitzerlandDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2496,7 +2442,8 @@ export interface SwitzerlandDlBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: String;
 }
-export interface SwitzerlandDlBackRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandDlBackRecognizerResult> {}
+export interface SwitzerlandDlBackRecognizerResultCtor
+  extends RecognizerResultCtor<SwitzerlandDlBackRecognizerResult> {}
 
 export interface SwitzerlandDlBackRecognizer extends Recognizer<SwitzerlandDlBackRecognizerResult> {
   detectGlare: boolean;
@@ -2518,7 +2465,8 @@ export interface SwitzerlandIdFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface SwitzerlandIdFrontRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandIdFrontRecognizerResult> {}
+export interface SwitzerlandIdFrontRecognizerResultCtor
+  extends RecognizerResultCtor<SwitzerlandIdFrontRecognizerResult> {}
 
 export interface SwitzerlandIdFrontRecognizer extends Recognizer<SwitzerlandIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2562,7 +2510,8 @@ export interface SwitzerlandPassportRecognizerResult extends RecognizerResult {
   sex: string;
   surname: string;
 }
-export interface SwitzerlandPassportRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandPassportRecognizerResult> {}
+export interface SwitzerlandPassportRecognizerResultCtor
+  extends RecognizerResultCtor<SwitzerlandPassportRecognizerResult> {}
 
 export interface SwitzerlandPassportRecognizer extends Recognizer<SwitzerlandPassportRecognizerResult> {
   detectGlare: boolean;
@@ -2593,7 +2542,8 @@ export interface UnitedArabEmiratesDlFrontRecognizerResult extends RecognizerRes
   nationality: string;
   placeOfIssue: string;
 }
-export interface UnitedArabEmiratesDlFrontRecognizerResultCtor extends RecognizerResultCtor<UnitedArabEmiratesDlFrontRecognizerResult> {}
+export interface UnitedArabEmiratesDlFrontRecognizerResultCtor
+  extends RecognizerResultCtor<UnitedArabEmiratesDlFrontRecognizerResult> {}
 
 export interface UnitedArabEmiratesDlFrontRecognizer extends Recognizer<UnitedArabEmiratesDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2616,7 +2566,8 @@ export interface UnitedArabEmiratesIdBackRecognizerResult extends RecognizerResu
   fullDocumentImage: string;
   mrzResult: MrzResult;
 }
-export interface UnitedArabEmiratesIdBackRecognizerResultCtor extends RecognizerResultCtor<UnitedArabEmiratesIdBackRecognizerResult> {}
+export interface UnitedArabEmiratesIdBackRecognizerResultCtor
+  extends RecognizerResultCtor<UnitedArabEmiratesIdBackRecognizerResult> {}
 
 export interface UnitedArabEmiratesIdBackRecognizer extends Recognizer<UnitedArabEmiratesIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -2633,7 +2584,8 @@ export interface UnitedArabEmiratesIdFrontRecognizerResult extends RecognizerRes
   name: string;
   nationality: string;
 }
-export interface UnitedArabEmiratesIdFrontRecognizerResultCtor extends RecognizerResultCtor<UnitedArabEmiratesIdFrontRecognizerResult> {}
+export interface UnitedArabEmiratesIdFrontRecognizerResultCtor
+  extends RecognizerResultCtor<UnitedArabEmiratesIdFrontRecognizerResult> {}
 
 export interface UnitedArabEmiratesIdFrontRecognizer extends Recognizer<UnitedArabEmiratesIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2738,6 +2690,40 @@ export interface UsdlCombinedRecognizerCtor extends RecognizerCtor<UsdlCombinedR
  *     this.barcodeStringData = barcodeRecognizer.result.stringData;
  *   }
  * }
+ *
+ * ...
+ *
+ * const overlaySettings = new this.blinkId.BlinkCardOverlaySettings();
+ * const recognizer = new this.blinkId.BlinkCardRecognizer();
+ * recognizer.returnFullDocumentImage = false;
+ * recognizer.detectGlare = true;
+ * recognizer.extractCvv = true;
+ * recognizer.extractValidThru = true;
+ * recognizer.extractOwner = true;
+ *
+ * const recognizerCollection = new this.blinkId.RecognizerCollection([recognizer]);
+ * const canceled = await this.blinkId.scanWithCamera(
+ *   overlaySettings,
+ *   recognizerCollection,
+ *   {
+ *     ios: '', //iOS License Key
+ *     android: '' //Android License Key
+ *   },
+ * );
+ *
+ * if (!canceled) {
+ *   if (recognizer.result.resultState === RecognizerResultState.valid) {
+ *     const results = recognizer.result;
+ *
+ *     if (results.resultState === RecognizerResultState.valid) {
+ *       const ccInfo = {
+ *         cardNumber: Number(results.cardNumber),
+ *         expirationMonth: Number(results.validThru.month),
+ *         expirationYear: Number(results.validThru.year),
+ *         cvv: Number(results.cvv)
+ *       };
+ *     }
+ *   }
  * ```
  */
 @Plugin({
@@ -2747,24 +2733,26 @@ export interface UsdlCombinedRecognizerCtor extends RecognizerCtor<UsdlCombinedR
   repo: 'https://github.com/BlinkID/blinkid-phonegap',
   install:
     'ionic cordova plugin add blinkid-cordova --variable CAMERA_USAGE_DESCRIPTION="Enable your camera so that you can scan your ID to validate your account"',
-  platforms: ['iOS', 'Android']
+  platforms: ['iOS', 'Android'],
 })
 @Injectable()
 export class BlinkId extends IonicNativePlugin {
   /**
    * Opens the camera dialog and attempts to scan a barcode/document
-   * @param overlaySettings {OverlaySettings} for camera overla customization
+   * @param overlaySettings {OverlaySettings} for camera overlay customization
    * @param recognizerCollection {RecognizerCollection} collection of recognizers to scan with
    * @returns {Promise<boolean>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   scanWithCamera(
     overlaySettings: OverlaySettings,
     recognizerCollection: RecognizerCollection,
-    licenses: Licenses,
-  ): Promise<boolean> { return; }
+    licenses: Licenses
+  ): Promise<boolean> {
+    return;
+  }
 
   @CordovaProperty() Date: DateCtor;
   @CordovaProperty() Point: PointCtor;
@@ -2773,6 +2761,7 @@ export class BlinkId extends IonicNativePlugin {
   @CordovaProperty() BarcodeOverlaySettings: BarcodeOverlaySettingsCtor;
   @CordovaProperty() DocumentOverlaySettings: DocumentOverlaySettingsCtor;
   @CordovaProperty() DocumentVerificationOverlaySettings: DocumentVerificationOverlaySettingsCtor;
+  @CordovaProperty() BlinkCardOverlaySettings: BlinkCardOverlaySettingsCtor;
 
   @CordovaProperty() RecognizerCollection: RecognizerCollectionCtor;
 
@@ -2795,6 +2784,10 @@ export class BlinkId extends IonicNativePlugin {
   @CordovaProperty() AustriaIdFrontRecognizer: AustriaIdFrontRecognizerCtor;
   @CordovaProperty() AustriaPassportRecognizerResult: AustriaPassportRecognizerResultCtor;
   @CordovaProperty() AustriaPassportRecognizer: AustriaPassportRecognizerCtor;
+  @CordovaProperty() BlinkCardEliteRecognizer: BlinkCardEliteRecognizerCtor;
+  @CordovaProperty() BlinkCardEliteRecognizerResult: BlinkCardEliteRecognizerResultCtor;
+  @CordovaProperty() BlinkCardRecognizerResult: BlinkCardRecognizerResultCtor;
+  @CordovaProperty() BlinkCardRecognizer: BlinkCardRecognizerCtor;
   @CordovaProperty() ColombiaDlFrontRecognizerResult: ColombiaDlFrontRecognizerResultCtor;
   @CordovaProperty() ColombiaIdBackRecognizerResult: ColombiaIdBackRecognizerResultCtor;
   @CordovaProperty() ColombiaIdBackRecognizer: ColombiaIdBackRecognizerCtor;
@@ -2812,9 +2805,6 @@ export class BlinkId extends IonicNativePlugin {
   @CordovaProperty() DocumentFaceRecognizerResult: DocumentFaceRecognizerResultCtor;
   @CordovaProperty() EgyptIdFrontRecognizerResult: EgyptIdFrontRecognizerResultCtor;
   @CordovaProperty() EgyptIdFrontRecognizer: EgyptIdFrontRecognizerCtor;
-  @CordovaProperty() ElitePaymentCardBackRecognizerResult: ElitePaymentCardBackRecognizerResultCtor;
-  @CordovaProperty() ElitePaymentCardCombinedRecognizerResult: ElitePaymentCardCombinedRecognizerResultCtor;
-  @CordovaProperty() ElitePaymentCardFrontRecognizerResult: ElitePaymentCardFrontRecognizerResultCtor;
   @CordovaProperty() EudlRecognizerResult: EudlRecognizerResultCtor;
   @CordovaProperty() GermanyCombinedRecognizerResult: GermanyCombinedRecognizerResultCtor;
   @CordovaProperty() GermanyCombinedRecognizer: GermanyCombinedRecognizerCtor;
@@ -2868,12 +2858,6 @@ export class BlinkId extends IonicNativePlugin {
   @CordovaProperty() MyKadFrontRecognizer: MyKadFrontRecognizerCtor;
   @CordovaProperty() NewZealandDlFrontRecognizerResult: NewZealandDlFrontRecognizerResultCtor;
   @CordovaProperty() NewZealandDlFrontRecognizer: NewZealandDlFrontRecognizerCtor;
-  @CordovaProperty() PaymentCardBackRecognizerResult: PaymentCardBackRecognizerResultCtor;
-  @CordovaProperty() PaymentCardBackRecognizer: PaymentCardBackRecognizerCtor;
-  @CordovaProperty() PaymentCardCombinedRecognizerResult: PaymentCardCombinedRecognizerResultCtor;
-  @CordovaProperty() PaymentCardCombinedRecognizer: PaymentCardCombinedRecognizerCtor;
-  @CordovaProperty() PaymentCardFrontRecognizerResult: PaymentCardFrontRecognizerResultCtor;
-  @CordovaProperty() PaymentCardFrontRecognizer: PaymentCardFrontRecognizerCtor;
   @CordovaProperty() Pdf417RecognizerResult: Pdf417RecognizerResultCtor;
   @CordovaProperty() Pdf417Recognizer: Pdf417RecognizerCtor;
   @CordovaProperty() PolandCombinedRecognizerResult: PolandCombinedRecognizerResultCtor;

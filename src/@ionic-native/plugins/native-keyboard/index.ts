@@ -2,7 +2,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 export interface NativeKeyboardOptions {
-
   /**
    * A function invoked when the user submits his input. Receives the text as a single property. Make sure your page is UTF-8 encoded so Chinese and Emoji are rendered OK.
    */
@@ -127,7 +126,6 @@ export interface NativeKeyboardOptions {
    *
    */
   rightButton: NativeKeyboardButton;
-
 }
 
 export interface NativeKeyboardButton {
@@ -200,26 +198,23 @@ export interface NativeKeyboardUpdateMessengerOptions {
   plugin: 'cordova-plugin-native-keyboard',
   pluginRef: 'NativeKeyboard',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-native-keyboard',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class NativeKeyboard extends IonicNativePlugin {
-
   /**
    * Show messenger
    * @param options {NativeKeyboardOptions}
    */
   @Cordova({ sync: true })
-  showMessenger(options: NativeKeyboardOptions): void {
-  }
+  showMessenger(options: NativeKeyboardOptions): void {}
 
   /**
    * Hide messenger
    * @param options {NativeKeyboardOptions}
    */
   @Cordova({ sync: true })
-  hideMessenger(options: NativeKeyboardOptions): void {
-  }
+  hideMessenger(options: NativeKeyboardOptions): void {}
 
   /**
    * Programmatically pop up the keyboard again if the user dismissed it.
@@ -246,5 +241,4 @@ export class NativeKeyboard extends IonicNativePlugin {
   updateMessenger(options: NativeKeyboardUpdateMessengerOptions): Promise<any> {
     return;
   }
-
 }

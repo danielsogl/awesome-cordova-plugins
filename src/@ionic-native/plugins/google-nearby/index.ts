@@ -28,10 +28,9 @@ import { Observable } from 'rxjs';
   plugin: 'cordova-plugin-google-nearby',
   pluginRef: 'window.nearby',
   repo: 'https://github.com/hahahannes/cordova-plugin-google-nearby',
-  install:
-    'ionic cordova plugin add cordova-plugin-google-nearby --variable API_KEY="123456789"',
+  install: 'ionic cordova plugin add cordova-plugin-google-nearby --variable API_KEY="123456789"',
   installVariables: ['API_KEY'],
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class GoogleNearby extends IonicNativePlugin {
@@ -51,7 +50,7 @@ export class GoogleNearby extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'unsubscribe'
+    clearFunction: 'unsubscribe',
   })
   subscribe(): Observable<any> {
     return;

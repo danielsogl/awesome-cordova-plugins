@@ -1,12 +1,7 @@
 import * as ts from 'typescript';
 
 import { Logger } from '../../logger';
-import {
-  convertValueToLiteral,
-  getDecorator,
-  getDecoratorArgs,
-  getDecoratorName
-} from '../helpers';
+import { convertValueToLiteral, getDecorator, getDecoratorArgs, getDecoratorName } from '../helpers';
 import { transformMembers } from './members';
 
 function transformClass(cls: any, ngcBuild?: boolean) {
@@ -48,17 +43,15 @@ function transformClass(cls: any, ngcBuild?: boolean) {
   return cls;
 }
 
-function transformClasses(
-  file: ts.SourceFile,
-  ctx: ts.TransformationContext,
-  ngcBuild?: boolean
-) {
+function transformClasses(file: ts.SourceFile, ctx: ts.TransformationContext, ngcBuild?: boolean) {
   Logger.silly('Transforming file: ' + file.fileName);
   return ts.visitEachChild(
     file,
     node => {
-      if (node.kind !== ts.SyntaxKind.ClassDeclaration
-          || (node.modifiers && node.modifiers.find(v => v.kind === ts.SyntaxKind.DeclareKeyword))) {
+      if (
+        node.kind !== ts.SyntaxKind.ClassDeclaration ||
+        (node.modifiers && node.modifiers.find(v => v.kind === ts.SyntaxKind.DeclareKeyword))
+      ) {
         return node;
       }
       return transformClass(node, ngcBuild);
@@ -67,9 +60,7 @@ function transformClasses(
   );
 }
 
-export function pluginClassTransformer(
-  ngcBuild?: boolean
-): ts.TransformerFactory<ts.SourceFile> {
+export function pluginClassTransformer(ngcBuild?: boolean): ts.TransformerFactory<ts.SourceFile> {
   return (ctx: ts.TransformationContext) => {
     return tsSourceFile => {
       if (tsSourceFile.fileName.indexOf('src/@ionic-native/plugins') > -1)

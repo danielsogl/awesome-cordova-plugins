@@ -73,19 +73,13 @@ export interface ThemeableBrowserOptions {
 export class ThemeableBrowserObject {
   private _objectInstance: any;
 
-  constructor(
-    url: string,
-    target: string,
-    styleOptions: ThemeableBrowserOptions
-  ) {
+  constructor(url: string, target: string, styleOptions: ThemeableBrowserOptions) {
     try {
-      this._objectInstance = cordova.ThemeableBrowser.open(
-        url,
-        target,
-        styleOptions
-      );
+      this._objectInstance = cordova.ThemeableBrowser.open(url, target, styleOptions);
     } catch (e) {
-      window.open(url);
+      if (typeof window !== 'undefined') {
+        window.open(url);
+      }
       console.warn(
         'Native: ThemeableBrowser is not installed or you are running on a browser. Falling back to window.open.'
       );
@@ -140,15 +134,8 @@ export class ThemeableBrowserObject {
   @InstanceCheck({ observable: true })
   on(event: string): Observable<any> {
     return new Observable<any>(observer => {
-      this._objectInstance.addEventListener(
-        event,
-        observer.next.bind(observer)
-      );
-      return () =>
-        this._objectInstance.removeEventListener(
-          event,
-          observer.next.bind(observer)
-        );
+      this._objectInstance.addEventListener(event, observer.next.bind(observer));
+      return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
     });
   }
 }
@@ -252,8 +239,8 @@ export class ThemeableBrowserObject {
     'iOS',
     'Ubuntu',
     'Windows',
-    'Windows Phone'
-  ]
+    'Windows Phone',
+  ],
 })
 @Injectable()
 export class ThemeableBrowser extends IonicNativePlugin {
@@ -264,11 +251,7 @@ export class ThemeableBrowser extends IonicNativePlugin {
    * @param styleOptions {ThemeableBrowserOptions} Themeable browser options
    * @returns {ThemeableBrowserObject}
    */
-  create(
-    url: string,
-    target: string,
-    styleOptions: ThemeableBrowserOptions
-  ): ThemeableBrowserObject {
+  create(url: string, target: string, styleOptions: ThemeableBrowserOptions): ThemeableBrowserObject {
     return new ThemeableBrowserObject(url, target, styleOptions);
   }
 }

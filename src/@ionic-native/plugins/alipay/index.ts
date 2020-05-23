@@ -15,7 +15,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * constructor(private alipay: Alipay) {
  *
  * //alipayOrder is a string that has been generated and signed by the server side.
- * this.alipay.pay(alipayOrder)
+ * this.alipay.pay(alipayOrder, success, error)
  *    .then(result => {
  *       console.log(result); // Success
  *    })
@@ -30,11 +30,11 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 @Plugin({
   pluginName: 'Alipay',
   plugin: 'cordova-plugin-gubnoi-alipay',
-  pluginRef: 'Alipay',
+  pluginRef: 'cordova.plugins.alipay',
   repo: 'https://github.com/jing-zhou/cordova-plugin-alipay',
   install: 'ionic cordova plugin add cordova-plugin-gubnoi-alipay --variable APP_ID=your_app_id',
   installVariables: ['APP_ID'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Alipay extends IonicNativePlugin {
@@ -44,7 +44,7 @@ export class Alipay extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with the success return, or rejects with an error.
    */
   @Cordova()
-  pay(order: string): Promise<any> {
+  pay(order: string, success?: (res?: any) => void, error?: (err?: any) => void): Promise<any> {
     return;
   }
 }

@@ -27,10 +27,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-janalytics',
   pluginRef: 'JAnalytics',
   repo: 'https://github.com/jpush/cordova-plugin-janalytics',
-  install:
-    'ionic cordova plugin add cordova-plugin-janalytics --variable APP_KEY=YOUR_APP_KEY',
+  install: 'ionic cordova plugin add cordova-plugin-janalytics --variable APP_KEY=YOUR_APP_KEY',
   installVariables: ['APP_KEY'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class JAnalytics extends IonicNativePlugin {

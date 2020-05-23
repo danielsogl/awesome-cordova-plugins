@@ -21,7 +21,7 @@ declare var clevertap: any;
   plugin: 'clevertap-cordova',
   pluginRef: 'CleverTap',
   repo: 'https://github.com/CleverTap/clevertap-cordova',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class CleverTap extends IonicNativePlugin {
@@ -250,10 +250,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  createNotificationChannelGroup(
-    groupID: string,
-    groupName: string
-  ): Promise<any> {
+  createNotificationChannelGroup(groupID: string, groupName: string): Promise<any> {
     return;
   }
 
@@ -308,10 +305,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  recordEventWithNameAndProps(
-    eventName: string,
-    eventProps: any
-  ): Promise<any> {
+  recordEventWithNameAndProps(eventName: string, eventProps: any): Promise<any> {
     return;
   }
 
@@ -322,10 +316,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  recordChargedEventWithDetailsAndItems(
-    details: any,
-    items: any
-  ): Promise<any> {
+  recordChargedEventWithDetailsAndItems(details: any, items: any): Promise<any> {
     return;
   }
 
@@ -631,11 +622,43 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  pushInstallReferrer(
-    source: string,
-    medium: string,
-    campaign: string
-  ): Promise<any> {
+  pushInstallReferrer(source: string, medium: string, campaign: string): Promise<any> {
+    return;
+  }
+
+  /****************************
+   * Notification Inbox methods
+   ****************************/
+  /**
+   * Call this method to initialize the App Inbox
+   */
+  @Cordova()
+  initializeInbox(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this method to get the count of unread Inbox messages
+   */
+  @Cordova()
+  getInboxMessageUnreadCount(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this method to get the count of total Inbox messages
+   */
+  @Cordova()
+  getInboxMessageCount(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this method to open the App Inbox
+   * @param styleConfig : any or empty object
+   */
+  @Cordova()
+  showInbox(styleConfig: any): Promise<any> {
     return;
   }
 

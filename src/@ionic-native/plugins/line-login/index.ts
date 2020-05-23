@@ -23,6 +23,11 @@ export interface LineLoginProfile {
    * Line Profile Name
    */
   displayName: string;
+
+  /**
+   * Email
+   */
+  email?: string;
 }
 
 export interface LineLoginAccessToken {
@@ -71,9 +76,10 @@ export interface LineLoginAccessToken {
   plugin: 'cordova-line-login-plugin',
   pluginRef: 'lineLogin',
   repo: 'https://github.com/nrikiji/cordova-line-login-plugin',
-  install: 'ionic cordova plugin add https://github.com/nrikiji/cordova-line-login-plugin.git --variable LINE_CHANNEL_ID="your_line_channel_id"',
+  install:
+    'ionic cordova plugin add https://github.com/nrikiji/cordova-line-login-plugin.git --variable LINE_CHANNEL_ID="your_line_channel_id"',
   installVariables: ['LINE_CHANNEL_ID'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class LineLogin extends IonicNativePlugin {
@@ -91,10 +97,7 @@ export class LineLogin extends IonicNativePlugin {
    * Login
    * @return {Promise<LineLoginProfile>}
    */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 2
-  })
+  @Cordova()
   login(): Promise<LineLoginProfile> {
     return;
   }
@@ -104,10 +107,7 @@ export class LineLogin extends IonicNativePlugin {
    * (iOS only)
    * @return {Promise<LineLoginProfile>}
    */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 2
-  })
+  @Cordova()
   loginWeb(): Promise<LineLoginProfile> {
     return;
   }

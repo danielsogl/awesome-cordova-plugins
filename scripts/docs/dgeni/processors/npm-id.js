@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 module.exports = function npmId(renderDocsProcessor) {
   return {
     name: 'npm-id',
@@ -6,7 +6,7 @@ module.exports = function npmId(renderDocsProcessor) {
     $runBefore: ['rendering-docs'],
     $process: docs => {
       // pretty up and sort the docs object for menu generation
-      docs = docs.filter(function(doc) {
+      docs = docs.filter(function (doc) {
         return (!!doc.name && !!doc.outputPath) || doc.docType === 'index-page';
       });
 
@@ -15,6 +15,6 @@ module.exports = function npmId(renderDocsProcessor) {
       });
 
       return docs;
-    }
+    },
   };
 };

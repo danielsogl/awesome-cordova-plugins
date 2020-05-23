@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaCheck,
-  IonicNativePlugin,
-  Plugin,
-  getPromise
-} from '@ionic-native/core';
+import { Cordova, CordovaCheck, IonicNativePlugin, Plugin, getPromise } from '@ionic-native/core';
 
 export interface EmailComposerOptions {
   /**
@@ -70,9 +64,27 @@ export interface EmailComposerOptions {
  * ...
  *
  *
- * this.emailComposer.isAvailable().then((available: boolean) =>{
+ * this.emailComposer.getClients().then((apps: []) => {
+ *    // Returns an array of configured email clients for the device
+ * });
+ *
+ * this.emailComposer.hasClient().then(app, (isValid: boolean) => {
+ *  if (isValid) {
+ *    // Now we know we have a valid email client configured
+ *    // Not specifying an app will return true if at least one email client is configured
+ *  }
+ * });
+ *
+ * this.emailComposer.hasAccount().then((isValid: boolean) => {
+ *  if (isValid) {
+ *    // Now we know we have a valid email account configured
+ *  }
+ * });
+ *
+ * this.emailComposer.isAvailable().then(app, (available: boolean) => {
  *  if(available) {
- *    //Now we know we can send
+ *    // Now we know we can send an email, calls hasClient and hasAccount
+ *    // Not specifying an app will return true if at least one email client is configured
  *  }
  * });
  *
@@ -114,7 +126,7 @@ export interface EmailComposerOptions {
   plugin: 'cordova-plugin-email-composer',
   pluginRef: 'cordova.plugins.email',
   repo: 'https://github.com/katzer/cordova-plugin-email-composer',
-  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows', 'macOS']
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows', 'macOS'],
 })
 @Injectable()
 export class EmailComposer extends IonicNativePlugin {
@@ -124,7 +136,7 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 2
+    errorIndex: 2,
   })
   hasPermission(): Promise<boolean> {
     return;
@@ -136,10 +148,72 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 0,
-    errorIndex: 2
+    errorIndex: 2,
   })
   requestPermission(): Promise<boolean> {
     return;
+  }
+
+  /**
+   * Verifies if an email account is configured on the device.
+   *
+   * @returns {Promise<any>} Resolves if available, rejects if not available
+   */
+  @CordovaCheck()
+  hasAccount(): Promise<any> {
+    return getPromise<boolean>(resolve => {
+      EmailComposer.getPlugin().hasAccount((result: boolean) => {
+        if (result) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      });
+    });
+  }
+
+  /**
+   * Verifies if a specific email client is installed on the device.
+   *
+   * @param {string} [app] App id or uri scheme.
+   * @returns {Promise<any>} Resolves if available, rejects if not available
+   */
+
+  @CordovaCheck()
+  hasClient(app?: string): Promise<any> {
+    return getPromise<boolean>(resolve => {
+      if (app) {
+        EmailComposer.getPlugin().hasClient(app, (result: boolean) => {
+          if (result) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        });
+      } else {
+        EmailComposer.getPlugin().getClients((apps: string[]) => {
+          resolve(apps && apps.length > 0);
+        });
+      }
+    });
+  }
+
+  /**
+   * Returns an array of email clients installed on the device.
+   *
+   * @returns {Promise<string[]>} Resolves if available, rejects if not available
+   */
+  @CordovaCheck()
+  @Cordova({ platforms: ['Android'] })
+  getClients(): Promise<string[]> {
+    return getPromise<string[]>(resolve => {
+      EmailComposer.getPlugin().getClients((apps: any) => {
+        if (Object.prototype.toString.call(apps) === '[object String]') {
+          apps = [apps];
+        }
+        resolve(apps);
+      });
+    });
   }
 
   /**
@@ -150,24 +224,10 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @CordovaCheck()
   isAvailable(app?: string): Promise<any> {
-    return getPromise<boolean>((resolve, reject) => {
-      if (app) {
-        EmailComposer.getPlugin().isAvailable(app, (isAvailable: boolean) => {
-          if (isAvailable) {
-            resolve();
-          } else {
-            reject();
-          }
-        });
-      } else {
-        EmailComposer.getPlugin().isAvailable((isAvailable: boolean) => {
-          if (isAvailable) {
-            resolve();
-          } else {
-            reject();
-          }
-        });
-      }
+    return getPromise<boolean>(resolve => {
+      Promise.all([this.hasAccount, this.hasClient(app)]).then(results => {
+        return resolve(results.length === 2 && results[0] && results[1]);
+      });
     });
   }
 
@@ -180,7 +240,7 @@ export class EmailComposer extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 3
+    errorIndex: 3,
   })
   open(options: EmailComposerOptions, scope?: any): Promise<any> {
     return;

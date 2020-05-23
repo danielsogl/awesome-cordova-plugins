@@ -74,7 +74,7 @@ export interface BackgroundModeConfiguration {
   plugin: 'cordova-plugin-background-mode',
   pluginRef: 'cordova.plugins.backgroundMode',
   repo: 'https://github.com/katzer/cordova-plugin-background-mode',
-  platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'Windows']
+  platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
 export class BackgroundMode extends IonicNativePlugin {
@@ -83,7 +83,7 @@ export class BackgroundMode extends IonicNativePlugin {
    * Once called, prevents the app from being paused while in background.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   enable(): void {}
 
@@ -91,8 +91,37 @@ export class BackgroundMode extends IonicNativePlugin {
    * Disable the background mode.
    * Once the background mode has been disabled, the app will be paused when in background.
    */
-  @Cordova()
-  disable(): Promise<any> {
+  @Cordova({
+    sync: true,
+  })
+  disable(): void {
+    return;
+  }
+
+  /**
+   * Enable or disable the background mode.
+   *
+   * @param enable {boolean} The status to set for.
+   *
+   * @return {void}
+   */
+  @Cordova({
+    sync: true,
+  })
+  setEnabled(enable: boolean): void {}
+
+  /**
+   * Fire event with given arguments.
+   *
+   * @param event {string} event The event's name.
+   * @param args {array} The callback's arguments.
+   *
+   * @return {string}
+   */
+  @Cordova({
+    sync: true,
+  })
+  fireEvent(event: string, ...args: any[]): string {
     return;
   }
 
@@ -101,7 +130,7 @@ export class BackgroundMode extends IonicNativePlugin {
    * @returns {boolean} returns a boolean that indicates if the background mode is enabled.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   isEnabled(): boolean {
     return;
@@ -112,24 +141,22 @@ export class BackgroundMode extends IonicNativePlugin {
    * @returns {boolean} returns a boolean that indicates if the background mode is active.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   isActive(): boolean {
     return;
   }
 
   /**
-   * Override the default title, ticker and text.
+   * Overwrite the default settings.
    * Available only for Android platform.
-   * @param {BackgroundModeConfiguration} options List of option to configure. See table below
+   * @param overrides {BackgroundModeConfiguration} Dict of options to be overridden.
    * @returns {Promise<any>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
-  setDefaults(options?: BackgroundModeConfiguration): Promise<any> {
-    return;
-  }
+  setDefaults(overrides?: BackgroundModeConfiguration): void {}
 
   /**
    * Modify the displayed information.
@@ -138,21 +165,33 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   configure(options?: BackgroundModeConfiguration): void {}
 
   /**
-   * Listen for events that the plugin fires. Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
+   * Register callback for given event.
+   * > Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
    * @param event {string} Event name
    * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,
     clearFunction: 'un',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   on(event: string): Observable<any> {
+    return;
+  }
+
+  /**
+   * Listen for events that the plugin fires. Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
+   * @param event {string} Event name
+   * @param callback {function} The function to be exec as callback.
+   * @returns {Observable<any>}
+   */
+  @Cordova()
+  un(event: string, callback: (...args: any[]) => void): void {
     return;
   }
 
@@ -161,7 +200,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   moveToBackground(): void {}
 
@@ -170,7 +209,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   disableWebViewOptimizations(): void {}
 
@@ -179,7 +218,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   moveToForeground(): void {}
 
@@ -188,7 +227,7 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   overrideBackButton(): void {}
 
@@ -197,27 +236,26 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   excludeFromTaskList(): void {}
 
   /**
-   * The method works async instead of isActive() or isEnabled().
+   * If the screen is off.
+   * @param fn {function} Callback function to invoke with boolean arg.
    * @returns {Promise<boolean>}
    */
   @Cordova({
-    platforms: ['Android']
+    platforms: ['Android'],
   })
-  isScreenOff(): Promise<boolean> {
-    return;
-  }
+  isScreenOff(fn: (arg0: boolean) => void): void {}
 
   /**
    * Turn screen on
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   wakeUp(): void {}
 
@@ -226,7 +264,16 @@ export class BackgroundMode extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   unlock(): void {}
+
+  /**
+   * Disables battery optimazation mode for the app (android only)
+   */
+  @Cordova({
+    platforms: ['Android'],
+    sync: true,
+  })
+  disableBatteryOptimizations(): void {}
 }

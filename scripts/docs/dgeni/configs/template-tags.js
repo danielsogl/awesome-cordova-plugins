@@ -1,4 +1,4 @@
-module.exports = function(templateEngine) {
+module.exports = function (templateEngine) {
   // add custom filters to nunjucks
   templateEngine.filters.push(
     require('../filters/capital'),

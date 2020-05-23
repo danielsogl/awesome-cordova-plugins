@@ -20,7 +20,7 @@ export function get(element: Element | Window, path: string) {
  */
 export function getPromise(callback: Function = () => {}): Promise<any> {
   const tryNativePromise = () => {
-    if (window.Promise) {
+    if (typeof Promise === 'function' || (typeof window !== 'undefined' && window.Promise)) {
       return new Promise<any>((resolve, reject) => {
         callback(resolve, reject);
       });

@@ -84,11 +84,11 @@ export interface StripeCardTokenRes {
    * Card Object.
    */
   card: {
-    brand: string,
-    exp_month: number,
-    exp_year: number,
-    funding: string,
-    last4: string
+    brand: string;
+    exp_month: number;
+    exp_year: number;
+    funding: string;
+    last4: string;
   };
   /**
    * Token Request Date Time.
@@ -140,11 +140,10 @@ export interface StripeCardTokenRes {
   plugin: 'cordova-plugin-stripe',
   pluginRef: 'cordova.plugins.stripe',
   repo: 'https://github.com/zyramedia/cordova-plugin-stripe',
-  platforms: ['Android', 'Browser', 'iOS']
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class Stripe extends IonicNativePlugin {
-
   /**
    * Set publishable key
    * @param publishableKey {string} Publishable key
@@ -197,7 +196,7 @@ export class Stripe extends IonicNativePlugin {
 
   /**
    * Validates an expiry date
-   * @param expMonth {string} expiry month
+   * @param expMonth {string} expiry month (0 - 11)
    * @param expYear {string} expiry year
    * @return {Promise<any>} returns a promise that resolves if the date is valid, and rejects if it's invalid
    */
@@ -215,5 +214,4 @@ export class Stripe extends IonicNativePlugin {
   getCardType(cardNumber: string): Promise<string> {
     return;
   }
-
 }

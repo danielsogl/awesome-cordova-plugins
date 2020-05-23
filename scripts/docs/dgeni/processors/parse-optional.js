@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 module.exports = function parseOptional() {
   return {
     $runBefore: ['rendering-docs'],
@@ -17,6 +17,6 @@ module.exports = function parseOptional() {
         }
       });
       return docs;
-    }
-  }
+    },
+  };
 };

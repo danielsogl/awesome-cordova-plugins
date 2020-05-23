@@ -47,6 +47,14 @@ export interface NotificationData {
  *   backend.registerToken(token);
  * });
  *
+ * this.fcm.hasPermission().then(hasPermission => {
+ *   if (hasPermission) {
+ *     console.log("Has permission!");
+ *   }
+ * })
+ *
+ * this.fcm.clearAllNotifications();
+ *
  * this.fcm.unsubscribeFromTopic('marketing');
  *
  * ```
@@ -58,10 +66,20 @@ export interface NotificationData {
   plugin: 'cordova-plugin-fcm-with-dependecy-updated',
   pluginRef: 'FCMPlugin',
   repo: 'https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FCM extends IonicNativePlugin {
+  /**
+   * Gets ios device's current APNS token
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with the APNS token
+   */
+  @Cordova()
+  getAPNSToken(): Promise<string> {
+    return;
+  }
+
   /**
    * Gets device's current registration id
    *
@@ -78,7 +96,7 @@ export class FCM extends IonicNativePlugin {
    * @returns {Observable<string>} Returns an Observable that notifies with the change of device's registration id
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   onTokenRefresh(): Observable<string> {
     return;
@@ -109,6 +127,19 @@ export class FCM extends IonicNativePlugin {
   }
 
   /**
+   * Checking for permissions on iOS. On android, it always returns `true`.
+   *
+   * @returns {Promise<boolean | null>} Returns a Promise:
+   * - true: push was allowed (or platform is android)
+   * - false: push will not be available
+   * - null: still not answered, recommended checking again later.
+   */
+  @Cordova()
+  hasPermission(): Promise<boolean | null> {
+    return;
+  }
+
+  /**
    * Watch for incoming notifications
    *
    * @returns {Observable<any>} returns an object with data from the notification
@@ -116,9 +147,19 @@ export class FCM extends IonicNativePlugin {
   @Cordova({
     observable: true,
     successIndex: 0,
-    errorIndex: 2
+    errorIndex: 2,
   })
   onNotification(): Observable<NotificationData> {
+    return;
+  }
+
+  /**
+   * Removes existing push notifications from the notifications center
+   *
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  clearAllNotifications(): void {
     return;
   }
 }

@@ -32,9 +32,9 @@ export function transformProperty(members: any[], index: number) {
       ts.createReturn(
         ts.createCall(ts.createIdentifier(type + 'PropertyGet'), undefined, [
           ts.createThis(),
-          ts.createLiteral((property.name as any).text)
+          ts.createLiteral((property.name as any).text),
         ])
-      )
+      ),
     ])
   );
 
@@ -42,24 +42,15 @@ export function transformProperty(members: any[], index: number) {
     undefined,
     undefined,
     property.name,
-    [
-      ts.createParameter(
-        undefined,
-        undefined,
-        undefined,
-        'value',
-        undefined,
-        property.type
-      )
-    ],
+    [ts.createParameter(undefined, undefined, undefined, 'value', undefined, property.type)],
     ts.createBlock([
       ts.createStatement(
         ts.createCall(ts.createIdentifier(type + 'PropertySet'), undefined, [
           ts.createThis(),
           ts.createLiteral((property.name as any).text),
-          ts.createIdentifier('value')
+          ts.createIdentifier('value'),
         ])
-      )
+      ),
     ])
   );
 

@@ -44,13 +44,13 @@ export interface CallDirectoryLog {
   plugin: 'cordova-plugin-call-directory',
   pluginRef: 'CallDirectory',
   repo: 'https://github.com/GEDYSIntraWare/cordova-plugin-call-directory',
-  install: 'cordova plugin add cordova-plugin-call-directory --variable EXT_NAME="Cordova-Directory" --variable ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES="NO"',
+  install:
+    'cordova plugin add cordova-plugin-call-directory --variable EXT_NAME="Cordova-Directory" --variable ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES="NO"',
   installVariables: ['EXT_NAME', 'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'],
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class CallDirectory extends IonicNativePlugin {
-
   /**
    * Check if the call directory extension is available and enabled
    * @return {Promise<boolean>} Returns a promise with result

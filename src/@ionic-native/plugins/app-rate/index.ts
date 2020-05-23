@@ -80,6 +80,12 @@ export interface AppRateCustomLocale {
 
   /** Feedback prompt title */
   feedbackPromptTitle?: string;
+
+  /** Feedback prompt message */
+  appRatePromptMessage?: string;
+
+  /** Feedback prompt message */
+  feedbackPromptMessage?: string;
 }
 
 export interface AppRateCallbacks {
@@ -173,7 +179,7 @@ export interface AppUrls {
   plugin: 'cordova-plugin-apprate',
   pluginRef: 'AppRate',
   repo: 'https://github.com/pushandplay/cordova-plugin-apprate',
-  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows']
+  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows'],
 })
 @Injectable()
 export class AppRate extends IonicNativePlugin {

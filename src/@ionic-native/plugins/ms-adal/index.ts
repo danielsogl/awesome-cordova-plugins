@@ -3,7 +3,7 @@ import { CordovaInstance, InstanceProperty, IonicNativePlugin, Plugin, checkAvai
 
 export interface AuthenticationResult {
   accessToken: string;
-  accesSTokenType: string;
+  accessTokenType: string;
   expiresOn: Date;
   idToken: string;
   isMultipleResourceRefreshToken: boolean;
@@ -91,21 +91,14 @@ export interface UserInfo {
   plugin: 'cordova-plugin-ms-adal',
   pluginRef: 'Microsoft.ADAL',
   repo: 'https://github.com/AzureAD/azure-activedirectory-library-for-cordova',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class MSAdal extends IonicNativePlugin {
-
   createAuthenticationContext(authority: string, validateAuthority = true) {
     let authContext: any;
-    if (
-      checkAvailability(MSAdal.getPluginRef(), null, MSAdal.getPluginName()) ===
-      true
-    ) {
-      authContext = new (MSAdal.getPlugin()).AuthenticationContext(
-        authority,
-        validateAuthority
-      );
+    if (checkAvailability(MSAdal.getPluginRef(), null, MSAdal.getPluginName()) === true) {
+      authContext = new (MSAdal.getPlugin().AuthenticationContext)(authority, validateAuthority);
     }
     return new AuthenticationContext(authContext);
   }
@@ -115,7 +108,6 @@ export class MSAdal extends IonicNativePlugin {
  * @hidden
  */
 export class AuthenticationContext {
-
   @InstanceProperty()
   authority: string;
 
@@ -125,8 +117,7 @@ export class AuthenticationContext {
   @InstanceProperty()
   tokenCache: any;
 
-  constructor(private _objectInstance: any) {
-  }
+  constructor(private _objectInstance: any) {}
 
   /**
    * Acquires token using interactive flow. It always shows UI and skips token from cache.
@@ -138,12 +129,20 @@ export class AuthenticationContext {
    * @param   {String}  extraQueryParameters
    *                                Extra query parameters (optional)
    *                                Parameters should be escaped before passing to this method (e.g. using 'encodeURI()')
+   * @param   {String}  claims      Claim parameter. Parameter should be used under conditional access scenarios (optional)
    * @returns {Promise} Promise either fulfilled with AuthenticationResult object or rejected with error
    */
   @CordovaInstance({
-    otherPromise: true
+    otherPromise: true,
   })
-  acquireTokenAsync(resourceUrl: string, clientId: string, redirectUrl: string, userId?: string, extraQueryParameters?: any): Promise<AuthenticationResult> {
+  acquireTokenAsync(
+    resourceUrl: string,
+    clientId: string,
+    redirectUrl: string,
+    userId?: string,
+    extraQueryParameters?: any,
+    claims?: string
+  ): Promise<AuthenticationResult> {
     return;
   }
 
@@ -158,10 +157,26 @@ export class AuthenticationContext {
    * @returns {Promise} Promise either fulfilled with AuthenticationResult object or rejected with error
    */
   @CordovaInstance({
-    otherPromise: true
+    otherPromise: true,
   })
   acquireTokenSilentAsync(resourceUrl: string, clientId: string, userId?: string): Promise<AuthenticationResult> {
     return;
   }
+}
 
+export class AuthenticationSettings {
+  /**
+   * Sets flag to use or skip authentication broker.
+   * By default, the flag value is false and ADAL will not talk to broker.
+   *
+   * @param useBroker Flag to use or skip authentication broker
+   *
+   * @returns {Promise} Promise either fulfilled or rejected with error
+   */
+  @CordovaInstance({
+    otherPromise: true,
+  })
+  static setUseBroker(useBroker: boolean): Promise<void> {
+    return;
+  }
 }

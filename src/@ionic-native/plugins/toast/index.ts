@@ -65,7 +65,7 @@ export interface ToastOptions {
   plugin: 'cordova-plugin-x-toast',
   pluginRef: 'plugins.toast',
   repo: 'https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin',
-  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
 export class Toast extends IonicNativePlugin {
@@ -79,7 +79,7 @@ export class Toast extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'hide'
+    clearFunction: 'hide',
   })
   show(message: string, duration: string, position: string): Observable<any> {
     return;
@@ -107,7 +107,7 @@ export class Toast extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'hide'
+    clearFunction: 'hide',
   })
   showWithOptions(options: ToastOptions): Observable<any> {
     return;
@@ -120,7 +120,7 @@ export class Toast extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'hide'
+    clearFunction: 'hide',
   })
   showShortTop(message: string): Observable<any> {
     return;
@@ -133,7 +133,7 @@ export class Toast extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'hide'
+    clearFunction: 'hide',
   })
   showShortCenter(message: string): Observable<any> {
     return;
@@ -146,7 +146,7 @@ export class Toast extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'hide'
+    clearFunction: 'hide',
   })
   showShortBottom(message: string): Observable<any> {
     return;
@@ -159,7 +159,7 @@ export class Toast extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'hide'
+    clearFunction: 'hide',
   })
   showLongTop(message: string): Observable<any> {
     return;
@@ -172,7 +172,7 @@ export class Toast extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'hide'
+    clearFunction: 'hide',
   })
   showLongCenter(message: string): Observable<any> {
     return;
@@ -185,7 +185,7 @@ export class Toast extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'hide'
+    clearFunction: 'hide',
   })
   showLongBottom(message: string): Observable<any> {
     return;

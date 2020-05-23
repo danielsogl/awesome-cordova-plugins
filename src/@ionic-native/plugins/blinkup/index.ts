@@ -57,7 +57,7 @@ export interface BlinkUpWPSOptions {
   plugin: 'cordova-plugin-blinkup',
   pluginRef: 'blinkup',
   repo: 'https://github.com/SensorShare/cordova-plugin-blinkup',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class BlinkUp extends IonicNativePlugin {
@@ -68,7 +68,7 @@ export class BlinkUp extends IonicNativePlugin {
    */
   @Cordova({
     callbackOrder: 'reverse',
-    observable: true
+    observable: true,
   })
   startBlinkUp(options: BlinkUpOptions): Observable<any> {
     return;
@@ -81,7 +81,7 @@ export class BlinkUp extends IonicNativePlugin {
    */
   @Cordova({
     callbackOrder: 'reverse',
-    observable: true
+    observable: true,
   })
   flashWifiBlinkUp(options: BlinkUpWifiOptions): Observable<any> {
     return;
@@ -94,7 +94,7 @@ export class BlinkUp extends IonicNativePlugin {
    */
   @Cordova({
     callbackOrder: 'reverse',
-    observable: true
+    observable: true,
   })
   flashWPSBlinkUp(options: BlinkUpWPSOptions): Observable<any> {
     return;
@@ -105,7 +105,7 @@ export class BlinkUp extends IonicNativePlugin {
    * @return {Observable<any>} Returns an Observable
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   abortBlinkUp(): Observable<any> {
     return;
@@ -116,7 +116,7 @@ export class BlinkUp extends IonicNativePlugin {
    * @return {Observable<any>} Returns an Observable
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   clearBlinkUpData(): Observable<any> {
     return;

@@ -6,7 +6,7 @@ declare const window: any;
  * creates Angular 1 services of the form $cordovaSERVICE, ex: $cordovaStatusBar.
  */
 export function initAngular1(plugins: any) {
-  if (window.angular) {
+  if (typeof window !== 'undefined' && window.angular) {
     const ngModule = window.angular.module('ionic.native', []);
 
     for (const name in plugins) {
@@ -19,7 +19,7 @@ export function initAngular1(plugins: any) {
             const funcs = window.angular.copy(cls);
             funcs.__proto__['name'] = name;
             return funcs;
-          }
+          },
         ]);
       })(serviceName, cls, name);
     }

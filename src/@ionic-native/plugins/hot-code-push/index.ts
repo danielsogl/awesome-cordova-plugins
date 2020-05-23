@@ -73,7 +73,7 @@ export enum ErrorCode {
   INSTALLATION_ALREADY_IN_PROGRESS = -16,
   DOWNLOAD_ALREADY_IN_PROGRESS = -17,
   ASSETS_FOLDER_IS_NOT_YET_INSTALLED = -18,
-  NEW_APPLICATION_CONFIG_IS_INVALID = -19
+  NEW_APPLICATION_CONFIG_IS_INVALID = -19,
 }
 
 export interface HotCodePushError {
@@ -111,7 +111,7 @@ export interface HotCodePushEventData {
   plugin: 'cordova-hot-code-push',
   pluginRef: 'chcp',
   repo: 'https://github.com/nordnet/cordova-hot-code-push',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class HotCodePush extends IonicNativePlugin {
@@ -133,16 +133,13 @@ export class HotCodePush extends IonicNativePlugin {
   @CordovaCheck()
   fetchUpdate(options?: HotCodePushRequestOptions): Promise<any> {
     return new Promise<any>((resolve, reject) => {
-      HotCodePush.getPlugin().fetchUpdate(
-        (error: HotCodePushError, data: any) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(data);
-          }
-        },
-        options
-      );
+      HotCodePush.getPlugin().fetchUpdate((error: HotCodePushError, data: any) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      }, options);
     });
   }
 
@@ -151,7 +148,7 @@ export class HotCodePush extends IonicNativePlugin {
    * @returns {Promise<any>} Resolves when the update is installed.
    */
   @Cordova({
-    callbackStyle: 'node'
+    callbackStyle: 'node',
   })
   installUpdate(): Promise<any> {
     return;
@@ -162,7 +159,7 @@ export class HotCodePush extends IonicNativePlugin {
    * @returns {Promise<HotCodePushUpdate>} Resolves if an update is ready, rejects if there is no update.
    */
   @Cordova({
-    callbackStyle: 'node'
+    callbackStyle: 'node',
   })
   isUpdateAvailableForInstallation(): Promise<HotCodePushUpdate> {
     return;
@@ -173,7 +170,7 @@ export class HotCodePush extends IonicNativePlugin {
    * @returns {Promise<HotCodePushVersion>} Resolves with the information about the versions.
    */
   @Cordova({
-    callbackStyle: 'node'
+    callbackStyle: 'node',
   })
   getVersionInfo(): Promise<HotCodePushVersion> {
     return;
@@ -185,7 +182,7 @@ export class HotCodePush extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'chcp_updateIsReadyToInstall'
+    event: 'chcp_updateIsReadyToInstall',
   })
   onUpdateIsReadyToInstall(): Observable<HotCodePushEventData> {
     return;
@@ -197,7 +194,7 @@ export class HotCodePush extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'chcp_updateLoadFailed'
+    event: 'chcp_updateLoadFailed',
   })
   onUpdateLoadFailed(): Observable<HotCodePushEventData> {
     return;
@@ -209,7 +206,7 @@ export class HotCodePush extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'chcp_nothingToUpdate'
+    event: 'chcp_nothingToUpdate',
   })
   onNothingToUpdate(): Observable<HotCodePushEventData> {
     return;
@@ -221,7 +218,7 @@ export class HotCodePush extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'chcp_beforeInstall'
+    event: 'chcp_beforeInstall',
   })
   onBeforeInstall(): Observable<HotCodePushEventData> {
     return;
@@ -233,7 +230,7 @@ export class HotCodePush extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'chcp_updateInstalled'
+    event: 'chcp_updateInstalled',
   })
   onUpdateInstalled(): Observable<HotCodePushEventData> {
     return;
@@ -245,7 +242,7 @@ export class HotCodePush extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'chcp_updateInstallFailed'
+    event: 'chcp_updateInstallFailed',
   })
   onUpdateInstallFailed(): Observable<HotCodePushEventData> {
     return;
@@ -257,7 +254,7 @@ export class HotCodePush extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'chcp_nothingToInstall'
+    event: 'chcp_nothingToInstall',
   })
   onNothingToInstall(): Observable<HotCodePushEventData> {
     return;
@@ -269,7 +266,7 @@ export class HotCodePush extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'chcp_beforeAssetsInstalledOnExternalStorage'
+    event: 'chcp_beforeAssetsInstalledOnExternalStorage',
   })
   onBeforeAssetsInstalledOnExternalStorage(): Observable<HotCodePushEventData> {
     return;
@@ -281,7 +278,7 @@ export class HotCodePush extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'chcp_assetsInstalledOnExternalStorage'
+    event: 'chcp_assetsInstalledOnExternalStorage',
   })
   onAssetsInstalledOnExternalStorage(): Observable<HotCodePushEventData> {
     return;
@@ -293,7 +290,7 @@ export class HotCodePush extends IonicNativePlugin {
    */
   @Cordova({
     eventObservable: true,
-    event: 'chcp_assetsInstallationError'
+    event: 'chcp_assetsInstallationError',
   })
   onAssetsInstallationError(): Observable<HotCodePushEventData> {
     return;

@@ -39,7 +39,7 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-nati
   plugin: 'cordova.plugins.diagnostic',
   pluginRef: 'cordova.plugins.diagnostic',
   repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class Diagnostic extends IonicNativePlugin {
@@ -67,13 +67,17 @@ export class Diagnostic extends IonicNativePlugin {
     RECEIVE_MMS: 'RECEIVE_MMS',
     WRITE_EXTERNAL_STORAGE: 'WRITE_EXTERNAL_STORAGE',
     READ_EXTERNAL_STORAGE: 'READ_EXTERNAL_STORAGE',
-    BODY_SENSORS: 'BODY_SENSORS'
+    BODY_SENSORS: 'BODY_SENSORS',
   };
 
   @CordovaProperty()
   permissionStatus: {
     GRANTED: string;
+    /**
+     * @deprecated cordova.plugins.diagnostic@5.0.0 uses DENIED_ONCE to unify DENIED* statuses across iOS/Android
+     */
     DENIED: string;
+    DENIED_ONCE: string;
     NOT_REQUESTED: string;
     DENIED_ALWAYS: string;
     RESTRICTED: string;
@@ -82,7 +86,7 @@ export class Diagnostic extends IonicNativePlugin {
 
   locationAuthorizationMode = {
     ALWAYS: 'always',
-    WHEN_IN_USE: 'when_in_use'
+    WHEN_IN_USE: 'when_in_use',
   };
 
   permissionGroups = {
@@ -98,24 +102,18 @@ export class Diagnostic extends IonicNativePlugin {
       'USE_SIP',
       'PROCESS_OUTGOING_CALLS',
       'READ_CALL_LOG',
-      'WRITE_CALL_LOG'
+      'WRITE_CALL_LOG',
     ],
     SENSORS: ['BODY_SENSORS'],
-    SMS: [
-      'SEND_SMS',
-      'RECEIVE_SMS',
-      'READ_SMS',
-      'RECEIVE_WAP_PUSH',
-      'RECEIVE_MMS'
-    ],
-    STORAGE: ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']
+    SMS: ['SEND_SMS', 'RECEIVE_SMS', 'READ_SMS', 'RECEIVE_WAP_PUSH', 'RECEIVE_MMS'],
+    STORAGE: ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE'],
   };
 
   locationMode = {
     HIGH_ACCURACY: 'high_accuracy',
     DEVICE_ONLY: 'device_only',
     BATTERY_SAVING: 'battery_saving',
-    LOCATION_OFF: 'location_off'
+    LOCATION_OFF: 'location_off',
   };
 
   bluetoothState = {
@@ -126,7 +124,7 @@ export class Diagnostic extends IonicNativePlugin {
     POWERED_OFF: 'powered_off',
     POWERED_ON: 'powered_on',
     POWERING_OFF: 'powering_off',
-    POWERING_ON: 'powering_on'
+    POWERING_ON: 'powering_on',
   };
 
   @CordovaProperty()
@@ -673,7 +671,7 @@ export class Diagnostic extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   switchToWirelessSettings(): void {}
 
@@ -682,7 +680,7 @@ export class Diagnostic extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   switchToNFCSettings(): void {}
 
@@ -722,7 +720,7 @@ export class Diagnostic extends IonicNativePlugin {
    */
   @Cordova({
     platforms: ['Android'],
-    sync: true
+    sync: true,
   })
   registerNFCStateChangeHandler(handler: Function): void {}
 
@@ -809,6 +807,15 @@ export class Diagnostic extends IonicNativePlugin {
    */
   @Cordova({ platforms: ['iOS'] })
   getRemoteNotificationsAuthorizationStatus(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Requests reminders authorization for the application.
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  requestRemoteNotificationsAuthorization(types?: string[], omitRegistration?: boolean): Promise<string> {
     return;
   }
 

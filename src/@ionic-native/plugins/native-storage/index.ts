@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * @name Native Storage
  * @description Native storage of variables in Android and iOS
@@ -32,10 +31,22 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-nativestorage',
   pluginRef: 'NativeStorage',
   repo: 'https://github.com/TheCocoaProject/cordova-plugin-nativestorage',
-  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows']
+  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows'],
 })
 @Injectable()
 export class NativeStorage extends IonicNativePlugin {
+  /**
+   * Initialises shared storage with the suite name when using app groups in iOS
+   * @param reference {string}
+   * @returns {Promise<void>}
+   */
+  @Cordova({
+    platforms: ['iOS'],
+  })
+  initWithSuiteName(reference: string): Promise<void> {
+    return;
+  }
+
   /**
    * Stores a value
    * @param reference {string}
@@ -84,5 +95,4 @@ export class NativeStorage extends IonicNativePlugin {
   clear(): Promise<any> {
     return;
   }
-
 }

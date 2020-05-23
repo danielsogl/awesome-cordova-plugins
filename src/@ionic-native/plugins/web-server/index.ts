@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 
 export interface Response {
   status: number;
-  body: string;
-  headers: { [key: string]: string};
+  body?: string;
+  path?: string;
+  headers: { [key: string]: string };
 }
 
 export interface Request {
@@ -59,11 +60,10 @@ export interface Request {
   plugin: 'cordova-plugin-webserver',
   pluginRef: 'window.webserver',
   repo: 'https://github.com/bykof/cordova-plugin-webserver.git',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class WebServer extends IonicNativePlugin {
-
   /**
    * This method will start your webserver.
    * @param port {number} Port number (default to 8080)
@@ -90,7 +90,7 @@ export class WebServer extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
-    clearFunction: 'stop'
+    clearFunction: 'stop',
   })
   onRequest(): Observable<Request> {
     return;
@@ -106,5 +106,4 @@ export class WebServer extends IonicNativePlugin {
   sendResponse(requestId: string, responseObject: Response): Promise<any> {
     return;
   }
-
 }

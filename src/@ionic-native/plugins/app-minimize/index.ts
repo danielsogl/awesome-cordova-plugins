@@ -27,11 +27,10 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-appminimize',
   pluginRef: 'plugins.appMinimize',
   repo: 'https://github.com/tomloprod/cordova-plugin-appminimize',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class AppMinimize extends IonicNativePlugin {
-
   /**
    * Minimizes the application
    * @return {Promise<any>}
@@ -40,5 +39,4 @@ export class AppMinimize extends IonicNativePlugin {
   minimize(): Promise<any> {
     return;
   }
-
 }

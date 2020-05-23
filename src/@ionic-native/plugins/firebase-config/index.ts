@@ -28,18 +28,38 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-firebase-config',
   pluginRef: 'cordova.plugins.firebase.config',
   repo: 'https://github.com/chemerisuk/cordova-plugin-firebase-config',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseConfig extends IonicNativePlugin {
   /**
-   * Fetches remote config values with appropriate TTL and then activates them.
+   * Starts fetching configs, adhering to the specified minimum fetch interval.
    *
-   * @param {number} ttlSeconds
+   * @param {number} expirationDuration
    * @returns {Promise<null>}
    */
   @Cordova({ sync: true })
-  update(ttlSeconds: number): Promise<null> {
+  fetch(expirationDuration?: number): Promise<null> {
+    return;
+  }
+
+  /**
+   * Asynchronously activates the most recently fetched configs, so that the fetched key value pairs take effect.
+   *
+   * @returns {Promise<null>}
+   */
+  @Cordova({ sync: true })
+  activate(): Promise<null> {
+    return;
+  }
+
+  /**
+   * Asynchronously fetches and then activates the fetched configs.
+   *
+   * @returns {Promise<null>}
+   */
+  @Cordova({ sync: true })
+  fetchAndActivate(): Promise<null> {
     return;
   }
 
@@ -47,11 +67,10 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches a boolean configuration value from RemoteConfig
    *
    * @param {string} key
-   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
-  getBoolean(key: string, namespace?: string): Promise<boolean> {
+  getBoolean(key: string): Promise<boolean> {
     return;
   }
 
@@ -59,11 +78,10 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches a string configuration value from RemoteConfig
    *
    * @param {string} key
-   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
-  getString(key: string, namespace?: string): Promise<string> {
+  getString(key: string): Promise<string> {
     return;
   }
 
@@ -71,11 +89,10 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches a numeric configuration value from RemoteConfig
    *
    * @param {string} key
-   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
-  getNumber(key: string, namespace?: string): Promise<number> {
+  getNumber(key: string): Promise<number> {
     return;
   }
 
@@ -83,11 +100,10 @@ export class FirebaseConfig extends IonicNativePlugin {
    * Fetches an array of bytes configuration value from RemoteConfig
    *
    * @param {string} key
-   * @param {string} [namespace]
    * @returns {Promise<boolean>}
    */
   @Cordova({ sync: true })
-  getBytes(key: string, namespace?: string): Promise<any[]> {
+  getBytes(key: string): Promise<any[]> {
     return;
   }
 }

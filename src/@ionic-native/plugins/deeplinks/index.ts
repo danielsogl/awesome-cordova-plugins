@@ -33,6 +33,9 @@ export interface DeeplinkOptions {
  * @description This plugin handles deeplinks on iOS and Android for both custom URL scheme links
  * and Universal App Links.
  *
+ * Please read the [ionic plugin deeplinks docs](https://github.com/ionic-team/ionic-plugin-deeplinks) for iOS and Android integration.
+ * You must add `universal-links` to your `config.xml` and set up Apple App Site Association (AASA) for iOS and Asset Links for Android.
+ *
  * @usage
  * ```typescript
  * import { Deeplinks } from '@ionic-native/deeplinks/ngx';
@@ -85,13 +88,8 @@ export interface DeeplinkOptions {
   repo: 'https://github.com/ionic-team/ionic-plugin-deeplinks',
   install:
     'ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/',
-  installVariables: [
-    'URL_SCHEME',
-    'DEEPLINK_SCHEME',
-    'DEEPLINK_HOST',
-    'ANDROID_PATH_PREFIX'
-  ],
-  platforms: ['Android', 'Browser', 'iOS']
+  installVariables: ['URL_SCHEME', 'DEEPLINK_SCHEME', 'DEEPLINK_HOST', 'ANDROID_PATH_PREFIX'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class Deeplinks extends IonicNativePlugin {
@@ -106,7 +104,7 @@ export class Deeplinks extends IonicNativePlugin {
    * errors if a deeplink comes through that does not match a given path.
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   route(paths: any): Observable<DeeplinkMatch> {
     return;
@@ -135,13 +133,9 @@ export class Deeplinks extends IonicNativePlugin {
    * errors if a deeplink comes through that does not match a given path.
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
-  routeWithNavController(
-    navController: any,
-    paths: any,
-    options?: DeeplinkOptions
-  ): Observable<DeeplinkMatch> {
+  routeWithNavController(navController: any, paths: any, options?: DeeplinkOptions): Observable<DeeplinkMatch> {
     return;
   }
 }

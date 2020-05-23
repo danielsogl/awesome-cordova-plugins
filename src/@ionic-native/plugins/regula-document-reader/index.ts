@@ -29,14 +29,12 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class RegulaDocumentReader extends IonicNativePlugin {
-
   /**
    * Initialize the scanner
    * @param license {any} License data
    */
   @Cordova()
-  initReader(license: any): void {
-  }
+  initReader(license: any): void {}
 
   /**
    * Run the scanner

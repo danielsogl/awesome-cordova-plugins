@@ -2,10 +2,40 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
-export interface IFirebaseMessage {
-  aps: any;
-  gcm: any;
+export interface IFirebaseGCMMessage {
+  gcm: {
+    body: string;
+    title: string;
+    sound: string;
+    icon: string;
+    tag: string;
+    color: string;
+    clickAction: string;
+  };
+  'google.message_id': string;
+  'google.sent_time': number;
+  [key: string]: any;
 }
+
+export interface IFirebaseAPSMessage {
+  aps: {
+    alert: {
+      title: string;
+      body: string;
+    };
+    badge?: number;
+  };
+  'gcm.message_id': 'string';
+  [key: string]: any;
+}
+
+export type IFirebaseMessage = IFirebaseAPSMessage | IFirebaseGCMMessage;
+
+export interface IRequestPermissionOptions {
+  forceShow?: boolean;
+}
+
+export type FirebaseMessagingTokenType = 'apns-buffer' | 'apns-string';
 
 /**
  * @beta
@@ -36,7 +66,7 @@ export interface IFirebaseMessage {
   plugin: 'cordova-plugin-firebase-messaging',
   pluginRef: 'cordova.plugins.firebase.messaging',
   repo: 'https://github.com/chemerisuk/cordova-plugin-firebase-messaging',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseMessaging extends IonicNativePlugin {
@@ -61,22 +91,35 @@ export class FirebaseMessaging extends IonicNativePlugin {
   }
 
   /**
-   * Grant permission to recieve push notifications (will trigger prompt on iOS).
+   * Grant permission to receive push notifications (will trigger prompt on iOS).
    *
+   * @param {IRequestPermissionOptions} [options]
    * @returns {Promise<string>}
    */
   @Cordova({ sync: true })
-  requestPermission(): Promise<string> {
+  requestPermission(options?: { forceShow?: boolean }): Promise<string> {
+    return;
+  }
+
+  /**
+   * Returns a promise thaf fulfills with the device instance ID
+   */
+  @Cordova({ sync: true })
+  getInstanceId(): Promise<string> {
     return;
   }
 
   /**
    * Returns a promise that fulfills with the current FCM token
    *
+   * This method also accepts optional argument type.
+   * Currently iOS implementation supports values "apns-buffer" and "apns-string" that defines presentation of resolved APNS token.
+   *
+   * @param {FirebaseMessagingTokenType} [type] iOS only. Defines presentation of resolved APNS token
    * @returns {Promise<string>}
    */
   @Cordova({ sync: true })
-  getToken(): Promise<string> {
+  getToken(type?: FirebaseMessagingTokenType): Promise<string> {
     return;
   }
 

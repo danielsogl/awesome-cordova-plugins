@@ -23,7 +23,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-webengage',
   pluginRef: 'webengage',
   repo: 'https://github.com/WebEngage/cordova-plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Webengage extends IonicNativePlugin {
@@ -77,7 +77,7 @@ export class Webengage extends IonicNativePlugin {
 @Plugin({
   pluginName: 'Webengage',
   plugin: 'cordova-plugin-webengage',
-  pluginRef: 'webengage.user'
+  pluginRef: 'webengage.user',
 })
 @Injectable()
 export class WebengageUser extends IonicNativePlugin {
@@ -118,7 +118,7 @@ export class WebengageUser extends IonicNativePlugin {
 @Plugin({
   pluginName: 'Webengage',
   plugin: 'cordova-plugin-webengage',
-  pluginRef: 'webengage.push'
+  pluginRef: 'webengage.push',
 })
 @Injectable()
 export class WebengagePush extends IonicNativePlugin {
@@ -150,7 +150,7 @@ export class WebengagePush extends IonicNativePlugin {
 @Plugin({
   pluginName: 'Webengage',
   plugin: 'cordova-plugin-webengage',
-  pluginRef: 'webengage.notification'
+  pluginRef: 'webengage.notification',
 })
 @Injectable()
 export class WebengageNotification extends IonicNativePlugin {

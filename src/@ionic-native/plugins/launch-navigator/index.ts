@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface PromptsOptions {
-
   /**
    * a function to pass the user's decision whether to remember their choice of app.
    * This will be passed a single boolean value indicating the user's decision.
@@ -22,7 +21,6 @@ export interface PromptsOptions {
    */
   bodyText?: string;
 
-
   /**
    * text to display for the Yes button.
    * Defaults to "Yes" if not specified.
@@ -37,7 +35,6 @@ export interface PromptsOptions {
 }
 
 export interface RememberChoiceOptions {
-
   /**
    * whether to remember user choice of app for next time, instead of asking again for user choice.
    * `"prompt"` - Prompt user to decide whether to remember choice.
@@ -48,7 +45,6 @@ export interface RememberChoiceOptions {
    * `true` - Remember user choice.
    */
   enabled?: boolean | string;
-
 
   /**
    * a function which asks the user whether to remember their choice of app.
@@ -103,7 +99,6 @@ export interface AppSelectionOptions {
 }
 
 export interface LaunchNavigatorOptions {
-
   /**
    * A callback to invoke when the navigation app is successfully launched.
    */
@@ -172,7 +167,6 @@ export interface LaunchNavigatorOptions {
    */
   launchModeAppleMaps?: string;
 
-
   /**
    * If true, and input location type(s) doesn't match those required by the app, use geocoding to obtain the address/coords as required. Defaults to true.
    */
@@ -185,7 +179,6 @@ export interface LaunchNavigatorOptions {
 }
 
 export interface UserChoice {
-
   /**
    * Indicates whether a user choice exists for a preferred navigator app.
    * @param callback - function to pass result to: will receive a boolean argument.
@@ -277,11 +270,10 @@ export interface AppSelection {
   plugin: 'uk.co.workingedge.phonegap.plugin.launchnavigator',
   pluginRef: 'launchnavigator',
   repo: 'https://github.com/dpa99c/phonegap-launch-navigator',
-  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
 export class LaunchNavigator extends IonicNativePlugin {
-
   APP: any = {
     USER_SELECT: 'user_select',
     APPLE_MAPS: 'apple_maps',
@@ -296,14 +288,14 @@ export class LaunchNavigator extends IonicNativePlugin {
     BING_MAPS: 'bing_maps',
     SYGIC: 'sygic',
     HERE_MAPS: 'here_maps',
-    MOOVIT: 'moovit'
+    MOOVIT: 'moovit',
   };
 
   TRANSPORT_MODE: any = {
     DRIVING: 'driving',
     WALKING: 'walking',
     BICYCLING: 'bicycling',
-    TRANSIT: 'transit'
+    TRANSIT: 'transit',
   };
   appSelection: AppSelection;
 
@@ -315,7 +307,7 @@ export class LaunchNavigator extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   navigate(destination: string | number[], options?: LaunchNavigatorOptions): Promise<any> {
     return;
@@ -430,6 +422,5 @@ export class LaunchNavigator extends IonicNativePlugin {
    * @param options {LaunchNavigatorOptions}
    */
   @Cordova({ sync: true })
-  userSelect(destination: string | number[], options: LaunchNavigatorOptions): void {
-  }
+  userSelect(destination: string | number[], options: LaunchNavigatorOptions): void {}
 }
