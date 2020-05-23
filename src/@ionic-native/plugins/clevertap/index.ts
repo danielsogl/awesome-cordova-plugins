@@ -70,7 +70,7 @@ export class CleverTap extends IonicNativePlugin {
     return;
   }
 
-   /**
+  /**
    * Sets CleverTap SDK to offline mode.
    * @param offline {boolean}
    * @returns {Promise<any>}
@@ -132,7 +132,7 @@ export class CleverTap extends IonicNativePlugin {
   setPushBaiduToken(token: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Sets the device's Huawei push token
    * @param token {string}
@@ -765,10 +765,10 @@ export class CleverTap extends IonicNativePlugin {
   pushInboxNotificationClickedEventForId(messageId: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to SetUIEditor Connection
-   * @param enabled {boolean} 
+   * @param enabled {boolean}
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -778,243 +778,243 @@ export class CleverTap extends IonicNativePlugin {
 
   /**
    * Call this to Register Boolean Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
    */
   @Cordova()
   registerBooleanVariable(varName: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Register Double Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   registerDoubleVariable(varName: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Register Integer Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   registerIntegerVariable(varName: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Register String Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   registerStringVariable(varName: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Register List of Boolean Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   registerListOfBooleanVariable(varName: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Register List of Double Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   registerListOfDoubleVariable(varName: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Register List of Integer Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   registerListOfIntegerVariable(varName: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Register List of String Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   registerListOfStringVariable(varName: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Register Map of Boolean Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   registerMapOfBooleanVariable(varName: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Register Map of Double Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   registerMapOfDoubleVariable(varName: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Register Map of Integer Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   registerMapOfIntegerVariable(varName: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Register Map of String Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   registerMapOfStringVariable(varName: string): Promise<any> {
     return;
   }
- 
+
 
   /**
    * Call this to Get Boolean Variable
-   * @param varName {string} 
-   * @param defaultValue {boolean} 
+   * @param varName {string}
+   * @param defaultValue {boolean}
    * @returns {Promise<any>}
    */
   @Cordova()
   getBooleanVariable(
     varName: string,
-    defaultValue: boolean 
+    defaultValue: boolean
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Get Double Variable
-   * @param varName {string} 
-   * @param defaultValue {number} 
+   * @param varName {string}
+   * @param defaultValue {number}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getDoubleVariable(
     varName: string,
-    defaultValue: number 
+    defaultValue: number
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Get Integer Variable
-   * @param varName {string} 
-   * @param defaultValue {number} 
+   * @param varName {string}
+   * @param defaultValue {number}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getIntegerVariable(
     varName: string,
-    defaultValue: number 
+    defaultValue: number
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Get String Variable
-   * @param varName {string} 
-   * @param defaultValue {string} 
+   * @param varName {string}
+   * @param defaultValue {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getStringVariable(
     varName: string,
-    defaultValue: string 
+    defaultValue: string
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Get List of Boolean Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @param defaultValue {any}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getListOfBooleanVariable(
     varName: string,
-    defaultValue: any 
+    defaultValue: any
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Get List of Double Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @param defaultValue {any}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getListOfDoubleVariable(
     varName: string,
-    defaultValue: any 
+    defaultValue: any
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Get List of Integer Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @param defaultValue {any}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getListOfIntegerVariable(
     varName: string,
-    defaultValue: any 
+    defaultValue: any
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Get List of String Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @param defaultValue {any}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getListOfStringVariable(
     varName: string,
-    defaultValue: any 
+    defaultValue: any
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to get Map of Boolean Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @param defaultValue {any}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getMapOfBooleanVariable(
     varName: string,
@@ -1022,13 +1022,13 @@ export class CleverTap extends IonicNativePlugin {
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Get Map of Double Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @param defaultValue {any}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getMapOfDoubleVariable(
     varName: string,
@@ -1036,13 +1036,13 @@ export class CleverTap extends IonicNativePlugin {
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Get Map of Integer Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @param defaultValue {any}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getMapOfIntegerVariable(
     varName: string,
@@ -1050,13 +1050,13 @@ export class CleverTap extends IonicNativePlugin {
   ): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Get Map of String Variable
-   * @param varName {string} 
+   * @param varName {string}
    * @param defaultValue {any}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getMapOfStringVariable(
     varName: string,
@@ -1068,7 +1068,7 @@ export class CleverTap extends IonicNativePlugin {
   /**
    * Call this to Get All Display Units
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getAllDisplayUnits(): Promise<any> {
     return;
@@ -1078,7 +1078,7 @@ export class CleverTap extends IonicNativePlugin {
    * Call this to Get Display Unit For Id
    * @param id {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getDisplayUnitForId(id: string): Promise<any> {
     return;
@@ -1086,9 +1086,9 @@ export class CleverTap extends IonicNativePlugin {
 
   /**
    * Call this to Push DisplayUnit Viewed Event for ID
-   * @param id {string} 
+   * @param id {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   pushDisplayUnitViewedEventForID(id: string): Promise<any> {
     return;
@@ -1098,7 +1098,7 @@ export class CleverTap extends IonicNativePlugin {
    * Call this to Push DisplayUnit Clicked Event for ID
    * @param id {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   pushDisplayUnitClickedEventForID(id: string): Promise<any> {
     return;
@@ -1109,7 +1109,7 @@ export class CleverTap extends IonicNativePlugin {
    * @param key {string}
    * @param defaultValue {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getFeatureFlag(
     key: string,
@@ -1122,7 +1122,7 @@ export class CleverTap extends IonicNativePlugin {
    * Call this to Set Defaults for Product Config
    * @param defaults {any}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   setDefaultsMap(
     defaults: any
@@ -1134,7 +1134,7 @@ export class CleverTap extends IonicNativePlugin {
    * Call this for Product Config Fetch
    * @param defaults {any}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   fetch(): Promise<any> {
     return;
@@ -1144,7 +1144,7 @@ export class CleverTap extends IonicNativePlugin {
    * Call this for Product Config Fetch with Min Interval
    * @param timeInterval {number}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   fetchWithMinimumFetchIntervalInSeconds(timeInterval: number): Promise<any> {
     return;
@@ -1153,7 +1153,7 @@ export class CleverTap extends IonicNativePlugin {
   /**
    * Call this for Product Config Activate
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   activate(): Promise<any> {
     return;
@@ -1162,7 +1162,7 @@ export class CleverTap extends IonicNativePlugin {
   /**
    * Call this for Product Config Fetch and Activate
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   fetchAndActivate(): Promise<any> {
     return;
@@ -1172,7 +1172,7 @@ export class CleverTap extends IonicNativePlugin {
    * Call this to set Product Config Fetch with Min Interval
    * @param timeInterval {number}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   setMinimumFetchIntervalInSeconds(timeInterval: number): Promise<any> {
     return;
@@ -1181,7 +1181,7 @@ export class CleverTap extends IonicNativePlugin {
   /**
    * Call this to Get Last Fetch Time Interval
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getLastFetchTimeStampInMillis(): Promise<any> {
     return;
@@ -1191,27 +1191,27 @@ export class CleverTap extends IonicNativePlugin {
    * Call this to Get String
    * @param key {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getString(): Promise<any> {
     return;
   }
- 
+
   /**
    * Call this to Get Boolean
    * @param key {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getBoolean(): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Get Long
    * @param key {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getLong(): Promise<any> {
     return;
@@ -1221,7 +1221,7 @@ export class CleverTap extends IonicNativePlugin {
    * Call this to Get Double
    * @param key {string}
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   getDouble(): Promise<any> {
     return;
@@ -1230,7 +1230,7 @@ export class CleverTap extends IonicNativePlugin {
   /**
    * Call this to Reset Product Config
    * @returns {Promise<any>}
-  */
+   */
   @Cordova()
   reset(): Promise<any> {
     return;
