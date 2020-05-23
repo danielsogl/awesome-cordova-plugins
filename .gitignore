@@ -9,3 +9,4 @@ dist/
 src/@ionic-native/plugins/**/ngx
 *.d.ts
 injectable-classes.json
+
