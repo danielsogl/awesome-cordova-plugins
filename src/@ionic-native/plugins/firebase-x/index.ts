@@ -494,19 +494,20 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {function} error - callback function which will be passed a {string} error message as an argument
    * @param {string} phoneNumber - phone number to verify
    * @param {integer} timeOutDuration - (optional) time to wait in seconds before timing out
-   * @param {string} fakeVerificationCode - (optional) to test instant verification on Android ,specify a fake verification code to return for whitelisted phone numbers.
+   * @param {string} fakeVerificationCode - (optional) to test instant verification on Android, specify a fake verification code to return for whitelisted phone numbers.
    *
    * The success callback will be passed a credential object with the following properties:
    *   instantVerification {boolean} - true if the Android device supports instant verification, in which case the verification code will be included in the credential object. If this is false, the device will be sent an SMS containing the verification code for the user to manually enter into your app. Always false on iOS.
    *   verificationId {string} - the verification ID you'll need to pass along with the verification code to sign the user in. Always returned on both Android & iOS.
    *   code {string} - verification code. Will only be present if instantVerification is true. Always undefined on iOS.
    */
-  @Cordova()
+  @Cordova({ callbackOrder: 'reverse' })
   verifyPhoneNumber(
     success: (value: string | object) => void,
     error: (err: string) => void,
     phoneNumber: string,
-    timeoutDuration = 0
+    timeoutDuration = 0,
+    fakeVerificationCode?: string
   ): Promise<any> {
     return;
   }
@@ -520,6 +521,17 @@ export class FirebaseX extends IonicNativePlugin {
    */
   @Cordova()
   signInWithCredential(credential: object, success: () => void, error: (err: string) => void): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sign out user from Firebase.
+   *
+   * @param {function} success - callback function to call on successful sign out
+   * @param {function} error - callback function which will be passed a {string} error message as an argument
+   */
+  @Cordova()
+  signOutUser(success: () => void, error: (err: string) => void): Promise<any> {
     return;
   }
 
