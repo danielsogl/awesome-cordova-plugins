@@ -13,6 +13,7 @@ interface Plugin {
   cordovaPlugin: {
     name: string;
   };
+  premierSlug: string;
 }
 
 const rootDir = resolve(__dirname, '../..');
@@ -49,6 +50,7 @@ function processPlugin(pluginModule): Plugin {
   const displayName = getTag(pluginClass, 'name');
   const usage = getTag(pluginClass, 'usage');
   const description = getTag(pluginClass, 'description');
+  const premierSlug = getTag(pluginClass, 'premierSlug');
   return {
     packageName,
     displayName,
@@ -58,7 +60,8 @@ function processPlugin(pluginModule): Plugin {
     repo: decorator.repo,
     cordovaPlugin: {
       name: decorator.plugin
-    }
+    },
+    premierSlug
   };
 }
 
