@@ -3,6 +3,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Badge
+ * @premier badge
  * @description
  * The essential purpose of badge numbers is to enable an application to inform its users that it has something for them — for example, unread messages — when the application isn’t running in the foreground.
  *

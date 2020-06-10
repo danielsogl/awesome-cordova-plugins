@@ -300,6 +300,7 @@ export class ContactFindOptions implements IContactFindOptions {
 
 /**
  * @name Contacts
+ * @premier contacts
  * @description
  * Access and manage Contacts on the device.
  *

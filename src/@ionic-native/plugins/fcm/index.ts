@@ -18,6 +18,7 @@ export interface NotificationData {
 
 /**
  * @name FCM
+ * @capacitorincompatible true
  * @description
  * Provides basic functionality for Firebase Cloud Messaging
  *

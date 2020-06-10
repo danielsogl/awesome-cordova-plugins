@@ -114,6 +114,7 @@ export interface ConfigurationData {
 
 /**
  * @name Media Capture
+ * @premier media-capture
  * @description
  * This plugin provides access to the device's audio, image, and video capture capabilities.
  *
