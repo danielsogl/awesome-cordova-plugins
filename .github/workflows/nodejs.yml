@@ -42,4 +42,5 @@ jobs:
       if: github.ref == 'refs/heads/master'
       run: bash ./scripts/docs/update_docs.sh
       env:
-        CI: true
+        GITHUB_PROJECT_REPONAME: ${{ github.repository }}
+        GITHUB_SHA1: ${{ github.sha }}
