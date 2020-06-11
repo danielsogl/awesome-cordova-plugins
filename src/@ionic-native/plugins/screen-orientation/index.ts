@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 /**
  * @name Screen Orientation
+ * @premier screen-orientation
  * @description
  * Cordova plugin to set/lock the screen orientation in a common way.
  *

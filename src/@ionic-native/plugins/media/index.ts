@@ -179,6 +179,7 @@ export type MediaErrorCallback = (error: MediaError) => void;
 
 /**
  * @name Media
+ * @premier media
  * @description
  * This plugin provides the ability to record and play back audio files on a device.
  *

@@ -5,6 +5,7 @@ declare const window: any;
 
 /**
  * @name Device
+ * @premier device
  * @description
  * Access information about the underlying device and platform.
  *

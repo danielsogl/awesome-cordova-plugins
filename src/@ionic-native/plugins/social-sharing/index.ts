@@ -3,6 +3,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Social Sharing
+ * @premier social-sharing
  * @description
  * Share text, files, images, and links via social networks, sms, and email.
  *

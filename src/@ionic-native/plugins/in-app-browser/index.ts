@@ -252,6 +252,7 @@ export class InAppBrowserObject {
 
 /**
  * @name In App Browser
+ * @premier inappbrowser
  * @description Launches in app Browser
  * @usage
  * ```typescript

@@ -58,6 +58,7 @@ export interface NameOrOptions {
 
 /**
  * @name Calendar
+ * @premier calendar
  * @description
  * This plugin allows you to add events to the Calendar of the mobile device.
  *

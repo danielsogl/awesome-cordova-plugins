@@ -136,6 +136,7 @@ export interface PaymentUIResult {
 
 /**
  * @name Braintree
+ * @capacitorincompatible true
  * @description
  * This plugin enables the use of the Braintree Drop-In Payments UI in your Ionic applications on Android and iOS, using the native Drop-In UI for each platform (not the Javascript SDK).
  *

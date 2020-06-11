@@ -3,6 +3,7 @@ import { CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Ionic Webview
+ * @capacitorincompatible true
  * @description
  * Access Web View utilities.
  *
