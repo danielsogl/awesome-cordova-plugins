@@ -490,8 +490,6 @@ export class FirebaseX extends IonicNativePlugin {
    * the verification code along with the verification ID. In this case, the user doesn't need to do anything in order for you
    * to sign them in.
    *
-   * @param {function} success - callback function to pass {object} credentials to as an argument
-   * @param {function} error - callback function which will be passed a {string} error message as an argument
    * @param {string} phoneNumber - phone number to verify
    * @param {integer} timeOutDuration - time to wait in seconds before timing out
    * @param {string} fakeVerificationCode - (optional) to test instant verification on Android ,specify a fake verification code to return for whitelisted phone numbers.
@@ -501,10 +499,10 @@ export class FirebaseX extends IonicNativePlugin {
    *   verificationId {string} - the verification ID you'll need to pass along with the verification code to sign the user in. Always returned on both Android & iOS.
    *   code {string} - verification code. Will only be present if instantVerification is true. Always undefined on iOS.
    */
-  @Cordova()
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
   verifyPhoneNumber(
-    success: (value: string | object) => void,
-    error: (err: string) => void,
     phoneNumber: string,
     timeOutDuration: number,
     fakeVerificationCode?: string
@@ -516,11 +514,9 @@ export class FirebaseX extends IonicNativePlugin {
    * Signs the user into Firebase with credentials obtained using verifyPhoneNumber().
    * See the Android- and iOS-specific Firebase documentation for more info.
    * @param {object} credential - a credential object returned by the success callback of an authentication method
-   * @param {function} success - callback function to call on successful sign-in using credentials
-   * @param {function} error - callback function which will be passed a {string} error message as an argument
    */
   @Cordova()
-  signInWithCredential(credential: object, success: () => void, error: (err: string) => void): Promise<any> {
+  signInWithCredential(credential: object): Promise<any> {
     return;
   }
 
