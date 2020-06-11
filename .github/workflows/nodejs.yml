@@ -17,6 +17,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Setup git
+      run: bash ./scripts/git/config.sh
     - name: Install dependencies
       run: npm ci
     - name: Lint
