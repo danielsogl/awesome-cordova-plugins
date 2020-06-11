@@ -32,5 +32,8 @@ jobs:
       run: npm run test
     - name: Readmes
       run: npm run readmes
+    - name: Deploy doc
+      if: github.ref == 'refs/heads/master'
+      run: bash ./scripts/docs/update_docs.sh
       env:
         CI: true
