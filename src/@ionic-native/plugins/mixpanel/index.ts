@@ -188,6 +188,7 @@ export class MixpanelPeople extends IonicNativePlugin {
    *
    * @param distinctId {string}
    * @return {Promise<any>}
+   * @deprecated since 2016-11-21 - Use Mixpanel.identify instead.
    */
   @Cordova()
   identify(distinctId: string): Promise<any> {
