@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 /**
  * @name Launch Review
@@ -55,10 +56,10 @@ export class LaunchReview extends IonicNativePlugin {
    * - First: after `LaunchReview.rating()` is called and the request to show the dialog is successful. Will be passed the value `requested`.
    * - Second: if and when the Rating dialog is actually displayed.  Will be passed the value `shown`.
    * - Third: if and when the Rating dialog is dismissed.  Will be passed the value `dismissed`.
-   * @returns {Promise<string>}
+   * @returns {Observable<string>}
    */
-  @Cordova({ platforms: ['iOS'] })
-  rating(): Promise<string> {
+  @Cordova({ observable: true })
+  rating(): Observable<string> {
     return;
   }
 
