@@ -16,6 +16,8 @@ export enum KeyboardResizeMode {
 
 /**
  * @name Keyboard
+ * @premier keyboard
+ * @capacitorincompatible true
  * @description
  * Keyboard plugin for Cordova.
  *

@@ -636,6 +636,7 @@ declare const window: Window;
 
 /**
  * @name File
+ * @premier filesystem
  * @description
  * This plugin implements a File API allowing read/write access to files residing on the device.
  *

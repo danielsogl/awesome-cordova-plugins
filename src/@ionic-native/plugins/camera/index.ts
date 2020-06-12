@@ -123,6 +123,7 @@ export enum Direction {
 
 /**
  * @name Camera
+ * @premier camera
  * @description
  * Take a photo or capture video.
  *

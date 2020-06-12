@@ -3,6 +3,8 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-nati
 
 /**
  * @name Status Bar
+ * @premier statusbar
+ * @capacitorincompatible true
  * @description
  * Manage the appearance of the native status bar.
  *

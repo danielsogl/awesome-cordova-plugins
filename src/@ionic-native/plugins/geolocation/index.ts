@@ -106,6 +106,7 @@ export interface GeolocationOptions {
 
 /**
  * @name Geolocation
+ * @premier geolocation
  * @description
  * This plugin provides information about the device's location, such as latitude and longitude. Common sources of location information include Global Positioning System (GPS) and location inferred from network signals such as IP address, RFID, WiFi and Bluetooth MAC addresses, and GSM/CDMA cell IDs.
  *

@@ -493,7 +493,7 @@ export class FirebaseX extends IonicNativePlugin {
    * @param {function} success - callback function to pass {object} credentials to as an argument
    * @param {function} error - callback function which will be passed a {string} error message as an argument
    * @param {string} phoneNumber - phone number to verify
-   * @param {integer} timeOutDuration - (optional) time to wait in seconds before timing out
+   * @param {integer} timeOutDuration - time to wait in seconds before timing out
    * @param {string} fakeVerificationCode - (optional) to test instant verification on Android, specify a fake verification code to return for whitelisted phone numbers.
    *
    * The success callback will be passed a credential object with the following properties:
@@ -506,7 +506,7 @@ export class FirebaseX extends IonicNativePlugin {
     success: (value: string | object) => void,
     error: (err: string) => void,
     phoneNumber: string,
-    timeoutDuration = 0,
+    timeOutDuration: number,
     fakeVerificationCode?: string
   ): Promise<any> {
     return;
