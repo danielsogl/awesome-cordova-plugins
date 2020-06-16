@@ -490,8 +490,6 @@ export class FirebaseX extends IonicNativePlugin {
    * the verification code along with the verification ID. In this case, the user doesn't need to do anything in order for you
    * to sign them in.
    *
-   * @param {function} success - callback function to pass {object} credentials to as an argument
-   * @param {function} error - callback function which will be passed a {string} error message as an argument
    * @param {string} phoneNumber - phone number to verify
    * @param {integer} timeOutDuration - time to wait in seconds before timing out
    * @param {string} fakeVerificationCode - (optional) to test instant verification on Android, specify a fake verification code to return for whitelisted phone numbers.
@@ -503,8 +501,6 @@ export class FirebaseX extends IonicNativePlugin {
    */
   @Cordova({ callbackOrder: 'reverse' })
   verifyPhoneNumber(
-    success: (value: string | object) => void,
-    error: (err: string) => void,
     phoneNumber: string,
     timeOutDuration: number,
     fakeVerificationCode?: string
@@ -527,11 +523,11 @@ export class FirebaseX extends IonicNativePlugin {
   /**
    * Sign out user from Firebase.
    *
-   * @param {function} success - callback function to call on successful sign out
-   * @param {function} error - callback function which will be passed a {string} error message as an argument
+   * On successful sign out, the promise will be resolved. 
+   * If unsuccessful, the promise will be rejecteda and a {string} error message passed as an argument
    */
   @Cordova()
-  signOutUser(success: () => void, error: (err: string) => void): Promise<any> {
+  signOutUser(): Promise<any> {
     return;
   }
 
