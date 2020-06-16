@@ -180,7 +180,7 @@ export interface BLEScanOptions {
   plugin: 'cordova-plugin-ble-central',
   pluginRef: 'ble',
   repo: 'https://github.com/don/cordova-plugin-ble-central',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class BLE extends IonicNativePlugin {
@@ -198,7 +198,7 @@ export class BLE extends IonicNativePlugin {
    * @returns {Observable<any>} Returns an Observable that notifies of each peripheral that is discovered during the specified time.
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   scan(services: string[], seconds: number): Observable<any> {
     return;
@@ -223,7 +223,7 @@ export class BLE extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'stopScan',
-    clearWithArgs: false
+    clearWithArgs: false,
   })
   startScan(services: string[]): Observable<any> {
     return;
@@ -238,12 +238,9 @@ export class BLE extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'stopScan',
-    clearWithArgs: false
+    clearWithArgs: false,
   })
-  startScanWithOptions(
-    services: string[],
-    options: BLEScanOptions
-  ): Observable<any> {
+  startScanWithOptions(services: string[], options: BLEScanOptions): Observable<any> {
     return;
   }
 
@@ -283,7 +280,7 @@ export class BLE extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'disconnect',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   connect(deviceId: string): Observable<any> {
     return;
@@ -388,11 +385,7 @@ export class BLE extends IonicNativePlugin {
    * @return {Promise<any>} Returns a Promise
    */
   @Cordova()
-  read(
-    deviceId: string,
-    serviceUUID: string,
-    characteristicUUID: string
-  ): Promise<any> {
+  read(deviceId: string, serviceUUID: string, characteristicUUID: string): Promise<any> {
     return;
   }
 
@@ -425,12 +418,7 @@ export class BLE extends IonicNativePlugin {
    * @return {Promise<any>} Returns a Promise
    */
   @Cordova()
-  write(
-    deviceId: string,
-    serviceUUID: string,
-    characteristicUUID: string,
-    value: ArrayBuffer
-  ): Promise<any> {
+  write(deviceId: string, serviceUUID: string, characteristicUUID: string, value: ArrayBuffer): Promise<any> {
     return;
   }
 
@@ -471,13 +459,9 @@ export class BLE extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'stopNotification',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
-  startNotification(
-    deviceId: string,
-    serviceUUID: string,
-    characteristicUUID: string
-  ): Observable<any> {
+  startNotification(deviceId: string, serviceUUID: string, characteristicUUID: string): Observable<any> {
     return;
   }
 
@@ -490,11 +474,7 @@ export class BLE extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopNotification(
-    deviceId: string,
-    serviceUUID: string,
-    characteristicUUID: string
-  ): Promise<any> {
+  stopNotification(deviceId: string, serviceUUID: string, characteristicUUID: string): Promise<any> {
     return;
   }
 
@@ -541,7 +521,7 @@ export class BLE extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'stopStateNotifications',
-    clearWithArgs: false
+    clearWithArgs: false,
   })
   startStateNotifications(): Observable<any> {
     return;

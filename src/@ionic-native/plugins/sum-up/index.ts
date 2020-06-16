@@ -56,7 +56,6 @@ export interface SumUpPayment {
  * @hidden
  */
 export class SumUpKeys {
-
   // The generated accessToken, to automate the login process
   accessToken: string;
 
@@ -124,10 +123,9 @@ export class SumUpKeys {
   plugin: 'cordova-sumup-plugin',
   pluginRef: 'window.SumUp',
   repo: 'https://github.com/mariusbackes/cordova-plugin-sumup',
-  install:
-    'cordova plugin add cordova-sumup-plugin --variable SUMUP_API_KEY=INSERT_YOUR_KEY',
+  install: 'cordova plugin add cordova-sumup-plugin --variable SUMUP_API_KEY=INSERT_YOUR_KEY',
   installVariables: ['SUMUP_API_KEY'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class SumUp extends IonicNativePlugin {

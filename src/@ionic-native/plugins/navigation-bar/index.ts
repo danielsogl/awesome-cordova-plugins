@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * @beta
  * @name Navigation Bar
@@ -25,11 +24,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-navigationbar',
   pluginRef: 'navigationbar',
   repo: 'https://github.com/cranberrygame/cordova-plugin-navigationbar',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class NavigationBar extends IonicNativePlugin {
-
   /**
    * hide automatically (or not) the navigation bar.
    * @param autohide {boolean}
@@ -38,7 +36,7 @@ export class NavigationBar extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'success',
-    errorName: 'failure'
+    errorName: 'failure',
   })
   setUp(autohide?: boolean): Promise<any> {
     return;
@@ -51,10 +49,9 @@ export class NavigationBar extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'object',
     successName: 'success',
-    errorName: 'failure'
+    errorName: 'failure',
   })
   hideNavigationBar(): Promise<any> {
     return;
   }
-
 }

@@ -113,7 +113,7 @@ export interface FacebookLoginResponse {
   install:
     'ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"',
   installVariables: ['APP_ID', 'APP_NAME'],
-  platforms: ['Android', 'iOS', 'Browser']
+  platforms: ['Android', 'iOS', 'Browser'],
 })
 @Injectable()
 export class Facebook extends IonicNativePlugin {
@@ -149,7 +149,7 @@ export class Facebook extends IonicNativePlugin {
     EVENT_PARAM_DESCRIPTION: 'fb_description',
     EVENT_PARAM_SOURCE_APPLICATION: 'fb_mobile_launch_source',
     EVENT_PARAM_VALUE_YES: '1',
-    EVENT_PARAM_VALUE_NO: '0'
+    EVENT_PARAM_VALUE_NO: '0',
   };
 
   /**
@@ -280,7 +280,7 @@ export class Facebook extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 3,
-    errorIndex: 4
+    errorIndex: 4,
   })
   logEvent(name: string, params?: Object, valueToSum?: number): Promise<any> {
     return;

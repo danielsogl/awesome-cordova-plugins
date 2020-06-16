@@ -29,7 +29,7 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-taptic-engine',
   pluginRef: 'TapticEngine',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-taptic-engine',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class TapticEngine extends IonicNativePlugin {
@@ -49,9 +49,7 @@ export class TapticEngine extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
-  notification(options: {
-    type: 'success' | 'warning' | 'error';
-  }): Promise<any> {
+  notification(options: { type: 'success' | 'warning' | 'error' }): Promise<any> {
     return;
   }
 

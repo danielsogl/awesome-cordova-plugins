@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaProperty,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Status Bar
+ * @premier statusbar
+ * @capacitorincompatible true
  * @description
  * Manage the appearance of the native status bar.
  *
@@ -34,7 +31,7 @@ import {
   plugin: 'cordova-plugin-statusbar',
   pluginRef: 'StatusBar',
   repo: 'https://github.com/apache/cordova-plugin-statusbar',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class StatusBar extends IonicNativePlugin {
@@ -51,7 +48,7 @@ export class StatusBar extends IonicNativePlugin {
    * @param {boolean} doesOverlay  Whether the status bar overlays the main app view.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   overlaysWebView(doesOverlay: boolean) {}
 
@@ -59,7 +56,7 @@ export class StatusBar extends IonicNativePlugin {
    * Use the default statusbar (dark text, for light backgrounds).
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   styleDefault() {}
 
@@ -67,7 +64,7 @@ export class StatusBar extends IonicNativePlugin {
    * Use the lightContent statusbar (light text, for dark backgrounds).
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   styleLightContent() {}
 
@@ -75,7 +72,7 @@ export class StatusBar extends IonicNativePlugin {
    * Use the blackTranslucent statusbar (light text, for dark backgrounds).
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   styleBlackTranslucent() {}
 
@@ -83,7 +80,7 @@ export class StatusBar extends IonicNativePlugin {
    * Use the blackOpaque statusbar (light text, for dark backgrounds).
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   styleBlackOpaque() {}
 
@@ -96,7 +93,7 @@ export class StatusBar extends IonicNativePlugin {
    * @param {string} colorName  The name of the color (from above)
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   backgroundColorByName(colorName: string) {}
 
@@ -108,7 +105,7 @@ export class StatusBar extends IonicNativePlugin {
    * @param {string} hexString  The hex value of the color.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   backgroundColorByHexString(hexString: string) {}
 
@@ -116,7 +113,7 @@ export class StatusBar extends IonicNativePlugin {
    * Hide the StatusBar
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   hide() {}
 
@@ -124,7 +121,7 @@ export class StatusBar extends IonicNativePlugin {
    * Show the StatusBar
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   show() {}
 }

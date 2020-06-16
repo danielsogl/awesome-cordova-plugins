@@ -33,13 +33,13 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-getuisdk',
   pluginRef: 'GeTuiSdkPlugin',
   repo: 'git@github.com:GetuiLaboratory/cordova-plugin-getuisdk.git',
-  install: 'cordova plugin add cordova-plugin-getuisdk --variable PUSH_APPID=your appid --variable PUSH_APPKEY=your appkey --variable PUSH_APPSECRET=your appsecret',
+  install:
+    'cordova plugin add cordova-plugin-getuisdk --variable PUSH_APPID=your appid --variable PUSH_APPKEY=your appkey --variable PUSH_APPSECRET=your appsecret',
   installVariables: ['PUSH_APPID', 'PUSH_APPKEY', 'PUSH_APPSECRET'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class GeTuiSdkPlugin extends IonicNativePlugin {
-
   @Cordova()
   callback_init(callback: Function): Promise<any> {
     return;

@@ -1,3 +1,3 @@
-module.exports = function(log) {
+module.exports = function (log) {
   log.level = 'error'; //'silly', 'debug', 'info', 'warn', 'error'
 };

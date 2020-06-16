@@ -16,6 +16,23 @@ export interface AdMobFreeBannerConfig {
    */
   autoShow?: boolean;
   /**
+   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.
+   * Set to `true` for `tagForChildDirectedTreatment(true)`.
+   * Set to `false` for `tagForChildDirectedTreatment(false)`.
+   */
+  forChild?: boolean | null;
+  /**
+   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.
+   * Set to `true` for `setIsDesignedForFamilies(true)`.
+   * Set to `false` for `setIsDesignedForFamilies(false)`.
+   */
+  forFamily?: boolean | null;
+  /**
+   * Location targeting. It accept an array in the form of `[latitude, longitude]`.
+   * Android-only. Default is not calling `setLatitude` and `setLongitude`.
+   */
+  location?: number[] | null;
+  /**
    * Set to true, to put banner at top
    */
   bannerAtTop?: boolean;
@@ -46,6 +63,23 @@ export interface AdMobFreeInterstitialConfig {
    * Auto show ad when loaded
    */
   autoShow?: boolean;
+  /**
+   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.
+   * Set to `true` for `tagForChildDirectedTreatment(true)`.
+   * Set to `false` for `tagForChildDirectedTreatment(false)`.
+   */
+  forChild?: boolean | null;
+  /**
+   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.
+   * Set to `true` for `setIsDesignedForFamilies(true)`.
+   * Set to `false` for `setIsDesignedForFamilies(false)`.
+   */
+  forFamily?: boolean | null;
+  /**
+   * Location targeting. It accept an array in the form of `[latitude, longitude]`.
+   * Android-only. Default is not calling `setLatitude` and `setLongitude`.
+   */
+  location?: number[] | null;
 }
 
 export interface AdMobFreeRewardVideoConfig {
@@ -61,6 +95,23 @@ export interface AdMobFreeRewardVideoConfig {
    * Auto show ad when loaded
    */
   autoShow?: boolean;
+  /**
+   * Child-directed setting. Default is not calling `tagForChildDirectedTreatment`.
+   * Set to `true` for `tagForChildDirectedTreatment(true)`.
+   * Set to `false` for `tagForChildDirectedTreatment(false)`.
+   */
+  forChild?: boolean | null;
+  /**
+   * Designed for Families setting. Android-only. Default is not calling setIsDesignedForFamilies.
+   * Set to `true` for `setIsDesignedForFamilies(true)`.
+   * Set to `false` for `setIsDesignedForFamilies(false)`.
+   */
+  forFamily?: boolean | null;
+  /**
+   * Location targeting. It accept an array in the form of `[latitude, longitude]`.
+   * Android-only. Default is not calling `setLatitude` and `setLongitude`.
+   */
+  location?: number[] | null;
 }
 
 /**
@@ -112,7 +163,7 @@ export interface AdMobFreeRewardVideoConfig {
   plugin: 'cordova-plugin-admob-free',
   pluginRef: 'admob',
   repo: 'https://github.com/ratson/cordova-plugin-admob-free',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class AdMobFree extends IonicNativePlugin {
@@ -139,7 +190,7 @@ export class AdMobFree extends IonicNativePlugin {
     REWARD_VIDEO_CLOSE: 'admob.rewardvideo.events.CLOSE',
     REWARD_VIDEO_EXIT_APP: 'admob.rewardvideo.events.EXIT_APP',
     REWARD_VIDEO_START: 'admob.rewardvideo.events.START',
-    REWARD_VIDEO_REWARD: 'admob.rewardvideo.events.REWARD'
+    REWARD_VIDEO_REWARD: 'admob.rewardvideo.events.REWARD',
   };
 
   /**
@@ -176,7 +227,7 @@ export class AdMobFree extends IonicNativePlugin {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.banner'
+  pluginRef: 'admob.banner',
 })
 export class AdMobFreeBanner extends IonicNativePlugin {
   /**
@@ -232,7 +283,7 @@ export class AdMobFreeBanner extends IonicNativePlugin {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.interstitial'
+  pluginRef: 'admob.interstitial',
 })
 export class AdMobFreeInterstitial extends IonicNativePlugin {
   /**
@@ -279,7 +330,7 @@ export class AdMobFreeInterstitial extends IonicNativePlugin {
 @Plugin({
   pluginName: 'AdMobFree',
   plugin: 'cordova-plugin-admob-free',
-  pluginRef: 'admob.rewardvideo'
+  pluginRef: 'admob.rewardvideo',
 })
 export class AdMobFreeRewardVideo extends IonicNativePlugin {
   /**

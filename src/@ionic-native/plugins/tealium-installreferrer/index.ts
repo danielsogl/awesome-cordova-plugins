@@ -30,7 +30,7 @@ import { Injectable } from '@angular/core';
   pluginRef: 'window.tealiumInstallReferrer', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/Tealium/cordova-plugin', // the github repository URL for the plugin
   platforms: ['Android'], // Array of platforms supported, example: ['Android', 'iOS']
-  install: '' // OPTIONAL install command, in case the plugin requires variables
+  install: '', // OPTIONAL install command, in case the plugin requires variables
 })
 @Injectable()
 export class TealiumInstallReferrer extends IonicNativePlugin {

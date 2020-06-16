@@ -15,6 +15,7 @@ export interface DialogsPromptCallback {
 
 /**
  * @name Dialogs
+ * @premier dialogs
  * @description
  * This plugin gives you ability to access and customize the device native dialogs.
  *
@@ -42,7 +43,7 @@ export interface DialogsPromptCallback {
   plugin: 'cordova-plugin-dialogs',
   pluginRef: 'navigator.notification',
   repo: 'https://github.com/apache/cordova-plugin-dialogs',
-  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
 export class Dialogs extends IonicNativePlugin {
@@ -55,7 +56,7 @@ export class Dialogs extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 4
+    errorIndex: 4,
   })
   alert(message: string, title?: string, buttonName?: string): Promise<any> {
     return;
@@ -70,13 +71,9 @@ export class Dialogs extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 4
+    errorIndex: 4,
   })
-  confirm(
-    message: string,
-    title?: string,
-    buttonLabels?: string[]
-  ): Promise<number> {
+  confirm(message: string, title?: string, buttonLabels?: string[]): Promise<number> {
     return;
   }
 
@@ -90,7 +87,7 @@ export class Dialogs extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 5
+    errorIndex: 5,
   })
   prompt(
     message?: string,
@@ -106,7 +103,7 @@ export class Dialogs extends IonicNativePlugin {
    * @param {numbers} times The number of times to repeat the beep.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   beep(times: number): void {}
 }

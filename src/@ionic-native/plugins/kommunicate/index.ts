@@ -41,11 +41,10 @@ import { Observable } from 'rxjs';
   plugin: 'kommunicate-cordova-plugin',
   pluginRef: 'kommunicate',
   repo: 'https://github.com/Kommunicate-io/Kommunicate-Cordova-Ionic-PhoneGap-Chat-Plugin',
-  platforms: ['Android', 'Browser', 'iOS']
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class Kommunicate extends IonicNativePlugin {
-
   /**
    * Login the user with the details passed in
    * Creates a new user with the details provided there is no existing user
@@ -63,7 +62,9 @@ export class Kommunicate extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  login(kmUser: any): Promise<any> { return; }
+  login(kmUser: any): Promise<any> {
+    return;
+  }
 
   /**
    * Register for push notification
@@ -71,7 +72,9 @@ export class Kommunicate extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  registerPushNotification(): Promise<any> { return; }
+  registerPushNotification(): Promise<any> {
+    return;
+  }
 
   /**
    * Check if any user is logged in or not
@@ -79,7 +82,9 @@ export class Kommunicate extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  isLoggedIn(): Promise<any> { return; }
+  isLoggedIn(): Promise<any> {
+    return;
+  }
 
   /**
    * Update the token for push notifications
@@ -88,7 +93,9 @@ export class Kommunicate extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  updatePushNotificationToken(token: string): Promise<any> { return; }
+  updatePushNotificationToken(token: string): Promise<any> {
+    return;
+  }
 
   /**
    * Launch the conversation screen (it contains all the existing conversations)
@@ -96,7 +103,9 @@ export class Kommunicate extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  launchConversation(): Promise<any> { return; }
+  launchConversation(): Promise<any> {
+    return;
+  }
 
   /**
    * Launch the conversation identified by the given channel(conversation) key
@@ -110,7 +119,9 @@ export class Kommunicate extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  launchParticularConversation(conversationObject: any): Promise<any> { return; }
+  launchParticularConversation(conversationObject: any): Promise<any> {
+    return;
+  }
 
   /**
    * Start a new conversation, details about the conversation to be passed as parameters
@@ -120,7 +131,9 @@ export class Kommunicate extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  startNewConversation(conversationParams: any): Promise<any> { return; }
+  startNewConversation(conversationParams: any): Promise<any> {
+    return;
+  }
 
   /**
    * Process push notifications
@@ -129,7 +142,9 @@ export class Kommunicate extends IonicNativePlugin {
    * @return {boolean} Returns true/false
    */
   @Cordova({ sync: true })
-  processPushNotification(data: any): boolean { return; }
+  processPushNotification(data: any): boolean {
+    return;
+  }
 
   /**
    * Logout the current user
@@ -137,7 +152,9 @@ export class Kommunicate extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  logout(): Promise<any> { return; }
+  logout(): Promise<any> {
+    return;
+  }
 
   /**
    * Start a single chat (conversation)
@@ -147,7 +164,9 @@ export class Kommunicate extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  startSingleChat(data: any): Promise<any> { return; }
+  startSingleChat(data: any): Promise<any> {
+    return;
+  }
 
   /**
    * Launches a conversation with the properties passed in the conversation param
@@ -162,6 +181,7 @@ export class Kommunicate extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise
    */
   @Cordova()
-  conversationBuilder(converationObject: any): Promise<any> { return; }
-
+  conversationBuilder(converationObject: any): Promise<any> {
+    return;
+  }
 }

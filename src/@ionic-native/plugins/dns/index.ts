@@ -26,7 +26,7 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-dns',
   pluginRef: 'cordova.plugins.dns',
   repo: 'https://bitbucket.org/zegeba/cordova-plugin-dns',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class DNS extends IonicNativePlugin {

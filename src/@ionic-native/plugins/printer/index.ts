@@ -93,12 +93,14 @@ export interface PrintOptions {
    * Set to false to avoid margins.
    * The margins for each printed page. Each printer might have its own minimum margins depends on media type and paper format.
    */
-  margin?: boolean | {
-    top?: string;
-    left?: string;
-    right?: string;
-    bottom?: string;
-  };
+  margin?:
+    | boolean
+    | {
+        top?: string;
+        left?: string;
+        right?: string;
+        bottom?: string;
+      };
 
   ui?: {
     hideNumberOfCopies?: string; // Set to true to hide the control for the number of copies. Only supported on iOS
@@ -161,18 +163,16 @@ export interface PrintOptions {
   plugin: 'cordova-plugin-printer',
   pluginRef: 'cordova.plugins.printer',
   repo: 'https://github.com/katzer/cordova-plugin-printer',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class Printer extends IonicNativePlugin {
-
   /**
    * Checks whether the device is capable of printing (uses `check()` internally)
    * @returns {Promise<boolean>}
    */
   isAvailable(): Promise<boolean> {
-    return this.check()
-      .then((res: any) => Promise.resolve(res.avail));
+    return this.check().then((res: any) => Promise.resolve(res.avail));
   }
 
   /**
@@ -182,10 +182,9 @@ export class Printer extends IonicNativePlugin {
   @CordovaCheck()
   check(): Promise<any> {
     return getPromise<any>((resolve: Function) => {
-      Printer.getPlugin()
-        .canPrintItem((avail: boolean, count: any) => {
-          resolve({ avail, count });
-        });
+      Printer.getPlugin().canPrintItem((avail: boolean, count: any) => {
+        resolve({ avail, count });
+      });
     });
   }
 
@@ -206,10 +205,9 @@ export class Printer extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 4
+    errorIndex: 4,
   })
   print(content?: string | HTMLElement, options?: PrintOptions): Promise<any> {
     return;
   }
-
 }

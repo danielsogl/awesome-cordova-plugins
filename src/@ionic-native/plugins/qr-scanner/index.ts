@@ -60,6 +60,7 @@ export interface QRScannerStatus {
 
 /**
  * @name QR Scanner
+ * @capacitorincompatible true
  * @description
  * A fast, energy efficient, highly-configurable QR code scanner for Cordova apps.
  *
@@ -109,7 +110,7 @@ export interface QRScannerStatus {
   plugin: 'cordova-plugin-qrscanner',
   pluginRef: 'QRScanner',
   repo: 'https://github.com/bitpay/cordova-plugin-qrscanner',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
 export class QRScanner extends IonicNativePlugin {
@@ -118,7 +119,7 @@ export class QRScanner extends IonicNativePlugin {
    * @return {Promise<QRScannerStatus>}
    */
   @Cordova({
-    callbackStyle: 'node'
+    callbackStyle: 'node',
   })
   prepare(): Promise<QRScannerStatus> {
     return;
@@ -131,7 +132,7 @@ export class QRScanner extends IonicNativePlugin {
   @Cordova({
     callbackStyle: 'node',
     observable: true,
-    clearFunction: 'cancelScan'
+    clearFunction: 'cancelScan',
   })
   scan(): Observable<string> {
     return;
@@ -160,7 +161,7 @@ export class QRScanner extends IonicNativePlugin {
    * @returns {Promise<QRScannerStatus>}
    */
   @Cordova({
-    callbackStyle: 'node'
+    callbackStyle: 'node',
   })
   enableLight(): Promise<QRScannerStatus> {
     return;
@@ -180,7 +181,7 @@ export class QRScanner extends IonicNativePlugin {
    * @return {Promise<QRScannerStatus>}
    */
   @Cordova({
-    callbackStyle: 'node'
+    callbackStyle: 'node',
   })
   disableLight(): Promise<QRScannerStatus> {
     return;
@@ -191,7 +192,7 @@ export class QRScanner extends IonicNativePlugin {
    * @return {Promise<QRScannerStatus>}
    */
   @Cordova({
-    callbackStyle: 'node'
+    callbackStyle: 'node',
   })
   useFrontCamera(): Promise<QRScannerStatus> {
     return;
@@ -202,7 +203,7 @@ export class QRScanner extends IonicNativePlugin {
    * @return {Promise<QRScannerStatus>}
    */
   @Cordova({
-    callbackStyle: 'node'
+    callbackStyle: 'node',
   })
   useBackCamera(): Promise<QRScannerStatus> {
     return;
@@ -214,7 +215,7 @@ export class QRScanner extends IonicNativePlugin {
    * @return {Promise<QRScannerStatus>}
    */
   @Cordova({
-    callbackStyle: 'node'
+    callbackStyle: 'node',
   })
   useCamera(camera: number): Promise<QRScannerStatus> {
     return;
@@ -251,7 +252,7 @@ export class QRScanner extends IonicNativePlugin {
    * Opens settings to edit app permissions.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   openSettings(): void {}
 }

@@ -1,4 +1,4 @@
-module.exports = function(templateEngine) {
+module.exports = function (templateEngine) {
   // Nunjucks and Angular conflict in their template bindings so change the Nunjucks
   // Also conflict with Jekyll
   templateEngine.config.tags = {
@@ -7,6 +7,6 @@ module.exports = function(templateEngine) {
     blockStart: '<@',
     blockEnd: '@>',
     commentStart: '<#',
-    commentEnd: '#>'
+    commentEnd: '#>',
   };
 };

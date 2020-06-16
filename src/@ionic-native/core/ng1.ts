@@ -19,7 +19,7 @@ export function initAngular1(plugins: any) {
             const funcs = window.angular.copy(cls);
             funcs.__proto__['name'] = name;
             return funcs;
-          }
+          },
         ]);
       })(serviceName, cls, name);
     }

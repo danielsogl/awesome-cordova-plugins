@@ -37,7 +37,6 @@ export interface FingerprintOptions {
    * @default false
    */
   disableBackup?: boolean;
-
 }
 
 /**
@@ -78,11 +77,10 @@ export interface FingerprintOptions {
   plugin: 'cordova-plugin-fingerprint-aio',
   pluginRef: 'Fingerprint',
   repo: 'https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FingerprintAIO extends IonicNativePlugin {
-
   /**
    * Convenience constant
    * @type {number}

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * @beta
  * @name Backlight
@@ -29,11 +28,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-backlight',
   pluginRef: 'cordova.plugins.Backlight',
   repo: 'https://github.com/mebibou/cordova-plugin-backlight',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class Backlight extends IonicNativePlugin {
-
   /**
    * This function turns backlight on
    * @return {Promise<any>} Returns a promise that resolves when the backlight is on
@@ -51,5 +49,4 @@ export class Backlight extends IonicNativePlugin {
   off(): Promise<any> {
     return;
   }
-
 }

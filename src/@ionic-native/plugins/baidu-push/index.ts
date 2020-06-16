@@ -106,7 +106,7 @@ export interface NotificationData {
   plugin: 'cordova-plugin-push-baidu',
   pluginRef: 'baiduPush',
   repo: 'https://github.com/Ti-webdev/cordova-plugin-push-baidu.git',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class BaiduPush extends IonicNativePlugin {

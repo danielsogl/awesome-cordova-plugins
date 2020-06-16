@@ -21,8 +21,8 @@ const PACKAGE_JSON_BASE = {
   license: 'MIT',
   repository: {
     type: 'git',
-    url: 'https://github.com/ionic-team/ionic-native.git'
-  }
+    url: 'https://github.com/ionic-team/ionic-native.git',
+  },
 };
 
 const DIST = path.resolve(ROOT, 'dist/@ionic-native');
@@ -34,7 +34,7 @@ const RXJS_VERSION = '^5.5.0 || ^6.5.0';
 
 const PLUGIN_PEER_DEPENDENCIES = {
   '@ionic-native/core': MIN_CORE_VERSION,
-  rxjs: RXJS_VERSION
+  rxjs: RXJS_VERSION,
 };
 
 function getPackageJsonContent(name: string, peerDependencies = {}, dependencies = {}) {
@@ -42,7 +42,7 @@ function getPackageJsonContent(name: string, peerDependencies = {}, dependencies
     name: '@ionic-native/' + name,
     dependencies,
     peerDependencies,
-    version: VERSION
+    version: VERSION,
   });
 }
 
@@ -51,7 +51,10 @@ function writePackageJson(data: any, dir: string) {
   fs.writeJSONSync(filePath, data);
   PACKAGES.push(dir);
 }
-
+function writeNGXPackageJson(data: any, dir: string) {
+  const filePath = path.resolve(dir, 'package.json');
+  fs.writeJSONSync(filePath, data);
+}
 function prepare() {
   // write @ionic-native/core package.json
   writePackageJson(
@@ -64,8 +67,9 @@ function prepare() {
     const pluginName = pluginPath.split(/[\/\\]+/).slice(-2)[0];
     const packageJsonContents = getPackageJsonContent(pluginName, PLUGIN_PEER_DEPENDENCIES);
     const dir = path.resolve(DIST, 'plugins', pluginName);
-
+    const ngxDir = path.join(dir, 'ngx');
     writePackageJson(packageJsonContents, dir);
+    writeNGXPackageJson(packageJsonContents, ngxDir);
   });
 }
 
@@ -82,9 +86,7 @@ async function publish(ignoreErrors = false) {
           }
           if (err) {
             if (!ignoreErrors) {
-              if (
-                err.message.includes('You cannot publish over the previously published version')
-              ) {
+              if (err.message.includes('You cannot publish over the previously published version')) {
                 Logger.verbose('Ignoring duplicate version error.');
                 return resolve();
               }

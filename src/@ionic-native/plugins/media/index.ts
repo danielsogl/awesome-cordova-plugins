@@ -42,19 +42,15 @@ export class MediaObject {
       return () => (this.successCallback = () => {});
     });
 
-    this.onError = new Observable<MEDIA_ERROR>(
-      (observer: Observer<MEDIA_ERROR>) => {
-        this.errorCallback = observer.next.bind(observer);
-        return () => (this.errorCallback = () => {});
-      }
-    );
+    this.onError = new Observable<MEDIA_ERROR>((observer: Observer<MEDIA_ERROR>) => {
+      this.errorCallback = observer.next.bind(observer);
+      return () => (this.errorCallback = () => {});
+    });
 
-    this.onStatusUpdate = new Observable<MEDIA_STATUS>(
-      (observer: Observer<MEDIA_STATUS>) => {
-        this.statusCallback = observer.next.bind(observer);
-        return () => (this.statusCallback = () => {});
-      }
-    );
+    this.onStatusUpdate = new Observable<MEDIA_STATUS>((observer: Observer<MEDIA_STATUS>) => {
+      this.statusCallback = observer.next.bind(observer);
+      return () => (this.statusCallback = () => {});
+    });
   }
 
   /**
@@ -88,10 +84,7 @@ export class MediaObject {
    * Starts or resumes playing an audio file.
    */
   @CordovaInstance({ sync: true })
-  play(iosOptions?: {
-    numberOfLoops?: number;
-    playAudioWhenScreenIsLocked?: boolean;
-  }): void {}
+  play(iosOptions?: { numberOfLoops?: number; playAudioWhenScreenIsLocked?: boolean }): void {}
 
   /**
    * Pauses playing an audio file.
@@ -172,20 +165,21 @@ export enum MEDIA_STATUS {
   STARTING,
   RUNNING,
   PAUSED,
-  STOPPED
+  STOPPED,
 }
 
 export enum MEDIA_ERROR {
   ABORTED = 1,
   NETWORK,
   DECODE,
-  SUPPORTED
+  SUPPORTED,
 }
 
 export type MediaErrorCallback = (error: MediaError) => void;
 
 /**
  * @name Media
+ * @premier media
  * @description
  * This plugin provides the ability to record and play back audio files on a device.
  *
@@ -286,7 +280,7 @@ export type MediaErrorCallback = (error: MediaError) => void;
   repo: 'https://github.com/apache/cordova-plugin-media',
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
 export class Media extends IonicNativePlugin {
@@ -338,10 +332,7 @@ export class Media extends IonicNativePlugin {
   create(src: string): MediaObject {
     let instance: any;
 
-    if (
-      checkAvailability(Media.getPluginRef(), null, Media.getPluginName()) ===
-      true
-    ) {
+    if (checkAvailability(Media.getPluginRef(), null, Media.getPluginName()) === true) {
       // Creates a new media object
       instance = new (Media.getPlugin())(src);
     }

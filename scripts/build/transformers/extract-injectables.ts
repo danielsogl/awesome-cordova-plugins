@@ -37,7 +37,7 @@ export function extractInjectables() {
               injectableClasses.push({
                 file: tsSourceFile.path,
                 className: (node as ts.ClassDeclaration).name.text,
-                dirName: tsSourceFile.path.split(/[\\\/]+/).reverse()[1]
+                dirName: tsSourceFile.path.split(/[\\\/]+/).reverse()[1],
               });
             }
           },

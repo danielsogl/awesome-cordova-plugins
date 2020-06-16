@@ -46,7 +46,7 @@ export interface OpenALPRResult {
   plugin: 'cordova-plugin-openalpr',
   pluginRef: 'cordova.plugins.OpenALPR',
   repo: 'https://github.com/iMicknl/cordova-plugin-openalpr',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class OpenALPR extends IonicNativePlugin {
@@ -58,7 +58,7 @@ export class OpenALPR extends IonicNativePlugin {
     IN: 'in',
     KR2: 'kr2',
     US: 'us',
-    VN2: 'vn2'
+    VN2: 'vn2',
   };
 
   /**

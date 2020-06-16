@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  CordovaInstance,
-  InstanceCheck,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { CordovaInstance, InstanceCheck, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable, Observer } from 'rxjs';
 
 declare const cordova: Cordova & { InAppBrowser: any };
@@ -22,14 +17,14 @@ export interface InAppBrowserOptions {
    */
   beforeload?: 'yes' | 'get' | 'post';
   /** Set to yes to have the browser's cookie cache cleared before the new window is opened. */
-  clearcache?: 'yes';
+  clearcache?: 'yes' | 'no';
   /**  set to yes to have the browser's entire local storage cleared (cookies, HTML5 local storage, IndexedDB, etc.) before the new window is opened */
-  cleardata?: 'yes';
+  cleardata?: 'yes' | 'no';
   /**
    * Set to yes to have the session cookie cache cleared before the new window is opened.
    * For WKWebView, requires iOS 11+ on target device.
    */
-  clearsessioncache?: 'yes';
+  clearsessioncache?: 'yes' | 'no';
   /**
    * (Android) Set to a string to use as the close button's caption instead of a X. Note that you need to localize this value yourself.
    * (iOS) Set to a string to use as the Done button's caption. Note that you need to localize this value yourself.
@@ -52,7 +47,7 @@ export interface InAppBrowserOptions {
    * (Windows only) Set to yes to create the browser control without a border around it.
    * Please note that if location=no is also specified, there will be no control presented to user to close IAB window.
    */
-  fullscreen?: 'yes';
+  fullscreen?: 'yes' | 'no';
   /**
    * (Android & Windows Only) Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
    * If there is no previous page, the InAppBrowser will close. The default value is yes, so you must set it to no if you want the back button to simply close the InAppBrowser.
@@ -123,17 +118,26 @@ export interface InAppBrowserOptions {
   [key: string]: any;
 }
 
-export type InAppBrowserEventType = 'loadstart' | 'loadstop' | 'loaderror' | 'exit' | 'beforeload' | 'message';
+export type InAppBrowserEventType =
+  | 'loadstart'
+  | 'loadstop'
+  | 'loaderror'
+  | 'exit'
+  | 'beforeload'
+  | 'message'
+  | 'customscheme';
 
 export interface InAppBrowserEvent extends Event {
   /** the event name */
-  type: InAppBrowserEventType;
+  type: string;
   /** the URL that was loaded. */
   url: string;
   /** the error code, only in the case of loaderror. */
   code: number;
   /** the error message, only in the case of loaderror. */
   message: string;
+  /** the postMessage data, only in the case of message. */
+  data: any;
 }
 
 /**
@@ -153,17 +157,11 @@ export class InAppBrowserObject {
    *                 The options string must not contain any blank space, and each feature's
    *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
    */
-  constructor(
-    url: string,
-    target?: string,
-    options?: string | InAppBrowserOptions
-  ) {
+  constructor(url: string, target?: string, options?: string | InAppBrowserOptions) {
     try {
       if (options && typeof options !== 'string') {
         options = Object.keys(options)
-          .map(
-            (key: string) => `${key}=${(options as InAppBrowserOptions)[key]}`
-          )
+          .map((key: string) => `${key}=${(options as InAppBrowserOptions)[key]}`)
           .join(',');
       }
 
@@ -232,24 +230,29 @@ export class InAppBrowserObject {
    */
   @InstanceCheck()
   on(event: InAppBrowserEventType): Observable<InAppBrowserEvent> {
-    return new Observable<InAppBrowserEvent>(
-      (observer: Observer<InAppBrowserEvent>) => {
-        this._objectInstance.addEventListener(
-          event,
-          observer.next.bind(observer)
-        );
-        return () =>
-          this._objectInstance.removeEventListener(
-            event,
-            observer.next.bind(observer)
-          );
-      }
-    );
+    return new Observable<InAppBrowserEvent>((observer: Observer<InAppBrowserEvent>) => {
+      this._objectInstance.addEventListener(event, observer.next.bind(observer));
+      return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
+    });
+  }
+
+  /**
+   * A method that allows you to listen to events happening in the browser.
+   * @param event {string} Name of the event
+   * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
+   */
+  @InstanceCheck()
+  on(event: string): Observable<InAppBrowserEvent> {
+    return new Observable<InAppBrowserEvent>((observer: Observer<InAppBrowserEvent>) => {
+      this._objectInstance.addEventListener(event, observer.next.bind(observer));
+      return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
+    });
   }
 }
 
 /**
  * @name In App Browser
+ * @premier inappbrowser
  * @description Launches in app Browser
  * @usage
  * ```typescript
@@ -284,7 +287,7 @@ export class InAppBrowserObject {
   plugin: 'cordova-plugin-inappbrowser',
   pluginRef: 'cordova.InAppBrowser',
   repo: 'https://github.com/apache/cordova-plugin-inappbrowser',
-  platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'macOS', 'Windows']
+  platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'macOS', 'Windows'],
 })
 @Injectable()
 export class InAppBrowser extends IonicNativePlugin {
@@ -297,11 +300,7 @@ export class InAppBrowser extends IonicNativePlugin {
    *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
    * @returns {InAppBrowserObject}
    */
-  create(
-    url: string,
-    target?: string,
-    options?: string | InAppBrowserOptions
-  ): InAppBrowserObject {
+  create(url: string, target?: string, options?: string | InAppBrowserOptions): InAppBrowserObject {
     return new InAppBrowserObject(url, target, options);
   }
 }

@@ -37,7 +37,7 @@ export interface Base64ToGalleryOptions {
   plugin: 'cordova-base64-to-gallery',
   pluginRef: 'cordova',
   repo: 'https://github.com/Nexxa/cordova-base64-to-gallery',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
 export class Base64ToGallery extends IonicNativePlugin {
@@ -49,12 +49,9 @@ export class Base64ToGallery extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
-  base64ToGallery(
-    data: string,
-    options?: Base64ToGalleryOptions
-  ): Promise<any> {
+  base64ToGallery(data: string, options?: Base64ToGalleryOptions): Promise<any> {
     return;
   }
 }

@@ -56,7 +56,7 @@ export interface ZeroconfResult {
   plugin: 'cordova-plugin-zeroconf',
   pluginRef: 'cordova.plugins.zeroconf',
   repo: 'https://github.com/becvert/cordova-plugin-zeroconf',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Zeroconf extends IonicNativePlugin {
@@ -79,13 +79,7 @@ export class Zeroconf extends IonicNativePlugin {
    * @return {Promise<ZeroconfResult>} Returns a Promise that resolves with the registered service.
    */
   @Cordova()
-  register(
-    type: string,
-    domain: string,
-    name: string,
-    port: number,
-    txtRecord: any
-  ): Promise<ZeroconfResult> {
+  register(type: string, domain: string, name: string, port: number, txtRecord: any): Promise<ZeroconfResult> {
     return;
   }
 
@@ -119,7 +113,7 @@ export class Zeroconf extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'unwatch',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   watch(type: string, domain: string): Observable<ZeroconfResult> {
     return;

@@ -66,7 +66,7 @@ export interface NativeTransitionOptions {
   plugin: 'com.telerik.plugins.nativepagetransitions',
   pluginRef: 'plugins.nativepagetransitions',
   repo: 'https://github.com/Telerik-Verified-Plugins/NativePageTransitions',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
 export class NativePageTransitions extends IonicNativePlugin {
@@ -100,7 +100,6 @@ export class NativePageTransitions extends IonicNativePlugin {
     return;
   }
 
-
   /**
    * Perform a slide animation
    * @param options {NativeTransitionOptions} Options for the transition
@@ -110,7 +109,6 @@ export class NativePageTransitions extends IonicNativePlugin {
   drawer(options: NativeTransitionOptions): Promise<any> {
     return;
   }
-
 
   /**
    * Perform a slide animation
@@ -139,5 +137,4 @@ export class NativePageTransitions extends IonicNativePlugin {
   cancelPendingTransition(): Promise<any> {
     return;
   }
-
 }

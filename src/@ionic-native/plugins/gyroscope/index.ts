@@ -78,7 +78,7 @@ export interface GyroscopeOptions {
   plugin: 'cordova-plugin-gyroscope',
   pluginRef: 'navigator.gyroscope',
   repo: 'https://github.com/NeoLSN/cordova-plugin-gyroscope',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Gyroscope extends IonicNativePlugin {
@@ -88,12 +88,10 @@ export class Gyroscope extends IonicNativePlugin {
    * @return {Observable<GyroscopeOrientation>} Returns an Observable that resolves GyroscopeOrientation
    */
   watch(options?: GyroscopeOptions): Observable<GyroscopeOrientation> {
-    return new Observable<GyroscopeOrientation>(
-      (observer: any) => {
-        const watchId = navigator.gyroscope.watch(observer.next.bind(observer), observer.next.bind(observer), options);
-        return () => navigator.gyroscope.clearWatch(watchId);
-      }
-    );
+    return new Observable<GyroscopeOrientation>((observer: any) => {
+      const watchId = navigator.gyroscope.watch(observer.next.bind(observer), observer.next.bind(observer), options);
+      return () => navigator.gyroscope.clearWatch(watchId);
+    });
   }
 
   /**
@@ -102,7 +100,7 @@ export class Gyroscope extends IonicNativePlugin {
    * @return {Promise<GyroscopeOrientation>} Returns a promise that resolves GyroscopeOrientation
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   getCurrent(options?: GyroscopeOptions): Promise<GyroscopeOrientation> {
     return;

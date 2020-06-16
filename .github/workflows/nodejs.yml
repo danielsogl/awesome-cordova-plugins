@@ -17,6 +17,17 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Cache ionic site
+      id: ionic-site
+      uses: actions/cache@v2
+      with:
+        path: ~/ionic-site/
+        key: ionic-site-${{ hashFiles('**/package-lock.json') }}
+    - name: Setup git
+      run: bash ./scripts/git/config.sh
+    - name: Prepare ionic-site repo
+      if: github.ref == 'refs/heads/master'
+      run: bash ./scripts/docs/prepare.sh
     - name: Install dependencies
       run: npm ci
     - name: Lint
@@ -27,5 +38,9 @@ jobs:
       run: npm run test
     - name: Readmes
       run: npm run readmes
+    - name: Deploy doc
+      if: github.ref == 'refs/heads/master'
+      run: bash ./scripts/docs/update_docs.sh
       env:
-        CI: true
+        GITHUB_PROJECT_REPONAME: ${{ github.repository }}
+        GITHUB_SHA1: ${{ github.sha }}

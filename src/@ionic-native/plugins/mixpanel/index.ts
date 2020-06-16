@@ -29,7 +29,7 @@ declare var mixpanel: any;
   plugin: 'cordova-plugin-mixpanel',
   pluginRef: 'mixpanel',
   repo: 'https://github.com/samzilverberg/cordova-mixpanel-plugin',
-  platforms: ['Android', 'Browser', 'iOS']
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class Mixpanel extends IonicNativePlugin {
@@ -148,7 +148,7 @@ export class Mixpanel extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   track(eventName: string, eventProperties?: any): Promise<any> {
     return;
@@ -161,7 +161,7 @@ export class Mixpanel extends IonicNativePlugin {
 @Plugin({
   plugin: 'cordova-plugin-mixpanel',
   pluginRef: 'mixpanel.people',
-  pluginName: 'Mixpanel'
+  pluginName: 'Mixpanel',
 })
 @Injectable()
 export class MixpanelPeople extends IonicNativePlugin {
@@ -188,6 +188,7 @@ export class MixpanelPeople extends IonicNativePlugin {
    *
    * @param distinctId {string}
    * @return {Promise<any>}
+   * @deprecated since 2016-11-21 - Use Mixpanel.identify instead.
    */
   @Cordova()
   identify(distinctId: string): Promise<any> {

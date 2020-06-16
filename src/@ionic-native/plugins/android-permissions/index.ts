@@ -3,6 +3,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Android Permissions
+ * @premier android-permissions
  * @description
  * This plugin is designed to support Android new permissions checking mechanism.
  *
@@ -33,7 +34,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-android-permissions',
   pluginRef: 'cordova.plugins.permissions',
   repo: 'https://github.com/NeoLSN/cordova-plugin-android-permissions',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class AndroidPermissions extends IonicNativePlugin {
@@ -41,8 +42,7 @@ export class AndroidPermissions extends IonicNativePlugin {
     ACCESS_CHECKIN_PROPERTIES: 'android.permission.ACCESS_CHECKIN_PROPERTIES',
     ACCESS_COARSE_LOCATION: 'android.permission.ACCESS_COARSE_LOCATION',
     ACCESS_FINE_LOCATION: 'android.permission.ACCESS_FINE_LOCATION',
-    ACCESS_LOCATION_EXTRA_COMMANDS:
-      'android.permission.ACCESS_LOCATION_EXTRA_COMMANDS',
+    ACCESS_LOCATION_EXTRA_COMMANDS: 'android.permission.ACCESS_LOCATION_EXTRA_COMMANDS',
     ACCESS_MOCK_LOCATION: 'android.permission.ACCESS_MOCK_LOCATION',
     ACCESS_NETWORK_STATE: 'android.permission.ACCESS_NETWORK_STATE',
     ACCESS_SURFACE_FLINGER: 'android.permission.ACCESS_SURFACE_FLINGER',
@@ -53,14 +53,12 @@ export class AndroidPermissions extends IonicNativePlugin {
     BATTERY_STATS: 'android.permission.BATTERY_STATS',
     BIND_ACCESSIBILITY_SERVICE: 'android.permission.BIND_ACCESSIBILITY_SERVICE',
     BIND_APPWIDGET: 'android.permission.BIND_APPWIDGET',
-    BIND_CARRIER_MESSAGING_SERVICE:
-      'android.permission.BIND_CARRIER_MESSAGING_SERVICE',
+    BIND_CARRIER_MESSAGING_SERVICE: 'android.permission.BIND_CARRIER_MESSAGING_SERVICE',
     BIND_DEVICE_ADMIN: 'android.permission.BIND_DEVICE_ADMIN',
     BIND_DREAM_SERVICE: 'android.permission.BIND_DREAM_SERVICE',
     BIND_INPUT_METHOD: 'android.permission.BIND_INPUT_METHOD',
     BIND_NFC_SERVICE: 'android.permission.BIND_NFC_SERVICE',
-    BIND_NOTIFICATION_LISTENER_SERVICE:
-      'android.permission.BIND_NOTIFICATION_LISTENER_SERVICE',
+    BIND_NOTIFICATION_LISTENER_SERVICE: 'android.permission.BIND_NOTIFICATION_LISTENER_SERVICE',
     BIND_PRINT_SERVICE: 'android.permission.BIND_PRINT_SERVICE',
     BIND_REMOTEVIEWS: 'android.permission.BIND_REMOTEVIEWS',
     BIND_TEXT_SERVICE: 'android.permission.BIND_TEXT_SERVICE',
@@ -81,15 +79,12 @@ export class AndroidPermissions extends IonicNativePlugin {
     CALL_PRIVILEGED: 'android.permission.CALL_PRIVILEGED',
     CAMERA: 'android.permission.CAMERA',
     CAPTURE_AUDIO_OUTPUT: 'android.permission.CAPTURE_AUDIO_OUTPUT',
-    CAPTURE_SECURE_VIDEO_OUTPUT:
-      'android.permission.CAPTURE_SECURE_VIDEO_OUTPUT',
+    CAPTURE_SECURE_VIDEO_OUTPUT: 'android.permission.CAPTURE_SECURE_VIDEO_OUTPUT',
     CAPTURE_VIDEO_OUTPUT: 'android.permission.CAPTURE_VIDEO_OUTPUT',
-    CHANGE_COMPONENT_ENABLED_STATE:
-      'android.permission.CHANGE_COMPONENT_ENABLED_STATE',
+    CHANGE_COMPONENT_ENABLED_STATE: 'android.permission.CHANGE_COMPONENT_ENABLED_STATE',
     CHANGE_CONFIGURATION: 'android.permission.CHANGE_CONFIGURATION',
     CHANGE_NETWORK_STATE: 'android.permission.CHANGE_NETWORK_STATE',
-    CHANGE_WIFI_MULTICAST_STATE:
-      'android.permission.CHANGE_WIFI_MULTICAST_STATE',
+    CHANGE_WIFI_MULTICAST_STATE: 'android.permission.CHANGE_WIFI_MULTICAST_STATE',
     CHANGE_WIFI_STATE: 'android.permission.CHANGE_WIFI_STATE',
     CLEAR_APP_CACHE: 'android.permission.CLEAR_APP_CACHE',
     CLEAR_APP_USER_DATA: 'android.permission.CLEAR_APP_USER_DATA',
@@ -135,8 +130,7 @@ export class AndroidPermissions extends IonicNativePlugin {
     READ_CONTACTS: 'android.permission.READ_CONTACTS',
     READ_EXTERNAL_STORAGE: 'android.permission.READ_EXTERNAL_STORAGE',
     READ_FRAME_BUFFER: 'android.permission.READ_FRAME_BUFFER',
-    READ_HISTORY_BOOKMARKS:
-      'com.android.browser.permission.READ_HISTORY_BOOKMARKS',
+    READ_HISTORY_BOOKMARKS: 'com.android.browser.permission.READ_HISTORY_BOOKMARKS',
     READ_INPUT_STATE: 'android.permission.READ_INPUT_STATE',
     READ_LOGS: 'android.permission.READ_LOGS',
     READ_PHONE_STATE: 'android.permission.READ_PHONE_STATE',
@@ -170,8 +164,7 @@ export class AndroidPermissions extends IonicNativePlugin {
     SET_TIME_ZONE: 'android.permission.SET_TIME_ZONE',
     SET_WALLPAPER: 'android.permission.SET_WALLPAPER',
     SET_WALLPAPER_HINTS: 'android.permission.SET_WALLPAPER_HINTS',
-    SIGNAL_PERSISTENT_PROCESSES:
-      'android.permission.SIGNAL_PERSISTENT_PROCESSES',
+    SIGNAL_PERSISTENT_PROCESSES: 'android.permission.SIGNAL_PERSISTENT_PROCESSES',
     STATUS_BAR: 'android.permission.STATUS_BAR',
     SUBSCRIBED_FEEDS_READ: 'android.permission.SUBSCRIBED_FEEDS_READ',
     SUBSCRIBED_FEEDS_WRITE: 'android.permission.SUBSCRIBED_FEEDS_WRITE',
@@ -189,8 +182,7 @@ export class AndroidPermissions extends IonicNativePlugin {
     WRITE_CONTACTS: 'android.permission.WRITE_CONTACTS',
     WRITE_EXTERNAL_STORAGE: 'android.permission.WRITE_EXTERNAL_STORAGE',
     WRITE_GSERVICES: 'android.permission.WRITE_GSERVICES',
-    WRITE_HISTORY_BOOKMARKS:
-      'com.android.browser.permission.WRITE_HISTORY_BOOKMARKS',
+    WRITE_HISTORY_BOOKMARKS: 'com.android.browser.permission.WRITE_HISTORY_BOOKMARKS',
     WRITE_PROFILE: 'android.permission.WRITE_PROFILE',
     WRITE_SECURE_SETTINGS: 'android.permission.WRITE_SECURE_SETTINGS',
     WRITE_SETTINGS: 'android.permission.WRITE_SETTINGS',
@@ -198,7 +190,7 @@ export class AndroidPermissions extends IonicNativePlugin {
     WRITE_SOCIAL_STREAM: 'android.permission.WRITE_SOCIAL_STREAM',
     WRITE_SYNC_SETTINGS: 'android.permission.WRITE_SYNC_SETTINGS',
     WRITE_USER_DICTIONARY: 'android.permission.WRITE_USER_DICTIONARY',
-    WRITE_VOICEMAIL: 'com.android.voicemail.permission.WRITE_VOICEMAIL'
+    WRITE_VOICEMAIL: 'com.android.voicemail.permission.WRITE_VOICEMAIL',
   };
 
   /**

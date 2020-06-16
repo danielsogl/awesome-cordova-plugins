@@ -33,6 +33,7 @@ export interface WatchExistData {
 
 /**
  * @name Apple Wallet
+ * @premier apple-payment-pass
  * @description
  * A Cordova plugin that enables users from Add Payment Cards to their Apple Wallet.
  *
@@ -150,7 +151,7 @@ export interface WatchExistData {
   plugin: 'cordova-apple-wallet',
   pluginRef: 'AppleWallet',
   repo: 'https://github.com/tomavic/cordova-apple-wallet',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class AppleWallet extends IonicNativePlugin {

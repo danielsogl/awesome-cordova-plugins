@@ -31,7 +31,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-firebase-analytics',
   pluginRef: 'cordova.plugins.firebase.analytics',
   repo: 'https://github.com/chemerisuk/cordova-plugin-firebase-analytics',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseAnalytics extends IonicNativePlugin {
@@ -88,6 +88,15 @@ export class FirebaseAnalytics extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   setCurrentScreen(name: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Clears all analytics data for this instance from the device and resets the app instance ID
+   * @return {Promise<void>} Returns a promise
+   */
+  @Cordova({ sync: true })
+  resetAnalyticsData(): Promise<void> {
     return;
   }
 }

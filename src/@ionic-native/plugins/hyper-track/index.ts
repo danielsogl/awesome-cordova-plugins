@@ -65,7 +65,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-hypertrack',
   pluginRef: 'cordova.plugins.HyperTrack',
   repo: 'https://github.com/hypertrack/hypertrack-cordova',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class HyperTrack extends IonicNativePlugin {
@@ -121,7 +121,13 @@ export class HyperTrack extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise that resolves with a string representation of the Action's JSON, or it gets rejected if an error ocurred.
    */
   @Cordova()
-  createAndAssignAction(type: String, lookupId: String, expectedPlaceAddress: String, expectedPlaceLatitude: Number, expectedPlaceLongitude: Number): Promise<any> {
+  createAndAssignAction(
+    type: String,
+    lookupId: String,
+    expectedPlaceAddress: String,
+    expectedPlaceLatitude: Number,
+    expectedPlaceLongitude: Number
+  ): Promise<any> {
     return;
   }
 

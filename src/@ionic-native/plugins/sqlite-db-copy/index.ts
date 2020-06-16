@@ -27,7 +27,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-dbcopy',
   pluginRef: 'window.plugins.sqlDB',
   repo: 'https://github.com/an-rahulpandey/cordova-plugin-dbcopy',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class SqliteDbCopy extends IonicNativePlugin {
@@ -45,7 +45,7 @@ export class SqliteDbCopy extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   copy(dbname: string, location: number): Promise<any> {
     return;
@@ -58,7 +58,7 @@ export class SqliteDbCopy extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   checkDbOnStorage(dbname: string, source: string): Promise<any> {
     return;
@@ -79,14 +79,9 @@ export class SqliteDbCopy extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 4,
-    errorIndex: 5
+    errorIndex: 5,
   })
-  copyDbFromStorage(
-    dbname: string,
-    location: number,
-    source: string,
-    deleteolddb: boolean
-  ): Promise<any> {
+  copyDbFromStorage(dbname: string, location: number, source: string, deleteolddb: boolean): Promise<any> {
     return;
   }
   /**
@@ -105,14 +100,9 @@ export class SqliteDbCopy extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 4,
-    errorIndex: 5
+    errorIndex: 5,
   })
-  copyDbToStorage(
-    dbname: string,
-    location: number,
-    destination: string,
-    overwrite: boolean
-  ): Promise<any> {
+  copyDbToStorage(dbname: string, location: number, destination: string, overwrite: boolean): Promise<any> {
     return;
   }
   /**
@@ -129,7 +119,7 @@ export class SqliteDbCopy extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   remove(dbname: string, location: number): Promise<any> {
     return;

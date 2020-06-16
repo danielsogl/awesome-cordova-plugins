@@ -119,7 +119,9 @@ export interface OCRResult {
  * @name OCR
  * @description
  * This plugin attempts to identify and extract text from an image.
- *
+ * Please note: This plugin depends on the GoogleMobileVision pod which is referencing UIWebview, that has been deprecated by Apple.
+ * Don't use this plugin in an app intended for App Store as you will get a review rejection from Apple: `Deprecated API Usage — Apple will stop accepting submissions of apps that use UIWebView APIs`
+ * For more info, please see the following Github issue [Google Mobile Vision relying on deprecated UIWebview](https://github.com/NeutrinosPlatform/cordova-plugin-mobile-ocr/issues/27).
  * @usage
  * ```typescript
  * import { OCR, OCRSourceType } from '@ionic-native/ocr/ngx';
@@ -148,11 +150,10 @@ export interface OCRResult {
   plugin: 'cordova-plugin-mobile-ocr',
   pluginRef: 'textocr',
   repo: 'https://github.com/NeutrinosPlatform/cordova-plugin-mobile-ocr',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class OCR extends IonicNativePlugin {
-
   /**
    * Extract text from image
    * @param sourceType {OCRSourceType} type of image source
@@ -163,5 +164,4 @@ export class OCR extends IonicNativePlugin {
   recText(sourceType: OCRSourceType, source: string): Promise<OCRResult> {
     return;
   }
-
 }

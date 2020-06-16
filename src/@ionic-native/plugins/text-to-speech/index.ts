@@ -36,11 +36,10 @@ export interface TTSOptions {
   plugin: 'cordova-plugin-tts',
   pluginRef: 'TTS',
   repo: 'https://github.com/vilic/cordova-plugin-tts',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
 export class TextToSpeech extends IonicNativePlugin {
-
   /**
    * This function speaks
    * @param textOrOptions {string | TTSOptions} Text to speak or TTSOptions
@@ -48,7 +47,7 @@ export class TextToSpeech extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   speak(textOrOptions: string | TTSOptions): Promise<any> {
     return;
@@ -62,5 +61,4 @@ export class TextToSpeech extends IonicNativePlugin {
   stop(): Promise<any> {
     return;
   }
-
 }

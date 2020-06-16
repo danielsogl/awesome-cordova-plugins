@@ -37,11 +37,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-useragent',
   pluginRef: 'UserAgent',
   repo: 'https://github.com/danielsogl/cordova-plugin-useragent',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class UserAgent extends IonicNativePlugin {
-
   /**
    * Changes the current user-agent to the one sent by argument.
    * @param userAgent {string} User-Agent
@@ -69,5 +68,4 @@ export class UserAgent extends IonicNativePlugin {
   reset(): Promise<any> {
     return;
   }
-
 }

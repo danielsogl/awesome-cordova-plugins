@@ -40,7 +40,7 @@ export enum CCKContextType {
   game,
   document,
   audio,
-  video
+  video,
 }
 
 export enum CCKContextTopic {
@@ -51,7 +51,7 @@ export enum CCKContextTopic {
   socialScience = 'socialScience',
   computerScienceAndEngineering = 'computerScienceAndEngineering',
   artsAndMusic = 'artsAndMusic',
-  healthAndFitness = 'healthAndFitness'
+  healthAndFitness = 'healthAndFitness',
 }
 
 export interface CCKBinaryItem {
@@ -80,7 +80,7 @@ export interface CCKBinaryItem {
 export enum CCKBinaryType {
   trueFalse = 0,
   passFail,
-  yesNo
+  yesNo,
 }
 
 export interface CCKScoreItem {
@@ -249,7 +249,7 @@ export interface CCKQuantityItem {
   plugin: 'cordova-plugin-classkit',
   pluginRef: 'CordovaClassKit',
   repo: 'https://github.com/sebastianbaar/cordova-plugin-classkit.git',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class ClassKit extends IonicNativePlugin {

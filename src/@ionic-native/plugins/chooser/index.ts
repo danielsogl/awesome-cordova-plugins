@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface ChooserResult {
-  data: Uint8Array;
-  dataURI: string;
+  data?: Uint8Array;
+  dataURI?: string;
   mediaType: string;
   name: string;
   uri: string;
@@ -50,7 +50,7 @@ export interface ChooserResult {
   plugin: 'cordova-plugin-chooser',
   pluginRef: 'chooser',
   repo: 'https://github.com/cyph/cordova-plugin-chooser',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Chooser extends IonicNativePlugin {
@@ -62,6 +62,17 @@ export class Chooser extends IonicNativePlugin {
    */
   @Cordova()
   getFile(accept?: string): Promise<ChooserResult | undefined> {
+    return;
+  }
+  /**
+   * Displays native prompt for user to select a file.
+   * @param {string} [accept] Optional MIME type filter (e.g. 'image/gif,video/*').
+   * @returns {Promise<any>} Promise containing selected file's MIME type, display name, and original URI.
+   * If user cancels, promise will be resolved as undefined.
+   * If error occurs, promise will be rejected.
+   */
+  @Cordova()
+  getFileMetadata(accept?: string): Promise<ChooserResult | undefined> {
     return;
   }
 }

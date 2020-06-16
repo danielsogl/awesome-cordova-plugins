@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaProperty,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 /* Available status of device */
@@ -356,24 +351,24 @@ export enum BluetoothScanMode {
   SCAN_MODE_OPPORTUNISTIC = -1,
   SCAN_MODE_LOW_POWER = 0,
   SCAN_MODE_BALANCED = 1,
-  SCAN_MODE_LOW_LATENCY = 2
+  SCAN_MODE_LOW_LATENCY = 2,
 }
 
 export enum BluetoothMatchMode {
   MATCH_MODE_AGRESSIVE = 1,
-  MATCH_MODE_STICKY = 2
+  MATCH_MODE_STICKY = 2,
 }
 
 export enum BluetoothMatchNum {
   MATCH_NUM_ONE_ADVERTISEMENT = 1,
   MATCH_NUM_FEW_ADVERTISEMENT = 2,
-  MATCH_NUM_MAX_ADVERTISEMENT = 3
+  MATCH_NUM_MAX_ADVERTISEMENT = 3,
 }
 
 export enum BluetoothCallbackType {
   CALLBACK_TYPE_ALL_MATCHES = 1,
   CALLBACK_TYPE_FIRST_MATCH = 2,
-  CALLBACK_TYPE_MATCH_LOST = 4
+  CALLBACK_TYPE_MATCH_LOST = 4,
 }
 
 export interface Error {
@@ -425,7 +420,7 @@ export interface AdapterInfo {
   repo: 'https://github.com/randdusing/cordova-plugin-bluetoothle', // the github repository URL for the plugin
   install: 'ionic cordova plugin add cordova-plugin-bluetoothle', // OPTIONAL install command, in case the plugin requires variables
   installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
 export class BluetoothLE extends IonicNativePlugin {
@@ -485,7 +480,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {(Observable< ScanStatus >)}
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  startScan(params: ScanParams): Observable< ScanStatus > {
+  startScan(params: ScanParams): Observable<ScanStatus> {
     return;
   }
 
@@ -508,9 +503,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {Promise<{ devices: DeviceInfo[] }>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  retrieveConnected(params?: {
-    services?: string[];
-  }): Promise<{ devices: DeviceInfo[] }> {
+  retrieveConnected(params?: { services?: string[] }): Promise<{ devices: DeviceInfo[] }> {
     return;
   }
 
@@ -558,10 +551,7 @@ export class BluetoothLE extends IonicNativePlugin {
    *    error: The callback that will be triggered when the unbond operation fails
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  connect(params: {
-    address: string;
-    autoConnect?: boolean;
-  }): Observable< DeviceInfo > {
+  connect(params: { address: string; autoConnect?: boolean }): Observable<DeviceInfo> {
     return;
   }
 
@@ -569,10 +559,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * @name reconnect
    * Reconnect to a previously connected Bluetooth device
    * @param {{address: string}} params The address/identifier
-   * @returns {(Observable<{ status: DeviceInfo }>)}
+   * @returns {(Observable<DeviceInfo>)}
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  reconnect(params: { address: string }): Observable<{ status: DeviceInfo }> {
+  reconnect(params: { address: string }): Observable<DeviceInfo> {
     return;
   }
 
@@ -616,10 +606,7 @@ export class BluetoothLE extends IonicNativePlugin {
    *    error: The callback that will be triggered when the unbond operation fails
    */
   @Cordova({ callbackOrder: 'reverse' })
-  discover(params: {
-    address: string;
-    clearCache?: boolean;
-  }): Promise<Device> {
+  discover(params: { address: string; clearCache?: boolean }): Promise<Device> {
     return;
   }
 
@@ -631,10 +618,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {Promise<Services>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  services(params: {
-    address: string;
-    services?: string[];
-  }): Promise<Services> {
+  services(params: { address: string; services?: string[] }): Promise<Services> {
     return;
   }
 
@@ -646,9 +630,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {Promise<{ characteristics: Characteristics }>} The service id and an Array of characteristics
    */
   @Cordova({ callbackOrder: 'reverse' })
-  characteristics(
-    params: CharacteristicParams
-  ): Promise<{ characteristics: Characteristics }> {
+  characteristics(params: CharacteristicParams): Promise<{ characteristics: Characteristics }> {
     return;
   }
 
@@ -752,7 +734,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {Promise< RSSI >}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  rssi(params: { address: string }): Promise< RSSI > {
+  rssi(params: { address: string }): Promise<RSSI> {
     return;
   }
 
@@ -763,7 +745,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {Promise< MTU >}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  mtu(params: { address: string; mtu?: number }): Promise< MTU > {
+  mtu(params: { address: string; mtu?: number }): Promise<MTU> {
     return;
   }
 
@@ -775,10 +757,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {Promise<DeviceInfo>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  requestConnectionPriority(params: {
-    address: string;
-    connectionPriority: ConnectionPriority;
-  }): Promise<DeviceInfo> {
+  requestConnectionPriority(params: { address: string; connectionPriority: ConnectionPriority }): Promise<DeviceInfo> {
     return;
   }
 
@@ -906,9 +885,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {Observable<InitializeResult>}
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  initializePeripheral(
-    params?: InitPeripheralParams
-  ): Observable<InitializeResult> {
+  initializePeripheral(params?: InitPeripheralParams): Observable<InitializeResult> {
     return;
   }
 
@@ -933,9 +910,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns {Promise<{ service: string, status: Status }>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  removeService(params: {
-    service: string;
-  }): Promise<{ service: string; status: Status }> {
+  removeService(params: { service: string }): Promise<{ service: string; status: Status }> {
     return;
   }
 

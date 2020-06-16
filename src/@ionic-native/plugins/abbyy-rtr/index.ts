@@ -299,7 +299,7 @@ export interface DataCaptureResult {
   pluginRef: 'AbbyyRtrSdk',
   repo: 'https://github.com/abbyysdk/RTR-SDK.Cordova',
   install: 'ionic cordova plugin add cordova-plugin-abbyy-rtr-sdk',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class AbbyyRTR extends IonicNativePlugin {

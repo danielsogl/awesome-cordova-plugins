@@ -24,11 +24,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-flashlight',
   pluginRef: 'window.plugins.flashlight',
   repo: 'https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
 export class Flashlight extends IonicNativePlugin {
-
   /**
    * Checks if the flashlight is available
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean stating if the flashlight is available.
@@ -65,16 +64,14 @@ export class Flashlight extends IonicNativePlugin {
     return;
   }
 
-
   /**
    * Checks if the flashlight is turned on.
    * @returns {boolean}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   isSwitchedOn(): boolean {
     return;
   }
-
 }

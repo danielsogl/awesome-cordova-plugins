@@ -106,6 +106,7 @@ export interface GeolocationOptions {
 
 /**
  * @name Geolocation
+ * @premier geolocation
  * @description
  * This plugin provides information about the device's location, such as latitude and longitude. Common sources of location information include Global Positioning System (GPS) and location inferred from network signals such as IP address, RFID, WiFi and Bluetooth MAC addresses, and GSM/CDMA cell IDs.
  *
@@ -158,7 +159,7 @@ export interface GeolocationOptions {
   install:
     'ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"',
   installVariables: ['GEOLOCATION_USAGE_DESCRIPTION'],
-  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows']
+  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
 export class Geolocation extends IonicNativePlugin {
@@ -169,7 +170,7 @@ export class Geolocation extends IonicNativePlugin {
    * @returns {Promise<Geoposition>} Returns a Promise that resolves with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or rejects with an error.
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> {
     return;

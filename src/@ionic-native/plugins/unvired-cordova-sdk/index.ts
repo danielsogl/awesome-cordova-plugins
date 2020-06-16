@@ -3,12 +3,21 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 /**
+ * Outbox Lock Result States
+ */
+export enum OutboxLockStatus {
+  LockApplied = 0,
+  DataBeingSent = 1,
+  DataNotInQueue = 2,
+}
+
+/**
  * Log levels supported in the sdk.
  */
 export enum LogLevel {
   important = 7,
   error = 8,
-  debug = 9
+  debug = 9,
 }
 
 /**
@@ -23,7 +32,7 @@ export enum AuthenticateAndActivateResultType {
   /**
    * This value indicates that UMP was unable to validate users credentials.
    */
-  auth_activation_error = 3
+  auth_activation_error = 3,
 }
 
 export enum AuthenticateLocalResultType {
@@ -34,7 +43,7 @@ export enum AuthenticateLocalResultType {
   /**
    * This value indicates that UnviredCordovaSDK was unable to validate users credentials. You can retrieve the error information from AuthenticateLocalResult.
    */
-  login_error = 5
+  login_error = 5,
 }
 
 export enum LoginListenerType {
@@ -55,7 +64,12 @@ export enum LoginListenerType {
   /**
    * If there are multiple accounts active & no account is specified in the login(), then this value is returned indicating that a current account needs to be specified for the login().
    */
-  app_requires_current_account = 6
+  app_requires_current_account = 6,
+
+  /**
+   * This value indicates app can proceed with demo mode.
+   */
+  login_demo = 7,
 }
 
 export enum LoginType {
@@ -103,7 +117,7 @@ export enum LoginType {
   /**
    * TODO:
    */
-  custom = 'CUSTOM'
+  custom = 'CUSTOM',
 }
 
 export enum ResultType {
@@ -114,7 +128,7 @@ export enum ResultType {
   /**
    * This value indicates an error.
    */
-  error
+  error,
 }
 
 export enum RequestType {
@@ -141,7 +155,7 @@ export enum RequestType {
   /**
    * Set this type if the data exchange with UMP is 1:0. This handles the case where no server response is expected.
    */
-  REQ = 'REQ'
+  REQ = 'REQ',
 }
 
 export enum NotificationListenerType {
@@ -188,7 +202,7 @@ export enum NotificationListenerType {
   /**
    * Notify attachment downloads completed
    */
-  attachmentDownloadCompleted = 10
+  attachmentDownloadCompleted = 10,
 }
 
 export enum AttachmentItemStatus {
@@ -200,7 +214,7 @@ export enum AttachmentItemStatus {
   UPLOADED,
   ERROR_IN_UPLOAD,
   MARKED_FOR_DELETE,
-  EXTERNAL
+  EXTERNAL,
 }
 
 export class Settings {
@@ -238,6 +252,11 @@ export class UnviredResult {
   errorDetail: string;
 }
 
+export class OutboxLockResult extends UnviredResult {
+  type: ResultType;
+  data: OutboxLockStatus;
+}
+
 export class LogResult extends UnviredResult {
   type: ResultType;
   data: LogLevel;
@@ -259,6 +278,10 @@ export class SettingsResult extends UnviredResult {
 
 export class SyncResult extends UnviredResult {
   type: ResultType;
+  /**
+   * This code refers to the HTTP status code obtained during the network call.
+   */
+  code: number;
 }
 
 export class DbResult extends UnviredResult {
@@ -347,11 +370,21 @@ export class LoginParameters {
    */
   metadataJSON: string;
 
-   /*
-    * Set this value to true to persist web application database. By default, this value is false.
-    */
+  /**
+   * Specify the demo data xml string for demo mode.
+   */
+  demoData: string;
+
+  /**
+   * Set 'true' if the application supports demo mode otherwise set 'false'.
+   */
+  demoModeRequired: boolean;
+
+  /*
+   * Set this value to true to persist web application database. By default, this value is false.
+   */
   persistWebDb: boolean;
-   /*
+  /*
    * Optional jwt token parameter. Please check with your Unvired Admin for this value.
    * For Example:
    * loginParameters.jwtOptions = {"app": "myapp"};
@@ -507,11 +540,10 @@ export class AuthenticateLocalResult extends UnviredResult {
   repo: 'https://github.com/unvired/cordova-plugin-unvired-sdk/', // the github repository URL for the plugin
   install: 'ionic cordova plugin add @ionic-native/unvired-cordova-sdk', // OPTIONAL install command, in case the plugin requires variables
   installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['iOS', 'Android', 'Windows', 'Browser'] // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['iOS', 'Android', 'Windows', 'Browser'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
 export class UnviredCordovaSDK extends IonicNativePlugin {
-
   loginParameters: LoginParameters;
 
   /**
@@ -635,6 +667,23 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    */
   @Cordova()
   login(loginParameters: LoginParameters): Promise<LoginResult> {
+    return;
+  }
+
+  /**
+   * This api initializes the Unvired Application.
+   * @param loginParameters Set of parameters to be passed the loginWithDemoData()
+   * For Example:
+   * ```
+   * let loginParameters = new LoginParameters()
+   * loginParameters.appName = 'UNVIRED_DIGITAL_FORMS'
+   * loginParameters.metadataPath = '../assets/metadata.json'
+   * loginParameters.loginType = LoginType.unvired
+   * loginParameters.demoData = "<tag></tag>"
+   * ```
+   */
+  @Cordova()
+  loginWithDemoData(loginParameters: LoginParameters): Promise<LoginResult> {
     return;
   }
 
@@ -1068,7 +1117,13 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param autoSave This defines whether to save the response to database.
    */
   @Cordova()
-  syncForeground(reqype: RequestType, header: any, customData: any, paFunction: string, autoSave: boolean): Promise<SyncResult> {
+  syncForeground(
+    reqype: RequestType,
+    header: any,
+    customData: any,
+    paFunction: string,
+    autoSave: boolean
+  ): Promise<SyncResult> {
     return;
   }
 
@@ -1097,7 +1152,15 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param bypassAttachment Set this flag to false if you want to upload attachments first and then make the server call.
    */
   @Cordova()
-  syncBackground(reqype: RequestType, header: any, customData: any, paFunction: string, beName: string, belid: string, bypassAttachment: boolean): Promise<SyncResult> {
+  syncBackground(
+    reqype: RequestType,
+    header: any,
+    customData: any,
+    paFunction: string,
+    beName: string,
+    belid: string,
+    bypassAttachment: boolean
+  ): Promise<SyncResult> {
     return;
   }
 
@@ -1110,7 +1173,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * 5. Idle // there is no synchronisation activity going on.
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   getSynchronizationState(): Observable<string> {
     return;
@@ -1173,7 +1236,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Only one class can subscribe to notifications are any point of time.
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   registerNotifListener(): Observable<NotifResult> {
     return;
@@ -1288,6 +1351,25 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    */
   @Cordova()
   testPushNotification(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Mobile Platform only.
+   * Lock sending of data for this BE.
+   * @param beLid LID of the Business Entity
+   */
+  @Cordova()
+  lockDataSender(beLid: string): Promise<OutboxLockResult> {
+    return;
+  }
+
+  /**
+   * Mobile Platform only.
+   * Release any locks applied for sending data (DataSender Thread) to the server.
+   */
+  @Cordova()
+  unlockDataSender(): Promise<UnviredResult> {
     return;
   }
 }

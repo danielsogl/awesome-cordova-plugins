@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaProperty,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 /**
  * @name Screen Orientation
+ * @premier screen-orientation
  * @description
  * Cordova plugin to set/lock the screen orientation in a common way.
  *
@@ -60,7 +56,7 @@ import { Observable } from 'rxjs';
   plugin: 'cordova-plugin-screen-orientation',
   pluginRef: 'screen.orientation',
   repo: 'https://github.com/apache/cordova-plugin-screen-orientation',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class ScreenOrientation extends IonicNativePlugin {
@@ -74,7 +70,7 @@ export class ScreenOrientation extends IonicNativePlugin {
     LANDSCAPE_SECONDARY: 'landscape-secondary',
     PORTRAIT: 'portrait',
     LANDSCAPE: 'landscape',
-    ANY: 'any'
+    ANY: 'any',
   };
   /**
    * Listen to orientation change event
@@ -83,7 +79,7 @@ export class ScreenOrientation extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'orientationchange',
-    element: 'window'
+    element: 'window',
   })
   onChange(): Observable<void> {
     return;

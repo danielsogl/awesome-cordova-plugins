@@ -31,7 +31,3 @@ export function transformMembers(cls: ts.ClassDeclaration) {
 
   return members;
 }
-
-
-
-

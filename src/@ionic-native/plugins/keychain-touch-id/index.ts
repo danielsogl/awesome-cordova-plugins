@@ -28,11 +28,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-keychain-touch-id',
   pluginRef: 'plugins.touchid',
   repo: 'https://github.com/sjhoeksma/cordova-plugin-keychain-touch-id',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class KeychainTouchId extends IonicNativePlugin {
-
   /**
    * Check if Touch ID / Fingerprint is supported by the device
    * @return {Promise<any>} Returns a promise that resolves when there is hardware support
@@ -50,7 +49,7 @@ export class KeychainTouchId extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when there is a result
    */
   @Cordova()
-  save(key: string, password: string): Promise<any> {
+  save(key: string, password: string, userAuthenticationRequired: boolean): Promise<any> {
     return;
   }
 
@@ -91,7 +90,5 @@ export class KeychainTouchId extends IonicNativePlugin {
    * @param locale {string} locale subtag from [this list](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry).
    */
   @Cordova()
-  setLocale(locale: string): void {
-  }
-
+  setLocale(locale: string): void {}
 }

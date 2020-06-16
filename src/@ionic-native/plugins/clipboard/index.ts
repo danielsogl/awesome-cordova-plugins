@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 /**
  * @name Clipboard
+ * @premier clipboard
  * @description
  * Clipboard management plugin for Cordova that supports iOS, Android, and Windows Phone 8.
  *
@@ -34,7 +35,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-clipboard',
   pluginRef: 'cordova.plugins.clipboard',
   repo: 'https://github.com/ihadeed/cordova-clipboard',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
 export class Clipboard extends IonicNativePlugin {

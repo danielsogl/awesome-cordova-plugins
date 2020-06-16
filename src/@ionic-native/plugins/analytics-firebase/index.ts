@@ -58,7 +58,7 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-nati
   plugin: 'cordova-plugin-analytics',
   pluginRef: 'analytics',
   repo: 'https://github.com/appfeel/analytics-google',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class AnalyticsFirebase extends IonicNativePlugin {

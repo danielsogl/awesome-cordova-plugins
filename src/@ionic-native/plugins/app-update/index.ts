@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface AppUpdateOptions {
-  authType: string;
+  authType?: string;
   username?: string;
   password?: string;
+  skipPromptDialog?: boolean;
+  skipProgressDialog?: boolean;
 }
 
 /**
@@ -45,7 +47,7 @@ export interface AppUpdateOptions {
   plugin: 'cordova-plugin-app-update',
   pluginRef: 'AppUpdate',
   repo: 'https://github.com/vaenow/cordova-plugin-app-update',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class AppUpdate extends IonicNativePlugin {
@@ -56,7 +58,7 @@ export class AppUpdate extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   checkAppUpdate(updateUrl: string, options?: AppUpdateOptions): Promise<any> {
     return;

@@ -77,7 +77,7 @@ export interface ImageResizerOptions {
   plugin: 'info.protonet.imageresizer',
   pluginRef: 'ImageResizer',
   repo: 'https://github.com/JoschkaSchulz/cordova-plugin-image-resizer',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class ImageResizer extends IonicNativePlugin {
