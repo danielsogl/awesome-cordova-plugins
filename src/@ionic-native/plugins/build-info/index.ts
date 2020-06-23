@@ -8,7 +8,7 @@ import { Plugin, CordovaProperty, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```
- * import { BuildInfo } from '@ionic-native/build-info';
+ * import { BuildInfo } from '@ionic-native/build-info/ngx';
  *
  * this.platform.ready().then(() => {
  *     console.log('BuildInfo.baseUrl        =' + BuildInfo.baseUrl)
