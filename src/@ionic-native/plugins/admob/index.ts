@@ -2,41 +2,42 @@ import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
-export interface AdmobOptions {
+export interface AdmobBaseOptions {
   /**
-   * Your publisher id code from your AdMob account
+   * (Optional) Your interstitial id code from your AdMob account. Defaults to bannerAdId
    */
-  publisherId: string;
+  interstitialAdId?: string;
 
   /**
-   * (Optional) Your interstitial id code from your AdMob account. Defaults to publisherId
+   * (Optional) Indicates whether to put banner ads at top when set to true or at bottom when set to false. Defaults to false
    */
-  interstitiaAdlId?: string;
+  bannerAtTop?: boolean;
 
   /**
-   * (Optional) Your rewarded id code from your AdMob account. Defaults to publisherId
+   * (Optional) Set to true to receive test ads (do not test with real ads as your account may be banned). Defaults to false
    */
-  rewardedAdId?: string;
+  isTesting?: boolean;
 
   /**
-   * (Optional) Your ad slot code from your AdSense account. Only for browser platform
+   * (Optional) Auto show banner ads when available (onAdLoaded event is called). Defaults to true
    */
-  adSlot?: string;
+  autoShowBanner?: boolean;
 
   /**
-   * (Optional) Indicates if show a close button on interstitial browser ads. Only for browser platform
+   * (Optional) Auto show interstitial ads when available (onAdLoaded event is called). Defaults to true
    */
-  interstitialShowCloseButton?: boolean;
+  autoShowInterstitial?: boolean;
+}
+export interface AdmobOptions extends AdmobBaseOptions {
+  /**
+   * Your banner id code from your AdMob account (https://support.google.com/admob/answer/7356431?hl=en)
+   */
+  bannerAdId: string;
 
   /**
-   * (Optional) Indicates the number of seconds that the interstitial ad waits before show the close button. Only for browser platform
+   * Deprecated. Now is only used in web. It will be used as a bannerAdId only in case it is undefined.
    */
-  secondsToShowCloseButton?: number;
-
-  /**
-   * (Optional) Indicates the number of seconds that the interstitial ad waits before close the ad. Only for browser platform
-   */
-  secondsToCloseInterstitial?: number;
+  publisherId?: string;
 
   /**
    * (Optional) Your tappx id for iOS apps. If Admob is configured, it is also used to backfill your lost inventory (when there are no Admob ads available)
@@ -49,14 +50,19 @@ export interface AdmobOptions {
   tappxIdAndroid?: string;
 
   /**
+   * AdMob rewarded id (https://support.google.com/admob/answer/7356431?hl=en)
+   */
+  rewardedAdId?: string;
+
+  /**
+   * (Optional) Auto show rewarded ads when available (onAdLoaded event is called). Defaults to true
+   */
+  autoShowRewarded?: boolean;
+
+  /**
    * (Optional) If any of tappxId is present, it tells the percentage of traffic diverted to tappx. Defaults to 0.5 (50% of the traffic will be requested to Tappx)
    */
   tappxShare?: number;
-
-  /**
-   * (Optional) Indicates whether to put banner ads at top when set to true or at bottom when set to false. Defaults to false
-   */
-  bannerAtTop?: boolean;
 
   /**
    * (Optional) Indicates the size of banner ads
@@ -74,33 +80,57 @@ export interface AdmobOptions {
   offsetStatusBar?: boolean;
 
   /**
-   * (Optional) Set to true to receive test ads (do not test with real ads as your account may be banned). Defaults to false
-   */
-  isTesting?: boolean;
-
-  /**
    * (Options) A JSON object with additional {key: value} pairs
    */
   adExtras?: any;
+}
+
+export interface AdmobWebOptions extends AdmobBaseOptions {
+  /**
+   * (Required) AdSense Publisher ID (https://support.google.com/adsense/answer/105516)
+   */
+  publisherId: string;
 
   /**
-   * (Optional) Auto show banner ads when available (onAdLoaded event is called). Defaults to true
+   * (Required) Your ad slot code from your AdSense account. Only for browser platform https://support.google.com/adsense/answer/105516
    */
-  autoShowBanner?: boolean;
+  adSlot: string;
 
   /**
-   * (Optional) Auto show interstitial asd when available (onAdLoaded event is called). Defaults to true
+   * (Optional) Indicates if show a close button on interstitial browser ads. Only for browser platform
    */
-  autoShowInterstitial?: boolean;
+  interstitialShowCloseButton?: boolean;
 
   /**
-   * (Optional) Auto show rewarded ads when available (onAdLoaded event is called). Defaults to true
+   * (Optional) Indicates the number of seconds that the interstitial ad waits before show the close button. Only for browser platform
    */
-  autoShowRewarded?: boolean;
+  secondsToShowCloseButton?: number;
+
+  /**
+   * (Optional) Indicates the number of seconds that the interstitial ad waits before close the ad. Only for browser platform
+   */
+  secondsToCloseInterstitial?: number;
+}
+
+export interface AdMobEvent {
+  /**
+   * (Optional) AdMob supported type as seen in AD_TYPE
+   */
+  adType?: string;
+
+  /**
+   * (Optional) AdMob error code
+   */
+  error?: number;
+
+  /**
+   * (Optional) AdMob error reason
+   */
+  reason?: string;
 }
 
 /**
- * @name Admob
+ * @name AdMob
  * @description
  * Most complete Admob plugin with support for [Tappx](http://www.tappx.com/?h=dec334d63287772de859bdb4e977fce6) ads.
  * Monetize your apps and games with AdMob ads, using latest Google AdMob SDK. With this plugin you can show AdMob ads easily!
@@ -112,15 +142,16 @@ export interface AdmobOptions {
  * - [Tappx](http://www.tappx.com/?h=dec334d63287772de859bdb4e977fce6) ads
  *
  * @usage
+ * **Note:** No ads will be served on apps with package name `io.ionic.starter`. This is the default package name for new `ionic` apps. Make sure to rename the package name so ads can be displayed.
  * ```typescript
- * import { Admob, AdmobOptions } from '@ionic-native/admob/ngx';
+ * import { Admob, AdmobOptions } from '@ionic-native/admob';
  *
  *
  * constructor(private admob: Admob) {
  *     // Admob options config
  *     const admobOptions: AdmobOptions = {
- *       publisherId: 'XXX-XXXX-XXXX',
- *       interstitialId: 'XXX-XXXX-XXXX',
+ *       bannerAdId: 'XXX-XXXX-XXXX',
+ *       interstitialAdId: 'XXX-XXXX-XXXX',
  *       rewardedAdId: 'XXX-XXXX-XXXX',
  *       isTesting: true,
  *       autoShowBanner: false,
@@ -253,11 +284,11 @@ export interface AdmobOptions {
  * ```
  */
 @Plugin({
-  pluginName: 'Admob',
+  pluginName: 'AdMob',
   plugin: 'cordova-admob',
   pluginRef: 'admob',
   repo: 'https://github.com/appfeel/admob-google-cordova',
-  platforms: ['Android', 'iOS'],
+  platforms: ['Android', 'iOS', 'Browser'],
 })
 @Injectable()
 export class Admob extends IonicNativePlugin {
@@ -293,7 +324,7 @@ export class Admob extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when the options are set
    */
   @Cordova()
-  setOptions(options: AdmobOptions): Promise<any> {
+  setOptions(options: AdmobOptions | AdmobWebOptions): Promise<any> {
     return;
   }
 
@@ -303,7 +334,7 @@ export class Admob extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when the banner view is created
    */
   @Cordova()
-  createBannerView(options?: AdmobOptions): Promise<any> {
+  createBannerView(options?: AdmobOptions | AdmobWebOptions): Promise<any> {
     return;
   }
 
@@ -333,7 +364,7 @@ export class Admob extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when the interstitial ad is loaded
    */
   @Cordova()
-  requestInterstitialAd(options?: AdmobOptions): Promise<any> {
+  requestInterstitialAd(options?: AdmobOptions | AdmobWebOptions): Promise<any> {
     return;
   }
 
@@ -355,7 +386,7 @@ export class Admob extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when the rewarded ad is loaded
    */
   @Cordova()
-  requestRewardedAd(options?: AdmobOptions): Promise<any> {
+  requestRewardedAd(options?: AdmobOptions | AdmobWebOptions): Promise<any> {
     return;
   }
 
@@ -369,108 +400,173 @@ export class Admob extends IonicNativePlugin {
   }
 
   /**
-   * Called when an ad is received
-   * @returns {Observable<any>} Returns an observable when an ad is received
+   * Called when an ad is received.
+   *
+   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   *
+   * ```js
+   * document.addEventListener(window.admob.events.onAdLoaded, () => { });
+   * ```
+   *
+   * Please refer to the documentation on https://admob-ionic.com/Events.
+   * @returns {Observable<AdMobEvent>} Returns an observable when an ad is received
    */
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onAdLoaded',
     element: document,
   })
-  onAdLoaded(): Observable<any> {
+  onAdLoaded(): Observable<AdMobEvent> {
     return;
   }
 
   /**
-   * Called when an ad request failed
-   * @returns {Observable<any>} Returns an observable when an ad request is failed
+   * Called when an ad request failed.
+   *
+   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   *
+   * ```js
+   * document.addEventListener(window.admob.events.onAdFailedToLoad, () => { });
+   * ```
+   *
+   * Please refer to the documentation on https://admob-ionic.com/Events.
+   * @returns {Observable<AdMobEvent>} Returns an observable when an ad request is failed
    */
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onAdFailedToLoad',
     element: document,
   })
-  onAdFailedToLoad(): Observable<any> {
+  onAdFailedToLoad(): Observable<AdMobEvent> {
     return;
   }
 
   /**
    * Called when an ad opens an overlay that covers the screen.
-   * Please note that onPause cordova event is raised when an interstitial is shown
-   * @returns {Observable<any>} Returns an observable when an ad is opened
+   * Please note that onPause cordova event is raised when an interstitial is shown.
+   *
+   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   *
+   * ```js
+   * document.addEventListener(window.admob.events.onAdOpened, () => { });
+   * ```
+   *
+   * Please refer to the documentation on https://admob-ionic.com/Events.
+   * @returns {Observable<AdMobEvent>} Returns an observable when an ad is opened
    */
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onAdOpened',
     element: document,
   })
-  onAdOpened(): Observable<any> {
+  onAdOpened(): Observable<AdMobEvent> {
     return;
   }
 
   /**
    * Called when the user is about to return to the application after clicking on an ad.
-   * Please note that onResume cordova event is raised when an interstitial is closed
-   * @returns {Observable<any>} Returns an observable when an ad is closed
+   * Please note that onResume cordova event is raised when an interstitial is closed.
+   *
+   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   *
+   * ```js
+   * document.addEventListener(window.admob.events.onAdClosed, () => { });
+   * ```
+   *
+   * Please refer to the documentation on https://admob-ionic.com/Events.
+   * @returns {Observable<AdMobEvent>} Returns an observable when an ad is closed
    */
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onAdClosed',
     element: document,
   })
-  onAdClosed(): Observable<any> {
+  onAdClosed(): Observable<AdMobEvent> {
     return;
   }
 
   /**
    * Called when the user leaves the application after clicking an ad (e.g., to go to the browser)
-   * @returns {Observable<any>} Returns an observable when an ad leaves the application
+   * @returns {Observable<AdMobEvent>} Returns an observable when an ad leaves the application.
+   *
+   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   *
+   * ```js
+   * document.addEventListener(window.admob.events.onAdLeftApplication, () => { });
+   * ```
+   *
+   * Please refer to the documentation on https://admob-ionic.com/Events.
+   * @returns {Observable<AdMobEvent>} Returns an observable when application is left due to an ad click
    */
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onAdLeftApplication',
     element: document,
   })
-  onAdLeftApplication(): Observable<any> {
+  onAdLeftApplication(): Observable<AdMobEvent> {
     return;
   }
 
   /**
-   * Called when the user has been rewarded by an ad
-   * @returns {Observable<any>} Returns an observable when the user rewards an ad
+   * Called when the user has been rewarded by an ad.
+   *
+   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   *
+   * ```js
+   * document.addEventListener(window.admob.events.onRewardedAd, () => { });
+   * ```
+   *
+   * Please refer to the documentation on https://admob-ionic.com/Events.
+   * @returns {Observable<AdMobEvent>} Returns an observable when the user rewards an ad
    */
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onRewardedAd',
     element: document,
   })
-  onRewardedAd(): Observable<any> {
+  onRewardedAd(): Observable<AdMobEvent> {
     return;
   }
 
   /**
-   * Called when the video of a rewarded ad started
-   * @returns {Observable<any>} Returns an observable when the video is started
+   * Called when the video of a rewarded ad started.
+   *
+   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   *
+   * ```js
+   * document.addEventListener(window.admob.events.onRewardedAdVideoStarted, () => { });
+   * ```
+   *
+   * Please refer to the documentation on https://admob-ionic.com/Events.
+   * @returns {Observable<AdMobEvent>} Returns an observable when the video is started
    */
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onRewardedAdVideoStarted',
     element: document,
   })
-  onRewardedAdVideoStarted(): Observable<any> {
+  onRewardedAdVideoStarted(): Observable<AdMobEvent> {
     return;
   }
 
   /**
-   * Called when the video of a rewarded ad has completed
-   * @returns {Observable<any>} Returns an observable when the video is completed
+   * Called when the video of a rewarded ad has completed.
+   *
+   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   *
+   * ```js
+   * document.addEventListener(window.admob.events.onRewardedAdVideoCompleted, () => { });
+   * ```
+   *
+   * Please refer to the documentation on https://admob-ionic.com/Events.
+   * @returns {Observable<AdMobEvent>} Returns an observable when the video is completed
    */
   @Cordova({
     eventObservable: true,
     event: 'appfeel.cordova.admob.onRewardedAdVideoCompleted',
     element: document,
   })
-  onRewardedAdVideoCompleted(): Observable<any> {
+  onRewardedAdVideoCompleted(): Observable<AdMobEvent> {
     return;
   }
 }
