@@ -51,6 +51,11 @@ export interface AppRatePreferences {
    * App Store URLS
    */
   storeAppURL?: AppUrls;
+
+  /**
+   * Open URL function
+   */
+  openUrl?: (url: string) => void;
 }
 
 export interface AppRateCustomLocale {
