@@ -202,6 +202,20 @@ export class CameraPreview extends IonicNativePlugin {
   startCamera(options: CameraPreviewOptions): Promise<any> {
     return;
   }
+  
+  /**
+   * Starts the camera video instance.
+   * @param {any} options
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  startRecordVideo(options: any): Promise<any> {
+    return;
+  }
+  
 
   /**
    * Stops the camera preview instance. (iOS & Android)
@@ -209,6 +223,15 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova()
   stopCamera(): Promise<any> {
+    return;
+  }
+  
+  /**
+   * Stops the camera video instance. (iOS & Android)
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  stopRecordVideo(): Promise<any> {
     return;
   }
 
