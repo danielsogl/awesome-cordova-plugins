@@ -192,7 +192,7 @@ export class Geolocation extends IonicNativePlugin {
    * ```
    *
    * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
-   * @returns {Observable<Geoposition>} Returns an Observable that notifies with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or errors.
+   * @returns {Observable<Geoposition | PositionError>} Returns an Observable that notifies with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or errors.
    */
   watchPosition(options?: GeolocationOptions): Observable<Geoposition | PositionError> {
     return new Observable<Geoposition | PositionError>((observer: any) => {
