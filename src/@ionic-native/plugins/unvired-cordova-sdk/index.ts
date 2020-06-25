@@ -64,7 +64,7 @@ export enum LoginListenerType {
   /**
    * If there are multiple accounts active & no account is specified in the login(), then this value is returned indicating that a current account needs to be specified for the login().
    */
-  app_requires_current_account = 6
+  app_requires_current_account = 6,
 
   /**
    * This value indicates app can proceed with demo mode.
@@ -412,10 +412,19 @@ export class AuthenticateLocalResult extends UnviredResult {
  * -
  * iOS Requirements
  * -
- * This plugin uses Cocoapods to install dependent libraries. Please make sure you have a valid Cocoapods installation.
- * Once you have it ready, do update the cocoapods repo by running the following command before you install this plugin.
+ * Update your Cocoapods repo before you install the plugin.
  * ```
- * pod repo update
+ * $ pod repo update
+ * ```
+ * -
+ * Browser Requirements
+ * -
+ * After you install the plugin, for Ionic/Angular projects, please add a reference to the following JS files within <head></head> section of index.html.
+ * ```
+ * <script src="assets/js/sql.js"></script>
+ * <script src="assets/js/kernel.js"></script>
+ * <script src="assets/js/winstore-jscompat.js"></script>
+ * <script src="assets/js/jquery-3.2.1.js"></script>
  * ```
  * @usage
  * ```typescript
@@ -1098,10 +1107,10 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Sends data to UMP in SYNC mode. This means user has to wait until the duration of SYNC call. Only one SYNC call can be active at any point of time. Once the call completes, the result data would be available in the Promise.
-   * Apps typically block UI during a SYNC call so that there are user-actions when the SYNC call is active.
+   * Sends data to UMP in SYNC mode. This means user has to wait until the duration of SYNC call. Only one SYNC call can be active at any point of time. Once the call completes, the result would be available in the Promise.
+   * Apps typically block UI during a SYNC call so that there are no user-actions possible until the call completes.
    * @param reqype RequestType for the message. Please check RequestType to select the right request type.
-   * @param header {Object} Header datastructure to be sent to UMP. Header datastructure is mandatory of the request type is RQST.
+   * @param header {Object} Header datastructure to be sent to UMP. Header datastructure is mandatory if the request type is RQST.
    * For PA functions which do not accept any input, set an empty string for this parameter.
    * Example: If Header datastructure needs to be sent, make sure the header datastructure is in the following format:
    * ```
