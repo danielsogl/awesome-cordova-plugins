@@ -1,3 +1,18 @@
+# [5.22.0](https://github.com/ionic-team/ionic-native/compare/v5.21.6...v5.22.0) (2020-02-28)
+
+
+### Bug Fixes
+
+* **fcm:** add missing clearAllNotifications, hasPermission and getAPNSToken ([#3331](https://github.com/ionic-team/ionic-native/issues/3331)) ([18bee4e](https://github.com/ionic-team/ionic-native/commit/18bee4e2982fd55bff4918758619a42b2be3916c)), closes [/github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated#version-400-12102019](https://github.com//github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated/issues/version-400-12102019) [/github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated#version-320-16092019](https://github.com//github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated/issues/version-320-16092019)
+
+
+### Features
+
+* **iamport-cordova:** add iamport-cordova plugin on ionic-native ([#3285](https://github.com/ionic-team/ionic-native/issues/3285)) ([6277d8e](https://github.com/ionic-team/ionic-native/commit/6277d8e9978f77fa0b92ff2129a79ae2834b280d))
+* **unvired-cordova-sdk:** add new functions to lock and unlock sending of data ([#3329](https://github.com/ionic-team/ionic-native/issues/3329)) ([53213bb](https://github.com/ionic-team/ionic-native/commit/53213bb57ab8ef2896504f2d21231276cf3eb6b6))
+
+
+
 ## [5.21.6](https://github.com/ionic-team/ionic-native/compare/v5.21.5...v5.21.6) (2020-02-22)
 
 
