@@ -293,7 +293,7 @@ export class Notificare extends IonicNativePlugin {
    * Make sure you only invoke this method after the 'ready' event.
    */
   @Cordova()
-  fetchUserData(): Promise<any> {
+  fetchUserData(): Promise<NotificareUserData[]> {
     return;
   }
 
@@ -304,7 +304,7 @@ export class Notificare extends IonicNativePlugin {
    * @param userData
    */
   @Cordova()
-  updateUserData(userData: any): Promise<void> {
+  updateUserData(userData: NotificareUserData[]): Promise<void> {
     return;
   }
 
@@ -714,3 +714,10 @@ export class Notificare extends IonicNativePlugin {
 }
 
 type Nullable<T> = T | null;
+
+export interface NotificareUserData {
+  key: string;
+  label?: string;
+  type?: string;
+  value?: Nullable<string>;
+}
