@@ -1,21 +1,10 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Notificare
  * @description
- * This plugin does something
+ * Official Ionic Native plugin for Notificare.
  *
  * @usage
  * ```typescript
@@ -68,19 +57,16 @@ export class Notificare extends IonicNativePlugin {
     return;
   }
 
-  // new
   @Cordova()
   setAuthorizationOptions(options: string[]): Promise<void> {
     return;
   }
 
-  // new
   @Cordova()
   setPresentationOptions(options: string[]): Promise<void> {
     return;
   }
 
-  // new
   @Cordova()
   setCategoryOptions(options: string[]): Promise<void> {
     return;
@@ -96,13 +82,11 @@ export class Notificare extends IonicNativePlugin {
     return;
   }
 
-  // new
   @Cordova()
   isNotificationFromNotificare(notification: any): Promise<boolean> {
     return;
   }
 
-  // new
   @Cordova()
   fetchNotificationSettings(): Promise<any> {
     return;
@@ -118,7 +102,6 @@ export class Notificare extends IonicNativePlugin {
     return;
   }
 
-  // new
   @Cordova()
   clearLocation(): Promise<void> {
     return;
@@ -139,25 +122,21 @@ export class Notificare extends IonicNativePlugin {
     return;
   }
 
-  // new
   @Cordova()
   registerDevice(userId: Nullable<string>, userName: Nullable<string>): Promise<void> {
     return;
   }
 
-  // new
   @Cordova()
   fetchDevice(): Promise<any> {
     return;
   }
 
-  // new
   @Cordova()
   fetchPreferredLanguage(): Promise<string> {
     return;
   }
 
-  // new
   @Cordova()
   updatePreferredLanguage(preferredLanguage: string): Promise<void> {
     return;
@@ -193,13 +172,11 @@ export class Notificare extends IonicNativePlugin {
     return;
   }
 
-  // new
   @Cordova()
   fetchUserData(): Promise<any> {
     return;
   }
 
-  // new
   @Cordova()
   updateUserData(userData: any): Promise<void> {
     return;
@@ -220,19 +197,16 @@ export class Notificare extends IonicNativePlugin {
     return;
   }
 
-  // new
   @Cordova()
   fetchNotification(notification: any): Promise<any> {
     return;
   }
 
-  // new
   @Cordova()
   fetchNotificationForInboxItem(inboxItem: any): Promise<any> {
     return;
   }
 
-  // new
   @Cordova()
   presentNotification(notification: any): Promise<void> {
     return;
@@ -268,37 +242,31 @@ export class Notificare extends IonicNativePlugin {
     return;
   }
 
-  // new
   @Cordova()
   fetchPassWithSerial(serial: string): Promise<any> {
     return;
   }
 
-  // new
   @Cordova()
   fetchPassWithBarcode(barcode: string): Promise<any> {
     return;
   }
 
-  // new
   @Cordova()
   fetchProducts(): Promise<any[]> {
     return;
   }
 
-  // new
   @Cordova()
   fetchPurchasedProducts(): Promise<any[]> {
     return;
   }
 
-  // new
   @Cordova()
   fetchProduct(product: any): Promise<any> {
     return;
   }
 
-  // new
   @Cordova()
   buyProduct(product: any): Promise<void> {
     return;
@@ -314,12 +282,6 @@ export class Notificare extends IonicNativePlugin {
     return;
   }
 
-  /**
-   *
-   * @param name
-   * @param data
-   * @returns {Promise<void>}
-   */
   @Cordova()
   logCustomEvent(name: string, data: Record<string, any>): Promise<void> {
     return;
@@ -426,12 +388,6 @@ export class Notificare extends IonicNativePlugin {
     return;
   }
 
-  /**
-   *
-   * @param event
-   * @param callback
-   * @returns {Promise<any>}
-   */
   @Cordova()
   on(event: string, callback: (data: any) => void): void {
     return;
