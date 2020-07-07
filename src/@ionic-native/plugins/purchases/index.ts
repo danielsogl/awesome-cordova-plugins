@@ -602,7 +602,7 @@ export class Purchases extends IonicNativePlugin {
    * @param url Proxy URL as a string.
    */
   @Cordova({ sync: true })
-  public static setProxyURL(url: string): void {}
+  setProxyURL(url: string): void {}
 
 }
 
