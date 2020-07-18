@@ -964,7 +964,7 @@ export class Diagnostic extends IonicNativePlugin {
   }
 
   /**
-   *Registers a function to be called when a change in location accuracy authorization occurs on iOS 14+.
+   * Registers a function to be called when a change in location accuracy authorization occurs on iOS 14+.
    *
    * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#registerLocationAccuracyAuthorizationChangeHandler)
    */
