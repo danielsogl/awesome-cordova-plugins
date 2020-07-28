@@ -604,4 +604,15 @@ export class BLE extends IonicNativePlugin {
   bondedDevices(): Promise<any[]> {
     return;
   }
+
+  /**
+   * Reports if location services are enabled.
+   * Android only
+   *
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  isLocationEnabled(): Promise<void> {
+    return;
+  }
 }
