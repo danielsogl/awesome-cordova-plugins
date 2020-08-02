@@ -94,6 +94,7 @@
     }
   },
   "dependencies": {
+    "dtslint": "^3.6.14",
     "tslib": "^1.13.0"
   },
   "husky": {
