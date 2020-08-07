@@ -202,7 +202,12 @@ export enum NotificationListenerType {
   /**
    * Notify attachment downloads completed
    */
-  attachmentDownloadCompleted = 10
+  attachmentDownloadCompleted = 10,
+
+  /**
+   * Notify when the sent item count changes.
+   */
+  SentItemChanged = 11
 }
 
 export enum AttachmentItemStatus {
@@ -1297,7 +1302,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * Subscribe to this observable to listen for life-cyle events in the case of an async message.
-   * Only one class can subscribe to notifications are any point of time.
+   * Only one class can subscribe to notifications at any point of time.
    */
   @Cordova({
     observable: true
