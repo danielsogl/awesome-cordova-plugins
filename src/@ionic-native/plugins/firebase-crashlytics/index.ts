@@ -16,7 +16,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * ...
  *
  *
- * const crashlytics = this.firebaseCrashlytics.initialize();
+ * const crashlytics = this.firebaseCrashlytics.initialise();
  * crashlytics.logException('my caught exception');
  *
  * ```
