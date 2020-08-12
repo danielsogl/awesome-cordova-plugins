@@ -82,7 +82,6 @@ export class Coordinates {
  *   import { HyperTrack } from '@ionic-native/hyper-track';
  *
  *   initializeHypertrack() {
- *     console.log("takePicture:");
  *     HyperTrack.enableDebugLogging();
  *     HyperTrack.initialize('YOUR_PUBLISHING_KEY')
  *     .then( this.onSdkInstanceReceived )
