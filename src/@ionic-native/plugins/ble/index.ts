@@ -458,6 +458,7 @@ export class BLE extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
+    destruct: true,
     clearFunction: 'stopNotification',
     clearWithArgs: true,
   })
