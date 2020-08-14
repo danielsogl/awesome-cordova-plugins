@@ -89,6 +89,15 @@ export class Diagnostic extends IonicNativePlugin {
     WHEN_IN_USE: 'when_in_use',
   };
 
+  /**
+   * iOS ONLY
+   * Location accuracy authorization
+   */
+  locationAccuracyAuthorization: {
+    FULL: 'full';
+    REDUCED: 'reduced';
+  };
+
   permissionGroups = {
     CALENDAR: ['READ_CALENDAR', 'WRITE_CALENDAR'],
     CAMERA: ['CAMERA'],
@@ -929,4 +938,36 @@ export class Diagnostic extends IonicNativePlugin {
   getMotionAuthorizationStatus(): Promise<string> {
     return;
   }
+
+  /**
+   * Returns the location accuracy authorization for the application on iOS 14+. Note: calling on iOS <14 will result in the Promise being rejected.
+   *
+   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#getlocationaccuracyauthorization)
+   *
+   * @return {Promise<string>}
+   */
+  @Cordova({ platform: ['iOS'] })
+  getLocationAccuracyAuthorization(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Requests temporary access to full location accuracy for the application on iOS 14+.
+   *
+   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#requesttemporaryfullaccuracyauthorization)
+   *
+   * @return {Promise<string>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  requestTemporaryFullAccuracyAuthorization(purpose: string): Promise<string> {
+    return;
+  }
+
+  /**
+   * Registers a function to be called when a change in location accuracy authorization occurs on iOS 14+.
+   *
+   * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#registerLocationAccuracyAuthorizationChangeHandler)
+   */
+  @Cordova({ platforms: ['iOS'], sync: true })
+  registerLocationAccuracyAuthorizationChangeHandler(handler: Function): void {}
 }
