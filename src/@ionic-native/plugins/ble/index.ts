@@ -455,6 +455,8 @@ export class BLE extends IonicNativePlugin {
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
    * @return {Observable<any>} Returns an Observable that notifies of characteristic changes.
+   * The observer emit an array with data at index 0 and sequence order at index 1.
+   * The sequence order is always undefined on iOS. On android it leave the client to check the sequence order and reorder if needed
    */
   @Cordova({
     observable: true,
