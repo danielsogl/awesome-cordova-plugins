@@ -38,6 +38,14 @@ export interface NfcTag {
   type?: string;
 }
 
+export interface ScanOptions {
+  /**
+   * If true, keep the scan session open so write can be called
+   * after reading. The default value is false.
+   */
+  keepSessionOpen?: boolean;
+}
+
 /**
  * @name NFC
  * @description
@@ -85,7 +93,7 @@ export interface NfcTag {
   plugin: 'phonegap-nfc',
   pluginRef: 'nfc',
   repo: 'https://github.com/chariotsolutions/phonegap-nfc',
-  platforms: ['Android', 'BlackBerry 10', 'Windows', 'Windows Phone 8', 'iOS'],
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 /**
  * @{ NFC } class methods
@@ -130,7 +138,7 @@ export class NFC extends IonicNativePlugin {
    * https://github.com/chariotsolutions/phonegap-nfc#nfcscanndef
    */
   @Cordova({ sync: true })
-  scanNdef(): Promise<NfcTag> {
+  scanNdef(options?: ScanOptions): Promise<NfcTag> {
     return;
   }
 
@@ -141,7 +149,7 @@ export class NFC extends IonicNativePlugin {
    * https://github.com/chariotsolutions/phonegap-nfc#nfcscantag
    */
   @Cordova({ sync: true })
-  scanTag(): Promise<NfcTag> {
+  scanTag(options?: ScanOptions): Promise<NfcTag> {
     return;
   }
 
