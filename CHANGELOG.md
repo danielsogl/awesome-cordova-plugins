@@ -1,3 +1,26 @@
+# [5.28.0](https://github.com/ionic-team/ionic-native/compare/v5.27.0...v5.28.0) (2020-08-14)
+
+
+### Bug Fixes
+
+* **ble:** add missing method "isLocationEnabled" ([#3495](https://github.com/ionic-team/ionic-native/issues/3495)) ([b4462d5](https://github.com/ionic-team/ionic-native/commit/b4462d5e6c12f144412001cade1020b5f88b4ae5))
+* **geolocation:** [#3303](https://github.com/ionic-team/ionic-native/issues/3303) geolocation watchPosition return type ([#3470](https://github.com/ionic-team/ionic-native/issues/3470)) ([579170a](https://github.com/ionic-team/ionic-native/commit/579170a99ea8a53634631b76ffa19b6b635c1d03))
+* **hyper-track:** update to the modern sdk ([#3508](https://github.com/ionic-team/ionic-native/issues/3508)) ([44f86f3](https://github.com/ionic-team/ionic-native/commit/44f86f3ce5f6912f1cc0b4596e43066571c96b44))
+* **ibeacon:** undefined locationManager ([#3505](https://github.com/ionic-team/ionic-native/issues/3505)) ([1ffad79](https://github.com/ionic-team/ionic-native/commit/1ffad79320f83038d1fc09e9112c40c86d948416))
+* **metrix:** change firebase api ([#3473](https://github.com/ionic-team/ionic-native/issues/3473)) ([b0ffb0e](https://github.com/ionic-team/ionic-native/commit/b0ffb0ec4a035097c8a413f31b2382dae1eda4c7))
+
+
+### Features
+
+* **clover-go:** add support to pass signature and void payment ([#3485](https://github.com/ionic-team/ionic-native/issues/3485)) ([26d10ef](https://github.com/ionic-team/ionic-native/commit/26d10ef63346782e6d8ed37ca89bd2dd7402aa0a))
+* **diagnostics:** Add support for new iOS14-LocationAccuracy Permission ([#3490](https://github.com/ionic-team/ionic-native/issues/3490)) ([ccca644](https://github.com/ionic-team/ionic-native/commit/ccca644134999365a729b4a7d554da6a011eb693))
+* **nfc:** update to phonegap-nfc@1.2.0 ([#3486](https://github.com/ionic-team/ionic-native/issues/3486)) ([d7ccd45](https://github.com/ionic-team/ionic-native/commit/d7ccd454fb757d8d3be57a70bfa7fb3c269e3318))
+* **onesignal:** add in-app messages methods ([#3481](https://github.com/ionic-team/ionic-native/issues/3481)) ([eec3fec](https://github.com/ionic-team/ionic-native/commit/eec3fec7ff820e96443e6e3f0d7bf96dac359038))
+* **purchases:** update to plugin version 1.2.0 ([#3482](https://github.com/ionic-team/ionic-native/issues/3482)) ([a010bb1](https://github.com/ionic-team/ionic-native/commit/a010bb186964b8b825ab80f9cf6092794ee2e4b1))
+* **smartlook:** update to 1.5.2 ([#3498](https://github.com/ionic-team/ionic-native/issues/3498)) ([5aa5757](https://github.com/ionic-team/ionic-native/commit/5aa57577956c13e8fe34d2c658690df7daf86ef4))
+
+
+
 # [5.27.0](https://github.com/ionic-team/ionic-native/compare/v5.26.0...v5.27.0) (2020-06-23)
 
 
