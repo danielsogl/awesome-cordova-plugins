@@ -24,6 +24,9 @@ export interface SaleResponse extends Response {
   cardFirst6?: string;
   cardLast4?: string;
 }
+export interface VoidPaymentResponse extends Response {
+  paymentId?: string;
+}
 
 /**
  * @name Clover Go
@@ -56,6 +59,14 @@ export interface SaleResponse extends Response {
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
+ * this.cloverGo.sign(signInfo)
+ *   .then((res: any) => console.log(res))
+ *   .catch((error: any) => console.error(error));
+ *
+ * this.cloverGo.voidPayment(paymentInfo)
+ *   .then((res: any) => console.log(res))
+ *   .catch((error: any) => console.error(error));
+ *
  * ```
  */
 @Plugin({
@@ -64,7 +75,7 @@ export interface SaleResponse extends Response {
   pluginRef: 'clovergo',
   repo: 'https://github.com/hotwax/cordova-plugin-clovergo',
   install: 'ionic plugin add cordova-plugin-clovergo',
-  platforms: ['Android', 'iOS'],
+  platforms: ['Android'],
 })
 @Injectable()
 export class CloverGo extends IonicNativePlugin {
@@ -105,6 +116,29 @@ export class CloverGo extends IonicNativePlugin {
    */
   @Cordova()
   sale(saleInfo: object): Promise<SaleResponse> {
+    return;
+  }
+
+  /**
+   * This method is used to pass signature as two
+   * dimensional number array that represents points
+   * of signature on screen.
+   * The list is passed as signature in SignInfo object.
+   * @param signInfo {object}
+   * @return {Promise<SaleResponse>}
+   */
+  @Cordova()
+  sign(signInfo: object): Promise<SaleResponse> {
+    return;
+  }
+
+  /**
+   * This function void any payment done through the device
+   * @param saleInfo {object}
+   * @return {Promise<VoidPaymentResponse>}
+   */
+  @Cordova()
+  voidPayment(paymentInfo: object): Promise<VoidPaymentResponse> {
     return;
   }
 }
