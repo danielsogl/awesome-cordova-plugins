@@ -27,7 +27,7 @@ import { Observable } from 'rxjs';
   pluginName: 'DfuUpdate',
   plugin: 'cordova-plugin-dfu-update',
   pluginRef: 'window.DfuUpdate',
-  repo: 'https://github.com/HansKrywaa/cordova-plugin-dfu-update',
+  repo: 'https://github.com/EinfachHans/cordova-plugin-dfu-update',
   install: 'ionic cordova plugin add cordova-plugin-dfu-update --variable ANDROID_NORDIC_VERSION="1.11.0"',
   installVariables: ['ANDROID_NORDIC_VERSION'],
   platforms: ['Android', 'iOS'],
