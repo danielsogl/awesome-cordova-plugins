@@ -293,7 +293,7 @@ export class IBeacon extends IonicNativePlugin {
    */
   @CordovaCheck({ sync: true })
   Delegate(): IBeaconDelegate {
-    const delegate = new cordova.plugins.locationManager.Delegate();
+    const delegate = new window.cordova.plugins.locationManager.Delegate();
 
     delegate.didChangeAuthorizationStatus = (pluginResult?: IBeaconPluginResult) => {
       return new Observable<IBeaconPluginResult>((observer: any) => {
@@ -358,7 +358,7 @@ export class IBeacon extends IonicNativePlugin {
       });
     };
 
-    cordova.plugins.locationManager.setDelegate(delegate);
+    window.cordova.plugins.locationManager.setDelegate(delegate);
     return delegate;
   }
 
@@ -382,7 +382,7 @@ export class IBeacon extends IonicNativePlugin {
     minor?: number,
     notifyEntryStateOnDisplay?: boolean
   ): BeaconRegion {
-    return new cordova.plugins.locationManager.BeaconRegion(identifer, uuid, major, minor, notifyEntryStateOnDisplay);
+    return new window.cordova.plugins.locationManager.BeaconRegion(identifer, uuid, major, minor, notifyEntryStateOnDisplay);
   }
 
   /**

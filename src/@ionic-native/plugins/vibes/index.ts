@@ -16,6 +16,19 @@ export interface PersonResponse {
   external_person_id?: string;
 }
 
+export interface InboxMessage {
+  content?: string;
+  created_at?: string;
+  expires_at?: string;
+  message_uid?: string;
+  read?: boolean;
+  subject?: string;
+  detail?: string;
+  collapse_key?: string;
+  apprefdata?: any;
+  images?: any;
+  inbox_custom_data: any;
+}
 /**
  * @name Vibes
  * @description
@@ -41,8 +54,11 @@ export interface PersonResponse {
  *
  * this.vibes.getVibesDeviceInfo()
  *   .then((res: any) => console.log(res)) // retrieve the `device_id` and `push_token` from the JSON object
- *   .catch((error: any) => console.error('Error retrieving deviceinfo push', error));
+ *   .catch((error: any) => console.error('Error retrieving deviceinfo', error));
  *
+ * this.vibes.fetchInboxMessages()
+ *   .then((res: any) => console.log(res)) // fetches inbox messages for this person.
+ *   .catch((error: any) => console.error('Error fetching inbox messages for this person', error));
  * ```
  */
 @Plugin({
@@ -58,7 +74,8 @@ export interface PersonResponse {
 @Injectable()
 export class Vibes extends IonicNativePlugin {
   /**
-   * Register device
+   * Register this device with the Vibes platform
+   * 
    * @return {Promise<DeviceResponse>}
    */
   @Cordova()
@@ -67,7 +84,8 @@ export class Vibes extends IonicNativePlugin {
   }
 
   /**
-   * Unregister device
+   * Unregister this device with the Vibes platform
+   * 
    * @return {Promise<void>}
    */
   @Cordova()
@@ -76,7 +94,8 @@ export class Vibes extends IonicNativePlugin {
   }
 
   /**
-   * Associate person
+   * Associate an external ID with the current person.
+   * 
    * @param {string} externalPersonId
    * @return {Promise<void>}
    */
@@ -86,7 +105,8 @@ export class Vibes extends IonicNativePlugin {
   }
 
   /**
-   * Register push
+   * Register this device to receive push notifications
+   * 
    * @return {Promise<void>}
    */
   @Cordova()
@@ -95,7 +115,8 @@ export class Vibes extends IonicNativePlugin {
   }
 
   /**
-   * Unregister push
+   * Unregister the device from receiving push notifications
+   * 
    * @return {Promise<void>}
    */
   @Cordova()
@@ -103,7 +124,8 @@ export class Vibes extends IonicNativePlugin {
     return;
   }
   /**
-   * getVibesDeviceInfo
+   * Fetches a DeviceInfoResponse with details about the Vibes Device ID and Push Token
+   * 
    * @return {Promise<DeviceInfoResponse>}
    */
   @Cordova()
@@ -112,7 +134,8 @@ export class Vibes extends IonicNativePlugin {
   }
 
   /**
-   * getPerson
+   * Fetches the PersonResponse associated with this device currently
+   * 
    * @return {Promise<PersonResponse>}
    */
   @Cordova()
@@ -122,12 +145,68 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Get notified when the user opens a notification
+   * 
    * @return {Observable<void>}
    */
   @Cordova({
     observable: true,
   })
   onNotificationOpened(): Observable<void> {
+    return;
+  }
+
+  /**
+   * Fetches an array of inbox messages for the person associated with this device.
+   * 
+   * @return {Promise<InboxMessage[]>}
+   */
+  @Cordova()
+  fetchInboxMessages(): Promise<InboxMessage[]> {
+    return;
+  }
+
+  /**
+   * Fetches a single inbox message by it's id.
+   * 
+   * @param {string} message_uid
+   * @return {Promise<InboxMessage>}
+   */
+  @Cordova()
+  fetchInboxMessage(message_uid: string): Promise<InboxMessage> {
+    return;
+  }
+
+  /**
+   * Marks an inbox message as expired using message_uid and the expiry date supplied. Uses current date if null or invalid date is supplied.
+   * 
+   * @param {string} message_uid
+   * @param {string} An ISO-8601 formatted date string.
+   * @return {Promise<InboxMessage>} an updated version of the InboxMessage with expires_at date updated
+   */
+  @Cordova()
+  expireInboxMessage(message_uid: string, date: string): Promise<InboxMessage> {
+    return;
+  }
+
+  /**
+   * Marks an inbox message as read.
+   * 
+   * @param {string} message_uid
+   * @return {Promise<InboxMessage>} an updated version of the InboxMessage with read field updated
+   */
+  @Cordova()
+  markInboxMessageAsRead(message_uid: string): Promise<InboxMessage> {
+    return;
+  }
+
+  /**
+   * Records an event for when the user opens an inbox message.
+   * 
+   * @param inbox_message_stringified stringified version of the InboxMessage
+   * @return {Promise<void>}
+   */
+  @Cordova()
+  onInboxMessageOpen(inbox_message_stringified: string): Promise<void> {
     return;
   }
 }

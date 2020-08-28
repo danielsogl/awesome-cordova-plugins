@@ -15,6 +15,7 @@ export interface DialogsPromptCallback {
 
 /**
  * @name Dialogs
+ * @premier dialogs
  * @description
  * This plugin gives you ability to access and customize the device native dialogs.
  *

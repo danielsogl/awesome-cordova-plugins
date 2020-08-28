@@ -1,13 +1,55 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
+export class SmartlookSetupConfigBuilder {
+  private readonly _smartlookSetupConfig: SmartlookSetupConfig;
+
+  constructor(smartlookAPIKey: string) {
+    this._smartlookSetupConfig = new SmartlookSetupConfig(smartlookAPIKey);
+  }
+
+  fps(fps: number): SmartlookSetupConfigBuilder {
+    this._smartlookSetupConfig.fps = fps;
+    return this;
+  }
+
+  renderingMode(renderingMode: string): SmartlookSetupConfigBuilder {
+    this._smartlookSetupConfig.renderingMode = renderingMode;
+    return this;
+  }
+
+  startNewSession(startNewSession: boolean): SmartlookSetupConfigBuilder {
+    this._smartlookSetupConfig.startNewSession = startNewSession;
+    return this;
+  }
+
+  startNewSessionAndUser(startNewSessionAndUser: boolean): SmartlookSetupConfigBuilder {
+    this._smartlookSetupConfig.startNewSessionAndUser = startNewSessionAndUser;
+    return this;
+  }
+
+  build(): SmartlookSetupConfig {
+    return this._smartlookSetupConfig;
+  }
+}
+
 export class SmartlookSetupConfig {
   private smartlookAPIKey: string;
-  private fps: number;
+  fps: number;
+  renderingMode: string;
+  startNewSession: boolean;
+  startNewSessionAndUser: boolean;
 
-  constructor(smartlookAPIKey: string, fps?: number) {
+  constructor(smartlookAPIKey: string) {
     this.smartlookAPIKey = smartlookAPIKey;
-    this.fps = fps;
+  }
+}
+
+export class SmartlookResetSession {
+  private resetUser: string;
+
+  constructor(resetUser: string) {
+    this.resetUser = resetUser;
   }
 }
 
@@ -138,6 +180,19 @@ export class SmartlookReferrer {
   }
 }
 
+export class SmartlookDashboardSessionUrl {
+  private withCurrentTimestamp: boolean;
+
+  constructor(withCurrentTimestamp: boolean) {
+    this.withCurrentTimestamp = withCurrentTimestamp;
+  }
+}
+
+export interface SmartlookIntegrationListener {
+  onSessionReady: (dashboardSessionUrl: string) => any;
+  onVisitorReady: (dashboardVisitorUrl: string) => any;
+}
+
 export class SmartlookRenderingMode {
   private renderingMode: string;
 
@@ -176,7 +231,9 @@ export class SmartlookRenderingMode {
  * }
  * ```
  * @classes
+ * SmartlookSetupConfigBuilder
  * SmartlookSetupConfig
+ * SmartlookResetSession
  * SmartlookUserIdentifier
  * SmartlookEventTrackingMode
  * SmartlookNavigationEvent
@@ -189,6 +246,7 @@ export class SmartlookRenderingMode {
  * SmartlookGlobalEventProperty
  * SmartlookGlobalEventPropertyKey
  * SmartlookReferrer
+ * SmartlookDashboardSessionUrl
  * SmartlookRenderingMode
  */
 @Plugin({
@@ -205,6 +263,9 @@ export class Smartlook extends IonicNativePlugin {
    * @param config SmartlookSetupConfig object.
    * @param config.smartlookAPIKey (required) Smartlook API key (you can obtain it in your dashboard).
    * @param config.fps (optional) recorded video framerate (allowed values 2-10 fps).
+   * @param options.renderingMode (optional) Mode defining the video output of recording.
+   * @param options.startNewSession (optional) If true new session is going to be created
+   * @param options.startNewSessionAndUser (optional) If true new session and visitor is going to be created
    */
   @Cordova({ sync: true })
   setupAndStartRecording(config: SmartlookSetupConfig): void {
@@ -216,6 +277,9 @@ export class Smartlook extends IonicNativePlugin {
    * @param config SmartlookSetupConfig object.
    * @param config.smartlookAPIKey (required) Smartlook API key (you can obtain it in your dashboard).
    * @param config.fps (optional) recorded video framerate (allowed values 2-10 fps).
+   * @param options.renderingMode (optional) Mode defining the video output of recording.
+   * @param options.startNewSession (optional) If true new session is going to be created
+   * @param options.startNewSessionAndUser (optional) If true new session and visitor is going to be created
    */
   @Cordova({ sync: true })
   setup(config: SmartlookSetupConfig): void {
@@ -244,6 +308,16 @@ export class Smartlook extends IonicNativePlugin {
    */
   @Cordova()
   isRecording(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Resets current session and new session in dashboard is created.
+   * @param resetSession SmartlookResetSession object.
+   * @param resetSession.resetUser If set to TRUE new visitor is created in the dashboard.
+   */
+  @Cordova({ sync: true })
+  resetSession(resetSession: SmartlookResetSession): void {
     return;
   }
 
@@ -413,11 +487,36 @@ export class Smartlook extends IonicNativePlugin {
   }
 
   /**
-   * Obtain sharable url to user's session leading to our dashboard.
-   * @return {Promise<string>} Returns a promise with dashboard URL string.
+   * Obtain session URL leading to our dashboard.
+   * @param smartlookDashboardSessionUrl SmartlookDashboardSessionUrl object.
+   * @param smartlookDashboardSessionUrl.withCurrentTimestamp If set to TRUE record will start at current timestamp.
+   * @return {Promise<string>} Returns a promise with dashboard session URL string.
    */
   @Cordova()
-  getDashboardSessionUrl(): Promise<string> {
+  getDashboardSessionUrl(smartlookDashboardSessionUrl: SmartlookDashboardSessionUrl): Promise<string> {
+    return;
+  }
+
+  /**
+   * Obtain visitor URL leading to our dashboard.
+   * @return {Promise<string>} Returns a promise with dashboard visitor URL string.
+   */
+  @Cordova()
+  getDashboardVisitorUrl(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Integration listener can be used to obtain dashboard URL for current session and visitor.
+   * These URLs can be propagated to various analytic tools/SDKs.
+   * @param integrationListener SmartlookIntegrationListener object.
+   * @param integrationListener.onSessionReady Called when dashboard session URL is ready. Note that this URL can be accesed only by user
+   * that has access to Smartlook dashboard (it is not public share link).
+   * @param integrationListener.onVisitorReady Called when dashboard visitor URL is ready. Note that this URL can be accesed only by user
+   * that has access to Smartlook dashboard (it is not public share link).
+   */
+  @Cordova({ sync: true })
+  registerIntegrationListener(integrationListener: SmartlookIntegrationListener): void {
     return;
   }
 
@@ -428,6 +527,14 @@ export class Smartlook extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   setRenderingMode(renderingMode: SmartlookRenderingMode): void {
+    return;
+  }
+
+  /**
+   * Unregister Integration listener (@see registerIntegrationListener())
+   */
+  @Cordova({ sync: true })
+  unregisterIntegrationListener(): void {
     return;
   }
 }

@@ -15,6 +15,8 @@ interface Plugin {
   cordovaPlugin: {
     name: string;
   };
+  premierSlug: string;
+  capacitorIncompatible: boolean;
 }
 
 const rootDir = resolve(__dirname, '../..');
@@ -55,6 +57,9 @@ function processPlugin(pluginModule): Plugin {
   const displayName = getTag(pluginClass, 'name');
   const usage = getTag(pluginClass, 'usage');
   const description = getTag(pluginClass, 'description');
+  const premierSlug = getTag(pluginClass, 'premier');
+  const capIncompat = getTag(pluginClass, 'capacitorincompatible');
+  const capacitorIncompatible = capIncompat ? true : undefined;
   return {
     packageName,
     displayName,
@@ -66,6 +71,8 @@ function processPlugin(pluginModule): Plugin {
     cordovaPlugin: {
       name: decorator.plugin,
     },
+    premierSlug,
+    capacitorIncompatible,
   };
 }
 

@@ -60,6 +60,7 @@ export interface QRScannerStatus {
 
 /**
  * @name QR Scanner
+ * @capacitorincompatible true
  * @description
  * A fast, energy efficient, highly-configurable QR code scanner for Cordova apps.
  *

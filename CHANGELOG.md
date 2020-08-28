@@ -1,3 +1,56 @@
+# [5.28.0](https://github.com/ionic-team/ionic-native/compare/v5.27.0...v5.28.0) (2020-08-14)
+
+
+### Bug Fixes
+
+* **ble:** add missing method "isLocationEnabled" ([#3495](https://github.com/ionic-team/ionic-native/issues/3495)) ([b4462d5](https://github.com/ionic-team/ionic-native/commit/b4462d5e6c12f144412001cade1020b5f88b4ae5))
+* **geolocation:** [#3303](https://github.com/ionic-team/ionic-native/issues/3303) geolocation watchPosition return type ([#3470](https://github.com/ionic-team/ionic-native/issues/3470)) ([579170a](https://github.com/ionic-team/ionic-native/commit/579170a99ea8a53634631b76ffa19b6b635c1d03))
+* **hyper-track:** update to the modern sdk ([#3508](https://github.com/ionic-team/ionic-native/issues/3508)) ([44f86f3](https://github.com/ionic-team/ionic-native/commit/44f86f3ce5f6912f1cc0b4596e43066571c96b44))
+* **ibeacon:** undefined locationManager ([#3505](https://github.com/ionic-team/ionic-native/issues/3505)) ([1ffad79](https://github.com/ionic-team/ionic-native/commit/1ffad79320f83038d1fc09e9112c40c86d948416))
+* **metrix:** change firebase api ([#3473](https://github.com/ionic-team/ionic-native/issues/3473)) ([b0ffb0e](https://github.com/ionic-team/ionic-native/commit/b0ffb0ec4a035097c8a413f31b2382dae1eda4c7))
+
+
+### Features
+
+* **clover-go:** add support to pass signature and void payment ([#3485](https://github.com/ionic-team/ionic-native/issues/3485)) ([26d10ef](https://github.com/ionic-team/ionic-native/commit/26d10ef63346782e6d8ed37ca89bd2dd7402aa0a))
+* **diagnostics:** Add support for new iOS14-LocationAccuracy Permission ([#3490](https://github.com/ionic-team/ionic-native/issues/3490)) ([ccca644](https://github.com/ionic-team/ionic-native/commit/ccca644134999365a729b4a7d554da6a011eb693))
+* **nfc:** update to phonegap-nfc@1.2.0 ([#3486](https://github.com/ionic-team/ionic-native/issues/3486)) ([d7ccd45](https://github.com/ionic-team/ionic-native/commit/d7ccd454fb757d8d3be57a70bfa7fb3c269e3318))
+* **onesignal:** add in-app messages methods ([#3481](https://github.com/ionic-team/ionic-native/issues/3481)) ([eec3fec](https://github.com/ionic-team/ionic-native/commit/eec3fec7ff820e96443e6e3f0d7bf96dac359038))
+* **purchases:** update to plugin version 1.2.0 ([#3482](https://github.com/ionic-team/ionic-native/issues/3482)) ([a010bb1](https://github.com/ionic-team/ionic-native/commit/a010bb186964b8b825ab80f9cf6092794ee2e4b1))
+* **smartlook:** update to 1.5.2 ([#3498](https://github.com/ionic-team/ionic-native/issues/3498)) ([5aa5757](https://github.com/ionic-team/ionic-native/commit/5aa57577956c13e8fe34d2c658690df7daf86ef4))
+
+
+
+# [5.27.0](https://github.com/ionic-team/ionic-native/compare/v5.26.0...v5.27.0) (2020-06-23)
+
+
+### Bug Fixes
+
+* **app-rate:** Add missing "openUrl" property to AppRatePreferences object ([#3456](https://github.com/ionic-team/ionic-native/issues/3456)) ([fe21b5b](https://github.com/ionic-team/ionic-native/commit/fe21b5b97c150e16740b91bf958f7110b2e35664))
+* **camera-preview:** tapFocus ([#3467](https://github.com/ionic-team/ionic-native/issues/3467)) ([7c95e66](https://github.com/ionic-team/ionic-native/commit/7c95e660215e96ce238c0194bbe91ba16886a78a))
+* **firebase-x:** add fakeVerificationCode param to verifyPhoneNumber ([#3451](https://github.com/ionic-team/ionic-native/issues/3451)) ([191c7a0](https://github.com/ionic-team/ionic-native/commit/191c7a044d15c31a4bba4c23010cdd728398eb89))
+* **firebase-x:** indicate callback methods to verifyPhoneNumber ([#3457](https://github.com/ionic-team/ionic-native/issues/3457)) ([66896b2](https://github.com/ionic-team/ionic-native/commit/66896b2632250ee8a33af909f7c0e008c6abc872))
+* **jumio:** update plugin reference and source ([#3428](https://github.com/ionic-team/ionic-native/issues/3428)) ([389a3fb](https://github.com/ionic-team/ionic-native/commit/389a3fb215711deb5e5404fd5b268b20825af958))
+* **launch-review:** Allow rating() callback to be invoked multiple times ([#3455](https://github.com/ionic-team/ionic-native/issues/3455)) ([40b9295](https://github.com/ionic-team/ionic-native/commit/40b9295de64e27c652f58fa37a4bb50c6bc2cdc4))
+
+
+### Features
+
+* **admob:** add interfaces and method typings ([#3461](https://github.com/ionic-team/ionic-native/issues/3461)) ([b2afc13](https://github.com/ionic-team/ionic-native/commit/b2afc131caeea56b9e01edc6169fdce9b57e9569))
+* **broadcaster:** align plugin API to version 4.1.0 ([#3432](https://github.com/ionic-team/ionic-native/issues/3432)) ([324334e](https://github.com/ionic-team/ionic-native/commit/324334eb287dd8e3e82b2d5d64e8fb06b496a1f0))
+* **build-info:** add plugin ([#3465](https://github.com/ionic-team/ionic-native/issues/3465)) ([7b998b9](https://github.com/ionic-team/ionic-native/commit/7b998b96449cdc1abf90548115caa0435ee89a84))
+* **camera-preview:** add record video functions ([#3463](https://github.com/ionic-team/ionic-native/issues/3463)) ([7ae1df2](https://github.com/ionic-team/ionic-native/commit/7ae1df2489b8ff524c1ba1bfa7624dcb50247905))
+* **chooser:** add getFileMetadata ([#3425](https://github.com/ionic-team/ionic-native/issues/3425)) ([79c3284](https://github.com/ionic-team/ionic-native/commit/79c3284434fbb580642b44d3d91cf01c82e52d0f))
+* **CleverTap:** Update Plugin for Parity Support ([#3435](https://github.com/ionic-team/ionic-native/issues/3435)) ([3df35b4](https://github.com/ionic-team/ionic-native/commit/3df35b40ce49b1a176ae03a3516df37ceb7cdec6))
+* **fcm:** add requestPushPermissionIOS and createNotificationChannelAndroid functions ([#3430](https://github.com/ionic-team/ionic-native/issues/3430)) ([ef17dc5](https://github.com/ionic-team/ionic-native/commit/ef17dc5d07e401369fa8353913a80b36f3cfdc4c))
+* **firebase-dynamic-links:** Update plugin for parity ([#3437](https://github.com/ionic-team/ionic-native/issues/3437)) ([7f09758](https://github.com/ionic-team/ionic-native/commit/7f0975803f2e84ed536922dde542e4d50549f919))
+* **firebase-vision:** add barcodeDetector ([#3426](https://github.com/ionic-team/ionic-native/issues/3426)) ([1aacb48](https://github.com/ionic-team/ionic-native/commit/1aacb487a4577e2f6854e59f30f215c301ad60ee))
+* **firebase-x:** add missing methods from plugin, incl. authenticateUserWithApple ([#3458](https://github.com/ionic-team/ionic-native/issues/3458)) ([32203e9](https://github.com/ionic-team/ionic-native/commit/32203e9ac1a0ca5368b320d1b05f44da3addd2bf))
+* **ios-aswebauthenticationsession:** add plugin ([#3421](https://github.com/ionic-team/ionic-native/issues/3421)) ([742ff65](https://github.com/ionic-team/ionic-native/commit/742ff655968c908911b3174d8a9893c6716b20d8))
+* **vibes:** add support for inbox messaging ([#3466](https://github.com/ionic-team/ionic-native/issues/3466)) ([9bf1eaf](https://github.com/ionic-team/ionic-native/commit/9bf1eafc4eb1e3562dfeff54f87f1da95d0a9fe4))
+
+
+
 # [5.26.0](https://github.com/ionic-team/ionic-native/compare/v5.25.0...v5.26.0) (2020-05-16)
 
 

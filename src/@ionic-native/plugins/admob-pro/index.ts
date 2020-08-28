@@ -100,6 +100,7 @@ export interface AdExtras {
 /**
  * @paid
  * @name AdMob Pro
+ * @capacitorincompatible true
  * @description
  * Plugin for Google Ads, including AdMob / DFP (DoubleClick for publisher) and mediations to other Ad networks.
  *
