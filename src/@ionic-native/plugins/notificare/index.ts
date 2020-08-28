@@ -702,6 +702,32 @@ export class Notificare extends IonicNativePlugin {
   }
 
   /**
+   * Request 'always' authorization for location updates.
+   */
+  @Cordova()
+  requestAlwaysAuthorizationForLocationUpdates(): Promise<void> {
+    return;
+  }
+
+  /**
+   * Request temporary full accuracy for location updates.
+   * @param purposeKey
+   */
+  @Cordova()
+  requestTemporaryFullAccuracyAuthorization(purposeKey: string): Promise<void> {
+    return;
+  }
+
+  /**
+   * Fetch the original URL for a dynamic link.
+   * @param url
+   */
+  @Cordova()
+  fetchLink(url: string): Promise<string> {
+    return;
+  }
+
+  /**
    * Subscribes to a Notificare event.
    *
    * @param event
