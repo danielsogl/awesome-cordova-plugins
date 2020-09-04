@@ -169,13 +169,22 @@ export class FirebaseX extends IonicNativePlugin {
   getId(): Promise<null | string> {
     return;
   }
-
+  
   /**
    * Get the current FCM user.
    * @return {Promise<FirebaseUser | string>}
    */
   @Cordova()
   getCurrentUser(): Promise<FirebaseUser | string> {
+    return;
+  }
+  
+  /**
+   * Reload the current FCM user.
+   * @return {Promise<FirebaseUser | string>}
+   */
+  @Cordova()
+  reloadCurrentUser(): Promise<FirebaseUser | string> {
     return;
   }
 
