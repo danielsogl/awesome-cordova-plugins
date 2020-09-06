@@ -2,6 +2,23 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
+export interface UpdateOptions {
+  /**
+   * A string that contains the identifier for the Bluetooth LE device to update. It will either be a MAC address (on Android) or a UUID (on iOS).
+   */
+  deviceId: string;
+
+  /**
+   * A string that is the path to the file to use in the update. It can be either in either `cdvfile://` or `file://` format.
+   */
+  fileUrl: string;
+
+  /**
+   * The PacketReceiptNotificationsValue (Default to 10)
+   */
+  packetReceiptNotificationsValue?: number;
+}
+
 /**
  * @name Dfu Update
  * @description
@@ -36,15 +53,14 @@ import { Observable } from 'rxjs';
 export class DfuUpdate extends IonicNativePlugin {
   /**
    * Start the Firmware-Update-Process
-   * @param fileURL {string} A string that is the path to the file to use in the update. It can be either in either `cdvfile://` or `file://` format.
-   * @param deviceIdentifier {string} A string that contains the identifier for the Bluetooth LE device to update. It will either be a MAC address (on Android) or a UUID (on iOS).
+   * @param options - Options for the process
    * @return {Observable<any>} Returns a Observable that emits when something happens
    */
   @Cordova({
     observable: true,
     callbackOrder: 'reverse',
   })
-  updateFirmware(fileURL: string, deviceIdentifier: string): Observable<any> {
+  updateFirmware(options: UpdateOptions): Observable<any> {
     return;
   }
 }
