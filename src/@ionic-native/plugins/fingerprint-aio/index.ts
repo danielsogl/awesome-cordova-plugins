@@ -98,7 +98,7 @@ export interface FingerprintSecretOptions extends FingerprintOptions {
  *      description: "Some biometric description", // optional | Default: null
  *      disableBackup: true, // always disabled on Android
  * })
- * .then((result: any) => console.log(result))
+ * .then((result: string) => console.log(result))
  * .catch((error: any) => console.log(error));
  *
  * ```
@@ -206,7 +206,7 @@ export class FingerprintAIO extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when authentication was successful
    */
   @Cordova()
-  loadBiometricSecret(options: FingerprintOptions): Promise<any> {
+  loadBiometricSecret(options: FingerprintOptions): Promise<string> {
     return;
   }
 
