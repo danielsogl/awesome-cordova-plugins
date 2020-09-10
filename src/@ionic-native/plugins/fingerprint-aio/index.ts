@@ -180,6 +180,11 @@ export class FingerprintAIO extends IonicNativePlugin {
    * @type {number}
    */
   BIOMETRIC_LOCKED_OUT_PERMANENT = -112;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  BIOMETRIC_SECRET_NOT_FOUND = -113;
 
   /**
    * Check if fingerprint authentication is available
