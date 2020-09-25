@@ -21,12 +21,9 @@ import {
  * constructor(private customuisdk: CustomUISDK) { }
  *
  * ...
- *
- *
  * this.customuisdk.functionName('Hello', 123)
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
- *
  * ```
  */
 @Plugin({
