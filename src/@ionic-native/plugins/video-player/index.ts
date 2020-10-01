@@ -48,7 +48,7 @@ export interface VideoOptions {
   plugin: 'https://github.com/moust/cordova-plugin-videoplayer.git',
   pluginRef: 'VideoPlayer',
   repo: 'https://github.com/moust/cordova-plugin-videoplayer',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class VideoPlayer extends IonicNativePlugin {

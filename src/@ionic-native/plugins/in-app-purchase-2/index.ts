@@ -1,7 +1,6 @@
 import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
-
 export interface IAPProductOptions {
   id: string;
   alias?: string;
@@ -12,21 +11,20 @@ export type IAPProducts = IAPProduct[] & {
   /**
    * Get product by ID
    */
-  byId: { [id: string]: IAPProduct; }
+  byId: { [id: string]: IAPProduct };
   /**
    * Get product by alias
    */
-  byAlias: { [alias: string]: IAPProduct; }
+  byAlias: { [alias: string]: IAPProduct };
   /**
    * Remove all products (for testing only).
    */
-  reset: () => {}
+  reset: () => {};
 };
 
 export type IAPQueryCallback = ((product: IAPProduct) => void) | ((error: IAPError) => void);
 
 export interface IAPProduct {
-
   id: string;
 
   alias?: string;
@@ -39,7 +37,7 @@ export interface IAPProduct {
 
   description: string;
 
-  priceMicros: string;
+  priceMicros: number;
 
   price: string;
 
@@ -57,9 +55,9 @@ export interface IAPProduct {
 
   downloaded?: boolean;
 
-  lastRenewalDate?: Date;
+  lastRenewalDate?: string;
 
-  expiryDate?: Date;
+  expiryDate?: string;
 
   introPrice?: string;
 
@@ -151,46 +149,45 @@ export interface IAPProduct {
   off(callback: Function): void;
 
   trigger(action: string, args: any): void;
-
 }
 
 export interface IAPProductEvents {
   /** Called when product data is loaded from the store. */
-  loaded: (callback: IAPQueryCallback) => void;
+  loaded: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when any change occured to a product. */
-  updated: (callback: IAPQueryCallback) => void;
+  updated: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when an order failed. The `err` parameter is an IAPError object. */
-  error: (callback: IAPQueryCallback) => void;
+  error: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when a product order is approved. */
-  approved: (callback: IAPQueryCallback) => void;
+  approved: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when a non-consumable product or subscription is owned. */
-  owned: (callback: IAPQueryCallback) => void;
+  owned: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when a product order is cancelled by the user. */
-  cancelled: (callback: IAPQueryCallback) => void;
+  cancelled: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when an order is refunded by the user. */
-  refunded: (callback: IAPQueryCallback) => void;
+  refunded: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when product has just been registered. */
-  registered: (callback: IAPQueryCallback) => void;
+  registered: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when the product details have been successfully loaded. */
-  valid: (callback: IAPQueryCallback) => void;
+  valid: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when the product cannot be loaded from the store. */
-  invalid: (callback: IAPQueryCallback) => void;
+  invalid: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when an order has just been requested. */
-  requested: (callback: IAPQueryCallback) => void;
+  requested: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when the purchase process has been initiated. */
-  initiated: (callback: IAPQueryCallback) => void;
+  initiated: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when the purchase process has completed. */
-  finished: (callback: IAPQueryCallback) => void;
+  finished: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when receipt validation successful. */
-  verified: (callback: IAPQueryCallback) => void;
+  verified: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when receipt verification failed. */
-  unverified: (callback: IAPQueryCallback) => void;
+  unverified: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when validation find a subscription to be expired. */
-  expired: (callback: IAPQueryCallback) => void;
+  expired: (callback: IAPQueryCallback) => IAPProductEvents;
   /** Called when content download is started. */
-  downloading: (product: IAPProduct, progress: any, time_remaining: any) => void;
+  downloading: (product: IAPProduct, progress: any, time_remaining: any) => IAPProductEvents;
   /** Called when content download has successfully completed. */
-  downloaded: (callback: IAPQueryCallback) => void;
+  downloaded: (callback: IAPQueryCallback) => IAPProductEvents;
 }
 
 /**
@@ -548,11 +545,10 @@ export class IAPError {
   pluginRef: 'store',
   repo: 'https://github.com/j3k0/cordova-plugin-purchase',
   platforms: ['iOS', 'Android', 'Windows'],
-  install: 'ionic cordova plugin add cc.fovea.cordova.purchase --variable BILLING_KEY="<ANDROID_BILLING_KEY>"'
+  install: 'ionic cordova plugin add cc.fovea.cordova.purchase --variable BILLING_KEY="<ANDROID_BILLING_KEY>"',
 })
 @Injectable()
 export class InAppPurchase2 extends IonicNativePlugin {
-
   @CordovaProperty()
   QUIET: number;
 
@@ -608,7 +604,6 @@ export class InAppPurchase2 extends IonicNativePlugin {
 
   @CordovaProperty()
   NON_CONSUMABLE: string;
-
 
   @CordovaProperty()
   ERR_SETUP: number;
@@ -673,7 +668,6 @@ export class InAppPurchase2 extends IonicNativePlugin {
   @CordovaProperty()
   ERR_SUBSCRIPTION_UPDATE_NOT_AVAILABLE: number;
 
-
   @CordovaProperty()
   REGISTERED: string;
 
@@ -704,7 +698,6 @@ export class InAppPurchase2 extends IonicNativePlugin {
   @CordovaProperty()
   DOWNLOADED: string;
 
-
   /* validation error codes */
 
   @CordovaProperty()
@@ -732,6 +725,14 @@ export class InAppPurchase2 extends IonicNativePlugin {
   validator: string | ((url: string | IAPProduct, callback: Function) => void);
 
   @CordovaProperty()
+  applicationUsername: string | (() => string);
+
+  @Cordova({ sync: true })
+  getApplicationUsername(): string {
+    return;
+  }
+
+  @CordovaProperty()
   log: {
     error: (message: string) => void;
     warn: (message: string) => void;
@@ -753,8 +754,7 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * @param onError {Function} function to call on error
    */
   @Cordova({ sync: true })
-  error(onError: Function): void {
-  }
+  error(onError: Function): void {}
 
   /**
    * Add or register a product
@@ -792,8 +792,7 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * @param callback {Function}
    */
   @Cordova({ sync: true })
-  off(callback: Function): void {
-  }
+  off(callback: Function): void {}
 
   /**
    * Initiate the purchase of a product.
@@ -819,12 +818,14 @@ export class InAppPurchase2 extends IonicNativePlugin {
    *  - `error` - called if the order couldn't be initiated.
    */
   @Cordova({ sync: true })
-  order(product: string | IAPProduct, additionalData?: any): { then: Function; error: Function; } {
+  order(product: string | IAPProduct, additionalData?: any): { then: Function; error: Function } {
     return;
   }
 
   @Cordova()
-  ready(callback: Function): void { return; }
+  ready(callback: Function): void {
+    return;
+  }
   /**
    * After you're done registering your store's product and events handlers,
    * time to call `store.refresh()`.
@@ -864,11 +865,13 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * and in the callback `product.finish()` should be called.
    */
   @Cordova({ sync: true })
-  refresh(): void {
-  }
+  refresh(): void {}
+
+  /** Lightweight method like refresh but do not relogin user */
+  @Cordova({ sync: true })
+  update(): void {}
 
   /** Opens the Manage Subscription page (AppStore, Play, Microsoft, ...). */
   @Cordova({ sync: true })
   manageSubscriptions(): void {}
-
 }

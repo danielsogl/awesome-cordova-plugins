@@ -40,7 +40,6 @@ import { Observable } from 'rxjs';
 })
 @Injectable()
 export class EmmAppConfig extends IonicNativePlugin {
-
   /**
    * Get value from the Emm application configuration.
    * @param configKey {string}  Key of the value to get, or null to get all the values as an object.
@@ -57,5 +56,4 @@ export class EmmAppConfig extends IonicNativePlugin {
   @Cordova({ observable: true }) registerChangedListener(): Observable<void> {
     return;
   }
-
 }

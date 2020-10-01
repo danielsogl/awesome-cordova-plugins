@@ -180,7 +180,7 @@ export interface BLEScanOptions {
   plugin: 'cordova-plugin-ble-central',
   pluginRef: 'ble',
   repo: 'https://github.com/don/cordova-plugin-ble-central',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class BLE extends IonicNativePlugin {
@@ -198,7 +198,7 @@ export class BLE extends IonicNativePlugin {
    * @returns {Observable<any>} Returns an Observable that notifies of each peripheral that is discovered during the specified time.
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   scan(services: string[], seconds: number): Observable<any> {
     return;
@@ -223,7 +223,7 @@ export class BLE extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'stopScan',
-    clearWithArgs: false
+    clearWithArgs: false,
   })
   startScan(services: string[]): Observable<any> {
     return;
@@ -238,12 +238,9 @@ export class BLE extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'stopScan',
-    clearWithArgs: false
+    clearWithArgs: false,
   })
-  startScanWithOptions(
-    services: string[],
-    options: BLEScanOptions
-  ): Observable<any> {
+  startScanWithOptions(services: string[], options: BLEScanOptions): Observable<any> {
     return;
   }
 
@@ -283,7 +280,7 @@ export class BLE extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'disconnect',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   connect(deviceId: string): Observable<any> {
     return;
@@ -388,11 +385,7 @@ export class BLE extends IonicNativePlugin {
    * @return {Promise<any>} Returns a Promise
    */
   @Cordova()
-  read(
-    deviceId: string,
-    serviceUUID: string,
-    characteristicUUID: string
-  ): Promise<any> {
+  read(deviceId: string, serviceUUID: string, characteristicUUID: string): Promise<any> {
     return;
   }
 
@@ -425,12 +418,7 @@ export class BLE extends IonicNativePlugin {
    * @return {Promise<any>} Returns a Promise
    */
   @Cordova()
-  write(
-    deviceId: string,
-    serviceUUID: string,
-    characteristicUUID: string,
-    value: ArrayBuffer
-  ): Promise<any> {
+  write(deviceId: string, serviceUUID: string, characteristicUUID: string, value: ArrayBuffer): Promise<any> {
     return;
   }
 
@@ -467,17 +455,16 @@ export class BLE extends IonicNativePlugin {
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
    * @return {Observable<any>} Returns an Observable that notifies of characteristic changes.
+   * The observer emit an array with data at index 0 and sequence order at index 1.
+   * The sequence order is always undefined on iOS. On android it leave the client to check the sequence order and reorder if needed
    */
   @Cordova({
     observable: true,
+    destruct: true,
     clearFunction: 'stopNotification',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
-  startNotification(
-    deviceId: string,
-    serviceUUID: string,
-    characteristicUUID: string
-  ): Observable<any> {
+  startNotification(deviceId: string, serviceUUID: string, characteristicUUID: string): Observable<any> {
     return;
   }
 
@@ -490,11 +477,7 @@ export class BLE extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  stopNotification(
-    deviceId: string,
-    serviceUUID: string,
-    characteristicUUID: string
-  ): Promise<any> {
+  stopNotification(deviceId: string, serviceUUID: string, characteristicUUID: string): Promise<any> {
     return;
   }
 
@@ -541,7 +524,7 @@ export class BLE extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'stopStateNotifications',
-    clearWithArgs: false
+    clearWithArgs: false,
   })
   startStateNotifications(): Observable<any> {
     return;
@@ -622,6 +605,17 @@ export class BLE extends IonicNativePlugin {
    */
   @Cordova()
   bondedDevices(): Promise<any[]> {
+    return;
+  }
+
+  /**
+   * Reports if location services are enabled.
+   * Android only
+   *
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  isLocationEnabled(): Promise<void> {
     return;
   }
 }

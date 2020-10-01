@@ -39,7 +39,7 @@ import { Observable } from 'rxjs';
   plugin: 'cordova-plugin-dbmeter',
   pluginRef: 'DBMeter',
   repo: 'https://github.com/akofman/cordova-plugin-dbmeter',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class DBMeter extends IonicNativePlugin {
@@ -49,7 +49,7 @@ export class DBMeter extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'stop'
+    clearFunction: 'stop',
   })
   start(): Observable<any> {
     return;

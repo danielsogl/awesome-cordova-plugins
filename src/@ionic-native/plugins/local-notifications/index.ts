@@ -13,59 +13,59 @@ export enum ELocalNotificationTriggerUnit {
   YEAR = 'year',
   WEEKDAY = 'weekday',
   WEEKDAY_ORDINAL = 'weekdayOrdinal',
-  WEEK_OF_MONTH = 'weekOfMonth'
+  WEEK_OF_MONTH = 'weekOfMonth',
 }
 
 export interface ILocalNotificationEvery {
-    /**
-     * The minute.
-     */
-    minute?: number;
+  /**
+   * The minute.
+   */
+  minute?: number;
 
-    /**
-     * The hour.
-     */
-    hour?: number;
+  /**
+   * The hour.
+   */
+  hour?: number;
 
-    /**
-     * The day.
-     */
-    day?: number;
+  /**
+   * The day.
+   */
+  day?: number;
 
-    /**
-     * The day of week.
-     */
-    weekday?: number;
+  /**
+   * The day of week.
+   */
+  weekday?: number;
 
-    /**
-     * The week of yeaday of the ardinal week.
-     */
-    week?: number;
+  /**
+   * The week of yeaday of the ardinal week.
+   */
+  week?: number;
 
-    /**
-     * The day of the ordinal week.
-     */
-    weekdayOrdinal?: number;
+  /**
+   * The day of the ordinal week.
+   */
+  weekdayOrdinal?: number;
 
-    /**
-     * The week of month.
-     */
-    weekOfMonth?: number;
+  /**
+   * The week of month.
+   */
+  weekOfMonth?: number;
 
-    /**
-     * The month.
-     */
-    month?: number;
+  /**
+   * The month.
+   */
+  month?: number;
 
-    /**
-     * The quarter.
-     */
-    quarter?: number;
+  /**
+   * The quarter.
+   */
+  quarter?: number;
 
-    /**
-     * The year.
-     */
-    year?: number;
+  /**
+   * The year.
+   */
+  year?: number;
 }
 
 export interface ILocalNotificationTrigger {
@@ -154,7 +154,7 @@ export interface ILocalNotificationTrigger {
 
 export enum ILocalNotificationActionType {
   INPUT = 'input',
-  BUTTON = 'button'
+  BUTTON = 'button',
 }
 
 /**
@@ -531,7 +531,7 @@ export interface ILocalNotification {
   plugin: 'cordova-plugin-local-notification',
   pluginRef: 'cordova.plugins.notification.local',
   repo: 'https://github.com/katzer/cordova-plugin-local-notifications',
-  platforms: ['Android', 'iOS', 'Windows']
+  platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
 export class LocalNotifications extends IonicNativePlugin {
@@ -558,7 +558,7 @@ export class LocalNotifications extends IonicNativePlugin {
    * @param options {Notification | ILocalNotification[]} optional
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   schedule(options?: ILocalNotification | ILocalNotification[]): void {}
 
@@ -567,7 +567,7 @@ export class LocalNotifications extends IonicNativePlugin {
    * @param options {ILocalNotification} optional
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   update(options?: ILocalNotification): void {}
 
@@ -761,7 +761,7 @@ export class LocalNotifications extends IonicNativePlugin {
    * @returns {Promise<any>} An object with all default settings
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   getDefaults(): Promise<any> {
     return;
@@ -772,7 +772,7 @@ export class LocalNotifications extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   setDefaults(defaults: any): Promise<any> {
     return;
@@ -804,7 +804,7 @@ export class LocalNotifications extends IonicNativePlugin {
   @Cordova({
     observable: true,
     clearFunction: 'un',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   on(eventName: string): Observable<any> {
     return;
@@ -816,7 +816,7 @@ export class LocalNotifications extends IonicNativePlugin {
    * @param args Optional arguments
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   fireEvent(eventName: string, args: any): void {}
 

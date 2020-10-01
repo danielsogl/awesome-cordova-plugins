@@ -31,7 +31,6 @@ import { Injectable } from '@angular/core';
 })
 @Injectable()
 export class Intercom extends IonicNativePlugin {
-
   /**
    * Register a identified user
    * @param options {any} Options
@@ -215,6 +214,4 @@ export class Intercom extends IonicNativePlugin {
   sendPushTokenToIntercom(token: string): Promise<any> {
     return;
   }
-
-
 }

@@ -38,7 +38,7 @@ export interface CameraPreviewOptions {
   alpha?: number;
 
   /** Tap to set specific focus point. Note, this assumes the camera is full-screen. default false */
-  tapToFocus?: boolean;
+  tapFocus?: boolean;
 
   /** On Android disable automatic rotation of the image and stripping of Exit header. default false */
   disableExifHeaderStripping?: boolean;
@@ -142,9 +142,8 @@ export interface CameraPreviewPictureOptions {
   pluginName: 'CameraPreview',
   plugin: 'cordova-plugin-camera-preview',
   pluginRef: 'CameraPreview',
-  repo:
-    'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
-  platforms: ['Android', 'iOS']
+  repo: 'https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview',
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class CameraPreview extends IonicNativePlugin {
@@ -156,14 +155,14 @@ export class CameraPreview extends IonicNativePlugin {
     CONTINUOUS_VIDEO: 'continuous-video', // Android Only
     EDOF: 'edof', // Android Only
     INFINITY: 'infinity', // Android Only
-    MACRO: 'macro' // Android Only
+    MACRO: 'macro', // Android Only
   };
 
   EXPOSURE_MODE = {
     LOCK: 'lock', // IOS Only
     AUTO: 'auto', // IOS Only
     CONTINUOUS: 'continuous',
-    CUSTOM: 'custom'
+    CUSTOM: 'custom',
   };
 
   FLASH_MODE = {
@@ -171,7 +170,7 @@ export class CameraPreview extends IonicNativePlugin {
     ON: 'on',
     AUTO: 'auto',
     RED_EYE: 'red-eye',
-    TORCH: 'torch' // Android Only
+    TORCH: 'torch', // Android Only
   };
 
   COLOR_EFFECT = {
@@ -183,12 +182,12 @@ export class CameraPreview extends IonicNativePlugin {
     POSTERIZE: 'posterize',
     SEPIA: 'sepia',
     SOLARIZE: 'solarize', // Android Only
-    WHITEBOARD: 'whiteboard' // Android Only
+    WHITEBOARD: 'whiteboard', // Android Only
   };
 
   CAMERA_DIRECTION = {
     BACK: 'back',
-    FRONT: 'front'
+    FRONT: 'front',
   };
 
   /**
@@ -198,11 +197,25 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   startCamera(options: CameraPreviewOptions): Promise<any> {
     return;
   }
+  
+  /**
+   * Starts the camera video instance.
+   * @param {any} options
+   * @return {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  startRecordVideo(options: any): Promise<any> {
+    return;
+  }
+  
 
   /**
    * Stops the camera preview instance. (iOS & Android)
@@ -210,6 +223,15 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova()
   stopCamera(): Promise<any> {
+    return;
+  }
+  
+  /**
+   * Stops the camera video instance. (iOS & Android)
+   * @return {Promise<any>}
+   */
+  @Cordova()
+  stopRecordVideo(): Promise<any> {
     return;
   }
 
@@ -247,12 +269,11 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   takePicture(options?: CameraPreviewPictureOptions): Promise<any> {
     return;
   }
-
 
   /**
    * Take a snapshot of preview window (size specified in startCamera options)
@@ -261,7 +282,7 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   takeSnapshot(options?: CameraPreviewPictureOptions): Promise<any> {
     return;
@@ -276,7 +297,7 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   setColorEffect(effect: string): Promise<any> {
     return;
@@ -289,7 +310,7 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   setZoom(zoom?: number): Promise<any> {
     return;
@@ -320,7 +341,7 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   setPreviewSize(dimensions?: CameraPreviewDimensions): Promise<any> {
     return;
@@ -342,7 +363,7 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   setFocusMode(focusMode?: string): Promise<any> {
     return;
@@ -373,7 +394,7 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   setFlashMode(flashMode?: string): Promise<any> {
     return;
@@ -422,7 +443,7 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   setExposureMode(lock?: string): Promise<any> {
     return;
@@ -444,7 +465,7 @@ export class CameraPreview extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   setExposureCompensation(exposureCompensation?: number): Promise<any> {
     return;

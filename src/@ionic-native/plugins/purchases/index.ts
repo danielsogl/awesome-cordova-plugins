@@ -48,7 +48,7 @@ export enum PURCHASE_TYPE {
  */
 export enum ProductType {
   SUBS = 'subs',
-  INAPP = 'inapp'
+  INAPP = 'inapp',
 }
 
 export enum PRORATION_MODE {
@@ -81,7 +81,6 @@ export enum PRORATION_MODE {
 }
 
 export enum PACKAGE_TYPE {
-
   /**
    * A package that was defined with a custom identifier.
    */
@@ -140,7 +139,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
   /**
    * The user is eligible for a free trial or intro pricing for this product.
    */
-  INTRO_ELIGIBILITY_STATUS_ELIGIBLE
+  INTRO_ELIGIBILITY_STATUS_ELIGIBLE,
 }
 
 /**
@@ -190,7 +189,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
  * Please follow the [Quickstart Guide](https://docs.revenuecat.com/docs/) for more information on how to use the SDK
  *
  * ### Requirements
- * Requires XCode 10.2+ and minimum targets iOS 9.0+ and macOS 10.12+
+ * Requires XCode 11.0+ and minimum target iOS 9.0+
  * This plugin has been tested with cordova-plugin-purchases@
  *
  * @interfaces
@@ -208,16 +207,15 @@ export enum INTRO_ELIGIBILITY_STATUS {
  */
 @Plugin({
   pluginName: 'Purchases',
-  plugin: 'cordova-plugin-purchases@1.0.4',
+  plugin: 'cordova-plugin-purchases@1.2.0',
   pluginRef: 'Purchases', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/RevenueCat/cordova-plugin-purchases', // the github repository URL for the plugin
-  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class Purchases extends IonicNativePlugin {
-
   static ATTRIBUTION_NETWORKS = ATTRIBUTION_NETWORK;
   /**
    * Enum for attribution networks
@@ -261,13 +259,12 @@ export class Purchases extends IonicNativePlugin {
    * @param {boolean} observerMode An optional boolean. Set this to TRUE if you have your own IAP implementation and
    * want to use only RevenueCat's backend. Default is FALSE. If you are on Android and setting this to ON, you will have
    * to acknowledge the purchases yourself.
+   * @param {string?} userDefaultsSuiteName An optional string. iOS-only, will be ignored for Android. 
+   * Set this if you would like the RevenueCat SDK to store its preferences in a different NSUserDefaults 
+   * suite, otherwise it will use standardUserDefaults. Default is null, which will make the SDK use standardUserDefaults.
    */
   @Cordova({ sync: true })
-  setup(
-    apiKey: string,
-    appUserID?: string | null,
-    observerMode = false
-  ): void {}
+  setup(apiKey: string, appUserID?: string | null, observerMode = false, userDefaultsSuiteName?: string): void {}
 
   /**
    * Set this to true if you are passing in an appUserID but it is anonymous, this is true by default if you didn't pass an appUserID
@@ -285,11 +282,7 @@ export class Purchases extends IonicNativePlugin {
    * @param {string?} networkUserId An optional unique id for identifying the user. Needs to be a string.
    */
   @Cordova({ sync: true })
-  addAttributionData(
-    data: { [key: string]: any },
-    network: ATTRIBUTION_NETWORK,
-    networkUserId?: string
-  ): void {}
+  addAttributionData(data: { [key: string]: any }, network: ATTRIBUTION_NETWORK, networkUserId?: string): void {}
 
   /**
    * Gets the Offerings configured in the dashboard
@@ -310,12 +303,9 @@ export class Purchases extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
-  getProducts(
-    productIdentifiers: string[],
-    type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS
-  ): Promise<PurchasesProduct[]> {
+  getProducts(productIdentifiers: string[], type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS): Promise<PurchasesProduct[]> {
     return;
   }
 
@@ -340,13 +330,13 @@ export class Purchases extends IonicNativePlugin {
   @Cordova({
     successIndex: 1,
     errorIndex: 2,
-    observable: true
+    observable: true,
   })
   makePurchase(
     productIdentifier: string,
     oldSKU?: string | null,
     type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS
-  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo; }> {
+  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo }> {
     return;
   }
 
@@ -363,13 +353,13 @@ export class Purchases extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   purchaseProduct(
     productIdentifier: string,
     upgradeInfo?: UpgradeInfo | null,
     type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS
-  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo; }> {
+  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo }> {
     return;
   }
 
@@ -385,12 +375,12 @@ export class Purchases extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   purchasePackage(
     aPackage: PurchasesPackage,
     upgradeInfo?: UpgradeInfo | null
-  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo; }> {
+  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo }> {
     return;
   }
 
@@ -469,7 +459,7 @@ export class Purchases extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onPurchaserInfoUpdated',
-    element: 'window'
+    element: 'window',
   })
   onPurchaserInfoUpdated(): Observable<PurchaserInfo> {
     return;
@@ -524,28 +514,112 @@ export class Purchases extends IonicNativePlugin {
   @Cordova()
   checkTrialOrIntroductoryPriceEligibility(
     productIdentifiers: string[]
-  ): Promise<{ [productId: string]: IntroEligibility; }> {
+  ): Promise<{ [productId: string]: IntroEligibility }> {
     return;
   }
+
+  /**
+   * Sets a function to be called on purchases initiated on the Apple App Store. This is only used in iOS.
+   * @param {ShouldPurchasePromoProductListener} shouldPurchasePromoProductListener Called when a user initiates a
+   * promotional in-app purchase from the App Store. If your app is able to handle a purchase at the current time, run
+   * the deferredPurchase function. If the app is not in a state to make a purchase: cache the deferredPurchase, then
+   * call the deferredPurchase when the app is ready to make the promotional purchase.
+   * If the purchase should never be made, you don't need to ever call the deferredPurchase and the app will not
+   * proceed with promotional purchases.
+   */
+  @Cordova({ sync: true })
+  addShouldPurchasePromoProductListener(shouldPurchasePromoProductListener: ShouldPurchasePromoProductListener): void {}
+
+  /**
+   * Removes a given ShouldPurchasePromoProductListener
+   * @param {ShouldPurchasePromoProductListener} listenerToRemove ShouldPurchasePromoProductListener reference of the listener to remove
+   * @returns {boolean} True if listener was removed, false otherwise
+   */
+  @Cordova({ sync: true })
+  removeShouldPurchasePromoProductListener(listenerToRemove: ShouldPurchasePromoProductListener): boolean {
+    return;
+  }
+
+  /**
+   * Invalidates the cache for purchaser information.
+   * 
+   * Most apps will not need to use this method; invalidating the cache can leave your app in an invalid state.
+   * Refer to https://docs.revenuecat.com/docs/purchaserinfo#section-get-user-information for more information on
+   * using the cache properly.
+   * 
+   * This is useful for cases where purchaser information might have been updated outside of the
+   * app, like if a promotional subscription is granted through the RevenueCat dashboard.
+   */
+  @Cordova({ sync: true })
+  invalidatePurchaserInfoCache(): void {}
+
+  /**
+   * Subscriber attributes are useful for storing additional, structured information on a user.
+   * Since attributes are writable using a public key they should not be used for
+   * managing secure or sensitive information such as subscription status, coins, etc.
+   *
+   * Key names starting with "$" are reserved names used by RevenueCat. For a full list of key
+   * restrictions refer to our guide: https://docs.revenuecat.com/docs/subscriber-attributes
+   *
+   * @param attributes Map of attributes by key. Set the value as an empty string to delete an attribute.
+   */
+  @Cordova({ sync: true })
+  setAttributes(attributes: { [key: string]: string | null }): void {}
+
+  /**
+   * Subscriber attribute associated with the email address for the user
+   *
+   * @param email Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setEmail(email: string | null): void {}
+  /**
+   * Subscriber attribute associated with the phone number for the user
+   *
+   * @param phoneNumber Empty String or null will delete the subscriber attribute.
+   */
+
+  @Cordova({ sync: true })
+  setPhoneNumber(phoneNumber: string | null): void {}
+  /**
+   * Subscriber attribute associated with the display name for the user
+   *
+   * @param displayName Empty String or null will delete the subscriber attribute.
+   */
+
+  @Cordova({ sync: true })
+  setDisplayName(displayName: string | null): void {}
+  /**
+   * Subscriber attribute associated with the push token for the user
+   *
+   * @param pushToken null will delete the subscriber attribute.
+   */
+
+  @Cordova({ sync: true })
+  setPushToken(pushToken: string | null): void {}
+  /**
+   * Set this property to your proxy URL before configuring Purchases *only* if you've received a proxy key value from your RevenueCat contact.
+   * @param url Proxy URL as a string.
+   */
+  @Cordova({ sync: true })
+  setProxyURL(url: string): void {}
+
 }
 
 /**
  * @deprecated use PurchasesProduct instead
  */
-export interface RCProduct {
-}
+export interface RCProduct {}
 
 /**
  * @deprecated use PurchaserInfo instead
  */
-export interface RCPurchaserInfo {
-}
+export interface RCPurchaserInfo {}
 
 /**
  * @deprecated use PurchasesError instead
  */
-export interface RCError {
-}
+export interface RCError {}
 /**
  * The EntitlementInfo object gives you access to all of the information about the status of a user entitlement.
  */
@@ -668,6 +742,18 @@ export interface PurchaserInfo {
    * in Android
    */
   readonly originalApplicationVersion: string | null;
+  /**
+   * Returns the purchase date for the version of the application when the user bought the app.
+   * Use this for grandfathering users when migrating to subscriptions.
+   */
+  readonly originalPurchaseDate: string | null;
+  /**
+   * URL to manage the active subscription of the user. If this user has an active iOS
+   * subscription, this will point to the App Store, if the user has an active Play Store subscription
+   * it will point there. If there are no active subscriptions it will be null.
+   * If there are multiple for different platforms, it will point to the device store.
+   */
+  readonly managementURL: string | null;
 }
 
 export interface PurchasesProduct {
@@ -840,3 +926,5 @@ export interface IntroEligibility {
    */
   readonly description: string;
 }
+
+export type ShouldPurchasePromoProductListener = (deferredPurchase: () => void) => void;

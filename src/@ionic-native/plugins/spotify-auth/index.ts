@@ -56,7 +56,7 @@ export interface AuthorizationData {
  *
  * @usage
  * ```typescript
- * import { SpotifyAuth } from '@ionic-native/spotify-auth';
+ * import { SpotifyAuth } from '@ionic-native/spotify-auth/ngx';
  *
  * // [...]
  *
@@ -82,7 +82,7 @@ export interface AuthorizationData {
  *
  * // [...]
  *
- * this.spotifyAuth.forget().then(() => console.log("We're logged out!"));
+ * this.spotifyAuth.forget();
  *
  * // [...]
  * ```
@@ -94,7 +94,7 @@ export interface AuthorizationData {
   repo: 'https://github.com/Festify/cordova-spotify-oauth',
   install: 'ionic cordova plugin add cordova-spotify-oauth --variable LOCAL_STORAGE_KEY="SpotifyOAuthData"',
   installVariables: ['LOCAL_STORAGE_KEY'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class SpotifyAuth extends IonicNativePlugin {
@@ -118,7 +118,7 @@ export class SpotifyAuth extends IonicNativePlugin {
    * @return {Promise<AuthorizationData>}
    */
   @Cordova({
-    sync: false
+    sync: false,
   })
   authorize(cfg: Config): Promise<AuthorizationData> {
     return;
@@ -133,7 +133,7 @@ export class SpotifyAuth extends IonicNativePlugin {
    * @return {void}
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
-  forget(): void { }
+  forget(): void {}
 }

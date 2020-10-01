@@ -16,7 +16,7 @@ export enum NotificationType {
   none = 0,
   badge = 1,
   sound = 2,
-  alert = 4
+  alert = 4,
 }
 
 /**
@@ -28,7 +28,7 @@ export enum PresentationOptions {
   none = 0,
   badge = 1,
   sound = 2,
-  alert = 4
+  alert = 4,
 }
 
 /**
@@ -58,11 +58,10 @@ export enum PresentationOptions {
   pluginRef: 'window.UAirship',
   repo: 'https://www.npmjs.com/package/urbanairship-cordova',
   install: 'ionic cordova plugin add urbanairship-cordova',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class UrbanAirShip extends IonicNativePlugin {
-
   /**
    * Re-attaches document event listeners in this webview
    */
@@ -744,7 +743,6 @@ export class UrbanAirShip extends IonicNativePlugin {
     return;
   }
 
-
   // Android only
 
   /**
@@ -815,5 +813,4 @@ export class UrbanAirShip extends IonicNativePlugin {
   addCustomEvent(event: object): Promise<any> {
     return;
   }
-
 }

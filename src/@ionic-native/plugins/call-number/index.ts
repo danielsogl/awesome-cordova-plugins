@@ -27,7 +27,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'call-number',
   pluginRef: 'plugins.CallNumber',
   repo: 'https://github.com/Rohfosho/CordovaCallNumberPlugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class CallNumber extends IonicNativePlugin {
@@ -38,7 +38,7 @@ export class CallNumber extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   callNumber(numberToCall: string, bypassAppChooser: boolean): Promise<any> {
     return;

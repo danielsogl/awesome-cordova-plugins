@@ -100,6 +100,7 @@ export interface AdExtras {
 /**
  * @paid
  * @name AdMob Pro
+ * @capacitorincompatible true
  * @description
  * Plugin for Google Ads, including AdMob / DFP (DoubleClick for publisher) and mediations to other Ad networks.
  *
@@ -138,7 +139,7 @@ export interface AdExtras {
   plugin: 'cordova-plugin-admobpro',
   pluginRef: 'AdMob',
   repo: 'https://github.com/floatinghotpot/cordova-admob-pro',
-  platforms: ['Android', 'iOS', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
 export class AdMobPro extends IonicNativePlugin {
@@ -165,7 +166,7 @@ export class AdMobPro extends IonicNativePlugin {
     BOTTOM_LEFT: 7,
     BOTTOM_CENTER: 8,
     BOTTOM_RIGHT: 9,
-    POS_XY: 10
+    POS_XY: 10,
   };
 
   /**
@@ -182,7 +183,7 @@ export class AdMobPro extends IonicNativePlugin {
    * Destroy the banner, remove it from screen.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   removeBanner(): void {}
 
@@ -191,7 +192,7 @@ export class AdMobPro extends IonicNativePlugin {
    * @param {number} position Position. Use `AdMobPro.AD_POSITION` to set values.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   showBanner(position: number): void {}
 
@@ -201,7 +202,7 @@ export class AdMobPro extends IonicNativePlugin {
    * @param {number} y Offset from screen top.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   showBannerAtXY(x: number, y: number): void {}
 
@@ -209,7 +210,7 @@ export class AdMobPro extends IonicNativePlugin {
    * Hide the banner, remove it from screen, but can show it later
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   hideBanner(): void {}
 
@@ -227,7 +228,7 @@ export class AdMobPro extends IonicNativePlugin {
    * Show interstitial ad when it's ready
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   showInterstitial(): void {}
 
@@ -245,7 +246,7 @@ export class AdMobPro extends IonicNativePlugin {
    * Show a reward video ad
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   showRewardVideoAd(): void {}
 
@@ -275,7 +276,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onAdFailLoad',
-    element: 'document'
+    element: 'document',
   })
   onAdFailLoad(): Observable<any> {
     return;
@@ -288,7 +289,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onAdLoaded',
-    element: 'document'
+    element: 'document',
   })
   onAdLoaded(): Observable<any> {
     return;
@@ -301,7 +302,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onAdPresent',
-    element: 'document'
+    element: 'document',
   })
   onAdPresent(): Observable<any> {
     return;
@@ -314,7 +315,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onAdLeaveApp',
-    element: 'document'
+    element: 'document',
   })
   onAdLeaveApp(): Observable<any> {
     return;
@@ -327,7 +328,7 @@ export class AdMobPro extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'onAdDismiss',
-    element: 'document'
+    element: 'document',
   })
   onAdDismiss(): Observable<any> {
     return;

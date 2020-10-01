@@ -18,13 +18,13 @@ export enum BarcodeType {
   Code39 = 9,
   ITF = 10,
   Aztec = 11,
-  PDF417 = 12
+  PDF417 = 12,
 }
 
 export enum RecognizerResultState {
   empty = 1,
   uncertain = 2,
-  valid = 3
+  valid = 3,
 }
 
 export enum MrtdDocumentType {
@@ -33,20 +33,20 @@ export enum MrtdDocumentType {
   Passport = 3,
   Visa = 4,
   GreenCard = 5,
-  MalaysianPassIMM13P = 6
+  MalaysianPassIMM13P = 6,
 }
 
 export enum EudlCountry {
   UK = 1,
   Germany = 2,
   Austria = 3,
-  Automatic = 4
+  Automatic = 4,
 }
 
 export enum DocumentFaceDetectorType {
   TD1 = 1,
   TD2 = 2,
-  PassportsAndVisas = 3
+  PassportsAndVisas = 3,
 }
 
 export enum UsdlKeys {
@@ -135,7 +135,7 @@ export enum UsdlKeys {
   DataDiscriminator = 82,
   DocumentExpirationMonth = 83,
   DocumentNonexpiring = 84,
-  SecurityVersion = 85
+  SecurityVersion = 85,
 }
 
 export interface ImageExtensionFactors {
@@ -178,12 +178,12 @@ export interface OverlaySettings {
 
 export interface BarcodeOverlaySettings extends OverlaySettings {}
 export interface BarcodeOverlaySettingsCtor {
-  new(): BarcodeOverlaySettings;
+  new (): BarcodeOverlaySettings;
 }
 
 export interface DocumentOverlaySettings extends OverlaySettings {}
 export interface DocumentOverlaySettingsCtor {
-  new(): DocumentOverlaySettings;
+  new (): DocumentOverlaySettings;
 }
 
 export interface DocumentVerificationOverlaySettings extends OverlaySettings {
@@ -195,14 +195,14 @@ export interface DocumentVerificationOverlaySettings extends OverlaySettings {
   glareMessage: string;
 }
 export interface DocumentVerificationOverlaySettingsCtor {
-  new(): DocumentVerificationOverlaySettings;
+  new (): DocumentVerificationOverlaySettings;
 }
 
 export interface BlinkCardOverlaySettings extends OverlaySettings {
   glareMessage: string;
 }
 export interface BlinkCardOverlaySettingsCtor {
-  new(): BlinkCardOverlaySettings;
+  new (): BlinkCardOverlaySettings;
 }
 
 export interface RecognizerResult {
@@ -286,7 +286,8 @@ export interface MrzResult {
 export interface SuccessFrameGrabberRecognizerResult extends RecognizerResult {
   successFrame: string;
 }
-export interface SuccessFrameGrabberRecognizerResultCtor extends RecognizerResultCtor<SuccessFrameGrabberRecognizerResult> {}
+export interface SuccessFrameGrabberRecognizerResultCtor
+  extends RecognizerResultCtor<SuccessFrameGrabberRecognizerResult> {}
 
 export interface SuccessFrameGrabberRecognizer extends Recognizer<SuccessFrameGrabberRecognizerResult> {
   slaveRecognizer: Recognizer;
@@ -1464,7 +1465,8 @@ export interface MalaysiaMyTenteraRecognizerResult extends RecognizerResult {
   street: string;
   zipcode: string;
 }
-export interface MalaysiaMyTenteraRecognizerResultCtor extends RecognizerResultCtor<MalaysiaMyTenteraRecognizerResult> {}
+export interface MalaysiaMyTenteraRecognizerResultCtor
+  extends RecognizerResultCtor<MalaysiaMyTenteraRecognizerResult> {}
 
 export interface MalaysiaMyTenteraRecognizer extends Recognizer<MalaysiaMyTenteraRecognizerResult> {
   detectGlare: boolean;
@@ -1489,7 +1491,8 @@ export interface MexicoVoterIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface MexicoVoterIdFrontRecognizerResultCtor extends RecognizerResultCtor<MexicoVoterIdFrontRecognizerResult> {}
+export interface MexicoVoterIdFrontRecognizerResultCtor
+  extends RecognizerResultCtor<MexicoVoterIdFrontRecognizerResult> {}
 
 export interface MexicoVoterIdFrontRecognizer extends Recognizer<MexicoVoterIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1683,7 +1686,8 @@ export interface NewZealandDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface NewZealandDlFrontRecognizerResultCtor extends RecognizerResultCtor<NewZealandDlFrontRecognizerResult> {}
+export interface NewZealandDlFrontRecognizerResultCtor
+  extends RecognizerResultCtor<NewZealandDlFrontRecognizerResult> {}
 
 export interface NewZealandDlFrontRecognizer extends Recognizer<NewZealandDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1980,7 +1984,8 @@ export interface SingaporeChangiEmployeeIdRecognizerResult extends RecognizerRes
   fullDocumentImage: string;
   name: string;
 }
-export interface SingaporeChangiEmployeeIdRecognizerResultCtor extends RecognizerResultCtor<SingaporeChangiEmployeeIdRecognizerResult> {}
+export interface SingaporeChangiEmployeeIdRecognizerResultCtor
+  extends RecognizerResultCtor<SingaporeChangiEmployeeIdRecognizerResult> {}
 
 export interface SingaporeChangiEmployeeIdRecognizer extends Recognizer<SingaporeChangiEmployeeIdRecognizerResult> {
   detectGlare: boolean;
@@ -2014,7 +2019,8 @@ export interface SingaporeCombinedRecognizerResult extends RecognizerResult {
   scanningFirstSideDone: string;
   sex: string;
 }
-export interface SingaporeCombinedRecognizerResultCtor extends RecognizerResultCtor<SingaporeCombinedRecognizerResult> {}
+export interface SingaporeCombinedRecognizerResultCtor
+  extends RecognizerResultCtor<SingaporeCombinedRecognizerResult> {}
 
 export interface SingaporeCombinedRecognizer extends Recognizer<SingaporeCombinedRecognizerResult> {
   detectGlare: boolean;
@@ -2390,7 +2396,8 @@ export interface SwitzerlandDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   vehicleCategories: string;
 }
-export interface SwitzerlandDlFrontRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandDlFrontRecognizerResult> {}
+export interface SwitzerlandDlFrontRecognizerResultCtor
+  extends RecognizerResultCtor<SwitzerlandDlFrontRecognizerResult> {}
 
 export interface SwitzerlandDlFrontRecognizer extends Recognizer<SwitzerlandDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2435,7 +2442,8 @@ export interface SwitzerlandDlBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: String;
 }
-export interface SwitzerlandDlBackRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandDlBackRecognizerResult> {}
+export interface SwitzerlandDlBackRecognizerResultCtor
+  extends RecognizerResultCtor<SwitzerlandDlBackRecognizerResult> {}
 
 export interface SwitzerlandDlBackRecognizer extends Recognizer<SwitzerlandDlBackRecognizerResult> {
   detectGlare: boolean;
@@ -2457,7 +2465,8 @@ export interface SwitzerlandIdFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface SwitzerlandIdFrontRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandIdFrontRecognizerResult> {}
+export interface SwitzerlandIdFrontRecognizerResultCtor
+  extends RecognizerResultCtor<SwitzerlandIdFrontRecognizerResult> {}
 
 export interface SwitzerlandIdFrontRecognizer extends Recognizer<SwitzerlandIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2501,7 +2510,8 @@ export interface SwitzerlandPassportRecognizerResult extends RecognizerResult {
   sex: string;
   surname: string;
 }
-export interface SwitzerlandPassportRecognizerResultCtor extends RecognizerResultCtor<SwitzerlandPassportRecognizerResult> {}
+export interface SwitzerlandPassportRecognizerResultCtor
+  extends RecognizerResultCtor<SwitzerlandPassportRecognizerResult> {}
 
 export interface SwitzerlandPassportRecognizer extends Recognizer<SwitzerlandPassportRecognizerResult> {
   detectGlare: boolean;
@@ -2532,7 +2542,8 @@ export interface UnitedArabEmiratesDlFrontRecognizerResult extends RecognizerRes
   nationality: string;
   placeOfIssue: string;
 }
-export interface UnitedArabEmiratesDlFrontRecognizerResultCtor extends RecognizerResultCtor<UnitedArabEmiratesDlFrontRecognizerResult> {}
+export interface UnitedArabEmiratesDlFrontRecognizerResultCtor
+  extends RecognizerResultCtor<UnitedArabEmiratesDlFrontRecognizerResult> {}
 
 export interface UnitedArabEmiratesDlFrontRecognizer extends Recognizer<UnitedArabEmiratesDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2555,7 +2566,8 @@ export interface UnitedArabEmiratesIdBackRecognizerResult extends RecognizerResu
   fullDocumentImage: string;
   mrzResult: MrzResult;
 }
-export interface UnitedArabEmiratesIdBackRecognizerResultCtor extends RecognizerResultCtor<UnitedArabEmiratesIdBackRecognizerResult> {}
+export interface UnitedArabEmiratesIdBackRecognizerResultCtor
+  extends RecognizerResultCtor<UnitedArabEmiratesIdBackRecognizerResult> {}
 
 export interface UnitedArabEmiratesIdBackRecognizer extends Recognizer<UnitedArabEmiratesIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -2572,7 +2584,8 @@ export interface UnitedArabEmiratesIdFrontRecognizerResult extends RecognizerRes
   name: string;
   nationality: string;
 }
-export interface UnitedArabEmiratesIdFrontRecognizerResultCtor extends RecognizerResultCtor<UnitedArabEmiratesIdFrontRecognizerResult> {}
+export interface UnitedArabEmiratesIdFrontRecognizerResultCtor
+  extends RecognizerResultCtor<UnitedArabEmiratesIdFrontRecognizerResult> {}
 
 export interface UnitedArabEmiratesIdFrontRecognizer extends Recognizer<UnitedArabEmiratesIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2720,7 +2733,7 @@ export interface UsdlCombinedRecognizerCtor extends RecognizerCtor<UsdlCombinedR
   repo: 'https://github.com/BlinkID/blinkid-phonegap',
   install:
     'ionic cordova plugin add blinkid-cordova --variable CAMERA_USAGE_DESCRIPTION="Enable your camera so that you can scan your ID to validate your account"',
-  platforms: ['iOS', 'Android']
+  platforms: ['iOS', 'Android'],
 })
 @Injectable()
 export class BlinkId extends IonicNativePlugin {
@@ -2731,13 +2744,15 @@ export class BlinkId extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   scanWithCamera(
     overlaySettings: OverlaySettings,
     recognizerCollection: RecognizerCollection,
-    licenses: Licenses,
-  ): Promise<boolean> { return; }
+    licenses: Licenses
+  ): Promise<boolean> {
+    return;
+  }
 
   @CordovaProperty() Date: DateCtor;
   @CordovaProperty() Point: PointCtor;

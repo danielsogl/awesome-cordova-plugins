@@ -103,7 +103,7 @@ export interface HealthKitOptions {
   plugin: 'com.telerik.plugins.healthkit',
   pluginRef: 'window.plugins.healthkit',
   repo: 'https://github.com/Telerik-Verified-Plugins/HealthKit',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class HealthKit extends IonicNativePlugin {

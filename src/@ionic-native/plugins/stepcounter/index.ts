@@ -29,11 +29,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-stepcounter',
   pluginRef: 'stepcounter',
   repo: 'https://github.com/ihadeed/cordova-plugin-stepcounter',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class Stepcounter extends IonicNativePlugin {
-
   /**
    * Start the step counter
    *

@@ -69,7 +69,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'com.paypal.cordova.mobilesdk',
   pluginRef: 'PayPalMobile',
   repo: 'https://github.com/paypal/PayPal-Cordova-Plugin',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class PayPal extends IonicNativePlugin {
@@ -106,10 +106,7 @@ export class PayPal extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  prepareToRender(
-    environment: string,
-    configuration: PayPalConfiguration
-  ): Promise<any> {
+  prepareToRender(environment: string, configuration: PayPalConfiguration): Promise<any> {
     return;
   }
 
@@ -253,13 +250,7 @@ export class PayPalItem {
    * @param {String} currency: ISO standard currency code.
    * @param {String} sku: The stock keeping unit for this item. 50 characters max (optional)
    */
-  constructor(
-    name: string,
-    quantity: number,
-    price: string,
-    currency: string,
-    sku?: string
-  ) {
+  constructor(name: string, quantity: number, price: string, currency: string, sku?: string) {
     this.name = name;
     this.quantity = quantity;
     this.price = price;
@@ -446,7 +437,7 @@ export class PayPalConfiguration implements PayPalConfigurationOptions {
       presentingInPopover: false,
       forceDefaultsInSandbox: false,
       sandboxUserPassword: null,
-      sandboxUserPin: null
+      sandboxUserPin: null,
     };
 
     if (options && typeof options === 'object') {

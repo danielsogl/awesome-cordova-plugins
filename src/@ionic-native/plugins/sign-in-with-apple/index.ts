@@ -157,11 +157,10 @@ export interface AppleSignInErrorResponse extends NSError {
   plugin: 'cordova-plugin-sign-in-with-apple',
   pluginRef: 'cordova.plugins.SignInWithApple',
   repo: 'https://github.com/twogate/cordova-plugin-sign-in-with-apple',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class SignInWithApple extends IonicNativePlugin {
-
   /**
    * Starts the authorization flows named during controller initialization
    * @see https://developer.apple.com/documentation/authenticationservices/asauthorizationcontroller/3153047-performrequests
@@ -173,5 +172,4 @@ export class SignInWithApple extends IonicNativePlugin {
   signin(options: ASAuthorizationAppleIDRequest = {}): Promise<AppleSignInResponse> {
     return;
   }
-
 }

@@ -25,7 +25,7 @@ export enum AndroidSystemUiFlags {
   /** View would like to remain interactive when hiding the status bar with SYSTEM_UI_FLAG_FULLSCREEN and/or hiding the navigation bar with SYSTEM_UI_FLAG_HIDE_NAVIGATION. SYSTEM_UI_FLAG_IMMERSIVE_STICKY */
   ImmersiveSticky = 4096,
   /** Requests the status bar to draw in a mode that is compatible with light status bar backgrounds. SYSTEM_UI_FLAG_LIGHT_STATUS_BAR */
-  LightStatusBar = 8192
+  LightStatusBar = 8192,
 }
 
 /**
@@ -53,7 +53,7 @@ export enum AndroidSystemUiFlags {
   plugin: 'cordova-plugin-fullscreen',
   pluginRef: 'AndroidFullScreen',
   repo: 'https://github.com/mesmotronic/cordova-plugin-fullscreen',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class AndroidFullScreen extends IonicNativePlugin {

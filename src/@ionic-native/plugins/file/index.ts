@@ -70,11 +70,7 @@ export interface LocalFileSystem {
    * @param errorCallback A callback that is called when errors happen, or when the request to obtain the Entry is
    *   denied.
    */
-  resolveLocalFileSystemURL(
-    url: string,
-    successCallback: FileEntryCallback,
-    errorCallback?: ErrorCallback
-  ): void;
+  resolveLocalFileSystemURL(url: string, successCallback: FileEntryCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * see requestFileSystem.
@@ -152,10 +148,7 @@ export interface Entry {
    * @param successCallback A callback that is called with the time of the last modification.
    * @param errorCallback ErrorCallback A callback that is called when errors happen.
    */
-  getMetadata(
-    successCallback: MetadataCallback,
-    errorCallback?: ErrorCallback
-  ): void;
+  getMetadata(successCallback: MetadataCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * Set the metadata of the entry.
@@ -163,11 +156,7 @@ export interface Entry {
    * @param errorCallback {Function} is called with a FileError
    * @param metadataObject {Metadata} keys and values to set
    */
-  setMetadata(
-    successCallback: MetadataCallback,
-    errorCallback: ErrorCallback,
-    metadataObject: Metadata
-  ): void;
+  setMetadata(successCallback: MetadataCallback, errorCallback: ErrorCallback, metadataObject: Metadata): void;
 
   /**
    * The name of the entry, excluding the path leading to it.
@@ -191,10 +180,7 @@ export interface Entry {
    * @param successCallback A callback that is called with the time of the last modification.
    * @param errorCallback ErrorCallback A callback that is called when errors happen.
    */
-  getMetadata(
-    successCallback: MetadataCallback,
-    errorCallback?: ErrorCallback
-  ): void;
+  getMetadata(successCallback: MetadataCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * Set the metadata of the entry.
@@ -202,11 +188,7 @@ export interface Entry {
    * @param errorCallback {Function} is called with a FileError
    * @param metadataObject {Metadata} keys and values to set
    */
-  setMetadata(
-    successCallback: MetadataCallback,
-    errorCallback: ErrorCallback,
-    metadataObject: Metadata
-  ): void;
+  setMetadata(successCallback: MetadataCallback, errorCallback: ErrorCallback, metadataObject: Metadata): void;
 
   /**
    * Move an entry to a different location on the file system. It is an error to try to:
@@ -278,10 +260,7 @@ export interface Entry {
    * @param successCallback A callback that is called to return the parent Entry.
    * @param errorCallback A callback that is called when errors happen.
    */
-  getParent(
-    successCallback: DirectoryEntryCallback,
-    errorCallback?: ErrorCallback
-  ): void;
+  getParent(successCallback: DirectoryEntryCallback, errorCallback?: ErrorCallback): void;
 }
 
 /**
@@ -309,12 +288,7 @@ export interface DirectoryEntry extends Entry {
    * @param successCallback A callback that is called to return the File selected or created.
    * @param errorCallback A callback that is called when errors happen.
    */
-  getFile(
-    path: string,
-    options?: Flags,
-    successCallback?: FileEntryCallback,
-    errorCallback?: ErrorCallback
-  ): void;
+  getFile(path: string, options?: Flags, successCallback?: FileEntryCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * Creates or looks up a directory.
@@ -347,10 +321,7 @@ export interface DirectoryEntry extends Entry {
    * @param successCallback A callback that is called on success.
    * @param errorCallback A callback that is called when errors happen.
    */
-  removeRecursively(
-    successCallback: VoidCallback,
-    errorCallback?: ErrorCallback
-  ): void;
+  removeRecursively(successCallback: VoidCallback, errorCallback?: ErrorCallback): void;
 }
 
 /**
@@ -374,10 +345,7 @@ export interface DirectoryReader {
    *   of readEntries, successCallback must be called with a zero-length array as an argument.
    * @param errorCallback A callback indicating that there was an error reading from the Directory.
    */
-  readEntries(
-    successCallback: EntriesCallback,
-    errorCallback?: ErrorCallback
-  ): void;
+  readEntries(successCallback: EntriesCallback, errorCallback?: ErrorCallback): void;
 }
 
 /**
@@ -389,10 +357,7 @@ export interface FileEntry extends Entry {
    * @param successCallback A callback that is called with the new FileWriter.
    * @param errorCallback A callback that is called when errors happen.
    */
-  createWriter(
-    successCallback: FileWriterCallback,
-    errorCallback?: ErrorCallback
-  ): void;
+  createWriter(successCallback: FileWriterCallback, errorCallback?: ErrorCallback): void;
 
   /**
    * Returns a File that represents the current state of the file that this FileEntry represents.
@@ -671,6 +636,7 @@ declare const window: Window;
 
 /**
  * @name File
+ * @premier filesystem
  * @description
  * This plugin implements a File API allowing read/write access to files residing on the device.
  *
@@ -706,7 +672,7 @@ declare const window: Window;
   plugin: 'cordova-plugin-file',
   pluginRef: 'cordova.file',
   repo: 'https://github.com/apache/cordova-plugin-file',
-  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows']
+  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows'],
 })
 @Injectable()
 export class File extends IonicNativePlugin {
@@ -785,7 +751,7 @@ export class File extends IonicNativePlugin {
     11: 'TYPE_MISMATCH_ERR',
     12: 'PATH_EXISTS_ERR',
     13: 'WRONG_ENTRY_TYPE',
-    14: 'DIR_READ_ERR'
+    14: 'DIR_READ_ERR',
   };
 
   /**
@@ -832,11 +798,7 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<DirectoryEntry>} Returns a Promise that resolves with a DirectoryEntry or rejects with an error.
    */
   @CordovaCheck()
-  createDir(
-    path: string,
-    dirName: string,
-    replace: boolean
-  ): Promise<DirectoryEntry> {
+  createDir(path: string, dirName: string, replace: boolean): Promise<DirectoryEntry> {
     if (/^\//.test(dirName)) {
       const err = new FileError(5);
       err.message = 'directory cannot start with /';
@@ -844,7 +806,7 @@ export class File extends IonicNativePlugin {
     }
 
     const options: Flags = {
-      create: true
+      create: true,
     };
 
     if (!replace) {
@@ -891,12 +853,7 @@ export class File extends IonicNativePlugin {
    *   rejects with an error.
    */
   @CordovaCheck()
-  moveDir(
-    path: string,
-    dirName: string,
-    newPath: string,
-    newDirName: string
-  ): Promise<DirectoryEntry | Entry> {
+  moveDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<DirectoryEntry | Entry> {
     newDirName = newDirName || dirName;
 
     if (/^\//.test(newDirName)) {
@@ -926,12 +883,7 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<Entry>} Returns a Promise that resolves to the new Entry object or rejects with an error.
    */
   @CordovaCheck()
-  copyDir(
-    path: string,
-    dirName: string,
-    newPath: string,
-    newDirName: string
-  ): Promise<Entry> {
+  copyDir(path: string, dirName: string, newPath: string, newDirName: string): Promise<Entry> {
     if (/^\//.test(newDirName)) {
       const err = new FileError(5);
       err.message = 'directory cannot start with /';
@@ -968,7 +920,7 @@ export class File extends IonicNativePlugin {
       .then(fse => {
         return this.getDirectory(fse, dirName, {
           create: false,
-          exclusive: false
+          exclusive: false,
         });
       })
       .then(de => {
@@ -1038,11 +990,7 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<FileEntry>} Returns a Promise that resolves to a FileEntry or rejects with an error.
    */
   @CordovaCheck()
-  createFile(
-    path: string,
-    fileName: string,
-    replace: boolean
-  ): Promise<FileEntry> {
+  createFile(path: string, fileName: string, replace: boolean): Promise<FileEntry> {
     if (/^\//.test(fileName)) {
       const err = new FileError(5);
       err.message = 'file-name cannot start with /';
@@ -1050,7 +998,7 @@ export class File extends IonicNativePlugin {
     }
 
     const options: Flags = {
-      create: true
+      create: true,
     };
 
     if (!replace) {
@@ -1109,7 +1057,7 @@ export class File extends IonicNativePlugin {
 
     const getFileOpts: Flags = {
       create: !options.append,
-      exclusive: !options.replace
+      exclusive: !options.replace,
     };
 
     return this.resolveDirectoryUrl(path)
@@ -1130,11 +1078,7 @@ export class File extends IonicNativePlugin {
    * @param {IWriteOptions} options replace file if set to true. See WriteOptions for more information.
    * @returns {Promise<FileEntry>}  Returns a Promise that resolves to updated file entry or rejects with an error.
    */
-  private writeFileEntry(
-    fe: FileEntry,
-    text: string | Blob | ArrayBuffer,
-    options: IWriteOptions
-  ) {
+  private writeFileEntry(fe: FileEntry, text: string | Blob | ArrayBuffer, options: IWriteOptions) {
     return this.createWriter(fe)
       .then(writer => {
         if (options.append) {
@@ -1158,11 +1102,7 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<void>} Returns a Promise that resolves or rejects with an error.
    */
   @CordovaCheck()
-  writeExistingFile(
-    path: string,
-    fileName: string,
-    text: string | Blob
-  ): Promise<void> {
+  writeExistingFile(path: string, fileName: string, text: string | Blob): Promise<void> {
     return this.writeFile(path, fileName, text, { replace: true });
   }
 
@@ -1227,12 +1167,7 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<Entry>} Returns a Promise that resolves to the new Entry or rejects with an error.
    */
   @CordovaCheck()
-  moveFile(
-    path: string,
-    fileName: string,
-    newPath: string,
-    newFileName: string
-  ): Promise<Entry> {
+  moveFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry> {
     newFileName = newFileName || fileName;
 
     if (/^\//.test(newFileName)) {
@@ -1262,12 +1197,7 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<Entry>} Returns a Promise that resolves to an Entry or rejects with an error.
    */
   @CordovaCheck()
-  copyFile(
-    path: string,
-    fileName: string,
-    newPath: string,
-    newFileName: string
-  ): Promise<Entry> {
+  copyFile(path: string, fileName: string, newPath: string, newFileName: string): Promise<Entry> {
     newFileName = newFileName || fileName;
 
     if (/^\//.test(newFileName)) {
@@ -1348,11 +1278,7 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<DirectoryEntry>}
    */
   @CordovaCheck()
-  getDirectory(
-    directoryEntry: DirectoryEntry,
-    directoryName: string,
-    flags: Flags
-  ): Promise<DirectoryEntry> {
+  getDirectory(directoryEntry: DirectoryEntry, directoryName: string, flags: Flags): Promise<DirectoryEntry> {
     return new Promise<DirectoryEntry>((resolve, reject) => {
       try {
         directoryEntry.getDirectory(
@@ -1381,11 +1307,7 @@ export class File extends IonicNativePlugin {
    * @returns {Promise<FileEntry>}
    */
   @CordovaCheck()
-  getFile(
-    directoryEntry: DirectoryEntry,
-    fileName: string,
-    flags: Flags
-  ): Promise<FileEntry> {
+  getFile(directoryEntry: DirectoryEntry, fileName: string, flags: Flags): Promise<FileEntry> {
     return new Promise<FileEntry>((resolve, reject) => {
       try {
         directoryEntry.getFile(fileName, flags, resolve, err => {
@@ -1459,11 +1381,7 @@ export class File extends IonicNativePlugin {
   /**
    * @hidden
    */
-  private move(
-    srce: Entry,
-    destdir: DirectoryEntry,
-    newName: string
-  ): Promise<Entry> {
+  private move(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
       srce.moveTo(
         destdir,
@@ -1482,11 +1400,7 @@ export class File extends IonicNativePlugin {
   /**
    * @hidden
    */
-  private copy(
-    srce: Entry,
-    destdir: DirectoryEntry,
-    newName: string
-  ): Promise<Entry> {
+  private copy(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
     return new Promise<Entry>((resolve, reject) => {
       srce.copyTo(
         destdir,
@@ -1556,10 +1470,7 @@ export class File extends IonicNativePlugin {
   /**
    * @hidden
    */
-  private write(
-    writer: FileWriter,
-    gu: string | Blob | ArrayBuffer
-  ): Promise<any> {
+  private write(writer: FileWriter, gu: string | Blob | ArrayBuffer): Promise<any> {
     if (gu instanceof Blob) {
       return this.writeFileInChunks(writer, gu);
     }

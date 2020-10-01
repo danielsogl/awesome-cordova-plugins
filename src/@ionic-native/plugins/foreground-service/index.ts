@@ -44,11 +44,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-foreground-service',
   pluginRef: 'cordova.plugins.foregroundService',
   repo: 'https://github.com/DavidBriglio/cordova-plugin-foreground-service',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class ForegroundService extends IonicNativePlugin {
-
   /**
    * Enables the foreground service
    *
@@ -76,7 +75,7 @@ export class ForegroundService extends IonicNativePlugin {
    * @see https://material.io/design/platform-guidance/android-notifications.html
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   start(title: string, text: string, icon?: string, importance: 1 | 2 | 3 = 1, id = 0): void {
     return;
@@ -86,7 +85,7 @@ export class ForegroundService extends IonicNativePlugin {
    * Disables the foreground service
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   stop(): void {
     return;

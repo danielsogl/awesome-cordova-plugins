@@ -31,7 +31,6 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 })
 @Injectable()
 export class BioCatch extends IonicNativePlugin {
-
   /**
    * Start a session
    * @param customerSessionID {String} Customer session id

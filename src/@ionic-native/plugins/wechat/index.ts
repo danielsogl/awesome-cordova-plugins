@@ -29,7 +29,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   repo: 'https://github.com/xu-li/cordova-plugin-wechat.git',
   install: 'cordova plugin add cordova-plugin-wechat --variable wechatappid=YOUR_WECHAT_APPID',
   installVariables: ['wechatappid'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Wechat extends IonicNativePlugin {
@@ -47,6 +47,12 @@ export class Wechat extends IonicNativePlugin {
     MUSIC: 5;
     VIDEO: 6;
     WEBPAGE: 7;
+  };
+
+  Mini: {
+    RELEASE: 0; // 正式版
+    TEST: 1; // 测试版
+    PREVIEW: 2; // 体验版
   };
 
   @Cordova()
@@ -165,6 +171,24 @@ export class Wechat extends IonicNativePlugin {
    */
   @Cordova()
   chooseInvoiceFromWX(params: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * openMiniProgram exq:app opens wechat mini program
+   *
+   * @example
+   * <code>
+   * params: userName, path, miniprogramType  all required
+   * Wechat.openMiniProgram(params, function (data) {
+   *     alert(data.extMsg);
+   * }, function (reason) {
+   *     alert("Failed: " + reason);
+   * });
+   * </code>
+   */
+  @Cordova()
+  openMiniProgram(params: any): Promise<any> {
     return;
   }
 }

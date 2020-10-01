@@ -4,9 +4,7 @@ import { Observable } from 'rxjs';
 
 declare const window: any;
 
-export type EventResponse = RegistrationEventResponse &
-  NotificationEventResponse &
-  Error;
+export type EventResponse = RegistrationEventResponse & NotificationEventResponse & Error;
 
 export interface RegistrationEventResponse {
   /**
@@ -326,7 +324,7 @@ export type PushEvent = string;
   pluginRef: 'PushNotification',
   repo: 'https://github.com/phonegap/phonegap-plugin-push',
   install: 'ionic cordova plugin add phonegap-plugin-push',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
 export class Push extends IonicNativePlugin {
@@ -353,7 +351,7 @@ export class Push extends IonicNativePlugin {
    * @param channel {Channel}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   createChannel(channel?: Channel): Promise<any> {
     return;
@@ -364,7 +362,7 @@ export class Push extends IonicNativePlugin {
    * @param id {string}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   deleteChannel(id?: string): Promise<any> {
     return;
@@ -386,15 +384,13 @@ export class Push extends IonicNativePlugin {
 @Plugin({
   pluginName: 'Push',
   plugin: 'phonegap-plugin-push',
-  pluginRef: 'PushNotification'
+  pluginRef: 'PushNotification',
 })
 export class PushObject {
   private _objectInstance: any;
 
   constructor(options: PushOptions) {
-    if (
-      checkAvailability('PushNotification', 'init', 'PushNotification') === true
-    ) {
+    if (checkAvailability('PushNotification', 'init', 'PushNotification') === true) {
       if (typeof window !== 'undefined') {
         this._objectInstance = window.PushNotification.init(options);
       }
@@ -409,7 +405,7 @@ export class PushObject {
   @CordovaInstance({
     observable: true,
     clearFunction: 'off',
-    clearWithArgs: true
+    clearWithArgs: true,
   })
   on(event: PushEvent): Observable<EventResponse> {
     return;
@@ -434,7 +430,7 @@ export class PushObject {
    * @param count
    */
   @CordovaInstance({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   setApplicationIconBadgeNumber(count?: number): Promise<any> {
     return;
@@ -455,7 +451,7 @@ export class PushObject {
    * @param [id]
    */
   @CordovaInstance({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   finish(id?: string): Promise<any> {
     return;

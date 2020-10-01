@@ -33,10 +33,9 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-cloud-settings',
   pluginRef: 'cordova.plugin.cloudsettings',
   repo: 'https://github.com/dpa99c/cordova-plugin-cloud-settings',
-  install:
-    'ionic cordova plugin add cordova-plugin-cloud-settings --variable ANDROID_BACKUP_SERVICE_KEY=myapikey',
+  install: 'ionic cordova plugin add cordova-plugin-cloud-settings --variable ANDROID_BACKUP_SERVICE_KEY=myapikey',
   installVariables: ['ANDROID_BACKUP_SERVICE_KEY'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class CloudSettings extends IonicNativePlugin {
@@ -58,7 +57,7 @@ export class CloudSettings extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   save(settings: any, overwrite?: boolean): Promise<any> {
     return;

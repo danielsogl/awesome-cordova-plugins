@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Cordova,
-  CordovaProperty,
-  IonicNativePlugin,
-  Plugin
-} from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface PinterestUser {
   /**
@@ -177,10 +172,9 @@ export interface PinterestPin {
   plugin: 'cordova-plugin-pinterest',
   pluginRef: 'cordova.plugins.Pinterest',
   repo: 'https://github.com/zyramedia/cordova-plugin-pinterest',
-  install:
-    'ionic cordova plugin add cordova-plugin-pinterest --variable APP_ID=YOUR_APP_ID',
+  install: 'ionic cordova plugin add cordova-plugin-pinterest --variable APP_ID=YOUR_APP_ID',
   installVariables: ['APP_ID'],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Pinterest extends IonicNativePlugin {
@@ -211,7 +205,7 @@ export class Pinterest extends IonicNativePlugin {
    * @returns {Promise<PinterestUser>} Returns a promise that resolves with the user's object
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   getMe(fields?: string): Promise<PinterestUser> {
     return;
@@ -224,7 +218,7 @@ export class Pinterest extends IonicNativePlugin {
    * @returns {Promise<PinterestPin[]>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   getMyPins(fields?: string, limit?: number): Promise<PinterestPin[]> {
     return;
@@ -237,7 +231,7 @@ export class Pinterest extends IonicNativePlugin {
    * @returns {Promise<PinterestBoard[]>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   getMyBoards(fields?: string, limit?: number): Promise<PinterestBoard[]> {
     return;
@@ -250,7 +244,7 @@ export class Pinterest extends IonicNativePlugin {
    * @returns {Promise<PinterestPin[]>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   getMyLikes(fields?: string, limit?: number): Promise<PinterestPin[]> {
     return;
@@ -263,12 +257,9 @@ export class Pinterest extends IonicNativePlugin {
    * @returns {Promise<PinterestUser[]>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
-  getMyFollowers(
-    fields?: string,
-    limit?: number
-  ): Promise<PinterestUser[]> {
+  getMyFollowers(fields?: string, limit?: number): Promise<PinterestUser[]> {
     return;
   }
 
@@ -279,12 +270,9 @@ export class Pinterest extends IonicNativePlugin {
    * @returns {Promise<PinterestBoard[]>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
-  getMyFollowedBoards(
-    fields?: string,
-    limit?: number
-  ): Promise<PinterestBoard[]> {
+  getMyFollowedBoards(fields?: string, limit?: number): Promise<PinterestBoard[]> {
     return;
   }
 
@@ -295,7 +283,7 @@ export class Pinterest extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   getMyFollowedInterests(fields?: string, limit?: number): Promise<any> {
     return;
@@ -309,7 +297,7 @@ export class Pinterest extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   getUser(username: string, fields?: string): Promise<PinterestUser> {
     return;
@@ -323,7 +311,7 @@ export class Pinterest extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   getBoard(boardId: string, fields?: string): Promise<PinterestBoard> {
     return;
@@ -338,13 +326,9 @@ export class Pinterest extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
-  getBoardPins(
-    boardId: string,
-    fields?: string,
-    limit?: number
-  ): Promise<PinterestPin[]> {
+  getBoardPins(boardId: string, fields?: string, limit?: number): Promise<PinterestPin[]> {
     return;
   }
 
@@ -366,7 +350,7 @@ export class Pinterest extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   createBoard(name: string, desc?: string): Promise<PinterestBoard> {
     return;
@@ -380,7 +364,7 @@ export class Pinterest extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   getPin(pinId: string, fields?: string): Promise<PinterestPin> {
     return;
@@ -406,14 +390,9 @@ export class Pinterest extends IonicNativePlugin {
    */
   @Cordova({
     successIndex: 4,
-    errorIndex: 5
+    errorIndex: 5,
   })
-  createPin(
-    note: string,
-    boardId: string,
-    imageUrl: string,
-    link?: string
-  ): Promise<PinterestPin> {
+  createPin(note: string, boardId: string, imageUrl: string, link?: string): Promise<PinterestPin> {
     return;
   }
 }

@@ -6,7 +6,7 @@ import {
   IonicNativePlugin,
   Plugin,
   checkAvailability,
-  getPromise
+  getPromise,
 } from '@ionic-native/core';
 
 declare const window: any, navigator: any;
@@ -111,9 +111,7 @@ export class Contact implements IContactProperties {
   [key: string]: any;
 
   constructor() {
-    if (
-      checkAvailability('navigator.contacts', 'create', 'Contacts') === true
-    ) {
+    if (checkAvailability('navigator.contacts', 'create', 'Contacts') === true) {
       this._objectInstance = navigator.contacts.create();
     }
   }
@@ -210,11 +208,7 @@ export interface IContactField {
  * @hidden
  */
 export class ContactField implements IContactField {
-  constructor(
-    public type?: string,
-    public value?: string,
-    public pref?: boolean
-  ) {}
+  constructor(public type?: string, public value?: string, public pref?: boolean) {}
 }
 
 export interface IContactAddress {
@@ -306,6 +300,7 @@ export class ContactFindOptions implements IContactFindOptions {
 
 /**
  * @name Contacts
+ * @premier contacts
  * @description
  * Access and manage Contacts on the device.
  *
@@ -352,8 +347,8 @@ export class ContactFindOptions implements IContactFindOptions {
     'Ubuntu',
     'Windows',
     'Windows 8',
-    'Windows Phone'
-  ]
+    'Windows Phone',
+  ],
 })
 export class Contacts extends IonicNativePlugin {
   /**
@@ -371,10 +366,7 @@ export class Contacts extends IonicNativePlugin {
    * @returns {Promise<Contact[]>} Returns a Promise that resolves with the search results (an array of Contact objects)
    */
   @CordovaCheck()
-  find(
-    fields: ContactFieldType[],
-    options?: IContactFindOptions
-  ): Promise<Contact[]> {
+  find(fields: ContactFieldType[], options?: IContactFindOptions): Promise<Contact[]> {
     return getPromise((resolve: Function, reject: Function) => {
       navigator.contacts.find(
         fields,
@@ -394,10 +386,7 @@ export class Contacts extends IonicNativePlugin {
   @CordovaCheck()
   pickContact(): Promise<Contact> {
     return getPromise((resolve: Function, reject: Function) => {
-      navigator.contacts.pickContact(
-        (contact: any) => resolve(processContact(contact)),
-        reject
-      );
+      navigator.contacts.pickContact((contact: any) => resolve(processContact(contact)), reject);
     });
   }
 }

@@ -82,11 +82,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova.plugin.zoom', // npm package name, example: cordova-plugin-camera
   pluginRef: 'cordova.plugins.Zoom', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/zoom/zoom-sdk-ionic', // the github repository URL for the plugin
-  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
 export class Zoom extends IonicNativePlugin {
-
   /**
    * Initialize Zoom SDK.
    * @param appKey    Zoom SDK app key.
@@ -94,7 +93,9 @@ export class Zoom extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  initialize(appKey: string, appSecret: string): Promise<any> { return; }
+  initialize(appKey: string, appSecret: string): Promise<any> {
+    return;
+  }
 
   /**
    * Log user in with Zoom username and password.
@@ -103,21 +104,27 @@ export class Zoom extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  login(username: string, password: string): Promise<any> { return; }
+  login(username: string, password: string): Promise<any> {
+    return;
+  }
 
   /**
    * Log user out.
    * @return {Promise<any>} true if logout success / false if failed.
    */
   @Cordova()
-  logout(): Promise<any> { return; }
+  logout(): Promise<any> {
+    return;
+  }
 
   /**
    * Check whether the user is logged in.
    * @return {Promise<boolean>} true if is logged in / false if not.
    */
   @Cordova()
-  isLoggedIn(): Promise<boolean> { return; }
+  isLoggedIn(): Promise<boolean> {
+    return;
+  }
 
   /**
    * Join a meeting for logged in user.
@@ -127,7 +134,9 @@ export class Zoom extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  joinMeeting(meetingNo: string, meetingPassword: string, displayName: string, options: any): Promise<any> { return; }
+  joinMeeting(meetingNo: string, meetingPassword: string, displayName: string, options: any): Promise<any> {
+    return;
+  }
 
   /**
    * Start a meeting for non-login user.
@@ -140,7 +149,16 @@ export class Zoom extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  startMeetingWithZAK(meetingNo: string, displayName: string, zoomToken: string, zoomAccessToken: string, userId: string, options: any): Promise<any> { return; }
+  startMeetingWithZAK(
+    meetingNo: string,
+    displayName: string,
+    zoomToken: string,
+    zoomAccessToken: string,
+    userId: string,
+    options: any
+  ): Promise<any> {
+    return;
+  }
 
   /**
    * Start a meeting for logged in user.
@@ -149,7 +167,9 @@ export class Zoom extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  startMeeting(meetingNo: string, options: any): Promise<any> { return; }
+  startMeeting(meetingNo: string, options: any): Promise<any> {
+    return;
+  }
 
   /**
    * Start an instant meeting for logged in user.
@@ -157,7 +177,9 @@ export class Zoom extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  startInstantMeeting(options: any): Promise<any> { return; }
+  startInstantMeeting(options: any): Promise<any> {
+    return;
+  }
 
   /**
    * Set language.
@@ -165,6 +187,7 @@ export class Zoom extends IonicNativePlugin {
    * @return {Promise<any>}
    */
   @Cordova()
-  setLocale(languageTag: string): Promise<any> { return; }
-
+  setLocale(languageTag: string): Promise<any> {
+    return;
+  }
 }

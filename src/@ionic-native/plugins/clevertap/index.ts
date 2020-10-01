@@ -21,7 +21,7 @@ declare var clevertap: any;
   plugin: 'clevertap-cordova',
   pluginRef: 'CleverTap',
   repo: 'https://github.com/CleverTap/clevertap-cordova',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class CleverTap extends IonicNativePlugin {
@@ -51,12 +51,32 @@ export class CleverTap extends IonicNativePlugin {
   }
 
   /**
+   * Personalization
+   * Disables the Personalization API
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  disablePersonalization(): Promise<any> {
+    return;
+  }
+
+  /**
    * Enables tracking opt out for the currently active user.
    * @param optOut {boolean}
    * @returns {Promise<any>}
    */
   @Cordova()
   setOptOut(optOut: boolean): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets CleverTap SDK to offline mode.
+   * @param offline {boolean}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setOffline(offline: boolean): Promise<any> {
     return;
   }
 
@@ -90,6 +110,48 @@ export class CleverTap extends IonicNativePlugin {
    */
   @Cordova()
   setPushToken(token: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets the device's Xiaomi push token
+   * @param token {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setPushXiaomiToken(token: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets the device's Baidu push token
+   * @param token {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setPushBaiduToken(token: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets the device's Huawei push token
+   * @param token {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setPushHuaweiToken(token: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Create Notification Channel for Android O+
+   * @param extras {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  createNotification(
+    extras: any
+  ): Promise<any> {
     return;
   }
 
@@ -188,10 +250,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  createNotificationChannelGroup(
-    groupID: string,
-    groupName: string
-  ): Promise<any> {
+  createNotificationChannelGroup(groupID: string, groupName: string): Promise<any> {
     return;
   }
 
@@ -246,10 +305,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  recordEventWithNameAndProps(
-    eventName: string,
-    eventProps: any
-  ): Promise<any> {
+  recordEventWithNameAndProps(eventName: string, eventProps: any): Promise<any> {
     return;
   }
 
@@ -260,10 +316,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  recordChargedEventWithDetailsAndItems(
-    details: any,
-    items: any
-  ): Promise<any> {
+  recordChargedEventWithDetailsAndItems(details: any, items: any): Promise<any> {
     return;
   }
 
@@ -569,11 +622,43 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  pushInstallReferrer(
-    source: string,
-    medium: string,
-    campaign: string
-  ): Promise<any> {
+  pushInstallReferrer(source: string, medium: string, campaign: string): Promise<any> {
+    return;
+  }
+
+  /****************************
+   * Notification Inbox methods
+   ****************************/
+  /**
+   * Call this method to initialize the App Inbox
+   */
+  @Cordova()
+  initializeInbox(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this method to get the count of unread Inbox messages
+   */
+  @Cordova()
+  getInboxMessageUnreadCount(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this method to get the count of total Inbox messages
+   */
+  @Cordova()
+  getInboxMessageCount(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this method to open the App Inbox
+   * @param styleConfig : any or empty object
+   */
+  @Cordova()
+  showInbox(styleConfig: any): Promise<any> {
     return;
   }
 
@@ -613,6 +698,543 @@ export class CleverTap extends IonicNativePlugin {
     return;
   }
 
+  /**
+   * Call this to Fetch all Inbox Messages
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getAllInboxMessages(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Fetch all Unread Inbox Messages
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getUnreadInboxMessages(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Fetch Inbox Message For Id
+   * @param messageId {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getInboxMessageForId(messageId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Delete Inbox Message For Id
+   * @param messageId {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  deleteInboxMessageForId(messageId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Mark Read Inbox Message For Id
+   * @param messageId {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  markReadInboxMessageForId(messageId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Mark Push Inbox Notification Viewed Event for Id
+   * @param messageId {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  pushInboxNotificationViewedEventForId(messageId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Mark Push Inbox Notification Clicked Event for Id
+   * @param messageId {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  pushInboxNotificationClickedEventForId(messageId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to SetUIEditor Connection
+   * @param enabled {boolean}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setUIEditorConnectionEnabled(enabled: boolean): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register Boolean Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerBooleanVariable(varName: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register Double Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerDoubleVariable(varName: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register Integer Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerIntegerVariable(varName: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register String Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerStringVariable(varName: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register List of Boolean Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerListOfBooleanVariable(varName: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register List of Double Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerListOfDoubleVariable(varName: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register List of Integer Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerListOfIntegerVariable(varName: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register List of String Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerListOfStringVariable(varName: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register Map of Boolean Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerMapOfBooleanVariable(varName: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register Map of Double Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerMapOfDoubleVariable(varName: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register Map of Integer Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerMapOfIntegerVariable(varName: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Register Map of String Variable
+   * @param varName {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  registerMapOfStringVariable(varName: string): Promise<any> {
+    return;
+  }
+
+
+  /**
+   * Call this to Get Boolean Variable
+   * @param varName {string}
+   * @param defaultValue {boolean}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getBooleanVariable(
+    varName: string,
+    defaultValue: boolean
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get Double Variable
+   * @param varName {string}
+   * @param defaultValue {number}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getDoubleVariable(
+    varName: string,
+    defaultValue: number
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get Integer Variable
+   * @param varName {string}
+   * @param defaultValue {number}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getIntegerVariable(
+    varName: string,
+    defaultValue: number
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get String Variable
+   * @param varName {string}
+   * @param defaultValue {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getStringVariable(
+    varName: string,
+    defaultValue: string
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get List of Boolean Variable
+   * @param varName {string}
+   * @param defaultValue {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getListOfBooleanVariable(
+    varName: string,
+    defaultValue: any
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get List of Double Variable
+   * @param varName {string}
+   * @param defaultValue {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getListOfDoubleVariable(
+    varName: string,
+    defaultValue: any
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get List of Integer Variable
+   * @param varName {string}
+   * @param defaultValue {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getListOfIntegerVariable(
+    varName: string,
+    defaultValue: any
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get List of String Variable
+   * @param varName {string}
+   * @param defaultValue {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getListOfStringVariable(
+    varName: string,
+    defaultValue: any
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to get Map of Boolean Variable
+   * @param varName {string}
+   * @param defaultValue {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getMapOfBooleanVariable(
+    varName: string,
+    defaultValue: any
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get Map of Double Variable
+   * @param varName {string}
+   * @param defaultValue {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getMapOfDoubleVariable(
+    varName: string,
+    defaultValue: any
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get Map of Integer Variable
+   * @param varName {string}
+   * @param defaultValue {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getMapOfIntegerVariable(
+    varName: string,
+    defaultValue: any
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get Map of String Variable
+   * @param varName {string}
+   * @param defaultValue {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getMapOfStringVariable(
+    varName: string,
+    defaultValue: any
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get All Display Units
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getAllDisplayUnits(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get Display Unit For Id
+   * @param id {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getDisplayUnitForId(id: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Push DisplayUnit Viewed Event for ID
+   * @param id {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  pushDisplayUnitViewedEventForID(id: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Push DisplayUnit Clicked Event for ID
+   * @param id {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  pushDisplayUnitClickedEventForID(id: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get Feature Flag for key
+   * @param key {string}
+   * @param defaultValue {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getFeatureFlag(
+    key: string,
+    defaultValue: string
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Set Defaults for Product Config
+   * @param defaults {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setDefaultsMap(
+    defaults: any
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this for Product Config Fetch
+   * @param defaults {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  fetch(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this for Product Config Fetch with Min Interval
+   * @param timeInterval {number}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  fetchWithMinimumFetchIntervalInSeconds(timeInterval: number): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this for Product Config Activate
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  activate(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this for Product Config Fetch and Activate
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  fetchAndActivate(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to set Product Config Fetch with Min Interval
+   * @param timeInterval {number}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setMinimumFetchIntervalInSeconds(timeInterval: number): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get Last Fetch Time Interval
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getLastFetchTimeStampInMillis(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get String
+   * @param key {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getString(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get Boolean
+   * @param key {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getBoolean(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get Long
+   * @param key {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getLong(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Get Double
+   * @param key {string}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getDouble(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Reset Product Config
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  reset(): Promise<any> {
+    return;
+  }
 
   /*******************
    * Developer Options

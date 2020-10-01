@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
-
 /**
  * @name Touch ID
  * @description
@@ -48,11 +47,10 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-touch-id',
   pluginRef: 'plugins.touchid',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-touch-id',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class TouchID extends IonicNativePlugin {
-
   /**
    * Checks Whether TouchID is available or not.
    *
@@ -93,7 +91,10 @@ export class TouchID extends IonicNativePlugin {
    * @returns {Promise<any>} Returns a Promise the resolves if the fingerprint scan was successful, rejects with an error code (see above).
    */
   @Cordova()
-  verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(message: string, enterPasswordLabel: string): Promise<any> {
+  verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(
+    message: string,
+    enterPasswordLabel: string
+  ): Promise<any> {
     return;
   }
 
@@ -106,5 +107,4 @@ export class TouchID extends IonicNativePlugin {
   didFingerprintDatabaseChange(): Promise<any> {
     return;
   }
-
 }

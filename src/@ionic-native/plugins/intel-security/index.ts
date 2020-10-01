@@ -72,7 +72,7 @@ export interface IntelSecurityDataOptions {
   plugin: 'com-intel-security-cordova-plugin',
   pluginRef: 'intel.security',
   repo: 'https://github.com/AppSecurityApi/com-intel-security-cordova-plugin',
-  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8']
+  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
 export class IntelSecurity extends IonicNativePlugin {
@@ -95,7 +95,7 @@ export class IntelSecurity extends IonicNativePlugin {
 @Plugin({
   pluginName: 'IntelSecurity',
   plugin: 'com-intel-security-cordova-plugin',
-  pluginRef: 'intel.security.secureData'
+  pluginRef: 'intel.security.secureData',
 })
 export class IntelSecurityData {
   /**
@@ -218,7 +218,7 @@ export class IntelSecurityData {
 @Plugin({
   pluginName: 'IntelSecurity',
   plugin: 'com-intel-security-cordova-plugin',
-  pluginRef: 'intel.security.secureStorage'
+  pluginRef: 'intel.security.secureStorage',
 })
 export class IntelSecurityStorage {
   /**
@@ -242,11 +242,7 @@ export class IntelSecurityStorage {
    * @returns {Promise<Number>} Returns a Promise that resolves with the instance ID of the created secure data instance, or rejects with an error.
    */
   @Cordova({ otherPromise: true })
-  read(options: {
-    id: string;
-    storageType?: Number;
-    extraKey?: Number;
-  }): Promise<Number> {
+  read(options: { id: string; storageType?: Number; extraKey?: Number }): Promise<Number> {
     return;
   }
 
@@ -259,11 +255,7 @@ export class IntelSecurityStorage {
    * @returns {Promise<any>} Returns a Promise that resolves with no parameters, or rejects with an error.
    */
   @Cordova({ otherPromise: true })
-  write(options: {
-    id: String;
-    instanceID: Number;
-    storageType?: Number;
-  }): Promise<any> {
+  write(options: { id: String; instanceID: Number; storageType?: Number }): Promise<any> {
     return;
   }
 }

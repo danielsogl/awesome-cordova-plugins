@@ -150,7 +150,7 @@ export interface WatchExistData {
   plugin: 'cordova-apple-wallet',
   pluginRef: 'AppleWallet',
   repo: 'https://github.com/tomavic/cordova-apple-wallet',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class AppleWallet extends IonicNativePlugin {

@@ -4,19 +4,20 @@ import { Observable } from 'rxjs';
 
 export enum KeyboardStyle {
   Light = 'light',
-  Dark = 'dark'
+  Dark = 'dark',
 }
 
 export enum KeyboardResizeMode {
   Native = 'native',
   Ionic = 'ionic',
   Body = 'body',
-  None = 'none'
+  None = 'none',
 }
-
 
 /**
  * @name Keyboard
+ * @premier keyboard
+ * @capacitorincompatible true
  * @description
  * Keyboard plugin for Cordova.
  *
@@ -41,7 +42,7 @@ export enum KeyboardResizeMode {
   plugin: 'cordova-plugin-ionic-keyboard',
   pluginRef: 'window.Keyboard',
   repo: 'https://github.com/ionic-team/cordova-plugin-ionic-keyboard',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Keyboard extends IonicNativePlugin {
@@ -58,7 +59,7 @@ export class Keyboard extends IonicNativePlugin {
    */
   @Cordova({
     sync: true,
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   hideFormAccessoryBar(hide: boolean): void {}
 
@@ -67,7 +68,7 @@ export class Keyboard extends IonicNativePlugin {
    */
   @Cordova({
     sync: true,
-    platforms: ['iOS', 'Android']
+    platforms: ['iOS', 'Android'],
   })
   hide(): void {}
 
@@ -76,7 +77,7 @@ export class Keyboard extends IonicNativePlugin {
    */
   @Cordova({
     sync: true,
-    platforms: ['Android']
+    platforms: ['Android'],
   })
   show(): void {}
 
@@ -86,7 +87,7 @@ export class Keyboard extends IonicNativePlugin {
    */
   @Cordova({
     sync: true,
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   setResizeMode(mode: KeyboardResizeMode): void {}
 
@@ -96,7 +97,7 @@ export class Keyboard extends IonicNativePlugin {
    */
   @Cordova({
     sync: true,
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   setKeyboardStyle(style: KeyboardStyle): void {}
 
@@ -106,7 +107,7 @@ export class Keyboard extends IonicNativePlugin {
    */
   @Cordova({
     sync: true,
-    platforms: ['iOS']
+    platforms: ['iOS'],
   })
   disableScroll(disable: boolean): void {}
 
@@ -117,7 +118,7 @@ export class Keyboard extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'native.keyboardshow',
-    platforms: ['iOS', 'Android']
+    platforms: ['iOS', 'Android'],
   })
   onKeyboardShow(): Observable<any> {
     return;
@@ -130,7 +131,7 @@ export class Keyboard extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'keyboardWillShow',
-    platforms: ['iOS', 'Android']
+    platforms: ['iOS', 'Android'],
   })
   onKeyboardWillShow(): Observable<any> {
     return;
@@ -143,7 +144,7 @@ export class Keyboard extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'keyboardDidShow',
-    platforms: ['iOS', 'Android']
+    platforms: ['iOS', 'Android'],
   })
   onKeyboardDidShow(): Observable<any> {
     return;
@@ -156,7 +157,7 @@ export class Keyboard extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'native.keyboardhide',
-    platforms: ['iOS', 'Android']
+    platforms: ['iOS', 'Android'],
   })
   onKeyboardHide(): Observable<any> {
     return;
@@ -169,7 +170,7 @@ export class Keyboard extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'keyboardWillHide',
-    platforms: ['iOS', 'Android']
+    platforms: ['iOS', 'Android'],
   })
   onKeyboardWillHide(): Observable<any> {
     return;
@@ -182,7 +183,7 @@ export class Keyboard extends IonicNativePlugin {
   @Cordova({
     eventObservable: true,
     event: 'keyboardDidHide',
-    platforms: ['iOS', 'Android']
+    platforms: ['iOS', 'Android'],
   })
   onKeyboardDidHide(): Observable<any> {
     return;

@@ -13,7 +13,7 @@ export class SecureStorageObject {
    * @returns {Promise<string>}
    */
   @CordovaInstance({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   get(key: string): Promise<string> {
     return;
@@ -26,7 +26,7 @@ export class SecureStorageObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   set(key: string, value: string): Promise<any> {
     return;
@@ -38,7 +38,7 @@ export class SecureStorageObject {
    * @returns {Promise<string>} returns a promise that resolves with the key that was removed
    */
   @CordovaInstance({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   remove(key: string): Promise<string> {
     return;
@@ -49,7 +49,7 @@ export class SecureStorageObject {
    * @returns {Promise<string[]>} returns a promise that resolves with array of keys storage
    */
   @CordovaInstance({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   keys(): Promise<string[]> {
     return;
@@ -60,7 +60,7 @@ export class SecureStorageObject {
    * @returns {Promise<any>}
    */
   @CordovaInstance({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   clear(): Promise<any> {
     return;
@@ -127,7 +127,7 @@ export class SecureStorageObject {
   plugin: 'cordova-plugin-secure-storage-echo',
   pluginRef: 'cordova.plugins.SecureStorage',
   repo: 'https://github.com/mibrito707/cordova-plugin-secure-storage-echo',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows']
+  platforms: ['Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
 export class SecureStorage extends IonicNativePlugin {

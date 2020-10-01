@@ -11,7 +11,7 @@ export enum DocumentScannerSourceType {
   /**
    * Scan from an image already stored on device.
    */
-  GALLERY = 0
+  GALLERY = 0,
 }
 
 export interface DocumentScannerOptions {
@@ -75,18 +75,17 @@ export interface DocumentScannerOptions {
   plugin: 'cordova-plugin-document-scanner',
   pluginRef: 'scan',
   repo: 'https://github.com/NeutrinosPlatform/cordova-plugin-document-scanner',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class DocumentScanner extends IonicNativePlugin {
-
   /**
    * Scan a document
    * @param opts {DocumentScannerOptions} optional parameter for controlling scanning
    * @return {Promise<string>} file URL of scanned document image
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   scanDoc(opts?: DocumentScannerOptions): Promise<string> {
     return;

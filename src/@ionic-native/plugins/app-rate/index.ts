@@ -51,6 +51,11 @@ export interface AppRatePreferences {
    * App Store URLS
    */
   storeAppURL?: AppUrls;
+
+  /**
+   * Open URL function
+   */
+  openUrl?: (url: string) => void;
 }
 
 export interface AppRateCustomLocale {
@@ -133,6 +138,7 @@ export interface AppUrls {
 
 /**
  * @name App Rate
+ * @premier app-rate
  * @description
  * The AppRate plugin makes it easy to prompt the user to rate your app, either now, later, or never.
  *
@@ -179,7 +185,7 @@ export interface AppUrls {
   plugin: 'cordova-plugin-apprate',
   pluginRef: 'AppRate',
   repo: 'https://github.com/pushandplay/cordova-plugin-apprate',
-  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows']
+  platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows'],
 })
 @Injectable()
 export class AppRate extends IonicNativePlugin {

@@ -29,9 +29,8 @@ import { Observable } from 'rxjs';
   pluginName: 'AppCenterPush',
   plugin: 'cordova-plugin-appcenter-push',
   pluginRef: 'AppCenter.Push',
-  repo:
-    'https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-push',
-  platforms: ['Android', 'iOS']
+  repo: 'https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-push',
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class AppCenterPush extends IonicNativePlugin {
@@ -42,7 +41,7 @@ export class AppCenterPush extends IonicNativePlugin {
    */
   @Cordova({
     observable: true,
-    clearFunction: 'removeEventListener'
+    clearFunction: 'removeEventListener',
   })
   addEventListener(eventName: string): Observable<any> {
     return;

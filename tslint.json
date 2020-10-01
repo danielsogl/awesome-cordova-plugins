@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint-ionic-rules"],
+  "extends": ["tslint-ionic-rules", "tslint-config-prettier"],
   "rules": {
     "no-empty": false,
     "no-import-side-effect": false,

@@ -25,7 +25,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
   plugin: 'cordova-plugin-firebase-crash',
   pluginRef: 'cordova.plugins.firebase.crashlytics',
   repo: 'https://github.com/chemerisuk/cordova-plugin-firebase-crash',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FirebaseCrash extends IonicNativePlugin {

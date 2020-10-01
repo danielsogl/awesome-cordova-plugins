@@ -124,7 +124,7 @@ export interface ThreeDeeTouchForceTouch {
   plugin: 'cordova-plugin-3dtouch',
   pluginRef: 'ThreeDeeTouch',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-3dtouch',
-  platforms: ['iOS']
+  platforms: ['iOS'],
 })
 @Injectable()
 export class ThreeDeeTouch extends IonicNativePlugin {
@@ -142,7 +142,7 @@ export class ThreeDeeTouch extends IonicNativePlugin {
    * @returns {Observable<ThreeDeeTouchForceTouch>} Returns an observable that sends a `ThreeDeeTouchForceTouch` object
    */
   @Cordova({
-    observable: true
+    observable: true,
   })
   watchForceTouches(): Observable<ThreeDeeTouchForceTouch> {
     return;
@@ -157,9 +157,9 @@ export class ThreeDeeTouch extends IonicNativePlugin {
    * @param {string} iconTemplate (optional) Can be used to provide your own icon
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
-  configureQuickActions(quickActions: ThreeDeeTouchQuickAction[]): void { }
+  configureQuickActions(quickActions: ThreeDeeTouchQuickAction[]): void {}
 
   /**
    * When a home icon is pressed, your app launches and this JS callback is invoked.
@@ -175,7 +175,7 @@ export class ThreeDeeTouch extends IonicNativePlugin {
    * UIWebView and WKWebView (the webviews powering Cordova apps) don't allow the fancy new link preview feature of iOS9.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   enableLinkPreview(): void {}
 
@@ -183,7 +183,7 @@ export class ThreeDeeTouch extends IonicNativePlugin {
    * Disabled the link preview feature, if enabled.
    */
   @Cordova({
-    sync: true
+    sync: true,
   })
   disableLinkPreview(): void {}
 }

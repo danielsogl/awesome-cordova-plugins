@@ -73,11 +73,10 @@ export interface ZBarOptions {
   plugin: 'cordova-plugin-cszbar',
   pluginRef: 'cloudSky.zBar',
   repo: 'https://github.com/tjwoon/csZBar',
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class ZBar extends IonicNativePlugin {
-
   /**
    * Open the scanner
    * @param options { ZBarOptions } Scan options
@@ -87,5 +86,4 @@ export class ZBar extends IonicNativePlugin {
   scan(options: ZBarOptions): Promise<any> {
     return;
   }
-
 }
