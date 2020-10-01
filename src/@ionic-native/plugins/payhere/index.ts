@@ -33,6 +33,8 @@ export class PayHere extends IonicNativePlugin {
 export interface CheckoutRequest {
   sandboxEnabled?: boolean; // set this as true for sandbox environment for testing, default is false
   merchantId: String; // signup at https://payhere.lk to get merchant id
+  merchantSecret: String;
+  notifyURL: String; // URL to callback the status of the payment (Needs to be a URL accessible on a public IP/domain)
   amount: Number; // amount to charge by the user
   currency: Currency; // Currency code LKR/USD/GBP/EUR/AUD
   orderId: String; // an unique Reference ID
@@ -48,6 +50,8 @@ export interface CheckoutRequest {
 export interface PreApproveRequest {
   sandboxEnabled?: boolean; // set this as true for sandbox environment for testing, default is false
   merchantId: String; // signup at https://payhere.lk to get merchant id
+  merchantSecret: String;
+  notifyURL: String; // URL to callback the status of the payment (Needs to be a URL accessible on a public IP/domain)
   currency: Currency; // Currency code LKR/USD/GBP/EUR/AUD
   orderId: String; // an unique Reference ID
   itemsDescription: String; // Item title or Order/Invoice number
