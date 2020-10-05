@@ -94,6 +94,7 @@
     }
   },
   "dependencies": {
+    "@ionic-native/core": "^5.28.0",
     "tslib": "^1.13.0"
   },
   "husky": {
