@@ -3,6 +3,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name App Version
+ * @premier app-version
  * @description
  * Reads the version of your app from the target build settings.
  *

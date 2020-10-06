@@ -407,13 +407,11 @@ export class BAMCardInformation {
 
 /**
  * @name Jumio
- * @description
- * [Jumio mobile-cordova](https://github.com/Jumio/mobile-cordova) Plugin for Ionic
+ * @description Check out [example with Angular 9.1 & Capacitor 2.1](https://github.com/zendigital/jumio-ionic-demo)
  *
- * Read this for [Platform Customization](https://github.com/Jumio/mobile-cordova#customization) is possible
+ * [Platform Customization](https://github.com/Jumio/mobile-cordova#customization) is possible
  *
- * To get Jumio Cordova working on Android check out this [FAQ](https://github.com/Jumio/mobile-cordova#faq)
- *
+ * Original source: [Jumio mobile-cordova](https://github.com/Jumio/mobile-cordova) Plugin for Apache Cordova
  * @usage
  * ```typescript
  * import {
@@ -445,10 +443,9 @@ export class BAMCardInformation {
  */
 @Plugin({
   pluginName: 'Jumio',
-  plugin: 'cordova-plugin-jumio-mobilesdk',
+  plugin: 'jumio-cordova',
   pluginRef: 'Jumio',
-  repo: 'https://github.com/Jumio/mobile-cordova',
-  install: 'npm install git://github.com/Jumio/mobile-cordova.git',
+  repo: 'https://github.com/danielzen/jumio-cordova',
   platforms: ['Android', 'iOS'],
 })
 @Injectable()

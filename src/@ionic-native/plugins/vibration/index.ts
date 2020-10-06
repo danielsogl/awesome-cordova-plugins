@@ -3,6 +3,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Vibration
+ * @premier vibration
  * @description Vibrates the device
  * @usage
  * ```typescript

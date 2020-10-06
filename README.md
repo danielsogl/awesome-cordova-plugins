@@ -6,6 +6,10 @@ Ionic Native is a curated set of wrappers for Cordova plugins that make adding a
 
 Ionic Native wraps plugin callbacks in a Promise or Observable, providing a common interface for all plugins and making it easy to use plugins with Angular change detection.
 
+Ionic Native is available in two versions: 
+1. Ionic Native [Community Edition](https://ionicframework.com/docs/native/community), featuring open source, community-maintained Cordova and Capacitor plugins and APIs.
+2. Ionic Native [Enterprise Edition](https://ionicframework.com/docs/enterprise), featuring a library of Premier plugins and solutions that are fully supported and maintained by the Ionic team, with access to Ionic experts and a guaranteed response SLA to mission-critical app development.
+
 ## Capacitor Support
 
 In addition to Cordova, Ionic Native also works with [Capacitor](https://capacitor.ionicframework.com), Ionic's official native runtime. Basic usage below. For complete details, [see the Capacitor documentation](https://capacitor.ionicframework.com/docs/cordova/using-cordova-plugins).

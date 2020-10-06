@@ -3,6 +3,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name Android Permissions
+ * @premier android-permissions
  * @description
  * This plugin is designed to support Android new permissions checking mechanism.
  *

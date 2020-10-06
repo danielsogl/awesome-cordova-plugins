@@ -16,8 +16,63 @@ export interface NotificationData {
   [name: string]: any;
 }
 
+export interface IRequestPushPermissionIOSOptions {
+  /**
+   * Options exclusive for iOS 9 support
+   */
+  ios9Support?: {
+    /**
+     * How long it will wait for a decision from the user before returning `false`, defaults to 10
+     */
+    timeout?: number;
+    /**
+     * How long between each permission verification, defaults to 0.3
+     */
+    interval?: number;
+  };
+}
+
+export interface IChannelConfiguration {
+  /**
+   * Channel id, used in the android_channel_id push payload key
+   */
+  id: string;
+  /**
+   * Channel name, visible for the user
+   */
+  name: string;
+  /**
+   * Channel description, visible for the user
+   */
+  description?: string;
+  /**
+   * Importance for notifications of this channel
+   * https://developer.android.com/guide/topics/ui/notifiers/notifications#importance
+   */
+  importance?: 'none' | 'min' | 'low' | 'default' | 'high';
+  /**
+   * Visibility for notifications of this channel
+   * https://developer.android.com/training/notify-user/build-notification#lockscreenNotification
+   */
+  visibility?: 'public' | 'private' | 'secret';
+  /**
+   * Default sound resource for notifications of this channel
+   * The file should located as resources/raw/[resource name].mp3
+   */
+  sound?: string;
+  /**
+   * Enable lights for notifications of this channel
+   */
+  lights?: boolean;
+  /**
+   * Enable vibration for notifications of this channel
+   */
+  vibration?: boolean;
+}
+
 /**
  * @name FCM
+ * @capacitorincompatible true
  * @description
  * Provides basic functionality for Firebase Cloud Messaging
  *
@@ -60,6 +115,8 @@ export interface NotificationData {
  * ```
  * @interfaces
  * NotificationData
+ * IRequestPushPermissionIOSOptions
+ * IChannelConfiguration
  */
 @Plugin({
   pluginName: 'FCM',
@@ -160,6 +217,34 @@ export class FCM extends IonicNativePlugin {
    */
   @Cordova()
   clearAllNotifications(): void {
+    return;
+  }
+
+  /**
+   * Request push notification permission, alerting the user if it not have yet decided
+   *
+   * @param {IRequestPushPermissionIOSOptions} options Options for push request
+   *
+   * @returns {Promise<boolean>} Returns a Promise that resolves with the permission status
+   */
+  @Cordova()
+  requestPushPermissionIOS(options?: IRequestPushPermissionIOSOptions): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * For Android, some notification properties are only defined programmatically.
+   *
+   * Channel can define the default behavior for notifications on Android 8.0+.
+   *
+   * Once a channel is created, it stays unchangeable until the user uninstalls the app.
+   *
+   * @param channelConfig
+   *
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  createNotificationChannelAndroid(channelConfig: IChannelConfiguration): void {
     return;
   }
 }
