@@ -17,7 +17,7 @@ import { error } from 'console';
   plugin: 'cordova-plugin-hypertrack-v3',
   pluginRef: 'hypertrack',
   repo: 'https://github.com/hypertrack/cordova-plugin-hypertrack.git',
-  platforms: ['Android'],
+  platforms: ['Android, iOS'],
 })
 @Injectable()
 export class HyperTrackPlugin extends IonicNativePlugin {
@@ -59,7 +59,12 @@ interface HyperTrackCordova {
     success: SuccessHandler,
     error: FailureHandler
   ): void;
-  addGeoTag(geotagData: Object, expectedLocation: Coordinates, success: SuccessHandler, error: FailureHandler): void;
+  addGeoTag(
+    geotagData: Object,
+    expectedLocation: Coordinates | undefined,
+    success: SuccessHandler,
+    error: FailureHandler
+  ): void;
   requestPermissionsIfNecessary(success: SuccessHandler, error: FailureHandler): void;
   allowMockLocations(success: SuccessHandler, error: FailureHandler): void;
   syncDeviceSettings(success: SuccessHandler, error: FailureHandler): void;
