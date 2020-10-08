@@ -63,6 +63,8 @@ interface HyperTrackCordova {
   requestPermissionsIfNecessary(success: SuccessHandler, error: FailureHandler): void;
   allowMockLocations(success: SuccessHandler, error: FailureHandler): void;
   syncDeviceSettings(success: SuccessHandler, error: FailureHandler): void;
+  start(success: SuccessHandler, error: FailureHandler): void;
+  stop(success: SuccessHandler, error: FailureHandler): void;
 }
 
 export class CoordinatesValidationError extends Error {}
@@ -224,6 +226,26 @@ export class HyperTrack {
   syncDeviceSettings(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.syncDeviceSettings(
+        () => resolve(),
+        err => reject(err)
+      );
+    });
+  }
+
+  /** Start tracking. */
+  start(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.start(
+        () => resolve(),
+        err => reject(err)
+      );
+    });
+  }
+
+  /** Stop tracking. */
+  stop(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.stop(
         () => resolve(),
         err => reject(err)
       );
