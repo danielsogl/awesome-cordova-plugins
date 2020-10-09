@@ -541,11 +541,11 @@ export class IAPError {
  */
 @Plugin({
   pluginName: 'InAppPurchase2',
-  plugin: 'cc.fovea.cordova.purchase',
+  plugin: 'cordova-plugin-purchase',
   pluginRef: 'store',
   repo: 'https://github.com/j3k0/cordova-plugin-purchase',
   platforms: ['iOS', 'Android', 'Windows'],
-  install: 'ionic cordova plugin add cc.fovea.cordova.purchase --variable BILLING_KEY="<ANDROID_BILLING_KEY>"',
+  install: 'ionic cordova plugin add cordova-plugin-purchase --variable BILLING_KEY="<ANDROID_BILLING_KEY>"',
 })
 @Injectable()
 export class InAppPurchase2 extends IonicNativePlugin {
