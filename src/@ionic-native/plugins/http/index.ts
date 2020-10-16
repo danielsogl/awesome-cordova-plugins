@@ -352,7 +352,7 @@ export class HTTP extends IonicNativePlugin {
       method: 'get' | 'post' | 'put' | 'patch' | 'head' | 'delete' | 'options' | 'upload' | 'download';
       data?: { [index: string]: any };
       params?: { [index: string]: string | number };
-      serializer?: 'json' | 'urlencoded' | 'utf8' | 'multipart';
+      serializer?: 'json' | 'urlencoded' | 'utf8' | 'multipart' | 'raw';
       timeout?: number;
       headers?: { [index: string]: string };
       filePath?: string | string[];
