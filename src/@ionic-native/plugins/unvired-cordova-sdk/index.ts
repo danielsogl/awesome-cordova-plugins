@@ -1451,4 +1451,13 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   unlockDataSender(): Promise<UnviredResult> {
     return;
   }
+
+  /**
+   * Mobile Platform only.
+   * Delete an outbox item based on header's lid.
+   */
+  @Cordova()
+  removeOutObjectBasedOnLid(lid: string): Promise<UnviredResult> {
+    return;
+  }
 }
