@@ -55,9 +55,9 @@ export interface IAPProduct {
 
   downloaded?: boolean;
 
-  lastRenewalDate?: string;
+  lastRenewalDate?: Date;
 
-  expiryDate?: string;
+  expiryDate?: Date;
 
   introPrice?: string;
 
