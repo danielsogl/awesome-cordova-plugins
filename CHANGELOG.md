@@ -1,3 +1,27 @@
+# [5.29.0](https://github.com/ionic-team/ionic-native/compare/v5.28.0...v5.29.0) (2020-10-16)
+
+
+### Bug Fixes
+
+* **diagnostics:** locationAccuracyAuthorization Property missing in build ([#3540](https://github.com/ionic-team/ionic-native/issues/3540)) ([c62c137](https://github.com/ionic-team/ionic-native/commit/c62c13772307c02e7581c15ec6f5c94309927cc6))
+* **http:** add missing type to serialiser property ([#3532](https://github.com/ionic-team/ionic-native/issues/3532)) ([7b0195b](https://github.com/ionic-team/ionic-native/commit/7b0195bdf441532106df6eb2baf5a9ada1068761))
+* **in-app-purchase-2:** change in-app-purchase-2 plugin id ([#3553](https://github.com/ionic-team/ionic-native/issues/3553)) ([ce9db34](https://github.com/ionic-team/ionic-native/commit/ce9db34e2439d4fefd1b4071bffb6e5c8daab634))
+* **music-controls:** update associated cordova plugin ([#3543](https://github.com/ionic-team/ionic-native/issues/3543)) ([4766ec7](https://github.com/ionic-team/ionic-native/commit/4766ec7a35d7e7b0ab31d3db8953f2ef4bdcb6df))
+
+
+### Features
+
+* **adjust:** updating to match official typings ([#3523](https://github.com/ionic-team/ionic-native/issues/3523)) ([5a77eab](https://github.com/ionic-team/ionic-native/commit/5a77eabf7644a79369da40eb929b6edfcb83de07))
+* **all-in-one-sdk:** add plugin for Paytm All-in-One SDK ([#3536](https://github.com/ionic-team/ionic-native/issues/3536)) ([1f48c31](https://github.com/ionic-team/ionic-native/commit/1f48c31a8eaf5079ec8e391b21ea5ce3fa9e1446))
+* **appsfyler:** add property waitForATTUserAuthorization to AppsflyerOptions ([#3541](https://github.com/ionic-team/ionic-native/issues/3541)) ([3340e9a](https://github.com/ionic-team/ionic-native/commit/3340e9a6949f798d5ec540a78c7ac46a5dc884b2))
+* **fingerprint-air:** add new functions ([#3530](https://github.com/ionic-team/ionic-native/issues/3530)) ([99e6a53](https://github.com/ionic-team/ionic-native/commit/99e6a5398fb2923991d7236475913eb17e8640c0))
+* **firebase-x:** add setLanguageCode method for auth ([#3548](https://github.com/ionic-team/ionic-native/issues/3548)) ([5d1b5d5](https://github.com/ionic-team/ionic-native/commit/5d1b5d5fda311003d0ae20e27a06d6bd443554be))
+* **mobile-messaging:** add new fields to Message type and new method to display chat view ([#3531](https://github.com/ionic-team/ionic-native/issues/3531)) ([14ec32b](https://github.com/ionic-team/ionic-native/commit/14ec32b83c603fc5a079eabf794b7dadce867358))
+* **purchases:** update to plugin version 1.3.0 ([#3547](https://github.com/ionic-team/ionic-native/issues/3547)) ([b5f7f95](https://github.com/ionic-team/ionic-native/commit/b5f7f952df06828a07f4ab013ce52fddc8ccafdf))
+* **social-sharing:** Add missing method shareViaWhatsAppToPhone([#3513](https://github.com/ionic-team/ionic-native/issues/3513)) ([f3ce3c4](https://github.com/ionic-team/ionic-native/commit/f3ce3c4930f87f6f2dd023dc28ef924faee05a84))
+
+
+
 # [5.28.0](https://github.com/ionic-team/ionic-native/compare/v5.27.0...v5.28.0) (2020-08-14)
 
 
