@@ -129,11 +129,22 @@ export interface Message {
   vibrate?: boolean; // Android only
   icon?: string; // Android only
   category?: string; // Android only
+  chat?: string;
+  browserUrl?: string;
+  deeplink?: string;
+  webViewUrl?: string;
+  inAppDismissTitle?: string;
 }
 
 export interface MobileMessagingError {
   code: string;
   message: string;
+}
+
+export interface ChatConfig {
+  ios?: {
+    showModally: boolean;
+  };
 }
 
 export class DefaultMessageStorage {
@@ -435,6 +446,17 @@ export class MobileMessaging extends IonicNativePlugin {
 
   @Cordova({ sync: true })
   defaultMessageStorage(): DefaultMessageStorage | undefined {
+    return;
+  }
+
+  /**
+   * Displays chat view.
+   *
+   * @name showChat
+   * @param {ChatConfig} chat config
+   */
+  @Cordova()
+  showChat(config?: ChatConfig): Promise<any> {
     return;
   }
 }
