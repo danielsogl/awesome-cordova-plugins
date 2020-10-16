@@ -26,7 +26,7 @@ export interface UpdateOptions {
  *
  * @usage
  * ```typescript
- * import { DfuUpdate } from '@ionic-native/dfu-update';
+ * import { DfuUpdate } from '@ionic-native/dfu-update/ngx';
  *
  *
  * constructor(private dfuUpdate: DfuUpdate) { }
