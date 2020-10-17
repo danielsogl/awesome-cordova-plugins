@@ -15,8 +15,7 @@ import {
  *
  * @usage
  * ```typescript
- * import { CustomUISDK } from '@ionic-native/custom-uisdk';
- *
+ * import { CustomUISDK } from '@ionic-native/custom-uisdk/ngx';
  *
  * constructor(private customuisdk: CustomUISDK) { }
  *
@@ -28,12 +27,12 @@ import {
  */
 @Plugin({
   pluginName: 'cordova-paytm-customuisdk',
-  plugin: 'cordova-paytm-customuisdk', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'paytm.customuisdk', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: '', // the github repository URL for the plugin
-  install: '', // OPTIONAL install command, in case the plugin requires variables
-  installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['Android, iOS'], // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'cordova-paytm-customuisdk',
+  pluginRef: 'paytm.customuisdk',
+  repo: 'https://github.com/paytm/paytm-customuisdk-cordova',
+  install: '',
+  installVariables: [],
+  platforms: ['Android, iOS'],
 })
 @Injectable()
 export class CustomUISDK extends IonicNativePlugin {
