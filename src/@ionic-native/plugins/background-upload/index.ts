@@ -80,7 +80,7 @@ export class FileTransferManager {
  *
  * @usage
  * ```typescript
- * import { BackgroundUpload } from '@ionic-native/background-upload/npx';
+ * import { BackgroundUpload } from '@ionic-native/background-upload/ngx';
  *
  *
  * constructor(private backgroundUpload: BackgroundUpload) { }
