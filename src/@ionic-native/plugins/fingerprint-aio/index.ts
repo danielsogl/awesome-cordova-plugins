@@ -39,6 +39,19 @@ export interface FingerprintOptions {
   disableBackup?: boolean;
 }
 
+export interface FingerprintSecretOptions extends FingerprintOptions {
+  /**
+   * String secret to encrypt and save, use simple strings matching the regex [a-zA-Z0-9\-]+
+   */
+  secret: string;
+
+  /**
+   * If `true` secret will be deleted when biometry items are deleted or enrolled
+   * @default false
+   */
+  invalidateOnEnrollment?: boolean;
+}
+
 /**
  * @name Fingerprint AIO
  * @description
@@ -68,9 +81,30 @@ export interface FingerprintOptions {
  * .then((result: any) => console.log(result))
  * .catch((error: any) => console.log(error));
  *
+ * ...
+ *
+ * this.faio.registerBiometricSecret({
+ *      description: "Some biometric description", // optional | Default: null
+ *      secret: "my-super-secret", // mandatory
+ *      invalidateOnEnrollment: true, // optional | Default: false
+ *      disableBackup: true, // (Android Only) | optional | always `true` on Android
+ * })
+ * .then((result: any) => console.log(result))
+ * .catch((error: any) => console.log(error));
+ *
+ *  ...
+ *
+ * this.faio.loadBiometricSecret({
+ *      description: "Some biometric description", // optional | Default: null
+ *      disableBackup: true, // always disabled on Android
+ * })
+ * .then((result: string) => console.log(result))
+ * .catch((error: any) => console.log(error));
+ *
  * ```
  * @interfaces
  * FingerprintOptions
+ * FingerprintSecretOptions
  */
 @Plugin({
   pluginName: 'FingerprintAIO',
@@ -146,6 +180,11 @@ export class FingerprintAIO extends IonicNativePlugin {
    * @type {number}
    */
   BIOMETRIC_LOCKED_OUT_PERMANENT = -112;
+  /**
+   * Convenience constant
+   * @type {number}
+   */
+  BIOMETRIC_SECRET_NOT_FOUND = -113;
 
   /**
    * Check if fingerprint authentication is available
@@ -153,6 +192,26 @@ export class FingerprintAIO extends IonicNativePlugin {
    */
   @Cordova()
   isAvailable(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Show authentication dialogue and register secret
+   * @param {FingerprintSecretOptions} options Options for platform specific fingerprint API
+   * @return {Promise<any>} Returns a promise that resolves when authentication was successful
+   */
+  @Cordova()
+  registerBiometricSecret(options: FingerprintSecretOptions): Promise<any> {
+    return;
+  }
+
+  /**
+   * Show authentication dialogue and load secret
+   * @param {FingerprintOptions} options Options for platform specific fingerprint API
+   * @return {Promise<any>} Returns a promise that resolves when authentication was successful
+   */
+  @Cordova()
+  loadBiometricSecret(options: FingerprintOptions): Promise<string> {
     return;
   }
 

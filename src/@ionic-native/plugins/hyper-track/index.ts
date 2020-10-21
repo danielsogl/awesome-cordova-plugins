@@ -1,212 +1,234 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import {
+  Plugin,
+  Cordova,
+  CordovaProperty,
+  CordovaInstance,
+  InstanceProperty,
+  IonicNativePlugin,
+} from '@ionic-native/core';
+import { kMaxLength } from 'buffer';
+import { resolve } from 'dns';
+import { reject } from 'lodash';
+import { error } from 'console';
 
-/**
- * @beta
- * @name HyperTrack
- * @description
- * HyperTrack cordova plugin wrapper for Ionic Native. Location-based services provider.
- * Make sure to include your publishable key at config.xml (see [HyperTrack Cordova Setup](https://docs.hypertrack.com/sdks/cordova/setup.html#step-2-configure-the-sdk)).
- *
- * @usage
- * ```typescript
- * import { HyperTrack } from '@ionic-native/hyper-track/ngx';
- *
- * constructor(private hyperTrack: HyperTrack) { }
- *
- * // Check if app has location permissions enabled
- * this.hyperTrack.checkLocationPermission().then(response => {
- *   // response (String) can be "true" or "false"
- *   if (response != "true") {
- *     // Ask for permissions
- *     this.hyperTrack.requestPermissions().then(response => {}, error => {});
- *   }
- * }, error => {});
- *
- * // Check if app has location services enabled
- * this.hyperTrack.checkLocationServices().then(response => {
- *   // response (String) can be "true" or "false"
- *   if (response != "true") {
- *     // Request services to be enabled
- *     this.hyperTrack.requestLocationServices().then(response => {}, error => {});
- *   }
- * }, error => {});
- *
- * // First set the current user. This can be done via getOrCreateUser() or setUserId()
- * this.hyperTrack.setUserId("xxx").then(user => {
- *   // user (String) is a String representation of a User's JSON
- *
- *   this.hyperTrack.startTracking().then(userId => {}, trackingError => {});
- *
- *   this.hyperTrack.createAndAssignAction('visit', 'lookupId','address', 20.12, -100.3).then(action => {
- *     // Handle action. It's a String representation of the Action's JSON. For example:
- *     // '{"eta":"Jul 17, 2017 12:50:03 PM","assigned_at":"Jul 17, 2017 12:34:38 PM",,"distance":"0.0",...}'
- *   }, error => {});
- *
- *   // You can complete an action with completeAction() or completeActionWithLookupId()
- *   this.hyperTrack.completeAction('action-id').then(response => {
- *     // Handle response (String). Should be "OK".
- *   }, error => {});
- *
- *   this.hyperTrack.getCurrentLocation().then(location => {
- *     // Handle location. It's a String representation of a Location's JSON.For example:
- *     // '{"mAccuracy":22.601,,"mLatitude":23.123456, "mLongitude":-100.1234567, ...}'
- *   }, error => {});
- *
- *   this.hyperTrack.stopTracking().then(success => {
- *     // Handle success (String). Should be "OK".
- *   }, error => {});
- *
- * }, error => {});*
- * ```
- */
 @Plugin({
-  pluginName: 'HyperTrack',
-  plugin: 'cordova-plugin-hypertrack',
-  pluginRef: 'cordova.plugins.HyperTrack',
-  repo: 'https://github.com/hypertrack/hypertrack-cordova',
+  pluginName: 'cordova-plugin-hypertrack-v3',
+  plugin: 'cordova-plugin-hypertrack-v3',
+  pluginRef: 'hypertrack',
+  repo: 'https://github.com/hypertrack/cordova-plugin-hypertrack.git',
   platforms: ['Android'],
 })
 @Injectable()
-export class HyperTrack extends IonicNativePlugin {
-  /**
-   * Returns given text. For testing purposes.
-   * @param {String} text Given text to print
-   * @returns {Promise<any>} Returns a Promise that resolves with the result text (which is the same as the given text) if successful, or it gets rejected if an error ocurred.
-   */
+export class HyperTrackPlugin extends IonicNativePlugin {
   @Cordova()
-  helloWorld(text: String): Promise<String> {
+  initialize(publishableKey: string): Promise<HyperTrackCordova> {
     return;
   }
 
-  /**
-   * Create a new user to identify the current device or get a user from a lookup id.
-   * @param {String} name User's name
-   * @param {String} phone User's phone
-   * @param {String} photo User's photo as URL or a Base64 converted string
-   * @param {String} lookupId User's lookupId, which is used to check if a new user is to be created (in this case you could set it to an internal reference for the user that you can use later to identify it), or if one with an existing lookupId is to be used.
-   * @returns {Promise<any>} Returns a Promise that resolves with a string representation of the User's JSON, or it gets rejected if an error ocurred.
-   */
   @Cordova()
-  getOrCreateUser(name: String, phone: String, photo: String, lookupId: String): Promise<any> {
+  enableDebugLogging(): Promise<any> {
     return;
+  }
+}
+
+// Interfaces for Cordova Plugin callbacks
+interface DeviceIdReceiver {
+  (deviceId: string): any;
+}
+interface TrackingStateReceiver {
+  (isRunning: boolean): any;
+}
+interface FailureHandler {
+  (error: Error): any;
+}
+interface SuccessHandler {
+  (): any;
+}
+
+// SDK instance that exposed from Cordova utilizes usage of callbacks, so we
+// wrap it with adapter to avoid mix of callbacks and Promises
+interface HyperTrackCordova {
+  getDeviceId(success: DeviceIdReceiver, error: FailureHandler): void;
+  isRunning(success: TrackingStateReceiver, error: FailureHandler): void;
+  setDeviceName(name: string, success: SuccessHandler, error: FailureHandler): void;
+  setDeviceMetadata(metadata: Object, success: SuccessHandler, error: FailureHandler): void;
+  setTrackingNotificationProperties(
+    title: string,
+    message: string,
+    success: SuccessHandler,
+    error: FailureHandler
+  ): void;
+  addGeoTag(geotagData: Object, expectedLocation: Coordinates, success: SuccessHandler, error: FailureHandler): void;
+  requestPermissionsIfNecessary(success: SuccessHandler, error: FailureHandler): void;
+  allowMockLocations(success: SuccessHandler, error: FailureHandler): void;
+  syncDeviceSettings(success: SuccessHandler, error: FailureHandler): void;
+}
+
+export class CoordinatesValidationError extends Error {}
+
+/** Wrapper class for passing spatial geoposition as a geotag's expected location */
+export class Coordinates {
+  constructor(latitude: number, longitude: number) {
+    if (latitude < -90.0 || latitude > 90.0 || longitude < -180.0 || longitude > 180.0) {
+      throw new CoordinatesValidationError('latitude and longitude should be of correct valaues');
+    }
+  }
+}
+
+/**
+ * @usage
+ * ```typescript
+ *   import { HyperTrack } from '@ionic-native/hyper-track';
+ *
+ *   initializeHypertrack() {
+ *     HyperTrack.enableDebugLogging();
+ *     HyperTrack.initialize('YOUR_PUBLISHING_KEY')
+ *     .then( this.onSdkInstanceReceived )
+ *     .catch( (err) => console.error("HyperTrack init failed with error " + err) );
+ *   }
+ *   onSdkInstanceReceived(sdkInstance: HyperTrack) {
+ *       sdkInstance.getDeviceId()
+ *      .then((id) => console.log("Got device id " + id))
+ *      .then(() => sdkInstance.setDeviceName("Elvis Ionic"))
+ *      .then(() => console.log("Device name was changed"))
+ *      .then(() => sdkInstance.setDeviceMetadata({platform: "Ionic Android"}))
+ *      .then(() => console.log("Device metadata was changed"))
+ *      .then(() => sdkInstance.setTrackingNotificationProperties("Tracking On", "Ionic SDK is tracking"))
+ *      .then(() => console.log("Notification properties were changed"))
+ *      .catch((err) => console.error("Got error in HyperTrack " + err));
+ *   }
+ *
+ * ```
+ *
+ */
+export class HyperTrack {
+  /** Enables debug log in native HyperTrack SDK. */
+  static enableDebugLogging(): void {
+    new HyperTrackPlugin().enableDebugLogging();
   }
 
   /**
-   * Set UserId for the SDK created using HyperTrack APIs. This is useful if you already have a user previously created.
-   * @param {String} userId User's ID
-   * @returns {Promise<any>} Returns a Promise that resolves with an "OK" string if successful, or it gets rejected if an error ocurred. An "OK" response doesn't necessarily mean that the userId was found. It just means that it was set correctly.
+   * Entry point into SDK.
+   *
+   * Initializes SDK. Also resolves SDK instance that could be used to query deviceId or set
+   * various data.
+   * @param publishableKey account-specific secret from the HyperTrack dashborad.
+   *
+   * @see {@link https://dashboard.hypertrack.com/setup}.
    */
-  @Cordova()
-  setUserId(userId: String): Promise<any> {
-    return;
+  static initialize(publishableKey: string): Promise<HyperTrack> {
+    return new Promise((resolve, reject) => {
+      new HyperTrackPlugin()
+        .initialize(publishableKey)
+        .then((cordovaInstance: HyperTrackCordova) => {
+          resolve(new HyperTrack(cordovaInstance));
+        })
+        .catch((err: Error) => reject(err));
+    });
+  }
+
+  /** Resolves device ID that could be used to identify the device. */
+  getDeviceId(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.getDeviceId(
+        deviceId => resolve(deviceId),
+        err => reject(err)
+      );
+    });
+  }
+
+  /** Resolves to true if tracking service is running and false otherwise */
+  isRunning(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.isRunning(
+        isRunning => resolve(isRunning),
+        err => reject(err)
+      );
+    });
+  }
+
+  /** Sets device name that could be used to identify the device in HyperTrack dashboard */
+  setDeviceName(name: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.setDeviceName(
+        name,
+        () => resolve(),
+        err => reject(err)
+      );
+    });
   }
 
   /**
-   * Enable the SDK and start tracking. This will fail if there is no user set.
-   * @returns {Promise<any>} Returns a Promise that resolves with the userId (String) of the User being tracked if successful, or it gets rejected if an error ocurred. One example of an error is not setting a User with getOrCreateUser() or setUserId() before calling this function.
+   * Use this to set additional properties, like segments, teams etc.
+   * @param metadata key-value pais of properties.
    */
-  @Cordova()
-  startTracking(): Promise<any> {
-    return;
+  setDeviceMetadata(metadata: Object): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.setDeviceMetadata(
+        metadata,
+        () => resolve(),
+        err => reject(err)
+      );
+    });
+  }
+
+  /** Updates title and text in persistent notification, that appears when tracking is active.  */
+  setTrackingNotificationProperties(title: string, message: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.setTrackingNotificationProperties(
+        title,
+        message,
+        () => resolve(),
+        err => reject(err)
+      );
+    });
+  }
+
+  /** Adds special marker-like object to device timeline. */
+  addGeotag(geotagData: Object, expectedLocation?: Coordinates): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.addGeoTag(
+        geotagData,
+        expectedLocation,
+        () => resolve(),
+        err => reject(err)
+      );
+    });
+  }
+
+  /** Pops up permission request dialog, if permissions weren't granted before or does nothing otherwise. */
+  requestPermissionsIfNecessary(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.requestPermissionsIfNecessary(
+        () => resolve(),
+        err => reject(err)
+      );
+    });
+  }
+
+  /** Allows injecting false locations into the SDK, which ignores them by default. */
+  allowMockLocations(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.allowMockLocations(
+        () => resolve(),
+        err => reject(err)
+      );
+    });
   }
 
   /**
-   * Create and assign an action to the current user using specified parameters
-   * @param {String} type The action type. Can be one from "pickup", "delivery", "dropoff", "visit", "stopover" or "task"
-   * @param {String} lookupId The Action's desired lookupId
-   * @param {String} expectedPlaceAddress The address of the Action
-   * @param {Number} expectedPlaceLatitude The latitude of the Action
-   * @param {Number} expectedPlaceLongitude The longitude of the Action
-   * @returns {Promise<any>} Returns a Promise that resolves with a string representation of the Action's JSON, or it gets rejected if an error ocurred.
+   * Synchronizes tracking state with platform model. This method is used to
+   * harden platform2device communication channel.
    */
-  @Cordova()
-  createAndAssignAction(
-    type: String,
-    lookupId: String,
-    expectedPlaceAddress: String,
-    expectedPlaceLatitude: Number,
-    expectedPlaceLongitude: Number
-  ): Promise<any> {
-    return;
+  syncDeviceSettings(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.syncDeviceSettings(
+        () => resolve(),
+        err => reject(err)
+      );
+    });
   }
 
-  /**
-   * Complete an action from the SDK by its ID
-   * @param {String} actionId ID of the Action that will be marked as completed
-   * @returns {Promise<any>} Returns a Promise that resolves with an "OK" string if successful, or it gets rejected if an error ocurred.
-   */
-  @Cordova()
-  completeAction(actionId: String): Promise<any> {
-    return;
-  }
-
-  /**
-   * Complete an action from the SDK using Action's lookupId as parameter
-   * @param {String} lookupId Lookup ID of the Action that will be marked as completed
-   * @returns {Promise<any>} Returns a Promise that resolves with an "OK" string if successful, or it gets rejected if an error ocurred.
-   */
-  @Cordova()
-  completeActionWithLookupId(lookupId: String): Promise<any> {
-    return;
-  }
-
-  /**
-   * Disable the SDK and stop tracking.
-   * Needs user setting (via getOrCreateUser() or setUserId()) first.
-   * @returns {Promise<any>} Returns a Promise that resolves with the an "OK" string if successful, or it gets rejected if an error ocurred. One example of an error is not setting a User with getOrCreateUser() or setUserId() before calling this function.
-   */
-  @Cordova()
-  stopTracking(): Promise<any> {
-    return;
-  }
-
-  /**
-   * Get user's current location from the SDK
-   * @returns {Promise<any>} Returns a Promise that resolves with a string representation of the Location's JSON, or it gets rejected if an error ocurred.
-   */
-  @Cordova()
-  getCurrentLocation(): Promise<any> {
-    return;
-  }
-
-  /**
-   * Check if Location permission has been granted to the app (for Android).
-   * Returns "true" or "false" in success method accordingly.
-   * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if location permission was granted, or it gets rejected if an error ocurred.
-   */
-  @Cordova()
-  checkLocationPermission(): Promise<any> {
-    return;
-  }
-
-  /**
-   * Request user to grant Location access to the app (for Anrdoid).
-   * For Android Marshmallow and above. In other platforms, the Promise is never resolved.
-   * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if Location access was given to the app, or it gets rejected if an error ocurred.
-   */
-  @Cordova()
-  requestPermissions(): Promise<any> {
-    return;
-  }
-
-  /**
-   * Check if Location services are enabled on the device (for Android).
-   * Returns "true" or "false" in success method accordingly.
-   * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if location services are enabled, or it gets rejected if an error ocurred.
-   */
-  @Cordova()
-  checkLocationServices(): Promise<any> {
-    return;
-  }
-
-  /**
-   * Request user to enable Location services on the device.
-   * For Android Marshmallow and above. In other platforms, the Promise is never resolved.
-   * @returns {Promise<any>} Returns a Promise that resolves with the a string that can be "true" or "false", depending if Location services were enabled, or it gets rejected if an error ocurred.
-   */
-  @Cordova()
-  requestLocationServices(): Promise<any> {
-    return;
-  }
+  private constructor(private cordovaInstanceHandle: HyperTrackCordova) {}
 }

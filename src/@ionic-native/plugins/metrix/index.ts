@@ -11,6 +11,8 @@ export class MetrixConfig {
   private defaultTrackerToken: string = null;
   private shouldLaunchDeeplink = false;
   private firebaseAppId: string = null;
+  private firebaseProjectId: string = null;
+  private firebaseApiKey: string = null;
   private isLocationListeningEnable = false;
   private eventUploadThreshold: number = null;
   private eventUploadMaxBatchSize: number = null;
@@ -32,8 +34,10 @@ export class MetrixConfig {
     this.defaultTrackerToken = defaultTrackerToken;
   }
 
-  setFirebaseAppId(firebaseAppId: string) {
+  setFirebaseId(firebaseAppId: string, firebaseProjectId: string, firebaseApiKey: string) {
     this.firebaseAppId = firebaseAppId;
+    this.firebaseProjectId = firebaseProjectId;
+    this.firebaseApiKey = firebaseApiKey;
   }
 
   setAppSecret(secretId: number, info1: number, info2: number, info3: number, info4: number) {

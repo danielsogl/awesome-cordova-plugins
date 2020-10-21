@@ -33,7 +33,6 @@ export interface WatchExistData {
 
 /**
  * @name Apple Wallet
- * @premier apple-payment-pass
  * @description
  * A Cordova plugin that enables users from Add Payment Cards to their Apple Wallet.
  *

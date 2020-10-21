@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface LuxandConfig {
-  /** The licence key got from Luxand */
+  /** The licence key gotten from Luxand */
   licence: string;
   /** The internal database name the tracker should use */
   dbname: string;
-  /** the number of retry when registering of identifying a face */
+  /** the number of retries when registering or identifying a face */
   loginTryCount: number;
 }
 
@@ -17,7 +17,7 @@ export interface OMLFacialData {
   message: string;
   /** The unique name generated and associated to a face when registering */
   name: string;
-  /** The unique id Luxand Face SDK tracker associate to a face in it's internal database */
+  /** The unique id Luxand Face SDK tracker associates to a face in it's internal database */
   id: number;
   /** Extra information about the face including age, expressions */
   extra: {
@@ -31,7 +31,7 @@ export interface OMLFacialData {
 /**
  * @name Luxand
  * @description
- * This plugin let you integrat Luxand Face SDK into your ionic projects, so you can implements face authentication easily in your applications.
+ * This plugin let you integrate Luxand Face SDK into your ionic projects, so you can implement face authentication easily in your application.
  *
  * @usage
  * ```typescript
