@@ -241,7 +241,7 @@ export class FirebaseVision extends IonicNativePlugin {
   barcodeDetector(file_uri: string): Promise<Barcode[]> {
     return;
   }
-    /**
+  /**
    * Recognize object in image
    * @param file_uri {string} Image URI
    * @return {Promise<ImageLabel[]>} Returns a promise that fulfills with the information about entities in an image
