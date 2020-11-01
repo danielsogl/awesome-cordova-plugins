@@ -180,6 +180,11 @@ export interface BarcodeDriverLicense {
   issuingCountry: string
 }
 
+export interface ImageLabel {
+  index: number,
+  confidence: number,
+  text: string
+}
 /**
  * @name Firebase Vision
  * @description
@@ -203,6 +208,10 @@ export interface BarcodeDriverLicense {
  *   .then((res: Barcode[]) => console.log(res))
  *   .catch((error: string) => console.error(error));
  *
+ * this.firebaseVision.imageLabeler(FILE_URI)
+ *   .then((res: ImageLabel[]) => console.log(res))
+ *   .catch((error: string) => console.error(error));
+ *
  * ```
  */
 @Plugin({
@@ -223,9 +232,22 @@ export class FirebaseVision extends IonicNativePlugin {
   onDeviceTextRecognizer(file_uri: string): Promise<string> {
     return;
   }
-
+  /**
+   * Read data from Barcode
+   * @param file_uri {string} Image URI
+   * @return {Promise<Barcode[]>} Returns a promise that fulfills with the data in barcode
+   */
   @Cordova()
   barcodeDetector(file_uri: string): Promise<Barcode[]> {
+    return;
+  }
+    /**
+   * Recognize object in image
+   * @param file_uri {string} Image URI
+   * @return {Promise<ImageLabel[]>} Returns a promise that fulfills with the information about entities in an image
+   */
+  @Cordova()
+  imageLabeler(file_uri: string): Promise<ImageLabel[]> {
     return;
   }
 }
