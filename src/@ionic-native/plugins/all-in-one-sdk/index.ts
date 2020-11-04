@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
  * Paytm All-in-One SDK plugin for Cordova/Ionic Applications
  * Paytm All-in-One SDK provides a swift, secure and seamless payment experience to your users by invoking the Paytm app (if installed on your user’s smartphone) to complete payment for your order.
  * Paytm All-in-One SDK enables payment acceptance via Paytm wallet, Paytm Payments Bank, saved Debit/Credit cards, Net Banking, BHIM UPI and EMI as available in your customer’s Paytm account. If Paytm app is not installed on a customer's device, the transaction will be processed via web view within the All-in-One SDK.
- * For more information about Paytm All-in-One SDK, please visit https://developer.paytm.com/docs/all-in-one-sdk/
+ * For more information about Paytm All-in-One SDK, please visit https://developer.paytm.com/docs/all-in-one-sdk/hybrid-apps/cordova/
  *
  * @usage
  * ```typescript
@@ -19,8 +19,8 @@ import { Observable } from 'rxjs';
  *
  * ...
  *
- * For below parameters see [documentation](https://developer.paytm.com/docs/all-in-one-sdk/)
- * let paymentIntent = { mid : merchantID, orderId: orderId, txnToken: transactionToken, amount: amount, isStaging: isStaging, callbackUrl:callBackURL }
+ * For below parameters see [documentation](https://developer.paytm.com/docs/all-in-one-sdk/hybrid-apps/cordova/)
+ * let paymentIntent = { mid : merchantID, orderId: orderId, txnToken: transactionToken, amount: amount, isStaging: isStaging, callbackUrl:callBackURL,  restrictAppInvoke:restrictAppInvoke  }
  *
  * this.allInOneSDK.startTransaction(paymentIntent)
  *   .then((res: any) => console.log(res))
@@ -66,7 +66,7 @@ export interface PaytmResponse{
 }
 
 /**
- * For below parameters see [documentation](https://developer.paytm.com/docs/all-in-one-sdk/)
+ * For below parameters see [documentation](https://developer.paytm.com/docs/all-in-one-sdk/hybrid-apps/cordova/)
  */
 export interface PaymentIntentModel{
     mid : string; // Merchant ID
@@ -75,4 +75,5 @@ export interface PaymentIntentModel{
     amount : string; // Amount
     isStaging: boolean; // Environment
     callbackUrl: string; // Callback URL
+    restrictAppInvoke: boolean; // To enable or disable the paytm app invocation
 }
