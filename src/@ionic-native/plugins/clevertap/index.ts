@@ -149,9 +149,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  createNotification(
-    extras: any
-  ): Promise<any> {
+  createNotification(extras: any): Promise<any> {
     return;
   }
 
@@ -662,42 +660,6 @@ export class CleverTap extends IonicNativePlugin {
     return;
   }
 
-  /****************************
-  * Notification Inbox methods
-  ****************************/
-  /**
-   * Call this method to initialize the App Inbox
-   */
-  @Cordova()
-  initializeInbox(): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this method to get the count of unread Inbox messages
-   */
-  @Cordova()
-  getInboxMessageUnreadCount(): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this method to get the count of total Inbox messages
-   */
-  @Cordova()
-  getInboxMessageCount(): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this method to open the App Inbox
-   * @param styleConfig : any or empty object
-   */
-  @Cordova()
-  showInbox(styleConfig: any): Promise<any> {
-    return;
-  }
-
   /**
    * Call this to Fetch all Inbox Messages
    * @returns {Promise<any>}
@@ -896,7 +858,6 @@ export class CleverTap extends IonicNativePlugin {
     return;
   }
 
-
   /**
    * Call this to Get Boolean Variable
    * @param varName {string}
@@ -904,10 +865,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getBooleanVariable(
-    varName: string,
-    defaultValue: boolean
-  ): Promise<any> {
+  getBooleanVariable(varName: string, defaultValue: boolean): Promise<any> {
     return;
   }
 
@@ -918,10 +876,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getDoubleVariable(
-    varName: string,
-    defaultValue: number
-  ): Promise<any> {
+  getDoubleVariable(varName: string, defaultValue: number): Promise<any> {
     return;
   }
 
@@ -932,10 +887,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getIntegerVariable(
-    varName: string,
-    defaultValue: number
-  ): Promise<any> {
+  getIntegerVariable(varName: string, defaultValue: number): Promise<any> {
     return;
   }
 
@@ -946,10 +898,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getStringVariable(
-    varName: string,
-    defaultValue: string
-  ): Promise<any> {
+  getStringVariable(varName: string, defaultValue: string): Promise<any> {
     return;
   }
 
@@ -960,10 +909,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getListOfBooleanVariable(
-    varName: string,
-    defaultValue: any
-  ): Promise<any> {
+  getListOfBooleanVariable(varName: string, defaultValue: any): Promise<any> {
     return;
   }
 
@@ -974,10 +920,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getListOfDoubleVariable(
-    varName: string,
-    defaultValue: any
-  ): Promise<any> {
+  getListOfDoubleVariable(varName: string, defaultValue: any): Promise<any> {
     return;
   }
 
@@ -988,10 +931,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getListOfIntegerVariable(
-    varName: string,
-    defaultValue: any
-  ): Promise<any> {
+  getListOfIntegerVariable(varName: string, defaultValue: any): Promise<any> {
     return;
   }
 
@@ -1002,10 +942,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getListOfStringVariable(
-    varName: string,
-    defaultValue: any
-  ): Promise<any> {
+  getListOfStringVariable(varName: string, defaultValue: any): Promise<any> {
     return;
   }
 
@@ -1016,10 +953,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getMapOfBooleanVariable(
-    varName: string,
-    defaultValue: any
-  ): Promise<any> {
+  getMapOfBooleanVariable(varName: string, defaultValue: any): Promise<any> {
     return;
   }
 
@@ -1030,10 +964,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getMapOfDoubleVariable(
-    varName: string,
-    defaultValue: any
-  ): Promise<any> {
+  getMapOfDoubleVariable(varName: string, defaultValue: any): Promise<any> {
     return;
   }
 
@@ -1044,10 +975,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getMapOfIntegerVariable(
-    varName: string,
-    defaultValue: any
-  ): Promise<any> {
+  getMapOfIntegerVariable(varName: string, defaultValue: any): Promise<any> {
     return;
   }
 
@@ -1058,10 +986,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getMapOfStringVariable(
-    varName: string,
-    defaultValue: any
-  ): Promise<any> {
+  getMapOfStringVariable(varName: string, defaultValue: any): Promise<any> {
     return;
   }
 
@@ -1111,10 +1036,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getFeatureFlag(
-    key: string,
-    defaultValue: string
-  ): Promise<any> {
+  getFeatureFlag(key: string, defaultValue: string): Promise<any> {
     return;
   }
 
@@ -1124,9 +1046,7 @@ export class CleverTap extends IonicNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  setDefaultsMap(
-    defaults: any
-  ): Promise<any> {
+  setDefaultsMap(defaults: any): Promise<any> {
     return;
   }
 
