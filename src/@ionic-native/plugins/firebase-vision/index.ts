@@ -1,6 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
+export interface Text {
+  text: string;
+  blocks: TextLine[];
+  imageHeight: number;
+  imageWidth: number;
+}
+
+export interface TextLine extends TextBlock {
+  lines: TextElement[]
+}
+
+export interface TextElement extends TextBlock {
+  elements: TextBlock[]
+}
+
+export interface TextBlock {
+  text: string;
+  cornerPoints: TextPoint[]
+  frame: TextFrame
+  recognizedLanguages: string
+}
+
+export interface TextPoint {
+  x: number,
+  y: number
+}
+
+export interface TextFrame {
+  x: number,
+  y: number,
+  width: number,
+  height: number
+}
+
 export enum BarcodeFormat {
   UNKNOWN = -1,
   ALL_FORMATS = 0,
@@ -96,6 +130,8 @@ export interface Barcode {
   rawValue: string
   displayValue: string
   cornerPoints: any
+  imageHeight: number
+  imageWidth: number
   email: BarcodeEmail
   phone: BarcodePhone
   sms: BarcodeSms
@@ -229,7 +265,7 @@ export class FirebaseVision extends IonicNativePlugin {
    * @return {Promise<string>} Returns a promise that fulfills with the text in the image
    */
   @Cordova()
-  onDeviceTextRecognizer(file_uri: string): Promise<string> {
+  onDeviceTextRecognizer(file_uri: string): Promise<Text> {
     return;
   }
   /**
