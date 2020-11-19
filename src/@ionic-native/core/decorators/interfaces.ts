@@ -34,6 +34,11 @@ export interface PluginConfig {
 export interface CordovaOptions {
   destruct?: boolean;
   /**
+   * If the method-name of the cordova plugin is different from the wrappers one, it can be defined here
+   */
+  methodName?: string;
+
+  /**
    * Set to true if the wrapped method is a sync function
    */
   sync?: boolean;
