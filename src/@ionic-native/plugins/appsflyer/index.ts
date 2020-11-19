@@ -94,7 +94,7 @@ export class Appsflyer extends IonicNativePlugin {
    * @param {string} eventName custom event name, is presented in your dashboard
    * @param {AppsflyerEvent} eventValues event details
    */
-  @Cordova({ sync: true })
+  @Cordova()
   logEvent(eventName: string, eventValues: AppsflyerEvent): void {}
 
   /**
