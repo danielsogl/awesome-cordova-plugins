@@ -245,6 +245,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {string} returns a string that represents the requestId
    */
   @Cordova({
+    methodName: 'post',
     sync: true,
   })
   postSync(
@@ -279,6 +280,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {string} returns a string that represents the requestId
    */
   @Cordova({
+    methodName: 'get',
     sync: true,
   })
   getSync(
@@ -313,6 +315,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {string} returns a string that represents the requestId
    */
   @Cordova({
+    methodName: 'put',
     sync: true,
   })
   putSync(
@@ -347,6 +350,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {string} returns a string that represents the requestId
    */
   @Cordova({
+    methodName: 'patch',
     sync: true,
   })
   patchSync(
@@ -381,6 +385,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {string} returns a string that represents the requestId
    */
   @Cordova({
+    methodName: 'delete',
     sync: true,
   })
   deleteSync(
@@ -415,6 +420,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {string} returns a string that represents the requestId
    */
   @Cordova({
+    methodName: 'head',
     sync: true,
   })
   headSync(
@@ -449,6 +455,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {string} returns a string that represents the requestId
    */
   @Cordova({
+    methodName: 'options',
     sync: true,
   })
   optionsSync(
@@ -487,6 +494,7 @@ export class HTTP extends IonicNativePlugin {
    * @returns {string} returns a string that represents the requestId
    */
   @Cordova({
+    methodName: 'uploadFile',
     sync: true,
   })
   uploadFileSync(
@@ -524,7 +532,10 @@ export class HTTP extends IonicNativePlugin {
    * @param failure {function} A callback that is called when the request failed
    * @returns {string} returns a string that represents the requestId
    */
-  @Cordova()
+  @Cordova({
+    methodName: 'downloadFile',
+    sync: true,
+  })
   downloadFileSync(
     url: string,
     body: any,
@@ -590,6 +601,7 @@ export class HTTP extends IonicNativePlugin {
    */
   @Cordova({
     methodName: 'sendRequest',
+    sync: true,
   })
   sendRequestSync(
     url: string,
