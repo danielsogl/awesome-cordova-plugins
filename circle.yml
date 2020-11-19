@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/ionic-native/
     docker:
-      - image: node:12
+      - image: node:14
     steps:
       - checkout
       - restore_cache:

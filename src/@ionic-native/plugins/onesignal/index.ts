@@ -304,6 +304,28 @@ export enum OSActionType {
 }
 
 /**
+ * Details about the In-App Message action element (button or image) that was tapped on.
+ */
+export interface OSInAppMessageAction {
+  /**
+   * An optional click name defined for the action element. null or nil (iOS) if not set.
+   */
+  click_name: string;
+  /**
+   * An optional URL that opens when the action takes place. null or nil (iOS) if not set.
+   */
+  click_url: string;
+  /**
+   * `true` if this is the first time the user has pressed any action on the In-App Message.
+   */
+  first_click: boolean;
+  /**
+   * If `true`, the In-App Message will animate off the screen. If `false`, the In-App Message will stay on screen until the user dismisses it.
+   */
+  closes_message: boolean;
+}
+
+/**
  * @name OneSignal
  * @description
  * The OneSignal plugin is an client implementation for using the [OneSignal](https://onesignal.com/) Service.
@@ -406,6 +428,7 @@ export enum OSActionType {
  * OSBackgroundImageLayout
  * OSNotificationOpenedResult
  * OSActionType
+ * OSInAppMessageAction
  */
 @Plugin({
   pluginName: 'OneSignal',
@@ -461,6 +484,18 @@ export class OneSignal extends IonicNativePlugin {
     observable: true,
   })
   handleNotificationOpened(): Observable<OSNotificationOpenedResult> {
+    return;
+  }
+
+  /**
+   * Use to process an In-App Message the user just tapped on.
+   *
+   * @return {Observable<OSInAppMessageAction>}
+   */
+  @Cordova({
+    observable: true,
+  })
+  handleInAppMessageClicked(): Observable<OSInAppMessageAction> {
     return;
   }
 
@@ -781,4 +816,67 @@ export class OneSignal extends IonicNativePlugin {
    */
   @Cordova()
   removeExternalUserId(): void {}
+
+  /**
+   * Add a trigger. May show an In-App Message if its trigger conditions were met.
+   *
+   * @param {string} key Key for the trigger.
+   * @param {string | number | Object} value Value for the trigger. String or number recommended. Object passed in will be converted to a string.
+   */
+  @Cordova({
+    sync: true,
+  })
+  addTrigger(key: string, value: string | number | Object): void {}
+
+  /**
+   * Add a map of triggers. May show an In-App Message if its trigger conditions were met.
+   *
+   * @param {Object.<string, string | number | Object>} triggers Allows you to set multiple trigger key/value pairs simultaneously. Pass a json object with key/value pairs like: `{"key": "value", "key2": "value2"}`.
+   */
+  @Cordova({
+    sync: true,
+  })
+  addTriggers(triggers: Object): void {}
+
+  /**
+   * Removes a single trigger for the given key. May show an In-App Message if its trigger conditions were met.
+   *
+   * @param {string} key Key for trigger to remove.
+   */
+  @Cordova({
+    sync: true,
+  })
+  removeTriggerForKey(key: string): void {}
+
+  /**
+   * Removes a list of triggers based on a collection (array) of keys. May show an In-App Message if its trigger conditions were met.
+   *
+   * @param {string[]} keys Removes a collection of triggers from their keys. Pass an array of trigger keys like: `["key1", "key2", "key3"]`.
+   */
+  @Cordova({
+    sync: true,
+  })
+  removeTriggersForKeys(keys: string[]): void {}
+
+  /**
+   * Gets a trigger value for a provided trigger key.
+   *
+   * @param {string} key Key for trigger to get value.
+   * @returns {Promise<string | number | Object>} Return value set with `addTrigger`, or `null`/`nil` (iOS) if never set or removed.
+   */
+  @Cordova()
+  getTriggerValueForKey(key: string): Promise<string | number | Object> {
+    return;
+  }
+
+  /**
+   * Allows you to temporarily pause all In-App Messages. You may want to do this while the user is engaged in an activity that you don't want a message to interrupt (such as watching a video).
+   * An In-App Message that would display if not paused will display right after resume if its conditions to display remains satisfied.
+   *
+   * @param {boolean} pause To pause, set `true`. To resume, set `false`.
+   */
+  @Cordova({
+    sync: true,
+  })
+  pauseInAppMessages(pause: boolean): void {}
 }

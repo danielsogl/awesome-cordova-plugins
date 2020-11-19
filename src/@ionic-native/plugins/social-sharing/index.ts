@@ -282,4 +282,21 @@ export class SocialSharing extends IonicNativePlugin {
   saveToPhotoAlbum(fileOrFileArray: string | string[]): Promise<any> {
     return;
   }
+  
+  /**
+   * Shares directly to a WhatsApp Contact with phone number.
+   * @param phone {string} Pass phone number
+   * @param message {string} Message to send
+   * @param fileOrFileArray fileOrFileArray Single or multiple files
+   * @param url {string} Link to send
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 5,
+    errorIndex: 6,
+    platforms: ['iOS', 'Android'],
+  })
+  shareViaWhatsAppToPhone(phone: string, message: string, fileOrFileArray: string | string[], url?: string): Promise<any> {
+    return;
+  }
 }

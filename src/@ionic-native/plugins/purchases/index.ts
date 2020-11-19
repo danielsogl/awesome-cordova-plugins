@@ -203,11 +203,11 @@ export enum INTRO_ELIGIBILITY_STATUS {
  * PurchaserInfo
  * PurchasesEntitlementInfos
  * PurchasesEntitlementInfo
- *
+ * PurchasesTransaction
  */
 @Plugin({
   pluginName: 'Purchases',
-  plugin: 'cordova-plugin-purchases@1.1.0',
+  plugin: 'cordova-plugin-purchases@1.3.2',
   pluginRef: 'Purchases', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/RevenueCat/cordova-plugin-purchases', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
@@ -259,9 +259,12 @@ export class Purchases extends IonicNativePlugin {
    * @param {boolean} observerMode An optional boolean. Set this to TRUE if you have your own IAP implementation and
    * want to use only RevenueCat's backend. Default is FALSE. If you are on Android and setting this to ON, you will have
    * to acknowledge the purchases yourself.
+   * @param {string?} userDefaultsSuiteName An optional string. iOS-only, will be ignored for Android.
+   * Set this if you would like the RevenueCat SDK to store its preferences in a different NSUserDefaults
+   * suite, otherwise it will use standardUserDefaults. Default is null, which will make the SDK use standardUserDefaults.
    */
   @Cordova({ sync: true })
-  setup(apiKey: string, appUserID?: string | null, observerMode = false): void {}
+  setup(apiKey: string, appUserID?: string | null, observerMode = false, userDefaultsSuiteName?: string): void {}
 
   /**
    * Set this to true if you are passing in an appUserID but it is anonymous, this is true by default if you didn't pass an appUserID
@@ -274,6 +277,9 @@ export class Purchases extends IonicNativePlugin {
 
   /**
    * Add a dict of attribution information
+   *
+   * @deprecated Use the set<NetworkId> functions instead.
+   *
    * @param {object} data Attribution data from any of the attribution networks in Purchases.ATTRIBUTION_NETWORKS
    * @param {ATTRIBUTION_NETWORK} network Which network, see Purchases.ATTRIBUTION_NETWORK
    * @param {string?} networkUserId An optional unique id for identifying the user. Needs to be a string.
@@ -539,8 +545,13 @@ export class Purchases extends IonicNativePlugin {
 
   /**
    * Invalidates the cache for purchaser information.
-   * This is useful for cases where purchaser information might have been updated outside of the app, like if a
-   * promotional subscription is granted through the RevenueCat dashboard.
+   *
+   * Most apps will not need to use this method; invalidating the cache can leave your app in an invalid state.
+   * Refer to https://docs.revenuecat.com/docs/purchaserinfo#section-get-user-information for more information on
+   * using the cache properly.
+   *
+   * This is useful for cases where purchaser information might have been updated outside of the
+   * app, like if a promotional subscription is granted through the RevenueCat dashboard.
    */
   @Cordova({ sync: true })
   invalidatePurchaserInfoCache(): void {}
@@ -565,30 +576,137 @@ export class Purchases extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   setEmail(email: string | null): void {}
+
   /**
    * Subscriber attribute associated with the phone number for the user
    *
    * @param phoneNumber Empty String or null will delete the subscriber attribute.
    */
-
   @Cordova({ sync: true })
   setPhoneNumber(phoneNumber: string | null): void {}
+
   /**
    * Subscriber attribute associated with the display name for the user
    *
    * @param displayName Empty String or null will delete the subscriber attribute.
    */
-
   @Cordova({ sync: true })
   setDisplayName(displayName: string | null): void {}
+
   /**
    * Subscriber attribute associated with the push token for the user
    *
-   * @param pushToken null will delete the subscriber attribute.
+   * @param pushToken Empty String or null will delete the subscriber attribute.
    */
-
   @Cordova({ sync: true })
   setPushToken(pushToken: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install media source for the user
+   *
+   * @param mediaSource Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setMediaSource(mediaSource: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install campaign for the user
+   *
+   * @param campaign Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setCampaign(campaign: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install ad group for the user
+   *
+   * @param adGroup Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setAdGroup(adGroup: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install ad for the user
+   *
+   * @param ad Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setAd(ad: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install keyword for the user
+   *
+   * @param keyword Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setKeyword(keyword: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install ad creative for the user
+   *
+   * @param creative Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setCreative(creative: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the Adjust Id for the user
+   * Required for the RevenueCat Adjust integration
+   *
+   * @param adjustID Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setAdjustId(adjustId: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the AppsFlyer Id for the user
+   * Required for the RevenueCat AppsFlyer integration
+   * @param appsflyerID Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setAppsflyerId(appsflyerId: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the Facebook SDK Anonymous Id for the user
+   * Recommended for the RevenueCat Facebook integration
+   *
+   * @param fbAnonymousID Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setFbAnonymousId(fbAnonymousId: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the mParticle Id for the user
+   * Recommended for the RevenueCat mParticle integration
+   *
+   * @param mparticleID Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setMparticleId(mparticleId: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the OneSignal Player Id for the user
+   * Required for the RevenueCat OneSignal integration
+   *
+   * @param onesignalID Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setOnesignalId(onesignalId: string | null): void {}
+
+  /**
+   * Automatically collect subscriber attributes associated with the device identifiers.
+   * $idfa, $idfv, $ip on iOS
+   * $gpsAdId, $androidId, $ip on Android
+   */
+  @Cordova({ sync: true })
+  collectDeviceIdentifiers(): void {}
+
+  /**
+   * Set this property to your proxy URL before configuring Purchases *only* if you've received a proxy key value from your RevenueCat contact.
+   * @param url Proxy URL as a string.
+   */
+  @Cordova({ sync: true })
+  setProxyURL(url: string): void {}
 }
 
 /**
@@ -694,6 +812,11 @@ export interface PurchaserInfo {
    */
   readonly allPurchasedProductIdentifiers: [string];
   /**
+   * Returns all the non-subscription purchases a user has made.
+   * The purchases are ordered by purchase date in ascending order.
+   */
+  readonly nonSubscriptionTransactions: [PurchasesTransaction];
+  /**
    * The latest expiration date of all purchased skus
    */
   readonly latestExpirationDate: string | null;
@@ -727,6 +850,33 @@ export interface PurchaserInfo {
    * in Android
    */
   readonly originalApplicationVersion: string | null;
+  /**
+   * Returns the purchase date for the version of the application when the user bought the app.
+   * Use this for grandfathering users when migrating to subscriptions.
+   */
+  readonly originalPurchaseDate: string | null;
+  /**
+   * URL to manage the active subscription of the user. If this user has an active iOS
+   * subscription, this will point to the App Store, if the user has an active Play Store subscription
+   * it will point there. If there are no active subscriptions it will be null.
+   * If there are multiple for different platforms, it will point to the device store.
+   */
+  readonly managementURL: string | null;
+}
+
+export interface PurchasesTransaction {
+  /**
+   * RevenueCat Id associated to the transaction.
+   */
+  readonly revenueCatId: string;
+  /**
+   * Product Id associated with the transaction.
+   */
+  readonly productId: string;
+  /**
+   * Purchase date of the transaction in ISO 8601 format.
+   */
+  readonly purchaseDate: string;
 }
 
 export interface PurchasesProduct {
