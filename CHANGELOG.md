@@ -1,3 +1,29 @@
+# [5.30.0](https://github.com/ionic-team/ionic-native/compare/v5.29.0...v5.30.0) (2020-11-20)
+
+
+### Bug Fixes
+
+* **clevertap:** remove duplicated methods ([ba39f7e](https://github.com/ionic-team/ionic-native/commit/ba39f7e9f217ebe72e78bcfeae3d7e9ac07187ae)), closes [#3517](https://github.com/ionic-team/ionic-native/issues/3517) [#3491](https://github.com/ionic-team/ionic-native/issues/3491)
+
+
+### Features
+
+* **AllInOneSDK:** add check to restrict app invocation ([#3570](https://github.com/ionic-team/ionic-native/issues/3570)) ([fd0cddc](https://github.com/ionic-team/ionic-native/commit/fd0cddc9d0abdc3006e6cf16c1f80d0551b71cd2))
+* **AppsFlyer:** update to 6.x.x ([#3563](https://github.com/ionic-team/ionic-native/issues/3563)) ([e486cfd](https://github.com/ionic-team/ionic-native/commit/e486cfd9bff2fd0bdd4ccfc9cb91b450b7218aef))
+* **background-upload:** add plugin ([#3539](https://github.com/ionic-team/ionic-native/issues/3539)) ([13f6da6](https://github.com/ionic-team/ionic-native/commit/13f6da69ef622923bf2c746fbecb18a7cf959b82))
+* **bluetooth-le:** Allow specifying transport mode for Android ([#3571](https://github.com/ionic-team/ionic-native/issues/3571)) ([b3d5baa](https://github.com/ionic-team/ionic-native/commit/b3d5baa46ed695344b08bd3e27be3b9f84bf6f0d))
+* **core:** add `methodName` to Cordova Decorator ([#3558](https://github.com/ionic-team/ionic-native/issues/3558)) ([46853b4](https://github.com/ionic-team/ionic-native/commit/46853b42120b4b34b727ef0ae0274d1c8cb7bcd1)), closes [#3557](https://github.com/ionic-team/ionic-native/issues/3557)
+* **CustomUiSDK:** add plugin for Paytm Custom UI SDK ([#3546](https://github.com/ionic-team/ionic-native/issues/3546)) ([bb10642](https://github.com/ionic-team/ionic-native/commit/bb1064225d276cffcd40ff9176b77ffb9d56ed8a))
+* **dfu-update:** add DfuUpdate Plugin Wrapper ([#3514](https://github.com/ionic-team/ionic-native/issues/3514)) ([07d7ace](https://github.com/ionic-team/ionic-native/commit/07d7ace97d1b122424964f6e7330bf97710dcc8f))
+* **firebase-dynamic-links:** Add missing method getDynamicLink() ([#3567](https://github.com/ionic-team/ionic-native/issues/3567)) ([d7c6f86](https://github.com/ionic-team/ionic-native/commit/d7c6f8628d176119cabae444c02f285a8c36997d))
+* **firebase-vision:** add image labelling ([#3569](https://github.com/ionic-team/ionic-native/issues/3569)) ([af114f4](https://github.com/ionic-team/ionic-native/commit/af114f48e46b4f7f1ce66bb2906585158aa5cff0))
+* **intercom:** added displayCarousel, displayArticle, setBottomPadding ([#3572](https://github.com/ionic-team/ionic-native/issues/3572)) ([68d245e](https://github.com/ionic-team/ionic-native/commit/68d245ef2c85dfff0aedb444db629d59986e06b4))
+* **multiple-document-picker:** add plugin ([#3551](https://github.com/ionic-team/ionic-native/issues/3551)) ([78e9242](https://github.com/ionic-team/ionic-native/commit/78e92422abb5a645ed09bf61b7dc250462ccc742))
+* **purchases:** update to plugin version 1.3.2 ([#3566](https://github.com/ionic-team/ionic-native/issues/3566)) ([0f197ad](https://github.com/ionic-team/ionic-native/commit/0f197ad9fcd4e56c0c61bd87c6aec76889af6ab2))
+* **smartlook:** update to 1.6.0 ([#3562](https://github.com/ionic-team/ionic-native/issues/3562)) ([f71b65d](https://github.com/ionic-team/ionic-native/commit/f71b65d6a79d22175c27b960f27ef51ea6a87ed4))
+
+
+
 # [5.29.0](https://github.com/ionic-team/ionic-native/compare/v5.28.0...v5.29.0) (2020-10-16)
 
 
