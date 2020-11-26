@@ -874,4 +874,8 @@ export class InAppPurchase2 extends IonicNativePlugin {
   /** Opens the Manage Subscription page (AppStore, Play, Microsoft, ...). */
   @Cordova({ sync: true })
   manageSubscriptions(): void {}
+
+  /** Opens the Code Redemption Sheet on iOS. (AppStore). */
+  @Cordova({ sync: true })
+  redeem(): void {}
 }
