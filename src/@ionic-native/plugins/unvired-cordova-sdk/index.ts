@@ -563,7 +563,7 @@ export class AuthenticateLocalResult extends UnviredResult {
  */
 @Plugin({
   pluginName: 'UnviredCordovaSDK',
-  plugin: 'https://github.com/unvired/cordova-plugin-unvired-sdk', // npm package name, example: cordova-plugin-camera
+  plugin: 'cordova-plugin-unvired-sdk', // npm package name, example: cordova-plugin-camera
   pluginRef: 'ump', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/unvired/cordova-plugin-unvired-sdk/', // the github repository URL for the plugin
   install: 'ionic cordova plugin add @ionic-native/unvired-cordova-sdk', // OPTIONAL install command, in case the plugin requires variables
