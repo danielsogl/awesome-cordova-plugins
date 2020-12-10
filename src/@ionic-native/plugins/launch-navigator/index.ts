@@ -173,6 +173,11 @@ export interface LaunchNavigatorOptions {
   enableGeolocation?: boolean;
 
   /**
+   * If true, and input location type(s) doesn't match those required by the app, use geocoding to obtain the address/coords as required. Defaults to true.
+   */
+  enableGeocoding?: boolean;
+
+  /**
    * options related to the default native actionsheet picker which enables user to select which navigation app to launch if `app` is not specified.
    */
   appSelection?: AppSelectionOptions;
