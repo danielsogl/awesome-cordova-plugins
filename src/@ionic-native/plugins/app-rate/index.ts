@@ -93,20 +93,30 @@ export interface AppRateCustomLocale {
   feedbackPromptMessage?: string;
 }
 
+export interface AppRateLocales {
+  addLocale(localeObject: AppRateCustomLocale): AppRateCustomLocale
+
+  getLocale(language: string, applicationTitle?: string, customLocale?: AppRateCustomLocale)
+
+  getLocalesNames(): { [prop: string]: AppRateCustomLocale; }
+}
+
 export interface AppRateCallbacks {
   /**
    * call back function. called when user clicked on rate-dialog buttons
    */
-  onButtonClicked?: Function;
+  onButtonClicked?: (buttonIndex: number) => void;
 
   /**
    * call back function. called when rate-dialog showing
    */
-  onRateDialogShow?: Function;
+  onRateDialogShow?: (rateCallback: (buttonIndex: number) => void) => void;
   /**
    * call back function. called when user clicked on negative feedback
    */
-  handleNegativeFeedback?: Function;
+  handleNegativeFeedback?: () => void;
+
+  done?: () => void;
 }
 
 export interface AppUrls {
@@ -197,15 +207,43 @@ export class AppRate extends IonicNativePlugin {
   preferences: AppRatePreferences;
 
   /**
+   * Manager custom locales
+   */
+  @CordovaProperty()
+  locales: AppRateLocales;
+
+  /**
+   * Set preferences
+   * @return void
+   */
+  @Cordova()
+  setPreferences(pref: AppRatePreferences): void {
+    return;
+  }
+
+  /**
+   * Get preferences
+   * @return AppRatePreferences
+   */
+  @Cordova()
+  getPreferences(): AppRatePreferences {
+    return;
+  }
+
+  /**
    * Prompts the user for rating
    * @param {boolean} immediately  Show the rating prompt immediately.
    */
   @Cordova()
-  promptForRating(immediately: boolean): void {}
+  promptForRating(immediately?: boolean): void {
+    return;
+  }
+
 
   /**
    * Immediately send the user to the app store rating page
    */
   @Cordova()
-  navigateToAppStore(): void {}
+  navigateToAppStore(): void {
+  }
 }
