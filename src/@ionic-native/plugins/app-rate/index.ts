@@ -1,6 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
+export enum AppRateReviewTypeIos {
+  /**
+   * Write review directly in your application (iOS 10.3+), limited to 3 prompts per year.
+   * Will fallback to 'AppStoreReview' for other iOS versions
+   */
+  InAppReview = 'InAppReview',
+  /**
+   * Open the store within the app. Use this option as an alternative to inAppReview to avoid the rate action from doing nothing
+   */
+  AppStoreReview = 'AppStoreReview',
+  /**
+   * Open the store using the openUrl preference (defaults to InAppBrowser). Be advised that WKWebView might not open the app store links
+   */
+  InAppBrowser = 'InAppBrowser'
+}
+
+export enum AppRateReviewTypeAndroid {
+  /**
+   * Write review directly in your application. Will fallback to InAppBrowser if not available
+   */
+  InAppReview = 'InAppReview',
+  /**
+   *  Open the store using the openUrl preference (defaults to InAppBrowser)
+   */
+  InAppBrowser = 'InAppBrowser',
+}
+
 export interface AppRatePreferences {
   /**
    * Custom BCP 47 language tag
@@ -22,11 +49,29 @@ export interface AppRatePreferences {
    */
   usesUntilPrompt?: number;
 
+  reviewType?: {
+    /**
+     * the type of review display to show the user on iOS
+     * Default: AppStoreReview
+     */
+    ios?: AppRateReviewTypeIos
+    /**
+     * the type of review display to show the user on Android
+     * Default: InAppBrowser
+     */
+    android?: AppRateReviewTypeAndroid
+  }
+  
   /**
    * Simple Mode to display the rate dialog directly and bypass negative feedback filtering flow
    */
   simpleMode?: boolean;
 
+  /**
+   * Disabling would skip displaying a rate dialog if in app review is set and available. Defaults to `true`
+   */
+  showPromptForInAppReview?: boolean;
+  
   /**
    * leave app or no when application page opened in app store (now supported only for iOS). Defaults to `false`
    */
