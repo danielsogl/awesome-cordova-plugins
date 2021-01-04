@@ -24,7 +24,7 @@ export interface FacebookLoginResponse {
  * @description
  * Use the Facebook Connect plugin to obtain access to the native FB application on iOS and Android.
  *
- * Requires Cordova plugin: `cordova-plugin-facebook4`. For more info, please see the [Facebook Connect](https://github.com/jeduan/cordova-plugin-facebook4).
+ * Requires Cordova plugin: `cordova-plugin-facebook-connect`. For more info, please see the [Facebook Connect](https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect).
  *
  * #### Installation
  *
@@ -39,7 +39,7 @@ export interface FacebookLoginResponse {
  * Then type in the following command in your Terminal, where APP_ID and APP_NAME are the values from the Facebook Developer portal.
  *
  * ```bash
- *  ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"
+ *  ionic cordova plugin add cordova-plugin-facebook-connect --variable APP_ID="123456789" --variable APP_NAME="myApplication"
  * ```
  *
  * After, you'll need to add the native platforms you'll be using to your app in the Facebook Developer portal under your app's Settings:
@@ -107,11 +107,11 @@ export interface FacebookLoginResponse {
  */
 @Plugin({
   pluginName: 'Facebook',
-  plugin: 'cordova-plugin-facebook4',
+  plugin: 'cordova-plugin-facebook-connect',
   pluginRef: 'facebookConnectPlugin',
-  repo: 'https://github.com/jeduan/cordova-plugin-facebook4',
+  repo: 'https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect',
   install:
-    'ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"',
+    'ionic cordova plugin add cordova-plugin-facebook-connect --variable APP_ID="123456789" --variable APP_NAME="myApplication"',
   installVariables: ['APP_ID', 'APP_NAME'],
   platforms: ['Android', 'iOS', 'Browser'],
 })
@@ -243,7 +243,7 @@ export class Facebook extends IonicNativePlugin {
    * }
    * ```
    *
-   * For more options see the [Cordova plugin docs](https://github.com/jeduan/cordova-plugin-facebook4#show-a-dialog) and the [Facebook docs](https://developers.facebook.com/docs/javascript/reference/FB.ui)
+   * For more options see the [Cordova plugin docs](https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect#show-a-dialog) and the [Facebook docs](https://developers.facebook.com/docs/javascript/reference/FB.ui)
    * @param {Object} options The dialog options
    * @returns {Promise<any>} Returns a Promise that resolves with success data, or rejects with an error
    */
