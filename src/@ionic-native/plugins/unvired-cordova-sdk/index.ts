@@ -206,7 +206,7 @@ export enum NotificationListenerType {
   /**
    * Notify when the sent item count changes.
    */
-  SentItemChanged = 11
+  SentItemChanged = 11,
 }
 
 export enum AttachmentItemStatus {
@@ -802,6 +802,21 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * Get User settings.
+   * Returns User setting in the following format:
+   * ```
+   * {
+   * "UNVIRED_ID": "",                               // The Unvired ID configured in UMP
+   * "USER_ID": "",                                  // Deprecated. Select among UNVIRED_ID / EMAIL / ADS_USER_ID / SAP_USER_ID depending on the LoginType
+   * "FULL_NAME": "FirstName LastName",
+   * "EMAIL": "abc@example.com",                     // Email id of the user as configurd in UMP
+   * "SERVER_URL": "https://umpdev.unvired.io/UMP",  // UMP Server's URL
+   * "SAP_USER_ID": "SAP_ID",                        // If LoginType is SAP
+   * "SAP_PORT_NAME": "",                            // If LoginType is SAP
+   * "LOGIN_TYPE": "",                               // @see LoginType
+   * "ADS_USER_ID": "ADS_USER_ID",                   // If LoginType is ADS
+   * "ADS_DOMAIN": "ADS_DOMAIN"                      // If LoginType is ADS
+   * }
+   * ```
    */
   @Cordova()
   userSettings(): Promise<SettingsResult> {
