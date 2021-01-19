@@ -287,6 +287,19 @@ export class Facebook extends IonicNativePlugin {
   }
 
   /**
+   * Enable or disable the auto log app event feature - https://developers.facebook.com/docs/app-events/gdpr-compliance/
+   *
+   * @param {boolean}  enabled value to be set
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  setAutoLogAppEventsEnabled(enabled: boolean): Promise<void> {
+    return;
+  }
+
+  /**
    * Log a purchase. For more information see the Events section above.
    *
    * @param {number}  value Value of the purchase.
