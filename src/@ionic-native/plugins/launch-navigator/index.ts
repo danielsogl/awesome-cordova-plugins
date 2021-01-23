@@ -168,12 +168,12 @@ export interface LaunchNavigatorOptions {
   launchModeAppleMaps?: string;
 
   /**
-   * If true, and input location type(s) doesn't match those required by the app, use geocoding to obtain the address/coords as required. Defaults to true.
+   * (Windows only) If false, the plugin will NOT attempt to use the geolocation plugin to determine the current device position when the start location parameter is omitted. Defaults to true.
    */
   enableGeolocation?: boolean;
 
   /**
-   * If true, and input location type(s) doesn't match those required by the app, use geocoding to obtain the address/coords as required. Defaults to true.
+   * (Android and iOS only) If true, and input location type(s) doesn't match those required by the app, use geocoding to obtain the address/coords as required. Defaults to true.
    */
   enableGeocoding?: boolean;
 
