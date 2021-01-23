@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 export interface PromptsOptions {
   /**
@@ -302,6 +302,8 @@ export class LaunchNavigator extends IonicNativePlugin {
     BICYCLING: 'bicycling',
     TRANSIT: 'transit',
   };
+
+  @CordovaProperty()
   appSelection: AppSelection;
 
   /**

@@ -127,6 +127,16 @@ export class FirebaseAuthentication extends IonicNativePlugin {
   }
 
   /**
+   * Uses Apples's idToken and rawNonce (optional) to sign-in into firebase account. In order to retrieve those tokens follow instructions for Android and iOS
+   * @param idToken ID Token
+   * @param rawNonce Access Token
+   */
+  @Cordova({ sync: true })
+  signInWithApple(identityToken: string, rawNonce?: string): Promise<any> {
+    return;
+  }
+
+  /**
    * Uses Facebook's accessToken to sign-in into firebase account. In order to retrieve those tokens follow instructions for Android and iOS.
    * @param accessToken Access Token
    */
