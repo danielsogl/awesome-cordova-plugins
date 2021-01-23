@@ -263,10 +263,11 @@ export class Facebook extends IonicNativePlugin {
    *
    * @param {string}  requestPath Graph API endpoint you want to call
    * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) for this request.
+   * @param {string}  httpMethod HTTP method for the request, one of "GET", "POST", or "DELETE" (default is "GET")
    * @returns {Promise<any>} Returns a Promise that resolves with the result of the request, or rejects with an error
    */
   @Cordova()
-  api(requestPath: string, permissions: string[]): Promise<any> {
+  api(requestPath: string, permissions: string[], httpMethod?: string): Promise<any> {
     return;
   }
 
@@ -291,10 +292,11 @@ export class Facebook extends IonicNativePlugin {
    *
    * @param {number}  value Value of the purchase.
    * @param {string}  currency The currency, as an [ISO 4217 currency code](http://en.wikipedia.org/wiki/ISO_4217)
+   * @param {Object}  params An object containing extra data to log with the event
    * @returns {Promise<any>}
    */
   @Cordova()
-  logPurchase(value: number, currency: string): Promise<any> {
+  logPurchase(value: number, currency: string, params?: Object): Promise<any> {
     return;
   }
 
