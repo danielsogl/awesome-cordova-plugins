@@ -207,7 +207,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
  */
 @Plugin({
   pluginName: 'Purchases',
-  plugin: 'cordova-plugin-purchases@1.3.2',
+  plugin: 'cordova-plugin-purchases@2.0.0',
   pluginRef: 'Purchases', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/RevenueCat/cordova-plugin-purchases', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
@@ -317,31 +317,6 @@ export class Purchases extends IonicNativePlugin {
    * @property {string} productIdentifier - The product identifier that has been purchased
    * @property {PurchaserInfo} purchaserInfo - The new PurchaserInfo after the successful purchase
    */
-
-  /**
-   * Make a purchase
-   *
-   * @deprecated Use purchaseProduct instead.
-   *
-   * @param {string} productIdentifier The product identifier of the product you want to purchase.
-   * @param {string?} oldSKU Optional sku you wish to upgrade from.
-   * @param {PURCHASE_TYPE} type Optional type of product, can be inapp or subs. Subs by default
-   *
-   * @return {Promise<MakePurchaseResponse>} A [PurchasesError] is triggered after an error or when the user cancels the purchase.
-   * If user cancelled, userCancelled will be true
-   */
-  @Cordova({
-    successIndex: 1,
-    errorIndex: 2,
-    observable: true,
-  })
-  makePurchase(
-    productIdentifier: string,
-    oldSKU?: string | null,
-    type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS
-  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo }> {
-    return;
-  }
 
   /**
    * Make a purchase
@@ -479,10 +454,18 @@ export class Purchases extends IonicNativePlugin {
    * This method will send all the purchases to the RevenueCat backend. Call this when using your own implementation
    * for subscriptions anytime a sync is needed, like after a successful purchase.
    *
-   * @warning This function should only be called if you're not calling makePurchase.
+   * @warning This function should only be called if you're not calling purchaseProduct.
    */
   @Cordova({ sync: true })
   syncPurchases(): void {}
+
+  /**
+   * iOS only. Presents a code redemption sheet, useful for redeeming offer codes
+   * Refer to https://docs.revenuecat.com/docs/ios-subscription-offers#offer-codes for more information on how
+   * to configure and use offer codes.
+   */
+  @Cordova({ sync: true })
+  presentCodeRedemptionSheet(): void {}
 
   /**
    * Enable automatic collection of Apple Search Ads attribution. Disabled by default.
