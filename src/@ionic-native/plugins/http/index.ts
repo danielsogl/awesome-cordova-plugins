@@ -24,6 +24,10 @@ export interface HTTPResponse {
   error?: string;
 }
 
+interface AbortedResponse {
+  aborted: boolean;
+}
+
 /**
  * @name HTTP
  * @description
@@ -84,6 +88,7 @@ export class HTTP extends IonicNativePlugin {
     UNSUPPORTED_URL: number;
     NOT_CONNECTED: number;
     POST_PROCESSING_FAILED: number;
+    ABORTED: number;
   };
 
   /**
@@ -231,6 +236,29 @@ export class HTTP extends IonicNativePlugin {
   }
 
   /**
+   * Make a sync POST request
+   * @param url {string} The url to send the request to
+   * @param body {Object} The body of the request
+   * @param headers {Object} The headers to set for this request
+   * @param success {function} A callback that is called when the request succeed
+   * @param failure {function} A callback that is called when the request failed
+   * @returns {string} returns a string that represents the requestId
+   */
+  @Cordova({
+    methodName: 'post',
+    sync: true,
+  })
+  postSync(
+    url: string,
+    body: any,
+    headers: any,
+    success: (result: HTTPResponse) => void,
+    failure: (error: any) => void
+  ): string {
+    return;
+  }
+
+  /**
    * Make a GET request
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
@@ -239,6 +267,29 @@ export class HTTP extends IonicNativePlugin {
    */
   @Cordova()
   get(url: string, parameters: any, headers: any): Promise<HTTPResponse> {
+    return;
+  }
+
+  /**
+   * Make a sync GET request
+   * @param url {string} The url to send the request to
+   * @param parameters {Object} Parameters to send with the request
+   * @param headers {Object} The headers to set for this request
+   * @param success {function} A callback that is called when the request succeed
+   * @param failure {function} A callback that is called when the request failed
+   * @returns {string} returns a string that represents the requestId
+   */
+  @Cordova({
+    methodName: 'get',
+    sync: true,
+  })
+  getSync(
+    url: string,
+    parameters: any,
+    headers: any,
+    success: (result: HTTPResponse) => void,
+    failure: (error: any) => void
+  ): string {
     return;
   }
 
@@ -255,6 +306,29 @@ export class HTTP extends IonicNativePlugin {
   }
 
   /**
+   * Make a sync PUT request
+   * @param url {string} The url to send the request to
+   * @param body {Object} The body of the request
+   * @param headers {Object} The headers to set for this request
+   * @param success {function} A callback that is called when the request succeed
+   * @param failure {function} A callback that is called when the request failed
+   * @returns {string} returns a string that represents the requestId
+   */
+  @Cordova({
+    methodName: 'put',
+    sync: true,
+  })
+  putSync(
+    url: string,
+    body: any,
+    headers: any,
+    success: (result: HTTPResponse) => void,
+    failure: (error: any) => void
+  ): string {
+    return;
+  }
+
+  /**
    * Make a PATCH request
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
@@ -263,6 +337,29 @@ export class HTTP extends IonicNativePlugin {
    */
   @Cordova()
   patch(url: string, body: any, headers: any): Promise<HTTPResponse> {
+    return;
+  }
+
+  /**
+   * Make a sync PATCH request
+   * @param url {string} The url to send the request to
+   * @param body {Object} The body of the request
+   * @param headers {Object} The headers to set for this request
+   * @param success {function} A callback that is called when the request succeed
+   * @param failure {function} A callback that is called when the request failed
+   * @returns {string} returns a string that represents the requestId
+   */
+  @Cordova({
+    methodName: 'patch',
+    sync: true,
+  })
+  patchSync(
+    url: string,
+    body: any,
+    headers: any,
+    success: (result: HTTPResponse) => void,
+    failure: (error: any) => void
+  ): string {
     return;
   }
 
@@ -279,6 +376,29 @@ export class HTTP extends IonicNativePlugin {
   }
 
   /**
+   * Make a sync DELETE request
+   * @param url {string} The url to send the request to
+   * @param parameters {Object} Parameters to send with the request
+   * @param headers {Object} The headers to set for this request
+   * @param success {function} A callback that is called when the request succeed
+   * @param failure {function} A callback that is called when the request failed
+   * @returns {string} returns a string that represents the requestId
+   */
+  @Cordova({
+    methodName: 'delete',
+    sync: true,
+  })
+  deleteSync(
+    url: string,
+    parameters: any,
+    headers: any,
+    success: (result: HTTPResponse) => void,
+    failure: (error: any) => void
+  ): string {
+    return;
+  }
+
+  /**
    * Make a HEAD request
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
@@ -291,6 +411,29 @@ export class HTTP extends IonicNativePlugin {
   }
 
   /**
+   * Make a sync HEAD request
+   * @param url {string} The url to send the request to
+   * @param parameters {Object} Parameters to send with the request
+   * @param headers {Object} The headers to set for this request
+   * @param success {function} A callback that is called when the request succeed
+   * @param failure {function} A callback that is called when the request failed
+   * @returns {string} returns a string that represents the requestId
+   */
+  @Cordova({
+    methodName: 'head',
+    sync: true,
+  })
+  headSync(
+    url: string,
+    parameters: any,
+    headers: any,
+    success: (result: HTTPResponse) => void,
+    failure: (error: any) => void
+  ): string {
+    return;
+  }
+
+  /**
    * Make an OPTIONS request
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
@@ -299,6 +442,29 @@ export class HTTP extends IonicNativePlugin {
    */
   @Cordova()
   options(url: string, parameters: any, headers: any): Promise<HTTPResponse> {
+    return;
+  }
+
+  /**
+   * Make an sync OPTIONS request
+   * @param url {string} The url to send the request to
+   * @param parameters {Object} Parameters to send with the request
+   * @param headers {Object} The headers to set for this request
+   * @param success {function} A callback that is called when the request succeed
+   * @param failure {function} A callback that is called when the request failed
+   * @returns {string} returns a string that represents the requestId
+   */
+  @Cordova({
+    methodName: 'options',
+    sync: true,
+  })
+  optionsSync(
+    url: string,
+    parameters: any,
+    headers: any,
+    success: (result: HTTPResponse) => void,
+    failure: (error: any) => void
+  ): string {
     return;
   }
 
@@ -321,11 +487,63 @@ export class HTTP extends IonicNativePlugin {
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
+   * @param filePath {string} The local path(s) of the file(s) to upload
+   * @param name {string} The name(s) of the parameter to pass the file(s) along as
+   * @param success {function} A callback that is called when the request succeed
+   * @param failure {function} A callback that is called when the request failed
+   * @returns {string} returns a string that represents the requestId
+   */
+  @Cordova({
+    methodName: 'uploadFile',
+    sync: true,
+  })
+  uploadFileSync(
+    url: string,
+    body: any,
+    headers: any,
+    filePath: string | string[],
+    name: string | string[],
+    success: (result: any) => void,
+    failure: (error: any) => void
+  ): string {
+    return;
+  }
+
+  /**
+   *
+   * @param url {string} The url to send the request to
+   * @param body {Object} The body of the request
+   * @param headers {Object} The headers to set for this request
    * @param filePath {string} The path to download the file to, including the file name.
    * @returns {Promise<any>} returns a FileEntry promise that will resolve on success, and reject on failure
    */
   @Cordova()
   downloadFile(url: string, body: any, headers: any, filePath: string): Promise<any> {
+    return;
+  }
+
+  /**
+   *
+   * @param url {string} The url to send the request to
+   * @param body {Object} The body of the request
+   * @param headers {Object} The headers to set for this request
+   * @param filePath {string} The path to download the file to, including the file name.
+   * @param success {function} A callback that is called when the request succeed
+   * @param failure {function} A callback that is called when the request failed
+   * @returns {string} returns a string that represents the requestId
+   */
+  @Cordova({
+    methodName: 'downloadFile',
+    sync: true,
+  })
+  downloadFileSync(
+    url: string,
+    body: any,
+    headers: any,
+    filePath: string,
+    success: (result: any) => void,
+    failure: (error: any) => void
+  ): string {
     return;
   }
 
@@ -360,6 +578,55 @@ export class HTTP extends IonicNativePlugin {
       responseType?: 'text' | 'arraybuffer' | 'blob' | 'json';
     }
   ): Promise<HTTPResponse> {
+    return;
+  }
+
+  /**
+   *
+   * @param url {string} The url to send the request to
+   * @param options {Object} options for individual request
+   * @param options.method {string} request method
+   * @param options.data {Object} payload to be send to the server (only applicable on post, put or patch methods)
+   * @param options.params {Object} query params to be appended to the URL (only applicable on get, head, delete, upload or download methods)
+   * @param options.serializer {string} data serializer to be used (only applicable on post, put or patch methods), defaults to global serializer value, see setDataSerializer for supported values
+   * @param options.timeout {number} timeout value for the request in seconds, defaults to global timeout value
+   * @param options.headers {Object} headers object (key value pair), will be merged with global values
+   * @param options.filePath {string} file path(s) to be used during upload and download see uploadFile and downloadFile for detailed information
+   * @param options.name {string} name(s) to be used during upload see uploadFile for detailed information
+   * @param options.responseType {string} response type, defaults to text
+   * @param success {function} A callback that is called when the request succeed
+   * @param failure {function} A callback that is called when the request failed
+   *
+   * @returns {string} returns a string that represents the requestId
+   */
+  @Cordova({
+    methodName: 'sendRequest',
+    sync: true,
+  })
+  sendRequestSync(
+    url: string,
+    options: {
+      method: 'get' | 'post' | 'put' | 'patch' | 'head' | 'delete' | 'options' | 'upload' | 'download';
+      data?: { [index: string]: any };
+      params?: { [index: string]: string | number };
+      serializer?: 'json' | 'urlencoded' | 'utf8' | 'multipart';
+      timeout?: number;
+      headers?: { [index: string]: string };
+      filePath?: string | string[];
+      name?: string | string[];
+      responseType?: 'text' | 'arraybuffer' | 'blob' | 'json';
+    },
+    success: (result: HTTPResponse) => void,
+    failure: (error: any) => void
+  ): string {
+    return;
+  }
+
+  /**
+   * @param requestId {string} The RequestId of the request to abort
+   */
+  @Cordova()
+  abort(requestId: string): Promise<AbortedResponse> {
     return;
   }
 }
