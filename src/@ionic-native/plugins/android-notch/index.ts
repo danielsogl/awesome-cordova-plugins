@@ -10,7 +10,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
  *
  * @usage
  * ```typescript
- * import { AndroidNotch } from '@ionic-native/android-notch';
+ * import { AndroidNotch } from '@ionic-native/android-notch/nx';
  *
  *
  * constructor(private androidNotch: AndroidNotch) { }
