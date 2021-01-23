@@ -14,7 +14,8 @@ export type Event =
   | 'installationUpdated'
   | 'userUpdated'
   | 'personalized'
-  | 'depersonalized';
+  | 'depersonalized'
+  | 'deeplink';
 
 export interface CustomEvent {
   definitionId: string;
@@ -27,6 +28,7 @@ export interface Configuration {
    */
   applicationCode: string;
   geofencingEnabled?: boolean;
+  inAppChatEnabled?: boolean;
   /**
    * Message storage save callback
    */
@@ -74,11 +76,11 @@ export interface UserData {
   lastName?: string;
   middleName?: string;
   gender?: Gender;
-  birthday?: Date;
+  birthday?: string;
   phones?: string[];
   emails?: string[];
   tags?: string[];
-  customAttributes?: Record<string, string | number | boolean>;
+  customAttributes?: Record<string, string | number | boolean | any[]>;
 }
 
 export interface Installation {
@@ -108,7 +110,7 @@ export interface UserIdentity {
 
 export interface PersonalizeContext {
   userIdentity: UserIdentity;
-  userAttributes?: Record<string, string>;
+  userAttributes?: Record<string, string | number | boolean | any[]>;
   forceDepersonalize?: boolean;
 }
 
