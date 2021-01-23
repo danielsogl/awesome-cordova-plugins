@@ -1,3 +1,12 @@
+## [5.31.1](https://github.com/ionic-team/ionic-native/compare/v5.31.0...v5.31.1) (2021-01-23)
+
+
+### Bug Fixes
+
+* **build:** add correct build script typings ([f7a3c71](https://github.com/ionic-team/ionic-native/commit/f7a3c7127a17a53e911119fc87c7149d356315bb))
+
+
+
 # [5.31.0](https://github.com/ionic-team/ionic-native/compare/v5.30.0...v5.31.0) (2021-01-23)
 
 
