@@ -1,3 +1,40 @@
+# [5.31.0](https://github.com/ionic-team/ionic-native/compare/v5.30.0...v5.31.0) (2021-01-23)
+
+
+### Bug Fixes
+
+* **firebase-messaging:** adjust  deleteToken/removeToken signature ([72c9960](https://github.com/ionic-team/ionic-native/commit/72c99603db5b1b2998c3d1e9a920e38f75e0f47b))
+* **launch-navigator:** enableGeolocation and enableGeocoding typings ([#3584](https://github.com/ionic-team/ionic-native/issues/3584)) ([6b18c3d](https://github.com/ionic-team/ionic-native/commit/6b18c3d0614db1f525aaecfb9e09067537061ba9))
+* **launchnavigator:** make appSelection accessible ([#3594](https://github.com/ionic-team/ionic-native/issues/3594)) ([26fd76d](https://github.com/ionic-team/ionic-native/commit/26fd76dad06764c288e2902c0edbe0dbb5e668c7))
+
+
+### chore
+
+* **package:** upgrade to angular 11 ([a96faf1](https://github.com/ionic-team/ionic-native/commit/a96faf13784ed30a5fc645dc769e44960242cb4f))
+
+
+### Features
+
+* **advanced-http:** duplicate methods sync to be able to abort requests ([#3575](https://github.com/ionic-team/ionic-native/issues/3575)) ([0efa33f](https://github.com/ionic-team/ionic-native/commit/0efa33f25746437cd3dc97585d380f177ed40e0b))
+* **android-notch:** add cordova plugin wrapper ([#3592](https://github.com/ionic-team/ionic-native/issues/3592)) ([96890c7](https://github.com/ionic-team/ionic-native/commit/96890c7b92f34cf8d87eb98c0e4b5ddf9b68c6dc))
+* **app-rate:** update plugin functions ([#3598](https://github.com/ionic-team/ionic-native/issues/3598)) ([3e92f64](https://github.com/ionic-team/ionic-native/commit/3e92f64484be0c949896b5fac7023ef0bd2fc746))
+* **facebook:** add setAutoLogAppEventsEnabled method ([#3606](https://github.com/ionic-team/ionic-native/issues/3606)) ([b4f0f07](https://github.com/ionic-team/ionic-native/commit/b4f0f0706400f6500e48cd1305c20371977a6869))
+* **facebook:** update api and logPurchase methods to include additional arguments([#3607](https://github.com/ionic-team/ionic-native/issues/3607)) ([e4b1719](https://github.com/ionic-team/ionic-native/commit/e4b171930dca0ebd3824cfa08861cfb80bf715d3))
+* **firebase-authentication:** add signInWithApple method ([#3597](https://github.com/ionic-team/ionic-native/issues/3597)) ([e7bc1b6](https://github.com/ionic-team/ionic-native/commit/e7bc1b67095fc0c0dbb96b98f3dd39ecb255ec88))
+* **in-app-purchase-2:** add redeem() for opening redeem code dialog in iOS ([#3581](https://github.com/ionic-team/ionic-native/issues/3581)) ([ddd269e](https://github.com/ionic-team/ionic-native/commit/ddd269e7ab2df69555ad7eec29bf0ed5a6c8fd04))
+* **mobile-messaging:** add Lists and date time for customAttributes ([#3586](https://github.com/ionic-team/ionic-native/issues/3586)) ([bd8fbb3](https://github.com/ionic-team/ionic-native/commit/bd8fbb3e1fb4bfc84a7c9ba67e879d18868db8b5))
+* **purchases:** bump cordova-plugin-purchases from 1.3.2 to 2.0.0 ([#3601](https://github.com/ionic-team/ionic-native/issues/3601)) ([bed8797](https://github.com/ionic-team/ionic-native/commit/bed8797a603398a047a97070fadd99b36e65a9be))
+* **wonderpush:** remove isReady method. ([#3580](https://github.com/ionic-team/ionic-native/issues/3580)) ([182b403](https://github.com/ionic-team/ionic-native/commit/182b403f69492b96375a7be895da4ff486eccf7b))
+
+
+### BREAKING CHANGES
+
+* **package:** ionic-native now requires at least Angular 10 with ts-lib 2.0
+
+Co-Authored-By: Daniel Sogl <mytechde@outlook.com>
+
+
+
 # [5.30.0](https://github.com/ionic-team/ionic-native/compare/v5.29.0...v5.30.0) (2020-11-20)
 
 
