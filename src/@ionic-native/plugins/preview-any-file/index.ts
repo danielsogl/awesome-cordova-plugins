@@ -45,6 +45,7 @@ export interface PreviewOptions {
   // overwrite the mime type of the file ex: application/pdf
   mimeType?: string;
 }
+
 export type PreviewResponse = 'CLOSING' | 'SUCCESS' | 'NO_APP';
 @Plugin({
   pluginName: 'Preview/Open Any File',
