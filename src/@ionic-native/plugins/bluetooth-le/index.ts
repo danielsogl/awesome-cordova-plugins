@@ -40,7 +40,8 @@ export type Status =
   | 'advertisingStarted'
   | 'advertisingStopped'
   | 'responded'
-  | 'notified';
+  | 'notified'
+  | 'notificationSent';
 
 /** Available connection priorities */
 export type ConnectionPriority = 'low' | 'balanced' | 'high';
@@ -88,6 +89,8 @@ export interface NotifyParams {
   characteristic: string;
   /** Base64 encoded string, number or string */
   value: string;
+  /** Android only: address of the device the notification should be sent to. */
+  address?: string;
 }
 
 export interface RespondParams {
