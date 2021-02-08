@@ -3,6 +3,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
 /**
  * @name App Center Shared
+ * @capacitorincompatible true
  * @description
  * Exposes additional shared APIs for App Center.
  *
