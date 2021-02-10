@@ -22,7 +22,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  */
 @Plugin({
   pluginName: 'LowMemory',
-  plugin: 'cordova-plugin-appcenter-generate-low-memory',
+  plugin: 'https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-generate-low-memory',
   pluginRef: 'LowMemory',
   repo: 'https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-generate-low-memory',
   platforms: ['Android', 'iOS'],
