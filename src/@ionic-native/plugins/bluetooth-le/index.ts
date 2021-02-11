@@ -527,6 +527,7 @@ export class BluetoothLE extends IonicNativePlugin {
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
   bond(params: { address: string }): Observable<{ status: DeviceInfo }> {
+  bond(params: { address: string }): Observable<DeviceInfo> {
     return;
   }
 
@@ -540,6 +541,7 @@ export class BluetoothLE extends IonicNativePlugin {
    */
   @Cordova({ callbackOrder: 'reverse' })
   unbond(params: { address: string }): Promise<{ status: DeviceInfo }> {
+  unbond(params: { address: string }): Promise<DeviceInfo> {
     return;
   }
 
