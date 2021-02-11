@@ -526,7 +526,6 @@ export class BluetoothLE extends IonicNativePlugin {
    *    The callback that will be triggered when the bond operation fails
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  bond(params: { address: string }): Observable<{ status: DeviceInfo }> {
   bond(params: { address: string }): Observable<DeviceInfo> {
     return;
   }
@@ -540,7 +539,6 @@ export class BluetoothLE extends IonicNativePlugin {
    *    error: The callback that will be triggered when the unbond operation fails
    */
   @Cordova({ callbackOrder: 'reverse' })
-  unbond(params: { address: string }): Promise<{ status: DeviceInfo }> {
   unbond(params: { address: string }): Promise<DeviceInfo> {
     return;
   }
