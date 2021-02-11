@@ -81,7 +81,7 @@ export interface IAPProduct {
 
   additionalData?: any;
 
-  transaction?: any;
+  transaction?: PlayStoreReceipt | AppStoreReceipt;
 
   /**
    * Call `product.finish()` to confirm to the store that an approved order has been delivered.
@@ -189,6 +189,23 @@ export interface IAPProductEvents {
   /** Called when content download has successfully completed. */
   downloaded: (callback: IAPQueryCallback) => IAPProductEvents;
 }
+
+export type PlayStoreReceipt = {
+  id: string;
+  purchaseState: number;
+  purchaseToken: string;
+  receipt: string;
+  signature: string;
+  type: "android-playstore";
+};
+
+export type AppStoreReceipt = {
+  id: string;
+  appStoreReceipt: string;
+  original_transaction_id: string;
+  type: "ios-appstore";
+};
+
 
 /**
  * @hidden
