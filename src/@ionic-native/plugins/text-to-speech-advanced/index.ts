@@ -45,6 +45,7 @@ export interface TTSVoice {
  * ```
  * @interfaces
  * TTSOptions
+ * TTSVoice
  */
 @Plugin({
   pluginName: 'Text To Speech Advanced',
