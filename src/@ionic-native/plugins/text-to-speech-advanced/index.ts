@@ -26,15 +26,15 @@ export interface TTSVoice {
 }
 
 /**
- * @name Text To Speech
+ * @name Text To Speech Advanced
  * @description
  * Text to Speech plugin
  *
  * @usage
  * ```typescript
- * import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
+ * import { TextToSpeechAdvanced } from '@ionic-native/text-to-speech-advanced/ngx';
  *
- * constructor(private tts: TextToSpeech) { }
+ * constructor(private tts: TextToSpeechAdvanced) { }
  *
  * ...
  *
