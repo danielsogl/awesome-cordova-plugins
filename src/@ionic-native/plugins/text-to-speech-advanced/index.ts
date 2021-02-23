@@ -19,7 +19,7 @@ export interface TTSOptions {
 export interface TTSVoice {
   /** Voice name */
   name: string;
-  /** Language **/
+  /** Voice language **/
   language: string;
   /** Voice identifier string */
   identifier: string;
