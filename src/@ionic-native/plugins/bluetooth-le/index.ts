@@ -102,6 +102,38 @@ export interface RespondParams {
   offset?: number;
 }
 
+export interface ConnectionParams {
+  /** The address/identifier provided by the scan's return object */
+  address: string;
+  /** Automatically connect as soon as the remote device becomes available (Android) */
+  autoConnect?: boolean;
+  /**
+   * Transport mode. Available from API 23 (Android).
+   * If none is specified the default behavior is TRANSPORT_AUTO
+   *
+   * Note: On Android 10, TRANSPORT_AUTO can lead to connection errors with Status code 133.
+   * In this case TRANSPORT_LE can be used.
+   */
+  transport?: AndroidGattTransportMode;
+}
+
+export enum AndroidGattTransportMode {
+  /**
+   * No preference of physical transport for GATT connections to remote dual-mode devices
+   */
+  TRANSPORT_AUTO = 0,
+
+  /**
+   * Prefer BR/EDR transport for GATT connections to remote dual-mode devices
+   */
+  TRANSPORT_BREDR = 1,
+
+  /**
+   * Prefer LE transport for GATT connections to remote dual-mode devices
+   */
+  TRANSPORT_LE = 2,
+}
+
 export interface CharacteristicParams extends Params {
   /** An array of characteristic IDs to discover or empty array / null */
   characteristics?: string[];
@@ -431,10 +463,12 @@ export class BluetoothLE extends IonicNativePlugin {
    * @name initialize
    * Initialize Bluetooth on the device
    * @param {InitParams} [params]
-   * @returns {(Promise<{ status: 'enabled' | 'disabled'}>)} The callback that is passed initialize status (enabled/disabled)
+   * @returns {(Observable<{ status: 'enabled' | 'disabled'}>)} The callback that is passed initialize status (enabled/disabled)
    */
-  @Cordova({ callbackOrder: 'reverse' })
-  initialize(params?: InitParams): Promise<{ status: 'enabled' | 'disabled' }> {
+  @Cordova({ successIndex: 0, errorIndex: 2, observable: true })
+  initialize(
+    params?: InitParams
+  ): Observable<{ status: 'enabled' | 'disabled' }> {
     return;
   }
 
@@ -454,7 +488,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @returns void
    */
   @Cordova({ callbackOrder: 'reverse', sync: true })
-  disable() {
+  disable(): void {
     return;
   }
 
@@ -480,10 +514,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * Android API >= 23 also requires location services to be enabled. Use isLocationEnabled to determine whether location services are enabled.
    * If not enabled, use requestLocation to prompt the location services settings page.
    * @param {ScanParams} params Scan params
-   * @returns {(Observable<{ status: ScanStatus }>)}
+   * @returns {(Observable<ScanStatus>)}
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  startScan(params: ScanParams): Observable<{ status: ScanStatus }> {
+  startScan(params: ScanParams): Observable<ScanStatus> {
     return;
   }
 
@@ -503,12 +537,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * Retrieved paired Bluetooth LE devices. In iOS, devices that are "paired" to will not return during a normal scan.
    * Callback is "instant" compared to a scan.
    * @param {{ services: string[] }} An array of service IDs to filter the retrieval by. If no service IDs are specified, no devices will be returned.
-   * @returns {Promise<{ devices: DeviceInfo[] }>}
+   * @returns {Promise<DeviceInfo[]>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  retrieveConnected(params?: {
-    services?: string[];
-  }): Promise<{ devices: DeviceInfo[] }> {
+  retrieveConnected(params?: { services?: string[] }): Promise<DeviceInfo[]> {
     return;
   }
 
@@ -517,7 +549,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * Bond with a device.
    * The device doesn't need to be connected to initiate bonding. Android support only.
    * @param {{ address: string }} params The address/identifier provided by the scan's return object
-   * @returns {(Observable<{ status: DeviceInfo }>)}
+   * @returns {(Observable<DeviceInfo>)}
    * success:
    *    The first success callback should always return with status == bonding.
    *    If the bond is created, the callback will return again with status == bonded.
@@ -534,7 +566,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * @name unbond (Android)
    * Unbond with a device. The device doesn't need to be connected to initiate bonding. Android support only.
    * @param {{address: string}} params The address/identifier
-   * @returns {Promise<{ status: DeviceInfo }>}
+   * @returns {Promise<DeviceInfo>}
    *    success: The success callback should always return with status == unbonded, that is passed with device object
    *    error: The callback that will be triggered when the unbond operation fails
    */
@@ -551,15 +583,12 @@ export class BluetoothLE extends IonicNativePlugin {
    * @param params         The address/identifier
    *
    * @param {{address: string, autoConnect: boolean}} params
-   * @returns {(Observable<{ status: DeviceInfo }>)}
+   * @returns {(Observable<DeviceInfo>)}
    *    success: device object with status
    *    error: The callback that will be triggered when the unbond operation fails
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  connect(params: {
-    address: string;
-    autoConnect?: boolean;
-  }): Observable<{ status: DeviceInfo }> {
+  connect(params: ConnectionParams): Observable<DeviceInfo> {
     return;
   }
 
@@ -567,10 +596,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * @name reconnect
    * Reconnect to a previously connected Bluetooth device
    * @param {{address: string}} params The address/identifier
-   * @returns {(Observable<{ status: DeviceInfo }>)}
+   * @returns {(Observable<DeviceInfo>)}
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  reconnect(params: { address: string }): Observable<{ status: DeviceInfo }> {
+  reconnect(params: { address: string }): Observable<DeviceInfo> {
     return;
   }
 
@@ -579,10 +608,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * Disconnect from a Bluetooth LE device.
    *              Note: It's simpler to just call close(). Starting with iOS 10, disconnecting before closing seems required!
    * @param {{address: string}} params The address/identifier
-   * @returns {Promise<{ status: DeviceInfo }>}
+   * @returns {Promise<DeviceInfo>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  disconnect(params: { address: string }): Promise<{ status: DeviceInfo }> {
+  disconnect(params: { address: string }): Promise<DeviceInfo> {
     return;
   }
 
@@ -592,10 +621,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * Prior to 2.7.0, you needed to disconnect to the device before closing, but this is no longer the case.
    * Starting with iOS 10, disconnecting before closing seems required!
    * @param {{ address: string }} params The address/identifier
-   * @returns {Promise<{ status: DeviceInfo }>}
+   * @returns {Promise<DeviceInfo>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  close(params: { address: string }): Promise<{ status: DeviceInfo }> {
+  close(params: { address: string }): Promise<DeviceInfo> {
     return;
   }
 
@@ -609,15 +638,12 @@ export class BluetoothLE extends IonicNativePlugin {
    * Subsequent discover events will make use of this cache.
    * If your device's services change, set the clearCache parameter to force Android to re-discover services.
    * @param {{ address: string, clearCache: boolean }} params The address/identifier
-   * @returns {Promise<{ device: Device }>}
+   * @returns {Promise<Device>}
    *    success: device object (contains array of service objects)
    *    error: The callback that will be triggered when the unbond operation fails
    */
   @Cordova({ callbackOrder: 'reverse' })
-  discover(params: {
-    address: string;
-    clearCache?: boolean;
-  }): Promise<{ device: Device }> {
+  discover(params: { address: string; clearCache?: boolean }): Promise<Device> {
     return;
   }
 
@@ -626,13 +652,13 @@ export class BluetoothLE extends IonicNativePlugin {
    * Discover the device's services.
    * Not providing an array of services will return all services and take longer to discover. iOS support only.
    * @param {{address: string, services: string[]}} params
-   * @returns {Promise<{ services: Services }>}
+   * @returns {Promise<Services>}
    */
   @Cordova({ callbackOrder: 'reverse' })
   services(params: {
     address: string;
     services?: string[];
-  }): Promise<{ services: Services }> {
+  }): Promise<Services> {
     return;
   }
 
@@ -641,12 +667,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * Discover the service's characteristics.
    * Not providing an array of characteristics will return all characteristics and take longer to discover. iOS support only.
    * @param {CharacteristicParams} params Characteristic params
-   * @returns {Promise<{ characteristics: Characteristics }>} The service id and an Array of characteristics
+   * @returns {Promise<Characteristics } The service id and an Array of characteristics
    */
   @Cordova({ callbackOrder: 'reverse' })
-  characteristics(
-    params: CharacteristicParams
-  ): Promise<{ characteristics: Characteristics }> {
+  characteristics(params: CharacteristicParams): Promise<Characteristics> {
     return;
   }
 
@@ -654,10 +678,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * @name descriptors (iOS)
    * Discover the characteristic's descriptors. iOS support only.
    * @param {DescriptorParams} params
-   * @returns {Promise<{ descriptors: Descriptors }>}
+   * @returns {Promise<Descriptors>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  descriptors(params: DescriptorParams): Promise<{ descriptors: Descriptors }> {
+  descriptors(params: DescriptorParams): Promise<Descriptors> {
     return;
   }
 
@@ -747,10 +771,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * @name rssi
    * Read RSSI of a connected device. RSSI is also returned with scanning.
    * @param {{ address: string }} params
-   * @returns {Promise<{ rssi: RSSI }>}
+   * @returns {Promise<RSSI>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  rssi(params: { address: string }): Promise<{ rssi: RSSI }> {
+  rssi(params: { address: string }): Promise<RSSI> {
     return;
   }
 
@@ -758,10 +782,10 @@ export class BluetoothLE extends IonicNativePlugin {
    * @name mtu (Android, Android 5+)
    * Set MTU of a connected device. Android only.
    * @param {{ address: string, mtu: number }} params
-   * @returns {Promise<{ mtu: MTU }>}
+   * @returns {Promise<MTU>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  mtu(params: { address: string; mtu?: number }): Promise<{ mtu: MTU }> {
+  mtu(params: { address: string; mtu?: number }): Promise<MTU> {
     return;
   }
 
@@ -818,6 +842,20 @@ export class BluetoothLE extends IonicNativePlugin {
    */
   @Cordova({ callbackOrder: 'reverse' })
   isBonded(params: { address: string }): Promise<BondedStatus> {
+    return;
+  }
+
+  /**
+   * @name setPin (Android)
+   * Set PIN if required by the pairing process. Android support only.
+   * @param {{ address: string, pin: string }} params
+   * @returns {Promise<{ status: Status }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  setPin(params: {
+    address: string;
+    pin: string;
+  }): Promise<{ status: Status }> {
     return;
   }
 
@@ -893,6 +931,20 @@ export class BluetoothLE extends IonicNativePlugin {
    */
   @Cordova({ callbackOrder: 'reverse' })
   requestLocation(): Promise<{ requestLocation: boolean }> {
+    return;
+  }
+
+  /**
+   * @name retrievePeripheralsByAddress
+   * Retrieve paired Bluetooth LE devices based on their address. Wraps the iOS method CBCentralManager.retrievePeripheralsWithIdentifiers.
+   * iOS support only. Will return an error if used on Android.
+   * @param {{ addresses: string[] }} params An array of service IDs to filter the retrieval by. If no service IDs are specified, no devices will be returned.
+   * @returns {Promise<DeviceInfo[]>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  retrievePeripheralsByAddress(params?: {
+    addresses?: string[];
+  }): Promise<DeviceInfo[]> {
     return;
   }
 
@@ -973,10 +1025,10 @@ export class BluetoothLE extends IonicNativePlugin {
   /**
    * @name isAdvertising
    * Determine if app is advertising or not.
-   * @returns {Promise<{ status: boolean }>}
+   * @returns {Promise<{ isAdvertising: boolean }>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  isAdvertising(): Promise<{ status: boolean }> {
+  isAdvertising(): Promise<{ isAdvertising: boolean }> {
     return;
   }
 
