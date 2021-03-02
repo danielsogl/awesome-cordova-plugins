@@ -1475,4 +1475,23 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   removeOutObjectBasedOnLid(lid: string): Promise<UnviredResult> {
     return;
   }
+
+  /**
+   * Returns an observable containing the following information about a UMP server in the same network.
+   * Clients can use this information to allow users to select UMP servers in login page.
+   * ```
+   * {
+   *  "name": "Chyme 98",
+   *  "url": "http://192.168.98.98:8080/UMP/",
+   *  "root": "UNVIRED",
+   *  "type": "DEVELOPMENT"
+   * }
+   * ```
+   */
+  @Cordova({
+    observable: true,
+  })
+  startDiscoveryService(): Observable<object> {
+    return;
+  }
 }
