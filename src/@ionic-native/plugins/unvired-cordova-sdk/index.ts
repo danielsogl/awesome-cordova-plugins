@@ -229,7 +229,7 @@ export class Settings {
   ADS_USER_ID: string;
   SAP_USER_ID: string;
   FULL_NAME: string;
-  URL: string;
+  SERVER_URL: string;
   USER_ID: string;
 }
 
