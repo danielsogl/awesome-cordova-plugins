@@ -13,8 +13,8 @@ export class SmartlookSetupConfigBuilder {
     return this;
   }
 
-  renderingMode(renderingMode: string): SmartlookSetupConfigBuilder {
-    this._smartlookSetupConfig.renderingMode = renderingMode;
+  renderingMode(renderingMode: SmartlookRenderingMode): SmartlookSetupConfigBuilder {
+    this._smartlookSetupConfig.renderingMode = renderingMode.getRenderingModeString();
     return this;
   }
 
@@ -25,6 +25,11 @@ export class SmartlookSetupConfigBuilder {
 
   startNewSessionAndUser(startNewSessionAndUser: boolean): SmartlookSetupConfigBuilder {
     this._smartlookSetupConfig.startNewSessionAndUser = startNewSessionAndUser;
+    return this;
+  }
+
+  eventTrackingModes(eventTrackingModes: SmartlookEventTrackingModes): SmartlookSetupConfigBuilder {
+    this._smartlookSetupConfig.eventTrackingModes = eventTrackingModes.getEventTrackingModeStringArray();
     return this;
   }
 
@@ -39,6 +44,7 @@ export class SmartlookSetupConfig {
   renderingMode: string;
   startNewSession: boolean;
   startNewSessionAndUser: boolean;
+  eventTrackingModes: string[];
 
   constructor(smartlookAPIKey: string) {
     this.smartlookAPIKey = smartlookAPIKey;
@@ -74,12 +80,38 @@ export class SmartlookEventTrackingMode {
     return new SmartlookEventTrackingMode('ignore_user_interaction');
   }
 
+  static IGNORE_NAVIGATION_INTERACTION(): SmartlookEventTrackingMode {
+    return new SmartlookEventTrackingMode('ignore_navigation_interaction');
+  }
+
+  static IGNORE_RAGE_CLICKS(): SmartlookEventTrackingMode {
+    return new SmartlookEventTrackingMode('ignore_rage_clicks');
+  }
+
   static NO_TRACKING(): SmartlookEventTrackingMode {
     return new SmartlookEventTrackingMode('no_tracking');
   }
 
+  getEventTrackingModeString(): string {
+    return this.eventTrackingMode;
+  }
+
   constructor(eventTrackingMode: string) {
     this.eventTrackingMode = eventTrackingMode;
+  }
+}
+
+export class SmartlookEventTrackingModes {
+  private eventTrackingModes: string[];
+
+  constructor(eventTrackingModes: SmartlookEventTrackingMode[]) {
+    this.eventTrackingModes = eventTrackingModes.map(eventTrackingMode =>
+      eventTrackingMode.getEventTrackingModeString()
+    );
+  }
+
+  getEventTrackingModeStringArray(): string[] {
+    return this.eventTrackingModes;
   }
 }
 
@@ -204,6 +236,10 @@ export class SmartlookRenderingMode {
     return new SmartlookRenderingMode('native');
   }
 
+  getRenderingModeString(): string {
+    return this.renderingMode;
+  }
+
   constructor(renderingMode: string) {
     this.renderingMode = renderingMode;
   }
@@ -248,6 +284,8 @@ export class SmartlookRenderingMode {
  * SmartlookReferrer
  * SmartlookDashboardSessionUrl
  * SmartlookRenderingMode
+ * SmartlookEventTrackingMode
+ * SmartlookEventTrackingModes
  */
 @Plugin({
   pluginName: 'Smartlook',
@@ -361,13 +399,24 @@ export class Smartlook extends IonicNativePlugin {
   /**
    * You can configure which events are being tracked by setting eventTrackingMode.
    * @param eventTrackingMode Can be on of:
-   *                          - SmartlookEventTrackingMode.FULL_TRACKING() tracks everything.
-   *                          - SmartlookEventTrackingMode.IGNORE_USER_INTERACTION() will not track touches,
-   *                            focus, keyboard, selector events.
-   *                          - SmartlookEventTrackingMode.NO_TRACKING() not gonna track any events .
+   *                          - EventTrackingMode.FULL_TRACKING ... track everything
+   *                          - EventTrackingMode.IGNORE_USER_INTERACTION ... will not track touches
+   *                            focus, keyboard, selector events
+   *                          - EventTrackingMode.IGNORE_NAVIGATION_INTERACTION ... will not track screen names
+   *                          - EventTrackingMode.IGNORE_RAGE_CLICKS ... will not track rage clicks
+   *                          - EventTrackingMode.NO_TRACKING ... not gonna track any events
    */
   @Cordova({ sync: true })
   setEventTrackingMode(eventTrackingMode: SmartlookEventTrackingMode): void {
+    return;
+  }
+
+  /**
+   * You can configure which events are being tracked by setting eventTrackingMode.
+   * @param eventTrackingModes Array of EventTrackingModes.
+   */
+  @Cordova({ sync: true })
+  setEventTrackingModes(eventTrackingModes: SmartlookEventTrackingModes): void {
     return;
   }
 

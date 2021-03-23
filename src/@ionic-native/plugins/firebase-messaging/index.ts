@@ -183,7 +183,7 @@ export class FirebaseMessaging extends IonicNativePlugin {
    * @returns {Promise<null>}
    */
   @Cordova({ sync: true })
-  revokeToken(): Promise<null> {
+  deleteToken(): Promise<null> {
     return;
   }
 }

@@ -94,8 +94,8 @@ export class Diagnostic extends IonicNativePlugin {
    * Location accuracy authorization
    */
   locationAccuracyAuthorization: {
-    FULL: 'full';
-    REDUCED: 'reduced';
+    FULL: 'full',
+    REDUCED: 'reduced',
   };
 
   permissionGroups = {
