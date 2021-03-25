@@ -34,7 +34,7 @@ export class PowerOptimization extends IonicNativePlugin {
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({ sync: true })
   IsIgnoringBatteryOptimizations(): Promise<any> {
     return;
   }
@@ -43,7 +43,7 @@ export class PowerOptimization extends IonicNativePlugin {
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({ sync: true })
   RequestOptimizations(): Promise<any> {
     return;
   }
@@ -52,7 +52,7 @@ export class PowerOptimization extends IonicNativePlugin {
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({ sync: true })
   RequestOptimizationsMenu(): Promise<any> {
     return;
   }
@@ -61,7 +61,7 @@ export class PowerOptimization extends IonicNativePlugin {
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({ sync: true })
   IsIgnoringDataSaver(): Promise<any> {
     return;
   }
@@ -70,7 +70,7 @@ export class PowerOptimization extends IonicNativePlugin {
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({ sync: true })
   RequestDataSaverMenu(): Promise<any> {
     return;
   }
@@ -79,7 +79,7 @@ export class PowerOptimization extends IonicNativePlugin {
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({ sync: true })
   HaveProtectedAppsCheck(): Promise<any> {
     return;
   }
@@ -88,7 +88,7 @@ export class PowerOptimization extends IonicNativePlugin {
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
    * @returns {Promise<any>}
    */
-  @Cordova()
+  @Cordova({ sync: true })
   ProtectedAppCheck(): Promise<any> {
     return;
   }
