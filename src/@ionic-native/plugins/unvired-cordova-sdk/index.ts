@@ -388,12 +388,19 @@ export class LoginParameters {
    * Set this value to true to persist web application database. By default, this value is false.
    */
   persistWebDb: boolean;
+
   /*
    * Optional jwt token parameter. Please check with your Unvired Admin for this value.
    * For Example:
    * loginParameters.jwtOptions = {"app": "myapp"};
    */
   jwtOptions: object;
+
+  /**
+   * Language code to be sent to UMP. Specify a two-letter language code.
+   * The default value of this is 'en'.
+   */
+  languageCode: string;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
@@ -1197,12 +1204,22 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Sends data to UMP in Async mode. This means user can make this call and continue with other program execution.
+   * Make an async call to UMP.
    * The result of the call would be notified through the observable returned for the function registerNotifListener().
+   *
+   * Pre-requisites:
+   * 1. Object status is updated for header and items which need to be synced with the server.
+   * 2. Updated header and items are saved in database.
+   * 3. The LID of the header. This value needs to be passed for the parameter `belid`.
    *
    * Example 1: Make a RQST call
    * ```
-   * await this.unviredSDK.syncBackground(RequestType.RQST, {"CUSTOMER_HEADER": {"CUST_NO" : "007", "CUST_NAME" : "James Bond"}}, '', 'PA_GET_CUSTOMER_DETAILS', 'CUSTOMER', beLID, false)
+   * let customerHeader = new CUSTOMER_HEADER()
+   * customerHeader.LID = // TODO
+   * customerHeader.CUST_NO = '007'
+   * customerHeader.CUST_NAME = 'James Bond'
+   *
+   * await this.unviredSDK.syncBackground(RequestType.RQST, {"CUSTOMER_HEADER": customerHeader}, '', 'PA_GET_CUSTOMER_DETAILS', 'CUSTOMER', customerHeader.LID, false)
    * ```
    * Example 2: Make a QUERY / PULL call
    * ```
@@ -1477,21 +1494,24 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Returns an observable containing the following information about a UMP server in the same network.
+   * Returns an observable to return the UMP URLs which are discoverable within the network.
    * Clients can use this information to allow users to select UMP servers in login page.
    * ```
-   * {
-   *  "name": "Chyme 98",
-   *  "url": "http://192.168.98.98:8080/UMP/",
-   *  "root": "UNVIRED",
-   *  "type": "DEVELOPMENT"
-   * }
+   * this.unviredSDK.startDiscoveryService().subscribe( (result) => {
+   *  if (result.type == ResultType.success) {
+   *    console.log('Discovered URLs: ' + JSON.stringify(result.data))
+   *    // {"name":"Chyme 98","url":"http://192.168.98.98:8080/UMP/","root":"UNVIRED","type":"DEVELOPMENT"}
+   *  }
+   *  else {
+   *    console.log('Error in discovering URLs: ' + result.error)
+   *  }
+   * })
    * ```
    */
   @Cordova({
     observable: true,
   })
-  startDiscoveryService(): Observable<object> {
+  startDiscoveryService(): Observable<UnviredResult> {
     return;
   }
 }
