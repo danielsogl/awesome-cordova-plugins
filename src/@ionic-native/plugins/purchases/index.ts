@@ -207,7 +207,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
  */
 @Plugin({
   pluginName: 'Purchases',
-  plugin: 'cordova-plugin-purchases@2.0.0',
+  plugin: 'cordova-plugin-purchases@2.1.1',
   pluginRef: 'Purchases', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/RevenueCat/cordova-plugin-purchases', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
@@ -466,6 +466,14 @@ export class Purchases extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   presentCodeRedemptionSheet(): void {}
+
+  /**
+   * iOS only.
+   * @param {Boolean} enabled Set this property to true *only* when testing the ask-to-buy / SCA purchases flow.
+   * More information: http://errors.rev.cat/ask-to-buy
+   */
+  @Cordova({ sync: true })
+  setSimulatesAskToBuyInSandbox(enabled: boolean): void {}
 
   /**
    * Enable automatic collection of Apple Search Ads attribution. Disabled by default.
