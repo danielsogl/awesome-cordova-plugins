@@ -98,6 +98,17 @@ export interface ILinkOptions {
 @Injectable()
 export class FirebaseDynamicLinks extends IonicNativePlugin {
   /**
+   * Determines if the app has a pending dynamic link and provides access to the dynamic link parameters.
+   * @return {Promise<IDynamicLink>} Returns a promise
+   */
+  @Cordova({
+    otherPromise: true,
+  })
+  getDynamicLink(): Promise<IDynamicLink> {
+    return;
+  }
+
+  /**
    * Registers callback that is triggered on each dynamic link click.
    * @return {Observable<IDynamicLink>} Returns an observable
    */

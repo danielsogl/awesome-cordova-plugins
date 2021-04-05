@@ -138,9 +138,9 @@ export enum RequestType {
    */
   RQST = 'RQST',
   /**
-   * Set this type if the data exchange with UMP is 1:N pr 0:N. Sending a datastructure is optional and is dependent on the process agent function.
-   * If the process agent function is marked with metadata delete flag, then server data replaces the data in database.
-   * If the process agent function is NOT marked with metadata delete flag, then this request type behaves the same as QUERY
+   * Set this type if the data exchange with UMP is 1:N pr 0:N. Sending a datastructure is optional and is dependent on the Process Agent function.
+   * If the Process Agent function is marked with metadata delete flag, then server data replaces the data in database.
+   * If the Process Agent function is NOT marked with metadata delete flag, then this request type behaves the same as QUERY
    */
   PULL = 'PULL',
   /**
@@ -148,7 +148,7 @@ export enum RequestType {
    */
   PUSH = 'PUSH',
   /**
-   * Set this type if the data exchange with UMP is 1:N pr 0:N. Sending a datastructure is optional and is dependent on the process agent function.
+   * Set this type if the data exchange with UMP is 1:N pr 0:N. Sending a datastructure is optional and is dependent on the Process Agent function.
    * Unlike PULL, this request type updates the data in database without deleting existing entries.
    */
   QUERY = 'QUERY',
@@ -203,6 +203,10 @@ export enum NotificationListenerType {
    * Notify attachment downloads completed
    */
   attachmentDownloadCompleted = 10,
+  /**
+   * Notify when the sent item count changes.
+   */
+  SentItemChanged = 11,
 }
 
 export enum AttachmentItemStatus {
@@ -225,7 +229,7 @@ export class Settings {
   ADS_USER_ID: string;
   SAP_USER_ID: string;
   FULL_NAME: string;
-  URL: string;
+  SERVER_URL: string;
   USER_ID: string;
 }
 
@@ -310,7 +314,7 @@ export class LoginParameters {
   password: string;
 
   /**
-   * UMP URL. For example: http://192.168.98.160:8080/UMP
+   * UMP URL. For example: https://umpdev.unvired.io/UMP
    */
   url: string;
 
@@ -384,12 +388,19 @@ export class LoginParameters {
    * Set this value to true to persist web application database. By default, this value is false.
    */
   persistWebDb: boolean;
+
   /*
    * Optional jwt token parameter. Please check with your Unvired Admin for this value.
    * For Example:
    * loginParameters.jwtOptions = {"app": "myapp"};
    */
   jwtOptions: object;
+
+  /**
+   * Language code to be sent to UMP. Specify a two-letter language code.
+   * The default value of this is 'en'.
+   */
+  languageCode: string;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
@@ -410,10 +421,19 @@ export class AuthenticateLocalResult extends UnviredResult {
  * -
  * iOS Requirements
  * -
- * This plugin uses Cocoapods to install dependent libraries. Please make sure you have a valid Cocoapods installation.
- * Once you have it ready, do update the cocoapods repo by running the following command before you install this plugin.
+ * Update your Cocoapods repo before you install the plugin.
  * ```
- * pod repo update
+ * $ pod repo update
+ * ```
+ * -
+ * Browser Requirements
+ * -
+ * After you install the plugin, for Ionic/Angular projects, please add a reference to the following JS files within <head></head> section of index.html.
+ * ```
+ * <script src="assets/js/sql.js"></script>
+ * <script src="assets/js/kernel.js"></script>
+ * <script src="assets/js/winstore-jscompat.js"></script>
+ * <script src="assets/js/jquery-3.2.1.js"></script>
  * ```
  * @usage
  * ```typescript
@@ -496,11 +516,26 @@ export class AuthenticateLocalResult extends UnviredResult {
  *
  *
  * // Synchronization APIs
- * // Make sync call.
- * let result = await this.unviredSDK.syncForeground(RequestType.QUERY, null, {"CUSTOMER_HEADER": {"field1" : "value1", "field2" : "value2"}}, 'UNVIRED_DIGITAL_FORMS_PA_MOBILE_GET_USERS', true)
+ * // Example 1: Make a Sync RQST call
+ * ```
+ * await this.unviredSDK.syncForeground(RequestType.RQST, {"CUSTOMER_HEADER": {"CUST_NO" : "007", "CUST_NAME" : "James Bond"}}, '', 'PA_GET_CUSTOMER_DETAILS', true)
+ * ```
  *
- * // Make async call.
- * let result = await this.unviredSDK.syncBackground(RequestType.QUERY, null, inputObj, 'UNVIRED_DIGITAL_FORMS_PA_MOBILE_GET_USERS', 'INPUT_GET_USERS', 'GUID', false)
+ * // Example 2: Make a Sync QUERY / PULL call
+ * ```
+ * await this.unviredSDK.syncForeground(RequestType.QUERY, '', {"CUSTOMER_SEARCH_CONTEXT":[{"CUSTOMER_SEARCH_HEADER":{"CUST_NO":"007"}}]}, 'PA_SEARCH_CUSTOMER', true)
+ * ```
+ *
+ * Example 3: Make a Async RQST call
+ * ```
+ * await this.unviredSDK.syncBackground(RequestType.RQST, {"CUSTOMER_HEADER": {"CUST_NO" : "007", "CUST_NAME" : "James Bond"}}, '', 'PA_GET_CUSTOMER_DETAILS', 'CUSTOMER', beLID, false)
+ * ```
+ *
+ * Example 4: Make a Async QUERY / PULL call
+ * ```
+ * await this.unviredSDK.syncBackground(RequestType.QUERY, '', {"CUSTOMER_SEARCH_CONTEXT":[{"CUSTOMER_SEARCH_HEADER":{"CUST_NO":"007"}}]}, 'PA_SEARCH_CUSTOMER', '', '', true)
+ * ```
+ *
  * // Note: Subscribe to NotificationListener to get updates on data processing in background
  * // However, only one screen can listen to background data updates at any point of time.
  * this.unviredSDK.registerNotifListener().subscribe( data => {
@@ -522,20 +557,20 @@ export class AuthenticateLocalResult extends UnviredResult {
  *
  * // Database APIs
  * // Insert a record onto database
- * this.unviredsdk.dbInsert("CUSTOMER_HEADER", {"NAME":"USER","NO":"0039"}, true);
+ * this.unviredsdk.dbInsert("CUSTOMER_HEADER", {"NAME":"James Bond","CUST_NO":"007"}, true);
  *
  * // Update a record in database
- * this.unviredSDK.dbUpdate('CUSTOMER_HEADER', {"NAME":"UPDATED_USER","NO":"UPDATED_NO"}, "FORM_ID = '5caed815892215034dacad56'")
+ * this.unviredSDK.dbUpdate('CUSTOMER_HEADER', {"NAME":"John Doe","CUST_NO":"008"}, "CUST_NO = '007'")
  *
  * // Delete a record in database
- * this.unviredSDK.dbDelete('CUSTOMER_HEADER', "FORM_ID = '5caed815892215034dacad56'")
+ * this.unviredSDK.dbDelete('CUSTOMER_HEADER', "CUST_NO = '007'")
  *
  * // Execute a SQL Query
- * this.unviredSDK.dbExecuteStatement('SELECT * FROM CUSTOMER_HEADER WHERE CUSTOMER_ID = "0039"')
+ * this.unviredSDK.dbExecuteStatement('SELECT * FROM CUSTOMER_HEADER WHERE CUSTOMER_ID = "007"')
  */
 @Plugin({
   pluginName: 'UnviredCordovaSDK',
-  plugin: 'https://github.com/unvired/cordova-plugin-unvired-sdk', // npm package name, example: cordova-plugin-camera
+  plugin: 'cordova-plugin-unvired-sdk', // npm package name, example: cordova-plugin-camera
   pluginRef: 'ump', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/unvired/cordova-plugin-unvired-sdk/', // the github repository URL for the plugin
   install: 'ionic cordova plugin add @ionic-native/unvired-cordova-sdk', // OPTIONAL install command, in case the plugin requires variables
@@ -774,6 +809,21 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * Get User settings.
+   * Returns User setting in the following format:
+   * ```
+   * {
+   * "UNVIRED_ID": "",                               // The Unvired ID configured in UMP
+   * "USER_ID": "",                                  // Deprecated. Select among UNVIRED_ID / EMAIL / ADS_USER_ID / SAP_USER_ID depending on the LoginType
+   * "FULL_NAME": "FirstName LastName",
+   * "EMAIL": "abc@example.com",                     // Email id of the user as configurd in UMP
+   * "SERVER_URL": "https://umpdev.unvired.io/UMP",  // UMP Server's URL
+   * "SAP_USER_ID": "SAP_ID",                        // If LoginType is SAP
+   * "SAP_PORT_NAME": "",                            // If LoginType is SAP
+   * "LOGIN_TYPE": "",                               // @see LoginType
+   * "ADS_USER_ID": "ADS_USER_ID",                   // If LoginType is ADS
+   * "ADS_DOMAIN": "ADS_DOMAIN"                      // If LoginType is ADS
+   * }
+   * ```
    */
   @Cordova()
   userSettings(): Promise<SettingsResult> {
@@ -1057,14 +1107,14 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * attachmentObject.LID = guid(); // Random id
    * attachmentObject.FID = lid  // LID of the header.
    * attachmentObject.UID = guid(); // Random id
-   * attachmentObject.EXTERNAL_URL = ""; // Optional: Check with your Unvired Process agent developer.
+   * attachmentObject.EXTERNAL_URL = ""; // Optional: Check with your Unvired Process Agent developer.
    * attachmentObject.FILE_NAME = 'myfile.jpg'; // Name of the file as stored in the device.
    * attachmentObject.LOCAL_PATH = /<folder_location>/myfile.jpg // File path. Please make sure that the path starts with a '/'
-   * attachmentObject.TAG1 = '' // Optional: Check with your Unvired Process agent developer.
-   * attachmentObject.TAG2 = '' // Optional: Check with your Unvired Process agent developer.
-   * attachmentObject.TAG2 = '' // Optional: Check with your Unvired Process agent developer.
-   * attachmentObject.TAG4 = '' // Optional: Check with your Unvired Process agent developer.
-   * attachmentObject.TAG5 = '' // Optional: Check with your Unvired Process agent developer.
+   * attachmentObject.TAG1 = '' // Optional: Check with your Unvired Process Agent developer.
+   * attachmentObject.TAG2 = '' // Optional: Check with your Unvired Process Agent developer.
+   * attachmentObject.TAG2 = '' // Optional: Check with your Unvired Process Agent developer.
+   * attachmentObject.TAG4 = '' // Optional: Check with your Unvired Process Agent developer.
+   * attachmentObject.TAG5 = '' // Optional: Check with your Unvired Process Agent developer.
    * await this.unviredCordovaSDK.createAttachmentItem('INSPECTION_ATTACHMENT', attachmentObject)
    * ```
    */
@@ -1095,24 +1145,50 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Sends data to UMP in SYNC mode. This means user has to wait until the duration of SYNC call. Only one SYNC call can be active at any point of time. Once the call completes, the result data would be available in the Promise.
-   * Apps typically block UI during a SYNC call so that there are user-actions when the SYNC call is active.
+   * Sends data to UMP in Sync mode. This means user has to wait until the duration of SYNC call. Only one SYNC call can be active at any point of time. Once the call completes, the result would be available in the Promise.
+   * Apps typically block UI during a SYNC call so that there are no user-actions possible until the call completes.
+   *
+   * Example 1: Make a RQST call
+   * ```
+   * await this.unviredSDK.syncForeground(RequestType.RQST, {"CUSTOMER_HEADER": {"CUST_NO" : "007", "CUST_NAME" : "James Bond"}}, '', 'PA_GET_CUSTOMER_DETAILS', true)
+   * ```
+   *
+   * Example 2: Make a QUERY / PULL call
+   * ```
+   * await this.unviredSDK.syncForeground(RequestType.QUERY, '', {"CUSTOMER_SEARCH_CONTEXT":[{"CUSTOMER_SEARCH_HEADER":{"CUST_NO":"007"}}]}, 'PA_SEARCH_CUSTOMER', true)
+   * ```
+   *
    * @param reqype RequestType for the message. Please check RequestType to select the right request type.
-   * @param header {Object} Header datastructure to be sent to UMP. Header datastructure is mandatory of the request type is RQST.
-   * For PA functions which do not accept any input, set an empty string for this parameter.
-   * Example: If Header datastructure needs to be sent, make sure the header datastructure is in the following format:
-   * ```
-   * {"CUSTOMER_HEADER": {"field1" : "value1", "field2" : "value2"}}
-   * ```
-   * @param customData {Object} This depends on the PA function. This is useful if you want to send custom data to a PA function.
-   * Example: You can also use this parameter to send header datastrucrture provided the data structure is formatted like this.
-   * ```
+   * @param header {Object} Send a value for this parameter only if RequestType is RQST. For others, send an empty string. This parameter represents the header datastructure of the Business Entity which needs to be sent as input to a Process Agent function.
+   * Before you make this call, ensure that the object statuses are updated for header and child tables.
+   * Framework builds the input by considering only those child entities whose object status is one among ADD, MODIFY or DELETE.
+   * Example:
+   * ```json
    * {
-   *   "CATEGORY_BE": [{
-   *     "CATEGORY_HEADER": {"field1" : "value1", "field2" : "value2"}
-   *   }]
+   *  "NAME_OF_HEADER": {
+   *     "FIELD1": "FIELD_1_VALUE",
+   *     "FIELD2": "FIELD_2_VALUE"
+   *   }
    * }
    * ```
+   *
+   * @param customData {Object} Send a value for this parameter only if |reqType| is QUERY or PULL. For others, send an empty string.
+   * This parameter represents the actual input which need to be sent to the server. Usually this is an input entity, but check with your Process Agent developer on the type of input.
+   *
+   * Example:
+   * ```json
+   * {
+   *  "BE_NAME": [
+   *   {
+   *      "NAME_OF_HEADER": {
+   *         "FIELD1": "FIELD_1_VALUE",
+   *         "FIELD2": "FIELD_2_VALUE"
+   *       }
+   *   }
+   *  ]
+   * }
+   * ```
+   *
    * @param paFunction Name of the Process Agent function to be executed. Example: PA_MOBILE_EXECUTE_SALES_ORDER.
    * @param autoSave This defines whether to save the response to database.
    */
@@ -1128,28 +1204,63 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Sends data to UMP in ASYNC mode. This means user can make this call and continue with other program execution.
+   * Make an async call to UMP.
    * The result of the call would be notified through the observable returned for the function registerNotifListener().
+   *
+   * Pre-requisites:
+   * 1. Object status is updated for header and items which need to be synced with the server.
+   * 2. Updated header and items are saved in database.
+   * 3. The LID of the header. This value needs to be passed for the parameter `belid`.
+   *
+   * Example 1: Make a RQST call
+   * ```
+   * let customerHeader = new CUSTOMER_HEADER()
+   * customerHeader.LID = // TODO
+   * customerHeader.CUST_NO = '007'
+   * customerHeader.CUST_NAME = 'James Bond'
+   *
+   * await this.unviredSDK.syncBackground(RequestType.RQST, {"CUSTOMER_HEADER": customerHeader}, '', 'PA_GET_CUSTOMER_DETAILS', 'CUSTOMER', customerHeader.LID, false)
+   * ```
+   * Example 2: Make a QUERY / PULL call
+   * ```
+   * await this.unviredSDK.syncBackground(RequestType.QUERY, '', {"CUSTOMER_SEARCH_CONTEXT":[{"CUSTOMER_SEARCH_HEADER":{"CUST_NO":"007"}}]}, 'PA_SEARCH_CUSTOMER', '', '', true)
+   * ```
+   *
    * @param reqype RequestType for the message. Please check RequestType to select the right request type.
-   * @param header {Object} Header datastructure to be sent to UMP. Header datastructure is mandatory of the request type is RQST.
-   * For PA functions which do not accept any input, set an empty string for this parameter.
-   * Example: If Header datastructure needs to be sent, make sure the header datastructure is in the following format:
-   * ```
-   * {"CUSTOMER_HEADER": {"field1" : "value1", "field2" : "value2"}}
-   * ```
-   * @param customData {Object} This depends on the PA function. This is useful if you want to send custom data to a PA function.
-   * Example: You can also use this parameter to send header datastrucrture provided the data structure is formatted like this.
-   * ```
+   * @param header {Object} Send a value for this parameter only if RequestType is RQST. For others, send an empty string. This parameter represents the header datastructure of the Business Entity which needs to be sent as input to a Process Agent function.
+   * Before you make this call, ensure that the object statuses are updated for header and child tables.
+   * Framework builds the input by considering only those child entities whose object status is one among ADD, MODIFY or DELETE.
+   * Example:
+   * ```json
    * {
-   *   "CATEGORY_BE": [{
-   *     "CATEGORY_HEADER": {"field1" : "value1", "field2" : "value2"}
-   *   }]
+   *  "NAME_OF_HEADER": {
+   *     "FIELD1": "FIELD_1_VALUE",
+   *     "FIELD2": "FIELD_2_VALUE"
+   *   }
    * }
    * ```
+   *
+   * @param customData {Object} Send a value for this parameter only if |reqType| is QUERY or PULL. For others, send an empty string.
+   * This parameter represents the actual input which need to be sent to the server. Usually this is an input entity, but check with your Process Agent developer on the type of input.
+   *
+   * Example:
+   * ```json
+   * {
+   *  "BE_NAME": [
+   *   {
+   *      "NAME_OF_HEADER": {
+   *         "FIELD1": "FIELD_1_VALUE",
+   *         "FIELD2": "FIELD_2_VALUE"
+   *       }
+   *   }
+   *  ]
+   * }
+   * ```
+   *
    * @param paFunction Name of the Process Agent function to be executed. Example: PA_MOBILE_EXECUTE_SALES_ORDER.
-   * @param beName Name of the Business Entity
-   * @param belid LID of the Header datastructure
-   * @param bypassAttachment Set this flag to false if you want to upload attachments first and then make the server call.
+   * @param beName Name of the Business Entity. Required for the RequestType RQST only. For others, send empty string.
+   * @param belid LID of the Header datastructure. Required for the RequestType RQST only. For others, send empty string.
+   * @param bypassAttachment a true value would upload the data to the server followed by attachments. A false value would do the reverse.
    */
   @Cordova()
   syncBackground(
@@ -1233,7 +1344,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
 
   /**
    * Subscribe to this observable to listen for life-cyle events in the case of an async message.
-   * Only one class can subscribe to notifications are any point of time.
+   * Only one class can subscribe to notifications at any point of time.
    */
   @Cordova({
     observable: true,
@@ -1370,6 +1481,37 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    */
   @Cordova()
   unlockDataSender(): Promise<UnviredResult> {
+    return;
+  }
+
+  /**
+   * Mobile Platform only.
+   * Delete an outbox item based on header's lid.
+   */
+  @Cordova()
+  removeOutObjectBasedOnLid(lid: string): Promise<UnviredResult> {
+    return;
+  }
+
+  /**
+   * Returns an observable to return the UMP URLs which are discoverable within the network.
+   * Clients can use this information to allow users to select UMP servers in login page.
+   * ```
+   * this.unviredSDK.startDiscoveryService().subscribe( (result) => {
+   *  if (result.type == ResultType.success) {
+   *    console.log('Discovered URLs: ' + JSON.stringify(result.data))
+   *    // {"name":"Chyme 98","url":"http://192.168.98.98:8080/UMP/","root":"UNVIRED","type":"DEVELOPMENT"}
+   *  }
+   *  else {
+   *    console.log('Error in discovering URLs: ' + result.error)
+   *  }
+   * })
+   * ```
+   */
+  @Cordova({
+    observable: true,
+  })
+  startDiscoveryService(): Observable<UnviredResult> {
     return;
   }
 }

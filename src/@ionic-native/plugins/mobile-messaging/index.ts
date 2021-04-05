@@ -14,7 +14,8 @@ export type Event =
   | 'installationUpdated'
   | 'userUpdated'
   | 'personalized'
-  | 'depersonalized';
+  | 'depersonalized'
+  | 'deeplink';
 
 export interface CustomEvent {
   definitionId: string;
@@ -27,6 +28,7 @@ export interface Configuration {
    */
   applicationCode: string;
   geofencingEnabled?: boolean;
+  inAppChatEnabled?: boolean;
   /**
    * Message storage save callback
    */
@@ -74,11 +76,11 @@ export interface UserData {
   lastName?: string;
   middleName?: string;
   gender?: Gender;
-  birthday?: Date;
+  birthday?: string;
   phones?: string[];
   emails?: string[];
   tags?: string[];
-  customAttributes?: Record<string, string | number | boolean>;
+  customAttributes?: Record<string, string | number | boolean | any[]>;
 }
 
 export interface Installation {
@@ -108,7 +110,7 @@ export interface UserIdentity {
 
 export interface PersonalizeContext {
   userIdentity: UserIdentity;
-  userAttributes?: Record<string, string>;
+  userAttributes?: Record<string, string | number | boolean | any[]>;
   forceDepersonalize?: boolean;
 }
 
@@ -129,11 +131,22 @@ export interface Message {
   vibrate?: boolean; // Android only
   icon?: string; // Android only
   category?: string; // Android only
+  chat?: string;
+  browserUrl?: string;
+  deeplink?: string;
+  webViewUrl?: string;
+  inAppDismissTitle?: string;
 }
 
 export interface MobileMessagingError {
   code: string;
   message: string;
+}
+
+export interface ChatConfig {
+  ios?: {
+    showModally: boolean;
+  };
 }
 
 export class DefaultMessageStorage {
@@ -435,6 +448,17 @@ export class MobileMessaging extends IonicNativePlugin {
 
   @Cordova({ sync: true })
   defaultMessageStorage(): DefaultMessageStorage | undefined {
+    return;
+  }
+
+  /**
+   * Displays chat view.
+   *
+   * @name showChat
+   * @param {ChatConfig} chat config
+   */
+  @Cordova()
+  showChat(config?: ChatConfig): Promise<any> {
     return;
   }
 }

@@ -214,4 +214,35 @@ export class Intercom extends IonicNativePlugin {
   sendPushTokenToIntercom(token: string): Promise<any> {
     return;
   }
+
+  /**
+   *
+   * @param carouselId {string}
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  displayCarousel(carouselId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   *
+   * @param articleId {string}
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  displayArticle(articleId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   *
+   * @param bottomPadding {string | number}
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  setBottomPadding(bottomPadding: string | number): Promise<any> {
+    return;
+  }
+
 }

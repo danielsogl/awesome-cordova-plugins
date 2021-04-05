@@ -168,6 +168,7 @@ A decorator to wrap the main plugin class, and any other classes that will use `
 Checks if the plugin and the method are available before executing. By default, the decorator will wrap the callbacks of the function and return a Promise. This decorator takes the following configuration options:
 
 - **observable**: set to true to return an Observable
+- **methodName**: an optional name of the cordova plugins method name (if different from wrappers method name)
 - **clearFunction**: an optional name of a method to clear the observable we returned
 - **clearWithArgs**: This can be used if clearFunction is set. Set this to true to call the clearFunction with the same arguments used in the initial function.
 - **sync**: set to true if the method should return the value as-is without wrapping with Observable/Promise
