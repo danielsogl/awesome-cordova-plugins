@@ -95,11 +95,11 @@ export class Network extends IonicNativePlugin {
 
   /**
    * Returns an observable to watch connection changes
-   * @return {Observable<any>}
+   * @return {Observable<'connected' | 'disconnected'>}
    */
   @CordovaCheck()
-  onChange(): Observable<any> {
-    return merge(this.onConnect(), this.onDisconnect());
+  onChange(): Observable<'connected' | 'disconnected'> {
+    return merge(this.onConnect().pipe(mapTo('connected')), this.onDisconnect().pipe(mapTo('disconnected'));
   }
 
   /**
