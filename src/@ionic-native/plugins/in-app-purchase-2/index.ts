@@ -7,6 +7,13 @@ export interface IAPProductOptions {
   type: string;
 }
 
+export interface IRefeshResult {
+  cancelled(fn: () => void): void;
+  failed(fn: () => void): void;
+  completed(fn: () => void): void;
+  finished(fn: () => void): void;
+}
+
 export type IAPProducts = IAPProduct[] & {
   /**
    * Get product by ID
@@ -865,7 +872,9 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * and in the callback `product.finish()` should be called.
    */
   @Cordova({ sync: true })
-  refresh(): void {}
+  refresh(): IRefeshResult {
+    return;
+  }
 
   /** Lightweight method like refresh but do not relogin user */
   @Cordova({ sync: true })
