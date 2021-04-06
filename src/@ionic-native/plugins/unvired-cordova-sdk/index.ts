@@ -400,7 +400,7 @@ export class LoginParameters {
    * Language code to be sent to UMP. Specify a two-letter language code.
    * The default value of this is 'en'.
    */
-  languageCode: string;
+  loginLanguage: string;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
