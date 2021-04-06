@@ -1,3 +1,31 @@
+# [5.32.0](https://github.com/ionic-team/ionic-native/compare/v5.31.1...v5.32.0) (2021-04-05)
+
+
+### Bug Fixes
+
+* **app-rate:** add missing types for onButtonClicked callback ([#3616](https://github.com/ionic-team/ionic-native/issues/3616)) ([4fb07fa](https://github.com/ionic-team/ionic-native/commit/4fb07fa8095419178fb0867940c47ea9a85b0f94))
+* **bluetooth-le:** add missing status type value and add missing (optional) address property to NotifyParams interface ([#3613](https://github.com/ionic-team/ionic-native/issues/3613)) ([f32da73](https://github.com/ionic-team/ionic-native/commit/f32da73a875f87c5c3add3ddb9abb274bec6e0e5))
+* **build:** publish Node (server) friendly bundles ([#3483](https://github.com/ionic-team/ionic-native/issues/3483)) ([b4227f2](https://github.com/ionic-team/ionic-native/commit/b4227f2114706276d63fcd5303ab992710d58472))
+* **in-app-purchase-2:** fix typings for refresh ([#3632](https://github.com/ionic-team/ionic-native/issues/3632)) ([8dcb6be](https://github.com/ionic-team/ionic-native/commit/8dcb6be4ea76f650c16e38c573f18a8f56d16911)), closes [/github.com/j3k0/cordova-plugin-purchase/blob/dd6bf6f/doc/api.md#return-value-3](https://github.com//github.com/j3k0/cordova-plugin-purchase/blob/dd6bf6f/doc/api.md/issues/return-value-3)
+* **unvired-cordova-sdk:** changes to the property names and updated documentation ([#3633](https://github.com/ionic-team/ionic-native/issues/3633)) ([158bf63](https://github.com/ionic-team/ionic-native/commit/158bf637cdf0ee6776ff82dc2109c6d11d2e1d33))
+
+
+### Features
+
+* **adjust:** add missing wrappers for cordova api ([#3528](https://github.com/ionic-team/ionic-native/issues/3528)) ([0932e11](https://github.com/ionic-team/ionic-native/commit/0932e113b266e835acf34a2ae09ce0f75a3890ee))
+* **in-app-purchase-2:** adds typings for transaction ([#3621](https://github.com/ionic-team/ionic-native/issues/3621)) ([46d0cec](https://github.com/ionic-team/ionic-native/commit/46d0cecb271ed425856a08453a94e4568ce83878))
+* **network:** declare connection enum with strings([#3630](https://github.com/ionic-team/ionic-native/issues/3630)) ([d698d59](https://github.com/ionic-team/ionic-native/commit/d698d5985b764f7ab8e143b163c45a3617da5e0e))
+* **network:** update Network plugin ([#3608](https://github.com/ionic-team/ionic-native/issues/3608)) ([31ee7ef](https://github.com/ionic-team/ionic-native/commit/31ee7efc22faf8276db5d64a579b8ec44a29f457))
+* **plugin:** add MS App Center LowMemory plugin ([#3619](https://github.com/ionic-team/ionic-native/issues/3619)) ([2cb5f5c](https://github.com/ionic-team/ionic-native/commit/2cb5f5c01065987c900f413dbb306c052bd1de86))
+* **plugin:** add MS App Center shared plugin ([#3618](https://github.com/ionic-team/ionic-native/issues/3618)) ([3d7b777](https://github.com/ionic-team/ionic-native/commit/3d7b777b19183cbf9d274b24ac0106e3f45fce88))
+* **plugin:** Text to Speech Advanced ([#3627](https://github.com/ionic-team/ionic-native/issues/3627)) ([ca190db](https://github.com/ionic-team/ionic-native/commit/ca190db829ae125d2da6d79e2c8673d5c7f5da9d))
+* **power-optimization:**  plugin initial wrapper ([#3642](https://github.com/ionic-team/ionic-native/issues/3642)) ([9b7db58](https://github.com/ionic-team/ionic-native/commit/9b7db588a1f7608e7a7c9e8b4db7951dc98bd816))
+* **preview-any-file:** add new methods for preview-any-file cordova ([#3643](https://github.com/ionic-team/ionic-native/issues/3643)) ([b8de7f0](https://github.com/ionic-team/ionic-native/commit/b8de7f0721da32faa67a1aa0d8a72846737018c7))
+* **purchases:** bump cordova-plugin-purchases from 2.0.0 to 2.1.1 ([#3639](https://github.com/ionic-team/ionic-native/issues/3639)) ([5d71d0d](https://github.com/ionic-team/ionic-native/commit/5d71d0d2bbbbf8696a0d42e1e8b99fc1ee63ce16))
+* **shortcuts-android:** add  cordova-plugin-shortcuts-android ([#3609](https://github.com/ionic-team/ionic-native/issues/3609)) ([2f69dd8](https://github.com/ionic-team/ionic-native/commit/2f69dd88cbb798f7fdc21c98f99f55bc6a8e88a7))
+
+
+
 ## [5.31.1](https://github.com/ionic-team/ionic-native/compare/v5.31.0...v5.31.1) (2021-01-23)
 
 

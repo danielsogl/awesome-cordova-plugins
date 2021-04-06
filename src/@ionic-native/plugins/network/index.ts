@@ -5,14 +5,14 @@ import { Observable, merge } from 'rxjs';
 declare const navigator: any;
 
 export enum Connection {
-  UNKNOWN = 0,
-  ETHERNET,
-  WIFI,
-  CELL_2G,
-  CELL_3G,
-  CELL_4G,
-  CELL,
-  NONE,
+  UNKNOWN = 'unknown',
+  ETHERNET = 'ethernet',
+  WIFI = 'wifi',
+  CELL_2G = '2g',
+  CELL_3G = '3g',
+  CELL_4G = '4g',
+  CELL = 'cellular',
+  NONE = 'none',
 }
 
 /**
@@ -95,11 +95,11 @@ export class Network extends IonicNativePlugin {
 
   /**
    * Returns an observable to watch connection changes
-   * @return {Observable<any>}
+   * @return {Observable<'connected' | 'disconnected'>}
    */
   @CordovaCheck()
-  onChange(): Observable<any> {
-    return merge(this.onConnect(), this.onDisconnect());
+  onChange(): Observable<'connected' | 'disconnected'> {
+    return merge(this.onConnect().pipe(mapTo('connected')), this.onDisconnect().pipe(mapTo('disconnected'));
   }
 
   /**

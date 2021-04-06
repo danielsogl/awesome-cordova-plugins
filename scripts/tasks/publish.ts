@@ -15,6 +15,7 @@ const FLAGS = '--access public';
 
 const PACKAGE_JSON_BASE = {
   description: 'Ionic Native - Native plugins for ionic apps',
+  main: 'bundle.js',
   module: 'index.js',
   typings: 'index.d.ts',
   author: 'ionic',

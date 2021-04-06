@@ -14,7 +14,7 @@ export enum AppRateReviewTypeIos {
   /**
    * Open the store using the openUrl preference (defaults to InAppBrowser). Be advised that WKWebView might not open the app store links
    */
-  InAppBrowser = 'InAppBrowser'
+  InAppBrowser = 'InAppBrowser',
 }
 
 export enum AppRateReviewTypeAndroid {
@@ -26,6 +26,23 @@ export enum AppRateReviewTypeAndroid {
    *  Open the store using the openUrl preference (defaults to InAppBrowser)
    */
   InAppBrowser = 'InAppBrowser',
+}
+
+export enum AppRatePromptType {
+  /**
+   * Prompt asking to rate the app.
+   */
+  AppRatingPrompt = 'AppRatingPrompt',
+
+  /**
+   * Prompt asking to rate the app within the store.
+   */
+  StoreRatingPrompt = 'StoreRatingPrompt',
+
+  /**
+   * Prompt asking to give feedback.
+   */
+  FeedbackPrompt = 'FeedbackPrompt',
 }
 
 export interface AppRatePreferences {
@@ -54,14 +71,14 @@ export interface AppRatePreferences {
      * the type of review display to show the user on iOS
      * Default: AppStoreReview
      */
-    ios?: AppRateReviewTypeIos
+    ios?: AppRateReviewTypeIos;
     /**
      * the type of review display to show the user on Android
      * Default: InAppBrowser
      */
-    android?: AppRateReviewTypeAndroid
-  }
-  
+    android?: AppRateReviewTypeAndroid;
+  };
+
   /**
    * Simple Mode to display the rate dialog directly and bypass negative feedback filtering flow
    */
@@ -71,7 +88,7 @@ export interface AppRatePreferences {
    * Disabling would skip displaying a rate dialog if in app review is set and available. Defaults to `true`
    */
   showPromptForInAppReview?: boolean;
-  
+
   /**
    * leave app or no when application page opened in app store (now supported only for iOS). Defaults to `false`
    */
@@ -139,18 +156,18 @@ export interface AppRateCustomLocale {
 }
 
 export interface AppRateLocales {
-  addLocale(localeObject: AppRateCustomLocale): AppRateCustomLocale
+  addLocale(localeObject: AppRateCustomLocale): AppRateCustomLocale;
 
-  getLocale(language: string, applicationTitle?: string, customLocale?: AppRateCustomLocale)
+  getLocale(language: string, applicationTitle?: string, customLocale?: AppRateCustomLocale);
 
-  getLocalesNames(): { [prop: string]: AppRateCustomLocale; }
+  getLocalesNames(): { [prop: string]: AppRateCustomLocale };
 }
 
 export interface AppRateCallbacks {
   /**
    * call back function. called when user clicked on rate-dialog buttons
    */
-  onButtonClicked?: (buttonIndex: number) => void;
+  onButtonClicked?: (buttonIndex: number, buttonLabel: string, promptType: AppRatePromptType) => void;
 
   /**
    * call back function. called when rate-dialog showing
@@ -284,11 +301,9 @@ export class AppRate extends IonicNativePlugin {
     return;
   }
 
-
   /**
    * Immediately send the user to the app store rating page
    */
   @Cordova()
-  navigateToAppStore(): void {
-  }
+  navigateToAppStore(): void {}
 }
