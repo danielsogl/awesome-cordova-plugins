@@ -1,3 +1,12 @@
+## [5.32.1](https://github.com/ionic-team/ionic-native/compare/v5.32.0...v5.32.1) (2021-04-15)
+
+
+### Bug Fixes
+
+* **network:** onChange no longer causes error ([#3651](https://github.com/ionic-team/ionic-native/issues/3651)) ([16fee22](https://github.com/ionic-team/ionic-native/commit/16fee2268aed8c8bf26ef36f236349e222da3375)), closes [#3649](https://github.com/ionic-team/ionic-native/issues/3649)
+
+
+
 # [5.32.0](https://github.com/ionic-team/ionic-native/compare/v5.31.1...v5.32.0) (2021-04-05)
 
 
