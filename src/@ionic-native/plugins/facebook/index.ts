@@ -228,7 +228,7 @@ export class Facebook extends IonicNativePlugin {
    * @returns {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
    */
   @Cordova()
-  reauthorizeDataAccess(): Promise<string> {
+  reauthorizeDataAccess(): Promise<FacebookLoginResponse> {
     return;
   }
 
