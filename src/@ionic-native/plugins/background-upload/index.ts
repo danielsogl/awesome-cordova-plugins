@@ -7,6 +7,7 @@ export enum UploadState {
   UPLOADED = 'UPLOADED',
   FAILED = 'FAILED',
   UPLOADING = 'UPLOADING',
+  INITIALIZED = 'INITIALIZED'
 }
 
 export type UploadStateType = keyof typeof UploadState;
