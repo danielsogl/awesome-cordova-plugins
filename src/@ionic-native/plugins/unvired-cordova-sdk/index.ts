@@ -400,7 +400,7 @@ export class LoginParameters {
    * Language code to be sent to UMP. Specify a two-letter language code.
    * The default value of this is 'en'.
    */
-  languageCode: string;
+  loginLanguage: string;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
@@ -1494,24 +1494,23 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Returns an observable to return the UMP URLs which are discoverable within the network.
-   * Clients can use this information to allow users to select UMP servers in login page.
+   * Returns a promise containing UMP servers which are discoverable within the network.
+   * Clients can use this information to allow users to select appropriate UMP server in the login page.
    * ```
-   * this.unviredSDK.startDiscoveryService().subscribe( (result) => {
-   *  if (result.type == ResultType.success) {
-   *    console.log('Discovered URLs: ' + JSON.stringify(result.data))
-   *    // {"name":"Chyme 98","url":"http://192.168.98.98:8080/UMP/","root":"UNVIRED","type":"DEVELOPMENT"}
-   *  }
-   *  else {
-   *    console.log('Error in discovering URLs: ' + result.error)
-   *  }
-   * })
+   * let discoveryServiceResult = await this.unviredSDK.startDiscoveryService()
+   * if (discoveryServiceResult.type == ResultType.success) {
+   *   let UMPServers: any[] = discoveryServiceResult.data
+   *   UMPServers.forEach(element => {
+   *     console.log(JSON.stringify(element))  // {"name":"Chyme 98","url":"http://192.168.98.98:8080/UMP/","root":"UNVIRED","type":"DEVELOPMENT"}
+   *   });
+   * }
+   * else {
+   *  console.log('Error searching for UMP Servers: ' + discoveryServiceResult.error)
+   * }
    * ```
    */
-  @Cordova({
-    observable: true,
-  })
-  startDiscoveryService(): Observable<UnviredResult> {
+  @Cordova()
+  startDiscoveryService(): Promise<UnviredResult> {
     return;
   }
 }
