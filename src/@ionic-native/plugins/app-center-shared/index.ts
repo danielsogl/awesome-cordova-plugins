@@ -12,16 +12,16 @@ import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
  * @usage
  * ```typescript
  * import { AppCenter } from '@ionic-native/app-center-shared/ngx';
- * 
+ *
  * ...
  *
  * constructor(private appCenterShared: AppCenter) { }
  *
- * async getInstallId() {    
+ * async getInstallId() {
  *   const id = await this.appCenter.getInstallId();
  * }
- * 
- * async setUserId() {  
+ *
+ * async setUserId() {
  *   try{
  *     await this.appCenter.setUserId('i-am-john');
  *   } catch (e){

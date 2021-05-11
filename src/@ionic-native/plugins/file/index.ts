@@ -1341,7 +1341,7 @@ export class File extends IonicNativePlugin {
         return getPromise<T>((resolve, reject) => {
           reader.onloadend = () => {
             if (reader.result !== undefined || reader.result !== null) {
-              resolve((reader.result as any) as T);
+              resolve(reader.result as any as T);
             } else if (reader.error !== undefined || reader.error !== null) {
               reject(reader.error);
             } else {

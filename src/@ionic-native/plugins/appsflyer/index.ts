@@ -31,7 +31,7 @@ export interface AppsflyerOptions {
    * default false 	Accessing AppsFlyer Attribution / Conversion Data from the SDK (Deferred Deeplinking). Read more: Android, iOS. AppsFlyer plugin will return attribution data in onSuccess callback.
    */
   onInstallConversionDataListener?: boolean;
-  
+
   /**
    * time for the sdk to wait before launch - IOS 14 ONLY!
    */
@@ -124,7 +124,6 @@ export class Appsflyer extends IonicNativePlugin {
   registerOnAppOpenAttribution(): Promise<any> {
     return;
   }
-
 
   /**
    * @deprecated

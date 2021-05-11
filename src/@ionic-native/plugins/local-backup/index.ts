@@ -38,17 +38,17 @@ export class LocalBackup extends IonicNativePlugin {
   }
 
   @Cordova()
-  read(): Promise<any>{
+  read(): Promise<any> {
     return;
   }
 
   @Cordova()
-  exists(): Promise<boolean>{
+  exists(): Promise<boolean> {
     return;
   }
 
   @Cordova()
-  remove(): Promise<boolean>{
+  remove(): Promise<boolean> {
     return;
   }
 }

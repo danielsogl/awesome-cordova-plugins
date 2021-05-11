@@ -33,11 +33,10 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   pluginRef: 'window.systemAlertWindowPermission',
   repo: 'https://github.com/MaximBelov/cordova-plugin-system-alert-window-permission.git',
   install: 'ionic cordova plugin add cordova-plugin-system-alert-window-permission',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class SystemAlertWindowPermission extends IonicNativePlugin {
-
   /**
    * Check permission
    * @return {Promise<any>} return 0 when dont have SYSTEM_ALERT_WINDOW permission, 1 when have SYSTEM_ALERT_WINDOW permission
@@ -64,5 +63,4 @@ export class SystemAlertWindowPermission extends IonicNativePlugin {
   openNotificationSettings(): Promise<any> {
     return;
   }
-
 }

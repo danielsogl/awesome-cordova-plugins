@@ -203,16 +203,15 @@ export type PlayStoreReceipt = {
   purchaseToken: string;
   receipt: string;
   signature: string;
-  type: "android-playstore";
+  type: 'android-playstore';
 };
 
 export type AppStoreReceipt = {
   id: string;
   appStoreReceipt: string;
   original_transaction_id: string;
-  type: "ios-appstore";
+  type: 'ios-appstore';
 };
-
 
 /**
  * @hidden

@@ -28,13 +28,13 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   pluginRef: 'RestartPlugin',
   repo: 'https://github.com/MaximBelov/cordova-plugin-restart',
   install: 'ionic cordova plugin add cordova-plugin-restart',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class Restart extends IonicNativePlugin {
   @Cordova({
     errorIndex: 0,
-    successIndex: 2
+    successIndex: 2,
   })
   restart(cold: boolean): Promise<any> {
     return;
@@ -43,8 +43,7 @@ export class Restart extends IonicNativePlugin {
   @Cordova({
     errorIndex: 0,
   })
-  enableDebug(): Promise<any>{
+  enableDebug(): Promise<any> {
     return;
   }
-
 }
