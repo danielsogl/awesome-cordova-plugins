@@ -9,9 +9,8 @@ export interface PreviewAnyFileOptions {
   /**
    * The mime type of the file to preview.
    */
-   mimeType: string;
+  mimeType: string;
 }
-
 
 /**
  * @name PreviewAnyFile
@@ -35,8 +34,8 @@ export interface PreviewAnyFileOptions {
  *   .catch((error: any) => console.error(error));
  *
  * ```
- * 
- * 
+ *
+ *
  * ...
  *
  *
@@ -71,30 +70,30 @@ export class PreviewAnyFile extends IonicNativePlugin {
   /**
    * previewPath function will return success callback if the file successfully opened, if the content is base64 you have to use previewBase64 method
    * @param base64 {String} base64 string content
-   * @param options {PreviewAnyFileOptions} define the name of the file with extension or it's mimeType, if the correct extension not exist in the path 
+   * @param options {PreviewAnyFileOptions} define the name of the file with extension or it's mimeType, if the correct extension not exist in the path
    */
   @Cordova()
-  previewBase64(base64: string,options?: PreviewAnyFileOptions): Promise<string> {
+  previewBase64(base64: string, options?: PreviewAnyFileOptions): Promise<string> {
     return;
   }
 
   /**
    * previewPath function will return success callback if the file successfully opened, if the content is base64 you have to use previewBase64 method
    * @param url {String} full absolute URL -> file://, content://, http://, https, ... etc, if extension not exist, you must define it in the opt param
-   * @param options {PreviewAnyFileOptions} define the name of the file with extension or it's mimeType, if the correct extension not exist in the path 
+   * @param options {PreviewAnyFileOptions} define the name of the file with extension or it's mimeType, if the correct extension not exist in the path
    */
   @Cordova()
-  previewPath(url: string,options?: PreviewAnyFileOptions): Promise<string> {
+  previewPath(url: string, options?: PreviewAnyFileOptions): Promise<string> {
     return;
   }
 
   /**
    * previewPath function will return success callback if the file successfully opened, if the content is base64 you have to use previewBase64 method
    * @param url {String} full absolute URL -> file://, content://, http://, https, ... etc, if extension not exist, you must define it in the opt param
-   * @param options {PreviewAnyFileOptions} define the name of the file with extension or it's mimeType, if the correct extension not exist in the path 
+   * @param options {PreviewAnyFileOptions} define the name of the file with extension or it's mimeType, if the correct extension not exist in the path
    */
   @Cordova()
-  previewAsset(url: string,options?: PreviewAnyFileOptions): Promise<string> {
+  previewAsset(url: string, options?: PreviewAnyFileOptions): Promise<string> {
     return;
   }
 }

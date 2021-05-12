@@ -105,7 +105,7 @@ export interface FileTransferError {
  *
  * @description
  * This plugin allows you to upload and download files.
- * 
+ *
  * @usage
  * ```typescript
  * import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';

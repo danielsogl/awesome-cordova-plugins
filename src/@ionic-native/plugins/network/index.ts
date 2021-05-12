@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaCheck, CordovaProperty, IonicNativePlugin, Plugin } from '@ionic-native/core';
 import { Observable, merge } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
 
 declare const navigator: any;
 
@@ -99,7 +100,10 @@ export class Network extends IonicNativePlugin {
    */
   @CordovaCheck()
   onChange(): Observable<'connected' | 'disconnected'> {
-    return merge(this.onConnect().pipe(mapTo('connected')), this.onDisconnect().pipe(mapTo('disconnected'));
+    return merge(
+      this.onConnect().pipe(mapTo('connected')),
+      this.onDisconnect().pipe(mapTo('disconnected')) as Observable<'disconnected'>
+    );
   }
 
   /**

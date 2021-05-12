@@ -1,3 +1,32 @@
+# [5.33.0](https://github.com/ionic-team/ionic-native/compare/v5.32.1...v5.33.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* **unvired-cordova-sdk:** Update the return type for startDiscoveryService api ([#3647](https://github.com/ionic-team/ionic-native/issues/3647)) ([b2da307](https://github.com/ionic-team/ionic-native/commit/b2da3078372c336864ab78528c5ae0c13a81a27b))
+
+
+### Features
+
+* **background-upload:** add INITIALIZED state ([#3658](https://github.com/ionic-team/ionic-native/issues/3658)) ([065e80c](https://github.com/ionic-team/ionic-native/commit/065e80cccf142d283075a800bdd46656cb613a0f))
+* **ble:** update with setPin to allow set device pin ([#3652](https://github.com/ionic-team/ionic-native/issues/3652)) ([da4ce96](https://github.com/ionic-team/ionic-native/commit/da4ce96be4fc0dd763405f53498b11b00974f771))
+* **branch-io:**  add initSessionWithCallback method ([#3660](https://github.com/ionic-team/ionic-native/issues/3660)) ([4435155](https://github.com/ionic-team/ionic-native/commit/443515582b380fe6643c6db19a5f17999e979d5b))
+* **facebook:** add new methods ([#3654](https://github.com/ionic-team/ionic-native/issues/3654)) ([826f808](https://github.com/ionic-team/ionic-native/commit/826f8085a45c39eb2c43d60bd98d34ff5619ce82))
+* **local-backup:** add plugin ([#3656](https://github.com/ionic-team/ionic-native/issues/3656)) ([c05b3e9](https://github.com/ionic-team/ionic-native/commit/c05b3e96722ee85c4771aa70236a77e1b60f60e2))
+* **restart:** add plugin ([#3657](https://github.com/ionic-team/ionic-native/issues/3657)) ([5752294](https://github.com/ionic-team/ionic-native/commit/575229412b335a720a284ffe67839488f3de2996))
+* **system-alert-window-permission:** add plugin ([#3659](https://github.com/ionic-team/ionic-native/issues/3659)) ([50f8a45](https://github.com/ionic-team/ionic-native/commit/50f8a452ad4e36e3554a417d2051f0389bf7d7d2))
+
+
+
+## [5.32.1](https://github.com/ionic-team/ionic-native/compare/v5.32.0...v5.32.1) (2021-04-15)
+
+
+### Bug Fixes
+
+* **network:** onChange no longer causes error ([#3651](https://github.com/ionic-team/ionic-native/issues/3651)) ([16fee22](https://github.com/ionic-team/ionic-native/commit/16fee2268aed8c8bf26ef36f236349e222da3375)), closes [#3649](https://github.com/ionic-team/ionic-native/issues/3649)
+
+
+
 # [5.32.0](https://github.com/ionic-team/ionic-native/compare/v5.31.1...v5.32.0) (2021-04-05)
 
 
