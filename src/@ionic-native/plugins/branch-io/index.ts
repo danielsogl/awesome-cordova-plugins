@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 export interface BranchIoPromise {
   $identity_id?: number;
@@ -102,6 +103,15 @@ export class BranchIo extends IonicNativePlugin {
    */
   @Cordova({ otherPromise: true })
   initSession(): Promise<BranchIoPromise> {
+    return;
+  }
+
+  /**
+   * Initializes Branch with callback
+   * @return {Observable<any>}
+   */
+  @Cordova({ observable: true })
+  initSessionWithCallback(): Observable<BranchIoPromise> {
     return;
   }
 

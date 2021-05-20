@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
 
+export type BiometryType = 'face' | 'touch';
+
 /**
  * @name Keychain Touch Id
  * @description
@@ -37,7 +39,7 @@ export class KeychainTouchId extends IonicNativePlugin {
    * @return {Promise<any>} Returns a promise that resolves when there is hardware support
    */
   @Cordova()
-  isAvailable(): Promise<any> {
+  isAvailable(): Promise<BiometryType> {
     return;
   }
 
@@ -46,10 +48,10 @@ export class KeychainTouchId extends IonicNativePlugin {
    * successful authentication using fingerprint
    * @param key {string} the key you want to store
    * @param password {string} the password you want to encrypt and store
-   * @return {Promise<any>} Returns a promise that resolves when there is a result
+   * @return {Promise<void>} Returns a promise that resolves when there is a result
    */
   @Cordova()
-  save(key: string, password: string, userAuthenticationRequired: boolean): Promise<any> {
+  save(key: string, password: string, userAuthenticationRequired: boolean): Promise<void> {
     return;
   }
 
@@ -58,30 +60,30 @@ export class KeychainTouchId extends IonicNativePlugin {
    * with the password stored in keychain or will resolve an error code, where -1 indicated not available.
    * @param key {string} the key you want to retrieve from keychain
    * @param message {string} a message to the user
-   * @return {Promise<any>} Returns a promise that resolves when the key value is successfully retrieved or an error
+   * @return {Promise<string>} Returns a promise that resolves when the key value is successfully retrieved or an error
    */
   @Cordova()
-  verify(key: string, message: string): Promise<any> {
+  verify(key: string, message: string): Promise<string> {
     return;
   }
 
   /**
    * Checks if there is a password stored within the keychain for the given key.
    * @param key {string} the key you want to check from keychain
-   * @return {Promise<any>} Returns a promise that resolves with success if the key is available or failure if key is not.
+   * @return {Promise<void>} Returns a promise that resolves with success if the key is available or failure if key is not.
    */
   @Cordova()
-  has(key: string): Promise<any> {
+  has(key: string): Promise<void> {
     return;
   }
 
   /**
    * Deletes the password stored under given key from the keychain.
    * @param key {string} the key you want to delete from keychain
-   * @return {Promise<any>} Returns a promise that resolves with success if the key is deleted or failure if key is not
+   * @return {Promise<void>} Returns a promise that resolves with success if the key is deleted or failure if key is not
    */
   @Cordova()
-  delete(key: string): Promise<any> {
+  delete(key: string): Promise<void> {
     return;
   }
 
