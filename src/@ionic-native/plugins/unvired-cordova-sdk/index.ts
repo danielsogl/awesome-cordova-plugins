@@ -115,6 +115,10 @@ export enum LoginType {
    */
   email = 'EMAIL',
   /**
+   * SAML 2.0 Login Type
+   */
+  saml2 = 'SAML2',
+  /**
    * TODO:
    */
   custom = 'CUSTOM',
@@ -207,6 +211,10 @@ export enum NotificationListenerType {
    * Notify when the sent item count changes.
    */
   SentItemChanged = 11,
+  /**
+   * Notify that the JWT token is received
+   */
+  JWTTokenReceived = 12
 }
 
 export enum AttachmentItemStatus {
@@ -390,8 +398,7 @@ export class LoginParameters {
   persistWebDb: boolean;
 
   /*
-   * Optional jwt token parameter. Please check with your Unvired Admin for this value.
-   * For Example:
+   * JWT options.
    * loginParameters.jwtOptions = {"app": "myapp"};
    */
   jwtOptions: object;
