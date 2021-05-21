@@ -408,6 +408,11 @@ export class LoginParameters {
    * The default value of this is 'en'.
    */
   loginLanguage: string;
+
+  /**
+   * Applicable for browser only. Set this flag to indicate that saved data should be reloaded upon launch.
+   */
+  cacheWebData: boolean;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
@@ -1059,6 +1064,15 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    */
   @Cordova()
   dbEndTransaction(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this function to save the WebData. This function can be used to preserve a large data that is downloaded.
+   * If you set the loginParameter flag, |cacheWebData|, then the plugin loads this data.
+   */
+  @Cordova()
+  saveWebData(): Promise<any> {
     return;
   }
 
