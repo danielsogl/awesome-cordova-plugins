@@ -1068,11 +1068,20 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Call this function to save the WebData. This function can be used to preserve a large data that is downloaded.
+   * Browser platform only. Call this function to save the WebData. This function can be used to preserve a large data that is downloaded.
    * If you set the loginParameter flag, |cacheWebData|, then the plugin loads this data.
    */
   @Cordova()
   saveWebData(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Browser platform only. Call this function to export the Webdata. 
+   * Call this function to export the Web 
+   */
+  @Cordova()
+  exportWebDb(): Promise<any> {
     return;
   }
 
