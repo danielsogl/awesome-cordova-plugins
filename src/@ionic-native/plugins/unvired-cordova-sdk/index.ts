@@ -1072,7 +1072,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * If you set the loginParameter flag, |cacheWebData|, then the plugin loads this data.
    */
   @Cordova()
-  saveWebData(): Promise<any> {
+  dbSaveWebData(): Promise<any> {
     return;
   }
 
@@ -1081,7 +1081,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Call this function to export the Web 
    */
   @Cordova()
-  exportWebDb(): Promise<any> {
+  dbExportWebData(): Promise<any> {
     return;
   }
 
