@@ -413,6 +413,13 @@ export class LoginParameters {
    * Applicable for browser only. Set this flag to indicate that saved data should be reloaded upon launch.
    */
   cacheWebData: boolean;
+
+  /**
+   * Set this value if you the login process requires client credentials to be set. 
+   * You can pass the client credentials with the method: |unviredSDK.setClientCredentials(credentials)|
+   * The passed credentials will be used based on this flag.
+   */
+  requireClientCredentials: boolean;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
