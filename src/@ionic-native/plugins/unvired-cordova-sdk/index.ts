@@ -1550,4 +1550,30 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   startDiscoveryService(): Promise<UnviredResult> {
     return;
   }
+
+  /**
+   * Use this function to set the credentials which will be sent to UMP.
+   * @param credentials JSON array containing the credentials.
+   * Example: 
+   * ```
+   * let credentials = [
+   *   {
+   *       "port": 8082,
+   *       "user": "username",
+   *       "password": "password"
+   *   },
+   *   {
+   *       "port": 8083,
+   *       "user": "username2",
+   *       "password": "password2"
+   *   }
+   * ]
+   * this.unviredsdk.setClientCredentials(credentials)
+   * ```
+   * 
+   */
+  @Cordova()
+  setClientCredentials(credentials: any) {
+    return;
+  }
 }
