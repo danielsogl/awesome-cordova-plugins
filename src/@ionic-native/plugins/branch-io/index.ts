@@ -184,12 +184,24 @@ export class BranchIo extends IonicNativePlugin {
 
   /**
    * Send Commerce Event
+   * @deprecated since v.3.1.0. As of https://help.branch.io/developers-hub/docs/cordova-phonegap-ionic#track-commerce
    * @param {string} event
    * @param {any} metaData
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   sendCommerceEvent(event: string, metaData: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Send Branch Event
+   * @param {string} event
+   * @param {any} metaData
+   * @return {Promise<any>}
+   */
+  @Cordova({ otherPromise: true })
+  sendBranchEvent(event: string, metaData: any): Promise<any> {
     return;
   }
 
