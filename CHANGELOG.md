@@ -1,3 +1,7 @@
+## [5.33.1](https://github.com/ionic-team/ionic-native/compare/v5.33.0...v5.33.1) (2021-05-28)
+
+
+
 # [5.33.0](https://github.com/ionic-team/ionic-native/compare/v5.32.1...v5.33.0) (2021-05-11)
 
 
