@@ -433,6 +433,12 @@ export class AuthenticateLocalResult extends UnviredResult {
   type: AuthenticateLocalResultType;
 }
 
+export class UnviredCredential {
+  user: string;
+  password: string;
+  port: number;
+}
+
 /**
  * @name Unvired Cordova SDK
  * @description
@@ -1552,28 +1558,20 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Use this function to set the credentials which will be sent to UMP.
-   * @param credentials JSON array containing the credentials.
-   * Example: 
-   * ```
-   * let credentials = [
-   *   {
-   *       "port": 8082,
-   *       "user": "username",
-   *       "password": "password"
-   *   },
-   *   {
-   *       "port": 8083,
-   *       "user": "username2",
-   *       "password": "password2"
-   *   }
-   * ]
-   * this.unviredsdk.setClientCredentials(credentials)
-   * ```
-   * 
+   * Use this function to set the SAP credentials to be sent to UMP.
+   * @param credentials Array of |Credential| objects.
    */
   @Cordova()
-  setClientCredentials(credentials: any) {
+  setClientCredentials(credentials: Credential[]) {
+    return;
+  }
+
+  /**
+   * Check for client credentials.
+   * @returns Returns true if client credentials are set
+   */
+  @Cordova()
+  isClientCredentialsSet(): Promise<UnviredResult> {
     return;
   }
 }
