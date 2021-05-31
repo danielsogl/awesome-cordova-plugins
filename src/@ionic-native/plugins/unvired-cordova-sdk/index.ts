@@ -436,7 +436,7 @@ export class AuthenticateLocalResult extends UnviredResult {
 export class UnviredCredential {
   user: string;
   password: string;
-  port: number;
+  port: string;
 }
 
 /**
