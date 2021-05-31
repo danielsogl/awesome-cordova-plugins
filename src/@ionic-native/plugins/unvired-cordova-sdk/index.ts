@@ -1574,4 +1574,22 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   isClientCredentialsSet(): Promise<UnviredResult> {
     return;
   }
+
+  /**
+   * Encrypt a string with the key stored by the Unvired SDK.
+   * @returns UnviredResult.data which should contains the encrypted string.
+   */
+   @Cordova()
+   encrypt(stringToBeEncrypted: string): Promise<UnviredResult> {
+     return;
+   }
+
+  /**
+   * Decrypt a string with the string encrypted with the key (key stored by the Unvired SDK)
+   * @returns UnviredResult.data which should contains the decrypted string.
+   */
+  @Cordova()
+  decrypt(stringToBeDecrypted: string): Promise<UnviredResult> {
+    return;
+  }
 }
