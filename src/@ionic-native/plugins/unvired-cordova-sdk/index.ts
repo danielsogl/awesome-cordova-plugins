@@ -1562,7 +1562,7 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * @param credentials Array of |Credential| objects.
    */
   @Cordova()
-  setClientCredentials(credentials: Credential[]) {
+  setClientCredentials(credentials: UnviredCredential[]) {
     return;
   }
 
