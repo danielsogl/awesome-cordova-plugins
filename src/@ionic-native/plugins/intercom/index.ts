@@ -244,5 +244,4 @@ export class Intercom extends IonicNativePlugin {
   setBottomPadding(bottomPadding: string | number): Promise<any> {
     return;
   }
-
 }

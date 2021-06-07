@@ -179,6 +179,60 @@ export class Facebook extends IonicNativePlugin {
   }
 
   /**
+   * Login to Facebook using Limited Login (iOS Only)
+   *
+   * ```typescript
+   * {
+   *   status: 'connected',
+   *   authResponse: {
+   *     authenticationToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
+   *     nonce: 'foo',
+   *     userID: '634565435'
+   *   }
+   * }
+   *
+   * ```
+   *
+   * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/limited-login/permissions) this app has upon logging in.
+   * @returns {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
+   */
+  @Cordova()
+  loginWithLimitedTracking(permissions: string[]): Promise<FacebookLoginResponse> {
+    return;
+  }
+
+  /**
+   * Check if the user has approved all necessary permissions
+   *
+   * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) to check for
+   * @returns {Promise<string>} Returns a Promise that resolves with a success string if all passed permissions are granted, or an error string if any permissions are not granted
+   */
+  @Cordova()
+  checkHasCorrectPermissions(permissions: string[]): Promise<string> {
+    return;
+  }
+
+  /**
+   * Check if data access has expired for the user
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with a success string if data access is expired, or rejects with an error
+   */
+  @Cordova()
+  isDataAccessExpired(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Reauthorize data access after it has expired
+   *
+   * @returns {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
+   */
+  @Cordova()
+  reauthorizeDataAccess(): Promise<FacebookLoginResponse> {
+    return;
+  }
+
+  /**
    * Logout of Facebook.
    *
    * For more info see the [Facebook docs](https://developers.facebook.com/docs/reference/javascript/FB.logout)
@@ -227,6 +281,16 @@ export class Facebook extends IonicNativePlugin {
    */
   @Cordova()
   getAccessToken(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Get profile information for the currently logged in user
+   *
+   * @returns {Promise<any>} Returns a Promise that resolves with success data, or rejects with an error
+   */
+  @Cordova()
+  getCurrentProfile(): Promise<any> {
     return;
   }
 
@@ -297,6 +361,26 @@ export class Facebook extends IonicNativePlugin {
     errorIndex: 2,
   })
   setAutoLogAppEventsEnabled(enabled: boolean): Promise<void> {
+    return;
+  }
+
+  /**
+   * Enable or disable collection of advertiser-id
+   *
+   * @param {boolean}  enabled value to be set
+   */
+  @Cordova()
+  setAdvertiserIDCollectionEnabled(enabled: boolean): Promise<void> {
+    return;
+  }
+
+  /**
+   * Enable or disable advertiser tracking (iOS Only)
+   *
+   * @param {boolean}  enabled value to be set
+   */
+  @Cordova()
+  setAdvertiserTrackingEnabled(enabled: boolean): Promise<void> {
     return;
   }
 
