@@ -52,9 +52,9 @@ export class SmartlookSetupConfig {
 }
 
 export class SmartlookResetSession {
-  private resetUser: string;
+  private resetUser: boolean;
 
-  constructor(resetUser: string) {
+  constructor(resetUser: boolean) {
     this.resetUser = resetUser;
   }
 }
