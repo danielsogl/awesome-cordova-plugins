@@ -1,147 +1,145 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 
-
 export interface CkoCardTokenRequest {
   /**
    * The card number
    */
-  number: string,
+  number: string;
   /**
    * The expiry month of the card
    */
-  expiry_month: string,
+  expiry_month: string;
   /**
    * The expiry year of the card
    */
-  expiry_year: string,
+  expiry_year: string;
   /**
    * The card verification value/code. 3 digits, except for Amex (4 digits)
    */
-  cvv?: string,
+  cvv?: string;
   /**
    * The cardholder's name
    */
-  name?: string,
+  name?: string;
   /**
    * The cardholder's billing address
    */
-  billing_address?: Address,
+  billing_address?: Address;
   /**
    * The cardholder's phone number
    */
-  phone?: Phone
+  phone?: Phone;
 }
 
 export interface CkoCardTokenResponse {
   /**
    * The token type
    */
-  type: string,
+  type: string;
   /**
    * The token value
    */
-  token: string,
+  token: string;
   /**
    * The expiration datetime of the token
    */
-  expires_on: string,
+  expires_on: string;
   /**
    * The expiry month of the card
    */
-  expiry_month: number,
+  expiry_month: number;
   /**
    * The expiry year of the card
    */
-  expiry_year: number,
+  expiry_year: number;
   /**
    * The cardholder's name
    */
-  name: string,
+  name: string;
   /**
    * The card scheme
    */
-  scheme: string,
+  scheme: string;
   /**
    * The last 4 digit of the card number
    */
-  last4: string,
+  last4: string;
   /**
    * The bin range of the card
    */
-  bin: string,
+  bin: string;
   /**
    * The card type
    */
-  card_type: string,
+  card_type: string;
   /**
    * The card category
    */
-  card_category: string,
+  card_category: string;
   /**
    * The card issuer name
    */
-  issuer: string,
+  issuer: string;
   /**
    * The card issuer country (two-letter ISO)
    */
-  issuer_country: string,
+  issuer_country: string;
   /**
    * The card product id
    */
-  product_id: string,
+  product_id: string;
   /**
    * The card product type
    */
-  product_type: string,
+  product_type: string;
   /**
    * The cardholder's billing address
    */
-  billing_address: Address,
+  billing_address: Address;
   /**
    * The cardholder's phone number
    */
-  phone: Phone
+  phone: Phone;
 }
 
 export interface Address {
   /**
    * The first line of the address
    */
-  address_line1?: string,
+  address_line1?: string;
   /**
    * The second line of the address
    */
-  address_line2?: string,
+  address_line2?: string;
   /**
    * The address city
    */
-  city?: string,
+  city?: string;
   /**
    * The address state
    */
-  state?: string,
+  state?: string;
   /**
    * The address zip/postal code
    */
-  zip?: string,
+  zip?: string;
   /**
    * The two-letter ISO country code of the address
    */
-  country?: string
+  country?: string;
 }
 
 export interface Phone {
   /**
    * The international country calling code. Required for some risk checks
    */
-  country_code: string,
+  country_code: string;
   /**
    * The phone number
    */
-  number: string
+  number: string;
 }
-
 
 /**
  * @name Checkout
@@ -163,7 +161,7 @@ export interface Phone {
  *     .catch(err => this.label = err)
  *
  * ...
- * 
+ *
  * let tokenRequest: CkoCardTokenRequest = {
  *     number: "4543474002249996",
  *     cvv: "010",
@@ -173,7 +171,7 @@ export interface Phone {
  *       country: "FR"
  *     }
  *   }
- *   
+ *
  *
  *   this.cko.generateToken(tokenRequest)
  *   .then(tokenResponse => this.label = "Token: " + tokenResponse.token)
@@ -187,11 +185,10 @@ export interface Phone {
   repo: 'https://github.com/checkout/frames-cordova',
   install: '',
   installVariables: [],
-  platforms: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Checkout extends IonicNativePlugin {
-
   /**
    * Initialize Frames plugin in Sandbox mode
    * @param publicKey {string} Merchant's sandbox public key
