@@ -90,16 +90,6 @@ export interface AppRatePreferences {
   showPromptForInAppReview?: boolean;
 
   /**
-   * leave app or no when application page opened in app store (now supported only for iOS). Defaults to `false`
-   */
-  inAppReview?: boolean;
-
-  /**
-   * use custom view for rate dialog. Defaults to `false`
-   */
-  useCustomRateDialog?: boolean;
-
-  /**
    * Custom locale object
    */
   customLocale?: AppRateCustomLocale;
@@ -158,7 +148,7 @@ export interface AppRateCustomLocale {
 export interface AppRateLocales {
   addLocale(localeObject: AppRateCustomLocale): AppRateCustomLocale;
 
-  getLocale(language: string, applicationTitle?: string, customLocale?: AppRateCustomLocale);
+  getLocale(language: string, applicationTitle?: string, customLocale?: AppRateCustomLocale): AppRateCustomLocale;
 
   getLocalesNames(): { [prop: string]: AppRateCustomLocale };
 }

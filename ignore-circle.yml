@@ -7,26 +7,26 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-         key: ionic-site-{{ checksum "package.json" }}
+          key: ionic-site-{{ checksum "package.json" }}
       - run:
-         name: Prepare ionic-site repo
-         command: |
-           if [ "${CIRCLE_BRANCH}" == "master" ]; then
-             ./scripts/docs/prepare.sh
-           fi
+          name: Prepare ionic-site repo
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ./scripts/docs/prepare.sh
+            fi
       - save_cache:
-         key: ionic-site-{{ checksum "package.json" }}
-         paths:
-         - ~/ionic-site/
+          key: ionic-site-{{ checksum "package.json" }}
+          paths:
+            - ~/ionic-site/
       - restore_cache:
-         key: node_modules_{{ checksum "package.json" }}
+          key: node_modules_{{ checksum "package.json" }}
       - run:
-         name: Install node modules
-         command: npm ci
+          name: Install node modules
+          command: npm ci
       - save_cache:
-         key: node_modules_{{ checksum "package.json" }}
-         paths:
-         - ~/ionic-native/node_modules/
+          key: node_modules_{{ checksum "package.json" }}
+          paths:
+            - ~/ionic-native/node_modules/
       - run:
           name: Run tslint
           command: npm run lint

@@ -71,7 +71,7 @@ export class AndroidFullScreen extends IonicNativePlugin {
    * @return {Promise<void>}
    */
   @Cordova()
-  isImmersiveModeSupported(): Promise<void> {
+  isImmersiveModeSupported(): Promise<boolean> {
     return;
   }
 

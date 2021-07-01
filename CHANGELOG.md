@@ -1,3 +1,26 @@
+# [5.34.0](https://github.com/ionic-team/ionic-native/compare/v5.33.1...v5.34.0) (2021-06-29)
+
+
+### Bug Fixes
+
+* **android-full-screen:** add correct return type ([#3677](https://github.com/ionic-team/ionic-native/issues/3677)) ([c5d6066](https://github.com/ionic-team/ionic-native/commit/c5d606633e0ce69c94eb99d205c655c5a0d94523)), closes [/github.com/mesmotronic/cordova-plugin-fullscreen/blob/master/src/android/com/mesmotronic/plugins/FullScreenPlugin.java#L129](https://github.com//github.com/mesmotronic/cordova-plugin-fullscreen/blob/master/src/android/com/mesmotronic/plugins/FullScreenPlugin.java/issues/L129)
+* **mobile-messaging:** revision of optional parameters ([#3667](https://github.com/ionic-team/ionic-native/issues/3667)) ([944d251](https://github.com/ionic-team/ionic-native/commit/944d25147f2c0b89d0e7acb1fa1a6fe7fa4941f7))
+* **smartlook:** fix SmartlookResetSession.resetUser type to boolean ([#3692](https://github.com/ionic-team/ionic-native/issues/3692)) ([5a42e8c](https://github.com/ionic-team/ionic-native/commit/5a42e8cadfc0d5269c4e06149c2d1ecf4ad721f7))
+
+
+### Features
+
+* **branch-io:** add sendBranchEvent method; deprecated sendCommerceEvent ([#3675](https://github.com/ionic-team/ionic-native/issues/3675)) ([4f13426](https://github.com/ionic-team/ionic-native/commit/4f13426a6dd820880f21c6e52a30a4db5f0c5c0a))
+* **checkout:** add plugin ([#3687](https://github.com/ionic-team/ionic-native/issues/3687)) ([0dcbace](https://github.com/ionic-team/ionic-native/commit/0dcbace8223c5c9a4c3474c7bff291e00da06b0b))
+* **in-app-purchase-2:** added manageBilling method ([#3690](https://github.com/ionic-team/ionic-native/issues/3690)) ([383a884](https://github.com/ionic-team/ionic-native/commit/383a88463a16b47da8aeb79707f342411028f889))
+* **paytabs:** add plugin ([#3678](https://github.com/ionic-team/ionic-native/issues/3678)) ([9dd719b](https://github.com/ionic-team/ionic-native/commit/9dd719bb07a1278f38e188fa075283e54e0654d1))
+
+
+
+## [5.33.1](https://github.com/ionic-team/ionic-native/compare/v5.33.0...v5.33.1) (2021-05-28)
+
+
+
 # [5.33.0](https://github.com/ionic-team/ionic-native/compare/v5.32.1...v5.33.0) (2021-05-11)
 
 
