@@ -54,7 +54,7 @@ function getMethodBlock(method: ts.MethodDeclaration, decoratorName: string, dec
     default:
       return ts.createCall(ts.createIdentifier(decoratorMethod), undefined, [
         ts.createThis(),
-        ts.createLiteral((method.name as any).text),
+        ts.createLiteral(decoratorArgs?.methodName || (method.name as any).text),
         convertValueToLiteral(decoratorArgs),
         ts.createIdentifier('arguments'),
       ]);

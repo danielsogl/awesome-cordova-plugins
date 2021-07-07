@@ -27,8 +27,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
   pluginName: 'IosASWebauthenticationSession',
   plugin: 'cordova-plugin-ios-aswebauthenticationsession-api',
   pluginRef: 'plugins.ASWebAuthSession',
-  repo:
-    'https://github.com/jwelker110/cordova-plugin-ios-aswebauthenticationsession-api',
+  repo: 'https://github.com/jwelker110/cordova-plugin-ios-aswebauthenticationsession-api',
   platforms: ['iOS'],
 })
 @Injectable()
@@ -40,10 +39,7 @@ export class IosASWebauthenticationSession extends IonicNativePlugin {
    * @return {Promise<string>} Returns a promise that resolves a string containing the redirect URL after finishing ASWebauthenticationSession
    */
   @Cordova()
-  start(
-    callbackUrl: string,
-    authorizeURL: string
-  ): Promise<string> {
+  start(callbackUrl: string, authorizeURL: string): Promise<string> {
     return;
   }
 }
