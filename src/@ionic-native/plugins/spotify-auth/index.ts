@@ -56,7 +56,7 @@ export interface AuthorizationData {
  *
  * @usage
  * ```typescript
- * import { SpotifyAuth } from '@ionic-native/spotify-auth';
+ * import { SpotifyAuth } from '@ionic-native/spotify-auth/ngx';
  *
  * // [...]
  *
@@ -82,7 +82,7 @@ export interface AuthorizationData {
  *
  * // [...]
  *
- * this.spotifyAuth.forget().then(() => console.log("We're logged out!"));
+ * this.spotifyAuth.forget();
  *
  * // [...]
  * ```

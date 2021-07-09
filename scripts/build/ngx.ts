@@ -2,6 +2,7 @@ import * as ts from 'typescript';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import * as rimraf from 'rimraf';
+import * as rollup from 'rollup';
 import { generateDeclarations } from './transpile';
 import { clone } from 'lodash';
 import { EmitFlags, createCompilerHost, CompilerOptions, CompilerHost, createProgram } from '@angular/compiler-cli';
@@ -52,6 +53,31 @@ export function transpileNgx() {
 
 export function generateDeclarationFiles() {
   generateDeclarations(PLUGIN_PATHS.map(p => p.replace('index.ts', 'ngx/index.ts')));
+}
+
+export function generateLegacyBundles() {
+  [
+    path.resolve(ROOT, 'dist/@ionic-native/core/index.js'),
+    ...PLUGIN_PATHS.map(p =>
+      p.replace(path.join(ROOT, 'src'), path.join(ROOT, 'dist')).replace('index.ts', 'ngx/index.js')
+    ),
+  ].forEach(p =>
+    rollup
+      .rollup({
+        input: p,
+        onwarn(warning, warn) {
+          if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return;
+          warn(warning);
+        },
+        external: ['@angular/core', '@ionic-native/core', 'rxjs', 'tslib'],
+      })
+      .then(bundle =>
+        bundle.write({
+          file: path.join(path.dirname(p), 'bundle.js'),
+          format: 'cjs',
+        })
+      )
+  );
 }
 
 // remove reference to @ionic-native/core decorators

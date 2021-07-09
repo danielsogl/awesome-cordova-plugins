@@ -235,7 +235,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
  * PurchaserInfo
  * PurchasesEntitlementInfos
  * PurchasesEntitlementInfo
- *
+ * PurchasesTransaction
  */
 @Plugin({
   pluginName: 'Purchases',
@@ -298,9 +298,12 @@ export class Purchases extends IonicNativePlugin {
    * @param {boolean} observerMode An optional boolean. Set this to TRUE if you have your own IAP implementation and
    * want to use only RevenueCat's backend. Default is FALSE. If you are on Android and setting this to ON, you will have
    * to acknowledge the purchases yourself.
+   * @param {string?} userDefaultsSuiteName An optional string. iOS-only, will be ignored for Android.
+   * Set this if you would like the RevenueCat SDK to store its preferences in a different NSUserDefaults
+   * suite, otherwise it will use standardUserDefaults. Default is null, which will make the SDK use standardUserDefaults.
    */
   @Cordova({ sync: true })
-  setup(apiKey: string, appUserID?: string | null, observerMode = false): void {}
+  setup(apiKey: string, appUserID?: string | null, observerMode = false, userDefaultsSuiteName?: string): void {}
 
   /**
    * Set this to true if you are passing in an appUserID but it is anonymous, this is true by default if you didn't pass an appUserID
@@ -498,10 +501,26 @@ export class Purchases extends IonicNativePlugin {
    * This method will send all the purchases to the RevenueCat backend. Call this when using your own implementation
    * for subscriptions anytime a sync is needed, like after a successful purchase.
    *
-   * @warning This function should only be called if you're not calling makePurchase.
+   * @warning This function should only be called if you're not calling purchaseProduct.
    */
   @Cordova({ sync: true })
   syncPurchases(): void {}
+
+  /**
+   * iOS only. Presents a code redemption sheet, useful for redeeming offer codes
+   * Refer to https://docs.revenuecat.com/docs/ios-subscription-offers#offer-codes for more information on how
+   * to configure and use offer codes.
+   */
+  @Cordova({ sync: true })
+  presentCodeRedemptionSheet(): void {}
+
+  /**
+   * iOS only.
+   * @param {Boolean} enabled Set this property to true *only* when testing the ask-to-buy / SCA purchases flow.
+   * More information: http://errors.rev.cat/ask-to-buy
+   */
+  @Cordova({ sync: true })
+  setSimulatesAskToBuyInSandbox(enabled: boolean): void {}
 
   /**
    * Enable automatic collection of Apple Search Ads attribution. Disabled by default.
@@ -564,8 +583,13 @@ export class Purchases extends IonicNativePlugin {
 
   /**
    * Invalidates the cache for purchaser information.
-   * This is useful for cases where purchaser information might have been updated outside of the app, like if a
-   * promotional subscription is granted through the RevenueCat dashboard.
+   *
+   * Most apps will not need to use this method; invalidating the cache can leave your app in an invalid state.
+   * Refer to https://docs.revenuecat.com/docs/purchaserinfo#section-get-user-information for more information on
+   * using the cache properly.
+   *
+   * This is useful for cases where purchaser information might have been updated outside of the
+   * app, like if a promotional subscription is granted through the RevenueCat dashboard.
    */
   @Cordova({ sync: true })
   invalidatePurchaserInfoCache(): void {}
@@ -598,28 +622,28 @@ export class Purchases extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   setEmail(email: string | null): void {}
+
   /**
    * Subscriber attribute associated with the phone number for the user
    *
    * @param phoneNumber Empty String or null will delete the subscriber attribute.
    */
-
   @Cordova({ sync: true })
   setPhoneNumber(phoneNumber: string | null): void {}
+
   /**
    * Subscriber attribute associated with the display name for the user
    *
    * @param displayName Empty String or null will delete the subscriber attribute.
    */
-
   @Cordova({ sync: true })
   setDisplayName(displayName: string | null): void {}
+
   /**
    * Subscriber attribute associated with the push token for the user
    *
    * @param pushToken Empty String or null will delete the subscriber attribute.
    */
-
   @Cordova({ sync: true })
   setPushToken(pushToken: string | null): void {}
 
@@ -737,6 +761,11 @@ export class Purchases extends IonicNativePlugin {
   canMakePayments(features: BILLING_FEATURE[] = []): Promise<boolean> {
       return;
   }
+   * Set this property to your proxy URL before configuring Purchases *only* if you've received a proxy key value from your RevenueCat contact.
+   * @param url Proxy URL as a string.
+   */
+  @Cordova({ sync: true })
+  setProxyURL(url: string): void {}
 }
 
 /**
@@ -895,6 +924,33 @@ export interface PurchaserInfo {
    * in Android
    */
   readonly originalApplicationVersion: string | null;
+  /**
+   * Returns the purchase date for the version of the application when the user bought the app.
+   * Use this for grandfathering users when migrating to subscriptions.
+   */
+  readonly originalPurchaseDate: string | null;
+  /**
+   * URL to manage the active subscription of the user. If this user has an active iOS
+   * subscription, this will point to the App Store, if the user has an active Play Store subscription
+   * it will point there. If there are no active subscriptions it will be null.
+   * If there are multiple for different platforms, it will point to the device store.
+   */
+  readonly managementURL: string | null;
+}
+
+export interface PurchasesTransaction {
+  /**
+   * RevenueCat Id associated to the transaction.
+   */
+  readonly revenueCatId: string;
+  /**
+   * Product Id associated with the transaction.
+   */
+  readonly productId: string;
+  /**
+   * Purchase date of the transaction in ISO 8601 format.
+   */
+  readonly purchaseDate: string;
 }
 
 export interface PurchasesProduct {

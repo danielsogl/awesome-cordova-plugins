@@ -1,3 +1,202 @@
+# [5.34.0](https://github.com/ionic-team/ionic-native/compare/v5.33.1...v5.34.0) (2021-06-29)
+
+
+### Bug Fixes
+
+* **android-full-screen:** add correct return type ([#3677](https://github.com/ionic-team/ionic-native/issues/3677)) ([c5d6066](https://github.com/ionic-team/ionic-native/commit/c5d606633e0ce69c94eb99d205c655c5a0d94523)), closes [/github.com/mesmotronic/cordova-plugin-fullscreen/blob/master/src/android/com/mesmotronic/plugins/FullScreenPlugin.java#L129](https://github.com//github.com/mesmotronic/cordova-plugin-fullscreen/blob/master/src/android/com/mesmotronic/plugins/FullScreenPlugin.java/issues/L129)
+* **mobile-messaging:** revision of optional parameters ([#3667](https://github.com/ionic-team/ionic-native/issues/3667)) ([944d251](https://github.com/ionic-team/ionic-native/commit/944d25147f2c0b89d0e7acb1fa1a6fe7fa4941f7))
+* **smartlook:** fix SmartlookResetSession.resetUser type to boolean ([#3692](https://github.com/ionic-team/ionic-native/issues/3692)) ([5a42e8c](https://github.com/ionic-team/ionic-native/commit/5a42e8cadfc0d5269c4e06149c2d1ecf4ad721f7))
+
+
+### Features
+
+* **branch-io:** add sendBranchEvent method; deprecated sendCommerceEvent ([#3675](https://github.com/ionic-team/ionic-native/issues/3675)) ([4f13426](https://github.com/ionic-team/ionic-native/commit/4f13426a6dd820880f21c6e52a30a4db5f0c5c0a))
+* **checkout:** add plugin ([#3687](https://github.com/ionic-team/ionic-native/issues/3687)) ([0dcbace](https://github.com/ionic-team/ionic-native/commit/0dcbace8223c5c9a4c3474c7bff291e00da06b0b))
+* **in-app-purchase-2:** added manageBilling method ([#3690](https://github.com/ionic-team/ionic-native/issues/3690)) ([383a884](https://github.com/ionic-team/ionic-native/commit/383a88463a16b47da8aeb79707f342411028f889))
+* **paytabs:** add plugin ([#3678](https://github.com/ionic-team/ionic-native/issues/3678)) ([9dd719b](https://github.com/ionic-team/ionic-native/commit/9dd719bb07a1278f38e188fa075283e54e0654d1))
+
+
+
+## [5.33.1](https://github.com/ionic-team/ionic-native/compare/v5.33.0...v5.33.1) (2021-05-28)
+
+
+
+# [5.33.0](https://github.com/ionic-team/ionic-native/compare/v5.32.1...v5.33.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* **unvired-cordova-sdk:** Update the return type for startDiscoveryService api ([#3647](https://github.com/ionic-team/ionic-native/issues/3647)) ([b2da307](https://github.com/ionic-team/ionic-native/commit/b2da3078372c336864ab78528c5ae0c13a81a27b))
+
+
+### Features
+
+* **background-upload:** add INITIALIZED state ([#3658](https://github.com/ionic-team/ionic-native/issues/3658)) ([065e80c](https://github.com/ionic-team/ionic-native/commit/065e80cccf142d283075a800bdd46656cb613a0f))
+* **ble:** update with setPin to allow set device pin ([#3652](https://github.com/ionic-team/ionic-native/issues/3652)) ([da4ce96](https://github.com/ionic-team/ionic-native/commit/da4ce96be4fc0dd763405f53498b11b00974f771))
+* **branch-io:**  add initSessionWithCallback method ([#3660](https://github.com/ionic-team/ionic-native/issues/3660)) ([4435155](https://github.com/ionic-team/ionic-native/commit/443515582b380fe6643c6db19a5f17999e979d5b))
+* **facebook:** add new methods ([#3654](https://github.com/ionic-team/ionic-native/issues/3654)) ([826f808](https://github.com/ionic-team/ionic-native/commit/826f8085a45c39eb2c43d60bd98d34ff5619ce82))
+* **local-backup:** add plugin ([#3656](https://github.com/ionic-team/ionic-native/issues/3656)) ([c05b3e9](https://github.com/ionic-team/ionic-native/commit/c05b3e96722ee85c4771aa70236a77e1b60f60e2))
+* **restart:** add plugin ([#3657](https://github.com/ionic-team/ionic-native/issues/3657)) ([5752294](https://github.com/ionic-team/ionic-native/commit/575229412b335a720a284ffe67839488f3de2996))
+* **system-alert-window-permission:** add plugin ([#3659](https://github.com/ionic-team/ionic-native/issues/3659)) ([50f8a45](https://github.com/ionic-team/ionic-native/commit/50f8a452ad4e36e3554a417d2051f0389bf7d7d2))
+
+
+
+## [5.32.1](https://github.com/ionic-team/ionic-native/compare/v5.32.0...v5.32.1) (2021-04-15)
+
+
+### Bug Fixes
+
+* **network:** onChange no longer causes error ([#3651](https://github.com/ionic-team/ionic-native/issues/3651)) ([16fee22](https://github.com/ionic-team/ionic-native/commit/16fee2268aed8c8bf26ef36f236349e222da3375)), closes [#3649](https://github.com/ionic-team/ionic-native/issues/3649)
+
+
+
+# [5.32.0](https://github.com/ionic-team/ionic-native/compare/v5.31.1...v5.32.0) (2021-04-05)
+
+
+### Bug Fixes
+
+* **app-rate:** add missing types for onButtonClicked callback ([#3616](https://github.com/ionic-team/ionic-native/issues/3616)) ([4fb07fa](https://github.com/ionic-team/ionic-native/commit/4fb07fa8095419178fb0867940c47ea9a85b0f94))
+* **bluetooth-le:** add missing status type value and add missing (optional) address property to NotifyParams interface ([#3613](https://github.com/ionic-team/ionic-native/issues/3613)) ([f32da73](https://github.com/ionic-team/ionic-native/commit/f32da73a875f87c5c3add3ddb9abb274bec6e0e5))
+* **build:** publish Node (server) friendly bundles ([#3483](https://github.com/ionic-team/ionic-native/issues/3483)) ([b4227f2](https://github.com/ionic-team/ionic-native/commit/b4227f2114706276d63fcd5303ab992710d58472))
+* **in-app-purchase-2:** fix typings for refresh ([#3632](https://github.com/ionic-team/ionic-native/issues/3632)) ([8dcb6be](https://github.com/ionic-team/ionic-native/commit/8dcb6be4ea76f650c16e38c573f18a8f56d16911)), closes [/github.com/j3k0/cordova-plugin-purchase/blob/dd6bf6f/doc/api.md#return-value-3](https://github.com//github.com/j3k0/cordova-plugin-purchase/blob/dd6bf6f/doc/api.md/issues/return-value-3)
+* **unvired-cordova-sdk:** changes to the property names and updated documentation ([#3633](https://github.com/ionic-team/ionic-native/issues/3633)) ([158bf63](https://github.com/ionic-team/ionic-native/commit/158bf637cdf0ee6776ff82dc2109c6d11d2e1d33))
+
+
+### Features
+
+* **adjust:** add missing wrappers for cordova api ([#3528](https://github.com/ionic-team/ionic-native/issues/3528)) ([0932e11](https://github.com/ionic-team/ionic-native/commit/0932e113b266e835acf34a2ae09ce0f75a3890ee))
+* **in-app-purchase-2:** adds typings for transaction ([#3621](https://github.com/ionic-team/ionic-native/issues/3621)) ([46d0cec](https://github.com/ionic-team/ionic-native/commit/46d0cecb271ed425856a08453a94e4568ce83878))
+* **network:** declare connection enum with strings([#3630](https://github.com/ionic-team/ionic-native/issues/3630)) ([d698d59](https://github.com/ionic-team/ionic-native/commit/d698d5985b764f7ab8e143b163c45a3617da5e0e))
+* **network:** update Network plugin ([#3608](https://github.com/ionic-team/ionic-native/issues/3608)) ([31ee7ef](https://github.com/ionic-team/ionic-native/commit/31ee7efc22faf8276db5d64a579b8ec44a29f457))
+* **plugin:** add MS App Center LowMemory plugin ([#3619](https://github.com/ionic-team/ionic-native/issues/3619)) ([2cb5f5c](https://github.com/ionic-team/ionic-native/commit/2cb5f5c01065987c900f413dbb306c052bd1de86))
+* **plugin:** add MS App Center shared plugin ([#3618](https://github.com/ionic-team/ionic-native/issues/3618)) ([3d7b777](https://github.com/ionic-team/ionic-native/commit/3d7b777b19183cbf9d274b24ac0106e3f45fce88))
+* **plugin:** Text to Speech Advanced ([#3627](https://github.com/ionic-team/ionic-native/issues/3627)) ([ca190db](https://github.com/ionic-team/ionic-native/commit/ca190db829ae125d2da6d79e2c8673d5c7f5da9d))
+* **power-optimization:**  plugin initial wrapper ([#3642](https://github.com/ionic-team/ionic-native/issues/3642)) ([9b7db58](https://github.com/ionic-team/ionic-native/commit/9b7db588a1f7608e7a7c9e8b4db7951dc98bd816))
+* **preview-any-file:** add new methods for preview-any-file cordova ([#3643](https://github.com/ionic-team/ionic-native/issues/3643)) ([b8de7f0](https://github.com/ionic-team/ionic-native/commit/b8de7f0721da32faa67a1aa0d8a72846737018c7))
+* **purchases:** bump cordova-plugin-purchases from 2.0.0 to 2.1.1 ([#3639](https://github.com/ionic-team/ionic-native/issues/3639)) ([5d71d0d](https://github.com/ionic-team/ionic-native/commit/5d71d0d2bbbbf8696a0d42e1e8b99fc1ee63ce16))
+* **shortcuts-android:** add  cordova-plugin-shortcuts-android ([#3609](https://github.com/ionic-team/ionic-native/issues/3609)) ([2f69dd8](https://github.com/ionic-team/ionic-native/commit/2f69dd88cbb798f7fdc21c98f99f55bc6a8e88a7))
+
+
+
+## [5.31.1](https://github.com/ionic-team/ionic-native/compare/v5.31.0...v5.31.1) (2021-01-23)
+
+
+### Bug Fixes
+
+* **build:** add correct build script typings ([f7a3c71](https://github.com/ionic-team/ionic-native/commit/f7a3c7127a17a53e911119fc87c7149d356315bb))
+
+
+
+# [5.31.0](https://github.com/ionic-team/ionic-native/compare/v5.30.0...v5.31.0) (2021-01-23)
+
+
+### Bug Fixes
+
+* **firebase-messaging:** adjust  deleteToken/removeToken signature ([72c9960](https://github.com/ionic-team/ionic-native/commit/72c99603db5b1b2998c3d1e9a920e38f75e0f47b))
+* **launch-navigator:** enableGeolocation and enableGeocoding typings ([#3584](https://github.com/ionic-team/ionic-native/issues/3584)) ([6b18c3d](https://github.com/ionic-team/ionic-native/commit/6b18c3d0614db1f525aaecfb9e09067537061ba9))
+* **launchnavigator:** make appSelection accessible ([#3594](https://github.com/ionic-team/ionic-native/issues/3594)) ([26fd76d](https://github.com/ionic-team/ionic-native/commit/26fd76dad06764c288e2902c0edbe0dbb5e668c7))
+
+
+### chore
+
+* **package:** upgrade to angular 11 ([a96faf1](https://github.com/ionic-team/ionic-native/commit/a96faf13784ed30a5fc645dc769e44960242cb4f))
+
+
+### Features
+
+* **advanced-http:** duplicate methods sync to be able to abort requests ([#3575](https://github.com/ionic-team/ionic-native/issues/3575)) ([0efa33f](https://github.com/ionic-team/ionic-native/commit/0efa33f25746437cd3dc97585d380f177ed40e0b))
+* **android-notch:** add cordova plugin wrapper ([#3592](https://github.com/ionic-team/ionic-native/issues/3592)) ([96890c7](https://github.com/ionic-team/ionic-native/commit/96890c7b92f34cf8d87eb98c0e4b5ddf9b68c6dc))
+* **app-rate:** update plugin functions ([#3598](https://github.com/ionic-team/ionic-native/issues/3598)) ([3e92f64](https://github.com/ionic-team/ionic-native/commit/3e92f64484be0c949896b5fac7023ef0bd2fc746))
+* **facebook:** add setAutoLogAppEventsEnabled method ([#3606](https://github.com/ionic-team/ionic-native/issues/3606)) ([b4f0f07](https://github.com/ionic-team/ionic-native/commit/b4f0f0706400f6500e48cd1305c20371977a6869))
+* **facebook:** update api and logPurchase methods to include additional arguments([#3607](https://github.com/ionic-team/ionic-native/issues/3607)) ([e4b1719](https://github.com/ionic-team/ionic-native/commit/e4b171930dca0ebd3824cfa08861cfb80bf715d3))
+* **firebase-authentication:** add signInWithApple method ([#3597](https://github.com/ionic-team/ionic-native/issues/3597)) ([e7bc1b6](https://github.com/ionic-team/ionic-native/commit/e7bc1b67095fc0c0dbb96b98f3dd39ecb255ec88))
+* **in-app-purchase-2:** add redeem() for opening redeem code dialog in iOS ([#3581](https://github.com/ionic-team/ionic-native/issues/3581)) ([ddd269e](https://github.com/ionic-team/ionic-native/commit/ddd269e7ab2df69555ad7eec29bf0ed5a6c8fd04))
+* **mobile-messaging:** add Lists and date time for customAttributes ([#3586](https://github.com/ionic-team/ionic-native/issues/3586)) ([bd8fbb3](https://github.com/ionic-team/ionic-native/commit/bd8fbb3e1fb4bfc84a7c9ba67e879d18868db8b5))
+* **purchases:** bump cordova-plugin-purchases from 1.3.2 to 2.0.0 ([#3601](https://github.com/ionic-team/ionic-native/issues/3601)) ([bed8797](https://github.com/ionic-team/ionic-native/commit/bed8797a603398a047a97070fadd99b36e65a9be))
+* **wonderpush:** remove isReady method. ([#3580](https://github.com/ionic-team/ionic-native/issues/3580)) ([182b403](https://github.com/ionic-team/ionic-native/commit/182b403f69492b96375a7be895da4ff486eccf7b))
+
+
+### BREAKING CHANGES
+
+* **package:** ionic-native now requires at least Angular 10 with ts-lib 2.0
+
+Co-Authored-By: Daniel Sogl <mytechde@outlook.com>
+
+
+
+# [5.30.0](https://github.com/ionic-team/ionic-native/compare/v5.29.0...v5.30.0) (2020-11-20)
+
+
+### Bug Fixes
+
+* **clevertap:** remove duplicated methods ([ba39f7e](https://github.com/ionic-team/ionic-native/commit/ba39f7e9f217ebe72e78bcfeae3d7e9ac07187ae)), closes [#3517](https://github.com/ionic-team/ionic-native/issues/3517) [#3491](https://github.com/ionic-team/ionic-native/issues/3491)
+
+
+### Features
+
+* **AllInOneSDK:** add check to restrict app invocation ([#3570](https://github.com/ionic-team/ionic-native/issues/3570)) ([fd0cddc](https://github.com/ionic-team/ionic-native/commit/fd0cddc9d0abdc3006e6cf16c1f80d0551b71cd2))
+* **AppsFlyer:** update to 6.x.x ([#3563](https://github.com/ionic-team/ionic-native/issues/3563)) ([e486cfd](https://github.com/ionic-team/ionic-native/commit/e486cfd9bff2fd0bdd4ccfc9cb91b450b7218aef))
+* **background-upload:** add plugin ([#3539](https://github.com/ionic-team/ionic-native/issues/3539)) ([13f6da6](https://github.com/ionic-team/ionic-native/commit/13f6da69ef622923bf2c746fbecb18a7cf959b82))
+* **bluetooth-le:** Allow specifying transport mode for Android ([#3571](https://github.com/ionic-team/ionic-native/issues/3571)) ([b3d5baa](https://github.com/ionic-team/ionic-native/commit/b3d5baa46ed695344b08bd3e27be3b9f84bf6f0d))
+* **core:** add `methodName` to Cordova Decorator ([#3558](https://github.com/ionic-team/ionic-native/issues/3558)) ([46853b4](https://github.com/ionic-team/ionic-native/commit/46853b42120b4b34b727ef0ae0274d1c8cb7bcd1)), closes [#3557](https://github.com/ionic-team/ionic-native/issues/3557)
+* **CustomUiSDK:** add plugin for Paytm Custom UI SDK ([#3546](https://github.com/ionic-team/ionic-native/issues/3546)) ([bb10642](https://github.com/ionic-team/ionic-native/commit/bb1064225d276cffcd40ff9176b77ffb9d56ed8a))
+* **dfu-update:** add DfuUpdate Plugin Wrapper ([#3514](https://github.com/ionic-team/ionic-native/issues/3514)) ([07d7ace](https://github.com/ionic-team/ionic-native/commit/07d7ace97d1b122424964f6e7330bf97710dcc8f))
+* **firebase-dynamic-links:** Add missing method getDynamicLink() ([#3567](https://github.com/ionic-team/ionic-native/issues/3567)) ([d7c6f86](https://github.com/ionic-team/ionic-native/commit/d7c6f8628d176119cabae444c02f285a8c36997d))
+* **firebase-vision:** add image labelling ([#3569](https://github.com/ionic-team/ionic-native/issues/3569)) ([af114f4](https://github.com/ionic-team/ionic-native/commit/af114f48e46b4f7f1ce66bb2906585158aa5cff0))
+* **intercom:** added displayCarousel, displayArticle, setBottomPadding ([#3572](https://github.com/ionic-team/ionic-native/issues/3572)) ([68d245e](https://github.com/ionic-team/ionic-native/commit/68d245ef2c85dfff0aedb444db629d59986e06b4))
+* **multiple-document-picker:** add plugin ([#3551](https://github.com/ionic-team/ionic-native/issues/3551)) ([78e9242](https://github.com/ionic-team/ionic-native/commit/78e92422abb5a645ed09bf61b7dc250462ccc742))
+* **purchases:** update to plugin version 1.3.2 ([#3566](https://github.com/ionic-team/ionic-native/issues/3566)) ([0f197ad](https://github.com/ionic-team/ionic-native/commit/0f197ad9fcd4e56c0c61bd87c6aec76889af6ab2))
+* **smartlook:** update to 1.6.0 ([#3562](https://github.com/ionic-team/ionic-native/issues/3562)) ([f71b65d](https://github.com/ionic-team/ionic-native/commit/f71b65d6a79d22175c27b960f27ef51ea6a87ed4))
+
+
+
+# [5.29.0](https://github.com/ionic-team/ionic-native/compare/v5.28.0...v5.29.0) (2020-10-16)
+
+
+### Bug Fixes
+
+* **diagnostics:** locationAccuracyAuthorization Property missing in build ([#3540](https://github.com/ionic-team/ionic-native/issues/3540)) ([c62c137](https://github.com/ionic-team/ionic-native/commit/c62c13772307c02e7581c15ec6f5c94309927cc6))
+* **http:** add missing type to serialiser property ([#3532](https://github.com/ionic-team/ionic-native/issues/3532)) ([7b0195b](https://github.com/ionic-team/ionic-native/commit/7b0195bdf441532106df6eb2baf5a9ada1068761))
+* **in-app-purchase-2:** change in-app-purchase-2 plugin id ([#3553](https://github.com/ionic-team/ionic-native/issues/3553)) ([ce9db34](https://github.com/ionic-team/ionic-native/commit/ce9db34e2439d4fefd1b4071bffb6e5c8daab634))
+* **music-controls:** update associated cordova plugin ([#3543](https://github.com/ionic-team/ionic-native/issues/3543)) ([4766ec7](https://github.com/ionic-team/ionic-native/commit/4766ec7a35d7e7b0ab31d3db8953f2ef4bdcb6df))
+
+
+### Features
+
+* **adjust:** updating to match official typings ([#3523](https://github.com/ionic-team/ionic-native/issues/3523)) ([5a77eab](https://github.com/ionic-team/ionic-native/commit/5a77eabf7644a79369da40eb929b6edfcb83de07))
+* **all-in-one-sdk:** add plugin for Paytm All-in-One SDK ([#3536](https://github.com/ionic-team/ionic-native/issues/3536)) ([1f48c31](https://github.com/ionic-team/ionic-native/commit/1f48c31a8eaf5079ec8e391b21ea5ce3fa9e1446))
+* **appsfyler:** add property waitForATTUserAuthorization to AppsflyerOptions ([#3541](https://github.com/ionic-team/ionic-native/issues/3541)) ([3340e9a](https://github.com/ionic-team/ionic-native/commit/3340e9a6949f798d5ec540a78c7ac46a5dc884b2))
+* **fingerprint-air:** add new functions ([#3530](https://github.com/ionic-team/ionic-native/issues/3530)) ([99e6a53](https://github.com/ionic-team/ionic-native/commit/99e6a5398fb2923991d7236475913eb17e8640c0))
+* **firebase-x:** add setLanguageCode method for auth ([#3548](https://github.com/ionic-team/ionic-native/issues/3548)) ([5d1b5d5](https://github.com/ionic-team/ionic-native/commit/5d1b5d5fda311003d0ae20e27a06d6bd443554be))
+* **mobile-messaging:** add new fields to Message type and new method to display chat view ([#3531](https://github.com/ionic-team/ionic-native/issues/3531)) ([14ec32b](https://github.com/ionic-team/ionic-native/commit/14ec32b83c603fc5a079eabf794b7dadce867358))
+* **purchases:** update to plugin version 1.3.0 ([#3547](https://github.com/ionic-team/ionic-native/issues/3547)) ([b5f7f95](https://github.com/ionic-team/ionic-native/commit/b5f7f952df06828a07f4ab013ce52fddc8ccafdf))
+* **social-sharing:** Add missing method shareViaWhatsAppToPhone([#3513](https://github.com/ionic-team/ionic-native/issues/3513)) ([f3ce3c4](https://github.com/ionic-team/ionic-native/commit/f3ce3c4930f87f6f2dd023dc28ef924faee05a84))
+
+
+
+# [5.28.0](https://github.com/ionic-team/ionic-native/compare/v5.27.0...v5.28.0) (2020-08-14)
+
+
+### Bug Fixes
+
+* **ble:** add missing method "isLocationEnabled" ([#3495](https://github.com/ionic-team/ionic-native/issues/3495)) ([b4462d5](https://github.com/ionic-team/ionic-native/commit/b4462d5e6c12f144412001cade1020b5f88b4ae5))
+* **geolocation:** [#3303](https://github.com/ionic-team/ionic-native/issues/3303) geolocation watchPosition return type ([#3470](https://github.com/ionic-team/ionic-native/issues/3470)) ([579170a](https://github.com/ionic-team/ionic-native/commit/579170a99ea8a53634631b76ffa19b6b635c1d03))
+* **hyper-track:** update to the modern sdk ([#3508](https://github.com/ionic-team/ionic-native/issues/3508)) ([44f86f3](https://github.com/ionic-team/ionic-native/commit/44f86f3ce5f6912f1cc0b4596e43066571c96b44))
+* **ibeacon:** undefined locationManager ([#3505](https://github.com/ionic-team/ionic-native/issues/3505)) ([1ffad79](https://github.com/ionic-team/ionic-native/commit/1ffad79320f83038d1fc09e9112c40c86d948416))
+* **metrix:** change firebase api ([#3473](https://github.com/ionic-team/ionic-native/issues/3473)) ([b0ffb0e](https://github.com/ionic-team/ionic-native/commit/b0ffb0ec4a035097c8a413f31b2382dae1eda4c7))
+
+
+### Features
+
+* **clover-go:** add support to pass signature and void payment ([#3485](https://github.com/ionic-team/ionic-native/issues/3485)) ([26d10ef](https://github.com/ionic-team/ionic-native/commit/26d10ef63346782e6d8ed37ca89bd2dd7402aa0a))
+* **diagnostics:** Add support for new iOS14-LocationAccuracy Permission ([#3490](https://github.com/ionic-team/ionic-native/issues/3490)) ([ccca644](https://github.com/ionic-team/ionic-native/commit/ccca644134999365a729b4a7d554da6a011eb693))
+* **nfc:** update to phonegap-nfc@1.2.0 ([#3486](https://github.com/ionic-team/ionic-native/issues/3486)) ([d7ccd45](https://github.com/ionic-team/ionic-native/commit/d7ccd454fb757d8d3be57a70bfa7fb3c269e3318))
+* **onesignal:** add in-app messages methods ([#3481](https://github.com/ionic-team/ionic-native/issues/3481)) ([eec3fec](https://github.com/ionic-team/ionic-native/commit/eec3fec7ff820e96443e6e3f0d7bf96dac359038))
+* **purchases:** update to plugin version 1.2.0 ([#3482](https://github.com/ionic-team/ionic-native/issues/3482)) ([a010bb1](https://github.com/ionic-team/ionic-native/commit/a010bb186964b8b825ab80f9cf6092794ee2e4b1))
+* **smartlook:** update to 1.5.2 ([#3498](https://github.com/ionic-team/ionic-native/issues/3498)) ([5aa5757](https://github.com/ionic-team/ionic-native/commit/5aa57577956c13e8fe34d2c658690df7daf86ef4))
+
+
+
 # [5.27.0](https://github.com/ionic-team/ionic-native/compare/v5.26.0...v5.27.0) (2020-06-23)
 
 

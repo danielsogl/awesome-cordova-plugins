@@ -40,7 +40,8 @@ export type Status =
   | 'advertisingStarted'
   | 'advertisingStopped'
   | 'responded'
-  | 'notified';
+  | 'notified'
+  | 'notificationSent';
 
 /** Available connection priorities */
 export type ConnectionPriority = 'low' | 'balanced' | 'high';
@@ -88,6 +89,8 @@ export interface NotifyParams {
   characteristic: string;
   /** Base64 encoded string, number or string */
   value: string;
+  /** Android only: address of the device the notification should be sent to. */
+  address?: string;
 }
 
 export interface RespondParams {
@@ -97,6 +100,38 @@ export interface RespondParams {
   value: string;
   /** not documented */
   offset?: number;
+}
+
+export interface ConnectionParams {
+  /** The address/identifier provided by the scan's return object */
+  address: string;
+  /** Automatically connect as soon as the remote device becomes available (Android) */
+  autoConnect?: boolean;
+  /**
+   * Transport mode. Available from API 23 (Android).
+   * If none is specified the default behavior is TRANSPORT_AUTO
+   *
+   * Note: On Android 10, TRANSPORT_AUTO can lead to connection errors with Status code 133.
+   * In this case TRANSPORT_LE can be used.
+   */
+  transport?: AndroidGattTransportMode;
+}
+
+export enum AndroidGattTransportMode {
+  /**
+   * No preference of physical transport for GATT connections to remote dual-mode devices
+   */
+  TRANSPORT_AUTO = 0,
+
+  /**
+   * Prefer BR/EDR transport for GATT connections to remote dual-mode devices
+   */
+  TRANSPORT_BREDR = 1,
+
+  /**
+   * Prefer LE transport for GATT connections to remote dual-mode devices
+   */
+  TRANSPORT_LE = 2,
 }
 
 export interface CharacteristicParams extends Params {
@@ -543,15 +578,15 @@ export class BluetoothLE extends IonicNativePlugin {
    * Connect to a Bluetooth LE device
    * @param connectSuccess The success callback that is passed with device object
    * @param connectError   The callback that will be triggered when the connect operation fails
-   * @param params         The address/identifier
+   * @param params         The connection params
    *
-   * @param {{address: string, autoConnect: boolean}} params
+   * @param {ConnectionParams} params
    * @returns {(Observable<{ status: DeviceInfo }>)}
    *    success: device object with status
    *    error: The callback that will be triggered when the unbond operation fails
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  connect(params: { address: string; autoConnect?: boolean }): Observable<DeviceInfo> {
+  connect(params: ConnectionParams): Observable<DeviceInfo> {
     return;
   }
 

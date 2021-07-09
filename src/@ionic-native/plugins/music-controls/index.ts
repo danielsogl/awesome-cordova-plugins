@@ -148,9 +148,9 @@ export interface MusicControlsOptions {
  */
 @Plugin({
   pluginName: 'MusicControls',
-  plugin: 'cordova-plugin-music-controls',
+  plugin: 'cordova-plugin-music-controls2',
   pluginRef: 'MusicControls',
-  repo: 'https://github.com/homerours/cordova-music-controls-plugin',
+  repo: 'https://github.com/ghenry22/cordova-plugin-music-controls2',
   platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
