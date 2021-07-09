@@ -44,7 +44,7 @@ export enum PURCHASE_TYPE {
  * Currently, these are only relevant for Google Play Android users:
  * https://developer.android.com/reference/com/android/billingclient/api/BillingClient.FeatureType
  */
- export enum BILLING_FEATURE {
+export enum BILLING_FEATURE {
   /**
    * Purchase/query for subscriptions.
    */
@@ -316,7 +316,7 @@ export class Purchases extends IonicNativePlugin {
 
   /**
    * Add a dict of attribution information
-   *  
+   *
    * @deprecated Use the set<NetworkId> functions instead.
    *
    * @param {object} data Attribution data from any of the attribution networks in Purchases.ATTRIBUTION_NETWORKS
@@ -491,7 +491,7 @@ export class Purchases extends IonicNativePlugin {
 
   /**
    * iOS only.
-   * @param {boolean} simulatesAskToBuyInSandbox Set this property to true *only* when testing the ask-to-buy / SCA purchases flow. 
+   * @param {boolean} simulatesAskToBuyInSandbox Set this property to true *only* when testing the ask-to-buy / SCA purchases flow.
    * More information: http://errors.rev.cat/ask-to-buy
    */
   @Cordova({ sync: true })
@@ -594,7 +594,7 @@ export class Purchases extends IonicNativePlugin {
   @Cordova({ sync: true })
   invalidatePurchaserInfoCache(): void {}
 
-  /** 
+  /**
    * iOS only. Presents a code redemption sheet, useful for redeeming offer codes
    * Refer to https://docs.revenuecat.com/docs/ios-subscription-offers#offer-codes for more information on how
    * to configure and use offer codes.
@@ -648,13 +648,61 @@ export class Purchases extends IonicNativePlugin {
   setPushToken(pushToken: string | null): void {}
 
   /**
+   * Subscriber attribute associated with the install media source for the user
+   *
+   * @param mediaSource Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setMediaSource(mediaSource: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install campaign for the user
+   *
+   * @param campaign Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setCampaign(campaign: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install ad group for the user
+   *
+   * @param adGroup Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setAdGroup(adGroup: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install ad for the user
+   *
+   * @param ad Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setAd(ad: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install keyword for the user
+   *
+   * @param keyword Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setKeyword(keyword: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install ad creative for the user
+   *
+   * @param creative Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setCreative(creative: string | null): void {}
+
+  /**
    * Subscriber attribute associated with the Adjust Id for the user
    * Required for the RevenueCat Adjust integration
    *
    * @param adjustID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
-  setAdjustID(adjustID: string | null) : void {}
+  setAdjustID(adjustID: string | null): void {}
 
   /**
    * Subscriber attribute associated with the AppsFlyer Id for the user
@@ -662,7 +710,7 @@ export class Purchases extends IonicNativePlugin {
    * @param appsflyerID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
-  setAppsflyerID(appsflyerID: string | null) : void {}
+  setAppsflyerID(appsflyerID: string | null): void {}
 
   /**
    * Subscriber attribute associated with the Facebook SDK Anonymous Id for the user
@@ -671,7 +719,7 @@ export class Purchases extends IonicNativePlugin {
    * @param fbAnonymousID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
-  setFBAnonymousID(fbAnonymousID: string | null) : void {}
+  setFBAnonymousID(fbAnonymousID: string | null): void {}
 
   /**
    * Subscriber attribute associated with the mParticle Id for the user
@@ -680,7 +728,7 @@ export class Purchases extends IonicNativePlugin {
    * @param mparticleID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
-  setMparticleID(mparticleID: string | null) : void {}
+  setMparticleID(mparticleID: string | null): void {}
 
   /**
    * Subscriber attribute associated with the OneSignal Player Id for the user
@@ -689,55 +737,7 @@ export class Purchases extends IonicNativePlugin {
    * @param onesignalID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
-  setOnesignalID(onesignalID: string | null) : void {}
-
-  /**
-   * Subscriber attribute associated with the install media source for the user
-   *
-   * @param mediaSource Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setMediaSource(mediaSource: string | null) : void {}
-
-  /**
-   * Subscriber attribute associated with the install campaign for the user
-   *
-   * @param campaign Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setCampaign(campaign: string | null) : void {}
-
-  /**
-   * Subscriber attribute associated with the install ad group for the user
-   *
-   * @param adGroup Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setAdGroup(adGroup: string | null) : void {}
-
-  /**
-   * Subscriber attribute associated with the install ad for the user
-   *
-   * @param ad Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setAd(ad: string | null) : void {}
-
-  /**
-   * Subscriber attribute associated with the install keyword for the user
-   *
-   * @param keyword Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setKeyword(keyword: string | null) : void {}
-
-  /**
-   * Subscriber attribute associated with the install ad creative for the user
-   *
-   * @param creative Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setCreative(creative: string | null) : void {}
+  setOnesignalID(onesignalID: string | null): void {}
 
   /**
    * Automatically collect subscriber attributes associated with the device identifiers.
@@ -749,18 +749,20 @@ export class Purchases extends IonicNativePlugin {
 
   /**
    * Check if billing is supported for the current user (meaning IN-APP purchases are supported)
-   * and optionally, whether a list of specified feature types are supported. 
-   * 
+   * and optionally, whether a list of specified feature types are supported.
+   *
    * Note: Billing features are only relevant to Google Play Android users.
    * For other stores and platforms, billing features won't be checked.
-   * @param feature An array of feature types to check for support. Feature types must be one of 
+   * @param feature An array of feature types to check for support. Feature types must be one of
    *       [BILLING_FEATURE]. By default, is an empty list and no specific feature support will be checked.
    * @return {Promise<boolean>} Or [PurchasesError] if there is an error.
    */
   @Cordova()
   canMakePayments(features: BILLING_FEATURE[] = []): Promise<boolean> {
-      return;
+    return;
   }
+
+  /**
    * Set this property to your proxy URL before configuring Purchases *only* if you've received a proxy key value from your RevenueCat contact.
    * @param url Proxy URL as a string.
    */
@@ -855,21 +857,6 @@ export interface PurchasesEntitlementInfos {
    * Map of active EntitlementInfo (`PurchasesEntitlementInfo`) objects keyed by entitlement identifier.
    */
   readonly active: { [key: string]: PurchasesEntitlementInfo };
-}
-
-export interface PurchasesTransaction { 
-  /**
-   * RevenueCat Id associated to the transaction.
-   */
-  readonly revenueCatId: string;
-  /**
-   * Product Id associated with the transaction.
-   */
-  readonly productId: string;
-  /**
-   * Purchase date of the transaction in ISO 8601 format.
-   */
-  readonly purchaseDate: string;
 }
 
 export interface PurchaserInfo {
