@@ -421,7 +421,38 @@ export class Purchases extends IonicNativePlugin {
     return;
   }
 
+  /*
+   * This function will logIn the current user with an appUserID. Typically this would be used after a log in 
+   * to identify a user without calling configure.
+   * @param {String} appUserID The appUserID that should be linked to the currently user
+   * @param {function(LogInResult):void} callback Callback that will receive an object that contains the purchaserInfo after logging in, as well as a boolean indicating 
+   * whether the user has just been created for the first time in the RevenueCat backend. 
+   * @param {function(PurchasesError):void} errorCallback Callback that will be triggered whenever there is any problem logging in.
+   */
+  public static logIn(
+    appUserID: string, 
+    callback: (logInResult: LogInResult) => void, 
+    errorCallback: (error: PurchasesError) => void
+  ) { 
+    return;
+  }
+
   /**
+   * Logs out the Purchases client clearing the saved appUserID. This will generate a random user id and save it in the cache.
+   * If the current user is already anonymous, this will produce a PurchasesError.
+   * @param {function(PurchaserInfo):void} callback Callback that will receive the new purchaser info after resetting
+   * @param {function(PurchasesError):void} errorCallback Callback that will be triggered whenever there is an error when logging out. 
+   * This could happen for example if logOut is called but the current user is anonymous.
+   */
+  public static logOut(
+    callback: (purchaserInfo: PurchaserInfo) => void,
+    errorCallback: (error: PurchasesError) => void
+  ) {
+    return;
+  }
+
+  /**
+   * @deprecated, use logIn instead.
    * This function will alias two appUserIDs together.
    * @param newAppUserID {String} The new appUserID that should be linked to the currently identified appUserID. Needs to be a string.
    *
@@ -434,6 +465,7 @@ export class Purchases extends IonicNativePlugin {
   }
 
   /**
+   * @deprecated, use logIn instead.
    * This function will identify the current user with an appUserID. Typically this would be used after a logout to identify a new user without calling configure
    * @param newAppUserID {String} The new appUserID that should be linked to the currently identified appUserID. Needs to be a string.
    *
@@ -446,6 +478,7 @@ export class Purchases extends IonicNativePlugin {
   }
 
   /**
+   * @deprecated, use logOut instead.
    * Resets the Purchases client clearing the saved appUserID. This will generate a random user id and save it in the cache.
    *
    * @return {Promise<PurchaserInfo>} Errors are of type [PurchasesError] and get normally triggered if there
@@ -1109,6 +1142,20 @@ export interface IntroEligibility {
    * Description of the status
    */
   readonly description: string;
+}
+
+/**
+ * Holds the logIn result
+ */
+export interface LogInResult {
+  /**
+   * The Purchaser Info for the user.
+   */
+  readonly purchaserInfo: PurchaserInfo;
+  /**
+   * True if the call resulted in a new user getting created in the RevenueCat backend.
+   */
+  readonly created: boolean;
 }
 
 export type ShouldPurchasePromoProductListener = (deferredPurchase: () => void) => void;
