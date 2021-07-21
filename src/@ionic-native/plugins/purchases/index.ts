@@ -429,11 +429,8 @@ export class Purchases extends IonicNativePlugin {
    * whether the user has just been created for the first time in the RevenueCat backend. 
    * @param {function(PurchasesError):void} errorCallback Callback that will be triggered whenever there is any problem logging in.
    */
-  public static logIn(
-    appUserID: string, 
-    callback: (logInResult: LogInResult) => void, 
-    errorCallback: (error: PurchasesError) => void
-  ) { 
+  @Cordova()
+  public static logIn(appUserID: string): Promise<LogInResult> { 
     return;
   }
 
@@ -444,10 +441,8 @@ export class Purchases extends IonicNativePlugin {
    * @param {function(PurchasesError):void} errorCallback Callback that will be triggered whenever there is an error when logging out. 
    * This could happen for example if logOut is called but the current user is anonymous.
    */
-  public static logOut(
-    callback: (purchaserInfo: PurchaserInfo) => void,
-    errorCallback: (error: PurchasesError) => void
-  ) {
+  @Cordova()
+  public static logOut(): Promise<PurchaserInfo> {
     return;
   }
 
