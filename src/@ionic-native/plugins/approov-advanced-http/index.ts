@@ -135,9 +135,9 @@ export interface ApproovLoggableToken {
  *
  * @usage
  * ```typescript
- * import { HTTP } from '@ionic-native/http/ngx';
+ * import { ApproovHttp } from '@ionic-native/http/ngx';
  *
- * constructor(private http: HTTP) {}
+ * constructor(private http: ApproovHttp) {}
  *
  * ...
  *
@@ -162,14 +162,14 @@ export interface ApproovLoggableToken {
  * HTTPResponse
  */
 @Plugin({
-  pluginName: 'HTTP',
+  pluginName: 'ApproovHttp',
   plugin: 'cordova-approov-advanced-http',
-  pluginRef: 'cordova.plugin.http',
+  pluginRef: 'cordova.plugin.ApproovHttp',
   repo: 'https://github.com/approov/quickstart-ionic-advancedhttp',
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class HTTP extends IonicNativePlugin {
+export class ApproovHttp extends IonicNativePlugin {
   /**
    * This enum represents the internal error codes which can be returned in a HTTPResponse object.
    * @readonly
@@ -725,33 +725,21 @@ export class HTTP extends IonicNativePlugin {
     return;
   }
 
-  /**
-   * Initializes the approov service
-   */
   @Cordova({ sync: true })
   initializeApproov(): void {
     return;
   }
 
-  /**
-   * @param dataHash {string} The data that will be set in the token
-   */
   @Cordova({ sync: true })
   approovSetDataHashInToken(dataHash: string): void {
     return;
   }
 
-  /**
-   * @param header {string}
-   */
   @Cordova({ sync: true })
   approovSetBindingHeader(header: string): void {
     return;
   }
 
-  /**
-   * @param host {string}
-   */
   @Cordova()
   getApproovLoggableToken(host: string): Promise<ApproovLoggableToken> {
     return;
