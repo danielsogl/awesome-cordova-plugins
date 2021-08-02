@@ -8,7 +8,7 @@ import { Plugin, Cordova, CordovaProperty, IonicNativePlugin } from '@ionic-nati
  *
  * @usage
  * ```typescript
- * import { Pollfish } from '@ionic-native/pollfish';
+ * import { Pollfish } from '@ionic-native/pollfish/ngx';
  *
  *
  * constructor(private pollfish: Pollfish) { }
