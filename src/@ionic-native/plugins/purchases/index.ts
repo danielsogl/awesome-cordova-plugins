@@ -422,15 +422,15 @@ export class Purchases extends IonicNativePlugin {
   }
 
   /**
-   * This function will logIn the current user with an appUserID. Typically this would be used after a log in 
+   * This function will logIn the current user with an appUserID. Typically this would be used after a log in
    * to identify a user without calling configure.
    * @param {String} appUserID The appUserID that should be linked to the currently user
-   * 
-   * @return {Promise<LogInResult>} an object that contains the purchaserInfo after logging in, as well as a boolean indicating 
-   * whether the user has just been created for the first time in the RevenueCat backend. 
+   *
+   * @return {Promise<LogInResult>} an object that contains the purchaserInfo after logging in, as well as a boolean indicating
+   * whether the user has just been created for the first time in the RevenueCat backend.
    */
   @Cordova()
-  public static logIn(appUserID: string): Promise<LogInResult> { 
+  static logIn(appUserID: string): Promise<LogInResult> {
     return;
   }
 
@@ -440,7 +440,7 @@ export class Purchases extends IonicNativePlugin {
    * @return {Promise<PurchaserInfo>} new purchaser info after resetting.
    */
   @Cordova()
-  public static logOut(): Promise<PurchaserInfo> {
+  static logOut(): Promise<PurchaserInfo> {
     return;
   }
 
@@ -516,14 +516,6 @@ export class Purchases extends IonicNativePlugin {
   setDebugLogsEnabled(enabled: boolean): void {}
 
   /**
-   * iOS only.
-   * @param {boolean} simulatesAskToBuyInSandbox Set this property to true *only* when testing the ask-to-buy / SCA purchases flow.
-   * More information: http://errors.rev.cat/ask-to-buy
-   */
-  @Cordova({ sync: true })
-  setSimulatesAskToBuyInSandbox(enabled: boolean): void {}
-
-  /**
    * This method will send all the purchases to the RevenueCat backend. Call this when using your own implementation
    * for subscriptions anytime a sync is needed, like after a successful purchase.
    *
@@ -531,14 +523,6 @@ export class Purchases extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   syncPurchases(): void {}
-
-  /**
-   * iOS only. Presents a code redemption sheet, useful for redeeming offer codes
-   * Refer to https://docs.revenuecat.com/docs/ios-subscription-offers#offer-codes for more information on how
-   * to configure and use offer codes.
-   */
-  @Cordova({ sync: true })
-  presentCodeRedemptionSheet(): void {}
 
   /**
    * iOS only.
