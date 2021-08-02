@@ -1,3 +1,25 @@
+# [5.35.0](https://github.com/ionic-team/ionic-native/compare/v5.34.0...v5.35.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* **checkout:** Update npm cordova plugin name ([#3694](https://github.com/ionic-team/ionic-native/issues/3694)) ([104cad1](https://github.com/ionic-team/ionic-native/commit/104cad14a31437816b5e272d5de4550eb1452311))
+* **purchases:** remove duplicated imports ([1ff54f6](https://github.com/ionic-team/ionic-native/commit/1ff54f64da88d12b6f2bd48ef1d6b462fa6e1665))
+* **webserver:** update to maintained repo ([#3696](https://github.com/ionic-team/ionic-native/issues/3696)) ([d506795](https://github.com/ionic-team/ionic-native/commit/d50679571598405893d02911e84b0f283d525e5f))
+
+
+### Features
+
+* **approov-advanced-http:** add plugin ([#3682](https://github.com/ionic-team/ionic-native/issues/3682)) ([b206b42](https://github.com/ionic-team/ionic-native/commit/b206b42f85c6603ccb125f57ff5c0cc839d78e2c))
+* **CustomUiSDK:** added app invoke method ([#3699](https://github.com/ionic-team/ionic-native/issues/3699)) ([72335bf](https://github.com/ionic-team/ionic-native/commit/72335bfd59e061270a62dae33c9a258e8f0d3f7d))
+* **hyper-track:** add interfaces to access new cordova plugin APIs ([#3698](https://github.com/ionic-team/ionic-native/issues/3698)) ([aae484d](https://github.com/ionic-team/ionic-native/commit/aae484dfe96bf36ece91f7aca617faa3c0650e28))
+* **pollfish:** add plugin ([#3693](https://github.com/ionic-team/ionic-native/issues/3693)) ([8a00ccc](https://github.com/ionic-team/ionic-native/commit/8a00ccc43bf8aa0e90737e9ed8180be6f8005899))
+* **purchases:** update to 2.3.0, add identity v3 ([#3702](https://github.com/ionic-team/ionic-native/issues/3702)) ([93b1e11](https://github.com/ionic-team/ionic-native/commit/93b1e1189849715af0f823675dda4c4587b7ed13))
+* **unvired-cordova-sdk:** add ability to receive the JWT token ([#3671](https://github.com/ionic-team/ionic-native/issues/3671)) ([50d9110](https://github.com/ionic-team/ionic-native/commit/50d91103cc53afd91c42c78e549bf17e5d00dac7))
+* **urbanairship:** add new methods: onDeepLink, onRegistration, onInboxUpdated, onShowInbox, onPushReceived, onNotificationOpened, onNotificationOptInStatus; fix return type for reattach method ([#3705](https://github.com/ionic-team/ionic-native/issues/3705)) ([815d1bb](https://github.com/ionic-team/ionic-native/commit/815d1bb1f8c6128203d2b0e2be70765718f88d7d))
+
+
+
 # [5.34.0](https://github.com/ionic-team/ionic-native/compare/v5.33.1...v5.34.0) (2021-06-29)
 
 
