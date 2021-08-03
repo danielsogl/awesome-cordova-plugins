@@ -35,6 +35,15 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class FirebaseAuthentication extends IonicNativePlugin {
   /**
+   * Returns the current user logged in Firebase service
+   * @return {Promise<any>} Returns the user info
+   */
+  @Cordova({ sync: true })
+  getCurrentUser(): Promise<any> {
+    return;
+  }
+
+  /**
    * Returns a JWT token used to identify the user to a Firebase service.
    * @param forceRefresh {boolean} Force Refresh
    * @return {Promise<any>} Returns the id token

@@ -214,7 +214,7 @@ export enum NotificationListenerType {
   /**
    * Notify that the JWT token is received
    */
-  JWTTokenReceived = 12
+  JWTTokenReceived = 12,
 }
 
 export enum AttachmentItemStatus {
@@ -415,7 +415,7 @@ export class LoginParameters {
   cacheWebData: boolean;
 
   /**
-   * Set this value if you the login process requires client credentials to be set. 
+   * Set this value if you the login process requires client credentials to be set.
    * You can pass the client credentials with the method: |unviredSDK.setClientCredentials(credentials)|
    * The passed credentials will be used based on this flag.
    */
@@ -1090,8 +1090,8 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   }
 
   /**
-   * Browser platform only. Call this function to export the Webdata. 
-   * Call this function to export the Web 
+   * Browser platform only. Call this function to export the Webdata.
+   * Call this function to export the Web
    */
   @Cordova()
   dbExportWebData(): Promise<any> {
@@ -1579,10 +1579,10 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
    * Encrypt a string with the key stored by the Unvired SDK.
    * @returns UnviredResult.data which should contains the encrypted string.
    */
-   @Cordova()
-   encrypt(stringToBeEncrypted: string): Promise<UnviredResult> {
-     return;
-   }
+  @Cordova()
+  encrypt(stringToBeEncrypted: string): Promise<UnviredResult> {
+    return;
+  }
 
   /**
    * Decrypt a string with the string encrypted with the key (key stored by the Unvired SDK)
