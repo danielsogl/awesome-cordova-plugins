@@ -2646,6 +2646,35 @@ export interface UsdlCombinedRecognizer extends Recognizer<UsdlCombinedRecognize
 }
 export interface UsdlCombinedRecognizerCtor extends RecognizerCtor<UsdlCombinedRecognizer> {}
 
+export interface BlinkIdRecognizerCtor extends RecognizerCtor<BlinkIdRecognizer> {}
+
+export interface BlinkIdRecognizer extends Recognizer<BlinkIdRecognizerResult> {
+  returnFaceImage: boolean;
+  returnFullDocumentImage: boolean;
+  anonymizationMode: number;
+}
+
+export interface BlinkIdRecognizerResult extends RecognizerResult {
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  localizedName: string;
+  additionalNameInformation: string;
+  placeOfBirth: string;
+  documentNumber: string;
+  dateOfBirth: Date;
+  sex: string;
+  nationality: string;
+  fullDocumentImage: string;
+  mrzResult: MrzResult;
+}
+
+export interface BlinkIdOverlaySettingsCtor {
+  new (): BlinkIdOverlaySettings;
+}
+export interface BlinkIdOverlaySettings extends OverlaySettings {}
+
+export interface BlinkIdRecognizerResultCtor extends RecognizerResultCtor<BlinkIdRecognizerResult> {}
 /**
  * @name BlinkId
  * @description
@@ -2922,4 +2951,7 @@ export class BlinkId extends IonicNativePlugin {
   @CordovaProperty() UsdlRecognizer: UsdlRecognizerCtor;
   @CordovaProperty() UsdlCombinedRecognizerResult: UsdlCombinedRecognizerResultCtor;
   @CordovaProperty() UsdlCombinedRecognizer: UsdlCombinedRecognizerCtor;
+  @CordovaProperty() BlinkIdRecognizer: BlinkIdRecognizerCtor;
+  @CordovaProperty() BlinkIdOverlaySettings: BlinkIdOverlaySettingsCtor;
+  @CordovaProperty() BlinkIdRecognizerResult: BlinkIdRecognizerResultCtor;
 }

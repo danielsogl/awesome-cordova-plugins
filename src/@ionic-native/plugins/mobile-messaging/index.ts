@@ -14,7 +14,8 @@ export type Event =
   | 'installationUpdated'
   | 'userUpdated'
   | 'personalized'
-  | 'depersonalized';
+  | 'depersonalized'
+  | 'deeplink';
 
 export interface CustomEvent {
   definitionId: string;
@@ -27,20 +28,21 @@ export interface Configuration {
    */
   applicationCode: string;
   geofencingEnabled?: boolean;
+  inAppChatEnabled?: boolean;
   /**
    * Message storage save callback
    */
   messageStorage?: string;
   defaultMessageStorage?: boolean;
   ios?: {
-    notificationTypes?: string[];
+    notificationTypes?: string[]; // ['alert', 'badge', 'sound']
     forceCleanup?: boolean;
     logging?: boolean;
   };
   android?: {
-    notificationIcon: string; // a resource name for a status bar icon (without extension), located in '/platforms/android/app/src/main/res/mipmap'
-    multipleNotifications: boolean;
-    notificationAccentColor: string;
+    notificationIcon?: string; // a resource name for a status bar icon (without extension), located in '/platforms/android/app/src/main/res/mipmap'
+    multipleNotifications?: boolean; // set to 'true' to enable multiple notifications
+    notificationAccentColor?: string; // set to hex color value in format '#RRGGBB' or '#AARRGGBB'
   };
   privacySettings?: {
     applicationCodePersistingDisabled?: boolean;
@@ -74,11 +76,11 @@ export interface UserData {
   lastName?: string;
   middleName?: string;
   gender?: Gender;
-  birthday?: Date;
+  birthday?: string;
   phones?: string[];
   emails?: string[];
   tags?: string[];
-  customAttributes?: Record<string, string | number | boolean>;
+  customAttributes?: Record<string, string | number | boolean | any[]>;
 }
 
 export interface Installation {
@@ -89,7 +91,7 @@ export interface Installation {
   sdkVersion?: string;
   appVersion?: string;
   os?: OS;
-  osVersion: string;
+  osVersion?: string;
   deviceManufacturer?: string;
   deviceModel?: string;
   deviceSecure?: boolean;
@@ -100,15 +102,18 @@ export interface Installation {
   customAttributes?: Record<string, string | number | boolean>;
 }
 
+/**
+ * User's unique ID. One UserIdentity parameter must be provided if used.
+ */
 export interface UserIdentity {
   phones?: string[];
   emails?: string[];
-  externalUserId: string;
+  externalUserId?: string;
 }
 
 export interface PersonalizeContext {
   userIdentity: UserIdentity;
-  userAttributes?: Record<string, string>;
+  userAttributes?: Record<string, string | number | boolean | any[]>;
   forceDepersonalize?: boolean;
 }
 
