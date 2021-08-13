@@ -46,6 +46,11 @@ export interface BarcodeScannerOptions {
    * Launch with the torch switched on (if available). Supported on Android only.
    */
   torchOn?: boolean;
+  
+  /**
+   * Save scan history. Defaults to `false`. Supported on Android only.
+   */
+  saveHistory?: boolean;
 
   /**
    * Display scanned text for X ms. 0 suppresses it entirely, default 1500. Supported on Android only.
