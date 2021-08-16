@@ -57,7 +57,7 @@ export class AllInOneSDK extends IonicNativePlugin {
    * @return {Promise<PaytmResponse>} Returns a promise that resolves when a transaction completes(both failed and successful).
    */
   @Cordova()
-  startTransaction(options: PaymentIntentModel): Promise<PaytmResponse> {
+  startTransaction(options: PaymentIntentModel | PaymentAssistIntentModel): Promise<PaytmResponse> {
     return;
   }
 }
@@ -81,4 +81,15 @@ export interface PaymentIntentModel {
   isStaging: boolean; // Environment
   callbackUrl: string; // Callback URL
   restrictAppInvoke: boolean; // To enable or disable the paytm app invocation
+}
+
+export interface PaymentAssistIntentModel {
+  mid: string; // Merchant ID
+  orderId: string; // Order ID
+  txnToken: string; // Transaction Token
+  amount: string; // Amount
+  isStaging: boolean; // Environment
+  callbackUrl: string; // Callback URL
+  restrictAppInvoke: boolean; // To enable or disable the paytm app invocation
+  enableAssist: boolean; // To enable or disable the Assist (Otp auto read)
 }
