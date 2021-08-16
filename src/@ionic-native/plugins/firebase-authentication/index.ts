@@ -35,6 +35,15 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class FirebaseAuthentication extends IonicNativePlugin {
   /**
+   * Returns the current user logged in Firebase service
+   * @return {Promise<any>} Returns the user info
+   */
+  @Cordova({ sync: true })
+  getCurrentUser(): Promise<any> {
+    return;
+  }
+
+  /**
    * Returns a JWT token used to identify the user to a Firebase service.
    * @param forceRefresh {boolean} Force Refresh
    * @return {Promise<any>} Returns the id token
@@ -123,6 +132,16 @@ export class FirebaseAuthentication extends IonicNativePlugin {
    */
   @Cordova({ sync: true })
   signInWithGoogle(idToken: string, accessToken: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Uses Apples's idToken and rawNonce (optional) to sign-in into firebase account. In order to retrieve those tokens follow instructions for Android and iOS
+   * @param idToken ID Token
+   * @param rawNonce Access Token
+   */
+  @Cordova({ sync: true })
+  signInWithApple(identityToken: string, rawNonce?: string): Promise<any> {
     return;
   }
 

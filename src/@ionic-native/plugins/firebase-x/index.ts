@@ -180,6 +180,15 @@ export class FirebaseX extends IonicNativePlugin {
   }
 
   /**
+   * Reload the current FCM user.
+   * @return {Promise<FirebaseUser | string>}
+   */
+  @Cordova()
+  reloadCurrentUser(): Promise<FirebaseUser | string> {
+    return;
+  }
+
+  /**
    * Get notified when a token is refreshed.
    * @return {Observable<any>}
    */
@@ -517,13 +526,18 @@ export class FirebaseX extends IonicNativePlugin {
    *   code {string} - verification code. Will only be present if instantVerification is true. Always undefined on iOS.
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
-  verifyPhoneNumber(
-    phoneNumber: string,
-    timeOutDuration: number,
-    fakeVerificationCode?: string
-  ): Promise<any> {
+  verifyPhoneNumber(phoneNumber: string, timeOutDuration: number, fakeVerificationCode?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Switch current authentification system language, for example, the phone sms code.
+   * @param lang - language to change, ex: 'fr' for french
+   */
+  @Cordova()
+  setLanguageCode(lang: string): Promise<any> {
     return;
   }
 

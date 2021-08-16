@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 
 export interface BranchIoPromise {
   $identity_id?: number;
@@ -106,6 +107,15 @@ export class BranchIo extends IonicNativePlugin {
   }
 
   /**
+   * Initializes Branch with callback
+   * @return {Observable<any>}
+   */
+  @Cordova({ observable: true })
+  initSessionWithCallback(): Observable<BranchIoPromise> {
+    return;
+  }
+
+  /**
    * Set Request Metadata
    * @return {Promise<any>}
    */
@@ -174,12 +184,24 @@ export class BranchIo extends IonicNativePlugin {
 
   /**
    * Send Commerce Event
+   * @deprecated since v.3.1.0. As of https://help.branch.io/developers-hub/docs/cordova-phonegap-ionic#track-commerce
    * @param {string} event
    * @param {any} metaData
    * @return {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   sendCommerceEvent(event: string, metaData: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Send Branch Event
+   * @param {string} event
+   * @param {any} metaData
+   * @return {Promise<any>}
+   */
+  @Cordova({ otherPromise: true })
+  sendBranchEvent(event: string, metaData: any): Promise<any> {
     return;
   }
 
