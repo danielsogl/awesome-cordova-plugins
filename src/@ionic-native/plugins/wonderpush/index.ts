@@ -240,17 +240,6 @@ export class WonderPush extends IonicNativePlugin {
   }
 
   /**
-   * Whether the SDK is ready to operate.
-   *
-   * The SDK is ready when it is initialized and has fetched an access token.
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  isReady(): Promise<boolean> {
-    return;
-  }
-
-  /**
    * Controls native SDK logging.
    * @param {boolean} enabled - Whether to enable logs.
    * @returns {Promise<any>}
