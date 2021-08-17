@@ -4,6 +4,7 @@ import { getMethodsForDecorator } from '../helpers';
 function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ngcBuild?: boolean) {
   // remove angular imports
   if (!ngcBuild) {
+    // @ts-expect-error
     file.statements = (file.statements as any).filter(
       (s: any) => !(s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@angular/core')
     );
