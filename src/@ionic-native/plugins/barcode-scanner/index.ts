@@ -46,7 +46,7 @@ export interface BarcodeScannerOptions {
    * Launch with the torch switched on (if available). Supported on Android only.
    */
   torchOn?: boolean;
-  
+
   /**
    * Save scan history. Defaults to `false`. Supported on Android only.
    */

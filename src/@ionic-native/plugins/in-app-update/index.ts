@@ -1,17 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
+import {
+  Plugin,
+  Cordova,
+  CordovaProperty,
+  CordovaInstance,
+  InstanceProperty,
+  IonicNativePlugin,
+} from '@ionic-native/core';
 import { Observable } from 'rxjs';
 
 enum UpdateType {
-  FLEXIBLE, IMMEDIATE
+  FLEXIBLE,
+  IMMEDIATE,
 }
 
 enum InstallStatus {
-  CANCELED, DOWNLOADED, DOWNLOADING, FAILED, INSTALLED, INSTALLING, PENDING, UNKNOWN
+  CANCELED,
+  DOWNLOADED,
+  DOWNLOADING,
+  FAILED,
+  INSTALLED,
+  INSTALLING,
+  PENDING,
+  UNKNOWN,
 }
 
 enum UpdateAvailability {
-  DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS, UNKNOWN, UPDATE_AVAILABLE, UPDATE_NOT_AVAILABLE
+  DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS,
+  UNKNOWN,
+  UPDATE_AVAILABLE,
+  UPDATE_NOT_AVAILABLE,
 }
 
 class AppUpdateInfo {
@@ -36,11 +54,10 @@ class AppUpdateInfo {
   plugin: 'cordova-in-app-update', // npm package name, example: cordova-plugin-camera
   pluginRef: 'window.plugins.InAppUpdate', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/itsLucario/cordova-app-update-plugin', // the github repository URL for the plugin
-  platforms: ['Android'] // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['Android'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
 export class InAppUpdate extends IonicNativePlugin {
-
   /**
    * If you want the user to be prompted about new version information before initiating the update, you can use `check` to retrive the new app version information.
    * @return {Promise<AppUpdateInfo>} Returns a promise that resolves with new app version update details
@@ -55,7 +72,7 @@ export class InAppUpdate extends IonicNativePlugin {
    * @return {Observable<AppUpdateInfo>} Returns a Observable can be subscribed to get update install state
    */
   @Cordova({ observable: true })
-  update(config: { updateType: "FLEXIBLE" | "IMMEDIATE" }): Observable<AppUpdateInfo> {
+  update(config: { updateType: 'FLEXIBLE' | 'IMMEDIATE' }): Observable<AppUpdateInfo> {
     return;
   }
 
