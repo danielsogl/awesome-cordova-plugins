@@ -1,6 +1,6 @@
 {
   "name": "ionic-native",
-  "version": "5.35.0",
+  "version": "5.36.0",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "homepage": "https://ionicframework.com/",
   "author": "Ionic Team <hi@ionic.io> (https://ionic.io)",
