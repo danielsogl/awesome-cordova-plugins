@@ -60,6 +60,7 @@ export class AdjustConfig {
   private info4: number = null;
   private processName: string = null; // Android only
   private preinstallTrackingEnabled: boolean = null; // Android only
+  private preinstallFilePath: string = null; // Android only
   private allowiAdInfoReading: boolean = null; // iOS only
   private allowIdfaReading: boolean = null; // iOS only
   private allowAdServicesInfoReading: boolean = null; // iOS only
@@ -70,6 +71,7 @@ export class AdjustConfig {
   private sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void = null;
   private sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void = null;
   private deferredDeeplinkCallback: (uri: string) => void = null;
+  private conversionValueUpdatedCallback: (conversionValue: number) => void = null;
 
   constructor(appToken: string, environment: AdjustEnvironment) {
     this.appToken = appToken;
@@ -136,6 +138,10 @@ export class AdjustConfig {
     this.preinstallTrackingEnabled = preinstallTrackingEnabled;
   }
 
+  setPreinstallFilePath(preinstallFilePath: string) {
+    this.preinstallFilePath = preinstallFilePath;
+  }
+
   setAllowiAdInfoReading(allowiAdInfoReading: boolean) {
     this.allowiAdInfoReading = allowiAdInfoReading;
   }
@@ -160,9 +166,7 @@ export class AdjustConfig {
     this.eventTrackingFailedCallback = eventTrackingFailedCallback;
   }
 
-  setSessionTrackingSucceededCallbackListener(
-    sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void
-  ) {
+  setSessionTrackingSucceededCallbackListener(sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void) {
     this.sessionTrackingSucceededCallback = sessionTrackingSucceededCallback;
   }
 
@@ -172,6 +176,10 @@ export class AdjustConfig {
 
   setDeferredDeeplinkCallbackListener(deferredDeeplinkCallback: (uri: string) => void) {
     this.deferredDeeplinkCallback = deferredDeeplinkCallback;
+  }
+
+  setConversionValueUpdatedCallbackListener(conversionValueUpdatedCallback: (conversionValue: number) => void) {
+    this.conversionValueUpdatedCallback = conversionValueUpdatedCallback;
   }
 
   private getAttributionCallback() {
@@ -196,6 +204,10 @@ export class AdjustConfig {
 
   private getDeferredDeeplinkCallback() {
     return this.deferredDeeplinkCallback;
+  }
+
+  private getConversionValueUpdatedCallback() {
+    return this.conversionValueUpdatedCallback;
   }
 
   private hasAttributionListener() {
@@ -270,7 +282,14 @@ export class AdjustPlayStoreSubscription {
   private callbackParameters: string[] = [];
   private partnerParameters: string[] = [];
 
-  constructor(price: string, currency: string, sku: string, orderId: string, signature: string, purchaseToken: string) {
+  constructor(
+    price: string,
+    currency: string,
+    sku: string,
+    orderId: string,
+    signature: string,
+    purchaseToken: string
+  ) {
     this.price = price;
     this.currency = currency;
     this.sku = sku;
@@ -306,6 +325,53 @@ export class AdjustThirdPartySharing {
     this.granularOptions.push(partnerName);
     this.granularOptions.push(key);
     this.granularOptions.push(value);
+  }
+}
+
+export class AdjustAdRevenue {
+  private source: string;
+  private revenue: number;
+  private currency: string;
+  private adImpressionsCount: number;
+  private adRevenueNetwork: string;
+  private adRevenueUnit: string;
+  private adRevenuePlacement: string;
+  private callbackParameters: string[] = [];
+  private partnerParameters: string[] = [];
+
+  constructor(source: string) {
+    this.source = source;
+  }
+
+  setRevenue(revenue: number, currency: string): void {
+    this.revenue = revenue;
+    this.currency = currency;
+  }
+
+  addCallbackParameter(key: string, value: string): void {
+    this.callbackParameters.push(key);
+    this.callbackParameters.push(value);
+  }
+
+  addPartnerParameter(key: string, value: string): void {
+    this.partnerParameters.push(key);
+    this.partnerParameters.push(value);
+  }
+
+  setAdImpressionsCount(adImpressionsCount: number) {
+    this.adImpressionsCount = adImpressionsCount;
+  }
+
+  setAdRevenueNetwork(adRevenueNetwork: string) {
+    this.adRevenueNetwork = adRevenueNetwork;
+  }
+
+  setAdRevenueUnit(adRevenueUnit: string) {
+    this.adRevenueUnit = adRevenueUnit;
+  }
+
+  setAdRevenuePlacement(adRevenuePlacement: string) {
+    this.adRevenuePlacement = adRevenuePlacement;
   }
 }
 
@@ -359,7 +425,7 @@ export interface AdjustEventFailure {
 
 export enum AdjustEnvironment {
   Sandbox = 'sandbox',
-  Production = 'production',
+  Production = 'production'
 }
 
 export enum AdjustLogLevel {
@@ -369,34 +435,22 @@ export enum AdjustLogLevel {
   Warn = 'WARN',
   Error = 'ERROR',
   Assert = 'ASSERT',
-  Suppress = 'SUPPRESS',
+  Suppress = 'SUPPRESS'
 }
 
 export enum AdjustUrlStrategy {
-  India = 'India',
-  China = 'China',
+  India = 'india',
+  China = 'china',
+  DataResidencyEU = 'data-residency-eu',
+  DataResidencyTR = 'data-residency-tr',
+  DataResidencyUS = 'data-residency-us'
 }
 
 export enum AdjustAdRevenueSource {
+  AdRevenueSourceAppLovinMAX = 'applovin_max_sdk',
   AdRevenueSourceMopub = 'mopub',
-  AdRevenueSourceAdmob = 'admob',
-  AdRevenueSourceFbNativeAd = 'facebook_native_ad',
-  AdRevenueSourceFbAudienceNetwork = 'facebook_audience_network',
-  AdRevenueSourceIronsource = 'ironsource',
-  AdRevenueSourceFyber = 'fyber',
-  AdRevenueSourceAerserv = 'aerserv',
-  AdRevenueSourceAppodeal = 'appodeal',
-  AdRevenueSourceAdincube = 'adincube',
-  AdRevenueSourceFusePowered = 'fusepowered',
-  AdRevenueSourceAddapptr = 'addapptr',
-  AdRevenueSourceMillennialMediation = 'millennial_mediation',
-  AdRevenueSourceFlurry = 'flurry',
-  AdRevenueSourceAdmost = 'admost',
-  AdRevenueSourceDeltadna = 'deltadna',
-  AdRevenueSourceUpsight = 'upsight',
-  AdRevenueSourceUnityAds = 'unityads',
-  AdRevenueSourceAdtoapp = 'adtoapp',
-  AdRevenueSourceTapdaq = 'tapdaq',
+  AdRevenueSourceAdMob = 'admob_sdk',
+  AdRevenueSourceIronsource = 'ironsource_sdk',
 }
 
 /**
@@ -408,7 +462,7 @@ export enum AdjustAdRevenueSource {
  *
  * @usage
  * ```typescript
- *  import { Adjust, AdjustConfig, AdjustEnvironment } from '@ionic-native/adjust';
+ *  import { Adjust, AdjustConfig, AdjustEnvironment } from '@ionic-native/adjust/ngx';
  *
  *  constructor(private adjust: Adjust) { }
  *
@@ -432,6 +486,7 @@ export enum AdjustAdRevenueSource {
  * AdjustAppStoreSubscription
  * AdjustPlayStoreSubscription
  * AdjustThirdPartySharing
+ * AdjustAdReenue
  * @enums
  * AdjustEnvironment
  * AdjustLogLevel
@@ -443,10 +498,11 @@ export enum AdjustAdRevenueSource {
   plugin: 'com.adjust.sdk',
   pluginRef: 'Adjust',
   repo: 'https://github.com/adjust/cordova_sdk',
-  platforms: ['Android', 'iOS'],
+  platforms: ['Android', 'iOS']
 })
 @Injectable()
 export class Adjust extends IonicNativePlugin {
+
   /**
    * This method initializes Adjust SDK
    * @param {AdjustConig} config Adjust config object used as starting options
@@ -487,8 +543,17 @@ export class Adjust extends IonicNativePlugin {
    * @param {AdjustAdRevenueSource} source Ad revenue source
    * @param {string} payload Ad revenue JSON string payload
    */
-  @Cordova({ sync: true })
-  trackAdRevenue(source: AdjustAdRevenueSource, payload: string): void {}
+  trackAdRevenue(source: AdjustAdRevenueSource, payload: string): void
+
+  /**
+   * This method tracks ad revenue data
+   * @param {AdjustAdRevenue} adRevenue Adjust ad revenue object
+   */
+  trackAdRevenue(adRevenue: AdjustAdRevenue): void
+
+  // And typescript hides this, so the client will be able call only methods above
+  @Cordova({sync: true})
+  trackAdRevenue(sourceOrAdRevenue: any, payload?: any): void {}
 
   /**
    * This method tracks measurement consent choice
@@ -531,9 +596,7 @@ export class Adjust extends IonicNativePlugin {
    * @returns {Promise<boolean>}
    */
   @Cordova()
-  isEnabled(): Promise<boolean> {
-    return;
-  }
+  isEnabled(): Promise<boolean> { return; }
 
   /**
    * In accordance with article 17 of the EU's General Data Protection Regulation (GDPR), you can notify Adjust when a user has exercised their right to be forgotten.
@@ -543,7 +606,7 @@ export class Adjust extends IonicNativePlugin {
   gdprForgetMe(): void {}
 
   /**
-   * You can now notify Adjust when a user has exercised their right to stop sharing their data with partners for marketing purposes, but has allowed it to be shared for statistics purposes.
+   * You can now notify Adjust when a user has exercised their right to stop sharing their data with partners for marketing purposes, but has allowed it to be shared for statistics purposes. 
    * Calling the following method will instruct the Adjust SDK to communicate the user's choice to disable data sharing to the Adjust backend
    */
   @Cordova({ sync: true })
@@ -554,27 +617,21 @@ export class Adjust extends IonicNativePlugin {
    * @return {Promise<string>} Returns a promise with google AdId value
    */
   @Cordova()
-  getGoogleAdId(): Promise<string> {
-    return;
-  }
+  getGoogleAdId(): Promise<string> { return; }
 
   /**
    * If you need to obtain the Amazon Advertising ID, you can make a call to this function.
    * @return {Promise<string>} Returns a promise with anazib adv. ID
    */
   @Cordova()
-  getAmazonAdId(): Promise<string> {
-    return;
-  }
+  getAmazonAdId(): Promise<string> { return; }
 
   /**
    * To obtain the IDFA, call this function
    * @return {Promise<string>} Returns a promise with IDFA string value
    */
   @Cordova()
-  getIdfa(): Promise<string> {
-    return;
-  }
+  getIdfa(): Promise<string> { return; }
 
   /**
    * For every device with your app installed on it, the Adjust backend generates a unique Adjust device identifier (adid).
@@ -582,27 +639,21 @@ export class Adjust extends IonicNativePlugin {
    * @return {Promise<string>} Returns a promise with adid value
    */
   @Cordova()
-  getAdid(): Promise<string> {
-    return;
-  }
+  getAdid(): Promise<string> { return; }
 
   /**
    * If you want to access information about a user's current attribution whenever you need it, you can make a call to this function
    * @return {Promise<AdjustAttribution>} Returns a promise with AdjustAttribution object
    */
   @Cordova()
-  getAttribution(): Promise<AdjustAttribution> {
-    return;
-  }
+  getAttribution(): Promise<AdjustAttribution> { return; }
 
   /**
    * Get the information about version of the SDK used
    * @return {Promise<string>} Returns a promise with sdk version information
    */
   @Cordova()
-  getSdkVersion(): Promise<string> {
-    return;
-  }
+  getSdkVersion(): Promise<string> { return; }
 
   /**
    * Method used to add session callback parameters
@@ -658,9 +709,7 @@ export class Adjust extends IonicNativePlugin {
    * @return {Promise<number>} Returns a promise with user's consent value
    */
   @Cordova()
-  requestTrackingAuthorizationWithCompletionHandler(): Promise<number> {
-    return;
-  }
+  requestTrackingAuthorizationWithCompletionHandler(): Promise<number> { return; }
 
   /**
    * You can update SKAdNetwork conversion value with calling this method
@@ -674,7 +723,5 @@ export class Adjust extends IonicNativePlugin {
    * @return {Promise<number>} Returns a promise with app tracking authorization status
    */
   @Cordova()
-  getAppTrackingAuthorizationStatus(): Promise<number> {
-    return;
-  }
+  getAppTrackingAuthorizationStatus(): Promise<number> { return; }
 }
