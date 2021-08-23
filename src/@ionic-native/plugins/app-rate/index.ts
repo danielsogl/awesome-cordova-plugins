@@ -214,23 +214,25 @@ export interface AppUrls {
  *
  * ...
  * // set certain preferences
- * this.appRate.preferences.storeAppURL = {
- *   ios: '<app_id>',
- *   android: 'market://details?id=<package_name>',
- *   windows: 'ms-windows-store://review/?ProductId=<store_id>'
- * }
+ * this.appRate.setPreferences({
+ *   storeAppURL: {
+ *     ios: '<app_id>',
+ *     android: 'market://details?id=<package_name>',
+ *     windows: 'ms-windows-store://review/?ProductId=<store_id>'
+ *   }
+ * });
  *
  * this.appRate.promptForRating(true);
  *
  * // or, override the whole preferences object
- * this.appRate.preferences = {
+ * this.appRate.setPreferences({
  *   usesUntilPrompt: 3,
  *   storeAppURL: {
  *    ios: '<app_id>',
  *    android: 'market://details?id=<package_name>',
  *    windows: 'ms-windows-store://review/?ProductId=<store_id>'
  *   }
- * }
+ * });
  *
  * this.appRate.promptForRating(false);
  * ```
@@ -251,13 +253,6 @@ export interface AppUrls {
 })
 @Injectable()
 export class AppRate extends IonicNativePlugin {
-  /**
-   * Configure various settings for the Rating View.
-   * See table below for options
-   */
-  @CordovaProperty()
-  preferences: AppRatePreferences;
-
   /**
    * Manager custom locales
    */
