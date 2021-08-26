@@ -75,7 +75,7 @@ export interface InboxMessage {
 export class Vibes extends IonicNativePlugin {
   /**
    * Register this device with the Vibes platform
-   * 
+   *
    * @return {Promise<DeviceResponse>}
    */
   @Cordova()
@@ -85,7 +85,7 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Unregister this device with the Vibes platform
-   * 
+   *
    * @return {Promise<void>}
    */
   @Cordova()
@@ -95,7 +95,7 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Associate an external ID with the current person.
-   * 
+   *
    * @param {string} externalPersonId
    * @return {Promise<void>}
    */
@@ -106,7 +106,7 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Register this device to receive push notifications
-   * 
+   *
    * @return {Promise<void>}
    */
   @Cordova()
@@ -116,7 +116,7 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Unregister the device from receiving push notifications
-   * 
+   *
    * @return {Promise<void>}
    */
   @Cordova()
@@ -125,7 +125,7 @@ export class Vibes extends IonicNativePlugin {
   }
   /**
    * Fetches a DeviceInfoResponse with details about the Vibes Device ID and Push Token
-   * 
+   *
    * @return {Promise<DeviceInfoResponse>}
    */
   @Cordova()
@@ -135,7 +135,7 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Fetches the PersonResponse associated with this device currently
-   * 
+   *
    * @return {Promise<PersonResponse>}
    */
   @Cordova()
@@ -145,7 +145,7 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Get notified when the user opens a notification
-   * 
+   *
    * @return {Observable<void>}
    */
   @Cordova({
@@ -157,7 +157,7 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Fetches an array of inbox messages for the person associated with this device.
-   * 
+   *
    * @return {Promise<InboxMessage[]>}
    */
   @Cordova()
@@ -167,7 +167,7 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Fetches a single inbox message by it's id.
-   * 
+   *
    * @param {string} message_uid
    * @return {Promise<InboxMessage>}
    */
@@ -178,7 +178,7 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Marks an inbox message as expired using message_uid and the expiry date supplied. Uses current date if null or invalid date is supplied.
-   * 
+   *
    * @param {string} message_uid
    * @param {string} An ISO-8601 formatted date string.
    * @return {Promise<InboxMessage>} an updated version of the InboxMessage with expires_at date updated
@@ -190,7 +190,7 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Marks an inbox message as read.
-   * 
+   *
    * @param {string} message_uid
    * @return {Promise<InboxMessage>} an updated version of the InboxMessage with read field updated
    */
@@ -201,7 +201,7 @@ export class Vibes extends IonicNativePlugin {
 
   /**
    * Records an event for when the user opens an inbox message.
-   * 
+   *
    * @param inbox_message_stringified stringified version of the InboxMessage
    * @return {Promise<void>}
    */

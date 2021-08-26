@@ -382,7 +382,13 @@ export class IBeacon extends IonicNativePlugin {
     minor?: number,
     notifyEntryStateOnDisplay?: boolean
   ): BeaconRegion {
-    return new window.cordova.plugins.locationManager.BeaconRegion(identifer, uuid, major, minor, notifyEntryStateOnDisplay);
+    return new window.cordova.plugins.locationManager.BeaconRegion(
+      identifer,
+      uuid,
+      major,
+      minor,
+      notifyEntryStateOnDisplay
+    );
   }
 
   /**

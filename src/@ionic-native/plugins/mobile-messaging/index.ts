@@ -35,14 +35,14 @@ export interface Configuration {
   messageStorage?: string;
   defaultMessageStorage?: boolean;
   ios?: {
-    notificationTypes?: string[];
+    notificationTypes?: string[]; // ['alert', 'badge', 'sound']
     forceCleanup?: boolean;
     logging?: boolean;
   };
   android?: {
-    notificationIcon: string; // a resource name for a status bar icon (without extension), located in '/platforms/android/app/src/main/res/mipmap'
-    multipleNotifications: boolean;
-    notificationAccentColor: string;
+    notificationIcon?: string; // a resource name for a status bar icon (without extension), located in '/platforms/android/app/src/main/res/mipmap'
+    multipleNotifications?: boolean; // set to 'true' to enable multiple notifications
+    notificationAccentColor?: string; // set to hex color value in format '#RRGGBB' or '#AARRGGBB'
   };
   privacySettings?: {
     applicationCodePersistingDisabled?: boolean;
@@ -91,7 +91,7 @@ export interface Installation {
   sdkVersion?: string;
   appVersion?: string;
   os?: OS;
-  osVersion: string;
+  osVersion?: string;
   deviceManufacturer?: string;
   deviceModel?: string;
   deviceSecure?: boolean;
@@ -102,10 +102,13 @@ export interface Installation {
   customAttributes?: Record<string, string | number | boolean>;
 }
 
+/**
+ * User's unique ID. One UserIdentity parameter must be provided if used.
+ */
 export interface UserIdentity {
   phones?: string[];
   emails?: string[];
-  externalUserId: string;
+  externalUserId?: string;
 }
 
 export interface PersonalizeContext {

@@ -5,15 +5,11 @@ export interface FacebookLoginResponse {
   status: string;
 
   authResponse: {
-    session_key: boolean;
-
     accessToken: string;
 
+    data_access_expiration_time: string;
+
     expiresIn: number;
-
-    sig: string;
-
-    secret: string;
 
     userID: string;
   };
@@ -153,17 +149,55 @@ export class Facebook extends IonicNativePlugin {
   };
 
   /**
+   * Get the current application ID
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with the current application ID
+   */
+  @Cordova()
+  getApplicationId(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Set the application ID
+   *
+   * @param {string}  id application ID
+   */
+  @Cordova()
+  setApplicationId(id: string): Promise<void> {
+    return;
+  }
+
+  /**
+   * Get the current application name
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with the current application name
+   */
+  @Cordova()
+  getApplicationName(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Set the application name
+   *
+   * @param {string}  name application name
+   */
+  @Cordova()
+  setApplicationName(name: string): Promise<void> {
+    return;
+  }
+
+  /**
    * Login to Facebook to authenticate this app.
    *
    * ```typescript
    * {
    *   status: 'connected',
    *   authResponse: {
-   *     session_key: true,
    *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
+   *     data_access_expiration_time: '1623680244',
    *     expiresIn: 5183979,
-   *     sig: '...',
-   *     secret: '...',
    *     userID: '634565435'
    *   }
    * }
@@ -175,6 +209,60 @@ export class Facebook extends IonicNativePlugin {
    */
   @Cordova()
   login(permissions: string[]): Promise<FacebookLoginResponse> {
+    return;
+  }
+
+  /**
+   * Login to Facebook using Limited Login (iOS Only)
+   *
+   * ```typescript
+   * {
+   *   status: 'connected',
+   *   authResponse: {
+   *     authenticationToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
+   *     nonce: 'foo',
+   *     userID: '634565435'
+   *   }
+   * }
+   *
+   * ```
+   *
+   * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/limited-login/permissions) this app has upon logging in.
+   * @returns {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
+   */
+  @Cordova()
+  loginWithLimitedTracking(permissions: string[]): Promise<FacebookLoginResponse> {
+    return;
+  }
+
+  /**
+   * Check if the user has approved all necessary permissions
+   *
+   * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) to check for
+   * @returns {Promise<string>} Returns a Promise that resolves with a success string if all passed permissions are granted, or an error string if any permissions are not granted
+   */
+  @Cordova()
+  checkHasCorrectPermissions(permissions: string[]): Promise<string> {
+    return;
+  }
+
+  /**
+   * Check if data access has expired for the user
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with a success string if data access is expired, or rejects with an error
+   */
+  @Cordova()
+  isDataAccessExpired(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Reauthorize data access after it has expired
+   *
+   * @returns {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
+   */
+  @Cordova()
+  reauthorizeDataAccess(): Promise<FacebookLoginResponse> {
     return;
   }
 
@@ -203,9 +291,8 @@ export class Facebook extends IonicNativePlugin {
    *   authResponse: {
    *     userID: '12345678912345',
    *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
-   *     session_Key: true,
-   *     expiresIn: '5183738',
-   *     sig: '...'
+   *     data_access_expiration_time: '1623680244',
+   *     expiresIn: '5183738'
    *   },
    *   status: 'connected'
    * }
@@ -227,6 +314,16 @@ export class Facebook extends IonicNativePlugin {
    */
   @Cordova()
   getAccessToken(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Get profile information for the currently logged in user
+   *
+   * @returns {Promise<any>} Returns a Promise that resolves with success data, or rejects with an error
+   */
+  @Cordova()
+  getCurrentProfile(): Promise<any> {
     return;
   }
 
@@ -297,6 +394,26 @@ export class Facebook extends IonicNativePlugin {
     errorIndex: 2,
   })
   setAutoLogAppEventsEnabled(enabled: boolean): Promise<void> {
+    return;
+  }
+
+  /**
+   * Enable or disable collection of advertiser-id
+   *
+   * @param {boolean}  enabled value to be set
+   */
+  @Cordova()
+  setAdvertiserIDCollectionEnabled(enabled: boolean): Promise<void> {
+    return;
+  }
+
+  /**
+   * Enable or disable advertiser tracking (iOS Only)
+   *
+   * @param {boolean}  enabled value to be set
+   */
+  @Cordova()
+  setAdvertiserTrackingEnabled(enabled: boolean): Promise<void> {
     return;
   }
 

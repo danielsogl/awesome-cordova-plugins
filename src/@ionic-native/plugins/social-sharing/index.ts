@@ -282,7 +282,7 @@ export class SocialSharing extends IonicNativePlugin {
   saveToPhotoAlbum(fileOrFileArray: string | string[]): Promise<any> {
     return;
   }
-  
+
   /**
    * Shares directly to a WhatsApp Contact with phone number.
    * @param phone {string} Pass phone number
@@ -296,7 +296,12 @@ export class SocialSharing extends IonicNativePlugin {
     errorIndex: 6,
     platforms: ['iOS', 'Android'],
   })
-  shareViaWhatsAppToPhone(phone: string, message: string, fileOrFileArray: string | string[], url?: string): Promise<any> {
+  shareViaWhatsAppToPhone(
+    phone: string,
+    message: string,
+    fileOrFileArray: string | string[],
+    url?: string
+  ): Promise<any> {
     return;
   }
 }
