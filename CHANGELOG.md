@@ -1,3 +1,22 @@
+# [5.36.0](https://github.com/ionic-team/ionic-native/compare/v5.35.0...v5.36.0) (2021-08-20)
+
+
+### Bug Fixes
+
+* **barcode-scanner:** add `saveHistory` option ([#3713](https://github.com/ionic-team/ionic-native/issues/3713)) ([39ad4d1](https://github.com/ionic-team/ionic-native/commit/39ad4d13aa977ec744dfdf780ca0fa869a36f736)), closes [/github.com/phonegap/phonegap-plugin-barcodescanner/blob/v8.1.0/src/android/com/phonegap/plugins/barcodescanner/BarcodeScanner.java#L52](https://github.com//github.com/phonegap/phonegap-plugin-barcodescanner/blob/v8.1.0/src/android/com/phonegap/plugins/barcodescanner/BarcodeScanner.java/issues/L52)
+* **purchases:** remove static for logIn, logOut methods ([#3709](https://github.com/ionic-team/ionic-native/issues/3709)) ([c6b65e9](https://github.com/ionic-team/ionic-native/commit/c6b65e9715a9086dfb4325957457c1fe3be217f4))
+
+
+### Features
+
+* **adjust:** update wrapper for Adjust Cordova SDK v4.29.0 ([#3720](https://github.com/ionic-team/ionic-native/issues/3720)) ([68af9eb](https://github.com/ionic-team/ionic-native/commit/68af9eb525959d9ee9165471939baa8b3ceed2dc))
+* **all-in-one-sdk:** add assist interface ([#3717](https://github.com/ionic-team/ionic-native/issues/3717)) ([8ebdc6e](https://github.com/ionic-team/ionic-native/commit/8ebdc6e563caa02bb7cf77b95a680876b052bdc1))
+* **facebook:** plugin updates ([#3721](https://github.com/ionic-team/ionic-native/issues/3721)) ([6f14bce](https://github.com/ionic-team/ionic-native/commit/6f14bce6ce2f27ebbe483c5578d0bfb46abad2e0))
+* **in-app-update:** add plugin ([#3714](https://github.com/ionic-team/ionic-native/issues/3714)) ([eb8d252](https://github.com/ionic-team/ionic-native/commit/eb8d2522b3ca9b585cde6e77c1a3f49c3e49b338))
+* **play-install-referrer:** add plugin ([#3718](https://github.com/ionic-team/ionic-native/issues/3718)) ([9a1b964](https://github.com/ionic-team/ionic-native/commit/9a1b96462d2e854727935da65e3df06987438ceb))
+
+
+
 # [5.35.0](https://github.com/ionic-team/ionic-native/compare/v5.34.0...v5.35.0) (2021-08-02)
 
 

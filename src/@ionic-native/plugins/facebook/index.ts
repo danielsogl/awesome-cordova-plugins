@@ -5,15 +5,11 @@ export interface FacebookLoginResponse {
   status: string;
 
   authResponse: {
-    session_key: boolean;
-
     accessToken: string;
 
+    data_access_expiration_time: string;
+
     expiresIn: number;
-
-    sig: string;
-
-    secret: string;
 
     userID: string;
   };
@@ -153,17 +149,55 @@ export class Facebook extends IonicNativePlugin {
   };
 
   /**
+   * Get the current application ID
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with the current application ID
+   */
+  @Cordova()
+  getApplicationId(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Set the application ID
+   *
+   * @param {string}  id application ID
+   */
+  @Cordova()
+  setApplicationId(id: string): Promise<void> {
+    return;
+  }
+
+  /**
+   * Get the current application name
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with the current application name
+   */
+  @Cordova()
+  getApplicationName(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Set the application name
+   *
+   * @param {string}  name application name
+   */
+  @Cordova()
+  setApplicationName(name: string): Promise<void> {
+    return;
+  }
+
+  /**
    * Login to Facebook to authenticate this app.
    *
    * ```typescript
    * {
    *   status: 'connected',
    *   authResponse: {
-   *     session_key: true,
    *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
+   *     data_access_expiration_time: '1623680244',
    *     expiresIn: 5183979,
-   *     sig: '...',
-   *     secret: '...',
    *     userID: '634565435'
    *   }
    * }
@@ -257,9 +291,8 @@ export class Facebook extends IonicNativePlugin {
    *   authResponse: {
    *     userID: '12345678912345',
    *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
-   *     session_Key: true,
-   *     expiresIn: '5183738',
-   *     sig: '...'
+   *     data_access_expiration_time: '1623680244',
+   *     expiresIn: '5183738'
    *   },
    *   status: 'connected'
    * }

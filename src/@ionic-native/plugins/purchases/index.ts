@@ -430,7 +430,7 @@ export class Purchases extends IonicNativePlugin {
    * whether the user has just been created for the first time in the RevenueCat backend.
    */
   @Cordova()
-  static logIn(appUserID: string): Promise<LogInResult> {
+  logIn(appUserID: string): Promise<LogInResult> {
     return;
   }
 
@@ -440,7 +440,7 @@ export class Purchases extends IonicNativePlugin {
    * @return {Promise<PurchaserInfo>} new purchaser info after resetting.
    */
   @Cordova()
-  static logOut(): Promise<PurchaserInfo> {
+  logOut(): Promise<PurchaserInfo> {
     return;
   }
 
