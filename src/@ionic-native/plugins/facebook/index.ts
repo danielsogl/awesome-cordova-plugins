@@ -333,10 +333,7 @@ export class Facebook extends IonicNativePlugin {
    * ```
    * {
    *   method: 'share',
-   *   href: 'http://example.com',
-   *   caption: 'Such caption, very feed.',
-   *   description: 'Much description',
-   *   picture: 'http://example.com/image.png'
+   *   href: 'http://example.com'
    * }
    * ```
    *
@@ -365,6 +362,36 @@ export class Facebook extends IonicNativePlugin {
    */
   @Cordova()
   api(requestPath: string, permissions: string[], httpMethod?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Set Data Processing Options for App events. For more information see [Facebook docs](https://developers.facebook.com/docs/app-events/guides/ccpa)
+   *
+   * @param {string[]}  options List of options, i.e. ["LDU"]
+   * @param {number}  country The numeric identifier for the country
+   * @param {number}  state The numeric identifier for the state
+   */
+  @Cordova()
+  setDataProcessingOptions(options: string[], country?: number, state?: number): Promise<void> {
+    return;
+  }
+
+  /**
+   * Set user data for Advanced Matching. For more information see [Facebook docs](https://developers.facebook.com/docs/app-events/advanced-matching/)
+   *
+   * @param {Object}  userData An object containing data about the user
+   */
+  @Cordova()
+  setUserData(userData: Object): Promise<void> {
+    return;
+  }
+
+  /**
+   * Clear user data. For more information see [Facebook docs](https://developers.facebook.com/docs/app-events/advanced-matching/)
+   */
+  @Cordova()
+  clearUserData(): Promise<void> {
     return;
   }
 
@@ -432,7 +459,7 @@ export class Facebook extends IonicNativePlugin {
 
   /**
    * Returns the deferred app link
-   * @returns {Promise<any>}
+   * @returns {Promise<string>} Returns a Promise that resolves with the deep link
    */
   @Cordova()
   getDeferredApplink(): Promise<string> {
