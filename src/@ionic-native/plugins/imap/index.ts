@@ -7,7 +7,18 @@ export interface Config {
    */
   host: string;
   /**
-   *  Username or email address for authentication.
+   * Optional parameter. Port of the IMAP server to connect.
+   * Default set to: 993
+   */
+  port?: number;
+  /**
+   * iOS ONLY
+   * Optional parameter. Encryption type to use.
+   * Default set to: TLS/SSL
+   */
+  connectionType?: ConnectionType;
+  /**
+   * Username or email address for authentication.
    */
   user: string;
   /**
@@ -31,6 +42,45 @@ export interface Connection {
   exception?: string;
 }
 
+export interface MessageHeaders {
+  /**
+   * Message consecutive number.
+   */
+  messageNumber: number;
+  /**
+   * The name of the folder where the message is contained.
+   */
+  folder: string;
+  /**
+   * Sender's data.
+   */
+  from: Address[];
+  /**
+   * TO recipients data.
+   */
+  toRecipients: Address[];
+  /**
+   * CC recipients data.
+   */
+  ccRecipients: Address[];
+  /**
+   * BCC recipients data.
+   */
+  bccRecipients: Address[];
+  /**
+   * The date when the message was received.
+   */
+  receivedDate: string;
+  /**
+   * Message's subject header.
+   */
+  subject: string;
+  /**
+   * Message's active flags.
+   */
+  flags: string[];
+}
+
 export interface Message {
   /**
    * Message consecutive number.
@@ -45,9 +95,9 @@ export interface Message {
    */
   from: Address[];
   /**
-   * Optional. All recipients data.
+   * All recipients data.
    */
-  allRecipients?: Address[];
+  allRecipients: Address[];
   /**
    * TO recipients data.
    */
@@ -61,13 +111,13 @@ export interface Message {
    */
   bccRecipients: Address[];
   /**
-   * Optional. Reply data.
+   * Reply data.
    */
-  replyTo?: Address[];
+  replyTo: Address[];
   /**
-   * Optional. Date when the message was sent.
+   * Date when the message was sent.
    */
-  sentDate?: string;
+  sentDate: string;
   /**
    * The date when the message was received.
    */
@@ -77,41 +127,46 @@ export interface Message {
    */
   subject: string;
   /**
+   * Android ONLY
    * Optional. Short description for the message.
    */
   description?: string;
   /**
-   * Optional.
+   *
    */
-  fileName?: string;
+  fileName: string;
   /**
+   * Android ONLY
    * Optional.
    */
   disposition?: string;
   /**
    * Message's active flags.
    */
-  flags: string;
+  flags: string[];
   /**
+   * Android ONLY
    * Optional.
    */
   lineCount?: number;
   /**
+   * Android ONLY
    * Optional. All Headers available on a message.
    */
   allMessageHeaders?: object;
   /**
+   * Android ONLY
    * Optional. Type of message's content.
    */
   contentType?: string;
   /**
-   * Optional. Message's body with its content and attachments.
+   * Message's body with its content and attachments.
    */
-  bodyContent?: Content[];
+  bodyContent: Content[];
   /**
-   * Optional. Message's memory size.
+   * Message's memory size.
    */
-  size?: number;
+  size: number;
 }
 
 export interface Address {
@@ -124,9 +179,10 @@ export interface Address {
    */
   personal?: string;
   /**
-   * Data type.
+   * Android ONLY
+   * Optional. Data type.
    */
-  type: string;
+  type?: string;
 }
 
 export interface Content {
@@ -155,8 +211,24 @@ export interface ModificationResult {
   modifiedMessages: number[];
 }
 
+export enum ConnectionType {
+  /**
+   * Clear-text connection for the protocol.
+   */
+  Clear = 'Clear',
+  /**
+   * Starts with clear-text connection at the beginning, then switch to encrypted connection using TLS/SSL.
+   */
+  StartTLS = 'StartTLS',
+  /**
+   * Encrypted connection using TLS/SSL.
+   */
+  TLSSSL = 'TLS/SSL',
+}
+
 export enum Comparison {
   /**
+   * Android ONLY
    * The less than or equal to operator.
    */
   LE = 'LE',
@@ -173,6 +245,7 @@ export enum Comparison {
    */
   NE = 'NE',
   /**
+   * Android ONLY
    * The greater than operator.
    */
   GT = 'GT',
@@ -199,6 +272,7 @@ export enum FlagEnum {
    */
   FLAGGED = 'FLAGGED',
   /**
+   * Android ONLY
    * "RECENT" message flag
    */
   RECENT = 'RECENT',
@@ -207,6 +281,7 @@ export enum FlagEnum {
    */
   SEEN = 'SEEN',
   /**
+   * Android ONLY
    * "USER" message flag
    */
   USER = 'USER',
@@ -214,15 +289,35 @@ export enum FlagEnum {
    * "DELETED" message flag. Note: Add this flag to delete the message from the mailbox
    */
   DELETED = 'DELETED',
+  /**
+   * iOS ONLY
+   * "SENT" message flag.
+   */
+  SENT = 'Sent',
+  /**
+   * iOS ONLY
+   * "FORWARDED" message flag.
+   */
+  FORWARDED = 'Forwarded',
+  /**
+   * iOS ONLY
+   * "SubmitPending" message flag.
+   */
+  SubmitPending = 'SubmitPending',
+  /**
+   * iOS ONLY
+   * "SUBMITTED" message flag.
+   */
+  SUBMITTED = 'Submitted',
 }
 
 /**
  * @name Imap
  * @description
- * This plugin will enable an Ionic application to use the IMAP (Internet Message Access Protocol) features.
- * This plugin is in Beta version and it offers support only for Android.
- * The plugin uses Java Mail API.
- * Planned improvements and support for iOS.
+ * This plugin will enable a Cordova application to use the IMAP (Internet Message Access Protocol) features
+ * The plugin offers support for Android and iOS.
+ * To enable the IMAP features on Android, this plugin uses the framework [Java Mail API](https://javaee.github.io/javamail/) and for iOS, it uses the [MailCore 2](http://libmailcore.com/) library.
+ *
  *
  * @usage
  * ```typescript
@@ -236,6 +331,8 @@ export enum FlagEnum {
  *
  * this.imap.connect({
  *  host: 'imap.gmail.com',
+ *  port: 993,
+ *  connectionType: ConnectionType.TLSSSL  // (iOS ONLY) Encryption type to use. Default set to: TLS/SSL
  *  user: 'my_email@gmail.com',
  *  password: 'my-pass'
  * })
@@ -254,10 +351,13 @@ export enum FlagEnum {
  *   .then((res: boolean) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
- *  Note: Connected to an IMAP service is REQUIRED to be able to get data from the below functions.
+ * // Note: Connected to an IMAP service is REQUIRED to be able to get data from the below functions.
  *
  *
- *   this.imap.listMailFolders()
+ * // listMailFolders('*') using a '*' pattern will return all folder names
+ * // listMailFolders('INBOX*') using a pattern with a folder name will list all the subfolder names of that folder that match the pattern
+ *
+ *   this.imap.listMailFolders('*')
  *   .then((res: boolean) => console.log(res))
  *   .catch((error: any) => console.error(error));
  *
@@ -285,7 +385,7 @@ export enum FlagEnum {
  *
  *
  *   this.imap.listMessagesHeadersByConsecutiveNumber('INBOX', 1200, 1280)
- *   .then((res: Message[]) => {
+ *   .then((res: MessageHeaders[]) => {
  *   //  Returns array with messages' headers data
  *    console.log(res)
  *   })
@@ -295,7 +395,7 @@ export enum FlagEnum {
  *
  *
  *   this.imap.listMessagesHeadersByDate('INBOX', 1601503200000, Comparison.GE)
- *   .then((res: Message[]) => {
+ *   .then((res: MessageHeaders[]) => {
  *   // Returns array with messages' headers data
  *    console.log(res)
  *   })
@@ -305,6 +405,22 @@ export enum FlagEnum {
  *
  *
  *   this.imap.getFullMessageData('INBOX', 1205)
+ *   .then((res: Message) => {
+ *   // Returns "Message" object with the full message data including attachments.
+ *    console.log(res)
+ *   })
+ *   .catch((error: any) => {
+ *     console.error(error)
+ *   });
+ *
+ *
+ *  this.imap.getFullMessageDataOnNewSession({
+ *      host: 'imap.gmail.com',
+ *      port: 993,
+ *      connectionType: ConnectionType.TLSSSL  // (iOS ONLY) Encryption type to use. Default set to: TLS/SSL
+ *      user: 'my_email@gmail.com',
+ *      password: 'my-pass'
+ *    }, 'INBOX', 1205)
  *   .then((res: Message) => {
  *   // Returns "Message" object with the full message data including attachments.
  *    console.log(res)
@@ -345,7 +461,7 @@ export enum FlagEnum {
   plugin: 'cordova-plugin-imap',
   pluginRef: 'imap',
   repo: 'https://github.com/aleksandar888/cordova-plugin-imap.git',
-  platforms: ['Android'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Imap extends IonicNativePlugin {
@@ -380,11 +496,20 @@ export class Imap extends IonicNativePlugin {
   /**  Note: Connected to an IMAP service is REQUIRED to be able to get data from the below functions.  */
 
   /**
-   * "listMailFolders()" Lists the name of all the mail folders in the mailbox.
-   * @return {Promise<string[]>} Returns array with all folder names.
+   * Returns an array of Folder names based on a regular expression pattern.
+   *
+   * Example:
+   *
+   * listMailFolders('*') using a '*' pattern will return all folder names
+   * listMailFolders('INBOX*') using a pattern with a folder name will list all the subfolder names that match the pattern
+   *
+   *
+   * "listMailFolders(pattern: string)" Lists the name of mail folders in the mailbox.
+   * @param pattern {string} Regular expression pattern.
+   * @return {Promise<string[]>} Returns array of folder names matching the pattern.
    */
   @Cordova()
-  listMailFolders(): Promise<string[]> {
+  listMailFolders(pattern: string): Promise<string[]> {
     return;
   }
 
@@ -419,10 +544,10 @@ export class Imap extends IonicNativePlugin {
    * @param folderName {string} The name of the desired folder
    * @param start {number} Consecutive number of the first message.
    * @param end {number} Consecutive number of the last message
-   * @return {Promise<Message[]>} Returns array with the messages' headers data.
+   * @return {Promise<MessageHeaders[]>} Returns array with the messages' headers data.
    */
   @Cordova()
-  listMessagesHeadersByConsecutiveNumber(folderName: string, start: number, end: number): Promise<Message[]> {
+  listMessagesHeadersByConsecutiveNumber(folderName: string, start: number, end: number): Promise<MessageHeaders[]> {
     return;
   }
 
@@ -431,25 +556,40 @@ export class Imap extends IonicNativePlugin {
    * @param folderName {string} The name of the desired folder
    * @param dateInMilliseconds {number} Date in milliseconds.
    * @param comparison {Comparison} A comparison operator
-   * @return {Promise<Message[]>} Returns array messages' headers data.
+   * @return {Promise<MessageHeaders[]>} Returns array messages' headers data.
    */
   @Cordova()
   listMessagesHeadersByDate(
     folderName: string,
     dateInMilliseconds: number,
     comparison: Comparison
-  ): Promise<Message[]> {
+  ): Promise<MessageHeaders[]> {
     return;
   }
 
   /**
-   * "getFullMessageData(folderName: string, messageNumber: number)" Returns the full message's data including its attachments.
-   * @param folderName {string} The name the message's folder
+   * "getFullMessageData(folderName: string, messageNumber: number)" Returns the full message data including its attachments.
+   * @param folderName {string} The name the message's folder.
    * @param messageNumber {number} Message's consecutive number.
    * @return {Promise<Message>} Returns "Message" object with full message data.
    */
   @Cordova()
   getFullMessageData(folderName: string, messageNumber: number): Promise<Message> {
+    return;
+  }
+
+  /**
+   *
+   * This function "getFullMessageDataOnNewSession(clientData: Config, folderName: string, messageNumber: number)" downloads the full message data using a
+   * separate session with the server. It is suitable for downloading message data while the app is already connected to a third server.
+   * "getFullMessageDataOnNewSession(clientData: Config, folderName: string, messageNumber: number)" Returns the full message data including its attachments.
+   * @param clientData {Config} Connection configuration.
+   * @param folderName {string} The name the message's folder.
+   * @param messageNumber {number} Message's consecutive number.
+   * @return {Promise<Message>} Returns "Message" object with full message data.
+   */
+  @Cordova()
+  getFullMessageDataOnNewSession(clientData: Config, folderName: string, messageNumber: number): Promise<Message> {
     return;
   }
 
