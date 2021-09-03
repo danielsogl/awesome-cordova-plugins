@@ -5,15 +5,11 @@ export interface FacebookLoginResponse {
   status: string;
 
   authResponse: {
-    session_key: boolean;
-
     accessToken: string;
 
+    data_access_expiration_time: string;
+
     expiresIn: number;
-
-    sig: string;
-
-    secret: string;
 
     userID: string;
   };
@@ -24,7 +20,7 @@ export interface FacebookLoginResponse {
  * @description
  * Use the Facebook Connect plugin to obtain access to the native FB application on iOS and Android.
  *
- * Requires Cordova plugin: `cordova-plugin-facebook4`. For more info, please see the [Facebook Connect](https://github.com/jeduan/cordova-plugin-facebook4).
+ * Requires Cordova plugin: `cordova-plugin-facebook-connect`. For more info, please see the [Facebook Connect](https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect).
  *
  * #### Installation
  *
@@ -39,7 +35,7 @@ export interface FacebookLoginResponse {
  * Then type in the following command in your Terminal, where APP_ID and APP_NAME are the values from the Facebook Developer portal.
  *
  * ```bash
- *  ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"
+ *  ionic cordova plugin add cordova-plugin-facebook-connect --variable APP_ID="123456789" --variable APP_NAME="myApplication"
  * ```
  *
  * After, you'll need to add the native platforms you'll be using to your app in the Facebook Developer portal under your app's Settings:
@@ -107,11 +103,11 @@ export interface FacebookLoginResponse {
  */
 @Plugin({
   pluginName: 'Facebook',
-  plugin: 'cordova-plugin-facebook4',
+  plugin: 'cordova-plugin-facebook-connect',
   pluginRef: 'facebookConnectPlugin',
-  repo: 'https://github.com/jeduan/cordova-plugin-facebook4',
+  repo: 'https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect',
   install:
-    'ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"',
+    'ionic cordova plugin add cordova-plugin-facebook-connect --variable APP_ID="123456789" --variable APP_NAME="myApplication"',
   installVariables: ['APP_ID', 'APP_NAME'],
   platforms: ['Android', 'iOS', 'Browser'],
 })
@@ -153,17 +149,55 @@ export class Facebook extends IonicNativePlugin {
   };
 
   /**
+   * Get the current application ID
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with the current application ID
+   */
+  @Cordova()
+  getApplicationId(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Set the application ID
+   *
+   * @param {string}  id application ID
+   */
+  @Cordova()
+  setApplicationId(id: string): Promise<void> {
+    return;
+  }
+
+  /**
+   * Get the current application name
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with the current application name
+   */
+  @Cordova()
+  getApplicationName(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Set the application name
+   *
+   * @param {string}  name application name
+   */
+  @Cordova()
+  setApplicationName(name: string): Promise<void> {
+    return;
+  }
+
+  /**
    * Login to Facebook to authenticate this app.
    *
    * ```typescript
    * {
    *   status: 'connected',
    *   authResponse: {
-   *     session_key: true,
    *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
+   *     data_access_expiration_time: '1623680244',
    *     expiresIn: 5183979,
-   *     sig: '...',
-   *     secret: '...',
    *     userID: '634565435'
    *   }
    * }
@@ -175,6 +209,60 @@ export class Facebook extends IonicNativePlugin {
    */
   @Cordova()
   login(permissions: string[]): Promise<FacebookLoginResponse> {
+    return;
+  }
+
+  /**
+   * Login to Facebook using Limited Login (iOS Only)
+   *
+   * ```typescript
+   * {
+   *   status: 'connected',
+   *   authResponse: {
+   *     authenticationToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
+   *     nonce: 'foo',
+   *     userID: '634565435'
+   *   }
+   * }
+   *
+   * ```
+   *
+   * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/limited-login/permissions) this app has upon logging in.
+   * @returns {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
+   */
+  @Cordova()
+  loginWithLimitedTracking(permissions: string[]): Promise<FacebookLoginResponse> {
+    return;
+  }
+
+  /**
+   * Check if the user has approved all necessary permissions
+   *
+   * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) to check for
+   * @returns {Promise<string>} Returns a Promise that resolves with a success string if all passed permissions are granted, or an error string if any permissions are not granted
+   */
+  @Cordova()
+  checkHasCorrectPermissions(permissions: string[]): Promise<string> {
+    return;
+  }
+
+  /**
+   * Check if data access has expired for the user
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with a success string if data access is expired, or rejects with an error
+   */
+  @Cordova()
+  isDataAccessExpired(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Reauthorize data access after it has expired
+   *
+   * @returns {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
+   */
+  @Cordova()
+  reauthorizeDataAccess(): Promise<FacebookLoginResponse> {
     return;
   }
 
@@ -203,9 +291,8 @@ export class Facebook extends IonicNativePlugin {
    *   authResponse: {
    *     userID: '12345678912345',
    *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
-   *     session_Key: true,
-   *     expiresIn: '5183738',
-   *     sig: '...'
+   *     data_access_expiration_time: '1623680244',
+   *     expiresIn: '5183738'
    *   },
    *   status: 'connected'
    * }
@@ -231,19 +318,26 @@ export class Facebook extends IonicNativePlugin {
   }
 
   /**
+   * Get profile information for the currently logged in user
+   *
+   * @returns {Promise<any>} Returns a Promise that resolves with success data, or rejects with an error
+   */
+  @Cordova()
+  getCurrentProfile(): Promise<any> {
+    return;
+  }
+
+  /**
    * Show one of various Facebook dialogs. Example of options for a Share dialog:
    *
    * ```
    * {
    *   method: 'share',
-   *   href: 'http://example.com',
-   *   caption: 'Such caption, very feed.',
-   *   description: 'Much description',
-   *   picture: 'http://example.com/image.png'
+   *   href: 'http://example.com'
    * }
    * ```
    *
-   * For more options see the [Cordova plugin docs](https://github.com/jeduan/cordova-plugin-facebook4#show-a-dialog) and the [Facebook docs](https://developers.facebook.com/docs/javascript/reference/FB.ui)
+   * For more options see the [Cordova plugin docs](https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect#show-a-dialog) and the [Facebook docs](https://developers.facebook.com/docs/javascript/reference/FB.ui)
    * @param {Object} options The dialog options
    * @returns {Promise<any>} Returns a Promise that resolves with success data, or rejects with an error
    */
@@ -263,10 +357,41 @@ export class Facebook extends IonicNativePlugin {
    *
    * @param {string}  requestPath Graph API endpoint you want to call
    * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) for this request.
+   * @param {string}  httpMethod HTTP method for the request, one of "GET", "POST", or "DELETE" (default is "GET")
    * @returns {Promise<any>} Returns a Promise that resolves with the result of the request, or rejects with an error
    */
   @Cordova()
-  api(requestPath: string, permissions: string[]): Promise<any> {
+  api(requestPath: string, permissions: string[], httpMethod?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Set Data Processing Options for App events. For more information see [Facebook docs](https://developers.facebook.com/docs/app-events/guides/ccpa)
+   *
+   * @param {string[]}  options List of options, i.e. ["LDU"]
+   * @param {number}  country The numeric identifier for the country
+   * @param {number}  state The numeric identifier for the state
+   */
+  @Cordova()
+  setDataProcessingOptions(options: string[], country?: number, state?: number): Promise<void> {
+    return;
+  }
+
+  /**
+   * Set user data for Advanced Matching. For more information see [Facebook docs](https://developers.facebook.com/docs/app-events/advanced-matching/)
+   *
+   * @param {Object}  userData An object containing data about the user
+   */
+  @Cordova()
+  setUserData(userData: Object): Promise<void> {
+    return;
+  }
+
+  /**
+   * Clear user data. For more information see [Facebook docs](https://developers.facebook.com/docs/app-events/advanced-matching/)
+   */
+  @Cordova()
+  clearUserData(): Promise<void> {
     return;
   }
 
@@ -287,20 +412,54 @@ export class Facebook extends IonicNativePlugin {
   }
 
   /**
+   * Enable or disable the auto log app event feature - https://developers.facebook.com/docs/app-events/gdpr-compliance/
+   *
+   * @param {boolean}  enabled value to be set
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  setAutoLogAppEventsEnabled(enabled: boolean): Promise<void> {
+    return;
+  }
+
+  /**
+   * Enable or disable collection of advertiser-id
+   *
+   * @param {boolean}  enabled value to be set
+   */
+  @Cordova()
+  setAdvertiserIDCollectionEnabled(enabled: boolean): Promise<void> {
+    return;
+  }
+
+  /**
+   * Enable or disable advertiser tracking (iOS Only)
+   *
+   * @param {boolean}  enabled value to be set
+   */
+  @Cordova()
+  setAdvertiserTrackingEnabled(enabled: boolean): Promise<void> {
+    return;
+  }
+
+  /**
    * Log a purchase. For more information see the Events section above.
    *
    * @param {number}  value Value of the purchase.
    * @param {string}  currency The currency, as an [ISO 4217 currency code](http://en.wikipedia.org/wiki/ISO_4217)
+   * @param {Object}  params An object containing extra data to log with the event
    * @returns {Promise<any>}
    */
   @Cordova()
-  logPurchase(value: number, currency: string): Promise<any> {
+  logPurchase(value: number, currency: string, params?: Object): Promise<any> {
     return;
   }
 
   /**
    * Returns the deferred app link
-   * @returns {Promise<any>}
+   * @returns {Promise<string>} Returns a Promise that resolves with the deep link
    */
   @Cordova()
   getDeferredApplink(): Promise<string> {

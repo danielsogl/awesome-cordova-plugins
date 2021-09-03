@@ -48,7 +48,6 @@ const webpackConfig: webpack.Configuration = {
     new webpack.ProvidePlugin({
       __extends: ['tslib', '__extends'],
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),

@@ -7,6 +7,13 @@ export interface IAPProductOptions {
   type: string;
 }
 
+export interface IRefeshResult {
+  cancelled(fn: () => void): void;
+  failed(fn: () => void): void;
+  completed(fn: () => void): void;
+  finished(fn: () => void): void;
+}
+
 export type IAPProducts = IAPProduct[] & {
   /**
    * Get product by ID
@@ -81,7 +88,7 @@ export interface IAPProduct {
 
   additionalData?: any;
 
-  transaction?: any;
+  transaction?: PlayStoreReceipt | AppStoreReceipt;
 
   /**
    * Call `product.finish()` to confirm to the store that an approved order has been delivered.
@@ -189,6 +196,22 @@ export interface IAPProductEvents {
   /** Called when content download has successfully completed. */
   downloaded: (callback: IAPQueryCallback) => IAPProductEvents;
 }
+
+export type PlayStoreReceipt = {
+  id: string;
+  purchaseState: number;
+  purchaseToken: string;
+  receipt: string;
+  signature: string;
+  type: 'android-playstore';
+};
+
+export type AppStoreReceipt = {
+  id: string;
+  appStoreReceipt: string;
+  original_transaction_id: string;
+  type: 'ios-appstore';
+};
 
 /**
  * @hidden
@@ -865,7 +888,9 @@ export class InAppPurchase2 extends IonicNativePlugin {
    * and in the callback `product.finish()` should be called.
    */
   @Cordova({ sync: true })
-  refresh(): void {}
+  refresh(): IRefeshResult {
+    return;
+  }
 
   /** Lightweight method like refresh but do not relogin user */
   @Cordova({ sync: true })
@@ -874,4 +899,12 @@ export class InAppPurchase2 extends IonicNativePlugin {
   /** Opens the Manage Subscription page (AppStore, Play, Microsoft, ...). */
   @Cordova({ sync: true })
   manageSubscriptions(): void {}
+
+  /** Opens the Code Redemption Sheet on iOS. (AppStore). */
+  @Cordova({ sync: true })
+  redeem(): void {}
+
+  /** Opens the Manage Billing page (AppStore, Play, Microsoft, ...), where the user can update his/her payment methods. */
+  @Cordova({ sync: true })
+  manageBilling(): void {}
 }

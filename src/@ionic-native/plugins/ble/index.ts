@@ -264,6 +264,27 @@ export class BLE extends IonicNativePlugin {
   }
 
   /**
+   * Set device pin.
+   * @usage
+   * ```
+   *   BLE.setPin(pin).subscribe(success => {
+   *     console.log(success);
+   *   },
+   *   failure => {
+   *     console.log('failure');
+   *   });
+   * ```
+   * @param {string} pin Pin of the device as a string
+   * @return {Observable<any>} Returns an Observable that notifies of success/failure.
+   */
+  @Cordova({
+    observable: true,
+  })
+  setPin(pin: string): Observable<any> {
+    return;
+  }
+
+  /**
    * Connect to a peripheral.
    * @usage
    * ```

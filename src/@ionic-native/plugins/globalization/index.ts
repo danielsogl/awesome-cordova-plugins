@@ -109,9 +109,7 @@ export class Globalization extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse',
   })
-  getDatePattern(
-    options: GlobalizationOptions
-  ): Promise<{
+  getDatePattern(options: GlobalizationOptions): Promise<{
     pattern: string;
     timezone: string;
     iana_timezone: string;
@@ -187,9 +185,7 @@ export class Globalization extends IonicNativePlugin {
   @Cordova({
     callbackOrder: 'reverse',
   })
-  getNumberPattern(options: {
-    type: string;
-  }): Promise<{
+  getNumberPattern(options: { type: string }): Promise<{
     pattern: string;
     symbol: string;
     fraction: number;
@@ -208,9 +204,7 @@ export class Globalization extends IonicNativePlugin {
    * @returns {Promise<{ pattern: string, code: string, fraction: number, rounding: number, decimal: number, grouping: string }>}
    */
   @Cordova()
-  getCurrencyPattern(
-    currencyCode: string
-  ): Promise<{
+  getCurrencyPattern(currencyCode: string): Promise<{
     pattern: string;
     code: string;
     fraction: number;
