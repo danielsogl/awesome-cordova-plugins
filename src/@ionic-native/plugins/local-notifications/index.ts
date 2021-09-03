@@ -799,14 +799,22 @@ export class LocalNotifications extends IonicNativePlugin {
   /**
    * Sets a callback for a specific event
    * @param eventName {string} The name of the event. Available events: schedule, trigger, click, update, clear, clearall, cancel, cancelall. Custom event names are possible for actions
+   * * @param callback {function} The function to be exec as callback.
    * @return {Observable}
    */
-  @Cordova({
-    observable: true,
-    clearFunction: 'un',
-    clearWithArgs: true,
-  })
-  on(eventName: string): Observable<any> {
+  @Cordova()
+  on(eventName: string, callback: (...args: any[]) => void): void {
+    return;
+  }
+
+  /**
+   * Sets a callback for a specific event
+   * @param eventName {string} The name of the event. Available events: schedule, trigger, click, update, clear, clearall, cancel, cancelall. Custom event names are possible for actions
+   * @param callback {function} The function to be exec as callback.
+   * @return {Observable}
+   */
+  @Cordova()
+  un(eventName: string, callback?: (...args: any[]) => void): void {
     return;
   }
 
