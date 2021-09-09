@@ -1,3 +1,63 @@
+# [5.36.0](https://github.com/ionic-team/ionic-native/compare/v5.35.0...v5.36.0) (2021-08-20)
+
+
+### Bug Fixes
+
+* **barcode-scanner:** add `saveHistory` option ([#3713](https://github.com/ionic-team/ionic-native/issues/3713)) ([39ad4d1](https://github.com/ionic-team/ionic-native/commit/39ad4d13aa977ec744dfdf780ca0fa869a36f736)), closes [/github.com/phonegap/phonegap-plugin-barcodescanner/blob/v8.1.0/src/android/com/phonegap/plugins/barcodescanner/BarcodeScanner.java#L52](https://github.com//github.com/phonegap/phonegap-plugin-barcodescanner/blob/v8.1.0/src/android/com/phonegap/plugins/barcodescanner/BarcodeScanner.java/issues/L52)
+* **purchases:** remove static for logIn, logOut methods ([#3709](https://github.com/ionic-team/ionic-native/issues/3709)) ([c6b65e9](https://github.com/ionic-team/ionic-native/commit/c6b65e9715a9086dfb4325957457c1fe3be217f4))
+
+
+### Features
+
+* **adjust:** update wrapper for Adjust Cordova SDK v4.29.0 ([#3720](https://github.com/ionic-team/ionic-native/issues/3720)) ([68af9eb](https://github.com/ionic-team/ionic-native/commit/68af9eb525959d9ee9165471939baa8b3ceed2dc))
+* **all-in-one-sdk:** add assist interface ([#3717](https://github.com/ionic-team/ionic-native/issues/3717)) ([8ebdc6e](https://github.com/ionic-team/ionic-native/commit/8ebdc6e563caa02bb7cf77b95a680876b052bdc1))
+* **facebook:** plugin updates ([#3721](https://github.com/ionic-team/ionic-native/issues/3721)) ([6f14bce](https://github.com/ionic-team/ionic-native/commit/6f14bce6ce2f27ebbe483c5578d0bfb46abad2e0))
+* **in-app-update:** add plugin ([#3714](https://github.com/ionic-team/ionic-native/issues/3714)) ([eb8d252](https://github.com/ionic-team/ionic-native/commit/eb8d2522b3ca9b585cde6e77c1a3f49c3e49b338))
+* **play-install-referrer:** add plugin ([#3718](https://github.com/ionic-team/ionic-native/issues/3718)) ([9a1b964](https://github.com/ionic-team/ionic-native/commit/9a1b96462d2e854727935da65e3df06987438ceb))
+
+
+
+# [5.35.0](https://github.com/ionic-team/ionic-native/compare/v5.34.0...v5.35.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* **checkout:** Update npm cordova plugin name ([#3694](https://github.com/ionic-team/ionic-native/issues/3694)) ([104cad1](https://github.com/ionic-team/ionic-native/commit/104cad14a31437816b5e272d5de4550eb1452311))
+* **purchases:** remove duplicated imports ([1ff54f6](https://github.com/ionic-team/ionic-native/commit/1ff54f64da88d12b6f2bd48ef1d6b462fa6e1665))
+* **webserver:** update to maintained repo ([#3696](https://github.com/ionic-team/ionic-native/issues/3696)) ([d506795](https://github.com/ionic-team/ionic-native/commit/d50679571598405893d02911e84b0f283d525e5f))
+
+
+### Features
+
+* **approov-advanced-http:** add plugin ([#3682](https://github.com/ionic-team/ionic-native/issues/3682)) ([b206b42](https://github.com/ionic-team/ionic-native/commit/b206b42f85c6603ccb125f57ff5c0cc839d78e2c))
+* **CustomUiSDK:** added app invoke method ([#3699](https://github.com/ionic-team/ionic-native/issues/3699)) ([72335bf](https://github.com/ionic-team/ionic-native/commit/72335bfd59e061270a62dae33c9a258e8f0d3f7d))
+* **hyper-track:** add interfaces to access new cordova plugin APIs ([#3698](https://github.com/ionic-team/ionic-native/issues/3698)) ([aae484d](https://github.com/ionic-team/ionic-native/commit/aae484dfe96bf36ece91f7aca617faa3c0650e28))
+* **pollfish:** add plugin ([#3693](https://github.com/ionic-team/ionic-native/issues/3693)) ([8a00ccc](https://github.com/ionic-team/ionic-native/commit/8a00ccc43bf8aa0e90737e9ed8180be6f8005899))
+* **purchases:** update to 2.3.0, add identity v3 ([#3702](https://github.com/ionic-team/ionic-native/issues/3702)) ([93b1e11](https://github.com/ionic-team/ionic-native/commit/93b1e1189849715af0f823675dda4c4587b7ed13))
+* **unvired-cordova-sdk:** add ability to receive the JWT token ([#3671](https://github.com/ionic-team/ionic-native/issues/3671)) ([50d9110](https://github.com/ionic-team/ionic-native/commit/50d91103cc53afd91c42c78e549bf17e5d00dac7))
+* **urbanairship:** add new methods: onDeepLink, onRegistration, onInboxUpdated, onShowInbox, onPushReceived, onNotificationOpened, onNotificationOptInStatus; fix return type for reattach method ([#3705](https://github.com/ionic-team/ionic-native/issues/3705)) ([815d1bb](https://github.com/ionic-team/ionic-native/commit/815d1bb1f8c6128203d2b0e2be70765718f88d7d))
+
+
+
+# [5.34.0](https://github.com/ionic-team/ionic-native/compare/v5.33.1...v5.34.0) (2021-06-29)
+
+
+### Bug Fixes
+
+* **android-full-screen:** add correct return type ([#3677](https://github.com/ionic-team/ionic-native/issues/3677)) ([c5d6066](https://github.com/ionic-team/ionic-native/commit/c5d606633e0ce69c94eb99d205c655c5a0d94523)), closes [/github.com/mesmotronic/cordova-plugin-fullscreen/blob/master/src/android/com/mesmotronic/plugins/FullScreenPlugin.java#L129](https://github.com//github.com/mesmotronic/cordova-plugin-fullscreen/blob/master/src/android/com/mesmotronic/plugins/FullScreenPlugin.java/issues/L129)
+* **mobile-messaging:** revision of optional parameters ([#3667](https://github.com/ionic-team/ionic-native/issues/3667)) ([944d251](https://github.com/ionic-team/ionic-native/commit/944d25147f2c0b89d0e7acb1fa1a6fe7fa4941f7))
+* **smartlook:** fix SmartlookResetSession.resetUser type to boolean ([#3692](https://github.com/ionic-team/ionic-native/issues/3692)) ([5a42e8c](https://github.com/ionic-team/ionic-native/commit/5a42e8cadfc0d5269c4e06149c2d1ecf4ad721f7))
+
+
+### Features
+
+* **branch-io:** add sendBranchEvent method; deprecated sendCommerceEvent ([#3675](https://github.com/ionic-team/ionic-native/issues/3675)) ([4f13426](https://github.com/ionic-team/ionic-native/commit/4f13426a6dd820880f21c6e52a30a4db5f0c5c0a))
+* **checkout:** add plugin ([#3687](https://github.com/ionic-team/ionic-native/issues/3687)) ([0dcbace](https://github.com/ionic-team/ionic-native/commit/0dcbace8223c5c9a4c3474c7bff291e00da06b0b))
+* **in-app-purchase-2:** added manageBilling method ([#3690](https://github.com/ionic-team/ionic-native/issues/3690)) ([383a884](https://github.com/ionic-team/ionic-native/commit/383a88463a16b47da8aeb79707f342411028f889))
+* **paytabs:** add plugin ([#3678](https://github.com/ionic-team/ionic-native/issues/3678)) ([9dd719b](https://github.com/ionic-team/ionic-native/commit/9dd719bb07a1278f38e188fa075283e54e0654d1))
+
+
+
 ## [5.33.1](https://github.com/ionic-team/ionic-native/compare/v5.33.0...v5.33.1) (2021-05-28)
 
 

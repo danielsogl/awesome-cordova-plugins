@@ -57,7 +57,7 @@ export class KeychainTouchId extends IonicNativePlugin {
 
   /**
    * Opens the fingerprint dialog, for the given key, showing an additional message. Promise will resolve
-   * with the password stored in keychain or will resolve an error code, where -1 indicated not available.
+   * with the password stored in keychain or will reject with an error code, where "-1" indicated not available.
    * @param key {string} the key you want to retrieve from keychain
    * @param message {string} a message to the user
    * @return {Promise<string>} Returns a promise that resolves when the key value is successfully retrieved or an error

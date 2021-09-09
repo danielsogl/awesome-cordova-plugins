@@ -5,15 +5,11 @@ export interface FacebookLoginResponse {
   status: string;
 
   authResponse: {
-    session_key: boolean;
-
     accessToken: string;
 
+    data_access_expiration_time: string;
+
     expiresIn: number;
-
-    sig: string;
-
-    secret: string;
 
     userID: string;
   };
@@ -153,17 +149,55 @@ export class Facebook extends IonicNativePlugin {
   };
 
   /**
+   * Get the current application ID
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with the current application ID
+   */
+  @Cordova()
+  getApplicationId(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Set the application ID
+   *
+   * @param {string}  id application ID
+   */
+  @Cordova()
+  setApplicationId(id: string): Promise<void> {
+    return;
+  }
+
+  /**
+   * Get the current application name
+   *
+   * @returns {Promise<string>} Returns a Promise that resolves with the current application name
+   */
+  @Cordova()
+  getApplicationName(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Set the application name
+   *
+   * @param {string}  name application name
+   */
+  @Cordova()
+  setApplicationName(name: string): Promise<void> {
+    return;
+  }
+
+  /**
    * Login to Facebook to authenticate this app.
    *
    * ```typescript
    * {
    *   status: 'connected',
    *   authResponse: {
-   *     session_key: true,
    *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
+   *     data_access_expiration_time: '1623680244',
    *     expiresIn: 5183979,
-   *     sig: '...',
-   *     secret: '...',
    *     userID: '634565435'
    *   }
    * }
@@ -257,9 +291,8 @@ export class Facebook extends IonicNativePlugin {
    *   authResponse: {
    *     userID: '12345678912345',
    *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
-   *     session_Key: true,
-   *     expiresIn: '5183738',
-   *     sig: '...'
+   *     data_access_expiration_time: '1623680244',
+   *     expiresIn: '5183738'
    *   },
    *   status: 'connected'
    * }
@@ -300,10 +333,7 @@ export class Facebook extends IonicNativePlugin {
    * ```
    * {
    *   method: 'share',
-   *   href: 'http://example.com',
-   *   caption: 'Such caption, very feed.',
-   *   description: 'Much description',
-   *   picture: 'http://example.com/image.png'
+   *   href: 'http://example.com'
    * }
    * ```
    *
@@ -332,6 +362,36 @@ export class Facebook extends IonicNativePlugin {
    */
   @Cordova()
   api(requestPath: string, permissions: string[], httpMethod?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Set Data Processing Options for App events. For more information see [Facebook docs](https://developers.facebook.com/docs/app-events/guides/ccpa)
+   *
+   * @param {string[]}  options List of options, i.e. ["LDU"]
+   * @param {number}  country The numeric identifier for the country
+   * @param {number}  state The numeric identifier for the state
+   */
+  @Cordova()
+  setDataProcessingOptions(options: string[], country?: number, state?: number): Promise<void> {
+    return;
+  }
+
+  /**
+   * Set user data for Advanced Matching. For more information see [Facebook docs](https://developers.facebook.com/docs/app-events/advanced-matching/)
+   *
+   * @param {Object}  userData An object containing data about the user
+   */
+  @Cordova()
+  setUserData(userData: Object): Promise<void> {
+    return;
+  }
+
+  /**
+   * Clear user data. For more information see [Facebook docs](https://developers.facebook.com/docs/app-events/advanced-matching/)
+   */
+  @Cordova()
+  clearUserData(): Promise<void> {
     return;
   }
 
@@ -399,7 +459,7 @@ export class Facebook extends IonicNativePlugin {
 
   /**
    * Returns the deferred app link
-   * @returns {Promise<any>}
+   * @returns {Promise<string>} Returns a Promise that resolves with the deep link
    */
   @Cordova()
   getDeferredApplink(): Promise<string> {

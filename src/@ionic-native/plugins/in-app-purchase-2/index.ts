@@ -903,4 +903,8 @@ export class InAppPurchase2 extends IonicNativePlugin {
   /** Opens the Code Redemption Sheet on iOS. (AppStore). */
   @Cordova({ sync: true })
   redeem(): void {}
+
+  /** Opens the Manage Billing page (AppStore, Play, Microsoft, ...), where the user can update his/her payment methods. */
+  @Cordova({ sync: true })
+  manageBilling(): void {}
 }

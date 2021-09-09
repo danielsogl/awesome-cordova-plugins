@@ -60,6 +60,7 @@ export class AdjustConfig {
   private info4: number = null;
   private processName: string = null; // Android only
   private preinstallTrackingEnabled: boolean = null; // Android only
+  private preinstallFilePath: string = null; // Android only
   private allowiAdInfoReading: boolean = null; // iOS only
   private allowIdfaReading: boolean = null; // iOS only
   private allowAdServicesInfoReading: boolean = null; // iOS only
@@ -70,6 +71,7 @@ export class AdjustConfig {
   private sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void = null;
   private sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void = null;
   private deferredDeeplinkCallback: (uri: string) => void = null;
+  private conversionValueUpdatedCallback: (conversionValue: number) => void = null;
 
   constructor(appToken: string, environment: AdjustEnvironment) {
     this.appToken = appToken;
@@ -136,6 +138,10 @@ export class AdjustConfig {
     this.preinstallTrackingEnabled = preinstallTrackingEnabled;
   }
 
+  setPreinstallFilePath(preinstallFilePath: string) {
+    this.preinstallFilePath = preinstallFilePath;
+  }
+
   setAllowiAdInfoReading(allowiAdInfoReading: boolean) {
     this.allowiAdInfoReading = allowiAdInfoReading;
   }
@@ -174,6 +180,10 @@ export class AdjustConfig {
     this.deferredDeeplinkCallback = deferredDeeplinkCallback;
   }
 
+  setConversionValueUpdatedCallbackListener(conversionValueUpdatedCallback: (conversionValue: number) => void) {
+    this.conversionValueUpdatedCallback = conversionValueUpdatedCallback;
+  }
+
   private getAttributionCallback() {
     return this.attributionCallback;
   }
@@ -196,6 +206,10 @@ export class AdjustConfig {
 
   private getDeferredDeeplinkCallback() {
     return this.deferredDeeplinkCallback;
+  }
+
+  private getConversionValueUpdatedCallback() {
+    return this.conversionValueUpdatedCallback;
   }
 
   private hasAttributionListener() {
@@ -309,6 +323,53 @@ export class AdjustThirdPartySharing {
   }
 }
 
+export class AdjustAdRevenue {
+  private source: string;
+  private revenue: number;
+  private currency: string;
+  private adImpressionsCount: number;
+  private adRevenueNetwork: string;
+  private adRevenueUnit: string;
+  private adRevenuePlacement: string;
+  private callbackParameters: string[] = [];
+  private partnerParameters: string[] = [];
+
+  constructor(source: string) {
+    this.source = source;
+  }
+
+  setRevenue(revenue: number, currency: string): void {
+    this.revenue = revenue;
+    this.currency = currency;
+  }
+
+  addCallbackParameter(key: string, value: string): void {
+    this.callbackParameters.push(key);
+    this.callbackParameters.push(value);
+  }
+
+  addPartnerParameter(key: string, value: string): void {
+    this.partnerParameters.push(key);
+    this.partnerParameters.push(value);
+  }
+
+  setAdImpressionsCount(adImpressionsCount: number) {
+    this.adImpressionsCount = adImpressionsCount;
+  }
+
+  setAdRevenueNetwork(adRevenueNetwork: string) {
+    this.adRevenueNetwork = adRevenueNetwork;
+  }
+
+  setAdRevenueUnit(adRevenueUnit: string) {
+    this.adRevenueUnit = adRevenueUnit;
+  }
+
+  setAdRevenuePlacement(adRevenuePlacement: string) {
+    this.adRevenuePlacement = adRevenuePlacement;
+  }
+}
+
 export interface AdjustAttribution {
   trackerToken: string;
   trackerName: string;
@@ -373,30 +434,18 @@ export enum AdjustLogLevel {
 }
 
 export enum AdjustUrlStrategy {
-  India = 'India',
-  China = 'China',
+  India = 'india',
+  China = 'china',
+  DataResidencyEU = 'data-residency-eu',
+  DataResidencyTR = 'data-residency-tr',
+  DataResidencyUS = 'data-residency-us',
 }
 
 export enum AdjustAdRevenueSource {
+  AdRevenueSourceAppLovinMAX = 'applovin_max_sdk',
   AdRevenueSourceMopub = 'mopub',
-  AdRevenueSourceAdmob = 'admob',
-  AdRevenueSourceFbNativeAd = 'facebook_native_ad',
-  AdRevenueSourceFbAudienceNetwork = 'facebook_audience_network',
-  AdRevenueSourceIronsource = 'ironsource',
-  AdRevenueSourceFyber = 'fyber',
-  AdRevenueSourceAerserv = 'aerserv',
-  AdRevenueSourceAppodeal = 'appodeal',
-  AdRevenueSourceAdincube = 'adincube',
-  AdRevenueSourceFusePowered = 'fusepowered',
-  AdRevenueSourceAddapptr = 'addapptr',
-  AdRevenueSourceMillennialMediation = 'millennial_mediation',
-  AdRevenueSourceFlurry = 'flurry',
-  AdRevenueSourceAdmost = 'admost',
-  AdRevenueSourceDeltadna = 'deltadna',
-  AdRevenueSourceUpsight = 'upsight',
-  AdRevenueSourceUnityAds = 'unityads',
-  AdRevenueSourceAdtoapp = 'adtoapp',
-  AdRevenueSourceTapdaq = 'tapdaq',
+  AdRevenueSourceAdMob = 'admob_sdk',
+  AdRevenueSourceIronsource = 'ironsource_sdk',
 }
 
 /**
@@ -408,7 +457,7 @@ export enum AdjustAdRevenueSource {
  *
  * @usage
  * ```typescript
- *  import { Adjust, AdjustConfig, AdjustEnvironment } from '@ionic-native/adjust';
+ *  import { Adjust, AdjustConfig, AdjustEnvironment } from '@ionic-native/adjust/ngx';
  *
  *  constructor(private adjust: Adjust) { }
  *
@@ -432,6 +481,7 @@ export enum AdjustAdRevenueSource {
  * AdjustAppStoreSubscription
  * AdjustPlayStoreSubscription
  * AdjustThirdPartySharing
+ * AdjustAdReenue
  * @enums
  * AdjustEnvironment
  * AdjustLogLevel
@@ -487,8 +537,17 @@ export class Adjust extends IonicNativePlugin {
    * @param {AdjustAdRevenueSource} source Ad revenue source
    * @param {string} payload Ad revenue JSON string payload
    */
+  trackAdRevenue(source: AdjustAdRevenueSource, payload: string): void;
+
+  /**
+   * This method tracks ad revenue data
+   * @param {AdjustAdRevenue} adRevenue Adjust ad revenue object
+   */
+  trackAdRevenue(adRevenue: AdjustAdRevenue): void;
+
+  // And typescript hides this, so the client will be able call only methods above
   @Cordova({ sync: true })
-  trackAdRevenue(source: AdjustAdRevenueSource, payload: string): void {}
+  trackAdRevenue(sourceOrAdRevenue: any, payload?: any): void {}
 
   /**
    * This method tracks measurement consent choice
