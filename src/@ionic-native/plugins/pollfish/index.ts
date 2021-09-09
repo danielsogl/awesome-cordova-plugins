@@ -1,6 +1,49 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, CordovaProperty, IonicNativePlugin } from '@ionic-native/core';
 
+export interface Builder {
+  indicatorPosition(indicatorPosition: number): Builder;
+
+  indicatorPadding(indicatorPadding: number): Builder;
+
+  offerwallMode(offerwallMode: boolean): Builder;
+
+  releaseMode(releaseMode: boolean): Builder;
+
+  rewardMode(rewardMode: boolean): Builder;
+
+  requestUUID(requestUUID: string): Builder;
+
+  userProperties(userProperties: any): Builder;
+
+  clickId(clickId: string): Builder;
+
+  signature(signature: string): Builder;
+
+  rewardInfo(rewardInfo: any): Builder;
+
+  build(): Params;
+}
+
+export interface Params {
+  androidApiKey: string;
+  iOSApiKey: string;
+  indicatorPosition: number;
+  indicatorPadding: number;
+  offerwallMode: boolean;
+  releaseMode: boolean;
+  rewardMode: boolean;
+  requestUUID?: string;
+  userProperties?: any;
+  clickId?: string;
+  rewardInfo?: any;
+  signature?: string;
+}
+
+export interface BuilderCtor {
+  new (androidApiKey: string, iOSApiKey: string): Builder;
+}
+
 /**
  * @name Pollfish
  * @description
@@ -8,23 +51,33 @@ import { Plugin, Cordova, CordovaProperty, IonicNativePlugin } from '@ionic-nati
  *
  * @usage
  * ```typescript
- * import { Pollfish } from '@ionic-native/pollfish/ngx';
+ * import { Pollfish } from '@ionic-native/pollfish';
  *
  *
  * constructor(private pollfish: Pollfish) { }
  *
  * ...
  *
- * this.pollfish.init(false, false, 'YOUR_API_KEY', 1, 8, 'REQUEST_UUID', false);
- *
- * this.pollfish.initWithUserAttributes(false, false, 'YOUR_API_KEY', 1, 8, 'REQUEST_UUID', false, {
- *  'gender': '1',
+ * val params = this.pollfish.Builder('ANDROID_API_KEY', 'IOS_API_KEY')
+ *  .indicatorPosition(this.pollfish.Position.TOP_LEFT)
+ *  .indiactorPadding(8)
+ *  .rewardMode(true)
  *  ...
+ *  .build();
+ *
+ * this.pollfish.init(params);
+ *
+ * this.isPollfishPanelOpen((result) => {
+ *  console.log(result);
  * });
  *
- * this.pollfish.showPollfish();
+ * this.isPollfishPresent((result) => {
+ *  console.log(result);
+ * });
  *
- * this.pollfish.hidePollfish();
+ * this.pollfish.show();
+ *
+ * this.pollfish.hide();
  *
  * // Event Listeners
  *
@@ -60,8 +113,8 @@ import { Plugin, Cordova, CordovaProperty, IonicNativePlugin } from '@ionic-nati
  */
 @Plugin({
   pluginName: 'Pollfish',
-  plugin: 'com.pollfish.cordova_plugin',
-  pluginRef: 'pollfishplugin',
+  plugin: 'cordova-plugin-pollfish',
+  pluginRef: 'pollfish',
   repo: 'https://github.com/pollfish/cordova-plugin-pollfish',
   platforms: ['Android', 'iOS'],
 })
@@ -89,82 +142,58 @@ export class Pollfish extends IonicNativePlugin {
   };
 
   /**
-   * Function to init Pollfish
-   * @param releaseMode {boolean}
-   * @param rewardMode {boolean}
-   * @param apiKey {string}
-   * @param position {number}
-   * @param padding {number}
-   * @param requestUUID {string}
-   * @param offerwallMode {boolean}
+   * Function to initialize Pollfish
+   * @param {Params} params configuration params object
    */
   @Cordova()
-  init(
-    releaseMode: boolean,
-    rewardMode: boolean,
-    apiKey: string,
-    position: number,
-    padding: number,
-    requestUUID: string,
-    offerwallMode: boolean
-  ): any {
-    return;
-  }
-
-  /**
-   * Function to init Pollfish with user attributes
-   * @param releaseMode {boolean}
-   * @param rewardMode {boolean}
-   * @param apiKey {string}
-   * @param position {number}
-   * @param padding {number}
-   * @param requestUUID {string}
-   * @param offerwallMode {boolean}
-   * @param userAttributes {Json}
-   */
-
-  @Cordova()
-  initWithUserAttributes(
-    releaseMode: boolean,
-    rewardMode: boolean,
-    apiKey: string,
-    position: number,
-    padding: number,
-    requestUUID: string,
-    offerwallMode: boolean,
-    userAttributes: {}
-  ) {
+  init(params: Params) {
     return;
   }
 
   /**
    * Function to manually show Pollfish
    */
-
   @Cordova()
-  showPollfish() {
+  show() {
     return;
   }
 
   /**
    * Function to manually hide Pollfish
    */
-
   @Cordova()
-  hidePollfish() {
+  hide() {
+    return;
+  }
+
+  /**
+   * Function to check if Pollfish surveys are available on your device
+   * @param {(result: boolean) => void} callback
+   */
+  isPollfishPresent(callback: (result: boolean) => void) {
+    return;
+  }
+
+  /**
+   * Function to check if Pollfish panel is open
+   * @param {(result: boolean) => void} callback
+   */
+  isPollfishPanelOpen(callback: (result: boolean) => void) {
     return;
   }
 
   /**
    * Function to set event callbacks
-   * @param eventName
-   * @param callback
+   * @param {string} eventName
+   * @param {{(any?) => void)} callback
    */
-
   @Cordova({
     sync: true,
   })
   setEventCallback(eventName: string, callback: (info?: any) => void) {
     return;
   }
+
+  @CordovaProperty()
+  Builder: BuilderCtor;
 }
