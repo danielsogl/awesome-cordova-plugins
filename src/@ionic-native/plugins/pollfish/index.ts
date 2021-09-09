@@ -168,7 +168,7 @@ export class Pollfish extends IonicNativePlugin {
 
   /**
    * Function to check if Pollfish surveys are available on your device
-   * @param {(result: boolean) => void} callback
+   * @param {((result: boolean) => void)} callback
    */
   isPollfishPresent(callback: (result: boolean) => void) {
     return;
@@ -176,7 +176,7 @@ export class Pollfish extends IonicNativePlugin {
 
   /**
    * Function to check if Pollfish panel is open
-   * @param {(result: boolean) => void} callback
+   * @param {((result: boolean) => void)} callback
    */
   isPollfishPanelOpen(callback: (result: boolean) => void) {
     return;
@@ -185,7 +185,7 @@ export class Pollfish extends IonicNativePlugin {
   /**
    * Function to set event callbacks
    * @param {string} eventName
-   * @param {{(any?) => void)} callback
+   * @param {((any?) => void)} callback
    */
   @Cordova({
     sync: true,
