@@ -360,6 +360,27 @@ export class BLE extends IonicNativePlugin {
   }
 
   /**
+   * Request connection priority change.
+   * When connecting to a peripheral android can request for the connection priority for better communication.
+   * Android only.
+   * @usage
+   * ```
+   *  BLE.requestConnectionPriority('12:34:56:78:9A:BC', 'high').then(() => {
+   *    console.log('Connection priority change was successful');
+   *  }, error => {
+   *    console.log('Connection priority change failed');
+   *  });
+   * ```
+   * @param {string} deviceId UUID or MAC address of the peripheral
+   * @param {string} priority The wanted priority. Can be "high", "balanced" or "low"
+   * @return {Promise<any>} Returns a Promise
+   */
+  @Cordova()
+  requestConnectionPriority(deviceId: string, priority: string): Promise<any> {
+    return;
+  }
+
+  /**
    * Refresh Device Cache
    * This method may fix a issue of old cached services and characteristics.
    * NOTE Since this uses an undocumented API it's not guaranteed to work.
