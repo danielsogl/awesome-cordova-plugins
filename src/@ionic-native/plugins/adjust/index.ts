@@ -61,6 +61,7 @@ export class AdjustConfig {
   private processName: string = null; // Android only
   private preinstallTrackingEnabled: boolean = null; // Android only
   private preinstallFilePath: string = null; // Android only
+  private oaidReadingEnabled: boolean = null; // Android only
   private allowiAdInfoReading: boolean = null; // iOS only
   private allowIdfaReading: boolean = null; // iOS only
   private allowAdServicesInfoReading: boolean = null; // iOS only
@@ -140,6 +141,10 @@ export class AdjustConfig {
 
   setPreinstallFilePath(preinstallFilePath: string) {
     this.preinstallFilePath = preinstallFilePath;
+  }
+
+  setOaidReadingEnabled(enableOaidReading: boolean) {
+    this.oaidReadingEnabled = enableOaidReading;
   }
 
   setAllowiAdInfoReading(allowiAdInfoReading: boolean) {
