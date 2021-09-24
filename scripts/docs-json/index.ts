@@ -27,31 +27,42 @@ const typedoc = new Application();
 typedoc.options.addReader(new TypeDoc.TSConfigReader());
 typedoc.options.addReader(new TypeDoc.TypeDocReader());
 
-typedoc.bootstrap({
-  mode: 'modules',
-  ignoreCompilerErrors: true,
-});
-
 run(pluginsDir);
 
 async function run(pluginsDir: string) {
-  const typedocData = await generateTypedoc(pluginsDir);
-  const modules = typedocData.children.filter(isModule);
-  const plugins = modules.filter(hasPlugin).map(processPlugin);
-  await fs.outputJson(resolve(__dirname, 'plugins.json'), plugins, {
-    spaces: 2,
-  });
+  try {
+    const typedocData = await generateTypedoc(pluginsDir);
+    const modules = typedocData.children.filter(isModule);
+    const plugins = modules.filter(hasPlugin).map(processPlugin);
+    await fs.outputJson(resolve(__dirname, 'plugins.json'), plugins, {
+      spaces: 2,
+    });
+  } catch (e) {
+    console.error('Unable to generate typedoc', e);
+  }
 }
 
 async function generateTypedoc(root: string, outputPath = typedocTmp) {
   const pluginDirs = await fs.readdir(root);
   const paths = pluginDirs.map(dir => resolve(root, dir, 'index.ts'));
-  typedoc.generateJson(paths, outputPath);
+  typedoc.bootstrap({
+    /*
+    mode: 'modules',
+    ignoreCompilerErrors: true,
+    */
+    entryPoints: paths,
+    tsconfig: `tsconfig.json`,
+  });
+  const project = typedoc.converter.convert(typedoc.getEntryPoints() ?? []);
+
+  await typedoc.generateJson(project, outputPath);
+
   return fs.readJson(outputPath);
 }
 
 function processPlugin(pluginModule): Plugin {
   const pluginClass = pluginModule.children.find(isPlugin);
+  console.log(pluginClass);
   const decorator = getPluginDecorator(pluginClass);
   const packageName = `@ionic-native/${basename(dirname(pluginModule.originalName))}`;
   const displayName = getTag(pluginClass, 'name');
@@ -84,6 +95,8 @@ function processPlugin(pluginModule): Plugin {
 const getPluginDecorator = (child: any) => {
   if (isPlugin(child)) {
     const decorator = child.decorators.find(d => d.name === 'Plugin');
+
+    console.log('Found decorator', decorator.arguments, child);
     return runInNewContext(`(${decorator.arguments.config})`);
   }
 };

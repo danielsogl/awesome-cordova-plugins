@@ -4,7 +4,10 @@
     "target": "es5",
     "moduleResolution": "node",
     "noImplicitAny": false,
-    "lib": ["es6"]
+    "lib": ["es6"],
+    "paths": {
+      "@ionic-native/core": ["../src/@ionic-native/core"]
+    }
   },
   "exclude": ["node_modules"]
 }
