@@ -5,6 +5,7 @@ node_modules/
 aot/
 scripts/ionic-native-bower
 scripts/docs-json/*.json
+scripts/docs-json/typedoc-docs
 dist/
 src/@ionic-native/plugins/**/ngx
 *.d.ts

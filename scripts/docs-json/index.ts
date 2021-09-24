@@ -20,6 +20,7 @@ interface Plugin {
 }
 
 const rootDir = resolve(__dirname, '../..');
+const typedocDocsTmp = resolve(__dirname, 'typedoc-docs');
 const typedocTmp = resolve(__dirname, 'typedoc.tmp.json');
 const pluginsDir = resolve(rootDir, 'src/@ionic-native/plugins');
 const typedoc = new Application();
@@ -42,7 +43,7 @@ async function run(pluginsDir: string) {
   }
 }
 
-async function generateTypedoc(root: string, outputPath = typedocTmp) {
+async function generateTypedoc(root: string, outputPath = typedocTmp, outputDocsPath = typedocDocsTmp) {
   const pluginDirs = await fs.readdir(root);
   const paths = pluginDirs.map(dir => resolve(root, dir, 'index.ts'));
   typedoc.bootstrap({
@@ -55,6 +56,7 @@ async function generateTypedoc(root: string, outputPath = typedocTmp) {
   });
   const project = typedoc.converter.convert(typedoc.getEntryPoints() ?? []);
 
+  await typedoc.generateDocs(project, outputDocsPath);
   await typedoc.generateJson(project, outputPath);
 
   return fs.readJson(outputPath);
