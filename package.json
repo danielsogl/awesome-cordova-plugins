@@ -54,7 +54,6 @@
     "lint-staged": "^11.1.2",
     "lodash": "^4.17.21",
     "minimist": "^1.2.5",
-    "natives": "^1.1.6",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.2",
