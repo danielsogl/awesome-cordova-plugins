@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import * as fs from 'fs-extra';
+import { copyFileSync, mkdirpSync, readJSONSync, writeJSONSync } from 'fs-extra';
 import * as path from 'path';
 import * as rimraf from 'rimraf';
 import * as rollup from 'rollup';
@@ -82,11 +82,10 @@ export function generateLegacyBundles() {
 
 // remove reference to @awesome-cordova-plugins/core decorators
 export function modifyMetadata() {
-  debugger;
   PLUGIN_PATHS.map(p =>
     p.replace(path.join(ROOT, 'src'), path.join(ROOT, 'dist')).replace('index.ts', 'ngx/index.metadata.json')
   ).forEach(p => {
-    const content = fs.readJSONSync(p);
+    const content = readJSONSync(p);
     let _prop: { members: { [x: string]: any[] } };
     for (const prop in content[0].metadata) {
       _prop = content[0].metadata[prop];
@@ -99,7 +98,7 @@ export function modifyMetadata() {
       }
     }
 
-    fs.writeJSONSync(p, content);
+    writeJSONSync(p, content);
   });
 }
 
@@ -120,8 +119,8 @@ function createSourceFiles(): string[] {
 
     // delete directory
     rimraf.sync(ngxPath);
-    fs.mkdirpSync(ngxPath);
-    fs.copyFileSync(indexPath, newPath);
+    mkdirpSync(ngxPath);
+    copyFileSync(indexPath, newPath);
 
     return newPath;
   });

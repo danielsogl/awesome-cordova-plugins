@@ -1,6 +1,6 @@
 import * as Queue from 'async-promise-queue';
 import { exec } from 'child_process';
-import * as fs from 'fs-extra';
+import { writeJSONSync } from 'fs-extra';
 import { merge } from 'lodash';
 import { cpus } from 'os';
 import * as path from 'path';
@@ -49,12 +49,12 @@ function getPackageJsonContent(name: string, peerDependencies = {}, dependencies
 
 function writePackageJson(data: any, dir: string) {
   const filePath = path.resolve(dir, 'package.json');
-  fs.writeJSONSync(filePath, data);
+  writeJSONSync(filePath, data);
   PACKAGES.push(dir);
 }
 function writeNGXPackageJson(data: any, dir: string) {
   const filePath = path.resolve(dir, 'package.json');
-  fs.writeJSONSync(filePath, data);
+  writeJSONSync(filePath, data);
 }
 function prepare() {
   // write @awesome-cordova-plugins/core package.json

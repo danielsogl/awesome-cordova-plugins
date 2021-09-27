@@ -1,4 +1,4 @@
-import * as fs from 'fs-extra';
+import { unlinkSync, writeJSONSync } from 'fs-extra';
 import * as path from 'path';
 import * as ts from 'typescript';
 
@@ -51,9 +51,9 @@ export function extractInjectables() {
 }
 
 export function emitInjectableClasses() {
-  fs.writeJSONSync(EMIT_PATH, injectableClasses);
+  writeJSONSync(EMIT_PATH, injectableClasses);
 }
 
 export function cleanEmittedData() {
-  fs.unlinkSync(EMIT_PATH);
+  unlinkSync(EMIT_PATH);
 }

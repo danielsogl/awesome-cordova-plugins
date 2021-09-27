@@ -1,4 +1,4 @@
-import * as fs from 'fs-extra';
+import { readJSONSync, writeFileSync } from 'fs-extra';
 import * as path from 'path';
 import * as uglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import * as unminifiedPlugin from 'unminified-webpack-plugin';
@@ -10,7 +10,7 @@ import { Logger } from '../logger';
 
 const DIST = path.resolve(ROOT, 'dist');
 const INDEX_PATH = path.resolve(DIST, 'index.js');
-const INJECTABLE_CLASSES = fs.readJSONSync(EMIT_PATH).map((item: InjectableClassEntry) => {
+const INJECTABLE_CLASSES = readJSONSync(EMIT_PATH).map((item: InjectableClassEntry) => {
   item.file =
     './' +
     item.file
@@ -71,7 +71,7 @@ function createIndexFile() {
   fileContent += `require('./@awesome-cordova-plugins/core/bootstrap').checkReady();\n`;
   fileContent += `require('./@awesome-cordova-plugins/core/ng1').initAngular1(window.IonicNative);`;
 
-  fs.writeFileSync(INDEX_PATH, fileContent, { encoding: 'utf-8' });
+  writeFileSync(INDEX_PATH, fileContent, { encoding: 'utf-8' });
 }
 
 function compile() {

@@ -1,7 +1,8 @@
-import * as ts from 'typescript';
-import * as fs from 'fs-extra';
-import * as path from 'path';
+import { readdirSync } from 'fs-extra';
 import { camelCase, clone } from 'lodash';
+import * as path from 'path';
+import * as ts from 'typescript';
+
 import { Logger } from '../logger';
 
 export const ROOT = path.resolve(__dirname, '../../');
@@ -9,7 +10,7 @@ export const ROOT = path.resolve(__dirname, '../../');
 export const TS_CONFIG = clone(require(path.resolve(ROOT, 'tsconfig.json')));
 export const COMPILER_OPTIONS = TS_CONFIG.compilerOptions;
 export const PLUGINS_ROOT = path.join(ROOT, 'src/@awesome-cordova-plugins/plugins/');
-export const PLUGIN_PATHS = fs.readdirSync(PLUGINS_ROOT).map(d => path.join(PLUGINS_ROOT, d, 'index.ts'));
+export const PLUGIN_PATHS = readdirSync(PLUGINS_ROOT).map(d => path.join(PLUGINS_ROOT, d, 'index.ts'));
 
 export function getDecorator(node: ts.Node, index = 0): ts.Decorator {
   if (node.decorators && node.decorators[index]) {

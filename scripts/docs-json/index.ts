@@ -1,4 +1,4 @@
-import * as fs from 'fs-extra';
+import { outputJson, readdir, readJson } from 'fs-extra';
 import { basename, dirname, resolve } from 'path';
 import { Application } from 'typedoc';
 import TypeDoc = require('typedoc');
@@ -35,7 +35,7 @@ async function run(pluginsDir: string) {
     const typedocData = await generateTypedoc(pluginsDir);
     const modules = typedocData.children.filter(isModule);
     const plugins = modules.filter(hasPlugin).map(processPlugin);
-    await fs.outputJson(resolve(__dirname, 'plugins.json'), plugins, {
+    await outputJson(resolve(__dirname, 'plugins.json'), plugins, {
       spaces: 2,
     });
   } catch (e) {
@@ -44,7 +44,7 @@ async function run(pluginsDir: string) {
 }
 
 async function generateTypedoc(root: string, outputPath = typedocTmp, outputDocsPath = typedocDocsTmp) {
-  const pluginDirs = await fs.readdir(root);
+  const pluginDirs = await readdir(root);
   const paths = pluginDirs.map(dir => resolve(root, dir, 'index.ts'));
   typedoc.bootstrap({
     /*
@@ -59,7 +59,7 @@ async function generateTypedoc(root: string, outputPath = typedocTmp, outputDocs
   await typedoc.generateDocs(project, outputDocsPath);
   await typedoc.generateJson(project, outputPath);
 
-  return fs.readJson(outputPath);
+  return readJson(outputPath);
 }
 
 function processPlugin(pluginModule): Plugin {
