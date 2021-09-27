@@ -2,7 +2,7 @@ import { readJSONSync, writeFileSync } from 'fs-extra';
 import { resolve } from 'path';
 import * as TerserPlugin from 'terser-webpack-plugin';
 import * as unminifiedPlugin from 'unminified-webpack-plugin';
-import * as webpack from 'webpack';
+import { Configuration, DefinePlugin, ProvidePlugin, webpack } from 'webpack';
 
 import { ROOT } from '../build/helpers';
 import { cleanEmittedData, EMIT_PATH, InjectableClassEntry } from '../build/transformers/extract-injectables';
@@ -20,7 +20,7 @@ const INJECTABLE_CLASSES = readJSONSync(EMIT_PATH).map((item: InjectableClassEnt
   return item;
 });
 
-const webpackConfig: webpack.Configuration = {
+const webpackConfig: Configuration = {
   mode: 'production',
   entry: INDEX_PATH,
   devtool: 'source-map',
@@ -45,10 +45,10 @@ const webpackConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new webpack.ProvidePlugin({
+    new ProvidePlugin({
       __extends: ['tslib', '__extends'],
     }),
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     new unminifiedPlugin(),
