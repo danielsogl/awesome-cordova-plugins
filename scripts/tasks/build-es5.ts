@@ -1,6 +1,6 @@
 import { readJSONSync, writeFileSync } from 'fs-extra';
 import { resolve } from 'path';
-import * as uglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import * as TerserPlugin from 'terser-webpack-plugin';
 import * as unminifiedPlugin from 'unminified-webpack-plugin';
 import * as webpack from 'webpack';
 
@@ -51,11 +51,12 @@ const webpackConfig: webpack.Configuration = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    new uglifyJsPlugin({
-      sourceMap: true,
-    }),
     new unminifiedPlugin(),
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
 };
 
 function getPluginImport(entry: InjectableClassEntry) {
