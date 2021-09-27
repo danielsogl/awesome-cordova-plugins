@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Release Packages
 
 on:
   release:
@@ -14,12 +14,8 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: npm ci
-      - name: Lint
-        run: npm run lint
       - name: Build
         run: npm run build
-      - name: Test
-        run: npm run test
       - name: Readmes
         run: npm run readmes
 
