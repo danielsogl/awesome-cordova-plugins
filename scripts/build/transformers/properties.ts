@@ -1,16 +1,4 @@
-import {
-  createBlock,
-  createCall,
-  createGetAccessor,
-  createIdentifier,
-  createLiteral,
-  createParameter,
-  createReturn,
-  createSetAccessor,
-  createStatement,
-  createThis,
-  PropertyDeclaration,
-} from 'typescript';
+import { factory, PropertyDeclaration } from 'typescript';
 
 import { getDecorator, getDecoratorName } from '../helpers';
 
@@ -34,33 +22,33 @@ export function transformProperty(members: any[], index: number) {
       return property;
   }
 
-  const getter = createGetAccessor(
+  const getter = factory.createGetAccessorDeclaration(
     undefined,
     undefined,
     property.name,
     undefined,
     property.type,
-    createBlock([
-      createReturn(
-        createCall(createIdentifier(type + 'PropertyGet'), undefined, [
-          createThis(),
-          createLiteral((property.name as any).text),
+    factory.createBlock([
+      factory.createReturnStatement(
+        factory.createCallExpression(factory.createIdentifier(type + 'PropertyGet'), undefined, [
+          factory.createThis(),
+          factory.createStringLiteral((property.name as any).text),
         ])
       ),
     ])
   );
 
-  const setter = createSetAccessor(
+  const setter = factory.createSetAccessorDeclaration(
     undefined,
     undefined,
     property.name,
-    [createParameter(undefined, undefined, undefined, 'value', undefined, property.type)],
-    createBlock([
-      createStatement(
-        createCall(createIdentifier(type + 'PropertySet'), undefined, [
-          createThis(),
-          createLiteral((property.name as any).text),
-          createIdentifier('value'),
+    [factory.createParameterDeclaration(undefined, undefined, undefined, 'value', undefined, property.type)],
+    factory.createBlock([
+      factory.createExpressionStatement(
+        factory.createCallExpression(factory.createIdentifier(type + 'PropertySet'), undefined, [
+          factory.createThis(),
+          factory.createStringLiteral((property.name as any).text),
+          factory.createIdentifier('value'),
         ])
       ),
     ])

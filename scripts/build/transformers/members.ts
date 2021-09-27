@@ -1,4 +1,4 @@
-import { ClassDeclaration, createConstructor, SyntaxKind } from 'typescript';
+import { ClassDeclaration, factory, SyntaxKind } from 'typescript';
 
 import { transformMethod } from './methods';
 import { transformProperty } from './properties';
@@ -17,7 +17,7 @@ export function transformMembers(cls: ClassDeclaration) {
         propertyIndices.push(index);
         return member;
       case SyntaxKind.Constructor:
-        return createConstructor(undefined, undefined, member.parameters, member.body);
+        return factory.createConstructorDeclaration(undefined, undefined, member.parameters, member.body);
       default:
         return member; // in case anything gets here by accident...
     }

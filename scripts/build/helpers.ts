@@ -3,13 +3,9 @@ import { camelCase, clone } from 'lodash';
 import { join, resolve } from 'path';
 import {
   ArrayLiteralExpression,
-  createArrayLiteral,
-  createLiteral,
-  createNumericLiteral,
-  createObjectLiteral,
-  createPropertyAssignment,
   Decorator,
   Expression,
+  factory,
   Node,
   ObjectLiteralElementLike,
   ObjectLiteralExpression,
@@ -102,9 +98,14 @@ export function convertValueToLiteral(val: any) {
     return objectToObjectLiteral(val);
   }
   if (typeof val === 'number') {
-    return createNumericLiteral(String(val));
+    return factory.createNumericLiteral(val);
   }
-  return createLiteral(val);
+  if (typeof val === 'string') {
+    return factory.createStringLiteral(val);
+  }
+  if (typeof val === 'boolean') {
+    return val ? factory.createTrue() : factory.createFalse();
+  }
 }
 
 /**
@@ -115,21 +116,24 @@ export function convertValueToLiteral(val: any) {
  */
 function objectToObjectLiteral(obj: { [key: string]: any }): ObjectLiteralExpression {
   const newProperties: ObjectLiteralElementLike[] = Object.keys(obj).map((key: string): ObjectLiteralElementLike => {
-    return createPropertyAssignment(createLiteral(key), convertValueToLiteral(obj[key]) as Expression);
+    return factory.createPropertyAssignment(
+      factory.createStringLiteral(key),
+      convertValueToLiteral(obj[key]) as Expression
+    );
   });
 
-  return createObjectLiteral(newProperties);
+  return factory.createObjectLiteralExpression(newProperties);
 }
 
 /**
  * FROM STENCIL
  * Convert a js array into typescript AST
- * @param list array
+ * @param list arrayÏ
  * @returns Typescript Array Literal Expression
  */
 function arrayToArrayLiteral(list: any[]): ArrayLiteralExpression {
   const newList: any[] = list.map(convertValueToLiteral);
-  return createArrayLiteral(newList);
+  return factory.createArrayLiteralExpression(newList);
 }
 
 export function getMethodsForDecorator(decoratorName: string) {

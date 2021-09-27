@@ -1,4 +1,4 @@
-import { createIdentifier, SourceFile, SyntaxKind, TransformationContext } from 'typescript';
+import { factory, SourceFile, SyntaxKind, TransformationContext } from 'typescript';
 
 import { getMethodsForDecorator } from '../helpers';
 
@@ -41,11 +41,11 @@ function transformImports(file: SourceFile, ctx: TransformationContext, ngcBuild
 
     decorators.forEach(d => (methods = getMethodsForDecorator(d).concat(methods)));
 
-    const methodElements = methods.map(m => createIdentifier(m));
+    const methodElements = methods.map(m => factory.createIdentifier(m));
     const methodNames = methodElements.map(el => el.escapedText);
 
     importStatement.importClause.namedBindings.elements = [
-      createIdentifier('AwesomeCordovaNativePlugin'),
+      factory.createIdentifier('AwesomeCordovaNativePlugin'),
       ...methodElements,
       ...importStatement.importClause.namedBindings.elements.filter(
         el => keep.indexOf(el.name.text) !== -1 && methodNames.indexOf(el.name.text) === -1

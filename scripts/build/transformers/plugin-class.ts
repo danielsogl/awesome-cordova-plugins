@@ -1,8 +1,6 @@
 import {
-  createClassDeclaration,
-  createIdentifier,
-  createProperty,
-  createToken,
+  Decorator,
+  factory,
   SourceFile,
   SyntaxKind,
   TransformationContext,
@@ -18,7 +16,7 @@ function transformClass(cls: any, ngcBuild?: boolean) {
   Logger.profile('transformClass: ' + cls.name.text);
 
   const pluginStatics = [];
-  const dec: any = getDecorator(cls);
+  const dec: Decorator = getDecorator(cls);
 
   if (dec) {
     const pluginDecoratorArgs = getDecoratorArgs(dec);
@@ -26,10 +24,10 @@ function transformClass(cls: any, ngcBuild?: boolean) {
     // add plugin decorator args as static properties of the plugin's class
     for (const prop in pluginDecoratorArgs) {
       pluginStatics.push(
-        createProperty(
+        factory.createPropertyDeclaration(
           undefined,
-          [createToken(SyntaxKind.StaticKeyword)],
-          createIdentifier(prop),
+          [factory.createToken(SyntaxKind.StaticKeyword)],
+          factory.createIdentifier(prop),
           undefined,
           undefined,
           convertValueToLiteral(pluginDecoratorArgs[prop])
@@ -38,11 +36,11 @@ function transformClass(cls: any, ngcBuild?: boolean) {
     }
   }
 
-  cls = createClassDeclaration(
+  cls = factory.createClassDeclaration(
     ngcBuild && cls.decorators && cls.decorators.length
       ? cls.decorators.filter(d => getDecoratorName(d) === 'Injectable')
       : undefined, // remove Plugin and Injectable decorators
-    [createToken(SyntaxKind.ExportKeyword)],
+    [factory.createToken(SyntaxKind.ExportKeyword)],
     cls.name,
     cls.typeParameters,
     cls.heritageClauses,

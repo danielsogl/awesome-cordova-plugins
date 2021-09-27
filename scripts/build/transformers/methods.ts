@@ -1,19 +1,4 @@
-import {
-  createBinary,
-  createBlock,
-  createCall,
-  createIdentifier,
-  createIf,
-  createImmediatelyInvokedArrowFunction,
-  createLiteral,
-  createMethod,
-  createReturn,
-  createThis,
-  createTrue,
-  Expression,
-  MethodDeclaration,
-  SyntaxKind,
-} from 'typescript';
+import { Expression, factory, MethodDeclaration, SyntaxKind } from 'typescript';
 
 import { Logger } from '../../logger';
 import {
@@ -32,7 +17,7 @@ export function transformMethod(method: MethodDeclaration) {
     decoratorArgs = getDecoratorArgs(decorator);
 
   try {
-    return createMethod(
+    return factory.createMethodDeclaration(
       undefined,
       undefined,
       undefined,
@@ -41,7 +26,7 @@ export function transformMethod(method: MethodDeclaration) {
       method.typeParameters,
       method.parameters,
       method.type,
-      createBlock([createReturn(getMethodBlock(method, decoratorName, decoratorArgs))])
+      factory.createBlock([factory.createReturnStatement(getMethodBlock(method, decoratorName, decoratorArgs))])
     );
   } catch (e) {
     Logger.error('Error transforming method: ' + (method.name as any).text);
@@ -56,23 +41,23 @@ function getMethodBlock(method: MethodDeclaration, decoratorName: string, decora
     case 'CordovaCheck':
     case 'InstanceCheck':
       // TODO remove function wrapper
-      return createImmediatelyInvokedArrowFunction([
-        createIf(
-          createBinary(
-            createCall(createIdentifier(decoratorMethod), undefined, [createThis()]),
+      return factory.createImmediatelyInvokedArrowFunction([
+        factory.createIfStatement(
+          factory.createBinaryExpression(
+            factory.createCallExpression(factory.createIdentifier(decoratorMethod), undefined, [factory.createThis()]),
             SyntaxKind.EqualsEqualsEqualsToken,
-            createTrue()
+            factory.createTrue()
           ),
           method.body
         ),
       ]);
 
     default:
-      return createCall(createIdentifier(decoratorMethod), undefined, [
-        createThis(),
-        createLiteral(decoratorArgs?.methodName || (method.name as any).text),
+      return factory.createCallExpression(factory.createIdentifier(decoratorMethod), undefined, [
+        factory.createThis(),
+        factory.createStringLiteral(decoratorArgs?.methodName || (method.name as any).text),
         convertValueToLiteral(decoratorArgs),
-        createIdentifier('arguments'),
+        factory.createIdentifier('arguments'),
       ]);
   }
 }
