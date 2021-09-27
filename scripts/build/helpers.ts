@@ -19,7 +19,7 @@ export const ROOT = resolve(__dirname, '../../');
 export const TS_CONFIG = clone(require(resolve(ROOT, 'tsconfig.json')));
 export const COMPILER_OPTIONS = TS_CONFIG.compilerOptions;
 export const PLUGINS_ROOT = join(ROOT, 'src/@awesome-cordova-plugins/plugins/');
-export const PLUGIN_PATHS = readdirSync(PLUGINS_ROOT).map(d => join(PLUGINS_ROOT, d, 'index.ts'));
+export const PLUGIN_PATHS = readdirSync(PLUGINS_ROOT).map((d) => join(PLUGINS_ROOT, d, 'index.ts'));
 
 export function getDecorator(node: Node, index = 0): Decorator {
   if (node.decorators && node.decorators[index]) {
@@ -31,7 +31,7 @@ export function hasDecorator(decoratorName: string, node: Node): boolean {
   return (
     node.decorators &&
     node.decorators.length &&
-    node.decorators.findIndex(d => getDecoratorName(d) === decoratorName) > -1
+    node.decorators.findIndex((d) => getDecoratorName(d) === decoratorName) > -1
   );
 }
 
@@ -48,7 +48,7 @@ export function getDecoratorArgs(decorator: any) {
   const properties: any[] = getRawDecoratorArgs(decorator);
   const args = {};
 
-  properties.forEach(prop => {
+  properties.forEach((prop) => {
     let val: number | boolean;
 
     switch (prop.initializer.kind) {

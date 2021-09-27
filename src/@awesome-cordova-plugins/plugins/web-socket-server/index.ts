@@ -133,7 +133,7 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
   }
 
   private onFunctionToObservable<T>(fnName: string) {
-    return new Observable<T>(observer => {
+    return new Observable<T>((observer) => {
       const id = window.cordova.plugins.wsserver[fnName](observer.next.bind(observer), observer.error.bind(observer));
 
       return () => window.cordova.plugins.wsserver.removeCallback(id);

@@ -105,7 +105,7 @@ export class SmartlookEventTrackingModes {
   private eventTrackingModes: string[];
 
   constructor(eventTrackingModes: SmartlookEventTrackingMode[]) {
-    this.eventTrackingModes = eventTrackingModes.map(eventTrackingMode =>
+    this.eventTrackingModes = eventTrackingModes.map((eventTrackingMode) =>
       eventTrackingMode.getEventTrackingModeString()
     );
   }

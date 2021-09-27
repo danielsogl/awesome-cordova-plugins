@@ -67,7 +67,7 @@ function createIndexFile() {
   let fileContent = '';
   fileContent += INJECTABLE_CLASSES.map(getPluginImport).join('\n');
   fileContent += `\nwindow.IonicNative = {\n`;
-  fileContent += INJECTABLE_CLASSES.map(e => e.className).join(',\n');
+  fileContent += INJECTABLE_CLASSES.map((e) => e.className).join(',\n');
   fileContent += '\n};\n';
   fileContent += `require('./@awesome-cordova-plugins/core/bootstrap').checkReady();\n`;
   fileContent += `require('./@awesome-cordova-plugins/core/ng1').initAngular1(window.IonicNative);`;

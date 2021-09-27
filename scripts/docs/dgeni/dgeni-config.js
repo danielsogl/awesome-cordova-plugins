@@ -7,7 +7,7 @@ const Package = require('dgeni').Package,
   path = require('path'),
   config = require('../config.json');
 
-module.exports = currentVersion => {
+module.exports = (currentVersion) => {
   return (
     new Package('ionic-native-docs', [jsdocPackage, nunjucksPackage, typescriptPackage, linksPackage])
 
@@ -40,7 +40,7 @@ module.exports = currentVersion => {
         computePathsProcessor.pathTemplates = [
           {
             docTypes: ['class'],
-            getOutputPath: doc => 'content/' + config.v2DocsDir + '/' + doc.name + '/index.md',
+            getOutputPath: (doc) => 'content/' + config.v2DocsDir + '/' + doc.name + '/index.md',
           },
         ];
       })

@@ -162,7 +162,7 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
    */
   @CordovaCheck()
   hasAccount(): Promise<any> {
-    return getPromise<boolean>(resolve => {
+    return getPromise<boolean>((resolve) => {
       EmailComposer.getPlugin().hasAccount((result: boolean) => {
         if (result) {
           resolve(true);
@@ -182,7 +182,7 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
 
   @CordovaCheck()
   hasClient(app?: string): Promise<any> {
-    return getPromise<boolean>(resolve => {
+    return getPromise<boolean>((resolve) => {
       if (app) {
         EmailComposer.getPlugin().hasClient(app, (result: boolean) => {
           if (result) {
@@ -207,7 +207,7 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
   @CordovaCheck()
   @Cordova({ platforms: ['Android'] })
   getClients(): Promise<string[]> {
-    return getPromise<string[]>(resolve => {
+    return getPromise<string[]>((resolve) => {
       EmailComposer.getPlugin().getClients((apps: any) => {
         if (Object.prototype.toString.call(apps) === '[object String]') {
           apps = [apps];
@@ -225,8 +225,8 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
    */
   @CordovaCheck()
   isAvailable(app?: string): Promise<any> {
-    return getPromise<boolean>(resolve => {
-      Promise.all([this.hasAccount, this.hasClient(app)]).then(results => {
+    return getPromise<boolean>((resolve) => {
+      Promise.all([this.hasAccount, this.hasClient(app)]).then((results) => {
         return resolve(results.length === 2 && results[0] && results[1]);
       });
     });

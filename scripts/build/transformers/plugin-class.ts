@@ -38,7 +38,7 @@ function transformClass(cls: any, ngcBuild?: boolean) {
 
   cls = factory.createClassDeclaration(
     ngcBuild && cls.decorators && cls.decorators.length
-      ? cls.decorators.filter(d => getDecoratorName(d) === 'Injectable')
+      ? cls.decorators.filter((d) => getDecoratorName(d) === 'Injectable')
       : undefined, // remove Plugin and Injectable decorators
     [factory.createToken(SyntaxKind.ExportKeyword)],
     cls.name,
@@ -55,10 +55,10 @@ function transformClasses(file: SourceFile, ctx: TransformationContext, ngcBuild
   Logger.silly('Transforming file: ' + file.fileName);
   return visitEachChild(
     file,
-    node => {
+    (node) => {
       if (
         node.kind !== SyntaxKind.ClassDeclaration ||
-        (node.modifiers && node.modifiers.find(v => v.kind === SyntaxKind.DeclareKeyword))
+        (node.modifiers && node.modifiers.find((v) => v.kind === SyntaxKind.DeclareKeyword))
       ) {
         return node;
       }
@@ -70,7 +70,7 @@ function transformClasses(file: SourceFile, ctx: TransformationContext, ngcBuild
 
 export function pluginClassTransformer(ngcBuild?: boolean): TransformerFactory<SourceFile> {
   return (ctx: TransformationContext) => {
-    return tsSourceFile => {
+    return (tsSourceFile) => {
       if (tsSourceFile.fileName.indexOf('src/@awesome-cordova-plugins/plugins') > -1) {
         return transformClasses(tsSourceFile, ctx, ngcBuild);
       }

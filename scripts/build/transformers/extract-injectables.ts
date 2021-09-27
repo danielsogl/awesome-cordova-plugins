@@ -23,11 +23,11 @@ export const EMIT_PATH = resolve(ROOT, 'injectable-classes.json');
  */
 export function extractInjectables() {
   return (ctx: TransformationContext) => {
-    return tsSourceFile => {
+    return (tsSourceFile) => {
       if (tsSourceFile.fileName.indexOf('src/@awesome-cordova-plugins/plugins') > -1) {
         visitEachChild(
           tsSourceFile,
-          node => {
+          (node) => {
             if (node.kind !== SyntaxKind.ClassDeclaration) {
               return node;
             }

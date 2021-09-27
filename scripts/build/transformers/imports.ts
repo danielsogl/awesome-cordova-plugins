@@ -39,22 +39,22 @@ function transformImports(file: SourceFile, ctx: TransformationContext, ngcBuild
   if (decorators.length) {
     let methods = [];
 
-    decorators.forEach(d => (methods = getMethodsForDecorator(d).concat(methods)));
+    decorators.forEach((d) => (methods = getMethodsForDecorator(d).concat(methods)));
 
-    const methodElements = methods.map(m => factory.createIdentifier(m));
-    const methodNames = methodElements.map(el => el.escapedText);
+    const methodElements = methods.map((m) => factory.createIdentifier(m));
+    const methodNames = methodElements.map((el) => el.escapedText);
 
     importStatement.importClause.namedBindings.elements = [
       factory.createIdentifier('AwesomeCordovaNativePlugin'),
       ...methodElements,
       ...importStatement.importClause.namedBindings.elements.filter(
-        el => keep.indexOf(el.name.text) !== -1 && methodNames.indexOf(el.name.text) === -1
+        (el) => keep.indexOf(el.name.text) !== -1 && methodNames.indexOf(el.name.text) === -1
       ),
     ];
 
     if (ngcBuild) {
       importStatement.importClause.namedBindings.elements = importStatement.importClause.namedBindings.elements.map(
-        binding => {
+        (binding) => {
           if (binding.escapedText) {
             binding.name = {
               text: binding.escapedText,
@@ -71,7 +71,7 @@ function transformImports(file: SourceFile, ctx: TransformationContext, ngcBuild
 
 export function importsTransformer(ngcBuild?: boolean) {
   return (ctx: TransformationContext) => {
-    return tsSourceFile => {
+    return (tsSourceFile) => {
       return transformImports(tsSourceFile, ctx, ngcBuild);
     };
   };

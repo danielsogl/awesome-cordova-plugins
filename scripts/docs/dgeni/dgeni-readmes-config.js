@@ -7,7 +7,7 @@ const Package = require('dgeni').Package,
   path = require('path'),
   config = require('../config.json');
 
-module.exports = currentVersion => {
+module.exports = (currentVersion) => {
   return (
     new Package('ionic-native-readmes', [jsdocPackage, nunjucksPackage, typescriptPackage, linksPackage])
 
@@ -38,7 +38,7 @@ module.exports = currentVersion => {
         computePathsProcessor.pathTemplates = [
           {
             docTypes: ['class'],
-            getOutputPath: doc =>
+            getOutputPath: (doc) =>
               doc.originalModule.replace(config.pluginDir + '/', '').replace(/\/index$/, '/README.md'),
           },
         ];

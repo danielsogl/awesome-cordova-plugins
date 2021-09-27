@@ -80,7 +80,7 @@ function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts:
 }
 
 function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
-  return new Observable(observer => {
+  return new Observable((observer) => {
     let pluginResult;
 
     if (opts.destruct) {
@@ -384,7 +384,7 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
     if (opts.sync) {
       return callInstance(pluginObj, methodName, args, opts);
     } else if (opts.observable) {
-      return new Observable(observer => {
+      return new Observable((observer) => {
         let pluginResult;
 
         if (opts.destruct) {

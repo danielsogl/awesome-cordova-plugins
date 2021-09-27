@@ -819,7 +819,7 @@ export class File extends AwesomeCordovaNativePlugin {
       options.exclusive = true;
     }
 
-    return this.resolveDirectoryUrl(path).then(fse => {
+    return this.resolveDirectoryUrl(path).then((fse) => {
       return this.getDirectory(fse, dirName, options);
     });
   }
@@ -840,10 +840,10 @@ export class File extends AwesomeCordovaNativePlugin {
     }
 
     return this.resolveDirectoryUrl(path)
-      .then(fse => {
+      .then((fse) => {
         return this.getDirectory(fse, dirName, { create: false });
       })
-      .then(de => {
+      .then((de) => {
         return this.remove(de);
       });
   }
@@ -869,11 +869,11 @@ export class File extends AwesomeCordovaNativePlugin {
     }
 
     return this.resolveDirectoryUrl(path)
-      .then(fse => {
+      .then((fse) => {
         return this.getDirectory(fse, dirName, { create: false });
       })
-      .then(srcde => {
-        return this.resolveDirectoryUrl(newPath).then(destenation => {
+      .then((srcde) => {
+        return this.resolveDirectoryUrl(newPath).then((destenation) => {
           return this.move(srcde, destenation, newDirName);
         });
       });
@@ -897,11 +897,11 @@ export class File extends AwesomeCordovaNativePlugin {
     }
 
     return this.resolveDirectoryUrl(path)
-      .then(fse => {
+      .then((fse) => {
         return this.getDirectory(fse, dirName, { create: false });
       })
-      .then(srcde => {
-        return this.resolveDirectoryUrl(newPath).then(deste => {
+      .then((srcde) => {
+        return this.resolveDirectoryUrl(newPath).then((deste) => {
           return this.copy(srcde, deste, newDirName);
         });
       });
@@ -923,13 +923,13 @@ export class File extends AwesomeCordovaNativePlugin {
     }
 
     return this.resolveDirectoryUrl(path)
-      .then(fse => {
+      .then((fse) => {
         return this.getDirectory(fse, dirName, {
           create: false,
           exclusive: false,
         });
       })
-      .then(de => {
+      .then((de) => {
         const reader = de.createReader();
         return this.readEntries(reader);
       });
@@ -951,10 +951,10 @@ export class File extends AwesomeCordovaNativePlugin {
     }
 
     return this.resolveDirectoryUrl(path)
-      .then(fse => {
+      .then((fse) => {
         return this.getDirectory(fse, dirName, { create: false });
       })
-      .then(de => {
+      .then((de) => {
         return this.rimraf(de);
       });
   }
@@ -974,7 +974,7 @@ export class File extends AwesomeCordovaNativePlugin {
       return Promise.reject<any>(err);
     }
 
-    return this.resolveLocalFilesystemUrl(path + file).then(fse => {
+    return this.resolveLocalFilesystemUrl(path + file).then((fse) => {
       if (fse.isFile) {
         return true;
       } else {
@@ -1011,7 +1011,7 @@ export class File extends AwesomeCordovaNativePlugin {
       options.exclusive = true;
     }
 
-    return this.resolveDirectoryUrl(path).then(fse => {
+    return this.resolveDirectoryUrl(path).then((fse) => {
       return this.getFile(fse, fileName, options);
     });
   }
@@ -1032,10 +1032,10 @@ export class File extends AwesomeCordovaNativePlugin {
     }
 
     return this.resolveDirectoryUrl(path)
-      .then(fse => {
+      .then((fse) => {
         return this.getFile(fse, fileName, { create: false });
       })
-      .then(fe => {
+      .then((fe) => {
         return this.remove(fe);
       });
   }
@@ -1086,7 +1086,7 @@ export class File extends AwesomeCordovaNativePlugin {
    */
   private writeFileEntry(fe: FileEntry, text: string | Blob | ArrayBuffer, options: IWriteOptions) {
     return this.createWriter(fe)
-      .then(writer => {
+      .then((writer) => {
         if (options.append) {
           writer.seek(writer.length);
         }
@@ -1183,11 +1183,11 @@ export class File extends AwesomeCordovaNativePlugin {
     }
 
     return this.resolveDirectoryUrl(path)
-      .then(fse => {
+      .then((fse) => {
         return this.getFile(fse, fileName, { create: false });
       })
-      .then(srcfe => {
-        return this.resolveDirectoryUrl(newPath).then(deste => {
+      .then((srcfe) => {
+        return this.resolveDirectoryUrl(newPath).then((deste) => {
           return this.move(srcfe, deste, newFileName);
         });
       });
@@ -1213,11 +1213,11 @@ export class File extends AwesomeCordovaNativePlugin {
     }
 
     return this.resolveDirectoryUrl(path)
-      .then(fse => {
+      .then((fse) => {
         return this.getFile(fse, fileName, { create: false });
       })
-      .then(srcfe => {
-        return this.resolveDirectoryUrl(newPath).then(deste => {
+      .then((srcfe) => {
+        return this.resolveDirectoryUrl(newPath).then((deste) => {
           return this.copy(srcfe, deste, newFileName);
         });
       });
@@ -1246,7 +1246,7 @@ export class File extends AwesomeCordovaNativePlugin {
           (entry: Entry) => {
             resolve(entry);
           },
-          err => {
+          (err) => {
             this.fillErrorMessage(err);
             reject(err);
           }
@@ -1265,7 +1265,7 @@ export class File extends AwesomeCordovaNativePlugin {
    */
   @CordovaCheck()
   resolveDirectoryUrl(directoryUrl: string): Promise<DirectoryEntry> {
-    return this.resolveLocalFilesystemUrl(directoryUrl).then(de => {
+    return this.resolveLocalFilesystemUrl(directoryUrl).then((de) => {
       if (de.isDirectory) {
         return de as DirectoryEntry;
       } else {
@@ -1290,10 +1290,10 @@ export class File extends AwesomeCordovaNativePlugin {
         directoryEntry.getDirectory(
           directoryName,
           flags,
-          de => {
+          (de) => {
             resolve(de);
           },
-          err => {
+          (err) => {
             this.fillErrorMessage(err);
             reject(err);
           }
@@ -1316,7 +1316,7 @@ export class File extends AwesomeCordovaNativePlugin {
   getFile(directoryEntry: DirectoryEntry, fileName: string, flags: Flags): Promise<FileEntry> {
     return new Promise<FileEntry>((resolve, reject) => {
       try {
-        directoryEntry.getFile(fileName, flags, resolve, err => {
+        directoryEntry.getFile(fileName, flags, resolve, (err) => {
           this.fillErrorMessage(err);
           reject(err);
         });
@@ -1356,10 +1356,10 @@ export class File extends AwesomeCordovaNativePlugin {
           };
 
           fileEntry.file(
-            file => {
+            (file) => {
               reader[`readAs${readAs}`].call(reader, file);
             },
-            error => {
+            (error) => {
               reject(error);
             }
           );
@@ -1376,7 +1376,7 @@ export class File extends AwesomeCordovaNativePlugin {
         () => {
           resolve({ success: true, fileRemoved: fe });
         },
-        err => {
+        (err) => {
           this.fillErrorMessage(err);
           reject(err);
         }
@@ -1392,10 +1392,10 @@ export class File extends AwesomeCordovaNativePlugin {
       srce.moveTo(
         destdir,
         newName,
-        deste => {
+        (deste) => {
           resolve(deste);
         },
-        err => {
+        (err) => {
           this.fillErrorMessage(err);
           reject(err);
         }
@@ -1411,10 +1411,10 @@ export class File extends AwesomeCordovaNativePlugin {
       srce.copyTo(
         destdir,
         newName,
-        deste => {
+        (deste) => {
           resolve(deste);
         },
-        err => {
+        (err) => {
           this.fillErrorMessage(err);
           reject(err);
         }
@@ -1428,10 +1428,10 @@ export class File extends AwesomeCordovaNativePlugin {
   private readEntries(dr: DirectoryReader): Promise<Entry[]> {
     return new Promise<Entry[]>((resolve, reject) => {
       dr.readEntries(
-        entries => {
+        (entries) => {
           resolve(entries);
         },
-        err => {
+        (err) => {
           this.fillErrorMessage(err);
           reject(err);
         }
@@ -1448,7 +1448,7 @@ export class File extends AwesomeCordovaNativePlugin {
         () => {
           resolve({ success: true, fileRemoved: de });
         },
-        err => {
+        (err) => {
           this.fillErrorMessage(err);
           reject(err);
         }
@@ -1462,10 +1462,10 @@ export class File extends AwesomeCordovaNativePlugin {
   private createWriter(fe: FileEntry): Promise<FileWriter> {
     return new Promise<FileWriter>((resolve, reject) => {
       fe.createWriter(
-        writer => {
+        (writer) => {
           resolve(writer);
         },
-        err => {
+        (err) => {
           this.fillErrorMessage(err);
           reject(err);
         }
@@ -1482,7 +1482,7 @@ export class File extends AwesomeCordovaNativePlugin {
     }
 
     return new Promise<any>((resolve, reject) => {
-      writer.onwriteend = evt => {
+      writer.onwriteend = (evt) => {
         if (writer.error) {
           reject(writer.error);
         } else {

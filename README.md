@@ -135,8 +135,8 @@ import { Camera } from '@awesome-cordova-plugins/camera';
 
 document.addEventListener('deviceready', () => {
   Camera.getPicture()
-    .then(data => console.log('Took a picture!', data))
-    .catch(e => console.log('Error occurred while taking a picture', e));
+    .then((data) => console.log('Took a picture!', data))
+    .catch((e) => console.log('Error occurred while taking a picture', e));
 });
 ```
 

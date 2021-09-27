@@ -53,14 +53,14 @@ export function transpileNgx() {
 }
 
 export function generateDeclarationFiles() {
-  generateDeclarations(PLUGIN_PATHS.map(p => p.replace('index.ts', 'ngx/index.ts')));
+  generateDeclarations(PLUGIN_PATHS.map((p) => p.replace('index.ts', 'ngx/index.ts')));
 }
 
 export function generateLegacyBundles() {
   [
     resolve(ROOT, 'dist/@awesome-cordova-plugins/core/index.js'),
-    ...PLUGIN_PATHS.map(p => p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace('index.ts', 'ngx/index.js')),
-  ].forEach(p =>
+    ...PLUGIN_PATHS.map((p) => p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace('index.ts', 'ngx/index.js')),
+  ].forEach((p) =>
     rollup({
       input: p,
       onwarn(warning, warn) {
@@ -68,7 +68,7 @@ export function generateLegacyBundles() {
         warn(warning);
       },
       external: ['@angular/core', '@awesome-cordova-plugins/core', 'rxjs', 'tslib'],
-    }).then(bundle =>
+    }).then((bundle) =>
       bundle.write({
         file: join(dirname(p), 'bundle.js'),
         format: 'cjs',
@@ -79,9 +79,9 @@ export function generateLegacyBundles() {
 
 // remove reference to @awesome-cordova-plugins/core decorators
 export function modifyMetadata() {
-  PLUGIN_PATHS.map(p =>
+  PLUGIN_PATHS.map((p) =>
     p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace('index.ts', 'ngx/index.metadata.json')
-  ).forEach(p => {
+  ).forEach((p) => {
     const content = readJSONSync(p);
     let _prop: { members: { [x: string]: any[] } };
     for (const prop in content[0].metadata) {

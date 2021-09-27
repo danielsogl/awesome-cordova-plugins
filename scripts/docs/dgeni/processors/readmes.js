@@ -5,11 +5,11 @@ module.exports = function readmes(renderDocsProcessor) {
     description: 'Create jekyll includes',
     $runAfter: ['paths-computed'],
     $runBefore: ['rendering-docs'],
-    $process: docs => {
+    $process: (docs) => {
       // pretty up and sort the docs object for menu generation
-      docs = docs.filter(doc => (!!doc.name && !!doc.outputPath) || doc.docType === 'index-page');
+      docs = docs.filter((doc) => (!!doc.name && !!doc.outputPath) || doc.docType === 'index-page');
 
-      docs.forEach(doc => {
+      docs.forEach((doc) => {
         doc.outputPath = doc.outputPath.replace('src/@awesome-cordova-plugins/', '');
       });
 

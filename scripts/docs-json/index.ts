@@ -45,7 +45,7 @@ async function run(pluginsDir: string) {
 
 async function generateTypedoc(root: string, outputPath = typedocTmp, outputDocsPath = typedocDocsTmp) {
   const pluginDirs = await readdir(root);
-  const paths = pluginDirs.map(dir => resolve(root, dir, 'index.ts'));
+  const paths = pluginDirs.map((dir) => resolve(root, dir, 'index.ts'));
   typedoc.bootstrap({
     /*
     mode: 'modules',
@@ -96,7 +96,7 @@ function processPlugin(pluginModule): Plugin {
  */
 const getPluginDecorator = (child: any) => {
   if (isPlugin(child)) {
-    const decorator = child.decorators.find(d => d.name === 'Plugin');
+    const decorator = child.decorators.find((d) => d.name === 'Plugin');
 
     console.log('Found decorator', decorator.arguments, child);
     return runInNewContext(`(${decorator.arguments.config})`);
@@ -105,7 +105,7 @@ const getPluginDecorator = (child: any) => {
 
 const getTag = (child: any, tagName: string): string => {
   if (hasTags(child)) {
-    const tag = child.comment.tags.find(t => t.tag === tagName);
+    const tag = child.comment.tags.find((t) => t.tag === tagName);
     if (tag) {
       return tag.text;
     }
@@ -120,7 +120,7 @@ const isPlugin = (child: any): boolean =>
   isClass(child) &&
   hasTags(child) &&
   Array.isArray(child.decorators) &&
-  child.decorators.some(d => d.name === 'Plugin');
+  child.decorators.some((d) => d.name === 'Plugin');
 
 const hasPlugin = (child: any): boolean => child.children.some(isPlugin);
 

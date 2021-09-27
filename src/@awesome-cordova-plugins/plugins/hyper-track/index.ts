@@ -165,8 +165,8 @@ export class HyperTrack {
   getDeviceId(): Promise<string> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.getDeviceId(
-        deviceId => resolve(deviceId),
-        err => reject(err)
+        (deviceId) => resolve(deviceId),
+        (err) => reject(err)
       );
     });
   }
@@ -175,8 +175,8 @@ export class HyperTrack {
   isRunning(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.isRunning(
-        isRunning => resolve(isRunning),
-        err => reject(err)
+        (isRunning) => resolve(isRunning),
+        (err) => reject(err)
       );
     });
   }
@@ -187,7 +187,7 @@ export class HyperTrack {
       this.cordovaInstanceHandle.setDeviceName(
         name,
         () => resolve(),
-        err => reject(err)
+        (err) => reject(err)
       );
     });
   }
@@ -201,7 +201,7 @@ export class HyperTrack {
       this.cordovaInstanceHandle.setDeviceMetadata(
         metadata,
         () => resolve(),
-        err => reject(err)
+        (err) => reject(err)
       );
     });
   }
@@ -213,7 +213,7 @@ export class HyperTrack {
         title,
         message,
         () => resolve(),
-        err => reject(err)
+        (err) => reject(err)
       );
     });
   }
@@ -225,7 +225,7 @@ export class HyperTrack {
         geotagData,
         expectedLocation,
         () => resolve(),
-        err => reject(err)
+        (err) => reject(err)
       );
     });
   }
@@ -235,7 +235,7 @@ export class HyperTrack {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.requestPermissionsIfNecessary(
         () => resolve(),
-        err => reject(err)
+        (err) => reject(err)
       );
     });
   }
@@ -245,7 +245,7 @@ export class HyperTrack {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.allowMockLocations(
         () => resolve(),
-        err => reject(err)
+        (err) => reject(err)
       );
     });
   }
@@ -258,7 +258,7 @@ export class HyperTrack {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.syncDeviceSettings(
         () => resolve(),
-        err => reject(err)
+        (err) => reject(err)
       );
     });
   }
@@ -268,7 +268,7 @@ export class HyperTrack {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.start(
         () => resolve(),
-        err => reject(err)
+        (err) => reject(err)
       );
     });
   }
@@ -278,7 +278,7 @@ export class HyperTrack {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.stop(
         () => resolve(),
-        err => reject(err)
+        (err) => reject(err)
       );
     });
   }

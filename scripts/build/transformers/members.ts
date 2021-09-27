@@ -28,7 +28,7 @@ export function transformMembers(cls: ClassDeclaration) {
     members.push(getter, setter);
   });
 
-  propertyIndices.reverse().forEach(i => members.splice(i, 1));
+  propertyIndices.reverse().forEach((i) => members.splice(i, 1));
 
   return members;
 }
