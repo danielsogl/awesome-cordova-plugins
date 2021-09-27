@@ -1,9 +1,21 @@
-import * as ts from 'typescript';
+import {
+  createBlock,
+  createCall,
+  createGetAccessor,
+  createIdentifier,
+  createLiteral,
+  createParameter,
+  createReturn,
+  createSetAccessor,
+  createStatement,
+  createThis,
+  PropertyDeclaration,
+} from 'typescript';
 
 import { getDecorator, getDecoratorName } from '../helpers';
 
 export function transformProperty(members: any[], index: number) {
-  const property = members[index] as ts.PropertyDeclaration,
+  const property = members[index] as PropertyDeclaration,
     decorator = getDecorator(property),
     decoratorName = getDecoratorName(decorator);
 
@@ -22,33 +34,33 @@ export function transformProperty(members: any[], index: number) {
       return property;
   }
 
-  const getter = ts.createGetAccessor(
+  const getter = createGetAccessor(
     undefined,
     undefined,
     property.name,
     undefined,
     property.type,
-    ts.createBlock([
-      ts.createReturn(
-        ts.createCall(ts.createIdentifier(type + 'PropertyGet'), undefined, [
-          ts.createThis(),
-          ts.createLiteral((property.name as any).text),
+    createBlock([
+      createReturn(
+        createCall(createIdentifier(type + 'PropertyGet'), undefined, [
+          createThis(),
+          createLiteral((property.name as any).text),
         ])
       ),
     ])
   );
 
-  const setter = ts.createSetAccessor(
+  const setter = createSetAccessor(
     undefined,
     undefined,
     property.name,
-    [ts.createParameter(undefined, undefined, undefined, 'value', undefined, property.type)],
-    ts.createBlock([
-      ts.createStatement(
-        ts.createCall(ts.createIdentifier(type + 'PropertySet'), undefined, [
-          ts.createThis(),
-          ts.createLiteral((property.name as any).text),
-          ts.createIdentifier('value'),
+    [createParameter(undefined, undefined, undefined, 'value', undefined, property.type)],
+    createBlock([
+      createStatement(
+        createCall(createIdentifier(type + 'PropertySet'), undefined, [
+          createThis(),
+          createLiteral((property.name as any).text),
+          createIdentifier('value'),
         ])
       ),
     ])

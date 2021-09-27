@@ -1,18 +1,19 @@
-import * as ts from 'typescript';
+import { createIdentifier, SourceFile, SyntaxKind, TransformationContext } from 'typescript';
+
 import { getMethodsForDecorator } from '../helpers';
 
-function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ngcBuild?: boolean) {
+function transformImports(file: SourceFile, ctx: TransformationContext, ngcBuild?: boolean) {
   // remove angular imports
   if (!ngcBuild) {
     // @ts-expect-error
     file.statements = (file.statements as any).filter(
-      (s: any) => !(s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@angular/core')
+      (s: any) => !(s.kind === SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@angular/core')
     );
   }
 
   // find the @awesome-cordova-plugins/core import statement
   const importStatement = (file.statements as any).find((s: any) => {
-    return s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@awesome-cordova-plugins/core';
+    return s.kind === SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@awesome-cordova-plugins/core';
   });
 
   // we're only interested in files containing @awesome-cordova-plugins/core import statement
@@ -40,11 +41,11 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
 
     decorators.forEach(d => (methods = getMethodsForDecorator(d).concat(methods)));
 
-    const methodElements = methods.map(m => ts.createIdentifier(m));
+    const methodElements = methods.map(m => createIdentifier(m));
     const methodNames = methodElements.map(el => el.escapedText);
 
     importStatement.importClause.namedBindings.elements = [
-      ts.createIdentifier('AwesomeCordovaNativePlugin'),
+      createIdentifier('AwesomeCordovaNativePlugin'),
       ...methodElements,
       ...importStatement.importClause.namedBindings.elements.filter(
         el => keep.indexOf(el.name.text) !== -1 && methodNames.indexOf(el.name.text) === -1
@@ -69,7 +70,7 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
 }
 
 export function importsTransformer(ngcBuild?: boolean) {
-  return (ctx: ts.TransformationContext) => {
+  return (ctx: TransformationContext) => {
     return tsSourceFile => {
       return transformImports(tsSourceFile, ctx, ngcBuild);
     };

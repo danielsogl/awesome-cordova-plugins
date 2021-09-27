@@ -1,6 +1,6 @@
 import { unlinkSync, writeJSONSync } from 'fs-extra';
 import { resolve } from 'path';
-import * as ts from 'typescript';
+import { ClassDeclaration, SyntaxKind, TransformationContext, visitEachChild } from 'typescript';
 
 import { hasDecorator, ROOT } from '../helpers';
 
@@ -22,13 +22,13 @@ export const EMIT_PATH = resolve(ROOT, 'injectable-classes.json');
  * window['IonicNative'] object.
  */
 export function extractInjectables() {
-  return (ctx: ts.TransformationContext) => {
+  return (ctx: TransformationContext) => {
     return tsSourceFile => {
       if (tsSourceFile.fileName.indexOf('src/@awesome-cordova-plugins/plugins') > -1) {
-        ts.visitEachChild(
+        visitEachChild(
           tsSourceFile,
           node => {
-            if (node.kind !== ts.SyntaxKind.ClassDeclaration) {
+            if (node.kind !== SyntaxKind.ClassDeclaration) {
               return node;
             }
 
@@ -36,7 +36,7 @@ export function extractInjectables() {
             if (isInjectable) {
               injectableClasses.push({
                 file: tsSourceFile.path,
-                className: (node as ts.ClassDeclaration).name.text,
+                className: (node as ClassDeclaration).name.text,
                 dirName: tsSourceFile.path.split(/[\\\/]+/).reverse()[1],
               });
             }

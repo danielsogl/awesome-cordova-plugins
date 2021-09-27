@@ -4,7 +4,7 @@ import { clone } from 'lodash';
 import { dirname, join, resolve } from 'path';
 import * as rimraf from 'rimraf';
 import * as rollup from 'rollup';
-import * as ts from 'typescript';
+import { ModuleKind, ModuleResolutionKind, ScriptTarget } from 'typescript';
 
 import { COMPILER_OPTIONS, PLUGIN_PATHS, ROOT } from './helpers';
 import { importsTransformer } from './transformers/imports';
@@ -14,9 +14,9 @@ import { generateDeclarations } from './transpile';
 export function getProgram(rootNames: string[] = createSourceFiles()) {
   const options: CompilerOptions = clone(COMPILER_OPTIONS);
   options.basePath = ROOT;
-  options.moduleResolution = ts.ModuleResolutionKind.NodeJs;
-  options.module = ts.ModuleKind.ES2015;
-  options.target = ts.ScriptTarget.ES5;
+  options.moduleResolution = ModuleResolutionKind.NodeJs;
+  options.module = ModuleKind.ES2015;
+  options.target = ScriptTarget.ES5;
   options.lib = ['dom', 'es2017'];
   options.inlineSourceMap = true;
   options.importHelpers = true;

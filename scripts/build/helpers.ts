@@ -1,7 +1,20 @@
 import { readdirSync } from 'fs-extra';
 import { camelCase, clone } from 'lodash';
 import { join, resolve } from 'path';
-import * as ts from 'typescript';
+import {
+  ArrayLiteralExpression,
+  createArrayLiteral,
+  createLiteral,
+  createNumericLiteral,
+  createObjectLiteral,
+  createPropertyAssignment,
+  Decorator,
+  Expression,
+  Node,
+  ObjectLiteralElementLike,
+  ObjectLiteralExpression,
+  SyntaxKind,
+} from 'typescript';
 
 import { Logger } from '../logger';
 
@@ -12,13 +25,13 @@ export const COMPILER_OPTIONS = TS_CONFIG.compilerOptions;
 export const PLUGINS_ROOT = join(ROOT, 'src/@awesome-cordova-plugins/plugins/');
 export const PLUGIN_PATHS = readdirSync(PLUGINS_ROOT).map(d => join(PLUGINS_ROOT, d, 'index.ts'));
 
-export function getDecorator(node: ts.Node, index = 0): ts.Decorator {
+export function getDecorator(node: Node, index = 0): Decorator {
   if (node.decorators && node.decorators[index]) {
     return node.decorators[index];
   }
 }
 
-export function hasDecorator(decoratorName: string, node: ts.Node): boolean {
+export function hasDecorator(decoratorName: string, node: Node): boolean {
   return (
     node.decorators &&
     node.decorators.length &&
@@ -43,24 +56,24 @@ export function getDecoratorArgs(decorator: any) {
     let val: number | boolean;
 
     switch (prop.initializer.kind) {
-      case ts.SyntaxKind.StringLiteral:
-      case ts.SyntaxKind.Identifier:
+      case SyntaxKind.StringLiteral:
+      case SyntaxKind.Identifier:
         val = prop.initializer.text;
         break;
 
-      case ts.SyntaxKind.ArrayLiteralExpression:
+      case SyntaxKind.ArrayLiteralExpression:
         val = prop.initializer.elements.map((e: any) => e.text);
         break;
 
-      case ts.SyntaxKind.TrueKeyword:
+      case SyntaxKind.TrueKeyword:
         val = true;
         break;
 
-      case ts.SyntaxKind.FalseKeyword:
+      case SyntaxKind.FalseKeyword:
         val = false;
         break;
 
-      case ts.SyntaxKind.NumericLiteral:
+      case SyntaxKind.NumericLiteral:
         val = Number(prop.initializer.text);
         break;
 
@@ -89,9 +102,9 @@ export function convertValueToLiteral(val: any) {
     return objectToObjectLiteral(val);
   }
   if (typeof val === 'number') {
-    return ts.createNumericLiteral(String(val));
+    return createNumericLiteral(String(val));
   }
-  return ts.createLiteral(val);
+  return createLiteral(val);
 }
 
 /**
@@ -100,14 +113,12 @@ export function convertValueToLiteral(val: any) {
  * @param obj key value object
  * @returns Typescript Object Literal Expression
  */
-function objectToObjectLiteral(obj: { [key: string]: any }): ts.ObjectLiteralExpression {
-  const newProperties: ts.ObjectLiteralElementLike[] = Object.keys(obj).map(
-    (key: string): ts.ObjectLiteralElementLike => {
-      return ts.createPropertyAssignment(ts.createLiteral(key), convertValueToLiteral(obj[key]) as ts.Expression);
-    }
-  );
+function objectToObjectLiteral(obj: { [key: string]: any }): ObjectLiteralExpression {
+  const newProperties: ObjectLiteralElementLike[] = Object.keys(obj).map((key: string): ObjectLiteralElementLike => {
+    return createPropertyAssignment(createLiteral(key), convertValueToLiteral(obj[key]) as Expression);
+  });
 
-  return ts.createObjectLiteral(newProperties);
+  return createObjectLiteral(newProperties);
 }
 
 /**
@@ -116,9 +127,9 @@ function objectToObjectLiteral(obj: { [key: string]: any }): ts.ObjectLiteralExp
  * @param list array
  * @returns Typescript Array Literal Expression
  */
-function arrayToArrayLiteral(list: any[]): ts.ArrayLiteralExpression {
+function arrayToArrayLiteral(list: any[]): ArrayLiteralExpression {
   const newList: any[] = list.map(convertValueToLiteral);
-  return ts.createArrayLiteral(newList);
+  return createArrayLiteral(newList);
 }
 
 export function getMethodsForDecorator(decoratorName: string) {
