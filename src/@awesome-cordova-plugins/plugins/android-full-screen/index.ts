@@ -3,6 +3,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 
 /**
  * Bit flag values for setSystemUiVisibility()
+ *
  * @see  https://developer.android.com/reference/android/view/View.html#setSystemUiVisibility(int)
  */
 export enum AndroidSystemUiFlags {
@@ -59,7 +60,8 @@ export enum AndroidSystemUiFlags {
 export class AndroidFullScreen extends AwesomeCordovaNativePlugin {
   /**
    * Is this plugin supported?
-   * @return {Promise<void>}
+   *
+   * @returns {Promise<void>}
    */
   @Cordova()
   isSupported(): Promise<void> {
@@ -68,7 +70,8 @@ export class AndroidFullScreen extends AwesomeCordovaNativePlugin {
 
   /**
    * Is immersive mode supported?
-   * @return {Promise<void>}
+   *
+   * @returns {Promise<void>}
    */
   @Cordova()
   isImmersiveModeSupported(): Promise<boolean> {
@@ -77,7 +80,8 @@ export class AndroidFullScreen extends AwesomeCordovaNativePlugin {
 
   /**
    * The width of the screen in immersive mode.
-   * @return {Promise<number>}
+   *
+   * @returns {Promise<number>}
    */
   @Cordova()
   immersiveWidth(): Promise<number> {
@@ -86,7 +90,8 @@ export class AndroidFullScreen extends AwesomeCordovaNativePlugin {
 
   /**
    * The height of the screen in immersive mode.
-   * @return {Promise<number>}
+   *
+   * @returns {Promise<number>}
    */
   @Cordova()
   immersiveHeight(): Promise<number> {
@@ -95,7 +100,8 @@ export class AndroidFullScreen extends AwesomeCordovaNativePlugin {
 
   /**
    * Hide system UI until user interacts.
-   * @return {Promise<void>}
+   *
+   * @returns {Promise<void>}
    */
   @Cordova()
   leanMode(): Promise<void> {
@@ -104,7 +110,8 @@ export class AndroidFullScreen extends AwesomeCordovaNativePlugin {
 
   /**
    * Show system UI.
-   * @return {Promise<void>}
+   *
+   * @returns {Promise<void>}
    */
   @Cordova()
   showSystemUI(): Promise<void> {
@@ -113,7 +120,8 @@ export class AndroidFullScreen extends AwesomeCordovaNativePlugin {
 
   /**
    * Extend your app underneath the status bar (Android 4.4+ only).
-   * @return {Promise<void>}
+   *
+   * @returns {Promise<void>}
    */
   @Cordova()
   showUnderStatusBar(): Promise<void> {
@@ -122,7 +130,8 @@ export class AndroidFullScreen extends AwesomeCordovaNativePlugin {
 
   /**
    * Extend your app underneath the system UI (Android 4.4+ only).
-   * @return {Promise<void>}
+   *
+   * @returns {Promise<void>}
    */
   @Cordova()
   showUnderSystemUI(): Promise<void> {
@@ -131,7 +140,8 @@ export class AndroidFullScreen extends AwesomeCordovaNativePlugin {
 
   /**
    * Hide system UI and keep it hidden (Android 4.4+ only).
-   * @return {Promise<void>}
+   *
+   * @returns {Promise<void>}
    */
   @Cordova()
   immersiveMode(): Promise<void> {
@@ -140,9 +150,10 @@ export class AndroidFullScreen extends AwesomeCordovaNativePlugin {
 
   /**
    * Manually set the the system UI to a custom mode. This mirrors the Android method of the same name. (Android 4.4+ only).
+   *
    * @see https://developer.android.com/reference/android/view/View.html#setSystemUiVisibility(int)
    * @param {AndroidSystemUiFlags} visibility Bitwise-OR of flags in AndroidSystemUiFlags
-   * @return {Promise<void>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   setSystemUiVisibility(visibility: AndroidSystemUiFlags): Promise<void> {

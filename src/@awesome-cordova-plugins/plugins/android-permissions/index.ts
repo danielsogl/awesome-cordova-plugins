@@ -8,7 +8,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * This plugin is designed to support Android new permissions checking mechanism.
  *
  * You can find all permissions here: https://developer.android.com/reference/android/Manifest.permission.html
- *
  * @usage
  * ```
  * import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
@@ -195,8 +194,9 @@ export class AndroidPermissions extends AwesomeCordovaNativePlugin {
 
   /**
    * Check permission
+   *
    * @param {string} permission The name of the permission
-   * @return {Promise<AndroidPermissionResponse>} Returns a promise
+   * @returns {Promise<AndroidPermissionResponse>} Returns a promise
    */
   @Cordova()
   checkPermission(permission: string): Promise<AndroidPermissionResponse> {
@@ -205,8 +205,9 @@ export class AndroidPermissions extends AwesomeCordovaNativePlugin {
 
   /**
    * Request permission
+   *
    * @param {string} permission The name of the permission to request
-   * @return {Promise<AndroidPermissionResponse>}
+   * @returns {Promise<AndroidPermissionResponse>}
    */
   @Cordova()
   requestPermission(permission: string): Promise<AndroidPermissionResponse> {
@@ -215,8 +216,9 @@ export class AndroidPermissions extends AwesomeCordovaNativePlugin {
 
   /**
    * Request permissions
+   *
    * @param {string[]} permissions An array with permissions
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   requestPermissions(permissions: string[]): Promise<any> {
@@ -225,8 +227,9 @@ export class AndroidPermissions extends AwesomeCordovaNativePlugin {
 
   /**
    * This function still works now, will not support in the future.
+   *
    * @param {string} permission The name of the permission
-   * @return {Promise<AndroidPermissionResponse>} Returns a promise
+   * @returns {Promise<AndroidPermissionResponse>} Returns a promise
    */
   @Cordova()
   hasPermission(permission: string): Promise<AndroidPermissionResponse> {

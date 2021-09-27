@@ -83,8 +83,9 @@ export class Tealium extends AwesomeCordovaNativePlugin {
   /**
    * This function initializes the Tealium Cordova plugin.
    * This should usually be done inside the "deviceReady" handler.
+   *
    * @param config {TealConfig}
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   init(config: TealConfig): Promise<any> {
@@ -93,9 +94,10 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * This function tracks a view event in the Tealium Cordova plugin
+   *
    * @param dataObject {any} The JSON data object containing your key-value pairs
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   trackView(dataObject: any, instanceName: string): Promise<any> {
@@ -104,9 +106,10 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * This function tracks a link event in the Tealium Cordova plugin
+   *
    * @param dataObject {any} The JSON data object containing your key-value pairs
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   trackEvent(dataObject: any, instanceName: string): Promise<any> {
@@ -115,10 +118,11 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * This function tracks a custom event in the Tealium Cordova plugin
+   *
    * @param eventType {string} The event type, link or view
    * @param dataObject {any} The JSON data object containing your key-value pairs
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   track(eventType: string, dataObject: any, instanceName: string): Promise<any> {
@@ -127,10 +131,11 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * This function adds data to the Tealium persistent data store
+   *
    * @param keyName {string} The key name that this data will be stored under for later retrieval
    * @param value {any} The value to be stored as persistent data
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   addPersistent(keyName: string, value: string | string[] | any, instanceName: string): Promise<any> {
@@ -139,10 +144,11 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * This function adds data to the Tealium volatile data store
+   *
    * @param keyName {string} The key name that this data will be stored under for later retrieval
    * @param value {any} The value to be stored as volatile data
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   addVolatile(keyName: string, value: string | string[], instanceName: string): Promise<any> {
@@ -151,9 +157,10 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * This function removes data from the Tealium volatile data store
+   *
    * @param keyName {string} The key name that this data will removed from the Tealium data store
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   removeVolatile(keyName: string, instanceName: string): Promise<any> {
@@ -162,9 +169,10 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * This function removes data from the Tealium persistent data store
+   *
    * @param keyName {string} The key name that this data will removed from the Tealium data store
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   removePersistent(keyName: string, instanceName: string): Promise<any> {
@@ -173,10 +181,11 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * This function retrieves a value from the Tealium Persistent data store
+   *
    * @param keyName {string} The key name that this data will retrieved from the Tealium data store
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
    * @param callback {any} A callback function that will be called when the data has been retrieved
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   getPersistent(keyName: string, instanceName: string, callback: any): Promise<any> {
@@ -184,10 +193,11 @@ export class Tealium extends AwesomeCordovaNativePlugin {
   }
   /**
    * This function retrieves a value from the Tealium Volatile data store
+   *
    * @param keyName {string} The key name that this data will retrieved from the Tealium data store
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
    * @param callback {any} A callback function that will be called when the data has been retrieved
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   getVolatile(keyName: string, instanceName: string, callback: any): Promise<any> {
@@ -196,10 +206,11 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * This function adds a remote command for later execution
+   *
    * @param commandName {string} The command name for this Remote Command
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
    * @param callback {any} A callback function that will be called when the data has been retrieved
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   addRemoteCommand(commandName: string, instanceName: string, callback: any): Promise<any> {
@@ -208,7 +219,8 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * This function retrieves the Tealium Visitor ID
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   *
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   getVisitorId(): Promise<any> {

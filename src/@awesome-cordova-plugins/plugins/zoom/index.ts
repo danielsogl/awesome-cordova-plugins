@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Zoom
  * @description
  * A Cordova plugin to use Zoom Video Conferencing services on Cordova applications.
- *
  * @usage
  * ```typescript
  * import { Zoom } from '@awesome-cordova-plugins/zoom';
@@ -88,9 +87,10 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class Zoom extends AwesomeCordovaNativePlugin {
   /**
    * Initialize Zoom SDK.
+   *
    * @param appKey    Zoom SDK app key.
    * @param appSecret Zoom SDK app secret.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   initialize(appKey: string, appSecret: string): Promise<any> {
@@ -99,9 +99,10 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Log user in with Zoom username and password.
+   *
    * @param username user's Zoom username.
    * @param password user's Zoom password.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   login(username: string, password: string): Promise<any> {
@@ -110,7 +111,8 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Log user out.
-   * @return {Promise<any>} true if logout success / false if failed.
+   *
+   * @returns {Promise<any>} true if logout success / false if failed.
    */
   @Cordova()
   logout(): Promise<any> {
@@ -119,7 +121,8 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Check whether the user is logged in.
-   * @return {Promise<boolean>} true if is logged in / false if not.
+   *
+   * @returns {Promise<boolean>} true if is logged in / false if not.
    */
   @Cordova()
   isLoggedIn(): Promise<boolean> {
@@ -128,10 +131,12 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Join a meeting for logged in user.
+   *
    * @param meetingNo       meeting number.
    * @param meetingPassword meeting password.
+   * @param displayName
    * @param options meeting options.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   joinMeeting(meetingNo: string, meetingPassword: string, displayName: string, options: any): Promise<any> {
@@ -140,13 +145,14 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Start a meeting for non-login user.
+   *
    * @param meetingNo        meeting number.
    * @param displayName      display name shown in meeting.
    * @param zoomToken        zoom token retrieved from Zoom Rest API.
    * @param zoomAccessToken  zoom access token retrieved from Zoom Rest API.
    * @param userId           user ID retrieved from Zoom Rest API.
    * @param options          meeting options.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   startMeetingWithZAK(
@@ -162,9 +168,10 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Start a meeting for logged in user.
+   *
    * @param meetingNo   meeting number.
    * @param options     meeting option.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   startMeeting(meetingNo: string, options: any): Promise<any> {
@@ -173,8 +180,9 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Start an instant meeting for logged in user.
+   *
    * @param options meeting option.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   startInstantMeeting(options: any): Promise<any> {
@@ -183,8 +191,9 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Set language.
+   *
    * @param languageTag language name.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   setLocale(languageTag: string): Promise<any> {

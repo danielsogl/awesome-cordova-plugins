@@ -2,6 +2,10 @@ import { Observable, Observer } from 'rxjs';
 
 import { checkAvailability, getPlugin } from './common';
 
+/**
+ * @param pluginObj
+ * @param methodName
+ */
 function overrideFunction(pluginObj: any, methodName: string): Observable<any> {
   return new Observable((observer: Observer<any>) => {
     const availabilityCheck = checkAvailability(pluginObj, methodName);
@@ -17,6 +21,11 @@ function overrideFunction(pluginObj: any, methodName: string): Observable<any> {
   });
 }
 
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ */
 export function cordovaFunctionOverride(pluginObj: any, methodName: string, args: IArguments | any[] = []) {
   return overrideFunction(pluginObj, methodName);
 }

@@ -12,7 +12,7 @@ export interface OSNotification {
    */
   shown?: boolean;
   /**
-   * **ANDROID** - Android Notification assigned to the notification. Can be used to cancel or replace the notification.
+   * ANDROID** - Android Notification assigned to the notification. Can be used to cancel or replace the notification.
    */
   androidNotificationId?: number;
   /**
@@ -24,7 +24,7 @@ export interface OSNotification {
    */
   displayType?: OSDisplayType;
   /**
-   * **ANDROID** - Notification is a summary notification for a group this will contain all notification payloads it was created from.
+   * ANDROID** - Notification is a summary notification for a group this will contain all notification payloads it was created from.
    */
   groupedNotifications?: OSNotificationPayload[];
   app_id?: string;
@@ -91,7 +91,7 @@ export interface OSNotification {
 }
 
 /**
- * **ANDROID** - Privacy setting for how the notification should be shown on the lockscreen of Android 5+ devices.
+ * ANDROID** - Privacy setting for how the notification should be shown on the lockscreen of Android 5+ devices.
  */
 export enum OSLockScreenVisibility {
   /**
@@ -148,19 +148,19 @@ export interface OSNotificationPayload {
    */
   additionalData?: any;
   /**
-   * **ANDROID** - Small icon resource name set on the notification.
+   * ANDROID** - Small icon resource name set on the notification.
    */
   smallIcon?: string;
   /**
-   * **ANDROID** - Large icon set on the notification.
+   * ANDROID** - Large icon set on the notification.
    */
   largeIcon?: string;
   /**
-   * **ANDROID** - Big picture image set on the notification.
+   * ANDROID** - Big picture image set on the notification.
    */
   bigPicture?: string;
   /**
-   * **ANDROID** - Accent color shown around small notification icon on Android 5+ devices. ARGB format.
+   * ANDROID** - Accent color shown around small notification icon on Android 5+ devices. ARGB format.
    */
   smallIconAccentColor?: string;
   /**
@@ -172,16 +172,16 @@ export interface OSNotificationPayload {
    */
   sound: string;
   /**
-   * **ANDROID** - Devices that have a notification LED will blink in this color. ARGB format.
+   * ANDROID** - Devices that have a notification LED will blink in this color. ARGB format.
    */
   ledColor?: string;
   lockScreenVisibility?: OSLockScreenVisibility;
   /**
-   * **ANDROID** - Notifications with this same key will be grouped together as a single summary notification.
+   * ANDROID** - Notifications with this same key will be grouped together as a single summary notification.
    */
   groupKey?: string;
   /**
-   * **ANDROID** - Summary text displayed in the summary notification.
+   * ANDROID** - Summary text displayed in the summary notification.
    */
   groupMessage?: string;
   /**
@@ -189,11 +189,11 @@ export interface OSNotificationPayload {
    */
   actionButtons: OSActionButton[];
   /**
-   * **ANDROID** - The Google project number the notification was sent under.
+   * ANDROID** - The Google project number the notification was sent under.
    */
   fromProjectNumber?: string;
   /**
-   * **ANDROID** - If a background image was set this object will be available.
+   * ANDROID** - If a background image was set this object will be available.
    */
   backgroundImageLayout?: OSBackgroundImageLayout;
   priority?: number;
@@ -216,7 +216,7 @@ export interface OSActionButton {
    */
   text: string;
   /**
-   * **ANDROID** - Icon shown on the button.
+   * ANDROID** - Icon shown on the button.
    */
   icon: string;
 }
@@ -264,7 +264,7 @@ export interface OSPermissionSubscriptionState {
 }
 
 /**
- * **ANDROID** - If a background image was set, this object will be available.
+ * ANDROID** - If a background image was set, this object will be available.
  */
 export interface OSBackgroundImageLayout {
   /**
@@ -395,8 +395,6 @@ export interface OSInAppMessageAction {
  *
  * 3. From the root of your project make the file executable:
  * `$ chmod +x hooks/copy_android_notification_icons.js`
- *
- *
  * @usage
  * ```typescript
  * import { OneSignal } from '@awesome-cordova-plugins/onesignal/ngx';
@@ -441,6 +439,7 @@ export interface OSInAppMessageAction {
 export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * constants to use in inFocusDisplaying()
+   *
    * @hidden
    */
   OSInFocusDisplayOption = {
@@ -464,7 +463,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * Callback to run when a notification is received, whether it was displayed or not.
    *
-   * @return {Observable<OneSignalReceivedNotification>}
+   * @returns {Observable<OneSignalReceivedNotification>}
    */
   @Cordova({
     observable: true,
@@ -478,7 +477,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * center (**iOS**), or when closing an Alert notification shown in the app (if InAppAlert is enabled in
    * inFocusDisplaying).
    *
-   * @return {Observable<OneSignalOpenedNotification>}
+   * @returns {Observable<OneSignalOpenedNotification>}
    */
   @Cordova({
     observable: true,
@@ -490,7 +489,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * Use to process an In-App Message the user just tapped on.
    *
-   * @return {Observable<OSInAppMessageAction>}
+   * @returns {Observable<OSInAppMessageAction>}
    */
   @Cordova({
     observable: true,
@@ -500,7 +499,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * **iOS** - Settings for iOS apps
+   * iOS** - Settings for iOS apps
    *
    * @param settings
    *  kOSSettingsKeyAutoPrompt: boolean = true
@@ -508,6 +507,8 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    *
    *  kOSSettingsKeyInAppLaunchURL: boolean = false
    *  Launch notifications with a launch URL as an in app webview.
+   * @param settings.kOSSettingsKeyAutoPrompt
+   * @param settings.kOSSettingsKeyInAppLaunchURL
    * @returns {any}
    */
   @Cordova({
@@ -530,6 +531,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Prompt the user for notification permissions. Callback fires as soon as the user accepts or declines notifications.
+   *
    * @returns {Promise<boolean>}
    */
   @Cordova({
@@ -542,7 +544,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * Retrieve a list of tags that have been set on the user from the OneSignal server.
    *
-   * **Quirk**: You must wait for `getTags` to resolve before calling it again, as the plugin will only process the last method call and discard any previous ones.
+   * Quirk**: You must wait for `getTags` to resolve before calling it again, as the plugin will only process the last method call and discard any previous ones.
    *
    * @returns {Promise<any>} Returns a Promise that resolves when tags are recieved.
    */
@@ -572,6 +574,8 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    *
    * @param {string} Key of your choosing to create or update.
    * @param {string} Value to set on the key. NOTE: Passing in a blank String deletes the key, you can also call deleteTag.
+   * @param key
+   * @param value
    */
   @Cordova({ sync: true })
   sendTag(key: string, value: string): void {}
@@ -581,6 +585,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * Recommend using sendTags over sendTag if you need to set more than one tag on a user at a time.
    *
    * @param {string} Pass a json object with key/value pairs like: {key: "value", key2: "value2"}
+   * @param json
    */
   @Cordova({ sync: true })
   sendTags(json: any): void {}
@@ -589,6 +594,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * Deletes a tag that was previously set on a user with `sendTag` or `sendTags`. Use `deleteTags` if you need to delete more than one.
    *
    * @param {string} Key to remove.
+   * @param key
    */
   @Cordova({ sync: true })
   deleteTag(key: string): void {}
@@ -597,6 +603,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * Deletes tags that were previously set on a user with `sendTag` or `sendTags`.
    *
    * @param {string[]} Keys to remove.
+   * @param keys
    */
   @Cordova({ sync: true })
   deleteTags(keys: string[]): void {}
@@ -616,6 +623,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * Passing false means that the device will only vibrate lightly when the device is in it's vibrate only mode.
    *
    * @param {boolean} false to disable vibrate, true to re-enable it.
+   * @param enable
    */
   @Cordova({ sync: true })
   enableVibrate(enable: boolean): void {}
@@ -628,6 +636,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * Passing false means that the device will only vibrate unless the device is set to a total silent mode.
    *
    * @param {boolean} false to disable sound, true to re-enable it.
+   * @param enable
    */
   @Cordova({ sync: true })
   enableSound(enable: boolean): void {}
@@ -666,6 +675,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param {notificationObj} Parameters see POST [documentation](https://documentation.onesignal.com/v2.0/docs/notifications-create-notification)
+   * @param notificationObj
    * @returns {Promise<any>} Returns a Promise that resolves if the notification was send successfully.
    */
   @Cordova()
@@ -675,6 +685,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Cancels a single OneSignal notification based on its Android notification integer id. Use instead of NotificationManager.cancel(id); otherwise the notification will be restored when your app is restarted.
+   *
    * @param notificationId {string}
    */
   @Cordova({ sync: true })
@@ -700,12 +711,16 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * The higher the value the more information is shown.
    *
    * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
+   * @param logLevel
+   * @param logLevel.logLevel
+   * @param logLevel.visualLevel
    */
   @Cordova({ sync: true })
   setLogLevel(logLevel: { logLevel: number; visualLevel: number }): void {}
 
   /**
    * Disable or enable location collection (Defaults to enabled) if your app has location permission.
+   *
    * @param shared {boolean}
    */
   @Cordova({ sync: true })
@@ -717,7 +732,8 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * - Notification permission prompt shown
    * - The user accepting or declining the permission prompt
    * - Enabling/disabling notifications for your app in the device Settings after returning to your app.
-   * @return {Observable<any>}
+   *
+   * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,
@@ -733,7 +749,8 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * - Getting a player / user id from OneSignal
    * - OneSignal.setSubscription is called
    * - User disables or enables notifications
-   * @return {Observable<any>}
+   *
+   * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,
@@ -744,6 +761,9 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Clears all OneSignal notifications
+   *
+   * @param email
+   * @param emailAuthToken
    */
   @Cordova()
   setEmail(email: string, emailAuthToken?: string): Promise<any> {
@@ -765,7 +785,8 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * - Getting a player / user id from OneSignal
    * - OneSignal.setSubscription is called
    * - User disables or enables notifications
-   * @return {Observable<any>}
+   *
+   * @returns {Observable<any>}
    */
   @Cordova({
     observable: true,
@@ -783,6 +804,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * Allows you to delay the initialization of the SDK until the user provides privacy consent.
    * The SDK will not be fully initialized until the provideUserConsent(true) method is called.
+   *
    * @param {boolean} required
    */
   @Cordova()
@@ -791,6 +813,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * If your application is set to require the user's privacy consent, you can provide this consent using this method.
    * Until you call provideUserConsent(true), the SDK will not fully initialize and will not send any data to OneSignal.
+   *
    * @param {boolean} granted
    */
   @Cordova()
@@ -798,6 +821,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Accepts a callback, which returns a boolean variable indicating if the user has given privacy consent yet.
+   *
    * @param {Function} callback
    */
   @Cordova()
@@ -806,6 +830,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * Allows you to use your own system's user ID's to send push notifications to your users.
    * To tie a user to a given user ID, you can use this method.
+   *
    * @param {string} externalId
    */
   @Cordova()

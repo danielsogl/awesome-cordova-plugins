@@ -86,7 +86,6 @@ export interface BarcodeScanResult {
  * The Barcode Scanner Plugin opens a camera view and automatically scans a barcode, returning the data back to you.
  *
  * Requires Cordova plugin: `phonegap-plugin-barcodescanner`. For more info, please see the [BarcodeScanner plugin docs](https://github.com/phonegap/phonegap-plugin-barcodescanner).
- *
  * @usage
  * ```typescript
  * import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
@@ -129,6 +128,7 @@ export class BarcodeScanner extends AwesomeCordovaNativePlugin {
 
   /**
    * Open the barcode scanner.
+   *
    * @param {BarcodeScannerOptions} [options] Optional options to pass to the scanner
    * @returns {Promise<any>} Returns a Promise that resolves with scanner data, or rejects with an error.
    */
@@ -142,6 +142,7 @@ export class BarcodeScanner extends AwesomeCordovaNativePlugin {
   /**
    * Encodes data into a barcode.
    * NOTE: not well supported on Android
+   *
    * @param {string} type Type of encoding
    * @param {any} data Data to encode
    * @returns {Promise<any>}

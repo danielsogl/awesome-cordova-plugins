@@ -54,8 +54,6 @@ export interface EmailComposerOptions {
  * @description
  *
  * Requires Cordova plugin: cordova-plugin-email-composer. For more info, please see the [Email Composer plugin docs](https://github.com/hypery2k/cordova-email-plugin).
- *
- *
  * @usage
  * ```typescript
  * import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx';
@@ -133,7 +131,8 @@ export interface EmailComposerOptions {
 export class EmailComposer extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the app has a permission to access email accounts information
-   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
+   *
+   * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
    */
   @Cordova({
     successIndex: 0,
@@ -145,7 +144,8 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
 
   /**
    * Request permission to access email accounts information
-   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
+   *
+   * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
    */
   @Cordova({
     successIndex: 0,

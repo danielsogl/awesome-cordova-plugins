@@ -29,7 +29,6 @@ export interface TTSVoice {
  * @name Text To Speech Advanced
  * @description
  * Text to Speech plugin
- *
  * @usage
  * ```typescript
  * import { TextToSpeechAdvanced } from '@awesome-cordova-plugins/text-to-speech-advanced/ngx';
@@ -58,8 +57,9 @@ export interface TTSVoice {
 export class TextToSpeechAdvanced extends AwesomeCordovaNativePlugin {
   /**
    * This function speaks
+   *
    * @param textOrOptions {string | TTSOptions} Text to speak or TTSOptions
-   * @return {Promise<any>} Returns a promise that resolves when the speaking finishes
+   * @returns {Promise<any>} Returns a promise that resolves when the speaking finishes
    */
   @Cordova({
     successIndex: 1,
@@ -71,7 +71,8 @@ export class TextToSpeechAdvanced extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop any current TTS playback
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova()
   stop(): Promise<any> {
@@ -80,7 +81,8 @@ export class TextToSpeechAdvanced extends AwesomeCordovaNativePlugin {
 
   /**
    * Get all voices
-   * @return {Promise<TTSVoice[]>}
+   *
+   * @returns {Promise<TTSVoice[]>}
    */
   @Cordova()
   getVoices(): Promise<TTSVoice[]> {

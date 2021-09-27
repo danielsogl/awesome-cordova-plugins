@@ -91,11 +91,11 @@ export class Coordinates {
 /** A blocker is an obstacle that needs to be resolved to achieve reliable tracking. */
 export interface Blocker {
   /** Recommended name for a user action, that needs to be performed to resolve the blocker. */
-  userActionTitle: String;
+  userActionTitle: string;
   /** Recommended name for a button, that will navigate user to the place where he can resolve the blocker */
-  userActionCTA: String;
+  userActionCTA: string;
   /** User action explanation */
-  userActionExplanation: String;
+  userActionExplanation: string;
   /** An action that navigates user to the dedicated settings menu. */
   resolve: () => void;
 }
@@ -124,7 +124,6 @@ export interface Blocker {
  *   }
  *
  * ```
- *
  */
 export class HyperTrack {
   /** Enables debug log in native HyperTrack SDK. */
@@ -137,8 +136,8 @@ export class HyperTrack {
    *
    * Initializes SDK. Also resolves SDK instance that could be used to query deviceId or set
    * various data.
-   * @param publishableKey account-specific secret from the HyperTrack dashborad.
    *
+   * @param publishableKey account-specific secret from the HyperTrack dashborad.
    * @see {@link https://dashboard.hypertrack.com/setup}.
    */
   static initialize(publishableKey: string): Promise<HyperTrack> {
@@ -181,7 +180,11 @@ export class HyperTrack {
     });
   }
 
-  /** Sets device name that could be used to identify the device in HyperTrack dashboard */
+  /**
+   * Sets device name that could be used to identify the device in HyperTrack dashboard
+   *
+   * @param name
+   */
   setDeviceName(name: string): Promise<any> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.setDeviceName(
@@ -194,6 +197,7 @@ export class HyperTrack {
 
   /**
    * Use this to set additional properties, like segments, teams etc.
+   *
    * @param metadata key-value pais of properties.
    */
   setDeviceMetadata(metadata: Object): Promise<any> {
@@ -206,7 +210,12 @@ export class HyperTrack {
     });
   }
 
-  /** Updates title and text in persistent notification, that appears when tracking is active.  */
+  /**
+   * Updates title and text in persistent notification, that appears when tracking is active.
+   *
+   * @param title
+   * @param message
+   */
   setTrackingNotificationProperties(title: string, message: string): Promise<any> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.setTrackingNotificationProperties(
@@ -218,7 +227,12 @@ export class HyperTrack {
     });
   }
 
-  /** Adds special marker-like object to device timeline. */
+  /**
+   * Adds special marker-like object to device timeline.
+   *
+   * @param geotagData
+   * @param expectedLocation
+   */
   addGeotag(geotagData: Object, expectedLocation?: Coordinates): Promise<any> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.addGeoTag(

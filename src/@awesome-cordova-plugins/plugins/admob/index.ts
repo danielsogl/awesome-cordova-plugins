@@ -135,14 +135,13 @@ export interface AdMobEvent {
  * Most complete Admob plugin with support for [Tappx](http://www.tappx.com/?h=dec334d63287772de859bdb4e977fce6) ads.
  * Monetize your apps and games with AdMob ads, using latest Google AdMob SDK. With this plugin you can show AdMob ads easily!
  *
- * **Supports:**
+ * Supports:**
  * - Banner ads (top and bottom)
  * - Interstitial ads
  * - Rewarded ads
  * - [Tappx](http://www.tappx.com/?h=dec334d63287772de859bdb4e977fce6) ads
- *
  * @usage
- * **Note:** No ads will be served on apps with package name `io.ionic.starter`. This is the default package name for new `ionic` apps. Make sure to rename the package name so ads can be displayed.
+ * Note:** No ads will be served on apps with package name `io.ionic.starter`. This is the default package name for new `ionic` apps. Make sure to rename the package name so ads can be displayed.
  * ```typescript
  * import { Admob, AdmobOptions } from '@awesome-cordova-plugins/admob';
  *
@@ -295,6 +294,7 @@ export class Admob extends AwesomeCordovaNativePlugin {
   /**
    * This enum represents AdMob's supported ad sizes.
    * Use one of these constants as adSize option when calling createBannerView
+   *
    * @readonly
    */
   @CordovaProperty()
@@ -308,6 +308,7 @@ export class Admob extends AwesomeCordovaNativePlugin {
 
   /**
    * This enum represents AdMob's supported ad types
+   *
    * @readonly
    */
   @CordovaProperty()
@@ -320,8 +321,9 @@ export class Admob extends AwesomeCordovaNativePlugin {
   /**
    * Set the options to start displaying ads.
    * Although it is not required to call this method, as options can be specified in other methods, it is highly recommended
+   *
    * @param options {AdmobOptions} Some param to configure something
-   * @return {Promise<any>} Returns a promise that resolves when the options are set
+   * @returns {Promise<any>} Returns a promise that resolves when the options are set
    */
   @Cordova()
   setOptions(options: AdmobOptions | AdmobWebOptions): Promise<any> {
@@ -330,8 +332,9 @@ export class Admob extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates a new banner ad view. Call this method in order to be able to start showing banners
+   *
    * @param options {AdmobOptions} (Optional) Setup options
-   * @return {Promise<any>} Returns a promise that resolves when the banner view is created
+   * @returns {Promise<any>} Returns a promise that resolves when the banner view is created
    */
   @Cordova()
   createBannerView(options?: AdmobOptions | AdmobWebOptions): Promise<any> {
@@ -340,8 +343,9 @@ export class Admob extends AwesomeCordovaNativePlugin {
 
   /**
    * Show banner ads. You must call createBannerView first, otherwise it will result in failure callback and no ads will be shown
+   *
    * @param show {boolean} (Optional) Indicates whether to show or hide banner ads. Defaults to `true`
-   * @return {Promise<any>} Returns a promise that resolves when the banner shown or hidden
+   * @returns {Promise<any>} Returns a promise that resolves when the banner shown or hidden
    */
   @Cordova()
   showBannerAd(show?: boolean): Promise<any> {
@@ -360,8 +364,9 @@ export class Admob extends AwesomeCordovaNativePlugin {
    * If `options.autoShowInterstitial` is set to `true` (default), the ad will automatically be displayed.
    * Otherwise you need to subscribe to `onAdLoaded()` event and call `showInterstitialAd()` after it will be raised specifying that an interstitial ad is available.
    * If you already called `requestInterstitialAd()` but the interstitial has never been shown, the successive calls to `requestInterstitialAd()` will result in the ad being inmediately available (the one that was obtained on the first call)
+   *
    * @param options {AdmobOptions} (Optional) Setup options
-   * @return {Promise<any>} Returns a promise that resolves when the interstitial ad is loaded
+   * @returns {Promise<any>} Returns a promise that resolves when the interstitial ad is loaded
    */
   @Cordova()
   requestInterstitialAd(options?: AdmobOptions | AdmobWebOptions): Promise<any> {
@@ -370,7 +375,8 @@ export class Admob extends AwesomeCordovaNativePlugin {
 
   /**
    * Show an interstitial ad. Call it after `requestInterstitialAd()` and `onAdLoaded()` event raised.
-   * @return {Promise<any>} Returns a promise that resolves when the interstitial ad is shown
+   *
+   * @returns {Promise<any>} Returns a promise that resolves when the interstitial ad is shown
    */
   @Cordova()
   showInterstitialAd(): Promise<any> {
@@ -382,8 +388,9 @@ export class Admob extends AwesomeCordovaNativePlugin {
    * If `options.autoShowRewarded` is set to `true` (default), the ad will automatically be displayed.
    * Otherwise you need to subscribe to `onAdLoaded()` enent and call `showRewardedAd()` after it will be raised specifying that a rewarded ad is available.
    * If you already called `requestRewardedAd()` but the rewarded has never been shown, the successive calls to `requestRewardedAd()` will result in the ad being inmediately available (the one that was obtained on the first call)
+   *
    * @param options {AdmobOptions} (Optional) Setup options
-   * @return {Promise<any>} Returns a promise that resolves when the rewarded ad is loaded
+   * @returns {Promise<any>} Returns a promise that resolves when the rewarded ad is loaded
    */
   @Cordova()
   requestRewardedAd(options?: AdmobOptions | AdmobWebOptions): Promise<any> {
@@ -392,7 +399,8 @@ export class Admob extends AwesomeCordovaNativePlugin {
 
   /**
    * Show a rewarded ad
-   * @return {Promise<any>} Returns a promise that resolves when the rewarded ad is shown
+   *
+   * @returns {Promise<any>} Returns a promise that resolves when the rewarded ad is shown
    */
   @Cordova()
   showRewardedAd(): Promise<any> {
@@ -402,13 +410,14 @@ export class Admob extends AwesomeCordovaNativePlugin {
   /**
    * Called when an ad is received.
    *
-   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   * WARNING*: only **ionic^4**. Older versions of ionic, use:
    *
    * ```js
    * document.addEventListener(window.admob.events.onAdLoaded, () => { });
    * ```
    *
    * Please refer to the documentation on https://admob-ionic.com/Events.
+   *
    * @returns {Observable<AdMobEvent>} Returns an observable when an ad is received
    */
   @Cordova({
@@ -423,13 +432,14 @@ export class Admob extends AwesomeCordovaNativePlugin {
   /**
    * Called when an ad request failed.
    *
-   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   * WARNING*: only **ionic^4**. Older versions of ionic, use:
    *
    * ```js
    * document.addEventListener(window.admob.events.onAdFailedToLoad, () => { });
    * ```
    *
    * Please refer to the documentation on https://admob-ionic.com/Events.
+   *
    * @returns {Observable<AdMobEvent>} Returns an observable when an ad request is failed
    */
   @Cordova({
@@ -445,13 +455,14 @@ export class Admob extends AwesomeCordovaNativePlugin {
    * Called when an ad opens an overlay that covers the screen.
    * Please note that onPause cordova event is raised when an interstitial is shown.
    *
-   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   * WARNING*: only **ionic^4**. Older versions of ionic, use:
    *
    * ```js
    * document.addEventListener(window.admob.events.onAdOpened, () => { });
    * ```
    *
    * Please refer to the documentation on https://admob-ionic.com/Events.
+   *
    * @returns {Observable<AdMobEvent>} Returns an observable when an ad is opened
    */
   @Cordova({
@@ -467,13 +478,14 @@ export class Admob extends AwesomeCordovaNativePlugin {
    * Called when the user is about to return to the application after clicking on an ad.
    * Please note that onResume cordova event is raised when an interstitial is closed.
    *
-   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   * WARNING*: only **ionic^4**. Older versions of ionic, use:
    *
    * ```js
    * document.addEventListener(window.admob.events.onAdClosed, () => { });
    * ```
    *
    * Please refer to the documentation on https://admob-ionic.com/Events.
+   *
    * @returns {Observable<AdMobEvent>} Returns an observable when an ad is closed
    */
   @Cordova({
@@ -487,9 +499,10 @@ export class Admob extends AwesomeCordovaNativePlugin {
 
   /**
    * Called when the user leaves the application after clicking an ad (e.g., to go to the browser)
+   *
    * @returns {Observable<AdMobEvent>} Returns an observable when an ad leaves the application.
    *
-   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   * WARNING*: only **ionic^4**. Older versions of ionic, use:
    *
    * ```js
    * document.addEventListener(window.admob.events.onAdLeftApplication, () => { });
@@ -510,13 +523,14 @@ export class Admob extends AwesomeCordovaNativePlugin {
   /**
    * Called when the user has been rewarded by an ad.
    *
-   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   * WARNING*: only **ionic^4**. Older versions of ionic, use:
    *
    * ```js
    * document.addEventListener(window.admob.events.onRewardedAd, () => { });
    * ```
    *
    * Please refer to the documentation on https://admob-ionic.com/Events.
+   *
    * @returns {Observable<AdMobEvent>} Returns an observable when the user rewards an ad
    */
   @Cordova({
@@ -531,13 +545,14 @@ export class Admob extends AwesomeCordovaNativePlugin {
   /**
    * Called when the video of a rewarded ad started.
    *
-   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   * WARNING*: only **ionic^4**. Older versions of ionic, use:
    *
    * ```js
    * document.addEventListener(window.admob.events.onRewardedAdVideoStarted, () => { });
    * ```
    *
    * Please refer to the documentation on https://admob-ionic.com/Events.
+   *
    * @returns {Observable<AdMobEvent>} Returns an observable when the video is started
    */
   @Cordova({
@@ -552,13 +567,14 @@ export class Admob extends AwesomeCordovaNativePlugin {
   /**
    * Called when the video of a rewarded ad has completed.
    *
-   * *WARNING*: only **ionic^4**. Older versions of ionic, use:
+   * WARNING*: only **ionic^4**. Older versions of ionic, use:
    *
    * ```js
    * document.addEventListener(window.admob.events.onRewardedAdVideoCompleted, () => { });
    * ```
    *
    * Please refer to the documentation on https://admob-ionic.com/Events.
+   *
    * @returns {Observable<AdMobEvent>} Returns an observable when the video is completed
    */
   @Cordova({

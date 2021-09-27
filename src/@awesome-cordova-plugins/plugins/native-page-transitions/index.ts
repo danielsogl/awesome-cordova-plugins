@@ -20,7 +20,6 @@ export interface NativeTransitionOptions {
  * @name Native Page Transitions
  * @description
  * The Native Page Transitions plugin uses native hardware acceleration to animate your transitions between views. You have complete control over the type of transition, the duration, and direction.
- *
  * @usage
  * ```typescript
  * import { NativePageTransitions, NativeTransitionOptions } from '@awesome-cordova-plugins/native-page-transitions/ngx';
@@ -72,6 +71,7 @@ export interface NativeTransitionOptions {
 export class NativePageTransitions extends AwesomeCordovaNativePlugin {
   /**
    * Perform a slide animation
+   *
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
@@ -82,6 +82,7 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Perform a flip animation
+   *
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
@@ -92,6 +93,7 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Perform a fade animation
+   *
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
@@ -102,6 +104,7 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Perform a slide animation
+   *
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
@@ -112,6 +115,7 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Perform a slide animation
+   *
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
@@ -122,6 +126,7 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Execute pending transition
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -131,6 +136,7 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Cancel pending transition
+   *
    * @returns {Promise<any>}
    */
   @Cordova()

@@ -4,7 +4,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 /**
  * @name NativeView
  * @description Shows the native view.
- *
  * @usage
  * ```typescript
  * import { NativeView } from '@awesome-cordova-plugins/native-view/ngx';
@@ -134,7 +133,8 @@ export class NativeView extends AwesomeCordovaNativePlugin {
    * Get the **Android** current build variant FLAVOR
    * This is great if you change the FLAVOR in compile time
    *
-   * @param {Boolean} [config.catchError] `config.catchError` True, if you wish catch a JSON with error information
+   * @param {boolean} [config.catchError] `config.catchError` True, if you wish catch a JSON with error information
+   * @param config
    * @param {Function} [success] Callback when success. Use `.then()` Promise method, instead
    * @param {Function} [error] Callback callbed when an error happens. Use `.catch()` Promise method, instead
    * @returns {Promise<string>} Returns a current FLAVOR string

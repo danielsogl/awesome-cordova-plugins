@@ -24,7 +24,6 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
  * WifiWizard2 enables Wifi management for both Android and iOS applications within Cordova/Phonegap projects.
  *
  * This project is a fork of the WifiWizard plugin with fixes and updates, as well as patches taken from the Cordova Network Manager plugin.
- *
  * @usage
  * ```typescript
  * import { WifiWizard2 } from '@awesome-cordova-plugins/wifi-wizard-2/ngx';
@@ -52,7 +51,7 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
  *  - Helper async timeout delay, `delay` is optional, default is 2000ms = 2 seconds
  *  - This method always returns a resolved promise after the delay, it will never reject or throw an error
  *
- *  **Example inside async function**
+ *  Example inside async function**
  *  ```typescript
  *  async function example(){
  *     await this.wifiWizard2.timeout(4000);
@@ -60,7 +59,7 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
  * }
  *  ```
  *
- *  **Example inside standard non-async function**
+ *  Example inside standard non-async function**
  *  ```typescript
  *  function example(){
  *     this.wifiWizard2.timeout(4000).then( function(){
@@ -69,7 +68,7 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
  * }
  *  ```
  *
- *  **Thrown Errors**
+ *  Thrown Errors**
  *
  *  - `TIMEOUT_WAITING_FOR_SCAN` on timeout waiting for scan 10 seconds +
  *  - `SCAN_FAILED` if unable to start scan
@@ -111,7 +110,7 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
  *  - If unable to update network configuration (was added by user or other app), but a valid network ID exists, this method will still attempt to enable the network
  *  - Promise will not be returned until method has verified that connection to WiFi was in completed state (waits up to 60 seconds)
  *
- *  **Thrown Errors**
+ *  Thrown Errors**
  *
  *
  *  - `CONNECT_FAILED_TIMEOUT` unable to verify connection, timed out after 60 seconds
@@ -131,7 +130,7 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
  *  - If `ssid` is provided, this method will first attempt to `disable` and then `remove` the network
  *  - If you do not want to remove network configuration, use `disable` instead
  *
- *  **Thrown Errors**
+ *  Thrown Errors**
  *
  *  - `DISCONNECT_NET_REMOVE_ERROR` Android returned error when removing wifi configuration
  *  - `DISCONNECT_NET_DISABLE_ERROR` Unable to connect based on generated wifi config
@@ -155,7 +154,7 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
  *  ```
  *  - `wifi` must be an object formatted by `formatWifiConfig`, this **must** be done before calling `enable`
  *
- *  **Thrown Errors**
+ *  Thrown Errors**
  *
  *  - `AUTH_TYPE_NOT_SUPPORTED` - Invalid auth type specified
  *  - `ERROR_ADDING_NETWORK` - Android returned `-1` specifying error adding network
@@ -167,7 +166,7 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
  *  - `ssid` can either be an SSID (string) or a network ID (integer)
  *  - Please note, most newer versions of Android will only allow wifi to be removed if created by your application
  *
- *  **Thrown Errors**
+ *  Thrown Errors**
  *
  *  - `UNABLE_TO_REMOVE` Android returned failure in removing network
  *  - `REMOVE_NETWORK_NOT_FOUND` Unable to determine network ID from passed SSID
@@ -187,7 +186,7 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
  *  ```
  *  - It is recommended to just use the `scan` method instead of `startScan`
  *
- *  **Thrown Errors**
+ *  Thrown Errors**
  *
  *  - `STARTSCAN_FAILED` Android returned failure in starting scan
  *
@@ -230,7 +229,7 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
  *  - Pass `true` for `enabled` parameter to set Wifi enabled
  *  - You do not need to call this function to set WiFi enabled to call other methods that require wifi enabled.  This plugin will automagically enable WiFi if a method is called that requires WiFi to be enabled.
  *
- *  **Thrown Errors**
+ *  Thrown Errors**
  *
  *  - `ERROR_SETWIFIENABLED` wifi state does not match call (enable or disable)
  *
@@ -439,6 +438,7 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
 export class WifiWizard2 extends AwesomeCordovaNativePlugin {
   /**
    * Connect to network on iOS device
+   *
    * @param ssid
    * @param ssidPassword      Password if connecting to WPA/WPA2 network (omit or use false to connect to open network)
    * @returns {Promise}
@@ -453,6 +453,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Disconnect from SSID on iOS device
+   *
    * @param ssid
    * @returns {Promise}
    */
@@ -466,6 +467,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Add wifi network configuration
+   *
    * @param wifiConfig  Must be object created by formatWifiConfig()
    * @returns {Promise<any>}
    */
@@ -478,6 +480,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove wifi network configuration
+   *
    * @param {string|number} [ssid]
    * @returns {Promise<any>}
    */
@@ -496,6 +499,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
    * @param {string|number} [ssid]
    * @param {boolean} [bindAll=false] - Whether or not to bind all connections from app, through WiFi connection
    * @param {string} [password=]
+   * @param password
    * @param {string} [algorithm=NONE] - WPA, WPA (for WPA2), WEP or NONE (NONE by default)
    * @returns {Promise<any>}
    */
@@ -526,6 +530,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable Network
+   *
    * @param {string|number} [ssid]
    * @param {boolean} [bindAll=false] - Whether or not to bind all network requests to this wifi network
    * @param {boolean} [waitForConnection=false] - Whether or not to wait before resolving promise until connection to wifi is verified
@@ -541,6 +546,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Disable Network
+   *
    * @param {string|number} [ssid]
    * @returns {Promise<any>}
    */
@@ -554,6 +560,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Reconnect to the currently active access point, even if we are already connected.
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -566,6 +573,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Reconnect to the currently active access point, if we are currently disconnected.
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -578,6 +586,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns currently configured networks
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -589,6 +598,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Start network scan and return results
+   *
    * @param options
    * @returns {Promise<any>}
    */
@@ -601,6 +611,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Start wifi network scan (results can be retrieved with getScanResults)
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -612,6 +623,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Get wifi scan results (must call startScan first, or just use scan())
+   *
    * @param options
    * @returns {Promise<any>}
    */
@@ -624,6 +636,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if WiFi is enabled
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -635,6 +648,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable or Disable WiFi
+   *
    * @param enabled
    * @returns {Promise<any>}
    */
@@ -648,6 +662,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable WiFi
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -660,6 +675,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Disable WiFi
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -672,6 +688,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Unbind Network
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -683,6 +700,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Bind Network
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -694,6 +712,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Get Wifi Router IP from DHCP
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -705,6 +724,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Get Wifi IP
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -718,6 +738,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
    * Get Wifi IP and Subnet Address
    *
    * This method returns a JSON object similar to: { "ip": "0.0.0.0", "subnet": "0.0.0.0" }
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -729,6 +750,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Get Network ID from SSID
+   *
    * @param {string|number} [ssid]
    * @returns {Promise<any>}
    */
@@ -741,6 +763,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Get currently connected network ID
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -752,6 +775,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Get currently connected network SSID
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -763,6 +787,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Get currently connected network BSSID/MAC
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -774,6 +799,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if current WiFi connection has connection to the internet
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -785,6 +811,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if we can ping current WiFi router IP address
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -796,6 +823,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if we can connect via HTTP current WiFi router IP address
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -807,6 +835,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if current WiFi connection can connect to internet (checks connection to google.com)
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -833,6 +862,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Format WiFi configuration for Android Devices
+   *
    * @param {string|number} [ssid]
    * @param {string} [password]
    * @param {string} [algorithm]
@@ -851,6 +881,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Format WPA WiFi configuration for Android Devices
+   *
    * @param {string|number} [ssid]
    * @param {string} password
    * @param {boolean} isHiddenSSID
@@ -863,6 +894,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Format WiFi SSID String
+   *
    * @param ssid
    * @returns {*}
    */
@@ -873,6 +905,7 @@ export class WifiWizard2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Synchronous Sleep/Timeout `await this.timeout()`
+   *
    * @param delay  the amount of time to wait (default 2 seconds)
    */
   @CordovaFunctionOverride()

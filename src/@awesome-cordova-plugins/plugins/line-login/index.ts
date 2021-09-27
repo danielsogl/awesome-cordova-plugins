@@ -46,7 +46,6 @@ export interface LineLoginAccessToken {
  * @name Line Login
  * @description
  * The function login, logs out, acquires, verifies, and refreshes the access token. The version of LineSDK you are using is as follows.
- *
  * @usage
  * ```typescript
  * import { LineLogin } from '@awesome-cordova-plugins/line-login/ngx';
@@ -64,12 +63,10 @@ export interface LineLoginAccessToken {
  *   .catch(error => console.log(error))
  *
  * ```
- *
  * @interfaces
  * LineLoginParams
  * LineLoginProfile
  * LineLoginAccessToken
- *
  */
 @Plugin({
   pluginName: 'LineLogin',
@@ -85,8 +82,9 @@ export interface LineLoginAccessToken {
 export class LineLogin extends AwesomeCordovaNativePlugin {
   /**
    * Initialize
+   *
    * @param param LineLoginParams
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   initialize(param: LineLoginParams): Promise<any> {
@@ -95,7 +93,8 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
 
   /**
    * Login
-   * @return {Promise<LineLoginProfile>}
+   *
+   * @returns {Promise<LineLoginProfile>}
    */
   @Cordova()
   login(): Promise<LineLoginProfile> {
@@ -105,7 +104,8 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
   /**
    * Login with Web
    * (iOS only)
-   * @return {Promise<LineLoginProfile>}
+   *
+   * @returns {Promise<LineLoginProfile>}
    */
   @Cordova()
   loginWeb(): Promise<LineLoginProfile> {
@@ -114,7 +114,8 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
 
   /**
    * Logout
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova()
   logout(): Promise<any> {
@@ -123,7 +124,8 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
 
   /**
    * Get Access Token
-   * @return {Promise<LineLoginAccessToken>}
+   *
+   * @returns {Promise<LineLoginAccessToken>}
    */
   @Cordova()
   getAccessToken(): Promise<LineLoginAccessToken> {
@@ -132,7 +134,8 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
 
   /**
    * Verify AccessToken
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova()
   verifyAccessToken(): Promise<any> {
@@ -141,7 +144,8 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
 
   /**
    * Refresh Access Token
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova()
   refreshAccessToken(): Promise<any> {

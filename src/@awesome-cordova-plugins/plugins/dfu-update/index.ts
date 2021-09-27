@@ -23,7 +23,6 @@ export interface UpdateOptions {
  * @name Dfu Update
  * @description
  * This plugin is a Wrapper to use Nordic Semiconductor's Device Firmware Update (DFU) service to update a Bluetooth LE device.
- *
  * @usage
  * ```typescript
  * import { DfuUpdate } from '@awesome-cordova-plugins/dfu-update/ngx';
@@ -53,8 +52,9 @@ export interface UpdateOptions {
 export class DfuUpdate extends AwesomeCordovaNativePlugin {
   /**
    * Start the Firmware-Update-Process
+   *
    * @param options - Options for the process
-   * @return {Observable<any>} Returns a Observable that emits when something happens
+   * @returns {Observable<any>} Returns a Observable that emits when something happens
    */
   @Cordova({
     observable: true,

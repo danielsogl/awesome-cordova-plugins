@@ -35,13 +35,13 @@ enum UpdateAvailability {
 class AppUpdateInfo {
   updateType: UpdateType;
   installStatus: InstallStatus;
-  availableVersionCode: Number;
-  bytesDownloaded: Number;
-  totalBytesToDownload: Number;
-  clientVersionStalenessDays: Number;
-  packageName: String;
+  availableVersionCode: number;
+  bytesDownloaded: number;
+  totalBytesToDownload: number;
+  clientVersionStalenessDays: number;
+  packageName: string;
   updateAvailability: UpdateAvailability;
-  installErrorCode: String;
+  installErrorCode: string;
 }
 
 /**
@@ -60,7 +60,8 @@ class AppUpdateInfo {
 export class InAppUpdate extends AwesomeCordovaNativePlugin {
   /**
    * If you want the user to be prompted about new version information before initiating the update, you can use `check` to retrive the new app version information.
-   * @return {Promise<AppUpdateInfo>} Returns a promise that resolves with new app version update details
+   *
+   * @returns {Promise<AppUpdateInfo>} Returns a promise that resolves with new app version update details
    */
   @Cordova()
   check(): Promise<AppUpdateInfo> {
@@ -69,7 +70,10 @@ export class InAppUpdate extends AwesomeCordovaNativePlugin {
 
   /**
    * Initiate Update Flow with "FLEXIBLE" | "IMMEDIATE" updateType
-   * @return {Observable<AppUpdateInfo>} Returns a Observable can be subscribed to get update install state
+   *
+   * @param config
+   * @param config.updateType
+   * @returns {Observable<AppUpdateInfo>} Returns a Observable can be subscribed to get update install state
    */
   @Cordova({ observable: true })
   update(config: { updateType: 'FLEXIBLE' | 'IMMEDIATE' }): Observable<AppUpdateInfo> {
@@ -78,7 +82,8 @@ export class InAppUpdate extends AwesomeCordovaNativePlugin {
 
   /**
    * Flexible updates provide background download. Once flexible update completes the download in background, completion of upgrade can be initiated by calling `completeFlexibleUpdate`.
-   * @return Returns empty response, fire and forget
+   *
+   * @returns Returns empty response, fire and forget
    */
   @Cordova()
   completeFlexibleUpdate(): Promise<any> {

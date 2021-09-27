@@ -62,7 +62,8 @@ export interface ZeroconfResult {
 export class Zeroconf extends AwesomeCordovaNativePlugin {
   /**
    * Returns this device's hostname.
-   * @return {Promise<string>}
+   *
+   * @returns {Promise<string>}
    */
   @Cordova()
   getHostname(): Promise<string> {
@@ -71,12 +72,13 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Publishes a new service.
+   *
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
    * @param name {string} Unqualified service instance name.
    * @param port {number} Local port on which the service runs.
    * @param txtRecord {any} Arbitrary key/value pairs describing the service.
-   * @return {Promise<ZeroconfResult>} Returns a Promise that resolves with the registered service.
+   * @returns {Promise<ZeroconfResult>} Returns a Promise that resolves with the registered service.
    */
   @Cordova()
   register(type: string, domain: string, name: string, port: number, txtRecord: any): Promise<ZeroconfResult> {
@@ -85,10 +87,11 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Unregisters a service.
+   *
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
    * @param name {string} Unqualified service instance name.
-   * @return {Promise<void>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   unregister(type: string, domain: string, name: string): Promise<void> {
@@ -97,7 +100,8 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Unregisters all published services.
-   * @return {Promise<void>}
+   *
+   * @returns {Promise<void>}
    */
   @Cordova()
   stop(): Promise<void> {
@@ -106,9 +110,10 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Starts watching for services of the specified type.
+   *
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
-   * @return {Observable<ZeroconfResult>} Returns an Observable that notifies of each service added or removed.
+   * @returns {Observable<ZeroconfResult>} Returns an Observable that notifies of each service added or removed.
    */
   @Cordova({
     observable: true,
@@ -121,9 +126,10 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Stops watching for services of the specified type.
+   *
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
-   * @return {Promise<void>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   unwatch(type: string, domain: string): Promise<void> {
@@ -132,7 +138,8 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Closes the service browser and stops watching.
-   * @return {Promise<void>}
+   *
+   * @returns {Promise<void>}
    */
   @Cordova()
   close(): Promise<void> {
@@ -141,7 +148,8 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Re-initializes the plugin to clean service & browser state.
-   * @return {Promise<void>}
+   *
+   * @returns {Promise<void>}
    */
   @Cordova()
   reInit(): Promise<void> {

@@ -8,7 +8,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * Exposes additional shared APIs for App Center.
  *
  * For more info, please see https://docs.microsoft.com/en-us/appcenter/sdk/other-apis/cordova
- *
  * @usage
  * ```typescript
  * import { AppCenter } from '@awesome-cordova-plugins/app-center-shared/ngx';
@@ -42,6 +41,7 @@ export class AppCenter extends AwesomeCordovaNativePlugin {
   /**
    * Returns AppCenter UUID.
    * For more info, please see: https://docs.microsoft.com/en-us/appcenter/sdk/other-apis/cordova#identify-installations
+   *
    * @returns {Promise<string>} Install ID
    */
   @Cordova()
@@ -52,6 +52,7 @@ export class AppCenter extends AwesomeCordovaNativePlugin {
   /**
    * Set a user ID that's used to augment crash reports.
    * For more info, please see: https://docs.microsoft.com/en-us/appcenter/sdk/other-apis/cordova#identify-users
+   *
    * @param {string} userId Ex. "your-user-id"
    * @returns {Promise<void>}
    */

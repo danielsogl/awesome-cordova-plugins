@@ -36,7 +36,6 @@ export interface DeeplinkOptions {
  *
  * Please read the [ionic plugin deeplinks docs](https://github.com/ionic-team/ionic-plugin-deeplinks) for iOS and Android integration.
  * You must add `universal-links` to your `config.xml` and set up Apple App Site Association (AASA) for iOS and Asset Links for Android.
- *
  * @usage
  * ```typescript
  * import { Deeplinks } from '@awesome-cordova-plugins/deeplinks/ngx';
@@ -78,7 +77,6 @@ export interface DeeplinkOptions {
  *
  * See the [Ionic Deeplinks Demo](https://github.com/ionic-team/ionic2-deeplinks-demo/blob/master/app/app.ts) for an example of how to
  * retrieve the `NavController` reference at runtime.
- *
  * @interfaces
  * DeeplinkMatch
  */
@@ -125,11 +123,8 @@ export class Deeplinks extends AwesomeCordovaNativePlugin {
    * paths takes an object of the form { 'path': data }. If a deeplink
    * matches the path, the resulting path-data pair will be returned in the
    * promise result which you can then use to navigate in the app as you see fit.
-   *
    * @param {Object} paths
-   *
    * @param {DeeplinkOptions} options
-   *
    * @returns {Observable<DeeplinkMatch>} Returns an Observable that resolves each time a deeplink comes through, and
    * errors if a deeplink comes through that does not match a given path.
    */

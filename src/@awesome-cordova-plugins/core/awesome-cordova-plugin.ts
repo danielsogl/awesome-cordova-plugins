@@ -11,7 +11,8 @@ export class AwesomeCordovaNativePlugin {
 
   /**
    * Returns a boolean that indicates whether the plugin is installed
-   * @return {boolean}
+   *
+   * @returns {boolean}
    */
   static installed(): boolean {
     const isAvailable = checkAvailability(this.pluginRef) === true;

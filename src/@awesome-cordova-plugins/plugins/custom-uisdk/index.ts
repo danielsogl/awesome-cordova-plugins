@@ -12,7 +12,6 @@ import {
  * @name CustomUISDK
  * @description
  * This plugin is used to access Paytm's native CustomUISDK framework's apis.
- *
  * @usage
  * ```typescript
  * import { CustomUISDK } from '@awesome-cordova-plugins/custom-uisdk/ngx';
@@ -38,9 +37,10 @@ import {
 export class CustomUISDK extends AwesomeCordovaNativePlugin {
   /**
    * This function show dialog to ask user permision to fetch authcode
+   *
    * @param clientId {string} unique id give to each merchant
    * @param mid {string} merchant id
-   * @return {Promise<string>} Returns authcode
+   * @returns {Promise<string>} Returns authcode
    */
   @Cordova()
   fetchAuthCode(clientId: string, mid: string): Promise<string> {
@@ -49,7 +49,8 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
 
   /**
    * This function check that paytm app is installed or not
-   * @return {Promise<boolean>} Returns installed - true or not -false
+   *
+   * @returns {Promise<boolean>} Returns installed - true or not -false
    */
   @Cordova()
   isPaytmAppInstalled(): Promise<boolean> {
@@ -58,7 +59,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
 
   /**
    * @param mid {string} merchant id
-   * @return {Promise<boolean>} Returns if has payment methods - true or not -false
+   * @returns {Promise<boolean>} Returns if has payment methods - true or not -false
    */
   @Cordova()
   checkHasInstrument(mid: string): Promise<boolean> {
@@ -87,7 +88,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
 
   /**
    * @param paymentFlow {string} payment type NONE, ADDANDPAY
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   goForWalletTransaction(paymentFlow: string): Promise<any> {
@@ -95,7 +96,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   appInvoke(): Promise<any> {
@@ -113,7 +114,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
    * @param emiChannelId {string} emi plan id
    * @param authMode {string} authentication mode 'otp' 'pin'
    * @param saveCard {boolean} save card for next time
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   goForNewCardTransaction(
@@ -140,7 +141,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
    * @param issuingBankCode {string} issuing bank code
    * @param emiChannelId {string} emi plan id
    * @param authMode {string} authentication mode 'otp' 'pin'
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   goForSavedCardTransaction(
@@ -159,7 +160,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
   /**
    * @param netBankingCode {string} bank channel code
    * @param paymentFlow {string} payment type NONE, ADDANDPAY
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   goForNetBankingTransaction(netBankingCode: string, paymentFlow: string): Promise<any> {
@@ -170,7 +171,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
    * @param upiCode {string} upi code
    * @param paymentFlow {string} payment type NONE, ADDANDPAY
    * @param saveVPA {boolean} save vpa for future transaction
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   goForUpiCollectTransaction(upiCode: string, paymentFlow: string, saveVPA: boolean): Promise<any> {
@@ -178,7 +179,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * @return {Promise<any>} Returns upi app list names
+   * @returns {Promise<any>} Returns upi app list names
    */
   @Cordova()
   getUpiIntentList(): Promise<any> {
@@ -188,7 +189,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
   /**
    * @param appName {string} upi app name
    * @param paymentFlow {string} payment type NONE, ADDANDPAY
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   goForUpiIntentTransaction(appName: string, paymentFlow: string): Promise<any> {
@@ -200,7 +201,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
    * @param paymentFlow {string} payment type NONE, ADDANDPAY
    * @param bankAccountJson {{}} bank account json object
    * @param merchantDetailsJson {{}} merchant detail json
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   goForUpiPushTransaction(
@@ -215,7 +216,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
   /**
    * @param vpaName {string} vpa name
    * @param bankAccountJson {{}} bank account json object
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   fetchUpiBalance(bankAccountJson: {}, vpaName: string): Promise<any> {
@@ -225,7 +226,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
   /**
    * @param vpaName {string} vpa name
    * @param bankAccountJson {{}} bank account json object
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   setUpiMpin(bankAccountJson: {}, vpaName: string): Promise<any> {
@@ -238,7 +239,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
    * @param token {string} token fetch from api
    * @param mid {string} merchant id
    * @param referenceId {string} reference id
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   getBin(cardSixDigit: string, tokenType: string, token: string, mid: string, referenceId: string): Promise<any> {
@@ -251,7 +252,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
    * @param mid {string} merchant id
    * @param orderId {string} order id required only if token type is TXN_TOKEN
    * @param referenceId {string} reference id required only if token type is ACCESS
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   fetchNBList(tokenType: string, token: string, mid: string, orderId: string, referenceId: string): Promise<any> {
@@ -261,7 +262,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
   /**
    * @param channelCode {string} bank channel code
    * @param cardType {string} card type debit or credit
-   * @return {Promise<any>} Returns object of response
+   * @returns {Promise<any>} Returns object of response
    */
   @Cordova()
   fetchEmiDetails(channelCode: string, cardType: string): Promise<any> {
@@ -269,7 +270,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * @return {Promise<any>} Returns last successfully used net backing code
+   * @returns {Promise<any>} Returns last successfully used net backing code
    */
 
   @Cordova()
@@ -278,7 +279,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * @return {Promise<any>} Returns last successfully used vpa code
+   * @returns {Promise<any>} Returns last successfully used vpa code
    */
 
   @Cordova()
@@ -289,7 +290,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
   /**
    * @param clientId {string} unique id give to each merchant
    * @param authCode {string} fetched auth code
-   * @return {Promise<any>} Returns last successfully used vpa code
+   * @returns {Promise<any>} Returns last successfully used vpa code
    */
   @Cordova()
   isAuthCodeValid(clientId: string, authCode: string): Promise<any> {
@@ -297,7 +298,7 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * @return {Promise<any>} Returns current environment
+   * @returns {Promise<any>} Returns current environment
    */
   @Cordova()
   getEnvironment(): Promise<string> {

@@ -51,7 +51,6 @@ export interface BranchUniversalObject {
  * @name BranchIo
  * @description
  * Branch.io is an attribution service for deeplinking and invitation links
- *
  * @usage
  * ```
  * import { BranchIo } from '@awesome-cordova-plugins/branch-io/ngx';
@@ -60,13 +59,11 @@ export interface BranchUniversalObject {
  * constructor(private branch: BranchIo) { }
  *
  * ```
- *
  * @interfaces
  * BranchIoPromise
  * BranchIoAnalytics
  * BranchIoProperties
  * BranchUniversalObject
- *
  */
 @Plugin({
   pluginName: 'BranchIo',
@@ -79,8 +76,9 @@ export interface BranchUniversalObject {
 export class BranchIo extends AwesomeCordovaNativePlugin {
   /**
    * for development and debugging only
+   *
    * @param {boolean} enable Enable debug
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   setDebug(enable: boolean): Promise<any> {
@@ -89,8 +87,9 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Disable tracking
+   *
    * @param {boolean} disable disable tracking
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   disableTracking(disable: boolean): Promise<any> {
@@ -99,7 +98,8 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Initializes Branch
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   initSession(): Promise<BranchIoPromise> {
@@ -108,7 +108,8 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Initializes Branch with callback
-   * @return {Observable<any>}
+   *
+   * @returns {Observable<any>}
    */
   @Cordova({ observable: true })
   initSessionWithCallback(): Observable<BranchIoPromise> {
@@ -117,7 +118,8 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Set Request Metadata
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   setRequestMetadata(): Promise<any> {
@@ -126,8 +128,9 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * for better Android matching
+   *
    * @param {string} linkDomain LinkDomain at branch
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   setCookieBasedMatching(linkDomain: string): Promise<any> {
@@ -136,7 +139,8 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * First data
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   getFirstReferringParams(): Promise<any> {
@@ -145,7 +149,8 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Latest data
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   getLatestReferringParams(): Promise<any> {
@@ -154,8 +159,9 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Set identy of user
+   *
    * @param {string} userId
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   setIdentity(userId: string): Promise<any> {
@@ -164,7 +170,8 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Logout user
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   logout(): Promise<any> {
@@ -173,9 +180,10 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers a custom event
+   *
    * @param {string} eventName
    * @param {any} metaData
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   userCompletedAction(eventName: string, metaData: any): Promise<any> {
@@ -184,10 +192,11 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Send Commerce Event
+   *
    * @deprecated since v.3.1.0. As of https://help.branch.io/developers-hub/docs/cordova-phonegap-ionic#track-commerce
    * @param {string} event
    * @param {any} metaData
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   sendCommerceEvent(event: string, metaData: any): Promise<any> {
@@ -196,9 +205,10 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Send Branch Event
+   *
    * @param {string} event
    * @param {any} metaData
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   sendBranchEvent(event: string, metaData: any): Promise<any> {
@@ -207,8 +217,9 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * create a branchUniversalObj variable to reference with other Branch methods
+   *
    * @param {BranchIoProperties} properties
-   * @return {Promise<BranchUniversalObject>}
+   * @returns {Promise<BranchUniversalObject>}
    */
   @Cordova({ otherPromise: true })
   createBranchUniversalObject(properties: BranchIoProperties): Promise<BranchUniversalObject> {
@@ -217,8 +228,9 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Load credits
+   *
    * @param {any} bucket
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   loadRewards(bucket: any): Promise<any> {
@@ -227,9 +239,10 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Redeem Rewards
+   *
    * @param {string} value
    * @param {any} bucket
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   redeemRewards(value: string, bucket: any): Promise<any> {
@@ -238,7 +251,8 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
 
   /**
    * Show credit history
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   creditHistory(): Promise<any> {

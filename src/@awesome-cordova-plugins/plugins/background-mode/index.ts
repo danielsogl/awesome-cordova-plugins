@@ -65,7 +65,6 @@ export interface BackgroundModeConfiguration {
  *
  * this.backgroundMode.enable();
  * ```
- *
  * @interfaces
  * BackgroundModeConfiguration
  */
@@ -102,8 +101,7 @@ export class BackgroundMode extends AwesomeCordovaNativePlugin {
    * Enable or disable the background mode.
    *
    * @param enable {boolean} The status to set for.
-   *
-   * @return {void}
+   * @returns {void}
    */
   @Cordova({
     sync: true,
@@ -115,8 +113,7 @@ export class BackgroundMode extends AwesomeCordovaNativePlugin {
    *
    * @param event {string} event The event's name.
    * @param args {array} The callback's arguments.
-   *
-   * @return {string}
+   * @returns {string}
    */
   @Cordova({
     sync: true,
@@ -127,6 +124,7 @@ export class BackgroundMode extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if background mode is enabled or not.
+   *
    * @returns {boolean} returns a boolean that indicates if the background mode is enabled.
    */
   @Cordova({
@@ -138,6 +136,7 @@ export class BackgroundMode extends AwesomeCordovaNativePlugin {
 
   /**
    * Can be used to get the information if the background mode is active.
+   *
    * @returns {boolean} returns a boolean that indicates if the background mode is active.
    */
   @Cordova({
@@ -150,6 +149,7 @@ export class BackgroundMode extends AwesomeCordovaNativePlugin {
   /**
    * Overwrite the default settings.
    * Available only for Android platform.
+   *
    * @param overrides {BackgroundModeConfiguration} Dict of options to be overridden.
    * @returns {Promise<any>}
    */
@@ -161,6 +161,7 @@ export class BackgroundMode extends AwesomeCordovaNativePlugin {
   /**
    * Modify the displayed information.
    * Available only for Android platform.
+   *
    * @param {BackgroundModeConfiguration} [options] Any options you want to update. See table below.
    */
   @Cordova({
@@ -172,6 +173,7 @@ export class BackgroundMode extends AwesomeCordovaNativePlugin {
   /**
    * Register callback for given event.
    * > Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
+   *
    * @param event {string} Event name
    * @returns {Observable<any>}
    */
@@ -186,6 +188,7 @@ export class BackgroundMode extends AwesomeCordovaNativePlugin {
 
   /**
    * Listen for events that the plugin fires. Available events are `enable`, `disable`, `activate`, `deactivate` and `failure`.
+   *
    * @param event {string} Event name
    * @param callback {function} The function to be exec as callback.
    * @returns {Observable<any>}
@@ -242,6 +245,7 @@ export class BackgroundMode extends AwesomeCordovaNativePlugin {
 
   /**
    * If the screen is off.
+   *
    * @param fn {function} Callback function to invoke with boolean arg.
    * @returns {Promise<boolean>}
    */

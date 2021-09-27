@@ -13,7 +13,6 @@ export interface AnylineOptions {
  * @name Anyline
  * @description
  * Anyline provides an easy-to-use SDK for applications to enable Optical Character Recognition (OCR) on mobile devices.
- *
  * @usage
  * ```typescript
  * import { Anyline } from '@awesome-cordova-plugins/anyline/ngx';
@@ -41,8 +40,9 @@ export interface AnylineOptions {
 export class Anyline extends AwesomeCordovaNativePlugin {
   /**
    * Scan
+   *
    * @param options {AnylineOptions} Scanning options
-   * @return {Promise<any>} Returns a promise that resolves when Code is captured
+   * @returns {Promise<any>} Returns a promise that resolves when Code is captured
    */
   @Cordova()
   scan(options: AnylineOptions): Promise<any> {

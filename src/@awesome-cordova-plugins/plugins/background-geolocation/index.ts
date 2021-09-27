@@ -305,6 +305,7 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: Android
    * Provider: all
+   *
    * @default "Background tracking"
    */
   notificationTitle?: string;
@@ -493,7 +494,6 @@ export declare enum BackgroundGeolocationIOSActivity {
  * @description
  * This plugin provides foreground and background geolocation with battery-saving "circular region monitoring" and "stop detection". For
  * more detail, please see https://github.com/mauron85/cordova-plugin-background-geolocation
- *
  * @usage
  *
  * BackgroundGeolocation must be called within app.ts and or before Geolocation. Otherwise the platform will not ask you for background tracking permission.
@@ -551,7 +551,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    * Configure the plugin.
    *
    * @param options {BackgroundGeolocationConfig} options An object of type Config
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   configure(options: BackgroundGeolocationConfig): Promise<any> {
@@ -561,6 +561,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
   /**
    * Turn ON the background-geolocation system.
    * The user will be tracked whenever they suspend the app.
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -570,6 +571,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Turn OFF background-tracking
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -579,6 +581,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Inform the native plugin that you're finished, the background-task may be completed
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -590,6 +593,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Force the plugin to enter "moving" or "stationary" state
+   *
    * @param isMoving {boolean}
    * @returns {Promise<any>}
    */
@@ -602,6 +606,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Setup configuration
+   *
    * @param options {BackgroundGeolocationConfig}
    * @returns {Promise<any>}
    */
@@ -614,6 +619,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns current stationaryLocation if available. null if not
+   *
    * @returns {Promise<Location>}
    */
   @Cordova({
@@ -626,6 +632,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
   /**
    * Add a stationary-region listener. Whenever the devices enters "stationary-mode",
    * your #success callback will be executed with #location param containing #radius of region
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -637,6 +644,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if location is enabled on the device
+   *
    * @returns {Promise<number>} Returns a promise with int argument that takes values 0, 1 (true).
    */
   @Cordova({
@@ -662,6 +670,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    * Method can be used to detect user changes in location services settings.
    * If user enable or disable location services then success callback will be executed.
    * In case or  (SettingNotFoundException) fail callback will be executed.
+   *
    * @returns {Observable<number>}
    */
   @Cordova({
@@ -674,6 +683,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop watching for location mode changes.
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -690,6 +700,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    *    by the system
    *  or
    *  - option.debug is true
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -701,6 +712,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Method will return locations, which has not been yet posted to server. NOTE: Locations does contain locationId.
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -710,6 +722,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Delete stored location by given locationId.
+   *
    * @param locationId {number}
    * @returns {Promise<any>}
    */
@@ -722,6 +735,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Delete all stored locations.
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -753,8 +767,10 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Return all logged events. Useful for plugin debugging. Parameter limit limits number of returned entries.
-   * @see https://github.com/mauron85/cordova-plugin-background-geolocation/tree/v2.2.1#debugging for more information.
    *
+   * @see https://github.com/mauron85/cordova-plugin-background-geolocation/tree/v2.2.1#debugging for more information.
+   * @param fromId
+   * @param minLevel
    * @param limit {number} Limits the number of entries
    * @returns {Promise<any>}
    */
@@ -769,8 +785,8 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Return all logged events. Useful for plugin debugging. Parameter limit limits number of returned entries.
-   * @see https://github.com/mauron85/cordova-plugin-background-geolocation/tree/v2.2.1#debugging for more information.
    *
+   * @see https://github.com/mauron85/cordova-plugin-background-geolocation/tree/v2.2.1#debugging for more information.
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -820,6 +836,8 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    *  End background task indentified by taskKey (iOS only)
+   *
+   * @param taskKey
    */
   @Cordova({
     platforms: ['IOS'],
@@ -870,6 +888,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    * Register event listener.
    *
    * Triggered when server responded with "<code>285 Updates Not Required</code>" to post/sync request.
+   *
    * @param event
    * @param callbackFn
    */
@@ -884,6 +903,8 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    * Unregister all event listeners for given event.
    *
    * If parameter <code>event</code> is not provided then all event listeners will be removed.
+   *
+   * @param event
    */
   @Cordova()
   removeAllListeners(event?: BackgroundGeolocationEvents): Promise<any> {

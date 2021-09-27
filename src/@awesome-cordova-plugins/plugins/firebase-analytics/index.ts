@@ -26,7 +26,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * ```
  *
  * And in the same file, you'll have to add `xmlns:tools="http://schemas.android.com/tools"` to your _manifest_ tag.
- *
  * @usage
  * ```typescript
  * import { FirebaseAnalytics } from '@awesome-cordova-plugins/firebase-analytics/ngx';
@@ -54,9 +53,10 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Logs an app event.
    * Be aware of automatically collected events.
+   *
    * @param {string} name The name of the event
    * @param {any} params Some param to configure something
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova({ sync: true })
   logEvent(name: string, params: any): Promise<any> {
@@ -66,8 +66,9 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Sets the user ID property.
    * This feature must be used in accordance with Google's Privacy Policy.
+   *
    * @param {string} id The user ID
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova({ sync: true })
   setUserId(id: string): Promise<any> {
@@ -77,9 +78,10 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * This feature must be used in accordance with Google's Privacy Policy.
    * Be aware of automatically collected user properties.
+   *
    * @param {string} name The property name
    * @param {string} value The property value
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova({ sync: true })
   setUserProperty(name: string, value: string): Promise<any> {
@@ -88,8 +90,9 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets whether analytics collection is enabled for this app on this device.
+   *
    * @param {boolean} enabled
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova({ sync: true })
   setEnabled(enabled: boolean): Promise<any> {
@@ -99,8 +102,9 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Sets the current screen name, which specifies the current visual context in your app.
    * This helps identify the areas in your app where users spend their time and how they interact with your app.
+   *
    * @param {string} name The name of the screen
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova({ sync: true })
   setCurrentScreen(name: string): Promise<any> {
@@ -109,7 +113,8 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Clears all analytics data for this instance from the device and resets the app instance ID
-   * @return {Promise<void>} Returns a promise
+   *
+   * @returns {Promise<void>} Returns a promise
    */
   @Cordova({ sync: true })
   resetAnalyticsData(): Promise<void> {

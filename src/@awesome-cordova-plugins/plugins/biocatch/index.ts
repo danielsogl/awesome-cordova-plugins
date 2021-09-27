@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name BioCatch
  * @description
  * BioCatch SDK Cordova support
- *
  * @usage
  * ```typescript
  * import { BioCatch } from '@awesome-cordova-plugins/biocatch';
@@ -33,10 +32,11 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class BioCatch extends AwesomeCordovaNativePlugin {
   /**
    * Start a session
+   *
    * @param customerSessionID {String} Customer session id
    * @param wupUrl {String} WUP server URL
    * @param publicKey {String} Public Key
-   * @return {Promise<void>} Returns a promise
+   * @returns {Promise<void>} Returns a promise
    */
   @Cordova()
   start(customerSessionID: string | null, wupUrl: string, publicKey: string | null): Promise<void> {
@@ -45,7 +45,8 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Pause the session
-   * @return {Promise<void>} Returns a promise
+   *
+   * @returns {Promise<void>} Returns a promise
    */
   @Cordova()
   pause(): Promise<void> {
@@ -54,7 +55,8 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Resume the session
-   * @return {Promise<void>} Returns a promise
+   *
+   * @returns {Promise<void>} Returns a promise
    */
   @Cordova()
   resume(): Promise<void> {
@@ -63,7 +65,8 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop the session
-   * @return {Promise<void>} Returns a promise
+   *
+   * @returns {Promise<void>} Returns a promise
    */
   @Cordova()
   stop(): Promise<void> {
@@ -72,7 +75,8 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Reset the session
-   * @return {Promise<void>} Returns a promise
+   *
+   * @returns {Promise<void>} Returns a promise
    */
   @Cordova()
   resetSession(): Promise<void> {
@@ -81,8 +85,9 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Change the session context
+   *
    * @param contextName {String} Context name
-   * @return {Promise<void>} Returns a promise
+   * @returns {Promise<void>} Returns a promise
    */
   @Cordova()
   changeContext(contextName: string): Promise<void> {
@@ -91,8 +96,9 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Update the customer session ID
+   *
    * @param customerSessionID {String}
-   * @return {Promise<void>} Returns a promise
+   * @returns {Promise<void>} Returns a promise
    */
   @Cordova()
   updateCustomerSessionID(customerSessionID: string | null): Promise<void> {

@@ -23,7 +23,6 @@ export interface VideoOptions {
  * A Cordova plugin that simply allows you to immediately play a video in fullscreen mode.
  *
  * Requires Cordova plugin: `com.moust.cordova.videoplayer`. For more info, please see the [VideoPlayer plugin docs](https://github.com/moust/cordova-plugin-videoplayer).
- *
  * @usage
  * ```typescript
  * import { VideoPlayer } from '@awesome-cordova-plugins/video-player/ngx';
@@ -54,6 +53,7 @@ export interface VideoOptions {
 export class VideoPlayer extends AwesomeCordovaNativePlugin {
   /**
    * Plays the video from the passed url.
+   *
    * @param fileUrl {string} File url to the video.
    * @param options {VideoOptions?} Optional video playback settings. See options above.
    * @returns {Promise<any>} Resolves promise when the video was played successfully.

@@ -223,7 +223,6 @@ export enum FlagEnum {
  * This plugin is in Beta version and it offers support only for Android.
  * The plugin uses Java Mail API.
  * Planned improvements and support for iOS.
- *
  * @usage
  * ```typescript
  * import { Imap } from '@awesome-cordova-plugins/imap/ngx';
@@ -324,8 +323,8 @@ export enum FlagEnum {
  *   });
  *
  *
- *   * Sets a flag on a message
- *   * "setFlag()" can be used for deleting messages setting the Delete flag to "FlagEnum.DELETED"
+ *   Sets a flag on a message
+ *   "setFlag()" can be used for deleting messages setting the Delete flag to "FlagEnum.DELETED"
  *   this.imap.setFlag('INBOX', [1206, 1205, 1204], FlagEnum.SEEN, true)
  *   .then((res: ModificationResult) => {
  *
@@ -351,8 +350,9 @@ export enum FlagEnum {
 export class Imap extends AwesomeCordovaNativePlugin {
   /**
    * This function "connect(clientData: Config)" tries to connect and authenticate with the IMAP server.
+   *
    * @param clientData {Config} Connection configuration
-   * @return {Promise<Connection>} Returns a promise with the connection data
+   * @returns {Promise<Connection>} Returns a promise with the connection data
    */
   @Cordova()
   connect(clientData: Config): Promise<Connection> {
@@ -361,7 +361,8 @@ export class Imap extends AwesomeCordovaNativePlugin {
 
   /**
    * "disconnect()" Closes the connection with the server.
-   * @return {Promise<boolean>} Returns a promise status.
+   *
+   * @returns {Promise<boolean>} Returns a promise status.
    */
   @Cordova()
   disconnect(): Promise<boolean> {
@@ -370,7 +371,8 @@ export class Imap extends AwesomeCordovaNativePlugin {
 
   /**
    * "isConnected()" Checks the current state of the connection.
-   * @return {Promise<boolean>} Returns a promise with connection status
+   *
+   * @returns {Promise<boolean>} Returns a promise with connection status
    */
   @Cordova()
   isConnected(): Promise<boolean> {
@@ -381,7 +383,8 @@ export class Imap extends AwesomeCordovaNativePlugin {
 
   /**
    * "listMailFolders()" Lists the name of all the mail folders in the mailbox.
-   * @return {Promise<string[]>} Returns array with all folder names.
+   *
+   * @returns {Promise<string[]>} Returns array with all folder names.
    */
   @Cordova()
   listMailFolders(): Promise<string[]> {
@@ -390,8 +393,9 @@ export class Imap extends AwesomeCordovaNativePlugin {
 
   /**
    * "getMessageCountByFolderName(folderName: string)" Gets the count of the messages in the folder.
+   *
    * @param folderName {string} The name of the desired folder.
-   * @return {Promise<number>} Returns the consecutive number of the last message.
+   * @returns {Promise<number>} Returns the consecutive number of the last message.
    */
   @Cordova()
   getMessageCountByFolderName(folderName: string): Promise<number> {
@@ -400,10 +404,11 @@ export class Imap extends AwesomeCordovaNativePlugin {
 
   /**
    * "searchMessagesByDatePeriod(folderName: string, dateInMilliseconds: number, comparison: Comparison)" Returns the messages' consecutive number.
+   *
    * @param folderName {string} The name of the desired folder
    * @param dateInMilliseconds {number} Date in milliseconds
    * @param comparison {Comparison} A comparison operator
-   * @return {Promise<number[]>} Returns array with the messages' consecutive numbers.
+   * @returns {Promise<number[]>} Returns array with the messages' consecutive numbers.
    */
   @Cordova()
   searchMessagesByDatePeriod(
@@ -416,10 +421,11 @@ export class Imap extends AwesomeCordovaNativePlugin {
 
   /**
    * "listMessagesHeadersByConsecutiveNumber(folderName: string, start: number, end: number)" Returns messages' headers data based on a "start" and "end" message consecutive number.
+   *
    * @param folderName {string} The name of the desired folder
    * @param start {number} Consecutive number of the first message.
    * @param end {number} Consecutive number of the last message
-   * @return {Promise<Message[]>} Returns array with the messages' headers data.
+   * @returns {Promise<Message[]>} Returns array with the messages' headers data.
    */
   @Cordova()
   listMessagesHeadersByConsecutiveNumber(folderName: string, start: number, end: number): Promise<Message[]> {
@@ -428,10 +434,11 @@ export class Imap extends AwesomeCordovaNativePlugin {
 
   /**
    * "listMessagesHeadersByDate(folderName: string, dateInMilliseconds: number, comparison: Comparison)" Returns messages' headers data based on a date.
+   *
    * @param folderName {string} The name of the desired folder
    * @param dateInMilliseconds {number} Date in milliseconds.
    * @param comparison {Comparison} A comparison operator
-   * @return {Promise<Message[]>} Returns array messages' headers data.
+   * @returns {Promise<Message[]>} Returns array messages' headers data.
    */
   @Cordova()
   listMessagesHeadersByDate(
@@ -444,9 +451,10 @@ export class Imap extends AwesomeCordovaNativePlugin {
 
   /**
    * "getFullMessageData(folderName: string, messageNumber: number)" Returns the full message's data including its attachments.
+   *
    * @param folderName {string} The name the message's folder
    * @param messageNumber {number} Message's consecutive number.
-   * @return {Promise<Message>} Returns "Message" object with full message data.
+   * @returns {Promise<Message>} Returns "Message" object with full message data.
    */
   @Cordova()
   getFullMessageData(folderName: string, messageNumber: number): Promise<Message> {
@@ -455,10 +463,11 @@ export class Imap extends AwesomeCordovaNativePlugin {
 
   /**
    * "copyToFolder(sourceFolder: string, destinationFolder: string, messageNums: number[])" Copy messages to a desired folder.
+   *
    * @param sourceFolder {string} The name of the source folder.
    * @param destinationFolder {string} The name of the destination folder.
    * @param messageNums {number[]} Array with messages' consecutive numbers or array with single message consecutive number.
-   * @return {Promise<Message>} Returns boolean status of the process.
+   * @returns {Promise<Message>} Returns boolean status of the process.
    */
   @Cordova()
   copyToFolder(sourceFolder: string, destinationFolder: string, messageNums: number[]): Promise<boolean> {
@@ -467,11 +476,12 @@ export class Imap extends AwesomeCordovaNativePlugin {
 
   /**
    * "setFlag(folderName: string, messageNums: number[], flag: FlagEnum, status: boolean)" Set or remove flag from a message
+   *
    * @param folderName {string} The name of the source folder where the messages are contained.
    * @param messageNums {number[]} Array with messages' consecutive numbers or array with single message consecutive number
    * @param flag {FlagEnum} Desired message flag.
    * @param status {boolean} Set status to "true" to set the flag on a message; or to "false" to remove the flag from the message
-   * @return {Promise<ModificationResult>} Returns object with status and array with messages' consecutive numbers of the modified messages
+   * @returns {Promise<ModificationResult>} Returns object with status and array with messages' consecutive numbers of the modified messages
    */
   @Cordova()
   setFlag(folderName: string, messageNums: number[], flag: FlagEnum, status: boolean): Promise<ModificationResult> {

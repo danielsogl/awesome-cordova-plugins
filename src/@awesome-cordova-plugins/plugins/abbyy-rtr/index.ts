@@ -271,7 +271,6 @@ export interface DataCaptureResult {
  * @description
  * This plugin allows to use the Text Capture and Data Capture features of
  * ABBYY Real-Time Recognition SDK (RTR SDK) in apps.
- *
  * @usage
  * ```typescript
  * import { AbbyyRTR } from '@awesome-cordova-plugins/abbyy-rtr/ngx';
@@ -305,8 +304,9 @@ export interface DataCaptureResult {
 export class AbbyyRTR extends AwesomeCordovaNativePlugin {
   /**
    * Opens a modal dialog with controls for the Text Capture scenario.
+   *
    * @param {TextCaptureOptions} options
-   * @return {Promise<TextCaptureResult>}
+   * @returns {Promise<TextCaptureResult>}
    */
   @CordovaCheck()
   startTextCapture(options: TextCaptureOptions): Promise<TextCaptureResult> {
@@ -323,8 +323,9 @@ export class AbbyyRTR extends AwesomeCordovaNativePlugin {
 
   /**
    * Opens a modal dialog with controls for the Data Capture scenario.
+   *
    * @param {DataCaptureOptions} options
-   * @return {Promise<DataCaptureResult>}
+   * @returns {Promise<DataCaptureResult>}
    */
   @CordovaCheck()
   startDataCapture(options: DataCaptureOptions): Promise<DataCaptureResult> {

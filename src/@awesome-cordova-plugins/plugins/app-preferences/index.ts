@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
  * @name App Preferences
  * @description
  * This plugin allows you to read and write app preferences
- *
  * @usage
  * ```typescript
  * import { AppPreferences } from '@awesome-cordova-plugins/app-preferences/ngx';
@@ -18,7 +17,6 @@ import { Injectable } from '@angular/core';
  * this.appPreferences.fetch('key').then((res) => { console.log(res); });
  *
  * ```
- *
  */
 @Plugin({
   pluginName: 'AppPreferences',
@@ -34,7 +32,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
    *
    * @param {string} dict Dictionary for key (OPTIONAL)
    * @param {string} key Key
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -49,7 +47,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
    * @param {string} dict Dictionary for key (OPTIONAL)
    * @param {string} key Key
    * @param {any} value Value
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -63,7 +61,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
    *
    * @param {string} dict Dictionary for key (OPTIONAL)
    * @param {string} key Key
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -75,7 +73,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
   /**
    * Clear preferences
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -87,7 +85,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
   /**
    * Show native preferences interface
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -100,7 +98,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
    * Show native preferences interface
    *
    * @param {boolean} subscribe true value to subscribe, false - unsubscribe
-   * @return {Observable<any>} Returns an observable
+   * @returns {Observable<any>} Returns an observable
    */
   @Cordova({
     observable: true,
@@ -113,6 +111,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
    * Return named configuration context
    * In iOS you'll get a suite configuration, on Android — named file
    * Supports: Android, iOS
+   *
    * @param {string} suiteName suite name
    * @returns {Object} Custom object, bound to that suite
    */
@@ -135,6 +134,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
   /**
    * Return cloud synchronized configuration context
    * Currently supports Windows and iOS/macOS
+   *
    * @returns {Object} Custom object, bound to that suite
    */
   @Cordova({
@@ -147,6 +147,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
   /**
    * Return default configuration context
    * Currently supports Windows and iOS/macOS
+   *
    * @returns {Object} Custom Object, bound to that suite
    */
   @Cordova({

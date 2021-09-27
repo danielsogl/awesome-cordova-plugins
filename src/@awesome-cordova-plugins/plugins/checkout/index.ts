@@ -145,7 +145,6 @@ export interface Phone {
  * @name Checkout
  * @description
  * Checkout.com cordova plugin
- *
  * @usage
  * ```typescript
  * import { Checkout } from '@awesome-cordova-plugins/checkout/ngx';
@@ -191,8 +190,9 @@ export interface Phone {
 export class Checkout extends AwesomeCordovaNativePlugin {
   /**
    * Initialize Frames plugin in Sandbox mode
+   *
    * @param publicKey {string} Merchant's sandbox public key
-   * @return {Promise<any>} Returns a promise that resolves when Frames initiation is completed
+   * @returns {Promise<any>} Returns a promise that resolves when Frames initiation is completed
    */
   @Cordova()
   initSandboxClient(publicKey: string): Promise<any> {
@@ -201,8 +201,9 @@ export class Checkout extends AwesomeCordovaNativePlugin {
 
   /**
    * Initialize Frames plugin in Live mode
+   *
    * @param publicKey {string} Merchant's live public key
-   * @return {Promise<any>} Returns a promise that resolves when Frames initiation is completed
+   * @returns {Promise<any>} Returns a promise that resolves when Frames initiation is completed
    */
   @Cordova()
   initLiveClient(publicKey: string): Promise<any> {
@@ -211,8 +212,9 @@ export class Checkout extends AwesomeCordovaNativePlugin {
 
   /**
    * Exchange card details for a reference token that can be used later to request a card payment from your backend. Tokens are single use and expire after 15 minutes.
+   *
    * @param ckoCardTokenRequest {CkoCardTokenRequest} Card tokenization request object
-   * @return {Promise<CkoCardTokenResponse>} Returns a promise that resolves when Token response object
+   * @returns {Promise<CkoCardTokenResponse>} Returns a promise that resolves when Token response object
    */
   @Cordova()
   generateToken(ckoCardTokenRequest: CkoCardTokenRequest): Promise<CkoCardTokenResponse> {

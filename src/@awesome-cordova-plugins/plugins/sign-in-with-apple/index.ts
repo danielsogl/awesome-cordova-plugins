@@ -77,6 +77,7 @@ export interface AppleSignInResponse {
 
   /**
    * The user's name
+   *
    * @see https://developer.apple.com/documentation/foundation/nspersonnamecomponents?language=objc
    */
   fullName?: NSPersonNameComponents;
@@ -122,8 +123,7 @@ export interface AppleSignInErrorResponse extends NSError {
  * they can use Sign in with Apple to set up an account and start using your app right away.
  * All accounts are protected with two-factor authentication for superior security,
  * and Apple will not track users’ activity in your app or website.
- * *Source:* https://developer.apple.com/sign-in-with-apple/
- *
+ * Source:* https://developer.apple.com/sign-in-with-apple/
  * @usage
  * ```typescript
  * import { SignInWithApple, AppleSignInResponse, AppleSignInErrorResponse, ASAuthorizationAppleIDRequest } from '@awesome-cordova-plugins/sign-in-with-apple/ngx';
@@ -163,8 +163,9 @@ export interface AppleSignInErrorResponse extends NSError {
 export class SignInWithApple extends AwesomeCordovaNativePlugin {
   /**
    * Starts the authorization flows named during controller initialization
+   *
    * @see https://developer.apple.com/documentation/authenticationservices/asauthorizationcontroller/3153047-performrequests
-   * @return {Promise<AppleSignInResponse>} Returns a promise when authorization succeeds
+   * @returns {Promise<AppleSignInResponse>} Returns a promise when authorization succeeds
    * @param {ASAuthorizationAppleIDRequest} options
    * @throws AppleSignInErrorResponse
    */

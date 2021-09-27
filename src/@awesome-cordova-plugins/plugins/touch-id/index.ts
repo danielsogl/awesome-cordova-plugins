@@ -7,7 +7,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * Scan the fingerprint of a user with the TouchID sensor.
  *
  * Requires Cordova plugin: `cordova-plugin-touch-id`. For more info, please see the [TouchID plugin docs](https://github.com/EddyVerbruggen/cordova-plugin-touch-id).
- *
  * @usage
  * ```typescript
  * import { TouchID } from '@awesome-cordova-plugins/touch-id/ngx';

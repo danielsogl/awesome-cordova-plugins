@@ -99,6 +99,7 @@ export interface GeolocationOptions {
    * power consumption (with a GPS chip on a mobile device for example). On the
    * other hand, if false, the device can take the liberty to save resources by
    * responding more quickly and/or using less power. Default: false.
+   *
    * @type {boolean}
    */
   enableHighAccuracy?: boolean;
@@ -118,8 +119,6 @@ export interface GeolocationOptions {
  *    <string>We use your location for full functionality of certain app features.</string>
  * </edit-config>
  * ```
- *
- *
  * @usage
  *
  * ```typescript

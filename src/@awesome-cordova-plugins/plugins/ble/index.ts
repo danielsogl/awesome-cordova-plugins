@@ -23,7 +23,6 @@ export interface BLEScanOptions {
  * Advertising information is returned when scanning for peripherals. Service, characteristic, and property info is returned when connecting to a peripheral. All access is via service and characteristic UUIDs. The plugin manages handles internally.
  *
  * Simultaneous connections to multiple peripherals are supported.
- *
  * @usage
  *
  * ```typescript
@@ -171,7 +170,6 @@ export interface BLEScanOptions {
  * ## UUIDs
  *
  * UUIDs are always strings and not numbers. Some 16-bit UUIDs, such as '2220' look like integers, but they're not. (The integer 2220 is 0x8AC in hex.) This isn't a problem with 128 bit UUIDs since they look like strings 82b9e6e1-593a-456f-be9b-9215160ebcac. All 16-bit UUIDs should also be passed to methods as strings.
- *
  * @interfaces
  * BLEScanOptions
  */
@@ -231,6 +229,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Scans for BLE devices. This function operates similarly to the `startScan` function, but allows you to specify extra options (like allowing duplicate device reports).
+   *
    * @param {string[]} services  List of service UUIDs to discover, or `[]` to find all devices
    * @param {BLEScanOptions} options Options
    * @returns {Observable<any>} Returns an Observable that notifies of each peripheral discovered.
@@ -265,6 +264,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Set device pin.
+   *
    * @usage
    * ```
    *   BLE.setPin(pin).subscribe(success => {
@@ -275,7 +275,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
    *   });
    * ```
    * @param {string} pin Pin of the device as a string
-   * @return {Observable<any>} Returns an Observable that notifies of success/failure.
+   * @returns {Observable<any>} Returns an Observable that notifies of success/failure.
    */
   @Cordova({
     observable: true,
@@ -286,6 +286,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Connect to a peripheral.
+   *
    * @usage
    * ```
    *   BLE.connect('12:34:56:78:9A:BC').subscribe(peripheralData => {
@@ -296,7 +297,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
    *   });
    * ```
    * @param {string} deviceId UUID or MAC address of the peripheral
-   * @return {Observable<any>} Returns an Observable that notifies of connect/disconnect.
+   * @returns {Observable<any>} Returns an Observable that notifies of connect/disconnect.
    */
   @Cordova({
     observable: true,
@@ -331,8 +332,8 @@ export class BLE extends AwesomeCordovaNativePlugin {
    *
    * ```
    * @param {string} deviceId UUID or MAC address of the peripheral
-   * @param {function} connectCallback function that is called with peripheral data when the devices connects
-   * @param {function} disconnectCallback  function that is called with peripheral data when the devices disconnects
+   * @param {Function} connectCallback function that is called with peripheral data when the devices connects
+   * @param {Function} disconnectCallback  function that is called with peripheral data when the devices disconnects
    */
   @Cordova({ sync: true })
   autoConnect(deviceId: string, connectCallback: any, disconnectCallback: any) {
@@ -342,6 +343,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
   /**
    * Request MTU size.
    * May be used to fix the Error 14 "Unlikely" on write requests with more than 20 bytes.
+   *
    * @usage
    * ```
    *   BLE.requestMtu('12:34:56:78:9A:BC', 512).then(() => {
@@ -352,7 +354,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
    * ```
    * @param {string} deviceId UUID or MAC address of the peripheral
    * @param {number} mtuSize The new MTU size. (23 - 517, default is usually 23. Max recommended: 512)
-   * @return {Promise<any>} Returns a Promise.
+   * @returns {Promise<any>} Returns a Promise.
    */
   @Cordova()
   requestMtu(deviceId: string, mtuSize: number): Promise<any> {
@@ -364,6 +366,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
    * This method may fix a issue of old cached services and characteristics.
    * NOTE Since this uses an undocumented API it's not guaranteed to work.
    * If you choose a too low delay time (timeoutMillis) the method could fail.
+   *
    * @usage
    * ```
    *   BLE.refreshDeviceCache('12:34:56:78:9A:BC', 10000).then(discoveredServices => {
@@ -374,7 +377,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
    * ```
    * @param {string} deviceId UUID or MAC address of the peripheral
    * @param {number} timeoutMillis Delay in milliseconds after refresh before discovering services.
-   * @return {Promise<any>} Returns a Promise.
+   * @returns {Promise<any>} Returns a Promise.
    */
   @Cordova()
   refreshDeviceCache(deviceId: string, timeoutMillis: number): Promise<any> {
@@ -383,6 +386,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Disconnect from a peripheral.
+   *
    * @usage
    * ```
    *   BLE.disconnect('12:34:56:78:9A:BC').then(() => {
@@ -390,7 +394,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
    *   });
    * ```
    * @param {string} deviceId  UUID or MAC address of the peripheral
-   * @return {Promise<any>} Returns a Promise
+   * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
   disconnect(deviceId: string): Promise<any> {
@@ -403,7 +407,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
    * @param {string} deviceId  UUID or MAC address of the peripheral
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
-   * @return {Promise<any>} Returns a Promise
+   * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
   read(deviceId: string, serviceUUID: string, characteristicUUID: string): Promise<any> {
@@ -412,6 +416,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Write the value of a characteristic.
+   *
    * @usage
    * ```
    * // send 1 byte to switch a light on
@@ -436,7 +441,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
    * @param {ArrayBuffer} value  Data to write to the characteristic, as an ArrayBuffer.
-   * @return {Promise<any>} Returns a Promise
+   * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
   write(deviceId: string, serviceUUID: string, characteristicUUID: string, value: ArrayBuffer): Promise<any> {
@@ -450,7 +455,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
    * @param {ArrayBuffer} value  Data to write to the characteristic, as an ArrayBuffer.
-   * @return {Promise<any>} Returns a Promise
+   * @returns {Promise<any>} Returns a Promise
    */
   @Cordova()
   writeWithoutResponse(
@@ -471,11 +476,10 @@ export class BLE extends AwesomeCordovaNativePlugin {
    *   console.log(String.fromCharCode.apply(null, new Uint8Array(buffer));
    * });
    * ```
-   *
    * @param {string} deviceId  UUID or MAC address of the peripheral
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
-   * @return {Observable<any>} Returns an Observable that notifies of characteristic changes.
+   * @returns {Observable<any>} Returns an Observable that notifies of characteristic changes.
    * The observer emit an array with data at index 0 and sequence order at index 1.
    * The sequence order is always undefined on iOS. On android it leave the client to check the sequence order and reorder if needed
    */
@@ -539,8 +543,7 @@ export class BLE extends AwesomeCordovaNativePlugin {
    *   console.log("Bluetooth is " + state);
    * });
    * ```
-   *
-   * @return {Observable<any>} Returns an Observable that notifies when the Bluetooth is enabled or disabled on the device.
+   * @returns {Observable<any>} Returns an Observable that notifies when the Bluetooth is enabled or disabled on the device.
    */
   @Cordova({
     observable: true,
@@ -585,7 +588,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
    * Read the RSSI value on the device connection.
    *
    * @param {string} deviceId  UUID or MAC address of the peripheral
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

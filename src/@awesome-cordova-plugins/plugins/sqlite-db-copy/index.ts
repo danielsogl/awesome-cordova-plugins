@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Sqlite Db Copy
  * @description
  * This plugin does something
- *
  * @usage
  * ```typescript
  * import { SqliteDbCopy } from '@awesome-cordova-plugins/sqlite-db-copy/ngx';
@@ -39,9 +38,10 @@ export class SqliteDbCopy extends AwesomeCordovaNativePlugin {
    * location = 1; // If set will copy the database to Library folder instead of Documents folder.
    * or
    * location = 2; // It will copy the database in the default SQLite Database directory. This is the default location for database
+   *
    * @param dbname {string} Database file name available in www diretory with extension.The plugin will look for and copy the file according to the filename provided here. And the same file name should be used while opening the database via SQLitePlugin
    * @param location {number} Location where to copy the database for app (only applicable for ios).For Android pass 0.
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova({
     successIndex: 2,
@@ -52,9 +52,10 @@ export class SqliteDbCopy extends AwesomeCordovaNativePlugin {
   }
   /**
    * Check if database is available at external storage. Useful when trying to copying the database from device sdcard.
+   *
    * @param dbname {string} Name of the database file which is available on external or intenral storage
    * @param source {string} Full native path for the folder in which db file is present. The "/" must be added at the end of path. For.eg. /sdcard/mydb/. Should not include dbname.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 2,
@@ -71,11 +72,12 @@ export class SqliteDbCopy extends AwesomeCordovaNativePlugin {
    * location = 1; // If set will copy the database to Library folder instead of Documents folder.
    * or
    * location = 2; // It will copy the database in the default SQLite Database directory. This is the default location for database
+   *
    * @param dbname {string} Is the name of the database you want to copy. The plugin will look for and copy the file according to the filename provided here. And the same file name should be used while opening the database via SQLitePlugin
    * @param location {number} Location where to copy the database for app (only applicable for ios). For Android pass 0.
    * @param source {string} Source File location like /sdcard/mydb/db.db. Please provide a valid existing location and the dbname should be present in the path.
    * @param deleteolddb {boolean} A boolean value if set to true, will delete the existing db from the local app database folder before copying the new db. Please provide proper boolean value true or false;
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 4,
@@ -92,11 +94,12 @@ export class SqliteDbCopy extends AwesomeCordovaNativePlugin {
    * location = 1; // It will copy the database from Library folder instead.
    * or
    * location = 2; // It will copy the database from the default SQLite Database directory. This is the default location for database
+   *
    * @param dbname {string} Is the name of the database you want to copy. The plugin will look for and copy the file according to the filename provided here. And the same file name should be used while opening the database via SQLitePlugin.
    * @param location {number} Location where to copy the database for app (only applicable for ios). For Android pass 0.
    * @param destination {string} Destination File location like /sdcard/mydb/ Please provide a valid existing location and "/" should be present at the end of the path. Do not append db name in the path.
    * @param overwrite {boolean}  If set to true, then will replace the file at the destination. Otherwise will throw an error, if destination file already exists.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 4,
@@ -113,9 +116,10 @@ export class SqliteDbCopy extends AwesomeCordovaNativePlugin {
    * location = 1; // If set will copy the database to Library folder instead of Documents folder.
    * or
    * location = 2; // It will copy the database in the default SQLite Database directory. This is the default location for database
+   *
    * @param dbname {string} Is the name of the database you want to remove. If the database file is having any extension, please provide that also.
    * @param location {number} Location where to copy the database for app (only applicable for ios).For Android pass 0.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({
     successIndex: 2,

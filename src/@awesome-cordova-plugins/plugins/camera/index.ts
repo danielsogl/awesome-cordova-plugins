@@ -136,7 +136,6 @@ export enum Direction {
  * </config-file>
  * ```
  * inside of the <platform name='ios> section
- *
  * @usage
  * ```typescript
  * import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
@@ -243,6 +242,7 @@ export class Camera extends AwesomeCordovaNativePlugin {
 
   /**
    * Take a picture or video, or load one from the library.
+   *
    * @param {CameraOptions} [options] Options that you want to pass to the camera. Encoding type, quality, etc. Platform-specific quirks are described in the [Cordova plugin docs](https://github.com/apache/cordova-plugin-camera#cameraoptions-errata-).
    * @returns {Promise<any>} Returns a Promise that resolves with Base64 encoding of the image data, or the image file URI, depending on cameraOptions, otherwise rejects with an error.
    */
@@ -256,6 +256,7 @@ export class Camera extends AwesomeCordovaNativePlugin {
   /**
    * Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.
    * Applies only when the value of Camera.sourceType equals Camera.PictureSourceType.CAMERA and the Camera.destinationType equals Camera.DestinationType.FILE_URI.
+   *
    * @returns {Promise<any>}
    */
   @Cordova({

@@ -20,7 +20,6 @@ export interface OpenALPRResult {
  * @name OpenALPR
  * @description
  * This Cordova plugin adds support for the OpenALPR (Automatic License Plate Recognition) library, which provides support for retrieving the license plate from a picture.
- *
  * @usage
  * ```typescript
  * import { OpenALPR, OpenALPROptions, OpenALPRResult } from '@awesome-cordova-plugins/openalpr/ngx';
@@ -63,9 +62,10 @@ export class OpenALPR extends AwesomeCordovaNativePlugin {
 
   /**
    * This function does something
+   *
    * @param imageData {any} Base64 encoding of the image data or the image file URI
    * @param options {OpenALPROptions} Options to pass to the OpenALPR scanner
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   scan(imageData: any, options?: OpenALPROptions): Promise<any> {

@@ -30,6 +30,7 @@ export interface MediaFile {
 
   /**
    * Retrieves the format information of the media file.
+   *
    * @param {Function} successCallback
    * @param {Function} errorCallback
    */
@@ -119,7 +120,6 @@ export interface ConfigurationData {
  * This plugin provides access to the device's audio, image, and video capture capabilities.
  *
  * Requires Cordova plugin: `cordova-plugin-media-capture`. For more info, please see the [Media Capture plugin docs](https://github.com/apache/cordova-plugin-media-capture).
- *
  * @usage
  * ```typescript
  * import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@awesome-cordova-plugins/media-capture/ngx';
@@ -158,6 +158,7 @@ export interface ConfigurationData {
 export class MediaCapture extends AwesomeCordovaNativePlugin {
   /**
    * The recording image sizes and formats supported by the device.
+   *
    * @returns {ConfigurationData[]}
    */
   @CordovaProperty()
@@ -165,6 +166,7 @@ export class MediaCapture extends AwesomeCordovaNativePlugin {
 
   /**
    * The audio recording formats supported by the device.
+   *
    * @returns {ConfigurationData[]}
    */
   @CordovaProperty()
@@ -172,6 +174,7 @@ export class MediaCapture extends AwesomeCordovaNativePlugin {
 
   /**
    * The recording video resolutions and formats supported by the device.
+   *
    * @returns {ConfigurationData[]}
    */
   @CordovaProperty()
@@ -179,6 +182,7 @@ export class MediaCapture extends AwesomeCordovaNativePlugin {
 
   /**
    * Start the audio recorder application and return information about captured audio clip files.
+   *
    * @param options
    * @returns {Promise<MediaFile[]>}
    */
@@ -191,6 +195,7 @@ export class MediaCapture extends AwesomeCordovaNativePlugin {
 
   /**
    * Start the camera application and return information about captured image files.
+   *
    * @param options
    * @returns {Promise<MediaFile[]>}
    */
@@ -203,6 +208,7 @@ export class MediaCapture extends AwesomeCordovaNativePlugin {
 
   /**
    * Start the video recorder application and return information about captured video clip files.
+   *
    * @param options
    * @returns {Promise<MediaFile[]>}
    */
@@ -215,6 +221,7 @@ export class MediaCapture extends AwesomeCordovaNativePlugin {
 
   /**
    * is fired if the capture call is successful
+   *
    * @returns {Observable<MediaFile[]>}
    */
   @Cordova({
@@ -227,6 +234,7 @@ export class MediaCapture extends AwesomeCordovaNativePlugin {
 
   /**
    * is fired if the capture call is unsuccessful
+   *
    * @returns {Observable<CaptureError>}
    */
   @Cordova({

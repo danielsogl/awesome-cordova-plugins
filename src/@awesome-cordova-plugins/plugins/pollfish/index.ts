@@ -5,7 +5,6 @@ import { Plugin, Cordova, CordovaProperty, AwesomeCordovaNativePlugin } from '@a
  * @name Pollfish
  * @description
  * Pollfish Ionic Native plugin wrapper
- *
  * @usage
  * ```typescript
  * import { Pollfish } from '@awesome-cordova-plugins/pollfish/ngx';
@@ -90,6 +89,7 @@ export class Pollfish extends AwesomeCordovaNativePlugin {
 
   /**
    * Function to init Pollfish
+   *
    * @param releaseMode {boolean}
    * @param rewardMode {boolean}
    * @param apiKey {string}
@@ -113,6 +113,7 @@ export class Pollfish extends AwesomeCordovaNativePlugin {
 
   /**
    * Function to init Pollfish with user attributes
+   *
    * @param releaseMode {boolean}
    * @param rewardMode {boolean}
    * @param apiKey {string}
@@ -157,6 +158,7 @@ export class Pollfish extends AwesomeCordovaNativePlugin {
 
   /**
    * Function to set event callbacks
+   *
    * @param eventName
    * @param callback
    */

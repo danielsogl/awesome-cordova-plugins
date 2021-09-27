@@ -108,10 +108,8 @@ export interface FileTransferError {
 
 /**
  * @name File Transfer
- *
  * @description
  * This plugin allows you to upload and download files.
- *
  * @usage
  * ```typescript
  * import { FileTransfer, FileUploadOptions, FileTransferObject } from '@awesome-cordova-plugins/file-transfer/ngx';
@@ -162,7 +160,6 @@ export interface FileTransferError {
  *
  * To store files in a different/publicly accessible directory, please refer to the following link
  * https://github.com/apache/cordova-plugin-file#where-to-store-files
- *
  * @interfaces
  * FileUploadOptions
  * FileUploadResult
@@ -187,6 +184,7 @@ export class FileTransfer extends AwesomeCordovaNativePlugin {
    *      CONNECTION_ERR: 3,      Return on connection error
    *      ABORT_ERR: 4,           Return on aborting
    *      NOT_MODIFIED_ERR: 5     Return on '304 Not Modified' HTTP response
+   *
    * @enum {number}
    */
   FileTransferErrorCode = {
@@ -199,7 +197,8 @@ export class FileTransfer extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates a new FileTransfer object
-   * @return {FileTransferObject}
+   *
+   * @returns {FileTransferObject}
    */
   create(): FileTransferObject {
     return new FileTransferObject();
@@ -263,6 +262,7 @@ export class FileTransferObject {
 
   /**
    * Registers a listener that gets called whenever a new chunk of data is transferred.
+   *
    * @param {Function} listener Listener that takes a progress event.
    */
   @InstanceCheck({ sync: true })

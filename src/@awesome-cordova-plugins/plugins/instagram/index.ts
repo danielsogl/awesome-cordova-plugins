@@ -4,7 +4,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 /**
  * @name Instagram
  * @description Share a photo with the instagram app
- *
  * @usage
  * ```typescript
  * import { Instagram } from '@awesome-cordova-plugins/instagram/ngx';
@@ -57,6 +56,7 @@ export class Instagram extends AwesomeCordovaNativePlugin {
 
   /**
    * Share a library asset or video
+   *
    * @param assetLocalIdentifier A local fileURI
    * @returns {Promise<any>} Returns a promise that resolves if the image was shared
    */

@@ -50,7 +50,6 @@ export interface StreamingAudioOptions {
  * @name Streaming Media
  * @description
  * This plugin allows you to stream audio and video in a fullscreen, native player on iOS and Android.
- *
  * @usage
  * ```typescript
  * import { StreamingMedia, StreamingVideoOptions } from '@awesome-cordova-plugins/streaming-media/ngx';
@@ -83,6 +82,7 @@ export interface StreamingAudioOptions {
 export class StreamingMedia extends AwesomeCordovaNativePlugin {
   /**
    * Streams a video
+   *
    * @param videoUrl {string} The URL of the video
    * @param options {StreamingVideoOptions} Options
    */
@@ -91,6 +91,7 @@ export class StreamingMedia extends AwesomeCordovaNativePlugin {
 
   /**
    * Streams an audio
+   *
    * @param audioUrl {string} The URL of the audio stream
    * @param options {StreamingAudioOptions} Options
    */

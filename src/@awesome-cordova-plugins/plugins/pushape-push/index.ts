@@ -77,7 +77,7 @@ export interface IOSPushOptions {
 
   /**
    * If true the device shows an alert on receipt of notification.
-   * **Note**: the value you set this option to the first time you call the init
+   * Note**: the value you set this option to the first time you call the init
    * method will be how the application always acts. Once this is set
    * programmatically in the init method it can only be changed manually by the
    * user in Settings>Notifications>App Name. This is normal iOS behaviour.
@@ -86,7 +86,7 @@ export interface IOSPushOptions {
 
   /**
    * If true the device sets the badge number on receipt of notification.
-   * **Note**: the value you set this option to the first time you call the init
+   * Note**: the value you set this option to the first time you call the init
    * method will be how the application always acts. Once this is set
    * programmatically in the init method it can only be changed manually by the
    * user in Settings>Notifications>App Name. This is normal iOS behaviour.
@@ -95,7 +95,7 @@ export interface IOSPushOptions {
 
   /**
    * If true the device plays a sound on receipt of notification.
-   * **Note**: the value you set this option to the first time you call the init
+   * Note**: the value you set this option to the first time you call the init
    * method will be how the application always acts. Once this is set
    * programmatically in the init method it can only be changed manually by the
    * user in Settings>Notifications>App Name. This is normal iOS behaviour.
@@ -110,7 +110,7 @@ export interface IOSPushOptions {
   /**
    * If the array contains one or more strings each string will be used to
    * subscribe to a GcmPubSub topic.
-   * **Note**: only usable in conjunction with `senderID`.
+   * Note**: only usable in conjunction with `senderID`.
    */
   topics?: string[];
 
@@ -273,7 +273,6 @@ export interface PushapeRegistrationEventResponse extends RegistrationEventRespo
  * Requires Cordova plugin: `pushape-cordova-push`. For more info, please see the [Pushape plugin docs](https://github.com/gluelabs/pushape-cordova-push).
  *
  * For TypeScript users, see the [Pushape plugin docs about using TypeScript for custom notifications](https://github.com/gluelabs/pushape-cordova-push/blob/master/docs/PUSHAPE_TYPESCRIPT.md).
- *
  * @usage
  * ```typescript
  * import { PushapePush } from '@awesome-cordova-plugins/pushape-push/ngx';
@@ -286,7 +285,6 @@ export interface PushapeRegistrationEventResponse extends RegistrationEventRespo
  *
  *
  * ```
- *
  * @interfaces
  * PushapeRegistrationEventResponse
  * NotificationEventResponse
@@ -309,8 +307,9 @@ export interface PushapeRegistrationEventResponse extends RegistrationEventRespo
 export class PushapePush extends AwesomeCordovaNativePlugin {
   /**
    * Init push notifications
+   *
    * @param options {PushapeOptions}
-   * @return {PushObject}
+   * @returns {PushObject}
    */
   init(options: PushapeOptions): PushObject {
     return new PushObject(options);
@@ -318,7 +317,8 @@ export class PushapePush extends AwesomeCordovaNativePlugin {
 
   /**
    * Check whether the push notification permission has been granted.
-   * @return {Promise<{isEnabled: boolean}>} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
+   *
+   * @returns {Promise<{isEnabled: boolean}>} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
    */
   @Cordova()
   hasPermission(): Promise<{ isEnabled: boolean }> {
@@ -327,6 +327,7 @@ export class PushapePush extends AwesomeCordovaNativePlugin {
 
   /**
    * Create a new notification channel for Android O and above.
+   *
    * @param channel {Channel}
    */
   @Cordova({
@@ -338,6 +339,7 @@ export class PushapePush extends AwesomeCordovaNativePlugin {
 
   /**
    * Delete a notification channel for Android O and above.
+   *
    * @param id {string}
    */
   @Cordova({
@@ -349,7 +351,8 @@ export class PushapePush extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns a list of currently configured channels.
-   * @return {Promise<Channel[]>}
+   *
+   * @returns {Promise<Channel[]>}
    */
   @Cordova()
   listChannels(): Promise<Channel[]> {
@@ -378,8 +381,9 @@ export class PushObject {
 
   /**
    * Adds an event listener
+   *
    * @param event {string}
-   * @return {Observable<EventResponse>}
+   * @returns {Observable<EventResponse>}
    */
   @CordovaInstance({
     observable: true,
@@ -406,6 +410,7 @@ export class PushObject {
    * The count is an integer indicating what number should show up in the badge.
    * Passing 0 will clear the badge.
    * Each notification event contains a data.count value which can be used to set the badge to correct number.
+   *
    * @param count
    */
   @CordovaInstance({
@@ -427,6 +432,7 @@ export class PushObject {
    * iOS only
    * Tells the OS that you are done processing a background push notification.
    * successHandler gets called when background push processing is successfully completed.
+   *
    * @param [id]
    */
   @CordovaInstance({
@@ -446,8 +452,9 @@ export class PushObject {
 
   /**
    * The subscribe method is used when the application wants to subscribe a new topic to receive push notifications.
+   *
    * @param topic {string} Topic to subscribe to.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @CordovaInstance()
   subscribe(topic: string): Promise<any> {
@@ -456,8 +463,9 @@ export class PushObject {
 
   /**
    * The unsubscribe method is used when the application no longer wants to receive push notifications from a specific topic but continue to receive other push messages.
+   *
    * @param topic {string} Topic to unsubscribe from.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @CordovaInstance()
   unsubscribe(topic: string): Promise<any> {

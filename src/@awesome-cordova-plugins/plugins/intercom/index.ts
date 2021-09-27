@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
  * @description
  * This is a plugin that allows your Ionic app to use Intercom for iOS and/or Intercom for Android.
  * Follow the offical documentation to setup this plugin correctly: https://developers.intercom.com/docs/cordova-phonegap-configuration
- *
  * @usage
  * ```typescript
  * import { Intercom } from '@awesome-cordova-plugins/intercom/ngx';
@@ -33,8 +32,9 @@ import { Injectable } from '@angular/core';
 export class Intercom extends AwesomeCordovaNativePlugin {
   /**
    * Register a identified user
+   *
    * @param options {any} Options
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   registerIdentifiedUser(options: any): Promise<any> {
@@ -43,8 +43,9 @@ export class Intercom extends AwesomeCordovaNativePlugin {
 
   /**
    * Register a unidentified user
+   *
    * @param options {any} Options
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   registerUnidentifiedUser(options: any): Promise<any> {
@@ -53,7 +54,8 @@ export class Intercom extends AwesomeCordovaNativePlugin {
 
   /**
    * This resets the Intercom integration's cache of your user's identity and wipes the slate clean.
-   * @return {Promise<any>} Returns a promise
+   *
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   reset(): Promise<any> {
@@ -62,7 +64,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   logout(): Promise<any> {
@@ -73,7 +75,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    *
    * @param secureHash {string}
    * @param secureData {any}
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    * @deprecated Use setUserHash instead as of Intercom Cordova 4.0.0 and higher https://github.com/intercom/intercom-cordova/blob/master/CHANGELOG.md#400-2017-08-29
    */
   @Cordova()
@@ -84,7 +86,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param secureHash {string}
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   setUserHash(secureHash: string): Promise<any> {
@@ -94,7 +96,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param attributes {any}
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   updateUser(attributes: any): Promise<any> {
@@ -105,7 +107,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    *
    * @param eventName {string}
    * @param metaData {any}
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   logEvent(eventName: string, metaData: any): Promise<any> {
@@ -114,7 +116,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   displayMessenger(): Promise<any> {
@@ -123,7 +125,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   displayMessageComposer(): Promise<any> {
@@ -133,7 +135,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param initialMessage {string}
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   displayMessageComposerWithInitialMessage(initialMessage: string): Promise<any> {
@@ -142,7 +144,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   displayConversationsList(): Promise<any> {
@@ -151,7 +153,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   displayHelpCenter(): Promise<any> {
@@ -160,7 +162,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   unreadConversationCount(): Promise<any> {
@@ -170,7 +172,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param visibility {string}
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   setLauncherVisibility(visibility: string): Promise<any> {
@@ -180,7 +182,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param visibility {string}
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   setInAppMessageVisibility(visibility: string): Promise<any> {
@@ -189,7 +191,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   hideMessenger(): Promise<any> {
@@ -198,7 +200,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   registerForPush(): Promise<any> {
@@ -208,7 +210,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param token {string}
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   sendPushTokenToIntercom(token: string): Promise<any> {
@@ -218,7 +220,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param carouselId {string}
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   displayCarousel(carouselId: string): Promise<any> {
@@ -228,7 +230,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param articleId {string}
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   displayArticle(articleId: string): Promise<any> {
@@ -238,7 +240,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param bottomPadding {string | number}
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   setBottomPadding(bottomPadding: string | number): Promise<any> {

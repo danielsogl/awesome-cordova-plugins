@@ -3,7 +3,7 @@
 const gulp = require('gulp'),
   minimist = require('minimist'),
   rename = require('gulp-rename'),
-  tslint = require('gulp-tslint'),
+  eslint = require('gulp-eslint'),
   replace = require('gulp-replace'),
   _ = require('lodash');
 
@@ -17,18 +17,6 @@ const flagConfig = {
 
 /* Docs tasks */
 require('./scripts/docs/gulp-tasks')(gulp, flags);
-
-gulp.task('lint', () => {
-  return gulp
-    .src('src/**/*.ts')
-    .pipe(
-      tslint({
-        formatter: 'verbose',
-        configuration: 'tslint.json',
-      })
-    )
-    .pipe(tslint.report());
-});
 
 gulp.task('plugin:create', () => {
   if (flags.n && flags.n !== '') {

@@ -10,7 +10,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * Requires Cordova plugin: cordova-plugin-badge. For more info, please see the [Badge plugin docs](https://github.com/katzer/cordova-plugin-badge).
  *
  * Android Note: Badges have historically only been a feature implemented by third party launchers and not visible unless one of those launchers was being used (E.G. Samsung or Nova Launcher) and if enabled by the user. As of Android 8 (Oreo), [notification badges](https://developer.android.com/training/notify-user/badges) were introduced officially to reflect unread notifications. This plugin is unlikely to work as expected on devices running Android 8 or newer. Please see the [local notifications plugin docs](https://github.com/katzer/cordova-plugin-local-notifications) for more information on badge use with notifications.
- *
  * @usage
  * ```typescript
  * import { Badge } from '@awesome-cordova-plugins/badge/ngx';
@@ -35,6 +34,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class Badge extends AwesomeCordovaNativePlugin {
   /**
    * Clear the badge of the app icon.
+   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -44,6 +44,7 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the badge of the app icon.
+   *
    * @param {number} badgeNumber  The new badge number.
    * @returns {Promise<any>}
    */
@@ -54,6 +55,7 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the badge of the app icon.
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -63,6 +65,7 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Increase the badge number.
+   *
    * @param {number} increaseBy  Count to add to the current badge number
    * @returns {Promise<any>}
    */
@@ -73,6 +76,7 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Decrease the badge number.
+   *
    * @param {number} decreaseBy  Count to subtract from the current badge number
    * @returns {Promise<any>}
    */
@@ -83,6 +87,7 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Check support to show badges.
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -92,6 +97,7 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Determine if the app has permission to show badges.
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -101,6 +107,7 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Register permission to set badge notifications
+   *
    * @returns {Promise<any>}
    */
   @Cordova()

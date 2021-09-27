@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Insomnia
  * @description
  * Prevent the screen of the mobile device from falling asleep.
- *
  * @usage
  * ```typescript
  * import { Insomnia } from '@awesome-cordova-plugins/insomnia/ngx';
@@ -26,7 +25,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  *     () => console.log('error')
  *   );
  * ```
- *
  */
 @Plugin({
   pluginName: 'Insomnia',
@@ -39,6 +37,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class Insomnia extends AwesomeCordovaNativePlugin {
   /**
    * Keeps awake the application
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -48,6 +47,7 @@ export class Insomnia extends AwesomeCordovaNativePlugin {
 
   /**
    * Allows the application to sleep again
+   *
    * @returns {Promise<any>}
    */
   @Cordova()

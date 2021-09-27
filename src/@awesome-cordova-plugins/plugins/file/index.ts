@@ -36,6 +36,7 @@ export interface IFile extends Blob {
    * Returns a "slice" of the file. Since Cordova Files don't contain the actual
    * content, this really returns a File with adjusted start and end.
    * Slices of slices are supported.
+   *
    * @param start {Number} The index at which to start the slice (inclusive).
    * @param end {Number} The index at which to end the slice (exclusive).
    */
@@ -55,6 +56,7 @@ export interface LocalFileSystem {
 
   /**
    * Requests a filesystem in which to store application data.
+   *
    * @param type Whether the filesystem requested should be persistent, as defined above. Use one of TEMPORARY or
    *   PERSISTENT.
    * @param size This is an indicator of how much storage space, in bytes, the application expects to need.
@@ -71,6 +73,7 @@ export interface LocalFileSystem {
 
   /**
    * Allows the user to look up the Entry for a file or directory referred to by a local URL.
+   *
    * @param url A URL referring to a local file in a filesystem accessable via this API.
    * @param successCallback A callback that is called to report the FileEntry to which the supplied URL refers.
    * @param errorCallback A callback that is called when errors happen, or when the request to obtain the Entry is
@@ -92,12 +95,14 @@ export interface LocalFileSystem {
 export interface Metadata {
   /**
    * This is the time at which the file or directory was last modified.
+   *
    * @readonly
    */
   modificationTime: Date;
 
   /**
    * The size of the file, in bytes. This must return 0 for directories.
+   *
    * @readonly
    */
   size: number;
@@ -123,12 +128,14 @@ export interface FileSystem {
   /**
    * This is the name of the file system. The specifics of naming filesystems is unspecified, but a name must be unique
    * across the list of exposed file systems.
+   *
    * @readonly
    */
   name: string;
 
   /**
    * The root directory of the file system.
+   *
    * @readonly
    */
   root: DirectoryEntry;
@@ -151,6 +158,7 @@ export interface Entry {
 
   /**
    * Look up metadata about this entry.
+   *
    * @param successCallback A callback that is called with the time of the last modification.
    * @param errorCallback ErrorCallback A callback that is called when errors happen.
    */
@@ -158,6 +166,7 @@ export interface Entry {
 
   /**
    * Set the metadata of the entry.
+   *
    * @param successCallback {Function} is called with a Metadata object
    * @param errorCallback {Function} is called with a FileError
    * @param metadataObject {Metadata} keys and values to set
@@ -180,21 +189,6 @@ export interface Entry {
    * an alternate URL which can be used by native webview controls, for example media players.
    */
   nativeURL: string;
-
-  /**
-   * Look up metadata about this entry.
-   * @param successCallback A callback that is called with the time of the last modification.
-   * @param errorCallback ErrorCallback A callback that is called when errors happen.
-   */
-  getMetadata(successCallback: MetadataCallback, errorCallback?: ErrorCallback): void;
-
-  /**
-   * Set the metadata of the entry.
-   * @param successCallback {Function} is called with a Metadata object
-   * @param errorCallback {Function} is called with a FileError
-   * @param metadataObject {Metadata} keys and values to set
-   */
-  setMetadata(successCallback: MetadataCallback, errorCallback: ErrorCallback, metadataObject: Metadata): void;
 
   /**
    * Move an entry to a different location on the file system. It is an error to try to:
@@ -248,13 +242,15 @@ export interface Entry {
 
   /**
    * Return a URL that can be passed across the bridge to identify this entry.
-   * @return string URL that can be passed across the bridge to identify this entry
+   *
+   * @returns string URL that can be passed across the bridge to identify this entry
    */
   toInternalURL(): string;
 
   /**
    * Deletes a file or directory. It is an error to attempt to delete a directory that is not empty. It is an error to
    * attempt to delete the root directory of a filesystem.
+   *
    * @param successCallback A callback that is called on success.
    * @param errorCallback A callback that is called when errors happen.
    */
@@ -263,6 +259,7 @@ export interface Entry {
   /**
    * Look up the parent DirectoryEntry containing this Entry. If this Entry is the root of its filesystem, its parent
    * is itself.
+   *
    * @param successCallback A callback that is called to return the parent Entry.
    * @param errorCallback A callback that is called when errors happen.
    */
@@ -280,6 +277,7 @@ export interface DirectoryEntry extends Entry {
 
   /**
    * Creates or looks up a file.
+   *
    * @param path Either an absolute path or a relative path from this DirectoryEntry to the file to be looked up or
    *   created. It is an error to attempt to create a file whose immediate parent does not yet exist.
    * @param options
@@ -298,6 +296,7 @@ export interface DirectoryEntry extends Entry {
 
   /**
    * Creates or looks up a directory.
+   *
    * @param path Either an absolute path or a relative path from this DirectoryEntry to the directory to be looked up
    *   or created. It is an error to attempt to create a directory whose immediate parent does not yet exist.
    * @param options
@@ -311,7 +310,6 @@ export interface DirectoryEntry extends Entry {
    *     </ul>
    * @param successCallback   A callback that is called to return the DirectoryEntry selected or created.
    * @param errorCallback A callback that is called when errors happen.
-   *
    */
   getDirectory(
     path: string,
@@ -324,6 +322,7 @@ export interface DirectoryEntry extends Entry {
    * Deletes a directory and all of its contents, if any. In the event of an error [e.g. trying to delete a directory
    * that contains a file that cannot be removed], some of the contents of the directory may be deleted. It is an error
    * to attempt to delete the root directory of a filesystem.
+   *
    * @param successCallback A callback that is called on success.
    * @param errorCallback A callback that is called when errors happen.
    */
@@ -346,6 +345,7 @@ export interface DirectoryReader {
 
   /**
    * Read the next block of entries from this directory.
+   *
    * @param successCallback Called once per successful call to readEntries to deliver the next previously-unreported
    *   set of Entries in the associated Directory. If all Entries have already been returned from previous invocations
    *   of readEntries, successCallback must be called with a zero-length array as an argument.
@@ -360,6 +360,7 @@ export interface DirectoryReader {
 export interface FileEntry extends Entry {
   /**
    * Creates a new FileWriter associated with the file that this FileEntry represents.
+   *
    * @param successCallback A callback that is called with the new FileWriter.
    * @param errorCallback A callback that is called when errors happen.
    */
@@ -367,6 +368,7 @@ export interface FileEntry extends Entry {
 
   /**
    * Returns a File that represents the current state of the file that this FileEntry represents.
+   *
    * @param successCallback A callback that is called with the File.
    * @param errorCallback A callback that is called when errors happen.
    */
@@ -456,17 +458,20 @@ export declare class FileSaver extends EventTarget {
 
   /**
    * The blob is being written.
+   *
    * @readonly
    */
   INIT: number;
   /**
    * The object has been constructed, but there is no pending write.
+   *
    * @readonly
    */
   WRITING: number;
   /**
    * The entire Blob has been written to the file, an error occurred during the write, or the write was aborted using
    * abort(). The FileSaver is no longer writing the blob.
+   *
    * @readonly
    */
   DONE: number;
@@ -478,11 +483,13 @@ export declare class FileSaver extends EventTarget {
    * <li>WRITING</li>
    * <li>DONE</li>
    * <ul>
+   *
    * @readonly
    */
   readyState: number;
   /**
    * The last error that occurred on the FileSaver.
+   *
    * @readonly
    */
   error: Error;
@@ -510,30 +517,6 @@ export declare class FileSaver extends EventTarget {
    * Handler for write end events.
    */
   onwriteend: (event: ProgressEvent) => void;
-
-  /**
-   * When the FileSaver constructor is called, the user agent must return a new FileSaver object with readyState set to
-   * INIT. This constructor must be visible when the script's global object is either a Window object or an object
-   * implementing the WorkerUtils interface.
-   */
-  constructor(data: Blob);
-
-  /**
-   * When the abort method is called, user agents must run the steps below:
-   * <ol>
-   * <li> If readyState == DONE or readyState == INIT, terminate this overall series of steps without doing anything
-   * else. </li>
-   * <li> Set readyState to DONE. </li>
-   * <li> If there are any tasks from the object's FileSaver task source in one of the task queues, then remove those
-   * tasks. </li>
-   * <li> Terminate the write algorithm being processed. </li>
-   * <li> Set the error attribute to a DOMError object of type "AbortError". </li>
-   * <li> Fire a progress event called abort </li>
-   * <li> Fire a progress event called writeend </li>
-   * <li> Terminate this algorithm. </li>
-   * </ol>
-   */
-  abort(): void;
 }
 
 /**
@@ -556,12 +539,14 @@ export declare class FileWriter extends FileSaver {
 
   /**
    * Write the supplied data to the file at position.
+   *
    * @param data The blob to write.
    */
   write(data: ArrayBuffer | Blob | string): void;
 
   /**
    * Seek sets the file position at which the next write will occur.
+   *
    * @param offset If nonnegative, an absolute byte offset into the file. If negative, an offset back from the end of
    *   the file.
    */
@@ -570,6 +555,7 @@ export declare class FileWriter extends FileSaver {
   /**
    * Changes the length of the file to that specified. If shortening the file, data beyond the new length must be
    * discarded. If extending the file, the existing data must be zero-padded up to the new length.
+   *
    * @param size The size to which the length of the file is to be adjusted, measured in bytes.
    */
   truncate(size: number): void;
@@ -636,7 +622,7 @@ export declare class FileReader {
   [key: string]: any;
 }
 
-interface Window extends LocalFileSystem {}
+type Window = LocalFileSystem;
 
 declare const window: Window;
 
@@ -762,6 +748,7 @@ export class File extends AwesomeCordovaNativePlugin {
 
   /**
    * Get free disk space in Bytes
+   *
    * @returns {Promise<number>} Returns a promise that resolves with the remaining free disk space in Bytes
    */
   @CordovaCheck()
@@ -1042,10 +1029,12 @@ export class File extends AwesomeCordovaNativePlugin {
 
   /**
    * Write a new file to the desired location.
+   *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} fileName path relative to base path
    * @param {string | Blob | ArrayBuffer} text content, blob or ArrayBuffer to write
    * @param {IWriteOptions} whether to replace/append to an existing file. See IWriteOptions for more information.
+   * @param options
    * @returns {Promise<any>} Returns a Promise that resolves to updated file entry or rejects with an error.
    */
   @CordovaCheck()
@@ -1077,6 +1066,7 @@ export class File extends AwesomeCordovaNativePlugin {
 
   /**
    * Write content to FileEntry.
+   *
    * @hidden
    * Write to an existing file.
    * @param {FileEntry} fe file entry object
@@ -1102,6 +1092,7 @@ export class File extends AwesomeCordovaNativePlugin {
 
   /**
    * Write to an existing file.
+   *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} fileName path relative to base path
    * @param {string | Blob} text content or blob to write
@@ -1114,6 +1105,7 @@ export class File extends AwesomeCordovaNativePlugin {
 
   /**
    * Read the contents of a file as text.
+   *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as string or rejects with
@@ -1141,6 +1133,7 @@ export class File extends AwesomeCordovaNativePlugin {
 
   /**
    * Read file and return data as a binary data.
+   *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<string>} Returns a Promise that resolves with the contents of the file as string rejects with an
@@ -1153,6 +1146,7 @@ export class File extends AwesomeCordovaNativePlugin {
 
   /**
    * Read file and return data as an ArrayBuffer.
+   *
    * @param {string} path Base FileSystem. Please refer to the iOS and Android filesystem above
    * @param {string} file Name of file, relative to path.
    * @returns {Promise<ArrayBuffer>} Returns a Promise that resolves with the contents of the file as ArrayBuffer or
@@ -1224,6 +1218,7 @@ export class File extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @param err
    * @hidden
    */
   private fillErrorMessage(err: FileError): void {
@@ -1234,6 +1229,7 @@ export class File extends AwesomeCordovaNativePlugin {
 
   /**
    * Resolves a local file system URL
+   *
    * @param fileUrl {string} file system url
    * @returns {Promise<Entry>}
    */
@@ -1260,6 +1256,7 @@ export class File extends AwesomeCordovaNativePlugin {
 
   /**
    * Resolves a local directory url
+   *
    * @param directoryUrl {string} directory system url
    * @returns {Promise<DirectoryEntry>}
    */
@@ -1278,6 +1275,7 @@ export class File extends AwesomeCordovaNativePlugin {
 
   /**
    * Get a directory
+   *
    * @param directoryEntry {DirectoryEntry} Directory entry, obtained by resolveDirectoryUrl method
    * @param directoryName {string} Directory name
    * @param flags {Flags} Options
@@ -1307,6 +1305,7 @@ export class File extends AwesomeCordovaNativePlugin {
 
   /**
    * Get a file
+   *
    * @param directoryEntry {DirectoryEntry} Directory entry, obtained by resolveDirectoryUrl method
    * @param fileName {string} File name
    * @param flags {Flags} Options
@@ -1368,6 +1367,7 @@ export class File extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @param fe
    * @hidden
    */
   private remove(fe: Entry): Promise<RemoveResult> {
@@ -1385,6 +1385,9 @@ export class File extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @param srce
+   * @param destdir
+   * @param newName
    * @hidden
    */
   private move(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
@@ -1404,6 +1407,9 @@ export class File extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @param srce
+   * @param destdir
+   * @param newName
    * @hidden
    */
   private copy(srce: Entry, destdir: DirectoryEntry, newName: string): Promise<Entry> {
@@ -1423,6 +1429,7 @@ export class File extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @param dr
    * @hidden
    */
   private readEntries(dr: DirectoryReader): Promise<Entry[]> {
@@ -1440,6 +1447,7 @@ export class File extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @param de
    * @hidden
    */
   private rimraf(de: DirectoryEntry): Promise<RemoveResult> {
@@ -1457,6 +1465,7 @@ export class File extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @param fe
    * @hidden
    */
   private createWriter(fe: FileEntry): Promise<FileWriter> {
@@ -1474,6 +1483,8 @@ export class File extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @param writer
+   * @param gu
    * @hidden
    */
   private write(writer: FileWriter, gu: string | Blob | ArrayBuffer): Promise<any> {
@@ -1494,12 +1505,17 @@ export class File extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @param writer
+   * @param file
    * @hidden
    */
   private writeFileInChunks(writer: FileWriter, file: Blob) {
     const BLOCK_SIZE = 1024 * 1024;
     let writtenSize = 0;
 
+    /**
+     *
+     */
     function writeNextChunk() {
       const size = Math.min(BLOCK_SIZE, file.size - writtenSize);
       const chunk = file.slice(writtenSize, writtenSize + size);

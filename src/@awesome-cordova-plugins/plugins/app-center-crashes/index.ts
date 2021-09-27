@@ -37,7 +37,6 @@ export interface AppCenterCrashReportDevice {
  * All the information captured is available in the App Center portal for you to analyze the data.
  *
  * For more info, please see https://docs.microsoft.com/en-us/appcenter/sdk/crashes/cordova
- *
  * @usage
  * ```typescript
  * import { AppCenterCrashes } from '@awesome-cordova-plugins/app-center-crashes/ngx';
@@ -70,6 +69,7 @@ export class AppCenterCrashes extends AwesomeCordovaNativePlugin {
   /**
    * App Center Crashes provides you with an API to generate a test crash for easy testing of the SDK.
    * This API can only be used in test/beta apps and won't do anything in production apps.
+   *
    * @returns void
    */
   @Cordova()
@@ -77,6 +77,7 @@ export class AppCenterCrashes extends AwesomeCordovaNativePlugin {
 
   /**
    * At any time after starting the SDK, you can check if the app crashed in the previous launch
+   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -86,6 +87,7 @@ export class AppCenterCrashes extends AwesomeCordovaNativePlugin {
 
   /**
    * Details about the last crash
+   *
    * @returns {Promise<AppCenterCrashReport>}
    */
   @Cordova()
@@ -95,6 +97,7 @@ export class AppCenterCrashes extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if App Center Crashes is enabled
+   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -104,6 +107,7 @@ export class AppCenterCrashes extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable or disable App Center Crashes at runtime
+   *
    * @param  {boolean} shouldEnable Set value
    * @returns {Promise<void>}
    */

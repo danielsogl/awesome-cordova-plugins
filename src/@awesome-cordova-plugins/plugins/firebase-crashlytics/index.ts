@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Firebase Crashlytics
  * @description
  * A Google Firebase Crashlytics plugin to enable capture of crash reports.
- *
  * @usage
  * ```typescript
  * import { FirebaseCrashlytics } from '@awesome-cordova-plugins/firebase-crashlytics/ngx';

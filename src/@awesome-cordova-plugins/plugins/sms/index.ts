@@ -25,7 +25,6 @@ export interface SmsOptionsAndroid {
  * @description
  *
  * Requires Cordova plugin: cordova-sms-plugin. For more info, please see the [SMS plugin docs](https://github.com/cordova-sms/cordova-sms-plugin).
- *
  * @usage
  * ```typescript
  * import { SMS } from '@awesome-cordova-plugins/sms/ngx';
@@ -54,6 +53,7 @@ export interface SmsOptionsAndroid {
 export class SMS extends AwesomeCordovaNativePlugin {
   /**
    * Sends sms to a number
+   *
    * @param phoneNumber {string|string[]} Phone number
    * @param message {string} Message
    * @param options {SmsOptions} Options
@@ -69,7 +69,8 @@ export class SMS extends AwesomeCordovaNativePlugin {
 
   /**
    * This function lets you know if the app has permission to send SMS
-   * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if we have permission
+   *
+   * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates if we have permission
    */
   @Cordova({
     platforms: ['Android'],

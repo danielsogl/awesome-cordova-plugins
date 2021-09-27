@@ -426,7 +426,6 @@ export interface AdapterInfo {
  * This plugin has the most complete implementation for interacting with Bluetooth LE devices on Android, iOS and partially Windows.
  * It's a wrap around [randdusing/cordova-plugin-bluetoothle](https://github.com/randdusing/cordova-plugin-bluetoothle/blob/master/readme.md) cordova plugin for Ionic.
  * It supports peripheral **and** central modes and covers most of the API methods available on Android and iOS.
- *
  * @usage
  * ```typescript
  * import { BluetoothLE } from '@awesome-cordova-plugins/bluetooth-le/ngx';
@@ -446,7 +445,6 @@ export interface AdapterInfo {
  * }
  *
  * ```
- *
  */
 @Plugin({
   pluginName: 'BluetoothLE',
@@ -532,6 +530,8 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name retrieveConnected
+   * @param params
+   * @param params.services
    * Retrieved paired Bluetooth LE devices. In iOS, devices that are "paired" to will not return during a normal scan.
    * Callback is "instant" compared to a scan.
    * @param {{ services: string[] }} An array of service IDs to filter the retrieval by. If no service IDs are specified, no devices will be returned.
@@ -544,6 +544,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name bond (Android)
+   * @param params.address
    * Bond with a device.
    * The device doesn't need to be connected to initiate bonding. Android support only.
    * @param {{ address: string }} params The address/identifier provided by the scan's return object
@@ -562,6 +563,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name unbond (Android)
+   * @param params.address
    * Unbond with a device. The device doesn't need to be connected to initiate bonding. Android support only.
    * @param {{address: string}} params The address/identifier
    * @returns {Promise<{ status: DeviceInfo }>}
@@ -579,7 +581,6 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
    * @param connectSuccess The success callback that is passed with device object
    * @param connectError   The callback that will be triggered when the connect operation fails
    * @param params         The connection params
-   *
    * @param {ConnectionParams} params
    * @returns {(Observable<{ status: DeviceInfo }>)}
    *    success: device object with status
@@ -592,6 +593,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name reconnect
+   * @param params.address
    * Reconnect to a previously connected Bluetooth device
    * @param {{address: string}} params The address/identifier
    * @returns {(Observable<DeviceInfo>)}
@@ -603,6 +605,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name disconnect
+   * @param params.address
    * Disconnect from a Bluetooth LE device.
    *              Note: It's simpler to just call close(). Starting with iOS 10, disconnecting before closing seems required!
    * @param {{address: string}} params The address/identifier
@@ -615,6 +618,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name close
+   * @param params.address
    * Close/dispose a Bluetooth LE device.
    * Prior to 2.7.0, you needed to disconnect to the device before closing, but this is no longer the case.
    * Starting with iOS 10, disconnecting before closing seems required!
@@ -628,6 +632,8 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name discover
+   * @param params.address
+   * @param params.clearCache
    * Discover all the devices services, characteristics and descriptors.
    * Doesn't need to be called again after disconnecting and then reconnecting.
    * If using iOS, you shouldn't use discover and services/characteristics/descriptors on the same device.
@@ -647,6 +653,8 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name services (iOS)
+   * @param params.address
+   * @param params.services
    * Discover the device's services.
    * Not providing an array of services will return all services and take longer to discover. iOS support only.
    * @param {{address: string, services: string[]}} params
@@ -764,6 +772,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name rssi
+   * @param params.address
    * Read RSSI of a connected device. RSSI is also returned with scanning.
    * @param {{ address: string }} params
    * @returns {Promise< RSSI >}
@@ -775,6 +784,8 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name mtu (Android, Android 5+)
+   * @param params.address
+   * @param params.mtu
    * Set MTU of a connected device. Android only.
    * @param {{ address: string, mtu: number }} params
    * @returns {Promise< MTU >}
@@ -786,6 +797,8 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name requestConnectionPriority (Android, Android 5+)
+   * @param params.address
+   * @param params.connectionPriority
    * Request a change in the connection priority to improve throughput when transfer large amounts of data via BLE.
    * Android support only. iOS will return error.
    * @param {{ address: string, connectionPriority: ConnectionPriority }} params
@@ -828,6 +841,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name isBonded (Android)
+   * @param params.address
    * Determine whether the device is bonded or not, or error if not initialized. Android support only.
    * @param {{ address: string }} params
    * @returns {Promise<BondedStatus>}
@@ -839,6 +853,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name wasConnected
+   * @param params.address
    * Determine whether the device was connected, or error if not initialized.
    * @param {{ address: string }} params
    * @returns {Promise<PrevConnectionStatus>}
@@ -850,6 +865,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name isConnected
+   * @param params.address
    * Determine whether the device is connected, or error if not initialized or never connected to device
    * @param {{ address: string }} params
    * @returns {Promise<CurrConnectionStatus>}
@@ -861,6 +877,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name isDiscovered
+   * @param params.address
    * Determine whether the device's characteristics and descriptors have been discovered, or error if not initialized or not connected to device.
    * @param {{ address: string }} params
    * @returns {Promise<DiscoverStatus>}
@@ -926,6 +943,8 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name addService
+   * @param params.service
+   * @param params.characteristics
    * Add a service with characteristics and descriptors. If more than one service is added, add them sequentially
    * @param {{ service: string, characteristics: Characteristic[] }} params
    * @returns {Promise<{ service: string, status: Status }>}
@@ -940,6 +959,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name removeService
+   * @param params.service
    * Remove a service
    * @param {{ service: string }} params
    * @returns {Promise<{ service: string, status: Status }>}
@@ -1018,6 +1038,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name encodedStringToBytes
+   * @param value
    * Helper function to convert a base64 encoded string from a characteristic or descriptor value into a uint8Array object
    * @param {string} str
    * @returns {Uint8Array}
@@ -1029,6 +1050,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
 
   /**
    * @name bytesToEncodedString
+   * @param value
    * Helper function to convert a unit8Array to a base64 encoded string for a characteric or descriptor write
    * @param {Uint8Array} bytes
    * @returns {string}

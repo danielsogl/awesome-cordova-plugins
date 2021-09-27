@@ -14,7 +14,6 @@ export interface ThemeDetectionResponse {
  * @name Theme Detection
  * @description
  * Cordova plugin to detect whether dark mode is enabled or not
- *
  * @usage
  * ```typescript
  * import { ThemeDetection } from '@awesome-cordova-plugins/theme-detection';
@@ -50,7 +49,7 @@ export interface ThemeDetectionResponse {
 export class ThemeDetection extends AwesomeCordovaNativePlugin {
   /**
    *
-   * @return {Promise<ThemeDetectionResponse>}
+   * @returns {Promise<ThemeDetectionResponse>}
    *  Returns a promise with an object that has a boolean property which gives information if the detection is available or not
    */
   @Cordova()
@@ -60,7 +59,7 @@ export class ThemeDetection extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * @return {Promise<ThemeDetectionResponse>}
+   * @returns {Promise<ThemeDetectionResponse>}
    *  Returns a promise with an object that has a boolean property which gives information if dark mode is enabled or not
    */
   @Cordova()

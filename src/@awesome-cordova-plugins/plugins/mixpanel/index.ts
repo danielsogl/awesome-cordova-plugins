@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
-declare var mixpanel: any;
+declare let mixpanel: any;
 
 /**
  * @name Mixpanel
  * @description
  * Cordova Plugin that wraps Mixpanel SDK for Android and iOS
- *
  * @usage
  * ```typescript
  * import { Mixpanel } from '@awesome-cordova-plugins/mixpanel/ngx';
@@ -35,6 +34,7 @@ declare var mixpanel: any;
 export class Mixpanel extends AwesomeCordovaNativePlugin {
   /**
    * If originalId is omitted, aliasId will be used as originalId.
+   *
    * @param aliasId {string}
    * @param originalId {string}
    * @returns {Promise<any>}
@@ -63,6 +63,7 @@ export class Mixpanel extends AwesomeCordovaNativePlugin {
 
   /**
    * The usePeople parameter is used for the iOS Mixpanel SDK.
+   *
    * @param distinctId {string}
    * @param usePeople {boolean}
    * @returns {Promise<any>}
@@ -168,7 +169,7 @@ export class MixpanelPeople extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param appendObject {any}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   append(appendObject: any): Promise<any> {
@@ -177,7 +178,7 @@ export class MixpanelPeople extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   deleteUser(): Promise<any> {
@@ -187,7 +188,7 @@ export class MixpanelPeople extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param distinctId {string}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    * @deprecated since 2016-11-21 - Use Mixpanel.identify instead.
    */
   @Cordova()
@@ -198,7 +199,7 @@ export class MixpanelPeople extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param peopleProperties {string}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   increment(peopleProperties: any): Promise<any> {
@@ -208,7 +209,7 @@ export class MixpanelPeople extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param pushId
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   setPushId(pushId: string): Promise<any> {
@@ -218,7 +219,7 @@ export class MixpanelPeople extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param peopleProperties
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   set(peopleProperties: any): Promise<any> {
@@ -228,7 +229,7 @@ export class MixpanelPeople extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param peopleProperties {any}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   setOnce(peopleProperties: any): Promise<any> {
@@ -239,7 +240,7 @@ export class MixpanelPeople extends AwesomeCordovaNativePlugin {
    *
    * @param amount {number}
    * @param chargeProperties
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   trackCharge(amount: number, chargeProperties: any): Promise<any> {
@@ -249,7 +250,7 @@ export class MixpanelPeople extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param propertiesArray
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   unset(propertiesArray: string[]): Promise<any> {
@@ -259,7 +260,7 @@ export class MixpanelPeople extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param unionObject {any}
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   union(unionObject: any): Promise<any> {

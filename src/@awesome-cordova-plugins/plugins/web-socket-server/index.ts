@@ -70,7 +70,6 @@ export interface HttpFields {
  * @name WebSocket Server
  * @description
  * This plugin allows you to run a single, lightweight, barebone WebSocket Server.
- *
  * @usage
  * ```typescript
  * import { WebSocketServer } from '@awesome-cordova-plugins/web-socket-server';
@@ -111,7 +110,8 @@ export interface HttpFields {
 export class WebSocketServer extends AwesomeCordovaNativePlugin {
   /**
    * Return this device's interfaces
-   * @return {Promise<WebSocketInterfaces>}
+   *
+   * @returns {Promise<WebSocketInterfaces>}
    */
   @Cordova()
   getInterfaces(): Promise<WebSocketInterfaces> {
@@ -120,9 +120,10 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Start websocket server
+   *
    * @param port {number} Local port on which the service runs. (0 means any free port)
    * @param options {WebSocketOptions} Additional options for websocket
-   * @return {Observable<WebSocketServerDetails>} Returns Observable where all generic error can be catched (mostly JSONExceptions)
+   * @returns {Observable<WebSocketServerDetails>} Returns Observable where all generic error can be catched (mostly JSONExceptions)
    */
   @Cordova({
     observable: true,
@@ -142,7 +143,8 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Watches for new messages
-   * @return {Observable<WebSocketMessage>}
+   *
+   * @returns {Observable<WebSocketMessage>}
    */
   watchMessage(): Observable<WebSocketMessage> {
     return this.onFunctionToObservable('onMessage');
@@ -150,7 +152,8 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Watches for new opened connections
-   * @return {Observable<WebSocketConnection>}
+   *
+   * @returns {Observable<WebSocketConnection>}
    */
   watchOpen(): Observable<WebSocketConnection> {
     return this.onFunctionToObservable('onOpen');
@@ -158,7 +161,8 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Watches for closed connections
-   * @return {Observable<WebSocketClose>}
+   *
+   * @returns {Observable<WebSocketClose>}
    */
   watchClose(): Observable<WebSocketClose> {
     return this.onFunctionToObservable('onClose');
@@ -166,7 +170,8 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Watches for any websocket failures
-   * @return {Observable<WebSocketFailure>}
+   *
+   * @returns {Observable<WebSocketFailure>}
    */
   watchFailure(): Observable<WebSocketFailure> {
     return this.onFunctionToObservable('onFailure');
@@ -174,7 +179,8 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop websocket server and closes all connections
-   * @return {Promise<WebSocketServerDetails>}
+   *
+   * @returns {Promise<WebSocketServerDetails>}
    */
   @Cordova()
   stop(): Promise<WebSocketServerDetails> {
@@ -183,9 +189,10 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Send Message to a connected device
+   *
    * @param conn {WebSocketIdentifier} Connection to send message to
    * @param msg {string} Message to send
-   * @return {Promise<void>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   send(conn: WebSocketIdentifier, msg: string): Promise<void> {
@@ -194,10 +201,11 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Close specific connection using uuid
+   *
    * @param conn {WebSocketIdentifier} Connection to close
    * @param code {number} Close code, determines if it was clean
    * @param reason {string} Reason for closing
-   * @return {Promise<void>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   close(conn: WebSocketIdentifier, code: number, reason: string): Promise<void> {

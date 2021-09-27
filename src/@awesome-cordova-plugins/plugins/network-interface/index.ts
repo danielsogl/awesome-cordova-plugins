@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Network Interface
  * @description
  * Network interface information plugin for Cordova/PhoneGap that supports Android, Blackberry 10, Browser, iOS, and Windows Phone 8.
- *
  * @usage
  * ```typescript
  * import { NetworkInterface } from '@awesome-cordova-plugins/network-interface/ngx';
@@ -38,7 +37,8 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class NetworkInterface extends AwesomeCordovaNativePlugin {
   /**
    * Gets the WiFi IP address
-   * @return {Promise<any>} Returns a Promise that resolves with the IP address information.
+   *
+   * @returns {Promise<any>} Returns a Promise that resolves with the IP address information.
    */
   @Cordova()
   getWiFiIPAddress(): Promise<any> {
@@ -47,7 +47,8 @@ export class NetworkInterface extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets the wireless carrier IP address
-   * @return {Promise<any>} Returns a Promise that resolves with the IP address information.
+   *
+   * @returns {Promise<any>} Returns a Promise that resolves with the IP address information.
    */
   @Cordova()
   getCarrierIPAddress(): Promise<any> {
@@ -56,8 +57,10 @@ export class NetworkInterface extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets the relevant proxies for the passed URL in order of application
+   *
    * @param {url} message  The message to display.
-   * @return {Promise<any>} Returns a Promise that resolves with the proxy information.
+   * @param url
+   * @returns {Promise<any>} Returns a Promise that resolves with the proxy information.
    */
   @Cordova()
   getHttpProxyInformation(url: string): Promise<any> {

@@ -42,7 +42,6 @@ export type FirebaseMessagingTokenType = 'apns-buffer' | 'apns-string';
  * @name Firebase Messaging
  * @description
  * Cordova plugin for Firebase Messaging
- *
  * @usage
  * ```typescript
  * import { FirebaseMessaging } from '@awesome-cordova-plugins/firebase-messaging/ngx';
@@ -94,6 +93,7 @@ export class FirebaseMessaging extends AwesomeCordovaNativePlugin {
    * Grant permission to receive push notifications (will trigger prompt on iOS).
    *
    * @param {IRequestPermissionOptions} [options]
+   * @param options.forceShow
    * @returns {Promise<string>}
    */
   @Cordova({ sync: true })

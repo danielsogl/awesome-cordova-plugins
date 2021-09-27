@@ -82,7 +82,6 @@ export interface FacebookLoginResponse {
  * Events are listed on the [insights page](https://www.facebook.com/insights/).
  *
  * For tracking events, see `logEvent` and `logPurchase`.
- *
  * @usage
  * ```typescript
  * import { Facebook, FacebookLoginResponse } from '@awesome-cordova-plugins/facebook/ngx';
@@ -99,7 +98,6 @@ export interface FacebookLoginResponse {
  * this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
  *
  * ```
- *
  */
 @Plugin({
   pluginName: 'Facebook',
@@ -270,6 +268,7 @@ export class Facebook extends AwesomeCordovaNativePlugin {
    * Logout of Facebook.
    *
    * For more info see the [Facebook docs](https://developers.facebook.com/docs/reference/javascript/FB.logout)
+   *
    * @returns {Promise<any>} Returns a Promise that resolves on a successful logout, and rejects if logout fails.
    */
   @Cordova()
@@ -338,6 +337,7 @@ export class Facebook extends AwesomeCordovaNativePlugin {
    * ```
    *
    * For more options see the [Cordova plugin docs](https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect#show-a-dialog) and the [Facebook docs](https://developers.facebook.com/docs/javascript/reference/FB.ui)
+   *
    * @param {Object} options The dialog options
    * @returns {Promise<any>} Returns a Promise that resolves with success data, or rejects with an error
    */
@@ -459,6 +459,7 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the deferred app link
+   *
    * @returns {Promise<string>} Returns a Promise that resolves with the deep link
    */
   @Cordova()
@@ -468,6 +469,7 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Manually log activation events
+   *
    * @returns {Promise<any>}
    */
   @Cordova()

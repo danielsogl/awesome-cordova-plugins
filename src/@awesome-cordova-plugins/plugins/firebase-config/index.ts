@@ -6,7 +6,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Firebase Config
  * @description
  * Cordova plugin for Firebase Config
- *
  * @usage
  * ```typescript
  * import { FirebaseConfig } from '@awesome-cordova-plugins/firebase-config/ngx';

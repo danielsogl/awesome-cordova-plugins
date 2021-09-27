@@ -20,7 +20,6 @@ export type EventData = object | AndroidData | null;
  * @name Broadcaster
  * @description
  * This plugin adds exchanging events between native code and your app.
- *
  * @usage
  * ```typescript
  * import { Broadcaster } from '@awesome-cordova-plugins/broadcaster/ngx';
@@ -48,9 +47,10 @@ export type EventData = object | AndroidData | null;
 export class Broadcaster extends AwesomeCordovaNativePlugin {
   /**
    * This function listen to an event sent from the native code
+   *
    * @param {string} eventName
    * @param {boolean} isGlobal Valid only for Android. It allows to listen for global messages(i.e. intents)
-   * @return {Observable<any>} Returns an observable to watch when an event is received
+   * @returns {Observable<any>} Returns an observable to watch when an event is received
    */
   @Cordova({
     observable: true,
@@ -63,13 +63,14 @@ export class Broadcaster extends AwesomeCordovaNativePlugin {
 
   /**
    * This function sends data to the native code
+   *
    * @param {string} eventName
    * @param {boolean} isGlobalOrEventData means that message is global (valid only on Android)
    * @param {AndroidData} isGlobalOrEventData allows to specify 'flags` and 'category' (valid only on Android)
    * @param {object} isGlobalOrEventData allows to specify a generic object containing custom event data (all platform)
    * @param {AndroidData} [data] if isGlobal is set, allows to specify 'flags` and 'category' if isGlobal is set (valid only on Android)
    * @param {object} [data] if isGlobal is set, allows to specify a generic object containing custom event data (all platform)
-   * @return {Promise<any>} Returns a promise that resolves when an event is successfully fired
+   * @returns {Promise<any>} Returns a promise that resolves when an event is successfully fired
    */
   @Cordova()
   fireNativeEvent(eventName: string, isGlobalOrEventData: boolean | EventData, data?: EventData): Promise<any> {

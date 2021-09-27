@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Native Geocoder
  * @description
  * Cordova plugin for native forward and reverse geocoding
- *
  * @usage
  * ```typescript
  * import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
@@ -42,10 +41,11 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class NativeGeocoder extends AwesomeCordovaNativePlugin {
   /**
    * Reverse geocode a given latitude and longitude to find location address
+   *
    * @param latitude {number} The latitude
    * @param longitude {number} The longitude
    * @param options {NativeGeocoderOptions} The options
-   * @return {Promise<NativeGeocoderResult[]>}
+   * @returns {Promise<NativeGeocoderResult[]>}
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -60,9 +60,10 @@ export class NativeGeocoder extends AwesomeCordovaNativePlugin {
 
   /**
    * Forward geocode a given address to find coordinates
+   *
    * @param addressString {string} The address to be geocoded
    * @param options {NativeGeocoderOptions} The options
-   * @return {Promise<NativeGeocoderResult[]>}
+   * @returns {Promise<NativeGeocoderResult[]>}
    */
   @Cordova({
     callbackOrder: 'reverse',

@@ -176,12 +176,12 @@ export interface OverlaySettings {
   overlaySettingsType: string;
 }
 
-export interface BarcodeOverlaySettings extends OverlaySettings {}
+export type BarcodeOverlaySettings = OverlaySettings;
 export interface BarcodeOverlaySettingsCtor {
   new (): BarcodeOverlaySettings;
 }
 
-export interface DocumentOverlaySettings extends OverlaySettings {}
+export type DocumentOverlaySettings = OverlaySettings;
 export interface DocumentOverlaySettingsCtor {
   new (): DocumentOverlaySettings;
 }
@@ -239,7 +239,7 @@ export interface BarcodeRecognizerResult extends RecognizerResult {
   stringData: string;
   uncertain: boolean;
 }
-export interface BarcodeRecognizerResultCtor extends RecognizerResultCtor<BarcodeRecognizerResult> {}
+export type BarcodeRecognizerResultCtor = RecognizerResultCtor<BarcodeRecognizerResult>;
 
 export interface BarcodeRecognizer extends Recognizer<BarcodeRecognizerResult> {
   autoScaleDetection: boolean;
@@ -260,7 +260,7 @@ export interface BarcodeRecognizer extends Recognizer<BarcodeRecognizerResult> {
   scanUpce: boolean;
   slowerThoroughScan: boolean;
 }
-export interface BarcodeRecognizerCtor extends RecognizerCtor<BarcodeRecognizer> {}
+export type BarcodeRecognizerCtor = RecognizerCtor<BarcodeRecognizer>;
 
 export interface MrzResult {
   documentType: string;
@@ -286,8 +286,7 @@ export interface MrzResult {
 export interface SuccessFrameGrabberRecognizerResult extends RecognizerResult {
   successFrame: string;
 }
-export interface SuccessFrameGrabberRecognizerResultCtor
-  extends RecognizerResultCtor<SuccessFrameGrabberRecognizerResult> {}
+export type SuccessFrameGrabberRecognizerResultCtor = RecognizerResultCtor<SuccessFrameGrabberRecognizerResult>;
 
 export interface SuccessFrameGrabberRecognizer extends Recognizer<SuccessFrameGrabberRecognizerResult> {
   slaveRecognizer: Recognizer;
@@ -304,7 +303,7 @@ export interface AustraliaDlBackRecognizerResult extends RecognizerResult {
   lastName: string;
   licenseNumber: string;
 }
-export interface AustraliaDlBackRecognizerResultCtor extends RecognizerResultCtor<AustraliaDlBackRecognizerResult> {}
+export type AustraliaDlBackRecognizerResultCtor = RecognizerResultCtor<AustraliaDlBackRecognizerResult>;
 
 export interface AustraliaDlBackRecognizer extends Recognizer<AustraliaDlBackRecognizerResult> {
   extractAddress: boolean;
@@ -313,7 +312,7 @@ export interface AustraliaDlBackRecognizer extends Recognizer<AustraliaDlBackRec
   fullDocumentImageDpi: number;
   returnFullDocumentImage: boolean;
 }
-export interface AustraliaDlBackRecognizerCtor extends RecognizerCtor<AustraliaDlBackRecognizer> {}
+export type AustraliaDlBackRecognizerCtor = RecognizerCtor<AustraliaDlBackRecognizer>;
 
 export interface AustraliaDlFrontRecognizerResult extends RecognizerResult {
   address: string;
@@ -326,7 +325,7 @@ export interface AustraliaDlFrontRecognizerResult extends RecognizerResult {
   name: string;
   signatureImage: string;
 }
-export interface AustraliaDlFrontRecognizerResultCtor extends RecognizerResultCtor<AustraliaDlFrontRecognizerResult> {}
+export type AustraliaDlFrontRecognizerResultCtor = RecognizerResultCtor<AustraliaDlFrontRecognizerResult>;
 
 export interface AustraliaDlFrontRecognizer extends Recognizer<AustraliaDlFrontRecognizerResult> {
   extractAddress: boolean;
@@ -337,7 +336,7 @@ export interface AustraliaDlFrontRecognizer extends Recognizer<AustraliaDlFrontR
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface AustraliaDlFrontRecognizerCtor extends RecognizerCtor<AustraliaDlFrontRecognizer> {}
+export type AustraliaDlFrontRecognizerCtor = RecognizerCtor<AustraliaDlFrontRecognizer>;
 
 export interface AustriaCombinedRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -363,7 +362,7 @@ export interface AustriaCombinedRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface AustriaCombinedRecognizerResultCtor extends RecognizerResultCtor<AustriaCombinedRecognizerResult> {}
+export type AustriaCombinedRecognizerResultCtor = RecognizerResultCtor<AustriaCombinedRecognizerResult>;
 
 export interface AustriaCombinedRecognizer extends Recognizer<AustriaCombinedRecognizerResult> {
   detectGlare: boolean;
@@ -388,7 +387,7 @@ export interface AustriaCombinedRecognizer extends Recognizer<AustriaCombinedRec
   signResult: boolean;
   signatureImageDpi: number;
 }
-export interface AustriaCombinedRecognizerCtor extends RecognizerCtor<AustriaCombinedRecognizer> {}
+export type AustriaCombinedRecognizerCtor = RecognizerCtor<AustriaCombinedRecognizer>;
 
 export interface AustriaDlFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -404,7 +403,7 @@ export interface AustriaDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   vehicleCategories: string;
 }
-export interface AustriaDlFrontRecognizerResultCtor extends RecognizerResultCtor<AustriaDlFrontRecognizerResult> {}
+export type AustriaDlFrontRecognizerResultCtor = RecognizerResultCtor<AustriaDlFrontRecognizerResult>;
 
 export interface AustriaDlFrontRecognizer extends Recognizer<AustriaDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -424,7 +423,7 @@ export interface AustriaDlFrontRecognizer extends Recognizer<AustriaDlFrontRecog
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface AustriaDlFrontRecognizerCtor extends RecognizerCtor<AustriaDlFrontRecognizer> {}
+export type AustriaDlFrontRecognizerCtor = RecognizerCtor<AustriaDlFrontRecognizer>;
 
 export interface AustriaIdBackRecognizerResult extends RecognizerResult {
   dateOfIssuance: Date;
@@ -437,7 +436,7 @@ export interface AustriaIdBackRecognizerResult extends RecognizerResult {
   placeOfBirth: string;
   principalResidence: string;
 }
-export interface AustriaIdBackRecognizerResultCtor extends RecognizerResultCtor<AustriaIdBackRecognizerResult> {}
+export type AustriaIdBackRecognizerResultCtor = RecognizerResultCtor<AustriaIdBackRecognizerResult>;
 
 export interface AustriaIdBackRecognizer extends Recognizer<AustriaIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -450,7 +449,7 @@ export interface AustriaIdBackRecognizer extends Recognizer<AustriaIdBackRecogni
   fullDocumentImageExtensionFactors: ImageExtensionFactors;
   returnFullDocumentImage: boolean;
 }
-export interface AustriaIdBackRecognizerCtor extends RecognizerCtor<AustriaIdBackRecognizer> {}
+export type AustriaIdBackRecognizerCtor = RecognizerCtor<AustriaIdBackRecognizer>;
 
 export interface AustriaIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -462,7 +461,7 @@ export interface AustriaIdFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface AustriaIdFrontRecognizerResultCtor extends RecognizerResultCtor<AustriaIdBackRecognizerResult> {}
+export type AustriaIdFrontRecognizerResultCtor = RecognizerResultCtor<AustriaIdBackRecognizerResult>;
 
 export interface AustriaIdFrontRecognizer extends Recognizer<AustriaIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -477,7 +476,7 @@ export interface AustriaIdFrontRecognizer extends Recognizer<AustriaIdFrontRecog
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface AustriaIdFrontRecognizerCtor extends RecognizerCtor<AustriaIdFrontRecognizer> {}
+export type AustriaIdFrontRecognizerCtor = RecognizerCtor<AustriaIdFrontRecognizer>;
 
 export interface AustriaPassportRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -496,7 +495,7 @@ export interface AustriaPassportRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface AustriaPassportRecognizerResultCtor extends RecognizerResultCtor<AustriaPassportRecognizerResult> {}
+export type AustriaPassportRecognizerResultCtor = RecognizerResultCtor<AustriaPassportRecognizerResult>;
 
 export interface AustriaPassportRecognizer extends Recognizer<AustriaPassportRecognizerResult> {
   detectGlare: boolean;
@@ -518,7 +517,7 @@ export interface AustriaPassportRecognizer extends Recognizer<AustriaPassportRec
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface AustriaPassportRecognizerCtor extends RecognizerCtor<AustriaPassportRecognizer> {}
+export type AustriaPassportRecognizerCtor = RecognizerCtor<AustriaPassportRecognizer>;
 
 export interface ColombiaDlFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -530,7 +529,7 @@ export interface ColombiaDlFrontRecognizerResult extends RecognizerResult {
   licenseNumber: string;
   name: string;
 }
-export interface ColombiaDlFrontRecognizerResultCtor extends RecognizerResultCtor<ColombiaDlFrontRecognizerResult> {}
+export type ColombiaDlFrontRecognizerResultCtor = RecognizerResultCtor<ColombiaDlFrontRecognizerResult>;
 
 export interface ColombiaDlFrontRecognizer extends Recognizer<ColombiaDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -555,7 +554,7 @@ export interface ColombiaIdBackRecognizerResult extends RecognizerResult {
   lastName: string;
   sex: string;
 }
-export interface ColombiaIdBackRecognizerResultCtor extends Recognizer<ColombiaIdBackRecognizerResult> {}
+export type ColombiaIdBackRecognizerResultCtor = Recognizer<ColombiaIdBackRecognizerResult>;
 
 export interface ColombiaIdBackRecognizer extends Recognizer<ColombiaIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -565,7 +564,7 @@ export interface ColombiaIdBackRecognizer extends Recognizer<ColombiaIdBackRecog
   returnFullDocumentImage: boolean;
   scanUncertain: boolean;
 }
-export interface ColombiaIdBackRecognizerCtor extends RecognizerCtor<ColombiaIdBackRecognizer> {}
+export type ColombiaIdBackRecognizerCtor = RecognizerCtor<ColombiaIdBackRecognizer>;
 
 export interface ColombiaIdFrontRecognizerResult extends RecognizerResult {
   documentNumber: string;
@@ -575,7 +574,7 @@ export interface ColombiaIdFrontRecognizerResult extends RecognizerResult {
   lastName: string;
   signatureImage: string;
 }
-export interface ColombiaIdFrontRecognizerResultCtor extends Recognizer<ColombiaIdFrontRecognizerResult> {}
+export type ColombiaIdFrontRecognizerResultCtor = Recognizer<ColombiaIdFrontRecognizerResult>;
 
 export interface ColombiaIdFrontRecognizer extends Recognizer<ColombiaIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -588,7 +587,7 @@ export interface ColombiaIdFrontRecognizer extends Recognizer<ColombiaIdFrontRec
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface ColombiaIdFrontRecognizerCtor extends RecognizerCtor<ColombiaIdFrontRecognizer> {}
+export type ColombiaIdFrontRecognizerCtor = RecognizerCtor<ColombiaIdFrontRecognizer>;
 
 export interface CroatiaCombinedRecognizerResult extends RecognizerResult {
   address: string;
@@ -615,7 +614,7 @@ export interface CroatiaCombinedRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface CroatiaCombinedRecognizerResultCtor extends RecognizerResultCtor<CroatiaCombinedRecognizerResult> {}
+export type CroatiaCombinedRecognizerResultCtor = RecognizerResultCtor<CroatiaCombinedRecognizerResult>;
 
 export interface CroatiaCombinedRecognizer extends Recognizer<CroatiaCombinedRecognizerResult> {
   detectGlare: boolean;
@@ -634,7 +633,7 @@ export interface CroatiaIdBackRecognizerResult extends RecognizerResult {
   mrzResult: MrzResult;
   residence: string;
 }
-export interface CroatiaIdBackRecognizerResultCtor extends RecognizerResultCtor<CroatiaIdBackRecognizerResult> {}
+export type CroatiaIdBackRecognizerResultCtor = RecognizerResultCtor<CroatiaIdBackRecognizerResult>;
 
 export interface CroatiaIdBackRecognizer extends Recognizer<CroatiaIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -660,7 +659,7 @@ export interface CroatiaIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface CroatiaIdFrontRecognizerResultCtor extends RecognizerResultCtor<CroatiaIdFrontRecognizerResult> {}
+export type CroatiaIdFrontRecognizerResultCtor = RecognizerResultCtor<CroatiaIdFrontRecognizerResult>;
 
 export interface CroatiaIdFrontRecognizer extends Recognizer<CroatiaIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -685,7 +684,7 @@ export interface CyprusIdBackRecognizerResult extends RecognizerResult {
   fullDocumentImage: string;
   sex: string;
 }
-export interface CyprusIdBackRecognizerResultCtor extends RecognizerResultCtor<CyprusIdBackRecognizerResult> {}
+export type CyprusIdBackRecognizerResultCtor = RecognizerResultCtor<CyprusIdBackRecognizerResult>;
 
 export interface CyprusIdBackRecognizer extends Recognizer<CyprusIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -695,7 +694,7 @@ export interface CyprusIdBackRecognizer extends Recognizer<CyprusIdBackRecognize
   fullDocumentImageExtensionFactors: ImageExtensionFactors;
   returnFullDocumentImage: boolean;
 }
-export interface CyprusIdBackRecognizerCtor extends RecognizerCtor<CyprusIdBackRecognizer> {}
+export type CyprusIdBackRecognizerCtor = RecognizerCtor<CyprusIdBackRecognizer>;
 
 export interface CyprusIdFrontRecognizerResult extends RecognizerResult {
   documentNumber: string;
@@ -705,7 +704,7 @@ export interface CyprusIdFrontRecognizerResult extends RecognizerResult {
   name: string;
   surname: string;
 }
-export interface CyprusIdFrontRecognizerResultCtor extends RecognizerResultCtor<CyprusIdFrontRecognizerResult> {}
+export type CyprusIdFrontRecognizerResultCtor = RecognizerResultCtor<CyprusIdFrontRecognizerResult>;
 
 export interface CyprusIdFrontRecognizer extends Recognizer<CyprusIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -718,7 +717,7 @@ export interface CyprusIdFrontRecognizer extends Recognizer<CyprusIdFrontRecogni
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface CyprusIdFrontRecognizerCtor extends RecognizerCtor<CyprusIdFrontRecognizer> {}
+export type CyprusIdFrontRecognizerCtor = RecognizerCtor<CyprusIdFrontRecognizer>;
 
 export interface CzechiaCombinedRecognizerResult extends RecognizerResult {
   address: string;
@@ -743,7 +742,7 @@ export interface CzechiaCombinedRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface CzechiaCombinedRecognizerResultCtor extends RecognizerResultCtor<CzechiaCombinedRecognizerResult> {}
+export type CzechiaCombinedRecognizerResultCtor = RecognizerResultCtor<CzechiaCombinedRecognizerResult>;
 
 export interface CzechiaCombinedRecognizer extends Recognizer<CzechiaCombinedRecognizerResult> {
   detectGlare: boolean;
@@ -772,7 +771,7 @@ export interface CzechiaIdBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: string;
 }
-export interface CzechiaIdBackRecognizerResultCtor extends RecognizerResultCtor<CzechiaIdBackRecognizerResult> {}
+export type CzechiaIdBackRecognizerResultCtor = RecognizerResultCtor<CzechiaIdBackRecognizerResult>;
 
 export interface CzechiaIdBackRecognizer extends Recognizer<CzechiaIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -795,7 +794,7 @@ export interface CyprusIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface CyprusIdFrontRecognizerResultCtor extends RecognizerResultCtor<CyprusIdFrontRecognizerResult> {}
+export type CyprusIdFrontRecognizerResultCtor = RecognizerResultCtor<CyprusIdFrontRecognizerResult>;
 
 export interface CyprusIdFrontRecognizer extends Recognizer<CyprusIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -810,7 +809,7 @@ export interface CyprusIdFrontRecognizer extends Recognizer<CyprusIdFrontRecogni
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface CyprusIdFrontRecognizerCtor extends RecognizerCtor<CyprusIdFrontRecognizer> {}
+export type CyprusIdFrontRecognizerCtor = RecognizerCtor<CyprusIdFrontRecognizer>;
 
 export interface DocumentFaceRecognizerResult extends RecognizerResult {
   documentLocation: string;
@@ -818,7 +817,7 @@ export interface DocumentFaceRecognizerResult extends RecognizerResult {
   faceLocation: Quadrilateral;
   fullDocumentImage: string;
 }
-export interface DocumentFaceRecognizerResultCtor extends RecognizerResultCtor<DocumentFaceRecognizerResult> {}
+export type DocumentFaceRecognizerResultCtor = RecognizerResultCtor<DocumentFaceRecognizerResult>;
 
 export interface DocumentFaceRecognizer extends Recognizer<DocumentFaceRecognizerResult> {
   detectorType: DocumentFaceDetectorType.TD1;
@@ -835,7 +834,7 @@ export interface EgyptIdFrontRecognizerResult extends RecognizerResult {
   fullDocumentImage: string;
   nationalNumber: string;
 }
-export interface EgyptIdFrontRecognizerResultCtor extends RecognizerResultCtor<EgyptIdFrontRecognizerResult> {}
+export type EgyptIdFrontRecognizerResultCtor = RecognizerResultCtor<EgyptIdFrontRecognizerResult>;
 
 export interface EgyptIdFrontRecognizer extends Recognizer<EgyptIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -843,7 +842,7 @@ export interface EgyptIdFrontRecognizer extends Recognizer<EgyptIdFrontRecognize
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface EgyptIdFrontRecognizerCtor extends RecognizerCtor<EgyptIdFrontRecognizer> {}
+export type EgyptIdFrontRecognizerCtor = RecognizerCtor<EgyptIdFrontRecognizer>;
 
 export interface BlinkCardEliteRecognizerResult extends RecognizerResult {
   cardNumber: string;
@@ -858,7 +857,7 @@ export interface BlinkCardEliteRecognizerResult extends RecognizerResult {
   scanningFirstSideDone: boolean;
   validThru: Date;
 }
-export interface BlinkCardEliteRecognizerResultCtor extends RecognizerResultCtor<BlinkCardEliteRecognizerResult> {}
+export type BlinkCardEliteRecognizerResultCtor = RecognizerResultCtor<BlinkCardEliteRecognizerResult>;
 
 export interface BlinkCardEliteRecognizer extends Recognizer<BlinkCardEliteRecognizerResult> {
   anonymizeCardNumber: boolean;
@@ -873,7 +872,7 @@ export interface BlinkCardEliteRecognizer extends Recognizer<BlinkCardEliteRecog
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface BlinkCardEliteRecognizerCtor extends RecognizerCtor<BlinkCardEliteRecognizer> {}
+export type BlinkCardEliteRecognizerCtor = RecognizerCtor<BlinkCardEliteRecognizer>;
 
 export interface EudlRecognizerResult extends RecognizerResult {
   address: string;
@@ -889,7 +888,7 @@ export interface EudlRecognizerResult extends RecognizerResult {
   lastName: string;
   personalNumber: string;
 }
-export interface EudlRecognizerResultCtor extends RecognizerResultCtor<EudlRecognizerResult> {}
+export type EudlRecognizerResultCtor = RecognizerResultCtor<EudlRecognizerResult>;
 
 export interface EudlRecognizer extends Recognizer<EudlRecognizerResult> {
   country: EudlCountry.Automatic;
@@ -930,7 +929,7 @@ export interface GermanyCombinedRecognizerResult extends RecognizerResult {
   sex: boolean;
   signatureImage: string;
 }
-export interface GermanyCombinedRecognizerResultCtor extends RecognizerResultCtor<GermanyCombinedRecognizerResult> {}
+export type GermanyCombinedRecognizerResultCtor = RecognizerResultCtor<GermanyCombinedRecognizerResult>;
 
 export interface GermanyCombinedRecognizer extends Recognizer<GermanyCombinedRecognizerResult> {
   detectGlare: boolean;
@@ -941,14 +940,14 @@ export interface GermanyCombinedRecognizer extends Recognizer<GermanyCombinedRec
   returnSignatureImage: boolean;
   signResult: boolean;
 }
-export interface GermanyCombinedRecognizerCtor extends RecognizerCtor<GermanyCombinedRecognizer> {}
+export type GermanyCombinedRecognizerCtor = RecognizerCtor<GermanyCombinedRecognizer>;
 
 export interface GermanyDlBackRecognizerResult extends RecognizerResult {
   dateOfIssueB10: string;
   dateOfIssueB10NotSpecified: boolean;
   fullDocumentImage: string;
 }
-export interface GermanyDlBackRecognizerResultCtor extends RecognizerResultCtor<GermanyDlBackRecognizerResult> {}
+export type GermanyDlBackRecognizerResultCtor = RecognizerResultCtor<GermanyDlBackRecognizerResult>;
 
 export interface GermanyDlBackRecognizer extends Recognizer<GermanyDlBackRecognizerResult> {
   detectGlare: boolean;
@@ -956,7 +955,7 @@ export interface GermanyDlBackRecognizer extends Recognizer<GermanyDlBackRecogni
   fullDocumentImageExtensionFactors: ImageExtensionFactors;
   returnFullDocumentImage: boolean;
 }
-export interface GermanyDlBackRecognizerCtor extends RecognizerCtor<GermanyDlBackRecognizer> {}
+export type GermanyDlBackRecognizerCtor = RecognizerCtor<GermanyDlBackRecognizer>;
 
 export interface GermanyIdBackRecognizerResult extends RecognizerResult {
   address: string;
@@ -984,7 +983,7 @@ export interface GermanyIdBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: string;
 }
-export interface GermanyIdBackRecognizerResultCtor extends RecognizerResultCtor<GermanyIdBackRecognizerResult> {}
+export type GermanyIdBackRecognizerResultCtor = RecognizerResultCtor<GermanyIdBackRecognizerResult>;
 
 export interface GermanyIdBackRecognizer extends Recognizer<GermanyIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -995,7 +994,7 @@ export interface GermanyIdBackRecognizer extends Recognizer<GermanyIdBackRecogni
   fullDocumentImageExtensionFactors: ImageExtensionFactors;
   returnFullDocumentImage: boolean;
 }
-export interface GermanyIdBackRecognizerCtor extends RecognizerCtor<GermanyIdBackRecognizer> {}
+export type GermanyIdBackRecognizerCtor = RecognizerCtor<GermanyIdBackRecognizer>;
 
 export interface GermanyIdFrontRecognizerResult extends RecognizerResult {
   canNumber: string;
@@ -1010,7 +1009,7 @@ export interface GermanyIdFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface GermanyIdFrontRecognizerResultCtor extends RecognizerResultCtor<GermanyIdFrontRecognizerResult> {}
+export type GermanyIdFrontRecognizerResultCtor = RecognizerResultCtor<GermanyIdFrontRecognizerResult>;
 
 export interface GermanyIdFrontRecognizer extends Recognizer<GermanyIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1029,7 +1028,7 @@ export interface GermanyIdFrontRecognizer extends Recognizer<GermanyIdFrontRecog
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface GermanyIdFrontRecognizerCtor extends RecognizerCtor<GermanyIdFrontRecognizer> {}
+export type GermanyIdFrontRecognizerCtor = RecognizerCtor<GermanyIdFrontRecognizer>;
 
 export interface GermanyOldIdRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1051,7 +1050,7 @@ export interface GermanyOldIdRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface GermanyOldIdRecognizerResultCtor extends RecognizerResultCtor<GermanyOldIdRecognizerResult> {}
+export type GermanyOldIdRecognizerResultCtor = RecognizerResultCtor<GermanyOldIdRecognizerResult>;
 
 export interface GermanyOldIdRecognizer extends Recognizer<GermanyOldIdRecognizerResult> {
   detectGlare: boolean;
@@ -1061,7 +1060,7 @@ export interface GermanyOldIdRecognizer extends Recognizer<GermanyOldIdRecognize
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface GermanyOldIdRecognizerCtor extends RecognizerCtor<GermanyOldIdRecognizer> {}
+export type GermanyOldIdRecognizerCtor = RecognizerCtor<GermanyOldIdRecognizer>;
 
 export interface GermanyPassportRecognizerResult extends RecognizerResult {
   authority: string;
@@ -1087,7 +1086,7 @@ export interface GermanyPassportRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface GermanyPassportRecognizerResultCtor extends RecognizerResultCtor<GermanyPassportRecognizerResult> {}
+export type GermanyPassportRecognizerResultCtor = RecognizerResultCtor<GermanyPassportRecognizerResult>;
 
 export interface GermanyPassportRecognizer extends Recognizer<GermanyPassportRecognizerResult> {
   detectGlare: boolean;
@@ -1102,7 +1101,7 @@ export interface GermanyPassportRecognizer extends Recognizer<GermanyPassportRec
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface GermanyPassportRecognizerCtor extends RecognizerCtor<GermanyPassportRecognizer> {}
+export type GermanyPassportRecognizerCtor = RecognizerCtor<GermanyPassportRecognizer>;
 
 export interface HongKongIdFrontRecognizerResult extends RecognizerResult {
   commercialCode: string;
@@ -1115,7 +1114,7 @@ export interface HongKongIdFrontRecognizerResult extends RecognizerResult {
   residentialStatus: string;
   sex: string;
 }
-export interface HongKongIdFrontRecognizerResultCtor extends RecognizerResultCtor<HongKongIdFrontRecognizerResult> {}
+export type HongKongIdFrontRecognizerResultCtor = RecognizerResultCtor<HongKongIdFrontRecognizerResult>;
 
 export interface HongKongIdFrontRecognizer extends Recognizer<HongKongIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1130,7 +1129,7 @@ export interface HongKongIdFrontRecognizer extends Recognizer<HongKongIdFrontRec
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface HongKongIdFrontRecognizerCtor extends RecognizerCtor<HongKongIdFrontRecognizer> {}
+export type HongKongIdFrontRecognizerCtor = RecognizerCtor<HongKongIdFrontRecognizer>;
 
 export interface IkadRecognizerResult extends RecognizerResult {
   address: string;
@@ -1146,7 +1145,7 @@ export interface IkadRecognizerResult extends RecognizerResult {
   sectory: string;
   sex: string;
 }
-export interface IkadRecognizerResultCtor extends RecognizerResultCtor<IkadRecognizerResult> {}
+export type IkadRecognizerResultCtor = RecognizerResultCtor<IkadRecognizerResult>;
 
 export interface IkadRecognizer extends Recognizer<IkadRecognizerResult> {
   detectGlare: boolean;
@@ -1161,7 +1160,7 @@ export interface IkadRecognizer extends Recognizer<IkadRecognizerResult> {
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface IkadRecognizerCtor extends RecognizerCtor<IkadRecognizer> {}
+export type IkadRecognizerCtor = RecognizerCtor<IkadRecognizer>;
 
 export interface IndonesiaIdFrontRecognizerResult extends RecognizerResult {
   address: string;
@@ -1187,7 +1186,7 @@ export interface IndonesiaIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface IndonesiaIdFrontRecognizerResultCtor extends RecognizerResultCtor<IndonesiaIdFrontRecognizerResult> {}
+export type IndonesiaIdFrontRecognizerResultCtor = RecognizerResultCtor<IndonesiaIdFrontRecognizerResult>;
 
 export interface IndonesiaIdFrontRecognizer extends Recognizer<IndonesiaIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1213,7 +1212,7 @@ export interface IndonesiaIdFrontRecognizer extends Recognizer<IndonesiaIdFrontR
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface IndonesiaIdFrontRecognizerCtor extends RecognizerCtor<IndonesiaIdFrontRecognizer> {}
+export type IndonesiaIdFrontRecognizerCtor = RecognizerCtor<IndonesiaIdFrontRecognizer>;
 
 export interface IrelandDlFrontRecognizerResult extends RecognizerResult {
   address: string;
@@ -1233,7 +1232,7 @@ export interface IrelandDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface IrelandDlFrontRecognizerResultCtor extends RecognizerResultCtor<IrelandDlFrontRecognizerResult> {}
+export type IrelandDlFrontRecognizerResultCtor = RecognizerResultCtor<IrelandDlFrontRecognizerResult>;
 
 export interface IrelandDlFrontRecognizer extends Recognizer<IrelandDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1255,7 +1254,7 @@ export interface IrelandDlFrontRecognizer extends Recognizer<IrelandDlFrontRecog
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface IrelandDlFrontRecognizerCtor extends RecognizerCtor<IrelandDlFrontRecognizer> {}
+export type IrelandDlFrontRecognizerCtor = RecognizerCtor<IrelandDlFrontRecognizer>;
 
 export interface ItalyDlFrontRecognizerResult extends RecognizerResult {
   address: string;
@@ -1275,7 +1274,7 @@ export interface ItalyDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface ItalyDlFrontRecognizerResultCtor extends RecognizerResultCtor<ItalyDlFrontRecognizerResult> {}
+export type ItalyDlFrontRecognizerResultCtor = RecognizerResultCtor<ItalyDlFrontRecognizerResult>;
 
 export interface ItalyDlFrontRecognizer extends Recognizer<ItalyDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1296,7 +1295,7 @@ export interface ItalyDlFrontRecognizer extends Recognizer<ItalyDlFrontRecognize
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface ItalyDlFrontRecognizerCtor extends RecognizerCtor<ItalyDlFrontRecognizer> {}
+export type ItalyDlFrontRecognizerCtor = RecognizerCtor<ItalyDlFrontRecognizer>;
 
 export interface JordanCombinedRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1316,13 +1315,13 @@ export interface JordanCombinedRecognizerResult extends RecognizerResult {
   scanningFirstSideDone: boolean;
   sex: string;
 }
-export interface JordanCombinedRecognizerResultCtor extends RecognizerResultCtor<JordanCombinedRecognizerResult> {}
+export type JordanCombinedRecognizerResultCtor = RecognizerResultCtor<JordanCombinedRecognizerResult>;
 
 export interface JordanCombinedRecognizer extends Recognizer<JordanCombinedRecognizerResult> {
   detectGlare: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface JordanCombinedRecognizerCtor extends RecognizerCtor<JordanCombinedRecognizer> {}
+export type JordanCombinedRecognizerCtor = RecognizerCtor<JordanCombinedRecognizer>;
 
 export interface JordanIdBackRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1341,7 +1340,7 @@ export interface JordanIdBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: string;
 }
-export interface JordanIdBackRecognizerResultCtor extends RecognizerResultCtor<JordanIdBackRecognizerResult> {}
+export type JordanIdBackRecognizerResultCtor = RecognizerResultCtor<JordanIdBackRecognizerResult>;
 
 export interface JordanIdBackRecognizer extends Recognizer<JordanIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -1352,7 +1351,7 @@ export interface JordanIdBackRecognizer extends Recognizer<JordanIdBackRecognize
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface JordanIdBackRecognizerCtor extends RecognizerCtor<JordanIdBackRecognizer> {}
+export type JordanIdBackRecognizerCtor = RecognizerCtor<JordanIdBackRecognizer>;
 
 export interface JordanIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1362,7 +1361,7 @@ export interface JordanIdFrontRecognizerResult extends RecognizerResult {
   nationalNumber: string;
   sex: string;
 }
-export interface JordanIdFrontRecognizerResultCtor extends RecognizerResultCtor<JordanIdFrontRecognizerResult> {}
+export type JordanIdFrontRecognizerResultCtor = RecognizerResultCtor<JordanIdFrontRecognizerResult>;
 
 export interface JordanIdFrontRecognizer extends Recognizer<JordanIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1373,14 +1372,14 @@ export interface JordanIdFrontRecognizer extends Recognizer<JordanIdFrontRecogni
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface JordanIdFrontRecognizerCtor extends RecognizerCtor<JordanIdFrontRecognizer> {}
+export type JordanIdFrontRecognizerCtor = RecognizerCtor<JordanIdFrontRecognizer>;
 
 export interface KuwaitIdBackRecognizerResult extends RecognizerResult {
   fullDocumentImage: string;
   mrzResult: MrzResult;
   serialNo: string;
 }
-export interface KuwaitIdBackRecognizerResultCtor extends RecognizerResultCtor<KuwaitIdBackRecognizerResult> {}
+export type KuwaitIdBackRecognizerResultCtor = RecognizerResultCtor<KuwaitIdBackRecognizerResult>;
 
 export interface KuwaitIdBackRecognizer extends Recognizer<KuwaitIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -1389,7 +1388,7 @@ export interface KuwaitIdBackRecognizer extends Recognizer<KuwaitIdBackRecognize
   fullDocumentImageExtensionFactors: ImageExtensionFactors;
   returnFullDocumentImage: boolean;
 }
-export interface KuwaitIdBackRecognizerCtor extends RecognizerCtor<KuwaitIdBackRecognizer> {}
+export type KuwaitIdBackRecognizerCtor = RecognizerCtor<KuwaitIdBackRecognizer>;
 
 export interface KuwaitIdFrontRecognizerResult extends RecognizerResult {
   birthData: Date;
@@ -1401,7 +1400,7 @@ export interface KuwaitIdFrontRecognizerResult extends RecognizerResult {
   nationality: string;
   sex: string;
 }
-export interface KuwaitIdFrontRecognizerResultCtor extends RecognizerResultCtor<KuwaitIdFrontRecognizerResult> {}
+export type KuwaitIdFrontRecognizerResultCtor = RecognizerResultCtor<KuwaitIdFrontRecognizerResult>;
 
 export interface KuwaitIdFrontRecognizer extends Recognizer<KuwaitIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1415,7 +1414,7 @@ export interface KuwaitIdFrontRecognizer extends Recognizer<KuwaitIdFrontRecogni
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface KuwaitIdFrontRecognizerCtor extends RecognizerCtor<KuwaitIdFrontRecognizer> {}
+export type KuwaitIdFrontRecognizerCtor = RecognizerCtor<KuwaitIdFrontRecognizer>;
 
 export interface MalaysiaDlFrontRecognizerResult extends RecognizerResult {
   city: string;
@@ -1432,7 +1431,7 @@ export interface MalaysiaDlFrontRecognizerResult extends RecognizerResult {
   validUntil: Date;
   zipcode: string;
 }
-export interface MalaysiaDlFrontRecognizerResultCtor extends RecognizerResultCtor<MalaysiaDlFrontRecognizerResult> {}
+export type MalaysiaDlFrontRecognizerResultCtor = RecognizerResultCtor<MalaysiaDlFrontRecognizerResult>;
 
 export interface MalaysiaDlFrontRecognizer extends Recognizer<MalaysiaDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1448,7 +1447,7 @@ export interface MalaysiaDlFrontRecognizer extends Recognizer<MalaysiaDlFrontRec
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface MalaysiaDlFrontRecognizerCtor extends RecognizerCtor<MalaysiaDlFrontRecognizer> {}
+export type MalaysiaDlFrontRecognizerCtor = RecognizerCtor<MalaysiaDlFrontRecognizer>;
 
 export interface MalaysiaMyTenteraRecognizerResult extends RecognizerResult {
   armyNumber: string;
@@ -1465,8 +1464,7 @@ export interface MalaysiaMyTenteraRecognizerResult extends RecognizerResult {
   street: string;
   zipcode: string;
 }
-export interface MalaysiaMyTenteraRecognizerResultCtor
-  extends RecognizerResultCtor<MalaysiaMyTenteraRecognizerResult> {}
+export type MalaysiaMyTenteraRecognizerResultCtor = RecognizerResultCtor<MalaysiaMyTenteraRecognizerResult>;
 
 export interface MalaysiaMyTenteraRecognizer extends Recognizer<MalaysiaMyTenteraRecognizerResult> {
   detectGlare: boolean;
@@ -1478,7 +1476,7 @@ export interface MalaysiaMyTenteraRecognizer extends Recognizer<MalaysiaMyTenter
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface MalaysiaMyTenteraRecognizerCtor extends RecognizerCtor<MalaysiaMyTenteraRecognizer> {}
+export type MalaysiaMyTenteraRecognizerCtor = RecognizerCtor<MalaysiaMyTenteraRecognizer>;
 
 export interface MexicoVoterIdFrontRecognizerResult extends RecognizerResult {
   address: string;
@@ -1491,8 +1489,7 @@ export interface MexicoVoterIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface MexicoVoterIdFrontRecognizerResultCtor
-  extends RecognizerResultCtor<MexicoVoterIdFrontRecognizerResult> {}
+export type MexicoVoterIdFrontRecognizerResultCtor = RecognizerResultCtor<MexicoVoterIdFrontRecognizerResult>;
 
 export interface MexicoVoterIdFrontRecognizer extends Recognizer<MexicoVoterIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1507,7 +1504,7 @@ export interface MexicoVoterIdFrontRecognizer extends Recognizer<MexicoVoterIdFr
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface MexicoVoterIdFrontRecognizerCtor extends RecognizerCtor<MexicoVoterIdFrontRecognizer> {}
+export type MexicoVoterIdFrontRecognizerCtor = RecognizerCtor<MexicoVoterIdFrontRecognizer>;
 
 export interface MoroccoIdBackRecognizerResult extends RecognizerResult {
   address: string;
@@ -1519,7 +1516,7 @@ export interface MoroccoIdBackRecognizerResult extends RecognizerResult {
   mothersName: string;
   sex: string;
 }
-export interface MoroccoIdBackRecognizerResultCtor extends RecognizerResultCtor<MoroccoIdBackRecognizerResult> {}
+export type MoroccoIdBackRecognizerResultCtor = RecognizerResultCtor<MoroccoIdBackRecognizerResult>;
 
 export interface MoroccoIdBackRecognizer extends Recognizer<MoroccoIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -1533,7 +1530,7 @@ export interface MoroccoIdBackRecognizer extends Recognizer<MoroccoIdBackRecogni
   fullDocumentImageExtensionFactors: ImageExtensionFactors;
   returnFullDocumentImage: boolean;
 }
-export interface MoroccoIdBackRecognizerCtor extends RecognizerCtor<MoroccoIdBackRecognizer> {}
+export type MoroccoIdBackRecognizerCtor = RecognizerCtor<MoroccoIdBackRecognizer>;
 
 export interface MoroccoIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1547,7 +1544,7 @@ export interface MoroccoIdFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface MoroccoIdFrontRecognizerResultCtor extends RecognizerResultCtor<MoroccoIdFrontRecognizerResult> {}
+export type MoroccoIdFrontRecognizerResultCtor = RecognizerResultCtor<MoroccoIdFrontRecognizerResult>;
 
 export interface MoroccoIdFrontRecognizer extends Recognizer<MoroccoIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1565,7 +1562,7 @@ export interface MoroccoIdFrontRecognizer extends Recognizer<MoroccoIdFrontRecog
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface MoroccoIdFrontRecognizerCtor extends RecognizerCtor<MoroccoIdFrontRecognizer> {}
+export type MoroccoIdFrontRecognizerCtor = RecognizerCtor<MoroccoIdFrontRecognizer>;
 
 export interface MrtdCombinedRecognizerResult extends RecognizerResult {
   alienNumber: string;
@@ -1595,7 +1592,7 @@ export interface MrtdCombinedRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: string;
 }
-export interface MrtdCombinedRecognizerResultCtor extends RecognizerResultCtor<MrtdCombinedRecognizerResult> {}
+export type MrtdCombinedRecognizerResultCtor = RecognizerResultCtor<MrtdCombinedRecognizerResult>;
 
 export interface MrtdCombinedRecognizer extends Recognizer<MrtdCombinedRecognizerResult> {
   allowUnparsedResults: boolean;
@@ -1606,14 +1603,14 @@ export interface MrtdCombinedRecognizer extends Recognizer<MrtdCombinedRecognize
   returnMrzImage: boolean;
   signResult: boolean;
 }
-export interface MrtdCombinedRecognizerCtor extends RecognizerCtor<MrtdCombinedRecognizer> {}
+export type MrtdCombinedRecognizerCtor = RecognizerCtor<MrtdCombinedRecognizer>;
 
 export interface MrtdRecognizerResult extends RecognizerResult {
   fullDocumentImage: string;
   mrzImage: string;
   mrzResult: MrzResult;
 }
-export interface MrtdRecognizerResultCtor extends RecognizerResultCtor<MrtdRecognizerResult> {}
+export type MrtdRecognizerResultCtor = RecognizerResultCtor<MrtdRecognizerResult>;
 
 export interface MrtdRecognizer extends Recognizer<MrtdRecognizerResult> {
   allowUnparsedResults: boolean;
@@ -1623,7 +1620,7 @@ export interface MrtdRecognizer extends Recognizer<MrtdRecognizerResult> {
   returnMrzImage: boolean;
   saveImageDPI: number;
 }
-export interface MrtdRecognizerCtor extends RecognizerCtor<MrtdRecognizer> {}
+export type MrtdRecognizerCtor = RecognizerCtor<MrtdRecognizer>;
 
 export interface MyKadBackRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1634,7 +1631,7 @@ export interface MyKadBackRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface MyKadBackRecognizerResultCtor extends RecognizerResultCtor<MyKadBackRecognizerResult> {}
+export type MyKadBackRecognizerResultCtor = RecognizerResultCtor<MyKadBackRecognizerResult>;
 
 export interface MyKadBackRecognizer extends Recognizer<MyKadBackRecognizerResult> {
   detectGlare: boolean;
@@ -1645,7 +1642,7 @@ export interface MyKadBackRecognizer extends Recognizer<MyKadBackRecognizerResul
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface MyKadBackRecognizerCtor extends RecognizerCtor<MyKadBackRecognizer> {}
+export type MyKadBackRecognizerCtor = RecognizerCtor<MyKadBackRecognizer>;
 
 export interface MyKadFrontRecognizerResult extends RecognizerResult {
   armyNumber: string;
@@ -1662,7 +1659,7 @@ export interface MyKadFrontRecognizerResult extends RecognizerResult {
   ownerReligion: string;
   ownerSex: string;
 }
-export interface MyKadFrontRecognizerResultCtor extends RecognizerResultCtor<MyKadFrontRecognizerResult> {}
+export type MyKadFrontRecognizerResultCtor = RecognizerResultCtor<MyKadFrontRecognizerResult>;
 
 export interface MyKadFrontRecognizer extends Recognizer<MyKadFrontRecognizerResult> {
   extractArmyNumber: boolean;
@@ -1670,7 +1667,7 @@ export interface MyKadFrontRecognizer extends Recognizer<MyKadFrontRecognizerRes
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface MyKadFrontRecognizerCtor extends RecognizerCtor<MyKadFrontRecognizer> {}
+export type MyKadFrontRecognizerCtor = RecognizerCtor<MyKadFrontRecognizer>;
 
 export interface NewZealandDlFrontRecognizerResult extends RecognizerResult {
   address: string;
@@ -1686,8 +1683,7 @@ export interface NewZealandDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface NewZealandDlFrontRecognizerResultCtor
-  extends RecognizerResultCtor<NewZealandDlFrontRecognizerResult> {}
+export type NewZealandDlFrontRecognizerResultCtor = RecognizerResultCtor<NewZealandDlFrontRecognizerResult>;
 
 export interface NewZealandDlFrontRecognizer extends Recognizer<NewZealandDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1706,7 +1702,7 @@ export interface NewZealandDlFrontRecognizer extends Recognizer<NewZealandDlFron
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface NewZealandDlFrontRecognizerCtor extends RecognizerCtor<NewZealandDlFrontRecognizer> {}
+export type NewZealandDlFrontRecognizerCtor = RecognizerCtor<NewZealandDlFrontRecognizer>;
 
 export interface BlinkCardRecognizerResult extends RecognizerResult {
   cardNumber: string;
@@ -1722,7 +1718,7 @@ export interface BlinkCardRecognizerResult extends RecognizerResult {
   scanningFirstSideDone: boolean;
   validThru: Date;
 }
-export interface BlinkCardRecognizerResultCtor extends RecognizerResultCtor<BlinkCardRecognizerResult> {}
+export type BlinkCardRecognizerResultCtor = RecognizerResultCtor<BlinkCardRecognizerResult>;
 
 export interface BlinkCardRecognizer extends Recognizer<BlinkCardRecognizerResult> {
   anonymizeCardNumber: boolean;
@@ -1738,7 +1734,7 @@ export interface BlinkCardRecognizer extends Recognizer<BlinkCardRecognizerResul
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface BlinkCardRecognizerCtor extends RecognizerCtor<BlinkCardRecognizer> {}
+export type BlinkCardRecognizerCtor = RecognizerCtor<BlinkCardRecognizer>;
 
 export interface Pdf417RecognizerResult extends RecognizerResult {
   barcodeType: string;
@@ -1746,14 +1742,14 @@ export interface Pdf417RecognizerResult extends RecognizerResult {
   stringData: string;
   uncertain: boolean;
 }
-export interface Pdf417RecognizerResultCtor extends RecognizerResultCtor<Pdf417RecognizerResult> {}
+export type Pdf417RecognizerResultCtor = RecognizerResultCtor<Pdf417RecognizerResult>;
 
 export interface Pdf417Recognizer extends Recognizer<Pdf417RecognizerResult> {
   nullQuietZoneAllowed: boolean;
   scanInverse: boolean;
   scanUncertain: boolean;
 }
-export interface Pdf417RecognizerCtor extends RecognizerCtor<Pdf417Recognizer> {}
+export type Pdf417RecognizerCtor = RecognizerCtor<Pdf417Recognizer>;
 
 export interface PolandCombinedRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1776,7 +1772,7 @@ export interface PolandCombinedRecognizerResult extends RecognizerResult {
   sex: string;
   surname: string;
 }
-export interface PolandCombinedRecognizerResultCtor extends RecognizerResultCtor<PolandCombinedRecognizerResult> {}
+export type PolandCombinedRecognizerResultCtor = RecognizerResultCtor<PolandCombinedRecognizerResult>;
 
 export interface PolandCombinedRecognizer extends Recognizer<PolandCombinedRecognizerResult> {
   detectGlare: boolean;
@@ -1790,7 +1786,7 @@ export interface PolandCombinedRecognizer extends Recognizer<PolandCombinedRecog
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface PolandCombinedRecognizerCtor extends RecognizerCtor<PolandCombinedRecognizer> {}
+export type PolandCombinedRecognizerCtor = RecognizerCtor<PolandCombinedRecognizer>;
 
 export interface PolandIdBackRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1809,13 +1805,13 @@ export interface PolandIdBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: string;
 }
-export interface PolandIdBackRecognizerResultCtor extends RecognizerResultCtor<PolandIdBackRecognizerResult> {}
+export type PolandIdBackRecognizerResultCtor = RecognizerResultCtor<PolandIdBackRecognizerResult>;
 
 export interface PolandIdBackRecognizer extends Recognizer<PolandIdBackRecognizerResult> {
   detectGlare: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface PolandIdBackRecognizerCtor extends RecognizerCtor<PolandIdBackRecognizer> {}
+export type PolandIdBackRecognizerCtor = RecognizerCtor<PolandIdBackRecognizer>;
 
 export interface PolandIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1827,7 +1823,7 @@ export interface PolandIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   surname: string;
 }
-export interface PolandIdFrontRecognizerResultCtor extends RecognizerResultCtor<PolandIdFrontRecognizerResult> {}
+export type PolandIdFrontRecognizerResultCtor = RecognizerResultCtor<PolandIdFrontRecognizerResult>;
 
 export interface PolandIdFrontRecognizer extends Recognizer<PolandIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1840,7 +1836,7 @@ export interface PolandIdFrontRecognizer extends Recognizer<PolandIdFrontRecogni
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface PolandIdFrontRecognizerCtor extends RecognizerCtor<PolandIdFrontRecognizer> {}
+export type PolandIdFrontRecognizerCtor = RecognizerCtor<PolandIdFrontRecognizer>;
 
 export interface RomaniaIdFrontRecognizerResult extends RecognizerResult {
   address: string;
@@ -1873,7 +1869,7 @@ export interface RomaniaIdFrontRecognizerResult extends RecognizerResult {
   validFrom: Date;
   validUntil: Date;
 }
-export interface RomaniaIdFrontRecognizerResultCtor extends RecognizerResultCtor<RomaniaIdFrontRecognizerResult> {}
+export type RomaniaIdFrontRecognizerResultCtor = RecognizerResultCtor<RomaniaIdFrontRecognizerResult>;
 
 export interface RomaniaIdFrontRecognizer extends Recognizer<RomaniaIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1888,7 +1884,7 @@ export interface RomaniaIdFrontRecognizer extends Recognizer<RomaniaIdFrontRecog
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface RomaniaIdFrontRecognizerCtor extends RecognizerCtor<RomaniaIdFrontRecognizer> {}
+export type RomaniaIdFrontRecognizerCtor = RecognizerCtor<RomaniaIdFrontRecognizer>;
 
 export interface SerbiaCombinedRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1911,7 +1907,7 @@ export interface SerbiaCombinedRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface SerbiaCombinedRecognizerResultCtor extends RecognizerResultCtor<SerbiaCombinedRecognizerResult> {}
+export type SerbiaCombinedRecognizerResultCtor = RecognizerResultCtor<SerbiaCombinedRecognizerResult>;
 
 export interface SerbiaCombinedRecognizer extends Recognizer<SerbiaCombinedRecognizerResult> {
   detectGlare: boolean;
@@ -1920,7 +1916,7 @@ export interface SerbiaCombinedRecognizer extends Recognizer<SerbiaCombinedRecog
   returnSignatureImage: boolean;
   signResult: boolean;
 }
-export interface SerbiaCombinedRecognizerCtor extends RecognizerCtor<SerbiaCombinedRecognizer> {}
+export type SerbiaCombinedRecognizerCtor = RecognizerCtor<SerbiaCombinedRecognizer>;
 
 export interface SerbiaIdBackRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -1939,13 +1935,13 @@ export interface SerbiaIdBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: string;
 }
-export interface SerbiaIdBackRecognizerResultCtor extends RecognizerResultCtor<SerbiaIdBackRecognizerResult> {}
+export type SerbiaIdBackRecognizerResultCtor = RecognizerResultCtor<SerbiaIdBackRecognizerResult>;
 
 export interface SerbiaIdBackRecognizer extends Recognizer<SerbiaIdBackRecognizerResult> {
   detectGlare: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SerbiaIdBackRecognizerCtor extends RecognizerCtor<SerbiaIdBackRecognizer> {}
+export type SerbiaIdBackRecognizerCtor = RecognizerCtor<SerbiaIdBackRecognizer>;
 
 export interface SerbiaIdFrontRecognizerResult extends RecognizerResult {
   documentNumber: string;
@@ -1956,7 +1952,7 @@ export interface SerbiaIdFrontRecognizerResult extends RecognizerResult {
   validThru: Date;
   validUntil: Date;
 }
-export interface SerbiaIdFrontRecognizerResultCtor extends RecognizerResultCtor<SerbiaIdFrontRecognizerResult> {}
+export type SerbiaIdFrontRecognizerResultCtor = RecognizerResultCtor<SerbiaIdFrontRecognizerResult>;
 
 export interface SerbiaIdFrontRecognizer extends Recognizer<SerbiaIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -1966,15 +1962,15 @@ export interface SerbiaIdFrontRecognizer extends Recognizer<SerbiaIdFrontRecogni
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface SerbiaIdFrontRecognizerCtor extends RecognizerCtor<SerbiaIdFrontRecognizer> {}
+export type SerbiaIdFrontRecognizerCtor = RecognizerCtor<SerbiaIdFrontRecognizer>;
 
 export interface SimNumberRecognizerResult extends RecognizerResult {
   simNumber: string;
 }
-export interface SimNumberRecognizerResultCtor extends RecognizerResultCtor<SimNumberRecognizerResult> {}
+export type SimNumberRecognizerResultCtor = RecognizerResultCtor<SimNumberRecognizerResult>;
 
-export interface SimNumberRecognizer extends Recognizer<SimNumberRecognizerResult> {}
-export interface SimNumberRecognizerCtor extends RecognizerCtor<SimNumberRecognizer> {}
+export type SimNumberRecognizer = Recognizer<SimNumberRecognizerResult>;
+export type SimNumberRecognizerCtor = RecognizerCtor<SimNumberRecognizer>;
 
 export interface SingaporeChangiEmployeeIdRecognizerResult extends RecognizerResult {
   companyName: string;
@@ -1984,8 +1980,8 @@ export interface SingaporeChangiEmployeeIdRecognizerResult extends RecognizerRes
   fullDocumentImage: string;
   name: string;
 }
-export interface SingaporeChangiEmployeeIdRecognizerResultCtor
-  extends RecognizerResultCtor<SingaporeChangiEmployeeIdRecognizerResult> {}
+export type SingaporeChangiEmployeeIdRecognizerResultCtor =
+  RecognizerResultCtor<SingaporeChangiEmployeeIdRecognizerResult>;
 
 export interface SingaporeChangiEmployeeIdRecognizer extends Recognizer<SingaporeChangiEmployeeIdRecognizerResult> {
   detectGlare: boolean;
@@ -1998,7 +1994,7 @@ export interface SingaporeChangiEmployeeIdRecognizer extends Recognizer<Singapor
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SingaporeChangiEmployeeIdRecognizerCtor extends RecognizerCtor<SingaporeChangiEmployeeIdRecognizer> {}
+export type SingaporeChangiEmployeeIdRecognizerCtor = RecognizerCtor<SingaporeChangiEmployeeIdRecognizer>;
 
 export interface SingaporeCombinedRecognizerResult extends RecognizerResult {
   address: string;
@@ -2019,8 +2015,7 @@ export interface SingaporeCombinedRecognizerResult extends RecognizerResult {
   scanningFirstSideDone: string;
   sex: string;
 }
-export interface SingaporeCombinedRecognizerResultCtor
-  extends RecognizerResultCtor<SingaporeCombinedRecognizerResult> {}
+export type SingaporeCombinedRecognizerResultCtor = RecognizerResultCtor<SingaporeCombinedRecognizerResult>;
 
 export interface SingaporeCombinedRecognizer extends Recognizer<SingaporeCombinedRecognizerResult> {
   detectGlare: boolean;
@@ -2040,7 +2035,7 @@ export interface SingaporeCombinedRecognizer extends Recognizer<SingaporeCombine
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface SingaporeCombinedRecognizerCtor extends RecognizerCtor<SingaporeCombinedRecognizer> {}
+export type SingaporeCombinedRecognizerCtor = RecognizerCtor<SingaporeCombinedRecognizer>;
 
 export interface SingaporeDlFrontRecognizerResult extends RecognizerResult {
   birthData: Date;
@@ -2051,7 +2046,7 @@ export interface SingaporeDlFrontRecognizerResult extends RecognizerResult {
   name: string;
   validTill: Date;
 }
-export interface SingaporeDlFrontRecognizerResultCtor extends RecognizerResultCtor<SingaporeDlFrontRecognizerResult> {}
+export type SingaporeDlFrontRecognizerResultCtor = RecognizerResultCtor<SingaporeDlFrontRecognizerResult>;
 
 export interface SingaporeDlFrontRecognizer extends Recognizer<SingaporeDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2065,7 +2060,7 @@ export interface SingaporeDlFrontRecognizer extends Recognizer<SingaporeDlFrontR
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SingaporeDlFrontRecognizerCtor extends RecognizerCtor<SingaporeDlFrontRecognizer> {}
+export type SingaporeDlFrontRecognizerCtor = RecognizerCtor<SingaporeDlFrontRecognizer>;
 
 export interface SingaporeIdBackRecognizerResult extends RecognizerResult {
   address: string;
@@ -2075,7 +2070,7 @@ export interface SingaporeIdBackRecognizerResult extends RecognizerResult {
   dateOfIssue: Date;
   fullDocumentImage: string;
 }
-export interface SingaporeIdBackRecognizerResultCtor extends RecognizerResultCtor<SingaporeIdBackRecognizerResult> {}
+export type SingaporeIdBackRecognizerResultCtor = RecognizerResultCtor<SingaporeIdBackRecognizerResult>;
 
 export interface SingaporeIdBackRecognizer extends Recognizer<SingaporeIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -2087,7 +2082,7 @@ export interface SingaporeIdBackRecognizer extends Recognizer<SingaporeIdBackRec
   fullDocumentImageExtensionFactors: ImageExtensionFactors;
   returnFullDocumentImage: boolean;
 }
-export interface SingaporeIdBackRecognizerCtor extends RecognizerCtor<SingaporeIdBackRecognizer> {}
+export type SingaporeIdBackRecognizerCtor = RecognizerCtor<SingaporeIdBackRecognizer>;
 
 export interface SingaporeIdFrontRecognizerResult extends RecognizerResult {
   countryOfBirth: string;
@@ -2099,7 +2094,7 @@ export interface SingaporeIdFrontRecognizerResult extends RecognizerResult {
   race: string;
   sex: string;
 }
-export interface SingaporeIdFrontRecognizerResultCtor extends RecognizerResultCtor<SingaporeIdFrontRecognizerResult> {}
+export type SingaporeIdFrontRecognizerResultCtor = RecognizerResultCtor<SingaporeIdFrontRecognizerResult>;
 
 export interface SingaporeIdFrontRecognizer extends Recognizer<SingaporeIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2114,7 +2109,7 @@ export interface SingaporeIdFrontRecognizer extends Recognizer<SingaporeIdFrontR
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SingaporeIdFrontRecognizerCtor extends RecognizerCtor<SingaporeIdFrontRecognizer> {}
+export type SingaporeIdFrontRecognizerCtor = RecognizerCtor<SingaporeIdFrontRecognizer>;
 
 export interface SlovakiaCombinedRecognizerResult extends RecognizerResult {
   address: string;
@@ -2141,7 +2136,7 @@ export interface SlovakiaCombinedRecognizerResult extends RecognizerResult {
   specialRemarks: string;
   surnameAtBirth: string;
 }
-export interface SlovakiaCombinedRecognizerResultCtor extends RecognizerResultCtor<SlovakiaCombinedRecognizerResult> {}
+export type SlovakiaCombinedRecognizerResultCtor = RecognizerResultCtor<SlovakiaCombinedRecognizerResult>;
 
 export interface SlovakiaCombinedRecognizer extends Recognizer<SlovakiaCombinedRecognizerResult> {
   detectGlare: boolean;
@@ -2159,7 +2154,7 @@ export interface SlovakiaCombinedRecognizer extends Recognizer<SlovakiaCombinedR
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface SlovakiaCombinedRecognizerCtor extends RecognizerCtor<SlovakiaCombinedRecognizer> {}
+export type SlovakiaCombinedRecognizerCtor = RecognizerCtor<SlovakiaCombinedRecognizer>;
 
 export interface SlovakiaIdBackRecognizerResult extends RecognizerResult {
   address: string;
@@ -2181,7 +2176,7 @@ export interface SlovakiaIdBackRecognizerResult extends RecognizerResult {
   specialRemarks: string;
   surnameAtBirth: string;
 }
-export interface SlovakiaIdBackRecognizerResultCtor extends RecognizerResultCtor<SlovakiaIdBackRecognizerResult> {}
+export type SlovakiaIdBackRecognizerResultCtor = RecognizerResultCtor<SlovakiaIdBackRecognizerResult>;
 
 export interface SlovakiaIdBackRecognizer extends Recognizer<SlovakiaIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -2190,7 +2185,7 @@ export interface SlovakiaIdBackRecognizer extends Recognizer<SlovakiaIdBackRecog
   extractSurnameAtBirth: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SlovakiaIdBackRecognizerCtor extends RecognizerCtor<SlovakiaIdBackRecognizer> {}
+export type SlovakiaIdBackRecognizerCtor = RecognizerCtor<SlovakiaIdBackRecognizer>;
 
 export interface SlovakiaIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2207,7 +2202,7 @@ export interface SlovakiaIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface SlovakiaIdFrontRecognizerResultCtor extends RecognizerResultCtor<SlovakiaIdFrontRecognizerResult> {}
+export type SlovakiaIdFrontRecognizerResultCtor = RecognizerResultCtor<SlovakiaIdFrontRecognizerResult>;
 
 export interface SlovakiaIdFrontRecognizer extends Recognizer<SlovakiaIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2222,7 +2217,7 @@ export interface SlovakiaIdFrontRecognizer extends Recognizer<SlovakiaIdFrontRec
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface SlovakiaIdFrontRecognizerCtor extends RecognizerCtor<SlovakiaIdFrontRecognizer> {}
+export type SlovakiaIdFrontRecognizerCtor = RecognizerCtor<SlovakiaIdFrontRecognizer>;
 
 export interface SloveniaCombinedRecognizerResult extends RecognizerResult {
   address: string;
@@ -2246,7 +2241,7 @@ export interface SloveniaCombinedRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface SloveniaCombinedRecognizerResultCtor extends RecognizerResultCtor<SloveniaCombinedRecognizerResult> {}
+export type SloveniaCombinedRecognizerResultCtor = RecognizerResultCtor<SloveniaCombinedRecognizerResult>;
 
 export interface SloveniaCombinedRecognizer extends Recognizer<SloveniaCombinedRecognizerResult> {
   detectGlare: boolean;
@@ -2255,7 +2250,7 @@ export interface SloveniaCombinedRecognizer extends Recognizer<SloveniaCombinedR
   returnSignatureImage: boolean;
   signResult: boolean;
 }
-export interface SloveniaCombinedRecognizerCtor extends RecognizerCtor<SloveniaCombinedRecognizer> {}
+export type SloveniaCombinedRecognizerCtor = RecognizerCtor<SloveniaCombinedRecognizer>;
 
 export interface SloveniaIdBackRecognizerResult extends RecognizerResult {
   address: string;
@@ -2276,7 +2271,7 @@ export interface SloveniaIdBackRecognizerResult extends RecognizerResult {
   secondaryId: string;
   sex: string;
 }
-export interface SloveniaIdBackRecognizerResultCtor extends RecognizerResultCtor<SloveniaIdBackRecognizerResult> {}
+export type SloveniaIdBackRecognizerResultCtor = RecognizerResultCtor<SloveniaIdBackRecognizerResult>;
 
 export interface SloveniaIdBackRecognizer extends Recognizer<SloveniaIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -2284,7 +2279,7 @@ export interface SloveniaIdBackRecognizer extends Recognizer<SloveniaIdBackRecog
   extractDateOfIssue: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SloveniaIdBackRecognizerCtor extends RecognizerCtor<SloveniaIdBackRecognizer> {}
+export type SloveniaIdBackRecognizerCtor = RecognizerCtor<SloveniaIdBackRecognizer>;
 
 export interface SloveniaIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2297,7 +2292,7 @@ export interface SloveniaIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export interface SloveniaIdFrontRecognizerResultCtor extends RecognizerResultCtor<SloveniaIdFrontRecognizerResult> {}
+export type SloveniaIdFrontRecognizerResultCtor = RecognizerResultCtor<SloveniaIdFrontRecognizerResult>;
 
 export interface SloveniaIdFrontRecognizer extends Recognizer<SloveniaIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2309,7 +2304,7 @@ export interface SloveniaIdFrontRecognizer extends Recognizer<SloveniaIdFrontRec
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface SloveniaIdFrontRecognizerCtor extends RecognizerCtor<SloveniaIdFrontRecognizer> {}
+export type SloveniaIdFrontRecognizerCtor = RecognizerCtor<SloveniaIdFrontRecognizer>;
 
 export interface SpainDlFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2325,7 +2320,7 @@ export interface SpainDlFrontRecognizerResult extends RecognizerResult {
   validFrom: Date;
   validUntil: Date;
 }
-export interface SpainDlFrontRecognizerResultCtor extends RecognizerResultCtor<SpainDlFrontRecognizerResult> {}
+export type SpainDlFrontRecognizerResultCtor = RecognizerResultCtor<SpainDlFrontRecognizerResult>;
 
 export interface SpainDlFrontRecognizer extends Recognizer<SpainDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2345,7 +2340,7 @@ export interface SpainDlFrontRecognizer extends Recognizer<SpainDlFrontRecognize
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface SpainDlFrontRecognizerCtor extends RecognizerCtor<SpainDlFrontRecognizer> {}
+export type SpainDlFrontRecognizerCtor = RecognizerCtor<SpainDlFrontRecognizer>;
 
 export interface SwedenDlFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2361,7 +2356,7 @@ export interface SwedenDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface SwedenDlFrontRecognizerResultCtor extends RecognizerResultCtor<SwedenDlFrontRecognizerResult> {}
+export type SwedenDlFrontRecognizerResultCtor = RecognizerResultCtor<SwedenDlFrontRecognizerResult>;
 
 export interface SwedenDlFrontRecognizer extends Recognizer<SwedenDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2379,7 +2374,7 @@ export interface SwedenDlFrontRecognizer extends Recognizer<SwedenDlFrontRecogni
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export interface SwedenDlFrontRecognizerCtor extends RecognizerCtor<SwedenDlFrontRecognizer> {}
+export type SwedenDlFrontRecognizerCtor = RecognizerCtor<SwedenDlFrontRecognizer>;
 
 export interface SwitzerlandDlFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2396,8 +2391,7 @@ export interface SwitzerlandDlFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   vehicleCategories: string;
 }
-export interface SwitzerlandDlFrontRecognizerResultCtor
-  extends RecognizerResultCtor<SwitzerlandDlFrontRecognizerResult> {}
+export type SwitzerlandDlFrontRecognizerResultCtor = RecognizerResultCtor<SwitzerlandDlFrontRecognizerResult>;
 
 export interface SwitzerlandDlFrontRecognizer extends Recognizer<SwitzerlandDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2417,7 +2411,7 @@ export interface SwitzerlandDlFrontRecognizer extends Recognizer<SwitzerlandDlFr
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface SwitzerlandDlFrontRecognizerCtor extends RecognizerCtor<SwitzerlandDlFrontRecognizer> {}
+export type SwitzerlandDlFrontRecognizerCtor = RecognizerCtor<SwitzerlandDlFrontRecognizer>;
 
 export interface SwitzerlandDlBackRecognizerResult extends RecognizerResult {
   authority: string;
@@ -2440,10 +2434,9 @@ export interface SwitzerlandDlBackRecognizerResult extends RecognizerResult {
   placeOfOrigin: string;
   primaryId: string;
   secondaryId: string;
-  sex: String;
+  sex: string;
 }
-export interface SwitzerlandDlBackRecognizerResultCtor
-  extends RecognizerResultCtor<SwitzerlandDlBackRecognizerResult> {}
+export type SwitzerlandDlBackRecognizerResultCtor = RecognizerResultCtor<SwitzerlandDlBackRecognizerResult>;
 
 export interface SwitzerlandDlBackRecognizer extends Recognizer<SwitzerlandDlBackRecognizerResult> {
   detectGlare: boolean;
@@ -2455,7 +2448,7 @@ export interface SwitzerlandDlBackRecognizer extends Recognizer<SwitzerlandDlBac
   extractSex: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SwitzerlandDlBackRecognizerCtor extends RecognizerCtor<SwitzerlandDlBackRecognizer> {}
+export type SwitzerlandDlBackRecognizerCtor = RecognizerCtor<SwitzerlandDlBackRecognizer>;
 
 export interface SwitzerlandIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2465,8 +2458,7 @@ export interface SwitzerlandIdFrontRecognizerResult extends RecognizerResult {
   signatureImage: string;
   surname: string;
 }
-export interface SwitzerlandIdFrontRecognizerResultCtor
-  extends RecognizerResultCtor<SwitzerlandIdFrontRecognizerResult> {}
+export type SwitzerlandIdFrontRecognizerResultCtor = RecognizerResultCtor<SwitzerlandIdFrontRecognizerResult>;
 
 export interface SwitzerlandIdFrontRecognizer extends Recognizer<SwitzerlandIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2480,7 +2472,7 @@ export interface SwitzerlandIdFrontRecognizer extends Recognizer<SwitzerlandIdFr
   returnSignatureImage: boolean;
   signatureImageDpi: number;
 }
-export interface SwitzerlandIdFrontRecognizerCtor extends RecognizerCtor<SwitzerlandIdFrontRecognizer> {}
+export type SwitzerlandIdFrontRecognizerCtor = RecognizerCtor<SwitzerlandIdFrontRecognizer>;
 
 export interface SwitzerlandPassportRecognizerResult extends RecognizerResult {
   authority: string;
@@ -2510,8 +2502,7 @@ export interface SwitzerlandPassportRecognizerResult extends RecognizerResult {
   sex: string;
   surname: string;
 }
-export interface SwitzerlandPassportRecognizerResultCtor
-  extends RecognizerResultCtor<SwitzerlandPassportRecognizerResult> {}
+export type SwitzerlandPassportRecognizerResultCtor = RecognizerResultCtor<SwitzerlandPassportRecognizerResult>;
 
 export interface SwitzerlandPassportRecognizer extends Recognizer<SwitzerlandPassportRecognizerResult> {
   detectGlare: boolean;
@@ -2528,7 +2519,7 @@ export interface SwitzerlandPassportRecognizer extends Recognizer<SwitzerlandPas
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface SwitzerlandPassportRecognizerCtor extends RecognizerCtor<SwitzerlandPassportRecognizer> {}
+export type SwitzerlandPassportRecognizerCtor = RecognizerCtor<SwitzerlandPassportRecognizer>;
 
 export interface UnitedArabEmiratesDlFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
@@ -2542,8 +2533,8 @@ export interface UnitedArabEmiratesDlFrontRecognizerResult extends RecognizerRes
   nationality: string;
   placeOfIssue: string;
 }
-export interface UnitedArabEmiratesDlFrontRecognizerResultCtor
-  extends RecognizerResultCtor<UnitedArabEmiratesDlFrontRecognizerResult> {}
+export type UnitedArabEmiratesDlFrontRecognizerResultCtor =
+  RecognizerResultCtor<UnitedArabEmiratesDlFrontRecognizerResult>;
 
 export interface UnitedArabEmiratesDlFrontRecognizer extends Recognizer<UnitedArabEmiratesDlFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2560,14 +2551,14 @@ export interface UnitedArabEmiratesDlFrontRecognizer extends Recognizer<UnitedAr
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface UnitedArabEmiratesDlFrontRecognizerCtor extends RecognizerCtor<UnitedArabEmiratesDlFrontRecognizer> {}
+export type UnitedArabEmiratesDlFrontRecognizerCtor = RecognizerCtor<UnitedArabEmiratesDlFrontRecognizer>;
 
 export interface UnitedArabEmiratesIdBackRecognizerResult extends RecognizerResult {
   fullDocumentImage: string;
   mrzResult: MrzResult;
 }
-export interface UnitedArabEmiratesIdBackRecognizerResultCtor
-  extends RecognizerResultCtor<UnitedArabEmiratesIdBackRecognizerResult> {}
+export type UnitedArabEmiratesIdBackRecognizerResultCtor =
+  RecognizerResultCtor<UnitedArabEmiratesIdBackRecognizerResult>;
 
 export interface UnitedArabEmiratesIdBackRecognizer extends Recognizer<UnitedArabEmiratesIdBackRecognizerResult> {
   detectGlare: boolean;
@@ -2575,7 +2566,7 @@ export interface UnitedArabEmiratesIdBackRecognizer extends Recognizer<UnitedAra
   fullDocumentImageExtensionFactors: ImageExtensionFactors;
   returnFullDocumentImage: boolean;
 }
-export interface UnitedArabEmiratesIdBackRecognizerCtor extends RecognizerCtor<UnitedArabEmiratesIdBackRecognizer> {}
+export type UnitedArabEmiratesIdBackRecognizerCtor = RecognizerCtor<UnitedArabEmiratesIdBackRecognizer>;
 
 export interface UnitedArabEmiratesIdFrontRecognizerResult extends RecognizerResult {
   faceImage: string;
@@ -2584,8 +2575,8 @@ export interface UnitedArabEmiratesIdFrontRecognizerResult extends RecognizerRes
   name: string;
   nationality: string;
 }
-export interface UnitedArabEmiratesIdFrontRecognizerResultCtor
-  extends RecognizerResultCtor<UnitedArabEmiratesIdFrontRecognizerResult> {}
+export type UnitedArabEmiratesIdFrontRecognizerResultCtor =
+  RecognizerResultCtor<UnitedArabEmiratesIdFrontRecognizerResult>;
 
 export interface UnitedArabEmiratesIdFrontRecognizer extends Recognizer<UnitedArabEmiratesIdFrontRecognizerResult> {
   detectGlare: boolean;
@@ -2597,15 +2588,15 @@ export interface UnitedArabEmiratesIdFrontRecognizer extends Recognizer<UnitedAr
   returnFaceImage: boolean;
   returnFullDocumentImage: boolean;
 }
-export interface UnitedArabEmiratesIdFrontRecognizerCtor extends RecognizerCtor<UnitedArabEmiratesIdFrontRecognizer> {}
+export type UnitedArabEmiratesIdFrontRecognizerCtor = RecognizerCtor<UnitedArabEmiratesIdFrontRecognizer>;
 
 export interface VinRecognizerResult extends RecognizerResult {
   vin: string;
 }
-export interface VinRecognizerResultCtor extends RecognizerResultCtor<VinRecognizerResult> {}
+export type VinRecognizerResultCtor = RecognizerResultCtor<VinRecognizerResult>;
 
-export interface VinRecognizer extends Recognizer<VinRecognizerResult> {}
-export interface VinRecognizerCtor extends RecognizerCtor<VinRecognizer> {}
+export type VinRecognizer = Recognizer<VinRecognizerResult>;
+export type VinRecognizerCtor = RecognizerCtor<VinRecognizer>;
 
 export interface UsdlRecognizerResult extends RecognizerResult {
   optionalElements: any[];
@@ -2614,13 +2605,13 @@ export interface UsdlRecognizerResult extends RecognizerResult {
   uncertain: string;
   fields: any[];
 }
-export interface UsdlRecognizerResultCtor extends RecognizerResultCtor<UsdlRecognizerResult> {}
+export type UsdlRecognizerResultCtor = RecognizerResultCtor<UsdlRecognizerResult>;
 
 export interface UsdlRecognizer extends Recognizer<UsdlRecognizerResult> {
   nullQuietZoneAllowed: boolean;
   uncertainDecoding: boolean;
 }
-export interface UsdlRecognizerCtor extends RecognizerCtor<UsdlRecognizer> {}
+export type UsdlRecognizerCtor = RecognizerCtor<UsdlRecognizer>;
 
 export interface UsdlCombinedRecognizerResult extends RecognizerResult {
   digitalSignature: string;
@@ -2635,7 +2626,7 @@ export interface UsdlCombinedRecognizerResult extends RecognizerResult {
   uncertain: boolean;
   fields: any[];
 }
-export interface UsdlCombinedRecognizerResultCtor extends RecognizerResultCtor<UsdlCombinedRecognizerResult> {}
+export type UsdlCombinedRecognizerResultCtor = RecognizerResultCtor<UsdlCombinedRecognizerResult>;
 
 export interface UsdlCombinedRecognizer extends Recognizer<UsdlCombinedRecognizerResult> {
   faceImageDpi: number;
@@ -2644,9 +2635,9 @@ export interface UsdlCombinedRecognizer extends Recognizer<UsdlCombinedRecognize
   returnFullDocumentImage: boolean;
   signResult: boolean;
 }
-export interface UsdlCombinedRecognizerCtor extends RecognizerCtor<UsdlCombinedRecognizer> {}
+export type UsdlCombinedRecognizerCtor = RecognizerCtor<UsdlCombinedRecognizer>;
 
-export interface BlinkIdRecognizerCtor extends RecognizerCtor<BlinkIdRecognizer> {}
+export type BlinkIdRecognizerCtor = RecognizerCtor<BlinkIdRecognizer>;
 
 export interface BlinkIdRecognizer extends Recognizer<BlinkIdRecognizerResult> {
   returnFaceImage: boolean;
@@ -2672,15 +2663,14 @@ export interface BlinkIdRecognizerResult extends RecognizerResult {
 export interface BlinkIdOverlaySettingsCtor {
   new (): BlinkIdOverlaySettings;
 }
-export interface BlinkIdOverlaySettings extends OverlaySettings {}
+export type BlinkIdOverlaySettings = OverlaySettings;
 
-export interface BlinkIdRecognizerResultCtor extends RecognizerResultCtor<BlinkIdRecognizerResult> {}
+export type BlinkIdRecognizerResultCtor = RecognizerResultCtor<BlinkIdRecognizerResult>;
 /**
  * @name BlinkId
  * @description
  * Microblink SDK wrapper for barcode and document scanning. See the
  * blinkid-phonegap repository for available recognizers and other settings
- *
  * @usage
  * ```typescript
  * import { BlinkId, RecognizerResultState } from '@awesome-cordova-plugins/blinkid/ngx';
@@ -2768,8 +2758,10 @@ export interface BlinkIdRecognizerResultCtor extends RecognizerResultCtor<BlinkI
 export class BlinkId extends AwesomeCordovaNativePlugin {
   /**
    * Opens the camera dialog and attempts to scan a barcode/document
+   *
    * @param overlaySettings {OverlaySettings} for camera overlay customization
    * @param recognizerCollection {RecognizerCollection} collection of recognizers to scan with
+   * @param licenses
    * @returns {Promise<boolean>}
    */
   @Cordova({

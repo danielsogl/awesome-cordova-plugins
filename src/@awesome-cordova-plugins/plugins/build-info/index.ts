@@ -5,7 +5,6 @@ import { Plugin, CordovaProperty, AwesomeCordovaNativePlugin } from '@awesome-co
  * @name Build Info
  * @description
  * This plugin provides build information.
- *
  * @usage
  * ```
  * import { BuildInfo } from '@awesome-cordova-plugins/build-info/ngx';

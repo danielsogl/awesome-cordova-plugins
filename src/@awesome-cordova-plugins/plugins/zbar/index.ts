@@ -41,7 +41,6 @@ export interface ZBarOptions {
  * The ZBar Scanner Plugin allows you to scan 2d barcodes.
  *
  * Requires Cordova plugin: `cordova-plugin-cszbar`. For more info, please see the [zBar plugin docs](https://github.com/tjwoon/csZBar).
- *
  * @usage
  * ```typescript
  * import { ZBar, ZBarOptions } from '@awesome-cordova-plugins/zbar/ngx';
@@ -64,7 +63,6 @@ export interface ZBarOptions {
  *    });
  *
  * ```
- *
  * @interfaces
  * ZBarOptions
  */
@@ -79,6 +77,7 @@ export interface ZBarOptions {
 export class ZBar extends AwesomeCordovaNativePlugin {
   /**
    * Open the scanner
+   *
    * @param options { ZBarOptions } Scan options
    * @returns {Promise<any>} Returns a Promise that resolves with the scanned string, or rejects with an error.
    */

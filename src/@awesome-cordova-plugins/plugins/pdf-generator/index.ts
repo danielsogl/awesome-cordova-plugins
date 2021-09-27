@@ -39,7 +39,6 @@ export interface PDFGeneratorOptions {
  * @name PDFGenerator
  * @description
  * Simple plugin to generate (offline) pdf. The plugin transforms HTML to PDF and also provide the mechanism to share the pdf to other apps like Mail, etc.
- *
  * @usage
  * ```typescript
  * import { PDFGenerator } from '@awesome-cordova-plugins/pdf-generator';
@@ -65,6 +64,7 @@ export interface PDFGeneratorOptions {
 export class PDFGenerator extends AwesomeCordovaNativePlugin {
   /**
    * Creates a PDF using a URL, it download the document into an in memory Webkit object, and renders it into a PDF.
+   *
    * @param url {string} URL to create a PDF from
    * @param options {PDFGeneratorOptions} options for PDF generation
    * @returns {Promise<string>}
@@ -76,6 +76,7 @@ export class PDFGenerator extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates a PDF using string with the HTML representation, it download the document into an in memory Webkit object, and renders it into a PDF.
+   *
    * @param data {string} HTML string representation to create a PDF from
    * @param options {PDFGeneratorOptions} options for PDF generation
    * @returns {Promise<string>}

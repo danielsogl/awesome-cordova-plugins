@@ -4,7 +4,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Youtube Video Player
  * @description
  * Plays YouTube videos in Native YouTube App
- *
  * @usage
  * For Android 5.0+ you will need to add the following to config.xml
  * ```xml
@@ -36,6 +35,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class YoutubeVideoPlayer extends AwesomeCordovaNativePlugin {
   /**
    * Plays a YouTube video
+   *
    * @param videoId {string} Video ID
    */
   @Cordova({ sync: true })

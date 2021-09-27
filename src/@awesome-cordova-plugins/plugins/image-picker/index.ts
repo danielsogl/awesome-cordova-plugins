@@ -63,7 +63,6 @@ export enum OutputType {
  *
  * Requires Cordova plugin: `cordova-plugin-image-picker`.
  * For more info, please see the https://github.com/Telerik-Verified-Plugins/ImagePicker
- *
  * @usage
  * ```typescript
  * import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
@@ -97,6 +96,7 @@ export enum OutputType {
 export class ImagePicker extends AwesomeCordovaNativePlugin {
   /**
    * Pick pictures from the library.
+   *
    * @param {ImagePickerOptions} options
    * @returns {Promise<any>} Returns a Promise that resolves the image file URI
    * otherwise rejects with an error.
@@ -110,6 +110,7 @@ export class ImagePicker extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if we have permission to read images
+   *
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that indicates whether we have permission
    */
   @Cordova({
@@ -121,6 +122,7 @@ export class ImagePicker extends AwesomeCordovaNativePlugin {
 
   /**
    * Request permission to read images
+   *
    * @returns {Promise<any>}
    */
   @Cordova({

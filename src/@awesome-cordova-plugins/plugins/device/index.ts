@@ -8,7 +8,6 @@ declare const window: any;
  * @premier device
  * @description
  * Access information about the underlying device and platform.
- *
  * @usage
  * ```typescript
  * import { Device } from '@awesome-cordova-plugins/device/ngx';

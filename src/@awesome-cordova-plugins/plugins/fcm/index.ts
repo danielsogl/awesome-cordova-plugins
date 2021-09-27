@@ -75,7 +75,6 @@ export interface IChannelConfiguration {
  * @capacitorincompatible true
  * @description
  * Provides basic functionality for Firebase Cloud Messaging
- *
  * @usage
  * ```typescript
  * import { FCM } from '@awesome-cordova-plugins/fcm/ngx';
@@ -163,7 +162,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
    * Subscribes you to a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
    *
    * @param {string} topic Topic to be subscribed to
-   *
    * @returns {Promise<any>} Returns a promise resolving in result of subscribing to a topic
    */
   @Cordova()
@@ -175,7 +173,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
    * Unsubscribes you from a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
    *
    * @param {string} topic Topic to be unsubscribed from
-   *
    * @returns {Promise<any>} Returns a promise resolving in result of unsubscribing from a topic
    */
   @Cordova()
@@ -224,7 +221,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
    * Request push notification permission, alerting the user if it not have yet decided
    *
    * @param {IRequestPushPermissionIOSOptions} options Options for push request
-   *
    * @returns {Promise<boolean>} Returns a Promise that resolves with the permission status
    */
   @Cordova()
@@ -240,7 +236,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
    * Once a channel is created, it stays unchangeable until the user uninstalls the app.
    *
    * @param channelConfig
-   *
    * @returns {Promise<void>}
    */
   @Cordova()

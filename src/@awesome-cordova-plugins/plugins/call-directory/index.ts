@@ -16,7 +16,6 @@ export interface CallDirectoryLog {
  * @description
  * This plugin can add phone numbers to an Callkit call directory extension. Call `reloadExtension` after using `addIdentification` and `removeIdentification`
  * to process the changes in the call directory extension.
- *
  * @usage
  * ```typescript
  * import { CallDirectory } from '@awesome-cordova-plugins/call-directory/ngx';
@@ -34,7 +33,6 @@ export interface CallDirectoryLog {
  *   .then(res: string) => console.log(res))
  *   .catch((error: any) => console.error(error));
  * ```
- *
  * @Interfaces
  * CallDirectoryItem
  * CallDirectoryLog
@@ -53,7 +51,8 @@ export interface CallDirectoryLog {
 export class CallDirectory extends AwesomeCordovaNativePlugin {
   /**
    * Check if the call directory extension is available and enabled
-   * @return {Promise<boolean>} Returns a promise with result
+   *
+   * @returns {Promise<boolean>} Returns a promise with result
    */
   @Cordova()
   isAvailable(): Promise<boolean> {
@@ -62,8 +61,9 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Add identification numbers
+   *
    * @param {CallDirectoryItem[]} items Set of numbers with labels
-   * @return {Promise<any>} Returns a promise that resolves when numbers are added
+   * @returns {Promise<any>} Returns a promise that resolves when numbers are added
    */
   @Cordova()
   addIdentification(items: CallDirectoryItem[]): Promise<any> {
@@ -72,8 +72,9 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove identification numbers
+   *
    * @param {CallDirectoryItem[]} items Set of numbers with arbitrary label
-   * @return {Promise<any>} Returns a promise that resolves when numbers are removed
+   * @returns {Promise<any>} Returns a promise that resolves when numbers are removed
    */
   @Cordova()
   removeIdentification(items: CallDirectoryItem[]): Promise<any> {
@@ -82,7 +83,8 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove all items from call directory. Refreshes immediately.
-   * @return {Promise<any>} Returns a promise after refresh with message
+   *
+   * @returns {Promise<any>} Returns a promise after refresh with message
    */
   @Cordova()
   removeAllIdentification(): Promise<any> {
@@ -91,7 +93,8 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Get all numbers and labels in call directory
-   * @return {CallDirectoryItem[]} Returns a promise that resolves with an array of all items
+   *
+   * @returns {CallDirectoryItem[]} Returns a promise that resolves with an array of all items
    */
   @Cordova()
   getAllItems(): Promise<CallDirectoryItem[]> {
@@ -100,7 +103,8 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Reload extension to process queued changes
-   * @return {Promise<string>} Returns a promise after refresh with message
+   *
+   * @returns {Promise<string>} Returns a promise after refresh with message
    */
   @Cordova()
   reloadExtension(): Promise<string> {
@@ -109,7 +113,8 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Get log from plugin and call directory extension
-   * @return {Promise<CallDirectoryLog>} Returns a promise with an object of log messages
+   *
+   * @returns {Promise<CallDirectoryLog>} Returns a promise with an object of log messages
    */
   @Cordova()
   getLog(): Promise<CallDirectoryLog> {

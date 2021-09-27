@@ -9,7 +9,6 @@ declare const window: any;
  * @description
  *
  * This plugin allows you to resolve the native filesystem path for Android content URIs and is based on code in the aFileChooser library.
- *
  * @usage
  * ```typescript
  * import { FilePath } from '@awesome-cordova-plugins/file-path/ngx';
@@ -35,6 +34,7 @@ declare const window: any;
 export class FilePath extends AwesomeCordovaNativePlugin {
   /**
    * Resolve native path for given content URL/path.
+   *
    * @param {string} path  Content URL/path.
    * @returns {Promise<string>}
    */

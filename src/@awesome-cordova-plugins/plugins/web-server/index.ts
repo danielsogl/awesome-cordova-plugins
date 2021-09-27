@@ -22,7 +22,6 @@ export interface Request {
  * @name Web Server
  * @description
  * This plugin allows you to start a local dynamic content web server for android and iOS devices.
- *
  * @usage
  * ```typescript
  * import { WebServer } from '@awesome-cordova-plugins/web-server/ngx';
@@ -50,7 +49,6 @@ export interface Request {
  *   .catch((error: any) => console.error(error));
  *
  * ```
- *
  * @interfaces
  * Response
  * Request
@@ -66,6 +64,7 @@ export interface Request {
 export class WebServer extends AwesomeCordovaNativePlugin {
   /**
    * This method will start your webserver.
+   *
    * @param port {number} Port number (default to 8080)
    */
   @Cordova({
@@ -85,7 +84,8 @@ export class WebServer extends AwesomeCordovaNativePlugin {
 
   /**
    * This method returns an observable that streams HTTP requests to an observer.
-   * @return {Observable<Request>} Returns an observable to resolve as a Request object
+   *
+   * @returns {Observable<Request>} Returns an observable to resolve as a Request object
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -98,9 +98,10 @@ export class WebServer extends AwesomeCordovaNativePlugin {
 
   /**
    * This method sends a response to a request.
+   *
    * @param requestId {string} Request ID to respond to
    * @param responseObject {Response} Response object
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   sendResponse(requestId: string, responseObject: Response): Promise<any> {

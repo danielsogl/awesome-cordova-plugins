@@ -25,7 +25,6 @@ export interface UbResult {
  * This document describes library integration steps for your Cordova project.
  *
  * For more info see [Cordova plugin docs](https://github.com/usabilla/usabilla-u4a-cordova)
- *
  * @usage
  * ```typescript
  * import { Usabilla } from '@awesome-cordova-plugins/usabilla-cordova-sdk/ngx';
@@ -63,6 +62,8 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
    *
    * @name initialize
    * @param {appId} APP_ID unique app id to initialize
+   * @param appId
+   * @param customVars
    * @param {customVars} CUSTOM_VARIABLES for target based event trigger
    */
   @Cordova({
@@ -77,6 +78,7 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
    * Displays Feedback form based on unique form id after sdk initialization.
    *
    * @name loadFeedbackForm
+   * @param formId
    * @param {formId} FORM_ID to display Feedback form for
    */
   @Cordova({
@@ -91,6 +93,7 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
    * Displays Feedback form with current screen's snapshot and based on unique form id, after sdk initialization.
    *
    * @name loadFeedbackFormWithCurrentViewScreenshot
+   * @param formId
    * @param {formId} FORM_ID to display Feedback form for
    */
   @Cordova({
@@ -105,6 +108,7 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
    * Displays Campaign banner targetted based on specific event and variables, after sdk initialization.
    *
    * @name sendEvent
+   * @param eventId
    * @param {eventId} EVENT_ID to display Campaign banner for
    */
   @Cordova({
@@ -119,7 +123,6 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
    * Reset Campaign for next trigger.
    *
    * @name resetCampaignData
-   *
    */
   @Cordova({
     successIndex: 0,
@@ -133,7 +136,6 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
    * Dismiss or removes the Form/Banner from the view.
    *
    * @name dismiss
-   *
    */
   @Cordova({
     successIndex: 0,
@@ -145,8 +147,8 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
 
   /**
    * Get default masking strategy to be applied for data masking.
-   * @name getDefaultDataMasks
    *
+   * @name getDefaultDataMasks
    */
   @Cordova({
     successIndex: 0,
@@ -161,6 +163,8 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
    *
    * @name setDataMasking
    * @param {masks} Format regex to be applied for masking.
+   * @param masks
+   * @param maskCharacter
    * @param {maskCharacter} Character to be used as a masking character
    */
   @Cordova({

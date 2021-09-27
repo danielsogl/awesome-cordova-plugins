@@ -136,12 +136,10 @@ export interface OCRResult {
  *   .catch((error: any) => console.error(error));
  *
  * ```
- *
  * @interfaces
  * OCRCorners
  * OCRRect
  * OCRResult
- *
  * @enums
  * OCRSourceType
  */
@@ -156,9 +154,10 @@ export interface OCRResult {
 export class OCR extends AwesomeCordovaNativePlugin {
   /**
    * Extract text from image
+   *
    * @param sourceType {OCRSourceType} type of image source
    * @param source {string} image source (either file URL or base64 string)
-   * @return {Promise<OCRResult>} extracted text and geometry
+   * @returns {Promise<OCRResult>} extracted text and geometry
    */
   @Cordova()
   recText(sourceType: OCRSourceType, source: string): Promise<OCRResult> {

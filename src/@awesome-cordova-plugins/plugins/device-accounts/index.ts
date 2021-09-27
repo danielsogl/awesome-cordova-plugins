@@ -16,7 +16,6 @@ export interface AndroidAccount {
  * @name Device Accounts
  * @description
  * Gets the Google accounts associated with the Android device
- *
  * @usage
  * ```typescript
  * import { DeviceAccounts } from '@awesome-cordova-plugins/device-accounts/ngx';
@@ -44,6 +43,7 @@ export interface AndroidAccount {
 export class DeviceAccounts extends AwesomeCordovaNativePlugin {
   /**
    *  Gets all accounts registered on the Android Device
+   *
    * @returns {Promise<AndroidAccount[]>}
    */
   @Cordova()
@@ -53,6 +53,7 @@ export class DeviceAccounts extends AwesomeCordovaNativePlugin {
 
   /**
    *  Get all accounts registered on Android device for requested type
+   *
    * @param {string} type
    * @returns {Promise<AndroidAccount[]>}
    */
@@ -63,6 +64,7 @@ export class DeviceAccounts extends AwesomeCordovaNativePlugin {
 
   /**
    *  Get all emails registered on Android device (accounts with 'com.google' type)
+   *
    * @returns {Promise<string[]>}
    */
   @Cordova()
@@ -72,6 +74,7 @@ export class DeviceAccounts extends AwesomeCordovaNativePlugin {
 
   /**
    *  Get the first email registered on Android device
+   *
    * @returns {Promise<string>}
    */
   @Cordova()
@@ -81,6 +84,7 @@ export class DeviceAccounts extends AwesomeCordovaNativePlugin {
 
   /**
    *  Get permissions for access to email registered on Android device 8.0+
+   *
    * @returns {Promise<string>}
    */
   @Cordova()
@@ -90,6 +94,7 @@ export class DeviceAccounts extends AwesomeCordovaNativePlugin {
 
   /**
    *  Get permissions for access to email registered on Android device 8.0+ for requested type
+   *
    * @param {string} type
    * @returns {Promise<string>}
    */

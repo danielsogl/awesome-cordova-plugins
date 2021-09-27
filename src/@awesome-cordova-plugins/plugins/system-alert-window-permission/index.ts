@@ -5,7 +5,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @name System Alert Window Permission
  * @description
  * This plugin does something
- *
  * @usage
  * ```typescript
  * import { SystemAlertWindowPermission } from '@awesome-cordova-plugins/system-alert-window-permission/ngx';
@@ -39,7 +38,8 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class SystemAlertWindowPermission extends AwesomeCordovaNativePlugin {
   /**
    * Check permission
-   * @return {Promise<any>} return 0 when dont have SYSTEM_ALERT_WINDOW permission, 1 when have SYSTEM_ALERT_WINDOW permission
+   *
+   * @returns {Promise<any>} return 0 when dont have SYSTEM_ALERT_WINDOW permission, 1 when have SYSTEM_ALERT_WINDOW permission
    */
   @Cordova()
   hasPermission(): Promise<any> {
@@ -48,7 +48,8 @@ export class SystemAlertWindowPermission extends AwesomeCordovaNativePlugin {
 
   /**
    * Request permission
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   *
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   requestPermission(): Promise<any> {
@@ -57,7 +58,8 @@ export class SystemAlertWindowPermission extends AwesomeCordovaNativePlugin {
 
   /**
    * Open notification Settings
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   *
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   openNotificationSettings(): Promise<any> {

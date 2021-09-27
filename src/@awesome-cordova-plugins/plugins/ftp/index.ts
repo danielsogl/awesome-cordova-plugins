@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
  * @name FTP
  * @description
  * This cordova plugin is created to use ftp (client) in web/js.
- *
  * @usage
  * ```typescript
  * import { FTP } from '@awesome-cordova-plugins/ftp/ngx';
@@ -36,10 +35,11 @@ export class FTP extends AwesomeCordovaNativePlugin {
    * Connect to one ftp server.
    *
    * Just need to init the connection once. If success, you can do any ftp actions later.
+   *
    * @param {string} hostname The ftp server url. Like ip without protocol prefix, e.g. "192.168.1.1".
    * @param {string} username The ftp login username. If it and `password` are all blank/undefined, the default username "anonymous" is used.
    * @param {string} password The ftp login password. If it and `username` are all blank/undefined, the default password "anonymous@" is used.
-   * @return {Promise<any>} The success callback. Notice: For iOS, if triggered, means `init` success, but NOT means the later action, e.g. `ls`... `download` will success!
+   * @returns {Promise<any>} The success callback. Notice: For iOS, if triggered, means `init` success, but NOT means the later action, e.g. `ls`... `download` will success!
    */
   @Cordova()
   connect(hostname: string, username: string, password: string): Promise<any> {
@@ -58,7 +58,7 @@ export class FTP extends AwesomeCordovaNativePlugin {
    * - modifiedDate: modified date of this file. date format is `yyyy-MM-dd HH:mm:ss zzz`, e.g "2015-12-01 20:45:00 GMT+8".
    *
    * @param {string} path The path on the ftp server. e.g. "/adf/123/".
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   ls(path: string): Promise<any> {
@@ -69,7 +69,7 @@ export class FTP extends AwesomeCordovaNativePlugin {
    * Create one directory on the ftp server.
    *
    * @param {string} path The path on the ftp server. e.g. "/adf/123/".
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   mkdir(path: string): Promise<any> {
@@ -82,7 +82,7 @@ export class FTP extends AwesomeCordovaNativePlugin {
    * Tip: As many ftp server could not rm dir when it's not empty, so rm all files under the dir at first is recommended.
    *
    * @param {string} path The file (with full path) you want to delete. e.g. "/adf/123/newDir/myFile".
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   rmdir(path: string): Promise<any> {
@@ -93,7 +93,7 @@ export class FTP extends AwesomeCordovaNativePlugin {
    * Delete one file on the ftp server.
    *
    * @param {string} file The file (with full path) you want to delete. e.g. "/adf/123/newDir/myFile".
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   rm(file: string): Promise<any> {
@@ -105,7 +105,7 @@ export class FTP extends AwesomeCordovaNativePlugin {
    *
    * @param {string} localFile The file (with full path) you want to upload. e.g. "/local/path/to/localFile".
    * @param {string} remoteFile The file (with full path) you want to located on the ftp server. e.g. "/adf/123/newDir/remoteFile".
-   * @return {Observable<any>} Returns an observable.
+   * @returns {Observable<any>} Returns an observable.
    *                        It will be triggered many times according the file's size.
    *                        The arg `0`, `0.1xx`, `0.2xx` ... `1` means the upload percent. When it reach `1`, means success.
    */
@@ -121,7 +121,7 @@ export class FTP extends AwesomeCordovaNativePlugin {
    *
    * @param {string} localFile The file (with full path) you want to upload. e.g. "/local/path/to/localFile".
    * @param {string} remoteFile The file (with full path) you want to located on the ftp server. e.g. "/adf/123/newDir/remoteFile".
-   * @return {Observable<any>} Returns an observable.
+   * @returns {Observable<any>} Returns an observable.
    *                        It will be triggered many times according the file's size.
    *                        The arg `0`, `0.1xx`, `0.2xx` ... `1` means the upload percent. When it reach `1`, means success.
    */
@@ -135,7 +135,7 @@ export class FTP extends AwesomeCordovaNativePlugin {
   /**
    * Cancel all requests. Always success.
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   cancel(): Promise<any> {
@@ -145,7 +145,7 @@ export class FTP extends AwesomeCordovaNativePlugin {
   /**
    * Disconnect from ftp server.
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   disconnect(): Promise<any> {

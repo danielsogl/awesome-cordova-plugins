@@ -225,7 +225,6 @@ export interface ImageLabel {
  * @name Firebase Vision
  * @description
  * Cordova plugin for Firebase MLKit Vision
- *
  * @usage
  * ```typescript
  * import { FirebaseVision } from '@awesome-cordova-plugins/firebase-vision/ngx';
@@ -261,8 +260,9 @@ export interface ImageLabel {
 export class FirebaseVision extends AwesomeCordovaNativePlugin {
   /**
    * Recognize text in image
+   *
    * @param file_uri {string} Image URI
-   * @return {Promise<string>} Returns a promise that fulfills with the text in the image
+   * @returns {Promise<string>} Returns a promise that fulfills with the text in the image
    */
   @Cordova()
   onDeviceTextRecognizer(file_uri: string): Promise<Text> {
@@ -270,8 +270,9 @@ export class FirebaseVision extends AwesomeCordovaNativePlugin {
   }
   /**
    * Read data from Barcode
+   *
    * @param file_uri {string} Image URI
-   * @return {Promise<Barcode[]>} Returns a promise that fulfills with the data in barcode
+   * @returns {Promise<Barcode[]>} Returns a promise that fulfills with the data in barcode
    */
   @Cordova()
   barcodeDetector(file_uri: string): Promise<Barcode[]> {
@@ -279,8 +280,9 @@ export class FirebaseVision extends AwesomeCordovaNativePlugin {
   }
   /**
    * Recognize object in image
+   *
    * @param file_uri {string} Image URI
-   * @return {Promise<ImageLabel[]>} Returns a promise that fulfills with the information about entities in an image
+   * @returns {Promise<ImageLabel[]>} Returns a promise that fulfills with the information about entities in an image
    */
   @Cordova()
   imageLabeler(file_uri: string): Promise<ImageLabel[]> {

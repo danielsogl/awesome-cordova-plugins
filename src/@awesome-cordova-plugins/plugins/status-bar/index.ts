@@ -9,7 +9,6 @@ import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@a
  * Manage the appearance of the native status bar.
  *
  * Requires Cordova plugin: `cordova-plugin-statusbar`. For more info, please see the [StatusBar plugin docs](https://github.com/apache/cordova-plugin-statusbar).
- *
  * @usage
  * ```typescript
  * import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
@@ -24,7 +23,6 @@ import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@a
  * // set status bar to white
  * this.statusBar.backgroundColorByHexString('#ffffff');
  * ```
- *
  */
 @Plugin({
   pluginName: 'StatusBar',

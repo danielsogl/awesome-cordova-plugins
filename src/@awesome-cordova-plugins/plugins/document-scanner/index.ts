@@ -48,7 +48,6 @@ export interface DocumentScannerOptions {
  * @name Document Scanner
  * @description
  * This plugin processes images of documents, compensating for perspective.
- *
  * @usage
  * ```typescript
  * import { DocumentScanner, DocumentScannerOptions } from '@awesome-cordova-plugins/document-scanner';
@@ -64,7 +63,6 @@ export interface DocumentScannerOptions {
  *   .catch((error: any) => console.error(error));
  *
  * ```
- *
  * @interfaces
  * DocumentScannerOptions
  * @enums
@@ -81,8 +79,9 @@ export interface DocumentScannerOptions {
 export class DocumentScanner extends AwesomeCordovaNativePlugin {
   /**
    * Scan a document
+   *
    * @param opts {DocumentScannerOptions} optional parameter for controlling scanning
-   * @return {Promise<string>} file URL of scanned document image
+   * @returns {Promise<string>} file URL of scanned document image
    */
   @Cordova({
     callbackOrder: 'reverse',

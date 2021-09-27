@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
  * With the help of this plugin, you can easily add human + bot chat support functionality to you app.
  * Refer to: TODO: insert site link
  * For documentation: TODO: insert link
- *
  * @usage
  * ```typescript
  * import { Kommunicate } from '@awesome-cordova-plugins/Kommunicate';
@@ -59,7 +58,7 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
    * };
    *
    * @param kmUser {any} the user details
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   login(kmUser: any): Promise<any> {
@@ -69,7 +68,7 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
   /**
    * Register for push notification
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   registerPushNotification(): Promise<any> {
@@ -79,7 +78,7 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
   /**
    * Check if any user is logged in or not
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   isLoggedIn(): Promise<any> {
@@ -90,7 +89,7 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
    * Update the token for push notifications
    *
    * @param token {string} the user details
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   updatePushNotificationToken(token: string): Promise<any> {
@@ -100,7 +99,7 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
   /**
    * Launch the conversation screen (it contains all the existing conversations)
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   launchConversation(): Promise<any> {
@@ -116,7 +115,7 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
    * };
    *
    * @param conversationObject {any} the channel key and other information
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   launchParticularConversation(conversationObject: any): Promise<any> {
@@ -127,8 +126,9 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
    * Start a new conversation, details about the conversation to be passed as parameters
    *
    * @deprecated
+   * @param conversationParams
    * @param converationParams {any} the user details
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   startNewConversation(conversationParams: any): Promise<any> {
@@ -139,7 +139,7 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
    * Process push notifications
    *
    * @param data {any} the user details
-   * @return {boolean} Returns true/false
+   * @returns {boolean} Returns true/false
    */
   @Cordova({ sync: true })
   processPushNotification(data: any): boolean {
@@ -149,7 +149,7 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
   /**
    * Logout the current user
    *
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   logout(): Promise<any> {
@@ -161,7 +161,7 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
    *
    * @deprecated
    * @param data {any} the user details
-   * @return {Promise<any>} Returns a promise
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   startSingleChat(data: any): Promise<any> {
@@ -178,7 +178,8 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
    * };
    *
    * @param conversationObject {any} the user details
-   * @return {Promise<any>} Returns a promise
+   * @param converationObject
+   * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
   conversationBuilder(converationObject: any): Promise<any> {

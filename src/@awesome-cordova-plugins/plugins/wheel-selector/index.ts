@@ -66,7 +66,6 @@ export interface WheelSelectorData {
  * @beta
  * @name WheelSelector Plugin
  * @description Native wheel selector for Cordova (Android/iOS).
- *
  * @usage
  * ```
  * import { WheelSelector } from '@awesome-cordova-plugins/wheel-selector/ngx';
@@ -168,7 +167,6 @@ export interface WheelSelectorData {
  *  }
  *
  * ```
- *
  * @interfaces
  * WheelSelectorOptions
  */
@@ -183,6 +181,7 @@ export interface WheelSelectorData {
 export class WheelSelector extends AwesomeCordovaNativePlugin {
   /**
    * Shows the wheel selector
+   *
    * @param {WheelSelectorOptions} options Options for the wheel selector
    * @returns {Promise<WheelSelectorData>} Returns a promise that resolves with the selected items, or an error.
    */
@@ -193,6 +192,7 @@ export class WheelSelector extends AwesomeCordovaNativePlugin {
 
   /**
    * Hide the selector
+   *
    * @returns {Promise<void>}
    */
   @Cordova({

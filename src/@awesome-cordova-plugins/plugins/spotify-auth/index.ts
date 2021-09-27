@@ -53,7 +53,6 @@ export interface AuthorizationData {
  * @description
  * Cordova plugin for authenticating with Spotify
  * > https://github.com/Festify/cordova-spotify-oauth
- *
  * @usage
  * ```typescript
  * import { SpotifyAuth } from '@awesome-cordova-plugins/spotify-auth/ngx';
@@ -115,7 +114,7 @@ export class SpotifyAuth extends AwesomeCordovaNativePlugin {
    * Bottom line - always call this if you need a valid access token in your code.
    *
    * @param cfg {Config} configuration
-   * @return {Promise<AuthorizationData>}
+   * @returns {Promise<AuthorizationData>}
    */
   @Cordova({
     sync: false,
@@ -130,7 +129,7 @@ export class SpotifyAuth extends AwesomeCordovaNativePlugin {
    *
    * This is akin to a "logout".
    *
-   * @return {void}
+   * @returns {void}
    */
   @Cordova({
     sync: true,

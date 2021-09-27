@@ -395,7 +395,6 @@ export enum AlternativePaymentMethod {
  * @name PayTabs
  * @description
  * A plugin that allows you to use PayTabs's Native SDKs for Android and iOS.
- *
  * @usage
  * ```typescript
  * import { PayTabs } from '@awesome-cordova-plugins/paytabs/ngx';
@@ -453,8 +452,10 @@ export enum AlternativePaymentMethod {
 export class PayTabs extends AwesomeCordovaNativePlugin {
   /**
    * Start Card Payment
+   *
    * @param params {PaymentSDKConfiguration} payment request configuration
-   * @return {Promise<any>} returns a promise that resolves with transaction details, or rejects with an error
+   * @param configuration
+   * @returns {Promise<any>} returns a promise that resolves with transaction details, or rejects with an error
    */
   @Cordova()
   startCardPayment(configuration: PaymentSDKConfiguration): Promise<any> {
@@ -462,8 +463,10 @@ export class PayTabs extends AwesomeCordovaNativePlugin {
   }
   /**
    * Start ApplePay Payment
+   *
    * @param params {PaymentSDKConfiguration} payment request configuration
-   * @return {Promise<any>} returns a promise that resolves with transaction details, or rejects with an error
+   * @param configuration
+   * @returns {Promise<any>} returns a promise that resolves with transaction details, or rejects with an error
    */
   @Cordova()
   startApplePayPayment(configuration: PaymentSDKConfiguration): Promise<any> {
@@ -471,8 +474,10 @@ export class PayTabs extends AwesomeCordovaNativePlugin {
   }
   /**
    * Start Alternative Payment Method
+   *
    * @param params {PaymentSDKConfiguration} payment request configuration
-   * @return {Promise<any>} returns a promise that resolves with transaction details, or rejects with an error
+   * @param configuration
+   * @returns {Promise<any>} returns a promise that resolves with transaction details, or rejects with an error
    */
   @Cordova()
   startAlternativePaymentMethod(configuration: PaymentSDKConfiguration): Promise<any> {

@@ -77,7 +77,6 @@ export class FileTransferManager {
  * @name BackgroundUpload
  * @description
  * This plugin does something
- *
  * @usage
  * ```typescript
  * import { BackgroundUpload } from '@awesome-cordova-plugins/background-upload/ngx';

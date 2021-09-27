@@ -39,6 +39,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class Vibration extends AwesomeCordovaNativePlugin {
   /**
    * Vibrates the device for given amount of time.
+   *
    * @param time {number|number[]} Milliseconds to vibrate the device. If passed an array of numbers, it will define a vibration pattern. Pass 0 to stop any vibration immediately.
    */
   @Cordova({

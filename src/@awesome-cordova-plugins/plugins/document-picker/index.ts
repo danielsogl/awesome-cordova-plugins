@@ -7,7 +7,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  *
  * Opens the file picker on iOS for the user to select a file, returns a file URI.
  * Allows the user to upload files from iCloud
- *
  * @usage
  * ```typescript
  * import { DocumentPicker } from '@awesome-cordova-plugins/document-picker/ngx';
@@ -33,6 +32,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class DocumentPicker extends AwesomeCordovaNativePlugin {
   /**
    * Open a file
+   *
    * @param {string} [option] files between 'image', 'pdf' or 'all'
    * @returns {Promise<string>}
    */

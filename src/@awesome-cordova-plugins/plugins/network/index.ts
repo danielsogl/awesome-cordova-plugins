@@ -27,7 +27,6 @@ export enum Connection {
  * @premier network-information
  * @description
  * Requires Cordova plugin: cordova-plugin-network-information. For more info, please see the [Network plugin docs](https://github.com/apache/cordova-plugin-network-information).
- *
  * @usage
  * ```typescript
  * import { Network } from '@awesome-cordova-plugins/network/ngx';
@@ -90,19 +89,22 @@ export class Network extends AwesomeCordovaNativePlugin {
 
   /**
    * Connection type
-   * @return {string}
+   *
+   * @returns {string}
    */
   @CordovaProperty() type: string;
 
   /**
    * Downlink Max Speed
-   * @return {string}
+   *
+   * @returns {string}
    */
   @CordovaProperty() downlinkMax: string;
 
   /**
    * Returns an observable to watch connection changes
-   * @return {Observable<'connected' | 'disconnected'>}
+   *
+   * @returns {Observable<'connected' | 'disconnected'>}
    */
   @CordovaCheck()
   onChange(): Observable<'connected' | 'disconnected'> {
@@ -114,6 +116,7 @@ export class Network extends AwesomeCordovaNativePlugin {
 
   /**
    * Get notified when the device goes offline
+   *
    * @returns {Observable<any>} Returns an observable.
    */
   @Cordova({
@@ -127,6 +130,7 @@ export class Network extends AwesomeCordovaNativePlugin {
 
   /**
    * Get notified when the device goes online
+   *
    * @returns {Observable<any>} Returns an observable.
    */
   @Cordova({

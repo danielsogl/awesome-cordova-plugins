@@ -249,7 +249,6 @@ interface CodePushCordovaPlugin {
    *                     The callback will be called only once, and the possible statuses are defined by the SyncStatus enum.
    * @param {SyncOptions} [syncOptions] Optional SyncOptions parameter configuring the behavior of the sync operation.
    * @param {SuccessCallback<DownloadProgress>} [downloadProgress] Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
-   *
    */
   sync(
     syncCallback?: SuccessCallback<SyncStatus>,
@@ -441,7 +440,6 @@ export interface DownloadProgress {
  * CodePush plugin for Cordova by Microsoft that supports iOS and Android.
  *
  * For more info, please see https://github.com/Dellos7/example-cordova-code-push-plugin
- *
  * @usage
  * ```typescript
  * import { CodePush } from '@awesome-cordova-plugins/code-push/ngx';
@@ -481,6 +479,7 @@ export class CodePush extends AwesomeCordovaNativePlugin {
   /**
    * Gets the pending package information, if any. A pending package is one that has been installed but the application still runs the old code.
    * This happens only after a package has been installed using ON_NEXT_RESTART or ON_NEXT_RESUME mode, but the application was not restarted/resumed yet.
+   *
    * @returns {Promise<ILocalPackage>}
    */
   @Cordova()
@@ -516,6 +515,7 @@ export class CodePush extends AwesomeCordovaNativePlugin {
   /**
    * Reloads the application. If there is a pending update package installed using ON_NEXT_RESTART or ON_NEXT_RESUME modes, the update
    * will be immediately visible to the user. Otherwise, calling this function will simply reload the current version of the application.
+   *
    * @returns {Promise<void>}
    */
   @Cordova()
@@ -541,7 +541,6 @@ export class CodePush extends AwesomeCordovaNativePlugin {
    * @param {SyncOptions} [syncOptions] Optional SyncOptions parameter configuring the behavior of the sync operation.
    * @param {SuccessCallback<DownloadProgress>} [downloadProgress] Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
    * @returns {Observable<SyncStatus>}
-   *
    */
   @Cordova({
     observable: true,

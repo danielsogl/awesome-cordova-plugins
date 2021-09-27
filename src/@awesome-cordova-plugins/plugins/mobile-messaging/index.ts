@@ -182,7 +182,6 @@ export class DefaultMessageStorage {
  * This document describes library integration steps for your Cordova project.
  *
  * For more info see [Cordova plugin docs](https://github.com/infobip/mobile-messaging-cordova-plugin)
- *
  * @usage
  * ```typescript
  * import { MobileMessaging } from '@awesome-cordova-plugins/mobile-messaging/ngx';
@@ -228,6 +227,8 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    *
    * @name init
    * @param config. Configuration for Mobile Messaging
+   * @param config
+   * @param onInitError
    * @param {Function} onInitError. Error callback
    */
   @Cordova({ sync: true })
@@ -259,7 +260,8 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    * Un register from MobileMessaging library event.
    *
    * @name unregister
-   * @param {String} eventName
+   * @param {string} eventName
+   * @param event
    * @param {Function} handler will be unregistered from event
    */
   @Cordova({
@@ -289,6 +291,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    *     "dateAttribute": "2020-02-26T09:41:57Z",
    *     "booleanAttribute": true
    *   }
+   * @param event
    * }
    */
   @Cordova({
@@ -313,6 +316,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    *     "booleanAttribute": true
    *   }
    * }
+   * @param event
    * @param {Function} callback will be called on result, you have to handle error and do retries yourself
    */
   @Cordova({
@@ -326,6 +330,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    * Saves user data to the server.
    *
    * @name saveUser
+   * @param userData
    * @param {Object} userData. An object containing user data
    */
   @Cordova()
@@ -357,6 +362,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    * Saves installation to the server.
    *
    * @name saveInstallation
+   * @param installation
    * @param {Object} installation. An object containing installation data
    */
   @Cordova()
@@ -388,8 +394,8 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    * Sets any installation as primary for this user.
    *
    * @name setInstallationAsPrimary
-   * @param {String} pushRegistrationId of an installation
-   * @param {Boolean} primary or not
+   * @param {string} pushRegistrationId of an installation
+   * @param {boolean} primary or not
    */
   @Cordova()
   setInstallationAsPrimary(pushRegistrationId: string, primary: boolean): Promise<any> {
@@ -400,6 +406,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    * Performs personalization of the current installation on the platform.
    *
    * @name personalize
+   * @param context
    * @param {Object} context. An object containing user identity information as well as additional user attributes.
    */
   @Cordova()
@@ -420,7 +427,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
   /**
    * Performs depersonalization of the installation referenced by pushRegistrationId.
    *
-   * @param {String} pushRegistrationId of the remote installation to depersonalize
+   * @param {string} pushRegistrationId of the remote installation to depersonalize
    */
   @Cordova()
   depersonalizeInstallation(pushRegistrationId: string): Promise<any> {
@@ -442,7 +449,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    * Displays built-in error dialog so that user can resolve errors during sdk initialization.
    *
    * @name showDialogForError
-   * @param {Number} errorCode to display dialog for
+   * @param {number} errorCode to display dialog for
    */
   @Cordova()
   showDialogForError(errorCode: number): Promise<any> {
@@ -458,6 +465,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    * Displays chat view.
    *
    * @name showChat
+   * @param config
    * @param {ChatConfig} chat config
    */
   @Cordova()

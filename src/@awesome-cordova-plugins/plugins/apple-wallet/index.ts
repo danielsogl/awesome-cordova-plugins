@@ -35,7 +35,6 @@ export interface WatchExistData {
  * @name Apple Wallet
  * @description
  * A Cordova plugin that enables users from Add Payment Cards to their Apple Wallet.
- *
  * @usage
  * ```typescript
  * import { AppleWallet } from '@awesome-cordova-plugins/apple-wallet/ngx';
@@ -156,7 +155,8 @@ export interface WatchExistData {
 export class AppleWallet extends AwesomeCordovaNativePlugin {
   /**
    * Simple call to determine if the current device supports Apple Pay and has a supported card installed.
-   * @return {Promise<boolean>}
+   *
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   isAvailable(): Promise<boolean> {
@@ -165,8 +165,9 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple call to check Card Eligibility
+   *
    * @param {string} primaryAccountIdentifier
-   * @return {Promise<boolean>}
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   checkCardEligibility(primaryAccountIdentifier: string): Promise<boolean> {
@@ -175,8 +176,9 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple call to checkCardEligibilityBySuffix
+   *
    * @param {string} cardSuffix
-   * @return {Promise<PairedDevicesFlags>}
+   * @returns {Promise<PairedDevicesFlags>}
    */
   @Cordova()
   checkCardEligibilityBySuffix(cardSuffix: string): Promise<boolean> {
@@ -185,7 +187,8 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple call to check out if there is any paired Watches so that you can toggle visibility of 'Add to Watch' button
-   * @return {Promise<WatchExistData>}
+   *
+   * @returns {Promise<WatchExistData>}
    */
   @Cordova()
   checkPairedDevices(): Promise<WatchExistData> {
@@ -194,8 +197,9 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple call to check paired devices with a card by its suffix
+   *
    * @param {string} cardSuffix
-   * @return {Promise<PairedDevicesFlags>}
+   * @returns {Promise<PairedDevicesFlags>}
    */
   @Cordova()
   checkPairedDevicesBySuffix(cardSuffix: string): Promise<PairedDevicesFlags> {
@@ -204,8 +208,9 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple call with the configuration data needed to instantiate a new PKAddPaymentPassViewController object.
+   *
    * @param {cardData} data
-   * @return {Promise<SignatureCertificatesData>}
+   * @returns {Promise<SignatureCertificatesData>}
    */
   @Cordova()
   startAddPaymentPass(data: CardData): Promise<SignatureCertificatesData> {
@@ -214,8 +219,9 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple completion handler that takes encrypted card data returned from your server side, in order to get the final response from Apple to know if the card is added succesfully or not.
+   *
    * @param {encryptedCardData} data
-   * @return {Promise<string>}
+   * @returns {Promise<string>}
    */
   @Cordova()
   completeAddPaymentPass(data: EncryptedCardData): Promise<string> {

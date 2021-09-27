@@ -6,7 +6,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @description
  * This plugin capture biometric(Iris and Fingerprint) and validate the user.
  * May be used in Banking domain
- *
  * @usage
  * ```typescript
  * import { BiometricWrapper } from '@awesome-cordova-plugins/biometric-wrapper/ngx';
@@ -37,7 +36,9 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class BiometricWrapper extends AwesomeCordovaNativePlugin {
   /**
    * This function activate iris activity
-   * @return {Promise<any>} Returns a promise that resolves when iris data captured
+   *
+   * @param args
+   * @returns {Promise<any>} Returns a promise that resolves when iris data captured
    */
   @Cordova()
   activateIris(args: any): Promise<any> {
@@ -46,7 +47,9 @@ export class BiometricWrapper extends AwesomeCordovaNativePlugin {
 
   /**
    * This function activate fingerprint activity
-   * @return {Promise<any>} Returns a promise that resolves when FP data captured
+   *
+   * @param args
+   * @returns {Promise<any>} Returns a promise that resolves when FP data captured
    */
   @Cordova()
   activateFingerprint(args: any): Promise<any> {

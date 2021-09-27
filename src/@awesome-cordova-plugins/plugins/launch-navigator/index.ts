@@ -5,6 +5,7 @@ export interface PromptsOptions {
   /**
    * a function to pass the user's decision whether to remember their choice of app.
    * This will be passed a single boolean value indicating the user's decision.
+   *
    * @param rememberChoice
    */
   callback?: (rememberChoice: boolean) => void;
@@ -50,6 +51,7 @@ export interface RememberChoiceOptions {
    * a function which asks the user whether to remember their choice of app.
    * If this is defined, then the default dialog prompt will not be shown, allowing for a custom UI for asking the user.
    * This will be passed a callback function which should be invoked with a single boolean argument which indicates the user's decision to remember their choice.
+   *
    * @param callback
    */
   promptFn?: (callback: (rememberChoice: boolean) => void) => void;
@@ -186,18 +188,21 @@ export interface LaunchNavigatorOptions {
 export interface UserChoice {
   /**
    * Indicates whether a user choice exists for a preferred navigator app.
+   *
    * @param callback - function to pass result to: will receive a boolean argument.
    */
   exists: (callback: (exists: boolean) => void) => void;
 
   /**
    * Returns current user choice of preferred navigator app.
+   *
    * @param callback - function to pass result to: will receive a string argument indicating the app, which is a constant in `launchnavigator.APP`.
    */
   get: (callback: (app: string) => void) => void;
 
   /**
    * Sets the current user choice of preferred navigator app.
+   *
    * @param app - app to set as preferred choice as a constant in `launchnavigator.APP`.
    * @param callback - function to call once operation is complete.
    */
@@ -205,6 +210,7 @@ export interface UserChoice {
 
   /**
    * Clears the current user choice of preferred navigator app.
+   *
    * @param callback - function to call once operation is complete.
    */
   clear: (callback: () => void) => void;
@@ -213,18 +219,21 @@ export interface UserChoice {
 export interface UserPrompted {
   /**
    * Indicates whether user has already been prompted whether to remember their choice a preferred navigator app.
+   *
    * @param callback - function to pass result to: will receive a boolean argument.
    */
   get: (callback: (exists: boolean) => void) => void;
 
   /**
    * Sets flag indicating user has already been prompted whether to remember their choice a preferred navigator app.
+   *
    * @param callback - function to call once operation is complete.
    */
   set: (callback: () => void) => void;
 
   /**
    * Clears flag which indicates if user has already been prompted whether to remember their choice a preferred navigator app.
+   *
    * @param callback - function to call once operation is complete.
    */
   clear: (callback: () => void) => void;
@@ -239,7 +248,6 @@ export interface AppSelection {
  * @name Launch Navigator
  * @description
  * Requires Cordova plugin: uk.co.workingedge.phonegap.plugin.launchnavigator. For more info, please see the [LaunchNavigator plugin docs](https://github.com/dpa99c/phonegap-launch-navigator).
- *
  * @usage
  * Please refer to the plugin's repo for detailed usage. This docs page only explains the Native wrapper.
  *
@@ -308,6 +316,7 @@ export class LaunchNavigator extends AwesomeCordovaNativePlugin {
 
   /**
    * Launches navigator app
+   *
    * @param destination {string|number[]} Location name or coordinates (as string or array)
    * @param options {LaunchNavigatorOptions}
    * @returns {Promise<any>}
@@ -322,6 +331,7 @@ export class LaunchNavigator extends AwesomeCordovaNativePlugin {
 
   /**
    * Determines if the given app is installed and available on the current device.
+   *
    * @param app {string}
    * @returns {Promise<any>}
    */
@@ -332,6 +342,7 @@ export class LaunchNavigator extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns a list indicating which apps are installed and available on the current device.
+   *
    * @returns {Promise<string[]>}
    */
   @Cordova()
@@ -341,6 +352,7 @@ export class LaunchNavigator extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the display name of the specified app.
+   *
    * @param app {string}
    * @returns {string}
    */
@@ -351,6 +363,7 @@ export class LaunchNavigator extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns list of supported apps on a given platform.
+   *
    * @param platform {string}
    * @returns {string[]}
    */
@@ -361,6 +374,7 @@ export class LaunchNavigator extends AwesomeCordovaNativePlugin {
 
   /**
    * Indicates if an app on a given platform supports specification of transport mode.
+   *
    * @param app {string} specified as a string, you can use one of the constants, e.g `LaunchNavigator.APP.GOOGLE_MAPS`
    * @param platform {string}
    * @returns {boolean}
@@ -372,6 +386,7 @@ export class LaunchNavigator extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the list of transport modes supported by an app on a given platform.
+   *
    * @param app {string}
    * @param platform {string}
    * @returns {string[]}
@@ -393,6 +408,7 @@ export class LaunchNavigator extends AwesomeCordovaNativePlugin {
 
   /**
    * Indicates if an app on a given platform supports specification of start location.
+   *
    * @param app {string}
    * @param platform {string}
    * @returns {boolean}
@@ -415,6 +431,7 @@ export class LaunchNavigator extends AwesomeCordovaNativePlugin {
   /**
    * Indicates if an app on a given platform supports specification of launch mode.
    * Note that currently only Google Maps on Android does.
+   *
    * @param app {string}
    * @param platform {string}
    * @returns {boolean}

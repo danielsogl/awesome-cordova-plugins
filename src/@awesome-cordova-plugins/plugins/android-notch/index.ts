@@ -7,7 +7,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * This plugin enables developers to get the cutout and android devices inset sizes
  * It is based on the cordova plugin developed by @tobspr: https://github.com/tobspr/cordova-plugin-android-notch
  * This plugin works on all android versions, but we can only detect notches starting from Android 9.
- *
  * @usage
  * ```typescript
  * import { AndroidNotch } from '@awesome-cordova-plugins/android-notch/ngx';
@@ -52,7 +51,7 @@ export class AndroidNotch extends AwesomeCordovaNativePlugin {
   /**
    * Returns true if the android device has cutout
    *
-   * @return {Promise<boolean>}
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   hasCutout(): Promise<boolean> {
@@ -62,7 +61,7 @@ export class AndroidNotch extends AwesomeCordovaNativePlugin {
   /**
    * Returns the heigth of the top inset
    *
-   * @return {Promise<number>}
+   * @returns {Promise<number>}
    */
   @Cordova()
   getInsetTop(): Promise<number> {
@@ -72,7 +71,7 @@ export class AndroidNotch extends AwesomeCordovaNativePlugin {
   /**
    * Returns the heigth of the right inset
    *
-   * @return {Promise<number>}
+   * @returns {Promise<number>}
    */
   @Cordova()
   getInsetRight(): Promise<number> {
@@ -81,7 +80,8 @@ export class AndroidNotch extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the heigth of the bottom inset
-   * @return {Promise<number>}
+   *
+   * @returns {Promise<number>}
    */
   @Cordova()
   getInsetBottom(): Promise<number> {
@@ -90,7 +90,8 @@ export class AndroidNotch extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the heigth of the left inset
-   * @return {Promise<number>}
+   *
+   * @returns {Promise<number>}
    */
   @Cordova()
   getInsetLeft(): Promise<number> {

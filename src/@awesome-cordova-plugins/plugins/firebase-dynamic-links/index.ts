@@ -81,7 +81,6 @@ export interface ILinkOptions {
  * this.firebaseDynamicLinks.onDynamicLink()
  *   .subscribe((res: any) => console.log(res), (error:any) => console.log(error));
  * ```
- *
  * @interfaces
  * DynamicLinksOptions
  */
@@ -99,7 +98,8 @@ export interface ILinkOptions {
 export class FirebaseDynamicLinks extends AwesomeCordovaNativePlugin {
   /**
    * Determines if the app has a pending dynamic link and provides access to the dynamic link parameters.
-   * @return {Promise<IDynamicLink>} Returns a promise
+   *
+   * @returns {Promise<IDynamicLink>} Returns a promise
    */
   @Cordova({
     otherPromise: true,
@@ -110,7 +110,8 @@ export class FirebaseDynamicLinks extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers callback that is triggered on each dynamic link click.
-   * @return {Observable<IDynamicLink>} Returns an observable
+   *
+   * @returns {Observable<IDynamicLink>} Returns an observable
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -122,8 +123,10 @@ export class FirebaseDynamicLinks extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates a Dynamic Link from the parameters. Returns a promise fulfilled with the new dynamic link url.
+   *
    * @param {ILinkOptions} opt [Dynamic Link Parameters](https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks#dynamic-link-parameters)
-   * @return {Promise<string>} Returns a promise with the url
+   * @param opts
+   * @returns {Promise<string>} Returns a promise with the url
    */
   @Cordova({
     otherPromise: true,
@@ -134,8 +137,10 @@ export class FirebaseDynamicLinks extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates a shortened Dynamic Link from the parameters. Shorten the path to a string that is only as long as needed to be unique, with a minimum length of 4 characters. Use this method if sensitive information would not be exposed if a short Dynamic Link URL were guessed.
+   *
    * @param {ILinkOptions} opt [Dynamic Link Parameters](https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks#dynamic-link-parameters)
-   * @return {Promise<string>} Returns a promise with the url
+   * @param opts
+   * @returns {Promise<string>} Returns a promise with the url
    */
   @Cordova({
     otherPromise: true,
@@ -146,8 +151,10 @@ export class FirebaseDynamicLinks extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates a Dynamic Link from the parameters. Shorten the path to an unguessable string. Such strings are created by base62-encoding randomly generated 96-bit numbers, and consist of 17 alphanumeric characters. Use unguessable strings to prevent your Dynamic Links from being crawled, which can potentially expose sensitive information.
+   *
    * @param {ILinkOptions} opt [Dynamic Link Parameters](https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks#dynamic-link-parameters)
-   * @return {Promise<string>} Returns a promise with the url
+   * @param opts
+   * @returns {Promise<string>} Returns a promise with the url
    */
   @Cordova({
     otherPromise: true,

@@ -6,7 +6,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @description
  * Generates a low memory warning.
  * For more info, please see: https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-generate-low-memory
- *
  * @usage
  * ```typescript
  * import { LowMemory } from '@awesome-cordova-plugins/app-center-low-memory/ngx';
@@ -32,6 +31,7 @@ export class LowMemory extends AwesomeCordovaNativePlugin {
   /**
    * Generates a low memory warning.
    * For more info, please see: https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-generate-low-memory
+   *
    * @returns {Promise<void>}
    */
   @Cordova()

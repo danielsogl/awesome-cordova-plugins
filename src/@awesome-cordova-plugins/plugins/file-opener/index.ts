@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name File Opener
  * @description
  * This plugin will open a file on your device file system with its default application.
- *
  * @usage
  * ```typescript
  * import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
@@ -35,6 +34,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class FileOpener extends AwesomeCordovaNativePlugin {
   /**
    * Open an file
+   *
    * @param {string} filePath File Path
    * @param {string} fileMIMEType File MIME Type
    * @returns {Promise<any>}
@@ -50,6 +50,7 @@ export class FileOpener extends AwesomeCordovaNativePlugin {
 
   /**
    * Uninstalls a package
+   *
    * @param {string} packageId Package ID
    * @returns {Promise<any>}
    */
@@ -64,6 +65,7 @@ export class FileOpener extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if an app is already installed
+   *
    * @param {string} packageId Package ID
    * @returns {Promise<any>}
    */
@@ -78,6 +80,7 @@ export class FileOpener extends AwesomeCordovaNativePlugin {
 
   /**
    * Opens with system modal to open file with an already installed app.
+   *
    * @param {string} filePath File Path
    * @param {string} fileMIMEType File MIME Type
    * @returns {Promise<any>}

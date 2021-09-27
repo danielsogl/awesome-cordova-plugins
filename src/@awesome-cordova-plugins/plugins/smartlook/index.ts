@@ -250,7 +250,6 @@ export class SmartlookRenderingMode {
  * @description
  * Official Smartlook SDK plugin.
  * Full documentation can be found here: https://smartlook.github.io/docs/sdk/ionic/
- *
  * @usage
  * ```typescript
  * import { Smartlook, SmartlookSetupConfig } from '@awesome-cordova-plugins/smartlook/ngx';
@@ -298,6 +297,7 @@ export class SmartlookRenderingMode {
 export class Smartlook extends AwesomeCordovaNativePlugin {
   /**
    * Setup and start Smartlook SDK recording.
+   *
    * @param config SmartlookSetupConfig object.
    * @param config.smartlookAPIKey (required) Smartlook API key (you can obtain it in your dashboard).
    * @param config.fps (optional) recorded video framerate (allowed values 2-10 fps).
@@ -312,6 +312,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Setup/initialize Smartlook SDK. This method DOESN'T start the recording (@see start())
+   *
    * @param config SmartlookSetupConfig object.
    * @param config.smartlookAPIKey (required) Smartlook API key (you can obtain it in your dashboard).
    * @param config.fps (optional) recorded video framerate (allowed values 2-10 fps).
@@ -342,7 +343,8 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if SDK is currently recording.
-   * @return {Promise<boolean>} Returns a promise with isRecording boolean.
+   *
+   * @returns {Promise<boolean>} Returns a promise with isRecording boolean.
    */
   @Cordova()
   isRecording(): Promise<boolean> {
@@ -351,6 +353,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Resets current session and new session in dashboard is created.
+   *
    * @param resetSession SmartlookResetSession object.
    * @param resetSession.resetUser If set to TRUE new visitor is created in the dashboard.
    */
@@ -377,7 +380,8 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if fullscreen sensitive mode is active.
-   * @return {Promise<boolean>} Returns a promise with isFullscreenSensitiveModeActive boolean.
+   *
+   * @returns {Promise<boolean>} Returns a promise with isFullscreenSensitiveModeActive boolean.
    */
   @Cordova()
   isFullscreenSensitiveModeActive(): Promise<boolean> {
@@ -386,6 +390,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Identify user.
+   *
    * @param identifier SmartlookUserIdentifier object.
    * @param identifier.idenfier (required) id that can be used to identify user and his records.
    *                            You will see this Id in Smartlook dashboard so you can pair records with concrete user.
@@ -398,6 +403,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * You can configure which events are being tracked by setting eventTrackingMode.
+   *
    * @param eventTrackingMode Can be on of:
    *                          - EventTrackingMode.FULL_TRACKING ... track everything
    *                          - EventTrackingMode.IGNORE_USER_INTERACTION ... will not track touches
@@ -413,6 +419,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * You can configure which events are being tracked by setting eventTrackingMode.
+   *
    * @param eventTrackingModes Array of EventTrackingModes.
    */
   @Cordova({ sync: true })
@@ -422,6 +429,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Track custom navigation event.
+   *
    * @param navigationEvent SmartlookNavigationEvent object.
    * @param navigationEvent.name Controler/Activity/Page name.
    * @param navigationEvent.viewState One of SmartlookViewState.START or SmartlookViewState.STOP.
@@ -433,11 +441,12 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Track custom event.
+   *
    * @param timedEvent SmartlookTimedCustomEventStart object.
    * @param timedEvent.name (required) string used to identify event in dashboard.
    * @param timedEvent.eventProperties (optional) timed event properties object. These properties
    *                                    are going to be merged with properties passed in stop/cancel.
-   * @return {Promise<string>} Returns a promise with eventId string (@see stopTimedCustomEvent(), @see cancelTimedCustomEvent()).
+   * @returns {Promise<string>} Returns a promise with eventId string (@see stopTimedCustomEvent(), @see cancelTimedCustomEvent()).
    */
   @Cordova()
   startTimedCustomEvent(timedEvent: SmartlookTimedCustomEventStart): Promise<string> {
@@ -446,6 +455,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Stops timed event. Duration from according start is calculated and send with the event.
+   *
    * @param timedEvent SmartlookTimedCustomEventStop object.
    * @param timedEvent.eventId (required) Unique event id that is used to identify this event.
    * @param timedEvent.eventProperties (optional) timed event properties object. These properties
@@ -458,6 +468,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Cancels timed event. It calculates event duration and notes that this event has failed.
+   *
    * @param timedEvent SmartlookTimedCustomEventCancel object.
    * @param timedEvent.eventId (required) Unique event id that is used to identify this event.
    * @param timedEvent.reason (required) Short string description explaining why the event was canceled.
@@ -471,6 +482,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Track custom event.
+   *
    * @param event SmartlookCustomEvent object.
    * @param event.name (required) string used to identify event.
    * @param event.eventProperties (optional) event properties object.
@@ -482,6 +494,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Set global event properties that will be added to every tracked event.
+   *
    * @param properties SmartlookGlobalEventProperties object.
    * @param properties.globalEventProperties (required) global event properties object.
    * @param properties.immutable (required) If set to TRUE these properties have higher priority
@@ -494,6 +507,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if SDK is currently recording.
+   *
    * @param property SmartlookGlobalEventProperty object.
    * @param property.key (required) global property key.
    * @param property.value (required) global property value.
@@ -507,6 +521,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove property from global event properties.
+   *
    * @param property SmartlookGlobalEventPropertyKey object.
    * @param property.key (required) Global property key.
    */
@@ -526,6 +541,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
   /**
    * Possibility to manually set referrer and source of the installation visible in dashboard
    * and accessible via filters.
+   *
    * @param referrer SmartlookReferrer object.
    * @param referrer.referrer (required) Desired referrer value.
    * @param referrer.source (required) Desired source, i.e. com.android.vending or com.amazon.venezia.
@@ -537,9 +553,10 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Obtain session URL leading to our dashboard.
+   *
    * @param smartlookDashboardSessionUrl SmartlookDashboardSessionUrl object.
    * @param smartlookDashboardSessionUrl.withCurrentTimestamp If set to TRUE record will start at current timestamp.
-   * @return {Promise<string>} Returns a promise with dashboard session URL string.
+   * @returns {Promise<string>} Returns a promise with dashboard session URL string.
    */
   @Cordova()
   getDashboardSessionUrl(smartlookDashboardSessionUrl: SmartlookDashboardSessionUrl): Promise<string> {
@@ -548,7 +565,8 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * Obtain visitor URL leading to our dashboard.
-   * @return {Promise<string>} Returns a promise with dashboard visitor URL string.
+   *
+   * @returns {Promise<string>} Returns a promise with dashboard visitor URL string.
    */
   @Cordova()
   getDashboardVisitorUrl(): Promise<string> {
@@ -558,6 +576,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
   /**
    * Integration listener can be used to obtain dashboard URL for current session and visitor.
    * These URLs can be propagated to various analytic tools/SDKs.
+   *
    * @param integrationListener SmartlookIntegrationListener object.
    * @param integrationListener.onSessionReady Called when dashboard session URL is ready. Note that this URL can be accesed only by user
    * that has access to Smartlook dashboard (it is not public share link).
@@ -571,8 +590,10 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * By changing rendering mode you can adjust the way we render the application for recordings.
+   *
    * @param options.renderingMode Mode defining the video output of recording. Curently only
    *                              SmartlookRenderingMode.NO_RENDERING() and SmartlookRenderingMode.NATIVE() available.
+   * @param renderingMode
    */
   @Cordova({ sync: true })
   setRenderingMode(renderingMode: SmartlookRenderingMode): void {

@@ -8,7 +8,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * Share text, files, images, and links via social networks, sms, and email.
  *
  * For Browser usage check out the Web Share API docs: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin#5-web-share-api
- *
  * @usage
  * ```typescript
  * import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
@@ -43,6 +42,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class SocialSharing extends AwesomeCordovaNativePlugin {
   /**
    * Shares using the share sheet
+   *
    * @param message {string} The message you would like to share.
    * @param subject {string} The subject
    * @param file {string|string[]} URL(s) to file(s) or image(s), local path(s) to file(s) or image(s), or base64 data of an image. Only the first file/image will be used on Windows Phone.
@@ -59,7 +59,13 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Shares using the share sheet with additional options and returns a result object or an error message (requires plugin version 5.1.0+)
+   *
    * @param options {object} The options object with the message, subject, files, url and chooserTitle properties.
+   * @param options.message
+   * @param options.subject
+   * @param options.files
+   * @param options.url
+   * @param options.chooserTitle
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -77,6 +83,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if you can share via a specific app.
+   *
    * @param appName {string} App name or package name. Examples: instagram or com.apple.social.facebook
    * @param message {string}
    * @param subject {string}
@@ -95,6 +102,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Shares directly to Twitter
+   *
    * @param message {string}
    * @param image {string}
    * @param url {string}
@@ -111,6 +119,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Shares directly to Facebook
+   *
    * @param message {string}
    * @param image {string}
    * @param url {string}
@@ -127,6 +136,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Shares directly to Facebook with a paste message hint
+   *
    * @param message {string}
    * @param image {string}
    * @param url {string}
@@ -149,6 +159,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Shares directly to Instagram
+   *
    * @param message {string}
    * @param image {string}
    * @returns {Promise<any>}
@@ -162,6 +173,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Shares directly to WhatsApp
+   *
    * @param message {string}
    * @param image {string}
    * @param url {string}
@@ -178,6 +190,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Shares directly to a WhatsApp Contact
+   *
    * @param receiver {string} Pass phone number on Android, and Addressbook ID (abid) on iOS
    * @param message {string} Message to send
    * @param image {string} Image to send (does not work on iOS
@@ -195,6 +208,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Share via SMS
+   *
    * @param messge {string} message to send
    * @param phoneNumber {string} Number or multiple numbers seperated by commas
    * @returns {Promise<any>}
@@ -208,6 +222,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if you can share via email
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -219,6 +234,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Share via Email
+   *
    * @param message {string}
    * @param subject {string}
    * @param to {string[]}
@@ -245,6 +261,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Share via AppName
+   *
    * @param appName {string} App name or package name. Examples: instagram or com.apple.social.facebook
    * @param message {string}
    * @param subject {string}
@@ -263,6 +280,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * defines the popup position before call the share method.
+   *
    * @param targetBounds {string} left, top, width, height
    */
   @Cordova({
@@ -273,6 +291,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Save an array of images to the camera roll
+   *
    * @param  {string|string[]} fileOrFileArray Single or multiple files
    * @returns {Promise<any> }
    */
@@ -285,6 +304,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
 
   /**
    * Shares directly to a WhatsApp Contact with phone number.
+   *
    * @param phone {string} Pass phone number
    * @param message {string} Message to send
    * @param fileOrFileArray fileOrFileArray Single or multiple files

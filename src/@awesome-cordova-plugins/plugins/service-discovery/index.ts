@@ -5,7 +5,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @name ServiceDiscovery
  * @description
  * Simple plugin to get any SSDP / UPnP / DLNA service on a local network
- *
  * @usage
  * ```typescript
  * import { ServiceDiscovery } from '@awesome-cordova-plugins/service-discovery';
@@ -33,8 +32,9 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class ServiceDiscovery extends AwesomeCordovaNativePlugin {
   /**
    * Finds and returns metadata about devices discovered on the network via SSDP / UPnP / DLNA
+   *
    * @param service {string} The service name to discover
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   getNetworkServices(service: string): Promise<any> {

@@ -5,7 +5,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @name ios-aswebauthenticationsession-api
  * @description
  * Plugin for iOS 12 ASWebAuthenticationSession API
- *
  * @usage
  * ```typescript
  * import { IosASWebauthenticationSession } from '@awesome-cordova-plugins/ios-aswebauthenticationsession-api/ngx';
@@ -34,9 +33,10 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class IosASWebauthenticationSession extends AwesomeCordovaNativePlugin {
   /**
    * This function start an authentication flow in ASWebauthenticationSession
+   *
    * @param callbackUrl {string} Callback URL of your App
    * @param authorizeURL {number} Authorization URL
-   * @return {Promise<string>} Returns a promise that resolves a string containing the redirect URL after finishing ASWebauthenticationSession
+   * @returns {Promise<string>} Returns a promise that resolves a string containing the redirect URL after finishing ASWebauthenticationSession
    */
   @Cordova()
   start(callbackUrl: string, authorizeURL: string): Promise<string> {

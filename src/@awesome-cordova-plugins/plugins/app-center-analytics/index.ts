@@ -14,7 +14,6 @@ export interface StringMap {
  * All the information captured is available in the App Center portal for you to analyze the data.
  *
  * For more info, please see https://docs.microsoft.com/en-us/appcenter/sdk/analytics/cordova
- *
  * @usage
  * ```typescript
  * import { AppCenterAnalytics } from '@awesome-cordova-plugins/app-center-analytics/ngx';
@@ -47,6 +46,7 @@ export class AppCenterAnalytics extends AwesomeCordovaNativePlugin {
    * Tracks an custom event.
    * You can send up to 200 distinct event names. Also, there is a maximum limit of 256 characters per event name
    * and 64 characters per event property name and event property value.
+   *
    * @param  {string} eventName Event name
    * @param  {StringMap} properties Event properties
    * @returns {Promise<void>}
@@ -58,6 +58,7 @@ export class AppCenterAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if App Center Analytics is enabled
+   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -67,6 +68,7 @@ export class AppCenterAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable or disable App Center Analytics at runtime
+   *
    * @param  {boolean} shouldEnable Set value
    * @returns {Promise<void>}
    */

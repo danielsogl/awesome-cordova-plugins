@@ -37,7 +37,6 @@ interface AbortedResponse {
  * - SSL / TLS Pinning
  * - CORS restrictions do not apply
  * - Handling of HTTP code 401 - read more at [Issue CB-2415](https://issues.apache.org/jira/browse/CB-2415)
- *
  * @usage
  * ```typescript
  * import { HTTP } from '@awesome-cordova-plugins/http/ngx';
@@ -77,6 +76,7 @@ interface AbortedResponse {
 export class HTTP extends AwesomeCordovaNativePlugin {
   /**
    * This enum represents the internal error codes which can be returned in a HTTPResponse object.
+   *
    * @readonly
    */
   @CordovaProperty()
@@ -93,6 +93,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * This returns an object representing a basic HTTP Authorization header of the form.
+   *
    * @param username {string} Username
    * @param password {string} Password
    * @returns {Object} an object representing a basic HTTP Authorization header of the form {'Authorization': 'Basic base64EncodedUsernameAndPassword'}
@@ -104,6 +105,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * This sets up all future requests to use Basic HTTP authentication with the given username and password.
+   *
    * @param username {string} Username
    * @param password {string} Password
    */
@@ -112,6 +114,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Get all headers defined for a given hostname.
+   *
    * @param host {string} The hostname
    * @returns {string} return all headers defined for the hostname
    */
@@ -122,6 +125,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Set a header for all future requests. Takes a hostname, a header and a value.
+   *
    * @param host {string} The hostname to be used for scoping this header
    * @param header {string} The name of the header
    * @param value {string} The value of the header
@@ -131,6 +135,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the name of the data serializer which will be used for all future POST and PUT requests.
+   *
    * @returns {string} returns the name of the configured data serializer
    */
   @Cordova({ sync: true })
@@ -140,6 +145,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the data serializer which will be used for all future POST, PUT and PATCH requests. Takes a string representing the name of the serializer.
+   *
    * @param serializer {string} The name of the serializer.
    * @see https://github.com/silkimen/cordova-plugin-advanced-http#setdataserializer
    */
@@ -148,6 +154,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Add a custom cookie.
+   *
    * @param url {string} Scope of the cookie
    * @param cookie {string} RFC compliant cookie string
    */
@@ -162,6 +169,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove cookies for given URL.
+   *
    * @param url {string}
    * @param cb
    */
@@ -170,6 +178,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Resolve cookie string for given URL.
+   *
    * @param url {string}
    */
   @Cordova({ sync: true })
@@ -179,6 +188,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Get global request timeout value in seconds.
+   *
    * @returns {number} returns the global request timeout value
    */
   @Cordova({ sync: true })
@@ -188,6 +198,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Set global request timeout value in seconds.
+   *
    * @param timeout {number} The timeout in seconds. Default 60
    */
   @Cordova({ sync: true })
@@ -195,6 +206,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Resolve if it should follow redirects automatically.
+   *
    * @returns {boolean} returns true if it is configured to follow redirects automatically
    */
   @Cordova({ sync: true })
@@ -204,6 +216,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Configure if it should follow redirects automatically.
+   *
    * @param follow {boolean} Set to false to disable following redirects automatically
    */
   @Cordova({ sync: true })
@@ -215,6 +228,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
    * legacy: use legacy default behavior (< 2.0.3), excluding user installed CA certs (only for Android);
    * nocheck: disable SSL certificate checking and hostname verification, trusting all certs (meant to be used only for testing purposes);
    * pinned: trust only provided certificates;
+   *
    * @see https://github.com/silkimen/cordova-plugin-advanced-http#setservertrustmode
    * @param {string} mode server trust mode
    */
@@ -225,6 +239,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a POST request
+   *
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
@@ -237,6 +252,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a sync POST request
+   *
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
@@ -260,6 +276,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a GET request
+   *
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
@@ -272,6 +289,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a sync GET request
+   *
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
@@ -295,6 +313,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a PUT request
+   *
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
@@ -307,6 +326,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a sync PUT request
+   *
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
@@ -330,6 +350,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a PATCH request
+   *
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
@@ -342,6 +363,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a sync PATCH request
+   *
    * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
@@ -365,6 +387,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a DELETE request
+   *
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
@@ -377,6 +400,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a sync DELETE request
+   *
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
@@ -400,6 +424,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a HEAD request
+   *
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
@@ -412,6 +437,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a sync HEAD request
+   *
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
@@ -435,6 +461,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make an OPTIONS request
+   *
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
@@ -447,6 +474,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
 
   /**
    * Make an sync OPTIONS request
+   *
    * @param url {string} The url to send the request to
    * @param parameters {Object} Parameters to send with the request
    * @param headers {Object} The headers to set for this request
@@ -560,7 +588,6 @@ export class HTTP extends AwesomeCordovaNativePlugin {
    * @param options.filePath {string} file path(s) to be used during upload and download see uploadFile and downloadFile for detailed information
    * @param options.name {string} name(s) to be used during upload see uploadFile for detailed information
    * @param options.responseType {string} response type, defaults to text
-   *
    * @returns {Promise<HTTPResponse>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
@@ -596,7 +623,6 @@ export class HTTP extends AwesomeCordovaNativePlugin {
    * @param options.responseType {string} response type, defaults to text
    * @param success {function} A callback that is called when the request succeed
    * @param failure {function} A callback that is called when the request failed
-   *
    * @returns {string} returns a string that represents the requestId
    */
   @Cordova({

@@ -5,7 +5,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @name Ge Tui Sdk Plugin
  * @description
  * This plugin does something
- *
  * @usage
  * ```typescript
  * import { GeTuiSdkPlugin } from '@awesome-cordova-plugins/ge-tui-sdk-plugin';

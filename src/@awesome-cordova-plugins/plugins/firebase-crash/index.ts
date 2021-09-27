@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name FirebaseCrash
  * @description
  * This plugin brings crash reporting from Google Firebase to your Cordova project! Android and iOS supported.
- *
  * @usage
  * ```typescript
  * import { FirebaseCrash } from '@awesome-cordova-plugins/firebase-crash';
@@ -32,8 +31,9 @@ export class FirebaseCrash extends AwesomeCordovaNativePlugin {
   /**
    * Add logging that will be sent with your crash data in case of app crash.
    * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#add_custom_logs
+   *
    * @param {string} message
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ sync: true })
   log(message: string): Promise<any> {
@@ -43,8 +43,9 @@ export class FirebaseCrash extends AwesomeCordovaNativePlugin {
   /**
    * Log non-fatal exceptions in addition to automatically reported app crashes.
    * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#log_non-fatal_exceptions
+   *
    * @param {string} message
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ sync: true })
   logError(message: string): Promise<any> {
@@ -54,6 +55,7 @@ export class FirebaseCrash extends AwesomeCordovaNativePlugin {
   /**
    * Sets the user identifier property for crashlytics reporting.
    * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#set_user_ids
+   *
    * @param {string} userId value to set the userId
    * @returns {Promise<any>}
    */

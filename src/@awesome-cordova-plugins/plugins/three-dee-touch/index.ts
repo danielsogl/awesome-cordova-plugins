@@ -57,7 +57,6 @@ export interface ThreeDeeTouchForceTouch {
  * The 3D Touch plugin adds 3D Touch capabilities to your Cordova app.
  *
  * Requires Cordova plugin: `cordova-plugin-3dtouch`. For more info, please see the [3D Touch plugin docs](https://github.com/EddyVerbruggen/cordova-plugin-3dtouch).
- *
  * @usage
  * Please do refer to the original plugin's repo for detailed usage. The usage example here might not be sufficient.
  * ```typescript
@@ -130,6 +129,7 @@ export interface ThreeDeeTouchForceTouch {
 export class ThreeDeeTouch extends AwesomeCordovaNativePlugin {
   /**
    * You need an iPhone 6S or some future tech to use the features of this plugin, so you can check at runtime if the user's device is supported.
+   *
    * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates whether the plugin is available or not
    */
   @Cordova()
@@ -139,6 +139,7 @@ export class ThreeDeeTouch extends AwesomeCordovaNativePlugin {
 
   /**
    * You can get a notification when the user force touches the webview. The plugin defines a Force Touch when at least 75% of the maximum force is applied to the screen. Your app will receive the x and y coordinates, so you have to figure out which UI element was touched.
+   *
    * @returns {Observable<ThreeDeeTouchForceTouch>} Returns an observable that sends a `ThreeDeeTouchForceTouch` object
    */
   @Cordova({
@@ -150,11 +151,13 @@ export class ThreeDeeTouch extends AwesomeCordovaNativePlugin {
 
   /**
    * setup the 3D-touch actions, takes an array of objects with the following
+   *
    * @param {string} type (optional) A type that can be used `onHomeIconPressed` callback
    * @param {string} title Title for your action
    * @param {string} subtitle (optional) A short description for your action
    * @param {string} iconType (optional) Choose between Prohibit, Contact, Home, MarkLocation, Favorite, Love, Cloud, Invitation, Confirmation, Mail, Message, Date, Time, CapturePhoto, CaptureVideo, Task, TaskCompleted, Alarm, Bookmark, Shuffle, Audio, Update
    * @param {string} iconTemplate (optional) Can be used to provide your own icon
+   * @param quickActions
    */
   @Cordova({
     sync: true,
@@ -163,6 +166,7 @@ export class ThreeDeeTouch extends AwesomeCordovaNativePlugin {
 
   /**
    * When a home icon is pressed, your app launches and this JS callback is invoked.
+   *
    * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
    */
   @CordovaFunctionOverride()

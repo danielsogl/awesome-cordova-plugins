@@ -454,7 +454,6 @@ export enum AdjustAdRevenueSource {
  * This is the Ionic Cordova SDK of Adjust™. You can read more about Adjust™ at adjust.com.
  *
  * Requires Cordova plugin: `com.adjust.sdk`. For more info, please see the [Adjust Cordova SDK](https://github.com/adjust/cordova_sdk)
- *
  * @usage
  * ```typescript
  *  import { Adjust, AdjustConfig, AdjustEnvironment } from '@awesome-cordova-plugins/adjust/ngx';
@@ -499,6 +498,7 @@ export enum AdjustAdRevenueSource {
 export class Adjust extends AwesomeCordovaNativePlugin {
   /**
    * This method initializes Adjust SDK
+   *
    * @param {AdjustConig} config Adjust config object used as starting options
    */
   @Cordova({ sync: true })
@@ -506,6 +506,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * This method tracks an event
+   *
    * @param {AdjustEvent} event Adjust event object to be tracked
    */
   @Cordova({ sync: true })
@@ -513,6 +514,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * This method tracks App Store subscription
+   *
    * @param {AdjustAppStoreSubscription} subscription Adjust App Store subscription object to be tracked
    */
   @Cordova({ sync: true })
@@ -520,6 +522,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * This method tracks Play Store subscription
+   *
    * @param {AdjustPlayStoreSubscription} subscription Adjust Play Store subscription object to be tracked
    */
   @Cordova({ sync: true })
@@ -527,6 +530,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * This method tracks third party sharing choice
+   *
    * @param {AdjustThirdPartySharing} thirdPartySharing Adjust third party sharing object to be tracked
    */
   @Cordova({ sync: true })
@@ -534,6 +538,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * This method tracks ad revenue data
+   *
    * @param {AdjustAdRevenueSource} source Ad revenue source
    * @param {string} payload Ad revenue JSON string payload
    */
@@ -541,6 +546,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * This method tracks ad revenue data
+   *
    * @param {AdjustAdRevenue} adRevenue Adjust ad revenue object
    */
   trackAdRevenue(adRevenue: AdjustAdRevenue): void;
@@ -551,6 +557,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * This method tracks measurement consent choice
+   *
    * @param {boolean} measurementConsent set measurement consent to true or false
    */
   @Cordova({ sync: true })
@@ -558,6 +565,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * This method sets offline mode on or off
+   *
    * @param {boolean} enabled set to true for offline mode on
    */
   @Cordova({ sync: true })
@@ -565,6 +573,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * By making this call, the Adjust SDK will try to find if there is any new attribution info inside of the deep link and if any, it will be sent to the Adjust backend.
+   *
    * @param {string} url URL of the deeplink
    */
   @Cordova({ sync: true })
@@ -572,6 +581,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * You can disable/enable the Adjust SDK from tracking by invoking this method
+   *
    * @param {boolean} enabled set to false to disable SDK
    */
   @Cordova({ sync: true })
@@ -580,6 +590,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   /**
    * To send us the push notification token, add the following call to Adjust whenever you get your token in the app or when it gets updated.
    * Push tokens are used for Audience Builder and client callbacks, and they are required for the upcoming uninstall tracking feature.
+   *
    * @param {string} pushToken push token value
    */
   @Cordova({ sync: true })
@@ -587,6 +598,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if the Adjust SDK is currently enabled by calling this function
+   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -610,7 +622,8 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * Function used to get Google AdId
-   * @return {Promise<string>} Returns a promise with google AdId value
+   *
+   * @returns {Promise<string>} Returns a promise with google AdId value
    */
   @Cordova()
   getGoogleAdId(): Promise<string> {
@@ -619,7 +632,8 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * If you need to obtain the Amazon Advertising ID, you can make a call to this function.
-   * @return {Promise<string>} Returns a promise with anazib adv. ID
+   *
+   * @returns {Promise<string>} Returns a promise with anazib adv. ID
    */
   @Cordova()
   getAmazonAdId(): Promise<string> {
@@ -628,7 +642,8 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * To obtain the IDFA, call this function
-   * @return {Promise<string>} Returns a promise with IDFA string value
+   *
+   * @returns {Promise<string>} Returns a promise with IDFA string value
    */
   @Cordova()
   getIdfa(): Promise<string> {
@@ -638,7 +653,8 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   /**
    * For every device with your app installed on it, the Adjust backend generates a unique Adjust device identifier (adid).
    * In order to obtain this identifier, call this function
-   * @return {Promise<string>} Returns a promise with adid value
+   *
+   * @returns {Promise<string>} Returns a promise with adid value
    */
   @Cordova()
   getAdid(): Promise<string> {
@@ -647,7 +663,8 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * If you want to access information about a user's current attribution whenever you need it, you can make a call to this function
-   * @return {Promise<AdjustAttribution>} Returns a promise with AdjustAttribution object
+   *
+   * @returns {Promise<AdjustAttribution>} Returns a promise with AdjustAttribution object
    */
   @Cordova()
   getAttribution(): Promise<AdjustAttribution> {
@@ -656,7 +673,8 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the information about version of the SDK used
-   * @return {Promise<string>} Returns a promise with sdk version information
+   *
+   * @returns {Promise<string>} Returns a promise with sdk version information
    */
   @Cordova()
   getSdkVersion(): Promise<string> {
@@ -665,6 +683,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * Method used to add session callback parameters
+   *
    * @param key key
    * @param value value
    */
@@ -673,6 +692,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove a specific session callback parameter by passing the desiring key to this method
+   *
    * @param key key
    */
   @Cordova({ sync: true })
@@ -686,6 +706,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * Method used to add session partner parameters
+   *
    * @param key key
    * @param value value
    */
@@ -694,6 +715,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove a specific session partner parameter by passing the desiring key to this method
+   *
    * @param key key
    */
   @Cordova({ sync: true })
@@ -714,7 +736,8 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   /**
    * Request Adjust SDK to show pop up dialog for asking user's consent to be tracked.
    * In order to do this, call this function
-   * @return {Promise<number>} Returns a promise with user's consent value
+   *
+   * @returns {Promise<number>} Returns a promise with user's consent value
    */
   @Cordova()
   requestTrackingAuthorizationWithCompletionHandler(): Promise<number> {
@@ -723,6 +746,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * You can update SKAdNetwork conversion value with calling this method
+   *
    * @param {number} conversionValue conversion value for the user
    */
   @Cordova({ sync: true })
@@ -730,7 +754,8 @@ export class Adjust extends AwesomeCordovaNativePlugin {
 
   /**
    * To obtain the app tracking authorization status in iOS, call this function
-   * @return {Promise<number>} Returns a promise with app tracking authorization status
+   *
+   * @returns {Promise<number>} Returns a promise with app tracking authorization status
    */
   @Cordova()
   getAppTrackingAuthorizationStatus(): Promise<number> {

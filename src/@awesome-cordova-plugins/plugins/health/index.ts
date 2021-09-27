@@ -164,7 +164,6 @@ export interface HealthData {
  * @name Health
  * @description
  * A plugin that abstracts fitness and health repositories like Apple HealthKit or Google Fit.
- *
  * @usage
  * ```typescript
  * import { Health } from '@awesome-cordova-plugins/health/ngx';
@@ -191,7 +190,6 @@ export interface HealthData {
  *
  * ```
  * See description at https://github.com/dariosalvi78/cordova-plugin-health for a full list of Datatypes and see examples.
- *
  * @interfaces
  * HealthQueryOptions
  * HealthQueryOptionsAggregated
@@ -210,7 +208,7 @@ export class Health extends AwesomeCordovaNativePlugin {
   /**
    * Tells if either Google Fit or HealthKit are available.
    *
-   * @return {Promise<boolean>}
+   * @returns {Promise<boolean>}
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -228,7 +226,7 @@ export class Health extends AwesomeCordovaNativePlugin {
    *
    * This function is only available on Android.
    *
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -254,7 +252,7 @@ export class Health extends AwesomeCordovaNativePlugin {
    * (e.g. in the case of "distance", it will need access to ACCESS_FINE_LOCATION).
    *
    * @param {string[] | HealthDataType[]} datatypes a list of data types you want to be granted access to.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   requestAuthorization(datatypes: (string | HealthDataType)[]): Promise<any> {
@@ -270,7 +268,7 @@ export class Health extends AwesomeCordovaNativePlugin {
    * Read-only data will always be considered as not authorized. This is an intended behaviour of HealthKit.
    *
    * @param {string[] | HealthDataType[]} datatypes a list of data types you want to check access of, same as in requestAuthorization
-   * @return {Promise<boolean>} Returns a promise that resolves with a boolean that indicates the authorization status
+   * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that indicates the authorization status
    */
   @Cordova()
   isAuthorized(datatypes: (string | HealthDataType)[]): Promise<boolean> {
@@ -306,7 +304,7 @@ export class Health extends AwesomeCordovaNativePlugin {
    * Automatic conversion is not trivial and depends on the actual substance.
    *
    * @param {HealthQueryOptions} queryOptions
-   * @return {Promise<HealthData[]>}
+   * @returns {Promise<HealthData[]>}
    */
   @Cordova()
   query(queryOptions: HealthQueryOptions): Promise<HealthData[]> {
@@ -332,7 +330,7 @@ export class Health extends AwesomeCordovaNativePlugin {
    * nutrition.vitamin_a is given in micrograms in HealthKit and International Unit in Google Fit.
    *
    * @param {HealthQueryOptionsAggregated} queryOptionsAggregated
-   * @return {Promise<HealthData[]>}
+   * @returns {Promise<HealthData[]>}
    */
   @Cordova()
   queryAggregated(queryOptionsAggregated: HealthQueryOptionsAggregated): Promise<HealthData[]> {
@@ -350,8 +348,9 @@ export class Health extends AwesomeCordovaNativePlugin {
    * In iOS distance is assumed to be of type WalkingRunning, if you want to explicitly set it to Cycling you need to add the field cycling: true.
    * In iOS storing the sleep activities is not supported at the moment.
    * Storing of nutrients is not supported at the moment.
+   *
    * @param storeOptions
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   store(storeOptions: HealthStoreOptions): Promise<any> {

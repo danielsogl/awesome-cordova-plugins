@@ -10,6 +10,7 @@ export interface TagGroupEditor {
 
 /**
  * Enum for notification types.
+ *
  * @readonly
  * @enum {number}
  */
@@ -22,6 +23,7 @@ export enum NotificationType {
 
 /**
  * Enum for presentation options.
+ *
  * @readonly
  * @enum {number}
  */
@@ -36,7 +38,6 @@ export enum PresentationOptions {
  * @name UrbanAirShip
  * @description
  * This plugin does something
- *
  * @usage
  * ```typescript
  * import { UrbanAirShip } from '@awesome-cordova-plugins/urbanairship/ngx';
@@ -243,7 +244,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * notification. If set to false the message center must be manually launched.
    *
    * @param {boolean} enabled true to automatically launch the default message center, false to disable.
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -256,7 +257,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * Enables or disables user notifications.
    *
    * @param {boolean} enabled true to enable notifications, false to disable.
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -308,7 +309,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Returns the last notification that launched the application.
    *
-   * @param {Boolean} clear true to clear the notification.
+   * @param {boolean} clear true to clear the notification.
    * @param {function(push)} success The function to call on success.
    * @param {object} success.push The push message object containing data associated with a push notification.
    * @param {string} success.push.message The push alert message.
@@ -325,7 +326,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Returns the last received deep link.
    *
-   * @param {Boolean} clear true to clear the deep link.
+   * @param {boolean} clear true to clear the deep link.
    * @param {function(push)} success The function to call on success.
    * @param {string} success.deepLink The deep link.
    * @param {failureCallback} [failure] The function to call on failure.
@@ -340,7 +341,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * Returns the tags as an array.
    *
    * @param {function(tags)} success The function to call on success.
-   * @param {array} success.tags The tags as an array.
+   * @param {Array} success.tags The tags as an array.
    * @param {failureCallback} [failure] The function to call on failure.
    * @param {string} failure.message The error message.
    */
@@ -353,7 +354,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * Sets the tags.
    *
    * @param {Array} tags an array of strings.
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -366,7 +367,6 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * Returns the alias.
    *
    * @deprecated Deprecated since 6.7.0 - to be removed in a future version of the plugin - please use getNamedUser
-   *
    * @param {function(currentAlias)} success The function to call on success.
    * @param {string} success.currentAlias The alias as a string.
    * @param {function(message)} [failure] Failure callback.
@@ -381,9 +381,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * Sets the alias.
    *
    * @deprecated Deprecated since 6.7.0  - to be removed in a future version of the plugin - please use setNamedUser
-   *
-   * @param {String} alias string
-   * @param {function} [success] Success callback.
+   * @param {string} alias string
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -408,8 +407,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Enables or disables quiet time.
    *
-   * @param {Boolean} enabled true to enable quiet time, false to disable.
-   * @param {function} [success] Success callback.
+   * @param {boolean} enabled true to enable quiet time, false to disable.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -452,11 +451,11 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Sets the quiet time.
    *
-   * @param {Number} startHour for quiet time.
-   * @param {Number} startMinute for quiet time.
-   * @param {Number} endHour for quiet time.
-   * @param {Number} endMinute for quiet time.
-   * @param {function} [success] Success callback.
+   * @param {number} startHour for quiet time.
+   * @param {number} startMinute for quiet time.
+   * @param {number} endHour for quiet time.
+   * @param {number} endMinute for quiet time.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -473,8 +472,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * enabled may not work properly if it's disabled (reports, region triggers,
    * location segmentation, push to local time).
    *
-   * @param {Boolean} enabled true to enable analytics, false to disable.
-   * @param {function} [success] Success callback.
+   * @param {boolean} enabled true to enable analytics, false to disable.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -512,8 +511,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Sets the named user ID.
    *
-   * @param {String} namedUser identifier string.
-   * @param {function} [success] Success callback.
+   * @param {string} namedUser identifier string.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -525,7 +524,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Runs an Urban Airship action.
    *
-   * @param {String} actionName action as a string.
+   * @param {string} actionName action as a string.
    * @param {*} actionValue
    * @param {function(result)} [success] The function to call on success.
    * @param {object} success.result The result's value.
@@ -540,7 +539,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Creates an editor to modify the named user tag groups.
    *
-   * @return {TagGroupEditor} A tag group editor instance.
+   * @returns {TagGroupEditor} A tag group editor instance.
    */
   @Cordova()
   editNamedUserTagGroups(): TagGroupEditor {
@@ -550,7 +549,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Creates an editor to modify the channel tag groups.
    *
-   * @return {TagGroupEditor} A tag group editor instance.
+   * @returns {TagGroupEditor} A tag group editor instance.
    */
   @Cordova()
   editChannelTagGroups(): TagGroupEditor {
@@ -562,7 +561,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    *
    * @param key Custom key for identifier.
    * @param identifier The identifier value.
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -576,8 +575,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Enables or disables Urban Airship location services.
    *
-   * @param {Boolean} enabled true to enable location, false to disable.
-   * @param {function} [success] Success callback.
+   * @param {boolean} enabled true to enable location, false to disable.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -602,8 +601,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Enables or disables background location.
    *
-   * @param {Boolean} enabled true to enable background location, false to disable.
-   * @param {function} [success] Success callback.
+   * @param {boolean} enabled true to enable background location, false to disable.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -628,7 +627,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Displays the message center.
    *
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -640,7 +639,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Dismiss the message center.
    *
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -652,7 +651,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Dismiss the inbox message.
    *
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -664,7 +663,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Dismiss the inbox message in the overlay.
    *
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -683,7 +682,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * "extras": object - String to String map of any message extras.
    *
    * @param {function(messages)} success The function to call on success.
-   * @param {array} success.messages The array of inbox messages.
+   * @param {Array} success.messages The array of inbox messages.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -695,8 +694,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Marks an inbox message read.
    *
-   * @param {String} messageId The ID of the message to mark as read.
-   * @param {function} [success] Success callback.
+   * @param {string} messageId The ID of the message to mark as read.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -708,8 +707,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Deletes an inbox message.
    *
-   * @param {String} messageId The ID of the message to delete.
-   * @param {function} [success] Success callback.
+   * @param {string} messageId The ID of the message to delete.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -721,8 +720,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Displays the inbox message using a full screen view.
    *
-   * @param {String} messageId The ID of the message to display.
-   * @param {function} [success] Success callback.
+   * @param {string} messageId The ID of the message to display.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -737,7 +736,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * associated with a message, but it can be useful when providing a refresh
    * button for the message listing.
    *
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -749,8 +748,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Displays the inbox message using an overlay display.
    *
-   * @param {String} messageId The ID of the message to display.
-   * @param {function} [success] Success callback.
+   * @param {string} messageId The ID of the message to display.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -763,7 +762,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * Clears a notification by identifier.
    *
    * @param {string} identifier The notification identifier.
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    */
   @Cordova()
@@ -774,7 +773,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Clears all notifications posted by the application.
    *
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -801,8 +800,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Enables or disables auto badge. Defaults to `NO`.
    *
-   * @param {Boolean} enabled true to enable auto badge, false to disable.
-   * @param {function} [success] Success callback.
+   * @param {boolean} enabled true to enable auto badge, false to disable.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -815,7 +814,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * Sets the badge number.
    *
    * @param count number specified badge to set.
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -840,7 +839,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Clears the badge.
    *
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -854,7 +853,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * badges, sound and alerts that are desired.
    *
    * @param types specified notification types.
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -868,7 +867,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * badges, sound and alerts that are desired.
    *
    * @param options types specified presentation options.
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -895,8 +894,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Enables or disables notification sound.
    *
-   * @param {Boolean} enabled true to enable sound, false to disable.
-   * @param {function} [success] Success callback.
+   * @param {boolean} enabled true to enable sound, false to disable.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -921,8 +920,8 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Enables or disables notification vibration.
    *
-   * @param {Boolean} enabled true to enable vibration, false to disable.
-   * @param {function} [success] Success callback.
+   * @param {boolean} enabled true to enable vibration, false to disable.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */
@@ -939,7 +938,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * @param {number} [event.value] The event's value.
    * @param {string} [event.transactionId] The event's transaction ID.
    * @param {object} [event.properties] The event's properties. Only numbers, booleans, strings, and array of strings are supported.
-   * @param {function} [success] Success callback.
+   * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
    */

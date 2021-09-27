@@ -61,6 +61,7 @@ export class MediaObject {
 
   /**
    * Get the current amplitude of the current recording.
+   *
    * @returns {Promise<any>} Returns a promise with the amplitude of the current recording
    */
   @CordovaInstance()
@@ -70,6 +71,7 @@ export class MediaObject {
 
   /**
    * Get the current position within an audio file. Also updates the Media object's position parameter.
+   *
    * @returns {Promise<any>} Returns a promise with the position of the current recording
    */
   @CordovaInstance()
@@ -79,6 +81,7 @@ export class MediaObject {
 
   /**
    * Get the duration of an audio file in seconds. If the duration is unknown, it returns a value of -1.
+   *
    * @returns {number} Returns a promise with the duration of the current recording
    */
   @CordovaInstance({ sync: true })
@@ -88,6 +91,10 @@ export class MediaObject {
 
   /**
    * Starts or resumes playing an audio file.
+   *
+   * @param iosOptions
+   * @param iosOptions.numberOfLoops
+   * @param iosOptions.playAudioWhenScreenIsLocked
    */
   @CordovaInstance({ sync: true })
   play(iosOptions?: { numberOfLoops?: number; playAudioWhenScreenIsLocked?: boolean }): void {}
@@ -106,6 +113,7 @@ export class MediaObject {
 
   /**
    * Sets the current position within an audio file.
+   *
    * @param {number} milliseconds The time position you want to set for the current audio file
    */
   @CordovaInstance({ sync: true })
@@ -113,6 +121,7 @@ export class MediaObject {
 
   /**
    * Set the volume for an audio file.
+   *
    * @param volume {number} The volume to set for playback. The value must be within the range of 0.0 to 1.0.
    */
   @CordovaInstance({ sync: true })
@@ -188,7 +197,6 @@ export type MediaErrorCallback = (error: MediaError) => void;
  * @premier media
  * @description
  * This plugin provides the ability to record and play back audio files on a device.
- *
  * @usage
  * ```typescript
  * import { Media, MediaObject } from '@awesome-cordova-plugins/media/ngx';
@@ -332,8 +340,9 @@ export class Media extends AwesomeCordovaNativePlugin {
 
   /**
    * Open a media file
+   *
    * @param src {string} A URI containing the audio content.
-   * @return {MediaObject}
+   * @returns {MediaObject}
    */
   create(src: string): MediaObject {
     let instance: any;

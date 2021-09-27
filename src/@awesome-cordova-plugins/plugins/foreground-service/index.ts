@@ -69,9 +69,7 @@ export class ForegroundService extends AwesomeCordovaNativePlugin {
    * 1|IMPORTANCE_LOW|Does not make a sound or heads-up display (plugin's default)|New content the user has subscribed to, social network invitations
    * 2|IMPORTANCE_DEFAULT|Makes a sound, but no heads-up display|Traffic alerts, task reminders
    * 3|IMPORTANCE_HIGH|Makes a sound and heads-up display|Text messages, alarms, phone calls
-   *
    * @param {number} id The notification id is a customizable integer that is used to reference the notification that will be launched. This is customizable to avoid conflicting with any other notifications. If this is not included, a [*unique*] default id will be used.
-   *
    * @see https://material.io/design/platform-guidance/android-notifications.html
    */
   @Cordova({

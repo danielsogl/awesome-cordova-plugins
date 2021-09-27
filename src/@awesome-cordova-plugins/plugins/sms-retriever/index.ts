@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Sms Retriever
  * @description
  * This plugin retrives the SMS which arrive without requiring READ permissions.
- *
  * @usage
  * ```typescript
  * import { SmsRetriever } from '@awesome-cordova-plugins/sms-retriever';
@@ -38,7 +37,8 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class SmsRetriever extends AwesomeCordovaNativePlugin {
   /**
    * This function start wathching message arrive event and retrive message text.
-   * @return {Promise<string>} Returns a promise that resolves when retrives SMS text or TIMEOUT after 5 min.
+   *
+   * @returns {Promise<string>} Returns a promise that resolves when retrives SMS text or TIMEOUT after 5 min.
    */
   @Cordova()
   startWatching(): Promise<string> {
@@ -47,7 +47,8 @@ export class SmsRetriever extends AwesomeCordovaNativePlugin {
 
   /**
    * This function is to get hash string of APP.
-   * @return {Promise<string>} Returns a promise that resolves when successfully generate hash of APP.
+   *
+   * @returns {Promise<string>} Returns a promise that resolves when successfully generate hash of APP.
    */
   @Cordova()
   getAppHash(): Promise<string> {

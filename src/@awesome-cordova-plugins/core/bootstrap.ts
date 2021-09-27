@@ -1,3 +1,6 @@
+/**
+ *
+ */
 export function checkReady() {
   if (typeof process === 'undefined') {
     const win: any = typeof window !== 'undefined' ? window : {};

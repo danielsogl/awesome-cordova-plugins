@@ -22,7 +22,6 @@ export enum KeyboardResizeMode {
  * Keyboard plugin for Cordova.
  *
  * Requires Cordova plugin: `cordova-plugin-ionic-keyboard`. For more info, please see the [Keyboard plugin docs](https://github.com/ionic-team/cordova-plugin-ionic-keyboard).
- *
  * @usage
  * ```typescript
  * import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
@@ -48,6 +47,7 @@ export enum KeyboardResizeMode {
 export class Keyboard extends AwesomeCordovaNativePlugin {
   /**
    * Check keyboard status visible or not.
+   *
    * @returns {boolean}
    */
   @CordovaProperty()
@@ -55,6 +55,7 @@ export class Keyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Hide the keyboard accessory bar with the next, previous and done buttons.
+   *
    * @param hide {boolean}
    */
   @Cordova({
@@ -83,6 +84,7 @@ export class Keyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Programatically set the resize mode
+   *
    * @param mode {string}
    */
   @Cordova({
@@ -93,7 +95,9 @@ export class Keyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Programatically set Keyboard style
+   *
    * @param mode {string}
+   * @param style
    */
   @Cordova({
     sync: true,
@@ -103,7 +107,9 @@ export class Keyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Programatically enable or disable the WebView scroll
+   *
    * @param mode {string}
+   * @param disable
    */
   @Cordova({
     sync: true,
@@ -113,6 +119,7 @@ export class Keyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates an observable that notifies you when the keyboard is shown. Unsubscribe to observable to cancel event watch.
+   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -126,6 +133,7 @@ export class Keyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates an observable that notifies you when the keyboard will show. Unsubscribe to observable to cancel event watch.
+   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -139,6 +147,7 @@ export class Keyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates an observable that notifies you when the keyboard did show. Unsubscribe to observable to cancel event watch.
+   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -152,6 +161,7 @@ export class Keyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates an observable that notifies you when the keyboard is hidden. Unsubscribe to observable to cancel event watch.
+   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -165,6 +175,7 @@ export class Keyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates an observable that notifies you when the keyboard will hide. Unsubscribe to observable to cancel event watch.
+   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -178,6 +189,7 @@ export class Keyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates an observable that notifies you when the keyboard did hide. Unsubscribe to observable to cancel event watch.
+   *
    * @returns {Observable<any>}
    */
   @Cordova({

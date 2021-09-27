@@ -608,6 +608,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Write debug logs.
+   *
    * @param sourceClass Name of the class
    * @param method Name of the method
    * @param message The actual message
@@ -625,6 +626,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Write error logs.
+   *
    * @param sourceClass Name of the class
    * @param method Name of the method
    * @param message The actual message
@@ -642,6 +644,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Write Info logs.
+   *
    * @param sourceClass Name of the class
    * @param method Name of the method
    * @param message The actual message
@@ -707,6 +710,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the log level of the app.
+   *
    * @param logLevel The log level to set
    */
   @Cordova()
@@ -716,6 +720,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * This api initializes the Unvired Application.
+   *
    * @param loginParameters Set of parameters to be passed the login()
    * For Example:
    * ```
@@ -732,6 +737,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * This api initializes the Unvired Application.
+   *
    * @param loginParameters Set of parameters to be passed the loginWithDemoData()
    * For Example:
    * ```
@@ -764,6 +770,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    *  loginParameters.password = 'MY_PASSWORD'
    *  await this.unviredSDK.authenticateAndActivate(loginParameters)
    *  ```
+   *
    * @param loginParameters LoginParamerter instance used to send username / password.
    */
   @Cordova()
@@ -774,6 +781,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * Authenticates the user against the previously saved username & password.
    * For ADS Login, authentication is performed with the ADS Server.
+   *
    * @param loginParameters Send username & Password through LoginParameters
    * Example:
    *  ```
@@ -797,6 +805,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Switch account
+   *
    * @param account The account to switch to
    */
   @Cordova()
@@ -806,6 +815,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Delete account
+   *
    * @param account The account to delete
    */
   @Cordova()
@@ -815,6 +825,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Get all InfoMessages linked to the header.
+   *
    * @param headerName Name of the header. Example: CUSTOMER_HEADER
    * @param lid LID of the header.
    */
@@ -857,6 +868,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Update System Credential
+   *
    * @param credentials The credential to update to
    */
   @Cordova()
@@ -922,6 +934,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Select records from Database
+   *
    * @param tableName table name. Example: CUSTOMER_HEADER
    * @param whereClause {Object} Browser: JSON object containing name-value pairs.
    * Mobile: Or a Sqlite whereClause ( without the 'where' keyword )
@@ -939,6 +952,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * Insert record into database.
    * In browser platform this function always inserts or updates based on GID.
+   *
    * @param tableName Name of the table.
    * @param structureObject - JSON object containing name-value pairs.
    * @param isHeader {boolean} - is DataStructure a header or item?
@@ -956,6 +970,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * insert or update the record ( if record exists ) into database.
    * In browser insert always inserts or updates based on gid
+   *
    * @param tableName Name of the table
    * @param structureObject - JSON object containing name-value pairs.
    * @param isHeader {boolean}  - is DataStructure a header or item?
@@ -972,6 +987,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Delete records from the database.
+   *
    * @param tableName Name of the table
    * @param whereClause {Object} Browser: JSON object containing name-value pairs.
    * Mobile: Or a Sqlite whereClause ( without the 'where' keyword )
@@ -988,6 +1004,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Update records in database.
+   *
    * @param tableName Name of the table
    * @param updatedObject JSON object containing updated name-value pairs.
    * @param whereClause {Object} Browser: JSON object containing name-value pairs.
@@ -1005,6 +1022,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Execute a SQL statement
+   *
    * @param query {string} SQL Statement.
    * Example:
    * ```
@@ -1018,6 +1036,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Create Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
+   *
    * @param savePoint {string} Name of savepoint
    * Example:
    * ```
@@ -1031,6 +1050,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Release Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
+   *
    * @param savePoint {string} Name of savepoint
    * ```
    * this.unviredSDK.dbReleaseSavePoint('MySavePointName')
@@ -1043,6 +1063,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Rollback Savepoint. For more info consult SQLite Documentation ( https://www.sqlite.org/lang_savepoint.html )
+   *
    * @param savePoint {string} Name of the savepoint
    * Example:
    * ```
@@ -1101,6 +1122,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * Supported in Android & Windows only.
    * Launch a file from a file path
+   *
    * @param filePath file path
    */
   @Cordova()
@@ -1111,6 +1133,10 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * Supported in Android & Windows only.
    * Write Base64 string to a file and launch.
+   *
+   * @param base64string
+   * @param fileName
+   * @param extension
    */
   @Cordova()
   launchBase64(base64string: string, fileName: string, extension: string): Promise<any> {
@@ -1120,6 +1146,9 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * Supported in Windows Only
    * Unzip file.
+   *
+   * @param srcPath
+   * @param destPath
    */
   @Cordova()
   unzip(srcPath: string, destPath: string) {
@@ -1139,6 +1168,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    * Saves attachment item in database and prepares it for uploading to server. This api is required to associate attachment file to a Business Entity.
    * This api copies the attachment file to a new path, links the attachment with the header in database.
    * To send the attachment item, just send the header using either syncForeground / syncBackground api and sdk will upload all the linked attachments.
+   *
    * @param tableName Table name of attachment item structure. This usually ends with _ATTACHMENT.
    * @param structureObject {Object} attachment item as a JSON object. Please check the example below.
    * Example:
@@ -1168,6 +1198,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Upload attachment item to server.
+   *
    * @param tableName Table name of attachment item.
    * @param structureObject JSON object containing name-value pairs.
    * @param isAsync Flag which indicates whether the upload should happen in async.
@@ -1179,6 +1210,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Download attachment from server.
+   *
    * @param tableName Table name of attachment item.
    * @param structureObject JSON object containing name-value pairs.
    */
@@ -1214,7 +1246,6 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    *   }
    * }
    * ```
-   *
    * @param customData {Object} Send a value for this parameter only if |reqType| is QUERY or PULL. For others, send an empty string.
    * This parameter represents the actual input which need to be sent to the server. Usually this is an input entity, but check with your Process Agent developer on the type of input.
    *
@@ -1231,7 +1262,6 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    *  ]
    * }
    * ```
-   *
    * @param paFunction Name of the Process Agent function to be executed. Example: PA_MOBILE_EXECUTE_SALES_ORDER.
    * @param autoSave This defines whether to save the response to database.
    */
@@ -1282,7 +1312,6 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    *   }
    * }
    * ```
-   *
    * @param customData {Object} Send a value for this parameter only if |reqType| is QUERY or PULL. For others, send an empty string.
    * This parameter represents the actual input which need to be sent to the server. Usually this is an input entity, but check with your Process Agent developer on the type of input.
    *
@@ -1299,7 +1328,6 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    *  ]
    * }
    * ```
-   *
    * @param paFunction Name of the Process Agent function to be executed. Example: PA_MOBILE_EXECUTE_SALES_ORDER.
    * @param beName Name of the Business Entity. Required for the RequestType RQST only. For others, send empty string.
    * @param belid LID of the Header datastructure. Required for the RequestType RQST only. For others, send empty string.
@@ -1345,6 +1373,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * For Browser platform only.
    * Generate Unvired BusinessEntity json from header and items
+   *
    * @param headerName Header Table Name
    * @param header Header Datastructure object
    * @param itemName Item Table Name
@@ -1358,6 +1387,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * For Browser platform only.
    * parseRawUBJson - Parse response json returned from syncForeground api.
+   *
    * @param json JSON string
    */
   @Cordova()
@@ -1368,6 +1398,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * For Browser platform only.
    * Returns a collection of all entities which belong to |tableName|
+   *
    * @param tableName Name of the table Exanple: CUSTOMER_HEADER
    */
   @Cordova()
@@ -1399,6 +1430,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * Supported in mobile only
    * Check whether a Header datastructure is in outbox.
+   *
    * @param beLid LID of the Header datastructure.
    */
   @Cordova()
@@ -1419,6 +1451,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    * Supported in mobile only
    * Checks whether a Header datastructure is in sent and is waiting for response.
    * Typically you would use before allowing the user to update the Header datastructure.
+   *
    * @param beLid LID of the Business Entity
    */
   @Cordova()
@@ -1447,6 +1480,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * Supported in mobile only
    * Delete outbox entry for a Header datastructure.
+   *
    * @param beLid LID of the Business Entity
    */
   @Cordova()
@@ -1511,6 +1545,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * Mobile Platform only.
    * Lock sending of data for this BE.
+   *
    * @param beLid LID of the Business Entity
    */
   @Cordova()
@@ -1530,6 +1565,8 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   /**
    * Mobile Platform only.
    * Delete an outbox item based on header's lid.
+   *
+   * @param lid
    */
   @Cordova()
   removeOutObjectBasedOnLid(lid: string): Promise<UnviredResult> {
@@ -1559,6 +1596,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Use this function to set the SAP credentials to be sent to UMP.
+   *
    * @param credentials Array of |Credential| objects.
    */
   @Cordova()
@@ -1568,6 +1606,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Check for client credentials.
+   *
    * @returns Returns true if client credentials are set
    */
   @Cordova()
@@ -1577,6 +1616,8 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Encrypt a string with the key stored by the Unvired SDK.
+   *
+   * @param stringToBeEncrypted
    * @returns UnviredResult.data which should contains the encrypted string.
    */
   @Cordova()
@@ -1586,6 +1627,8 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
 
   /**
    * Decrypt a string with the string encrypted with the key (key stored by the Unvired SDK)
+   *
+   * @param stringToBeDecrypted
    * @returns UnviredResult.data which should contains the decrypted string.
    */
   @Cordova()

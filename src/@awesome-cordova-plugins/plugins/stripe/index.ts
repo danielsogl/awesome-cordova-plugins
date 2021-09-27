@@ -108,7 +108,6 @@ export interface StripeCardTokenRes {
  * @name Stripe
  * @description
  * A plugin that allows you to use Stripe's Native SDKs for Android and iOS.
- *
  * @usage
  * ```typescript
  * import { Stripe } from '@awesome-cordova-plugins/stripe/ngx';
@@ -131,7 +130,6 @@ export interface StripeCardTokenRes {
  *    .catch(error => console.error(error));
  *
  * ```
- *
  * @interfaces
  * StripeCardTokenParams
  */
@@ -146,8 +144,9 @@ export interface StripeCardTokenRes {
 export class Stripe extends AwesomeCordovaNativePlugin {
   /**
    * Set publishable key
+   *
    * @param publishableKey {string} Publishable key
-   * @return {Promise<void>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   setPublishableKey(publishableKey: string): Promise<void> {
@@ -156,8 +155,9 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Create Credit Card Token
+   *
    * @param params {StripeCardTokenParams} Credit card information
-   * @return {Promise<StripeCardTokenRes>} returns a promise that resolves with the token object, or rejects with an error
+   * @returns {Promise<StripeCardTokenRes>} returns a promise that resolves with the token object, or rejects with an error
    */
   @Cordova()
   createCardToken(params: StripeCardTokenParams): Promise<StripeCardTokenRes> {
@@ -166,8 +166,9 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Create a bank account token
+   *
    * @param params {StripeBankAccountParams} Bank account information
-   * @return {Promise<string>} returns a promise that resolves with the token, or rejects with an error
+   * @returns {Promise<string>} returns a promise that resolves with the token, or rejects with an error
    */
   @Cordova()
   createBankAccountToken(params: StripeBankAccountParams): Promise<string> {
@@ -176,8 +177,9 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Validates a credit card number
+   *
    * @param cardNumber {string} Credit card number
-   * @return {Promise<any>} returns a promise that resolves if the number is valid, and rejects if it's invalid
+   * @returns {Promise<any>} returns a promise that resolves if the number is valid, and rejects if it's invalid
    */
   @Cordova()
   validateCardNumber(cardNumber: string): Promise<any> {
@@ -186,8 +188,9 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Validates a CVC number
+   *
    * @param cvc {string} CVC number
-   * @return {Promise<any>} returns a promise that resolves if the number is valid, and rejects if it's invalid
+   * @returns {Promise<any>} returns a promise that resolves if the number is valid, and rejects if it's invalid
    */
   @Cordova()
   validateCVC(cvc: string): Promise<any> {
@@ -196,9 +199,10 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Validates an expiry date
+   *
    * @param expMonth {string} expiry month (0 - 11)
    * @param expYear {string} expiry year
-   * @return {Promise<any>} returns a promise that resolves if the date is valid, and rejects if it's invalid
+   * @returns {Promise<any>} returns a promise that resolves if the date is valid, and rejects if it's invalid
    */
   @Cordova()
   validateExpiryDate(expMonth: string, expYear: string): Promise<any> {
@@ -207,8 +211,9 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Get a card type from card number
+   *
    * @param cardNumber {string} Card number
-   * @return {Promise<string>} returns a promise that resolves with the credit card type
+   * @returns {Promise<string>} returns a promise that resolves with the credit card type
    */
   @Cordova()
   getCardType(cardNumber: string): Promise<string> {

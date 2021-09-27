@@ -63,8 +63,6 @@ export interface NameOrOptions {
  * This plugin allows you to add events to the Calendar of the mobile device.
  *
  * Requires Cordova plugin: `cordova-plugin-calendar`. For more info, please see the [Calendar plugin docs](https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin).
- *
- *
  * @usage
  * ```typescript
  * import { Calendar } from '@awesome-cordova-plugins/calendar/ngx';
@@ -99,6 +97,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
    * - You've already granted permission
    *
    * If this returns false, you should call the `requestReadWritePermission` function
+   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -108,6 +107,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if we have read permission
+   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -117,6 +117,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if we have write permission
+   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -126,6 +127,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
 
   /**
    * Request write permission
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -135,6 +137,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
 
   /**
    * Request read permission
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -144,6 +147,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
 
   /**
    * Requests read/write permissions
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -164,6 +168,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
 
   /**
    * Delete a calendar. (iOS only)
+   *
    * @param {string} name  Name of the calendar to delete.
    * @returns {Promise<any>} Returns a Promise
    */
@@ -175,7 +180,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
   /**
    * Returns the default calendar options.
    *
-   * @return {CalendarOptions} Returns an object with the default calendar options
+   * @returns {CalendarOptions} Returns an object with the default calendar options
    */
   @Cordova({
     sync: true,
@@ -187,7 +192,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
   /**
    * Returns options for a custom calender with specific color
    *
-   * @return {NameOrOptions} Returns an object with the default options
+   * @returns {NameOrOptions} Returns an object with the default options
    */
   @Cordova({
     sync: true,
@@ -198,6 +203,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
 
   /**
    * Silently create an event.
+   *
    * @param {string} [title]  The event title
    * @param {string} [location]  The event location
    * @param {string} [notes]  The event notes
@@ -294,6 +300,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
 
   /**
    * Find an event with additional options.
+   *
    * @param {string} [title]  The event title
    * @param {string} [location]  The event location
    * @param {string} [notes]  The event notes
@@ -330,6 +337,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
 
   /**
    * Get a list of all calendars.
+   *
    * @returns {Promise<any>} A Promise that resolves with the list of calendars, or rejects with an error.
    */
   @Cordova()
@@ -339,6 +347,8 @@ export class Calendar extends AwesomeCordovaNativePlugin {
 
   /**
    * Get a list of all future events in the specified calendar. (iOS only)
+   *
+   * @param calendarName
    * @returns {Promise<any>} Returns a Promise that resolves with the list of events, or rejects with an error.
    */
   @Cordova({
@@ -361,7 +371,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
    * @param {string} [newNotes]  The new event notes
    * @param {Date} [newStartDate]  The new event start date
    * @param {Date} [newEndDate]  The new event end date
-   * @return Returns a Promise
+   * @returns Returns a Promise
    */
   @Cordova({
     platforms: ['iOS'],
@@ -396,7 +406,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
    * @param {Date} [newEndDate]  The new event end date
    * @param {CalendarOptions} [filterOptions] Event Options, see `getCalendarOptions`
    * @param {CalendarOptions} [newOptions]  New event options, see `getCalendarOptions`
-   * @return Returns a Promise
+   * @returns Returns a Promise
    */
   @Cordova({
     platforms: ['iOS'],
@@ -426,7 +436,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
    * @param {string} [notes]  The event notes
    * @param {Date} [startDate]  The event start date
    * @param {Date} [endDate]  The event end date
-   * @return Returns a Promise
+   * @returns Returns a Promise
    */
   @Cordova()
   deleteEvent(title?: string, location?: string, notes?: string, startDate?: Date, endDate?: Date): Promise<any> {
@@ -442,7 +452,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
    * @param {Date} [startDate]  The event start date
    * @param {Date} [endDate]  The event end date
    * @param {string} calendarName
-   * @return Returns a Promise
+   * @returns Returns a Promise
    */
   @Cordova({
     platforms: ['iOS'],
@@ -463,7 +473,7 @@ export class Calendar extends AwesomeCordovaNativePlugin {
    *
    * @param {string} [id]  The event id
    * @param {Date} [fromDate]  The date where it start deleting from
-   * @return Returns a Promise
+   * @returns Returns a Promise
    */
   @Cordova()
   deleteEventById(id: string, fromDate?: Date): Promise<any> {
@@ -472,8 +482,9 @@ export class Calendar extends AwesomeCordovaNativePlugin {
 
   /**
    * Open the calendar at the specified date.
+   *
    * @param {Date} date The date you want to open the calendar on
-   * @return {Promise<any>} Promise returns a promise
+   * @returns {Promise<any>} Promise returns a promise
    */
   @Cordova()
   openCalendar(date: Date): Promise<any> {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface Attributes {
-  [index: string]: String;
+  [index: string]: string;
 }
 
 /**
@@ -11,7 +11,6 @@ export interface Attributes {
  * API for interacting with the Crashlytics kit.
  *
  * https://docs.fabric.io/crashlytics/index.html
- *
  * @usage
  * ```typescript
  * import { Crashlytics } from '@awesome-cordova-plugins/fabric/ngx';
@@ -45,6 +44,7 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
   /**
    * Add logging that will be sent with your crash data. This logging will not show up
    * in the system.log and will only be visible in your Crashlytics dashboard.
+   *
    * @param message {string}
    */
   @Cordova({ sync: true })
@@ -62,6 +62,9 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Used to log a non-fatal error message (Android only).
+   *
+   * @param message
+   * @param stacktrace
    */
   @Cordova({ sync: true })
   sendNonFatalCrash(message: string, stacktrace?: any): void {
@@ -70,6 +73,9 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Used to record a non-fatal error message (iOS only).
+   *
+   * @param message
+   * @param code
    */
   @Cordova({ sync: true })
   recordError(message: string, code: number): void {
@@ -78,6 +84,8 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the user's identifier for logging to Crashlytics backend.
+   *
+   * @param userId
    */
   @Cordova({ sync: true })
   setUserIdentifier(userId: string): void {
@@ -86,6 +94,8 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the user's name for logging to Crashlytics backend.
+   *
+   * @param userName
    */
   @Cordova({ sync: true })
   setUserName(userName: string): void {
@@ -94,6 +104,8 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the user's email address for logging to Crashlytics backend.
+   *
+   * @param email
    */
   @Cordova({ sync: true })
   setUserEmail(email: string): void {
@@ -102,6 +114,9 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a custom key/value pair for logging to Crashlytics backend.
+   *
+   * @param value
+   * @param key
    */
   @Cordova({ sync: true })
   setStringValueForKey(value: string, key: string): void {
@@ -110,6 +125,9 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a custom key/value pair for logging to Crashlytics backend.
+   *
+   * @param value
+   * @param key
    */
   @Cordova({ sync: true })
   setIntValueForKey(value: number, key: string): void {
@@ -118,6 +136,9 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a custom key/value pair for logging to Crashlytics backend.
+   *
+   * @param value
+   * @param key
    */
   @Cordova({ sync: true })
   setBoolValueForKey(value: boolean, key: string): void {
@@ -126,6 +147,9 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a custom key/value pair for logging to Crashlytics backend.
+   *
+   * @param value
+   * @param key
    */
   @Cordova({ sync: true })
   setFloatValueForKey(value: number, key: string): void {
@@ -139,7 +163,6 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
  * API for interacting with the Answers kit.
  *
  * https://docs.fabric.io/crashlytics/index.html
- *
  * @usage
  * ```typescript
  * import { Answers } from '@awesome-cordova-plugins/fabric/ngx';
@@ -380,6 +403,11 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * Send the Content View tracking event.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#content-view
+   *
+   * @param name
+   * @param type
+   * @param id
+   * @param attributes
    */
   @Cordova({ sync: true })
   sendContentView(name: string, type?: string, id?: string, attributes?: Attributes): void {
@@ -388,6 +416,10 @@ export class Answers extends AwesomeCordovaNativePlugin {
 
   /**
    * Shortcut for sendContentView(...) using type of "Screen".
+   *
+   * @param name
+   * @param id
+   * @param attributes
    */
   @Cordova({ sync: true })
   sendScreenView(name: string, id: string, attributes?: Attributes): void {
@@ -398,6 +430,9 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * Send a custom tracking event with the given name.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#custom-event
+   *
+   * @param name
+   * @param attributes
    */
   @Cordova({ sync: true })
   sendCustomEvent(name: string, attributes?: Attributes): void {

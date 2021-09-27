@@ -64,7 +64,6 @@ export interface CertificationData {
  * @name Iamport Cordova
  * @description
  * This plugin does something
- *
  * @usage
  * ```typescript
  * import { IamportCordova } from '@awesome-cordova-plugins/iamport-cordova/ngx';
@@ -92,8 +91,9 @@ export interface CertificationData {
 export class IamportCordova extends AwesomeCordovaNativePlugin {
   /**
    * This function is to load a webview of a payment gateway to pay for something
+   *
    * @param paymentObject {PaymentObject} Payment data to set the payment webview
-   * @return {Promise<any>} A callback function of the payment data is triggered when the webview is closed
+   * @returns {Promise<any>} A callback function of the payment data is triggered when the webview is closed
    */
   @Cordova()
   payment(paymentObject: PaymentObject): Promise<any> {
@@ -102,8 +102,9 @@ export class IamportCordova extends AwesomeCordovaNativePlugin {
 
   /**
    * This function is to load a webview for identification with carrier type(like Verizon), name and phone number
+   *
    * @param certificationObject {CertificationObject} Certification data to set the certification webview
-   * @return {Promise<any>} A callback function of the certification data is triggered when the webview is closed
+   * @returns {Promise<any>} A callback function of the certification data is triggered when the webview is closed
    */
   @Cordova()
   certification(certificationObject: CertificationObject): Promise<any> {

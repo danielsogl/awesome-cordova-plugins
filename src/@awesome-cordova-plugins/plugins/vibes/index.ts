@@ -33,7 +33,6 @@ export interface InboxMessage {
  * @name Vibes
  * @description
  * This plugin enables integration with the Vibes Push SDK to your Cordova project with Android and iOS supported.
- *
  * @usage
  * ```typescript
  * import { Vibes } from '@awesome-cordova-plugins/vibes/ngx';
@@ -76,7 +75,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
   /**
    * Register this device with the Vibes platform
    *
-   * @return {Promise<DeviceResponse>}
+   * @returns {Promise<DeviceResponse>}
    */
   @Cordova()
   registerDevice(): Promise<DeviceResponse> {
@@ -86,7 +85,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
   /**
    * Unregister this device with the Vibes platform
    *
-   * @return {Promise<void>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   unregisterDevice(): Promise<void> {
@@ -97,7 +96,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
    * Associate an external ID with the current person.
    *
    * @param {string} externalPersonId
-   * @return {Promise<void>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   associatePerson(externalPersonId: string): Promise<void> {
@@ -107,7 +106,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
   /**
    * Register this device to receive push notifications
    *
-   * @return {Promise<void>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   registerPush(): Promise<void> {
@@ -117,7 +116,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
   /**
    * Unregister the device from receiving push notifications
    *
-   * @return {Promise<void>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   unregisterPush(): Promise<void> {
@@ -126,7 +125,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
   /**
    * Fetches a DeviceInfoResponse with details about the Vibes Device ID and Push Token
    *
-   * @return {Promise<DeviceInfoResponse>}
+   * @returns {Promise<DeviceInfoResponse>}
    */
   @Cordova()
   getVibesDeviceInfo(): Promise<DeviceInfoResponse> {
@@ -136,7 +135,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
   /**
    * Fetches the PersonResponse associated with this device currently
    *
-   * @return {Promise<PersonResponse>}
+   * @returns {Promise<PersonResponse>}
    */
   @Cordova()
   getPerson(): Promise<PersonResponse> {
@@ -146,7 +145,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
   /**
    * Get notified when the user opens a notification
    *
-   * @return {Observable<void>}
+   * @returns {Observable<void>}
    */
   @Cordova({
     observable: true,
@@ -158,7 +157,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
   /**
    * Fetches an array of inbox messages for the person associated with this device.
    *
-   * @return {Promise<InboxMessage[]>}
+   * @returns {Promise<InboxMessage[]>}
    */
   @Cordova()
   fetchInboxMessages(): Promise<InboxMessage[]> {
@@ -169,7 +168,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
    * Fetches a single inbox message by it's id.
    *
    * @param {string} message_uid
-   * @return {Promise<InboxMessage>}
+   * @returns {Promise<InboxMessage>}
    */
   @Cordova()
   fetchInboxMessage(message_uid: string): Promise<InboxMessage> {
@@ -181,7 +180,8 @@ export class Vibes extends AwesomeCordovaNativePlugin {
    *
    * @param {string} message_uid
    * @param {string} An ISO-8601 formatted date string.
-   * @return {Promise<InboxMessage>} an updated version of the InboxMessage with expires_at date updated
+   * @param date
+   * @returns {Promise<InboxMessage>} an updated version of the InboxMessage with expires_at date updated
    */
   @Cordova()
   expireInboxMessage(message_uid: string, date: string): Promise<InboxMessage> {
@@ -192,7 +192,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
    * Marks an inbox message as read.
    *
    * @param {string} message_uid
-   * @return {Promise<InboxMessage>} an updated version of the InboxMessage with read field updated
+   * @returns {Promise<InboxMessage>} an updated version of the InboxMessage with read field updated
    */
   @Cordova()
   markInboxMessageAsRead(message_uid: string): Promise<InboxMessage> {
@@ -203,7 +203,7 @@ export class Vibes extends AwesomeCordovaNativePlugin {
    * Records an event for when the user opens an inbox message.
    *
    * @param inbox_message_stringified stringified version of the InboxMessage
-   * @return {Promise<void>}
+   * @returns {Promise<void>}
    */
   @Cordova()
   onInboxMessageOpen(inbox_message_stringified: string): Promise<void> {

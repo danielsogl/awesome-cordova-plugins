@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
  * @name Google Nearby
  * @description
  * This plugin adds support for the Google Nearby Messages API.
- *
  * @usage
  * ```typescript
  * import { GoogleNearby } from '@awesome-cordova-plugins/google-nearby/ngx';
@@ -36,8 +35,9 @@ import { Observable } from 'rxjs';
 export class GoogleNearby extends AwesomeCordovaNativePlugin {
   /**
    * Publish a message
+   *
    * @param message {string} Message to publish
-   * @return {Promise<any>} Returns a promise that resolves when the message got published
+   * @returns {Promise<any>} Returns a promise that resolves when the message got published
    */
   @Cordova()
   publish(message: string): Promise<any> {
@@ -46,7 +46,8 @@ export class GoogleNearby extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to receive messages
-   * @return {Observable<any>} Returns an observable that emits received messages
+   *
+   * @returns {Observable<any>} Returns an observable that emits received messages
    */
   @Cordova({
     observable: true,

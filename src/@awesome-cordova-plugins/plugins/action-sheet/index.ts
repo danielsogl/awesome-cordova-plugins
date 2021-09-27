@@ -59,7 +59,6 @@ export interface ActionSheetOptions {
  * The ActionSheet plugin shows a native list of options the user can choose from.
  *
  * Requires Cordova plugin: `cordova-plugin-actionsheet`. For more info, please see the [ActionSheet plugin docs](https://github.com/EddyVerbruggen/cordova-plugin-actionsheet).
- *
  * @usage
  * ```typescript
  * import { ActionSheet, ActionSheetOptions } from '@awesome-cordova-plugins/action-sheet/ngx';
@@ -116,6 +115,7 @@ export class ActionSheet extends AwesomeCordovaNativePlugin {
 
   /**
    * Show a native ActionSheet component. See below for options.
+   *
    * @param {ActionSheetOptions} [options] Options See table below
    * @returns {Promise<any>} Returns a Promise that resolves with the index of the
    *   button pressed (1 based, so 1, 2, 3, etc.)
@@ -127,6 +127,7 @@ export class ActionSheet extends AwesomeCordovaNativePlugin {
 
   /**
    * Programmatically hide the native ActionSheet
+   *
    * @param  {ActionSheetOptions} [options] Options See table below
    * @returns {Promise<any>} Returns a Promise that resolves when the actionsheet is closed
    */

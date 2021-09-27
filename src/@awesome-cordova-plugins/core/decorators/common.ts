@@ -7,6 +7,9 @@ declare const window: any;
 export const ERR_CORDOVA_NOT_AVAILABLE = { error: 'cordova_not_available' };
 export const ERR_PLUGIN_NOT_INSTALLED = { error: 'plugin_not_installed' };
 
+/**
+ * @param callback
+ */
 export function getPromise<T>(callback: (resolve: Function, reject?: Function) => any): Promise<T> {
   const tryNativePromise = () => {
     if (Promise) {
@@ -37,6 +40,12 @@ export function getPromise<T>(callback: (resolve: Function, reject?: Function) =
   return tryNativePromise();
 }
 
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ * @param opts
+ */
 export function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: CordovaOptions = {}) {
   let pluginResult: any, rej: Function;
   const p = getPromise((resolve: Function, reject: Function) => {
@@ -64,6 +73,12 @@ export function wrapPromise(pluginObj: any, methodName: string, args: any[], opt
   return p;
 }
 
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ * @param opts
+ */
 function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
   return getPromise((resolve: Function, reject: Function) => {
     const pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts);
@@ -79,6 +94,12 @@ function wrapOtherPromise(pluginObj: any, methodName: string, args: any[], opts:
   });
 }
 
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ * @param opts
+ */
 function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: any = {}) {
   return new Observable((observer) => {
     let pluginResult;
@@ -136,6 +157,7 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
 
 /**
  * Wrap the event with an observable
+ *
  * @private
  * @param event event name
  * @param element The element to attach the event listener to
@@ -151,7 +173,8 @@ function wrapEventObservable(event: string, element: any): Observable<any> {
 
 /**
  * Checks if plugin/cordova is available
- * @return {boolean | { error: string } }
+ *
+ * @returns {boolean | { error: string } }
  * @private
  */
 export function checkAvailability(
@@ -164,8 +187,13 @@ export function checkAvailability(
   methodName?: string,
   pluginName?: string
 ): boolean | { error: string };
+/**
+ * @param plugin
+ * @param methodName
+ * @param pluginName
+ */
 export function checkAvailability(plugin: any, methodName?: string, pluginName?: string): boolean | { error: string } {
-  let pluginRef, pluginInstance, pluginPackage;
+  let pluginRef, pluginPackage;
 
   if (typeof plugin === 'string') {
     pluginRef = plugin;
@@ -175,7 +203,7 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
     pluginPackage = plugin.constructor.getPluginInstallName();
   }
 
-  pluginInstance = getPlugin(pluginRef);
+  const pluginInstance = getPlugin(pluginRef);
 
   if (!pluginInstance || (!!methodName && typeof pluginInstance[methodName] === 'undefined')) {
     if (typeof window === 'undefined' || !window.cordova) {
@@ -192,12 +220,21 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
 
 /**
  * Checks if _objectInstance exists and has the method/property
+ *
+ * @param pluginObj
+ * @param methodName
  * @private
  */
 export function instanceAvailability(pluginObj: any, methodName?: string): boolean {
   return pluginObj._objectInstance && (!methodName || typeof pluginObj._objectInstance[methodName] !== 'undefined');
 }
 
+/**
+ * @param args
+ * @param opts
+ * @param resolve
+ * @param reject
+ */
 export function setIndex(args: any[], opts: any = {}, resolve?: Function, reject?: Function): any {
   // ignore resolve and reject in case sync
   if (opts.sync) {
@@ -258,6 +295,14 @@ export function setIndex(args: any[], opts: any = {}, resolve?: Function, reject
   return args;
 }
 
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ * @param opts
+ * @param resolve
+ * @param reject
+ */
 export function callCordovaPlugin(
   pluginObj: any,
   methodName: string,
@@ -274,12 +319,21 @@ export function callCordovaPlugin(
 
   if (availabilityCheck === true) {
     const pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
+    // eslint-disable-next-line prefer-spread
     return pluginInstance[methodName].apply(pluginInstance, args);
   } else {
     return availabilityCheck;
   }
 }
 
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ * @param opts
+ * @param resolve
+ * @param reject
+ */
 export function callInstance(
   pluginObj: any,
   methodName: string,
@@ -291,10 +345,14 @@ export function callInstance(
   args = setIndex(args, opts, resolve, reject);
 
   if (instanceAvailability(pluginObj, methodName)) {
+    // eslint-disable-next-line prefer-spread
     return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
   }
 }
 
+/**
+ * @param pluginRef
+ */
 export function getPlugin(pluginRef: string): any {
   if (typeof window !== 'undefined') {
     return get(window, pluginRef);
@@ -302,6 +360,10 @@ export function getPlugin(pluginRef: string): any {
   return null;
 }
 
+/**
+ * @param element
+ * @param path
+ */
 export function get(element: Element | Window, path: string) {
   const paths: string[] = path.split('.');
   let obj: any = element;
@@ -314,6 +376,11 @@ export function get(element: Element | Window, path: string) {
   return obj;
 }
 
+/**
+ * @param pluginName
+ * @param plugin
+ * @param method
+ */
 export function pluginWarn(pluginName: string, plugin?: string, method?: string): void {
   if (method) {
     console.warn(
@@ -357,6 +424,9 @@ export function cordovaWarn(pluginName: string, method?: string): void {
 export type WrapFn = (...args: any[]) => any;
 
 /**
+ * @param pluginObj
+ * @param methodName
+ * @param opts
  * @private
  */
 export const wrap = (pluginObj: any, methodName: string, opts: CordovaOptions = {}): WrapFn => {
@@ -377,6 +447,9 @@ export const wrap = (pluginObj: any, methodName: string, opts: CordovaOptions = 
 };
 
 /**
+ * @param pluginObj
+ * @param methodName
+ * @param opts
  * @private
  */
 export function wrapInstance(pluginObj: any, methodName: string, opts: any = {}): Function {

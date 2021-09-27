@@ -101,7 +101,7 @@ export interface IAPProduct {
    *  - you will receive the `approved` event each time the application starts,
    *    where you should try again to finish the pending transaction.
    *
-   * **example use**
+   * example use**
    *
    * ```js
    * store.when("product.id").approved(function(product){
@@ -125,7 +125,7 @@ export interface IAPProduct {
   /**
    * Initiate purchase validation as defined by the `store.validator` attribute.
    *
-   * **return value**
+   * return value**
    *
    * A Promise with the following methods:
    *
@@ -248,7 +248,6 @@ export class IAPError {
  *  - **macOS** version 10
  *  - **Xbox One**
  *    - (and any platform supporting Microsoft's UWP)
- *
  * @usage
  * ```typescript
  * import { InAppPurchase2 } from '@awesome-cordova-plugins/in-app-purchase-2/ngx';
@@ -458,7 +457,7 @@ export class IAPError {
  *  - call `product.verify()` from the `approved` event, before finishing the transaction.
  *  - finish the transaction when transaction is `verified`.
  *
- * **Shameless Plug**: this is a feature many users struggle with, so as the author of this plugin, we can provide it to you as-a-service: https://billing.fovea.cc/
+ * Shameless Plug**: this is a feature many users struggle with, so as the author of this plugin, we can provide it to you as-a-service: https://billing.fovea.cc/
  * (which is free until you start making serious money)
  *
  * #### example using a validation URL
@@ -765,6 +764,7 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Get product by id or alias
+   *
    * @param idOrAlias
    */
   @Cordova({ sync: true })
@@ -774,6 +774,7 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Register error handler
+   *
    * @param onError {Function} function to call on error
    */
   @Cordova({ sync: true })
@@ -781,6 +782,7 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Add or register a product
+   *
    * @param product {IAPProductOptions}
    */
   @Cordova({ sync: true })
@@ -791,7 +793,7 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
    * @param query
    * @param event
    * @param callback
-   * @return {IAPProductEvents}
+   * @returns {IAPProductEvents}
    */
   @Cordova({ sync: true })
   when(query: string | IAPProduct, event?: string, callback?: IAPQueryCallback): IAPProductEvents {
@@ -800,10 +802,11 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Identical to `when`, but the callback will be called only once. After being called, the callback will be unregistered.
+   *
    * @param query {string | IAPProduct}
    * @param [event] {event}
    * @param [callback] {IAPQueryCallback}
-   * @return {IAPProductEvents}
+   * @returns {IAPProductEvents}
    */
   @Cordova({ sync: true })
   once(query: string | IAPProduct, event?: string, callback?: IAPQueryCallback): IAPProductEvents {
@@ -812,6 +815,7 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Unregister a callback. Works for callbacks registered with ready, when, once and error.
+   *
    * @param callback {Function}
    */
   @Cordova({ sync: true })
@@ -833,12 +837,15 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
    *
    * See the "Purchasing section" to learn more about the purchase process.
    *
-   * **return value**
+   * return value**
    *
    * `store.order()` returns a Promise with the following methods:
    *
    *  - `then` - called when the order was successfully initiated.
    *  - `error` - called if the order couldn't be initiated.
+   *
+   * @param product
+   * @param additionalData
    */
   @Cordova({ sync: true })
   order(product: string | IAPProduct, additionalData?: any): { then: Function; error: Function } {
@@ -866,7 +873,7 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
    * if a user wants to restore purchases he made from another device, he'll
    * have a way to do just that.
    *
-   * **example usage**
+   * example usage**
    *
    * ```typescript
    *    // ...
@@ -877,7 +884,7 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
    *    this.store.refresh();
    * ```
    *
-   * **restore purchases**
+   * restore purchases**
    *
    * Add a "Refresh Purchases" button to call the `store.refresh()` method, like:
    *

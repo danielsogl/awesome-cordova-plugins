@@ -69,7 +69,7 @@ export interface ILocalNotificationEvery {
 }
 
 export interface ILocalNotificationTrigger {
-  /** ***** FIX ***** */
+  /** ***** FIX */
 
   /**
    * The date and time when the system should deliver the local notification. If the specified value is nil or is a date in the past, the local notification is delivered immediately.
@@ -77,7 +77,7 @@ export interface ILocalNotificationTrigger {
    */
   at?: Date;
 
-  /** ***** TIMESPAN ***** */
+  /** ***** TIMESPAN */
 
   /**
    * Amount of units
@@ -89,7 +89,7 @@ export interface ILocalNotificationTrigger {
    */
   unit?: ELocalNotificationTriggerUnit;
 
-  /** ***** REPEAT/MATCH ***** */
+  /** ***** REPEAT/MATCH */
 
   /**
    * Amount of units
@@ -118,7 +118,7 @@ export interface ILocalNotificationTrigger {
    */
   after?: Date;
 
-  /** ***** LOCATION ***** */
+  /** ***** LOCATION */
 
   /**
    * IOS ONLY
@@ -481,7 +481,6 @@ export interface ILocalNotification {
  * @name Local Notifications
  * @description
  * This plugin allows you to display local notifications on the device
- *
  * @usage
  * ```typescript
  * import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
@@ -537,6 +536,7 @@ export interface ILocalNotification {
 export class LocalNotifications extends AwesomeCordovaNativePlugin {
   /**
    * Informs if the app has the permission to show notifications.
+   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -546,6 +546,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Request permission to show notifications if not already granted.
+   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -555,6 +556,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Schedules a single or multiple notifications
+   *
    * @param options {Notification | ILocalNotification[]} optional
    */
   @Cordova({
@@ -564,6 +566,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Updates a previously scheduled notification. Must include the id in the options parameter.
+   *
    * @param options {ILocalNotification} optional
    */
   @Cordova({
@@ -573,6 +576,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Clears single or multiple notifications
+   *
    * @param notificationId {any} A single notification id, or an array of notification ids.
    * @returns {Promise<any>} Returns a promise when the notification had been cleared
    */
@@ -583,6 +587,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Clears all notifications
+   *
    * @returns {Promise<any>} Returns a promise when all notifications have cleared
    */
   @Cordova()
@@ -592,6 +597,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Cancels single or multiple notifications
+   *
    * @param notificationId {any} A single notification id, or an array of notification ids.
    * @returns {Promise<any>} Returns a promise when the notification is canceled
    */
@@ -602,6 +608,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Cancels all notifications
+   *
    * @returns {Promise<any>} Returns a promise when all notifications are canceled
    */
   @Cordova()
@@ -611,6 +618,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks presence of a notification
+   *
    * @param notificationId {number}
    * @returns {Promise<boolean>}
    */
@@ -621,6 +629,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks is a notification is scheduled
+   *
    * @param notificationId {number}
    * @returns {Promise<boolean>}
    */
@@ -631,6 +640,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if a notification is triggered
+   *
    * @param notificationId {number}
    * @returns {Promise<boolean>}
    */
@@ -641,6 +651,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if a notification has a given type.
+   *
    * @param {number} id The ID of the notification.
    * @param {string} type  The type of the notification.
    * @returns {Promise<boolean>}
@@ -652,6 +663,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the type (triggered, scheduled) for the notification.
+   *
    * @param {number} id The ID of the notification.
    */
   @Cordova()
@@ -661,6 +673,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Get all the notification ids
+   *
    * @returns {Promise<Array<number>>}
    */
   @Cordova()
@@ -670,6 +683,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the ids of scheduled notifications
+   *
    * @returns {Promise<number[]>} Returns a promise
    */
   @Cordova()
@@ -679,6 +693,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the ids of triggered notifications
+   *
    * @returns {Promise<Array<number>>}
    */
   @Cordova()
@@ -688,6 +703,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Get a notification object
+   *
    * @param notificationId {any} The id of the notification to get
    * @returns {Promise<ILocalNotification>}
    */
@@ -698,6 +714,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Get all notification objects
+   *
    * @returns {Promise<ILocalNotification[]>}
    */
   @Cordova()
@@ -707,6 +724,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Get a scheduled notification object
+   *
    * @param notificationId {any} The id of the notification to get
    * @returns {Promise<ILocalNotification>}
    */
@@ -717,6 +735,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Get a triggered notification object
+   *
    * @param notificationId The id of the notification to get
    * @returns {Promise<ILocalNotification>}
    */
@@ -727,6 +746,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Adds a group of actions
+   *
    * @param groupId The id of the action group
    * @param actions The actions of this group
    * @returns {Promise<any>}
@@ -738,6 +758,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Removes a group of actions
+   *
    * @param groupId The id of the action group
    * @returns {Promise<any>}
    */
@@ -748,6 +769,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if a group of actions is defined
+   *
    * @param groupId The id of the action group
    * @returns {Promise<boolean>} Whether the group is defined
    */
@@ -758,6 +780,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets the (platform specific) default settings.
+   *
    * @returns {Promise<any>} An object with all default settings
    */
   @Cordova({
@@ -769,6 +792,8 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Overwrites the (platform specific) default settings.
+   *
+   * @param defaults
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -780,6 +805,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Get all scheduled notification objects
+   *
    * @returns {Promise<Array<ILocalNotification>>}
    */
   @Cordova()
@@ -789,6 +815,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Get all triggered notification objects
+   *
    * @returns {Promise<Array<ILocalNotification>>}
    */
   @Cordova()
@@ -798,8 +825,9 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a callback for a specific event
+   *
    * @param eventName {string} The name of the event. Available events: schedule, trigger, click, update, clear, clearall, cancel, cancelall. Custom event names are possible for actions
-   * @return {Observable}
+   * @returns {Observable}
    */
   @Cordova({
     observable: true,
@@ -812,6 +840,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Not an official interface, however its possible to manually fire events.
+   *
    * @param eventName The name of the event. Available events: schedule, trigger, click, update, clear, clearall, cancel, cancelall. Custom event names are possible for actions
    * @param args Optional arguments
    */
@@ -822,6 +851,7 @@ export class LocalNotifications extends AwesomeCordovaNativePlugin {
 
   /**
    * Fire queued events once the device is ready and all listeners are registered.
+   *
    * @returns {Promise<any>}
    */
   @Cordova()

@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
  * Cordova plugin to set/lock the screen orientation in a common way.
  *
  * Requires Cordova plugin: `cordova-plugin-screen-orientation`. For more info, please see the [Screen Orientation plugin docs](https://github.com/apache/cordova-plugin-screen-orientation).
- *
  * @usage
  * ```typescript
  * import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
@@ -36,7 +35,6 @@ import { Observable } from 'rxjs';
  * );
  *
  * ```
- *
  * @advanced
  *
  * Accepted orientation values:
@@ -49,7 +47,6 @@ import { Observable } from 'rxjs';
  * | landscape-secondary           | The orientation is in the secondary landscape mode.                          |
  * | portrait                      | The orientation is either portrait-primary or portrait-secondary (sensor).   |
  * | landscape                     | The orientation is either landscape-primary or landscape-secondary (sensor). |
- *
  */
 @Plugin({
   pluginName: 'ScreenOrientation',
@@ -74,7 +71,8 @@ export class ScreenOrientation extends AwesomeCordovaNativePlugin {
   };
   /**
    * Listen to orientation change event
-   * @return {Observable<void>}
+   *
+   * @returns {Observable<void>}
    */
   @Cordova({
     eventObservable: true,
@@ -88,8 +86,9 @@ export class ScreenOrientation extends AwesomeCordovaNativePlugin {
   /**
    * Lock the orientation to the passed value.
    * See below for accepted values
+   *
    * @param orientation {string} The orientation which should be locked. Accepted values see table above.
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   lock(orientation: string): Promise<any> {

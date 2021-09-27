@@ -84,7 +84,6 @@ export interface HealthKitOptions {
  * @description
  * The HealthKit plugin allows you to read data from and write data to the iOS 8+ HealthKit framework.
  * Any data saved shows up in the iOS Health app and is available for other iOS apps.
- *
  * @usage
  * ```typescript
  * import { HealthKit } from '@awesome-cordova-plugins/health-kit/ngx';
@@ -94,7 +93,6 @@ export interface HealthKitOptions {
  *
  * ...
  * ```
- *
  * @interfaces
  * HealthKitOptions
  */
@@ -109,6 +107,7 @@ export interface HealthKitOptions {
 export class HealthKit extends AwesomeCordovaNativePlugin {
   /**
    * Check if HealthKit is supported (iOS8+, not on iPad)
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -118,6 +117,7 @@ export class HealthKit extends AwesomeCordovaNativePlugin {
 
   /**
    * Pass in a type and get back on of undetermined | denied | authorized
+   *
    * @param options {HealthKitOptions}
    * @returns {Promise<any>}
    */
@@ -128,6 +128,7 @@ export class HealthKit extends AwesomeCordovaNativePlugin {
 
   /**
    * Ask some or all permissions up front
+   *
    * @param options {HealthKitOptions}
    * @returns {Promise<any>}
    */
@@ -138,6 +139,7 @@ export class HealthKit extends AwesomeCordovaNativePlugin {
 
   /**
    * Formatted as yyyy-MM-dd
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -147,6 +149,7 @@ export class HealthKit extends AwesomeCordovaNativePlugin {
 
   /**
    * Output = male|female|other|unknown
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -156,6 +159,7 @@ export class HealthKit extends AwesomeCordovaNativePlugin {
 
   /**
    * Output = A+|A-|B+|B-|AB+|AB-|O+|O-|unknown
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -165,6 +169,7 @@ export class HealthKit extends AwesomeCordovaNativePlugin {
 
   /**
    * Output = I|II|III|IV|V|VI|unknown
+   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -174,6 +179,7 @@ export class HealthKit extends AwesomeCordovaNativePlugin {
 
   /**
    * Pass in unit (g=gram, kg=kilogram, oz=ounce, lb=pound, st=stone) and amount
+   *
    * @param options {HealthKitOptions}
    * @returns {Promise<any>}
    */
@@ -184,6 +190,7 @@ export class HealthKit extends AwesomeCordovaNativePlugin {
 
   /**
    * Pass in unit (g=gram, kg=kilogram, oz=ounce, lb=pound, st=stone)
+   *
    * @param options {HealthKitOptions}
    * @returns {Promise<any>}
    */
@@ -194,6 +201,7 @@ export class HealthKit extends AwesomeCordovaNativePlugin {
 
   /**
    * Pass in unit (mm=millimeter, cm=centimeter, m=meter, in=inch, ft=foot) and amount
+   *
    * @param options {HealthKitOptions}
    * @returns {Promise<any>}
    */
@@ -204,6 +212,7 @@ export class HealthKit extends AwesomeCordovaNativePlugin {
 
   /**
    * Pass in unit (mm=millimeter, cm=centimeter, m=meter, in=inch, ft=foot)
+   *
    * @param options {HealthKitOptions}
    * @returns {Promise<any>}
    */
@@ -214,6 +223,7 @@ export class HealthKit extends AwesomeCordovaNativePlugin {
 
   /**
    * no params yet, so this will return all workouts ever of any type
+   *
    * @returns {Promise<any>}
    */
   @Cordova()

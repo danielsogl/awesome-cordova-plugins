@@ -25,7 +25,6 @@ export interface ChooserResult {
  *  </edit-config>
  * </platform>
  * ```
- *
  * @usage
  * ```typescript
  * import { Chooser } from '@awesome-cordova-plugins/chooser/ngx';
@@ -41,7 +40,6 @@ export interface ChooserResult {
  *   .catch((error: any) => console.error(error));
  *
  * ```
- *
  * @interfaces
  * ChooserResult
  */
@@ -56,8 +54,9 @@ export interface ChooserResult {
 export class Chooser extends AwesomeCordovaNativePlugin {
   /**
    * Displays native prompt for user to select a file.
+   *
    * @param {string} [accept] Optional MIME type filter (e.g. 'image/gif,video/*').
-   * @return {Promise<any>} Promise containing selected file's raw binary data,
+   * @returns {Promise<any>} Promise containing selected file's raw binary data,
    * base64-encoded data: URI, MIME type, display name, and original URI.
    */
   @Cordova()
@@ -66,6 +65,7 @@ export class Chooser extends AwesomeCordovaNativePlugin {
   }
   /**
    * Displays native prompt for user to select a file.
+   *
    * @param {string} [accept] Optional MIME type filter (e.g. 'image/gif,video/*').
    * @returns {Promise<any>} Promise containing selected file's MIME type, display name, and original URI.
    * If user cancels, promise will be resolved as undefined.

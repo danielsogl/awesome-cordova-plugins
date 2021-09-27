@@ -226,7 +226,6 @@ export interface IBeaconDelegate {
  * This plugin provides functions for working with iBeacons.
  *
  *  The plugin's API closely mimics the one exposed through the [CLLocationManager](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html) introduced in iOS 7.
- *
  * @usage
  *
  * ```typescript
@@ -274,7 +273,6 @@ export interface IBeaconDelegate {
  * CircularRegion
  * IBeaconPluginResult
  * IBeaconDelegate
- *
  */
 @Plugin({
   pluginName: 'IBeacon',
@@ -365,13 +363,13 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
   /**
    * Creates a new BeaconRegion
    *
-   * @param {String} identifier @see {CLRegion}
-   * @param {String} uuid The proximity ID of the beacon being targeted.
+   * @param {string} identifier @see {CLRegion}
+   * @param identifer
+   * @param {string} uuid The proximity ID of the beacon being targeted.
    * This value must not be blank nor invalid as a UUID.
-   * @param {Number} major The major value that you use to identify one or more beacons.
-   * @param {Number} minor The minor value that you use to identify a specific beacon.
+   * @param {number} major The major value that you use to identify one or more beacons.
+   * @param {number} minor The minor value that you use to identify a specific beacon.
    * @param {BOOL} notifyEntryStateOnDisplay
-   *
    * @returns {BeaconRegion} Returns the BeaconRegion that was created
    */
   @CordovaCheck({ sync: true })
@@ -401,7 +399,6 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
 
   /**
    * @param {IBeaconDelegate} delegate An instance of a delegate to register with the native layer.
-   *
    * @returns {IBeaconDelegate} Returns the IBeaconDelegate
    */
   @Cordova()
@@ -436,6 +433,7 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
 
   /**
    * Determines if bluetooth is switched on, according to the native layer.
+   *
    * @returns {Promise<boolean>} Returns a promise which is resolved with a {Boolean}
    * indicating whether bluetooth is active.
    */
@@ -479,7 +477,6 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
    *
    * @param {Region} region An instance of {Region} which will be monitored
    * by the operating system.
-   *
    * @returns {Promise<string>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the monitoring request.
    */
@@ -498,7 +495,6 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
    *
    * @param {Region} region An instance of {Region} which will be monitored
    * by the operating system.
-   *
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
@@ -516,7 +512,6 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
    *
    * @param {Region} region An instance of {Region} which will be monitored
    * by the operating system.
-   *
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
@@ -535,7 +530,6 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
    *
    * @param {Region} region An instance of {BeaconRegion} which will be monitored
    * by the operating system.
-   *
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the monitoring request.
    */
@@ -554,7 +548,6 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
    *
    * @param {Region} region An instance of {BeaconRegion} which will be monitored
    * by the operating system.
-   *
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop monitoring.
    */
@@ -581,6 +574,7 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
    * <a href="https://developer.apple.com/library/prerelease/iOS/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/instm/CLLocationManager/requestAlwaysAuthorization">requestAlwaysAuthorization</a>
    *
    * If you are using this plugin on Android devices only, you will never have to use this, nor {@code requestAlwaysAuthorization}
+   *
    * @returns {Promise<void>} Returns a promise that is resolved when the request dialog is shown.
    */
   @Cordova({ otherPromise: true })
@@ -621,6 +615,7 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
 
   /**
    * Determines if ranging is available or not, according to the native layer.
+   *
    * @returns {Promise<boolean>} Returns a promise which is resolved with a {Boolean}
    * indicating whether ranging is available or not.
    */
@@ -634,7 +629,6 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
    *
    * @param {Region} region An instance of {Region} which will be checked
    * by the operating system.
-   *
    * @returns {Promise<boolean>} Returns a promise which is resolved with a {Boolean}
    * indicating whether the region type is supported or not.
    */
@@ -656,7 +650,7 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
    * by the operating system.
    * @param {Integer} measuredPower: Optional parameter, if left empty, the device will
    * use it's own default value.
-   *
+   * @param measuredPower
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the advertising request.
    */
@@ -670,6 +664,7 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
    *
    * This is done asynchronously and may not be immediately reflected in isAdvertising.
    *
+   * @param region
    * @returns {Promise<void>} Returns a promise which is resolved as soon as the
    * native layer acknowledged the dispatch of the request to stop advertising.
    */
@@ -680,6 +675,7 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
 
   /**
    * Determines if advertising is available or not, according to the native layer.
+   *
    * @returns {Promise<void>} Returns a promise which is resolved with a {Boolean}
    * indicating whether advertising is available or not.
    */
@@ -690,6 +686,7 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
 
   /**
    * Determines if advertising is currently active, according to the native layer.
+   *
    * @returns {Promise<void>} Returns a promise which is resolved with a {Boolean}
    * indicating whether advertising is active.
    */
@@ -751,8 +748,7 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
    * Appends the provided [message] to the device logs.
    * Note: If debug logging is turned off, this won't do anything.
    *
-   * @param {String} message The message to append to the device logs.
-   *
+   * @param {string} message The message to append to the device logs.
    * @returns {Promise<void>} Returns a promise which is resolved with the log
    * message received by the native layer for appending. The returned message
    * is expected to be equivalent to the one provided in the original call.

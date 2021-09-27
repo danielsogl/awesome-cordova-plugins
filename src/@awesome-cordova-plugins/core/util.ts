@@ -1,6 +1,8 @@
 declare const window: any;
 
 /**
+ * @param element
+ * @param path
  * @private
  */
 export function get(element: Element | Window, path: string) {
@@ -16,6 +18,7 @@ export function get(element: Element | Window, path: string) {
 }
 
 /**
+ * @param callback
  * @private
  */
 export function getPromise(callback: Function = () => {}): Promise<any> {

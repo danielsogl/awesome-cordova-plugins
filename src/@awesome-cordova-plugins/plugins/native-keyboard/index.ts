@@ -174,8 +174,6 @@ export interface NativeKeyboardUpdateMessengerOptions {
  * @name Native Keyboard
  * @description
  * A cross platform WhatsApp / Messenger / Slack -style keyboard even. For your Cordova app.
- *
- *
  * @usage
  * ```
  * import { NativeKeyboard } from '@awesome-cordova-plugins/native-keyboard/ngx';
@@ -204,6 +202,7 @@ export interface NativeKeyboardUpdateMessengerOptions {
 export class NativeKeyboard extends AwesomeCordovaNativePlugin {
   /**
    * Show messenger
+   *
    * @param options {NativeKeyboardOptions}
    */
   @Cordova({ sync: true })
@@ -211,6 +210,7 @@ export class NativeKeyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Hide messenger
+   *
    * @param options {NativeKeyboardOptions}
    */
   @Cordova({ sync: true })
@@ -218,7 +218,8 @@ export class NativeKeyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Programmatically pop up the keyboard again if the user dismissed it.
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova()
   showMessengerKeyboard(): Promise<any> {
@@ -235,6 +236,7 @@ export class NativeKeyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Manipulate the messenger while it's open. For instance if you want to update the text programmatically based on what the user typed.
+   *
    * @param options
    */
   @Cordova()

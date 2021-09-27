@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
  * @description
  * Because the original GPS positioning uses Google Browser positioning, and Google withdraws from China, resulting in GPS Android positioning can not be positioned.
  * Gaode location can directly return address informationGaode location can directly return address information
- *
  * @usage
  * ```typescript
  * import { GaoDeLocation } from '@awesome-cordova-plugins/gao-de-location/ngx';
@@ -68,8 +67,9 @@ import { Observable } from 'rxjs';
 export class GaoDeLocation extends AwesomeCordovaNativePlugin {
   /**
    * Single location
+   *
    * @param positionOptions
-   * @return Promise<PositionRes>
+   * @returns Promise<PositionRes>
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -80,8 +80,9 @@ export class GaoDeLocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Start serial location
+   *
    * @param positionOptions
-   * @return Promise<PositionRes>
+   * @returns Promise<PositionRes>
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -93,7 +94,8 @@ export class GaoDeLocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop Serial Location
-   * @return Promise<any>
+   *
+   * @returns Promise<any>
    */
   @Cordova({
     callbackOrder: 'reverse',

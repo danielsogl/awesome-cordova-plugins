@@ -54,7 +54,6 @@ export interface SpeechRecognitionListeningOptionsAndroid {
  * @name Speech Recognition
  * @description
  * This plugin does speech recognition using cloud services
- *
  * @usage
  * ```typescript
  * import { SpeechRecognition } from '@awesome-cordova-plugins/speech-recognition/ngx';
@@ -110,7 +109,8 @@ export interface SpeechRecognitionListeningOptionsAndroid {
 export class SpeechRecognition extends AwesomeCordovaNativePlugin {
   /**
    * Check feature available
-   * @return {Promise<boolean>}
+   *
+   * @returns {Promise<boolean>}
    */
   @Cordova()
   isRecognitionAvailable(): Promise<boolean> {
@@ -119,7 +119,9 @@ export class SpeechRecognition extends AwesomeCordovaNativePlugin {
 
   /**
    * Start the recognition process
-   * @return {Promise< string[] >} list of recognized terms
+   *
+   * @param options
+   * @returns {Promise< string[] >} list of recognized terms
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -139,7 +141,8 @@ export class SpeechRecognition extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the list of supported languages
-   * @return {Promise< string[] >} list of languages
+   *
+   * @returns {Promise< string[] >} list of languages
    */
   @Cordova()
   getSupportedLanguages(): Promise<string[]> {
@@ -148,7 +151,8 @@ export class SpeechRecognition extends AwesomeCordovaNativePlugin {
 
   /**
    * Check permission
-   * @return {Promise<boolean>} has permission
+   *
+   * @returns {Promise<boolean>} has permission
    */
   @Cordova()
   hasPermission(): Promise<boolean> {
@@ -157,7 +161,8 @@ export class SpeechRecognition extends AwesomeCordovaNativePlugin {
 
   /**
    * Request permissions
-   * @return {Promise<void>}
+   *
+   * @returns {Promise<void>}
    */
   @Cordova()
   requestPermission(): Promise<void> {

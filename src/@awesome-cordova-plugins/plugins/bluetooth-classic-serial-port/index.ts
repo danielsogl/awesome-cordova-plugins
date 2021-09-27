@@ -53,7 +53,6 @@ export interface BluetoothClassicSerialPortDevice {
  *
  *  }
  * ```
- *
  */
 @Plugin({
   pluginName: 'BluetoothClassicSerialPort',
@@ -66,6 +65,7 @@ export interface BluetoothClassicSerialPortDevice {
 export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
   /**
    * Connect to a Bluetooth device
+   *
    * @param {string} deviceId Identifier of the remote device.
    * @param {string} deviceId this is the MAC address.
    * @param {string|string[]} interfaceId Identifier of the remote device
@@ -82,6 +82,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Connect to a Bluetooth device
+   *
    * @deprecated
    * @param {string} deviceId Identifier of the remote device.
    * @param {number} deviceId this is the connection ID
@@ -99,6 +100,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Connect insecurely to a Bluetooth device
+   *
    * @param {string} deviceId Identifier of the remote device. For Android this is the MAC address
    * @param {string | string[]} interfaceArray This identifies the serial port to connect to. For Android this is the SPP_UUID.
    * @returns {Promise<any>} Subscribe to connect.
@@ -113,6 +115,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Disconnect from the connected device
+   *
    * @param {string} interfaceId The interface to Disconnect
    * @returns {Promise<any>}
    */
@@ -123,6 +126,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Disconnect from all the connected device
+   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -134,6 +138,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Writes data to the serial port
+   *
    * @param {string} interfaceId The interface to send the data to
    * @param {ArrayBuffer | string | number[] | Uint8Array} data ArrayBuffer of data
    * @returns {Promise<any>} returns a promise when data has been written
@@ -147,6 +152,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets the number of bytes of data available
+   *
    * @param {string} interfaceId The interface to check
    * @returns {Promise<any>} returns a promise that contains the available bytes
    */
@@ -159,6 +165,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Function read reads the data from the buffer. The data is passed to the success callback as a String. Calling read when no data is available will pass an empty String to the callback.
+   *
    * @param {string} interfaceId The interface to read
    * @returns {Promise<any>} returns a promise with data from the buffer
    */
@@ -171,6 +178,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Reads data from the buffer until it reaches a delimiter
+   *
    * @param {string} interfaceId The interface to read
    * @param {string} delimiter string that you want to search until
    * @returns {Observable<any>} returns a promise
@@ -184,6 +192,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to be notified when data is received
+   *
    * @param {string | string[]} interfaceId The interface to subscribe to
    * @param {string} delimiter the string you want to watch for
    * @returns {Observable<any>} returns an observable.
@@ -198,6 +207,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Unsubscribe from a subscription
+   *
    * @param {string | string[]} interfaceId The interface to unsubscribe from
    * @returns {Promise<any>} returns an promise.
    */
@@ -210,6 +220,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to be notified when data is received
+   *
    * @param {string | string[]} interfaceId The interface to subscribe to
    * @returns {Observable<any>} returns an observable
    */
@@ -223,6 +234,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Unsubscribe from a subscription
+   *
    * @param {string | string[]} interfaceId The interface to unsubscribe from
    * @returns {Promise<any>} returns an promise.
    */
@@ -235,6 +247,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Clears data in buffer
+   *
    * @param {string} interfaceId The interface to clear data
    * @returns {Promise<any>} returns a promise when completed
    */
@@ -247,6 +260,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Lists bonded devices
+   *
    * @returns {Promise<BluetoothClassicSerialPortDevice>} returns a promise
    */
   @Cordova({
@@ -258,6 +272,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Reports the connection status
+   *
    * @param {string} interfaceId The interface to check
    * @returns {Promise<boolean>} returns a promise
    */
@@ -270,6 +285,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Reports if bluetooth is enabled
+   *
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
@@ -281,6 +297,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Show the Bluetooth settings on the device
+   *
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
@@ -292,6 +309,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable Bluetooth on the device
+   *
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
@@ -303,6 +321,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Discover unpaired devices
+   *
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
@@ -314,6 +333,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to be notified on Bluetooth device discovery. Discovery process must be initiated with the `discoverUnpaired` function.
+   *
    * @returns {Observable<any>} Returns an observable
    */
   @Cordova({

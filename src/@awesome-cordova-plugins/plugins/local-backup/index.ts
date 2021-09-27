@@ -5,7 +5,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @name LocalBackup
  * @description
  * This plugin to create local backup
- *
  * @usage
  * ```typescript
  * import { LocalBackup } from '@awesome-cordova-plugins/local-backup/ngx';

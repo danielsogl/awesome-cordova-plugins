@@ -101,8 +101,9 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class OpenNativeSettings extends AwesomeCordovaNativePlugin {
   /**
    * Opens a setting dialog
+   *
    * @param setting {string|array} setting name
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova()
   open(setting: string | [string, boolean]): Promise<any> {

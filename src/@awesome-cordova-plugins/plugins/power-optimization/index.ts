@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @description
  * Android Custom Roms made sometimes your apps unfunctional due to being killed in the background, notification messages do not appearing or your services being killed by agressive power saving mode.
  * The Power Optimization plugin give you android PowerManager methods with cordova.
- *
  * @usage
  * ```typescript
  * import { PowerOptimization } from '@awesome-cordova-plugins/power-optimization/ngx';
@@ -32,6 +31,7 @@ export class PowerOptimization extends AwesomeCordovaNativePlugin {
   /**
    * Check if the battery optimization is ignoring
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
+   *
    * @returns {Promise<any>}
    */
   @Cordova({ sync: true })
@@ -41,6 +41,7 @@ export class PowerOptimization extends AwesomeCordovaNativePlugin {
   /**
    * Request permisson to ignore optimizations:
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
+   *
    * @returns {Promise<any>}
    */
   @Cordova({ sync: true })
@@ -50,6 +51,7 @@ export class PowerOptimization extends AwesomeCordovaNativePlugin {
   /**
    * Go to battery optimizations configurations menu:
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
+   *
    * @returns {Promise<any>}
    */
   @Cordova({ sync: true })
@@ -59,6 +61,7 @@ export class PowerOptimization extends AwesomeCordovaNativePlugin {
   /**
    * Check if have any data restrictions in background:
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
+   *
    * @returns {Promise<any>}
    */
   @Cordova({ sync: true })
@@ -68,6 +71,7 @@ export class PowerOptimization extends AwesomeCordovaNativePlugin {
   /**
    * Go to data restrictions in background configurations menu:
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
+   *
    * @returns {Promise<any>}
    */
   @Cordova({ sync: true })
@@ -77,6 +81,7 @@ export class PowerOptimization extends AwesomeCordovaNativePlugin {
   /**
    * Check if have another battery restriction is present into phone (like huawei, xiaomi, etc):
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
+   *
    * @returns {Promise<any>}
    */
   @Cordova({ sync: true })
@@ -86,6 +91,7 @@ export class PowerOptimization extends AwesomeCordovaNativePlugin {
   /**
    * Go to configurations menu if another battery restriction is present into phone (like huawei, xiaomi, etc). You can send true into params if you want to force show the menu (is only show the fist time without params):
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization
+   *
    * @returns {Promise<any>}
    */
   @Cordova({ sync: true })

@@ -5,7 +5,6 @@ import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@a
  * @name Analytics Firebase
  * @description
  * Google Analytics Firebase plugin for Ionic Native apps.
- *
  * @usage
  * ```typescript
  * import { AnalyticsFirebase } from '@awesome-cordova-plugins/analytics-firebase';
@@ -65,6 +64,7 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
   /**
    * This enum represents AnalyticsFirebase default events.
    * Use one of these default events or a custom event
+   *
    * @readonly
    */
   @CordovaProperty()
@@ -105,6 +105,7 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
   /**
    * This enum represents AnalyticsFirebase default params.
    * Use one of these default params or a custom param
+   *
    * @readonly
    */
   @CordovaProperty()
@@ -168,7 +169,7 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
    *
    * @param eventName {string} The event name
    * @param eventParams {object} (Optional) The event params
-   * @return {Promise<any>} Returns a promise that resolves when the event is logged
+   * @returns {Promise<any>} Returns a promise that resolves when the event is logged
    */
   @Cordova()
   logEvent(eventName: string, eventParams?: object): Promise<any> {
@@ -177,7 +178,8 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Clears all analytics data for this app from the device and resets the app instance id
-   * @return {Promise<any>} Returns a promise that resolves when the analytics data is cleared
+   *
+   * @returns {Promise<any>} Returns a promise that resolves when the analytics data is cleared
    */
   @Cordova()
   resetAnalyticsData(): Promise<any> {
@@ -186,8 +188,10 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets whether analytics collection is enabled for this app on this device. This setting is persisted across app sessions. By default it is enabled
+   *
    * @param screenName {boolean} The value of the collection
-   * @return {Promise<any>} Returns a promise that resolves when the collection is enabled/disabled
+   * @param enabled
+   * @returns {Promise<any>} Returns a promise that resolves when the collection is enabled/disabled
    */
   @Cordova()
   setAnalyticsCollectionEnabled(enabled: boolean): Promise<any> {
@@ -197,8 +201,9 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
   /**
    * Sets the current screen name, which specifies the current visual context in your app.
    * This helps identify the areas in your app where users spend their time and how they interact with your app
+   *
    * @param screenName {string} The screen name
-   * @return {Promise<any>} Returns a promise that resolves when the current screen is setted
+   * @returns {Promise<any>} Returns a promise that resolves when the current screen is setted
    */
   @Cordova()
   setCurrentScreen(screenName: string): Promise<any> {
@@ -207,8 +212,10 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the minimum engagement time required before starting a session. The default value is 10000 (10 seconds)
+   *
    * @param screenName {number} The duration in milliseconds
-   * @return {Promise<any>} Returns a promise that resolves when the minimum session duration is set
+   * @param milliseconds
+   * @returns {Promise<any>} Returns a promise that resolves when the minimum session duration is set
    */
   @Cordova()
   setMinimumSessionDuration(milliseconds: number): Promise<any> {
@@ -217,8 +224,10 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the duration of inactivity that terminates the current session. The default value is 1800000 (30 minutes)
+   *
    * @param screenName {number} The duration in milliseconds
-   * @return {Promise<any>} Returns a promise that resolves when the session timeout duration is set
+   * @param milliseconds
+   * @returns {Promise<any>} Returns a promise that resolves when the session timeout duration is set
    */
   @Cordova()
   setSessionTimeoutDuration(milliseconds: number): Promise<any> {
@@ -227,8 +236,9 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the user ID property. This feature must be used in accordance with Google's Privacy Policy
+   *
    * @param userId {string} The user id
-   * @return {Promise<any>} Returns a promise that resolves when the user id is setted
+   * @returns {Promise<any>} Returns a promise that resolves when the user id is setted
    */
   @Cordova()
   setUserId(userId: string): Promise<any> {
@@ -237,9 +247,10 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a user property to a given value. Up to 25 user property names are supported. Once set, user property values persist throughout the app lifecycle and across sessions
+   *
    * @param userPropertyName {string} The user property name
    * @param userPropertyValue {string} The user property value
-   * @return {Promise<any>} Returns a promise that resolves when the user property setted
+   * @returns {Promise<any>} Returns a promise that resolves when the user property setted
    */
   @Cordova()
   setUserProperty(userPropertyName: string, userPropertyValue: string): Promise<any> {

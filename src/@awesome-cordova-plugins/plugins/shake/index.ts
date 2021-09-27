@@ -30,6 +30,7 @@ import { Observable } from 'rxjs';
 export class Shake extends AwesomeCordovaNativePlugin {
   /**
    * Watch for shake gesture
+   *
    * @param sensitivity {number} Optional sensitivity parameter. Defaults to 40
    * @returns {Observable<any>}
    */

@@ -113,7 +113,6 @@ export interface VideoInfo {
 /**
  * @name Video Editor
  * @description Edit videos using native device APIs
- *
  * @usage
  * ```typescript
  * import { VideoEditor } from '@awesome-cordova-plugins/video-editor/ngx';
@@ -161,6 +160,7 @@ export class VideoEditor extends AwesomeCordovaNativePlugin {
 
   /**
    * Transcode a video
+   *
    * @param options {TranscodeOptions} Options
    * @returns {Promise<string>} Returns a promise that resolves to the path of the transcoded video
    */
@@ -173,6 +173,7 @@ export class VideoEditor extends AwesomeCordovaNativePlugin {
 
   /**
    * Trim a video
+   *
    * @param options {TrimOptions} Options
    * @returns {Promise<string>} Returns a promise that resolves to the path of the trimmed video
    */
@@ -186,6 +187,7 @@ export class VideoEditor extends AwesomeCordovaNativePlugin {
 
   /**
    * Create a JPEG thumbnail from a video
+   *
    * @param options {CreateThumbnailOptions} Options
    * @returns {Promise<string>} Returns a promise that resolves to the path to the jpeg image on the device
    */
@@ -198,6 +200,7 @@ export class VideoEditor extends AwesomeCordovaNativePlugin {
 
   /**
    * Get info on a video (width, height, orientation, duration, size, & bitrate)
+   *
    * @param options {GetVideoInfoOptions} Options
    * @returns {Promise<VideoInfo>} Returns a promise that resolves to an object containing info on the video
    */

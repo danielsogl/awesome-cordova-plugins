@@ -7,8 +7,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * This plugin does use the iOS class SKStore​Review​Controller to open the inApp review popup available since iOS 10.3
  *
  * This functionality only works on iOS devices
- *
- *
  * @usage
  * ```typescript
  * import { InAppReview } from '@awesome-cordova-plugins/in-app-review/ngx';
@@ -37,7 +35,8 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class InAppReview extends AwesomeCordovaNativePlugin {
   /**
    * Open the inApp review popup
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   *
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   requestReview(): Promise<any> {

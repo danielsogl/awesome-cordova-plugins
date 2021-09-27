@@ -72,7 +72,6 @@ export class SumUpKeys {
  * @name SumUp
  * @description
  * Plugin to communicate with a SumUp payment terminal
- *
  * @usage
  * ```typescript
  * import { SumUp } from '@awesome-cordova-plugins/sum-up';
@@ -133,8 +132,9 @@ export class SumUp extends AwesomeCordovaNativePlugin {
    * Login a user with an optional access token.
    * If the access token is provided and valid, the user is logged in autmatically.
    * Otherwise the user has to type in the credentials
+   *
    * @param sumUpKeys {SumUpKeys}
-   * @return {Promise<SumUpResponse>} Return a SumUpResponse object
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
   login(sumUpKeys: SumUpKeys): Promise<SumUpResponse> {
@@ -143,8 +143,9 @@ export class SumUp extends AwesomeCordovaNativePlugin {
 
   /**
    * Authenticates the account with the given access token. Parameter accessToken is required.
+   *
    * @param accessToken {string}
-   * @return {Promise<SumUpResponse>} Return a SumUpResponse object
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
   auth(accessToken: string): Promise<SumUpResponse> {
@@ -153,7 +154,8 @@ export class SumUp extends AwesomeCordovaNativePlugin {
 
   /**
    * Opens a new window with the all account settings of an logged in user.
-   * @return {Promise<SumUpResponse>} Return a SumUpResponse object
+   *
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
   getSettings(): Promise<SumUpResponse> {
@@ -162,7 +164,8 @@ export class SumUp extends AwesomeCordovaNativePlugin {
 
   /**
    * Logout a user from the account.
-   * @return {Promise<SumUpResponse>} Return a SumUpResponse object
+   *
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
   logout(): Promise<SumUpResponse> {
@@ -171,7 +174,8 @@ export class SumUp extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks whether the user is logged in or not and returns an object with the field isLoggedIn which is a boolean value.
-   * @return {Promise<SumUpResponse>} Return a SumUpResponse object
+   *
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
   isLoggedIn(): Promise<SumUpLoginStatus> {
@@ -181,7 +185,8 @@ export class SumUp extends AwesomeCordovaNativePlugin {
   /**
    * Prepares the terminal for a payment. Checks whether the CardReader is ready to transmit and
    * if an instance of the CardReaderManager is available.
-   * @return {Promise<SumUpResponse>} Return a SumUpResponse object
+   *
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
   prepare(): Promise<SumUpResponse> {
@@ -190,7 +195,8 @@ export class SumUp extends AwesomeCordovaNativePlugin {
 
   /**
    * Tries to close the connection to the card terminal.
-   * @return {Promise<SumUpResponse>} Return a SumUpResponse object
+   *
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
   closeConnection(): Promise<SumUpResponse> {
@@ -200,9 +206,10 @@ export class SumUp extends AwesomeCordovaNativePlugin {
   /**
    * Opens a native SumUp window to proceed a payment. Parameter amount and currencycode are required.
    * If the Payment was successful it returns an SumUpPayment object with information about the payment.
+   *
    * @param amount {number}
    * @param currencycode {string}
-   * @return {Promise<SumUpResponse>} Return a SumUpResponse object
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
   pay(amount: number, currencycode: string): Promise<SumUpPayment> {

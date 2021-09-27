@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
  * @description
  * This module depends on the [Tealium Cordova Plugin](https://github.com/tealium/cordova-plugin). Without it, this module will not do anything.
  * Makes the IDFA and Google Ad Identifier available in the Tealium data layer.
- *
  * @usage
  * ```
  * import { TealiumAdIdentifier } from '@awesome-cordova-plugins/tealium-adidentifier/ngx';
@@ -36,8 +35,9 @@ import { Injectable } from '@angular/core';
 export class TealiumAdIdentifier extends AwesomeCordovaNativePlugin {
   /**
    * This function stores the ad identifier information as persistent data
+   *
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   setPersistent(instanceName: string): Promise<any> {
@@ -46,8 +46,9 @@ export class TealiumAdIdentifier extends AwesomeCordovaNativePlugin {
 
   /**
    * This function stores the ad identifier information as volatile data
+   *
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   setVolatile(instanceName: string): Promise<any> {

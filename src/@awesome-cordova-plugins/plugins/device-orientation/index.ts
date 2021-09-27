@@ -40,7 +40,6 @@ export interface DeviceOrientationCompassOptions {
  * @name Device Orientation
  * @description
  * Requires Cordova plugin: `cordova-plugin-device-orientation`. For more info, please see the [Device Orientation docs](https://github.com/apache/cordova-plugin-device-orientation).
- *
  * @usage
  * ```typescript
  * // DeviceOrientationCompassHeading is an interface for compass
@@ -90,6 +89,7 @@ export interface DeviceOrientationCompassOptions {
 export class DeviceOrientation extends AwesomeCordovaNativePlugin {
   /**
    * Get the current compass heading.
+   *
    * @returns {Promise<DeviceOrientationCompassHeading>}
    */
   @Cordova()
@@ -101,6 +101,7 @@ export class DeviceOrientation extends AwesomeCordovaNativePlugin {
    * Get the device current heading at a regular interval
    *
    * Stop the watch by unsubscribing from the observable
+   *
    * @param {DeviceOrientationCompassOptions} [options] Options for compass. Frequency and Filter. Optional
    * @returns {Observable<DeviceOrientationCompassHeading>} Returns an observable that contains the compass heading
    */

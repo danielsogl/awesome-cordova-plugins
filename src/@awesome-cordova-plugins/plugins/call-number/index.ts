@@ -5,8 +5,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Call Number
  * @description
  * Call a number directly from your Cordova/Ionic application.
- * **NOTE**: The iOS Simulator (and maybe Android Simulators) do not provide access to the phone subsystem.
- *
+ * NOTE**: The iOS Simulator (and maybe Android Simulators) do not provide access to the phone subsystem.
  * @usage
  * ```typescript
  * import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
@@ -33,9 +32,10 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class CallNumber extends AwesomeCordovaNativePlugin {
   /**
    * Calls a phone number
+   *
    * @param {string} numberToCall The phone number to call as a string
    * @param {boolean} bypassAppChooser Set to true to bypass the app chooser and go directly to dialer
-   * @return {Promise<any>}
+   * @returns {Promise<any>}
    */
   @Cordova({
     callbackOrder: 'reverse',
@@ -46,7 +46,8 @@ export class CallNumber extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if call feature is available
-   * @return {Promise<any>}
+   *
+   * @returns {Promise<any>}
    */
   @Cordova()
   isCallSupported(): Promise<any> {

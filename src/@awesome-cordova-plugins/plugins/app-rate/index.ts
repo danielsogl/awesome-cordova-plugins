@@ -205,7 +205,6 @@ export interface AppUrls {
  * The AppRate plugin makes it easy to prompt the user to rate your app, either now, later, or never.
  *
  * Requires Cordova plugin: cordova-plugin-apprate. For more info, please see the [AppRate plugin docs](https://github.com/pushandplay/cordova-plugin-apprate).
- *
  * @usage
  * ```typescript
  * import { AppRate } from '@awesome-cordova-plugins/app-rate/ngx';
@@ -236,13 +235,11 @@ export interface AppUrls {
  *
  * this.appRate.promptForRating(false);
  * ```
- *
  * @interfaces
  * AppRatePreferences
  * AppUrls
  * AppRateCallbacks
  * AppRateCustomLocal
- *
  */
 @Plugin({
   pluginName: 'AppRate',
@@ -261,7 +258,9 @@ export class AppRate extends AwesomeCordovaNativePlugin {
 
   /**
    * Set preferences
-   * @return void
+   *
+   * @param pref
+   * @returns void
    */
   @Cordova()
   setPreferences(pref: AppRatePreferences): void {
@@ -270,7 +269,8 @@ export class AppRate extends AwesomeCordovaNativePlugin {
 
   /**
    * Get preferences
-   * @return AppRatePreferences
+   *
+   * @returns AppRatePreferences
    */
   @Cordova()
   getPreferences(): AppRatePreferences {
@@ -279,6 +279,7 @@ export class AppRate extends AwesomeCordovaNativePlugin {
 
   /**
    * Prompts the user for rating
+   *
    * @param {boolean} immediately  Show the rating prompt immediately.
    */
   @Cordova()

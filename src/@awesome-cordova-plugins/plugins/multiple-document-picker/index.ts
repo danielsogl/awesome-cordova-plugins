@@ -9,7 +9,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @name Multiple Documents Picker
  * @description
  * This plugin allows users to pick multiple documents/images at once
- *
  * @usage
  * ```typescript
  * import { MultipleDocumentsPicker } from '@awesome-cordova-plugins/multiple-document-picker/ngx';
@@ -37,8 +36,9 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class MultipleDocumentsPicker extends AwesomeCordovaNativePlugin {
   /**
    * This function allow user to show native file picker
+   *
    * @param type {number} To pick type of files: for images send 1, for all files send 2
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   pick(type: number): Promise<any> {
