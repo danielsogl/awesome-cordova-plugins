@@ -21,7 +21,7 @@
     "docs-json": "ts-node -P scripts/tsconfig.json scripts/docs-json",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "shipit": "npm run build && npm run readmes && npm run npmpub",
-    "prettier": "prettier src/**/* --write --ignore-unknown"
+    "prettier": "prettier --write --ignore-unknown \"**/*\""
   },
   "dependencies": {
     "tslib": "^2.3.1"
@@ -100,8 +100,6 @@
     }
   },
   "lint-staged": {
-    "*": [
-      "prettier src/**/* --write --ignore-unknown"
-    ]
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

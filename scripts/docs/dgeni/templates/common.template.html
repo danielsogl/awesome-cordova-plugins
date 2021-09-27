@@ -12,7 +12,7 @@ docType: "<$ doc.docType $>"
 ---
 
 <@- macro interfaceTable(interface) -@> <@ for export in doc.moduleDoc.exports -@> <@ if export.name == interface @>
-<table class="table param-table" style="margin: 0;">
+<table class="table param-table" style="margin: 0">
   <thead>
     <tr>
       <th>Param</th>
@@ -23,15 +23,11 @@ docType: "<$ doc.docType $>"
   <tbody>
     <@ for param in export.members @>
     <tr>
-      <td>
-        <$ param.name $>
-      </td>
+      <td><$ param.name $></td>
       <td>
         <code><$ param.returnType | escape $></code>
       </td>
-      <td>
-        <$ param.description | marked $> <@ if param.optional @><em>(optional)</em><@ endif @>
-      </td>
+      <td><$ param.description | marked $> <@ if param.optional @><em>(optional)</em><@ endif @></td>
     </tr>
     <@ endfor @>
   </tbody>
@@ -42,7 +38,7 @@ docType: "<$ doc.docType $>"
   ><$ doc.fileInfo.relativePath $> (line <$ doc.location.start.line+1 $>)</a
 >
 <@- endmacro -@> <@- macro paramTable(params, isDirective) -@>
-<table class="table param-table" style="margin: 0;">
+<table class="table param-table" style="margin: 0">
   <thead>
     <tr>
       <th><@ if isDirective @>Attr<@ else @>Param<@ endif @></th>
@@ -53,12 +49,8 @@ docType: "<$ doc.docType $>"
   <tbody>
     <@- for param in params @>
     <tr>
-      <td>
-        <$ param.name $> <@- if param.alias @>| <$ param.alias $><@ endif -@>
-      </td>
-      <td>
-        <$ typeList(param.typeList) $>
-      </td>
+      <td><$ param.name $> <@- if param.alias @>| <$ param.alias $><@ endif -@></td>
+      <td><$ typeList(param.typeList) $></td>
       <td>
         <$ param.description | marked $> <@- if param.defaultValue @>
         <p><em>(default: <$ param.defaultValue $>)</em></p>
@@ -129,9 +121,7 @@ true @>
 
 <p>
   Repo:
-  <a href="<$ prop.repo $>">
-    <$ prop.repo $>
-  </a>
+  <a href="<$ prop.repo $>"> <$ prop.repo $> </a>
 </p>
 
 <# --- Install commands --- #>
@@ -162,7 +152,7 @@ $ npm install @ionic-native/<$ doc.npmId $>
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
 <$ doc.usage | marked $> <@ endif @> <# --- Plugin attributes --- #> <@- if doc.properties -@>
 <h2><a class="anchor" name="attributes" href="#attributes"></a>Attributes:</h2>
-<table class="table" style="margin: 0;">
+<table class="table" style="margin: 0">
   <thead>
     <tr>
       <th>Attribute</th>
@@ -176,17 +166,11 @@ $ npm install @ionic-native/<$ doc.npmId $>
   <tbody>
     <@- for prop in doc.properties -@>
     <tr>
-      <td>
-        <$ prop.name $>
-      </td>
+      <td><$ prop.name $></td>
       <@ if hasTypes @>
-      <td>
-        <$ prop.type.name $>
-      </td>
+      <td><$ prop.type.name $></td>
       <@ endif @>
-      <td>
-        <$ prop.description $>
-      </td>
+      <td><$ prop.description $></td>
     </tr>
     <@ endfor -@>
   </tbody>
