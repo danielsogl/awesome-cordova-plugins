@@ -2,8 +2,8 @@ import { CompilerHost, CompilerOptions, createCompilerHost, createProgram, EmitF
 import { copyFileSync, mkdirpSync, readJSONSync, writeJSONSync } from 'fs-extra';
 import { clone } from 'lodash';
 import { dirname, join, resolve } from 'path';
-import * as rimraf from 'rimraf';
-import * as rollup from 'rollup';
+import { sync } from 'rimraf';
+import { rollup } from 'rollup';
 import { ModuleKind, ModuleResolutionKind, ScriptTarget } from 'typescript';
 
 import { COMPILER_OPTIONS, PLUGIN_PATHS, ROOT } from './helpers';
@@ -61,21 +61,19 @@ export function generateLegacyBundles() {
     resolve(ROOT, 'dist/@awesome-cordova-plugins/core/index.js'),
     ...PLUGIN_PATHS.map(p => p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace('index.ts', 'ngx/index.js')),
   ].forEach(p =>
-    rollup
-      .rollup({
-        input: p,
-        onwarn(warning, warn) {
-          if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return;
-          warn(warning);
-        },
-        external: ['@angular/core', '@awesome-cordova-plugins/core', 'rxjs', 'tslib'],
+    rollup({
+      input: p,
+      onwarn(warning, warn) {
+        if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return;
+        warn(warning);
+      },
+      external: ['@angular/core', '@awesome-cordova-plugins/core', 'rxjs', 'tslib'],
+    }).then(bundle =>
+      bundle.write({
+        file: join(dirname(p), 'bundle.js'),
+        format: 'cjs',
       })
-      .then(bundle =>
-        bundle.write({
-          file: join(dirname(p), 'bundle.js'),
-          format: 'cjs',
-        })
-      )
+    )
   );
 }
 
@@ -117,7 +115,7 @@ function createSourceFiles(): string[] {
       newPath = resolve(ngxPath, 'index.ts');
 
     // delete directory
-    rimraf.sync(ngxPath);
+    sync(ngxPath);
     mkdirpSync(ngxPath);
     copyFileSync(indexPath, newPath);
 
@@ -126,5 +124,5 @@ function createSourceFiles(): string[] {
 }
 
 export function cleanupNgx() {
-  PLUGIN_PATHS.forEach((indexPath: string) => rimraf.sync(indexPath.replace('index.ts', 'ngx')));
+  PLUGIN_PATHS.forEach((indexPath: string) => sync(indexPath.replace('index.ts', 'ngx')));
 }
