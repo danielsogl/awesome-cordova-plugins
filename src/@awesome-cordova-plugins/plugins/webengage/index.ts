@@ -4,7 +4,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 /**
  * @name Webengage
  * @description
- * Ionic-Native wrapper that wraps Webengage Cordova plugin for Android and iOS
+ * Awesome Cordova Plugins wrapper that wraps Webengage Cordova plugin for Android and iOS
  *
  * @usage
  * ```typescript

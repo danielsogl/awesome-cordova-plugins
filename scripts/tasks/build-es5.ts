@@ -27,7 +27,7 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   output: {
     path: DIST,
-    filename: 'ionic-native.min.js',
+    filename: 'awesome-cordova-plugins.min.js',
   },
   resolve: {
     modules: ['node_modules'],
