@@ -1,9 +1,9 @@
 {
-  "name": "ionic-native",
+  "name": "awesome-cordova-plugins",
   "version": "5.36.0",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
-  "homepage": "https://ionicframework.com/",
-  "author": "Ionic Team <hi@ionic.io> (https://ionic.io)",
+  "homepage": "https://awesome-cordova-plugins.com",
+  "author": "Daniel Sogl <me@danielsogl.com> (https://danielsogl.com)",
   "license": "MIT",
   "scripts": {
     "prepare": "is-ci || husky install",
@@ -21,7 +21,7 @@
     "docs-json": "ts-node -P scripts/tsconfig.json scripts/docs-json",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "shipit": "npm run build && npm run readmes && npm run npmpub",
-    "prettier": "prettier src/**/* --write"
+    "prettier": "prettier src/**/* --write --ignore-unknown"
   },
   "dependencies": {
     "tslib": "^2.3.1"
@@ -89,10 +89,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/ionic-native.git"
+    "url": "git+https://github.com/danielsogl/awesome-cordova-plugins.git"
   },
   "bugs": {
-    "url": "https://github.com/ionic-team/ionic-native/issues"
+    "url": "https://github.com/danielsogl/awesome-cordova-plugins/issues"
   },
   "config": {
     "commitizen": {
@@ -101,7 +101,7 @@
   },
   "lint-staged": {
     "*": [
-      "prettier src/**/* --write"
+      "prettier src/**/* --write --ignore-unknown"
     ]
   }
 }

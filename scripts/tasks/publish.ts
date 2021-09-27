@@ -14,7 +14,7 @@ const VERSION = MAIN_PACKAGE_JSON.version;
 const FLAGS = '--access public';
 
 const PACKAGE_JSON_BASE = {
-  description: 'Ionic Native - Native plugins for ionic apps',
+  description: 'Awesome Cordova Plugins - Native plugins for ionic apps',
   main: 'bundle.js',
   module: 'index.js',
   typings: 'index.d.ts',
@@ -22,11 +22,11 @@ const PACKAGE_JSON_BASE = {
   license: 'MIT',
   repository: {
     type: 'git',
-    url: 'https://github.com/ionic-team/ionic-native.git',
+    url: 'https://github.com/danielsogl/awesome-cordova-plugins.git',
   },
 };
 
-const DIST = path.resolve(ROOT, 'dist/@ionic-native');
+const DIST = path.resolve(ROOT, 'dist/@awesome-cordova-plugins');
 
 const PACKAGES = [];
 
@@ -34,13 +34,13 @@ const MIN_CORE_VERSION = '^5.1.0';
 const RXJS_VERSION = '^5.5.0 || ^6.5.0';
 
 const PLUGIN_PEER_DEPENDENCIES = {
-  '@ionic-native/core': MIN_CORE_VERSION,
+  '@awesome-cordova-plugins/core': MIN_CORE_VERSION,
   rxjs: RXJS_VERSION,
 };
 
 function getPackageJsonContent(name: string, peerDependencies = {}, dependencies = {}) {
   return merge(PACKAGE_JSON_BASE, {
-    name: '@ionic-native/' + name,
+    name: '@awesome-cordova-plugins/' + name,
     dependencies,
     peerDependencies,
     version: VERSION,
@@ -57,7 +57,7 @@ function writeNGXPackageJson(data: any, dir: string) {
   fs.writeJSONSync(filePath, data);
 }
 function prepare() {
-  // write @ionic-native/core package.json
+  // write @awesome-cordova-plugins/core package.json
   writePackageJson(
     getPackageJsonContent('core', { rxjs: RXJS_VERSION }, { '@types/cordova': 'latest' }),
     path.resolve(DIST, 'core')

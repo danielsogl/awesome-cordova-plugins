@@ -10,12 +10,12 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
     );
   }
 
-  // find the @ionic-native/core import statement
+  // find the @awesome-cordova-plugins/core import statement
   const importStatement = (file.statements as any).find((s: any) => {
-    return s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@ionic-native/core';
+    return s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@awesome-cordova-plugins/core';
   });
 
-  // we're only interested in files containing @ionic-native/core import statement
+  // we're only interested in files containing @awesome-cordova-plugins/core import statement
   if (!importStatement) return file;
 
   const decorators: string[] = [];

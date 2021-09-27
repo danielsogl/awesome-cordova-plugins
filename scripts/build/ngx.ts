@@ -34,7 +34,7 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
 
 // hacky way to export metadata only for core package
 export function transpileNgxCore() {
-  getProgram([path.resolve(ROOT, 'src/@ionic-native/core/index.ts')]).emit({
+  getProgram([path.resolve(ROOT, 'src/@awesome-cordova-plugins/core/index.ts')]).emit({
     emitFlags: EmitFlags.Metadata,
     emitCallback: ({ program, writeFile, customTransformers, cancellationToken, targetSourceFile }) => {
       return program.emit(targetSourceFile, writeFile, cancellationToken, true, customTransformers);
@@ -57,7 +57,7 @@ export function generateDeclarationFiles() {
 
 export function generateLegacyBundles() {
   [
-    path.resolve(ROOT, 'dist/@ionic-native/core/index.js'),
+    path.resolve(ROOT, 'dist/@awesome-cordova-plugins/core/index.js'),
     ...PLUGIN_PATHS.map(p =>
       p.replace(path.join(ROOT, 'src'), path.join(ROOT, 'dist')).replace('index.ts', 'ngx/index.js')
     ),
@@ -69,7 +69,7 @@ export function generateLegacyBundles() {
           if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return;
           warn(warning);
         },
-        external: ['@angular/core', '@ionic-native/core', 'rxjs', 'tslib'],
+        external: ['@angular/core', '@awesome-cordova-plugins/core', 'rxjs', 'tslib'],
       })
       .then(bundle =>
         bundle.write({
@@ -80,7 +80,7 @@ export function generateLegacyBundles() {
   );
 }
 
-// remove reference to @ionic-native/core decorators
+// remove reference to @awesome-cordova-plugins/core decorators
 export function modifyMetadata() {
   debugger;
   PLUGIN_PATHS.map(p =>
@@ -106,7 +106,7 @@ export function modifyMetadata() {
 function removeIonicNativeDecorators(node: any) {
   if (node.decorators && node.decorators.length) {
     node.decorators = node.decorators.filter(
-      (d: { expression: { module: string } }) => d.expression.module !== '@ionic-native/core'
+      (d: { expression: { module: string } }) => d.expression.module !== '@awesome-cordova-plugins/core'
     );
   }
 

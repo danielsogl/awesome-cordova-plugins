@@ -8,7 +8,7 @@ export const ROOT = path.resolve(__dirname, '../../');
 // tslint:disable-next-line:no-var-requires
 export const TS_CONFIG = clone(require(path.resolve(ROOT, 'tsconfig.json')));
 export const COMPILER_OPTIONS = TS_CONFIG.compilerOptions;
-export const PLUGINS_ROOT = path.join(ROOT, 'src/@ionic-native/plugins/');
+export const PLUGINS_ROOT = path.join(ROOT, 'src/@awesome-cordova-plugins/plugins/');
 export const PLUGIN_PATHS = fs.readdirSync(PLUGINS_ROOT).map(d => path.join(PLUGINS_ROOT, d, 'index.ts'));
 
 export function getDecorator(node: ts.Node, index = 0): ts.Decorator {
