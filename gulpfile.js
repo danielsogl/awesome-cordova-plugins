@@ -3,7 +3,6 @@
 const gulp = require('gulp'),
   minimist = require('minimist'),
   rename = require('gulp-rename'),
-  eslint = require('gulp-eslint'),
   replace = require('gulp-replace'),
   _ = require('lodash');
 
