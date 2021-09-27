@@ -1,5 +1,5 @@
 import { unlinkSync, writeJSONSync } from 'fs-extra';
-import * as path from 'path';
+import { resolve } from 'path';
 import * as ts from 'typescript';
 
 import { hasDecorator, ROOT } from '../helpers';
@@ -11,7 +11,7 @@ export interface InjectableClassEntry {
 }
 
 const injectableClasses: InjectableClassEntry[] = [];
-export const EMIT_PATH = path.resolve(ROOT, 'injectable-classes.json');
+export const EMIT_PATH = resolve(ROOT, 'injectable-classes.json');
 
 /**
  * This transformer extracts all the injectable classes

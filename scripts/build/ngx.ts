@@ -1,14 +1,15 @@
-import * as ts from 'typescript';
+import { CompilerHost, CompilerOptions, createCompilerHost, createProgram, EmitFlags } from '@angular/compiler-cli';
 import { copyFileSync, mkdirpSync, readJSONSync, writeJSONSync } from 'fs-extra';
-import * as path from 'path';
+import { clone } from 'lodash';
+import { dirname, join, resolve } from 'path';
 import * as rimraf from 'rimraf';
 import * as rollup from 'rollup';
-import { generateDeclarations } from './transpile';
-import { clone } from 'lodash';
-import { EmitFlags, createCompilerHost, CompilerOptions, CompilerHost, createProgram } from '@angular/compiler-cli';
+import * as ts from 'typescript';
+
+import { COMPILER_OPTIONS, PLUGIN_PATHS, ROOT } from './helpers';
 import { importsTransformer } from './transformers/imports';
 import { pluginClassTransformer } from './transformers/plugin-class';
-import { COMPILER_OPTIONS, PLUGIN_PATHS, ROOT } from './helpers';
+import { generateDeclarations } from './transpile';
 
 export function getProgram(rootNames: string[] = createSourceFiles()) {
   const options: CompilerOptions = clone(COMPILER_OPTIONS);
@@ -34,7 +35,7 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
 
 // hacky way to export metadata only for core package
 export function transpileNgxCore() {
-  getProgram([path.resolve(ROOT, 'src/@awesome-cordova-plugins/core/index.ts')]).emit({
+  getProgram([resolve(ROOT, 'src/@awesome-cordova-plugins/core/index.ts')]).emit({
     emitFlags: EmitFlags.Metadata,
     emitCallback: ({ program, writeFile, customTransformers, cancellationToken, targetSourceFile }) => {
       return program.emit(targetSourceFile, writeFile, cancellationToken, true, customTransformers);
@@ -57,10 +58,8 @@ export function generateDeclarationFiles() {
 
 export function generateLegacyBundles() {
   [
-    path.resolve(ROOT, 'dist/@awesome-cordova-plugins/core/index.js'),
-    ...PLUGIN_PATHS.map(p =>
-      p.replace(path.join(ROOT, 'src'), path.join(ROOT, 'dist')).replace('index.ts', 'ngx/index.js')
-    ),
+    resolve(ROOT, 'dist/@awesome-cordova-plugins/core/index.js'),
+    ...PLUGIN_PATHS.map(p => p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace('index.ts', 'ngx/index.js')),
   ].forEach(p =>
     rollup
       .rollup({
@@ -73,7 +72,7 @@ export function generateLegacyBundles() {
       })
       .then(bundle =>
         bundle.write({
-          file: path.join(path.dirname(p), 'bundle.js'),
+          file: join(dirname(p), 'bundle.js'),
           format: 'cjs',
         })
       )
@@ -83,7 +82,7 @@ export function generateLegacyBundles() {
 // remove reference to @awesome-cordova-plugins/core decorators
 export function modifyMetadata() {
   PLUGIN_PATHS.map(p =>
-    p.replace(path.join(ROOT, 'src'), path.join(ROOT, 'dist')).replace('index.ts', 'ngx/index.metadata.json')
+    p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace('index.ts', 'ngx/index.metadata.json')
   ).forEach(p => {
     const content = readJSONSync(p);
     let _prop: { members: { [x: string]: any[] } };
@@ -114,8 +113,8 @@ function removeIonicNativeDecorators(node: any) {
 
 function createSourceFiles(): string[] {
   return PLUGIN_PATHS.map((indexPath: string) => {
-    const ngxPath = path.resolve(indexPath.replace('index.ts', ''), 'ngx'),
-      newPath = path.resolve(ngxPath, 'index.ts');
+    const ngxPath = resolve(indexPath.replace('index.ts', ''), 'ngx'),
+      newPath = resolve(ngxPath, 'index.ts');
 
     // delete directory
     rimraf.sync(ngxPath);

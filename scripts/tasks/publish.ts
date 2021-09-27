@@ -3,7 +3,7 @@ import { exec } from 'child_process';
 import { writeJSONSync } from 'fs-extra';
 import { merge } from 'lodash';
 import { cpus } from 'os';
-import * as path from 'path';
+import { join, resolve } from 'path';
 
 import { PLUGIN_PATHS, ROOT } from '../build/helpers';
 import { Logger } from '../logger';
@@ -26,7 +26,7 @@ const PACKAGE_JSON_BASE = {
   },
 };
 
-const DIST = path.resolve(ROOT, 'dist/@awesome-cordova-plugins');
+const DIST = resolve(ROOT, 'dist/@awesome-cordova-plugins');
 
 const PACKAGES = [];
 
@@ -48,27 +48,27 @@ function getPackageJsonContent(name: string, peerDependencies = {}, dependencies
 }
 
 function writePackageJson(data: any, dir: string) {
-  const filePath = path.resolve(dir, 'package.json');
+  const filePath = resolve(dir, 'package.json');
   writeJSONSync(filePath, data);
   PACKAGES.push(dir);
 }
 function writeNGXPackageJson(data: any, dir: string) {
-  const filePath = path.resolve(dir, 'package.json');
+  const filePath = resolve(dir, 'package.json');
   writeJSONSync(filePath, data);
 }
 function prepare() {
   // write @awesome-cordova-plugins/core package.json
   writePackageJson(
     getPackageJsonContent('core', { rxjs: RXJS_VERSION }, { '@types/cordova': 'latest' }),
-    path.resolve(DIST, 'core')
+    resolve(DIST, 'core')
   );
 
   // write plugin package.json files
   PLUGIN_PATHS.forEach((pluginPath: string) => {
     const pluginName = pluginPath.split(/[\/\\]+/).slice(-2)[0];
     const packageJsonContents = getPackageJsonContent(pluginName, PLUGIN_PEER_DEPENDENCIES);
-    const dir = path.resolve(DIST, 'plugins', pluginName);
-    const ngxDir = path.join(dir, 'ngx');
+    const dir = resolve(DIST, 'plugins', pluginName);
+    const ngxDir = join(dir, 'ngx');
     writePackageJson(packageJsonContents, dir);
     writeNGXPackageJson(packageJsonContents, ngxDir);
   });

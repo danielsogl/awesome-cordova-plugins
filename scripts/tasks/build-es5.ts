@@ -1,5 +1,5 @@
 import { readJSONSync, writeFileSync } from 'fs-extra';
-import * as path from 'path';
+import { resolve } from 'path';
 import * as uglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import * as unminifiedPlugin from 'unminified-webpack-plugin';
 import * as webpack from 'webpack';
@@ -8,8 +8,8 @@ import { ROOT } from '../build/helpers';
 import { cleanEmittedData, EMIT_PATH, InjectableClassEntry } from '../build/transformers/extract-injectables';
 import { Logger } from '../logger';
 
-const DIST = path.resolve(ROOT, 'dist');
-const INDEX_PATH = path.resolve(DIST, 'index.js');
+const DIST = resolve(ROOT, 'dist');
+const INDEX_PATH = resolve(DIST, 'index.js');
 const INJECTABLE_CLASSES = readJSONSync(EMIT_PATH).map((item: InjectableClassEntry) => {
   item.file =
     './' +
@@ -33,14 +33,14 @@ const webpackConfig: webpack.Configuration = {
     modules: ['node_modules'],
     extensions: ['.js'],
     alias: {
-      '@awesome-cordova-plugins/core': path.resolve(DIST, '@awesome-cordova-plugins/core/index.js'),
+      '@awesome-cordova-plugins/core': resolve(DIST, '@awesome-cordova-plugins/core/index.js'),
     },
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: path.resolve(ROOT, 'scripts/build/remove-tslib-helpers.js'),
+        use: resolve(ROOT, 'scripts/build/remove-tslib-helpers.js'),
       },
     ],
   },

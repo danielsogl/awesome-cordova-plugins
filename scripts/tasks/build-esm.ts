@@ -1,5 +1,5 @@
 import { readFileSync, readJSONSync, writeFileSync } from 'fs-extra';
-import * as path from 'path';
+import { join } from 'path';
 
 import { PLUGIN_PATHS, ROOT } from '../build/helpers';
 import { EMIT_PATH } from '../build/transformers/extract-injectables';
@@ -8,16 +8,14 @@ import { generateDeclarations, transpile } from '../build/transpile';
 generateDeclarations();
 transpile();
 
-const outDirs = PLUGIN_PATHS.map(p =>
-  p.replace(path.join(ROOT, 'src'), path.join(ROOT, 'dist')).replace(/[\\/]index.ts/, '')
-);
+const outDirs = PLUGIN_PATHS.map(p => p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace(/[\\/]index.ts/, ''));
 const injectableClasses = readJSONSync(EMIT_PATH);
 
 outDirs.forEach(dir => {
   const classes = injectableClasses.filter(entry => entry.dirName === dir.split(/[\\/]+/).pop());
 
-  let jsFile: string = readFileSync(path.join(dir, 'index.js'), 'utf-8'),
-    dtsFile: string = readFileSync(path.join(dir, 'index.d.ts'), 'utf-8');
+  let jsFile: string = readFileSync(join(dir, 'index.js'), 'utf-8'),
+    dtsFile: string = readFileSync(join(dir, 'index.d.ts'), 'utf-8');
 
   classes.forEach(entry => {
     dtsFile = dtsFile.replace(`class ${entry.className} `, 'class ' + entry.className + 'Original ');
@@ -32,6 +30,6 @@ outDirs.forEach(dir => {
     );
   });
 
-  writeFileSync(path.join(dir, 'index.js'), jsFile, 'utf-8');
-  writeFileSync(path.join(dir, 'index.d.ts'), dtsFile, 'utf-8');
+  writeFileSync(join(dir, 'index.js'), jsFile, 'utf-8');
+  writeFileSync(join(dir, 'index.d.ts'), dtsFile, 'utf-8');
 });
