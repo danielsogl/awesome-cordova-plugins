@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 declare const cordova: Cordova & { plugins: any };
 
@@ -89,7 +89,7 @@ export interface CertificationData {
   platforms: ['ios', 'android'],
 })
 @Injectable()
-export class IamportCordova extends IonicNativePlugin {
+export class IamportCordova extends AwesomeCordovaNativePlugin {
   /**
    * This function is to load a webview of a payment gateway to pay for something
    * @param paymentObject {PaymentObject} Payment data to set the payment webview

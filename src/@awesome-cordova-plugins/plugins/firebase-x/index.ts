@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface IChannelOptions {
@@ -151,7 +151,7 @@ export interface FirebaseUser {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class FirebaseX extends IonicNativePlugin {
+export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Get the current FCM token.
    * @return {Promise<null | string>} Note that token will be null if it has not been established yet

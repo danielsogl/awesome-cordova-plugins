@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface ChooserResult {
   data?: Uint8Array;
@@ -53,7 +53,7 @@ export interface ChooserResult {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Chooser extends IonicNativePlugin {
+export class Chooser extends AwesomeCordovaNativePlugin {
   /**
    * Displays native prompt for user to select a file.
    * @param {string} [accept] Optional MIME type filter (e.g. 'image/gif,video/*').

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Android Notch
@@ -48,7 +48,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android'],
 })
 @Injectable()
-export class AndroidNotch extends IonicNativePlugin {
+export class AndroidNotch extends AwesomeCordovaNativePlugin {
   /**
    * Returns true if the android device has cutout
    *

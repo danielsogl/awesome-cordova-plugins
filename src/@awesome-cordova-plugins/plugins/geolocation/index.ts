@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 declare const navigator: any;
@@ -162,7 +162,7 @@ export interface GeolocationOptions {
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
-export class Geolocation extends IonicNativePlugin {
+export class Geolocation extends AwesomeCordovaNativePlugin {
   /**
    * Get the device's current position.
    *

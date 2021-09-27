@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @see https://developer.apple.com/documentation/authenticationservices/asauthorizationappleidrequest
@@ -160,7 +160,7 @@ export interface AppleSignInErrorResponse extends NSError {
   platforms: ['iOS'],
 })
 @Injectable()
-export class SignInWithApple extends IonicNativePlugin {
+export class SignInWithApple extends AwesomeCordovaNativePlugin {
   /**
    * Starts the authorization flows named during controller initialization
    * @see https://developer.apple.com/documentation/authenticationservices/asauthorizationcontroller/3153047-performrequests

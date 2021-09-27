@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface FacebookLoginResponse {
   status: string;
@@ -112,7 +112,7 @@ export interface FacebookLoginResponse {
   platforms: ['Android', 'iOS', 'Browser'],
 })
 @Injectable()
-export class Facebook extends IonicNativePlugin {
+export class Facebook extends AwesomeCordovaNativePlugin {
   EVENTS = {
     EVENT_NAME_ACTIVATED_APP: 'fb_mobile_activate_app',
     EVENT_NAME_DEACTIVATED_APP: 'fb_mobile_deactivate_app',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 /**
  * @name Power Optimization
  * @description
@@ -28,7 +28,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android'],
 })
 @Injectable()
-export class PowerOptimization extends IonicNativePlugin {
+export class PowerOptimization extends AwesomeCordovaNativePlugin {
   /**
    * Check if the battery optimization is ignoring
    * For more info, please check https://github.com/snt1017/cordova-plugin-power-optimization

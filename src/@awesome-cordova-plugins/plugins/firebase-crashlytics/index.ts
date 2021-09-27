@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Firebase Crashlytics
@@ -32,7 +32,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class FirebaseCrashlytics extends IonicNativePlugin {
+export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
   /**
    * Simply add the plugin to get the default Crashlytics functionality. Note that crashes and logged exceptions will only be reported when the application restarts. In order to log caught exceptions the following can be used:
    *

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface CameraOptions {
   /** Picture quality in range 0-100. Default is 50 */
@@ -173,7 +173,7 @@ export enum Direction {
   platforms: ['Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
-export class Camera extends IonicNativePlugin {
+export class Camera extends AwesomeCordovaNativePlugin {
   /**
    * Constant for possible destination types
    */

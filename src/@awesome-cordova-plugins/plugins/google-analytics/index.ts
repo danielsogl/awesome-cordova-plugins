@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Google Analytics
@@ -37,7 +37,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'Browser', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
-export class GoogleAnalytics extends IonicNativePlugin {
+export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * In your 'deviceready' handler, set up your Analytics tracker.
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface ToastOptions {
@@ -68,7 +68,7 @@ export interface ToastOptions {
   platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
-export class Toast extends IonicNativePlugin {
+export class Toast extends AwesomeCordovaNativePlugin {
   /**
    * Show a native toast for the given duration at the specified position.
    *

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface SpinnerDialogIOSOptions {
   /**
@@ -53,7 +53,7 @@ export interface SpinnerDialogIOSOptions {
   platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows'],
 })
 @Injectable()
-export class SpinnerDialog extends IonicNativePlugin {
+export class SpinnerDialog extends AwesomeCordovaNativePlugin {
   /**
    * Shows the spinner dialog
    * @param title {string} Spinner title (shows on Android only)

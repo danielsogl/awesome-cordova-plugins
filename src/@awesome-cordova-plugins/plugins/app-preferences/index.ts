@@ -1,4 +1,4 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
@@ -28,7 +28,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'macOS', 'Windows 8', 'Windows Phone'],
 })
 @Injectable()
-export class AppPreferences extends IonicNativePlugin {
+export class AppPreferences extends AwesomeCordovaNativePlugin {
   /**
    * Get a preference value
    *

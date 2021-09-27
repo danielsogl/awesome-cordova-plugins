@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -59,7 +59,7 @@ import { Observable } from 'rxjs';
   platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
-export class ScreenOrientation extends IonicNativePlugin {
+export class ScreenOrientation extends AwesomeCordovaNativePlugin {
   /**
    * Convenience enum for possible orientations
    */

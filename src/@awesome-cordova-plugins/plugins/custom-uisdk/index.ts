@@ -5,7 +5,7 @@ import {
   CordovaProperty,
   CordovaInstance,
   InstanceProperty,
-  IonicNativePlugin,
+  AwesomeCordovaNativePlugin,
 } from '@awesome-cordova-plugins/core';
 
 /**
@@ -35,7 +35,7 @@ import {
   platforms: ['Android, iOS'],
 })
 @Injectable()
-export class CustomUISDK extends IonicNativePlugin {
+export class CustomUISDK extends AwesomeCordovaNativePlugin {
   /**
    * This function show dialog to ask user permision to fetch authcode
    * @param clientId {string} unique id give to each merchant

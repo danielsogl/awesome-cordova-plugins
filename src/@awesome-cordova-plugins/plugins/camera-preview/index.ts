@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface CameraPreviewDimensions {
   /** The width of the camera preview, default to window.screen.width */
@@ -146,7 +146,7 @@ export interface CameraPreviewPictureOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class CameraPreview extends IonicNativePlugin {
+export class CameraPreview extends AwesomeCordovaNativePlugin {
   FOCUS_MODE = {
     FIXED: 'fixed',
     AUTO: 'auto',

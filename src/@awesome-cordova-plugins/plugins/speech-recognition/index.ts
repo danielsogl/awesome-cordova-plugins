@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export type SpeechRecognitionListeningOptions =
@@ -107,7 +107,7 @@ export interface SpeechRecognitionListeningOptionsAndroid {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class SpeechRecognition extends IonicNativePlugin {
+export class SpeechRecognition extends AwesomeCordovaNativePlugin {
   /**
    * Check feature available
    * @return {Promise<boolean>}

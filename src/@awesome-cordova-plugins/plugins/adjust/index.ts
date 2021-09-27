@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export class AdjustEvent {
   private eventToken: string;
@@ -496,7 +496,7 @@ export enum AdjustAdRevenueSource {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Adjust extends IonicNativePlugin {
+export class Adjust extends AwesomeCordovaNativePlugin {
   /**
    * This method initializes Adjust SDK
    * @param {AdjustConig} config Adjust config object used as starting options

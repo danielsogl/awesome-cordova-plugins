@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Google Plus
@@ -28,7 +28,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class GooglePlus extends IonicNativePlugin {
+export class GooglePlus extends AwesomeCordovaNativePlugin {
   /**
    * The login function walks the user through the Google Auth process.
    * @param options

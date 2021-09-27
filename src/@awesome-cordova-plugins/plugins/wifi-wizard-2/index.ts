@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaFunctionOverride, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface WifiConfig {
   SSID: string;
@@ -436,7 +436,7 @@ export interface WifiScanOptions extends WifiScanResultsOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class WifiWizard2 extends IonicNativePlugin {
+export class WifiWizard2 extends AwesomeCordovaNativePlugin {
   /**
    * Connect to network on iOS device
    * @param ssid

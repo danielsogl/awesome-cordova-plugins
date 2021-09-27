@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface BLEScanOptions {
@@ -183,7 +183,7 @@ export interface BLEScanOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class BLE extends IonicNativePlugin {
+export class BLE extends AwesomeCordovaNativePlugin {
   /**
    * Scan and discover BLE peripherals for the specified amount of time.
    *

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Keychain
@@ -34,7 +34,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['iOS'],
 })
 @Injectable()
-export class Keychain extends IonicNativePlugin {
+export class Keychain extends AwesomeCordovaNativePlugin {
   /**
    * Retrieves a value for a key
    *

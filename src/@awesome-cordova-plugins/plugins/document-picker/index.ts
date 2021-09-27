@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name iOS DocumentPicker
@@ -30,7 +30,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['iOS'],
 })
 @Injectable()
-export class DocumentPicker extends IonicNativePlugin {
+export class DocumentPicker extends AwesomeCordovaNativePlugin {
   /**
    * Open a file
    * @param {string} [option] files between 'image', 'pdf' or 'all'

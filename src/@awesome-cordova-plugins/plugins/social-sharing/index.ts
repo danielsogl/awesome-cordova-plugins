@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Social Sharing
@@ -40,7 +40,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'Browser', 'iOS', 'Windows', 'Windows Phone'],
 })
 @Injectable()
-export class SocialSharing extends IonicNativePlugin {
+export class SocialSharing extends AwesomeCordovaNativePlugin {
   /**
    * Shares using the share sheet
    * @param message {string} The message you would like to share.

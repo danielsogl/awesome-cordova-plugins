@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, CordovaInstance, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, CordovaInstance, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 declare const window: any;
 
@@ -103,7 +103,7 @@ export class FileTransferManager {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class BackgroundUpload extends IonicNativePlugin {
+export class BackgroundUpload extends AwesomeCordovaNativePlugin {
   FileTransferManager = FileTransferManager;
 
   init(options: FTMOptions): FileTransferManager {

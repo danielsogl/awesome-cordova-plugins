@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface EncryptedCardData {
   activationData: string;
@@ -153,7 +153,7 @@ export interface WatchExistData {
   platforms: ['iOS'],
 })
 @Injectable()
-export class AppleWallet extends IonicNativePlugin {
+export class AppleWallet extends AwesomeCordovaNativePlugin {
   /**
    * Simple call to determine if the current device supports Apple Pay and has a supported card installed.
    * @return {Promise<boolean>}

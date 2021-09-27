@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Analytics Firebase
@@ -61,7 +61,7 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-co
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class AnalyticsFirebase extends IonicNativePlugin {
+export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
   /**
    * This enum represents AnalyticsFirebase default events.
    * Use one of these default events or a custom event

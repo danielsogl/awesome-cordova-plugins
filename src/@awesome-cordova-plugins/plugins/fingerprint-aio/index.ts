@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface FingerprintOptions {
   /**
@@ -114,7 +114,7 @@ export interface FingerprintSecretOptions extends FingerprintOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class FingerprintAIO extends IonicNativePlugin {
+export class FingerprintAIO extends AwesomeCordovaNativePlugin {
   /**
    * Convenience constant
    * @type {number}

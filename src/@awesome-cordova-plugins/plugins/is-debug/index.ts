@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Is Debug
@@ -29,7 +29,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class IsDebug extends IonicNativePlugin {
+export class IsDebug extends AwesomeCordovaNativePlugin {
   /**
    * Determine if an app was installed via xcode / eclipse / the ionic CLI etc
    * @returns {Promise<boolean>} Returns a promise that resolves with true if the app was installed via xcode / eclipse / the ionic CLI etc. It will resolve to false if the app was downloaded from the app / play store by the end user.

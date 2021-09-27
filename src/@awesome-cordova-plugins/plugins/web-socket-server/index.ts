@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 declare const window: any;
@@ -108,7 +108,7 @@ export interface HttpFields {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class WebSocketServer extends IonicNativePlugin {
+export class WebSocketServer extends AwesomeCordovaNativePlugin {
   /**
    * Return this device's interfaces
    * @return {Promise<WebSocketInterfaces>}

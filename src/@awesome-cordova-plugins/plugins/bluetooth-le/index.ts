@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /* Available status of device */
@@ -458,7 +458,7 @@ export interface AdapterInfo {
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class BluetoothLE extends IonicNativePlugin {
+export class BluetoothLE extends AwesomeCordovaNativePlugin {
   /**
    * @name initialize
    * Initialize Bluetooth on the device

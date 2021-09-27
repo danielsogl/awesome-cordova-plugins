@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Lottie Splash Screen
@@ -32,7 +32,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class LottieSplashScreen extends IonicNativePlugin {
+export class LottieSplashScreen extends AwesomeCordovaNativePlugin {
   /**
    * This function shows a Lottie splash screen. If no arguments are given, it defaults to the config.xml values, however you can pass (new) options here to change the behavior on runtime. (For easier reading the TypeScript notation is used)
    * @param location {string} Location of the Lottie JSON file that should be loaded.

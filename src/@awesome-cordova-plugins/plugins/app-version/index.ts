@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name App Version
@@ -33,7 +33,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
-export class AppVersion extends IonicNativePlugin {
+export class AppVersion extends AwesomeCordovaNativePlugin {
   /**
    * Returns the name of the app, e.g.: "My Awesome App"
    * @returns {Promise<string>}

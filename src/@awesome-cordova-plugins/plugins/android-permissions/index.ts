@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Android Permissions
@@ -37,7 +37,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android'],
 })
 @Injectable()
-export class AndroidPermissions extends IonicNativePlugin {
+export class AndroidPermissions extends AwesomeCordovaNativePlugin {
   PERMISSION: any = {
     ACCESS_CHECKIN_PROPERTIES: 'android.permission.ACCESS_CHECKIN_PROPERTIES',
     ACCESS_COARSE_LOCATION: 'android.permission.ACCESS_COARSE_LOCATION',

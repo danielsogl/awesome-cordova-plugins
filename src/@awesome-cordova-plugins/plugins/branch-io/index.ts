@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface BranchIoPromise {
@@ -76,7 +76,7 @@ export interface BranchUniversalObject {
   platforms: ['iOS', 'Android'],
 })
 @Injectable()
-export class BranchIo extends IonicNativePlugin {
+export class BranchIo extends AwesomeCordovaNativePlugin {
   /**
    * for development and debugging only
    * @param {boolean} enable Enable debug

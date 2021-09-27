@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Diagnostic
@@ -42,7 +42,7 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-co
   platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
-export class Diagnostic extends IonicNativePlugin {
+export class Diagnostic extends AwesomeCordovaNativePlugin {
   permission = {
     READ_CALENDAR: 'READ_CALENDAR',
     WRITE_CALENDAR: 'WRITE_CALENDAR',

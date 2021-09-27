@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Native Geocoder
@@ -39,7 +39,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['iOS', 'Android'],
 })
 @Injectable()
-export class NativeGeocoder extends IonicNativePlugin {
+export class NativeGeocoder extends AwesomeCordovaNativePlugin {
   /**
    * Reverse geocode a given latitude and longitude to find location address
    * @param latitude {number} The latitude

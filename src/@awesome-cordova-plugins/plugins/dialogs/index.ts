@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface DialogsPromptCallback {
   /**
@@ -46,7 +46,7 @@ export interface DialogsPromptCallback {
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
-export class Dialogs extends IonicNativePlugin {
+export class Dialogs extends AwesomeCordovaNativePlugin {
   /**
    * Shows a custom alert or dialog box.
    * @param {string} message Dialog message.

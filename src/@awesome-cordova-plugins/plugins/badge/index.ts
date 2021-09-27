@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Badge
@@ -32,7 +32,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
-export class Badge extends IonicNativePlugin {
+export class Badge extends AwesomeCordovaNativePlugin {
   /**
    * Clear the badge of the app icon.
    * @returns {Promise<boolean>}

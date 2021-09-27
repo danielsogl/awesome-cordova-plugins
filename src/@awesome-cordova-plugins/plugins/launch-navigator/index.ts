@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface PromptsOptions {
   /**
@@ -278,7 +278,7 @@ export interface AppSelection {
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
-export class LaunchNavigator extends IonicNativePlugin {
+export class LaunchNavigator extends AwesomeCordovaNativePlugin {
   APP: any = {
     USER_SELECT: 'user_select',
     APPLE_MAPS: 'apple_maps',

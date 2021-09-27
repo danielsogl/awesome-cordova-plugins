@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * Object of options to pass into the playVideo method.
@@ -80,7 +80,7 @@ export interface StreamingAudioOptions {
   platforms: ['Amazon Fire OS', 'Android', 'iOS'],
 })
 @Injectable()
-export class StreamingMedia extends IonicNativePlugin {
+export class StreamingMedia extends AwesomeCordovaNativePlugin {
   /**
    * Streams a video
    * @param videoUrl {string} The URL of the video

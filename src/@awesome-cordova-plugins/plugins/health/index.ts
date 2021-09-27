@@ -1,4 +1,4 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -206,7 +206,7 @@ export interface HealthData {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Health extends IonicNativePlugin {
+export class Health extends AwesomeCordovaNativePlugin {
   /**
    * Tells if either Google Fit or HealthKit are available.
    *

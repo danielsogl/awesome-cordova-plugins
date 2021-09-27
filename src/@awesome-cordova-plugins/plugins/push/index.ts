@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaInstance, IonicNativePlugin, Plugin, checkAvailability } from '@awesome-cordova-plugins/core';
+import {
+  Cordova,
+  CordovaInstance,
+  AwesomeCordovaNativePlugin,
+  Plugin,
+  checkAvailability,
+} from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 declare const window: any;
@@ -327,7 +333,7 @@ export type PushEvent = string;
   platforms: ['Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
-export class Push extends IonicNativePlugin {
+export class Push extends AwesomeCordovaNativePlugin {
   /**
    * Init push notifications
    * @param options {PushOptions}

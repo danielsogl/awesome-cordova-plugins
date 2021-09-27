@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface DeviceMotionAccelerationData {
@@ -81,7 +81,7 @@ export interface DeviceMotionAccelerometerOptions {
   ],
 })
 @Injectable()
-export class DeviceMotion extends IonicNativePlugin {
+export class DeviceMotion extends AwesomeCordovaNativePlugin {
   /**
    * Get the current acceleration along the x, y, and z axes.
    * @returns {Promise<DeviceMotionAccelerationData>} Returns object with x, y, z, and timestamp properties

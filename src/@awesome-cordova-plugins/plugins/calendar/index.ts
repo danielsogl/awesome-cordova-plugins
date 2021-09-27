@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface CalendarOptions {
   /**
@@ -89,7 +89,7 @@ export interface NameOrOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Calendar extends IonicNativePlugin {
+export class Calendar extends AwesomeCordovaNativePlugin {
   /**
    * This function checks if we have permission to read/write from/to the calendar.
    * The promise will resolve with `true` when:

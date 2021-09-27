@@ -1,4 +1,4 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -126,7 +126,7 @@ export interface IChannelConfiguration {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class FCM extends IonicNativePlugin {
+export class FCM extends AwesomeCordovaNativePlugin {
   /**
    * Gets ios device's current APNS token
    *

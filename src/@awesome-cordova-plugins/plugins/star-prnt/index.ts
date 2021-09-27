@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface Printer {
@@ -649,7 +649,7 @@ export interface CommandsArray extends Array<PrintCommand> {}
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class StarPRNT extends IonicNativePlugin {
+export class StarPRNT extends AwesomeCordovaNativePlugin {
   /**
    * Constant for Emulation
    */

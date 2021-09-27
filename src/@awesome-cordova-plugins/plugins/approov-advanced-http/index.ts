@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface HTTPResponse {
   /**
@@ -169,7 +169,7 @@ export interface ApproovLoggableToken {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class ApproovHttp extends IonicNativePlugin {
+export class ApproovHttp extends AwesomeCordovaNativePlugin {
   /**
    * This enum represents the internal error codes which can be returned in a HTTPResponse object.
    * @readonly

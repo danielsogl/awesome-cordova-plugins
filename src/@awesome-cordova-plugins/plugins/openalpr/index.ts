@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface OpenALPROptions {
   /** Country used for scanning the license plate */
@@ -49,7 +49,7 @@ export interface OpenALPRResult {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class OpenALPR extends IonicNativePlugin {
+export class OpenALPR extends AwesomeCordovaNativePlugin {
   Country = {
     AU: 'au',
     BR: 'br',

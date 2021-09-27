@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 declare const window: any;
 
@@ -32,7 +32,7 @@ declare const window: any;
   platforms: ['Android'],
 })
 @Injectable()
-export class FilePath extends IonicNativePlugin {
+export class FilePath extends AwesomeCordovaNativePlugin {
   /**
    * Resolve native path for given content URL/path.
    * @param {string} path  Content URL/path.

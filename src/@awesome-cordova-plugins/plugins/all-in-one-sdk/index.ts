@@ -5,7 +5,7 @@ import {
   CordovaProperty,
   CordovaInstance,
   InstanceProperty,
-  IonicNativePlugin,
+  AwesomeCordovaNativePlugin,
 } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
@@ -48,7 +48,7 @@ import { Observable } from 'rxjs';
   repo: 'https://github.com/paytm/paytm-allinonesdk-ionic-cordova.git',
   platforms: ['Android', 'iOS'],
 })
-export class AllInOneSDK extends IonicNativePlugin {
+export class AllInOneSDK extends AwesomeCordovaNativePlugin {
   /**
    * This function checks if Paytm Application is available on the device.
    * If Paytm exists then it invokes Paytm Application with the parameters sent and creates an order.

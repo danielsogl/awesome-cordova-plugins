@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * OAuth configuration data.
@@ -97,7 +97,7 @@ export interface AuthorizationData {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class SpotifyAuth extends IonicNativePlugin {
+export class SpotifyAuth extends AwesomeCordovaNativePlugin {
   /**
    * Obtains valid authorization data.
    *

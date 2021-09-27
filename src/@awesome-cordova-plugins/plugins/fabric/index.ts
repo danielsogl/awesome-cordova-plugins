@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface Attributes {
   [index: string]: String;
@@ -41,7 +41,7 @@ export interface Attributes {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Crashlytics extends IonicNativePlugin {
+export class Crashlytics extends AwesomeCordovaNativePlugin {
   /**
    * Add logging that will be sent with your crash data. This logging will not show up
    * in the system.log and will only be visible in your Crashlytics dashboard.
@@ -164,7 +164,7 @@ export class Crashlytics extends IonicNativePlugin {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Answers extends IonicNativePlugin {
+export class Answers extends AwesomeCordovaNativePlugin {
   /**
    * Sends the Purchase tracking event.
    *

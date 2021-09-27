@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -603,7 +603,7 @@ export class UnviredCredential {
   platforms: ['iOS', 'Android', 'Windows', 'Browser'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class UnviredCordovaSDK extends IonicNativePlugin {
+export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   loginParameters: LoginParameters;
 
   /**

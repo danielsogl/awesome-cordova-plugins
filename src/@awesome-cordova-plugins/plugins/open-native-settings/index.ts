@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Open Native Settings
@@ -98,7 +98,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class OpenNativeSettings extends IonicNativePlugin {
+export class OpenNativeSettings extends AwesomeCordovaNativePlugin {
   /**
    * Opens a setting dialog
    * @param setting {string|array} setting name

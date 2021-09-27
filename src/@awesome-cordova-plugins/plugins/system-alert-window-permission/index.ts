@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name System Alert Window Permission
@@ -36,7 +36,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android'],
 })
 @Injectable()
-export class SystemAlertWindowPermission extends IonicNativePlugin {
+export class SystemAlertWindowPermission extends AwesomeCordovaNativePlugin {
   /**
    * Check permission
    * @return {Promise<any>} return 0 when dont have SYSTEM_ALERT_WINDOW permission, 1 when have SYSTEM_ALERT_WINDOW permission

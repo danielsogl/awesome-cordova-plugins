@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 export class SmartlookSetupConfigBuilder {
   private readonly _smartlookSetupConfig: SmartlookSetupConfig;
@@ -295,7 +295,7 @@ export class SmartlookRenderingMode {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Smartlook extends IonicNativePlugin {
+export class Smartlook extends AwesomeCordovaNativePlugin {
   /**
    * Setup and start Smartlook SDK recording.
    * @param config SmartlookSetupConfig object.

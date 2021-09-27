@@ -10,7 +10,7 @@
  *
  */
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, IonicNativePlugin } from '@ionic-native/core';
+import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -44,7 +44,7 @@ import { Observable } from 'rxjs';
   platforms: [] // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class {{ PluginName }} extends IonicNativePlugin {
+export class {{ PluginName }} extends AwesomeCordovaNativePlugin {
 
   /**
    * This function does something

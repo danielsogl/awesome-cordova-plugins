@@ -1,4 +1,4 @@
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 
 export interface IAPProductOptions {
@@ -571,7 +571,7 @@ export class IAPError {
   install: 'ionic cordova plugin add cordova-plugin-purchase --variable BILLING_KEY="<ANDROID_BILLING_KEY>"',
 })
 @Injectable()
-export class InAppPurchase2 extends IonicNativePlugin {
+export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
   @CordovaProperty()
   QUIET: number;
 

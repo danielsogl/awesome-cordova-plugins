@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name BioCatch
@@ -30,7 +30,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['iOS', 'Android'],
 })
 @Injectable()
-export class BioCatch extends IonicNativePlugin {
+export class BioCatch extends AwesomeCordovaNativePlugin {
   /**
    * Start a session
    * @param customerSessionID {String} Customer session id

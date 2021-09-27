@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Ge Tui Sdk Plugin
@@ -39,7 +39,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class GeTuiSdkPlugin extends IonicNativePlugin {
+export class GeTuiSdkPlugin extends AwesomeCordovaNativePlugin {
   @Cordova()
   callback_init(callback: Function): Promise<any> {
     return;

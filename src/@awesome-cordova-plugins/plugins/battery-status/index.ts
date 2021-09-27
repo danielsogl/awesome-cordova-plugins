@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface BatteryStatusResponse {
@@ -48,7 +48,7 @@ export interface BatteryStatusResponse {
   platforms: ['iOS', 'Android', 'Windows', 'Browser'],
 })
 @Injectable()
-export class BatteryStatus extends IonicNativePlugin {
+export class BatteryStatus extends AwesomeCordovaNativePlugin {
   /**
    * Watch the change in battery level
    * @returns {Observable<BatteryStatusResponse>} Returns an observable that pushes a status object

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface DeviceResponse {
@@ -72,7 +72,7 @@ export interface InboxMessage {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Vibes extends IonicNativePlugin {
+export class Vibes extends AwesomeCordovaNativePlugin {
   /**
    * Register this device with the Vibes platform
    *

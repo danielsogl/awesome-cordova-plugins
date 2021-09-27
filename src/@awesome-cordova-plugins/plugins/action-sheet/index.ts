@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface ActionSheetOptions {
   /**
@@ -96,7 +96,7 @@ export interface ActionSheetOptions {
   platforms: ['Android', 'Browser', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
-export class ActionSheet extends IonicNativePlugin {
+export class ActionSheet extends AwesomeCordovaNativePlugin {
   /**
    * Convenience property to select an Android theme value
    */

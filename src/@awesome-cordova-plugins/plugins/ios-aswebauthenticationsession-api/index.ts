@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name ios-aswebauthenticationsession-api
@@ -31,7 +31,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/cor
   platforms: ['iOS'],
 })
 @Injectable()
-export class IosASWebauthenticationSession extends IonicNativePlugin {
+export class IosASWebauthenticationSession extends AwesomeCordovaNativePlugin {
   /**
    * This function start an authentication flow in ASWebauthenticationSession
    * @param callbackUrl {string} Callback URL of your App

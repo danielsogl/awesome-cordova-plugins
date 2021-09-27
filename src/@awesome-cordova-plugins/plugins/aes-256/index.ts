@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name AES256
@@ -55,7 +55,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   install: 'ionic cordova plugin add cordova-plugin-aes256-encryption',
 })
 @Injectable()
-export class AES256 extends IonicNativePlugin {
+export class AES256 extends AwesomeCordovaNativePlugin {
   /**
    * This function used to perform the aes256 encryption
    * @param {string} secureKey A 32 bytes string, which will used as input key for AES256 encryption.

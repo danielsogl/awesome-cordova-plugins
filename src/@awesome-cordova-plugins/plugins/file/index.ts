@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CordovaCheck, CordovaProperty, IonicNativePlugin, Plugin, getPromise } from '@awesome-cordova-plugins/core';
+import {
+  CordovaCheck,
+  CordovaProperty,
+  AwesomeCordovaNativePlugin,
+  Plugin,
+  getPromise,
+} from '@awesome-cordova-plugins/core';
 
 export interface IFile extends Blob {
   /**
@@ -675,7 +681,7 @@ declare const window: Window;
   platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows'],
 })
 @Injectable()
-export class File extends IonicNativePlugin {
+export class File extends AwesomeCordovaNativePlugin {
   /**
    *  Read-only directory where the application is installed.
    */

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaFunctionOverride, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaFunctionOverride, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface ThreeDeeTouchQuickAction {
@@ -127,7 +127,7 @@ export interface ThreeDeeTouchForceTouch {
   platforms: ['iOS'],
 })
 @Injectable()
-export class ThreeDeeTouch extends IonicNativePlugin {
+export class ThreeDeeTouch extends AwesomeCordovaNativePlugin {
   /**
    * You need an iPhone 6S or some future tech to use the features of this plugin, so you can check at runtime if the user's device is supported.
    * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates whether the plugin is available or not

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface IntentClipItem {
@@ -71,7 +71,7 @@ export interface IntentOptions {
   platforms: ['Android'],
 })
 @Injectable()
-export class WebIntent extends IonicNativePlugin {
+export class WebIntent extends AwesomeCordovaNativePlugin {
   /**
    * Convenience constant for actions
    * @type {string}

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 declare var clevertap: any;
 
@@ -24,7 +24,7 @@ declare var clevertap: any;
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class CleverTap extends IonicNativePlugin {
+export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * notify device ready
    * NOTE: in iOS use to be notified of launch Push Notification or Deep Link

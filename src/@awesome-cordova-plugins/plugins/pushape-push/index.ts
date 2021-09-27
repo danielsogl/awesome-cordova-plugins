@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaInstance, IonicNativePlugin, checkAvailability } from '@awesome-cordova-plugins/core';
+import {
+  Plugin,
+  Cordova,
+  CordovaInstance,
+  AwesomeCordovaNativePlugin,
+  checkAvailability,
+} from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 declare const window: any;
@@ -300,7 +306,7 @@ export interface PushapeRegistrationEventResponse extends RegistrationEventRespo
   platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
-export class PushapePush extends IonicNativePlugin {
+export class PushapePush extends AwesomeCordovaNativePlugin {
   /**
    * Init push notifications
    * @param options {PushapeOptions}

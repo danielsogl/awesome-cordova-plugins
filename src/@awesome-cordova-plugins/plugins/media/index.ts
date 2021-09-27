@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   CordovaInstance,
   InstanceProperty,
-  IonicNativePlugin,
+  AwesomeCordovaNativePlugin,
   Plugin,
   checkAvailability,
 } from '@awesome-cordova-plugins/core';
@@ -289,7 +289,7 @@ export type MediaErrorCallback = (error: MediaError) => void;
   platforms: ['Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
-export class Media extends IonicNativePlugin {
+export class Media extends AwesomeCordovaNativePlugin {
   // Constants
   /**
    * @hidden

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 export interface Text {
   text: string;
@@ -258,7 +258,7 @@ export interface ImageLabel {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class FirebaseVision extends IonicNativePlugin {
+export class FirebaseVision extends AwesomeCordovaNativePlugin {
   /**
    * Recognize text in image
    * @param file_uri {string} Image URI

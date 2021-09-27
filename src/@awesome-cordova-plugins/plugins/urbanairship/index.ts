@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface TagGroupEditor {
@@ -62,7 +62,7 @@ export enum PresentationOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class UrbanAirShip extends IonicNativePlugin {
+export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   /**
    * Event fired when a new deep link is received.
    *

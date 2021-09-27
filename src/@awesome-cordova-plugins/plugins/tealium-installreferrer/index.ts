@@ -1,4 +1,4 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -33,7 +33,7 @@ import { Injectable } from '@angular/core';
   install: '', // OPTIONAL install command, in case the plugin requires variables
 })
 @Injectable()
-export class TealiumInstallReferrer extends IonicNativePlugin {
+export class TealiumInstallReferrer extends AwesomeCordovaNativePlugin {
   /**
    * This function stores the install referrer information as persistent data
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time

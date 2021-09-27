@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Flashlight
@@ -27,7 +27,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
-export class Flashlight extends IonicNativePlugin {
+export class Flashlight extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the flashlight is available
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean stating if the flashlight is available.

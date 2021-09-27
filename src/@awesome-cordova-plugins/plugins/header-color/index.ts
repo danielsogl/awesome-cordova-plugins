@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Header Color
@@ -25,7 +25,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android'],
 })
 @Injectable()
-export class HeaderColor extends IonicNativePlugin {
+export class HeaderColor extends AwesomeCordovaNativePlugin {
   /**
    * Set a color to the task header
    * @param color {string} The hex value of the color

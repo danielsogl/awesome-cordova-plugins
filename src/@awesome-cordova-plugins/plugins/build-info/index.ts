@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, CordovaProperty, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, CordovaProperty, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Build Info
@@ -34,7 +34,7 @@ import { Plugin, CordovaProperty, IonicNativePlugin } from '@awesome-cordova-plu
   platforms: ['Android', 'iOS', 'Windows', 'macOS', 'browser', 'Electron'],
 })
 @Injectable()
-export class BuildInfo extends IonicNativePlugin {
+export class BuildInfo extends AwesomeCordovaNativePlugin {
   /**
    * The baseUrl where cordova.js was loaded.
    */

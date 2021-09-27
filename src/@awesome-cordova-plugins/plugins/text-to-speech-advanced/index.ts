@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface TTSOptions {
   /** text to speak */
@@ -55,7 +55,7 @@ export interface TTSVoice {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class TextToSpeechAdvanced extends IonicNativePlugin {
+export class TextToSpeechAdvanced extends AwesomeCordovaNativePlugin {
   /**
    * This function speaks
    * @param textOrOptions {string | TTSOptions} Text to speak or TTSOptions

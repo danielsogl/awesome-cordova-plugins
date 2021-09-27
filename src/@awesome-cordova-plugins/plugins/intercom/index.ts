@@ -1,4 +1,4 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -30,7 +30,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Intercom extends IonicNativePlugin {
+export class Intercom extends AwesomeCordovaNativePlugin {
   /**
    * Register a identified user
    * @param options {any} Options

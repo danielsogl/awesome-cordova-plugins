@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Cloud Settings
@@ -38,7 +38,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class CloudSettings extends IonicNativePlugin {
+export class CloudSettings extends AwesomeCordovaNativePlugin {
   /**
    * Indicates if any stored cloud settings currently exist for the current user.
    * @return {Promise<boolean>} Will be passed a boolean flag which indicates whether an store settings exist for the user.

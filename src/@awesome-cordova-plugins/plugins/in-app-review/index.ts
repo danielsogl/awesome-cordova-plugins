@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 /* tslint:disable */
 /**
  * @name In App Review
@@ -34,7 +34,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['iOS'],
 })
 @Injectable()
-export class InAppReview extends IonicNativePlugin {
+export class InAppReview extends AwesomeCordovaNativePlugin {
   /**
    * Open the inApp review popup
    * @return {Promise<any>} Returns a promise that resolves when something happens

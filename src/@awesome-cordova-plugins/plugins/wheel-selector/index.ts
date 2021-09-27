@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface WheelSelectorItem {
   description?: string;
@@ -180,7 +180,7 @@ export interface WheelSelectorData {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class WheelSelector extends IonicNativePlugin {
+export class WheelSelector extends AwesomeCordovaNativePlugin {
   /**
    * Shows the wheel selector
    * @param {WheelSelectorOptions} options Options for the wheel selector

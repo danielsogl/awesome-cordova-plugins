@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface ZBarOptions {
   /**
@@ -76,7 +76,7 @@ export interface ZBarOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class ZBar extends IonicNativePlugin {
+export class ZBar extends AwesomeCordovaNativePlugin {
   /**
    * Open the scanner
    * @param options { ZBarOptions } Scan options

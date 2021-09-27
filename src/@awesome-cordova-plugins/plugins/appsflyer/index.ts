@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface AppsflyerOptions {
   /**
@@ -83,7 +83,7 @@ export interface AppsflyerInviteOptions {
   install: 'Add to config.xml like stated on github and then start',
 })
 @Injectable()
-export class Appsflyer extends IonicNativePlugin {
+export class Appsflyer extends AwesomeCordovaNativePlugin {
   /**
    * initialize the SDK
    * @param {AppsflyerOptions} options

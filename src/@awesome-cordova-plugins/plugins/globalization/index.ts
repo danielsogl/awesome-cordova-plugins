@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface GlobalizationOptions {
   formatLength: string;
@@ -43,7 +43,7 @@ export interface GlobalizationOptions {
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
-export class Globalization extends IonicNativePlugin {
+export class Globalization extends AwesomeCordovaNativePlugin {
   /**
    * Returns the BCP-47 compliant language identifier tag to the successCallback with a properties object as a parameter. That object should have a value property with a String value.
    * @returns {Promise<{value: string}>}

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 declare let window: any;
 
@@ -99,7 +99,7 @@ export interface ScanOptions {
  * @{ NFC } class methods
  */
 @Injectable()
-export class NFC extends IonicNativePlugin {
+export class NFC extends AwesomeCordovaNativePlugin {
   // Flags for readerMode
   // https://developer.android.com/reference/android/nfc/NfcAdapter#FLAG_READER_NFC_A
   @CordovaProperty()
@@ -412,7 +412,7 @@ export class NFC extends IonicNativePlugin {
  * For usage with nfc.write() and nfc.share()
  */
 @Injectable()
-export class Ndef extends IonicNativePlugin {
+export class Ndef extends AwesomeCordovaNativePlugin {
   @CordovaProperty()
   TNF_EMPTY: number;
   @CordovaProperty()
@@ -511,7 +511,7 @@ export class Ndef extends IonicNativePlugin {
   pluginRef: 'util',
 })
 @Injectable()
-export class NfcUtil extends IonicNativePlugin {
+export class NfcUtil extends AwesomeCordovaNativePlugin {
   @Cordova({ sync: true })
   toHex(i: number): string {
     return;
@@ -553,7 +553,7 @@ export class NfcUtil extends IonicNativePlugin {
   }
 }
 
-export class TextHelper extends IonicNativePlugin {
+export class TextHelper extends AwesomeCordovaNativePlugin {
   decodePayload(data: number[]): string {
     return;
   }
@@ -562,7 +562,7 @@ export class TextHelper extends IonicNativePlugin {
   }
 }
 
-export class UriHelper extends IonicNativePlugin {
+export class UriHelper extends AwesomeCordovaNativePlugin {
   decodePayload(data: number[]): string {
     return;
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 export interface SumUpResponse {
   // Code to identify the message
@@ -128,7 +128,7 @@ export class SumUpKeys {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class SumUp extends IonicNativePlugin {
+export class SumUp extends AwesomeCordovaNativePlugin {
   /**
    * Login a user with an optional access token.
    * If the access token is provided and valid, the user is logged in autmatically.

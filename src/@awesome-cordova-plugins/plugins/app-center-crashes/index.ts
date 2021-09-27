@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface AppCenterCrashReport {
   id: string;
@@ -66,7 +66,7 @@ export interface AppCenterCrashReportDevice {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class AppCenterCrashes extends IonicNativePlugin {
+export class AppCenterCrashes extends AwesomeCordovaNativePlugin {
   /**
    * App Center Crashes provides you with an API to generate a test crash for easy testing of the SDK.
    * This API can only be used in test/beta apps and won't do anything in production apps.

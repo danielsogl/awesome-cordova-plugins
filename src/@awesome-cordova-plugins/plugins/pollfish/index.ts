@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, CordovaProperty, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Pollfish
@@ -66,7 +66,7 @@ import { Plugin, Cordova, CordovaProperty, IonicNativePlugin } from '@awesome-co
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Pollfish extends IonicNativePlugin {
+export class Pollfish extends AwesomeCordovaNativePlugin {
   @CordovaProperty()
   EventListener: {
     OnPollfishClosed: string;

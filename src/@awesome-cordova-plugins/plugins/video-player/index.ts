@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * Options for the video playback using the `play` function.
@@ -51,7 +51,7 @@ export interface VideoOptions {
   platforms: ['Android'],
 })
 @Injectable()
-export class VideoPlayer extends IonicNativePlugin {
+export class VideoPlayer extends AwesomeCordovaNativePlugin {
   /**
    * Plays the video from the passed url.
    * @param fileUrl {string} File url to the video.

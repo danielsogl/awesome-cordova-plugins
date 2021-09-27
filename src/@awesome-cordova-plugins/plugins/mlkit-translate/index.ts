@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * This is the language object which will be returned by `downloadModel`, `deleteModel`, `getAvailableModels` and `getDownloadedModels` methods.
@@ -47,7 +47,7 @@ export interface LanguageModel {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class MLKitTranslate extends IonicNativePlugin {
+export class MLKitTranslate extends AwesomeCordovaNativePlugin {
   /**
    * Translates text from one language to another. Requires the source and target languages need to be downloaded.
    * If not the languages are downloaded in the background automatically.

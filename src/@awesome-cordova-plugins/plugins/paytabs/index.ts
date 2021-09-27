@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * PaymentSDKConfiguration: payment request configuration
@@ -450,7 +450,7 @@ export enum AlternativePaymentMethod {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class PayTabs extends IonicNativePlugin {
+export class PayTabs extends AwesomeCordovaNativePlugin {
   /**
    * Start Card Payment
    * @param params {PaymentSDKConfiguration} payment request configuration

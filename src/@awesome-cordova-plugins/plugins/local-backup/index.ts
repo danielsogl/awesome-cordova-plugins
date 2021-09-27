@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name LocalBackup
@@ -31,7 +31,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class LocalBackup extends IonicNativePlugin {
+export class LocalBackup extends AwesomeCordovaNativePlugin {
   @Cordova()
   create(data: any): Promise<boolean> {
     return;

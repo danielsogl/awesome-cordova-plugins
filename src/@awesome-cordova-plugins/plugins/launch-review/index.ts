@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -35,7 +35,7 @@ import { Observable } from 'rxjs';
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class LaunchReview extends IonicNativePlugin {
+export class LaunchReview extends AwesomeCordovaNativePlugin {
   /**
    * Launches App Store on current platform in order to leave a review for given app.
    * @param appId {string} - (optional) the platform-specific app ID to use to open the page in the store app.

@@ -1,4 +1,4 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -29,7 +29,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android'],
 })
 @Injectable()
-export class DNS extends IonicNativePlugin {
+export class DNS extends AwesomeCordovaNativePlugin {
   /**
    * Resolve hostnames into an underlying network address.
    * @param hostname

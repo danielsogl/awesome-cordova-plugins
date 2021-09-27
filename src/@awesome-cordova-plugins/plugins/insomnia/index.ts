@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Insomnia
@@ -36,7 +36,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'Browser', 'Firefox OS', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
-export class Insomnia extends IonicNativePlugin {
+export class Insomnia extends AwesomeCordovaNativePlugin {
   /**
    * Keeps awake the application
    * @returns {Promise<any>}

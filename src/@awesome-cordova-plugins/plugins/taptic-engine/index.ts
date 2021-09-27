@@ -1,4 +1,4 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 
 /**
@@ -32,7 +32,7 @@ import { Injectable } from '@angular/core';
   platforms: ['iOS'],
 })
 @Injectable()
-export class TapticEngine extends IonicNativePlugin {
+export class TapticEngine extends AwesomeCordovaNativePlugin {
   /**
    * Use selection feedback generators to indicate a change in selection.
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error

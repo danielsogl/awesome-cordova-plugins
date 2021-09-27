@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Wechat
@@ -32,7 +32,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Wechat extends IonicNativePlugin {
+export class Wechat extends AwesomeCordovaNativePlugin {
   Scene: {
     SESSION: 0; // 聊天界面
     TIMELINE: 1; // 朋友圈

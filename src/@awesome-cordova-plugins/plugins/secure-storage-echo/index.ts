@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CordovaCheck, CordovaInstance, getPromise, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import {
+  CordovaCheck,
+  CordovaInstance,
+  getPromise,
+  AwesomeCordovaNativePlugin,
+  Plugin,
+} from '@awesome-cordova-plugins/core';
 
 export interface SecureStorageEchoOptions {
   android: {
@@ -153,7 +159,7 @@ export class SecureStorageEchoObject {
   platforms: ['Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
-export class SecureStorageEcho extends IonicNativePlugin {
+export class SecureStorageEcho extends AwesomeCordovaNativePlugin {
   /**
    * Creates a namespaced storage.
    * @param store {string}

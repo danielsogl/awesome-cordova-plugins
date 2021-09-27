@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * Options for sending an SMS
@@ -51,7 +51,7 @@ export interface SmsOptionsAndroid {
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
-export class SMS extends IonicNativePlugin {
+export class SMS extends AwesomeCordovaNativePlugin {
   /**
    * Sends sms to a number
    * @param phoneNumber {string|string[]} Phone number

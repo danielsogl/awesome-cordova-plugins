@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export type AdSize =
@@ -142,7 +142,7 @@ export interface AdExtras {
   platforms: ['Android', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
-export class AdMobPro extends IonicNativePlugin {
+export class AdMobPro extends AwesomeCordovaNativePlugin {
   AD_POSITION: {
     NO_CHANGE: number;
     TOP_LEFT: number;

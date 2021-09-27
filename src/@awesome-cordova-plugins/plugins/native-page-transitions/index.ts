@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface NativeTransitionOptions {
   direction?: string;
@@ -69,7 +69,7 @@ export interface NativeTransitionOptions {
   platforms: ['Android', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
-export class NativePageTransitions extends IonicNativePlugin {
+export class NativePageTransitions extends AwesomeCordovaNativePlugin {
   /**
    * Perform a slide animation
    * @param options {NativeTransitionOptions} Options for the transition

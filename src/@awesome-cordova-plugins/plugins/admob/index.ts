@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface AdmobBaseOptions {
@@ -291,7 +291,7 @@ export interface AdMobEvent {
   platforms: ['Android', 'iOS', 'Browser'],
 })
 @Injectable()
-export class Admob extends IonicNativePlugin {
+export class Admob extends AwesomeCordovaNativePlugin {
   /**
    * This enum represents AdMob's supported ad sizes.
    * Use one of these constants as adSize option when calling createBannerView

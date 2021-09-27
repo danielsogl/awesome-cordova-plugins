@@ -1,4 +1,4 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 
 export interface NativeKeyboardOptions {
@@ -201,7 +201,7 @@ export interface NativeKeyboardUpdateMessengerOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class NativeKeyboard extends IonicNativePlugin {
+export class NativeKeyboard extends AwesomeCordovaNativePlugin {
   /**
    * Show messenger
    * @param options {NativeKeyboardOptions}

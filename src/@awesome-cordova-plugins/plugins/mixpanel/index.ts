@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 declare var mixpanel: any;
 
@@ -32,7 +32,7 @@ declare var mixpanel: any;
   platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
-export class Mixpanel extends IonicNativePlugin {
+export class Mixpanel extends AwesomeCordovaNativePlugin {
   /**
    * If originalId is omitted, aliasId will be used as originalId.
    * @param aliasId {string}
@@ -164,7 +164,7 @@ export class Mixpanel extends IonicNativePlugin {
   pluginName: 'Mixpanel',
 })
 @Injectable()
-export class MixpanelPeople extends IonicNativePlugin {
+export class MixpanelPeople extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param appendObject {any}

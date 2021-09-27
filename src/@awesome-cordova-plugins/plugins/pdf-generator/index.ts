@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface PDFGeneratorOptions {
   /**
@@ -62,7 +62,7 @@ export interface PDFGeneratorOptions {
 @Injectable({
   providedIn: 'root',
 })
-export class PDFGenerator extends IonicNativePlugin {
+export class PDFGenerator extends AwesomeCordovaNativePlugin {
   /**
    * Creates a PDF using a URL, it download the document into an in memory Webkit object, and renders it into a PDF.
    * @param url {string} URL to create a PDF from

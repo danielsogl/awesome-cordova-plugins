@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 /**
  * @name PreviewAnyFile
@@ -57,7 +57,7 @@ export type PreviewResponse = 'CLOSING' | 'SUCCESS' | 'NO_APP';
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class PreviewAnyFile extends IonicNativePlugin {
+export class PreviewAnyFile extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated Use the previewPath,previewBase64 or previewAsset. they have more options
    * @param url {String} full absolute URL -> file://, content://, http://, https, ... etc

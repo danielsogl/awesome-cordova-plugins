@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * Bit flag values for setSystemUiVisibility()
@@ -56,7 +56,7 @@ export enum AndroidSystemUiFlags {
   platforms: ['Android'],
 })
 @Injectable()
-export class AndroidFullScreen extends IonicNativePlugin {
+export class AndroidFullScreen extends AwesomeCordovaNativePlugin {
   /**
    * Is this plugin supported?
    * @return {Promise<void>}

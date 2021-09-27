@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Network Interface
@@ -35,7 +35,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Windows', 'Windows Phone'],
 })
 @Injectable()
-export class NetworkInterface extends IonicNativePlugin {
+export class NetworkInterface extends AwesomeCordovaNativePlugin {
   /**
    * Gets the WiFi IP address
    * @return {Promise<any>} Returns a Promise that resolves with the IP address information.

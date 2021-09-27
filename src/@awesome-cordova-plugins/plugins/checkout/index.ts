@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 export interface CkoCardTokenRequest {
   /**
@@ -188,7 +188,7 @@ export interface Phone {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Checkout extends IonicNativePlugin {
+export class Checkout extends AwesomeCordovaNativePlugin {
   /**
    * Initialize Frames plugin in Sandbox mode
    * @param publicKey {string} Merchant's sandbox public key

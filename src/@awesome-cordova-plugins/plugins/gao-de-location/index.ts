@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -65,7 +65,7 @@ import { Observable } from 'rxjs';
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class GaoDeLocation extends IonicNativePlugin {
+export class GaoDeLocation extends AwesomeCordovaNativePlugin {
   /**
    * Single location
    * @param positionOptions

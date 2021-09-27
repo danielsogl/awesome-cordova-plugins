@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Ionic Webview
@@ -31,7 +31,7 @@ import { CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plu
   install: 'ionic cordova plugin add cordova-plugin-ionic-webview',
 })
 @Injectable()
-export class WebView extends IonicNativePlugin {
+export class WebView extends AwesomeCordovaNativePlugin {
   /**
    * Convert a `file://` URL to a URL that is compatible with the local web server in the Web View plugin.
    */

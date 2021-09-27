@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 @Plugin({
   pluginName: 'PlayInstallReferrer',
@@ -9,7 +9,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android'],
 })
 @Injectable()
-export class PlayInstallReferrer extends IonicNativePlugin {
+export class PlayInstallReferrer extends AwesomeCordovaNativePlugin {
   @Cordova()
   getReferrer(): Promise<any> {
     return;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export enum AppRateReviewTypeIos {
   /**
@@ -252,7 +252,7 @@ export interface AppUrls {
   platforms: ['Android', 'BlackBerry 10', 'iOS', 'Windows'],
 })
 @Injectable()
-export class AppRate extends IonicNativePlugin {
+export class AppRate extends AwesomeCordovaNativePlugin {
   /**
    * Manager custom locales
    */

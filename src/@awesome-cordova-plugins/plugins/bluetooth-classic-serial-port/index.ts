@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface BluetoothClassicSerialPortDevice {
@@ -63,7 +63,7 @@ export interface BluetoothClassicSerialPortDevice {
   platforms: ['Android', 'iOS', 'Browser'],
 })
 @Injectable()
-export class BluetoothClassicSerialPort extends IonicNativePlugin {
+export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
   /**
    * Connect to a Bluetooth device
    * @param {string} deviceId Identifier of the remote device.

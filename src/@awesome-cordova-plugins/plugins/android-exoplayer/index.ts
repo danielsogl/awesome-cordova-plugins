@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export type AndroidExoPlayerAspectRatio = 'FILL_SCREEN' | 'FIT_SCREEN';
@@ -181,7 +181,7 @@ export interface AndroidExoPlayerControllerConfig {
   platforms: ['Android'],
 })
 @Injectable()
-export class AndroidExoplayer extends IonicNativePlugin {
+export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
   /**
    * Show the player.
    * @param {AndroidExoPlayerParams} parameters Parameters

@@ -1,4 +1,4 @@
-import { Cordova, CordovaOptions, IonicNativePlugin, Plugin, wrap } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaOptions, AwesomeCordovaNativePlugin, Plugin, wrap } from '@awesome-cordova-plugins/core';
 import { Observable, Observer } from 'rxjs';
 import { Injectable } from '@angular/core';
 
@@ -100,7 +100,7 @@ export function CordovaFiniteObservable(opts: CordovaFiniteObservableOptions = {
   platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
-export class PhotoLibrary extends IonicNativePlugin {
+export class PhotoLibrary extends AwesomeCordovaNativePlugin {
   /**
    * Retrieves library items. Library item contains photo metadata like width and height, as well as photoURL and thumbnailURL.
    * @param options {GetLibraryOptions} Optional, like thumbnail size and chunks settings.

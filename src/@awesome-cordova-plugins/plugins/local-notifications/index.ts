@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export enum ELocalNotificationTriggerUnit {
@@ -534,7 +534,7 @@ export interface ILocalNotification {
   platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
-export class LocalNotifications extends IonicNativePlugin {
+export class LocalNotifications extends AwesomeCordovaNativePlugin {
   /**
    * Informs if the app has the permission to show notifications.
    * @returns {Promise<boolean>}

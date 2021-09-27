@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface HealthKitOptions {
   /**
@@ -106,7 +106,7 @@ export interface HealthKitOptions {
   platforms: ['iOS'],
 })
 @Injectable()
-export class HealthKit extends IonicNativePlugin {
+export class HealthKit extends AwesomeCordovaNativePlugin {
   /**
    * Check if HealthKit is supported (iOS8+, not on iPad)
    * @returns {Promise<any>}

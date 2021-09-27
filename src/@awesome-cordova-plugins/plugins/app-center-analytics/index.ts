@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface StringMap {
   [s: string]: string;
@@ -42,7 +42,7 @@ export interface StringMap {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class AppCenterAnalytics extends IonicNativePlugin {
+export class AppCenterAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Tracks an custom event.
    * You can send up to 200 distinct event names. Also, there is a maximum limit of 256 characters per event name

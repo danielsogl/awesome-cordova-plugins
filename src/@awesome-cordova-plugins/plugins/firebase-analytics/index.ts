@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @beta
@@ -50,7 +50,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class FirebaseAnalytics extends IonicNativePlugin {
+export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Logs an app event.
    * Be aware of automatically collected events.

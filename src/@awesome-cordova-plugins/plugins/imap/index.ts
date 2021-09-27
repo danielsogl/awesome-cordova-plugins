@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 export interface Config {
   /**
@@ -348,7 +348,7 @@ export enum FlagEnum {
   platforms: ['Android'],
 })
 @Injectable()
-export class Imap extends IonicNativePlugin {
+export class Imap extends AwesomeCordovaNativePlugin {
   /**
    * This function "connect(clientData: Config)" tries to connect and authenticate with the IMAP server.
    * @param clientData {Config} Connection configuration

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaCheck, IonicNativePlugin, Plugin, getPromise } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaCheck, AwesomeCordovaNativePlugin, Plugin, getPromise } from '@awesome-cordova-plugins/core';
 
 interface FontOptions {
   name: string; // The name of the font family. Only supported on iOS
@@ -166,7 +166,7 @@ export interface PrintOptions {
   platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
-export class Printer extends IonicNativePlugin {
+export class Printer extends AwesomeCordovaNativePlugin {
   /**
    * Checks whether the device is capable of printing (uses `check()` internally)
    * @returns {Promise<boolean>}

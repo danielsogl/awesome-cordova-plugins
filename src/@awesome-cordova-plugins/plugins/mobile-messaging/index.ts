@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export type OS = 'Android' | 'iOS';
@@ -222,7 +222,7 @@ export class DefaultMessageStorage {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class MobileMessaging extends IonicNativePlugin {
+export class MobileMessaging extends AwesomeCordovaNativePlugin {
   /**
    * Starts a new Mobile Messaging session.
    *

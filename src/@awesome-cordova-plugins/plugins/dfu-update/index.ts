@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface UpdateOptions {
@@ -50,7 +50,7 @@ export interface UpdateOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class DfuUpdate extends IonicNativePlugin {
+export class DfuUpdate extends AwesomeCordovaNativePlugin {
   /**
    * Start the Firmware-Update-Process
    * @param options - Options for the process

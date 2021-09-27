@@ -1,4 +1,4 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 
 export interface DocumentViewerOptions {
@@ -61,7 +61,7 @@ export interface DocumentViewerOptions {
   platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
-export class DocumentViewer extends IonicNativePlugin {
+export class DocumentViewer extends AwesomeCordovaNativePlugin {
   /**
    * Displays the email composer pre-filled with data.
    *

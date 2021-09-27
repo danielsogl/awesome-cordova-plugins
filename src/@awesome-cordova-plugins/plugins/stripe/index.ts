@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface StripeCardTokenParams {
   /**
@@ -143,7 +143,7 @@ export interface StripeCardTokenRes {
   platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
-export class Stripe extends IonicNativePlugin {
+export class Stripe extends AwesomeCordovaNativePlugin {
   /**
    * Set publishable key
    * @param publishableKey {string} Publishable key

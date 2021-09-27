@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -44,7 +44,7 @@ import { Observable } from 'rxjs';
   platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
-export class Kommunicate extends IonicNativePlugin {
+export class Kommunicate extends AwesomeCordovaNativePlugin {
   /**
    * Login the user with the details passed in
    * Creates a new user with the details provided there is no existing user

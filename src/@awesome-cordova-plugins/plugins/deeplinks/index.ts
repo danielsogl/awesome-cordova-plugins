@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface DeeplinkMatch {
@@ -93,7 +93,7 @@ export interface DeeplinkOptions {
   platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
-export class Deeplinks extends IonicNativePlugin {
+export class Deeplinks extends AwesomeCordovaNativePlugin {
   /**
    * Define a set of paths to match against incoming deeplinks.
    *

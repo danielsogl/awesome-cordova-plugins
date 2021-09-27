@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -33,7 +33,7 @@ import { Observable } from 'rxjs';
   platforms: ['Android'],
 })
 @Injectable()
-export class GoogleNearby extends IonicNativePlugin {
+export class GoogleNearby extends AwesomeCordovaNativePlugin {
   /**
    * Publish a message
    * @param message {string} Message to publish

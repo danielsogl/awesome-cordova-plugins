@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin, getPromise } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin, getPromise } from '@awesome-cordova-plugins/core';
 
 export interface WonderPushDelegate {
   urlForDeepLink(url: string, callback: (url?: string) => void): void;
@@ -217,7 +217,7 @@ export class UserPreferencesMethods extends NestedObject {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class WonderPush extends IonicNativePlugin {
+export class WonderPush extends AwesomeCordovaNativePlugin {
   /**
    * Sets the user id, used to identify a single identity across multiple devices,
    * and to correctly identify multiple users on a single device.

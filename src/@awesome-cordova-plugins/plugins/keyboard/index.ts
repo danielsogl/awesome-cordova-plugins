@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, CordovaProperty, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, CordovaProperty, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export enum KeyboardStyle {
@@ -45,7 +45,7 @@ export enum KeyboardResizeMode {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Keyboard extends IonicNativePlugin {
+export class Keyboard extends AwesomeCordovaNativePlugin {
   /**
    * Check keyboard status visible or not.
    * @returns {boolean}

@@ -5,7 +5,7 @@ import {
   CordovaProperty,
   CordovaInstance,
   InstanceProperty,
-  IonicNativePlugin,
+  AwesomeCordovaNativePlugin,
 } from '@awesome-cordova-plugins/core';
 import { kMaxLength } from 'buffer';
 import { resolve } from 'dns';
@@ -20,7 +20,7 @@ import { error } from 'console';
   platforms: ['Android, iOS'],
 })
 @Injectable()
-export class HyperTrackPlugin extends IonicNativePlugin {
+export class HyperTrackPlugin extends AwesomeCordovaNativePlugin {
   @Cordova()
   initialize(publishableKey: string): Promise<HyperTrackCordova> {
     return;

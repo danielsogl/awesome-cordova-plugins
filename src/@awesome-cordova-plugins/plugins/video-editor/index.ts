@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface TranscodeOptions {
   /** The path to the video on the device. */
@@ -146,7 +146,7 @@ export interface VideoInfo {
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
-export class VideoEditor extends IonicNativePlugin {
+export class VideoEditor extends AwesomeCordovaNativePlugin {
   OptimizeForNetworkUse = {
     NO: 0,
     YES: 1,

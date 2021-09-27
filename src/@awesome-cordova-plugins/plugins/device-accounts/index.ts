@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface AndroidAccount {
   /** Account creator */
@@ -41,7 +41,7 @@ export interface AndroidAccount {
   platforms: ['Android'],
 })
 @Injectable()
-export class DeviceAccounts extends IonicNativePlugin {
+export class DeviceAccounts extends AwesomeCordovaNativePlugin {
   /**
    *  Gets all accounts registered on the Android Device
    * @returns {Promise<AndroidAccount[]>}

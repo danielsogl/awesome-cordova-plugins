@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -77,7 +77,7 @@ export interface BackgroundModeConfiguration {
   platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
-export class BackgroundMode extends IonicNativePlugin {
+export class BackgroundMode extends AwesomeCordovaNativePlugin {
   /**
    * Enable the background mode.
    * Once called, prevents the app from being paused while in background.

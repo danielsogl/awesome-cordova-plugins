@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface SafariViewControllerOptions {
@@ -67,7 +67,7 @@ export interface SafariViewControllerOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class SafariViewController extends IonicNativePlugin {
+export class SafariViewController extends AwesomeCordovaNativePlugin {
   /**
    * Checks if SafariViewController is available
    * @returns {Promise<boolean>}

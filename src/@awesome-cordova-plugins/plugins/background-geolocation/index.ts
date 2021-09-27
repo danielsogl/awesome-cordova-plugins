@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export enum BackgroundGeolocationLocationCode {
@@ -546,7 +546,7 @@ export declare enum BackgroundGeolocationIOSActivity {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class BackgroundGeolocation extends IonicNativePlugin {
+export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
   /**
    * Configure the plugin.
    *

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 /**
  * @name Clipboard
  * @premier clipboard
@@ -38,7 +38,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS', 'Windows Phone 8'],
 })
 @Injectable()
-export class Clipboard extends IonicNativePlugin {
+export class Clipboard extends AwesomeCordovaNativePlugin {
   /**
    * Copies the given text
    * @param {string} text Text that gets copied on the system clipboard

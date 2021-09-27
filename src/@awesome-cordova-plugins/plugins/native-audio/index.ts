@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 /**
  * @name Native Audio
  * @description Native Audio Playback
@@ -37,7 +37,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
-export class NativeAudio extends IonicNativePlugin {
+export class NativeAudio extends AwesomeCordovaNativePlugin {
   /**
    * Loads an audio file into memory. Optimized for short clips / single shots (up to five seconds). Cannot be stopped / looped.
    * @param id {string} unique ID for the audio file

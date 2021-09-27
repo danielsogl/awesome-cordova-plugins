@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaCheck, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import {
+  Cordova,
+  CordovaCheck,
+  CordovaProperty,
+  AwesomeCordovaNativePlugin,
+  Plugin,
+} from '@awesome-cordova-plugins/core';
 import { Observable, merge } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
 
@@ -67,7 +73,7 @@ export enum Connection {
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
-export class Network extends IonicNativePlugin {
+export class Network extends AwesomeCordovaNativePlugin {
   /**
    * Constants for possible connection types
    */

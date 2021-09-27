@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -33,7 +33,7 @@ import { Observable } from 'rxjs';
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class FirebaseAuthentication extends IonicNativePlugin {
+export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
   /**
    * Returns the current user logged in Firebase service
    * @return {Promise<any>} Returns the user info

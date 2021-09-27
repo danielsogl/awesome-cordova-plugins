@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 declare const window: any;
 
@@ -28,7 +28,7 @@ declare const window: any;
   platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows'],
 })
 @Injectable()
-export class Device extends IonicNativePlugin {
+export class Device extends AwesomeCordovaNativePlugin {
   /** Get the version of Cordova running on the device. */
   @CordovaProperty()
   cordova: string;

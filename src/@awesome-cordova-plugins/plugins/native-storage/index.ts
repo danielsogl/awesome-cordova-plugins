@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Native Storage
@@ -35,7 +35,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows'],
 })
 @Injectable()
-export class NativeStorage extends IonicNativePlugin {
+export class NativeStorage extends AwesomeCordovaNativePlugin {
   /**
    * Initialises shared storage with the suite name when using app groups in iOS
    * @param reference {string}

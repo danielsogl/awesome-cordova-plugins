@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 export interface UsabillaResult {
   completed: boolean | string;
@@ -57,7 +57,7 @@ export interface UbResult {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Usabilla extends IonicNativePlugin {
+export class Usabilla extends AwesomeCordovaNativePlugin {
   /**
    * Initializes Usabilla sdk for capturing feedbacks.
    *

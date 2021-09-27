@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaInstance, InstanceCheck, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { CordovaInstance, InstanceCheck, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable, Observer } from 'rxjs';
 
 declare const cordova: Cordova & { InAppBrowser: any };
@@ -290,7 +290,7 @@ export class InAppBrowserObject {
   platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'macOS', 'Windows'],
 })
 @Injectable()
-export class InAppBrowser extends IonicNativePlugin {
+export class InAppBrowser extends AwesomeCordovaNativePlugin {
   /**
    * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.
    * @param  url {string}     The URL to load.

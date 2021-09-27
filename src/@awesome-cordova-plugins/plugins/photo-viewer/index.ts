@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface PhotoViewerOptions {
   /**
@@ -55,7 +55,7 @@ export interface PhotoViewerOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class PhotoViewer extends IonicNativePlugin {
+export class PhotoViewer extends AwesomeCordovaNativePlugin {
   /**
    * Shows an image in full screen
    * @param url {string} URL or path to image

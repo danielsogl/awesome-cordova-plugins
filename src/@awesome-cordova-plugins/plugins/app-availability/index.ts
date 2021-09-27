@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name App Availability
@@ -40,7 +40,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class AppAvailability extends IonicNativePlugin {
+export class AppAvailability extends AwesomeCordovaNativePlugin {
   /**
    * Checks if an app is available on device
    * @param {string} app Package name on android, or URI scheme on iOS

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface BarcodeScannerOptions {
   /**
@@ -114,7 +114,7 @@ export interface BarcodeScanResult {
   platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Windows'],
 })
 @Injectable()
-export class BarcodeScanner extends IonicNativePlugin {
+export class BarcodeScanner extends AwesomeCordovaNativePlugin {
   Encode: {
     TEXT_TYPE: string;
     EMAIL_TYPE: string;

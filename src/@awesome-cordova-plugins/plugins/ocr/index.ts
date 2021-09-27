@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export enum OCRSourceType {
   /**
@@ -153,7 +153,7 @@ export interface OCRResult {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class OCR extends IonicNativePlugin {
+export class OCR extends AwesomeCordovaNativePlugin {
   /**
    * Extract text from image
    * @param sourceType {OCRSourceType} type of image source

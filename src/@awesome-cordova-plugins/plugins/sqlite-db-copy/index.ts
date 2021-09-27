@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Sqlite Db Copy
@@ -30,7 +30,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class SqliteDbCopy extends IonicNativePlugin {
+export class SqliteDbCopy extends AwesomeCordovaNativePlugin {
   /**
    * Copy database from www directory to device SQLite DB location
    * (for ios only, use 0 for Android)

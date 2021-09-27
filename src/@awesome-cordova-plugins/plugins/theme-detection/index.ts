@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 export interface ThemeDetectionResponse {
   // Boolean value about the status of the request
@@ -47,7 +47,7 @@ export interface ThemeDetectionResponse {
   platforms: ['iOS', 'Android'],
 })
 @Injectable()
-export class ThemeDetection extends IonicNativePlugin {
+export class ThemeDetection extends AwesomeCordovaNativePlugin {
   /**
    *
    * @return {Promise<ThemeDetectionResponse>}

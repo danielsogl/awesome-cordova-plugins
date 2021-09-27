@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   CordovaInstance,
   InstanceCheck,
-  IonicNativePlugin,
+  AwesomeCordovaNativePlugin,
   Plugin,
   checkAvailability,
 } from '@awesome-cordova-plugins/core';
@@ -178,7 +178,7 @@ export interface FileTransferError {
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone'],
 })
 @Injectable()
-export class FileTransfer extends IonicNativePlugin {
+export class FileTransfer extends AwesomeCordovaNativePlugin {
   /**
    * Error code rejected from upload with FileTransferError
    * Defined in FileTransferError.

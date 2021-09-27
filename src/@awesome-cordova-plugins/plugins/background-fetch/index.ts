@@ -1,4 +1,4 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 
 export interface BackgroundFetchConfig {
@@ -58,7 +58,7 @@ export interface BackgroundFetchConfig {
   platforms: ['iOS'],
 })
 @Injectable()
-export class BackgroundFetch extends IonicNativePlugin {
+export class BackgroundFetch extends AwesomeCordovaNativePlugin {
   /**
    * Configures the plugin's fetch callbackFn
    *

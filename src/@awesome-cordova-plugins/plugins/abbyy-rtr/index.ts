@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CordovaCheck, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { CordovaCheck, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 declare const AbbyyRtrSdk: any;
 
@@ -302,7 +302,7 @@ export interface DataCaptureResult {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class AbbyyRTR extends IonicNativePlugin {
+export class AbbyyRTR extends AwesomeCordovaNativePlugin {
   /**
    * Opens a modal dialog with controls for the Text Capture scenario.
    * @param {TextCaptureOptions} options

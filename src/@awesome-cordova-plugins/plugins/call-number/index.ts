@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Call Number
@@ -30,7 +30,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class CallNumber extends IonicNativePlugin {
+export class CallNumber extends AwesomeCordovaNativePlugin {
   /**
    * Calls a phone number
    * @param {string} numberToCall The phone number to call as a string

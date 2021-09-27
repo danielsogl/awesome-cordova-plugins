@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name BiometricWrapper
@@ -34,7 +34,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android'],
 })
 @Injectable()
-export class BiometricWrapper extends IonicNativePlugin {
+export class BiometricWrapper extends AwesomeCordovaNativePlugin {
   /**
    * This function activate iris activity
    * @return {Promise<any>} Returns a promise that resolves when iris data captured

@@ -1,7 +1,7 @@
 import { checkAvailability } from './decorators/common';
 import { get } from './util';
 
-export class IonicNativePlugin {
+export class AwesomeCordovaNativePlugin {
   static pluginName = '';
   static pluginRef = '';
   static plugin = '';

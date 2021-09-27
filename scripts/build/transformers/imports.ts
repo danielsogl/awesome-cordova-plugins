@@ -44,7 +44,7 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
     const methodNames = methodElements.map(el => el.escapedText);
 
     importStatement.importClause.namedBindings.elements = [
-      ts.createIdentifier('IonicNativePlugin'),
+      ts.createIdentifier('AwesomeCordovaNativePlugin'),
       ...methodElements,
       ...importStatement.importClause.namedBindings.elements.filter(
         el => keep.indexOf(el.name.text) !== -1 && methodNames.indexOf(el.name.text) === -1

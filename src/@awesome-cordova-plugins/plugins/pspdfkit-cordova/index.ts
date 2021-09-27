@@ -5,7 +5,7 @@ import {
   CordovaProperty,
   CordovaInstance,
   InstanceProperty,
-  IonicNativePlugin,
+  AwesomeCordovaNativePlugin,
 } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
@@ -50,7 +50,7 @@ import { Observable } from 'rxjs';
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class PSPDFKit extends IonicNativePlugin {
+export class PSPDFKit extends AwesomeCordovaNativePlugin {
   /**
    * Activates PSPDFKit with your license key from https://customers.pspdfkit.com.
    *

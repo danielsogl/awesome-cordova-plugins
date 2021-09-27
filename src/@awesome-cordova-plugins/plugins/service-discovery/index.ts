@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name ServiceDiscovery
@@ -30,7 +30,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class ServiceDiscovery extends IonicNativePlugin {
+export class ServiceDiscovery extends AwesomeCordovaNativePlugin {
   /**
    * Finds and returns metadata about devices discovered on the network via SSDP / UPnP / DLNA
    * @param service {string} The service name to discover

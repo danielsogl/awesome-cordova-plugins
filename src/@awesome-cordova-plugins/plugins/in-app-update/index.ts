@@ -5,7 +5,7 @@ import {
   CordovaProperty,
   CordovaInstance,
   InstanceProperty,
-  IonicNativePlugin,
+  AwesomeCordovaNativePlugin,
 } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
@@ -57,7 +57,7 @@ class AppUpdateInfo {
   platforms: ['Android'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class InAppUpdate extends IonicNativePlugin {
+export class InAppUpdate extends AwesomeCordovaNativePlugin {
   /**
    * If you want the user to be prompted about new version information before initiating the update, you can use `check` to retrive the new app version information.
    * @return {Promise<AppUpdateInfo>} Returns a promise that resolves with new app version update details

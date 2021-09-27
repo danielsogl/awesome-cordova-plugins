@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name NativeView
@@ -57,7 +57,7 @@ export interface NativeMarketParams extends NativeParams {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class NativeView extends IonicNativePlugin {
+export class NativeView extends AwesomeCordovaNativePlugin {
   /**
    * Shows the native view.
    *

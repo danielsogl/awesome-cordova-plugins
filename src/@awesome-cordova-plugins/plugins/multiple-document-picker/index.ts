@@ -3,7 +3,7 @@
  *
  */
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Multiple Documents Picker
@@ -34,7 +34,7 @@ import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class MultipleDocumentsPicker extends IonicNativePlugin {
+export class MultipleDocumentsPicker extends AwesomeCordovaNativePlugin {
   /**
    * This function allow user to show native file picker
    * @param type {number} To pick type of files: for images send 1, for all files send 2

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -45,7 +45,7 @@ export type EventData = object | AndroidData | null;
   platforms: ['Android', 'iOS', 'Browser'],
 })
 @Injectable()
-export class Broadcaster extends IonicNativePlugin {
+export class Broadcaster extends AwesomeCordovaNativePlugin {
   /**
    * This function listen to an event sent from the native code
    * @param {string} eventName

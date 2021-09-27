@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, IonicNativePlugin } from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -247,7 +247,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
 @Injectable({
   providedIn: 'root',
 })
-export class Purchases extends IonicNativePlugin {
+export class Purchases extends AwesomeCordovaNativePlugin {
   static ATTRIBUTION_NETWORKS = ATTRIBUTION_NETWORK;
   /**
    * Enum for attribution networks

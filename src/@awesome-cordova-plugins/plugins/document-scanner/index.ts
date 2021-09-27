@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export enum DocumentScannerSourceType {
   /**
@@ -78,7 +78,7 @@ export interface DocumentScannerOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class DocumentScanner extends IonicNativePlugin {
+export class DocumentScanner extends AwesomeCordovaNativePlugin {
   /**
    * Scan a document
    * @param opts {DocumentScannerOptions} optional parameter for controlling scanning

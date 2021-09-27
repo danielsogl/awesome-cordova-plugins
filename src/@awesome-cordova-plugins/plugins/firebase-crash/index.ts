@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name FirebaseCrash
@@ -28,7 +28,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class FirebaseCrash extends IonicNativePlugin {
+export class FirebaseCrash extends AwesomeCordovaNativePlugin {
   /**
    * Add logging that will be sent with your crash data in case of app crash.
    * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#add_custom_logs

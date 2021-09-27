@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface Response {
@@ -63,7 +63,7 @@ export interface Request {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class WebServer extends IonicNativePlugin {
+export class WebServer extends AwesomeCordovaNativePlugin {
   /**
    * This method will start your webserver.
    * @param port {number} Port number (default to 8080)

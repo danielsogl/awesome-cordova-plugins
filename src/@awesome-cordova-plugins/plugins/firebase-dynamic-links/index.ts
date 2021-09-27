@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface IDynamicLink {
@@ -96,7 +96,7 @@ export interface ILinkOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class FirebaseDynamicLinks extends IonicNativePlugin {
+export class FirebaseDynamicLinks extends AwesomeCordovaNativePlugin {
   /**
    * Determines if the app has a pending dynamic link and provides access to the dynamic link parameters.
    * @return {Promise<IDynamicLink>} Returns a promise

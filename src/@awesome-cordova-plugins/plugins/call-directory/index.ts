@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface CallDirectoryItem {
   label: string;
@@ -50,7 +50,7 @@ export interface CallDirectoryLog {
   platforms: ['iOS'],
 })
 @Injectable()
-export class CallDirectory extends IonicNativePlugin {
+export class CallDirectory extends AwesomeCordovaNativePlugin {
   /**
    * Check if the call directory extension is available and enabled
    * @return {Promise<boolean>} Returns a promise with result

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Status Bar
@@ -34,7 +34,7 @@ import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-co
   platforms: ['Android', 'iOS', 'Windows'],
 })
 @Injectable()
-export class StatusBar extends IonicNativePlugin {
+export class StatusBar extends AwesomeCordovaNativePlugin {
   /**
    * Whether the StatusBar is currently visible or not.
    */

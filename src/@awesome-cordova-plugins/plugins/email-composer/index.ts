@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaCheck, IonicNativePlugin, Plugin, getPromise } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaCheck, AwesomeCordovaNativePlugin, Plugin, getPromise } from '@awesome-cordova-plugins/core';
 
 export interface EmailComposerOptions {
   /**
@@ -130,7 +130,7 @@ export interface EmailComposerOptions {
   platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows', 'macOS'],
 })
 @Injectable()
-export class EmailComposer extends IonicNativePlugin {
+export class EmailComposer extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the app has a permission to access email accounts information
    * @return {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted

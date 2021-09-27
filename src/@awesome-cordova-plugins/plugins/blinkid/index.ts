@@ -1,4 +1,4 @@
-import { Cordova, CordovaProperty, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 
 export interface Licenses {
@@ -2765,7 +2765,7 @@ export interface BlinkIdRecognizerResultCtor extends RecognizerResultCtor<BlinkI
   platforms: ['iOS', 'Android'],
 })
 @Injectable()
-export class BlinkId extends IonicNativePlugin {
+export class BlinkId extends AwesomeCordovaNativePlugin {
   /**
    * Opens the camera dialog and attempts to scan a barcode/document
    * @param overlaySettings {OverlaySettings} for camera overlay customization

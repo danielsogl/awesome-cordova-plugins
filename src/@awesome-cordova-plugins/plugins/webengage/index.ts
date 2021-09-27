@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Webengage
@@ -26,7 +26,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Webengage extends IonicNativePlugin {
+export class Webengage extends AwesomeCordovaNativePlugin {
   /**
    * Initializes WebEngage SDK
    * @param {any} [config]
@@ -80,7 +80,7 @@ export class Webengage extends IonicNativePlugin {
   pluginRef: 'webengage.user',
 })
 @Injectable()
-export class WebengageUser extends IonicNativePlugin {
+export class WebengageUser extends AwesomeCordovaNativePlugin {
   /**
    * Logs user in
    * @param {string} userId
@@ -121,7 +121,7 @@ export class WebengageUser extends IonicNativePlugin {
   pluginRef: 'webengage.push',
 })
 @Injectable()
-export class WebengagePush extends IonicNativePlugin {
+export class WebengagePush extends AwesomeCordovaNativePlugin {
   /**
    * Callback function is invoked when a push notification is clicked
    * @param {any} callback
@@ -153,7 +153,7 @@ export class WebengagePush extends IonicNativePlugin {
   pluginRef: 'webengage.notification',
 })
 @Injectable()
-export class WebengageNotification extends IonicNativePlugin {
+export class WebengageNotification extends AwesomeCordovaNativePlugin {
   /**
    * Callback function is invoked when a in-app notification is shown
    * @param {any} callback

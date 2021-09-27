@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export class MetrixConfig {
   private appId: string;
@@ -179,7 +179,7 @@ export enum MetrixAttributionStatus {
   platforms: ['Android'],
 })
 @Injectable()
-export class Metrix extends IonicNativePlugin {
+export class Metrix extends AwesomeCordovaNativePlugin {
   /**
    * This method initializes Metrix SDK
    * @param {MetrixConfig} config MetrixConfig object used as starting options

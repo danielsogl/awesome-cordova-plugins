@@ -1,4 +1,4 @@
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
 
 export interface TealConfig {
@@ -79,7 +79,7 @@ export interface TealConfig {
   install: '', // OPTIONAL install command, in case the plugin requires variables
 })
 @Injectable()
-export class Tealium extends IonicNativePlugin {
+export class Tealium extends AwesomeCordovaNativePlugin {
   /**
    * This function initializes the Tealium Cordova plugin.
    * This should usually be done inside the "deviceReady" handler.

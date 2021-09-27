@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface LineLoginParams {
   /**
@@ -82,7 +82,7 @@ export interface LineLoginAccessToken {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class LineLogin extends IonicNativePlugin {
+export class LineLogin extends AwesomeCordovaNativePlugin {
   /**
    * Initialize
    * @param param LineLoginParams

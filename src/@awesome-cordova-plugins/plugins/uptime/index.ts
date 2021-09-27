@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Uptime
@@ -28,7 +28,7 @@ import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/cor
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Uptime extends IonicNativePlugin {
+export class Uptime extends AwesomeCordovaNativePlugin {
   /**
    * This function return system uptime
    * @param {boolean} includeDeepSleep Set to true to include system deep sleep

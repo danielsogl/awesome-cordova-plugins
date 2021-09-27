@@ -4,7 +4,7 @@ import {
   CordovaCheck,
   CordovaInstance,
   InstanceProperty,
-  IonicNativePlugin,
+  AwesomeCordovaNativePlugin,
   Plugin,
 } from '@awesome-cordova-plugins/core';
 
@@ -184,7 +184,7 @@ export class SQLiteObject {
   platforms: ['Android', 'iOS', 'macOS', 'Windows'],
 })
 @Injectable()
-export class SQLite extends IonicNativePlugin {
+export class SQLite extends AwesomeCordovaNativePlugin {
   /**
    * Open or create a SQLite database file.
    *

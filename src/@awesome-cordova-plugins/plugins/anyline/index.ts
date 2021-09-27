@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface AnylineOptions {
   // Valid License Key
@@ -38,7 +38,7 @@ export interface AnylineOptions {
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class Anyline extends IonicNativePlugin {
+export class Anyline extends AwesomeCordovaNativePlugin {
   /**
    * Scan
    * @param options {AnylineOptions} Scanning options

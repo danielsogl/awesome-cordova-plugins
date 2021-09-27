@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable, fromEvent } from 'rxjs';
 
 export type AdUnitIDOption =
@@ -75,7 +75,7 @@ export class RewardVideo {
   repo: 'https://github.com/admob-plus/admob-plus',
 })
 @Injectable()
-export class AdMob extends IonicNativePlugin {
+export class AdMob extends AwesomeCordovaNativePlugin {
   banner = new Banner();
   interstitial = new Interstitial();
   rewardVideo = new RewardVideo();
