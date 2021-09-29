@@ -26,7 +26,9 @@ module.exports = (gulp) => {
     try {
       const ionicPackage = require('./dgeni/dgeni-readmes-config')(projectPackage.version),
         dgeni = new Dgeni([ionicPackage]);
-      return dgeni.generate().then((docs) => console.log(docs.length + ' README files generated'));
+      return dgeni.generate().then((docs) => {
+        console.log(docs.length + ' README files generated');
+      });
     } catch (err) {
       console.log(err.stack);
     }

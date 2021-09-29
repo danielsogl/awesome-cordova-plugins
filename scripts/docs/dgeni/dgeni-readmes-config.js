@@ -59,6 +59,10 @@ module.exports = (currentVersion) => {
         writeFilesProcessor.outputFolder = './dist/@awesome-cordova-plugins/';
       })
 
+      .config(function (writeFilesProcessor) {
+        writeFilesProcessor.outputFolder = './docs/';
+      })
+
       // Configure rendering
       .config(function (templateFinder) {
         templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
