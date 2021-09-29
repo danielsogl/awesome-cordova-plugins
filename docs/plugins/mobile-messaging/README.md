@@ -23,3 +23,6 @@ For more info see [Cordova plugin docs](https://github.com/infobip/mobile-messag
 
 - Android
   - iOS
+  
+
+

@@ -20,3 +20,6 @@ Requires Cordova plugin: `cordova-plugin-3dtouch`. For more info, please see the
 ## Supported platforms
 
 - iOS
+  
+
+

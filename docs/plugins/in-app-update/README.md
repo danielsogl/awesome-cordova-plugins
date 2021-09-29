@@ -18,3 +18,6 @@ This pluging enabels In app update For cordova.
 ## Supported platforms
 
 - Android
+  
+
+

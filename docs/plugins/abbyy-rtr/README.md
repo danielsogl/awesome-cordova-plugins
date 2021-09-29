@@ -20,3 +20,6 @@ ABBYY Real-Time Recognition SDK (RTR SDK) in apps.
 
 - Android
   - iOS
+  
+
+

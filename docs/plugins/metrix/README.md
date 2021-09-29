@@ -1,10 +1,9 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/metrix/index.ts#L144">
+<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/metrix/index.ts#L1">
   Improve this doc
 </a>
 
-# Metrix
+# MetrixConfig
 
-```
 $ ionic cordova plugin add ir.metrix.sdk
 $ npm install @ionic-native/plugins/metrix
 ```
@@ -20,3 +19,6 @@ Requires Cordova plugin: `ir.metrix.sdk`. For more info, please see the [Metrix 
 ## Supported platforms
 
 - Android
+  
+
+

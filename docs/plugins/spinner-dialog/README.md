@@ -23,3 +23,6 @@ Requires Cordova plugin: `cordova-plugin-native-spinner`. For more info, please 
   - iOS
   - Windows Phone 8
   - Windows
+  
+
+

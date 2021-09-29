@@ -18,3 +18,6 @@ A plugin for Apache Cordova that enables applications to manually resolve hostna
 ## Supported platforms
 
 - Android
+  
+
+

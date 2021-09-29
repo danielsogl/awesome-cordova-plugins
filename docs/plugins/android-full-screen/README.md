@@ -20,3 +20,6 @@ In Android 4.4+, however, you can now enter true full screen, fully interactive 
 ## Supported platforms
 
 - Android
+  
+
+

@@ -10,6 +10,7 @@
     href="/issues">plugin repo</a>.
   </p>
 
+
 ```
 $ ionic cordova plugin add cordova-plugin-firebase-messaging
 $ npm install @ionic-native/plugins/firebase-messaging
@@ -25,3 +26,6 @@ Cordova plugin for Firebase Messaging
 
 - Android
   - iOS
+  
+
+

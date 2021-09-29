@@ -20,3 +20,6 @@ Makes the IDFA and Google Ad Identifier available in the Tealium data layer.
 
 - Android
   - iOS
+  
+
+

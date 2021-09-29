@@ -24,3 +24,6 @@ Requires Cordova plugin: `phonegap-plugin-barcodescanner`. For more info, please
   - Browser
   - iOS
   - Windows
+  
+
+

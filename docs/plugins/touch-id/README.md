@@ -20,3 +20,6 @@ Requires Cordova plugin: `cordova-plugin-touch-id`. For more info, please see th
 ## Supported platforms
 
 - iOS
+  
+
+

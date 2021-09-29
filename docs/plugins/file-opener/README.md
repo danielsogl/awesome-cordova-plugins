@@ -21,3 +21,6 @@ This plugin will open a file on your device file system with its default applica
   - iOS
   - Windows
   - Windows Phone 8
+  
+
+

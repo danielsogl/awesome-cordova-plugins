@@ -20,3 +20,6 @@ Follow the offical documentation to setup this plugin correctly: https://develop
 
 - Android
   - iOS
+  
+
+

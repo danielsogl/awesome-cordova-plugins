@@ -21,3 +21,6 @@ Requires Cordova plugin: cordova-plugin-appavailability. For more info, please s
 
 - Android
   - iOS
+  
+
+

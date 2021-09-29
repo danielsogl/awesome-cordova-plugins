@@ -22,3 +22,6 @@ See also [Secure Storage](https://ionicframework.com/docs/native/secure-storage/
 ## Supported platforms
 
 - iOS
+  
+
+

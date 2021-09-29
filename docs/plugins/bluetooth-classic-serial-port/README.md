@@ -20,3 +20,6 @@ This plugin is written using the iOS Accessory Framework (MFi) to support Classi
 - Android
   - iOS
   - Browser
+  
+
+

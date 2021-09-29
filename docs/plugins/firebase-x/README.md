@@ -20,3 +20,6 @@ It is a maintained fork from unmaintained ionic-navite plugin called Firebase.
 
 - Android
   - iOS
+  
+
+

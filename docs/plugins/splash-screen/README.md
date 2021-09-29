@@ -21,3 +21,6 @@ This plugin displays and hides a splash screen during application launch. The me
   - Android
   - iOS
   - Windows
+  
+
+

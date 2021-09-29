@@ -19,3 +19,6 @@ Simple plugin to generate (offline) pdf. The plugin transforms HTML to PDF and a
 
 - Android
   - iOS
+  
+
+

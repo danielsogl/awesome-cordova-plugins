@@ -23,3 +23,6 @@ Requires Cordova plugin: cordova-plugin-apprate. For more info, please see the [
   - BlackBerry 10
   - iOS
   - Windows
+  
+
+

@@ -19,3 +19,6 @@ Cordova plugin for Firebase MLKit Vision
 
 - Android
   - iOS
+  
+
+

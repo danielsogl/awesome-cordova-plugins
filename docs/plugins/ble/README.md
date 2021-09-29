@@ -31,3 +31,6 @@ Simultaneous connections to multiple peripherals are supported.
 
 - Android
   - iOS
+  
+
+

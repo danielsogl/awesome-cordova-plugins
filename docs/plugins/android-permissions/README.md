@@ -20,3 +20,6 @@ You can find all permissions here: https://developer.android.com/reference/andro
 ## Supported platforms
 
 - Android
+  
+
+

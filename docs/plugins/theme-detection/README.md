@@ -10,6 +10,7 @@
     href="/issues">plugin repo</a>.
   </p>
 
+
 ```
 $ cordova plugin add cordova-plugin-theme-detection
 $ npm install @ionic-native/plugins/theme-detection
@@ -25,3 +26,6 @@ Cordova plugin to detect whether dark mode is enabled or not
 
 - iOS
   - Android
+  
+
+

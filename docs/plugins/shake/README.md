@@ -18,3 +18,6 @@ Handles shake gesture
 ## Supported platforms
 
 - iOS
+  
+
+

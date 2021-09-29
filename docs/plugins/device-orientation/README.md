@@ -27,3 +27,6 @@ Requires Cordova plugin: `cordova-plugin-device-orientation`. For more info, ple
   - Ubuntu
   - Windows
   - Windows Phone
+  
+
+

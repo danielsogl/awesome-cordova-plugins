@@ -19,3 +19,6 @@ Stores app settings in cloud storage so if the user re-installs the app or insta
 
 - Android
   - iOS
+  
+
+

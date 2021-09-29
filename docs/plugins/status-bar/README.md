@@ -22,3 +22,6 @@ Requires Cordova plugin: `cordova-plugin-statusbar`. For more info, please see t
 - Android
   - iOS
   - Windows
+  
+
+

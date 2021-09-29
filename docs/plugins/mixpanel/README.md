@@ -20,3 +20,6 @@ Cordova Plugin that wraps Mixpanel SDK for Android and iOS
 - Android
   - Browser
   - iOS
+  
+
+

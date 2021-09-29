@@ -24,3 +24,6 @@ Requires Cordova plugin: `cordova-plugin-dialogs`. For more info, please see the
   - Browser
   - iOS
   - Windows
+  
+
+

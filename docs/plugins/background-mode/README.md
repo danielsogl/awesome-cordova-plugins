@@ -23,3 +23,6 @@ Requires Cordova plugin: cordova-plugin-background-mode. For more info about plu
   - Browser
   - iOS
   - Windows
+  
+
+

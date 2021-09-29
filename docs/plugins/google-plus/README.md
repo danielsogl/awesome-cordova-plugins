@@ -13,7 +13,12 @@ $ npm install @ionic-native/plugins/google-plus
 
 Plugin Repo: [https://github.com/EddyVerbruggen/cordova-plugin-googleplus](https://github.com/EddyVerbruggen/cordova-plugin-googleplus)
 
+
+
 ## Supported platforms
 
 - Android
   - iOS
+  
+
+

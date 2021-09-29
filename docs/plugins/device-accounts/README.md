@@ -18,3 +18,6 @@ Gets the Google accounts associated with the Android device
 ## Supported platforms
 
 - Android
+  
+
+

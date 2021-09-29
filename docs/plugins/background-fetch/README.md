@@ -20,3 +20,6 @@ For more detail, please see https://github.com/transistorsoft/cordova-plugin-bac
 ## Supported platforms
 
 - iOS
+  
+
+

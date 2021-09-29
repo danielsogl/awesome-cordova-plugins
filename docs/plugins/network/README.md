@@ -22,3 +22,6 @@ Requires Cordova plugin: cordova-plugin-network-information. For more info, plea
   - Browser
   - iOS
   - Windows
+  
+
+

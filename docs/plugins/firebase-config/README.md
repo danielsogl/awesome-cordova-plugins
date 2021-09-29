@@ -10,6 +10,7 @@
     href="/issues">plugin repo</a>.
   </p>
 
+
 ```
 $ ionic cordova plugin add cordova-plugin-firebase-config
 $ npm install @ionic-native/plugins/firebase-config
@@ -25,3 +26,6 @@ Cordova plugin for Firebase Config
 
 - Android
   - iOS
+  
+
+

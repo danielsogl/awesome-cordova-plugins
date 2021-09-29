@@ -19,3 +19,6 @@ Awesome Cordova Plugins wrapper that wraps Webengage Cordova plugin for Android 
 
 - Android
   - iOS
+  
+
+

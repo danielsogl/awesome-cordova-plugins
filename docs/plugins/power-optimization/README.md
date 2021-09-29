@@ -19,3 +19,6 @@ The Power Optimization plugin give you android PowerManager methods with cordova
 ## Supported platforms
 
 - Android
+  
+
+

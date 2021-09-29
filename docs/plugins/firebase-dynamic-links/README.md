@@ -10,6 +10,7 @@
     href="/issues">plugin repo</a>.
   </p>
 
+
 ```
 $ ionic cordova plugin add cordova-plugin-firebase-dynamiclinks --save --variable APP_DOMAIN="example.com" --variable APP_PATH="/"
 $ npm install @ionic-native/plugins/firebase-dynamic-links
@@ -30,7 +31,6 @@ Preferences GoogleIOSClientId and GoogleAndroidClientId are used to setup dynami
 You can find values at your GoogleService-Info.plist (key ANDROID_CLIENT_ID) and google-services.json (key client[0].oauth_client[0].client_id).
 
 config.xml:
-
 ```xml
 <platform name="ios">
     <preference name="GoogleIOSClientId" value="..." />
@@ -44,3 +44,6 @@ config.xml:
 
 - Android
   - iOS
+  
+
+

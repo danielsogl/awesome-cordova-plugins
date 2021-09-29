@@ -22,3 +22,6 @@ Requires Cordova plugin: `cordova-plugin-flashlight`. For more info, please see 
 - Android
   - iOS
   - Windows Phone 8
+  
+
+

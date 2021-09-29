@@ -18,3 +18,6 @@ This plugin is used to access Paytm's native CustomUISDK framework's apis.
 ## Supported platforms
 
 - Android, iOS
+  
+
+

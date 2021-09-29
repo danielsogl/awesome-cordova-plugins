@@ -10,6 +10,7 @@
     href="/issues">plugin repo</a>.
   </p>
 
+
 ```
 $ ionic cordova plugin add cordova-wheel-selector-plugin
 $ npm install @ionic-native/plugins/wheel-selector
@@ -25,3 +26,6 @@ Native wheel selector for Cordova (Android/iOS).
 
 - Android
   - iOS
+  
+
+

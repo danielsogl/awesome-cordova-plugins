@@ -21,3 +21,6 @@ Requires Cordova plugin: `cordova-plugin-cszbar`. For more info, please see the 
 
 - Android
   - iOS
+  
+
+

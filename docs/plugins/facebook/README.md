@@ -19,7 +19,7 @@ Requires Cordova plugin: `cordova-plugin-facebook-connect`. For more info, pleas
 
 #### Installation
 
-To use the FB plugin, you first have to create a new Facebook App inside of the Facebook developer portal at [https://developers.facebook.com/apps](https://developers.facebook.com/apps).
+ To use the FB plugin, you first have to create a new Facebook App inside of the Facebook developer portal at [https://developers.facebook.com/apps](https://developers.facebook.com/apps).
 
 [![fb-getstarted-1](/img/docs/native/Facebook/1.png)](https://developers.facebook.com/apps/)
 
@@ -44,7 +44,6 @@ Click `'Add Platform'`.
 At this point you'll need to open your project's [`config.xml`](https://cordova.apache.org/docs/en/latest/config_ref/index.html) file, found in the root directory of your project.
 
 Take note of the `id` for the next step:
-
 ```
 <widget id="com.mycompany.testapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
 ```
@@ -52,16 +51,16 @@ Take note of the `id` for the next step:
 You can also edit the `id` to whatever you'd like it to be.
 
 #### iOS Install
-
 Under 'Bundle ID', add the `id` from your `config.xml` file:
 
 [![fb-getstarted-5](/img/docs/native/Facebook/5.png)](https://developers.facebook.com/apps/)
 
-#### Android Install
 
+#### Android Install
 Under 'Google Play Package Name', add the `id` from your `config.xml` file:
 
 [![fb-getstarted-6](/img/docs/native/Facebook/6.png)](https://developers.facebook.com/apps/)
+
 
 And that's it! You can now make calls to Facebook using the plugin.
 
@@ -84,3 +83,6 @@ For tracking events, see `logEvent` and `logPurchase`.
 - Android
   - iOS
   - Browser
+  
+
+

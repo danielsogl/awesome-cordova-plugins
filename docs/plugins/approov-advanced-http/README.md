@@ -16,7 +16,6 @@ Plugin Repo: [https://github.com/approov/quickstart-ionic-advancedhttp](https://
 Cordova / Phonegap plugin for communicating with HTTP servers. Supports iOS and Android.
 
 Advantages over Javascript requests:
-
 - SSL / TLS Pinning
 - CORS restrictions do not apply
 - Handling of HTTP code 401 - read more at [Issue CB-2415](https://issues.apache.org/jira/browse/CB-2415)
@@ -28,3 +27,6 @@ we have only added approov functionality on top of it. All credit goes to the ac
 
 - Android
   - iOS
+  
+
+

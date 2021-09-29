@@ -20,3 +20,6 @@ Vibrates the device
 - Android
   - iOS
   - Windows
+  
+
+

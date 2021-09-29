@@ -24,3 +24,6 @@ Requires Cordova plugin: `cordova-plugin-x-toast`. For more info, please see the
   - iOS
   - Windows
   - Windows Phone 8
+  
+
+

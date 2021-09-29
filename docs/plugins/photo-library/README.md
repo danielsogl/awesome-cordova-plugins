@@ -22,3 +22,6 @@ cdvphotolibrary urls should be trusted by Angular. See plugin homepage to learn 
 - Android
   - Browser
   - iOS
+  
+
+

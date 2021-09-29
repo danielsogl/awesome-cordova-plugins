@@ -14,10 +14,12 @@ $ npm install @ionic-native/plugins/spotify-auth
 Plugin Repo: [https://github.com/Festify/cordova-spotify-oauth](https://github.com/Festify/cordova-spotify-oauth)
 
 Cordova plugin for authenticating with Spotify
-
 > https://github.com/Festify/cordova-spotify-oauth
 
 ## Supported platforms
 
 - Android
   - iOS
+  
+
+

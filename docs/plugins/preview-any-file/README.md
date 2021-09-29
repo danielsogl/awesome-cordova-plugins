@@ -13,7 +13,12 @@ $ npm install @ionic-native/plugins/preview-any-file
 
 Plugin Repo: [https://github.com/mostafa-mansour1/previewAnyFile](https://github.com/mostafa-mansour1/previewAnyFile)
 
+
+
 ## Supported platforms
 
 - Android
   - iOS
+  
+
+

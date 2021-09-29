@@ -26,3 +26,6 @@ Requires Cordova plugin: `cordova-plugin-device-motion`. For more info, please s
   - Ubuntu
   - Windows
   - Windows Phone 8
+  
+
+

@@ -21,3 +21,6 @@ It supports peripheral **and** central modes and covers most of the API methods 
 
 - Android
   - iOS
+  
+
+

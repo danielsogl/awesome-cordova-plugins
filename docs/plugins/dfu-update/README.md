@@ -19,3 +19,6 @@ This plugin is a Wrapper to use Nordic Semiconductor's Device Firmware Update (D
 
 - Android
   - iOS
+  
+
+

@@ -20,3 +20,6 @@ more detail, please see https://github.com/mauron85/cordova-plugin-background-ge
 
 - Android
   - iOS
+  
+
+

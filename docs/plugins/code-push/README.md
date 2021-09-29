@@ -21,3 +21,6 @@ For more info, please see https://github.com/Dellos7/example-cordova-code-push-p
 
 - Android
   - iOS
+  
+
+

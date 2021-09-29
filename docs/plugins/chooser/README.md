@@ -16,7 +16,6 @@ Plugin Repo: [https://github.com/cyph/cordova-plugin-chooser](https://github.com
 File chooser plugin for Cordova.
 
 The following must be added to config.xml to prevent crashing when selecting large files on Android:
-
 ```xml
 <platform name="android">
  <edit-config
@@ -32,3 +31,6 @@ The following must be added to config.xml to prevent crashing when selecting lar
 
 - Android
   - iOS
+  
+
+

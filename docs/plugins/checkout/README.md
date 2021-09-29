@@ -19,3 +19,6 @@ Checkout.com cordova plugin
 
 - Android
   - iOS
+  
+
+

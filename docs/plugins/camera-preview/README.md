@@ -10,6 +10,7 @@
     href="/issues">plugin repo</a>.
   </p>
 
+
 ```
 $ ionic cordova plugin add cordova-plugin-camera-preview
 $ npm install @ionic-native/plugins/camera-preview
@@ -27,3 +28,6 @@ Requires Cordova plugin: `https://github.com/cordova-plugin-camera-preview/cordo
 
 - Android
   - iOS
+  
+
+

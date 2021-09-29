@@ -24,3 +24,6 @@ For Browser usage check out the Web Share API docs: https://github.com/EddyVerbr
   - iOS
   - Windows
   - Windows Phone
+  
+
+

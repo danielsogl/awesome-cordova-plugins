@@ -1,11 +1,10 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/adjust/index.ts#L448">
+<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/adjust/index.ts#L308">
   Improve this doc
 </a>
 
-# Adjust
-
-```
-$ ionic cordova plugin add com.adjust.sdk
+# AdjustThirdPartySharing
+on
+ plugin add com.adjust.sdk
 $ npm install @ionic-native/plugins/adjust
 ```
 
@@ -21,3 +20,6 @@ Requires Cordova plugin: `com.adjust.sdk`. For more info, please see the [Adjust
 
 - Android
   - iOS
+  
+
+

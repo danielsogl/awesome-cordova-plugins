@@ -19,3 +19,6 @@ This Cordova plugin adds support for the OpenALPR (Automatic License Plate Recog
 
 - Android
   - iOS
+  
+
+

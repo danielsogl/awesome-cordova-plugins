@@ -19,3 +19,6 @@ Cordova plugin for native forward and reverse geocoding
 
 - iOS
   - Android
+  
+
+

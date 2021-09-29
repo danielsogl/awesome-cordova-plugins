@@ -3,11 +3,9 @@
 </a>
 
 # Coordinates
-
 alidationError
 ic cordova plugin add cordova-plugin-hypertrack-v3
 $ npm install @ionic-native/plugins/hyper-track
-
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/native/hyper-track/)
@@ -19,7 +17,6 @@ Plugin Repo: [https://github.com/hypertrack/cordova-plugin-hypertrack.git](https
 ## Supported platforms
 
 - Android, iOS
+  
 
 
-
-```

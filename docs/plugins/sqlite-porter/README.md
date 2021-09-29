@@ -25,3 +25,6 @@ This Cordova/Phonegap plugin can be used to import/export to/from a SQLite datab
   - Tizen
   - Windows
   - Windows Phone
+  
+
+

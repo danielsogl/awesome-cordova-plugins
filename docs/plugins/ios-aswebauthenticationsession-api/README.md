@@ -18,3 +18,6 @@ Plugin for iOS 12 ASWebAuthenticationSession API
 ## Supported platforms
 
 - iOS
+  
+
+

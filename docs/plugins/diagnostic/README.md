@@ -20,3 +20,6 @@ Checks whether device hardware features are enabled or available to the app, e.g
 - Android
   - iOS
   - Windows
+  
+
+

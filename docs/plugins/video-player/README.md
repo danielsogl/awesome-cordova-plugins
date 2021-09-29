@@ -20,3 +20,6 @@ Requires Cordova plugin: `com.moust.cordova.videoplayer`. For more info, please 
 ## Supported platforms
 
 - Android
+  
+
+

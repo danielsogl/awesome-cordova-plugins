@@ -21,3 +21,6 @@ This project is a fork of the WifiWizard plugin with fixes and updates, as well 
 
 - Android
   - iOS
+  
+
+

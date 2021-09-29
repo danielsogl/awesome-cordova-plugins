@@ -22,3 +22,6 @@ IMPORTANT NOTICE: this plugin takes a percentage out of your earnings if you pro
 - Android
   - iOS
   - Windows Phone 8
+  
+
+

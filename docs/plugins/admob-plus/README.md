@@ -13,10 +13,14 @@ $ npm install @ionic-native/plugins/admob-plus
 
 Plugin Repo: [https://github.com/admob-plus/admob-plus](https://github.com/admob-plus/admob-plus)
 
+
+
 ## Supported platforms
 
 - Android
   - iOS
+  
+
 
 -admob-free, which provides a cleaner API and build with modern tools.
 
@@ -24,3 +28,6 @@ Plugin Repo: [https://github.com/admob-plus/admob-plus](https://github.com/admob
 
 - Android
   - iOS
+  
+
+

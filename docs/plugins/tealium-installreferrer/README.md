@@ -19,3 +19,6 @@ Implements a Broadcast Receiver for the INSTALL_REFERRER intent.
 ## Supported platforms
 
 - Android
+  
+
+

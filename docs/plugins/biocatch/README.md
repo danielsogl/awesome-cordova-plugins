@@ -19,3 +19,6 @@ BioCatch SDK Cordova support
 
 - iOS
   - Android
+  
+
+

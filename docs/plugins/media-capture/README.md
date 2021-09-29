@@ -23,3 +23,6 @@ Requires Cordova plugin: `cordova-plugin-media-capture`. For more info, please s
   - Browser
   - iOS
   - Windows
+  
+
+

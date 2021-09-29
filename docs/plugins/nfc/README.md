@@ -1,12 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/nfc/index.ts#L570">
+<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/nfc/index.ts#L579">
   Improve this doc
 </a>
 
-# TextHelper
+# UriHelper
 
 onic cordova plugin add phonegap-nfc
 $ npm install @ionic-native/plugins/nfc
-
 ```
 
 ## [Usage Documentation](https://ionicframework.com/docs/native/nfc/)
@@ -28,7 +27,6 @@ This plugin uses NDEF (NFC Data Exchange Format) for maximum compatibilty betwee
 - Android
   - iOS
   - Windows
+  
 
 
-
-```

@@ -19,3 +19,6 @@ Pollfish Ionic Native plugin wrapper
 
 - Android
   - iOS
+  
+
+

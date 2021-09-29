@@ -23,3 +23,6 @@ This plugin provides build information.
   - macOS
   - browser
   - Electron
+  
+
+

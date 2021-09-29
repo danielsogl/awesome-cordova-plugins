@@ -19,3 +19,6 @@ Cordova plugin to show bodymovin/Lottie animations as the splash screen with Air
 
 - Android
   - iOS
+  
+
+

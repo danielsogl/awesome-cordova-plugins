@@ -20,3 +20,6 @@ Requires Cordova plugin: cordova-plugin-fingerprint-aio. For more info about plu
 
 - Android
   - iOS
+  
+
+

@@ -23,3 +23,6 @@ Requires Cordova plugin: cordova-plugin-email-composer. For more info, please se
   - iOS
   - Windows
   - macOS
+  
+
+

@@ -13,6 +13,11 @@ $ npm install @ionic-native/plugins/play-install-referrer
 
 Plugin Repo: [https://github.com/swayangjit/cordova-plugin-play-installreferrer](https://github.com/swayangjit/cordova-plugin-play-installreferrer)
 
+
+
 ## Supported platforms
 
 - Android
+  
+
+

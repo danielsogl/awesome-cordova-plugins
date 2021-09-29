@@ -21,3 +21,6 @@ Planned improvements and support for iOS.
 ## Supported platforms
 
 - Android
+  
+
+

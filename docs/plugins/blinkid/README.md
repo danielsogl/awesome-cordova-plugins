@@ -20,3 +20,6 @@ blinkid-phonegap repository for available recognizers and other settings
 
 - iOS
   - Android
+  
+
+

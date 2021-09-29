@@ -13,7 +13,12 @@ $ npm install @ionic-native/plugins/native-view
 
 Plugin Repo: [https://github.com/mfdeveloper/cordova-plugin-nativeview](https://github.com/mfdeveloper/cordova-plugin-nativeview)
 
+
+
 ## Supported platforms
 
 - Android
   - iOS
+  
+
+
