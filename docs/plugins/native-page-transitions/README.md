@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/native-page-transitions/index.ts#L16">
-  Improve this doc
-</a>
-
 # Native Page Transitions
 
 ```
 $ ionic cordova plugin add com.telerik.plugins.nativepagetransitions
-$ npm install @ionic-native/plugins/native-page-transitions
+$ npm install @awesome-cordova-plugins/native-page-transitions
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/native-page-transitions/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/native-page-transitions/)
 
 Plugin Repo: [https://github.com/Telerik-Verified-Plugins/NativePageTransitions](https://github.com/Telerik-Verified-Plugins/NativePageTransitions)
 

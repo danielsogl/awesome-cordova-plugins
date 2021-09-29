@@ -1,7 +1,3 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/firebase-config/index.ts#L1">
-  Improve this doc
-</a>
-
 # Firebase Config
 
   <p style="color:orange">
@@ -13,10 +9,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-firebase-config
-$ npm install @ionic-native/plugins/firebase-config
+$ npm install @awesome-cordova-plugins/firebase-config
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/firebase-config/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-config/)
 
 Plugin Repo: [https://github.com/chemerisuk/cordova-plugin-firebase-config](https://github.com/chemerisuk/cordova-plugin-firebase-config)
 

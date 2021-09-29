@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/openalpr/index.ts#L16">
-  Improve this doc
-</a>
-
 # OpenALPR
 
 ```
 $ ionic cordova plugin add cordova-plugin-openalpr
-$ npm install @ionic-native/plugins/openalpr
+$ npm install @awesome-cordova-plugins/openalpr
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/openalpr/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/openalpr/)
 
 Plugin Repo: [https://github.com/iMicknl/cordova-plugin-openalpr](https://github.com/iMicknl/cordova-plugin-openalpr)
 

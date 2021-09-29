@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/app-center-analytics/index.ts#L5">
-  Improve this doc
-</a>
-
 # App Center Analytics
 
 ```
 $ ionic cordova plugin add cordova-plugin-appcenter-analytics
-$ npm install @ionic-native/plugins/app-center-analytics
+$ npm install @awesome-cordova-plugins/app-center-analytics
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/app-center-analytics/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/app-center-analytics/)
 
 Plugin Repo: [https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-analytics](https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-analytics)
 

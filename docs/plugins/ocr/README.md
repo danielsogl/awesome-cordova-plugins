@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/ocr/index.ts#L115">
-  Improve this doc
-</a>
-
 # OCR
 
 ```
 $ ionic cordova plugin add cordova-plugin-mobile-ocr
-$ npm install @ionic-native/plugins/ocr
+$ npm install @awesome-cordova-plugins/ocr
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/ocr/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/ocr/)
 
 Plugin Repo: [https://github.com/NeutrinosPlatform/cordova-plugin-mobile-ocr](https://github.com/NeutrinosPlatform/cordova-plugin-mobile-ocr)
 

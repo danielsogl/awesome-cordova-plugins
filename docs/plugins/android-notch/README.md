@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/android-notch/index.ts#L1">
-  Improve this doc
-</a>
-
 # Android Notch
 
 ```
 $ ionic cordova plugin add cordova-plugin-android-notch
-$ npm install @ionic-native/plugins/android-notch
+$ npm install @awesome-cordova-plugins/android-notch
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/android-notch/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/android-notch/)
 
 Plugin Repo: [https://github.com/tobspr/cordova-plugin-android-notch.git](https://github.com/tobspr/cordova-plugin-android-notch.git)
 

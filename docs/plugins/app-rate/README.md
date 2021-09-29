@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/app-rate/index.ts#L198">
-  Improve this doc
-</a>
-
 # App Rate
 
 ```
 $ ionic cordova plugin add cordova-plugin-apprate
-$ npm install @ionic-native/plugins/app-rate
+$ npm install @awesome-cordova-plugins/app-rate
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/app-rate/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/app-rate/)
 
 Plugin Repo: [https://github.com/pushandplay/cordova-plugin-apprate](https://github.com/pushandplay/cordova-plugin-apprate)
 

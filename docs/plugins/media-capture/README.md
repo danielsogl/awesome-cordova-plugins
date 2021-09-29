@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/media-capture/index.ts#L113">
-  Improve this doc
-</a>
-
 # Media Capture
 
 ```
 $ ionic cordova plugin add cordova-plugin-media-capture
-$ npm install @ionic-native/plugins/media-capture
+$ npm install @awesome-cordova-plugins/media-capture
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/media-capture/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/media-capture/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-media-capture](https://github.com/apache/cordova-plugin-media-capture)
 

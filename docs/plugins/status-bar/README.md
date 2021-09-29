@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/status-bar/index.ts#L1">
-  Improve this doc
-</a>
-
 # Status Bar
 
 ```
 $ ionic cordova plugin add cordova-plugin-statusbar
-$ npm install @ionic-native/plugins/status-bar
+$ npm install @awesome-cordova-plugins/status-bar
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/status-bar/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/status-bar/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-statusbar](https://github.com/apache/cordova-plugin-statusbar)
 

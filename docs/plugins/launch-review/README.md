@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/launch-review/index.ts#L2">
-  Improve this doc
-</a>
-
 # Launch Review
 
 ```
 $ ionic cordova plugin add cordova-launch-review
-$ npm install @ionic-native/plugins/launch-review
+$ npm install @awesome-cordova-plugins/launch-review
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/launch-review/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/launch-review/)
 
 Plugin Repo: [https://github.com/dpa99c/cordova-launch-review](https://github.com/dpa99c/cordova-launch-review)
 

@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/mobile-messaging/index.ts#L174">
-  Improve this doc
-</a>
-
 # Mobile Messaging
 
 ```
 $ ionic cordova plugin add com-infobip-plugins-mobilemessaging
-$ npm install @ionic-native/plugins/mobile-messaging
+$ npm install @awesome-cordova-plugins/mobile-messaging
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/mobile-messaging/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/mobile-messaging/)
 
 Plugin Repo: [https://github.com/infobip/mobile-messaging-cordova-plugin](https://github.com/infobip/mobile-messaging-cordova-plugin)
 

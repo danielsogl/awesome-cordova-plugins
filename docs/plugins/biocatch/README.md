@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/biocatch/index.ts#L1">
-  Improve this doc
-</a>
-
 # BioCatch
 
 ```
 $ ionic cordova plugin add cordova-plugin-biocatch
-$ npm install @ionic-native/plugins/biocatch
+$ npm install @awesome-cordova-plugins/biocatch
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/biocatch/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/biocatch/)
 
 Plugin Repo: [https://bitbucket.org/carlos_orellana/ionic-plugin](https://bitbucket.org/carlos_orellana/ionic-plugin)
 

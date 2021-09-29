@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/power-optimization/index.ts#L1">
-  Improve this doc
-</a>
-
 # Power Optimization
 
 ```
 $ ionic cordova plugin add cordova-plugin-power-optimization
-$ npm install @ionic-native/plugins/power-optimization
+$ npm install @awesome-cordova-plugins/power-optimization
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/power-optimization/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/power-optimization/)
 
 Plugin Repo: [https://github.com/snt1017/cordova-plugin-power-optimization](https://github.com/snt1017/cordova-plugin-power-optimization)
 

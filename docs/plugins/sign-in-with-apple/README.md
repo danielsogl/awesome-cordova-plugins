@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/sign-in-with-apple/index.ts#L115">
-  Improve this doc
-</a>
-
 # Sign In With Apple
 
 ```
 $ ionic cordova plugin add cordova-plugin-sign-in-with-apple
-$ npm install @ionic-native/plugins/sign-in-with-apple
+$ npm install @awesome-cordova-plugins/sign-in-with-apple
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/sign-in-with-apple/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/sign-in-with-apple/)
 
 Plugin Repo: [https://github.com/twogate/cordova-plugin-sign-in-with-apple](https://github.com/twogate/cordova-plugin-sign-in-with-apple)
 

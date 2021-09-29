@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/action-sheet/index.ts#L53">
-  Improve this doc
-</a>
-
 # Action Sheet
 
 ```
 $ ionic cordova plugin add cordova-plugin-actionsheet
-$ npm install @ionic-native/plugins/action-sheet
+$ npm install @awesome-cordova-plugins/action-sheet
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/action-sheet/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/action-sheet/)
 
 Plugin Repo: [https://github.com/EddyVerbruggen/cordova-plugin-actionsheet](https://github.com/EddyVerbruggen/cordova-plugin-actionsheet)
 

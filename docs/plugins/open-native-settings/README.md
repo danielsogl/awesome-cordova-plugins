@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/open-native-settings/index.ts#L1">
-  Improve this doc
-</a>
-
 # Open Native Settings
 
 ```
 $ ionic cordova plugin add cordova-open-native-settings
-$ npm install @ionic-native/plugins/open-native-settings
+$ npm install @awesome-cordova-plugins/open-native-settings
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/open-native-settings/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/open-native-settings/)
 
 Plugin Repo: [https://github.com/guyromb/Cordova-open-native-settings](https://github.com/guyromb/Cordova-open-native-settings)
 

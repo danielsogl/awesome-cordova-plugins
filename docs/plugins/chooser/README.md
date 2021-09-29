@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/chooser/index.ts#L9">
-  Improve this doc
-</a>
-
 # Chooser
 
 ```
 $ ionic cordova plugin add cordova-plugin-chooser
-$ npm install @ionic-native/plugins/chooser
+$ npm install @awesome-cordova-plugins/chooser
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/chooser/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/chooser/)
 
 Plugin Repo: [https://github.com/cyph/cordova-plugin-chooser](https://github.com/cyph/cordova-plugin-chooser)
 

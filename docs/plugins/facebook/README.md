@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/facebook/index.ts#L15">
-  Improve this doc
-</a>
-
 # Facebook
 
 ```
 $ ionic cordova plugin add cordova-plugin-facebook-connect --variable APP_ID="123456789" --variable APP_NAME="myApplication"
-$ npm install @ionic-native/plugins/facebook
+$ npm install @awesome-cordova-plugins/facebook
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/facebook/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/facebook/)
 
 Plugin Repo: [https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect](https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect)
 

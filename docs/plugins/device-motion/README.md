@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/device-motion/index.ts#L31">
-  Improve this doc
-</a>
-
 # Device Motion
 
 ```
 $ ionic cordova plugin add cordova-plugin-device-motion
-$ npm install @ionic-native/plugins/device-motion
+$ npm install @awesome-cordova-plugins/device-motion
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/device-motion/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/device-motion/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-device-motion](https://github.com/apache/cordova-plugin-device-motion)
 

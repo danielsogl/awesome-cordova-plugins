@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/toast/index.ts#L36">
-  Improve this doc
-</a>
-
 # Toast
 
 ```
 $ ionic cordova plugin add cordova-plugin-x-toast
-$ npm install @ionic-native/plugins/toast
+$ npm install @awesome-cordova-plugins/toast
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/toast/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/toast/)
 
 Plugin Repo: [https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin](https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin)
 

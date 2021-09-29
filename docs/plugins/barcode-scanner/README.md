@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/barcode-scanner/index.ts#L80">
-  Improve this doc
-</a>
-
 # Barcode Scanner
 
 ```
 $ ionic cordova plugin add phonegap-plugin-barcodescanner
-$ npm install @ionic-native/plugins/barcode-scanner
+$ npm install @awesome-cordova-plugins/barcode-scanner
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/barcode-scanner/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/barcode-scanner/)
 
 Plugin Repo: [https://github.com/phonegap/phonegap-plugin-barcodescanner](https://github.com/phonegap/phonegap-plugin-barcodescanner)
 

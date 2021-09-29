@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/background-fetch/index.ts#L8">
-  Improve this doc
-</a>
-
 # Background Fetch
 
 ```
 $ ionic cordova plugin add cordova-plugin-background-fetch
-$ npm install @ionic-native/plugins/background-fetch
+$ npm install @awesome-cordova-plugins/background-fetch
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/background-fetch/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/background-fetch/)
 
 Plugin Repo: [https://github.com/transistorsoft/cordova-plugin-background-fetch](https://github.com/transistorsoft/cordova-plugin-background-fetch)
 

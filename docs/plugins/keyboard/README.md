@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/keyboard/index.ts#L14">
-  Improve this doc
-</a>
-
 # Keyboard
 
 ```
 $ ionic cordova plugin add cordova-plugin-ionic-keyboard
-$ npm install @ionic-native/plugins/keyboard
+$ npm install @awesome-cordova-plugins/keyboard
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/keyboard/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/keyboard/)
 
 Plugin Repo: [https://github.com/ionic-team/cordova-plugin-ionic-keyboard](https://github.com/ionic-team/cordova-plugin-ionic-keyboard)
 

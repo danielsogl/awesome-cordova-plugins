@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/broadcaster/index.ts#L16">
-  Improve this doc
-</a>
-
 # Broadcaster
 
 ```
 $ ionic cordova plugin add cordova-plugin-broadcaster
-$ npm install @ionic-native/plugins/broadcaster
+$ npm install @awesome-cordova-plugins/broadcaster
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/broadcaster/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/broadcaster/)
 
 Plugin Repo: [https://github.com/bsorrentino/cordova-broadcaster](https://github.com/bsorrentino/cordova-broadcaster)
 

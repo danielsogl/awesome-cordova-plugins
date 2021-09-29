@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/google-analytics/index.ts#L1">
-  Improve this doc
-</a>
-
 # Google Analytics
 
 ```
 $ ionic cordova plugin add cordova-plugin-google-analytics
-$ npm install @ionic-native/plugins/google-analytics
+$ npm install @awesome-cordova-plugins/google-analytics
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/google-analytics/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/google-analytics/)
 
 Plugin Repo: [https://github.com/danwilson/google-analytics-plugin](https://github.com/danwilson/google-analytics-plugin)
 

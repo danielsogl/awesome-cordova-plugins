@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/foreground-service/index.ts#L1">
-  Improve this doc
-</a>
-
 # Foreground Service
 
 ```
 $ ionic cordova plugin add cordova-plugin-foreground-service
-$ npm install @ionic-native/plugins/foreground-service
+$ npm install @awesome-cordova-plugins/foreground-service
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/foreground-service/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/foreground-service/)
 
 Plugin Repo: [https://github.com/DavidBriglio/cordova-plugin-foreground-service](https://github.com/DavidBriglio/cordova-plugin-foreground-service)
 

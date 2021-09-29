@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/admob-pro/index.ts#L97">
-  Improve this doc
-</a>
-
 # AdMob Pro
 
 ```
 $ ionic cordova plugin add cordova-plugin-admobpro
-$ npm install @ionic-native/plugins/admob-pro
+$ npm install @awesome-cordova-plugins/admob-pro
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/admob-pro/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/admob-pro/)
 
 Plugin Repo: [https://github.com/floatinghotpot/cordova-admob-pro](https://github.com/floatinghotpot/cordova-admob-pro)
 

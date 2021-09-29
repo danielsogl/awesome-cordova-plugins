@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/zbar/index.ts#L35">
-  Improve this doc
-</a>
-
 # ZBar
 
 ```
 $ ionic cordova plugin add cordova-plugin-cszbar
-$ npm install @ionic-native/plugins/zbar
+$ npm install @awesome-cordova-plugins/zbar
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/zbar/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/zbar/)
 
 Plugin Repo: [https://github.com/tjwoon/csZBar](https://github.com/tjwoon/csZBar)
 

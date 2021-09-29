@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/code-push/index.ts#L434">
-  Improve this doc
-</a>
-
 # Code Push
 
 ```
 $ ionic cordova plugin add cordova-plugin-code-push
-$ npm install @ionic-native/plugins/code-push
+$ npm install @awesome-cordova-plugins/code-push
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/code-push/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/code-push/)
 
 Plugin Repo: [https://github.com/Microsoft/cordova-plugin-code-push](https://github.com/Microsoft/cordova-plugin-code-push)
 

@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/bluetooth-le/index.ts#L420">
-  Improve this doc
-</a>
-
 # BluetoothLE
 
 ```
 $ ionic cordova plugin add cordova-plugin-bluetoothle
-$ npm install @ionic-native/plugins/bluetooth-le
+$ npm install @awesome-cordova-plugins/bluetooth-le
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/bluetooth-le/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/bluetooth-le/)
 
 Plugin Repo: [https://github.com/randdusing/cordova-plugin-bluetoothle](https://github.com/randdusing/cordova-plugin-bluetoothle)
 

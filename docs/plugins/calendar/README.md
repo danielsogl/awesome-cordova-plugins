@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/calendar/index.ts#L56">
-  Improve this doc
-</a>
-
 # Calendar
 
 ```
 $ ionic cordova plugin add cordova-plugin-calendar
-$ npm install @ionic-native/plugins/calendar
+$ npm install @awesome-cordova-plugins/calendar
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/calendar/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/calendar/)
 
 Plugin Repo: [https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin](https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin)
 

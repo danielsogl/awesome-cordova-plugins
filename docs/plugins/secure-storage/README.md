@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/secure-storage/index.ts#L88">
-  Improve this doc
-</a>
-
 # Secure Storage
 
 ```
 $ ionic cordova plugin add cordova-plugin-secure-storage-echo
-$ npm install @ionic-native/plugins/secure-storage
+$ npm install @awesome-cordova-plugins/secure-storage
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/secure-storage/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/secure-storage/)
 
 Plugin Repo: [https://github.com/mibrito707/cordova-plugin-secure-storage-echo](https://github.com/mibrito707/cordova-plugin-secure-storage-echo)
 

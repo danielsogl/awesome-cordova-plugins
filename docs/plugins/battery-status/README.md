@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/battery-status/index.ts#L14">
-  Improve this doc
-</a>
-
 # Battery Status
 
 ```
 $ ionic cordova plugin add cordova-plugin-battery-status
-$ npm install @ionic-native/plugins/battery-status
+$ npm install @awesome-cordova-plugins/battery-status
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/battery-status/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/battery-status/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-battery-status](https://github.com/apache/cordova-plugin-battery-status)
 

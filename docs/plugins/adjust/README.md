@@ -1,14 +1,9 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/adjust/index.ts#L1">
-  Improve this doc
-</a>
-
-# AdjustEvent
-toreSubscription
+# AdjustAppStoreSubscription
  plugin add com.adjust.sdk
-$ npm install @ionic-native/plugins/adjust
+$ npm install @awesome-cordova-plugins/adjust
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/adjust/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/adjust/)
 
 Plugin Repo: [https://github.com/adjust/cordova_sdk](https://github.com/adjust/cordova_sdk)
 

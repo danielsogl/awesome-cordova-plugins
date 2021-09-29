@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/video-editor/index.ts#L110">
-  Improve this doc
-</a>
-
 # Video Editor
 
 ```
 $ ionic cordova plugin add cordova-plugin-video-editor
-$ npm install @ionic-native/plugins/video-editor
+$ npm install @awesome-cordova-plugins/video-editor
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/video-editor/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/video-editor/)
 
 Plugin Repo: [https://github.com/jbavari/cordova-plugin-video-editor](https://github.com/jbavari/cordova-plugin-video-editor)
 

@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/camera/index.ts#L121">
-  Improve this doc
-</a>
-
 # Camera
 
 ```
 $ ionic cordova plugin add cordova-plugin-camera
-$ npm install @ionic-native/plugins/camera
+$ npm install @awesome-cordova-plugins/camera
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/camera/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/camera/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-camera](https://github.com/apache/cordova-plugin-camera)
 

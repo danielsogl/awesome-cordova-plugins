@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/instagram/index.ts#L1">
-  Improve this doc
-</a>
-
 # Instagram
 
 ```
 $ ionic cordova plugin add cordova-instagram-plugin
-$ npm install @ionic-native/plugins/instagram
+$ npm install @awesome-cordova-plugins/instagram
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/instagram/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/instagram/)
 
 Plugin Repo: [https://github.com/vstirbu/InstagramPlugin](https://github.com/vstirbu/InstagramPlugin)
 

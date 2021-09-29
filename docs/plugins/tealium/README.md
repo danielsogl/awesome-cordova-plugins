@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/tealium/index.ts#L36">
-  Improve this doc
-</a>
-
 # Tealium
 
 ```
 $ ''
-$ npm install @ionic-native/plugins/tealium
+$ npm install @awesome-cordova-plugins/tealium
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/tealium/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/tealium/)
 
 Plugin Repo: [https://github.com/Tealium/cordova-plugin](https://github.com/Tealium/cordova-plugin)
 

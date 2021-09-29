@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/flashlight/index.ts#L1">
-  Improve this doc
-</a>
-
 # Flashlight
 
 ```
 $ ionic cordova plugin add cordova-plugin-flashlight
-$ npm install @ionic-native/plugins/flashlight
+$ npm install @awesome-cordova-plugins/flashlight
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/flashlight/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/flashlight/)
 
 Plugin Repo: [https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin](https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin)
 

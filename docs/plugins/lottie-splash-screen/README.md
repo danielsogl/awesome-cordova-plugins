@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/lottie-splash-screen/index.ts#L1">
-  Improve this doc
-</a>
-
 # Lottie Splash Screen
 
 ```
 $ ''
-$ npm install @ionic-native/plugins/lottie-splash-screen
+$ npm install @awesome-cordova-plugins/lottie-splash-screen
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/lottie-splash-screen/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/lottie-splash-screen/)
 
 Plugin Repo: [https://github.com/timbru31/cordova-plugin-lottie-splashscreen](https://github.com/timbru31/cordova-plugin-lottie-splashscreen)
 

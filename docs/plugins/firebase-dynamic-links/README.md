@@ -1,7 +1,3 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/firebase-dynamic-links/index.ts#L46">
-  Improve this doc
-</a>
-
 # Firebase Dynamic Links
 
   <p style="color:orange">
@@ -13,10 +9,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-firebase-dynamiclinks --save --variable APP_DOMAIN="example.com" --variable APP_PATH="/"
-$ npm install @ionic-native/plugins/firebase-dynamic-links
+$ npm install @awesome-cordova-plugins/firebase-dynamic-links
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/firebase-dynamic-links/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-dynamic-links/)
 
 Plugin Repo: [https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks](https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks)
 

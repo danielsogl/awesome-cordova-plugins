@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/metrix/index.ts#L144">
-  Improve this doc
-</a>
-
 # Metrix
 
 ```
 $ ionic cordova plugin add ir.metrix.sdk
-$ npm install @ionic-native/plugins/metrix
+$ npm install @awesome-cordova-plugins/metrix
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/metrix/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/metrix/)
 
 Plugin Repo: [https://github.com/metrixorg/MetrixSDK-CordovaPlugin](https://github.com/metrixorg/MetrixSDK-CordovaPlugin)
 

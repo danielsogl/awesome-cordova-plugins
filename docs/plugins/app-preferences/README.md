@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/app-preferences/index.ts#L2">
-  Improve this doc
-</a>
-
 # App Preferences
 
 ```
 $ ionic cordova plugin add cordova-plugin-app-preferences
-$ npm install @ionic-native/plugins/app-preferences
+$ npm install @awesome-cordova-plugins/app-preferences
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/app-preferences/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/app-preferences/)
 
 Plugin Repo: [https://github.com/apla/me.apla.cordova.app-preferences](https://github.com/apla/me.apla.cordova.app-preferences)
 

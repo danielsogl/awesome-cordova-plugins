@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/in-app-review/index.ts#L1">
-  Improve this doc
-</a>
-
 # In App Review
 
 ```
 $ ionic cordova plugin add com.omarben.inappreview
-$ npm install @ionic-native/plugins/in-app-review
+$ npm install @awesome-cordova-plugins/in-app-review
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/in-app-review/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/in-app-review/)
 
 Plugin Repo: [https://github.com/omaxlive/com.omarben.inappreview](https://github.com/omaxlive/com.omarben.inappreview)
 

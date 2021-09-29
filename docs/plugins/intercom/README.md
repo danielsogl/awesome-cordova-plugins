@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/intercom/index.ts#L1">
-  Improve this doc
-</a>
-
 # Intercom
 
 ```
 $ ionic cordova plugin add cordova-plugin-intercom
-$ npm install @ionic-native/plugins/intercom
+$ npm install @awesome-cordova-plugins/intercom
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/intercom/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/intercom/)
 
 Plugin Repo: [https://github.com/intercom/intercom-cordova](https://github.com/intercom/intercom-cordova)
 

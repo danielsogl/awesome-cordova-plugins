@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/health-kit/index.ts#L79">
-  Improve this doc
-</a>
-
 # Health Kit
 
 ```
 $ ionic cordova plugin add com.telerik.plugins.healthkit
-$ npm install @ionic-native/plugins/health-kit
+$ npm install @awesome-cordova-plugins/health-kit
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/health-kit/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/health-kit/)
 
 Plugin Repo: [https://github.com/Telerik-Verified-Plugins/HealthKit](https://github.com/Telerik-Verified-Plugins/HealthKit)
 

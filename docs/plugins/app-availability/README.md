@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/app-availability/index.ts#L1">
-  Improve this doc
-</a>
-
 # App Availability
 
 ```
 $ ionic cordova plugin add cordova-plugin-appavailability
-$ npm install @ionic-native/plugins/app-availability
+$ npm install @awesome-cordova-plugins/app-availability
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/app-availability/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/app-availability/)
 
 Plugin Repo: [https://github.com/ohh2ahh/AppAvailability](https://github.com/ohh2ahh/AppAvailability)
 

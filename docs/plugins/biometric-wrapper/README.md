@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/biometric-wrapper/index.ts#L1">
-  Improve this doc
-</a>
-
 # BiometricWrapper
 
 ```
 $ ''
-$ npm install @ionic-native/plugins/biometric-wrapper
+$ npm install @awesome-cordova-plugins/biometric-wrapper
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/biometric-wrapper/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/biometric-wrapper/)
 
 Plugin Repo: ['']('')
 

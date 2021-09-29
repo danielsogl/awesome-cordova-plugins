@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/purchases/index.ts#L174">
-  Improve this doc
-</a>
-
 # Purchases
 
 ```
 $ ionic cordova plugin add cordova-plugin-purchases@2.3.0
-$ npm install @ionic-native/plugins/purchases
+$ npm install @awesome-cordova-plugins/purchases
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/purchases/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/purchases/)
 
 Plugin Repo: [https://github.com/RevenueCat/cordova-plugin-purchases](https://github.com/RevenueCat/cordova-plugin-purchases)
 

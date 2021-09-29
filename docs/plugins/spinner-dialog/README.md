@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/spinner-dialog/index.ts#L23">
-  Improve this doc
-</a>
-
 # Spinner Dialog
 
 ```
 $ ionic cordova plugin add cordova-plugin-native-spinner
-$ npm install @ionic-native/plugins/spinner-dialog
+$ npm install @awesome-cordova-plugins/spinner-dialog
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/spinner-dialog/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/spinner-dialog/)
 
 Plugin Repo: [https://github.com/greybax/cordova-plugin-native-spinner](https://github.com/greybax/cordova-plugin-native-spinner)
 

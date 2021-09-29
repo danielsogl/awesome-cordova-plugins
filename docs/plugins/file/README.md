@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/file/index.ts#L626">
-  Improve this doc
-</a>
-
 # File
 
 ```
 $ ionic cordova plugin add cordova-plugin-file
-$ npm install @ionic-native/plugins/file
+$ npm install @awesome-cordova-plugins/file
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/file/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/file/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-file](https://github.com/apache/cordova-plugin-file)
 

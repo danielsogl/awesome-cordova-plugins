@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/pdf-generator/index.ts#L35">
-  Improve this doc
-</a>
-
 # PDFGenerator
 
 ```
 $ ionic cordova plugin add cordova-pdf-generator
-$ npm install @ionic-native/plugins/pdf-generator
+$ npm install @awesome-cordova-plugins/pdf-generator
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/pdf-generator/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/pdf-generator/)
 
 Plugin Repo: [https://github.com/cesarvr/pdf-generator](https://github.com/cesarvr/pdf-generator)
 

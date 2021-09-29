@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/badge/index.ts#L1">
-  Improve this doc
-</a>
-
 # Badge
 
 ```
 $ ionic cordova plugin add cordova-plugin-badge
-$ npm install @ionic-native/plugins/badge
+$ npm install @awesome-cordova-plugins/badge
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/badge/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/badge/)
 
 Plugin Repo: [https://github.com/katzer/cordova-plugin-badge](https://github.com/katzer/cordova-plugin-badge)
 

@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/firebase-crash/index.ts#L1">
-  Improve this doc
-</a>
-
 # FirebaseCrash
 
 ```
 $ ionic cordova plugin add cordova-plugin-firebase-crash
-$ npm install @ionic-native/plugins/firebase-crash
+$ npm install @awesome-cordova-plugins/firebase-crash
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/firebase-crash/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-crash/)
 
 Plugin Repo: [https://github.com/chemerisuk/cordova-plugin-firebase-crash](https://github.com/chemerisuk/cordova-plugin-firebase-crash)
 

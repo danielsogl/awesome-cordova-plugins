@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/native-geocoder/index.ts#L1">
-  Improve this doc
-</a>
-
 # Native Geocoder
 
 ```
 $ ionic cordova plugin add cordova-plugin-nativegeocoder
-$ npm install @ionic-native/plugins/native-geocoder
+$ npm install @awesome-cordova-plugins/native-geocoder
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/native-geocoder/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/native-geocoder/)
 
 Plugin Repo: [https://github.com/sebastianbaar/cordova-plugin-nativegeocoder](https://github.com/sebastianbaar/cordova-plugin-nativegeocoder)
 

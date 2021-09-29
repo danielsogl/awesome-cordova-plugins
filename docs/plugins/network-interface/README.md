@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/network-interface/index.ts#L1">
-  Improve this doc
-</a>
-
 # Network Interface
 
 ```
 $ ionic cordova plugin add cordova-plugin-networkinterface
-$ npm install @ionic-native/plugins/network-interface
+$ npm install @awesome-cordova-plugins/network-interface
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/network-interface/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/network-interface/)
 
 Plugin Repo: [https://github.com/salbahra/cordova-plugin-networkinterface](https://github.com/salbahra/cordova-plugin-networkinterface)
 

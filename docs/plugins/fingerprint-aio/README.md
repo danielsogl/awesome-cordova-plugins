@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/fingerprint-aio/index.ts#L59">
-  Improve this doc
-</a>
-
 # Fingerprint AIO
 
 ```
 $ ionic cordova plugin add cordova-plugin-fingerprint-aio
-$ npm install @ionic-native/plugins/fingerprint-aio
+$ npm install @awesome-cordova-plugins/fingerprint-aio
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/fingerprint-aio/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/fingerprint-aio/)
 
 Plugin Repo: [https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio](https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio)
 

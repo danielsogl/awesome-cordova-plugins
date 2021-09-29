@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/zoom/index.ts#L1">
-  Improve this doc
-</a>
-
 # Zoom
 
 ```
 $ ionic cordova plugin add cordova.plugin.zoom
-$ npm install @ionic-native/plugins/zoom
+$ npm install @awesome-cordova-plugins/zoom
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/zoom/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/zoom/)
 
 Plugin Repo: [https://github.com/zoom/zoom-sdk-ionic](https://github.com/zoom/zoom-sdk-ionic)
 

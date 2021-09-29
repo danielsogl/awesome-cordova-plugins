@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/media/index.ts#L192">
-  Improve this doc
-</a>
-
 # Media
 
 ```
 $ ionic cordova plugin add cordova-plugin-media
-$ npm install @ionic-native/plugins/media
+$ npm install @awesome-cordova-plugins/media
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/media/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/media/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-media](https://github.com/apache/cordova-plugin-media)
 

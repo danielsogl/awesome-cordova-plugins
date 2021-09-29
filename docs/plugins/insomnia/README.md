@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/insomnia/index.ts#L1">
-  Improve this doc
-</a>
-
 # Insomnia
 
 ```
 $ ionic cordova plugin add cordova-plugin-insomnia
-$ npm install @ionic-native/plugins/insomnia
+$ npm install @awesome-cordova-plugins/insomnia
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/insomnia/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/insomnia/)
 
 Plugin Repo: [https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin](https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin)
 

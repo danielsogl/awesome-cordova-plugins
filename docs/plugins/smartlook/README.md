@@ -1,15 +1,9 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/smartlook/index.ts#L245">
-  Improve this doc
-</a>
-
-# Smartlook
-
-```
-$ ionic cordova plugin add https://github.com/smartlook/cordova-smartlook.git
-$ npm install @ionic-native/plugins/smartlook
+# SmartlookSetupConfigBuilder
+va plugin add https://github.com/smartlook/cordova-smartlook.git
+$ npm install @awesome-cordova-plugins/smartlook
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/smartlook/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/smartlook/)
 
 Plugin Repo: [https://github.com/smartlook/cordova-smartlook.git](https://github.com/smartlook/cordova-smartlook.git)
 

@@ -1,7 +1,3 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/firebase-messaging/index.ts#L37">
-  Improve this doc
-</a>
-
 # Firebase Messaging
 
   <p style="color:orange">
@@ -13,10 +9,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-firebase-messaging
-$ npm install @ionic-native/plugins/firebase-messaging
+$ npm install @awesome-cordova-plugins/firebase-messaging
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/firebase-messaging/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-messaging/)
 
 Plugin Repo: [https://github.com/chemerisuk/cordova-plugin-firebase-messaging](https://github.com/chemerisuk/cordova-plugin-firebase-messaging)
 

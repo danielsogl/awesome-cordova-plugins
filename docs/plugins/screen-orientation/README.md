@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/screen-orientation/index.ts#L2">
-  Improve this doc
-</a>
-
 # Screen Orientation
 
 ```
 $ ionic cordova plugin add cordova-plugin-screen-orientation
-$ npm install @ionic-native/plugins/screen-orientation
+$ npm install @awesome-cordova-plugins/screen-orientation
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/screen-orientation/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/screen-orientation/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-screen-orientation](https://github.com/apache/cordova-plugin-screen-orientation)
 

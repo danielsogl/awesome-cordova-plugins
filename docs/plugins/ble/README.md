@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/ble/index.ts#L7">
-  Improve this doc
-</a>
-
 # BLE
 
 ```
 $ ionic cordova plugin add cordova-plugin-ble-central
-$ npm install @ionic-native/plugins/ble
+$ npm install @awesome-cordova-plugins/ble
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/ble/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/ble/)
 
 Plugin Repo: [https://github.com/don/cordova-plugin-ble-central](https://github.com/don/cordova-plugin-ble-central)
 

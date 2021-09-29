@@ -1,7 +1,3 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/theme-detection/index.ts#L9">
-  Improve this doc
-</a>
-
 # Theme Detection
 
   <p style="color:orange">
@@ -13,10 +9,10 @@
 
 ```
 $ cordova plugin add cordova-plugin-theme-detection
-$ npm install @ionic-native/plugins/theme-detection
+$ npm install @awesome-cordova-plugins/theme-detection
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/theme-detection/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/theme-detection/)
 
 Plugin Repo: [https://github.com/mariusbackes/cordova-plugin-theme-detection](https://github.com/mariusbackes/cordova-plugin-theme-detection)
 

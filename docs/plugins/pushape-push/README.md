@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/pushape-push/index.ts#L262">
-  Improve this doc
-</a>
-
 # PushapePush
 
 ```
 $ ionic cordova plugin add pushape-cordova-push
-$ npm install @ionic-native/plugins/pushape-push
+$ npm install @awesome-cordova-plugins/pushape-push
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/pushape-push/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/pushape-push/)
 
 Plugin Repo: [https://github.com/gluelabs/pushape-cordova-push](https://github.com/gluelabs/pushape-cordova-push)
 

@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/uptime/index.ts#L1">
-  Improve this doc
-</a>
-
 # Uptime
 
 ```
 $ ionic cordova plugin add cordova-plugin-uptime
-$ npm install @ionic-native/plugins/uptime
+$ npm install @awesome-cordova-plugins/uptime
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/uptime/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/uptime/)
 
 Plugin Repo: [https://github.com/s1lviu/cordova-plugin-uptime](https://github.com/s1lviu/cordova-plugin-uptime)
 

@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/android-permissions/index.ts#L1">
-  Improve this doc
-</a>
-
 # Android Permissions
 
 ```
 $ ionic cordova plugin add cordova-plugin-android-permissions
-$ npm install @ionic-native/plugins/android-permissions
+$ npm install @awesome-cordova-plugins/android-permissions
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/android-permissions/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/android-permissions/)
 
 Plugin Repo: [https://github.com/NeoLSN/cordova-plugin-android-permissions](https://github.com/NeoLSN/cordova-plugin-android-permissions)
 

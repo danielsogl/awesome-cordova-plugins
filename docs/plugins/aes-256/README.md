@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/aes-256/index.ts#L1">
-  Improve this doc
-</a>
-
 # AES256
 
 ```
 $ ionic cordova plugin add cordova-plugin-aes256-encryption
-$ npm install @ionic-native/plugins/aes-256
+$ npm install @awesome-cordova-plugins/aes-256
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/aes-256/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/aes-256/)
 
 Plugin Repo: [https://github.com/Ideas2IT/cordova-aes256](https://github.com/Ideas2IT/cordova-aes256)
 

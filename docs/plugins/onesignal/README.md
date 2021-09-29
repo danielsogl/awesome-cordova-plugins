@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/onesignal/index.ts#L325">
-  Improve this doc
-</a>
-
 # OneSignal
 
 ```
 $ ionic cordova plugin add onesignal-cordova-plugin
-$ npm install @ionic-native/plugins/onesignal
+$ npm install @awesome-cordova-plugins/onesignal
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/onesignal/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/onesignal/)
 
 Plugin Repo: [https://github.com/OneSignal/OneSignal-Cordova-SDK](https://github.com/OneSignal/OneSignal-Cordova-SDK)
 

@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/document-picker/index.ts#L1">
-  Improve this doc
-</a>
-
 # iOS DocumentPicker
 
 ```
 $ ionic cordova plugin add cordova-plugin-documentpicker.DocumentPicker
-$ npm install @ionic-native/plugins/document-picker
+$ npm install @awesome-cordova-plugins/document-picker
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/document-picker/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/document-picker/)
 
 Plugin Repo: [https://github.com/iampossible/Cordova-DocPicker](https://github.com/iampossible/Cordova-DocPicker)
 

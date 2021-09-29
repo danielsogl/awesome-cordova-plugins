@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/sum-up/index.ts#L68">
-  Improve this doc
-</a>
-
 # SumUp
 
 ```
 $ cordova plugin add cordova-sumup-plugin --variable SUMUP_API_KEY=INSERT_YOUR_KEY
-$ npm install @ionic-native/plugins/sum-up
+$ npm install @awesome-cordova-plugins/sum-up
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/sum-up/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/sum-up/)
 
 Plugin Repo: [https://github.com/mariusbackes/cordova-plugin-sumup](https://github.com/mariusbackes/cordova-plugin-sumup)
 

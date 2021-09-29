@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/stripe/index.ts#L104">
-  Improve this doc
-</a>
-
 # Stripe
 
 ```
 $ ionic cordova plugin add cordova-plugin-stripe
-$ npm install @ionic-native/plugins/stripe
+$ npm install @awesome-cordova-plugins/stripe
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/stripe/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/stripe/)
 
 Plugin Repo: [https://github.com/zyramedia/cordova-plugin-stripe](https://github.com/zyramedia/cordova-plugin-stripe)
 

@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/push/index.ts#L240">
-  Improve this doc
-</a>
-
 # Push
 
 ```
 $ ionic cordova plugin add phonegap-plugin-push
-$ npm install @ionic-native/plugins/push
+$ npm install @awesome-cordova-plugins/push
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/push/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/push/)
 
 Plugin Repo: [https://github.com/phonegap/phonegap-plugin-push](https://github.com/phonegap/phonegap-plugin-push)
 

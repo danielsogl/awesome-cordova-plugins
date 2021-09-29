@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/photo-library/index.ts#L53">
-  Improve this doc
-</a>
-
 # Photo Library
 
 ```
 $ ionic cordova plugin add cordova-plugin-photo-library --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="To choose photos"
-$ npm install @ionic-native/plugins/photo-library
+$ npm install @awesome-cordova-plugins/photo-library
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/photo-library/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/photo-library/)
 
 Plugin Repo: [https://github.com/terikon/cordova-plugin-photo-library](https://github.com/terikon/cordova-plugin-photo-library)
 

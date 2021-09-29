@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/usabilla-cordova-sdk/index.ts#L18">
-  Improve this doc
-</a>
-
 # Usabilla
 
 ```
 $ ionic cordova plugin add usabilla-cordova
-$ npm install @ionic-native/plugins/usabilla-cordova-sdk
+$ npm install @awesome-cordova-plugins/usabilla-cordova-sdk
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/usabilla-cordova-sdk/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/usabilla-cordova-sdk/)
 
 Plugin Repo: [https://github.com/usabilla/usabilla-u4a-cordova](https://github.com/usabilla/usabilla-u4a-cordova)
 

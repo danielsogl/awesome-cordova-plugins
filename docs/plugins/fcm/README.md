@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/fcm/index.ts#L70">
-  Improve this doc
-</a>
-
 # FCM
 
 ```
 $ ionic cordova plugin add cordova-plugin-fcm-with-dependecy-updated
-$ npm install @ionic-native/plugins/fcm
+$ npm install @awesome-cordova-plugins/fcm
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/fcm/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/fcm/)
 
 Plugin Repo: [https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated](https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated)
 

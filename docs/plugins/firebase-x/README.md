@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/firebase-x/index.ts#L113">
-  Improve this doc
-</a>
-
 # Firebase X
 
 ```
 $ ionic cordova plugin add cordova-plugin-firebasex
-$ npm install @ionic-native/plugins/firebase-x
+$ npm install @awesome-cordova-plugins/firebase-x
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/firebase-x/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-x/)
 
 Plugin Repo: [https://github.com/dpa99c/cordova-plugin-firebasex](https://github.com/dpa99c/cordova-plugin-firebasex)
 

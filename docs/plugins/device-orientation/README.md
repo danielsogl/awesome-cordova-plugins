@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/device-orientation/index.ts#L36">
-  Improve this doc
-</a>
-
 # Device Orientation
 
 ```
 $ ionic cordova plugin add cordova-plugin-device-orientation
-$ npm install @ionic-native/plugins/device-orientation
+$ npm install @awesome-cordova-plugins/device-orientation
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/device-orientation/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/device-orientation/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-device-orientation](https://github.com/apache/cordova-plugin-device-orientation)
 

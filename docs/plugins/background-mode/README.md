@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/background-mode/index.ts#L50">
-  Improve this doc
-</a>
-
 # Background Mode
 
 ```
 $ ionic cordova plugin add cordova-plugin-background-mode
-$ npm install @ionic-native/plugins/background-mode
+$ npm install @awesome-cordova-plugins/background-mode
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/background-mode/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/background-mode/)
 
 Plugin Repo: [https://github.com/katzer/cordova-plugin-background-mode](https://github.com/katzer/cordova-plugin-background-mode)
 

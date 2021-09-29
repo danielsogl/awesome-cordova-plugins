@@ -1,7 +1,3 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/firebase-analytics/index.ts#L1">
-  Improve this doc
-</a>
-
 # Firebase Analytics
 
   <p style="color:orange">
@@ -13,10 +9,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-firebase-analytics
-$ npm install @ionic-native/plugins/firebase-analytics
+$ npm install @awesome-cordova-plugins/firebase-analytics
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/firebase-analytics/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-analytics/)
 
 Plugin Repo: [https://github.com/chemerisuk/cordova-plugin-firebase-analytics](https://github.com/chemerisuk/cordova-plugin-firebase-analytics)
 

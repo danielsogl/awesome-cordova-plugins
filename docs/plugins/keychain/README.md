@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/keychain/index.ts#L1">
-  Improve this doc
-</a>
-
 # Keychain
 
 ```
 $ ionic cordova plugin add cordova-plugin-ios-keychain
-$ npm install @ionic-native/plugins/keychain
+$ npm install @awesome-cordova-plugins/keychain
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/keychain/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/keychain/)
 
 Plugin Repo: [https://github.com/ionic-team/cordova-plugin-ios-keychain](https://github.com/ionic-team/cordova-plugin-ios-keychain)
 

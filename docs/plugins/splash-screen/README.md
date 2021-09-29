@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/splash-screen/index.ts#L1">
-  Improve this doc
-</a>
-
 # Splash Screen
 
 ```
 $ ionic cordova plugin add cordova-plugin-splashscreen
-$ npm install @ionic-native/plugins/splash-screen
+$ npm install @awesome-cordova-plugins/splash-screen
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/splash-screen/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/splash-screen/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-splashscreen](https://github.com/apache/cordova-plugin-splashscreen)
 

@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/sms/index.ts#L20">
-  Improve this doc
-</a>
-
 # SMS
 
 ```
 $ ionic cordova plugin add cordova-sms-plugin
-$ npm install @ionic-native/plugins/sms
+$ npm install @awesome-cordova-plugins/sms
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/sms/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/sms/)
 
 Plugin Repo: [https://github.com/cordova-sms/cordova-sms-plugin](https://github.com/cordova-sms/cordova-sms-plugin)
 

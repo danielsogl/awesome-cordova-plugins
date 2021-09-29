@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/imap/index.ts#L216">
-  Improve this doc
-</a>
-
 # Imap
 
 ```
 $ ionic cordova plugin add cordova-plugin-imap
-$ npm install @ionic-native/plugins/imap
+$ npm install @awesome-cordova-plugins/imap
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/imap/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/imap/)
 
 Plugin Repo: [https://github.com/aleksandar888/cordova-plugin-imap.git](https://github.com/aleksandar888/cordova-plugin-imap.git)
 

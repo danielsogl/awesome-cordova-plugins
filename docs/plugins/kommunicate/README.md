@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/kommunicate/index.ts#L2">
-  Improve this doc
-</a>
-
 # Kommunicate
 
 ```
 $ ionic cordova plugin add kommunicate-cordova-plugin
-$ npm install @ionic-native/plugins/kommunicate
+$ npm install @awesome-cordova-plugins/kommunicate
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/kommunicate/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/kommunicate/)
 
 Plugin Repo: [https://github.com/Kommunicate-io/Kommunicate-Cordova-Ionic-PhoneGap-Chat-Plugin](https://github.com/Kommunicate-io/Kommunicate-Cordova-Ionic-PhoneGap-Chat-Plugin)
 

@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/custom-uisdk/index.ts#L8">
-  Improve this doc
-</a>
-
 # CustomUISDK
 
 ```
 $ ''
-$ npm install @ionic-native/plugins/custom-uisdk
+$ npm install @awesome-cordova-plugins/custom-uisdk
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/custom-uisdk/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/custom-uisdk/)
 
 Plugin Repo: [https://github.com/paytm/paytm-customuisdk-cordova](https://github.com/paytm/paytm-customuisdk-cordova)
 

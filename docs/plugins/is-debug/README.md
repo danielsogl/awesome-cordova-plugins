@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/is-debug/index.ts#L1">
-  Improve this doc
-</a>
-
 # Is Debug
 
 ```
 $ ionic cordova plugin add cordova-plugin-is-debug
-$ npm install @ionic-native/plugins/is-debug
+$ npm install @awesome-cordova-plugins/is-debug
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/is-debug/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/is-debug/)
 
 Plugin Repo: [https://github.com/mattlewis92/cordova-plugin-is-debug](https://github.com/mattlewis92/cordova-plugin-is-debug)
 

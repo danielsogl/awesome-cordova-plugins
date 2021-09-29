@@ -1,7 +1,3 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/wheel-selector/index.ts#L62">
-  Improve this doc
-</a>
-
 # WheelSelector Plugin
 
   <p style="color:orange">
@@ -13,10 +9,10 @@
 
 ```
 $ ionic cordova plugin add cordova-wheel-selector-plugin
-$ npm install @ionic-native/plugins/wheel-selector
+$ npm install @awesome-cordova-plugins/wheel-selector
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/wheel-selector/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/wheel-selector/)
 
 Plugin Repo: [https://github.com/jasonmamy/cordova-wheel-selector-plugin](https://github.com/jasonmamy/cordova-wheel-selector-plugin)
 

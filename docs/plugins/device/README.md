@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/device/index.ts#L3">
-  Improve this doc
-</a>
-
 # Device
 
 ```
 $ ionic cordova plugin add cordova-plugin-device
-$ npm install @ionic-native/plugins/device
+$ npm install @awesome-cordova-plugins/device
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/device/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/device/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-device](https://github.com/apache/cordova-plugin-device)
 

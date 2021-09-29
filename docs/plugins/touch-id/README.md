@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/touch-id/index.ts#L1">
-  Improve this doc
-</a>
-
 # Touch ID
 
 ```
 $ ionic cordova plugin add cordova-plugin-touch-id
-$ npm install @ionic-native/plugins/touch-id
+$ npm install @awesome-cordova-plugins/touch-id
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/touch-id/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/touch-id/)
 
 Plugin Repo: [https://github.com/EddyVerbruggen/cordova-plugin-touch-id](https://github.com/EddyVerbruggen/cordova-plugin-touch-id)
 

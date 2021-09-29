@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/streaming-media/index.ts#L46">
-  Improve this doc
-</a>
-
 # Streaming Media
 
 ```
 $ ionic cordova plugin add cordova-plugin-streaming-media
-$ npm install @ionic-native/plugins/streaming-media
+$ npm install @awesome-cordova-plugins/streaming-media
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/streaming-media/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/streaming-media/)
 
 Plugin Repo: [https://github.com/nchutchind/cordova-plugin-streaming-media](https://github.com/nchutchind/cordova-plugin-streaming-media)
 

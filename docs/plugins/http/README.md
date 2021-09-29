@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/http/index.ts#L28">
-  Improve this doc
-</a>
-
 # HTTP
 
 ```
 $ ionic cordova plugin add cordova-plugin-advanced-http
-$ npm install @ionic-native/plugins/http
+$ npm install @awesome-cordova-plugins/http
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/http/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/http/)
 
 Plugin Repo: [https://github.com/silkimen/cordova-plugin-advanced-http](https://github.com/silkimen/cordova-plugin-advanced-http)
 

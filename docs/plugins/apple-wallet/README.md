@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/apple-wallet/index.ts#L31">
-  Improve this doc
-</a>
-
 # Apple Wallet
 
 ```
 $ ionic cordova plugin add cordova-apple-wallet
-$ npm install @ionic-native/plugins/apple-wallet
+$ npm install @awesome-cordova-plugins/apple-wallet
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/apple-wallet/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/apple-wallet/)
 
 Plugin Repo: [https://github.com/tomavic/cordova-apple-wallet](https://github.com/tomavic/cordova-apple-wallet)
 

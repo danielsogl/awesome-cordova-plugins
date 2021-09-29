@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/video-player/index.ts#L17">
-  Improve this doc
-</a>
-
 # Video Player
 
 ```
 $ ionic cordova plugin add https://github.com/moust/cordova-plugin-videoplayer.git
-$ npm install @ionic-native/plugins/video-player
+$ npm install @awesome-cordova-plugins/video-player
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/video-player/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/video-player/)
 
 Plugin Repo: [https://github.com/moust/cordova-plugin-videoplayer](https://github.com/moust/cordova-plugin-videoplayer)
 

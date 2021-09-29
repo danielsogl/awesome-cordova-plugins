@@ -1,7 +1,3 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/camera-preview/index.ts#L53">
-  Improve this doc
-</a>
-
 # Camera Preview
 
   <p style="color:orange">
@@ -13,10 +9,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-camera-preview
-$ npm install @ionic-native/plugins/camera-preview
+$ npm install @awesome-cordova-plugins/camera-preview
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/camera-preview/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/camera-preview/)
 
 Plugin Repo: [https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview](https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview)
 

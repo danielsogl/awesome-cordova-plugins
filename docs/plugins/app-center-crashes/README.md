@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/app-center-crashes/index.ts#L28">
-  Improve this doc
-</a>
-
 # App Center Crashes
 
 ```
 $ ionic cordova plugin add cordova-plugin-appcenter-crashes
-$ npm install @ionic-native/plugins/app-center-crashes
+$ npm install @awesome-cordova-plugins/app-center-crashes
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/app-center-crashes/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/app-center-crashes/)
 
 Plugin Repo: [https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-crashes](https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-crashes)
 

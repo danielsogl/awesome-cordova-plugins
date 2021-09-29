@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/line-login/index.ts#L42">
-  Improve this doc
-</a>
-
 # Line Login
 
 ```
 $ ionic cordova plugin add https://github.com/nrikiji/cordova-line-login-plugin.git --variable LINE_CHANNEL_ID="your_line_channel_id"
-$ npm install @ionic-native/plugins/line-login
+$ npm install @awesome-cordova-plugins/line-login
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/line-login/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/line-login/)
 
 Plugin Repo: [https://github.com/nrikiji/cordova-line-login-plugin](https://github.com/nrikiji/cordova-line-login-plugin)
 

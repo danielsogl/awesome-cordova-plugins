@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/globalization/index.ts#L6">
-  Improve this doc
-</a>
-
 # Globalization
 
 ```
 $ ionic cordova plugin add cordova-plugin-globalization
-$ npm install @ionic-native/plugins/globalization
+$ npm install @awesome-cordova-plugins/globalization
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/globalization/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/globalization/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-globalization](https://github.com/apache/cordova-plugin-globalization)
 

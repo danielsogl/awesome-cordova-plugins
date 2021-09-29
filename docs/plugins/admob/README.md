@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/admob/index.ts#L129">
-  Improve this doc
-</a>
-
 # AdMob
 
 ```
 $ ionic cordova plugin add cordova-admob
-$ npm install @ionic-native/plugins/admob
+$ npm install @awesome-cordova-plugins/admob
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/admob/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/admob/)
 
 Plugin Repo: [https://github.com/appfeel/admob-google-cordova](https://github.com/appfeel/admob-google-cordova)
 

@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/clipboard/index.ts#L1">
-  Improve this doc
-</a>
-
 # Clipboard
 
 ```
 $ ionic cordova plugin add cordova-clipboard
-$ npm install @ionic-native/plugins/clipboard
+$ npm install @awesome-cordova-plugins/clipboard
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/clipboard/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/clipboard/)
 
 Plugin Repo: [https://github.com/ihadeed/cordova-clipboard](https://github.com/ihadeed/cordova-clipboard)
 

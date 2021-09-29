@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/ibeacon/index.ts#L220">
-  Improve this doc
-</a>
-
 # IBeacon
 
 ```
 $ ionic cordova plugin add cordova-plugin-ibeacon
-$ npm install @ionic-native/plugins/ibeacon
+$ npm install @awesome-cordova-plugins/ibeacon
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/ibeacon/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/ibeacon/)
 
 Plugin Repo: [https://github.com/petermetz/cordova-plugin-ibeacon](https://github.com/petermetz/cordova-plugin-ibeacon)
 

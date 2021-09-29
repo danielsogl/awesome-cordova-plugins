@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/mixpanel/index.ts#L3">
-  Improve this doc
-</a>
-
 # Mixpanel
 
 ```
 $ ionic cordova plugin add cordova-plugin-mixpanel
-$ npm install @ionic-native/plugins/mixpanel
+$ npm install @awesome-cordova-plugins/mixpanel
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/mixpanel/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/mixpanel/)
 
 Plugin Repo: [https://github.com/samzilverberg/cordova-mixpanel-plugin](https://github.com/samzilverberg/cordova-mixpanel-plugin)
 

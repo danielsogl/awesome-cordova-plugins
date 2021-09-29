@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/dns/index.ts#L1">
-  Improve this doc
-</a>
-
 # DNS
 
 ```
 $ ionic cordova plugin add cordova-plugin-dns
-$ npm install @ionic-native/plugins/dns
+$ npm install @awesome-cordova-plugins/dns
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/dns/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/dns/)
 
 Plugin Repo: [https://bitbucket.org/zegeba/cordova-plugin-dns](https://bitbucket.org/zegeba/cordova-plugin-dns)
 

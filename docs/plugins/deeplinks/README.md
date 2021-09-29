@@ -1,15 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/deeplinks/index.ts#L28">
-  Improve this doc
-</a>
-
 # Deeplinks
 
 ```
 $ ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/
-$ npm install @ionic-native/plugins/deeplinks
+$ npm install @awesome-cordova-plugins/deeplinks
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/deeplinks/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/deeplinks/)
 
 Plugin Repo: [https://github.com/ionic-team/ionic-plugin-deeplinks](https://github.com/ionic-team/ionic-plugin-deeplinks)
 
