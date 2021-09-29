@@ -1,8 +1,8 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/hyper-track/index.ts#L79">
+<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/hyper-track/index.ts#L100">
   Improve this doc
 </a>
 
-# Coordinates
+# HyperTrack
 alidationError
 ic cordova plugin add cordova-plugin-hypertrack-v3
 $ npm install @ionic-native/plugins/hyper-track

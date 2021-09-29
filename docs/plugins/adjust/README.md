@@ -1,9 +1,9 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/adjust/index.ts#L308">
+<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/adjust/index.ts#L1">
   Improve this doc
 </a>
 
-# AdjustThirdPartySharing
-on
+# AdjustEvent
+toreSubscription
  plugin add com.adjust.sdk
 $ npm install @ionic-native/plugins/adjust
 ```

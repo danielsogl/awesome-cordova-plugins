@@ -1,9 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/unvired-cordova-sdk/index.ts#L425">
+<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/unvired-cordova-sdk/index.ts#L439">
   Improve this doc
 </a>
 
-# AuthenticateActivateResult
-ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk
+# Unvired Cordova SDK
+
+```
+$ ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk
 $ npm install @ionic-native/plugins/unvired-cordova-sdk
 ```
 

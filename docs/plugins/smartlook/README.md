@@ -1,9 +1,11 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/smartlook/index.ts#L140">
+<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/smartlook/index.ts#L245">
   Improve this doc
 </a>
 
-# SmartlookTimedCustomEventStart
-plugin add https://github.com/smartlook/cordova-smartlook.git
+# Smartlook
+
+```
+$ ionic cordova plugin add https://github.com/smartlook/cordova-smartlook.git
 $ npm install @ionic-native/plugins/smartlook
 ```
 

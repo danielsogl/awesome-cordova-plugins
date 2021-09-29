@@ -1,9 +1,10 @@
-<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/metrix/index.ts#L1">
+<a style="float:right;font-size:12px;" href="http://github.com/danielsogl/awesome-cordova-plugins/edit/master/src/@awesome-cordova-plugins/plugins/metrix/index.ts#L144">
   Improve this doc
 </a>
 
-# MetrixConfig
+# Metrix
 
+```
 $ ionic cordova plugin add ir.metrix.sdk
 $ npm install @ionic-native/plugins/metrix
 ```
