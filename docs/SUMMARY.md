@@ -214,4 +214,6 @@
   * [Android Notch](plugins/android-notch.md)
   * [Network Interface](plugins/network-interface.md)
   * [Printer](plugins/printer.md)
+* [Installation](installation.md)
+* [FAQ](faq.md)
 
