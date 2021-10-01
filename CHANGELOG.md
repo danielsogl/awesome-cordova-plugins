@@ -1,3 +1,36 @@
+## [5.36.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.36.0...v5.36.1) (2021-10-01)
+
+
+### Bug Fixes
+
+* **barcode-scanner:** add `saveHistory` option ([#3713](https://github.com/danielsogl/awesome-cordova-plugins/issues/3713)) ([39ad4d1](https://github.com/danielsogl/awesome-cordova-plugins/commit/39ad4d13aa977ec744dfdf780ca0fa869a36f736)), closes [/github.com/phonegap/phonegap-plugin-barcodescanner/blob/v8.1.0/src/android/com/phonegap/plugins/barcodescanner/BarcodeScanner.java#L52](https://github.com//github.com/phonegap/phonegap-plugin-barcodescanner/blob/v8.1.0/src/android/com/phonegap/plugins/barcodescanner/BarcodeScanner.java/issues/L52)
+* **build:** allow rxjs 7 closes [#3691](https://github.com/danielsogl/awesome-cordova-plugins/issues/3691) ([cd477bc](https://github.com/danielsogl/awesome-cordova-plugins/commit/cd477bce7c40c22eababb87f2f14c79ecb5b78ec))
+* **purchases:** remove static for logIn, logOut methods ([#3709](https://github.com/danielsogl/awesome-cordova-plugins/issues/3709)) ([c6b65e9](https://github.com/danielsogl/awesome-cordova-plugins/commit/c6b65e9715a9086dfb4325957457c1fe3be217f4))
+
+
+### Code Refactoring
+
+* remove app-update plugin ([#3510](https://github.com/danielsogl/awesome-cordova-plugins/issues/3510)) ([f474d5b](https://github.com/danielsogl/awesome-cordova-plugins/commit/f474d5bae21e4c4f761370b9016a6f31d403bdb3))
+
+
+### Features
+
+* **adjust:** update wrapper for Adjust Cordova SDK v4.29.0 ([#3720](https://github.com/danielsogl/awesome-cordova-plugins/issues/3720)) ([68af9eb](https://github.com/danielsogl/awesome-cordova-plugins/commit/68af9eb525959d9ee9165471939baa8b3ceed2dc))
+* **all-in-one-sdk:** add assist interface ([#3717](https://github.com/danielsogl/awesome-cordova-plugins/issues/3717)) ([8ebdc6e](https://github.com/danielsogl/awesome-cordova-plugins/commit/8ebdc6e563caa02bb7cf77b95a680876b052bdc1))
+* **bluetooth-classic-serial:** add plugin ([#3729](https://github.com/danielsogl/awesome-cordova-plugins/issues/3729)) ([4c8de4d](https://github.com/danielsogl/awesome-cordova-plugins/commit/4c8de4d06fcb265e09d787821d74272c7f4aaa73))
+* **facebook:** plugin updates ([#3721](https://github.com/danielsogl/awesome-cordova-plugins/issues/3721)) ([6f14bce](https://github.com/danielsogl/awesome-cordova-plugins/commit/6f14bce6ce2f27ebbe483c5578d0bfb46abad2e0))
+* **facebook:** plugin updates ([#3728](https://github.com/danielsogl/awesome-cordova-plugins/issues/3728)) ([54c197a](https://github.com/danielsogl/awesome-cordova-plugins/commit/54c197a5a6acca28244d02bf685e7893de0a549f))
+* **in-app-update:** add plugin ([#3714](https://github.com/danielsogl/awesome-cordova-plugins/issues/3714)) ([eb8d252](https://github.com/danielsogl/awesome-cordova-plugins/commit/eb8d2522b3ca9b585cde6e77c1a3f49c3e49b338))
+* **play-install-referrer:** add plugin ([#3718](https://github.com/danielsogl/awesome-cordova-plugins/issues/3718)) ([9a1b964](https://github.com/danielsogl/awesome-cordova-plugins/commit/9a1b96462d2e854727935da65e3df06987438ceb))
+* **preview-any-file:** new methods to preview or open files from url, path, assets or base64 ([#3612](https://github.com/danielsogl/awesome-cordova-plugins/issues/3612)) ([24379b0](https://github.com/danielsogl/awesome-cordova-plugins/commit/24379b047cbf7b0019d6516ce81b7685eda4e4d7))
+
+
+### BREAKING CHANGES
+
+* app-update plugin is removed for violating Google Play Store policies
+
+
+
 # [5.35.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.34.0...v5.35.0) (2021-08-02)
 
 
