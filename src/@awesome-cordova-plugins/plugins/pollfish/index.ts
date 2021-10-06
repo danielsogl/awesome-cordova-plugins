@@ -167,7 +167,7 @@ export class Pollfish extends AwesomeCordovaNativePlugin {
 
   /**
    * Function to check if Pollfish surveys are available on your device
-   * @param {function(result: boolean)} callback
+   * @param callback
    */
   isPollfishPresent(callback: (result: boolean) => void) {
     return;
@@ -175,7 +175,7 @@ export class Pollfish extends AwesomeCordovaNativePlugin {
 
   /**
    * Function to check if Pollfish panel is open
-   * @param {function(result: boolean)} callback
+   * @param callback
    */
   isPollfishPanelOpen(callback: (result: boolean) => void) {
     return;
@@ -184,7 +184,7 @@ export class Pollfish extends AwesomeCordovaNativePlugin {
   /**
    * Function to set event callbacks
    * @param {string} eventName
-   * @param {function(any?)} callback
+   * @param callback
    */
   @Cordova({
     sync: true,
