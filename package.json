@@ -1,9 +1,9 @@
 {
-  "name": "ionic-native",
-  "version": "5.36.0",
+  "name": "awesome-cordova-plugins",
+  "version": "5.36.1",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
-  "homepage": "https://ionicframework.com/",
-  "author": "Ionic Team <hi@ionic.io> (https://ionic.io)",
+  "homepage": "https://awesome-cordova-plugins.com",
+  "author": "Daniel Sogl <me@danielsogl.com> (https://danielsogl.com)",
   "license": "MIT",
   "scripts": {
     "prepare": "is-ci || husky install",
@@ -16,12 +16,12 @@
     "build": "npm run build:core && npm run build:esm && npm run build:ngx && npm run build:es5",
     "prebuild": "rimraf -rf dist",
     "npmpub": "ts-node -P scripts/tsconfig.json scripts/tasks/publish",
-    "lint": "gulp lint",
+    "lint": "eslint src/**/*.ts",
     "readmes": "gulp readmes",
     "docs-json": "ts-node -P scripts/tsconfig.json scripts/docs-json",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "shipit": "npm run build && npm run readmes && npm run npmpub",
-    "prettier": "prettier src/**/* --write"
+    "prettier": "prettier --write --ignore-unknown \"**/*\""
   },
   "dependencies": {
     "tslib": "^2.3.1"
@@ -33,43 +33,41 @@
     "@angular/core": "^11.2.14",
     "@types/cordova": "0.0.34",
     "@types/fs-extra": "^9.0.12",
-    "@types/jest": "^26.0.24",
-    "@types/lodash": "^4.14.172",
-    "@types/node": "^12.20.19",
+    "@types/jest": "^27.0.1",
+    "@types/lodash": "^4.14.175",
+    "@types/node": "^16.10.2",
     "@types/rimraf": "^3.0.2",
     "@types/webpack": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
     "async-promise-queue": "^1.0.5",
     "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "dgeni": "^0.4.14",
     "dgeni-packages": "0.16.10",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsdoc": "^36.1.0",
     "fs-extra": "^10.0.0",
     "gulp": "^4.0.2",
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.1.3",
-    "gulp-tslint": "^8.1.4",
     "husky": "^7.0.1",
     "is-ci": "^3.0.0",
-    "jest": "^27.0.6",
-    "lint-staged": "^11.1.2",
+    "jest": "^27.2.4",
+    "lint-staged": "^11.2.0",
     "lodash": "^4.17.21",
     "minimist": "^1.2.5",
-    "natives": "^1.1.6",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.56.2",
+    "rollup": "^2.58.0",
     "rxjs": "^6.6.7",
+    "terser-webpack-plugin": "^5.2.4",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
-    "tslint": "~6.1.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-ionic-rules": "0.0.21",
-    "typedoc": "^0.18.0",
-    "typescript": "4.1.6",
-    "typescript-tslint-plugin": "^1.0.1",
-    "uglifyjs-webpack-plugin": "^2.2.0",
+    "typescript": "~4.1.6",
     "unminified-webpack-plugin": "^3.0.0",
-    "webpack": "^5.51.1",
+    "webpack": "^5.57.1",
     "winston": "^3.3.3",
     "zone.js": "^0.11.4"
   },
@@ -89,10 +87,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/ionic-native.git"
+    "url": "git+https://github.com/danielsogl/awesome-cordova-plugins.git"
   },
   "bugs": {
-    "url": "https://github.com/ionic-team/ionic-native/issues"
+    "url": "https://github.com/danielsogl/awesome-cordova-plugins/issues"
   },
   "config": {
     "commitizen": {
@@ -100,8 +98,6 @@
     }
   },
   "lint-staged": {
-    "*": [
-      "prettier src/**/* --write"
-    ]
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

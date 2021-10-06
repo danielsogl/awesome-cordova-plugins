@@ -1,21 +1,22 @@
-import * as ts from 'typescript';
+import { factory, SourceFile, SyntaxKind, TransformationContext } from 'typescript';
+
 import { getMethodsForDecorator } from '../helpers';
 
-function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ngcBuild?: boolean) {
+function transformImports(file: SourceFile, ctx: TransformationContext, ngcBuild?: boolean) {
   // remove angular imports
   if (!ngcBuild) {
     // @ts-expect-error
     file.statements = (file.statements as any).filter(
-      (s: any) => !(s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@angular/core')
+      (s: any) => !(s.kind === SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@angular/core')
     );
   }
 
-  // find the @ionic-native/core import statement
+  // find the @awesome-cordova-plugins/core import statement
   const importStatement = (file.statements as any).find((s: any) => {
-    return s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@ionic-native/core';
+    return s.kind === SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@awesome-cordova-plugins/core';
   });
 
-  // we're only interested in files containing @ionic-native/core import statement
+  // we're only interested in files containing @awesome-cordova-plugins/core import statement
   if (!importStatement) return file;
 
   const decorators: string[] = [];
@@ -38,22 +39,22 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
   if (decorators.length) {
     let methods = [];
 
-    decorators.forEach(d => (methods = getMethodsForDecorator(d).concat(methods)));
+    decorators.forEach((d) => (methods = getMethodsForDecorator(d).concat(methods)));
 
-    const methodElements = methods.map(m => ts.createIdentifier(m));
-    const methodNames = methodElements.map(el => el.escapedText);
+    const methodElements = methods.map((m) => factory.createIdentifier(m));
+    const methodNames = methodElements.map((el) => el.escapedText);
 
     importStatement.importClause.namedBindings.elements = [
-      ts.createIdentifier('IonicNativePlugin'),
+      factory.createIdentifier('AwesomeCordovaNativePlugin'),
       ...methodElements,
       ...importStatement.importClause.namedBindings.elements.filter(
-        el => keep.indexOf(el.name.text) !== -1 && methodNames.indexOf(el.name.text) === -1
+        (el) => keep.indexOf(el.name.text) !== -1 && methodNames.indexOf(el.name.text) === -1
       ),
     ];
 
     if (ngcBuild) {
       importStatement.importClause.namedBindings.elements = importStatement.importClause.namedBindings.elements.map(
-        binding => {
+        (binding) => {
           if (binding.escapedText) {
             binding.name = {
               text: binding.escapedText,
@@ -69,8 +70,8 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
 }
 
 export function importsTransformer(ngcBuild?: boolean) {
-  return (ctx: ts.TransformationContext) => {
-    return tsSourceFile => {
+  return (ctx: TransformationContext) => {
+    return (tsSourceFile) => {
       return transformImports(tsSourceFile, ctx, ngcBuild);
     };
   };

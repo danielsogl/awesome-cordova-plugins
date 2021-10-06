@@ -1,7 +1,3 @@
-<a style="float:right;font-size:12px;" href="http://github.com/ionic-team/ionic-native/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
-  Improve this doc
-</a>
-
 # <$ doc.name $>
 
 <@- if doc.beta == true @>
@@ -17,10 +13,10 @@
 
 ```
 $ <@ if prop.install @><$ prop.install $><@ else @>ionic cordova plugin add <$ prop.plugin $><@ endif @>
-$ npm install @ionic-native/<$ doc.npmId $>
+$ npm install @awesome-cordova-plugins/<$ doc.npmId|replace('plugins/','') $>
 ```
 
-## [Usage Documentation](https://ionicframework.com/docs/native/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/')|replace('index.ts','')|replace('src/@ionic-native/plugins/','') $>)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic-native/', '')|replace('//','/')|replace('index.ts','')|replace('src/@awesome-cordova-plugins/plugins/','') $>)
 
 Plugin Repo: [<$ prop.repo $>](<$ prop.repo $>)
 

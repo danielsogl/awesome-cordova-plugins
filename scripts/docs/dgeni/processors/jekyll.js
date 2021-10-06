@@ -5,9 +5,9 @@ module.exports = function jekyll(renderDocsProcessor) {
     description: 'Create jekyll includes',
     $runAfter: ['paths-computed'],
     $runBefore: ['rendering-docs'],
-    $process: docs => {
+    $process: (docs) => {
       // pretty up and sort the docs object for menu generation
-      docs = docs.filter(doc => (!!doc.name && !!doc.outputPath) || doc.docType === 'index-page');
+      docs = docs.filter((doc) => (!!doc.name && !!doc.outputPath) || doc.docType === 'index-page');
 
       docs.push({
         docType: 'class',
@@ -22,7 +22,7 @@ module.exports = function jekyll(renderDocsProcessor) {
         return textA < textB ? -1 : textA > textB ? 1 : 0;
       });
 
-      docs.forEach(doc => {
+      docs.forEach((doc) => {
         if (!doc.outputPath) {
           return;
         }
@@ -39,7 +39,7 @@ module.exports = function jekyll(renderDocsProcessor) {
 
       const betaDocs = [];
 
-      docs = docs.filter(doc => {
+      docs = docs.filter((doc) => {
         if (doc.beta === true) {
           betaDocs.push(doc);
           return false;
