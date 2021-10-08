@@ -1592,4 +1592,32 @@ export class UnviredCordovaSDK extends IonicNativePlugin {
   decrypt(stringToBeDecrypted: string): Promise<UnviredResult> {
     return;
   }
+
+  /**
+   * Supported in browser platform only.
+   * You can make use of this api in order to receive push notifications. No input required.
+   * Upon succesful registration you will get a |evtSource| object on which various events are received.
+   * Usage:
+   * ```
+   * this.unviredSDK.registerForPushNotification((evtSource) => {
+   *   evtSource.onopen = function(event) {
+   *   console.log(" onopen registerForPushNotification ==========")
+   * };
+   * evtSource.onerror = function(err) {
+   *    console.log(" onerror registerForPushNotification ==========")
+   * };
+   * evtSource.onmessage = function(event) {
+   *  console.log(" onmessage registerForPushNotification ==========")
+   * }
+   * },
+   * (error) => {
+   * console.log(" error registerForPushNotification ==========")
+   * console.log(error)
+   * });
+   * ```
+   */
+  @Cordova()
+  registerForPushNotification(): Promise<any> {
+    return;
+  }
 }
