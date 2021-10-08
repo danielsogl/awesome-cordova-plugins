@@ -4,7 +4,10 @@
     "target": "es5",
     "moduleResolution": "node",
     "noImplicitAny": false,
-    "lib": ["es6"]
+    "lib": ["es6"],
+    "paths": {
+      "@awesome-cordova-plugins/core": ["../src/@awesome-cordova-plugins/core"]
+    }
   },
   "exclude": ["node_modules"]
 }

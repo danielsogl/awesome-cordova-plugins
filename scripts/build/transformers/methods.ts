@@ -1,4 +1,5 @@
-import * as ts from 'typescript';
+import { Expression, factory, MethodDeclaration, SyntaxKind } from 'typescript';
+
 import { Logger } from '../../logger';
 import {
   convertValueToLiteral,
@@ -8,7 +9,7 @@ import {
   getMethodsForDecorator,
 } from '../helpers';
 
-export function transformMethod(method: ts.MethodDeclaration) {
+export function transformMethod(method: MethodDeclaration) {
   if (!method) return;
 
   const decorator = getDecorator(method),
@@ -16,7 +17,7 @@ export function transformMethod(method: ts.MethodDeclaration) {
     decoratorArgs = getDecoratorArgs(decorator);
 
   try {
-    return ts.createMethod(
+    return factory.createMethodDeclaration(
       undefined,
       undefined,
       undefined,
@@ -25,7 +26,7 @@ export function transformMethod(method: ts.MethodDeclaration) {
       method.typeParameters,
       method.parameters,
       method.type,
-      ts.createBlock([ts.createReturn(getMethodBlock(method, decoratorName, decoratorArgs))])
+      factory.createBlock([factory.createReturnStatement(getMethodBlock(method, decoratorName, decoratorArgs))])
     );
   } catch (e) {
     Logger.error('Error transforming method: ' + (method.name as any).text);
@@ -33,30 +34,30 @@ export function transformMethod(method: ts.MethodDeclaration) {
   }
 }
 
-function getMethodBlock(method: ts.MethodDeclaration, decoratorName: string, decoratorArgs: any): ts.Expression {
+function getMethodBlock(method: MethodDeclaration, decoratorName: string, decoratorArgs: any): Expression {
   const decoratorMethod = getMethodsForDecorator(decoratorName)[0];
 
   switch (decoratorName) {
     case 'CordovaCheck':
     case 'InstanceCheck':
       // TODO remove function wrapper
-      return ts.createImmediatelyInvokedArrowFunction([
-        ts.createIf(
-          ts.createBinary(
-            ts.createCall(ts.createIdentifier(decoratorMethod), undefined, [ts.createThis()]),
-            ts.SyntaxKind.EqualsEqualsEqualsToken,
-            ts.createTrue()
+      return factory.createImmediatelyInvokedArrowFunction([
+        factory.createIfStatement(
+          factory.createBinaryExpression(
+            factory.createCallExpression(factory.createIdentifier(decoratorMethod), undefined, [factory.createThis()]),
+            SyntaxKind.EqualsEqualsEqualsToken,
+            factory.createTrue()
           ),
           method.body
         ),
       ]);
 
     default:
-      return ts.createCall(ts.createIdentifier(decoratorMethod), undefined, [
-        ts.createThis(),
-        ts.createLiteral(decoratorArgs?.methodName || (method.name as any).text),
+      return factory.createCallExpression(factory.createIdentifier(decoratorMethod), undefined, [
+        factory.createThis(),
+        factory.createStringLiteral(decoratorArgs?.methodName || (method.name as any).text),
         convertValueToLiteral(decoratorArgs),
-        ts.createIdentifier('arguments'),
+        factory.createIdentifier('arguments'),
       ]);
   }
 }

@@ -5,13 +5,13 @@ const config = require('./config.json'),
   fs = require('fs-extra'),
   Dgeni = require('dgeni');
 
-module.exports = gulp => {
+module.exports = (gulp) => {
   gulp.task('docs', () => {
     try {
       const ionicPackage = require('./dgeni/dgeni-config')(projectPackage.version),
         dgeni = new Dgeni([ionicPackage]);
 
-      return dgeni.generate().then(docs => console.log(docs.length + ' docs generated'));
+      return dgeni.generate().then((docs) => console.log(docs.length + ' docs generated'));
     } catch (err) {
       console.log(err.stack);
     }
@@ -26,7 +26,9 @@ module.exports = gulp => {
     try {
       const ionicPackage = require('./dgeni/dgeni-readmes-config')(projectPackage.version),
         dgeni = new Dgeni([ionicPackage]);
-      return dgeni.generate().then(docs => console.log(docs.length + ' README files generated'));
+      return dgeni.generate().then((docs) => {
+        console.log(docs.length + ' README files generated');
+      });
     } catch (err) {
       console.log(err.stack);
     }

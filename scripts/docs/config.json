@@ -1,6 +1,4 @@
 {
-  "sitePath": "../ionic-site",
   "v2DocsDir": "docs/native",
-  "docsDest": "../ionic-site/content/docs/native",
-  "pluginDir": "dist/@ionic-native/plugins"
+  "pluginDir": "dist/@awesome-cordova-plugins/plugins"
 }

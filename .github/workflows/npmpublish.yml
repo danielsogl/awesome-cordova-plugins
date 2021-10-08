@@ -1,6 +1,7 @@
-name: Node.js Package
+name: Release Packages
 
 on:
+  workflow_dispatch:
   release:
     types: [created]
 
@@ -8,18 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2.4.1
         with:
           node-version: 14
       - name: Install dependencies
         run: npm ci
-      - name: Lint
-        run: npm run lint
       - name: Build
         run: npm run build
-      - name: Test
-        run: npm run test
       - name: Readmes
         run: npm run readmes
 
@@ -27,8 +24,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2.4.1
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/

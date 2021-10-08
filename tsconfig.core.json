@@ -16,6 +16,6 @@
     "inlineSources": true,
     "sourceMap": true
   },
-  "include": ["src/@ionic-native/core/**/*.ts"],
-  "exclude": ["node_modules", "src/@ionic-native/core/**/*.spec.ts"]
+  "include": ["src/@awesome-cordova-plugins/core/**/*.ts"],
+  "exclude": ["node_modules", "src/@awesome-cordova-plugins/core/**/*.spec.ts"]
 }
