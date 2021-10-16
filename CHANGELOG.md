@@ -1,3 +1,13 @@
+# [5.37.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.36.1...v5.37.0) (2021-10-16)
+
+
+### Features
+
+* **adjust:** update wrapper for Adjust Cordova SDK v4.29.1 ([#3801](https://github.com/danielsogl/awesome-cordova-plugins/issues/3801)) ([02259e8](https://github.com/danielsogl/awesome-cordova-plugins/commit/02259e8873941e7171f317835666e8193ffc1b6a))
+* **unvired-cordova-sdk:** Add a new function to register and receive push notifications. ([#3802](https://github.com/danielsogl/awesome-cordova-plugins/issues/3802)) ([7a19f7d](https://github.com/danielsogl/awesome-cordova-plugins/commit/7a19f7d7747857cab3feb62d524f66e34cad022d))
+
+
+
 ## [5.36.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.36.0...v5.36.1) (2021-10-01)
 
 
