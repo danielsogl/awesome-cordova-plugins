@@ -9,14 +9,14 @@ $ npm install @awesome-cordova-plugins/imap
 
 Plugin Repo: [https://github.com/aleksandar888/cordova-plugin-imap.git](https://github.com/aleksandar888/cordova-plugin-imap.git)
 
-This plugin will enable an Ionic application to use the IMAP (Internet Message Access Protocol) features.
-This plugin is in Beta version and it offers support only for Android.
-The plugin uses Java Mail API.
-Planned improvements and support for iOS.
+This plugin will enable a Cordova application to use the IMAP (Internet Message Access Protocol) features
+The plugin offers support for Android and iOS.
+To enable the IMAP features on Android, this plugin uses the framework [Java Mail API](https://javaee.github.io/javamail/) and for iOS, it uses the [MailCore 2](http://libmailcore.com/) library.
 
 ## Supported platforms
 
 - Android
+  - iOS
   
 
 

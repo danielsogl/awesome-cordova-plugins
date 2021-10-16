@@ -1,4 +1,5 @@
-# Coordinates
+# HyperTrack
+
 alidationError
 ic cordova plugin add cordova-plugin-hypertrack-v3
 $ npm install @awesome-cordova-plugins/hyper-track

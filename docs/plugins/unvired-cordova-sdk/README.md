@@ -1,5 +1,5 @@
-# DbResult
-ordova SDK
+# LoginParameters
+SDK
 
 ```
 $ ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk

@@ -1,5 +1,6 @@
-# FileTransferManager
-`
+# BackgroundUpload
+
+```
 $ ionic cordova plugin add cordova-plugin-background-upload
 $ npm install @awesome-cordova-plugins/background-upload
 ```

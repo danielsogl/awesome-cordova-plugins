@@ -1,5 +1,5 @@
-# AdjustAppStoreSubscription
- plugin add com.adjust.sdk
+# AdjustPlayStoreSubscription
+plugin add com.adjust.sdk
 $ npm install @awesome-cordova-plugins/adjust
 ```
 

@@ -1,5 +1,7 @@
-# SmartlookSetupConfigBuilder
-va plugin add https://github.com/smartlook/cordova-smartlook.git
+# Smartlook
+
+```
+$ ionic cordova plugin add https://github.com/smartlook/cordova-smartlook.git
 $ npm install @awesome-cordova-plugins/smartlook
 ```
 
