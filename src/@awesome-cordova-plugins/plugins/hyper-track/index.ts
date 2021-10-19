@@ -1,16 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Plugin,
-  Cordova,
-  CordovaProperty,
-  CordovaInstance,
-  InstanceProperty,
-  AwesomeCordovaNativePlugin,
-} from '@awesome-cordova-plugins/core';
-import { kMaxLength } from 'buffer';
-import { resolve } from 'dns';
-import { reject } from 'lodash';
-import { error } from 'console';
+import { AwesomeCordovaNativePlugin, Cordova, Plugin } from '@awesome-cordova-plugins/core';
 
 @Plugin({
   pluginName: 'cordova-plugin-hypertrack-v3',
@@ -185,7 +174,7 @@ export class HyperTrack {
    *
    * @param name
    */
-  setDeviceName(name: string): Promise<any> {
+  setDeviceName(name: string): Promise<void> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.setDeviceName(
         name,
@@ -200,7 +189,7 @@ export class HyperTrack {
    *
    * @param metadata key-value pais of properties.
    */
-  setDeviceMetadata(metadata: Object): Promise<any> {
+  setDeviceMetadata(metadata: Object): Promise<void> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.setDeviceMetadata(
         metadata,
@@ -216,7 +205,7 @@ export class HyperTrack {
    * @param title
    * @param message
    */
-  setTrackingNotificationProperties(title: string, message: string): Promise<any> {
+  setTrackingNotificationProperties(title: string, message: string): Promise<void> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.setTrackingNotificationProperties(
         title,
@@ -233,7 +222,7 @@ export class HyperTrack {
    * @param geotagData
    * @param expectedLocation
    */
-  addGeotag(geotagData: Object, expectedLocation?: Coordinates): Promise<any> {
+  addGeotag(geotagData: Object, expectedLocation?: Coordinates): Promise<void> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.addGeoTag(
         geotagData,
@@ -245,7 +234,7 @@ export class HyperTrack {
   }
 
   /** Pops up permission request dialog, if permissions weren't granted before or does nothing otherwise. */
-  requestPermissionsIfNecessary(): Promise<any> {
+  requestPermissionsIfNecessary(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.requestPermissionsIfNecessary(
         () => resolve(),
@@ -255,7 +244,7 @@ export class HyperTrack {
   }
 
   /** Allows injecting false locations into the SDK, which ignores them by default. */
-  allowMockLocations(): Promise<any> {
+  allowMockLocations(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.allowMockLocations(
         () => resolve(),
@@ -268,7 +257,7 @@ export class HyperTrack {
    * Synchronizes tracking state with platform model. This method is used to
    * harden platform2device communication channel.
    */
-  syncDeviceSettings(): Promise<any> {
+  syncDeviceSettings(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.syncDeviceSettings(
         () => resolve(),
@@ -278,7 +267,7 @@ export class HyperTrack {
   }
 
   /** Start tracking. */
-  start(): Promise<any> {
+  start(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.start(
         () => resolve(),
@@ -288,7 +277,7 @@ export class HyperTrack {
   }
 
   /** Stop tracking. */
-  stop(): Promise<any> {
+  stop(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.stop(
         () => resolve(),
