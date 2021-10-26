@@ -45,7 +45,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "dgeni": "^0.4.14",
     "dgeni-packages": "0.16.10",
-    "eslint": "^7.32.0",
+    "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsdoc": "^37.0.0",
     "fs-extra": "^10.0.0",
