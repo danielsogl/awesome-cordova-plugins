@@ -237,7 +237,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
  */
 @Plugin({
   pluginName: 'Purchases',
-  plugin: 'cordova-plugin-purchases@2.3.0',
+  plugin: 'cordova-plugin-purchases@2.4.0',
   pluginRef: 'Purchases', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/RevenueCat/cordova-plugin-purchases', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
@@ -753,6 +753,15 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ sync: true })
   setOnesignalID(onesignalID: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the Airship Channel Id for the user
+   * Required for the RevenueCat Airship integration
+   *
+   * @param airshipChannelID Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setAirshipChannelID(airshipChannelID: string | null): void {}
 
   /**
    * Automatically collect subscriber attributes associated with the device identifiers.
