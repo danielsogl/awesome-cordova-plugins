@@ -1,3 +1,12 @@
+## [5.37.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.37.0...v5.37.1) (2021-11-24)
+
+
+### Features
+
+* **purchases:** add `setAirshipChannelID` method ([#3856](https://github.com/danielsogl/awesome-cordova-plugins/issues/3856)) ([2f25396](https://github.com/danielsogl/awesome-cordova-plugins/commit/2f25396c944a86b92de86cdf2e841ee7179bef19))
+
+
+
 # [5.37.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.36.1...v5.37.0) (2021-10-16)
 
 
