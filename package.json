@@ -60,7 +60,7 @@
     "minimist": "^1.2.5",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.60.1",
+    "rollup": "^2.60.2",
     "rxjs": "^6.6.7",
     "terser-webpack-plugin": "^5.2.5",
     "ts-jest": "^27.0.7",
