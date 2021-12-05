@@ -54,10 +54,10 @@ export interface MagnetometerReading {
  */
 @Plugin({
   pluginName: 'Magnetometer',
-  plugin: 'cordova-plugin-magnetometer', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'cordova.plugins.magnetometer', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: 'https://github.com/sdesalas/cordova-plugin-magnetometer', // the github repository URL for the plugin
-  platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
+  plugin: 'cordova-plugin-magnetometer',
+  pluginRef: 'cordova.plugins.magnetometer',
+  repo: 'https://github.com/sdesalas/cordova-plugin-magnetometer',
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Magnetometer extends AwesomeCordovaNativePlugin {
@@ -76,7 +76,11 @@ export class Magnetometer extends AwesomeCordovaNativePlugin {
    * @param {DeviceOrientationCompassOptions} [options] Options for compass. Frequency and Filter. Optional
    * @returns {Observable<DeviceOrientationCompassHeading>} Returns an observable that contains the compass heading
    */
-  @Cordova()
+  @Cordova({
+    callbackOrder: 'reverse',
+    observable: true,
+    clearFunction: 'stop',
+  })
   watchReadings(): Observable<MagnetometerReading> {
     return;
   }
