@@ -240,6 +240,10 @@ export class AdjustConfig {
   private hasDeferredDeeplinkCallbackListener() {
     return this.deferredDeeplinkCallback !== null;
   }
+
+  private hasConversionValueUpdatedCallbackListener() {
+    return this.conversionValueUpdatedCallback !== null;
+  }
 }
 
 export class AdjustAppStoreSubscription {
