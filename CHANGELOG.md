@@ -1,3 +1,12 @@
+## [5.37.2](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.37.1...v5.37.2) (2021-12-16)
+
+
+### Bug Fixes
+
+* **adjust:** added missing AdjustConfig method ([#3886](https://github.com/danielsogl/awesome-cordova-plugins/issues/3886)) ([a013e33](https://github.com/danielsogl/awesome-cordova-plugins/commit/a013e33e2c672c0faef75bef7bf1c28a8a62bb8e))
+
+
+
 ## [5.37.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.37.0...v5.37.1) (2021-11-24)
 
 
