@@ -1,3 +1,7 @@
+## [5.37.3](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.37.2...v5.37.3) (2021-12-19)
+
+
+
 ## [5.37.2](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.37.1...v5.37.2) (2021-12-16)
 
 
