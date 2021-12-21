@@ -1,229 +1,366 @@
-import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Injectable } from '@angular/core';
+import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
+import { Observable } from 'rxjs';
 
-export interface TealConfig {
-  /**
-   * Your Tealium account name
-   */
-  account: string;
-  /**
-   * Your Tealium profile name
-   */
-  profile: string;
-  /**
-   * Your Tealium environment name (dev, qa, prod)
-   */
-  environment: string;
-  /**
-   * Arbitrary instance name string. Must be consistent for all calls to Tealium API.
-   */
-  instance: string;
-  /**
-   * Enables ("true") or disables ("false") lifecycle reporting. Default true if omitted.
-   */
-  isLifecycleEnabled?: string;
-  /**
-   * Not usually required. Sets a custom URL override for dispatches to UDH.
-   */
-  collectDispatchURL?: string;
-  /**
-   * Your Tealium UDH profile. Only active if you do not have collectDispatchURL set.
-   */
-  collectDispatchProfile?: string;
-  /**
-   * Enables ("true") or disables ("false") Crash Reporter module for Android. Default false if omitted.
-   */
-  isCrashReporterEnabled?: string;
+export enum Collectors {
+	AppData = 'AppData',
+	Connectivity = 'Connectivity',
+	DeviceData = 'DeviceData',
+	Lifecycle = 'Lifecycle',
+}
+
+export enum Dispatchers {
+	Collect = 'Collect',
+	TagManagement = 'TagManagement',
+	RemoteCommands = 'RemoteCommands',
+}
+
+export enum Expiry {
+	forever = 'forever',
+	untilRestart = 'untilRestart',
+	session = 'session',
+}
+
+export enum ConsentPolicy {
+	ccpa = 'ccpa',
+	gdpr = 'gdpr',
+}
+
+export interface TealiumDispatch {
+	dataLayer: Map<string, any>;
+	type: string;
+	toJson(): string;
+}
+
+export class TealiumView implements TealiumDispatch {
+	public type: string = 'view';
+	constructor(public viewName: string, public dataLayer: Map<string, any>) {}
+	toJson() {
+		let dictionary: any = {};
+		dictionary['type'] = this.type;
+		dictionary['dataLayer'] = {};
+    this.dataLayer.forEach((k, v) => {
+      dictionary['dataLayer'][k] = v;
+    });
+		dictionary['type'] = this.type;
+		dictionary['viewName'] = this.viewName;
+		return JSON.stringify(dictionary);
+	}
+}
+
+export class TealiumEvent implements TealiumDispatch {
+	public type: string = 'event';
+	constructor(public eventName: string, public dataLayer: Map<string, any>) {}
+	toJson() {
+		let dictionary: any = {};
+		dictionary['type'] = this.type;
+		dictionary['dataLayer'] = {};
+    this.dataLayer.forEach((k, v) => {
+      dictionary['dataLayer'][k] = v;
+    });
+		dictionary['type'] = this.type;
+		dictionary['eventName'] = this.eventName;
+		return JSON.stringify(dictionary);
+	}
+}
+
+export class ConsentExpiry {
+	constructor(public time: number, public unit: TimeUnit) {}
+}
+
+export enum TimeUnit {
+	minutes = 'minutes',
+	hours = 'hours',
+	days = 'days',
+	months = 'months',
+}
+
+export enum ConsentStatus {
+	consented = 'consented',
+	notConsented = 'notConsented',
+	unknown = 'unknown',
+}
+
+export enum LogLevel {
+	dev = 'dev',
+	qa = 'qa',
+	prod = 'prod',
+	silent = 'silent',
+}
+
+export enum TealiumEnvironment {
+	dev = 'dev',
+	qa = 'qa',
+	prod = 'prod',
+}
+
+export enum ConsentCategories {
+	analytics = 'analytics',
+	affiliates = 'affiliates',
+	displayAds = 'display_ads',
+	email = 'email',
+	personalization = 'personalization',
+	search = 'search',
+	social = 'social',
+	bigData = 'big_data',
+	mobile = 'mobile',
+	engagement = 'engagement',
+	monitoring = 'monitoring',
+	crm = 'crm',
+	cdp = 'cdp',
+	cookieMatch = 'cookiematch',
+	misc = 'misc',
+}
+
+export interface TealiumConfig {
+	account: string;
+	profile: string;
+	environment: TealiumEnvironment;
+	dataSource?: string;
+	collectors: Collectors[];
+	dispatchers: Dispatchers[];
+	customVisitorId?: string;
+	memoryReportingEnabled?: boolean;
+	overrideCollectURL?: string;
+	overrideCollectBatchURL?: string;
+	overrideCollectDomain?: string;
+	overrideLibrarySettingsURL?: string;
+	overrideTagManagementURL?: string;
+	deepLinkTrackingEnabled?: boolean;
+	qrTraceEnabled?: boolean;
+	loglevel?: LogLevel;
+	consentLoggingEnabled?: boolean;
+	consentPolicy?: ConsentPolicy;
+	consentExpiry?: ConsentExpiry;
+	lifecycleAutotrackingEnabled?: boolean;
+	useRemoteLibrarySettings?: boolean;
+	visitorServiceEnabled?: boolean;
+	visitorServiceRefreshInterval?: string;
 }
 
 /**
- * @paid
  * @name Tealium
  * @description
- * This plugin provides a TypeScript wrapper around the [Tealium](https://www.tealium.com) Cordova plugin for Ionic Native.
+ * This plugin does provides a wrapper around the Tealium Cordova Plugin for Ionic Native.
+ * 
+ * For full documentation, see [https://docs.tealium.com/platforms/cordova/](https://docs.tealium.com/platforms/cordova/)
  *
- * For full documentation, see [https://community.tealiumiq.com/t5/Mobile-Libraries/Tealium-for-Cordova/ta-p/17618](https://community.tealiumiq.com/t5/Mobile-Libraries/Tealium-for-Cordova/ta-p/17618)
  * @usage
- * ```
- * import { Tealium, TealConfig } from '@awesome-cordova-plugins/tealium/ngx';
+ * ```typescript
+ * import { Tealium } from '@awesome-cordova-plugins/tealium/ngx';
  *
  *
  * constructor(private tealium: Tealium) { }
  *
  * ...
  *
- * let tealConfig: TealConfig = {
- *  account: "<your-account>",
- *  profile: "<your-profile>",
- *  environment: "<your-environment>", // usually "dev", "qa" or "prod"
- *  isLifecycleEnabled: "true", // pass "false" to disable lifecycle tracking
- *  isCrashReporterEnabled: "false", // pass "true" to enable crash reporter (Android only)
- *  instance: "<your-instance-name" // an arbitrary instance name. use the same instance name for all subsequent API calls
- * }
- *
- * this.tealium.init(tealConfig).then(()=>{
- *   this.tealium.trackView({"screen_name": "homescreen"});
- * });
+ * let config: TealiumConfig = {
+ *			account: <your_tealium_account>,
+ *			profile: <your_tealium_profile>,
+ *			environment: TealiumEnvironment.dev,
+ *			dispatchers: [Dispatchers.Collect, Dispatchers.RemoteCommands, Dispatchers.TagManagement],
+ *			collectors: [Collectors.AppData, Collectors.DeviceData, Collectors.Lifecycle, Collectors.Connectivity],
+ *			consentLoggingEnabled: true,
+ *			consentPolicy: ConsentPolicy.gdpr,
+ *			visitorServiceEnabled: true,
+ *			// visitorServiceRefreshInterval: '1',
+ *			consentExpiry: new ConsentExpiry(3, TimeUnit.minutes),
+ *		};
+ * 
+ * Tealium.initialize(config);
  *
  * ```
- * @interfaces
- * TealConfig
  */
-
 @Plugin({
   pluginName: 'Tealium',
-  plugin: 'tealium-cordova-plugin', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'window.tealium', // the variable reference to call the plugin, example: navigator.geolocation
+  plugin: 'tealium-cordova-plugin', // npm package name
+  pluginRef: 'tealium', // the variable reference to call the plugin
   repo: 'https://github.com/Tealium/cordova-plugin', // the github repository URL for the plugin
-  platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
   install: '', // OPTIONAL install command, in case the plugin requires variables
+  installVariables: [], // OPTIONAL the plugin requires variables
+  platforms: ['Android', 'iOS'] // Array of platforms supported
 })
 @Injectable()
 export class Tealium extends AwesomeCordovaNativePlugin {
+
   /**
-   * This function initializes the Tealium Cordova plugin.
-   * This should usually be done inside the "deviceReady" handler.
-   *
-   * @param config {TealConfig}
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
+   * This function initializes the Tealium Cordova Plugin
+   * @param config {TealiumConfig}
+   * @param callback 
+   * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  init(config: TealConfig): Promise<any> {
+  initialize(config: TealiumConfig, callback?: Function): Promise<any> {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
   /**
-   * This function tracks a view event in the Tealium Cordova plugin
-   *
-   * @param dataObject {any} The JSON data object containing your key-value pairs
-   * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
+   * This function tracks an event 
+   * @param dispatch {TealiumDispatch} Dispatch containing event data
+   * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  trackView(dataObject: any, instanceName: string): Promise<any> {
+  track(dispatch: TealiumDispatch): Promise<any> {
     return;
   }
 
   /**
-   * This function tracks a link event in the Tealium Cordova plugin
-   *
-   * @param dataObject {any} The JSON data object containing your key-value pairs
-   * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
+   * This function terminatest the Tealium instance
+   * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  trackEvent(dataObject: any, instanceName: string): Promise<any> {
+  terminateInstance(): Promise<any> {
     return;
   }
 
   /**
-   * This function tracks a custom event in the Tealium Cordova plugin
-   *
-   * @param eventType {string} The event type, link or view
-   * @param dataObject {any} The JSON data object containing your key-value pairs
-   * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
+   * Adds data to data layer
+   * @param data A map containing the key-value pairs to be added to data layer 
+   * @param expiry When the data should expire. Choose `Expiry.session` if unsure.
+   * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  track(eventType: string, dataObject: any, instanceName: string): Promise<any> {
+  addData(data: Map<string, any>, expiry: string): Promise<any> {
     return;
   }
 
   /**
-   * This function adds data to the Tealium persistent data store
-   *
-   * @param keyName {string} The key name that this data will be stored under for later retrieval
-   * @param value {any} The value to be stored as persistent data
-   * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
+   * 
+   * @param key The key of the data to retrieve from the data layer
+   * @param callback
+   * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  addPersistent(keyName: string, value: string | string[] | any, instanceName: string): Promise<any> {
+  getData(key: string, callback?: Function): Promise<any> {
     return;
   }
 
   /**
-   * This function adds data to the Tealium volatile data store
-   *
-   * @param keyName {string} The key name that this data will be stored under for later retrieval
-   * @param value {any} The value to be stored as volatile data
-   * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
+   * Removes data from the data layer
+   * @param keys The keys of the data to be removed
+   * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  addVolatile(keyName: string, value: string | string[], instanceName: string): Promise<any> {
+  removeData(keys: string[]): Promise<any> {
     return;
   }
 
   /**
-   * This function removes data from the Tealium volatile data store
-   *
-   * @param keyName {string} The key name that this data will removed from the Tealium data store
-   * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
+   * Retrieves the user's consent status
+   * @param callback 
+   * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  removeVolatile(keyName: string, instanceName: string): Promise<any> {
+  getConsentStatus(callback?: Function): Promise<any> {
     return;
   }
 
   /**
-   * This function removes data from the Tealium persistent data store
-   *
-   * @param keyName {string} The key name that this data will removed from the Tealium data store
-   * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
+   * Sets the user's consent status
+   * @param consentStatus 
+   * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  removePersistent(keyName: string, instanceName: string): Promise<any> {
+  setConsentStatus(consentStatus: ConsentStatus): Promise<any> {
     return;
   }
 
   /**
-   * This function retrieves a value from the Tealium Persistent data store
-   *
-   * @param keyName {string} The key name that this data will retrieved from the Tealium data store
-   * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @param callback {any} A callback function that will be called when the data has been retrieved
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
+   * Retrieves the user's consent categories
+   * @param callback 
+   * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  getPersistent(keyName: string, instanceName: string, callback: any): Promise<any> {
-    return;
-  }
-  /**
-   * This function retrieves a value from the Tealium Volatile data store
-   *
-   * @param keyName {string} The key name that this data will retrieved from the Tealium data store
-   * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @param callback {any} A callback function that will be called when the data has been retrieved
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
-   */
-  @Cordova()
-  getVolatile(keyName: string, instanceName: string, callback: any): Promise<any> {
+  getConsentCategories(callback?: Function): Promise<any> {
     return;
   }
 
   /**
-   * This function adds a remote command for later execution
-   *
-   * @param commandName {string} The command name for this Remote Command
-   * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
-   * @param callback {any} A callback function that will be called when the data has been retrieved
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
+   * Sets the user's consent categories
+   * @param categories 
+   * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  addRemoteCommand(commandName: string, instanceName: string, callback: any): Promise<any> {
+  setConsentCategories(categories: ConsentCategories[]): Promise<any> {
     return;
   }
 
   /**
-   * This function retrieves the Tealium Visitor ID
-   *
-   * @returns {Promise<any>} Returns a promise that resolves when something happens
+   * Joins a trace session weith the specified Trace ID
+   * @param id Trace ID
+   * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  getVisitorId(): Promise<any> {
+  joinTrace(id: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Leaves a trace session
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  leaveTrace(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Retrieves the Tealium Visitor ID
+   * @param callback 
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  getVisitorId(callback?: Function): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets a listener to be called when the AudienceStream visitor profile is updated
+   * @param callback 
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  setVisitorServiceListener(callback?: Function): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets a listener to be called when the consent has expired
+   * @param callback 
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  setConsentExpiryListener(callback?: Function): Promise<any> {
+    return;
+  }
+
+  /**
+   * Adds a remote command for later execution
+   * @param id The ID used to invoke the remote command
+   * @param callback 
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  addRemoteCommand(id: string, callback?: Function): Promise<any> {
+    return;
+  }
+
+  /**
+   * Removes a previously-added remote command
+   * @param id The ID of remote command to be removed
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  removeRemoteCommand(id: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Removes all listeners
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  removeListeners(): Promise<any> {
     return;
   }
 }
