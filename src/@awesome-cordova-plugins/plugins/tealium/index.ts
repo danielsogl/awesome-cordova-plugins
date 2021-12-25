@@ -1,148 +1,155 @@
 import { Injectable } from '@angular/core';
-import { Plugin, Cordova, CordovaProperty, CordovaInstance, InstanceProperty, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
+import {
+  Plugin,
+  Cordova,
+  CordovaProperty,
+  CordovaInstance,
+  InstanceProperty,
+  AwesomeCordovaNativePlugin,
+} from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export enum Collectors {
-	AppData = 'AppData',
-	Connectivity = 'Connectivity',
-	DeviceData = 'DeviceData',
-	Lifecycle = 'Lifecycle',
+  AppData = 'AppData',
+  Connectivity = 'Connectivity',
+  DeviceData = 'DeviceData',
+  Lifecycle = 'Lifecycle',
 }
 
 export enum Dispatchers {
-	Collect = 'Collect',
-	TagManagement = 'TagManagement',
-	RemoteCommands = 'RemoteCommands',
+  Collect = 'Collect',
+  TagManagement = 'TagManagement',
+  RemoteCommands = 'RemoteCommands',
 }
 
 export enum Expiry {
-	forever = 'forever',
-	untilRestart = 'untilRestart',
-	session = 'session',
+  forever = 'forever',
+  untilRestart = 'untilRestart',
+  session = 'session',
 }
 
 export enum ConsentPolicy {
-	ccpa = 'ccpa',
-	gdpr = 'gdpr',
+  ccpa = 'ccpa',
+  gdpr = 'gdpr',
 }
 
 export interface TealiumDispatch {
-	dataLayer: Map<string, any>;
-	type: string;
-	toJson(): string;
+  dataLayer: Map<string, any>;
+  type: string;
+  toJson(): string;
 }
 
 export class TealiumView implements TealiumDispatch {
-	public type: string = 'view';
-	constructor(public viewName: string, public dataLayer: Map<string, any>) {}
-	toJson() {
-		let dictionary: any = {};
-		dictionary['type'] = this.type;
-		dictionary['dataLayer'] = {};
+  public type = 'view';
+  constructor(public viewName: string, public dataLayer: Map<string, any>) {}
+  toJson() {
+    const dictionary: any = {};
+    dictionary['type'] = this.type;
+    dictionary['dataLayer'] = {};
     this.dataLayer.forEach((k, v) => {
       dictionary['dataLayer'][k] = v;
     });
-		dictionary['type'] = this.type;
-		dictionary['viewName'] = this.viewName;
-		return JSON.stringify(dictionary);
-	}
+    dictionary['type'] = this.type;
+    dictionary['viewName'] = this.viewName;
+    return JSON.stringify(dictionary);
+  }
 }
 
 export class TealiumEvent implements TealiumDispatch {
-	public type: string = 'event';
-	constructor(public eventName: string, public dataLayer: Map<string, any>) {}
-	toJson() {
-		let dictionary: any = {};
-		dictionary['type'] = this.type;
-		dictionary['dataLayer'] = {};
+  public type = 'event';
+  constructor(public eventName: string, public dataLayer: Map<string, any>) {}
+  toJson() {
+    const dictionary: any = {};
+    dictionary['type'] = this.type;
+    dictionary['dataLayer'] = {};
     this.dataLayer.forEach((k, v) => {
       dictionary['dataLayer'][k] = v;
     });
-		dictionary['type'] = this.type;
-		dictionary['eventName'] = this.eventName;
-		return JSON.stringify(dictionary);
-	}
+    dictionary['type'] = this.type;
+    dictionary['eventName'] = this.eventName;
+    return JSON.stringify(dictionary);
+  }
 }
 
 export class ConsentExpiry {
-	constructor(public time: number, public unit: TimeUnit) {}
+  constructor(public time: number, public unit: TimeUnit) {}
 }
 
 export enum TimeUnit {
-	minutes = 'minutes',
-	hours = 'hours',
-	days = 'days',
-	months = 'months',
+  minutes = 'minutes',
+  hours = 'hours',
+  days = 'days',
+  months = 'months',
 }
 
 export enum ConsentStatus {
-	consented = 'consented',
-	notConsented = 'notConsented',
-	unknown = 'unknown',
+  consented = 'consented',
+  notConsented = 'notConsented',
+  unknown = 'unknown',
 }
 
 export enum LogLevel {
-	dev = 'dev',
-	qa = 'qa',
-	prod = 'prod',
-	silent = 'silent',
+  dev = 'dev',
+  qa = 'qa',
+  prod = 'prod',
+  silent = 'silent',
 }
 
 export enum TealiumEnvironment {
-	dev = 'dev',
-	qa = 'qa',
-	prod = 'prod',
+  dev = 'dev',
+  qa = 'qa',
+  prod = 'prod',
 }
 
 export enum ConsentCategories {
-	analytics = 'analytics',
-	affiliates = 'affiliates',
-	displayAds = 'display_ads',
-	email = 'email',
-	personalization = 'personalization',
-	search = 'search',
-	social = 'social',
-	bigData = 'big_data',
-	mobile = 'mobile',
-	engagement = 'engagement',
-	monitoring = 'monitoring',
-	crm = 'crm',
-	cdp = 'cdp',
-	cookieMatch = 'cookiematch',
-	misc = 'misc',
+  analytics = 'analytics',
+  affiliates = 'affiliates',
+  displayAds = 'display_ads',
+  email = 'email',
+  personalization = 'personalization',
+  search = 'search',
+  social = 'social',
+  bigData = 'big_data',
+  mobile = 'mobile',
+  engagement = 'engagement',
+  monitoring = 'monitoring',
+  crm = 'crm',
+  cdp = 'cdp',
+  cookieMatch = 'cookiematch',
+  misc = 'misc',
 }
 
 export interface TealiumConfig {
-	account: string;
-	profile: string;
-	environment: TealiumEnvironment;
-	dataSource?: string;
-	collectors: Collectors[];
-	dispatchers: Dispatchers[];
-	customVisitorId?: string;
-	memoryReportingEnabled?: boolean;
-	overrideCollectURL?: string;
-	overrideCollectBatchURL?: string;
-	overrideCollectDomain?: string;
-	overrideLibrarySettingsURL?: string;
-	overrideTagManagementURL?: string;
-	deepLinkTrackingEnabled?: boolean;
-	qrTraceEnabled?: boolean;
-	loglevel?: LogLevel;
-	consentLoggingEnabled?: boolean;
-	consentPolicy?: ConsentPolicy;
-	consentExpiry?: ConsentExpiry;
-	lifecycleAutotrackingEnabled?: boolean;
-	useRemoteLibrarySettings?: boolean;
-	visitorServiceEnabled?: boolean;
-	visitorServiceRefreshInterval?: string;
+  account: string;
+  profile: string;
+  environment: TealiumEnvironment;
+  dataSource?: string;
+  collectors: Collectors[];
+  dispatchers: Dispatchers[];
+  customVisitorId?: string;
+  memoryReportingEnabled?: boolean;
+  overrideCollectURL?: string;
+  overrideCollectBatchURL?: string;
+  overrideCollectDomain?: string;
+  overrideLibrarySettingsURL?: string;
+  overrideTagManagementURL?: string;
+  deepLinkTrackingEnabled?: boolean;
+  qrTraceEnabled?: boolean;
+  loglevel?: LogLevel;
+  consentLoggingEnabled?: boolean;
+  consentPolicy?: ConsentPolicy;
+  consentExpiry?: ConsentExpiry;
+  lifecycleAutotrackingEnabled?: boolean;
+  useRemoteLibrarySettings?: boolean;
+  visitorServiceEnabled?: boolean;
+  visitorServiceRefreshInterval?: string;
 }
 
 /**
  * @name Tealium
  * @description
  * This plugin does provides a wrapper around the Tealium Cordova Plugin for Ionic Native.
- * 
+ *
  * For full documentation, see [https://docs.tealium.com/platforms/cordova/](https://docs.tealium.com/platforms/cordova/)
  *
  * @usage
@@ -166,7 +173,7 @@ export interface TealiumConfig {
  *			// visitorServiceRefreshInterval: '1',
  *			consentExpiry: new ConsentExpiry(3, TimeUnit.minutes),
  *		};
- * 
+ *
  * Tealium.initialize(config);
  *
  * ```
@@ -178,15 +185,14 @@ export interface TealiumConfig {
   repo: 'https://github.com/Tealium/cordova-plugin', // the github repository URL for the plugin
   install: '', // OPTIONAL install command, in case the plugin requires variables
   installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['Android', 'iOS'] // Array of platforms supported
+  platforms: ['Android', 'iOS'], // Array of platforms supported
 })
 @Injectable()
 export class Tealium extends AwesomeCordovaNativePlugin {
-
   /**
    * This function initializes the Tealium Cordova Plugin
    * @param config {TealiumConfig}
-   * @param callback 
+   * @param callback
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
@@ -195,7 +201,7 @@ export class Tealium extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * This function tracks an event 
+   * This function tracks an event
    * @param dispatch {TealiumDispatch} Dispatch containing event data
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
@@ -215,7 +221,7 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * Adds data to data layer
-   * @param data A map containing the key-value pairs to be added to data layer 
+   * @param data A map containing the key-value pairs to be added to data layer
    * @param expiry When the data should expire. Choose `Expiry.session` if unsure.
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
@@ -225,7 +231,7 @@ export class Tealium extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * 
+   *
    * @param key The key of the data to retrieve from the data layer
    * @param callback
    * @return {Promise<any>} Returns a promise that resolves when something happens
@@ -247,7 +253,7 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * Retrieves the user's consent status
-   * @param callback 
+   * @param callback
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
@@ -257,7 +263,7 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the user's consent status
-   * @param consentStatus 
+   * @param consentStatus
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
@@ -267,7 +273,7 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * Retrieves the user's consent categories
-   * @param callback 
+   * @param callback
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
@@ -277,7 +283,7 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the user's consent categories
-   * @param categories 
+   * @param categories
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
@@ -306,7 +312,7 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * Retrieves the Tealium Visitor ID
-   * @param callback 
+   * @param callback
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
@@ -316,7 +322,7 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a listener to be called when the AudienceStream visitor profile is updated
-   * @param callback 
+   * @param callback
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
@@ -326,7 +332,7 @@ export class Tealium extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a listener to be called when the consent has expired
-   * @param callback 
+   * @param callback
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
@@ -337,7 +343,7 @@ export class Tealium extends AwesomeCordovaNativePlugin {
   /**
    * Adds a remote command for later execution
    * @param id The ID used to invoke the remote command
-   * @param callback 
+   * @param callback
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
