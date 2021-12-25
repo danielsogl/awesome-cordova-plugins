@@ -21,7 +21,7 @@ jobs:
         run: npm ci
 
       - name: Lint
-        run: npm run lint
+        run: npm run lint -- --quiet
 
       - name: Build
         run: npm run build
