@@ -204,6 +204,27 @@ export class SumUp extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Will setup the SumUP SDK.
+   * This action is required before using other functions.
+   *
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
+   */
+   @Cordova()
+   setup(): Promise<SumUpResponse> {
+     return;
+   }
+
+  /**
+   * Test the SumUp integration using SDK tests.
+   *
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
+   */
+  @Cordova()
+  test(): Promise<SumUpResponse> {
+    return;
+  }
+
+  /**
    * Opens a native SumUp window to proceed a payment. Parameter amount and currencycode are required.
    * If the Payment was successful it returns an SumUpPayment object with information about the payment.
    *
