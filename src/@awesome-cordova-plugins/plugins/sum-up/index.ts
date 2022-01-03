@@ -111,7 +111,7 @@ export class SumUpKeys {
  *   .then((res: SumUpResponse) => console.log(res))
  *   .catch((error: SumUpResponse) => console.error(error));
  *
- * this.sumUp.pay(10.0, 'EUR')
+ * this.sumUp.pay(10.0, 'Transaction title', 'EUR')
  *   .then((res: SumUpPayment) => console.log(res))
  *   .catch((error: SumUpPayment) => console.error(error));
  *
@@ -204,15 +204,37 @@ export class SumUp extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Will setup the SumUP SDK.
+   * This action is required before using other functions.
+   *
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
+   */
+   @Cordova()
+   setup(): Promise<SumUpResponse> {
+     return;
+   }
+
+  /**
+   * Test the SumUp integration using SDK tests.
+   *
+   * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
+   */
+  @Cordova()
+  test(): Promise<SumUpResponse> {
+    return;
+  }
+
+  /**
    * Opens a native SumUp window to proceed a payment. Parameter amount and currencycode are required.
    * If the Payment was successful it returns an SumUpPayment object with information about the payment.
    *
    * @param amount {number}
-   * @param currencycode {string}
+   * @param title {string}
+   * @param currencyCode {string}
    * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
-  pay(amount: number, currencycode: string): Promise<SumUpPayment> {
+  pay(amount: number, title?: string, currencyCode?: string): Promise<SumUpPayment> {
     return;
   }
 }
