@@ -30,6 +30,9 @@ export interface CameraPreviewOptions {
 
   /** Preview box drag across the screen, default 'false' */
   previewDrag?: boolean;
+  
+  /** Capture images to a file and return back the file path instead of returning base64 encoded data. */
+  storeToFile: boolean;
 
   /** Preview box to the back of the webview (true => back, false => front) , default false */
   toBack?: boolean;
