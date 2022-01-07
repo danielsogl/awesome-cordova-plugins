@@ -83,7 +83,7 @@ export interface NameOrOptions {
   pluginName: 'Calendar',
   plugin: 'cordova-plugin-calendar',
   pluginRef: 'plugins.calendar',
-  repo: 'https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin',
+  repo: 'https://github.com/alexpozzani/Calendar-PhoneGap-Plugin',
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
