@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export interface ChooserResult {
-  data?: Uint8Array;
-  dataURI?: string;
   mediaType: string;
   name: string;
   uri: string;
