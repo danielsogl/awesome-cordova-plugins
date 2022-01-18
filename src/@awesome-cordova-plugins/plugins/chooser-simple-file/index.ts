@@ -33,8 +33,8 @@ export interface ChooserResult {
  * ...
  *
  *
- * this.chooser.getFile()
- *   .then(file => console.log(file ? file.name : 'canceled'))
+ * this.chooser.getFiles()
+ *   .then(files => console.log(files ? files.name : 'canceled'))
  *   .catch((error: any) => console.error(error));
  *
  * ```
@@ -54,23 +54,11 @@ export class Chooser extends AwesomeCordovaNativePlugin {
    * Displays native prompt for user to select a file.
    *
    * @param {string} [accept] Optional MIME type filter (e.g. 'image/gif,video/*').
-   * @returns {Promise<any>} Promise containing selected file's raw binary data,
-   * base64-encoded data: URI, MIME type, display name, and original URI.
+   * @returns {Promise<any>} Promise containing selected file's
+   * data: MIME type, display name, and original URI.
    */
   @Cordova()
-  getFile(accept?: string): Promise<ChooserResult | undefined> {
-    return;
-  }
-  /**
-   * Displays native prompt for user to select a file.
-   *
-   * @param {string} [accept] Optional MIME type filter (e.g. 'image/gif,video/*').
-   * @returns {Promise<any>} Promise containing selected file's MIME type, display name, and original URI.
-   * If user cancels, promise will be resolved as undefined.
-   * If error occurs, promise will be rejected.
-   */
-  @Cordova()
-  getFileMetadata(accept?: string): Promise<ChooserResult | undefined> {
+  getFiles(accept?: string): Promise<ChooserResult[] | undefined> {
     return;
   }
 }
