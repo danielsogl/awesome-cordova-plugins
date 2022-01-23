@@ -74,7 +74,7 @@ export class SocialSharing extends AwesomeCordovaNativePlugin {
   shareWithOptions(options: {
     message?: string;
     subject?: string;
-    files?: string | string[];
+    files?: string[];
     url?: string;
     chooserTitle?: string;
   }): Promise<any> {
