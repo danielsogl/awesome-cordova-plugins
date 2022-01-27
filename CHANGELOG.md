@@ -1,3 +1,22 @@
+# [5.38.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.37.3...v5.38.0) (2022-01-27)
+
+
+### Bug Fixes
+
+* **social-sharing:** change shareWithOptions parameter typing ([#3996](https://github.com/danielsogl/awesome-cordova-plugins/issues/3996)) ([a1e85d2](https://github.com/danielsogl/awesome-cordova-plugins/commit/a1e85d2f80a18a4b2da93abdd85ebd5ab04f1b16))
+
+
+### Features
+
+* **camera-preview:** add storeToFile param ([#3958](https://github.com/danielsogl/awesome-cordova-plugins/issues/3958)) ([6a93bb2](https://github.com/danielsogl/awesome-cordova-plugins/commit/6a93bb2e9b450d89112768e78c5cf888b85fcffa))
+* **chooser-simple-file:** add plugin ([#3982](https://github.com/danielsogl/awesome-cordova-plugins/issues/3982)) ([67d8a37](https://github.com/danielsogl/awesome-cordova-plugins/commit/67d8a37d1e1d526da8beab8ac8e05b09312f30e4))
+* **magnetometer:** add magnetometer wrapper ([#3887](https://github.com/danielsogl/awesome-cordova-plugins/issues/3887)) ([3b8566d](https://github.com/danielsogl/awesome-cordova-plugins/commit/3b8566df939773a4b9a1604a4af3a60e24cf9aed))
+* **market:** add plugin ([e6140aa](https://github.com/danielsogl/awesome-cordova-plugins/commit/e6140aaaeef735731a292aabb3972624754f10c3))
+* **sumup:** add test and setup function ([#3950](https://github.com/danielsogl/awesome-cordova-plugins/issues/3950)) ([7350c63](https://github.com/danielsogl/awesome-cordova-plugins/commit/7350c630fea4db8c31a07f46b4464bab2f1b55e4))
+* **tealium:** update wrapper ([#3883](https://github.com/danielsogl/awesome-cordova-plugins/issues/3883)) ([771552c](https://github.com/danielsogl/awesome-cordova-plugins/commit/771552cd4286b755b5bd7a8bddb755bb3c3d5d0c))
+
+
+
 ## [5.37.3](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.37.2...v5.37.3) (2021-12-19)
 
 
