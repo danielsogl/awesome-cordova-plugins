@@ -68,7 +68,7 @@
     "typescript": "4.1.6",
     "unminified-webpack-plugin": "3.0.0",
     "webpack": "5.67.0",
-    "winston": "3.4.0",
+    "winston": "3.5.0",
     "zone.js": "0.11.4"
   },
   "jest": {
