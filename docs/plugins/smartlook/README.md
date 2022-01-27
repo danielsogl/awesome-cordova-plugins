@@ -1,7 +1,5 @@
-# Smartlook
-
-```
-$ ionic cordova plugin add https://github.com/smartlook/cordova-smartlook.git
+# SmartlookTimedCustomEventStart
+plugin add https://github.com/smartlook/cordova-smartlook.git
 $ npm install @awesome-cordova-plugins/smartlook
 ```
 

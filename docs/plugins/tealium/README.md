@@ -9,9 +9,9 @@ $ npm install @awesome-cordova-plugins/tealium
 
 Plugin Repo: [https://github.com/Tealium/cordova-plugin](https://github.com/Tealium/cordova-plugin)
 
-This plugin provides a TypeScript wrapper around the [Tealium](https://www.tealium.com) Cordova plugin for Ionic Native.
+This plugin does provides a wrapper around the Tealium Cordova Plugin for Ionic Native.
 
-For full documentation, see [https://community.tealiumiq.com/t5/Mobile-Libraries/Tealium-for-Cordova/ta-p/17618](https://community.tealiumiq.com/t5/Mobile-Libraries/Tealium-for-Cordova/ta-p/17618)
+For full documentation, see [https://docs.tealium.com/platforms/cordova/](https://docs.tealium.com/platforms/cordova/)
 
 ## Supported platforms
 

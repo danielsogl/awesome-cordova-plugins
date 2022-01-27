@@ -1,5 +1,5 @@
-# LoginParameters
-SDK
+# UnviredResult
+a SDK
 
 ```
 $ ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk
