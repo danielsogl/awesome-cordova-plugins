@@ -900,7 +900,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getString(): Promise<any> {
+  getString(key: string): Promise<any> {
     return;
   }
 
@@ -911,7 +911,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getBoolean(): Promise<any> {
+  getBoolean(key: string): Promise<any> {
     return;
   }
 
@@ -922,7 +922,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getLong(): Promise<any> {
+  getLong(key: string): Promise<any> {
     return;
   }
 
@@ -933,7 +933,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getDouble(): Promise<any> {
+  getDouble(key: string): Promise<any> {
     return;
   }
 
