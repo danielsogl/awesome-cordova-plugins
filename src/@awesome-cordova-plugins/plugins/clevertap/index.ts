@@ -592,6 +592,30 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
     return;
   }
 
+  /**
+   * Method for incrementing a value for a single-value profile property (if it exists).
+   *
+   * @param key {string}
+   * @param value {number}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  profileIncrementValueBy(key: string,value: number): Promise<any> {
+    return;
+  }
+
+  /**
+   * Method for decrementing a value for a single-value profile property (if it exists).
+   *
+   * @param key {string}
+   * @param value {number}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  profileDecrementValueBy(key: string,value: number): Promise<any> {
+    return;
+  }
+
   /*******************
    * Session
    ******************/
