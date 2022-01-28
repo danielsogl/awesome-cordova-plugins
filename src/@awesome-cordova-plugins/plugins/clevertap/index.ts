@@ -487,6 +487,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @deprecated This method is deprecated. Use getCleverTapID() instead.
    * Get a unique CleverTap identifier suitable for use with install attribution providers.
    * calls back with unique CleverTap attribution identifier
    *
@@ -498,6 +499,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @deprecated This method is deprecated. Use getCleverTapID() instead.
    * Get User Profile CleverTapID
    * calls back with CleverTapID or false
    *
@@ -505,6 +507,17 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   profileGetCleverTapID(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get User Profile CleverTapID
+   * calls back with CleverTapID
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getCleverTapID(): Promise<any> {
     return;
   }
 
