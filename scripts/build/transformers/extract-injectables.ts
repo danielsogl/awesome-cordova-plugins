@@ -1,6 +1,6 @@
-import * as fs from 'fs-extra';
-import * as path from 'path';
-import * as ts from 'typescript';
+import { unlinkSync, writeJSONSync } from 'fs-extra';
+import { resolve } from 'path';
+import { ClassDeclaration, SyntaxKind, TransformationContext, visitEachChild } from 'typescript';
 
 import { hasDecorator, ROOT } from '../helpers';
 
@@ -11,7 +11,7 @@ export interface InjectableClassEntry {
 }
 
 const injectableClasses: InjectableClassEntry[] = [];
-export const EMIT_PATH = path.resolve(ROOT, 'injectable-classes.json');
+export const EMIT_PATH = resolve(ROOT, 'injectable-classes.json');
 
 /**
  * This transformer extracts all the injectable classes
@@ -22,13 +22,13 @@ export const EMIT_PATH = path.resolve(ROOT, 'injectable-classes.json');
  * window['IonicNative'] object.
  */
 export function extractInjectables() {
-  return (ctx: ts.TransformationContext) => {
-    return tsSourceFile => {
-      if (tsSourceFile.fileName.indexOf('src/@ionic-native/plugins') > -1) {
-        ts.visitEachChild(
+  return (ctx: TransformationContext) => {
+    return (tsSourceFile) => {
+      if (tsSourceFile.fileName.indexOf('src/@awesome-cordova-plugins/plugins') > -1) {
+        visitEachChild(
           tsSourceFile,
-          node => {
-            if (node.kind !== ts.SyntaxKind.ClassDeclaration) {
+          (node) => {
+            if (node.kind !== SyntaxKind.ClassDeclaration) {
               return node;
             }
 
@@ -36,7 +36,7 @@ export function extractInjectables() {
             if (isInjectable) {
               injectableClasses.push({
                 file: tsSourceFile.path,
-                className: (node as ts.ClassDeclaration).name.text,
+                className: (node as ClassDeclaration).name.text,
                 dirName: tsSourceFile.path.split(/[\\\/]+/).reverse()[1],
               });
             }
@@ -51,9 +51,9 @@ export function extractInjectables() {
 }
 
 export function emitInjectableClasses() {
-  fs.writeJSONSync(EMIT_PATH, injectableClasses);
+  writeJSONSync(EMIT_PATH, injectableClasses);
 }
 
 export function cleanEmittedData() {
-  fs.unlinkSync(EMIT_PATH);
+  unlinkSync(EMIT_PATH);
 }

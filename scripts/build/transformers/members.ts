@@ -1,8 +1,9 @@
-import * as ts from 'typescript';
+import { ClassDeclaration, factory, SyntaxKind } from 'typescript';
+
 import { transformMethod } from './methods';
 import { transformProperty } from './properties';
 
-export function transformMembers(cls: ts.ClassDeclaration) {
+export function transformMembers(cls: ClassDeclaration) {
   const propertyIndices: number[] = [];
 
   const members = cls.members.map((member: any, index: number) => {
@@ -10,13 +11,13 @@ export function transformMembers(cls: ts.ClassDeclaration) {
     if (!member.decorators || !member.decorators.length) return member;
 
     switch (member.kind) {
-      case ts.SyntaxKind.MethodDeclaration:
+      case SyntaxKind.MethodDeclaration:
         return transformMethod(member);
-      case ts.SyntaxKind.PropertyDeclaration:
+      case SyntaxKind.PropertyDeclaration:
         propertyIndices.push(index);
         return member;
-      case ts.SyntaxKind.Constructor:
-        return ts.createConstructor(undefined, undefined, member.parameters, member.body);
+      case SyntaxKind.Constructor:
+        return factory.createConstructorDeclaration(undefined, undefined, member.parameters, member.body);
       default:
         return member; // in case anything gets here by accident...
     }
@@ -27,7 +28,7 @@ export function transformMembers(cls: ts.ClassDeclaration) {
     members.push(getter, setter);
   });
 
-  propertyIndices.reverse().forEach(i => members.splice(i, 1));
+  propertyIndices.reverse().forEach((i) => members.splice(i, 1));
 
   return members;
 }

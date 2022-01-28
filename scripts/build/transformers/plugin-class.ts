@@ -1,4 +1,12 @@
-import * as ts from 'typescript';
+import {
+  Decorator,
+  factory,
+  SourceFile,
+  SyntaxKind,
+  TransformationContext,
+  TransformerFactory,
+  visitEachChild,
+} from 'typescript';
 
 import { Logger } from '../../logger';
 import { convertValueToLiteral, getDecorator, getDecoratorArgs, getDecoratorName } from '../helpers';
@@ -8,7 +16,7 @@ function transformClass(cls: any, ngcBuild?: boolean) {
   Logger.profile('transformClass: ' + cls.name.text);
 
   const pluginStatics = [];
-  const dec: any = getDecorator(cls);
+  const dec: Decorator = getDecorator(cls);
 
   if (dec) {
     const pluginDecoratorArgs = getDecoratorArgs(dec);
@@ -16,10 +24,10 @@ function transformClass(cls: any, ngcBuild?: boolean) {
     // add plugin decorator args as static properties of the plugin's class
     for (const prop in pluginDecoratorArgs) {
       pluginStatics.push(
-        ts.createProperty(
+        factory.createPropertyDeclaration(
           undefined,
-          [ts.createToken(ts.SyntaxKind.StaticKeyword)],
-          ts.createIdentifier(prop),
+          [factory.createToken(SyntaxKind.StaticKeyword)],
+          factory.createIdentifier(prop),
           undefined,
           undefined,
           convertValueToLiteral(pluginDecoratorArgs[prop])
@@ -28,11 +36,11 @@ function transformClass(cls: any, ngcBuild?: boolean) {
     }
   }
 
-  cls = ts.createClassDeclaration(
+  cls = factory.createClassDeclaration(
     ngcBuild && cls.decorators && cls.decorators.length
-      ? cls.decorators.filter(d => getDecoratorName(d) === 'Injectable')
+      ? cls.decorators.filter((d) => getDecoratorName(d) === 'Injectable')
       : undefined, // remove Plugin and Injectable decorators
-    [ts.createToken(ts.SyntaxKind.ExportKeyword)],
+    [factory.createToken(SyntaxKind.ExportKeyword)],
     cls.name,
     cls.typeParameters,
     cls.heritageClauses,
@@ -43,14 +51,14 @@ function transformClass(cls: any, ngcBuild?: boolean) {
   return cls;
 }
 
-function transformClasses(file: ts.SourceFile, ctx: ts.TransformationContext, ngcBuild?: boolean) {
+function transformClasses(file: SourceFile, ctx: TransformationContext, ngcBuild?: boolean) {
   Logger.silly('Transforming file: ' + file.fileName);
-  return ts.visitEachChild(
+  return visitEachChild(
     file,
-    node => {
+    (node) => {
       if (
-        node.kind !== ts.SyntaxKind.ClassDeclaration ||
-        (node.modifiers && node.modifiers.find(v => v.kind === ts.SyntaxKind.DeclareKeyword))
+        node.kind !== SyntaxKind.ClassDeclaration ||
+        (node.modifiers && node.modifiers.find((v) => v.kind === SyntaxKind.DeclareKeyword))
       ) {
         return node;
       }
@@ -60,11 +68,12 @@ function transformClasses(file: ts.SourceFile, ctx: ts.TransformationContext, ng
   );
 }
 
-export function pluginClassTransformer(ngcBuild?: boolean): ts.TransformerFactory<ts.SourceFile> {
-  return (ctx: ts.TransformationContext) => {
-    return tsSourceFile => {
-      if (tsSourceFile.fileName.indexOf('src/@ionic-native/plugins') > -1)
+export function pluginClassTransformer(ngcBuild?: boolean): TransformerFactory<SourceFile> {
+  return (ctx: TransformationContext) => {
+    return (tsSourceFile) => {
+      if (tsSourceFile.fileName.indexOf('src/@awesome-cordova-plugins/plugins') > -1) {
         return transformClasses(tsSourceFile, ctx, ngcBuild);
+      }
       return tsSourceFile;
     };
   };

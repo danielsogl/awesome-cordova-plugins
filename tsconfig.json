@@ -9,7 +9,7 @@
     "module": "es2015",
     "moduleResolution": "node",
     "paths": {
-      "@ionic-native/core": ["./dist/@ionic-native/core"]
+      "@awesome-cordova-plugins/core": ["./dist/@awesome-cordova-plugins/core"]
     },
     "outDir": "./dist",
     "rootDir": "src",
@@ -19,9 +19,8 @@
     "inlineSources": true,
     "inlineSourceMap": true
   },
-  "include": ["src/@ionic-native/plugins/**/*.ts"],
+  "include": ["src/@awesome-cordova-plugins/plugins/**/*.ts"],
   "angularCompilerOptions": {
     "genDir": "aot"
-  },
-  "plugins": [{ "name": "typescript-tslint-plugin" }]
+  }
 }

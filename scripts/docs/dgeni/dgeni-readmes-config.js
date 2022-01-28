@@ -7,7 +7,7 @@ const Package = require('dgeni').Package,
   path = require('path'),
   config = require('../config.json');
 
-module.exports = currentVersion => {
+module.exports = (currentVersion) => {
   return (
     new Package('ionic-native-readmes', [jsdocPackage, nunjucksPackage, typescriptPackage, linksPackage])
 
@@ -38,7 +38,7 @@ module.exports = currentVersion => {
         computePathsProcessor.pathTemplates = [
           {
             docTypes: ['class'],
-            getOutputPath: doc =>
+            getOutputPath: (doc) =>
               doc.originalModule.replace(config.pluginDir + '/', '').replace(/\/index$/, '/README.md'),
           },
         ];
@@ -51,12 +51,16 @@ module.exports = currentVersion => {
         readFilesProcessor.basePath = path.resolve(__dirname, '../../..');
 
         readTypeScriptModules.basePath = path.resolve(path.resolve(__dirname, '../../..'));
-        readTypeScriptModules.sourceFiles = ['./src/@ionic-native/plugins/**/*.ts'];
+        readTypeScriptModules.sourceFiles = ['./src/@awesome-cordova-plugins/plugins/**/*.ts'];
       })
 
       // Configure file writing
       .config(function (writeFilesProcessor) {
-        writeFilesProcessor.outputFolder = './dist/@ionic-native/';
+        writeFilesProcessor.outputFolder = './dist/@awesome-cordova-plugins/';
+      })
+
+      .config(function (writeFilesProcessor) {
+        writeFilesProcessor.outputFolder = './docs/';
       })
 
       // Configure rendering
