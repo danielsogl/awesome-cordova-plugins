@@ -475,28 +475,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Set profile attributes from facebook user
-   *
-   * @param profile {any} facebook graph user object
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  profileSetGraphUser(profile: any): Promise<any> {
-    return;
-  }
-
-  /**
-   * Set profile attributes rom google plus user
-   *
-   * @param profile {any} google plus user object
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  profileGooglePlusUser(profile: any): Promise<any> {
-    return;
-  }
-
-  /**
    * Get User Profile Property
    *
    * @param propertyName {string}
