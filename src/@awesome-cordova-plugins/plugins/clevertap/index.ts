@@ -617,6 +617,42 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /*******************
+   * In-App Controls
+   ******************/
+
+  /**
+   * Suspends and saves inApp notifications until 'resumeInAppNotifications' is called for current session.
+   * Automatically resumes InApp notifications display on CleverTap shared instance creation.
+   * Pending inApp notifications are displayed only for current session.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  suspendInAppNotifications(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Discards inApp notifications until 'resumeInAppNotifications' is called for current session.
+   * Automatically resumes InApp notifications display on CleverTap shared instance creation.
+   * Pending inApp notifications are not displayed.
+   */
+  @Cordova()
+  discardInAppNotifications(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Resumes displaying inApps notifications and shows pending inApp notifications if any.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  resumeInAppNotifications(): Promise<any> {
+    return;
+  }
+
+  /*******************
    * Session
    ******************/
 
