@@ -475,28 +475,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Set profile attributes from facebook user
-   *
-   * @param profile {any} facebook graph user object
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  profileSetGraphUser(profile: any): Promise<any> {
-    return;
-  }
-
-  /**
-   * Set profile attributes rom google plus user
-   *
-   * @param profile {any} google plus user object
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  profileGooglePlusUser(profile: any): Promise<any> {
-    return;
-  }
-
-  /**
    * Get User Profile Property
    *
    * @param propertyName {string}
@@ -509,6 +487,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @deprecated This method is deprecated. Use getCleverTapID() instead.
    * Get a unique CleverTap identifier suitable for use with install attribution providers.
    * calls back with unique CleverTap attribution identifier
    *
@@ -520,6 +499,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @deprecated This method is deprecated. Use getCleverTapID() instead.
    * Get User Profile CleverTapID
    * calls back with CleverTapID or false
    *
@@ -527,6 +507,17 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   profileGetCleverTapID(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get User Profile CleverTapID
+   * calls back with CleverTapID
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getCleverTapID(): Promise<any> {
     return;
   }
 
@@ -598,6 +589,66 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   profileRemoveMultiValues(key: string, values: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Method for incrementing a value for a single-value profile property (if it exists).
+   *
+   * @param key {string}
+   * @param value {number}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  profileIncrementValueBy(key: string,value: number): Promise<any> {
+    return;
+  }
+
+  /**
+   * Method for decrementing a value for a single-value profile property (if it exists).
+   *
+   * @param key {string}
+   * @param value {number}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  profileDecrementValueBy(key: string,value: number): Promise<any> {
+    return;
+  }
+
+  /*******************
+   * In-App Controls
+   ******************/
+
+  /**
+   * Suspends and saves inApp notifications until 'resumeInAppNotifications' is called for current session.
+   * Automatically resumes InApp notifications display on CleverTap shared instance creation.
+   * Pending inApp notifications are displayed only for current session.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  suspendInAppNotifications(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Discards inApp notifications until 'resumeInAppNotifications' is called for current session.
+   * Automatically resumes InApp notifications display on CleverTap shared instance creation.
+   * Pending inApp notifications are not displayed.
+   */
+  @Cordova()
+  discardInAppNotifications(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Resumes displaying inApps notifications and shows pending inApp notifications if any.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  resumeInAppNotifications(): Promise<any> {
     return;
   }
 
@@ -676,6 +727,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /****************************
    * Notification Inbox methods
    ****************************/
+
   /**
    * Call this method to initialize the App Inbox
    */
@@ -782,293 +834,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   pushInboxNotificationClickedEventForId(messageId: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to SetUIEditor Connection
-   *
-   * @param enabled {boolean}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  setUIEditorConnectionEnabled(enabled: boolean): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register Boolean Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerBooleanVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register Double Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerDoubleVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register Integer Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerIntegerVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register String Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerStringVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register List of Boolean Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerListOfBooleanVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register List of Double Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerListOfDoubleVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register List of Integer Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerListOfIntegerVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register List of String Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerListOfStringVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register Map of Boolean Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerMapOfBooleanVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register Map of Double Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerMapOfDoubleVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register Map of Integer Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerMapOfIntegerVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Register Map of String Variable
-   *
-   * @param varName {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  registerMapOfStringVariable(varName: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Get Boolean Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {boolean}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getBooleanVariable(varName: string, defaultValue: boolean): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Get Double Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {number}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getDoubleVariable(varName: string, defaultValue: number): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Get Integer Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {number}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getIntegerVariable(varName: string, defaultValue: number): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Get String Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getStringVariable(varName: string, defaultValue: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Get List of Boolean Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {any}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getListOfBooleanVariable(varName: string, defaultValue: any): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Get List of Double Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {any}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getListOfDoubleVariable(varName: string, defaultValue: any): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Get List of Integer Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {any}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getListOfIntegerVariable(varName: string, defaultValue: any): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Get List of String Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {any}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getListOfStringVariable(varName: string, defaultValue: any): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to get Map of Boolean Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {any}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getMapOfBooleanVariable(varName: string, defaultValue: any): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Get Map of Double Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {any}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getMapOfDoubleVariable(varName: string, defaultValue: any): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Get Map of Integer Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {any}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getMapOfIntegerVariable(varName: string, defaultValue: any): Promise<any> {
-    return;
-  }
-
-  /**
-   * Call this to Get Map of String Variable
-   *
-   * @param varName {string}
-   * @param defaultValue {any}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getMapOfStringVariable(varName: string, defaultValue: any): Promise<any> {
     return;
   }
 
@@ -1208,7 +973,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getString(): Promise<any> {
+  getString(key: string): Promise<any> {
     return;
   }
 
@@ -1219,7 +984,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getBoolean(): Promise<any> {
+  getBoolean(key: string): Promise<any> {
     return;
   }
 
@@ -1230,7 +995,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getLong(): Promise<any> {
+  getLong(key: string): Promise<any> {
     return;
   }
 
@@ -1241,7 +1006,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  getDouble(): Promise<any> {
+  getDouble(key: string): Promise<any> {
     return;
   }
 
