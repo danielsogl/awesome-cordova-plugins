@@ -849,10 +849,11 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * using a string other than retry to name that event if you are counting a different type of event.
    *
    * @param {string} name
+   * @param {string} counterName
    * @returns {Promise<any>}
    */
   @Cordova()
-  incrementCounter(name: string): Promise<any> {
+  incrementCounter(name: string, counterName: string): Promise<any> {
     return;
   }
 
