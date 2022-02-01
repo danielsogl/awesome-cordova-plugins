@@ -55,7 +55,7 @@
     "husky": "7.0.4",
     "is-ci": "3.0.1",
     "jest": "27.4.7",
-    "lint-staged": "12.3.2",
+    "lint-staged": "12.3.3",
     "lodash": "4.17.21",
     "minimist": "1.2.5",
     "prettier": "2.5.1",
