@@ -1,3 +1,17 @@
+# [5.39.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.38.0...v5.39.0) (2022-02-01)
+
+
+### Bug Fixes
+
+* **firebase-x:** change incrementCounter signature ([#4010](https://github.com/danielsogl/awesome-cordova-plugins/issues/4010)) ([bb1f326](https://github.com/danielsogl/awesome-cordova-plugins/commit/bb1f3268dede9633f5736cedfa5f4ccc15f89aa9))
+
+
+### Features
+
+* **clevertap:** support new clevertap changes  ([#4011](https://github.com/danielsogl/awesome-cordova-plugins/issues/4011)) ([24c61a5](https://github.com/danielsogl/awesome-cordova-plugins/commit/24c61a50a76cc174245624ea71f21bf0f556a317)), closes [#3491](https://github.com/danielsogl/awesome-cordova-plugins/issues/3491)
+
+
+
 # [5.38.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.37.3...v5.38.0) (2022-01-27)
 
 
