@@ -95,7 +95,7 @@ export class FileTransferManager {
  */
 @Plugin({
   pluginName: 'BackgroundUpload',
-  plugin: '@spoonconsulting/ccordova-plugin-background-upload',
+  plugin: '@spoonconsulting/cordova-plugin-background-upload',
   pluginRef: 'FileTransferManager',
   repo: 'https://github.com/spoonconsulting/cordova-plugin-background-upload',
   install: 'ionic cordova plugin add @spoonconsulting/cordova-plugin-background-upload',
