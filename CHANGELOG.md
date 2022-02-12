@@ -1,3 +1,12 @@
+## [5.39.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.39.0...v5.39.1) (2022-02-12)
+
+
+### Bug Fixes
+
+* **background-upload:** use correct plugin source ([#4028](https://github.com/danielsogl/awesome-cordova-plugins/issues/4028)) ([8e257f3](https://github.com/danielsogl/awesome-cordova-plugins/commit/8e257f3e08528954a69581eef98871d1fb146441))
+
+
+
 # [5.39.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.38.0...v5.39.0) (2022-02-01)
 
 
