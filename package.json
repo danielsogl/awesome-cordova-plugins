@@ -46,7 +46,7 @@
     "dgeni": "0.4.14",
     "dgeni-packages": "0.16.10",
     "eslint": "8.10.0",
-    "eslint-config-prettier": "8.4.0",
+    "eslint-config-prettier": "8.5.0",
     "eslint-plugin-jsdoc": "37.9.5",
     "fs-extra": "10.0.1",
     "gulp": "4.0.2",
