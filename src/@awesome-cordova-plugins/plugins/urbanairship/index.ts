@@ -2,10 +2,22 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
+/**
+ * Interface for UAirship Tag Editor
+ */
 export interface TagGroupEditor {
-  addTags(): void;
-  removeTags(): void;
-  apply(): void;
+  addTags(tagGroup: string, tags: string[]): TagGroupEditor;
+  removeTags(tagGroup: string, tags: string[]): TagGroupEditor;
+  apply(success: () => void, failure: (message: string) => void): TagGroupEditor;
+}
+
+/**
+ * Interface for UAirship Attributes Editor
+ */
+export interface AttributesEditor {
+  setAttribute(name: string, value: string | number | boolean | Date): AttributesEditor;
+  removeAttribute(name: string): AttributesEditor;
+  apply(success: () => void, failure: (message: string) => void): AttributesEditor;
 }
 
 /**
@@ -214,6 +226,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * new config will not be used until the next app start.
    *
    * @param {object}  config The Urban Airship config.
+   * @param {string}  config.site Sets the cloud site, must be either EU or US.
    * @param {object}  config.development The Urban Airship development config.
    * @param {string}  config.development.appKey The development appKey.
    * @param {string}  config.development.appSecret The development appSecret.
@@ -538,21 +551,33 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates an editor to modify the named user tag groups.
-   *
-   * @returns {TagGroupEditor} A tag group editor instance.
    */
-  @Cordova()
+  @Cordova({ sync: true })
   editNamedUserTagGroups(): TagGroupEditor {
     return;
   }
 
   /**
    * Creates an editor to modify the channel tag groups.
-   *
-   * @returns {TagGroupEditor} A tag group editor instance.
    */
-  @Cordova()
+  @Cordova({ sync: true })
   editChannelTagGroups(): TagGroupEditor {
+    return;
+  }
+
+  /**
+   * Creates an editor to modify the channel attributes.
+   */
+  @Cordova({ sync: true })
+  editChannelAttributes(): AttributesEditor {
+    return;
+  }
+
+  /**
+   * Creates an editor to modify the named user attributes.
+   */
+  @Cordova({ sync: true })
+  editNamedUserAttributes(): AttributesEditor {
     return;
   }
 
