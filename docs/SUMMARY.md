@@ -215,6 +215,7 @@
   * [Network Interface](plugins/network-interface.md)
   * [Printer](plugins/printer.md)
   * [Browser Tab](plugins/browser-tab.md)
+  * [Dynamsoft Barcode Scanner](plugins/dynamsoft-barcode-scanner.md)
 * [Installation](installation.md)
 * [FAQ](faq.md)
 
