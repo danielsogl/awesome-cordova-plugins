@@ -60,7 +60,7 @@
     "minimist": "1.2.5",
     "prettier": "2.5.1",
     "rimraf": "3.0.2",
-    "rollup": "2.69.0",
+    "rollup": "2.69.1",
     "rxjs": "6.6.7",
     "terser-webpack-plugin": "5.3.1",
     "ts-jest": "27.1.3",
