@@ -58,7 +58,7 @@
     "lint-staged": "12.3.6",
     "lodash": "4.17.21",
     "minimist": "1.2.5",
-    "prettier": "2.5.1",
+    "prettier": "2.6.0",
     "rimraf": "3.0.2",
     "rollup": "2.70.1",
     "rxjs": "6.6.7",
