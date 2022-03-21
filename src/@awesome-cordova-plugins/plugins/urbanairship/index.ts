@@ -21,6 +21,24 @@ export interface AttributesEditor {
 }
 
 /**
+ * Interface for UAirship ChannelSubscriptionList Editor
+ */
+export interface ChannelSubscriptionListEditor {
+  subscribe(subscriptionListID: string): ChannelSubscriptionListEditor;
+  unsubscribe(subscriptionListID: string): ChannelSubscriptionListEditor;
+  apply(success: () => void, failure: (message: string) => void): ChannelSubscriptionListEditor;
+}
+
+/**
+ * Interface for UAirship ContactSubscriptionList Editor
+ */
+export interface ContactSubscriptionListEditor {
+  subscribe(subscriptionListID: string, contactScope: 'APP' | 'EMAIL'): ContactSubscriptionListEditor;
+  unsubscribe(subscriptionListID: string, contactScope: 'APP' | 'EMAIL'): ContactSubscriptionListEditor;
+  apply(success: () => void, failure: (message: string) => void): ContactSubscriptionListEditor;
+}
+
+/**
  * Enum for notification types.
  *
  * @readonly
@@ -517,7 +535,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * @param {string} failure.message The error message.
    */
   @Cordova()
-  getNamedUser(): Promise<any> {
+  getNamedUser(): Promise<string> {
     return;
   }
 
@@ -582,6 +600,60 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Creates an editor to modify the channel subscription lists.
+   *
+   * @returns {ChannelSubscriptionListEditor} A subscription list editor instance.
+   * @since 13.3.0
+   */
+  @Cordova({ sync: true })
+  editChannelSubscriptionLists(): ChannelSubscriptionListEditor {
+    return;
+  }
+
+  /**
+   * Creates an editor to modify the contact subscription lists.
+   *
+   * @returns {ContactSubscriptionListEditor} A subscription list editor instance.
+   * @since 13.3.0
+   */
+  @Cordova({ sync: true })
+  editContactSubscriptionLists(): ContactSubscriptionListEditor {
+    return;
+  }
+
+  /**
+   * Returns the current set of subscription lists for the current channel,
+   * optionally applying pending subscription list changes that will be applied during the next channel update.
+   * An empty set indicates that this contact is not subscribed to any lists.
+   *
+   * @param {Function} [success] Success callback.
+   * @param {string} failure.message The error message.
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  getChannelSubscriptionLists(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Returns the current set of subscription lists for the current contact,
+   * optionally applying pending subscription list changes that will be applied during the next contact update.
+   * An empty set indicates that this contact is not subscribed to any lists.
+   *
+   * @param {Function} [success] Success callback.
+   * @param {string} failure.message The error message.
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  getContactSubscriptionLists(): Promise<any> {
+    return;
+  }
+
+  /**
    * Sets an associated identifier for the Connect data stream.
    *
    * @param key Custom key for identifier.
@@ -617,6 +689,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * @param {boolean} success.enabled Flag indicating if location is enabled or not.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
+   * @deprecated removed in version 8.0
    */
   @Cordova()
   isLocationEnabled(): Promise<any> {
@@ -630,6 +703,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
+   * @deprecated removed in version 8.0
    */
   @Cordova()
   setBackgroundLocationEnabled(enabled: boolean): Promise<any> {
@@ -643,6 +717,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * @param {boolean} success.enabled Flag indicating if background location updates are enabled or not.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
+   * @deprecated removed in version 8.0
    */
   @Cordova()
   isBackgroundLocationEnabled(): Promise<any> {
@@ -691,6 +766,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
+   * @deprecated removed in version 10.0
    */
   @Cordova()
   dismissOverlayInboxMessage(): Promise<any> {
@@ -777,6 +853,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * @param {Function} [success] Success callback.
    * @param {function(message)} [failure] Failure callback.
    * @param {string} failure.message The error message.
+   * @deprecated removed in version 10.0
    */
   @Cordova()
   overlayInboxMessage(messageId: string): Promise<any> {
@@ -969,6 +1046,137 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   addCustomEvent(event: object): Promise<any> {
+    return;
+  }
+
+  /**
+   * Initiates screen tracking for a specific app screen, must be called once per tracked screen.
+   *
+   * @param {string} screen The screen's string identifier.
+   * @param {Function} [success] Success callback.
+   * @param {function(message)} [failure] Failure callback.
+   * @param {string} failure.message The error message.
+   * @since 11.0.0
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  trackScreen(screen: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Enables features, adding them to the set of currently enabled features.
+   *
+   * @param {Array<string>} features The features to enable.
+   * @param {Function} [success] Success callback.
+   * @param {function(message)} [failure] Failure callback.
+   * @param {string} failure.message The error message.
+   * @since 13.0.0
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  enableFeature(features: string[]): Promise<any> {
+    return;
+  }
+
+  /**
+   * Disables features, removing them from the set of currently enabled features.
+   *
+   * @param {Array<string>} features The features to disable.
+   * @param {Function} [success] Success callback.
+   * @param {function(message)} [failure] Failure callback.
+   * @param {string} failure.message The error message.
+   * @since 13.0.0
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  disableFeature(features: string[]): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets the current enabled features, replacing any currently enabled features with the given set.
+   *
+   * @param {Array<string>} features The features to set as enabled.
+   * @param {Function} [success] Success callback.
+   * @param {function(message)} [failure] Failure callback.
+   * @param {string} failure.message The error message.
+   * @since 13.0.0
+   */
+  setEnabledFeatures(features: string[]): Promise<any> {
+    return;
+  }
+
+  /**
+   * Gets the current enabled features.
+   *
+   * @param {Function} [success] Success callback.
+   * @param {function(message)} [failure] Failure callback.
+   * @param {string} failure.message The error message.
+   * @since 13.0.0
+   */
+  @Cordova({
+    successIndex: 0,
+    errorIndex: 1,
+  })
+  getEnabledFeatures(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Checks if all of the given features are enabled.
+   *
+   * @param {Array<string>} features The features to check.
+   * @param {Function} [success] Success callback.
+   * @param {function(message)} [failure] Failure callback.
+   * @param {string} failure.message The error message.
+   * @since 13.0.0
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  isFeatureEnabled(features: string[]): Promise<any> {
+    return;
+  }
+
+  /**
+   * Returns the configuration of the Preference Center with the given ID trough a callback method.
+   *
+   * @param {string} preferenceCenterId The preference center ID.
+   * @param {Function} [success] Success callback.
+   * @param {function(message)} [failure] Failure callback.
+   * @param {string} failure.message The error message.
+   * @since 13.3.0
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  getPreferenceCenterConfig(preferenceCenterId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Opens the Preference Center with the given preferenceCenterId.
+   *
+   * @param {string} prenferenceCenterId The preference center ID.
+   * @param {Function} [success] Success callback.
+   * @param {function(message)} [failure] Failure callback.
+   * @param {string} failure.message The error message.
+   * @since 13.0.0
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  openPreferenceCenter(prenferenceCenterId: string): Promise<any> {
     return;
   }
 }
