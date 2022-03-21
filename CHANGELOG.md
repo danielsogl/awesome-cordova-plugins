@@ -1,3 +1,13 @@
+# [5.40.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.39.1...v5.40.0) (2022-03-05)
+
+
+### Features
+
+* **browser-tab:** add plugin ([#4046](https://github.com/danielsogl/awesome-cordova-plugins/issues/4046)) ([daa4887](https://github.com/danielsogl/awesome-cordova-plugins/commit/daa48873255d0fc31608cc8515e08386c01db6dd))
+* **urbanairship:** Add attributes editing and fix tag editing ([#4058](https://github.com/danielsogl/awesome-cordova-plugins/issues/4058)) ([d9e9a6d](https://github.com/danielsogl/awesome-cordova-plugins/commit/d9e9a6d31aed0308bc3cb0bf07ee7e1682e2f66f))
+
+
+
 ## [5.39.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.39.0...v5.39.1) (2022-02-12)
 
 
