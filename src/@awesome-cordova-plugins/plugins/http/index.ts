@@ -238,6 +238,26 @@ export class HTTP extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Configure X.509 client certificate authentication. Takes mode and options. mode being one of following values:
+   * none: disable client certificate authentication
+   * systemstore (only on Android): use client certificate installed in the Android system store; user will be presented with a list of all installed certificates
+   * buffer: use given client certificate; you will need to provide an options object
+   *
+   * @see https://github.com/silkimen/cordova-plugin-advanced-http#setclientauthmode
+   * @param {string} mode auth mode
+   * @param {object} options useful for buffer mode
+   * @param {ArrayBuffer} options.rawPkcs ArrayBuffer containing raw PKCS12 container with client certificate and private key
+   * @param {string} options.pkcsPassword password of the PKCS container
+   */
+  @Cordova()
+  setClientAuthMode(
+    mode: 'none' | 'systemstore ' | 'buffer',
+    options?: { rawPkcs: ArrayBuffer; pkcsPassword: string }
+  ): Promise<void> {
+    return;
+  }
+
+  /**
    * Make a POST request
    *
    * @param url {string} The url to send the request to
