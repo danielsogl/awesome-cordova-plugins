@@ -67,7 +67,7 @@ export interface EmailComposerOptions {
  *    // Returns an array of configured email clients for the device
  * });
  *
- * this.emailComposer.hasClient().then(app, (isValid: boolean) => {
+ * this.emailComposer.hasClient(app).then((isValid: boolean) => {
  *  if (isValid) {
  *    // Now we know we have a valid email client configured
  *    // Not specifying an app will return true if at least one email client is configured
@@ -80,7 +80,7 @@ export interface EmailComposerOptions {
  *  }
  * });
  *
- * this.emailComposer.isAvailable().then(app, (available: boolean) => {
+ * this.emailComposer.isAvailable(app).then((available: boolean) => {
  *  if(available) {
  *    // Now we know we can send an email, calls hasClient and hasAccount
  *    // Not specifying an app will return true if at least one email client is configured
