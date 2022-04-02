@@ -880,7 +880,7 @@ export class StarPRNT extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
-  printRawText(port: string, emulation: string, printObj: PrintObj): Promise<any> {
+  printRawText(port: string|null, emulation: string, printObj: PrintObj): Promise<any> {
     return;
   }
 
@@ -893,7 +893,7 @@ export class StarPRNT extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
-  printRasterReceipt(port: string, emulation: string, rasterObj: RasterObj): Promise<any> {
+  printRasterReceipt(port: string|null, emulation: string, rasterObj: RasterObj): Promise<any> {
     return;
   }
 
@@ -906,7 +906,7 @@ export class StarPRNT extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
-  printImage(port: string, emulation: string, imageObj: ImageObj): Promise<any> {
+  printImage(port: string|null, emulation: string, imageObj: ImageObj): Promise<any> {
     return;
   }
 
@@ -918,7 +918,7 @@ export class StarPRNT extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} Success! if opened or error message string returned by the SDK.
    */
   @Cordova()
-  openCashDrawer(port: string, emulation: string): Promise<any> {
+  openCashDrawer(port: string|null, emulation: string): Promise<any> {
     return;
   }
 
@@ -931,7 +931,7 @@ export class StarPRNT extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
-  print(port: string, emulation: string, commandsArray: CommandsArray): Promise<any> {
+  print(port: string|null, emulation: string, commandsArray: CommandsArray): Promise<any> {
     return;
   }
 
