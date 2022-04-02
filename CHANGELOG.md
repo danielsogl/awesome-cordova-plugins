@@ -1,3 +1,14 @@
+# [5.41.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.40.0...v5.41.0) (2022-04-02)
+
+
+### Features
+
+* **http:** add set client auth mode method ([#4100](https://github.com/danielsogl/awesome-cordova-plugins/issues/4100)) ([04fdacc](https://github.com/danielsogl/awesome-cordova-plugins/commit/04fdacc22feba4eedf14c76b0a9c408ec1ee1bdf))
+* **star-prnt:** allow null port for print methods and openCashDrawer ([#4095](https://github.com/danielsogl/awesome-cordova-plugins/issues/4095)) ([a17dba1](https://github.com/danielsogl/awesome-cordova-plugins/commit/a17dba1f8b6570d76d5c8a30f437edb2dca9abea))
+* **urbanairship:** new functions for version cordova-urbanairship 14.0 ([#4097](https://github.com/danielsogl/awesome-cordova-plugins/issues/4097)) ([12ef7ac](https://github.com/danielsogl/awesome-cordova-plugins/commit/12ef7ac215f1f9cf718a004fae9e7f4d01f597b8))
+
+
+
 # [5.40.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.39.1...v5.40.0) (2022-03-05)
 
 
