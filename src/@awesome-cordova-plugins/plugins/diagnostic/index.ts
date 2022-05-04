@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { AwesomeCordovaNativePlugin, Cordova, CordovaProperty, Plugin } from '@awesome-cordova-plugins/core';
+import { DiagnosticPermissionStatus } from '../../core/decorators/interfaces';
 
 /**
  * @name Diagnostic
@@ -69,18 +70,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   };
 
   @CordovaProperty()
-  permissionStatus: {
-    GRANTED: string;
-    /**
-     * @deprecated cordova.plugins.diagnostic@5.0.0 uses DENIED_ONCE to unify DENIED* statuses across iOS/Android
-     */
-    DENIED: string;
-    DENIED_ONCE: string;
-    NOT_REQUESTED: string;
-    DENIED_ALWAYS: string;
-    RESTRICTED: string;
-    GRANTED_WHEN_IN_USE: string;
-  };
+  permissionStatus: DiagnosticPermissionStatus;
 
   locationAuthorizationMode = {
     ALWAYS: 'always',
