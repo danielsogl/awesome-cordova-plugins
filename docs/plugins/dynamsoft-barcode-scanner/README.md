@@ -1,7 +1,7 @@
-# Dynamsoft Barcode Scanner
+# dynamsoft-barcode-scanner
 
 ```
-$ ionic cordova plugin add cordova-plugin-dynamsoft-barcode-reader
+$ ''
 $ npm install @awesome-cordova-plugins/dynamsoft-barcode-scanner
 ```
 
@@ -9,12 +9,12 @@ $ npm install @awesome-cordova-plugins/dynamsoft-barcode-scanner
 
 Plugin Repo: [https://github.com/xulihang/cordova-plugin-dynamsoft-barcode-reader](https://github.com/xulihang/cordova-plugin-dynamsoft-barcode-reader)
 
-The Dynamsoft Barcode Scanner Plugin can read barcodes from images as well as camera previews.
+This plugin scans barcodes using Dynamsoft Barcode Reader
 
 ## Supported platforms
 
 - Android
-- iOS
+  - iOS
   
 
 
