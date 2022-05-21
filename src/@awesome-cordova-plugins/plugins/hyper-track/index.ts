@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AwesomeCordovaNativePlugin, Cordova, Plugin } from '@awesome-cordova-plugins/core';
 
+const hypertrackIonicPluginVersion = "0.2.0"
+// Minimal cordova-plugin-hypertrack-v3 version: 0.5.0
 @Plugin({
   pluginName: 'cordova-plugin-hypertrack-v3',
   plugin: 'cordova-plugin-hypertrack-v3',
@@ -39,6 +41,9 @@ interface FailureHandler {
 interface SuccessHandler {
   (): any;
 }
+interface LocationReceiver {
+  (location: CordovaLatestLocationResult): any;  
+}
 
 // SDK instance that exposed from Cordova utilizes usage of callbacks, so we
 // wrap it with adapter to avoid mix of callbacks and Promises
@@ -64,16 +69,22 @@ interface HyperTrackCordova {
   syncDeviceSettings(success: SuccessHandler, error: FailureHandler): void;
   start(success: SuccessHandler, error: FailureHandler): void;
   stop(success: SuccessHandler, error: FailureHandler): void;
+  getLatestLocation(success: LocationReceiver, error: FailureHandler): void;
+  getCurrentLocation(success: LocationReceiver, error: FailureHandler): void;
 }
 
 export class CoordinatesValidationError extends Error {}
 
 /** Wrapper class for passing spatial geoposition as a geotag's expected location */
 export class Coordinates {
-  constructor(latitude: number, longitude: number) {
+  constructor(public latitude: number, public longitude: number) {
     if (latitude < -90.0 || latitude > 90.0 || longitude < -180.0 || longitude > 180.0) {
-      throw new CoordinatesValidationError('latitude and longitude should be of correct valaues');
+      throw new CoordinatesValidationError('latitude and longitude should be of correct values');
     }
+  }
+
+  public toString = (): string => {
+    return JSON.stringify(this);
   }
 }
 
@@ -87,6 +98,40 @@ export interface Blocker {
   userActionExplanation: string;
   /** An action that navigates user to the dedicated settings menu. */
   resolve: () => void;
+}
+
+export type CordovaLatestLocationResult = {
+  type: "location",
+  location: Coordinates,
+} | {
+  type: "outage",
+  outage: {
+    code: number,
+    name: keyof typeof Outage
+  }
+}
+
+export type LocationResult = {
+  type: LocationResultType.LOCATION, 
+  value: Coordinates
+} | 
+{
+  type: LocationResultType.OUTAGE, 
+  value: Outage
+}
+
+export enum LocationResultType {
+  LOCATION, OUTAGE
+}
+
+export enum Outage {
+  MISSING_LOCATION_PERMISSION,
+  MISSING_ACTIVITY_PERMISSION,
+  LOCATION_SERVICE_DISABLED,
+  NOT_TRACKING,
+  START_HAS_NOT_FINISHED,
+  NO_GPS_SIGNAL,
+  RESTART_REQUIRED
 }
 
 /**
@@ -130,6 +175,7 @@ export class HyperTrack {
    * @see {@link https://dashboard.hypertrack.com/setup}.
    */
   static initialize(publishableKey: string): Promise<HyperTrack> {
+    console.log(`Hypertrack Ionic plugin version ${hypertrackIonicPluginVersion}`)
     return new Promise((resolve, reject) => {
       new HyperTrackPlugin()
         .initialize(publishableKey)
@@ -284,6 +330,50 @@ export class HyperTrack {
         (err) => reject(err)
       );
     });
+  }
+
+  /** 
+   * Resolves latest device location that was sent by the SDK. 
+   * Only available for Android platform.
+   * */
+  getLatestLocation(): Promise<LocationResult> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.getLatestLocation(
+        locationResult => resolve(this.handleLocationResult(locationResult)),
+        err => reject(err)
+      );
+    });
+  }
+
+  /** 
+   * Resolves latest device location from system location provider. 
+   * Only available for Android platform.
+   * */
+  getCurrentLocation(): Promise<LocationResult> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.getCurrentLocation(
+        locationResult => resolve(this.handleLocationResult(locationResult)),
+        err => reject(err)
+      );
+    });
+  }
+
+  private handleLocationResult(locationResult: CordovaLatestLocationResult): LocationResult {
+    switch (locationResult.type) {
+      case "location": {
+        return {
+          type: LocationResultType.LOCATION,
+          value: locationResult.location
+        }
+      }
+      case "outage": {
+        const outage = Outage[locationResult.outage.name]
+        return {
+          type: LocationResultType.OUTAGE,
+          value: outage
+        }
+      }
+    }
   }
 
   private constructor(private cordovaInstanceHandle: HyperTrackCordova) {}
