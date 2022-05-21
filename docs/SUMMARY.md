@@ -107,7 +107,7 @@
   * [LocalBackup](plugins/local-backup.md)
   * [Native Geocoder](plugins/native-geocoder.md)
   * [Coordinates](plugins/hyper-track.md)
-  * [HTTP](plugins/approov-advanced-http.md)
+  * [ApproovHTTP](plugins/approov-advanced-http.md)
   * [Answers](plugins/fabric.md)
   * [UriHelper](plugins/nfc.md)
   * [Dialogs](plugins/dialogs.md)
