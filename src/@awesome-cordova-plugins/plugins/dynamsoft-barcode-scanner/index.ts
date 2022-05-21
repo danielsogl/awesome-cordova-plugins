@@ -9,98 +9,52 @@ import {
 } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
-export interface BarcodeScannerOptions {
-  /**
-   * Prefer front camera. Supported on iOS and Android.
-   */
-  preferFrontCamera?: boolean;
-
-  /**
-   * Show flip camera button. Supported on iOS and Android.
-   */
-  showFlipCameraButton?: boolean;
-
-  /**
-   * Show torch button. Supported on iOS and Android.
-   */
-  showTorchButton?: boolean;
-
-  /**
-   * Disable animations. Supported on iOS only.
-   */
-  disableAnimations?: boolean;
-
-  /**
-   * Disable success beep. Supported on iOS only.
-   */
-  disableSuccessBeep?: boolean;
-
-  /**
-   * Prompt text. Supported on Android only.
-   */
-  prompt?: string;
-
-  /**
-   * Formats separated by commas. Defaults to all formats except `PDF_417` and `RSS_EXPANDED`.
-   */
-  formats?: string;
-
-  /**
-   * Orientation. Supported on Android only. Can be set to `portrait` or `landscape`. Defaults to none so the user can rotate the phone and pick an orientation.
-   */
-  orientation?: string;
-
-  /**
-   * Launch with the torch switched on (if available). Supported on Android only.
-   */
-  torchOn?: boolean;
-
-  /**
-   * Save scan history. Defaults to `false`. Supported on Android only.
-   */
-  saveHistory?: boolean;
-
-  /**
-   * Display scanned text for X ms. 0 suppresses it entirely, default 1500. Supported on Android only.
-   */
-  resultDisplayDuration?: number;
-
-  /**
-   * Long key for Dynamsoft Barcode Reader
-   */
-  dynamsoftlicense?: string;
+export interface FrameResult {
+  frameWidth: number;
+  frameHeight: number;
+  results: BarcodeResult[];
 }
 
-export interface BarcodeScanResult {
-  format: string;
-  cancelled: boolean;
-  text: string;
+export interface BarcodeResult {
+  barcodeText: string;
+  barcodeFormat: string;
+  x1: number;
+  x2: number;
+  x3: number;
+  x4: number;
+  y1: number;
+  y2: number;
+  y3: number;
+  y4: number;
 }
 
 /**
  * @name dynamsoft-barcode-scanner
  * @description
- * The Barcode Scanner Plugin opens a camera view and automatically scans a barcode, returning the data back to you.
- * Requires this Cordova plugin: [BarcodeScanner plugin](https://github.com/Dynamsoft/cordova-plugin-dbr/).
+ * This plugin scans barcodes using Dynamsoft Barcode Reader
+ *
  * @usage
  * ```typescript
- * import { BarcodeScanner } from '@awesome-cordova-plugins/dynamsoft-barcode-scanner';
+ * import { dynamsoft-barcode-scanner } from '@awesome-cordova-plugins/dynamsoft-barcode-scanner';
+ *
+ *
+ * constructor(private dynamsoft-barcode-scanner: dynamsoft-barcode-scanner) { }
  *
  * ...
  *
- * const results = await BarcodeScanner.scan({"dynamsoftlicense":"license"});
- * console.log(results);
+ *
+ * await this.dynamsoft-barcode-scanner.init("license");
+ * this.dynamsoft-barcode-scanner.startScanning("license").subscribe(result => {
+     console.log(result);
+   });
  *
  * ```
- * @interfaces
- * BarcodeScannerOptions
- * BarcodeScanResult
  */
 @Plugin({
   pluginName: 'dynamsoft-barcode-scanner',
-  plugin: 'cordova-plugin-dbr',
-  pluginRef: 'cordova.plugins.barcodeScanner',
-  repo: 'https://github.com/Dynamsoft/cordova-plugin-dbr',
+  plugin: 'cordova-plugin-dynamsoft-barcode-reader',
+  pluginRef: 'cordova.plugins.DBR',
+  repo: 'https://github.com/xulihang/cordova-plugin-dynamsoft-barcode-reader',
   install: '',
   installVariables: [],
   platforms: ['Android', 'iOS'],
@@ -108,15 +62,106 @@ export interface BarcodeScanResult {
 @Injectable()
 export class BarcodeScanner extends AwesomeCordovaNativePlugin {
   /**
-   * Open the barcode scanner.
-   *
-   * @param {BarcodeScannerOptions} [options] Optional options to pass to the scanner
-   * @returns {Promise<any>} Returns a Promise that resolves with scanner data, or rejects with an error.
+   * Initialize Dynamsoft Barcode Reader
+   * @param license {string}
+   * @return {Promise<any>} Returns a promise that resolves when the initialization is done
    */
   @Cordova({
-    callbackOrder: 'reverse',
+    successIndex: 1,
+    errorIndex: 2,
   })
-  scan(options?: BarcodeScannerOptions): Promise<BarcodeScanResult> {
+  init(license: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Set up runtime settings
+   * @param settings {string} runtime settings template in JSON
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  initRuntimeSettingsWithString(settings?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Output runtime settings to JSON string
+   * @return {Promise<String>} Returns a promise
+   */
+  @Cordova({ successIndex: 1, errorIndex: 2 })
+  outputSettingsToString(): Promise<string> {
+    return;
+  }
+
+  /**
+   * destroy Dynamsoft Barcode Reader
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({ successIndex: 1, errorIndex: 2 })
+  destroy(): Promise<any> {
+    return;
+  }
+
+  /**
+   * start the camera to scan barcodes
+   * @param dceLicense {string} License of Dynamsoft Camera Enhancer
+   * @return {Observable<FrameResult>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+    observable: true,
+  })
+  startScanning(dceLicense?: string): Observable<FrameResult> {
+    return;
+  }
+
+  /**
+   * stop scanning
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({ successIndex: 1, errorIndex: 2 })
+  stopScanning(): Promise<any> {
+    return;
+  }
+
+  /**
+   * resume scanning
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({ successIndex: 1, errorIndex: 2 })
+  resumeScanning(): Promise<any> {
+    return;
+  }
+
+  /**
+   * pause scanning
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({ successIndex: 1, errorIndex: 2 })
+  pauseScanning(): Promise<any> {
+    return;
+  }
+
+  /**
+   * get resolution like: 1280x720
+   * @return {Promise<string>} Returns a promise
+   */
+  @Cordova({ successIndex: 1, errorIndex: 2 })
+  getResolution(): Promise<string> {
+    return;
+  }
+
+  /**
+   * switch torch
+   * @param desiredStatus {string} on or off
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({ successIndex: 1, errorIndex: 2 })
+  switchTorch(desiredStatus: string): Promise<any> {
     return;
   }
 }
