@@ -17,7 +17,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  *
  * ...
  *
- * this.keychain.set(key, value).then(() => {
+ * this.keychain.set(key, value, false).then(() => {
  *   this.keychain.get(key)
  *     .then(value => console.log('Got value', value))
  *     .catch(err => console.error('Error getting', err));
@@ -57,7 +57,7 @@ export class Keychain extends AwesomeCordovaNativePlugin {
   @Cordova({
     callbackOrder: 'reverse',
   })
-  set(key: string, value: string | number | boolean, useTouchID?: boolean): Promise<any> {
+  set(key: string, value: string | number | boolean, useTouchID: boolean): Promise<any> {
     return;
   }
 
