@@ -1,3 +1,25 @@
+# [5.42.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.41.0...v5.42.0) (2022-05-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tslib to v2.4.0 ([#4154](https://github.com/danielsogl/awesome-cordova-plugins/issues/4154)) ([bae0a8d](https://github.com/danielsogl/awesome-cordova-plugins/commit/bae0a8dbc85fb751470365080b1a35689d9d6be4))
+* **keychain:** mark useTouchID as required ([#4182](https://github.com/danielsogl/awesome-cordova-plugins/issues/4182)) ([6b2c1fd](https://github.com/danielsogl/awesome-cordova-plugins/commit/6b2c1fd32e068a25dccd0f9fda5357fdc9eb7c26))
+
+
+### Features
+
+* **dynamsoft barcode scanner:** update plugin ([#4176](https://github.com/danielsogl/awesome-cordova-plugins/issues/4176)) ([7e2452b](https://github.com/danielsogl/awesome-cordova-plugins/commit/7e2452b6ad0526247dcb310d37f819026c90451c))
+* **hyper-track:** add new functions ([#4128](https://github.com/danielsogl/awesome-cordova-plugins/issues/4128)) ([26a8cbe](https://github.com/danielsogl/awesome-cordova-plugins/commit/26a8cbe437f63e8dd80b9fac643ee68070b9a1cf))
+* **in-app-purchase-2:** add launchPriceChangeConfirmationFlow ([#4127](https://github.com/danielsogl/awesome-cordova-plugins/issues/4127)) ([c2b01e0](https://github.com/danielsogl/awesome-cordova-plugins/commit/c2b01e051086d87747597ac3554feaa8772a71d1))
+
+
+### Reverts
+
+* Revert "chore(deps): update dependency jest to v28 (#4159)" (#4163) ([710cf7a](https://github.com/danielsogl/awesome-cordova-plugins/commit/710cf7acc0d12c981adb9b00db96945e4348c643)), closes [#4159](https://github.com/danielsogl/awesome-cordova-plugins/issues/4159) [#4163](https://github.com/danielsogl/awesome-cordova-plugins/issues/4163)
+
+
+
 # [5.41.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.40.0...v5.41.0) (2022-04-02)
 
 
