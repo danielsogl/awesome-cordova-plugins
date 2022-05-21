@@ -915,4 +915,8 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
   /** Opens the Manage Billing page (AppStore, Play, Microsoft, ...), where the user can update his/her payment methods. */
   @Cordova({ sync: true })
   manageBilling(): void {}
+  
+  /** Open the subscription price change notification workflow. (Play) See: https://developer.android.com/google/play/billing/subscriptions#price-change-communicate */
+  @Cordova({ sync: true })
+  launchPriceChangeConfirmationFlow(productId: string, callback: (status: 'OK' | 'UnknownProduct' | 'UserCanceled') => void): void {};
 }
