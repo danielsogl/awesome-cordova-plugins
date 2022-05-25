@@ -17,5 +17,9 @@
     "sourceMap": true
   },
   "include": ["src/@awesome-cordova-plugins/core/**/*.ts"],
-  "exclude": ["node_modules", "src/@awesome-cordova-plugins/core/**/*.spec.ts"]
+  "exclude": ["node_modules", "src/@awesome-cordova-plugins/core/**/*.spec.ts"],
+  "angularCompilerOptions": {
+    "genDir": "aot",
+    "compilationMode": "partial"
+  }
 }
