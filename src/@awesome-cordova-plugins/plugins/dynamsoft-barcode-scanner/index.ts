@@ -18,6 +18,7 @@ export interface FrameResult {
 export interface BarcodeResult {
   barcodeText: string;
   barcodeFormat: string;
+  barcodeBytesBase64?: string;
   x1: number;
   x2: number;
   x3: number;
