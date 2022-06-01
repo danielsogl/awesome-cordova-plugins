@@ -33,7 +33,7 @@
     "@angular/core": "11.2.14",
     "@types/cordova": "0.0.34",
     "@types/fs-extra": "9.0.13",
-    "@types/jest": "27.5.1",
+    "@types/jest": "27.5.2",
     "@types/lodash": "4.14.182",
     "@types/node": "16.11.38",
     "@types/rimraf": "3.0.2",
