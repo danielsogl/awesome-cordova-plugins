@@ -1,3 +1,12 @@
+# [6.0.0-alpha.3](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.0.0-alpha.2...v6.0.0-alpha.3) (2022-06-03)
+
+
+### Reverts
+
+* Revert "bump angular and ts" ([81bde3f](https://github.com/danielsogl/awesome-cordova-plugins/commit/81bde3fae1308216235f82304df7610a5c6b6c00))
+
+
+
 # [6.0.0-alpha.2](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.0.0-alpha.1...v6.0.0-alpha.2) (2022-06-03)
 
 
