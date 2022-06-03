@@ -11,7 +11,7 @@ import { Logger } from '../logger';
 // tslint:disable-next-line:no-var-requires
 const MAIN_PACKAGE_JSON = require('../../package.json');
 const VERSION = MAIN_PACKAGE_JSON.version;
-const FLAGS = '--access public';
+const FLAGS = '--access public --tag alpha';
 
 const PACKAGE_JSON_BASE = {
   description: 'Awesome Cordova Plugins - Native plugins for ionic apps',
@@ -30,7 +30,7 @@ const DIST = resolve(ROOT, 'dist/@awesome-cordova-plugins');
 
 const PACKAGES = [];
 
-const MIN_CORE_VERSION = '^5.1.0';
+const MIN_CORE_VERSION = '^6.0.0-alpha.0';
 const RXJS_VERSION = '^5.5.0 || ^6.5.0 || ^7.3.0';
 
 const PLUGIN_PEER_DEPENDENCIES = {
