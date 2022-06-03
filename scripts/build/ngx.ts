@@ -21,7 +21,7 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
   options.inlineSourceMap = true;
   options.importHelpers = true;
   options.inlineSources = true;
-  options.enableIvy = false;
+  options.enableIvy = true;
 
   delete options.baseUrl;
 
