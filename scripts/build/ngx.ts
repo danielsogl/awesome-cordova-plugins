@@ -22,7 +22,6 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
   options.importHelpers = true;
   options.inlineSources = true;
   options.enableIvy = false;
-  options.genDir = 'aot';
   options.compilationMode = 'partial';
 
   delete options.baseUrl;
