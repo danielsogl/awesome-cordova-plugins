@@ -15,14 +15,13 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
   const options: CompilerOptions = clone(COMPILER_OPTIONS);
   options.basePath = ROOT;
   options.moduleResolution = ModuleResolutionKind.NodeJs;
-  options.module = ModuleKind.ES2020;
-  options.target = ScriptTarget.ES2015;
-  options.lib = ['dom', 'es2018'];
+  options.module = ModuleKind.ES2015;
+  options.target = ScriptTarget.ES5;
+  options.lib = ['dom', 'es2017'];
   options.inlineSourceMap = true;
   options.importHelpers = true;
   options.inlineSources = true;
   options.enableIvy = false;
-  options.compilationMode = 'partial';
 
   delete options.baseUrl;
 
