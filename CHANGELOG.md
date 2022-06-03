@@ -1,3 +1,7 @@
+# [6.0.0-alpha.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.43.0...v6.0.0-alpha.0) (2022-06-03)
+
+
+
 # [5.43.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.42.0...v5.43.0) (2022-05-25)
 
 
