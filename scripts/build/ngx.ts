@@ -22,6 +22,7 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
   options.importHelpers = true;
   options.inlineSources = true;
   options.enableIvy = false;
+  options.compilationMode = 'partial';
 
   delete options.baseUrl;
 
