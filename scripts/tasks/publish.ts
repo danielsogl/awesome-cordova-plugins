@@ -18,7 +18,7 @@ const PACKAGE_JSON_BASE = {
   main: 'bundle.js',
   module: 'index.js',
   typings: 'index.d.ts',
-  author: 'ionic',
+  author: 'Daniel Sogl',
   license: 'MIT',
   repository: {
     type: 'git',
