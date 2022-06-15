@@ -1,30 +1,10 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
-import {
-  Plugin,
-  Cordova,
-  CordovaProperty,
-  CordovaInstance,
-  InstanceProperty,
-  AwesomeCordovaNativePlugin,
-} from '@awesome-cordova-plugins/core';
-import { Observable } from 'rxjs';
-import { flatMap } from 'rxjs/internal/operators';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name Lets Cooee
  * @description
- * This plugin does something
+ * AI driven Personalised Notifications for Better Customer Engagement
  *
  * @usage
  * ```typescript
