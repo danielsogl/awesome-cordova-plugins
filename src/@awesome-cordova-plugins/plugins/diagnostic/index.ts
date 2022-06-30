@@ -91,9 +91,9 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * iOS ONLY
    * Location accuracy authorization
    */
-  locationAccuracyAuthorization: {
-    FULL: 'full';
-    REDUCED: 'reduced';
+  locationAccuracyAuthorization = {
+    FULL: 'full',
+    REDUCED: 'reduced',
   };
 
   permissionGroups = {
