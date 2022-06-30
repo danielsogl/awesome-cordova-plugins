@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
  * A Cordova plugin to unzip files in Android and iOS.
  * @usage
  * ```typescript
- * import { Zip } from '@awesome-cordova-plugins/zip'
+ * import { Zip } from '@awesome-cordova-plugins/zip/nx'
  * ...
  *
  * const result = await Zip.unzip('path/to/source.zip', 'path/to/dest', (progress) =>
