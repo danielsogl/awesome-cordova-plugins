@@ -1,3 +1,22 @@
+# [5.44.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.43.0...v5.44.0) (2022-06-30)
+
+
+### Bug Fixes
+
+* **diagnostic:** adjust options declaration ([#4227](https://github.com/danielsogl/awesome-cordova-plugins/issues/4227)) ([19fc222](https://github.com/danielsogl/awesome-cordova-plugins/commit/19fc222ea93c79c53156aa0a05b3dc0bffa77a7e))
+* **urbanairship:** fix cordova and method wrapper options ([#4221](https://github.com/danielsogl/awesome-cordova-plugins/issues/4221)) ([0442260](https://github.com/danielsogl/awesome-cordova-plugins/commit/04422600ca9675ff1f5ff763e3aba03b7abb8455))
+
+
+### Features
+
+* **cooee:** add plugin ([#4228](https://github.com/danielsogl/awesome-cordova-plugins/issues/4228)) ([7a528b4](https://github.com/danielsogl/awesome-cordova-plugins/commit/7a528b42d9427222d01b8e0da675045996be042d))
+* **dynamsoft-barcode:** update startScanning options ([#4205](https://github.com/danielsogl/awesome-cordova-plugins/issues/4205)) ([4e183b1](https://github.com/danielsogl/awesome-cordova-plugins/commit/4e183b18818864b23501fa4bccd2813ca4149e5a))
+* **file-md5:** add plugin ([#4201](https://github.com/danielsogl/awesome-cordova-plugins/issues/4201)) ([63c8365](https://github.com/danielsogl/awesome-cordova-plugins/commit/63c83653c0d0942d9cac2185bd8b9f38a5b4980c))
+* **mobile-messaging:** add chat methods ([#4231](https://github.com/danielsogl/awesome-cordova-plugins/issues/4231)) ([f96b758](https://github.com/danielsogl/awesome-cordova-plugins/commit/f96b7588dece0ed1119d7166168486315f9fc714))
+* **zip:** add plugin  ([#4238](https://github.com/danielsogl/awesome-cordova-plugins/issues/4238)) ([0a31a37](https://github.com/danielsogl/awesome-cordova-plugins/commit/0a31a374b1a73403785a1e6c9104381ee9761940))
+
+
+
 # [5.43.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.42.0...v5.43.0) (2022-05-25)
 
 
