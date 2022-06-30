@@ -8,7 +8,7 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  *
  * @usage
  * ```typescript
- * import { Cooee } from '@awesome-cordova-plugins/lets-cooee';
+ * import { Cooee } from '@awesome-cordova-plugins/lets-cooee/nx';
  *
  *
  * constructor(private cooee: Cooee) { }
