@@ -7,7 +7,7 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * This plugin reads large files in chunks and build the md5sum incrementally.
  * @usage
  * ```typescript
- * import { FileMD5 } from '@awesome-cordova-plugins/file-md5';
+ * import { FileMD5 } from '@awesome-cordova-plugins/file-md5/nx';
  *
  *
  * constructor(private fileMD5: FileMD5) { }
