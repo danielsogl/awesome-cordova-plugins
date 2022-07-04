@@ -705,7 +705,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
   }
 
   @Cordova({ sync: true })
-  approovRemovexclusionURLRegex(urlRegex: string): void {
+  approovRemoveExclusionURLRegex(urlRegex: string): void {
     return;
   }
 
