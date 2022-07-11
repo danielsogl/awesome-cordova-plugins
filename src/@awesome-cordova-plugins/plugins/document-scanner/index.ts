@@ -50,7 +50,7 @@ export interface DocumentScannerOptions {
  * This plugin processes images of documents, compensating for perspective.
  * @usage
  * ```typescript
- * import { DocumentScanner, DocumentScannerOptions } from '@awesome-cordova-plugins/document-scanner';
+ * import { DocumentScanner, DocumentScannerOptions } from '@awesome-cordova-plugins/document-scanner/ngx';
  *
  *
  * constructor(private documentScanner: DocumentScanner) { }

@@ -29,12 +29,14 @@ export interface ChannelSubscriptionListEditor {
   apply(success: () => void, failure: (message: string) => void): ChannelSubscriptionListEditor;
 }
 
+export type ContactSubscriptionScope = 'app' | 'email' | 'push' | 'sms';
+
 /**
  * Interface for UAirship ContactSubscriptionList Editor
  */
 export interface ContactSubscriptionListEditor {
-  subscribe(subscriptionListID: string, contactScope: 'APP' | 'EMAIL'): ContactSubscriptionListEditor;
-  unsubscribe(subscriptionListID: string, contactScope: 'APP' | 'EMAIL'): ContactSubscriptionListEditor;
+  subscribe(subscriptionListID: string, contactScope: ContactSubscriptionScope): ContactSubscriptionListEditor;
+  unsubscribe(subscriptionListID: string, contactScope: ContactSubscriptionScope): ContactSubscriptionListEditor;
   apply(success: () => void, failure: (message: string) => void): ContactSubscriptionListEditor;
 }
 
@@ -630,10 +632,10 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * @param {string} failure.message The error message.
    */
   @Cordova({
-    successIndex: 1,
-    errorIndex: 2,
+    successIndex: 0,
+    errorIndex: 1,
   })
-  getChannelSubscriptionLists(): Promise<any> {
+  getChannelSubscriptionLists(): Promise<string[]> {
     return;
   }
 
@@ -646,10 +648,10 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * @param {string} failure.message The error message.
    */
   @Cordova({
-    successIndex: 1,
-    errorIndex: 2,
+    successIndex: 0,
+    errorIndex: 1,
   })
-  getContactSubscriptionLists(): Promise<any> {
+  getContactSubscriptionLists(): Promise<string[]> {
     return;
   }
 
@@ -663,7 +665,7 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
    * @param {string} failure.message The error message.
    */
   @Cordova()
-  setAssociatedIdentifier(key: string, identifier: string): Promise<any> {
+  setAssociatedIdentifier(key: string, identifier: string): Promise<void> {
     return;
   }
 

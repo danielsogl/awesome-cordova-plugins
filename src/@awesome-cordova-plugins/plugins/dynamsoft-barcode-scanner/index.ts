@@ -9,6 +9,15 @@ import {
 } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
+/**
+ * dceLicense: License of Dynamsoft Camera Enhancer
+ * resolution: use EnumResolution
+ */
+export interface ScanOptions {
+  dceLicense?: string;
+  resolution?: number;
+}
+
 export interface FrameResult {
   frameWidth: number;
   frameHeight: number;
@@ -18,6 +27,7 @@ export interface FrameResult {
 export interface BarcodeResult {
   barcodeText: string;
   barcodeFormat: string;
+  barcodeBytesBase64?: string;
   x1: number;
   x2: number;
   x3: number;
@@ -26,6 +36,15 @@ export interface BarcodeResult {
   y2: number;
   y3: number;
   y4: number;
+}
+
+export enum EnumResolution {
+  RESOLUTION_AUTO = 0,
+  RESOLUTION_480P = 1,
+  RESOLUTION_720P = 2,
+  RESOLUTION_1080P = 3,
+  RESOLUTION_2K = 4,
+  RESOLUTION_4K = 5
 }
 
 /**
@@ -107,7 +126,7 @@ export class BarcodeScanner extends AwesomeCordovaNativePlugin {
 
   /**
    * start the camera to scan barcodes
-   * @param dceLicense {string} License of Dynamsoft Camera Enhancer
+   * @param options {ScanOptions}
    * @return {Observable<FrameResult>}
    */
   @Cordova({
@@ -115,7 +134,7 @@ export class BarcodeScanner extends AwesomeCordovaNativePlugin {
     errorIndex: 2,
     observable: true,
   })
-  startScanning(dceLicense?: string): Observable<FrameResult> {
+  startScanning(options?: ScanOptions): Observable<FrameResult> {
     return;
   }
 
