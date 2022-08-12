@@ -183,4 +183,14 @@ export class BarcodeScanner extends AwesomeCordovaNativePlugin {
   switchTorch(desiredStatus: string): Promise<any> {
     return;
   }
+
+  /**
+   * set zoom
+   * @param factor {number} zoom factor
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({ successIndex: 1, errorIndex: 2 })
+  setZoom(factor: number): Promise<any> {
+    return;
+  }
 }
