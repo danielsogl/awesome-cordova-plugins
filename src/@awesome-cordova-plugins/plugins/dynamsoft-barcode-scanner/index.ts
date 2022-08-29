@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 /**
  * dceLicense: License of Dynamsoft Camera Enhancer
  * resolution: use EnumResolution
+ * rotate: convert frame to bitmap and rotate it
  */
 export interface ScanOptions {
   dceLicense?: string;
@@ -22,7 +23,7 @@ export interface ScanOptions {
 export interface FrameResult {
   frameWidth: number;
   frameHeight: number;
-  rotation: number;
+  frameRotation: number;
   results: BarcodeResult[];
 }
 
