@@ -16,11 +16,13 @@ import { Observable } from 'rxjs';
 export interface ScanOptions {
   dceLicense?: string;
   resolution?: number;
+  rotate?: boolean;
 }
 
 export interface FrameResult {
   frameWidth: number;
   frameHeight: number;
+  rotation: number;
   results: BarcodeResult[];
 }
 
