@@ -62,4 +62,8 @@ export class Device extends AwesomeCordovaNativePlugin {
   /** Get the device hardware serial number. */
   @CordovaProperty()
   serial: string;
+
+  /** Detect if app is running on a macOS desktop with Apple Silicon. */
+  @CordovaProperty()
+  isiOSAppOnMac: string;
 }
