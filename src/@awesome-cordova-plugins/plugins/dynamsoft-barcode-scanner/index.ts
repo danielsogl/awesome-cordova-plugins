@@ -47,7 +47,7 @@ export enum EnumResolution {
   RESOLUTION_720P = 2,
   RESOLUTION_1080P = 3,
   RESOLUTION_2K = 4,
-  RESOLUTION_4K = 5
+  RESOLUTION_4K = 5,
 }
 
 /**
@@ -199,12 +199,11 @@ export class BarcodeScanner extends AwesomeCordovaNativePlugin {
 
   /**
    * set focus
-   * @param point {x:number,y:number} focus point
+   * @param point focus point
    * @return {Promise<any>} Returns a promise
    */
-   @Cordova({ successIndex: 1, errorIndex: 2 })
-   setFocus(point: {x:number,y:number}): Promise<any> {
-     return;
-   }
-  
+  @Cordova({ successIndex: 1, errorIndex: 2 })
+  setFocus(point: { x: number; y: number }): Promise<any> {
+    return;
+  }
 }
