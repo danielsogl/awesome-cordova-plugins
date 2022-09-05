@@ -1,3 +1,19 @@
+# [5.45.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.44.0...v5.45.0) (2022-09-05)
+
+
+### Features
+
+* **adjust:** update wrapper for Adjust Cordova SDK v4.30.0 ([#4277](https://github.com/danielsogl/awesome-cordova-plugins/issues/4277)) ([82377f0](https://github.com/danielsogl/awesome-cordova-plugins/commit/82377f06330e8618e50a57004c9a79cafa66d972))
+* **android-permissions:** add android 13 permissions ([#4295](https://github.com/danielsogl/awesome-cordova-plugins/issues/4295)) ([ba9c1c1](https://github.com/danielsogl/awesome-cordova-plugins/commit/ba9c1c154e76900f9570a7f3acc7728fd32a89a2))
+* **dynamsoft-barcode:** add setFocus and setZoom ([#4281](https://github.com/danielsogl/awesome-cordova-plugins/issues/4281)) ([a801c7d](https://github.com/danielsogl/awesome-cordova-plugins/commit/a801c7d3054d285c962b4657f4b224c9a9ad67cf))
+* **firebase-x:** add message typing ([#4282](https://github.com/danielsogl/awesome-cordova-plugins/issues/4282)) ([898e0b8](https://github.com/danielsogl/awesome-cordova-plugins/commit/898e0b8588f479aea228746c2b3e177c6066f757))
+* **in-app-purchase-2:** update validator for custom headers ([#4262](https://github.com/danielsogl/awesome-cordova-plugins/issues/4262)) ([8b826e3](https://github.com/danielsogl/awesome-cordova-plugins/commit/8b826e3c1b2b53e0d188e90d22f34948b2362cd4))
+* **intercom:** add displaySurvey ([#4292](https://github.com/danielsogl/awesome-cordova-plugins/issues/4292)) ([ebdd6e9](https://github.com/danielsogl/awesome-cordova-plugins/commit/ebdd6e97964d6c1e862f0160180d6e056f91de88))
+* **lets-cooee:** add event observer and installation documentation ([#4278](https://github.com/danielsogl/awesome-cordova-plugins/issues/4278)) ([aef160e](https://github.com/danielsogl/awesome-cordova-plugins/commit/aef160e4180d28598a8ef25c75cd8057dd59f81f))
+* **unvired-cordova-sdk:** Add new function to regenrate the JWT Token ([#4291](https://github.com/danielsogl/awesome-cordova-plugins/issues/4291)) ([678fb71](https://github.com/danielsogl/awesome-cordova-plugins/commit/678fb71a7f4cf1ad34c2746fdaa3690a13df4fe4))
+
+
+
 # [5.44.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.43.0...v5.44.0) (2022-06-30)
 
 
