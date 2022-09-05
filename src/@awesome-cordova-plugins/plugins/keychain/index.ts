@@ -8,7 +8,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  *
  * Requires Cordova plugin: `cordova-plugin-ios-keychain`. For more info, please see the [Keychain plugin docs](https://github.com/ionic-team/cordova-plugin-ios-keychain).
  *
- * See also [Secure Storage](https://ionicframework.com/docs/native/secure-storage/) for more supported platforms.
+ * See also [Secure Storage](https://ionic.io/docs/secure-storage) for more supported platforms.
  * @usage
  * ```typescript
  * import { Keychain } from '@awesome-cordova-plugins/keychain/ngx';
