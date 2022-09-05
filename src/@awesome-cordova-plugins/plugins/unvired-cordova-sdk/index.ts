@@ -1663,4 +1663,13 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   registerForPushNotification(): Promise<any> {
     return;
   }
+
+  /**
+   * Regenerates the JWT token used for communicating with the UMP server.
+   * The updated token will be available via the registered NotificationListener's callback |JWTTokenReceived|
+   */
+  @Cordova()
+  refreshJWTToken(): Promise<any> {
+    return;
+  }
 }
