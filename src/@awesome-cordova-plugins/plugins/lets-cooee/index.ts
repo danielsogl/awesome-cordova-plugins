@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
+import { Observable } from 'rxjs';
 
 /**
  * @name Lets Cooee
@@ -70,6 +71,19 @@ export class Cooee extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getUserID(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Provides callback for the onCooeeCTAListener event.
+   * @return {Observable<Any>} Returns an observable record.
+   */
+  @Cordova({
+    eventObservable: true,
+    event: 'onCooeeCTAListener',
+    element: document,
+  })
+  addCooeeCTAListener(): Observable<any> {
     return;
   }
 }
