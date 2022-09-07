@@ -36,7 +36,7 @@ export interface ServerOptions {
 @Plugin({
   pluginName: 'GCDWebServer',
   plugin: 'cordova-plugin-gcdwebserver',
-  pluginRef: 'cordova.plugins.gcdserver',
+  pluginRef: 'cordova.plugins.GCDServer',
   repo: 'https://github.com/xulihang/cordova-plugin-gcdwebserver',
   install: '',
   installVariables: [],
