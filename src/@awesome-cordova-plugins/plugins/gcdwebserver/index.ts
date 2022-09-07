@@ -7,8 +7,11 @@ import {
   InstanceProperty,
   AwesomeCordovaNativePlugin,
 } from '@awesome-cordova-plugins/core';
-import { Observable } from 'rxjs';
 
+export interface ServerOptions {
+  port?: number;
+  folder?: string;
+}
 
 /**
  * @name gcdwebserver
@@ -33,7 +36,7 @@ import { Observable } from 'rxjs';
 @Plugin({
   pluginName: 'GCDWebServer',
   plugin: 'cordova-plugin-gcdwebserver',
-  pluginRef: 'cordova.plugins.DBR',
+  pluginRef: 'cordova.plugins.gcdserver',
   repo: 'https://github.com/xulihang/cordova-plugin-gcdwebserver',
   install: '',
   installVariables: [],
@@ -43,14 +46,14 @@ import { Observable } from 'rxjs';
 export class GCDWebServer extends AwesomeCordovaNativePlugin {
   /**
    * start the server
-   * @param options {any}
+   * @param options {ServerOptions}
    * @return {Promise<any>} Returns a promise
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2
   })
-  startServer(options?: any): Promise<any> {
+  startServer(options: ServerOptions): Promise<any> {
     return;
   }
 
