@@ -28,7 +28,7 @@ export interface ServerOptions {
  * ...
  *
  *
- * await this.gcdwebserver.startServer();
+ * await this.gcdwebserver.startServer({});
  * 
  *
  * ```
