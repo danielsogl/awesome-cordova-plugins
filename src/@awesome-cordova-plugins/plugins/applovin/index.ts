@@ -64,7 +64,7 @@ export enum ConsentDialogState {
 @Plugin({
   pluginName: 'Applovin',
   plugin: 'cordova-plugin-applovin-max',
-  pluginRef: 'AppLovinMAX',
+  pluginRef: 'applovin',
   repo: 'https://github.com/AppLovin/AppLovin-MAX-Cordova',
   platforms: ['Android', 'iOS'],
 })
@@ -267,6 +267,14 @@ export class Applovin extends AwesomeCordovaNativePlugin {
 
   @Cordova({
     eventObservable: true,
+    event: 'OnInterstitialHiddenEvent',
+  })
+  onInterstitialHidden(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
     event: 'OnInterstitialAdFailedToDisplayEvent',
   })
   onInterstitialAdFailedToDisplay(): Observable<AdInfo> {
@@ -311,6 +319,14 @@ export class Applovin extends AwesomeCordovaNativePlugin {
     event: 'OnRewardedAdDisplayedEvent',
   })
   onRewardedAdDisplayed(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnRewardedAdHiddenEvent',
+  })
+  onRewardedAdHidden(): Observable<AdInfo> {
     return;
   }
 
