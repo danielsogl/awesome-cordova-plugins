@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AwesomeCordovaNativePlugin, Cordova, Plugin } from '@awesome-cordova-plugins/core';
+import { Observable } from 'rxjs';
 
 @Plugin({
   pluginName: 'cordova-plugin-hypertrack-v3',
@@ -30,6 +31,9 @@ export class HyperTrackPlugin extends AwesomeCordovaNativePlugin {
 interface DeviceIdReceiver {
   (deviceId: string): any;
 }
+interface AvailabilityReceiver {
+  (availability: string): any;
+}
 interface TrackingStateReceiver {
   (isRunning: boolean): any;
 }
@@ -39,12 +43,16 @@ interface FailureHandler {
 interface SuccessHandler {
   (): any;
 }
+interface SuccessHandlerForListner {
+  (result: any): any;
+}
 
 // SDK instance that exposed from Cordova utilizes usage of callbacks, so we
 // wrap it with adapter to avoid mix of callbacks and Promises
 interface HyperTrackCordova {
   getDeviceId(success: DeviceIdReceiver, error: FailureHandler): void;
   isRunning(success: TrackingStateReceiver, error: FailureHandler): void;
+  isTracking(success: TrackingStateReceiver, error: FailureHandler): void;
   setDeviceName(name: string, success: SuccessHandler, error: FailureHandler): void;
   setDeviceMetadata(metadata: Object, success: SuccessHandler, error: FailureHandler): void;
   setTrackingNotificationProperties(
@@ -64,6 +72,12 @@ interface HyperTrackCordova {
   syncDeviceSettings(success: SuccessHandler, error: FailureHandler): void;
   start(success: SuccessHandler, error: FailureHandler): void;
   stop(success: SuccessHandler, error: FailureHandler): void;
+  setAvailability(isAvailable: boolean, success: SuccessHandler, error: FailureHandler): void;
+  getAvailability(success: AvailabilityReceiver, error: FailureHandler): void;
+  trackingStateChange(success: SuccessHandlerForListner, error: FailureHandler): void;
+  disposeTrackingState(success: SuccessHandler, error: FailureHandler): void;
+  availabilityStateChange(success: SuccessHandlerForListner, error: FailureHandler): void;
+  disposeAvailabilityState(success: SuccessHandler, error: FailureHandler): void;
 }
 
 export class CoordinatesValidationError extends Error {}
@@ -164,6 +178,16 @@ export class HyperTrack {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.isRunning(
         (isRunning) => resolve(isRunning),
+        (err) => reject(err)
+      );
+    });
+  }
+
+  /** Resolves tracking intent */
+  isTracking(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.isTracking(
+        (isTracking) => resolve(isTracking),
         (err) => reject(err)
       );
     });
@@ -286,5 +310,67 @@ export class HyperTrack {
     });
   }
 
+  setAvailability(isAvailable: boolean): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.setAvailability(
+        isAvailable,
+        () => resolve(),
+        (err) => reject(err)
+      );
+    });
+  }
+
+  getAvailability(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.getAvailability(
+        (availability) => resolve(availability),
+        (err) => reject(err)
+      );
+    });
+  }
+
+  trackingStateChange(): Observable<any> {
+    return new Observable((observer) => {
+      this.cordovaInstanceHandle.trackingStateChange(
+        (res) => {
+          observer.next(res);
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  disposeTrackingState(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.disposeTrackingState(
+        () => resolve(),
+        (err) => reject(err)
+      );
+    });
+  }
+
+  availabilityStateChange(): Observable<any> {
+    return new Observable((observer) => {
+      this.cordovaInstanceHandle.availabilityStateChange(
+        (res) => {
+          observer.next(res);
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  disposeAvailabilityState(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.disposeAvailabilityState(
+        () => resolve(),
+        (err) => reject(err)
+      );
+    });
+  }
   private constructor(private cordovaInstanceHandle: HyperTrackCordova) {}
 }
