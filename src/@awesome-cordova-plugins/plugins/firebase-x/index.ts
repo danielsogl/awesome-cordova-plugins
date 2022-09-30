@@ -112,6 +112,12 @@ export interface FirebaseUser {
    */
   name?: string;
 }
+export interface MessagePayloadAps {
+  alert?: {
+    title: string;
+    body: string;
+  }
+}
 export interface MessagePayload {
   title: string;
   body: string;
@@ -124,6 +130,7 @@ export interface MessagePayload {
   show_notification: string;
   ttl: string;
   tap?: 'background' | 'foreground';
+  aps?: MessagePayloadAps;
 }
 /**
  * @name Firebase X
