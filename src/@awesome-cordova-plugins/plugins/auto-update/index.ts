@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
-import { Observable } from 'rxjs';
 
 /**
  * @name AutoUpdate
@@ -22,18 +21,16 @@ import { Observable } from 'rxjs';
  * ```
  */
 @Plugin({
+  plugin: 'cordova-plugin-autoupdate',
   pluginName: 'AutoUpdate',
-  plugin: 'cordova-plugin-versasaude-auto-update', // npm package name, example: cordova-plugin-camera
-  pluginRef: 'AutoUpdate', // the variable reference to call the plugin, example: navigator.geolocation
-  repo: '', // the github repository URL for the plugin
-  install: '', // OPTIONAL install command, in case the plugin requires variables
-  installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['Android'], // Array of platforms supported, example: ['Android', 'iOS']
+  pluginRef: 'AutoUpdate',
+  repo: 'https://github.com/fermaiasoares/AppUpdate.git',
+  platforms: ['Android'],
 })
 @Injectable()
 export class AutoUpdate extends AwesomeCordovaNativePlugin {
   @Cordova()
-  checkUpdate(): Promise<void> {
+  checkUpdate(): Promise<any> {
     return;
   }
 }
