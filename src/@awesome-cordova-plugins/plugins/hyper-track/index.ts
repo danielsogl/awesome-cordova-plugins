@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AwesomeCordovaNativePlugin, Cordova, Plugin } from '@awesome-cordova-plugins/core';
+import { Observable } from 'rxjs';
 
 @Plugin({
   pluginName: 'cordova-plugin-hypertrack-v3',
@@ -39,7 +40,12 @@ interface FailureHandler {
 interface SuccessHandler {
   (): any;
 }
-
+interface AvailabilityReceiver {
+  (availability: string): any;
+}
+interface SuccessHandlerForListner {
+  (result: any): any;
+}
 // SDK instance that exposed from Cordova utilizes usage of callbacks, so we
 // wrap it with adapter to avoid mix of callbacks and Promises
 interface HyperTrackCordova {
@@ -64,6 +70,13 @@ interface HyperTrackCordova {
   syncDeviceSettings(success: SuccessHandler, error: FailureHandler): void;
   start(success: SuccessHandler, error: FailureHandler): void;
   stop(success: SuccessHandler, error: FailureHandler): void;
+  setAvailability(isAvailable: boolean, success: SuccessHandler, error: FailureHandler): void;
+  getAvailability(success: AvailabilityReceiver, error: FailureHandler): void;
+  trackingStateChange(success: SuccessHandlerForListner, error: FailureHandler): void;
+  disposeTrackingState(success: SuccessHandler, error: FailureHandler): void;
+  availabilityStateChange(success: SuccessHandlerForListner, error: FailureHandler): void;
+  disposeAvailabilityState(success: SuccessHandler, error: FailureHandler): void;
+  isTracking(success: TrackingStateReceiver, error: FailureHandler): void;
 }
 
 export class CoordinatesValidationError extends Error {}
@@ -286,5 +299,83 @@ export class HyperTrack {
     });
   }
 
+  /** Resolves tracking intent */
+  isTracking(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.isTracking(
+        (isTracking) => resolve(isTracking),
+        (err) => reject(err)
+      );
+    });
+  }
+
+  /** Sets device's availability for nearby search. */
+  setAvailability(isAvailable: boolean): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.setAvailability(
+        isAvailable,
+        () => resolve(),
+        (err) => reject(err)
+      );
+    });
+  }
+
+  /** Resolves device's availability for nearby search. */
+  getAvailability(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.getAvailability(
+        (availability) => resolve(availability),
+        (err) => reject(err)
+      );
+    });
+  }
+
+  /** Allows tracking hypertrack sdk  listener. */
+  trackingStateChange(): Observable<any> {
+    return new Observable((observer) => {
+      this.cordovaInstanceHandle.trackingStateChange(
+        (res) => {
+          observer.next(res);
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  /** Stops tracking hypertrack sdk  listener. */
+  disposeTrackingState(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.disposeTrackingState(
+        () => resolve(),
+        (err) => reject(err)
+      );
+    });
+  }
+
+  /** Allows availability hypertrack sdk listener. */
+  availabilityStateChange(): Observable<any> {
+    return new Observable((observer) => {
+      this.cordovaInstanceHandle.availabilityStateChange(
+        (res) => {
+          observer.next(res);
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  /** Stops availability hypertrack sdk listener. */
+  disposeAvailabilityState(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.cordovaInstanceHandle.disposeAvailabilityState(
+        () => resolve(),
+        (err) => reject(err)
+      );
+    });
+  }
   private constructor(private cordovaInstanceHandle: HyperTrackCordova) {}
 }
