@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { AwesomeCordovaNativePlugin, Cordova, Plugin } from '@awesome-cordova-plugins/core';
 
 /**
  * @name File Opener
@@ -25,9 +25,9 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  */
 @Plugin({
   pluginName: 'FileOpener',
-  plugin: 'cordova-plugin-file-opener2',
+  plugin: '@theankur/cordova-plugin-file-opener2',
   pluginRef: 'cordova.plugins.fileOpener2',
-  repo: 'https://github.com/pwlin/cordova-plugin-file-opener2',
+  repo: 'https://github.com/TheAnkurPanchani/cordova-plugin-file-opener2',
   platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
 })
 @Injectable()
