@@ -62,4 +62,8 @@ export class Device extends AwesomeCordovaNativePlugin {
   /** Get the device hardware serial number. */
   @CordovaProperty()
   serial: string;
+
+  /** Get the Android device's SDK version. (Android-only) */
+  @CordovaProperty()
+  sdkVersion?: string;
 }
