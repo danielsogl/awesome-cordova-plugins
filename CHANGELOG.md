@@ -1,3 +1,25 @@
+# [5.46.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.45.0...v5.46.0) (2022-10-09)
+
+
+### Bug Fixes
+
+* **sms-retriever:** update startWatching result type ([#4309](https://github.com/danielsogl/awesome-cordova-plugins/issues/4309)) ([178489f](https://github.com/danielsogl/awesome-cordova-plugins/commit/178489ffaae6ad256ca1536bc79e63354c72516f))
+
+
+### Features
+
+* **adjust:** update wrapper for Adjust Cordova SDK v4.32.0 ([#4327](https://github.com/danielsogl/awesome-cordova-plugins/issues/4327)) ([a7a1091](https://github.com/danielsogl/awesome-cordova-plugins/commit/a7a10913fcfc218dddd1b55b24aa797b47e3bf73))
+* **app-review:** add plugin ([#4348](https://github.com/danielsogl/awesome-cordova-plugins/issues/4348)) ([b0780a8](https://github.com/danielsogl/awesome-cordova-plugins/commit/b0780a8bec1f061489966ab29ebd44736eb3536e))
+* **applovin:** add plugin ([#4307](https://github.com/danielsogl/awesome-cordova-plugins/issues/4307)) ([bf860c3](https://github.com/danielsogl/awesome-cordova-plugins/commit/bf860c30c216e05bc516c179979210c1645570a9))
+* **bluetooth-le:** upgrade to v6.7.0 ([#4320](https://github.com/danielsogl/awesome-cordova-plugins/issues/4320)) ([98dc7c4](https://github.com/danielsogl/awesome-cordova-plugins/commit/98dc7c4be0c3a63775a63926e5958bcde79e7d5c))
+* **device:** add sdkVersion ([#4354](https://github.com/danielsogl/awesome-cordova-plugins/issues/4354)) ([acb39e5](https://github.com/danielsogl/awesome-cordova-plugins/commit/acb39e5849f368e2d2ac75baa5d341b189206e27))
+* **diagnostic:** extend parameter for requestLocationAuthorization ([#4350](https://github.com/danielsogl/awesome-cordova-plugins/issues/4350)) ([b572a10](https://github.com/danielsogl/awesome-cordova-plugins/commit/b572a10a6e1e4063fdd19a04acc09d049b973d67))
+* **firebase-x:** add MessagePayloadAps prop ([#4344](https://github.com/danielsogl/awesome-cordova-plugins/issues/4344)) ([dc1ee8c](https://github.com/danielsogl/awesome-cordova-plugins/commit/dc1ee8c5306196562a0013924014a0d7adfa5059))
+* **GCDWebServer:** add plugin  ([#4302](https://github.com/danielsogl/awesome-cordova-plugins/issues/4302)) ([f8c6430](https://github.com/danielsogl/awesome-cordova-plugins/commit/f8c6430a26f5b489255c4f36629f245ed23bb280))
+* **webim:** add plugin ([#4355](https://github.com/danielsogl/awesome-cordova-plugins/issues/4355)) ([7430284](https://github.com/danielsogl/awesome-cordova-plugins/commit/74302846dc387423d51da79be82f7e0fee4a45bf))
+
+
+
 # [5.45.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.44.0...v5.45.0) (2022-09-05)
 
 
