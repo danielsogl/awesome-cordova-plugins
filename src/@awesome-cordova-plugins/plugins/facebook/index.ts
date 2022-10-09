@@ -49,7 +49,7 @@ export interface FacebookLoginResponse {
  * At this point you'll need to open your project's [`config.xml`](https://cordova.apache.org/docs/en/latest/config_ref/index.html) file, found in the root directory of your project.
  *
  * Take note of the `id` for the next step:
- * ```
+ * ```xml
  * <widget id="com.mycompany.testapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
  * ```
  *
