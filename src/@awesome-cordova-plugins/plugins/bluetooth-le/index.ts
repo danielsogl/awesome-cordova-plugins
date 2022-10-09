@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { AwesomeCordovaNativePlugin, Cordova, CordovaProperty, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /* Available status of device */
@@ -926,6 +926,72 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ callbackOrder: 'reverse' })
   requestLocation(): Promise<{ requestLocation: boolean }> {
+    return;
+  }
+
+  /**
+   * @name hasPermissionBtScan (useful only for Android 12+ / API 31+)
+   * Determine whether scan privileges in Android API 31+
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ hasPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  hasPermissionBtScan(): Promise<{ hasPermission: boolean }> {
+    return;
+  }
+
+  /**
+   * @name requestPermissionBtScan (useful only for Android 12+ / API 31)
+   * Request scan privileges in Android API 31.
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ requestPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  requestPermissionBtScan(): Promise<{ requestPermission: boolean }> {
+    return;
+  }
+
+  /**
+   * @name hasPermissionBtConnect (useful only for Android 12+ / API 31)
+   * Determine if device has the permission to connect or not.
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ hasPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  hasPermissionBtConnect(): Promise<{ hasPermission: boolean }> {
+    return;
+  }
+
+  /**
+   * @name requestPermissionBtConnect (useful only for Android 12+ / API 31)
+   * Prompt permission settings page. requestPermissionBtConnect property returns whether connect permission has been granted or not.
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ requestPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  requestPermissionBtConnect(): Promise<{ requestPermission: boolean }> {
+    return;
+  }
+
+  /**
+   * @name hasPermissionBtAdvertise (useful only for Android 12+ / API 31)
+   * Determine if device has the permission to advertise or not.
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ hasPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  hasPermissionBtAdvertise(): Promise<{ hasPermission: boolean }> {
+    return;
+  }
+
+  /**
+   * @name requestPermissionBtAdvertise (useful only for Android 12+ / API 31)
+   * Prompt permission settings page. requestPermissionBtAdvertise property returns whether connect permission has been granted or not.
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ requestPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  requestPermissionBtAdvertise(): Promise<{ requestPermission: boolean }> {
     return;
   }
 
