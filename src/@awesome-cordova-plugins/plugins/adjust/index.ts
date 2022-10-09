@@ -67,6 +67,7 @@ export class AdjustConfig {
   private allowAdServicesInfoReading: boolean = null; // iOS only
   private coppaCompliantEnabled: boolean = null; 
   private playStoreKidsAppEnabled: boolean = null; // Android only
+  private linkMeEnabled: boolean = null; // iOS only
 
   private attributionCallback: (attribution: AdjustAttribution) => void = null;
   private eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void = null;
@@ -167,6 +168,10 @@ export class AdjustConfig {
 
   setAllowAdServicesInfoReading(allowAdServicesInfoReading: boolean) {
     this.allowAdServicesInfoReading = allowAdServicesInfoReading;
+  }
+
+  setLinkMeEnabled(linkMeEnabled: boolean) {
+    this.linkMeEnabled = linkMeEnabled;
   }
 
   setAttributionCallbackListener(attributionCallback: (attribution: AdjustAttribution) => void) {
@@ -330,6 +335,7 @@ export class AdjustPlayStoreSubscription {
 export class AdjustThirdPartySharing {
   private isEnabled: boolean;
   private granularOptions: string[] = [];
+  private partnerSharingSettings: any[] = [];
 
   constructor(isEnabled: boolean) {
     this.isEnabled = isEnabled;
@@ -339,6 +345,12 @@ export class AdjustThirdPartySharing {
     this.granularOptions.push(partnerName);
     this.granularOptions.push(key);
     this.granularOptions.push(value);
+  }
+
+  addPartnerSharingSetting(partnerName: string, key: string, value: boolean): void {
+    this.partnerSharingSettings.push(partnerName);
+    this.partnerSharingSettings.push(key);
+    this.partnerSharingSettings.push(value);
   }
 }
 
@@ -401,6 +413,7 @@ export interface AdjustAttribution {
   costType: string;
   costAmount: string;
   costCurrency: string;
+  fbInstallReferrer: string; // Android only
 }
 
 export interface AdjustSessionSuccess {
@@ -790,6 +803,16 @@ export class Adjust extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getAppTrackingAuthorizationStatus(): Promise<number> {
+    return;
+  }
+
+  /**
+   * To obtain the last deep link which has opened your iOS app, call this function
+   *
+   * @returns {Promise<string>} Returns a promise with iOS deep link string value
+   */
+  @Cordova()
+  getLastDeeplink(): Promise<string> {
     return;
   }
 }
