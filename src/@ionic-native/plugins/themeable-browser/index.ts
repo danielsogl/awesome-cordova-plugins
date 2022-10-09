@@ -64,7 +64,7 @@ export interface ThemeableBrowserOptions {
   presentationstyle?: string;
   transitionstyle?: string;
   toolbarposition?: string;
-  fullscreen?: string;
+  fullscreen?: boolean;
 }
 
 /**
