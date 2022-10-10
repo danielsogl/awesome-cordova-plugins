@@ -88,7 +88,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   };
 
   /**
-   * iOS ONLY
    * Location accuracy authorization
    */
   locationAccuracyAuthorization = {
@@ -294,11 +293,12 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Returns the location authorization status for the application.
    * Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
    *
-   * @param {string} [mode] iOS only: location authorization mode: "always" or "when_in_use". If not specified, defaults to "when_in_use".
+   * @param {string} [mode] location authorization mode: "always" or "when_in_use". If not specified, defaults to "when_in_use". (this.locationAuthorizationMode)
+   * @param {string} [accuracy] requested location accuracy: "full" or "reduced". If not specified, defaults to "full". (this.locationAccuracyAuthorization)
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'], callbackOrder: 'reverse' })
-  requestLocationAuthorization(mode?: string): Promise<any> {
+  requestLocationAuthorization(mode?: string, accuracy?: string): Promise<any> {
     return;
   }
 

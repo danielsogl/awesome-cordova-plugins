@@ -63,6 +63,10 @@ export class Device extends AwesomeCordovaNativePlugin {
   @CordovaProperty()
   serial: string;
 
+  /** Get the Android device's SDK version. (Android-only) */
+  @CordovaProperty()
+  sdkVersion?: string;
+
   /** Detect if app is running on a macOS desktop with Apple Silicon. */
   @CordovaProperty()
   isiOSAppOnMac: string;

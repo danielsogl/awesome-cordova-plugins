@@ -9,8 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.2
-      - uses: actions/setup-node@v3.4.1
+      - uses: actions/checkout@v3.1.0
+      - uses: actions/setup-node@v3.5.0
         with:
           node-version: 14
       - name: Install dependencies
@@ -24,8 +24,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.2
-      - uses: actions/setup-node@v3.4.1
+      - uses: actions/checkout@v3.1.0
+      - uses: actions/setup-node@v3.5.0
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
