@@ -57,7 +57,7 @@
     "jest": "27.5.1",
     "lint-staged": "13.0.3",
     "lodash": "4.17.21",
-    "minimist": "1.2.6",
+    "minimist": "1.2.7",
     "prettier": "2.7.1",
     "rimraf": "3.0.2",
     "rollup": "2.79.1",
