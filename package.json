@@ -27,10 +27,10 @@
     "tslib": "2.4.0"
   },
   "devDependencies": {
-    "@angular/common": "11.2.14",
-    "@angular/compiler": "11.2.14",
-    "@angular/compiler-cli": "11.2.14",
-    "@angular/core": "11.2.14",
+    "@angular/common": "12.2.16",
+    "@angular/compiler": "12.2.16",
+    "@angular/compiler-cli": "12.2.16",
+    "@angular/core": "12.2.16",
     "@types/cordova": "0.0.34",
     "@types/fs-extra": "9.0.13",
     "@types/jest": "27.5.2",
@@ -65,7 +65,7 @@
     "terser-webpack-plugin": "5.3.6",
     "ts-jest": "27.1.5",
     "ts-node": "10.9.1",
-    "typescript": "4.1.6",
+    "typescript": "4.2.4",
     "unminified-webpack-plugin": "3.0.0",
     "webpack": "5.74.0",
     "winston": "3.8.2",
