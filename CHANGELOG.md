@@ -1,3 +1,21 @@
+## [6.0.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.0.0...v6.0.1) (2022-10-17)
+
+
+### Bug Fixes
+
+* use correct core version ([e7d1641](https://github.com/danielsogl/awesome-cordova-plugins/commit/e7d1641fe9b3cc18bbfab0fb7f23d8b3a4136e9b))
+
+
+
+# [6.0.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.46.0...v6.0.0) (2022-10-15)
+
+
+### Features
+
+* **core:** use angular ivy ([#4369](https://github.com/danielsogl/awesome-cordova-plugins/issues/4369)) ([85441e5](https://github.com/danielsogl/awesome-cordova-plugins/commit/85441e59cac2ac9f40b9da55647ec89c9bafb2ea))
+
+
+
 # [5.46.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.45.0...v5.46.0) (2022-10-09)
 
 
