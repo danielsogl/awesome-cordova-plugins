@@ -85,10 +85,10 @@ export type DialogStateResponse = DialogState;
  * A cordova plugin, a JS version of Webim SDK
  * @usage
  * ```typescript
- * import { WebimSDK } from '@awesome-cordova-plugins/webim/ngx';
+ * import { Webim } from '@awesome-cordova-plugins/webim/ngx';
  *
  *
- * constructor(private webim: WebimSDK) { }
+ * constructor(private webim: Webim) { }
  *
  * ...
  *
