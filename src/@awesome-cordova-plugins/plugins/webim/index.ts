@@ -80,7 +80,7 @@ export type MessageResponse = Message;
 export type DialogStateResponse = DialogState;
 
 /**
- * @name WebimSDK
+ * @name Webim
  * @description
  * A cordova plugin, a JS version of Webim SDK
  * @usage
@@ -100,7 +100,7 @@ export type DialogStateResponse = DialogState;
  * ```
  */
 @Plugin({
-  pluginName: 'WebimSDK',
+  pluginName: 'Webim',
   plugin: 'ru.webim.sdk',
   pluginRef: 'webimsdk',
   repo: 'https://github.com/webim/webim-cordova-plugin.git',
@@ -108,7 +108,7 @@ export type DialogStateResponse = DialogState;
   platforms: ['Android', 'iOS', 'Browser'],
 })
 @Injectable()
-export class WebimSDK extends AwesomeCordovaNativePlugin {
+export class Webim extends AwesomeCordovaNativePlugin {
   @Cordova()
   init(params: InitParams): Promise<DefaultResponse> {
     return;
@@ -154,43 +154,64 @@ export class WebimSDK extends AwesomeCordovaNativePlugin {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onMessage(): Observable<MessageResponse> {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onDeletedMessage(): Observable<MessageResponse> {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onFile(message: string): Observable<MessageResponse> {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onTyping(): Observable<unknown> {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onConfirm(): Observable<MessageResponse> {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onDialog(): Observable<DialogStateResponse> {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onBan(): Observable<unknown> {
     return;
   }
 
   @Cordova()
-  close(): Observable<DefaultResponse> {
+  close(): Promise<DefaultResponse> {
     return;
   }
 
@@ -209,22 +230,34 @@ export class WebimSDK extends AwesomeCordovaNativePlugin {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onUnreadByVisitorMessageCount(): Observable<unknown> {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onSurvey(): Observable<unknown> {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onNextQuestion(): Observable<unknown> {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onSurveyCancel(): Observable<unknown> {
     return;
   }
@@ -254,7 +287,10 @@ export class WebimSDK extends AwesomeCordovaNativePlugin {
     return;
   }
 
-  @Cordova()
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
   onLogging(): Observable<unknown> {
     return;
   }
