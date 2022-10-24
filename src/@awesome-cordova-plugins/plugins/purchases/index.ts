@@ -144,6 +144,10 @@ export enum INTRO_ELIGIBILITY_STATUS {
    * The user is eligible for a free trial or intro pricing for this product.
    */
   INTRO_ELIGIBILITY_STATUS_ELIGIBLE,
+  /**
+   * There is no free trial or intro pricing for this product.
+   */
+  INTRO_ELIGIBILITY_STATUS_NO_INTRO_OFFER_EXISTS,
 }
 
 /**
@@ -209,7 +213,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
  */
 @Plugin({
   pluginName: 'Purchases',
-  plugin: 'cordova-plugin-purchases@3.1.0',
+  plugin: 'cordova-plugin-purchases@3.2.0',
   pluginRef: 'Purchases', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/RevenueCat/cordova-plugin-purchases', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
@@ -288,27 +292,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ sync: true })
   configureWith({ apiKey, appUserID, observerMode, userDefaultsSuiteName, useAmazon }: PurchasesConfiguration): void {}
-
-  /**
-   * Set this to true if you are passing in an appUserID but it is anonymous, this is true by default if you didn't pass an appUserID
-   * If a user tries to purchase a product that is active on the current app store account, we will treat it as a restore and alias
-   * the new ID with the previous id.
-   *
-   * @param allowSharing {boolean} true if enabled, false to disabled
-   */
-  @Cordova({ sync: true })
-  setAllowSharingStoreAccount(allowSharing: boolean): void {}
-
-  /**
-   * Add a dict of attribution information
-   *
-   * @deprecated Use the set<NetworkId> functions instead.
-   * @param {object} data Attribution data from any of the attribution networks in Purchases.ATTRIBUTION_NETWORKS
-   * @param {ATTRIBUTION_NETWORK} network Which network, see Purchases.ATTRIBUTION_NETWORK
-   * @param {string?} networkUserId An optional unique id for identifying the user. Needs to be a string.
-   */
-  @Cordova({ sync: true })
-  addAttributionData(data: { [key: string]: any }, network: ATTRIBUTION_NETWORK, networkUserId?: string): void {}
 
   /**
    * Gets the Offerings configured in the dashboard
@@ -421,41 +404,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   logOut(): Promise<CustomerInfo> {
-    return;
-  }
-
-  /**
-   * @deprecated, use logIn instead.
-   * This function will alias two appUserIDs together.
-   * @param newAppUserID {String} The new appUserID that should be linked to the currently identified appUserID. Needs to be a string.
-   * @returns {Promise<CustomerInfo>} Errors are of type [PurchasesError] and get normally triggered if there
-   * is an error retrieving the new purchaser info for the new user or if there is an error creating the alias.
-   */
-  @Cordova()
-  createAlias(newAppUserID: string): Promise<CustomerInfo> {
-    return;
-  }
-
-  /**
-   * @deprecated, use logIn instead.
-   * This function will identify the current user with an appUserID. Typically this would be used after a logout to identify a new user without calling configure
-   * @param newAppUserID {String} The new appUserID that should be linked to the currently identified appUserID. Needs to be a string.
-   * @returns {Promise<CustomerInfo>} Errors are of type [PurchasesError] and get normally triggered if there
-   * is an error retrieving the new purchaser info for the new user.
-   */
-  @Cordova()
-  identify(newAppUserID: string): Promise<CustomerInfo> {
-    return;
-  }
-
-  /**
-   * @deprecated, use logOut instead.
-   * Resets the Purchases client clearing the saved appUserID. This will generate a random user id and save it in the cache.
-   * @returns {Promise<CustomerInfo>} Errors are of type [PurchasesError] and get normally triggered if there
-   * is an error retrieving the new purchaser info for the new user.
-   */
-  @Cordova()
-  reset(): Promise<CustomerInfo> {
     return;
   }
 
