@@ -10,14 +10,7 @@
  *
  */
 import { Injectable } from '@angular/core';
-import {
-  Plugin,
-  Cordova,
-  CordovaProperty,
-  CordovaInstance,
-  InstanceProperty,
-  AwesomeCordovaNativePlugin,
-} from '@awesome-cordova-plugins/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -112,6 +105,83 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
     sync: true,
   })
   recordError(name: string, message: string, stack: string, isFatal: boolean): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+
+  @Cordova({
+    sync: true,
+  })
+  crashNow(message: string): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+
+  @Cordova({
+    sync: true,
+  })
+  currentSessionId(name: string): Promise<any> {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+
+  @Cordova({
+    sync: true,
+  })
+  incrementAttribute(name: string, value: any): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+
+  @Cordova({
+    sync: true,
+  })
+  recordMetric(name: string, category: any, value: Number, countUnit: string, valueUnit: string): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+
+  @Cordova({
+    sync: true,
+  })
+  removeAllAttributes(): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+
+  @Cordova({
+    sync: true,
+  })
+  setMaxEventPoolSize(maxPoolSize: Number): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+
+  @Cordova({
+    sync: true,
+  })
+  setMaxEventBufferTime(maxBufferTimeInSeconds: Number): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+
+  @Cordova({
+    sync: true,
+  })
+  analyticsEventEnabled(enabled: Boolean): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+
+  @Cordova({
+    sync: true,
+  })
+  networkRequestEnabled(enabled: Boolean): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+
+  @Cordova({
+    sync: true,
+  })
+  networkErrorRequestEnabled(enabled: Boolean): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+
+  @Cordova({
+    sync: true,
+  })
+  httpRequestBodyCaptureEnabled(enabled: Boolean): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 }
