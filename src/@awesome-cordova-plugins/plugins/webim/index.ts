@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { AwesomeCordovaNativePlugin, Cordova, Plugin } from '@awesome-cordova-plugins/core';
+import { Observable } from 'rxjs';
 
 export interface InitParams {
   accountName: string;
@@ -10,10 +11,73 @@ export interface InitParams {
   visitorFields: string;
 }
 
-export interface InitResponse {
+export interface DefaultResponse {
   result: string;
 }
 
+export interface Quote {
+  state: string;
+  id: string;
+  text: string;
+  url: string;
+  timestamp: string;
+  senderName: string;
+  authorID: string;
+}
+
+export interface Employee {
+  id: string;
+  firstname: string;
+  avatar: string;
+}
+
+export interface Keyboard {
+  state: string;
+  buttons: Array<KeyboardButton>;
+  keyboardResponse: KeyboardResponse;
+}
+
+export interface KeyboardRequest {
+  messageID: string;
+  button: KeyboardButton;
+}
+
+export interface KeyboardButton {
+  text: string;
+  id: string;
+}
+
+export interface KeyboardResponse {
+  buttonID: string;
+  messageID: string;
+}
+
+export interface Message {
+  id: string;
+  currentChatID: string;
+  text: string;
+  url: string;
+  imageWidth: number;
+  imageHeight: number;
+  thumbUrl: string;
+  timestamp: string;
+  sender: string;
+  quote: Quote;
+  operator: Employee;
+  keyboard: Keyboard;
+  keyboardRequest: KeyboardRequest;
+  isFirst: boolean;
+  isReadByOperator: boolean;
+  canBeReplied: boolean;
+}
+
+export interface DialogState {
+  employee: Employee;
+}
+
+export type MessagesHistoryResponse = Array<Message>;
+export type MessageResponse = Message;
+export type DialogStateResponse = DialogState;
 
 /**
  * @name Webim
@@ -37,167 +101,197 @@ export interface InitResponse {
  */
 @Plugin({
   pluginName: 'Webim',
-  plugin: 'webim-cordova-plugin',
-  pluginRef: 'Webim',
+  plugin: 'ru.webim.sdk',
+  pluginRef: 'webimsdk',
   repo: 'https://github.com/webim/webim-cordova-plugin.git',
   install: 'cordova plugin add https://github.com/webim/webim-cordova-plugin.git',
   platforms: ['Android', 'iOS', 'Browser'],
 })
 @Injectable()
 export class Webim extends AwesomeCordovaNativePlugin {
-
-
   @Cordova()
-  init(params: InitParams): Promise<InitResponse>{
-    return;
-  }
-
-
-  @Cordova()
-  requestDialog(): Promise<any> {
-    return;
-  }
-
-
-  @Cordova()
-  getMessagesHistory(limit: number, offset: number): Promise<any>{
-    return;
-  }
-
-
-  @Cordova()
-  typingMessage(message: string): Promise<any>{
+  init(params: InitParams): Promise<DefaultResponse> {
     return;
   }
 
   @Cordova()
-  sendMessage(message: string): Promise<any>{
+  requestDialog(): Promise<DefaultResponse> {
     return;
   }
 
   @Cordova()
-  replyMessage(message: string): Promise<any>{
+  getMessagesHistory(limit: number, offset: number): Promise<MessagesHistoryResponse | DefaultResponse> {
     return;
   }
 
   @Cordova()
-  sendFile(filePath: string): Promise<any>{
+  typingMessage(message: string): Promise<string> {
     return;
   }
 
   @Cordova()
-  sendSurveyAnswer(surveyAnswer: string): Promise<any>{
+  sendMessage(message: string): Promise<MessageResponse | DefaultResponse> {
     return;
   }
 
   @Cordova()
-  cancelSurvey(): Promise<any>{
+  replyMessage(message: string, repliedMessage: Message): Promise<MessageResponse | DefaultResponse> {
     return;
   }
 
   @Cordova()
-  onMessage(): Promise<any>{
+  sendFile(filePath: string): Promise<string | DefaultResponse> {
     return;
   }
 
   @Cordova()
-  onDeletedMessage(): Promise<any>{
+  sendSurveyAnswer(surveyAnswer: string): Promise<any> {
     return;
   }
 
   @Cordova()
-  onFile(message: string): Promise<any>{
+  cancelSurvey(): Promise<any> {
+    return;
+  }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onMessage(): Observable<MessageResponse> {
+    return;
+  }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onDeletedMessage(): Observable<MessageResponse> {
+    return;
+  }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onFile(message: string): Observable<MessageResponse> {
+    return;
+  }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onTyping(): Observable<unknown> {
+    return;
+  }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onConfirm(): Observable<MessageResponse> {
+    return;
+  }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onDialog(): Observable<DialogStateResponse> {
+    return;
+  }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onBan(): Observable<unknown> {
     return;
   }
 
   @Cordova()
-  onTyping(): Promise<any>{
+  close(): Promise<DefaultResponse> {
     return;
   }
 
   @Cordova()
-  onConfirm(): Promise<any>{
+  rateOperator(id: string, rating: number): Promise<any> {
     return;
   }
 
   @Cordova()
-  onDialog(): Promise<any>{
+  rateOperatorWithNote(id: string, rating: number, note: string): Promise<any> {
     return;
   }
 
   @Cordova()
-  onBan(): Promise<any>{
+  sendDialogToEmailAddress(emailAddress: string): Promise<any> {
+    return;
+  }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onUnreadByVisitorMessageCount(): Observable<unknown> {
+    return;
+  }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onSurvey(): Observable<unknown> {
+    return;
+  }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onNextQuestion(): Observable<unknown> {
+    return;
+  }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onSurveyCancel(): Observable<unknown> {
     return;
   }
 
   @Cordova()
-  close(): Promise<any>{
+  getUnreadByVisitorMessageCount(): Promise<any> {
     return;
   }
 
   @Cordova()
-  rateOperator(id: string, rating: number): Promise<any>{
+  sendKeyboardRequest(): Promise<any> {
     return;
   }
 
   @Cordova()
-  rateOperatorWithNote(id: string, rating: number, note: string): Promise<any>{
+  setChatRead(): Promise<any> {
     return;
   }
 
   @Cordova()
-  sendDialogToEmailAddress(emailAddress: string): Promise<any>{
+  getShowEmailButton(): Promise<any> {
     return;
   }
 
   @Cordova()
-  onUnreadByVisitorMessageCount(): Promise<any>{
+  showRateOperatorWindow(): Promise<any> {
     return;
   }
 
-  @Cordova()
-  onSurvey(): Promise<any>{
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onLogging(): Observable<unknown> {
     return;
   }
-
-  @Cordova()
-  onNextQuestion(): Promise<any>{
-    return;
-  }
-
-  @Cordova()
-  onSurveyCancel(): Promise<any>{
-    return;
-  }
-
-  @Cordova()
-  getUnreadByVisitorMessageCount(): Promise<any>{
-    return;
-  }
-
-  @Cordova()
-  sendKeyboardRequest(): Promise<any>{
-    return;
-  }
-
-  @Cordova()
-  setChatRead(): Promise<any>{
-    return;
-  }
-
-  @Cordova()
-  getShowEmailButton(): Promise<any>{
-    return;
-  }
-
-  @Cordova()
-  showRateOperatorWindow(): Promise<any>{
-    return;
-  }
-
-  @Cordova()
-  onLogging(): Promise<any>{
-    return;
-  }
-
 }

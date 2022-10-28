@@ -322,8 +322,8 @@ export class LaunchNavigator extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    successIndex: 2,
-    errorIndex: 3,
+    successIndex: 1,
+    errorIndex: 2
   })
   navigate(destination: string | number[], options?: LaunchNavigatorOptions): Promise<any> {
     return;

@@ -154,6 +154,18 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   };
 
   /**
+   * Access to the photo library (iOS 14+)
+   *
+   * ADD_ONLY - can add to but not read from Photo Library
+   * READ_WRITE - can both add to and read from Photo Library
+   *
+   */
+  photoLibraryAccessLevel = {
+    ADD_ONLY: 'add_only',
+    READ_WRITE: 'read_write',
+  };
+
+  /**
    * Checks if app is able to access device location.
    *
    * @returns {Promise<any>}
@@ -814,20 +826,34 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the application is authorized to use the Camera Roll in Photos app.
    *
+   * @param accessLevel - (optional) On iOS 14+, specifies the level of access to the photo library to query as a constant in cordova.plugins.diagnostic.photoLibraryAccessLevel`
+   * Possible values are:
+   * ADD_ONLY - can add to but not read from Photo Library
+   * READ_WRITE - can both add to and read from Photo Library
+   * Defaults to ADD_ONLY if not specified
+   * Has no effect on iOS 13 or below
+   *
    * @returns {Promise<boolean>}
    */
-  @Cordova({ platforms: ['iOS'] })
-  isCameraRollAuthorized(): Promise<boolean> {
+  @Cordova({ platforms: ['iOS'], callbackOrder: 'reverse' })
+  isCameraRollAuthorized(accessLevel?: string): Promise<boolean> {
     return;
   }
 
   /**
    * Returns the authorization status for the application to use the Camera Roll in Photos app.
    *
+   * @param accessLevel - (optional) On iOS 14+, specifies the level of access to the photo library to query as a constant in cordova.plugins.diagnostic.photoLibraryAccessLevel`
+   * Possible values are:
+   * ADD_ONLY - can add to but not read from Photo Library
+   * READ_WRITE - can both add to and read from Photo Library
+   * Defaults to ADD_ONLY if not specified
+   * Has no effect on iOS 13 or below
+   *
    * @returns {Promise<string>}
    */
-  @Cordova({ platforms: ['iOS'] })
-  getCameraRollAuthorizationStatus(): Promise<string> {
+  @Cordova({ platforms: ['iOS'], callbackOrder: 'reverse' })
+  getCameraRollAuthorizationStatus(accessLevel?: string): Promise<string> {
     return;
   }
 
@@ -836,10 +862,17 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Should only be called if authorization status is NOT_REQUESTED.
    * Calling it when in any other state will have no effect.
    *
+   * @param accessLevel - (optional) On iOS 14+, specifies the level of access to the photo library to query as a constant in cordova.plugins.diagnostic.photoLibraryAccessLevel`
+   * Possible values are:
+   * ADD_ONLY - can add to but not read from Photo Library
+   * READ_WRITE - can both add to and read from Photo Library
+   * Defaults to ADD_ONLY if not specified
+   * Has no effect on iOS 13 or below
+   *
    * @returns {Promise<any>}
    */
-  @Cordova({ platforms: ['iOS'] })
-  requestCameraRollAuthorization(): Promise<any> {
+  @Cordova({ platforms: ['iOS'], callbackOrder: 'reverse' })
+  requestCameraRollAuthorization(accessLevel?: string): Promise<any> {
     return;
   }
 
@@ -1006,13 +1039,13 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Returns the location accuracy authorization for the application on iOS 14+. Note: calling on iOS <14 will result in the Promise being rejected.
+   * Returns the location accuracy authorization for the application on iOS 14+ and Android 12+. Note: calling on iOS <14 or Android <12 will always return cordova.plugins.diagnostic.locationAccuracyAuthorization.FULL
    *
    * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#getlocationaccuracyauthorization)
    *
    * @returns {Promise<string>}
    */
-  @Cordova({ platform: ['iOS'] })
+  @Cordova({ platforms: ['iOS', 'Android'] })
   getLocationAccuracyAuthorization(): Promise<string> {
     return;
   }

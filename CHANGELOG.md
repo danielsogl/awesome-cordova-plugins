@@ -1,3 +1,36 @@
+# [6.1.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.0.1...v6.1.0) (2022-10-22)
+
+
+### Bug Fixes
+
+* **launch-navigator:** use currect handlers ([#4385](https://github.com/danielsogl/awesome-cordova-plugins/issues/4385)) ([62f664e](https://github.com/danielsogl/awesome-cordova-plugins/commit/62f664e61a31f7b8be395cd6ce575604c5b5e88c))
+
+
+### Features
+
+* **diagnostic:** addisCameraRollAuthorized and getCameraRollAuthorizationStatus functions (WIP) ([#4362](https://github.com/danielsogl/awesome-cordova-plugins/issues/4362)) ([cd81cfa](https://github.com/danielsogl/awesome-cordova-plugins/commit/cd81cfabf4a3027d65597a3b7079da5998988891))
+* **webim:** update plugin wrapper ([#4370](https://github.com/danielsogl/awesome-cordova-plugins/issues/4370)) ([81a8b42](https://github.com/danielsogl/awesome-cordova-plugins/commit/81a8b42a29f8b83fdcae8f6bcdf5179d009ad72d))
+
+
+
+## [6.0.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.0.0...v6.0.1) (2022-10-17)
+
+
+### Bug Fixes
+
+* use correct core version ([e7d1641](https://github.com/danielsogl/awesome-cordova-plugins/commit/e7d1641fe9b3cc18bbfab0fb7f23d8b3a4136e9b))
+
+
+
+# [6.0.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.46.0...v6.0.0) (2022-10-15)
+
+
+### Features
+
+* **core:** use angular ivy ([#4369](https://github.com/danielsogl/awesome-cordova-plugins/issues/4369)) ([85441e5](https://github.com/danielsogl/awesome-cordova-plugins/commit/85441e59cac2ac9f40b9da55647ec89c9bafb2ea))
+
+
+
 # [5.46.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.45.0...v5.46.0) (2022-10-09)
 
 
