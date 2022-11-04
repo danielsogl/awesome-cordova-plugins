@@ -19,7 +19,7 @@ export interface CropOption {
  *
  * @usage
  * ```typescript
- * import { CropPluginPrivacy } from '@awesome-cordova-plugins/crop-plugin-privacy';
+ * import { CropPluginPrivacy } from '@awesome-cordova-plugins/crop-plugin-privacy/ngx';
  *
  *
  * constructor(private cropPluginPrivacy: CropPluginPrivacy) { }
