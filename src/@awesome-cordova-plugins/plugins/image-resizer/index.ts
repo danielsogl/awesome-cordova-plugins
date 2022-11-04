@@ -45,7 +45,7 @@ export interface ImageResizerOptions {
  * Cordova Plugin For Image Resize
  * @usage
  * ```typescript
- * import { ImageResizer, ImageResizerOptions } from '@awesome-cordova-plugins/image-resizer';
+ * import { ImageResizer, ImageResizerOptions } from '@awesome-cordova-plugins/image-resizer/ngx';
  *
  * constructor(private imageResizer: ImageResizer) { }
  *
