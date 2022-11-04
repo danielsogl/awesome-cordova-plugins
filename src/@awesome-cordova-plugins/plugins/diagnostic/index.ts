@@ -688,6 +688,16 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Returns the Bluetooth authorization status of the application on the device.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android', 'iOS'] })
+  getBluetoothAuthorizationStatus(): Promise<any> {
+    return;
+  }
+
+  /**
    * Checks if the application is authorized to use external storage.
    *
    * @returns {Promise<boolean>}
