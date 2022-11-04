@@ -1,14 +1,3 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
@@ -20,7 +9,7 @@ import { Observable } from 'rxjs';
  *
  * @usage
  * ```typescript
- * import { NewRelic } from "@awesome-cordova-plugins/newrelic";
+ * import { NewRelic } from "@awesome-cordova-plugins/newrelic/ngx";
  *
  *
  * constructor(private newrelic: newrelic) { }
@@ -64,7 +53,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * @param {string} attributeName Name of the attribute.
    * @param {number} value Value of the attribute.
    */
-
   @Cordova({
     sync: true,
   })
@@ -78,7 +66,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * The removed attribute is shared by multiple Mobile event types.
    * @param {string} name Name of the attribute.
    */
-
   @Cordova({
     sync: true,
   })
@@ -91,7 +78,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * @param {string} eventName The name you want to give to a breadcrumb event.
    * @param {Map<string, any>} attributes A map that includes a list of attributes.
    */
-
   @Cordova({
     sync: true,
   })
@@ -106,7 +92,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * @param {string} eventName The name of the event.
    * @param {Map<string, any>} attributes A map that includes a list of attributes.
    */
-
   @Cordova({
     sync: true,
   })
@@ -120,7 +105,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * @param {function} cb A success callback function.
    * @returns {Promise} A promise containing the interactionId.
    */
-
   @Cordova({
     sync: true,
   })
@@ -147,7 +131,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * @param {string} stack The error stack of the error.
    * @param {boolean} isFatal The flag for whether the error is fatal.
    */
-
   @Cordova({
     sync: true,
   })
@@ -159,7 +142,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * Throws a demo run-time exception to test New Relic crash reporting.
    * @param {string} message An optional argument attached to the exception.
    */
-
   @Cordova({
     sync: true,
   })
@@ -173,7 +155,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * @param {function} cb A success callback function.
    * @returns {Promise} A promise containing the current session ID.
    */
-
   @Cordova({
     sync: true,
   })
@@ -189,7 +170,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * @param {string} name The name of the attribute.
    * @param {number} value Optional argument that increments the attribute by this value.
    */
-
   @Cordova({
     sync: true,
   })
@@ -205,7 +185,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * @param {string} countUnit Optional (but requires value and valueUnit to be set). Unit of measurement for the metric count. Supported values are 'PERCENT', 'BYTES', 'SECONDS', 'BYTES_PER_SECOND', or 'OPERATIONS'.
    * @param {string} valueUnit Optional (but requires value and countUnit to be set). Unit of measurement for the metric value. Supported values are 'PERCENT', 'BYTES', 'SECONDS', 'BYTES_PER_SECOND', or 'OPERATIONS'.
    */
-
   @Cordova({
     sync: true,
   })
@@ -216,7 +195,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   /**
    * Removes all attributes from the session..
    */
-
   @Cordova({
     sync: true,
   })
@@ -230,7 +208,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * Default is a maximum of 1000 events per event harvest cycle.
    * @param {number} maxPoolSize The maximum number of events per harvest cycle.
    */
-
   @Cordova({
     sync: true,
   })
@@ -245,7 +222,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * Maximum value should not be greater than 600 seconds.
    * @param {number} maxBufferTimeInSeconds The maximum time (in seconds) that the agent should store events in memory.
    */
-
   @Cordova({
     sync: true,
   })
@@ -258,7 +234,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * Enable or disable collection of event data.
    * @param {boolean} enabled Boolean value for enabling analytics events.
    */
-
   @Cordova({
     sync: true,
   })
@@ -270,7 +245,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * Enable or disable reporting sucessful HTTP request to the MobileRequest event type.
    * @param {boolean} enabled Boolean value for enable successful HTTP requests.
    */
-
   @Cordova({
     sync: true,
   })
@@ -282,7 +256,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * Enable or disable reporting network and HTTP request errors to the MobileRequestError event type.
    * @param {boolean} enabled Boolean value for enabling network request errors.
    */
-
   @Cordova({
     sync: true,
   })
@@ -294,7 +267,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * Enable or disable capture of HTTP response bodies for HTTP error traces, and MobileRequestError events.
    * @param {boolean} enabled Boolean value for enabling HTTP response bodies.
    */
-
   @Cordova({
     sync: true,
   })
@@ -313,7 +285,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * @param {number} bytesReceived The number of bytes received in the response.
    * @param {string} body Optional. The response body of the HTTP response. The response body will be truncated and included in an HTTP Error metric if the HTTP transaction is an error.
    */
-
   @Cordova({
     sync: true,
   })
@@ -340,7 +311,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
    * @param {number} endTime The end time of the request in milliseconds since the epoch.
    * @param {string} failure The name of the network failure. Possible values are 'Unknown', 'BadURL', 'TimedOut', 'CannotConnectToHost', 'DNSLookupFailed', 'BadServerResponse', 'SecureConnectionFailed'.
    */
-
   @Cordova({
     sync: true,
   })
