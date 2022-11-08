@@ -66,6 +66,9 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     WRITE_EXTERNAL_STORAGE: 'WRITE_EXTERNAL_STORAGE',
     READ_EXTERNAL_STORAGE: 'READ_EXTERNAL_STORAGE',
     BODY_SENSORS: 'BODY_SENSORS',
+    BLUETOOTH_ADVERTISE: "BLUETOOTH_ADVERTISE",
+    BLUETOOTH_SCAN: "BLUETOOTH_SCAN",
+    BLUETOOTH_CONNECT: "BLUETOOTH_CONNECT",
   };
 
   @CordovaProperty()
@@ -113,6 +116,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     SENSORS: ['BODY_SENSORS'],
     SMS: ['SEND_SMS', 'RECEIVE_SMS', 'READ_SMS', 'RECEIVE_WAP_PUSH', 'RECEIVE_MMS'],
     STORAGE: ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE'],
+    NEARBY_DEVICES: ["BLUETOOTH_ADVERTISE", "BLUETOOTH_SCAN", "BLUETOOTH_CONNECT"],
   };
 
   locationMode = {
@@ -680,6 +684,16 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ platforms: ['Android'] })
   hasBluetoothLEPeripheralSupport(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Returns the Bluetooth authorization status of the application on the device.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android', 'iOS'] })
+  getBluetoothAuthorizationStatus(): Promise<any> {
     return;
   }
 

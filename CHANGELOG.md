@@ -1,3 +1,25 @@
+# [6.2.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.1.0...v6.2.0) (2022-11-04)
+
+
+### Bug Fixes
+
+* **bluetooth-le:** use correct return types ([#4411](https://github.com/danielsogl/awesome-cordova-plugins/issues/4411)) ([2d347e4](https://github.com/danielsogl/awesome-cordova-plugins/commit/2d347e46edb47a13e662e55ae8c126021a54ea85))
+* **deps:** update dependency tslib to v2.4.1 ([#4413](https://github.com/danielsogl/awesome-cordova-plugins/issues/4413)) ([e90a6a3](https://github.com/danielsogl/awesome-cordova-plugins/commit/e90a6a306c24bf5b58ff2419fe1e8fea73c62472))
+* **diagnostic:** add getBluetoothAuthorizationStatus function ([#4398](https://github.com/danielsogl/awesome-cordova-plugins/issues/4398)) ([c544b43](https://github.com/danielsogl/awesome-cordova-plugins/commit/c544b43a5198566b2e56a0c3e0bbeb74e5527f0e))
+* **diagnostic:** add new Android runtime permissions for Bluetooth ([#4402](https://github.com/danielsogl/awesome-cordova-plugins/issues/4402)) ([6a97dc5](https://github.com/danielsogl/awesome-cordova-plugins/commit/6a97dc5e07ace559b766482ca1ee1a187ffb5d0c))
+
+
+### Features
+
+* **ble:** add wrapper for starting location notifications ([#4399](https://github.com/danielsogl/awesome-cordova-plugins/issues/4399)) ([755b28e](https://github.com/danielsogl/awesome-cordova-plugins/commit/755b28e32534d75a6f8079b9be5a8e1b81aef636))
+* **crop-privacy:** add plugin ([#4408](https://github.com/danielsogl/awesome-cordova-plugins/issues/4408)) ([1e258ad](https://github.com/danielsogl/awesome-cordova-plugins/commit/1e258adeb5506d3bfa3eff755a710fa6373f6dcc))
+* **device:** detect if app is running on a macOS desktop with Apple Silicon ([#4299](https://github.com/danielsogl/awesome-cordova-plugins/issues/4299)) ([af55cb2](https://github.com/danielsogl/awesome-cordova-plugins/commit/af55cb25fa39146c0ed79d94e3805a401b881cc2))
+* **file-chooser:** add plugin ([#4396](https://github.com/danielsogl/awesome-cordova-plugins/issues/4396)) ([97f5661](https://github.com/danielsogl/awesome-cordova-plugins/commit/97f566170efdc90f48a4f7b4aef292dccfb0165c))
+* **image-resizer:** add plugin ([#4397](https://github.com/danielsogl/awesome-cordova-plugins/issues/4397)) ([d2e92f5](https://github.com/danielsogl/awesome-cordova-plugins/commit/d2e92f558972d62e6061494bee3562c70dfe7de1))
+* **newrelic:** add plugin  ([#4409](https://github.com/danielsogl/awesome-cordova-plugins/issues/4409)) ([ef499ed](https://github.com/danielsogl/awesome-cordova-plugins/commit/ef499ed290d399a76ff3428b2dca63bd7ae0977f))
+
+
+
 # [6.1.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.0.1...v6.1.0) (2022-10-22)
 
 
