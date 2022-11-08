@@ -29,7 +29,7 @@ import { Observable } from 'rxjs';
   pluginRef: 'NewRelic', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/newrelic/newrelic-cordova-plugin', // the github repository URL for the plugin
   install:
-    'ionic cordova plugin add https://github.com/ndesai-newrelic/newrelic-cordova-plugin.git --variable IOS_APP_TOKEN="{ios-app-token}" --variable ANDROID_APP_TOKEN="{android-app-token}"', // OPTIONAL install command, in case the plugin requires variables
+    'ionic cordova plugin add https://github.com/newrelic/newrelic-cordova-plugin.git --variable IOS_APP_TOKEN="{ios-app-token}" --variable ANDROID_APP_TOKEN="{android-app-token}"', // OPTIONAL install command, in case the plugin requires variables
   installVariables: ['IOS_APP_TOKEN', 'ANDROID_APP_TOKEN'], // OPTIONAL the plugin requires variables
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
