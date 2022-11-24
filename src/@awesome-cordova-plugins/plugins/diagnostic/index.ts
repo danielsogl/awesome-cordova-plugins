@@ -696,6 +696,17 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   getBluetoothAuthorizationStatus(): Promise<any> {
     return;
   }
+  
+  /**
+   * Returns the individual authorization status for each Bluetooth run-time permission on Android 12+ / API 31+
+   * On Android 11 / API 30 and below, all will be returned as GRANTED if the manifest has BLUETOOTH since they are implicitly granted at build-time.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  getBluetoothAuthorizationStatuses(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if the application is authorized to use external storage.
