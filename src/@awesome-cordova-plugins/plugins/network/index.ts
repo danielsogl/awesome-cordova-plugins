@@ -27,6 +27,17 @@ export enum Connection {
  * @premier network-information
  * @description
  * Requires Cordova plugin: cordova-plugin-network-information. For more info, please see the [Network plugin docs](https://github.com/apache/cordova-plugin-network-information).
+ * Note: Make sure to add `Network` in your ngModule e.g
+ ```
+ import { Network } from '@ionic-native/network/ngx';
+
+@NgModule(
+   ...
+   providers: [
+      Network
+   ]
+); 
+ ```
  * @usage
  * ```typescript
  * import { Network } from '@awesome-cordova-plugins/network/ngx';
