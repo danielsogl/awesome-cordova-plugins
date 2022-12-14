@@ -27,10 +27,10 @@
     "tslib": "2.4.1"
   },
   "devDependencies": {
-    "@angular/common": "12.2.16",
-    "@angular/compiler": "12.2.16",
-    "@angular/compiler-cli": "12.2.16",
-    "@angular/core": "12.2.16",
+    "@angular/common": "15.0.4",
+    "@angular/compiler": "15.0.4",
+    "@angular/compiler-cli": "15.0.4",
+    "@angular/core": "15.0.4",
     "@types/cordova": "0.0.34",
     "@types/fs-extra": "9.0.13",
     "@types/jest": "27.5.2",
