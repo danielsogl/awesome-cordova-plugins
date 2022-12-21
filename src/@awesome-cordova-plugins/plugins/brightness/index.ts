@@ -10,7 +10,7 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  *
  * @usage
  * ```typescript
- * import { Brightness } from '@awesome-cordova-plugins/brightness';
+ * import { Brightness } from '@awesome-cordova-plugins/brightness/ngx';
  *
  *
  * constructor(private brightness: Brightness) { }
