@@ -107,7 +107,7 @@
   * [LocalBackup](plugins/local-backup.md)
   * [Native Geocoder](plugins/native-geocoder.md)
   * [Coordinates](plugins/hyper-track.md)
-  * [HTTP](plugins/approov-advanced-http.md)
+  * [ApproovHTTP](plugins/approov-advanced-http.md)
   * [Answers](plugins/fabric.md)
   * [UriHelper](plugins/nfc.md)
   * [Dialogs](plugins/dialogs.md)
@@ -214,6 +214,9 @@
   * [Android Notch](plugins/android-notch.md)
   * [Network Interface](plugins/network-interface.md)
   * [Printer](plugins/printer.md)
+  * [Browser Tab](plugins/browser-tab.md)
+  * [Dynamsoft Barcode Scanner](plugins/dynamsoft-barcode-scanner.md)
+  * [GCDWebServer](plugins/gcdwebserver.md)
 * [Installation](installation.md)
 * [FAQ](faq.md)
 

@@ -8,7 +8,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  *
  * Requires Cordova plugin: `cordova-plugin-ios-keychain`. For more info, please see the [Keychain plugin docs](https://github.com/ionic-team/cordova-plugin-ios-keychain).
  *
- * See also [Secure Storage](https://ionicframework.com/docs/native/secure-storage/) for more supported platforms.
+ * See also [Secure Storage](https://ionic.io/docs/secure-storage) for more supported platforms.
  * @usage
  * ```typescript
  * import { Keychain } from '@awesome-cordova-plugins/keychain/ngx';
@@ -17,7 +17,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  *
  * ...
  *
- * this.keychain.set(key, value).then(() => {
+ * this.keychain.set(key, value, false).then(() => {
  *   this.keychain.get(key)
  *     .then(value => console.log('Got value', value))
  *     .catch(err => console.error('Error getting', err));
@@ -57,7 +57,7 @@ export class Keychain extends AwesomeCordovaNativePlugin {
   @Cordova({
     callbackOrder: 'reverse',
   })
-  set(key: string, value: string | number | boolean, useTouchID?: boolean): Promise<any> {
+  set(key: string, value: string | number | boolean, useTouchID: boolean): Promise<any> {
     return;
   }
 

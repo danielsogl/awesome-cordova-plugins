@@ -23,7 +23,7 @@ Go to firebase console and export google-services.json and GoogleService-Info.pl
 NOTE: on iOS in order to collect demographic, age, gender data etc. you should additionally include AdSupport.framework into your project.
 
 ## Using capacitor?
-For Android you'll have to add in __android/app/src/main/AndroidManfiest.xml__ under `<application>`
+For Android you'll have to add in __android/app/src/main/AndroidManifest.xml__ under `<application>`
 ```
 <meta-data
      tools:replace="android:value"

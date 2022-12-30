@@ -7,7 +7,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * This plugin retrives the SMS which arrive without requiring READ permissions.
  * @usage
  * ```typescript
- * import { SmsRetriever } from '@awesome-cordova-plugins/sms-retriever';
+ * import { SmsRetriever } from '@awesome-cordova-plugins/sms-retriever/ngx';
  *
  *
  * constructor(private smsRetriever: SmsRetriever) { }
@@ -41,7 +41,7 @@ export class SmsRetriever extends AwesomeCordovaNativePlugin {
    * @returns {Promise<string>} Returns a promise that resolves when retrives SMS text or TIMEOUT after 5 min.
    */
   @Cordova()
-  startWatching(): Promise<string> {
+  startWatching(): Promise<{ Message: string }> {
     return;
   }
 

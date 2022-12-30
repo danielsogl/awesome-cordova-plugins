@@ -21,7 +21,8 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
   options.inlineSourceMap = true;
   options.importHelpers = true;
   options.inlineSources = true;
-  options.enableIvy = false;
+  options.enableIvy = true;
+  options.compilationMode = 'partial';
 
   delete options.baseUrl;
 
@@ -75,38 +76,6 @@ export function generateLegacyBundles() {
       })
     )
   );
-}
-
-// remove reference to @awesome-cordova-plugins/core decorators
-export function modifyMetadata() {
-  PLUGIN_PATHS.map((p) =>
-    p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace('index.ts', 'ngx/index.metadata.json')
-  ).forEach((p) => {
-    const content = readJSONSync(p);
-    let _prop: { members: { [x: string]: any[] } };
-    for (const prop in content[0].metadata) {
-      _prop = content[0].metadata[prop];
-      removeIonicNativeDecorators(_prop);
-
-      if (_prop.members) {
-        for (const memberProp in _prop.members) {
-          removeIonicNativeDecorators(_prop.members[memberProp][0]);
-        }
-      }
-    }
-
-    writeJSONSync(p, content);
-  });
-}
-
-function removeIonicNativeDecorators(node: any) {
-  if (node.decorators && node.decorators.length) {
-    node.decorators = node.decorators.filter(
-      (d: { expression: { module: string } }) => d.expression.module !== '@awesome-cordova-plugins/core'
-    );
-  }
-
-  if (node.decorators && !node.decorators.length) delete node.decorators;
 }
 
 function createSourceFiles(): string[] {

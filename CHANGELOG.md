@@ -1,3 +1,185 @@
+# [6.2.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.1.0...v6.2.0) (2022-11-04)
+
+
+### Bug Fixes
+
+* **bluetooth-le:** use correct return types ([#4411](https://github.com/danielsogl/awesome-cordova-plugins/issues/4411)) ([2d347e4](https://github.com/danielsogl/awesome-cordova-plugins/commit/2d347e46edb47a13e662e55ae8c126021a54ea85))
+* **deps:** update dependency tslib to v2.4.1 ([#4413](https://github.com/danielsogl/awesome-cordova-plugins/issues/4413)) ([e90a6a3](https://github.com/danielsogl/awesome-cordova-plugins/commit/e90a6a306c24bf5b58ff2419fe1e8fea73c62472))
+* **diagnostic:** add getBluetoothAuthorizationStatus function ([#4398](https://github.com/danielsogl/awesome-cordova-plugins/issues/4398)) ([c544b43](https://github.com/danielsogl/awesome-cordova-plugins/commit/c544b43a5198566b2e56a0c3e0bbeb74e5527f0e))
+* **diagnostic:** add new Android runtime permissions for Bluetooth ([#4402](https://github.com/danielsogl/awesome-cordova-plugins/issues/4402)) ([6a97dc5](https://github.com/danielsogl/awesome-cordova-plugins/commit/6a97dc5e07ace559b766482ca1ee1a187ffb5d0c))
+
+
+### Features
+
+* **ble:** add wrapper for starting location notifications ([#4399](https://github.com/danielsogl/awesome-cordova-plugins/issues/4399)) ([755b28e](https://github.com/danielsogl/awesome-cordova-plugins/commit/755b28e32534d75a6f8079b9be5a8e1b81aef636))
+* **crop-privacy:** add plugin ([#4408](https://github.com/danielsogl/awesome-cordova-plugins/issues/4408)) ([1e258ad](https://github.com/danielsogl/awesome-cordova-plugins/commit/1e258adeb5506d3bfa3eff755a710fa6373f6dcc))
+* **device:** detect if app is running on a macOS desktop with Apple Silicon ([#4299](https://github.com/danielsogl/awesome-cordova-plugins/issues/4299)) ([af55cb2](https://github.com/danielsogl/awesome-cordova-plugins/commit/af55cb25fa39146c0ed79d94e3805a401b881cc2))
+* **file-chooser:** add plugin ([#4396](https://github.com/danielsogl/awesome-cordova-plugins/issues/4396)) ([97f5661](https://github.com/danielsogl/awesome-cordova-plugins/commit/97f566170efdc90f48a4f7b4aef292dccfb0165c))
+* **image-resizer:** add plugin ([#4397](https://github.com/danielsogl/awesome-cordova-plugins/issues/4397)) ([d2e92f5](https://github.com/danielsogl/awesome-cordova-plugins/commit/d2e92f558972d62e6061494bee3562c70dfe7de1))
+* **newrelic:** add plugin  ([#4409](https://github.com/danielsogl/awesome-cordova-plugins/issues/4409)) ([ef499ed](https://github.com/danielsogl/awesome-cordova-plugins/commit/ef499ed290d399a76ff3428b2dca63bd7ae0977f))
+
+
+
+# [6.1.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.0.1...v6.1.0) (2022-10-22)
+
+
+### Bug Fixes
+
+* **launch-navigator:** use currect handlers ([#4385](https://github.com/danielsogl/awesome-cordova-plugins/issues/4385)) ([62f664e](https://github.com/danielsogl/awesome-cordova-plugins/commit/62f664e61a31f7b8be395cd6ce575604c5b5e88c))
+
+
+### Features
+
+* **diagnostic:** addisCameraRollAuthorized and getCameraRollAuthorizationStatus functions (WIP) ([#4362](https://github.com/danielsogl/awesome-cordova-plugins/issues/4362)) ([cd81cfa](https://github.com/danielsogl/awesome-cordova-plugins/commit/cd81cfabf4a3027d65597a3b7079da5998988891))
+* **webim:** update plugin wrapper ([#4370](https://github.com/danielsogl/awesome-cordova-plugins/issues/4370)) ([81a8b42](https://github.com/danielsogl/awesome-cordova-plugins/commit/81a8b42a29f8b83fdcae8f6bcdf5179d009ad72d))
+
+
+
+## [6.0.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.0.0...v6.0.1) (2022-10-17)
+
+
+### Bug Fixes
+
+* use correct core version ([e7d1641](https://github.com/danielsogl/awesome-cordova-plugins/commit/e7d1641fe9b3cc18bbfab0fb7f23d8b3a4136e9b))
+
+
+
+# [6.0.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.46.0...v6.0.0) (2022-10-15)
+
+
+### Features
+
+* **core:** use angular ivy ([#4369](https://github.com/danielsogl/awesome-cordova-plugins/issues/4369)) ([85441e5](https://github.com/danielsogl/awesome-cordova-plugins/commit/85441e59cac2ac9f40b9da55647ec89c9bafb2ea))
+
+
+
+# [5.46.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.45.0...v5.46.0) (2022-10-09)
+
+
+### Bug Fixes
+
+* **sms-retriever:** update startWatching result type ([#4309](https://github.com/danielsogl/awesome-cordova-plugins/issues/4309)) ([178489f](https://github.com/danielsogl/awesome-cordova-plugins/commit/178489ffaae6ad256ca1536bc79e63354c72516f))
+
+
+### Features
+
+* **adjust:** update wrapper for Adjust Cordova SDK v4.32.0 ([#4327](https://github.com/danielsogl/awesome-cordova-plugins/issues/4327)) ([a7a1091](https://github.com/danielsogl/awesome-cordova-plugins/commit/a7a10913fcfc218dddd1b55b24aa797b47e3bf73))
+* **app-review:** add plugin ([#4348](https://github.com/danielsogl/awesome-cordova-plugins/issues/4348)) ([b0780a8](https://github.com/danielsogl/awesome-cordova-plugins/commit/b0780a8bec1f061489966ab29ebd44736eb3536e))
+* **applovin:** add plugin ([#4307](https://github.com/danielsogl/awesome-cordova-plugins/issues/4307)) ([bf860c3](https://github.com/danielsogl/awesome-cordova-plugins/commit/bf860c30c216e05bc516c179979210c1645570a9))
+* **bluetooth-le:** upgrade to v6.7.0 ([#4320](https://github.com/danielsogl/awesome-cordova-plugins/issues/4320)) ([98dc7c4](https://github.com/danielsogl/awesome-cordova-plugins/commit/98dc7c4be0c3a63775a63926e5958bcde79e7d5c))
+* **device:** add sdkVersion ([#4354](https://github.com/danielsogl/awesome-cordova-plugins/issues/4354)) ([acb39e5](https://github.com/danielsogl/awesome-cordova-plugins/commit/acb39e5849f368e2d2ac75baa5d341b189206e27))
+* **diagnostic:** extend parameter for requestLocationAuthorization ([#4350](https://github.com/danielsogl/awesome-cordova-plugins/issues/4350)) ([b572a10](https://github.com/danielsogl/awesome-cordova-plugins/commit/b572a10a6e1e4063fdd19a04acc09d049b973d67))
+* **firebase-x:** add MessagePayloadAps prop ([#4344](https://github.com/danielsogl/awesome-cordova-plugins/issues/4344)) ([dc1ee8c](https://github.com/danielsogl/awesome-cordova-plugins/commit/dc1ee8c5306196562a0013924014a0d7adfa5059))
+* **GCDWebServer:** add plugin  ([#4302](https://github.com/danielsogl/awesome-cordova-plugins/issues/4302)) ([f8c6430](https://github.com/danielsogl/awesome-cordova-plugins/commit/f8c6430a26f5b489255c4f36629f245ed23bb280))
+* **webim:** add plugin ([#4355](https://github.com/danielsogl/awesome-cordova-plugins/issues/4355)) ([7430284](https://github.com/danielsogl/awesome-cordova-plugins/commit/74302846dc387423d51da79be82f7e0fee4a45bf))
+
+
+
+# [5.45.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.44.0...v5.45.0) (2022-09-05)
+
+
+### Features
+
+* **adjust:** update wrapper for Adjust Cordova SDK v4.30.0 ([#4277](https://github.com/danielsogl/awesome-cordova-plugins/issues/4277)) ([82377f0](https://github.com/danielsogl/awesome-cordova-plugins/commit/82377f06330e8618e50a57004c9a79cafa66d972))
+* **android-permissions:** add android 13 permissions ([#4295](https://github.com/danielsogl/awesome-cordova-plugins/issues/4295)) ([ba9c1c1](https://github.com/danielsogl/awesome-cordova-plugins/commit/ba9c1c154e76900f9570a7f3acc7728fd32a89a2))
+* **dynamsoft-barcode:** add setFocus and setZoom ([#4281](https://github.com/danielsogl/awesome-cordova-plugins/issues/4281)) ([a801c7d](https://github.com/danielsogl/awesome-cordova-plugins/commit/a801c7d3054d285c962b4657f4b224c9a9ad67cf))
+* **firebase-x:** add message typing ([#4282](https://github.com/danielsogl/awesome-cordova-plugins/issues/4282)) ([898e0b8](https://github.com/danielsogl/awesome-cordova-plugins/commit/898e0b8588f479aea228746c2b3e177c6066f757))
+* **in-app-purchase-2:** update validator for custom headers ([#4262](https://github.com/danielsogl/awesome-cordova-plugins/issues/4262)) ([8b826e3](https://github.com/danielsogl/awesome-cordova-plugins/commit/8b826e3c1b2b53e0d188e90d22f34948b2362cd4))
+* **intercom:** add displaySurvey ([#4292](https://github.com/danielsogl/awesome-cordova-plugins/issues/4292)) ([ebdd6e9](https://github.com/danielsogl/awesome-cordova-plugins/commit/ebdd6e97964d6c1e862f0160180d6e056f91de88))
+* **lets-cooee:** add event observer and installation documentation ([#4278](https://github.com/danielsogl/awesome-cordova-plugins/issues/4278)) ([aef160e](https://github.com/danielsogl/awesome-cordova-plugins/commit/aef160e4180d28598a8ef25c75cd8057dd59f81f))
+* **unvired-cordova-sdk:** Add new function to regenrate the JWT Token ([#4291](https://github.com/danielsogl/awesome-cordova-plugins/issues/4291)) ([678fb71](https://github.com/danielsogl/awesome-cordova-plugins/commit/678fb71a7f4cf1ad34c2746fdaa3690a13df4fe4))
+
+
+
+# [5.44.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.43.0...v5.44.0) (2022-06-30)
+
+
+### Bug Fixes
+
+* **diagnostic:** adjust options declaration ([#4227](https://github.com/danielsogl/awesome-cordova-plugins/issues/4227)) ([19fc222](https://github.com/danielsogl/awesome-cordova-plugins/commit/19fc222ea93c79c53156aa0a05b3dc0bffa77a7e))
+* **urbanairship:** fix cordova and method wrapper options ([#4221](https://github.com/danielsogl/awesome-cordova-plugins/issues/4221)) ([0442260](https://github.com/danielsogl/awesome-cordova-plugins/commit/04422600ca9675ff1f5ff763e3aba03b7abb8455))
+
+
+### Features
+
+* **cooee:** add plugin ([#4228](https://github.com/danielsogl/awesome-cordova-plugins/issues/4228)) ([7a528b4](https://github.com/danielsogl/awesome-cordova-plugins/commit/7a528b42d9427222d01b8e0da675045996be042d))
+* **dynamsoft-barcode:** update startScanning options ([#4205](https://github.com/danielsogl/awesome-cordova-plugins/issues/4205)) ([4e183b1](https://github.com/danielsogl/awesome-cordova-plugins/commit/4e183b18818864b23501fa4bccd2813ca4149e5a))
+* **file-md5:** add plugin ([#4201](https://github.com/danielsogl/awesome-cordova-plugins/issues/4201)) ([63c8365](https://github.com/danielsogl/awesome-cordova-plugins/commit/63c83653c0d0942d9cac2185bd8b9f38a5b4980c))
+* **mobile-messaging:** add chat methods ([#4231](https://github.com/danielsogl/awesome-cordova-plugins/issues/4231)) ([f96b758](https://github.com/danielsogl/awesome-cordova-plugins/commit/f96b7588dece0ed1119d7166168486315f9fc714))
+* **zip:** add plugin  ([#4238](https://github.com/danielsogl/awesome-cordova-plugins/issues/4238)) ([0a31a37](https://github.com/danielsogl/awesome-cordova-plugins/commit/0a31a374b1a73403785a1e6c9104381ee9761940))
+
+
+
+# [5.43.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.42.0...v5.43.0) (2022-05-25)
+
+
+
+# [5.42.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.41.0...v5.42.0) (2022-05-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tslib to v2.4.0 ([#4154](https://github.com/danielsogl/awesome-cordova-plugins/issues/4154)) ([bae0a8d](https://github.com/danielsogl/awesome-cordova-plugins/commit/bae0a8dbc85fb751470365080b1a35689d9d6be4))
+* **keychain:** mark useTouchID as required ([#4182](https://github.com/danielsogl/awesome-cordova-plugins/issues/4182)) ([6b2c1fd](https://github.com/danielsogl/awesome-cordova-plugins/commit/6b2c1fd32e068a25dccd0f9fda5357fdc9eb7c26))
+
+
+### Features
+
+* **dynamsoft barcode scanner:** update plugin ([#4176](https://github.com/danielsogl/awesome-cordova-plugins/issues/4176)) ([7e2452b](https://github.com/danielsogl/awesome-cordova-plugins/commit/7e2452b6ad0526247dcb310d37f819026c90451c))
+* **hyper-track:** add new functions ([#4128](https://github.com/danielsogl/awesome-cordova-plugins/issues/4128)) ([26a8cbe](https://github.com/danielsogl/awesome-cordova-plugins/commit/26a8cbe437f63e8dd80b9fac643ee68070b9a1cf))
+* **in-app-purchase-2:** add launchPriceChangeConfirmationFlow ([#4127](https://github.com/danielsogl/awesome-cordova-plugins/issues/4127)) ([c2b01e0](https://github.com/danielsogl/awesome-cordova-plugins/commit/c2b01e051086d87747597ac3554feaa8772a71d1))
+
+
+### Reverts
+
+* Revert "chore(deps): update dependency jest to v28 (#4159)" (#4163) ([710cf7a](https://github.com/danielsogl/awesome-cordova-plugins/commit/710cf7acc0d12c981adb9b00db96945e4348c643)), closes [#4159](https://github.com/danielsogl/awesome-cordova-plugins/issues/4159) [#4163](https://github.com/danielsogl/awesome-cordova-plugins/issues/4163)
+
+
+
+# [5.41.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.40.0...v5.41.0) (2022-04-02)
+
+
+### Features
+
+* **http:** add set client auth mode method ([#4100](https://github.com/danielsogl/awesome-cordova-plugins/issues/4100)) ([04fdacc](https://github.com/danielsogl/awesome-cordova-plugins/commit/04fdacc22feba4eedf14c76b0a9c408ec1ee1bdf))
+* **star-prnt:** allow null port for print methods and openCashDrawer ([#4095](https://github.com/danielsogl/awesome-cordova-plugins/issues/4095)) ([a17dba1](https://github.com/danielsogl/awesome-cordova-plugins/commit/a17dba1f8b6570d76d5c8a30f437edb2dca9abea))
+* **urbanairship:** new functions for version cordova-urbanairship 14.0 ([#4097](https://github.com/danielsogl/awesome-cordova-plugins/issues/4097)) ([12ef7ac](https://github.com/danielsogl/awesome-cordova-plugins/commit/12ef7ac215f1f9cf718a004fae9e7f4d01f597b8))
+
+
+
+# [5.40.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.39.1...v5.40.0) (2022-03-05)
+
+
+### Features
+
+* **browser-tab:** add plugin ([#4046](https://github.com/danielsogl/awesome-cordova-plugins/issues/4046)) ([daa4887](https://github.com/danielsogl/awesome-cordova-plugins/commit/daa48873255d0fc31608cc8515e08386c01db6dd))
+* **urbanairship:** Add attributes editing and fix tag editing ([#4058](https://github.com/danielsogl/awesome-cordova-plugins/issues/4058)) ([d9e9a6d](https://github.com/danielsogl/awesome-cordova-plugins/commit/d9e9a6d31aed0308bc3cb0bf07ee7e1682e2f66f))
+
+
+
+## [5.39.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.39.0...v5.39.1) (2022-02-12)
+
+
+### Bug Fixes
+
+* **background-upload:** use correct plugin source ([#4028](https://github.com/danielsogl/awesome-cordova-plugins/issues/4028)) ([8e257f3](https://github.com/danielsogl/awesome-cordova-plugins/commit/8e257f3e08528954a69581eef98871d1fb146441))
+
+
+
+# [5.39.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.38.0...v5.39.0) (2022-02-01)
+
+
+### Bug Fixes
+
+* **firebase-x:** change incrementCounter signature ([#4010](https://github.com/danielsogl/awesome-cordova-plugins/issues/4010)) ([bb1f326](https://github.com/danielsogl/awesome-cordova-plugins/commit/bb1f3268dede9633f5736cedfa5f4ccc15f89aa9))
+
+
+### Features
+
+* **clevertap:** support new clevertap changes  ([#4011](https://github.com/danielsogl/awesome-cordova-plugins/issues/4011)) ([24c61a5](https://github.com/danielsogl/awesome-cordova-plugins/commit/24c61a50a76cc174245624ea71f21bf0f556a317)), closes [#3491](https://github.com/danielsogl/awesome-cordova-plugins/issues/3491)
+
+
+
 # [5.38.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v5.37.3...v5.38.0) (2022-01-27)
 
 

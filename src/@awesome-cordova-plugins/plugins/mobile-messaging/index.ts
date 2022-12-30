@@ -15,6 +15,8 @@ export type Event =
   | 'userUpdated'
   | 'personalized'
   | 'depersonalized'
+  | 'inAppChat.availabilityUpdated'
+  | 'inAppChat.unreadMessageCounterUpdated'
   | 'deeplink';
 
 export interface CustomEvent {
@@ -32,7 +34,7 @@ export interface Configuration {
   /**
    * Message storage save callback
    */
-  messageStorage?: string;
+  messageStorage?: CustomMessageStorage;
   defaultMessageStorage?: boolean;
   ios?: {
     notificationTypes?: string[]; // ['alert', 'badge', 'sound']
@@ -43,6 +45,15 @@ export interface Configuration {
     notificationIcon?: string; // a resource name for a status bar icon (without extension), located in '/platforms/android/app/src/main/res/mipmap'
     multipleNotifications?: boolean; // set to 'true' to enable multiple notifications
     notificationAccentColor?: string; // set to hex color value in format '#RRGGBB' or '#AARRGGBB'
+    firebaseOptions?: {
+      apiKey: string;
+      applicationId: string;
+      databaseUrl?: string;
+      gaTrackingId?: string;
+      gcmSenderId?: string;
+      storageBucket?: string;
+      projectId: string;
+    };
   };
   privacySettings?: {
     applicationCodePersistingDisabled?: boolean;
@@ -52,10 +63,10 @@ export interface Configuration {
   };
   notificationCategories?: [
     {
-      identifier?: string;
+      identifier: string;
       actions?: [
         {
-          identifier?: string;
+          identifier: string;
           title?: string;
           foreground?: boolean;
           authenticationRequired?: boolean;
@@ -71,7 +82,7 @@ export interface Configuration {
 }
 
 export interface UserData {
-  externalUserId: string;
+  externalUserId?: string;
   firstName?: string;
   lastName?: string;
   middleName?: string;
@@ -117,6 +128,22 @@ export interface PersonalizeContext {
   forceDepersonalize?: boolean;
 }
 
+export interface GeoData {
+  area: GeoArea;
+}
+
+export interface GeoArea {
+  id: string;
+  center: GeoCenter;
+  radius: number;
+  title: string;
+}
+
+export interface GeoCenter {
+  lat: number;
+  lon: number;
+}
+
 export interface Message {
   messageId: string;
   title?: string;
@@ -138,12 +165,14 @@ export interface Message {
   browserUrl?: string;
   deeplink?: string;
   webViewUrl?: string;
+  inAppOpenTitle?: string | undefined;
   inAppDismissTitle?: string;
 }
 
 export interface MobileMessagingError {
   code: string;
-  message: string;
+  description: string;
+  domain?: string;
 }
 
 export interface ChatConfig {
@@ -172,6 +201,62 @@ export class DefaultMessageStorage {
   deleteAll(callback: () => void) {
     return;
   }
+}
+
+export class CustomMessageStorage {
+  /**
+   * Will be called by the plugin when messages are received and it's time to save them to the storage
+   *
+   * @param array of message objects to save to storage
+   */
+  @Cordova({ sync: true })
+  save(messages: Message[]) {
+    return;
+  }
+
+  /**
+   * Will be called by the plugin to find a message by message id
+   *
+   * @param callback has to be called on completion with one parameter - found message object
+   */
+  @Cordova({ sync: true })
+  find(messageId: string, callback: (message: Message) => void) {
+    return;
+  }
+
+  /**
+   * Will be called by the plugin to find all messages in the storage
+   *
+   * @param callback has to be called on completion with one parameter - an array of available messages
+   */
+  @Cordova({ sync: true })
+  findAll(callback: (messages: Message[]) => void) {
+    return;
+  }
+
+  /**
+   * Will be called by the plugin when its time to initialize the storage
+   */
+  @Cordova({ sync: true })
+  start() {
+    return;
+  }
+
+  /**
+   * Will be called by the plugin when its time to deinitialize the storage
+   */
+  @Cordova({ sync: true })
+  stop() {
+    return;
+  }
+}
+
+export interface ChatSettingsIOS {
+  title: string;
+  sendButtonColor: string;
+  navigationBarItemsColor: string;
+  navigationBarColor: string;
+  navigationBarTitleColor: string;
 }
 
 /**
@@ -470,6 +555,35 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   showChat(config?: ChatConfig): Promise<any> {
+    return;
+  }
+
+  /**
+   * Setup chat settings for iOS only
+   *
+   * @param settings
+   */
+  @Cordova()
+  setupiOSChatSettings(settings: ChatSettingsIOS): Promise<any> {
+    return;
+  }
+
+  /**
+   * Returns unread in-app chat push messages counter.
+   * The counter increments each time the application receives in-app chat push message
+   * (this usually happens when chat screen is inactive or the application is in background/terminated state).
+   */
+  @Cordova({ sync: true })
+  getMessageCounter(onResult: (counter: number) => void) {
+    return;
+  }
+
+  /**
+   * MobileMessaging plugin automatically resets the counter to 0 whenever user opens the in-app chat screen.
+   * However, use the following API in case you need to manually reset the counter.
+   */
+  @Cordova()
+  resetMessageCounter() {
     return;
   }
 }

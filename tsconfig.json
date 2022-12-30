@@ -21,6 +21,7 @@
   },
   "include": ["src/@awesome-cordova-plugins/plugins/**/*.ts"],
   "angularCompilerOptions": {
-    "genDir": "aot"
+    "genDir": "aot",
+    "compilationMode": "partial"
   }
 }

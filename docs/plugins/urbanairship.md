@@ -7,12 +7,13 @@ $ npm install @awesome-cordova-plugins/urbanairship
 
 ## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/urbanairship/)
 
-Plugin Repo: [https://www.npmjs.com/package/urbanairship-cordova](https://www.npmjs.com/package/urbanairship-cordova)
+Plugin Repo: [https://github.com/urbanairship/urbanairship-cordova](https://github.com/urbanairship/urbanairship-cordova)
 
-This plugin does something
+Npm: [https://www.npmjs.com/package/urbanairship-cordova](https://www.npmjs.com/package/urbanairship-cordova)
+
 
 ## Supported platforms
 
 * Android
-  * iOS
+* iOS
 
