@@ -805,6 +805,17 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Call this method to delete bulk Inbox Messages for Given Message Ids
+   *
+   * @param messageIds {any} array of strings
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  deleteInboxMessagesForIds(messageIds: any): Promise<any> {
+    return;
+  }
+
+  /**
    * Call this to Mark Read Inbox Message For Id
    *
    * @param messageId {string}
