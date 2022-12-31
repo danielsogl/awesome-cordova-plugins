@@ -619,4 +619,118 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
   }
 
   UserPreferences = new UserPreferencesMethods(this);
+
+  /**
+   * Gets the user's country, either as previously stored, or as guessed from the system.
+   * @returns {Promise<string>}
+   */
+  @Cordova()
+  getCountry(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Overrides the user's country. You should use an ISO 3166-1 alpha-2 country code. Defaults to getting the country code from the system default locale.
+   * Use `null` to disable the override.
+   * @param {string} country
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  setCountry(country: string): Promise<void> {
+    return;
+  }
+
+  /**
+   * Gets the user's currency, either as previously stored, or as guessed from the system.
+   * @returns {Promise<string>}
+   */
+  @Cordova()
+  getCurrency(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Overrides the user's currency. You should use an ISO 4217 currency code. Defaults to getting the currency code from the system default locale.
+   * Use `null` to disable the override.
+   * @param {string} currency -
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  setCurrency(currency: string): Promise<void> {
+    return;
+  }
+
+  /**
+   * Gets the user's locale, either as previously stored, or as guessed from the system.
+   * @returns {Promise<string>}
+   */
+  @Cordova()
+  getLocale(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Overrides the user's locale.
+   * You should use an `xx-XX` form of RFC 1766, composed of a lowercase ISO 639-1 language code, an underscore or a dash, and an uppercase ISO 3166-1 alpha-2 country code.
+   * Defaults to getting the locale code from the system default locale.
+   * Use `null` to disable the override.
+   * @param {string} locale -
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  setLocale(locale: string): Promise<void> {
+    return;
+  }
+
+  /**
+   * Gets the user's time zone, either as previously stored, or as guessed from the system.
+   * @returns {Promise<string>}
+   */
+  @Cordova()
+  getTimeZone(): Promise<string> {
+    return;
+  }
+
+  /**
+   * You should use an IANA time zone database codes, `Continent/Country` style preferably, abbreviations like `CET`, `PST`, `UTC`, which have the drawback of changing on daylight saving transitions.
+   * Defaults to getting the time zone code from the system default locale.
+   * Use `null` to disable the override.
+   * @param {string} timeZone -
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  setTimeZone(timeZone: string): Promise<void> {
+    return;
+  }
+
+  /**
+   * Enables the collection of the user's geolocation.
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  enableGeolocation(): Promise<void> {
+    return;
+  }
+
+  /**
+   * Disables the collection of the user's geolocation.
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  disableGeolocation(): Promise<void> {
+    return;
+  }
+
+  /**
+   * Overrides the user's geolocation.
+   * Using this method you can have the user's location be set to wherever you want.
+   * This may be useful to use a pre-recorded location.
+   * @param {number} latitude
+   * @param {number} longitude
+   * @returns {Promise<void>}
+   */
+  @Cordova()
+  setGeolocation(latitude: number, longitude: number): Promise<void> {
+    return;
+  }
 }
