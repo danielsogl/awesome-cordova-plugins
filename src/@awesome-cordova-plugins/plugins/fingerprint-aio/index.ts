@@ -1,6 +1,96 @@
 import { Injectable } from '@angular/core';
 import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
+// Biometric type
+export type BIOMETRIC_TYPE = 'finger' | 'face' | 'biometric';
+
+export enum BIOMETRIC_ERRORS {
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_UNKNOWN_ERROR = -100,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_UNAVAILABLE = -101,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_AUTHENTICATION_FAILED = -102,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_SDK_NOT_SUPPORTED = -103,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_HARDWARE_NOT_SUPPORTED = -104,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_PERMISSION_NOT_GRANTED = -105,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_NOT_ENROLLED = -106,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_INTERNAL_PLUGIN_ERROR = -107,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_DISMISSED = -108,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_PIN_OR_PATTERN_DISMISSED = -109,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_SCREEN_GUARD_UNSECURED = -110,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_LOCKED_OUT = -111,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_LOCKED_OUT_PERMANENT = -112,
+  /**
+   * Convenience constant
+   *
+   * @type {number}
+   */
+  BIOMETRIC_SECRET_NOT_FOUND = -113
+}
+
 export interface FingerprintOptions {
   /**
    * Title in biometric prompt (android only)
@@ -43,6 +133,14 @@ export interface FingerprintOptions {
    * @default false
    */
   disableBackup?: boolean;
+
+  /**
+   * (Android): If false user confirmation is NOT required after a biometric has been authenticated.
+   *
+   * @default true.
+   * See https://developer.android.com/training/sign-in/biometric-auth#no-explicit-user-action
+   */
+  confirmationRequired?: boolean;
 }
 
 export interface FingerprintSecretOptions extends FingerprintOptions {
@@ -121,98 +219,15 @@ export interface FingerprintSecretOptions extends FingerprintOptions {
 })
 @Injectable()
 export class FingerprintAIO extends AwesomeCordovaNativePlugin {
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_UNKNOWN_ERROR = -100;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_UNAVAILABLE = -101;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_AUTHENTICATION_FAILED = -102;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_SDK_NOT_SUPPORTED = -103;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_HARDWARE_NOT_SUPPORTED = -104;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_PERMISSION_NOT_GRANTED = -105;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_NOT_ENROLLED = -106;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_INTERNAL_PLUGIN_ERROR = -107;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_DISMISSED = -108;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_PIN_OR_PATTERN_DISMISSED = -109;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_SCREEN_GUARD_UNSECURED = -110;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_LOCKED_OUT = -111;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_LOCKED_OUT_PERMANENT = -112;
-  /**
-   * Convenience constant
-   *
-   * @type {number}
-   */
-  BIOMETRIC_SECRET_NOT_FOUND = -113;
 
   /**
    * Check if fingerprint authentication is available
    *
-   * @returns {Promise<any>} Returns a promise with result
+   * @returns {Promise<BIOMETRIC_TYPE>} Returns a promise with result which depends on device and os.
+   * iPhone X will return 'face' other Android or iOS devices will return 'finger' Android P+ will return 'biometric'
    */
   @Cordova()
-  isAvailable(): Promise<any> {
+  isAvailable(): Promise<BIOMETRIC_TYPE> {
     return;
   }
 
@@ -220,10 +235,10 @@ export class FingerprintAIO extends AwesomeCordovaNativePlugin {
    * Show authentication dialogue and register secret
    *
    * @param {FingerprintSecretOptions} options Options for platform specific fingerprint API
-   * @returns {Promise<any>} Returns a promise that resolves when authentication was successful
+   * @returns {Promise<void>} Returns a promise that resolves when authentication was successful
    */
   @Cordova()
-  registerBiometricSecret(options: FingerprintSecretOptions): Promise<any> {
+  registerBiometricSecret(options: FingerprintSecretOptions): Promise<void> {
     return;
   }
 
@@ -231,7 +246,7 @@ export class FingerprintAIO extends AwesomeCordovaNativePlugin {
    * Show authentication dialogue and load secret
    *
    * @param {FingerprintOptions} options Options for platform specific fingerprint API
-   * @returns {Promise<any>} Returns a promise that resolves when authentication was successful
+   * @returns {Promise<string>} Returns a promise that resolves when authentication was successful
    */
   @Cordova()
   loadBiometricSecret(options: FingerprintOptions): Promise<string> {
@@ -242,10 +257,10 @@ export class FingerprintAIO extends AwesomeCordovaNativePlugin {
    * Show authentication dialogue
    *
    * @param {FingerprintOptions} options Options for platform specific fingerprint API
-   * @returns {Promise<any>} Returns a promise that resolves when authentication was successful
+   * @returns {Promise<void>} Returns a promise that resolves when authentication was successful
    */
   @Cordova()
-  show(options: FingerprintOptions): Promise<any> {
+  show(options: FingerprintOptions): Promise<void> {
     return;
   }
 }
