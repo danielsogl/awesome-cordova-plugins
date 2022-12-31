@@ -29,7 +29,7 @@ import { Observable } from 'rxjs';
   pluginRef: 'NewRelic', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/newrelic/newrelic-cordova-plugin', // the github repository URL for the plugin
   install:
-    'ionic cordova plugin add https://github.com/ndesai-newrelic/newrelic-cordova-plugin.git --variable IOS_APP_TOKEN="{ios-app-token}" --variable ANDROID_APP_TOKEN="{android-app-token}"', // OPTIONAL install command, in case the plugin requires variables
+    'ionic cordova plugin add https://github.com/newrelic/newrelic-cordova-plugin.git --variable IOS_APP_TOKEN="{ios-app-token}" --variable ANDROID_APP_TOKEN="{android-app-token}"', // OPTIONAL install command, in case the plugin requires variables
   installVariables: ['IOS_APP_TOKEN', 'ANDROID_APP_TOKEN'], // OPTIONAL the plugin requires variables
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
@@ -56,7 +56,7 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   @Cordova({
     sync: true,
   })
-  setAttribute(name: string, value: string): void {
+  setAttribute(name: string, value: any): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
@@ -124,19 +124,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
-  /**
-   * Records JavaScript errors for ionic.
-   * @param {string} name The name of the error.
-   * @param {string} message The message of the error.
-   * @param {string} stack The error stack of the error.
-   * @param {boolean} isFatal The flag for whether the error is fatal.
-   */
-  @Cordova({
-    sync: true,
-  })
-  recordError(name: string, message: string, stack: string, isFatal: boolean): void {
-    return; // We add return; here to avoid any IDE / Compiler errors
-  }
 
   /**
    * Throws a demo run-time exception to test New Relic crash reporting.
@@ -317,4 +304,16 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   noticeNetworkFailure(url: string, method: string, startTime: Number, endTime: Number, failure: string): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
+  
+  /**
+   * Records JavaScript errors for ionic.
+   * @param {Error} err The error to report.
+   */
+  @Cordova({
+    sync: true,
+  })
+  recordError(err: Error): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
+  
 }
