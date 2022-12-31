@@ -10,7 +10,7 @@ To learn more about the reasons why Ionic Native was renamed to Awesome Cordova 
 
 ## Capacitor Support
 
-In addition to Cordova, Awesome Cordova Plugins also works with [Capacitor](https://capacitor.ionicframework.com), Ionic's official native runtime. Basic usage below. For complete details, [see the Capacitor documentation](https://capacitor.ionicframework.com/docs/cordova/using-cordova-plugins).
+In addition to Cordova, Awesome Cordova Plugins also works with [Capacitor](https://capacitorjs.com), Ionic's official native runtime. Basic usage below. For complete details, [see the Capacitor documentation](https://capacitorjs.com/docs/v2/cordova/using-cordova-plugins).
 
 ## Installation
 
