@@ -121,13 +121,14 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Sets the device's Xiaomi push token
-   *
+   * Sets the device's Xiaomi push token.
+   * clevertap-cordova 2.6.0 onwards method requires region as a mandatory parameter.
    * @param token {string}
+   * @param region {string}
    * @returns {Promise<any>}
    */
   @Cordova()
-  setPushXiaomiToken(token: string): Promise<any> {
+  setPushXiaomiToken(token: string, region: string): Promise<any> {
     return;
   }
 
@@ -801,6 +802,17 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   deleteInboxMessageForId(messageId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this method to delete bulk Inbox Messages for Given Message Ids
+   *
+   * @param messageIds {any} array of strings
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  deleteInboxMessagesForIds(messageIds: any): Promise<any> {
     return;
   }
 
