@@ -126,7 +126,7 @@ export class SmartlookNavigationEvent {
 
   constructor(name: string, viewState?: string) {
     this.name = name;
-    this.viewState = this.viewState;
+    this.viewState = viewState;
   }
 }
 
