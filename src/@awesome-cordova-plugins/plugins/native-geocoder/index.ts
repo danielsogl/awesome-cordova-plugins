@@ -128,6 +128,10 @@ export interface NativeGeocoderResult {
    * The areasOfInterest
    */
   areasOfInterest: string[];
+  /**
+   * The lines of the address (Android only)
+   */
+  addressLines: string[];
 }
 
 /**
