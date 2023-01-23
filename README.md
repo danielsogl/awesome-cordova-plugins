@@ -24,7 +24,7 @@ You also need to install the Awesome Cordova Plugins package for each plugin you
 
 ## Documentation
 
-For the full Awesome Cordova Plugins documentation, please visit [https://ionicframework.com/docs/native/](https://ionicframework.com/docs/native/).
+For the full Awesome Cordova Plugins documentation, please visit [https://danielsogl.gitbook.io/awesome-cordova-plugins](https://danielsogl.gitbook.io/awesome-cordova-plugins).
 
 ### Basic Usage
 
