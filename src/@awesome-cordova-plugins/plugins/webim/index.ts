@@ -174,7 +174,7 @@ export class Webim extends AwesomeCordovaNativePlugin {
     observable: true,
     clearFunction: 'close',
   })
-  onFile(message: string): Observable<MessageResponse> {
+  onFile(): Observable<MessageResponse> {
     return;
   }
 
